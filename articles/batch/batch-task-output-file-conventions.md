@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 970cab2c782e71defbda828a42273f317dee80e4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ede0b7cbeee9227a7023e5c0550a951897cc43e4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472982"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821183"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET
 
@@ -112,7 +112,7 @@ await taskOutputStorage.SaveAsync(TaskOutputKind.TaskPreview, "frame_low_res.jpg
 
 Der `kind`-Parameter der [TaskOutputStorage](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.aspx).[ SaveAsync](https://msdn.microsoft.com/library/microsoft.azure.batch.conventions.files.taskoutputstorage.saveasync.aspx)-Methode kategorisiert beibehaltene Dateien. Es gibt vier vordefinierte [TaskOutputKind][net_taskoutputkind]-Typen: `TaskOutput`, `TaskPreview`, `TaskLog` und `TaskIntermediate.`. Sie können auch benutzerdefinierte Kategorien der Ausgabe definieren.
 
-Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter [Abrufen der Ausgabe](#retrieve-output) weiter unten in diesem Artikel.
+Mit diesen Ausgabetypen können Sie angeben, welche Typen von Ausgaben aufgelistet werden, wenn Sie die beibehaltenen Ausgaben eines bestimmten Tasks später in Batch abfragen. Beim Auflisten der Ausgaben für einen Task können Sie die Liste also nach einem der Ausgabetypen filtern. Beispiel: „*preview*-Ausgabe für Task *109* abrufen.“ Weitere Informationen zum Auflisten und Abrufen von Ausgaben finden Sie unter „Abrufen der Ausgabe“ weiter unten in diesem Artikel.
 
 > [!TIP]
 > Die Art der Ausgabe bestimmt auch, wo im Azure-Portal eine bestimmte Datei angezeigt wird: Als *TaskOutput* kategorisierte Dateien werden unter **Aufgabenausgabedateien** und *TaskLog*-Dateien unter **Aufgabenprotokolle** angezeigt.
@@ -197,7 +197,7 @@ Im Azure-Portal werden Taskausgabedateien und Protokolle angezeigt, die unter Ve
 
 Um die Anzeige Ihrer Ausgabedateien im Portal zu aktivieren, müssen die folgenden Voraussetzungen erfüllt sein:
 
-1. [Verknüpfen Sie ein Azure Storage-Konto](#requirement-linked-storage-account) mit Ihrem Batch-Konto.
+1. Verknüpfen Sie ein Azure Storage-Konto mit Ihrem Batch-Konto.
 1. Halten Sie sich an die vordefinierten Namenskonventionen für Storage-Container und Dateien, wenn Sie Ausgaben dauerhaft speichern. Eine Definition dieser Konventionen finden Sie in der [Infodatei][github_file_conventions_readme] zur Dateikonventionenbibliothek. Wenn Sie die [Azure Batch-Dateikonventionen][nuget_package]-Bibliothek zur Beibehaltung der Ausgabe verwenden, werden Ihre Dateien gemäß dem Dateikonventionenstandard beibehalten.
 
 Wenn Sie Taskausgabedateien und Protokolle im Azure-Portal anzeigen möchten, navigieren Sie zum Task, dessen Ausgabe angezeigt werden soll, und klicken Sie auf **Gespeicherte Ausgabedateien** oder auf **Gespeicherte Protokolle**. Diese Abbildung zeigt die **gespeicherten Ausgabedateien** für den Task mit der ID 007:

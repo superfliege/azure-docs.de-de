@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: fe647f96d8b992d8d5c1682d588bbdbba0ddf43b
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 921788d1cd3ff24140bdff0c9b6a181e4ab7f0a8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54055131"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816208"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>Verwenden von PowerShell zum Verwalten von Traffic Manager
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle sind die Parameter beschrieben:
 | MonitorPort |Gibt den TCP-Port an, mit dem die Endpunktintegrität überwacht werden soll |
 | MonitorPath |Gibt den Pfad relativ zum Endpunktdomänennamen an, mit dem die Endpunktintegrität getestet wird. |
 
-Das Cmdlet erstellt ein Traffic Manager-Profil in Azure und gibt ein entsprechendes Profilobjekt an PowerShell zurück. Das Profil enthält zu diesem Zeitpunkt keine Endpunkte. Weitere Informationen zum Hinzufügen von Endpunkten zu einem Traffic Manager-Profil finden Sie unter [Hinzufügen von Traffic Manager-Endpunkten](#adding-traffic-manager-endpoints).
+Das Cmdlet erstellt ein Traffic Manager-Profil in Azure und gibt ein entsprechendes Profilobjekt an PowerShell zurück. Das Profil enthält zu diesem Zeitpunkt keine Endpunkte. Weitere Informationen zum Hinzufügen von Endpunkten zu einem Traffic Manager-Profil finden Sie unter „Hinzufügen von Traffic Manager-Endpunkten“.
 
 ## <a name="get-a-traffic-manager-profile"></a>Abrufen eines Traffic Manager-Profils
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: martincoetzer
-ms.openlocfilehash: 3e2fa822698f3888e1168ab7773d87e41db9eb5c
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: f0b76e54da60396e01b5893b143bcee9048e2184
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52165644"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750323"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -38,7 +38,7 @@ Die Empfehlungen in diesem Dokument beziehen sich auf die [Identity Secure Score
 
 ![Identity Secure Score](media/azure-ad/azure-ad-sec-steps0.png)
 
-## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Vor dem Start: Schützen privilegierter Konten mit MFA
+## <a name="before-you-begin-protect-privileged-accounts-with-mfa"></a>Vorbereitungen Schützen privilegierter Konten mit MFA
 
 Bevor Sie damit beginnen, diese Checkliste durchzuarbeiten, stellen Sie sicher, dass Ihre Organisation nicht bereits gefährdet ist, bevor Sie mit der Checkliste fertig sind. Als Erstes müssen Sie privilegierte Konten schützen.
 
@@ -99,7 +99,7 @@ Apps, die eigene, veraltete Methoden zur Authentifizierung bei Azure AD und zum 
 
 1. Blockieren Sie [ältere Authentifizierungsmethoden, wenn Sie AD FS verwenden](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. Richten Sie [SharePoint Online und Exchange Online für moderne Authentifizierungsverfahren](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-no-modern-authentication) ein.
-3. Verwenden Sie [Richtlinien für den bedingten Zugriff, um ältere Authentifizierungsmethoden zu blockieren](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions#legacy-authentication).
+3. Verwenden Sie [Richtlinien für den bedingten Zugriff, um ältere Authentifizierungsmethoden zu blockieren](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-conditions).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Blockieren von ungültigen Authentifizierungseinstiegspunkten
 

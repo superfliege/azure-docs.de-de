@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 01/30/2019
 ms.author: jdial
-ms.openlocfilehash: f4af899be489dab2fc73bb33943882d4dc81576f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054757"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488091"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -61,22 +61,23 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden, sind öffentliche IP-Adressen vom Typ „Basic-SKU“. Nach der Einführung von SKUs können Sie nun angeben, welche SKU für die öffentliche IP-Adresse verwendet werden soll. Für Basic-SKU-Adressen gilt Folgendes:
 
 - Sie werden mit der statischen oder der dynamischen Zuordnungsmethode zugewiesen.
+- Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann, sowie über ein vorgegebenes Leerlauftimeout für den ursprünglich ausgehenden Datenfluss von vier Minuten.
 - Sind standardmäßig geöffnet.  Netzwerksicherheitsgruppen werden empfohlen, sind aber zum Einschränken des ein- oder ausgehenden Datenverkehrs optional.
 - Die Zuweisung ist für jede Azure-Ressource möglich, der eine öffentliche IP-Adresse zugewiesen werden kann, z.B. Netzwerkschnittstellen, VPN Gateways, Application Gateways und Lastenausgleiche mit Internetzugriff.
-- Sie können einer bestimmten Zone zugewiesen werden.
-- Sie sind nicht zonenredundant. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Overview of Availability Zones in Azure (Preview) (Übersicht über Verfügbarkeitszonen in Azure (Vorschauversion))](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie unterstützen keine Szenarien mit Verfügbarkeitszone.  Für Szenarien mit Verfügbarkeitszone muss eine öffentliche IP-Adresse vom Typ „Standard-SKU“ verwendet werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 #### <a name="standard"></a>Standard
 
 Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
-- Sie werden nur mit der statischen Zuordnungsmethode zugewiesen.
+- Sie verwenden immer eine statische Zuordnungsmethode.
+- Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden und ausgehenden Datenfluss, das auf einen Wert zwischen vier und 66 Minuten (Standardwert: vier Minuten) festgelegt werden kann.
 - Sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie müssen zulässigen eingehenden Datenverkehr mithilfe einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) explizit in einer Whitelist angeben.
-- Sie werden Netzwerkschnittstellen, öffentlichen Standard-Lastenausgleichsmodulen, Anwendungsgateways oder VPN-Gateways zugewiesen. Weitere Informationen zum Azure Load Balancer des Typs „Standard“ finden Sie unter [Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-- Sie sind standardmäßig zonenredundant. Können in Zonen erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden. Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie werden Netzwerkschnittstellen, öffentlichen Standard Load Balancer-Instanzen, Anwendungsgateways oder VPN-Gateways zugewiesen. Weitere Informationen zu Standard Load Balancer finden Sie unter [Übersicht: Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- Sie sind standardmäßig zonenredundant und können optional zonengebunden sein. (Sie können also zonengebunden erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden.) Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
  
 > [!NOTE]
-> Die Kommunikation mit einer SKU-Standardressource schlägt fehl, bis Sie eine [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
+> Die eingehende Kommunikation mit einer SKU-Standardressource ist erst erfolgreich, wenn Sie eine [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) erstellen und zuordnen und den gewünschten eingehenden Datenverkehr explizit zulassen.
 
 ### <a name="allocation-method"></a>Zuordnungsmethode
 
@@ -127,10 +128,10 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 
 | Ressource der obersten Ebene | Zuordnung der IP-Adresse | Dynamisch | statischen |
 | --- | --- | --- | --- |
-| Virtueller Computer |Netzwerkschnittstelle |JA |JA |
-| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |JA |JA |
-| VPN-Gateway |Gateway-IP-Konfiguration |JA |JA |
-| Anwendungsgateway |Front-End-Konfiguration |JA |JA |
+| Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
+| Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
+| VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja |
+| Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.
@@ -175,9 +176,9 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine private
 
 | Ressource der obersten Ebene | Zuordnung der IP-Adresse | dynamisch | statischen |
 | --- | --- | --- | --- |
-| Virtueller Computer |Netzwerkschnittstelle |JA |JA |
-| Load Balancer |Front-End-Konfiguration |JA |JA |
-| Anwendungsgateway |Front-End-Konfiguration |JA |JA |
+| Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
+| Load Balancer |Front-End-Konfiguration |Ja |Ja |
+| Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
 
 ## <a name="limits"></a>Einschränkungen
 Die Grenzwerte für die IP-Adressierung finden Sie in den vollständigen Informationen zu [Grenzwerten für Netzwerke](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits) in Azure. Die Grenzwerte gelten pro Region und pro Abonnement. Sie können sich [an den Support wenden](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) , um die Standardgrenzwerte je nach Ihren Unternehmensanforderungen bis auf die maximalen Grenzwerte zu erhöhen.

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.openlocfilehash: 29fef9177e40bd89dd0f179b028d2f044af8addb
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: e33ec52a2546100a043a78f66c2232c3c1ad264e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821360"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage
 
@@ -30,7 +30,7 @@ In diesem Tutorial verwenden Sie das mit HDInsight Spark-Clustern verfügbare [J
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
 > [!NOTE]  
-> Sie müssen diesen Schritt nicht ausführen, wenn Sie den HDInsight-Cluster mit Data Lake Storage als Standardspeicher erstellt haben. Beim Clustererstellungsvorgang werden im Data Lake Storage-Konto, das Sie beim Erstellen des Clusters angeben, einige Beispieldaten hinzugefügt. Fahren Sie mit dem Abschnitt [Verwenden eines HDInsight Spark-Clusters mit Data Lake Storage](#use-an-hdinsight-spark-cluster-with-data-lake-store) fort.
+> Sie müssen diesen Schritt nicht ausführen, wenn Sie den HDInsight-Cluster mit Data Lake Storage als Standardspeicher erstellt haben. Beim Clustererstellungsvorgang werden im Data Lake Storage-Konto, das Sie beim Erstellen des Clusters angeben, einige Beispieldaten hinzugefügt. Fahren Sie mit dem Abschnitt „Verwenden eines HDInsight Spark-Clusters mit Data Lake Storage“ fort.
 
 Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speicher und Azure Storage Blob als Standardspeicher erstellt haben, sollten Sie zuerst einige Beispieldaten in das Data Lake Storage-Konto kopieren. Sie können die Beispieldaten aus dem Azure Storage Blob verwenden, die dem HDInsight-Cluster zugeordnet sind. Sie können hierfür das [AdlCopy-Tool](https://aka.ms/downloadadlcopy) verwenden. Laden Sie das Tool über den Link herunter, und installieren Sie es.
 

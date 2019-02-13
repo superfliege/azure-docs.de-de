@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 26b4e2b1bf2dc9e59bc41e1d9f0628a1f476d402
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: bd1278db43ba31ed78f13a826a330e16c3bc8d57
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031480"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820843"
 ---
 # <a name="front-door-routing-methods"></a>Datenverkehrsrouting in Azure Front Door Service
 
@@ -24,10 +24,10 @@ Azure Front Door Service unterstützt verschiedene Datenverkehrsrouting-Methoden
 
 In Azure Front Door Service stehen vier Hauptkonzepte für das Datenverkehrsrouting zur Verfügung:
 
-* **[Latenz](#latency):** Durch latenzbasiertes Routing wird sichergestellt, dass Anforderungen an diejenigen Back-Ends gesendet werden, die innerhalb eines akzeptablen Empfindlichkeitsbereichs die niedrigste Latenz aufweisen. Benutzeranforderungen werden auf diese Weise unter Berücksichtigung der Netzwerklatenz an die nächstgelegenen Back-Ends gesendet.
-* **[Priorität](#priority):** Sie können Ihren verschiedenen Back-Ends Prioritäten zuweisen, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden. Außerdem können Sie zusätzliche Back-Ends bereitstellen, falls das primäre Back-End oder die Ersatz-Back-Ends nicht verfügbar sind.
-* **[Gewichtung](#weighted):** Sie können Ihren verschiedenen Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr entweder gleichmäßig oder gemäß Gewichtungskoeffizienten auf eine Gruppe von Back-Ends verteilen möchten.
-* **[Sitzungsaffinität](#sessionaffinity):** Sie können für Ihre Front-End-Hosts oder -Domänen Sitzungsaffinität konfigurieren, wenn nachfolgende Anforderungen eines Benutzers an dasselbe Back-End gesendet werden sollen, solange die Benutzersitzung aktiv ist und die Back-End-Instanz nach Integritätstests weiterhin als fehlerfrei bewertet wird. 
+* **[Wartezeit](#latency):** Mit dem latenzbasierten Routing wird sichergestellt, dass Anforderungen an diejenigen Back-Ends gesendet werden, die innerhalb eines akzeptablen Empfindlichkeitsbereichs die niedrigste Latenz aufweisen. Benutzeranforderungen werden auf diese Weise unter Berücksichtigung der Netzwerklatenz an die nächstgelegenen Back-Ends gesendet.
+* **[Priorität:](#priority)** Sie können Ihren verschiedenen Back-Ends Prioritäten zuweisen, wenn Sie ein primäres Dienst-Back-End für den gesamten Datenverkehr verwenden. Außerdem können Sie zusätzliche Back-Ends bereitstellen, falls das primäre Back-End oder die Ersatz-Back-Ends nicht verfügbar sind.
+* **[Gewichtet:](#weighted)** Sie können Ihren verschiedenen Back-Ends Gewichtungen zuweisen, wenn Sie Datenverkehr entweder gleichmäßig oder gemäß Gewichtungskoeffizienten auf eine Gruppe von Back-Ends verteilen möchten.
+* **Sitzungsaffinität:** Sie können für Ihre Front-End-Hosts oder -Domänen Sitzungsaffinität konfigurieren, wenn nachfolgende Anforderungen eines Benutzers an dasselbe Back-End gesendet werden sollen, solange die Benutzersitzung aktiv ist und die Back-End-Instanz nach Integritätstests weiterhin als fehlerfrei bewertet wird. 
 
 Alle Azure Front Door Service-Konfigurationen schließen die Überwachung der Back-End-Integrität und ein automatisiertes, sofortiges und globales Failover ein. Weitere Informationen finden Sie unter [Überwachen von Azure Front Door Service-Back-Ends](front-door-health-probes.md). Azure Front Door Service kann so konfiguriert werden, dass eine einzelne oder bei entsprechenden Anwendungsanforderungen mehrere Routingmethoden in Kombination verwendet werden, um eine optimale Routingtopologie zu erstellen.
 
@@ -62,13 +62,13 @@ Bei der gewichteten Methode für das Datenverkehrsrouting wird der Datenverkehr 
 
 Bei der Methode für Datenverkehrsrouting auf Grundlage von Gewichtungen weisen Sie in der Azure Front Door Service-Konfiguration Ihres Back-End-Pools jedem Back-End eine Gewichtung zu. Die Gewichtung ist eine Ganzzahl zwischen 1 und 1000. Als Standardgewichtung für den Parameter wird 50 verwendet.
 
-Für Back-Ends, die sich innerhalb des festgelegten zulässigen Empfindlichkeitsbereichs für die Latenz befinden und daher verfügbar sind, wird der Datenverkehr mit dem Roundrobinverfahren entsprechend der angegebenen Gewichtungen verteilt. Wenn für die Latenzempfindlichkeit ein Wert von 0 Millisekunden festgelegt ist, wird diese Eigenschaft nur dann berücksichtigt, wenn die Netzwerklatenz für zwei Back-Ends gleich ist. 
+Für Back-Ends, die sich innerhalb des festgelegten zulässigen Empfindlichkeitsbereichs für die Latenz befinden und daher verfügbar sind, wird der Datenverkehr mit dem Roundrobinverfahren entsprechend den angegebenen Gewichtungen verteilt. Wenn für die Latenzempfindlichkeit ein Wert von 0 Millisekunden festgelegt ist, wird diese Eigenschaft nur dann berücksichtigt, wenn die Netzwerklatenz für zwei Back-Ends gleich ist. 
 
 Durch die gewichtete Methode werden einige nützliche Szenarios ermöglicht:
 
-* **Allmähliches Anwendungsupgrade:** Legen Sie für den Datenverkehr einen Prozentwert fest, damit nur ein Teil des Datenverkehrs an ein neues Back-End weitergeleitet wird, und erhöhen Sie den Datenverkehr dann im Lauf der Zeit allmählich, bis dessen Umfang dem anderer Back-Ends entspricht.
-* **Anwendungsmigration zu Azure:** Erstellen Sie einen Back-End-Pool mit Azure-Endpunkten und externen Endpunkten. Passen Sie dabei die Gewichtung der Back-Ends so an, dass neue Back-Ends priorisiert werden. Sie können diese Änderungen schrittweise einführen, in dem Sie zuerst neue Back-Ends deaktivieren, ihnen anschließend die niedrigsten Gewichtungen zuweisen und die Werte dann langsam erhöhen, bis die Back-Ends den größten Teil des Datenverkehrs übernehmen. Abschließend deaktivieren Sie die weniger bevorzugten Back-Ends und entfernen diese aus dem Pool.  
-* **Cloudbursting für zusätzliche Kapazität:** Stellen Sie in kurzer Zeit für eine lokale Bereitstellung zusätzliche Ressourcen in der Cloud zur Verfügung, indem Sie Azure Front Door Service verwenden. Wenn Sie zusätzliche Kapazität in der Cloud benötigen, können Sie weitere Back-Ends hinzufügen oder aktivieren und dabei angeben, welcher Teil des Datenverkehrs an das jeweilige Back-End gesendet wird.
+* **Allmähliches Anwendungsupgrade**: Legen Sie für den Datenverkehr einen Prozentwert fest, damit nur ein Teil des Datenverkehrs an ein neues Back-End weitergeleitet wird, und erhöhen Sie den Datenverkehr dann im Lauf der Zeit allmählich, bis dessen Umfang dem anderer Back-Ends entspricht.
+* **Anwendungsmigration zu Azure**: Erstellen Sie einen Back-End-Pool mit Azure-Endpunkten und externen Endpunkten. Passen Sie dabei die Gewichtung der Back-Ends so an, dass neue Back-Ends priorisiert werden. Sie können diese Änderungen schrittweise einführen, in dem Sie zuerst neue Back-Ends deaktivieren, ihnen anschließend die niedrigsten Gewichtungen zuweisen und die Werte dann langsam erhöhen, bis die Back-Ends den größten Teil des Datenverkehrs übernehmen. Abschließend deaktivieren Sie die weniger bevorzugten Back-Ends und entfernen diese aus dem Pool.  
+* **Cloudbursting für zusätzliche Kapazität**: Erweitern Sie eine lokale Bereitstellung schnell in die Cloud, indem Sie sie hinter Front Door zur Verfügung stellen. Wenn Sie zusätzliche Kapazität in der Cloud benötigen, können Sie weitere Back-Ends hinzufügen oder aktivieren und dabei angeben, welcher Teil des Datenverkehrs an das jeweilige Back-End gesendet wird.
 
 ## <a name = "affinity"></a>Sitzungsaffinität
 Ohne Sitzungsaffinität leitet Azure Front Door Service auf Grundlage der Lastenausgleichskonfiguration Anforderungen eines Clients an unterschiedliche Back-Ends weiter. Dies gilt insbesondere dann, wenn sich die Latenzen für unterschiedliche Back-Ends ändern oder unterschiedliche Anforderungen eines Benutzers bei einer anderen Azure Front Door Service-Umgebung eintreffen. In einigen zustandsbehafteten Anwendungen oder in bestimmten anderen Szenarios wird jedoch bevorzugt, dass nachfolgende Anforderungen eines Benutzers immer an demselben Back-End eintreffen, das die ursprüngliche Anforderung verarbeitet hat. Die cookiebasierte Sitzungsaffinität ist ein hilfreiches Feature, mit dem eine Benutzersitzung auf demselben Back-End fortgesetzt werden kann. Mithilfe von Cookies, die von Azure Front Door Service verwaltet werden, kann nachfolgender Datenverkehr einer Benutzersitzung an dasselbe Back-End weitergeleitet und verarbeitet werden, solange die Integrität des Back-Ends gewährleistet und die Benutzersitzung aktiv ist. 
@@ -86,5 +86,5 @@ Die Lebensdauer des Cookies ist identisch mit derjenigen der Benutzersitzung, da
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Erstellen einer Front Door-Instanz](quickstart-create-front-door.md).
+- Erfahren Sie mehr über das [Erstellen einer Azure Front Door Service-Konfiguration](quickstart-create-front-door.md).
 - Informieren Sie sich über die [Funktionsweise von Azure Front Door Service](front-door-routing-architecture.md).

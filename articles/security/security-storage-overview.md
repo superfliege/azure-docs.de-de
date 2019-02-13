@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/29/2018
+ms.date: 02/01/2019
 ms.author: terrylan
-ms.openlocfilehash: 55686972979c5ac3015802c340cef7dffebdb9bd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 8330b63f218108930c5eb66eaa6c8ff6dca67316
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973127"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694267"
 ---
 # <a name="azure-storage-security-overview"></a>Übersicht über die Sicherheit von Azure Storage
 
@@ -47,7 +47,7 @@ Weitere Informationen:
 
 ## <a name="delegated-access-to-storage-objects"></a>Delegierter Zugriff auf Speicherobjekte
 
-Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben. 
+Shared Access Signatures bieten delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen. Dazu müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
 
 Die SAS ist ein URI, dessen Abfrageparameter alle erforderlichen Informationen für den authentifizierten Zugriff auf eine Speicherressource enthalten. Für den Zugriff auf Speicherressourcen mit der SAS braucht der Client diese nur an den entsprechenden Konstruktor bzw. die entsprechende Methode zu übergeben.
 
@@ -73,7 +73,7 @@ Weitere Informationen zur clientseitigen Verschlüsselung finden Sie hier:
 
 Für viele Organisationen ist die Verschlüsselung [ruhender Daten](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ein obligatorischer Schritt in Richtung Datenschutz, Konformität und Datenhoheit. Drei Azure-Features ermöglichen die Verschlüsselung ruhender Daten:
 
-* Mit der [Speicherdienstverschlüsselung](../storage/common/storage-security-guide.md#encryption-at-rest) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
+* Die [Speicherdienstverschlüsselung](../storage/common/storage-security-guide.md#encryption-at-rest) ist immer aktiviert und verschlüsselt beim Schreiben in Azure Storage automatisch Daten des Speicherdiensts.
 * Die [clientseitige Verschlüsselung](../storage/common/storage-security-guide.md#client-side-encryption) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
 * Mit [Azure Disk Encryption](../storage/common/storage-security-guide.md#using-azure-disk-encryption-to-encrypt-disks-used-by-your-virtual-machines) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
@@ -114,9 +114,9 @@ Weitere Informationen:
 
 ## <a name="advanced-threat-protection"></a>Erweiterter Schutz vor Bedrohungen
 
-Azure Storage bietet Advanced Threat Protection, um intelligente Sicherheitsfunktionen zu nutzen, die ungewöhnliche und möglicherweise schädliche Versuche zu ermitteln, auf Ihr Speicherkonto zuzugreifen oder dieses unbefugt zu nutzen. Advanced Threat Protection überwacht die Azure Storage-Diagnoseprotokolle auf verdächtige Lese-, Schreib- oder Löschanforderungen in Blob Storage. 
+Azure Storage bietet Advanced Threat Protection, um intelligente Sicherheitsfunktionen zu nutzen, die ungewöhnliche und möglicherweise schädliche Versuche zu ermitteln, auf Ihr Speicherkonto zuzugreifen oder dieses unbefugt zu nutzen. Advanced Threat Protection überwacht die Azure Storage-Diagnoseprotokolle auf verdächtige Lese-, Schreib- oder Löschanforderungen in Blob Storage.
 
-Warnungen von Advanced Threat Protection können im [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden. Das Azure Security Center zeigt Details zu allen ermittelten verdächtigen Aktivitäten an und empfiehlt Aktionen zur Untersuchung und Beseitigung der potenziellen Bedrohung. 
+Warnungen von Advanced Threat Protection können im [Azure Security Center](https://azure.microsoft.com/services/security-center/) angezeigt werden. Das Azure Security Center zeigt Details zu allen ermittelten verdächtigen Aktivitäten an und empfiehlt Aktionen zur Untersuchung und Beseitigung der potenziellen Bedrohung.
 
 Weitere Informationen:
 

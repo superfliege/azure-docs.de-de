@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 4df96d0c3d1ec9cb64f2394fb97d46178906d916
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: b1fc52ac46a6cdb73b9210833e437765398781ef
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434816"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819126"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Verwalten von HDInsight-Clustern mit dem Enterprise-Sicherheitspaket
 Lernen Sie die Benutzer und Rollen im Enterprise-Sicherheitspaket (Enterprise Security Package, ESP) von HDInsight kennen, und erfahren Sie, wie ESP-Cluster verwaltet werden.
@@ -215,7 +215,7 @@ Das HDInsight-ESP hat die folgenden Rollen:
 6. Klicken Sie auf **Add User** (Benutzer hinzufügen) oder **Add Group** (Gruppe hinzufügen), und geben Sie dann die Benutzer oder Gruppen an, die Hive-Ansichten verwenden können.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurieren von Benutzern für die Rollen
- Eine Liste der Rollen und der zugehörigen Berechtigungen finden Sie unter [Rollen von HDInsight-Clustern mit Enterprise-Sicherheitspaket](#roles-of-domain---joined-hdinsight-clusters).
+ Eine Liste der Rollen und der zugehörigen Berechtigungen finden Sie unter „Rollen von HDInsight-Clustern mit Enterprise-Sicherheitspaket“.
 
 1. Öffnen Sie die Ambari-Verwaltungsoberfläche.  Informationen hierzu finden Sie unter [Öffnen der Ambari-Verwaltungsoberfläche](#open-the-ambari-management-ui).
 2. Klicken Sie im linken Menü auf **Roles** (Rollen).

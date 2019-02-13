@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: be3f8ddaf9788eb9023ffc2caf2e0d6aeb49bdba
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
+ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712057"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55701011"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Erstellen erweiterter Zeitpläne und Serien für Aufträge in Microsoft Azure Scheduler
 
@@ -24,13 +24,13 @@ ms.locfileid: "51712057"
 
 In einem [Azure Scheduler](../scheduler/scheduler-intro.md)-Auftrag bestimmt der Zeitplan, wann und wie der Scheduler-Dienst den Auftrag ausführt. Mit Scheduler können Sie mehrere einmalige Zeitpläne und Zeitplanserien für einen Auftrag einrichten. Einmalige Zeitpläne werden nur einmal zu einem festgelegten Zeitpunkt ausgeführt und sind im Grunde Zeitplanserien, die nur einmal ausgeführt werden. Zeitplanserien werden mit einer festgelegten Häufigkeit ausgeführt. Aufgrund dieser Flexibilität kann Scheduler für eine Vielzahl von Geschäftsszenarien verwendet werden, beispielsweise:
 
-* **Regelmäßige Bereinigung von Daten**: Erstellen Sie einen täglichen Auftrag, der alle Tweets löscht, die älter als drei Monate sind.
+* **Daten regelmäßig bereinigen**: Erstellen Sie einen täglichen Auftrag, der alle Tweets löscht, die älter als drei Monate sind.
 
-* **Archivierung von Daten**: Erstellen Sie einen monatlichen Auftrag, der Ihren Rechnungsverlauf in einen Sicherungsdienst pusht.
+* **Daten archivieren**: Erstellen Sie einen monatlichen Auftrag, der Ihren Rechnungsverlauf in einen Sicherungsdienst pusht.
 
-* **Anforderung von externen Daten**: Erstellen Sie einen Auftrag, der alle 15 Minuten ausgeführt wird und einen neuen Wetterbericht von NOAA pullt.
+* **Externe Daten anfordern**: Erstellen Sie einen Auftrag, der alle 15 Minuten ausgeführt wird und einen neuen Wetterbericht von NOAA pullt.
 
-* **Bearbeitung von Bildern**: Erstellen Sie einen wöchentlichen Auftrag, der außerhalb der Spitzenzeiten ausgeführt wird und Cloud Computing nutzt, um im Laufe des Tags hochgeladene Bilder zu komprimieren.
+* **Bilder verarbeiten**: Erstellen Sie einen wöchentlichen Auftrag, der außerhalb der Spitzenzeiten ausgeführt wird und Cloud Computing nutzt, um im Laufe des Tags hochgeladene Bilder zu komprimieren.
 
 In diesem Artikel werden Beispielaufträge beschrieben, die Sie mit Scheduler und der [Azure Scheduler-REST-API](/rest/api/scheduler) erstellen können. Zudem finden Sie hier die JSON-Definition (JavaScript Object Notation) für jeden Zeitplan. 
 
@@ -53,9 +53,9 @@ Die oben genannten Szenarien werden in diesem Artikel an späterer Stelle ausfü
 
 Führen Sie die folgenden Schritte aus, um einen einfachen Zeitplan mit der [Azure Scheduler-REST-API](/rest/api/scheduler) zu erstellen:
 
-1. Registrieren Sie Ihr Azure-Abonnement mit dem [Registrierungsvorgang der Resource Manager-REST-API](https://docs.microsoft.com/rest/api/resources/providers#Providers_Register) bei einem Ressourcenanbieter. Der Anbietername für den Azure Scheduler-Dienst ist **Microsoft.Scheduler**. 
+1. Registrieren Sie Ihr Azure-Abonnement mit dem [Registrierungsvorgang der Resource Manager-REST-API](https://docs.microsoft.com/rest/api/resources/providers) bei einem Ressourcenanbieter. Der Anbietername für den Azure Scheduler-Dienst ist **Microsoft.Scheduler**. 
 
-1. Erstellen Sie eine Auftragssammlung mit dem [Erstellungs- oder Aktualisierungsvorgang für Auftragssammlungen](https://docs.microsoft.com/rest/api/scheduler/jobcollections#JobCollections_CreateOrUpdate) in der Scheduler-REST-API. 
+1. Erstellen Sie eine Auftragssammlung mit dem [Erstellungs- oder Aktualisierungsvorgang für Auftragssammlungen](https://docs.microsoft.com/rest/api/scheduler/jobcollections) in der Scheduler-REST-API. 
 
 1. Erstellen Sie einen Auftrag mit dem [Erstellungs- oder Aktualisierungsvorgang für Aufträge](https://docs.microsoft.com/rest/api/scheduler/jobs/createorupdate). 
 
@@ -67,7 +67,7 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 |---------|----------|-------------|
 | **startTime** | Nein  | Ein DateTime-Zeichenfolgenwert im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601), der angibt, wann der Auftrag in einem einfachen Zeitplan erstmals gestartet wird. <p>Bei komplexen Zeitplänen wird der Auftrag frühestens bei **startTime** gestartet. | 
 | **recurrence** | Nein  | Die Wiederholungsregeln für die Ausführung des Auftrags. Das **recurrence**-Objekt unterstützt die folgenden Elemente: **frequency**, **interval**, **schedule**, **count** und **endTime**. <p>Wenn Sie das **recurrence**-Element verwenden, müssen Sie auch das **frequency**-Element verwenden. Andere **recurrence**-Elemente sind dagegen optional. |
-| **frequency** | Ja, bei Verwendung von **recurrence** | Die Zeiteinheit zwischen den Ausführungen. Unterstützt werden folgende Werte: „Minute“, „Hour“, „Day“, „Week“, „Month“ und „Year“. | 
+| **frequency** | Ja, bei Verwendung von **recurrence** | Die Zeiteinheit zwischen den Ausführungen. Unterstützt werden folgende Werte: „Minute“, „Hour“, „Day“, „Week“, „Month“ und „Year“ | 
 | **interval** | Nein  | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den Ausführungen basierend auf dem Wert von **frequency** bestimmt. <p>Ist **interval** beispielsweise auf 10 und **frequency** auf „Week“ festgelegt, wird der Auftrag alle zehn Wochen ausgeführt. <p>Hier lautet die höchste Anzahl von Intervallen für jede Häufigkeit wie folgt: <p>- 18 Monate <br>- 78 Wochen <br>- 548 Tage <br>- Für Stunden und Minuten ist der Bereich 1 <= <*Intervall*> <= 1.000. | 
 | **schedule** | Nein  | Definiert Änderungen an der Serie auf Grundlage der angegebenen Minutenmarkierungen, Stundenmarkierungen, Wochentage und Tage des Monats. | 
 | **count** | Nein  | Eine positive ganze Zahl, die angibt, wie oft dieser Auftrag ausgeführt wird, bevor er abgeschlossen ist. <p>Wenn beispielsweise für einen täglichen Auftrag **count** auf 7 festgelegt und das Startdatum Montag ist, wird der Auftrag Sonntag abgeschlossen. Liegt das Startdatum in der Vergangenheit, wird die erste Ausführung auf Grundlage des Erstellungszeitpunkts berechnet. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 

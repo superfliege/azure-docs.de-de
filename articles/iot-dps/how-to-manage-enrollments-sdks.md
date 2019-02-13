@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 9a68d928c70e1e233f6de7df13441a1f688f456a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 1c7fa798c2e767aa6a21b3c56da6f69b4d3a1406
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34629846"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732348"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-device-provisioning-service-sdks"></a>Gewusst wie: Verwalten von Geräteregistrierungen mit Azure Device Provisioning Service-SDKs
 Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts oder einer Gruppe von Geräten, die sich jederzeit beim Device Provisioning-Dienst registrieren können. Der Registrierungsdatensatz enthält die erste gewünschte Konfiguration für die Geräte im Rahmen dieser Registrierung, einschließlich des gewünschten IoT Hubs. In diesem Artikel wird erläutert, wie Geräteregistrierungen für Ihren Bereitstellungsdienst programmgesteuert mithilfe von Azure IoT Provisioning Service-SDKs verwaltet werden.  Die SDKs sind auf GitHub im gleichen Repository wie Azure IoT-SDKs verfügbar.
@@ -22,11 +22,11 @@ Eine *Geräteregistrierung* erstellt einen Datensatz eines einzelnen Geräts ode
 * Rufen Sie die Verbindungszeichenfolge für die Device Provisioning-Dienstinstanz ab.
 * Rufen Sie die Gerätesicherheitsartefakte für den [Nachweismechanismus](concepts-security.md#attestation-mechanism) ab:
     * [**Trusted Platform Module (TPM)**](/azure/iot-dps/concepts-security#trusted-platform-module):
-        * Individuelle Registrierung: Registrierungs-ID und TPM Endorsement Key eines physischen Geräts oder TPM-Simulators
+        * Individuelle Registrierung: Registrierungs-ID und TPM Endorsement Key eines physischen Geräts oder TPM-Simulators.
         * Die Registrierungsgruppe gilt nicht als TPM-Nachweis.
     * [**X.509**](/azure/iot-dps/concepts-security):
-        * Individuelle Registrierung: Das [untergeordnetes Zertifikat](/azure/iot-dps/concepts-security#leaf-certificate) eines physischen Geräts oder des SDK-[DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)-Emulators.
-        * Registrierungsgruppe: [ZS-/Stammzertifikat](/azure/iot-dps/concepts-security#root-certificate) oder [Zwischenzertifikat](/azure/iot-dps/concepts-security#intermediate-certificate) zum Generieren eines Gerätezertifikats auf einem physischen Gerät.  Dieses kann auch über den SDK-DICE-Emulator generiert werden.
+        * Individuelle Registrierung: Das [untergeordnete Zertifikat](/azure/iot-dps/concepts-security) eines physischen Geräts oder des SDK [ DICE](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/)-Emulators.
+        * Registrierungsgruppe: Das [ZS-/Stammzertifikat](/azure/iot-dps/concepts-security#root-certificate) oder das [Zwischenzertifikat](/azure/iot-dps/concepts-security#intermediate-certificate) zum Generieren eines Gerätezertifikats auf einem physischen Gerät.  Dieses kann auch über den SDK-DICE-Emulator generiert werden.
 * Die genauen API-Aufrufe können aufgrund von Sprachunterschieden voneinander abweichen. Überprüfen Sie die Beispiele, die wir auf GitHub als weitergehende Informationsquelle bereitstellen:
    * [Java Provisioning Service Client samples (Beispiele für den Bereitstellungsdienstclient für Java)](https://github.com/Azure/azure-iot-sdk-java/tree/master/provisioning/provisioning-samples)
    * [Node.js Provisioning Service Client samples (Beispiele für den Bereitstellungsdienstclient für Node.js)](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service/samples)
@@ -48,7 +48,7 @@ Sie haben zwei Möglichkeiten, Ihre Geräte beim Bereitstellungsdienst zu regist
     Anhand des folgenden Workflows können Sie eine individuelle Registrierung mit den SDKs erstellen:
     
     1. Wählen Sie Ihren ```attestation```-Mechanismus aus, d.h. TPM oder X.509.
-        1. **TPM**: Mit dem Endorsement Key eines physischen Geräts oder TPM-Simulators als Eingabe können Sie die Dienst-SDK-API ```TpmAttestation``` zum Erstellen eines Nachweis für die Registrierung aufrufen. 
+        1. **TPM**: Mit dem Endorsement Key eines physischen Geräts oder TPM-Simulators als Eingabe können Sie die Dienst-SDK-API ```TpmAttestation``` zum Erstellen eines Nachweises für die Registrierung aufrufen. 
         2. **X.509**: Mit dem Clientzertifikat als Eingabe können Sie die Dienst-SDK-API ```X509Attestation.createFromClientCertificate``` zum Erstellen eines Nachweises für die Registrierung aufrufen.
     2. Erstellen Sie mithilfe von ```attestation``` und einer eindeutigen ```registrationId``` als Eingabe eine neue ```IndividualEnrollment```-Variable, die sich auf Ihrem Gerät befindet oder über den TPM-Simulator generiert wurde.  Optional können Sie Parameter wie ```Device ID```, ```IoTHubHostName``` und ```ProvisioningStatus``` festlegen.
     3. Rufen Sie mit ```IndividualEnrollment``` die Dienst-SDK-API ```createOrUpdateIndividualEnrollment``` in Ihrer Back-End-Anwendung auf, um eine individuelle Registrierung zu erstellen.

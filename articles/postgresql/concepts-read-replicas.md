@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/23/2019
-ms.openlocfilehash: 9270c3290bd7be0bbb79d30aff8becc04dcfc603
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/01/2019
+ms.openlocfilehash: 270231b2ad7d94789595cfa4e681cf6c2b0f0541
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54903994"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657874"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Lesereplikate in Azure Database for PostgreSQL
 
@@ -21,6 +21,8 @@ ms.locfileid: "54903994"
 Mit dem Feature für Lesereplikate können Sie Daten von einem Azure Database for PostgreSQL-Server (Masterserver) auf bis zu fünf schreibgeschützte Server (Lesereplikate) in derselben Azure-Region replizieren. Lesereplikate werden mithilfe der nativen Replikationstechnologie der PostgreSQL-Engine asynchron aktualisiert.
 
 Replikate sind neue Server, die auf ähnliche Weise verwaltet werden können wie normale eigenständige Azure Database for PostgreSQL-Server. Für jedes Lesereplikat werden Ihnen die bereitgestellten Computeressourcen in Form von virtuellen Kernen und der bereitgestellte Speicher in GB/Monat in Rechnung gestellt.
+
+Besuchen Sie die [Seite mit Informationen zum Erstellen und Verwalten von Replikaten](howto-read-replicas-portal.md).
 
 ## <a name="when-to-use-read-replicas"></a>Einsatz von Lesereplikaten
 Das Feature für Lesereplikate ist dafür konzipiert, die Leistung und Skalierung von leseintensiven Workloads zu verbessern. Die Leseworkloads können beispielsweise in den Replikaten isoliert werden, während Schreibworkloads an den Masterserver weitergeleitet werden.
@@ -56,7 +58,7 @@ psql -h myreplica.postgres.database.azure.com -U myadmin@myreplica -d postgres
 An der Eingabeaufforderung geben Sie dann das Kennwort für das Benutzerkonto ein.
 
 ## <a name="monitoring-replication"></a>Überwachen der Replikation
-In Azure Monitor ist eine Metrik **Max Lag across Replicas** (Maximale Verzögerung auf Replikaten) verfügbar. Diese Metrik steht nur auf dem Masterserver zur Verfügung. Die Metrik zeigt die Verzögerungszeit zwischen dem Masterserver und dem Replikat mit der größten Verzögerung. 
+In Azure Monitor ist eine Metrik **Max Lag across Replicas** (Maximale Verzögerung auf Replikaten) verfügbar. Diese Metrik steht nur auf dem Masterserver zur Verfügung. Die Metrik zeigt die Verzögerung in Bytes zwischen dem Masterserver und dem Replikat mit der größten Verzögerung. 
 
 Zudem ist in Azure Monitor eine Metrik **Replica Lag** (Replikatverzögerung) verfügbar. Diese Metrik steht nur für Replikate zur Verfügung. 
 
@@ -101,7 +103,7 @@ Stellen Sie vor dem Beenden der Replikation sicher, dass das Replikat alle erfor
 Der Parameter **azure.replication_support** muss auf dem Masterserver auf REPLICA festgelegt werden, bevor Sie ein Replikat erstellen können. Damit die Änderung dieses Parameters wirksam wird, ist ein Neustart des Servers erforderlich. Dieser Parameter gilt nur für die Tarife „Universell“ und „Arbeitsspeicheroptimiert“.
 
 ### <a name="stopped-replicas"></a>Beendete Replikate
-Wenn Sie die Replikation zwischen einem Masterserver und einem Replikat beenden, wird der Replikatserver neu gestartet, um diese Änderungen anzuwenden. Der Server kann danach nicht wieder in ein Replikat umgewandelt werden.
+Wenn Sie die Replikation zwischen einem Masterserver und einem Replikat beenden, wird der Replikatserver neu gestartet, um diese Änderungen anzuwenden. Das Replikat wird dann zu einem Server mit Lese-/Schreibzugriff. Der Server kann danach nicht wieder in ein Replikat umgewandelt werden.
 
 ### <a name="replicas-are-new-servers"></a>Replikate sind neue Server
 Replikate werden als neue Azure Database for PostgreSQL-Server erstellt. Vorhandene Server können nicht in Replikate umgewandelt werden.

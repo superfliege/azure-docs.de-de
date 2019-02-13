@@ -4,17 +4,17 @@ description: Die Azure Policy-Definition hat verschiedene Auswirkungen, mit dene
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 68abb5fd95823941bdb5d87d7ebc6675b0760850
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912508"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562299"
 ---
 # <a name="understand-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
 
@@ -50,7 +50,7 @@ Diese Auswirkung ist in Testsituationen oder nach dem Parametrisieren der Auswir
 
 ### <a name="append-evaluation"></a>Auswertung von „append“
 
-Die Auswertung von „append“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab.
+Die Auswertung von „append“ erfolgt vor der Anforderungsverarbeitung durch einen Ressourcenanbieter während der Erstellung oder Aktualisierung einer Ressource. Mit „append“ werden Felder zur Ressource hinzugefügt, wenn die **if**-Bedingung der Richtlinienregel erfüllt ist. Wenn die Auswirkung „append“ einen Wert in der ursprünglichen Anforderung mit einem anderen Wert überschreiben würde, fungiert sie als Auswirkung „deny“ und lehnt die Anforderung ab. Um einen neuen Wert an ein vorhandenes Array anzufügen, verwenden Sie die **[\*]**-Version des Alias.
 
 Wenn eine Richtliniendefinition mit Auswirkung „append“ im Rahmen eines Auswertungszyklus ausgeführt wird, werden keine Änderungen an bereits vorhandenen Ressourcen durchgeführt. Stattdessen werden alle Ressourcen mit Erfüllung der **if**-Bedingung als nicht konform markiert.
 
@@ -89,7 +89,8 @@ Beispiel 2: Zwei **field/value**-Paare zum Anfügen einer Gruppe von Tags.
 }
 ```
 
-Beispiel 3: Einzelnes **field/value**-Paar mit einem [Alias](definition-structure.md#aliases), in dem das **value**-Array IP-Regeln für ein Speicherkonto festlegt.
+Beispiel 3: Einzelnes **field/value**-Paar, das einen Nicht-**[\*]**
+[-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Wenn der Nicht-**[\*]**-Alias ein Array ist, wird der **value** durch den Effekt als gesamtes Array angefügt. Wenn das Array bereits vorhanden ist, wird durch den Konflikt ein deny-Ereignis ausgelöst.
 
 ```json
 "then": {
@@ -100,6 +101,21 @@ Beispiel 3: Einzelnes **field/value**-Paar mit einem [Alias](definition-structu
             "action": "Allow",
             "value": "134.5.0.0/21"
         }]
+    }]
+}
+```
+
+Beispiel 4: Einzelnes **field/value**-Paar, das einen **[\*]** [-Alias](definition-structure.md#aliases) mit einem Array-**value** verwendet, um IP-Regeln für ein Speicherkonto festzulegen. Durch die Verwendung des **[\*]**-Alias fügt der Effekt den **value** an ein Array an, das möglicherweise bereits vorhanden ist. Wenn das Array noch nicht vorhanden ist, wird es erstellt.
+
+```json
+"then": {
+    "effect": "append",
+    "details": [{
+        "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]",
+        "value": {
+            "value": "40.40.40.40",
+            "action": "Allow"
+        }
     }]
 }
 ```
@@ -259,7 +275,7 @@ Die **details**-Eigenschaft der Auswirkung „AuditIfNotExists“ umfasst die fo
   - Diese Eigenschaft muss ein Array von Zeichenfolgen enthalten, das mit der Rollen-ID der rollenbasierten Zugriffssteuerung übereinstimmt, auf die das Abonnement zugreifen kann. Weitere Informationen finden Sie unter [Korrigieren nicht konformer Ressourcen](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (optional)
   - Zulässige Werte sind _Subscription_ und _ResourceGroup_.
-  - Legt den Bereitstellungstyp fest, der ausgeführt werden soll. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
+  - Legt den Typ der auszulösenden Bereitstellung fest. Mit _Subscription_ wird eine [Bereitstellung auf Abonnementebene](../../../azure-resource-manager/deploy-to-subscription.md) und mit _ResourceGroup_ eine Bereitstellung in einer Ressourcengruppe angegeben.
   - Bei der Bereitstellung auf Abonnementebene muss in _Deployment_ eine _location_-Eigenschaft angegeben werden.
   - Die Standardeinstellung ist _ResourceGroup_.
 - **Deployment** [erforderlich]

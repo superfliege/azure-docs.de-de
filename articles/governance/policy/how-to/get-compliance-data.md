@@ -4,17 +4,17 @@ description: Azure Policy-Auswertungen und -Effekte bestimmen die Konformität. 
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cc5d59d523f87cac6ec8533d6af1342c58ba45f7
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9fc22e35b2e435b6452f0f36c34687a15bee39c2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853628"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766409"
 ---
 # <a name="getting-compliance-data"></a>Abrufen von Konformitätsdaten
 
@@ -45,6 +45,8 @@ Auswertungen zugewiesener Richtlinien und Initiativen geschehen im Zuge untersch
 - Eine Ressource wird in einem Bereich mit einer Zuweisung über den Ressourcen-Manager, REST, Azure CLI oder Azure PowerShell bereitgestellt. In diesem Szenario werden nach etwa 15 Minuten die Informationen über das betroffene Ereignis (Anfügen, Überwachen, Verweigern, Bereitstellen) und den Konformitätsstatus für die jeweilige Ressource im Portal und den SDKs verfügbar. Dieses Ereignis löst keine Auswertung anderer Ressourcen aus.
 
 - Standard-Konformitätsauswertungszyklus. Zuweisungen werden alle 24 Stunden automatisch neu ausgewertet. Eine große Richtlinie oder Initiative mit vielen Ressourcen kann einige Zeit in Anspruch nehmen. Es kann leider keine exakte Dauer des Auswertungszyklus angegeben werden. Sobald er abgeschlossen ist, sind aktualisierte Konformitätsergebnisse im Portal und den SDKs verfügbar.
+
+- Der Ressourcenanbieter für die [Gastkonfiguration](../concepts/guest-configuration.md) wird von einer verwalteten Ressource mit Konformitätsdetails aktualisiert.
 
 - Bedarfsgesteuerter Scan
 
@@ -139,6 +141,26 @@ Ereignisse (Anfügung, Überwachung, Verweigerung, Bereitstellung), die durch di
 Klicken Sie mit der rechten Maustaste auf die Zeile des Ereignisses, über das Sie gern mehr Details erhalten möchten, und wählen Sie **Aktivitätsprotokolle anzeigen** aus. Die Seite des Aktivitätsprotokolls wird geöffnet und wird durch die Suche gefiltert. Die Details für die Zuweisung und Ereignisse werden angezeigt. Das Aktivitätsprotokoll stellt zusätzlichen Kontext sowie Informationen über diese Ereignisse bereit.
 
 ![Aktivitätsprotokoll der Richtlinienkonformität](../media/getting-compliance-data/compliance-activitylog.png)
+
+### <a name="change-history-preview"></a>Änderungsverlauf (Vorschau)
+
+Im Rahmen einer neuen **Public Preview** sind die letzten 14 Tage des Änderungsverlaufs für eine nicht konforme Ressource verfügbar. Der Änderungsverlauf enthält Details dazu, wann eine Änderung erkannt wurde, und eine _Visual Diff_ jeder Änderung. Eine Änderungserkennung wird ausgelöst, wenn Ressourcen-Manager-Eigenschaften einer nicht konformen Ressource hinzugefügt, entfernt oder geändert werden.
+
+1. Starten Sie den Azure Policy-Dienst über das Azure-Portal, indem Sie auf **Alle Dienste** klicken und dann nach **Richtlinie** suchen und die entsprechende Option auswählen.
+
+1. Wählen Sie auf der Seite **Übersicht** oder **Konformität** eine Richtlinie aus, die _nicht konform_ ist.
+
+1. Wählen Sie auf der Seite **Richtlinienkompatibilität** auf der Registerkarte **Ressourcenkonformität** eine Ressource aus, die _nicht konform_ ist.
+
+1. Wählen Sie auf der Seite **Ressourcenkonformität** die Registerkarte **Änderungsverlauf (Vorschau)** aus. Eine Liste der erkannten Änderungen, falls vorhanden, wird angezeigt.
+
+   ![Änderungsverlauf für Richtlinien – Registerkarte](../media/getting-compliance-data/change-history-tab.png)
+
+1. Wählen Sie eine der erkannten Änderungen aus. Die _Visual Diff_ für die nicht konforme Ressource wird auf der Seite **Änderungsverlauf** angezeigt.
+
+   ![Änderungsverlauf für Richtlinien – Visual Diff](../media/getting-compliance-data/change-history-visual-diff.png)
+
+Die _Visual Diff_ hilft, Änderungen an einer Ressource zu identifizieren. Die erkannten Änderungen haben u. U. keinen Bezug zur Ursache, die dazu geführt hat, dass die Ressource nicht mit der ausgewählten Richtlinie konform ist.
 
 ## <a name="command-line"></a>Befehlszeile
 

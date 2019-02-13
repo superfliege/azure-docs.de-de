@@ -13,18 +13,18 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: fa17b2bb440f574f63349c5bb51573725aa45876
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191532"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697055"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
 In diesem Artikel werden die Vorgänge aufgeführt, die jedem Azure Resource Manager-Ressourcenanbieter zur Verfügung stehen. Die Vorgänge können in [benutzerdefinierten Rollen](custom-roles.md) verwendet werden, um eine präzise [rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC)](overview.md) für Ressourcen in Azure bereitzustellen. Die Vorgangszeichenfolgen weisen folgendes Format auf: `{Company}.{ProviderName}/{resourceType}/{action}`
 
-Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
+Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwenden Sie [Get-AzProviderOperation](/powershell/module/az.resources/get-azprovideroperation) oder [az provider operation list](/cli/azure/provider/operation#az-provider-operation-list), um die neuesten Vorgänge abzurufen.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
@@ -947,7 +947,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/operationstatuses/read | Hiermit wird der Vorgangsstatus für eine ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Hiermit wird das Peering der ExpressRoute-Querverbindung gelöscht. |
-> | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Hiermit wird der Vorgangsstatus für das Peering einer ExpressRoute-Querverbindung abgerufen. |
+> | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/operationstatuses/read | Hiermit wird der Vorgangsstatus für das Peering einer ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/read | Hiermit wird das Peering einer ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/write | Hiermit wird das Peering einer ExpressRoute-Querverbindung hinzugefügt. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/read | Hiermit werden ExpressRoute-Querverbindungen abgerufen. |
@@ -1222,7 +1222,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | Aktion | Microsoft.Consumption/balances/read | Listet die Auslastungszusammenfassung für einen Abrechnungszeitraum für eine Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/budgets/delete | Löscht die Budgets anhand eines Abonnements oder einer Verwaltungsgruppe. |
-> | Aktion | Microsoft.Consumption/budgets/read | Listet die Budgets nach einem Abonnement oder einer Verwaltungsgruppe auf. |
+> | Aktion | Microsoft.Consumption/budgets/read | Liste die Budgets nach einem Abonnement oder einer Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/budgets/write | Erstellt und aktualisiert die Budgets anhand eines Abonnements oder einer Verwaltungsgruppe. |
 > | Aktion | Microsoft.Consumption/charges/read | Listet Gebühren auf. |
 > | Aktion | Microsoft.Consumption/credits/read | Listet Gutschriften auf. |
@@ -1231,7 +1231,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Consumption/lots/read | Listet Chargen auf. |
 > | Aktion | Microsoft.Consumption/marketplaces/read | Listet die Nutzungsdetails von Marketplace-Ressourcen für einen Bereich für EA- und WebDirect-Abonnements auf. |
 > | Aktion | Microsoft.Consumption/operationresults/read | Listet Vorgangsergebnisse auf. |
-> | Aktion | Microsoft.Consumption/operations/read | Listet alle vom Microsoft.Consumption-Ressourcenanbieter unterstützten Vorgänge auf. |
+> | Aktion | Microsoft.Consumption/operations/read | Listet alle vom Microsoft.Consumption-Ressourcenanbieter unterstützte Vorgänge auf. |
 > | Aktion | Microsoft.Consumption/operationstatus/read | Listet den Vorgangsstatus auf. |
 > | Aktion | Microsoft.Consumption/pricesheets/read | Listet die Daten zu Preisblättern nach einem Abonnement oder einer Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/register/action | Führt die Registrierung für den Verbrauchsressourcenanbieter durch. |
@@ -1241,7 +1241,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Consumption/reservationTransactions/read | Listet den Transaktionsverlauf für reservierte Instanzen nach Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/tags/read | Listet Tags für EA und Abonnements auf. |
 > | Aktion | Microsoft.Consumption/tenants/register/action | Hiermit registrieren Sie eine Aktion für den Umfang von Microsoft.Consumption durch einen Mandanten. |
-> | Aktion | Microsoft.Consumption/terms/read | Listet die Bedingungen für ein Abonnement oder eine Verwaltungsgruppe auf. |
+> | Aktion | Microsoft.Consumption/terms/read | Liste die Bedingungen für ein Abonnement oder eine Verwaltungsgruppe auf. |
 > | Aktion | Microsoft.Consumption/usageDetails/read | Listet die Nutzungsdetails für einen Bereich für EA- und WebDirect-Abonnements auf. |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
@@ -3416,7 +3416,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/expressRouteServiceProviders/read | Ruft ExpressRoute-Dienstanbieter ab. |
 > | Aktion | Microsoft.Network/frontDoors/backendPools/delete | Löscht einen Back-End-Pool. |
 > | Aktion | Microsoft.Network/frontDoors/backendPools/read | Ruft einen Back-End-Pool ab. |
-> | Aktion | Microsoft.Network/frontDoors/backendPools/read | Erstellt oder aktualisiert einen Back-End-Pool. |
+> | Aktion | Microsoft.Network/frontDoors/backendPools/write | Erstellt oder aktualisiert einen Back-End-Pool. |
 > | Aktion | Microsoft.Network/frontDoors/delete | Löscht eine „Front Door“. |
 > | Aktion | Microsoft.Network/frontDoors/frontendEndpoints/delete | Löscht einen Front-End-Endpunkt. |
 > | Aktion | Microsoft.Network/frontDoors/frontendEndpoints/disableHttps/action | Deaktiviert HTTPS für einen Front-End-Endpunkt. |
@@ -5469,8 +5469,8 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | microsoft.web/sites/hostnamebindings/read | Dient zum Abrufen von Hostnamenbindungen für Web-Apps. |
 > | Aktion | microsoft.web/sites/hostnamebindings/write | Dient zum Aktualisieren von Hostnamenbindungen für Web-Apps. |
 > | Aktion | microsoft.web/sites/hostruntime/functions/keys/read | Ruft Funktionsschlüssel der Hostruntime für Web-Apps ab. |
-> | Aktion | Microsoft.Web/sites/hostruntime/host/_master/read | Ruft den Hauptschlüssel der Funktionen-App für Administratorvorgänge ab. |
-> | Aktion | Microsoft.Web/sites/hostruntime/host/action | Führt Laufzeitaktionen für die Funktionen-App wie Synchronisieren von Triggern, Hinzufügen von Funktionen, Aufrufen von Funktionen, Löschen von Funktionen usw. durch. |
+> | Aktion | Microsoft.Web/sites/hostruntime/host/_master/read | Abrufen des Hauptschlüssels der Funktionen-App für Administratorvorgänge |
+> | Aktion | Microsoft.Web/sites/hostruntime/host/action | Durchführen von Laufzeitaktionen für die Funktionen-App wie Synchronisieren von Triggern, Hinzufügen von Funktionen, Aufrufen von Funktionen, Löschen von Funktionen usw. |
 > | Aktion | microsoft.web/sites/hostruntime/host/read | Ruft den Hostruntime-Host für Web-Apps ab. |
 > | Aktion | microsoft.web/sites/hybridconnection/delete | Dient zum Löschen der Hybridverbindung für Web-Apps. |
 > | Aktion | microsoft.web/sites/hybridconnection/read | Dient zum Abrufen der Hybridverbindung für Web-Apps. |

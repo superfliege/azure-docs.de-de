@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 78a073ec7ee8432ba7804daef150afcbbca23ef6
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: a2af7ffde336016ae89a1ab03d753ed11b901e05
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50095568"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818701"
 ---
 # <a name="sizes-for-cloud-services"></a>Größen für Clouddienste
 In diesem Thema werden die verfügbaren Größen und Optionen für Cloud Service-Rolleninstanzen (Web- und Workerrollen) beschrieben. Darüber hinaus werden Überlegungen zur Bereitstellung angestellt, die Sie berücksichtigen sollten, wenn Sie eine Verwendung dieser Ressourcen planen. Jede Größe besitzt eine ID, die Sie in Ihre [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef) einfügen. Preise für jede Größe sind auf der Seite [Cloud Services Preise](https://azure.microsoft.com/pricing/details/cloud-services/) verfügbar.
@@ -44,7 +44,7 @@ Die folgenden Überlegungen können Ihnen bei der Entscheidung über die Größe
 
 * Die Größen A8 bis A11 und die Größen der H-Reihe werden auch als *rechenintensive Instanzen* bezeichnet. Die Hardware, auf der diese Größen ausgeführt werden, wurde für rechenintensive Anwendungen mit hoher Netzwerkauslastung konzipiert und optimiert. Hierzu zählen beispielsweise HPC-Clusteranwendungen (High Performance Computing), Modellierung und Simulationen. Die Reihen A8 bis A11 nutzen Intel Xeon E5-2670 mit 2,6 GHZ und die H-Reihe Intel Xeon E5-2667 v3 mit 3,2 GHz. Ausführliche Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Größen für leistungsstarke Compute-VMs](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Die Serien Dv3, Dv2, D und G eignen sich ideal für Anwendungen, die schnellere CPUs oder bessere lokale Datenträgerleistung erfordern oder höhere Speicheranforderungen haben. Sie bieten eine leistungsfähige Kombination für viele Anwendungen für den Unternehmenseinsatz.
-* Einige der physischen Hosts in Azure-Rechenzentren unterstützen möglicherweise keine der größeren VM-Größen, z.B. A5 bis A11. Daher wird beim Ändern der Größe eines vorhandenen virtuellen Computers, beim Erstellen eines neuen virtuellen Computers in einem virtuellen Netzwerk, das vor dem 16. April 2013 erstellt wurde, oder beim Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst möglicherweise die Fehlermeldung **Fehler beim Konfigurieren des virtuellen Computers "{Computername}"** oder **Fehler beim Erstellen des virtuellen Computers "{Computername}"** angezeigt. Problemumgehungen für die einzelnen Bereitstellungsszenarien finden Sie im Supportforum unter [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) (Fehler beim Konfigurieren des virtuellen Computers).
+* Einige der physischen Hosts in Azure-Rechenzentren unterstützen möglicherweise keine der größeren VM-Größen, z.B. A5 bis A11. Daher wird beim Ändern der Größe eines vorhandenen virtuellen Computers, beim Erstellen eines neuen virtuellen Computers in einem virtuellen Netzwerk, das vor dem 16. April 2013 erstellt wurde, oder beim Hinzufügen eines neuen virtuellen Computers zu einem vorhandenen Clouddienst möglicherweise die Fehlermeldung **Fehler beim Konfigurieren des virtuellen Computers "{Computername}"** oder **Fehler beim Erstellen des virtuellen Computers "{Computername}"** angezeigt. Unter [Error: “Failed to configure virtual machine”](https://social.msdn.microsoft.com/Forums/9693f56c-fcd3-4d42-850e-5e3b56c7d6be/error-failed-to-configure-virtual-machine-with-a5-a6-or-a7-vm-size?forum=WAVirtualMachinesforWindows) (Fehler beim Konfigurieren des virtuellen Computers) im Supportforum finden Sie Problemumgehungen für die einzelnen Bereitstellungsszenarien.
 * Möglicherweise ist bei Ihrem Abonnement auch die Anzahl von Kernen beschränkt, die in bestimmten Größenkategorien bereitgestellt werden können. Wenn Sie Kontingent erhöhen möchten, wenden Sie sich an den Azure-Support.
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
@@ -82,7 +82,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 * Bei der maximalen Netzwerkbandbreite handelt es sich um die maximale aggregierte Bandbreite, die pro VM-Typ zugewiesen wurde. Die maximale Bandbreite dient als Orientierungshilfe bei der Wahl des richtigen VM-Typs, um sicherzustellen, dass ausreichend Netzwerkkapazität verfügbar ist. Bei einem Wechsel zu „niedrig“, „mittel“, „hoch“ oder „sehr hoch“ ändert sich der Durchsatz entsprechend. Die tatsächliche Netzwerkleistung hängt von zahlreichen Faktoren ab. Hierzu zählen beispielsweise die Netzwerk- und Anwendungslast und die Netzwerkeinstellungen der Anwendung.
 
 ## <a name="a-series"></a>A-Serie
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Sehr klein      | 1         | 0,768        | 20                   | 1/niedrig |
 | Klein           | 1         | 1,75         | 225                  | 1/moderat |
@@ -96,7 +96,7 @@ In den folgenden Tabellen sind die Größe und die von den einzelnen Größen be
 ## <a name="a-series---compute-intensive-instances"></a>A-Serie: Rechenintensive Instanzen
 Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [Größen für leistungsstarke Compute-VMs](../virtual-machines/windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher: GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | A8*             |8          | 56           | 1817                 | 2/hoch |
 | A9*             |16         | 112          | 1817                 | 4/sehr hoch |
@@ -107,7 +107,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="av2-series"></a>Av2-Serie
 
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_A1_v2  | 1         | 2            | 10                   | 1/moderat                 |
 | Standard_A2_v2  | 2         | 4            | 20                   | 2/moderat                 |
@@ -119,7 +119,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 
 ## <a name="d-series"></a>D-Serie
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1     | 1         | 3,5          | 50                   | 1/moderat |
 | Standard_D2     | 2         | 7            | 100                  | 2/hoch |
@@ -131,7 +131,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 | Standard_D14    | 16        | 112          | 800                  | 8/sehr hoch |
 
 ## <a name="dv2-series"></a>Dv2-Serie
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_D1_v2  | 1         | 3,5          | 50                   | 1/moderat |
 | Standard_D2_v2  | 2         | 7            | 100                  | 2/hoch |
@@ -146,7 +146,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="dv3-series"></a>Dv3-Serie
 
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_D2_v3  | 2         | 8             | 50                   | 2/moderat |
 | Standard_D4_v3  | 4         | 16            | 100                  | 2/hoch |
@@ -157,7 +157,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 ## <a name="ev3-series"></a>Ev3-Serie
 
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB   | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
 | Standard_E2_v3  | 2         | 16            | 50                   | 2/moderat |
 | Standard_E4_v3  | 4         | 32            | 100                  | 2/hoch |
@@ -168,7 +168,7 @@ Informationen und Überlegungen zum Verwenden dieser Größen finden Sie unter [
 
 
 ## <a name="g-series"></a>G-Serie
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_G1     | 2         | 28           | 384                  |1/hoch |
 | Standard_G2     | 4         | 56           | 768                  |2/hoch |
@@ -181,7 +181,7 @@ Virtuelle Azure-Computer der H-Reihe sind High Performing Computing-VMs der näc
 
 Neben beträchtlicher CPU-Leistung bietet die H-Serie verschiedene Optionen für RDMA-Netzwerke mit niedriger Latenz unter Verwendung von FDR InfiniBand sowie verschiedene Speicherkonfigurationen für Berechnungsanforderungen mit hohem Speicherbedarf.
 
-| Größe            | CPU-Kerne | Arbeitsspeicher: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
+| Größe            | CPU-Kerne | Memory: GiB  | Temporärer Speicher (SSD): GiB       | Maximale Anzahl NICs/Netzwerkbandbreite |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | Standard_H8     | 8         | 56           | 1000                 | 8/hoch |
 | Standard_H16    | 16        | 112          | 2000                 | 8/sehr hoch |
@@ -195,7 +195,7 @@ Neben beträchtlicher CPU-Leistung bietet die H-Serie verschiedene Optionen für
 ## <a name="configure-sizes-for-cloud-services"></a>Konfigurieren von Größen für Cloud Services
 Sie können die Größe des virtuellen Computers einer Rolleninstanz als Teil des Dienstmodells angeben, wie durch die [Dienstdefinitionsdatei](cloud-services-model-and-package.md#csdef)beschrieben. Die Größe einer Rolle bestimmt die Anzahl der CPU-Kerne, die Speicherkapazität und die lokale Dateisystemgröße, die einer aktiven Instanz zugeordnet werden. Wählen Sie die Rollengröße basierend auf der Ressourcenanforderung Ihrer Anwendung.
 
-Hier sehen Sie ein Beispiel, bei dem die Rollengröße [Standard_D2](#general-purpose-d) für eine Webrolleninstanz festgelegt wird:
+Hier sehen Sie ein Beispiel, bei dem die Rollengröße „Standard_D2“ für eine Webrolleninstanz festgelegt wird:
 
 ```xml
 <WorkerRole name="Worker1" vmsize="Standard_D2">

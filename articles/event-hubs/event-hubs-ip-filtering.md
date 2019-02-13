@@ -11,12 +11,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 707290d7bf453ca71dd3c5cf8b39c917b3a1c479
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53268273"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507534"
 ---
 # <a name="use-firewall-rules"></a>Verwenden Sie Firewallregeln
 
@@ -24,7 +24,7 @@ Für Szenarien, in denen Azure Event Hubs nur von bestimmten bekannten Sites aus
 
 ## <a name="when-to-use"></a>Einsatzgebiete
 
-Wenn Sie den Event-Hub-Namespace so einrichten möchten, dass er nur Datenverkehr aus einem bestimmten Bereich von IP-Adressen empfängt und allen anderen Datenverkehr, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Sie verwenden z.B. Event Hubs mit [Azure Express Route][express-route], um private Verbindungen mit Ihrer lokalen Infrastruktur herzustellen.
+Wenn Sie Ihren Event Hubs-Namespace so einrichten möchten, dass nur Datenverkehr aus einem bestimmten IP-Adressbereich empfangen wird, können Sie eine *Firewallregel* verwenden, um Event Hub-Endpunkte von anderen IP-Adressen zu blockieren. Wenn Sie z. B. Event Hubs mit [Azure Express Route][express-route] verwenden, können Sie eine *Firewallregel* erstellen, um den Datenverkehr von den IP-Adressen Ihrer lokalen Infrastruktur einzuschränken.
 
 ## <a name="how-filter-rules-are-applied"></a>Anwenden von Filterregeln
 
@@ -54,8 +54,8 @@ IP-Filterregeln werden der Reihe nach angewendet, und die erste Regel, die eine 
 > - Azure-Daten-Explorer
 >
 > Die folgenden Microsoft-Dienste müssen in einem virtuellen Netzwerk ausgeführt werden:
-> - Azure Web Apps
-> - Azure Functions
+> - Azure-Web-Apps 
+> - Azure-Funktionen
 
 ### <a name="creating-a-firewall-rule-with-azure-resource-manager-templates"></a>Erstellen einer Firewallregel mit Azure Resource Manager-Vorlagen
 
@@ -69,8 +69,8 @@ Vorlagenparameter:
 - **ipMask** ist eine einzelne IPv4-Adresse oder ein Block von IP-Adressen in CIDR-Notation. In CIDR-Notation steht beispielsweise 70.37.104.0/24 für die 256 IPv4-Adressen von 70.37.104.0 bis 70.37.104.255. „24“ gibt dabei die Anzahl signifikanter Präfixbits für den Bereich an.
 
 > [!NOTE]
-> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **„Zulassen“** festgelegt. Dies schränkt die Verbindungen nicht ein.
-> Wenn Sie Regeln für virtuelle Netzwerke oder Firewalls erstellen, müssen Sie die ***„defaultAction“*** ändern.
+> Obwohl keine Verweigerungsregeln möglich sind, ist in der Azure Resource Manager-Vorlage die Standardaktion auf **Zulassen** festgelegt. Dies schränkt die Verbindungen nicht ein.
+> Bei der Erstellung von Regeln für virtuelle Netzwerke oder Firewalls muss die Standardaktion (***defaultAction***) geändert werden.
 > 
 > from
 > ```json

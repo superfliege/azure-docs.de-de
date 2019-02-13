@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 7a9c0ec081b676631f950270f9234284a102d7fa
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212187"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810319"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -154,7 +154,7 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 ## <a name="disable-protection-for-a-hyper-v-virtual-machine-hyper-v-to-azure"></a>Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer (Hyper-V nach Azure)
 
 > [!NOTE]
-> Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren. Wenn Sie Ihre virtuellen Computer von **System Center VMM nach Azure** replizieren, befolgen Sie die Anweisungen unter [Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure](#disable-protection-for-a-hyper-v-virtual-machine-replicating-using-the-system-centet-vmm-to-azure-scenario)
+> Gehen Sie folgendermaßen vor, wenn Sie Hyper-V-VMs ohne einen VMM-Server nach Azure replizieren. Wenn Sie Ihre virtuellen Computer von **System Center VMM nach Azure** replizieren, befolgen Sie die Anweisungen unter „Deaktivieren des Schutzes für einen virtuellen Hyper-V-Computer mit Replikation mithilfe von System Center VMM nach Azure“.
 
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Unter **Replikation deaktivieren** können Sie folgende Optionen auswählen:

@@ -2,19 +2,18 @@
 title: Sichern und Wiederherstellen von verschlüsselten virtuellen Computern mit Azure Backup
 description: In diesem Artikel werden die Sicherung und Wiederherstellung von virtuellen Computern mit Azure Disk Encryption beschrieben.
 services: backup
-author: sogup
+author: geetha
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 7/10/2018
-ms.author: sogup
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a3a059e8edc286b2c1433c9b414dc275a433e2fd
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.author: geetha
+ms.openlocfilehash: 676c6a45f4a3930d350bbcbdcbb1a0fb47880407
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217678"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809996"
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>Sichern und Wiederherstellen verschlüsselter virtueller Computer mit Azure Backup
 In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtuellen Computern mit Azure Backup beschrieben. Außerdem enthält er Details zu unterstützten Szenarien, Voraussetzungen und Problembehandlungsschritten für Fehler.
@@ -25,8 +24,8 @@ In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtu
 
    |  | BEK- + KEK-VMs | Virtuelle Computer nur mit BEK |
    | --- | --- | --- |
-   | **Nicht verwaltete virtuelle Computer**  | JA | JA  |
-   | **Verwaltete VMs**  | JA | JA  |
+   | **Nicht verwaltete virtuelle Computer**  | Ja | Ja  |
+   | **Verwaltete VMs**  | Ja | Ja  |
 
    > [!NOTE]
    > Azure Backup unterstützt mit eigenständigen Schlüsseln verschlüsselte VMs. Schlüssel, die Teil eines zum Verschlüsseln eines virtuellen Computers verwendeten Zertifikats sind, werden derzeit nicht unterstützt.
@@ -37,7 +36,7 @@ In diesem Artikel werden die Schritte zum Sichern und Wiederherstellen von virtu
 
 * Anhand der Schritte unter [Vorbereiten der Umgebung für die Sicherung von mit Resource Manager bereitgestellten virtuellen Computern](backup-azure-arm-vms-prepare.md) wurde ein Recovery Services-Tresor erstellt und die Speicherreplikation eingerichtet.
 
-* Backup wurden die [Berechtigungen zum Zugriff auf den Schlüsseltresor](#provide-permissions-to-backup) mit Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer gewährt.
+* Backup wurden Berechtigungen für den Zugriff auf einen Schlüsseltresor mit Schlüsseln und Geheimnissen für verschlüsselte virtuelle Computer gewährt.
 
 ## <a name="backup-encrypted-vm"></a>Mit Backup verschlüsselter virtueller Computer
 Führen Sie die folgenden Schritte zum Festlegen des Sicherungsziels, Definieren der Richtlinie, Konfigurieren von Elementen und Auslösen der Sicherung aus.
@@ -77,7 +76,7 @@ Falls Sie ein **Mitgliedsbenutzer** sind, erhält der Prozess zum Aktivieren der
 
    ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/member-user-encrypted-vm-warning-message.png)
 
-   Für einen **Gastbenutzer** müssen Sie dem Sicherungsdienst die Berechtigungen zum Zugriff auf den Schlüsseltresor gewähren, damit Sicherungen funktionieren. Sie können diese Berechtigungen mit den [im folgenden Abschnitt beschriebenen Schritten](#provide-permissions-to-backup) gewähren.
+   Für einen **Gastbenutzer** müssen Sie dem Sicherungsdienst die Berechtigungen zum Zugriff auf den Schlüsseltresor gewähren, damit Sicherungen funktionieren. Sie können diese Berechtigungen mit den im folgenden Abschnitt beschriebenen Schritten gewähren.
 
    ![Meldung zu verschlüsselten VMs](./media/backup-azure-vms-encryption/guest-user-encrypted-vm-warning-message.png)
 

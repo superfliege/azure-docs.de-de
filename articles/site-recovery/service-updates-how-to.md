@@ -6,14 +6,14 @@ author: rajani-janaki-ram
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/8/2019
+ms.date: 02/05/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3e5f84a6f05e451b1eafa98c373f9d838421016e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a497784a665c62d23a017b71acf709120e34c369
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229296"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746964"
 ---
 # <a name="service-updates-in-azure-site-recovery"></a>Dienstupdates in Azure Site Recovery
 Als Organisation müssen Sie ermitteln, wie Sie Ihre Daten schützen und die Ausführung von Apps/Workloads sicherstellen können, wenn es zu geplanten und ungeplanten Ausfällen kommt. Azure Site Recovery trägt zu Geschäftskontinuität und Notfallwiederherstellung bei, indem Ihre Apps auf VMs weiter ausgeführt werden und physische Server verfügbar bleiben, wenn ein Standort ausfällt. Site Recovery repliziert Workloads, die auf VMs und physischen Servern ausgeführt werden, damit sie an einem sekundären Ort verfügbar bleiben, wenn die Verfügbarkeit des primären Standorts nicht mehr gegeben ist. Workloads werden am primären Standort wiederhergestellt, wenn er wieder betriebsbereit ist.
@@ -97,10 +97,13 @@ Für den Fall, dass Sie Updates manuell verwalten, gehen Sie folgendermaßen vor
 
 ## <a name="between-an-on-premises-vmware-or-physical-site-to-azure"></a>Zwischen einem lokalen VMware- oder physischen Standort und Azure
 
-1. Installieren Sie das Update zuerst auf dem lokalen Verwaltungsserver. Dabei handelt es sich um den Server, der die Rollen des Konfigurationsservers und des Prozessservers erfüllt. 
-2. Wenn Sie über Prozessserver für die horizontale Skalierung verfügen, aktualisieren Sie diese als Nächstes.
-3. Wechseln Sie zum Azure-Portal, und navigieren Sie dann zur Seite **Geschützte Elemente** > **Replizierte Elemente**.
-Wählen Sie auf dieser Seite einen virtuellen Computer aus. Wählen Sie die Schaltfläche **Update-Agent** aus, die im unteren Bereich der Seite für jeden virtuellen Computer angezeigt wird. Dadurch wird der Mobility Service-Agent auf allen geschützten VMs aktualisiert.
+Bevor Sie mit Updates fortfahren, informieren Sie sich anhand des [Site Recovery-Supporthinweises](#support-statement-for-azure-site-recovery) über den Upgradepfad.
+
+1. Abhängig von Ihrer aktuellen Version und dem vorangehenden Supporthinweis installieren Sie das Update zuerst auf Ihrem lokalen Managementserver. Befolgen Sie dazu die Anleitung in diesem [Artikel](vmware-azure-deploy-configuration-server.md#upgrade-the-configuration-server). Es handelt sich um den Server, der die Rollen des Konfigurationsservers und des Prozessservers erfüllt.
+2. Wenn Sie über Prozessserver für die horizontale Skalierung verfügen, aktualisieren Sie diese als Nächstes anhand der [hier](vmware-azure-manage-process-server.md#upgrade-a-process-server) erläuterten Richtlinien.
+3. Um den Mobilitäts-Agent auf jedem geschützten Element zu aktualisieren, wechseln Sie als Nächstes zum Azure-Portal und rufen dann die Seite **Geschützte Elemente** > **Replizierte Elemente** auf. Wählen Sie auf dieser Seite einen virtuellen Computer aus. Wählen Sie die Schaltfläche **Update-Agent** aus, die im unteren Bereich der Seite für jeden virtuellen Computer angezeigt wird. Dadurch wird der Mobility Service-Agent auf allen geschützten VMs aktualisiert.
+
+### <a name="reboot-of-source-machine-after-mobility-agent-upgrade"></a>Neustart des Quellcomputers nach dem Upgrade des Mobilitäts-Agents
 
 Nach jedem Upgrade des Mobilitäts-Agents wird ein Neustart empfohlen, um sicherzustellen, dass alle aktuellen Änderungen auf dem Quellcomputer geladen werden. Dies ist jedoch **nicht obligatorisch**. Wenn der Abstand zwischen der Agent-Version während des letzten Neustarts und der aktuellen Version größer als 4 ist, ist ein Neustart obligatorisch. Eine ausführliche Erläuterung finden Sie in der folgenden Tabelle.
 
@@ -111,14 +114,12 @@ Nach jedem Upgrade des Mobilitäts-Agents wird ein Neustart empfohlen, um sicher
 | 9.16 | 9.20 | Nicht obligatorisch
  | 9.16 | 9.21 | Ja, führen Sie zunächst ein Upgrade auf 9.20 aus, und starten Sie dann neu, bevor Sie ein Upgrade auf 9.21 ausführen, da der Abstand zwischen den Versionen (9.16 beim letzten Neustart, Zielversion 9.21) > 4 ist.
 
-
-
 ## <a name="links-to-currently-supported-update-rollups"></a>Links zu den derzeit unterstützten Updaterollups
-
 
 |Updaterollup  |Anbieter  |Einheitliches Setup| OVF  |MARS|
 |---------|---------|---------|---------|--------|
-|[Updaterollup 32](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
+|[Updaterollup 33](https://support.microsoft.com/en-us/help/4489582/update-rollup-33-for-azure-site-recovery)     |   5.1.3900.0  |  9.22.5109.1   |  5.1.3900.0  | 2.0.9155.0
+|[Updaterollup 32](https://support.microsoft.com/en-us/help/4485985/update-rollup-32-for-azure-site-recovery)     |   5.1.3800.0  |  9.21.5091.1   |  5.1.3800.0  |2.0.9144.0
 |[Updaterollup 31](https://support.microsoft.com/help/4478871/update-rollup-31-for-azure-site-recovery)     |     5.1.3700.0      |   9.20.5051.1      |     5.1.3700.0    |2.0.9144.0
 |[Updaterollup 30](https://support.microsoft.com/help/4468181/azure-site-recovery-update-rollup-30)     |    5.1.3650.0   |   9.19.5007.1    |     5.1.3650.0    |2.0.9139.0
 |[Updaterollup 29](https://support.microsoft.com/help/4466466/update-rollup-29-for-azure-site-recovery)     |   5.1.3650.0      |   9.19.4973.1     |     5.1.3700.0    |2.0.9131.0

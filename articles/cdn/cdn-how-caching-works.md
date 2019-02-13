@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: magattus
-ms.openlocfilehash: 563c073e781e2a2bee88b4ecdcdc82541c21ec4f
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
+ms.openlocfilehash: f82675f1e93a5471f98c1778e9394f9eaec1a07b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092389"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813040"
 ---
 # <a name="how-caching-works"></a>Funktionsweise der Zwischenspeicherung
 
@@ -35,10 +35,10 @@ Dynamische Ressourcen, die häufig geändert werden oder für einen einzelnen Be
 
 Eine Zwischenspeicherung kann auf mehreren Ebenen zwischen dem Ursprungsserver und dem Endbenutzer erfolgen:
 
-- Webserver: Verwendet einen freigegebenen Cache (für mehrere Benutzer)
-- Content Delivery Network: Verwendet einen freigegebenen Cache (für mehrere Benutzer)
-- Internetdienstanbieter (Internet Service Provider, ISP): Verwendet einen freigegebenen Cache (für mehrere Benutzer)
-- Webbrowser: Verwendet einen privaten Cache (für einen Benutzer)
+- Webserver: Verwendet einen freigegebenen Cache (für mehrere Benutzer).
+- Content Delivery Network: Verwendet einen freigegebenen Cache (für mehrere Benutzer).
+- Internetdienstanbieter (ISP): Verwendet einen freigegebenen Cache (für mehrere Benutzer).
+- Webbrowser: Verwendet einen privaten Cache (für einen Benutzer).
 
 Die einzelnen Caches stellen in der Regel die Aktualität ihrer eigenen Ressourcen sicher und führen eine Überprüfung durch, wenn eine Datei veraltet ist. Dieses Verhalten ist in der HTTP-Zwischenspeicherungsspezifikation [RFC 7234](https://tools.ietf.org/html/rfc7234) definiert.
 
@@ -76,9 +76,9 @@ Azure CDN unterstützt die folgenden HTTP-Header mit Cacheanweisungen, die die C
 - Wenn es in einer HTTP-Antwort vom Client an den CDN-PoP verwendet wird, gilt Folgendes:
      - **Azure CDN Standard/Premium von Verizon** und **Azure CDN Standard von Microsoft** unterstützen alle `Cache-Control`-Anweisungen.
      - **Azure CDN Standard von Akamai** unterstützt nur die folgenden `Cache-Control`-Anweisungen, während alle anderen ignoriert werden:
-         - `max-age`: Ein Cache kann den Inhalt für einen in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
-         - `no-cache`: Wenn Sie den Inhalt im Cache speichern, überprüfen Sie diesen vor jeder Bereitstellung aus dem Cache. Entspricht `Cache-Control: max-age=0`.
-         - `no-store`: Speichern Sie den Inhalt niemals im Cache. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
+         - `max-age`: Ein Cache kann den Inhalt für den in Sekunden angegebenen Zeitraum speichern. Beispiel: `Cache-Control: max-age=5`. Diese Anweisung gibt den maximalen Zeitraum an, in dem ein Inhalt als aktuell gilt.
+         - `no-cache`: Der Inhalt wird im Cache gespeichert, aber vor jeder Bereitstellung aus dem Cache überprüft. Entspricht `Cache-Control: max-age=0`.
+         - `no-store`: Der Inhalt wird niemals im Cache gespeichert. Entfernen Sie Inhalte, wenn sie zuvor gespeichert wurden.
 
 **Expires:**
 - Die in HTTP 1.0 eingeführten Legacyheader werden zur Bereitstellung von Abwärtskompatibilität unterstützt.
@@ -116,7 +116,7 @@ Nicht alle Ressourcen können zwischengespeichert werden. Die folgende Tabelle z
 |-------------------|-----------------------------------|------------------------|------------------------------|
 | HTTP-Statuscodes | 200, 203, 206, 300, 301, 410, 416 | 200                    | 200, 203, 300, 301, 302, 401 |
 | HTTP-Methoden      | GET, HEAD                         | GET                    | GET                          |
-| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreamingoptimierungen: 1,8 GB<br />– Optimierung für Downloads großer Dateien: 150 GB |
+| Dateigrößenbeschränkungen  | 300 GB                            | 300 GB                 | – Optimierung der allgemeinen Webbereitstellung: 1,8 GB<br />– Medienstreaming-Optimierungen: 1,8 GB<br />– Optimierung großer Dateien: 150 GB |
 
 Damit das Zwischenspeichern von **Azure CDN Standard von Microsoft** bei einer Ressource funktioniert, muss der Ursprungsserver HEAD- und GET-HTTP-Anforderungen unterstützen, und die Inhaltslängenwerte müssen für alle HEAD- und GET-HTTP-Antworten für die Ressource identisch sein. Bei einer HEAD-Anforderung muss der Ursprungsserver die HEAD-Anforderung unterstützen und mit den gleichen Headern antworten wie beim Empfang einer GET-Anforderung.
 
@@ -126,10 +126,10 @@ In der folgenden Tabelle wird das Standardverhalten beim Zwischenspeichern bei d
 
 |    | Microsoft: Allgemeine Webbereitstellung | Verizon: Allgemeine Webbereitstellung | Verizon: DSA | Akamai: Allgemeine Webbereitstellung | Akamai: DSA | Akamai: Download großer Dateien | Akamai: Allgemeines oder VoD-Medienstreaming |
 |------------------------|--------|-------|------|--------|------|-------|--------|
-| **Berücksichtigung des Ursprungs**       | JA    | JA   | Nein   | Ja    | Nein   | Ja   | Ja    |
+| **Berücksichtigung des Ursprungs**       | Ja    | Ja   | Nein   | Ja    | Nein   | Ja   | Ja    |
 | **CDN-Cachedauer** | 2 Tage |7 Tage | Keine | 7 Tage | Keine | 1 Tag | 1 Jahr |
 
-**Berücksichtigung des Ursprungs**: Gibt an, ob die [unterstützten Header mit Cacheanweisungen](#http-cache-directive-headers) berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
+**Berücksichtigung des Ursprungs**: Gibt an, ob die unterstützten Header mit Cacheanweisungen berücksichtigt werden sollen, wenn sie in der HTTP-Antwort des Ursprungsservers enthalten sind.
 
 **CDN-Cachedauer**: Gibt den Zeitraum an, in dem eine Ressource im Azure CDN zwischengespeichert wird. Wenn **Berücksichtigung des Ursprungs** jedoch auf „Ja“ festgelegt ist und die HTTP-Antwort des Ursprungsservers den Header mit Cacheanweisungen `Expires` oder `Cache-Control: max-age` enthält, verwendet das Azure CDN stattdessen den vom Header angegebenen Wert für die Dauer. 
 

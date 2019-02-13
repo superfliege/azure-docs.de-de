@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: a59a7610a067a292d9b5dd7bb1a611b4bade05e9
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5e8d45a9bf9fdffc824994238add2b8541a878a5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193810"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812718"
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur deklarativen Bereitstellung
 In diesem Thema wird das Konfigurationsmodell in Azure AD Connect beschrieben. Dieses Modell, die „deklarative Bereitstellung“, ermöglicht es Ihnen, Konfigurationsänderungen einfach vorzunehmen. In diesem Thema sind auch viele Punkte für fortgeschrittene Benutzer beschrieben, die für die meisten Benutzerszenarien nicht erforderlich sind.
@@ -37,7 +37,7 @@ Die Pipeline enthält mehrere unterschiedliche Module. Jede ist für ein Konzept
 * Quelle: das Quellobjekt
 * [Bereich](#scope): Sucht nach allen Synchronisierungsregeln innerhalb des Bereichs
 * [Verbindung](#join): Bestimmt die Beziehung zwischen Connectorbereich und Metaverse
-* [Transformation](#transform): Berechnet die Transformation der Attribute und den Datenfluss
+* Transformation: Berechnet die Transformation der Attribute und den Datenfluss
 * [Rangfolge](#precedence): Löst in Konflikt stehende Attributbeiträge
 * Ziel: das Zielobjekt
 

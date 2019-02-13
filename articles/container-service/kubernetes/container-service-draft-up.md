@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: bd1e4da67ef3f2ffce94c62e1dbc151aa4680e54
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 36e765d439d616ec165a2b53d2044586e73cde76
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854568"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809213"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(VERALTET) Verwenden von Draft mit Azure Container Service und Azure Container Registry zum Erstellen und Bereitstellen einer Anwendung in Kubernetes
 
@@ -191,7 +191,7 @@ stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
 $ helm install stable/traefik --name ingress
 ```
-Legen Sie eine Überwachung für den `ingress`-Controller fest, um bei dessen Bereitstellung den externen IP-Wert zu erfassen. Bei dieser IP-Adresse handelt es sich um die Adresse, die im nächsten Abschnitt [Ihrer Bereitstellungsdomäne zugeordnet wird](#wire-up-deployment-domain).
+Legen Sie eine Überwachung für den `ingress`-Controller fest, um bei dessen Bereitstellung den externen IP-Wert zu erfassen. Bei dieser IP-Adresse handelt es sich um die Adresse, die im nächsten Abschnitt Ihrer Bereitstellungsdomäne zugeordnet wird.
 
 ```bash
 $ kubectl get svc -w

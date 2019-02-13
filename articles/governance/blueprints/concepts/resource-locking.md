@@ -4,17 +4,17 @@ description: Es wird beschrieben, wie Sie die Optionen für das Sperren verwende
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 01/23/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 0e272f7137967b545269a408b6e83552de532682
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2e281896d45ada8010f24a1f18265a8cdd523d31
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309428"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696983"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>Grundlegendes zur Ressourcensperre in Azure Blueprint
 
@@ -22,28 +22,39 @@ Die bedarfsabhängige Erstellung konsistenter Umgebungen hat nur dann wirklich V
 
 ## <a name="locking-modes-and-states"></a>Modi und Zustände von Sperren
 
-Der Sperrmodus gilt für die Blaupausenzuweisung und verfügt nur über zwei Optionen: **Keine** und **Alle Ressourcen**. Dieser Sperrmodus wird während der Blaupausenzuweisung konfiguriert und kann nicht mehr geändert werden, nachdem die Zuweisung erfolgreich auf das Abonnement angewendet wurde.
+Der Sperrmodus gilt für die Blaupausenzuweisung und verfügt über drei Optionen: **Nicht sperren**, **Schreibgeschützt** oder **Nicht löschen**. Der Sperrmodus wird konfiguriert, wenn während der Blaupausenzuweisung Artefakte bereitgestellt werden. Um einen anderen Sperrmodus festzulegen, aktualisieren Sie die Blaupausenzuweisung.
+Außerhalb von Blaupausen können Sperrmodi jedoch nicht geändert werden.
 
-Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden, gibt es drei mögliche Zustände: **Nicht gesperrt**, **Schreibgeschützt** und **Bearbeitung/Löschen nicht möglich**. Jedes Artefakt kann sich im Zustand **Nicht gesperrt** befinden. Ressourcengruppenfremde Artefakte haben jedoch den Zustand **Schreibgeschützt** und Ressourcengruppen den Zustand **Bearbeitung/Löschen nicht möglich**. Dieser Unterschied muss bei der Verwaltung der Ressourcen berücksichtigt werden.
+Für Ressourcen, die von Artefakten in einer Blaupausenzuweisung erstellt wurden, gibt es vier Zustände: **Nicht gesperrt**, **Schreibgeschützt**, **Bearbeiten/Löschen nicht möglich** oder **Löschen nicht möglich**. Jeder Artefakttyp kann sich im Zustand **Nicht gesperrt** befinden. Mithilfe der folgende Tabelle kann der Zustand einer Ressource bestimmt werden:
 
-Der Zustand **Schreibgeschützt** ist klar definiert: Die Ressource kann nicht geändert oder gelöscht werden. Beim Zustand **Bearbeitung/Löschen nicht möglich** ist es nicht so eindeutig, weil Ressourcengruppen praktisch „Container“ sind. Das Ressourcengruppenobjekt ist zwar schreibgeschützt, innerhalb der Ressourcengruppe können jedoch Änderungen an nicht gesperrten Ressourcen vorgenommen werden.
+|Mode|Artefaktressourcentyp|Zustand|BESCHREIBUNG|
+|-|-|-|-|
+|Nicht sperren|*|Nicht gesperrt|Ressourcen werden nicht durch Blaupausen geschützt. Dieser Zustand wird auch für Ressourcen verwendet, die einem Ressourcengruppenartefakt mit dem Zustand **Schreibgeschützt** oder **Nicht löschen** außerhalb einer Blaupausenzuweisung hinzugefügt wurden.|
+|Nur Leseberechtigung|Ressourcengruppe|Bearbeiten/Löschen nicht möglich|Die Ressourcengruppe ist schreibgeschützt, und Tags der Ressourcengruppe können nicht geändert werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
+|Nur Leseberechtigung|Keine Ressourcengruppe|Nur Leseberechtigung|Die Ressource kann in keiner Weise geändert oder gelöscht werden.|
+|Nicht löschen|*|Löschen nicht möglich|Die Ressourcen können geändert, aber nicht gelöscht werden. Ressourcen mit dem Zustand **Nicht gesperrt** können dieser Ressourcengruppe hinzugefügt bzw. darin verschoben, geändert oder gelöscht werden.|
 
 ## <a name="overriding-locking-states"></a>Außerkraftsetzen von Zuständen
 
-In der Regel kann es Benutzern mit entsprechender [rollenbasierter Zugriffssteuerung](../../../role-based-access-control/overview.md) für das Abonnement (also beispielsweise mit der Rolle „Besitzer“) gestattet werden, Änderungs- oder Löschvorgänge für beliebige Ressourcen auszuführen. Dies ist jedoch nicht der Fall, wenn Blueprints im Rahmen einer Zuweisungsbereitstellung eine Sperre anwendet. Wenn die Zuweisung mit der Option **Sperren** festgelegt wurde, kann auch der Besitzer des Abonnements die enthaltenen Ressourcen nicht ändern.
+In der Regel kann es Benutzern mit entsprechender [rollenbasierter Zugriffssteuerung](../../../role-based-access-control/overview.md) für das Abonnement (also beispielsweise mit der Rolle „Besitzer“) gestattet werden, Änderungs- oder Löschvorgänge für beliebige Ressourcen auszuführen. Dies ist jedoch nicht der Fall, wenn Blueprints im Rahmen einer Zuweisungsbereitstellung eine Sperre anwendet. Wenn die Zuweisung mit der Option **Schreibgeschützt** oder **Nicht löschen** festgelegt wurde, ist selbst der Besitzer des Abonnements nicht in der Lage, die blockierte Aktion für die geschützte Ressource auszuführen.
 
 Diese Sicherheitsmaßnahme schützt die Konsistenz der definierten Blaupause und die Umgebung, die damit erstellt werden soll, vor versehentlichen oder programmgesteuerten Lösch- oder Änderungsvorgängen.
 
 ## <a name="removing-locking-states"></a>Entfernen von Sperrzuständen
 
-Wenn die von einer Zuweisung erstellten Ressourcen gelöscht werden müssen, muss zunächst die Zuweisung entfernt werden. Wenn die Zuweisung entfernt wird, werden auch die von Blueprint erstellten Sperren entfernt. Die Ressource bleibt jedoch zurück und muss auf herkömmliche Weise gelöscht werden.
+Falls es erforderlich wird, eine durch eine Zuweisung geschützte Ressource zu ändern oder zu löschen, gibt es zwei Möglichkeiten.
+
+- Aktualisieren der Blaupausenzuweisung auf den Sperrmodus **Nicht sperren**
+- Löschen der Blaupausenzuweisung
+
+Wenn die Zuweisung entfernt wird, werden auch die von Blueprint erstellten Sperren entfernt. Die Ressource bleibt jedoch zurück und muss auf herkömmliche Weise gelöscht werden.
 
 ## <a name="how-blueprint-locks-work"></a>Funktionsweise von Blaupausensperren
 
-Die RBAC-Rolle `denyAssignments` wird bei der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Sperren** gewählt wurde. Die Rolle wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Blueprints. Das Entfernen der Rolle und der Sperre ist nur möglich, indem die Blaupausenzuweisung entfernt wird. Dies kann nur von Personen mit den entsprechenden Rechten durchgeführt werden.
+Eine Ablehnungsaktion im Rahmen von RBAC-[Ablehnungszuweisungen](../../../role-based-access-control/deny-assignments.md) wird während der Zuweisung einer Blaupause auf Artefaktressourcen angewendet, wenn für die Zuweisung die Option **Schreibgeschützt** oder **Nicht löschen** ausgewählt wurde. Die Ablehnungsaktion wird von der verwalteten Identität der Blaupausenzuweisung hinzugefügt und kann nur von derselben verwalteten Identität aus den Artefaktressourcen entfernt werden. Diese Sicherheitsmaßnahme erzwingt den Sperrmechanismus und verhindert die Aufhebung der Blaupausensperre außerhalb von Blueprints.
 
 > [!IMPORTANT]
-> Azure Resource Manager speichert Details zu Rollenzuweisungen bis zu 30 Minuten lang zwischen. `denyAssignments` ist daher für Blaupausenressourcen möglicherweise nicht sofort in vollem Umfang wirksam. Während dieser Zeit ist es ggf. möglich, eine Ressource zu löschen, die eigentlich durch Blaupausensperren geschützt werden sollte.
+> Azure Resource Manager speichert Details zu Rollenzuweisungen bis zu 30 Minuten lang zwischen. Daher sind Ablehnungsaktionen von Ablehnungszuweisungen für Blaupausenressourcen möglicherweise nicht sofort in vollem Umfang wirksam. Während dieser Zeit ist es ggf. möglich, eine Ressource zu löschen, die eigentlich durch Blaupausensperren geschützt werden sollte.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

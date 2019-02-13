@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: a174ae5eb31620646167f36a6f3e13605db5eac6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052767"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816372"
 ---
 # <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage mit Azure HDInsight-Clustern
 
@@ -39,9 +39,9 @@ Zum aktuellen Zeitpunkt unterstützen nur einige der HDInsight-Clustertypen/-ver
 
 | HDInsight-Clustertyp | Data Lake Storage als Standardspeicher | Data Lake Storage als Zusatzspeicher| Notizen |
 |------------------------|------------------------------------|---------------------------------------|------|
-| HDInsight-Version 3.6 | Ja | JA | Mit Ausnahme von HBase|
-| HDInsight-Version 3.5 | Ja | JA | Mit Ausnahme von HBase|
-| HDInsight-Version 3.4 | Nein  | JA | |
+| HDInsight-Version 3.6 | Ja | Ja | Mit Ausnahme von HBase|
+| HDInsight-Version 3.5 | Ja | Ja | Mit Ausnahme von HBase|
+| HDInsight-Version 3.4 | Nein  | Ja | |
 | HDInsight, Version 3.3 | Nein  | Nein  | |
 | HDInsight, Version 3.2 | Nein  | Ja | |
 | Storm | | |Sie können Data Lake Storage verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Storage auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
@@ -69,7 +69,7 @@ Um Data Lake Storage als Standardspeicher verwenden zu können, müssen Sie dem 
 - Den Ordner für alle Clusterordner.  Beispiel: adl://mydatalakestore/clusters.
 - Den Ordner für den Cluster.  Beispiel: adl://mydatalakestore/clusters/cluster1storage.
 
-Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter [Konfigurieren des Zugriffs auf Data Lake Storage](#configure-data-lake-store-access).
+Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter „Konfigurieren des Zugriffs auf Data Lake Storage“.
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Extrahieren eines Zertifikats aus Azure Key Vault für die Verwendung in der Clustererstellung
 
@@ -117,12 +117,12 @@ Um Data Lake Storage als zusätzlichen Speicher verwenden zu können, müssen Si
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
-Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter [Konfigurieren des Zugriffs auf Data Lake Storage](#configure-data-lake-store-access).
+Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des Zugriffs für diese finden Sie unter „Konfigurieren des Data Lake Storage-Zugriffs“.
 
 
 ## <a name="use-more-than-one-data-lake-storage-accounts"></a>Verwenden von mehreren Data Lake Storage-Konten
 
-Das Hinzufügen eines Data Lake Storage-Kontos als Zusatz und das Hinzufügen von mehreren Data Lake Storage-Konten wird erreicht, indem Sie dem HDInsight-Cluster den Zugriff auf Daten in einem oder mehreren Data Lake Storage-Konten gewähren. Siehe [Konfigurieren des Data Lake Storage-Zugriffs](#configure-data-lake-store-access).
+Das Hinzufügen eines Data Lake Storage-Kontos als Zusatz und das Hinzufügen von mehreren Data Lake Storage-Konten wird erreicht, indem Sie dem HDInsight-Cluster den Zugriff auf Daten in einem oder mehreren Data Lake Storage-Konten gewähren. Siehe „Konfigurieren des Data Lake Storage-Zugriffs“.
 
 ## <a name="configure-data-lake-storage-access"></a>Konfigurieren des Data Lake Storage-Zugriffs
 

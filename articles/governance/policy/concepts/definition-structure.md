@@ -4,17 +4,17 @@ description: Beschreibt, wie die von Azure Policy verwendete Definition von Ress
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/29/2019
+ms.date: 02/04/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: d54fd12125902aa5019643df24d78ae81f7fc31f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296658"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55698291"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -46,7 +46,8 @@ Die folgende JSON-Datei zeigt beispielsweise eine Richtlinie, die einschränkt, 
                     "description": "The list of locations that can be specified when deploying resources",
                     "strongType": "location",
                     "displayName": "Allowed locations"
-                }
+                },
+                "defaultValue": "westus2"
             }
         },
         "displayName": "Allowed locations",
@@ -87,8 +88,7 @@ Parameter vereinfachen Ihre Richtlinienverwaltung, indem sie die Anzahl von Rich
 Parameter funktionieren beim Erstellen von Richtlinien genauso. Sie können die Richtlinie für verschiedene Szenarios wiederverwenden, indem Sie Parameter in eine Richtliniendefinition einbeziehen und verschiedene Werte verwenden.
 
 > [!NOTE]
-> Die Parameterdefinition für eine Richtlinien- oder Initiativendefinition kann nur bei der ersten Erstellung der Richtlinie oder Initiative konfiguriert werden. Die Parameterdefinition kann später nicht geändert werden.
-> Dadurch wird verhindert, dass vorhandene Zuweisungen der Richtlinie oder Initiative indirekt als ungültig erklärt werden.
+> Parameter können einer vorhandenen und zugewiesenen Definition hinzugefügt werden. Der neue Parameter muss die **defaultValue**-Eigenschaft enthalten. Dadurch wird verhindert, dass vorhandene Zuweisungen der Richtlinie oder Initiative indirekt als ungültig erklärt werden.
 
 Beispielsweise können Sie eine Richtlinie verwenden, um die Speicherorte einzuschränken, an denen Ressourcen bereitgestellt werden können.
 Sie können die folgenden Parameter deklarieren, wenn Sie eine Richtlinie erstellen:
@@ -101,7 +101,8 @@ Sie können die folgenden Parameter deklarieren, wenn Sie eine Richtlinie erstel
             "description": "The list of allowed locations for resources.",
             "displayName": "Allowed locations",
             "strongType": "location"
-        }
+        },
+        "defaultValue": "westus2"
     }
 }
 ```

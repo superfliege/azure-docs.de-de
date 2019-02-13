@@ -6,29 +6,30 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 1fb818a65e26f969f72131b0f5265f3efdd36bb6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 96793cb1785a7ffa86331285f401453641b50dac
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542199"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820868"
 ---
-# <a name="optimizing-query-time-with-toast-table-storage-strategy"></a>Optimieren der Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher 
+# <a name="optimize-query-time-with-the-toast-table-storage-strategy"></a>Optimieren der Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher 
 In diesem Artikel wird beschrieben, wie Sie die Abfragezeit mithilfe der Strategie für TOAST-Tabellenspeicher optimieren.
 
 ## <a name="toast-table-storage-strategies"></a>Strategien für TOAST-Tabellenspeicher
-Es gibt vier verschiedene Strategien, um TOAST-fähige Spalten auf einem Datenträger zu speichern, die verschiedene Kombinationen von Komprimierung und Out-of-Line-Speicherung darstellen. Die Strategie kann auf der Ebene des Datentyps und auf der Spaltenebene festgelegt werden.
-- **Nur-Text** verhindert die Komprimierung oder Out-of-Line-Speicherung. Zudem wird bei dieser Option die Verwendung von Einzelbyte-Headern für Varlena-Typen deaktiviert. **Nur-Text** ist die einzige mögliche Strategie für Spalten mit nicht TOAST-fähigen Datentypen.
-- **Erweitert** ermöglicht sowohl die Komprimierung als auch die Out-of-Line-Speicherung. **Erweitert** ist die Standardeinstellung für die meisten TOAST-fähigen Datentypen. Zuerst wird versucht, eine Komprimierung vorzunehmen. Ist die Zeile danach noch immer zu groß, wird anschließend eine Out-of-Line-Speicherung durchgeführt.
-- **Extern** ermöglicht die Out-of-Line-Speicherung, aber keine Komprimierung. Die Verwendung von **Extern** beschleunigt Vorgänge für Teilzeichenfolgen für breite Spalten mit Daten vom Typ „text“ und „bytea“. Der Speicherplatzbedarf nimmt jedoch zu, da diese Vorgänge so optimiert sind, dass sie nur die erforderlichen Teile des Out-of-Line-Werts fetchen, wenn dieser nicht komprimiert ist.
-- **Haupt** ermöglicht die Komprimierung, aber keine Out-of-Line-Speicherung. Die Out-of-Line-Speicherung wird weiterhin für solche Spalten ausgeführt, jedoch nur, wenn die Zeile nicht auf andere Weise so verkleinert werden kann, dass sie auf eine Seite passt.
+Es werden vier verschiedene Strategien verwendet, um Spalten auf dem Datenträger zu speichern, die TOAST verwenden können. Sie stellen verschiedene Kombinationen zwischen Komprimierung und Out-of-Line-Speicherung dar. Die Strategie kann auf der Ebene des Datentyps und auf der Spaltenebene festgelegt werden.
+- **Nur-Text** verhindert entweder Komprimierung oder Out-of-Line-Speicherung. Diese Option deaktiviert die Verwendung von Einzelbyte-Headern für Varlena-Typen. „Nur-Text“ ist die einzige mögliche Strategie für Spalten von Datentypen, die TOAST nicht verwenden können.
+- **Erweitert** ermöglicht sowohl die Komprimierung als auch die Out-of-Line-Speicherung. „Erweitert“ ist die Standardeinstellung für die meisten Datentypen, die TOAST verwenden können. Zuerst wird eine Komprimierung versucht. Die Out-of-Line Speicherung wird versucht, wenn die Zeile weiterhin zu groß ist.
+- **Extern** ermöglicht die Out-of-Line-Speicherung, aber keine Komprimierung. Die Verwendung von „Extern“ beschleunigt Operationen für untergeordnete Zeichenfolgen mit breitem Text und bytea-Spalten. Diese erhöhte Geschwindigkeit hat jedoch höhere Speicherplatzanforderungen zur Folge. Diese Operationen sind so optimiert, dass nur die erforderlichen Teile des Out-of-Line-Wertes abgerufen werden, wenn er nicht komprimiert ist.
+- **Haupt** ermöglicht die Komprimierung, aber keine Out-of-Line-Speicherung. Die Out-of-Line-Speicherung wird für derartige Spalten weiterhin durchgeführt, jedoch nur als letzte Option. Sie tritt auf, wenn es keine andere Möglichkeit gibt, die Zeile so klein zu gestalten, dass sie auf eine Seite passt.
 
-## <a name="using-toast-table-storage-strategies"></a>Verwenden von Strategien für TOAST-Tabellenspeicher
-Wenn Ihre Abfragen auf TOAST-fähig Datentypen zugreifen, sollten Sie anstelle der Standardoption **Erweiterte** ggf. die Option **Haupt** verwenden, um die Abfragezeiten zu reduzieren. Die Strategie **Haupt** schließt die Out-of-Line-Speicherung nicht aus. Wenn Ihre Abfragen nicht auf TOAST-fähig Datentypen zugreifen, kann es andererseits von Vorteil sein, die Option **Erweitert** beizubehalten. Dies verbessert die Leistung, da ein größerer Teil der Zeilen der Haupttabelle in den freigegebenen Puffercache passt.
+## <a name="use-toast-table-storage-strategies"></a>Verwenden von Strategien für TOAST-Tabellenspeicher
+Wenn Ihre Abfragen auf Datentypen zugreifen, die TOAST verwenden können, sollten Sie anstelle der Option „Erweitert“ ggf. die Strategie „Haupt“ verwenden, um die Abfragezeiten zu reduzieren. „Haupt“ schließt eine Out-of-Line-Speicherung nicht aus. Wenn Ihre Abfragen nicht auf Datentypen zugreifen, die TOAST verwenden können, kann es sinnvoll sein, die Option „Erweitert“ beizubehalten. Dies verbessert die Leistung, da ein größerer Teil der Zeilen der Haupttabelle in den freigegebenen Puffercache passt.
 
-Wenn Sie eine Workload mit einem Schema mit breiten Tabellen und hoher Zeichenanzahl haben, sollten Sie die Verwendung von PostgreSQL-TOAST-Tabellen erwägen. Bei einer Beispielkundentabelle mit mehr als 350 Spalten, die zum Teil 255 Zeichen enthielten, konnte die Abfragezeit im Vergleichstest von 4.203 Sekunden auf 467 Sekunden reduziert werden (eine Verbesserung von 89 Prozent), nachdem die TOAST-Strategie auf **Haupt** umgestellt wurde.
+Wenn Sie über eine Workload verfügen, die ein Schema mit breiten Tabellen und hoher Zeichenanzahl verwendet, sollten Sie die Verwendung von PostgreSQL-TOAST-Tabellen erwägen. Eine Beispielkundentabelle wies mehr als 350 Spalten auf, die zum Teil 255 Zeichen enthielten. Nachdem sie in die TOAST-Tabellenstrategie „Haupt“ konvertiert wurde, verringerte sich die Benchmarkabfragezeit von 4203 Sekunden auf 467 Sekunden. Das ist eine Verbesserung um 89 Prozent.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie, ob Ihre Workload die oben aufgeführten Eigenschaften aufweist. 
+Überprüfen Sie, ob Ihre Workload die vorherigen Eigenschaften aufweist. 
 
-Sehen Sie sich die folgende PostgreSQL-Dokumentation an: [Chapter 68, Database physical storage](https://www.postgresql.org/docs/current/storage-toast.html) (Kapitel 68: Physischer Datenbankspeicher) 
+Sehen Sie sich die folgende PostgreSQL-Dokumentation an: 
+- [Chapter 68, Database physical storage](https://www.postgresql.org/docs/current/storage-toast.html) (Kapitel 68: Physischer Datenbankspeicher) 

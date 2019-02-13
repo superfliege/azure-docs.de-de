@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sujayt
-ms.openlocfilehash: f48283222f5c5d3b18d3dba17c2856801856fb94
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 49b5ef6b0dca32baaf05959cc29bb2a8024b6d04
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52992131"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55693988"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Netzwerkkonzepte für die Replikation zwischen Azure-Standorten
 
@@ -93,13 +93,14 @@ Die Site Recovery-IP-Adressbereiche lauten wie folgt:
    USA, Westen 2 | 52.183.45.166 | 13.66.228.204
    UK, Westen | 51.141.3.203 | 51.141.14.113
    UK, Süden | 51.140.43.158 | 51.140.189.52
-   Großbritannien, Süden 2 | 13.87.37.4| 13.87.34.139
-   Großbritannien, Norden | 51.142.209.167 | 13.87.102.68
+   Vereinigtes Königreich, Süden 2 | 13.87.37.4| 13.87.34.139
+   Vereinigtes Königreich, Norden | 51.142.209.167 | 13.87.102.68
    Korea, Mitte | 52.231.28.253 | 52.231.32.85
    Korea, Süden | 52.231.298.185 | 52.231.200.144
    Frankreich, Mitte | 52.143.138.106 | 52.143.136.55
    Frankreich, Süden | 52.136.139.227 |52.136.136.62
-
+   Australien, Mitte| 20.36.34.70 | 20.36.46.142
+   Australien, Mitte 2| 20.36.69.62 | 20.36.74.130
 
 ## <a name="example-nsg-configuration"></a>Beispielkonfiguration für eine Netzwerksicherheitsgruppe
 

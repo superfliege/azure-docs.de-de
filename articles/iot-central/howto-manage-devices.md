@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dc241612149de5c4ea5c1d2e698741e77d429fc7
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: b882c31f40f177b81fc84eb7071f396bddeaa0dd
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004882"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658113"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Verwalten von Geräten in Ihrer Azure IoT Central-Anwendung
 
@@ -23,6 +23,8 @@ In diesem Artikel wird beschrieben, wie Sie als Operator Gerätegruppen in Ihrer
 - Verwalten Sie ein aktuelles Inventar Ihrer Geräte.
 - Halten Sie Ihre Gerätemetadaten durch Ändern der in den Geräteeigenschaften gespeicherten Werte auf dem neuesten Stand.
 - Steuern Sie das Verhalten Ihrer Geräte, indem Sie eine Einstellung auf einem bestimmten Gerät auf der Seite **Einstellungen** aktualisieren.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="view-your-devices"></a>Anzeigen von Geräten
 
@@ -116,7 +118,7 @@ So führen Sie den Massenexport von Geräten aus Ihrer Anwendung durch:
 
     [![Export erfolgreich](./media/howto-manage-devices/Export2.png)](./media/howto-manage-devices/Export2.png#lightbox)
 
-1. Die exportierte CSV-Datei weist die folgenden Spalteninformationen auf: **„Device Id“, „Device Name“, „Device Primary/Secondary Keys“ und „Primary/Secondary certificate thumbprints“**
+1. Die exportierte CSV-Datei enthält die folgenden Spalteninformationen: **Geräte-ID, Name des Geräts, Primärschlüssel und sekundärer Schlüssel des Geräts sowie primärer und sekundärer Zertifikatfingerabdruck**
     *   IOTC_DEVICEID
     *   IOTC_DEVICENAME
     *   IOTC_SASKEY_PRIMARY

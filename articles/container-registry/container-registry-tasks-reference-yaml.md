@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: danlep
-ms.openlocfilehash: e91b4e881c0f39304e3042d556f111db2089f7de
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: c9b4a27ff1b5467eb752e8cfc09f697ca1a966ba
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334481"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820384"
 ---
 # <a name="acr-tasks-reference-yaml"></a>Referenz zu ACR Tasks: YAML
 
@@ -83,11 +83,11 @@ az configure --defaults acr=myregistry
 
 Aufgabeneigenschaften werden in der Regel am Anfang einer Datei `acr-task.yaml` aufgeführt und sind globale Eigenschaften, die während der gesamten Ausführung der Aufgabe gelten. Einige dieser globalen Eigenschaften können in einem einzelnen Schritt außer Kraft gesetzt werden.
 
-| Eigenschaft | Typ | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
+| Eigenschaft | Type | Optional | BESCHREIBUNG | Außerkraftsetzung unterstützt | Standardwert |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | Zeichenfolge | Nein  | Die Version der Datei `acr-task.yaml`, die vom ACR Tasks-Dienst analysiert wird. ACR Tasks versucht, die Abwärtskompatibilität zu gewährleisten. Dieser Wert ermöglicht es ACR Tasks jedoch, die Kompatibilität innerhalb einer definierten Version sicherzustellen. | Nein  | Keine |
-| `stepTimeout` | int (Sekunden) | JA | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Diese Eigenschaft kann in einem Schritt durch Festlegen der [timeout](#timeout)-Eigenschaft des Schritts außer Kraft gesetzt werden. | JA | 600 (10 Minuten) |
-| `totalTimeout` | int (Sekunden) | JA | Die maximale Anzahl von Sekunden, für die eine Aufgabe ausgeführt werden kann. Eine „Ausführung“ beinhaltet die Ausführung und den Abschluss aller (erfolgreichen und fehlgeschlagenen) Schritte in der Aufgabe. Ebenfalls enthalten ist das Ausgeben der Aufgabenausgabe (beispielsweise erkannte Imageabhängigkeiten und der Ausführungsstatus der Ausgabe). | Nein  | 3.600 (1 Stunde) |
+| `stepTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann. Diese Eigenschaft kann in einem Schritt überschrieben werden, indem die timeout-Eigenschaft des Schritts festgelegt wird. | Ja | 600 (10 Minuten) |
+| `totalTimeout` | int (Sekunden) | Ja | Die maximale Anzahl von Sekunden, für die eine Aufgabe ausgeführt werden kann. Eine „Ausführung“ beinhaltet die Ausführung und den Abschluss aller (erfolgreichen und fehlgeschlagenen) Schritte in der Aufgabe. Ebenfalls enthalten ist das Ausgeben der Aufgabenausgabe (beispielsweise erkannte Imageabhängigkeiten und der Ausführungsstatus der Ausgabe). | Nein  | 3.600 (1 Stunde) |
 
 ## <a name="task-step-types"></a>Aufgabenschritttypen
 
@@ -116,8 +116,8 @@ Der Schritttyp `build` unterstützt die Parameter in der folgenden Tabelle. Dar�
 
 | Parameter | BESCHREIBUNG | Optional |
 | --------- | ----------- | :-------: |
-| `-t` &#124; `--image` | Definiert das vollständig qualifizierte `image:tag` des erstellten Images.<br /><br />Da Images für interne Aufgabenprüfungen verwendet werden können (z. B. Funktionstests), erfordern nicht alle Images einen `push` in eine Registrierung. Um ein Image innerhalb einer Aufgabenausführung anzugeben, erfordert das Image jedoch einen Namen, auf den verwiesen werden kann.<br /><br />Im Gegensatz zu `az acr build` bietet die Ausführung von ACR Tasks kein Standardverhalten für das Pushen. Das Standardszenario bei ACR Tasks setzt voraus, dass ein Image erstellt, überprüft und anschließend gepusht werden kann. Informationen zum optionalen Pushen von erstellten Images finden Sie im Abschnitt zu [push](#push). | JA |
-| `-f` &#124; `--file` | Gibt die Dockerfile-Datei an, die an `docker build` übergeben wird. Ist keine Datei angegeben, wird die Dockerfile-Standarddatei im Stamm des Kontexts verwendet. Um eine andere Dockerfile-Datei anzugeben, übergeben Sie den Dateinamen relativ zum Stamm des Kontexts. | JA |
+| `-t` &#124; `--image` | Definiert das vollständig qualifizierte `image:tag` des erstellten Images.<br /><br />Da Images für interne Aufgabenprüfungen verwendet werden können (z. B. Funktionstests), erfordern nicht alle Images einen `push` in eine Registrierung. Um ein Image innerhalb einer Aufgabenausführung anzugeben, erfordert das Image jedoch einen Namen, auf den verwiesen werden kann.<br /><br />Im Gegensatz zu `az acr build` bietet die Ausführung von ACR Tasks kein Standardverhalten für das Pushen. Das Standardszenario bei ACR Tasks setzt voraus, dass ein Image erstellt, überprüft und anschließend gepusht werden kann. Informationen zum optionalen Pushen von erstellten Images finden Sie im Abschnitt zu [push](#push). | Ja |
+| `-f` &#124; `--file` | Gibt die Dockerfile-Datei an, die an `docker build` übergeben wird. Ist keine Datei angegeben, wird die Dockerfile-Standarddatei im Stamm des Kontexts verwendet. Um eine andere Dockerfile-Datei anzugeben, übergeben Sie den Dateinamen relativ zum Stamm des Kontexts. | Ja |
 | `context` | Das an `docker build` übergebene Stammverzeichnis. Das Stammverzeichnis jeder Aufgabe wird auf ein freigegebenes Arbeitsverzeichnis ([WorkingDirectory](#task-step-properties)) festgelegt und enthält den Stamm des zugehörigen geklonten Git-Verzeichnisses. | Nein  |
 
 ### <a name="properties-build"></a>Eigenschaften: build
@@ -315,18 +315,18 @@ Durch die Verwendung der `docker run`-Standardkonvention für Imageverweise kann
 
 Jeder Schritttyp unterstützt mehrere dem jeweiligen Typ entsprechende Eigenschaften. In der folgenden Tabelle werden alle verfügbaren Schritteigenschaften beschrieben. Nicht alle Schritttypen unterstützen alle Eigenschaften. Informationen zu den verfügbaren Eigenschaften für die einzelnen Schritttypen finden Sie in den Referenzabschnitten zu den Schritttypen [cmd](#cmd), [build](#build) und [push](#push).
 
-| Eigenschaft | Typ | Optional | BESCHREIBUNG |
+| Eigenschaft | Type | Optional | BESCHREIBUNG |
 | -------- | ---- | -------- | ----------- |
-| `detach` | bool | JA | Gibt an, ob der Container bei der Ausführung getrennt werden soll. |
-| `entryPoint` | Zeichenfolge | JA | Setzt den `[ENTRYPOINT]` des Containers für einen Schritt außer Kraft. |
-| `env` | [string, string, ...] | JA | Ein Array von Zeichenfolgen im `key=value`-Format, die die Umgebungsvariablen für den Schritt definieren. |
-| [`id`](#example-id) | Zeichenfolge | JA | Identifiziert den Schritt innerhalb der Aufgabe eindeutig. Andere Schritte in der Aufgabe können auf die `id` eines Schritts verweisen, beispielsweise zur Abhängigkeitsüberprüfung mit `when`.<br /><br />Die `id` ist auch der Name des ausgeführten Containers. Prozesse, die in anderen Containern in der Aufgabe ausgeführt werden, können beispielsweise als DNS-Hostnamen auf die `id` verweisen oder durch einen Verweis mit Docker-Protokollen [Id] auf den Container zugreifen. |
-| `ignoreErrors` | bool | JA | Wenn diese Eigenschaft auf `true` festgelegt ist, wird der Schritt unabhängig davon, ob während seiner Ausführung ein Fehler aufgetreten ist, als abgeschlossen markiert. Standard: `false` |
-| `keep` | bool | JA | Gibt an, ob der Container des Schritts nach der Ausführung beibehalten werden soll. |
-| `startDelay` | int (Sekunden) | JA | Anzahl von Sekunden, um die die Ausführung eines Schritts verzögert wird. |
-| `timeout` | int (Sekunden) | JA | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. |
-| [`when`](#example-when) | [string, string, ...] | JA | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. |
-| `workingDirectory` | Zeichenfolge | JA | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. |
+| `detach` | bool | Ja | Gibt an, ob der Container bei der Ausführung getrennt werden soll. |
+| `entryPoint` | Zeichenfolge | Ja | Setzt den `[ENTRYPOINT]` des Containers für einen Schritt außer Kraft. |
+| `env` | [string, string, ...] | Ja | Ein Array von Zeichenfolgen im `key=value`-Format, die die Umgebungsvariablen für den Schritt definieren. |
+| [`id`](#example-id) | Zeichenfolge | Ja | Identifiziert den Schritt innerhalb der Aufgabe eindeutig. Andere Schritte in der Aufgabe können auf die `id` eines Schritts verweisen, beispielsweise zur Abhängigkeitsüberprüfung mit `when`.<br /><br />Die `id` ist auch der Name des ausgeführten Containers. Prozesse, die in anderen Containern in der Aufgabe ausgeführt werden, können beispielsweise als DNS-Hostnamen auf die `id` verweisen oder durch einen Verweis mit Docker-Protokollen [Id] auf den Container zugreifen. |
+| `ignoreErrors` | bool | Ja | Wenn diese Eigenschaft auf `true` festgelegt ist, wird der Schritt unabhängig davon, ob während seiner Ausführung ein Fehler aufgetreten ist, als abgeschlossen markiert. Standard: `false` |
+| `keep` | bool | Ja | Gibt an, ob der Container des Schritts nach der Ausführung beibehalten werden soll. |
+| `startDelay` | int (Sekunden) | Ja | Anzahl von Sekunden, um die die Ausführung eines Schritts verzögert wird. |
+| `timeout` | int (Sekunden) | Ja | Maximale Anzahl von Sekunden, für die ein Schritt ausgeführt werden kann, bevor er beendet wird. |
+| [`when`](#example-when) | [string, string, ...] | Ja | Konfiguriert die Abhängigkeit eines Schritts von einem oder mehreren anderen Schritten innerhalb der Aufgabe. |
+| `workingDirectory` | Zeichenfolge | Ja | Legt das Arbeitsverzeichnis für einen Schritt fest. ACR Tasks erstellt standardmäßig ein Stammverzeichnis als Arbeitsverzeichnis. Wenn Ihr Buildvorgang mehrere Schritte umfasst, können Schritte an früherer Stelle im Vorgang jedoch Artefakte für spätere Schritte freigeben, indem dasselbe Arbeitsverzeichnisses angegeben wird. |
 
 ### <a name="examples-task-step-properties"></a>Beispiele: Aufgabenschritteigenschaften
 

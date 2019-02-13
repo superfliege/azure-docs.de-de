@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 7b43b0e0676cc31938bf64cf84f9e6799c2dd3dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 4336cabd256e492981e1bbff8d1b3b9e4ef07df1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296596"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820520"
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Problembehandlung: Ein Objekt wird nicht mit Azure AD synchronisiert
 
@@ -143,7 +143,7 @@ Sie können das Objekt und die für einen bestimmten Attributfluss angewendete R
 Die Protokollseite wird verwendet, um den Kennwortsynchronisierungsstatus und den Verlauf anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei der Kennworthashsynchronisierung](tshoot-connect-password-hash-synchronization.md).
 
 ## <a name="metaverse-object-properties"></a>Objekteigenschaften der Metaverse
-Es ist in der Regel besser, mit der Suche im Active Directory-[Connectorbereich](#connector-space) zu starten. Aber Sie können die Suche auch aus der Metaverse starten.
+Es ist in der Regel besser, mit der Suche im Active Directory-Connectorbereich zu starten. Aber Sie können die Suche auch aus der Metaverse starten.
 
 ### <a name="search-for-an-object-in-the-mv"></a>Ein Objekt in der MV suchen
 Klicken Sie im **Synchronization Service Manager** auf **Metaverse Search**(Metaverse-Suche). Erstellen Sie eine Abfrage, bei der Sie wissen, dass sie den Benutzer findet. Sie können nach allgemeinen Attributen, z.B. „accountName (sAMAccountName)“ und „userPrincipalName“ suchen. Weitere Informationen finden Sie unter [Metaversesuche](how-to-connect-sync-service-manager-ui-mvsearch.md).
@@ -195,6 +195,5 @@ Wenn Ihnen der Azure AD-Connector fehlt, dann lesen Sie [MV-Attribute](#mv-attri
 Auf dieser Registerkarte können Sie auch zum [Connectorbereichsobjekt](#connector-space-object-properties) navigieren. Wählen Sie eine Zeile aus, und klicken Sie auf **Eigenschaften**.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Konfiguration der [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md) .
-
-Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
+- [Azure AD Connect-Synchronisierung](how-to-connect-sync-whatis.md)
+- [Was ist eine Hybrididentität?](whatis-hybrid-identity.md)

@@ -1,36 +1,40 @@
 ---
-title: Optimieren von Masseneinfügungen für Azure Database for PostgreSQL-Server
+title: Optimieren von Masseneinfügungen auf einem Azure Database for PostgreSQL-Server
 description: In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen auf einem Azure Database for PostgreSQL-Server optimieren können.
 author: dianaputnam
 ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: 9d2bfcddc649e4fff68bdba49df0945e88067036
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545229"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810237"
 ---
-# <a name="optimizing-bulk-inserts-and-use-of-transient-data-on-azure-database-for-postgresql-server"></a>Optimieren von Masseneinfügungen und der Verwendung von kurzlebigen Daten für Azure Database for PostgreSQL-Server 
-In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen und die Verwendung von kurzlebigen Daten auf einem Azure Database for PostgreSQL-Server optimieren können.
+# <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimieren von Masseneinfügungen und der Verwendung von kurzlebigen Daten auf einem Azure Database for PostgreSQL-Server 
+In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen optimieren und kurzlebige Daten auf einem Azure Database for PostgreSQL-Server verwenden können.
 
-## <a name="using-unlogged-tables"></a>Verwenden von nicht protokollierten Tabellen
-Erwägen Sie die Verwendung von nicht protokollierten Tabellen für Kunden mit Workloadvorgängen, die kurzlebige Daten oder Masseneinfügungen von großen Datasets nutzen.
+## <a name="use-unlogged-tables"></a>Verwenden von nicht protokollierten Tabellen
+Erwägen Sie die Verwendung von nicht protokollierten Tabellen für Workloadvorgänge, die kurzlebige Daten oder Masseneinfügungen von großen Datasets nutzen.
 
-Nicht protokollierte Tabellen sind ein PostgreSQL-Feature, das auf effektive Weise zum Optimieren von Masseneinfügungen eingesetzt werden kann. Für PostgreSQL werden Write-Ahead-Protokolle (Write-Ahead Logging, WAL) genutzt, um standardmäßig für Atomarität und Dauerhaftigkeit – zwei der ACID-Eigenschaften – zu sorgen. Das Einfügen in eine nicht protokollierte Tabelle bedeutet, dass PostgreSQL Einfügungen ohne Schreibvorgänge in das Transaktionsprotokoll durchführt, wobei es sich bereits um einen E/A-Vorgang handelt. Aus diesem Grund kann für diese Tabellen eine deutlich höhere Geschwindigkeit als für gewöhnliche Tabellen erzielt werden.
+Nicht protokollierte Tabellen sind ein PostgreSQL-Feature, das auf effektive Weise zum Optimieren von Masseneinfügungen eingesetzt werden kann. PostgreSQL verwendet die Write-Ahead-Protokollierung (WAL). Es bietet standardmäßig Unteilbarkeit und Dauerhaftigkeit. Unteilbarkeit, Konsistenz, Isolation und Dauerhaftigkeit stellen die ACID-Eigenschaften dar. 
 
-Hier sind die Optionen für die Erstellung einer nicht protokollierten Tabelle angegeben:
-- Erstellen einer neuen nicht protokollierten Tabelle mit dieser Syntax: `CREATE UNLOGGED TABLE <tableName>`.
-- Konvertieren einer vorhandenen protokollierten Tabelle in eine nicht protokollierte Tabelle mit dieser Syntax: `ALTER <tableName> SET UNLOGGED`.  Dies kann mit der folgenden Syntax rückgängig gemacht werden: `ALTER <tableName> SET LOGGED`.
+Das Einfügen in eine nicht protokollierte Tabelle bedeutet, dass PostgreSQL Einfügungen ohne Schreibvorgang in das Transaktionsprotokoll durchführt, wobei es sich um einen E/A-Vorgang handelt. Daher sind diese Tabellen wesentlich schneller als normale Tabellen.
+
+Verwenden Sie die folgenden Optionen, um eine nicht protokollierte Tabelle zu erstellen:
+- Erstellen Sie eine neue nicht protokollierte Tabelle mit der Syntax `CREATE UNLOGGED TABLE <tableName>`.
+- Konvertieren Sie eine vorhandene protokollierte Tabelle in eine nicht protokollierte Tabelle mit der Syntax `ALTER <tableName> SET UNLOGGED`.  
+
+Verwenden Sie die Syntax `ALTER <tableName> SET LOGGED`, um den Prozess umzukehren.
 
 ## <a name="unlogged-table-tradeoff"></a>Nachteile von nicht protokollierten Tabellen
-Nicht protokollierte Tabellen sind nicht vor Abstürzen geschützt. Eine nicht protokollierte Tabelle wird nach einem Absturz automatisch gekürzt, oder es erfolgt das nicht korrekte Herunterfahren. Der Inhalt einer nicht protokollierten Tabelle wird zudem nicht auf Standbyservern repliziert. Alle Indizes, die für eine nicht protokollierte Tabelle erstellt werden, werden ebenfalls automatisch nicht protokolliert.  Nachdem der Einfügevorgang abgeschlossen wurde, können Sie die Tabelle in den protokollierten Zustand konvertieren, damit der Einfügevorgang dauerhafter Art ist.
+Nicht protokollierte Tabellen sind nicht vor Abstürzen geschützt. Eine nicht protokollierte Tabelle wird nach einem Absturz automatisch gekürzt, oder es erfolgt das nicht korrekte Herunterfahren. Der Inhalt einer nicht protokollierten Tabelle wird zudem nicht auf Standbyservern repliziert. Alle Indizes, die für eine nicht protokollierte Tabelle erstellt werden, werden ebenfalls automatisch nicht protokolliert. Nachdem der Einfügevorgang abgeschlossen wurde, konvertieren Sie die Tabelle in den protokollierten Zustand, damit der Einfügevorgang dauerhafter Art ist.
 
-Für einige Kundenworkloads konnte aber eine Leistungsverbesserung von 15 bis 20 Prozent erzielt werden, indem nicht protokollierte Tabellen verwendet wurden.
+Für einige Kundenworkloads konnte eine Leistungsverbesserung von 15 bis 20 Prozent erzielt werden, indem nicht protokollierte Tabellen verwendet wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Überprüfen Sie Ihre Workload auf die Nutzung von kurzlebigen Daten und umfangreichen Masseneinfügungen.  
-
-Sehen Sie sich die folgende PostgreSQL-Dokumentation an: [Create Table SQL Commands](https://www.postgresql.org/docs/current/static/sql-createtable.html) (Erstellen von SQL-Befehlen für Tabellen)
+Überprüfen Sie Ihre Workload auf die Nutzung von kurzlebigen Daten und umfangreichen Masseneinfügungen. Sehen Sie sich die folgende PostgreSQL-Dokumentation an:
+ 
+- [SQL-Befehle zum Erstellen von Tabellen](https://www.postgresql.org/docs/current/static/sql-createtable.html)

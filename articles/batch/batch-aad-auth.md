@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/18/2018
 ms.author: lahugh
-ms.openlocfilehash: 574a9ae1e283a3918e316d2daa84df727d729471
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5f6e0d2dece791ac4ece73acdf2e15e3c9be412f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477595"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812842"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Authentifizieren von Lösungen des Azure Batch-Diensts mit Active Directory
 
@@ -91,7 +91,7 @@ Die Mandanten-ID identifiziert den Azure AD-Mandanten, der Authentifizierungsdie
 
 Zum Authentifizieren mit integrierter Authentifizierung müssen Sie Ihrer Anwendung Berechtigungen zum Herstellen der Verbindung mit der Batch-Dienst-API erteilen. Dieser Schritt ermöglicht der Anwendung, Aufrufe der Batch-Dienst-API bei Azure AD zu authentifizieren.
 
-Sobald Sie [die Anwendung registriert haben](#register-your-application-with-an-azure-ad-tenant), befolgen Sie diese Schritte im Azure-Portal, um ihr Zugriff auf den Batch-Dienst zu gewähren:
+Sobald Sie die Anwendung registriert haben, befolgen Sie diese Schritte im Azure-Portal, um ihr Zugriff auf den Batchdienst zu gewähren:
 
 1. Wählen Sie im linken Navigationsbereich des Azure-Portals die Option **Alle Dienste** aus. Klicken Sie auf **App-Registrierungen**.
 2. Suchen Sie in der Liste mit den App-Registrierungen nach dem Namen Ihrer Anwendung:

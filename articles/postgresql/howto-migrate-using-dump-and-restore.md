@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: 41a5f2eab78d68bdb1f51b423955cfefa5a541b8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d406132c4e359c78567ae47a3acba5b73aa39820
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538587"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564203"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrieren der PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 Sie können mit [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) eine PostgreSQL-Datenbank in eine Sicherungsdatei extrahieren und mit [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) die PostgreSQL-Datenbank aus einer mit pg_dump erstellten Archivdatei wiederherstellen.
@@ -69,7 +69,9 @@ Eine Möglichkeit zum Migrieren Ihrer vorhandenen PostgreSQL-Datenbank zu Azure 
 
 ### <a name="for-the-restore"></a>Für die Wiederherstellung
 - Es wird empfohlen, dass Sie die Sicherungsdatei in eine Azure-VM in der gleichen Region des Azure Database for PostgreSQL-Servers verschieben, zu dem Sie migrieren, und den Befehl „pg_restore“ über diese VM ausführen, um die Netzwerklatenz zu reduzieren. Außerdem wird empfohlen, dass Sie die VM mit aktiviertem [beschleunigtem Netzwerkbetrieb](../virtual-network/create-vm-accelerated-networking-powershell.md) erstellen.
+
 - Dies sollte zwar der Standardeinstellung entsprechen, öffnen Sie jedoch trotzdem die Sicherungsdatei, um zu überprüfen, dass die Create Index-Anweisungen sich hinter dem Einfügen der Daten befinden. Wenn das nicht der Fall ist, verschieben Sie die Create Index-Anweisungen hinter das Einfügen der Daten.
+
 - Führen Sie die Wiederherstellung mit den Switches „-Fc“ und „-j“ *#* durch, um die Wiederherstellung zu parallelisieren. *#* beschreibt die Anzahl von Kernen auf dem Zielserver. Sie können auch versuchen, mit *#* die doppelte Anzahl von Kernen des Zielservers anzugeben, um die Auswirkungen zu sehen. Beispiel: 
 
     ```
@@ -77,6 +79,13 @@ Eine Möglichkeit zum Migrieren Ihrer vorhandenen PostgreSQL-Datenbank zu Azure 
     ```
 
 - Sie können auch die Sicherungsdatei bearbeiten, indem Sie den Befehl *set synchronous_commit = off;* am Anfang und den Befehl *set synchronous_commit = on;* am Ende einfügen. Wenn Sie die Aktivierung nicht am Ende einfügen, bevor die Apps die Daten ändern, kann dies zu Datenverlust führen.
+
+- Erwägen Sie auf dem Azure Database for PostgreSQL-Server vor der Wiederherstellung Folgendes auszuführen:
+    - Deaktivieren Sie die Nachverfolgung der Abfrageleistung, da diese Statistiken während der Migration nicht benötigt werden. Dazu können Sie „pg_stat_statements.track“, „pg_qs.query_capture_mode“ und „pgms_wait_sampling.query_capture_mode“ auf „NONE“ festlegen.
+
+    - Verwenden Sie eine SKU mit hoher Rechenleistung und viel Arbeitsspeicher, wie 32 arbeitsspeicheroptimierte virtuelle Kerne, um die Migration zu beschleunigen. Nachdem die Wiederherstellung abgeschlossen ist, können Sie die SKU problemlos wieder auf die bevorzugte Variante herunterstufen. Je höher die SKU, desto mehr Parallelität können Sie erreichen, indem Sie den entsprechenden Parameter `-j` im Befehl „pg_restore“ erhöhen. 
+
+    - Mehr IOPS auf dem Zielserver könnten die Leistung bei der Wiederherstellung verbessern. Sie können mehr IOPS bereitstellen, indem Sie die Speichergröße des Servers erhöhen. Diese Einstellung ist nicht umkehrbar, aber bedenken Sie, ob Ihre tatsächliche Workload in Zukunft von einem höheren IOPS-Wert profitieren würde.
 
 Denken Sie daran, diese Befehle in einer Testumgebung zu testen und zu überprüfen, bevor Sie sie in der Produktionsumgebung verwenden.
 

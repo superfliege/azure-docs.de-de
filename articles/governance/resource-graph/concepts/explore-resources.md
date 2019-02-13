@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie Sie mit der Abfragesprache Resource Graph Ih
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 01/23/2019
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 090ea6fa38f07dda2f3769398c082e302edebe94
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: d6ce615e23ce71f22eff3c2c70b387267792fef9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095481"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768423"
 ---
 # <a name="explore-your-azure-resources-with-resource-graph"></a>Untersuchen Ihrer Azure-Ressourcen mit Resource Graph
 
@@ -40,8 +40,11 @@ az graph query -q "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
 ```
 
 ```azurepowershell-interactive
-Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1"
+Search-AzGraph -Query "where type =~ 'Microsoft.Compute/virtualMachines' | limit 1" | ConvertTo-Json -Depth 100
 ```
+
+> [!NOTE]
+> Das Azure PowerShell-Cmdlet `Search-AzGraph` gibt standardmäßig **PSCustomObject** zurück. Damit die Ausgabe dem von der Azure-Befehlszeilenschnittstelle zurückgegebenen Ergebnis entspricht, wird das `ConvertTo-Json`-Cmdlet verwendet. Der Standardwert für **Depth** ist _2_. Bei einem Wert von _100_ sollten alle zurückgegebenen Ebenen konvertiert werden.
 
 Die JSON-Ergebnisse sind etwa wie im folgenden Beispiel strukturiert:
 

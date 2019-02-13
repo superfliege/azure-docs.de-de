@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/04/2018
 ms.author: liydu
-ms.openlocfilehash: 6bc1255c5bbb9cf74c97b88600f34e7fcd90ae4f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: e955d21132dda6caa137ad3b5de9d00ccf7ed1b4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343150"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811051"
 ---
 # <a name="mxchip-iot-devkit"></a>MXChip IoT DevKit
 
@@ -55,13 +55,13 @@ Sie können dieses Beispiel verwenden, um mithilfe von Azure IoT Hub-Gerätezwil
 
 6. Die Anzeige sieht etwa wie folgt aus: *Funktions-App: Name der Funktions-App: xxx*. Notieren Sie sich den Namen der Funktions-App; er wird in einem späteren Schritt verwendet.
 
-7. Warten Sie, bis die Bereitstellung der Azure Resource Manager-Vorlage abgeschlossen ist. Dies wird durch die Meldung *Resource Manager template deployment: Done* (Bereitstellung der Resource Manager-Vorlage: Abgeschlossen) angegeben.
+7. Warten Sie, bis die Bereitstellung der Azure Resource Manager-Vorlage abgeschlossen ist. Dies wird durch die Meldung *Resource Manager template deployment:  Done* (Bereitstellung der Resource Manager-Vorlage: Abgeschlossen) angegeben.
 
 ## <a name="deploy-function-app"></a>Bereitstellen der Funktionen-App
 
 1. Klicken Sie in Visual Studio Code auf das Dropdownmenü **Aufgabe**, und wählen Sie **Aufgabe ausführen...** - **cloud-deploy**.
 
-2. Warten Sie, bis der Funktions-App-Code hochgeladen ist; die Meldung *function app deploys: Done* (Funktions-App-Bereitstellungen: Abgeschlossen) wird angezeigt.
+2. Warten Sie, bis der Funktions-App-Code hochgeladen ist; die Meldung *function app deploys:  Done* (Funktions-App-Bereitstellungen: Abgeschlossen) wird angezeigt.
 
 ## <a name="configure-iot-hub-device-connection-string-in-devkit"></a>Konfigurieren der Verbindungszeichenfolge für das IoT Hub-Gerät in DevKit
 
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, während Ihr MXChip IoT DevKit mit Ihrem
 
 ## <a name="monitor-devkit-state-in-browser"></a>Überwachen des DevKit-Status im Browser
 
-1. Öffnen Sie in einem Webbrowser die Datei `DevKitState\web\index.html`, welche im Schritt [Voraussetzungen](#whatyouneed) erstellt wurde.
+1. Öffnen Sie in einem Webbrowser die Datei `DevKitState\web\index.html`, die im Schritt „Voraussetzungen“ erstellt wurde.
 
 2. Die folgende Webseite wird angezeigt:![Geben Sie den Namen der Funktions-App an.](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state-function-app-name.png)
 
@@ -106,7 +106,7 @@ Führen Sie die folgenden Schritte aus, während Ihr MXChip IoT DevKit mit Ihrem
 ![Beispieltestprozedur](media/iot-hub-arduino-iot-devkit-az3166-devkit-state/devkit-state.gif)
 
 > [!NOTE]
-> Sie können die unformatierte Daten des Gerätezwillings im Azure-Portal anzeigen: IoT-Hub -\> IoT-Geräte -\> *\<Ihr Gerät\>* -\> Gerätezwilling.
+> Sie können die unformatierten Daten des Gerätezwillings im Azure-Portal anzeigen: IoT Hub –\> IoT-Geräte –\> *\<Ihr Gerät\>* -\> Gerätezwilling.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

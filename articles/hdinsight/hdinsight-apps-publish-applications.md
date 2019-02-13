@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 90ba4f2197dc1b00ad2a3d234f3e81e529ae7e4f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653916"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814187"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Veröffentlichen von HDInsight-Anwendungen im Azure Marketplace
 Sie können eine Azure HDInsight-Anwendung auf einem Linux-basierten HDInsight-Cluster installieren. In diesem Artikel erfahren Sie, wie Sie eine HDInsight-Anwendung im Azure Marketplace veröffentlichen. Allgemeine Informationen zum Veröffentlichen im Azure Marketplace finden Sie unter [Veröffentlichen eines Angebots im Azure Marketplace](../marketplace/marketplace-publishers-guide.md).
@@ -75,9 +75,9 @@ Das Installationsskript muss die folgenden Merkmale aufweisen:
 * Wenn Ihr Skript Dienste auf den Knoten startet, werden die Dienste überwacht und so konfiguriert, dass sie bei Neustarts von Knoten automatisch gestartet werden.
 
 ## <a name="package-the-application"></a>Packen der Anwendung
-Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Sie verwenden die ZIP-Datei zum [Veröffentlichen der Anwendung](#publish-application). Die ZIP-Datei enthält die folgenden Dateien:
+Erstellen Sie eine ZIP-Datei mit allen Dateien, die für die Installation der HDInsight-Anwendung erforderlich sind. Sie verwenden die ZIP-Datei zum Veröffentlichen der Anwendung. Die ZIP-Datei enthält die folgenden Dateien:
 
-* [createUiDefinition.json](#define-application)
+* createUiDefinition.json
 * mainTemplate.json (Ein Beispiel finden Sie unter [Installieren von benutzerdefinierten Hadoop-Anwendungen in Azure HDInsigh](hdinsight-apps-install-custom-applications.md).)
 * Alle erforderlichen Skripts
 
@@ -94,7 +94,7 @@ So veröffentlichen Sie eine HDInsight-Anwendung:
 5. Wählen Sie **Define some Topologies to get Started** (Definieren einiger Topologien für den Einstieg). Eine Lösungsvorlage ist allen zugehörigen Topologien übergeordnet. Sie können in einem Angebot/einer Lösungsvorlage mehrere Topologien definieren. Wenn ein Angebot in die Stagingumgebung überführt wird, werden alle Topologien einbezogen. 
 6. Geben Sie einen Topologienamen ein, und wählen Sie dann **+**.
 7. Geben Sie eine neue Version ein, und wählen Sie dann **+**.
-8. Laden Sie die ZIP-Datei hoch, die Sie erstellt haben, als Sie [die Anwendung gepackt haben](#package-application).  
+8. Laden Sie die ZIP-Datei hoch, die Sie erstellt haben, als Sie die Anwendung gepackt haben.  
 9. Wählen Sie **Zertifizierung anfordern**. Das Microsoft-Zertifizierungsteam prüft die Dateien und zertifiziert die Topologie.
 
 ## <a name="next-steps"></a>Nächste Schritte

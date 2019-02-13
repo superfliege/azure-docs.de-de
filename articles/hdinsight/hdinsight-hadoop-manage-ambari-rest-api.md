@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 03b4cc919086ff2a8eb038ad9c4f45200e9a6246
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 79bc9310eb3f7c8dd2b295405cea70c514d343d3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715108"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820865"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>Verwalten von HDInsight-Clustern mithilfe der Apache Ambari-REST-API
 
@@ -60,7 +60,7 @@ Die Basis-URI für die Ambari-REST-API auf HDInsight lautet https://CLUSTERNAME.
 >
 > `https://MyCluster.azurehdinsight.net/api/v1/clusters/mycluster`
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Zum Herstellen einer Verbindung mit Ambari in HDInsight ist HTTPS erforderlich. Verwenden Sie den Administratorkontonamen (Standardname: **Administrator**) und das Kennwort, die Sie während der Clustererstellung bereitgestellt haben.
 
@@ -132,7 +132,7 @@ $respObj.Clusters.health_report
 ```
 
 > [!NOTE]  
-> Während die meisten Beispiele in diesem Dokument `ConvertFrom-Json` verwenden, um Elemente aus dem Antwortdokument anzuzeigen, verwendet das Beispiel zum [Aktualisieren der Ambari-Konfiguration](#example-update-ambari-configuration) jq. Jq wird in diesem Beispiel verwendet, um eine neue Vorlage aus dem JSON-Antwortdokument zu erstellen.
+> Während in den meisten Beispielen in diesem Dokument `ConvertFrom-Json` verwendet wird, um Elemente aus dem Antwortdokument anzuzeigen, wird im Beispiel zum Aktualisieren der Ambari-Konfiguration jq verwendet. Jq wird in diesem Beispiel verwendet, um eine neue Vorlage aus dem JSON-Antwortdokument zu erstellen.
 
 Eine vollständige Referenz der REST-API finden Sie unter [Referenz zur Apache Ambari-API V1](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md).
 

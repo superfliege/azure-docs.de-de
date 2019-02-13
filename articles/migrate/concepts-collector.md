@@ -4,15 +4,15 @@ description: Informationen zur Collectorappliance in Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/14/2019
+ms.date: 02/04/2019
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: b9387814b8bdab56117dec27de1e3d5b44ce39b4
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 0568df92db2114c57a0aa027ade369e4b256af84
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262607"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813329"
 ---
 # <a name="about-the-collector-appliance"></a>Informationen zur Collectorappliance
 
@@ -32,7 +32,7 @@ Die Collectorappliance ist kontinuierlich mit dem Azure Migrate-Projekt verbunde
 - Dieses Modell ist für die Sammlung von Leistungsdaten nicht von den Statistikeinstellungen von vCenter Server abhängig.
 - Sie können die kontinuierliche Profilerstellung jederzeit über den Collector beenden.
 
-**Sofortige Ergebnisse:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um sofortige Ergebnisse zu erzielen. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
+**Schnellbewertungen:** Mit der Appliance für die kontinuierliche Ermittlung können Sie nach Abschluss der Ermittlung (dauert je nach Anzahl von virtuellen Computern einige Stunden) sofort Bewertungen erstellen. Da die Erfassung von Leistungsdaten bereits beim Start der Ermittlung beginnt, empfiehlt es sich, das Größenkriterium in der Bewertung auf *Wie lokal* festzulegen, um Schnellbewertungen zu erhalten. Bei leistungsbasierten Bewertungen empfiehlt es sich, nach dem Start der Ermittlung mindestens einen Tag zu warten, um zuverlässige Größenempfehlungen zu erhalten.
 
 Die Appliance erfasst nur Leistungsdaten kontinuierlich. Sie erkennt keine Konfigurationsänderungen in der lokalen Umgebung (etwa hinzugefügte VMs, Löschvorgänge, hinzugefügte Datenträger usw.). Wenn sich die Konfiguration in der lokalen Umgebung ändert, können Sie wie folgt vorgehen, damit die Änderungen im Portal berücksichtigt werden:
 
@@ -65,7 +65,7 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
 - **Internetverbindung prüfen**: Der Collector kann eine direkte Verbindung mit dem Internet herstellen oder über einen Proxy.
     - Bei der Voraussetzungsprüfung wird die Konnektivität mit [erforderlichen und optionalen URLs](#urls-for-connectivity) überprüft.
     - Wenn Sie eine direkte Verbindung mit dem Internet haben, müssen Sie lediglich sicherstellen, dass der Collector die erforderlichen URLs erreichen kann.
-    - Wenn Sie eine Verbindung über einen Proxy herstellen, sollten Sie die [nachfolgenden Anforderungen](#connect-via-a-proxy) beachten.
+    - Wenn Sie eine Verbindung über einen Proxy herstellen, sollten Sie die nachfolgenden Anforderungen beachten.
 - **Überprüfen der Zeitsynchronisierung:** Der Collector muss mit dem Internetzeitserver synchronisiert sein, um sicherzustellen, dass die Anforderungen an den Dienst authentifiziert werden.
     - Die URL „portal.azure.com“ muss über den Collector erreichbar sein, damit die Uhrzeit überprüft werden kann.
     - Wenn der Computer nicht synchronisiert wird, müssen Sie die Uhrzeit auf der Collector-VM an die aktuelle Uhrzeit anpassen. Öffnen Sie hierzu auf der VM eine Eingabeaufforderung für Administratoren, und führen Sie **w32tm /tz** zum Überprüfen der Zeitzone aus. Führen Sie **w32tm /resync** zum Synchronisieren der Zeit aus.
@@ -75,7 +75,7 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
     - Der Collectordienst stellt eine Verbindung mit vCenter Server her, sammelt die VM-Metadaten und -Leistungsdaten und sendet diese an den Azure Migrate-Dienst.
 - **Überprüfen der Installation von VMware PowerCLI 6.5:** Das PowerShell-Modul VMware PowerCLI 6.5 muss auf der Collector-VM installiert sein, damit eine Kommunikation mit vCenter Server möglich ist.
     - Wenn der Collector auf die URLs zugreifen kann, die für die Installation des Moduls erforderlich sind, erfolgt die Installation automatisch während der Bereitstellung des Collectors.
-    - Wenn der Collector das Modul während der Bereitstellung nicht installieren kann, müssen Sie es [manuell installieren](#install-vwware-powercli-module-manually).
+    - Wenn der Collector das Modul während der Bereitstellung nicht installieren kann, müssen Sie es manuell installieren.
 - **Überprüfen der Verbindung mit vCenter Server:** Der Collector muss eine Verbindung mit vCenter Server herstellen und VMs, zugehörige Metadaten und Leistungsindikatoren abfragen können. [Überprüfen Sie die Voraussetzungen](#connect-to-vcenter-server) zum Herstellen einer Verbindung.
 
 
@@ -101,8 +101,6 @@ Der Collector muss einige Voraussetzungsprüfungen bestehen, um sicherzustellen,
     ![Zertifikatspeicher](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. Überprüfen Sie, ob das Zertifikat wie erwartet importiert wurde und ob die Voraussetzungsprüfung für die Internetkonnektivität wie erwartet funktioniert.
-
-
 
 
 ### <a name="urls-for-connectivity"></a>URLs für Konnektivität
@@ -150,6 +148,79 @@ In dem folgenden Diagramm und der folgenden Tabelle finden Sie eine Übersicht �
 Azure Migrate-Dienst | TCP 443 | Der Collector kommuniziert über SSL-Port 443 mit dem Azure Migrate-Dienst.
 vCenter Server | TCP 443 | Der Collector muss mit vCenter Server kommunizieren können.<br/><br/> Standardmäßig stellt er über Port 443 eine Verbindung mit vCenter her.<br/><br/> Wenn vCenter Server an einem anderen Port lauscht, sollte dieser Port auf dem Collector als ausgehender Port verfügbar sein.
 RDP | TCP 3389 |
+
+## <a name="collected-metadata"></a>Gesammelte Metadaten
+
+Die Collectorappliance ermittelt folgende Konfigurationsmetadaten für jede VM. Die Konfigurationsdaten für die VMs sind eine Stunde nach Beginn der Ermittlung verfügbar.
+
+- Anzeigename der VM (in vCenter Server)
+- Inventarpfad der VM (der Host/Ordner in vCenter Server)
+- IP-Adresse
+- MAC-Adresse
+- Betriebssystem
+- Anzahl der Kerne, Datenträger, NICs
+- Arbeitsspeichergröße, Datenträgergrößen
+- Leistungsindikatoren der VM, Datenträger und Netzwerk.
+
+### <a name="performance-counters"></a>Leistungsindikatoren
+
+ Die Collectorappliance sammelt die folgenden Leistungsindikatoren für jede VM vom ESXi-Host in einem Intervall von 20 Sekunden. Diese Leistungsindikatoren sind vCenter-Leistungsindikatoren und obwohl die Terminologie von Durchschnitt spricht, handelt es sich bei den 20-Sekunden-Stichproben um Echtzeit-Leistungsindikatoren. Die Leistungsdaten für die virtuellen Computer stehen im Portal zwei Stunden nach dem Starten der Ermittlung zur Verfügung. Bei leistungsbasierten Bewertungen wird dringend empfohlen, mindestens einen Tag mit deren Erstellung zu warten, um korrekte Größenempfehlungen zu erhalten. Wenn Sie sofortige Ergebnisse wünschen, können Sie Bewertungen erstellen, bei denen das Größenkriterium auf *Wie lokal* festgelegt ist, wodurch die Leistungsdaten für die korrekte Größenanpassung nicht berücksichtigt werden.
+
+**Leistungsindikator** |  **Auswirkung auf die Bewertung**
+--- | ---
+cpu.usage.average | Empfohlene VM-Größe und -Kosten  
+mem.usage.average | Empfohlene VM-Größe und -Kosten  
+virtualDisk.read.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.write.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberReadAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+virtualDisk.numberWriteAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
+net.received.average | Berechnet die VM-Größe                          
+net.transmitted.average | Berechnet die VM-Größe     
+
+Die vollständige Liste der von Azure Migrate erfassten VMware-Zähler wird unten angezeigt:
+
+**Kategorie** |  **Metadaten** | **vCenter-Datenpunkt**
+--- | --- | ---
+Computerdetails | VM-ID | vm.Config.InstanceUuid
+Computerdetails | Name des virtuellen Computers | vm.Config.Name
+Computerdetails | vCenter Server-ID | VMwareClient.InstanceUuid
+Computerdetails |  VM-Beschreibung |  vm.Summary.Config.Annotation
+Computerdetails | Lizenzproduktname | vm.Client.ServiceContent.About.LicenseProductName
+Computerdetails | Betriebssystemtyp | vm.Summary.Config.GuestFullName
+Computerdetails | Betriebssystemversion | vm.Summary.Config.GuestFullName
+Computerdetails | Starttyp | vm.Config.Firmware
+Computerdetails | Anzahl von Kernen | vm.Config.Hardware.NumCPU
+Computerdetails | Megabytes Arbeitsspeicher | vm.Config.Hardware.MemoryMB
+Computerdetails | Anzahl der Datenträger | vm.Config.Hardware.Device.ToList().FindAll(x => x entspricht VirtualDisk).count
+Computerdetails | Liste der Datenträgergrößen | vm.Config.Hardware.Device.ToList().FindAll(x => x entspricht VirtualDisk)
+Computerdetails | Liste der Netzwerkadapter | vm.Config.Hardware.Device.ToList().FindAll(x => x entspricht VirtualEthernetCard)
+Computerdetails | CPU-Auslastung | cpu.usage.average
+Computerdetails | Arbeitsspeichernutzung | mem.usage.average
+Datenträgerdetails (pro Datenträger) | Datenträgerschlüsselwert | disk.Key
+Datenträgerdetails (pro Datenträger) | Anzahl der Datenträgereinheiten | disk.UnitNumber
+Datenträgerdetails (pro Datenträger) | Datenträgercontroller-Schlüsselwert | disk.ControllerKey.Value
+Datenträgerdetails (pro Datenträger) | Bereitgestellte Gigabytes | virtualDisk.DeviceInfo.Summary
+Datenträgerdetails (pro Datenträger) | Name des Datenträgers | Dieser Wert wird mithilfe von disk.UnitNumber, disk.Key und disk.ControllerKey.Value generiert.
+Datenträgerdetails (pro Datenträger) | Anzahl der Lesevorgänge pro Sekunde | virtualDisk.numberReadAveraged.average
+Datenträgerdetails (pro Datenträger) | Anzahl der Schreibvorgänge pro Sekunde | virtualDisk.numberWriteAveraged.average
+Datenträgerdetails (pro Datenträger) | Lesedurchsatz in Megabyte pro Sekunde | virtualDisk.read.average
+Datenträgerdetails (pro Datenträger) | Schreibdurchsatz in Megabyte pro Sekunde | virtualDisk.write.average
+Netzwerkadapterdetails (pro NIC) | Netzwerkadaptername | nic.Key
+Netzwerkadapterdetails (pro NIC) | MAC-Adresse | ((VirtualEthernetCard)nic).MacAddress
+Netzwerkadapterdetails (pro NIC) | IPv4-Adressen | vm.Guest.Net
+Netzwerkadapterdetails (pro NIC) | IPv6-Adressen | vm.Guest.Net
+Netzwerkadapterdetails (pro NIC) | Lesedurchsatz in Megabyte pro Sekunde | net.received.average
+Netzwerkadapterdetails (pro NIC) | Schreibdurchsatz in Megabyte pro Sekunde | net.transmitted.average
+Inventurpfaddetails | NAME | container.GetType().Name
+Inventurpfaddetails | Typ des untergeordneten Objekts | container.ChildType
+Inventurpfaddetails | Referenzdetails | container.MoRef
+Inventurpfaddetails | Vollständiger Inventurpfad | container.Name mit vollständigem Pfad
+Inventurpfaddetails | Details des übergeordneten Objekts | Container.Parent
+Inventurpfaddetails | Ordnerdetails für einzelne VMs | ((Folder)container).ChildEntity.Type
+Inventurpfaddetails | Datacenterdetails für einzelne VM-Ordner | ((Datacenter)container).VmFolder
+Inventurpfaddetails | Datacenterdetails für einzelne Hostordner | ((Datacenter)container).HostFolder
+Inventurpfaddetails | Clusterdetails für einzelne Hosts | ((ClusterComputeResource)container).Host)
+Inventurpfaddetails | Hostdetails für einzelne VMs | ((HostSystem)container).Vm
 
 
 ## <a name="securing-the-collector-appliance"></a>Sichern der Collectorappliance
@@ -200,34 +271,6 @@ Nach der Einrichtung der Appliance können Sie die Ermittlung durchführen. So f
 - VMs werden ermittelt, und die zugehörigen Metadaten und Leistungsdaten werden an Azure gesendet. Diese Aktionen sind Teil eines Sammlungsauftrags.
     - Der Collectorappliance wird eine bestimmte Collector-ID zugeordnet, die ermittlungsübergreifend für einen bestimmten Computer beständig ist.
     - Einem aktuell ausgeführten Sammlungsauftrag wird eine bestimmte Sitzungs-ID zugeordnet. Die ID ändert sich bei jedem Sammlungsauftrag und kann zur Problembehandlung verwendet werden.
-
-### <a name="collected-metadata"></a>Gesammelte Metadaten
-
-Die Collectorappliance ermittelt folgende Konfigurationsmetadaten für jede VM. Die Konfigurationsdaten für die VMs sind eine Stunde nach Beginn der Ermittlung verfügbar.
-
-- Anzeigename der VM (in vCenter Server)
-- Inventarpfad der VM (der Host/Ordner in vCenter Server)
-- IP-Adresse
-- MAC-Adresse
-- Betriebssystem
-- Anzahl der Kerne, Datenträger, NICs
-- Arbeitsspeichergröße, Datenträgergrößen
-- Leistungsindikatoren der VM, Datenträger und Netzwerk.
-
-#### <a name="performance-counters"></a>Leistungsindikatoren
-
- Die Collectorappliance sammelt die folgenden Leistungsindikatoren für jede VM vom ESXi-Host in einem Intervall von 20 Sekunden. Diese Leistungsindikatoren sind vCenter-Leistungsindikatoren und obwohl die Terminologie von Durchschnitt spricht, handelt es sich bei den 20-Sekunden-Stichproben um Echtzeit-Leistungsindikatoren. Die Leistungsdaten für die virtuellen Computer stehen im Portal zwei Stunden nach dem Starten der Ermittlung zur Verfügung. Bei leistungsbasierten Bewertungen wird dringend empfohlen, mindestens einen Tag mit deren Erstellung zu warten, um korrekte Größenempfehlungen zu erhalten. Wenn Sie sofortige Ergebnisse wünschen, können Sie Bewertungen erstellen, bei denen das Größenkriterium auf *Wie lokal* festgelegt ist, wodurch die Leistungsdaten für die korrekte Größenanpassung nicht berücksichtigt werden.
-
-**Leistungsindikator** |  **Auswirkung auf die Bewertung**
---- | ---
-cpu.usage.average | Empfohlene VM-Größe und -Kosten  
-mem.usage.average | Empfohlene VM-Größe und -Kosten  
-virtualDisk.read.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.write.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.numberReadAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-virtualDisk.numberWriteAveraged.average | Berechnet die Datenträgergröße, Speicherkosten und die VM-Größe
-net.received.average | Berechnet die VM-Größe                          
-net.transmitted.average | Berechnet die VM-Größe     
 
 ## <a name="next-steps"></a>Nächste Schritte
 

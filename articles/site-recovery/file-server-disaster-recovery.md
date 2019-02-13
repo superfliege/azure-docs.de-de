@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: c6db0b9dda9f383ddc062c41bae0be0b56f7e69d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53794089"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508367"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -39,13 +39,13 @@ Im obigen Diagramm sind mehrere als Mitglieder bezeichnete Dateiserver aktiv an 
 
 * **Replizieren eines Dateiservers mit Site Recovery**: Dateiserver können mithilfe von Site Recovery in Azure repliziert werden. Wenn der Zugriff auf einen oder mehrere lokale Dateiserver nicht möglich ist, können die Wiederherstellungs-VMs in Azure aktiviert werden. Die VMs können dann lokal Anforderungen von Clients verarbeiten, sofern Site-to-Site-VPN-Konnektivität besteht und Active Directory in Azure konfiguriert ist. Sie können diese Methode für eine mit DFSR konfigurierte Umgebung oder eine einfache Dateiserverumgebung ohne DFSR verwenden. 
 
-* **Erweitern von DFSR auf eine Azure-IaaS-VM**:  In einer geclusterten Dateiserverumgebung, in der DFSR implementiert ist, können Sie die lokale DFSR-Implementierung auf Azure ausweiten. Eine Azure-VM kann dann die Dateiserverrolle übernehmen. 
+* **Erweitern von DFSR auf eine Azure-IaaS-VM**: In einer geclusterten Dateiserverumgebung, in der DFSR implementiert ist, können Sie die lokale DFSR-Implementierung auf Azure ausweiten. Eine Azure-VM kann dann die Dateiserverrolle übernehmen. 
 
     * Nach dem Behandeln der Abhängigkeiten von der Site-to-Site-VPN-Konnektivität und Active Directory sowie dem Implementieren von DFSR können Clients im Fall der Nichtverfügbarkeit von lokalen Dateiservern eine Verbindung mit der Azure-VM herstellen, die die Anforderungen verarbeitet.
 
     * Sie können diesen Ansatz verwenden, wenn die Konfigurationen Ihrer VMs nicht von Site Recovery unterstützt werden. Ein Beispiel ist ein freigegebener Clusterdatenträger, der manchmal in Dateiserverumgebungen gemeinsam verwendet wird. DFSR funktioniert auch gut in Umgebungen mit geringer Bandbreite und mittlerer Änderungsrate. Hierbei müssen Sie die zusätzlichen Kosten der Nutzung einer Azure-VM, die immer ausgeführt wird, berücksichtigen. 
 
-* **Verwenden der Azure-Dateisynchronisierung zum Replizieren der Dateien:**  Wenn Sie die Nutzung der Cloud planen oder bereits eine Azure-VM einsetzen, können Sie die Azure-Dateisynchronisierung verwenden. Die Azure-Dateisynchronisierung bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)-Protokoll (SMB) – ein Protokoll nach Industriestandard – zugegriffen werden kann. Azure-Dateifreigaben können dann gleichzeitig über Cloudbereitstellungen oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. 
+* **Verwenden der Azure-Dateisynchronisierung zum Replizieren Ihrer Dateien**: Wenn Sie die Nutzung der Cloud planen oder bereits eine Azure-VM einsetzen, können Sie die Azure-Dateisynchronisierung verwenden. Die Azure-Dateisynchronisierung bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)-Protokoll (SMB) – ein Protokoll nach Industriestandard – zugegriffen werden kann. Azure-Dateifreigaben können dann gleichzeitig über Cloudbereitstellungen oder lokale Bereitstellungen von Windows, Linux und macOS eingebunden werden. 
 
 Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateiserverumgebung.
 
@@ -65,16 +65,16 @@ Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateise
 Da die Site Recovery-Replikation anwendungsunabhängig ist, gelten diese Empfehlungen voraussichtlich auch für die folgenden Szenarien.
 | Quelle    |Sekundärer Standort    |Azure
 |---------|---------|---------|
-|Azure| -|JA|
-|Hyper-V|   JA |JA
-|VMware |JA|   JA
-|Physischer Server|   JA |JA
+|Azure| -|Ja|
+|Hyper-V|   Ja |Ja
+|VMware |Ja|   Ja
+|Physischer Server|   Ja |Ja
  
 
 > [!IMPORTANT]
 > Bevor Sie mit einem der folgenden drei Ansätze fortfahren, sollten Sie sicherstellen, dass die folgenden Abhängigkeiten geregelt sind.
 
-**Site-to-Site-Konnektivität**:  Es muss eine direkte Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk hergestellt werden, um die Kommunikation zwischen Servern zu ermöglichen. Verwenden Sie eine sichere Site-to-Site-VPN-Verbindung mit einem virtuellen Azure-Netzwerk, das als Notfallwiederherstellungsstandort dient. Weitere Informationen finden Sie im Artikel zum [Herstellen einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Standort und einem virtuellen Azure-Netzwerk](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
+**Site-to-Site-Konnektivität**: Es muss eine direkte Verbindung zwischen dem lokalen Standort und dem Azure-Netzwerk hergestellt werden, um die Kommunikation zwischen Servern zu ermöglichen. Verwenden Sie eine sichere Site-to-Site-VPN-Verbindung mit einem virtuellen Azure-Netzwerk, das als Notfallwiederherstellungsstandort dient. Weitere Informationen finden Sie im Artikel zum [Herstellen einer Site-to-Site-VPN-Verbindung zwischen einem lokalen Standort und einem virtuellen Azure-Netzwerk](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
 
 **Active Directory**: DFSR ist von Active Directory abhängig. Dies bedeutet, dass die Active Directory-Gesamtstruktur mit lokalen Domänencontrollern auf den Notfallwiederherstellungsstandort in Azure ausgedehnt wird. Selbst wenn Sie DSFR nicht verwenden, müssen Sie diese Schritte ausführen, falls den entsprechenden Benutzern Zugriff gewährt oder der Zugriff dieser Benutzer überprüft werden muss. Weitere Informationen finden Sie unter [Verwenden von Azure Site Recovery zum Schützen von Active Directory und DNS](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
 
@@ -94,7 +94,7 @@ Azure Files kann herkömmliche lokale Dateiserver oder NAS-Geräte vollständig 
 
 In den folgenden Schritten wird die Verwendung der Dateisynchronisierung kurz beschrieben:
 
-1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Notfallwiederherstellung und erzwungenes Failover (Vorschau) in Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Erstellen Sie eine Dateifreigabe.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
 3. [Starten Sie die Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide) auf Ihrem Azure-Dateiserver.
 4. Erstellen Sie eine Synchronisierungsgruppe. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe darstellt. Eine Synchronisierungsgruppe muss auch einen Serverendpunkt enthalten, der einen Pfad auf einem Windows-Server darstellt.
@@ -143,7 +143,7 @@ So integrieren Sie die Dateisynchronisierung in Site Recovery:
 
 Gehen Sie zur Verwendung der Dateisynchronisierung wie folgt vor:
 
-1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (empfohlen) für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-disaster-recovery-guidance?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+1. Führen Sie das [Erstellen eines Speicherkontos in Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) durch. Wenn Sie georedundanten Speicher mit Lesezugriff (empfohlen) für Ihre Speicherkonten gewählt haben, verfügen Sie im Notfall über Lesezugriff auf Ihre Daten in der sekundären Region. Weitere Informationen finden Sie unter [Notfallwiederherstellung und erzwungenes Failover (Vorschau) in Azure Storage](../storage/common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiless%2ftoc.json).
 2. [Erstellen Sie eine Dateifreigabe.](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share)
 3. [Stellen Sie die Dateisynchronisierung auf Ihrem lokalen Dateiserver bereit.](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide)
 4. Erstellen Sie eine Synchronisierungsgruppe. Endpunkte innerhalb einer Synchronisierungsgruppe bleiben miteinander synchron. Eine Synchronisierungsgruppe muss mindestens einen Cloudendpunkt enthalten, der eine Azure-Dateifreigabe darstellt. Die Synchronisierungsgruppe muss auch einen Serverendpunkt enthalten, der einen Pfad auf dem lokalen Windows-Server darstellt.

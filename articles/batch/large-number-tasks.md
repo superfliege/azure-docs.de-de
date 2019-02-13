@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 08/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: b2daba1e20431edae5aacc8295fdc542d1e73d33
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ed04774969f72f1d6037a350f019d81d812d73f6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460504"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809298"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Übermitteln einer großen Anzahl von Aufgaben an einen Batch-Auftrag
 
@@ -37,8 +37,8 @@ Die maximale Größe der Aufgabensammlung, die Sie in einem einzigen Aufruf hinz
 * Die folgenden Batch-APIs begrenzen die Sammlung auf **100 Aufgaben**. Der Grenzwert kann je nach Größe der Aufgaben auch kleiner sein – z.B. wenn die Aufgaben viele Ressourcendateien oder Umgebungsvariablen umfassen.
 
     * [REST-API](/rest/api/batchservice/task/addcollection)
-    * [Python-API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python#azure_batch_operations_TaskOperations_add_collection)
-    * [Node.js-API](/javascript/api/azure-batch/task?view=azure-node-latest#addcollection)
+    * [Python-API](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python)
+    * [Node.js-API](/javascript/api/azure-batch/task?view=azure-node-latest)
 
   Wenn Sie diese APIs verwenden, müssen Sie die Logik zum Aufteilen der Anzahl von Aufgaben bereitstellen, um den Sammlungsgrenzwert einzuhalten. Sie müssen ebenfalls die Logik zum Behandeln von Fehlern und Wiederholungen bereitstellen, falls beim Hinzufügen von Aufgaben Fehler auftreten. Wenn eine Aufgabensammlung zu groß zum Hinzufügen ist, generiert die Anforderung einen Fehler und sollte mit einer geringeren Anzahl von Aufgaben wiederholt werden.
 
@@ -55,7 +55,7 @@ Das Hinzufügen einer großen Sammlung von Aufgaben zu einem Auftrag kann einige
 
 * **Aufgabengröße**: Das Hinzufügen großer Aufgaben dauert länger als das Hinzufügen kleinerer Aufgaben. Um die Aufgaben in einer Sammlung zu verkleinern, können Sie die Befehlszeile für die Aufgabe vereinfachen, die Anzahl von Umgebungsvariablen reduzieren oder Anforderungen für die Aufgabenausführung effizienter verarbeiten. Anstatt beispielsweise eine große Anzahl von Ressourcendateien zu verwenden, installieren Sie Aufgabenabhängigkeiten mit einer [Startaufgabe](batch-api-basics.md#start-task) im Pool, oder verwenden Sie ein [Anwendungspaket](batch-application-packages.md) oder einen [Docker-Container](batch-docker-container-workloads.md).
 
-* **Anzahl von parallelen Vorgängen**: Je nach Batch-API können Sie den Durchsatz verbessern, indem Sie die Maximalzahl von Vorgängen erhöhen, die vom Batch-Client gleichzeitig durchgeführt werden. Konfigurieren Sie diese Einstellung mithilfe der Eigenschaft [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) in der .NET API oder mit dem `threads`-Parameter in Methoden wie z.B. [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python#add-collection) in der Batch Python SDK-Erweiterung. (Diese Eigenschaft ist im nativen Batch Python SDK nicht verfügbar.) Standardmäßig ist diese Eigenschaft auf 1 festgelegt, Sie können diesen Wert jedoch erhöhen, um den Durchsatz von Vorgängen zu verbessern. Der Nachteil des erhöhten Durchsatzes ist der höhere Verbrauch an Netzwerkbandbreite und CPU-Leistung. Der Aufgabendurchsatz erhöht sich um das bis zu Hundertfache des `MaxDegreeOfParallelism`- oder des `threads`-Werts. In der Praxis sollten Sie die Anzahl gleichzeitiger Vorgänge auf einen Wert unter 100 festlegen. 
+* **Anzahl von parallelen Vorgängen**: Je nach Batch-API können Sie den Durchsatz verbessern, indem Sie die Maximalzahl von Vorgängen erhöhen, die vom Batch-Client gleichzeitig durchgeführt werden. Konfigurieren Sie diese Einstellung mithilfe der Eigenschaft [BatchClientParallelOptions.MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) in der .NET API oder mit dem `threads`-Parameter in Methoden wie z.B. [TaskOperations.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) in der Batch Python SDK-Erweiterung. (Diese Eigenschaft ist im nativen Batch Python SDK nicht verfügbar.) Standardmäßig ist diese Eigenschaft auf 1 festgelegt, Sie können diesen Wert jedoch erhöhen, um den Durchsatz von Vorgängen zu verbessern. Der Nachteil des erhöhten Durchsatzes ist der höhere Verbrauch an Netzwerkbandbreite und CPU-Leistung. Der Aufgabendurchsatz erhöht sich um das bis zu Hundertfache des `MaxDegreeOfParallelism`- oder des `threads`-Werts. In der Praxis sollten Sie die Anzahl gleichzeitiger Vorgänge auf einen Wert unter 100 festlegen. 
  
   Die Azure Batch-CLI-Erweiterung mit Batch-Vorlagen erhöht die Anzahl gleichzeitiger Vorgänge automatisch basierend auf der Anzahl verfügbarer Kerne, aber diese Eigenschaft kann in der CLI nicht konfiguriert werden. 
 
@@ -155,7 +155,7 @@ tasks=list()
 
 ```
 
-Fügen Sie die Aufgabensammlung mithilfe von [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python#add-collection) hinzu. Legen Sie den `threads`-Parameter fest, um die Anzahl von gleichzeitigen Vorgängen zu erhöhen:
+Fügen Sie die Aufgabensammlung mithilfe von [task.add_collection](/python/api/azure-batch/azure.batch.operations.TaskOperations?view=azure-python) hinzu. Legen Sie den `threads`-Parameter fest, um die Anzahl von gleichzeitigen Vorgängen zu erhöhen:
 
 ```python
 try:
@@ -164,7 +164,7 @@ except Exception as e:
     raise e
 ```
 
-Die Batch Python SDK-Erweiterung unterstützt auch das Hinzufügen von Aufgabenparametern zu einem Auftrag mithilfe einer JSON-Spezifikation für eine Aufgabenfactory. Konfigurieren Sie beispielsweise Auftragsparameter für einen parameterbasierten Sweepauftrag, ähnlich dem im vorherigen Beispiel für die [Batch-CLI-Vorlage](#example-batch-cli-template):
+Die Batch Python SDK-Erweiterung unterstützt auch das Hinzufügen von Aufgabenparametern zu einem Auftrag mithilfe einer JSON-Spezifikation für eine Aufgabenfactory. Konfigurieren Sie beispielsweise Auftragsparameter für einen parameterbasierten Sweepauftrag, ähnlich dem im vorherigen Beispiel für die Batch-CLI-Vorlage:
 
 ```python
 parameter_sweep = {

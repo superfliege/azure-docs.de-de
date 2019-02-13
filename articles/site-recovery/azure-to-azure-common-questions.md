@@ -7,19 +7,30 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: a277e392acb8587e05bb78d1d8dacce40bf91f56
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449553"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770485"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
 Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Bereitstellen der Notfallwiederherstellung von virtuellen Azure-Computern in eine andere Azure-Region mithilfe von Azure Site Recovery. Sollten Sie nach der Lektüre dieses Artikels noch Fragen haben, stellen Sie diese bitte im [Azure Recovery Services-Forum](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr).
 
 
+## <a name="in-this-article"></a>Themen in diesem Artikel 
+1.  **[Allgemeine Fragen zu „Azure-zu-Azure“](#general)** 
+1.  **[Replikation](#replication)** 
+1.  **[Replikationsrichtlinie](#replication-policy)** 
+1.  **[Multi-VM-Konsistenz](#multi-vm-consistency)** 
+1.  **[Wiederherstellungsplan](#recovery-plan)** 
+1.  **[Erneuter Schutz und Failback](#reprotection-and-failback)** 
+1.  **[Sicherheit](#security)** 
+
+
 ## <a name="general"></a>Allgemein
+
 ### <a name="how-is-site-recovery-priced"></a>Wie werden Site Recovery-Preise kalkuliert?
 Nähere Informationen finden Sie unter [Site Recovery – Preise](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
 
@@ -198,7 +209,7 @@ Dies hängt von der Situation ab. Wenn zum Beispiel der virtuelle Computer der Q
 ### <a name="how-much-time-does-it-take-to-fail-back"></a>Wie lange dauert ein Failback?
 Nach dem erneuten Schützen ist die Zeitspanne für das Failback in der Regel mit der Zeit für das Failover von der primären Region in eine sekundäre Region vergleichbar. 
 
-## <a name="security"></a>Sicherheit
+## <a name="a-namesecuritysecurity"></a><a name="security">Sicherheit
 ### <a name="is-replication-data-sent-to-the-site-recovery-service"></a>Werden Replikationsdaten an den Site Recovery-Dienst gesendet?
 Nein, Site Recovery fängt replizierte Daten nicht ab und besitzt keine Informationen dazu, was auf Ihren virtuellen Computern ausgeführt wird. Nur die Metadaten, die zum Orchestrieren von Replikation und Failover erforderlich sind, werden an den Site Recovery-Dienst gesendet.  
 Site Recovery ist nach ISO 27001:2013, 27018, HIPAA und DPA zertifiziert und durchläuft gerade die Prüfungen für SOC2 und FedRAMP JAB.

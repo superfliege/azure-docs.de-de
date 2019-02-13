@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: 9877698c8c6af68c5ffd88dab37150274ce87b37
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8a0300eeda49d85ffc08db8f285550e217613dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077333"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821614"
 ---
 # <a name="secure-your-key-vault"></a>Schützen einer Key Vault-Instanz
 
@@ -34,7 +34,7 @@ Für die Authentifizierung wird sowohl auf der Verwaltungs- als auch auf der Dat
 
 Im Anschluss finden Sie eine kurze Übersicht über die behandelten Themen:
 
-[Authentifizierung über Azure Active Directory](#authentication-using-azure-active-directory): In diesem Abschnitt erfahren Sie, wie sich ein Aufrufer mit Azure Active Directory authentifiziert, um über die Verwaltungs- oder Datenebene auf eine Key Vault-Instanz zuzugreifen. 
+Authentifizierung über Azure Active Directory: In diesem Abschnitt erfahren Sie, wie sich ein Aufrufer bei Azure Active Directory authentifiziert, um über die Verwaltungs- oder Datenebene auf eine Schlüsseltresorinstanz zuzugreifen. 
 
 Für die Authentifizierung verwenden beide Ebenen Azure Active Directory (Azure AD). Für die Autorisierung wird auf der Verwaltungsebene die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, während auf der Datenebene Key Vault-Zugriffsrichtlinien zum Einsatz kommen.
 

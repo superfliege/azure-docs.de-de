@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: f690625fda07bdbff671567f0292cc8e1cabeda1
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 62bda3a1c9cb9d53578c2d471b9e63d1f0873234
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078694"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663297"
 ---
-# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Vorschau: Lokaler Azure Active Directory-Kennwortschutz – häufig gestellte Fragen
+# <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Vorschau: Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
 |     |
 | --- |
@@ -28,15 +28,15 @@ ms.locfileid: "55078694"
 
 **F: Wann erreicht der Azure AD-Kennwortschutz die allgemeine Verfügbarkeit (General Availability, GA)?**
 
-Wir haben noch kein Datum für die allgemeine Verfügbarkeit angekündigt.
+Die allgemeine Verfügbarkeit ist für das 1. Quartal 2019 (vor Ende März 2019) geplant. Vielen Dank an alle Benutzer, die uns bisher Feedback zu dieser Funktion haben zukommen lassen. Wir wissen das zu schätzen!
 
-**F: Wird lokaler Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
+**F: Wird der lokale Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
 
-Nein. Lokaler Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt.
+Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt.
 
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
-Nicht unterstützt. Sobald der Azure AD-Kennwortschutz einmal bereitgestellt und aktiviert ist, trifft er keine Unterscheidungen mehr – alle Benutzer erhalten dieselben Sicherheitsvorteile.
+Nicht unterstützt. Sobald der Azure AD-Kennwortschutz einmal bereitgestellt und aktiviert ist, trifft er keine Unterscheidungen mehr – alle Benutzer genießen dieselben Sicherheitsvorteile.
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 
@@ -62,6 +62,6 @@ Diese Anforderung wird durch das Kernverhalten von Windows verursacht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie eine Frage zum lokalen Azure AD-Kennwortschutz haben, die hier nicht beantwortet wird, senden Sie unten ein Feedbackelement ab – vielen Dank!
+Wenn Sie eine Frage zum lokalen Azure AD-Kennwortschutz haben, die hier nicht beantwortet wird, senden Sie uns unten einen Feedbackkommentar. Vielen Dank!
 
 [Bereitstellen des Kennwortschutzes für Azure AD](howto-password-ban-bad-on-premises-deploy.md)

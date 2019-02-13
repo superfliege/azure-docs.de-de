@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
-ms.openlocfilehash: d59bc20ea745412f8f2549e0359483d1dd3e608d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: d77cdd7781f3a371d6089573a16ba642fb1c774c
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912781"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769867"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -85,13 +85,13 @@ Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
 | NAME | Begrenzung | Notizen | 
 | ---- | ----- | ----- | 
-| Triggerparallelität | 50, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für einen Trigger aktivieren, ist die Standardbegrenzung 25. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Triggerparallelitäts-Grenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
-| Maximale Anzahl von wartenden Ausführungen | 100, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für einen Trigger aktivieren, ist die Standardbegrenzung 10. Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl von gleichzeitigen Instanzen ausgeführt wird. <p><p>Informationen zum Ändern des Standardgrenzwerts auf einen Wert zwischen 0 und 100 (einschließlich) finden Sie unter [Ändern des Grenzwerts für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
+| Triggerparallelität | * Unbegrenzt, wenn die Parallelitätssteuerung deaktiviert ist <p><p>* Wenn die Parallelitätssteuerung aktiviert ist, beträgt der standardmäßige Grenzwert 25. Der Wert kann nach der Aktivierung der Parallelitätssteuerung nicht mehr rückgängig gemacht werden. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Triggerparallelitäts-Grenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). | 
+| Maximale Anzahl von wartenden Ausführungen | Bei aktivierter Parallelitätssteuerung beträgt die Mindestanzahl wartender Ausführungen 10 zuzüglich der Anzahl paralleler Ausführungen (Triggerparallelität). Sie können die maximale Anzahl bis auf 100 (einschließlich) heraufsetzen. | Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl paralleler Instanzen ausgeführt wird. <p><p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). | 
 | Foreach-Arrayelemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](../connectors/connectors-native-query.md) verwenden, um größere Arrays zu filtern. | 
-| Foreach-Parallelität | 50, wenn die Parallelität eingeschränkt wird | Wenn Sie die Gleichzeitigkeitssteuerung für diese Schleife aktivieren, ist die Standardbegrenzung 20. Dieser Grenzwert beschreibt die maximale Anzahl von Foreach-Schleifendurchläufen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
-| SplitOn-Elemente | 100.000 | | 
-| Until-Iterationen | 5.000 | | 
-|||| 
+| Foreach-Parallelität | Wenn die Parallelitätssteuerung deaktiviert ist, beträgt der standardmäßige Grenzwert 20. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert entspricht der maximalen Anzahl von Foreach-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). | 
+| SplitOn-Elemente | 100.000 | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. |
+| Until-Iterationen | 5.000 | |
+||||
 
 <a name="throughput-limits"></a>
 
@@ -195,53 +195,58 @@ Verwenden Sie den Free-Tarif nur für Versuchsszenarien, nicht für Produktionss
 
 | Artefakt | Begrenzung | Notizen | 
 |----------|-------|-------| 
-| EDI-Handelspartner | 25 | | 
-| EDI-Handelsverträge | 10 | | 
-| Karten | 25 | | 
-| Schemas | 25 | 
 | Assemblys | 10 | | 
 | Batchkonfigurationen | 5 | 
 | Zertifikate | 25 | | 
+| EDI-Handelsverträge | 10 | | 
+| EDI-Handelspartner | 25 | | 
+| Karten | 25 | | 
+| Schemas | 25 | 
 |||| 
 
 *Basic-Tarif*
 
 | Artefakt | Begrenzung | Notizen | 
 |----------|-------|-------| 
-| EDI-Handelspartner | 2 | | 
-| EDI-Handelsverträge | 1 | | 
-| Karten | 500 | | 
-| Schemas | 500 | 
 | Assemblys | 25 | | 
 | Batchkonfigurationen | 1 | | 
 | Zertifikate | 2 | | 
+| EDI-Handelsverträge | 1 | | 
+| EDI-Handelspartner | 2 | | 
+| Karten | 500 | | 
+| Schemas | 500 | 
 |||| 
 
 *Standard-Tarif*
 
 | Artefakt | Begrenzung | Notizen | 
 |----------|-------|-------| 
-| EDI-Handelspartner | 500 | | 
-| EDI-Handelsverträge | 500 | | 
-| Karten | 500 | | 
-| Schemas | 500 | 
 | Assemblys | 50 | | 
 | Batchkonfigurationen | 5 |  
 | Zertifikate | 50 | | 
+| EDI-Handelsverträge | 500 | | 
+| EDI-Handelspartner | 500 | | 
+| Karten | 500 | | 
+| Schemas | 500 | 
 |||| 
 
 <a name="artifact-capacity-limits"></a>
 
 ### <a name="artifact-capacity-limits"></a>Artefaktkapazitätsgrenzen
 
-| NAME | Begrenzung | Notizen | 
-| ---- | ----- | ----- | 
-| Schema | 8 MB | Wenn Sie Dateien hochladen möchten, die größer sind als 2 MB, verwenden Sie den [Blob-URI](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
-| Zuordnung (XSLT-Datei) | 2 MB | | 
-| Endpunkt zur Laufzeit: Leseaufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Nachverfolgungsaufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
-| Endpunkt zur Laufzeit: Gleichzeitige Blockierungsaufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
+| Artefakt | Begrenzung | Notizen | 
+| -------- | ----- | ----- | 
+| Assembly | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+| Zuordnung (XSLT-Datei) | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB die [Zuordnungen der REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/maps/createorupdate). | 
+| Schema | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). | 
+||||
+
+| Endpunkt zur Laufzeit | Begrenzung | Notizen |
+|------------------|-------|-------|
+| Leseaufrufe pro 5 Minuten | 60.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Aufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Nachverfolgungsaufrufe pro 5 Minuten | 45.000 | Sie können die Workload nach Bedarf auf mehrere Konten verteilen. | 
+| Gleichzeitige Blockierungsaufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. | 
 ||||  
 
 <a name="b2b-protocol-limits"></a>

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: fada29145334a45872aa64b3cc0fe2e859b52568
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632890"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817664"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Apache Hive in HDInsight
 [Apache Hive](https://hive.apache.org/) ermöglicht die Ausführung eines [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)-Auftrags über eine SQL-ähnliche Skriptsprache namens *[HiveQL][hadoop-hiveql]*, die zur Zusammenfassung, Abfrage und Analyse großer Datenmengen verwendet werden kann.
@@ -240,7 +240,7 @@ Weitere Informationen zur Erstellung eines HDInsight-Clusters und zur Ausführun
 Das Hochladen der Datendatei und der [HiveQL](https://cwiki.apache.org/confluence/display/Hive/LanguageManual)-Skriptdateien (siehe [Anhang B](#appendix-b)) erfordert eine gewisse Planung. Idealerweise sollten die Datendateien und die HiveQL-Datei vor dem Erstellen eines HDInsight-Clusters und vor dem Ausführen des Hive-Auftrags gespeichert werden. Sie haben zwei Möglichkeiten:
 
 * **Verwenden Sie dasselbe Azure-Speicherkonto, das vom HDInsight-Cluster als Standarddateisystem verwendet wird.**  Da der HDInsight-Cluster über den Zugriffsschlüssel für das Speicherkonto verfügt, müssen Sie keine weiteren Änderungen vornehmen.
-* **Verwenden Sie ein anderes Azure-Speicherkonto als das Standarddateisystem des HDInsight-Clusters.** In diesem Fall müssen Sie den Erstellungsteil des Windows PowerShell-Skripts ändern, das Sie unter [Erstellen des HDInsight-Clusters und Ausführen von Apache Hive/Sqoop-Aufträgen](#runjob) finden, um das Speicherkonto als zusätzliches Speicherkonto zu verknüpfen. Anweisungen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight][hdinsight-provision]. Der HDInsight-Cluster kennt dann den Zugriffsschlüssel für das Speicherkonto.
+* **Verwenden Sie ein anderes Azure-Speicherkonto als das Standarddateisystem des HDInsight-Clusters.** In diesem Fall müssen Sie den Erstellungsteil des Windows PowerShell-Skripts ändern, das Sie unter „Erstellen des HDInsight-Clusters und Ausführen von Apache Hive/Sqoop-Aufträgen“ finden, um das Speicherkonto als zusätzliches Speicherkonto zu verknüpfen. Anweisungen finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight][hdinsight-provision]. Der HDInsight-Cluster kennt dann den Zugriffsschlüssel für das Speicherkonto.
 
 > [!NOTE]  
 > Der Blobspeicherpfad für die Datendatei ist fest in der HiveQL-Skriptdatei programmiert. Sie müssen ihn entsprechend aktualisieren.
@@ -267,7 +267,7 @@ Das Hochladen der Datendatei und der [HiveQL](https://cwiki.apache.org/confluenc
 1. Bereiten Sie die Parameter vor:
 
     <table border="1">
-    <tr><th>Variablenname</th><th>Notizen</th></tr>
+    <tr><th>Variablenname</th><th>Hinweise</th></tr>
     <tr><td>$storageAccountName</td><td>Das Azure-Speicherkonto, in das Sie die Daten hochladen möchten.</td></tr>
     <tr><td>$blobContainerName</td><td>Der Blobcontainer, in den Sie die Daten hochladen möchten.</td></tr>
     </table>
@@ -376,7 +376,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Apache Hive-Datend
 1. Bereiten Sie die Parameter vor:
 
     <table border="1">
-    <tr><th>Variablenname</th><th>Notizen</th></tr>
+    <tr><th>Variablenname</th><th>Hinweise</th></tr>
     <tr><td>$storageAccountName</td><td>Das Azure-Speicherkonto, in das Sie das HiveQL-Skript hochladen möchten.</td></tr>
     <tr><td>$blobContainerName</td><td>Der Blobcontainer, in den Sie das HiveQL-Skript hochladen möchten.</td></tr>
     </table>
@@ -565,7 +565,7 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Apache Hive-Datend
 1. Bereiten Sie die Parameter vor:
 
     <table border="1">
-    <tr><th>Variablenname</th><th>Notizen</th></tr>
+    <tr><th>Variablenname</th><th>Hinweise</th></tr>
     <tr><td>$sqlDatabaseServerName</td><td>Der Name für den Azure SQL-Datenbankserver. Geben Sie nichts ein, um einen neuen Server zu erstellen.</td></tr>
     <tr><td>$sqlDatabaseUsername</td><td>Der Anmeldename für den Azure SQL-Datenbankserver. Wenn $sqlDatabaseServerName ein vorhandener Server ist, werden der Anmeldename und das Anmeldekennwort für die Authentifizierung beim Server verwendet. Andernfalls werden sie zum Erstellen eines neuen Servers verwendet.</td></tr>
     <tr><td>$sqlDatabasePassword</td><td>Das Anmeldekennwort für den Azure SQL-Datenbankserver.</td></tr>

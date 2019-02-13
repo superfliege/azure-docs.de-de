@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/6/2018
+ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d7617ce96181a0708dfa4731c07d581e332bdff4
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52873100"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492282"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
-Dieser Artikel erläutert, wie Sie alle Elemente aus einem Recovery Services-Tresor entfernen und anschließend löschen. Sie können den Recovery Services-Tresor nicht löschen, wenn dieser in einem Server registriert ist und Sicherungsdaten enthält. Wenn Sie versuchen, einen Tresor löschen, dies jedoch nicht möglich ist, ist der Tresor noch für den Empfang von Sicherungsdaten konfiguriert.
+In diesem Artikel wird beschrieben, wie Sie alle Elemente aus einem Recovery Services-Tresor entfernen und anschließend löschen. Sie können den Recovery Services-Tresor nicht löschen, wenn dieser in einem Server registriert ist und Sicherungsdaten enthält. Wenn Sie versuchen, einen Tresor löschen, dies jedoch nicht möglich ist, ist der Tresor noch für den Empfang von Sicherungsdaten konfiguriert.
 
 Informationen zum Löschen eines Tresors finden im Abschnitt [Löschen eines Tresors aus dem Azure-Portal](backup-azure-delete-vault.md#delete-a-vault-from-azure-portal). Wenn Sie keine Daten im Recovery Services-Tresor beibehalten und den Tresor löschen möchten, finden Sie im Abschnitt [Löschen des Tresors erzwingen](backup-azure-delete-vault.md#delete-the-recovery-services-vault-by-force) weitere Informationen. Wenn Sie nicht sicher sind, was der Tresor enthält ist, und Sie sicherstellen müssen, dass Sie den Tresor löschen können, finden Sie im Abschnitt [Entfernen von Tresorabhängigkeiten und Löschen des Tresors](backup-azure-delete-vault.md#remove-vault-dependencies-and-delete-vault) entsprechende Informationen.
 

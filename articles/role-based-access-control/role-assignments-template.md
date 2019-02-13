@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/17/2018
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 5e080614d4f0001a0bf1b44dd402f37db2463e03
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: b8c6ac78447a4e4db79ed75100222eee8d528b58
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206614"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55696896"
 ---
 # <a name="manage-access-using-rbac-and-azure-resource-manager-templates"></a>Verwalten des Zugriffs mit der RBAC und Azure Resource Manager-Vorlagen
 
@@ -92,16 +92,18 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Leser“ zu ein
 
 ## <a name="deploy-template-using-azure-powershell"></a>Bereitstellen einer Vorlage mit Azure PowerShell
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 Um die vorherige Vorlage mithilfe von Azure PowerShell bereitzustellen, führen Sie die folgenden Schritte durch:
 
 1. Erstellen Sie eine neue Datei namens „rbac-rg.json“, und kopieren Sie die obige Vorlage.
 
 1. Melden Sie sich bei [Azure PowerShell](/powershell/azure/authenticate-azureps) an.
 
-1. Rufen Sie den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung ab. Beispielsweise können Sie mit dem Befehl [Get-AzureRmADUser](/powershell/module/azurerm.resources/get-azurermaduser) Azure AD-Benutzer auflisten.
+1. Rufen Sie den eindeutigen Bezeichner eines Benutzers, einer Gruppe oder einer Anwendung ab. Beispielsweise können Sie mit dem Befehl [Get-AzADUser](/powershell/module/az.resources/get-azaduser) Azure AD-Benutzer auflisten.
 
     ```azurepowershell
-    Get-AzureRmADUser
+    Get-AzADUser
     ```
 
 1. Verwenden Sie ein GUID-Tool, um einen eindeutigen Bezeichner zu generieren, der für die Rollenzuweisung verwendet wird. Das Format des Bezeichners ist: `11111111-1111-1111-1111-111111111111`
@@ -109,21 +111,21 @@ Um die vorherige Vorlage mithilfe von Azure PowerShell bereitzustellen, führen 
 1. Erstellen Sie eine Beispielressourcengruppe.
 
     ```azurepowershell
-    New-AzureRmResourceGroup -Name ExampleGroup -Location "Central US"
+    New-AzResourceGroup -Name ExampleGroup -Location "Central US"
     ```
 
-1. Verwenden Sie den Befehl [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment), um die Bereitstellung zu starten.
+1. Verwenden Sie den Befehl [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment), um die Bereitstellung zu starten.
 
     ```azurepowershell
-    New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     ```
 
     Sie werden aufgefordert, die erforderlichen Parameter anzugeben. Nachfolgend sehen Sie ein Beispiel für die Ausgabe:
 
     ```Output
-    PS /home/user> New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
+    PS /home/user> New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateFile rbac-rg.json
     
-    cmdlet New-AzureRmResourceGroupDeployment at command pipeline position 1
+    cmdlet New-AzResourceGroupDeployment at command pipeline position 1
     Supply values for the following parameters:
     (Type !? for Help.)
     principalId: 22222222-2222-2222-2222-222222222222

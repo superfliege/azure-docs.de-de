@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2018
 ms.author: rkarlin
-ms.openlocfilehash: b77e814f9f339dff4539a04ab8b492e9777abe0d
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 32ca3fc87c91deba26e63a5938536d488e7dc5a8
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537646"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488739"
 ---
 # <a name="understand-azure-security-center-resource-recommendations"></a>Grundlegendes zu Azure Security Center-Empfehlungen für Ressourcen
 
@@ -43,7 +43,7 @@ Den folgenden Tabellen können Sie entnehmen, welche Empfehlungen für Compute S
 | [Sicherheitsrisikobewertung nicht installiert](security-center-vulnerability-assessment-recommendations.md) |Empfiehlt die Installation einer Lösung zur Sicherheitsrisikobewertung auf dem virtuellen Computer. |
 | [Sicherheitsrisiken beheben](security-center-vulnerability-assessment-recommendations.md#review-the-recommendation) |Ermöglicht das Anzeigen von System- und Anwendungssicherheitslücken, die von der auf dem virtuellen Computer installierten Lösung zur Sicherheitsrisikobewertung erkannt werden. |
 
-### <a name="app-services"></a>App Services
+### App Services <a name="app-services"></a>
 | Empfehlung | BESCHREIBUNG |
 | --- | --- |
 | Zugriff auf App Service nur über HTTPS gestatten | Empfiehlt, den Zugriff auf App Service nur auf HTTPS zu beschränken. |

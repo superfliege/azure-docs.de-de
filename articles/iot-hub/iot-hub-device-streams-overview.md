@@ -8,12 +8,12 @@ ms.service: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: rezas
-ms.openlocfilehash: 426c8995e5c3d98e42d0ad334b8ae52171556dce
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ea50902a557e8bd7aa18fbc03fca8fc4a99ac2e2
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884961"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770787"
 ---
 # <a name="iot-hub-device-streams-preview"></a>IoT Hub-Gerätestreams (Vorschau)
 
@@ -82,8 +82,22 @@ Sowohl die Geräte- als auch die Dienstseite eines Gerätestreams muss dazu in d
 Alternativ dazu können die Endpunktinformationen über die Azure CLI unter dem Abschnitt mit dem Hubeigenschaften abgerufen werden, insbesondere über die Schlüssel `property.hostname` und `property.deviceStreams`.
 
 ```azurecli-interactive
-az iot hub show --name <YourIoTHubName>
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+Die Ausgabe ist ein JSON-Objekt aller Endpunkte, mit denen das Gerät und der Dienst Ihres Hubs möglicherweise eine Verbindung herstellen muss, um einen Gerätestream einzurichten.
+
+```json
+{
+  "streamingEndpoints": [
+    "https://<YourIoTHubName>.<region-stamp>.streams.azure-devices.net"
+  ]
+}
+```
+
+> [!NOTE]
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)herunterladen.
+> 
 
 ## <a name="whitelist-device-streaming-endpoints"></a>Aufnehmen der Gerätestreamingendpunkte in die Whitelist
 
@@ -92,9 +106,14 @@ Wie [zuvor](#Overview) bereits erwähnt, erstellt Ihr Gerät während des Initii
 Den Hostnamen des Gerätestreamingendpunkts finden Sie im Azure IoT Hub-Portal auf der Registerkarte „Übersicht“. ![Alternativtext](./media/iot-hub-device-streams-overview/device-stream-portal.PNG "Gerätestreamingendpunkte")
 
 Alternativ finden Sie diese Informationen mithilfe der Azure CLI:
-```cmd/sh
-az iot hub show --name <YourIoTHubName>
+
+```azurecli-interactive
+az iot hub devicestream show --name <YourIoTHubName>
 ```
+
+> [!NOTE]
+> Stellen Sie sicher, dass mindestens Version 2.0.57 der Azure-Befehlszeilenschnittstelle installiert ist. Sie können die neueste Version [hier](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)herunterladen.
+> 
 
 ## <a name="troubleshoot-via-device-streams-activity-logs"></a>Problembehandlung über Aktivitätsprotokolle für Gerätestreams
 
@@ -131,7 +150,7 @@ Zwei Seiten jedes Streams (auf der Geräte- und der Dienstseite) verwenden das I
 - Die NodeJS und C# SDKs unterstützen Gerätestreams auf der Dienstseite.
 
 
-## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätstreams
+## <a name="iot-hub-device-stream-samples"></a>Beispiele für IoT Hub-Gerätestreams
 
 Wir haben zwei [Schnellstartbeispiele](/azure/iot-hub) veröffentlicht, um die Verwendung von Gerätestreams durch Anwendungen zu veranschaulichen.
 * Das Beispiel *Echo* verdeutlicht die programmgesteuerte Verwendung von Gerätestreams (durch direktes Aufrufen der SDK-APIs).

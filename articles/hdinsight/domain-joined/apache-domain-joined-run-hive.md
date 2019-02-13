@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 51e9d12d9f8801102997266cfd6699a367b11126
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 8effa84c9d7adc14060fb00fae9915a04c1d04cc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435514"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821217"
 ---
 # <a name="configure-apache-hive-policies-in-hdinsight-with-enterprise-security-package"></a>Konfigurieren von Apache Hive-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 Hier erfahren Sie, wie Sie Apache Ranger-Richtlinien für Apache Hive konfigurieren. In diesem Artikel erstellen Sie zwei Ranger-Richtlinien, um den Zugriff auf die Hive-Beispieltabelle „hivesampletable“ einzuschränken. Die Hive-Beispieltabelle „hivesampletable“ ist in HDInsight-Clustern enthalten. Nach dem Konfigurieren der Richtlinien stellen Sie unter Verwendung von Excel und ODBC-Treiber eine Verbindung mit Hive-Tabellen in HDInsight her.
@@ -45,7 +45,7 @@ In diesem Abschnitt erstellen Sie zwei Ranger-Richtlinien für den Zugriff auf �
 
 **So erstellen Sie Ranger-Richtlinien**
 
-1. Öffnen Sie die Ranger-Administratoroberfläche. Weitere Informationen finden Sie unter [Herstellen einer Verbindung mit der Apache Ranger-Administratoroberfläche](#connect-to-apache-ranager-admin-ui).
+1. Öffnen Sie die Ranger-Administratoroberfläche. Weitere Informationen finden Sie unter „Herstellen einer Verbindung mit der Apache Ranger-Administratoroberfläche“.
 2. Klicken Sie unter **Hive** auf **&lt;Clustername>_hive**. Zwei vorkonfigurierte Richtlinien werden angezeigt.
 3. Klicken Sie auf **Neue Richtlinie hinzufügen**, und geben Sie die folgenden Werte ein:
 

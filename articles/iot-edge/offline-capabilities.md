@@ -4,17 +4,17 @@ description: Hier erfahren Sie, wie IoT Edge-Geräte und -Module über längere 
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 09/20/2018
+ms.date: 01/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 4c4713bade487ba46f1abdc6d0a76db3e81e38b1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096943"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699345"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
 
@@ -25,7 +25,7 @@ Azure IoT Edge unterstützt erweiterte Offlinevorgänge auf Ihren IoT Edge-Gerä
 
 ## <a name="how-it-works"></a>So funktioniert's
 
-Wenn ein IoT Edge-Gerät in den Offlinemodus wechselt, übernimmt der Edge Hub drei Rollen. Zunächst erfasst er alle für die Upstream-Übermittlung bestimmten Nachrichten und speichert sie, bis das Gerät wieder eine Verbindung herstellt. Zweitens handelt er im Auftrag von IoT Hub und authentifiziert Module und untergeordnete Geräte, sodass diese weiterhin ausgeführt werden können. Schließlich ermöglicht er die Kommunikation zwischen untergeordneten Geräten, die normalerweise über IoT Hub abgewickelt würde. 
+Wenn ein IoT Edge-Gerät in den Offlinemodus wechselt, übernimmt der IoT Edge-Hub drei Rollen. Zunächst erfasst er alle für die Upstream-Übermittlung bestimmten Nachrichten und speichert sie, bis das Gerät wieder eine Verbindung herstellt. Zweitens handelt er im Auftrag von IoT Hub und authentifiziert Module und untergeordnete Geräte, sodass diese weiterhin ausgeführt werden können. Schließlich ermöglicht er die Kommunikation zwischen untergeordneten Geräten, die normalerweise über IoT Hub abgewickelt würde. 
 
 Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
@@ -39,9 +39,9 @@ Das folgende Beispiel veranschaulicht ein IoT Edge-Szenario im Offlinemodus:
 
 3. **Wechseln Sie in den Offlinemodus.**
 
-   Während sie von IoT Hub getrennt sind, können das IoT Edge-Gerät, seine bereitgestellten Module und alle untergeordneten IoT-Geräte ohne zeitliche Beschränkung betrieben werden. Module und untergeordneten Geräte gestartet und neu gestartet werden, indem im Offlinemodus die Authentifizierung mit dem Edge Hub durchgeführt wird. Telemetriedaten für die Upstreamübermittlung an IoT Hub werden lokal gespeichert. Die Kommunikation zwischen Modulen und untergeordneten IoT-Geräten wird durch direkte Methoden oder Nachrichten aufrechterhalten. 
+   Während sie von IoT Hub getrennt sind, können das IoT Edge-Gerät, seine bereitgestellten Module und alle untergeordneten IoT-Geräte ohne zeitliche Beschränkung betrieben werden. Module und untergeordnete Geräte können gestartet und neu gestartet werden, indem im Offlinemodus die Authentifizierung mit dem IoT Edge-Hub durchgeführt wird. Telemetriedaten für die Upstreamübermittlung an IoT Hub werden lokal gespeichert. Die Kommunikation zwischen Modulen und untergeordneten IoT-Geräten wird durch direkte Methoden oder Nachrichten aufrechterhalten. 
 
-4. **Stellen Sie erneut eine Verbindung her, und führen Sie erneut die Synchronisierung mit IoT Hub aus.**
+4. **Stellen Sie erneut eine Verbindung her, und führen Sie die Synchronisierung mit IoT Hub erneut aus.**
 
    Nach dem Wiederherstellen der Verbindung mit IoT Hub wird die Synchronisierung des IoT Edge-Geräts wieder ausgeführt. Lokal gespeicherte Nachrichten werden in der Reihenfolge übermittelt, in der sie gespeichert wurden. Unterschiede zwischen den gewünschten und gemeldeten Eigenschaften der Module und Geräte werden ausgeglichen. Das IoT Edge-Gerät aktualisiert seine Gruppe von zugewiesenen untergeordneten IoT-Geräten mit den Änderungen.
 
@@ -55,7 +55,7 @@ Lediglich Nicht-Edge IoT-Geräte können als untergeordnete Geräte hinzugefügt
 
 IoT Edge-Geräte und deren zugewiesene untergeordnete Geräte können nach der ersten, einmaligen Synchronisierung unbefristet im Offlinemodus betrieben werden. Die Speicherung von Nachrichten hängt jedoch von der Einstellung für die TTL (Gültigkeitsdauer) und dem verfügbaren Speicherplatz zum Ablegen der Nachrichten ab. 
 
-## <a name="set-up-an-edge-device"></a>Einrichten eines IoT Edge-Geräts
+## <a name="set-up-an-iot-edge-device"></a>Einrichten eines IoT Edge-Geräts
 
 Damit ein IoT Edge-Gerät seine erweiterten Offlinefunktionen auf untergeordnete IoT-Geräte ausweiten kann, müssen Sie die Beziehungen über- und untergeordneter Elemente im Azure-Portal deklarieren.
 
@@ -71,7 +71,7 @@ Untergeordnete Geräte können beliebige Nicht-Edge-Geräte sein, die beim selbe
 
 Zur Verbesserung der Stabilität empfiehlt es sich, die in Ihrer Umgebung verwendeten DNS-Serveradressen anzugeben. Aktualisieren Sie beispielsweise unter Linux die Datei **/etc/docker/daemon.json** (muss möglicherweise erst erstellt werden) mit Folgendem:
 
-```
+```json
 {
     "dns": [“1.1.1.1”]
 }
@@ -82,13 +82,13 @@ Ersetzen Sie bei Verwendung eines lokalen DNS-Servers die Adresse 1.1.1.1 durch 
 
 ## <a name="optional-offline-settings"></a>Optionale Offlineeinstellungen
 
-Wenn Sie längere Offlinezeiträume für Ihre Geräte erwarten, nach denen Sie alle generierten Nachrichten erfassen möchten, konfigurieren Sie den Edge Hub so, dass alle Nachrichten gespeichert werden können. Es gibt zwei Änderungen, die Sie an Edge Hub vornehmen können, um die langfristige Speicherung von Nachrichten zu ermöglichen. Vergrößern Sie zunächst die Einstellung für die Gültigkeitsdauer, und fügen Sie dann zusätzlichen Speicherplatz zum Speichern der Nachrichten hinzu. 
+Wenn Sie alle Nachrichten erfassen möchten, die Ihre Geräte während langer Offlinezeiträume generieren, konfigurieren Sie den IoT Edge-Hub so, dass alle Nachrichten gespeichert werden können. Es gibt zwei Änderungen, die Sie an IoT Edge-Hub vornehmen können, um die langfristige Speicherung von Nachrichten zu ermöglichen. Legen Sie zuerst einen höheren Wert für die Einstellung „Gültigkeitsdauer“ fest. Fügen Sie dann zusätzlichen Speicherplatz für den Nachrichtenspeicher hinzu. 
 
 ### <a name="time-to-live"></a>Gültigkeitsdauer
 
 Die Gültigkeitsdauer entspricht der Zeit (in Sekunden), die eine Nachricht auf die Übermittlung warten kann, ehe sie abläuft. Der Standardwert ist 7.200 Sekunden (zwei Stunden). 
 
-Diese Einstellung ist eine gewünschte Eigenschaft des Edge Hub, die im Modulzwilling gespeichert wird. Sie können sie im Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** oder direkt im Bereitstellungsmanifest konfigurieren. 
+Diese Einstellung ist eine gewünschte Eigenschaft des IoT Edge-Hub, die im Modulzwilling gespeichert wird. Sie können sie im Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** oder direkt im Bereitstellungsmanifest konfigurieren. 
 
 ```json
 "$edgeHub": {
@@ -104,16 +104,25 @@ Diese Einstellung ist eine gewünschte Eigenschaft des Edge Hub, die im Modulzwi
 
 ### <a name="additional-offline-storage"></a>Zusätzlicher Offlinespeicher
 
-Nachrichten werden standardmäßig im Dateisystem des Edge Hub-Containers gespeichert. Wenn der Speicherplatz für die Offlineanforderungen nicht ausreicht, können Sie lokalen Speicher auf dem IoT Edge-Gerät reservieren. Sie müssen eine Umgebungsvariable für den Edge Hub erstellen, die auf einen Speicherordner im Container zeigt. Binden Sie diesen Speicherordner anschließend mit den Erstellungsoptionen an einem Ordner auf dem Hostcomputer. 
+Nachrichten werden standardmäßig im Dateisystem des IoT Edge-Hub-Containers gespeichert. Wenn der Speicherplatz für die Offlineanforderungen nicht ausreicht, können Sie lokalen Speicher auf dem IoT Edge-Gerät reservieren. Erstellen Sie eine Umgebungsvariable für den IoT Edge-Hub, die auf einen Speicherordner im Container zeigt. Binden Sie diesen Speicherordner anschließend mit den Erstellungsoptionen an einem Ordner auf dem Hostcomputer. 
 
-Sie können Umgebungsvariablen und die Erstellungsoptionen für das Edge Hub-Modul im Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** konfigurieren. Sie können sie jedoch auch direkt im Bereitstellungsmanifest konfigurieren. 
+Sie können Umgebungsvariablen und die Erstellungsoptionen für das IoT Edge-Hub-Modul im Azure-Portal im Abschnitt **Erweiterte Einstellungen für die Edge-Laufzeit konfigurieren** konfigurieren. Sie können sie jedoch auch direkt im Bereitstellungsmanifest konfigurieren. 
 
 ```json
 "edgeHub": {
     "type": "docker",
     "settings": {
         "image": "mcr.microsoft.com/azureiotedge-hub:1.0",
-        "createOptions": "{\"HostConfig\":{\"Binds\":[\"<HostStoragePath>:<ModuleStoragePath>\"],\"PortBindings\":{\"8883/tcp\":[{\"HostPort\":\"8883\"}],\"443/tcp\":[{\"HostPort\":\"443\"}],\"5671/tcp\":[{\"HostPort\":\"5671\"}]}}}"
+        "createOptions": {
+            "HostConfig": {
+                "Binds": ["<HostStoragePath>:<ModuleStoragePath>"],
+                "PortBindings": {
+                    "8883/tcp": [{"HostPort":"8883"}],
+                    "443/tcp": [{"HostPort":"443"}],
+                    "5671/tcp": [{"HostPort":"5671"}]
+                }
+            }
+        }
     },
     "env": {
         "storageFolder": {
@@ -125,7 +134,11 @@ Sie können Umgebungsvariablen und die Erstellungsoptionen für das Edge Hub-Mod
 }
 ```
 
-Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfad für Ihren Host und Ihr Modul; bei beiden muss es sich um absolute Pfade handeln.  Beispielsweise bedeutet `\"Binds\":[\"/etc/iotedge/storage/:/iotedge/storage/"`, dass der Hostpfad `/etc/iotedge/storage` dem Containerpfad `/iotedge/storage/` zugeordnet ist.  Weitere Details zu „createOptions“ finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
+Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfad für Ihren Host und Ihr Modul; bei beiden muss es sich um absolute Pfade handeln. Binden Sie in den Erstellungsoptionen die Speicherpfade für Host und Modul zusammen. Erstellen Sie dann eine Umgebungsvariable, die auf den Speicherpfad für das Modul zeigt.  
+
+Beispielsweise bedeutet `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`, dass das Verzeichnis **/etc/iotedge/storage** in Ihrem Hostsystem dem Verzeichnis **/iotedge/storage/** für den Container zugeordnet ist. In einem weiteren Beispiel zu Windows-Systemen bedeutet `"Binds":["C:\\temp:C:\\contemp]"`, dass das Verzeichnis **C:\\temp** in Ihrem Hostsystem dem Verzeichnis **C:\\contemp** für den Container zugeordnet ist. 
+
+Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

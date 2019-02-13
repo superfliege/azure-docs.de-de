@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: a540e6c585210f7b1dc36a89eaae7a4b4bf8fc70
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52422727"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756817"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -84,12 +84,12 @@ Es gibt verschiedene Möglichkeiten, wie Sie den Storage-Explorer mit Speicherko
 
 Darüber hinaus können Sie mit Speicherkonten in Azure (global und national) arbeiten:
 
-* [Herstellen einer Verbindung mit einem Azure-Abonnement:](#connect-to-an-azure-subscription) Verwalten Sie Speicherressourcen, die zu Ihrem Azure-Abonnement gehören.
-* [Verwenden von lokalem Entwicklungsspeicher:](#work-with-local-development-storage) Verwalten Sie lokalen Speicher mit dem Azure-Speicheremulator.
-* [Anfügen an externen Speicher:](#attach-or-detach-an-external-storage-account) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements oder in nationalen Azure-Clouds unter Verwendung von Name, Schlüssel und Endpunkten des Speicherkontos.
-* [Anfügen eines Speicherkontos unter Verwendung einer SAS:](#attach-storage-account-using-sas) Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements unter Verwendung einer Shared Access Signature (SAS).
-* [Anfügen eines Diensts unter Verwendung einer SAS:](#attach-service-using-sas) Verwalten Sie einen bestimmten Speicherdienst (Blobcontainer, Warteschlange oder Tabelle) eines anderen Azure-Abonnements unter Verwendung einer SAS.
-* [Verbinden mit einem Azure Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Verwalten Sie ein Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge.
+* [Herstellen einer Verbindung mit einem Azure-Abonnement](#connect-to-an-azure-subscription): Verwalten Sie Speicherressourcen, die zu Ihrem Azure-Abonnement gehören.
+* [Verwenden von lokalem Entwicklungsspeicher](#work-with-local-development-storage): Verwalten Sie lokalen Speicher mit dem Azure-Speicheremulator.
+* [Anfügen an externen Speicher](#attach-or-detach-an-external-storage-account): Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements oder in nationalen Azure-Clouds unter Verwendung des Namens und Schlüssels sowie der Endpunkte des Speicherkontos.
+* [Anfügen eines Speicherkontos unter Verwendung einer SAS](#attach-a-storage-account-by-using-a-shared-access-signature-sas): Verwalten Sie Speicherressourcen eines anderen Azure-Abonnements unter Verwendung einer Shared Access Signature (SAS).
+* [Anfügen eines Diensts unter Verwendung einer SAS](#attach-a-service-by-using-a-shared-access-signature-sas): Verwalten Sie einen bestimmten Speicherdienst (Blobcontainer, Warteschlange oder Tabelle) eines anderen Azure-Abonnements unter Verwendung einer SAS.
+* [Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): Verwalten Sie ein Cosmos DB-Konto mithilfe einer Verbindungszeichenfolge.
 
 ## <a name="connect-to-an-azure-subscription"></a>Herstellen einer Verbindung mit einem Azure-Abonnement
 
@@ -295,7 +295,7 @@ Neben der Verwaltung von Azure Cosmos DB-Konten über das Azure-Abonnement kann 
 
     ![Herstellen einer Verbindung mit Azure Cosmos DB mithilfe einer Verbindungszeichenfolge][21]
 
-2. Wählen Sie die Azure Cosmos DB-API aus, fügen Sie Ihre **Verbindungszeichenfolge** ein, und klicken Sie dann auf **OK**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/azure/cosmos-db/manage-account#get-the--connection-string).
+2. Wählen Sie die Azure Cosmos DB-API aus, fügen Sie Ihre **Verbindungszeichenfolge** ein, und klicken Sie dann auf **OK**, um eine Verbindung mit dem Azure Cosmos DB-Konto herzustellen. Informationen zum Abrufen der Verbindungszeichenfolge finden Sie unter [Abrufen der Verbindungszeichenfolge](https://docs.microsoft.com/azure/cosmos-db/manage-account).
 
     ![connection-string][22]
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2018
 ms.author: kumud
-ms.openlocfilehash: 7edd6acc090e4a41939811497a21886d91631fdf
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229250"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567841"
 ---
 # <a name="how-traffic-manager-works"></a>Funktionsweise von Traffic Manager
 
@@ -47,7 +47,7 @@ Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 ![Traffic Manager-DNS-Konfiguration][1]
 
 > [!NOTE]
-> Wenn Sie eine Vanity-Domäne mit Azure Traffic Manager verwenden, müssen Sie mithilfe eines CNAME-Eintrags von Ihrem Vanity-Domänennamen auf Ihren Traffic Manager-Domänennamen verweisen. DNS-Standards lassen nicht zu, dass ein CNAME auf der „Spitze“ (oder dem Stamm) einer Domäne erstellt wird. Daher kann für „contoso.com“ (gelegentlich auch als reiner Domänenname bezeichnet) kein CNAME erstellt werden. Ein CNAME kann nur für eine Domäne unter „contoso.com“ erstellt werden (beispielsweise für „www.contoso.com“). Zur Umgehung dieser Einschränkung empfiehlt sich die Verwendung einer einfachen HTTP-Umleitung, um an „contoso.com“ gerichtete Anforderungen an einen alternativen Namen (etwa „www.contoso.com“) umzuleiten.
+> Wenn Sie eine Vanity-Domäne mit Azure Traffic Manager verwenden, müssen Sie mithilfe eines CNAME-Eintrags von Ihrem Vanity-Domänennamen auf Ihren Traffic Manager-Domänennamen verweisen. DNS-Standards lassen nicht zu, dass ein CNAME auf der „Spitze“ (oder dem Stamm) einer Domäne erstellt wird. Daher kann für „contoso.com“ (gelegentlich auch als reiner Domänenname bezeichnet) kein CNAME erstellt werden. Ein CNAME kann nur für eine Domäne unter „contoso.com“ erstellt werden (beispielsweise für „www.contoso.com“). Um diese Einschränkung zu umgehen, wird empfohlen, Ihre DNS-Domäne in [Azure DNS](../dns/dns-overview.md) zu hosten und [Aliaseinträge](../dns/tutorial-alias-tm.md) zu verwenden, die auf Ihr Traffic Manager-Profil verweisen. Sie können auch eine einfache HTTP-Umleitung verwenden, um an „contoso.com“ gerichtete Anforderungen an einen alternativen Namen (etwa „www.contoso.com“) umzuleiten.
 
 ### <a name="how-clients-connect-using-traffic-manager"></a>Verbindungsherstellung von Clients über Traffic Manager
 

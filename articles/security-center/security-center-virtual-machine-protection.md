@@ -3,7 +3,7 @@ title: Schützen von Computern und Anwendungen in Azure Security Center | Micros
 description: In diesem Dokument werden Empfehlungen in Security Center erläutert, die zum Schutz Ihrer virtuellen und physischen Computer sowie Ihrer Web-Apps und App Service-Umgebungen beitragen.
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: MBaldwin
 editor: ''
 ms.assetid: 47fa1f76-683d-4230-b4ed-d123fef9a3e8
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/15/2019
-ms.author: rkarlin
-ms.openlocfilehash: 2c8f91c6915b23193129ed9e82688ad5967eb6ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 1/27/2019
+ms.author: monhaber
+ms.openlocfilehash: 411fc025f5a25e961f69f5e6f66a9f6d115689a7
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181468"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487742"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -42,7 +42,7 @@ Unter **Compute und Apps** finden Sie die folgenden Registerkarten:
 - **Übersicht:** Überwachung und von Security Center identifizierte Empfehlungen
 - **VMs und Computer:** Liste Ihrer virtuellen und physischen Computer sowie deren aktueller Sicherheitsstatus
 - **Clouddienste:** Liste mit Ihren von Security Center überwachten Web- und Workerrollen
-- **App Services (Vorschau):** Liste mit Ihren App Service-Umgebungen und deren jeweiliger aktueller Sicherheitsstatus.
+- **App Services**: Liste mit Ihren App Service-Umgebungen und deren jeweiliger aktueller Sicherheitsstatus.
 - **Container (Vorschau)**: Liste der auf IaaS-Linux-Computern gehosteten Container und Bewertung der Sicherheit ihrer Docker-Konfigurationen.
 - **Computeressourcen (Vorschauversion)**: Liste mit Empfehlungen für Ihre Computeressourcen wie Service Fabric-Cluster und Event Hubs.
 
@@ -124,12 +124,11 @@ Eine Erläuterung der Empfehlung erhalten Sie, wenn Sie in der Spalte **BESCHREI
 
 ![Betriebssystemversion aktualisieren](./media/security-center-virtual-machine-recommendations/security-center-monitoring-fig8-new4.png)
 
-### <a name="app-services-preview"></a>App Services (Vorschau)
+### <a name="app-services"></a>App Services
+Sie müssen „App Service“ in Ihrem Abonnement aktivieren, um App Service-Informationen anzuzeigen. Anweisungen dazu, wie Sie dieses Feature aktivieren, finden Sie unter [Schützen von App Services in Azure Security Center](security-center-app-services.md).
+[!NOTE]
+> Die Überwachung von App Services ist als Vorschauversion und im Standard-Tarif von Security Center verfügbar.
 
-> [!NOTE]
-> Die Überwachung von App Services ist als Vorschauversion und im Standard-Tarif von Security Center verfügbar. Weitere Informationen zu den Tarifen von Security Center finden Sie unter [Preise](security-center-pricing.md).
->
->
 
 Unter **App Services** wird eine Liste Ihrer App Service-Umgebungen und die Integritätszusammenfassung basierend auf der von Security Center ausgeführten Bewertung angezeigt.
 
@@ -171,19 +170,9 @@ Die Liste enthält drei Arten von Symbolen:
 |App Service|10|Remotedebuggen muss für Webanwendung deaktiviert werden|Deaktivieren Sie das Debuggen für eine Webanwendung, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein.|
 |App Service|10|Remotedebuggen muss für Funktionsanwendung deaktiviert werden|Deaktivieren Sie das Debuggen für eine Funktionen-App, wenn Sie sie nicht mehr benötigen. Für das Remotedebuggen müssen die eingehenden Ports für eine Funktions-App geöffnet sein.|
 |App Service|10|IP-Einschränkungen für Webanwendung konfigurieren|Definieren Sie eine Liste mit IP-Adressen, die auf Ihre Anwendung zugreifen dürfen. Mithilfe von IP-Einschränkungen kann eine Webanwendung vor gängigen Angriffen geschützt werden.|
-|App Service|10|IP-Einschränkungen für Funktions-App konfigurieren| Definieren Sie eine Liste mit IP-Adressen, die auf Ihre Anwendung zugreifen dürfen. Mithilfe von IP-Einschränkungen kann eine Funktions-App vor gängigen Angriffen geschützt werden.|
 |App Service|10|Nicht allen („*“) Ressourcen Zugriff auf Ihre Anwendung erteilen| Lassen Sie nicht zu, dass der Parameter „WEBSITE_LOAD_CERTIFICATES“ auf "" gesetzt wird. Durch die Einstellung des Parameters auf ‘’ werden alle Zertifikate in den persönlichen Zertifikatspeicher Ihrer Webanwendungen geladen. Dies kann zum Missbrauch des Prinzips der „geringsten Rechte“ führen, da es unwahrscheinlich ist, dass die Website Zugriff auf sämtliche Zertifikate zur Laufzeit benötigt.|
-|App Service|5|WebSockets für Webanwendung deaktivieren|Prüfen Sie die Verwendung von Websockets innerhalb von Webanwendungen. Das WebSockets-Protokoll ist für verschiedene Arten von Sicherheitsrisiken anfällig.|
-|App Service|5|WebSockets für Funktions-App deaktivieren|Prüfen Sie die Verwendung von Websockets innerhalb von Funktionen-Apps. Das WebSockets-Protokoll ist für verschiedene Arten von Sicherheitsrisiken anfällig.|
-|App Service|5|Benutzerdefinierte Domänen für Webanwendung verwenden|Verwenden Sie benutzerdefinierte Domänen, damit eine Webanwendung vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird.|
-|App Service|5|Benutzerdefinierte Domänen für Funktions-App verwenden|Verwenden Sie benutzerdefinierte Domänen, damit eine Funktions-App vor gängigen Angriffen wie Phishing und anderen DNS-bezogenen Angriffen geschützt wird.|
 |App Service|20|Nicht jeder Ressource den Zugriff auf Ihre Webanwendungen über CORS gestatten|Ermöglichen Sie nur erforderlichen Domänen die Interaktion mit Ihrer Webanwendung. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Webanwendung zuzugreifen.|
 |App Service|20|Nicht jeder Ressource den Zugriff auf Ihre Funktions-App über CORS gestatten| Ermöglichen Sie nur erforderlichen Domänen die Interaktion mit Ihrer Funktionsanwendung. Bei der Ressourcenfreigabe zwischen verschiedenen Ursprüngen (Cross-Origin Resource Sharing, CORS) sollte nicht allen Domänen gestattet werden, auf Ihre Funktionsanwendung zuzugreifen.|
-|App Service|10|Die neueste unterstützte .NET Framework-Version für Webanwendungen verwenden|Verwenden Sie die neueste .NET Framework-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
-|App Service|10|Die neueste unterstützte Java-Version für Webanwendungen verwenden|Verwenden Sie die neueste Java-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
-|App Service|10|Die neueste unterstützte PHP-Version für Webanwendungen verwenden|Verwenden Sie die neueste PHP-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
-|App Service|10|Die neueste unterstützte Node.js-Version für Webanwendungen verwenden|Verwenden Sie die neueste Node.js-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
-|App Service|10|Die neueste unterstützte Python-Version für Webanwendungen verwenden|Verwenden Sie die neueste Python-Version für die neuesten Sicherheitsklassen. Die Verwendung von älteren Klassen und Typen kann die Anfälligkeit Ihrer Anwendung für Sicherheitsrisiken erhöhen.|
 |Computeressourcen (Batch)|1|Metrikwarnungsregeln für Batch-Konto konfigurieren|Konfigurieren Sie Metrikwarnungsregeln für das Batch-Konto, und aktivieren Sie die Metriken „Abgeschlossene Ereignisse zum Löschen von Pools“ und „Startereignisse zum Löschen von Pools“.|
 |Computeressourcen (Service Fabric)|10|Azure Active Directory für Clientauthentifizierung in Service Fabric verwenden|Führen Sie die Clientauthentifizierung in Service Fabric ausschließlich über Azure Active Directory durch.|
 |Computeressourcen (Automation-Konto)|5| Verschlüsselung des Automation-Kontos aktivieren|Aktivieren Sie die Verschlüsselung für Variablenobjekte von Automation-Konten, wenn vertrauliche Daten gespeichert werden.|

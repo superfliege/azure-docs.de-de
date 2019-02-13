@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: arjmands
-ms.openlocfilehash: 647f54d8252c594a280f81d661a3de6270bf692b
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: eb5eecaca65cc8394bcc12fc5a475cf5e762f1c9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001346"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55729964"
 ---
 # <a name="how-to-use-tools-provided-in-the-sdks-to-simplify-development-for-provisioning"></a>Gewusst wie: Verwenden von Tools, die in den SDKs zur Vereinfachung der Entwicklung für die Bereitstellung zur Verfügung stehen
 Der IoT Hub Device Provisioning-Dienst vereinfacht den Bereitstellungsprozess mit [automatischer Just-in-Time-Bereitstellung](concepts-auto-provisioning.md) ohne manuelles Eingreifen in sicherer und skalierbarer Weise.  Der Sicherheitsnachweis in Form eines X.509-Zertifikats oder von Trusted Platform Module (TPM) ist erforderlich.  Microsoft pflegt zur Verbesserung des Vertrauens in die Absicherung der IoT-Bereitstellung auch Partnerschaften mit [anderen Sicherheitshardwarepartnern](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/). Umfassende Kenntnisse über die Hardwaresicherheitsanforderungen zu besitzen kann für Entwickler eine große Herausforderung sein. Mit einem Satz von Provisioning-Dienst-SDKs von Azure IoT können Entwickler mühelos Clients erstellen, die mit dem Provisioning-Dienst kommunizieren. Die SDKs bieten auch Beispiele für häufige Szenarien sowie eine Reihe von Tools, die den Sicherheitsnachweis bei der Entwicklung vereinfachen.
 
 ## <a name="trusted-platform-module-tpm-simulator"></a>Simulator für Trusted Platform Module (TPM)
-[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security#trusted-platform-module-tpm) kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein.  In der Produktion befindet sich TPM auf dem Gerät, entweder als diskrete Hardware, integrierte Hardware oder firmwarebasiert. In der Testphase steht Entwicklern ein softwarebasierter TPM-Simulator zur Verfügung.  Dieser Simulator ist derzeit nur für die Entwicklung auf der Windows-Plattform verfügbar.
+[TPM](https://docs.microsoft.com/azure/iot-dps/concepts-security) kann sich auf einen Standard zum sicheren Speichern von Schlüsseln, mit denen die Plattform authentifiziert wird, oder auf die E/A-Schnittstelle beziehen, die für die Interaktion mit den Modulen zum Implementieren des Standards verwendet wird. TPMs können als diskrete Hardware, integrierte Hardware, firmwarebasiert oder softwarebasiert vorhanden sein.  In der Produktion befindet sich TPM auf dem Gerät, entweder als diskrete Hardware, integrierte Hardware oder firmwarebasiert. In der Testphase steht Entwicklern ein softwarebasierter TPM-Simulator zur Verfügung.  Dieser Simulator ist derzeit nur für die Entwicklung auf der Windows-Plattform verfügbar.
 
 In folgenden Schritten wird der TPM-Simulator verwendet:
-1. [Vorbereiten der Entwicklungsumgebung](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java#prepare-the-development-environment) und Klonen des GitHub-Repositorys:
+1. [Vorbereiten der Entwicklungsumgebung](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) und Klonen des GitHub-Repositorys:
 ```
 git clone https://github.com/Azure/azure-iot-sdk-java.git
 ```
@@ -46,7 +46,7 @@ Die SDKs stellen einen X.509-Zertifikatgenerator mit DICE-Emulator bereit, der i
 Derzeit gibt der DICE-Emulator ein Stammzertifikat, ein Zwischenzertifikat, ein untergeordnetes Zertifikat und den zugehörigen privaten Schlüssel aus.  Allerdings kann das Stammzertifikat oder Zwischenzertifikat nicht verwendet werden, um ein separates untergeordnetes Zertifikat zu signieren.  Wenn Sie beabsichtigen, ein Gruppenregistrierungsszenario zu testen, in dem ein Signaturzertifikat verwendet wird, um die untergeordneten Zertifikate von mehreren Geräten zu signieren, können Sie OpenSSL verwenden, um eine Kette von Zertifikaten zu erzeugen.
 
 So generieren Sie mithilfe dieses Generators ein X.509-Zertifikat:
-1. [Vorbereiten der Entwicklungsumgebung](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java#prepare-the-development-environment) und Klonen des GitHub-Repositorys:
+1. [Vorbereiten der Entwicklungsumgebung](https://docs.microsoft.com/azure/iot-dps/quick-enroll-device-x509-java) und Klonen des GitHub-Repositorys:
 ```
 git clone https://github.com/Azure/azure-iot-sdk-java.git
 ```

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/13/2018
 ms.author: kumud
-ms.openlocfilehash: 006d8e28413e0893cafe351577f8a018d13fd268
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: ec3fcc0301083e6cd5eff34c111586ef6463f8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53189998"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821506"
 ---
 # <a name="outbound-connections-classic"></a>Ausgehende Verbindungen (klassisch)
 
@@ -39,9 +39,9 @@ Azure bietet drei verschiedene Methoden, um ausgehende Konnektivität für klass
 
 | Szenario | Methode | IP-Protokolle | BESCHREIBUNG | Webworkerrolle | IaaS | 
 | --- | --- | --- | --- | --- | --- |
-| [1. VM mit einer öffentlichen IP-Adresse auf Instanzebene](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | Azure verwendet die öffentliche IP-Adresse, die dem virtuellen Computer zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. | Nein  | JA |
-| [2. Öffentlicher Endpunkt mit Lastenausgleich](#publiclbendpoint) | SNAT mit Portmaskierung (PAT) für den öffentlichen Endpunkt | TCP, UDP | Azure gibt die öffentliche IP-Adresse eines öffentlichen Endpunkts für mehrere private Endpunkte frei. Azure verwendet die kurzlebigen Ports des öffentlichen Endpunkts für die PAT. | JA | JA |
-| [3. Eigenständige VM ](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist für die SNAT automatisch eine öffentliche IP-Adresse zu, gibt diese öffentliche IP-Adresse für die gesamte Bereitstellung frei und verwendet die kurzlebigen Ports dieser öffentlichen Endpunkt-IP-Adresse für die PAT. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. | JA | JA |
+| [1. VM mit einer öffentlichen IP-Adresse auf Instanzebene](#ilpip) | SNAT, keine Portmaskierung | TCP, UDP, ICMP, ESP | Azure verwendet die öffentliche IP-Adresse, die dem virtuellen Computer zugewiesen ist. Für die Instanz sind alle kurzlebigen Ports verfügbar. | Nein  | Ja |
+| [2. Öffentlicher Endpunkt mit Lastenausgleich](#publiclbendpoint) | SNAT mit Portmaskierung (PAT) für den öffentlichen Endpunkt | TCP, UDP | Azure gibt die öffentliche IP-Adresse eines öffentlichen Endpunkts für mehrere private Endpunkte frei. Azure verwendet die kurzlebigen Ports des öffentlichen Endpunkts für die PAT. | Ja | Ja |
+| [3. Eigenständige VM ](#defaultsnat) | SNAT mit Portmaskierung (PAT) | TCP, UDP | Azure weist für die SNAT automatisch eine öffentliche IP-Adresse zu, gibt diese öffentliche IP-Adresse für die gesamte Bereitstellung frei und verwendet die kurzlebigen Ports dieser öffentlichen Endpunkt-IP-Adresse für die PAT. Dieses Szenario ist ein Fallbackszenario für die vorherigen Szenarien. Es ist nicht zu empfehlen, wenn Sie Sichtbarkeit und Kontrolle benötigen. | Ja | Ja |
 
 Dies ist eine Teilmenge der Funktion für ausgehende Verbindungen, die für Resource Manager-Bereitstellungen in Azure verfügbar ist.  
 
@@ -54,7 +54,7 @@ Verschiedene Bereitstellungen im klassischen Portal weisen unterschiedliche Funk
 
 Für [Lösungsstrategien](#snatexhaust) gelten die gleichen Unterschiede.
 
-Der [Algorithmus zum Reservieren von kurzlebigen Ports](#ephemeralports) für die PAT bei klassischen Bereitstellungen entspricht dem Algorithmus für Azure Resource Manager-Ressourcenbereitstellungen.
+Der Algorithmus zum Reservieren von kurzlebigen Ports für die PAT bei klassischen Bereitstellungen entspricht dem Algorithmus für Azure Resource Manager-Ressourcenbereitstellungen.
 
 ### <a name="ilpip"></a>Szenario 1: VM mit einer öffentlichen IP-Adresse auf Instanzebene
 
@@ -74,13 +74,13 @@ Mit kurzlebigen Ports der öffentlichen Front-End-IP-Adresse des Lastenausgleich
 
 SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben. Es handelt sich um eine begrenzte Ressource, die überlastet werden kann. Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
-Wenn [mehrere Endpunkte mit Lastenausgleich](load-balancer-multivip.md) vorhanden sind, sind diese öffentlichen IP-Adressen [Kandidaten für ausgehende Datenflüsse](#multivipsnat), und eine davon wird zufällig ausgewählt.  
+Wenn [mehrere Endpunkte mit öffentlichem Lastenausgleich](load-balancer-multivip.md) vorhanden sind, sind diese öffentlichen IP-Adressen Kandidaten für ausgehende Datenflüsse, und eine davon wird zufällig ausgewählt.  
 
 ### <a name="defaultsnat"></a>Szenario 3: Keine zugeordnete öffentliche IP-Adresse
 
 In diesem Szenario ist die VM oder Webworkerrolle nicht Teil eines öffentlichen Endpunkts mit Lastenausgleich.  VMs sind keine ILPIP-Adressen zugewiesen. Wenn der virtuelle Computer einen ausgehenden Datenfluss einleitet, übersetzt Azure die private IP-Quelladresse für den ausgehenden Datenfluss in eine öffentliche IP-Quelladresse. Die für diesen ausgehenden Datenfluss verwendete öffentliche IP-Adresse ist nicht konfigurierbar und wird nicht auf die Ressourcengrenze des Abonnements für öffentliche IP-Adressen angerechnet.  Azure weist diese Adresse automatisch zu.
 
-Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt [Szenario 2](#lb). Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist. Wenn ausgehende Verbindungen ein wichtiger Teil Ihrer Anwendung sind, sollten Sie ein anderes Szenario wählen.
+Azure verwendet SNAT mit Portmaskierung ([PAT](#pat)) für diese Aufgabe. Dieses Szenario ähnelt Szenario 2. Der Unterschied besteht darin, dass keine Steuerung der IP-Adresse verwendet wird. Dies ist ein Fallbackszenario für den Fall, dass Szenario 1 und Szenario 2 nicht vorhanden sind. Dieses Szenario wird nicht empfohlen, wenn eine Kontrolle über die ausgehende Adresse gewünscht ist. Wenn ausgehende Verbindungen ein wichtiger Teil Ihrer Anwendung sind, sollten Sie ein anderes Szenario wählen.
 
 SNAT-Ports werden vorab zugeordnet, wie im Abschnitt [Grundlagen von SNAT und PAT](#snat) beschrieben.  Die Anzahl der VMs oder Webworkerrollen, die gemeinsam die öffentliche IP-Adresse verwenden, bestimmt die Anzahl der reservierten kurzlebigen Ports.   Es ist wichtig zu verstehen, wie sie [genutzt](#pat) wird. Um zu verstehen, wie Sie diese Nutzung beim Entwurf berücksichtigen und je nach Bedarf Abhilfemaßnahmen schaffen können, lesen Sie den Abschnitt [Verwalten der SNAT-Auslastung](#snatexhaust).
 
@@ -104,7 +104,7 @@ Im Abschnitt [Verwalten von SNAT](#snatexhaust) werden Muster für das Entschär
 
 In Azure wird ein Algorithmus verwendet, um basierend auf der Größe des Back-End-Pools bei der Portmaskierung per SNAT ([PAT](#pat)) die Anzahl von verfügbaren vorab zugeordneten SNAT-Ports zu ermitteln. SNAT-Ports sind kurzlebige Ports, die für eine bestimmte öffentliche IP-Quelladresse verfügbar sind.
 
-Azure reserviert bei der Bereitstellung einer Instanz SNAT-Ports abhängig davon, wie viele VM- oder Webworkerrollen-Instanzen eine bestimmte öffentliche IP-Adresse gemeinsam nutzen.  Bei Erstellung von ausgehenden Datenflüssen werden diese Ports von [PAT](#pat) dynamisch genutzt (bis zum vorab festgelegten Grenzwert) und wieder freigegeben, wenn der Datenfluss geschlossen wird oder ein [Leerlauftimeout](#ideltimeout) eintritt.
+Azure reserviert bei der Bereitstellung einer Instanz SNAT-Ports abhängig davon, wie viele VM- oder Webworkerrollen-Instanzen eine bestimmte öffentliche IP-Adresse gemeinsam nutzen.  Bei Erstellung von ausgehenden Datenflüssen werden diese Ports von [PAT](#pat) dynamisch genutzt (bis zum vorab festgelegten Grenzwert) und wieder freigegeben, wenn der Datenfluss geschlossen wird oder ein Leerlauftimeout eintritt.
 
 In der folgenden Tabelle sind die SNAT-Port-Vorabzuordnungen für die Ebenen der Back-End-Poolgrößen angegeben:
 

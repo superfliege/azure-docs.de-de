@@ -1,6 +1,6 @@
 ---
-title: 'Hinzufügen von Schemas für XML-Überprüfung: Azure Logic Apps | Microsoft-Dokumentation'
-description: Erstellen von Schemas zum Überprüfen von XML-Dokumenten in Azure Logic Apps mit Enterprise Integration Pack
+title: 'Validieren von XML-Schemas: Azure Logic Apps | Microsoft-Dokumentation'
+description: Hinzufügen von Schemas zum Überprüfen von XML-Dokumenten in Azure Logic Apps mit Enterprise Integration Pack
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,124 +9,185 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 56c5846c-5d8c-4ad4-9652-60b07aa8fc3b
-ms.date: 07/29/2016
-ms.openlocfilehash: e03346da1c2b77f885c39d5329f990684979c56e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 02/06/2019
+ms.openlocfilehash: 03ac2e0f42ff05165aa2313d823710a71c7dffec
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123072"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768305"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Überprüfen von XML mit Schemas in Azure Logic Apps mit Enterprise Integration Pack
 
-Schemas bestätigen, dass empfangene XML-Dokumente gültig sind und die erwarteten Daten in einem vordefinierten Format enthalten. Schemas dienen zum Überprüfen von Nachrichten, die in einem B2B-Szenario ausgetauscht werden.
+Um sicherzustellen, dass Dokumente gültige XML verwenden und über Daten im vordefinierten Format verfügen, das für Enterprise Integration-Szenarien in Azure Logic Apps erwartet wird, kann Ihre Logik-App Schemas verwenden. Ein Schema kann darüber hinaus Nachrichten überprüfen, die Logik-Apps in Business-to-Business (B2B)-Szenarien austauschen.
 
-## <a name="add-a-schema"></a>Hinzufügen eines Schemas
+Grenzwerte für Integrationskonten und Artefakte wie Schemas finden Sie unter [Grenzwert- und Konfigurationsinformationen für Azure Logic Apps](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits).
 
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus.
+## <a name="prerequisites"></a>Voraussetzungen
 
-    ![Azure-Portal, „Alle Dienste“](media/logic-apps-enterprise-integration-schemas/overview-11.png)
+* Ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie sich <a href="https://azure.microsoft.com/free/" target="_blank">für ein kostenloses Azure-Konto registrieren</a>.
 
-2. Geben Sie im Filtersuchfeld das Wort **Integration** ein, und wählen Sie in der Liste mit den Ergebnissen den Eintrag **Integrationskonten** aus.
+* Ein [Integrationskonto](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md), in dem Sie Ihre Schemas und andere Artefakte für Enterprise Integration- und B2B (Business-to-Business)-Lösungen speichern. 
 
-    ![Filtersuchfeld](media/logic-apps-enterprise-integration-schemas/overview-21.png)
+  Wenn Ihr Schema [2 MB oder kleiner](#smaller-schema) ist, können Sie Ihr Schema dem Integrationskonto direkt über das Azure-Portal hinzufügen. Wenn Ihr Schema jedoch größer als 2 MB ist, den [Grenzwert für die Schemagröße](../logic-apps/logic-apps-limits-and-config.md#artifact-capacity-limits) jedoch nicht überschreitet, können Sie Ihr Schema in ein Azure-Speicherkonto hochladen. 
+  Um dieses Schema Ihrem Integrationskonto hinzuzufügen, können Sie Ihr Speicherkonto mit Ihrem Integrationskonto verknüpfen. 
+  Für diese Aufgabe benötigen Sie Folgendes: 
 
-3. Wählen Sie das **Integrationskonto** aus, dem Sie das Schema hinzufügen möchten.
+  * Ein [Azure-Speicherkonto](../storage/common/storage-account-overview.md), in dem Sie einen Blobcontainer für Ihr Schema erstellen. Hier erfahren Sie, wie Sie ein [Speicherkonto erstellen](../storage/common/storage-quickstart-create-account.md). 
 
-    ![Liste der Integrationskonten](media/logic-apps-enterprise-integration-schemas/overview-31.png)
+  * Einen Blobcontainer zum Speichern Ihres Schemas. Hier erfahren Sie, wie Sie einen [Blobcontainer erstellen](../storage/blobs/storage-quickstart-blobs-portal.md). 
+  Wenn Sie das Schema später Ihrem Integrationskonto hinzufügen, benötigen Sie den Inhalts-URI Ihres Containers.
 
-4. Wählen Sie die Kachel **Schemas** aus.
+  * [Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) zur Verwaltung von Speicherkonten und Blobcontainern. 
+  Zur Verwendung des Storage-Explorers wählen Sie eine der folgenden Optionen:
+  
+    * Suchen Sie im Azure-Portal Ihr Speicherkonto, und wählen Sie es aus. 
+    Wählen Sie im Menü „Speicherkonto“ **Storage-Explorer** aus.
 
-    ![Beispiel eines Integrationskontos, „Schemas“](media/logic-apps-enterprise-integration-schemas/schema-11.png)
+    * Bei der Desktopversion [laden Sie den Azure Storage-Explorer herunter und installieren ihn](https://www.storageexplorer.com/). 
+    Verbinden Sie dann den Storage-Explorer mit Ihrem Speicherkonto, indem Sie die Schritte unter [Erste Schritte mit dem Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) ausführen. 
+    Weitere Informationen finden Sie unter [Schnellstart: Verwenden von Azure Storage-Explorer zum Erstellen eines Blobs im Objektspeicher](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
 
-### <a name="add-a-schema-file-smaller-than-2-mb"></a>Hinzufügen einer Schemadatei, die kleiner als 2 MB ist
+Zum Erstellen und Hinzufügen von Schemas benötigen Sie keine Logik-App. Damit Sie ein Schema verwenden können, muss Ihre Logik-App jedoch mit einem Integrationskonto verknüpft sein, in dem dieses Schema gespeichert ist. Erfahren Sie, wie Sie [Logik-Apps mit Integrationskonten verknüpfen](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md#link-account). Wenn Sie noch nicht über eine Logik-App verfügen, lesen Sie den Artikel zum [Erstellen von Logik-Apps](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
-1. Wählen Sie auf dem Blatt **Schemas**, das geöffnet wird (vorherige Schritte), die Option **Hinzufügen**.
+## <a name="add-schemas"></a>Hinzufügen von Schemas
 
-    ![Blatt „Schemas“, „Hinzufügen“](media/logic-apps-enterprise-integration-schemas/schema-21.png)
+1. Melden Sie sich mit den Anmeldeinformationen Ihres Azure-Kontos beim <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> an.
 
-2. Geben Sie einen Namen für das Schema ein. Wählen Sie zum Hochladen der Schemadatei das Ordnersymbol neben dem Textfeld **Schema** aus. Klicken Sie nach dem Hochladevorgang auf **OK**.
+1. Wählen Sie im Azure-Hauptmenü **Alle Dienste** aus, um Ihr Integrationskonto zu suchen und zu öffnen. Geben Sie im Suchfeld „Integrationskonto“ ein. Wählen Sie **Integrationskonten** aus.
 
-    ![Screenshot von „Schema hinzufügen“ mit Hervorhebung von „Kleine Datei“](media/logic-apps-enterprise-integration-schemas/schema-31.png)
+   ![Suchen von Integrationskonten](./media/logic-apps-enterprise-integration-schemas/find-integration-account.png)
 
-### <a name="add-a-schema-file-larger-than-2-mb-up-to-8-mb-maximum"></a>Hinzufügen einer Schemadatei, die größer als 2 MB ist (bis maximal 8 MB)
+1. Wählen Sie das Integrationskonto aus, dem Sie Ihr Schema hinzufügen möchten. Beispiel:
 
-Die Schritte hierfür richten sich nach der Zugriffsebene für den Blobcontainer: **Öffentlich** oder **Kein anonymer Zugriff**.
+   ![Auswählen des Integrationskontos](./media/logic-apps-enterprise-integration-schemas/select-integration-account.png)
 
-**So bestimmen Sie diese Zugriffsebene**
+1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Schemas** aus.
 
-1.  Öffnen Sie den **Azure Storage-Explorer**. 
+   ![Auswählen von „Schemas“](./media/logic-apps-enterprise-integration-schemas/select-schemas.png)
 
-2.  Wählen Sie unter **Blobcontainer** den gewünschten Blobcontainer aus. 
+1. Nachdem die Seite **Schemas** geöffnet wurde, wählen Sie **Hinzufügen** aus.
 
-3.  Klicken Sie auf **Sicherheit** > **Zugriffsebene**.
+   ![Auswählen von „Hinzufügen“](./media/logic-apps-enterprise-integration-schemas/add-schema.png)
 
-Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene **Öffentlich** lautet.
+Je nach Größe Ihrer Schemadatei (.xsd) führen Sie die Schritte zum Upload eines Schemas aus, das entweder [maximal 2 MB](#smaller-schema) groß oder [größer als 2 MB (maximal 8 MB)](#larger-schema) ist.
 
-![Azure Storage-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Öffentlich“](media/logic-apps-enterprise-integration-schemas/blob-public.png)
+<a name="smaller-schema"></a>
 
-1. Laden Sie das Schema in Ihr Speicherkonto hoch, und kopieren Sie den URI.
+### <a name="add-schemas-up-to-2-mb"></a>Hinzufügen von Schemas bis maximal 2 MB
 
-    ![Speicherkonto mit hervorgehobenem URI](media/logic-apps-enterprise-integration-schemas/schema-blob.png)
+1. Geben Sie unter **Schema hinzufügen** den Namen Ihres Schemas ein. 
+   Lassen Sie **Kleine Datei** ausgewählt. Wählen Sie neben dem Feld **Schema** das Ordnersymbol aus. Suchen und wählen Sie das Schema zum Upload aus. Beispiel:
 
-2. Wählen Sie unter **Schema hinzufügen** die Option **Große Datei**, und geben Sie den URI im Textfeld **Inhalts-URI** an.
+   ![Hochladen eines kleineren Schemas](./media/logic-apps-enterprise-integration-schemas/upload-smaller-schema-file.png)
 
-    ![Schemas mit Hervorhebung der Schaltfläche „Hinzufügen“ und der Option „Große Datei“](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+1. Wählen Sie abschließend **OK** aus.
 
-Führen Sie die folgenden Schritte aus, wenn die Blob-Sicherheitszugriffsebene **Kein anonymer Zugriff** lautet.
+   Nachdem der Upload Ihres Schemas abgeschlossen ist, wird das Schema in der Liste **Schemas** angezeigt.
 
-![Azure Storage-Explorer mit Hervorhebung von „Blobcontainer“, „Sicherheit“ und „Kein anonymer Zugriff“](media/logic-apps-enterprise-integration-schemas/blob-1.png)
+<a name="larger-schema"></a>
 
-1. Laden Sie das Schema in Ihr Speicherkonto hoch.
+### <a name="add-schemas-more-than-2-mb"></a>Hinzufügen von Schemas mit mehr als 2 MB
 
-    ![Speicherkonto](media/logic-apps-enterprise-integration-schemas/blob-3.png)
+Wenn Sie größere Schemas hinzufügen möchten, können Sie Ihr Schema in einen Azure-Blobcontainer in Ihrem Azure-Speicherkonto hochladen. Die Schritte zum Hinzufügen von Zuordnungen unterscheiden sich abhängig davon, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt. Überprüfen Sie deshalb zuerst anhand der folgenden Schritte, ob Ihr Blobcontainer über öffentlichen Lesezugriff verfügt: [Festlegen der öffentlichen Zugriffsebene für Blobcontainer](../vs-azure-tools-storage-explorer-blobs.md#set-the-public-access-level-for-a-blob-container)
 
-2. Generieren Sie eine Shared Access Signature für das Schema.
+#### <a name="check-container-access-level"></a>Überprüfen der Containerzugriffsebene
 
-    ![Speicherkonto mit Hervorhebung der Registerkarte „Shared Access Signatures“](media/logic-apps-enterprise-integration-schemas/blob-2.png)
+1. Öffnen Sie den Azure Storage-Explorer. Klappen Sie im Explorer-Fenster Ihr Azure-Abonnement auf, sofern es noch nicht aufgeklappt ist.
 
-3. Wählen Sie unter **Schema hinzufügen** die Option **Große Datei**, und geben Sie den Shared Access Signature-URI im Textfeld**Inhalts-URI** an.
+1. Klappen Sie **Speicherkonten** > {*Ihr-Speicherkonto*} > **Blobcontainer** auf. Wählen Sie Ihren Blobcontainer aus.
 
-    ![Schemas mit Hervorhebung der Schaltfläche „Hinzufügen“ und der Option „Große Datei“](media/logic-apps-enterprise-integration-schemas/schema-largefile.png)
+1. Wählen Sie im Kontextmenü des Blobcontainers **Öffentliche Zugriffsebene festlegen** aus.
 
-4. Auf dem Blatt **Schemas** Ihres Integrationskontos sollte jetzt das neu hinzugefügte Schema angezeigt werden.
+   * Wenn Ihr Blobcontainer mindestens über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container mit öffentlichem Zugriff](#public-access)
 
-    ![Ihr Integrationskonto mit Hervorhebung von „Schemas“ und des neuen Schemas](media/logic-apps-enterprise-integration-schemas/schema-41.png)
+     ![Öffentlicher Zugriff](media/logic-apps-enterprise-integration-schemas/azure-blob-container-public-access.png)
+
+   * Wenn Ihr Blobcontainer nicht über öffentlichen Zugriff verfügt, wählen Sie **Abbrechen** aus, und folgen Sie den Schritten unten auf dieser Seite: [Hochladen in Container ohne öffentlichen Zugriff](#public-access)
+
+     ![Kein öffentlicher Zugriff](media/logic-apps-enterprise-integration-schemas/azure-blob-container-no-public-access.png)
+
+<a name="public-access"></a>
+
+#### <a name="upload-to-containers-with-public-access"></a>Hochladen in Container mit öffentlichem Zugriff
+
+1. Laden Sie das Schema in Ihr Speicherkonto hoch. 
+   Wählen Sie im rechten Fenster **Hochladen** aus.
+
+1. Wählen Sie das hochgeladene Schema aus, nachdem der Upload abgeschlossen ist. Wählen Sie auf der Symbolleiste **URL kopieren** aus, um die URL des Schemas zu kopieren.
+
+1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Schema hinzufügen** geöffnet ist. 
+   Geben Sie einen Namen für Ihre Assembly ein. 
+   Wählen Sie **Große Datei (größer als 2 MB)** aus. 
+
+   Das Feld **Inhalts-URI** wird jetzt anstelle des Felds **Schema** angezeigt.
+
+1. Fügen Sie die URL Ihres Schemas in das Feld **Inhalts-URI** ein. 
+   Schließen Sie das Hinzufügen Ihres Schemas ab.
+
+Nachdem der Upload Ihres Schemas abgeschlossen ist, wird das Schema in der Liste **Schemas** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** wird jetzt auf der Kachel **Schemas** die Anzahl hochgeladener Schemas angezeigt.
+
+<a name="no-public-access"></a>
+
+#### <a name="upload-to-containers-without-public-access"></a>Hochladen in Container ohne öffentlichen Zugriff
+
+1. Laden Sie das Schema in Ihr Speicherkonto hoch. 
+   Wählen Sie im rechten Fenster **Hochladen** aus.
+
+1. Nachdem der Upload abgeschlossen ist, generieren Sie eine Shared Access Signature (SAS) für Ihr Schema. 
+   Wählen Sie im Kontextmenü des Schemas **Shared Access Signature abrufen** aus.
+
+1. Wählen Sie im Bereich **Shared Access Signature** die Option **URI für Shared Access Signature auf Containerebene generieren** > **Erstellen** aus. 
+   Nachdem die SAS-URL generiert wurde, wählen Sie neben dem Feld **URL** die Option **Kopieren** aus.
+
+1. Kehren Sie zum Azure-Portal zurück, in dem der Bereich **Schema hinzufügen** geöffnet ist. Wählen Sie **Große Datei** aus.
+
+   Das Feld **Inhalts-URI** wird jetzt anstelle des Felds **Schema** angezeigt.
+
+1. Fügen Sie im Feld **Inhalts-URI** den zuvor generierten SAS-URI ein. Schließen Sie das Hinzufügen Ihres Schemas ab.
+
+Nachdem der Upload Ihres Schemas abgeschlossen ist, wird das Schema in der Liste **Schemas** angezeigt. Auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** wird jetzt auf der Kachel **Schemas** die Anzahl hochgeladener Schemas angezeigt.
 
 ## <a name="edit-schemas"></a>Bearbeiten von Schemas
 
-1. Wählen Sie die Kachel **Schemas** aus.
+Wenn Sie ein vorhandenes Schema aktualisieren möchten, müssen Sie eine neue Schemadatei hochladen, die über die gewünschten Änderungen verfügt. Allerdings können Sie zuerst das vorhandene Schema zum Bearbeiten herunterladen.
 
-2. Wählen Sie auf dem geöffneten Blatt **Schemas** das Schema aus, das Sie bearbeiten möchten.
+1. Suchen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> Ihr Integrationskonto, und öffnen Sie es, falls es noch nicht geöffnet ist.
 
-3. Wählen Sie auf dem Blatt **Schemas** die Option **Bearbeiten**.
+1. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
+   Geben Sie im Suchfeld „Integrationskonto“ ein. 
+   Wählen Sie **Integrationskonten** aus.
 
-    ![Blatt „Schemas“](media/logic-apps-enterprise-integration-schemas/edit-12.png)
+1. Wählen Sie das Integrationskonto aus, unter dem Sie Ihr Schema aktualisieren möchten.
 
-4. Wählen Sie die Schemadatei, die Sie bearbeiten möchten, und dann **Öffnen** aus.
+1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Schemas** aus.
 
-    ![Öffnen der zu bearbeitenden Schemadatei](media/logic-apps-enterprise-integration-schemas/edit-31.png)
+1. Nachdem die Seite **Schemas** geöffnet wurde, wählen Sie Ihr Schema aus. 
+   Um das Schema zuerst herunterzuladen und zu bearbeiten, wählen Sie **Herunterladen** aus, und speichern Sie das Schema.
 
-Azure zeigt die Meldung, dass das Schema erfolgreich hochgeladen wurde.
+1. Wenn Sie bereit für den Upload des aktualisierten Schemas sind, wählen Sie auf der Seite **Schemas** das zu aktualisierende Schema und dann **Aktualisieren** aus.
+
+1. Suchen und wählen Sie das aktualisierte Schema aus, das Sie hochladen möchten. 
+   Nachdem der Upload Ihrer Schemadatei abgeschlossen ist, wird das aktualisierte Schema in der Liste **Schemas** angezeigt.
 
 ## <a name="delete-schemas"></a>Löschen von Schemas
 
-1. Wählen Sie die Kachel **Schemas** aus.
+1. Suchen Sie im <a href="https://portal.azure.com" target="_blank">Azure-Portal</a> Ihr Integrationskonto, und öffnen Sie es, falls es noch nicht geöffnet ist.
 
-2. Wählen Sie auf dem geöffneten Blatt **Schemas** das Schema aus, das Sie löschen möchten.
+1. Wählen Sie im Azure-Hauptmenü die Option **Alle Dienste** aus. 
+   Geben Sie im Suchfeld „Integrationskonto“ ein. 
+   Wählen Sie **Integrationskonten** aus.
 
-3. Wählen Sie auf dem Blatt **Schemas** die Option **Löschen**.
+1. Wählen Sie das Integrationskonto aus, unter dem Sie Ihr Schema löschen möchten.
 
-    ![Blatt „Schemas“](media/logic-apps-enterprise-integration-schemas/delete-12.png)
+1. Wählen Sie auf der Seite **Übersicht** Ihres Integrationskontos unter **Komponenten** die Kachel **Schemas** aus.
 
-4. Um zu bestätigen, dass Sie das ausgewählte Schema löschen möchten, klicken Sie auf **Ja**.
+1. Nachdem die Seite **Schemas** geöffnet wurde, wählen Sie Ihr Schema und dann **Löschen** aus.
 
-    ![Bestätigungsmeldung „Schema löschen“](media/logic-apps-enterprise-integration-schemas/delete-21.png)
-
-    Auf dem Blatt **Schemas** wird die aktualisierte Schemaliste ohne das von Ihnen gelöschte Schema angezeigt.
-
-    ![Ihr Integrationskonto mit Hervorhebung von „Schemas“](media/logic-apps-enterprise-integration-schemas/delete-31.png)
+1. Um zu bestätigen, dass Sie das Schema löschen möchten, wählen Sie **Ja** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Übersicht über das Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Informationen zum Enterprise Integration Pack")  
 
+* [Weitere Informationen zum Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md)
+* [Weitere Informationen über Zuordnungen](../logic-apps/logic-apps-enterprise-integration-maps.md)
+* [Weitere Informationen über Transformationen](../logic-apps/logic-apps-enterprise-integration-transform.md)

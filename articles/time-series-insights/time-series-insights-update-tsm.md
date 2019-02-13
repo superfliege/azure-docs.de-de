@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 55d35237adc384ca8344e6ff69abc4a93d540ec6
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 6126a9d56059435be32299bcd1f03050f031f81b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099899"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507816"
 ---
 # <a name="time-series-model"></a>Time Series-Modell
 
@@ -152,9 +152,11 @@ Im vorherigen Beispiel werden ID1 und ID4 als Teile der Hierarchie H1 im Azure T
 
 Instanzen sind die Zeitreihen selbst. In den meisten Fällen ist die *deviceId* oder die *assetId* der eindeutige Bezeichner des Objekts in der Umgebung. Instanzen sind beschreibende Informationen zugeordnet, die als Instanzeigenschaften bezeichnet werden. Instanzeigenschaften enthalten mindestens Hierarchieinformationen. Sie können auch nützliche, beschreibende Daten enthalten wie Hersteller, Bediener oder letztes Wartungsdatum.
 
-Instanzen werden durch *timeSeriesId*, *typeId*, *hierarchyId* und *instanceFields* definiert. Jede Instanz wird nur einem *Typ* zugeordnet sowie einer oder mehreren Hierarchien. Instanzen erben alle Eigenschaften von Hierarchien, und es können zusätzliche *instanceFields* zur weiteren Definition der Instanzeigenschaft hinzugefügt werden.
+Instanzen werden durch *typeId*, *timeSeriesId*, *name*, *description*, *hierarchyIds* und *instanceFields* definiert. Jede Instanz wird nur einem *Typ* zugeordnet sowie einer oder mehreren Hierarchien. Instanzen erben alle Eigenschaften von Hierarchien, und es können zusätzliche *instanceFields* zur weiteren Definition der Instanzeigenschaft hinzugefügt werden.
 
 *instanceFields* sind Eigenschaften einer Instanz sowie aller statischen Daten, die eine Instanz definieren. Sie definieren Werte von Hierarchie- oder Nicht-Hierarchie-Eigenschaften, während sie gleichzeitig die Indizierung unterstützen, um Suchvorgänge auszuführen.
+
+Die *name*-Eigenschaft ist optional, und die Groß-/Kleinschreibung wird berücksichtigt. Wenn *name* nicht verfügbar ist, wird standardmäßig die Time Series-ID verwendet. Wenn *name* angegeben ist, ist die Time Series-ID weiterhin im Ursprung (dem Raster unterhalb der Diagramme im Explorer) verfügbar. 
 
 ## <a name="time-series-model-instance-json-example"></a>JSON-Beispiel für Zeitreihenmodellinstanz
 
@@ -164,6 +166,7 @@ Beispiel:
 {
     "typeId": "1be09af9-f089-4d6b-9f0b-48018b5f7393",
     "timeSeriesId": ["sampleTimeSeriesId"],
+    "name": "sampleName",
     "description": "Sample Instance",
     "hierarchyIds": [
         "1643004c-0a84-48a5-80e5-7688c5ae9295"

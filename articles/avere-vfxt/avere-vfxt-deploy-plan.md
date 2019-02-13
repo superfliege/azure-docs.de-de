@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: e60c92c22382112558307062afdeb87e08075765
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: a097110bac7dad630f9a85dd8b20678db0c739cf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298924"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744655"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Planen des Avere vFXT-Systems
 
@@ -37,6 +37,9 @@ Befolgen Sie die folgenden Richtlinien bei der Planung der Netzwerkinfrastruktur
 * Platzieren Sie Ihre Clientcomputersysteme in der Nähe des vFXT-Clusters. Der Back-End-Speicher kann weiter entfernt sein.  
 
 * Der Einfachheit halber positionieren Sie den vFXT-Cluster und die Clustercontroller-VM in demselben virtuellen Netzwerk (VNet) und in derselben Ressourcengruppe. Sie sollten zudem dasselbe Speicherkonto verwenden. (Der Clustercontroller erstellt den Cluster und kann auch für die Clusterverwaltung über die Befehlszeile verwendet werden.)  
+
+  > [!NOTE] 
+  > Die Vorlage für die Clustererstellung kann eine neue Ressourcengruppe und ein neues Speicherkonto für den Cluster erstellen. Sie können eine vorhandene Ressourcengruppe angeben, diese muss jedoch leer sein.
 
 * Der Cluster muss sich in einem eigenen Subnetz befinden, um IP-Adressenkonflikte mit Clients oder Computeressourcen zu vermeiden. 
 
@@ -117,7 +120,7 @@ Ausführliche Informationen zu diesen Optionen finden Sie in der [Dokumentation 
 
 Wenn Sie eine öffentliche IP-Adresse für den Clustercontroller festlegen, können Sie diesen als Jump Host verwenden, um Kontakt mit dem Avere vFXT-Cluster von außerhalb des privaten Subnetzes herzustellen. Da der Controller jedoch Zugriffsrechte zum Ändern von Clusterknoten besitzt, entsteht ein kleines Sicherheitsrisiko.  
 
-Verwenden Sie für verbesserte Sicherheit mit einer öffentlichen IP-Adresse eine Netzwerksicherheitsgruppe, um eingehenden Zugriff nur über Port 22 zuzulassen.
+Verwenden Sie für verbesserte Sicherheit mit einer öffentlichen IP-Adresse eine Netzwerksicherheitsgruppe, um eingehenden Zugriff nur über Port 22 zuzulassen. Sie können das System optional weiter schützen, indem Sie den Zugriff auf Ihren Bereich von IP-Quelladressen sperren, d. h. nur Verbindungen von Computern erlauben, die Sie für den Clusterzugriff verwenden möchten.
 
 Beim Erstellen des Clusters können Sie auswählen, ob Sie eine öffentliche IP-Adresse für den Clustercontroller erstellen möchten. 
 

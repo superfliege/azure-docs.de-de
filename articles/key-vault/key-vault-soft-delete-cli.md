@@ -1,20 +1,18 @@
 ---
-ms.assetid: ''
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten
 author: bryanla
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: conceptual
-ms.workload: identity
-ms.date: 10/15/2018
+ms.date: 02/01/2019
 ms.author: bryanla
-ms.openlocfilehash: af2d480e84ca69c0ecd795e38371375e6a71542b
-ms.sourcegitcommit: 6361a3d20ac1b902d22119b640909c3a002185b3
+ms.openlocfilehash: 242398eb0bb4d4ddd2764bd66c99a7f9603ea1b9
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49363638"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663943"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -72,7 +70,7 @@ Um sicherzustellen, dass für einen Schlüsseltresor vorläufiges Löschen aktiv
 az keyvault show --name ContosoVault
 ```
 
-## <a name="deleting-a-key-vault-protected-by-soft-delete"></a>Löschen eines mit vorläufigem Löschen geschützten Schlüsseltresors
+## <a name="deleting-a-soft-delete-protected-key-vault"></a>Löschen eines mit vorläufigem Löschen geschützten Schlüsseltresors
 
 Der Befehl zum Löschen eines Schlüsseltresors ändert das Verhalten, je nachdem, ob das vorläufige Löschen aktiviert ist.
 
@@ -89,7 +87,7 @@ Vorläufiges Löschen ist aktiviert:
 
 - Ein gelöschter Schlüsseltresor wird aus der Ressourcengruppe entfernt und in einem reservierten Namespace abgelegt, der dem Speicherort seiner Erstellung zugeordnet ist. 
 - Auf gelöschte Objekte, beispielsweise Schlüssel, Geheimnisse und Zertifikate, kann nicht zugegriffen werden. Das ändert sich nicht, solange sich ihr Schlüsseltresor im gelöschten Zustand befindet. 
-- Der DNS-Name für einen gelöschten Schlüsseltresor ist reserviert, sodass kein neuer Schlüsseltresor mit gleichem Namen erstellt werden kann.  
+- Der DNS-Name für einen gelöschten Schlüsseltresor ist reserviert, sodass kein neuer Schlüsseltresor mit gleichem Namen erstellt werden kann.  
 
 Sie können Schlüsseltresore im gelöschten Zustand für Ihr Abonnement mit dem folgenden Befehl anzeigen:
 
@@ -110,9 +108,9 @@ az keyvault recover --location westus --resource-group ContosoRG --name ContosoV
 
 Wenn ein Schlüsseltresor wiederhergestellt wird, wird eine neue Ressource mit der ursprünglichen Ressourcen-ID des Schlüsseltresors erstellt. Wenn die ursprüngliche Ressourcengruppe entfernt wird, muss vor dem Versuch der Wiederherstellung eine mit dem gleichen Namen erstellt werden.
 
-## <a name="key-vault-objects-and-soft-delete"></a>Key Vault-Objekte und vorläufiges Löschen
+## <a name="deleting-and-purging-key-vault-objects"></a>Löschen und Bereinigen von Schlüsseltresorobjekten
 
-Den Schlüssel „ContosoFirstKey“ in einem Schlüsseltresor namens „ContosoVault“, für den vorläufiges Löschen aktiviert ist, löschen Sie wie folgt:
+Der folgende Befehl löscht den Schlüssel „ContosoFirstKey“ in einem Schlüsselspeicher namens „ContosoVault“, bei dem das vorläufige Löschen aktiviert ist:
 
 ```azurecli
 az keyvault key delete --name ContosoFirstKey --vault-name ContosoVault
@@ -192,17 +190,22 @@ az keyvault secret recover --name SQLPassword --vault-name ContosoVault
   az keyvault secret purge --name SQLPAssword --vault-name ContosoVault
   ```
 
-## <a name="purging-and-key-vaults"></a>Bereinigen und Schlüsseltresore
+## <a name="purging-a-soft-delete-protected-key-vault"></a>Bereinigen eines mit vorläufigem Löschen geschützten Schlüsseltresors
 
-### <a name="key-vault-objects"></a>Schlüsseltresorobjekte
+> [!IMPORTANT]
+> Bei der Bereinigung eines Schlüsseltresors oder eines seiner enthaltenen Objekte wird das Element endgültig gelöscht. Das bedeutet, dass es nicht wiederhergestellt werden kann.
 
-Bei der Bereinigung von Schlüsseln, Geheimnissen oder Zertifikaten werden diese endgültig gelöscht. Das bedeutet, dass sie nicht wiederhergestellt werden können. Der Schlüsseltresor, der das gelöschte Objekt enthielt, bleibt jedoch genau wie alle anderen Objekte im Schlüsseltresor intakt. 
+Die Bereinigungsfunktion wird verwendet, um ein Schlüsseltresorobjekt oder einen ganzen Schlüsseltresor, der zuvor vorläufig gelöscht war, dauerhaft zu löschen. Wie im vorherigen Abschnitt gezeigt, können Objekte, die in einem Schlüsseltresor mit aktiviertem vorläufigem Löschen gespeichert werden, mehrere Zustände durchlaufen:
 
-### <a name="key-vaults-as-containers"></a>Schlüsseltresore als Container
-Wenn ein Schlüsseltresor bereinigt wird, wird sein gesamter Inhalt, d.h. Schlüssel, Geheimnisse und Zertifikate, endgültig gelöscht. Verwenden Sie zum Bereinigen eines Schlüsseltresors den Befehl `az keyvault purge`. Den Speicherort der gelöschten Schlüsseltresore Ihres Abonnements können Sie mit dem Befehl `az keyvault list-deleted` ermitteln.
+- **Aktiv**: Vor dem Löschen
+- **Vorläufig gelöscht**: Nach dem Löschen, das Objekt kann aufgelistet und wieder in den aktiven Zustand zurückversetzt werden.
+- **Dauerhaft gelöscht**: Nach der Bereinigung, das Objekt kann nicht wiederhergestellt werden.
 
->[!IMPORTANT]
->Bei der Bereinigung eines Schlüsseltresors wird er endgültig gelöscht. Das bedeutet, dass er nicht wiederhergestellt werden kann.
+Das Gleiche gilt für Schlüsseltresore. Um vorläufig gelöschte Schlüsseltresore und deren Inhalt dauerhaft zu löschen, müssen Sie den Schlüsseltresor selbst bereinigen.
+
+### <a name="purging-a-key-vault"></a>Bereinigen eines Schlüsseltresors
+
+Wenn ein Schlüsseltresor bereinigt wird, wird sein gesamter Inhalt, d.h. Schlüssel, Geheimnisse und Zertifikate, endgültig gelöscht. Verwenden Sie zum Bereinigen eines vorläufig gelöschten Schlüsseltresors den Befehl `az keyvault purge`. Den Speicherort der gelöschten Schlüsseltresore Ihres Abonnements können Sie mit dem Befehl `az keyvault list-deleted` ermitteln.
 
 ```azurecli
 az keyvault purge --location westus --name ContosoVault

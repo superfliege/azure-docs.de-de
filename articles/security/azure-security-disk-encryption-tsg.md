@@ -6,14 +6,14 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 01/25/2019
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 70cf6c65592eef94ce657c9aaef7dc78de4ffa11
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: faea1cc7c45393c10a240de2c92757ff8f2ac5c3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468392"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694087"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Leitfaden zur Azure Disk Encryption-Problembehandlung
 
@@ -87,7 +87,8 @@ Wenn die Konnektivität durch eine Firewall, eine Proxyanforderung oder Einstell
 Für alle angewendeten Einstellungen von Netzwerksicherheitsgruppen muss es ermöglicht werden, dass der Endpunkt die dokumentierten [Voraussetzungen](azure-security-disk-encryption-prerequisites.md#bkmk_GPO) für die Netzwerkkonfiguration in Bezug auf die Datenträgerverschlüsselung erfüllt.
 
 ### <a name="azure-key-vault-behind-a-firewall"></a>Azure Key Vault hinter einer Firewall
-Wenn Verschlüsselung mit [Azure AD-Anmeldeinformationen](azure-security-disk-encryption-prerequisites-aad.md) aktiviert wird, muss die Ziel-VM Zugriff auf die Azure AD-Authentifizierungsendpunkte sowie die Key Vault-Endpunkte erhalten.  Weitere Informationen zu diesem Vorgang finden Sie im Leitfaden für den Zugriff auf Key Vault hinter einer Firewall, die vom [Azure Key Vault](../key-vault/key-vault-access-behind-firewall.md)-Team verwaltet wird. 
+
+Wenn die Verschlüsselung mit [Azure AD-Anmeldeinformationen](azure-security-disk-encryption-prerequisites-aad.md) aktiviert wird, muss der virtuelle Zielcomputer die Konnektivität sowohl mit Azure Active Directory-Endpunkten als auch mit Schlüsseltresor-Endpunkten zulassen. Aktuelle Azure Active Directory-Authentifizierungsendpunkte werden in den Abschnitten 56 und 59 der Dokumentation zu [URLs und IP-Adressbereichen in Office 365](https://docs.microsoft.com/office365/enterprise/urls-and-ip-address-ranges) verwaltet. Anweisungen zu Schlüsseltresoren werden in der Dokumentation [Zugreifen auf Azure Key Vault hinter einer Firewall](../key-vault/key-vault-access-behind-firewall.md) bereitgestellt.
 
 ### <a name="azure-instance-metadata-service"></a>Azure-Instanzmetadatendienst 
 Der virtuelle Computer muss Zugriff auf den [Azure-Instanzmetadatendienst](../virtual-machines/windows/instance-metadata-service.md)-Endpunkt haben, der eine bekannte nicht routingfähige IP-Adresse (`169.254.169.254`) verwendet, auf die nur von innerhalb des virtuellen Computers aus zugegriffen werden kann.

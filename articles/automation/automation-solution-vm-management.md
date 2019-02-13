@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 1/30/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5cacd2d0e4308e15b562169f72efb0f98ce45289
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476395"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658385"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -136,7 +136,7 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 
 #### <a name="target-the-start-and-stop-action-by-vm-list"></a>Festlegen der Aktionen zum Starten und Beenden über eine VM-Liste
 
-1. Fügen Sie virtuellen Computern, die der Variablen **VMList** hinzugefügt werden sollen, ein **sequencestart**- und ein **sequencestop**-Tag mit einem positiven Integerwert hinzu. 
+1. Fügen Sie virtuellen Computern, die dem Parameter **VMList** hinzugefügt werden sollen, ein **sequencestart**- und ein **sequencestop**-Tag mit einem positiven Integerwert hinzu.
 1. Führen Sie das Runbook **SequencedStartStop_Parent** aus. Legen Sie dabei den Parameter ACTION auf **start** fest, fügen Sie eine durch Trennzeichen getrennte Liste von VMs im Parameter *VMList* hinzu, und legen Sie den Parameter WHATIF auf **True** fest. Zeigen Sie eine Vorschau für die Änderungen an.
 1. Konfigurieren Sie den Parameter **External_ExcludeVMNames** mit einer durch Kommas getrennten Liste von VMs (VM1, VM2, VM3).
 1. In diesem Szenario werden die Variablen **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupnames** nicht berücksichtigt. Für dieses Szenario müssen Sie Ihren eigenen Automation-Zeitplan erstellen. Ausführliche Informationen finden Sie unter [Planen eines Runbooks in Azure Automation](../automation/automation-schedules.md).
@@ -319,13 +319,29 @@ Die folgende Beispiel-E-Mail wird gesendet, wenn die Lösung virtuelle Computer 
 
 ![Seite der Automation-Lösung „Updateverwaltung“](media/automation-solution-vm-management/email.png)
 
+## <a name="add-exclude-vms"></a>Hinzufügen/Ausschließen von VMs
+
+Die Lösung bietet die Möglichkeit, VMs hinzuzufügen, auf die die Lösung ausgerichtet ist, oder Computer gezielt von der Lösung auszuschließen.
+
+### <a name="add-a-vm"></a>Hinzufügen eines virtuellen Computers
+
+Es stehen einige Optionen zur Verfügung, mit denen Sie sicherstellen können, dass eine VM bei ihrer Ausführung in die Lösung zum Starten/Beenden aufgenommen wird.
+
+* Jedes der übergeordneten [Runbooks](#runbooks) der Lösung weist einen **VMList**-Parameter auf. Sie können diesem Parameter eine durch Komma getrennte Liste von VM-Namen übergeben, wenn Sie das für Ihre Situation geeignete übergeordnete Runbook planen, und diese VMs beim Ausführen der Lösung berücksichtigt werden.
+
+* Um mehrere VMs auszuwählen, legen Sie für **External_Start_ResourceGroupNames** und **External_Stop_ResourceGroupNames** die Namen der Ressourcengruppen fest, die die VMs enthalten, die Sie starten oder beenden möchten. Sie können diesen Wert auch auf `*` festlegen, damit die Lösung für alle Ressourcengruppen im Abonnement ausgeführt wird.
+
+### <a name="exclude-a-vm"></a>Ausschließen eines virtuellen Computers
+
+Wenn Sie eine VM von der Lösung ausschließen möchten, können Sie sie der Variablen **External_ExcludeVMNames** hinzufügen. Diese Variable ist eine durch Komma getrennte Liste von bestimmten VMs, die von der Lösung zum Starten/Beenden ausgeschlossen werden sollen.
+
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Ändern der Zeitpläne für das Starten und Herunterfahren
 
-Bei der Verwaltung der Zeitpläne für das Starten und Herunterfahren werden bei dieser Lösung die gleichen Schritte ausgeführt, die unter [Planen eines Runbooks in Azure Automation](automation-schedules.md) beschrieben werden.
+Bei der Verwaltung der Zeitpläne für das Starten und Herunterfahren werden bei dieser Lösung die gleichen Schritte ausgeführt, die unter [Planen eines Runbooks in Azure Automation](automation-schedules.md) beschrieben werden. Es muss einen separaten Zeitplan für das Starten und Beenden von VMs geben.
 
-Die Lösung kann auch so konfiguriert werden, dass VMs zu einem bestimmten Zeitpunkt beendet werden. Gehen Sie hierzu wie folgt vor:
+Die Lösung kann auch so konfiguriert werden, dass VMs zu einem bestimmten Zeitpunkt beendet werden. In diesem Szenario erstellen Sie nur einen Zeitplan für **Beenden** und keinen entsprechenden Zeitplan für **Starten**. Gehen Sie hierzu wie folgt vor:
 
-1. Vergewissern Sie sich, dass Sie die Ressourcengruppen für die zu beendenden VMs in der Variablen **External_Start_ResourceGroupNames** hinzugefügt haben.
+1. Vergewissern Sie sich, dass Sie die Ressourcengruppen für die zu beendenden VMs in der Variablen **External_Stop_ResourceGroupNames** hinzugefügt haben.
 2. Erstellen Sie Ihren eigenen Zeitplan für den Zeitpunkt, an dem die VMs heruntergefahren werden sollen.
 3. Navigieren Sie zum Runbook **ScheduledStartStop_Parent**, und klicken Sie auf **Zeitplan**. Dadurch können Sie den Zeitplan auswählen, den Sie im vorherigen Schritt erstellt haben.
 4. Wählen Sie **Parameter und Ausführungseinstellungen** aus, und legen Sie den Parameter ACTION auf „Stop“ fest.

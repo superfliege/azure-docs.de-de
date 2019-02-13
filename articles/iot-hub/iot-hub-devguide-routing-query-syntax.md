@@ -1,6 +1,6 @@
 ---
 title: Abfragen des Azure IoT Hub-Nachrichtenroutings | Microsoft-Dokumentation
-description: 'Entwicklerhandbuch: Abfragesyntax für das Nachrichtenrouting für Azure IoT Hub'
+description: Entwicklerhandbuch – Abfragesyntax für das Nachrichtenrouting für Azure IoT Hub
 author: ash2017
 manager: briz
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 3967a1e2317bac76785d534ba04a93de552c1a40
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 94d3599fe919cf648be7115be68002d2aa458ee3
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018535"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744840"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Abfragesyntax für das IoT Hub-Nachrichtenrouting
 
@@ -25,7 +25,7 @@ Mithilfe des Nachrichtenroutings können Sie Abfragen für Nachrichteneigenschaf
 
 ## <a name="message-routing-query-based-on-message-properties"></a>Abfrage des Nachrichtenroutings basierend auf Nachrichteneigenschaften 
 
-Für jegliches Gerät-zu-Cloud-Messaging wird ein [allgemeines Format](iot-hub-devguide-messages-construct.md) zugunsten der Interoperabilität zwischen Protokollen von IoT Hub definiert. Die IoT Hub-Nachricht geht von der folgenden JSON-Darstellung der Nachricht aus. Systemeigenschaften identifizieren den Nachrichteninhalt und werden allen Benutzern hinzugefügt. Benutzer können der Nachricht selektiv Anwendungseigenschaften hinzufügen. Die Verwendung eindeutiger Eigenschaftennamen wird empfohlen, da das Gerät-zu-Cloud-Messaging von IoT Hub die Groß-/Kleinschreibung nicht beachtet. Wenn Sie beispielsweise über mehrere Eigenschaften mit dem gleichen Namen verfügen, sendet IoT Hub nur eine der Eigenschaften.  
+Der IoT Hub definiert ein [gemeinsames Format](iot-hub-devguide-messages-construct.md) für alle Gerät-zu-Cloud-Nachrichten, um Interoperabilität zwischen Protokollen zu ermöglichen. Die IoT Hub-Nachricht geht von der folgenden JSON-Darstellung der Nachricht aus. Systemeigenschaften identifizieren den Nachrichteninhalt und werden allen Benutzern hinzugefügt. Benutzer können der Nachricht selektiv Anwendungseigenschaften hinzufügen. Die Verwendung eindeutiger Eigenschaftennamen wird empfohlen, da das Gerät-zu-Cloud-Messaging von IoT Hub die Groß-/Kleinschreibung nicht beachtet. Wenn Sie beispielsweise über mehrere Eigenschaften mit dem gleichen Namen verfügen, sendet IoT Hub nur eine der Eigenschaften.  
 
 ```json
 { 
@@ -55,7 +55,7 @@ Mithilfe von Systemeigenschaften werden Inhalt und Quelle von Nachrichten identi
 | -------- | ---- | ----------- |
 | contentType | Zeichenfolge | Der Benutzer gibt den Inhaltstyp der Nachricht an. Dieser Wert sollte auf „application/JSON“ festgelegt werden, damit Abfragen für den Nachrichtentext ausgeführt werden können. |
 | contentEncoding | Zeichenfolge | Der Benutzer gibt den Codierungstyp der Nachricht an. Wenn contentType auf „application/JSON“ festgelegt ist, sind die folgenden Werte gültig: UTF-8, UTF-16 und UTF-32. |
-| connectionDeviceId | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und dient der Identifikation der Nachrichtenquelle. Dabei kann es sich um Gerätetelemetrienachrichten, Benachrichtigungen zu Änderungen bei Gerätezwillingen oder Gerätelebenszyklusereignisse handeln. Diese Eigenschaft kann nicht abgefragt werden. |
+| iothub-connection-device-id | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt, und er identifiziert die ID des Geräts. Verwenden Sie `$connectionDeviceId` für die Abfrage. |
 | iothub-enqueuedtime | Zeichenfolge | Dieser Wert wird von IoT Hub festgelegt und stellt den tatsächlichen Zeitpunkt dar, zu dem die Nachricht in UTC eingereiht wird. Verwenden Sie `enqueuedTime` für die Abfrage. |
 
 Wie im Artikel zu [IoT Hub-Nachrichten](iot-hub-devguide-messages-construct.md) beschrieben wird, gibt es mehrere zusätzliche Systemeigenschaften in einer Nachricht. Neben den Eigenschaften **contentType**, **contentEncoding** und **enqueuedTime** können auch die Eigenschaften **connectionDeviceId** und **connectionModuleId** abgefragt werden.

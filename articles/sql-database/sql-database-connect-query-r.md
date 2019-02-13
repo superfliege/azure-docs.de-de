@@ -11,58 +11,42 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 11/30/2018
-ms.openlocfilehash: fc5398b4ffb0b9310b6ab13561830d8d3db7a611
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.date: 01/31/2019
+ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725742"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815540"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Schnellstart: Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
-In diesem Artikel wird beschrieben, wie Sie die öffentliche Vorschauversion von Machine Learning Services (mit R) in Azure SQL-Datenbank verwenden können. Die Grundlagen des Verschiebens von Daten zwischen einer SQL-Datenbank und R werden ausführlich erläutert. Außerdem wird beschrieben, wie Sie wohlgeformten R-Code in der gespeicherten Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) umschließen, um Machine Learning-Modelle in einer SQL-Datenbank zu erstellen, zu trainieren und zu verwenden.
+In diesem Artikel wird beschrieben, wie Sie die öffentliche Vorschauversion von [Machine Learning Services (mit R) in Azure SQL-Datenbank](sql-database-machine-learning-services-overview.md) verwenden können. Die Grundlagen des Verschiebens von Daten zwischen einer SQL-Datenbank und R werden ausführlich erläutert. Außerdem wird beschrieben, wie Sie wohlgeformten R-Code in der gespeicherten Prozedur [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) umschließen, um Machine Learning-Modelle in einer SQL-Datenbank zu erstellen, zu trainieren und zu verwenden.
 
-Machine Learning in SQL-Datenbank wird genutzt, um R-Code und Funktionen auszuführen. Der Code ist für relationale Daten in Form von gespeicherten Prozeduren, als T-SQL-Skript mit R-Anweisungen oder als R-Code mit T-SQL vollständig verfügbar. Nutzen Sie die Leistungsstärke von R-Unternehmenspaketen, um bedarfsabhängig Analysen durchführen und die Berechnung und Verarbeitung an dem Ort bereitstellen zu können, an dem sich die Daten befinden. So ist es nicht mehr erforderlich, Daten per Pullvorgang über das Netzwerk zu übertragen.
+Nutzen Sie die Möglichkeiten der Sprache R für erweiterte Analysen und maschinelles Lernen in der Datenbank. Diese Fähigkeit ermöglicht Berechnungen und die Verarbeitung an dem Ort, an dem sich die Daten befinden, sodass diese nicht mehr über das Netzwerk gepullt werden müssen. Nutzen Sie die Leistungsfähigkeit der R-Pakete für Unternehmen außerdem, um erweiterte Analysen in einem großen Maßstab durchzuführen.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+Machine Learning Services umfasst eine Basisdistribution von R zusammen mit den R-Paketen für Unternehmen von Microsoft. Die R-Funktionen und -Algorithmen von Microsoft sind auf Skalierbarkeit und Anwendbarkeit ausgelegt. Sie ermöglichen Predictive Analytics, statistische Modellierung, Datenvisualisierungen und leistungsstarke Algorithmen für maschinelles Lernen.
 
-## <a name="sign-up-for-the-preview"></a>Anmelden für die Vorschau
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 
-Die öffentliche Vorschauversion von Machine Learning Services (mit R) in SQL-Datenbank ist standardmäßig nicht aktiviert. Senden Sie unter [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com) eine E-Mail an Microsoft, um sich für die öffentliche Vorschauversion zu registrieren.
-
-Nachdem Sie für das Programm registriert wurden, führt Microsoft für Sie das Onboarding für die öffentliche Vorschauversion durch. Anschließend wird entweder Ihre vorhandene Datenbank migriert oder eine neue Datenbank unter einem R-fähigen Dienst erstellt.
-
-Machine Learning Services (mit R) in SQL-Datenbank ist derzeit nur im V-Kern-basierten Kaufmodell für die Diensttarife **Universell** und **Unternehmenskritisch** für einzelne und im Pool angeordnete Datenbanken verfügbar. In dieser ersten öffentlichen Vorschauversion wird weder der Diensttarif **Hyperscale** noch **Verwaltete Instanz** unterstützt. Sie sollten Machine Learning Services mit R während der öffentlichen Vorschauphase nicht für Produktionsworkloads verwenden.
-
-Wenn Machine Learning Services (mit R) für Ihre SQL-Datenbank aktiviert wurde, sollten Sie zu dieser Seite zurückkehren, um zu erfahren, wie Sie R-Skripts im Kontext einer gespeicherten Prozedur ausführen.
-
-R ist derzeit die einzige unterstützte Sprache. Momentan ist keine Unterstützung für Python vorhanden.
+> [!NOTE]
+> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der öffentlichen Vorschau. [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine SQL-Datenbank mit Machine Learning Services (mit R) aktivieren. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert wie oben beschrieben das maschinelle Lernen für Ihre vorhandene oder neue Datenbank.
+Zum Ausführen des Beispielcodes in diesen Übungen müssen Sie zuerst eine SQL-Datenbank mit Machine Learning Services (mit R) aktivieren. Während der öffentlichen Vorschauphase führt Microsoft für Sie das Onboarding durch und aktiviert das maschinelle Lernen für Ihre vorhandene oder neue Datenbank. Führen Sie die Schritte in [Registrieren für die Vorschauversion](sql-database-machine-learning-services-overview.md#signup) aus.
 
 Sie können eine Verbindung mit der SQL-Datenbank herstellen und die R-Skripts mit einem beliebigen Tool für die Datenbankverwaltung oder für Abfragen ausführen, solange damit eine Verbindung mit einer SQL-Datenbank hergestellt werden kann, und eine T-SQL-Abfrage oder gespeicherte Prozedur ausführen. In dieser Schnellstartanleitung wird [SQL Server Management Studio](sql-database-connect-query-ssms.md) verwendet.
 
 Für die Übung [Hinzufügen eines Pakets](#add-package) müssen Sie auch [R](https://www.r-project.org/) und [RStudio Desktop](https://www.rstudio.com/products/rstudio/download/) auf Ihrem lokalen Computer installieren.
 
-Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen von Firewallregeln auf Serverebene Regel](sql-database-get-started-portal-firewall.md).
-
-## <a name="different-from-sql-server"></a>Unterschiede gegenüber SQL Server
-
-Die Funktionalität von Machine Learning Services (mit R) in Azure SQL-Datenbank ähnelt [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning). Es gibt aber einige Unterschiede:
-
-- Nur für R verfügbar. Derzeit ist keine Unterstützung für Python vorhanden.
-- Es ist nicht erforderlich, `external scripts enabled` über `sp_configure` zu konfigurieren.
-- Pakete müssen über **sqlmlutils** installiert werden.
-- Es ist keine separate externe Ressourcenkontrolle vorhanden. R-Ressourcen nehmen je nach Tarif einen bestimmten Prozentsatz der SQL-Ressourcen ein.
+Diese Schnellstartanleitung setzt auch voraus, dass Sie eine Firewallregel auf Serverebene konfigurieren. Ein Schnellstartanleitung für die Vorgehensweise finden Sie unter [Erstellen von Firewallregeln auf Serverebene Regel](sql-database-server-level-firewall-rule.md).
 
 ## <a name="verify-r-exists"></a>Überprüfen des Vorhandenseins von R
 
 Sie können sich vergewissern, dass Machine Learning Services (mit R) für Ihre SQL-Datenbank aktiviert ist. Führen Sie die folgenden Schritte aus.
 
-1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit Ihrer SQL-Datenbank her.
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit Ihrer SQL-Datenbank her. Weitere Informationen zum Herstellen der Verbindung finden Sie unter [Schnellstart: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung mit einer Instanz von Azure SQL-Datenbank und deren Abfrage](sql-database-connect-query-ssms.md).
 
 1. Führen Sie den unten angegebenen Code aus. 
 
@@ -263,7 +247,6 @@ Microsoft stellt verschiedene R-Pakete bereit, die mit Machine Learning Services
 
     ![Installierte Pakete in R](./media/sql-database-connect-query-r/r-installed-packages.png)
 
-
 ## <a name="create-a-predictive-model"></a>Erstellen eines Vorhersagemodells
 
 Sie können ein Modell mit R trainieren und das Modell in Ihrer SQL-Datenbank in einer Tabelle speichern. In dieser Übung trainieren Sie ein einfaches Regressionsmodell, mit dem der Anhalteweg eines PKW anhand der Geschwindigkeit vorhergesagt wird. Sie nutzen das in R vorhandene Dataset `cars`, weil es klein und leicht verständlich ist.
@@ -293,7 +276,7 @@ Sie können ein Modell mit R trainieren und das Modell in Ihrer SQL-Datenbank in
     - Stellen Sie die Eingabedaten für die Verwendung beim Trainieren des Modells bereit.
 
     > [!TIP]
-    > Falls Sie eine Auffrischung zu linearen Modellen benötigen, empfehlen wir Ihnen das folgende Tutorial, in dem das Anpassen eines Modells mit rxLinMod beschrieben wird: [Fitting Linear Models using RevoScaleR](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen mit RevoScaleR).
+    > Falls Sie eine Auffrischung zu linearen Modellen benötigen, empfehlen wir Ihnen das folgende Tutorial, in dem das Anpassen eines Modells mit rxLinMod beschrieben wird: [Fitting Linear Models](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-linear-model) (Anpassen von linearen Modellen).
 
     Zum Erstellen des Modells definieren Sie die Formel in Ihrem R-Code und übergeben die Daten als Eingabeparameter.
 
@@ -530,9 +513,10 @@ Wenn Sie ein Paket verwenden müssen, das nicht bereits in Ihrer SQL-Datenbank i
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Machine Learning Services finden Sie in den unten angegebenen Artikeln zum Thema „SQL Server Machine Learning Services“. Diese Artikel sind zwar für SQL Server bestimmt, aber die meisten Informationen gelten auch für Machine Learning Services (mit R) in Azure SQL-Datenbank.
+Weitere Informationen zu Machine Learning Services finden Sie in den folgenden Artikeln. Einiger dieser Artikel sind zwar für SQL Server bestimmt, aber die meisten Informationen gelten auch für Machine Learning Services (mit R) in Azure SQL-Datenbank.
 
+- [Machine Learning Services (mit R) in Azure SQL-Datenbank](sql-database-machine-learning-services-overview.md)
 - [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
-- [Tutorial: Learn in-database analytics using R in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers) (Tutorial: Datenbankinterne Analysen mit R in SQL Server)
+- [Tutorial: Learn in-database analytics using R in SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers) (Datenbankinterne Analysen mit R in SQL Server)
 - [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough) (Lückenlose exemplarische Vorgehensweise für Data Science für R und SQL Server)
-- [Tutorial: Use RevoScaleR R functions with SQL Server data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages) (Tutorial: Verwenden von RevoScaleR-R-Funktionen mit SQL Server-Daten)
+- [Tutorial: Use RevoScaleR R functions with SQL Server data](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages) (Verwenden von RevoScaleR-R-Funktionen mit SQL Server-Daten)

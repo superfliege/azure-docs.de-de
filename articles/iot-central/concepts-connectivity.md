@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 3671f6a3e3832a384e968fbf38128aff6bfb2252
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ae57fc5366e1ed99febcd9a9d08e7f95f3bbf196
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247672"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487352"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Gerätekonnektivität in Azure IoT Central
 
@@ -56,7 +56,7 @@ Das Herstellen einer Verbindung für ein einzelnes Gerät mit IoT Central per SA
 
     *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
 
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -118,7 +118,7 @@ Wenn Sie das **MxChip**-Gerät für die Verbindungsherstellung verwenden, könne
 Unten sind die Verweise für andere Sprachen angegeben, die Sie ggf. nutzen möchten.
 
    *   **Programmiersprache C:** Nutzen Sie bei Verwendung von C [dieses C-Beispiel für einen Geräteclient](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md), um ein Beispielgerät zu verbinden. Verwenden Sie im Beispiel die folgenden Einstellungen.   
-         ```
+         ```c
          hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
 
          ## Enter the Device Id and Symmetric keys 
@@ -163,7 +163,7 @@ Es sind drei Hauptschritte erforderlich, um für Geräte mit X.509-Zertifikaten 
 
     Programmieren Sie das Gerät mit den Informationen des Bereitstellungsdiensts, damit beim Einschalten die Verbindungsdetails verfügbar sind und die Zuweisung der IoT Central-App erfolgen kann.    
 
-    **Weitere Referenzen** 
+    **Weitere Referenz** 
     *   Beispielimplementierung für [Raspberry Pi](https://aka.ms/iotcentral-docs-Raspi-releases).  
 
     *   [Beispiel für einen Geräteclient in C](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md).
@@ -211,12 +211,12 @@ Befolgen Sie die Schritte basierend auf Ihrem gewählten Schema für die Geräte
 
 1. **Verbinden des Geräts mit IoT Central:** Nachdem die Geräte eingeschaltet wurden, werden sie mit Microsoft System Center Data Protection Manager/IoT Central verbunden, um die Registrierung durchzuführen.
 
-1. **Zuordnen eines Geräts zu einer Vorlage:** Das verbundene Gerät wird im **Device Explorer** unter **Nicht zugeordnete Geräte** angezeigt. Der Bereitstellungsstatus des Geräts lautet **Registriert**. Sie können das Gerät nun der entsprechenden Gerätevorlage **zuordnen** und es genehmigen, um die Verbindung mit der IoT Central-App herzustellen. Das Gerät ruft die Verbindungsdetails für die IoT Central-App ab, stellt eine Verbindung her und beginnt mit dem Senden von Daten. Die Gerätebereitstellung ist jetzt abgeschlossen, und der Status *Bereitstellung* ändert sich in **Bereitgestellt**.
+1. **Zuordnen eines Geräts zu einer Vorlage:** Das verbundene Gerät wird im **Device Explorer** unter **Nicht zugeordnete Geräte** angezeigt. Der Bereitstellungsstatus des Geräts lautet **Registriert**. Sie können das Gerät nun der entsprechenden Gerätevorlage **zuordnen** und es genehmigen, um die Verbindung mit der IoT Central-App herzustellen. Das Gerät ruft die Verbindungsdetails für die IoT Central-App ab, stellt dann eine Verbindung her und beginnt mit dem Senden von Daten. Die Gerätebereitstellung ist jetzt abgeschlossen, und der Status *Bereitstellung* ändert sich in **Bereitgestellt**.
 
 ## <a name="device-provisioning-status"></a>Device Provisioning-Status
 Wenn für ein echtes Gerät eine Verbindung mit Azure IoT Central hergestellt wird, müssen einige Schritte ausgeführt werden. 
 1. **Registriert**: Das Gerät hat zuerst den Status **Registriert**. Dies bedeutet, dass das Gerät in IoT Central erstellt wurde und über eine Geräte-ID verfügt.
-Ein Gerät wird in folgenden Fällen registriert:  
+Das Gerät ist registriert, wenn Folgendes zutrifft:  
     *   Ein neues echtes Gerät wird im **Explorer** hinzugefügt.
     *   Eine Gruppe von Geräten wird im **Explorer** mit der Option **Importieren** hinzugefügt.
     *   Für ein Gerät, das noch nicht registriert wurde, wird mit gültigen Anmeldeinformationen eine Verbindung hergestellt, und es wird unter **Nicht zugeordnete Geräte** angezeigt. 
@@ -233,7 +233,7 @@ Sie können die IoT Hub-Geräte-Verbindungszeichenfolge in Azure IoT Hub abrufen
 
     ![Verbindungsdetails](media/concepts-connectivity/device-connect.PNG)
 
-1. Rufen Sie die Geräte-Verbindungszeichenfolge ab, indem Sie das unten angegebene Befehlszeilentool verwenden.
+1. Rufen Sie die Geräte-Verbindungszeichenfolge mithilfe des unten angegebenen Befehlszeilentools ab.
     Befolgen Sie die Anleitung unten, um die Geräte-Verbindungszeichenfolge zu erhalten:  
 
     ```cmd/sh

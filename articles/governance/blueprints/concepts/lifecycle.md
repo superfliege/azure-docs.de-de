@@ -4,17 +4,17 @@ description: Erfahren Sie mehr über den Lebenszyklus einer Blaupause und Detail
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 10/25/2018
+ms.date: 02/01/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 84dc86f993b0c1b4c4803525a07bdd34dddd229d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 2dbf63e745af102de05ec6dc3e3bcb3e98cd3a32
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309805"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55563710"
 ---
 # <a name="understand-the-lifecycle-of-an-azure-blueprint"></a>Grundlegendes zum Lebenszyklus von Azure Blueprints
 
@@ -33,8 +33,7 @@ Um einen Überblick über Blaupausen und ihre einzelnen Phasen zu vermitteln, wi
 
 ## <a name="creating-and-editing-a-blueprint"></a>Erstellen und Bearbeiten einer Blaupause
 
-Wenn Sie eine Blaupause erstellen, fügen Sie Artefakte hinzu, speichern Sie sie in einer Verwaltungsgruppe und geben Sie einen eindeutigen Namen und eine eindeutige Version an. Die Blaupause befindet nun im Modus **Entwurf** und kann noch nicht zugewiesen werden.
-Im Modus **Entwurf** kann sie jedoch weiter aktualisiert und geändert werden.
+Wenn Sie eine Blaupause erstellen, fügen Sie Artefakte hinzu, speichern sie in einer Verwaltungsgruppe oder einem Abonnement und geben einen eindeutigen Namen und eine eindeutige Version an. Die Blaupause befindet nun im Modus **Entwurf** und kann noch nicht zugewiesen werden. Im Modus **Entwurf** kann sie jedoch weiter aktualisiert und geändert werden.
 
 Für eine Blaupause im Modus **Entwurf**, die bislang noch nicht veröffentlicht wurde, wird auf der Seite **Blaupausendefinitionen** ein anderes Symbol angezeigt als für Blaupausen, die bereits **veröffentlicht** wurden. Die **aktuelle Version** dieser bislang noch nicht veröffentlichten Blaupausen wird ebenfalls als **Entwurf** angezeigt.
 

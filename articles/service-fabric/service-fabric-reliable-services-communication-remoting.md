@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: b8abf7a0dc85d20e9075b51b8d42a068cf56846f
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620522"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820673"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -239,7 +239,7 @@ Mit diesem Schritt wird sichergestellt, dass der Dienst nur am V2-Listener lausc
 
 ## <a name="use-the-remoting-v2-interface-compatible-stack"></a>Verwenden Sie den Remoting V2-Stapel (schnittstellenkompatibel).
 
- Der Remoting V2-Stapel (schnittstellenkompatibel, auch als „V2_1“ bezeichnet) verfügt über alle Features des Remoting V2-Stapels. Der Schnittstellenstapel ist mit dem Remoting V1-Stapel kompatibel, jedoch nicht abwärtskompatibel mit V2 und V1. Um ohne Beeinträchtigung der Dienstverfügbarkeit ein Upgrade von V1 auf V2_1 durchzuführen, führen Sie die Schritte im Artikel [Durchführen eines Upgrades von V1 auf V2 (schnittstellenkompatibel)](#upgrade-from-remoting-v1-to-remoting-v2interfacecompatible) durch.
+ Der Remoting V2-Stapel (schnittstellenkompatibel, auch als „V2_1“ bezeichnet) verfügt über alle Features des Remoting V2-Stapels. Der Schnittstellenstapel ist mit dem Remoting V1-Stapel kompatibel, jedoch nicht abwärtskompatibel mit V2 und V1. Um ohne Beeinträchtigung der Dienstverfügbarkeit ein Upgrade von V1 auf V2_1 durchzuführen, führen Sie die Schritte im Artikel „Durchführen eines Upgrades von V1 auf V2 (schnittstellenkompatibel)“ durch.
 
 
 ### <a name="use-an-assembly-attribute-to-use-the-remoting-v2-interface-compatible-stack"></a>Verwenden eines assembly-Attributs zum Einsetzen des Remoting V2-Stapels (schnittstellenkompatibel)

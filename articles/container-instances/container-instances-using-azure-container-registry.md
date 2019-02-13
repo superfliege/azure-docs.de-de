@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 33cf6650de757f538dcefc858c94fa71b434ec80
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064643"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55727907"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -29,7 +29,7 @@ ms.locfileid: "54064643"
 
 In Produktionsszenarien sollte der Zugriff auf eine Azure-Containerregistrierung mithilfe von [Dienstprinzipalen](../container-registry/container-registry-auth-service-principal.md) bereitgestellt werden. Dienstprinzipale ermöglichen Ihnen eine [rollenbasierte Steuerung des Zugriffs](../container-registry/container-registry-roles.md) auf Ihre Containerimages. Beispielsweise können Sie einen Dienstprinzipal mit ausschließlichem Pullzugriff auf eine Registrierung konfigurieren.
 
-In diesem Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor.
+Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprinzipal und speichern die Anmeldeinformationen des Dienstprinzipals im Tresor. 
 
 ### <a name="create-key-vault"></a>Erstellen eines Schlüsseltresors
 
@@ -134,9 +134,11 @@ Weitere Informationen zum Verweisen auf Azure Key Vault-Geheimnisse in einer Res
 
 ## <a name="deploy-with-azure-portal"></a>Bereitstellen über das Azure-Portal
 
-Wenn Sie Containerimages im Azure Container Registry verwalten, können Sie leicht mit dem Azure-Portal einen Container in Azure Container Instances erstellen.
+Wenn Sie Containerimages in einer Azure Container Registry verwalten, können Sie im Azure-Portal in Azure Container Instances auf einfache Weise einen Container erstellen. Wenn Sie das Portal verwenden, um eine Containerinstanz aus einer Container Registry bereitzustellen, müssen Sie das [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account) der Registrierung aktivieren. Das Administratorkonto ist dafür ausgelegt, dass ein einzelner Benutzer auf die Registrierung zugreift (hauptsächlich für Testzwecke). 
 
 1. Navigieren Sie im Azure-Portal wieder zu Ihrer Containerregistrierung.
+
+1. Um sicherzustellen, dass das Administratorkonto aktiviert ist, wählen Sie zunächst **Zugriffsschlüssel** und dann unter **Administratorbenutzer** die Option **Aktivieren** aus.
 
 1. Klicken Sie auf **Repositorys**, und wählen Sie dann das Repository aus, über das die Bereitstellung erfolgen soll. Klicken Sie mit der rechten Maustaste auf das Tag für das Containerimage, das Sie bereitstellen möchten, und klicken Sie auf **Instanz ausführen**.
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 7e53b50df88c592386d3f2fb140373a0c5aaab13
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228286"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821948"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -190,7 +190,7 @@ Informationen zu einer einfachen Topologie, die eine einzelne ExpressRoute-Leitu
 ### <a name="example-steps"></a>Beispielschritte
 Um die Wiederherstellung in diesem Beispiel zu automatisieren, gehen Sie wie folgt vor:
 
-1. Befolgen Sie die Schritte zum [Einrichten der Replikation](#azure-vm-replication-steps).
+1. Befolgen Sie die Schritte zum Einrichten der Replikation.
 2. [Führen Sie ein Failover der Azure-VMs](azure-to-azure-tutorial-failover-failback.md) mit diesen zusätzlichen Schritten während oder nach dem Failover durch.
 
     a. Erstellen Sie das Azure ExpressRoute-Gateway im Hub-vNet der Zielregion. Dies ist erforderlich, um das Ziel-Hub-vNet mit der ExpressRoute-Leitung zu verbinden.

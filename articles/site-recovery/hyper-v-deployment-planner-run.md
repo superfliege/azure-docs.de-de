@@ -7,19 +7,19 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: b5f0a2a418c53a5049ebff9bba9188219a9aeb13
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321176"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815070"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
 
 Sie können das Befehlszeilentool Site Recovery-Bereitstellungsplaner (ASRDeploymentPlanner.exe) in einem der folgenden vier Modi ausführen: 
--   [Abrufen der Liste mit den virtuellen Computern (VMs)](#get-vm-list-for-profiling-hyper-v-vms)
+-   Abrufen der Liste mit virtuellen Computern (VMs)
 -   [Profil](#profile-hyper-v-vms)
--   [Generieren eines Berichts](#generate-report)
+-   Generieren eines Berichts
 -   [Durchsatzberechnung](#get-throughput)
 
 Führen Sie zuerst das Tool aus, um die Liste mit den VMs eines einzelnen oder mehrerer Hyper-V-Hosts abzurufen. Führen Sie das Tool anschließend im Modus für die Profilerstellung aus, um für die VM die Datenänderung und den IOPS-Wert zu erfassen. Führen Sie im Tool anschließend die Berichterstellung durch, um die Netzwerkbandbreite und die Speicheranforderungen zu ermitteln.
@@ -74,7 +74,7 @@ Das Tool fragt den Hyper-V-Host alle 15 Sekunden ab, um die Genauigkeit der Prof
 Das Tool führt die VM-Migration von Knoten zu Knoten im Cluster und die Speichermigration auf einem Host nahtlos durch.
 
 ### <a name="getting-the-vm-list-to-profile"></a>Abrufen der Liste mit den VMs für die Profilerstellung
-Lesen Sie sich die Informationen zum [GetVMList](#get-vm-list-for-profiling-hyper-v-vms)-Vorgang durch, um zu erfahren, wie Sie eine Liste mit VMs für die Profilerstellung erstellen.
+In den Informationen zum GetVMList-Vorgang erfahren Sie, wie Sie eine Liste mit VMs für die Profilerstellung erstellen.
 
 Nachdem Sie die Liste mit den VMs für die Profilerstellung vorliegen haben, können Sie für das Tool den Modus für die Profilerstellung ausführen. 
 

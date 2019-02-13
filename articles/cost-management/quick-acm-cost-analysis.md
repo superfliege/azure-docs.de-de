@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/07/2019
+ms.date: 02/05/2019
 ms.topic: quickstart
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: cb07ce71162a766add5ca251c97a11d353ee8084
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 931732c047a5ffe22ad456a115c36d7c882d01bc
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077656"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769850"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Schnellstart: Ermitteln und Analysieren von Kosten mit der Kostenanalyse
 
@@ -32,7 +32,9 @@ In dieser Schnellstartanleitung wird Folgendes vermittelt:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff. Weitere Informationen zum Zuweisen des Zugriffs auf Cost Management-Daten finden Sie unter [Assign access to Cost Management data](assign-access-acm-data.md) (Zuweisen des Zugriffs auf Cost Management-Daten).
+Die Kostenanalyse unterstützt eine Vielzahl von Azure-Kontotypen. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Um Kostendaten anzeigen zu können, müssen Sie mindestens über Lesezugriff auf Ihr Azure-Konto verfügen.
+
+Bei [EA](https://azure.microsoft.com/pricing/enterprise-agreement/)-Kunden (Enterprise Agreement) benötigen Sie mindestens Lesezugriff auf einen oder mehrere der folgenden Bereiche, um Kostendaten anzeigen zu können.
 
 - Abrechnungskonto
 - Department
@@ -41,13 +43,15 @@ Die Kostenanalyse steht allen [EA-Kunden (Enterprise Agreement)](https://azure.m
 - Abonnement
 - Ressourcengruppe
 
+Weitere Informationen zum Zuweisen des Zugriffs auf Cost Management-Daten finden Sie unter [Assign access to Cost Management data](assign-access-acm-data.md) (Zuweisen des Zugriffs auf Cost Management-Daten).
+
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 - Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="review-costs-in-cost-analysis"></a>Überprüfen von Kosten mithilfe der Kostenanalyse
 
-Um Ihre Kosten mithilfe der Kostenanalyse zu überprüfen, navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** &gt; **Kostenverwaltung** &gt; **Bereich ändern**, wählen Sie einen Bereich aus, und klicken Sie dann auf **Auswählen**.
+Um Ihre Kosten mithilfe der Kostenanalyse zu überprüfen, navigieren Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** &gt; **Kostenanalyse**. Wählen Sie **Bereich: _Name des Bereichs_** und einen Bereich aus, und klicken Sie anschließend auf **Auswählen**.
 
 Der von Ihnen ausgewählte Bereich wird in der gesamten Kostenverwaltung verwendet, um Daten zu konsolidieren und den Zugriff auf Kosteninformationen zu steuern. Wenn Sie Bereiche verwenden, wählen Sie diese nicht mehrfach aus. Wählen Sie stattdessen einen größeren Bereich aus, in dem andere zusammengefasst werden, und filtern Sie diesen dann nach Ihren Wünschen. Hiermit sollten Sie sich unbedingt vertraut machen, da einige Personen keinen Zugriff auf einen übergeordneten Bereich haben sollten, unter dem untergeordnete Bereiche zusammengefasst sind.
 
@@ -94,7 +98,8 @@ Auf der folgenden Abbildung werden Azure-Kosten visualisiert, die im letzten Mon
 
 ![Gruppierte tägliche akkumulierte Ansicht mit Beispiel für Azure-Dienstkosten für den letzten Monat](./media/quick-acm-cost-analysis/grouped-daily-accum-view.png)
 
-Pivotdiagramme unterhalb des Hauptdiagramms enthalten verschiedene Gruppierungen und bieten damit einen allgemeinen Überblick über die Gesamtkosten für den ausgewählten Zeitraum und die ausgewählten Filter. Wählen Sie eine Eigenschaft oder ein Tag aus, um aggregierte Kosten anhand beliebiger Dimensionen anzuzeigen. Alle Daten für die Ansicht „Gesamt“ werden im unteren Bildschirmbereich angezeigt. Erweitern Sie dazu den Bereich **Daten**, oder wählen Sie oben auf dem Bildschirm **Exportieren > CSV herunterladen** aus. Hier sehen Sie ein Beispiel des Datenbereichs für Ressourcengruppen.
+Pivotdiagramme unterhalb des Hauptdiagramms enthalten verschiedene Gruppierungen und bieten damit einen allgemeinen Überblick über die Gesamtkosten für den ausgewählten Zeitraum und die ausgewählten Filter. Wählen Sie eine Eigenschaft oder ein Tag aus, um aggregierte Kosten anhand beliebiger Dimensionen anzuzeigen.
+
 
 ![Vollständige Daten für die aktuelle Ansicht mit Ressourcengruppennamen](./media/quick-acm-cost-analysis/full-data-set.png)
 
@@ -103,6 +108,10 @@ Das vorhergehende Bild zeigt die Namen der Ressourcengruppen. Sie können zum An
 Beim Gruppieren von Kosten nach einem bestimmten Attribut wird die Top-Ten-Liste der Kostenverursacher angezeigt (von den höchsten zu den niedrigsten Kosten). Wenn mehr als zehn Gruppen vorhanden sind, werden die obersten neun Kostenverursacher angezeigt. Außerdem wird die Gruppe **Andere** angezeigt, unter der alle verbleibenden Gruppen zusammengefasst sind. Beim Gruppieren nach Tags wird unter Umständen eine Gruppe vom Typ **Ohne Markierungen** für Kosten angezeigt, auf die der Tagschlüssel nicht angewendet wurde. **Keine Markierungen** wird immer zuletzt angezeigt, selbst wenn mehr Kosten ohne Markierungen als Kosten mit Markierungen vorhanden sind. Sind mindestens zehn Tagwerte vorhanden, werden Kosten ohne Markierungen unter **Andere** angezeigt.
 
 Für *klassische* virtuelle Computer (Azure Service Management, ASM), Netzwerke und Speicherressourcen werden keine ausführlichen Abrechnungsdaten bereitgestellt. Sie werden beim Gruppieren der Kosten als **Classic services** (Klassische Dienste) gruppiert.
+
+Sie können das vollständige Dataset für eine beliebige Ansicht anzeigen. Auswahlaktionen und angewendete Filter betreffen jeweils die angezeigten Daten. Wenn Sie das gesamte Dataset anzeigen möchten, klicken Sie auf die Liste **Diagrammtyp** und anschließend auf die Ansicht **Tabelle**.
+
+![Daten für die aktuelle Ansicht in einer Tabellenansicht](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
 
 ## <a name="download-cost-analysis-data"></a>Herunterladen von Kostenanalysedaten

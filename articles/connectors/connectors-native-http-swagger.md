@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: e96e271fbb50a2485a22fab061ea160dc00cf3d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bb89c76fb19bff74d39d919c8d2e65d430cb0566
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123171"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817749"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>Aufrufen von REST-Endpunkten mit dem Connector „HTTP + Swagger“ in Azure Logic Apps
 
@@ -40,7 +40,7 @@ Im Folgenden finden Sie ein Beispiel der Verwendung des Vorgangs „HTTP + Swagg
 4. Geben Sie die URL für ein Swagger-Dokument ein:
    
    * Die URL muss ein HTTPS-Endpunkt und für CORS aktiviert sein, damit sie im Logik-App-Designer funktioniert.
-   * Wenn das Swagger-Dokument diese Anforderung nicht erfüllt, können Sie [Azure Storage mit aktiviertem CORS](#hosting-swagger-from-storage) zum Speichern des Dokuments verwenden.
+   * Wenn das Swagger-Dokument diese Anforderung nicht erfüllt, können Sie Azure Storage mit aktiviertem CORS zum Speichern des Dokuments verwenden.
 5. Klicken Sie auf **Weiter** , um das Swagger-Dokument zu lesen und zum Rendern zu nutzen.
 6. Geben Sie alle Parameter an, die ggf. für den HTTP-Aufruf erforderlich sind.
    
@@ -72,14 +72,14 @@ Im Folgenden finden Sie die Schritte zum Erstellen, Konfigurieren und Speichern 
 Im Folgenden finden Sie Details zu den von diesem „HTTP + Swagger“-Connector unterstützten Triggern und Aktionen.
 
 ## <a name="http--swagger-triggers"></a>„HTTP + Swagger“-Trigger
-Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
+Ein Trigger ist ein Ereignis, mit dem ein in einer Logik-App definierter Workflow gestartet werden kann. [Weitere Informationen zu Triggern finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über einen Trigger.
 
 | Trigger | BESCHREIBUNG |
 | --- | --- |
 | HTTP + Swagger |Führt einen HTTP-Aufruf durch und gibt den Antwortinhalt zurück. |
 
 ## <a name="http--swagger-actions"></a>„HTTP + Swagger“-Aktionen
-Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md) Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
+Eine Aktion ist ein Vorgang, der durch den in einer Logik-App definierten Workflow ausgeführt wird. [Weitere Informationen zu Aktionen finden Sie hier.](connectors-overview.md)  Der Connector „HTTP + Swagger“ verfügt über eine mögliche Aktion.
 
 | Aktion | BESCHREIBUNG |
 | --- | --- |
@@ -98,7 +98,7 @@ Ein * bedeutet, dass es sich um ein Pflichtfeld handelt.
 | URI* |uri |URI für die HTTP-Anforderung. |
 | Header |headers |Ein JSON-Objekt für die einzubeziehenden HTTP-Header. |
 | Body |body |Der HTTP-Anforderungstext. |
-| Authentifizierung |authentication |Für die Anforderung zu verwendende Authentifizierung. Weitere Informationen finden Sie unter [HTTP-Connector](connectors-native-http.md#authentication). |
+| Authentication |authentication |Für die Anforderung zu verwendende Authentifizierung. Weitere Informationen finden Sie unter [HTTP-Connector](connectors-native-http.md#authentication). |
 
 **Ausgabedetails**
 

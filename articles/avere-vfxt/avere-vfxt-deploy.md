@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: da329b5c50fe7c39d9773743b40c2f990e298963
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 972ba937ad15fa9a6d2eb74e3e4c9e6e8f3923a4
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296374"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745434"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>Bereitstellen des vFXT-Clusters
 
@@ -39,11 +39,11 @@ Weitere Informationen zu den Schritten und der Planung der Clusterbereitstellung
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>Erstellen des Avere vFXT for Azure
 
-Rufen sie die Erstellungsvorlage im Azure-Portal auf, indem Sie nach Avere suchen und „Avere vFXT für die Azure-Bereitstellung“ auswählen. <!-- xxx update if that name changes xxx --> 
+Rufen sie die Erstellungsvorlage im Azure-Portal auf, indem Sie nach Avere suchen und „Avere vFXT ARM-Bereitstellung“ auswählen. 
 
-<!-- **[XXX need production image of template deploy in search and/or entry page of template deploy XXX]** -->
+![Browserfenster mit dem Azure-Portal mit Breadcrumbs „Neu > Marketplace > Alles“. Auf der Seite „Alles“ enthält das Suchfeld den Begriff „avere“ und das zweite Ergebnis, „Avere vFXT ARM-Bereitstellung“, ist rot hervorgehoben.](media/avere-vfxt-template-choose.png)
 
-Klicken Sie zum Beginnen auf **Erstellen**. 
+Nachdem Sie die Details auf der Seite „Avere vFXT ARM-Bereitstellung“ gelesen haben, klicken Sie auf **Erstellen**, um zu beginnen. 
 
 ![Azure Marketplace mit der Anzeige der ersten Seite der Bereitstellungvorlage](media/avere-vfxt-deploy-first.png)
 
@@ -80,7 +80,7 @@ Geben Sie die folgenden Informationen ein:
 
 * **Abonnement** – Wählen Sie das Avere vFXT-Abonnement aus. 
 
-* **Ressourcengruppe** – Wählen Sie die Ressourcengruppe für den Avere vFXT-Cluster aus, oder klicken Sie auf „Neu erstellen“, und geben Sie einen neuen Ressourcengruppennamen ein. 
+* **Ressourcengruppe** – Wählen Sie eine vorhandene leere Ressourcengruppe für den Avere vFXT-Cluster aus, oder klicken Sie auf „Neu erstellen“, und geben Sie einen neuen Ressourcengruppennamen ein. 
 
 * **Speicherort** – Wählen Sie den Azure-Speicherort für Ihren Cluster und die Ressourcen.
 
@@ -123,9 +123,11 @@ Auf der zweiten Seite der Bereitstellungsvorlage können Sie unter anderem Clust
 
 * **Subnetz** – Wählen Sie ein Subnetz aus Ihrem vorhandenen virtuellen Netzwerk aus, oder erstellen Sie ein neues. 
 
-* **Blob-Speicher verwenden** – Wählen Sie, ob Sie einen neuen Azure Blob-Container erstellen und ihn als Back-End-Speicher für den neuen Avere vFXT-Cluster konfigurieren möchten oder nicht. Wenn Sie sich für das Erstellen eines neuen Containers entscheiden, müssen Sie das Speicherkonto für diesen Container angeben. Wenn Sie keinen neuen Blob-Container erstellen möchten, müssen Sie nach der Erstellung des Clusters Speicher anhängen (Anweisungen finden Sie in [Konfigurieren des Speichers](avere-vfxt-add-storage.md)). Legen Sie für dieses Feld **false** fest, wenn Sie keinen neuen Container erstellen möchten.
+* **Blob-Speicher verwenden** – Wählen Sie **true** aus, um einen neuen Azure Blob-Container zu erstellen und ihn als Back-End-Speicher für den neuen Avere vFXT-Cluster zu konfigurieren. Diese Option erstellt auch ein neues Speicherkonto innerhalb derselben Ressourcengruppe wie der Cluster. 
 
-* **Speicherkonto** – Wenn Sie einen neuen Azure Blob-Container erstellen, geben Sie hier den Namen des Speicherkontos ein. Das Speicherkonto muss ein allgemeines V2-Standardkonto sein, das mit lokal redundantem Speicher und der heißen Speicherebene konfiguriert ist. Im Artikel [Konfigurieren des Speichers](avere-vfxt-add-storage.md#azure-storage-cloud-core-filer) finden Sie weitere Details zu den Anforderungen an das Speicherkonto.
+  Legen Sie für dieses Feld **false** fest, wenn Sie keinen neuen Container erstellen möchten. In diesem Fall müssen Sie den Speicher nach dem Erstellen des Clusters anfügen und konfigurieren. Anweisungen finden Sie unter [Konfigurieren von Speicher](avere-vfxt-add-storage.md). 
+
+* **Speicherkonto** – Wenn Sie einen neuen Azure Blob-Container erstellen, geben Sie einen Namen für das neue Speicherkonto ein. 
 
 ## <a name="validation-and-purchase"></a>Überprüfung und Kauf
 
@@ -161,7 +163,7 @@ Gehen Sie folgendermaßen vor, um diese Informationen zu suchen:
 
 ## <a name="create-a-storage-endpoint-if-using-azure-blob"></a>Erstellen eines Speicherendpunkts (bei Verwendung von Azure-BLOB)
 
-Wenn Sie Azure-BLOB-Speicher für Ihren Back-End-Datenspeicher verwenden, sollten Sie einen Speicherdienstendpunkt in Ihrem virtuellen Netzwerk erstellen. Dieser [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure-BLOB-Datenverkehr lokal bleibt, anstatt ihn über das Internet weiterzuleiten.
+Wenn Sie Azure-BLOB-Speicher für Ihren Back-End-Datenspeicher verwenden, sollten Sie einen Speicherdienstendpunkt in Ihrem virtuellen Netzwerk erstellen. Dieser [Dienstendpunkt](../virtual-network/virtual-network-service-endpoints-overview.md) sorgt dafür, dass der Azure-BLOB-Datenverkehr lokal bleibt, anstatt ihn außerhalb des virtuellen Netzwerks weiterzuleiten.
 
 1. Klicken Sie im Portal links auf **Virtuelle Netzwerke**.
 1. Wählen Sie das VNet für Ihren Controller aus. 

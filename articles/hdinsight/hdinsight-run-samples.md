@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: cf7ef6f8e5dc157d3c3e89c9dfe3735c255694fa
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 0a174c3de33b01f936eec599c1de68e2cebbf9c5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53745056"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820418"
 ---
 # <a name="run-mapreduce-samples-in-windows-based-hdinsight"></a>Ausführen von MapReduce-Beispielen in Windows-basiertem HDInsight
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -54,7 +54,7 @@ Mittlerweile entscheiden sich viele Benutzer lieber für Apache Hive und Apache 
 ## <a name="hdinsight-sample-wordcount"></a>Wortzählung – Java
 Um ein MapReduce-Projekt zu übermitteln, erstellen Sie zunächst eine MapReduce-Auftragsdefinition. In der Auftragsdefinition geben Sie die JAR-Datei des MapReduce-Programms und den Speicherort der JAR-Datei, d.h. **wasb:///example/jars/hadoop-mapreduce-examples.jar**, den Klassennamen und die Argumente an.  Das MapReduce-Programm für die Wortzählung akzeptiert zwei Argumente: die Quelldatei, die zum Zählen von Wörtern verwendet wird, und den Speicherort der Ausgabe.
 
-Den Quellcode finden Sie in [Anhang A](#apendix-a---the-word-count-MapReduce-program-in-java).
+Den Quellcode finden Sie in Anhang A.
 
 Anweisungen zum Entwickeln eines Java MapReduce-Programms finden Sie unter [Entwickeln von Java MapReduce-Programmen für Apache Hadoop in HDInsight](hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md)
 
@@ -135,7 +135,7 @@ In der Zwischenzeit erfasst der Reducer die zeilenorientierte Ausgabe aus [stdou
 
 **So übermitteln Sie einen C#-Streaming-Wortzählungsauftrag**
 
-* Befolgen Sie das Verfahren unter [Wortzählung – Java](#word-count-java), und ersetzen Sie die Auftragsdefinition durch folgende Zeile:
+* Befolgen Sie das Verfahren unter „Wortzählung – Java“, und ersetzen Sie die Auftragsdefinition durch folgende Zeile:
 
     ```powershell
     $mrJobDefinition = New-AzureRmHDInsightStreamingMapReduceJobDefinition `
@@ -157,7 +157,7 @@ Das Skript in diesem Beispiel übermittelt einen Hadoop JAR-Auftrag und wird mit
 
 **So übermitteln Sie einen Auftrag zur Pi-Schätzung**
 
-* Befolgen Sie das Verfahren unter [Wortzählung – Java](#word-count-java), und ersetzen Sie die Auftragsdefinition durch folgende Zeile:
+* Befolgen Sie das Verfahren unter „Wortzählung – Java“, und ersetzen Sie die Auftragsdefinition durch folgende Zeile:
 
     ```powershell
     $mrJobJobDefinition = New-AzureRmHDInsightMapReduceJobDefinition `
@@ -185,7 +185,7 @@ Für das Beispiel müssen drei Aufgaben ausgeführt werden, die den einzelnen Ma
 
 **So übermitteln Sie die Aufträge**
 
-* Befolgen Sie das Verfahren unter [Wortzählung – Java](#word-count-java), und verwenden Sie die folgenden Auftragsdefinitionen:
+* Befolgen Sie das Verfahren unter „Wortzählung – Java“, und verwenden Sie die folgenden Auftragsdefinitionen:
 
     ```powershell
     $teragen = New-AzureRmHDInsightMapReduceJobDefinition `

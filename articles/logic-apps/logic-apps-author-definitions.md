@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.topic: article
 ms.date: 01/01/2018
-ms.openlocfilehash: 1f2e136810194ad044255f9d129b5c03549221b9
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d50f56fe0f4428186d18195f798633baefd6d125
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128659"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732922"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-definitions-in-azure-logic-apps"></a>Erstellen, Bearbeiten oder Erweitern von JSON-Code für Logik-App-Definitionen in Azure Logic Apps
 
@@ -24,7 +24,8 @@ Wenn Sie Enterprise Integration-Lösungen mit automatisierten Workflows in [Azur
 Um mit Logik-App-Definitionen in JSON zu arbeiten, öffnen Sie im Azure-Portal oder in Visual Studio den Codeansichts-Editor, oder kopieren Sie die Definition in einen Editor Ihrer Wahl. Falls Sie noch nicht mit Logik-Apps gearbeitet haben, sollten Sie zunächst die Schnellstartanleitung zum [Erstellen Ihrer ersten Logik-App](../logic-apps/quickstart-create-first-logic-app-workflow.md) lesen.
 
 > [!NOTE]
-> Einige Funktionen von Azure Logic Apps (beispielsweise das Definieren von Parametern und mehreren Triggern in Logik-App-Definitionen) sind nicht im Designer für Logik-Apps, sondern nur in JSON verfügbar. Für diese Aufgaben müssen Sie daher in der Codeansicht oder einem anderen Editor arbeiten.
+> Einige Funktionen von Azure Logic Apps (beispielsweise das Definieren von Parametern und mehreren Triggern in Logik-App-Definitionen) sind nicht im Designer für Logik-Apps, sondern nur in JSON verfügbar.
+> Für diese Aufgaben müssen Sie daher in der Codeansicht oder einem anderen Editor arbeiten.
 
 ## <a name="edit-json---azure-portal"></a>Bearbeiten von JSON-Code – Azure-Portal
 
@@ -58,7 +59,7 @@ In Visual Studio können Sie Logik-Apps öffnen, die direkt über das Azure-Port
 
 ## <a name="parameters"></a>Parameter
 
-Mit Parametern können Sie Werte in der gesamten Logik-App wiederverwenden, und sie eignen sich gut zum Ersetzen von Werten, die Sie vielleicht häufig ändern müssen. Wenn Sie z.B. eine E-Mail-Adresse haben, die Sie an mehreren Stellen verwenden möchten, sollten Sie die E-Mail-Adresse als Parameter definieren. 
+Mit Parametern können Sie Werte in der gesamten Logik-App wiederverwenden, und sie eignen sich gut zum Ersetzen von Werten, die Sie vielleicht häufig ändern müssen. Wenn Sie z.B. eine E-Mail-Adresse haben, die Sie an mehreren Stellen verwenden möchten, sollten Sie die E-Mail-Adresse als Parameter definieren.
 
 Parameter sind auch nützlich, wenn Sie Parameter in verschiedenen Umgebungen überschreiben müssen. Hier erfahren Sie mehr über [Parameter für die Bereitstellung](#deployment-parameters) und die [REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic).
 
@@ -70,13 +71,13 @@ In der [ersten Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-a
 1. Suchen Sie in der Codeansicht nach dem `parameters : {}`-Objekt, und fügen Sie ein `currentFeedUrl`-Objekt hinzu:
 
    ``` json
-     "currentFeedUrl" : {
+   "currentFeedUrl" : {
       "type" : "string",
-            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+      "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
    }
    ```
 
-2. Ersetzen Sie in der `When_a_feed-item_is_published`-Aktion im `queries`-Abschnitt den Abfragewert durch `"feedUrl": "#@{parameters('currentFeedUrl')}"`. 
+2. Ersetzen Sie in der `When_a_feed-item_is_published`-Aktion im `queries`-Abschnitt den Abfragewert durch `"feedUrl": "#@{parameters('currentFeedUrl')}"`.
 
    **Vorher**
    ``` json
@@ -84,7 +85,7 @@ In der [ersten Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-a
       "queries": {
           "feedUrl": "https://s.ch9.ms/Feeds/RSS"
        }
-   },   
+   },
    ```
 
    **Nachher**
@@ -93,13 +94,13 @@ In der [ersten Beispiel-Logik-App](../logic-apps/quickstart-create-first-logic-a
       "queries": {
           "feedUrl": "#@{parameters('currentFeedUrl')}"
        }
-   },   
+   },
    ```
 
    Sie können auch die `concat`-Funktion verwenden, um zwei oder mehr Zeichenfolgen zu verknüpfen. 
    Beispielsweise funktioniert `"@concat('#',parameters('currentFeedUrl'))"` genauso wie das vorherige Beispiel.
 
-3.  Wenn Sie fertig sind, wählen Sie **Speichern** aus. 
+3.  Wenn Sie fertig sind, wählen Sie **Speichern** aus.
 
 Jetzt können Sie den RSS-Feed der Website ändern, indem Sie eine andere URL über das `currentFeedURL`-Objekt übergeben.
 
@@ -107,9 +108,9 @@ Jetzt können Sie den RSS-Feed der Website ändern, indem Sie eine andere URL ü
 
 ## <a name="deployment-parameters-for-different-environments"></a>Bereitstellungsparameter für unterschiedliche Umgebungen
 
-In der Regel besitzen Bereitstellungslebenszyklen Umgebungen für Entwicklungs-, Staging- und Produktionsumgebungen. In all diesen Umgebungen können Sie beispielsweise die gleiche Logik-App-Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um Hochverfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber die Datenbank der betreffenden Region verwenden. 
+In der Regel besitzen Bereitstellungslebenszyklen Umgebungen für Entwicklungs-, Staging- und Produktionsumgebungen. In all diesen Umgebungen können Sie beispielsweise die gleiche Logik-App-Definition, aber unterschiedliche Datenbanken verwenden. Ebenso können Sie die gleiche Definition übergreifend in verschiedenen Regionen verwenden, um Hochverfügbarkeit zu erzielen. Die einzelnen Logik-App-Instanzen sollten aber die Datenbank der betreffenden Region verwenden.
 
-> [!NOTE] 
+> [!NOTE]
 > Dieses Szenario unterscheidet sich von der Verwendung von Parametern zur *Laufzeit*, wo Sie stattdessen die `trigger()`-Funktion verwenden sollten.
 
 Hier ist eine grundlegende Definition:
@@ -157,13 +158,13 @@ In der tatsächlichen `PUT`-Anforderung für die Logik-App können Sie den Param
     },
     "location": "westus"
 }
-``` 
+```
 
 Weitere Informationen finden Sie in der [Dokumentation zur REST-API für Azure Logic Apps](https://docs.microsoft.com/rest/api/logic/).
 
 ## <a name="process-strings-with-functions"></a>Verarbeiten von Zeichenfolgen mit Funktionen
 
-Logic Apps verfügt über verschiedene Funktionen zum Arbeiten mit Zeichenfolgen. Nehmen Sie z.B. an, dass Sie einen Firmennamen aus einem Auftrag einem anderen System übergeben möchten. Allerdings sind Sie sich nicht über die ordnungsgemäße Behandlung für die Zeichencodierung sicher. Sie könnten eine base64-Codierung für diese Zeichenfolge ausführen, aber um Escapezeichen in der URL zu vermeiden, können Sie stattdessen mehrere Zeichen ersetzen. Außerdem müssen Sie nur eine Teilzeichenfolge des Firmennamens verwenden, da die ersten fünf Zeichen nicht verwendet werden. 
+Logic Apps verfügt über verschiedene Funktionen zum Arbeiten mit Zeichenfolgen. Nehmen Sie z.B. an, dass Sie einen Firmennamen aus einem Auftrag einem anderen System übergeben möchten. Allerdings sind Sie sich nicht über die ordnungsgemäße Behandlung für die Zeichencodierung sicher. Sie könnten eine base64-Codierung für diese Zeichenfolge ausführen, aber um Escapezeichen in der URL zu vermeiden, können Sie stattdessen mehrere Zeichen ersetzen. Außerdem müssen Sie nur eine Teilzeichenfolge des Firmennamens verwenden, da die ersten fünf Zeichen nicht verwendet werden.
 
 ``` json
 {
@@ -200,7 +201,7 @@ Logic Apps verfügt über verschiedene Funktionen zum Arbeiten mit Zeichenfolgen
 
 In diesem Beispiel werden die Schritte beschrieben, in denen diese Zeichenfolge von innen nach außen verarbeitet wird:
 
-``` 
+```
 "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
 
@@ -218,7 +219,7 @@ In diesem Beispiel werden die Schritte beschrieben, in denen diese Zeichenfolge 
 
 ## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>Zuordnen von Listenelementen zu Eigenschaftswerten und Verwenden von Zuordnungen als Parameter
 
-Um basierend auf einem Eigenschaftswert unterschiedliche Ergebnisse zu erzielen, können Sie eine Zuordnung erstellen, die für jeden Eigenschaftswert nach der Übereinstimmung mit einem Ergebnis sucht, und dann diese Zuordnung als Parameter verwenden. 
+Um basierend auf einem Eigenschaftswert unterschiedliche Ergebnisse zu erzielen, können Sie eine Zuordnung erstellen, die für jeden Eigenschaftswert nach der Übereinstimmung mit einem Ergebnis sucht, und dann diese Zuordnung als Parameter verwenden.
 
 Dieser Workflow definiert z.B. einige Kategorien als Parameter und eine Zuordnung, die für jede dieser Kategorien nach der Übereinstimmung mit einer bestimmten URL sucht. Der Workflow ruft zunächst eine Liste von Artikeln auf. Anschließend verwendet der Workflow die Zuordnung, um für jeden Artikel die URL zu finden, die mit der Kategorie übereinstimmt.
 
@@ -302,13 +303,13 @@ Zum Abrufen von Daten aus einer Datenquelle, die nicht nativ *Trigger* unterstü
 "expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
 
-1. Extrahieren Sie von der `order`-Aktion aus die `startTime`. 
+1. Extrahieren Sie von der `order`-Aktion aus die `startTime`.
 2. Rufen Sie die aktuelle Uhrzeit mit `utcNow()` ab.
 3. Subtrahieren Sie eine Sekunde:
 
    [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
 
-   Sie können auch andere Zeiteinheiten verwenden, z.B. `minutes` oder `hours`. 
+   Sie können auch andere Zeiteinheiten verwenden, z.B. `minutes` oder `hours`.
 
 3. Jetzt können Sie diese beiden Werte vergleichen. 
 
@@ -365,7 +366,6 @@ Zum Formatieren von Datumsangaben können Sie Zeichenfolgenformatierer verwenden
   "outputs": {}
 }
 ```
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

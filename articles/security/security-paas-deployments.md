@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: terrylan
-ms.openlocfilehash: 199ea6855e661ef39104fdeb54941ccfd9f36933
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 6bc1df7acf7ce711e106983f8084f168152fc51e
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728481"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55488406"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -109,9 +109,9 @@ Der Microsoft [Security Development Lifecycle](https://www.microsoft.com/en-us/s
 
 In der folgende Tabelle sind die STRIDE-Bedrohungen sowie einige Beispiele für vorbeugende Maßnahmen aufgeführt, bei denen Azure-Funktionen verwendet werden. Diese vorbeugenden Maßnahmen funktionieren nicht in allen Situationen.
 
-| Bedrohung | Sicherheitseigenschaft | Potenzielle Azure-Plattformmigration |
+| Bedrohung | Sicherheitseigenschaft | Mindern potenzieller Risiken für die Azure-Plattform |
 | --- | --- | --- |
-| Spoofing | Authentifizierung | Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind. |
+| Spoofing | Authentication | Legen Sie fest, dass HTTPS-Verbindungen erforderlich sind. |
 | Manipulation | Integrität | Überprüfen Sie SSL-Zertifikate. |
 | Nichtanerkennung | Unleugbarkeit | Aktivieren Sie die [Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring) von Azure. |
 | Veröffentlichung von Informationen | Vertraulichkeit | Verschlüsseln Sie vertrauliche ruhende Daten mithilfe von [Dienstzertifikaten](https://docs.microsoft.com/rest/api/appservice/certificates). |

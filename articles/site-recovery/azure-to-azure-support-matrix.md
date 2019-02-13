@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 138c5ee54d175c4bd5f727acc3375405850f86a0
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 752be8270f3eb0bcc018cfcb7f87f30f5afbc60a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301593"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55753094"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -58,9 +58,9 @@ China | China, Osten; China, Norden; China, Norden 2; China, Osten 2
 >[!NOTE]
 >
 > - Für die Region **Brasilien, Süden** können Sie eine Replikation und ein Failover auf eine der folgenden Regionen durchführen: USA, Süden-Mitte; USA, Westen-Mitte; USA, Osten; USA, Osten 2; USA, Westen; USA, Westen 2 und USA, Norden-Mitte. Es sei darauf hingewiesen, dass in Site Recovery „Brasilien, Süden“ nur als Quellregion ausgewählt werden kann, aus der VMs geschützt werden können. Die Region **kann nicht als Zielregion für die Notfallwiederherstellung** anderer Azure-Regionen wie „USA, Süden-Mitte“ verwendet werden. Da aufgrund der geografischen Entfernung eine Latenz auftritt, wird empfohlen, eine andere amerikanische Region als „Brasilien, Süden“ auszuwählen.
-> 
+>
 > - Wenn Sie **eine Region nicht sehen können**, in der Sie **einen Tresor erstellen** möchten, dann stellen Sie sicher, dass Ihr Abonnement in dieser Region Zugriff auf das Erstellen von Ressourcen hat. Beispiel:  Wenn Sie keinen Tresor in „Frankreich, Süden“ erstellen können, hat Ihr Abonnement keinen Zugriff auf die Region „Frankreich, Süden“. Bitte erstellen Sie ein Supportticket unter dem Problemtyp „Abonnementverwaltung“ und dem Problemtyp „andere allgemeine Fragen“, Betreff „Abonnement für die Azure-Region XXX auf Whitlelist setzen“.
-> 
+>
 > - Wenn Sie **während der Aktivierung der Replikation** **keine Region innerhalb eines geografischen Clusters sehen können**, stellen Sie sicher, dass Ihr Abonnement über Zugriff verfügt, um virtuelle Computer in dieser Region zu erstellen. Beispiel:  Wenn Sie versuchen, virtuelle Computer aus „Frankreich, Mitte“ in „Frankreich, Süden“ zu schützen, und „Frankreich, Süden“ nicht in der Regionendropdownliste angezeigt wird, hat Ihr Abonnement in dieser Region keinen Zugriff zum Bereitstellen virtueller Computer. Bitte erstellen Sie ein Supportticket unter dem Problemtyp „Abonnementverwaltung“ und dem Problemtyp „andere allgemeine Fragen“, Betreff „Abonnement für die Azure-Region XXX auf Whitlelist setzen“.
 > - Sie können Regionen nicht oben genannte geografische Cluster übergreifend auswählen.
 
@@ -123,7 +123,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
-Debian 7 | 9.18, 9.19, 9.20, 9.21 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
+Debian 7 | 9.19,9.20,9.21,9.22 | 3.2.0-4-amd64 bis 3.2.0-6-amd64, 3.16.0-0.bpo.4-amd64 |
 |||
 Debian 8 | 9.20, 9.21 | 3.16.0-4-amd64 bis 3.16.0-7-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.8-amd64 |
 Debian 8 | 9.19 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.7-amd64 |
@@ -133,10 +133,10 @@ Debian 8 | 9.18 | 3.16.0-4-amd64 bis 3.16.0-6-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9
 
 **Release** | **Mobility Service-Version** | **Kernelversion** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.22 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.21 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.20 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default bis 4.4.162-94.69-default |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.19 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.140-94.42-default |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3) | 9.18 | SP1 3.12.49-11-default bis 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default bis 3.12.74-60.64.93-default</br></br> SP2 4.4.21-69-default bis 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default bis 4.4.121-92.80-default</br></br>SP3 4.4.73-5-default bis 4.4.138-94.39-default |
 
 
 ## <a name="replicated-machines---linux-file-systemguest-storage"></a>Replizierte Computer – Linux-Dateisystem/Gastspeicher
@@ -186,7 +186,7 @@ Datenträger – Standard-Speicherkonto | Unterstützt |
 Datenträger – Storage Premium-Konto | Unterstützt | Wenn ein virtueller Computer Datenträger in Premium- und Standard-Speicherkonten aufweist, können Sie für jeden Datenträger ein eigenes Zielspeicherkonto auswählen, um sicherzustellen, dass die gleiche Speicherkonfiguration in der Zielregion vorhanden ist.
 Verwalteter Datenträger – Standard | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |
 Verwalteter Datenträger – Premium | Unterstützt in Azure-Regionen, in denen Azure Site Recovery unterstützt wird. |
-SSD Standard | Nicht unterstützt |
+SSD Standard | Unterstützt |
 Redundanz | LRS und GRS werden unterstützt.<br/><br/> ZRS wird nicht unterstützt.
 Kalter und heißer Speicher | Nicht unterstützt | VM-Datenträger werden für kalten und heißen Speicher nicht unterstützt
 Speicherplätze | Unterstützt |
@@ -195,8 +195,8 @@ Azure Disk Encryption (ADE) für Windows | VMs, die für die [Verschlüsselung m
 Azure Disk Encryption (ADE) für Linux | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
 Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger sind standardmäßig ausgeschlossen.
-Speicherplätze direkt  | Nicht unterstützt|
-Dateiserver mit horizontaler Skalierung  | Nicht unterstützt|
+Speicherplätze direkt  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
+Dateiserver mit horizontaler Skalierung  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
 LRS | Unterstützt |
 GRS | Unterstützt |
 RA-GRS | Unterstützt |

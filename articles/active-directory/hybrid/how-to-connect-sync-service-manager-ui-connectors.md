@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87b39c400d189c7be6ead9770fb833f7c5e3036b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 40e519495b8a245f72e51167f5807f9c585cb344
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191250"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817545"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>Verwenden von Connectors mit dem Azure AD Connect Synchronization Service Manager
 
@@ -42,7 +42,7 @@ Die Registerkarte „Connectors“ wird verwendet, um alle Systeme zu verwalten,
 | Connector importieren |Nicht verwenden. |
 | Connector aktualisieren |Nicht verwenden. |
 | Schema aktualisieren |Aktualisiert das zwischengespeicherte Schema. Es wird empfohlen, die Option im Installations-Assistenten zu verwenden, da damit auch die Synchronisierungsregeln aktualisiert werden. |
-| [Connectorbereich durchsuchen](#search-connector-space) |Wird verwendet, um Objekte zu finden und um [ein Objekt und dessen Daten durch das System zu verfolgen](#follow-an-object-and-its-data-through-the-system). |
+| [Connectorbereich durchsuchen](#search-connector-space) |Wird verwendet, um Objekte zu finden und um ein Objekt und dessen Daten durch das System zu verfolgen. |
 
 ### <a name="delete"></a>Löschen
 Die Löschaktion wird für zwei verschiedene Dinge verwendet.  

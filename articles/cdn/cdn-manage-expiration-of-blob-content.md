@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: a0f89a272fa300f6acced2de02ba5465ab282079
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 29e9bee5f7712252d95b9416ad5523b4dfdd4b94
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765635"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814315"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.locfileid: "33765635"
 
 Der [Blob Storage-Dienst](../storage/common/storage-introduction.md#blob-storage) in Azure Storage ist einer von verschiedenen Azure-basierten Ursprüngen, die in Azure Content Delivery Network (CDN) integriert wurden. Jeder öffentlich zugängliche Blobinhalt kann in Azure CDN zwischengespeichert werden, bis seine Gültigkeitsdauer abläuft. Die Gültigkeitsdauer wird durch den `Cache-Control`-Header in der HTTP-Antwort des Ursprungsservers bestimmt. In diesem Artikel werden verschiedene Methoden beschrieben, mit denen Sie den `Cache-Control`-Header für ein Blob in Azure Storage festlegen können.
 
-Sie können die Cacheeinstellungen auch über das Portal durch Festlegen von [CDN-Cacheregeln](#setting-cache-control-headers-by-using-caching-rules) steuern. Wenn Sie eine Cacheregel erstellen und das Zwischenspeicherverhalten auf **Außerkraftsetzung** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
+Sie können die Cacheeinstellungen auch über das Azure-Portal steuern, indem Sie CDN-Cacheregeln festlegen. Wenn Sie eine Cacheregel erstellen und das Zwischenspeicherverhalten auf **Außerkraftsetzung** oder **Cache umgehen** festlegen, werden die in diesem Artikel erörterten vom Ursprung angegebenen Cacheeinstellungen ignoriert. Weitere Informationen zu allgemeinen Cachekonzepten finden Sie unter [How caching works](cdn-how-caching-works.md) (Funktionsweise von Caching).
 
 > [!TIP]
 > Sie haben auch die Möglichkeit, keine Gültigkeitsdauer für ein Blob festzulegen. In diesem Fall wendet Azure CDN automatisch eine Standardgültigkeitsdauer von sieben Tagen an, es sei denn, Sie haben Cacheregeln im Azure-Portal eingerichtet. Diese Standardgültigkeitsdauer gilt nur für die Optimierung allgemeiner Webbereitstellungen. Bei der Optimierung großer Dateien beträgt die Standardgültigkeitsdauer einen Tag, bei der Optimierung für das Medienstreaming beträgt die Standardgültigkeitsdauer ein Jahr.
@@ -69,7 +69,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
    Mit diesen globalen Cacheregeln wird eine Cachedauer von 1 Stunde festgelegt, die sich auf alle Anforderungen an den Endpunkt auswirkt. Der festgelegte Ablauf überschreibt alle `Cache-Control`- oder `Expires`-HTTP-Header, die durch die vom Endpunkt festgelegten Ursprungsserver gesendet werden.   
 
-3. Wählen Sie **Speichern**aus.
+3. Wählen Sie **Speichern** aus.
  
 **So legen Sie mit benutzerdefinierten Cacheregeln Cache-Control-Header für eine Blobdatei fest**
 
@@ -83,7 +83,7 @@ Die bevorzugte Methode zum Einrichten des `Cache-Control`-Headers für einen Blo
 
     Die erste benutzerdefinierte Cacheregel legt eine Cachedauer von vier Stunden für alle Blobdateien im Ordner `/blobcontainer1` auf dem Ursprungsserver fest, der durch Ihren Endpunkt angegeben wird. Die zweite Regel setzt für die Blobdatei `blob1.txt` die erste Regel außer Kraft und legt eine Cachedauer von zwei Stunden fest.
 
-2. Wählen Sie **Speichern**aus.
+2. Wählen Sie **Speichern** aus.
 
 
 ## <a name="setting-cache-control-headers-by-using-azure-powershell"></a>Festlegen von Cache-Control-Headern unter Verwendung von Azure PowerShell

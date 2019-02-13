@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: b59bb835c9858c6e47b8bb3a3518086e887d0d84
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ba64ecc334d93c8ff973345cfd10ed12436d3fb6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53542831"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813907"
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Ausführen von Aufgaben unter Benutzerkonten in Batch
 
@@ -59,14 +59,14 @@ Weitere Informationen zum Zugriff auf Dateien und Verzeichnisse aus einer Aufgab
 
 Die Rechteerweiterungsebene des Benutzerkontos lässt erkennen, ob eine Aufgabe mit erhöhten Zugriffsrechten ausgeführt wird. Sowohl ein automatisches Benutzerkonto als auch ein benanntes Benutzerkonto kann mit erhöhten Zugriffsrechten ausgeführt werden. Die zwei Optionen für die Rechteerweiterungsebene sind:
 
-- **NonAdmin:** Die Aufgabe wird als Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
-- **Admin:** Die Aufgabe wird als Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
+- **NonAdmin:** Die Aufgabe wird unter dem Standardbenutzer ohne erhöhte Zugriffsrechte ausgeführt. Die standardmäßige Rechteerweiterungsebene für ein Batch-Benutzerkonto ist immer **NonAdmin**.
+- **Admin:** Die Aufgabe wird unter einem Benutzer mit erhöhten Zugriffsrechten und vollständigen Administratorberechtigungen ausgeführt. 
 
 ## <a name="auto-user-accounts"></a>Automatische Benutzerkonten
 
 Standardmäßig werden Aufgaben in Batch unter einem automatischen Benutzerkonto als Standardbenutzer ohne erhöhte Zugriffsrechte und mit Aufgabenbereich ausgeführt. Wenn die automatische Benutzerspezifikation für den Aufgabenbereich konfiguriert ist, erstellt der Batch-Dienst ausschließlich für diese Aufgabe ein automatisches Benutzerkonto.
 
-Die Alternative zum Aufgabenbereich ist der Poolbereich. Wenn die automatische Benutzerspezifikation für eine Aufgabe für den Poolbereich konfiguriert ist, wird die Aufgabe unter einem automatischen Benutzerkonto ausgeführt, das für jede Aufgabe im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie im Abschnitt [Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich](#run-a-task-as-the-autouser-with-pool-scope).   
+Die Alternative zum Aufgabenbereich ist der Poolbereich. Wenn die automatische Benutzerspezifikation für eine Aufgabe für den Poolbereich konfiguriert ist, wird die Aufgabe unter einem automatischen Benutzerkonto ausgeführt, das für jede Aufgabe im Pool verfügbar ist. Weitere Informationen zum Poolbereich finden Sie im Abschnitt „Ausführen einer Aufgabe als automatischer Benutzer mit Poolbereich“.   
 
 Der Standardbereich ist auf Windows- und Linux-Knoten unterschiedlich:
 

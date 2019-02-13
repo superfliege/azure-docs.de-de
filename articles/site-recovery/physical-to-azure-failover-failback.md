@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: d105968d13960409a60e2fde9c811a042f444d8f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52848628"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813677"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
@@ -24,7 +24,7 @@ Für physische Server, die mithilfe von Site Recovery nach Azure repliziert wurd
 
 Failover und Failback weisen vier Phasen auf:
 
-1. **Failover auf Azure**: Failover von Computern vom lokalen Standort zu Azure.
+1. **Failover auf Azure**: Failover von Computern vom lokalen Standort auf Azure.
 2. **Erneutes Schützen der Azure-VMs**: Schützen Sie die Azure-VMs erneut, damit sie wieder zurück in lokale VMware-VMs repliziert werden.
 3. **Failover auf lokalen Standort**: Führen Sie ein Failover aus, um ein Failback aus Azure durchzuführen.
 4. **Erneutes Schützen lokaler VMs**: Schützen Sie nach dem Failback der Daten erneut die lokalen VMware-VMs, auf die Sie das Failback durchgeführt haben, damit diese mit der Replikation nach Azure beginnen.
@@ -36,7 +36,7 @@ Failover und Failback weisen vier Phasen auf:
 1. Klicken Sie unter **Geschützte Elemente** auf **Replizierte Elemente**, und wählen Sie den Computer aus.
 
 2. Im Bereich **Repliziertes Element** finden Sie eine Zusammenfassung der Computerinformationen, den Integritätsstatus sowie die neuesten verfügbaren Wiederherstellungspunkte. Klicken Sie auf **Eigenschaften**, um weitere Details anzuzeigen.
-3. In **Compute und Netzwerk** können Sie den Azure-Namen, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und [Einstellungen verwalteter Datenträger](#managed-disk-considerations) ändern.
+3. In **Compute und Netzwerk** können Sie den Azure-Namen, die Ressourcengruppe, Zielgröße, [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) und Einstellungen verwalteter Datenträger ändern.
 4. Sie können Netzwerkeinstellungen einschließlich des Netzwerks/Subnetzes, in dem der virtuelle Azure-Computer nach dem Failover platziert wird, sowie der IP-Adresse, die ihm zugewiesen wird, anzeigen und ändern.
 5. Unter **Datenträger** finden Sie Informationen über das Betriebssystem und die Datenträger auf dem Computer.
 

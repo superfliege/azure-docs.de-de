@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: priyamo
-ms.openlocfilehash: 45bf76696269e1224250b834b67acb2a68c10d7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cbe6d04dfcf9174b15cde71f7becbb371eaee4b2
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189458"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662467"
 ---
 # <a name="faqs-and-known-issues-with-managed-identities-for-azure-resources"></a>Häufig gestellte Fragen und bekannte Probleme mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -154,8 +154,8 @@ Um das Problem nach der Abonnementverschiebung zu umgehen, können Sie systemsei
 
 ## <a name="known-issues-with-user-assigned-managed-identities"></a>Bekannte Probleme mit benutzerseitig zugewiesenen verwalteten Identitäten
 
-- Das Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mit Sonderzeichen (d.h. Unterstrich) im Namen wird nicht unterstützt.
-- Namen von benutzerseitig zugewiesenen Identitäten dürfen maximal 24 Zeichen enthalten. Wenn der Name mehr als 24 Zeichen umfasst, kann die Identität einer Ressource (d.h. einer VM) nicht zugewiesen werden.
+- Vom Benutzer zugewiesene Identitätsnamen sind auf mindestens 3 und maximal 128 Zeichen beschränkt. Wenn der Name mehr als 128 Zeichen umfasst, kann die Identität einer Ressource (d.h. einem virtuellen Computer) nicht zugewiesen werden.
+- Vom Benutzer zugewiesene Identitätsnamen dürfen die folgenden Zeichen enthalten: a-Z, A-Z, -, \_, 0-9. Das Erstellen einer benutzerseitig zugewiesenen verwalteten Identität mit einem Namen, der andere als die o.g. Zeichen (z.B. Sternchen) enthält, wird nicht unterstützt.
 - Bei Verwendung der VM-Erweiterung für verwaltete Identitäten (die Einstellung ist für Januar 2019 vorgesehen) ist die Begrenzung auf Unterstützung von 32 vom Benutzer zugewiesenen verwalteten Identitäten festgelegt. Ohne die VM-Erweiterung für verwaltete Identität ist die Begrenzung auf Unterstützung von 512 Identitäten festgelegt.  
 - Beim Verschieben einer benutzerseitig zugewiesenen verwalteten Identität in eine andere Ressourcengruppe tritt ein Fehler für die Identität auf. Infolgedessen können Sie keine Token für diese Identität anfordern. 
 - Wenn Sie ein Abonnement in ein anderes Verzeichnis übertragen, wird für alle vorhandenen benutzerseitig zugewiesenen verwalteten Identitäten ein Fehler ausgelöst. 

@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/15/2019
+ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7552018c32078295c164023f909a604c6522c32f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: d6778e1749493a04a73d0ac210c1557b89343d00
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437469"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55695579"
 ---
 # <a name="elevate-access-to-manage-all-azure-subscriptions-and-management-groups"></a>Erhöhen der Zugriffsrechte zum Verwalten aller Azure-Abonnements und Verwaltungsgruppen
 
@@ -83,12 +83,14 @@ Führen Sie diese Schritte aus, um die Zugriffsrechte für einen globalen Admini
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 
+[!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
 ### <a name="list-role-assignment-at-the-root-scope-"></a>Auflisten der Rollenzuweisung im Stammbereich (/)
 
-Verwenden Sie den Befehl [Get-AzureRmRoleAssignment](/powershell/module/azurerm.resources/get-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
+Verwenden Sie den Befehl [Get-AzRoleAssignment](/powershell/module/az.resources/get-azroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ für einen Benutzer im Stammbereich (`/`) aufzulisten.
 
 ```azurepowershell
-Get-AzureRmRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
+Get-AzRoleAssignment | where {$_.RoleDefinitionName -eq "User Access Administrator" `
   -and $_.SignInName -eq "<username@example.com>" -and $_.Scope -eq "/"}
 ```
 
@@ -111,10 +113,10 @@ Führen Sie die folgenden Schritte aus, um die Zuweisung der Rolle „Benutzerzu
 1. Melden Sie sich als Benutzer an, der erhöhte Zugriffsrechte entfernen kann. Hierbei kann es sich um den Benutzer, der den Zugriff erhöht hat, oder einen anderen globalen Administrator, der über erhöhte Zugriffsrechte im Stammbereich verfügt, handeln.
 
 
-1. Verwenden Sie den Befehl [Remove-AzureRmRoleAssignment](/powershell/module/azurerm.resources/remove-azurermroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
+1. Verwenden Sie den Befehl [Remove-AzRoleAssignment](/powershell/module/az.resources/remove-azroleassignment), um die Zuweisung der Rolle „Benutzerzugriffsadministrator“ zu entfernen.
 
     ```azurepowershell
-    Remove-AzureRmRoleAssignment -SignInName <username@example.com> `
+    Remove-AzRoleAssignment -SignInName <username@example.com> `
       -RoleDefinitionName "User Access Administrator" -Scope "/"
     ```
 

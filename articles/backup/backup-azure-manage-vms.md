@@ -2,18 +2,18 @@
 title: Verwalten von mit Resource Manager bereitgestellten Sicherungen virtueller Computer
 description: Es wird beschrieben, wie Sie Sicherungen virtueller Computer verwalten und überwachen, die von Resource Manager bereitgestellt werden.
 services: backup
-author: trinadhk
-manager: shreeshd
+author: sogup
+manager: vijayts
 ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
-ms.author: trinadhk
-ms.openlocfilehash: 0e599c95f40e62a4bb01a7ab698fe0ce1f738e49
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.author: sogup
+ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635764"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564135"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 
@@ -138,9 +138,11 @@ So lösen Sie eine bedarfsabhängige Sicherung eines virtuellen Computers aus
 Wenn Sie sich für das Beenden des Schutzes für einen virtuellen Computer entscheiden, werden Sie gefragt, ob Sie die Wiederherstellungspunkte beibehalten möchten. Der Schutz für virtuelle Computer kann auf zwei Arten beendet werden:
 
 * Beenden aller zukünftigen Sicherungsaufträge und Löschen aller Wiederherstellungspunkte oder
-* Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte 
+* Beenden aller zukünftigen Sicherungsaufträge und Beibehaltung der Wiederherstellungspunkte
 
 Mit der Beibehaltung der Wiederherstellungspunkte im Speicher sind Kosten verbunden. Der Vorteil der Beibehaltung von Wiederherstellungspunkten ist, dass Sie den virtuellen Computer bei Bedarf später wiederherstellen können. Informationen zu den Kosten, die durch die Beibehaltung der Wiederherstellungspunkte entstehen, finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/backup/). Wenn Sie alle Wiederherstellungspunkte löschen, kann der virtuelle Computer nicht mehr wiederhergestellt werden.
+
+Wenn Sie eine Sicherung mit der Option „Daten beibehalten“ beenden, laufen Wiederherstellungspunkte gemäß der Aufbewahrungsrichtlinie ab. Azure Backup behält jedoch immer mindestens einen letzten Wiederherstellungspunkt bei, bis Sie Sicherungsdaten explizit löschen. Ebenso gilt: Wenn Sie eine Datenquelle ohne Beenden der Sicherung löschen, schlagen neue Sicherungen fehl, und alte Wiederherstellungspunkte laufen gemäß der Aufbewahrungsrichtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung mit der Option „Daten löschen“ beenden.
 
 So beenden Sie den Schutz für einen virtuellen Computer
 

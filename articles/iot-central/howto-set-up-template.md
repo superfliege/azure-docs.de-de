@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 61bc9da45ac420e5683be1ea3ad253eae9c0ba5a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: fc18262326a8474cac417b67a37df35d91d75439
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50158940"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657738"
 ---
 # <a name="set-up-a-device-template"></a>Einrichten einer Gerätevorlage
 
@@ -39,6 +39,8 @@ Anhand dieser Gerätevorlage kann ein Operator reale Lüftergeräte mit Namen wi
 
 > [!NOTE]
 > Nur Ersteller und Administratoren können Gerätevorlagen erstellen, bearbeiten und löschen. Auf der Seite **Device Explorer** kann jeder Benutzer Geräte anhand vorhandener Gerätevorlagen erstellen.
+
+[!INCLUDE [iot-central-experimental-note](../../includes/iot-central-experimental-note.md)]
 
 ## <a name="create-a-device-template"></a>Erstellen einer Gerätevorlage
 
@@ -84,7 +86,7 @@ Nachdem Sie auf **Fertig** geklickt haben, wird die Messung **Temperatur** in de
 ### <a name="create-an-event-measurement"></a>Erstellen einer Ereignismessung
 Klicken Sie zum Hinzufügen neuer Ereignismessung auf **Vorlage bearbeiten**, und klicken Sie dann auf die Schaltfläche **+ New Measurement** (+ Neue Messung). Wählen Sie als Messungstyp **Ereignis**, und geben Sie die Details im Formular **Ereignis erstellen** ein.
 
-Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und Details zum **Schweregrad** des Ereignisses an. Ihnen stehen die drei verfügbare Schweregrade zur Auswahl: **Fehler**, **Warnung** und **Information**.  
+Geben Sie in diesem Formular den **Anzeigenamen**, **Feldnamen** und Details zum **Schweregrad** des Ereignisses an. Sie können aus den folgenden drei Schweregraden auswählen: **Fehler**, **Warnung** und **Information**.  
 
 Beispielsweise können Sie das neue Ereignis **Lüftermotorfehler** hinzufügen.
 
@@ -136,7 +138,7 @@ Einstellungen können einen von drei Zuständen aufweisen. Das Gerät meldet die
 
 - **Synchronisiert**: Das Gerät wurde entsprechend dem Einstellungswert geändert.
 
-- **Ausstehend**: Das Gerät wird zurzeit in den Einstellungswert geändert.
+- **Ausstehend**: Das Gerät wird zurzeit auf den Einstellungswert geändert.
 
 - **Fehler**: Das Gerät hat einen Fehler zurückgegeben.
 
@@ -236,7 +238,7 @@ Wie unterscheidet sich ein Befehl von einer Einstellung?
 
 * **Einstellung**: Eine Einstellung ist eine Konfiguration, die Sie auf ein Gerät anwenden möchten. Sie möchten außerdem, dass das Gerät diese Konfiguration beibehält, bis Sie sie ändern. Angenommen, Sie möchten die Temperatur Ihres Gefrierschranks einstellen, und Sie wünschen diese Einstellung auch dann, wenn der Gefrierschrank neu gestartet wird. 
 
-* **Befehl**: Sie verwenden Befehle, um einen Befehl auf dem Gerät sofort von IoT Central aus remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.  
+* **Befehl**: Sie verwenden Befehle, um einen Befehl von IoT Central aus auf dem Gerät sofort remote auszuführen. Wenn ein Gerät nicht angeschlossen ist, wird der Befehl mit einem Fehler abgebrochen. Angenommen, Sie möchten ein Gerät neu starten.  
 
 
 Sie können zum Beispiel einen neuen **Echo**-Befehl hinzufügen, indem Sie auf **Vorlage bearbeiten** und dann auf **+ New Command** (+ Neuer Befehl) klicken. Anschließend geben Sie den neuen Befehl ein:
@@ -281,7 +283,7 @@ Wenn Sie zuvor in [Erstellen einer Standorteigenschaft über Azure Maps](#create
 
    ![Formular „Karte konfigurieren“ mit Details zu Titel und Eigenschaften](./media/howto-set-up-template/locationcloudproperty5map.png)
 
-4. Wählen Sie **Speichern**aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben. 
+4. Wählen Sie **Speichern** aus. Die Kartenkachel zeigt jetzt den Standort an, den Sie ausgewählt haben. 
 
    ![Kartenkachel mit ausgewähltem Standort](./media/howto-set-up-template/locationcloudproperty6map.png) 
 

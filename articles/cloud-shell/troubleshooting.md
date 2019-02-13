@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: 72f85761db08652f0dff7f36fbcb2ef90654e078
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
+ms.openlocfilehash: 73f2e7a37e1e51bf215cbac782b454d909f275dc
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52334396"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55568531"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Problembehandlung und Einschränkungen bei Azure Cloud Shell
 
@@ -29,57 +29,57 @@ Zu den bekannten Lösungen für die Behandlung von Problemen in Azure Cloud Shel
 
 ### <a name="early-timeouts-in-firefox"></a>Frühe Timeouts in Firefox
 
-- **Details:** Cloud Shell nutzt einen offenen Websocket für die Weitergabe der Ein- und Ausgaben an den Browser. Firefox verfügt über vordefinierte Richtlinien, die den Websocket vorzeitig schließen und damit frühe Timeouts in Cloud Shell verursachen können.
+- **Details**: Cloud Shell nutzt einen offenen Websocket für die Weitergabe der Ein- und Ausgaben an den Browser. Firefox verfügt über vordefinierte Richtlinien, die den Websocket vorzeitig schließen und damit frühe Timeouts in Cloud Shell verursachen können.
 - **Lösung:** Öffnen Sie Firefox, und navigieren Sie im Feld „URL“ zu „about:config“. Suchen Sie nach „network.websocket.timeout.ping.request“, und ändern Sie den Wert von 0 in 10.
 
 ### <a name="disabling-cloud-shell-in-a-locked-down-network-environment"></a>Deaktivieren von Cloud Shell in einer gesperrten Netzwerkumgebung
 
-- **Details**: Administratoren möchten möglicherweise den Zugriff auf Cloud Shell für die Benutzer deaktivieren. Cloud Shell nutzt den Zugriff auf die Domäne `ux.console.azure.com`, der verweigert werden kann, wodurch jeglicher Zugriff auf Einstiegspunkte von Cloud Shell unterbrochen wird, einschließlich des Zugriffs auf portal.azure.com, shell.azure.com, die Azure-Kontoerweiterung für Visual Studio Code und docs.microsoft.com.
-- **Lösung**: Beschränken Sie den Zugriff auf `ux.console.azure.com` über die Netzwerkeinstellungen für Ihre Umgebung. Das Cloud Shell-Symbol ist dann immer noch auf portal.azure.com vorhanden, es kann aber keine Verbindung mit dem Dienst hergestellt werden.
+- **Details**: Administratoren möchten möglicherweise den Zugriff auf Cloud Shell für Benutzer deaktivieren. Cloud Shell nutzt den Zugriff auf die Domäne `ux.console.azure.com`, der verweigert werden kann, wodurch jeglicher Zugriff auf Einstiegspunkte von Cloud Shell unterbrochen wird, einschließlich des Zugriffs auf portal.azure.com, shell.azure.com, die Azure-Kontoerweiterung für Visual Studio Code und docs.microsoft.com.
+- **Lösung:** Beschränken Sie den Zugriff auf `ux.console.azure.com` über die Netzwerkeinstellungen für Ihre Umgebung. Das Cloud Shell-Symbol ist dann immer noch auf portal.azure.com vorhanden, es kann aber keine Verbindung mit dem Dienst hergestellt werden.
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>Speicherdialogfeld – Fehler: 403 RequestDisallowedByPolicy
 
-- **Details**: Das Erstellen eines Speicherkontos über Cloud Shell ist aufgrund einer von Ihrem Administrator platzierten Azure-Richtlinie nicht erfolgreich. Zu den Fehlermeldung zählt: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
-- **Auflösung**: Wenden Sie sich an Ihren Azure-Administrator, um die Azure-Richtlinie, die die Speichererstellung verweigert, zu entfernen oder zu aktualisieren.
+- **Details**: Das Erstellen eines Speicherkontos über Cloud Shell ist aufgrund einer von Ihrem Administrator eingerichteten Azure-Richtlinie nicht erfolgreich. Zu den Fehlermeldung zählt: `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **Lösung:** Wenden Sie sich an Ihren Azure-Administrator, um die Azure-Richtlinie, die die Speichererstellung verhindert, zu entfernen oder zu aktualisieren.
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>Speicherdialogfeld – Fehler: 400 DisallowedOperation
 
-- **Details**: Mit einem Azure Active Directory-Abonnement können Sie keinen Speicher erstellen.
-- **Lösung**: Verwenden Sie ein Azure-Abonnement, das Speicherressourcen erstellen kann. Azure AD-Abonnements sind nicht in der Lage, Azure-Ressourcen zu erstellen.
+- **Details**: Mit einem Azure Active Directory-Abonnement kann kein Speicher erstellt werden.
+- **Lösung:** Verwenden Sie ein Azure-Abonnement, das die Erstellung von Speicherressourcen unterstützt. Azure AD-Abonnements sind nicht in der Lage, Azure-Ressourcen zu erstellen.
 
-### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminalausgabe – Fehler: Fehler beim Herstellen der Verbindung mit Terminal: Websocket kann nicht eingerichtet werden. Drücken Sie `Enter`, um erneut eine Verbindung herzustellen.
+### <a name="terminal-output---error-failed-to-connect-terminal-websocket-cannot-be-established-press-enter-to-reconnect"></a>Terminalausgabe – Fehler: Fehler beim Herstellen einer Verbindung mit dem Terminal: Websocket kann nicht eingerichtet werden. Drücken Sie `Enter`, um erneut eine Verbindung herzustellen.
 - **Details**: Cloud Shell erfordert, dass eine Websocketverbindung mit der Cloud Shell-Infrastruktur hergestellt werden kann.
-- **Auflösung**: Überprüfen Sie, ob Sie Ihre Netzwerkeinstellungen so konfiguriert haben, dass HTTPS- und Websocketanforderungen an Domänen unter *.console.azure.com gesendet werden können.
+- **Lösung:** Überprüfen Sie, ob Sie Ihre Netzwerkeinstellungen so konfiguriert haben, dass HTTPS- und Websocketanforderungen an Domänen unter *.console.azure.com gesendet werden können.
 
 ### <a name="set-your-cloud-shell-connection-to-support-using-tls-12"></a>Festlegen Ihrer Cloud Shell-Verbindung für die Unterstützung von TLS 1.2
  - **Details**: Um die Version von TLS für Ihre Verbindung mit Cloud Shell zu definieren, müssen Sie browserspezifische Einstellungen festlegen.
- - **Lösung**: Navigieren Sie zu den Sicherheitseinstellungen Ihres Browsers, und aktivieren Sie das Kontrollkästchen neben „TLS 1.2 verwenden“.
+ - **Lösung:** Navigieren Sie zu den Sicherheitseinstellungen Ihres Browsers, und aktivieren Sie das Kontrollkästchen neben „TLS 1.2 verwenden“.
 
 ## <a name="bash-troubleshooting"></a>Problembehandlung bei Bash
 
 ### <a name="cannot-run-the-docker-daemon"></a>Der Docker-Daemon kann nicht ausgeführt werden.
 
-- **Details**: Cloud Shell nutzt einen Container zum Hosten Ihrer Shellumgebung, daher ist die Ausführung des Daemons nicht zulässig.
-- **Auflösung**: Nutzen Sie das standardmäßig installierte [Docker Machine](https://docs.docker.com/machine/overview/), um Docker-Container von einem Docker-Remotehost aus zu verwalten.
+- **Details**: Cloud Shell nutzt einen Container zum Hosten Ihrer Shellumgebung. Daher ist die Ausführung des Daemons nicht zulässig.
+- **Lösung:** Nutzen Sie das standardmäßig installierte [Docker Machine](https://docs.docker.com/machine/overview/)-Tool, um Docker-Container von einem Docker-Remotehost aus zu verwalten.
 
 ## <a name="powershell-troubleshooting"></a>Problembehandlung bei PowerShell
 
 ### <a name="gui-applications-are-not-supported"></a>GUI-Anwendungen werden nicht unterstützt.
 
 - **Details**: Wenn ein Benutzer eine GUI-Anwendung startet, wird die Eingabeaufforderung nicht wieder angezeigt. Wenn ein Benutzer beispielsweise ein privates GitHub-Repository klont, für das die zweistufige Authentifizierung aktiviert ist, wird ein Dialogfeld zur Durchführung der zweistufigen Authentifizierung angezeigt.
-- **Lösung**: Schließen Sie die Shell, und öffnen Sie sie wieder.
+- **Lösung:** Schließen Sie die Shell, und öffnen Sie sie erneut.
 
 ### <a name="troubleshooting-remote-management-of-azure-vms"></a>Problembehandlung bei der Remoteverwaltung von virtuellen Azure-Computern
 > [!NOTE]
 > Azure-VMs müssen über eine öffentliche IP-Adresse verfügen.
 
-- **Details**: Aufgrund der Standardeinstellungen der Windows-Firewall für WinRM wird dem Benutzer möglicherweise der folgende Fehler angezeigt: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **Auflösung:** Führen Sie `Enable-AzureRmVMPSRemoting` aus, um alle Aspekte des PowerShell-Remoting auf dem Zielcomputer zu aktivieren.
+- **Details**: Aufgrund der Standardeinstellungen der Windows-Firewall für WinRM kann der folgende Fehler angezeigt werden: `Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
+- **Lösung:**  Führen Sie `Enable-AzureRmVMPSRemoting` aus, damit das PowerShell-Remoting auf dem Zielcomputer vollständig unterstützt wird.
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` führt nicht zur Aktualisierung des Ergebnisses im Azure-Laufwerk
 
 - **Details**: Standardmäßig werden die Ergebnisse von `dir` auf dem Azure-Laufwerk zwischengespeichert, um die Benutzeroberfläche zu optimieren.
-- **Lösung**: Nachdem Sie eine Azure-Ressource erstellt, aktualisiert oder entfernt haben, können Sie `dir -force` ausführen, um die Ergebnisse auf dem Azure-Laufwerk zu aktualisieren.
+- **Lösung:** Nachdem Sie eine Azure-Ressource erstellt, aktualisiert oder entfernt haben, führen Sie `dir -force` aus, um die Ergebnisse auf dem Azure-Laufwerk zu aktualisieren.
 
 ## <a name="general-limitations"></a>Allgemeine Einschränkungen
 
@@ -143,7 +143,7 @@ Mithilfe von PowerShell-Cmdlets können Benutzer keine Dateien unter dem Azure-L
 
 ### <a name="commands-that-create-gui-pop-ups-are-not-supported"></a>Befehle, mit denen GUI-Popupelemente erstellt werden, werden nicht unterstützt
 
-Wenn der Benutzer einen Befehl (etwa `Connect-AzureAD` oder `Connect-AzureRmAccount`) ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird etwa folgende Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
+Wenn der Benutzer einen Befehl (z. B. `Connect-AzureAD`, `Connect-AzureRmAccount` oder `Connect-AzAccount`) ausführt, mit dem ein Windows-Dialogfeld erstellt wird, wird eine mit der folgenden vergleichbare Fehlermeldung angezeigt: `Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)`.
 
 ### <a name="tab-completion-can-throw-psreadline-exception"></a>Vervollständigung mit der TAB-Taste kann PSReadline-Ausnahme auslösen
 
