@@ -13,18 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren
-ms.openlocfilehash: bf0e672ea6f1d62442233993bd778c82a8a16037
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 73e27044fc8cc79b2c95471e30bca558bd14d473
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53187210"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818752"
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>Integration von Service Map in System Center Operations Manager
-  > [!NOTE]
-  > Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.
-  > 
-  
+
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. In Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Service Map zeigt Verbindungen zwischen Servern, Prozessen und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich. Weitere Informationen finden Sie in der [Dokumentation zu Service Map]( service-map.md).
 
 Mit dieser Integration zwischen Service Map und System Center Operations Manager können Sie basierend auf dynamischen Abhängigkeitszuordnungen in Service Map automatisch Diagramme der verteilten Anwendungen in Operations Manager erstellen.
@@ -43,7 +40,7 @@ Sie aktivieren die Integration zwischen Operations Manager und Service Map durch
 * Microsoft System Center Service Map
 
 ## <a name="configure-the-service-map-integration"></a>Konfigurieren der Integration von Service Map
-Nach der Installation des Service Map Management Packs wird im Bereich **Verwaltung** unter **Operations Management Suite** der neue Knoten **Service Map** angezeigt. 
+Nach der Installation des Service Map Management Packs wird im Bereich **Verwaltung** unter **Operations Management Suite** der neue Knoten **Service Map** angezeigt.
 
 >[!NOTE]
 >[Operations Management Suite war eine Sammlung von Diensten](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/azure-monitor-rebrand.md#retirement-of-operations-management-suite-brand), zu der auch Log Analytics, das jetzt Teil von [Azure Monitor](https://github.com/MicrosoftDocs/azure-docs-pr/pull/azure-monitor/overview.md) ist, gehörte.
@@ -54,7 +51,7 @@ Um die Service Map-Integration zu konfigurieren, führen Sie folgende Schritte a
 
     ![Bereich „Service Map Overview“ (Service Map-Übersicht)](media/service-map-scom/scom-configuration.png)
 
-2. Geben Sie im Fenster **Verbindungskonfiguration** den Mandantennamen oder die Mandanten-ID, die Anwendungs-ID (auch als Benutzername bzw. clientID bezeichnet) und das Kennwort des Dienstprinzipals ein, und klicken Sie auf **Weiter**. Weitere Informationen finden Sie unter [Erstellen eines Dienstprinzipals](#creating-a-service-principal).
+2. Geben Sie im Fenster **Verbindungskonfiguration** den Mandantennamen oder die Mandanten-ID, die Anwendungs-ID (auch als Benutzername bzw. clientID bezeichnet) und das Kennwort des Dienstprinzipals ein, und klicken Sie auf **Weiter**. Weitere Informationen finden Sie unter „Erstellen eines Dienstprinzipals“.
 
     ![Das Fenster „Verbindungskonfiguration“](media/service-map-scom/scom-config-spn.png)
 
@@ -63,11 +60,11 @@ Um die Service Map-Integration zu konfigurieren, führen Sie folgende Schritte a
     ![Der Operations Manager-Konfigurationsarbeitsbereich](media/service-map-scom/scom-config-workspace.png)
 
 4. Wählen Sie im Fenster **Computergruppenauswahl**, welche Service Map-Computergruppen Sie mit Operations Manager synchronisieren möchten. Klicken Sie auf **Computergruppen hinzufügen/entfernen**, wählen Sie Gruppen aus der Liste der **Verfügbaren Computergruppen**, und klicken Sie auf **Hinzufügen**.  Klicken Sie nach Auswahl der Gruppen auf **OK**, um den Vorgang abzuschließen.
-    
+
     ![Die Operations Manager-Konfigurationscomputergruppen](media/service-map-scom/scom-config-machine-groups.png)
-    
+
 5. Konfigurieren Sie im Fenster **Serverauswahl** die „Service Map-Servergruppe“ mit den Servern, die Sie zwischen Operations Manager und Service Map synchronisieren möchten. Klicken Sie auf **Server hinzufügen/entfernen**.   
-    
+
     Damit die Integration ein Diagramm der verteilten Anwendung für einen Server erstellen kann, muss der Server folgende Voraussetzungen erfüllen:
 
     * Verwaltet von Operations Manager
@@ -91,7 +88,7 @@ Nachdem die Verbindung mit dem Log Analytics-Arbeitsbereichs hergestellt wurde, 
 ![Operations Manager-Bereich „Überwachung“](media/service-map-scom/scom-monitoring.png)
 
 Der Ordner „Service Map“ umfasst vier Knoten:
-* **Aktive Warnungen**: Listet alle aktiven Warnungen zur Kommunikation zwischen Operations Manager und Service Map auf.  Beachten Sie, dass diese Warnungen nicht die Log Analytics-Warnungen sind, die mit Operations Manager synchronisiert werden. 
+* **Aktive Warnungen**: Listet alle aktiven Warnungen zur Kommunikation zwischen Operations Manager und Service Map auf.  Beachten Sie, dass diese Warnungen nicht die Log Analytics-Warnungen sind, die mit Operations Manager synchronisiert werden.
 
 * **Server**: Hier wird die Liste der überwachten Server angezeigt, die für die Synchronisierung mit Service Map konfiguriert sind.
 
@@ -120,9 +117,9 @@ Die Regel _Microsoft.SystemCenter.ServiceMapImport.Rule_ wird erstellt, um regel
 
 ![Das Operations Manager-Fenster für Eigenschaften von Außerkraftsetzungen](media/service-map-scom/scom-overrides.png)
 
-* **Enabled**: Aktivieren oder Deaktivieren der automatischen Updates. 
+* **Enabled**: Aktivieren oder Deaktivieren der automatischen Updates.
 * **IntervalMinutes**: Zurücksetzen der Zeitspanne zwischen Updates. Das Standardintervall beträgt eine Stunde. Wenn Sie Serverzuordnungen in kürzeren Abständen synchronisieren möchten, können Sie den Wert ändern.
-* **TimeoutSeconds**: Zurücksetzen der Zeitspanne bis zum Timeout der Anforderung. 
+* **TimeoutSeconds**: Zurücksetzen der Zeitspanne bis zum Timeout der Anforderung.
 * **TimeWindowMinutes**: Zurücksetzen des Zeitfensters zum Abfragen von Daten. Standardmäßig ist ein Fenster von 60 Minuten festgelegt. Der von Service Map zugelassene Maximalwert beträgt 60 Minuten.
 
 ## <a name="known-issues-and-limitations"></a>Bekannte Probleme und Einschränkungen

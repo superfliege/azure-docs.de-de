@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 18b024efdc4300daca2c5cee933b136dbc99d433
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 01/30/2019
+ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468902"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55657772"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
@@ -32,7 +32,7 @@ Wenn Sie die aktive Georeplikation über das Azure-Portal konfigurieren möchten
 * Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
 
 > [!Note]
-Die aktive Georeplikation muss zwischen Datenbanken innerhalb desselben Abonnements vorhanden sein.
+Wenn Sie das Azure-Portal verwenden, können Sie nur eine sekundäre Datenbank im selben Abonnement wie die primäre Datenbank erstellen. Wenn die sekundäre Datenbank in einem anderen Abonnement vorhanden sein muss, verwenden Sie die [REST-API zum Erstellen der Datenbank](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) oder die [ALTER DATABASE-Transact-SQL-API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Hinzufügen einer sekundären Datenbank
 

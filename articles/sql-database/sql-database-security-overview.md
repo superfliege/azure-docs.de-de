@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 7eb3b115c1d16c2a5c380178d316a60b854e80df
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462017"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728401"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -40,14 +40,14 @@ IP-Firewallregeln gewähren den Datenbankzugriff auf der Grundlage der Ursprungs
 Mithilfe von [Regeln für virtuelle Netzwerke](sql-database-vnet-service-endpoint-rule-overview.md) kann Azure SQL-Datenbank nur Verbindungen akzeptieren, die von ausgewählten Subnetzen innerhalb eines virtuellen Netzwerks stammen.
 
 > [!NOTE]
-> Die Zugriffskontrolle mit Firewallregeln gilt *nicht* für die **verwaltete Azure SQL-Datenbank-Instanz**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
+> Die Zugriffskontrolle mit Firewallregeln gilt *nicht* für **eine verwaltete Instanz**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
 ## <a name="access-management"></a>Zugriffsverwaltung
 
 > [!IMPORTANT]
 > Die Verwaltung von Datenbanken und Datenbankservern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md).
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutzer derjenige ist, der er zu sein vorgibt. Azure SQL-Datenbank unterstützt zwei Arten der Authentifizierung:
 
@@ -64,7 +64,7 @@ Die Authentifizierung ist der Prozess, bei dem bestätigt wird, dass der Benutze
     Zu den weiteren Möglichkeiten der Azure AD-Authentifizierung gehören Verbindungen mit der [universellen Active Directory-Authentifizierung für SQL Server Management Studio](sql-database-ssms-mfa-authentication.md), einschließlich [Multi-Factor Authentication](../active-directory/authentication/concept-mfa-howitworks.md) und [bedingtem Zugriff](sql-database-conditional-access.md).
 
 > [!IMPORTANT]
-> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md). Die Zugriffskontrolle mit Firewallregeln gilt *nicht* für die **verwaltete Azure SQL-Datenbank-Instanz**. Weitere Informationen über die erforderliche Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
+> Die Verwaltung von Datenbanken und Servern in Azure wird über die Rollenzuweisungen in Ihrem Portalbenutzerkonto gesteuert. Weitere Informationen zu diesem Artikel finden Sie unter [Rollenbasierte Zugriffssteuerung im Azure-Portal](../role-based-access-control/overview.md). Die Zugriffskontrolle mit Firewallregeln gilt *nicht* für **eine verwaltete Instanz**. Weitere Informationen zur erforderlichen Netzwerkkonfiguration finden Sie im Artikel zum [Herstellen einer Verbindung mit einer verwalteten Instanz](sql-database-managed-instance-connect-app.md).
 
 Der Begriff Autorisierung bezieht sich auf die Berechtigungen, die einem Benutzer in Azure SQL-Datenbank zugeordnet sind und die festlegen, welche Aktionen der Benutzer ausführen darf. Berechtigungen werden durch das Hinzufügen von Benutzerkonten zu [Datenbankrollen](/sql/relational-databases/security/authentication-access/database-level-roles) gesteuert. Diese definieren Berechtigungen auf Datenbankebene oder gewähren dem Benutzer bestimmte [Berechtigungen auf Objektebene](/sql/relational-databases/security/permissions-database-engine). Weitere Informationen finden Sie unter [Anmeldungen und Benutzer](sql-database-manage-logins.md).
 
@@ -88,9 +88,9 @@ Zum Schutz der Kundendaten stellt SQL-Datenbank Funktionen für die Überwachung
 
 Bei der Überwachung von SQL-Datenbank werden Datenbankaktivitäten nachverfolgt, und Sie erhalten Unterstützung bei der Einhaltung von Sicherheitsstandards, indem Datenbankereignisse in einem Überwachungsprotokoll in einem Azure Storage-Konto des Kunden aufgezeichnet werden. Dank der Überwachung können Benutzer die fortlaufenden Datenbankaktivitäten überwachen und die Verlaufsaktivität analysieren und untersuchen, um potenzielle Bedrohungen oder vermutete Missbrauchsfälle und Sicherheitsverletzungen zu identifizieren. Weitere Informationen finden Sie in den ersten Schritten unter [Überwachung von SQL-Datenbank](sql-database-auditing.md).  
 
-### <a name="sql-threat-detection"></a>SQL-Bedrohungserkennung
+### <a name="threat-detection"></a>Bedrohungserkennung
 
-Die Bedrohungserkennung ergänzt die Überwachung durch Analysieren der Überwachungsprotokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten oder ungewöhnliche Zugriffsmuster wie Angriffe durch Einschleusung von SQL-Befehlen, potenzielle Dateneinfügungen und Brute-Force-Kennwortangriffe erstellt. Sie können die Warnungen der Bedrohungserkennung im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Die Bedrohungserkennung kostet 15 $/Server/Monat. Die ersten 60 Tage sind kostenlos. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).
+Die Bedrohungserkennung ergänzt die Überwachung durch Analysieren der Überwachungsprotokolle auf ungewöhnliches Verhalten und potenziell schädliche Zugriffs- oder Offenlegungsversuche bei Datenbanken. Warnungen werden für verdächtige Aktivitäten oder ungewöhnliche Zugriffsmuster wie Angriffe durch Einschleusung von SQL-Befehlen, potenzielle Dateneinfügungen und Brute-Force-Kennwortangriffe erstellt. Sie können die Warnungen der Bedrohungserkennung im [Azure Security Center](https://azure.microsoft.com/services/security-center/) anzeigen. Dort finden Sie Details zu verdächtigen Aktivitäten und Empfehlungen für weitere Untersuchungen sowie zu Aktionen, mit denen das Risiko minimiert werden kann. Die Bedrohungserkennung kostet im Monat 15 USD pro Server. Die ersten 60 Tage sind kostenlos. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung von SQL-Datenbank](sql-database-threat-detection.md).
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 
@@ -137,9 +137,9 @@ Die [statische Datenmaskierung](/sql/relational-databases/security/static-data-m
 
 ## <a name="security-management"></a>Sicherheitsverwaltung
 
-### <a name="sql-vulnerability-assessment"></a>SQL-Sicherheitsrisikobewertung
+### <a name="vulnerability-assessment"></a>Sicherheitsrisikobewertung
 
-Die [SQL-Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Damit soll die allgemeine Datenbanksicherheit proaktiv verbessert werden. Die Sicherheitsrisikobewertung ist Bestandteil des SQL Advanced Data Security-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Sicherheitsrisikobewertung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich.
+Die [Sicherheitsrisikobewertung](sql-vulnerability-assessment.md) ist ein einfach zu konfigurierender Dienst, mit dem potenzielle Schwachstellen in der Datenbank ermittelt, nachverfolgt und behoben werden können. Damit soll die allgemeine Datenbanksicherheit proaktiv verbessert werden. Die Sicherheitsrisikobewertung ist Bestandteil des Advanced Data Security-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Sicherheitsrisikobewertung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich.
 
 ### <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 
@@ -149,7 +149,7 @@ Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
 - Unterstützen der Einhaltung von Datenschutzstandards und gesetzlicher Bestimmungen
 
-Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung und -klassifizierung für SQL-Datenbank](sql-database-data-discovery-and-classification.md).
+Weitere Informationen finden Sie unter [Erste Schritte bei der Datenermittlung und -klassifizierung](sql-database-data-discovery-and-classification.md).
 
 ### <a name="compliance"></a>Compliance
 

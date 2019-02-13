@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/12/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 305aa28127e453c01de9b55ab6cb0ff3471afad9
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473808"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822135"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Problembehandlung mit Azure-Diagnose
 Dieser Artikel enthält Informationen zur Problembehandlung, die für die Verwendung der Azure-Diagnose relevant sind. Weitere Informationen zur Azure-Diagnose finden Sie unter [Überblick über Azure-Diagnose](diagnostics-extension-overview.md).
@@ -105,7 +105,7 @@ Die häufigste Ursache dafür, dass keine Ereignisdaten angezeigt werden, ist di
 
 Lösung: Korrigieren Sie die Diagnostics-Konfiguration, und installieren Sie Diagnostics erneut.
 
-Wenn das Speicherkonto richtig konfiguriert wurde, sollten Sie den Remotezugriff auf den Computer durchführen und überprüfen, ob „DiagnosticsPlugin.exe“ und „MonAgentCore.exe“ ausgeführt werden. Wenn nicht, sollten Sie die Schritte unter [Die Azure-Diagnose wird nicht gestartet](#azure-diagnostics-is-not-starting) ausführen.
+Wenn das Speicherkonto richtig konfiguriert wurde, sollten Sie den Remotezugriff auf den Computer durchführen und überprüfen, ob „DiagnosticsPlugin.exe“ und „MonAgentCore.exe“ ausgeführt werden. Wenn diese Dateien nicht ausgeführt werden, sollten Sie die Schritte unter „Die Azure-Diagnose wird nicht gestartet“ ausführen.
 
 Wenn die Prozesse ausgeführt werden, können Sie zu [Lokale Erfassung von Daten](#is-data-getting-captured-locally) navigieren und die angegebene Anleitung befolgen.
 
@@ -119,7 +119,7 @@ Die Diagnosekonfiguration enthält eine Anleitung zum Sammeln von Daten eines be
 - **Leistungsindikatoren**: Öffnen Sie den Systemmonitor, und überprüfen Sie den Leistungsindikator.
 
 - **Ablaufverfolgungsprotokolle**:  Führen Sie den Remotezugriff auf die VM durch, und fügen Sie der Konfigurationsdatei der App einen TextWriterTraceListener hinzu.  Informationen zum Einrichten des Textlisteners finden Sie unter https://msdn.microsoft.com/library/sk36c28t.aspx.  Stellen Sie sicher, dass für das `<trace>`-Element `<trace autoflush="true">` festgelegt ist.<br />
-Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter [Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen](#more-about-trace-logs-missing) weiter.
+Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen Ihnen die Informationen unter „Weitere Informationen zu fehlenden Ablaufverfolgungsprotokollen“ weiter.
 
 - **ETW-Ablaufverfolgungen**: Führen Sie den Remotezugriff auf die VM durch, und installieren Sie PerfView.  Führen Sie in PerfView Folgendes aus: **File** > **User Command** > **Listen etwprovider1** > **etwprovider2** (Datei > Benutzerbefehl > Lauschen etwprovider1 > etwprovider2) usw. Beim Befehl **Listen** (Lauschen) wird die Groß-/Kleinschreibung beachtet, und die kommagetrennte Liste mit ETW-Anbietern darf keine Leerstellen enthalten. Falls der Befehl nicht ausgeführt werden kann, können Sie im PerfView-Tool unten rechts die Schaltfläche **Log** (Protokoll) wählen, um anzuzeigen, was ausgeführt werden sollte und wie das Ergebnis lautet.  Es wird ein neues Fenster angezeigt, wenn die Eingabe korrekt ist. Nach einigen Sekunden werden die ersten Ereignisablaufverfolgungen für Windows angezeigt.
 
@@ -127,13 +127,13 @@ Wenn Sie nicht sehen, dass Ablaufverfolgungsprotokolle generiert werden, helfen 
 
 #### <a name="is-data-getting-captured-locally"></a>Lokale Erfassung von Daten
 Stellen Sie als Nächstes sicher, dass die Daten lokal erfasst werden.
-Die Daten werden lokal in `*.tsf`-Dateien im [lokalen Speicher für die Diagnosedaten gespeichert](#log-artifacts-path). Verschiedene Arten von Protokollen werden in unterschiedlichen `.tsf`-Dateien erfasst. Die Namen ähneln den Tabellennamen in Azure Storage.
+Die Daten werden lokal in `*.tsf`-Dateien im lokalen Speicher für die Diagnosedaten gespeichert. Verschiedene Arten von Protokollen werden in unterschiedlichen `.tsf`-Dateien erfasst. Die Namen ähneln den Tabellennamen in Azure Storage.
 
 `Performance Counters` werden beispielsweise in `PerformanceCountersTable.tsf` gesammelt. Ereignisprotokolle werden in `WindowsEventLogsTable.tsf` gesammelt. Nutzen Sie die Anleitung im Abschnitt [Extraktion von lokalen Protokollen](#local-log-extraction), um die lokalen Sammlungsdateien zu öffnen, und vergewissern Sie sich, dass die Erfassung auf dem Datenträger erfolgt.
 
 Wenn Sie nicht erkennen können, dass Protokolle lokal erfasst werden, und bereits überprüft haben, dass der Host Daten generiert, liegt vermutlich ein Konfigurationsproblem vor. Überprüfen Sie die Konfigurationseinstellungen sorgfältig.
 
-Überprüfen Sie auch die Konfiguration, die für die MonitoringAgent-Datei [MaConfig.xml](#log-artifacts-path) generiert wurde. Stellen Sie sicher, dass ein Abschnitt vorhanden ist, in dem die relevante Protokollquelle beschrieben wird. Vergewissern Sie sich anschließend, dass diese bei der Übersetzung zwischen der Diagnosekonfiguration und der Monitoring Agent-Konfiguration nicht verloren geht.
+Überprüfen Sie auch die Konfiguration, die für die MonitoringAgent-Datei „MaConfig.xml“ generiert wurde. Stellen Sie sicher, dass ein Abschnitt vorhanden ist, in dem die relevante Protokollquelle beschrieben wird. Vergewissern Sie sich anschließend, dass diese bei der Übersetzung zwischen der Diagnosekonfiguration und der Monitoring Agent-Konfiguration nicht verloren geht.
 
 #### <a name="is-data-getting-transferred"></a>Übertragung von Daten
 Führen Sie die folgenden Schritte aus, wenn Sie sich davon überzeugt haben, dass Daten zwar lokal erfasst werden, in Ihrem Speicherkonto aber immer noch nicht angezeigt werden:
@@ -142,10 +142,10 @@ Führen Sie die folgenden Schritte aus, wenn Sie sich davon überzeugt haben, da
 
 - Stellen Sie sicher, dass das bereitgestellte Speicherkonto korrekt ist. Vergewissern Sie sich, dass keine Netzwerkeinschränkungen vorhanden sind, die verhindern, dass die Komponenten öffentliche Speicherendpunkte erreichen. Eine Möglichkeit besteht hierbei darin, den Remotezugriff auf den Computer durchzuführen und dann selbst Daten in dasselbe Speicherkonto zu schreiben.
 
-- Abschließend können Sie sich ansehen, welche Fehler vom Monitoring Agent gemeldet werden. Der Monitoring Agent schreibt seine Protokolle in der Datei `maeventtable.tsf`, die sich im [lokalen Speicher für Diagnosedaten](#log-artifacts-path) befindet. Befolgen Sie die Anleitung im Abschnitt [Extraktion von lokalen Protokollen](#local-log-extraction), um diese Datei zu öffnen. Versuchen Sie anschließend zu ermitteln, ob `errors` vorhanden sind, bei denen es um das Lesen von lokalen Dateien bzw. das Schreiben in den Speicher geht.
+- Abschließend können Sie sich ansehen, welche Fehler vom Monitoring Agent gemeldet werden. Der Monitoring Agent schreibt seine Protokolle in der Datei `maeventtable.tsf`, die sich im lokalen Speicher für Diagnosedaten befindet. Befolgen Sie die Anleitung im Abschnitt [Extraktion von lokalen Protokollen](#local-log-extraction), um diese Datei zu öffnen. Versuchen Sie anschließend zu ermitteln, ob `errors` vorhanden sind, bei denen es um das Lesen von lokalen Dateien bzw. das Schreiben in den Speicher geht.
 
 ### <a name="capturing-and-archiving-logs"></a>Erfassen und Archivieren von Protokollen
-Wenn Sie sich ggf. an den Support wenden möchten, werden Sie als Erstes vermutlich gebeten, Protokolle auf Ihrem Computer zu erfassen. Sie können Zeit sparen, indem Sie dies vorab selbst durchführen. Führen Sie das Hilfsprogramm `CollectGuestLogs.exe` unter dem [Pfad des Hilfsprogramms für die Protokollsammlung](#log-artifacts-path) aus. Es wird eine ZIP-Datei mit allen relevanten Azure-Protokollen in demselben Ordner generiert.
+Wenn Sie sich ggf. an den Support wenden möchten, werden Sie als Erstes vermutlich gebeten, Protokolle auf Ihrem Computer zu erfassen. Sie können Zeit sparen, indem Sie dies vorab selbst durchführen. Führen Sie das Hilfsprogramm `CollectGuestLogs.exe` unter dem Pfad des Hilfsprogramms für die Protokollsammlung aus. Es wird eine ZIP-Datei mit allen relevanten Azure-Protokollen in demselben Ordner generiert.
 
 ## <a name="diagnostics-data-tables-not-found"></a>Tabellen mit Diagnosedaten nicht gefunden
 Die Tabellen im Azure-Speicher, die ETW-Ereignisse enthalten, werden anhand des folgenden Codes benannt:
@@ -213,7 +213,7 @@ Mit diesem Code werden vier Tabellen generiert:
 ### <a name="how-to-check-diagnostics-extension-configuration"></a>Überprüfen der Konfiguration der Diagnoseerweiterung
 Die einfachste Möglichkeit zum Überprüfen Ihrer Erweiterungskonfiguration ist das Navigieren zum [Azure-Ressourcen-Explorer](http://resources.azure.com) und dann zu dem virtuellen Computer oder Clouddienst, unter dem sich die betreffende Azure-Diagnoseerweiterung (IaaSDiagnostics/PaaDiagnostics) befindet.
 
-Greifen Sie alternativ dazu per Remotedesktop auf den Computer zu, und sehen Sie sich die Datei für die Azure-Diagnosekonfiguration an, die im [Abschnitt zum Protokollartefaktpfad](#log-artifacts-path) beschrieben ist.
+Greifen Sie alternativ dazu über Remotedesktop auf den Computer zu, und sehen Sie sich die Datei für die Azure-Diagnosekonfiguration an, die im Abschnitt zum Protokollartefaktpfad beschrieben ist.
 
 Suchen Sie jeweils nach **Microsoft.Azure.Diagnostics** und dann nach dem Feld **xmlCfg** oder **WadCfg**.
 

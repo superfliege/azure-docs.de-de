@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/04/2017
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 8730070e1b235324a53ad81957339f4ef17db6dc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 61d0f74f59b4d6f59b3fbc87556b260751d33baa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193690"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809628"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Führen Sie die Aktion mit einem Automation-Runbook über ein Log Analytics-Protokollsuchergebnis aus
 
-Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take action** (Aktion ausführen) auswählen, um ein Automation-Runbook auszuführen.  Das Runbook kann verwendet werden, um das Problem zu beheben oder eine andere Aktion auszuführen, z.B. Informationen zur Problembehandlung sammeln, eine E-Mail senden oder eine Dienstanforderung erstellen. 
+Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take action** (Aktion ausführen) auswählen, um ein Automation-Runbook auszuführen. Das Runbook kann verwendet werden, um das Problem zu beheben oder eine andere Aktion auszuführen, z.B. Informationen zur Problembehandlung sammeln, eine E-Mail senden oder eine Dienstanforderung erstellen. 
 
 ## <a name="components-and-features-used"></a>Verwendete Komponenten und Features
 * [Azure Automation-Konto](../../automation/automation-quickstart-create-account.md)
@@ -30,11 +30,11 @@ Sie können in einem Protokollsuchergebnis in Azure Log Analytics nun **Take act
 
 ## <a name="to-initiate-runbook-from-log-search"></a>So initiieren Sie ein Runbook über die Protokollsuche
 
-Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen.  Dieser Schritt kann über die Protokollsuchfunktion im [Azure-Portal](../../azure-monitor/log-query/log-query-overview.md) ausgeführt werden.  In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
+Zum Ausführen einer Aktion zu einem Ereignis und Initiieren eines Runbooks über die Protokollsuchergebnisse erstellen Sie zuerst eine Protokollsuche. Über die Ergebnisse können Sie bei Bedarf ein Runbook aufrufen. Dieser Schritt kann über die klassische Protokollsuchfunktion im [Azure-Portal](../../azure-monitor/log-query/log-query-overview.md) ausgeführt werden. In diesem Beispiel führen Sie eine Protokollsuche über das Azure-Portal mit einer einfachen Demonstration dieser Funktion aus.
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste**, und wählen Sie **Log Analytics** aus.  
 2. Wählen Sie Ihren Log Analytics-Arbeitsbereich aus.
-3. Wählen Sie im Arbeitsbereich **Protokollsuche** aus.  
+3. Wählen Sie im Arbeitsbereich **Protokolle (klassisch)** aus.  
 4. Führen Sie auf der Seite „Protokollsuche“ eine Protokollsuche durch.  
 5. Klicken Sie in den Protokollsuchergebnissen auf die Auslassungszeichen auf der linken Seite eines der Felder, und wählen Sie **Take action on** (Aktion ausführen für) aus.<br><br> ![Ausführen von Aktionen aus Suchergebnissen](./media/take-action/log-search-takeaction-menuoption.png) 
 6. Wählen Sie **Runbook ausführen** und anschließend ein Runbook für die Ausführung aus.  Sie können jedes Runbook im Automation-Konto auswählen, das mit dem Log Analytics-Arbeitsbereich verknüpft ist.  Beachten Sie Folgendes:

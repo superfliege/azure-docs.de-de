@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
-ms.openlocfilehash: 6d0c8f62d109d07a9f08e5190a5a2caa0d66a0c1
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 2b90457ed939999b5163078750650c92a3516cca
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579327"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816576"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor  
 
@@ -93,7 +93,7 @@ Gehen Sie dazu wie folgt vor:
 
     Die neue Warnungsregel für das Aktivitätsprotokoll wird erstellt, und oben rechts im Fenster wird eine Bestätigungsmeldung angezeigt.
 
-    Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. [Erfahren Sie mehr](#view-and-manage-activity-log-alert-rules-in-azure-portal) zur Verwaltung von Aktivitätsprotokollregeln.
+    Sie können eine Regel aktivieren, deaktivieren, bearbeiten oder löschen. Erfahren Sie mehr über die Verwaltung von Aktivitätsprotokollregeln.
 
 
 Alternativ ist eine einfache Analogie zum Verständnis der Bedingungen, unter denen Warnungsregeln für das Aktivitätsprotokoll erstellt werden können, die Untersuchung oder Filterung von Ereignissen über das [Aktivitätsprotokoll im Azure-Portal](../../azure-monitor/platform/activity-logs-overview.md#query-the-activity-log-in-the-azure-portal). In Azure Monitor – Aktivitätsprotokoll können Sie erforderliche Ereignisse filtern oder finden und dann eine Warnung mit der Schaltfläche **Aktivitätsprotokollwarnung hinzufügen** erstellen. Befolgen Sie dann ab Schritt 4 die erforderlichen Schritte wie im obigen Tutorial beschrieben.
@@ -203,14 +203,14 @@ Die Json-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z. B.
 [Azure Monitor – API für Aktivitätsprotokollwarnungen](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) ist eine REST-API und vollständig kompatibel mit der Azure Resource Manager-REST-API. Daher kann es über Powershell mit dem Resource Manager-Cmdlet und der Azure CLI verwendet werden.
 
 ## <a name="powershell"></a>PowerShell
-Nachfolgend wird die Verwendung über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im [Abschnitt „Ressourcenvorlage“](#manage-alert-rules-for-activity-log-using-azure-resource-template) dargestellte Ressourcenvorlage (sampleActivityLogAlert.json) veranschaulicht:
+Nachfolgend wird die Verwendung über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im Abschnitt „Ressourcenvorlage“ dargestellte Ressourcenvorlage (sampleActivityLogAlert.json) veranschaulicht:
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 Darin enthält die „sampleActivityLogAlert.parameters.json“ die Werte für die Parameter, die für die Erstellung der Warnungsregeln erforderlich sind.
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
-Nachfolgend wird die Verwendung über den Azure Resource Manager-Befehl in der Azure CLI für die weiter oben im [Abschnitt „Ressourcenvorlage“](#manage-alert-rules-for-activity-log-using-azure-resource-template) dargestellte Ressourcenvorlage (sampleActivityLogAlert.json) veranschaulicht:
+Nachfolgend wird die Verwendung über den Azure Resource Manager-Befehl in der Azure CLI für die weiter oben im Abschnitt „Ressourcenvorlage“ dargestellte Ressourcenvorlage (sampleActivityLogAlert.json) veranschaulicht:
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json

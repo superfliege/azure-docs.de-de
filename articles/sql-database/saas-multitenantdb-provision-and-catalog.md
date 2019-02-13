@@ -11,13 +11,13 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: billgib,andrela,stein
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: e37bc5f46a1a56357e3dff9d1f67de7dcc2537b0
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.date: 09/24/2018
+ms.openlocfilehash: fd420e29387aedd3f04fdf7437a3ef27c5589fc8
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055304"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562894"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>Bereitstellen und Katalogisieren neuer Mandanten in einer SaaS-Anwendung unter Verwendung einer mehrinstanzenfähigen Azure SQL-Datenbank mit Sharding
 
@@ -28,7 +28,7 @@ Dieser Artikel setzt sich aus zwei Hauptteilen zusammen:
 - [Erläuterung](#goto_2_conceptual) des Bereitstellungs- und Katalogisierungskonzept für neue Mandanten
 
 - [Tutorial](#goto_1_tutorial) zur Behandlung des PowerShell-Skriptcodes für die Durchführung der Bereitstellung und Katalogisierung
-    - Im Tutorial wird die SaaS-Anwendung Wingtip Tickets verwendet, die an das Muster für mehrinstanzenfähige Datenbanken mit Sharding angepasst ist.
+  - Im Tutorial wird die SaaS-Anwendung Wingtip Tickets verwendet, die an das Muster für mehrinstanzenfähige Datenbanken mit Sharding angepasst ist.
 
 <a name="goto_2_conceptual"/>
 
@@ -143,12 +143,12 @@ In diesem Abschnitt wird eine Liste wichtiger Aktionen für die Bereitstellung a
 
 Im Folgenden finden Sie die wichtigsten Elemente des Bereitstellungsworkflows, den Sie durchlaufen:
 
-- **Berechnen des neuen Mandantenschlüssels**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
-- **Prüfen, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
-- **Initialisieren von Mandanten in der Standardmandantendatenbank**: Die Mandantendatenbank wird mit den neuen Mandanteninformationen aktualisiert.  
-- **Registrieren des Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt. 
-- **Hinzufügen des Mandantennamens zu einer Katalogerweiterungstabelle**: Der Name des Veranstaltungsorts wird der Mandantentabelle im Katalog hinzugefügt.  Dieser Zusatz veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
-- **Öffnen der Veranstaltungsseite für den neuen Mandanten**: Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet.
+- **Berechnen Sie den neuen Mandantenschlüssel**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
+- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.  
+- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank „tenants1“ wird dem Katalog hinzugefügt. 
+- **Fügen Sie den Namen des Mandanten einer Erweiterungstabelle des Katalogs hinzu**: Der Name des Veranstaltungsorts wird der Tabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.  Dieser Zusatz veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
+- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Bushwillow Blues* gehörige Veranstaltungsseite wird im Browser geöffnet.
 
    ![events](media/saas-multitenantdb-provision-and-catalog/bushwillow.png)
 
@@ -161,7 +161,7 @@ Um nachzuvollziehen, wie die Wingtip-App die Bereitstellung neuer Mandanten in e
    - **$VenueType** = **blues**, einer der vordefinierten Veranstaltungsorttypen: blues, classicalmusic, dance, jazz, judo, motorracing, multipurpose, opera, rockmusic, soccer (in Kleinbuchstaben ohne Leerzeichen)
    - **$DemoScenario** = **1**, Bereitstellen eines Mandanten in einer mit anderen Mandanten gemeinsam genutzten Datenbank
 
-2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 (der Zeile mit *New-Tenant `*) setzen und **F9** drücken.
+2. Fügen Sie einen Haltepunkt hinzu, indem Sie den Cursor an eine beliebige Stelle in Zeile 38 bewegen. Es handelt sich um die Zeile, die folgendermaßen lautet: *New-Tenant `*. Drücken Sie dann **F9**.
 
    ![Haltepunkt](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
@@ -181,14 +181,14 @@ Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipp
 
 Im Folgenden finden Sie die wichtigsten Elemente des Workflows, den Sie beim Nachverfolgen des Skripts durchlaufen:
 
-- **Berechnen des neuen Mandantenschlüssels**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
-- **Prüfen, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
-- **Erstellen einer neuen Mandantendatenbank**: Die Datenbank wird durch Kopieren der Datenbank *basetenantdb* unter Verwendung einer Resource Manager-Vorlage erstellt.  Der Name der neuen Datenbank basiert auf dem Mandantennamen.
-- **Hinzufügen einer Datenbank zum Katalog**: Die neue Mandantendatenbank wird als Shard im Katalog registriert.
-- **Initialisieren von Mandanten in der Standardmandantendatenbank**: Die Mandantendatenbank wird mit den neuen Mandanteninformationen aktualisiert.  
-- **Registrieren des Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der bestehenden Datenbank *sequoiasoccer* wird dem Katalog hinzugefügt.
-- **Hinzufügen des Mandantennamens zum Katalog**: Der Name des Veranstaltungsorts wird der Tabelle der Mandantenerweiterung im Katalog hinzugefügt.
-- **Öffnen der Veranstaltungsseite für den neuen Mandanten**: Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet.
+- **Berechnen Sie den neuen Mandantenschlüssel**: Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
+- **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist**: Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel nicht bereits registriert wurde.
+- **Erstellen Sie eine neue Mandantendatenbank**: Die Datenbank wird durch Kopieren der Datenbank *basetenantdb* unter Verwendung einer Ressourcen-Manager-Vorlage erstellt.  Der Name der neuen Datenbank basiert auf dem Mandantennamen.
+- **Fügen Sie die Datenbank dem Katalog hinzu**: Die neue Mandantendatenbank wird als Shard im Katalog registriert.
+- **Initialisieren Sie den Mandanten in der Standarddatenbank des Mandanten**: Die Mandantendatenbank wird mit den hinzugefügten neuen Informationen des Mandanten aktualisiert.  
+- **Registrieren Sie den Mandanten im Katalog**: Die Zuordnung zwischen dem neuen Mandantenschlüssel und der *sequoiasoccer*-Datenbank wird dem Katalog hinzugefügt.
+- **Der Mandantenname wird dem Katalog hinzugefügt**: Der Name des Veranstaltungsorts wird der Erweiterungstabelle „Tenants“ (Mandanten) im Katalog hinzugefügt.
+- **Öffnen Sie die Seite „Events“ (Veranstaltungen) für den neuen Mandanten**: Die zu *Sequoia Soccer* gehörige Veranstaltungsseite wird im Browser geöffnet.
 
    ![events](media/saas-multitenantdb-provision-and-catalog/sequoiasoccer.png)
 

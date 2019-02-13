@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ce5c79d3565a0b9396b15f54d9ab854e8b8d0d8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462340"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55747491"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
 Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Momentaufnahmen, um Ihr Data Warehouse mithilfe eines vorherigen Wiederherstellungspunkts in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
@@ -62,7 +62,7 @@ Wenn Sie ein Data Warehouse trennen, erstellt SQL Data Warehouse eine letzte Mom
 > Wenn Sie eine logische SQL Server-Instanz löschen, werden auch alle Datenbanken der Instanz gelöscht und können nicht wiederhergestellt werden. Es ist nicht möglich, einen gelöschten Server wiederherzustellen.
 >
 
-## <a name="geo-backups"></a>Geosicherungen
+## <a name="geo-backups-and-disaster-recovery"></a>Geosicherungen und Notfallwiederherstellung
 SQL Data Warehouse führt ein Mal pro Tag für ein [geografisch gepaartes Datencenter](../best-practices-availability-paired-regions.md) eine Geosicherung aus. Die RPO für eine Geowiederherstellung beträgt 24 Stunden. Sie können die Geosicherung auf einem Server in einer beliebigen anderen Region wiederherstellen, in der SQL Data Warehouse unterstützt wird. Mit einer Geosicherung wird sichergestellt, dass Sie ein Data Warehouse wiederherstellen können, wenn Sie nicht auf die Wiederherstellungspunkte in Ihrer primären Region zugreifen können.
 
 Geosicherungen sind standardmäßig aktiviert. Wenn Ihr Data Warehouse Gen1 ist, können Sie diese Option [abwählen](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy), wenn Sie dies wünschen. Sie können Geosicherungen für Gen2 nicht abwählen, da Datenschutz eine integrierte Garantie ist.

@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: e3b118306b5a139ba31029bc6191368690b36666
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265208"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766011"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
-Dieser Artikel beschreibt das Abfragen und Anzeigen aller Daten in Ihren Application Insights-Anwendungsprotokollen an einem Ort, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden.  
+Dieser Artikel beschreibt das Abfragen und Anzeigen aller Daten in Ihren Application Insights-Anwendungsprotokollen an einem Ort, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.  
 
 ## <a name="recommended-approach-to-query-multiple-application-insights-resources"></a>Empfohlener Ansatz zum Abfragen mehrerer Application Insights-Ressourcen 
 Das Auflisten mehrerer Application Insights-Ressourcen in einer Abfrage kann aufwendig und schwierig zu verwalten sein. Sie können aber stattdessen eine Funktion zum Trennen der Abfragelogik vom Gültigkeitsbereich einer Anwendung nutzen.  
@@ -51,7 +51,20 @@ app('Contoso-app5').requests
 >
 >Die parse-Operator in diesem Beispiel ist optional. Er extrahiert den Namen der Anwendung aus der SourceApp-Eigenschaft. 
 
-Sie können nun die applicationsScoping-Funktion in der ressourcenübergreifenden Abfrage verwenden. Der Funktionsalias gibt die Vereinigungsmenge der Anforderungen aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert. ![Beispiel für abfrageübergreifende Ergebnisse](media/unify-app-resource-data/app-insights-query-results.png)
+Sie können nun die applicationsScoping-Funktion in der ressourcenübergreifenden Abfrage verwenden.  
+
+```
+applicationsScoping 
+| where timestamp > ago(12h)
+| where success == 'False'
+| parse SourceApp with * '(' applicationName ')' * 
+| summarize count() by applicationName, bin(timestamp, 1h) 
+| render timechart
+```
+
+Der Funktionsalias gibt die Vereinigungsmenge der Anforderungen aller definierten Anwendungen zurück. Die Abfrage filtert dann fehlgeschlagene Anforderungen heraus und visualisiert die Trends nach Anwendung sortiert.
+
+![Beispiel für abfrageübergreifende Ergebnisse](media/unify-app-resource-data/app-insights-query-results.png)
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Abfragen über Application Insights-Ressourcen und Arbeitsbereichsdaten 
 Wenn Sie den Connector beenden und Abfragen über einen Zeitraum, der durch die Application Insights-Datenaufbewahrung (90 Tage) gekürzt wurde, ausführen müssen, führen Sie für einen mittleren Zeitraum [ressourcenübergreifende Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) in dem Arbeitsbereich und für die Application Insights Ressourcen aus. Dies gilt, bis die Anwendungsdaten entsprechend der neuen Application Insights-Datenaufbewahrung gesammelt wurden. Die Abfrage erfordert einige Änderungen, da die Schemas in Application Insights und im Arbeitsbereich unterschiedlich sind. Sehen Sie sich dazu die Tabelle weiter unten in diesem Abschnitt an, in der die Schemaunterschiede hervorgehoben sind. 

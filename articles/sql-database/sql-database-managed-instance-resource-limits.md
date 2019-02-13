@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 01/22/2019
-ms.openlocfilehash: 6bb90480667a899d9d7bc7a5d8269b0cdf1da223
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/05/2019
+ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219718"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816593"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -36,12 +36,12 @@ Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (
 
 |   | **Gen 4** | **Gen 5** |
 | --- | --- | --- |
-| Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle eNVM-SSD, virtueller Kern =1 LP (Hyperthread) |
+| Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
 | Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
 | Arbeitsspeicher | 7 GB pro V-Kern | 5,1 GB pro virtuellem Kern |
 | In-Memory-OLTP-Speicher | 3GB pro virtuellem Kern | 2,6GB pro virtuellem Kern |
 | Maximaler Speicher (universell) |  8 TB | 1 TB |
-| Max. Speicherkapazität (unternehmenskritisch) | 8 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
+| Max. Speicherkapazität (unternehmenskritisch) | 1 TB | 1 TB, 2 TB oder 4 TB, je nach Anzahl der Kerne |
 
 ### <a name="service-tier-characteristics"></a>Merkmale des Diensttarifs
 
@@ -50,17 +50,19 @@ Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und �
 | **Feature** | **Allgemeiner Zweck** | **Unternehmenskritisch** |
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
-| Arbeitsspeicher | Gen4: 56 – 156 GB<br/>Gen5: 44 – 440 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 – 156 GB <br/> Gen5: 41 GB – 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
+| Arbeitsspeicher | Gen4: 56 GB bis 168 GB<br/>Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 GB bis 168 GB <br/> Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
 | Max. Speichergröße | 8 TB | Gen 4: 1 TB <br/> Gen 5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |
-| Daten-/Protokoll-IOPS (ungefähr) | 500 – 7500 pro Datei<br/>\*[abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines) Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
-| Datendurchsatz (ungefähr) | 100 – 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 – 48 MB/Sek. pro virtuellem Kern |
+| Daten-/Protokoll-IOPS (ungefähr) | 500 bis 7.500 pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines)| 11 K bis 110 K (1,375 pro virtuellem Kern) |
+|Protokolldurchsatz | 22 MB/Sek. pro Instanz | 3 MB/Sek. pro virtuellem Kern<br/>Max. 48 MB/Sek. |
+| Datendurchsatz (ungefähr) | 100 bis 250 MB/Sek. pro Datei<br/>\*[Abhängig von der Dateigröße](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 bis 48 MB/Sek. pro virtuellem Kern |
 | E/A-Wartezeit (ungefähr) | 5 – 10 ms | 1 – 2 ms |
-| Max. TempDB-Größe | 192 – 1920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
+| Max. TempDB-Größe | 192 bis 1.920 GB (24 GB pro virtuellem Kern) | Keine Einschränkungen – beschränkt durch die maximale Instanzspeichergröße |
 
 **Hinweise**:
+
 - Sowohl die Daten- als auch die Protokolldateigröße in den Benutzer- und Systemdatenbanken sind in der Instanzspeichergröße enthalten, die mit dem Grenzwert für die maximale Speichergröße verglichen wird. Ermitteln Sie mithilfe der Systemansicht <a href="https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql">sys.master_files</a> den von Datenbanken verwendeten Gesamtspeicherplatz. Fehlerprotokolle werden nicht beibehalten und sind nicht in der Größe enthalten. Sicherungen sind nicht in der Speichergröße enthalten.
 - Durchsatz und IOPS hängen auch von der Seitengröße ab, die nicht explizit durch die verwaltete Instanz eingeschränkt wird.
 

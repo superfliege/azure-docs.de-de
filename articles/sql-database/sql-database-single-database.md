@@ -1,0 +1,62 @@
+---
+title: Was ist eine Azure SQL-Einzeldatenbank? | Microsoft-Dokumentation
+description: Erfahren Sie mehr über die Einzeldatenbank in Azure SQL-Datenbank
+services: sql-database
+ms.service: sql-database
+ms.subservice: single-database
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: CarlRabeler
+ms.author: carlrab
+ms.reviewer: ''
+manager: craigg
+ms.date: 02/04/2019
+ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55754981"
+---
+# <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
+
+Die Bereitstellungsoption für Einzeldatenbanken erstellt eine eigenständige Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
+
+> [!IMPORTANT]
+> Einzeldatenbank ist eine der drei Bereitstellungsoptionen für Azure SQL-Datenbank. Die anderen zwei sind [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanz](sql-database-managed-instance.md).
+> [!NOTE]
+> Ein Glossar von Begriffen in Azure SQL-Datenbank finden Sie unter [Azure SQL-Datenbank: Glossar](sql-database-glossary-terms.md).
+
+## <a name="dynamic-scalabilty"></a>Dynamische Skalierbarkeit
+
+Sie können für eine geringe monatliche Gebühr Ihre erste App in einer kleinen Einzeldatenbank in einem Diensttarif mit geringem Preis und geringer Leistung erstellen und [diesen dann jederzeit manuell oder programmgesteuert](sql-database-single-database-scale.md) in einen Tarif mit höherem Preis und besserer Leistung ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
+
+## <a name="single-databases-and-elastic-pools"></a>Einzeldatenbanken und Pools für elastische Datenbanken
+
+Eine Einzeldatenbank kann in einen oder aus einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) für die gemeinsame Nutzung von Ressourcen verschoben werden. Für viele Unternehmen und Anwendungen genügt es, wenn Einzeldatenbanken erstellt werden können und sich die Leistung nach oben oder unten anpassen lässt – insbesondere, wenn die Nutzungsmuster relativ gut vorhersagbar sind. Bei unvorhersagbaren Nutzungsmustern kann es jedoch schwer sein, die Kosten und Ihr Geschäftsmodell zu verwalten. Pools für elastische Datenbanken sind darauf ausgelegt, dieses Problem zu beheben. Das Konzept ist denkbar einfach. Sie ordnen Leistungsressourcen nicht einer Einzeldatenbank, sondern einem Pool zu, sodass Sie für die gesamten Leistungsressourcen des Pools und nicht für die Leistung einer Einzeldatenbank bezahlen.
+
+## <a name="monitoring-and-alerting"></a>Überwachung und Warnung
+
+Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md).
+
+## <a name="availability-capabilities"></a>Verfügbarkeitsfunktionen
+
+Einzeldatenbanken, Pools für elastische Datenbanken und verwaltete Instanzen bieten zahlreiche Verfügbarkeitsmerkmale. Weitere Informationen finden Sie unter [Verfügbarkeitsmerkmale](sql-database-technical-overview.md#availability-capabilities).
+
+## <a name="transact-sql-differences"></a>Transact-SQL-Unterschiede
+
+Die meisten Transact-SQL-Funktionen, die von Anwendungen verwendet werden, werden in Microsoft SQL Server und in der Azure SQL-Datenbank unterstützt. Die zentralen SQL-Komponenten wie z.B. Datentypen, Operatoren, Zeichenfolgen-, Arithmetik-, logische und Cursorfunktionen funktionieren in SQL Server und in der SQL-Datenbank gleich. Es gibt jedoch einige T-SQL-Unterschiede zwischen Elementen der Datendefinitionssprache (Data Definition Language, DDL) und der Datenbearbeitungssprache (Data Manipulation Language, DML), die dazu führen, dass T-SQL-Anweisungen und -Abfragen nur teilweise unterstützt werden (mehr dazu weiter unten in diesem Artikel).
+Darüber hinaus werden einige Features und Syntax überhaupt nicht unterstützt, da die Azure SQL-Datenbank entwickelt wurde, um Features von Abhängigkeiten auf Masterdatenbank und Betriebssystem zu isolieren. An sich sind die meisten Aktivitäten auf Serverebene für die SQL-Datenbank nicht geeignet. T-SQL-Anweisungen und -Optionen sind nicht verfügbar, wenn sie Optionen auf Serverebene, Betriebssystemkomponenten oder bestimmte Dateisystemkonfigurationen konfigurieren. Wenn solche Funktionen erforderlich sind, dann ist häufig eine andere geeignete Alternative von der SQL-Datenbank oder aus einem anderen Azure-Feature oder -Dienst verfügbar.
+
+Weitere Informationen finden Sie unter [Auflösen von Transact-SQL-Unterschieden während der Migration zur SQL-Datenbank](sql-database-transact-sql-information.md).
+
+## <a name="security"></a>Sicherheit
+
+SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitätsfeatures](sql-database-security-overview.md), mit der Sie Ihre Anwendung an verschiedene Sicherheits- und Konformitätsanforderungen anpassen können.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- Um schnell mit einer Einzeldatenbank zu beginnen, verwenden Sie die [Schnellstartanleitung für Einzeldatenbanken](sql-database-single-database-quickstart-guide.md).
+- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+- Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

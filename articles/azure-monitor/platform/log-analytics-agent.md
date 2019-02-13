@@ -11,18 +11,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/05/2019
 ms.author: magoedte
-ms.openlocfilehash: f68e2d9c303b6df0d4a2a355dd9d41ac1616be9f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5af403b2d75a552719088daa17259f0771b77a94
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185969"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765676"
 ---
 # <a name="collect-log-data-with-the-azure-log-analytics-agent"></a>Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent
 
-Der vormals als Microsoft Monitoring Agent (MMA) oder OMS-Linux-Agent bezeichnete Azure Log Analytics-Agent (OMS-Agent) wurde entwickelt, um eine umfassende übergreifende Verwaltung von lokalen Computern, von durch [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwachten Computern sowie von virtuellen Computern in einer beliebigen Cloud zu ermöglichen. Die Windows- und Linux-Agents werden an einen Log Analytics-Arbeitsbereich angefügt und sammeln Daten aus unterschiedlichen Quellen sowie individuelle Protokolle oder Metriken gemäß Definition in einer Überwachungslösung. 
+Der vormals als Microsoft Monitoring Agent (MMA) oder OMS-Linux-Agent bezeichnete Azure Log Analytics-Agent wurde entwickelt, um eine umfassende übergreifende Verwaltung von lokalen Computern, von durch [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/) überwachten Computern sowie von virtuellen Computern in einer beliebigen Cloud zu ermöglichen. Die Windows- und Linux-Agents werden an einen Log Analytics-Arbeitsbereich angefügt und sammeln Daten aus unterschiedlichen Quellen sowie individuelle Protokolle oder Metriken gemäß Definition in einer Überwachungslösung. 
 
 Dieser Artikel enthält eine ausführliche Übersicht über den Agent sowie Informationen zu System- und Netzwerkanforderungen und zu den verschiedenen Bereitstellungsmethoden.   
 
@@ -41,7 +41,7 @@ Der Agent für Linux und Windows dient nicht zur Verbindungsherstellung mit Log 
 ## <a name="supported-windows-operating-systems"></a>Unterstützte Windows-Betriebssysteme
 Die folgenden Versionen des Windows-Betriebssystems werden für den Windows-Agent offiziell unterstützt:
 
-* Windows Server 2008 Service Pack 1 (SP1) oder höher
+* Windows Server 2008 R2 oder höher
 * Windows 7 SP1 und höher
 
 ## <a name="supported-linux-operating-systems"></a>Unterstützte Linux-Betriebssysteme
@@ -78,10 +78,10 @@ Die Aufstellung unten enthält die Proxy- und Firewall-Konfigurationsinformation
 
 |Agent-Ressource|Ports |Richtung |Umgehung der HTTPS-Überprüfung|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|JA |  
-|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|JA |  
-|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|JA |  
-|*.azure-automation.net |Port 443 |Eingehend und ausgehend|JA |  
+|*.ods.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
+|*.oms.opinsights.azure.com |Port 443 |Eingehend und ausgehend|Ja |  
+|*.blob.core.windows.net |Port 443 |Eingehend und ausgehend|Ja |  
+|*.azure-automation.net |Port 443 |Eingehend und ausgehend|Ja |  
 
 
 Wenn Sie planen, den Azure Automation Hybrid Runbook Worker zu verwenden, um eine Verbindung zum Automatisierungsdienst herzustellen und sich bei diesem zu registrieren, um Runbooks in Ihrer Umgebung zu verwenden, muss dieser Zugriff auf die Portnummer und die unter [Konfigurieren Ihres Netzwerks für den Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md#network-planning) beschriebenen URLs besitzen. 

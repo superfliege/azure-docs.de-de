@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 0e1a0919975253e24318bb8029249958cbc50d62
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 36b9e6c97a10f7608a4faaef005ca4eeb1fc09c6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473162"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811527"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Konfigurationsschema für die Azure-Diagnose 1.0
 > [!NOTE]
@@ -101,7 +101,7 @@ Das Element der obersten Ebene der Diagnosekonfigurationsdatei
 
 Attribute:
 
-|Attribut  |Typ   |Erforderlich| Standard | BESCHREIBUNG|  
+|Attribut  |Type   |Erforderlich| Standard | BESCHREIBUNG|  
 |-----------|-------|--------|---------|------------|  
 |**configurationChangePollInterval**|duration|Optional | PT1M| Gibt das Intervall an, in dem der Diagnosemonitor Diagnosekonfigurationsänderungen abruft.|  
 |**overallQuotaInMB**|unsignedInt|Optional| 4.000 MB. Wenn Sie einen Wert angeben, darf er diese Menge nicht übersteigen. |Die Gesamtmenge des Dateisystemspeichers, die für alle Protokollierungspuffer zugewiesen wurde|  
@@ -109,11 +109,11 @@ Attribute:
 ## <a name="diagnosticinfrastructurelogs-element"></a>DiagnosticInfrastructureLogs-Element  
 Definiert die Pufferkonfiguration für die Protokolle, die von der zugrunde liegenden Diagnoseinfrastruktur generiert werden.
 
-Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).  
+Übergeordnetes Element: DiagnosticMonitorConfiguration-Element.  
 
 Attribute:
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -122,11 +122,11 @@ Attribute:
 ## <a name="logs-element"></a>Logs-Element  
  Definiert die Pufferkonfiguration für grundlegende Azure-Protokolle.
 
- Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).  
+ Übergeordnetes Element: DiagnosticMonitorConfiguration-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -135,12 +135,12 @@ Attribute:
 ## <a name="directories-element"></a>Directories-Element  
 Definiert die Pufferkonfiguration für dateibasierte Protokolle, die Sie definieren können.
 
-Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).  
+Übergeordnetes Element: DiagnosticMonitorConfiguration-Element.  
 
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -148,11 +148,11 @@ Attribute:
 ## <a name="crashdumps-element"></a>CrashDumps-Element  
  Definiert das Absturzabbildverzeichnis.
 
- Übergeordnetes Element: [Directories-Element](#Directories).  
+ Übergeordnetes Element: Directories-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -160,11 +160,11 @@ Attribute:
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs-Element  
  Definiert das Protokollverzeichnis für fehlerhafte Anfragen.
 
- Übergeordnetes Element: [Directories-Element](#Directories)  
+ Übergeordnetes Element: Directories-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -172,11 +172,11 @@ Attribute:
 ##  <a name="iislogs-element"></a>IISLogs-Element  
  Definiert das IIS-Protokollverzeichnis.
 
- Übergeordnetes Element: [Directories-Element](#Directories)  
+ Übergeordnetes Element: Directories-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -184,16 +184,16 @@ Attribute:
 ## <a name="datasources-element"></a>DataSources-Element  
  Definiert zusätzliche Protokollverzeichnisse.
 
- Übergeordnetes Element: [Directories-Element](#Directories).
+ Übergeordnetes Element: Directories-Element.
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration-Element  
  Definiert das Verzeichnis der zu überwachenden Protokolldateien.
 
- Übergeordnetes Element: [DataSources-Element](#DataSources).
+ Übergeordnetes Element: DataSources-Element.
 
 Attribute:
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**container**|Zeichenfolge|Der Name des Containers, an den der Inhalt des Verzeichnisses übertragen werden soll.|  
 |**directoryQuotaInMB**|unsignedInt|Optional. Gibt die maximale Größe des Verzeichnisses in Megabyte an.<br /><br /> Der Standardwert ist 0.|  
@@ -201,11 +201,11 @@ Attribute:
 ## <a name="absolute-element"></a>Absolute-Element  
  Definiert einen absoluten Pfad des Verzeichnisses zur Überwachung mit optionaler Umgebungserweiterung.
 
- Übergeordnetes Element: [DirectoryConfiguration-Element](#DirectoryConfiguration)  
+ Übergeordnetes Element: DirectoryConfiguration-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**path**|Zeichenfolge|Erforderlich. Der absolute Pfad zum Verzeichnis, das überwacht werden soll|  
 |**expandEnvironment**|boolean|Erforderlich. Umgebungsvariablen im Pfad werden erweitert, wenn für sie **true** festgelegt ist.|  
@@ -213,11 +213,11 @@ Attribute:
 ## <a name="localresource-element"></a>LocalResource-Element  
  Definiert einen Pfad in Relation zu einer lokalen Ressource, die in der Dienstdefinition definiert ist.
 
- Übergeordnetes Element: [DirectoryConfiguration-Element](#DirectoryConfiguration)  
+ Übergeordnetes Element: DirectoryConfiguration-Element.  
 
 Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Erforderlich. Der Name der lokalen Ressource, die das zu überwachende Verzeichnis enthält|  
 |**relativePath**|Zeichenfolge|Erforderlich. Der Pfad in Relation zur lokalen Ressource, die überwacht werden soll|  
@@ -225,12 +225,12 @@ Attribute:
 ## <a name="performancecounters-element"></a>PerformanceCounters-Element  
  Definiert den Pfad zum zu erfassenden Leistungsindikator.
 
- Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).
+ Übergeordnetes Element: DiagnosticMonitorConfiguration-Element.
 
 
  Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferPeriod**|duration|Optional. Gibt das Intervall zwischen geplanten Datenübertragungen an (minutengenau gerundet).<br /><br /> Die Standardeinstellung lautet „PT0S“.|  
@@ -238,11 +238,11 @@ Attribute:
 ## <a name="performancecounterconfiguration-element"></a>PerformanceCounterConfiguration-Element  
  Definiert den zu erfassenden Leistungsindikator.
 
- Übergeordnetes Element: [PerformanceCounters-Element](#PerformanceCounters)  
+ Übergeordnetes Element: PerformanceCounters-Element.  
 
  Attribute:  
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**counterSpecifier**|Zeichenfolge|Erforderlich. Der Pfad zum zu erfassenden Leistungsindikator|  
 |**sampleRate**|duration|Erforderlich. Die Rate, mit der der Leistungsindikator erfasst werden soll|  
@@ -250,11 +250,11 @@ Attribute:
 ## <a name="windowseventlog-element"></a>WindowsEventLog-Element  
  Definiert die zu überwachenden Ereignisprotokolle.
 
- Übergeordnetes Element: [DiagnosticMonitorConfiguration-Element](#DiagnosticMonitorConfiguration).
+ Übergeordnetes Element: DiagnosticMonitorConfiguration-Element.
 
   Attribute:
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|Optional. Gibt die Höchstmenge des Dateisystemspeichers an, der für die angegebenen Daten verfügbar ist.<br /><br /> Der Standardwert ist 0.|  
 |**scheduledTransferLogLevelFilter**|Zeichenfolge|Optional. Gibt den minimalen Schweregrad für Protokolleinträge an, die übertragen werden. Der Standardwert lautet **Undefined**. Weitere mögliche Werte sind **Verbose**, **Information**, **Warning**, **Error** und **Critical**.|  
@@ -263,11 +263,11 @@ Attribute:
 ## <a name="datasource-element"></a>DataSource-Element  
  Definiert das zu überwachende Ereignisprotokoll.
 
- Übergeordnetes Element: [WindowsEventLog-Element](#windowsEventLog)  
+ Übergeordnetes Element: WindowsEventLog-Element.  
 
  Attribute:
 
-|Attribut|Typ|BESCHREIBUNG|  
+|Attribut|Type|BESCHREIBUNG|  
 |---------------|----------|-----------------|  
 |**name**|Zeichenfolge|Erforderlich. Ein XPath-Ausdruck, der das zu erfassende Protokoll angibt|  
 

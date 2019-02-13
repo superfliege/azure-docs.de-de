@@ -11,15 +11,15 @@ author: oslake
 ms.author: moslake
 ms.reviewer: genemi, vanto
 manager: craigg
-ms.date: 10/05/2018
-ms.openlocfilehash: b841f985c758cb1e354d3c3537c532a253e81d92
-ms.sourcegitcommit: 9e179a577533ab3b2c0c7a4899ae13a7a0d5252b
+ms.date: 10/23/2018
+ms.openlocfilehash: ae29fcfe39b5844ab948eb55ca314ae51dcae174
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2018
-ms.locfileid: "49945925"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55566176"
 ---
-# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell: Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
+# <a name="powershell--create-a-virtual-service-endpoint-and-vnet-rule-for-sql"></a>PowerShell:  Erstellen eines virtuellen Dienstendpunkts und einer VNet-Regel für SQL
 
 Sowohl [Azure SQL-Datenbank](sql-database-technical-overview.md) als auch [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) unterstützen virtuelle Dienstendpunkte.
 
@@ -31,7 +31,7 @@ Dieser Artikel stellt ein PowerShell-Skript bereit, das folgende Vorgänge ausf�
 1. Erstellt einen *virtuellen Dienstendpunkt* von Microsoft Azure in Ihrem Subnetz.
 2. Fügt den Endpunkt zur Firewall Ihres Azure SQL-Datenbankservers hinzu, um eine *Regel für ein virtuelles Netzwerk* zu erstellen.
 
-Die Gründe für das Erstellen einer Regel werden in [Virtual Service endpoints for Azure SQL Database (Virtuelle Dienstendpunkte für Azure SQL-Datenbank)][sql-db-vnet-service-endpoint-rule-overview-735r] erläutert.
+Gründe für das Erstellen einer Regel werden hier erläutert: [Virtuelle Dienstendpunkte für Azure SQL-Datenbank][sql-db-vnet-service-endpoint-rule-overview-735r].
 
 > [!TIP]
 > Wenn Sie nur den *Typnamen* des virtuellen Dienstendpunkts für SQL-Datenbank bewerten oder zu Ihrem Subnetz hinzufügen müssen, fahren Sie mit dem [direkteren PowerShell-Skript](#a-verify-subnet-is-endpoint-ps-100) fort.
@@ -45,8 +45,8 @@ Die folgende Liste zeigt die Abfolge von anderen *wichtigen* Cmdlets, die Sie au
 1. [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig): Erstellt ein Subnetzobjekt.
 2. [New-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetwork): Erstellt Ihr virtuelles Netzwerk und weist diesem das Subnetz zu.
 3. [Set-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetworkSubnetConfig): Weist Ihrem Subnetz einen virtuellen Dienstendpunkt zu.
-4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Behält Updates bei, die für Ihr virtuelles Netzwerk durchgeführt wurden.
-5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Sobald Ihr Subnetz ein Endpunkt ist, wird dieses als virtuelle Netzwerkregel in die ACL Ihres Azure SQL-Datenbankservers hinzugefügt.
+4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): Behält Updates bei, die für Ihr virtuelles Netzwerk vorgenommen wurden.
+5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): Sobald Ihr Subnetz ein Endpunkt ist, wird dieses als virtuelle Netzwerkregel der ACL Ihres Azure SQL-Datenbank-Servers hinzugefügt.
    - Dieses Cmdlet bietet den Parameter **-IgnoreMissingVNetServiceEndpoint** ab Azure RM PowerShell-Modul Version 5.1.1.
 
 ## <a name="prerequisites-for-running-powershell"></a>Voraussetzungen für das Ausführen von PowerShell
@@ -63,7 +63,7 @@ Das PowerShell-Beispielskript ist in eine Abfolge von kleineren Skripts untertei
 
 <a name="a-script-10" />
 
-### <a name="script-1-variables"></a>Skript 1: Variablen
+### <a name="script-1-variables"></a>Skript 1: Variables
 
 Dieses erste PowerShell-Skript weist Variablen Werte zu. Die nachfolgenden Skripts hängen von diesen Variablen ab.
 

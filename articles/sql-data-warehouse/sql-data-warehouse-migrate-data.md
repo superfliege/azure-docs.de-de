@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: a09037f2e33d87446696dd11477c4e8b45af4187
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11d41f9839456020ab65f11661c21f1e679cd76f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474172"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770651"
 ---
 # <a name="migrate-your-data"></a>Migrieren von Daten
 Daten können aus unterschiedlichen Quellen und mithilfe verschiedener Tools in Ihr SQL Data Warehouse verschoben werden.  Zum Erreichen dieses Ziels können die ADF-Kopieraktivität, SSIS und bcp verwendet werden. Mit zunehmender Menge der Daten empfiehlt es sich jedoch, den Vorgang der Datenmigration in verschiedene Schritte aufzugliedern. Dies bietet Ihnen die Möglichkeit, die einzelnen Schritte im Hinblick auf Leistung und Belastbarkeit zu optimieren und so eine reibungslose Datenmigration zu gewährleisten.
@@ -29,11 +29,7 @@ Wenn sich Ihre Daten in Flatfiles befinden, müssen Sie sie zuerst in den Azure-
 
 Auch PolyBase stellt eine leistungsstarke Möglichkeit zum Laden der Daten dar. Allerdings bedeutet dies, dass statt einem zwei Tools verwendet werden. Wenn Ihr Schwerpunkt auf der besten Leistung liegt, sollten Sie PolyBase verwenden. Wenn Sie nur ein Tool verwenden möchten (und die Daten nicht allzu umfangreich sind), ist ADF die beste Lösung für Sie.
 
-
-> 
-> 
-
-Im folgenden Artikel finden Sie einige [ADF-Beispiele][ADF-Beispiele].
+Führen Sie [dieses Tutorial]( /articles/data-factory/load-azure-sql-data-warehouse.md) aus, um zu erfahren, wie ADF zum Laden von Daten in Ihr Data Warehouse verwendet wird.
 
 ## <a name="integration-services"></a>Integration Services
 Integration Services (SSIS) ist ein leistungsfähiges und flexibles ETL-Tool (Extrahieren Transformieren und Laden), das komplexe Workflows, Datentransformation und verschiedene Optionen zum Laden von Daten unterstützt. Mit SSIS können Sie Daten in Azure oder als Teil einer größeren Migration übertragen.
@@ -182,7 +178,7 @@ Weitere Hinweise zur Entwicklung finden Sie in der [Entwicklungsübersicht][deve
 
 <!--Article references-->
 [AZCopy]: ../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/copy-activity-overview.md 
+[ADF Copy]: ../data-factory/load-azure-sql-data-warehouse.md 
 [ADF Copy examples]: ../data-factory/quickstart-create-data-factory-dot-net.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [Migrieren Ihres Schemas]: sql-data-warehouse-migrate-schema.md

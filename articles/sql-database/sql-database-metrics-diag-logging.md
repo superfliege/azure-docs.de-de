@@ -11,17 +11,17 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 40dd963a4aad7ffdd092d6835e8444cf0789e129
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462799"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734622"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
-Azure SQL-Datenbank, Pools für elastische Datenbanken, die verwaltete Instanz und Datenbanken in der verwalteten Instanz können Metriken und Diagnoseprotokolle zur einfacheren Leistungsüberwachung streamen. Sie können eine Datenbank dazu konfigurieren, Informationen zum Ressourcenverbrauch, zu Workern und Sitzungen sowie zur Konnektivität in eine der folgenden Azure-Ressourcen zu übertragen:
+Einzelne Datenbanken, Pools für elastische Datenbanken und Instanzdatenbanken in einer verwalteten Instanz können Metriken und Diagnoseprotokolle zur einfacheren Leistungsüberwachung streamen. Sie können eine Datenbank dazu konfigurieren, Informationen zum Ressourcenverbrauch, zu Workern und Sitzungen sowie zur Konnektivität in eine der folgenden Azure-Ressourcen zu übertragen:
 
 - **Azure SQL-Analyse**: Ermöglicht die intelligente Überwachung Ihrer Azure SQL-Datenbanken mit Leistungsberichten, Warnungen und Empfehlungen zur Risikominderung.
 - **Azure Event Hubs**: Ermöglicht die Integration von SQL-Datenbank-Telemetrie in Ihre benutzerdefinierten Überwachungslösungen oder Hotpipelines.
@@ -34,7 +34,7 @@ Weitere Informationen zu den Metriken und Protokollkategorien, die von verschied
 - [Überblick über Metriken in Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 - [Übersicht über Azure-Diagnose](../azure-monitor/platform/diagnostic-logs-overview.md)
 
-Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Datenbanken, Pools für elastische Datenbanken und die verwaltete Instanz. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
+Dieser Artikel enthält Anleitungen zum Aktivieren der Diagnosetelemetrie für Azure SQL-Datenbanken, Pools für elastische Datenbanken und verwaltete Instanzen. Zudem erfahren Sie, wie Sie die Azure SQL-Analyse als Überwachungstool zum Anzeigen der Diagnosetelemetriedaten für eine Datenbank konfigurieren.
 
 ## <a name="enable-logging-of-diagnostics-telemetry"></a>Aktivieren der Protokollierung von Diagnosetelemetriedaten
 
@@ -55,34 +55,34 @@ Wenn Sie die Protokollierung von Metriken und Diagnosen aktivieren, müssen Sie 
 Sie können eine neue Azure-Ressource bereitstellen oder eine vorhandene Ressource auswählen. Nachdem Sie mithilfe der Option **Diagnoseeinstellungen** eine Ressource ausgewählt haben, geben Sie an, welche Daten erfasst werden sollen.
 
 > [!NOTE]
-> Wenn Sie auch Pools für elastische Datenbanken oder die verwaltete Instanz verwenden, empfehlen wir, die Diagnosetelemetrie für diese Ressourcen ebenfalls zu aktivieren. Datenbankcontainer in Pools für elastische Datenbanken und die verwaltete Instanz verfügen über eigene separate Diagnosetelemetrie.
+> Wenn Sie auch Pools für elastische Datenbanken oder die verwaltete Instanz verwenden, Wird e empfohlen, die Diagnosetelemetrie für diese Ressourcen ebenfalls zu aktivieren. Datenbankcontainer in Pools für elastische Datenbanken und die verwaltete Instanz verfügen über eigene separate Diagnosetelemetrie.
 
-## <a name="enable-logging-for-azure-sql-database-or-databases-in-managed-instance"></a>Aktivieren der Protokollierung für Azure SQL-Datenbank bzw. Datenbanken in einer verwalteten Instanz
+## <a name="enable-logging-for-azure-sql-databases"></a>Aktivieren der Protokollierung für Azure SQL-Datenbanken
 
-Aktivieren Sie die Protokollierung von Metriken und Diagnosen für SQL-Datenbank und Datenbanken in der verwalteten Instanz. Sie ist nicht standardmäßig aktiviert.
+Aktivieren Sie die Metrik- und Diagnoseprotokollierung für SQL-Datenbanken. Sie ist nicht standardmäßig aktiviert.
 
-Sie können Azure SQL-Datenbanken und Datenbanken in der verwalteten Instanz zur Erfassung der folgenden Diagnosetelemetriedaten einrichten:
+Sie können Azure SQL-Datenbanken zum Erfassen der folgenden Diagnosetelemetriedaten einrichten:
 
-| Überwachen von Telemetriedaten für Datenbanken | Unterstützung für Azure-SQL-Datenbank | Unterstützung für Datenbanken der verwalteten Instanz |
+| Überwachen von Telemetriedaten für Datenbanken | Unterstützung für einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken | Unterstützung für die verwaltete Instanz |
 | :------------------- | ------------------- | ------------------- |
-| [AllMetrics](sql-database-metrics-diag-logging.md#all-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | JA | Nein  |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | JA | JA |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z. B. CPU, PROTOKOLL und SPERRUNG. | JA | JA |
-| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | JA | JA |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Enthält Informationen zur Wartezeit der Datenbank für die verschiedenen Wartezeittypen. | JA | Nein  |
-| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Zeitlimits für die Datenbank. | JA | Nein  |
-| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen für die Datenbank. | JA | Nein  |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung. Weitere Informationen finden Sie unter [Intelligent Insights](sql-database-intelligent-insights.md). | JA | JA |
+| [AllMetrics](sql-database-metrics-diag-logging.md#all-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | Ja | Nein  |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | Ja | Ja |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z. B. CPU, PROTOKOLL und SPERRUNG. | Ja | Ja |
+| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | Ja | Ja |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Enthält Informationen zur Wartezeit der Datenbank für die verschiedenen Wartezeittypen. | Ja | Nein  |
+| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Zeitlimits für die Datenbank. | Ja | Nein  |
+| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen für die Datenbank. | Ja | Nein  |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung. Weitere Informationen finden Sie unter [Intelligent Insights](sql-database-intelligent-insights.md). | Ja | Ja |
 
 ### <a name="azure-portal"></a>Azure-Portal
 
-Sie verwenden das Menü **Diagnoseeinstellungen** für die einzelnen Datenbanken im Azure-Portal, um das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken und Datenbanken in der verwalteten Instanz zu konfigurieren. Sie können die folgenden Ziele festlegen: Azure Storage, Azure Event Hubs und Azure Log Analytics.
+Sie verwenden das Menü **Diagnoseeinstellungen** für die jede einzelne Datenbank, in einem Pool zusammengefasste Datenbank und Instanzdatenbank im Azure-Portal, um das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbanken zu konfigurieren. Sie können die folgenden Ziele festlegen: Azure Storage, Azure Event Hubs und Azure Log Analytics.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-azure-sql-database"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für Azure SQL-Datenbank
+### <a name="configure-streaming-of-diagnostics-telemetry-for-single-pooled-or-instance-databases"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für einzelne Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken
 
    ![Symbol der SQL-Datenbank](./media/sql-database-metrics-diag-logging/icon-sql-database-text.png)
 
-Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetriedaten für Azure SQL-Datenbank zu aktivieren:
+Führen Sie zum Aktivieren des Streamings von Diagnosetelemetriedaten für einzelne Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken die folgenden Schritte aus:
 
 1. Navigieren Sie zu Ihrer Azure SQL-Datenbank-Ressource.
 1. Wählen Sie **Diagnoseeinstellungen** aus.
@@ -90,45 +90,45 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
    - Sie können bis zu drei parallele Verbindungen zum Streamen von Diagnosetelemetriedaten erstellen.
    - Wählen Sie **+ Diagnoseeinstellung hinzufügen** aus, um das parallele Streaming von Diagnosedaten in mehrere Ressourcen zu konfigurieren.
 
-   ![Aktivieren der Diagnose für SQL-Datenbank](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![Aktivieren der Diagnose für einzelne Datenbanken, in einem Pool zusammengefasste Datenbanken oder Instanzdatenbanken](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 1. Aktivieren Sie für die standardmäßige, ereignisbasierte Überwachungsoberfläche die folgenden Kontrollkästchen für Datenbankdiagnoseprotokoll-Telemetrie: **SQLInsights**, **AutomaticTuning**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics**, **Errors**, **DatabaseWaitStatistics**, **Timeouts**, **Blocks** und **Deadlocks**.
 1. Aktivieren Sie für eine erweiterte Überwachungsoberfläche mit einem Aktualisierungsintervall von einer Minute das Kontrollkästchen für **AllMetrics**.
 1. Wählen Sie **Speichern** aus.
 
-   ![Konfigurieren der Diagnose für SQL-Datenbank](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![Konfigurieren der Diagnose für einzelne Datenbanken, in einem Pool zusammengefasste Datenbanken oder Instanzdatenbanken](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 
 > [!NOTE]
-> Sicherheitsüberwachungsprotokolle können nicht über die Einstellungen für die Datenbankdiagnose aktiviert werden. Informationen zum Aktivieren des Streamings von Überwachungsprotokollen finden Sie unter [Einrichten der Überwachung für Ihre Datenbank](sql-database-auditing.md#subheading-2) und [SQL Audit logs in Azure Log Analytics and Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/) (SQL-Überwachungsprotokolle in Azure Log Analytics und Azure Event Hubs).
+> Sicherheitsüberwachungsprotokolle können nicht über die Einstellungen für die Datenbankdiagnose aktiviert werden. Informationen zum Aktivieren des Streamings von Überwachungsprotokollen finden Sie unter [Einrichten der Überwachung für Ihre Datenbank](sql-database-auditing.md#subheading-2) und [Überwachungsprotokolle in Azure Log Analytics und Azure Event Hubs](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/).
 > [!TIP]
 > Wiederholen Sie diese Schritte für jede Azure SQL-Datenbank, die überwacht werden soll.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-databases-in-managed-instance"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für Datenbanken in verwalteten Instanzen
+### <a name="configure-streaming-of-diagnostics-telemetry-for-instance-databases-in-managed-instance"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für Instanzdatenbanken in der verwalteten Instanz
 
-   ![Symbol der Datenbank in der verwalteten Instanz](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
+   ![Symbol der Instanzdatenbank in der verwalteten Instanz](./media/sql-database-metrics-diag-logging/icon-mi-database-text.png)
 
-Um das Streaming von Diagnosetelemetriedaten für Datenbanken in der verwalteten Instanz zu aktivieren, gehen Sie folgendermaßen vor:
+Um das Streaming von Diagnosetelemetriedaten für Instanzdatenbanken in der verwalteten Instanz zu aktivieren, gehen Sie folgendermaßen vor:
 
-1. Navigieren Sie zu Ihrer Datenbank in der verwalteten Instanz.
+1. Navigieren Sie zu Ihrer Instanzdatenbank in der verwalteten Instanz.
 2. Wählen Sie **Diagnoseeinstellungen** aus.
 3. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten.
    - Sie können bis zu drei parallele Verbindungen zum Streamen von Diagnosetelemetriedaten erstellen.
    - Wählen Sie **+ Diagnoseeinstellung hinzufügen** aus, um das parallele Streaming von Diagnosedaten in mehrere Ressourcen zu konfigurieren.
 
-   ![Aktivieren der Diagnose für die Datenbank in einer verwalteten Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
+   ![Aktivieren der Diagnose für Instanzdatenbanken](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-enable.png)
 
 4. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
 5. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
 6. Aktivieren Sie die Kontrollkästchen für die Datenbankdiagnosetelemetrie: **SQLInsights**, **QueryStoreRuntimeStatistics**, **QueryStoreWaitStatistics** und **Errors**.
 7. Wählen Sie **Speichern** aus.
 
-   ![Konfigurieren der Diagnose für die Datenbank in einer verwalteten Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![Konfigurieren der Diagnose für Instanzdatenbanken](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 
 > [!TIP]
-> Wiederholen Sie diese Schritte für jede Datenbank in der verwalteten Instanz, die überwacht werden soll.
+> Wiederholen Sie diese Schritte für jede Instanz, die überwacht werden soll.
 
-## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Aktivieren der Protokollierung für Pools für elastische Datenbanken oder die verwaltete SQL-Datenbank-Instanz
+## <a name="enable-logging-for-elastic-pools-or-managed-instances"></a>Aktivieren der Protokollierung für Pools für elastische Datenbanken oder die verwaltete Instanz
 
 Aktivieren Sie Diagnosetelemetrie für Pools für elastische Datenbanken und die verwaltete Instanz als Datenbankcontainer. Diese verfügen über eigene Diagnosetelemetrie, die standardmäßig nicht aktiviert ist.
 
@@ -161,7 +161,7 @@ Um das Streaming von Diagnosetelemetriedaten für eine Ressource des Pools für 
 > [!TIP]
 > Wiederholen Sie diese Schritte für jeden Pool für elastische Datenbanken, der überwacht werden soll.
 
-### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instance"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für verwaltete Instanzen
+### <a name="configure-streaming-of-diagnostics-telemetry-for-managed-instances"></a>Konfigurieren des Streamings von Diagnosetelemetriedaten für verwaltete Instanzen
 
    ![Symbol der verwalteten Instanz](./media/sql-database-metrics-diag-logging/icon-managed-instance-text.png)
 
@@ -177,7 +177,7 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 1. Wählen Sie **Diagnoseeinstellungen** aus.
 1. Klicken Sie auf **Diagnose aktivieren**, wenn noch keine Einstellungen vorgenommen wurden, oder auf **Einstellung bearbeiten**, um eine vorhandene Einstellung zu bearbeiten.
 
-   ![Aktivieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
+   ![Aktivieren der Diagnose für die verwaltete Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-enable.png)
 
 1. Geben Sie einen Einstellungsnamen zu Referenzzwecken ein.
 1. Wählen Sie eine Zielressource für das Streaming von Diagnosedaten aus: **In einem Speicherkonto archivieren**, **An einen Event Hub streamen** oder **An Log Analytics senden**.
@@ -185,7 +185,7 @@ Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetried
 1. Aktivieren Sie das Kontrollkästchen für Diagnosetelemetrie der Instanz: **ResourceUsageStats**.
 1. Wählen Sie **Speichern** aus.
 
-   ![Konfigurieren der Diagnose für verwaltete Instanzen](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![Konfigurieren der Diagnose für die verwaltete Instanz](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 
 > [!TIP]
 > Wiederholen Sie diese Schritte für jede verwaltete Instanz, die überwacht werden soll.
@@ -337,7 +337,7 @@ Nachdem die ausgewählten Daten an Event Hubs gestreamt wurden, sind Sie der Ein
 
 Sie können gestreamte Metriken in Event Hubs für folgende Zwecke verwenden:
 
-- **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und Power BI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von Power BI als Ausgabe.
+- **Anzeigen der Dienstintegrität durch Streamen von Daten zum langsamsten Pfad an PowerBI**. Mithilfe von Event Hubs, Stream Analytics und PowerBI können Sie sich anhand Ihrer Metrik- und Diagnosedaten problemlos und nahezu in Echtzeit einen Einblick in Ihre Azure-Dienste verschaffen. [Stream Analytics und Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md) bietet eine gute Übersicht über die Einrichtung von Event Hubs, die Verarbeitung von Daten mit Stream Analytics und die Verwendung von PowerBI als Ausgabe.
 
 - **Streamen von Protokollen in Protokollierungs- und Telemetriedatenströme von Drittanbietern**. Mithilfe des Event Hubs-Streamings können Sie Ihre Metriken und Diagnoseprotokolle in verschiedene Überwachungs- und Protokollanalyselösungen von Drittanbietern übertragen.
 
@@ -403,9 +403,9 @@ In den folgenden Tabellen finden Sie Details zu allen Metriken für die verschie
 |---|---|
 |Azure SQL-Datenbank|DTU-Prozentsatz, DTU-Verwendung, DTU-Limit, CPU-Prozentsatz, Prozentsatz der gelesen physischen Daten, Prozentsatz für Protokollschreibvorgang, Verbindungen mit Status Erfolgreich/Fehlgeschlagen/Durch Firewall blockiert, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent, XTP-Speicher in Prozent und Deadlocks |
 
-## <a name="logs-for-managed-instance"></a>Protokolle für die verwaltete Instanz
+## <a name="logs-for-managed-instances"></a>Protokolle für verwaltete Instanzen
 
-In der folgenden Tabelle finden Sie Details zu den Protokollen für die verwaltete Instanz.
+In der folgenden Tabelle finden Sie Details zu den Protokollen für verwaltete Instanzen.
 
 ### <a name="resource-usage-statistics"></a>Statistiken zur Ressourcennutzung
 
@@ -423,18 +423,18 @@ In der folgenden Tabelle finden Sie Details zu den Protokollen für die verwalte
 |ResourceGroup|Name der Ressourcengruppe für die Datenbank |
 |LogicalServerName_s|Name der verwalteten Instanz |
 |ResourceId|Ressourcen-URI |
-|SKU_s|Produkt-SKU der verwalteten Instanz. |
+|SKU_s|Produkt-SKU der verwalteten Instanz |
 |virtual_core_count_s|Anzahl verfügbarer virtueller Kerne |
 |avg_cpu_percent_s|Durchschnittlicher CPU-Prozentsatz |
-|reserved_storage_mb_s|Reservierte Speicherkapazität auf einer verwalteten Instanz. |
-|storage_space_used_mb_s|Genutzter Speicherplatz auf einer verwalteten Instanz. |
+|reserved_storage_mb_s|Reservierte Speicherkapazität für die verwaltete Instanz |
+|storage_space_used_mb_s|Verwendeter Speicher für die verwaltete Instanz |
 |io_requests_s|Anzahl von IOPS |
 |io_bytes_read_s|Gelesene IOPS-Bytes |
 |io_bytes_written_s|Geschriebene IOPS-Bytes |
 
-## <a name="logs-for-azure-sql-databases-and-managed-instance-databases"></a>Protokolle für Azure SQL-Datenbanken und Datenbanken der verwalteten Instanz
+## <a name="logs-for-single-pooled-and-instance-databases"></a>Protokolle für einzelne, in einem Pool zusammengefasste und Instanzdatenbanken
 
-In den folgenden Tabellen finden Sie Details zu Protokollen für Azure SQL-Datenbanken und Datenbanken der verwalteten Instanz.
+In den folgenden Tabellen finden Sie Details zu Protokollen für einzelne, in einem Pool zusammengefasste Azure SQL-Datenbanken und Instanzdatenbanken.
 
 ### <a name="query-store-runtime-statistics"></a>Laufzeitstatistiken für den Abfragespeicher
 

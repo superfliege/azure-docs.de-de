@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 0103225803ca98cb9d8e27eb57f150e0660cd7ab
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816814"
 ---
 # <a name="management-solutions-in-azure-monitor"></a>Verwaltungslösungen in Azure Monitor
 Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -101,7 +101,7 @@ Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und ein
 1. Wenn die Einstellung **Arbeitsbereich** aktiviert ist, ist dieses Konto mit einem Log Analytics-Arbeitsbereich verknüpft. Wenn Sie die Details des Arbeitsbereichs anzeigen möchten, klicken Sie auf **Arbeitsbereich**.
 
 ## <a name="remove-a-management-solution"></a>Entfernen einer Verwaltungslösung
-Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der [Liste mit den installierten Lösungen](#list-installed-monitoring-solutions). Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
+Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der Liste mit den installierten Lösungen. Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
 
 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: 034c82c2f52f0a4dbc19b49308d1ba4308716d45
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5b01b55c8b2367861459069cc255840e883b9fc5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186802"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817385"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Referenzleitfaden zu Ansicht-Designer-Kacheln in Log Analytics
 Mit dem Ansicht-Designer in Azure Log Analytics können Sie benutzerdefinierte Ansichten im Azure-Portal erstellen, mit denen Sie verschiedene Datenvisualisierungen in Ihrem Log Analytics-Arbeitsbereich darstellen können. Dieser Artikel ist ein Referenzleitfaden zu den Einstellungen für die in Ihren benutzerdefinierten Ansichten verfügbaren Kacheln.
@@ -36,7 +36,7 @@ Die verfügbaren Ansicht-Designer-Kacheln werden in der folgenden Tabelle beschr
 | [Number](#number-tile) |Die Anzahl von Datensätzen einer Abfrage. |
 | [Zwei Zahlen](#two-numbers-tile) |Die Anzahl von Datensätzen aus zwei unterschiedlichen Abfragen. |
 | [Ring](#donut-tile) | Ein auf einer Abfrage basierendes Diagramm mit einem zusammenfassenden Wert in der Mitte. |
-| [Liniendiagramm und Legende](#line-chart-amp-callout-tile) | Ein auf einer Abfrage basierendes Liniendiagramm und eine Legende mit einem zusammenfassenden Wert. |
+| Liniendiagramm und Legende | Ein auf einer Abfrage basierendes Liniendiagramm und eine Legende mit einem zusammenfassenden Wert. |
 | [Liniendiagramm](#line-chart-tile) |Ein Liniendiagramm, das auf einer Abfrage basiert. |
 | [Zwei Zeitachsen](#two-timelines-tile) | Ein Säulendiagramm mit zwei Datenreihen, die jeweils auf einer separaten Abfrage basieren. |
 
@@ -140,7 +140,7 @@ Diese Kachel umfasst sowohl ein Liniendiagramm mit mehreren Datenreihen aus eine
 | **Liniendiagramm** |**&gt; Legende** |
 | Legendentitel | Der Text, der über dem Legendenwert angezeigt wird. |
 | Datenreihenname |Der Datenreiheneigenschaftswert, der als Legendenwert verwendet werden soll. Wenn keine Reihe angegeben wird, werden alle Datensätze der Abfrage verwendet. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li><li>Min: Der Mindestwert aus den Intervallen im Diagramm.</li><li>Summe: Die Summe der Werte aller Datensätze.</li></ul> |
 | **Liniendiagramm** |**> Y-Achse** |
 | Logarithmische Skala verwenden |Wählen Sie diesen Link aus, um eine logarithmische Skala für die Y-Achse zu verwenden. |
 | Units |Geben Sie die Einheiten für die von der Abfrage zurückgegebenen Werte an. Diese Informationen werden zur Anzeige von Bezeichnungen im Diagramm verwendet, die die Werttypen angeben, und um optional Werte zu konvertieren. Der Typ der *Einheit* gibt die Kategorie der Einheit an und definiert die verfügbaren Werte für den Typ in *Aktuelle Einheit*. Bei Auswahl eines Werts in *Konvertieren in* werden die numerischen Werte vom Typ in *Aktuelle Einheit* in den Typ in *Konvertieren in* konvertiert. |
@@ -164,12 +164,12 @@ Die Kachel **Zwei Zeitachsen** zeigt die Ergebnisse von zwei Protokollabfragen i
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
 | Farbe |Die Farbe, die für die Säulen in der ersten Datenreihe verwendet wird. |
 | Diagrammabfrage |Die Abfrage, die für die ersten Datenreihen ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li></ul> |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm.</li></ul> |
 | **Zweites Diagramm** | |
 | Legende |Der Text, der unter der Legende für die erste Datenreihe angezeigt wird. |
 | Farbe |Die Farbe, die für die Säulen in der zweiten Datenreihe verwendet wird. |
 | Diagrammabfrage |Die Abfrage, die für die zweite Datenreihe ausgeführt wird. Die Anzahl von Datensätzen in jedem Zeitintervall wird durch die Säulen im Diagramm dargestellt. |
-| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl von Datensätzen, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm. |
+| Vorgang |Der Vorgang, der für die Werteigenschaft ausgeführt wird, um sie zu einem einzelnen Wert für die Legende zusammenzufassen.<ul><li>Durchschnitt: Der Durchschnitt der Werte aller Datensätze.</li><li>Anzahl: Die Anzahl aller Datensätze, die von der Abfrage zurückgegeben werden.</li><li>Letztes Beispiel: Der Wert aus dem letzten Intervall im Diagramm.</li><li>Max: Der Höchstwert aus den Intervallen im Diagramm. |
 | **Erweitert** |**&gt; Datenflussüberprüfung** |
 | Aktiviert |Wählen Sie diesen Link aus, wenn die Datenflussüberprüfung für die Kachel aktiviert werden soll. Bei diesem Ansatz wird eine alternative Meldung angezeigt, wenn keine Daten für die Kachel verfügbar sind. Dieser Ansatz wird normalerweise genutzt, um eine Meldung während des vorübergehenden Zeitraums anzuzeigen, in dem die Ansicht installiert wird und Daten zur Verfügung gestellt werden. |
 | Abfragen |Die Abfrage, die ausgeführt wird, um zu bestimmen, ob Daten für die Ansicht verfügbar sind. Wenn die Abfrage keine Ergebnisse zurückgibt, wird anstelle des Werts aus der Hauptabfrage eine Meldung angezeigt. |

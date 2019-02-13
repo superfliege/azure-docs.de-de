@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: fc625192464dce174b4c2a6d8a2a98343519699f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7ae87763d280e129bab96c604f9118ecf088ea2f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186122"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819857"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>Optimieren Ihrer Umgebung mit der Lösung zur System Center Operations Manager-Integritätsüberprüfung (Vorschauversion)
 
@@ -55,7 +55,7 @@ Verwenden Sie die folgenden Informationen zum Installieren und Konfigurieren der
 
  Führen Sie zum Konfigurieren der Bewertung über die Operations Manager Operations-Konsole die folgenden Schritte in der angegebenen Reihenfolge aus:
 1. [Festlegen des ausführenden Kontos für die System Center Operations Manager-Integritätsüberprüfung](#operations-manager-run-as-accounts-for-log-analytics)  
-2. [Konfigurieren der System Center Operations Manager-Integritätsüberprüfungsregel](#configure-the-assessment-rule)
+2. Konfigurieren der System Center Operations Manager-Integritätsüberprüfungsregel
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>Details zur Datensammlung mit der System Center Operations Manager-Bewertung
 

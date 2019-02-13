@@ -11,16 +11,21 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 551e7c0ca3b4b5e0e94aca39e19d9a35d08e4e05
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e1c225eb77a76015520690916db0399487ffe9e7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353038"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822611"
 ---
 # <a name="connect-computers-without-internet-access-using-the-log-analytics-gateway"></a>Verbinden von Computern ohne Internetzugriff über das Log Analytics-Gateway
+
+>[!NOTE]
+>Im Rahmen der laufenden Umstellung von der Microsoft Operations Management Suite (OMS) auf Azure Monitor wird das OMS-Gateway nun als Log Analytics-Gateway bezeichnet. 
+>
+
 In diesem Dokument wird beschrieben, wie Sie die Kommunikation mit Azure Automation und Log Analytics über das Log Analytics-Gateway konfigurieren, wenn direkt verbundene oder durch Operations Manager überwachte Computer nicht über Internetzugriff verfügen.  Das Log Analytics-Gateway ist ein HTTP-Weiterleitungsproxy, der HTTP-Tunnel mit dem Befehl HTTP CONNECT unterstützt, und kann Daten erfassen und im Auftrag der Computer an Azure Automation und Log Analytics senden.  
 
 Das Log Analytics-Gateway unterstützt Folgendes:
@@ -29,7 +34,7 @@ Das Log Analytics-Gateway unterstützt Folgendes:
 * Azure Automation – Hybrid-Runbook-Worker  
 * Direkt mit einem Log Analytics-Arbeitsbereich verbundene Windows-Computer mit Microsoft Monitoring Agent
 * Direkt mit einem Log Analytics-Arbeitsbereich verbundene Linux-Computer mit dem Log Analytics-Agent für Linux  
-* Integration von System Center Operations Manager 2012 SP1 mit UR7, Operations Manager 2012 R2 mit UR3, Operations Manager 2016 und der Operations Manager-Verwaltungsgruppe, Version 1801, in Log Analytics.  
+* System Center Operations Manager 2012 SP1 mit UR7, Operations Manager 2012 R2 mit UR3 oder Operations Manager 2016-Verwaltungsgruppe oder höher mit Log Analytics.  
 
 Wenn Computer in Ihrem Netzwerk aufgrund von IT-Sicherheitsrichtlinien keine Verbindung mit dem Internet herstellen können (etwa im Fall von POS-Geräten oder von Servern, die IT-Dienste unterstützen) und Sie zu deren Verwaltung und Überwachung eine Verbindung mit Azure Automation oder Log Analytics herstellen möchten, können sie so konfiguriert werden, dass sie direkt mit dem Log Analytics-Gateway kommunizieren, um in ihrem Auftrag Konfigurations- und Weiterleitungsdaten zu empfangen.  Wenn diese Computer mit dem Log Analytics-Agent konfiguriert werden, um eine direkte Verbindung mit einem Log Analytics-Arbeitsbereich herzustellen, kommunizieren alle Computer stattdessen mit dem Log Analytics-Gateway.  Das Gateway überträgt Daten von den Agents direkt an den Dienst, ohne sie bei der Übertragung zu analysieren.
 

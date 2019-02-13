@@ -1,6 +1,6 @@
 ---
-title: Azure SQL-Datenbank – Datenermittlung und -klassifizierung | Microsoft-Dokumentation
-description: Azure SQL-Datenbank – Datenermittlung und -klassifizierung
+title: 'Azure SQL-Datenbank: Datenermittlung und -klassifizierung | Microsoft-Dokumentation'
+description: 'Azure SQL-Datenbank: Datenermittlung und -klassifizierung'
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,15 +11,15 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/29/2019
-ms.openlocfilehash: 57c08fc8e3b7c655bcb59affcde5e37510f98920
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: b85afeb18fdd93afdedbee00df995ba52a66cd5e
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466591"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731851"
 ---
-# <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL-Datenbank – Datenermittlung und -klassifizierung
+# <a name="azure-sql-database-data-discovery--classification"></a>Azure SQL-Datenbank: Datenermittlung und -klassifizierung
 
 Datenermittlung und -klassifizierung (zurzeit in der Vorschau) bietet erweiterte Funktionen für Azure SQL-Datenbank zum **Ermitteln**, **Klassifizieren**, **Bezeichnen** & **Schützen** sensibler Daten in Ihren Datenbanken.
 Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Finanz-/Gesundheitsdaten, persönlich identifizierbare Daten (PII) usw.) kann eine entscheidende Rolle in der Strategie Ihrer Organisation zum Datenschutz spielen. Das Feature kann als Infrastruktur für Folgendes dienen:
@@ -28,14 +28,14 @@ Das Ermitteln und Klassifizieren Ihrer besonders sensiblen Daten (Geschäfts-/Fi
 - Verschiedene Sicherheitsszenarien, z.B. Überwachung und Warnungen bei abweichendem Zugriff auf sensible Daten
 - Steuern des Zugriffs auf und Härten der Sicherheit von Datenbanken, die sensible Daten enthalten
 
-Datenermittlung und -klassifizierung ist Teil des Angebots [SQL Advanced Data Security (ADS)](sql-advanced-threat-protection.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL-ADS-Portal möglich.
+Datenermittlung und -klassifizierung ist Teil des Angebots [Advanced Data Security (ADS)](sql-database-advanced-data-security.md). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf und die Verwaltung von Datenermittlung und -klassifizierung ist über das zentrale SQL ADS-Portal möglich.
 
 > [!NOTE]
 > Dieses Dokument bezieht sich nur auf Azure SQL-Datenbank. Informationen zu SQL Server (lokal) finden Sie unter [SQL-Datenermittlung und -klassifizierung](https://go.microsoft.com/fwlink/?linkid=866999).
 
 ## <a id="subheading-1"></a>Was ist Datenermittlung und -klassifizierung?
 
-Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten – nicht nur der Datenbank:
+Datenermittlung und -klassifizierung führt eine Reihe von erweiterten Diensten und neuen SQL-Funktionen ein und bildet damit ein neues SQL Information Protection-Paradigma für den Schutz der Daten (nicht nur der Datenbank):
 
 - **Ermittlung und Empfehlungen**
 
@@ -64,7 +64,7 @@ Die Klassifizierung umfasst zwei Metadatenattribute:
 
 ## <a name="define-and-customize-your-classification-taxonomy"></a>Definieren und Anpassen der Klassifizierungstaxonomie
 
-SQL Data Discovery & Classification verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie haben jetzt die Möglichkeit, diese Taxonomie anzupassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung zu definieren.
+SQL-Datenermittlung und -klassifizierung verfügt über einen integrierten Satz von Vertraulichkeitsbezeichnungen und einen integrierten Satz von Informationstypen und Ermittlungslogik. Sie haben jetzt die Möglichkeit, diese Taxonomie anzupassen und eine spezielle Gruppe und Rangfolge von Klassifizierungskonstrukten für Ihre Umgebung zu definieren.
 
 Die Definition und Anpassung Ihrer Klassifizierungstaxonomie erfolgt an zentraler Stelle für den ganzen Azure-Mandanten. Diese Stelle befindet sich im [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) und ist Bestandteil Ihrer Sicherheitsrichtlinie. Nur Benutzer mit Administratorrechten für die Stammverwaltungsgruppe des Mandanten können diese Aufgabe ausführen.
 
@@ -77,7 +77,7 @@ Sobald die mandantenweite Richtlinie definiert wurde, können Sie die Klassifizi
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Data Security**. Klicken Sie zum Aktivieren von Advanced Data Security und dann auf die Karte **Datenermittlung und -klassifizierung (Vorschauversion)**.
+2. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Advanced Data Security**. Klicken Sie, um Advanced Data Security zu aktivieren, und klicken Sie dann auf die Karte **Datenermittlung und -klassifizierung (Vorschau)**.
 
    ![Überprüfen einer Datenbank](./media/sql-data-discovery-and-classification/data_classification.png)
 
@@ -147,11 +147,11 @@ Sie können zudem REST-APIs verwenden, um Klassifizierungen programmgesteuert zu
 
 ## <a id="subheading-5"></a>Nächste Schritte
 
-- Erfahren Sie mehr über [SQL Advanced Data Security](sql-advanced-threat-protection.md).
+- Erfahren Sie mehr über [Advanced Data Security](sql-database-advanced-data-security.md).
 - Sie sollten in Betracht ziehen, die [Azure SQL-Datenbank-Überwachung](sql-database-auditing.md) für die Überwachung und Überprüfung des Zugriffs auf Ihre klassifizierten sensiblen Daten zu konfigurieren.
 
 <!--Anchors-->
-[SQL Data Discovery & Classification overview]: #subheading-1
+[SQL data discovery & classification overview]: #subheading-1
 [Discovering, classifying & labeling sensitive columns]: #subheading-2
 [Auditing access to sensitive data]: #subheading-3
 [Automated/Programmatic classification]: #subheading-4

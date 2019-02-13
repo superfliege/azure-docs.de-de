@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der Bedrohungserkennung – Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
+title: 'Konfigurieren der Bedrohungserkennung: Verwaltete Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation'
 description: Die Bedrohungserkennung identifiziert anomale Datenbankaktivitäten, die auf potenzielle Sicherheitsrisiken für die Datenbank in der verwalteten Instanz hinweisen.
 services: sql-database
 ms.service: sql-database
@@ -11,21 +11,21 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 59a3b4a4e1b08a9a9985836a9f9be44d1eff9c71
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: d8522967154a69b8473475932f2074bc98b4f24d
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472064"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731222"
 ---
 # <a name="configure-threat-detection-preview-in-azure-sql-database-managed-instance"></a>Konfigurieren der Bedrohungserkennung (Vorschau) für eine verwaltete Azure SQL-Datenbank-Instanz
 
-Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für eine [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#azure-sql-database-threat-detection-alerts).
+Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) für eine [verwaltete Instanz](sql-database-managed-instance-index.yml) identifiziert anomale Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Datenbanken zuzugreifen oder diese missbräuchlich zu verwenden. Mithilfe der Bedrohungserkennung können folgende Aktivitäten identifiziert werden: **potenzielle SQL-Einschleusung**, **Zugriff von einem ungewöhnlichen Standort oder Rechenzentrum**, **Zugriff über einen unbekannten Prinzipal oder eine potenziell schädliche Anwendung** und **Brute-Force-SQL-Anmeldeinformationen**. Weitere Informationen finden Sie im Abschnitt zu den [Warnungen der Bedrohungserkennung](sql-database-threat-detection-overview.md#threat-detection-alerts).
 
 Sie können sich über [E-Mail-Benachrichtigungen](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event) oder im [Azure-Portal](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal) über die erkannten Bedrohungen benachrichtigen lassen.
 
-Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des [SQL Advanced Data Security](sql-advanced-threat-protection.md)-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet, hierbei sind die ersten 30 Tage kostenlos.
+Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestandteil des [Advanced Data Security](sql-database-advanced-data-security.md)-Angebots (ADS). Dabei handelt es sich um ein vereinheitlichtes Paket für erweiterte SQL-Sicherheitsfunktionen. Der Zugriff auf die Bedrohungserkennung und ihre Verwaltung sind über das zentrale SQL ADS-Portal möglich. Für den Bedrohungserkennungsdienst werden pro verwalteter Instanz 15 USD/Monat berechnet. Dabei sind die ersten 30 Tage kostenlos.
 
 ## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Einrichten der Bedrohungserkennung für Ihre verwaltete Instanz im Azure-Portal
 
@@ -42,7 +42,7 @@ Die [Bedrohungserkennung](sql-database-threat-detection-overview.md) ist Bestand
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen zur [Bedrohungserkennung](sql-database-threat-detection-overview.md).
-- Informationen zur verwalteten Instanz finden Sie hier: [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
-- Weitere Informationen zur [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md)
-- Weitere Informationen zur [Überwachung einer verwalteten Instanz](https://go.microsoft.com/fwlink/?linkid=869430)
-- Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Informationen zu verwalteten Instanzen finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md)
+- Weitere Informationen zur [Bedrohungserkennung für eine Einzeldatenbank](sql-database-threat-detection.md).
+- Weitere Informationen zur [Überwachung einer verwalteten Instanz](https://go.microsoft.com/fwlink/?linkid=869430).
+- Weitere Informationen zu [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro).

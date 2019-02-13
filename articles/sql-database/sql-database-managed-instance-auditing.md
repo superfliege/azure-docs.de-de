@@ -1,5 +1,5 @@
 ---
-title: Verwaltete Azure SQL-Datenbank-Instanz – Überwachung | Microsoft-Dokumentation
+title: 'Verwaltete Azure SQL-Datenbank-Instanz: Überwachung | Microsoft-Dokumentation'
 description: Lernen Sie die ersten Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen mit T-SQL kennen.
 services: sql-database
 ms.service: sql-database
@@ -13,17 +13,17 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/15/2019
-ms.openlocfilehash: 3a445fbc135e0d7dc19907339506fd0c32bffb45
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f82c96b972baa161658f4a864572bfcb791939ed
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456033"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55728996"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Erste Schritte bei der Überwachung von verwalteten Azure SQL-Datenbank-Instanzen
 
-Die Überwachung von [verwalteten Azure SQL-Datenbank-Instanzen](sql-database-managed-instance.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. Die Überwachung ermöglicht außerdem Folgendes:
+Die [Überwachung verwalteter Instanzen](sql-database-managed-instance.md) verfolgt Datenbankereignisse nach und schreibt sie in ein Überwachungsprotokoll in Ihrem Azure-Speicherkonto. Die Überwachung ermöglicht außerdem Folgendes:
 
 - Sie kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
 - Sie ermöglicht und unterstützt die Einhaltung von Standards, garantiert diese aber nicht. Weitere Informationen zu Azure-Programmen, die die Einhaltung von Standards unterstützen, finden Sie im [Microsoft Azure-Vertrauenscenter](https://azure.microsoft.com/support/trust-center/compliance/).
@@ -38,7 +38,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
    1. Navigieren Sie zu der Azure Storage-Instanz, in der Sie Ihre Überwachungsprotokolle speichern möchten.
 
       > [!IMPORTANT]
-      > Verwenden Sie ein Speicherkonto in derselben Region wie der Server mit der verwalteten Instanz, um regionsübergreifende Lese-/Schreibvorgänge zu vermeiden.
+      > Verwenden Sie ein Speicherkonto in derselben Region, in der sich auch die verwaltete Instanz befindet, um regionsübergreifende Lese-/Schreibvorgänge zu vermeiden.
 
    1. Wechseln Sie im Speicherkonto zu **Übersicht**, und klicken Sie auf **Blobs**.
 
@@ -154,7 +154,7 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung für Ihre v
 
 Weitere Informationen:
 
-- [Unterschiede bei der Überwachung zwischen verwalteten Instanzen, Azure SQL-Datenbank und SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
+- [Überwachungsunterschiede zwischen Einzeldatenbanken, Pools für elastische Datenbanken und verwaltete Instanzen in Azure SQL-Datenbank und Datenbanken in SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
 - [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
@@ -162,7 +162,7 @@ Weitere Informationen:
 
 Überwachungsprotokolle einer verwalteten Instanz können mithilfe von Azure Monitor an Event Hubs oder Log Analytics gesendet werden. In diesem Abschnitt wird die zugehörige Konfiguration beschrieben:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur verwalteten SQL-Instanz.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) zur verwalteten Instanz.
 
 2. Klicken Sie auf **Diagnoseeinstellungen**.
 
@@ -209,9 +209,6 @@ Es gibt verschiedene Methoden zum Anzeigen von Blobüberwachungsprotokollen.
 
 - Eine vollständige Liste der Verbrauchsmethoden für Überwachungsprotokolle finden Sie unter [Erste Schritte bei der Überwachung von SQL-Datenbank](sql-database-auditing.md).
 
-  > [!IMPORTANT]
-  > Das Anzeigen von Überwachungsdatensätzen im Azure-Portal (Bereich „Überwachungsdatensätze“) steht derzeit für verwaltete Instanzen nicht zur Verfügung.
-
 ### <a name="consume-logs-stored-in-event-hub"></a>Verwenden von Protokollen, die in Event Hubs gespeichert sind
 
 Um die Überwachungsprotokolldaten von Event Hub zu nutzen, müssen Sie einen Stream zum Nutzen von Ereignissen einrichten und diese in ein Ziel schreiben. Weitere Informationen finden Sie in der Dokumentation zu Azure Event Hubs.
@@ -222,13 +219,13 @@ Wenn die Überwachungsprotokolle in Log Analytics geschrieben werden, stehen sie
 
 Mithilfe integrierter Suchfunktionen und benutzerdefinierter Dashboards gewährt Log Analytics Ihnen Einblicke in Betriebsabläufe in Echtzeit, sodass Sie Millionen von Datensätzen für all Ihre Workloads und Server analysieren können. Weitere nützliche Informationen zu Log Analytics-Suchsprache und -Suchbefehlen finden Sie unter [Referenz zur Log Analytics-Suche](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
 
-## <a name="auditing-differences-between-managed-instance-azure-sql-database-and-sql-server"></a>Unterschiede bei der Überwachung zwischen verwalteten Instanzen, Azure SQL-Datenbank und SQL Server
+## <a name="auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server"></a>Überwachungsunterschiede zwischen Datenbanken in Azure SQL-Datenbank und Datenbanken in SQL Server
 
-Wichtigste Unterschiede bei der SQL-Überwachung in einer verwalteten Instanz, Azure SQL-Datenbank und lokalem SQL Server:
+Die wichtigsten Unterschiede zwischen der Überwachung in Datenbanken in Azure SQL-Datenbank und SQL Server:
 
-- In verwalteten Instanzen wird die SQL-Überwachung auf Serverebene ausgeführt. Die Dateien mit der Endung `.xel` werden in einem Azure Blob Storage-Konto gespeichert.
-- In Azure SQL-Datenbank wird die SQL-Überwachung auf Datenbankebene ausgeführt.
-- Auf lokalen oder virtuellen SQL Server-Computern wird die SQL-Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.
+- Bei der Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank wird Überwachung auf Serverebene ausgeführt. Die Dateien mit der Erweiterung `.xel` werden in einem Azure Blob Storage-Konto gespeichert.
+- Bei der Bereitstellungen als Einzeldatenbank und in Pools für elastische Datenbanken in Azure SQL-Datenbank erfolgt die Überwachung auf Datenbankebene.
+- Auf lokalen oder virtuellen SQL Server-Computern wird die Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.
 
 Die XEvent-Überwachung in einer verwalteten Instanz unterstützt Azure Blob Storage-Ziele. Dateiprotokolle und Windows-Protokolle werden **nicht unterstützt**.
 
@@ -236,7 +233,7 @@ Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azu
 
 - Mit der neuen Syntax `TO URL` können Sie die URL des Azure Blob Storage-Containers angeben, in dem Dateien mit der Endung `.xel` gespeichert werden.
 - Eine neue Syntax `TO EXTERNAL MONITOR` wird bereitgestellt, um Event Hubs- und Log Analytics-Ziele zu ermöglichen.
-- Die Syntax `TO FILE` wird **nicht unterstützt**, da verwaltete Instanzen nicht auf Windows-Dateifreigaben zugreifen können.
+- Die Syntax `TO FILE` wird **nicht unterstützt**, da SQL-Datenbank nicht auf Windows-Dateifreigaben zugreifen kann.
 - Die Option zum Herunterfahren wird **nicht unterstützt**.
 - Der Wert „0“ für `queue_delay` wird **nicht unterstützt**.
 

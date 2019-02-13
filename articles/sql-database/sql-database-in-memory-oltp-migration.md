@@ -11,15 +11,16 @@ author: jodebrui
 ms.author: jodebrui
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 04/01/2018
-ms.openlocfilehash: 4455e0c0f31c9026526820b50214efb83720da0d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 11/07/2018
+ms.openlocfilehash: fbe05186b317d3c24dca55197c2989155b5543bd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228044"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565920"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-sql-database"></a>Verwenden von In-Memory-OLTP zur Verbesserung der Anwendungsleistung in SQL-Datenbank
+
 [In-Memory-OLTP](sql-database-in-memory.md) kann verwendet werden, um die Leistung der Transaktionsverarbeitung, der Datenerfassung und der vorübergehenden Datenszenarien in Datenbanken des Tarifs [„Premium“ und „Unternehmenskritisch“](sql-database-service-tiers-vcore.md) zu verbessern, ohne den Tarif zu erhöhen. 
 
 > [!NOTE] 
@@ -29,6 +30,7 @@ ms.locfileid: "51228044"
 Führen Sie diese Schritte durch, um In-Memory-OLTP in Ihrer vorhandenen Datenbank zu übernehmen.
 
 ## <a name="step-1-ensure-you-are-using-a-premium-and-business-critical-tier-database"></a>Schritt 1: Sicherstellen, dass eine Datenbank mit dem Tarif „Premium“ und „Unternehmenskritisch“ verwendet wird
+
 In-Memory-OLTP wird nur für Datenbanken mit dem Tarif „Premium“ und „Unternehmenskritisch“ unterstützt. In-Memory wird unterstützt, wenn das zurückgegebene Ergebnis 1 ist (nicht 0):
 
 ```
@@ -39,7 +41,7 @@ SELECT DatabasePropertyEx(Db_Name(), 'IsXTPSupported');
 
 
 
-## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Schritt 2: Identifizieren der nach In-Memory OLTP zu migrierenden Objekte
+## <a name="step-2-identify-objects-to-migrate-to-in-memory-oltp"></a>Schritt 2: Identifizieren der zu In-Memory OLTP zu migrierenden Objekte
 SSMS umfasst einen Bericht **Übersicht der Transaktionsleistungsanalyse** , den Sie für eine Datenbank mit einer aktiven Workload erstellen können. Der Bericht identifiziert Tabellen und gespeicherte Prozeduren, die für die Migration zu In-Memory OLTP geeignet sind.
 
 So generieren Sie den Bericht in SSMS
@@ -65,7 +67,7 @@ Um das Testen zu erleichtern, optimieren Sie die Testdatenbank wie folgt:
         MEMORY_OPTIMIZED_ELEVATE_TO_SNAPSHOT = ON;
    ```
 
-## <a name="step-4-migrate-tables"></a>Schritt 4: Migrieren von Tabellen
+## <a name="step-4-migrate-tables"></a>Schritt 4: Migrieren von Tabellen
 Sie müssen eine speicheroptimierte Kopie der Tabelle, die Sie testen möchten, erstellen und auffüllen. Zum Erstellen können Sie eine der folgenden Möglichkeiten wählen:
 
 * Den praktischen Speicheroptimierungs-Assistenten in SSMS.
@@ -105,7 +107,7 @@ INSERT INTO <new_memory_optimized_table>
 ```
 
 
-## <a name="step-5-optional-migrate-stored-procedures"></a>Schritt 5 (optional): Migrieren von gespeicherten Prozeduren
+## <a name="step-5-optional-migrate-stored-procedures"></a>Schritt 5 (optional): Migrieren gespeicherter Prozeduren
 Das In-Memory-Feature kann auch eine gespeicherte Prozedur zur Verbesserung der Leistung ändern.
 
 ### <a name="considerations-with-natively-compiled-stored-procedures"></a>Aspekte bei systemeigen kompilierten gespeicherten Prozeduren
@@ -149,7 +151,7 @@ Die Migrationsschritte sind wie folgt:
 4. Benennen Sie die alte gespeicherte Prozedur mithilfe von SP_RENAME um. Oder löschen Sie sie einfach (DROP).
 5. Führen Sie das bearbeitete CREATE PROCEDURE T-SQL-Skript aus.
 
-## <a name="step-6-run-your-workload-in-test"></a>Schritt 6: Ausführen der Workload im Test
+## <a name="step-6-run-your-workload-in-test"></a>Schritt 6: Ausführen der Workload im Test
 Führen Sie eine Workload in der Testdatenbank aus, die der Workload ähnelt, die in der Produktionsdatenbank ausgeführt wird. Dies sollte den Leistungsgewinn zeigen, den Sie mit der Verwendung des In-Memory-Features für Tabellen und gespeicherte Prozeduren erzielen.
 
 Wichtige Attribute der Workload sind:
@@ -161,7 +163,7 @@ Zum Anpassen und Ausführen der Testworkload empfiehlt Sie praktische Tool „os
 
 Um die Netzwerklatenz zu minimieren, führen Sie den Test in der gleichen geografischen Azure-Region aus, in der die Datenbank vorhanden ist.
 
-## <a name="step-7-post-implementation-monitoring"></a>Schritt 7: Überwachung nach der Implementierung
+## <a name="step-7-post-implementation-monitoring"></a>Schritt 7: Überwachen nach der Implementierung
 Sie sollten die Leistungseffekte Ihrer In-Memory-Implementierungen in der Produktion überwachen:
 
 * [Überwachen Sie den In-Memory-Speicher](sql-database-in-memory-oltp-monitoring.md).

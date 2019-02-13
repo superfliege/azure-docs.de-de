@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 904cd593022006bc16908664fb7d7d0e3f6f24b0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 708e5d2bdb3dd3ca259b6d7927b6ec24fc27dfea
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455217"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820707"
 documentType: LandingData
 title: Azure SQL-Datenbank – Erweiterte Sicherheit
 metadata:
@@ -14,6 +14,7 @@ metadata:
   services: sql-database
   author: jovanpop-msft
   manager: craigg
+  requires-business-manager-approval: false
   ms.service: sql-database
   ms.tgt_pltfrm: na
   ms.devlang: 
@@ -69,16 +70,16 @@ sections:
       - href: /azure/sql-database/sql-database-threat-detection#set-up-threat-detection-for-your-database-in-the-azure-portal
       - href: 
       - href: /azure/sql-database/scripts/sql-database-auditing-and-threat-detection-powershell
-    - title: Einrichten der Bedrohungserkennung auf einer verwalteten Instanz
+    - title: Einrichten der Bedrohungserkennung für eine verwaltete Instanz
       values:
       - href: /azure/sql-database/sql-database-managed-instance-threat-detection#set-up-threat-detection-for-your-managed-instance-in-the-azure-portal
       - href: 
       - href: 
     - title: Einrichten von Datenbankserver-Firewallregeln für eine Einzeldatenbank
       values:
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-the-azure-portal
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-cli
-      - href: /azure/sql-database/sql-database-firewall-configure#manage-firewall-rules-using-azure-powershell
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-the-azure-portal
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-cli
+      - href: /azure/sql-database/sql-database-firewall-configure#manage-ip-firewall-rules-using-azure-powershell
     - title: Verwalten von Regeln für Sicherheitsrisikobewertungen
       values:
       - href: 
@@ -91,9 +92,9 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Der Bedrohungsschutz in <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">verwalteten Azure SQL-Datenbank-Instanzen</a> und <a href="/azure/sql-database/sql-database-threat-detection">Datenbanken</a> erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen.
-    - html: Bei der Überwachung von <a href="/azure/sql-database/sql-database-managed-instance-auditing">verwalteten Azure SQL-Datenbank-Instanzen</a> und <a href="/azure/sql-database/sql-database-auditing">Datenbanken</a> werden Datenbankereignisse nachverfolgt und in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto, Ihrem OMS-Arbeitsbereich oder in Event Hubs geschrieben.
+    - html: Der Bedrohungsschutz in <a href="/azure/sql-database/sql-database-managed-instance-threat-detection">verwalteten Instanzen</a> und <a href="/azure/sql-database/sql-database-threat-detection">Datenbanken</a> erkennt Anomalien bei Aktivitäten, die auf ungewöhnliche und potenziell schädliche Versuche hinweisen, auf Ihre Datenbanken zuzugreifen oder diese zu nutzen.
+    - html: Bei der Überwachung von <a href="/azure/sql-database/sql-database-managed-instance-auditing">verwalteten Instanzen</a> und <a href="/azure/sql-database/sql-database-auditing">Datenbanken</a> werden Datenbankereignisse nachverfolgt und in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto, Ihrem OMS-Arbeitsbereich oder in Event Hubs geschrieben.
     - html: Mit <a href="/azure/sql-database/sql-database-firewall-configure">Datenbankserver-Firewallregeln</a> in Einzeldatenbanken können Sie steuern, welche IP-Adressen auf Ihre Datenbank zugreifen können.
-    - html: Mit der <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNET-Integration</a> in einer verwalteten Azure SQL-Datenbank-Instanz können Sie die Datenbanken in Ihrem eigenen privaten Adressraum anordnen.
+    - html: Mit der <a href="/azure/sql-database/sql-database-managed-instance-vnet-configuration">VNET-Integration</a> in einer verwalteten Instanz können Sie die Datenbanken in Ihrem eigenen privaten Adressraum anordnen.
     - html: Mit <a href="/azure/sql-database/sql-database-always-encrypted">Always Encrypted</a> werden sensible Daten im ruhenden Zustand auf dem Server, beim Verschieben zwischen Client und Server und während der Nutzung geschützt. So wird sichergestellt, dass sensible Daten im Datenbanksystem niemals als Klartext angezeigt werden.
     - html: Die <a href="/azure/sql-database/sql-database-dynamic-data-masking-get-started">dynamische Datenmaskierung</a> hilft beim Verhindern des unbefugten Zugriffs auf sensible Daten, indem Kunden festlegen dürfen, welcher Anteil der sensiblen Daten mit minimalen Auswirkungen auf die Anwendungsschicht offengelegt wird.

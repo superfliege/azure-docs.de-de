@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: magoedte
-ms.openlocfilehash: b13e92369168a43f529ed0b83c10bc65893da83d
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 79539e05e1623b153a8fad817918cfb56a521db1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193313"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814162"
 ---
 # <a name="connect-configuration-manager-to-log-analytics"></a>Herstellen einer Verbindung zwischen Configuration Manager und Log Analytics
 Sie können Ihre System Center Configuration Manager-Umgebung mit Azure Log Analytics verbinden, um die Daten der Gerätesammlung zu synchronisieren und auf diese Sammlungen in Log Analytics und Azure Automation zu verweisen.  
@@ -32,8 +32,8 @@ In den folgenden Schritten werden die Schritte zum Konfigurieren der Configurati
 
 1. Registrieren Sie im Azure-Portal den Configuration Manager als Webanwendung und/oder Web API-App, und stellen Sie sicher, dass Sie die Client-ID und den geheimen Clientschlüssel aus der Registrierung von Azure Active Directory haben. Weitere Informationen zum Durchführen dieses Schritts finden Sie unter [Erstellen einer Active Directory-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff mithilfe des Portals](../../active-directory/develop/howto-create-service-principal-portal.md).
 2. Im Azure-Portal [gewähren Sie Configuration Manager (der registrierten Web-App) die Zugriffsberechtigung für Log Analytics](#grant-configuration-manager-with-permissions-to-log-analytics).
-3. Im Configuration Manager [fügen Sie eine Verbindung mit dem Assistenten zum Hinzufügen von OMS-Verbindungen hinzu](#add-an-oms-connection-to-configuration-manager).
-4. Im Configuration Manager [aktualisieren Sie die Verbindungseigenschaften](#update-oms-connection-properties), wenn das Kennwort oder der geheime Clientschlüssel abläuft oder verloren geht.
+3. Im Configuration Manager fügen Sie eine Verbindung mit dem Assistenten zum Hinzufügen von OMS-Verbindungen hinzu.
+4. Im Configuration Manager aktualisieren Sie die Verbindungseigenschaften, wenn das Kennwort oder der geheime Clientschlüssel abläuft oder verloren geht.
 5. [Laden und installieren Sie den Microsoft Monitoring Agent](#download-and-install-the-agent) auf dem Computer, auf dem die Standortsystemrolle des Configuration Manager-Dienstverbindungspunkts ausgeführt wird. Der Agent sendet die Configuration Manager-Daten zum Log Analytics-Arbeitsbereich.
 6. In Log Analytics [importieren Sie Sammlungen von Configuration Manager](#import-collections) als Computergruppen.
 7. In Log Analytics zeigen Sie die Daten von Configuration Manager als [Computergruppen](../../azure-monitor/platform/computer-groups.md) an.
