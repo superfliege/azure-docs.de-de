@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: aa6f891cc68d19e638bb2b7281f4b332de26bd26
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332641"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822254"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -92,7 +92,7 @@ Führen Sie unabhängig davon, ob Sie Tools oder APIs verwenden, die folgenden S
 3. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. Im Beispiel, das im vorherigen Schritt erwähnt wurde, erstellen Sie ein Dataset, um die Tabelle mit den Eingabedaten in Ihrer Oracle-Datenbank anzugeben. Sie erstellen ein weiteres Dataset zum Angeben eines Blobcontainers und des Ordners, in dem die aus der Oracle-Datenbank kopierten Daten enthalten sind. Informationen zu Dataseteigenschaften, die spezifisch für Oracle sind, finden Sie unter [Dataseteigenschaften](#dataset-properties).
 4. Erstellen Sie eine **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. Im vorherigen Beispiel verwenden Sie **OracleSource** als Quelle und **BlobSink** als Senke für die Kopieraktivität. Wenn Sie einen Kopiervorgang von Azure Blob Storage in eine Oracle-Datenbank durchführen, verwenden Sie entsprechend **BlobSource** und **OracleSink** in der Kopieraktivität. Informationen zu den Eigenschaften von Kopieraktivitäten, die spezifisch für eine Oracle-Datenbank sind, finden Sie unter [Eigenschaften der Kopieraktivität](#copy-activity-properties). Weitere Informationen zur Verwendung eines Datenspeichers als Quelle oder Senke finden Sie im vorherigen Abschnitt unter dem Link zu Ihrem Datenspeicher.
 
-Wenn Sie den Assistenten verwenden, werden JSON-Definitionen für diese Data Factory-Entitäten automatisch für Sie erstellt: verknüpfte Dienste, Datasets und die Pipeline. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Beispiele mit JSON-Definitionen für Data Factory-Entitäten, mit denen Sie Daten in eine oder aus einer lokalen Oracle-Datenbank kopieren, finden Sie unter [JSON-Beispiele](#json-examples-for-copying-data-to-and-from-oracle-database).
+Wenn Sie den Assistenten verwenden, werden JSON-Definitionen für diese Data Factory-Entitäten automatisch für Sie erstellt: verknüpfte Dienste, Datasets und die Pipeline. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Beispiele mit JSON-Definitionen für Data Factory-Entitäten, mit denen Sie Daten in eine oder aus einer lokalen Oracle-Datenbank kopieren, finden Sie unter „JSON-Beispiele“.
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten verwendet werden.
 
@@ -102,10 +102,10 @@ In der folgenden Tabelle werden die JSON-Elemente beschrieben, die für den verk
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |JA |
+| type |Die Eigenschaft **type** muss auf **OnPremisesOracle** festgelegt sein. |Ja |
 | driverType | Legen Sie fest, welcher Treiber für das Kopieren von Daten aus einer bzw. in eine Oracle-Datenbank verwendet wird. Zulässige Werte sind **Microsoft** und **ODP** (Standardwert). Details zu den Treibern finden Sie unter [Unterstützte Versionen und Installation](#supported-versions-and-installation). | Nein  |
-| connectionString | Geben Sie Informationen, die für die Verbindung mit der Oracle-Datenbankinstanz erforderlich sind, für die Eigenschaft **connectionString** an. | JA |
-| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |JA |
+| connectionString | Geben Sie Informationen, die für die Verbindung mit der Oracle-Datenbankinstanz erforderlich sind, für die Eigenschaft **connectionString** an. | Ja |
+| gatewayName | Der Name des Gateways, das zum Herstellen einer Verbindung mit dem lokalen Oracle-Server verwendet wird. |Ja |
 
 **Beispiel: Verwenden des Microsoft-Treibers**
 
@@ -601,7 +601,7 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | BLOB |Byte[]<br/>(nur unterstützt für Oracle 10g oder höher bei Verwendung eines Microsoft-Treibers) |
 | CHAR |Zeichenfolge |
 | CLOB |Zeichenfolge |
-| DATE |Datetime |
+| DATE |DateTime |
 | FLOAT |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTEGER |Dezimal, Zeichenfolge (wenn Genauigkeit > 28) |
 | INTERVAL YEAR TO MONTH |Int32 |
@@ -614,9 +614,9 @@ Wenn Sie Daten aus Oracle verschieben, werden die folgenden Zuordnungen zwischen
 | NVARCHAR2 |Zeichenfolge |
 | RAW |Byte[] |
 | ROWID |Zeichenfolge |
-| TIMESTAMP |Datetime |
-| TIMESTAMP WITH LOCAL TIME ZONE |Datetime |
-| TIMESTAMP WITH TIME ZONE |Datetime |
+| TIMESTAMP |DateTime |
+| TIMESTAMP WITH LOCAL TIME ZONE |DateTime |
+| TIMESTAMP WITH TIME ZONE |DateTime |
 | UNSIGNED INTEGER |Number |
 | VARCHAR2 |Zeichenfolge |
 | XML |Zeichenfolge |

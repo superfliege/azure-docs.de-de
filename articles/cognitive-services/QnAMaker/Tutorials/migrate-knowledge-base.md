@@ -1,79 +1,66 @@
 ---
-title: 'Migrieren von Vorschauwissensdatenbanken: Qna Maker'
+title: 'Migrieren von Wissensdatenbanken: QnA Maker'
 titleSuffix: Azure Cognitive Services
-description: Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im Januar 2019 eingestellt.
+description: Informationen zum Verschieben einer Wissensdatenbank mithilfe von QnA Maker in eine neue Wissensdatenbank.
 services: cognitive-services
 author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/06/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 08373449b2e61da503ab785eda7d6df80d6d1c16
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 73f355a6e8c9373a5c31dd7cfebd4455aa324302
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227929"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809741"
 ---
-# <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Knowledge Base durch Exportieren und Importieren
-Auf der \\\Build\-Konferenz am 7. Mai 2018 wurde die allgemeine Verfügbarkeit von QnA Maker angekündigt. Für die allgemein verfügbare Version von QnA Maker wurde eine neue Architektur in Azure erstellt. Die mit der kostenlosen Vorschauversion von QnA Maker erstellten Knowledge Bases müssen zur allgemein verfügbaren Version von Maker migriert werden. Die Vorschauversion von QnA Maker wird im Januar 2019 eingestellt. Weitere Informationen zu den Änderungen in der allgemein verfügbaren Version von QnA Maker finden Sie im [Blogbeitrag](https://aka.ms/qnamakerga-blog) zur Ankündigung der allgemeinen Verfügbarkeit von QnA Maker.
+# <a name="migrate-a-knowledge-base-using-export-import"></a>Migrieren einer Wissensdatenbank durch Exportieren und Importieren
 
-QnA Maker verfügt jetzt über ein [Preismodell](https://azure.microsoft.com/pricing/details/cognitive-services/qna-maker/).
+Die Migration einer Wissensdatenbank erfordert den Export aus einer Wissensdatenbank und den Import in eine andere. 
 
-Voraussetzungen
-> [!div class="checklist"]
-> * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-> * Richten Sie einen neuen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md) ein.
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="migrate-a-knowledge-base-from-qna-maker-preview-portal"></a>Migrieren einer Knowledge Base aus dem QnA Maker-Vorschauportal
-1. Navigieren Sie zum [QnA Maker-Vorschauportal](https://aka.ms/qnamaker-old-portal
-), und klicken Sie auf **Meine Dienste**.
-2. Wählen Sie die zu migrierende Knowledge Base durch Klicken auf das Bearbeitungssymbol aus.
+* Erstellen Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), bevor Sie beginnen.
+* Richten Sie einen neuen [QnA Maker-Dienst](../How-To/set-up-qnamaker-service-azure.md) ein.
 
-    ![Bearbeiten der Knowledge Base](../media/qnamaker-how-to-migrate-kb/preview-editkb.png)
+## <a name="migrate-a-knowledge-base-from-qna-maker"></a>Migrieren einer Wissensdatenbank aus QnA Maker
+1. Melden Sie sich beim [QnA Maker-Portal](https://qnamaker.ai) an.
+1. Wählen Sie die Wissensdatenbank aus, die Sie migrieren möchten.
 
-3. Klicken Sie auf **Download knowledge base** (Knowledge Base herunterladen), um eine TSV-Datei mit dem Inhalt der Knowledge Base herunterzuladen, d.h. Fragen, Antworten, Metadaten und die Namen der Datenquellen, aus denen sie extrahiert wurden.
+1. Wählen Sie auf der Seite **Settings** (Einstellungen) die Option **Wissensdatenbank exportieren** (Export knowledge base), um eine TSV-Datei mit dem Inhalt der Wissensdatenbank herunterzuladen, d.h. Fragen, Antworten, Metadaten und die Namen der Datenquellen, aus denen sie extrahiert wurden.
 
-    ![Herunterladen der Knowledge Base](../media/qnamaker-how-to-migrate-kb/preview-download.png)
-
-4. Melden Sie sich mit Ihren Azure-Anmeldeinformationen am [QnA Maker-Portal](https://qnamaker.ai) an, und klicken Sie auf **Wissensdatenbank erstellen**.
-    
-5. Wenn Sie noch keinen QnA Maker-Dienst erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Wählen Sie andernfalls einen QnA Maker-Dienst in den Dropdownlisten in Schritt 2 aus. Wählen Sie einen QnA Maker-Dienst als Host für die Knowledge Base aus.
-
-    ![Einrichten eines QnA-Diensts](../media/qnamaker-how-to-create-kb/setup-qna-resource.png)
-
-6. Erstellen Sie eine leere Knowledge Base. 
+1. Wählen Sie im oberen Menü die Option **Create a knowledge base** (Wissensdatenbank erstellen) aus, um eine leere Wissensdatenbank zu erstellen. 
 
     ![Festlegen von Datenquellen](../media/qnamaker-how-to-create-kb/set-data-sources.png)
 
     - Weisen Sie dem Dienst einen **Namen** zu. Doppelte Namen werden ebenso wie Sonderzeichen unterstützt.
-    - Überspringen Sie den Schritt zum Hochladen von Dateien oder URLs, da Sie die Daten aus der Vorschau-Knowledge Base verwenden möchten. Sie erstellen zunächst eine leere Knowledge Base.
 
-7. Klicken Sie auf **Erstellen**.
+1. Klicken Sie auf **Erstellen**.
 
-    ![Erstellen der Knowledge Base](../media/qnamaker-how-to-create-kb/create-kb.png)
+    ![Erstellen der Wissensdatenbank](../media/qnamaker-how-to-create-kb/create-kb.png)
 
-8. Öffnen Sie in dieser neuen Knowledge Base die Registerkarte **Einstellungen**, und klicken Sie auf **Import knowledge base** (Knowledge Base importieren). Dadurch werden die Fragen, Antworten und Metadaten importiert und die Namen der Datenquellen beibehalten, aus denen sie extrahiert wurden.
+1. Öffnen Sie in dieser neuen Wissensdatenbank die Registerkarte **Einstellungen**, und klicken Sie auf **Import knowledge base** (Wissensdatenbank importieren). Dadurch werden die Fragen, Antworten und Metadaten importiert und die Namen der Datenquellen beibehalten, aus denen sie extrahiert wurden.
 
-   ![Importieren der Knowledge Base](../media/qnamaker-how-to-migrate-kb/Import.png)
+   ![Importieren der Wissensdatenbank](../media/qnamaker-how-to-migrate-kb/Import.png)
 
-9. **Testen** Sie die neue Knowledge Base im Testbereich. Erfahren Sie mehr über das [Testen Ihrer Knowledge Base](../How-To/test-knowledge-base.md).
-10. **Veröffentlichen** Sie die Knowledge Base. Erfahren Sie mehr über das [Veröffentlichen Ihrer Knowledge Base](../How-To/publish-knowledge-base.md).
-11. Verwenden Sie den folgenden Endpunkt in der Anwendung oder im Botcode. Informationen zum Erstellen eines QnA-Bots finden Sie [hier](../Tutorials/create-qna-bot.md).
+1. **Testen** Sie die neue Wissensdatenbank im Testbereich. Erfahren Sie mehr über das [Testen Ihrer Wissensdatenbank](../How-To/test-knowledge-base.md).
+1. **Veröffentlichen** Sie die Wissensdatenbank. Erfahren Sie mehr über das [Veröffentlichen Ihrer Wissensdatenbank](../How-To/publish-knowledge-base.md).
+1. Sie können den Endpunkt in Ihrer Anwendung oder im Botcode verwenden. Informationen zum Erstellen eines QnA-Bots finden Sie [hier](../Tutorials/create-qna-bot.md).
 
     ![QnA Maker-Werte](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
 
-Nun wird der gesamte Inhalt der Knowledge Base – Fragen, Antworten und Metadaten sowie die Namen der Quelldateien und der URLs – in die neue Knowledge Base importiert. 
+    Nun wird der gesamte Inhalt der Wissensdatenbank – Fragen, Antworten und Metadaten sowie die Namen der Quelldateien und der URLs – in die neue Wissensdatenbank importiert. 
 
-## <a name="chatlogs-and-alterations"></a>Chatlogs und Varianten
-Varianten (Synonyme) werden nicht automatisch importiert. Verwenden Sie die [V2-APIs](https://aka.ms/qnamaker-v2-apis), um die Varianten aus dem Vorschaustapel zu exportieren, und die [V4-APIs](https://aka.ms/qnamaker-v4-apis), um sie im neuen Stapel zu ersetzen.
+## <a name="chat-logs-and-alterations"></a>Chatlogs und Varianten
+Varianten (Synonyme) werden nicht automatisch importiert. Verwenden Sie die [V2-APIs](https://aka.ms/qnamaker-v2-apis), um die Varianten aus der alten Wissensdatenbank zu exportieren, und die [V4-APIs](https://aka.ms/qnamaker-v4-apis), um die Varianten in die neue Wissensdatenbank zu verschieben.
 
-Die Migration von Chatlogs ist nicht möglich, da der neue Stapel zum Speichern von Chatlogs Application Insights verwendet. Sie können die Chatlogs jedoch im [Vorschauportal](https://aka.ms/qnamaker-old-portal) herunterladen.
+Die Migration von Chatlogs ist nicht möglich, da die neue Wissensdatenbank Application Insights zum Speichern von Chatlogs verwendet. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Bearbeiten einer Knowledge Base](../How-To/edit-knowledge-base.md)
+> [Bearbeiten einer Wissensdatenbank](../How-To/edit-knowledge-base.md)

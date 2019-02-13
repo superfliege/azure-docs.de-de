@@ -1,8 +1,21 @@
 ---
-Titel: Erstellen von Webdienst-Endpunkten titleSuffix: Azure Machine Learning Studio Beschreibung: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 04.10.2016
+title: Erstellen von Webdienstendpunkten
+titleSuffix: Azure Machine Learning Studio
+description: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 10/04/2016
+ms.openlocfilehash: fc3a92aaf13f13682cfc56333618436ffe3d65ef
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493370"
 ---
 # <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Erstellen von Endpunkten für bereitgestellte Azure Machine Learning Studio-Webdienste
 > [!NOTE]

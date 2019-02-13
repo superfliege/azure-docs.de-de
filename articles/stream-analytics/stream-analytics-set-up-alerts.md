@@ -7,14 +7,14 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4c0d32a201da5befbc8b68148f0b051e283ec289
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 52db8217cc1e1f84d25ab896be9b42db3bf6bd81
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412388"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769487"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
 
@@ -46,17 +46,17 @@ Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingeric
 
    ![Einrichten einer Warnung für einen Azure Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Unter **RESSOURCE**, **BEDINGUNG** und **AKTIONSGRUPPEN** sollte jeweils ein Eintrag angezeigt werden.
+7. Unter **RESSOURCE**, **BEDINGUNG** und **AKTIONSGRUPPEN** sollte jeweils ein Eintrag angezeigt werden. Beachten Sie, dass Warnungen nur ausgelöst werden können, wenn die definierten Bedingungen erfüllt sind. Sie können beispielsweise für eine Metrik alle fünf Minuten den Durchschnittswert der letzten 15 Minuten messen.
 
    ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
    Fügen Sie unter **WARNUNGSDETAILS** den **Namen der Warnungsregel**, eine **Beschreibung** und Ihre **Ressourcengruppe** hinzu, und klicken Sie auf **Warnungsregel erstellen**, um die Regel für den Stream Analytics-Auftrag zu erstellen.
 
    ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
-
+   
 ## <a name="scenarios-to-monitor"></a>Szenarien für die Überwachung
 
-Zur Überwachung der Leistung des Stream Analytics-Auftrags werden die folgenden Warnungen empfohlen. Diese Metriken sollten in den letzten 5 Minuten einmal pro Minute ausgewertet werden. Wenn in einem Auftrag Leistungsprobleme auftreten, können Sie die Parallelisierung von Abfragen nutzen und die Anzahl der Streamingeinheiten erhöhen, um den Auftrag zu optimieren.
+Zur Überwachung der Leistung des Stream Analytics-Auftrags werden die folgenden Warnungen empfohlen. Diese Metriken sollten in den letzten 5 Minuten einmal pro Minute ausgewertet werden.
 
 |Metrik|Bedingung|Zeitaggregation|Schwellenwert|Korrekturmaßnahmen|
 |-|-|-|-|-|

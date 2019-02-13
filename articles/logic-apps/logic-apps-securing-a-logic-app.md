@@ -9,13 +9,13 @@ ms.author: klam
 ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
-ms.date: 01/08/2019
-ms.openlocfilehash: a7d34b76eb6184e546c8217aa6b3723819be70be
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.date: 02/05/2019
+ms.openlocfilehash: c3057934d960efd0a846ef31c5fac5abd63a21f6
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189529"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768467"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>Schützen des Zugriffs in Azure Logic Apps
 
@@ -120,7 +120,7 @@ Wenn Sie Ihre Logik-App nur als geschachtelte Logik-App auslösen möchten, wäh
 
 #### <a name="set-ip-ranges---logic-app-deployment-template"></a>Festlegen von IP-Adressbereichen – Bereitstellungsvorlage für Logik-Apps
 
-Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
+Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](../logic-apps/logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
 
 ``` json
 {
@@ -131,7 +131,7 @@ Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstel
          "triggers": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -176,13 +176,14 @@ Um diese Einschränkung im Azure-Portal einzurichten, wechseln Sie zu den Einste
 1. Wählen Sie im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
 
 1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > 
-**Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
+   **Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
 
-1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*. 
+1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können. 
+   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*. 
 
 ### <a name="set-ip-ranges---logic-app-deployment-template"></a>Festlegen von IP-Adressbereichen – Bereitstellungsvorlage für Logik-Apps
 
-Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
+Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstellungsvorlage](../logic-apps/logic-apps-create-deploy-template.md) automatisieren, können Sie die IP-Adressbereiche in dieser Vorlage festlegen, z.B.:
 
 ``` json
 {
@@ -193,7 +194,7 @@ Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstel
          "contents": {
             "allowedCallerIpAddresses": [
                {
-               "addressRange": "192.168.12.0/23"
+                  "addressRange": "192.168.12.0/23"
                },
                {
                   "addressRange": "2001:0db8::/64"
@@ -210,44 +211,99 @@ Wenn Sie Logik-App-Bereitstellungen mit einer [Azure Resource Manager-Bereitstel
 
 ## <a name="secure-action-parameters-and-inputs"></a>Sichere Aktionsparameter und Eingaben
 
-Wenn Sie die Bereitstellung über unterschiedliche Umgebungen ausführen, empfiehlt es sich, bestimmte Aspekte in der Workflowdefinition Ihrer Logik-App zu parametrisieren. Beispielsweise können Sie Parameter in der [Azure Resource Manager-Bereitstellungsvorlage](../azure-resource-manager/resource-group-authoring-templates.md#parameters) angeben. Um zur Laufzeit auf einen Parameterwert einer Ressource zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird. 
+Wenn Sie die Bereitstellung in unterschiedlichen Umgebungen durchführen, empfiehlt es sich, bestimmte Elemente in der Workflowdefinition Ihrer Logik-App zu parametrisieren. Auf diese Weise können Sie Eingaben basierend auf den verwendeten Umgebungen bereitstellen und vertrauliche Informationen schützen. Wenn Sie z.B. HTTP-Aktionen mit [Azure Active Directory](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication) authentifizieren, definieren und sichern Sie die Parameter, die die Client-ID und das Clientgeheimnis für die Authentifizierung verwenden. Für diese Parameter enthält die Definition der Logik-App einen eigenen `parameters`-Abschnitt.
+Um zur Laufzeit auf Parameterwerte zuzugreifen, können Sie den Ausdruck `@parameters('parameterName')` verwenden, der durch die [Definitionssprache für Workflows](https://aka.ms/logicappsdocs) bereitgestellt wird. 
 
-Sie können auch bestimmte Parameter absichern, die beim Bearbeiten des Workflows Ihrer Logik-App nicht angezeigt werden sollen, indem Sie den Parametertyp `securestring` verwenden. Sie können beispielsweise Parameter wie die Client-ID und das Clientgeheimnis für die Authentifizierung einer HTTP-Aktion mit [Azure Active Directory](../connectors/connectors-native-http.md#authentication) schützen.
-Wenn Sie als Parametertyp `securestring` angeben, wird der Parameter nicht mit der Ressourcendefinition zurückgegeben und ist nach der Bereitstellung nicht durch Anzeigen der Ressource zugänglich. 
+Um Parameter und Werte zu schützen, die beim Bearbeiten der Logik-App oder Anzeigen des Ausführungsverlaufs nicht angezeigt werden sollen, können Sie Parameter des Typs `securestring` definieren und bei Bedarf codieren. Parameter dieses Typs werden nicht mit der Ressourcendefinition zurückgegeben und sind beim Anzeigen der Ressource nach der Bereitstellung nicht zugänglich.
 
 > [!NOTE]
-> Wenn Sie einen Parameter in einem Anforderungsheader oder -text verwenden, kann dieser Parameter beim Zugreifen auf den Ausführungsverlauf Ihrer Logik-App und die ausgehende HTTP-Anforderung sichtbar sein. Achten Sie darauf, Ihre Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen.
+> Wenn Sie einen Parameter in einem Anforderungsheader oder -text verwenden, kann dieser Parameter beim Zugreifen auf den Ausführungsverlauf der Logik-App und die ausgehende HTTP-Anforderung sichtbar sein. Achten Sie auch darauf, die Richtlinien für den Zugriff auf Inhalte entsprechend festzulegen.
 > Autorisierungsheader sind nie über Eingaben oder Ausgaben sichtbar. Wenn hier ein Geheimnis verwendet wird, ist dieses daher nicht abrufbar.
 
-Dieses Beispiel zeigt eine Azure Resource Manager-Bereitstellungsvorlage, in der mehrere Laufzeitparameter vom Typ `securestring` verwendet werden: 
+Weitere Informationen zum Sichern von Parametern in Logik-App-Definitionen finden Sie weiter unten auf dieser Seite unter [Sichern von Parametern in Logik-App-Definitionen](#secure-parameters-workflow).
+
+Wenn Sie Bereitstellungen mit [Azure Resource Manager-Bereitstellungsvorlagen](../azure-resource-manager/resource-group-authoring-templates.md#parameters) automatisieren, können Sie in diesen Vorlagen auch gesicherte Parameter verwenden. Beispielsweise können Sie Parameter zum Abrufen von KeyVault-Geheimnissen verwenden, wenn Sie die Logik-App erstellen. Die Definition der Bereitstellungsvorlage enthält einen eigenen `parameters`-Abschnitt, der vom `parameters`-Abschnitt der Logik-App getrennt ist. Weitere Informationen zum Sichern von Parametern in Bereitstellungsvorlagen finden Sie weiter unten auf dieser Seite unter [Sichern von Parametern in Bereitstellungsvorlagen](#secure-parameters-deployment-template).
+
+<a name="secure-parameters-workflow"></a>
+
+### <a name="secure-parameters-in-logic-app-definitions"></a>Sichern von Parametern in Logik-App-Definitionen
+
+Verwenden Sie zum Schützen vertraulicher Informationen in der Workflowdefinition der Logik-App gesicherte Parameter, sodass diese Informationen nach dem Speichern der Logik-App nicht sichtbar sind. Angenommen, Sie verwenden beispielsweise den Authentifizierungstyp `Basic` in der Definition einer HTTP-Aktion. Das folgende Beispiel enthält einen `parameters`-Abschnitt, in dem die Parameter für die Aktionsdefinition definiert werden, und einen `authentication`-Abschnitt, in dem Werte für die Parameter `username` und `password` akzeptiert werden. Um Werte für diese Parameter anzugeben, können Sie eine separate Parameterdatei verwenden, z.B.:
+
+```json
+"definition": {
+   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+   "actions": {
+      "HTTP": {
+         "type": "Http",
+         "inputs": {
+            "method": "GET",
+            "uri": "http://www.microsoft.com",
+            "authentication": {
+               "type": "Basic",
+               "username": "@parameters('usernameParam')",
+               "password": "@parameters('passwordParam')"
+            }
+         },
+         "runAfter": {}
+      }
+   },
+   "parameters": {
+      "passwordParam": {
+         "type": "securestring"
+      },
+      "userNameParam": {
+         "type": "securestring"
+      }
+   },
+   "triggers": {
+      "manual": {
+         "type": "Request",
+         "kind": "Http",
+         "inputs": {
+            "schema": {}
+         }
+      }
+   },
+   "contentVersion": "1.0.0.0",
+   "outputs": {}
+}
+```
+
+Wenn Sie Geheimnisse verwenden, können Sie diese Geheimnisse bei der Bereitstellung mithilfe des [Azure Resource Manager-Schlüsseltresors](../azure-resource-manager/resource-manager-keyvault-parameter.md) abrufen.
+
+<a name="secure-parameters-deployment-template"></a>
+
+### <a name="secure-parameters-in-azure-resource-manager-deployment-templates"></a>Sichern von Parametern in Azure Resource Manager-Bereitstellungsvorlagen
+
+Das folgende Beispiel zeigt eine Resource Manager-Bereitstellungsvorlage, in der mehrere Laufzeitparameter vom Typ `securestring` verwendet werden:
 
 * `armTemplatePasswordParam` als Eingabe für den Parameter `logicAppWfParam` der Logik-App-Definition
 
 * `logicAppWfParam` als Eingabe für die HTTP-Aktion mit Standardauthentifizierung
 
-Sie können in einer separaten Parameterdatei den Umgebungswert für den Parameter `armTemplatePasswordParam` angeben oder Geheimnisse bei der Bereitstellung mithilfe des [Azure Resource Manager-Schlüsseltresors](../azure-resource-manager/resource-manager-keyvault-parameter.md) abrufen.
-Der innere Abschnitt `parameters` gehört zur Workflowdefinition Ihrer Logik-App und der äußere Abschnitt `parameters` zu Ihrer Bereitstellungsvorlage.
+Das Beispiel enthält einen inneren `parameters`-Abschnitt, der zur Workflowdefinition der Logik-App gehört, und einen äußeren `parameters`-Abschnitt, der zu der Bereitstellungsvorlage gehört. Um die Umgebungswerte für Parameter anzugeben, können Sie eine separate Parameterdatei verwenden. 
 
 ```json
 {
    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
    "contentVersion": "1.0.0.0",
    "parameters": {
-      "logicAppName": {       
+      "logicAppName": {
          "type": "string",
          "minLength": 1,
          "maxLength": 80,
-         "metadata": {         
-            "description": "Name of the Logic App."       
-         }     
+         "metadata": {
+            "description": "Name of the Logic App."
+         }
       },
       "armTemplatePasswordParam": {
-         "type": "securestring"     
-      },     
-      "logicAppLocation": {       
+         "type": "securestring"
+      },
+      "logicAppLocation": {
          "type": "string",
          "defaultValue": "[resourceGroup().location]",
-         "allowedValues": [         
+         "allowedValues": [
             "[resourceGroup().location]",
             "eastasia",
             "southeastasia",
@@ -281,7 +337,7 @@ Der innere Abschnitt `parameters` gehört zur Workflowdefinition Ihrer Logik-App
    },
    "variables": {},
    "resources": [
-      {       
+      {
          "name": "[parameters('logicAppName')]",
          "type": "Microsoft.Logic/workflows",
          "location": "[parameters('logicAppLocation')]",
@@ -300,15 +356,18 @@ Der innere Abschnitt `parameters` gehört zur Workflowdefinition Ihrer Logik-App
                         "uri": "http://www.microsoft.com",
                         "authentication": {
                            "type": "Basic",
-                           "username": "username",
-                              "password": "@parameters('logicAppWfParam')"
+                           "username": "@parameters('usernameParam')",
+                           "password": "@parameters('logicAppWfParam')"
                         }
                      },
                   "runAfter": {}
                   }
                },
-               "parameters": { 
+               "parameters": {
                   "logicAppWfParam": {
+                     "type": "securestring"
+                  },
+                  "userNameParam": {
                      "type": "securestring"
                   }
                },
@@ -332,9 +391,11 @@ Der innere Abschnitt `parameters` gehört zur Workflowdefinition Ihrer Logik-App
          }
       }
    ],
-   "outputs": {} 
-}   
+   "outputs": {}
+}
 ```
+
+Wenn Sie Geheimnisse verwenden, können Sie diese Geheimnisse bei der Bereitstellung mithilfe des [Azure Resource Manager-Schlüsseltresors](../azure-resource-manager/resource-manager-keyvault-parameter.md) abrufen.
 
 <a name="secure-requests"></a>
 
@@ -344,7 +405,7 @@ Hier finden Sie einige Möglichkeiten, einen beliebigen Endpunkt zu schützen, a
 
 ### <a name="add-authentication-on-outbound-requests"></a>Hinzufügen von Authentifizierung für ausgehende Anforderungen
 
-Bei der Arbeit mit einer Aktion vom Typ HTTP, HTTP + Swagger (offene API) oder Webhook können Sie der von Ihrer Logik-App gesendeten Anforderung eine Authentifizierung hinzufügen. Beispielsweise können Sie eine grundlegende Authentifizierung, eine Zertifikatauthentifizierung oder eine Azure Active Directory-Authentifizierung verwenden. Weitere Informationen finden Sie unter [Authentifizieren von Triggern oder Aktionen](logic-apps-workflow-actions-triggers.md#connector-authentication) und [Authentifizierung für HTTP-Aktionen](../connectors/connectors-native-http.md#authentication).
+Bei der Arbeit mit einer Aktion vom Typ HTTP, HTTP + Swagger (offene API) oder Webhook können Sie der von Ihrer Logik-App gesendeten Anforderung eine Authentifizierung hinzufügen. Beispielsweise können Sie eine grundlegende Authentifizierung, eine Zertifikatauthentifizierung oder eine Azure Active Directory-Authentifizierung verwenden. Weitere Informationen finden Sie unter [Authentifizieren von Triggern oder Aktionen](../logic-apps/logic-apps-workflow-actions-triggers.md#connector-authentication).
 
 ### <a name="restrict-access-to-logic-app-ip-addresses"></a>Einschränken des Zugriffs auf IP-Adressen von Logik-Apps
 

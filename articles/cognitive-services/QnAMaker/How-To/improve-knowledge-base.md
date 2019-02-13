@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 01/29/2019
 ms.author: diberry
-ms.openlocfilehash: 7f519729f3ad94324b847ca6b15b254ea7c6abbb
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 639b665926f54387dfdc6e837c15c8d6d28df925
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463734"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755763"
 ---
 # <a name="use-active-learning-to-improve-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern der Wissensdatenbank
 
@@ -58,7 +58,7 @@ Der Algorithmus zur Bestimmung der Nähe ist keine einfache Berechnung. Die Bere
 
 Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie das Feature, um die vorgeschlagenen Fragen anzuzeigen. 
 
-1. Um das Feature für aktives Lernen zu aktivieren, wechseln Sie in der oberen rechten Ecke des QnA Maker-Portals zu den **Diensteinstellungen**.  
+1. Um das Feature für aktives Lernen zu aktivieren, klicken Sie auf Ihren **Namen**. Wechseln Sie dann rechts oben im QnA Maker-Portal zu [**Diensteinstellungen**](https://www.qnamaker.ai/UserSettings).  
 
     ![Aktivieren des Features für aktives Lernen auf der Seite mit den Diensteinstellungen](../media/improve-knowledge-base/Endpoint-Keys.png)
 

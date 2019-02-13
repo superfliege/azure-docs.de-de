@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 1/24/2019
 ms.author: tomfitz
-ms.openlocfilehash: fc085a94e2412ff21b09755102f79636a0b0d3b5
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d9892b158eae1a83ab1f8eed6c14224e1d4bca15
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884944"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509909"
 ---
 # <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
 In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
@@ -19,7 +19,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftaad"></a>Microsoft.AAD
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| DomainServices | JA | 
+| DomainServices | Ja | 
 | DomainServices/oucontainer | Nein  | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
@@ -68,13 +68,13 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
+| servers | Ja | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | reportFeedback | Nein  | 
-| service | JA | 
+| service | Ja | 
 | validateServiceName | Nein  | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
@@ -100,10 +100,10 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftautomation"></a>Microsoft.Automation
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| automationAccounts | JA | 
-| automationAccounts/configurations | JA | 
+| automationAccounts | Ja | 
+| automationAccounts/configurations | Ja | 
 | automationAccounts/jobs | Nein  | 
-| automationAccounts/runbooks | JA | 
+| automationAccounts/runbooks | Ja | 
 | automationAccounts/softwareUpdateConfigurations | Nein  | 
 | automationAccounts/webhooks | Nein  | 
 
@@ -118,19 +118,19 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| b2cDirectories | JA | 
+| b2cDirectories | Ja | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| registrations | JA | 
+| registrations | Ja | 
 | registrations/customerSubscriptions | Nein  | 
 | registrations/products | Nein  | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| batchAccounts | JA | 
+| batchAccounts | Ja | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
 | Ressourcentyp | Tagunterstützung |
@@ -189,13 +189,13 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| mapApis | JA | 
+| mapApis | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| BizTalk | JA | 
+| BizTalk | Ja | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
 | Ressourcentyp | Tagunterstützung |
@@ -211,14 +211,14 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| botServices | JA | 
+| botServices | Ja | 
 | botServices/channels | Nein  | 
 | botServices/connections | Nein  | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Redis | JA | 
+| Redis | Ja | 
 | RedisConfigDefinition | Nein  | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
@@ -244,8 +244,8 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | edgenodes | Nein  | 
-| profiles | JA | 
-| profiles/endpoints | JA | 
+| profiles | Ja | 
+| profiles/endpoints | Ja | 
 | profiles/endpoints/customdomains | Nein  | 
 | profiles/endpoints/origins | Nein  | 
 | validateProbe | Nein  | 
@@ -253,7 +253,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| certificateOrders | JA | 
+| certificateOrders | Ja | 
 | certificateOrders/certificates | Nein  | 
 | validateCertificateRegistrationInformation | Nein  | 
 
@@ -314,7 +314,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
 | Ressourcentyp | Tagunterstützung |
@@ -325,18 +325,18 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| availabilitySets | JA | 
-| disks | JA | 
-| images | JA | 
-| restorePointCollections | JA | 
+| availabilitySets | Ja | 
+| disks | Ja | 
+| images | Ja | 
+| restorePointCollections | Ja | 
 | restorePointCollections/restorePoints | Nein  | 
-| sharedVMImages | JA | 
-| sharedVMImages/versions | JA | 
-| snapshots | JA | 
-| virtualMachines | JA | 
+| sharedVMImages | Ja | 
+| sharedVMImages/versions | Ja | 
+| snapshots | Ja | 
+| virtualMachines | Ja | 
 | virtualMachines/diagnosticSettings | Nein  | 
-| virtualMachines/extensions | JA | 
-| virtualMachineScaleSets | JA | 
+| virtualMachines/extensions | Ja | 
+| virtualMachineScaleSets | Ja | 
 | virtualMachineScaleSets/extensions | Nein  | 
 | virtualMachineScaleSets/networkInterfaces | Nein  | 
 | virtualMachineScaleSets/publicIPAddresses | Nein  | 
@@ -369,17 +369,17 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| containerGroups | JA | 
+| containerGroups | Ja | 
 | serviceAssociationLinks | Nein  | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| registries | JA | 
+| registries | Ja | 
 | registries/builds | Nein  | 
 | registries/builds/cancel | Nein  | 
 | registries/builds/getLogLink | Nein  | 
-| registries/buildTasks | JA | 
+| registries/buildTasks | Ja | 
 | registries/buildTasks/steps | Nein  | 
 | registries/eventGridFilters | Nein  | 
 | registries/getBuildSourceUploadUrl | Nein  | 
@@ -388,39 +388,39 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | registries/queueBuild | Nein  | 
 | registries/regenerateCredential | Nein  | 
 | registries/regenerateCredentials | Nein  | 
-| registries/replications | JA | 
+| registries/replications | Ja | 
 | registries/runs | Nein  | 
 | registries/runs/cancel | Nein  | 
 | registries/scheduleRun | Nein  | 
-| registries/tasks | JA | 
+| registries/tasks | Ja | 
 | registries/updatePolicies | Nein  | 
-| registries/webhooks | JA | 
+| registries/webhooks | Ja | 
 | registries/webhooks/getCallbackConfig | Nein  | 
 | registries/webhooks/ping | Nein  | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| containerServices | JA | 
-| managedClusters | JA | 
+| containerServices | Ja | 
+| managedClusters | Ja | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| applications | JA | 
+| applications | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Alerts | Nein  | 
 | BillingAccounts | Nein  | 
-| Connectors | JA | 
+| Connectors | Ja | 
 | Departments | Nein  | 
 | Dimensionen | Nein  | 
 | EnrollmentAccounts | Nein  | 
@@ -432,7 +432,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| hubs | JA | 
+| hubs | Ja | 
 | hubs/authorizationPolicies | Nein  | 
 | hubs/connectors | Nein  | 
 | hubs/connectors/mappings | Nein  | 
@@ -449,42 +449,42 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| jobs | JA | 
+| jobs | Ja | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| DataBoxEdgeDevices | JA | 
+| DataBoxEdgeDevices | Ja | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| workspaces | JA | 
+| workspaces | Ja | 
 | workspaces/virtualNetworkPeerings | Nein  | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| catalogs | JA | 
+| catalogs | Ja | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| connectionManagers | JA | 
+| connectionManagers | Ja | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| dataFactories | JA | 
+| dataFactories | Ja | 
 | dataFactories/diagnosticSettings | Nein  | 
 | dataFactorySchema | Nein  | 
-| factories | JA | 
+| factories | Ja | 
 | factories/integrationRuntimes | Nein  | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 | accounts/dataLakeStoreAccounts | Nein  | 
 | accounts/storageAccounts | Nein  | 
 | accounts/storageAccounts/containers | Nein  | 
@@ -492,34 +492,34 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 | accounts/eventGridFilters | Nein  | 
 | accounts/firewallRules | Nein  | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| services | JA | 
-| services/projects | JA | 
+| services | Ja | 
+| services/projects | Ja | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
+| servers | Ja | 
 | servers/recoverableServers | Nein  | 
 | servers/virtualNetworkRules | Nein  | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
+| servers | Ja | 
 | servers/recoverableServers | Nein  | 
 | servers/virtualNetworkRules | Nein  | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| servers | JA | 
+| servers | Ja | 
 | servers/advisors | Nein  | 
 | servers/queryTexts | Nein  | 
 | servers/recoverableServers | Nein  | 
@@ -530,34 +530,34 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| IotHubs | JA | 
+| IotHubs | Ja | 
 | IotHubs/eventGridFilters | Nein  | 
-| ProvisioningServices | JA | 
+| ProvisioningServices | Ja | 
 | usages | Nein  | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Controller | JA | 
+| Controller | Ja | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| labs | JA | 
-| labs/serviceRunners | JA | 
-| labs/virtualMachines | JA | 
-| schedules | JA | 
+| labs | Ja | 
+| labs/serviceRunners | Ja | 
+| labs/virtualMachines | Ja | 
+| schedules | Ja | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | databaseAccountNames | Nein  | 
-| databaseAccounts | JA | 
+| databaseAccounts | Ja | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| domains | JA | 
+| domains | Ja | 
 | domains/domainOwnershipIdentifiers | Nein  | 
 | generateSsoRequest | Nein  | 
 | topLevelDomains | Nein  | 
@@ -573,18 +573,18 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| domains | JA | 
+| domains | Ja | 
 | domains/topics | Nein  | 
 | eventSubscriptions | Nein  | 
 | extensionTopics | Nein  | 
-| topics | JA | 
+| topics | Ja | 
 | topicTypes | Nein  | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| clusters | JA | 
-| namespaces | JA | 
+| clusters | Ja | 
+| namespaces | Ja | 
 | namespaces/authorizationrules | Nein  | 
 | namespaces/disasterrecoveryconfigs | Nein  | 
 | namespaces/eventhubs | Nein  | 
@@ -622,18 +622,18 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| hanaInstances | JA | 
+| hanaInstances | Ja | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| clusters | JA | 
+| clusters | Ja | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| jobs | JA | 
+| jobs | Ja | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
 | Ressourcentyp | Tagunterstützung |
@@ -647,14 +647,14 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftinsights"></a>microsoft.insights
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| actiongroups | JA | 
-| activityLogAlerts | JA | 
-| alertrules | JA | 
+| actiongroups | Ja | 
+| activityLogAlerts | Ja | 
+| alertrules | Ja | 
 | automatedExportSettings | Nein  | 
-| autoscalesettings | JA | 
+| autoscalesettings | Ja | 
 | baseline | Nein  | 
 | calculatebaseline | Nein  | 
-| components | JA | 
+| components | Ja | 
 | components/events | Nein  | 
 | components/pricingPlans | Nein  | 
 | components/query | Nein  | 
@@ -666,14 +666,15 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | logDefinitions | Nein  | 
 | logprofiles | Nein  | 
 | Protokolle | Nein  | 
+| metricAlerts | Ja |
 | migrateToNewPricingModel | Nein  | 
 | myWorkbooks | Nein  | 
 | Abfragen | Nein  | 
 | rollbackToLegacyPricingModel | Nein  | 
-| scheduledqueryrules | JA | 
+| scheduledqueryrules | Ja | 
 | vmInsightsOnboardingStatuses | Nein  | 
-| webtests | JA | 
-| workbooks | JA | 
+| webtests | Ja | 
+| workbooks | Ja | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 | Ressourcentyp | Tagunterstützung |
@@ -684,25 +685,25 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| IoTApps | JA | 
+| IoTApps | Ja | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| Graph | JA | 
+| Graph | Ja | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | deletedVaults | Nein  | 
-| vaults | JA | 
+| vaults | Ja | 
 | vaults/accessPolicies | Nein  | 
 | vaults/secrets | Nein  | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| clusters | JA | 
+| clusters | Ja | 
 | clusters/databases | Nein  | 
 | clusters/databases/dataconnections | Nein  | 
 | clusters/databases/eventhubconnections | Nein  | 
@@ -710,18 +711,18 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| labaccounts | JA | 
+| labaccounts | Ja | 
 | users | Nein  | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
 | Ressourcentyp | Tagunterstützung |
@@ -731,42 +732,42 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftlogic"></a>Microsoft.Logic
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| integrationAccounts | JA | 
-| workflows | JA | 
+| integrationAccounts | Ja | 
+| workflows | Ja | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| commitmentPlans | JA | 
-| webServices | JA | 
-| Arbeitsbereiche | JA | 
+| commitmentPlans | Ja | 
+| webServices | Ja | 
+| Arbeitsbereiche | Ja | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
-| accounts/workspaces | JA | 
-| accounts/workspaces/projects | JA | 
-| teamAccounts | JA | 
-| teamAccounts/workspaces | JA | 
-| teamAccounts/workspaces/projects | JA | 
+| accounts | Ja | 
+| accounts/workspaces | Ja | 
+| accounts/workspaces/projects | Ja | 
+| teamAccounts | Ja | 
+| teamAccounts/workspaces | Ja | 
+| teamAccounts/workspaces/projects | Ja | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| workspaces | JA | 
+| workspaces | Ja | 
 | workspaces/computes | Nein  | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | Identities | Nein  | 
-| userAssignedIdentities | JA | 
+| userAssignedIdentities | Ja | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
 | Ressourcentyp | Tagunterstützung |
@@ -780,7 +781,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftmaps"></a>Microsoft.Maps
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 | accounts/eventGridFilters | Nein  | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
@@ -800,7 +801,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| classicDevServices | JA | 
+| classicDevServices | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
@@ -812,18 +813,18 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftmedia"></a>Microsoft.Media
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| mediaservices | JA | 
+| mediaservices | Ja | 
 | mediaservices/accountFilters | Nein  | 
 | mediaservices/assets | Nein  | 
 | mediaservices/assets/assetFilters | Nein  | 
 | mediaservices/contentKeyPolicies | Nein  | 
 | mediaservices/eventGridFilters | Nein  | 
 | mediaservices/liveEventOperations | Nein  | 
-| mediaservices/liveEvents | JA | 
+| mediaservices/liveEvents | Ja | 
 | mediaservices/liveEvents/liveOutputs | Nein  | 
 | mediaservices/liveOutputOperations | Nein  | 
 | mediaservices/streamingEndpointOperations | Nein  | 
-| mediaservices/streamingEndpoints | JA | 
+| mediaservices/streamingEndpoints | Ja | 
 | mediaservices/streamingLocators | Nein  | 
 | mediaservices/streamingPolicies | Nein  | 
 | mediaservices/transforms | Nein  | 
@@ -832,21 +833,21 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| projects | JA | 
+| projects | Ja | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| applicationGateways | JA | 
-| applicationSecurityGroups | JA | 
+| applicationGateways | Ja | 
+| applicationSecurityGroups | Ja | 
 | azureFirewallFqdnTags | Nein  | 
-| azureFirewalls | JA | 
+| azureFirewalls | Ja | 
 | bgpServiceCommunities | Nein  | 
-| connections | JA | 
-| ddosCustomPolicies | JA | 
-| ddosProtectionPlans | JA | 
+| connections | Ja | 
+| ddosCustomPolicies | Ja | 
+| ddosProtectionPlans | Ja | 
 | dnsOperationStatuses | Nein  | 
-| dnszones | JA | 
+| dnszones | Ja | 
 | dnszones/A | Nein  | 
 | dnszones/AAAA | Nein  | 
 | dnszones/all | Nein  | 
@@ -859,47 +860,47 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | dnszones/SOA | Nein  | 
 | dnszones/SRV | Nein  | 
 | dnszones/TXT | Nein  | 
-| expressRouteCircuits | JA | 
+| expressRouteCircuits | Ja | 
 | expressRouteServiceProviders | Nein  | 
-| frontdoors | JA | 
-| frontdoorWebApplicationFirewallPolicies | JA | 
+| frontdoors | Ja | 
+| frontdoorWebApplicationFirewallPolicies | Ja | 
 | getDnsResourceReference | Nein  | 
-| interfaceEndpoints | JA | 
+| interfaceEndpoints | Ja | 
 | internalNotify | Nein  | 
-| loadBalancers | JA | 
-| localNetworkGateways | JA | 
-| natGateways | JA | 
-| networkIntentPolicies | JA | 
-| networkInterfaces | JA | 
-| networkProfiles | JA | 
-| networkSecurityGroups | JA | 
-| networkWatchers | JA | 
-| networkWatchers/connectionMonitors | JA | 
-| networkWatchers/lenses | JA | 
-| networkWatchers/pingMeshes | JA | 
-| privateLinkServices | JA | 
-| publicIPAddresses | JA | 
-| publicIPPrefixes | JA | 
-| routeFilters | JA | 
-| routeTables | JA | 
-| serviceEndpointPolicies | JA | 
+| loadBalancers | Ja | 
+| localNetworkGateways | Ja | 
+| natGateways | Ja | 
+| networkIntentPolicies | Ja | 
+| networkInterfaces | Ja | 
+| networkProfiles | Ja | 
+| networkSecurityGroups | Ja | 
+| networkWatchers | Ja | 
+| networkWatchers/connectionMonitors | Ja | 
+| networkWatchers/lenses | Ja | 
+| networkWatchers/pingMeshes | Ja | 
+| privateLinkServices | Ja | 
+| publicIPAddresses | Ja | 
+| publicIPPrefixes | Ja | 
+| routeFilters | Ja | 
+| routeTables | Ja | 
+| serviceEndpointPolicies | Ja | 
 | trafficManagerGeographicHierarchies | Nein  | 
-| trafficmanagerprofiles | JA | 
+| trafficmanagerprofiles | Ja | 
 | trafficmanagerprofiles/heatMaps | Nein  | 
-| virtualHubs | JA | 
-| virtualNetworkGateways | JA | 
-| virtualNetworks | JA | 
-| virtualNetworkTaps | JA | 
-| virtualWans | JA | 
-| vpnGateways | JA | 
-| vpnSites | JA | 
-| webApplicationFirewallPolicies | JA | 
+| virtualHubs | Ja | 
+| virtualNetworkGateways | Ja | 
+| virtualNetworks | Ja | 
+| virtualNetworkTaps | Ja | 
+| virtualWans | Ja | 
+| vpnGateways | Ja | 
+| vpnSites | Ja | 
+| webApplicationFirewallPolicies | Ja | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| namespaces | JA | 
-| namespaces/notificationHubs | JA | 
+| namespaces | Ja | 
+| namespaces/notificationHubs | Ja | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | Ressourcentyp | Tagunterstützung |
@@ -907,7 +908,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | devices | Nein  | 
 | linkTargets | Nein  | 
 | storageInsightConfigs | Nein  | 
-| workspaces | JA | 
+| workspaces | Ja | 
 | workspaces/dataSources | Nein  | 
 | workspaces/linkedServices | Nein  | 
 | workspaces/query | Nein  | 
@@ -916,9 +917,9 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | managementassociations | Nein  | 
-| managementconfigurations | JA | 
-| solutions | JA | 
-| views | JA | 
+| managementconfigurations | Ja | 
+| solutions | Ja | 
+| views | Ja | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
 | Ressourcentyp | Tagunterstützung |
@@ -932,34 +933,34 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | consoles | Nein  | 
-| dashboards | JA | 
+| dashboards | Ja | 
 | userSettings | Nein  | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| workspaceCollections | JA | 
+| workspaceCollections | Ja | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| capacities | JA | 
+| capacities | Ja | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| accounts | JA | 
+| accounts | Ja | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | backupProtectedItems | Nein  | 
-| vaults | JA | 
+| vaults | Ja | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| namespaces | JA | 
+| namespaces | Ja | 
 | namespaces/authorizationrules | Nein  | 
 | namespaces/hybridconnections | Nein  | 
 | namespaces/hybridconnections/authorizationrules | Nein  | 
@@ -1004,20 +1005,20 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| applications | JA | 
+| applications | Ja | 
 | saasresources | Nein  | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| flows | JA | 
-| jobcollections | JA | 
+| flows | Ja | 
+| jobcollections | Ja | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
 | resourceHealthMetadata | Nein  | 
-| searchServices | JA | 
+| searchServices | Ja | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
 | Ressourcentyp | Tagunterstützung |
@@ -1063,7 +1064,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| namespaces | JA | 
+| namespaces | Ja | 
 | namespaces/authorizationrules | Nein  | 
 | namespaces/disasterrecoveryconfigs | Nein  | 
 | namespaces/eventgridfilters | Nein  | 
@@ -1078,37 +1079,37 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| clusters | JA | 
+| clusters | Ja | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| applications | JA | 
-| gateways | JA | 
-| networks | JA | 
-| secrets | JA | 
-| volumes | JA | 
+| applications | Ja | 
+| gateways | Ja | 
+| networks | Ja | 
+| secrets | Ja | 
+| volumes | Ja | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| SignalR | JA | 
+| SignalR | Ja | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| applianceDefinitions | JA | 
-| appliances | JA | 
-| applicationDefinitions | JA | 
-| applications | JA | 
-| jitRequests | JA | 
+| applianceDefinitions | Ja | 
+| appliances | Ja | 
+| applicationDefinitions | Ja | 
+| applications | Ja | 
+| jitRequests | Ja | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| managedInstances | JA |
-| managedInstances/databases | JA |
+| managedInstances | Ja |
+| managedInstances/databases | Ja (siehe Hinweis unten) |
 | managedInstances/databases/backupShortTermRetentionPolicies | Nein  |
 | managedInstances/databases/schemas/tables/columns/sensitivityLabels | Nein  |
 | managedInstances/databases/vulnerabilityAssessments | Nein  |
@@ -1117,27 +1118,31 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | managedInstances/keys | Nein  |
 | managedInstances/restorableDroppedDatabases/backupShortTermRetentionPolicies | Nein  |
 | managedInstances/vulnerabilityAssessments | Nein  |
-| servers | JA | 
+| servers | Ja | 
 | servers/administrators | Nein  | 
 | servers/communicationLinks | Nein  | 
-| servers/databases | JA | 
+| servers/databases | Ja (siehe Hinweis unten) | 
 | servers/encryptionProtector | Nein  | 
 | servers/keys | Nein  | 
 | servers/restorableDroppedDatabases | Nein  | 
 | servers/serviceobjectives | Nein  | 
 | servers/tdeCertificates | Nein  | 
 
+> [!NOTE]
+> Die Masterdatenbank unterstützt keine Tags, aber Tags werden von anderen Datenbanken unterstützt.
+
+
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| SqlVirtualMachineGroups | JA | 
+| SqlVirtualMachineGroups | Ja | 
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nein  | 
-| SqlVirtualMachines | JA | 
+| SqlVirtualMachines | Ja | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| storageAccounts | JA | 
+| storageAccounts | Ja | 
 | storageAccounts/blobServices | Nein  | 
 | storageAccounts/fileServices | Nein  | 
 | storageAccounts/queueServices | Nein  | 
@@ -1148,7 +1153,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| storageSyncServices | JA | 
+| storageSyncServices | Ja | 
 | storageSyncServices/registeredServers | Nein  | 
 | storageSyncServices/syncGroups | Nein  | 
 | storageSyncServices/syncGroups/cloudEndpoints | Nein  | 
@@ -1158,13 +1163,16 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| managers | JA | 
+| managers | Ja | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| streamingjobs | JA | 
+| streamingjobs | Ja (siehe Hinweis unten) | 
 | streamingjobs/diagnosticSettings | Nein  | 
+
+> [!NOTE]
+> Sie können kein Tag hinzufügen, wenn Streamingaufträge ausgeführt werden. Beenden Sie die Ressource, um ein Tag hinzuzufügen.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
 | Ressourcentyp | Tagunterstützung |
@@ -1181,23 +1189,23 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| providerRegistrations | JA | 
-| ressourcen | JA | 
+| providerRegistrations | Ja | 
+| ressourcen | Ja | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| environments | JA | 
+| environments | Ja | 
 | environments/accessPolicies | Nein  | 
-| environments/eventsources | JA | 
-| environments/referenceDataSets | JA | 
+| environments/eventsources | Ja | 
+| environments/referenceDataSets | Ja | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| account | JA | 
-| account/extension | JA | 
-| account/project | JA | 
+| account | Ja | 
+| account/extension | Ja | 
+| account/project | Ja | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
 | Ressourcentyp | Tagunterstützung |
@@ -1213,13 +1221,13 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | apiManagementAccounts/connectionAcls | Nein  | 
 | apiManagementAccounts/connections | Nein  | 
 | billingMeters | Nein  | 
-| certificates | JA | 
-| connectionGateways | JA | 
-| connections | JA | 
-| customApis | JA | 
+| certificates | Ja | 
+| connectionGateways | Ja | 
+| connections | Ja | 
+| customApis | Ja | 
 | deletedSites | Nein  | 
 | functions | Nein  | 
-| hostingEnvironments | JA | 
+| hostingEnvironments | Ja | 
 | hostingEnvironments/multiRolePools | Nein  | 
 | hostingEnvironments/multiRolePools/instances | Nein  | 
 | hostingEnvironments/workerPools | Nein  | 
@@ -1228,17 +1236,17 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 | empfehlungen | Nein  | 
 | resourceHealthMetadata | Nein  | 
 | runtimes | Nein  | 
-| serverFarms | JA | 
+| serverFarms | Ja | 
 | serverFarms/workers | Nein  | 
-| sites | JA | 
+| sites | Ja | 
 | sites/domainOwnershipIdentifiers | Nein  | 
 | sites/hostNameBindings | Nein  | 
 | sites/instances | Nein  | 
 | sites/instances/extensions | Nein  | 
-| sites/premieraddons | JA | 
+| sites/premieraddons | Ja | 
 | sites/recommendations | Nein  | 
 | sites/resourceHealthMetadata | Nein  | 
-| sites/slots | JA | 
+| sites/slots | Ja | 
 | sites/slots/hostNameBindings | Nein  | 
 | sites/slots/instances | Nein  | 
 | sites/slots/instances/extensions | Nein  | 
@@ -1255,7 +1263,7 @@ In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
 | Ressourcentyp | Tagunterstützung |
 | ------------- | ----------- |
-| DeviceServices | JA | 
+| DeviceServices | Ja | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
 | Ressourcentyp | Tagunterstützung |

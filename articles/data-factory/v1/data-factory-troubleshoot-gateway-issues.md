@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b39fb3ed6dbcf8fde2dadf0de59d154285eb8587
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54022537"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813839"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -138,7 +138,7 @@ Es wird möglicherweise die folgende Fehlermeldung angezeigt.
 Dieser Fehler tritt auf, wenn das Gateway sich in einer Umgebung befindet, in der ein HTTP-Proxy für den Zugriff auf Internetressourcen benötigt wird, oder wenn das Authentifizierungskennwort des Proxys geändert, aber nicht entsprechend im Gateway aktualisiert wurde.
 
 #### <a name="resolution"></a>Lösung
-Führen Sie die Anweisungen im Abschnitt [Aspekte zu Proxyservern](#proxy-server-considerations) in diesem Dokument aus, und konfigurieren Sie die Proxyeinstellungen mit dem Datenverwaltungsgateway-Konfigurations-Manager.
+Führen Sie die Anweisungen im Abschnitt „Aspekte zu Proxyservern“ in diesem Artikel aus, und konfigurieren Sie die Proxyeinstellungen mit dem Datenverwaltungsgateway-Konfigurations-Manager.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Gateway ist online mit eingeschränkter Funktionalität
 ### <a name="1-problem"></a>1. Problem
@@ -169,8 +169,8 @@ Das Gateway kann über Service Bus keine Verbindung mit dem Clouddienst herstell
 Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
 
 1. Lassen Sie Regeln für ausgehende IP-Adressen auf dem Gatewaycomputer und in der Unternehmensfirewall zu. Sie finden IP-Adressen im Windows-Ereignisprotokoll (ID == 401): Es wurde versucht, auf eine Socket in einer Weise zuzugreifen, die gemäß ihren Zugriffsberechtigungen XX.XX.XX.XX:9350 unzulässig ist.
-* Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie unter [Aspekte zu Proxyservern](#proxy-server-considerations).
-* Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 in der Windows-Firewall sowohl auf dem Gatewaycomputer als auch in der Unternehmensfirewall. Weitere Informationen finden Sie unter [Ports und Firewall](#ports-and-firewall). Dieser Schritt ist optional, wird jedoch für die Leistungsoptimierung empfohlen.
+* Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie im Abschnitt „Aspekte zu Proxyservern“.
+* Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 in der Windows-Firewall sowohl auf dem Gatewaycomputer als auch in der Unternehmensfirewall. Weitere Informationen finden Sie im Abschnitt „Ports und Firewall“. Dieser Schritt ist optional, wird jedoch für die Leistungsoptimierung empfohlen.
 
 ### <a name="3-problem"></a>3. Problem
 Sie erhalten den folgenden Fehler.

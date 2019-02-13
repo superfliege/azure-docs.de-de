@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 13e00acaf287a9e153aaa8e5ce7d630f8d198f02
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: a7789f9a3f3da46305a9d8cd7cda24019658f2ad
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330414"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811479"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure SQL-Datenbank mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,8 +65,8 @@ Ein mit Azure SQL verknüpfter Dienst verbindet eine Azure SQL-Datenbank mit Ihr
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDatabase**. |JA |
-| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL-Datenbankinstanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureSqlDatabase**. |Ja |
+| connectionString |Geben Sie Informationen, die zur Verbindung mit der Azure SQL-Datenbankinstanz erforderlich sind, für die Eigenschaft "connectionString" ein. Es wird nur Standardauthentifizierung unterstützt. |Ja |
 
 > [!IMPORTANT]
 > Konfigurieren Sie die [Azure SQL-Datenbankfirewall](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) und den Datenbankserver, um [Azure-Diensten den Zugriff auf den Server zu ermöglichen](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Gehen Sie wie folgt vor, wenn Sie nicht aus Azure stammende Daten nach Azure SQL-Datenbank kopieren, inklusive Daten aus lokalen Datenquellen mit Data Factory-Gateway: Konfigurieren Sie den entsprechenden IP-Adressbereich für den Computer, der Daten an Azure SQL-Datenbank sendet.
@@ -80,7 +80,7 @@ Der Abschnitt "typeProperties" unterscheidet sich bei jedem Typ von Dataset und 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| tableName |Name der Tabelle oder Sicht in der Azure SQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |JA |
+| tableName |Name der Tabelle oder Sicht in der Azure SQL-Datenbankinstanz, auf die der verknüpfte Dienst verweist. |Ja |
 
 ## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
 Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
@@ -199,7 +199,7 @@ Im Beispiel werden Zeitreihendaten (stündlich, täglich usw.) aus einer Tabelle
   }
 }
 ```
-Der Abschnitt [Mit Azure SQL verknüpfter Dienst](#linked-service) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.
+Im Abschnitt „Mit Azure SQL verknüpfter Dienst“ finden Sie eine Liste der von diesem verknüpften Dienst unterstützten Eigenschaften.
 
 **Mit Azure Blob Storage verknüpfter Dienst:**
 
@@ -248,7 +248,7 @@ Durch das Festlegen von „external“ auf „true“ wird dem Azure Data Factor
 }
 ```
 
-Eine Liste mit den Eigenschaften, die von diesem Dataset-Typ unterstützt werden, finden Sie im Abschnitt [Eigenschaften des Dataset-Typs „Azure SQL“](#dataset) .
+Im Abschnitt „Eigenschaften des Dataset-Typs ‚Azure SQL‘“ finden Sie eine Liste der von diesem Dataset-Typ unterstützten Eigenschaften.
 
 **Azure-Blob-Ausgabedataset:**
 
@@ -391,7 +391,7 @@ In dem Beispiel werden jede Stunde Zeitreihendaten (stündlich, täglich usw.) a
   }
 }
 ```
-Der Abschnitt [Mit Azure SQL verknüpfter Dienst](#linked-service) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.
+Im Abschnitt „Mit Azure SQL verknüpfter Dienst“ finden Sie eine Liste der von diesem verknüpften Dienst unterstützten Eigenschaften.
 
 **Mit Azure Blob Storage verknüpfter Dienst:**
 
@@ -499,7 +499,7 @@ Das Beispiel kopiert Daten in eine Tabelle namens "MyTable" in Azure SQL. Erstel
   }
 }
 ```
-Eine Liste mit den Eigenschaften, die von diesem Dataset-Typ unterstützt werden, finden Sie im Abschnitt [Eigenschaften des Dataset-Typs „Azure SQL“](#dataset) .
+Im Abschnitt „Eigenschaften des Dataset-Typs ‚Azure SQL‘“ finden Sie eine Liste der von diesem Dataset-Typ unterstützten Eigenschaften.
 
 **Eine Kopieraktivität in einer Pipeline mit Blobquelle und SQL-Senke:**
 
@@ -641,28 +641,28 @@ Beim Verschieben von Daten in und aus Azure SQL-Datenbank werden die folgenden Z
 | binary |Byte[] |
 | Bit |Boolescher Wert |
 | char |String, Char[] |
-| date |Datetime |
-| DateTime |Datetime |
-| datetime2 |Datetime |
+| date |DateTime |
+| DateTime |DateTime |
+| datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| DECIMAL |DECIMAL |
+| Decimal |Decimal |
 | FILESTREAM-Attribut (varbinary(max)) |Byte[] |
 | Float |Double |
 | image |Byte[] |
 | int |Int32 |
-| money |DECIMAL |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |DECIMAL |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
-| smalldatetime |Datetime |
+| smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |DECIMAL |
+| smallmoney |Decimal |
 | sql_variant |Object * |
 | text |String, Char[] |
-| time |Zeitraum |
+| time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
 | uniqueidentifier |Guid |

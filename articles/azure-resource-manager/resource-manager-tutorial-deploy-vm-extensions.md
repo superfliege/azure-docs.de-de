@@ -13,16 +13,16 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 7e0b3fff0ed60d5eb77194e7f9081d35f2e38571
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52869636"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492786"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen
 
-Hier erfahren Sie, wie Sie [Azure-VM-Erweiterungen](../virtual-machines/extensions/features-windows.md) verwenden, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben für virtuelle Azure-Computer auszuführen. Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. In diesem Tutorial stellen Sie eine benutzerdefinierte Skripterweiterung aus einer Resource Manager-Vorlage bereit, um auf einem virtuellen Windows-Computer ein PowerShell-Skript auszuführen.  Das Skript installiert einen Webserver auf dem virtuellen Computer.
+Hier erfahren Sie, wie Sie [Azure-VM-Erweiterungen](../virtual-machines/extensions/features-windows.md) verwenden, um nach der Bereitstellung Konfigurations- und Automatisierungsaufgaben für virtuelle Azure-Computer auszuführen. Für die Verwendung mit virtuellen Azure-Computern stehen viele verschiedene VM-Erweiterungen zur Verfügung. In diesem Tutorial stellen Sie eine benutzerdefinierte Skripterweiterung über eine Azure Resource Manager-Vorlage bereit, um ein PowerShell-Skript auf einem virtuellen Windows-Computer auszuführen.  Das Skript installiert einen Webserver auf dem virtuellen Computer.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -39,12 +39,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-* [Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“.  Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
+* [Visual Studio Code](https://code.visualstudio.com/) mit der Erweiterung „Azure Resource Manager-Tools“. Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](./resource-manager-quickstart-create-templates-use-visual-studio-code.md#prerequisites).
 * Verwenden Sie aus Sicherheitsgründen ein generiertes Kennwort für das Administratorkonto des virtuellen Computers. Hier sehen Sie ein Beispiel für die Kennwortgenerierung:
 
     ```azurecli-interactive
     openssl rand -base64 32
     ```
+
     Azure Key Vault dient zum Schützen von kryptografischen Schlüsseln und anderen Geheimnissen. Weitere Informationen finden Sie unter [Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung](./resource-manager-tutorial-use-key-vault.md). Wir empfehlen Ihnen auch, Ihr Kennwort alle drei Monate zu aktualisieren.
 
 ## <a name="prepare-a-powershell-script"></a>Vorbereiten eines PowerShell-Skripts
@@ -55,29 +56,27 @@ Ein PowerShell-Skript mit folgendem Inhalt wird über ein [Azure Storage-Konto m
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie später in diesem Tutorial das Element [fileUri] in der Vorlage aktualisieren.
+Wenn Sie die Datei an Ihrem eigenen Standort veröffentlichen möchten, müssen Sie später in diesem Tutorial das Element `fileUri` in der Vorlage aktualisieren.
 
 ## <a name="open-a-quickstart-template"></a>Öffnen einer Schnellstartvorlage
 
-„Azure-Schnellstartvorlagen“ ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
+Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. Statt eine Vorlage von Grund auf neu zu erstellen, können Sie eine Beispielvorlage verwenden und diese anpassen. Die in diesem Tutorial verwendete Vorlage heißt [Deploy a simple Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/) (Bereitstellen eines einfachen virtuellen Windows-Computers).
 
-1. Wählen Sie in Visual Studio Code **Datei**>**Datei öffnen** aus.
-2. Fügen Sie in **Dateiname** die folgende URL ein:
+1. Wählen Sie in Visual Studio Code **Datei** > **Datei öffnen** aus.
+1. Fügen Sie in das Feld **Dateiname** die folgende URL ein: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json.
 
-    ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
-    ```
-3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
-4. Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
+1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.  
+    Die Vorlage definiert fünf Ressourcen:
 
-    * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+    * **Microsoft.Storage/storageAccounts**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+    * **Microsoft.Network/publicIPAddresses**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+    * **Microsoft.Network/virtualNetworks**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+    * **Microsoft.Network/networkInterfaces**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+    * **Microsoft.Compute/virtualMachines**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
-5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
+
+1. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als *azuredeploy.json* auf dem lokalen Computer zu speichern.
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage
 
@@ -107,35 +106,38 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
 }
 ```
 
-Weitere Informationen zu dieser Ressourcendefinition finden Sie bei Bedarf in der [Erweiterungsreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
+Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiterungsreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-* **name**: Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Untergeordnete Ressourcen](./resource-manager-templates-resources.md#child-resources).
-* **dependsOn**: Die Erweiterungsressource muss nach der Erstellung des virtuellen Computers erstellt werden.
-* **fileUris**: Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung der bereitgestellten Datei entscheiden, müssen Sie die Werte aktualisieren.
-* **commandToExecute**: Der Befehl zum Aufrufen des Skripts.  
+* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Untergeordnete Ressourcen](./resource-manager-templates-resources.md#child-resources).
+* **dependsOn:** Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
+* **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
+* **commandToExecute:** Dieser Befehl ruft das Skript auf.  
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt [Bereitstellen der Vorlage](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Siehe [Voraussetzungen](#prerequisites).
+Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstellen der Vorlage“ unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 
-Wählen Sie im Portal den virtuellen Computer aus. Verwenden Sie in der Übersicht des virtuellen **Computers die Kopieroption**rechts neben der IP-Adresse, um die IP-Adresse zu kopieren, und fügen Sie sie in eine Browserregisterkarte ein. Die Standardbegrüßungsseite für IIS wird geöffnet und sollte wie folgt aussehen:
+1. Wählen Sie im Azure-Portal den virtuellen Computer aus.
+1. Kopieren Sie in der VM-Übersicht die IP-Adresse durch Auswählen von **Klicken Sie zum Kopieren.**, und fügen Sie sie anschließend in eine Browserregisterkarte ein.  
+   Die Standardbegrüßungsseite für IIS (Internet Information Services, Internetinformationsdienste) wird geöffnet:
 
-![Azure Resource Manager: Bereitstellen von VM-Erweiterungen – benutzerdefiniertes Skript – IIS-Webserver](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
+![Die Begrüßungsseite von Internetinformationsdienste](./media/resource-manager-tutorial-deploy-vm-extensions/resource-manager-template-deploy-extensions-customer-script-web-server.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Azure-Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe, um die bereitgestellten Ressourcen zu bereinigen.
+Wenn Sie die bereitgestellten Azure-Ressourcen nicht mehr benötigen, bereinigen Sie sie, indem Sie die Ressourcengruppe löschen.
 
-1. Wählen Sie im Azure-Portal im linken Menü die Option **Ressourcengruppe** aus.
-2. Geben Sie den Namen der Ressourcengruppe in das Feld **Nach Name filtern** ein.
-3. Wählen Sie den Namen der Ressourcengruppe aus.  Es werden insgesamt sechs Ressourcen in der Ressourcengruppe angezeigt.
-4. Wählen Sie **Ressourcengruppe löschen** aus dem Menü ganz oben aus.
+1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressourcengruppe**.
+2. Geben Sie in das Feld **Nach Name filtern** den Namen der Ressourcengruppe ein.
+3. Klicken Sie auf den Namen der Ressourcengruppe.  
+    Sechs Ressourcen werden in der Ressourcengruppe angezeigt.
+4. Wählen Sie im oberen Menü **Ressourcengruppe löschen** aus.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie einen virtuellen Computer und eine VM-Erweiterung bereitgestellt. Die Erweiterung hat den IIS-Webserver auf dem virtuellen Computer installiert. Informationen zum Importieren einer BACPAC-Datei unter Verwendung der SQL-Datenbank-Erweiterung finden Sie hier:
+In diesem Tutorial haben Sie einen virtuellen Computer und eine VM-Erweiterung bereitgestellt. Die Erweiterung hat den IIS-Webserver auf dem virtuellen Computer installiert. Informationen zum Importieren einer BACPAC-Datei unter Verwendung der Azure SQL-Datenbank-Erweiterung finden Sie hier:
 
 > [!div class="nextstepaction"]
-> [](./resource-manager-tutorial-deploy-vm-extensions.md)
+> [Bereitstellen von SQL-Erweiterungen](./resource-manager-tutorial-deploy-sql-extensions-bacpac.md)

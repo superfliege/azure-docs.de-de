@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2018
 ms.author: alkohli
-ms.openlocfilehash: 78ed53e5e2f5d04943e6c32ddfedf037cb9e1f73
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: a7aace89ad4323d6fad6942fe03c4240fb53c8fd
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480953"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811197"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>Einführung in das StorSimple Virtual Array
 
@@ -52,7 +52,7 @@ In der folgenden Tabelle sind die wichtigen Features von StorSimple Virtual Arra
 | Datenmobilität |Wiederherstellung auf demselben Gerät oder Wiederherstellung auf Elementebene (Dateiserver) |
 | Speicherebenen |Lokale Hypervisor-Speicherung und Cloud |
 | Freigabegröße |Mehrstufig: bis zu 20 TB; Lokal: bis zu 2 TB |
-| Volumegröße |Mehrstufig: 500 GB bis 5 TB; Lokal: 50 GB bis 200 GB <br> Die maximale lokale Reservierung für mehrstufige Volumes beträgt 200 GB. |
+| Volumegröße |Mehrstufig: 500 GB bis 5 TB; lokal angeheftet: 50 GB bis 200 GB <br> Die maximale lokale Reservierung für mehrstufige Volumes beträgt 200 GB. |
 | Momentaufnahmen |Absturzkonsistenz |
 | Wiederherstellung auf Elementebene |Ja, Benutzer können von Freigaben wiederherstellen |
 
@@ -76,8 +76,8 @@ In der folgenden Tabelle finden Sie eine Übersicht über unterstützte StorSimp
 
 |Szenario     |Workload     |Unterstützt      |Einschränkungen               |
 |-------------|-------------|---------------|---------------------------|
-|Remotebüro/Zweigniederlassung (ROBO)  |Dateifreigabe     |JA      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
-|Cloudarchivierung  |Archivdateifreigabe     |JA      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
+|Remotebüro/Zweigniederlassung (ROBO)  |Dateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
+|Cloudarchivierung  |Archivdateifreigabe     |Ja      |Informationen finden Sie im Thema zu den [Obergrenzen für Dateiserver](storsimple-ova-limits.md).<br></br>Informationen finden Sie im Thema zu den [Systemanforderungen für unterstützte SMB-Versionen](storsimple-ova-system-requirements.md).| Alle Versionen     |
 
 Das StorSimple Virtual Array eignet sich am besten für selten genutzte Daten. Zur Verbesserung der Leistung verfügt das virtuelle Array zwar über einen lokalen Cache, Benutzer sollten jedoch davon ausgehen, dass das Gerät Dateien auf der niedrigsten Speicherstufe (der Cloud) bereitstellt. Jedes virtuelle Array kann mit einer Geschwindigkeit von etwa 100 Mbit/s in Azure-Speicher schreiben bzw. daraus lesen. Diese Verbindung wird für alle an das Gerät gerichteten Anforderungen genutzt und kann sich als Engpass erweisen, wie im folgenden Diagramm zu sehen:
 
@@ -169,7 +169,7 @@ Zusätzlich zum virtuellen Array und anderen Komponenten nutzt die StorSimple-L�
 
 * [Automatische Speicherstaffelung](#automatic-storage-tiering) 
 * [Lokale Freigaben und Volumes](#locally-pinned-shares-and-volumes)
-* [Deduplizierung und Komprimierung für in der Cloud angeordnete oder gesicherte Daten](#deduplication-and-compression-for-data-tiered/backed-up-to-the-cloud) 
+* Deduplizierung und Komprimierung für in der Cloud angeordnete oder gesicherte Daten 
 * [Geplante und bedarfsgesteuerte Sicherungen](#scheduled-and-on-demand-backups)
 
 ### <a name="automatic-storage-tiering"></a>Automatische Speicherstaffelung

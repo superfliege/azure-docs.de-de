@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85e250f3dee3dbfc9e09524d5f3977a143ee8bac
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a9a1446db66e528cfac98222d4bd258efc660c84
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213258"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750374"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Erste Schritte mit dem SDK für sprachaktivierte Geräte
 
@@ -46,12 +46,14 @@ Bevor Sie mit der Entwicklung mit dem Speech-Geräte-SDK beginnen, sammeln Sie d
     Sie können [ein einfaches LUIS-Modell erstellen](https://docs.microsoft.com/azure/cognitive-services/luis/) oder das LUIS-Beispielmodell „LUIS-example.json“ verwenden. Das LUIS-Beispielmodell ist auf der [Downloadwebsite des Speech-Geräte-SDK](https://shares.datatransfer.microsoft.com/) verfügbar. Laden Sie die JSON-Datei Ihres Modells in das [LUIS-Portal](https://www.luis.ai/home) hoch, indem Sie **Neue App importieren** und dann die JSON-Datei auswählen.
 
 ## <a name="set-up-the-development-kit"></a>Einrichten des Development Kits
-
-1. Schließen Sie das Development Kit mit einem Mini-USB-Kabel an einen Computer oder Netzteil an. Wenn das Kit verbunden ist, leuchtet eine grüne Betriebsanzeige unter dem obersten Board.
-
-1. Schließen Sie das Development Kit mit einem zweiten Mini-USB-Kabel an einen Computer an.
+    
+1. Das Development Kit hat zwei Micro-USB-Anschlüsse. Der linke Anschluss dient zur Stromversorgung des Development Kits und ist in der folgenden Abbildung mit „Power“ markiert. Der rechte dient zur Steuerung und ist in der Abbildung mit „Debug“ markiert.
 
     ![Anschließen eines Development Kits](media/speech-devices-sdk/qsg-1.png)
+       
+1. Schalten Sie das Development Kit ein, nachdem Sie es mit einem Mikro-USB-Kabel an einen PC oder ein Netzteil angeschlossen haben. Eine grüne Stromanzeige leuchtet unter dem oberen Board auf.
+
+1. Um das Development Kit zu steuern, verbinden Sie den Debug-Anschluss mithilfe eines zweiten Micro-USB-Kabels mit einem Computer. Für eine zuverlässige Kommunikation ist es unerlässlich, ein hochwertiges Kabel zu verwenden.
 
 1. Richten Sie Ihr Development Kit für eine kreisförmige oder lineare Konfiguration aus.
 
@@ -75,6 +77,8 @@ Bevor Sie mit der Entwicklung mit dem Speech-Geräte-SDK beginnen, sammeln Sie d
 
     > [!NOTE]
     > Diese Befehle verwenden die Android Debug Bridge, `adb.exe`, die Teil der Android Studio-Installation ist. Dieses Tool befindet sich in „C:\Users\[Benutzername]\AppData\Local\Android\Sdk\platform-tools“. Sie können dieses Verzeichnis Ihrem Pfad hinzufügen, um das Aufrufen von `adb` zu vereinfachen. Andernfalls müssen Sie den vollständigen Pfad zu Ihrer Installation von „adb.exe“ in jedem Befehl angeben, der `adb` aufruft.
+    >
+    > Wenn die Fehlermeldung `no devices/emulators found` auftritt, prüfen Sie, ob das USB-Kabel angeschlossen ist und eine hohe Qualität hat. Mithilfe von `adb devices` können Sie überprüfen, ob Ihr Computer mit dem Development Kit kommunizieren kann. Dem ist so, wenn eine Geräteliste zurückgegeben wird.
 
     > [!TIP]
     > Schalten Sie das Mikrofon und die Lautsprecher Ihres Computers stumm, um sicherzustellen, dass die Mikrofone des Development Kits verwendet werden. Auf diese Weise lösen Sie nicht versehentlich das Gerät mit Audio vom PC aus.

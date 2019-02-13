@@ -11,12 +11,12 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: 1cf2f25ab96fde342244c99029db6a96c72a5681
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473101"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564339"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
@@ -52,6 +52,7 @@ Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learni
     - Boxplot
     - Punktdiagramm
     - Blasendiagramm
++ Das Portal generiert Berichte für Experimente nun dynamisch. Wenn ein Benutzer eine Ausführung an ein Experiment übermittelt, wird automatisch ein Bericht mit protokollierten Metriken und Diagrammen erstellt, um einen Vergleich zwischen verschiedenen Ausführungen zu ermöglichen. 
 
 ## <a name="2019-01-14"></a>2019-01-14
 

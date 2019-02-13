@@ -10,12 +10,12 @@ ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11b7928512dd1f1d6b284b088af304c6752711f5
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: e40cc3ac0fe17cd030717253f6093bbf8d63a5a2
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301440"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487233"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Nachverfolgen von Änderungen in Ihrer Umgebung mit der Lösung für die Änderungsnachverfolgung
 
@@ -111,7 +111,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 Rekursion ermöglicht die Angabe von Platzhaltern, um die verzeichnisübergreifende Nachverfolgung zu vereinfachen, sowie die Angabe von Umgebungsvariablen, um Dateien in Umgebungen mit mehreren oder dynamischen Laufwerksnamen nachzuverfolgen. Die folgende Liste enthält allgemeine Informationen, mit denen Sie beim Konfigurieren der Rekursion vertraut sein sollten:
 
 * Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
-* Platzhalter können immer nur im letzten Segment eines Pfads verwendet werden. (Beispiel: „C:\Ordner\\**Datei**“ oder „/etc/*.conf“)
+* Platzhalter können immer nur im letzten Segment eines Pfads verwendet werden. (z. B. `c:\folder\*file*` oder `/etc/*.conf`)
 * Wenn eine Umgebungsvariable einen ungültigen Pfad besitzt, ist die Überprüfung zwar erfolgreich, bei der Ausführung der Inventur tritt jedoch ein Fehler für den Pfad auf.
 * Vermeiden Sie die Verwendung allgemeiner Pfade wie `c:\*.*`, da in diesem Fall zu viele Ordner durchlaufen werden müssen.
 
@@ -132,9 +132,9 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 |Eigenschaft  |BESCHREIBUNG  |
 |---------|---------|
 |Aktiviert     | Bestimmt, ob die Einstellung angewendet wird        |
-|Item Name     | Anzeigename der nachzuverfolgenden Datei        |
-|Group     | Gruppenname für die logische Gruppierung von Dateien        |
-|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für die Datei, Beispiel:  "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
+|Item Name     | Anzeigename des nachzuverfolgenden Registrierungsschlüssels        |
+|Group     | Gruppenname für die logische Gruppierung von Registrierungsschlüsseln        |
+|Windows-Registrierungsschlüssel   | Der zu überprüfende Pfad für den Registrierungsschlüssel Beispiel:  "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup"      |
 
 ## <a name="limitations"></a>Einschränkungen
 
@@ -278,7 +278,7 @@ Im folgenden Beispiel zeigt der Screenshot, dass die Datei `C:\windows\system32\
 
 ![Ein Diagramm mit der Änderung an der Hostdatei](./media/automation-change-tracking/changes.png)
 
-Um diese Änderung weiter zu analysieren, gehen Sie zur Protokollsuche, indem Sie auf **Log Analytics** klicken. Suchen Sie in der Protokollsuche nach Inhaltsänderungen in der Hostdatei mit der Abfrage `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Diese Abfrage sucht nach Änderungen, die eine Änderung des Dateiinhalts für Dateien beinhalten, deren vollqualifizierter Pfad das Wort „hosts“ enthält. Sie können auch eine bestimmte Datei abfragen, indem Sie den Pfadabschnitt in seine vollqualifizierte Form ändern (z.B. `FileSystemPath == "c:\\windows\\system32\\drivers\\etc\\hosts"`).
+Um diese Änderung weiter zu analysieren, gehen Sie zur Protokollsuche, indem Sie auf **Log Analytics** klicken. Suchen Sie in der Protokollsuche nach Inhaltsänderungen in der Hostdatei mit der Abfrage `ConfigurationChange | where FieldsChanged contains "FileContentChecksum" and FileSystemPath contains "hosts"`. Diese Abfrage sucht nach Änderungen, die eine Änderung des Dateiinhalts für Dateien beinhalten, deren vollqualifizierter Pfad das Wort „hosts“ enthält. Sie können auch eine bestimmte Datei abfragen, indem Sie den Pfadabschnitt in seine vollqualifizierte Form ändern (z.B. `FileSystemPath == "c:\windows\system32\drivers\etc\hosts"`).
 
 Nachdem die Abfrage die gewünschten Ergebnisse geliefert hat, klicken Sie auf die Schaltfläche **Neue Warnungsregel** in der Protokollsuchfunktion, um die Seite zur Erstellung von Warnungen zu öffnen. Sie können zu dieser Erfahrung auch über **Azur Monitor** im Azure-Portal navigieren. Überprüfen Sie die Abfrage bei der Warnungserstellung erneut, und ändern Sie die Warnungslogik. In diesem Fall soll die Warnung ausgelöst werden, wenn auch nur eine Änderung auf allen Computern in der Umgebung erkannt wird.
 

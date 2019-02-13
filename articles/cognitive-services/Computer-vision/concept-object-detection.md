@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 3468f9341e0a8406733877a05798e427dd454fff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167562"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567161"
 ---
 # <a name="object-detection"></a>Objekterkennung
 
@@ -87,6 +87,15 @@ Die folgende JSON-Antwort veranschaulicht, was vom maschinellen Sehen beim Erken
 }
 ```
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="limitations"></a>Einschränkungen
 
-Erfahren Sie mehr über Konzepte zum [Kategorisieren von Bildern](concept-categorizing-images.md) und [Beschreiben von Bildern](concept-describing-images.md).
+Es ist wichtig, die Einschränkungen bei der Objekterkennung zu beachten, damit Sie die Auswirkungen von falsch negativen Ergebnissen (ausgelassene Objekten) und begrenzten Details vermeiden oder minimieren können.
+* Objekte werden in der Regel nicht erkannt, wenn sie sehr klein (kleiner als 5% des Bilds) sind.
+* Objekte werden in der Regel nicht erkannt, wenn sie sehr eng beieinander liegen (z.B. ein Stapel Teller).
+* Objekte werden nicht nach Marken- oder Produktnamen unterschieden (z.B. verschiedene Arten von Mineralwasser in einem Verkaufsregal). Mithilfe der Funktion [Markenerkennung](concept-brand-detection.md) können Sie jedoch Markeninformationen aus einem Bild auslesen.
+
+## <a name="use-the-api"></a>Verwenden der API
+Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge für den Inhalt im Abschnitt `"objects"`.
+
+* [Schnellstart: Analysieren eines Bilds (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
+* [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)

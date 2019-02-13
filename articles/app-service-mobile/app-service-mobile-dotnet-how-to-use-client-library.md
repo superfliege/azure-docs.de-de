@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 62711ac094a10a9e4a0350319a316c5a293fd522
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fb9725e18c53e9d42ae51418a1eb614aaa10fd12
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157327"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816780"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>Verwenden des verwalteten Clients für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
@@ -103,7 +103,7 @@ Der folgende Abschnitt enthält Informationen zum Suchen und Abrufen von Datens�
 * [Suchen eines Datensatzes nach ID](#lookingup)
 * [Umgang mit nicht typisierten Abfragen](#untypedqueries)
 * [Einfügen von Daten](#inserting)
-* [Aktualisieren von Daten](#updating)
+* Aktualisieren von Daten
 * [Löschen von Daten](#deleting)
 * [Lösung von Konflikten und optimistische Parallelität](#optimisticconcurrency)
 * [Binden an eine Windows-Benutzeroberfläche](#binding)
@@ -902,9 +902,9 @@ private async void InitNotificationsAsync()
 Für Pushvorgänge an den WNS MÜSSEN Sie [eine Microsoft Store-Paket-SID abrufen](#package-sid).  Weitere Informationen zu Windows-Apps, z. B. zum Registrieren für Vorlagenregistrierungen, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zur App].
 
 Die Anforderung von Tags vom Client wird nicht unterstützt.  Tag-Anforderungen werden automatisch aus der Registrierung gelöscht.
-Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen.  Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die [benutzerdefinierte API auf](#customapi).
+Wenn Sie Ihr Gerät mit Tags registrieren möchten, erstellen Sie eine benutzerdefinierte API, die die Notification Hubs-API verwendet, um die Registrierung in Ihrem Namen auszuführen.  Rufen Sie anstelle der `RegisterNativeAsync()`-Methode die benutzerdefinierte API auf.
 
-### <a name="package-sid"></a>Vorgehensweise: Abrufen einer Microsoft Store-Paket-SID
+### <a name="package-sid"></a>Gewusst wie: Abrufen einer Microsoft Store-Paket-SID
 Für Pushbenachrichtigungen in Microsoft Store-Apps ist eine Paket-SID erforderlich.  Registrieren Sie Ihre Anwendung beim Microsoft Store, um eine Paket-SID zu erhalten.
 
 Dieser Wert wird wie folgt abgerufen:

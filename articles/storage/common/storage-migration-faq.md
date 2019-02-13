@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.subservice: common
-ms.openlocfilehash: 095c592e53f44cb674994c440258bcca1bfa760c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 77963377d322a1c70226ceb772273127bec380de
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467168"
+ms.locfileid: "55506804"
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Häufig gestellte Fragen zur Azure Storage-Migration
 
@@ -272,7 +272,7 @@ So gewähren Sie anderen Personen Zugriff auf die Speicherressourcen:
 
 **Wie greife ich bei einem replizierten Speicherkonto (z. B. zonenredundanter Speicher, georedundanter Speicher oder georedundanter Speicher mit Lesezugriff) auf Daten zu, die in der sekundären Region gespeichert sind?**
 
--   Wenn Sie zonenredundanten Speicher oder georedundanten Speicher verwenden, können Sie nur im Falle eines Failovers auf Daten in der sekundären Region zugreifen. Weitere Informationen zum Failoverprozess finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](storage-disaster-recovery-guidance.md#what-to-expect-if-a-storage-failover-occurs).
+-   Wenn Sie zonenredundanten Speicher oder georedundanten Speicher verwenden, können Sie auf Daten in der sekundären Region nur zugreifen, indem Sie ein Failover zu dieser Region einleiten. Weitere Informationen zum Failoverprozess finden Sie unter [Notfallwiederherstellung und Failover von Speicherkonten (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md).
 
 -   Bei Verwendung von georedundantem Speicher mit Lesezugriff können Sie jederzeit auf Daten in der sekundären Region zugreifen. Verwenden Sie eine der folgenden Methoden an:  
       

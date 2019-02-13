@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/23/2017
 ms.author: alkohli
-ms.openlocfilehash: acc8929dc3476e9590e8e4d9526b38b7c0719570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd207eaad1a3e821724d51a890d0882bfffda131
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108198"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809060"
 ---
 # <a name="fail-over-your-storsimple-physical-device-to-same-device"></a>Failover Ihres physischen StorSimple-Geräts auf dasselbe Gerät
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, wenn ein Failover auf dasselbe Gerät er
 4. Konfigurieren Sie das Gerät, und registrieren Sie es erneut im StorSimple-Geräte-Manager-Dienst. Das neu registrierte Gerät sollte als **Für Einrichtung bereit** angezeigt werden. Der Gerätename des neuen Geräts ist identisch mit dem des alten Geräts. An ihn wurde jedoch eine Ziffer angefügt, um anzugeben, dass das Gerät auf die Werkseinstellungen zurückgesetzt und erneut registriert wurde.
 
     ![Neu registriertes Gerät zur Einrichtung bereit](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev3.png)
-5. Führen Sie für das neue Gerät die Einrichtung durch. Weitere Informationen finden Sie unter [Schritt 4: Abschließen der Mindesteinrichtung des Geräts](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Auf dem Blatt **Geräte** ändert sich der Gerätestatus in **Online**.
+5. Führen Sie für das neue Gerät die Einrichtung durch. Weitere Informationen finden Sie unter [Schritt 4: Abschließen der minimalen Gerätekonfiguration](storsimple-8000-deployment-walkthrough-u2.md#step-4-complete-minimum-device-setup). Auf dem Blatt **Geräte** ändert sich der Gerätestatus in **Online**.
 
    > [!IMPORTANT]
    > **Schließen Sie zuerst die Mindestkonfiguration ab, weil andernfalls die Notfallwiederherstellung misslingen kann.**
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, wenn ein Failover auf dasselbe Gerät er
 
     ![Übersicht über das Failover](./media/storsimple-8000-device-failover-disaster-recovery/failover-single-dev11.png)
 
-    Ausführliche Anweisungen finden Sie unter [Failover auf ein anderes physisches Gerät](#fail-over-to-another-physical-device).
+    Ausführliche Anweisungen finden Sie unter „Failover auf ein anderes physisches Gerät“.
 
 7. Es wird ein Gerätewiederherstellungsauftrag erstellt, den Sie auf dem Blatt **Aufträge** überwachen können.
 

@@ -1,14 +1,30 @@
 ---
-Titel: Azure Batch-Dienst für Machine Learning Studio-Aufträge titleSuffix: Azure Machine Learning Studio Beschreibung: Übersicht über Azure Batch-Dienste für Machine Learning-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-title='Dedizierte Kapazität für Stapelausführungsdienst-Aufträge – Azure Machine Learning Studio | Microsoft-Dokumentation' ms.date: 19.04.2017
+title: Azure Batch-Dienst für Machine Learning Studio-Aufträge
+titleSuffix: Azure Machine Learning Studio
+description: Übersicht über Azure Batch-Dienste für Machine Learning-Aufträge. Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-title='Dedicated capacity for batch execution service jobs - Azure Machine Learning Studio | Microsoft Docs'
+ms.date: 04/19/2017
+ms.openlocfilehash: 55961895dde7cb2770f2180911a78f1e31c741e3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697499"
 ---
 # <a name="azure-batch-service-for-azure-machine-learning-studio-jobs"></a>Azure Batch-Dienst für Azure Machine Learning Studio-Aufträge
 
 Die Machine Learning Batch-Poolverarbeitung ermöglicht für den Azure Machine Learning-Batchausführungsdienst eine vom Kunden verwaltete Skalierung. Klassische Batchverarbeitung für Machine Learning erfolgt in einer Umgebung mit mehreren Mandanten, wodurch die Anzahl gleichzeitiger Aufträge, die Sie senden können, begrenzt wird, und Aufträge werden auf FIFO-Basis in eine Warteschlange gestellt. Diese Unsicherheit bedeutet, dass Sie nicht genau vorhersagen können, wann Ihr Auftrag ausgeführt wird.
 
 Die Batch-Poolverarbeitung ermöglicht Ihnen das Erstellen von Pools, an die Sie Batchaufträge senden können. Sie steuern die Größe des Pools, und Sie steuern, an welchen der Pool der Auftrag gesendet wird. Ihr BES-Auftrag wird in seinem eigenen Verarbeitungsbereich ausgeführt, wodurch sich eine vorhersagbare Verarbeitungsleistung und die Möglichkeit ergeben, Ressourcenpools zu erstellen, die an die von Ihnen gesendete Verarbeitungslast angepasst sind.
+
+> [!NOTE]
+> Sie benötigen einen auf dem neuen Resource Manager basierenden Machine Learning-Webdienst, um einen Pool zu erstellen. Nach dessen Erstellung können Sie jeden BES-Webdienst (die sowohl auf dem neuen Resource Manager als auch dem klassischen basieren können) im Pool ausführen.
 
 ## <a name="how-to-use-batch-pool-processing"></a>Verwenden von Batch-Pool-Verarbeitung
 
@@ -23,7 +39,7 @@ Nachdem Ihr Konto erstellt wurde, verwenden Sie die Pool-Dienst-URL und den Auto
 
 ![Architektur des Batch-Pool-Diensts](./media/dedicated-capacity-for-bes-jobs/pool-architecture.png)
 
-Sie erstellen Pools, indem Sie den Vorgang „Pool erstellen“ für die Pool-Dienst-URL aufrufen, die CSS Ihnen bereitgestellt hat. Wenn Sie einen Pool erstellen, geben Sie die Anzahl von VMs und die URL der „swagger.json“-Datei eines Neuer Resource Manager-basierten Machine Learning-Webdiensts an. Dieser Webdienst wird bereitgestellt, um die Abrechnungszuordnung einzurichten. Der Batch-Pool-Dienst verwendet die Datei „swagger.json“ dazu, den Pool einem Abrechnungsplan zuzuordnen. Sie können jeden BES-Webdienst ausführen (sowohl den Neuer Resource Manager-basierten als auch den klassischen), den Sie für den Pool auswählen.
+Sie erstellen Pools, indem Sie den Vorgang „Pool erstellen“ für die Pool-Dienst-URL aufrufen, die CSS Ihnen bereitgestellt hat. Wenn Sie einen Pool erstellen, geben Sie die Anzahl von VMs und die URL der „swagger.json“-Datei eines Neuer Resource Manager-basierten Machine Learning-Webdiensts an. Dieser Webdienst wird bereitgestellt, um die Abrechnungszuordnung einzurichten. Der Batch-Pool-Dienst verwendet die Datei „swagger.json“ dazu, den Pool einem Abrechnungsplan zuzuordnen. Sie können jeden BES-Webdienst (die sowohl auf dem neuen Resource Manager als auch dem klassischen basieren können) im Pool ausführen.
 
 Sie können jeden Neuer Resource Manager-basierten Webdienst verwenden, sollten aber beachten, dass die Abrechnung für die Aufträge entsprechend dem Abrechnungsplan erfolgt, der diesem Dienst zugeordnet ist. Es bietet sich möglicherweise an, dass Sie einen Webdienst und einen neuen Abrechnungsplan speziell für das Ausführen von Batch-Pool-Aufträgen erstellen.
 

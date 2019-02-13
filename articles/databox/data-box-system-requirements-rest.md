@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: e7c2cc0c0ffaae11bd7bf5113c942cdb98397201
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b36926365b85c576cbe2927c690a30cc64df23d8
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53550929"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752771"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>Blobspeicheranforderungen für Azure Data Box
 
@@ -30,7 +30,7 @@ Sie sollten die Informationen sorgfältig lesen, bevor Sie eine Verbindung mit d
 |    Dienstverschlüsselung für ruhende Daten                  |    256-Bit-AES-Verschlüsselung                             |    256-Bit-AES-Verschlüsselung |
 |    Speicherkontotyp                                 |    Allgemeine Speicherkonten und Azure Blob Storage-Konten    |    Nur Konten vom Typ „Universell V1“|
 |    Blobname                                            |    1.024 Zeichen (2.048 Bytes)                     |    880 Zeichen (1.760 Bytes)|
-|    Maximale Blockblobgröße                              |    4,75 TB (100 MB X 50.000 Blöcke)                   |    4,75 TB (100 MB × 50.000 Blöcke) für Azure Data Box ab Version 1.7.|
+|    Maximale Blockblobgröße                              |    4,75 TB (100 MB X 50.000 Blöcke)                   |    4,75 TB (100 MB × 50.000 Blöcke) für Azure Data Box ab Version 1.8.|
 |    Maximale Seitenblobgröße                               |    8 TB                                               |    1 TB                   |
 |    Seitenblob – Seitengröße                                  |    512 Bytes                                          |    4 KB                   |
 
@@ -38,8 +38,10 @@ Sie sollten die Informationen sorgfältig lesen, bevor Sie eine Verbindung mit d
 
 Die folgenden Versionen von Azure Storage-Dienst-APIs werden mit Data Box-Blobspeicher unterstützt:
 
-Öffentliche Vorschauversion (Azure Data Box ab Version 1.7)
+Öffentliche Vorschauversion (Azure Data Box ab Version 1.8)
 
+- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
+- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
 - [2017-04-17](/rest/api/storageservices/version-2017-04-17)
 - [2016-05-31](/rest/api/storageservices/version-2016-05-31)
 - [2015-12-11](/rest/api/storageservices/version-2015-12-11)
@@ -60,11 +62,9 @@ Die folgenden Versionen von Azure Storage-Dienst-APIs werden mit Data Box-Blobsp
 
 ## <a name="supported-azure-client-libraries"></a>Unterstützte Azure-Clientbibliotheken
 
-Für Data Box-Blobspeicher sind bestimmte Clientbibliotheken vorhanden, und es gelten bestimmte Anforderungen an Endpunktsuffixe.
+Für Data Box-Blobspeicher sind bestimmte Clientbibliotheken vorhanden, und es gelten bestimmte Anforderungen an Endpunktsuffixe. Die Data Box-Blobspeicher-Endpunkte sind der neuesten Version der REST-API für Azure Blob Storage nicht vollständig gleichgestellt, siehe [Unterstützte Versionen für Azure Data Box ab Version 1.8](#supported-api-versions). Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
 
-Die unterstützten REST-API-Versionen für Data Box-Blobspeicher sind 2017-04-17, 2016-05-31, 2015-12-11, 2015-07-08 und 2015-04-05 für die Azure Data Box ab Version 1.7. Die Data Box-Blobspeicher-Endpunkte sind der neuesten Version der REST-API für Azure Blob Storage nicht vollständig gleichgestellt. Bei den Speicherclientbibliotheken müssen Sie auf die Version achten, die mit der REST-API kompatibel ist.
-
-### <a name="azure-data-box-17-onwards"></a>Azure Data Box ab Version 1.7
+### <a name="azure-data-box-18-onwards"></a>Azure Data Box ab Version 1.8
 
 | Clientbibliothek     |Unterstützte Version von Data Box-Blobspeicher     | Link   |     Endpunktspezifikation      |
 |--------------------|--------------------------------------------|--------|---------------------------------|

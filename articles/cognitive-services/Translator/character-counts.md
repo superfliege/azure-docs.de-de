@@ -8,19 +8,36 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 12/20/2017
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: c56622ee5e25fc422d02cec6ecfaa1f847e9e769
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f04e3ec4eedda7e260b205fea4856897689fb509
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226433"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700756"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>Zählen von Zeichen mit der Textübersetzungs-API
 
-Die Textübersetzungs-API zählt jedes Zeichen der Eingabe. Hiermit sind Zeichen im Unicode-Sinn gemeint, keine Bytes. Unicode-Ersatzzeichen gelten als zwei Zeichen. Leerzeichen und Markup zählen als Zeichen. Die Länge der Antwort spielt keine Rolle.
+Die Textübersetzungs-API zählt jeden Unicode-Codepunkt des Eingabetextes als ein Zeichen. Jede Übersetzung eines Texts in eine Sprache gilt als separate Übersetzung, auch wenn die Anforderung in einem einzigen API-Aufruf zur Übersetzung in mehrere Sprachen gestellt wurde. Die Länge der Antwort spielt keine Rolle.
 
-Aufrufe der Methoden Detect und BreakSentence werden nicht in den Zeichenverbrauch eingerechnet. Es wird aber erwartet, dass die Aufrufe der Methoden Detect und BreakSentence in einem angemessenen Verhältnis zur Verwendung anderer zu zählender Funktionen stehen. Microsoft behält sich das Recht vor, mit dem Zählen von Detect und BreakSentence zu beginnen.
+Folgendes wird gezählt:
+
+* Text, der im Hauptteil der Anforderung an die Textübersetzungs-API übergeben wird
+   * `Text` bei Verwendung der Methoden „Übersetzen“, „Transkribieren“ und „Wörterbuchsuche“
+   * `Text` und `Translation` bei Verwendung der Methode „Wörterbuchbeispiele“
+* Das gesamte Markup: HTML-, XML-Tags usw. im Textfeld des Anforderungstexts. Die JSON-Notation, die für die Erstellung der Anforderung verwendet wird (z.B. „Text:“), wird nicht gezählt.
+* Ein einzelner Buchstabe
+* Interpunktion
+* Ein Leerzeichen, Tabulator, Markup und alle anderen Arten von Leerzeichen
+* Jeder in Unicode definierte Codepunkt
+* Eine Übersetzungswiederholung, selbst wenn Sie zuvor den gleichen Text übersetzt haben
+
+Für Schriftzeichen, die auf Ideogrammen basieren, wie z.B. chinesische und japanische Kanji, zählt die Textübersetzungs-API weiterhin die Anzahl der Unicode-Codepunkte, also ein Zeichen pro Ideogramm. Ausnahme: Unicode-Ersatzzeichen gelten als zwei Zeichen.
+
+Die Anzahl der Anforderungen, Wörtern, Bytes oder Sätze ist für die Anzahl der Zeichen nicht relevant. 
+
+Aufrufe der Methoden „Detect“ und „BreakSentence“ werden nicht in den Zeichenverbrauch eingerechnet. Es wird aber erwartet, dass die Aufrufe der Methoden „Detect“ und „BreakSentence“ in einem angemessenen Verhältnis zur Verwendung anderer zu zählender Funktionen stehen. Wenn die Anzahl der erfolgten Aufrufe von „Detect“ oder „BreakSentence“ die Anzahl der anderen gezählten Methoden um das 100-fache übersteigt, behält sich Microsoft das Recht vor, Ihre Verwendung dieser Methoden einzuschränken.
+
 
 Weitere Informationen zur Zeichenzählung finden Sie unter [Microsoft Translator FAQ](https://www.microsoft.com/en-us/translator/faq.aspx) (Microsoft Translator – Häufig gestellte Fragen).

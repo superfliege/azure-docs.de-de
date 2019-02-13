@@ -11,16 +11,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: 9a46d813f2e50831240303ba47380da39e2cb6af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: aadc92c232d32d827644caa52b3c362d9c8d4c9b
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53725809"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55691030"
 ---
 # <a name="outputs-section-in-azure-resource-manager-templates"></a>Ausgabenabschnitt in Azure Resource Manager-Vorlagen
+
 Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgegeben werden. Sie könnten z. B. den URI für den Zugriff auf eine bereitgestellte Ressource zurückgeben.
 
 ## <a name="define-and-use-output-values"></a>Definieren und Verwenden von Ausgabewerten
@@ -39,7 +40,7 @@ Das folgende Beispiel zeigt die Vorgehensweise zum Zurückgeben der Ressourcen-I
 Nach der Bereitstellung können Sie den Wert per Skript abrufen. Verwenden Sie für PowerShell Folgendes:
 
 ```powershell
-(Get-AzureRmResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
+(Get-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -Name <deployment-name>).Outputs.resourceID.value
 ```
 
 Verwenden Sie für die Azure-Befehlszeilenschnittstelle den folgenden Befehl:
@@ -77,10 +78,11 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--- |:--- |:--- |
-| outputName |JA |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
-| type |JA |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. |
-| value |JA |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
+| outputName |Ja |Name des Ausgabewerts. Es muss sich um einen gültigen JavaScript-Bezeichner handeln. |
+| type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. |
+| value |Ja |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. |
 
+Informationen zum Hinzufügen von Kommentaren finden Sie unter [Kommentare in Vorlagen](resource-group-authoring-templates.md#comments).
 
 ## <a name="example-templates"></a>Beispielvorlagen
 

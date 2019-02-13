@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: e8b318626947c1d1147e43ca6c183ae724080a59
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251604"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766621"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -119,7 +119,7 @@ Das Ausführungsskript empfängt an ein bereitgestelltes Image übermittelte Dat
 
 #### <a name="working-with-json-data"></a>Arbeiten mit JSON-Daten
 
-Im Folgenden finden Sie ein Beispielskript, das JSON-Daten akzeptiert und zurückgibt. Die `run`-Funktion transformiert die Daten aus JSON in ein Format, das das Modell erwartet, und transformiert die Antwort dann vor der Rückgabe in JSON:
+Das folgende Beispielskript akzeptiert JSON-Daten und gibt diese zurück. Die `run`-Funktion transformiert die Daten aus JSON in ein Format, das das Modell erwartet, und transformiert die Antwort dann vor der Rückgabe in JSON:
 
 ```python
 # import things required by this script
@@ -149,7 +149,7 @@ def run(raw_data):
 
 #### <a name="working-with-binary-data"></a>Arbeiten mit Binärdaten
 
-Wenn Ihr Modell __Binärdaten__ akzeptiert, verwenden Sie `AMLRequest`, `AMLResponse` und `rawhttp`. Im Folgenden finden Sie ein Beispiel für ein Skript, das Binärdaten akzeptiert und die umgekehrten Bytes für POST-Anforderungen zurückgibt. Für GET-Anforderungen wird die vollständige URL im Antworttext zurückgegeben:
+Wenn Ihr Modell __Binärdaten__ akzeptiert, verwenden Sie `AMLRequest`, `AMLResponse` und `rawhttp`. Das folgende Beispielskript akzeptiert Binärdaten und gibt die umgekehrten Bytes für POST-Anforderungen zurück. Für GET-Anforderungen wird die vollständige URL im Antworttext zurückgegeben:
 
 ```python
 from azureml.contrib.services.aml_request  import AMLRequest, rawhttp
@@ -244,9 +244,6 @@ Verwenden Sie die folgenden Schritte für Bereitstellungen in Azure Container In
 
     **Geschätzter Zeitaufwand**: Ca. 3 Minuten.
 
-    > [!TIP]
-    > Wenn während der Bereitstellung Fehler auftreten, können Sie die Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
-
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AciWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice?view=azure-ml-py).
 
 ### <a id="aks"></a> Bereitstellen für Azure Kubernetes Service
@@ -334,9 +331,6 @@ print(service.state)
 
 **Geschätzter Zeitaufwand**: Ca. 3 Minuten.
 
-> [!TIP]
-> Wenn während der Bereitstellung Fehler auftreten, können Sie die Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
-
 Weitere Informationen finden Sie in der Referenzdokumentation für die Klassen [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) und [Webservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.webservice.webservice?view=azure-ml-py).
 
 ### <a id="fpga"> Bereitstellen auf Field Programmable Gate Arrays (FPGAs)</a>
@@ -382,7 +376,7 @@ sudo ./installIoTEdge
 
 Der IoT Edge-Knoten ist bereit, die Verbindungszeichenfolge für Ihren IoT Hub zu empfangen. Suchen Sie nach der Zeile ```device_connection_string:```, und fügen Sie die Verbindungszeichenfolge von oben zwischen den Anführungszeichen ein.
 
-Eine Schrittanleitung dazu, wie Sie Ihr Gerät registrieren und die IoT-Runtime installieren, finden Sie im Dokument [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../../iot-edge/quickstart-linux.md).
+Eine Anleitung dazu, wie Sie Ihr Gerät registrieren und die IoT-Runtime installieren, finden Sie im Dokument [Schnellstart: Bereitstellen des ersten IoT Edge-Moduls auf einem Linux-basierten x64-Gerät](../../iot-edge/quickstart-linux.md).
 
 
 #### <a name="get-the-container-registry-credentials"></a>Abrufen der Anmeldeinformationen für die Containerregistrierung
@@ -469,7 +463,7 @@ Der Webdienst ist eine REST-API, sodass Sie Clientanwendungen in einer Reihe ver
 
 ## <a id="update"></a> Aktualisieren des Webdiensts
 
-Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
+Wenn Sie ein neues Image erstellen müssen Sie jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
 
 ```python
 from azureml.core.webservice import Webservice
@@ -487,9 +481,6 @@ service.update(image = new_image)
 print(service.state)
 ```
 
-> [!NOTE]
-> Wenn Sie ein Image aktualisieren, wird der Webdienst nicht automatisch aktualisiert. Sie müssen jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren.
-
 Weitere Informationen finden Sie in der Referenzdokumentation zur [Webdienst](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py)-Klasse.
 
 ## <a name="clean-up"></a>Bereinigen
@@ -502,6 +493,19 @@ Verwenden Sie zum Löschen eines registrierten Modells `model.delete()`.
 
 Weitere Informationen finden Sie in der Referenzdokumentation zu [WebService.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--), [Image.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#delete--) und [Model.delete()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
+## <a name="troubleshooting"></a>Problembehandlung
+
+* __Wenn während der Bereitstellung Fehler auftreten__, können Sie die Dienstprotokolle mit `service.get_logs()` anzeigen. Die protokollierten Informationen weisen eventuell auf die Ursache des Fehlers hin.
+
+* Die Protokolle können einen Fehler enthalten, der Sie anweist, __den Protokolliergrad auf DEBUG festzulegen__. Um den Protokolliergrad festzulegen, fügen Sie die folgenden Zeilen zu Ihrem Bewertungsskript hinzu, erstellen Sie das Image und erstellen Sie dann einen Dienst mit dem Image:
+
+    ```python
+    import logging
+    logging.basicConfig(level=logging.DEBUG)
+    ```
+
+    Diese Änderung ermöglicht eine zusätzliche Protokollierung und kann weitere Informationen dazu liefern, warum der Fehler aufgetreten ist.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Secure Azure Machine Learning web services with SSL (Sichere Azure Machine Learning-Webdienste mit SSL)](how-to-secure-web-service.md)
@@ -511,3 +515,5 @@ Weitere Informationen finden Sie in der Referenzdokumentation zu [WebService.del
 * [Sammeln von Daten für Modelle in der Produktion](how-to-enable-data-collection.md)
 * [SDK für Azure Machine Learning Service](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
 * [Verwenden von Azure Machine Learning Service mit Azure Virtual Networks](how-to-enable-virtual-network.md)
+* [Bewährte Methoden für das Erstellen von Empfehlungssystemen](https://github.com/Microsoft/Recommenders)
+* [Erstellen einer Echtzeitempfehlungs-API in Azure](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

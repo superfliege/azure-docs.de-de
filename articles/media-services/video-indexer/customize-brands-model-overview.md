@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: anzaman
-ms.openlocfilehash: 7df709adbd8e45712c112b52fc76920f8b67fe91
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 59a865cf6e822ecd1918d0c04b98f0edc0355223
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53282956"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815471"
 ---
 # <a name="customize-a-brands-model-in-video-indexer"></a>Anpassen eines Markenmodells in Video Indexer
 
@@ -30,7 +30,7 @@ In der Präsentation [Microsoft Build 2017 Day 2](https://www.videoindexer.ai/me
 
 Beim Erwähnen von Fenstern (windows) im Kontext des Bauwesens wird das Wort „Windows“ nicht als Marke erkannt. Dasselbe gilt basierend auf fortschrittlichen Machine Learning-Algorithmen auch für „Box“, „Apple“, „Fox“ usw., da diese Algorithmen wissen, wie diese Wörter eindeutig anhand des Kontexts unterschieden werden. Die Markenerkennung funktioniert für alle unterstützten Sprachen. Klicken Sie hier, um das vollständige [Keynote-Video und den Index für Microsoft Build 2017 Day 2](http://www.videoindexer.ai/media/ed6ede78ad/) anzuzeigen.
 
-Lesen Sie [Nächste Schritte](#next-stpes), um zu erfahren, wie Sie bei eigenen Marken vorgehen.
+Lesen Sie „Nächste Schritte“, um zu erfahren, wie Sie bei eigenen Marken vorgehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

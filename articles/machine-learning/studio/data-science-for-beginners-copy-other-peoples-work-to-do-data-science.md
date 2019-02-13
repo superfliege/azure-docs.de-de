@@ -1,8 +1,21 @@
 ---
-Titel: Kopieren der Data Science-Beispiele von anderen titleSuffix: Azure Machine Learning Studio Beschreibung: „Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.“
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: garyericson ms.author: garye ms.custom: seodec18 ms.date: 05.01.2018
+title: Kopieren der Data Science-Beispiele von anderen
+titleSuffix: Azure Machine Learning Studio
+description: 'Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre Arbeit machen. Rufen Sie Machine Learning-Beispiele aus dem Azure AI-Katalog ab.'
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: garyericson
+ms.author: garye
+ms.custom: seodec18
+ms.date: 01/05/2018
+ms.openlocfilehash: 69d3e02ca8d3f020a50b81785c58a3f5a42ce4b0
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492996"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“

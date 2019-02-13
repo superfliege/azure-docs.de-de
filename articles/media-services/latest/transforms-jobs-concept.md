@@ -9,20 +9,27 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 95079813cf3ade41d17393168116e4767ca26e99
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: e84f74fe4678a65a33c9cc728f290e7c905b2261
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742778"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743734"
 ---
 # <a name="transforms-and-jobs"></a>Transformationen und Aufträge
  
-Verwenden Sie [Transformationen](https://docs.microsoft.com/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. 
+Verwenden Sie [Transformationen](https://docs.microsoft.com/rest/api/media/transforms), um allgemeine Aufgaben zur Codierung oder Analyse von Videos zu konfigurieren. Jede **Transformation** beschreibt eine Vorgehensweise oder einen Workflow von Aufgaben zur Verarbeitung Ihrer Video- oder Audiodateien. Eine einzelne Transformation kann mehrere Regeln anwenden. Eine Transformation kann z.B. angeben, dass jedes Video in eine MP4-Datei mit einer festgelegten Bitrate codiert und eine Miniaturansicht aus dem ersten Bild im Video generiert werden soll. Sie würden für jede Regel, die Sie in die Transformation einfügen möchten, einen TransformOutput-Eintrag hinzufügen. Sie können Transformationen in Ihrem Media Services-Konto direkt über die Media Services v3-API mithilfe eines der veröffentlichten SDKs verwenden. Die Media Services-v3-API wird von Azure Resource Manager gesteuert. Deshalb können Sie auch Resource Manager-Vorlagen verwenden, um Transformationen in Ihrem Media Services-Konto zu erstellen und bereitzustellen. Mithilfe der rollenbasierten Zugriffssteuerung können Sie den Zugriff auf Transformationen sperren.
 
-Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Azure Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos wie folgt angeben: HTTPS-URLs, SAS-URLs oder [Media Services-Objekte](https://docs.microsoft.com/rest/api/media/assets).  
+Der Aktualisierungsvorgang für die Entität [Transformieren](https://docs.microsoft.com/rest/api/media/transforms) ist für das Vornehmen von Änderungen an der Beschreibung oder den Prioritäten der zugrundeliegenden TransformOutputs vorgesehen. Es empfiehlt sich, solche Updates auszuführen, wenn alle in Bearbeitung befindlichen Aufträge abgeschlossen wurden. Wenn Sie die Konfiguration umschreiben möchten, müssen Sie eine neue Transformation erstellen.
+
+Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Azure Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos über HTTPS-URLs, SAS-URLs oder [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets). Fortschritt und Status von Aufträgen können abgerufen werden, indem die Ereignisse mit Event Grid überwacht werden. Weitere Informationen finden Sie unter [Überwachen von Ereignissen mit EventGrid](job-state-events-cli-how-to.md).
+
+Der Update-Vorgang für den [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) kann verwendet werden, um die Eigenschaften *description*, und *priority* nach dem Übermitteln des Auftrags zu ändern. Eine Änderung an der *priority*-Eigenschaft wird nur wirksam, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder bereits beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
+
+> [!NOTE]
+> Eigenschaften von **Transform** und **Job** vom Datetime-Typ sind immer im UTC-Format angegeben.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 
@@ -30,6 +37,8 @@ Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentlich
 2. Übermitteln von Aufträgen unter dieser Transformation 
 3. Auflisten von Transformationen 
 4. Löschen Sie eine Transformation, wenn Sie nicht vorhaben, diese Konfiguration künftig zu verwenden. 
+
+### <a name="example"></a>Beispiel
 
 Angenommen, Sie möchten den ersten Frame aller Ihrer Videos als Miniaturbild extrahieren. Dazu müssen Sie die folgenden Schritte ausführen: 
 
@@ -40,100 +49,10 @@ Angenommen, Sie möchten den ersten Frame aller Ihrer Videos als Miniaturbild ex
 
 Eine **Transformation** hilft Ihnen, die Konfiguration zu erstellen (Schritt 1) und dann Aufträge mithilfe dieser Konfiguration zu übermitteln (Schritt 2).
 
-## <a name="transforms"></a>Transformationen
+## <a name="paging"></a>Paging
 
-Sie können Transformationen in Ihrem Media Services-Konto direkt über die v3-API mithilfe eines der veröffentlichten SDKs verwenden. Die Media Services-v3-API wird von Azure Resource Manager gesteuert. Deshalb können Sie auch Resource Manager-Vorlagen verwenden, um Transformationen in Ihrem Media Services-Konto zu erstellen und bereitzustellen. Mithilfe der rollenbasierten Zugriffssteuerung können Sie den Zugriff auf Transformationen sperren.
-
-### <a name="transform-definition"></a>Transformationsdefinition
-
-Die folgende Tabelle enthält die Eigenschaften einer Transformation und die jeweiligen Definitionen.
-
-|NAME|BESCHREIBUNG|
-|---|---|
-|id|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name|Der Name der Ressource.|
-|properties.created |Das Datum und die Uhrzeit (in UTC), an dem die Transformation erstellt wurde, im Format „JJJJ-MM-TTThh:mm:ssZ“.|
-|properties.description |Eine ausführliche Beschreibung der Transformation.|
-|properties.lastModified |Das Datum und die Uhrzeit (in UTC), an dem die Transformation zuletzt aktualisiert wurde, im Format „JJJJ-MM-TTTss:mm:ssZ“.|
-|properties.outputs |Ein Array von mindestens einem TransformOutput-Objekt, das die Transformation generieren soll.|
-|type|Der Typ der Ressource.|
-
-Die vollständige Definition finden Sie unter [Transformationen](https://docs.microsoft.com/rest/api/media/transforms).
-
-Wie oben erläutert, kann eine Transformation dabei helfen, eine Konfiguration oder Regel für die Verarbeitung Ihrer Videos zu erstellen. Eine einzelne Transformation kann mehrere Regeln anwenden. Eine Transformation kann z.B. angeben, dass jedes Video in eine MP4-Datei mit einer festgelegten Bitrate codiert und eine Miniaturansicht aus dem ersten Bild im Video generiert werden soll. Sie würden für jede Regel, die Sie in die Transformation einfügen möchten, einen TransformOutput-Eintrag hinzufügen.
-
-> [!NOTE]
-> Auch wenn bei der Definition von Transformationen ein Updatevorgang unterstützt wird, sollten Sie sicherstellen, dass alle in Bearbeitung befindlichen Aufträge abgeschlossen werden, bevor Sie eine Änderung vornehmen. Normalerweise würden Sie eine vorhandene Transformation aktualisieren, um die Beschreibung zu oder die Prioritäten der zugrunde liegenden TransformOutputs zu ändern. Wenn Sie die Konfiguration umschreiben möchten, sollten Sie besser eine neue Transformation erstellen.
-
-## <a name="jobs"></a>Aufträge
-
-Nachdem eine Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Fortschritt und Status von Aufträgen können abgerufen werden, indem die Ereignisse mit Event Grid überwacht werden. Weitere Informationen finden Sie unter [Überwachen von Ereignissen mit EventGrid](job-state-events-cli-how-to.md ).
-
-### <a name="jobs-definition"></a>Auftragsdefinition
-
-Die folgende Tabelle enthält die Eigenschaften des Auftrags und die jeweiligen Definitionen.
-
-|NAME|BESCHREIBUNG|
-|---|---|
-|id|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name   |Der Name der Ressource.|
-|properties.correlationData |Vom Kunden angegebene Korrelationsdaten (unveränderlich), die als Teil der Job- und JobOutput-Benachrichtigungen zu Statusänderungen zurückgegeben werden. Weitere Informationen finden Sie unter [Ereignisschemas](media-services-event-schemas.md).<br/><br/>Die Eigenschaft kann auch für die Verwendung von Media Services mit mehreren Mandanten verwendet werden. Sie können die Mandanten-IDs in die Aufträge einfügen. |
-|properties.created |Das Datum und die Uhrzeit (in UTC), an dem der Auftrag erstellt wurde, im Format „JJJJ-MM-TTThh:mm:ssZ“.|
-|properties.description |Optionale vom Kunden bereitgestellte Beschreibung des Auftrags.|
-|properties.input|Die Eingaben für den Auftrag.|
-|properties.lastModified    |Das Datum und die Uhrzeit (in UTC), an dem der Auftrag zuletzt aktualisiert wurde, im Format „JJJJ-MM-TTTss:mm:ssZ“.|
-|properties.outputs|Die Ausgaben für den Auftrag.|
-|properties.priority    |Die Priorität, mit dem der Auftrag verarbeitet werden soll. Aufträge mit höherer Priorität werden vor Aufträgen mit niedrigerer Priorität verarbeitet. Wenn diese Eigenschaft nicht festgelegt ist, ist die Priorität standardmäßig normal.|
-|properties.state   |Der aktuelle Status des Auftrags.|
-|type   |Der Typ der Ressource.|
-
-Die vollständige Definition finden Sie unter [Aufträge](https://docs.microsoft.com/rest/api/media/jobs).
-
-> [!NOTE]
-> Auch wenn Auftragsdefinitionen einen Updatevorgang unterstützen, können nach dem Übermitteln des Auftrags lediglich die Eigenschaften description und priority geändert werden. Darüber hinaus gilt eine Änderung der priority-Eigenschaft nur, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
-
-### <a name="pagination"></a>Paginierung
-
-Die Paginierung von Aufträgen wird in Media Services v3 unterstützt.
-
-> [!TIP]
-> Sie sollten immer den Link „Weiter“ verwenden, um die Sammlung zu durchlaufen, und keine bestimmte Seitengröße als Referenz verwenden.
-
-Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
-
-Wenn während der Paginierung der Sammlung Aufträge erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
-
-Im folgenden C#-Beispiel wird gezeigt, wie alle Aufträge im Konto durchlaufen werden.
-
-```csharp            
-List<string> jobsToDelete = new List<string>();
-var pageOfJobs = client.Jobs.List(config.ResourceGroup, config.AccountName, "Encode");
-
-bool exit;
-do
-{
-    foreach (Job j in pageOfJobs)
-    {
-        jobsToDelete.Add(j.Name);
-    }
-
-    if (pageOfJobs.NextPageLink != null)
-    {
-        pageOfJobs = client.Jobs.ListNext(pageOfJobs.NextPageLink);
-        exit = false;
-    }
-    else
-    {
-        exit = true;
-    }
-}
-while (!exit);
-
-```
-
-Beispiele zu REST finden Sie unter [Aufträge – Liste](https://docs.microsoft.com/rest/api/media/jobs/list).
-
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Streamen von Videodateien](stream-files-dotnet-quickstart.md)
+[Hochladen, Codieren und Streamen von Videodateien](stream-files-tutorial-with-api.md)

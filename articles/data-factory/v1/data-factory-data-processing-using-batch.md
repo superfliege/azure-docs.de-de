@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: e053fa52b7b7cea1c35b68a0f2079eb5a590a76a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: adb9fb649d934d08ea546759bcf4733a1c6d9080
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822747"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Verarbeiten umfangreicher Datasets mit Azure Data Factory und Azure Batch
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "54021576"
 
 In diesem Artikel wird die Architektur einer Beispiellösung beschrieben, mit der umfangreiche Datasets auf automatische und geplante Weise verschoben und verarbeitet werden. Darüber hinaus enthält der Artikel eine umfassende exemplarische Vorgehensweise zur Implementierung der Lösung mit Azure Data Factory und Azure Batch.
 
-Er ist länger als viele andere Artikel, weil sich die exemplarische Vorgehensweise auf eine vollständige Beispiellösung bezieht. Falls Sie mit Batch und Data Factory noch nicht vertraut sind, können Sie sich darüber informieren, wie diese Dienste funktionieren und zusammenarbeiten. Wenn Sie mit den Diensten schon vertraut sind und eine Lösung planen oder erstellen, können Sie sich auf den Abschnitt [Architektur](#architecture-of-sample-solution) des Artikels konzentrieren. Wenn Sie einen Prototyp oder eine Lösung entwickeln, sollten Sie den detaillierten Anleitungen in der [exemplarischen Vorgehensweise](#implementation-of-sample-solution) folgen. Wir freuen uns über Ihre Kommentare hierzu und darüber, wie Sie die Informationen nutzen.
+Er ist länger als viele andere Artikel, weil sich die exemplarische Vorgehensweise auf eine vollständige Beispiellösung bezieht. Falls Sie mit Batch und Data Factory noch nicht vertraut sind, können Sie sich darüber informieren, wie diese Dienste funktionieren und zusammenarbeiten. Wenn Sie mit den Diensten schon vertraut sind und eine Lösung planen oder erstellen, können Sie sich auf den Abschnitt „Architektur“ des Artikels konzentrieren. Wenn Sie einen Prototyp oder eine Lösung entwickeln, sollten Sie den Schritt-für-Schritt-Anleitungen in der exemplarischen Vorgehensweise folgen. Wir freuen uns über Ihre Kommentare hierzu und darüber, wie Sie die Informationen nutzen.
 
 Zunächst wird beschrieben, wie der Data Factory- und der Batch-Dienst Sie beim Verarbeiten großer Datasets in der Cloud unterstützen.     
 

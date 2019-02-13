@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 9e4c717b3b205d6c8fdd309dada918eb6df35181
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244759"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811663"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -162,7 +162,7 @@ Das folgende Beispiel veranschaulicht das Erstellen eines Containers mit **Conta
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>Hochladen eines Blobs in einen Container
-Wie im Abschnitt [Blobdienstkonzepte](#blob-service-concepts) erwähnt, bietet der Blobspeicher drei verschiedene Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs. Die iOS-Bibliothek von Azure Storage unterstützt alle drei Arten von Blobs. In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.
+Wie im Abschnitt „Blobdienstkonzepte“ erwähnt, bietet der Blobspeicher drei verschiedene Arten von Blobs: Blockblobs, Anfügeblobs und Seitenblobs. Die iOS-Bibliothek von Azure Storage unterstützt alle drei Arten von Blobs. In den meisten Fällen wird die Verwendung von Blockblobs empfohlen.
 
 Das folgende Beispiel zeigt den Upload eines Blockblobs aus einer NSString. Wenn in diesem Container bereits ein Blob mit demselben Namen vorhanden ist, wird der Inhalt dieses Blobs überschrieben.
 

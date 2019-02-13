@@ -1,7 +1,21 @@
 ---
-Titel: Verwalten eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau titleSuffix: Azure Machine Learning Studio-Beschreibung: Verwalten des Zugriffs auf Azure Machine Learning-Arbeitsbereiche und Bereitstellen und Verwalten von ML API-Webdiensten Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 27.02.2017
+title: Verwalten eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau
+titleSuffix: Azure Machine Learning Studio
+description: Verwalten des Zugriffs auf Azure Machine Learning-Arbeitsbereiche sowie Bereitstellen und Verwalten von ML-API-Webdiensten
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 02/27/2017
+ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55487273"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Verwalten eines Azure Machine Learning Studio-Arbeitsbereichs
 

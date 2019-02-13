@@ -4,24 +4,25 @@ description: In diesem Artikel erhalten Sie Anweisungen zum Verwalten von Media 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2017
+ms.date: 01/31/2018
 ms.author: juliako
-ms.openlocfilehash: 8c67ce4fd9597c66e795269972d2048ddd5a60c1
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: d43adf7009fcd668299f018b6308765bb115b237
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54886338"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565903"
 ---
-# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten für mehrere Speicherkonten
-Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto mehrere Speicherkonten anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
+# <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten über mehrere Speicherkonten
+
+Sie können mehrere Speicherkonten an ein einzelnes Media Services-Konto anfügen. Die Möglichkeit, mehrere Speicherkonten an ein Media Services-Konto anzufügen, bietet die folgenden Vorteile:
 
 * Lastenausgleich der Assets für mehrere Speicherkonten.
 * Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
@@ -29,12 +30,13 @@ Ab Microsoft Azure Media Services 2.2 können Sie an ein Media Services-Konto me
 In diesem Artikel wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
 
 ## <a name="considerations"></a>Überlegungen
+
 Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die folgenden Überlegungen:
 
-* Alle an ein Media Services-Konto angefügten Speicherkonten müssen sich im gleichen Rechenzentrum wie das Media Services-Konto befinden.
-* Derzeit kann ein Speicherkonto nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
+* Das Media Services-Konto und alle zugeordneten Speicherkonten müssen im gleichen Azure-Abonnement enthalten sein. Es wird empfohlen, Speicherkonten zu verwenden, die sich an demselben Ort wie das Media Services-Konto befinden.
+* Ein Speicherkonto kann nicht mehr getrennt werden, nachdem es an ein Media Services-Konto angefügt wurde.
 * Das primäre Speicherkonto wird zum Zeitpunkt der Erstellung des Media Services-Kontos angegeben. Derzeit können Sie das Standardspeicherkonto nicht ändern. 
-* Wenn Sie gegenwärtig ein Konto für kalten Speicher zu einem AMS-Konto hinzufügen möchten, muss das Speicherkonto ein Blobtyp sein. Zudem muss es auf nicht primär festgelegt sein.
+* Wenn Sie ein Konto für kalten Speicher zu einem AMS-Konto hinzufügen möchten, muss das Speicherkonto ein Blobtyp sein. Zudem muss es auf nicht primär festgelegt sein.
 
 Weitere Überlegungen:
 

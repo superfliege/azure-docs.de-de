@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 3ba2009ef1ea8fdf5916baab296c7ff5eee953db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 40062cfb2e646fd6befef1e746f9493f3e4b20f9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469191"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821359"
 ---
 # <a name="table-design-patterns"></a>Entwurfsmuster für die Tabelle
 Dieser Abschnitt beschreibt einige Muster, die zur Verwendung mit Tabellenspeicherdienstlösungen geeignet sind. Darüber hinaus wird gezeigt, wie Sie einige der in anderen Artikeln zum Tabellenspeicherentwurf angesprochenen Probleme und Kompromisse praktisch behandeln können. Das folgende Diagramm fasst die Beziehungen zwischen den verschiedenen Mustern zusammen:  
@@ -73,7 +73,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 
 * [Sekundäres Indexmuster für Inter-Partition](#inter-partition-secondary-index-pattern)
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)
-* [Entitätsgruppentransaktionen](#entity-group-transactions)
+* Entitätsgruppentransaktionen
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)
 
 ## <a name="inter-partition-secondary-index-pattern"></a>Sekundäres Indexmuster für Inter-Partition
@@ -128,7 +128,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 * [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 * [Sekundäres Indexmuster für Intra-Partition](#intra-partition-secondary-index-pattern)  
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
-* [Entitätsgruppentransaktionen](#entity-group-transactions)  
+* Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)  
 
 ## <a name="eventually-consistent-transactions-pattern"></a>Eventual Consistency-Transaktionsmuster
@@ -172,7 +172,7 @@ Verwenden Sie dieses Muster, um Eventual Consistency zwischen Entitäten zu gew�
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Entitätsgruppentransaktionen](#entity-group-transactions)  
+* Entitätsgruppentransaktionen  
 * [Zusammenführen oder ersetzen](#merge-or-replace)  
 
 > [!NOTE]
@@ -212,7 +212,7 @@ Die Eigenschaft **EmployeeIDs** enthält eine Liste der Mitarbeiter-IDs für Mit
 Wenn Sie die zweite Option verwenden, beschreiben die folgenden Schritte den Prozess, den Sie befolgen sollten, wenn Sie einen neuen Mitarbeiter hinzufügen. In diesem Beispiel werden wir einen Mitarbeiter mit der ID 000152 und einen Nachnamen Jones in der Vertriebsabteilung hinzufügen:  
 
 1. Rufen Sie die Indexentität mit dem **PartitionKey**-Wert „Sales“ und dem **RowKey**-Wert „Jones“ ab. Speichern Sie das ETag der Entität, die in Schritt 2 verwendet wird.  
-2. Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**= „Vertrieb“ und **RowKey** = „000152“), und aktualisieren Sie die Indexentität (**PartitionKey** = „Vertrieb“ und **RowKey** = „Jones“) durch Hinzufügen der neuen Mitarbeiter-ID zur Liste im Feld „EmployeeIDs“. Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter [Entitätsgruppentransaktionen](#entity-group-transactions).  
+2. Erstellen Sie eine Entitätsgruppentransaktion (also einen Batchvorgang), mit der die neue Mitarbeiterentität eingefügt wird (**PartitionKey**= „Vertrieb“ und **RowKey** = „000152“), und aktualisieren Sie die Indexentität (**PartitionKey** = „Vertrieb“ und **RowKey** = „Jones“) durch Hinzufügen der neuen Mitarbeiter-ID zur Liste im Feld „EmployeeIDs“. Weitere Informationen zu Entitätsgruppentransaktionen finden Sie unter „Entitätsgruppentransaktionen“.  
 3. Falls die Entitätsgruppentransaktion aufgrund eines Fehlers der vollständigen Nebenläufigkeit (jemand hat gerade die Indexentität geändert) nicht erfolgreich ist, müssen Sie erneut mit Schritt 1 beginnen.  
 
 Wenn Sie die zweite Option verwenden, können Sie einen ähnlichen Ansatz beim Löschen eines Mitarbeiters wählen. Das Ändern des Nachnamen des Mitarbeiters ist etwas komplexer, da Sie eine Entitätsgruppentransaktion ausführen müssen, die drei Entitäten aktualisiert: die Mitarbeiterentität, die Indexentität für den alten Nachnamen und die Indexentität für den neuen Nachnamen. Sie müssen jede Entität abrufen, bevor Sie Änderungen vornehmen, um die ETag-Werte abzurufen, mit denen Sie dann die Updates unter Verwendung von optimistischer Nebenläufigkeit ausführen.  
@@ -251,7 +251,7 @@ Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Mus
 
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
 * [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
-* [Entitätsgruppentransaktionen](#entity-group-transactions)  
+* Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)  
 
 ## <a name="denormalization-pattern"></a>Denormalisierungsmuster
@@ -282,7 +282,7 @@ Verwenden Sie dieses Muster, wenn Sie häufig nach zugeordneten Informationen su
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
 * [Zusammengesetzte Schlüsselmuster](#compound-key-pattern)  
-* [Entitätsgruppentransaktionen](#entity-group-transactions)  
+* Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)
 
 ## <a name="compound-key-pattern"></a>Zusammengesetzte Schlüsselmuster
@@ -325,7 +325,7 @@ Verwenden Sie dieses Muster, wenn Sie eine oder mehrere Entitäten, die Sie häu
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Entitätsgruppentransaktionen](#entity-group-transactions)  
+* Entitätsgruppentransaktionen  
 * [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types)  
 * [Eventual Consistency Transaktionsmuster](#eventually-consistent-transactions-pattern)  
 
@@ -394,7 +394,7 @@ Verwenden Sie dieses Muster, wenn Sie eine große Anzahl von Entitäten haben, d
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Entitätsgruppentransaktionen](#entity-group-transactions)
+* Entitätsgruppentransaktionen
 * [Ändern von Entitäten](#modifying-entities)  
 
 ## <a name="data-series-pattern"></a>Datenreihenmuster
@@ -454,7 +454,7 @@ Verwenden Sie dieses Muster, wenn Sie Entitäten speichern müssen, deren Größ
 ### <a name="related-patterns-and-guidance"></a>Zugehörige Muster und Anleitungen
 Die folgenden Muster und Anleitungen können auch relevant sein, wenn dieses Muster implementiert wird:  
 
-* [Entitätsgruppentransaktionen](#entity-group-transactions)
+* Entitätsgruppentransaktionen
 * [Zusammenführen oder ersetzen](#merge-or-replace)
 
 ## <a name="large-entities-pattern"></a>Muster für große Entitäten
@@ -556,7 +556,7 @@ Beachten Sie die folgenden Punkte bei der Entscheidung, wie Sie Protokolldaten s
 Dieser Abschnitt beschreibt einige Überlegungen, die Sie berücksichtigen sollten, wenn Sie die in den vorherigen Abschnitten beschriebenen Muster implementieren. Im größten Teil dieses Abschnitts werden Beispiele verwendet, die in C# geschrieben sind und die Storage Client Library (Version 4.3.0 zum Redaktionszeitpunkt) verwendet.  
 
 ## <a name="retrieving-entities"></a>Abrufen von Entitäten
-Wie im Abschnitt [Entwurf für Abfragen](#design-for-querying)erläutert, ist die effizienteste Abfrage eine Punktabfrage. In einigen Szenarien müssen Sie jedoch mehrere Entitäten abrufen. Dieser Abschnitt beschreibt einige allgemeine Ansätze zum Abrufen von Entitäten mithilfe der Storage Client Library.  
+Wie im Abschnitt „Entwurf für Abfragen“ erläutert, ist die effizienteste Abfrage eine Punktabfrage. In einigen Szenarien müssen Sie jedoch mehrere Entitäten abrufen. Dieser Abschnitt beschreibt einige allgemeine Ansätze zum Abrufen von Entitäten mithilfe der Storage Client Library.  
 
 ### <a name="executing-a-point-query-using-the-storage-client-library"></a>Ausführen einer Punktabfrage mithilfe der Storage Client Library
 Die einfachste Möglichkeit zum Ausführen einer Punktabfrage ist die Verwendung des Tabellenvorgangs **Abrufen**, wie im folgenden C#-Codeausschnitt gezeigt, der eine Entität mit dem **PartitionKey**-Wert „Sales“ und dem **RowKey**-Wert „212“ abruft:  

@@ -1,6 +1,6 @@
 ---
 title: Migrieren von Azure Media Services V2 zu V3 | Microsoft-Dokumentation
-description: Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführt wurden, und zeigt Unterschiede zwischen den beiden Versionen.
+description: Dieser Artikel beschreibt Änderungen, die in Azure Media Services V3 eingeführt wurden, und zeigt Unterschiede zwischen den beiden Versionen. Dieser Artikel bietet außerdem Hilfestellung bei der Migration von Media Services v2 zu v3.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 01/24/2019
+ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: ec40de04f46d0be8f40c2223346f17d288eb580c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104064"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744165"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c327d973170a4556471663c3bea9dcae9b5794fb
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b10e434aece0ac214a0fd397ea94cbeccca4e44a
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238610"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746489"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Bekannte Probleme und Problembehandlung für Azure Machine Learning Service
 
@@ -26,7 +26,8 @@ Dieser Artikel hilft Ihnen, Fehler oder Ausfälle zu ermitteln und zu beheben, d
 
 **Fehlermeldung: 'PyYAML' kann nicht deinstalliert werden.**
 
-Azure Machine Learning SDK für Python: Bei PyYAML handelt es sich um ein mit distutils installiertes Projekt. Daher können wir im Fall einer teilweisen Deinstallation nicht genau bestimmen, welche Dateien zu ihm gehören. Verwenden Sie diesen Befehl, um die Installation des SDKs fortzusetzen und diesen Fehler zu ignorieren:
+Azure Machine Learning SDK für Python: Bei PyYAML handelt es sich um ein mit distutils installiertes Projekt. Daher können wir bei einer teilweisen Deinstallation nicht genau bestimmen, welche Dateien zu ihm gehören. Verwenden Sie diesen Befehl, um die Installation des SDKs fortzusetzen und diesen Fehler zu ignorieren:
+
 ```Python
 pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 ```
@@ -41,7 +42,7 @@ Fehler bei der Image-Erstellung beim Bereitstellen des Webdiensts. Die Problemum
 
 ## <a name="deployment-failure"></a>Fehler bei der Bereitstellung
 
-Wenn „DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>“ angezeigt wird, ändern Sie die SKU für virtuelle Computer in Ihrer Bereitstellung in Varianten mit mehr Arbeitsspeicher.
+Wenn `['DaskOnBatch:context_managers.DaskOnBatch', 'setup.py']' died with <Signals.SIGKILL: 9>` angezeigt wird, ändern Sie die SKU für virtuelle Computer in Ihrer Bereitstellung in eine Variante mit mehr Arbeitsspeicher.
 
 ## <a name="fpgas"></a>FPGAs
 Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anfordern und dessen Genehmigung abwarten. Füllen Sie das Formular zur Kontingentanforderung aus, um Zugriff anzufordern: https://aka.ms/aml-real-time-ai
@@ -50,7 +51,7 @@ Um Modelle auf FPGAs bereitzustellen, müssen Sie zuerst ein FPGA-Kontingent anf
 
 Probleme mit Databricks und Azure Machine Learning:
 
-1. Die Installation des Azure Machine Learning SDK (ML SDK) schlägt in Databricks fehl, wenn mehrere Pakete installiert werden.
+1. Die Installation des Azure Machine Learning SDK schlägt in Databricks fehl, wenn mehrere Pakete installiert werden.
 
    Einige Pakete, z.B. `psutil`, können Konflikte verursachen. Um Fehler bei der Installation zu vermeiden, frieren Sie beim Installieren der Pakete die Bibliotheksversion ein. Dieses Problem hängt mit Databricks und nicht mit dem Azure Machine Learning Service SDK zusammen und tritt ggf. auch mit anderen Bibliotheken auf. Beispiel:
    ```python
@@ -60,7 +61,7 @@ Probleme mit Databricks und Azure Machine Learning:
 
 2. Wenn Sie bei Verwendung des automatisierten maschinellen Lernens in Databricks eine Ausführung abbrechen und eine neue Experimentausführung starten möchten, müssen Sie Ihren Azure Databricks-Cluster neu starten.
 
-3. In den Einstellungen für das automatisierte maschinelle Lernen legen Sie, wenn Sie mehr als 10 Iterationen haben, „show_output“ auf „false“ fest, wenn Sie Ihre Ausführung übermitteln.
+3. Sofern in den Einstellungen für automatisiertes maschinelles Lernen mehr als 10 Iterationen vorgesehen sind, legen Sie `show_output` auf `False` fest, wenn Sie die Ausführung übermitteln.
 
 
 ## <a name="azure-portal"></a>Azure-Portal
@@ -73,6 +74,20 @@ Die Protkolldateien finden Sie hier:
 ## <a name="resource-quotas"></a>Ressourcenkontingente
 
 Erfahren Sie mehr über die [Ressourcenkontingente](how-to-manage-quotas.md), die Ihnen im Rahmen von Azure Machine Learning begegnen können.
+
+## <a name="authentication-errors"></a>Authentifizierungsfehler
+
+Wenn Sie einen Verwaltungsvorgang innerhalb eines Remoteauftrags auf ein Computeziel anwenden, erhalten Sie eine der folgenden Fehlermeldungen:
+
+```json
+{"code":"Unauthorized","statusCode":401,"message":"Unauthorized","details":[{"code":"InvalidOrExpiredToken","message":"The request token was either invalid or expired. Please try again with a valid token."}]}
+```
+
+```json
+{"error":{"code":"AuthenticationFailed","message":"Authentication failed."}}
+```
+
+Sie erhalten beispielsweise eine Fehlermeldung, wenn Sie versuchen, ein Computeziel anhand einer ML-Pipeline zu erstellen oder anzuhängen, die zur Remoteausführung übermittelt wird.
 
 ## <a name="get-more-support"></a>Weitere Unterstützung
 

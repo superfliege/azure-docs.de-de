@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: e1dca8655c6bf609bee255f183bcd2fe9b56bc55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: aafed492e83066be20b4728a2617527351291a5b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437492"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813108"
 ---
 # <a name="understand-the-linux-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Linux-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -28,7 +28,7 @@ In der folgende Liste finden Sie die drei Bereitschaftszustände, in denen sich 
 
 ## <a name="start-the-troubleshooter"></a>Starten der Problembehandlung
 
-Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der [Offlineanleitung](#offline) erfahren Sie, wie Sie Probleme mit einem Azure-fremden Computer behandeln.
+Klicken Sie für Azure-Computer im Portal unter der Spalte **Bereitschaft des Update-Agents** auf den Link **Problembehandlung**, um die Seite **Problembehandlung von Update-Agent** zu öffnen. Bei Azure-fremden Computern gelangen Sie über den Link zu diesem Artikel. In der Offlineanleitung erfahren Sie, wie Sie Probleme mit einem Nicht-Azure-Computer behandeln.
 
 ![Seite „VM-Liste“](../media/update-agent-issues-linux/vm-list.png)
 
@@ -39,7 +39,7 @@ Klicken Sie auf der Seite **Problembehandlung von Update-Agent** auf **Überprü
 
 ![Seite „Problembehandlung“](../media/update-agent-issues-linux/troubleshoot-page.png)
 
-Nach Abschluss werden die Ergebnisse im Fenster zurückgegeben. Die verschiedenen [Überprüfungsabschnitte](#pre-requisistes-checks) liefern Informationen zu den Aspekten, die jede Überprüfung untersucht.
+Nach Abschluss werden die Ergebnisse im Fenster zurückgegeben. Die verschiedenen Überprüfungsabschnitte liefern Informationen zu den Aspekten, die jede Überprüfung untersucht.
 
 ![Seite mit Überprüfungen des Update-Agents](../media/update-agent-issues-linux/update-agent-checks.png)
 

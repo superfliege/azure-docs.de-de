@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 44182d686548fa5b6363a87be0ce7851829e20ab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30173320"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820555"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Übereinstimmungsbedingungen der Azure CDN-Regel-Engine 
 Dieser Artikel enthält ausführliche Beschreibungen der verfügbaren Übereinstimmungsbedingungen für die [Regel-Engine](cdn-rules-engine.md) des Azure Content Delivery Network (CDN).
@@ -107,7 +107,7 @@ NAME | Zweck
 
 Die Übereinstimmungsbedingung „Always“ wendet einen Standardsatz von Features auf alle Anforderungen an.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -116,8 +116,8 @@ Die Übereinstimmungsbedingung „Always“ wendet einen Standardsatz von Featur
 Das AS Number-Netzwerk wird durch seine autonome Systemnummer (ASN) definiert. 
 
 Mit der Option **Entspricht**/**Entspricht nicht** werden die Bedingungen bestimmt, unter denen die Übereinstimmungsbedingung „AS Number“ erfüllt ist:
-- **Entspricht**: Für diese Option ist es erforderlich, dass die ASN des Clientnetzwerks mit einer der angegebenen ASNs übereinstimmt. 
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die ASN des Clientnetzwerks nicht mit einer der angegebenen ASNs übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die ASN des Clientnetzwerks mit einer der angegebenen ASNs übereinstimmt. 
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die ASN des Clientnetzwerks nicht mit einer der angegebenen ASNs übereinstimmt.
 
 Wichtige Informationen:
 - Wenn Sie mehrere ASNs angeben möchten, trennen Sie die Nummern durch ein einzelnes Leerzeichen voneinander. Die Angabe „64514 64515“ beispielsweise führt zur Übereinstimmung mit Anforderungen von 64514 oder 64515.
@@ -130,7 +130,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -146,24 +146,24 @@ Wichtige Informationen:
  - Der Inhaltszugriffspunkt bestimmt den Dienst, der den angeforderten Inhalt bereitstellen soll.
  - Verwenden Sie keine AND IF-Anweisung, um bestimmte Übereinstimmungsbedingungen zu kombinieren. Durch Kombination einer CDN Origin-Übereinstimmungsbedingung mit einer Customer Origin-Übereinstimmungsbedingung würde beispielsweise ein Übereinstimmungsmuster entstehen, für das nie eine Übereinstimmung gefunden werden kann. Aus diesem Grund können zwei CDN Origin-Übereinstimmungsbedingungen nicht mit einer AND IF-Anweisung kombiniert werden.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
 ---
 ### <a name="client-ip-address"></a>Client IP Address
 Mit der Option **Entspricht**/**Entspricht nicht** werden die Bedingungen bestimmt, unter denen die Übereinstimmungsbedingung „Client IP Address“ erfüllt ist:
-- **Entspricht**: Für diese Option ist es erforderlich, dass die IP-Adresse des Clients mit einer der angegebenen IP-Adressen übereinstimmt. 
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die IP-Adresse des Clients nicht mit einer der angegebenen IP-Adressen übereinstimmt. 
+- **Entspricht:** Für diese Option ist es erforderlich, dass die IP-Adresse des Clients mit einer der angegebenen IP-Adressen übereinstimmt. 
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die IP-Adresse des Clients nicht mit einer der angegebenen IP-Adressen übereinstimmt. 
 
 Wichtige Informationen:
 - Verwenden Sie die CIDR-Notation.
 - Wenn Sie mehrere IP-Adressen und/oder IP-Adressblöcke angeben, trennen Sie diese mit einem einzelnen Leerzeichen. Beispiel: 
-  - **IPv4-Beispiel**: Die Angabe „1.2.3.4 10.20.30.40“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1.2.3.4 oder 10.20.30.40.
-  - **IPv6-Beispiel**: Die Angabe „1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80.
+  - **IPv4-Beispiel:** Die Angabe „1.2.3.4 10.20.30.40“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1.2.3.4 oder 10.20.30.40.
+  - **IPv6-Beispiel:** Die Angabe „1:2:3:4:5:6:7:8 10:20:30:40:50:60:70:80“ führt zur Übereinstimmung mit eingehenden Anforderungen von der Adresse 1:2:3:4:5:6:7:8 oder 10:20:30:40:50:60:70:80.
 - Die Syntax für einen IP-Adressblock besteht aus der IP-Basisadresse, gefolgt von einem Schrägstrich und der Präfixgröße. Beispiel: 
-  - **IPv4-Beispiel**: Die Angabe „5.5.5.64/26“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 5.5.5.64 bis 5.5.5.127.
-  - **IPv6-Beispiel**: Die Angabe „1:2:3:/48“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
+  - **IPv4-Beispiel:** Die Angabe „5.5.5.64/26“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 5.5.5.64 bis 5.5.5.127.
+  - **IPv6-Beispiel:** Die Angabe „1:2:3:/48“ führt zur Übereinstimmung mit eingehenden Anforderungen von den Adressen 1:2:3:0:0:0:0:0 bis 1:2:3:ffff:ffff:ffff:ffff:ffff.
 - Aufgrund der Art und Weise, in der Cacheeinstellungen nachverfolgt werden, ist diese Übereinstimmungsbedingung mit den folgenden Features nicht kompatibel:
   - Complete Cache Fill
   - Default Internal Max-Age
@@ -171,15 +171,15 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
 ---
 ### <a name="cookie-parameter"></a>Cookie Parameter
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Cookie Parameter“ erfüllt ist.
-- **Entspricht**: Erfordert, dass eine Anforderung das angegebene Cookie mit einem Wert enthält, der mindestens einem der in dieser Übereinstimmungsbedingung definierten Werte entspricht.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass eine Anforderung das angegebene Cookie mit einem Wert enthält, der mindestens einem der in dieser Übereinstimmungsbedingung definierten Werte entspricht.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält das angegebene Cookie nicht.
   - Die Anforderung enthält das angegebene Cookie, aber der Wert entspricht keinem der Werte, die in dieser Übereinstimmungsbedingung definiert sind.
   
@@ -200,7 +200,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -209,8 +209,8 @@ Wichtige Informationen:
 Die Übereinstimmungsbedingung „Cookie Parameter Regex“ definiert einen Cookienamen und einen Cookiewert. Sie können [reguläre Ausdrücke](cdn-rules-engine-reference.md#regular-expressions) verwenden, um den gewünschten Cookiewert zu definieren. 
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Cookie Parameter Regex“ erfüllt ist.
-- **Entspricht**: Erfordert, dass Anforderungen das angegebene Cookie mit einem Wert enthalten, der dem angegebenen regulären Ausdruck entspricht.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass Anforderungen das angegebene Cookie mit einem Wert enthalten, der dem angegebenen regulären Ausdruck entspricht.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält das angegebene Cookie nicht.
   - Die Anforderung enthält das angegebene Cookie, aber der Wert entspricht nicht dem angegebenen regulären Ausdruck.
   
@@ -229,7 +229,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -238,8 +238,8 @@ Wichtige Informationen:
 Sie können ein Land anhand seines Ländercodes angeben. 
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Country“ erfüllt ist:
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung die angegebenen Ländercodewerte enthält. 
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung die angegebenen Ländercodewerte nicht enthält.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung die angegebenen Ländercodewerte enthält. 
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung die angegebenen Ländercodewerte nicht enthält.
 
 Wichtige Informationen:
 - Wenn Sie mehrere Ländercodes angeben möchten, trennen Sie diese durch ein einzelnes Leerzeichen voneinander.
@@ -266,7 +266,7 @@ Mit dieser Übereinstimmungsbedingung können Sie basierend auf dem Ursprungssta
 
 - Feature „Deny Access (403)“: Aktivieren Sie das [Feature „Deny Access (403)“](cdn-rules-engine-reference-features.md#deny-access-403), um den Zulassen- bzw. Blockieren-Teil des Features für die Länderfilterung zu replizieren.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -280,7 +280,7 @@ Wichtige Informationen:
   - Eine Edge-CNAME-Konfiguration
 - Verwenden Sie keine AND IF-Anweisung, um bestimmte Übereinstimmungsbedingungen zu kombinieren. Durch Kombination einer Customer Origin-Übereinstimmungsbedingung mit einer CDN Origin-Übereinstimmungsbedingung würde beispielsweise ein Übereinstimmungsmuster entstehen, für das nie eine Übereinstimmung gefunden werden kann. Aus diesem Grund können zwei Customer Origin-Übereinstimmungsbedingungen nicht mit einer AND IF-Anweisung kombiniert werden.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -290,8 +290,8 @@ Wichtige Informationen:
 Die Übereinstimmungsbedingung „Device“ bestimmt Anforderungen von einem Mobilgerät anhand seiner Eigenschaften. Die Mobilgeräterkennung wird mithilfe von [WURFL](http://wurfl.sourceforge.net/) durchgeführt. 
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Device“ erfüllt ist:
-- **Entspricht**: Für diese Option ist es erforderlich, dass das Gerät des Anforderers mit dem angegebenen Wert übereinstimmt. 
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass das Gerät des Anforderers nicht mit dem angegebenen Wert übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass das Gerät des Anforderers mit dem angegebenen Wert übereinstimmt. 
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass das Gerät des Anforderers nicht mit dem angegebenen Wert übereinstimmt.
 
 Wichtige Informationen:
 
@@ -306,7 +306,7 @@ Wichtige Informationen:
 #### <a name="string-type"></a>Zeichenfolgentyp
 Eine WURFL-Funktion akzeptiert normalerweise eine beliebige Kombination von Zahlen, Buchstaben und Zeichen. Aufgrund der hohen Flexibilität dieser Funktion müssen Sie auswählen, wie der Wert, der dieser Übereinstimmungsbedingung zugeordnet ist, interpretiert wird. In der folgenden Tabelle sind die verfügbaren Optionen beschrieben:
 
-Typ     | BESCHREIBUNG
+Type     | BESCHREIBUNG
 ---------|------------
 Literal  | Wählen Sie diese Option, um zu verhindern, dass die meisten Zeichen eine spezielle Bedeutung erhalten, indem der [Literalwert](cdn-rules-engine-reference.md#literal-values) verwendet wird.
 Platzhalter | Wählen Sie diese Option, um alle [Platzhalterzeichen]([Platzhalterwerte](cdn-rules-engine-reference.md#wildcard-values) zu nutzen.
@@ -343,7 +343,7 @@ Release Date | %{wurfl_cap_release_date} | Eine Zeichenfolge, die das Jahr und d
 Resolution Height | %{wurfl_cap_resolution_height} | Eine ganze Zahl, die für das Gerät die Höhe in Pixel angibt. | 768
 Resolution Width | %{wurfl_cap_resolution_width} | Eine ganze Zahl, die für das Gerät die Breite in Pixel angibt. | 1024
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -360,7 +360,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -369,8 +369,8 @@ Wichtige Informationen:
 Der Hostname des verweisenden Elements, über das der Inhalt angefordert wurde, bestimmt, ob die Referring Domain-Bedingung erfüllt wird. 
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Referring Domain“ erfüllt ist:
-- **Entspricht**: Für diese Option ist es erforderlich, dass der Name des verweisenden Hosts mit den angegebenen Werten übereinstimmt. 
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass das Name des verweisenden Hosts nicht mit dem angegebenen Wert übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass der Name des verweisenden Hosts mit den angegebenen Werten übereinstimmt. 
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass der Name des verweisenden Hosts nicht mit dem angegebenen Wert übereinstimmt.
 
 Wichtige Informationen:
 - Wenn Sie mehrere Hostnamen angeben möchten, trennen Sie die Namen durch ein einzelnes Leerzeichen voneinander.
@@ -384,15 +384,15 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
 ---  
 ### <a name="request-header-literal"></a>Request Header Literal
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Request Header Literal“ erfüllt ist.
-- **Entspricht**: Erfordert, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss dem Wert entsprechen, der in dieser Übereinstimmungsbedingung definiert ist.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss dem Wert entsprechen, der in dieser Übereinstimmungsbedingung definiert ist.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält den angegebenen Header nicht.
   - Die Anforderung enthält den angegebenen Header, aber der Wert entspricht nicht dem Wert, der in dieser Übereinstimmungsbedingung definiert ist.
   
@@ -405,15 +405,15 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
 ---  
 ### <a name="request-header-regex"></a>Request Header Regex
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Request Header Regex“ erfüllt ist.
-- **Entspricht**: Erfordert, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss dem Muster entsprechen, das im angegebenen [regulären Ausdruck](cdn-rules-engine-reference.md#regular-expressions) definiert ist.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss dem Muster entsprechen, das im angegebenen [regulären Ausdruck](cdn-rules-engine-reference.md#regular-expressions) definiert ist.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält den angegebenen Header nicht.
   - Die Anforderung enthält den angegebenen Header, aber der Wert entspricht nicht dem angegebenen regulären Ausdruck.
 
@@ -432,15 +432,15 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale 
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
 ---
 ### <a name="request-header-wildcard"></a>Request Header Wildcard
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „Request Header Wildcard“ erfüllt ist.
-- **Entspricht**: Erfordert, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss mindestens einem der Werte entsprechen, die in dieser Übereinstimmungsbedingung definiert sind.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung den angegebenen Header enthält. Der Wert der Anforderung muss mindestens einem der Werte entsprechen, die in dieser Übereinstimmungsbedingung definiert sind.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält den angegebenen Header nicht.
   - Die Anforderung enthält den angegebenen Header, aber der Wert entspricht keinem der angegebenen Werte.
   
@@ -460,7 +460,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -485,7 +485,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -503,7 +503,7 @@ Wichtige Informationen:
   - Ignore Origin No-Cache
   - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -512,18 +512,18 @@ Wichtige Informationen:
 Identifiziert eine Anforderung anhand ihres relativen Pfads, also ohne den Dateinamen des angeforderten Objekts.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Directory“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung einen relativen URL-Pfad (ohne Dateiname) enthält, der mit dem angegebenen URL-Muster übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung einen relativen URL-Pfad (ohne Dateiname) enthält, der nicht mit dem angegebenen URL-Muster übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung einen relativen URL-Pfad (ohne Dateiname) enthält, der mit dem angegebenen URL-Muster übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung einen relativen URL-Pfad (ohne Dateiname) enthält, der nicht mit dem angegebenen URL-Muster übereinstimmt.
 
 Wichtige Informationen:
 - Verwenden Sie die Option **Relativ zu**, um anzugeben, ob der URL-Vergleich vor oder nach dem Inhaltszugriffspunkt beginnt. Der Inhaltszugriffspunkt ist der Teil des Pfads zwischen dem Verizon CDN-Hostnamen und dem relativen Pfad zum angeforderten Objekt (z.B. /800001/CustomerOrigin). Hiermit wird ein Standort anhand des Servertyps (z.B. CDN oder Kundenursprung) und Ihrer Kundenkontonummer identifiziert.
 
    Die folgenden Werte sind für die Option **Relativ zu** verfügbar:
-   - **Stamm**: Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt. 
+   - **Stamm:** Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt. 
 
      Beispiel: http:\//wpc.0001.&lt;Domäne&gt;/**800001/myorigin/myfolder**/index.htm
 
-   - **Ursprung**: Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
+   - **Ursprung:** Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
 
      Beispiel: https:\//&lt;Endpunkt&gt;.azureedge.net/**myfolder**/index.htm 
 
@@ -557,7 +557,7 @@ Wichtige Informationen:
 
 - Verwenden Sie die Option **Groß-/Kleinschreibung ignorieren**, um zu steuern, ob ein Vergleich unter Berücksichtigung der Groß-/Kleinschreibung durchgeführt wird.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -566,11 +566,11 @@ Wichtige Informationen:
 Identifiziert Anforderungen anhand der Dateierweiterung des angeforderten Objekts.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Extension“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die URL der Anforderung eine Dateierweiterung enthält, die genau mit dem angegebenen Muster überstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die URL der Anforderung eine Dateierweiterung enthält, die genau mit dem angegebenen Muster überstimmt.
 
    Beispiel: Wenn Sie „htm“ angeben, ergibt sich eine Übereinstimmung für „htm“-Objekte, aber nicht für „html“-Objekte.  
 
-- **Entspricht nicht**: Für dieses Option ist es erforderlich, dass die URL Anforderung eine Dateierweiterung enthält, die nicht mit dem angegebenen Muster übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die URL der Anforderung eine Dateierweiterung enthält, die nicht mit dem angegebenen Muster übereinstimmt.
 
 Wichtige Informationen:
 - Geben Sie die abzugleichenden Dateierweiterungen im Feld **Wert** ein. Lassen Sie den vorangestellten Punkt weg. Verwenden Sie also „htm“ anstelle von „.htm“.
@@ -596,7 +596,7 @@ Diese Übereinstimmungsbedingung ist erfüllt, wenn URLs gefunden werden, die au
 - .php
 - .html
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -605,8 +605,8 @@ Diese Übereinstimmungsbedingung ist erfüllt, wenn URLs gefunden werden, die au
 Identifiziert Anforderungen anhand des Dateinamens des angeforderten Objekts. Bei dieser Übereinstimmungsbedingung besteht ein Dateiname aus dem Namen des angeforderten Objekts, einem Punkt und der Dateierweiterung (z.B. „index.html“).
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Filename“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung im URL-Pfad einen Dateinamen enthält, der mit dem angegebenen Muster übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung im URL-Pfad einen Dateinamen enthält, der nicht mit dem angegebenen Muster übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung im URL-Pfad einen Dateinamen enthält, der mit dem angegebenen Muster übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung im URL-Pfad einen Dateinamen enthält, der nicht mit dem angegebenen Muster übereinstimmt.
 
 Wichtige Informationen:
 - Verwenden Sie die Option **Groß-/Kleinschreibung ignorieren**, um zu steuern, ob ein Vergleich unter Berücksichtigung der Groß-/Kleinschreibung durchgeführt wird.
@@ -623,7 +623,7 @@ Wichtige Informationen:
 
     Wenn Sie beispielsweise „presentation.ppt“ angeben, ergibt sich eine Übereinstimmung für ein Objekt mit dem Namen „presentation.ppt“, aber nicht für „presentation.pptx“.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -632,18 +632,18 @@ Wichtige Informationen:
 Vergleicht den URL-Pfad einer Anforderung, einschließlich Dateiname, mit dem angegebenen Wert.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Literal“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen Muster übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen Muster übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen Muster übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen Muster übereinstimmt.
 
 Wichtige Informationen:
 - Verwenden Sie die Option **Relativ zu**, um anzugeben, ob der URL-Vergleichspunkt vor oder nach dem Inhaltszugriffspunkt beginnt. 
 
     Die folgenden Werte sind für die Option **Relativ zu** verfügbar:
-     - **Stamm**: Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
+     - **Stamm:** Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
 
        Beispiel: http:\//wpc.0001.&lt;Domäne&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Ursprung**: Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
+     - **Ursprung:** Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
 
        Beispiel: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
@@ -667,7 +667,7 @@ Wichtige Informationen:
 
 - Verwenden Sie die Übereinstimmungsbedingung [URL Path Directory](#url-path-directory) oder [URL Path Wildcard](#url-path-wildcard), um alle Anforderungen abzugleichen, die an ein bestimmtes Verzeichnis gesendet werden.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -676,8 +676,8 @@ Wichtige Informationen:
 Vergleicht den URL-Pfad einer Anforderung mit dem angegebenen [regulären Ausdruck](cdn-rules-engine-reference.md#regular-expressions).
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Regex“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen regulären Ausdruck übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen regulären Ausdruck übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen regulären Ausdruck übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen regulären Ausdruck übereinstimmt.
 
 Wichtige Informationen:
 - Vor einem URL-Vergleich wird eine Edge-CNAME-URL in eine CDN-URL umgeschrieben. 
@@ -698,7 +698,7 @@ Wichtige Informationen:
     
 - Leerzeichen im URL-Pfad sollten durch „%20“ ersetzt werden.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -707,18 +707,18 @@ Wichtige Informationen:
 Vergleicht den URL-Pfad einer Anforderung mit dem angegebenen Platzhaltermuster.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Path Wildcard“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen Platzhaltermuster übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen Platzhaltermuster übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der mit dem angegebenen Platzhaltermuster übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung einen URL-Pfad enthält, der nicht mit dem angegebenen Platzhaltermuster übereinstimmt.
 
 Wichtige Informationen:
 - Option **Relativ zu**: Mit dieser Option wird bestimmt, ob der URL-Vergleichspunkt vor oder nach dem Inhaltszugriffspunkt beginnt.
 
    Für diese Option können die folgenden Werte verwendet werden:
-     - **Stamm**: Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
+     - **Stamm:** Gibt an, dass der URL-Vergleichspunkt direkt nach dem CDN-Hostnamen beginnt.
 
        Beispiel: http:\//wpc.0001.&lt;Domäne&gt;/**800001/myorigin/myfolder/index.htm**
 
-     - **Ursprung**: Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
+     - **Ursprung:** Gibt an, dass der URL-Vergleichspunkt nach dem Inhaltszugriffspunkt (z.B. /000001 oder /800001/myorigin) beginnt. Da der CNAME „\*.azureedge.net“ standardmäßig relativ zum Ursprungsverzeichnis des Verizon CDN-Hostnamens erstellt wird, sollten Azure CDN-Benutzer den Wert **Ursprung** verwenden. 
 
        Beispiel: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
@@ -760,7 +760,7 @@ Wert                   | Relativ zu    | Ergebnis
 *.jpg *.gif *.png       | Stamm oder Ursprung | Für dieses Muster ergeben sich Übereinstimmungen für alle CDN- oder Edge-CNAME-URLs, die auf „.jpg“, „.gif“ oder „.png“ enden. Eine alternative Möglichkeit zum Angeben dieses Musters ist die Verwendung der [Übereinstimmungsbedingung „URL Path Extension“](#url-path-extension).
 /images/\* /media/\*      | Origin         | Für dieses Muster ergibt sich eine Übereinstimmung für CDN- oder Edge-CNAME-URLs, deren relativer Pfad mit dem Ordner „images“ oder „media“ beginnt. <br />- CDN-URL: http:\//wpc.0001.&lt;Domäne&gt;/800001/myorigin/images/sales/event1.png<br />- Beispiel für Edge-CNAME-URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -769,8 +769,8 @@ Wert                   | Relativ zu    | Ergebnis
 Vergleicht die Abfragezeichenfolge einer Anforderung mit dem angegebenen Wert.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Query Literal“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit der angegebenen Abfragezeichenfolge übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit der angegebenen Abfragezeichenfolge übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit der angegebenen Abfragezeichenfolge übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit der angegebenen Abfragezeichenfolge übereinstimmt.
 
 Wichtige Informationen:
 
@@ -794,7 +794,7 @@ Wichtige Informationen:
    - Ignore Origin No-Cache
    - Internal Max-Stale
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -803,8 +803,8 @@ Wichtige Informationen:
 Identifiziert Anforderungen, die den angegebenen Abfragezeichenfolgenparameter enthalten. Dieser Parameter wird auf einen Wert festgelegt, der mit einem angegebenen Muster übereinstimmt. Abfragezeichenfolgenparameter (z.B. parameter=value) in der Anforderungs-URL bestimmen, ob die Bedingung erfüllt ist. Mit dieser Übereinstimmungsbedingung wird ein Abfragezeichenfolgenparameter anhand des Namens identifiziert, und für den Parameterwert werden ein oder mehrere Werte akzeptiert. 
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Query Parameter“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass eine Anforderung den angegebenen Parameter mit einem Wert enthält, der mindestens einem der in dieser Übereinstimmungsbedingung definierten Werte entspricht.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
+- **Entspricht:** Für diese Option ist es erforderlich, dass eine Anforderung den angegebenen Parameter mit einem Wert enthält, der mindestens einem der in dieser Übereinstimmungsbedingung definierten Werte entspricht.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eines der folgenden Kriterien erfüllt:
   - Die Anforderung enthält den angegebenen Parameter nicht.
   - Die Anforderung enthält den angegebenen Parameter, aber der Wert entspricht keinem der Werte, die in dieser Übereinstimmungsbedingung definiert sind.
 
@@ -874,7 +874,7 @@ Benutzer  | Joe   | Für dieses Muster ergibt sich eine Übereinstimmung, wenn d
 Benutzer  | *     | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL den Parameter „User“ enthält.
 E-Mail | Joe\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL einen Email-Parameter enthält, der mit „Joe“ beginnt.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -883,8 +883,8 @@ E-Mail | Joe\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die 
 Identifiziert Anforderungen, die den angegebenen Abfragezeichenfolgenparameter enthalten. Dieser Parameter wird auf einen Wert festgelegt, der mit einem angegebenen [regulären Ausdruck](cdn-rules-engine-reference.md#regular-expressions) übereinstimmt.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Query Regex“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit dem angegebenen regulären Ausdruck übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit dem angegebenen regulären Ausdruck übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit dem angegebenen regulären Ausdruck übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit dem angegebenen regulären Ausdruck übereinstimmt.
 
 Wichtige Informationen:
 - Diese Übereinstimmungsbedingung ist nur erfüllt, wenn sich genaue Übereinstimmungen für den angegebenen regulären Ausdruck ergeben.
@@ -919,7 +919,7 @@ Wichtige Informationen:
    - Internal Max-Stale
 
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 
@@ -928,8 +928,8 @@ Wichtige Informationen:
 Vergleicht die angegebenen Werte mit der Abfragezeichenfolge der Anforderung.
 
 Die Option **Entspricht**/**Entspricht nicht** bestimmt die Bedingungen, unter denen die Übereinstimmungsbedingung „URL Query Wildcard“ erfüllt ist.
-- **Entspricht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit dem angegebenen Platzhalterwert übereinstimmt.
-- **Entspricht nicht**: Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit dem angegebenen Platzhalterwert übereinstimmt.
+- **Entspricht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die mit dem angegebenen Platzhalterwert übereinstimmt.
+- **Entspricht nicht:** Für diese Option ist es erforderlich, dass die Anforderung eine URL-Abfragezeichenfolge enthält, die nicht mit dem angegebenen Platzhalterwert übereinstimmt.
 
 Wichtige Informationen:
 - Bei dieser Option beginnt eine Abfragezeichenfolge mit dem ersten Zeichen nach dem Fragezeichen-Trennzeichen (?) für die Abfragezeichenfolge.
@@ -944,7 +944,7 @@ Wichtige Informationen:
 
 - Wenn Sie mehrere Werte angeben möchten, trennen Sie diese durch ein einzelnes Leerzeichen voneinander.
 
-   Beispiel: *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
+   Beispiel:  *Parameter1=ValueA* *ValueB* *Parameter1=ValueC&Parameter2=ValueD*
 
 - Diese Übereinstimmungsbedingung ist nur erfüllt, wenn sich genaue Übereinstimmungen mit mindestens einem der angegebenen Abfragezeichenfolgenmuster ergeben.
     
@@ -965,7 +965,7 @@ Im folgenden Beispiel wird veranschaulicht, wie diese Option in bestimmten Situa
 user=joe              | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die Abfragezeichenfolge für eine angeforderte URL „?user=joe“ lautet.
 \*user=\* \*optout=\* | Für dieses Muster ergibt sich eine Übereinstimmung, wenn die CDN-URL-Abfrage entweder den Parameter „user“ oder „optout“ enthält.
 
-[Nach oben](#match-conditions-for-the-azure-cdn-rules-engine)
+[Nach oben](#main)
 
 </br>
 

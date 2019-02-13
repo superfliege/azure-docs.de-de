@@ -6,19 +6,19 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 5d55879a5a8487636e2252abd359accf07e60ce6
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41065b4ac6bc486e204c2bfd72b78ba8722270c4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50669477"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809162"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Einbinden des Avere vFXT-Clusters  
 
 Führen Sie die folgenden Schritte aus, um Clientcomputer mit Ihrem vFXT-Cluster zu verbinden.
 
 1. Entscheiden Sie, wie Sie den Clientdatenverkehr auf Ihre Clusterknoten aufteilen. Weitere Informationen finden Sie nachfolgend unter [Verteilen der Clientauslastung](#balance-client-load). 
-1. Identifizieren Sie die einzubindende [IP-Adresse und den Verbindungspfad](#identify-ip-addresses-and-paths-to-mount).
+1. Identifizieren Sie die einzubindende IP-Adresse und den Verbindungspfad.
 1. Führen Sie den Befehl [mount](#mount-command-arguments) mit entsprechenden Argumenten aus.
 
 ## <a name="balance-client-load"></a>Verteilen der Clientauslastung
@@ -68,7 +68,7 @@ Von Ihrem Client aus ordnet der Befehl ``mount`` den virtuellen Server (vserver)
 
 Der mount-Befehl umfasst drei Elemente: 
 
-* vFXT-Pfad – (eine Kombination aus IP-Adresse und Namespaceverbindungspfad, die [unten](#junction-and-ip-address) beschrieben wird)
+* vFXT-Pfad – (eine Kombination aus IP-Adresse und Namespaceverbindungspfad, die unten beschrieben wird)
 * Lokaler Pfad – Der Pfad auf dem Client 
 * mount-Befehlsoptionen – (unter [Argumente des mount-Befehls](#mount-command-arguments) aufgeführt)
 

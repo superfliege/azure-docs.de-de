@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
-ms.openlocfilehash: 6466dc1ec0dcaae6045fadfae7f3a552345be2e8
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: c0a86b76622862b477d539c25dd98c925f09192c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267288"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812037"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Einrichten als iSCSI-Server über das Azure-Portal
 
@@ -44,7 +44,7 @@ Die hier beschriebenen Verfahren dauern zwischen 30 Minuten und einer Stunde. D
 Verwenden Sie die folgende Schritt-für-Schritt-Anleitung, um Ihr StorSimple Virtual Array einzurichten und zu konfigurieren:
 
 * [Schritt 1: Durchführen der Einrichtung für die lokale Webbenutzeroberfläche und Registrieren Ihres Geräts](#step-1-complete-the-local-web-ui-setup-and-register-your-device)
-* [Schritt 2: Durchführen der erforderlichen Geräteinstallation](#step-2-complete-the-required-device-setup)
+* Schritt 2: Durchführen der erforderlichen Geräteinstallation
 * [Schritt 3: Hinzufügen eines Volumes](#step-3-add-a-volume)
 * [Schritt 4: Einlegen, Initialisieren und Formatieren eines Volumes](#step-4-mount-initialize-and-format-a-volume)
 

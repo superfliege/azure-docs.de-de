@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 875240b779f05c1b13f71bf2133b9abfaa209239
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f8861b581c0e02bb78d80817cb2242a38e8aac40
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223356"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733466"
 ---
 # <a name="get-the-cognitive-services-speech-devices-sdk"></a>Abrufen des Cognitive Services Speech-Geräte-SDK
 
@@ -46,7 +46,7 @@ Subject: You're invited to the Microsoft organization
 
 Führen Sie die folgenden Schritte aus, um die E-Mail-Adresse, die Sie während der Registrierung angegeben haben, mit Azure AD zu verknüpfen. Mit diesem Vorgang erhalten Sie Zugriff auf die [Downloadwebsite](https://shares.datatransfer.microsoft.com/) für das Speech-Geräte-SDK.
 
-1. Wählen Sie in der erhaltenen E-Mail-Nachricht **Erste Schritte** aus. Wenn Ihre Organisation bereits Office 365-Kunde ist, werden Sie aufgefordert, sich anzumelden, und können mit Schritt 8 fortfahren.
+1. Wählen Sie in der erhaltenen E-Mail-Nachricht **Erste Schritte** aus. Wenn Ihre Organisation bereits Office 365-Kunde ist, werden Sie aufgefordert, sich anzumelden, und können mit Schritt 7 fortfahren.
 
 2. Wählen Sie im daraufhin geöffneten Browserfenster **Weiter** aus.
 

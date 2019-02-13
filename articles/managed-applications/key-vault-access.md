@@ -3,23 +3,24 @@ title: Verwenden von Azure Key Vault mit verwalteten Anwendungen | Microsoft-Dok
 description: Zeigt die Verwendung von Zugriffsgeheimnissen in Azure Key Vault bei der Bereitstellung von verwalteten Anwendungen
 services: managed-applications
 author: tfitzmac
-manager: timlt
 ms.service: managed-applications
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.date: 07/11/2018
+ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: dcfbb7f3b1d110d4c1fdf22863d795c85152ec35
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 55410250ccd4dfceac8ac9ae5b81d4736de0d91a
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52725011"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55492673"
 ---
 # <a name="access-key-vault-secret-when-deploying-azure-managed-applications"></a>Zugreifen auf das Geheimnis im Schlüsseltresor bei der Bereitstellung von Azure Managed Applications
 
-Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../key-vault/key-vault-whatis.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Dieser Artikel beschreibt, wie Sie den Schlüsseltresor zum Arbeiten mit verwalteten Anwendungen konfigurieren.
+Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstellung als Parameter übergeben müssen, können Sie den Wert aus einer Instanz von [Azure Key Vault](../key-vault/key-vault-whatis.md) abrufen. Um bei der Bereitstellung verwalteter Anwendungen auf den Schlüsseltresor zuzugreifen, müssen Sie Zugriff auf den Dienstprinzipal des **Applianceressourcenanbieters** gewähren. Der Managed Applications-Dienst verwendet diese Identität, um Vorgänge auszuführen. Um einen Wert während der Bereitstellung erfolgreich aus einem Schlüsseltresor abzurufen, muss der Dienstprinzipal auf den Schlüsseltresor zugreifen können.
+
+Dieser Artikel beschreibt, wie Sie den Schlüsseltresor zum Arbeiten mit verwalteten Anwendungen konfigurieren.
 
 ## <a name="enable-template-deployment"></a>Aktivieren der Vorlagenbereitstellung
 
@@ -51,7 +52,7 @@ Wenn Sie einen zu schützenden Wert (z.B. ein Kennwort) während der Bereitstell
 
    ![Nach Anbieter suchen](./media/key-vault-access/search-provider.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ## <a name="reference-key-vault-secret"></a>Verweisen auf Schlüsseltresorgeheimnis
 
@@ -89,5 +90,5 @@ Um ein Geheimnis aus einem Schlüsseltresor an eine Vorlage in Ihrer verwalteten
 Sie haben Ihren Schlüsseltresor so konfiguriert, dass während der Bereitstellung einer verwalteten Anwendung darauf zugegriffen werden kann.
 
 * Informationen zum Übergeben eines Werts aus einem Schlüsseltresor als Vorlagenparameter finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](../azure-resource-manager/resource-manager-keyvault-parameter.md).
-* Beispiele zu verwalteten Anwendungen finden Sie unter [Beispielprojekte für verwaltete Azure-Anwendungen](sample-projects.md).
+* Beispiele zu verwalteten Anwendungen finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
 * Informationen zum Erstellen einer UI-Definitionsdatei für eine verwaltete Anwendung finden Sie unter [Erste Schritte mit „CreateUiDefinition“](create-uidefinition-overview.md).

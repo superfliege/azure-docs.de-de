@@ -14,23 +14,20 @@ ms.tgt_pltfrm: mobile-android
 ms.devlang: java
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 02/05/2019
 ms.author: jowargo
-ms.openlocfilehash: d758a46a19dcd109ee5786e25c886dd30b264f7e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9467197715d79527699eac0acf9c23f204b0e639
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447496"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814896"
 ---
 # <a name="tutorial-push-notifications-to-android-devices-by-using-azure-notification-hubs-and-google-firebase-cloud-messaging"></a>Tutorial: Senden von Pushbenachrichtigungen an Android-Geräte mit Azure Notification Hubs und Google Firebase Cloud Messaging
 
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
-> [!IMPORTANT]
-> In diesem Artikel werden Pushbenachrichtigungen mit Google Firebase Cloud Messaging (FCM) veranschaulicht. Falls Sie noch Google Cloud Messaging (GCM) verwenden, helfen Ihnen die Informationen unter [Senden von Pushbenachrichtigungen an Android mit Azure Notification Hubs](notification-hubs-android-push-notification-google-gcm-get-started.md) weiter.
-
-In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Firebase Cloud Messaging Pushbenachrichtigungen an eine Android-Anwendung senden. In diesem Tutorial erstellen Sie eine leere Android-App, die Pushbenachrichtigungen mithilfe von Firebase Cloud Messaging (FCM) empfängt.
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und Firebase Cloud Messaging (FCM) Pushbenachrichtigungen an eine Android-Anwendung senden. In diesem Tutorial erstellen Sie eine leere Android-App, die Pushbenachrichtigungen mithilfe von Firebase Cloud Messaging (FCM) empfängt.
 
 Den vollständigen Code für dieses Tutorial können Sie [hier](https://github.com/Azure/azure-notificationhubs-samples/tree/master/Android/GetStartedFirebase)bei GitHub herunterladen.
 
@@ -55,13 +52,15 @@ Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. W
 
 ## <a name="create-an-android-studio-project"></a>Erstellen eines Android Studio-Projekts
 
-1. Starten Sie in Android Studio ein neues Android Studio-Projekt.
+1. Starten Sie Android Studio.
+2. Wählen Sie im Menü die Option **File** (Datei), zeigen Sie auf **New** (Neu), und wählen Sie **New Project** (Neues Projekt). 
+2. Wählen Sie auf der Seite **Choose your project** (Projekt auswählen) die Option **Empty Activity** (Leere Aktivität) und dann **Next** (Weiter) aus. 
+3. Führen Sie auf der Seite **Configure your project** (Projekt konfigurieren) die folgenden Schritte aus: 
+    1. Geben Sie einen **Namen** für die Anwendung ein.
+    2. Geben Sie einen Speicherort zum Speichern der Projektdateien an. 
+    3. Wählen Sie **Fertig stellen** aus. 
 
-    ![Android Studio – Neues Projekt](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-new-project.png)
-2. Wählen Sie den Formfaktor **Phone and Tablet** und das **Minimum SDK** aus, das unterstützt werden soll. Klicken Sie auf **Weiter**.
-
-    ![Android Studio – Projekterstellungsworkflow](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-choose-form-factor.png)
-3. Wählen Sie **Empty Activity** als Hauptaktivität aus, und klicken Sie auf **Weiter** und anschließend auf **Fertig stellen**.
+        ![Konfigurieren des Projekts](./media/notification-hubs-android-push-notification-google-fcm-get-started/configure-project.png)
 
 ## <a name="create-a-firebase-project-that-supports-fcm"></a>Erstellen eines Firebase-Projekts, das FCM unterstützt
 
@@ -73,11 +72,12 @@ Sie benötigen ein aktives Azure-Konto, um dieses Lernprogramm abzuschließen. W
 
 ### <a name="configure-firebase-cloud-messaging-settings-for-the-hub"></a>Konfigurieren von Firebase Cloud Messaging-Einstellungen für den Hub
 
-1. Wählen Sie **Google (GCM)** in der Kategorie **BENACHRICHTIGUNGSEINSTELLUNGEN** aus.
-2. Geben Sie den API-Schlüssel (FCM-Serverschlüssel) ein, den Sie zuvor in der [Firebase-Konsole](https://firebase.google.com/console/) kopiert haben.
-3. Wählen Sie auf der Symbolleiste **Speichern** aus.
+1. Wählen Sie im linken Menü unter **Settings** (Einstellungen) die Option **Google (GCM/FCM)** aus. 
+2. Fügen Sie den **Serverschlüssel** für das FCM-Projekt ein, den Sie zuvor gespeichert haben. 
+3. Wählen Sie auf der Symbolleiste **Save** (Speichern) aus. 
 
-    ![Azure Notification Hubs – Google (GCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-gcm-api.png)
+    ![Azure Notification Hubs – Google (FCM)](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)
+4. In den Warnungen wird eine Meldung angezeigt, dass die Notification Hubs aktualisiert wurden. Die Schaltfläche **Save** (Speichern) ist deaktiviert. 
 
 Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konfiguriert, und Sie besitzen die Verbindungszeichenfolge, um die App für den Empfang und das Senden von Pushbenachrichtigungen zu registrieren.
 
@@ -92,8 +92,8 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
 1. Fügen Sie in der Datei `Build.Gradle` für die **App** die folgenden Zeilen im Abschnitt **dependencies** hinzu.
 
     ```text
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
 2. Fügen Sie das folgende Repository nach dem Abschnitt **dependencies** hinzu.
@@ -108,13 +108,13 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
 
 ### <a name="add-google-firebase-support"></a>Hinzufügen von Unterstützung für Google Firebase
 
-1. Fügen Sie in der Datei `Build.Gradle` für die **App** die folgenden Zeilen im Abschnitt **dependencies** hinzu.
+1. Fügen Sie in der Datei `Build.Gradle` für die **App** im Abschnitt **dependencies** die folgende Zeile hinzu, sofern sie noch nicht vorhanden ist: 
 
     ```text
-    compile 'com.google.firebase:firebase-core:12.0.0'
+    implementation 'com.google.firebase:firebase-core:16.0.0'
     ```
 
-2. Fügen Sie am Ende der Datei folgendes Plug-In hinzu.
+2. Fügen Sie am Ende der Datei folgendes Plug-In hinzu, sofern es noch nicht vorhanden ist: 
 
     ```text
     apply plugin: 'com.google.gms.google-services'
@@ -145,7 +145,7 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
     </service>
     ```
 
-3. Außerdem müssen Sie einen Empfänger für die Benachrichtigungen definieren. Fügen Sie der Datei „AndroidManifest.xml“ im Tag `<application>` die unten angegebene Empfängerdefinition hinzu. Ersetzen Sie den Platzhalter `<your package>` durch Ihren tatsächlichen Namen des Pakets, der oben in der Datei `AndroidManifest.xml` angegeben ist.
+3. Außerdem müssen Sie einen Empfänger für die Benachrichtigungen definieren. Fügen Sie der Datei „AndroidManifest.xml“ im Tag `<application>` die unten angegebene Empfängerdefinition hinzu. 
 
     ```xml
     <receiver android:name="com.microsoft.windowsazure.notifications.NotificationsBroadcastReceiver"
@@ -157,9 +157,10 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
     </receiver>
     ```
 
-4. Fügen Sie unterhalb des Tags `</application>` die folgenden erforderlichen FCM-bezogenen Berechtigungen hinzu.
-
-    Weitere Informationen zu diesen Berechtigungen finden Sie unter [Setup a GCM Client app for Android](https://developers.google.com/cloud-messaging/android/client#manifest) (Einrichten einer GCM-Client-App für Android) und [Migrate a GCM Client App for Android to Firebase Cloud Messaging](https://developers.google.com/cloud-messaging/android/android-migrate-fcm#remove_the_permissions_required_by_gcm) (Migrieren einer GCM-Client-App für Android zu Firebase Cloud Messaging).
+    > [!IMPORTANT]
+    > Ersetzen Sie den Platzhalter `<your package NAME>` durch Ihren tatsächlichen Namen des Pakets, der oben in der Datei `AndroidManifest.xml` angegeben ist.
+4. Wählen Sie auf der Symbolleiste **Sync Now** (Jetzt synchronisieren) aus.
+5. Fügen Sie **unterhalb** des Tags `</application>` die folgenden erforderlichen FCM-bezogenen Berechtigungen hinzu.
 
     ```xml
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -169,27 +170,25 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
 
 ### <a name="adding-code"></a>Hinzufügen von Code
 
-1. Erweitern Sie in der Projektansicht die Knoten **app** > **src** > **main** > **java**. Klicken Sie mit der rechten Maustaste auf Ihren Paketordner unter **java**, klicken Sie auf **Neu** und dann auf **Java Class**. Fügen Sie eine neue Klasse namens `NotificationSettings`hinzu.
-
-    ![Android Studio – Neue Java-Klasse](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hub-android-new-class.png)
+1. Erweitern Sie in der Projektansicht die Knoten **app** > **src** > **main** > **java**. Klicken Sie mit der rechten Maustaste auf Ihren Paketordner unter **java**, klicken Sie auf **Neu** und dann auf **Java Class**. Geben Sie als Name `NotificationSettings` ein, und wählen Sie **OK**.
 
     Aktualisieren Sie diese drei Platzhalter im weiter unten angegebenen Code für die `NotificationSettings`-Klasse:
 
-   * **SenderId:** Die Absender-ID, die Sie zuvor in den Projekteinstellungen der [Firebase-Konsole](https://firebase.google.com/console/) über die Registerkarte **Cloud Messaging** ermittelt haben.
    * **HubListenConnectionString:** Die **DefaultListenAccessSignature**-Verbindungszeichenfolge für Ihren Hub. Sie können diese Verbindungszeichenfolge kopieren, indem Sie im [Azure-Portal] für Ihren Hub auf **Zugriffsrichtlinien** klicken.
    * **HubName:** Verwenden Sie den Namen Ihres Benachrichtigungs-Hubs, der im [Azure-Portal] auf der Hub-Seite angezeigt wird.
 
      `NotificationSettings` -Code:
 
-    ```java
-    public class NotificationSettings {
-        public static String SenderId = "<Your project number>";
-        public static String HubName = "<Your HubName>";
-        public static String HubListenConnectionString = "<Enter your DefaultListenSharedAccessSignature connection string>";
-    }
-    ```
+        ```java
+        public class NotificationSettings {
+            public static String HubName = "<Your HubName>";
+            public static String HubListenConnectionString = "<Enter your DefaultListenSharedAccessSignature connection string>";
+        }
+        ```
 
-2. Fügen Sie mit den obigen Schritten eine weitere neue Klasse mit dem Namen `MyInstanceIDService` hinzu. Diese Klasse ist Ihre Implementierung des Instanz-ID-Listenerdiensts.
+    > [!IMPORTANT]
+    > Geben Sie für Ihren Notification Hub den **Namen** und einen Wert für **DefaultListenSharedAccessSignature** ein, bevor Sie fortfahren. 
+2. Fügen Sie eine weitere Klasse namens `MyInstanceIDService`hinzu. Diese Klasse ist Ihre Implementierung des Instanz-ID-Listenerdiensts.
 
     Mit dem Code für diese Klasse wird Ihr `IntentService`-Element aufgerufen, um im Hintergrund [das FCM-Token zu aktualisieren](https://developers.google.com/instance-id/guides/android-implementation#refresh_tokens).
 
@@ -205,7 +204,7 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
         @Override
         public void onTokenRefresh() {
 
-            Log.d(TAG, "Refreshing GCM Registration Token");
+            Log.d(TAG, "Refreshing FCM Registration Token");
 
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
@@ -317,7 +316,7 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
     import android.widget.Toast;
     ```
 
-5. Fügen Sie folgende private Member oben in der Klasse hinzu. Sie verwenden diese Felder zum [Überprüfen der Verfügbarkeit von Google Play Services gemäß Empfehlung von Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
+5. Fügen Sie im oberen Bereich der Klasse die folgenden Member hinzu. Sie verwenden diese Felder zum [Überprüfen der Verfügbarkeit von Google Play Services gemäß Empfehlung von Google](https://developers.google.com/android/guides/setup#ensure_devices_have_the_google_play_services_apk).
 
     ```java
     public static MainActivity mainActivity;
@@ -326,7 +325,7 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
     private static final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
     ```
 
-6. Fügen Sie in der `MainActivity` -Klasse die folgende Methode zur Verfügbarkeit von Google Play Services hinzu.
+6. Fügen Sie in der Klasse `MainActivity` die folgende Methode hinzu, um die Verfügbarkeit von Google Play Services zu überprüfen.
 
     ```java
     /**
@@ -375,8 +374,8 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
         setContentView(R.layout.activity_main);
 
         mainActivity = this;
-        NotificationsManager.handleNotifications(this, NotificationSettings.SenderId, MyHandler.class);
         registerWithNotificationHubs();
+        MyHandler.createChannelAndHandleNotifications(getApplicationContext());
     }
     ```
 
@@ -419,7 +418,7 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
     }
     ```
 
-10. Für die `ToastNotify`-Methode wird das `TextView`-Steuerelement *„Hello World“* verwendet, um Status und Benachrichtigungen dauerhaft in der App zu melden. Fügen Sie im Layout von „activity_main.xml“ die folgende ID für dieses Steuerelement hinzu.
+10. Für die `ToastNotify`-Methode wird das `TextView`-Steuerelement *„Hello World“* verwendet, um Status und Benachrichtigungen dauerhaft in der App zu melden. Fügen Sie im Layout von **res** -> **layout** -> **activity_main.xml** die folgende ID für dieses Steuerelement hinzu.
 
     ```java
     android:id="@+id/text_hello"
@@ -430,15 +429,18 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
 12. Fügen Sie am Anfang von `MyHandler.java` die folgenden Importanweisungen hinzu:
 
     ```java
+    import android.app.NotificationChannel;
     import android.app.NotificationManager;
     import android.app.PendingIntent;
     import android.content.Context;
     import android.content.Intent;
     import android.media.RingtoneManager;
     import android.net.Uri;
+    import android.os.Build;
     import android.os.Bundle;
     import android.support.v4.app.NotificationCompat;
-    import com.microsoft.windowsazure.notifications.NotificationsHandler;
+    import com.microsoft.windowsazure.notifications.NotificationsHandler;    
+    import com.microsoft.windowsazure.notifications.NotificationsManager;
     ```
 
 13. Fügen Sie für die `MyHandler`-Klasse den folgenden Code hinzu, um sie `com.microsoft.windowsazure.notifications.NotificationsHandler` unterzuordnen.
@@ -447,11 +449,15 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
 
     ```java
     public class MyHandler extends NotificationsHandler {
+        public static final String NOTIFICATION_CHANNEL_ID = "nh-demo-channel-id";
+        public static final String NOTIFICATION_CHANNEL_NAME = "Notification Hubs Demo Channel";
+        public static final String NOTIFICATION_CHANNEL_DESCRIPTION = "Notification Hubs Demo Channel";
+    
         public static final int NOTIFICATION_ID = 1;
         private NotificationManager mNotificationManager;
         NotificationCompat.Builder builder;
         Context ctx;
-
+    
         @Override
         public void onReceive(Context context, Bundle bundle) {
             ctx = context;
@@ -461,74 +467,83 @@ Der Notification Hub ist jetzt für die Arbeit mit Firebase Cloud Messaging konf
                 MainActivity.mainActivity.ToastNotify(nhMessage);
             }
         }
-
+    
         private void sendNotification(String msg) {
-
+    
             Intent intent = new Intent(ctx, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
+    
             mNotificationManager = (NotificationManager)
                     ctx.getSystemService(Context.NOTIFICATION_SERVICE);
-
+    
             PendingIntent contentIntent = PendingIntent.getActivity(ctx, 0,
                     intent, PendingIntent.FLAG_ONE_SHOT);
-
+    
             Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            NotificationCompat.Builder mBuilder =
-                    new NotificationCompat.Builder(ctx)
-                            .setSmallIcon(R.mipmap.ic_launcher)
-                            .setContentTitle("Notification Hub Demo")
-                            .setStyle(new NotificationCompat.BigTextStyle()
-                                    .bigText(msg))
-                            .setSound(defaultSoundUri)
-                            .setContentText(msg);
-
-            mBuilder.setContentIntent(contentIntent);
-            mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+            NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(
+                    ctx,
+                    NOTIFICATION_CHANNEL_ID)
+                    .setContentText(msg)
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setSmallIcon(android.R.drawable.ic_popup_reminder)
+                    .setBadgeIconType(NotificationCompat.BADGE_ICON_SMALL);
+    
+            notificationBuilder.setContentIntent(contentIntent);
+            mNotificationManager.notify(NOTIFICATION_ID, notificationBuilder.build());
+        }
+    
+        public static void createChannelAndHandleNotifications(Context context) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationChannel channel = new NotificationChannel(
+                        NOTIFICATION_CHANNEL_ID,
+                        NOTIFICATION_CHANNEL_NAME,
+                        NotificationManager.IMPORTANCE_HIGH);
+                channel.setDescription(NOTIFICATION_CHANNEL_DESCRIPTION);
+                channel.setShowBadge(true);
+    
+                NotificationManager notificationManager = context.getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+                NotificationsManager.handleNotifications(context, "", MyHandler.class);
+            }
         }
     }
     ```
 
-14. Klicken Sie in Android Studio auf der Menüleiste auf **Build** > **Rebuild Project**, um sicherzustellen, dass im Code keine Fehler enthalten sind.
+14. Klicken Sie in Android Studio auf der Menüleiste auf **Build** > **Rebuild Project**, um sicherzustellen, dass im Code keine Fehler enthalten sind. Wird eine Fehlermeldung zum Symbol `ic_launcher` angezeigt, entfernen Sie die folgende Anweisung aus der Datei „AndroidManifest.xml“. 
 
+    ```
+        android:icon="@mipmap/ic_launcher"
+    ```
 15. Führen Sie die App auf Ihrem Gerät aus, und vergewissern Sie sich, dass sie richtig beim Notification Hub registriert wird.
 
     > [!NOTE]
     > Die Registrierung schlägt beim ersten Starten unter Umständen fehl, bis die `onTokenRefresh()`-Methode des Instanz-ID-Diensts aufgerufen wird. Durch die Aktualisierung sollte eine erfolgreiche Registrierung beim Notification Hub initiiert werden.
 
-## <a name="test-the-app"></a>Testen der App
+    ![Erfolgreiche Geräteregistrierung](./media/notification-hubs-android-push-notification-google-fcm-get-started/device-registration.png)
 
-### <a name="test-send-notification-from-the-notification-hub"></a>Testsendung der Benachrichtigung über den Notification Hub
+## <a name="test-send-notification-from-the-notification-hub"></a>Testsendung der Benachrichtigung über den Notification Hub
 
 Sie können Pushbenachrichtigungen mit folgenden Aktionen über das [Azure-Portal] senden:
 
-1. Wählen Sie im Abschnitt **Problembehandlung** die Option **Testsendevorgang** aus.
-2. Wählen Sie für **Plattformen** die Option **Android** aus.
-3. Wählen Sie **Senden** aus.  Es wird noch keine Benachrichtigung auf dem Android-Gerät angezeigt, da Sie die mobile App nicht darauf ausgeführt haben. Wählen Sie nach dem Ausführen der mobilen App erneut die Schaltfläche **Senden** aus, um die Benachrichtigung anzuzeigen.
-4. Sie sehen das **Ergebnis** des Vorgangs in der Liste am unteren Rand des Fensters.
+1. Wählen Sie im Azure-Portal auf der Seite **Notification Hub** für Ihren Notification Hub im Abschnitt **Problembehandlung** die Option **Testsendevorgang** aus.
+3. Wählen Sie für **Plattformen** die Option **Android** aus.
+4. Wählen Sie **Senden** aus.  Es wird noch keine Benachrichtigung auf dem Android-Gerät angezeigt, da Sie die mobile App nicht darauf ausgeführt haben. Wählen Sie nach dem Ausführen der mobilen App erneut die Schaltfläche **Senden** aus, um die Benachrichtigung anzuzeigen.
+5. Sie sehen das **Ergebnis** des Vorgangs in der Liste am unteren Rand des Fensters.
 
     ![Azure Notification Hubs – Testsendung](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-test-send.png)
+6. Die Benachrichtigung wird auf Ihrem Gerät angezeigt. 
+
+    ![Benachrichtigung auf Gerät](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-on-device.png)
+    
 
 [!INCLUDE [notification-hubs-sending-notifications-from-the-portal](../../includes/notification-hubs-sending-notifications-from-the-portal.md)]
 
-### <a name="run-the-mobile-app"></a>Ausführen der mobilen App
-
-Wenn Sie Pushbenachrichtigungen in einem Emulator testen möchten, müssen Sie sicherstellen, dass das Emulatorabbild die Google-API-Ebene unterstützt, die Sie für die App ausgewählt haben. Wenn das Image keine nativen Google-APIs unterstützt, wird die Ausnahme **SERVICE\_NOT\_AVAILABLE** ausgegeben.
+### <a name="run-the-mobile-app-on-emulator"></a>Ausführen der mobilen App im Emulator
+Wenn Sie Pushbenachrichtigungen in einem Emulator testen möchten, müssen Sie sicherstellen, dass das Emulatorabbild die Google-API-Ebene unterstützt, die Sie für die App ausgewählt haben. Wenn das Image keine nativen Google-APIs unterstützt, wird unter Umständen die Ausnahme **SERVICE\_NOT\_AVAILABLE** angezeigt.
 
 Stellen Sie zusätzlich sicher, dass Ihr Google-Konto dem ausgeführten Emulator unter **Einstellungen** > **Konten** hinzugefügt wurde. Andernfalls führt die Registrierung bei GCM möglicherweise zur Ausnahme **AUTHENTICATION\_FAILED**.
 
-1. Führen Sie die App aus, und prüfen Sie, ob die Registrierungs-ID als erfolgreiche Registrierung gemeldet wird.
-
-    ![Testen unter Android – Kanalregistrierung](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-registered.png)
-2. Geben Sie eine Benachrichtigungsmeldung ein, die an alle für den Hub registrierten Android-Geräte gesendet werden soll.
-
-    ![Testen unter Android – Senden einer Nachricht](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-set-message.png)
-3. Tippen Sie auf **Send Notification**. Auf allen Geräten, auf denen die App ausgeführt wird, wird eine `AlertDialog`-Instanz mit der Pushbenachrichtigungsnachricht angezeigt. Geräte, auf denen die App nicht ausgeführt wird, die aber zuvor für Pushbenachrichtigungen registriert wurden, erhalten im Android-Benachrichtigungs-Manager eine Benachrichtigung. Die Benachrichtigungen können durch Wischen von der linken oberen Ecke nach unten angezeigt werden.
-
-    ![Testen unter Android – Benachrichtigungen](./media/notification-hubs-android-push-notification-google-fcm-get-started/notification-hubs-android-studio-received-message.png)
-
 ## <a name="next-steps"></a>Nächste Schritte
-
 In diesem Tutorial haben Sie mit Firebase Cloud Messaging Pushbenachrichtigungen an Android-Geräte gesendet. Um zu erfahren, wie Sie Pushbenachrichtigungen mit Google Cloud Messaging senden, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]

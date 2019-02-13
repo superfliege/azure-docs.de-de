@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d437c6e2327fc9771f9567a37bfbf8ad82713b2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 79440cf69f921e5933ed410e276cdf304e94fa4f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452642"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817273"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Überwachen eines Speicherkontos im Azure-Portal
 
@@ -46,7 +46,7 @@ ms.locfileid: "55452642"
 
 1. Wählen Sie nach Abschluss der Überwachungskonfiguration **Speichern**.
 
-Ein Standardsatz von Metriken wird in Diagrammen auf dem Speicherkontoblatt angezeigt, wie auch die Blätter der einzelnen Dienste (Blob, Warteschlange, Tabelle und Datei). Nachdem Sie die Metriken für einen Dienst aktiviert haben, kann es bis zu einer Stunde dauern, bis Daten in den Diagrammen angezeigt werden. Sie können **Bearbeiten** auf jedem beliebigen Metrikdiagramm auswählen, um zu [konfigurieren, welche Metriken](#how-to-customize-metrics-charts) im Diagramm angezeigt werden.
+Ein Standardsatz von Metriken wird in Diagrammen auf dem Speicherkontoblatt angezeigt, wie auch die Blätter der einzelnen Dienste (Blob, Warteschlange, Tabelle und Datei). Nachdem Sie die Metriken für einen Dienst aktiviert haben, kann es bis zu einer Stunde dauern, bis Daten in den Diagrammen angezeigt werden. Sie können **Bearbeiten** auf jedem beliebigen Metrikdiagramm auswählen, um zu konfigurieren, welche Metriken im Diagramm angezeigt werden.
 
 Sie können die Sammlung von Metriken und die Protokollierung deaktivieren, indem Sie **Status** auf **Aus** setzen.
 
@@ -116,7 +116,7 @@ Sie können Ihrem Portaldashboard Azure Storage-Metrikdiagramme für beliebige I
    ![Kachelkatalog im Azure-Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
 1. Wählen Sie **Anpassung abgeschlossen** am oberen Rand des Dashboards aus, wenn Sie keine weiteren Diagramme hinzufügen möchten.
 
-Nachdem Sie Ihrem Dashboard Diagramme hinzugefügt haben, können Sie sie weiter anpassen, wie in [Anpassen von Metrikdiagrammen](#how-to-customize-metrics-charts) beschrieben.
+Nachdem Sie Ihrem Dashboard Diagramme hinzugefügt haben, können Sie sie weiter anpassen, wie in „Anpassen von Metrikdiagrammen“ beschrieben.
 
 ## <a name="configure-logging"></a>Konfigurieren der Protokollierung
 

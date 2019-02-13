@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 1/2/2019
 ms.author: ellacroi
-ms.openlocfilehash: ef7b4377da541068cef7cdd2de5a98d33c3b80ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 88ffa70f7ac21a2c28af994f1e2ed3b6939f6ad9
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198643"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567416"
 ---
 # <a name="azure-marketplace-participation-policies"></a>Azure Marketplace-Teilnahmerichtlinien
 
@@ -35,7 +35,7 @@ Die folgenden Teilnahmerichtlinien für Microsoft Azure Marketplace gelten für 
 
 1. Herausgeber müssen ihren Standort in einem vom Azure Marketplace unterstützten Verkäuferland haben. Derzeit werden die folgenden Verkäuferländer vom Azure Marketplace unterstützt:  Afghanistan, Albanien, Algerien, Angola, Antigua und Barbuda, Argentinien, Armenien, Australien, Österreich, Aserbaidschan, Bahrain, Bangladesch, Belarus, Belgien, Benin, Bolivien, Bosnien und Herzegowina, Botswana, Brasilien, Bulgarien, Burkina Faso, Burundi, Kambodscha, Kamerun, Kanada, Zentralafrikanische Republik, Tschad, Chile, Kolumbien, Komoren, Kongo (Demokratische Republik), Kongo (Republik), Costa Rica, Côte d'Ivoire, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominica, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Eritrea, Estland, Äthiopien, Fidschi, Finnland, Frankreich, Georgien, Deutschland, Ghana, Griechenland, Guatemala, Guinea, Haiti, Honduras, Hongkong (SAR), Ungarn, Island, Indien, Indonesien, Irak, Irland, Israel, Italien, Jamaika, Japan, Jordanien, Kasachstan, Kenia, Südkorea, Kuwait, Laos, Lettland, Libanon, Liberia, Liechtenstein, Litauen, Luxemburg, Madagaskar, Malawi, Malaysia, Mali, Malta, Mauritius, Mexiko, Monaco, Mongolei, Montenegro, Marokko, Mosambik, Nepal, Niederlande, Neuseeland, Nicaragua, Niger, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Katar, Rumänien, Russland, Ruanda, Saudi-Arabien, Senegal, Serbien, Sierra Leone, Singapur, Slowakei, Slowenien, Somalia, Südafrika, Spanien, Sri Lanka, Schweden, Schweiz, Tadschikistan, Tansania, Thailand, Timor-Leste, Togo, Tonga, Trinidad und Tobago, Tunesien, Türkei, Turkmenistan, Uganda, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, Vereinigte Staaten, Uruguay, Usbekistan, Venezuela, Vietnam, Sambia, Simbabwe.
 
-1. Jedes Angebot muss von den Herausgebern in mindestens einem vom Azure Marketplace unterstützten Käuferland verfügbar gemacht werden. Derzeit werden die folgenden Kauferländer vom Azure Marketplace unterstützt:  Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Mazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela. 
+1. Jedes Angebot muss von den Herausgebern in mindestens einem vom Azure Marketplace unterstützten Käuferland verfügbar gemacht werden. Derzeit werden die folgenden Kauferländer vom Azure Marketplace unterstützt: Algerien, Argentinien, Australien, Österreich, Bahrain, Belarus, Belgien, Brasilien, Bulgarien, Kanada, Chile, Kolumbien, Costa Rica, Kroatien, Zypern, Tschechische Republik, Dänemark, Dominikanische Republik, Ecuador, Ägypten, El Salvador, Estland, Finnland, Frankreich, Deutschland, Griechenland, Guatemala, Hongkong, Ungarn, Island, Indien, Indonesien, Irland, Israel, Italien, Japan, Jordanien, Kasachstan, Kenia, Kuwait, Lettland, Liechtenstein, Litauen, Luxemburg, Mazedonien (ehemalige jugoslawische Republik), Malaysia, Malta, Mexiko, Montenegro, Marokko, Niederlande, Neuseeland, Nigeria, Norwegen, Oman, Pakistan, Panama, Paraguay, Peru, Philippinen, Polen, Portugal, Puerto Rico, Katar, Rumänien, Russland, Saudi-Arabien, Serbien, Singapur, Slowakei, Slowenien, Südafrika, Südkorea, Spanien, Sri Lanka, Schweden, Schweiz, Taiwan, Thailand, Trinidad und Tobago, Tunesien, Türkei, Ukraine, Vereinigte Arabische Emirate, Vereinigtes Königreich, USA, Uruguay, Venezuela.
 
 1. Herausgeber müssen ihre Bonität wahren.
 
@@ -47,7 +47,7 @@ Die folgenden Teilnahmerichtlinien für Microsoft Azure Marketplace gelten für 
 
 1. Herausgeber müssen die Verfügbarkeit ihres Angebots im Azure Marketplace auf ihrer öffentlichen Website bekannt geben und Hyperlinks zu ihren Angebotsauflistungsseiten auf [https://azuremarketplace.microsoft.com/marketplace/](https://azuremarketplace.microsoft.com/marketplace/) einschließen.
 
-1. Herausgeber müssen jedes Angebot auf Grundlage mindestens einer von Microsoft bereitgestellten Klassifizierungstaxonomie klassifizieren, einschließlich der in Abschnitt 4 dieses Dokuments beschriebenen Kategorien. Wenn Microsoft eine vom Herausgeber ausgewählte Klassifizierung als unrichtig einstuft, behält das Unternehmen sich das Recht vor, alle Angebote neu zu klassifizieren.
+1. Herausgeber müssen jedes Angebot auf Grundlage mindestens einer von Microsoft bereitgestellten Klassifizierungstaxonomie klassifizieren, einschließlich der im Abschnitt **Definitionen von Angebotsklassifizierungen** dieses Dokuments beschriebenen Kategorien. Wenn Microsoft eine vom Herausgeber ausgewählte Klassifizierung als unrichtig einstuft, behält das Unternehmen sich das Recht vor, alle Angebote neu zu klassifizieren.
 
 1. Wenn das Angebot eines Herausgebers über das Microsoft Azure Certified-Programm zertifiziert wurde und nicht primär in Microsoft Azure ausgeführt wird, muss der Herausgeber innerhalb von 90 Tagen nach der Veröffentlichung einer kostenlosen oder BYOL-Version des Angebots eine kostenpflichtige Version des Angebots im Marketplace verfügbar machen.
 
@@ -122,7 +122,7 @@ Nach dem Veröffentlichen eines Dienstangebots im Marketplace müssen Herausgebe
     * für das Angebot werden ständig sehr viele Supporttickets erstellt, oder
     * der Herausgeber hat die Bestimmungen im Microsoft Marketplace-Herausgebervertrag, in den Marketplace-Veröffentlichungsrichtlinien oder in diesem Dokument nicht eingehalten.
 
-1. Möglicherweise möchten Sie aus unterschiedlichen Gründen Ihr Angebot aus dem Marketplace entfernen. Durch das Entfernen eines Angebots wird sichergestellt, dass Ihr Angebot nicht mehr durch neue Kunden erworben oder bereitgestellt werden kann. Dies wirkt sich jedoch nicht auf bestehende Kunden aus. Durch Beenden des Angebots wird der Dienst und/oder der Lizenzvertrag zwischen Ihnen und Ihren bestehenden Kunden beendet. Die Richtlinien für die Entfernung und Kündigung von Angeboten werden durch den Microsoft Marketplace-Herausgebervertrag geregelt (siehe Abschnitt 7). Sie können die Entfernung oder Kündigung eines Angebots anfordern, indem Sie ein Supportticket übermitteln.
+1. Möglicherweise möchten Sie aus unterschiedlichen Gründen Ihr Angebot aus dem Marketplace entfernen. Durch das Entfernen eines Angebots wird sichergestellt, dass Ihr Angebot nicht mehr durch neue Kunden erworben oder bereitgestellt werden kann. Dies wirkt sich jedoch nicht auf bestehende Kunden aus. Durch Beenden des Angebots wird der Dienst und/oder der Lizenzvertrag zwischen Ihnen und Ihren bestehenden Kunden beendet. Eine Anleitung und Richtlinien zur Entfernung und Beendigung von Angeboten finden Sie in der Microsoft Marketplace-Herausgebervereinbarung (siehe Abschnitt „Zahlungsbestimmungen“). Sie können die Entfernung oder Kündigung eines Angebots anfordern, indem Sie ein Supportticket übermitteln.
 
 ## <a name="payment-terms"></a>Zahlungsbestimmungen
 
@@ -138,19 +138,35 @@ Microsoft gestattet Herausgebern gemäß den Bestimmungen von Anlage B des Micro
 
 ## <a name="taxes"></a>Steuern
 
-1. **Microsoft-Überweisungsländer.**
+1. **Zuständigkeit für Steuern auf Endkundenverkäufe**
 
-    1. Die folgenden Länder sind Microsoft-Überweisungsländer gemäß Definition im Microsoft Marketplace-Herausgebervertrag: Europäische Union, Kanada, Indien, Irland, Liechtenstein, Monaco, Neuseeland, Norwegen, Puerto Rico, Südkorea, Schweiz, USA. Australien, Saudi-Arabien, Taiwan und die Vereinigten arabischen Emirate sind nur für direkte Webverkäufe Microsoft-Überweisungsländer.
+    1. Im Allgemeinen hängen die Zuständigkeit von Microsoft und des Herausgebers für Steuern auf Endkundenverkäufe jeweils vom Land und dem Kaufszenario ab, in dem Angebote verkauft werden.
 
-    1. In Irland berechnet Microsoft allen irischen Kunden die in Irland geltende Umsatzsteuer (Ausnahme: ein irischer Kunde gibt ein gültiges VAT 56B-Zertifikat an). Für Geschäftskunden innerhalb der Europäischen Union und Norwegens (die sich nicht in Irland befinden) berechnet Microsoft keine Umsatzsteuer, wenn der Kunde eine gültige Umsatzsteuernummer angibt. Wenn keine gültige Umsatzsteuernummer angegeben wird, wird Kunden der Umsatzsteuersatz berechnet, der im Land bzw. Gerichtsstand des Kunden gilt.
+    1. In bestimmten Ländern (**Von Microsoft verwaltete Länder**) trägt Microsoft die Verantwortung für die Verwaltung der Endkundenbesteuerung, z.B. Überprüfung des Geschäftsstatus von Kunden anhand von Steuernummern oder Freistellungsbescheinigungen, umfassend verwaltete Beziehungen mit Kunden sowie Berechnung, Erhebung und/oder Abführung von Steuern.  In den Fällen, in denen Verkäufe über Partner erfolgen, geht Microsoft davon aus, dass alle Partner Unternehmen sind und ihren Steuerverpflichtungen entsprechend nachkommen.  Weitere Informationen finden Sie in den [häufig gestellten Fragen](https://automaticbillingspec.blob.core.windows.net/spec/FAQ%20for%20ISV%20Azure%20Marketplace%20Updates%20March%202019.pdf).
 
-    1. Allen Kunden in der Schweiz und Liechtenstein wird die Schweizer Umsatzsteuer in Rechnung gestellt.
+    1. Für alle Länder, die keine von Microsoft verwalteten Länder sind (**Von unabhängigen Softwareherstellern verwaltete Länder**), erkennen Herausgeber an und stimmen zu, dass die Herausgeber die alleinige Verantwortung für die Festlegung und Verwaltung der Endkundenbesteuerung (z.B. Registrierung, Steuerberechnung, -erhebung und -abführung, Überprüfung des Geschäftsstatus von Kunden und Bereitstellung von Steuerrechnungen für Kunden) für alle Angebote tragen, die die Herausgeber in von unabhängigen Softwareherstellern verwalteten Ländern zur Verfügung stellen.  Herausgeber erkennen dies in Bezug auf jeden Verkauf in einem von unabhängigen Softwareherstellern verwalteten Land an, der derzeit nicht über Microsoft erfolgen kann.
 
-1. **ISV-Überweisungsländer.**
+    1. Endkunden können Angebote direkt von Microsoft oder von Microsoft-Partnern erwerben, für die Herausgeber ihr Produkt lizenzieren.  Darüber hinaus stehen mehrere unterschiedliche Lizenzierungsprogramme zur Verfügung.  In einigen Fällen können von Microsoft verwaltete Länder zu von unabhängigen Softwareherstellern verwalteten Ländern werden und umgekehrt (siehe Abschnitt **Von Microsoft verwaltete Länder**weiter unten). Informationen zu Kaufszenarien für Kunden finden Sie unter [Häufig gestellte Fragen zum Azure Marketplace](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide).
 
-    1. ISV-Überweisungsländer sind alle Käuferländer, wie in Abschnitt 1 (3) dieser Richtlinie beschrieben, die keine Microsoft-Überweisungsländer sind. Darüber hinaus werden Verkäufe nach Australien, Saudi-Arabien, Taiwan und den Vereinigten arabischen Emiraten über den Enterprise-Kanal als Verkäufe in ein ISV-Überweisungsland behandelt. Allerdings kann Microsoft im Hinblick auf Herausgeber in Taiwan nicht bestätigen, dass jeder dieser taiwanesischen Herausgeber anfallende Steuern einnehmen und rückerstatten kann.
+1. **Von Microsoft verwaltete Länder**
 
-    1. Wenn Herausgeber Angebote in einem ISV-Abführungsland verfügbar machen, tragen sie die alleinige Verantwortung dafür, ihre Steuerverpflichtungen im jeweiligen Land zu kennen.  Sie müssen bestätigen, dass Microsoft derzeit möglicherweise nicht die Transaktionsdetails bereitstellen kann, die Herausgeber benötigen, um Kunden Steuerrechnungen auszustellen.
+    1. Bei den folgenden Ländern handelt es sich um von Microsoft verwaltete Länder für Verkäufe in allen Kaufszenarien für Kunden: Armenien, Belarus, Europäische Union, Kanada, Indien, Irland, Liechtenstein, Monaco, Neuseeland, Norwegen, Puerto Rico, Russland, Saudi-Arabien, Serbien, Südkorea, Schweiz, Taiwan, Türkei, Vereinigte Arabische Emirate und USA. 
+
+    1. Australien ist ein von Microsoft verwaltetes Land für Verkäufe in allen Kaufszenarien für Kunden, mit Ausnahme des Kaufszenarios für das Enterprise Agreement.
+
+    1. Microsoft verwaltet die Endkundenbesteuerung für Herausgeber zur Vereinfachung und ist von den gängigsten Szenarien ausgegangen, um die Länder und Strategien für die Verwaltung der Endkundenbesteuerung zu bestimmen.
+
+    1. Microsoft übernimmt keine Garantien, dass die Maßnahmen von Microsoft die Verpflichtungen der Herausgeber in den von Microsoft verwalteten Ländern vollständig erfüllen.  Für alle von Microsoft verwalteten Länder empfiehlt Microsoft Herausgebern dringend, dass ihre eigenen Steuerberater nachprüfen, ob die von Microsoft verwaltete Abführung der Steuern die Konformitätsverpflichtungen der Herausgeber ausreichend erfüllt.  Dies ist besonders wichtig für alle von Microsoft verwalteten Länder, in denen Herausgeber ihre Produkte verkaufen.  So kann beispielsweise ein Herausgeber, der in Saudi-Arabien niedergelassen ist und Angebote verkauft, unter Umständen feststellen, dass die Steuerverwaltung durch Microsoft nicht ausreichend ist, um die Konformitätsverpflichtungen des Herausgebers zu erfüllen.
+
+1. **Von unabhängigen Softwareherstellern verwaltete Länder**
+
+    1. Zu den von unabhängigen Softwareherstellern verwalteten Ländern gehören Australien für alle Verkäufe im Kaufszenario für das Enterprise Agreement sowie alle Länder, die im Abschnitt **Von Microsoft verwaltete Länder** nicht aufgeführt sind.
+
+1. **Sonderfälle**
+
+    1. *Brasilien:*  Für Verkäufe in Brasilien in allen Kaufszenarien für Kunden mit Ausnahme von CSP gilt Brasilien als ein von Microsoft verwaltetes Land, und Microsoft agiert als Handelspartner und nicht als Vertreter der Herausgeber.  Für Verkäufe in Brasilien im Kaufszenario für CSP agiert Microsoft als Vertreter der Herausgeber und verkauft Angebote über eine brasilianische Entität an brasilianische CSPs, bei denen Microsoft davon ausgeht, dass sie steuerkonform sind. 
+
+    1. *Mexiko:*  Für Verkäufe in Mexiko im Kaufszenario für das Enterprise Agreement gilt Mexiko als ein von Microsoft verwaltetes Land, und Microsoft agiert als Handelspartner und nicht als Vertreter der Herausgeber.  Für Verkäufe in Mexiko in allen Kaufszenarien für Kunden mit Ausnahme des Enterprise Agreement gilt Mexiko als ein von unabhängigen Softwareherstellern verwaltetes Land, und Microsoft agiert als Vertreter der Herausgeber.
 
 ## <a name="security-events"></a>Sicherheitsereignisse
 

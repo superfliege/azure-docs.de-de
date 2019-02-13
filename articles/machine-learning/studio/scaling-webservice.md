@@ -1,8 +1,21 @@
 ---
-Titel: Skalieren eines Machine Learning Studio-Webdiensts titleSuffix: Azure Machine Learning Studio – Beschreibung: Hier erfahren Sie, wie Sie die Parallelität eines Azure Machine Learning Studio-Webdiensts durch Hinzufügen zusätzlicher Endpunkte erhöhen.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 23.01.2017
+title: Skalieren eines Machine Learning Studio-Webdiensts
+titleSuffix: Azure Machine Learning Studio
+description: Hier erfahren Sie, wie Sie die Parallelität eines Azure Machine Learning Studio-Webdiensts durch Hinzufügen zusätzlicher Endpunkte erhöhen.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 01/23/2017
+ms.openlocfilehash: c5874029e17b0ad7c9787beb0177b8211cbf6e6b
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55512073"
 ---
 # <a name="scaling-an-azure-machine-learning-studio-web-service-by-adding-additional-endpoints"></a>Skalieren eines Azure Machine Learning Studio-Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 > [!NOTE]

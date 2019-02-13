@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 93b1b0c8288fb408e4af6aba2eb2267ce650208c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247118"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658333"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -105,7 +105,7 @@ Für die Migration eines Azure-Abonnements, einschließlich Azure Marketplace-VM
 
 **Ich möchte ein Azure Marketplace-VM-Abonnement in mein Enterprise Agreement migrieren. Wird dies derzeit unterstützt?**
 
-Um ein Azure Marketplace-VM-Abonnement in ein Enterprise Agreement zu migrieren, beenden oder kündigen Sie alle vorherigen Abonnements vor der Migration. Sobald die Migration Ihres Azure-Kontos und der dazugehörigen Abonnements abgeschlossen ist, können Sie die Azure Marketplace-VM bzw. den -Dienst erneut erwerben.   Die anfallenden Nutzungsgebühren werden vierteljährlich gemäß Ihrem Enterprise Agreement in Rechnung gestellt.
+Um ein Azure Marketplace-VM-Abonnement in ein Enterprise Agreement zu migrieren, beenden oder kündigen Sie alle vorherigen Abonnements vor der Migration. Sobald die Migration Ihres Azure-Kontos und der zugehörigen Azure-Abonnements abgeschlossen ist, können Sie Azure Marketplace-VMs- oder -Dienste erneut kaufen.  Die anfallenden Nutzungsgebühren werden gemäß Ihrem Enterprise Agreement vierteljährlich abgerechnet.
 
 ### <a name="pricing-and-payment"></a>Preise und Bezahlung
 
@@ -358,7 +358,7 @@ Herausgeber, die in der Auflistungsart „Transact“ veröffentlichen: VM, Azur
 
 **Was sind Leads und warum sind sie für mich als Herausgeber im Marketplace wichtig?**
 
-Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleich, ob Ihr Produkt im [Azure Marketplace](https://azuremarketplace.microsoft.com) oder in [AppSource](https://appsource.microsoft.com) aufgeführt wird – Sie können Leads von Kunden erhalten, die an Ihrem Produkt interessiert sind.  Sie können in Ihrem Angebot ein Leadziel einrichten. Weitere Informationen finden Sie unter [Cloud Marketplace-Herausgeber werden](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher).
+Leads sind Kunden, die Ihre Produkte über Marketplace bereitstellen. Ganz gleich, ob Ihr Produkt im [Azure Marketplace](https://azuremarketplace.microsoft.com) oder in [AppSource](https://appsource.microsoft.com) aufgeführt wird – Sie können Leads von Kunden erhalten, die an Ihrem Produkt interessiert sind.  Sie können in Ihrem Angebot ein Leadziel einrichten. Weitere Informationen finden Sie unter [Cloud Marketplace-Herausgeber werden](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Wo erhalte ich Hilfe bei der Einrichtung meines Leadziels?**
 

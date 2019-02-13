@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0eb5941bfecc023429556434a45460c8727056ec
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300182"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745553"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>Verwalten des Avere vFXT-Clusters
 
@@ -202,7 +202,7 @@ Zusätzlich zum Löschen der Clusterknoten sollten Sie erwägen, die folgenden K
 
 ### <a name="delete-a-clusters-resource-group-from-the-azure-portal"></a>Löschen der Ressourcengruppe eines Clusters über das Azure-Portal
 
-Wenn Sie eine Ressourcengruppe speziell für den Cluster erstellt haben, können Sie alle zugehörigen Ressourcen für den Cluster zerstören, indem Sie die Ressourcengruppe zerstören. 
+Wenn Sie eine Ressourcengruppe speziell zur Aufnahme des Clusters erstellt haben, können Sie alle zugehörigen Ressourcen für den Cluster zerstören, indem Sie die Ressourcengruppe zerstören. 
 
 > [!Caution] 
 > Zerstören Sie die Ressourcengruppe nur, wenn Sie sicher sind, dass in der Gruppe keine wichtigen Komponenten vorhanden sind. Stellen Sie z. B. sicher, dass Sie alle erforderlichen Daten aus allen Speichercontainern innerhalb der Ressourcengruppe verschoben haben.  

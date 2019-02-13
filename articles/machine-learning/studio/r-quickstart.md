@@ -1,8 +1,21 @@
 ---
-Titel: Schnellstart-Tutorial für die Sprache R titleSuffix: Azure Machine Learning Studio Beschreibung: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro ms.date: 06.01.2017
+title: Schnellstart-Tutorial für die Sprache R
+titleSuffix: Azure Machine Learning Studio
+description: Verwenden Sie dieses Lernprogramm für die Programmierung in R, um einen schnellen Einstieg in die Verwendung der Sprache R mit Azure Machine Learning Studio zum Erstellen von Vorhersagelösungen zu erhalten.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
+ms.date: 01/06/2017
+ms.openlocfilehash: 9fcdcc5f4e3e7a6aadb3749459562eb575deca2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822373"
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning-studio"></a>Schnellstarttutorial für die Programmiersprache R für Azure Machine Learning Studio
 
@@ -732,7 +745,7 @@ Die unten dargestellte `ts.detrend()` -Funktion führt diesen beiden Vorgänge a
 
 In der `ts.detrend()` -Funktion geschieht einiges. Der größte Teil dieses Codes sucht nach potenziellen Problemen mit den Argumenten oder behandelt Ausnahmen, die bei den Berechnungen immer noch auftreten können. Es sind nur einige Zeilen dieses Codes, in denen die tatsächlichen Berechnungen durchgeführt werden.
 
-Wir haben unter [Werttransformationen](#valuetransformations) bereits ein Beispiel für die defensive Programmierung besprochen. Beide Berechnungsblöcke werden in `tryCatch()` eingeschlossen. Bei einigen Fehlern ist es sinnvoll, den ursprünglichen Eingabevektor zurückzugeben, während in anderen Fällen ein Vektor aus Nullen zurückgegeben wird.  
+Wir haben unter „Werttransformationen“ bereits ein Beispiel für die defensive Programmierung besprochen. Beide Berechnungsblöcke werden in `tryCatch()` eingeschlossen. Bei einigen Fehlern ist es sinnvoll, den ursprünglichen Eingabevektor zurückzugeben, während in anderen Fällen ein Vektor aus Nullen zurückgegeben wird.  
 
 Beachten Sie, dass die für die Beseitigung von Trends verwendete lineare Regression eine Zeitreihenregression ist. Die Vorhersagevariable ist ein Zeitreihenobjekt.  
 

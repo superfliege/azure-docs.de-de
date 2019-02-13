@@ -14,19 +14,19 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: b89b7885989a5e93d3d292e5cdcff733fed657af
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c60dded96df091b1a715fb7b972e9d7a23608d44
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46990177"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818820"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen und -Ressourceneintragssätzen in Azure DNS über Azure PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure-Portal](dns-operations-recordsets-portal.md)
-> * [Die klassische Azure CLI](dns-operations-recordsets-cli-nodejs.md)
-> * [Azure-CLI](dns-operations-recordsets-cli.md)
+> * [Klassische Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli-nodejs.md)
+> * [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md)
 > * [PowerShell](dns-operations-recordsets.md)
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure PowerShell DNS-Einträge für Ihre DNS-Zone verwalten. DNS-Einträge können auch mithilfe der plattformübergreifenden [Azure-Befehlszeilenschnittstelle](dns-operations-recordsets-cli.md) oder über das [Azure-Portal](dns-operations-recordsets-portal.md) verwaltet werden.
@@ -50,7 +50,7 @@ Wenn Ihr neuer Eintrag den gleichen Namen und Typ besitzt wie ein bereits vorhan
 
 Sie erstellen Ressourceneintragssätze mit dem Cmdlet `New-AzureRmDnsRecordSet`. Beim Erstellen eines Ressourceneintragssatzes müssen Sie den Namen des Ressourceneintragssatzes, die Zone, die Gültigkeitsdauer (TTL), den Eintragstyp und die zu erstellenden Einträge angeben.
 
-Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz vom Typ „A“ verwenden, müssen Sie die IP-Adresse mithilfe des Parameters `-IPv4Address` angeben. Für andere Eintragstypen werden andere Parameter verwendet. Ausführlichere Informationen finden Sie unter [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples).
+Die Parameter zum Hinzufügen von Einträgen zu einer Datensatzgruppe variieren je nach Typ der Datensatzgruppe. Wenn Sie beispielsweise einen Ressourceneintragssatz vom Typ „A“ verwenden, müssen Sie die IP-Adresse mithilfe des Parameters `-IPv4Address` angeben. Für andere Eintragstypen werden andere Parameter verwendet. Ausführlichere Informationen finden Sie unter „Zusätzliche Beispiele für Datensatztypen“.
 
 Im folgenden Beispiel wird ein Ressourceneintragssatz mit dem relativen Namen „www“ in der DNS-Zone „contoso.com“ erstellt. Der vollqualifizierte Name des Ressourceneintragssatzes ist „www.contoso.com“. Der Eintragstyp ist „A“, und die Gültigkeitsdauer beträgt 3.600 Sekunden. Der Ressourceneintragssatz enthält einen einzelnen Eintrag (mit der IP-Adresse 1.2.3.4).
 
@@ -236,7 +236,7 @@ Diese Vorgangssequenz kann auch *weitergeleitet* werden. Das bedeutet, Sie über
 Get-AzureRmDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Die obigen Beispiele zeigen, wie einem vorhandenen Ressourceneintragssatz vom Typ „A“ ein A-Eintrag hinzugefügt wird. Eine ähnliche Vorgangssequenz wird verwendet, um Ressourceneintragssätzen eines anderen Typs Einträge hinzuzufügen. Hierbei wird dann der `-Ipv4Address`-Parameter von `Add-AzureRmDnsRecordConfig` durch andere (eintragstypspezifische) Parameter ersetzt. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzureRmDnsRecordConfig`-Cmdlet (siehe [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples) weiter oben).
+Die obigen Beispiele zeigen, wie einem vorhandenen Ressourceneintragssatz vom Typ „A“ ein A-Eintrag hinzugefügt wird. Eine ähnliche Vorgangssequenz wird verwendet, um Ressourceneintragssätzen eines anderen Typs Einträge hinzuzufügen. Hierbei wird dann der `-Ipv4Address`-Parameter von `Add-AzureRmDnsRecordConfig` durch andere (eintragstypspezifische) Parameter ersetzt. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzureRmDnsRecordConfig`-Cmdlet (siehe „Zusätzliche Beispiele für Datensatztypen“ weiter oben).
 
 Ressourceneintragssätze vom Typ „CNAME“ oder „SOA“ können maximal einen Eintrag enthalten. Diese Einschränkung ergibt sich aus den DNS-Standards. Sie ist nicht durch Azure DNS bedingt.
 
@@ -270,7 +270,7 @@ Wenn Sie mithilfe der obigen Vorgehensweise den letzten Eintrag aus einem Ressou
 Get-AzureRmDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzureRmDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzureRmDnsRecordSet
 ```
 
-Zur Unterstützung verschiedener Eintragstypen müssen jeweils die passenden typspezifischen Parameter an `Remove-AzureRmDnsRecordSet` übergeben werden. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzureRmDnsRecordConfig`-Cmdlet (siehe [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples) weiter oben).
+Zur Unterstützung verschiedener Eintragstypen müssen jeweils die passenden typspezifischen Parameter an `Remove-AzureRmDnsRecordSet` übergeben werden. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzureRmDnsRecordConfig`-Cmdlet (siehe „Zusätzliche Beispiele für Datensatztypen“ weiter oben).
 
 
 ## <a name="modify-an-existing-record-set"></a>Ändern eines vorhandenen Ressourceneintragssatzes

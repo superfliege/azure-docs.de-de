@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 233a0685bffba1192193f97b8d98dabd7c65d3c9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1b27bbaa3d8e570c8431708934edee564e994487
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239773"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745655"
 ---
 # <a name="storage-analytics"></a>Speicheranalyse
 
@@ -43,7 +43,7 @@ Die folgenden Typen authentifizierter Anforderungen werden protokolliert:
 * Anforderungen mithilfe einer SAS (Shared Access Signature), einschließlich fehlerhafter und erfolgreicher Anforderungen
 * Anforderungen von Analysedaten
 
-Anforderungen, die durch die Speicheranalyse selbst erfolgen, z. B. Protokollerstellung oder -löschung, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx) und [Protokollformat der Speicheranalyse](https://msdn.microsoft.com/library/hh343259.aspx) dokumentiert.
+Anforderungen, die durch die Speicheranalyse selbst erfolgen, z. B. Protokollerstellung oder -löschung, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format) dokumentiert.
 
 ### <a name="logging-anonymous-requests"></a>Protokollieren anonymer Anforderungen
 Die folgenden Typen anonymer Anforderungen werden protokolliert:
@@ -53,7 +53,7 @@ Die folgenden Typen anonymer Anforderungen werden protokolliert:
 * Timeoutfehler für Client und Server
 * Mit Fehlercode 304 (Nicht geändert) misslungene GET-Anforderungen
 
-Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx) und [Protokollformat der Speicheranalyse](https://msdn.microsoft.com/library/hh343259.aspx) dokumentiert.
+Alle anderen misslungenen anonymen Anforderungen werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten ist in den Themen [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Protokollformat der Speicheranalyse](/rest/api/storageservices/storage-analytics-log-format) dokumentiert.
 
 ### <a name="how-logs-are-stored"></a>Wie Protokolle gespeichert werden
 Alle Protokolle werden in Block-BLOBs in einem Container namens "$logs" gespeichert, der automatisch erstellt wird, wenn die Speicheranalyse für ein Speicherkonto aktiviert ist. Der Container „$logs“ befindet sich im BLOB-Namespace des Speicherkontos. Beispiel: `http://<accountname>.blob.core.windows.net/$logs`. Dieser Container kann nicht gelöscht werden, nachdem die Speicheranalyse aktiviert wurde. Sein Inhalt kann hingegen gelöscht werden.
@@ -61,8 +61,8 @@ Alle Protokolle werden in Block-BLOBs in einem Container namens "$logs" gespeich
 > [!NOTE]
 > Der Container „$logs“ wird nicht angezeigt, wenn ein Containerauflistungsvorgang erfolgt, etwa mit der [ListContainers](https://msdn.microsoft.com/library/azure/dd179352.aspx)-Methode. Der Zugriff auf ihn muss direkt erfolgen. Beispielsweise können Sie die [ListBlobs](https://msdn.microsoft.com/library/azure/dd135734.aspx)-Methode verwenden, um auf die Blobs im Container `$logs` zugreifen.
 > Sobald Anforderungen protokolliert werden, lädt die Speicheranalyse Zwischenergebnisse als Blöcke hoch. Die Speicheranalyse führt regelmäßig Commits dieser Blöcke aus und macht sie als BLOB verfügbar.
-> 
-> 
+>
+>
 
 Für Protokolle, die in derselben Stunde erstellt werden, können doppelte Einträge vorhanden sein. Sie können feststellen, ob ein Datensatz ein Duplikat ist, indem Sie **RequestId** und **Vorgangsnummer** prüfen.
 
@@ -129,9 +129,9 @@ Transaktionsmetriken werden sowohl für Anforderungen von Benutzern als auch fü
 
 ### <a name="capacity-metrics"></a>Kapazitätsmetriken
 > [!NOTE]
-> Kapazitätsmetriken sind derzeit nur für den BLOB-Dienst verfügbar. Kapazitätsmetriken für den Tabellendienst und Warteschlangendienst werden in künftigen Versionen der Speicheranalyse verfügbar sein.
-> 
-> 
+> Kapazitätsmetriken sind derzeit nur für den BLOB-Dienst verfügbar.
+>
+>
 
 Kapazitätsdaten werden für den Blob-Dienst eines Speicherkontos täglich aufgezeichnet, und es werden zwei Tabellenentitäten geschrieben. Eine Entität stellt Statistiken für Benutzerdaten bereit, während die andere Statistiken zum Blob-Container `$logs` bereitstellt, der von der Speicheranalyse verwendet wird. Die Tabelle `$MetricsCapacityBlob` enthält die folgenden Statistiken:
 
@@ -139,7 +139,7 @@ Kapazitätsdaten werden für den Blob-Dienst eines Speicherkontos täglich aufge
 * **ContainerCount**: Die Anzahl von Blobcontainern im Blob-Dienst des Speicherkontos.
 * **ObjectCount**: Die Anzahl der Block- oder Seitenblobs mit und ohne ausgeführtem Commit im Blob-Dienst des Speicherkontos.
 
-Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx).
+Weitere Informationen zu den Kapazitätsmetriken finden Sie unter [Schema der Tabellen für Speicheranalysemetriken](/rest/api/storageservices/storage-analytics-metrics-table-schema).
 
 ### <a name="how-metrics-are-stored"></a>Speichern von Metriken
 Alle Metrikdaten für jeden der Speicherdienste werden in drei Tabellen gespeichert, die für diesen Dienst reserviert sind: eine Tabelle für Transaktionsinformationen, eine Tabelle für minutenbezogene Transaktionsinformationen und eine weitere Tabelle für Kapazitätsinformationen. Informationen zur Transaktion und deren Dauer umfassen Anforderungs- und Antwortdaten, während Kapazitätsinformationen Daten zur Speicherverwendung enthalten. Stunden- und Minutenmetriken sowie Kapazitätsinformationen zum Blob-Dienst eines Speicherkontos können aus Tabellen abgerufen werden, die wie in der folgenden Tabelle beschrieben benannt sind:
@@ -163,7 +163,7 @@ Alle Metrikdaten werden von den Diensten eines Speicherkontos geschrieben. Desha
 
 Die folgenden Aktionen der Speicheranalyse sind gebührenpflichtig:
 
-* Anforderungen zum Erstellen von Blobs für die Protokollierung 
+* Anforderungen zum Erstellen von Blobs für die Protokollierung
 * Anforderungen zum Erstellen von Tabellenentitäten für Metriken
 
 Wenn Sie eine Datenbeibehaltungsrichtlinie konfiguriert haben und die Speicheranalyse ältere Protokollierungs- und Metrikdaten löscht, werden Ihnen keine Löschtransaktionen in Rechnung gestellt. Löschtransaktionen von einem Client sind jedoch gebührenpflichtig. Weitere Informationen zu Aufbewahrungsrichtlinien finden Sie unter [Festlegen einer Beibehaltungsrichtlinie für Speicheranalysedaten](https://msdn.microsoft.com/library/azure/hh343263.aspx).
@@ -171,20 +171,9 @@ Wenn Sie eine Datenbeibehaltungsrichtlinie konfiguriert haben und die Speicheran
 ### <a name="understanding-billable-requests"></a>Grundlegendes zu gebührenpflichtigen Anforderungen
 Jede Anforderung, die an den Speicherdienst eines Kontos erfolgt, ist entweder gebührenpflichtig oder nicht. Die Speicheranalyse protokolliert jede einzelne an einen Dienst gerichtete Anforderung, einschließlich einer Statusmeldung, die angibt, wie die Anforderung behandelt wurde. Entsprechend speichert die Speicheranalyse Metriken sowohl für einen Dienst als auch für die API-Vorgänge dieses Diensts, einschließlich der Prozentsätze und Anzahl bestimmter Statusmeldungen. Diese gesamten Funktionen können Ihnen helfen, die gebührenpflichtigen Anforderungen zu analysieren, Verbesserungen an der Anwendung vorzunehmen und Probleme bei den Anforderungen an Dienste zu diagnostizieren. Weitere Informationen zur Abrechnung finden Sie unter [Understanding Azure Storage Billing - Bandwidth, Transactions, and Capacity](https://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)(Grundlagen zur Abrechnung von Azure-Speicher – Bandbreite, Transaktionen und Kapazität, in englischer Sprache).
 
-Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im Thema [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/azure/hh343260.aspx) bestimmen, welche Anforderungen gebührenpflichtig sind. Anschließend können Sie die Protokolle und Metrikdaten mit den Statusmeldungen vergleichen, um zu ermitteln, ob Ihnen eine bestimmte Anforderung in Rechnung gestellt wurde. Sie können auch die Tabellen im vorherigen Thema verwenden, um die Verfügbarkeit für einen Speicherdienst oder einen einzelnen API-Vorgang zu bestimmen.
+Wenn Sie Speicheranalysedaten überprüfen, können Sie anhand der Tabellen im Thema [Protokollierte Speicheranalysevorgänge und Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) bestimmen, welche Anforderungen gebührenpflichtig sind. Anschließend können Sie die Protokolle und Metrikdaten mit den Statusmeldungen vergleichen, um zu ermitteln, ob Ihnen eine bestimmte Anforderung in Rechnung gestellt wurde. Sie können auch die Tabellen im vorherigen Thema verwenden, um die Verfügbarkeit für einen Speicherdienst oder einen einzelnen API-Vorgang zu bestimmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-### <a name="setting-up-storage-analytics"></a>Einrichten der Speicheranalyse
 * [Überwachen eines Speicherkontos im Azure-Portal](storage-monitor-storage-account.md)
-* [Aktivieren und Konfigurieren der Speicheranalyse](https://msdn.microsoft.com/library/hh360996.aspx)
-
-### <a name="storage-analytics-logging"></a>Protokollierung durch die Speicheranalyse
-* [Informationen zur Protokollierung durch die Speicheranalyse](https://msdn.microsoft.com/library/hh343262.aspx)
-* [Protokollformat der Speicheranalyse](https://msdn.microsoft.com/library/hh343259.aspx)
-* [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx)
-
-### <a name="storage-analytics-metrics"></a>Metriken der Speicheranalyse
-* [Informationen zu Metriken der Speicheranalyse](https://msdn.microsoft.com/library/hh343258.aspx)
-* [Schema der Tabellen für Speicheranalysemetriken](https://msdn.microsoft.com/library/hh343264.aspx)
-* [Protokollierte Speicheranalysevorgänge und Statusmeldungen](https://msdn.microsoft.com/library/hh343260.aspx)  
-
+* [Protokollierung durch die Speicheranalyse](https://msdn.microsoft.com/library/hh343262.aspx)
+* [Metriken der Speicheranalyse](https://msdn.microsoft.com/library/hh343258.aspx)

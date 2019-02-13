@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: 257e9f72f21d523dfa2390814b786d1963dd671c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 36800071d5e0080ef5d1d791eed12587b114df78
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904003"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743632"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Verwalten von Reservierungen für Azure-Ressourcen
 
@@ -36,11 +36,11 @@ So aktualisieren Sie den Bereich einer Reservierung:
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
 3. Wählen Sie die Reservierung aus.
 4. Wählen Sie **Einstellungen** > **Konfiguration** aus.
-5. Ändern Sie den Bereich. 
+5. Ändern Sie den Bereich.
 
 Wenn Sie den Bereich aus „Freigegeben“ in „Einzeln“ ändern, können Sie nur Abonnements auswählen, deren Besitzer Sie sind. Es können nur Abonnements ausgewählt werden, die sich im gleichen Abrechnungskontext wie die Reservierung befinden.
 
-Der Bereich gilt nur für das nutzungsbasierte Angebot MS-AZR-0003P, für das Enterprise-Angebot MS-AZR-0017P oder für CSP-Abonnements. Bei Enterprise Agreements sind dev/test-Abonnements nicht berechtigt, den Reservierungsrabatt zu erhalten.
+Der Bereich gilt nur für das Angebot mit nutzungsbasierter Zahlung MS-AZR-0003P oder MS-AZR-0023P, für das Enterprise-Angebot MS-AZR-0017P oder MS-AZR-0148P oder für CSP-Abonnements.
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können
 

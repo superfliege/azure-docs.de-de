@@ -1,7 +1,7 @@
 ---
-title: Zugreifen auf Daten in Datenspeichern für das Training
+title: Zugreifen auf Daten in Datenspeichern/Blobs für das Training
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie mithilfe von Datenspeichern während des Trainings mit dem Azure Machine Learning Service auf den Datenspeicher zugreifen können.
+description: Erfahren Sie, wie Sie mithilfe von Datenspeichern während des Trainings mit dem Azure Machine Learning Service auf den Blobdatenspeicher zugreifen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 09/24/2018
 ms.custom: seodec18
-ms.openlocfilehash: a4960f3e29011948ec30fbc24222d8a6dccf6b8a
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 759ae1c077a2c93ee4450843a796b84d95701a10
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252114"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55769894"
 ---
 # <a name="access-data-during-training-from-your-datastores"></a>Zugreifen auf Daten während des Trainings aus Ihren Datenspeichern
 Verwenden Sie einen Datenspeicher, um auf Ihre Daten in den Azure Machine Learning-Workflows zuzugreifen und mit diesen zu arbeiten.
@@ -76,8 +76,8 @@ ds = Datastore.get(ws, datastore_name='your datastore name')
 
 Sie können auch alle Datenspeicher für einen Arbeitsbereich abrufen:
 ```Python
-datastores = ws.datastores()
-for name, ds in datastores.items(),
+datastores = ws.datastores
+for name, ds in datastores.items():
     print(name, ds.datastore_type)
 ```
 

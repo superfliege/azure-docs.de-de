@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: 5637d409233abc68983bd7cf1e55f406f15e3b59
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ff3492a0f523e32be8f6ffdabf9d15e4faa70cb4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432987"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812632"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>Grundlegende Informationen zu den Windows-Agent-Überprüfungsergebnissen in der Updateverwaltung
 
@@ -39,7 +39,7 @@ Wählen Sie auf der Seite **Problembehandlung von Update-Agent** die Option **Ü
 
 ![Seite „Problembehandlung von Update-Agent“](../media/update-agent-issues/troubleshoot-page.png)
 
-Ergebnisse werden bei Verfügbarkeit auf der Seite angezeigt. In den [Überprüfungsabschnitten](#prerequisiste-checks) wird aufgeführt, was in den einzelnen Überprüfungen enthalten ist.
+Ergebnisse werden bei Verfügbarkeit auf der Seite angezeigt. In den Überprüfungsabschnitten wird aufgeführt, was in den einzelnen Überprüfungen enthalten ist.
 
 ![Überprüfungen bei „Problembehandlung von Update-Agent“](../media/update-agent-issues/update-agent-checks.png)
 

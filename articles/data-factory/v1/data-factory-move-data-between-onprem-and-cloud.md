@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bd9df4553a50f162a4fb2142b7085f813311754f
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 77eaa6a642e02206eac319b76666bed8ae1fd165
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015830"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822424"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Verschieben von Daten zwischen lokalen Quellen und der Cloud mit dem Datenverwaltungsgateway
 > [!NOTE]
@@ -172,7 +172,7 @@ In diesem Schritt erstellen Sie zwei verknüpfte Dienste: **AzureStorageLinkedSe
       4. Geben Sie im Dialogfeld **Anmeldeinformationen festlegen** den Authentifizierungstyp, den Benutzernamen und das Kennwort an, und klicken Sie auf **OK**. Wenn die Verbindung erfolgreich hergestellt wurde, werden die verschlüsselten Anmeldeinformationen im JSON-Editor gespeichert, und das Dialogfeld wird geschlossen.
       5. Schließen Sie die leere Browserregisterkarte, über die das Dialogfeld gestartet wurde, wenn sie nicht automatisch geschlossen wird, und wechseln Sie wieder zur Registerkarte mit dem Azure-Portal.
 
-         Auf dem Gatewaycomputer werden die Anmeldeinformationen mithilfe eines Zertifikats, das der Data Factory-Dienst besitzt, **verschlüsselt**. Wenn Sie stattdessen das Zertifikat verwenden möchten, das dem Datenverwaltungsgateway zugeordnet ist, gehen Sie zu [Anmeldeinformationen sicher festlegen](#set-credentials-and-security).    
+         Auf dem Gatewaycomputer werden die Anmeldeinformationen mithilfe eines Zertifikats, das der Data Factory-Dienst besitzt, **verschlüsselt**. Wenn Sie stattdessen das Zertifikat verwenden möchten, das dem Datenverwaltungsgateway zugeordnet ist, lesen Sie „Sicheres Festlegen von Anmeldeinformationen“.    
    3. Klicken Sie auf der Befehlsleiste auf **Bereitstellen** , um den verknüpften SQL Server-Dienst bereitzustellen. Der verknüpfte Dienst sollte in der Strukturansicht angezeigt werden.
 
       ![Mit SQL Server verknüpfter Dienst in der Strukturansicht](./media/data-factory-move-data-between-onprem-and-cloud/sql-linked-service-in-tree-view.png)    

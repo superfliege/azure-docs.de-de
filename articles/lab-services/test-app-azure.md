@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: spelluru
-ms.openlocfilehash: 655159185a6011d79b927fd16d2957e2a59c8376
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a58ebe14749add30deb229f1b7e30fbb6e9921d7
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54437791"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814888"
 ---
 # <a name="test-your-app-in-azure"></a>Testen Ihrer App in Azure 
 Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von DevTest Labs. Zunächst richten Sie eine Dateifreigabe in einem Lab ein und binden sie als Laufwerk auf Ihrem lokalen Entwicklungscomputer und einem virtuellen Computer in einem Lab ein. Anschließend stellen Sie die App in Visual Studio 2017 in der Dateifreigabe bereit, damit Sie die App auf dem virtuellen Computer im Lab ausführen können.  
@@ -57,7 +57,7 @@ Dieser Artikel enthält Schritte zum Testen der Anwendung in Azure mithilfe von 
     ![Auswählen der Lab-VM](media/test-app-in-azure/select-lab-vm.png)
 2. Wählen Sie auf der Symbolleiste **Verbinden** aus, um eine Verbindung mit dem virtuellen Computer herzustellen. 
 3. [Installieren Sie Azure PowerShell](https://azure.microsoft.com/downloads/) über den Link **Windows-Installation** im Abschnitt **Befehlszeilentools**. Andere Möglichkeiten zum Installieren von Azure PowerShell finden Sie in [diesem Artikel](/powershell/azure/azurerm/install-azurerm-ps?view=azurermps-6.8.1).
-4. Befolgen Sie die Anweisungen im Abschnitt [Einbinden der Dateifreigabe](#mount-the-file-share). 
+4. Befolgen Sie die Anweisungen im Abschnitt „Einbinden der Dateifreigabe“. 
 
 ## <a name="publish-your-app-from-visual-studio"></a>Veröffentlichen der App über Visual Studio
 In diesem Abschnitt veröffentlichen Sie Ihre App über Visual Studio auf einem virtuellen Testcomputer in der Cloud.

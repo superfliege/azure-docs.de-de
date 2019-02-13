@@ -1,29 +1,29 @@
 ---
-title: Datenreplikation in Azure Storage | Microsoft-Dokumentation
+title: Datenredundanz in Azure Storage | Microsoft-Dokumentation
 description: Die Daten in Ihrem Microsoft Azure Storage-Konto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Redundanzoptionen umfassen den lokal redundanten Speicher (LRS), den zonenredundanten Speicher (ZRS), den georedundanten Speicher (GRS) und den georedundanten Speicher mit Lesezugriff (RA-GRS).
 services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 10/08/2018
+ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3fb3860cbda2e1d46505711d7a175e5d42ec7018
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455506"
+ms.locfileid: "55506786"
 ---
-# <a name="azure-storage-replication"></a>Azure Storage-Replikation
+# <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
-Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Die Azure Storage-Replikation kopiert Ihre Daten so, dass sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern und Netzwerk- oder Stromausfällen bis zu schweren Naturkatastrophen usw. Sie können Ihre Daten wahlweise im selben Rechenzentrum, Rechenzentren in derselben Zone und sogar Regionen übergreifend replizieren.
+Die Daten in Ihrem Microsoft Azure-Speicherkonto werden stets repliziert, um Beständigkeit und Hochverfügbarkeit sicherzustellen. Azure Storage kopiert Ihre Daten so, dass sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern und Netzwerk- oder Stromausfällen bis zu schweren Naturkatastrophen usw. Sie können Ihre Daten wahlweise im selben Rechenzentrum, Rechenzentren in derselben Region und sogar übergreifend über geografisch getrennte Regionen replizieren.
 
 Mit der Replikation wird sichergestellt, dass Ihr Speicherkonto auch bei Ausfällen die [Servicelevelvereinbarung (SLA) für Storage](https://azure.microsoft.com/support/legal/sla/storage/) erfüllt. Die Servicelevelvereinbarung enthält Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit.
 
-## <a name="choosing-a-replication-option"></a>Auswählen einer Replikationsoption
+## <a name="choosing-a-redundancy-option"></a>Wahl einer Redundanzoption
 
-Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Replikationsoptionen auswählen:
+Wenn Sie ein Speicherkonto erstellen, können Sie eine der folgenden Redundanzoptionen auswählen:
 
 * [Lokal redundanter Speicher (LRS)](storage-redundancy-lrs.md)
 * [Zonenredundanter Speicher (ZRS)](storage-redundancy-zrs.md)
@@ -34,10 +34,10 @@ Die folgende Tabelle zeigt in einer kurzen Übersicht, in welchem Umfang die jew
 
 | Szenario                                                                                                 | LRS                             | ZRS                              | GRS                                  | RA-GRS                               |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
-| Nichtverfügbarkeit von Knoten innerhalb eines Rechenzentrums                                                                 | JA                             | Ja                              | Ja                                  | JA                                  |
-| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                               | Ja                              | Ja                                  | JA                                  |
-| Ein regionsweiter Ausfall                                                                                     | Nein                               | Nein                                | Ja                                  | JA                                  |
-| Lesezugriff auf Ihre Daten (in einer georeplizierten Remoteregion) bei regionsweiter Nichtverfügbarkeit | Nein                               | Nein                                | Nein                                    | JA                                  |
+| Nichtverfügbarkeit von Knoten innerhalb eines Rechenzentrums                                                                 | Ja                             | Ja                              | Ja                                  | Ja                                  |
+| Ein gesamtes Rechenzentrum (zonal oder nicht zonal) ist nicht mehr verfügbar.                                           | Nein                               | Ja                              | Ja                                  | Ja                                  |
+| Ein regionsweiter Ausfall                                                                                     | Nein                               | Nein                                | Ja                                  | Ja                                  |
+| Lesezugriff auf Ihre Daten (in einer georeplizierten Remoteregion) bei regionsweiter Nichtverfügbarkeit | Nein                               | Nein                                | Nein                                    | Ja                                  |
 | Konzipiert zum Bereitstellen von \_\_ Dauerhaftigkeit von Objekten über ein bestimmtes Jahr                                          | mindestens 99,999999999 % (11 mal die 9) | mindestens 99,9999999999 % (12 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) | mindestens 99,99999999999999 % (16 mal die 9) |
 | Unterstützte Speicherkontotypen                                                                   | GPv2, GPv1, Blob                | GPv2                             | GPv2, GPv1, Blob                     | GPv2, GPv1, Blob                     |
 | Verfügbarkeits-SLA für Leseanforderungen | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,9 % (99 % bei der kalten Zugriffsebene) | mindestens 99,99 % (99,9 % bei der kalten Zugriffsebene) |

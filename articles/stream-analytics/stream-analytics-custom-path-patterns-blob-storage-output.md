@@ -1,28 +1,76 @@
 ---
-title: DateTime-Pfadmuster für die Azure Stream Analytics-Blobausgabe (Vorschau)
-description: Dieser Artikel beschreibt das Feature für benutzerdefinierte DateTime-Pfadmuster für die Blobspeicherausgabe von Azure Stream Analytics-Aufträgen.
+title: Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
+description: In diesem Artikel werden die Funktionen für benutzerdefinierte DateTime-Pfadmuster und für benutzerdefinierte Felder oder Attribute für die Blobspeicherausgabe von Azure Stream Analytics-Aufträgen beschrieben.
 services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ba386539c3f3c6740b843575bbccd4b028b8a5a7
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53090777"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55765194"
 ---
-# <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Benutzerdefinierte DateTime-Pfadmuster für die Blob Storage-Ausgabe von Azure Stream Analytics (Vorschau)
+# <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
-Azure Stream Analytics unterstützt benutzerdefinierte Datums- und Zeitformatbezeichner im Dateipfad für Blob Storage-Ausgaben. Mit benutzerdefinierten DateTime-Pfadmustern können Sie ein Ausgabeformat festlegen, das mit den Hive Streaming-Konventionen übereinstimmt, damit Azure Stream Analytics Daten an Azure HDInsight und Azure Databricks zur weiteren Verarbeitung senden kann. Benutzerdefinierte DateTime-Pfadmuster können einfach mit dem Schlüsselwort `datetime` im Feld „Pfadpräfix“ der Blobausgabe und dem Formatbezeichner implementiert werden. Beispiel: `{datetime:yyyy}`.
+Azure Stream Analytics unterstützt die benutzerdefinierte Blobausgabepartitionierung mit benutzerdefinierten Feldern oder Attributen und benutzerdefinierten DateTime-Pfadmustern. 
+
+## <a name="custom-field-or-attributes"></a>Benutzerdefiniertes Feld oder Attribute
+
+Durch Verwendung eines benutzerdefinierten Felds oder von Eingabeattributen ist eine größere Kontrolle über die Ausgabe möglich, sodass Workflows zur Verarbeitung von Downstreamdaten und zur Berichterstellung verbessert werden.
+
+### <a name="partition-key-options"></a>Optionen für den Partitionsschlüssel
+
+Der für die Partitionierung von Eingabedaten verwendete Partitionsschlüssel oder Spaltenname kann alphanumerische Zeichen mit Bindestrichen, Unterstrichen und Leerzeichen enthalten. Es ist nicht möglich, geschachtelte Felder als Partitionsschlüssel zu verwenden, es sei denn, sie werden in Verbindung mit Aliasen verwendet.
+
+### <a name="example"></a>Beispiel
+
+Angenommen, in einem Auftrag werden Eingabedaten von Live-Benutzersitzungen erfasst, die mit einem externen Dienst für Videospiele verbunden sind, wobei die erfassten Daten zum Identifizieren der Sitzungen die Spalte **client_id** enthalten. Zum Partitionieren der Daten nach **client_id** legen Sie das Feld für das Blobpfadmuster so fest, dass es beim Erstellen eines Auftrags das Partitionstoken **{client_id}** in Blobausgabeeigenschaften enthält. Da Daten mit verschiedenen Werten für **client_id** durch den Stream Analytics-Auftrag geleitet werden, erfolgt die Speicherung der Ausgabedaten basierend auf einem einzelnen **client_id**-Wert pro Ordner in separaten Ordnern.
+
+![Pfadmuster mit Client-ID](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-path-pattern-client-id.png)
+
+Wenn es sich bei der Auftragseingabe um Sensordaten von Millionen Sensoren handelt und jedem Sensor ein **sensor_id**-Wert zugewiesen ist, lautet das Pfadmuster analog zum Beispiel oben **{sensor_id}**, um die jeweiligen Sensordaten in unterschiedlichen Ordnern zu partitionieren.  
+
+
+Bei Verwendung der REST-API sieht der Ausgabeausschnitt einer für diese Anforderung verwendeten JSON-Datei beispielsweise wie folgt aus:  
+
+![REST-API-Ausgabe](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-rest-output.png)
+
+Sobald der Auftrag ausgeführt wird, sieht der *clients*-Container z.B. wie folgt aus:  
+
+![clients-Container](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-clients-container.png)
+
+Jeder Ordner kann mehrere Blobs enthalten, und jedes Blob enthält einen oder mehrere Datensätze. Im Beispiel oben ist ein einzelnes Blob in einem Ordner mit der Bezeichnung „06000000“ mit den folgenden Inhalten enthalten:
+
+![Blobinhalte](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-blob-contents.png)
+
+Beachten Sie, dass jeder Datensatz im Blob die Spalte **client_id** enthält, die mit dem Ordnernamen übereinstimmt, da **client_id** die Spalte war, die für die Partitionierung der Ausgabe im Ausgabepfad verwendet wurde.
+
+### <a name="limitations"></a>Einschränkungen
+
+1. Nur ein benutzerdefinierter Partitionsschlüssel ist in der Blobausgabeeigenschaft des Pfadmusters zulässig. Alle der folgenden Pfadmuster sind gültig:
+
+   * cluster1/{date}/{aFieldInMyData}  
+   * cluster1/{time}/{aFieldInMyData}  
+   * cluster1/{aFieldInMyData}  
+   * cluster1/{date}/{time}/{aFieldInMyData}  
+
+2. Bei Partitionsschlüsseln wird die Groß-/Kleinschreibung nicht beachtet, sodass Partitionsschlüssel wie „John“ und „john“ identisch sind. Außerdem können Ausdrücke nicht als Partitionsschlüssel verwendet werden. Beispielsweise kann **{columnA + columnB}** nicht verwendet werden.  
+
+3. Wenn ein Eingabestream aus Datensätzen mit einer Kardinalität des Partitionsschlüssels unter 8.000 besteht, werden die Datensätze an vorhandene Blobs angefügt und neue Blobs nur bei Bedarf erstellt. Wenn die Kardinalität über 8.000 liegt, gibt es keine Garantie dafür, dass Daten in vorhandene Blobs geschrieben und neue Blobs nicht für eine beliebige Anzahl von Datensätzen mit dem gleichen Partitionsschlüssel erstellt werden.  
+
+## <a name="custom-datetime-path-patterns"></a>Benutzerdefinierte DateTime-Pfadmuster
+
+Mit benutzerdefinierten DateTime-Pfadmustern können Sie ein Ausgabeformat festlegen, das mit den Hive Streaming-Konventionen übereinstimmt, damit Azure Stream Analytics Daten an Azure HDInsight und Azure Databricks zur weiteren Verarbeitung senden kann. Benutzerdefinierte DateTime-Pfadmuster können einfach mit dem Schlüsselwort `datetime` im Feld „Pfadpräfix“ der Blobausgabe und dem Formatbezeichner implementiert werden. Beispiel: `{datetime:yyyy}`.
 
 Verwenden Sie diesen Link für das [Azure-Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true), um das Featureflag umzuschalten, das die benutzerdefinierten DateTime-Pfadmuster für die Vorschau der Blob Storage-Ausgabe aktiviert. Dieses Feature wird in Kürze im Hauptportal aktiviert.
 
-## <a name="supported-tokens"></a>Unterstützte Token
+### <a name="supported-tokens"></a>Unterstützte Token
 
 Die folgenden Formatbezeichnertoken können einzeln oder in Kombination verwendet werden, um benutzerdefinierte DateTime-Formate zu erhalten:
 
@@ -42,7 +90,7 @@ Wenn Sie keine benutzerdefinierten DateTime-Muster verwenden möchten, können S
 
 ![Alte DateTime-Formate von Stream Analytics](./media/stream-analytics-custom-path-patterns-blob-storage-output/stream-analytics-old-date-time-formats.png)
 
-## <a name="extensibility-and-restrictions"></a>Erweiterbarkeit und Einschränkungen
+### <a name="extensibility-and-restrictions"></a>Erweiterbarkeit und Einschränkungen
 
 Sie können beliebig viele Token, `{datetime:<specifier>}`, im Pfadmuster verwenden, bis Sie den Zeichengrenzwert für das Pfadpräfix erreichen. Formatbezeichner können innerhalb eines einzelnen Tokens nicht über die bereits in den Dropdownlisten für Datum und Uhrzeit aufgeführten Kombinationen hinaus kombiniert werden. 
 
@@ -54,7 +102,7 @@ Für eine Pfadpartition von `logs/MM/dd`:
 
 Sie können denselben Formatbezeichner mehrmals im Pfadpräfix verwenden. Das Token muss jedes Mal wiederholt werden.
 
-## <a name="hive-streaming-conventions"></a>Hive-Streaming-Konventionen
+### <a name="hive-streaming-conventions"></a>Hive-Streaming-Konventionen
 
 Benutzerdefinierte Pfadmuster für Blob Storage können mit der Hive-Streaming-Konvention verwendet werden, die erwartet, dass Ordner im Ordnernamen mit `column=` gekennzeichnet sind.
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 917a551b8a187db6645e523d0189533e333d5371
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: a1b60bdf27e1a5f5cb6b9cfba72d78f8afa068eb
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075165"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55768595"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -169,7 +169,7 @@ Durchsatzeinheiten werden im Voraus erworben und auf Stundenbasis abgerechnet. N
 
 Sie haben die Möglichkeit, weitere Durchsatzeinheiten in Blöcken von 20 über den Azure-Support zu erwerben (bis zu 100 Durchsatzeinheiten insgesamt). Darüber hinaus können Sie Blöcke von je 100 Durchsatzeinheiten erwerben.
 
-Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist über eine maximale Skalierung von einer Durchsatzeinheit auf. Die Anzahl von Durchsatzeinheiten sollte kleiner oder gleich der Anzahl von Partitionen in einem Event Hub sein.
+Es wird empfohlen, Durchsatzeinheiten und Partitionen sorgfältig aufeinander abzustimmen, um eine optimale Skalierung zu erreichen. Eine einzelne Partition weist über eine minimale Skalierung von einer Durchsatzeinheit auf. Die Anzahl von Durchsatzeinheiten sollte kleiner oder gleich der Anzahl von Partitionen in einem Event Hub sein.
 
 Ausführliche Informationen zu Event Hubs-Preisen finden Sie unter [Event Hubs-Preise](https://azure.microsoft.com/pricing/details/event-hubs/).
 

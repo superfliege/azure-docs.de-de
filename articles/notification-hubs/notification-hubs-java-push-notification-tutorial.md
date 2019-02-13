@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 68c87b0fd892d5972e8c6b225c7c7bce3b3704db
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 45ff4ff79a443e49a7d01a41a249db9e4d0a070b
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54449961"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55560803"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>Verwenden von Notification Hubs von Java aus
 
@@ -39,7 +39,7 @@ Das SDK unterstützt derzeit:
 * Reguläre Sendevorgänge
 * Geplante Sendevorgänge
 * Asynchrone Vorgänge über Java NIO
-* Unterstützte Plattformen: APNS (iOS), GCM (Android), WNS (Windows Store-Apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android ohne Google-Dienste)
+* Unterstützte Plattformen: APNS (iOS), FCM (Android), WNS (Windows Store-Apps), MPNS (Windows Phone), ADM (Amazon Kindle Fire), Baidu (Android ohne Google-Dienste)
 
 ## <a name="sdk-usage"></a>SDK-Verwendung
 
@@ -120,7 +120,7 @@ Zum Erstellen von:
     hub.createRegistration(reg);
     ```
 
-Auf ähnliche Weise können Sie die Registrierungen für Android (GCM), Windows Phone (MPNS) und Kindle Fire ADM) erstellen.
+Auf ähnliche Weise können Sie die Registrierungen für Android (FCM), Windows Phone (MPNS) und Kindle Fire (ADM) erstellen.
 
 **Vorlagen-Registrierungen erstellen:**
 
@@ -318,7 +318,7 @@ Das Benachrichtigungsobjekt ist lediglich ein Text mit Headern. Einige Dienstpro
 
     ```java
     String message = "{\"data\":{\"msg\":\"Hello from Java!\"}}";
-    Notification n = Notification.createGcmNotification(message);
+    Notification n = Notification.createFcmNotification(message);
     hub.sendNotification(n);
     ```
 

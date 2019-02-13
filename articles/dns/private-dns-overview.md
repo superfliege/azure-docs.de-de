@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 1/23/2019
 ms.author: victorh
-ms.openlocfilehash: 4b5b98b5695901ca6d136682e454f059f157b743
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f88cc44890277604411f482779a83ee266820ac8
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54826478"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816321"
 ---
 # <a name="use-azure-dns-for-private-domains"></a>Verwenden von Azure DNS für private Domänen
 
@@ -32,7 +32,7 @@ Azure DNS bietet folgende Vorteile:
 
 * **Macht benutzerdefinierte DNS-Lösungen überflüssig**. Früher erstellten viele Kunden benutzerdefinierte DNS-Lösungen zum Verwalten von DNS-Zonen in ihrem virtuellen Netzwerk. Die Verwaltung von DNS-Zonen kann ab sofort mithilfe der nativen Azure-Infrastruktur durchgeführt werden, sodass das lästige Erstellen und Verwalten benutzerdefinierter DNS-Lösungen entfällt.
 
-* **Verwenden aller gängigen DNS-Eintragstypen**. Azure DNS unterstützt A-, AAAA-, CNAME-, MX-, NS-, PTR-, SOA-, SRV- und TXT-Einträge.
+* **Verwenden aller gängigen DNS-Eintragstypen**. Azure DNS unterstützt A-, AAAA-, CNAME-, MX-, PTR-, SOA-, SRV- und TXT-Einträge.
 
 * **Automatische Verwaltung von Hostnameneinträgen**. Parallel zum Hosten Ihrer benutzerdefinierten DNS-Einträge verwaltet Azure automatisch Hostnameneinträge für die virtuellen Computer in den angegebenen virtuellen Netzwerken. In diesem Szenario können Sie die verwendeten Domänennamen optimieren, ohne benutzerdefinierte DNS-Lösungen erstellen oder die Anwendung ändern zu müssen.
 

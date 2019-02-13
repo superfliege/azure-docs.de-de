@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/27/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 8ec180b40e52c5702495a0124bf8ae33d2dc24a1
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: 66e913f6d461d2671bd217745a9d128e24c1a60c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52727782"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820928"
 ---
 # <a name="tutorial-use-azure-deployment-manager-with-resource-manager-templates-private-preview"></a>Tutorial: Verwenden des Azure-Bereitstellungs-Managers mit Resource Manager-Vorlagen (private Vorschau)
 
@@ -129,7 +129,7 @@ Die beiden Versionen (1.0.0.0 und 1.0.0.1) dienen zur [Revisionsbereitstellung](
 
 Vorlagenartefakte werden von der Diensttopologievorlage verwendet, binäre Artefakte von der Rolloutvorlage. Sowohl die Topologievorlage als auch die Rolloutvorlage definiert eine Azure-Ressource vom Typ „Artefaktquelle“. Dabei handelt es sich um eine Ressource, die Resource Manager auf die Vorlagenartefakte und binären Artefakte verweist, die in der Bereitstellung verwendet werden. Zur Vereinfachung des Tutorials wird zum Speichern der Vorlagenartefakte und der binären Artefakte ein einzelnes Speicherkonto verwendet. Beide Artefaktquellen verweisen also auf das gleiche Speicherkonto.
 
-1. Erstellen eines Azure-Speicherkontos Eine Anleitung finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
+1. Erstellen eines Azure-Speicherkontos Anweisungen dazu finden Sie unter [Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs über das Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md).
 2. Erstellen Sie einen Blobcontainer im Speicherkonto.
 3. Kopieren Sie die beiden Ordner („binaries“ und „templates“) sowie den Inhalt der beiden Ordner in den Blobcontainer. [Microsoft Azure Storage-Explorer](https://go.microsoft.com/fwlink/?LinkId=708343&clcid=0x409) unterstützt das Drag & Drop-Feature.
 4. Ermitteln Sie den SAS-Speicherort des Containers:
@@ -160,7 +160,7 @@ Sie müssen eine benutzerseitig zugewiesene verwaltete Identität erstellen und 
     - **Rolle**: Gewähren Sie ausreichende Berechtigungen für die Durchführung der Artefaktbereitstellung (Webanwendungen und Speicherkonten). Wählen Sie in diesem Tutorial die Option **Mitwirkender** aus. In der Praxis empfiehlt es sich, die Berechtigungen auf ein Minimum beschränken.
     - **Zugriff zuweisen zu**: Wählen Sie **Benutzerseitig zugewiesene verwaltete Identität** aus.
     - Wählen Sie die benutzerseitig zugewiesene verwaltete Identität aus, die Sie zuvor in diesem Tutorial erstellt haben.
-6. Wählen Sie **Speichern**aus.
+6. Wählen Sie **Speichern** aus.
 
 ## <a name="create-the-service-topology-template"></a>Erstellen der Diensttopologievorlage
 
@@ -199,7 +199,7 @@ Der folgende Screenshot zeigt Teile der Diensttopologie, Dienste und Diensteinhe
 ![Tutorial für den Azure-Bereitstellungs-Manager: Topologievorlagenressourcen – Diensttopologie](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-topology-template-resources-service-topology.png)
 
 - **artifactSourceId** dient dazu, die Artefaktquellressource der Diensttopologieressource zuzuordnen.
-- **dependsOn**: Alle Diensttopologieressourcen hängen von der Artefaktquellressource ab.
+- **dependsOn:** Alle Diensttopologieressourcen hängen von der Artefaktquellressource ab.
 - **artifacts** verweist auf die Vorlagenartefakte.  Hier werden relative Pfade verwendet. Der vollständige Pfad ist eine Verkettung aus „artifactSourceSASLocation“ (in der Artefaktquelle definiert), „artifactRoot“ (in der Artefaktquelle definiert) und „templateArtifactSourceRelativePath“ (oder „parametersArtifactSourceRelativePath“).
 
 > [!NOTE]
@@ -216,7 +216,7 @@ Sie erstellen eine Parameterdatei, die mit der Topologievorlage verwendet wird.
     - **azureResourceLocation**: Sollten Sie nicht mit Azure-Standorten vertraut sein, verwenden Sie in diesem Tutorial **centralus**.
     - **artifactSourceSASLocation**: Geben Sie den SAS-URI des Stammverzeichnisses (Blobcontainer) ein, unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
     - **templateArtifactRoot**: Verwenden Sie in diesem Tutorial **templates/1.0.0.0**, es sei denn, Sie möchten die Ordnerstruktur der Artefakte ändern.
-    - **targetScriptionID:** Geben Sie Ihre Azure-Abonnement-ID ein.
+    - **targetScriptionID**: Geben Sie Ihre Azure-Abonnement-ID ein.
 
 > [!IMPORTANT]
 > In der Topologie- und der Rolloutvorlage werden teilweise die gleichen Parameter verwendet. Diese Parameter müssen die gleichen Werte besitzen. Betroffene Parameter: **namePrefix**, **azureResourceLocation** und **artifactSourceSASLocation**. (In diesem Tutorial verwenden beide Artefaktquellen das gleiche Speicherkonto.)
@@ -234,7 +234,7 @@ Die Vorlage enthält folgende Parameter:
 - **namePrefix**: Dieses Präfix wird zur Erstellung der Namen für die Bereitstellungs-Manager-Ressourcen verwendet. Bei Verwendung des Präfix „jdoe“ lautet der Rolloutname beispielsweise „**jdoe**Rollout“.  Die Namen werden im Variablenabschnitt der Vorlage definiert.
 - **azureResourcelocation**: Zur Vereinfachung des Tutorials verwenden alle Bereitstellungs-Manager-Ressourcen diesen Standort, wenn nichts anderes angegeben ist. Aktuell können Azure-Bereitstellungs-Manager-Ressourcen ausschließlich in **USA, Mitte** oder **USA, Osten 2** erstellt werden.
 - **artifactSourceSASLocation**: Der SAS-URI des Stammverzeichnisses (Blobcontainer), unter dem die Diensteinheitenvorlage und die Parameterdateien für die Bereitstellung gespeichert sind.  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
-- **binaryArtifactRoot**: Der Standardwert lautet **binaries/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **binaryArtifactRoot** und **deployPackageUri** (aus „CreateWebApplicationParameters.json“).  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
+- **binaryArtifactRoot**:  Der Standardwert lautet **binaries/1.0.0.0**. Ändern Sie diesen Wert nur, wenn Sie die unter [Vorbereiten der Artefakte](#prepare-the-artifacts) erläuterte Ordnerstruktur ändern möchten. In diesem Tutorial werden relative Pfade verwendet.  Der vollständige Pfad ist eine Verkettung aus **artifactSourceSASLocation**, **binaryArtifactRoot** und **deployPackageUri** (aus „CreateWebApplicationParameters.json“).  Weitere Informationen finden Sie unter [Vorbereiten der Artefakte](#prepare-the-artifacts).
 - **managedIdentityID**: Die benutzerseitig zugewiesene verwaltete Identität, die die Bereitstellungsaktionen ausführt. Weitere Informationen finden Sie unter [Erstellen der benutzerseitig zugewiesenen verwalteten Identität](#create-the-user-assigned-managed-identity).
 
 ### <a name="the-variables"></a>Die Variablen
@@ -259,10 +259,10 @@ Der folgende Screenshot zeigt Teile der Rolloutdefinition:
 
 ![Tutorial für den Azure-Bereitstellungs-Manager: Ressourcen der Rolloutvorlage – Rollout](./media/deployment-manager-tutorial/azure-deployment-manager-tutorial-rollout-template-resources-rollout.png)
 
-- **dependsOn**: Die Rolloutressource hängt von der Artefaktquellressource sowie von den ggf. definierten Schritten ab.
+- **dependsOn:** Die Rolloutressource hängt von der Artefaktquellressource sowie von den ggf. definierten Schritten ab.
 - **artifactSourceId**: Dient dazu, die Artefaktquellressource der Rolloutressource zuzuordnen.
 - **targetServiceTopologyId**: Dient dazu, die Diensttopologieressource der Rolloutressource zuzuordnen.
-- **deploymentTargetId**: Die Diensteinheitenressourcen-ID der Diensttopologieressource.
+- **deploymentTargetId**: Die Diensteinheitenressourcen-ID der Diensttopologieressource
 - **preDeploymentSteps** und **postDeploymentSteps**: Enthalten die Rolloutschritte. In der Vorlage wird ein Warteschritt aufgerufen.
 - **dependsOnStepGroups**: Konfigurieren Sie die Abhängigkeiten zwischen den Schrittgruppen.
 
@@ -336,7 +336,7 @@ Die Vorlagen können mithilfe von Azure PowerShell bereitgestellt werden.
         -Name $rolloutName
     ```
 
-    Die PowerShell-Cmdlets für den Bereitstellungs-Manager müssen installiert sein, um dieses Cmdlet ausführen zu können. Siehe [Voraussetzungen](#prerequisite).
+    Die PowerShell-Cmdlets für den Bereitstellungs-Manager müssen installiert sein, um dieses Cmdlet ausführen zu können. Siehe „Voraussetzungen“.
 
     Das folgende Beispiel zeigt den Ausführungsstatus:
     

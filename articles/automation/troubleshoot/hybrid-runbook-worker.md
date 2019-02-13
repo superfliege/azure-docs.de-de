@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 12/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9f83a0cf97acfd0bed990cc832ac08eb23c29ef1
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 0ec099e0f210fc267a0a34f76136a517e0ae6ccc
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434457"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55744516"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
@@ -46,7 +46,7 @@ Dafür gibt es drei mögliche Ursachen:
 
 * Die Runbooks können nicht bei lokalen Ressourcen authentifiziert werden
 
-* Der für die Ausführung des Hybrid Runbook Worker-Features konfigurierte Computer erfüllt die Hardwaremindestanforderungen.
+* Der für die Ausführung des Hybrid Runbook Worker-Features konfigurierte Computer erfüllt die Hardwaremindestanforderungen nicht.
 
 #### <a name="resolution"></a>Lösung
 
@@ -87,8 +87,17 @@ Der Linux Hybrid Runbook Worker ist abhängig vom OMS-Agent für Linux, um mit I
 
 ### <a name="oms-agent-not-running"></a>Szenario: Der OMS-Agent für Linux wird nicht ausgeführt.
 
+#### <a name="issue"></a>Problem
 
-Wenn der OMS-Agent für Linux nicht ausgeführt wird, verhindert er die Kommunikation zwischen dem Linux Hybrid Runbook Worker und Azure Automation. Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl eingeben: `ps -ef | grep python`. Die Ausgabe sollte in etwa folgendermaßen aussehen, die Python-Prozesse mit dem **nxautomation**-Benutzerkonto. Wenn die Updateverwaltung oder Azure Automation nicht aktiviert ist, wird keiner der folgenden Prozesse ausgeführt.
+Der OMS-Agent für Linux wird nicht ausgeführt
+
+#### <a name="cause"></a>Ursache
+
+Wenn der OMS-Agent für Linux nicht ausgeführt wird, verhindert er die Kommunikation zwischen dem Linux Hybrid Runbook Worker und Azure Automation. Der Agent kann aus verschiedenen Gründen nicht ausgeführt werden.
+
+#### <a name="resolution"></a>Lösung
+
+ Überprüfen Sie, dass der Agent ausgeführt wird, indem Sie den folgenden Befehl eingeben: `ps -ef | grep python`. Die Ausgabe sollte in etwa folgendermaßen aussehen, die Python-Prozesse mit dem **nxautomation**-Benutzerkonto. Wenn die Updateverwaltung oder Azure Automation nicht aktiviert ist, wird keiner der folgenden Prozesse ausgeführt.
 
 ```bash
 nxautom+   8567      1  0 14:45 ?        00:00:00 python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/worker/main.py /var/opt/microsoft/omsagent/state/automationworker/oms.conf rworkspace:<workspaceId> <Linux hybrid worker version>

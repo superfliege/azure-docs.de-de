@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 50b2973f2b245cfb42ed7212e443fec1c66217cf
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 191cff21cdaa6a4e94358ed0b9c63cd942f71a6e
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015271"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55564560"
 ---
 # <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>Schnellstart: Erstellen einer Pipeline für die kognitive Suche mithilfe von Qualifikationen und Beispieldaten
 
@@ -147,15 +147,19 @@ Der Assistent kann in der Regel einen Standardindex ableiten. In diesem Schritt 
 
 Für diesen Schnellstart legt der Assistent sinnvolle Standardwerte fest: 
 
-+ Der Standardname lautet *azureblob-index*.
++ Basierend auf dem Datenquellentyp lautet der Standardname *azureblob-index*. 
+
++ Standardfelder basieren auf dem ursprünglichen Quelldatenfeld (`content`) sowie den von der kognitiven Pipeline erstellten Ausgabefeldern (`people`, `organizations` und `locations`). Standarddatentypen werden aus Metadaten und Datenstichproben abgeleitet.
+
 + Der Standardschlüssel ist *metadata_storage_path* (dieses Feld enthält eindeutige Werte).
-+ Standarddatentypen und -attribute gelten für Szenarien der Volltextsuche.
 
-Löschen Sie ggf. **Abrufbar** aus dem Feld `content`. In Blobs kann dieses Feld Tausende von Zeilen ergeben. Sie können sich vorstellen, wie schwierig es wäre, Dateien mit viel Inhalt, z.B. Word-Dokumente oder PowerPoint-Foliensätze, im JSON-Format in einer Liste mit Suchergebnissen anzuzeigen. 
-
-Da Sie eine Qualifikationsgruppe definiert haben, geht der Assistent davon aus, dass es Ihnen um das ursprüngliche Quelldatenfeld zuzüglich der von der kognitiven Pipeline erstellten Ausgabefelder geht. Aus diesem Grund fügt das Portal Indexfelder für `content`, `people`, `organizations` und `locations` hinzu. Beachten Sie, dass der Assistent diese Felder automatisch als **Abrufbar** und **Durchsuchbar** festlegt. **Durchsuchbar** gibt an, dass ein Feld durchsucht werden kann. **Abrufbar** bedeutet, dass es in Ergebnissen zurückgegeben werden kann. 
++ Standardattribute sind für diese Felder **abrufbar** und **durchsuchbar**. **Durchsuchbar** gibt an, dass ein Feld durchsucht werden kann. **Abrufbar** bedeutet, dass es in Ergebnissen zurückgegeben werden kann. Der Assistent geht davon aus, dass diese Felder abrufbar und durchsuchbar sein sollen, da Sie sie über eine Qualifikationsgruppe erstellt haben.
 
   ![Indexfelder](media/cognitive-search-quickstart-blob/index-fields.png)
+
+Beachten Sie, dass das Attribut **Abrufbar** für das Feld `content` durchgestrichen und mit einem Fragezeichen versehen ist. Bei textlastigen Blobdokumenten enthält das Feld `content` den Großteil der Datei, der mehrere tausende Zeilen umfassen kann. Wenn Sie Dateiinhalte an Clientcode übergeben müssen, stellen Sie sicher, dass **Abrufbar** ausgewählt bleibt. Entfernen Sie andernfalls ggf. dieses Attribut für `content`, wenn die extrahierten Elemente (`people`, `organizations` und `locations`) für Ihre Zwecke ausreichend sind.
+
+Die Markierung eines Felds als **abrufbar** bedeutet nicht, dass das Feld in den Suchergebnissen vorhanden sein *muss*. Sie können die Zusammenstellung der Suchergebnisse präzise steuern und mit dem Abfrageparameter **$select** angeben, welche Felder enthalten sein sollen. Bei textlastigen Feldern wie `content` können Sie mit dem Parameter **$select** verwaltbare Suchergebnisse für die menschlichen Benutzer Ihrer Anwendung bereitstellen und gleichzeitig sicherstellen, dass Clientcode über das Attribut **Abrufbar** Zugriff auf alle erforderlichen Informationen hat.
   
 Wechseln Sie zur nächsten Seite.
 

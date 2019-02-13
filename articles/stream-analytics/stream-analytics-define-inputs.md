@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: 66e57d95125bd6404ec23302e4c336ab0b71ea78
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2a366a9030104c885adb1a4f773de04cdc439044
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099731"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694634"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -26,7 +26,7 @@ Stream Analytics verfügt über eine erstklassige Integration in Azure-Datenstr�
 Diese Eingaberessourcen können aus demselben Azure-Abonnement wie dem Ihres Stream Analytics-Auftrags oder aus einem anderen Abonnement stammen.
 
 ### <a name="compression"></a>Komprimierung
-Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen. Derzeit unterstützte Verweistypen sind: Keine, GZip- und Deflate-Komprimierung. Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. Wenn das Eingabeformat komprimierte Avro-Daten sind, werden sie transparent behandelt. Sie müssen bei der Avro-Serialisierung keinen Komprimierungstyp angeben. 
+Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequellen. Derzeit werden diese Komprimierungstypen unterstützt: Keine, GZip- und Deflate-Komprimierung. Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung. Wenn das Eingabeformat komprimierte Avro-Daten sind, werden sie transparent behandelt. Sie müssen bei der Avro-Serialisierung keinen Komprimierungstyp angeben. 
 
 ## <a name="create-edit-or-test-inputs"></a>Erstellen, Bearbeiten oder Testen von Eingaben
 Sie können das [Azure-Portal](https://portal.azure.com) verwenden, um [neue Eingaben zu erstellen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal#configure-job-input) und vorhandene Eingaben für Ihren Streamingauftrag anzuzeigen oder zu bearbeiten. Außerdem können Sie anhand von Beispieldaten Eingabeverbindungen und [Abfragen testen](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-manage-job#test-your-query). Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.

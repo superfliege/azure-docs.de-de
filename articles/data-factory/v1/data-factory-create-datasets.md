@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 25e47ecc9d9915ab618bc45f2e95f12bae68c7f0
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: af90a946f12e11602d45300a2796787f839dcf02
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332607"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811085"
 ---
 # <a name="datasets-in-azure-data-factory"></a>Datasets in Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ Ein Dataset in Data Factory wird wie folgt im JSON-Format definiert:
     "name": "<name of dataset>",
     "properties": {
         "type": "<type of dataset: AzureBlob, AzureSql etc...>",
-        "external": <boolean flag to indicate external data. only for input datasets>,
+        "external": "<boolean flag to indicate external data. only for input datasets>",
         "linkedServiceName": "<Name of the linked service that refers to a data store.>",
         "structure": [
             {
@@ -81,12 +81,12 @@ In der folgenden Tabelle werden die Eigenschaften im obigen JSON-Code beschriebe
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| name |Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |JA |Nicht verfügbar |
-| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |JA |Nicht verfügbar |
+| name |Name des Datasets. Unter [Azure Data Factory – Benennungsregeln](data-factory-naming-rules.md) finden Sie die Benennungsregeln. |Ja |Nicht verfügbar |
+| type |Typ des Datasets. Geben Sie einen der von Data Factory unterstützten Typen an (z.B. AzureBlob, AzureSqlTable). <br/><br/>Weitere Informationen finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
 | structure |Schema des Datasets.<br/><br/>Unter [Dataset: structure](#Structure) finden Sie weitere Details. |Nein  |Nicht verfügbar |
-| typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure-Blob, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |JA |Nicht verfügbar |
+| typeProperties | Die Typeigenschaften unterscheiden sich je nach Typ (z.B. Azure-Blob, Azure SQL-Tabelle). Ausführliche Informationen über die unterstützten Typen und deren Eigenschaften finden Sie unter [Dataset: type](#Type). |Ja |Nicht verfügbar |
 | external | Boolesches Flag, das angibt, ob ein Dataset explizit durch eine Data Factory-Pipeline erstellt wird oder nicht. Wenn das Eingabedataset für eine Aktivität nicht durch die aktuelle Pipeline erstellt wird, legen Sie für dieses Flag „true“ fest. Legen Sie für das Eingabedataset der ersten Aktivität in der Pipeline für dieses Flag „true“ fest.  |Nein  |false |
-| availability | Definiert das Verarbeitungsfenster (beispielsweise stündlich oder täglich) oder das Modell für das Aufteilen in Slices für die Datasetproduktion. Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstellt wird, heißt Datenslice. Wenn die Verfügbarkeit des Ausgabedatasets auf täglich (frequency - Day, interval - 1) festgelegt ist, wird täglich ein Slice erstellt. <br/><br/>Details finden Sie unter [Dataset: availability](#Availability). <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). |JA |Nicht verfügbar |
+| availability | Definiert das Verarbeitungsfenster (beispielsweise stündlich oder täglich) oder das Modell für das Aufteilen in Slices für die Datasetproduktion. Jede Einheit von Daten, die durch eine Aktivitätsausführung genutzt und erstellt wird, heißt Datenslice. Wenn die Verfügbarkeit des Ausgabedatasets auf täglich (frequency - Day, interval - 1) festgelegt ist, wird täglich ein Slice erstellt. <br/><br/>Ausführlichere Informationen finden Sie unter „Dataset-Verfügbarkeit“. <br/><br/>Weitere Informationen zum Modell für das Aufteilen von Datasets in Slices finden Sie im Artikel [Planung und Ausführung](data-factory-scheduling-and-execution.md). |Ja |Nicht verfügbar |
 | policy |Definiert die Kriterien oder die Bedingung, die die Dataset-Slices erfüllen müssen. <br/><br/>Weitere Informationen finden Sie im Abschnitt [Dataset: policy](#Policy). |Nein  |Nicht verfügbar |
 
 ## <a name="dataset-example"></a>Datasetbeispiel
@@ -193,7 +193,7 @@ Jede Spalte im Abschnitt „structure“ enthält die folgenden Eigenschaften:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name |Name der Spalte. |JA |
+| name |Name der Spalte. |Ja |
 | type |Datentyp der Spalte.  |Nein  |
 | culture |Zu verwendendes .NET-basiertes Gebietsschema, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. Der Standardwert lautet `en-us`. |Nein  |
 | format |Zu verwendende Formatzeichenfolge, wenn der Typ ein .NET-Typ ist: `Datetime` oder `Datetimeoffset`. |Nein  |
@@ -235,8 +235,8 @@ In der folgenden Tabelle werden die Eigenschaften beschrieben, die Sie im Abschn
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich | Standard |
 | --- | --- | --- | --- |
-| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |JA |Nicht verfügbar |
-| interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |JA |Nicht verfügbar |
+| frequency |Gibt die Zeiteinheit für die Erstellung der Datasetslices an.<br/><br/><b>Unterstützte Häufigkeit</b>: „Minute“, „Hour“, „Day“, „Week“, „Month“ |Ja |Nicht verfügbar |
+| interval |Gibt einen Multiplikator für die Häufigkeit an.<br/><br/>„frequency x interval“ bestimmt, wie oft der Slice erzeugt wird. Wenn Sie das Dataset beispielsweise auf Stundenbasis in Slices aufteilen möchten, legen Sie <b>frequency</b> auf <b>Hour</b> und <b>interval</b> auf <b>1</b> fest.<br/><br/>Wenn Sie **frequency** als **Minute** angeben, sollten Sie „interval“ auf mindestens „15“ festlegen. |Ja |Nicht verfügbar |
 | style |Gibt an, ob der Slice am Anfang oder am Ende des Intervalls erzeugt werden soll.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul>Wenn **frequency** auf **Month** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am letzten Tag des Monats erstellt. Wenn **style** auf **StartOfInterval** festgelegt ist, wird der Slice am ersten Tag des Monats erstellt.<br/><br/>Wenn **frequency** auf **Day** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice in der letzten Stunde des Tages erstellt.<br/><br/>Wenn **frequency** auf **Hour** und **style** auf **EndOfInterval** festgelegt ist, wird der Slice am Ende der Stunde erstellt. Ein Slice für den Zeitraum 13:00 bis 14:00 Uhr wird z. B. um 14.00 Uhr erstellt. |Nein  |EndOfInterval |
 | anchorDateTime |Definiert die absolute Position in der Zeit, die der Scheduler benötigt, um Dataset-Slicegrenzen zu berechnen. <br/><br/>Wenn diese Eigenschaft Datumsteile hat, die kürzer sind als die Zeitspanne aus der angegebenen Häufigkeit, werden die kürzeren Teile ignoriert. Wenn **interval** beispielsweise auf **hourly** festgelegt ist (frequency: hour, interval: 1) und das **AnchorDateTime**-Element **Minuten und Sekunden** enthält, wird der Teil mit den Minuten und Sekunden von **anchorDateTime** ignoriert. |Nein  |01/01/0001 |
 | offset |Zeitspanne, um die Anfang und Ende aller Datasetslices verschoben werden. <br/><br/>Wenn sowohl **anchorDateTime** als auch **offset** angegeben sind, ist das Ergebnis die kombinierte Verschiebung. |Nein  |Nicht verfügbar |

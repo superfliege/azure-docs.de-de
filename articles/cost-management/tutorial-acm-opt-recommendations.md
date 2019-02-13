@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 2b9702dbae0414ba597b6e1f6080d9de86f624fc
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 2255f14d026d406dc41802c321d0a673ee2f2f23
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53077074"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55766859"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>Tutorial: Optimieren von Kosten mithilfe von Empfehlungen
 
@@ -29,7 +29,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Überprüfen der Aktion, um sicherzustellen, dass die Größe des virtuellen Computers erfolgreich geändert wurde
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Empfehlungen stehen allen [EA-Kunden (Enterprise Agreement)](https://azure.microsoft.com/pricing/enterprise-agreement/) zur Verfügung. Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff.
+Empfehlungen sind für eine Vielzahl von Azure-Kontotypen verfügbar. Dies schließt auch Kunden von [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) ein. Die vollständige Liste der unterstützten Kontotypen finden Sie unter [Grundlegendes zu Cost Management-Daten](understand-cost-mgt-data.md). Zum Aufrufen von Kostendaten benötigen Sie für einen oder mehrere der folgenden Bereiche mindestens Lesezugriff.
 
 - Abonnement
 - Ressourcengruppe
@@ -53,7 +53,7 @@ Die Kategorie **Auswirkungen** und die Kategorie **Potenzielle jährliche Einspa
 
 Azure Advisor überwacht die Verwendung Ihrer virtuellen Computer 14 Tage lang und ermittelt nicht ausgelastete virtuelle Computer. Virtuelle Computer, bei denen an mindestens vier Tagen die CPU-Auslastung unter fünf Prozent und die Netzwerklast unter sieben MB lag, gelten als virtuelle Computer mit geringer Auslastung.
 
-Die CPU-Auslastung von 5 % oder weniger ist die Standardeinstellung, aber Sie können die Einstellungen anpassen. Weitere Informationen zum Anpassen der Einstellung finden Sie unter den [Konfigurieren der Regel für die durchschnittliche CPU-Auslastung ](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation) [ mit der Empfehlung für VMs mit geringer Auslastung](../advisor/advisor-get-started.md#configure-the-average-cpu-utilization-rule-for-the-low-usage-virtual-machine-recommendation).
+Die CPU-Auslastung von 5 % oder weniger ist die Standardeinstellung, aber Sie können die Einstellungen anpassen. Weitere Informationen zum Anpassen der Einstellung finden Sie unter [Konfigurieren der Regel für die durchschnittliche CPU-Auslastung oder der Empfehlung für VMs mit geringer Auslastung](../advisor/advisor-get-started.md#configure-low-usage-vm-recommendation).
 
 Obwohl einige Szenarien zielgerichtet eine geringe Auslastung bewirken, können Sie häufig Kosten sparen, indem Sie die Größe des virtuellen Computers auf eine kostengünstigere Größe verkleinern. Die tatsächlichen Einsparungen können variieren, wenn Sie eine Maßnahme zur Größenänderung auswählen. Schauen wir uns ein Beispiel für die Größenänderung bei einem virtuellen Computer an.
 

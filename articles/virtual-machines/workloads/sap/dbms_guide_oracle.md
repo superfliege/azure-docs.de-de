@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65c685936fabab65698a077f22c2dfde17469055
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3cb868da60d56728e5d0c450ab362d6f381b90ea
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436415"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756562"
 ---
-# <a name="oracle-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – Oracle-DBMS-Bereitstellung für SAP-Workload
+# <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
@@ -309,20 +309,21 @@ ms.locfileid: "54436415"
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
 
-Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie im vorliegenden Dokument. Dieses Dokument behandelt verschiedene wichtige Themen für die Bereitstellung von Oracle Database für SAP-Workload in Azure IaaS. Es ist sinnvoll, im Vorfeld das Dokument [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) und andere Artikel der [Azure-Dokumentation für SAP-Workload](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) zu lesen. 
+Dieses Dokument behandelt verschiedene wichtige Themen, die Sie bei der Bereitstellung von Oracle Database für SAP-Workload in Azure IaaS berücksichtigen sollten. Bevor Sie dieses Dokument lesen, empfehlen wir, dass Sie [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) lesen. Zudem empfehlen wir, dass Sie weitere Anleitungen in der [Dokumentation zur SAP-Workload in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) lesen. 
 
-Die verschiedenen Oracle-Versionen und die entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, finden Sie in SAP-Hinweis [2039619].
+Informationen zu den verschiedenen Oracle-Versionen und den entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle in Azure unterstützt werden, finden Sie in SAP-Hinweis [2039619].
 
-Allgemeine Informationen zum Ausführen von SAP Business Suite unter Oracle finden Sie unter <https://www.sap.com/community/topic/oracle.html>. Die Oracle-Software ist für die Ausführung in Microsoft Azure ausgelegt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
+Allgemeine Informationen zum Ausführen der SAP Business Suite in Oracle finden Sie unter [SAP unter Oracle](https://www.sap.com/community/topic/oracle.html).
+Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure unterstützt. Weitere Informationen zur allgemeinen Unterstützung für Windows Hyper-V und Azure finden Sie in [Oracle und Microsoft Azure – häufig gestellte Fragen](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
-Die folgenden SAP-Hinweise sind relevant für Oracle, SAP und Azure:
+## <a name="sap-notes-relevant-for-oracle-sap-and-azure"></a>Für Oracle, SAP und Azure relevante SAP-Hinweise 
 
-Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem Dokument behandelten Themen:
+Die folgenden SAP-Hinweise beziehen sich auf SAP in Azure.
 
 | Hinweisnummer | Titel |
 | --- | --- |
-| [1928533] |SAP-Anwendungen auf Azure: Unterstützte Produkte und Azure VM-Typen |
-| [2015553] |SAP auf Microsoft Azure: Voraussetzungen für die Unterstützung |
+| [1928533] |SAP-Anwendungen auf Azure: Unterstützte Produkte und Azure-VM-Typen |
+| [2015553] |SAP auf Microsoft Azure: Supportvoraussetzungen |
 | [1999351] |Problembehandlung für die erweiterte Azure-Überwachung für SAP |
 | [2178632] |Wichtige Überwachungsmetriken für SAP in Microsoft Azure |
 | [2191498] |SAP unter Linux mit Azure: Erweiterte Überwachung |
@@ -335,32 +336,44 @@ Die nachstehenden SAP-Hinweise beziehen sich auf SAP in Azure und die in diesem 
 
 Die genauen Konfigurationen und Funktionen, die von Oracle und SAP in Azure unterstützt werden, finden Sie im SAP-Hinweis [2039619](https://launchpad.support.sap.com/#/notes/2039619).
 
-Windows und Oracle Linux sind die einzigen Betriebssysteme, die von Oracle und SAP in Azure unterstützt werden. Die weit verbreiteten Linux-Distributionen SLES und RHEL werden nicht unterstützt, um Oracle-Komponenten in Azure bereitzustellen. Zu den Oracle-Komponenten gehört der Oracle-Datenbankclient, den SAP-Anwendungen zum Verbinden mit dem Oracle-DBMS verwenden. Ausnahmen gemäß dem SAP-Hinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619) sind SAP-Komponenten, bei denen nicht der Oracle-Datenbankclient verwendet wird. Dazu zählen der eigenständige Enqueue-Server, der Nachrichtenserver, der Enqueue-Replikationsserver von SAP, WebDispatcher und das SAP-Gateway.  Trotz der Ausführung Ihrer Oracle-DBMS- und SAP-Anwendungsinstanzen unter Oracle Linux können Sie Ihre SAP Central Services auf SLES oder RHEL ausführen und mit einem Pacemaker-basierten Cluster schützen. Pacemaker wird als Hochverfügbarkeitsframework unter Oracle Linux nicht unterstützt.
+Windows und Oracle Linux sind die einzigen Betriebssysteme, die von Oracle und SAP in Azure unterstützt werden. Die weit verbreiteten Linux-Distributionen SLES und RHEL werden nicht unterstützt, um Oracle-Komponenten in Azure bereitzustellen. Zu den Oracle-Komponenten gehört der Oracle Database-Client, den SAP-Anwendungen zum Verbinden mit dem Oracle-DBMS verwenden. 
 
-## <a name="specifics-to-oracle-database-on-windows"></a>Besonderheiten bei Oracle Database unter Windows
+Ausnahmen gemäß dem SAP-Hinweis [#2039619](https://launchpad.support.sap.com/#/notes/2039619) sind SAP-Komponenten, bei denen nicht der Oracle Database-Client verwendet wird. Dazu zählen der eigenständige Enqueue-Server, der Nachrichtenserver, der Enqueue-Replikationsserver von SAP, WebDispatcher und das SAP-Gateway.  
+
+Selbst wenn Sie Ihre Oracle-DBMS- und SAP-Anwendungsinstanzen unter Oracle Linux ausführen, können Sie Ihre SAP Central Services auf SLES oder RHEL ausführen und mit einem Pacemaker-basierten Cluster schützen. Pacemaker wird als Hochverfügbarkeitsframework unter Oracle Linux nicht unterstützt.
+
+## <a name="specifics-for-oracle-database-on-windows"></a>Besonderheiten bei Oracle Database unter Windows
+
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-windows"></a>Oracle-Konfigurationsrichtlinien für SAP-Installationen auf Azure-VMs unter Windows
 
-In Übereinstimmung mit dem SAP-Installationshandbuch sollten keine Oracle-bezogenen Dateien im Systemtreiber für den Betriebssystemdatenträger von VMs (Laufwerk „C:“) installiert oder darin abgelegt werden. Die Anzahl von Datenträgern, die an virtuelle Computer angefügt werden können, hängt von ihrer Größe ab. Bei kleineren VM-Typen kann eine kleinere Anzahl von Datenträgern angefügt werden. Bei solch kleineren VMs wird empfohlen, das Oracle Home-Verzeichnis, „stage“, „saptrace“, „saparch“, „sapbackup“, „sapcheck“, „sapreorg“ auf dem Betriebssystemdatenträger zu installieren bzw. zu ermitteln. Diese Teile der Oracle-DBMS-Komponenten weisen keine umfassenden E/As und E/A-Durchsatz auf. Aus diesem Grund kann der Betriebssystemdatenträger die E/A-Anforderungen verarbeiten. Die Standardgröße des Betriebssystemdatenträgers beträgt 127 GB. Wenn der verfügbare freie Speicherplatz nicht ausreicht, kann die [Größe](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) des Datenträgers in 2048 GB geändert werden. Oracle-Datenbank- und Wiederholungsprotokolldateien müssen auf separaten Datenträgern gespeichert werden. Beim temporären Oracle-Tabellenbereich gibt es eine Ausnahme. TempFiles können auf Laufwerk „D:/“ (nicht persistierendes Laufwerk) erstellt werden. Außerdem bietet das nicht permanente Laufwerk „D:\“ eine bessere E/A-Latenz und einen höheren E/A-Durchsatz (mit Ausnahme von VMs der A-Serie). Um die richtige TempFiles-Größe zu bestimmen, können Sie die TempFiles-Größen auf vorhandenen Systemen überprüfen.
+In Übereinstimmung mit dem SAP-Installationshandbuch sollten Oracle-bezogene Dateien nicht im Systemtreiber für den Betriebssystemdatenträger einer VM (Laufwerk „C:“) installiert oder darin abgelegt werden. Virtuelle Computer unterschiedlicher Größen können eine variierende Anzahl angefügter Datenträger unterstützen. Kleinere VM-Typen können eine kleinere Anzahl von angefügten Datenträgern unterstützen. 
+
+Wenn Sie kleinere VMs besitzen, empfehlen wir, die Oracle-Verzeichnisse „home“, „stage“, „saptrace“, „saparch“, „sapbackup“, „sapcheck“ und „sapreorg“ auf dem Betriebssystemdatenträger zu installieren bzw. dort anzulegen. Diese Teile der Oracle-DBMS-Komponenten weisen keine umfassenden E/As und E/A-Durchsatz auf. Dies bedeutet, dass der Betriebssystemdatenträger die E/A-Anforderungen verarbeiten kann. Die Standardgröße des Betriebssystemdatenträgers beträgt 127 GB. 
+
+Wenn der verfügbare freie Speicherplatz nicht ausreicht, kann die [Größe](https://docs.microsoft.com/azure/virtual-machines/windows/expand-os-disk) des Datenträgers in 2048 GB geändert werden. Oracle Database- und Wiederholungsprotokolldateien müssen auf separaten Datenträgern gespeichert werden. Für den temporären Oracle-Tabellenbereich gilt eine Ausnahme. Tempfiles können auf Laufwerk „D:/“ (nicht permanentes Laufwerk) erstellt werden. Außerdem bietet das nicht permanente Laufwerk „D:\“ eine bessere E/A-Latenz und einen höheren E/A-Durchsatz (mit Ausnahme von VMs der A-Serie). 
+
+Um die richtige Größe des Speicherplatzes für die tempfiles zu bestimmen, können Sie die Größen der tempfiles auf vorhandenen Systemen überprüfen.
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
-Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen im NTFS-Dateisystem in Managed Disks (empfohlen) oder auf VHDs gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [verwalteten Azure-Datenträgern](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Unterstützt wird ausschließlich eine einzige Instanz von Oracle unter Verwendung von NTFS-formatierten Datenträgern. Sämtliche Datenbankdateien müssen im NTFS-Dateisystem in Managed Disks (empfohlen) oder auf VHDs gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs) oder [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
-Es wird ausdrücklich empfohlen, [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) zu nutzen. Außerdem wird dringend empfohlen, [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für Ihre Oracle Database-Bereitstellungen zu verwenden.
+Wir empfehlen dringend die Verwendung von [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Außerdem wird dringend empfohlen, [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für Ihre Oracle Database-Bereitstellungen zu verwenden.
 
-Jegliche Arten von Netzlaufwerken und Remotefreigaben wie Azure-Dateidienste
+Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+- [Einführung in den Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
-werden **NICHT** für Oracle-Datenbankdateien unterstützt!
+- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-Die im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwenden.
 
-Wie in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert, gibt es Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Windows)][virtual-machines-sizes-windows].
+Die in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure-Seitenblobspeicher oder Managed Disks verwenden.
+
+Es gibt Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Dieses Konzept wird in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert. Die jeweilige exakte Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie unter [Größen für virtuelle Windows-Computer in Azure][virtual-machines-sizes-windows].
 
 Die unterstützten Typen der Azure-VMs werden in SAP-Hinweis [1928533] aufgeführt.
 
-Mindestkonfiguration:
+Die Mindestkonfiguration ist wie folgt: 
+
 | Komponente | Datenträger | Caching | Speicherpool |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA & mirrlogB | Premium | Keine | Nicht erforderlich |
@@ -372,7 +385,8 @@ Mindestkonfiguration:
 
 Die Datenträgerauswahl für das Hosten von Onlinewiederholungsprotokollen sollte durch IOPS-Anforderungen gesteuert werden. Alle sapdata1...n (Tabellenbereiche) können auf einem einzelnen eingebundenen Datenträger gespeichert werden, solange Größe, IOPS und Durchsatz die Anforderungen erfüllen. 
 
-Leistungskonfiguration:
+Die Leistungskonfiguration ist wie folgt:
+
 | Komponente | Datenträger | Caching | Speicherpool |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA | Premium | Keine | Kann verwendet werden  |
@@ -385,65 +399,66 @@ Leistungskonfiguration:
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | Nicht erforderlich |
 
 *(n+1): Hosting von SYSTEM-, TEMP- und UNDO-Tabellenbereichen. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
-*oraarch – Ein Speicherpool ist aus Leistungsperspektive nicht erforderlich. Er kann verwendet werden, um mehr Speicherplatz zu erhalten.
 
-Wenn mehr IOPS erforderlich sind, wird empfohlen, Windows-Speicherpools (nur verfügbar unter Microsoft Windows Server 2012 und höher) zu verwenden, um ein einziges großes, logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
+*oraarch: Speicherpool ist unter dem Aspekt der Leistung nicht notwendig. Er kann verwendet werden, um mehr Speicherplatz zu erhalten.
+
+Wenn mehr IOPS erforderlich sind, empfehlen wir, Windows-Speicherpools (nur verfügbar unter Microsoft Windows Server 2012 und höher) zu verwenden, um ein einziges großes, logisches Gerät aus mehreren bereitgestellten Datenträgern zu erstellen. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 
 
 #### <a name="write-accelerator"></a>Schreibbeschleunigung
-Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in Onlinewiederholungsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Aktivieren Sie die Azure-Schreibbeschleunigung für Datenträger (VHDs) basierend auf Azure Storage Premium, die für Dateien von Onlinewiederholungsprotokolle verwendet werden. Details finden Sie im Dokument [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in Onlinewiederholungsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden. Aktivieren Sie die Azure-Schreibbeschleunigung für Datenträger (VHDs) basierend auf Azure Storage Premium, die für Dateien von Onlinewiederholungsprotokolle verwendet werden. Weitere Informationen finden Sie unter [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backup--restore"></a>Sichern und Wiederherstellen
+### <a name="backuprestore"></a>Sichern/Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools für Oracle genauso unterstützt wie auf standardmäßigen Windows Server-Betriebssystemen. Auch Oracle Recovery Manager (RMAN) wird für Sicherungen auf einen Datenträger und Wiederherstellungen von einem Datenträger unterstützt.
 
-Sie können auch mit den Azure Backup-Diensten eine anwendungskonsistente VM-Sicherung ausführen. Der Artikel [Planen der Sicherungsinfrastruktur für VMs in Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) erläutert, dass der Azure Backup-Dienst die Windows VSS-Funktionalität zur Ausführung einer anwendungskonsistenten Sicherung verwendet. Die Oracle-DBMS-Releases, die in Azure von SAP unterstützt werden, können die VSS-Funktionalität zum Sichern nutzen. Weitere Informationen finden Sie in der Oracle-Dokumentation [Grundkonzepte der Datenbanksicherung und -wiederherstellung mit VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701) (in englischer Sprache).
+Sie können auch mit Azure Backup eine anwendungskonsistente VM-Sicherung ausführen. Der Artikel [Planen der Sicherungsinfrastruktur für VMs in Azure](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction) erläutert, wie Azure Backup die Windows VSS-Funktionalität zur Ausführung einer anwendungskonsistenten Sicherung verwendet. Die Oracle-DBMS-Releases, die in Azure von SAP unterstützt werden, können die VSS-Funktionalität zum Sichern nutzen. Weitere Informationen finden Sie in der Oracle-Dokumentation [Grundkonzepte der Datenbanksicherung und -wiederherstellung mit VSS](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/ntqrf/basic-concepts-of-database-backup-and-recovery-with-vss.html#GUID-C085101B-237F-4773-A2BF-1C8FD040C701).
 
 
 ### <a name="high-availability"></a>Hochverfügbarkeit
-Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Der Beobachter (FSFA) löst das Failover aus. Ohne FSFA ist nur eine Konfiguration mit manuellem Failover möglich.
+Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Der Beobachter (FSFA) löst das Failover aus. Wenn Sie FSFA nicht verwenden, können Sie nur eine Konfiguration für manuelles Failover verwenden.
 
-Weitere Informationen zur Notfallwiederherstellung für Oracle-Datenbanken in Azure finden Sie im Artikel [Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
+Weitere Informationen zur Notfallwiederherstellung für Oracle-Datenbanken in Azure finden Sie unter [Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
-Für Oracle-Bereitstellungen unter Windows wird dringend empfohlen, die Azure-Funktionalität des beschleunigten Netzwerkbetriebs zu nutzen, wie in Artikel [VM-Leistungssteigerung mit beschleunigtem Netzwerkbetrieb – jetzt verfügbar für Windows und Linux](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) (in englischer Sprache) beschrieben. Nützlich sind auch die Empfehlungen unter [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). 
-
+### <a name="accelerated-networking"></a>Beschleunigte Netzwerke
+Für Oracle-Bereitstellungen unter Windows wird dringend empfohlen, den beschleunigten Netzwerkbetrieb zu nutzen, wie in [Beschleunigter Netzwerkbetrieb in Azure](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) beschrieben. Nützlich sind auch die Empfehlungen in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md). 
 ### <a name="other"></a>Andere
-Alle anderen allgemeinen Themen wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung (siehe [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md)) gelten ebenfalls für die Bereitstellung von VMs mit Oracle Database.
+Andere wichtige Konzepte im Zusammenhang mit Bereitstellungen von VMs mit Oracle Database, einschließlich Azure-Verfügbarkeitsgruppen und SAP-Überwachung werden in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) beschrieben.
 
-## <a name="specifics-to-oracle-database-on-oracle-linux"></a>Besonderheiten bei Oracle Database unter Oracle Linux
-Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure mit Oracle Linux als Gastbetriebssystem unterstützt. Ausführliche Informationen zur allgemeinen Unterstützung von Windows Hyper-V und Azure finden Sie hier: <http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html> 
+## <a name="specifics-for-oracle-database-on-oracle-linux"></a>Besonderheiten bei Oracle Database unter Oracle Linux
+Die Oracle-Software wird von Oracle für die Ausführung in Microsoft Azure mit Oracle Linux als Gastbetriebssystem unterstützt. Weitere Informationen zur allgemeinen Unterstützung für Windows Hyper-V und Azure finden Sie in [Azure und Oracle – häufig gestellte Fragen](http://www.oracle.com/technetwork/topics/cloud/faq-1963009.html). 
 
-Neben der allgemeinen Unterstützung wird auch das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database unterstützt. Details finden Sie in diesem Teil des Dokuments.
+Das spezielle Szenario der gemeinsamen Verwendung von SAP-Anwendungen und Oracle Database wird ebenfalls unterstützt. Details finden Sie im nächsten Teil des Dokuments.
 
 ### <a name="oracle-version-support"></a>Versionsunterstützung für Oracle
-Die verschiedenen Oracle-Versionen und die entsprechenden Betriebssystemversionen, die für den Betrieb von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, finden Sie in SAP-Hinweis [2039619].
+Informationen dazu, welche Oracle-Versionen und entsprechenden Betriebssystemversionen für die Ausführung von SAP unter Oracle auf einem virtuellen Azure-Computer unterstützt werden, finden Sie in SAP-Hinweis [2039619].
 
-Allgemeine Informationen zum Ausführen der SAP Business Suite in Oracle finden Sie unter <https://www.sap.com/community/topic/oracle.html>.
+Allgemeine Informationen zum Ausführen der SAP Business Suite in Oracle finden Sie auf der Communityseite zu [SAP unter Oracle](https://www.sap.com/community/topic/oracle.html).
 
 ### <a name="oracle-configuration-guidelines-for-sap-installations-in-azure-vms-on-linux"></a>Oracle-Konfigurationsrichtlinien für SAP-Installationen auf Azure-VMs unter Linux
 
-In Übereinstimmung mit den SAP-Installationshandbüchern sollten keine Oracle-bezogenen Dateien im Systemtreiber für den Startdatenträger von VMs installiert oder darin abgelegt werden. Die Anzahl von Datenträgern, die an virtuelle Computer angefügt werden können, hängt von ihrer Größe ab. Bei kleineren VM-Typen kann eine kleinere Anzahl von Datenträgern angefügt werden. In diesem Fall wird empfohlen, das Oracle Home-Verzeichnis, stage, saptrace, saparch, sapbackup, sapcheck, sapreorg auf dem Startdatenträger zu installieren bzw. zu ermitteln. Diese Teile der Oracle-DBMS-Komponenten weisen keine umfassenden E/As und E/A-Durchsatz auf. Aus diesem Grund kann der Betriebssystemdatenträger die E/A-Anforderungen verarbeiten. Die Standardgröße des Betriebssystemdatenträgers beträgt 30 GB. Sie können den Startdatenträger mit dem Azure-Portal, mit PowerShell oder der CLI erweitern. Nachdem der Startdatenträger erweitert wurde, können Sie eine zusätzliche Partition für Oracle-Binärdateien hinzufügen.
+In Übereinstimmung mit den SAP-Installationshandbüchern sollten keine Oracle-bezogenen Dateien im Systemtreiber für den Startdatenträger von VMs installiert oder darin abgelegt werden. Variierende Größen virtuelle Computer unterstützen eine schwankende Anzahl angefügter Datenträger. Kleinere VM-Typen können eine kleinere Anzahl von angefügten Datenträgern unterstützen. 
+
+In diesem Fall wird empfohlen, die Oracle-Verzeichnisse „home“, „stage“, „saptrace“, „saparch“, „sapbackup“, „sapcheck“ und „sapreorg“ auf dem Startdatenträger zu installieren bzw. dort anzulegen. Diese Teile der Oracle-DBMS-Komponenten weisen keine umfassenden E/As und E/A-Durchsatz auf. Dies bedeutet, dass der Betriebssystemdatenträger die E/A-Anforderungen verarbeiten kann. Die Standardgröße des Betriebssystemdatenträgers beträgt 30 GB. Sie können den Startdatenträger mit dem Azure-Portal, mit PowerShell oder der CLI erweitern. Nachdem der Startdatenträger erweitert wurde, können Sie eine zusätzliche Partition für Oracle-Binärdateien hinzufügen.
 
 
 ### <a name="storage-configuration"></a>Speicherkonfiguration
 
-Die Dateisysteme ext4, xfs oder Oracle ASM werden für Oracle-Datenbankdateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf Azure Page Blob Storage (<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [verwalteten Azure-Datenträgern](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
+Die Dateisysteme ext4, xfs oder Oracle ASM werden für Oracle Database-Dateien in Azure unterstützt. Sämtliche Datenbankdateien müssen in diesen Dateisystemen auf VHDs oder in Managed Disks gespeichert werden. Diese Datenträger werden in die Azure-VM eingebunden und basieren auf [Azure-Seitenblobspeicher](<https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs>) oder [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). 
 
 Für Oracle Linux UEK-Kernels ist mindestens die UEK-Version 4 erforderlich, um [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#premium-storage-for-linux-vms) unterstützen zu können.
 
-Es wird ausdrücklich empfohlen, [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview) zu nutzen. Außerdem wird dringend empfohlen, [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für Ihre Oracle Database-Bereitstellungen zu verwenden.
+Wir empfehlen dringend die Verwendung von [Azure Managed Disks](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview). Außerdem wird dringend empfohlen, [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für Ihre Oracle Database-Bereitstellungen zu verwenden.
 
-Jegliche Arten von Netzlaufwerken und Remotefreigaben wie Azure-Dateidienste
+Netzlaufwerke und Remotefreigaben wie Azure-Dateidienste werden für Oracle Database-Dateien nicht unterstützt. Weitere Informationen finden Sie unter  
 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx> 
-* <https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx>
+- [Einführung in den Microsoft Azure-Dateidienst](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 
-werden **NICHT** für Oracle-Datenbankdateien unterstützt!
+- [Beibehalten von Verbindungen zu Microsoft Azure-Dateien](https://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
 
-Die in Artikel [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit der Oracle-Datenbank, wenn Sie Datenträger auf Basis von Azure Page Blob Storage oder Managed Disks verwenden.
+Die im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) getroffenen Aussagen gelten auch für Bereitstellungen mit Oracle Database, wenn Sie Datenträger auf Basis von Azure-Seitenblobspeicher oder Managed Disks verwenden.
 
-Wie im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) erläutert, gibt es Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Die jeweilige Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste mit VM-Typen und den entsprechenden Kontingenten finden Sie [hier (Linux)][virtual-machines-sizes-linux].
+ Es gibt Kontingente für den IOPS-Durchsatz für Azure-Datenträger. Dieses Konzept wird in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) erläutert. Die jeweilige exakte Größe der Kontingente hängt vom Typ der verwendeten VM ab. Eine Liste der VM-Typen mit den entsprechenden Kontingenten finden Sie unter [Größen für virtuelle Windows-Computer in Azure][virtual-machines-sizes-linux].
 
 Die unterstützten Typen der Azure-VMs werden in SAP-Hinweis [1928533] aufgeführt.
 
@@ -472,36 +487,41 @@ Leistungskonfiguration:
 | /oracle/<SID>/oraarch* | Premium | Keine | Nicht erforderlich |
 | Oracle Home, saptrace, ... | Betriebssystem-Datenträger | Nicht erforderlich |
 
-*Striping: LVM-Stripe oder MDADM mit RAID 0*(n+1) – Hosting der Tabellenbereiche SYSTEM, TEMP und UNDO. Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
-*oraarch – Ein Speicherpool ist aus Leistungsperspektive nicht erforderlich. Er kann verwendet werden, um mehr Speicherplatz zu erhalten.
+*Striping: LVM-Stripe oder MDADM mit RAID 0
+
+*(n+1): Hosting von SYSTEM-, TEMP- und UNDO-Tabellenbereichen: Die E/A-Muster der System- und Undo-Tabellenbereiche unterscheiden sich von anderen Tabellenbereichen, die Anwendungsdaten hosten. Um die Leistung der System- und Undo-Tabellenbereiche zu optimieren, ist das Auslassen der Zwischenspeicherung die beste Option.
+
+*oraarch: Speicherpool ist unter dem Aspekt der Leistung nicht notwendig.
 
 
-Wenn mehr IOPS erforderlich sind, wird empfohlen, LVM (Logical Volume Manager) oder MDADM zu verwenden, um ein großes logisches Volume über mehrere bereitgestellte Datenträger hinweg zu erstellen. Im Artikel [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) finden Sie weitere Richtlinien und Hinweise zur Verwendung von LVM oder MDADM. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
+Wenn mehr IOPS erforderlich sind, wird empfohlen, LVM (Logical Volume Manager) oder MDADM zu verwenden, um ein großes logisches Volume über mehrere bereitgestellte Datenträger hinweg zu erstellen. Unter [Überlegungen zur DBMS-Bereitstellung von Azure Virtual Machines für die SAP-Workload](dbms_guide_general.md) finden Sie weitere Richtlinien und Hinweise zur Verwendung von LVM oder MDADM. Durch diese Herangehensweise wird der Aufwand verringert, der zur Verwaltung des Speicherplatzes notwendig ist. Außerdem müssen Dateien nicht mehr manuell auf mehrere bereitgestellte Datenträger verteilt werden.
 
 
-#### <a name="write-accelerator"></a>Schreibbeschleunigung:
-Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in Onlinewiederholungsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Aktivieren Sie die Azure-Schreibbeschleunigung für Datenträger (VHDs) basierend auf Azure Storage Premium, die für Dateien von Onlinewiederholungsprotokolle verwendet werden. Details finden Sie im Dokument [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
+#### <a name="write-accelerator"></a>Schreibbeschleunigung
+Bei Azure-VMs der M-Serie kann die Latenz beim Schreiben in Onlinewiederholungsprotokolle im Vergleich zu Azure Storage Premium um Faktoren reduziert werden, wenn Azure-Schreibbeschleunigung verwendet wird. Aktivieren Sie die Azure-Schreibbeschleunigung für Datenträger (VHDs) basierend auf Azure Storage Premium, die für Dateien von Onlinewiederholungsprotokolle verwendet werden. Weitere Informationen finden Sie unter [Schreibbeschleunigung](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator).
 
 
-### <a name="backup--restore"></a>Sichern und Wiederherstellen
+### <a name="backuprestore"></a>Sichern/Wiederherstellen
 Die Funktionen zum Sichern und Wiederherstellen werden für die SAP BR*Tools für Oracle genauso unterstützt wie auf Bare-Metal-Systemen und Hyper-V. Auch Oracle Recovery Manager (RMAN) wird für Sicherungen auf einen Datenträger und Wiederherstellungen von einem Datenträger unterstützt.
 
-Weitere Informationen zur Verwendung von Azure Backup und Azure Recovery Services zum Sichern und Wiederherstellen von Oracle-Datenbanken finden Sie im Artikel [Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
+Weitere Informationen zur Verwendung von Azure Backup und Azure Recovery Services zum Sichern und Wiederherstellen von Oracle-Datenbanken finden Sie unter [Sichern und Wiederherstellen einer Oracle Database 12c-Datenbank auf einem virtuellen Azure Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-backup-recovery).
 
 ### <a name="high-availability"></a>Hochverfügbarkeit
-Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Die Beobachterfunktion (FSFA) löst das Failover aus. Ohne FSFA ist nur eine Konfiguration mit manuellem Failover möglich.  Weitere Informationen finden Sie im Artikel [Implementieren von Oracle Data Guard auf einem virtuellen Azure-Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
+Oracle Data Guard wird aus Gründen der Hochverfügbarkeit und der Notfallwiederherstellung unterstützt. Um ein automatisches Failover in Data Guard zu erreichen, muss Fast Start-Failover (FSFA) verwendet werden. Die Beobachterfunktion (FSFA) löst das Failover aus. Wenn Sie FSFA nicht verwenden, können Sie nur eine Konfiguration für manuelles Failover verwenden. Weitere Informationen finden Sie unter [Implementieren von Oracle Data Guard auf einer Linux-VM in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard).
 
 
 Weitere Informationen zur Notfallwiederherstellung für Oracle-Datenbanken in Azure finden Sie im Artikel [Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-disaster-recovery).
 
-### <a name="accelerated-networking"></a>Beschleunigter Netzwerkbetrieb
-Unterstützung für den beschleunigten Azure-Netzwerkbetrieb unter Oracle Linux stellt Oracle Linux 7 Update 5 (Oracle Linux 7.5) bereit. Wenn Sie nicht auf die neueste Version von Oracle Linux 7.5 aktualisieren können, können Sie das Problem umgehen, indem Sie den Red Hat Compatible Kernel (RHCK) anstelle des Oracle UEK-Kernels verwenden. Die Verwendung des RHEL-Kernels in Oracle Linux wird gemäß SAP-Hinweis [1565179](https://launchpad.support.sap.com/#/notes/1565179) unterstützt. Beim beschleunigten Azure-Netzwerkbetrieb muss die minimale RHCKL-Kernelversion 3.10.0-862.13.1.el7 sein. Für die Verwendung des UEK-Kernels unter Oracle Linux in Verbindung mit [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) müssen Sie Version 5 des Oracle UEK-Kernels verwenden.
+### <a name="accelerated-networking"></a>Beschleunigte Netzwerke
+Unterstützung für den beschleunigten Azure-Netzwerkbetrieb unter Oracle Linux stellt Oracle Linux 7 Update 5 (Oracle Linux 7.5) bereit. Wenn Sie nicht auf die neueste Version von Oracle Linux 7.5 aktualisieren können, können Sie das Problem umgehen, indem Sie den Red Hat Compatible Kernel (RHCK) anstelle des Oracle UEK-Kernels verwenden. 
 
-Wenn Sie keine VMs über das Image bereitstellen, die auf dem Azure Marketplace basieren, müssen zusätzliche Konfigurationsdateien auf die VM kopiert werden. Dies kann durch Ausführung des folgenden Befehls erreicht werden: 
-<pre><code># Copy settings from github to correct place in VM
+Die Verwendung des RHEL-Kernels in Oracle Linux wird gemäß SAP-Hinweis [1565179](https://launchpad.support.sap.com/#/notes/1565179) unterstützt. Beim beschleunigten Azure-Netzwerkbetrieb muss die Mindestversion des RHCKL-Kernels 3.10.0-862.13.1.el7 sein. Wenn Sie den UEK-Kernel unter Oracle Linux in Verbindung mit [Azure Accelerated Networking](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) verwenden, müssen Sie Version 5 des Oracle UEK-Kernels verwenden.
+
+Wenn Sie VMs aus einem Image bereitstellen, das nicht auf Azure Marketplace basiert, müssen Sie zusätzliche Konfigurationsdateien in die VM kopieren, indem Sie folgenden Code ausführen: 
+<pre><code># Copy settings from GitHub to the correct place in the VM
 sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.githubusercontent.com/LIS/lis-next/master/hv-rhel7.x/hv/tools/68-azure-sriov-nm-unmanaged.rules 
 </code></pre>
 
 
 ### <a name="other"></a>Andere
-Bezüglich aller weiteren allgemeinen Aspekte wie Azure-Verfügbarkeitsgruppen oder SAP-Überwachung gelten die Angaben in den ersten drei Kapiteln dieses Dokuments auch für Bereitstellungen von virtuellen Computern mit Oracle Database.
+Andere wichtige Konzepte im Zusammenhang mit Bereitstellungen von VMs mit Oracle Database, einschließlich Azure-Verfügbarkeitsgruppen und SAP-Überwachung werden in [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](dbms_guide_general.md) beschrieben.

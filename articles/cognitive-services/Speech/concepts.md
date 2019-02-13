@@ -10,12 +10,12 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 4f96302f1035500a10cebaa24efd4b8db329fdff
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219769"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816210"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -80,10 +80,10 @@ Der Spracherkennungsdienst von Microsoft bietet Entwicklern zwei Möglichkeiten,
 
 | Anwendungsfälle | [REST-APIs](GetStarted/GetStartedREST.md) | [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) |
 |-----|-----|-----|
-| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | JA | JA |
-| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | JA |
-| Streamen von Audio mit Zwischenergebnissen | Nein  | JA |
-| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | JA |
+| Konvertieren von kurzem gesprochenem Audio mit einer Länge von weniger als 15 Sekunden (beispielsweise Befehle) ohne Zwischenergebnisse | Ja | Ja |
+| Konvertieren von langem Audio (länger als 15 Sekunden) | Nein  | Ja |
+| Streamen von Audio mit Zwischenergebnissen | Nein  | Ja |
+| Verstehen des aus Audio konvertierten Texts mithilfe von LUIS | Nein  | Ja |
 
  Wenn Ihre Sprache oder Plattform nicht über ein SDK verfügt, können Sie eine eigene Implementierung auf Basis der [Protokolldokumentation](API-Reference-REST/websocketprotocol.md) erstellen.
 
@@ -92,7 +92,7 @@ Der Spracherkennungsdienst von Microsoft bietet Entwicklern zwei Möglichkeiten,
 Es gibt drei Erkennungsmodi: `interactive`, `conversation` und `dictation`. Der Erkennungsmodus passt Spracherkennung nach der Art und Weise an, wie Benutzer wahrscheinlich sprechen. Wählen Sie den entsprechenden Erkennungsmodus für Ihre Anwendung aus.
 
 > [!NOTE]
-> Erkennungsmodi zeigen möglicherweise im [REST-Protokoll](#rest-speech-recognition-api) andere Verhaltensweisen als im [WebSocket-Protokoll](#webSocket-speech-recognition-api). Die REST-API unterstützt z.B. auch im Konversations- oder Diktiermodus keine kontinuierliche Erkennung.
+> Erkennungsmodi zeigen möglicherweise im REST-Protokoll andere Verhaltensweisen als im WebSocket-Protokoll. Die REST-API unterstützt z.B. auch im Konversations- oder Diktiermodus keine kontinuierliche Erkennung.
 > [!NOTE]
 > Diese Modi gelten, wenn Sie direkt das REST- oder WebSocket-Protokoll verwenden. Die [Clientbibliotheken](GetStarted/GetStartedClientLibraries.md) verwenden verschiedene Parameter, um den Erkennungsmodus anzugeben. Weitere Informationen finden Sie in der Clientbibliothek Ihrer Wahl.
 

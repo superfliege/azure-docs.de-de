@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.author: jingwang
-ms.openlocfilehash: 9cd2eaefb845b6ce9ca2f1cfcaf1234f8f96615c
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 9b54c35a5dcd495e7ed460f1fdbbe96ba3dee4fe
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300327"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663553"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>Kopieren von Daten auf eine bzw. von einer verwalteten Azure SQL-Datenbank-Instanz mit Azure Data Factory
 
@@ -54,7 +54,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
 | type | Die type-Eigenschaft muss auf **SqlServer** festgelegt sein. | Ja. |
-| connectionString |Diese Eigenschaft gibt die „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. |Ja. |
+| connectionString |Diese Eigenschaft gibt die „connectionString“-Informationen an, die zum Herstellen einer Verbindung mit der verwalteten Instanz mithilfe der SQL- oder Windows-Authentifizierung benötigt werden. Weitere Informationen finden Sie in den folgenden Beispielen. <br/>Markieren Sie dieses Feld als „SecureString“, um es sicher in Data Factory zu speichern. Sie können auch das Kennwort in Azure Key Vault speichern und bei Verwendung der SQL-Authentifizierung die `password`-Konfiguration aus der Verbindungszeichenfolge pullen. Ausführlichere Informationen finden Sie im JSON-Beispiel unter der Tabelle und im Artikel [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md). |Ja. |
 | userName |Diese Eigenschaft gibt einen Benutzernamen an, wenn Sie Windows-Authentifizierung verwenden. Ein Beispiel lautet **domainname\\username**. | Nein. |
 | password |Diese Eigenschaft gibt ein Kennwort für das Benutzerkonto an, das Sie für „username“ angegeben haben. Wählen Sie [SecureString](store-credentials-in-key-vault.md) aus, um die connectionString-Informationen sicher in Data Factory zu speichern, oder **verweisen Sie auf ein in Azure Key Vault gespeichertes Geheimnis**. | Nein. |
 | connectVia | Diese [Integration Runtime](concepts-integration-runtime.md) wird zum Herstellen einer Verbindung mit dem Datenspeicher verwendet. Stellen Sie die selbstgehostete Integration Runtime in demselben virtuellen Netzwerk wie Ihre verwaltete Instanz bereit. |Ja. |
@@ -66,7 +66,7 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -83,11 +83,40 @@ Folgende Eigenschaften werden für den mit der verwalteten Azure SQL-Datenbank-I
 }
 ```
 
-**Beispiel 2: Windows-Authentifizierung verwenden**
+**Beispiel 2: Verwenden der SQL-Authentifizierung mit Kennwort in Azure Key Vault**
 
 ```json
 {
-    "name": "SqlServerLinkedService",
+    "name": "AzureSqlMILinkedService",
+    "properties": {
+        "type": "SqlServer",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Data Source=<servername>\\<instance name if using named instance>;Initial Catalog=<databasename>;Integrated Security=False;User ID=<username>;"
+            },
+            "password": { 
+                "type": "AzureKeyVaultSecret", 
+                "store": { 
+                    "referenceName": "<Azure Key Vault linked service name>", 
+                    "type": "LinkedServiceReference" 
+                }, 
+                "secretName": "<secretName>" 
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**Beispiel 3: Windows-Authentifizierung verwenden**
+
+```json
+{
+    "name": "AzureSqlMILinkedService",
     "properties": {
         "type": "SqlServer",
         "typeProperties": {
@@ -124,7 +153,7 @@ Legen Sie die type-Eigenschaft des Datasets auf **SqlServerTable** fest, um Date
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",
@@ -164,7 +193,7 @@ Beachten Sie folgende Punkte:
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -196,7 +225,7 @@ Beachten Sie folgende Punkte:
 ```json
 "activities":[
     {
-        "name": "CopyFromSQLServer",
+        "name": "CopyFromAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -268,7 +297,7 @@ Legen Sie zum Kopieren von Daten auf die verwaltete Azure SQL-Datenbank-Instanz 
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -302,7 +331,7 @@ Weitere Informationen finden Sie unter [Aufrufen einer gespeicherten Prozedur au
 ```json
 "activities":[
     {
-        "name": "CopyToSQLServer",
+        "name": "CopyToAzureSqlMI",
         "type": "Copy",
         "inputs": [
             {
@@ -415,7 +444,7 @@ Das folgende Beispiel zeigt, wie Sie eine gespeicherte Prozedur verwenden, um ei
 
 ```json
 {
-    "name": "SQLServerDataset",
+    "name": "AzureSqlMIDataset",
     "properties":
     {
         "type": "SqlServerTable",

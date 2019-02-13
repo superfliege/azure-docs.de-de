@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: juliako
-ms.openlocfilehash: 5b666551ed47852fe8653fff174589acc4bff348
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 9c463740acf6ef464880a43e0e68de683b97f64f
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912032"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813418"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -32,15 +32,15 @@ Filter sind serverseitige Regeln, die Ihren Kunden Folgendes ermöglichen:
     - Kürzen des Starts eines Videos ("Kürzen eines Videos").
 
 - Ausschließliche Bereitstellung der angegebenen Wiedergaben und/oder Sprachspuren, die vom Gerät für die Inhaltswiedergabe unterstützt werden („Filtern der Wiedergabe“) 
-- Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“)
+- Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“).
 
-In diesem Thema werden die [Konzepte](#concepts) beschrieben und die [Filterdefinitionen](#definitions) vorgestellt. Anschließend erhalten Sie ausführlichere Informationen zu [gängigen Szenarien](#common-scenarios). Am Ende des Artikels finden Sie Links für die programmgesteuerte Erstellung von Filtern.  
+In diesem Thema werden die [Konzepte](#concepts) beschrieben und die Filterdefinitionen vorgestellt. Anschließend erhalten Sie ausführlichere Informationen zu gängigen Szenarien. Am Ende des Artikels finden Sie Links für die programmgesteuerte Erstellung von Filtern.  
 
 ## <a name="concepts"></a>Konzepte
 
 ### <a name="dynamic-manifests"></a>Dynamische Manifeste
 
-Media Services bietet **dynamische Manifeste**, die auf vordefinierten [Filtern](#filters) basieren. Nachdem Sie Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Auf Streamingprotokolle mit adaptiver Bitrate können Filter angewandt werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming. 
+Media Services bietet **dynamische Manifeste**, die auf vordefinierten Filtern basieren. Nachdem Sie Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Auf Streamingprotokolle mit adaptiver Bitrate können Filter angewandt werden: Apple HTTP Live Streaming (HLS), MPEG-DASH und Smooth Streaming. 
 
 Die folgende Tabelle zeigt einige Beispiele für URLs mit Filtern:
 

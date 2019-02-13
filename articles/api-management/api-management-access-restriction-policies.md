@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 59562d0571486a4bcbc96be4cb7dcddb4dfb0a44
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 39f23cd0b0b6081d8e54524a0eedc9cce1fd4571
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095718"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493427"
 ---
 # <a name="api-management-access-restriction-policies"></a>API Management-Richtlinien für die Zugriffsbeschränkung
 Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -58,17 +58,17 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|check-header|Stammelement|JA|  
+|check-header|Stammelement|Ja|  
 |value|Zulässiger HTTP-Headerwert. Wenn mehrere Wertelemente angegeben sind, wird die Überprüfung als erfolgreich gewertet, wenn für einen beliebigen dieser Werte eine Übereinstimmung vorhanden ist.|Nein |  
   
 ### <a name="attributes"></a>Attribute  
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|failed-check-error-message|Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.|JA|–|  
-|failed-check-httpcode|Der HTTP-Statuscode, der zurückgeben werden wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist.|JA|–|  
-|header-name|Der Name des zu überprüfenden HTTP-Headers.|JA|–|  
-|ignore-case|Kann auf „true“ oder „false“ festgelegt werden. Wenn dieses Attribut auf „true“ festgelegt ist, wird beim Vergleichen des Headerwerts mit dem Satz zulässiger Werte die Groß- und Kleinschreibung ignoriert.|JA|–|  
+|failed-check-error-message|Die Fehlermeldung, die im HTTP-Antworttext zurückgegeben wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist. In dieser Meldung müssen alle Sonderzeichen ordnungsgemäß mit Escapezeichen versehen sein.|Ja|–|  
+|failed-check-httpcode|Der HTTP-Statuscode, der zurückgeben werden wird, wenn der Header nicht vorhanden ist oder einen ungültigen Wert aufweist.|Ja|–|  
+|header-name|Der Name des zu überprüfenden HTTP-Headers.|Ja|–|  
+|ignore-case|Kann auf „true“ oder „false“ festgelegt werden. Wenn dieses Attribut auf „true“ festgelegt ist, wird beim Vergleichen des Headerwerts mit dem Satz zulässiger Werte die Groß- und Kleinschreibung ignoriert.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -113,7 +113,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|set-limit|Stammelement|JA|  
+|set-limit|Stammelement|Ja|  
 |api|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufratenbegrenzungen werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
 |operation|Fügen Sie mindestens eins dieser Elemente hinzu, um eine Aufrufratenbegrenzung auf Vorgänge innerhalb einer API zu erzwingen. Aufrufratenbegrenzungen für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
   
@@ -121,9 +121,9 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|name|Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.|JA|–|  
-|calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|JA|–|  
-|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|–|  
+|name|Der Name der API, auf die die Ratenbegrenzung angewendet werden soll.|Ja|–|  
+|calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Ja|–|  
+|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -173,16 +173,16 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|set-limit|Stammelement|JA|  
+|set-limit|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|JA|–|  
-|counter-key|Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.|JA|–|  
+|calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Ja|–|  
+|counter-key|Der Schlüssel, der für die Ratenbegrenzungsrichtlinie verwendet werden soll.|Ja|–|  
 |increment-condition|Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).|Nein |–|  
-|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|–|  
+|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -216,7 +216,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|ip-filter|Stammelement|JA|  
+|ip-filter|Stammelement|Ja|  
 |address|Gibt eine einzelne IP-Adresse an, nach der gefiltert werden soll.|Mindestens ein `address`- oder `address-range`-Element ist erforderlich.|  
 |address-range from="Adresse" to="Adresse"|Gibt einen Bereich von IP-Adressen an, nach dem gefiltert werden soll.|Mindestens ein `address`- oder `address-range`-Element ist erforderlich.|  
   
@@ -225,7 +225,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
 |address-range from="Adresse" to="Adresse"|Ein IP-Adressbereich, für den diese Richtlinie gelten soll.|Erforderlich, wenn das `address-range`-Element verwendet wird.|–|  
-|ip-filter action="allow &#124; forbid"|Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen.|JA|–|  
+|ip-filter action="allow &#124; forbid"|Gibt an, ob Aufrufe für die angegebenen IP-Adressen oder -Adressbereiche erlaubt oder blockiert werden sollen.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -269,7 +269,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|quota|Stammelement|JA|  
+|quota|Stammelement|Ja|  
 |api|Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für APIs innerhalb des Produkts zu erzwingen. Produkt- und API-Aufrufkontingente werden unabhängig voneinander angewendet. Auf „api“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
 |operation|Fügen Sie mindestens eines dieser Elemente hinzu, um ein Aufrufkontingent für Vorgänge innerhalb einer API zu erzwingen. Aufrufkontingente für Produkte, APIs und Vorgänge werden unabhängig voneinander angewendet. Auf „operation“ kann über `name` oder `id` verwiesen werden. Wenn beide Attribute bereitgestellt werden, wird `id` verwendet und `name` ignoriert.|Nein |  
   
@@ -277,10 +277,10 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|Standard|  
 |----------|-----------------|--------------|-------------|  
-|name|Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.|JA|–|  
+|name|Der Name der API oder des Vorgangs, für die bzw. den das Kontingent gilt.|Ja|–|  
 |bandwidth|Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden.|–|  
 |calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden.|–|  
-|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|–|  
+|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -331,7 +331,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |NAME|BESCHREIBUNG|Erforderlich|  
 |----------|-----------------|--------------|  
-|quota|Stammelement|JA|  
+|quota|Stammelement|Ja|  
   
 ### <a name="attributes"></a>Attribute  
   
@@ -339,9 +339,9 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |----------|-----------------|--------------|-------------|  
 |bandwidth|Die maximale Gesamtanzahl von Kilobytes, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden.|–|  
 |calls|Die maximale Gesamtanzahl von Aufrufen, die während des in der `renewal-period` angegebenen Zeitraums zulässig sind.|Es müssen entweder `calls` oder `bandwidth` oder beide Attribute zusammen angegeben werden.|–|  
-|counter-key|Der Schlüssel, der für die Kontingentrichtlinie verwendet werden soll.|JA|–|  
+|counter-key|Der Schlüssel, der für die Kontingentrichtlinie verwendet werden soll.|Ja|–|  
 |increment-condition|Der boolesche Ausdruck, der angibt, ob die Anforderung für das Kontingent gezählt werden soll (`true`).|Nein |–|  
-|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|JA|–|  
+|renewal-period|Der Zeitraum in Sekunden, nach dem das Kontingent zurückgesetzt wird.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  
@@ -493,7 +493,7 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
   
 |Element|BESCHREIBUNG|Erforderlich|  
 |-------------|-----------------|--------------|  
-|validate-jwt|Stammelement|JA|  
+|validate-jwt|Stammelement|Ja|  
 |audiences|Enthält eine Liste der zulässigen audience-Ansprüche, die im Token vorhanden sein können. Wenn mehrere audience-Werte vorhanden sind, wird jeder Wert ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Wert erfolgreich ist. Mindestens ein audience-Wert muss angegeben werden.|Nein |  
 |issuer-signing-keys|Eine Liste von Base64-codierten Sicherheitsschlüsseln, die zum Überprüfen von signierten Token verwendet werden. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Schlüssel erfolgreich ist (hilfreich für ein Tokenrollover). Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird.|Nein |  
 |decryption-keys|Eine Liste der Base64-codierten Schlüssel zum Entschlüsseln der Token. Wenn mehrere Sicherheitsschlüssel vorhanden sind, wird jeder Schlüssel ausprobiert, bis entweder alle verbraucht sind (in diesem Fall gibt es einen Überprüfungsfehler) oder ein Schlüssel erfolgreich ist. Schlüsselelemente verfügen über ein optionales `id`-Attribut, das für einen Abgleich mit dem `kid`-Anspruch verwendet wird.|Nein |  
@@ -512,12 +512,12 @@ Dieses Thema bietet eine Referenz für die folgenden API Management-Richtlinien.
 |header-name|Der Name des HTTP-Headers, der das Token enthält.|Es muss entweder `header-name` oder `query-parameter-name` angegeben werden, nicht jedoch beide Attribute.|–|  
 |id|Das `id`-Attribut im `key`-Element ermöglicht Ihnen die Angabe der Zeichenfolge, die mit dem `kid`-Anspruch im Token (sofern vorhanden) verglichen wird, um den geeigneten Schlüssel für die Signaturüberprüfung zu ermitteln.|Nein |–|  
 |match|Das `match`-Attribut im `claim`-Element gibt an, ob jeder Anspruchswert in der Richtlinie im Token vorhanden sein muss, damit die Überprüfung erfolgreich ist. Mögliche Werte:<br /><br /> -                          `all` – jeder Anspruchswert in der Richtlinie muss im Token vorhanden sein, damit die Überprüfung erfolgreich ist.<br /><br /> -                          `any` – mindestens ein Anspruchswert in der Richtlinie muss im Token vorhanden sein, damit die Überprüfung erfolgreich ist.|Nein |alle|  
-|query-parameter-name|Der Name des Abfrageparameters, der das Token enthält.|Es muss entweder `header-name` oder `query-paremeter-name` angegeben werden, nicht jedoch beide Attribute.|–|  
+|query-parameter-name|Der Name des Abfrageparameters, der das Token enthält.|Es muss entweder `header-name` oder `query-parameter-name` angegeben werden, nicht jedoch beide Attribute.|–|  
 |require-expiration-time|Boolesch. Gibt an, ob ein Ablaufanspruch im Token erforderlich ist.|Nein |true|
 |require-scheme|Der Name des Tokenschemas, z.B. „Bearer“. Wenn dieses Attribut festgelegt ist, stellt die Richtlinie sicher, das das angegebene Schema im Wert für den Autorisierungsheader vorhanden ist.|Nein |–|
 |require-signed-tokens|Boolescher Wert. Gibt an, ob ein Token signiert sein muss.|Nein |true|  
 |separator|Eine Zeichenfolge. Gibt ein Trennzeichen (z.B. „,“) zum Extrahieren eines Satzes von Werten aus einem mehrwertigen Anspruch an.|Nein |–| 
-|URL|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind.  Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|JA|–|  
+|URL|URL des Open ID-Konfigurationsendpunkts, von dem die Open ID-Konfigurationsmetadaten abgerufen werden können. Die Antwort sollte den Spezifikationen entsprechen, wie sie unter URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata` definiert sind.  Verwenden Sie für Azure Active Directory diese URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`. Verwenden Sie dabei den Namen Ihres Verzeichnismandanten, z.B. `contoso.onmicrosoft.com`.|Ja|–|  
   
 ### <a name="usage"></a>Verwendung  
  Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.  

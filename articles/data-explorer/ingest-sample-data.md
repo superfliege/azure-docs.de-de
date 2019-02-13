@@ -8,19 +8,19 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 7fdd32f9263b4d1694a0516a98b681ba8744ab6b
-ms.sourcegitcommit: b4a46897fa52b1e04dd31e30677023a29d9ee0d9
+ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49394577"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733398"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>Erfassen von Beispieldaten im Azure-Daten-Explorer
 
 In diesem Artikel wird das Erfassen (Laden) von Beispieldaten in einer Azure-Daten-Explorer-Datenbank veranschaulicht. Es gibt [mehrere Möglichkeiten zum Erfassen von Daten](ingest-data-overview.md). Der Schwerpunkt dieses Artikel liegt auf einem allgemeinen Ansatz, der sich für Testzwecke eignet.
 
 > [!NOTE]
-> Sie verfügen bereits über diese Daten, wenn Sie die [Schnellstartanleitung zum Erfassen von Daten mit der Azure-Daten-Explorer-Bibliothek für Python](python-ingest-data.md) ausgeführt haben.
+> Sie verfügen bereits über diese Daten, wenn Sie die Schritte unter [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md) ausgeführt haben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -57,6 +57,11 @@ Das **StormEvents**-Beispieldataset enthält wetterbezogene Daten der [National 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Write queries](write-queries.md) (Schreiben von Abfragen)
+> [!div class="nextstepaction"]
+> [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
 
-[Azure-Daten-Explorer-Datenerfassung](ingest-data-overview.md)
+> [!div class="nextstepaction"]
+> [Write queries](write-queries.md) (Schreiben von Abfragen)
+
+> [!div class="nextstepaction"]
+> [Azure-Daten-Explorer-Datenerfassung](ingest-data-overview.md)

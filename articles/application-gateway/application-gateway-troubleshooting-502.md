@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: amsriva
-ms.openlocfilehash: 4eca6a588d2c95189f0ba995b8db195907e9dc39
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 1db16f203755f9afc265495daba056313138a5dc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34356034"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819448"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Behandeln von Fehlern aufgrund eines ungültigen Gateways in Application Gateway
 
@@ -28,11 +28,11 @@ Erfahren Sie mehr zur Problembehandlung bei Fehlern aufgrund eines ungültigen G
 
 ## <a name="overview"></a>Übersicht
 
-Nach dem Konfigurieren einer Application Gateway-Instanz tritt bei Benutzern unter Umständen folgender Fehler auf: „Serverfehler: 502 – Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.“ Dieser Fehler kann folgende Hauptursachen haben:
+Nach der Konfiguration eines Anwendungsgateways ist einer der möglichen Fehler, auf die Benutzer stoßen können, „Serverfehler: 502 - Webserver hat als Gateway oder Proxyserver eine ungültige Antwort erhalten.“ auftritt, Dieser Fehler kann folgende Hauptursachen haben:
 
 * Eine NSG, eine benutzerdefinierte Route oder ein benutzerdefiniertes DNS blockiert den Zugriff auf Back-End-Poolmitglieder.
-* Virtuelle Back-End-Computer oder Instanzen der VM-Skalierungsgruppe [reagieren nicht auf die standardmäßige Integritätsüberprüfung](#problems-with-default-health-probe.md).
-* Benutzerdefinierte [Integritätsüberprüfungen sind ungültig oder nicht korrekt konfiguriert](#problems-with-custom-health-probe.md).
+* Virtuelle Back-End-Computer oder Instanzen der VM-Skalierungsgruppe reagieren nicht auf die standardmäßige Integritätsüberprüfung.
+* Benutzerdefinierte Integritätsüberprüfungen sind ungültig oder nicht korrekt konfiguriert.
 * Der [Back-End-Pool von Azure Application Gateway ist nicht konfiguriert oder leer](#empty-backendaddresspool).
 * Die virtuellen Computer oder Instanzen in der [VM-Skalierungsgruppe befinden sich nicht in einem fehlerfreien Zustand](#unhealthy-instances-in-backendaddresspool).
 * Bei der [Anforderung tritt ein Timeout auf, oder es liegen Verbindungsprobleme](#request-time-out) bei Benutzeranforderungen vor.

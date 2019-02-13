@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer Node-Web-App – Azure Key Vault | Microsoft-Dokumentation'
-description: 'Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App'
+description: In dieser Schnellstartanleitung legen Sie mithilfe einer .NET-Web-App ein Geheimnis in Azure Key Vault fest und rufen es ab.
 services: key-vault
 author: prashanthyv
 manager: sumedhb
@@ -9,31 +9,32 @@ ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: barclayn
 ms.custom: mvc
-ms.openlocfilehash: 20d47ecaea8ce393f60cba93c3dbcf7ca4a076c8
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 300ee1b01f346f7e1c118b76d64d0eda6e4d7934
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54002602"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55565546"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-by-using-a-net-web-app"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe einer .NET-Web-App
 
-In dieser Schnellstartanleitung führen Sie die erforderlichen Schritte zum Abrufen einer Azure-Webanwendung durch, um Informationen aus Azure Key Vault mithilfe von verwalteten Identitäten für Azure-Ressourcen zu lesen. Folgendes wird vermittelt:
+In dieser Schnellstartanleitung führen Sie die Schritte zum Abrufen einer Azure-Webanwendung aus, um Informationen aus Azure Key Vault mithilfe von verwalteten Identitäten für Azure-Ressourcen zu lesen. Die Verwendung von Key Vault trägt zum Schutz der Informationen bei. Folgendes wird vermittelt:
 
-> [!div class="checklist"]
-> * Erstellen eines Schlüsseltresors
-> * Speichern eines Geheimnisses im Schlüsseltresor
-> * Abrufen eines Geheimnisses aus dem Schlüsseltresor
-> * Erstellen einer Azure-Webanwendung
-> * Aktivieren einer [verwalteten Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für die Web-App
-> * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
+* Erstellen eines Schlüsseltresors
+* Speichern eines Geheimnisses im Schlüsseltresor
+* Abrufen eines Geheimnisses aus dem Schlüsseltresor
+* Erstellen einer Azure-Webanwendung
+* Aktivieren einer [verwalteten Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für die Web-App
+* Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Webanwendung
 
-Lesen Sie die Informationen zu [grundlegenden Konzepten](key-vault-whatis.md#basic-concepts), bevor Sie fortfahren.
+Lesen Sie die Informationen zu [grundlegenden Konzepten von Key Vault](key-vault-whatis.md#basic-concepts), bevor Sie fortfahren.
 
 >[!NOTE]
 >Key Vault ist ein zentrales Repository zum programmgesteuerten Speichern von Geheimnissen. Dafür müssen sich Anwendungen und Benutzer jedoch zuerst bei Key Vault authentifizieren, d.h. sie müssen ein Geheimnis angeben. Aus Sicherheitsgründen muss das erste Geheimnis regelmäßig rotiert werden. 
 >
 >Dank der [verwalteten Dienstidentitäten für Azure-Ressourcen](../active-directory/managed-identities-azure-resources/overview.md) erhalten in Azure ausgeführte Anwendungen eine Identität, die automatisch von Azure verwaltet wird. Das macht die *Einführung von Geheimnissen weniger problematisch*, da Benutzer und Anwendungen die empfohlene Vorgehensweise verwenden können und sich nicht um die Rotation des ersten Geheimnisses kümmern müssen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -77,7 +78,7 @@ Die eben erstellte Ressourcengruppe wird im gesamten Artikel verwendet.
 
 Als Nächstes erstellen Sie einen Schlüsseltresor in der Ressourcengruppe aus dem vorherigen Schritt. Geben Sie die folgenden Informationen ein:
 
-* Name des Schlüsseltresors: Der Name muss zwischen 3 und 24 Zeichen umfassen und darf nur die Zeichen 0-9, a-z, A-Z und Bindestrich (-) enthalten.
+* Name des Schlüsseltresors: Der Name muss eine Zeichenfolge aus 3 bis 24 Zeichen sein und darf nur die Zeichen 0–9, a–z, A–Z und Bindestrich (-) enthalten.
 * Ressourcengruppenname
 * Standort: **USA, Osten**.
 
@@ -119,7 +120,7 @@ Bearbeiten Sie die Datei „program.cs“, um das Beispiel mit Ihrem spezifische
 
 1. Navigieren Sie zum Ordner „key-vault-dotnet-core-quickstart“.
 2. Öffnen Sie die Datei „key-vault-dotnet-core-quickstart.sln“ in Visual Studio 2017.
-3. Öffnen Sie die Datei „Program.cs“, und aktualisieren Sie den Platzhalter *YourKeyVaultName* mit dem Namen Ihres Schlüsseltresors, den Sie weiter oben erstellt haben.
+3. Öffnen Sie die Datei „Program.cs“, und aktualisieren Sie den Platzhalter *YourKeyVaultName* mit dem Namen des Schlüsseltresors, den Sie weiter oben erstellt haben.
 
 Für diese Lösung werden die NuGet-Bibliotheken [AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und [KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) verwendet.
 
@@ -143,8 +144,7 @@ Veröffentlichen Sie diese App in Azure, um sie live als Web-App zu verwenden un
 
 Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mit den Informationen unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md) kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-1. Kehren Sie zur Azure-Befehlszeilenschnittstelle zurück.
-2. Führen Sie den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
+Führen Sie über die Azure-Befehlszeilenschnittstelle den Befehl „assign-identity“ aus, um die Identität für diese Anwendung zu erstellen:
 
    ```azurecli
    az webapp identity assign --name "keyvaultdotnetcorequickstart" --resource-group "<YourResourceGroupName>"
@@ -171,10 +171,20 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <PrincipalId> --s
 
 ```
 
-Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufen werden. Im obigen Befehl gewähren Sie der Identität (MSI) von App Service Berechtigungen zum Ausführen von **get**- und **list**-Vorgängen für Ihren Schlüsseltresor.
+Wenn Sie die Anwendung nun ausführen, sollte der Wert des Geheimnisses abgerufen werden. Im vorherigen Befehl gewähren Sie der Identität von App Service Berechtigungen zum Ausführen von **get**- und **list**-Vorgängen für Ihren Schlüsseltresor.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+Löschen Sie die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe für den virtuellen Computer aus, und wählen Sie **Löschen**.
+
+Löschen Sie den Schlüsseltresor mithilfe des Befehls [az keyvault delete](https://docs.microsoft.com/en-us/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-delete):
+
+```azurecli
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Weitere Informationen zu Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)
-* [Azure SDK für .NET](https://github.com/Azure/azure-sdk-for-net)
-* [Azure REST-API-Referenz](https://docs.microsoft.com/rest/api/keyvault/)
+> [!div class="nextstepaction"]
+> [Weitere Informationen zu Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis)

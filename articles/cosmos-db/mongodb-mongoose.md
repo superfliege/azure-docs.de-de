@@ -9,12 +9,12 @@ ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
 ms.custom: seodec18
-ms.openlocfilehash: 6cdfa7492a9916cc3e2300ad71e21acfb68e3d30
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 26eccfd2a144d5bfcb285e6b52af246c3eefde75
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352239"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822033"
 ---
 # <a name="connect-a-nodejs-mongoose-application-to-azure-cosmos-db"></a>Verbinden einer Node.js Mongoose-Anwendung mit Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Cosmos DB ist ein global verteilter Datenbankdienst von Microsoft mit mehreren M
 
 ## <a name="create-a-cosmos-account"></a>Erstellen eines Cosmos-Kontos
 
-Erstellen Sie ein Cosmos-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit [Einrichten der Node.js-Anwendung](#SetupNode) fortfahren. Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie die Schritte unter [Azure Cosmos DB-Emulator](local-emulator.md) zum Einrichten des Emulators aus, und fahren Sie dann mit [Einrichten der Node.js-Anwendung](#SetupNode) fort.
+Erstellen Sie ein Cosmos-Konto. Wenn Sie bereits über ein Konto verfügen, das Sie verwenden möchten, können Sie diesen Schritt überspringen und mit dem Einrichten Ihrer Node.js-Anwendung fortfahren. Wenn Sie den Azure Cosmos DB-Emulator verwenden, führen Sie die unter [Azure Cosmos DB-Emulator](local-emulator.md) aufgeführten Schritte zum Einrichten des Emulators aus, und fahren Sie dann mit dem Einrichten Ihrer Node.js-Anwendung fort.
 
 [!INCLUDE [cosmos-db-create-dbaccount-mongodb](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 

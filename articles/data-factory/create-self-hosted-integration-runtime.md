@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/15/2019
 ms.author: abnarain
-ms.openlocfilehash: f8827f3013ee83d8f4846e7e15d34ea7c6553f24
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 68878a68b5f0051c1ee9beda96293dd7cd00eaf1
+ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331808"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55493591"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 Bei der Integration Runtime (IR) handelt es sich um die Computeinfrastruktur, mit der Azure Data Factory Datenintegrationsfunktionen übergreifend für verschiedene Netzwerkumgebungen bereitstellt. Weitere Informationen zur Integration Runtime finden Sie unter [Integrationslaufzeit in Azure Data Factory](concepts-integration-runtime.md).
@@ -141,6 +141,9 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 - SAN-Zertifikate (Subject Alternative Name, alternativer Antragstellername) sind nicht empfehlenswert, da nur das letzte SAN-Element verwendet wird und alle anderen aufgrund aktueller Einschränkungen ignoriert werden. Wenn Sie z.B. ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
 - Das Zertifikat unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.
 - Zertifikate, die CNG-Schlüssel verwenden, werden nicht unterstützt.  
+
+> [!NOTE]
+> Dieses Zertifikat wird zum Verschlüsseln von Ports auf dem selbstgehosteten IR-Knoten verwendet, die für die **Knoten-zu-Knoten-Kommunikation** (für die Statussynchronisierung) verwendet werden, und bei der **Verwendung des PowerShell-Cmdlets für die Anmeldeinformationseinstellung des verknüpften Diensts** im lokalen Netzwerk. Es wird empfohlen, dieses Zertifikat zu verwenden, wenn Ihre private Netzwerkumgebung nicht sicher ist oder Sie auch die Kommunikation zwischen Knoten in Ihrem privaten Netzwerk sichern möchten. Das Verschieben von Daten während der Übertragung von der selbstgehosteten IR in andere Datenspeicher erfolgt immer über einen verschlüsselten Kanal, unabhängig von der Verwendung dieses Zertifikats. 
 
 ## <a name="sharing-the-self-hosted-integration-runtime-with-multiple-data-factories"></a>Freigeben der selbstgehosteten Integration Runtime für mehrere Data Factorys
 

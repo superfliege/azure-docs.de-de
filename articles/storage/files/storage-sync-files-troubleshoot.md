@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 228927630540ed0277ca73a978382439f57b77d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471401"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752091"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -251,8 +251,8 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x8007007b | -2147024773 | STIERR_INVALID_DEVICE_NAME | Der Datei- oder Verzeichnisname ist ungültig. | Benennen Sie die jeweiligen Datei oder das betreffende Verzeichnis um. Weitere Informationen finden Sie unter [Behandlung von nicht unterstützten Zeichen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#handling-unsupported-characters). |
 | 0x80c80018 | -2134376424 | ECS_E_SYNC_FILE_IN_USE | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren. |
 | 0x80c8031d | -2134375651 | ECS_E_CONCURRENCY_CHECK_FAILED | Eine Datei wurde geändert, doch die Änderung wurde noch nicht von der Synchronisierung erkannt. Die Synchronisierung wird aktualisiert, sobald diese Änderung erkannt wurde. | Keine weiteren Maßnahmen erforderlich. |
-| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Die Datei kann nicht synchronisiert werden, da das Limit für die Azure-Dateifreigabe erreicht ist. | Um dieses Problem zu beheben, lesen Sie den Abschnitt [Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in diesem Leitfaden zur Problembehandlung. |
-| 0x80070005 | -2147024891 | E_ACCESSDENIED | Dieser Fehler kann auftreten, wenn die Datei von einer nicht unterstützten Lösung (z.B. NTFS EFS) verschlüsselt wird oder die Datei den Status „Zum Löschen ausstehend“ hat. | Wenn die Datei von einer nicht unterstützten Lösung verschlüsselt wird, entschlüsseln Sie die Datei und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselungslösungen](https://docs.microsoft.com/en-us/azure/storage/files/storage-sync-files-planning#encryption-solutions) im Planungshandbuch. Wenn sich die Datei im Status „Zum Löschen ausstehend“ befindet, wird die Datei gelöscht, sobald alle offenen Dateihandles geschlossen sind. |
+| 0x80c8603e | -2134351810 | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED | Die Datei kann nicht synchronisiert werden, da das Limit für die Azure-Dateifreigabe erreicht ist. | Um dieses Problem zu beheben, lesen Sie den Abschnitt [Sie haben das Speicherlimit für die Azure-Dateifreigabe erreicht](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#-2134351810) in diesem Leitfaden zur Problembehandlung. |
+| 0x80070005 | -2147024891 | E_ACCESSDENIED | Dieser Fehler kann auftreten, wenn die Datei von einer nicht unterstützten Lösung (z.B. NTFS EFS) verschlüsselt wird oder die Datei den Status „Zum Löschen ausstehend“ hat. | Wenn die Datei von einer nicht unterstützten Lösung verschlüsselt wird, entschlüsseln Sie die Datei und verwenden Sie eine unterstützte Verschlüsselungslösung. Eine Liste der unterstützten Lösungen finden Sie im Abschnitt [Verschlüsselungslösungen](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning#encryption-solutions) im Planungshandbuch. Wenn sich die Datei im Status „Zum Löschen ausstehend“ befindet, wird die Datei gelöscht, sobald alle offenen Dateihandles geschlossen sind. |
 | 0x20 | 32 | ERROR_SHARING_VIOLATION | Eine Datei kann nicht synchronisiert werden, da sie momentan verwendet wird. Die Datei wird synchronisiert, wenn sie nicht mehr verwendet wird. | Keine weiteren Maßnahmen erforderlich. |
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Eine Datei wurde während der Synchronisierung geändert, deshalb muss sie erneut synchronisiert werden. | Keine weiteren Maßnahmen erforderlich. |
 
@@ -286,7 +286,7 @@ Bei Synchronisierungssitzungen kann aus verschiedenen Gründen ein Fehler auftre
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT (dezimal)** | -2147012889 | 
 | **Fehlerzeichenfolge** | WININET_E_NAME_NOT_RESOLVED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -306,7 +306,7 @@ Es ist keine Aktion erforderlich. Der Server wiederholt den Vorgang. Erstellen S
 | **HRESULT** | 0x80c8305f |
 | **HRESULT (dezimal)** | -2134364065 |
 | **Fehlerzeichenfolge** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die Azure-Dateifreigabe zugreifen kann. Dies ist möglicherweise darauf zurückzuführen, dass die Azure-Dateifreigabe oder das Speicherkontohosting nicht mehr vorhanden ist. Sie können diesen Fehler beheben, indem Sie die folgenden Schritte durchführen:
 
@@ -321,7 +321,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 | **HRESULT** | 0x80C83060 |
 | **HRESULT (dezimal)** | -2134364064 |
 | **Fehlerzeichenfolge** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 1. Überprüfen Sie, ob Sie den Speicher-DNS-Namen vom Server auflösen können.
 
@@ -337,7 +337,7 @@ Dieser Fehler tritt auf, da der Azure-Dateisynchronisierungs-Agent nicht auf die
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT (dezimal)** | -1906441138 |
 | **Fehlerzeichenfolge** | JET_errWriteConflict |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, die von der Azure-Dateisynchronisierung verwendet wird. Wenn dieses Problem auftritt, erstellen Sie eine Supportanfrage, und wir kontaktieren Sie, um Sie bei der Problemlösung zu unterstützen.
 
@@ -347,7 +347,7 @@ Dieser Fehler tritt auf, wenn ein Problem mit der internen Datenbank besteht, di
 | **HRESULT** | 0x80C8306B |
 | **HRESULT (dezimal)** | -2134364053 |
 | **Fehlerzeichenfolge** | ECS_E_AGENT_VERSION_BLOCKED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn die auf dem Server installierte Version des Azure-Dateisynchronisierungs-Agents nicht unterstützt wird. Um dieses Problem zu beheben, führen Sie ein [Upgrade]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths) auf eine [unterstützte Agent-Version]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions) aus.
 
@@ -357,7 +357,7 @@ Dieser Fehler tritt auf, wenn die auf dem Server installierte Version des Azure-
 | **HRESULT** | 0x80c8603e |
 | **HRESULT (dezimal)** | -2134351810 |
 | **Fehlerzeichenfolge** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn das Speicherlimit für die Azure Dateifreigabe erreicht wurde. Dies kann vorkommen, wenn ein Kontingent für eine Azure-Dateifreigabe angewendet wird oder die Nutzung die Grenzwerte einer Azure-Dateifreigabe überschreitet. Weitere Informationen finden Sie in den [aktuellen Grenzwerten für eine Azure-Dateifreigabe](storage-files-scale-targets.md).
 
@@ -382,7 +382,7 @@ Wenn die Freigabe ausgeschöpft ist und kein Kontingent festgelegt ist, besteht 
 | **HRESULT** | 0x80c86030 |
 | **HRESULT (dezimal)** | -2134351824 |
 | **Fehlerzeichenfolge** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn auf die Azure-Dateifreigabe nicht zugegriffen werden kann. Führen Sie zur Problembehandlung folgende Schritte durch:
 
@@ -397,7 +397,7 @@ Falls die Azure-Dateifreigabe gelöscht wurde, müssen Sie eine neue Dateifreiga
 | **HRESULT** | 0x80C83076 |
 | **HRESULT (dezimal)** | -2134364042 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchronisierung wird erneut aktiviert, wenn das Azure-Abonnement wiederhergestellt wurde. Weitere Informationen finden Sie unter [Warum ist mein Azure-Abonnement deaktiviert, und wie reaktiviere ich es?](../../billing/billing-subscription-become-disable.md).
 
@@ -407,7 +407,7 @@ Dieser Fehler tritt auf, wenn das Azure-Abonnement ausgesetzt ist. Die Synchroni
 | **HRESULT** | 0x80c8306c |
 | **HRESULT (dezimal)** | -2134364052 |
 | **Fehlerzeichenfolge** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, wenn aufgrund einer Firewall oder der Zugehörigkeit des Speicherkontos zu einem virtuellen Netzwerk nicht auf die Azure-Dateifreigabe zugegriffen werden kann. Die Azure-Dateisynchronisierung bietet noch keine Unterstützung für dieses Feature. Führen Sie zur Problembehandlung folgende Schritte durch:
 
@@ -437,7 +437,7 @@ Wenn dieser Fehler länger anhält als ein paar Stunden, erstellen Sie eine Supp
 | **HRESULT** | 0x800b0109 |
 | **HRESULT (dezimal)** | -2146762487 |
 | **Fehlerzeichenfolge** | CERT_E_UNTRUSTEDROOT |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler kann vorkommen, wenn Ihre Organisation einen SSL-Terminierungsproxy verwendet oder eine schädliche Entität den Datenverkehr zwischen Ihrem Server und der Azure-Dateisynchronisierung abfängt. Wenn Sie sicher sind, dass dies normal ist (da Ihre Organisation einen SSL-Terminierungsproxy verwendet), überspringen Sie die Zertifikatüberprüfung durch eine Außerkraftsetzung der Registrierung.
 
@@ -461,7 +461,7 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT (dezimal)** | -2147012894 |
 | **Fehlerzeichenfolge** | WININET_E_TIMEOUT |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -471,7 +471,7 @@ Durch das Festlegen dieses Registrierungswerts akzeptiert der Azure-Dateisynchro
 | **HRESULT** | 0x80c80300 |
 | **HRESULT (dezimal)** | -2134375680 |
 | **Fehlerzeichenfolge** | ECS_E_SERVER_CREDENTIAL_NEEDED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler kann die folgenden Ursachen haben:
 
@@ -499,12 +499,12 @@ Wenn die Serverzeit richtig ist, führen Sie die folgenden Schritte aus, um das 
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT (dezimal)** | -1906441711 |
 | **Fehlerzeichenfolge** | JET_errLogDiskFull |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 | | |
 | **HRESULT** | 0x80c8031a |
 | **HRESULT (dezimal)** | -2134375654 |
 | **Fehlerzeichenfolge** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, da sich das Volume gefüllt hat. Dieser Fehler tritt häufig auf, da Dateien außerhalb des Serverendpunkts auf dem Volume Speicherplatz belegen. Geben Sie Speicherplatz auf dem Volume frei, indem Sie zusätzliche Serverendpunkte hinzufügen, Dateien in ein anderes Volume verschieben oder die Größe des Volumes, in dem sich der Serverendpunkt befindet, erhöhen.
 
@@ -526,19 +526,19 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 | **HRESULT** | 0x80c8023b |
 | **HRESULT (dezimal)** | -2134364145 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT (dezimal)** | -2134375908 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 | | |
 | **HRESULT** | 0x80c80253 |
 | **HRESULT (dezimal)** | -2134375853 |
 | **Fehlerzeichenfolge** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
-In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten bei den Synchronisierungssitzungen Fehler auf. Um diesen Zustand zu beheben, lesen Sie [Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen](#troubleshooting-per-file-directory-sync-errors).
+In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten bei den Synchronisierungssitzungen Fehler auf. Um diesen Zustand zu beheben, lesen Sie [Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen]().
 
 > [!NOTE]
 > Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren.
@@ -549,7 +549,7 @@ In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten b
 | **HRESULT** | 0x80c80019 |
 | **HRESULT (dezimal)** | -2134376423 |
 | **Fehlerzeichenfolge** | ECS_E_SYNC_INVALID_PATH |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Stellen Sie sicher, dass der Pfad vorhanden ist, sich in einem lokalen NTFS-Volume befindet und kein Analysepunkt oder vorhandener Serverendpunkt ist.
 
@@ -559,7 +559,7 @@ Stellen Sie sicher, dass der Pfad vorhanden ist, sich in einem lokalen NTFS-Volu
 | **HRESULT** | 0x80C80277 |
 | **HRESULT (dezimal)** | -2134375817 |
 | **Fehlerzeichenfolge** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
-| **Korrektur erforderlich** | JA |
+| **Korrektur erforderlich** | Ja |
 
 Dieser Fehler tritt auf, da die geladene Version des Cloudtiering-Filtertreibers (StorageSync.sys) nicht mit dem Storage Sync Agent (FileSyncSvc)-Dienst kompatibel ist. Wenn der Azure-Dateisynchronisierungs-Agent aktualisiert wurde, starten Sie den Server neu, um die Installation abzuschließen. Wenn der Fehler weiterhin auftritt, deinstallieren Sie den Agent, starten Sie den Server neu und installieren Sie den Azure-Dateisynchronisierungs-Agent neu.
 

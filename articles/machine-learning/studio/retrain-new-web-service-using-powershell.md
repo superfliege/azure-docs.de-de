@@ -1,8 +1,21 @@
 ---
-Titel: Erneutes Trainieren eines neuen Machine Learning Studio-Webdiensts mit PowerShell titleSuffix: Azure Machine Learning Studio Beschreibung: Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
-services: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: article
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: seodec18 ms.date: 28.03.2017
+title: Erneutes Trainieren eines neuen Machine Learning Studio-Webdiensts mit PowerShell
+titleSuffix: Azure Machine Learning Studio
+description: Hier erfahren Sie, wie Sie mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning ein Modell programmgesteuert erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: seodec18
+ms.date: 03/28/2017
+ms.openlocfilehash: cad38d47b1fe154da9c3967e1e34ed87b9bc8988
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55507789"
 ---
 # <a name="retrain-a-new-resource-manager-based-studio-web-service-using-powershell"></a>Erneutes Trainieren eines neuen Resource Manager-basierten Studio-Webdiensts mithilfe von PowerShell
 Beim erneuten Trainieren eines neuen Webdiensts wird die Definition des Vorhersagewebdiensts so aktualisiert, dass sie auf das neue trainierte Modell verweist.

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2018
-ms.locfileid: "28103954"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816491"
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Herstellen einer Remoteverbindung mit Geräten der StorSimple 8000-Serie
 
@@ -46,7 +46,7 @@ Das Herstellen einer Verbindung mit Windows PowerShell für StorSimple über ein
 
 Sie können die Remoteverwaltung mit dem Azure-Portal oder der seriellen Konsole konfigurieren. Wählen Sie zwischen den folgenden Vorgehensweisen:
 
-* [Verwenden des Azure-Portals zum Aktivieren der Remoteverwaltung über HTTP](#use-the-azure-classic-portal-to-enable-remote-management-over-http)
+* Verwenden des Azure-Portals zum Aktivieren der Remoteverwaltung über HTTP
 * [Verwenden der seriellen Konsole zum Aktivieren der Remoteverwaltung über HTTP](#use-the-serial-console-to-enable-remote-management-over-http)
 
 Nachdem Sie die Remoteverwaltung aktiviert haben, bereiten Sie den Client mit den folgenden Schritten für eine Remoteverbindung vor.
@@ -124,7 +124,7 @@ Das Herstellen einer Verbindung mit Windows PowerShell für StorSimple über ein
 
 Sie können die Remoteverwaltung mit dem Azure-Portal oder der seriellen Konsole konfigurieren. Wählen Sie zwischen den folgenden Vorgehensweisen:
 
-* [Verwenden des Azure-Portals zum Aktivieren der Remoteverwaltung über HTTPS](#use-the-azure-classic-portal-to-enable-remote-management-over-https)
+* Verwenden des Azure-Portals zum Aktivieren der Remoteverwaltung über HTTPS
 * [Verwenden der seriellen Konsole zum Aktivieren der Remoteverwaltung über HTTPS](#use-the-serial-console-to-enable-remote-management-over-https)
 
 Nachdem Sie die Remoteverwaltung aktiviert haben, gehen Sie wie folgt vor, um den Host für eine Remoteverwaltung vorzubereiten und über den Remotehost eine Verbindung mit dem Gerät herzustellen.
@@ -203,7 +203,7 @@ Diese anschließende Schritte werden im Folgenden beschrieben.
 
 #### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>So fügen Sie dem Remotehost die Seriennummern des Geräts hinzu
 1. Starten Sie Editor als Administrator, und öffnen Sie die Datei "hosts" unter "\Windows\System32\Drivers\etc".
-2. Fügen Sie der Datei "hosts" die folgenden drei Einträge hinzu: **DATA 0 IP-Adresse**, **Controller 0 feste IP-Adresse** und **Controller 1 feste IP-Adresse**.
+2. Fügen Sie Ihrer hosts-Datei die folgenden drei Einträge hinzu: **DATA 0 IP-Adresse**, **feste IP-Adresse für Controller 0** und **feste IP-Adresse für Controller 1**.
 3. Geben Sie die Seriennummer des Geräts ein, die Sie zuvor gespeichert haben. Ordnen Sie sie der IP-Adresse zu, wie in der folgenden Abbildung dargestellt. Fügen Sie für Controller 0 und Controller 1 **Controller0** und **Controller1** am Ende der Seriennummer an (CN-Name).
    
     ![CN-Namen der Datei "hosts" hinzufügen](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)

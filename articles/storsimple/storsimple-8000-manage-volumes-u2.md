@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: c9c575f42e6c8730b9404c62fb60e710d9d3bc80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2017
-ms.locfileid: "26578872"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822305"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -33,8 +33,8 @@ Der StorSimple-Geräte-Manager-Dienst ist eine Erweiterung im Azure-Portal, mit 
 
 Folgende StorSimple-Volumes sind möglich:
 
-* **Lokale Volumes**: Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
-* **Mehrstufige Volumes**: Daten in diesen Volumes können in die Cloud überlaufen.
+* **Lokal angeheftete Volumes**: Die Daten in diesen Volumes verbleiben jederzeit auf dem lokalen StorSimple-Gerät.
+* **Mehrstufige Volumes**: Die Daten in diesen Volumes können in die Cloud ausweichen.
 
 Ein Archivierungsvolume ist ein mehrstufiger Volumetyp. Die für Archivierungsvolumes verwendeten größeren Deduplizierungsblöcke ermöglichen dem Gerät die Übertragung größerer Datensegmente in die Cloud.
 
@@ -50,7 +50,7 @@ Wenn Sie ein lokales Volume erstellen, verringert sich dadurch der verfügbare S
 
 ### <a name="tiered-volumes"></a>Mehrstufige Volumes
 
-Mehrstufige Volumes sind Volumes mit schlanker Speicherzuweisung, in denen häufig verwendete Daten lokal auf dem Gerät bleiben und weniger häufig verwendete Daten automatisch in die Cloud ausgelagert werden. Schlanke Speicherzuweisung ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher die physischen Ressourcen zu überschreiten scheint. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen.
+Mehrstufige Volumes sind Volumes mit schlanker Speicherzuweisung, in denen häufig verwendete Daten lokal auf dem Gerät bleiben und weniger häufig verwendete Daten automatisch in die Cloud ausgelagert werden. Die Bereitstellung nach Bedarf ist eine Virtualisierungstechnologie, bei der der verfügbare Speicher scheinbar die physischen Ressourcen überschreitet. Anstatt ausreichend Speicher im Voraus zu reservieren, verwendet StorSimple die schlanke Bereitstellung, um nur eben genug Speicher zum Erfüllen der aktuellen Anforderungen zuzuweisen. Die Elastizität von Cloudspeicher ermöglicht diesen Ansatz, weil StorSimple den Cloudspeicher vergrößern oder verkleinern kann, um sich ändernde Anforderungen zu erfüllen.
 
 Bei Verwendung des mehrstufigen Volumes für Archivdaten wird durch Aktivieren des Kontrollkästchens **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen** die Deduplizierungsblockgröße für das Volume in 512 KB geändert. Wenn dieses Feld nicht aktiviert ist, verwendet das entsprechende mehrstufige Volume eine Blockgröße von 64 KB. Bei Verwendung größerer Deduplizierungsblöcke kann das Gerät die Übertragung umfangreicher Archivdaten in die Cloud beschleunigen.
 
@@ -88,7 +88,7 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
 * Ändern des Volumetyps
 * Löschen von Volumes 
 * Offlineschalten von Volumes 
-* Überwachen von Volumes 
+* Volume überwachen 
 
 ## <a name="add-a-volume"></a>Hinzufügen eines Volumes
 
@@ -120,7 +120,7 @@ Sie haben beim Bereitstellen Ihres Geräts der StorSimple 8000-Serie [ein Volume
       
        Wenn Sie ein lokales Volume von 8,5 TB (maximal zulässige Größe) auf dem 8100-Gerät bereitstellen, haben Sie damit den gesamten lokalen Speicherplatz ausgeschöpft, der auf dem Gerät verfügbar ist. Ab diesem Zeitpunkt können Sie keine mehrstufigen Volumes mehr erstellen, da auf dem Gerät kein lokaler Speicherplatz zum Hosten des Arbeitssatzes mehrstufiger Volumes mehr vorhanden ist. Vorhandene mehrstufige Volumes wirken sich ebenfalls auf den verfügbaren Speicherplatz aus. Wenn Sie beispielsweise ein 8100-Gerät verwenden, auf dem bereits mehrstufige Volumes von ca. 106 TB vorhanden sind, stehen nur noch 4 TB Speicherplatz für lokale Volumes zur Verfügung.
 
-    6. Klicken Sie im Feld **Verbundene Hosts** auf den Pfeil. Wählen Sie auf dem Blatt **Verbundene Hosts** einen vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Wenn Sie einen neuen ACR auswählen, geben Sie einen **Namen** für Ihren Access Control-Datensatz ein. Geben Sie außerdem den **qualifizierten iSCSI-Namen** (IQN) Ihres Windows-Hosts ein. Wenn Sie den IQN nicht kennen, fahren Sie mit [Abrufen des IQNs eines Windows Server-Hosts](#get-the-iqn-of-a-windows-server-host)fort. Klicken Sie auf **Erstellen**. Ein Volume wird mit den angegebenen Einstellungen erstellt.
+    6. Klicken Sie im Feld **Verbundene Hosts** auf den Pfeil. Wählen Sie auf dem Blatt **Verbundene Hosts** einen vorhandenen ACR aus oder fügen Sie einen neuen ACR hinzu. Wenn Sie einen neuen ACR auswählen, geben Sie einen **Namen** für Ihren Access Control-Datensatz ein. Geben Sie außerdem den **qualifizierten iSCSI-Namen** (IQN) Ihres Windows-Hosts ein. Wenn Sie den IQN nicht kennen, fahren Sie mit „Abrufen des IQNs eines Windows Server-Hosts“ fort. Klicken Sie auf **Create**. Ein Volume wird mit den angegebenen Einstellungen erstellt.
 
         ![Klicken Sie auf „Erstellen“.](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 
@@ -174,7 +174,6 @@ Zum Ändern eines Volumes müssen Sie dieses erweitern oder die Hosts ändern, d
    1. Wechseln Sie zu **Computerverwaltung** ->**Datenträgerverwaltung**.
    2. Klicken Sie mit der rechten Maustaste auf **Datenträgerverwaltung**, und wählen Sie **Datenträger neu einlesen** aus.
    3. Wählen Sie in der Liste der Datenträger die aktualisierten Volumes aus und dann **Volume erweitern**. Der Assistent zum Erweitern von Volumes wird gestartet. Klicken Sie auf **Weiter**.
-
    4. Schließen Sie den Assistenten unter Verwendung der angegebenen Standardwerte ab. Nach Abschluss des Assistenten sollte für das Volume die höhere Speichergröße angezeigt werden.
       
       > [!NOTE]
@@ -264,7 +263,7 @@ Möglicherweise müssen Sie ein Volume offline schalten, wenn Sie es ändern ode
 
         ![Auswählen und Offlineschalten des Volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol4.png)
 
-3. Überprüfen Sie auf dem Blatt **Offline schalten** die Auswirkungen des Offlineschalten des Volumes, und aktivieren Sie das entsprechende Kontrollkästchen. Klicken Sie auf **Take offline** (Offline schalten). 
+3. Überprüfen Sie auf dem Blatt **Offline schalten** die Auswirkungen des Offlineschalten des Volumes, und aktivieren Sie das entsprechende Kontrollkästchen. Klicken Sie auf **Offline schalten**. 
 
     ![Überprüfen der Auswirkungen des Offlineschaltens eines Volumes](./media/storsimple-8000-manage-volumes-u2/modifyvol5.png)
       
@@ -304,9 +303,9 @@ Führen Sie die folgenden Schritte durch, um ein Volume zu löschen.
    > [!NOTE]
    > Wenn Sie ein lokales Volume löschen, wird der für neue Volumes verfügbare Speicherplatz möglicherweise nicht sofort aktualisiert. Der StorSimple-Geräte-Manager-Dienst aktualisiert in regelmäßigen Abständen den verfügbaren lokalen Speicherplatz. Warten Sie einige Minuten, bevor Sie das neue Volume erstellen.
    >
-   > Außerdem gilt: Wenn Sie ein lokales Volume und unmittelbar danach ein weiteres lokales Volume löschen, werden die Aufträge zur Volumelöschung nacheinander ausgeführt. Der erste Auftrag zur Volumelöschung muss abgeschlossen sein, bevor der nächste Auftrag zur Volumelöschung beginnt.
+   >  Außerdem gilt: Wenn Sie ein lokales Volume und unmittelbar danach ein weiteres lokales Volume löschen, werden die Aufträge zur Volumelöschung nacheinander ausgeführt. Der erste Auftrag zur Volumelöschung muss abgeschlossen sein, bevor der nächste Auftrag zur Volumelöschung beginnt.
 
-## <a name="monitor-a-volume"></a>Überwachen von Volumes
+## <a name="monitor-a-volume"></a>Volume überwachen
 
 Mit der Volumeüberwachung können Sie E/A-bezogene Statistiken für ein Volume erfassen. Die Überwachung wird standardmäßig für die ersten 32 von Ihnen erstellten Volumes aktiviert. Die Überwachung der zusätzlichen Volumes ist in der Standardeinstellung deaktiviert. 
 

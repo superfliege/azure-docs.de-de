@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/12/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0125c64a96929db9c8846ca7ad731fa3dc795f98
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 34a695daa077e882e911d3fb59f8a30e39c3a9d2
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432964"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756630"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Weiterleiten von Auftragsstatus und Auftragsdatenströmen von Automation an Log Analytics
 
@@ -64,11 +64,12 @@ Wenn Sie den *Namen* Ihres Automation-Kontos suchen müssen, wählen Sie im Azur
    Set-AzureRmDiagnosticSetting -ResourceId $automationAccountId -WorkspaceId $workspaceId -Enabled $true
    ```
 
-Nach dem Ausführen dieses Skripts werden in Log Analytics innerhalb von zehn Minuten Datensätze neu geschriebener Auftragsprotokolle oder -streams angezeigt.
+Nach dem Ausführen dieses Skripts kann es eine Stunde dauern, bis in Log Analytics Datensätze neu geschriebener Auftragsprotokolle oder -streams angezeigt werden.
 
 Um die Protokolle anzuzeigen, führen Sie die folgende Abfrage in der Log Analytics-Protokollsuche durch: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>Überprüfen der Konfiguration
+
 Vergewissern Sie sich, dass Ihr Automation-Konto Protokolle an Ihren Log Analytics-Arbeitsbereich sendet. Überprüfen Sie hierzu mithilfe des folgenden PowerShell-Befehls, ob die Diagnose für das Automation-Konto ordnungsgemäß konfiguriert ist:
 
 ```powershell-interactive
@@ -76,14 +77,16 @@ Get-AzureRmDiagnosticSetting -ResourceId $automationAccountId
 ```
 
 Überprüfen Sie in der Ausgabe Folgendes:
-+ Unter *Protokolle* muss *Aktiviert* den Wert *True* haben.
-+ Der Wert für *WorkspaceId* muss der Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs entsprechen.
+
+* Unter *Protokolle* muss *Aktiviert* den Wert *True* haben.
+* Der Wert für *WorkspaceId* muss der Ressourcen-ID Ihres Log Analytics-Arbeitsbereichs entsprechen.
 
 ## <a name="log-analytics-records"></a>Log Analytics-Datensätze
 
 Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Log Analytics und kennzeichnet sie als **AzureDiagnostics**. In den folgenden Abfragen wird die aktualisierte Abfragesprache für Log Analytics verwendet. Informationen zu allgemeinen Abfragen zwischen der alten Abfragesprache und der neuen Azure Log Analytics-Abfragesprache finden Sie unter [Legacy to new Azure Log Analytics Query Language cheat sheet](https://docs.loganalytics.io/docs/Learn/References/Legacy-to-new-to-Azure-Log-Analytics-Language) (Cheat Sheet: Gegenüberstellung von alter Abfragesprache und Azure Log Analytics-Abfragesprache).
 
 ### <a name="job-logs"></a>Auftragsprotokolle
+
 | Eigenschaft | BESCHREIBUNG |
 | --- | --- |
 | TimeGenerated |Ausführungsdatum und -uhrzeit des Runbookauftrags. |
@@ -128,6 +131,7 @@ Die Diagnose von Azure Automation erstellt zwei Arten von Datensätzen in Log An
 | ResourceType | AUTOMATIONACCOUNTS |
 
 ## <a name="viewing-automation-logs-in-log-analytics"></a>Anzeigen von Automation-Protokollen in Log Analytics
+
 Nachdem Sie damit begonnen haben, Ihre Automation-Auftragsprotokolle an Log Analytics zu senden, sehen wir uns nun an, wie Sie diese Protokolle in Log Analytics verwenden können.
 
 Führen Sie die folgende Abfrage aus, um die Protokolle anzuzeigen: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
@@ -141,7 +145,7 @@ Zum Erstellen einer Warnungsregel erstellen Sie zunächst eine Protokollsuche f�
 2. Erstellen Sie eine Protokollsuchabfrage für Ihre Warnung, indem Sie folgenden Text in das Abfragefeld eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")` Sie können auch eine Gruppierung nach RunbookName vornehmen, indem Sie Folgendes eingeben: `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    Wenn Sie Protokolle von mehreren Automation-Konten oder Abonnements in Ihrem Arbeitsbereich eingerichtet haben, können Sie Ihre Warnungen nach Abonnement und Automation-Konto gruppieren. Der Name des Automation-Kontos kann dem Ressourcenfeld in der JobLogs-Suche entnommen werden.
-1. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Protokollwarnungen in Azure Monitor – Warnungen](../azure-monitor/platform/alerts-unified-log.md).
+3. Klicken Sie oben auf der Seite auf **Neue Warnungsregel**, um den Bildschirm **Regel erstellen** zu öffnen. Weitere Informationen zu den Konfigurationsoptionen für Warnungen finden Sie unter [Protokollwarnungen in Azure Monitor – Warnungen](../azure-monitor/platform/alerts-unified-log.md).
 
 ### <a name="find-all-jobs-that-have-completed-with-errors"></a>Durchführen einer Suche nach allen Aufträgen, die mit Fehlern abgeschlossen wurden
 Neben dem Erstellen von Warnungen für Fehler können Sie auch ermitteln, wenn ein Runbook-Auftrag einen Fehler ohne Abbruch aufweist. In diesen Fällen erzeugt PowerShell einen Fehlerdatenstrom, die Fehler ohne Abbruch führen jedoch nicht dazu, dass der Auftrag unterbrochen wird oder fehlschlägt.    

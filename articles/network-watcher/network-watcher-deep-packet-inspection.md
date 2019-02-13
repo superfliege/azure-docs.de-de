@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 7af14143e8ce4924c17a41c6bb1ff33954f4b583
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 1c30e679b250c2d6c6b03a1fe5d70dbd06acf052
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51568725"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818361"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Paketuntersuchung mit Azure Network Watcher
 
@@ -61,7 +61,7 @@ Damit wir die ersten beiden Pakete im Drei-Wege-Handshake (TCP) leichter anzeige
 
 Erweitern Sie zum Anwenden des Filters in WireShark das Segment „Transmission Control Protocol“ eines [SYN]-Pakets in Ihrer Erfassung, und untersuchen Sie die im TCP-Header festgelegten Flags.
 
-Da wir nach allen [SYN]- und [SYN, ACK]-Paketen filtern möchten, vergewissern wir uns unter „Flags“, dass das Syn-Bit auf 1 festgelegt ist. Anschließend klicken wir mit der rechten Maustaste auf das Syn-Bit und wählen „Apply as Filter“ (Als Filter anwenden) > „Selected“ (Ausgewählt).
+Da wir nach allen [SYN]- und [SYN, ACK]-Paketen filtern möchten, vergewissern wir uns unter „Flags“, dass das Syn-Bit auf 1 festgelegt ist. Anschließend klicken wir mit der rechten Maustaste auf das Syn-Bit und wählen „Apply as Filter“ (Als Filter anwenden) > „Selected“ (Ausgewählt) aus.
 
 ![Abbildung 7][7]
 

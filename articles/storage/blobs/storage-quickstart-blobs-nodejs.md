@@ -1,23 +1,26 @@
 ---
-title: Erstellen eines Blobs in Azure Storage unter Verwendung des Node.js SDK v2
+title: Erstellen eines Blobs in Azure Storage mithilfe der Clientbibliothek für Node.js v2
 description: Erstellen Sie ein Speicherkonto und einen Container im Objektspeicher (Blob). Verwenden Sie anschließend die Azure Storage-Clientbibliothek für Node.js v2, um ein Blob in Azure Storage hochzuladen, ein Blob herunterzuladen und die Blobs in einem Container aufzulisten.
 services: storage
 author: tamram
 ms.custom: mvc
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 02/04/2019
 ms.author: tamram
-ms.openlocfilehash: 420b48101671c06ee1d820cd183ea0e5c2788635
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54410551"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750073"
 ---
-# <a name="how-to-upload-download-and-list-blobs-using-nodejs-sdk-v2"></a>Hochladen, Herunterladen und Auflisten von Blobs mit dem Node.js SDK v2
+# <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>Hochladen, Herunterladen und Auflisten von Blobs mit der Clientbibliothek für Node.js v2
 
-In dieser Schrittanleitung erfahren Sie, wie Sie mit Node.js Blobs hochladen, herunterladen und auflisten sowie Container mit Azure Blob Storage verwalten.
+In dieser Schrittanleitung erfahren Sie, wie Sie mit der Clientbibliothek für Node.js v2 Blobs in Azure Blob Storage hochladen, herunterladen und auflisten.
+
+> [!TIP]
+> Die neueste Version der Azure Storage-Clientbibliothek für Node.js ist v10. Microsoft empfiehlt, nach Möglichkeit die neueste Version der Clientbibliothek zu verwenden. Informationen zum Einstieg in v10 finden Sie unter [Schnellstart: Hochladen, Herunterladen, Auflisten und Löschen von Blobs mit der Azure Storage-Clientbibliothek für JavaScript v10 (Vorschau)](storage-quickstart-blobs-nodejs-v10.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -96,7 +99,7 @@ Die Module haben den folgenden Zweck:
 
 Datei namens *.env* in den aktuellen Ausführungskontext
 - *path* ist erforderlich, um den absoluten Dateipfad der Datei zu ermitteln, die in Blobspeicher hochgeladen werden soll.
-- *azure-storage* ist das [Azure Storage-SDK](https://docs.microsoft.com/javascript/api/azure-storage)-Modul für Node.js.
+- *azure-storage* ist das [Azure Storage-Clientbibliothek](https://docs.microsoft.com/javascript/api/azure-storage)-Modul für Node.js.
 
 Anschließend wird die Variable **blobService** als neue Instanz des Azure Blob-Diensts initialisiert.
 
@@ -108,7 +111,7 @@ In der folgenden Implementierung sind die *blobService*-Funktionen jeweils von e
 
 ### <a name="list-containers"></a>Auflisten von Containern
 
-Die Funktion *listContainers* ruft [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#listcontainerssegmented) auf, um Sammlungen von Containern in Gruppen zurückzugeben.
+Die Funktion *listContainers* ruft [listContainersSegmented](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf, um Sammlungen von Containern in Gruppen zurückzugeben.
 
 ```javascript
 const listContainers = async () => {
@@ -128,7 +131,7 @@ Die Größe der Gruppen ist über [ListContainersOptions](/javascript/api/azure-
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
-Die Funktion *createContainer* ruft [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists) auf und legt die passende Zugriffsebene für das Blob fest.
+Die Funktion *createContainer* ruft [createContainerIfNotExists](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf und legt die passende Zugriffsebene für das Blob fest.
 
 ```javascript
 const createContainer = async (containerName) => {
@@ -144,13 +147,13 @@ const createContainer = async (containerName) => {
 };
 ```
 
-Der zweite Parameter (*options*) für **createContainerIfNotExists** akzeptiert einen Wert für [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createcontainerifnotexists). Der Wert *blob* für *publicAccessLevel* gibt an, dass bestimmte Blobdaten öffentlich verfügbar gemacht werden. Diese Einstellung ist anders als die Zugriffsebene *container*, bei der die Möglichkeit gewährt wird, den Inhalt des Containers aufzulisten.
+Der zweite Parameter (*options*) für **createContainerIfNotExists** akzeptiert einen Wert für [publicAccessLevel](https://docs.microsoft.com/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest). Der Wert *blob* für *publicAccessLevel* gibt an, dass bestimmte Blobdaten öffentlich verfügbar gemacht werden. Diese Einstellung ist anders als die Zugriffsebene *container*, bei der die Möglichkeit gewährt wird, den Inhalt des Containers aufzulisten.
 
 Durch die Verwendung von **createContainerIfNotExists** kann die Anwendung den Befehl mehrfach *createContainer* ausführen, ohne Fehler zurückzugeben, wenn der Container bereits vorhanden ist. In einer Produktionsumgebung rufen Sie **createContainerIfNotExists** häufig nur einmal auf, da derselbe Container für die gesamte Anwendung verwendet wird. In diesen Fällen können Sie den Container im Voraus über das Portal oder die Azure CLI erstellen.
 
 ### <a name="upload-text"></a>Hochladen von Text
 
-Die Funktion *uploadString* ruft [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext) auf, um eine beliebige Zeichenkette in den Blobcontainer zu schreiben (oder sie zu überschreiben).
+Die Funktion *uploadString* ruft [createBlockBlobFromText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) auf, um eine beliebige Zeichenkette in den Blobcontainer zu schreiben (oder sie zu überschreiben).
 
 ```javascript
 const uploadString = async (containerName, blobName, text) => {
@@ -184,7 +187,7 @@ const uploadLocalFile = async (containerName, filePath) => {
     });
 };
 ```
-Weitere Ansätze zum Hochladen von Inhalt in Blobs sind die Verwendung von [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromtext-string--string--string---buffer--errororresult-blobresult--) und [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Für die Überprüfung des Dateiuploads in Ihren Blobspeicher können Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um die Daten in Ihrem Konto anzuzeigen.
+Weitere Ansätze zum Hochladen von Inhalt in Blobs sind die Verwendung von [text](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest-string--string--string---buffer--errororresult-blobresult--) und [streams](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#createblockblobfromstream-string--string--stream-readable--number--errororresult-blobresult--). Für die Überprüfung des Dateiuploads in Ihren Blobspeicher können Sie den [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) verwenden, um die Daten in Ihrem Konto anzuzeigen.
 
 ### <a name="list-the-blobs"></a>Auflisten der Blobs
 
@@ -208,7 +211,7 @@ Durch das Aufrufen von *listBlobsSegmented* werden Blobmetadaten als Array mit [
 
 ### <a name="download-a-blob"></a>Herunterladen eines Blobs
 
-In der Funktion *downloadBlob* wird [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtotext) verwendet, um den Inhalt des Blobs an den Speicherort des angegebenen absoluten Dateipfads herunterzuladen.
+In der Funktion *downloadBlob* wird [getBlobToText](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) verwendet, um den Inhalt des Blobs an den Speicherort des angegebenen absoluten Dateipfads herunterzuladen.
 
 ```javascript
 const downloadBlob = async (containerName, blobName) => {
@@ -224,7 +227,7 @@ const downloadBlob = async (containerName, blobName) => {
     });
 };
 ```
-Die hier gezeigte Implementierung ändert die Quelle und gibt den Blobinhalt als Zeichenkette zurück. Sie können den Blob auch als [Datenstrom](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest#getblobtostream) sowie direkt in eine [lokale Datei](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) herunterladen.
+Die hier gezeigte Implementierung ändert die Quelle und gibt den Blobinhalt als Zeichenkette zurück. Sie können den Blob auch als [Datenstrom](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) sowie direkt in eine [lokale Datei](/javascript/api/azure-storage/azurestorage.services.blob.blobservice.blobservice?view=azure-node-latest) herunterladen.
 
 ### <a name="delete-a-blob"></a>Löschen eines BLOBs
 
@@ -358,4 +361,4 @@ Sehen Sie sich diese zusätzlichen Ressourcen zur Node.js-Entwicklung mit Blobsp
 In diesem Artikel wurde veranschaulicht, wie Sie den Upload einer Datei zwischen einem lokalen Datenträger und Azure Blob Storage mit Node.js durchführen. Weitere Informationen zur Arbeit mit Blobspeicher finden Sie im GitHub-Repository.
 
 > [!div class="nextstepaction"]
-> [Azure Storage-SDK für JavaScript-Repository](https://github.com/Azure/azure-storage-node)
+> [Microsoft Azure Storage SDK für Node.js und JavaScript für Browser](https://github.com/Azure/azure-storage-node)

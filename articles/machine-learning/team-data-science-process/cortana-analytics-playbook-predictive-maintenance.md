@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 860d24bf9de02d1b2ca46f05f1e09843a826aaf9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ebf376f0bdba8c41f88d6f97cef2c17ecd259022
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466828"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816644"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-Leitfaden für Predictive Maintenance-Lösungen
 
@@ -325,7 +325,7 @@ Wenn Zeitreihen unbeweglich und leicht vorhersagbar sind, werden sowohl beim zuf
 ### <a name="time-dependent-split"></a>Zeitabhängige Aufteilung
 In diesem Abschnitt werden die bewährten Methoden zum Implementieren der zeitabhängigen Aufteilung beschrieben. Eine zeitabhängige bidirektionale Aufteilung auf Trainings- und Testsätze ist unten beschrieben.
 
-Angenommen, es ist ein Datenstrom von Ereignissen mit Zeitstempel, z.B. Messungen verschiedener Sensoren, vorhanden. Definieren Sie Features und Bezeichnungen von Trainings- und Testbeispielen für Zeitrahmen, die mehrere Ereignisse enthalten. Erstellen Sie beispielsweise für die binäre Klassifizierung Features basierend auf vergangenen Ereignissen, und erstellen Sie Bezeichnungen basierend auf zukünftigen Ereignissen in „X“ Zeiteinheiten in der Zukunft (siehe Abschnitte zur [Featureentwicklung](#Feature-engineering) und zu den [Modellierungsverfahren](#Modeling-techniques-applied-to-PdM-use-cases)). Der Bezeichnungszeitrahmen eines Beispielwerts liegt also nach dem Zeitrahmen seiner Features.
+Angenommen, es ist ein Datenstrom von Ereignissen mit Zeitstempel, z.B. Messungen verschiedener Sensoren, vorhanden. Definieren Sie Features und Bezeichnungen von Trainings- und Testbeispielen für Zeitrahmen, die mehrere Ereignisse enthalten. Erstellen Sie beispielsweise für die binäre Klassifizierung Features basierend auf vergangenen Ereignissen, und erstellen Sie Bezeichnungen basierend auf zukünftigen Ereignissen in „X“ Zeiteinheiten in der Zukunft (siehe Abschnitte zur [Featureentwicklung](#Feature-engineering) und zu den Modellierungsverfahren). Der Bezeichnungszeitrahmen eines Beispielwerts liegt also nach dem Zeitrahmen seiner Features.
 
 Wählen Sie für die zeitabhängige Aufteilung einen _Trainingstrennzeitpunkt T<sub>c</sub>_ für das Modelltraining, wobei die Hyperparameter Verlaufsdaten bis zum Zeitpunkt T<sub>c</sub> nutzen. Um zu verhindern, dass zukünftige Bezeichnungen nach dem Zeitpunkt T<sub>c</sub> in die Trainingsdaten einfließen, wählen Sie als spätesten Zeitpunkt der Bezeichnung von Trainingsbeispielen einen Zeitpunkt, der X Einheiten vor T<sub>c</sub> liegt. Im Beispiel in Abbildung 7 steht jedes Quadrat für einen Datensatz des Datasets, für das die Features und Bezeichnungen wie oben beschrieben berechnet werden. In der Abbildung sind die Datensätze dargestellt, die in die Trainings- und Testsätze für X=2 und W=3 einfließen sollen:
 

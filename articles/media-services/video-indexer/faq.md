@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/09/2019
+ms.date: 01/31/2019
 ms.author: juliako
-ms.openlocfilehash: 205a4f2089ec5f415932f98eefe2f3d5f614f0ba
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402046"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567273"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -102,6 +102,10 @@ Auf Ihre Video- oder Audioinhalte mit der Datenschutzeinstellung „Öffentlich�
 
 Den [Azure Online Services-Nutzungsbedingungen](http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31) (OST) entsprechend sind Sie Eigentümer Ihrer Inhalte, und Microsoft greift nur gemäß den OST und der Microsoft-Datenschutzerklärung auf Ihre Inhalte sowie auf die von Video Indexer daraus extrahierten Metadaten und Erkenntnisse zu.
 
+### <a name="are-the-custom-models-that-i-build-in-my-video-indexer-account-available-to-other-accounts"></a>Stehen die benutzerdefinierten Modelle, die ich in meinem Video Indexer-Konto erstelle, für andere Konten zur Verfügung?
+
+ Nein, die benutzerdefinierten Modelle, die Sie in Ihrem Konto erstellen, stehen keinem anderen Konto zur Verfügung. Video Indexer ermöglicht derzeit die Erstellung benutzerdefinierter [Marken-](customize-brands-model-overview.md), [Sprach-](customize-language-model-overview.md) und [Personen](customize-person-model-overview.md)modelle in Ihrem Konto. Diese Modelle stehen nur in dem Konto zur Verfügung, in dem Sie sie erstellt haben.
+  
 ### <a name="is-the-content-indexed-by-video-indexer-kept-within-the-azure-region-where-i-am-using-video-indexer"></a>Bleiben die von Video Indexer indizierten Inhalte in der Azure-Region, in der ich Video Indexer verwende?
 
 Ja, der Inhalt und die gewonnenen Informationen befinden sich weiterhin in der entsprechenden Azure-Region. Eine Ausnahme stellt die manuelle Konfiguration, die mehrere Azure-Regionen verwendet, im Azure-Abonnement dar. 

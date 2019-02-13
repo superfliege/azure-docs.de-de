@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
-ms.date: 03/27/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 6fa468308bb7187111a6f7f65366d83eaadd9494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7f5dfd9488e6017acfdf66cdb7d4cee3aedd1ab3
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227776"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699923"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>Migration der Textübersetzungs-API von Version 2 zu Version 3
 
@@ -109,12 +109,12 @@ Global
 
 Microsoft Translator V3 verwendet standardmäßig eine neuronale maschinelle Übersetzung. Daher kann es nicht mit dem Microsoft Translator-Hub verwendet werden. Der Translator-Hub unterstützt nur ältere statistische maschinelle Übersetzungen. Die neuronale Übersetzung kann nun mithilfe des benutzerdefinierten Translators angepasst werden. [Weitere Informationen zum Anpassen von neuronaler maschineller Übersetzung](custom-translator/overview.md)
 
-Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, text, generalnn) nicht.
+Die neuronale Übersetzung mit der Text-API von V3 unterstützt die Verwendung der Standardkategorien (SMT, speech, tech, generalnn) nicht.
 
 | |Endpunkt|    DSGVO-konformer Datenverarbeiter|  Verwendung von Translator Hub| Verwendung von „Benutzerdefinierter Translator“ (Vorschau)|
 |:-----|:-----|:-----|:-----|:-----|
 |Textübersetzungs-API Version 2| api.microsofttranslator.com|    Nein   |Ja    |Nein |
-|Textübersetzungs-API Version 3| api.cognitive.microsofttranslator.com|  JA|    Nein| JA|
+|Textübersetzungs-API Version 3| api.cognitive.microsofttranslator.com|  Ja|    Nein| Ja|
 
 **Textübersetzungs-API Version 3**
 * Ist allgemein verfügbar und wird vollständig unterstützt.

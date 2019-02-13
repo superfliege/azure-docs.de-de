@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bad431c8958f7d381bb9c0410caa3a57c6e75c19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5104d630e2b4e97b80a6fedfb6d863061c2722fb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111078"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810540"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-hyper-v"></a>Bereitstellen des StorSimple Virtual Array – Bereitstellen in Hyper-V
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/hyperv4.png)
@@ -37,7 +37,7 @@ Hier finden Sie die Voraussetzungen, die erfüllt sein müssen, damit Sie ein vi
 Stellen Sie Folgendes sicher, bevor Sie beginnen:
 
 * Sie haben alle Schritte unter [Vorbereiten des Portals für StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)ausgeführt.
-* Sie haben das Image des virtuellen Arrays für Hyper-V aus dem Azure-Portal heruntergeladen. Weitere Informationen finden Sie unter **Schritt 3: Herunterladen des Image des virtuellen Arrays** in den [Anleitungen zur Vorbereitung des Portals für StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md).
+* Sie haben das Image des virtuellen Arrays für Hyper-V aus dem Azure-Portal heruntergeladen. Weitere Informationen finden Sie unter **Schritt 3: Herunterladen des Image des virtuellen Arrays** in den [Anleitungen zum Vorbereiten des Portals für StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md).
 
   > [!IMPORTANT]
   > Die Software, die auf dem StorSimple Virtual Array ausgeführt wird, kann nur in Verbindung mit dem StorSimple-Geräte-Manager-Dienst verwendet werden.
@@ -96,7 +96,6 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 4. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Computer auf **Weiter**.
 5. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** für Ihr virtuelles Array an. Klicken Sie auf **Weiter**.
 
-
    ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image4.png)
 6. Wählen Sie auf der Seite **Generation angeben** den Imagetyp für das Gerät aus, und klicken Sie anschließend auf **Weiter**. Diese Seite wird nicht angezeigt, wenn Sie Windows Server 2008 R2 verwenden.
 
@@ -119,7 +118,7 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 11. Sie benötigen vier Kerne, um die Mindestanforderungen zu erfüllen. Um vier virtuelle Prozessoren hinzuzufügen, wählen Sie im Fenster **Hyper-V-Manager** Ihr Hostsystem aus. Suchen Sie im rechten Bereich unter der Liste **Virtuelle Computer** den virtuellen Computer, den Sie gerade erstellt haben. Klicken Sie mit der rechten Maustaste auf den ausgewählten Namen der Maschine, und wählen Sie **Einstellungen**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image10.png)
-12. Klicken Sie auf der Seite **Einstellungen** im linken Bereich auf **Prozessor**. Legen Sie im rechten Bereich die **Anzahl virtueller Prozessoren** auf 4 (oder mehr) fest. Klicken Sie auf **Übernehmen**.
+12. Klicken Sie auf der Seite **Einstellungen** im linken Bereich auf **Prozessor**. Legen Sie im rechten Bereich die **Anzahl virtueller Prozessoren** auf 4 (oder mehr) fest. Klicken Sie auf **Anwenden**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image11.png)
 13. Um die Mindestanforderungen zu erfüllen, müssen Sie auch einen virtuellen Datenträger mit 500 GB hinzufügen. Auf der Seite **Einstellungen** :
@@ -132,20 +131,16 @@ Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustel
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image13.png)
 15. Klicken Sie auf der Seite **Vorbereitung** des Assistenten für neue virtuelle Festplatten auf **Weiter**.
-16. Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**.
- Dieser Bildschirm wird nicht angezeigt, wenn Sie Windows Server 2008 R2 ausführen.
+16. Übernehmen Sie auf der Seite **Datenträgerformat auswählen** die Standardoption **VHDX** für das Format. Klicken Sie auf **Weiter**. Dieser Bildschirm wird nicht angezeigt, wenn Sie Windows Server 2008 R2 ausführen.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image15.png)
-17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**.
- In Windows Server 2012 R2 und Windows Server 2012 ist **Dynamisch erweiterbar** die Standardoption, während in Windows Server 2008 R2 die Standardeinstellung **Feste Größe** lautet.
+17. Legen Sie auf der Seite **Datenträgertyp auswählen** den Datenträgertyp für die virtuelle Festplatte auf **Dynamisch erweiterbar** fest (empfohlen). Sie können auch die Option **Feste Größe** für den Datenträger auswählen, aber dies ist unter Umständen mit einer langen Wartezeit verbunden. Die Verwendung der Option **Differenzierend** ist nicht zu empfehlen. Klicken Sie auf **Weiter**. In Windows Server 2012 R2 und Windows Server 2012 ist **Dynamisch erweiterbar** die Standardoption, während in Windows Server 2008 R2 die Standardeinstellung **Feste Größe** lautet.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image16.png)
 18. Geben Sie auf der Seite **Namen und Speicherort angeben** einen **Namen** und einen **Speicherort** (z.B. per Durchsuchen) für den Datenträger an. Klicken Sie auf **Weiter**.
 
-
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image17.png)
 19. Wählen Sie auf der Seite **Datenträger konfigurieren** die Option **Neue virtuelle Festplatte ohne Inhalt erstellen**, und geben Sie als Größe **500 GB** (oder mehr) an. 500 GB sind die Mindestanforderung, aber Sie können auch einen größeren Datenträger bereitstellen. Beachten Sie hierbei, dass Sie den Datenträger nach der Bereitstellung nicht mehr erweitern oder verkleinern können. Weitere Informationen zur Größe des bereitzustellenden Datenträgers finden Sie im Abschnitt zum Festlegen der Größe im Dokument mit [Best Practices](storsimple-ova-best-practices.md). Klicken Sie auf **Weiter**.
-
 
     ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image18.png)
 20. Überprüfen Sie auf der Seite **Zusammenfassung** die Details Ihres virtuellen Datenträgers, und klicken Sie zum Erstellen des Datenträgers auf **Fertig stellen**, wenn alles korrekt ist. Der Assistent wird geschlossen, und Ihrem Computer wird eine virtuelle Festplatte hinzugefügt.
@@ -210,7 +205,7 @@ Führen Sie die folgenden Schritte aus, um Ihr virtuelles Array zu starten und e
        >
        >
 
-Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit der Computer über ausreichende Ressourcen verfügt und die Mindestanforderungen erfüllen kann. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie unter [Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Arrays erfüllt](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+Wenn Ihr Gerät die Mindestanforderungen für die Konfiguration nicht erfüllt, wird im Bannertext ein Fehler angezeigt (siehe unten). Sie müssen die Gerätekonfiguration ändern, damit der Computer über ausreichende Ressourcen verfügt und die Mindestanforderungen erfüllen kann. Sie können das Gerät dann neu starten und die Verbindung dafür herstellen. Die Mindestanforderungen für die Konfiguration finden Sie in Schritt 1: Sicherstellen, dass das Hostsystem die Mindestanforderungen für virtuelle Arrays erfüllt.
 
 ![](./media/storsimple-virtual-array-deploy2-provision-hyperv/image32.png)
 

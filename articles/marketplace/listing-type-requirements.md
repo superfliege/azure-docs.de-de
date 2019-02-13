@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
-ms.openlocfilehash: c02bc75a978325f8cb0dc8733fb8d296e8710975
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 8232a197b7916c069ef17393e44a4f9a512a7598
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264681"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818531"
 ---
 # <a name="requirements-by-listing-type"></a>Listingtyp-Anforderungen  
 Die technischen und inhaltlichen (Marketing) Anforderungen variieren je nach Storefront, Angebotstyp und Auflistungsart. Die folgenden Spezifikationen müssen Ihre Konformität erfüllen:  
@@ -64,10 +64,10 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |  
 |:---        |:---        |:---     |  
-| Beratungsdienste | AppSource | [Anforderungen: AppSource: Auflisten: Beratungsdienste](#requirements-appsource-list-consulting-services) |  
-| Beratungsdienste | Azure Marketplace | [Anforderungen: Azure Marketplace: Auflisten: Beratungsdienste](#requirements-azure-marketplace-list-consulting-services) |  
+| Beratungsdienste | AppSource | Anforderungen: AppSource: Auflisten: Beratungsdienste |  
+| Beratungsdienste | Azure Marketplace | Anforderungen: Azure Marketplace: Auflisten: Beratungsdienste |  
 | Kontaktformular | AppSource | [](#) |  
-| Kontaktformular | Azure Marketplace | [Anforderungen: AppSource: Auflisten: Kontaktformular](#requirements-azure-marketplace-list-contact-me) |  
+| Kontaktformular | Azure Marketplace | Anforderungen: AppSource: Auflisten: Kontaktformular |  
 
 #### <a name="requirements-appsource-list-consulting-service"></a>Anforderungen: AppSource: Auflisten: Beratungsdienst  
 
@@ -91,11 +91,11 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |  
 |:---        |:---        |:---     |  
-| Kostenlose/SaaS-Testversion | AppSource | [Anforderungen an die Auflistungsart: Testversion](#listing-type-requirements-trial) |  
-| Kostenlose/SaaS-Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Kostenlose Testversion/SaaS-Testversion](#requirements-azure-marketplace-trial-free-trial-/-saas-trial) |  
-| Interaktive Demo | AppSource | [Anforderungen an die Auflistungsart: Testversion](#listing-type-requirements-trial) |  
+| Kostenlose/SaaS-Testversion | AppSource | Anforderungen an die Auflistungsart: Testversion |  
+| Kostenlose/SaaS-Testversion | Azure Marketplace | Anforderungen: Azure Marketplace: Testversion: Kostenlose Testversion/SaaS-Testversion |  
+| Interaktive Demo | AppSource | Anforderungen an die Auflistungsart: Testversion |  
 | Interaktive Demo | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Interaktive Demo](#requirements-azure-marketplace-trial-interactive-demo) |  
-| Testversion | AppSource | [Anforderungen an die Auflistungsart: Testversion](#listing-type-requirements-trial) |  
+| Testversion | AppSource | Anforderungen an die Auflistungsart: Testversion |  
 | Testversion | Azure Marketplace | [Anforderungen: Azure Marketplace: Testversion: Testversion](#requirements-azure-marketplace-trial-test-drive) |  
 
 #### <a name="requirements-azure-marketplace-trial"></a>Anforderungen: Azure Marketplace: Testversion  
@@ -133,8 +133,8 @@ Der Auflistungsart „Liste“ enthält die folgenden Angebotstypen für die Sto
 
 | Angebotstyp | Storefront | Details |   
 |:---        |:---        | :--- |  
-| Azure-Apps: Verwaltete App | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Verwaltete App](#requirements-azure-marketplace-transact-azure-apps-managed-app) |  
-| Azure-Apps: Lösungsvorlage | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Lösungsvorlage](#requirements-azure-marketplace-transact-azure-apps-solution-template) |  
+| Azure-Apps: Verwaltete App | Azure Marketplace | Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Verwaltete App |  
+| Azure-Apps: Lösungsvorlage | Azure Marketplace | Anforderungen: Azure Marketplace: Transaktion: Azure-Apps: Lösungsvorlage |  
 | Container | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Container](#requirements-azure-marketplace-transact-container) |  
 | SaaS-App  | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: SaaS-App](#requirements-azure-marketplace-transact-saas-app) |  
 | Virtueller Computer | Azure Marketplace | [Anforderungen: Azure Marketplace: Transaktion: Virtueller Computer](#requirements-azure-marketplace-transact-virtual-machine) |  

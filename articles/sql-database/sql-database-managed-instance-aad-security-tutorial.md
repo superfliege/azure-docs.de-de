@@ -9,17 +9,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: f96b2853b887836a94091dcba0ceaf6f8dd43d12
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/04/2019
+ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55229134"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732769"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Anmeldungen
 
-Bei einer verwalteten Azure SQL-Datenbank-Instanz stehen nahezu die gleichen Sicherheitsfeatures zur Verfügung wie bei der neuesten Datenbank-Engine einer lokalen SQL Server-Instanz (Enterprise Edition):
+Bei einer verwalteten Instanz stehen nahezu die gleichen Sicherheitsfeatures zur Verfügung wie bei der neuesten Datenbank-Engine einer lokalen SQL Server-Instanz (Enterprise Edition):
 
 - Einschränken des Zugriffs in einer isolierten Umgebung
 - Verwenden von Authentifizierungsmechanismen mit Identitätsnachweis (Azure AD, SQL-Authentifizierung)
@@ -29,8 +29,8 @@ Bei einer verwalteten Azure SQL-Datenbank-Instanz stehen nahezu die gleichen Sic
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> - Erstellen einer Azure AD-Anmeldung (Azure Active Directory) für verwaltete Instanzen
-> - Gewähren von Berechtigungen für Azure AD-Anmeldungen in verwalteten Instanzen
+> - Erstellen einer Azure AD-Anmeldung (Azure Active Directory) für eine verwaltete Instanz
+> - Gewähren von Berechtigungen für Azure AD-Anmeldungen in einer verwalteten Instanz
 > - Erstellen von Azure AD-Benutzern auf der Grundlage von Azure AD-Anmeldungen
 > - Zuweisen von Berechtigungen zu Azure AD-Benutzern und Verwalten der Datenbanksicherheit
 > - Verwenden des Identitätswechsels mit Azure AD-Benutzern
@@ -38,7 +38,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Kennenlernen von Sicherheitsfeatures wie Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung
 
 > [!NOTE]
-> Azure AD-Anmeldungen für verwaltete SQL-Datenbank-Instanzen befinden sich in der **Public Preview-Phase**.
+> Azure AD-Anmeldungen für verwaltete Instanzen befinden sich in der **Public Preview-Phase**.
 
 Weitere Informationen finden Sie im Artikel [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) sowie im [Artikel zu den Funktionen](sql-database-managed-instance.md).
 
@@ -48,8 +48,8 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Eine verwaltete Azure SQL-Datenbank-Instanz
-    - Führen Sie die Schritte des folgenden Artikels aus: [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md)
-- Zugriff auf Ihre verwaltete Azure SQL-Datenbank-Instanz und [Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance). Weitere Informationen finden Sie unter:
+  - Führen Sie die Schritte des folgenden Artikels aus: [Schnellstart: Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md)
+- Zugriff auf Ihre verwaltete Instanz und [Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance). Weitere Informationen finden Sie unter:
     - [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md) 
     - [Verbindungsarchitektur der verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connectivity-architecture.md)
     - [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](sql-database-aad-authentication-configure.md)
@@ -59,7 +59,7 @@ Für dieses Tutorial wird Folgendes vorausgesetzt:
 Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werden. Es sind keine Dienstendpunkte verfügbar, über die von außerhalb des Netzwerks der verwalteten Instanz eine Verbindung mit der verwalteten Instanz hergestellt werden kann. Anwendungen und Benutzer benötigen ähnlich wie bei einer isolierten lokalen SQL Server-Umgebung Zugriff auf das Netzwerk der verwalteten Instanz (VNET), um eine Verbindung herstellen zu können. Weitere Informationen finden Sie im Artikel [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-connect-app.md).
 
 > [!NOTE] 
-> Da auf verwaltete Instanzen nur innerhalb des entsprechenden VNETs zugegriffen werden kann, sind [Firewallregeln für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-firewall-configure.md) nicht relevant. Verwaltete Instanzen verfügen über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
+> Da auf verwaltete Instanzen nur innerhalb des entsprechenden VNETs zugegriffen werden kann, sind [Firewallregeln für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-firewall-configure.md) nicht relevant. Eine verwaltete Instanz verfügt über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
 ## <a name="create-an-azure-ad-login-for-a-managed-instance-using-ssms"></a>Erstellen einer Azure AD-Anmeldung für eine verwaltete Instanz mithilfe von SSMS
 
@@ -146,7 +146,7 @@ So fügen Sie die Anmeldung der Serverrolle `sysadmin` hinzu:
 
 Nachdem die Azure AD-Anmeldung erstellt und mit Berechtigungen vom Typ `sysadmin` bereitgestellt wurde, können mit dieser Anmeldung unter Verwendung von **CREATE LOGIN** und der Klausel **FROM EXTERNAL PROVIDER** weitere Anmeldungen erstellt werden.
 
-1. Stellen Sie über SQL Server Management Studio unter Verwendung der Azure AD-Anmeldung eine Verbindung mit dem Server der verwalteten Instanz her. Geben Sie den Namen des Servers Ihrer verwalteten Instanz ein. Wenn Sie sich mit einem Azure AD-Konto anmelden, stehen für die Authentifizierung in SSMS drei Optionen zur Auswahl:
+1. Stellen Sie über SQL Server Management Studio unter Verwendung der Azure AD-Anmeldung eine Verbindung mit der verwalteten Instanz her. Geben Sie den Hostnamen Ihrer verwalteten Instanz ein. Wenn Sie sich mit einem Azure AD-Konto anmelden, stehen für die Authentifizierung in SSMS drei Optionen zur Auswahl:
 
     - Active Directory: universell mit MFA-Unterstützung
     - Active Directory-Kennwortauthentifizierung
@@ -448,9 +448,9 @@ Unter [Sicherheitsfeatures für Azure SQL-Datenbank](sql-database-managed-instan
 - [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) 
 - [Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
-### <a name="managed-instance-capabilities"></a>Funktionen verwalteter Instanzen
+### <a name="managed-instance-capabilities"></a>Verwaltete Instanz: Funktionen
 
-Eine vollständige Übersicht über die Funktionen einer verwalteten Azure SQL-Datenbank-Instanz finden Sie hier:
+Eine vollständige Übersicht über die Funktionen einer verwalteten Instanz finden Sie hier:
 
 > [!div class="nextstepaction"]
 > [Funktionen verwalteter Instanzen](sql-database-managed-instance.md)

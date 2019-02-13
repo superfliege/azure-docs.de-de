@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 946b4e77243b194e7fd3e27981aba442094a40f1
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: d013eadbdcb2d4fad81ae9b963ac3e8d8356aada
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323124"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810806"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -41,7 +41,7 @@ Weitere Informationen finden Sie unter:
 
 ## <a name="sql-data-warehouse"></a>SQL Data Warehouse
 
-Um Azure SQL Data Warehouse-Ressourcen von Azure Deutschland zu Azure weltweit zu migrieren, führen Sie die Schritte aus, die unter [Azure SQL-Datenbank](#azure-sql-database) beschrieben sind.
+Wenn Sie Azure SQL Data Warehouse-Ressourcen von Azure Deutschland zu Azure weltweit migrieren möchten, führen Sie die unter „Azure SQL-Datenbank“ beschriebenen Schritte aus.
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
 

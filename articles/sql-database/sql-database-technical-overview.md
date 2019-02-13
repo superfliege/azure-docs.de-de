@@ -4,7 +4,7 @@ description: Lernen Sie die technischen Details und Funktionen von SQL-Datenbank
 keywords: Einführung in SQL, Was ist SQL-Datenbank?
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,23 +12,26 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6b4bc5a75f49287ad0425a7fe94f099204b73e44
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469548"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55755424"
 ---
 # <a name="the-azure-sql-database-service"></a>Der Azure SQL-Datenbank-Dienst
 
-SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) und im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md). SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
+SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im V-Kern-basierten Kaufmodell und im DTU-basierten Kaufmodell. SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
+
+> [!NOTE]
+> Ein Glossar von Begriffen in Azure SQL-Datenbank finden Sie unter [Azure SQL Database glossary of terms](sql-database-glossary-terms.md) (Azure SQL-Datenbank – Glossar).
 
 Azure SQL-Datenbank bietet die folgenden Bereitstellungsoptionen für eine Azure SQL-Datenbank:
 
-- Als Einzeldatenbank mit ihrem eigenen Ressourcensatz, der über einen SQL-Datenbankserver verwaltet wird
-- Als gruppierte Datenbank in einem [Pool für elastische Datenbanken](sql-database-elastic-pool.md) mit einem gemeinsamen Ressourcensatz, der über einen SQL-Datenbankserver verwaltet wird
-- Als Teil einer Sammlung von Datenbanken, die als [verwaltete Instanz](sql-database-managed-instance.md) bezeichnet wird, die System- und Benutzerdatenbanken enthält und einen Ressourcensatz teilt
+- Als [Singleton](sql-database-single-database.md) mit einem eigenen Ressourcensatz, der über einen SQL-Datenbank-Server verwaltet wird Ein Singleton ähnelt einer [eigenständigen Datenbank](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) in SQL Server.
+- Als [Pool für elastische Datenbanken](sql-database-elastic-pool.md), bei dem es sich um eine Sammlung von Datenbanken mit einem gemeinsamen Ressourcensatz handelt, der über einen SQL-Datenbank-Server verwaltet wird Singletons können in und aus Pools für elastische Datenbanken verschoben werden.
+- Als [verwaltete Instanz](sql-database-managed-instance.md), bei der es sich um eine Sammlung von System- und Benutzerdatenbanken mit einem gemeinsam genutzten Ressourcensatz handelt. Eine verwaltete Instanz ist vergleichbar mit einer Instanz der [Microsoft SQL Server-Datenbank-Engine](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation).
 
 Die folgende Abbildung stellt diese Bereitstellungsoptionen dar:
 
@@ -45,30 +48,29 @@ SQL-Datenbank nutzt diese Codebasis gemeinsam mit der [Microsoft SQL Server-Date
   Hier schreiben die Mitglieder von SQL Server-Produktteams Beiträge zu News und Features von SQL-Datenbank.
 
 > [!IMPORTANT]
-> Informationen zu den Funktionsunterschieden zwischen SQL-Datenbank und SQL Server finden Sie unter [Funktionen von Azure SQL-Datenbank](sql-database-features.md).
+> Funktionelle Unterschiede zwischen SQL-Datenbank und SQL Server sowie Unterschiede zwischen verschiedenen Bereitstellungsoptionen für Azure SQL-Datenbank finden Sie unter [SQL-Funktionen](sql-database-features.md).
 
 SQL-Datenbank bietet eine vorhersagbare Leistung mit mehreren Ressourcentypen, Dienstebenen und Computegrößen, die eine dynamische Skalierung ohne Downtime, integrierte intelligente Optimierung, globale Skalierbarkeit und Verfügbarkeit sowie erweiterte Sicherheitsoptionen bieten – alles mit nahezu keinem Verwaltungsaufwand. Mit diesen Funktionen können Sie sich auf die schnelle Entwicklung von Apps und die Verkürzung des Zeitraums bis zur Markteinführung konzentrieren, anstatt wertvolle Zeit und Ressourcen für die Verwaltung von virtuellen Computern und der Infrastruktur aufwenden zu müssen. Der SQL-Datenbank-Dienst wird derzeit in 38 Rechenzentren auf der ganzen Welt ausgeführt – und regelmäßig werden neue online geschaltet. Dies ermöglicht die Ausführung Ihrer Datenbank in einem Rechenzentrum in Ihrer Nähe.
 
 ## <a name="scalable-performance-and-pools"></a>Skalierbare Leistung und Pools
 
-Bei SQL-Datenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße. SQL-Datenbank bietet unterschiedliche Computegrößen für unterschiedliche Anforderungen. Darüber hinaus können Datenbanken in Pools zusammengefasst werden, um die Verwendung von Ressourcen zu maximieren und Geld zu sparen.
-
-- Bei einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) ist jede Instanz von anderen Instanzen mit garantierten Ressourcen isoliert. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
-- Mit der [Dienstebene Hyperscale](sql-database-service-tier-hyperscale.md) (Vorschau) im V-Kern-basierten Kaufmodell können Sie bis zu 100 TB mit schnellen Backup- und Wiederherstellungsfunktionen skalieren.
-
-### <a name="adjust-performance-and-scale-without-downtime"></a>Anpassen von Leistung und Skalierung ohne Ausfallzeiten
-
-SQL-Datenbank bietet ein [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) sowie das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md).
-
-- Das DTU-basierte Kaufmodell bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen auf drei Dienstebenen: Basic, Standard und Premium. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
-- Beim V-Kern-basierten Kaufmodell können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
+- Bei Singletons ist jede Datenbank von den anderen isoliert und damit portabel. Jede Datenbank verfügt über eine eigene garantierte Menge an Compute-, Arbeitsspeicher- und Speicherressourcen. SQL-Datenbank bietet verschiedene Compute-, Arbeitsspeicher- und Speicherressourcen für unterschiedliche Anforderungen – sowie die Möglichkeit, [Singletonressourcen dynamisch zentral hoch- und herunterzuskalieren](sql-database-single-database-scale.md). Mit dem [Diensttarif Hyperscale](sql-database-service-tier-hyperscale.md) (Vorschau) für Singletons können Sie bis zu 100 TB mit schnellen Sicherungs- und Wiederherstellungsfunktionen skalieren.
+- Mit Pools für elastische Datenbanken können Sie neue Datenbanken erstellen oder Singletons in einen Ressourcenpool verschieben, um die Ressourcennutzung zu maximieren und Geld zu sparen. Außerdem haben Sie so die Möglichkeit, [Ressourcen für Pools für elastische Datenbanken dynamisch zentral hoch- und herunterzuskalieren](sql-database-elastic-pool-scale.md).
+- Bei verwalteten Instanzen ist jede verwaltete Instanz von den anderen Instanzen isoliert und verfügt über garantierte Ressourcen. In einer verwalteten Instanz nutzen die Instanzdatenbanken einen gemeinsamen Satz von Ressourcen. Somit haben Sie die Möglichkeit, [Ressourcen für eine verwaltete Instanz dynamisch hoch- und herunterzuskalieren](sql-database-managed-instance-resource-limits.md).
 
 Sie können zu einer geringen monatlichen Gebühr Ihre erste App in einer kleinen Einzeldatenbank im Diensttarif „Universell“ erstellen und diesen dann jederzeit manuell oder programmgesteuert in den Tarif „Unternehmenskritisch“ ändern, um die Anforderungen Ihrer Lösung zu erfüllen. Die Leistungsanpassung ist möglich, ohne dass es für die App oder für Ihre Kunden zu Ausfallzeiten kommt. Dank der dynamischen Skalierbarkeit kann Ihre Datenbank in transparenter Form auf sich schnell ändernde Ressourcenanforderungen reagieren, und Sie zahlen nur für die Ressourcen, die Sie jeweils benötigen.
 
-> [!IMPORTANT]
-> Der [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md) befindet sich derzeit in der öffentlichen Vorschauphase. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Zu Testzwecken empfiehlt es sich, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
-
 Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei der automatischen Skalierung wird ein Dienst automatisch auf der Grundlage von Kriterien skaliert. Die dynamische Skalierbarkeit ermöglicht dagegen eine manuelle Skalierung ohne Ausfallzeiten. Eine Einzeldatenbank unterstützt die manuelle dynamische Skalierbarkeit, aber keine automatische Skalierung. Ein höheres Maß an *Automatisierung* lässt sich bei Bedarf mithilfe von Pools für elastische Datenbanken erzielen, die die gemeinsame Nutzung eines Ressourcenpools auf der Grundlage individueller Datenbankanforderungen ermöglichen. Es gibt allerdings auch Skripts, die Sie bei der Automatisierung der Skalierbarkeit für eine Einzeldatenbank unterstützen. Ein Beispiel finden Sie unter [Überwachen und Skalieren einer Einzeldatenbank mit PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
+
+### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>Kaufmodelle, Diensttarife, Computegrößen und Speichermengen
+
+SQL-Datenbank bietet zwei Kaufmodelle:
+
+- Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen in drei Diensttarifen. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
+- Beim [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
+
+  > [!IMPORTANT]
+  > Der [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md) befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Zu Testzwecken empfiehlt es sich, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
@@ -81,17 +83,15 @@ Bei Pools für elastische Datenbanken müssen Sie sich nicht darauf konzentriere
 Skripts können Sie bei der Überwachung und Skalierung von Pools für elastische Datenbanken unterstützen. Ein Beispiel finden Sie unter [Verwenden von PowerShell zum Überwachen und Skalieren eines Pools für elastische SQL-Datenbanken in der Azure SQL-Datenbank](scripts/sql-database-monitor-and-scale-pool-powershell.md).
 
 > [!IMPORTANT]
-> Für die verwaltete Azure SQL-Datenbank-Instanz werden Pools für elastische Datenbanken nicht unterstützt.
+> Für eine verwaltete Instanz werden Pools für elastische Datenbanken nicht unterstützt. Eine verwaltete Instanz ist vielmehr eine Sammlung von Instanzdatenbanken, die die Ressourcen der verwalteten Instanz gemeinsam nutzen.
 
 ### <a name="blend-single-databases-with-pooled-databases"></a>Mischen von Einzeldatenbanken mit Datenbanken in Pools
 
-Sie können weiterhin flexibel vorgehen – unabhängig davon, ob Sie sich für Einzeldatenbanken oder Pools für elastische Datenbanken entscheiden. Sie haben die Möglichkeit, Einzeldatenbanken mit Pools für elastische Datenbanken zu kombinieren und die Dienstebenen von Einzeldatenbanken und Pools für elastische Datenbanken schnell und einfach an Ihre Bedürfnisse anzupassen. Mit der Leistungsstärke und Reichweite von Azure können Sie andere Azure-Dienste mit SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen bei der App-Entwicklung zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
+Sie haben die Möglichkeit, Einzeldatenbanken mit Pools für elastische Datenbanken zu kombinieren und die Dienstebenen von Einzeldatenbanken und Pools für elastische Datenbanken schnell und einfach an Ihre Bedürfnisse anzupassen. Mit der Leistungsstärke und Reichweite von Azure können Sie andere Azure-Dienste mit SQL-Datenbank kombinieren, um Ihre individuellen Anforderungen bei der App-Entwicklung zu erfüllen, Kosten- und Ressourceneffizienz zu fördern und neue Geschäftsmöglichkeiten zu erschließen.
 
 ### <a name="extensive-monitoring-and-alerting-capabilities"></a>Umfassende Funktionen für Überwachung und Warnung
 
-Aber wie können Sie nun die relative Leistung von Einzeldatenbanken und Pools für elastische Datenbanken vergleichen? Wie entscheiden Sie sich beim Anpassen für die richtige Lösung? Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Ausführliche Informationen finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md) und [V-Kern-basiertes Kaufmodell](sql-database-service-tiers-vcore.md).
-
-Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
+Verwenden Sie die [integrierten Features für die Leistungsüberwachung](sql-database-performance.md) sowie [Warnungstools](sql-database-insights-alerts-portal.md) in Kombination mit den Leistungsbewertungen. Mit diesen Tools können Sie die Auswirkungen des zentralen Hoch- oder Herunterskalierens je nach Ihren derzeitigen bzw. projektbezogenen Leistungsanforderungen schnell bewerten. Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Diagnoseprotokolle ausgeben](sql-database-metrics-diag-logging.md). Sie können SQL-Datenbank zum Speichern von Ressourcenverbrauch, Workern und Sitzungen sowie Verbindungen in einer der folgenden Azure-Ressourcen konfigurieren:
 
 - **Azure Storage**: Ermöglicht die kostengünstige Archivierung großer Mengen von Telemetriedaten.
 - **Azure Event Hub**: Ermöglicht die Integration von Telemetriedaten von SQL-Datenbank in Ihre benutzerdefinierte Überwachungslösung oder in Hotpipelines.
@@ -101,23 +101,24 @@ Darüber hinaus kann SQL-Datenbank zur einfacheren Überwachung [Metriken und Di
 
 ## <a name="availability-capabilities"></a>Verfügbarkeitsfunktionen
 
-Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](https://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Die Azure Platform führt eine vollständige Verwaltung jeder Azure SQL-Datenbank durch und garantiert die Vermeidung von Datenverlusten und einen hohen Prozentsatz in Bezug auf die Datenverfügbarkeit. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. Die Standardverfügbarkeit wird erreicht, indem eine Unterteilung in Compute- und Speicherebenen vorgenommen wird. Premium-Verfügbarkeit wird erreicht, indem Compute- und Speicherbereich aus Leistungsgründen auf einem einzelnen Knoten angeordnet und dann im Hintergrund Technologien implementiert werden, die mit Always On-Verfügbarkeitsgruppen vergleichbar sind. Eine vollständige Beschreibung der Funktionen für Hochverfügbarkeit von Azure SQL-Datenbank finden Sie unter [Verfügbarkeit von Azure SQL-Datenbank](sql-database-high-availability.md). SQL-Datenbank bietet außerdem integrierte Features für die [Geschäftskontinuität und globale Skalierbarkeit](sql-database-business-continuity.md). Dazu gehören u.a.:
+Durch die Unterstützung eines globalen Netzwerks von Microsoft-verwalteten Rechenzentren stellt die in der Branche führende Verfügbarkeit von Azure mit einer Vereinbarung zum Servicelevel [(SLA)](https://azure.microsoft.com/support/legal/sla/) von 99,99% sicher, dass Ihre Apps rund um die Uhr ausgeführt werden. Die Azure-Plattform führt eine vollständige Verwaltung jeder Datenbank durch und garantiert die Vermeidung von Datenverlusten und einen hohen Prozentsatz in Bezug auf die Datenverfügbarkeit. In Azure werden Bereiche wie Patchen, Sicherungen, Replikation, Fehlererkennung, zugrunde liegende potenzielle Hardware-, Software- oder Netzwerkfehler, Bereitstellung von Fehlerbehebungen, Failover, Datenbankupgrades und andere Wartungsaufgaben automatisch durchgeführt. Die Standardverfügbarkeit wird erreicht, indem eine Unterteilung in Compute- und Speicherebenen vorgenommen wird. Premium-Verfügbarkeit wird erreicht, indem Compute- und Speicherbereich aus Leistungsgründen auf einem einzelnen Knoten angeordnet und dann im Hintergrund Technologien implementiert werden, die mit Always On-Verfügbarkeitsgruppen vergleichbar sind. Eine vollständige Beschreibung der Funktionen für Hochverfügbarkeit von Azure SQL-Datenbank finden Sie unter [Verfügbarkeit von Azure SQL-Datenbank](sql-database-high-availability.md). SQL-Datenbank bietet außerdem integrierte Features für die [Geschäftskontinuität und globale Skalierbarkeit](sql-database-business-continuity.md). Dazu gehören u.a.:
 
 - **[Automatische Sicherungen:](sql-database-automated-backups.md)**
 
-  SQL-Datenbank führt automatisch vollständige Sicherungen, differenzielle Sicherungen und Transaktionsprotokollsicherungen durch.
+  SQL-Datenbank führt automatisch vollständige, differenzielle und Transaktionsprotokollsicherungen von Azure SQL-Datenbanken aus, sodass Sie diese zu einem beliebigen Zeitpunkt wiederherstellen können. Für Singletons und Datenbanken in einem Pool können Sie SQL-Datenbank zum Speichern von vollständigen Datenbanksicherungen in Azure Storage für die langfristige Aufbewahrung konfigurieren. Für verwaltete Instanzen können Sie auch ausschließlich kopierbare Sicherungen für die langfristige Sicherungsaufbewahrung ausführen.
+
 - **[Point-in-Time-Wiederherstellungen:](sql-database-recovery-using-backups.md)**
 
-  SQL-Datenbank unterstützt die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Beibehaltungsdauer für automatische Sicherungen.
+  Alle Bereitstellungsoptionen von SQL-Datenbank unterstützen die Wiederherstellung zu einem beliebigen Zeitpunkt innerhalb der Vermerkdauer für automatische Sicherungen für sämtliche Azure SQL-Datenbanken.
 - **[Aktive Georeplikation:](sql-database-active-geo-replication.md)**
 
-  Mit SQL-Datenbank können Sie bis zu vier lesbare sekundäre Datenbanken konfigurieren – entweder im gleichen Azure-Rechenzentrum oder in weltweit verteilten Azure-Rechenzentren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden.
+  Bei Singletons und Datenbanken in einem Pool können Sie bis zu vier lesbare sekundäre Datenbanken konfigurieren – im gleichen Azure-Rechenzentrum oder in weltweit verteilten Azure-Rechenzentren.  Wenn Sie beispielsweise über eine SaaS-Anwendung mit einer Katalogdatenbank verfügen, die eine große Anzahl gleichzeitiger schreibgeschützter Transaktionen umfasst, können Sie mithilfe der aktiven Georeplikation eine globale Skalierung für das Lesen aktivieren und so Engpässe in der primären Datenbank beseitigen, die durch hohe Workloads aufgrund der Lesevorgänge verursacht werden. Verwenden Sie für verwaltete Instanzen Autofailover-Gruppen.
 - **[Autofailover-Gruppen](sql-database-auto-failover-group.md)**:
 
-  SQL-Datenbank bietet eine hohe Verfügbarkeit und einen Lastenausgleich auf globaler Ebene, einschließlich transparenter Georeplikation und des Failovers großer Mengen von Datenbanken und Pools für elastische Datenbanken. Failovergruppen und die aktive Georeplikation erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
+  Alle Bereitstellungsoptionen von SQL-Datenbank ermöglichen die Verwendung von Failovergruppen, um Hochverfügbarkeit und Lastenausgleich auf globaler Ebene zu gewährleisten, einschließlich transparenter Georeplikation, Failovern großer Mengen von Datenbanken, Pools für elastische Datenbanken und verwalteter Instanzen. Failovergruppen erlauben das Erstellen von weltweit verteilten SaaS-Anwendungen mit minimalem Verwaltungsaufwand, bei dem alle komplexen Aufgaben für Überwachung, Weiterleitung und Failoverorchestrierung von SQL-Datenbank erledigt werden.
 - **[Zonenredundante Datenbanken:](sql-database-high-availability.md)**
 
-  SQL-Datenbank ermöglicht die Bereitstellung von Premium-Datenbanken, unternehmenskritischen Datenbanken oder Pools für elastische Datenbanken über mehrere Verfügbarkeitszonen hinweg. Datenbanken und Pools für elastische Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, die beispielsweise die automatische Wiederherstellung nach Ausfällen von Datencentern ohne Datenverlust ermöglicht.  
+  SQL-Datenbank ermöglicht die Bereitstellung von Premium-Datenbanken, unternehmenskritischen Datenbanken oder Pools für elastische Datenbanken über mehrere Verfügbarkeitszonen hinweg. Datenbanken und Pools für elastische Datenbanken verfügen über mehrere redundante Replikate, um die Hochverfügbarkeit sicherzustellen. Die Anordnung dieser Replikate in mehreren Verfügbarkeitszonen sorgt für eine höhere Resilienz, die beispielsweise die automatische Wiederherstellung nach Ausfällen von Datencentern ohne Datenverlust ermöglicht.
 
 ## <a name="built-in-intelligence"></a>Integrierte Logik
 
@@ -148,7 +149,7 @@ SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitäts
 
 ### <a name="advance-threat-protection"></a>Advanced Threat Protection
 
-SQL Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen.
+Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Sicherheitsfunktionen. Dazu zählen die Funktion zur Ermittlung und Klassifizierung sensibler Daten, die Verwaltung von Datenbankrisiken und die Erkennung ungewöhnlicher Aktivitäten, die eine Bedrohung für Ihre Datenbank darstellen können. Es bietet einen einzelnen Anlaufpunkt zum Aktivieren und Verwalten dieser Funktionen.
 
 - [Datenermittlung und -klassifizierung:](sql-database-data-discovery-and-classification.md)
 
@@ -162,7 +163,7 @@ SQL Advanced Data Security ist ein einheitliches Paket für erweiterte SQL-Siche
 
 ### <a name="auditing-for-compliance-and-security"></a>Überwachung auf Konformität und Sicherheit
 
-Die [SQL-Datenbank-Überprüfung](sql-database-auditing.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
+Die [Überwachung](sql-database-auditing.md) verfolgt Datenbankereignisse und schreibt diese in ein Überwachungsprotokoll in Ihrem Azure Storage-Konto. Die Überwachung kann Ihnen dabei helfen, die gesetzlichen Bestimmungen einzuhalten, die Datenbankaktivität zu verstehen und Einblicke in Abweichungen und Anomalien zu erhalten, die auf geschäftsspezifische Bedenken oder mutmaßliche Sicherheitsverstöße hinweisen können.
 
 ### <a name="data-encryption"></a>Datenverschlüsselung
 
@@ -208,7 +209,7 @@ SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.
 - Unter [Preise](https://azure.microsoft.com/pricing/details/sql-database/) finden Sie Preisvergleiche und Rechner für Einzeldatenbanken und Pools für elastische Datenbanken.
 - Diese Schnellstarts erleichtern Ihnen den Einstieg:
 
-  - [Create a SQL database in the Azure portal](sql-database-get-started-portal.md) (Erstellen einer SQL-Datenbank im Azure-Portal)  
+  - [Create a SQL database in the Azure portal](sql-database-single-database-get-started.md) (Erstellen einer SQL-Datenbank im Azure-Portal)  
   - [Erstellen einer SQL-Datenbank mit der Azure CLI](sql-database-get-started-cli.md)
   - [Erstellen einer SQL-Datenbank mithilfe von PowerShell](sql-database-get-started-powershell.md)
 

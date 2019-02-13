@@ -9,102 +9,34 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/20/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: 658843fd5acbe0d4e29947e99c00edf4909fe9f4
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: be66dcf8115258b6f593ec913e75785a3f8dbe1f
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742744"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55743479"
 ---
 # <a name="streaming-locators"></a>Streaminglocators
 
-Sie müssen Ihren Clients eine URL bereitstellen, mit der sie codierte Video- oder Audiodateien wiedergeben können. Dazu müssen Sie einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) und die Streaming-URLs erstellen. Weitere Informationen finden Sie unter [Streamen von Dateien](stream-files-dotnet-quickstart.md).
+Um Videos im Ausgabeobjekt für die Wiedergabe durch Clients verfügbar zu machen, müssen Sie einen [Streaminglocator](https://docs.microsoft.com/rest/api/media/streaminglocators) erstellen und dann die Streaming-URLs erstellen. Informationen zum .NET-Beispiel finden Sie unter [Abrufen eines Streaminglocators](stream-files-tutorial-with-api.md#get-a-streaming-locator).
 
-## <a name="streaminglocator-definition"></a>Streaminglocator: Definition
+Der Vorgang zum Erstellen eines **Streaminglocators** wird als „Veröffentlichen“ bezeichnet. Standardmäßig ist der **Streaminglocator** sofort nach dem Vornehmen der API-Aufrufe gültig und bleibt es auch, bis er gelöscht wird (es sei denn, Sie konfigurieren die optionalen Start- und Endzeiten). 
 
-Die folgende Tabelle enthält die Eigenschaften von Streaminglocators und die jeweiligen Definitionen.
+Beim Erstellen eines **Streaminglocators** müssen Sie den [Objektnamen](https://docs.microsoft.com/rest/api/media/assets) und den Namen der [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) angeben. Sie können entweder eine der vordefinierten Streamingrichtlinien verwenden oder eine benutzerdefinierte Richtlinie erstellen. Die folgenden vordefinierten Richtlinien sind aktuell verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“. Wenn Sie eine benutzerdefinierte Streamingrichtlinie verwenden, sollten Sie eine begrenzte Sammlung solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen und Protokolle benötigt werden. 
 
-|NAME|BESCHREIBUNG|
-|---|---|
-|id |Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name|Der Name der Ressource.|
-|properties.alternativeMediaId|Alternative Medien-ID dieses Streaminglocators.|
-|properties.assetName|Ressourcenname.|
-|properties.contentKeys|Die von diesem Streaminglocator verwendeten Inhaltsschlüssel.|
-|properties.created|Die Erstellungszeit des Streaminglocators.|
-|properties.defaultContentKeyPolicyName|Der Name der Standardrichtlinie des Inhaltsschlüssels, die dieser Streaminglocator verwendet.|
-|properties.endTime|Die Endzeit des Streaminglocators.|
-|properties.startTime|Die Startzeit des Streaminglocators.|
-|properties.streamingLocatorId|Die ID des Streaminglocators.|
-|properties.streamingPolicyName |Der Name der Streamingrichtlinie, die dieser Streaminglocator verwendet. Geben Sie entweder den Namen der von Ihnen erstellten Streamingrichtlinie an, oder verwenden Sie eine vordefinierte Streamingrichtlinie. Die folgenden vordefinierten Streamingrichtlinien sind verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“|
-|type|Der Typ der Ressource.|
+Wenn Sie Verschlüsselungsoptionen für Ihren Datenstrom festlegen möchten, erstellen Sie die [Inhaltsschlüsselrichtlinie](https://docs.microsoft.com/rest/api/media/contentkeypolicies), die mithilfe der Komponente zur Schlüsselbereitstellung von Media Services konfiguriert, wie der Inhaltsschlüssel an Endclients übermittelt wird. Verknüpfen Sie Ihren Streaminglocator mit der **Inhaltsschlüsselrichtlinie** und dem Inhaltsschlüssel. Sie können den Schlüssel automatisch von Media Services generieren lassen. Das folgende .NET-Beispiel veranschaulicht die Konfiguration von AES-Verschlüsselung mit einer Tokeneinschränkung in Media Services v3: [EncodeHTTPAndPublishAESEncrypted](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/tree/master/NETCore/EncodeHTTPAndPublishAESEncrypted). **Inhaltsschlüsselrichtlinien** sind aktualisierbar, es empfiehlt sich, die Richtlinie zu aktualisieren, wenn Sie eine Schlüsselrotation ausführen müssen. Es dauert bis zu 15 Minuten, die Schlüsselbereitstellungscaches zu aktualisieren und die aktualisierte Richtlinie zu übernehmen. Es ist nicht empfehlenswert, für jeden Streaminglocator eine neue Inhaltsschlüsselrichtlinie zu erstellen. Sie sollten nach Möglichkeit die vorhandenen Richtlinien immer dann wiederverwenden, wenn die gleichen Optionen erforderlich sind.
 
-Die vollständige Definition finden Sie unter [Streaminglocators](https://docs.microsoft.com/rest/api/media/streaminglocators).
+> [!IMPORTANT]
+> * Eigenschaften von **Streaminglocators** vom Datetime-Typ liegen immer im UTC-Format vor.
+> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. 
 
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
-Media Services unterstützt die folgenden OData-Abfrageoptionen für Streaminglocators: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Operatorbeschreibung:
-
-* Eq = equal to (ist gleich)
-* Ne = not equal to (ist nicht gleich)
-* Ge = Greater than or equal to (ist größer als oder gleich)
-* Le = Less than or equal to (ist kleiner als oder gleich)
-* Gt = Greater than (größer als)
-* Lt = Less than (kleiner als)
-
-### <a name="filteringordering"></a>Filterung/Sortierung
-
-Die folgende Tabelle zeigt, wie diese Optionen auf die Eigenschaften des Streaminglocators angewendet werden können: 
-
-|NAME|Filter|Reihenfolge|
-|---|---|---|
-|id |||
-|name|Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
-|properties.alternativeMediaId  |||
-|properties.assetName   |||
-|properties.contentKeys |||
-|properties.created |Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
-|properties.defaultContentKeyPolicyName |||
-|properties.endTime |Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
-|properties.startTime   |||
-|properties.streamingLocatorId  |||
-|properties.streamingPolicyName |||
-|type   |||
-
-### <a name="pagination"></a>Paginierung
-
-Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
-
-> [!TIP]
-> Verwenden Sie immer den Link „Weiter“ zum Enumerieren der Auflistung und keine bestimmte Seitengröße als Referenz.
-
-Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
-
-Wenn beim Paging der Auflistung Streaminglocators erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Auflistung befinden, der nicht heruntergeladen wurde.) 
-
-Das folgende C#-Beispiel zeigt, wie alle Streaminglocators im Konto enumeriert werden.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingLocators.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingLocators.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-REST-Beispiele finden Sie unter [Streaminglocators – Liste](https://docs.microsoft.com/rest/api/media/streaminglocators/list).
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Streamen einer Datei](stream-files-dotnet-quickstart.md)
+* [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
+* [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)

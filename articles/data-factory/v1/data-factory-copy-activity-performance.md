@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 572f4535044e077ed245b0a231ccc9fa973a8a9b
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331644"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812088"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -176,7 +176,7 @@ Beachten Sie Folgendes:
 >
 >
 
-Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erhöhung des Durchsatzes beim Verschieben von Daten finden Sie in den [Beispielen für Anwendungsfälle](#case-study-use-parallel-copy). Das Standardverhalten kann verwendet werden, ohne **parallelCopies** zu konfigurieren. Wenn Sie das Feature konfigurieren und **parallelCopies** zu klein ist, werden mehrere Cloud-DMUs unter Umständen nicht optimal genutzt.
+Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erhöhung des Datenverschiebungsdurchsatzes finden Sie in den Beispielen für Anwendungsfälle. Das Standardverhalten kann verwendet werden, ohne **parallelCopies** zu konfigurieren. Wenn Sie das Feature konfigurieren und **parallelCopies** zu klein ist, werden mehrere Cloud-DMUs unter Umständen nicht optimal genutzt.
 
 ### <a name="billing-impact"></a>Auswirkungen auf die Abrechnung
 **Wichtig:** Die Berechnung der Gebühren basiert auf der Gesamtdauer des Kopiervorgangs. Wenn ein Kopierauftrag mit einer einzelnen Cloudeinheit bislang eine Stunde gedauert hat und nun mit vier Cloudeinheiten 15 Minuten dauert, fällt die Gesamtrechnung in etwa gleich hoch aus. Ein Beispiel: Angenommen, Sie verwenden vier Cloudeinheiten. Die erste Cloudeinheit benötigt zehn Minuten, die zweite ebenfalls, die dritte fünf Minuten und die vierte ebenfalls fünf Minuten – alles in einer einzelnen Kopieraktivität. Ihnen wird die gesamte Kopierzeit (Datenverschiebungszeit) in Rechnung gestellt. Das sind in diesem Fall 30 Minuten (10 + 10 + 5 + 5). Die Verwendung von **parallelCopies** hat keine Auswirkungen auf die Abrechnung.
@@ -297,7 +297,7 @@ Wenn Sie Daten aus Blob Storage in SQL Data Warehouse kopieren, können Sie die 
 
 * **Datenmuster**: Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
 * **Abfrage oder gespeicherte Prozedur**: Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
-* Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Gateway](#considerations-on-data-management-gateway).
+* Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt „Hinweise zum Datenverwaltungsgateway“.
 
 ## <a name="considerations-for-the-sink"></a>Hinweise zur Senke
 ### <a name="general"></a>Allgemein

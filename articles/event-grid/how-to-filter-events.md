@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: spelluru
-ms.openlocfilehash: fa7deb8a1ef536ef0c2b7fbb0a184a950821aebf
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 95a0d1b8afba71f6c8226dfe1ad5268d9e6f24e1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54477335"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816916"
 ---
 # <a name="filter-events-for-event-grid"></a>Filtern von Ereignissen für Event Grid
 
@@ -20,7 +20,7 @@ Dieser Artikel zeigt, wie Sie Ereignisse beim Erstellen eines Event Grid-Abonnem
 
 ## <a name="filter-by-event-type"></a>Filtern nach Ereignistyp
 
-Beim Erstellen eines Event Grid-Abonnements können Sie angeben, welche [Ereignistypen](event-schema.md) an den Endpunkt gesendet werden sollen. Die Beispiele in diesem Abschnitt erstellen Ereignisabonnements für eine Ressourcengruppe, beschränken jedoch die Ereignisse, die an `Microsoft.Resources.ResourceWriteFailure` und `Microsoft.Resources.ResourceWriteSuccess` gesendet werden. Wenn Sie mehr Flexibilität beim Filtern von Ereignissen nach Ereignistypen benötigen, lesen Sie [Filtern nach erweiterten Operatoren und Datenfeldern](#filter-by-advanced-operators-and-data-fields).
+Beim Erstellen eines Event Grid-Abonnements können Sie angeben, welche [Ereignistypen](event-schema.md) an den Endpunkt gesendet werden sollen. Die Beispiele in diesem Abschnitt erstellen Ereignisabonnements für eine Ressourcengruppe, beschränken jedoch die Ereignisse, die an `Microsoft.Resources.ResourceWriteFailure` und `Microsoft.Resources.ResourceWriteSuccess` gesendet werden. Wenn Sie mehr Flexibilität beim Filtern von Ereignissen nach Ereignistypen benötigen, lesen Sie „Filtern nach erweiterten Operatoren und Datenfeldern“.
 
 Verwenden Sie für PowerShell den Parameter `-IncludedEventType` beim Erstellen des Abonnements.
 
@@ -77,7 +77,7 @@ Verwenden Sie für eine Resource Manager-Vorlage, die Eigenschaft `includedEvent
 
 ## <a name="filter-by-subject"></a>Filtern nach Betreff
 
-Sie können Ereignisse nach dem Betreff in den Ereignisdaten filtern. Sie können einen Wert angeben, der dem Anfang oder Ende des Betreffs entspricht. Wenn Sie mehr Flexibilität beim Filtern von Ereignissen nach Betreff benötigen, lesen Sie [Filtern nach erweiterten Operatoren und Datenfeldern](#filter-by-advanced-operators-and-data-fields).
+Sie können Ereignisse nach dem Betreff in den Ereignisdaten filtern. Sie können einen Wert angeben, der dem Anfang oder Ende des Betreffs entspricht. Wenn Sie mehr Flexibilität beim Filtern von Ereignissen nach Betreff benötigen, lesen Sie „Filtern nach erweiterten Operatoren und Datenfeldern“.
 
 Im folgenden PowerShell-Beispiel erstellen Sie ein Ereignisabonnement, das nach dem Anfang des Betreffs filtert. Mit dem Parameter `-SubjectBeginsWith` können Sie Ereignisse auf solche für eine bestimmte Ressource beschränken. Sie übergeben die Ressourcen-ID einer Netzwerksicherheitsgruppe.
 

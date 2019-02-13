@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 3a7c91f4a83cd69bdb87ffaccce555b04eca67cc
-ms.sourcegitcommit: 0fc99ab4fbc6922064fc27d64161be6072896b21
+ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51597609"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55513937"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -48,6 +48,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | DNS-Server pro virtuellem Netzwerk |20 |
 | Private IP-Adressen pro virtuellem Netzwerk |65536 |
 | Private IP-Adressen pro Netzwerkschnittstelle |256 |
+| Private IP-Adressen pro virtuellem Computer |256 |
 | Parallele TCP-Flüsse pro NIC eines virtuellen Computers bzw. einer Rolleninstanz |500K |
 | Netzwerkschnittstellen |65536 |
 | Netzwerksicherheitsgruppen |5.000 |
@@ -69,6 +70,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Öffentliche IP-Adressen – dynamisch |(Basic) 1000 |an den Support wenden |
 | Öffentliche IP-Adressen – statisch |(Basic) 200 |an den Support wenden |
 | Öffentliche IP-Adressen – statisch |(Standard) 200 |an den Support wenden |
+| Größe des Präfix für öffentliche IP-Adressen (Vorschau) | /28 | /28 |
 
 #### <a name="load-balancer"></a>Load Balancer-Grenzwerte
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung im Vergleich zu den Grenzwerten Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).

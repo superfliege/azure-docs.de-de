@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 12/03/2018
 ms.author: anzaman
-ms.openlocfilehash: f970f535f83bc3b3c2a850ec126a7afff2af739f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6c6f2890cf9bd3c8cb412b3fa2f28d8ea3b6f72
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827583"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734316"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-api"></a>Anpassen eines Markenmodells mit der Video Indexer-API
 
@@ -26,23 +26,23 @@ Sie können die Video Indexer-APIs zum Erstellen, Verwenden und Bearbeiten von b
 
 ## <a name="create-a-brand"></a>Erstellen einer Marke
 
-Dadurch wird eine neue benutzerdefinierte Marke erstellt und dem benutzerdefinierten Markenmodell für das angegebene Konto hinzugefügt. 
+Dadurch wird eine neue benutzerdefinierte Marke erstellt und dem benutzerdefinierten Markenmodell für das angegebene Konto hinzugefügt.
 
 ### <a name="request-url"></a>Anfrage-URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Brand).
 
-### <a name="request-parameters"></a>Anforderungsparameter 
+### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -95,17 +95,17 @@ Entfernt eine Marke aus dem benutzerdefinierten Markenmodell für das angegebene
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Brand?).
 
 ### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|id|integer|JA|Die Marken-ID (bei der Erstellung der Marke generiert)|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|id|integer|Ja|Die Marken-ID (bei der Erstellung der Marke generiert)|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -117,24 +117,24 @@ Es wird kein Inhalt zurückgegeben, wenn die Marke erfolgreich gelöscht wurde.
 
 ## <a name="get-a-specific-brand"></a>Abrufen einer bestimmten Marke
 
-Auf diese Weise können Sie nach den Details einer Marke im benutzerdefinierten Markenmodell für das angegebene Konto anhand der Marken-ID suchen. 
+Auf diese Weise können Sie nach den Details einer Marke im benutzerdefinierten Markenmodell für das angegebene Konto anhand der Marken-ID suchen.
 
 ### <a name="request-url"></a>Anfrage-URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brand?).
 
-### <a name="request-parameters"></a>Anforderungsparameter 
+### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|id|integer|JA|Die Marken-ID (bei der Erstellung der Marke generiert)|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|id|integer|Ja|Die Marken-ID (bei der Erstellung der Marke generiert)|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -167,24 +167,24 @@ Die Antwort liefert Informationen über die gesuchte Marke (mithilfe der Marken-
 
 ## <a name="update-a-specific-brand"></a>Aktualisieren einer bestimmten Marke
 
-Auf diese Weise können Sie nach den Details einer Marke im benutzerdefinierten Markenmodell für das angegebene Konto anhand der Marken-ID suchen. 
+Auf diese Weise können Sie nach den Details einer Marke im benutzerdefinierten Markenmodell für das angegebene Konto anhand der Marken-ID suchen.
 
 ### <a name="request-url"></a>Anfrage-URL
 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands/{id}?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brand?).
 
 ### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|id|integer|JA|Die Marken-ID (bei der Erstellung der Marke generiert)|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|id|integer|Ja|Die Marken-ID (bei der Erstellung der Marke generiert)|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -237,16 +237,16 @@ Dies gibt alle Marken im benutzerdefinierten Markenmodell für das angegebene Ko
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands?).
 
 ### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -270,7 +270,7 @@ Die Antwort enthält eine Liste mit allen Marken in Ihrem Konto und deren Detail
         "description": "This is an example",
         "tags": ["Tag1", "Tag2"]
     },
-        {
+    {
         "ReferenceUrl": null,
         "id": 97975,
         "name": "Example2",
@@ -297,16 +297,16 @@ Dies gibt die Einstellungen des Markenmodells im angegebenen Konto zurück. Die 
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Brands?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Brands).
 
 ### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -330,20 +330,20 @@ Die Antwort zeigt, ob Bing-Marken im Format des folgenden Beispiels aktiviert si
 
 Dies aktualisiert die Einstellungen des Markenmodells im angegebenen Konto. Die Einstellungen des Markenmodells geben an, ob die Erkennung über die Bing-Markendatenbank aktiviert ist. Wenn Bing-Marken nicht aktiviert sind, erkennt Video Indexer nur Marken aus dem benutzerdefinierten Markenmodell des angegebenen Kontos.
 
-### <a name="request-url"></a>Anforderungs-URL: 
+### <a name="request-url"></a>Anforderungs-URL:
 ```
 https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/BrandsModelSettings?accessToken={accessToken}
 ```
- 
+
 [Erforderliche Parameter anzeigen und mit dem Video Indexer-Entwicklerportal ausprobieren](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Brands-Model-Settings?).
 
-### <a name="request-parameters"></a>Anforderungsparameter 
+### <a name="request-parameters"></a>Anforderungsparameter
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 

@@ -9,99 +9,66 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 12/22/2018
+ms.date: 02/03/2019
 ms.author: juliako
-ms.openlocfilehash: d74ce913a2189dd1062b30f9def919cbbabe7b64
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 10600d8f3ff4e08b8d90f28ec15d3cb0c56bcae0
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742523"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746743"
 ---
 # <a name="streaming-policies"></a>Streamingrichtlinien
 
-In Azure Media Services v3 können Sie mithilfe von Streamingrichtlinien Streamingprotokolle und Verschlüsselungsoptionen für Ihre StreamingLocators definieren. Sie können entweder den Namen der von Ihnen erstellten Streamingrichtlinie angeben oder eine der vordefinierten Streamingrichtlinien verwenden. Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
+In Azure Media Services v3 können Sie mithilfe von [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies) Streamingprotokolle und Verschlüsselungsoptionen für Ihre [Streaminglocator](streaming-locators-concept.md) definieren. Sie können entweder eine der vordefinierten Streamingrichtlinien verwenden oder eine benutzerdefinierte Richtlinie erstellen. Die folgenden vordefinierten Streamingrichtlinien sind aktuell verfügbar: „Predefined_DownloadOnly“, „Predefined_ClearStreamingOnly“, „Predefined_DownloadAndClearStreaming“, „Predefined_ClearKey“, „Predefined_MultiDrmCencStreaming“ und „Predefined_MultiDrmStreaming“.
 
 > [!IMPORTANT]
-> Wenn Sie eine benutzerdefinierte [Streamingrichtlinie](https://docs.microsoft.com/rest/api/media/streamingpolicies) verwenden, sollten Sie eine begrenzte Menge solcher Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Verschlüsselungsoptionen und -protokolle benötigt werden. Ihr Media Services-Konto weist ein Kontingent für die Anzahl von Streamingrichtlinieneinträgen auf. Sie sollten nicht für jeden Streaminglocator eine neue Streamingrichtlinie erstellen.
+> * Eigenschaften von **Streamingrichtlinien** vom Datetime-Typ liegen immer im UTC-Format vor.
+> * Sie sollten eine begrenzte Sammlung von Richtlinien für Ihr Media Services-Konto erstellen und diese für Ihre Streaminglocators wiederverwenden, wenn dieselben Optionen benötigt werden. 
 
-## <a name="streamingpolicy-definition"></a>StreamingPolicy-Definition
+## <a name="examples"></a>Beispiele
 
-Die folgende Tabelle enthält die Eigenschaften von StreamingPolicy und die jeweiligen Definitionen.
+### <a name="not-encrypted"></a>Nicht verschlüsselt
 
-|NAME|BESCHREIBUNG|
-|---|---|
-|id|Vollqualifizierte Ressourcen-ID für die Ressource.|
-|name|Der Name der Ressource.|
-|properties.commonEncryptionCbcs|Konfiguration von CommonEncryptionCbcs|
-|properties.commonEncryptionCenc|Konfiguration von CommonEncryptionCenc|
-|properties.created |Zeitpunkt der Erstellung der Streamingrichtlinie|
-|properties.defaultContentKeyPolicyName |Standardmäßiger ContentKey, der von der aktuellen Streamingrichtlinie verwendet wird.|
-|properties.envelopeEncryption  |Konfiguration von EnvelopeEncryption|
-|properties.noEncryption|Konfiguration von NoEncryption|
-|type|Der Typ der Ressource.|
+Wenn Sie Ihre Datei im Klartext (nicht verschlüsselt) streamen möchten, legen Sie die vordefinierte Richtlinie für unverschlüsseltes Streaming fest: auf ‚Predefined_ClearStreamingOnly‘ (in .NET können Sie ‚PredefinedStreamingPolicy.ClearStreamingOnly‘ verwenden).
 
-Die vollständige Definition finden Sie unter [Streamingrichtlinien](https://docs.microsoft.com/rest/api/media/streamingpolicies).
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = PredefinedStreamingPolicy.ClearStreamingOnly
+    });
+```
+
+### <a name="encrypted"></a>Verschlüsselt 
+
+Wenn Sie Ihren Inhalt mit Umschlag- und CENC-Verschlüsselung verschlüsseln müssen, legen Sie die Richtlinie auf ‚Predefined_MultiDrmCencStreaming‘ fest. Diese Richtlinie gibt an, dass zwei Inhaltsschlüssel (Umschlag und CENC) generiert und für den Locator festgelegt werden sollen. Daher werden die Umschlag-, PlayReady- und Widevine-Verschlüsselungen angewendet (der Schlüssel wird dem Client basierend auf den konfigurierten DRM-Lizenzen bereitgestellt).
+
+```csharp
+StreamingLocator locator = await client.StreamingLocators.CreateAsync(
+    resourceGroup,
+    accountName,
+    locatorName,
+    new StreamingLocator
+    {
+        AssetName = assetName,
+        StreamingPolicyName = "Predefined_MultiDrmCencStreaming",
+        DefaultContentKeyPolicyName = contentPolicyName
+    });
+```
+
+Wenn Sie den Stream auch mit CBCS (FairPlay) verschlüsseln möchten, verwenden Sie ‚Predefined_MultiDrmStreaming‘.
 
 ## <a name="filtering-ordering-paging"></a>Filterung, Sortierung, Paging
 
-Media Services unterstützt die folgenden OData-Abfrageoptionen für Streamingrichtlinien: 
-
-* $filter 
-* $orderby 
-* $top 
-* $skiptoken 
-
-Operatorbeschreibung:
-
-* Eq = equal to (ist gleich)
-* Ne = not equal to (ist nicht gleich)
-* Ge = Greater than or equal to (ist größer als oder gleich)
-* Le = Less than or equal to (ist kleiner als oder gleich)
-* Gt = Greater than (größer als)
-* Lt = Less than (kleiner als)
-
-### <a name="filteringordering"></a>Filterung/Sortierung
-
-Die folgende Tabelle zeigt, wie diese Optionen auf die StreamingPolicy-Eigenschaften angewendet werden können: 
-
-|NAME|Filter|Reihenfolge|
-|---|---|---|
-|id|||
-|name|Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
-|properties.commonEncryptionCbcs|||
-|properties.commonEncryptionCenc|||
-|properties.created |Eq, ne, ge, le, gt, lt|Aufsteigend und absteigend|
-|properties.defaultContentKeyPolicyName |||
-|properties.envelopeEncryption|||
-|properties.noEncryption|||
-|type|||
-
-### <a name="pagination"></a>Paginierung
-
-Die Paginierung wird für jede der vier aktivierten Sortierreihenfolgen unterstützt. Derzeit ist die Seitengröße 10.
-
-> [!TIP]
-> Verwenden Sie immer den Link „Weiter“ zum Enumerieren der Auflistung und keine bestimmte Seitengröße als Referenz.
-
-Wenn eine Abfrageantwort viele Elemente enthält, gibt der Dienst eine „\@odata.nextLink“-Eigenschaft zurück, um die nächste Seite der Ergebnisse abzurufen. Auf diese Weise kann das gesamte Resultset paginiert werden. Sie können die Seitengröße nicht konfigurieren. 
-
-Wenn während des Durchlaufens der Sammlung StreamingPolicy-Objekte erstellt oder gelöscht werden, werden die Änderungen in den zurückgegebenen Ergebnissen übernommen (sofern sich diese Änderungen in dem Teil der Sammlung befinden, der nicht heruntergeladen wurde.) 
-
-Im folgenden C#-Beispiel wird gezeigt, wie alle StreamingPolicies im Konto durchlaufen werden.
-
-```csharp
-var firstPage = await MediaServicesArmClient.StreamingPolicies.ListAsync(CustomerResourceGroup, CustomerAccountName);
-
-var currentPage = firstPage;
-while (currentPage.NextPageLink != null)
-{
-    currentPage = await MediaServicesArmClient.StreamingPolicies.ListNextAsync(currentPage.NextPageLink);
-}
-```
-
-REST-Beispiele finden Sie unter [Streamingrichtlinien – Liste](https://docs.microsoft.com/rest/api/media/streamingpolicies/list).
+Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Streamen einer Datei](stream-files-dotnet-quickstart.md)
+* [Streamen einer Datei](stream-files-dotnet-quickstart.md)
+* [Verwenden der dynamischen AES-128-Verschlüsselung und des Schlüsselübermittlungsdiensts](protect-with-aes128.md)
+* [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)

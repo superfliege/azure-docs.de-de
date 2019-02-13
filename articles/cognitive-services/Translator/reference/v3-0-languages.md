@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 7489c4298abe91755a2bf9edd8335061ed42d6d2
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1f7590b07ccb0af867680ce86bd1c3b042f8f7dd
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470925"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694668"
 ---
 # <a name="translator-text-api-30-languages"></a>Textübersetzungs-API 3.0: Languages
 
@@ -34,7 +34,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>api-version</td>
     <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
@@ -49,7 +49,7 @@ Anforderungsheader:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>Accept-Language</td>
     <td>*Optionaler Anforderungsheader*.<br/>Die Sprache, die für Zeichenfolgen der Benutzeroberfläche verwendet werden soll. Einige der Felder in der Antwort sind Namen von Sprachen oder Namen von Regionen. Verwenden Sie diesen Parameter, um die Sprache zu definieren, in der diese Namen zurückgegeben werden. Die Sprache wird durch die Bereitstellung eines wohlgeformten BCP 47-Sprachtags angegeben. Verwenden Sie z.B. den Wert `fr` zum Anfordern von Namen in Französisch, oder verwenden Sie den Wert `zh-Hant` zum Anfordern von Namen in Chinesisch (traditionell).<br/>Namen werden in englischer Sprache bereitgestellt, wenn keine Zielsprache angegeben wird oder keine Lokalisierung verfügbar ist.
@@ -230,7 +230,7 @@ Die Liste der unterstützten Sprachen ändert sich nicht häufig. Um Netzwerkban
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>ETag</td>
     <td>Der aktuelle Wert des Entitätstags für die angeforderten Gruppen unterstützter Sprachen. Um nachfolgende Anforderungen effizienter zu gestalten, kann der Client den `ETag`-Wert in einem `If-None-Match`-Headerfeld senden.
@@ -248,7 +248,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
     <td>Erfolgreich.</td>
@@ -274,6 +274,8 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
     <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
 </table> 
+
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Beispiele
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: juliako
-ms.openlocfilehash: 1e51439ec0a6c6658b28ae0f02ff3eaeb4c551e4
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 3b5c277f51b8ff1b2d3babf23329dcde829573a9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070425"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813958"
 ---
 # <a name="upload-files-into-a-media-services-account-using-rest"></a>Hochladen von Dateien in ein Media Services-Konto mit REST
 > [!div class="op_single_selector"]
@@ -88,7 +88,7 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
     ```
 4. Klicken Sie auf der linken Seite des Fensters **Postman** auf **1. Get AAD Auth token** -> **Get Azure AD Token for Service Principal** (AAD Authentifizierungstoken abrufen – Azure AD-Token für Dienstprinzipal abrufen).
 
-    Der URL-Teil wird mit der Umgebungsvariablen **AzureADSTSEndpoint** gefüllt (früher im Tutorial legen Sie die Werte von [Umgebungsvariablen](#configure-the-environment) fest, die die [Sammlung](#configure-the-collection) unterstützen).
+    Der URL-Teil wird mit der Umgebungsvariablen **AzureADSTSEndpoint** gefüllt (früher im Tutorial legen Sie die Werte von Umgebungsvariablen fest, die die Sammlung unterstützen).
 
     ![Hochladen einer Datei](./media/media-services-rest-upload-files/postment-get-token.png)
 
@@ -96,7 +96,7 @@ Schritte zum Einrichten von Postman für dieses Tutorial finden Sie unter [Konfi
 
     Sie können die Antwort sehen, die „access_token“ enthält. Das „Testskript“ nimmt diesen Wert und legt die Umgebungsvariable **AccessToken** fest (wie oben beschrieben). Wenn Sie Ihre Umgebungsvariablen untersuchen, werden Sie feststellen, dass diese Variable nun den Wert des Zugriffstoken (Bearertoken) enthält, das in den restlichen Vorgängen verwendet wird. 
 
-    Wenn das Token abläuft, durchlaufen Sie den Schritt zum Abrufen des Azure AD-Tokens für den Dienstprinzipal erneut. 
+    Wenn das Token abläuft, durchlaufen Sie den Schritt zum Abrufen des Azure AD-Tokens für den Dienstprinzipal erneut. 
 
 ## <a name="create-an-access-policy-with-write-permission"></a>Erstellen einer Zugriffsrichtlinie mit Schreibberechtigung
 
@@ -124,7 +124,7 @@ Ein [Medienobjekt](https://docs.microsoft.com/rest/api/media/operations/asset) i
 
 Eine der Eigenschaften, die Sie beim Erstellen eines Medienobjekts hinzufügen können, ist **Options**. Sie können eine der folgenden Verschlüsselungsoptionen angeben: **Keine** (Standardwert, es wird keine Verschlüsselung verwendet), **StorageEncrypted** (für Inhalte, die mit clientseitiger Speicherverschlüsselung vorverschlüsselt wurden), **CommonEncryptionProtected** oder **EnvelopeEncryptionProtected**. Wenn Sie über ein verschlüsseltes Medienobjekt verfügen, müssen Sie eine Übermittlungsrichtlinie konfigurieren. Weitere Informationen finden Sie unter [Konfigurieren von Übermittlungsrichtlinien für Medienobjekte](media-services-rest-configure-asset-delivery-policy.md).
 
-Wenn Ihr Medienobjekt verschlüsselt ist, müssen Sie ein **ContentKey**-Element erstellen und mit Ihrem Medienobjekt verknüpfen. Informationen dazu finden Sie im Artikel [Erstellen von Inhaltsschlüsseln mit REST](media-services-rest-create-contentkey.md). Nachdem Sie die Dateien in das Medienobjekt hochgeladen haben, müssen Sie die Verschlüsselungseigenschaften für die **AssetFile**-Entität anhand der Werte aktualisieren, die Sie während der **Asset**-Verschlüsselung erhalten haben. Verwenden Sie dazu die **MERGE**-HTTP-Anforderung. 
+Wenn Ihr Medienobjekt verschlüsselt ist, müssen Sie ein **ContentKey**-Element erstellen und mit Ihrem Medienobjekt verknüpfen, wie im folgenden Artikel beschrieben: [So erstellen Sie einen ContentKey](media-services-rest-create-contentkey.md). Nachdem Sie die Dateien in das Medienobjekt hochgeladen haben, müssen Sie die Verschlüsselungseigenschaften für die **AssetFile**-Entität anhand der Werte aktualisieren, die Sie während der **Asset**-Verschlüsselung erhalten haben. Verwenden Sie dazu die **MERGE**-HTTP-Anforderung. 
 
 In diesem Beispiel erstellen wir ein unverschlüsseltes Medienobjekt. 
 
@@ -156,7 +156,7 @@ Eine SAS-URL weist das folgende Format auf:
 Folgende Überlegungen sollten berücksichtigt werden:
 
 * Einem bestimmten Medienobjekt können jeweils nicht mehr als fünf eindeutige Locators zugeordnet sein. Weitere Informationen finden Sie unter "Locator".
-* Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").    
+* Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Darüber hinaus muss der StartTime-Wert das folgende DateTime-Format aufweisen: YYYY-MM-DDTHH:mm:ssZ (Beispiel: „2014-05-23T17:53:50Z“).    
 * Gegebenenfalls tritt eine Verzögerung von 30 bis 40 Sekunden zwischen dem Erstellen eines Locators und seiner Verfügbarkeit auf.
 
 ### <a name="create-a-sas-locator"></a>Erstellen eines SAS-Locators
@@ -188,7 +188,7 @@ Erstellen Sie eine neue Anforderung, und richten Sie sie ein:
 1. Drücken Sie **+**, um eine neue Anforderungsregisterkarte zu erstellen.
 2. Wählen Sie die **PUT**-Operation aus, und fügen Sie **{{UploadURL}}** in die URL ein.
 2. Lassen Sie die Registerkarte **Authorization** (Autorisierung) unverändert (legen Sie nicht das **Bearertoken** fest).
-3. Geben Sie auf der Registerkarte **Headers** Folgendes an: **Key** (Schlüssel): "x-ms-blob-type" und **Value** (Wert): "BlockBlob".
+3. Geben Sie auf der Registerkarte **Header** Folgendes an: **Key**: „x-ms-blob-type“ und **Value**: „BlockBlob“.
 2. Klicken Sie auf der Registerkarte **Body** (Textkörper) auf **binary** (Binär).
 4. Wählen Sie die Datei mit dem Namen aus, den Sie in der Umgebungsvariablen **MediaFileName** angegeben haben.
 5. Klicken Sie auf **Senden**.

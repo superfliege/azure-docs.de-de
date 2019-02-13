@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: normesta
-ms.openlocfilehash: cbd58c0873a4a46d175c6d7cbdf2d004da304c06
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5677649b8f002490900ec32bee954348b2f444e6
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247237"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55731545"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die bekannten Probleme und vorübergehenden Einschränk
 
 Blob Storage-APIs und Azure Data Lake Storage Gen2-APIs sind nicht interoperabel.
 
-Wenn Sie das gleiche Tool verwenden müssen, um mit allen Inhalten zu arbeiten, die Sie in Ihr Konto hochladen, dann aktivieren Sie keine hierarchischen Namespaces für Ihr Blob Storage-Konto, bis Interoperabilität für diese APIs gewährleistet ist. Die Verwendung eines Speicherkontos ohne die hierarchischen Namespaces bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features wie z.B. Zugriffssteuerungslisten (ACLs) für Verzeichnis- und Dateisystem haben.
+Wenn Sie über benutzerdefinierte Tools, Anwendungen oder Skripts verfügen, die Blob-APIs verwenden, und sie für alle Inhalte einsetzen möchten, die Sie auf Ihr Konto hochladen, aktivieren Sie keine hierarchischen Namespaces für Ihr Blob-Speicherkonto, bis die Interoperabiliät von Blob-APIs mit Azure Data Lake Gen2-APIs sichergestellt ist. Die Verwendung eines Speicherkontos ohne die hierarchischen Namespaces bedeutet, dass Sie keinen Zugriff auf Data Lake Storage Gen2-spezifische Features wie z.B. Zugriffssteuerungslisten (ACLs) für Verzeichnis- und Dateisystem haben.
 
 ## <a name="blob-storage-apis"></a>Blob Storage-APIs
 
@@ -90,5 +90,3 @@ Für Speicherkonten ohne aktivierte hierarchische Namespaces sind diese Richtlin
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 
 Diagnoseprotokolle stehen für Azure Data Lake Storage Gen2-Konten nicht zur Verfügung.
-
-Wenden Sie sich an den Azure-Support, um Diagnoseprotokolle anzufordern. Geben Sie Ihren Kontonamen und den Zeitraum an, für den Sie Protokolle benötigen.

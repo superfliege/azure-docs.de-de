@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 7f629ceb9fe5bd19c0558d1fde45d0bddcee744e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5d83e61282d2f21a3016997e324d0f58eff15e78
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458872"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813006"
 ---
 # <a name="modeling-relationships"></a>Modellieren von Beziehungen
 In diesem Artikel wird der Modellierungsprozess erörtert, um Sie beim Entwerfen Ihrer Azure Table Storage-Lösungen zu unterstützen.
@@ -101,7 +101,7 @@ Domänenmodelle können 1:1-Beziehungen zwischen Entitäten enthalten. Müssen S
 Es gibt auch Implementierungsaspekte, die Sie veranlassen könnten, im Tabellenspeicherdienst 1:1-Beziehungen zu implementieren:  
 
 * Behandlung großer Entitäten (weitere Informationen finden Sie unter [Muster für große Entitäten](table-storage-design-patterns.md#large-entities-pattern)).  
-* Implementieren von Zugriffssteuerungen (weitere Informationen finden Sie unter [Steuern des Zugriffs mit Shared Access Signatures](#controlling-access-with-shared-access-signatures)).  
+* Implementieren von Zugriffssteuerungen (weitere Informationen finden Sie unter „Steuern des Zugriffs mit Shared Access Signatures“).  
 
 ## <a name="join-in-the-client"></a>Verbinden des Clients
 Es gibt zwar Möglichkeiten zum Modellieren von Beziehungen im Tabellenspeicherdienst, Sie sollten aber nicht vergessen, dass die zwei wichtigsten Gründe für die Benutzung des Tabellenspeicherdienstes Skalierbarkeit und Leistung sind. Wenn Sie feststellen, dass Sie viele Beziehungen modellieren, die die Leistung und Skalierbarkeit Ihrer Lösung beeinträchtigen, sollten Sie sich fragen, ob Sie unbedingt alle Datenbeziehungen in Ihren Tabellenentwurf einbeziehen müssen. Sie können möglicherweise den Entwurf vereinfachen und die Skalierbarkeit und Leistung Ihrer Lösung verbessern, wenn Sie Ihre Client-Anwendung alle erforderlichen Verknüpfungen ausführen lassen.  
@@ -117,7 +117,7 @@ Sie können Instanzen der zwei konkreten Klassen im Tabellenspeicherdienst beibe
 
 ![Tabelle „Person“](media/storage-table-design-guide/storage-table-design-IMAGE04.png)
 
-Weitere Informationen zum Arbeiten mit mehreren Entitätstypen in derselben Tabelle im Clientcode finden Sie im Abschnitt [Arbeiten mit heterogenen Entitätstypen](#working-with-heterogeneous-entity-types) weiter unten in diesem Handbuch. Hier finden Sie Beispiele darüber, wie der Entitätstyp im Clientcode erkannt wird.  
+Weitere Informationen zum Arbeiten mit mehreren Entitätstypen in derselben Tabelle im Clientcode finden Sie im Abschnitt „Arbeiten mit heterogenen Entitätstypen“ weiter unten in diesem Handbuch. Hier finden Sie Beispiele darüber, wie der Entitätstyp im Clientcode erkannt wird.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

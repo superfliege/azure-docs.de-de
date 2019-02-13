@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: jdial
-ms.openlocfilehash: 501659a93306342c7a212d135b4fdd89be096451
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 842c0d5e3dff0c21545405624f0f536c80359b19
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428168"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809894"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Anzeigen der Topologie eines virtuellen Azure-Netzwerks
 
@@ -56,7 +56,7 @@ Sie können die Befehle in den einzelnen Schritten folgendermaßen ausführen:
 
 Das verwendete Konto muss über die erforderlichen [Berechtigungen](required-rbac-permissions.md) verfügen.
 
-1. Wenn Sie bereits einen Network Watcher in derselben Region wie das virtuelle Netzwerk, in dem Sie eine Topologie erstellen möchten, verfügen, fahren Sie mit Schritt 3 fort. Erstellen Sie mit [az group create](/cli/azure/group#az_group_create) eine Ressourcengruppe, die einen Network Watcher enthalten soll. Im folgenden Beispiel wird eine Ressourcengruppe in der Region *eastus* erstellt:
+1. Wenn Sie bereits einen Network Watcher in derselben Region wie das virtuelle Netzwerk, in dem Sie eine Topologie erstellen möchten, verfügen, fahren Sie mit Schritt 3 fort. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe, die einen Network Watcher enthalten soll. Im folgenden Beispiel wird eine Ressourcengruppe in der Region *eastus* erstellt:
 
     ```azurecli-interactive
     az group create --name NetworkWatcherRG --location eastus
@@ -79,7 +79,7 @@ Das verwendete Konto muss über die erforderlichen [Berechtigungen](required-rba
 
     Topologieinformationen werden nur für Ressourcen in derselben Ressourcengruppe wie die Ressourcengruppe *MyResourceGroup* und derselben Region wie der Network Watcher zurückgegeben. Beispiel: Eine Netzwerksicherheitsgruppe, die sich in einer anderen Ressourcengruppe als *MyResourceGroup* befindet, wird nicht angezeigt, selbst wenn sie einem Subnetz im virtuellen Netzwerk *myVnet* zugeordnet ist.
 
-  Erfahren Sie mehr über die [Beziehungen](#relationhips) und [Eigenschaften](#properties) in der zurückgegebenen Ausgabe. Wenn Sie nicht über ein virtuelles Netzwerk verfügen, dessen Topologie Sie anzeigen können, können Sie eines mit dem Beispielskript [Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erstellen. Um ein Diagramm der Topologie anzuzeigen und als bearbeitbare Datei herunterzuladen, verwenden Sie das [Portal](#azure-portal).
+  Erfahren Sie mehr über die Beziehungen und [Eigenschaften](#properties) in der zurückgegebenen Ausgabe. Wenn Sie nicht über ein virtuelles Netzwerk verfügen, dessen Topologie Sie anzeigen können, können Sie eines mit dem Beispielskript [Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](../virtual-network/scripts/virtual-network-cli-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erstellen. Um ein Diagramm der Topologie anzuzeigen und als bearbeitbare Datei herunterzuladen, verwenden Sie das [Portal](#azure-portal).
 
 ## <a name = "powershell"></a>Topologie anzeigen – PowerShell
 
@@ -123,7 +123,7 @@ Das verwendete Konto muss über die erforderlichen [Berechtigungen](required-rba
 
    Topologieinformationen werden nur für Ressourcen in derselben Ressourcengruppe wie die Ressourcengruppe *MyResourceGroup* und derselben Region wie der Network Watcher zurückgegeben. Beispiel: Eine Netzwerksicherheitsgruppe, die sich in einer anderen Ressourcengruppe als *MyResourceGroup* befindet, wird nicht angezeigt, selbst wenn sie einem Subnetz im virtuellen Netzwerk *myVnet* zugeordnet ist.
 
-  Erfahren Sie mehr über die [Beziehungen](#relationhips) und [Eigenschaften](#properties) in der zurückgegebenen Ausgabe. Wenn Sie nicht über ein virtuelles Netzwerk verfügen, dessen Topologie Sie anzeigen können, können Sie eines mit dem Beispielskript [Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erstellen. Um ein Diagramm der Topologie anzuzeigen und als bearbeitbare Datei herunterzuladen, verwenden Sie das [Portal](#azure-portal).
+  Erfahren Sie mehr über die Beziehungen und [Eigenschaften](#properties) in der zurückgegebenen Ausgabe. Wenn Sie nicht über ein virtuelles Netzwerk verfügen, dessen Topologie Sie anzeigen können, können Sie eines mit dem Beispielskript [Weiterleiten von Datenverkehr über ein virtuelles Netzwerkgerät](../virtual-network/scripts/virtual-network-powershell-sample-route-traffic-through-nva.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) erstellen. Um ein Diagramm der Topologie anzuzeigen und als bearbeitbare Datei herunterzuladen, verwenden Sie das [Portal](#azure-portal).
 
 ## <a name="relationships"></a>Beziehungen
 

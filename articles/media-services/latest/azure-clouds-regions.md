@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/11/2019
 ms.author: juliako
-ms.openlocfilehash: 8eb49010d89c3039f46e5c84cd305b7d0b5ca025
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306978"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55767451"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -33,7 +33,14 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 | [LiveEvents](live-streaming-overview.md) | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
 | [StreamingEndpoints](streaming-endpoint-concept.md) | Verfügbar | Verfügbar | Verfügbar | Verfügbar |
 
-## <a name="regions"></a>Regionen 
+## <a name="regionsgeographieslocations"></a>Regionen/Geografien/Standorte
+
+* [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/)
+* [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/)
+
+## <a name="region-code-name"></a>Name des Regionscodes 
 
 Wenn Sie den Parameter **location** festlegen müssen, müssen Sie den Regionscodenamen als **location**-Wert angeben. Sie können die folgende Zeile in der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ausführen, um den Codenamen der Region abzurufen, in der sich Ihr Konto befindet und an die Ihr Aufruf weitergeleitet werden soll:
 

@@ -1,20 +1,20 @@
 ---
-title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Azure Storage mit Lesezugriff (RA-GRS) | Microsoft-Dokumentation
+title: Entwerfen von hochverfügbaren Anwendungen mit georedundantem Speicher mit Lesezugriff (RA-GRS) | Microsoft-Dokumentation
 description: Verwenden Sie Azure-RA-GRS-Speicher, um eine hochverfügbare Anwendung so flexibel zu gestalten, dass sie Ausfälle verarbeiten kann.
 services: storage
 author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 3e2083b03b8463907c6d80fb5a9e1f25cca9beb5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454942"
+ms.locfileid: "55512243"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -43,9 +43,7 @@ Berücksichtigen Sie beim Entwerfen Ihrer Anwendung für RA-GRS folgende wichtig
 
 * Sie können die Speicherclientbibliothek für die Interaktion mit den Daten in der primären oder sekundären Region verwenden. Sie können Anforderungen auch automatisch an die sekundäre Region leiten, wenn bei einer Leseanforderung an die primäre Region eine Zeitüberschreitung auftritt.
 
-* Wenn ein schwerwiegendes Problem beim Zugriff auf die Daten in der primären Region vorliegt, kann das Azure-Team ein geografisches Failover auslösen. Ab diesem Zeitpunkt werden die auf die primäre Region verweisenden DNS-Einträge so geändert, dass sie auf die sekundäre Region verweisen.
-
-* Wenn ein geografisches Failover auftritt, wählt Azure einen neuen sekundären Standort aus, repliziert die Daten an diesem Speicherort und verweist anschließend die sekundären DNS-Einträge auf diesen. Der sekundäre Endpunkt steht nicht zur Verfügung, bis die Replikation des Speicherkontos abgeschlossen ist. Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](https://docs.microsoft.com/azure/storage/storage-disaster-recovery-guidance).
+* Wenn die primäre Region nicht verfügbar ist, können Sie ein Kontofailover einleiten. Wenn Sie ein Failover auf die sekundäre Region ausführen, werden die DNS-Einträge, die auf die primäre Region verweisen, so geändert, dass sie auf die sekundäre Region verweisen. Nachdem das Failover abgeschlossen ist, wird der Schreibzugriff für GRS und RA-GRS-Konten wiederhergestellt. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Failover des Speicherkontos (Vorschau) in Azure Storage](storage-disaster-recovery-guidance.md).
 
 ## <a name="application-design-considerations-when-using-ra-grs"></a>Überlegungen zum Anwendungsentwurf bei der Verwendung von RA-GRS
 

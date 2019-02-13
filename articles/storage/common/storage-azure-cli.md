@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 707ee508b0615ab873b60b45eb1d9f0294313367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f485f38d4c580937b027bb76d0c34c98f699ed93
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464567"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816848"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Verwenden der Azure-Befehlszeilenschnittstelle mit Azure-Speicher
 
@@ -38,7 +38,7 @@ Diese Anleitung setzt voraus, dass Sie die grundlegenden Konzepte von Azure Stor
 Laden Sie die Azure-Befehlszeilenschnittstelle herunter, und installieren Sie sie gemäß den Anweisungen unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-az-cli2).
 
 > [!TIP]
-> Wenn Sie Probleme mit der Installation haben, lesen Sie den Abschnitt zur [Behandlung von Installationsproblemen](/cli/azure/install-az-cli2#installation-troubleshooting) des Artikels und die Anleitung zur [Behandlung von Installationsproblemen](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) auf GitHub.
+> Wenn Sie Probleme mit der Installation haben, lesen Sie den Abschnitt zur [Behandlung von Installationsproblemen](/cli/azure/install-az-cli2) des Artikels und die Anleitung zur [Behandlung von Installationsproblemen](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) auf GitHub.
 >
 
 ## <a name="working-with-the-cli"></a>Arbeiten mit der CLI
@@ -173,7 +173,7 @@ Done
 ## <a name="manage-storage-accounts"></a>Verwalten von Speicherkonten
 
 ### <a name="create-a-new-storage-account"></a>Erstellen eines neuen Speicherkontos
-Zum Verwenden von Azure Storage benötigen Sie ein Speicherkonto. Nachdem Sie Ihren Computer für die [Verbindung mit Ihrem Abonnement](#connect-to-your-azure-subscription) konfiguriert haben, können Sie ein neues Azure-Speicherkonto erstellen.
+Zum Verwenden von Azure Storage benötigen Sie ein Speicherkonto. Nachdem Sie Ihren Computer für die „Verbindung mit Ihrem Abonnement“ konfiguriert haben, können Sie ein neues Azure-Speicherkonto erstellen.
 
 ```azurecli
 az storage account create \
@@ -277,7 +277,7 @@ az storage blob download \
 
 ### <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Auflisten der Blobs in einem Container mit dem Befehl [az storage blob list](/cli/azure/storage/blob#az_storage_blob_list).
+Auflisten der Blobs in einem Container mit dem Befehl [az storage blob list](/cli/azure/storage/blob).
 
 ```azurecli
 az storage blob list \

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c7a3893c35031d05ea8aade0ad5d30b5a56176fd
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015133"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816729"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen Sie DataSets zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen Sie eine Pipeline mit einer Kopieraktivität, die ein DataSet als Eingabe und ein DataSet als Ausgabe akzeptiert. 
 
-Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Dienste, DataSets und die Pipeline) erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Unter [JSON-Beispiel: Kopieren von Daten aus DB2 in Azure Blob Storage](#json-example-copy-data-from-db2-to-azure-blob) finden Sie ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen DB2-Datenspeicher verwendet werden.
+Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Dienste, DataSets und die Pipeline) erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das „JSON-Beispiel: Kopieren von Daten aus DB2 in Azure Blob Storage“ zeigt die JSON-Definitionen für die Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen DB2-Datenspeicher verwendet werden.
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für DB2-Datenspeicher verwendet werden.
 
@@ -81,14 +81,14 @@ Die folgende Tabelle enthält die JSON-Eigenschaften, die spezifisch für einen 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |JA |
-| **server** |Der Name des DB2-Servers |JA |
-| **database** |Der Name der DB2-Datenbank |JA |
+| **type** |Diese Eigenschaft muss auf **OnPremisesDb2** festgelegt werden. |Ja |
+| **server** |Der Name des DB2-Servers |Ja |
+| **database** |Der Name der DB2-Datenbank |Ja |
 | **schema** |Der Name des Schemas in der DB2-Datenbank. Diese Eigenschaft erfordert die Beachtung der Groß-/Kleinschreibung. |Nein  |
-| **authenticationType** |Der Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |JA |
+| **authenticationType** |Der Typ der Authentifizierung für die Verbindung mit der DB2-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
 | **username** |Der Name für das Benutzerkonto, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
 | **password** |Das Kennwort für das Benutzerkonto |Nein  |
-| **gatewayName** |Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll |JA |
+| **gatewayName** |Der Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen DB2-Datenbank verwenden soll |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste mit den Abschnitten und Eigenschaften, die zum Definieren von DataSets zur Verfügung stehen, finden Sie im Artikel [Erstellen von DataSets](data-factory-create-datasets.md). Abschnitte wie **structure**, **availability** und **policy** des JSON-Codes eines DataSets sind bei allen DataSet-Typen (Azure SQL, Azure Blob Storage, Azure Table Storage usw.) ähnlich.
@@ -314,11 +314,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| DECIMAL |DECIMAL |
-| DecimalFloat |DECIMAL |
-| Numeric |DECIMAL |
-| Datum |Datetime |
-| Time |Zeitraum |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeric |Decimal |
+| Datum |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |Zeichenfolge |
@@ -340,11 +340,11 @@ Die folgenden Zuordnungen werden angewendet, wenn die Kopieraktivität Daten aus
 | Real |Single |
 | Double |Double |
 | Float |Double |
-| DECIMAL |DECIMAL |
-| DecimalFloat |DECIMAL |
-| Numeric |DECIMAL |
-| Datum |Datetime |
-| Time |Zeitraum |
+| Decimal |Decimal |
+| DecimalFloat |Decimal |
+| Numeric |Decimal |
+| Datum |DateTime |
+| Time |TimeSpan |
 | Timestamp |Datetime |
 | xml |Byte[] |
 | Char |Zeichenfolge |

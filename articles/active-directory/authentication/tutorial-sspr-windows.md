@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
-ms.date: 12/05/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: a36f9bf3ade623a6b623116c504c2b6a04fcdf2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c84d876828ac96bfb44b84e99b13489d51ae3370
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474869"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694022"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -33,6 +33,7 @@ In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörte
    * [in Azure AD Hybrid eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) sein, mit Netzwerkkonnektivität zu einem Domänencontroller.
 * Sie müssen die Azure AD-Self-Service-Kennwortzurücksetzung aktivieren.
 * Wenn sich Ihre Windows 10-Geräte hinter einem Proxyserver oder einer Firewall befinden, müssen Sie die URLs `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com` zu Ihrer Liste zulässiger URLs für HTTPS-Datenverkehr (Port 443) hinzufügen.
+* Sehen Sie sich die Einschränkungen an, bevor Sie dieses Feature in Ihrer Umgebung ausprobieren.
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
 
@@ -86,7 +87,7 @@ Sie haben jetzt eine Richtlinie für die Gerätekonfiguration erstellt und zugew
 
 ## <a name="configure-reset-password-link-using-the-registry"></a>Konfigurieren des Links „Kennwort zurücksetzen“ über die Registrierung
 
-1. Melden Sie sich mit Administratoranmeldeinformationen am Windows-PC an.
+1. Melden Sie sich mit Administratoranmeldeinformationen beim Windows-PC an.
 2. Führen Sie den Befehl **regedit** als Administrator aus.
 3. Legen Sie den folgenden Registrierungsschlüssel fest:
    * `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\AzureADAccount`
@@ -106,6 +107,8 @@ Das Azure AD-Überwachungsprotokoll enthält Informationen zur IP-Adresse und zu
 
 ![Beispiel: Kennwortzurücksetzung auf dem Anmeldebildschirm im Azure AD-Überwachungsprotokoll](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
+Wenn Benutzer ihr Kennwort über den Anmeldebildschirm eines Windows 10-Geräts zurücksetzen, wird ein temporäres Konto mit niedrigen Berechtigungen namens „defaultuser1“ erstellt. Mit diesem Konto wird der Vorgang zur Kennwortzurücksetzung geschützt. Für das Konto selbst ist ein zufällig generiertes Kennwort festgelegt. Das Konto wird außerdem nicht für die Geräteanmeldung angezeigt und wird nach dem Zurücksetzen des Kennworts durch den Benutzer automatisch entfernt. Unter Umständen sind mehrere Profile vom Typ „defaultuser“ vorhanden, sie können jedoch ignoriert werden.
+
 ## <a name="limitations"></a>Einschränkungen
 
 Beim Testen dieser Funktionalität mit Hyper-V wird der Link „Kennwort zurücksetzen“ nicht angezeigt.
@@ -116,7 +119,9 @@ Beim Testen dieser Funktionalität mit Remotedesktop oder einer erweiterten VM-S
 
 * Die Kennwortzurücksetzung wird für Remotedesktop derzeit nicht unterstützt.
 
-Wenn die Richtlinie die Verwendung von STRG+ALT+ENTF vorschreibt oder Benachrichtigungen bei gesperrtem Bildschirm deaktiviert sind, funktioniert **Kennwort zurücksetzen** nicht.
+Wenn in Windows 10-Versionen vor 1809 die Richtlinie STRG+ALT+ENTF vorschreibt, funktioniert **Kennwort zurücksetzen** nicht.
+
+Wenn Benachrichtigungen bei gesperrtem Bildschirm deaktiviert sind, funktioniert **Kennwort zurücksetzen** nicht.
 
 Bei den folgenden Richtlinieneinstellungen ist bekannt, dass sie die Möglichkeit zum Zurücksetzen von Kennwörtern beeinträchtigen:
 
@@ -128,7 +133,7 @@ Bei den folgenden Richtlinieneinstellungen ist bekannt, dass sie die Möglichkei
 
 Dieses Feature funktioniert nicht für Netzwerke mit 802.1x-Netzwerkauthentifizierung und der Option „Unmittelbar vor der Benutzeranmeldung ausführen“. In Netzwerken mit 802.1x-Netzwerkauthentifizierung empfiehlt es sich, die Computerauthentifizierung zu verwenden, um dieses Feature zu aktivieren.
 
-Für Umgebungen mit hybrider Domäneneinbindung gibt es ein Szenario, in dem der SSPR-Workflow vollständig ausgeführt werden kann, ohne dass ein Active Directory-Domänencontroller erforderlich ist. Konnektivität mit einem Domänencontroller ist erforderlich, um das neue Kennwort zum ersten Mal zu verwenden.
+Für Umgebungen mit hybrider Domäneneinbindung wird der SSPR-Workflow vollständig ausgeführt, ohne dass ein Active Directory-Domänencontroller erforderlich ist. Wenn ein Benutzer die Kennwortzurücksetzung durchführt, wenn die Kommunikation mit einem Active Directory-Domänencontroller nicht möglich ist (beispielsweise beim Arbeiten an einem Remotestandort), kann sich der Benutzer erst beim Gerät anmelden, wenn das Gerät mit einem Domänencontroller kommunizieren und die zwischengespeicherten Anmeldeinformationen aktualisieren kann. **Konnektivität mit einem Domänencontroller ist erforderlich, um das neue Kennwort zum ersten Mal zu verwenden.**
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

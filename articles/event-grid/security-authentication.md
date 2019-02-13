@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: babanisa
-ms.openlocfilehash: 23e1de98fff891d199d1f33fcb714b2b284e8edb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: ec34b9c5f78b4d0ea59382f616fab88e0e1dedc9
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382920"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55730933"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid – Sicherheit und Authentifizierung 
 
@@ -29,7 +29,7 @@ Ein Webhook ist eine der vielen Möglichkeiten, um Ereignisse aus Azure Event Gr
 
 Wie viele andere Dienste, die Webhooks unterstützen, müssen Sie bei Event Grid nachweisen, das Sie im Besitz Ihres Webhookendpunkts sind. Vorher wird mit dem Bereitstellen von Ereignissen für diesen Endpunkt nicht begonnen. Diese Anforderung verhindert, dass ein böswilliger Benutzer Ihren Endpunkt mit Ereignissen überschwemmt. Wenn Sie einen der drei unten angegebenen Azure-Dienste verwenden, wird diese Überprüfung automatisch von der Azure-Infrastruktur durchgeführt:
 
-* Azure Logic Apps mit [Event Grid-Connector](https://docs.microsoft.com/en-us/connectors/azureeventgrid/)
+* Azure Logic Apps mit [Event Grid-Connector](https://docs.microsoft.com/connectors/azureeventgrid/)
 * Azure Automation über [Webhook](../event-grid/ensure-tags-exists-on-new-virtual-machines.md)
 * Azure Functions mit [Event Grid-Trigger](../azure-functions/functions-bindings-event-grid.md)
 
@@ -50,7 +50,7 @@ Falls Sie einen anderen Typ von Endpunkt nutzen, z. B. eine auf einem HTTP-Trigg
 * Der Hauptteil des Ereignisses weist dasselbe Schema wie andere Event Grid-Ereignisse auf.
 * Die eventType-Eigenschaft des Ereignisses lautet `Microsoft.EventGrid.SubscriptionValidationEvent`.
 * Die Dateneigenschaft des Ereignisses enthält eine `validationCode`-Eigenschaft mit einer zufällig generierten Zeichenfolge. Beispiel: „validationCode: acb13…“.
-* Wenn Sie die API-Version „2018-05-01-preview“ verwenden, enthalten die Ereignisdaten auch eine `validationUrl`-Eigenschaft mit einer URL für das manuelle Überprüfen des Abonnements.
+* Die Ereignisdaten enthalten auch die `validationUrl`-Eigenschaft mit einer URL für die manuelle Überprüfung des Abonnements.
 * Das Array enthält ausschließlich das Validierungsereignis. Andere Ereignisse werden in einer separaten Anforderung gesendet, nachdem Sie den Validierungscode zurückgegeben haben.
 * Die EventGrid-DataPlane-SDKs verfügen über Klassen, die den Daten des Abonnementüberprüfungsereignisses und der Abonnementüberprüfungsantwort entsprechen.
 

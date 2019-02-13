@@ -1,6 +1,6 @@
 ---
-title: 'Azure Data Lake Storage Gen2 Preview: Einführung'
-description: Übersicht über Azure Data Lake Storage Gen2 Preview
+title: Azure Data Lake Storage Gen2 – Einführung
+description: Bietet eine Übersicht zu Azure Data Lake Storage Gen2
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 17b6d0ecf56ec07d3a46949b6ae3b63a6c4b94d7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 018171d4b2253c2cf7942f9f10424a9c695438b9
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250111"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809435"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2-preview"></a>Einführung in Azure Data Lake Storage Gen2 Preview
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 (Vorschau) setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Azure Data Lake Storage Gen2 führt die Funktionen unserer beiden vorhandenen Speicherdienste Azure Blob Storage und Azure Data Lake Storage Gen1 zusammen. Features von [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) (z.B. Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit) werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md) kombiniert.
+Azure Data Lake Storage Gen2 setzt auf [Azure Blob Storage](storage-blobs-introduction.md) auf und bietet eine Reihe von Funktionen für die Big Data-Analyse. Azure Data Lake Storage Gen2 führt die Funktionen unserer beiden vorhandenen Speicherdienste Azure Blob Storage und Azure Data Lake Storage Gen1 zusammen. Features von [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) (z.B. Dateisystemsemantik, Sicherheit auf Verzeichnis- und Dateiebene und Skalierbarkeit) werden mit den kostengünstigen, mehrstufigen Speicherlösungen, Hochverfügbarkeits- und Notfallwiederherstellungsfunktionen von [Azure Blob Storage](storage-blobs-introduction.md) kombiniert.
 
 ## <a name="designed-for-enterprise-big-data-analytics"></a>Für Big Data-Analysen in Großunternehmen entwickelt
 

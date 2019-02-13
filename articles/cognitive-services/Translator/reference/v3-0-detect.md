@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 892a029c3a51aa3574d92b838a51359438a6bdb6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8dd51547f574e2c47dc3582ded79231b9b573062
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464992"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699545"
 ---
 # <a name="translator-text-api-30-detect"></a>Textübersetzungs-API 3.0: Detect
 
@@ -35,7 +35,7 @@ Die folgenden Anforderungsparameter werden in der Abfragezeichenfolge übergeben
 
 <table width="100%">
   <th width="20%">Query parameter (Abfrageparameter)</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>api-version</td>
     <td>*Erforderlicher Parameter*.<br/>Die vom Client angeforderte Version der API. Der Wert muss `3.0` sein.</td>
@@ -46,7 +46,7 @@ Anforderungsheader enthalten Folgendes:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>_Eine Autorisierung_<br/>_Header_</td>
     <td>*Erforderlicher Anforderungsheader*.<br/>Weitere Informationen finden Sie in den [verfügbaren Optionen für die Authentifizierung](./v3-0-reference.md#authentication).</td>
@@ -126,7 +126,7 @@ Eine JSON-Beispielantwort lautet wie folgt:
 
 <table width="100%">
   <th width="20%">Header</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>X-RequestId</td>
     <td>Der Wert, der vom Dienst für die Identifizierung der Anforderung generiert wird. Er wird zu Problembehandlungszwecken verwendet.</td>
@@ -139,7 +139,7 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
 
 <table width="100%">
   <th width="20%">Statuscode</th>
-  <th>Beschreibung</th>
+  <th>BESCHREIBUNG</th>
   <tr>
     <td>200</td>
     <td>Erfolgreich.</td>
@@ -169,6 +169,8 @@ Im Folgenden finden Sie die möglichen HTTP-Statuscodes, die eine Anforderung zu
     <td>Der Server ist vorübergehend nicht verfügbar. Wiederholen Sie die Anforderung. Wenn der Fehler weiterhin besteht, melden Sie ihn, und gebe Sie Folgendes an: Datum und Zeitpunkt des Fehlers, Anforderungsbezeichner aus dem Anforderungsheader `X-RequestId` und Clientbezeichner aus dem Anforderungsheader `X-ClientTraceId`.</td>
   </tr>
 </table> 
+
+Wenn ein Fehler auftritt, gibt die Anforderung auch eine JSON-Fehlerantwort zurück. Der Fehlercode ist eine 6-stellige Zahl, die aus dem 3-stelligen HTTP-Statuscode gefolgt von einer 3-stelligen Zahl zur Kategorisierung des Fehlers besteht. Gängige Fehlercodes finden Sie auf der [ Referenzseite zur Textübersetzungs-API v3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#errors). 
 
 ## <a name="examples"></a>Beispiele
 

@@ -15,20 +15,20 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9be8717bc9b1d15a59486edf206dd0657a711c06
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54360484"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814536"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Erstellen von WSFC und Listener sowie Konfigurieren des internen Lastenausgleichs für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage
 In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Im Rahmen dieses Prozesses werden zwei Azure-Schnellstartvorlagen verwendet: 
 
-   | Vorlage | Beschreibung |
+   | Vorlage | BESCHREIBUNG |
    | --- | --- |
    | [101-sql-vm-ag-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Erstellt den Windows-Failovercluster und bindet die SQL Server-VMs in diesen Cluster ein. |
-   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Erstellt den Verfügbarkeitsgruppenlistener und konfiguriert den internen Lastenausgleich. |
+   | [101-sql-vm-aglistener-setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Erstellt den Verfügbarkeitsgruppenlistener und konfiguriert den internen Lastenausgleich. Diese Vorlage kann nur verwendet werden, wenn der Windows-Failovercluster mit der Vorlage **101-sql-vm-ag-setup** erstellt wurde. |
    | &nbsp; | &nbsp; |
 
 Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgeführt werden – etwa die Erstellung der Verfügbarkeitsgruppe und des internen Lastenausgleichs. Dieser Artikel enthält die Abfolge der automatisierten und manuellen Schritte.
@@ -37,25 +37,12 @@ Andere Aufgaben der Verfügbarkeitsgruppenkonfiguration müssen manuell ausgefü
 ## <a name="prerequisites"></a>Voraussetzungen 
 Wenn Sie die Einrichtung einer Always On-Verfügbarkeitsgruppe mithilfe von Schnellstartvorlagen automatisieren möchten, muss bereits Folgendes vorhanden sein: 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Eine Ressourcengruppe mit einem [Domänencontroller](https://docs.microsoft.com/azure/architecture/reference-architectures/identity/adds-forest). 
-- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](#register-existing-sql-vm-with-new-resource-provider) wurde.  
+- Eine Ressourcengruppe mit einem Domänencontroller. 
+- Mindestens ein in eine Domäne eingebundener [virtueller Computer in Azure mit der Enterprise Edition von SQL Server 2016 (oder höher)](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision), der sich in der gleichen Verfügbarkeitsgruppe oder -zone befindet, die [beim SQL-VM-Ressourcenanbieter registriert](virtual-machines-windows-sql-ahb.md#register-existing-sql-server-vm-with-sql-resource-provider) wurde.  
 
-## <a name="register-existing-sql-vm-with-new-resource-provider"></a>Registrieren der bestehenden SQL-VM beim neuen Ressourcenanbieter
-Da diese verfügbarkeitsgruppenbezogenen Azure-Schnellstartvorlagen vom SQL-VM-Ressourcenanbieter (Microsoft.SqlVirtualMachine) abhängen, müssen bereits vorhandene SQL Server-VMs beim SQL-VM-Ressourcenanbieter registriert werden. Überspringen Sie diesen Schritt, wenn Sie die SQL Server-VM nach Dezember 2018 erstellt haben, da seitdem alle erstellten SQL Server-VMs automatisch registriert werden. In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie die Registrierung bei dem Anbieter über das Azure-Portal durchführen. Sie können aber auch [PowerShell](virtual-machines-windows-sql-ahb.md#powershell) verwenden. 
-
-  >[!IMPORTANT]
-  > Wenn Sie Ihre SQL Server-VM-Ressource verwerfen, kehren Sie wieder zur hartcodierten Lizenzeinstellung des Images zurück. 
-
-1. Öffnen Sie das Azure-Portal, und navigieren Sie zu **Alle Dienste**. 
-1. Navigieren Sie zu **Abonnements**, und wählen Sie das gewünschte Abonnement aus.  
-1. Navigieren Sie auf dem Blatt **Abonnements** zu **Ressourcenanbieter**. 
-1. Geben Sie im Filter `sql` ein, um die SQL-bezogenen Ressourcenanbieter aufzurufen. 
-1. Wählen Sie je nach gewünschter Aktion für den Anbieter **Microsoft.SqlVirtualMachine** entweder *Registrieren*, *Erneut registrieren* oder *Registrierung aufheben*. 
-
-  ![Ändern des Anbieters](media/virtual-machines-windows-sql-ahb/select-resource-provider-sql.png)
 
 ## <a name="step-1---create-the-wsfc-and-join-sql-server-vms-to-the-cluster-using-quickstart-template"></a>Schritt 1: Erstellen des WSFC und Einbinden von SQL Server-VMs in den Cluster mithilfe der Schnellstartvorlage 
-Nachdem Sie Ihre SQL Server-VMs bei dem neuen SQL-VM-Ressourcenanbieter registriert haben, können Sie Ihre SQL Server-VMs in *SqlVirtualMachineGroup* einbinden. Diese Ressource definiert die Metadaten des Windows-Failoverclusters einschließlich Version, Edition, vollqualifiziertem Domänennamen, AD-Konten für die Clusterverwaltung und Speicherkonto als Cloudzeuge. Beim Hinzufügen der SQL Server-VM zu *SqlVirtualMachineGroup* wird ein Bootstrapvorgang für den Windows-Failoverclusterdienst ausgeführt, und die SQL Server-VMs werden in den Cluster eingebunden. Dieser Schritt wird mit der Schnellstartvorlage **101-Sql-Vm-ag-Setup** automatisiert und kann wie folgt implementiert werden:
+Nachdem Sie Ihre SQL Server-VMs bei dem neuen SQL-VM-Ressourcenanbieter registriert haben, können Sie Ihre SQL Server-VMs in *SqlVirtualMachineGroups* einbinden. Diese Ressource definiert die Metadaten des Windows-Failoverclusters darunter die Version, die Edition, den vollqualifizierten Domänennamen, die AD-Konten für den Cluster und den SQL-Dienst und das Speicherkonto als Cloudzeuge. Beim Hinzufügen der SQL Server-VMs zu *SqlVirtualMachineGroups* wird ein Bootstrapvorgang für den Windows-Failoverclusterdienst ausgeführt, um den Cluster zu erstellen und die SQL Server-VMs in den Cluster einzubinden. Dieser Schritt wird mit der Schnellstartvorlage **101-Sql-Vm-ag-Setup** automatisiert und kann wie folgt implementiert werden:
 
 1. Navigieren Sie zur Schnellstartvorlage [**101-sql-vm-ag-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup), und wählen Sie **Deploy to Azure** (In Azure bereitstellen) aus, um die Schnellstartvorlage im Azure-Portal zu starten.
 1. Füllen Sie die erforderlichen Felder aus, um die Metadaten des Windows-Failoverclusters zu konfigurieren. Die optionalen Felder können leer gelassen werden.
@@ -70,17 +57,24 @@ Nachdem Sie Ihre SQL Server-VMs bei dem neuen SQL-VM-Ressourcenanbieter registri
    | **Existing Vm List** (Liste vorhandener VMs) | Die SQL Server-VMs, die der Verfügbarkeitsgruppe (und damit dem neuen Cluster) angehören sollen. Trennen Sie die einzelnen Werte jeweils durch ein Komma und ein Leerzeichen. (Beispiel: SQLVM1, SQLVM2) |
    | **SQL Server-Version** | Wählen Sie in der Dropdownliste die SQL Server-Version Ihrer SQL Server-VMs aus. Derzeit werden nur SQL 2016- und SQL 2017-Images unterstützt. |
    | **Existing Fully Qualified Domain Name** (Vorhandener vollqualifizierter Domänenname) | Der vorhandene FQDN für die Domäne, in der sich Ihre SQL Server-VMs befinden. |
-   | **Existing Domain Account** (Vorhandenes Domänenkonto) | Ein vorhandenes Domänenkonto mit Systemadministratorzugriff auf die SQL Server-Instanz. | 
-   | **Domain Account Password** (Domänenkontokennwort) | Das Kennwort für das zuvor erwähnte Domänenkonto. | 
-   | **Existing Sql Service Account** (Vorhandenes SQL-Dienstkonto) | Das Domänenbenutzerkonto zum Steuern des SQL Server-Diensts. Diese Information können Sie mithilfe des [**SQL Server-Konfigurations-Managers**](https://docs.microsoft.com/sql/relational-databases/sql-server-configuration-manager?view=sql-server-2017) ermitteln. |
+   | **Existing Domain Account** (Vorhandenes Domänenkonto) | Ein vorhandenes Domänenbenutzerkonto mit der Berechtigung zum Erstellen von Computerobjekten in der Domäne als [CNO](/windows-server/failover-clustering/prestage-cluster-adds) wird während der Vorlagenbereitstellung erstellt. Beispielsweise verfügt ein Domänenadministratorkonto in der Regel über ausreichende Berechtigungen (Beispiel: account@domain.com). *Dieses Konto muss auch Teil der lokalen Administratorgruppe auf allen virtuellen Computern sein, um den Cluster zu erstellen.*| 
+   | **Domain Account Password** (Domänenkontokennwort) | Das Kennwort für das zuvor erwähnte Domänenbenutzerkonto. | 
+   | **Existing Sql Service Account** (Vorhandenes SQL-Dienstkonto) | Das Domänenbenutzerkonto, das den [SQL Server-Dienst](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) bei der Bereitstellung der Verfügbarkeitsgruppe steuert (Beispiel: account@domain.com). |
    | **Sql Service Password** (SQL-Dienstkennwort) | Das Kennwort für das Domänenbenutzerkonto zum Steuern des SQL Server-Diensts. |
+   | **Cloud Witness Name** (Name des Cloudzeugen) | Dies ist ein neues Azure Storage-Konto, das erstellt und für den Cloudzeugen verwendet wird. Dieser Name kann geändert werden. |
+   | **\_artifacts Location** („_artifacts“-Speicherort) | Dieses Feld ist standardmäßig festgelegt und sollte nicht geändert werden. |
+   | **\_artifacts Location Sas Token** (SAS-Token für „_artifacts“-Speicherort): | Dieses Feld bleibt absichtlich leer. |
    | &nbsp; | &nbsp; |
 
 1. Wenn Sie den Geschäftsbedingungen zustimmen, aktivieren Sie das Kontrollkästchen neben **Ich stimme den oben genannten Geschäftsbedingungen zu**, und wählen Sie **Kaufen** aus, um die Bereitstellung der Schnellstartvorlage abzuschließen. 
 1. Wenn Sie Ihre Bereitstellung überwachen möchten, wählen Sie sie entweder unter **Benachrichtigungen** (Glockensymbol auf dem oberen Navigationsbanner) aus, oder navigieren Sie im Azure-Portal zu Ihrer **Ressourcengruppe**, und wählen Sie im Feld **Einstellungen** die Option **Bereitstellungen** und anschließend die Bereitstellung „Microsoft.Template“ aus. 
 
+  >[!NOTE]
+  > Während der Vorlagenbereitstellung angegebene Anmeldeinformationen werden nur für die Dauer der Bereitstellung gespeichert. Nach Abschluss der Bereitstellung werden diese Kennwörter entfernt, und Sie werden aufgefordert, sie erneut anzugeben, falls Sie dem Cluster weitere SQL Server-VMs hinzufügen. 
+
+
 ## <a name="step-2---manually-create-the-availability-group"></a>Schritt 2: Manuelles Erstellen der Verfügbarkeitsgruppe 
-Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [PowerShell](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) oder [Transact-SQL](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
+Erstellen Sie die Verfügbarkeitsgruppe wie gewohnt manuell mithilfe von [PowerShell](/sql/database-engine/availability-groups/windows/create-an-availability-group-sql-server-powershell?view=sql-server-2017), [SQL Server Management Studio](/sql/database-engine/availability-groups/windows/use-the-availability-group-wizard-sql-server-management-studio?view=sql-server-2017) oder [Transact-SQL](/sql/database-engine/availability-groups/windows/create-an-availability-group-transact-sql?view=sql-server-2017). 
 
   >[!IMPORTANT]
   > Erstellen Sie noch **keinen** Listener, da dies in Schritt 4 mithilfe der Vorlage **101-sql-vm-aglistener-setup** automatisiert wird. 
@@ -98,10 +92,10 @@ Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Ba
    | --- | --- |
    | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
    | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Lastenausgleich, wodurch Anwendungen innerhalb des gleichen virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, über eine öffentliche Internetverbindung eine Verbindung mit der Verfügbarkeitsgruppe herzustellen. |
-   | **Virtuelles Netzwerk** |Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
-   | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
+   | **Virtuelles Netzwerk** | Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
+   | **Subnetz** | Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
    | **IP-Adresszuweisung** |**Statisch** |
-   | **Private IP-Adresse** |Geben Sie eine verfügbare IP-Adresse aus dem Subnetz an. Verwenden Sie diese IP-Adresse beim Erstellen eines Listeners im Cluster.|
+   | **Private IP-Adresse** | Geben Sie eine verfügbare IP-Adresse aus dem Subnetz an. |
    | **Abonnement** |Dieses Feld wird unter Umständen angezeigt, wenn Sie über mehrere Abonnements verfügen. Wählen Sie das Abonnement aus, mit dem diese Ressource verknüpft werden soll. Hierbei handelt es sich üblicherweise um das gleiche Abonnement wie bei allen Ressourcen für die Verfügbarkeitsgruppe. |
    | **Ressourcengruppe** |Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server-Instanzen befinden. |
    | **Location** |Wählen Sie die Azure-Region aus, in der sich die SQL Server-Instanzen befinden. |
@@ -115,12 +109,17 @@ Für den Always On-Verfügbarkeitsgruppenlistener ist eine interne Azure Load Ba
 
 ## <a name="step-4---create-the-ag-listener-and-configure-the-ilb-with-the-quickstart-template"></a>Schritt 4: Erstellen des Verfügbarkeitsgruppenlisteners und Konfigurieren des internen Lastenausgleichs mit der Schnellstartvorlage
 
-Erstellen Sie den Verfügbarkeitsgruppenlistener, und konfigurieren Sie den internen Lastenausgleich (Internal Load Balancer, ILB) automatisch mit der Schnellstartvorlage **101-sql-vm-aglistener-setup**. Diese stellt die Ressource „Microsoft.SqlVirtualMachine/Sql Virtual Machine Groups/Availability Group Listener“ bereit. Die Schnellstartvorlage **101-sql-vm-aglistener-setup** führt über den SQL-VM-Ressourcenanbieter folgende Aktionen aus:
+Erstellen Sie den Verfügbarkeitsgruppenlistener, und konfigurieren Sie den internen Lastenausgleich (Internal Load Balancer, ILB) automatisch mit der Schnellstartvorlage **101-sql-vm-aglistener-setup**. Diese stellt die Ressource „Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/AvailabilityGroupListener“ bereit. Die Schnellstartvorlage **101-sql-vm-aglistener-setup** führt über den SQL-VM-Ressourcenanbieter folgende Aktionen aus:
 
+ - Eine neue Front-End-IP-Ressource (basierend auf der bei der Bereitstellung angegebenen IP-Adresse) für den Listener wird erstellt. 
  - Sie konfiguriert die Netzwerkeinstellungen für den Cluster und den internen Lastenausgleich. 
  - Sie konfiguriert den ILB-Back-End-Pool, den Integritätstest und die Lastenausgleichsregeln.
  - Sie erstellt den Verfügbarkeitsgruppenlistener mit der angegebenen IP-Adresse und dem angegebenen Namen.
-
+ 
+   >[!NOTE]
+   > **101-sql-vm-aglistener-setup** kann nur verwendet werden, wenn der Windows-Failovercluster mit der Vorlage **101-sql-vm-ag-setup** erstellt wurde.
+   
+   
 Führen Sie die folgenden Schritte aus, um den internen Lastenausgleich zu konfigurieren und den Verfügbarkeitsgruppenlistener zu erstellen:
 1. Navigieren Sie zur Schnellstartvorlage [**101-sql-vm-aglistener-setup**](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup), und wählen Sie **Deploy to Azure** (In Azure bereitstellen) aus, um die Schnellstartvorlage im Azure-Portal zu starten.
 1. Füllen Sie die erforderlichen Felder aus, um den internen Lastenausgleich zu konfigurieren, und erstellen Sie den Verfügbarkeitsgruppenlistener. Die optionalen Felder können leer gelassen werden. 
@@ -133,10 +132,9 @@ Führen Sie die folgenden Schritte aus, um den internen Lastenausgleich zu konfi
    |**Existing Failover Cluster Name** (Name des vorhandenen Failoverclusters) | Der Name des Clusters, in den Ihre SQL Server-VMs eingebunden sind. |
    | **Existing Sql Availability Group** (Vorhandene SQL-Verfügbarkeitsgruppe)| Der Name der Verfügbarkeitsgruppe, der Ihre SQL Server-VMs angehören. |
    | **Existing Vm List** (Liste vorhandener VMs) | Die Namen der SQL Server-VMs, die der zuvor erwähnten Verfügbarkeitsgruppe angehören. Die Namen müssen jeweils durch ein Komma und ein Leerzeichen getrennt sein. (Beispiel: SQLVM1, SQLVM2) |
-   | **Existing Fully Qualified Domain Name** (Vorhandener vollqualifizierter Domänenname) | Der vorhandene FQDN für die Domäne, in der sich Ihre SQL Server-VMs befinden. |
-   | **Listener** | Der DNS-Name, den Sie dem Listener zuordnen möchten. Die Vorlage gibt standardmäßig den Namen „aglistener“ an, dies kann jedoch geändert werden. |
+   | **Listener** | Der DNS-Name, den Sie dem Listener zuordnen möchten. Die Vorlage gibt standardmäßig den Namen „aglistener“ an, dies kann jedoch geändert werden. Der Name sollte 15 Zeichen nicht überschreiten. |
    | **Listenerport** | Der Port, den der Listener verwenden soll. Dieser Port sollte in der Regel auf den Standardport 1433 festgelegt werden, weshalb in der Vorlage diese Portnummer angegeben ist. Wurde Ihr Standardport jedoch geändert, muss der Listenerport stattdessen auf den geänderten Wert festgelegt werden. | 
-   | **Existing Vnet** (Vorhandenes VNET) | Der Name des VNETs, in dem sich Ihre SQL Server-VMs und der interne Lastenausgleich befinden. |
+   | **Listener IP** | Die IP-Adresse, die der Listener verwenden soll.  Diese IP-Adresse wird während der Vorlagenbereitstellung erstellt, daher sollten Sie eine IP-Adresse angeben, die noch nicht verwendet wird.  |
    | **Existing Subnet** (Vorhandenes Subnetz) | Der *Name* des internen Subnetzes Ihrer SQL Server-VMs. (Beispiel: default) Dieser Wert kann wie folgt ermittelt werden: Navigieren Sie zu Ihrer **Ressourcengruppe**, und wählen Sie Ihr **VNET** aus. Wählen Sie anschließend im Bereich **Einstellungen** die Option **Subnetze** aus, und kopieren Sie den Wert unter **Name**. |
    | **Existing Internal Load Balancer** (Vorhandener interner Lastenausgleich) | Der Name des internen Lastenausgleichs, den Sie in Schritt 3 erstellt haben. |
    | **Testport** | Der Testport, den der interne Lastenausgleich verwenden soll. Die Vorlage verwendet standardmäßig den Port 59999, dieser Wert kann jedoch geändert werden. |
@@ -159,7 +157,7 @@ Der folgende Codeausschnitt löscht den SQL-Verfügbarkeitsgruppenlistener sowoh
 Remove-AzureRmResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
-## <a name="known-issues-and-errors"></a>Bekannte Probleme und Fehler
+## <a name="common-errors"></a>Häufige Fehler
 In diesem Abschnitt werden einige bekannte Probleme und mögliche Lösungen behandelt. 
 
 ### <a name="availability-group-listener-for-availability-group-ag-name-already-exists"></a>Availability group listener for availability group '\<AG-Name>' already exists (Der Verfügbarkeitsgruppenlistener für die Verfügbarkeitsgruppe „<Name der Verfügbarkeitsgruppe>“ ist bereits vorhanden.)
@@ -172,6 +170,24 @@ Entfernen Sie zur Behebung dieses Problems den Listener mithilfe von [PowerShell
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - Only SQL virtual machine list can be updated (Fehlerhafte Anforderung: Nur die SQL-VM-Liste kann aktualisiert werden.)
 Dieser Fehler kann beim Bereitstellen der Vorlage **101-sql-vm-aglistener-setup** auftreten, wenn der Listener zwar über SQL Server Management Studio (SSMS), aber nicht aus dem SQL-VM-Ressourcenanbieter gelöscht wurde. Beim Löschen des Listeners über SSMS werden die Metadaten des Listeners nicht aus dem SQL-VM-Ressourcenanbieter entfernt. Der Listener muss mithilfe von [PowerShell](#remove-availability-group-listener) aus dem Ressourcenanbieter gelöscht werden. 
+
+### <a name="domain-account-does-not-exist"></a>Domain account does not exist (Domänenkonto nicht vorhanden)
+Dieser Fehler kann aus zwei Gründen auftreten. Entweder ist das angegebene Domänenkonto nicht vorhanden, oder es fehlen die [UPN-Daten](/windows/desktop/ad/naming-properties#userprincipalname) (User Principal Name, Benutzerprinzipalname). Die Vorlage **101-sql-vm-ag-setup** erwartet ein Domänenkonto im UPN-Format (d.h. user@domain.com), aber bei einigen Domänenkonten fehlt dieses möglicherweise. Dies kann häufig geschehen, wenn ein lokaler Benutzer zum ersten Domänenadministratorkonto migriert wurde als der Server zu einem Domänencontroller heraufgestuft wurde oder wenn ein Benutzer über PowerShell erstellt wurde. 
+
+ Stellen Sie sicher, dass das Konto vorhanden ist. Wenn dies der Fall ist, kann die zweite Situation auftreten. Führen Sie folgende Schritte aus, um dieses Problem zu beheben:
+
+ 1. Öffnen Sie auf dem Domänencontroller das Fenster **Active Directory-Benutzer und -Computer** über die Option **Extras** im **Server-Manager**. 
+ 2. Navigieren Sie zu dem Konto, indem Sie im linken Bereich **Benutzer** auswählen.
+ 3. Klicken Sie mit der rechten Maustaste auf das gewünschte Konto, und wählen Sie **Eigenschaften** aus.
+ 4. Wählen Sie die Registerkarte **Konto** aus, und überprüfen Sie, ob der **Benutzeranmeldename** leer ist. In diesem Fall ist dies die Fehlerursache. 
+
+     ![Ein leeres Benutzerkonto deutet auf einen fehlenden UPN hin.](media/virtual-machines-windows-sql-availability-group-quickstart-template/account-missing-upn.png)
+
+ 5. Geben Sie als **Benutzeranmeldename** den Namen des Benutzers ein, und wählen Sie in der Dropdownliste die passende Domäne aus. 
+ 6. Wählen Sie **Übernehmen** aus, um die Änderungen zu speichern, und schließen Sie das Dialogfeld, indem Sie **OK** auswählen. 
+
+ Nachdem diese Änderungen vorgenommen wurden, versuchen Sie erneut, die Azure-Schnellstartvorlage bereitzustellen. 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

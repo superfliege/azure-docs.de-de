@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: alkohli
-ms.openlocfilehash: f01fb88bf0ea726b421111a262bdfdd68cd3d38c
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54388424"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815643"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Für Azure Data Box Gateway geltende Einschränkungen (Vorschauversion)
 
@@ -26,7 +26,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-gateway-service-limits"></a>Für den Data Box Gateway-Dienst geltende Einschränkungen
 
-- In dieser Version ist der Dienst nur in bestimmten Regionen in den USA, Europa und Asien-Pazifik verfügbar. Weitere Informationen finden Sie unter [Regionale Verfügbarkeit](#data-box-gateway-overview#region-availability). Das Speicherkonto sollte sich physisch in der Nähe der Region befinden, in der das Gerät bereitgestellt wird (diese kann sich von der Region des Diensts unterscheiden).
+- In dieser Version ist der Dienst nur in bestimmten Regionen in den USA, Europa und Asien-Pazifik verfügbar. Weitere Informationen finden Sie unter „Regionale Verfügbarkeit“. Das Speicherkonto sollte sich physisch in der Nähe der Region befinden, in der das Gerät bereitgestellt wird (diese kann sich von der Region des Diensts unterscheiden).
 - Das Verschieben einer Data Box Gateway-Ressource in ein anderes Abonnement oder eine andere Ressourcengruppe wird nicht unterstützt. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>Für das Data Box Gateway-Gerät geltende Einschränkungen

@@ -1,8 +1,21 @@
 ---
-Titel: Erneutes Trainieren eines vorhandenen prädiktiven Studio-Webdiensts titleSuffix: Azure Machine Learning Studio Beschreibung: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
-Dienste: machine-learning ms.service: machine-learning ms.subservice: studio ms.topic: Artikel
-
-Autor: ericlicoding ms.author: amlstudiodocs ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT ms.date: 07.11.2017
+title: Erneutes Trainieren eines vorhandenen prädiktiven Studio-Webdiensts
+titleSuffix: Azure Machine Learning Studio
+description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell verwendet.
+services: machine-learning
+ms.service: machine-learning
+ms.subservice: studio
+ms.topic: article
+author: ericlicoding
+ms.author: amlstudiodocs
+ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
+ms.date: 11/07/2017
+ms.openlocfilehash: cb33b32be276c2deb61a1a718a609612c6a4989e
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511954"
 ---
 # <a name="retrain-an-existing-predictive-azure-machine-learning-studio-web-service"></a>Erneutes Trainieren eines vorhandenen prädiktiven Azure Machine Learning Studio-Webdiensts | Microsoft-Dokumentation
 

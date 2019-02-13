@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 59631ee0115c817da1b0588c1ad37d2f8b34db67
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: fea90d273d156eec3bf29f376e4cf6668c68170f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053660"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697516"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 > [!NOTE]
@@ -32,7 +32,7 @@ Die folgende Tabelle enthält eine Liste mit Compute-Umgebungen, die von Data Fa
 | ---------------------------------------- | ---------------------------------------- |
 | [Bedarfsgesteuerter Azure HDInsight-Cluster](#azure-hdinsight-on-demand-linked-service) oder [eigener HDInsight-Cluster](#azure-hdinsight-linked-service) | [DotNet](data-factory-use-custom-activities.md), [Hive](data-factory-hive-activity.md), [Pig](data-factory-pig-activity.md), [MapReduce](data-factory-map-reduce.md), [Hadoop Streaming](data-factory-hadoop-streaming-activity.md) |
 | [Azure Batch](#azure-batch-linked-service) | [DotNet](data-factory-use-custom-activities.md) |
-| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Machine Learning-Aktivitäten: Batchausführung und Ressourcenaktualisierung](data-factory-azure-ml-batch-execution-activity.md) |
+| [Azure Machine Learning](#azure-machine-learning-linked-service) | [Aktivitäten mit maschinellem Lernen: „Batchausführung“ und „Ressource aktualisieren“](data-factory-azure-ml-batch-execution-activity.md) |
 | [Azure Data Lake Analytics](#azure-data-lake-analytics-linked-service) | [Data Lake Analytics U-SQL](data-factory-usql-activity.md) |
 | [Azure SQL](#azure-sql-linked-service), [Azure SQL Data Warehouse](#azure-sql-data-warehouse-linked-service), [SQL Server](#sql-server-linked-service) | [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) |
 
@@ -51,7 +51,7 @@ Die Liste der unterstützten HDInsight-Versionen wird von Microsoft mit den neue
 Nach dem 15. Dezember 2017:
 
 - Sie können keine Linux-basierten HDInsight-Cluster der Version 3.3 (oder einer älteren Version) mit einem bedarfsgesteuerten verknüpften HDInsight-Dienst in der Data Factory-Version 1 mehr erstellen. 
-- Wenn die Eigenschaften [**osType** und **Version**](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory-Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<neueste HDI-Standardversion\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions), osType=Linux** geändert.
+- Wenn die Eigenschaften [**osType** und **Version**](https://docs.microsoft.com/azure/data-factory/v1/data-factory-compute-linked-services#azure-hdinsight-on-demand-linked-service) in der JSON-Definition nicht explizit für einen vorhandenen bedarfsgesteuerten verknüpften HDInsight-Dienst in Data Factory-Version 1 angegeben werden, wird der Standardwert von **Version=3.1, osType=Windows** in **Version=\<neueste HDI-Standardversion\>(https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning), osType=Linux** geändert.
 
 Nach dem 31. Juli 2018:
 
@@ -126,7 +126,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 | type                         | Legen Sie die Typeigenschaft auf **HDInsightOnDemand** fest. | Ja      |
 | clusterSize                  | Die Anzahl von Worker- und Datenknoten im Cluster. Der HDInsight-Cluster wird mit zwei Hauptknoten und der Anzahl von Workerknoten erstellt, die Sie für diese Eigenschaft angeben. Die Knoten haben jeweils die Größe „Standard_D3“ und verfügen somit über vier Kerne. Ein Cluster mit vier Workerknoten besitzt also 24 Kerne (4 \* 4 = 16 für die Workerknoten plus 2 \* 4 = 8 für die Hauptknoten). Ausführliche Informationen zum Tarif „Standard_D3“ finden Sie unter [Einrichten von Clustern in HDInsight mit Hadoop, Spark, Kafka usw](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md). | Ja      |
 | timeToLive                   | Die zulässige Leerlaufzeit für den bedarfsgesteuerten HDInsight-Cluster. Gibt an, wie lange der bedarfsgesteuerte HDInsight-Cluster nach Abschluss einer Aktivitätsausführung aktiv bleibt, wenn keine anderen aktiven Aufträge im Cluster vorhanden sind.<br /><br />Beispiel: Wenn eine Aktivitätsausführung sechs Minuten dauert und **timeToLive** auf fünf Minuten festgelegt ist, bleibt der Cluster nach den sechs Minuten, die für die Verarbeitung der Aktivitätsausführung benötigt werden, noch fünf Minuten aktiv. Wenn in dem sechsminütigen Zeitfenster eine weitere Aktivitätsausführung stattfindet, wird sie vom gleichen Cluster verarbeitet.<br /><br />Die Erstellung eines bedarfsgesteuerten HDInsight-Clusters ist ein aufwendiger Vorgang und kann daher eine Weile dauern. Verwenden Sie diese Einstellung bei Bedarf, um die Leistung einer Data Factory durch Wiederverwendung eines bedarfsgesteuerten HDInsight-Clusters zu verbessern.<br /><br />Wenn Sie **timeToLive** auf **0** festlegen, wird der Cluster unmittelbar nach Abschluss der Aktivitätsausführung gelöscht. Wenn Sie dagegen einen hohen Wert festlegen, befindet sich der Cluster unter Umständen im Leerlauf, was unnötig hohe Kosten verursachen kann. Der Wert muss daher auf Ihre individuellen Anforderungen abgestimmt werden.<br /><br />Wenn der Wert für **timeToLive** ordnungsgemäß festgelegt ist, kann die Instanz des bedarfsgesteuerten HDInsight-Clusters von mehreren Pipelines gemeinsam genutzt werden. | Ja      |
-| Version                      | Die Version des HDInsight-Clusters. Informationen zu den zulässigen HDInsight-Versionen finden Sie unter [Unterstützte HDInsight-Versionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ohne Angabe dieses Werts wird die [neueste HDI-Standardversion](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#hadoop-components-available-with-different-hdinsight-versions) verwendet. | Nein        |
+| Version                      | Die Version des HDInsight-Clusters. Informationen zu den zulässigen HDInsight-Versionen finden Sie unter [Unterstützte HDInsight-Versionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#supported-hdinsight-versions). Ohne Angabe dieses Werts wird die [neueste HDI-Standardversion](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning) verwendet. | Nein        |
 | linkedServiceName            | Der verknüpfte Azure Storage-Dienst, den der bedarfsgesteuerte Cluster zum Speichern und Verarbeiten von Daten verwendet. Der HDInsight-Cluster wird in der Region erstellt, in der sich auch das Speicherkonto befindet.<p>Derzeit können Sie keinen bedarfsgesteuerten HDInsight-Cluster erstellen, der Azure Data Lake Store als Speicher verwendet. Wenn Sie die Ergebnisdaten der HDInsight-Verarbeitung in Data Lake Store speichern möchten, kopieren Sie die Daten mithilfe der Kopieraktivität aus dem Blobspeicher in Data Lake Store. </p> | Ja      |
 | additionalLinkedServiceNames | Gibt zusätzliche Speicherkonten für den verknüpften HDInsight-Dienst an. Data Factory registriert die Speicherkonten für Sie. Diese Speicherkonten müssen sich in der gleichen Region befinden wie der HDInsight-Cluster. Der HDInsight-Cluster wird in der gleichen Region erstellt wie das durch die Eigenschaft **linkedServiceName** angegebene Speicherkonto. | Nein        |
 | osType                       | Die Art des Betriebssystems. Zulässige Werte sind **Linux** und **Windows**. Ohne Angabe dieses Werts wird **Linux** verwendet.  <br /><br />Es wird dringend empfohlen, Linux-basierte HDInsight-Cluster zu verwenden. Das Deaktivierungstermin für HDInsight unter Windows ist der 31. Juli 2018. | Nein        |
@@ -215,7 +215,7 @@ Wenn Sie Haupt- und Workerknoten mit der Größe „D4“ erstellen möchten, ge
 
 Sollten Sie für diese Eigenschaften einen falschen Wert festgelegt haben, erscheint unter Umständen die folgende Meldung:
 
-  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: "Fehler". Nachricht: "PreClusterCreationValidationFailure" 
+  Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. 
   
 Sollte diese Meldung angezeigt werden, vergewissern Sie sich, dass Sie die Cmdlet- und API-Namen aus der Tabelle unter [Größen für virtuelle Linux-Computer in Azure](../../virtual-machines/linux/sizes.md) verwenden.  
 
@@ -334,7 +334,7 @@ Sie können einen verknüpften Machine Learning-Dienst erstellen, um einen Machi
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft   | BESCHREIBUNG                              | Erforderlich |
 | ---------- | ---------------------------------------- | -------- |
-| Typ       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
+| Type       | Legen Sie die Typeigenschaft auf **AzureML** fest. | Ja      |
 | mlEndpoint | Die Batchbewertungs-URL.                   | Ja      |
 | apiKey     | Die veröffentlichte API des Arbeitsbereichsmodells.     | Ja      |
 
@@ -418,7 +418,7 @@ Der Autorisierungscode, den Sie mit der Schaltfläche **Autorisieren** generiert
 
 Wenn das Authentifizierungstoken abläuft, wird möglicherweise folgende Fehlermeldung angezeigt: 
 
-  Fehler beim Anmeldevorgang: invalid_grant - AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z“
+  Fehler beim Anmeldevorgang: invalid_grant – AADSTS70002: Fehler beim Überprüfen der Anmeldeinformationen. AADSTS70008: Die angegebene Zugriffserteilung ist abgelaufen oder wurde widerrufen. Ablaufverfolgungs-ID: d18629e8-af88-43c5-88e3-d8419eb1fca1 Korrelations-ID: fac30a0c-6be6-4e02-8d69-a776d2ffefd7 Zeitstempel: 2015-12-15 21:09:31Z
 
 Die folgende Tabelle enthält Ablaufzeiten nach Benutzerkontotyp: 
 

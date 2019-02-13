@@ -1,6 +1,6 @@
 ---
 title: Verwaltete Azure SQL-Datenbank-Instanz – T-SQL-Unterschiede | Microsoft-Dokumentation
-description: In diesem Artikel werden die T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server beschrieben.
+description: In diesem Artikel werden die T-SQL-Unterschiede zwischen einer verwalteten Instanz in Azure SQL-Datenbank und SQL Server beschrieben.
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -11,27 +11,31 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 3186261b935d48343eab2fd818cd8ed936f41f3f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472780"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55734605"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
-Die verwaltete Azure SQL-Datenbank-Instanz bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt. Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert.
+Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibilität mit einer lokalen SQL Server-Datenbank-Engine. Die meisten Features der SQL Server-Datenbank-Engine werden in verwalteten Instanzen unterstützt.
 
-- [T-SQL-Unterschiede und nicht unterstützte Features](#Differences)
+![Migration](./media/sql-database-managed-instance/migration.png)
+
+Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert. <a name="Differences"></a>
+- [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
+- [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credentials), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen/Benutzern](#logins--users), [Dienstschlüssel und Diensthauptschlüssel](#service-key-and-service-master-key)
+- [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent), [Tabellenoptionen](#tables)
+- [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Filetable](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker), [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-triggers)
 - [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
 - [Temporäre Einschränkungen und bekannte Probleme](#Issues)
 
-## <a name="Differences"></a> T-SQL-Unterschiede zu SQL Server
+## <a name="availability"></a>Verfügbarkeit
 
-In diesem Abschnitt sind die wichtigsten Unterschiede in der T-SQL-Syntax und dem Verhalten zwischen einer verwalteten Instanz und einer lokalen SQL Server-Datenbank-Engine sowie nicht unterstützte Features zusammengefasst.
-
-### <a name="always-on-availability"></a>Always On-Verfügbarkeit
+### <a name="always-on-availability"></a>Always On
 
 [Hochverfügbarkeit](sql-database-high-availability.md) ist in verwalteten Instanzen integriert und kann von Benutzern nicht gesteuert werden. Folgende Anweisungen werden nicht unterstützt:
 
@@ -41,32 +45,11 @@ In diesem Abschnitt sind die wichtigsten Unterschiede in der T-SQL-Syntax und de
 - [DROP AVAILABILITY GROUP](https://docs.microsoft.com/sql/t-sql/statements/drop-availability-group-transact-sql)
 - Klausel [SET HADR](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-hadr) der Anweisung [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql)
 
-### <a name="auditing"></a>Überwachung
-
-Wichtigste Unterschiede bei der SQL-Überwachung in einer verwalteten Instanz, Azure SQL-Datenbank und lokalem SQL Server:
-
-- In der verwalteten Instanz wird die SQL-Überwachung auf Serverebene ausgeführt und speichert Dateien mit der Endung `.xel` in einem Azure Blob Storage-Konto.  
-- In Azure SQL-Datenbank wird die SQL-Überwachung auf Datenbankebene ausgeführt.
-- Auf einem lokalen oder virtuellen SQL Server-Computer wird die SQL-Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.  
-  
-Die XEvent-Überwachung in einer verwalteten Instanz unterstützt Azure Blob Storage-Ziele. Dateiprotokolle und Windows-Protokolle werden nicht unterstützt.
-
-Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azure Blob Storage:
-
-- Mit der neuen Syntax `TO URL` können Sie die URL des Azure Blob Storage-Containers angeben, in dem Dateien mit der Endung `.xel` gespeichert werden.
-- Die Syntax `TO FILE` wird nicht unterstützt, da die verwaltete Instanz nicht auf Windows-Dateifreigaben zugreifen kann.
-
-Weitere Informationen finden Sie unter  
-
-- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
-- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
-- [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
-
 ### <a name="backup"></a>Backup
 
-In einer verwalteten Instanz werden automatische Sicherungen durchgeführt, sodass Benutzer vollständige `COPY_ONLY`-Sicherungen für Datenbanken erstellen können. Differenzielle, Protokoll- und Dateimomentaufnahmesicherungen werden nicht unterstützt.
+In verwalteten Instanzen werden automatische Sicherungen durchgeführt, sodass Benutzer vollständige `COPY_ONLY`-Sicherungen für Datenbanken erstellen können. Differenzielle, Protokoll- und Dateimomentaufnahmesicherungen werden nicht unterstützt.
 
-- In einer verwalteten Instanz kann eine Datenbank nur in einem Azure Blob Storage-Konto gesichert werden:
+- Mit einer verwalteten Instanz können Sie eine Instanzdatenbank nur in einem Azure Blob Storage-Konto sichern:
   - Nur `BACKUP TO URL` wird unterstützt.
   - `FILE`, `TAPE` und Sicherungsmedien werden nicht unterstützt.  
 - Die meisten allgemeinen `WITH`-Optionen werden unterstützt.
@@ -77,7 +60,7 @@ In einer verwalteten Instanz werden automatische Sicherungen durchgeführt, soda
 
  Einschränkungen:  
 
-- Eine verwaltete Instanz kann eine Datenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
+- Mit einer verwalteten Instanz können Sie eine Instanzdatenbank in einer Sicherung mit bis zu 32 Stripes sichern. Dies ist ausreichend für Datenbanken mit bis zu 4 TB, wenn die Sicherungskomprimierung verwendet wird.
 - Die maximale Stripegröße für Sicherungen ist 195 GB (maximale Blobgröße). Erhöhen Sie die Anzahl der Stripes im Sicherungsbefehl, um die einzelne Stripegröße zu verringern und diese Einschränkung einzuhalten.
 
 > [!TIP]
@@ -85,17 +68,28 @@ In einer verwalteten Instanz werden automatische Sicherungen durchgeführt, soda
 
 Informationen zu Sicherungen mithilfe von T-SQL finden Sie unter [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql).
 
-### <a name="buffer-pool-extension"></a>Pufferpoolerweiterung
+## <a name="security"></a>Sicherheit
 
-- [Pufferpoolerweiterung](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) wird nicht unterstützt.
-- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wird nicht unterstützt. Siehe [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+### <a name="auditing"></a>Überwachung
 
-### <a name="bulk-insert--openrowset"></a>BULK INSERT/OPENROWSET
+Die wichtigsten Unterschiede zwischen der Überwachung in Datenbanken in Azure SQL-Datenbank und SQL Server:
 
-Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden:
+- Bei der Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank wird Überwachung auf Serverebene ausgeführt. Die Dateien mit der Endung `.xel` werden in einem Azure Blob Storage-Konto gespeichert.
+- Bei Bereitstellungen als Singleton und in Pools für elastische Datenbanken in Azure SQL-Datenbank erfolgt die Überwachung auf Datenbankebene.
+- Auf lokalen oder virtuellen SQL Server-Computern wird die Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.
+  
+Die XEvent-Überwachung in einer verwalteten Instanz unterstützt Azure Blob Storage-Ziele. Dateiprotokolle und Windows-Protokolle werden nicht unterstützt.
 
-- Beim Importieren von Dateien aus Azure Blob Storage ist `DATASOURCE` im Befehl `BULK INSERT` erforderlich. Siehe [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
-- Beim Lesen von Inhalten einer Datei aus Azure Blob Storage ist `DATASOURCE` in der Funktion `OPENROWSET` erforderlich. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+Wichtigste Unterschiede in der Syntax von `CREATE AUDIT` zur Überwachung in Azure Blob Storage:
+
+- Mit der neuen Syntax `TO URL` können Sie die URL des Azure Blob Storage-Containers angeben, in dem Dateien mit der Endung `.xel` gespeichert werden.
+- Die Syntax `TO FILE` wird nicht unterstützt, da verwaltete Instanzen nicht auf Windows-Dateifreigaben zugreifen können.
+
+Weitere Informationen finden Sie unter  
+
+- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)  
+- [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
+- [Überwachung](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)
 
 ### <a name="certificates"></a>Zertifikate
 
@@ -114,22 +108,6 @@ CREATE CERTIFICATE
 WITH PRIVATE KEY (<private_key_options>)
 ```
 
-### <a name="clr"></a>CLR
-
-Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher gelten folgende Einschränkungen:
-
-- Nur `CREATE ASSEMBLY FROM BINARY` wird unterstützt. Siehe [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
-- `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
-- `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
-
-### <a name="compatibility-levels"></a>Kompatibilitätsgrade
-
-- Folgende Kompatibilitätsgrade werden unterstützt: 100, 110, 120, 130, 140  
-- Kompatibilitätsgrade unter 100 werden nicht unterstützt.
-- Der standardmäßige Kompatibilitätsgrad für neue Datenbanken ist 140. Bei wiederhergestellten Datenbanken bleibt der Kompatibilitätsgrad unverändert, wenn er zuvor bei 100 und höher lag.
-
-Siehe [ALTER DATABASE-Kompatibilitätsgrad](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
-
 ### <a name="credential"></a>Anmeldeinformation
 
 Nur Azure Key Vault- und `SHARED ACCESS SIGNATURE`-Identitäten werden unterstützt. Windows-Benutzer werden nicht unterstützt.
@@ -143,9 +121,48 @@ Eine verwaltete Instanz kann nicht auf Dateien zugreifen. Daher können Kryptogr
 - `CREATE CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [CREATE CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER` wird nicht unterstützt. Siehe [ALTER CRYPTOGRAPHIC PROVIDER](https://docs.microsoft.com/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
 
+### <a name="logins--users"></a>Anmeldungen/Benutzer
+
+- Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
+- Azure Active Directory-Anmeldungen, die mit der [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax oder der [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)-Syntax erstellt wurden, werden unterstützt (**öffentliche Vorschau**).
+- Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
+- Der Azure Active Directory-Benutzer (Azure AD), der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md#unrestricted-administrative-accounts).
+- Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users).
+
+### <a name="service-key-and-service-master-key"></a>Dienstschlüssel und Diensthauptschlüssel
+
+- Die [Sicherung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
+- Die [Wiederherstellung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
+- Die [Sicherung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
+- Die [Wiederherstellung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
+
+## <a name="configuration"></a>Konfiguration
+
+### <a name="buffer-pool-extension"></a>Pufferpoolerweiterung
+
+- [Pufferpoolerweiterung](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension) wird nicht unterstützt.
+- `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION` wird nicht unterstützt. Siehe [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql).
+
 ### <a name="collation"></a>Collation
 
 Die standardmäßige Instanzsortierung ist `SQL_Latin1_General_CP1_CI_AS`, sie kann als Erstellungsparameter angegeben werden. Siehe [Sortierungen](https://docs.microsoft.com/sql/t-sql/statements/collations).
+
+### <a name="compatibility-levels"></a>Kompatibilitätsgrade
+
+- Folgende Kompatibilitätsgrade werden unterstützt: 100, 110, 120, 130, 140  
+- Kompatibilitätsgrade unter 100 werden nicht unterstützt.
+- Der standardmäßige Kompatibilitätsgrad für neue Datenbanken ist 140. Bei wiederhergestellten Datenbanken bleibt der Kompatibilitätsgrad unverändert, wenn er zuvor bei 100 und höher lag.
+
+Siehe [ALTER DATABASE-Kompatibilitätsgrad](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level).
+
+### <a name="database-mirroring"></a>Datenbankspiegelung
+
+Die Datenbankspiegelung wird nicht unterstützt.
+
+- Die Optionen `ALTER DATABASE SET PARTNER` und `SET WITNESS` werden nicht unterstützt.
+- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` wird nicht unterstützt.
+
+Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) und [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
 
 ### <a name="database-options"></a>Datenbankoptionen
 
@@ -209,18 +226,72 @@ Die Änderung von Namen wird nicht unterstützt.
 
 Weitere Informationen finden Sie unter [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-file-and-filegroup-options).
 
-### <a name="database-mirroring"></a>Datenbankspiegelung
+### <a name="sql-server-agent"></a>SQL Server-Agent
 
-Die Datenbankspiegelung wird nicht unterstützt.
+- SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in verwalteten Instanzen nicht unterstützt.  
+- Aufträge
+  - T-SQL-Auftragsschritte werden unterstützt.
+  - Die folgenden Replikationsaufträge werden unterstützt:
+    - Transaktionsprotokollleser  
+    - Momentaufnahme
+    - Verteiler
+  - SSIS-Auftragsschritte werden unterstützt.
+  - Andere Arten von Auftragsschritten werden derzeit nicht unterstützt, einschließlich:
+    - Der Auftragsschritt Mergereplikation wird nicht unterstützt.  
+    - Der Warteschlangenleser wird nicht unterstützt.  
+    - Die Befehlsshell wird noch nicht unterstützt.
+  - Verwaltete Instanzen können nicht auf externe Ressourcen zugreifen (z.B. Netzwerkfreigaben über Robocopy).  
+  - PowerShell wird noch nicht unterstützt.
+  - Analysis Services wird nicht unterstützt.
+- Benachrichtigungen werden teilweise unterstützt.
+- Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das in der Public Preview-Phase der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss (temporäre Einschränkung).  
+  - Der Pager wird nicht unterstützt.  
+  - NetSend wird nicht unterstützt.
+  - Warnungen werden noch nicht unterstützt.
+  - Proxys werden nicht unterstützt.  
+- EventLog wird nicht unterstützt.
 
-- Die Optionen `ALTER DATABASE SET PARTNER` und `SET WITNESS` werden nicht unterstützt.
-- `CREATE ENDPOINT … FOR DATABASE_MIRRORING` wird nicht unterstützt.
+Die folgenden Features werden derzeit nicht unterstützt, kommen aber später hinzu:
 
-Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNESS](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-database-mirroring) und [CREATE ENDPOINT … FOR DATABASE_MIRRORING](https://docs.microsoft.com/sql/t-sql/statements/create-endpoint-transact-sql).
+- Proxys
+- Planen von Aufträgen für CPU im Leerlauf
+- Aktivieren/Deaktivieren des Agent
+- Alerts
+
+Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
+
+### <a name="tables"></a>Tabellen
+
+Folgende Tabellen werden nicht unterstützt:
+
+- `FILESTREAM`
+- `FILETABLE`
+- `EXTERNAL TABLE`
+- `MEMORY_OPTIMIZED`  
+
+Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
+
+## <a name="functionalities"></a>Funktionen
+
+### <a name="bulk-insert--openrowset"></a>BULK INSERT/OPENROWSET
+
+Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher müssen die Dateien aus Azure Blob Storage importiert werden:
+
+- Beim Importieren von Dateien aus Azure Blob Storage ist `DATASOURCE` im Befehl `BULK INSERT` erforderlich. Siehe [BULK INSERT](https://docs.microsoft.com/sql/t-sql/statements/bulk-insert-transact-sql).
+- Beim Lesen von Inhalten einer Datei aus Azure Blob Storage ist `DATASOURCE` in der Funktion `OPENROWSET` erforderlich. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
+
+### <a name="clr"></a>CLR
+
+Eine verwaltete Instanz kann nicht auf Dateifreigaben und Windows-Ordner zugreifen. Daher gelten folgende Einschränkungen:
+
+- Nur `CREATE ASSEMBLY FROM BINARY` wird unterstützt. Siehe [CREATE ASSEMBLY FROM BINARY](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
+- `CREATE ASSEMBLY FROM FILE` wird nicht unterstützt. Siehe [CREATE ASSEMBLY FROM FILE](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
+- `ALTER ASSEMBLY` kann nicht auf Dateien verweisen. Siehe [ALTER ASSEMBLY](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
+
 
 ### <a name="dbcc"></a>DBCC
 
-Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in einer verwalteten Instanz nicht unterstützt.
+Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden in verwalteten Instanzen nicht unterstützt.
 
 - `Trace Flags` werden nicht unterstützt. Siehe [Ablaufverfolgungsflags](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - `DBCC TRACEOFF` wird nicht unterstützt. Siehe [DBCC TRACEOFF](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql).
@@ -228,7 +299,7 @@ Nicht dokumentierte DBCC-Anweisungen, die in SQL Server aktiviert sind, werden i
 
 ### <a name="distributed-transactions"></a>Verteilte Transaktionen
 
-Weder MSDTC noch [elastische Transaktionen](sql-database-elastic-transactions-overview.md) werden derzeit in einer verwalteten Instanz unterstützt.
+Weder MSDTC noch [elastische Transaktionen](sql-database-elastic-transactions-overview.md) werden derzeit in verwalteten Instanzen unterstützt.
 
 ### <a name="extended-events"></a>Erweiterte Ereignisse
 
@@ -274,21 +345,13 @@ Vorgänge
 - Die Funktion `OPENROWSET` kann nur auf SQL Server-Instanzen (entweder verwaltet, lokal oder auf virtuellen Computern) zur Ausführung von Abfragen verwendet werden. Siehe [OPENROWSET](https://docs.microsoft.com/sql/t-sql/functions/openrowset-transact-sql).
 - Die Funktion `OPENDATASOURCE` kann nur auf SQL Server-Instanzen (entweder verwaltet, lokal oder auf virtuellen Computern) zur Ausführung von Abfragen verwendet werden. Nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` werden als Anbieter unterstützt. Beispiel: `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](https://docs.microsoft.com/sql/t-sql/functions/opendatasource-transact-sql).
 
-### <a name="logins--users"></a>Anmeldungen/Benutzer
-
-- Mithilfe von `FROM CERTIFICATE`, `FROM ASYMMETRIC KEY` und `FROM SID` erstellte SQL-Anmeldungen werden unterstützt. Siehe [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql).
-- Azure Active Directory-Anmeldungen, die mit der [CREATE LOGIN](https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current)-Syntax oder der [CREATE USER](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current)-Syntax erstellt wurden, werden unterstützt (**öffentliche Vorschau**).
-- Windows-Anmeldungen, die mit der Syntax `CREATE LOGIN ... FROM WINDOWS` erstellt wurden, werden nicht unterstützt. Verwenden Sie Azure Active Directory-Anmeldungen und -Benutzer.
-- Der Azure Active Directory-Benutzer (Azure AD), der die Instanz erstellt hat, verfügt über [uneingeschränkte Administratorrechte](sql-database-manage-logins.md#unrestricted-administrative-accounts).
-- Azure Active Directory-Benutzer (Azure AD) auf Datenbankebene ohne Administratorrechte können mit der Syntax `CREATE USER ... FROM EXTERNAL PROVIDER` erstellt werden. Siehe [CREATE USER ... FROM EXTERNAL PROVIDER](sql-database-manage-logins.md#non-administrator-users).
-
 ### <a name="polybase"></a>PolyBase
 
 Externe Tabellen, die auf die Dateien in HDFS oder Azure Blob Storage verweisen, werden nicht unterstützt. Informationen zu PolyBase finden Sie unter [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikation
 
-Die Replikation ist für die Public Preview der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Die Replikation ist für die öffentliche Vorschauversion der verwalteten Instanz verfügbar. Informationen zur Replikation finden Sie unter [SQL Server-Replikation](https://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
 
 ### <a name="restore-statement"></a>RESTORE-Anweisung
 
@@ -337,13 +400,6 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - `CREATE ROUTE`: `CREATE ROUTE` kann ausschließlich mit dem Wert `LOCAL` für `ADDRESS` verwendet werden. Siehe [CREATE ROUTE](https://docs.microsoft.com/sql/t-sql/statements/create-route-transact-sql).
 - `ALTER ROUTE`: `ALTER ROUTE` kann ausschließlich mit dem Wert `LOCAL` für `ADDRESS` verwendet werden. Siehe [ALTER ROUTE](https://docs.microsoft.com/sql/t-sql/statements/alter-route-transact-sql).  
 
-### <a name="service-key-and-service-master-key"></a>Dienstschlüssel und Diensthauptschlüssel
-
-- Die [Sicherung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
-- Die [Wiederherstellung des Hauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
-- Die [Sicherung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/backup-service-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
-- Die [Wiederherstellung des Diensthauptschlüssels](https://docs.microsoft.com/sql/t-sql/statements/restore-service-master-key-transact-sql) wird nicht unterstützt (wird durch SQL-Datenbank-Dienst verwaltet).
-
 ### <a name="stored-procedures-functions-triggers"></a>Gespeicherte Prozeduren, Funktionen, Trigger
 
 - `NATIVE_COMPILATION` wird derzeit nicht unterstützt.
@@ -360,60 +416,15 @@ Der instanzübergreifende Service Broker wird nicht unterstützt:
 - `sp_attach_db`, `sp_attach_single_file_db` und `sp_detach_db` werden nicht unterstützt. Siehe [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql) und [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` wird nicht unterstützt. Siehe [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
-### <a name="sql-server-agent"></a>SQL Server-Agent
-
-- SQL-Agent-Einstellungen sind schreibgeschützt. Die Prozedur `sp_set_agent_properties` wird in einer verwalteten Instanz nicht unterstützt.  
-- Aufträge
-  - T-SQL-Auftragsschritte werden unterstützt.
-  - Die folgenden Replikationsaufträge werden unterstützt:
-    - Transaktionsprotokollleser  
-    - Momentaufnahme
-    - Verteiler
-  - SSIS-Auftragsschritte werden unterstützt.
-  - Andere Arten von Auftragsschritten werden derzeit nicht unterstützt, einschließlich:
-    - Der Auftragsschritt Mergereplikation wird nicht unterstützt.  
-    - Der Warteschlangenleser wird nicht unterstützt.  
-    - Die Befehlsshell wird noch nicht unterstützt.
-  - Eine verwaltete Instanz kann nicht auf externe Ressourcen zugreifen (z.B. Netzwerkfreigaben über Robocopy).  
-  - PowerShell wird noch nicht unterstützt.
-  - Analysis Services wird nicht unterstützt.
-- Benachrichtigungen werden teilweise unterstützt.
-- Die E-Mail-Benachrichtigung wird unterstützt. Dazu muss ein Datenbank-E-Mail-Profil konfiguriert werden. Es kann nur ein Datenbank-E-Mail-Profil festgelegt werden, für das in der Public Preview-Phase der Name `AzureManagedInstance_dbmail_profile` angegeben werden muss (temporäre Einschränkung).  
-  - Der Pager wird nicht unterstützt.  
-  - NetSend wird nicht unterstützt.
-  - Warnungen werden noch nicht unterstützt.
-  - Proxys werden nicht unterstützt.  
-- EventLog wird nicht unterstützt.
-
-Die folgenden Features werden derzeit nicht unterstützt, kommen aber später hinzu:
-
-- Proxys
-- Planen von Aufträgen für CPU im Leerlauf
-- Aktivieren/Deaktivieren des Agent
-- Alerts
-
-Weitere Informationen zum SQL Server-Agent finden Sie unter [SQL Server-Agent](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent).
-
-### <a name="tables"></a>Tabellen
-
-Folgende Tabellen werden nicht unterstützt:
-
-- `FILESTREAM`
-- `FILETABLE`
-- `EXTERNAL TABLE`
-- `MEMORY_OPTIMIZED`  
-
-Weitere Informationen zum Erstellen und Ändern von Tabellen finden Sie unter [CREATE TABLE](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql) und [ALTER TABLE](https://docs.microsoft.com/sql/t-sql/statements/alter-table-transact-sql).
-
 ## <a name="Changes"></a> Behavior Changes
 
 Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zurück:
 
 - `SERVERPROPERTY('EngineEdition')` gibt den Wert 8 zurück. Durch diese Eigenschaft wird eine verwaltete Instanz eindeutig identifiziert. Siehe [SERVERPROPERTY](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
-- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, da das für SQL Server bestehende Konzept der Instanz nicht für die verwaltete Instanz gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
+- `SERVERPROPERTY('InstanceName')` gibt NULL zurück, da das für SQL Server bestehende Konzept der Instanz nicht für eine verwaltete Instanz gilt. Siehe [SERVERPROPERTY('InstanceName')](https://docs.microsoft.com/sql/t-sql/functions/serverproperty-transact-sql).
 - `@@SERVERNAME` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. meine-verwaltete-instanz.wcus17662feb9ce98.database.windows.net. Siehe [@@SERVERNAME](https://docs.microsoft.com/sql/t-sql/functions/servername-transact-sql).  
 - `SYS.SERVERS` gibt den vollständigen „verbindungsfähigen“ DNS-Namen zurück, z.B. `myinstance.domain.database.windows.net` für die Eigenschaften „name“ und „data_source“. Siehe [SYS.SERVERS](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-servers-transact-sql).
-- `@@SERVICENAME` gibt NULL zurück, da das für SQL Server bestehende Konzept des Diensts nicht für die verwaltete Instanz gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
+- `@@SERVICENAME` gibt NULL zurück, da das für SQL Server bestehende Konzept des Diensts nicht für eine verwaltete Instanz gilt. Siehe [@@SERVICENAME](https://docs.microsoft.com/sql/t-sql/functions/servicename-transact-sql).
 - `SUSER_ID` wird unterstützt. Gibt NULL zurück, wenn die AAD-Anmeldung in „sys.syslogins“ nicht vorhanden ist. Siehe [SUSER_ID](https://docs.microsoft.com/sql/t-sql/functions/suser-id-transact-sql).  
 - `SUSER_SID` wird nicht unterstützt. Gibt falsche Daten zurück (temporäres bekanntes Problem). Siehe [SUSER_SID](https://docs.microsoft.com/sql/t-sql/functions/suser-sid-transact-sql).
 - `GETDATE()` und andere integrierte Datum/Uhrzeit-Funktionen geben die Zeit immer in der UTC-Zeitzone zurück. Siehe [GETDATE](https://docs.microsoft.com/sql/t-sql/functions/getdate-transact-sql).
@@ -465,7 +476,7 @@ Fehlerprotokolle, die in einer verwalteten Instanz verfügbar sind, sind nicht p
 
 Die verwaltete SQL-Datenbank-Instanz stellt ausführliche Informationen in Fehlerprotokollen zur Verfügung, von denen viele nicht relevant sind. Die Informationsmenge in Fehlerprotokollen wird in Zukunft reduziert.
 
-**Problemumgehung**: Verwenden Sie eine benutzerdefinierte Prozedur zum Lesen von Fehlerprotokollen, mit der einige nicht relevante Einträge herausgefiltert werden. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+**Problemumgehung**: Verwenden Sie eine benutzerdefinierte Prozedur zum Lesen von Fehlerprotokollen, mit der einige nicht relevante Einträge herausgefiltert werden. Weitere Informationen finden Sie unter [Verwaltete Instanz – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Der gleiche Transaktionsbereich wird auf zwei Datenbanken in derselben Instanz nicht unterstützt
 
@@ -514,4 +525,4 @@ Sie können `BACKUP DATABASE ... WITH COPY_ONLY` nicht für eine Datenbank ausf�
 
 - Ausführliche Informationen zur verwalteten Instanz finden Sie unter [Was ist eine verwaltete Instanz?](sql-database-managed-instance.md).
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).
-- Eine Schnellstartanleitung zum Erstellen einer neuen verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-get-started.md).
+- Einen Schnellstart zum Erstellen einer neuen verwalteten Instanz finden Sie unter [Erstellen einer verwalteten Instanz](sql-database-managed-instance-get-started.md).
