@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 05/05/2017
+ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1e21357eeb795a26874cddb90b4d3a6303b83ac0
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 0ce4391e8fb2047320c4d84ac18ce0b1f8c8eaad
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43189632"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55745017"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -199,7 +199,7 @@ ms.locfileid: "43189632"
 > ![Windows][Logo_Windows] Windows
 >
 
-Im September 2016 veröffentlichte Microsoft ein Feature, mit dem Sie mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] mehrere virtuelle IP-Adressen verwalten können. Diese Funktionalität ist im externen Azure-Lastenausgleich bereits vorhanden.
+Sie können mehrere virtuelle IP-Adressen mithilfe eines [internen Azure-Lastenausgleichs][load-balancer-multivip-overview] verwalten. 
 
 Falls Sie über eine SAP-Bereitstellung verfügen, können Sie einen internen Lastenausgleich vornehmen, um eine Windows-Clusterkonfiguration für SAP Central Services-Instanzen (ASCS/SCS) zu erstellen.
 
@@ -213,8 +213,10 @@ Dieser Artikel behandelt den Übergang von einer einzelnen (A)SCS-Installation z
 >
 >Dies bedeutet, dass die maximale Anzahl von SAP ASCS/SCS-Instanzen auf einem WSFC-Cluster gleich der maximalen Anzahl privater Front-End-IPs pro internem Azure-Lastenausgleichsmodul ist.
 >
+> Die Verwendung der in dieser Dokumentation eingeführten Konfiguration wird noch nicht für [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) unterstützt.
+> 
 
-Weitere Informationen zu den Grenzwerten für den Lastenausgleich finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleich“ unter [Netzwerklimits: Azure Resource Manager][networking-limits-azure-resource-manager].
+Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager]. Erwägen Sie außerdem die Verwendung der [Azure Load Balancer Standard-SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) anstelle der einfachen SKU des Azure Load Balancers.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -398,7 +400,7 @@ Klicken Sie mit der rechten Maustaste auf die SOFS-Clustergruppe **sapglobal2**,
 
 ![Abbildung 6: Starten des Assistenten „Dateifreigabe hinzufügen“][sap-ha-guide-figure-8017]
 
-_**Abbildung 6**: Starten Sie den Assistenten „Dateifreigabe hinzufügen“._
+_**Abbildung 6:** Starten des Assistenten „Dateifreigabe hinzufügen“_
 
 <br>
 ![Abbildung 7: Auswählen von „SMB-Freigabe – Schnell“][sap-ha-guide-figure-8018]
@@ -413,12 +415,12 @@ _**Abbildung 8:** Auswählen von „sapglobalhost2“ und Eingeben des Pfads auf
 <br>
 ![Abbildung 9: Festlegen des Dateifreigabenamens auf „sapmnt“][sap-ha-guide-figure-8020]
 
-_**Abbildung 9:** Festlegen des Dateifreigabenamen auf „sapmnt“_
+_**Abbildung 9:** Festlegen des Dateifreigabenamens auf „sapmnt“_
 
 <br>
 ![Abbildung 10: Deaktivieren aller Einstellungen][sap-ha-guide-figure-8021]
 
-_**Abbildung 10**: Deaktivieren Sie alle Einstellungen._
+_**Abbildung 10:** Deaktivieren aller Einstellungen_
 
 <br>
 Weisen Sie folgenden Elementen *Vollzugriff* auf Dateien und die Freigabe „sapmnt“ zu:
@@ -437,7 +439,7 @@ _**Abbildung 12:** Auswählen von „Erstellen“_
 <br>
 ![Abbildung 13: Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt][sap-ha-guide-figure-8024]
 
-_**Abbildung 13:** Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt._
+_**Abbildung 13:** Die zweite Dateifreigabe „sapmnt“, die an den Host sapglobal2 und Volume2 gebunden ist, wird erstellt_
 
 <br>
 ## <a name="install-sap-netweaver-multi-sid"></a>Installieren von SAP NetWeaver-Multi-SID
@@ -451,7 +453,7 @@ Installieren Sie DBMS und SAP-Anwendungsserver nach der oben beschriebenen Vorge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]: offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
+* [Installieren einer ASCS/SCS-Instanz in einem Failovercluster ohne freigegebene Datenträger][sap-official-ha-file-share-document]:  offizielle SAP-Richtlinien für eine Dateifreigabe mit Hochverfügbarkeit
 
 * [Direkte Speicherplätze in Windows Server 2016][s2d-in-win-2016]
 
