@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 515b21c6854620a6bd1af53af8b1778d70613622
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1dd1cf143d66fec2ab8c12ee28a61bb3b8a83ade
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203945"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55821822"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -127,7 +127,7 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
     e. Wiederholen Sie die obigen Schritte für alle weiteren Domänen, die Sie Google Apps hinzufügen möchten.
      
      > [!WARNING]
-     > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter [Schritt 2: Aktivieren der einmaligen Anmeldung](#step-two-enable-single-sign-on) wiederholen.
+     > Wenn Sie die primäre Domäne für Ihren G Suite-Mandanten ändern und das einmalige Anmelden mit Azure AD bereits konfiguriert haben, müssen Sie Schritt 3 unter Schritt 2: „Einmaliges Anmelden aktivieren“ wiederholen.
        
 1. Wählen Sie in der [Google Apps-Verwaltungskonsole](https://admin.google.com/) die Option **Administratorrollen** aus.
    
