@@ -3,7 +3,7 @@ title: 'Azure SQL-Datenbank: Verwalten nach der Migration | Microsoft-Dokumentat
 description: Erfahren Sie, wie Sie Ihre Datenbank nach der Migration zu Azure SQL-Datenbank verwalten.
 services: sql-database
 ms.service: sql-database
-ms.subservice: ''
+ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 78879947ae0e702604b56f1cb9c914acc4d4d592
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/04/2019
+ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478473"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55751938"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
@@ -108,7 +108,7 @@ Es gibt mehrere Methoden, um Verbindungszugriffe für Ihre Anwendung optimal zu 
 
 Eine Firewall verhindert externe Zugriffe auf Ihren Server, indem nur bestimmten Entitäten Zugang zu Ihrem SQL-Datenbankserver gewährt wird. Standardmäßig sind alle Verbindungen mit dem SQL-Datenbankserver und darauf enthaltenen Datenbanken unzulässig – es sei denn, es handelt sich um Verbindungen von anderen Azure-Diensten. Mit einer Firewallregel können Sie den Serverzugriff auf bestimmte Entitäten beschränken (z. B. auf einen Entwicklercomputer), indem Sie zulassen, dass der Computer mit der jeweiligen IP-Adresse die Firewall passieren darf. Zudem können Sie einen Bereich von IP-Adressen angeben, über die Sie den Zugriff auf den SQL-Datenbankserver gewähren möchten. Beispielsweise können Sie die IP-Adressen aller Entwicklercomputer in Ihrer Organisation in einem Schritt hinzufügen, indem Sie auf der Seite für Firewalleinstellungen einen Bereich angeben.
 
-Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. Firewallregeln auf Serverebene können mithilfe des Azure-Portals oder mit SSMS erstellt werden. Weitere Informationen zum Festlegen von Firewallregeln auf Server- und Datenbankebene finden Sie unter: [Erstellen von Firewallregeln in SQL-Datenbank](sql-database-security-tutorial.md#create-firewall-rules).
+Firewallregeln können auf Server- oder auf Datenbankebene erstellt werden. IP-Firewallregeln auf Serverebene können mithilfe des Azure-Portals oder mit SSMS erstellt werden. Weitere Informationen zum Festlegen von Firewallregeln auf Server- und Datenbankebene finden Sie unter: [Erstellen von IP-Firewallregeln in SQL-Datenbank](sql-database-security-tutorial.md#create-firewall-rules).
 
 #### <a name="service-endpoints"></a>Dienstendpunkte
 
@@ -134,7 +134,7 @@ In SQL-Datenbank kann die Überwachung aktiviert werden, um Datenbankereignisse 
 
 #### <a name="threat-detection"></a>Bedrohungserkennung
 
-Die [Bedrohungserkennung](sql-database-threat-detection.md) bietet eine einfache Möglichkeit, auf die von der Überwachung erkannten Sicherheits- oder Richtlinienverletzungen zu reagieren. Sie müssen kein Sicherheitsexperte sein, um potenzielle Bedrohungen oder Verstöße innerhalb Ihres Systems zu beseitigen. Die Bedrohungserkennung ist auch in der Lage, die Einschleusung von SQL-Befehlen zu erkennen. Mit der Einschleusung von SQL-Befehlen wird versucht, Daten zu manipulieren oder zu kompromittieren. Die Methode wird im Allgemeinen für Angriffe auf Datenbankanwendungen eingesetzt. Die SQL-Bedrohungserkennung für Datenbanken führt mehrere verschiedene Algorithmen aus, die potentielle Sicherheitsrisiken, Angriffe mit Einschleusung von SQL-Befehlen und ungewöhnliche Muster für den Zugriff auf die Datenbank (wie der Zugriff von einem ungewöhnlichen Ort oder einem unbekannten Prinzipal aus) ermitteln. Sicherheitsbeauftragte oder andere vorgesehene Administratoren erhalten eine E-Mail-Benachrichtigung, wenn eine Bedrohung auf der Datenbank erkannt wird. Jede Benachrichtigung enthält Details zur verdächtigen Aktivität und Empfehlungen zur weiteren Untersuchung und Abwendung der Bedrohung. Informationen zum Aktivieren der Bedrohungserkennung finden Sie unter: [Aktivieren der Bedrohungserkennung für SQL-Datenbank](sql-database-security-tutorial.md#enable-security-features).
+Die [Bedrohungserkennung](sql-database-threat-detection.md) bietet eine einfache Möglichkeit, auf die von der Überwachung erkannten Sicherheits- oder Richtlinienverletzungen zu reagieren. Sie müssen kein Sicherheitsexperte sein, um potenzielle Bedrohungen oder Verstöße innerhalb Ihres Systems zu beseitigen. Die Bedrohungserkennung ist auch in der Lage, die Einschleusung von SQL-Befehlen zu erkennen. Mit der Einschleusung von SQL-Befehlen wird versucht, Daten zu manipulieren oder zu kompromittieren. Die Methode wird im Allgemeinen für Angriffe auf Datenbankanwendungen eingesetzt. Die Bedrohungserkennung führt mehrere verschiedene Algorithmen aus, die potentielle Sicherheitsrisiken, Angriffe mit Einschleusung von SQL-Befehlen und ungewöhnliche Muster für den Zugriff auf die Datenbank (wie der Zugriff von einem ungewöhnlichen Ort oder einem unbekannten Prinzipal aus) ermitteln. Sicherheitsbeauftragte oder andere vorgesehene Administratoren erhalten eine E-Mail-Benachrichtigung, wenn eine Bedrohung auf der Datenbank erkannt wird. Jede Benachrichtigung enthält Details zur verdächtigen Aktivität und Empfehlungen zur weiteren Untersuchung und Abwendung der Bedrohung. Informationen zum Aktivieren der Bedrohungserkennung finden Sie unter: [Aktivieren der Bedrohungserkennung](sql-database-security-tutorial.md#enable-security-features).
 
 ### <a name="how-do-i-protect-my-data-in-general-on-sql-database"></a>Welchen grundsätzlichen Schutz bietet SQL-Datenbank für Daten?
 
@@ -165,7 +165,7 @@ Durch die [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-le
 
 ### <a name="how-do-i-manage-encryption-keys-in-the-cloud"></a>Wie werden Verschlüsselungsschlüssel in der Cloud verwaltet?
 
-Es gibt sowohl für die Methode Always Encrypted (clientseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
+Es gibt sowohl für die Methode Always Encrypted (clienstseitige Verschlüsselung) als auch für Transparent Data Encryption (Verschlüsselung ruhender Daten) Optionen zur Schlüsselverwaltung. Es wird empfohlen, Verschlüsselungsschlüssel regelmäßig zu rotieren. Die Rotationsfrequenz sollte sowohl die internen Bestimmungen Ihrer Organisation als auch die Complianceanforderungen erfüllen.
 
 #### <a name="transparent-data-encryption-tde"></a>Transparent Data Encryption (TDE)
 
@@ -178,7 +178,7 @@ Der Masterschlüssel für die Transparent Data Encryption-Methode wird der Einfa
 
 #### <a name="always-encrypted"></a>Always Encrypted
 
-Es gibt auch eine Zwei-Schlüssel-Hierarchie in Always Encrypted: Eine Spalte mit vertraulichen Daten wird mit einem AES 256-Spaltenverschlüsselungsschlüssel verschlüsselt, der wiederum mit einem Spaltenmasterschlüssel verschlüsselt wird. Die Clienttreiber, die für die Always Encrypted-Methode zur Verfügung gestellt werden, haben keine Beschränkungen im Hinblick auf die Länge des Spaltenhauptschlüssels. Der verschlüsselte Wert des Spaltenverschlüsselungsschlüssel wird in der Datenbank gespeichert, und der Spaltenhauptschlüssel wird in einem vertrauenswürdigen Schlüsselspeicher wie dem Windows-Zertifikatspeicher, Azure Key Vault oder einem Hardware-Sicherheitsmodul gespeichert.
+Es gibt auch eine [Zwei-Schlüssel-Hierarchie](/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted) in Always Encrypted: Eine Spalte mit vertraulichen Daten wird mit einem AES 256-Spaltenverschlüsselungsschlüssel verschlüsselt, der wiederum mit einem Spaltenmasterschlüssel verschlüsselt wird. Die Clienttreiber, die für die Always Encrypted-Methode zur Verfügung gestellt werden, haben keine Beschränkungen im Hinblick auf die Länge des Spaltenhauptschlüssels. Der verschlüsselte Wert des Spaltenverschlüsselungsschlüssel wird in der Datenbank gespeichert, und der Spaltenhauptschlüssel wird in einem vertrauenswürdigen Schlüsselspeicher wie dem Windows-Zertifikatspeicher, Azure Key Vault oder einem Hardware-Sicherheitsmodul gespeichert.
 
 - Sowohl der [Spaltenverschlüsselungsschlüssel als auch der Spaltenhauptschlüssel](/sql/relational-databases/security/encryption/rotate-always-encrypted-keys-using-powershell) können gedreht werden.
 - Die Rotation des Spaltenverschlüsselungsschlüssels ist datenintensiv und kann abhängig von der Größe der Tabellen, die die verschlüsselten Spalten enthalten, zeitaufwendig sein. Daher empfiehlt es sich, Rotationen von Spaltenverschlüsselungsschlüsseln entsprechend zu planen.
@@ -220,7 +220,7 @@ Query Performance Insight liefert maßgeschneiderte Empfehlungen zur Datenbankwo
 
 ### <a name="security-optimization"></a>Sicherheitsoptimierung
 
-SQL-Datenbank bietet handlungsrelevante Sicherheitsempfehlungen, die Sie beim Schutz Ihrer Daten unterstützen, sowie eine Bedrohungserkennung, mit der verdächtige Datenbankaktivitäten, die die Datenbank gefährden könnten, identifiziert und untersucht werden. Bei der [Bewertung von SQL-Sicherheitsrisiken](sql-vulnerability-assessment.md) handelt es sich um einen Überprüfungs- und Berichterstellungsdienst für Datenbanken, mit dessen Hilfe Sie den Sicherheitsstatus Ihrer Datenbanken effektiv überwachen sowie Sicherheitsrisiken und Abweichungen von der von Ihnen definierten Sicherheitsbaseline ermitteln können. Nach jeder Überprüfung wird neben einer benutzerdefinierte Liste mit zur Umsetzung empfohlenen Schritten und Wiederherstellungsskripts auch ein Bewertungsbericht zur Verfügung gestellt, der zur Einhaltung von Kompatibilitätsanforderungen verwendet werden kann.
+SQL-Datenbank bietet handlungsrelevante Sicherheitsempfehlungen, die Sie beim Schutz Ihrer Daten unterstützen, sowie eine Bedrohungserkennung, mit der verdächtige Datenbankaktivitäten, die die Datenbank gefährden könnten, identifiziert und untersucht werden. Bei der [Bewertung von Sicherheitsrisiken](sql-vulnerability-assessment.md) handelt es sich um einen Überprüfungs- und Berichterstellungsdienst für Datenbanken, mit dessen Hilfe Sie den Sicherheitsstatus Ihrer Datenbanken effektiv überwachen sowie Sicherheitsrisiken und Abweichungen von der von Ihnen definierten Sicherheitsbaseline ermitteln können. Nach jeder Überprüfung wird neben einer benutzerdefinierte Liste mit zur Umsetzung empfohlenen Schritten und Wiederherstellungsskripts auch ein Bewertungsbericht zur Verfügung gestellt, der zur Einhaltung von Kompatibilitätsanforderungen verwendet werden kann.
 
 Mit Azure Security Center können Sie Sicherheitsempfehlungen auf allgemeiner Basis ermitteln und mit einem einzigen Mausklick anwenden.
 
