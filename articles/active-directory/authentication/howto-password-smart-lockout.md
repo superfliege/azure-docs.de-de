@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 12/14/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
-ms.openlocfilehash: 101070dab80c69ea1d24dd11fe5e067947505d19
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 8364d09aa2d068e347199d104c069047aa24d7a4
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077963"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55511903"
 ---
 # <a name="azure-active-directory-smart-lockout"></a>Azure Active Directory Smart Lockout
 
@@ -23,7 +23,7 @@ Smart Lockout unterstützt Sie beim Sperren von Angreifern, die versuchen, Benut
 
 Nach zehn Fehlversuchen sperrt Smart Lockout das Konto standardmäßig eine Minute lang für Anmeldeversuche. Das Konto wird nach jedem weiteren fehlgeschlagenen Anmeldeversuch zuerst für eine Minute und bei anschließenden Versuchen länger gesperrt.
 
-Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Zähler für die Sperren erneut erhöht wird. Wenn eine Person mehrere Male das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht.
+Smart Lockout verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrere Male das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht.
 
  > [!NOTE]
  > Eine Funktion zur Hashnachverfolgung ist nicht für Kunden verfügbar, die die Pass-Through-Authentifizierung aktiviert haben, da die Authentifizierung lokal und nicht in der Cloud erfolgt.

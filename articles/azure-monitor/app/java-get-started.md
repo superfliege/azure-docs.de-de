@@ -10,19 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 01/31/2019
 ms.author: lagayhar
-ms.openlocfilehash: e16432022c8c8525c95fab46bc61197f67fb8f37
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 7ad8b96efeef2a5bb5543ee08150376862abb27f
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260056"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55699320"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Erste Schritte mit Application Insights in einem Java-Webprojekt
 
 
-[Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Verwenden Sie den Dienst, um [Leistungsprobleme und Ausnahmen zu erkennen und zu diagnostizieren](../../azure-monitor/app/detect-triage-diagnose.md), und [schreiben Sie Code][api], um zu verfolgen, welche Aktionen Benutzer mit Ihrer App ausführen.
+[Application Insights](https://azure.microsoft.com/services/application-insights/) ist ein erweiterbarer Analysedienst für Webentwickler, der Ihnen dabei hilft, die Leistung und die Verwendung der Liveanwendung zu verstehen. Verwenden Sie es, um [automatisch Anforderungen zu instrumentieren, Abhängigkeiten zu verfolgen und Leistungsindikatoren zu sammeln](auto-collect-dependencies.md#java), [, Leistungsprobleme und Ausnahmen zu diagnostizieren](../../azure-monitor/app/detect-triage-diagnose.md) und [Code zu schreiben][api], um die Aktivitäten der Benutzer Ihrer App zu verfolgen. 
 
 ![Screenshot der Übersicht über die Beispieldaten](./media/java-get-started/overview-graphs.png)
 
@@ -75,7 +75,7 @@ Aktualisieren Sie dann die Projektabhängigkeiten, damit die Binärdateien herun
 ```
 
 * *Build- oder Prüfsummenvalidierungsfehler?* Versuchen Sie es mit einer bestimmten Version, z. B.: `<version>2.0.n</version>`. Die neueste Version finden Sie in den [SDK-Versionshinweisen](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) oder in den [Maven-Artefakten](https://search.maven.org/#search%7Cga%7C1%7Capplicationinsights).
-* *Sie müssen auf ein neues SDK aktualisieren?*  Aktualisieren Sie die Abhängigkeiten des Projekts.
+* *Sie müssen auf ein neues SDK aktualisieren?* Aktualisieren Sie die Abhängigkeiten des Projekts.
 
 #### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Wenn Sie Gradle verwenden: <a name="gradle-setup" />
 Wenn Ihr Projekt bereits für die Verwendung von Gradle für den Buildprozess eingerichtet ist, fügen Sie Ihrer Datei „build.gradle“ den folgenden Code hinzu:

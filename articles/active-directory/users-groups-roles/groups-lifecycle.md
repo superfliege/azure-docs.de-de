@@ -1,5 +1,5 @@
 ---
-title: Ablauf für Office 365-Gruppen in Azure Active Directory | Microsoft-Dokumentation
+title: Einrichten des Ablaufs für Office 365-Gruppen – Azure Active Directory | Microsoft-Dokumentation
 description: Einrichten des Ablaufs für Office 365-Gruppen in Azure Active Directory
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 03/09/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 070e86f2d5d37823f1596cf04735b199289f3d75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 12b23b8a062859da111a067b2655425a611b6c20
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166168"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55658248"
 ---
 # <a name="configure-the-expiration-policy-for-office-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Office 365-Gruppen
 
@@ -53,15 +53,16 @@ Weitere Informationen zu Berechtigungen zum Wiederherstellen von gelöschten Gru
   
   ![Blatt „Ablauf“](./media/groups-lifecycle/expiration-settings.png)
 
-4. Auf dem Blatt **Ablauf** können Sie:
+3. Auf dem Blatt **Ablauf** können Sie:
 
   * Die Gruppenlebensdauer in Tagen festlegen. Sie könnten einen der vordefinierten Werte oder einen benutzerdefinierten Wert wählen (mindestens 31 Tage). 
   * Geben Sie eine E-Mail-Adresse an, an die die Verlängerungs- und Ablaufbenachrichtigungen gesendet werden sollten, wenn eine Gruppe keinen Besitzer hat. 
   * Wählen Sie, welche Office 365-Gruppen ablaufen. Sie können den Ablauf für  **alle** oder nur für **ausgewählte** Office 365-Gruppen treffen, oder Sie wählen  **Keine** aus, um den Ablauf für alle Gruppen zu deaktivieren.
   * Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
+## <a name="email-notifications"></a>E-Mail-Benachrichtigungen
 
-E-Mail-Benachrichtigungen, wie diese werden an die Office 365-Gruppenbesitzer 30 Tage, 15 Tage und 1 Tag vor Ablauf der Gruppe gesendet.
+E-Mail-Benachrichtigungen, wie diese werden an die Office 365-Gruppenbesitzer 30 Tage, 15 Tage und 1 Tag vor Ablauf der Gruppe gesendet. Die Sprache der E-Mail richtet sich nach der bevorzugten Sprache des Gruppenbesitzers oder der Sprache des Mandanten. Wenn der Gruppenbesitzer eine bevorzugte Sprache definiert hat oder mehrere Besitzer die gleiche bevorzugte Sprache haben, wird diese Sprache verwendet. In allen anderen Fällen wird die Sprache des Mandanten verwendet.
 
 ![E-Mail-Benachrichtigung zum Ablauf](./media/groups-lifecycle/expiration-notification.png)
 

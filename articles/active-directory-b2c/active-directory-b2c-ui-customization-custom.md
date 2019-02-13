@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3c3b7d73de9a0e7e72351687af16b98b11f9581b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188490"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818871"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -86,7 +86,7 @@ Gehen Sie wie folgt vor, um im Blob-Speicher einen öffentlichen Container zu er
 5. Klicken Sie auf **$root**, um den neuen Container zu öffnen.
 6. Klicken Sie auf **Hochladen**.
 7. Klicken Sie auf das Ordnersymbol neben **Datei auswählen**.
-8. Wechseln Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt [Seite für die Benutzeroberflächenanpassung](#the-page-ui-customization-feature) erstellt haben.
+8. Wechseln Sie zur Datei **customize-ui.html**, die Sie zuvor im Abschnitt „Seite für die Benutzeroberflächenanpassung“ erstellt haben.
 9. Klicken Sie auf **Hochladen**.
 10. Wählen Sie das Blob „customize-ui.html“ aus, das Sie hochgeladen haben.
 11. Klicken Sie neben **URL** auf **Kopieren**.
@@ -175,7 +175,7 @@ Der Ordner „sample_templates/wingtip“ enthält die folgenden HTML-Dateien:
 | *unified.html* | Verwenden Sie diese Datei als Vorlage für eine einheitliche Registrierungs- oder Anmeldeseite. |
 | *updateprofile.html* | Verwenden Sie diese Datei als Vorlage für eine Seite zum Aktualisieren von Profilen. |
 
-Im Abschnitt [Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien](#modify-your-sign-up-or-sign-in-custom-policy) haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
+Im Abschnitt „Ändern von benutzerdefinierten Registrierungs- oder Anmelderichtlinien“ haben Sie die Inhaltsdefinition für `api.idpselections` konfiguriert. Der vollständige Satz mit IDs für die Inhaltsdefinition, die vom Azure AD B2C Identity Experience Framework erkannt werden, und die dazugehörigen Beschreibungen sind in der folgenden Tabelle enthalten:
 
 | ID für Inhaltsdefinition | BESCHREIBUNG | 
 |-----------------------|-------------|

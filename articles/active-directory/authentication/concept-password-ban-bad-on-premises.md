@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
-ms.openlocfilehash: b99c1b99fe87c755d6092876ccd598d926289192
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 816c459ca6edd7204ccdcdf9d402f2d4499d9116
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077829"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55662522"
 ---
 # <a name="preview-enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>Vorschau: Erzwingen des Azure AD-Kennwortschutzes für Windows Server Active Directory
 
@@ -29,7 +29,7 @@ Azure AD-Kennwortschutz ist ein neues, von Azure Active Directory (Azure AD) unt
 Es gibt drei Softwarekomponenten, die den Azure AD-Kennwortschutz bilden:
 
 * Der Azure AD-Kennwortschutz-Proxydienst wird auf einem beliebigen in die Domäne eingebundenen Computer in der aktuellen Active Directory-Gesamtstruktur ausgeführt. Er leitet Anforderungen von Domänencontrollern an Azure AD weiter und gibt die Antwort von Azure AD an den Domänencontroller zurück.
-* Der Azure AD-Kennwortschutz-DC-Agent-Dienst empfängt Anforderungen zur Kennwortüberprüfung von der DC-Agent-Kennwortfilter-DLL, verarbeitet sie mit der aktuellen lokal verfügbaren Kennwortrichtlinie, und gibt das Ergebnis zurück (bestanden\nicht bestanden). Dieser Dienst ist für das regelmäßige (stündliche) Aufrufen des Azure AD-Kennwortschutz-Proxydiensts zum Abrufen neuer Versionen der Kennwortrichtlinie verantwortlich. Die Kommunikation für Aufrufe, die beim Azure AD-Kennwortschutz-Proxydienst ein- und davon ausgehen, wird per Remoteprozeduraufruf (Remote Procedure Call, RPC) über TCP abgewickelt. Beim Abruf werden neue Richtlinien in einem SYSVOL-Ordner gespeichert, in dem sie an andere Domänencontroller replizieren können. Der DC-Agent-Dienst überwacht auch den SYSVOL-Ordner auf Änderungen – für den Fall, dass andere Domänencontroller neue Kennwortrichtlinien dorthin geschrieben haben. Wenn bereits eine passende letzte Richtlinie verfügbar ist, wird die Überprüfung des Azure AD-Kennwortschutz-Proxydiensts übersprungen.
+* Der Azure AD-Kennwortschutz-DC-Agent-Dienst empfängt Anforderungen zur Kennwortüberprüfung von der DC-Agent-Kennwortfilter-DLL, verarbeitet sie mit der aktuellen lokal verfügbaren Kennwortrichtlinie, und gibt das Ergebnis zurück (bestanden\nicht bestanden). Dieser Dienst ist für das regelmäßige (stündliche) Aufrufen des Azure AD-Kennwortschutz-Proxydiensts zum Abrufen neuer Versionen der Kennwortrichtlinie verantwortlich. Die Kommunikation zwischen dem DC-Agent-Dienst des Azure AD-Kennwortschutzes und dem Azure AD-Kennwortschutz-Proxy-Diensts erfolgt mittels RPC (Remote Procedure Call) über TCP. Beim Abruf werden neue Richtlinien in einem SYSVOL-Ordner gespeichert, in dem sie an andere Domänencontroller replizieren können. Der DC-Agent-Dienst überwacht auch den SYSVOL-Ordner auf Änderungen – für den Fall, dass andere Domänencontroller neue Kennwortrichtlinien dorthin geschrieben haben. Wenn bereits eine passende aktuelle Richtlinie verfügbar ist, werden die Downloadanforderungen für eine neue Richtlinie übersprungen.
 * Die DC-Agent-Kennwortfilter-DLL empfängt Anforderungen zur Kennwortüberprüfung vom Betriebssystem und leitet sie an den Azure AD-Kennwortschutz-DC-Agent-Dienst weiter, der lokal auf dem Domänencontroller ausgeführt wird.
 
 ![Zusammenspiel der Komponenten des Azure AD-Kennwortschutzes](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
@@ -57,7 +57,7 @@ Es gibt zwei erforderliche Installer für den Azure AD-Kennwortschutz, die vom [
 * Es besteht keine minimale Anforderung an die Funktionsebene von Active Directory-Domäne oder Gesamtstruktur (DFL\FFL).
 * Die Software erstellt weder Konten in den Active Directory-Domänen, die sie schützt, noch setzt sie sie voraus.
 * Inkrementelle Bereitstellung wird mit dem Nachteil unterstützt, dass die Kennwortrichtlinie nur dort erzwungen wird, wo der Domänencontroller-Agent installiert ist.
-* Es wird empfohlen, den DC-Agent auf allen Domänencontrollern zu installieren, um den zwangsweisen Kennwortschutz zu gewährleisten. 
+* Es wird empfohlen, den DC-Agent auf allen Domänencontrollern zu installieren, um den zwangsweisen Kennwortschutz zu gewährleisten.
 * Azure AD-Kennwortschutz ist kein Echtzeit-Richtlinienanwendungs-Modul. Zwischen einer Änderung der Kennwortrichtlinien-Konfiguration und dem Zeitpunkt, zu dem sie alle Domänencontroller erreicht und dort ihre Durchsetzung erzwungen wird, kann eine Verzögerung auftreten.
 
 ## <a name="next-steps"></a>Nächste Schritte

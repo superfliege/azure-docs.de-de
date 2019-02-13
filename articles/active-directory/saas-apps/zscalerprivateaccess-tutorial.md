@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d150a91a00652d5af74253dfdf60eb728db97b5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8be5e94886237129824204ea166a2663e2f3110e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192829"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814451"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-zpa"></a>Tutorial: Azure Active Directory-Integration mit Zscaler Private Access (ZPA)
 
@@ -95,7 +95,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Zscaler Pr
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines Testbenutzers für Zscaler Private Access (ZPA)](#creating-a-zscaler-private-access-(zpa)-test-user)**, um eine Entsprechung von Britta Simon in Zscaler Private Access (ZPA) zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **Erstellen eines Testbenutzers für Zscaler Private Access (ZPA)**, um eine Entsprechung von Britta Simon in Zscaler Private Access (ZPA) zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 

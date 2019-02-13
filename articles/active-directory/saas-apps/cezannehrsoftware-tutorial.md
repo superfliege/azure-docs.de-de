@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: jeedes
-ms.openlocfilehash: 7515d1d88e3652ba609286b1805e58853763434d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 28a699f62a97120a27ba4d6f555182f090249dcf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183225"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812298"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Tutorial: Azure Active Directory-Integration mit Cezanne HR Software
 
@@ -88,7 +88,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Cezanne HR
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Cezanne HR Software-Testbenutzers](#create-a-cezannehrsoftware-test-user)**, um eine Entsprechung von Britta Simon in Cezanne HR Software zu erhalten, die mit ihrer Benutzerdarstellung in Azure AD verknüpft ist.
+1. **Erstellen eines Cezanne HR Software-Testbenutzers**, um eine Entsprechung von Britta Simon in Cezanne HR Software zu erhalten, die mit ihrer Benutzerdarstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 

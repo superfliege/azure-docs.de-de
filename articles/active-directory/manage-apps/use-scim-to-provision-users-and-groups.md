@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 140391b02dab8ce6b47d5350d6d40a9673b29e11
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e16598a10cbbe4cfa65e6b5394e749bfee99dbdc
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161765"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55732582"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Automatisches Bereitstellen von Benutzern und Gruppen aus Azure Active Directory für Anwendungen mit SCIM (System for Cross-domain Identity Management)
 
@@ -120,7 +120,7 @@ Um diesen Prozess zu vereinfachen, werden [Codebeispiele](https://github.com/Azu
 ### <a name="getting-started"></a>Erste Schritte
 Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereitstellungsanforderungen von Azure AD akzeptiert, ist das Erstellen und Bereitstellen des Codebeispiels, bei dem die bereitgestellten Benutzer in eine Datei mit kommagetrennten Werten (CSV) ausgegeben werden.
 
-**So erstellen Sie einen SCIM-Beispielendpunkt**
+#### <a name="to-create-a-sample-scim-endpoint"></a>So erstellen Sie einen SCIM-Beispielendpunkt
 
 1. Laden Sie das Beispielpaket aus [https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master) herunter.
 2. Entzippen Sie das Paket, und speichern Sie die Daten auf Ihrem Windows-Computer, z.B. unter „C:\AzureAD-BYOA-Provisioning-Samples“.
@@ -142,7 +142,7 @@ Die einfachste Möglichkeit zum Implementieren eines SCIM-Endpunkts, der Bereits
 8. Wählen Sie in Windows unter **Windows-Einstellungen > Netzwerk- und Interneteinstellungen** die Option **Windows-Firewall > Erweiterte Einstellungen** aus, und erstellen Sie eine **Eingangsregel**, mit der der eingehende Zugriff auf Port 9000 zugelassen wird.
 9. Falls sich der Windows-Computer hinter einem Router befindet, muss der Router konfiguriert werden, um die Netzwerkadressübersetzung zwischen seinem Port 9000, der gegenüber dem Internet offen ist, und Port 9000 auf dem Windows-Computer durchzuführen. Diese Konfiguration ist erforderlich, damit Azure AD auf diesen Endpunkt in der Cloud zugreifen kann.
 
-**So registrieren Sie den SCIM-Beispielendpunkt in Azure AD**
+#### <a name="to-register-the-sample-scim-endpoint-in-azure-ad"></a>So registrieren Sie den SCIM-Beispielendpunkt in Azure AD
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 2. Navigieren Sie zu **Azure Active Directory > Unternehmensanwendungen**, und klicken Sie auf **Neue Anwendung > Alle > Nicht-Kataloganwendung**.

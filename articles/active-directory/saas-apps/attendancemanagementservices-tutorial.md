@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 331a8d07004a8915d27b28ca0fba940b1aa3ab72
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: bcbb3d5d25fdc3de71045cedfd4634e47b3947bf
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164808"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811953"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-attendance-management-services"></a>Tutorial: Azure Active Directory-Integration mit Attendance Management Services
 
@@ -86,7 +86,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Attendanc
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Attendance Management Services-Testbenutzers](#create-an-attendance-management-service-test-user)**, um eine Entsprechung von Britta Simon in Attendance Management Services zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
+1. **Erstellen eines Attendance Management Services-Testbenutzers**, um eine Entsprechung von Britta Simon in Attendance Management Services zu erhalten, die mit der Benutzerdarstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 

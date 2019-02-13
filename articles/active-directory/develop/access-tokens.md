@@ -16,12 +16,12 @@ ms.date: 10/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 7dd2b60a985291311328407b07ef290e962f147b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 110397e8399d153356a574b00d34a4cb781ec1b5
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080564"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811561"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory-Zugriffstoken
 
@@ -239,6 +239,8 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 > Bei einer „Nicht kennwortbasierten“ Anmeldung hat der Benutzer kein Kennwort eingegeben, um sich anzumelden. Beispiele sind die Gesichtserkennung mit Windows Hello, ein FIDO-Schlüssel oder eine PIN. 
 >
 > Beim primären Aktualisierungstoken in Windows liegt ein bekanntes Problem vor. Wenn das primäre Aktualisierungstoken (Primary Refresh Token, PRT) über ein Kennwort abgerufen wird und der Benutzer sich über Hello anmeldet, ändert sich der Ursprung des PRTs nicht, und es wird widerrufen, wenn der Benutzer sein Kennwort ändert.
+>
+> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

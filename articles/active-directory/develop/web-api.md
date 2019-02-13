@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: b507e6630e5b0b0e73edad1815825e70ed90ec4d
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 58cff9be154e693a378f55941e8662563c366b27
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097298"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820214"
 ---
 # <a name="web-api"></a>Web-API
 
@@ -47,7 +47,7 @@ Die Anwendungsidentität und die delegierte Benutzeridentität werden im folgend
 
 ### <a name="delegated-user-identity-with-openid-connect"></a>Delegierte Benutzeridentität mit OpenID Connect
 
-1. Ein Benutzer ist mit Azure AD bei einer Webanwendung angemeldet (siehe [Webbrowser zu Webanwendung](#web-browser-to-web-application) im Abschnitt weiter oben). Wenn der Benutzer der Webanwendung noch keine Zustimmung für den Aufruf der Web-API erteilt hat, muss er diesen Schritt noch durchführen. Die Anwendung zeigt die erforderlichen Berechtigungen an. Handelt es sich bei einer dieser Berechtigungen um eine Berechtigung auf Administratorebene, kann die Zustimmung nicht durch einen normalen Benutzer im Verzeichnis erteilt werden. Dieser Zustimmungsprozess gilt nur für mehrinstanzenfähige Anwendungen. Einzelinstanzanwendungen verfügen bereits über die erforderlichen Berechtigungen. Bei der Anmeldung des Benutzers hat die Webanwendung ein ID-Token mit Benutzerinformationen sowie einen Autorisierungscode erhalten.
+1. Ein Benutzer ist mit Azure AD bei einer Webanwendung angemeldet (siehe „Webbrowser zu Webanwendung“ im Abschnitt weiter oben). Wenn der Benutzer der Webanwendung noch keine Zustimmung für den Aufruf der Web-API erteilt hat, muss er diesen Schritt noch durchführen. Die Anwendung zeigt die erforderlichen Berechtigungen an. Handelt es sich bei einer dieser Berechtigungen um eine Berechtigung auf Administratorebene, kann die Zustimmung nicht durch einen normalen Benutzer im Verzeichnis erteilt werden. Dieser Zustimmungsprozess gilt nur für mehrinstanzenfähige Anwendungen. Einzelinstanzanwendungen verfügen bereits über die erforderlichen Berechtigungen. Bei der Anmeldung des Benutzers hat die Webanwendung ein ID-Token mit Benutzerinformationen sowie einen Autorisierungscode erhalten.
 1. Auf der Grundlage des Autorisierungscodes von Azure AD sendet die Webanwendung eine Anforderung an den Token-Endpunkt von Azure AD. Diese Anforderung enthält den Autorisierungscode, Details zur Clientanwendung (Anwendungs-ID und Umleitungs-URI) sowie die gewünschte Ressource (Anwendungs-ID-URI für die Web-API).
 1. Der Autorisierungscode sowie die Informationen zu Webanwendung und Web-API werden von Azure AD überprüft. Bei erfolgreicher Validierung gibt Azure AD zwei Token zurück: ein JWT-Zugriffstoken und ein JWT-Aktualisierungstoken.
 1. Die Webanwendung fügt der Web-API über HTTPS und unter Verwendung des zurückgegebenen JWT-Zugriffstokens die JWT-Zeichenfolge mit der Angabe „Bearer“ (Träger) im Autorisierungsheader der Anforderung hinzu. Daraufhin überprüft die Web-API das JWT-Token und gibt bei erfolgreicher Validierung die gewünschte Ressource zurück.

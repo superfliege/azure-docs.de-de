@@ -1,5 +1,5 @@
 ---
-title: Dienstlimits und -einschränkungen für Azure Active Directory
+title: Dienstlimits und -einschränkungen – Azure Active Directory | Microsoft-Dokumentation
 description: Verwendungs- und andere Einschränkungen für den Azure Active Directory-Dienst
 services: active-directory
 documentationcenter: ''
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.subservice: users-groups-roles
 ms.topic: article
 ms.workload: identity
-ms.date: 06/28/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.custom: aaddev;it-pro
 ms.reviewer: jeffsta
-ms.openlocfilehash: 4dd7f5044733f0eeb6bcf4cb59eb9785ae22d38f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6a984c641608d5fd84a2fc6a88e30fd7f457ce9c
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172067"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55506089"
 ---
 # <a name="azure-ad-service-limits-and-restrictions"></a>Dienst- und andere Einschränkungen für Azure AD
 Dieser Artikel beschreibt die Nutzungsbeschränkungen und andere Diensteinschränkungen für den Azure Active Directory-Dienst. Einen vollständigen Überblick über die Microsoft Azure-Diensteinschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](../../azure-subscription-service-limits.md).

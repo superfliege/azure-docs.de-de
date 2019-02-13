@@ -1,25 +1,24 @@
 ---
-title: Referenz der Regeln für eine dynamische automatische Gruppenmitgliedschaft in Azure Active Directory | Microsoft-Dokumentation
+title: Regeln für eine dynamische automatische Gruppenmitgliedschaft – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie, wie Mitgliedschaftsregeln erstellt werden, um Gruppen automatisch aufzufüllen. Sie finden hier außerdem eine Regelreferenz.
 services: active-directory
 documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/07/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 98638c2fbd3f60ec0db009b52507eadcadd87ab4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 309e686d563798c34d2ab40af0ac1a6e6368b4e7
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172322"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55509115"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 

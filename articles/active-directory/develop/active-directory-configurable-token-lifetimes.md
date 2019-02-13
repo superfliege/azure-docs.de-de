@@ -16,12 +16,12 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.openlocfilehash: 5dd5920eae97399bae03c6917bb610103bd556c2
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: ecdeca5e6dae5fa60afdce499dc4eea022c4564c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54912713"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817630"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurierbare Tokengültigkeitsdauern in Azure Active Directory (Vorschau)
 
@@ -48,7 +48,8 @@ Sie können die Tokengültigkeitsdauer-Richtlinien für Aktualisierungstoken, Zu
 Clients nutzen Zugriffstoken, um auf eine geschützte Ressource zuzugreifen. Ein Zugriffstoken kann nur für eine bestimmte Kombination aus Benutzer, Client und Ressource verwendet werden. Zugriffstoken können nicht widerrufen werden und sind bis zu ihrem Ablauf gültig. Ein böswilliger Akteur, der ein Zugriffstoken abgerufen hat, kann es während seiner gesamten Lebensdauer verwenden. Das Anpassen der Gültigkeitsdauer eines Zugriffstokens erfordert einen Kompromiss. Hierbei steht eine Verbesserung der Systemleistung einer Verlängerung der Zeitspanne gegenüber, über die der Client weiterhin Zugriff hat, nachdem das Konto des Benutzers deaktiviert wurde. Eine verbesserte Systemleistung wird dadurch erzielt, dass ein Client weniger oft ein neues Zugriffstoken abrufen muss.  Die Standardeinstellung ist „1 Stunde“. Nach einer Stunde muss der Client das Aktualisierungstoken verwenden, um (meist im Hintergrund) ein neues Aktualisierungstoken und Zugriffstoken abzurufen. 
 
 ### <a name="refresh-tokens"></a>Aktualisierungstoken
-Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er auch ein Aktualisierungstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Ein Aktualisierungstoken ist an eine Kombination aus Benutzer und Client gebunden. Ein Aktualisierungstoken kann [jederzeit widerrufen werden](access-tokens.md#token-revocation), und die Gültigkeit des Tokens wird bei jeder Verwendung des Tokens geprüft.  
+
+Wenn ein Client ein Zugriffstoken für den Zugriff auf eine geschützte Ressource abruft, erhält er auch ein Aktualisierungstoken. Das Aktualisierungstoken wird verwendet, um neue Zugriffs-/Aktualisierungstoken-Paare abzurufen, wenn das aktuelle Zugriffstoken abläuft. Ein Aktualisierungstoken ist an eine Kombination aus Benutzer und Client gebunden. Ein Aktualisierungstoken kann [jederzeit widerrufen werden](access-tokens.md#token-revocation), und die Gültigkeit des Tokens wird bei jeder Verwendung des Tokens geprüft.  Aktualisierungstoken werden nicht widerrufen, wenn sie zum Abrufen neuer Zugriffstoken verwendet werden. Dies ist eine bewährte Methode, um das alte Token beim Abrufen eines neuen Tokens sicher zu löschen. 
 
 Es ist wichtig, zwischen vertraulichen Clients und öffentlichen Clients zu unterscheiden, da dies eine Auswirkung darauf hat, wie lange Aktualisierungstoken verwendet werden können. Weitere Informationen zu den verschiedenen Clienttypen finden Sie unter [RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 

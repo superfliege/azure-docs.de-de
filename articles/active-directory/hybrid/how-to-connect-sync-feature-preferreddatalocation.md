@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 50210ebeed30bdb58698d0e878667b92dcc73609
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 38bb0840269d4b7bacbb0101590b389c8542a9b1
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167086"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814230"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -238,7 +238,7 @@ So aktivieren Sie erneut den integrierten Synchronisierungsplaner:
 ## <a name="step-8-verify-the-result"></a>Schritt 8: Überprüfen des Ergebnisses
 Sie können nun die Konfiguration überprüfen und für Ihre Benutzer aktivieren.
 
-1. Fügen Sie dem ausgewählte Attribut für einen Benutzer den geografischen Raum hinzu. Die Liste der verfügbaren geografischen Räume finden Sie in [dieser Tabelle](#enable-synchronization-of-preferreddatalocation).  
+1. Fügen Sie dem ausgewählte Attribut für einen Benutzer den geografischen Raum hinzu. Die Liste der verfügbaren geografischen Räume finden Sie in dieser Tabelle.  
 ![Screenshot eines einem Benutzer hinzugefügten AD-Attributs](./media/how-to-connect-sync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. Warten Sie, bis das Attribut mit Azure AD synchronisiert wurde.
 3. Überprüfen Sie mithilfe von Exchange Online-PowerShell, ob die Postfachregion ordnungsgemäß festgelegt wurde.  

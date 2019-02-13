@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2019
+ms.date: 02/01/2019
 ms.author: magoedte
-ms.openlocfilehash: 1f6be45e7f53aff7f9b8957ca88efe7605e4a984
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 37e2da00ecbecdddcc8757e64c57b03774092e14
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54889041"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814988"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>Bereitstellen von Azure Monitor für VMs (Vorschauversion)
 In diesem Artikel wird beschrieben, wie Sie Azure Monitor für VMs einrichten. Der Dienst überwacht die Integrität des Betriebssystems für Ihre virtuellen Azure-Computer (VMs) und VM-Skalierungsgruppen sowie der virtuellen Computer in Ihrer Umgebung. Diese Überwachung umfasst die Erkennung und Zuordnung von Anwendungsabhängigkeiten, die möglicherweise auf ihnen gehostet werden. 
@@ -62,7 +62,7 @@ Das Aktivieren der Lösung für das bedarfsorientierte Szenario erfordert zunäc
 * Installieren Sie die Projektmappen „ServiceMap“ und „InfrastructureInsights“. Sie können diese Installation nur mit einer Azure Resource Manager-Vorlage abschließen, die in diesem Artikel bereitgestellt wird.
 * Konfigurieren Sie den Log Analytics-Arbeitsbereich zur Erfassung von Leistungsindikatoren.
 
-Informationen zum Konfigurieren Ihres Arbeitsbereichs für das bedarfsorientierte Szenario finden Sie unter [Einrichten des Log Analytics-Arbeitsbereichs für die bedarfsorientierte Bereitstellung](#setup-log-analytics-workspace).
+Informationen zum Konfigurieren Ihres Arbeitsbereichs für das bedarfsorientierte Szenario finden Sie unter „Einrichten des Log Analytics-Arbeitsbereichs für die bedarfsorientierte Bereitstellung“.
 
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
@@ -70,6 +70,7 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 
 |Betriebssystemversion |Leistung |Karten |Health |
 |-----------|------------|-----|-------|
+|Windows Server 2019 | X | X |  |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |
@@ -102,6 +103,7 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 | 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7,5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
 #### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
@@ -117,6 +119,7 @@ Die folgende Tabelle enthält die Windows- und Linux-Betriebssysteme, die für A
 | 6.7 | 2.6.32-573 |
 | 6,8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -161,8 +164,8 @@ In der folgenden Tabelle sind die verbundenen Quellen beschrieben, die vom Zuord
 
 | Verbundene Quelle | Unterstützt | BESCHREIBUNG |
 |:--|:--|:--|
-| Windows-Agents | JA | Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
-| Linux-Agents | JA | Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| Windows-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Windows](../../azure-monitor/platform/log-analytics-agent.md) erfordern Windows-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
+| Linux-Agents | Ja | Zusätzlich zum [Log Analytics-Agent für Linux](../../azure-monitor/platform/log-analytics-agent.md) erfordern Linux-Agents den Microsoft Dependency-Agent. Eine vollständige Liste der Betriebssystemversionen finden Sie unter [Unterstützte Betriebssysteme](#supported-operating-systems). |
 | System Center Operations Manager-Verwaltungsgruppe | Nein  | |
 
 Der Dependency-Agent kann von den folgenden Speicherorten heruntergeladen werden:
@@ -753,8 +756,8 @@ Azure Monitor für VMs konfiguriert einen Log Analytics-Arbeitsbereich, um die v
 |Logischer Datenträger |Byte gelesen/s  |
 |Logischer Datenträger |Lesevorgänge/s  |
 |Logischer Datenträger |Übertragungen/s |
-|Logischer Datenträger | Byte geschrieben/s |
-|Logischer Datenträger | Schreibvorgänge/s |
+|Logischer Datenträger |Byte geschrieben/s |
+|Logischer Datenträger |Schreibvorgänge/s |
 |Logischer Datenträger |Freie Megabytes |
 |Arbeitsspeicher |Verfügbare MB |
 |Netzwerkadapter |Empfangene Byte/Sek. |
@@ -769,8 +772,8 @@ Azure Monitor für VMs konfiguriert einen Log Analytics-Arbeitsbereich, um die v
 |Logischer Datenträger |Byte gelesen/s  |
 |Logischer Datenträger |Lesevorgänge/s  |
 |Logischer Datenträger |Übertragungen/s |
-|Logischer Datenträger | Byte geschrieben/s |
-|Logischer Datenträger | Schreibvorgänge/s |
+|Logischer Datenträger |Byte geschrieben/s |
+|Logischer Datenträger |Schreibvorgänge/s |
 |Logischer Datenträger |Freie Megabytes |
 |Logischer Datenträger |Logischer Datenträger Bytes/s |
 |Arbeitsspeicher |Verfügbarer Speicher in MB |

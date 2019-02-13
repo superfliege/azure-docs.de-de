@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 11/21/2018
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: bb8ab22db18bbe170a20d253e601eb78855aafa7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 88a1405a55432b6f5932f2675260540a8aea46aa
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102735"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55697684"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Gewusst wie: Planen der Implementierung Ihrer Azure AD-Einbindung
 
@@ -126,6 +126,8 @@ Azure AD Join:
 - Gilt nur für Windows 10-Geräte. 
 
 - Gilt nicht für vorherige Versionen von Windows oder andere Betriebssysteme. Wenn Sie über Windows 7- oder Windows 8.1-Geräte verfügen, müssen Sie ein Upgrade auf Windows 10 durchführen, um Azure AD Join bereitstellen zu können.
+
+- Wird auf Geräten mit TPM im FIPS-Modus nicht unterstützt.
  
 **Empfehlung:** Verwenden Sie immer das neueste Release von Windows 10, um die aktualisierten Features nutzen zu können.
 
@@ -234,8 +236,8 @@ Hier finden Sie einen Vergleich dieser drei Methoden:
  
 ||Self-Service-Einrichtung|Windows Autopilot|Massenregistrierung|
 |---|---|---|---|
-|Benutzerinteraktion zum Einrichten erforderlich|JA|JA|Nein |
-|IT-Maßnahmen erforderlich|Nein |Ja|JA|
+|Benutzerinteraktion zum Einrichten erforderlich|Ja|Ja|Nein |
+|IT-Maßnahmen erforderlich|Nein |Ja|Ja|
 |Zutreffende Abläufe|Windows-Willkommensseite & Einstellungen|Nur Windows-Willkommensseite|Nur Windows-Willkommensseite|
 |Lokale Administratorrechte für primären Benutzer|Ja, standardmäßig|Konfigurierbar|Nein |
 |OEM-Support erforderlich|Nein |Ja|Nein |

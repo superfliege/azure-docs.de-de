@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/08/2019
+ms.date: 02/03/2019
 ms.author: markvi
 ms.reviewer: sandeo
-ms.openlocfilehash: 085f95e1df67a12afac5c327b4368efd275600b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: be66f24ec6532b93c4554568b0a58d467a09c600
+ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100171"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55746420"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Anleitung: Planen der Implementierung einer Azure Active Directory-Hybrideinbindung
 
@@ -111,7 +111,7 @@ Wenn Ihre Organisation Internetzugriff über einen authentifizierten ausgehenden
 
 Die Azure AD-Hybrideinbindung ist ein Prozess für die automatische Registrierung Ihrer lokalen in die Domäne eingebundenen Geräte bei Azure AD. Es kann auch vorkommen, dass Sie nicht alle Ihre Geräte automatisch registrieren möchten. In diesem Fall finden Sie weitere Informationen unter [Steuern der Azure AD-Hybrideinbindung für Ihre Geräte](hybrid-azuread-join-control.md).
 
-Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/en-us/azure/active-directory/devices/overview#azure-ad-registered-devices) sind, sollten Sie erwägen, diesen Status vor dem Aktivieren der Azure AD-Hybrideinbindung zu entfernen. Der Doppelstatus eines Geräts, Azure AD-Hybrideinbindung und Registrierung bei Azure AD, wird nicht unterstützt. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden: 
+Wenn Ihre in die Windows 10-Domäne eingebundenen Geräte bereits für Ihren Mandanten bei [Azure AD registriert](https://docs.microsoft.com/azure/active-directory/devices/overview#azure-ad-registered-devices) sind, wird dringend empfohlen, diesen Status vor dem Aktivieren von Azure AD Hybrid Join zu entfernen. In Windows 10 Release 1809 wurden die folgenden Änderungen vorgenommen, um diesen Doppelstatus zu vermeiden: 
  - Eine etwaige Registrierung bei Azure AD würde nach der Azure AD-Hybrideinbindung des Geräts automatisch entfernt werden. 
  - Sie können verhindern, dass Ihr in die Domäne eingebundenes Gerät bei Azure AD registriert wird, indem Sie diesen Registrierungsschlüssel hinzufügen: HKLM\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin, "BlockAADWorkplaceJoin"=dword:00000001
 
@@ -145,20 +145,20 @@ Ab Version 1.1.819.0 bietet Azure AD Connect einen Assistenten für die Konfigur
 - [Konfigurieren der Azure Active Directory-Hybrideinbindung für verwaltete Domänen](hybrid-azuread-join-managed-domains.md)
 
 
- Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](../device-management-hybrid-azuread-joined-devices-setup.md). 
+ Wenn das Installieren der erforderlichen Version von Azure AD Connect keine Option für Sie ist, informieren Sie sich über die [manuelle Konfiguration der Geräteregistrierung](https://docs.microsoft.com/en-us/azure/active-directory/devices/hybrid-azuread-join-manual). 
 
 
-## <a name="alternate-login-id-support-in-hybrid-azure-ad-join"></a>Unterstützung der alternativen Anmelde-ID in Azure Active Directory-Hybrideinbindung
+## <a name="on-premises-ad-upn-support-in-hybrid-azure-ad-join"></a>Unterstützung lokaler AD-Benutzerprinzipalnamen (UPNs) in Azure AD Hybrid Join
 
-Unter Windows 10 bietet die Azure Active Directory-Hybrideinbindung eingeschränkte Unterstützung für [alternative Anmelde-IDs](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id) basierend auf dem Typ der alternativen Anmelde-ID, der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version. Es gibt zwei Typen von alternativen Anmelde-IDs, die in Ihrer Umgebung vorhanden sein können:
+In einigen Fällen können Ihre lokalen AD-UPNs von den Azure AD-UPNs abweichen. In diesen Fällen bietet Azure AD Hybrid Join unter Windows 10 auf Grundlage der [Authentifizierungsmethode](https://docs.microsoft.com/azure/security/azure-ad-choose-authn), dem Domänentyp und der Windows 10-Version eingeschränkte Unterstützung für lokale AD-UPNs. Es gibt zwei Arten lokaler AD-UPNs, die in Ihrer Umgebung vorhanden sein können:
 
- - Routingfähige alternative Anmelde-ID: Eine routingfähige alternative Anmelde-ID verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, sind „contoso.org“ und „contoso.co.uk“ gültige Domänen, die Contoso gehören und [in Azure AD überprüft werden](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
+ - Routingfähige Benutzerprinzipalnamen (UPNs): Ein routingfähiger UPN verfügt über eine gültige überprüfte Domäne, die bei einer Domänenregistrierungsstelle registriert ist. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.org“ die primäre Domäne im lokalen Active Directory, die Contoso gehört und [in Azure AD überprüft wird](https://docs.microsoft.com/azure/active-directory/fundamentals/add-custom-domain).
  
- - Nicht routingfähige alternative Anmelde-ID: Eine nicht routingfähige alternative Anmelde-ID verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Wenn beispielsweise „contoso.com“ die primäre Domäne ist, stellt „contoso.local“ keine überprüfbare Domäne im Internet dar, wird aber im Netzwerk von Contoso verwendet.
+ - Nicht routingfähige Benutzerprinzipalnamen (UPNs): Ein nicht routingfähiger UPN verfügt nicht über eine überprüfte Domäne. Sie ist nur in einem privaten Netzwerk Ihrer Organisation gültig. Ist beispielsweise „contoso.com“ die primäre Domäne in Azure AD, ist „contoso.local“ die primäre Domäne im lokalen Active Directory, aber keine überprüfbare Domäne im Internet und wird nur innerhalb des Contoso-Netzwerks verwendet.
  
-Die folgende Tabelle enthält Details zur Unterstützung für diese alternativen Anmelde-IDs in Azure AD Hybrid Join unter Windows 10
+Die folgende Tabelle enthält Details zur Unterstützung dieser lokalen AD UPNs in Azure AD Hybrid Join unter Windows 10
 
-|Typ der alternativen Anmelde-ID|Domänentyp|Windows 10-Version|BESCHREIBUNG|
+|Art der lokalen AD UPNs|Domänentyp|Windows 10-Version|BESCHREIBUNG|
 |-----|-----|-----|-----|
 |Routingfähig|Im Verbund |Version 1703|Allgemein verfügbar|
 |Routingfähig|Verwaltet|Version 1709|Derzeit in der privaten Vorschau. Azure AD SSPR wird nicht unterstützt. |

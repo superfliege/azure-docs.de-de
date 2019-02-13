@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: c911a53f16e07b67a1ec22a9e0592df06c192325
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1e5b23269c8c9d5aecd7ef8ba58100f17cc7973c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188183"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55809418"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>Tutorial: Azure Active Directory-Integration mit Lessonly.com
 
@@ -90,7 +90,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Lessonly.
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines Lessonly.com-Testbenutzers](#creating-a-lessonly-test-user)**, um eine Entsprechung von Britta Simon in Lessonly.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+1. **Erstellen eines Lessonly.com-Testbenutzers**, um eine Entsprechung von Britta Simon in Lessonly.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 

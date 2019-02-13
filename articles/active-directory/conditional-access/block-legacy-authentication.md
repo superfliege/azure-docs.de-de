@@ -1,6 +1,6 @@
 ---
 title: Blockieren der Legacyauthentifizierung bei Azure Active Directory (Azure AD) mit bedingtem Zugriff | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine Richtlinie für bedingten Zugriff in Azure Active Directory (Azure AD) für Zugriffsversuche von nicht vertrauenswürdigen Netzwerken konfigurieren.
+description: Erfahren Sie, wie Sie durch Blockieren der älteren Authentifizierung mithilfe des bedingten Zugriffs von Azure AD Ihren Sicherheitsstatus verbessern.
 services: active-directory
 keywords: bedingter Zugriff auf Apps, bedingter Zugriff mit Azure AD, sicherer Zugriff auf Unternehmensressourcen, Richtlinien für bedingten Zugriff
 documentationcenter: ''
@@ -14,19 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/24/2019
+ms.date: 02/01/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 164ff12eeec057855476d3808d3d1d44ef3179fe
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 5ff4861c288b82d6ce90d85c38ef3f92eb299ea4
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076842"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562979"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
 Um Ihren Benutzern den einfachen Zugriff auf Ihre Cloud-Apps zu ermöglichen, unterstützt Azure Active Directory (Azure AD) eine Vielzahl von Authentifizierungsprotokollen einschließlich der Legacyauthentifizierung. Ältere Protokolle unterstützen jedoch nicht die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA). MFA ist in vielen Umgebungen eine allgemeine Anforderung zum Schutz vor Identitätsdiebstahl. 
+
 
 Wenn Ihre Umgebung für das Blockieren der Legacyauthentifizierung bereit ist, um den Schutz Ihres Mandanten zu verbessern, können Sie dieses Ziel mit bedingtem Zugriff erreichen. In diesem Artikel wird erläutert, wie Sie die Richtlinien für bedingten Zugriff konfigurieren können, mit denen die Legacyauthentifizierung für Ihren Mandanten blockiert wird.
 
@@ -119,8 +120,7 @@ Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird.
 
 Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung „Andere Clients“ auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
 
-Sie können alle anderen Bedingungen neben der Bedingung „Andere Clients“ konfigurieren.
-Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
+Wenn Sie die ältere Authentifizierung mit der Bedingung „Andere Clients“ blockieren, können Sie auch Geräteplattform und Speicherort als Bedingung festlegen. Wenn Sie nur ältere Authentifizierungen für mobile Geräte blockieren möchten, legen Sie z.B. die Bedingung **Geräteplattformen** fest, indem Sie Folgendes auswählen:
 
 - Android
 

@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 28f35fd1098e055b22dada703cd7e68de591eea7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6198d16b25330fb02cf5642addba0093ec437cab
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192620"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811486"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect-Synchronisierung: Konfigurieren der Filterung
 Per Filterung können Sie für Ihr lokales Verzeichnis steuern, welche Objekte in Azure Active Directory (Azure AD) angezeigt werden. Die Standardkonfiguration deckt alle Objekte in allen Domänen der konfigurierten Gesamtstrukturen ab. Dies ist die für den Normalfall empfohlene Konfiguration. Benutzer, die Office 365-Workloads wie etwa Exchange Online und Skype for Business verwenden, profitieren von einer vollständigen globalen Adressliste, die zum Senden von E-Mails und Anrufen anderer Personen genutzt werden kann. In der Standardkonfiguration erhalten diese Benutzer die gleiche Funktionalität wie bei einer lokalen Implementierung von Exchange oder Lync.
@@ -93,8 +93,8 @@ Sie sollten die folgenden Schritte nur ausführen, wenn Sie den Installations-As
 
 Die Konfiguration der domänenbasierten Filterung umfasst folgende Schritte:
 
-1. [Wählen Sie die Domänen aus](#select-domains-to-be-synchronized), die in die Synchronisierung einbezogen werden sollen.
-2. Passen Sie für jede hinzugefügte und entfernte Domäne die [Ausführungsprofile](#update-run-profiles)an.
+1. Wählen Sie die Domänen aus, die in die Synchronisierung einbezogen werden sollen.
+2. Passen Sie für jede hinzugefügte und entfernte Domäne die Ausführungsprofile an.
 3. [Wenden Sie die Änderungen an, und überprüfen Sie sie.](#apply-and-verify-changes)
 
 ### <a name="select-the-domains-to-be-synchronized"></a>Auswählen der zu synchronisierenden Domänen
@@ -110,7 +110,7 @@ Um den Filter für die Domäne festzulegen, führen Sie die folgenden Schritte a
    Wenn Sie Ihre lokale Active Directory-Infrastruktur geändert und der Gesamtstruktur Domänen hinzugefügt oder daraus entfernt haben, können Sie auf die Schaltfläche **Aktualisieren** klicken, um eine aktualisierte Liste zu erhalten. Beim Aktualisieren werden Sie zur Eingabe von Anmeldeinformationen aufgefordert. Geben Sie Anmeldeinformationen an, die Ihnen den Lesezugriff auf Windows Server Active Directory ermöglichen. Es muss sich nicht um den Benutzer handeln, der im Dialogfeld bereits angegeben ist.  
    ![Aktualisierung erforderlich](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
 6. Schließen Sie nach Abschluss des Vorgangs das Dialogfeld **Eigenschaften**, indem Sie auf **OK** klicken. Wenn Sie Domänen aus der Gesamtstruktur entfernt haben, werden Sie in einer Popupmeldung darauf hingewiesen, dass eine Domäne entfernt wurde und diese Konfiguration bereinigt wird.
-7. Fahren Sie mit dem Anpassen der [Ausführungsprofile](#update-run-profiles)fort.
+7. Fahren Sie mit dem Anpassen der Ausführungsprofile fort.
 
 ### <a name="update-the-run-profiles"></a>Aktualisieren von Ausführungsprofilen
 Wenn Sie den Domänenfilter aktualisiert haben, müssen Sie auch die Ausführungsprofile aktualisieren.

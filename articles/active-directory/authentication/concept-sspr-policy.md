@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 45cd9188b420f9c6db3f1adaa4244b30cce0ccc6
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 735bc2569436b99d3366d1ce5ff01f40ab7f587a
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081890"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510458"
 ---
 # <a name="password-policies-and-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und -einschränkungen in Azure Active Directory
 
@@ -86,7 +86,7 @@ In der folgenden Tabelle sind die verfügbaren Kennwortrichtlinieneinstellungen 
 | Ablauf des Kennworts |<ul><li>Standardwert: **false** Tage (gibt an, dass Kennwortablauf aktiviert ist)</li><li>Der Wert kann mit dem Cmdlet `Set-MsolUser` für einzelne Benutzerkonten konfiguriert werden.</li></ul> |
 | Verlauf der Kennwortänderungen |Das letzte Kennwort *kann nicht* erneut verwendet werden, wenn der Benutzer ein Kennwort ändert. |
 | Verlauf der Kennwortzurücksetzungen | Das letzte Kennwort *kann* erneut verwendet werden, wenn der Benutzer ein vergessenes Kennwort zurücksetzt. |
-| Kontosperrung |Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. |
+| Kontosperrung |Nach 10 nicht erfolgreichen Anmeldeversuchen mit einem falschen Kennwort wird der Benutzer für eine Minute gesperrt. Mit jeder weiteren fehlerhaften Anmeldeversuch verlängert sich die Dauer, die der Benutzer gesperrt ist. [Smart Lockout](howto-password-smart-lockout.md) verfolgt die letzten drei fehlerhaften Kennworthashes, um zu vermeiden, dass der Sperrungszähler für dasselbe Kennwort erhöht wird. Wenn eine Person mehrere Male das falsche Kennwort eingibt, wird dadurch keine Kontosperre verursacht. |
 
 ## <a name="set-password-expiration-policies-in-azure-ad"></a>Festlegen von Kennwortablaufrichtlinien in Azure AD
 

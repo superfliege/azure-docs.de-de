@@ -9,18 +9,18 @@ editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
-ms.topic: article
+ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/18/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c42abf043c528f86db7af164c21c45b21e7bf1ac
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: caff4973515d3866b94dba2e89d089ff042de43b
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55196275"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813244"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Verlauf der Versionsveröffentlichungen
 Das Azure Active Directory-Team (Azure AD) aktualisiert Azure AD Connect regelmäßig mit neuen Features und Funktionen. Nicht alle Erweiterungen gelten für alle Benutzergruppen.
@@ -36,6 +36,9 @@ Schritte zum Upgrade von Azure AD Connect | Verschiedene Methoden zum [Aktualisi
 Erforderliche Berechtigungen | Informationen zu den zum Anwenden eines Updates erforderlichen Berechtigungen finden Sie unter [Konten und Berechtigungen](reference-connect-accounts-permissions.md#upgrade).
 
 Download | [Azure AD Connect herunterladen](https://go.microsoft.com/fwlink/?LinkId=615771).
+
+>[!NOTE]
+>Nicht für alle Releases von Azure AD Connect wird das automatische Upgrade zur Verfügung gestellt. Aus dem Releasestatus geht hervor, ob für ein Release das automatische Upgrade oder nur der Download verfügbar gemacht wird. Wenn das automatische Upgrade auf Ihrem Azure AD Connect-Server aktiviert ist, wird dieser Server automatisch auf die neueste Version von Azure AD Connect aktualisiert, die für das automatische Upgrade veröffentlicht wird. Beachten Sie, dass nicht alle Azure AD Connect-Konfigurationen für ein automatisches Upgrade berechtigt sind. Unter dem Link [Automatisches Upgrade](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade) erhalten Sie weitere Informationen zu diesem Thema.
 
 ## <a name="12700"></a>1.2.70.0
 

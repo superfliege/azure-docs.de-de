@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7e0064495cfb3d82c349a23d914195c5f211dc19
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 54d98c02ee9e5202c09e333843f8c16955f4e2d4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187078"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55819246"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien
 
@@ -155,7 +155,7 @@ Suchen Sie das `<img>`-Element, das den `ID`-Wert *background_background_image* 
     Das Fenster **App Service erstellen** wird geöffnet. Darin können Sie alle Azure-Ressourcen erstellen, die zum Ausführen der ASP.NET-Web-App in Azure benötigt werden.
 
     > [!NOTE]
-    > Weitere Informationen zum Veröffentlichen finden Sie unter [Erstellen einer ASP.NET-Web-App in Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet#publish-to-azure).
+    > Weitere Informationen zum Veröffentlichen finden Sie unter [Erstellen einer ASP.NET-Web-App in Azure](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-dotnet).
 
 3. Geben Sie im Feld **Web-App-Name** einen eindeutigen Web-App-Namen ein (gültige Zeichen sind a-z, A-Z, 0-9, und der Bindestrich [-]). Die URL der Web-App lautet `http://<app_name>.azurewebsites.NET`, wobei `<app_name>` der Name der Web-App ist. Sie können den automatisch generierten Namen übernehmen. Dieser ist eindeutig.
 
@@ -247,16 +247,18 @@ Führen Sie folgende Schritte aus, um `ContentDefinition` zu konfigurieren:
 Fügen Sie das `ContentDefinitionParameters`-Element mit den folgenden Schritten hinzu:
 1. Öffnen Sie die Datei *SignUpOrSignin* Ihrer Richtlinie (z.B. *SignUpOrSignin.xml*).
 
-2. Suchen Sie den Knoten `<DefaultUserJourney>`. 
-
-3. Fügen Sie im `<DefaultUserJourney>`-Knoten den folgenden XML-Codeausschnitt hinzu:  
+2. Fügen Sie unter dem Knoten `<DefaultUserJourney>` den Knoten `UserJourneyBehaviors` hinzu:  
 
     ```XML
-    <UserJourneyBehaviors>
+    <RelyingParty>
+      <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+      <UserJourneyBehaviors>
         <ContentDefinitionParameters>
-            <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
+          <Parameter Name="campaignId">{OAUTH-KV:campaignId}</Parameter>
         </ContentDefinitionParameters>
-    </UserJourneyBehaviors>
+      </UserJourneyBehaviors>
+      ...
+    </RelyingParty>
     ```
 
 ### <a name="step-82-change-your-code-to-accept-a-query-string-parameter-and-replace-the-background-image"></a>Schritt 8.2: Ändern Ihres Codes, sodass er Abfragezeichenfolgen-Parameter akzeptiert und das Hintergrundbild ersetzt

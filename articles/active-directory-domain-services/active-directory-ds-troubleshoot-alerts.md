@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 494acc55001bd3180d345801ef8d62800dd5e837
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174030"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817528"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -42,7 +42,7 @@ Verwenden Sie die Problembehandlungsschritte für die ID oder Meldung in der War
 | AADDS108 | *Das von Azure AD Domain Services verwendete Abonnement wurde in ein anderes Verzeichnis verschoben. Für eine ordnungsgemäße Funktionsweise von Azure AD Domain Services muss ein aktives Abonnement im gleichen Verzeichnis vorhanden sein.* | [Verzeichnisse durch Abonnement verschoben](#aadds108-subscription-moved-directories) |
 | AADDS109 | *Eine Ressource, die für Ihre verwaltete Domäne verwendet wird, wurde gelöscht. Diese Ressource ist erforderlich, damit Azure AD Domain Services ordnungsgemäß funktioniert.* | [Eine Ressource wurde gelöscht.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist voll und hat keinen Platz für den zusätzlichen Domänencontroller, der erstellt werden muss.* | [Subnetz ist voll](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | *Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.* * | [Dienstprinzipal nicht autorisiert](#aadds111-service-principal-unauthorized) |
+| AADDS111 | *Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.* * | Dienstprinzipal nicht autorisiert |
 | AADDS112 | *Das Subnetz des virtuellen Netzwerks in dieser Domäne verfügt möglicherweise nicht über genügend IP-Adressen. Azure AD Domain Services benötigt mindestens zwei verfügbare IP-Adressen innerhalb des Subnetzes, in dem es aktiviert ist. Es wird empfohlen, mindestens 3 bis 5 freie IP-Adressen innerhalb des Subnetzes bereitzuhalten. Dies kann aufgetreten sein, wenn andere virtuelle Computer innerhalb des Subnetzes bereitgestellt wurden und damit die Anzahl der verfügbaren IP-Adressen ausgeschöpft wurde oder wenn die Anzahl der verfügbaren IP-Adressen im Subnetz beschränkt ist.* | [Nicht genügend IP-Adressen](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Für die von Azure AD Domain Services verwendeten Ressourcen wurde ein unerwarteter Zustand erkannt, und sie können nicht wiederhergestellt werden.* | [Ressourcen nicht wiederherstellbar](#aadds113-resources-are-unrecoverable) |
 | AADDS114 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist ungültig und kann nicht verwendet werden.* * | [Subnetz ungültig](#aadds114-subnet-invalid) |
@@ -201,7 +201,7 @@ Unsere Dienstprinzipale benötigen Zugriff, um Ressourcen in Ihrer verwalteten D
 
 **Lösung:**
 
-1. [Löschen Sie Ihre verwaltete Domäne](#active-directory-ds-disable-aadds.md) aus Ihrem Mandanten.
+1. Löschen Sie Ihre verwaltete Domäne aus Ihrem Mandanten.
 2. Korrigieren Sie den IP-Adressbereich für das Subnetz
   1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
   2. Wählen Sie das virtuelle Netzwerk aus, das Sie für Azure AD Domain Services verwenden möchten.

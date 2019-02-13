@@ -15,12 +15,12 @@ ms.date: 09/08/2017
 ms.author: barbkess
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 0937ad12ad74209e84ee1316a090af8a6469a044
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151616"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813822"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
@@ -48,7 +48,7 @@ Wenden Sie umfassendere Richtlinienkontrollen an, bevor Verbindungen mit Ihrem N
 
 Beim [bedingten Zugriff](../conditional-access/overview.md) können Sie Einschränkungen definieren, um zu steuern, welcher Datenverkehr auf Ihre Back-End-Anwendungen zugreifen kann. Sie können Richtlinien erstellen, mit denen Anmeldungen basierend auf dem Standort, der Authentifizierungssicherheit und dem Risikoprofil des Benutzers eingeschränkt werden.
 
-Außerdem können Sie den bedingten Zugriff verwenden, um Multi-Factor Authentication-Richtlinien zu konfigurieren und Ihren Benutzerauthentifizierungen so eine weitere Sicherheitsebene hinzuzufügen. Darüber hinaus können Ihre Anwendungen auch über bedingten Azure AD-Zugriff an Microsoft Cloud App Security weitergeleitet werden, um von Echtzeitüberwachung und Steuerungsmöglichkeiten durch [Zugriffsrichtlinien](https://docs.microsoft.com/en-us/cloud-app-security/access-policy-aad) und [Sitzungsrichtlinien](https://docs.microsoft.com/en-us/cloud-app-security/session-policy-aad) zu profitieren.
+Außerdem können Sie den bedingten Zugriff verwenden, um Multi-Factor Authentication-Richtlinien zu konfigurieren und Ihren Benutzerauthentifizierungen so eine weitere Sicherheitsebene hinzuzufügen. Darüber hinaus können Ihre Anwendungen auch über bedingten Azure AD-Zugriff an Microsoft Cloud App Security weitergeleitet werden, um von Echtzeitüberwachung und Steuerungsmöglichkeiten durch [Zugriffsrichtlinien](https://docs.microsoft.com/cloud-app-security/access-policy-aad) und [Sitzungsrichtlinien](https://docs.microsoft.com/cloud-app-security/session-policy-aad) zu profitieren.
 
 ### <a name="traffic-termination"></a>Beendigung des Datenverkehrs
 
@@ -128,11 +128,11 @@ Wenn der Anwendungsproxydienst die Konfigurationseinstellungen aktualisiert, tre
 
 Wenn Benutzer auf eine veröffentlichte Anwendung zugreifen, treten zwischen dem Anwendungsproxydienst und dem Anwendungsproxyconnector die folgenden Ereignisse ein:
 
-1. [Der Dienst authentifiziert den Benutzer für die Anwendung](#the-service-checks-the-configuration-settings-for-the-app)
-2. [Der Dienst fügt eine Anforderung in die Connectorwarteschlange ein.](#The-service-places-a-request-in-the-connector-queue)
-3. [Ein Connector verarbeitet die Anforderung aus der Warteschlange.](#the-connector-receives-the-request-from-the-queue)
-4. [Der Connector wartet auf eine Antwort.](#the-connector-waits-for-a-response)
-5. [Der Dienst streamt Daten an den Benutzer.](#the-service-streams-data-to-the-user)
+1. Der Dienst authentifiziert den Benutzer für die Anwendung
+2. Der Dienst fügt eine Anforderung in die Connectorwarteschlange ein
+3. Ein Connector verarbeitet die Anforderung aus der Warteschlange
+4. Der Connector wartet auf eine Antwort
+5. Der Dienst streamt Daten an den Benutzer
 
 Lesen Sie weiter, um mehr Informationen dazu zu erhalten, was in den einzelnen Schritten passiert.
 

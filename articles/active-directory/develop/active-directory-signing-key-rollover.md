@@ -16,12 +16,12 @@ ms.date: 10/20/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6174dd210cf85bfa6a3daf38965d1da65801321c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d137f2217575bfddec5a2bc2ead4e210b8cf1865
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55076331"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815336"
 ---
 # <a name="signing-key-rollover-in-azure-active-directory"></a>Rollover von Signaturschlüsseln in Azure Active Directory
 In diesem Artikel wird erläutert, was Sie über die öffentlichen Schlüssel wissen müssen, die in Azure Active Directory (Azure AD) zum Signieren von Sicherheitstoken verwendet werden. Es ist wichtig zu beachten, dass für diese Schlüssel regelmäßig ein Rollover durchgeführt wird und dass in einem Notfall sofort ein Rollover erfolgen kann. Alle Anwendungen, die Azure AD verwenden, müssen den Schlüsselrolloverprozess programmgesteuert abwickeln können oder über einen regelmäßigen manuellen Rolloverprozess verfügen. In diesem Artikel erfahren Sie, wie die Schlüssel funktionieren, wie Sie die Auswirkung des Rollovers auf Ihre Anwendung bewerten und wie Sie Ihre Anwendung bei Bedarf aktualisieren oder einen regelmäßigen manuellen Rolloverprozess für Schlüssel einrichten.
@@ -44,7 +44,7 @@ Die Art und Weise, wie Ihre Anwendung den Schlüsselrollover behandelt, hängt v
 * [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung des Node.js-passport-azure-ad-Moduls](#passport)
 * [Mit Visual Studio 2015 oder Visual Studio 2017 erstellte Webanwendungen/APIs zum Schutz vor Ressourcen](#vs2015)
 * [Mit Visual Studio 2013 erstellte Webanwendungen zum Schutz von Ressourcen](#vs2013)
-* [Mit Visual Studio 2013 erstellte Web-APIs zum Schutz von Ressourcen](#vs2013_webapi)
+* Mit Visual Studio 2013 erstellte Web-APIs zum Schutz von Ressourcen
 * [Mit Visual Studio 2012 erstellte Webanwendungen zum Schutz von Ressourcen](#vs2012)
 * [Mit Visual Studio 2010/2008 oder Windows Identity Foundation erstellte Webanwendungen zum Schutz von Ressourcen](#vs2010)
 * [Webanwendungen/-APIs zum Schutz von Ressourcen unter Verwendung anderer Bibliotheken oder durch manuelle Implementierung unterstützter Protokolle](#other)

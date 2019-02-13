@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 982a639fe7a57c2db484acc6b272e5314637d1c4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b033cae63668c1b2af968d5c5b9df4e7b42dc35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167664"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812921"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Tutorial: Azure Active Directory-Integration mit ChronicX®
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines ChronicX®-Testbenutzers](#create-a-chronicx®-test-user)**, um eine Entsprechung für Britta Simon in ChronicX® zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **Erstellen eines ChronicX®-Testbenutzers**, um eine Entsprechung für Britta Simon in ChronicX® zu haben, die mit ihrer Darstellung in Azure AD verknüpft ist.
 1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 

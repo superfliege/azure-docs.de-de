@@ -13,12 +13,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: d53221a8bed6995231385cae21a8994fce132a30
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9fd7a3c03c72a63f4163f85ac41248e200397206
+ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175909"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55770719"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Einrichten meines Kontos für die zweistufige Überprüfung
 Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert. Wenn Sie diesen Artikel lesen, haben Sie wahrscheinlich vom Administrator Ihres Geschäfts-, Schul- oder Unikontos eine E-Mail zum Thema Multi-Factor Authentication erhalten. Oder Sie haben eventuell versucht, sich anzumelden, und eine Nachricht mit der Aufforderung empfangen, eine zusätzliche Sicherheitsüberprüfung einzurichten. Wenn dies der Fall ist, **können Sie sich erst anmelden, nachdem Sie die automatische Registrierung abgeschlossen haben**.
@@ -41,12 +41,12 @@ Die erste Frage bei der Registrierung betrifft die Methode, mit der wir Kontakt 
 
 | Kontaktmethode | BESCHREIBUNG |
 | --- | --- |
-| [Mobile App](#use-a-mobile-app-as-the-contact-method) |- **Benachrichtigungen zur Überprüfung empfangen** Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.<br>- **Überprüfungscode verwenden** In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie im Anmeldungsfenster den aktuellen Überprüfungscode ein.<br>Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594) und [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071) verfügbar. |
+| [Mobile App](#use-a-mobile-app-as-the-contact-method) |- **Benachrichtigungen zur Überprüfung empfangen** Mit dieser Option wird eine Benachrichtigung an die Authenticator-App auf Ihrem Smartphone oder Tablet gesendet. Überprüfen Sie die Benachrichtigung, und wählen Sie in der App **Authentifizieren** aus, wenn Sie den Zugriff zulassen möchten. Ihr Unternehmen oder Ihre Bildungseinrichtung erfordert möglicherweise die Eingabe einer PIN, bevor Sie sich authentifizieren.<br>- **Überprüfungscode verwenden** In diesem Modus generiert die Authenticator-App einen Überprüfungscode, der alle 30 Sekunden aktualisiert wird. Geben Sie im Anmeldungsfenster den aktuellen Überprüfungscode ein.<br>Die Microsoft Authenticator-App ist für [Android](https://go.microsoft.com/fwlink/?linkid=866594) und [iOS](https://go.microsoft.com/fwlink/?linkid=866594) verfügbar.|
 | [Anruf beim Mobiltelefon oder Senden einer SMS](#use-your-mobile-phone-as-the-contact-method) |- **Telefonanruf**: Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren.<br>- **SMS**: Es wird eine SMS gesendet, die einen Überprüfungscode enthält. Je nachdem, wozu Sie in der SMS aufgefordert werden, antworten Sie auf die SMS, oder geben Sie im Anmeldungsfenster den angegebenen Überprüfungscode ein. |
 | [Anruf beim Bürotelefon](#use-your-office-phone-as-the-contact-method) |Das Telefon mit der von Ihnen angegebenen Telefonnummer empfängt einen automatisierten Anruf. Nehmen Sie den Anruf an, und drücken Sie die #-TASTE auf der Telefontastatur, um sich zu authentifizieren. |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Verwenden einer mobilen App als Kontaktmethode
-Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticator-App installieren. Die Schritte in diesem Artikel basieren auf der Microsoft Authenticator-App, die für [Windows Phone](https://go.microsoft.com/fwlink/?Linkid=825071), [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar ist.
+Für diese Methode müssen Sie auf Ihrem Smartphone oder Tablet eine Authenticator-App installieren. Die Schritte in diesem Artikel basieren auf der Microsoft Authenticator-App, die für [Android](https://go.microsoft.com/fwlink/?Linkid=825072) und [iOS](https://go.microsoft.com/fwlink/?Linkid=825073) verfügbar ist.
 
 >[!NOTE]
 >Sie müssen nicht unbedingt die Microsoft Authenticator-App verwenden. Falls Sie bereits eine andere Authentifikator-App nutzen, können Sie diese weiterverwenden.
@@ -106,4 +106,4 @@ Gehen Sie folgendermaßen vor, wenn Sie der mobilen Anwendung manuell ein Konto 
 ## <a name="next-steps"></a>Nächste Schritte
 * Ändern Sie Ihre bevorzugten Optionen und [verwalten Sie Ihre Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
 * Richten Sie [App-Kennwörter](multi-factor-authentication-end-user-app-passwords.md) für native Geräte-Apps ein, die die zweistufige Überprüfung nicht unterstützen.
-* Testen Sie die [Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) für die schnelle, sichere Authentifizierung, auch wenn kein Mobilfunkempfang möglich ist.
+* Testen Sie die [Microsoft Authenticator-App](user-help-auth-app-download-install.md) für die schnelle, sichere Authentifizierung, auch wenn kein Mobilfunkempfang möglich ist.

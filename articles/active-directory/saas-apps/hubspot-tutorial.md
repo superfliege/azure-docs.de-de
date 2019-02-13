@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: jeedes
-ms.openlocfilehash: bf3302f4f7323307163ec540accb4cc652512463
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2bd47c7955625eb43de40e61515bf7814a8c8355
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178799"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815828"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Tutorial: Azure Active Directory-Integration in HubSpot
 
@@ -87,7 +87,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei HubSpot m�
 
 1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines HubSpot-Testbenutzers](#creating-a-hubspot-saml-test-user)**, um eine Entsprechung von Britta Simon in HubSpot zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **Erstellen eines HubSpot-Testbenutzers**, um eine Entsprechung von Britta Simon in HubSpot zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
 

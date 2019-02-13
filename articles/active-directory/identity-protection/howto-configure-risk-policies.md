@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 021876306c435d3d15996c69ab3613c1d82e6993
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f9ffbebee06ab7b9e010c7e6c84fee533611fb38
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468885"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55567654"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Anleitung: Konfigurieren von Risikorichtlinien in Azure Active Directory Identity Protection (aktualisiert)
 
@@ -129,7 +129,7 @@ Die Richtlinie zum Benutzerrisiko befindet sich auf der [Azure AD Identity Prote
 
 ## <a name="user-risk-policy-settings"></a>Einstellungen der Richtlinie zum Benutzerrisiko
 
-Sie müssen Folgendes festlegen, wenn Sie die Richtlinie zum Anmelderisiko konfigurieren:
+Sie müssen Folgendes festlegen, wenn Sie die Richtlinie zum Benutzerrisiko konfigurieren:
 
 - Die Benutzer und Gruppen, für die die Richtlinie gilt:
 

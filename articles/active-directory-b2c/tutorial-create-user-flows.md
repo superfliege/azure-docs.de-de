@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C | Microsoft-Dokumentation'
+title: Erstellen von Benutzerflows – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie Benutzerflows für Ihre Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals erstellen.
 services: active-directory-b2c
 author: davidmu1
@@ -7,14 +7,14 @@ manager: daveba
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/01/2019
 ms.author: davidmu
-ms.openlocfilehash: 6e651d23e3b5cced78088d59979507eb09723165
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 7f017583a6eeb61b11df86a908d573dba9bd5929
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54845595"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55750289"
 ---
 # <a name="tutorial-create-user-flows-in-azure-active-directory-b2c"></a>Tutorial: Erstellen von Benutzerflows in Azure Active Directory B2C
 
@@ -39,29 +39,30 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Der Benutzerflow für Registrierung und Anmeldung verarbeitet die Benutzeroberflächen für die Registrierung und Anmeldung in ein und derselben Konfiguration. Die Benutzer Ihrer Anwendung werden je nach Kontext auf den entsprechenden Pfad geleitet.
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
 
     ![Wechseln zum Abonnementverzeichnis](./media/tutorial-create-user-flows/switch-directories.png)
 
-2. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-3. Wählen Sie im Menü links **Benutzerflows** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie im Menü links **Benutzerflows** aus, und wählen Sie dann **Neuer Benutzerflow** aus.
 
     ![Auswählen von „Neuer Benutzerflow“](./media/tutorial-create-user-flows/signup-signin-user-flow.png)
 
-4. Wählen Sie auf der Registerkarte „Empfohlen“ den Benutzerflow **Registrierung und Anmeldung** aus.
+5. Wählen Sie auf der Registerkarte „Empfohlen“ den Benutzerflow **Registrierung und Anmeldung** aus.
 
     ![Auswählen des Benutzerflows für die Registrierung und Anmeldung](./media/tutorial-create-user-flows/signup-signin-type.png)
 
-5. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
-6. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
+6. Geben Sie unter **Name** einen Namen für den Benutzerflow ein. Beispiel: *signupsignin1*.
+7. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
 
     ![Festlegen der Floweigenschaften](./media/tutorial-create-user-flows/signup-signin-properties.png)
 
-7. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
+8. Wählen Sie für **Benutzerattribute und Ansprüche** die Ansprüche und Attribute aus, die Sie bei der Registrierung vom Benutzer sammeln und senden möchten. Wählen Sie z.B. **Mehr anzeigen** und dann **Land/Region**, **Anzeigename** und **Postleitzahl** aus. Klicken Sie auf **OK**.
 
     ![Auswählen von Attributen und Ansprüchen](./media/tutorial-create-user-flows/signup-signin-attributes.png)
 
-8. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
+9. Klicken Sie auf **Erstellen**, um den Benutzerflow hinzuzufügen. Dem Namen wird automatisch das Präfix *B2C_1* vorangestellt.
 
 ### <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
@@ -123,4 +124,4 @@ In diesem Artikel haben Sie Folgendes gelernt:
 > * Erstellen eines Benutzerflows zur Kennwortrücksetzung
 
 > [!div class="nextstepaction"]
-> [Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C](tutorial-customize-ui.md)
+> [Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](tutorial-add-identity-providers.md)

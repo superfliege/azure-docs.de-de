@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: jeedes
-ms.openlocfilehash: 303d794e558a5e85b4dd2bca3d9bbb4c2a1ff5dc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 694999048d2f1df92e6b8631953f124c4009d46c
+ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151803"
+ms.lasthandoff: 02/05/2019
+ms.locfileid: "55733959"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infinite-campus"></a>Tutorial: Integration von Infinite Campus in Azure Active Directory
 
@@ -111,7 +111,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Configure single sign-on](common/editconfigure.png)
 
-5. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** (weiter mit Schritt **11.c**) verfügen:
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Schritte 4.a bis 4.d aus, wenn Sie über eine **Dienstanbieter-Metadatendatei** verfügen, und fahren Sie dann mit Schritt 11.c fort. Wenn Sie keine Dienstanbieter-Metadatendatei haben, fahren Sie mit Schritt 5 fort.
 
     a. Klicken Sie auf **Metadatendatei hochladen**.
 
@@ -127,10 +127,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     d. Geben Sie im Textfeld **Anmelde-URL** eine URL nach folgendem Muster ein (die Domäne variiert je nach Hostingmodell): `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`
 
-    > [!NOTE]
-    > Sie können die **Dienstanbieter-Metadatendatei** auf der Infinite Campus-Konfigurationsseite für den SSO-Dienstanbieter abrufen, die im weiteren Verlauf des Tutorials erläutert wird. Wenn Sie in Infinite Campus mit einer neuen SAML-Dienstanbieterkonfiguration beginnen, sollten Sie zu **Schritt 11** springen, um den Export der Dienstanbieter-Metadatendatei durchzuführen.
-
-6. Führen Sie die folgenden Schritte aus, falls Sie keine **Dienstanbieter-Metadatendatei** haben (die Domäne variiert je nach Hostingmodell):
+5. Führen Sie die folgenden Schritte aus, wenn Sie keine **Dienstanbieter-Metadatendatei** haben (die Domäne variiert je nach Hostingmodell):
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<DOMAIN>.infinitecampus.com/campus/SSO/<DISTRICTNAME>/SIS`.
 

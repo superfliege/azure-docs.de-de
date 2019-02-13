@@ -1,5 +1,5 @@
 ---
-title: Delegieren der am wenigsten privilegierten Rollen nach Aufgabe in Azure Active Directory | Microsoft-Dokumentation
+title: Delegieren der am wenigsten privilegierten Rollen nach Administratoraufgabe – Azure Active Directory | Microsoft-Dokumentation
 description: Erfahren Sie mehr über die zu delegierenden Rollen für Identitätsaufgaben in Azure Active Directory.
 services: active-directory
 documentationcenter: ''
@@ -10,18 +10,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 11/08/2018
+ms.date: 01/31/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 3b6c5b08fa3f915c541837abe5f52c7ec3d9b87e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6307fe4875d9fd5f55db8078ab9440f989fb58f3
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185204"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55508214"
 ---
-# <a name="administrator-roles-by-identity-task-in-azure-active-directory"></a>Administratorrollen nach Identitätsaufgabe in Azure Active Directory
+# <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
 In diesem Artikel finden Sie die erforderlichen Informationen, um Administratorrechte eines Benutzers einzuschränken, indem Sie die am wenigsten privilegierten Rollen in Azure Active Directory (Azure AD) zuweisen. Es werden Administratoraufgaben, die nach Featurebereichen organisiert sind, die am wenigsten privilegierte Rolle, die für die Ausführung der einzelnen Aufgaben erforderlich ist, sowie zusätzliche nicht globale Administratorrollen beschrieben, die die Aufgabe ausführen können.
 

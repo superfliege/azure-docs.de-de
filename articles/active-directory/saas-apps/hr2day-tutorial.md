@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.openlocfilehash: bb03506bac22c8c82e856f403710a4908af6f9de
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 7d77d72264580e4cde83f6cbb9f83bf7030d941e
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149253"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55820044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>Tutorial: Azure Active Directory-Integration mit HR2day by Merces
 
@@ -88,11 +88,11 @@ Weisen Sie in HR2day by Merces **Benutzername** aus Azure AD **Benutzername** zu
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD mit HR2day by Merces müssen Sie die folgenden Bausteine ausführen:
 
-1. [Konfigurieren des einmaligen Anmeldens in Azure AD](#configuring-azure-ad-single-sign-on): Ermöglichen Sie Ihren Benutzern, dieses Feature zu verwenden.
-1. [Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user): Testen Sie das einmalige Anmelden in Azure AD mit Britta Simon.
-1. [Erstellen eines Testbenutzers für HR2day by Merces](#creating-an-hr2day-by-merces-test-user): Erstellen Sie eine Entsprechung für Britta Simon in HR2day by Merces, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
-1. [Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user): Ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens in Azure AD.
-1. [Testen des einmaligen Anmeldens](#testing-single-sign-on): Vergewissern Sie sich, dass die Konfiguration funktioniert.
+1. Konfigurieren des einmaligen Anmeldens in Azure AD: Ermöglichen Sie Ihren Benutzern, dieses Feature zu verwenden.
+1. Erstellen eines Azure AD-Testbenutzers: Testen Sie das einmalige Anmelden in Azure AD mit Britta Simon.
+1. Erstellen eines Testbenutzers für HR2day by Merces: Erstellen Sie eine Entsprechung für Britta Simon in HR2day by Merces, die mit der Darstellung des Benutzers in Azure AD verknüpft ist.
+1. Zuweisen des Azure AD-Testbenutzers: Ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens in Azure AD.
+1. Testen des einmaligen Anmeldens: Vergewissern Sie sich, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 

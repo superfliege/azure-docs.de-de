@@ -12,16 +12,16 @@ ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 548bc9afb37f8c4a1c6c208a8741d1e3da0a784c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469395"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814111"
 ---
 # <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit eigenständigen, in einem Pool zusammengefassten und Instanzdatenbanken in Azure SQL-Datenbank
 
-Die Transaktionsreplikation ist ein Feature von Azure SQL-Datenbank, verwalteten Instanzen und SQL Server, die Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL-Datenbank oder SQL Server zu den in Remotedatenbanken platzierten Tabellen ermöglicht. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren.
+Die Transaktionsreplikation ist ein Feature von Azure SQL-Datenbank und SQL Server, die Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL-Datenbank oder einem SQL-Server zu den in Remotedatenbanken platzierten Tabellen ermöglicht. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren.
 
 ## <a name="when-to-use-transactional-replication"></a>Wann ist die Transaktionsreplikation zu verwenden?
 
@@ -38,15 +38,15 @@ Die wichtigsten Komponenten der Transaktionsreplikation sind in der folgenden Ab
 ![Replikation zu SQL-Datenbank](media/replication-to-sql-database/replication-to-sql-database.png)
 
 
-Der **Herausgeber** ist eine Instanz oder ein Server, die bzw. der Änderungen an Tabellen (Artikeln) veröffentlicht, indem die Aktualisierungen an den Verteiler gesendet werden. Das Veröffentlichen in einer Azure SQL-Datenbank von einem lokalen SQL Server wird unter den folgenden Versionen von SQL Server unterstützt:
+Der **Herausgeber** ist eine Instanz oder ein Server, die bzw. der Änderungen an Tabellen (Artikeln) veröffentlicht, indem die Aktualisierungen an den Verteiler gesendet werden. Das Veröffentlichen in einer Azure SQL-Datenbank von einem lokalen SQL Server wird durch die folgenden Versionen von SQL Server unterstützt:
 
-    - SQL Server 2019 (Vorschauversion)
-    - SQL Server 2016 bis SQL 2017
-    - SQL Server 2014 SP1 CU3 oder höher (12.00.4427)
-    - SQL Server 2014 RTM CU10 (12.00.2556)
-    - SQL Server 2012 SP3 oder höher (11.0.6020)
-    - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-    - Für andere Versionen von SQL Server, die keine Veröffentlichung in Objekten in Azure unterstützen, kann die Methode der [erneuten Veröffentlichung von Daten](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) verwendet werden, um Daten in neuere Versionen von SQL Server verschieben. 
+   - SQL Server 2019 (Vorschauversion)
+   - SQL Server 2016 bis SQL 2017
+   - SQL Server 2014 SP1 CU3 oder höher (12.00.4427)
+   - SQL Server 2014 RTM CU10 (12.00.2556)
+   - SQL Server 2012 SP3 oder höher (11.0.6020)
+   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
+   - Für andere Versionen von SQL Server, die keine Veröffentlichung in Objekten in Azure unterstützen, kann die Methode der [erneuten Veröffentlichung von Daten](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) verwendet werden, um Daten in neuere Versionen von SQL Server verschieben. 
 
 Der **Verteiler** ist eine Instanz oder ein Server, die bzw. der Änderungen an den Artikeln von einem Herausgeber erfasst und an die Abonnenten verteilt. Der Verteiler kann entweder eine verwaltete Azure SQL-Datenbank-Instanz oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Herausgeber-Version) sein. 
 
@@ -54,10 +54,10 @@ Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Hera
 
 | Rolle | Eigenständige und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken |
 | :----| :------------- | :--------------- |
-| **Herausgeber** | Nein  | JA | 
-| **Verteiler** | Nein  | JA|
-| **Pull-Abonnent** | Nein  | JA|
-| **Push-Abonnent**| JA | JA|
+| **Herausgeber** | Nein  | Ja | 
+| **Verteiler** | Nein  | Ja|
+| **Pull-Abonnent** | Nein  | Ja|
+| **Push-Abonnent**| Ja | Ja|
 | &nbsp; | &nbsp; | &nbsp; |
 
 Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
@@ -65,12 +65,12 @@ Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relation
 
 | Replikation | Eigenständige und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken|
 | :----| :------------- | :--------------- |
-| [**Transaktion**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (nur als Abonnent) | JA | 
-| [**Momentaufnahme**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (nur als Abonnent) | JA|
+| [**Transaktion**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (nur als Abonnent) | Ja | 
+| [**Momentaufnahme**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (nur als Abonnent) | Ja|
 | [**Mergereplikation**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Nein  | Nein |
 | [**Peer-to-Peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Nein  | Nein |
-| **Unidirektional** | JA | JA|
-| [**Bidirektional**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nein  | JA|
+| **Unidirektional** | Ja | Ja|
+| [**Bidirektional**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Nein  | Ja|
 | [**Aktualisierbare Abonnements**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Nein  | Nein |
 | &nbsp; | &nbsp; | &nbsp; |
 

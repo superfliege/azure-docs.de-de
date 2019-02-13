@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit N2F | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit N2F – Spesenberichte| Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und N2F konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 27fb299bc3bbbbf75bdf40ae02eac627763ce6d4
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d8d3d9c14ee1eaa5e5d6dc3245c0d4071306f12a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40007307"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811629"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Tutorial: Azure Active Directory-Integration mit N2F
+# <a name="tutorial-azure-active-directory-integration-with-n2f---expense-reports"></a>Tutorial: Azure Active Directory-Integration mit N2F – Spesenberichte
 
 In diesem Tutorial erfahren Sie, wie Sie N2F für Spesenberichte in Azure Active Directory (Azure AD) integrieren.
 
@@ -87,7 +87,7 @@ Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei N2F müss
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
 2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines N2F-Testbenutzers](#create-a-n2f---expense-reports-test-use)**, um ein Pendant zu Britta Simon in N2F zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+3. **Erstellen eines N2F-Testbenutzers**, um ein Pendant zu Britta Simon in N2F – Spesenberichte zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 

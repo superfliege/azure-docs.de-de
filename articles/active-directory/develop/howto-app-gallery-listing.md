@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2018
+ms.date: 01/30/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: fd02c2d10d072f33fdc265feaadf9776e9c1d679
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f4caf0cde7225e2c93723f412c53259a5f5646a4
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102033"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55663280"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Gewusst wie: Auflisten Ihrer Anwendung zum Azure Active Directory-Anwendungskatalog
 
@@ -45,7 +45,7 @@ ms.locfileid: "55102033"
 
 - Stellen Sie beim Kennwort-SSO sicher, dass Ihre Anwendung die Formularauthentifizierung unterstützt, sodass Kennworttresore verwendet werden können, damit einmaliges Anmelden wie erwartet funktioniert.
 
-- Für Anforderungen zur automatischen Benutzerbereitstellung sollte die Anwendung im Katalog aufgeführt sein, wobei die Funktion für einmaliges Anmelden mit einem der oben beschriebenen Verbundprotokolle aktiviert ist. Sie können SSO und die Benutzerbereitstellung zusammen im Portal anfordern, sofern dies nicht bereits aufgeführt ist.
+- Für Anforderungen zur automatischen Benutzerbereitstellung sollte die Anwendung im Katalog aufgeführt sein, wobei die Funktion für einmaliges Anmelden mit SAML 2.0/WS-Fed aktiviert ist. Sie können SSO und die Benutzerbereitstellung zusammen im Portal anfordern, sofern dies nicht bereits aufgeführt ist.
 
 ## <a name="submit-the-request-in-the-portal"></a>Übermitteln der Anforderung im Portal
 

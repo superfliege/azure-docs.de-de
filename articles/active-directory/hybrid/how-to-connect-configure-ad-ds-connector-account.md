@@ -6,23 +6,23 @@ author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: 531ba32125479528b1a847b32d711049e699dda0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5ad77b0c88c71860db939feecac5a1aecfc4ca40
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191652"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55756280"
 ---
 # <a name="azure-ad-connectconfigure-ad-ds-connector-account-permissions"></a>Azure AD Connect: Konfigurieren der Azure AD-Connector-Kontoberechtigungen 
 
 Mit Build 1.1.880.0 (veröffentlicht im August 2018) wurde das PowerShell-Modul namens [ADSyncConfig.psm1](reference-connect-adsyncconfig.md) eingeführt, das eine Sammlung von Cmdlets enthält, die Sie beim Konfigurieren der richtigen Active Directory-Berechtigungen für Ihre Azure AD Connect-Bereitstellung unterstützen. 
 
 ## <a name="overview"></a>Übersicht 
-Die folgenden PowerShell-Cmdlets können verwendet werden, um Active Directory-Berechtigungen des AD DS-Connector-Kontos für jede Funktion einzurichten, die Sie in Azure AD Connect zu aktivieren vorgeben. Um Probleme zu vermeiden, sollten Sie immer dann Active Directory-Berechtigungen im Voraus vorbereiten, wenn Sie Azure AD Connect so installieren möchten, dass es mithilfe eines benutzerdefinierten Domänenkontos eine Verbindung mit Ihrer Gesamtstruktur herstellt. Dieses ADSyncConfig-Modul kann auch verwendet werden, um Berechtigungen zu konfigurieren, nachdem Azure AD Connect bereitgestellt wurde.
+Die folgenden PowerShell-Cmdlets können verwendet werden, um Active Directory-Berechtigungen des AD DS-Connector-Kontos für jede Funktion einzurichten, die Sie in Azure AD Connect zum Aktivieren auswählen. Um Probleme zu vermeiden, sollten Sie immer dann Active Directory-Berechtigungen im Voraus vorbereiten, wenn Sie Azure AD Connect so installieren möchten, dass es mithilfe eines benutzerdefinierten Domänenkontos eine Verbindung mit Ihrer Gesamtstruktur herstellt. Dieses ADSyncConfig-Modul kann auch verwendet werden, um Berechtigungen zu konfigurieren, nachdem Azure AD Connect bereitgestellt wurde.
 
 ![](media/how-to-connect-configure-ad-ds-connector-account/configure1.png)
 

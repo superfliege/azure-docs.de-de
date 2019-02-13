@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C | Microsoft-Dokumentation'
+title: 'Tutorial: Anpassen der Benutzeroberfläche – Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie die Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C mithilfe des Azure-Portals anpassen.
 services: B2C
 author: davidmu1
@@ -7,17 +7,17 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1c95772eeb6057b4ff7b12a79897fda73e1e017c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
+ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55156654"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55752380"
 ---
-# <a name="tutorial-customize-the-user-interface-of-your-applications-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche Ihrer Anwendungen in Azure Active Directory B2C
+# <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C
 
 Für weitere gängige Benutzerfunktionen wie etwa Registrierung, Anmeldung und Profilbearbeitung können Sie [Benutzerflows](active-directory-b2c-reference-policies.md) in Azure Active Directory (Azure AD) B2C verwenden. Die Informationen in diesem Tutorial helfen Ihnen beim [Anpassen der Benutzeroberfläche (UI)](customize-ui-overview.md) dieser Erfahrungen unter Verwendung Ihrer eigenen HTML- und CSS-Dateien.
 
@@ -25,14 +25,14 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 > [!div class="checklist"]
 > * Erstellen von Dateien für die Benutzeroberflächenanpassung
-> * Erstellen eines Benutzerflows für Registrierung und Anmeldung, der die Dateien verwendet
+> * Aktualisieren des Benutzerflows für die Verwendung von Dateien
 > * Testen der angepassten Benutzeroberfläche
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wenn Sie Ihren eigenen [Azure AD B2C-Mandanten](tutorial-create-tenant.md) noch nicht erstellt haben, erstellen Sie jetzt einen. Sie können einen vorhandenen Mandanten verwenden, wenn Sie einen in einem vorherigen Tutorial erstellt haben.
+[Erstellen Sie einen Benutzerflow](tutorial-create-user-flows.md), damit sich Benutzer bei Ihrer Anwendung registrieren und anmelden können.
 
 ## <a name="create-customization-files"></a>Erstellen von Anpassungsdateien
 
@@ -42,17 +42,15 @@ Sie erstellen ein Azure-Speicherkonto mit Container und legen dann einfache HTML
 
 Zwar können Sie Ihre Dateien auf viele Arten speichern, doch für dieses Tutorial speichern Sie sie in [Azure-Blob-Speicher](../storage/blobs/storage-blobs-introduction.md).
 
-1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure B2C-Mandant enthalten ist.
-
-    ![Wechseln zum Abonnementverzeichnis](./media/tutorial-customize-ui/switch-directories.png)
-
-2. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus. 
-3. Wählen Sie **Hinzufügen**.
-4. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie einen Namen für die neue Ressourcengruppe ein, und klicken Sie dann auf **OK**.
-5. Geben Sie einen Namen für das Speicherkonto ein. Der ausgewählte Name muss in Azure eindeutig sein und zwischen 3 und 24 Zeichen aufweisen, und er darf nur Zahlen und Kleinbuchstaben enthalten.
-6. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort. 
-7. Akzeptieren Sie alle anderen Standardwerte, wählen Sie **Überprüfen + erstellen** aus, und klicken Sie dann auf **Weiter**.
-8. Wählen Sie nach dem Erstellen des neuen Speicherkontos **Zu Ressource wechseln** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihr Azure-Abonnement enthält. Wählen Sie im Hauptmenü den **Verzeichnis- und Abonnementfilter** aus, und wählen Sie das Verzeichnis aus, das Ihr Abonnement enthält. Dabei handelt es sich um ein anderes Verzeichnis als das, in dem Ihr Azure B2C-Mandant enthalten ist.
+3. Wählen Sie links oben im Azure-Portal „Alle Dienste“ aus, und suchen Sie dann nach **Speicherkonten**, und wählen Sie dies aus. 
+4. Wählen Sie **Hinzufügen**.
+5. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, geben Sie einen Namen für die neue Ressourcengruppe ein, und klicken Sie dann auf **OK**.
+6. Geben Sie einen Namen für das Speicherkonto ein. Der ausgewählte Name muss in Azure eindeutig sein und zwischen 3 und 24 Zeichen aufweisen, und er darf nur Zahlen und Kleinbuchstaben enthalten.
+7. Wählen Sie den Standort Ihres Speicherkontos aus, oder akzeptieren Sie den Standardstandort. 
+8. Akzeptieren Sie alle anderen Standardwerte, wählen Sie **Überprüfen + erstellen** aus, und klicken Sie dann auf **Weiter**.
+9. Wählen Sie nach dem Erstellen des neuen Speicherkontos **Zu Ressource wechseln** aus.
 
 ### <a name="create-a-container"></a>Erstellen eines Containers
 
@@ -137,42 +135,17 @@ In diesem Tutorial speichern Sie die Dateien, die Sie im Speicherkonto erstellt 
 4. Kopieren Sie die URL für die Datei, die Sie hochgeladen haben, um sie später in diesem Tutorial zu verwenden.
 5. Wiederholen Sie Schritt 3 und 4 für die Datei *style.css*.
 
-## <a name="create-a-sign-up-and-sign-in-user-flow"></a>Erstellen eines Benutzerflows für Registrierung und Anmeldung
+## <a name="update-the-user-flow"></a>Aktualisieren des Benutzerflows
 
-Um die Schritte in diesem Tutorial auszuführen, müssen Sie eine Testanwendung und einen Benutzerflow für Registrierung und Anmeldung in Azure AD B2C erstellen. Sie können die in diesem Tutorial beschriebenen Prinzipien auf die anderen Erfahrungen anwenden, z. B. die Profilbearbeitung.
-
-### <a name="create-an-azure-ad-b2c-application"></a>Erstellen einer Azure AD B2C-Anwendung
-
-Die Kommunikation mit Azure AD B2C erfolgt über eine Anwendung, die Sie in Ihrem Mandanten erstellen. Mit den folgenden Schritten wird eine Anwendung erstellt, die das Autorisierungstoken, das zurückgegeben wird, an [https://jwt.ms](https://jwt.ms) umleitet.
-
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie **Anwendungen** und dann **Hinzufügen** aus.
-5. Geben Sie einen Namen für die Anwendung ein, z.B. *testapp1*.
-6. Wählen Sie für **Web-App/Web-API** die Option `Yes` aus, und geben Sie dann für die **Antwort-URL** die Zeichenfolge `https://jwt.ms` ein.
-7. Klicken Sie auf **Create**.
-
-### <a name="create-the-user-flow"></a>Erstellen des Benutzerflows
-
-Um Ihre Anpassungsdateien zu testen, erstellen Sie einen integrierten Benutzerflow für Registrierung oder Anmeldung, der die zuvor erstellte Anwendung verwendet.
-
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** aus, und klicken Sie dann auf **Neuer Benutzerflow**.
-2. Klicken Sie auf der Registerkarte **Empfohlen** auf **Registrierung und Anmeldung**.
-3. Geben Sie einen Namen für den Benutzerflow ein. Z. B. *signup_signin*. Bei Erstellung des Benutzerflows wird dem Namen automatisch das Präfix *B2C_1* hinzugefügt.
-4. Wählen Sie unter **Identitätsanbieter** die Option **E-Mail-Registrierung** aus.
-5. Klicken Sie unter **Benutzerattribute und Ansprüche** auf **Mehr anzeigen**.
-6. Wählen Sie in der Spalte **Attribut sammeln** die Attribute aus, die Sie während der Registrierung vom Kunden erfassen möchten. Wählen Sie z.B. **Land/Region**, **Anzeigename** und **Postleitzahl** aus.
-7. Wählen Sie in der Spalte **Anspruch zurückgeben** die Ansprüche aus, die nach einer erfolgreichen Registrierung oder Anmeldung in den Autorisierungstoken an Ihre Anwendung zurückgegeben werden sollen. Wählen Sie beispielsweise **Anzeigename**, **Identitätsanbieter**, **Postleitzahl**, **User is new** (Benutzer ist neu) und **User's Object ID** (Objekt-ID des Benutzers) aus.
-8. Klicken Sie auf **OK**.
-9. Klicken Sie auf **Create**.
-10. Wählen Sie unter **Anpassen** die Option **Seitenlayouts** aus. Wählen Sie **Einheitliche Seite für Registrierung oder Anmeldung** aus, und klicken Sie dann für **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
-11. Geben Sie in **Benutzerdefinierter Seiten-URI** die URL für die Datei *custom-ui.html* ein, die Sie zuvor aufgezeichnet haben.
-12. Klicken Sie oben auf der Seite auf **Speichern**.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+2. Wählen Sie **Benutzerflows (Richtlinien)** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
+3. Wählen Sie **Seitenlayouts** aus, und klicken Sie dann unter **Einheitliche Seite für Registrierung oder Anmeldung** bei **Benutzerdefinierten Seiteninhalt verwenden** auf **Ja**.
+4. Geben Sie unter **Benutzerdefinierter Seiten-URI** den URI für die Datei *custom-ui.html* ein, die Sie zuvor gespeichert haben.
+5. Klicken Sie am oberen Rand der Seite auf **Speichern**.
 
 ## <a name="test-the-user-flow"></a>Testen des Benutzerflows
 
-1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow aus, den Sie erstellt haben. Z. B. *B2C_1_signup_signin*.
+1. Wählen Sie in Ihrem Azure AD B2C-Mandanten **Benutzerflows** und dann den Benutzerflow *B2C_1_signupsignin1* aus.
 2. Klicken Sie im oberen Bereich der Seite auf **Benutzerflow ausführen**.
 3. Klicken Sie auf die Schaltfläche **Benutzerflow ausführen**.
 
@@ -188,7 +161,7 @@ In diesem Artikel haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
 > * Erstellen von Dateien für die Benutzeroberflächenanpassung
-> * Erstellen eines Benutzerflows für Registrierung und Anmeldung, der die Dateien verwendet
+> * Aktualisieren des Benutzerflows für die Verwendung von Dateien
 > * Testen der angepassten Benutzeroberfläche
 
 > [!div class="nextstepaction"]

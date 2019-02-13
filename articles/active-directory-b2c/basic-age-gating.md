@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e3e60a7ee435cb23bd6a7f78d409691c94d6c49e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f8309424b8e1eed97d66fbd168444418cc1f98fd
+ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153265"
+ms.lasthandoff: 02/01/2019
+ms.locfileid: "55562435"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Aktivieren der Altersbeschränkung in Azure Active Directory B2C
 
@@ -103,7 +103,7 @@ Nachdem Ihr Mandant für die Nutzung der Altersbeschränkung eingerichtet wurde,
 1. Erstellen Sie einen Benutzerflow, für den die Altersbeschränkung aktiviert ist.
 2. Wählen Sie nach dem Erstellen des Benutzerflows im Menü die Option **Eigenschaften**.
 3. Wählen Sie im Abschnitt **Altersbeschränkung** die Option **Aktiviert**.
-4. Sie können dann wählen, wie Sie Benutzer verwalten möchten, die sich als Minderjährige identifizieren. Wählen Sie unter **Registrieren oder anmelden** die Option `Allow minors to access your application` oder `Block minors from accessing your application`. Wenn Sie die Option zum Ausschließen von Minderjährigen gewählt haben, wählen Sie anschließend `Send a JSON bcak to the application` oder `Show an error message`. 
+4. Sie können dann wählen, wie Sie Benutzer verwalten möchten, die sich als Minderjährige identifizieren. Wählen Sie unter **Registrieren oder anmelden** die Option `Allow minors to access your application` oder `Block minors from accessing your application`. Wenn Sie die Option zum Ausschließen von Minderjährigen gewählt haben, wählen Sie anschließend `Send a JSON back to the application` oder `Show an error message`. 
 
 
 

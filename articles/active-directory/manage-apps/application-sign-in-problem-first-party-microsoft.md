@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 09/10/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 6cd926536242563d3114a30adce1568a1f7424e0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f67633ec62b28f54a97cccd0f27b43bdb626ee58
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55171795"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822764"
 ---
 # <a name="problems-signing-in-to-a-microsoft-application"></a>Probleme beim Anmelden bei Microsoft-Anwendungen
 
@@ -34,11 +34,11 @@ Es gibt drei Hauptmethoden, über die ein Benutzer Zugriff auf eine von Microsof
 
 -   Für Anwendungen, die Microsoft oder ein Drittanbieter kostenlos für alle Benutzer veröffentlicht, können Benutzer auch Zugriff über eine **Administratorzustimmung** erhalten. Dies bedeutet, dass ein Administrator festgelegt hat, dass die Anwendung von allen Personen in seiner Organisation verwendet werden kann. Daher meldet er sich mit einem globalen Administratorkonto bei der Anwendung an und gewährt allen Benutzer in der Organisation Zugriff.
 
-Um Ihr Problem zu beheben, beginnen Sie mit [Allgemeine zu berücksichtigende Problembereiche beim Anwendungszugriff](#general-problem-areas-with-application-access-to-consider). Lesen Sie dann [Exemplarische Vorgehensweise: Schritte zur Behandlung von Problemen beim Zugriff auf Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access), um ausführlichere Informationen zu erhalten.
+Um Ihr Problem zu beheben, beginnen Sie mit [Allgemeine zu berücksichtigende Problembereiche beim Anwendungszugriff](#general-problem-areas-with-application-access-to-consider). Lesen Sie dann „Exemplarische Vorgehensweise: Schritte zur Behandlung von Problemen beim Zugriff auf Microsoft-Anwendungen“, um ausführlichere Informationen zu erhalten.
 
 ## <a name="general-problem-areas-with-application-access-to-consider"></a>Allgemeine zu berücksichtigende Problembereiche beim Anwendungszugriff
 
-Im Anschluss finden Sie eine Liste der allgemeinen Problembereiche, die Sie untersuchen können, wenn Sie eine Vorstellung davon haben, wo Sie ansetzen können. Für einen schnellen Einstieg empfehlen wir jedoch den Artikel [Exemplarische Vorgehensweise: beim Anmelden bei Microsoft-Anwendungen](#walkthrough-steps-to-troubleshoot-microsoft-application-access).
+Im Anschluss finden Sie eine Liste der allgemeinen Problembereiche, die Sie untersuchen können, wenn Sie eine Vorstellung davon haben, wo Sie ansetzen können. Für einen schnellen Einstieg empfehlen wir jedoch den Artikel Exemplarische Vorgehensweise: Schritte zum Behandeln von Problemen beim Zugriff auf Microsoft-Anwendungen.
 
 -   [Probleme mit dem Konto des Benutzers](#problems-with-the-users-account)
 
@@ -180,7 +180,7 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 -   [Aktivieren von Benutzern für das Zurücksetzen ihrer Azure Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
--   [Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-or-change-their-ad-passwords)
+-   [Aktivieren von Benutzern für das Zurücksetzen oder Ändern ihrer lokalen Active Directory-Kennwörter](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started)
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>Überprüfen des Multi-Factor Authentication-Status eines Benutzers
 
@@ -204,7 +204,7 @@ Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führ
 
 9.  Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
 
-  * **Hinweis**: Wenn ein Benutzer sich im Status Erzwungen befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
+  * **Hinweis**: Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status zu **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.
 
 ### <a name="check-a-users-authentication-contact-info"></a>Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers
 

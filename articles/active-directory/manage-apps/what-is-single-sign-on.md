@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: barbkess
 ms.reviewer: arvindh
-ms.openlocfilehash: 9e06e53f83dd05d53b76a2a07e465133f052dba8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 8216eb9c076111bfa70633b24f36ac97b0ee319a
+ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157702"
+ms.lasthandoff: 02/02/2019
+ms.locfileid: "55664028"
 ---
 # <a name="single-sign-on-to-applications-in-azure-active-directory"></a>Einmaliges Anmelden bei Anwendungen in Azure Active Directory
 Mit dem einmaligen Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer in Azure Active Directory (Azure AD) an Anwendungen anmelden. In diesem Artikel werden die Methoden für einmaliges Anmelden beschrieben, und Sie erhalten Hilfestellung beim Auswählen der am besten geeigneten SSO-Methode zum Konfigurieren Ihrer Anwendungen.
@@ -49,9 +49,7 @@ In der folgenden Tabelle werden die Methoden für einmaliges Anmelden zusammenge
 | [Headerbasiert](#header-based-sso) | Nur lokal | Verwenden Sie das headerbasierte einmalige Anmelden, wenn die Anwendung für die Authentifizierung Header verwendet. Headerbasiertes einmaliges Anmelden erfordert PingAccess für Azure AD. Der Anwendungsproxy verwendet Azure AD, um den Benutzer zu authentifizieren, und leitet Datenverkehr dann über den Connectordienst weiter.  | 
 
 ## <a name="openid-connect-and-oauth"></a>OpenID Connect und OAuth 2.0
-Mit OpenID Connect und OAuth aktivieren Sie eine Umgebung für einmaliges Anmelden, mit der das Hinzufügen einer Unternehmensanwendung zu Azure AD vereinfacht wird. Der Anwendungsadministrator muss einmaliges Anmelden nicht konfigurieren. Stattdessen wird die Anwendung von Azure AD hinzugefügt, wenn der Administrator die [Benutzereinwilligung gewährt](configure-user-consent.md). 
-
-Die [SDKs](../develop/reference-v2-libraries.md) für OpenID Connect und OAuth können leicht eingeführt werden, und Ihre Anwendung ist dann für die Verwendung von MS Graph bereit. 
+Verwenden Sie beim Entwickeln neuer Anwendungen moderne Protokolle wie OpenID Connect und OAuth, um den Benutzern Ihrer App durch das einmalige Anmelden die beste Anmeldeerfahrung über mehrere Plattformen hinweg zu bieten. OAuth gibt Benutzern oder Administratoren die Möglichkeit, für geschützte Ressourcen wie [MS Graph](/graph/overview) ihre [Einwilligung zu erteilen](configure-user-consent.md). Wir stellen einfach zu übernehmende [SDKs](../develop/reference-v2-libraries.md) für Ihre App bereit. Außerdem ist Ihre App dann einsatzbereit für die Verwendung von [MS Graph](/graph/overview).
 
 Weitere Informationen finden Sie unter
 

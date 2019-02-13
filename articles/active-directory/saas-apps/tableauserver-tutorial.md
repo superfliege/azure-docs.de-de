@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2018
 ms.author: jeedes
-ms.openlocfilehash: a68ffb867a738e11c9895416bbdf2009b268c0c6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 69ae32f63005d3d5ea83dce5aa349bb6c0c92e0c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155810"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55818429"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>Tutorial: Azure Active Directory-Integration von Tableau Server
 
@@ -215,7 +215,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Tableau Server. Sie müssen alle Benutzer in Tableau Server bereitstellen. 
 
-Der username-Wert des Benutzers muss dem Wert entsprechen, den Sie im benutzerdefinierten Attribut **username** in Azure AD konfiguriert haben. Bei ordnungsgemäßer Zuordnung sollte die Integration funktionieren: [Konfigurieren des einmaligen Anmeldens in Azure AD](#configuring-azure-ad-single-sign-on)
+Der username-Wert des Benutzers muss dem Wert entsprechen, den Sie im benutzerdefinierten Attribut **username** in Azure AD konfiguriert haben. Bei ordnungsgemäßer Zuordnung sollte die Integration funktionieren: Konfigurieren des einmaligen Anmeldens in Azure AD.
 
 >[!NOTE]
 >Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an den Tableau Server-Administrator in Ihrer Organisation.

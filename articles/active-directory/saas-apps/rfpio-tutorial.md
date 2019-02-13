@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 0b216d8a8a2c6e1ab7c7b71eedfca9cbd6dbd5cf
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 23d745e084bf3439d8400b0cd6ac43bac75c7751
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197346"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55815692"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Tutorial: Azure Active Directory-Integration mit RFPIO
 
@@ -88,11 +88,11 @@ Weisen Sie in RFPIO den Wert für **Benutzername** in Azure AD als Wert für **B
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei RFPIO müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines RFPIO-Testbenutzers](#creating-a-rfpio-test-user)**, um eine Entsprechung von Britta Simon in RFPIO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen des einmaligen Anmeldens](#testing-single-sign-on)**, um sicherzustellen, dass die Konfiguration funktioniert.
+1. **Konfigurieren des einmaligen Anmeldens von Azure AD**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
+1. **Erstellen eines Azure AD-Testbenutzers**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+1. **Erstellen eines RFPIO-Testbenutzers**, um eine Entsprechung von Britta Simon in RFPIO zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
+1. **Zuweisen des Azure AD-Testbenutzers**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+1. **Testen des einmaligen Anmeldens**, um sicherzustellen, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 

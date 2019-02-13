@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.subservice: compliance
 ms.date: 01/10/2019
 ms.author: rolyon
-ms.openlocfilehash: be8a6ba83de81c5a82797ecf3d30c7a7fcaa65fa
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162768"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822509"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -257,10 +257,10 @@ Nachstehend finden Sie eine Liste der unterstützten Plattformen und Softwareanw
 > [!div class="mx-tableFixed"]
 > |  | iOS | Android | Windows 10 | Andere |
 > | --- | --- | --- | --- | --- |
-> | **Native App** | JA | Ja | JA |  |
-> | **Microsoft Edge** | JA | Ja | JA |  |
-> | **Internet Explorer** | JA | Ja | JA |  |
-> | **Chrome (mit Erweiterung)** | JA | Ja | JA |  |
+> | **Native App** | Ja | Ja | Ja |  |
+> | **Microsoft Edge** | Ja | Ja | Ja |  |
+> | **Internet Explorer** | Ja | Ja | Ja |  |
+> | **Chrome (mit Erweiterung)** | Ja | Ja | Ja |  |
 
 Für Nutzungsbedingungen pro Gerät gelten die folgenden Einschränkungen:
 
@@ -337,7 +337,7 @@ Sie können für die App Microsoft Intune-Registrierung eine Richtlinie für bed
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 **F: Wie sehe ich, wann/ob ein Benutzer Nutzungsbedingungen akzeptiert hat?**<br />
-A: Klicken Sie auf dem Blatt für Nutzungsbedingungen auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Azure AD-Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter [Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen](#view-who-has-accepted-and-declined) und [Anzeigen der Azure AD-Überwachungsprotokolle](#view-azure-ad-audit-logs).
+A: Klicken Sie auf dem Blatt für Nutzungsbedingungen auf die Zahl unter **Akzeptiert**. Sie können die Zustimmungsaktivität auch in den Azure AD-Überwachungsprotokollen anzeigen oder suchen. Weitere Informationen finden Sie unter „Anzeigen des Berichts über abgelehnte und akzeptierte Nutzungsbedingungen“ und [Anzeigen der Azure AD-Überwachungsprotokolle](#view-azure-ad-audit-logs).
 
 **F: Wie lange werden die Informationen gespeichert?**<br />
 A: Die Benutzeranzahl im Bericht zu den Nutzungsbedingungen sowie die Angabe, wer die Bedingungen akzeptiert/abgelehnt hat, werden für die Lebensdauer der Nutzungsbedingungen gespeichert. Die Azure AD-Überwachungsprotokolle werden 30 Tage lang gespeichert.

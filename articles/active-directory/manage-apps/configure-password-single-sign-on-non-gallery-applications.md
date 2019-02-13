@@ -10,20 +10,20 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/12/2018
 ms.author: barbkess
-ms.openlocfilehash: 9fc6bd6e7196d442f46e364a9d5816c5056f34f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 934996f1573520a6fba92ce09f8a14fc4795de6c
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55184375"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812464"
 ---
 # <a name="how-to-configure-password-single-sign-on-for-a-non-gallery-application"></a>Konfigurieren des einmaligen Anmeldens per Kennwort für eine nicht im Katalog enthaltene Anwendung
 
-Zusätzlich zu den Auswahlmöglichkeiten im Azure AD-Anwendungskatalog können Sie auch eine **nicht im Katalog enthaltene Anwendung** hinzufügen, wenn die gewünschte Anwendung im Katalog nicht aufgeführt wird. Auf diese Weise können Sie Anwendungen hinzufügen, die in Ihrer Organisation bereits vorhanden sind. Sie können auch Anwendungen eines Anbieters hinzufügen, der noch nicht im [Azure AD-Anwendungskatalog](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#get-started-with-the-azure-ad-application-gallery) gelistet ist.
+Zusätzlich zu den Auswahlmöglichkeiten im Azure AD-Anwendungskatalog können Sie auch eine **nicht im Katalog enthaltene Anwendung** hinzufügen, wenn die gewünschte Anwendung im Katalog nicht aufgeführt wird. Auf diese Weise können Sie Anwendungen hinzufügen, die in Ihrer Organisation bereits vorhanden sind. Sie können auch Anwendungen eines Anbieters hinzufügen, der noch nicht im [Azure AD-Anwendungskatalog](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) gelistet ist.
 
 Nachdem Sie eine nicht im Katalog enthaltene Anwendung hinzugefügt haben, können Sie die Methode für das einmalige Anmelden konfigurieren, die für diese Anwendung verwendet werden soll. Wählen Sie dazu im [Azure-Portal](https://portal.azure.com/) das Navigationselement **Einmaliges Anmelden** für eine Unternehmensanwendung aus.
 
-Eine der verfügbaren Methoden für das einmalige Anmelden ist die Option [Kennwortbasiertes einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work). Durch **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** können Sie jede Anwendung integrieren, die HTML-basierte Felder für Benutzername und Kennwort generiert, selbst wenn diese nicht zu den von uns vorab integrierten Anwendungen gehört.
+Eine der verfügbaren Methoden für das einmalige Anmelden ist die Option [Kennwortbasiertes einmaliges Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis). Durch **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** können Sie jede Anwendung integrieren, die HTML-basierte Felder für Benutzername und Kennwort generiert, selbst wenn diese nicht zu den von uns vorab integrierten Anwendungen gehört.
 
 Hierzu wird eine Technologie zum Auslesen von Seiten verwendet, die zur Zugriffsbereichserweiterung gehört. Mit dieser Technologie können wir Felder für die Eingabe von Benutzername und Kennwort automatisch ermitteln und diese Informationen für Ihre spezifische Anwendungsinstanz sicher speichern. Danach können die Felder für Benutzername und Kennwort auf sichere Weise automatisch ausgefüllt werden, wenn ein Benutzer im Anwendungszugriffsbereich zur entsprechenden Anwendung navigiert.
 
@@ -43,11 +43,11 @@ Diese Option eignet sich hervorragend dazu, jede beliebige Anwendung schnell in 
 
 -   Ermöglichen Sie es einem **Mitglied der Gruppe „Business“**, mithilfe des Features [Self-Service-Anwendungszugriff](https://docs.microsoft.com/azure/active-directory/active-directory-self-service-application-access) die Benutzernamen und Kennwörter festzulegen, die einem Benutzer zugewiesen werden.
 
--   Ermöglichen Sie es einem **Administrator**, beim [Zuweisen von Benutzern zu einer Anwendung](#_How_to_configure_1) das Feature zum Aktualisieren von Anmeldeinformationen zu verwenden, um die den Benutzern zugewiesenen Benutzernamen und Kennwörter anzugeben.
+-   Ermöglichen Sie es einem **Administrator**, beim Zuweisen von Benutzern zu einer Anwendung das Feature zum Aktualisieren von Anmeldeinformationen zu verwenden, um die den Benutzern zugewiesenen Benutzernamen und Kennwörter anzugeben.
 
 -   Ermöglichen Sie es einem **Administrator**, beim [Zuweisen von Gruppen zu einer Anwendung](#assign-an-application-to-a-group-directly) das Feature zum Aktualisieren von Anmeldeinformationen zu verwenden, um die von Gruppen von Benutzern gemeinsam genutzten Benutzernamen und Kennwörter anzugeben.
 
-Im folgenden Abschnitt wird beschrieben, wie Sie das [kennwortbasierte einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#how-does-single-sign-on-with-azure-active-directory-work) bei einer beliebigen Anwendung aktivieren, die Sie über das Feature zum **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** hinzugefügt haben.
+Im folgenden Abschnitt wird beschrieben, wie Sie das [kennwortbasierte einmalige Anmelden](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) bei einer beliebigen Anwendung aktivieren, die Sie über das Feature zum **Hinzufügen einer nicht im Katalog enthaltenen Anwendung** hinzugefügt haben.
 
 ## <a name="overview-of-steps-required"></a>Übersicht über die erforderlichen Schritte
 
@@ -57,7 +57,7 @@ Um eine Anwendung aus dem Azure AD-Katalog zu konfigurieren, müssen folgende Sc
 
 -   [Konfigurieren der Anwendung für das einmalige Anmelden per Kennwort](#configure-the-application-for-password-single-sign-on)
 
--   [Zuweisen der Anwendung zu einem Benutzer oder einer Gruppe](#assign-the-application-to-a-user-or-a-group)
+-   Zuweisen der Anwendung zu einem Benutzer oder einer Gruppe
 
     -   [Direktes Zuweisen eines Benutzers zu einer Anwendung](#assign-a-user-to-an-application-directly)
 

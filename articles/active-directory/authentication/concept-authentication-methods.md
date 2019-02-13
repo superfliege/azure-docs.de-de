@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 01/31/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
-ms.openlocfilehash: 7951044f850d93659ca458d3bcc46376e7e6b34a
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 2720d239c31a0cbfab215c7e297627c9f0d8c781
+ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55077354"
+ms.lasthandoff: 01/31/2019
+ms.locfileid: "55510237"
 ---
 # <a name="what-are-authentication-methods"></a>Authentifizierungsmethoden
 
@@ -171,6 +171,8 @@ Einmal ordnungsgemäß als CSV-Datei formatiert, kann sich ein Administrator dan
 Je nach Größe der CSV-Datei kann die Verarbeitung ein paar Minuten dauern. Klicken Sie auf die Schaltfläche **Aktualisieren**, um den aktuellen Status abzurufen. Wenn in der Datei Fehler vorhanden sind, haben Sie die Option, eine CSV-Datei herunterzuladen, in der alle zu behebenden Fehler für Sie aufgeführt sind.
 
 Sobald alle Fehler behoben sind, kann der Administrator jeden Schlüssel aktivieren, indem er für das zu aktivierende Token auf **Aktivieren** klickt und das in dem Token angezeigte OTP eingibt.
+
+Benutzer verfügen möglicherweise über eine Kombination von bis zu 5 OATH-Hardware-Token oder Authenticator-Anwendungen wie z.B. die Microsoft Authenticator-App, die für die jederzeitige Verwendung konfiguriert sind.
 
 ## <a name="mobile-phone"></a>Mobiltelefon
 

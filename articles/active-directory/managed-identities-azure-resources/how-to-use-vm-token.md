@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
 ms.author: priyamo
-ms.openlocfilehash: b7ccdcf1cb1e75ab9a8113adc05b02196a0a2023
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: eebc19f5bd14e835b8174695b2d0d87fe8ddc4bc
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55822050"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Verwenden von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Azure-Computer zum Abrufen eines Zugriffstokens 
 
@@ -55,7 +55,7 @@ Eine Clientanwendung kann ein [App-exklusives Zugriffstoken](../develop/develope
 | [Abrufen eines Tokens über Go](#get-a-token-using-go) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen Go-Client |
 | [Abrufen eines Tokens über Azure PowerShell](#get-a-token-using-azure-powershell) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen PowerShell-Client |
 | [Abrufen eines Tokens über cURL](#get-a-token-using-curl) | Beispiel für die Verwendung des REST-Endpunkts für verwaltete Identitäten für Azure-Ressourcen über einen Bash/cURL-Client |
-| [Verwenden der verwalteten Dienstidentität (Managed Service Identity, MSI) eines virtuellen Azure-Computers für den Tokenabruf](#handling-token-caching) | Anleitung zur Behandlung abgelaufener Zugriffstoken |
+| Behandlung der Token-Zwischenspeicherung | Anleitung zur Behandlung abgelaufener Zugriffstoken |
 | [Fehlerbehandlung](#error-handling) | Anleitung zur Behandlung von HTTP-Fehlern, die vom Tokenendpunkt für verwaltete Identitäten für Azure-Ressourcen zurückgegeben werden |
 | [Ressourcen-IDs für Azure-Dienste](#resource-ids-for-azure-services) | Abrufen von Ressourcen-IDs für unterstützte Azure-Dienste |
 
@@ -373,14 +373,14 @@ In diesem Abschnitt sind die möglichen Fehlerantworten aufgeführt. Der Status 
 | Statuscode | Error | Fehlerbeschreibung | Lösung |
 | ----------- | ----- | ----------------- | -------- |
 | 400 – Ungültige Anforderung | invalid_resource | AADSTS50001: Die Anwendung namens *\<URI\>* wurde im Mandanten *\<TENANT-ID\>* nicht gefunden. Dies kann auftreten, wenn die Anwendung nicht vom Administrator des Mandanten installiert wurde oder wenn sie von den Benutzern des Mandanten keine Zustimmung erhalten hat. Unter Umständen haben Sie Ihre Authentifizierung an den falschen Mandanten gesendet. | (Nur Linux) |
-| 400 – Ungültige Anforderung | bad_request_102 | Erforderlicher Metadatenheader nicht angegeben | Entweder fehlt der `Metadata`-Anforderungsheader in Ihrer Anforderung, oder er ist falsch formatiert. Der Wert muss als `true` (in Kleinbuchstaben) angegeben werden. Ein Beispiel finden Sie im [vorherigen REST-Abschnitt](#rest) unter „Beispiel für eine Anforderung“.|
-| 401 – Nicht autorisiert | unknown_source | Unbekannte Quelle *\<URI\>* | Stellen Sie sicher, dass Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Der Teil `scheme:host/resource-path` muss als `http://localhost:50342/oauth2/token` angegeben werden. Ein Beispiel finden Sie im [vorherigen REST-Abschnitt](#rest) unter „Beispiel für eine Anforderung“.|
+| 400 – Ungültige Anforderung | bad_request_102 | Erforderlicher Metadatenheader nicht angegeben | Entweder fehlt der `Metadata`-Anforderungsheader in Ihrer Anforderung, oder er ist falsch formatiert. Der Wert muss als `true` (in Kleinbuchstaben) angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
+| 401 – Nicht autorisiert | unknown_source | Unbekannte Quelle *\<URI\>* | Stellen Sie sicher, dass Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Der Teil `scheme:host/resource-path` muss als `http://localhost:50342/oauth2/token` angegeben werden. Ein Beispiel finden Sie im vorherigen REST-Abschnitt unter „Beispiel für eine Anforderung“.|
 |           | invalid_request | In der Anforderung fehlt ein erforderlicher Parameter, ist ein ungültiger Parameter enthalten oder ist ein Parameter mehrfach vorhanden, oder die Anforderung ist auf andere Weise fehlerhaft. |  |
 |           | unauthorized_client | Der Client ist zum Anfordern eines Zugriffstokens mit dieser Methode nicht autorisiert. | Ursache ist eine Anforderung, die keinen lokalen Loopback zum Aufrufen der Erweiterung verwendet hat, oder ein virtueller Computer, auf dem keine verwalteten Identitäten für Azure-Ressourcen ordnungsgemäß konfiguriert sind. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md). |
 |           | access_denied | Der Ressourcenbesitzer oder Autorisierungsserver hat die Anforderung verweigert. |  |
 |           | unsupported_response_type | Der Autorisierungsserver unterstützt das Abrufen eines Zugriffstokens mit dieser Methode nicht. |  |
 |           | invalid_scope | Der angeforderte Bereich ist ungültig, unbekannt oder falsch formatiert. |  |
-| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Stellen Sie sicher, dass verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktiviert wurden. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für Anforderung“ im [vorherigen REST-Abschnitt](#rest) finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
+| 500 Interner Serverfehler | unknown | Beim Abrufen des Tokens aus Active Directory ist ein Fehler aufgetreten. Details finden Sie in den Protokollen unter *\<Dateipfad\>*. | Stellen Sie sicher, dass verwaltete Identitäten für Azure-Ressourcen auf dem virtuellen Computer aktiviert wurden. Hilfe zur Konfiguration des virtuellen Computers finden Sie unter [Konfigurieren von verwalteten Identitäten für Azure-Ressourcen auf einem virtuellen Computer über das Azure-Portal](qs-configure-portal-windows-vm.md).<br><br>Überprüfen Sie zudem, ob Ihr HTTP GET-Anforderungs-URI richtig formatiert ist. Dies gilt vor allem für den Ressourcen-URI, der in der Abfragezeichenfolge angegeben ist. Unter „Beispiel für eine Anforderung“ im vorherigen REST-Abschnitt finden Sie ein Beispiel, und unter [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](services-support-msi.md) finden Sie eine Liste mit Diensten und den dazugehörigen Ressourcen-IDs.
 
 ## <a name="retry-guidance"></a>Informationen zur Wiederholung 
 

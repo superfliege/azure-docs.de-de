@@ -11,16 +11,16 @@ ms.service: active-directory
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/27/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ffd10504d496d0a46b373451a0d0400fc16c2e8d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 988e72a20fdd80e41ce8fc1ef568d90d4283a848
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55186197"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55813499"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Topologien für Azure AD Connect
 In diesem Artikel werden verschiedene lokale und Azure Active Directory (Azure AD)-Topologien beschrieben, die Azure AD Connect-Synchronisierung als Schlüsselintegrationslösung verwenden. In diesem Artikel werden sowohl unterstützte als auch nicht unterstützte Konfigurationen beschrieben.
@@ -63,7 +63,7 @@ Wenn Sie über mehrere Gesamtstrukturen verfügen, müssen alle Gesamtstrukturen
 
 Der Installationsassistent von Azure AD Connect bietet mehrere Optionen zur Konsolidierung von Benutzern in mehreren Gesamtstrukturen. Das Ziel besteht darin, dass ein Benutzer lediglich einmal in Azure AD vorhanden ist. Es gibt einige allgemeine Topologien, die Sie im benutzerdefinierten Installationspfad im Installations-Assistenten konfigurieren können. Wählen Sie auf der Seite **Eindeutige Identifizierung der Benutzer** die entsprechende Option für Ihre Topologie aus. Die Konsolidierung wird nur für Benutzer konfiguriert. Duplizierte Gruppen werden mit der Standardkonfiguration nicht konsolidiert.
 
-Allgemeine Topologien werden in den Abschnitten [Separate Topologien](#multiple-forests-separate-topologies), [Vollständig vermaschtes Netz](#multiple-forests-full-mesh-with-optional-galsync) und [Kontoressource](#multiple-forests-account-resource-forest) erläutert.
+Allgemeine Topologien werden in den Abschnitten über separate Topologien unter [Vollständig vermaschtes Netz](#multiple-forests-full-mesh-with-optional-galsync) und [Kontoressource](#multiple-forests-account-resource-forest) erläutert.
 
 Die Standardkonfiguration der Azure AD Connect-Synchronisierung basiert auf folgenden Annahmen:
 

@@ -15,19 +15,19 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 513b1d7468700076ae4d3fd46284ef88d5f28c51
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296166"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55700382"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
 **F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure Active Directory (AD) eingebundene Hybridgeräte als „N/V“ markiert?**
 
 **A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den **BENUTZER-Geräten** angezeigt.
-Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](https://docs.microsoft.com/en-us/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
+Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
 
 Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 
@@ -176,7 +176,7 @@ Dieses Verhalten gilt nicht für andere Benutzer, die sich bei diesem Gerät anm
 
 **F: Warum sehe ich das Dialogfeld *Leider ist ein Fehler aufgetreten*, wenn ich versuche, meinen PC in Azure AD einzubinden?**
 
-**A:** Dieser Fehler tritt bei der Einrichtung der Azure Active Directory-Registrierung bei Intune auf. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Registrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-enroll#azure-active-directory-enrollment).  
+**A:** Dieser Fehler tritt bei der Einrichtung der Azure Active Directory-Registrierung bei Intune auf. Stellen Sie sicher, dass dem Benutzer, der ein Einbinden in Azure AD versucht, die richtige Intune-Lizenz zugewiesen wurde. Weitere Informationen finden Sie unter [Einrichten der Registrierung für Windows-Geräte](https://docs.microsoft.com/intune/windows-enroll).  
 
 ---
 
@@ -221,6 +221,12 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 **F: Warum haben meine Benutzer nach dem Ändern des UPN Probleme mit in Azure AD eingebundenen Windows 10-Hybridgeräten?**
 
 **A:** Derzeit werden UPN-Änderungen nicht vollständig auf in Azure AD eingebundenen Hybridgeräten unterstützt. Benutzer können sich zwar am Gerät anmelden und auf ihre lokalen Anwendungen zugreifen, bei der Authentifizierung mit Azure AD tritt nach einer UPN-Änderung aber ein Fehler auf. Infolgedessen haben Benutzer Probleme mit SSO und bedingtem Zugriff auf ihren Geräten. Derzeit müssen Sie das Gerät von Azure AD trennen (führen Sie „dsregcmd /leave“ mit erhöhten Rechten aus) und sich wieder anmelden (geschieht automatisch), um das Problem zu lösen. Wir arbeiten derzeit an einer Lösung für das Problem. Allerdings tritt das Problem bei Benutzern, die sich mit Windows Hello for Business anmelden, nicht auf. 
+
+---
+
+**F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?**
+
+**A:** Nein. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Wenn ein Kennwort außerhalb des Unternehmensnetzwerks (z.B. mithilfe von Azure AD SSPR) geändert wird, muss der Benutzer Sichtverbindung zum Domänencontroller haben, bevor er sich mit dem neuen Kennwort am Gerät anmelden kann. Andernfalls kann er sich nur mit seinem alten Kennwort anmelden, das von Azure AD für ungültig erklärt wird und das einmalige Anmelden verhindert. Dieses Problem tritt jedoch nicht auf, wenn Sie Windows Hello for Business verwenden. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, selbst wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
 
 ---
 

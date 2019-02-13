@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/23/2017
 ms.author: jeedes
-ms.openlocfilehash: a548f11b1f423fb738108d9314f2fc887ef02c52
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 66953eaa4c42b419a5146ccc396fddda15a31c35
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176844"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55811357"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Tutorial: Azure Active Directory-Integration mit LearnUpon
 
@@ -208,7 +208,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in LearnUpon. LearnUpon unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist.
 
-Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf LearnUpon ein neuer Benutzer erstellt. [Konfigurieren der einmaligen Anmeldung in Azure AD](#configuring-azure-ad-single-single-sign-on).
+Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf LearnUpon ein neuer Benutzer erstellt. Konfigurieren der einmaligen Anmeldung in Azure AD.
 
 >[!NOTE]
 >Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam von LearnUpon](https://www.learnupon.com/features/support/) in Verbindung. 

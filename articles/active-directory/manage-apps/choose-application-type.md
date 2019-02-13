@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.author: barbkess
-ms.openlocfilehash: e10784957365df62e64c306c97ea17fb6a5e7c49
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ef752d2f9d57ee8674d91fd14b56b804ccf50d22
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55202925"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55814186"
 ---
 # <a name="choosing-the-application-type-when-adding-an-application-in-azure-active-directory"></a>Auswählen des Anwendungstyps beim Hinzufügen einer Anwendung in Azure Active Directory
 Erfahren Sie mehr über die vier Anwendungstypen, die Azure Active Directory (Azure AD) hinzugefügt werden können. Wenn Sie eine Anwendung in Azure Active Directory hinzufügen, werden Sie aufgefordert, einen der vier Anwendungstypen auszuwählen. 
@@ -42,7 +42,7 @@ Die folgenden Funktionen werden von allen vier vorstehend genannten Anwendungsty
 
 -   **Schnellstart**: Stellen Sie Anwendungen im Handumdrehen bereit, indem Sie [einfache Bereitstellungsschritte](https://docs.microsoft.com/azure/active-directory/active-directory-integrating-applications-getting-started) ausführen.
 
--   **Verwalten allgemeiner Eigenschaften**: Sie erhalten einen [direkten Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis#deploying-azure-ad-integrated-applications-to-users) zu einer Anwendung, können das [Branding einer Anwendung anpassen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) oder die [Anwendung für alle Benutzer deaktivieren](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal).
+-   **Verwalten allgemeiner Eigenschaften**: Sie erhalten einen [direkten Deeplink](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis) zu einer Anwendung, können das [Branding einer Anwendung anpassen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-change-app-logo-user-azure-portal) oder die [Anwendung für alle Benutzer deaktivieren](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-disable-app-azure-portal).
 
 -   **Benutzer- und Gruppenverwaltung**: Sie können Benutzer und Gruppen zu einer Anwendung [zuweisen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) oder daraus [entfernen](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-remove-assignment-azure-portal) und optional die spezifischen Anwendungsrollen zuweisen, auf die diese Benutzer und Gruppen Zugriff erhalten sollen.
 
@@ -95,7 +95,7 @@ Nachfolgend werden die unterstützten Modi für das **einmalige Anmelden** für 
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>Modi für das einmalige Anmelden für benutzerdefiniert entwickelte Anwendungen
 
-[Benutzerdefiniert entwickelte Anwendungen](#_Custom-Developed_Applications) unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Hierzu zählen:
+Benutzerdefiniert entwickelte Anwendungen unterstützen weitere Modi für das einmalige Anmelden, die oben nicht aufgeführt sind. Hierzu zählen:
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code)-basiertes Anmelden
 
@@ -134,7 +134,7 @@ Um den **Modus für das einmalige Anmelden** für eine Anwendung festzulegen, fo
 -   **Automatische Bereitstellung**: Wählen Sie [Automatisch](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-provisioning#configuring-automatic-user-account-provisioning) als **Bereitstellungsmodus** aus, wenn Sie die automatische API-basierte Bereitstellung und/oder Aufhebung der Bereitstellung von Benutzerkonten für diese Anwendung aktivieren möchten. 
 
    >[!NOTE]
-   >Diese Option ist nur für Anwendungen in der Kategorie **Ausgewählte Apps** des [Azure AD-Anwendungskatalogs](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal#the-new-and-improved-application-gallery) verfügbar.
+   >Diese Option ist nur für Anwendungen in der Kategorie **Ausgewählte Apps** des [Azure AD-Anwendungskatalogs](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-whats-new-azure-portal) verfügbar.
    >
    >
 

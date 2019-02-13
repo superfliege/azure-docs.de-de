@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: c87b6791ea2d90ed302d796f17727a0338104beb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5339b0c77a69a915e58118888f8b82d095a43e38
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55174991"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55817783"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennworthashsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein.
@@ -237,7 +237,7 @@ Führen Sie folgende Schritte durch, um festzustellen, warum keine Kennwörter s
 
 5. Wenn kein Takt angezeigt wird oder nichts funktioniert hat, führen Sie das Skript unter [Auslösen einer vollständigen Synchronisierung aller Kennwörter](#trigger-a-full-sync-of-all-passwords) aus. Führen Sie das Skript nur einmal aus.
 
-6. Lesen Sie den Abschnitt [Behandlung eines Problems mit einem einzelnen Objekt, das keine Kennwörter synchronisiert](#one-object-is-not-synchronizing-passwords).
+6. Lesen Sie den Abschnitt „Behandlung eines Problems mit einem einzelnen Objekt, das keine Kennwörter synchronisiert“.
 
 ### <a name="connectivity-problems"></a>Konnektivitätsprobleme
 
@@ -303,7 +303,7 @@ Sie können Probleme mit der Kennworthashsynchronisierung einfach beheben, indem
 
     ![Objektprotokolldetails](./media/tshoot-connect-password-hash-synchronization/csobjectlog.png)  
 
-    Wenn das Objektprotokoll leer ist, konnte Azure AD Connect den Kennworthash aus Active Directory nicht lesen. Führen Sie Ihre Problembehandlung mit [Verbindungsfehlern](#connectivity-errors) fort. Wenn Sie einen anderen Wert als **Erfolg** sehen, dann schauen Sie in der Tabelle [Kennwortsynchronisierungsprotokoll](#password-sync-log) nach.
+    Wenn das Objektprotokoll leer ist, konnte Azure AD Connect den Kennworthash aus Active Directory nicht lesen. Setzen Sie Ihre Problembehandlung mit Verbindungsfehlern fort. Wenn Sie einen anderen Wert als **Erfolg** sehen, dann schauen Sie in der Tabelle [Kennwortsynchronisierungsprotokoll](#password-sync-log) nach.
 
     h. Klicken Sie auf die Registerkarte **Herkunft**, und stellen Sie sicher, dass mindestens eine Synchronisierungsregel in der Spalte **Kennwortsynchronisierung** auf **Wahr** festgelegt ist. In der Standardkonfiguration lautet der Name der Synchronisierungsregel **Eingehend von AD – Benutzerkonto aktiviert**.  
 

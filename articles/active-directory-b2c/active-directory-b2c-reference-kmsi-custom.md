@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9002ab7396cd9beda767b4a9f81d9983ec74923d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: e2aa52e8ad19274d45f648978e7b2f021139fe4a
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163414"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55812299"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>Aktivieren von „Angemeldet bleiben“ in Azure Active Directory B2C
 
@@ -150,7 +150,7 @@ Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die er
 2. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** für **TrustFrameworkPolicy** mit einem eindeutigen Wert. Dies ist der Name Ihrer Richtlinie. Beispiel: `SignUpOrSignInWithKmsi`.
 3. Ändern Sie das Attribut **ReferenceId** für das Element **DefaultUserJourney**, damit es dem Bezeichner der neuen User Journey entspricht, die Sie erstellt haben. Beispiel: `SignUpOrSignInWithKmsi`.
 
-    Die Option „Angemeldet bleiben“ wird mit dem Element **UserJourneyBehaviors** konfiguriert. Das Attribut **KeepAliveInDays** steuert, wie lange der Benutzer angemeldet bleibt. Im folgenden Beispiel läuft die Sitzung „Angemeldet bleiben“ nach `7` Tagen automatisch ab – unabhängig davon, wie häufig der Benutzer die Authentifizierung im Hintergrund ausführt. Durch Festlegen des Werts **KeepAliveInDays** auf `0` wird die Funktionalität „Angemeldet bleiben“ deaktiviert. Standardmäßig ist dieser Wert auf `0` festgelegt. Wenn **SessionExpiryType** auf den Wert `Rolling` festgelegt ist, wird die Sitzung „Angemeldet bleiben“ jedes Mal um `7` Tage erweitert, wenn der Benutzer die Authentifizierung im Hintergrund durchführt.  Bei Auswahl von `Rolling` sollten Sie die Anzahl von Tagen auf ein Minimum beschränken. 
+    KMSI wird mithilfe des Elements **UserJourneyBehaviors** mit **SingleSignOn**, **SessionExpiryType** und **SessionExpiryInSeconds** als erste untergeordnete Elemente konfiguriert. Das Attribut **KeepAliveInDays** steuert, wie lange der Benutzer angemeldet bleibt. Im folgenden Beispiel läuft die Sitzung „Angemeldet bleiben“ nach `7` Tagen automatisch ab – unabhängig davon, wie häufig der Benutzer die Authentifizierung im Hintergrund ausführt. Durch Festlegen des Werts **KeepAliveInDays** auf `0` wird die Funktionalität „Angemeldet bleiben“ deaktiviert. Standardmäßig ist dieser Wert auf `0` festgelegt. Wenn **SessionExpiryType** auf den Wert `Rolling` festgelegt ist, wird die Sitzung „Angemeldet bleiben“ jedes Mal um `7` Tage erweitert, wenn der Benutzer die Authentifizierung im Hintergrund durchführt.  Bei Auswahl von `Rolling` sollten Sie die Anzahl von Tagen auf ein Minimum beschränken. 
 
     Der Wert von **SessionExpiryInSeconds** repräsentiert die Ablaufzeit einer SSO-Sitzung. Anhand dieses Werts wird intern von Azure AD B2C überprüft, ob die Sitzung für „Angemeldet bleiben“ abgelaufen ist oder nicht. Der Wert von **KeepAliveInDays** bestimmt den Expires/Max-Age-Wert des SSO-Cookies im Webbrowser. Im Gegensatz zu **SessionExpiryInSeconds** wird **KeepAliveInDays** verwendet, um den Browser daran zu hindern, das Cookie zu löschen, wenn der Browser geschlossen wird. Ein Benutzer kann nur dann eine Anmeldung im Hintergrund durchführen, wenn das SSO-Sitzungscookie vorhanden (per **KeepAliveInDays** gesteuert) und nicht abgelaufen ist (per **SessionExpiryInSeconds** gesteuert). 
     

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
-ms.openlocfilehash: aafc960c0c26a94a8be672d0d72a46dfcb559013
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13b82aa4f256bf0ec2d0805e85241d72e115d737
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157005"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55810200"
 ---
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Der Anmeldevorgang mit Azure Multi-Factor Authentication
 > [!NOTE]
@@ -31,8 +31,8 @@ Ihr Anmeldevorgang hängt davon ab, was Sie als zweiten Faktor wählen: einen Te
 | --- |
 | [Mit einem Telefonanruf an mein Mobil- oder Bürotelefon](#signing-in-with-a-phone-call) |
 | [Mit einer Textnachricht an mein Mobiltelefon](#signing-in-with-a-text-message)
-| [Mit Benachrichtigungen aus der Microsoft Authenticator-App](#signing-in-with-the-microsoft-authenticator-app-using-notification) |
-| [Mit Bestätigungscodes aus der Microsoft Authenticator-App](#signing-in-with-the-microsoft-authenticator-app-using-verification-code) |
+| Mit Benachrichtigungen aus der Microsoft Authenticator-App |
+| Mit Bestätigungscodes aus der Microsoft Authenticator-App |
 | [Mit einer alternativen Methode, da ich meine bevorzugte Methode derzeit nicht verwenden kann](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>Anmelden mit einem Telefonanruf
@@ -87,4 +87,4 @@ Wenn Sie Probleme bei der Anmeldung mit der zweistufigen Überprüfung haben, fi
 
 Lesen Sie den Artikel [Verwalten der Einstellungen für die zweistufige Überprüfung](multi-factor-authentication-end-user-manage-settings.md).
 
-In [Erste Schritte mit der Microsoft Authenticator-App](microsoft-authenticator-app-how-to.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können.
+In [Erste Schritte mit der Microsoft Authenticator-App](user-help-auth-app-download-install.md) erfahren Sie, wie Sie sich mithilfe von Benachrichtigungen anstelle von SMS oder Telefonanrufen anmelden können.

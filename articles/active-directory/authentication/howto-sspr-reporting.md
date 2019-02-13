@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 02/01/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
-ms.openlocfilehash: 891ab7ce0218e3532b8e503bc9b06da04a13d2c4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: d3d88c29025c1a7a40a6248d3be841a33d1b6761
+ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55074546"
+ms.lasthandoff: 02/04/2019
+ms.locfileid: "55694362"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD
 
@@ -85,7 +85,7 @@ In der Überwachungsereigniskategorie **Self-Service-Kennwortverwaltung** werden
 * [Kennwort zurücksetzen (durch Administrator)](#activity-type-reset-password-by-admin): Gibt an, dass ein Administrator im Auftrag eines Benutzers ein Kennwort über das Azure-Portal zurückgesetzt hat.
 * [Kennwort zurücksetzen (Self-Service)](#activity-type-reset-password-self-service): Gibt an, dass ein Benutzer sein Kennwort über das [Portal für die Azure AD-Kennwortzurücksetzung](https://passwordreset.microsoftonline.com) erfolgreich zurückgesetzt hat.
 * [Aktivitätsstatus der Self-Service-Kennwortzurücksetzung](#activity-type-self-serve-password-reset-flow-activity-progress): Gibt die einzelnen Schritte an, die ein Benutzer im Rahmen der Kennwortzurücksetzung durchläuft, beispielsweise Durchlaufen eines bestimmten Authentifizierungsgates für die Kennwortzurücksetzung.
-* [Benutzerkonto entsperren (Self-Service)](#activity-type-unlock-user-account-self-service): Gibt an, dass ein Benutzer sein Active Directory-Konto über das [Azure AD-Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com) erfolgreich entsperrt hat, indem er das Active Directory-Feature zur Kontoentsperrung ohne Zurücksetzen verwendet hat.
+* [Benutzerkonto entsperren (Self-Service)](#activity-type-unlock-a-user-account-self-service): Gibt an, dass ein Benutzer sein Active Directory-Konto über das [Azure AD-Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com) erfolgreich entsperrt hat, indem er das Active Directory-Feature zur Kontoentsperrung ohne Zurücksetzen verwendet hat.
 * [Für Self-Service-Kennwortzurücksetzung registrierter Benutzer](#activity-type-user-registered-for-self-service-password-reset): Gibt an, dass ein Benutzer alle erforderlichen Informationen registriert hat, um sein Kennwort gemäß der aktuellen Mandantenrichtlinie für die Kennwortzurücksetzung zurückzusetzen.
 
 ### <a name="activity-type-blocked-from-self-service-password-reset"></a>Aktivitätstyp: Blocked from self-service password reset (Von Self-Service-Kennwortzurücksetzung ausgeschlossen)
@@ -109,7 +109,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass ein Benutzer sein Kennwort erfolgreich geändert hat.
   * _Fehler_: Gibt an, dass ein Benutzer sein Kennwort nicht ändern konnte. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist.
-* **Fehlerursache für den Aktivitätsstatus**: 
+* **Fehlerursache für den Aktivitätsstatus**:
   * _FuzzyPolicyViolationInvalidPassword_: Der Benutzer hat ein Kennwort angegeben, das automatisch blockiert wurde, weil die Microsoft-Erkennung für unzulässige Kennwörter das Kennwort als zu allgemein oder als besonders schwach eingestuft hat.
 
 ### <a name="activity-type-reset-password-by-admin"></a>Aktivitätstyp: Reset password (by admin) (Kennwort zurücksetzen (durch Administrator))
@@ -133,7 +133,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass ein Benutzer sein eigenes Kennwort erfolgreich zurückgesetzt hat.
   * _Fehler_: Gibt an, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen konnte. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist.
-* **Fehlerursache für den Aktivitätsstatus**: 
+* **Fehlerursache für den Aktivitätsstatus**:
   * _FuzzyPolicyViolationInvalidPassword_: Der Administrator hat ein Kennwort angegeben, das automatisch blockiert wurde, weil die Microsoft-Erkennung für unzulässige Kennwörter das Kennwort als zu allgemein oder als besonders schwach eingestuft hat.
 
 ### <a name="activity-type-self-serve-password-reset-flow-activity-progress"></a>Aktivitätstyp: Aktivitätsstatus der Self-Service-Kennwortzurücksetzung
@@ -146,7 +146,7 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass ein Benutzer einen bestimmten Schritt der Kennwortzurücksetzung erfolgreich ausgeführt hat.
   * _Fehler_: Gibt an, dass ein bestimmter Schritt der Kennwortzurücksetzung nicht erfolgreich war. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist.
-* **Gründe für den Aktivitätsstatus**:   In der folgenden Tabelle sind [alle zulässigen Gründe für den Status einer Zurücksetzungsaktivität](#allowed-values-for-details-column) aufgeführt.
+* **Gründe für den Aktivitätsstatus**:   In der folgenden Tabelle sind [alle zulässigen Gründe für den Status einer Zurücksetzungsaktivität](#description-of-the-report-columns-in-the-azure-portal) aufgeführt.
 
 ### <a name="activity-type-unlock-a-user-account-self-service"></a>Aktivitätstyp: Benutzerkonto entsperren (Self-Service)
 
@@ -168,10 +168,10 @@ In der folgenden Liste werden die Details dieser Aktivität erläutert:
 * **Ziel der Aktivität**: Der Benutzer, der sich für die Kennwortzurücksetzung registriert hat. Der Benutzer kann ein Endbenutzer oder ein Administrator sein.
 * **Zulässige Aktivitätsstatus**:
   * _Erfolg_: Gibt an, dass sich ein Benutzer erfolgreich in Übereinstimmung mit der aktuellen Richtlinie für eine Kennwortzurücksetzung registriert hat. 
-  * _Fehler_: Gibt an, dass sich ein Benutzer nicht für die Kennwortzurücksetzung registrieren konnte. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist. 
+  * _Fehler_: Gibt an, dass sich ein Benutzer nicht für die Kennwortzurücksetzung registrieren konnte. Sie können die Zeile auswählen, um die Kategorie **Activity Status Reason** (Grund für den Aktivitätsstatus) anzuzeigen und mehr darüber zu erfahren, warum der Fehler aufgetreten ist.
 
      >[!NOTE]
-     >Fehler bedeutet nicht, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen kann, sondern bedeutet, dass der Benutzer den Registrierungsvorgang nicht abgeschlossen hat. Wenn das Konto des Benutzers unbestätigte Daten enthält, die korrekt sind, beispielsweise eine noch nicht bestätigte Telefonnummer, können diese weiterhin zum Zurücksetzen des Kennworts verwendet werden, auch wenn die Telefonnummer noch nicht bestätigt wurde. Weitere Informationen finden Sie unter [Was geschieht bei Registrierung eines Benutzers?](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-learn-more#what-happens-when-a-user-registers)
+     >Fehler bedeutet nicht, dass ein Benutzer sein eigenes Kennwort nicht zurücksetzen kann, sondern bedeutet, dass der Benutzer den Registrierungsvorgang nicht abgeschlossen hat. Wenn das Konto des Benutzers unbestätigte Daten enthält, die korrekt sind, beispielsweise eine noch nicht bestätigte Telefonnummer, können diese weiterhin zum Zurücksetzen des Kennworts verwendet werden, auch wenn die Telefonnummer noch nicht bestätigt wurde.
      >
 
 ## <a name="next-steps"></a>Nächste Schritte
