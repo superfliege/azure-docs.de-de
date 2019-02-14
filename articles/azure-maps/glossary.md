@@ -8,54 +8,54 @@ ms.topic: resource
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: d220fea64f860ebe5b660f7ebe5ad7db7aec4534
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 3b8af6f3f91c54c78cc3b277068272c27055e4aa
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369929"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55816882"
 ---
 # <a name="glossary"></a>Glossar
 
 Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps verwendet werden.
 
-## <a name="a"></a>Eine Datei
+## <a name="a"></a>A
 
 <a name="address-validation"></a> **Adressüberprüfung**: Der Vorgang, bei dem das Vorhandensein einer Adresse überprüft wird.
 
 <a name="advanced-routing"></a> **Erweitertes Routing**: Eine Sammlung von Diensten, die erweiterte Vorgänge durch Straßenroutendaten durchführen, z.B. die Berechnung erreichbarer Bereiche (Isochronen), Entfernungsmatrizen und Batchroutenanforderungen.
 
-<a name="aerial-imagery"></a> **Luftaufnahmen**: Weitere Informationen finden Sie unter [Satellitenbilder](#satellite-imagery). 
+<a name="aerial-imagery"></a> **Luftaufnahmen**: Siehe [Satellitenbilder](#satellite-imagery). 
 
-<a name="along-a-route-search"></a> **Suche entlang einer Route**: Eine Abfrage nach räumlichen Daten, die nach Daten innerhalb einer angegebenen Zeit oder Entfernung für die Umleitung von einer Routenstrecke sucht.
+<a name="along-a-route-search"></a> **Entlang einer Route suchen**: Eine Abfrage nach räumlichen Daten, die nach Daten innerhalb einer angegebenen Zeit oder Entfernung für die Umleitung von einem Streckenweg sucht.
 
 <a name="altitude"></a> **Höhe**: Die Höhe oder die vertikale Erhebung eines Punkts über einer Referenzfläche. Höhenmessungen basieren auf einem bestimmten Referenzdatum wie z.B. das Normalnull. Siehe auch „Erstreckung“.
 
 <a name="ambiguous"></a> **Mehrdeutig**: Ein gewisser Grad an Unbestimmtheit hinsichtlich der Datenklassifizierung, der vorliegt, wenn einem Objekt entsprechend mindestens zwei Werte für ein bestimmtes Attribut zugewiesen sind. Dies kommt beispielsweise bei der Geocodierung von „CA“ vor, bei der zwei mehrdeutige Ergebnisse zurückgegeben werden. Denn „CA“ bezeichnet einerseits das Land Kanada und ist gleichzeitig der Bundesstaatcode für Kalifornien. 
 
-<a name="annotation"></a> **Anmerkung**: Text oder Grafiken, die auf der Karte angezeigt werden, um Informationen zum Benutzer bereitzustellen. Anmerkungen können eine bestimmte Kartenentität darstellen bzw. beschreiben, allgemeine Informationen zu einem Bereich auf der Karte liefern oder Informationen zur Karte selbst angeben.
+<a name="annotation"></a> **Anmerkung**: Textelemente oder Grafiken, die auf der Karte angezeigt werden, um Informationen für den Benutzer bereitzustellen. Anmerkungen können eine bestimmte Kartenentität darstellen bzw. beschreiben, allgemeine Informationen zu einem Bereich auf der Karte liefern oder Informationen zur Karte selbst angeben.
 
 <a name="antimeridian"></a> **Antimeridian**: Die Linie des 180. Längengrads in östlicher und westlicher Richtung, der auch als 180. Meridian bezeichnet wird. Er liegt auf der gegenüberliegenden Seite des Nullmeridians auf dem Globus.
 
 <a name="application-programming-interface-api"></a> **Anwendungsprogrammierschnittstelle (Application Programming Interface, API)**: Eine Spezifikation, die Entwicklern das Erstellen von Anwendungen ermöglicht.
 
-<a name="api-key"></a> **API-Schlüssel**: Weitere Informationen finden Sie unter „Azure Maps-Schlüssel“.
+<a name="api-key"></a> **API-Schlüssel**: Siehe „Azure Maps-Schlüssel“.
 
 <a name="area-of-interest-aoi"></a> **Interessenbereich**: Der Umfang, in dem ein Fokusbereich zur Erstellung einer Karte oder Datenbank definiert wird.
 
-<a name="asset-tracking"></a> **Asset Tracking**: Der Vorgang, bei dem der Standort eines Assets (z.B. einer Person, eines Fahrzeugs oder eines anderen Objekts) nachverfolgt wird.
+<a name="asset-tracking"></a> **Assetnachverfolgung**: Der Vorgang, bei dem der Standort eines Assets (z.B. einer Person, eines Fahrzeugs oder eines anderen Objekts) nachverfolgt wird.
 
 <a name="asynchronous-request"></a> **Asynchrone Anforderung**: Eine HTTP-Anforderung, die eine Verbindung öffnet, eine Anforderung an den Server sendet, der einen Bezeichner für die asynchrone Anforderung zurückgibt, und anschließend die Verbindung schließt. Der Server fährt mit der Verarbeitung der Anforderung fort, während der Benutzer den Status mithilfe des Bezeichners überprüfen kann. Wenn die Verarbeitung der Anforderung abgeschlossen ist, kann der Benutzer die Antwort dann herunterladen. Diese Art von Anforderung wird normalerweise bei Prozessen mit langer Ausführungsdauer verwendet.
 
 <a name="autocomplete"></a> **AutoVervollständigen**: Ein Feature in einer Anwendung, das den Rest eines Wortes, das ein Benutzer gerade eingibt, vorhersagt. 
 
-<a name="autosuggest"></a> **Vorschlagssuche**: Ein Feature in einer Anwendung, das die logischen Möglichkeiten vorhersagt, was der Benutzer gerade eingibt.
+<a name="autosuggest"></a> **Vorschlagssuche**: Ein Feature in einer Anwendung, das die logischen Möglichkeiten für die Benutzereingabe vorhersagt.
 
-<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**: Der veraltete Name von Azure Maps in der Vorschau.
+<a name="azure-location-based-services-lbs"></a> **Azure Location Based Services (LBS)**: Der frühere Name von Azure Maps in der Vorschau.
 
 <a name="azure-maps-key"></a> **Azure Maps-Schlüssel**: Ein Azure Maps-Schlüssel ist eine eindeutige Zeichenfolge, die zur Authentifizierung einer Azure Maps-Anwendung eines Benutzers oder einer Dienstanforderung dient. 
 
-## <a name="b"></a>b
+## <a name="b"></a>B
 
 <a name="base-map"></a> **Basiskarte**: Der Teil einer Kartenanwendung, der Hintergrundreferenzinformationen wie Straßen, Orientierungspunkte und politische Grenzen angezeigt.
 
@@ -65,7 +65,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="boundary"></a> **Grenze**: Eine Linie oder ein Polygon, die bzw. das angrenzende politische Einheiten (z.B. Länder, Ortsteile und Ländereien) trennt. Eine Grenze kann, muss jedoch nicht entlang von physischen Gegebenheiten wie Flüssen, Bergen oder Mauern verlaufen.
 
-<a name="bounds"></a> **Begrenzung**: Weitere Informationen finden Sie unter [Begrenzungsrahmen](#bounding-box).
+<a name="bounds"></a> **Begrenzungen**: Siehe [Begrenzungsrahmen](#bounding-box).
 
 <a name="bounding-box"></a> **Begrenzungsrahmen**: Eine Reihe von Koordinaten, die einen rechteckigen Bereich auf der Karte darstellen. 
 
@@ -93,11 +93,11 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="country-code"></a> **Ländercode**: Ein eindeutiger Bezeichner für ein Land basierend auf dem ISO-Standard. ISO2 ist ein Code mit zwei Buchstaben für ein Land (z.B. „US“), das bei ISO3 als Code mit drei Zeichen (z.B. „USA“) dargestellt wird.
 
-<a name="country-subdivision"></a> **Unterteilung eines Landes**: Eine Untereinheit eines Landes auf oberster Ebene, allgemein als „Bundesstaat“ oder „Provinz“ bezeichnet.
+<a name="country-subdivision"></a> **Primäre Untereinheit eines Landes**: Eine Untereinheit eines Landes auf oberster Ebene, z.B. ein Bundesstaat, ein Bundesland, ein Kanton oder eine Provinz.
 
-<a name="country-secondary-subdivision"></a> **Sekundäre Unterteilung eines Landes**: Eine Untereinheit eines Landes auf zweiter Ebene, allgemein als „County“ bezeichnet.
+<a name="country-secondary-subdivision"></a> **Sekundäre Untereinheit eines Landes**: Eine Untereinheit eines Landes auf zweiter Ebene, z.B. ein Landkreis.
 
-<a name="country-tertiary-subdivision"></a> **Tertiäre Unterteilung eines Landes**: Eine Untereinheit eines Landes auf dritter Ebene, in der Regel eine Region wie etwa ein „Bezirk“.
+<a name="country-tertiary-subdivision"></a> **Tertiäre Untereinheit eines Landes**: Eine Untereinheit eines Landes auf dritter Ebene, z.B. ein Bezirk.
 
 <a name="cross-street"></a> **Querstraße**: Ein Punkt, an dem sich mindestens zwei Straßen kreuzen.
 
@@ -127,11 +127,11 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="elevation"></a> **Erstreckung**: Der vertikale Abstand eines Punkts oder eines Objekts über oder unter einer Referenzfläche oder über oder unter einem Datum (im Normalnull). Die „Erstreckung“ bezieht sich in der Regel auf die vertikale Höhe eines Lands.
 
-<a name="envelope"></a> **Umhüllung**: Weitere Informationen finden Sie unter [Begrenzungsrahmen](#bounding-box).
+<a name="envelope"></a> **Umschlag**: Siehe [Begrenzungsrahmen](#bounding-box).
 
 <a name="extended-postal-code"></a> **Erweiterte Postleitzahl**: Eine Postleitzahl, die eventuell zusätzliche Informationen enthält. In den USA beispielsweise bestehen Postleitzahlen aus fünf Ziffern, die ebenfalls mögliche erweiterte Postleitzahl (als „ZIP+4“ bezeichnet) enthält jedoch vier zusätzliche Ziffern. Diese zusätzlichen Ziffern dienen zur Identifizierung eines geografischen Segments innerhalb des fünfstelligen Zustellungsbereichs (z.B. ein Viertel, eine Wohnanlage oder ein Postfach), die eine effiziente Sortierung und Zustellung der Post ermöglichen sollen.
 
-<a name="extent"></a> **Abgrenzung**: Weitere Informationen finden Sie unter [Begrenzungsrahmen](#bounding-box).
+<a name="extent"></a> **Umfang**: Siehe [Begrenzungsrahmen](#bounding-box).
 
 ## <a name="f"></a>F
 
@@ -141,11 +141,11 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="feature-collection"></a> **Merkmalsauswahl**: Eine Sammlung von Merkmalsobjekten.
 
-<a name="find-along-route"></a> **Entlang einer Route suchen**: Eine Abfrage nach räumlichen Daten, die nach Daten innerhalb einer angegebenen Zeit oder Entfernung für die Umleitung von einem Streckenweg sucht.
+<a name="find-along-route"></a> **Suche entlang einer Route**: Eine Abfrage nach räumlichen Daten, die nach Daten innerhalb einer angegebenen Zeit oder Entfernung für die Umleitung von einem Streckenweg sucht.
 
 <a name="find-nearby"></a> **In der Nähe finden**: Eine Abfrage nach räumlichen Daten, die nach einer festgelegten kürzesten Entfernung (z.B. Luftlinie) von einem Punkt sucht.
 
-<a name="fleet-management"></a> **Flottenmanagement**: Die Verwaltung von gewerblich genutzten Fahrzeugen, z.B. Autos, LKWs, Schiffen und Flugzeugen. Das Flottenmanagement kann eine Reihe von Aufgaben umfassen, z.B. die Fahrzeugfinanzierung, Wartung, Telematik (Überwachung und Diagnose) sowie die Verwaltung von Fahrzeugführern, Geschwindigkeit, Kraftstoffstand und Gesundheitsschutz und Arbeitssicherheit. Das Flottenmanagement wird von Unternehmen im Transportwesen angewendet, um die Risiken zu minimieren, die gesamten Transport- und Mitarbeiterkosten zu senken und gleichzeitig die Einhaltung von gesetzlichen Bestimmungen sicherzustellen.
+<a name="fleet-management"></a> **Flottenmanagement**: Die Verwaltung von gewerblich genutzten Fahrzeugen, z.B. Autos, Lkw, Schiffen und Flugzeugen. Das Flottenmanagement kann eine Reihe von Aufgaben umfassen, z.B. die Fahrzeugfinanzierung, Wartung, Telematik (Überwachung und Diagnose) sowie die Verwaltung von Fahrzeugführern, Geschwindigkeit, Kraftstoffstand und Gesundheitsschutz und Arbeitssicherheit. Das Flottenmanagement wird von Unternehmen im Transportwesen angewendet, um die Risiken zu minimieren, die gesamten Transport- und Mitarbeiterkosten zu senken und gleichzeitig die Einhaltung von gesetzlichen Bestimmungen sicherzustellen.
 
 <a name="free-flow-speed"></a> **Free Flow Speed**: Die erwartete Geschwindigkeit bei sehr geringer Verkehrsstärke unter optimalen Bedingungen. In der Regel ist dies das Tempolimit.
 
@@ -171,7 +171,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="geopol"></a> **GeoPol**: Bezieht sich auf geopolitisch vertrauliche Daten, z.B. umstrittene Grenzen und Ortsnamen.
 
-<a name="georeference"></a> **Georeferenz**: Der Vorgang, bei dem geografische Daten oder Bilder an ein bekanntes Koordinatensystem ausgerichtet werden. Dieser Vorgang kann das Verschieben, Drehen, Skalieren oder die Erkennung von Datenschiefe bezeichnen.
+<a name="georeference"></a> **Georeferenz**: Der Vorgang, bei dem geografische Daten oder Bilder auf ein bekanntes Koordinatensystem ausgerichtet werden. Dieser Vorgang kann das Verschieben, Drehen, Skalieren oder die Erkennung von Datenschiefe bezeichnen.
 
 <a name="georss"></a> **GeoRSS**: Eine XML-Erweiterung zum Hinzufügen von räumlichen Daten zu RSS-Feeds.
 
@@ -197,7 +197,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="heading"></a> **Steuerkurs**: Die Richtung, in die ein Objekt zeigt oder gewandt ist. Siehe auch [Peilung](#heading).
 
-<a name="heatmap"></a> **Heatmap**: Eine Datenvisualisierung, in der ein Bereich von Farben die Dichte der Punkte in einem bestimmten Bereich darstellt. Siehe auch [Thematische Karte](#thermatic-map).
+<a name="heatmap"></a> **Heatmap**: Eine Datenvisualisierung, in der ein Bereich von Farben die Dichte der Punkte in einem bestimmten Bereich darstellt. Siehe auch „Thematische Karte“.
 
 <a name="hybrid-imagery"></a> **Hybridluftaufnahmen**: Satelliten- oder Luftaufnahmen mit überlagerten Straßendaten und -bezeichnungen.
 
@@ -219,11 +219,11 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="latitude"></a> **Breitengrad**: Das in Grad angegebene Winkelmaß, das die Entfernung vom Äquator in nördlicher oder südlicher Richtung angibt.
 
-<a name="level-of-detail"></a> **Detailstufe**: Siehe auch [Zoomfaktor](#zoom-level).
+<a name="level-of-detail"></a> **Detailebene**: Siehe „Zoomfaktor“.
 
 <a name="lidar"></a> **LIDAR**: Akronym für „Light Detection and Ranging“. Eine Technik zur Fernerkundung, bei der die Entfernung zu reflektierenden Oberflächen mittels Laser gemessen wird.
 
-<a name="linear-interpolation"></a> **Lineare Interpolation**: Die Schätzung eines unbekannten Werts, bei der die Luftlinie zwischen bekannten Werten herangezogen werden.
+<a name="linear-interpolation"></a> **Lineare Interpolation**: Die Schätzung eines unbekannten Werts, bei der die Luftlinie zwischen bekannten Werten herangezogen wird.
 
 <a name="linestring"></a> **LineString**: Eine Geometrie zur Darstellung einer Linie. Diese wird auch als „Polylinie“ bezeichnet. 
 
@@ -247,9 +247,9 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="multipolygon"></a> **MultiPolygon**: Eine Geometrie, die eine Sammlung von Polygon-Objekten darstellt. Um z.B. die Grenze von Hawaii darzustellen, würde jede Insel von einem Polygon umgeben sein. Die Grenze von Hawaii wäre somit ein MultiPolygon.
 
-<a name="municipality"></a> **Gemeinde**: Eine Verwaltungseinheit einer Stadt. 
+<a name="municipality"></a> **Gemeinde**: Eine Stadt oder ein Dorf. 
 
-<a name="municipality-subdivision"></a> **Unterteilung einer Gemeinde**: Eine Untereinheit einer Gemeinde wie etwa eine Bezeichnung für einen Ortsteil (z.B. „Innenstadt“).
+<a name="municipality-subdivision"></a> **Primäre Untereinheit einer Gemeinde**: Eine Untereinheit einer Gemeinde wie etwa eine Bezeichnung für ein Stadtviertel oder einen Ortsteil (z.B. „Innenstadt“).
 
 ## <a name="n"></a>N
 
@@ -261,7 +261,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 ## <a name="o"></a>O
 
-<a name="origin"></a> **Herkunft**: Ein Startpunkt bzw. -ort, an dem sich ein Benutzer befindet.
+<a name="origin"></a> **Ursprung**: Ein Startpunkt bzw. -ort, an dem sich ein Benutzer befindet.
 
 ## <a name="p"></a>P
 
@@ -293,9 +293,9 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 ## <a name="q"></a>Q
 
-<a name="quadkey"></a> **QuadKey**: Ein Basis-4-Adressindex für eine Kachel in einem QuadTree-Kachelsystem. Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
+<a name="quadkey"></a> **Quadkey**: Ein Basis-4-Adressindex für eine Kachel in einem Quadtree-Kachelsystem. Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
 
-<a name="quadtree"></a> **QuadTree**: Eine Datenstruktur, bei der jeder Knoten genau vier untergeordnete Elemente aufweist. Das in Azure Maps verwendete Kachelsystem basiert auf einer QuadTree-Struktur, bei der die einzelnen Kartenkacheln beim Vergrößern auf einen Faktor durch den Benutzer in vier untergeordnete Kacheln gegliedert werden.  Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
+<a name="quadtree"></a> **Quadtree**: Eine Datenstruktur, bei der jeder Knoten genau vier untergeordnete Elemente aufweist. Das in Azure Maps verwendete Kachelsystem basiert auf einer QuadTree-Struktur, bei der die einzelnen Kartenkacheln beim Vergrößern auf einen Faktor durch den Benutzer in vier untergeordnete Kacheln gegliedert werden.  Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
 
 <a name="queries-per-second-qps"></a> **Abfragen pro Sekunde (Queries Per Second, QPS)**: Die Anzahl der Abfragen oder Anforderungen, die innerhalb einer Sekunde an einen Dienst oder eine Plattform gesendet werden können. 
 
@@ -321,7 +321,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="route"></a> **Route**: Ein Pfad zwischen mindestens zwei Orten, der zudem zusätzliche Informationen wie Anweisungen für Wegpunkte entlang der Route enthalten kann.
 
-<a name="requests-per-second-rps"></a> **Anforderungen pro Sekunde (Requests Per Second, RPS)**: Siehe [Abfragen pro Sekunde (Queries Per Second, QPS)](#queries-per-second-qps). 
+<a name="requests-per-second-rps"></a> **Anforderungen pro Sekunde (RPS)**: Siehe [Abfragen pro Sekunde (QPS)](#queries-per-second-qps). 
 
 <a name="rss"></a> **RSS**: Abhängig von der Quelle das Akronym für „Really Simple Syndication“, „Resource Description Framework (RDF) Site Summary“ oder „Rich Site Summary“. Ein einfaches, strukturiertes XML-Format für die Freigabe von Inhalten für andere Websites. RSS-Dokumente enthalten Metadatenelemente, z.B. Datum, Autor, Titel, eine kurze Beschreibung und einen Hyperlink. Diese Informationen unterstützen einen Benutzer (oder einen RSS-Veröffentlichungsdienst) bei der Entscheidung, bei welchen Materialien eine weitergehende Untersuchung lohnt.
 
@@ -364,7 +364,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="transformation"></a> **Transformation**: Der Vorgang, bei dem Daten zwischen verschiedenen geografischen Koordinatensystemen konvertiert werden. Dies können z.B. Daten sein, die im Vereinigten Königreich erfasst wurden und auf dem geografischen Koordinatensystem OSGB 1936 basieren. Azure Maps verwendet eine Variante des Referenzkoordinatensystems [EPSG:3857](https://epsg.io/3857), nämlich WGS 84. Um die Daten ordnungsgemäß anzuzeigen, müssen die Koordinaten von einem System zum anderen transformiert werden.
 
-<a name="traveling-salesmen-problem-tsp"></a> **Problem des Handlungsreisenden (Traveling Salesmen Problem, TSP)**: Optimierungsproblem von Hamilton, bei dem ein Vertriebsmitarbeiter den effizientesten Weg finden muss, um eine Reihe von Orten zu besuchen, und dann zum Startort zurückkehren muss.  
+<a name="traveling-salesmen-problem-tsp"></a> **Problem des Handlungsreisenden (Traveling Salesmen Problem, TSP)**:  Optimierungsproblem von Hamilton, bei dem ein Vertriebsmitarbeiter den effizientesten Weg finden muss, um eine Reihe von Orten zu besuchen, und dann zum Startort zurückkehren muss.  
 
 <a name="trilateration"></a> **Trilateration**: Der Vorgang, bei dem die Position eines Punkts auf der Erdoberfläche in Bezug zu zwei weiteren Punkten bestimmt wird, indem die Abstände zwischen allen drei Punkten gemessen wird.
 
@@ -376,7 +376,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="vector-tile"></a> **Vektorkachel**: Eine Open Data-Spezifikation für die Speicherung von räumlichen Vektordaten mit dem gleichen Kachelsystem wie das Kartensteuerelement. Siehe auch [Kachelebene](#tile-layer).
 
-<a name="vehicle-routing-problem-vrp"></a> **Tourenplanungsproblem (Vehicle Routing Problem, VRP)**: Eine Klasse von Problemen, bei denen ein Gruppe von geordneten Routen für eine Fahrzeugflotte berechnet wird und gleichzeitig als Gruppe von Einschränkungen berücksichtigt werden. Diese Einschränkungen können z.B. Einschränkungen im Hinblick auf Zustellungszeitfenster, Kapazitäten für mehrere Routen und Reisedauer umfassen.
+<a name="vehicle-routing-problem-vrp"></a> **Tourenplanungsproblem (Vehicle Routing Problem, VRP)**: Eine Klasse von Problemen, bei denen eine Gruppe von geordneten Routen für eine Fahrzeugflotte berechnet und gleichzeitig ein Satz von Einschränkungen berücksichtigt wird. Diese Einschränkungen können z.B. Einschränkungen im Hinblick auf Zustellungszeitfenster, Kapazitäten für mehrere Routen und Reisedauer umfassen.
 
 <a name="voronoi-diagram"></a> **Voronoi-Diagramm**: Eine Zerlegung des Raums in Bereiche und Zellen, die eine Gruppe von geometrischen Objekten (normalerweise Punktfunktionen) umgeben. Diese Zellen oder Polygone müssen die Kriterien für Delaunay-Dreiecke erfüllen. Alle Punkte innerhalb eines Bereichs befinden sich näher am Objekt, das es umgibt, als an anderen Objekten in der Gruppe. Voronoi-Diagramme werden häufig verwendet, um Einflussbereiche um geografische Funktionen voneinander abzugrenzen. 
 
@@ -396,7 +396,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="z-coordinate"></a> **Z-Koordinate**: Siehe [Höhe](#altitude). 
 
-<a name="zip-code"></a> **Postleitzahl**: Siehe [Postleitzahl](#postal-code).
+<a name="zip-code"></a> **ZIP-Code**: Siehe [Postleitzahl](#postal-code).
 
 <a name="Zoom level"></a> **Zoomfaktor**: Gibt die Detailstufe und den Anteil der Karte an, die sichtbar ist. Wenn die Karte bis auf Stufe 0 verkleinert wird, ist oftmals die gesamte Weltkarte zu sehen, es werden jedoch nur wenige Details wie Ländernamen und -grenzen sowie die Namen der Ozeane gezeigt. Wenn die Karte bis hin zu Stufe 17 vergrößert wird, zeigt die Karte einen Bereich mit einigen Vierteln und detaillierten Straßeninformationen an. Weitere Informationen finden Sie unter [Zoomfaktoren und Grobraster](zoom-levels-and-tile-grid.md).
 
