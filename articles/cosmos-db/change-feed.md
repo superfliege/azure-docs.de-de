@@ -1,19 +1,19 @@
 ---
 title: Verwenden der Unterstützung von Änderungsfeeds in Azure Cosmos DB
 description: Verwenden Sie die Azure Cosmos DB-Unterstützung von Änderungsfeeds, um Änderungen in Dokumenten nachzuverfolgen, eine ereignisbasierte Verarbeitung (wie mit Triggern) durchzuführen und Caches und Analysesysteme auf dem neuesten Stand zu halten.
-author: rafats
-ms.author: rafats
+author: rimman
+ms.author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: 95fd5b753d2018ebf422c4d9c88c2e3f6aba7bd8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2224c798d0854aab2d3ec7fc2c03b51de58dbfc0
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452259"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244435"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Änderungsfeed in Azure Cosmos DB – Übersicht
 
@@ -35,10 +35,10 @@ Dieses Feature wird derzeit von den folgenden Azure Cosmos DB-APIs und Client-SD
 
 | **Clienttreiber** | **Azure-Befehlszeilenschnittstelle** | **SQL-API** | **Cassandra-API** | **MongoDB-API von Azure Cosmos DB** | **Gremlin-API**|**Tabellen-API** |
 | --- | --- | --- | --- | --- | --- | --- |
-| .NET | Nicht verfügbar | JA | Nein  | Nein  | Ja | Nein  |
-|Java|Nicht verfügbar|JA|Nein |Nein |Ja|Nein |
-|Python|Nicht verfügbar|JA|Nein |Nein |Ja|Nein |
-|Node/JS|Nicht verfügbar|JA|Nein |Nein |Ja|Nein |
+| .NET | Nicht verfügbar | Ja | Nein  | Nein  | Ja | Nein  |
+|Java|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
+|Python|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
+|Node/JS|Nicht verfügbar|Ja|Nein |Nein |Ja|Nein |
 
 ## <a name="change-feed-and-different-operations"></a>Änderungsfeed und verschiedene Vorgänge
 

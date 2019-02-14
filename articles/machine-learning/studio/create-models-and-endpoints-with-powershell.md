@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 43d16c291391a3ffd94f404755e644dac0daf3a9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492826"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244297"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Erstellen mehrerer Studio-Modelle und Webdienst-Endpunkte in einem Experiment mit PowerShell
 
@@ -35,7 +35,7 @@ Glücklicherweise können Sie hierfür die [Azure Machine Learning-API für das 
 > 
 
 ## <a name="set-up-the-training-experiment"></a>Einrichten des Trainingsexperiments
-Verwenden Sie das Beispiel [Training Experiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](http://gallery.cortanaintelligence.com) befindet. Öffnen Sie dieses Experiment im [Azure Machine Learning Studio](https://studio.azureml.net) -Arbeitsbereich.
+Verwenden Sie das Beispiel [Training Experiment](https://gallery.azure.ai/Experiment/Bike-Rental-Training-Experiment-1), das sich im [Cortana Intelligence-Katalog](http://gallery.azure.ai) befindet. Öffnen Sie dieses Experiment im [Azure Machine Learning Studio](https://studio.azureml.net) -Arbeitsbereich.
 
 > [!NOTE]
 > Damit Sie dieses Beispiel nachvollziehen können, empfiehlt es sich, anstelle eines kostenlosen Arbeitsbereichs einen Standardarbeitsbereich zu verwenden. Sie erstellen einen Endpunkt pro Kunde, also insgesamt zehn Endpunkte, und dadurch ist ein Standardarbeitsbereich erforderlich, da ein kostenloser Arbeitsbereich auf drei Endpunkte beschränkt ist. Falls Ihnen nur ein kostenloser Arbeitsbereich zur Verfügung steht, ändern Sie einfach die Skripts, sodass nur drei Standorte berücksichtigt werden.
@@ -63,7 +63,7 @@ Als Nächstes müssen Sie den Webdienst für die Bewertung bereitstellen.
 Hierzu klicken Sie unter dem Experimentbereich auf **Set Up Web Service** (Webdienst einrichten), und wählen Sie die Option **Predictive Web Service** (Vorhersagewebdienst) aus. Ein Bewertungsexperiment wird erstellt.
 Sie müssen einige kleinere Anpassungen vornehmen, damit dies als Webdienst funktioniert. Entfernen Sie die Bezeichnungsspalte „cnt“ aus den Eingabedaten, und beschränken Sie die Ausgabe auf die Instanz-ID und den entsprechenden vorhergesagten Wert.
 
-Damit Sie Ihre bisherige Arbeit speichern, können Sie das [Vorhersageexperiment](https://gallery.cortanaintelligence.com/Experiment/Bike-Rental-Predicative-Experiment-1) im Katalog öffnen, der bereits vorbereitet wurde.
+Damit Sie Ihre bisherige Arbeit speichern, können Sie das [Vorhersageexperiment](https://gallery.azure.ai/Experiment/Bike-Rental-Predicative-Experiment-1) im Katalog öffnen, der bereits vorbereitet wurde.
 
 Führen Sie zum Bereitstellen des Webdiensts das Vorhersageexperiment aus, und klicken Sie dann unter dem Experimentbereich auf die Schaltfläche **Deploy Web Service** (Webdienst bereitstellen). Geben Sie dem Webdienst für die Bewertung den Namen „Bike Rental Scoring“.
 

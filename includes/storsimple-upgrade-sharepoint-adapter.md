@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 630ecb5f6efff9f08bbf5d2f1dec1c35af30b673
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 1ebbce89c7a977dd9620bd8be67da647c107eadc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164692"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889020"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 ### <a name="upgrade-sharepoint-2010-to-sharepoint-2013-and-then-install-the-storsomple-adapter-for-sharepoint"></a>Upgraden von SharePoint 2010 auf SharePoint 2013 und Installieren des StorSimple-Adapters für SharePoint
 > [!IMPORTANT]
 > Alle Dateien, die zuvor per RBS an einen externen Speicher verschoben wurden, sind erst wieder verfügbar, wenn das Upgrade abgeschlossen und das RBS-Feature wieder aktiviert ist. Führen Sie Aktualisierungen oder Neuinstallationen während eines geplanten Wartungsfensters durch, um die Auswirkungen für Benutzer gering zu halten.

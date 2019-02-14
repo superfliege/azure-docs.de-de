@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 08/30/2018
-ms.openlocfilehash: a4e04bc9071f4f677230d112a7baa708e9e8dc34
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 97fcfa20e474edb8108474ef02c6542688d627ff
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243231"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243484"
 ---
 # <a name="network-connectivity"></a>Netzwerkverbindung
 Dieser Artikel enthält Informationen zur Netzwerkinfrastruktur von Azure Stack, die Sie bei der Entscheidung unterstützen, wie Sie Azure Stack am besten in Ihre bestehende Netzwerkumgebung integrieren können. 
@@ -67,9 +67,6 @@ Dieses Netzwerk vom Typ „/24“ (254 Host-IP-Adressen) ist für die Azure Stac
 
 ### <a name="azure-stack-infrastructure-network"></a>Azure Stack-Infrastrukturnetzwerk
 Dieses Netzwerk des Typs „/24“ ist internen Azure Stack-Komponenten zugeordnet, damit diese untereinander kommunizieren und Daten austauschen können. Dieses Subnetz erfordert routingfähige IP-Adressen, bleibt aber durch Verwendung von Zugriffssteuerungslisten (ACLs) für die Lösung privat. Es wird nicht erwartet, dass ein Routing über die Border-Switches erfolgt. Eine Ausnahme bildet ein kleiner Bereich der Größe eines Netzwerks des Typs „/27“, der von einigen dieser Dienste genutzt wird, wenn sie Zugriff auf externe Ressourcen und/oder das Internet benötigen. 
-
-### <a name="public-infrastructure-network"></a>Öffentliches Infrastrukturnetzwerk
-Dieses Netzwerk des Typs „/27“ ist der kleine Bereich des bereits erwähnten Subnetzes der Azure Stack-Infrastruktur. Es benötigt keine öffentlichen IP-Adressen, jedoch Internetzugriff über einen NAT- oder transparenten Proxy. Dieses Netzwerk wird für das ERCS (Emergency Recovery Console System) bereitgestellt. Die ERCS-VM benötigt bei der Registrierung bei Azure und bei Infrastruktursicherungen Internetzugriff. Die ERCS-VM muss für die Problembehandlung zu Ihrem Verwaltungsnetzwerk geroutet werden können.
 
 ### <a name="public-vip-network"></a>Öffentliches VIP-Netzwerk
 Das öffentliche VIP-Netzwerk wird dem Netzwerkcontroller in Azure Stack zugewiesen. Es ist kein logisches Netzwerk auf dem Switch. Die SLB nutzt den Adresspool und ordnet Netzwerke des Typs „/32“ für die Workloads von Mandanten zu. In der Routingtabelle auf dem Switch werden diese IP-Adressen des Typs „/32“ über BGP als verfügbare Route angekündigt. Dieses Netzwerk enthält die extern zugänglichen oder öffentlichen IP-Adressen. Die Azure Stack-Infrastruktur reserviert die ersten 31 Adressen aus diesem öffentlichen VIP-Netzwerk. Der Rest wird von virtuellen Mandantencomputern genutzt. Die Netzwerkgröße in diesem Subnetz kann von einem Minimum von „/26“ (64 Hosts) bis zu einem Maximum von „/22“ (1022 Hosts) reichen. Wir empfehlen Ihnen, ein Netzwerk des Typs „/24“ zu planen.

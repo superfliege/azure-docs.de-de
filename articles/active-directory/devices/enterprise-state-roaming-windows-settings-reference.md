@@ -16,12 +16,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
-ms.openlocfilehash: ff607ed44f19e915b6ba94c1d217367d1012f062
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 92d08d12571236276ad6e3d6f3705139ea050a8d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300233"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184498"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10-Roamingeinstellungen – Referenz
 Hier ist eine vollständige Liste mit allen Einstellungen angegeben, für die unter Windows 10 das Roaming oder eine Sicherung durchgeführt wird. 
@@ -31,10 +32,10 @@ Die folgende Tabelle enthält eine Zusammenfassung der Geräte und Kontotypen, d
 
 | Kontotyp und Vorgang | Desktop | Mobile |
 | --- | --- | --- |
-| Azure Active Directory: Synchronisierung |JA |Nein  |
+| Azure Active Directory: Synchronisierung |Ja |Nein  |
 | Azure Active Directory: Sicherung/Wiederherstellung |Nein  |Nein  |
-| Microsoft-Konto: Synchronisierung |JA |JA |
-| Microsoft-Konto: Sicherung/Wiederherstellung |Nein  |JA |
+| Microsoft-Konto: Synchronisierung |Ja |Ja |
+| Microsoft-Konto: Sicherung/Wiederherstellung |Nein  |Ja |
 
 ## <a name="what-is-backup"></a>Was ist die Sicherung?
 Windows-Einstellungen werden normalerweise standardmäßig synchronisiert. Einige Einstellungen werden aber nur gesichert, z. B. die Liste mit den installierten Anwendungen auf einem Gerät. Sicherungen können nur für mobile Geräte angewendet werden und sind zurzeit für Enterprise State Roaming-Benutzer nicht verfügbar. Bei der Sicherung wird ein Microsoft-Konto verwendet, die Einstellungen und Anwendungsdaten werden in OneDrive gespeichert. Wenn ein Benutzer die Synchronisierung auf dem Gerät mit der Einstellungen-App deaktiviert, werden die Anwendungsdaten, die normalerweise synchronisiert werden, nur noch gesichert. Auf Sicherungsdaten kann nur über den Wiederherstellungsvorgang während der ersten Ausführung eines neuen Geräts zugegriffen werden. Sicherungen können über die Geräteeinstellungen deaktiviert und über das OneDrive-Konto des Benutzers verwaltet und gelöscht werden.

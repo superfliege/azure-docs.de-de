@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: 451ccff9747988ee019f2be9e0cccec12c9c1ef9
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118233"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891078"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>Verwenden von Caffe in Azure HDInsight Spark für verteiltes Deep Learning
 
@@ -64,7 +64,7 @@ Die Skriptaktion umfasst zwei Schritte. Der erste Schritt besteht in der Install
 
 Der zweite Schritt beinhaltet das Herunterladen, Kompilieren und Installieren von Protobuf 2.5.0 für Caffe während der Laufzeit. Protobuf 2.5.0 [ist erforderlich](https://github.com/yahoo/CaffeOnSpark/issues/87); allerdings ist diese Version nicht als Paket auf Ubuntu 16 verfügbar. Daher müssen Sie die Version aus dem Quellcode kompilieren. Im Internet gibt es auch einige Ressourcen zur Vorgehensweise beim Kompilieren. Weitere Informationen finden Sie [hier](https://jugnu-life.blogspot.com/2013/09/install-protobuf-25-on-ubuntu.html).
 
-Zum Einstieg können Sie auch nur diese Skriptaktion in Ihrem Cluster für alle Workerknoten und Hauptknoten (für HDInsight 3.5) ausführen. Sie können die Skriptaktionen auf einem vorhandenen Cluster ausführen oder Skriptaktionen während der Clustererstellung verwenden. Weitere Informationen zu Skriptaktionen finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux#view-history-promote-and-demote-script-actions) in der Dokumentation.
+Zum Einstieg können Sie auch nur diese Skriptaktion in Ihrem Cluster für alle Workerknoten und Hauptknoten (für HDInsight 3.5) ausführen. Sie können die Skriptaktionen auf einem vorhandenen Cluster ausführen oder Skriptaktionen während der Clustererstellung verwenden. Weitere Informationen zu Skriptaktionen finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux) in der Dokumentation.
 
 ![Skriptaktionen zum Installieren von Abhängigkeiten](./media/apache-spark-deep-learning-caffe/Script-Action-1.png)
 

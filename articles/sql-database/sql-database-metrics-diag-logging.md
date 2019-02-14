@@ -11,13 +11,13 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 24feef28edac73f625de1c1b7dfd9a4aaf9883af
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: f6874b1d97c36d22e60606ad8c8a356baec53b85
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734622"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893595"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Protokollierung von Metriken und Diagnosen für Azure SQL-Datenbank
 
@@ -65,14 +65,14 @@ Sie können Azure SQL-Datenbanken zum Erfassen der folgenden Diagnosetelemetried
 
 | Überwachen von Telemetriedaten für Datenbanken | Unterstützung für einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken | Unterstützung für die verwaltete Instanz |
 | :------------------- | ------------------- | ------------------- |
-| [AllMetrics](sql-database-metrics-diag-logging.md#all-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | Ja | Nein  |
-| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | Ja | Ja |
-| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z. B. CPU, PROTOKOLL und SPERRUNG. | Ja | Ja |
-| [Errors](sql-database-metrics-diag-logging.md#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | Ja | Ja |
-| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): Enthält Informationen zur Wartezeit der Datenbank für die verschiedenen Wartezeittypen. | Ja | Nein  |
-| [Timeouts](sql-database-metrics-diag-logging.md#time-outs-dataset): Enthält Informationen zu Zeitlimits für die Datenbank. | Ja | Nein  |
-| [Blocks](sql-database-metrics-diag-logging.md#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen für die Datenbank. | Ja | Nein  |
-| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung. Weitere Informationen finden Sie unter [Intelligent Insights](sql-database-intelligent-insights.md). | Ja | Ja |
+| [AllMetrics](#all-metrics): Enthält DTU-/CPU-Prozentsatz, DTU/CPU-Limit, gelesene physische Daten in Prozent, Protokollschreibvorgänge in Prozent, Verbindungen mit dem Status „Erfolgreich“, „Fehler“ und „Durch Firewall blockiert“, Sitzungen in Prozent, Worker in Prozent, Speicher, Speicher in Prozent und XTP-Speicher in Prozent. | Ja | Nein  |
+| [QueryStoreRuntimeStatistics](#query-store-runtime-statistics): Enthält Informationen zur Laufzeitstatistik der Abfrage, z. B. CPU-Nutzung und Abfragedauer. | Ja | Ja |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics): Enthält Informationen zur Wartestatistik der Abfrage (worauf Ihre Abfragen gewartet haben), z. B. CPU, PROTOKOLL und SPERRUNG. | Ja | Ja |
+| [Errors](#errors-dataset): Enthält Informationen zu SQL-Fehlern in der Datenbank. | Ja | Ja |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset): Enthält Informationen zur Wartezeit der Datenbank für die verschiedenen Wartezeittypen. | Ja | Nein  |
+| [Timeouts](#time-outs-dataset): Enthält Informationen zu Zeitlimits für die Datenbank. | Ja | Nein  |
+| [Blocks](#blockings-dataset): Enthält Informationen zu blockierenden Ereignissen für die Datenbank. | Ja | Nein  |
+| [SQLInsights](#intelligent-insights-dataset): Enthält Intelligent Insights-Informationen zur Leistung. Weitere Informationen finden Sie unter [Intelligent Insights](sql-database-intelligent-insights.md). | Ja | Ja |
 
 ### <a name="azure-portal"></a>Azure-Portal
 
@@ -169,7 +169,7 @@ Sie können eine Ressource der verwalteten Instanz zum Erfassen der folgenden Di
 
 | Ressource | Überwachte Telemetriedaten |
 | :------------------- | ------------------- |
-| **Verwaltete Instanz** | [ResourceUsageStats](sql-database-metrics-diag-logging.md#logs-for-managed-instance) enthält die Anzahl virtueller Kerne, den durchschnittlichen CPU-Prozentsatz, E/A-Anforderungen, gelesene/geschriebene Bytes, den reservierten und genutzten Speicherplatz. |
+| **Verwaltete Instanz** | [ResourceUsageStats](#logs-for-managed-instances) enthält die Anzahl virtueller Kerne, den durchschnittlichen CPU-Prozentsatz, E/A-Anforderungen, gelesene/geschriebene Bytes, den reservierten und genutzten Speicherplatz. |
 
 Führen Sie die folgenden Schritte aus, um das Streaming von Diagnosetelemetriedaten für eine Ressource der verwalteten Instanz zu aktivieren:
 

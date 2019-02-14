@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 3e2fa51bcf6040eb94a9d270a7f5f375f726e62a
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: d70b7acb906c60001ad005a0fe9361950bc029b7
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846335"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895855"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus-Zugriffssteuerung mit Shared Access Signatures
 
@@ -96,7 +96,7 @@ Ein SAS-Token ist für alle Ressourcen mit dem Präfix `<resourceURI>` gültig, 
 
 Es wird empfohlen, die im [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -Objekt verwendeten Schlüssel in regelmäßigen Abständen neu zu generieren. Die Primär- und Sekundärschlüsselslots sind vorhanden, damit Sie Schlüssel schrittweise rotieren können. Wenn Ihre Anwendung im Allgemeinen den Primärschlüssel verwendet, können Sie den Primärschlüssel in den Sekundärschlüsselslot kopieren und erst dann den Primärschlüssel erneut generieren. Der neue Primärschlüsselwert kann dann in den Clientanwendungen konfiguriert werden, die ununterbrochenen Zugriff mit dem alten Primärschlüssel im sekundären Slot haben. Sobald alle Clients aktualisiert wurden, können Sie den Sekundärschlüssel erneut generieren, um schließlich den alten Primärschlüssel außer Kraft zu setzen.
 
-Wenn Sie wissen oder vermuten, dass ein Schlüssel gefährdet ist, und Sie die Schlüssel widerrufen müssen, können Sie sowohl den [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule#Microsoft_ServiceBus_Messaging_SharedAccessAuthorizationRule_PrimaryKey) als auch den [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) eines [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekts neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
+Wenn Sie wissen oder vermuten, dass ein Schlüssel gefährdet ist, und Sie die Schlüssel widerrufen müssen, können Sie sowohl den [PrimaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) als auch den [SecondaryKey](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) eines [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)-Objekts neu generieren und so durch neue Schlüssel ersetzen. Durch dieses Verfahren werden alle Token, die mit den alten Schlüsseln signiert wurden, für ungültig erklärt.
 
 ## <a name="shared-access-signature-authentication-with-service-bus"></a>SAS-Authentifizierung bei Service Bus
 

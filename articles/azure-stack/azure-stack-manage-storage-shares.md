@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 01/14/2019
+ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7536913817e10fbc2b46eadd1cebdfb98079c759
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 97cdae49b4676500e29ac25b12712c94e575e5f8
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819517"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960563"
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Verwalten der Speicherkapazität für Azure Stack 
 
@@ -91,7 +91,7 @@ Als Cloudbetreiber können Sie die Speicherkapazität für alle Freigaben im Adm
 1. Melden Sie sich am [Administratorportal](https://adminportal.local.azurestack.external) an.
 2. Wählen Sie **Alle Dienst** > **Speicher** aus, um die Dateifreigabeliste mit den Nutzungsinformationen zu öffnen. 
 
-  ![Beispiel: Speicherdateifreigaben](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+    ![Beispiel: Speicherdateifreigaben](media/azure-stack-manage-storage-shares/storage-file-shares.png)
 
   - **GESAMT** ist der gesamte Speicherplatz (in Bytes), der auf der Freigabe zur Verfügung steht. Dieser Speicherplatz wird für Daten und Metadaten verwendet, die von den Speicherdiensten verwaltet werden.
   - **VERWENDET** ist die Menge von Daten (in Bytes), die von allen Erweiterungen für die Dateien genutzt wird, die die Mandantendaten und die dazugehörigen Metadaten speichern.

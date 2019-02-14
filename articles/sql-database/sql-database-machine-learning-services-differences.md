@@ -12,12 +12,12 @@ ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 01/31/2019
-ms.openlocfilehash: adc303e9b375aaa6f37e9e79ea5434675c75523d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4350fb0e75f140e120ba6cd2f074ffa1816a8fce
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824897"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237483"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-database-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services in Azure SQL-Datenbank und SQL Server
 
@@ -25,7 +25,7 @@ Die Funktionalität von Machine Learning Services (mit R) in Azure SQL-Datenbank
 
 ## <a name="language-support"></a>Sprachunterstützung
 
-SQL Server bietet Unterstützung für R und Python über das [Erweiterbarkeitsframework](https://docs.microsoft.com/en-us/sql/advanced-analytics/concepts/extensibility-framework). SQL-Datenbank unterstützt nicht beide Sprachen. Folgende wichtige Unterschiede bestehen:
+SQL Server bietet Unterstützung für R und Python über das [Erweiterbarkeitsframework](https://docs.microsoft.com/sql/advanced-analytics/concepts/extensibility-framework). SQL-Datenbank unterstützt nicht beide Sprachen. Folgende wichtige Unterschiede bestehen:
 
 - R ist die einzige unterstützte Sprache in SQL-Datenbank. Momentan ist keine Unterstützung für Python vorhanden.
 - Die Version von R ist 3.4.4.
@@ -51,4 +51,4 @@ In Azure SQL-Datenbank bietet SQLPAL (SQL Plattform Abstraction Layer) eine Isol
 
 - Allgemeine Informationen finden Sie in der Dokumentation [SQL Server Machine Learning Services](https://docs.microsoft.com/sql/advanced-analytics).
 - Informationen zum Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank finden Sie unter [Schnellstart](sql-database-connect-query-r.md).
-- Erfahren Sie mehr mit [Tutorials für die R-Sprache von SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials)
+- Erfahren Sie mehr mit [Tutorials für die R-Sprache von SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sql-server-r-tutorials).

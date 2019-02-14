@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Verwenden Sie den Microsoft Translator-Hub zum Erstellen Ihres eigenen Systems für die maschinelle Übersetzung mit der Terminologie und dem Stil, den Sie bevorzugen.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: e4e512a69fc783e6c4878298d848a9dccf8768c3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c2ff97c61cee1f2f773710103ac422fc6f1d8714
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226926"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876061"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -50,10 +50,10 @@ Der ältere Microsoft Translator-Hub kann zum Übersetzen statistischer maschine
 |:-----|:----:|:----:|
 |Status des Anpassungsfeatures   | Allgemeine Verfügbarkeit  | Allgemeine Verfügbarkeit |
 | Version der Text-API  | Nur V2   | Nur V3 |
-| SMT-Anpassung | JA   | Nein  |
-| NMT-Anpassung | Nein     | JA |
-| Neue einheitliche Anpassung der Sprachdienste | Nein     | JA |
-| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | JA  | JA |
+| SMT-Anpassung | Ja   | Nein  |
+| NMT-Anpassung | Nein     | Ja |
+| Neue einheitliche Anpassung der Sprachdienste | Nein     | Ja |
+| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja  | Ja |
 
 ## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
 

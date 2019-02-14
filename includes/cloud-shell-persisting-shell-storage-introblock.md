@@ -4,12 +4,12 @@ ms.service: cloud-shell
 ms.topic: persist-storage
 ms.date: 9/7/2018
 ms.author: juluk
-ms.openlocfilehash: a66f5ca9501d09f2ef89f421191f617c177e10eb
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: e175f603e97ccf51e1e13d9c2fc42ba7ed1a475f
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886229"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246887"
 ---
 # <a name="persist-files-in-azure-cloud-shell"></a>Beibehalten von Dateien in Azure Cloud Shell
 Cloud Shell nutzt Azure-Dateispeicher, um Dateien sitzungsübergreifend beizubehalten. Beim ersten Start fordert Cloud Shell Sie auf, eine neue oder vorhandene Dateifreigabe zu verknüpfen, um Dateien sitzungsübergreifend beizubehalten.
@@ -40,7 +40,7 @@ Sie können vorhandene Ressourcen zuordnen, indem Sie die erweiterte Option verw
 Wählen Sie bei der Anzeige mit der Aufforderung zum Einrichten des Speichers die Option **Erweiterte Einstellungen anzeigen**, um weitere Optionen anzuzeigen. Die ausgefüllten Speicheroptionen werden nach Konten mit lokal redundantem Speicher (LRS), georedundantem Speicher (GRS) und zonenredundantem Speicher (ZRS) gefiltert. 
 
 > [!NOTE]
-> Für zusätzliche Resilienz wird die Verwendung von GRS- oder ZRS-Speicherkonten für Ihre unterstützende Dateifreigabe empfohlen. Die Art der Redundanz hängt von Ihren Zielen und Preisvorstellungen ab. [Erhalten Sie weitere Informationen zu Replikationsoptionen für Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-redundancy#choosing-a-replication-option).
+> Für zusätzliche Resilienz wird die Verwendung von GRS- oder ZRS-Speicherkonten für Ihre unterstützende Dateifreigabe empfohlen. Die Art der Redundanz hängt von Ihren Zielen und Preisvorstellungen ab. [Erhalten Sie weitere Informationen zu Replikationsoptionen für Azure Storage-Konten](https://docs.microsoft.com/azure/storage/common/storage-redundancy).
 
 ![Einstellung „Ressourcengruppe“](../articles/cloud-shell/media/persisting-shell-storage/advanced-storage.png)
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 9a12940f08a11b66a0d09937d5ab8fab7304734f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 892ea129a57e77c59f37b305b96b42aa85dba32b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754335"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232706"
 ---
 # <a name="toggle-between-view-and-edit-mode-for-reports-in-power-bi-workspace-collections"></a>Wechseln zwischen Ansichts- und Bearbeitungsmodus für Berichte in Power BI-Arbeitsbereichssammlungen
 
@@ -30,7 +30,7 @@ Sie müssen ein Zugriffstoken erstellen, mit dem Sie einen Bericht sowohl anzeig
 > [!NOTE]
 > Damit können Sie einen vorhandenen Bericht bearbeiten und die Änderungen speichern. Wenn Sie auch die Funktion **Speichern unter** unterstützen möchten, müssen Sie zusätzliche Berechtigungen angeben. Weitere Informationen finden Sie unter [Authentifizieren und Autorisieren mit Power BI Embedded](app-token-flow.md#scopes).
 
-```
+```csharp
 using Microsoft.PowerBI.Security;
 
 // rlsUsername and roles are optional
@@ -46,9 +46,10 @@ Sie müssen Berechtigungen und einen viewMode (Ansichtsmodus) angeben, damit im 
 
 Beispielsweise in JavaScript:
 
-```
+```html
    <div id="reportContainer"></div>
 
+    <script>
     // Get models. Models, it contains enums that can be used.
     var models = window['powerbi-client'].models;
 
@@ -74,6 +75,7 @@ Beispielsweise in JavaScript:
 
     // Embed the report and display it within the div container.
     var report = powerbi.embed(reportContainer, config);
+    </script>
 ```
 
 Dadurch wird angegeben, dass der Bericht im Ansichtsmodus eingebettet wird, basierend auf der Festlegung von **viewMode** auf **models.ViewMode.View**.
@@ -82,7 +84,7 @@ Dadurch wird angegeben, dass der Bericht im Ansichtsmodus eingebettet wird, basi
 
 Sie können den folgenden JavaScript-Code zum Wechsel in den Ansichtsmodus verwenden, wenn Sie sich im Bearbeitungsmodus befinden.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 
@@ -98,7 +100,7 @@ report.switchMode("view");
 
 Sie können den folgenden JavaScript-Code zum Wechsel in den Bearbeitungsmodus verwenden, wenn Sie sich im Ansichtsmodus befinden.
 
-```
+```javascript
 // Get a reference to the embedded report HTML element
 var reportContainer = $('#reportContainer')[0];
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Lernen Sie die Unterschiede zwischen Bing-Spracheingabe und dem Spracherkennungsdienst aus Entwicklersicht kennen, und migrieren Sie Ihre Anwendung, um den Spracherkennungsdienst zu nutzen.
 services: cognitive-services
 author: wsturman
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: b862975cda4a73d087d9aa0d5816fdcb9e0149dc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218007"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863566"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 

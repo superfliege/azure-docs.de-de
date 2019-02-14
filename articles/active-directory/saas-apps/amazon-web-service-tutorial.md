@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: def9d44c31ed50a859bf42aa148fb7e6a36764fd
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e377cf749119c23d37bb4db8ab78abb1ce8c82ae
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751088"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199747"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>Tutorial: Azure Active Directory-Integration mit Amazon Web Services (AWS)
 
@@ -447,7 +448,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Amazon Web Services (AWS)“ klick
 
  * Im Abschnitt **Bereitstellung** ist im Unterabschnitt **Zuordnungen** eine Lademeldung zu sehen, die Attributzuordnungen werden aber nicht angezeigt. Aktuell wird als Bereitstellungsworkflow lediglich das Importieren von Rollen aus AWS in Azure AD für die Auswahl während der Benutzer-/Gruppenzuweisung unterstützt. Die Attributzuordnungen hierfür sind vorgegeben und nicht konfigurierbar.
  
- * Im Abschnitt **Bereitstellung** kann immer nur ein einzelner Satz von Anmeldeinformationen für einen einzelnen AWS-Mandanten eingegeben werden. Alle importierten Rollen werden in die Eigenschaft „appRoles“ des Azure AD-Objekts [servicePrincipal](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) für den AWS-Mandanten geschrieben. Mehrere AWS-Mandanten (dargestellt durch Dienstprinzipale) können Azure AD über den Katalog für die Bereitstellung hinzugefügt werden. Es gibt jedoch ein bekanntes Problem, das dazu führt, dass nicht alle importierten Rollen automatisch aus den verschiedenen AWS-Dienstprinzipalen für die Bereitstellung in den einzelnen Dienstprinzipal für einmaliges Anmelden geschrieben werden können. Zur Umgehung dieses Problems können Sie mithilfe der [Microsoft Graph-API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/resources/serviceprincipal) alle App-Rollen extrahieren, die in die einzelnen AWS-Dienstprinzipale mit konfigurierter Bereitstellung importiert wurden. Diese Rollenzeichenfolgen können dann dem AWS-Dienstprinzipal mit konfiguriertem einmaligem Anmelden hinzugefügt werden.
+ * Im Abschnitt **Bereitstellung** kann immer nur ein einzelner Satz von Anmeldeinformationen für einen einzelnen AWS-Mandanten eingegeben werden. Alle importierten Rollen werden in die Eigenschaft „appRoles“ des Azure AD-Objekts [servicePrincipal](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) für den AWS-Mandanten geschrieben. Mehrere AWS-Mandanten (dargestellt durch Dienstprinzipale) können Azure AD über den Katalog für die Bereitstellung hinzugefügt werden. Es gibt jedoch ein bekanntes Problem, das dazu führt, dass nicht alle importierten Rollen automatisch aus den verschiedenen AWS-Dienstprinzipalen für die Bereitstellung in den einzelnen Dienstprinzipal für einmaliges Anmelden geschrieben werden können. Zur Umgehung dieses Problems können Sie mithilfe der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/resources/serviceprincipal?view=graph-rest-beta) alle App-Rollen extrahieren, die in die einzelnen AWS-Dienstprinzipale mit konfigurierter Bereitstellung importiert wurden. Diese Rollenzeichenfolgen können dann dem AWS-Dienstprinzipal mit konfiguriertem einmaligem Anmelden hinzugefügt werden.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

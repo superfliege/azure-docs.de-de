@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: 8165efaa10eb31410f00dfa9bfffb2c02d7396ae
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: e02400ef940efdf42370fbdc1da75bdc7062a8ef
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52872327"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243704"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---company-policy-and-compliance"></a>Governance der Azure DevTest Labs-Infrastruktur – Unternehmensrichtlinie und Compliance
 Dieser Artikel enthält Hinweise zur Einhaltung der Unternehmensrichtlinie und der Compliance für die Azure DevTest Labs-Infrastruktur. 

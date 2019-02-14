@@ -15,12 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
-ms.openlocfilehash: d23110f341cdc76306c5cc4c78ab5d6afb5dd2b3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dcb235ab96ed8a85cbe44dd672dff004dd0a7310
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816270"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185315"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -229,7 +230,7 @@ Diese Option ist ein häufiges Szenario für Branchenanwendungen.
 Wenn Ihre Anwendung Anmeldungen nur von Konten akzeptieren soll, die zu einer bestimmten Azure AD-Instanz gehören (einschließlich *Gastkonten* dieser Instanz), gehen Sie wie folgt vor:
 
 1. Ersetzen Sie den Wert `Common` des Parameters `Tenant` in *web.config* durch den Mandantennamen des Unternehmens, z.B. durch *contoso.onmicrosoft.com*.
-1. Ändern Sie das `ValidateIssuer`-Argument in Ihrer [*OWIN-Startklasse*](#configure-the-authentication-pipeline) in `true`.
+1. Ändern Sie das `ValidateIssuer`-Argument in Ihrer [*OWIN-Startklasse*](#step-4-configure-the-authentication-pipeline) in `true`.
 
 Um Benutzer nur aus einer Liste bestimmter Unternehmen zuzulassen, führen Sie die folgenden Schritte aus:
 

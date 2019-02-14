@@ -16,12 +16,13 @@ ms.date: 05/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: aa6579719588889ae23f664391d893b04e103804
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 84b786a1701892823554a83fa2015ac88d6eff4d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492962"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56197384"
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>Ermitteln der Zugriffssteuerungsanforderungen für Ihre Hybrid-Identitätslösung
 Wenn eine Organisation ihre Hybrid-Identitätslösung entwirft, kann sie bei dieser Gelegenheit auch die Zugriffsanforderungen für die Ressourcen überprüfen, die sie für Benutzer verfügbar machen möchte. Der Datenzugriff deckt alle vier Säulen der Identität ab, also:

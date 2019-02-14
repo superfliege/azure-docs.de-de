@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Erstellen von Videotranskriptüberprüfungen mit dem Content Moderator SDK für .NET
 services: cognitive-services
 author: sanjeev3
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: f92028db008792d00533c6cb80f53450d38d4f6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216185"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864093"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 

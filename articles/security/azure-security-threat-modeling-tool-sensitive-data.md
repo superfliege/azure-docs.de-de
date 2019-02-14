@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 7f90fccd062826493b7add1a90406fa9244e00b2
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 5e9104f59173c3d39ef2f2232ed2a9c6864cf84f
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002053"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892557"
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>Sicherheitsrahmen: Sensible Daten | Gegenmaßnahmen 
 | Produkt/Dienst | Artikel |
@@ -349,7 +349,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Generisch, Xamarin  |
 | **Attribute**              | N/V  |
-| **Referenzen**              | [Verwalten von Einstellungen und Features auf Ihren Geräten mit Microsoft Intune-Richtlinien](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies#create-a-configuration-policy), [Keychain Valet](https://components.xamarin.com/view/square.valet) (Keychain-Valet) |
+| **Referenzen**              | [Verwalten von Einstellungen und Features auf Ihren Geräten mit Microsoft Intune-Richtlinien](https://docs.microsoft.com/intune/deploy-use/manage-settings-and-features-on-your-devices-with-microsoft-intune-policies), [Keychain Valet](https://components.xamarin.com/view/square.valet) (Keychain-Valet) |
 | **Schritte** | <p>Wenn die Anwendung sensible Informationen, z.B. die personenbezogenen Informationen des Benutzers (E-Mail-Adresse, Telefonnummer, Vorname, Nachname, Präferenzen usw.), in das Dateisystem des Mobilgeräts schreibt, sollten sie vor der Durchführung dieses Schreibvorgangs in das lokale Dateisystem verschlüsselt werden. Wenn es sich um eine Unternehmensanwendung handelt, können Sie prüfen, ob die Veröffentlichung der Anwendung mit Windows Intune möglich ist.</p>|
 
 ### <a name="example"></a>Beispiel

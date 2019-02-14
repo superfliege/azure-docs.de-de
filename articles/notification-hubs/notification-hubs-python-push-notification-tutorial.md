@@ -14,12 +14,12 @@ ms.devlang: php
 ms.topic: article
 ms.author: jowargo
 ms.date: 01/04/2019
-ms.openlocfilehash: 73c7acb563f0f6236ff49274bb1880692a3742e6
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 10bc12879ea30f75ee5af3bd9226ff1626b72ae3
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563122"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962739"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>Verwenden von Notofication Hubs mit Python
 
@@ -369,11 +369,11 @@ Wenn Sie beim Initialisieren von „NotificationHub“ das Flag „debug“ akti
 Das detaillierte Ergebnis des Notification Hubs wird angezeigt, z.B.
 
 - wenn die Nachricht erfolgreich zum Pushbenachrichtigungsdienst gesendet wurde.
-    ```text
+    ```xml
     <Outcome>The Notification was successfully sent to the Push Notification System</Outcome>
     ```
 - Wenn für eine Pushbenachrichtigung keine Ziele gefunden wurden, wird wahrscheinlich die folgende Ausgabe in der Antwort angezeigt (dies besagt, dass keine Registrierungen zum Übermitteln der Benachrichtigung gefunden wurden, möglicherweise aufgrund nicht übereinstimmender Registrierungs-Tags).
-    ```text
+    ```xml
     '<NotificationOutcome xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect" xmlns:i="http://www.w3.org/2001/XMLSchema-instance"><Success>0</Success><Failure>0</Failure><Results i:nil="true"/></NotificationOutcome>'
     ```
 

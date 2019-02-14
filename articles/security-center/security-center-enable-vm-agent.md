@@ -4,7 +4,7 @@ description: In diesem Dokument wird erläutert, wie Sie die Azure Security Cent
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 5b431c25-4241-45b7-9556-cf2a1956f3da
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c4fff902614b3979fcc28833c5352afe2bdd84b0
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 12934ad53050d16b89dd5b4175ca19a24d1ec4d9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53341493"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118189"
 ---
 # <a name="enable-vm-agent-in-azure-security-center"></a>Aktivieren des VM-Agents in Azure Security Center
 Der VM-Agent muss auf virtuellen Computern installiert sein, um [die Datensammlung zu aktivieren](security-center-enable-data-collection.md).  Im Azure Security Center können Sie prüfen, welche VMs den VM-Agent benötigen. Es wird eine Empfehlung angezeigt, den VM-Agent auf diesen VMs zu aktivieren.
