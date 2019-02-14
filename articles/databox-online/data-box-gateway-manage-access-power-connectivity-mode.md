@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 11/09/2018
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 8f9172418f15b129a71242038efd4cdb7683bbf7
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.openlocfilehash: 0ad94799320e25d88f616117f1bfcf9f0513aadf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51516545"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873018"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-data-box-gateway-preview"></a>Verwalten des Zugriffs, der Energieeinstellungen und des Konnektivitätsmodus für Azure Data Box Gateway (Vorschau)
 
@@ -35,7 +35,7 @@ Der Zugriff auf Ihr Data Box-Gateway-Gerät wird mithilfe eines Geräteadministr
 
 ### <a name="change-device-administrator-password"></a>Ändern des Geräteadministratorkennworts
 
-Sollten Sie Ihr Kennwort vergessen, können Sie es ändern. Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Geräteadministratorkennwort zu ändern:
+Führen Sie auf der lokalen Webbenutzeroberfläche die folgenden Schritte aus, um das Geräteadministratorkennwort zu ändern:
 
 1. Wechseln Sie auf der lokalen Webbenutzeroberfläche zu **Wartung > Password change** (Kennwortänderung).
 2. Geben Sie das aktuelle Kennwort und dann das neue Kennwort ein. Das angegebene Kennwort muss zwischen 8 und 16 Zeichen umfassen. Das Kennwort muss drei der folgenden Zeichen enthalten: Großbuchstaben, Kleinbuchstaben, Ziffern und Sonderzeichen. Bestätigen Sie das neue Kennwort.

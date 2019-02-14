@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/16/2018
 ms.author: ryanwi
-ms.openlocfilehash: f83f7afa4173316f127c76f20967054bf13c9a6b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 91e7fdd215d246156f601d3b5e6e05b7f8f71f59
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55097902"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116455"
 ---
 # <a name="service-fabric-application-and-service-security"></a>Service Fabric-Anwendungs- und -Dienstsicherheit
 Eine Microservicesarchitektur kann [zahlreiche Vorteile](service-fabric-overview-microservices.md) mit sich bringen. Die Verwaltung der Sicherheit von Microservices ist jedoch eine Herausforderung und unterscheidet sich von der Verwaltung traditioneller monolithischer Anwendungen. 
@@ -31,7 +31,7 @@ Dieser Artikel ist kein Leitfaden für die Sicherheit von Microservices (es sind
 ## <a name="authentication-and-authorization"></a>Authentifizierung und Autorisierung
 Es ist häufig erforderlich, die Verwendung von Ressourcen und APIs, die von einem Dienst verfügbar gemacht werden, auf bestimmte vertrauenswürdige Benutzer oder Clients einzuschränken. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Autorisierung ist der Vorgang, durch den APIs oder Dienste einigen authentifizierten Benutzern, aber nicht allen zur Verfügung gestellt werden.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 Der erste Schritt, Entscheidungen zur Vertrauenswürdigkeit auf API-Ebene zu treffen, ist die Authentifizierung. Authentifizierung ist der Vorgang, bei dem die Identität eines Benutzers zuverlässig ermittelt wird.  Die Authentifizierung wird in Microserviceszenarien in der Regel zentral vorgenommen. Wenn Sie ein API-Gateway verwenden, können Sie [die Authentifizierung an das Gateway auslagern](/azure/architecture/patterns/gateway-offloading). Wenn Sie diesen Ansatz verwenden, stellen Sie sicher, dass die einzelnen Dienste nicht direkt (ohne das API-Gateway) erreicht werden können, es sei denn, es ist zusätzliche Sicherheit für die Authentifizierung von Nachrichten vorhanden, und zwar unabhängig davon, ob sie vom Gateway stammen oder nicht.
 
 Wenn auf Dienste direkt zugegriffen werden kann, kann ein Authentifizierungsdienst wie Azure Active Directory oder ein dedizierter Authentifizierungsmicroservice verwendet werden, der als Sicherheitstokendienst (Security Token Service, STS) fungiert, um Benutzer zu authentifizieren. Vertrauensentscheidungen werden zwischen Diensten mit Sicherheitstoken oder Cookies geteilt. 
@@ -110,7 +110,7 @@ TO DO: Encrypt disks on Linux clusters?-->
 * [Informationen zur Clustersicherheit](service-fabric-cluster-security.md)
 
 <!-- Links -->
-[key-vault-get-started]:../key-vault/key-vault-get-started.md
+[key-vault-get-started]:../key-vault/key-vault-overview.md
 [config-package]: service-fabric-application-and-service-manifests.md
 [service-fabric-cluster-creation-via-arm]: service-fabric-cluster-creation-via-arm.md
 

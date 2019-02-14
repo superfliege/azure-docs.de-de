@@ -15,18 +15,20 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: 34278e02c62bda18a4b4d2f404417e8844dd5fc4
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156679"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56107377"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>Gewusst wie: Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen
 
 > [!NOTE] 
 > In diesem Artikel wird die App Service-Umgebung v1 behandelt. Für die App Service-Umgebung steht eine neuere Version zur Verfügung. Diese ist benutzerfreundlicher und basiert auf einer leistungsfähigeren Infrastruktur. Weitere Informationen zu dieser neuen Version finden Sie unter [Einführung in die App Service-Umgebung](intro.md).
 >
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Übersicht
 App Service-Umgebungen (ASEs) können mit einer internen Adresse eines virtuellen Netzwerks erstellt werden, anstatt mit einer öffentlichen VIP.  Diese interne Adresse wird von einer Azure-Komponente bereitgestellt, die als interner Load Balancer (ILB) bezeichnet wird.  Eine ILB-ASE kann mit dem Azure-Portal erstellt werden.  Für die Erstellung kann auch eine Automation genutzt werden, indem Azure Resource Manager-Vorlagen eingesetzt werden.  In diesem Artikel werden die Schritte und Syntaxelemente beschrieben, die zum Erstellen einer ILB-ASE mit Azure Resource Manager-Vorlagen benötigt werden.
@@ -51,7 +53,7 @@ Nachdem die Datei *azuredeploy.parameters.json* für eine ILB-ASE ausgefüllt wu
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Nachdem die Azure Resource Manager-Vorlage übermittelt wurde, dauert es einige Stunden, bis die ILB-ASE erstellt wird.  Nach Abschluss der Erstellung wird die ILB-ASE auf der Benutzeroberfläche des Portals in der Liste mit den App Service-Umgebungen für das Abonnement angezeigt, über das die Bereitstellung ausgelöst wurde.
 
@@ -124,7 +126,7 @@ Nachdem die Daten in die Datei *azuredeploy.parameters.json* eingefügt wurden, 
     $templatePath="PATH\azuredeploy.json"
     $parameterPath="PATH\azuredeploy.parameters.json"
 
-    New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+    New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 
 Nachdem die Azure Resource Manager-Vorlage übermittelt wurde, dauert die Anwendung der Änderung ca. 40 Minuten pro ASE-Front-End.  Bei einer ASE mit Standardgröße, für die zwei Front-Ends genutzt werden, dauert es beispielsweise ungefähr eine Stunde und 20 Minuten, bis der Vorgang für die Vorlage abgeschlossen ist.  Während der Ausführung der Vorlage kann die ASE nicht skaliert werden.  
 

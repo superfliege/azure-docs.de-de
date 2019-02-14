@@ -16,12 +16,13 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 34d0c4054273babcc56516d290857c4ddb554bf7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819092"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191725"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Schnellstart: Aktualisieren einer Anwendung in Azure Active Directory
 
@@ -144,7 +145,7 @@ Weitere Informationen zu Anwendungsmanifestkonzepten im Allgemeinen finden Sie u
 
 Wie zuvor bereits erwähnt, können Sie zusätzlich zum Verfügbarmachen von/Zugreifen auf APIs für Ihre eigenen Anwendungen Ihre Clientanwendung für den Zugriff auf APIs aktualisieren, die von Microsoft-Ressourcen verfügbar gemacht werden. Die Microsoft Graph-API, die im Portal in der Liste mit den Ressourcen/APIs als „Microsoft Graph“ bezeichnet wird, ist für alle Anwendungen verfügbar, die mit Azure AD registriert werden. Wenn Sie Ihre Clientanwendung in einem Mandanten mit Konten registrieren, für die die Registrierung für ein Office 365-Abonnement durchgeführt wurde, können Sie auch auf die Bereiche zugreifen, die von den verschiedenen Office 365-Ressourcen verfügbar gemacht werden.
 
-Eine vollständige Erläuterung der Bereiche, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie im Artikel [Microsoft Graph-Berechtigungsreferenz](https://developer.microsoft.com/en-us/graph/docs/concepts/permissions_reference).
+Eine vollständige Erläuterung der Bereiche, die von der Microsoft Graph-API verfügbar gemacht werden, finden Sie im Artikel [Microsoft Graph-Berechtigungsreferenz](https://docs.microsoft.com/graph/permissions-reference).
 
 > [!NOTE]
 > Aufgrund einer aktuellen Einschränkung können systemeigene Clientanwendungen die Azure AD Graph-API nur aufrufen, wenn sie die Berechtigung "Zugriff auf das Verzeichnis Ihrer Organisation" verwenden. Diese Einschränkung gilt nicht für Webanwendungen.

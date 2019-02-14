@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Konzepte zur Erkennung von Objekten mithilfe der Maschinelles Sehen-API.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 93ce86a438fca47100a34da2524515b46bcad574
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: ee85e6bd171fc9415e5c7606d6e18a7a22fa6570
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567161"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55866915"
 ---
 # <a name="object-detection"></a>Objekterkennung
 
@@ -95,7 +95,7 @@ Es ist wichtig, die Einschränkungen bei der Objekterkennung zu beachten, damit 
 * Objekte werden nicht nach Marken- oder Produktnamen unterschieden (z.B. verschiedene Arten von Mineralwasser in einem Verkaufsregal). Mithilfe der Funktion [Markenerkennung](concept-brand-detection.md) können Sie jedoch Markeninformationen aus einem Bild auslesen.
 
 ## <a name="use-the-api"></a>Verwenden der API
-Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge für den Inhalt im Abschnitt `"objects"`.
+Die Funktion zur Erkennung von Objekten ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"objects"`.
 
 * [Schnellstart: Analysieren eines Bilds (.NET SDK)](./quickstarts-sdk/csharp-analyze-sdk.md)
 * [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 7ea2a84daaa22e0fc7ff4dc90ca41dd906b808c8
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e0011d36ccff7b9d621679f15776bbdb15d0cbe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159739"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005453"
 ---
-# <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API
+# <a name="media-services-operations-rest-api-overview"></a>Übersicht über die Media Services Operations-REST-API 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
 
 Die **Media Services Operations-REST-API** wird zum Erstellen von Aufträgen, Medienobjekten, Livekanälen und anderen Ressourcen in einem Media Services-Konto verwendet. Weitere Informationen finden Sie in der [Referenz zur Media Services Operations-REST-API](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference).
@@ -55,12 +55,12 @@ Berücksichtigen Sie Folgendes, wenn Sie REST verwenden:
 ## <a name="standard-http-request-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Anforderungsheader
 Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header in Ihre Anforderung einschließen. Darüber hinaus stehen verschiedene optionale Header zur Auswahl. In der folgenden Tabelle sind die erforderlichen Header aufgeführt:
 
-| Header | Typ | Wert |
+| Header | Type | Wert |
 | --- | --- | --- |
 | Autorisierung |Bearer |Das Bearer-Token ist der einzig zulässige Autorisierungsmechanismus. Der Wert muss außerdem das von Azure Active Directory bereitgestellte Zugriffstoken enthalten. |
-| x-ms-version |DECIMAL |2.17 (oder die neueste Version)|
-| DataServiceVersion |DECIMAL |3.0 |
-| MaxDataServiceVersion |DECIMAL |3.0 |
+| x-ms-version |Decimal |2.17 (oder die neueste Version)|
+| DataServiceVersion |Decimal |3.0 |
+| MaxDataServiceVersion |Decimal |3.0 |
 
 > [!NOTE]
 > Da Media Services OData verwendet, um seine REST-APIs verfügbar zu machen, sollten der DataServiceVersion- Header und der MaxDataServiceVersion-Header in alle Anforderungen eingeschlossen werden. Falls dies nicht geschieht, geht Media Services aktuell davon aus, dass der DataServiceVersion-Wert 3.0 verwendet wird.
@@ -69,7 +69,7 @@ Für jeden Media Services-Aufruf müssen Sie eine Reihe obligatorischer Header i
 
 Im Folgenden finden Sie eine Reihe optionaler Header:
 
-| Header | Typ | Wert |
+| Header | Type | Wert |
 | --- | --- | --- |
 | Datum |RFC 1123-Datum |Zeitstempel der Anforderung |
 | Accept |Content-Typ |Der angeforderte Inhaltstyp für die Antwort, z. B.:<p> -application/json;odata=verbose<p> - application/atom+xml<p> Antworten können unterschiedliche Inhaltstypen aufweisen, z. B. einen Blobabruf, bei dem eine erfolgreiche Antwort den Blobdatenstrom als Nutzlast enthält. |
@@ -83,7 +83,7 @@ Im Folgenden finden Sie eine Reihe optionaler Header:
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>Von Media Services unterstützte standardmäßige HTTP-Antwortheader
 Im Folgenden lernen Sie einen Satz von Headern kennen, die je nach der angeforderten Ressource und beabsichtigten Aktion zurückgegeben werden können.
 
-| Header | Typ | Wert |
+| Header | Type | Wert |
 | --- | --- | --- |
 | request-id |Zeichenfolge |Ein eindeutiger, vom Dienst generierter Bezeichner für den aktuellen Vorgang. |
 | client-request-id |Zeichenfolge |Ein Bezeichner, der vom Aufrufer in der ursprünglichen Anforderung angegeben wird, sofern vorhanden. |

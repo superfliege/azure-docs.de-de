@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Der Custom Speech Service ist nun Teil des Speech-Diensts. Wechseln Sie zum Speech-Dienst, um von den neuesten Updates zu Qualität und Features zu profitieren.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 594233b9e345f9578c218b042a64ea167d50addb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 698962aa0e3d72b204c4e990aa1384b44bf3896f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211031"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856890"
 ---
 # <a name="migrate-from-the-custom-speech-service-to-the-speech-service"></a>Migrieren vom Custom Speech Service zum Speech-Dienst
 
@@ -40,12 +40,6 @@ Das Preismodell ist einfacher, da für den Speech-Dienst ein stundenbasiertes Pr
 3. Befolgen Sie die Schnellstarts und die SDK-Beispiele, um die richtigen APIs zu verwenden. Wenn Sie die REST-APIs verwenden, müssen Sie auch die richtigen Endpunkte und Ressourcenschlüssel verwenden.
 
 4. Aktualisieren Sie die Clientanwendung, um den Speech-Dienst und die APIs zu verwenden.
-
-> [!NOTE]
-> * Wenn Sie Speech in Language Understanding (LUIS) aktiviert haben, funktioniert eine einzelne LUIS-Ressource in derselben Region für LUIS und den Speech-Dienst. Weitere Informationen finden Sie unter [Erkennen von Absichten anhand von gesprochener Sprache](how-to-recognize-intents-from-speech-csharp.md).
-> * Die Textübersetzung ist nicht Teil des Speech-Diensts. Diese Funktionalität erfordert ein eigenes Azure-Ressourcenabonnement.
- 
-
 
 ## <a name="migration-for-existing-customers"></a>Migration für Bestandskunden
 

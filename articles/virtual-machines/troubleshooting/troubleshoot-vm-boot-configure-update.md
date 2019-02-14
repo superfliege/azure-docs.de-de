@@ -1,6 +1,6 @@
 ---
 title: VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen. | Microsoft-Dokumentation
-description: 'Hier werden die Schritte zur Behebung des Problems erläutert, bei dem der virtuelle Computer beim Starten hängen bleibt und die folgende Meldung angezeigt wird: „Windows wird vorbereitet. Computer nicht ausschalten.“'
+description: 'Hier werden die Schritte zur Behebung des Problems erläutert, bei dem der virtuelle Computer beim Starten hängen bleibt und die folgende Meldung angezeigt wird: „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.'
 services: virtual-machines-windows
 documentationcenter: ''
 author: Deland-Han
@@ -14,20 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: delhan
-ms.openlocfilehash: eb27b4e6c60f23a55a58cd2aae3cff927ffeaf03
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: a291b7640662da7ea0c205c2027fe83d6243850e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316096"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980362"
 ---
 # <a name="vm-startup-is-stuck-on-getting-windows-ready-dont-turn-off-your-computer-in-azure"></a>VM-Start bleibt in Azure bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
 In diesem Artikel erfahren Sie, was Sie tun können, wenn Ihr virtueller Computer (Virtual Machine, VM) in der Startphase bei „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen bleibt.
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ## <a name="symptoms"></a>Symptome
 
-Wenn Sie die **Startdiagnose** verwenden, um die Momentaufnahme eines virtuellen Computers zu erhalten, wird das Betriebssystem nicht vollständig gestartet. Der virtuelle Computer zeigt die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ an.
+Wenn Sie die **Startdiagnose** verwenden, um die Momentaufnahme eines virtuellen Computers zu erhalten, wird das Betriebssystem nicht vollständig gestartet. Der virtuelle Computer zeigt die Meldung „Windows wird vorbereitet. Computer nicht ausschalten.“ hängen.
 
 ![Beispielmeldung für Windows Server 2012 R2](./media/troubleshoot-vm-configure-update-boot/message1.png)
 
@@ -60,7 +62,7 @@ Ist der Betriebssystemdatenträger verschlüsselt, entsperren Sie den verschlüs
 4. Führen Sie das folgende Cmdlet aus, um den Geheimnisnamen abzurufen.
 
     ```Powershell
-    Login-AzureRmAccount
+    Login-AzAccount
  
     $vmName = “VirtualMachineName”
     $vault = “AzureKeyVaultName”
@@ -132,44 +134,44 @@ Führen Sie nach Erfassung der Speicherabbilddatei die folgenden Schritte aus, u
 
 ```PowerShell
 # To log in to Azure Resource Manager
-Login-AzureRmAccount
+Login-AzAccount
 
 # To view all subscriptions for your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # To select a default subscription for your current session
-Get-AzureRmSubscription –SubscriptionID “SubscriptionID” | Select-AzureRmSubscription
+Get-AzSubscription –SubscriptionID “SubscriptionID” | Select-AzSubscription
 
 $rgname = "RGname"
 $loc = "Location"
 $vmsize = "VmSize"
 $vmname = "VmName"
-$vm = New-AzureRmVMConfig -VMName $vmname -VMSize $vmsize;
+$vm = New-AzVMConfig -VMName $vmname -VMSize $vmsize;
 
-$nic = Get-AzureRmNetworkInterface -Name ("NicName") -ResourceGroupName $rgname;
+$nic = Get-AzNetworkInterface -Name ("NicName") -ResourceGroupName $rgname;
 $nicId = $nic.Id;
 
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nicId;
+$vm = Add-AzVMNetworkInterface -VM $vm -Id $nicId;
 
 $osDiskName = "OSdiskName"
 $osDiskVhdUri = "OSdiskURI"
 
-$vm = Set-AzureRmVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOption attach -Windows
+$vm = Set-AzVMOSDisk -VM $vm -VhdUri $osDiskVhdUri -name $osDiskName -CreateOption attach -Windows
 
-New-AzureRmVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
+New-AzVM -ResourceGroupName $rgname -Location $loc -VM $vm -Verbose
 ```
 
 **Verwaltete Datenträger**
 
 ```PowerShell
 # To log in to Azure Resource Manager
-Login-AzureRmAccount
+Login-AzAccount
 
 # To view all subscriptions for your account
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # To select a default subscription for your current session
-Get-AzureRmSubscription –SubscriptionID "SubscriptionID" | Select-AzureRmSubscription
+Get-AzSubscription –SubscriptionID "SubscriptionID" | Select-AzSubscription
 
 #Fill in all variables
 $subid = "SubscriptionID"
@@ -187,28 +189,28 @@ $DataDiskName = "DataDiskName"
 $osDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$osDiskName";
 $dataDiskResourceId = "/subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/disks/$DataDiskName";
 
-$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize;
+$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize;
 
 #Uncomment to add Availability Set
-#$avSet = Get-AzureRmAvailabilitySet –Name $avName –ResourceGroupName $rgName;
-#$vm = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
+#$avSet = Get-AzAvailabilitySet –Name $avName –ResourceGroupName $rgName;
+#$vm = New-AzVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id;
 
 #Get NIC Resource Id and add
-$nic1 = Get-AzureRmNetworkInterface -Name $nic1Name -ResourceGroupName $rgName;
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
+$nic1 = Get-AzNetworkInterface -Name $nic1Name -ResourceGroupName $rgName;
+$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic1.Id -Primary;
 
 #Uncomment to add a secondary NIC
-#$nic2 = Get-AzureRmNetworkInterface -Name $nic2Name -ResourceGroupName $rgName;
-#$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic2.Id;
+#$nic2 = Get-AzNetworkInterface -Name $nic2Name -ResourceGroupName $rgName;
+#$vm = Add-AzVMNetworkInterface -VM $vm -Id $nic2.Id;
 
 #Windows VM
-$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
+$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Windows;
 
 #Linux VM
-#$vm = Set-AzureRmVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
+#$vm = Set-AzVMOSDisk -VM $vm -ManagedDiskId $osDiskResourceId -name $osDiskName -CreateOption Attach -Linux;
 
 #Uncomment to add additional Data Disk
-#Add-AzureRmVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
+#Add-AzVMDataDisk -VM $vm -ManagedDiskId $dataDiskResourceId -Name $dataDiskName -Caching None -DiskSizeInGB 1024 -Lun 0 -CreateOption Attach;
 
-New-AzureRmVM -ResourceGroupName $rgName -Location $loc -VM $vm;
+New-AzVM -ResourceGroupName $rgName -Location $loc -VM $vm;
 ```

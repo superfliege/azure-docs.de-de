@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: ellacroi
-ms.openlocfilehash: 56a324aba3c5d8f550e5b51ff49b5ee0e74a3415
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c420b1b5fc15f89bd14b8ae42919f24de97da4fc
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658333"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894155"
 ---
 # <a name="marketplace-faqs"></a>Häufig gestellte Fragen zum Marketplace
 
@@ -350,7 +350,7 @@ Wenn Sie noch kein Microsoft-Konto haben, können Sie [ein Konto erstellen](http
 
 **Wozu wird ein Dev Center-Konto benötigt?**
 
-Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Auftrag des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu überprüfen. Weitere Informationen finden Sie unter [Registrieren im Dev Center](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center).
+Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Auftrag des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu überprüfen. Weitere Informationen finden Sie unter [Registrieren im Dev Center](https://docs.microsoft.com/azure/marketplace/become-publisher).
 
 **Für welche Herausgeber ist eine Dev Center-Kontoregistrierung erforderlich?**
 

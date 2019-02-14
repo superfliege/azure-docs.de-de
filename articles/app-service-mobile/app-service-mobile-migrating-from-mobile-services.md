@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: 1c519c658db29152f7ecafa8ac244c922cf4cd9f
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118991"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960733"
 ---
 # <a name="article-top"></a>Migrieren des vorhandenen Azure Mobile Service zu Azure App Service
 Mit der [Allgemeine Verfügbarkeit von Azure App Service]können Azure Mobile Services-Websites problemlos direkt migriert werden, um alle Features von Azure App Service zu nutzen.  Dieses Dokument erläutert, was Sie erwarten können, wenn Sie Ihre Website von Azure Mobile Services zu Azure App Service migrieren.
@@ -332,7 +332,7 @@ Lösung: Wenn Sie Ihre Website klonen möchten, verwenden Sie dazu das Portal.
 ### <a name="changing-webconfig-does-not-work"></a>Das Ändern von „Web.config“ funktioniert nicht
 Für ASP.NET-Websites werden Änderungen an der Datei `Web.config` nicht übernommen.  Azure App Service erstellt beim Start eine geeignete `Web.config`-Datei, um die Mobile Services-Runtime zu unterstützen.  Sie können bestimmte Einstellungen (z.B. benutzerdefinierte Header) mithilfe einer XML-Transformationsdatei überschreiben.  Erstellen Sie eine Datei mit dem Namen `applicationHost.xdt`. Diese Datei muss im Verzeichnis `D:\home\site` für den Azure-Dienst abgelegt werden.  Laden Sie die Datei `applicationHost.xdt` über ein benutzerdefiniertes Bereitstellungsskript oder direkt mithilfe von Kudu hoch.  Hier ist ein Beispieldokument dargestellt:
 
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
   <system.webServer>

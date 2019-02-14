@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d02e552ede4480ee0c4977dc32bbe347ca7db393
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b9d5d6252f22901d2b8ac5a61d924ce12cc7065
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55459484"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004632"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung von Azure SQL-Datenbanken und Pools in einer mehrinstanzenfähigen SaaS-App
 
 In diesem Tutorial werden verschiedene wichtige Leistungsverwaltungsszenarien in SaaS-Anwendungen überprüft. Um über alle Mandantendatenbanken hinweg Aktivitäten mit einem Lastengenerator zu simulieren, werden die integrierten Überwachungs- und Benachrichtigungsfunktionen der SQL-Datenbank und der Pools für elastische Datenbanken veranschaulicht.
 
-Die App Wingtip Tickets SaaS Database Per Tenant verwendet ein Datenmodell mit einem einzelnen Mandanten, wobei jeder Veranstaltungsort (Mandant) über eine eigene Datenbank verfügt. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um von diesem typischen Datenbanknutzungsmuster zu profitieren, werden Mandantendatenbanken in Pools für elastische Datenbanken bereitgestellt. Pools für elastische Datenbanken optimieren die Kosten einer Lösung, indem Ressourcen über viele Datenbanken hinweg gemeinsam genutzt werden. Bei einem solchen Muster ist es wichtig, die Datenbank- und Poolressourcenverwendung zu überwachen, um sicherzustellen, dass die Lasten gleichmäßig auf die Pools verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen, und dass die Pools ihre [eDTU](sql-database-service-tiers.md#dtu-based-purchasing-model)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken und Pools behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
+Die App Wingtip Tickets SaaS Database Per Tenant verwendet ein Datenmodell mit einem einzelnen Mandanten, wobei jeder Veranstaltungsort (Mandant) über eine eigene Datenbank verfügt. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um von diesem typischen Datenbanknutzungsmuster zu profitieren, werden Mandantendatenbanken in Pools für elastische Datenbanken bereitgestellt. Pools für elastische Datenbanken optimieren die Kosten einer Lösung, indem Ressourcen über viele Datenbanken hinweg gemeinsam genutzt werden. Bei einem solchen Muster ist es wichtig, die Datenbank- und Poolressourcenverwendung zu überwachen, um sicherzustellen, dass die Lasten gleichmäßig auf die Pools verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen, und dass die Pools ihre [eDTU](sql-database-purchase-models.md#dtu-based-purchasing-model)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken und Pools behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

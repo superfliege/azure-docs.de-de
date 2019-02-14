@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2019
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6b4acf2a8effaef6d9572a4ca36b29af19f2970d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359986"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996937"
 ---
-# <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht 
+# <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht  
 
 ## <a name="overview"></a>Übersicht
 
@@ -48,7 +48,7 @@ Für alle zusätzlichen Endpunkte: `{EndpointName}-{AccountName}.streaming.media
 
 Ab der Media Services-Version vom Januar 2017 gibt es zwei Streamingtypen: **Standard** und **Premium**. Diese Typen sind Teil der Streamingendpunktversion „2.0“.
 
-Typ|BESCHREIBUNG
+Type|BESCHREIBUNG
 ---|---
 **Standard**|Dies ist die Standardoption, die für die Mehrzahl der Szenarien funktioniert.<br/>Bei dieser Option erhalten Sie eine feste/begrenzte SLA. Die ersten 15 Tage nach Starten des Streamingendpunkts sind kostenlos.<br/>Wenn Sie mehrere Streamingendpunkte erstellen, ist nur der erste die ersten 15 Tage kostenlos. Die anderen werden nach ihrer Inbetriebnahme in Rechnung gestellt. <br/>Beachten Sie, dass die kostenlose Testversion nur für neu erstellte Media Services-Konten und den Standard-Streamingendpunkt gilt. Für vorhandene Streamingendpunkte und zusätzlich erstellte Streamingendpunkte gibt es keinen kostenlosen Testzeitraum, auch wenn diese auf Version 2.0 aktualisiert oder mit Version 2.0 erstellt wurden.
 **Premium**|Diese Option eignet sich für professionelle Szenarien, die eine höhere Skalierung oder mehr Steuerung erfordern.<br/>Eine variable SLA, die auf erworbener Premium-Streamingeinheitskapazität basiert, dedizierte Streamingendpunkte in einer isolierten Umgebung und keine Konkurrenz um Ressourcen.
@@ -71,27 +71,27 @@ Wenn Ihr Streamingendpunkt der **Version 1.0** mindestens eine Premium-Streaming
 
 ### <a name="versions"></a>Versionen
 
-|Typ|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|SLA| 
+|Type|StreamingEndpointVersion|ScaleUnits|CDN|Abrechnung|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |Klassisch|1.0|0|Nicht verfügbar|Kostenlos|Nicht verfügbar|
-|Standard-Streamingendpunkt|2,0|0|JA|Kostenpflichtig|JA|
-|Premium-Streamingeinheiten|1.0|>0|JA|Kostenpflichtig|JA|
-|Premium-Streamingeinheiten|2.0|>0|JA|Kostenpflichtig|JA|
+|Standard-Streamingendpunkt|2,0|0|Ja|Kostenpflichtig|Ja|
+|Premium-Streamingeinheiten|1.0|>0|Ja|Kostenpflichtig|Ja|
+|Premium-Streamingeinheiten|2.0|>0|Ja|Kostenpflichtig|Ja|
 
 ### <a name="features"></a>Features
 
 Feature|Standard|Premium
 ---|---|---
-Erste 15 Tage kostenlos| JA |Nein 
+Erste 15 Tage kostenlos| Ja |Nein 
 Throughput |Bis zu 600 Mbit/s, wenn Azure CDN nicht verwendet wird. Wird mit CDN skaliert.|200 Mbit/s pro Streamingeinheit. Wird mit CDN skaliert.
 SLA | 99,9|99,9 (200 Mbit/s pro Streamingeinheit).
 CDN|Azure CDN, CDN eines Drittanbieters oder kein CDN.|Azure CDN, CDN eines Drittanbieters oder kein CDN.
 Die Abrechnung erfolgt anteilsmäßig| Täglich|Täglich
-Dynamische Verschlüsselung|JA|JA
-Dynamische Paketerstellung|JA|JA
+Dynamische Verschlüsselung|Ja|Ja
+Dynamische Paketerstellung|Ja|Ja
 Skalieren|Automatische Skalierung bis zum Zieldurchsatz.|Zusätzliche Streamingeinheiten
-IP-Filterung/G20/Benutzerdefinierter Host|JA|JA
-Progressiver Download|JA|JA
+IP-Filterung/G20/Benutzerdefinierter Host|Ja|Ja
+Progressiver Download|Ja|Ja
 Empfohlene Verwendung |Für den Großteil der Streamingszenarien empfohlen.|Professionelle Nutzung.<br/>Wenn Sie glauben, dass Ihre Anforderungen über „Standard“ hinausgehen. Kontaktieren Sie uns (amsstreaming@microsoft.com), wenn Sie eine Zielgruppe von mehr als 50.000 Teilnehmern gleichzeitig erwarten.
 
 

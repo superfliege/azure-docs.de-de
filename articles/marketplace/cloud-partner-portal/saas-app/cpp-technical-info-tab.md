@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7a49e69b2e27a38b1a89fedbd6bbd70066b37dc2
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: f0f6bbf5f235d6ae3e86114e583d55c502296470
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451220"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895396"
 ---
 # <a name="saas-application-technical-info-tab"></a>Registerkarte „Technische Informationen“ für SaaS-Anwendung
 
@@ -42,7 +42,7 @@ Damit Sie entscheiden können, welche Art von SaaS-App Sie erstellen, lesen Sie 
 Um diese Benutzeroberfläche zu erstellen, müssen Sie die folgenden Teile konfigurieren:
 
 - Verbinden Sie die Website Ihres SaaS-Diensts mit den SaaS-APIs von Microsoft. Im Artikel [SaaS – Verkaufen über Azure: APIs](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-subscription-apis) ist erläutert, wie Sie diese Verbindung erstellen.
-- Aktivieren Sie „Über Azure verkaufen“ im Cloud-Partnerportal im Formular „Technische Konfiguration“, und geben Sie die erforderlichen Informationen ein. Weitere Informationen über dieses Abrechnungsmodell und wie es implementiert wird finden Sie unter [SaaS – Verkaufen über Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions#overview).
+- Aktivieren Sie „Über Azure verkaufen“ im Cloud-Partnerportal im Formular „Technische Konfiguration“, und geben Sie die erforderlichen Informationen ein. Weitere Informationen über dieses Abrechnungsmodell und wie es implementiert wird finden Sie unter [SaaS – Verkaufen über Azure](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-saas-offer-subscriptions).
 
  ![Formular „Über Microsoft verkaufen“](./media/saas-techinfo-sellthrough-ms.png)
 

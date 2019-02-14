@@ -13,14 +13,16 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 37f6ad26fd0ad4a1ac6c3fd6c6707b5b9aaef331
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: fbf94d0430685ea5791aaaa83669a730986e665c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770213"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111304"
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Anzeigen von Bereitstellungsvorgängen mit Azure Resource Manager
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Sie können die Vorgänge für eine Bereitstellung im Azure-Portal anzeigen. Die Anzeige der Vorgänge ist wahrscheinlich dann am interessantesten, wenn während der Bereitstellung ein Fehler auftritt. Daher konzentriert sich dieser Artikel auf das Anzeigen von fehlerhaften Vorgängen. Das Portal bietet eine Schnittstelle, mit der Sie die Fehler leicht finden und potenzielle Korrekturen ermitteln können.
 
@@ -68,13 +70,13 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup | Where-Object ProvisioningState -eq Failed
   ```
    
-1. Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
+2. Gehen Sie folgendermaßen vor, um die Korrelations-ID abzurufen:
 
   ```powershell
   (Get-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -DeploymentName azuredeploy).CorrelationId
   ```
 
-1. Jede Bereitstellung umfasst mehrere Vorgänge. Jeder Vorgang repräsentiert einen Schritt des Bereitstellungsvorgangs. Um einen Bereitstellungsfehler zu ermitteln, benötigen Sie in der Regel Einzelheiten zu den Bereitstellungsvorgängen. Den Status der Vorgänge können Sie mit **Get-AzResourceGroupDeploymentOperation** abrufen.
+3. Jede Bereitstellung umfasst mehrere Vorgänge. Jeder Vorgang repräsentiert einen Schritt des Bereitstellungsvorgangs. Um einen Bereitstellungsfehler zu ermitteln, benötigen Sie in der Regel Einzelheiten zu den Bereitstellungsvorgängen. Den Status der Vorgänge können Sie mit **Get-AzResourceGroupDeploymentOperation** abrufen.
 
   ```powershell 
   Get-AzResourceGroupDeploymentOperation -ResourceGroupName ExampleGroup -DeploymentName vmDeployment
@@ -92,7 +94,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
                    serviceRequestId:0196828d-8559-4bf6-b6b8-8b9057cb0e23...}
   ```
 
-1. Um weitere Informationen zu fehlgeschlagenen Vorgängen zu erhalten, rufen Sie die Eigenschaften für Vorgänge mit dem Zustand **Fehler** ab.
+4. Um weitere Informationen zu fehlgeschlagenen Vorgängen zu erhalten, rufen Sie die Eigenschaften für Vorgänge mit dem Zustand **Fehler** ab.
 
   ```powershell
   (Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object ProvisioningState -eq Failed
@@ -115,7 +117,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   ```
 
     Beachten Sie die serviceRequestId und die trackingId für den Vorgang. Die serviceRequestId kann hilfreich sein, wenn Sie bei der Problembehandlung für eine Bereitstellung mit dem technischen Support zusammenarbeiten. Sie verwenden die trackingId im nächsten Schritt, um sich auf einen bestimmten Vorgang zu konzentrieren.
-1. Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen bestimmten fehlerhaften Vorgang abzurufen:
+5. Verwenden Sie den folgenden Befehl, um die Statusmeldung für einen bestimmten fehlerhaften Vorgang abzurufen:
 
   ```powershell
   ((Get-AzResourceGroupDeploymentOperation -DeploymentName Microsoft.Template -ResourceGroupName ExampleGroup).Properties | Where-Object trackingId -eq f4ed72f8-4203-43dc-958a-15d041e8c233).StatusMessage.error
@@ -128,7 +130,7 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-1. Jeder Bereitstellungsvorgang in Azure enthält Inhalte für Anforderung und Antwort. Der Inhalt der Anforderung ist das, was Sie während der Bereitstellung an Azure senden (z.B. erstellen einer VM, eines Betriebssystemdatenträgers und andere Ressourcen). Der Inhalts der Antwort ist das, was Azure aus der Bereitstellungsanforderung zurücksendet. Während der Bereitstellung können Sie den Parameter **DeploymentDebugLogLevel** verwenden, um anzugeben, dass die Anforderung und/oder Antwort im Protokoll beibehalten werden. 
+6. Jeder Bereitstellungsvorgang in Azure enthält Inhalte für Anforderung und Antwort. Der Inhalt der Anforderung ist das, was Sie während der Bereitstellung an Azure senden (z.B. erstellen einer VM, eines Betriebssystemdatenträgers und andere Ressourcen). Der Inhalts der Antwort ist das, was Azure aus der Bereitstellungsanforderung zurücksendet. Während der Bereitstellung können Sie den Parameter **DeploymentDebugLogLevel** verwenden, um anzugeben, dass die Anforderung und/oder Antwort im Protokoll beibehalten werden. 
 
   Sie erhalten diese Information aus dem Protokoll, und speichern sie lokal mit den folgenden PowerShell-Befehlen:
 
@@ -146,13 +148,13 @@ Um die Bereitstellungsvorgänge anzuzeigen, gehen Sie folgendermaßen vor:
   az group deployment show -g ExampleGroup -n ExampleDeployment
   ```
   
-1. Einer der zurückgegebenen Werte ist die **correlationId**. Dieser Wert wird verwendet, um verknüpfte Ereignisse nachzuverfolgen. Er kann hilfreich sein, wenn Sie mit dem technischen Support an der Problembehandlung für eine Bereitstellung zusammenarbeiten.
+2. Einer der zurückgegebenen Werte ist die **correlationId**. Dieser Wert wird verwendet, um verknüpfte Ereignisse nachzuverfolgen. Er kann hilfreich sein, wenn Sie mit dem technischen Support an der Problembehandlung für eine Bereitstellung zusammenarbeiten.
 
   ```azurecli
   az group deployment show -g ExampleGroup -n ExampleDeployment --query properties.correlationId
   ```
 
-1. Verwenden Sie Folgendes, um die Vorgänge einer Bereitstellung anzuzeigen:
+3. Verwenden Sie Folgendes, um die Vorgänge einer Bereitstellung anzuzeigen:
 
   ```azurecli
   az group deployment operation list -g ExampleGroup -n ExampleDeployment

@@ -4,19 +4,19 @@ titleSuffix: Azure
 description: Referenz für die vordefinierten Domänen, die vordefinierte Sammlungen von Absichten und Entitäten aus LUIS (Language Understanding Intelligent Services) darstellen.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: d17b6271468a9259314876e18ff7ead288c990bc
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: f03efe13cdc31381cd67317879b7bd936fc35e8f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221010"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868955"
 ---
 # <a name="prebuilt-domain-reference-for-your-luis-app"></a>Vordefinierter Domänenverweis für die LUIS-App
 Diese Referenz enthält Informationen über die [vordefinierten Domänen](luis-how-to-use-prebuilt-domains.md), bei denen es sich um vordefinierte Sammlungen der von LUIS gebotenen Absichten und Entitäten handelt.
@@ -103,7 +103,7 @@ Die Communication-Domäne stellt Absichten und Entitäten im Zusammenhang mit E-
 | AssignContactNickname| Hinzufügen eines Spitznamens zu einem Kontakt|„Isaac“ in „Vati“ ändern <br/>Klaus Spitznamen bearbeiten<br/>Spitzname zu Leni Martin hinzufügen|
 | CallVoiceMail| Verbinden mit der Voicemail des Benutzers|Verbinde mich mit meiner Voicemailbox <br/>Voicemail<br/>Voicemail anrufen|
 | CheckIMStatus| Überprüfen des Status eines Kontakts in Skype|Ist Klaus Onlinestatus auf „abwesend“ festgelegt? <br/>Ist Helga zum Chatten verfügbar?|
-| Confirm| Bestätigen einer Aktion.|JA<br/>Okay<br/>In Ordnung<br/>Ich bestätige, dass ich diese E-Mail senden möchte.<br/>|
+| Confirm| Bestätigen einer Aktion.|Ja<br/>Okay<br/>In Ordnung<br/>Ich bestätige, dass ich diese E-Mail senden möchte.<br/>|
 | Dial| Tätigen eines Telefonanrufs.|Klaus anrufen<br/>Bitte wähle 311<br/>|
 | FindContact| Suchen von Kontaktinformationen anhand des Namens|Helgas Nummer suchen<br/>Zeige mir Helgas Nummer.<br/>|
 | FindSpeedDial| Suchen der Kurzwahl, die für eine Telefonnummer festgelegt ist und umgekehrt.|Was ist meine Kurzwahl 5?<br/>Habe ich eine Kurzwahl festgelegt?<br/>Was ist die Kurzwahl für 94 15 55 53 33?|

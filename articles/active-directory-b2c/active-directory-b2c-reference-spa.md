@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7342849af63ef2f153a89418fbf87f60bd4c4833
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82483d8d84349a929ef4892d5e9571ea65b9a88a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183287"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104837"
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: Anmeldung über einseitige Apps mit dem impliziten OAuth 2.0-Fluss
 
@@ -30,7 +30,7 @@ Zum Unterstützen dieser Anwendungen verwendet Azure Active Directory B2C (Azure
 Azure AD B2C erweitert den impliziten OAuth 2.0-Standardfluss, sodass mehr als nur eine einfache Authentifizierung und Autorisierung erfolgt. Azure AD B2C führt den [Richtlinienparameter](active-directory-b2c-reference-policies.md) ein. Mit dem Richtlinienparameter können Sie OAuth 2.0 zum Hinzufügen von Richtlinien zu Ihrer App verwenden, z. B. für Benutzerflows für die Registrierung, Anmeldung und Profilverwaltung. In diesem Artikel wird Ihnen gezeigt, wie Sie den impliziten Fluss und Azure AD für die Implementierung dieser verschiedenen Oberflächen in Ihren einseitigen Anwendungen verwenden. Nützliche Hinweise für den Einstieg finden Sie auch in unseren Beispielen für [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi) und [Microsoft .NET](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi).
 
 In den HTTP-Beispielanforderungen in diesem Artikel wird das Azure AD B2C-Beispielverzeichnis **fabrikamb2c.onmicrosoft.com** verwendet. Außerdem verwenden wir unsere eigene Beispielanwendung und beispielhafte Benutzerflows. Sie können selbst Anforderungen mit diesen Werten testen oder eigene Werte verwenden.
-Erfahren Sie, wie Sie [eigene Azure AD B2C-Verzeichnisse, -Anwendungen und -Benutzerflows erstellen](#use-your-own-b2c-tenant).
+Erfahren Sie, wie Sie [eigene Azure AD B2C-Verzeichnisse, -Anwendungen und -Benutzerflows erstellen](#use-your-own-azure-ad-b2c-tenant).
 
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm

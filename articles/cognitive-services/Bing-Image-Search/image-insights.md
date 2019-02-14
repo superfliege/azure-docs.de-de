@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie die Bing-Bildersuche-API verwendet wird, um weitere Informationen zu einem Bild abzurufen.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 0BCD936E-D4C0-472D-AE40-F4B2AB6912D5
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: article
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8798ecd15c673c26c5b1be0920887ff493cc6a85
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: b2dfbeaae46be58e94f6c3cfc5bbd97d82382e54
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818684"
+ms.locfileid: "55876605"
 ---
 # <a name="get-image-insights-with-the-bing-image-search-api"></a>Abrufen von Bildauswertungen mit der Bing-Bildersuche-API
 

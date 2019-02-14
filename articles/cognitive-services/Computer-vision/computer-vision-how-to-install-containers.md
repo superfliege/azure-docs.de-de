@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Informationen zum Herunterladen, Installieren und Ausführen von Containern für maschinelles Sehen in diesem Schritt-für-Schritt-Tutorial.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 1e7f62d35e9850202b7d55c3c3440ff88413931d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 58a22253efb6928c87937e4aba852dd93a3e4422
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473492"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978543"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>Installieren und Ausführen von Texterkennungscontainern
 
@@ -72,7 +72,7 @@ Verwenden Sie den Befehl [`docker pull`](https://docs.docker.com/engine/referenc
 
 ### <a name="docker-pull-for-the-recognize-text-container"></a>Docker-Pullvorgang für den Container für die Texterkennung
 
-```Docker
+```
 docker pull containerpreview.azurecr.io/microsoft/cognitive-services-rocognize-text:latest
 ```
 
@@ -146,18 +146,7 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](./computer-vision-reso
 
 Der Container für die Texterkennung sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Texterkennung_ in Ihrem Azure-Konto. 
 
-Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft. 
-
-Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
-
-| Option | BESCHREIBUNG |
-|--------|-------------|
-| `ApiKey` | Der API-Schlüssel der Ressource vom Typ _Texterkennung_ zum Nachverfolgen von Abrechnungsinformationen. |
-| `Billing` | Der Endpunkt der Ressource vom Typ _Texterkennung_ zum Nachverfolgen von Abrechnungsinformationen.|
-| `Eula` | Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.<br/>Der Wert dieser Option muss auf `accept` festgelegt werden. |
-
-> [!IMPORTANT]
-> Alle drei Optionen müssen mit gültigen Werten angegeben werden, damit der Container gestartet wird.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](./computer-vision-resource-container-config.md).
 

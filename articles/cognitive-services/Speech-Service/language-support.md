@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Azure Speech Services unterstützen neben der Sprachübersetzung zahlreiche Sprachen für die Konvertierung von Sprache zu Text und Text zu Sprache. Dieser Artikel enthält eine umfassende Liste zur Sprachunterstützung der einzelnen Dienste.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: bc85de9d2d94cd325095f5f6555105a724865005
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 22916a188c79d5894faf48dd71d6ab17a582cf8b
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213311"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878033"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Sprach- und Regionsunterstützung für die API für den Spracherkennungsdienst
 
@@ -31,30 +31,30 @@ Die Microsoft-Spracherkennungs-API unterstützt die folgenden Sprachen. Es sind 
  ar-EG | Arabisch (Ägypten), modernes Hocharabisch | Nein  | Ja | Nein 
  ca-ES | Katalanisch (Spanien) | Nein  | Nein  | Nein 
  da-DK | Dänisch (Dänemark) | Nein  | Nein  | Nein 
- de-DE | Deutsch (Deutschland) | JA | JA | Nein 
- en-AU | Englisch (Australien) | Nein  | Ja | JA
- en-CA | Englisch (Kanada) | Nein  | Ja | JA
- en-GB | Englisch (Vereinigtes Königreich) | Nein  | Ja | JA
- en-IN | Englisch (Indien) | JA | Ja | JA
- en-NZ | Englisch (Neuseeland) | Nein  | Ja | JA  
- en-US | Englisch (USA) | JA | Ja | JA
- es-ES | Spanisch (Spanien) | JA | JA | Nein 
+ de-DE | Deutsch (Deutschland) | Ja | Ja | Nein 
+ en-AU | Englisch (Australien) | Nein  | Ja | Ja
+ en-CA | Englisch (Kanada) | Nein  | Ja | Ja
+ en-GB | Englisch (Vereinigtes Königreich) | Nein  | Ja | Ja
+ en-IN | Englisch (Indien) | Ja | Ja | Ja
+ en-NZ | Englisch (Neuseeland) | Nein  | Ja | Ja  
+ en-US | Englisch (USA) | Ja | Ja | Ja
+ es-ES | Spanisch (Spanien) | Ja | Ja | Nein 
  es-MX | Spanisch (Mexiko) | Nein  | Ja | Nein 
  fi-FI | Finnisch (Finnland) | Nein  | Nein  | Nein 
  fr-CA | Französisch (Kanada) | Nein  | Ja | Nein 
- fr-FR | Französisch (Frankreich) | JA | JA | Nein 
+ fr-FR | Französisch (Frankreich) | Ja | Ja | Nein 
  hi-IN | Hindi (Indien) | Nein  | Ja | Nein 
- it-IT | Italienisch (Italien) | JA | JA | Nein 
+ it-IT | Italienisch (Italien) | Ja | Ja | Nein 
  ja-JP | Japanisch (Japan) | Nein  | Ja | Nein 
  ko-KR | Koreanisch (Korea) | Nein  | Ja | Nein 
  nb-NO | Norwegisch, Bokmål (Norwegen) | Nein  | Nein  | Nein 
  nl-NL | Niederländisch (Niederlande) | Nein  | Ja | Nein 
  pl-PL | Polnisch (Polen) | Nein  | Nein  | Nein 
- pt-BR | Portugiesisch (Brasilien) | JA | JA | Nein 
+ pt-BR | Portugiesisch (Brasilien) | Ja | Ja | Nein 
  pt-PT | Portugiesisch (Portugal) | Nein  | Ja | Nein 
- ru-RU | Russisch (Russland) | JA | JA | Nein 
+ ru-RU | Russisch (Russland) | Ja | Ja | Nein 
  sv-SE | Schwedisch (Schweden) | Nein  | Nein  | Nein 
- zh-CN | Chinesisch (Mandarin, vereinfacht) | JA | JA | Nein 
+ zh-CN | Chinesisch (Mandarin, vereinfacht) | Ja | Ja | Nein 
  zh-HK | Chinesisch (Mandarin, Traditionell) | Nein  | Ja | Nein 
  zh-TW | Chinesisch (Taiwanesisch, Mandarin) | Nein  | Ja | Nein 
  th-TH | Thailändisch (Thailand) | Nein  | Nein  | Nein 

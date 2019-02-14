@@ -4,7 +4,7 @@ description: Der Artikel enthält eine Liste der bewährten Methoden zur Azure-S
 services: azure-security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 1cbbf8dc-ea94-4a7e-8fa0-c2cb198956c5
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/10/2018
 ms.author: terrylan
-ms.openlocfilehash: 3cee4a9e7d32214610b5d5de21f6853148ed01c4
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e607c1ce032972c62f4e70e9cb620e83e57a881b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345714"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115537"
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Sicherheit in Azure – bewährte Methoden und Muster
 
@@ -36,7 +36,7 @@ Die bewährten Methoden sind als Ressource für IT-Experten ausgelegt. Dazu geh�
 * [Bewährte Methoden für Azure PaaS](security-paas-deployments.md)
 * [Bewährte Methoden für die Azure Service Fabric-Sicherheit](azure-service-fabric-security-best-practices.md)
 * [Bewährte Methoden für die Sicherheit virtueller Azure-Computer](azure-security-best-practices-vms.md)
-* [Implementing a secure hybrid network architecture in Azure (Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure)](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
+* [Implementieren einer sicheren Hybrid-Netzwerkarchitektur in Azure](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
 * [Internet der Dinge – bewährte Methoden für die Sicherheit](azure-security-iot-best-practices.md)
 * [Schützen von PaaS-Datenbanken in Azure](security-paas-applications-using-sql.md)
 * [Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure App Service](security-paas-applications-using-app-services.md)
