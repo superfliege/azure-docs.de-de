@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 81cdde409841ad3f5952147a7d3ab2b1adbcbd59
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a68deb2cb6de90c577f2d828e24a1747662c7e2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474189"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162202"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-aha"></a>Tutorial: Azure Active Directory-Integration mit Aha!
 
@@ -72,7 +73,7 @@ Zum Konfigurieren der Integration von Azure AD in Aha! müssen Sie Aha! aus dem 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Aha! mithilfe eines Testbenutzers namens **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Aha! eine Linkbeziehung hergestellt werden.
+Damit einmaliges Anmelden funktioniert, muss zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Aha! muss eine Linkbeziehung hergestellt werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Aha! müssen Sie die folgenden Bausteine ausführen:
 

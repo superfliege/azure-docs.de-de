@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um unter Verwendung des Bing-Entitätssuche-SDK für C# nach Entitäten zu suchen.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: bcb5f77503566b06ee8e3346ec81dfabecbe50a5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 6a365ef5421de3ceb31c5cc78a424f786f174ab3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757754"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861917"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Senden einer Suchanforderung mit dem Bing-Entitätssuche-SDK für C#
 

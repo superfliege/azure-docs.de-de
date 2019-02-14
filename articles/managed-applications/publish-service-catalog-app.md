@@ -9,14 +9,16 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e9db85fb91dd0c9a33cc8205bdb30a648dfd38a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: dc86943924cd0c47c465e9d3bac4ca91b73a3ff5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438744"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112780"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Erstellen und Veröffentlichen einer Definition für die verwaltete Anwendung
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Sie können [verwaltete Azure-Anwendungen](overview.md) erstellen und veröffentlichen, die für Mitglieder Ihrer Organisation vorgesehen sind. Eine IT-Abteilung kann beispielsweise verwaltete Anwendungen veröffentlichen, die die Standards der Organisation erfüllen. Diese verwalteten Anwendungen stehen über den Dienstkatalog, aber nicht über den Azure Marketplace zur Verfügung.
 
@@ -30,7 +32,7 @@ Um eine verwaltete Anwendung für den Dienstkatalog zu veröffentlichen, gehen S
 
 Für diesen Artikel verfügt die verwaltete Anwendung nur über ein Speicherkonto. Es soll die Schritte zum Veröffentlichen einer verwalteten Anwendung veranschaulichen. Vollständige Beispiele finden Sie unter [Sample projects for Azure managed applications](sample-projects.md) (Beispielprojekte für verwaltete Azure-Anwendungen).
 
-Für die PowerShell-Beispiele in diesem Artikel wird mindestens die Azure PowerShell-Version 6.2 benötigt. [Aktualisieren Sie Ihre Version](/powershell/azure/azurerm/install-azurerm-ps), sofern erforderlich.
+Für die PowerShell-Beispiele in diesem Artikel wird mindestens die Azure PowerShell-Version 6.2 benötigt. [Aktualisieren Sie Ihre Version](/powershell/azure/install-Az-ps), sofern erforderlich.
 
 ## <a name="create-the-resource-template"></a>Erstellen der Ressourcenvorlage
 
@@ -149,8 +151,8 @@ Fügen Sie die beiden Dateien einer ZIP-Datei mit dem Namen „app.zip“ hinzu.
 Laden Sie das Paket an einen zugänglichen Speicherort hoch, wo es verwendet werden kann. 
 
 ```powershell
-New-AzureRmResourceGroup -Name storageGroup -Location eastus
-$storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
+New-AzResourceGroup -Name storageGroup -Location eastus
+$storageAccount = New-AzStorageAccount -ResourceGroupName storageGroup `
   -Name "mystorageaccount" `
   -Location eastus `
   -SkuName Standard_LRS `
@@ -158,9 +160,9 @@ $storageAccount = New-AzureRmStorageAccount -ResourceGroupName storageGroup `
 
 $ctx = $storageAccount.Context
 
-New-AzureStorageContainer -Name appcontainer -Context $ctx -Permission blob
+New-AzStorageContainer -Name appcontainer -Context $ctx -Permission blob
 
-Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
+Set-AzStorageBlobContent -File "D:\myapplications\app.zip" `
   -Container appcontainer `
   -Blob "app.zip" `
   -Context $ctx 
@@ -175,7 +177,7 @@ Der zweite Schritt besteht darin, eine Benutzergruppe oder Anwendung für das Ve
 Sie benötigen zum Verwalten der Ressourcen die Objekt-ID der Benutzergruppe. 
 
 ```powershell
-$groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
+$groupID=(Get-AzADGroup -DisplayName mygroup).Id
 ```
 
 ### <a name="get-the-role-definition-id"></a>Abrufen der Rollendefinitions-ID
@@ -183,7 +185,7 @@ $groupID=(Get-AzureRmADGroup -DisplayName mygroup).Id
 Als Nächstes benötigen Sie die Rollendefinitions-ID der integrierten RBAC-Rolle, der Sie Zugriff auf den Benutzer, die Benutzergruppe oder Anwendung gewähren möchten. In der Regel verwenden Sie die Rolle „Besitzer, „Mitwirkender“ oder „Leser“. Der folgende Befehl zeigt, wie die Rollendefinitions-ID für die Rolle „Besitzer“ abgerufen wird:
 
 ```powershell
-$ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
+$ownerID=(Get-AzRoleDefinition -Name Owner).Id
 ```
 
 ### <a name="create-the-managed-application-definition"></a>Erstellen der Definition für die verwaltete Anwendung
@@ -191,15 +193,15 @@ $ownerID=(Get-AzureRmRoleDefinition -Name Owner).Id
 Falls Sie noch nicht über eine Ressourcengruppe zum Speichern der Definition Ihrer verwalteten Anwendung verfügen, erstellen Sie jetzt eine:
 
 ```powershell
-New-AzureRmResourceGroup -Name appDefinitionGroup -Location westcentralus
+New-AzResourceGroup -Name appDefinitionGroup -Location westcentralus
 ```
 
 Erstellen Sie nun die Definitionsressource für die verwaltete Anwendung.
 
 ```powershell
-$blob = Get-AzureStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
+$blob = Get-AzStorageBlob -Container appcontainer -Blob app.zip -Context $ctx
 
-New-AzureRmManagedApplicationDefinition `
+New-AzManagedApplicationDefinition `
   -Name "ManagedStorage" `
   -Location "westcentralus" `
   -ResourceGroupName appDefinitionGroup `

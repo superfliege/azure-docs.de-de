@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 93d7a6e884cf02fa41838d4a07644c122a43823b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: e2831191905da1b9e0ad55131be9eaa7aa13950e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54823826"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894359"
 ---
 # <a name="tutorial-track-usage-of-a-lab-in-azure-lab-service"></a>Tutorial: Nachverfolgen der Nutzung eines Labs in Azure Lab Services
 In diesem Tutorial wird gezeigt, wie ein Lab-Ersteller/-Besitzer die Nutzung eines Labs nachverfolgen kann.
@@ -55,6 +55,9 @@ Wenn Sie mit der Maus auf eine Zeile in der Liste der VMs zeigen, werden Steuere
 - Starten eines virtuellen Computers
 - Anhalten eines virtuellen Computers
 - Löschen eines virtuellen Computers
+
+
+![Steuerelemente für virtuelle Computer](../media/tutorial-track-usage/vm-controls.png)
 
 Sie können auch die Symbolleistenschaltflächen verwenden, um einen virtuellen Computer zu starten, zu beenden oder zu löschen. 
 
