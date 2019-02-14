@@ -13,14 +13,15 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 49a2e16d198130d1c72d36377be1d914cbe3351b
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: fcef143f48bc9e7864fe69900e3c9002fd597fb5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745247"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001867"
 ---
-# <a name="create-a-data-factory-and-pipeline-using-python"></a>Erstellen einer Data Factory und Pipeline mithilfe von Python
+# <a name="quickstart-create-a-data-factory-and-pipeline-using-python"></a>Schnellstart: Erstellen einer Data Factory und Pipeline mithilfe von Python
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuelle Version](quickstart-create-data-factory-python.md)
@@ -47,6 +48,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 2.  Verwenden Sie Tools wie [Azure Storage-Explorer](http://storageexplorer.com/), um den Container **adfv2tutorial** und den Ordner **input.txt** im Container zu erstellen. Laden Sie anschließend die Datei **input.txt** in den Ordner **input** hoch.
 
 ## <a name="install-the-python-package"></a>Installieren des Python-Pakets
+
 1. Öffnen Sie ein Terminal oder eine Eingabeaufforderung mit Administratorberechtigungen. 
 2. Installieren Sie zunächst das Python-Paket für Azure-Verwaltungsressourcen:
 
@@ -104,7 +106,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
             print("\tCopy duration: {}".format(activity_run.output['copyDuration']))
         else:
             print("\tErrors: {}".format(activity_run.error['message']))
-
     ```
 3. Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine Instanz der DataFactoryManagementClient-Klasse erstellt. Sie verwenden dieses Objekt, um die Data Factory, einen verknüpften Dienst, Datasets und eine Pipeline zu erstellen. Sie verwenden dieses Objekt ebenfalls zum Überwachen der Ausführungsdetails der Pipeline. Legen Sie die Variable **subscription_id** auf die ID Ihres Azure-Abonnements fest. Eine Liste der Azure-Regionen, in denen Data Factory derzeit verfügbar ist, finden Sie, indem Sie die für Sie interessanten Regionen auf der folgenden Seite auswählen und dann **Analysen** erweitern, um **Data Factory** zu finden: [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/). Die von der Data Factory verwendeten Datenspeicher (Azure Storage, Azure SQL-Datenbank usw.) und Computedienste (HDInsight usw.) können sich in anderen Regionen befinden.
 
@@ -165,9 +166,11 @@ Um Ihre Datenspeicher und Compute Services mit der Data Factory zu verknüpfen, 
     print_item(ls)
 ```
 ## <a name="create-datasets"></a>Erstellen von Datasets
+
 In diesem Abschnitt erstellen Sie zwei Datasets: eines für die Quelle und das andere für die Senke.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Erstellen eines Datasets für das Azure-Quellblob
+
 Fügen Sie der Main-Methode den folgenden Code hinzu, der ein Azure-Blobdataset erstellt. Weitere Informationen zu den Eigenschaften eines Azure-Blobdatasets finden Sie im Artikel [Azure-Blobconnector](connector-azure-blob-storage.md#dataset-properties).
 
 Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellt haben.
@@ -184,6 +187,7 @@ Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses B
 ```
 
 ### <a name="create-a-dataset-for-sink-azure-blob"></a>Erstellen eines Datasets für das Azure-Senkenblob
+
 Fügen Sie der Main-Methode den folgenden Code hinzu, der ein Azure-Blobdataset erstellt. Weitere Informationen zu den Eigenschaften eines Azure-Blobdatasets finden Sie im Artikel [Azure-Blobconnector](connector-azure-blob-storage.md#dataset-properties).
 
 Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses Blobdataset verweist auf den verknüpften Azure Storage-Dienst, den Sie im vorherigen Schritt erstellt haben.
@@ -218,7 +222,6 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der eine **Pipeline mi
     print_item(p)
 ```
 
-
 ## <a name="create-a-pipeline-run"></a>Erstellen einer Pipelineausführung
 
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineausführung auslöst**.
@@ -232,6 +235,7 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der **eine Pipelineaus
 ```
 
 ## <a name="monitor-a-pipeline-run"></a>Überwachen einer Pipelineausführung
+
 Fügen Sie der **Main**-Methode den folgenden Code hinzu, um die Pipelineausführung zu überwachen:
 
 ```python
@@ -251,6 +255,7 @@ main()
 ```
 
 ## <a name="full-script"></a>Vollständiges Skript
+
 Hier sehen Sie den vollständigen Python-Code:
 
 ```python
@@ -381,6 +386,7 @@ main()
 ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes
+
 Erstellen und starten Sie die Anwendung, und überprüfen Sie dann die Pipelineausführung.
 
 Die Konsole gibt den Status der Erstellung der Data Factory, des verknüpften Diensts, der Datasets, der Pipeline und der Pipelineausführung aus. Warten Sie, bis Sie die Ausführungsdetails der Kopieraktivität mit der Größe der gelesenen/geschriebenen Daten sehen. Verwenden Sie dann Tools wie z.B. [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um zu überprüfen, ob die Blobs wie von Ihnen in den Variablen angegeben von „inputBlobPath“ nach „outputBlobPath“ kopiert werden.
@@ -417,8 +423,8 @@ Number of bytes written: 18
 Copy duration: 4
 ```
 
-
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
 Um die Data Factory zu löschen, fügen Sie den folgenden Code zum Programm hinzu:
 
 ```python
@@ -426,4 +432,5 @@ adf_client.factories.delete(rg_name,df_name)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Arbeiten Sie die [Tutorials](tutorial-copy-data-dot-net.md) durch, um zu erfahren, wie Sie Data Factory in anderen Szenarien verwenden können.

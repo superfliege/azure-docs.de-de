@@ -12,12 +12,12 @@ ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 2c0d32c5e95504ac99c739af89795ac22a768c63
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751938"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099733"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
 
@@ -310,7 +310,7 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 Hier gibt mehrere Möglichkeiten:
 
 - **[Datensynchronisierung](sql-database-sync-data.md)** – Diese Funktion unterstützt Sie bei der bidirektionalen Synchronisierung von Daten zwischen mehreren lokalen SQL Server-Datenbanken und SQL-Datenbank. Um Daten mit lokalen SQL Server-Datenbanken zu synchronisieren, müssen Sie den Synchronisierungs-Agent auf einem lokalen Computer installieren und konfigurieren und den ausgehenden TCP-Port 1433 öffnen.
-- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**: Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-cloud-migrate.md#method-2-use-transactional-replication).
+- **[Transaktionsreplikation](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)**: Mit der Transaktionsreplikation können Sie Ihre lokalen Daten mit Azure SQL DB synchronisieren. Dabei stellt die lokale Umgebung den Verleger und Azure SQL DB den Abonnenten dar. Zurzeit wird nur dieses Szenario unterstützt. Weitere Informationen dazu, wie Sie Daten mit minimaler Ausfallzeit aus der lokalen Infrastruktur zu Azure SQL migrieren, finden Sie unter: [Verwenden der Transaktionsreplikation](sql-database-single-database-migrate.md#method-2-use-transactional-replication).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

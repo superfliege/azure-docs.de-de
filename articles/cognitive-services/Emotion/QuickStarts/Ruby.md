@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Informationen und Codebeispiele für den schnellen Einstieg in die Verwendung der Emotionen-API mit Ruby.
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: emotion-api
 ms.topic: quickstart
 ms.date: 05/23/2017
-ms.author: anroth
+ms.author: nitinme
 ROBOTS: NOINDEX
-ms.openlocfilehash: 9ab0f4128e163ca887cf8f03425e33f3fbb6f01a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b1bddbffa3a58158b3a87c4681557ff8f10a6334
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221979"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232672"
 ---
 # <a name="quickstart-build-an-app-to-recognize-emotions-on-faces-in-an-image"></a>Schnellstart: Erstellen einer App zur Erkennung von Emotionen auf Gesichtern in einem Bild
 

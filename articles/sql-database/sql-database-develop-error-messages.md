@@ -1,5 +1,5 @@
 ---
-title: SQL-Fehlercodes – Datenbankverbindungsfehler | Microsoft-Dokumentation
+title: SQL-Fehlercodes – Datenbankverbindungsfehler | Microsoft Docs
 description: 'Erfahren Sie mehr über SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen, beispielsweise zu häufigen Datenbankverbindungsfehlern, Datenbankkopiefehlern und allgemeinen Fehlern. '
 keywords: SQL-Fehlercodes,Zugriff auf SQL,Datenbankverbindungsfehler,SQL-Fehlercodes
 services: sql-database
@@ -12,13 +12,13 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6bbb2bfa0fe3c157114d53b070d6c98e68099643
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 4da18fffc98367f24ec95bd27617e7638e3d5705
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464730"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003668"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL-Fehlercodes für SQL-Datenbank-Clientanwendungen: Datenbankverbindungsfehler und andere Probleme
 
@@ -53,7 +53,7 @@ Eine Erörterung der *Sperrfrist* für Clients, die ADO.NET verwenden, finden Si
 
 Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein neuer Versuch unternommen werden: 
 
-| Fehlercode | Severity | Beschreibung |
+| Fehlercode | Severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 4060 |16 |Die von der Anmeldung angeforderte „%.&#x2a;ls“-Datenbank kann nicht geöffnet werden. Fehler bei der Anmeldung. |
 | 40197 |17 |Dienstfehler beim Verarbeiten Ihrer Anforderung. Wiederholen Sie den Vorgang. Fehlercode %d.<br/><br/>Sie erhalten diesen Fehler, wenn der Dienst aufgrund von Software- oder Hardwareupgrades, Hardwarefehlern oder sonstigen Failoverproblemen ausgefallen ist. Der Fehlercode (%d), der in der Meldung zum Fehler 40197 enthalten ist, liefert weitere Informationen zur Art des aufgetretenen Fehlers oder Failovers. Beispiele für Fehlercodes, die in die Meldung zum Fehler 40197 eingebettet sind, lauten 40020, 40143, 40166 und 40540.<br/><br/>Wenn Sie erneut eine Verbindung mit Ihrem SQL-Datenbank-Server herstellen, werden Sie automatisch mit einer intakten Kopie Ihrer Datenbank verbunden. Ihre Anwendung muss den Fehler 40197 abfangen, den für die Problembehandlung in der Meldung enthaltenen Fehlercode (%d) protokollieren und versuchen, eine neue Verbindung mit SQL-Datenbank herzustellen, bis die Ressourcen verfügbar sind, damit Ihre Verbindung wiederhergestellt wird. |
@@ -68,7 +68,7 @@ Die folgenden Fehler sind vorübergehend, und in der Anwendungslogik sollte ein 
 
 Die folgenden Fehler können beim Kopieren einer Datenbank in Azure SQL-Datenbank auftreten. Weitere Informationen finden Sie unter [Kopieren einer Azure SQL-Datenbank](sql-database-copy.md).
 
-| Fehlercode | Severity | Beschreibung |
+| Fehlercode | Severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 40635 |16 |Der Client mit der IP-Adresse „%.&#x2a;ls“ ist vorübergehend deaktiviert. |
 | 40637 |16 |Das Kopieren von Datenbanken ist derzeit deaktiviert. |
@@ -97,10 +97,10 @@ Verwandte Themen:
 
 * Ausführlichere Informationen sind hier verfügbar: [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-service-tiers-dtu.md)
 
-| Fehlercode | Severity | Beschreibung |
+| Fehlercode | Severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
-| 10928 |20 |Ressourcen-ID: %d. Das %s-Limit für die Datenbank beträgt %d und wurde erreicht. Weitere Informationen finden Sie unter [SQL-Datenbank-Ressourcenlimits für eigenständige und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md).<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter:<br/>• [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-service-tiers-dtu.md). |
-| 10929 |20 |Ressourcen-ID: %d. Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Weitere Informationen finden Sie unter [SQL-Datenbank-Ressourcenlimits für eigenständige und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md). Bitte versuchen Sie es andernfalls später noch einmal.<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter:<br/>• [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-service-tiers-dtu.md). |
+| 10928 |20 |Ressourcen-ID: %d. Das %s-Limit für die Datenbank beträgt %d und wurde erreicht. Weitere Informationen finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md).<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter:<br/>• [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-service-tiers-dtu.md). |
+| 10929 |20 |Ressourcen-ID: %d. Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Weitere Informationen finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md). Bitte versuchen Sie es andernfalls später noch einmal.<br/><br/>Mit der Ressourcen-ID wird die Ressource angegeben, für die das Limit erreicht wurde. Bei Arbeitsthreads lautet die Ressourcen-ID „1“. Bei Sitzungen lautet die Ressourcen-ID „2“.<br/><br/>Weitere Informationen zu diesem Fehler und zur Fehlerbehebung finden Sie unter:<br/>• [Ressourceneinschränkungen für Azure SQL-Datenbanken](sql-database-service-tiers-dtu.md). |
 | 40544 |20 |Das Datenbankkontingent wurde erreicht. Partitionieren oder löschen Sie Daten, löschen Sie Indizes, oder informieren Sie sich in der Dokumentation über mögliche Lösungen. |
 | 40549 |16 |Die Sitzung wird aufgrund einer Transaktion mit langer Laufzeit beendet. Verkürzen Sie die Transaktion. |
 | 40550 |16 |Die Sitzung wurde beendet, da zu viele Sperren abgerufen wurden. Reduzieren Sie die Anzahl der in einer einzelnen Transaktion gelesenen oder geänderten Zeilen. |
@@ -112,7 +112,7 @@ Verwandte Themen:
 
 Die folgenden Fehler beziehen sich auf die Erstellung und Verwendung von Pools für elastische Datenbanken:
 
-| Fehlercode | Severity | Beschreibung | Korrekturmaßnahme |
+| Fehlercode | Severity | BESCHREIBUNG | Korrekturmaßnahme |
 |:--- |:--- |:--- |:--- |
 | 1132 | 17 |Der Speichergrenzwert des Pools für elastische Datenbanken wurde erreicht. Die Speicherauslastung für den Pool für elastische Datenbanken darf (%d) MB nicht überschreiten. Es wurde versucht, Daten in eine Datenbank zu schreiben, während die Speicherbegrenzung des Pools für elastische Datenbanken erreicht wurde. |Erhöhen Sie nach Möglichkeit die DTUs des Pools für elastische Datenbanken und/oder fügen Sie ihm Speicher hinzu, um die Speicherkapazität zu erweitern, reduzieren Sie die Speichernutzung der einzelnen Datenbanken innerhalb des Pools für elastische Datenbanken, oder entfernen Sie Datenbanken aus dem Pools für elastische Datenbanken. |
 | 10929 | 16 |Die %s-Mindestgarantie beträgt %d, der maximale Wert beträgt %d und die aktuelle Nutzung für die Datenbank beträgt %d. Der Server ist jedoch derzeit zu stark ausgelastet, um Anforderungen über %d für diese Datenbank zu unterstützen. Hilfe finden Sie unter [Ressourcenlimits bei SQL-Datenbank für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-resource-limits-database-server.md). Bitte versuchen Sie es andernfalls später noch einmal. DTU-/V-Kern-Mindestanzahl pro Datenbank; DTU-/V-Kern-Höchstanzahl pro Datenbank Die Gesamtanzahl der gleichzeitigen Worker (Anforderungen) in allen Datenbanken im Pool für elastische Datenbanken hat versucht, den Poolgrenzwert zu überschreiten. |Erhöhen Sie nach Möglichkeit die Anzahl von DTUs oder V-Kernen des Pools für elastische Datenbanken, um die Begrenzung für Worker zu steigern, oder entfernen Sie Datenbanken aus dem Pool für elastische Datenbanken. |
@@ -146,7 +146,7 @@ Verwandte Themen:
 
 Die folgenden Fehler fallen in keine der vorherigen Kategorien.
 
-| Fehlercode | Severity | Beschreibung |
+| Fehlercode | Severity | BESCHREIBUNG |
 | ---:| ---:|:--- |
 | 15006 |16 |„(AdministratorLogin)“ ist kein gültiger Name, da er ungültige Zeichen enthält. |
 | 18452 |14 |Anmeldefehler. Die Anmeldung stammt aus einer nicht vertrauenswürdigen Domäne und kann mit der Windows-Authentifizierung nicht verwendet werden.%.&#x2a;ls (Windows-Anmeldungen werden in dieser SQL Server-Version nicht unterstützt.) |

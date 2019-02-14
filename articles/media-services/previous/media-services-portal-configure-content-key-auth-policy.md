@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie eine Autorisierungsrichtlinie für einen Inha
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: ee82a3fa-c34b-48f2-a108-8ba321f1691e
 ms.service: media-services
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2018
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: db0117b0b4ddee002fc69d71e78eca2b9008e4f6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7dd056042b841e54c18ee1a667c44cfa11d77a61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33941027"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164599"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -33,7 +33,7 @@ In diesem Artikel wird veranschaulicht, wie Sie das Azure-Portal zur Konfigurati
 
 Wenn ein Player einen Datenstrom anfordert, der für die dynamische Verschlüsselung konfiguriert ist, verwendet Media Services den konfigurierten Schlüssel, um Inhalte dynamisch mit der AES- oder DRM-Verschlüsselung zu verschlüsseln. Um den Stream zu entschlüsseln, fordert der Player den Schlüssel vom Schlüsselübermittlungsdienst an. Um zu ermitteln, ob der Benutzer berechtigt ist, den Schlüssel zu erhalten, wertet der Dienst die Autorisierungsrichtlinien aus, die Sie für den Schlüssel angegeben haben.
 
-Wenn Sie mehrere Inhaltsschlüssel verwenden oder eine andere Schlüssel-/Lizenzübermittlungsdienst-URL als die des Schlüsselübermittlungsdiensts von Media Services angeben möchten, verwenden Sie das Media Services .NET-SDK oder REST-APIs. Weitere Informationen finden Sie unter 
+Wenn Sie mehrere Inhaltsschlüssel verwenden oder eine andere Schlüssel-/Lizenzübermittlungsdienst-URL als die des Schlüsselübermittlungsdiensts von Media Services angeben möchten, verwenden Sie das Media Services .NET-SDK oder REST-APIs. Weitere Informationen finden Sie unter
 
 * [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit dem Media Services .NET-SDK](media-services-dotnet-configure-content-key-auth-policy.md)
 * [Konfigurieren einer Autorisierungsrichtlinie für Inhaltsschlüssel mit der Media Services-REST-API](media-services-rest-configure-content-key-auth-policy.md)

@@ -15,12 +15,12 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e47bb293d53df658641a50a1399ead85667e3225
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692741"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117647"
 ---
 # <a name="view-activity-logs-for-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen
 
@@ -55,7 +55,7 @@ Weitere Informationen zu Aktivitätsprotokollen finden Sie unter [Anzeigen von E
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
-Verwenden Sie den Befehl [Get-AzLog](/powershell/module/az.insights/get-azlog), um Aktivitätsprotokolle mit Azure PowerShell anzuzeigen.
+Verwenden Sie den Befehl [Get-AzLog](/powershell/module/Az.Monitor/Get-AzLog), um Aktivitätsprotokolle mit Azure PowerShell anzuzeigen.
 
 Dieser Befehl führt alle Änderungen an der Rollenzuweisung in einem Abonnement für die letzten sieben Tage auf:
 
