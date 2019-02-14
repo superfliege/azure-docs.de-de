@@ -3,8 +3,8 @@ title: Problem beim Erstellen einer Anwendungsproxyanwendung | Microsoft-Dokumen
 description: Beheben von Problemen beim Erstellen von Anwendungsproxyanwendungen im Azure AD-Verwaltungsportal
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/21/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asteen
-ms.openlocfilehash: c7c4211e95c4ffe140e65c376b23d018b7f0291d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e7aad73331d06828a4bfe909dbb3b98350b1d0d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195204"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166645"
 ---
 # <a name="problem-creating-an-application-proxy-application"></a>Problem beim Erstellen einer Anwendungsproxyanwendung 
 

@@ -13,12 +13,13 @@ ms.subservice: pim
 ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: a4dbce678d5d3eac106363e958636810ea9040bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2d9a60544f01048cd90605306e64d750982bf7a4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180210"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200546"
 ---
 # <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>Anzeigen des Überwachungsverlaufs für Azure AD-Verzeichnisrollen in PIM
 Im Privileged Identity Management-Überwachungsverlauf können Sie alle Benutzerzuweisungen und -aktivierungen für alle Rollen in einem bestimmten Zeitraum sehen. Wenn Sie den vollständigen Überwachungsverlauf zur Aktivität in Ihrem Mandanten anzeigen möchten – Administratoren, Endbenutzer und Synchronisierungsaktivität eingeschlossen –, können Sie hierzu die [Azure Active Directory-Zugriffs- und Nutzungsberichte](../reports-monitoring/overview-reports.md)

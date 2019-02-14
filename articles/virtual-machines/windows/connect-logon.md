@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 4bfb17a7c50e97ae71908f052f7f38110cf376df
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296884"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978941"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, dann melden Sie sich an.
@@ -56,18 +56,18 @@ Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzu
 
 ## <a name="connect-to-the-virtual-machine-using-powershell"></a>Herstellen einer Verbindung mit dem virtuellen Computer über PowerShell
 
-Wenn Sie PowerShell verwenden und das AzureRM-Modul installiert haben, können Sie die Verbindung auch über das Cmdlet `Get-AzureRmRemoteDesktopFile` herstellen, wie unten dargestellt.
+Wenn Sie PowerShell verwenden und das AzureRM-Modul installiert haben, können Sie die Verbindung auch über das Cmdlet `Get-AzRemoteDesktopFile` herstellen, wie unten dargestellt.
 
 Dieses Beispiel startet die RDP-Verbindung unverzüglich. Dabei werden ähnliche Eingabeaufforderungen angezeigt wie weiter oben.
 
 ```powershell
-Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
+Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -Launch
 ```
 
 Sie können die RDP-Datei auch zur zukünftigen Verwendung speichern.
 
 ```powershell
-Get-AzureRmRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
+Get-AzRemoteDesktopFile -ResourceGroupName "RgName" -Name "VmName" -LocalPath "C:\Path\to\folder"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie das Plug-In in Ihr Unity-Projekt integrieren, die Szene hineinrendern („baken“) und Akustikparameter auf Soundquellen anwenden.
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0aad231b4a57c2d9927a553a43394681282b5494
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a9cc8c7b4cdcc05d38bc0d68561fc9d86305b0cb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55155951"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879913"
 ---
 # <a name="getting-started-with-project-acoustics"></a>Erste Schritte mit Project Acoustics
 In dieser Schnellstartanleitung erfahren Sie, wie Sie das Plug-In in Ihr Unity-Projekt integrieren, die Szene hineinrendern („baken“) und Akustikparameter auf Soundquellen anwenden. Für dieses Schnellstarttutorial müssen Sie zunächst ein [Azure Batch-Konto](create-azure-account.md) erstellen. Grundlegende Unity-Kenntnisse werden in dieser Anleitung vorausgesetzt.

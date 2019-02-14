@@ -4,7 +4,7 @@ description: Die Videozusammenfassung kann Ihnen dabei helfen, Zusammenfassungen
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: a245529f-3150-4afc-93ec-e40d8a6b761d
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: aba01314b26f11df41aef25215697389bc7f46b2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786009"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004807"
 ---
-# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung
+# <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung  
 ## <a name="overview"></a>Übersicht
 Mit dem **Azure Media-Videovorschau**-Medienprozessor können Sie eine Zusammenfassung eines Videos erstellen. Das ist hilfreich für Kunden, die nur eine zusammenfassende Vorschau eines langen Videos ansehen möchten. Kunden möchten zum Beispiel nur eine kurze „Videozusammenfassung“ sehen, wenn sie mit der Maus auf eine Miniaturansicht zeigen. Durch Anpassen der Parameter von **Azure Media-Videovorschau** per Konfigurationsvoreinstellung können Sie die leistungsstarken Technologien des Medienprozessors für das Erkennen und Zusammenfügen von Szenen verwenden, um algorithmisch einen beschreibenden Subclip zu erstellen.  
 
@@ -55,8 +55,8 @@ Derzeit können Sie die folgenden Parameter ändern:
 
 | Param | BESCHREIBUNG |
 | --- | --- |
-| outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: TRUE oder FALSE. Der Standardwert ist TRUE. |
-| fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: TRUE oder FALSE.  Der Standardwert ist TRUE. |
+| outputAudio |Gibt an, ob das resultierende Video Audiodaten enthält oder nicht. <br/>Zulässige Werte sind: „True“ oder „False“. Der Standardwert ist TRUE. |
+| fadeInFadeOut |Gibt an, ob Übergänge zwischen den separaten bewegten Miniaturansichten verwendet werden oder nicht.  <br/>Zulässige Werte sind: „True“ oder „False“.  Der Standardwert ist TRUE. |
 | maxMotionThumbnailDurationInSecs |Ganze Zahl, die angibt, wie lange das gesamte fertige Video sein soll.  Der Standardwert hängt von der ursprünglichen Videodauer ab. |
 
 Die folgende Tabelle beschreibt die Standarddauer, wenn **maxMotionThumbnailInSecs** nicht verwendet wird.

@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft-Dokumentation
+title: Azure Media Services-Ausgabemetadaten-Schema | Microsoft Docs
 description: Dieses Thema enthält eine Übersicht über das Azure Media Services-Ausgabemetadaten-Schema.
 author: Juliako
 manager: femila
@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 35b728793b81c41f0a81c5c7621b9e17edf1f22a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994675"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997574"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 ## <a name="overview"></a>Übersicht
@@ -37,7 +37,7 @@ Sie finden den vollständigen Schemacode und das XML-Beispiel am Ende des Artike
 Sammlung von „AssetFile“-Einträgen für den Codierauftrag.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein [„AssetFile“-Element](media-services-output-metadata-schema.md), das Teil der „AssetFiles“-Sammlung ist. |
 
@@ -45,14 +45,14 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Der Name der Medienobjektdatei. |
 | **Größe**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:long** |Größe der Assetdatei in Byte |
 | **Duration**<br/><br/> Erforderlich |**xs:duration** |Dauer der Inhaltswiedergabe. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **Sources** |Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen. Weitere Informationen finden Sie unter [„Source“-Element](media-services-output-metadata-schema.md). |
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Weitere Informationen finden Sie unter [„VideoTracks“-Element](media-services-output-metadata-schema.md). |
@@ -64,7 +64,7 @@ Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medien
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter [„Source“-Element](media-services-output-metadata-schema.md). |
 
@@ -74,7 +74,7 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
@@ -84,7 +84,7 @@ Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Videospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„VideoTrack“-Element](media-services-output-metadata-schema.md#VideoTrack). |
 
@@ -94,7 +94,7 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Videospur. **Hinweis:**  Diese **ID** ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **FourCC**<br/><br/> Erforderlich |**xs:string** |Videocodec-FourCC-Code |
@@ -116,7 +116,7 @@ Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die 
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„AudioTrack“-Element](media-services-output-metadata-schema.md). |
 
@@ -126,7 +126,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Id**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Nullbasierter Index dieser Audiospur. **Hinweis:**  Dies ist nicht unbedingt die „TrackID“, die in einer MP4-Datei verwendet wird. |
 | **Codec** |**xs:string** |Codec-Zeichenfolge der Audiospur. |
@@ -137,7 +137,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | **BitsPerSample**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Bits pro Sample für den Formattyp „wFormatTag“. |
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter [„LoudnessMeteringResultParameters“-Element](media-services-output-metadata-schema.md). |
 
@@ -147,7 +147,7 @@ Parameter für das Messergebnis der Lautheit.
 [Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **DPLMVersionInformation** |**xs:string** |Development Kit-Version von **Dolby** Professional Loudness Metering (DPLM). |
 | **DialogNormalization**<br/><br/> minInclusive="-31" maxInclusive="-1"<br/><br/> Erforderlich |**xs:int** |Über DPLM generierte „DialogNormalization“, bei Festlegung von „LoudnessMetering“ erforderlich. |

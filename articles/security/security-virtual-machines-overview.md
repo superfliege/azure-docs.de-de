@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherh
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 467b2c83-0352-4e9d-9788-c77fb400fe54
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: terrylan
-ms.openlocfilehash: 5e024161b55db9662aa288a4d3ff6a7c2b7e6266
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 15ac70891f23d95709d1998bca1ce29ad735cb87
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52969684"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109077"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 
@@ -90,8 +90,7 @@ Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardwar
 
 Weitere Informationen:
 
-* [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-whatis.md)
-* [Erste Schritte mit dem Azure-Schlüsseltresor](../key-vault/key-vault-get-started.md)
+* [Was ist der Azure-Schlüsseltresor?](../key-vault/key-vault-overview.md)
 * [Azure Key Vault-Blog](https://blogs.technet.microsoft.com/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Verschlüsselung der Datenträger virtueller Computer

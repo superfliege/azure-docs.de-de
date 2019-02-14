@@ -4,7 +4,7 @@ description: " Hier erfahren Sie, wie Sie Azure Security Center Standard für er
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2ea94e79fdcc331554f42e2396d954af7cb979d8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 9d95503e4b17124d1d027a90a21869ef65831654
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850073"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114415"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>Integrieren von Azure Security Center Standard für erhöhte Sicherheit
 Führen Sie ein Upgrade auf Security Center Standard durch, um von erhöhter Sicherheit und besserem Schutz vor Bedrohungen für Ihre Hybridcloud-Workloads zu profitieren.  Sie können die Standard-Edition kostenlos testen. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
@@ -71,13 +71,13 @@ Security Center kann den Sicherheitsstatus Ihrer Azure-fremden Computer überwac
 
   ![Hinzufügen eines Azure-fremden Computers][7]
 
-Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Neue Nicht-Azure-Computer hinzufügen** aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
+Gegebenenfalls bereits vorhandene Arbeitsbereiche werden unter **Add new Non-Azure computers** (Neue Azure-fremde Computer hinzufügen) aufgeführt. Sie können Computer einem vorhandenen Arbeitsbereich hinzufügen oder einen neuen Arbeitsbereich erstellen. Klicken Sie zum Erstellen eines neuen Arbeitsbereichs auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
 ### <a name="add-new-non-azure-computers-from-compute"></a>Hinzufügen neuer Azure-fremder Computer über **Compute**
 
 **Erstellen eines neuen Arbeitsbereichs und Hinzufügen eines Computers**
 
-1. Klicken Sie unter **Neue Nicht-Azure-Computer hinzufügen** auf den Link **Neuen Arbeitsbereich hinzufügen**.
+1. Klicken Sie unter **Add new non-Azure computers** (Neue Azure-fremde Computer hinzufügen) auf den Link zum **Hinzufügen eines neuen Arbeitsbereichs**.
 
    ![Hinzufügen eines neuen Arbeitsbereichs][4]
 
@@ -101,7 +101,7 @@ Sie können einen Computer mithilfe des Workflows unter **Onboarding** hinzufüg
 
    ![Blatt „Compute“][6]
 
-4. Wählen Sie unter **Neue Nicht-Azure-Computer hinzufügen** einen Arbeitsbereich aus, mit dem Sie Ihren Computer verbinden möchten, und klicken Sie anschließend auf **Computer hinzufügen**.
+4. Wählen Sie unter **Add new non-Azure computers** (Neue Azure-fremde Computer hinzufügen) einen Arbeitsbereich aus, mit dem Sie Ihren Computer verbinden möchten, und klicken Sie anschließend auf **Computer hinzufügen**.
 
    ![Hinzufügen von Computern][7]
 

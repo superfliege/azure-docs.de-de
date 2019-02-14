@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine allgemeine Beschreibung des Microsoft 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 5a0f0594a9ccb27a0f76a679e454e9a3ffe19a43
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: af73225e08488d490e50456d235805af17ef0066
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39505384"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112216"
 ---
 # <a name="azure-network-architecture"></a>Azure-Netzwerkarchitektur
 Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als Branchenstandard geltenden Kern-, Verteilungs- und Zugriffsmodells und verfügt über unterschiedliche Hardwareschichten (Layer). Zu diesen Layern zählen:
@@ -30,7 +30,7 @@ Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als B
 
 Die Netzwerkarchitektur besteht aus zwei Schichten von Layer 2-Switches. Eine Schicht aggregiert den Datenverkehr von der anderen Schicht. Die zweite Schicht führt Schleifen aus, um Redundanz zu integrieren. Dies ermöglicht einen flexibleren VLAN-Speicherbedarf und verbessert die Portskalierung. Die Architektur sorgt für eine klare Trennung zwischen L2 und L3 und ermöglicht dadurch die Verwendung von Hardware in jedem einzelnen unterschiedlichen Layer im Netzwerk. Fehler auf einem Layer, die sich auf die anderen Layer auswirken, können so minimiert werden. Mithilfe von Trunks lassen sich Ressourcen freigeben, wie z.B. die Konnektivität zur L3-Infrastruktur.
 
-## <a name="network-configuration"></a>Network Configuration
+## <a name="network-configuration"></a>Netzwerkkonfiguration
 Die Netzwerkarchitektur eines Azure-Clusters in einem Rechenzentrum besteht aus den folgenden Geräten:
 
 - Router (Rechenzentrum-, Access- und Blattrouter am Netzwerkrand)

@@ -6,17 +6,18 @@ keywords: Beschneiden;Subclip;Codierung;Medien
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0894c3677b87fe48c130d648253dadd0d43429f4
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54821446"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002138"
 ---
-# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper
+# <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper 
+
 Azure Media Clipper erfordert die Implementierung einer **SubmitSubclipCallback**-Methode zur Übermittlung von Beschneidungsaufträgen. Diese Funktion dient zum Implementieren einer HTTP POST-Methode für die Clipper-Ausgabe an einen Webdienst. Dies ist der Webdienst, an den Sie den Codierungsauftrag übermitteln können. Die Ausgabe von Clipper ist entweder eine Media Encoder Standard-Codierungsvoreinstellung für gerenderte Aufträge oder die REST-API-Nutzlast für Aufrufe der Filter für dynamische Manifeste. Dieses Pass-Through-Modell ist notwendig, da Anmeldeinformationen für Media Services-Konten im Browser des Clients nicht sicher sind.
 
 Das folgende Sequenzdiagramm veranschaulicht den Workflow zwischen dem Browserclient, Ihrem Webdienst und Azure Media Services: ![Azure Media Clipper-Sequenzdiagramm](media/media-services-azure-media-clipper-submit-job/media-services-azure-media-clipper-sequence-diagram.PNG)

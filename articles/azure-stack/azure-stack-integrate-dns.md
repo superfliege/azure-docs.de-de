@@ -6,17 +6,17 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
 keywords: ''
-ms.openlocfilehash: dce59cf012a8c3bc5b6b3baf705b5619bdf43104
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 13525fffb7e6720fe81759876ffd0fe71559279c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252310"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182849"
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Integration des Azure Stack-Datencenters – DNS
 Für den Zugriff auf Azure Stack-Endpunkte ((**portal**, **adminportal**, **management**, **adminmanagement** usw.) von außerhalb von Azure Stack müssen Sie die Azure Stack-DNS-Dienste in die DNS-Server integrieren, die die DNS-Zonen hosten, die Sie in Azure Stack verwenden möchten.
@@ -114,9 +114,9 @@ Wenn Sie die Beispielwerte verwenden, sind die vollqualifizierten Domänennamen 
 `azs-ns02.east.cloud.fabrikam.com`
 
 
-Diese Informationen werden auch am Ende aller Azure Stack-Bereitstellungen in einer Datei namens `AzureStackStampDeploymentInfo.json` erstellt. Diese Datei befindet sich im Ordner `C:\CloudDeployment\logs` des virtuellen Computers der Bereitstellung. Wenn Sie nicht sicher sind, welche Werte für Ihre Azure Stack-Bereitstellung verwendet werden, können Sie diese Werte hier abrufen.
+Diese Informationen werden auch am Ende aller Azure Stack-Bereitstellungen in einer Datei namens `AzureStackStampInformation.json` erstellt. Diese Datei befindet sich im Ordner `C:\CloudDeployment\logs` des virtuellen Computers der Bereitstellung. Wenn Sie nicht sicher sind, welche Werte für Ihre Azure Stack-Bereitstellung verwendet werden, können Sie diese Werte hier abrufen.
 
-Wenn der virtuelle Computer für die Bereitstellung nicht mehr verfügbar ist oder nicht darauf zugegriffen werden kann, können Sie die Werte erhalten, indem Sie eine Verbindung mit dem privilegierten Endpunkt herstellen und das PowerShell-Cmdlet `Get-AzureStackInfo` ausführen. Weitere Informationen finden Sie unter [Privilegierter Endpunkt](azure-stack-privileged-endpoint.md).
+Wenn der virtuelle Computer für die Bereitstellung nicht mehr verfügbar ist oder nicht darauf zugegriffen werden kann, können Sie die Werte erhalten, indem Sie eine Verbindung mit dem privilegierten Endpunkt herstellen und das PowerShell-Cmdlet `Get-AzureStackStampInformation` ausführen. Weitere Informationen finden Sie unter [Privilegierter Endpunkt](azure-stack-privileged-endpoint.md).
 
 ## <a name="setting-up-conditional-forwarding-to-azure-stack"></a>Einrichten der bedingten Weiterleitung an Azure Stack
 
