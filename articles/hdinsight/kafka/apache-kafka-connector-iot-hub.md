@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: ff96204d53d31940846d2ec74db57caf69d4329e
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bd7254a9ec1ce5671aa5271ca26c678b20ef48cb
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608629"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978067"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Verwendung von Apache Kafka in HDInsight mit Azure IoT Hub
 
@@ -127,7 +127,7 @@ Führen Sie über eine SSH-Verbindung mit dem Edgeknoten die folgenden Schritte 
 
     * Fügen Sie in die Zeilen `key.converter=` und `value.converter=` die folgenden Werte ein:
 
-        ```text
+        ```ini
         key.converter=org.apache.kafka.connect.storage.StringConverter
         value.converter=org.apache.kafka.connect.storage.StringConverter
         ```
@@ -189,7 +189,7 @@ Führen Sie zum Abrufen von IoT Hub-Informationen, die vom Connector verwendet w
 
         Ersetzen Sie `myhubname` durch den Namen Ihrer IoT Hub-Instanz. Die Antwort ähnelt dem folgenden Text:
 
-        ```text
+        ```json
         "EventHubCompatibleEndpoint": "sb://ihsuprodbnres006dednamespace.servicebus.windows.net/",
         "EventHubCompatibleName": "iothub-ehub-myhub08-207673-d44b2a856e",
         "Partitions": 2
@@ -239,14 +239,14 @@ Um die Quelle für die Arbeit mit Ihrer IoT Hub-Instanz zu konfigurieren, führe
 
     Suchen Sie im Editor nach den folgenden Einträgen, und ändern Sie sie:
 
-    * `Kafka.Topic=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `iotin`. Die vom IoT Hub empfangenen Nachrichten werden in das Thema `iotin` platziert.
+    * `Kafka.Topic=PLACEHOLDER`: Ersetzen Sie  durch `iotin`. Die vom IoT Hub empfangenen Nachrichten werden in das Thema `iotin` platziert.
     * `IotHub.EventHubCompatibleName=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Event Hub-kompatiblen Namen.
     * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Event Hub-kompatiblen Endpunkt.
     * `IotHub.Partitions=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch die Anzahl von Partitionen aus den vorherigen Schritten.
-    * `IotHub.AccessKeyName=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `service`.
+    * `IotHub.AccessKeyName=PLACEHOLDER`: Ersetzen Sie  durch `service`.
     * `IotHub.AccessKeyValue=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch den Primärschlüssel der Richtlinie `service`.
     * `IotHub.StartType=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch ein Datum im UTC-Format. Dieses Datum bezieht sich auf den Zeitpunkt, an dem der Connector mit der Prüfung auf Nachrichten begonnen hat. Das Datumsformat ist `yyyy-mm-ddThh:mm:ssZ`.
-    * `BatchSize=100`: Ersetzen Sie `100` durch `5`. Diese Änderung bewirkt, dass der Connector Nachrichten in Kafka liest, sobald fünf neue Nachrichten in IoT Hub vorhanden sind.
+    * `BatchSize=100`: Ersetzen Sie  durch `5`. Diese Änderung bewirkt, dass der Connector Nachrichten in Kafka liest, sobald fünf neue Nachrichten in IoT Hub vorhanden sind.
 
     Eine Beispielkonfiguration finden Sie unter [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md).
 
@@ -272,7 +272,7 @@ Um die Senkenverbindung für die Arbeit mit Ihrer IoT Hub-Instanz zu konfigurier
 
     Suchen Sie im Editor nach den folgenden Einträgen, und ändern Sie sie:
 
-    * `topics=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch `iotout`. Nachrichten, die in das Thema `iotout` geschrieben wurden, werden an IoT Hub weitergeleitet.
+    * `topics=PLACEHOLDER`: Ersetzen Sie  durch `iotout`. Nachrichten, die in das Thema `iotout` geschrieben wurden, werden an IoT Hub weitergeleitet.
     * `IotHub.ConnectionString=PLACEHOLDER`: Ersetzen Sie `PLACEHOLDER` durch die Verbindungszeichenfolge für die Richtlinie `service`.
 
     Eine Beispielkonfiguration finden Sie unter [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).
@@ -349,7 +349,7 @@ Führen Sie zum Senden von Nachrichten über den Connector folgende Schritte dur
     > [!IMPORTANT]  
     > Sie müssen den Wert des Eintrags `"deviceId"` auf die ID Ihres Geräts festlegen. Im folgenden Beispiel ist das Gerät mit dem Namen `fakepi` versehen:
 
-    ```text
+    ```json
     {"messageId":"msg1","message":"Turn On","deviceId":"fakepi"}
     ```
 
