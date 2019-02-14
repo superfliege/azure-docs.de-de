@@ -44,7 +44,7 @@ Vor dem Definieren des Stream Analytics-Auftrags sollten Sie die Daten vorbereit
 
    ![Erstellen eines IoT Hubs](./media/stream-analytics-quick-create-portal/create-iot-hub.png)
 
-4. Wählen Sie **Next: Set size and scale** (Nächster Schritt: Größe festlegen und skalieren) aus.
+4. Wählen Sie **Next: Set size and scale** (Nächster Schritt: Größe und Skalierung festlegen) aus.
 
 5. Wählen Sie eine Option für **Tarif und Skalierung** aus. Legen Sie für diese Schnellstartanleitung den Tarif **F1 – Free** fest, wenn er für Ihr Abonnement noch verfügbar ist. Weitere Informationen finden Sie unter [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/).
 

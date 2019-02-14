@@ -150,7 +150,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     a. Öffnen Sie die aus dem Azure-Portal heruntergeladene **Metadaten-XML** im Editor, und fügen Sie den Inhalt im Textfeld **Microsoft Azure Active Directory-Metadaten** ein.
 
-    b. Kopieren Sie den Wert im Feld **Reply URL (ACS)** (Antwort-ULRL (ACS)), und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
+    b. Kopieren Sie den Wert im Feld **Reply URL (ACS)** (Antwort-URL (ACS)), und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
     c. Klicken Sie unten auf der Seite auf **Speichern**.
 
