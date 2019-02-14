@@ -4,7 +4,7 @@ description: Der Artikel beschreibt die Azure-Rechenzentren, einschließlich der
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 69a54640ae3b4e71d7782712ad1764babab7104a
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39170676"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112043"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure-Einrichtungen, Gelände und physische Sicherheit
 Azure besteht aus einer [global verteilten Rechenzentrumsinfrastruktur](https://azure.microsoft.com/global-infrastructure/), die Tausende von Onlinediensten unterstützt und mehr als 100 höchst sichere Einrichtungen weltweit umfasst.
@@ -47,7 +47,7 @@ Microsoft verfolgt einen mehrstufigen Ansatz bei der physischen Sicherheit, um d
 
 - **Anforderung und Genehmigung des Zugangs.** Sie müssen den Zugang anfordern, bevor Sie im Rechenzentrum eintreffen. Sie müssen eine triftige geschäftliche Begründung Ihres Besuchs angeben, z.B. Compliance- oder Überwachungszwecke. Alle Anforderungen werden nach Notwendigkeit des Zugangs von Microsoft-Mitarbeitern genehmigt. Dank der „Notwendigkeit des Zugangs“ kann die Anzahl der Personen, die für die Durchführung einer Aufgabe in Rechenzentren erforderlich sind, auf das absolute Minimum reduziert werden. Nachdem Microsoft die Berechtigung erteilt hat, erhält eine Person ausschließlich zu dem abgegrenzten Bereich des Rechenzentrums Zugang, der gemäß der genehmigten geschäftlichen Begründung erforderlich ist. Berechtigungen sind auf einen bestimmten Zeitraum befristet und laufen danach ab.
 
-- **Grundstücksgrenze der Einrichtung**. Wenn Sie im Rechenzentrum eintreffen, müssen Sie dieses durch einen genau definierten Zugangspunkt betreten. In der Regel besteht jeder Zentimeter der Grundstücksgrenze aus hohen Zäunen aus Stahl und Beton. Die Rechenzentren sind von Kameras umgeben, und ein Sicherheitsteam überwacht die Aufnahmen jederzeit.
+- **Grundstücksgrenze der Einrichtung**. Wenn Sie im Rechenzentrum eintreffen, müssen Sie dieses durch einen genau definierten Zugangspunkt betreten. In der Regel besteht jeder Zentimeter dieser Eingrenzung aus hohen Zäunen aus Stahl und Beton. Die Rechenzentren sind von Kameras umgeben, und ein Sicherheitsteam überwacht die Aufnahmen jederzeit.
 
 - **Eingang in das Gebäude**. Der Eingang des Rechenzentrums wird von Sicherheitspersonal überwacht, das eine rigorose Ausbildung durchlaufen hat und gründlichen Hintergrundüberprüfungen unterzogen wurde. Das Sicherheitspersonal geht außerdem routinemäßig das Rechenzentrum ab und überwacht jederzeit die Aufnahmen der Kameras im Rechenzentrum.
 
