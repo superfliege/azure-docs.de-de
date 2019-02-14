@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTP-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 30927f4a8213f3ca8b94a2c799e6204be003e2a7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213207"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865951"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTPS-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen. 

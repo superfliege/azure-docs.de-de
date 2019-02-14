@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 2235c281b5b25390838a8f201481cfbdc9e5c223
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478907"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891980"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Erstellen eines Kubernetes-Clusters mit Application Gateway-Eingangscontroller unter Verwendung von Azure Kubernetes Service und Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) verwaltet Ihre gehostete Kubernetes-Umgebung. Mit AKS können Sie ganz ohne Kenntnisse im Bereich Containerorchestrierung schnell und einfach containerbasierte Anwendungen bereitstellen und verwalten. Darüber hinaus übernimmt die Lösung die Betreuung laufender Vorgänge und Wartungsaufgaben für Sie, indem sie Ressourcen ganz nach Bedarf bereitstellt, aktualisiert und skaliert, ohne Ihre Anwendungen offline zu schalten.
@@ -35,7 +35,7 @@ In diesem Tutorial erfahren Sie, wie Sie die folgenden Aufgaben ausführen, um e
 
 - **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Notieren Sie sich die Werte für „appId“, „displayName“ und „password“.
+- **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Notieren Sie sich die Werte für „appId“, „displayName“ und „password“.
     - Führen Sie den folgenden Befehl aus, und notieren Sie sich die Objekt-ID des Dienstprinzipals:
 
     ```bash
@@ -617,7 +617,7 @@ In diesem Abschnitt erfahren Sie, wie der Befehl `terraform init` verwendet wird
 
     ![Beispiel für Ergebnisse von „terraform plan“](./media/terraform-k8s-cluster-appgw-with-tf-aks/terraform-plan-complete.png)
 
-1. Führen Sie den Befehl `terraform apply` aus, um den Plan zum Erstellen des Kubernetes-Clusters anzuwenden. Der Prozess zum Erstellen eines Kubernetes-Clusters dauert einige Minuten. Dies kann zu einem Timeout der Cloud Shell-Sitzung führen. Wenn ein Timeout der Cloud Shell-Sitzung eintritt, können Sie die Schritte im Abschnitt [Wiederherstellen nach einem Cloud Shell-Timeout](#recover-from-a-dloud-shell-timeout) ausführen, um das Tutorial abzuschließen.
+1. Führen Sie den Befehl `terraform apply` aus, um den Plan zum Erstellen des Kubernetes-Clusters anzuwenden. Der Prozess zum Erstellen eines Kubernetes-Clusters dauert einige Minuten. Dies kann zu einem Timeout der Cloud Shell-Sitzung führen. Wenn ein Timeout der Cloud Shell-Sitzung eintritt, können Sie die Schritte im Abschnitt „Wiederherstellen nach einem Cloud Shell-Timeout“ ausführen, um das Tutorial abzuschließen.
 
     ```bash
     terraform apply out.plan

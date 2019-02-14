@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eda5f21a535c6256d534bfdaa6cf30ae710ba075
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 47b9d25f8db2241bb578528780e28f43d56371e5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413182"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963079"
 ---
 # <a name="create-a-netapp-account"></a>Erstellen eines NetApp-Kontos
 Nach der Erstellung eines NetApp-Kontos können Sie einen Kapazitätspool einrichten und anschließend ein Volume erstellen. Neue NetApp-Konten werden über das Blatt „Azure NetApp Files“ erstellt.
@@ -31,8 +31,8 @@ Sie müssen Ihr Abonnement registriert haben, um den NetApp-Ressourcenanbieter u
 
 ## <a name="steps"></a>Schritte 
 
-1. Melden Sie sich über die Azure-Portal-Vorschau-URL aus Ihrer Vorschaueinladung beim Portal an. 
-2.  Greifen Sie mithilfe einer der folgenden Methoden auf das Blatt „Azure NetApp Files“ zu:  
+1. Melden Sie sich beim Azure-Portal an. 
+2. Greifen Sie mithilfe einer der folgenden Methoden auf das Blatt „Azure NetApp Files“ zu:  
   * Suchen Sie im Suchfeld des Azure-Portals nach **Azure NetApp Files**.  
   * Klicken Sie im Navigationsbereich auf **Alle Dienste**, und filtern Sie nach „Azure NetApp Files“.  
 
@@ -50,7 +50,6 @@ Sie müssen Ihr Abonnement registriert haben, um den NetApp-Ressourcenanbieter u
     Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue.
   * **Location**  
     Wählen Sie die Region aus, in der sich das Konto und dessen untergeordnete Ressourcen befinden sollen.  
-    Momentan wird der Azure NetApp Files-Dienst nur in der Region „USA, Osten“ unterstützt.  
 
     ![Neues NetApp-Konto](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 

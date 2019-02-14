@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mit dem Bing-Bildersuche-SDK aus, das ein Wrapper für die API ist und die gleichen Funktionen enthält. Diese einfache Python-Anwendung sendet eine Bildersuchabfrage, analysiert die JSON-Antwort und zeigt die URL des ersten zurückgegebenen Bilds an.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
 ms.date: 08/28/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 144a2cb6d5540335276894848b0f4ca2ddb0fe75
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a785cb461b12c20bd5e322a55a91c8b49cb40d54
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157141"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858160"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-python"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Python
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: cb888367e3204d6750c533eb8952c80947f90c11
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e7d271ce37209a49e1c75d6114ed07b11558df44
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486808"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104991"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Azure Resource Manager und klassische Bereitstellung: Grundlegendes zu Bereitstellungsmodellen und zum Status von Ressourcen
 
@@ -48,6 +48,9 @@ Im Jahr 2014 wurden Resource Manager und das Konzept der Ressourcengruppen von A
 Nach Einführung des Ressourcen-Managers wurden alle Ressourcen nachträglich zu Standardressourcengruppen hinzugefügt. Wenn Sie jetzt eine Ressource über die klassische Bereitstellung erstellen, wird diese automatisch in einer standardmäßigen Ressourcengruppe für diesen Dienst erstellt, auch wenn Sie während der Bereitstellung diese Ressourcengruppe nicht angegeben haben. Jedoch bedeutet die bloße Tatsache, dass eine Ressource sich in einer Ressourcengruppe befindet, noch nicht, dass diese Ressource in das Ressourcen-Manager-Modell konvertiert wurde.
 
 ## <a name="understand-support-for-the-models"></a>Grundlagen der Unterstützung von Modellen
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Es sind drei Szenarien möglich:
 
 1. Cloud Services bietet keine Unterstützung für das Resource Manager-Bereitstellungsmodell.

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 01/29/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 4201b85ac50f69cc56bbfd4acde685a24f5dee34
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 68c0b1c01d79f591b5023d2e048d1788a3eaffd4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575880"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117373"
 ---
 # <a name="restrict-web-traffic-using-the-azure-cli"></a>Einschränken von Webdatenverkehr mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -48,14 +48,14 @@ Dieses Skript verwendet die folgenden Befehle zum Erstellen der Bereitstellung. 
 | Get-Help | Notizen |
 |---|---|
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Erstellt eine Ressourcengruppe, in der alle Ressourcen gespeichert sind. |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az-net) | Erstellen Sie ein virtuelles Netzwerk. |
-| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network_vnet_subnet_create) | Erstellt ein Subnetz in einem virtuellen Netzwerk. |
+| [az network vnet create](/cli/azure/network/vnet#az-network-vnet-create) | Erstellen Sie ein virtuelles Netzwerk. |
+| [az network vnet subnet create](https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-create) | Erstellt ein Subnetz in einem virtuellen Netzwerk. |
 | [az network public-ip create](https://docs.microsoft.com/cli/azure/network/public-ip?view=azure-cli-latest) | Erstellt die öffentliche IP-Adresse für das Anwendungsgateway. |
 | [az network application-gateway create](https://docs.microsoft.com/cli/azure/network/application-gateway?view=azure-cli-latest) | Erstellen eines Anwendungsgateways |
 | [az vmss create](https://docs.microsoft.com/cli/azure/vmss#az-vmss-create) | Erstellt eine VM-Skalierungsgruppe. |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az-storage-account-create) | Erstellt ein Speicherkonto. |
 | [az monitor diagnostic-settings create](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) | Erstellt ein Speicherkonto. |
-| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network_public_ip_show) | Ruft die öffentliche IP-Adresse für das Anwendungsgateway ab. |
+| [az network public-ip show](https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-show) | Ruft die öffentliche IP-Adresse für das Anwendungsgateway ab. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

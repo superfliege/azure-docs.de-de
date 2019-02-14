@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung übersetzen Sie mithilfe der Textübersetzungs-API und C# Text von einer Sprache in eine andere.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 11/20/2018
 ms.author: erhopf
-ms.openlocfilehash: fbe89d938157cebd7fa605f07cee8b198de062d2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 81069fde39eb2650082051b5f8b55431d8b32916
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55214516"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884714"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-translate-a-string-using-c"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Übersetzen einer Zeichenfolge mit C#
 

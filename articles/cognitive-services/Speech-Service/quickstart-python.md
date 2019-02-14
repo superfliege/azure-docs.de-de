@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Anleitung erfahren Sie, wie Sie eine Konsolenanwendung zur Spracherkennung erstellen, die das Speech SDK für Python verwendet. Danach können Sie das Mikrofon Ihres Computers verwenden, um Sprache in Echtzeit zu transkribieren.
 services: cognitive-services
 author: chlandsi
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 1/16/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2a0ef42a2904b661b0076c9e84700ce61e3a7248
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746810"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859540"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Python
 
@@ -96,7 +96,7 @@ Alternativ können Sie dieses Schnellstarttutorial als [Jupyter](https://jupyter
 1. Wenn ein Python-Interpreter ausgewählt wurde, wird er auf der linken Seite der Statusleiste am unteren Rand des Fensters angezeigt.
    Zeigen Sie andernfalls eine Liste der verfügbaren Python-Interpreter an. Öffnen Sie die Befehlspalette (STRG+UMSCHALT+P), und geben Sie **Python: Select Interpreter** ein. Wählen Sie einen passenden Interpreter aus.
 1. Sie können das Speech SDK-Paket für Python über Visual Studio Code installieren. Führen Sie diesen Schritt aus, wenn es für den ausgewählten Python-Interpreter noch nicht installiert wurde.
-   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Rufen Sie erneut die Befehlspalette (STRG+UMSCHALT+P) auf, und geben Sie **Terminal: Neues integriertes Terminal erstellen** ein.
+   Öffnen Sie zum Installieren des Speech SDK-Pakets ein Terminal. Rufen Sie erneut die Befehlspalette (STRG+UMSCHALT+P) auf, und geben Sie **Terminal: Neues integriertes Terminal erstellen** eingeben.
    Geben Sie im Terminal, das geöffnet wird, den Befehl `python -m pip install azure-cognitiveservices-speech` bzw. den entsprechenden Befehl für Ihr System ein.
 1. Klicken Sie zum Ausführen des Beispielcodes mit der rechten Maustaste an einer beliebigen Stelle im Editor. Wählen Sie **Run Python File in Terminal** (Python-Datei im Terminal ausführen) aus.
    Sagen Sie bei entsprechender Aufforderung einige Wörter. Der transkribierte Text wird kurz danach angezeigt.

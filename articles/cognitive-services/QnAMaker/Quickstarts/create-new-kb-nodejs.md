@@ -3,18 +3,18 @@ title: 'Schnellstart: Erstellen der Wissensdatenbank – REST, Node.js – QnA M
 description: Diese REST-basierte Schnellstartanleitung führt Sie durch das programmgesteuerte Erstellen einer Beispielwissensdatenbank für QnA Maker, die auf dem Azure-Dashboard Ihres Cognitive Services-API-Kontos angezeigt wird.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: diberry
-ms.openlocfilehash: 7a9217797382a31e17e0381a639387ccbf3c094d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 2d199960b18bcab5179b7b433586492487eedc58
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729692"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865300"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-nodejs"></a>Schnellstart: Erstellen einer Wissensdatenbank in QnA Maker mit Node.js
 

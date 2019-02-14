@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart verwenden Sie die Azure-Gesichtserkennungs-REST-API mit cURL, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 11/09/2018
 ms.author: pafarley
-ms.openlocfilehash: bfa7574a7f85bdb5acaa052f22e5a26c07d90c07
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a59caf51de81a554fc89b38e4bae427f28a75082
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225651"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871301"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-curl"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und cURL
 

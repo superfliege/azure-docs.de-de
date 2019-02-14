@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7e2e092af0fc0340a0db7b958b02d3d16942ca77
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: aafec48f86ee032b112e9bb1100f82fbb3b363ed
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755185"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118393"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -88,6 +88,7 @@ exit
 Die Quell-VM wird jetzt mit dem installierten NGINX-Webserver angepasst. Wir erstellen das benutzerdefinierte VM-Image für die Verwendung mit einer Skalierungsgruppe.
 
 Zum Erstellen eines Images muss die Zuordnung des virtuellen Computers aufgehoben werden. Heben Sie die Zuordnung der VM mit [az vm deallocate](/cli//azure/vm) auf. Legen Sie den Status der VM anschließend mit [az vm generalize](/cli//azure/vm) auf „Generalisiert“ fest, damit die Azure Platform darüber informiert ist, dass die VM als benutzerdefiniertes Image verwendet werden kann. Sie können nur aus einer generalisierten VM ein Image erstellen:
+
 
 ```azurecli-interactive
 az vm deallocate --resource-group myResourceGroup --name myVM

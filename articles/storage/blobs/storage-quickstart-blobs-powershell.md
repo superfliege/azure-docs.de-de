@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: f85d404df37d34f7363114fbbf34ceec3bbe7c0f
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4a8c3a1291faad6b952b5fddacde1ded1f4be7ca
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54042800"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098067"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Azure PowerShell
 
@@ -33,30 +33,30 @@ Für diesen Schnellstart ist das Azure PowerShell-Modul Az, Version 0.7 oder hö
 
 Blobs werden immer in einen Container hochgeladen. Sie können Gruppen von Blobs ähnlich wie Dateien in Ordnern auf Ihrem Computer organisieren.
 
-Legen Sie den Containernamen fest, und erstellen Sie ihn mithilfe von [New-AzureStorageContainer](/powershell/module/azure.storage/new-azurestoragecontainer). Legen Sie die Berechtigungen auf `blob` fest, um öffentlichen Zugriff auf die Dateien zu ermöglichen. Der Containername in diesem Beispiel lautet *quickstartblobs*.
+Legen Sie den Containernamen fest, und erstellen Sie den Container dann mithilfe von [New-AzStorageContainer](/powershell/module/az.storage/new-AzStoragecontainer). Legen Sie die Berechtigungen auf `blob` fest, um öffentlichen Zugriff auf die Dateien zu ermöglichen. Der Containername in diesem Beispiel lautet *quickstartblobs*.
 
 ```powershell
 $containerName = "quickstartblobs"
-new-azurestoragecontainer -Name $containerName -Context $ctx -Permission blob
+new-AzStoragecontainer -Name $containerName -Context $ctx -Permission blob
 ```
 
 ## <a name="upload-blobs-to-the-container"></a>Hochladen von Blobs in den Container
 
 Blobspeicher unterstützt Block-, Anfüge- und Seitenblobs. VHD-Dateien, die IaaS-VMs zugrunde liegen, sind Seitenblobs. Anfügeblobs dienen zur Protokollierung und werden beispielsweise verwendet, wenn Sie etwas in eine Datei schreiben und ihr nach und nach weitere Informationen hinzufügen möchten. Die meisten Dateien, die im Blob Storage gespeichert werden, sind allerdings Blockblobs. 
 
-Rufen Sie zum Hochladen einer Datei in ein Blockblob zuerst einen Containerverweis und anschließend einen Verweis auf das Blockblob in diesem Container auf. Nachdem Sie den Blobverweis abgerufen haben, können Sie mithilfe von [set-azurestorageblobcontent](/powershell/module/azure.storage/set-azurestorageblobcontent) Daten in das Blockblob hochladen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist.
+Rufen Sie zum Hochladen einer Datei in ein Blockblob zuerst einen Containerverweis und anschließend einen Verweis auf das Blockblob in diesem Container auf. Nachdem Sie den Blobverweis abgerufen haben, können Sie mithilfe von [Set-AzStorageBlobContent](/powershell/module/az.storage/set-AzStorageblobcontent) Daten in das Blockblob hochladen. Bei diesem Vorgang wird das Blob erstellt, falls es nicht vorhanden ist, oder überschrieben, falls es vorhanden ist.
 
 In den folgenden Beispielen werden die Dateien *Image001.jpg* und *Image002.png* aus dem Ordner *D:\\_TestImages* des lokalen Datenträgers in den erstellten Container hochgeladen.
 
 ```powershell
 # upload a file
-set-azurestorageblobcontent -File "D:\_TestImages\Image001.jpg" `
+set-AzStorageblobcontent -File "D:\_TestImages\Image001.jpg" `
   -Container $containerName `
   -Blob "Image001.jpg" `
   -Context $ctx 
 
 # upload another file
-set-azurestorageblobcontent -File "D:\_TestImages\Image002.png" `
+set-AzStorageblobcontent -File "D:\_TestImages\Image002.png" `
   -Container $containerName `
   -Blob "Image002.png" `
   -Context $ctx
@@ -66,27 +66,27 @@ Laden Sie beliebig viele Dateien hoch, bevor Sie fortfahren.
 
 ## <a name="list-the-blobs-in-a-container"></a>Auflisten der Blobs in einem Container
 
-Verwenden Sie [get-azurestorageblob](/powershell/module/azure.storage/get-azurestorageblob), um eine Liste der Blobs im Container abzurufen. In diesem Beispiel werden nur die Namen der hochgeladenen Blobs angezeigt.
+Verwenden Sie [Get-AzStorageBlob](/powershell/module/az.storage/get-AzStorageblob), um eine Liste der Blobs im Container abzurufen. In diesem Beispiel werden nur die Namen der hochgeladenen Blobs angezeigt.
 
 ```powershell
-get-azurestorageblob -Container $ContainerName -Context $ctx | select Name
+Get-AzStorageBlob -Container $ContainerName -Context $ctx | select Name
 ```
 
 ## <a name="download-blobs"></a>Herunterladen von Blobs
 
-Laden Sie die Blobs auf Ihren lokalen Datenträger herunter. Legen Sie für jedes Blob, das heruntergeladen werden soll, den Namen fest, und rufen Sie [get-azurestorageblobcontent](/powershell/module/azure.storage/get-azurestorageblobcontent) zum Herunterladen des Blobs auf.
+Laden Sie die Blobs auf Ihren lokalen Datenträger herunter. Legen Sie für jedes Blob, das heruntergeladen werden soll, den Namen fest, und rufen Sie [Get-AzStorageBlobContent](/powershell/module/az.storage/get-AzStorageblobcontent) zum Herunterladen des Blobs auf.
 
 Im folgenden Beispiel werden die Blobs in das Verzeichnis *D:\\_TestImages\Downloads* auf dem lokalen Datenträger heruntergeladen. 
 
 ```powershell
 # download first blob
-get-azurestorageblobcontent -Blob "Image001.jpg" `
+Get-AzStorageblobcontent -Blob "Image001.jpg" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx 
 
 # download another blob
-get-azurestorageblobcontent -Blob "Image002.png" `
+Get-AzStorageblobcontent -Blob "Image002.png" `
   -Container $containerName `
   -Destination "D:\_TestImages\Downloads\" `
   -Context $ctx
@@ -111,7 +111,7 @@ Als kurzes Beispiel sehen Sie hier den AzCopy-Befehl für das Hochladen der Date
 Entfernen Sie alle Objekte, die Sie erstellt haben. Die einfachste Methode zum Entfernen der Ressourcen ist die Löschung der Ressourcengruppe. Beim Entfernen der Ressourcengruppe werden auch alle in der Gruppe enthaltenen Ressourcen gelöscht. Im folgenden Beispiel wird durch Entfernen der Ressourcengruppe das Speicherkonto zusammen mit der Ressourcengruppe entfernt.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name $resourceGroup
+Remove-AzResourceGroup -Name $resourceGroup
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

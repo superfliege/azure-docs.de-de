@@ -8,19 +8,19 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/23/2018
-ms.openlocfilehash: df1efc1506fbbe51ba5afb03f147c51a57d9bbdb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: f4541bb9516855c4391188fb57e5ab64bc03c76e
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727057"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890483"
 ---
 # <a name="create-and-configure-azure-kubernetes-service-clusters-in-azure-using-ansible"></a>Erstellen und Konfigurieren von Azure Kubernetes Service-Clustern in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können Ansible verwenden, um Ihren Azure Kubernetes Service (AKS) zu verwalten. Dieser Artikel beschreibt, wie Sie mithilfe von Ansible einen Azure Kubernetes Service-Cluster erstellen und verwalten können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - **Azure-Abonnement:** Falls Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
-- **Azure-Dienstprinzipal**: Notieren Sie [beim Erstellen des Dienstprinzipals](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal) die folgenden Werte: **App-ID**, **Anzeigename**, **Kennwort**  und **Mandant**.
+- **Azure-Dienstprinzipal**: Notieren Sie [beim Erstellen des Dienstprinzipals](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) die folgenden Werte: **App-ID**, **Anzeigename**, **Kennwort**  und **Mandant**.
 
 - [!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation1.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation1.md)][!INCLUDE [ansible-prereqs-for-cloudshell-use-or-vm-creation2.md](../../includes/ansible-prereqs-for-cloudshell-use-or-vm-creation2.md)]
 

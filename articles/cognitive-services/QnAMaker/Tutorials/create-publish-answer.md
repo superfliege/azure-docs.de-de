@@ -4,19 +4,19 @@ titleSuffix: QnA Maker - Azure Cognitive Services
 description: In diesem REST-basierten Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Wissensdatenbank programmgesteuert erstellen und veröffentlichen und anschließend zur Beantwortung von Fragen heranziehen.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: fb1f315744c4bdfc058ef004dc0dfb07cccb9459
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 348cb6a451f15ddec6b7ee013832ad6c563bb2da
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911573"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874946"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen unter Verwendung von C#
 

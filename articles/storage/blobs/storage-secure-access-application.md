@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/30/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: ce44d4c066183ff796c8efa1dceb20dff73868ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ea865fe246bcb414dd1ab3f83b7135989bc0adf3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192391"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894903"
 ---
 # <a name="secure-access-to-an-applications-data-in-the-cloud"></a>Sichern des Zugriffs auf die Daten einer Anwendung in der Cloud
 
@@ -50,7 +50,7 @@ az storage container set-permission \ --account-name $blobStorageAccount \ --acc
 
 In Teil 1 dieser Tutorialreihe wurden Bilder aus einem öffentlichen Container in der Webanwendung angezeigt. In diesem Teil der Reihe verwenden Sie [SAS-Token (Shared Access Signature)](../common/storage-dotnet-shared-access-signature-part-1.md#what-is-a-shared-access-signature), um die Miniaturbilder abzurufen. SAS-Token ermöglichen den eingeschränkten Zugriff auf einen Container oder ein Blob in Abhängigkeit von IP, Protokoll, Zeitintervall und gewährten Rechten.
 
-In diesem Beispiel wird der Branch `sasTokens` im Quellcoderepository verwendet, der ein aktualisiertes Codebeispiel enthält. Löschen Sie die vorhandene GitHub-Bereitstellung mit [az webapp deployment source delete](/cli/azure/webapp/deployment/source#az_webapp_deployment_source_delete). Anschließend konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source).  
+In diesem Beispiel wird der Branch `sasTokens` im Quellcoderepository verwendet, der ein aktualisiertes Codebeispiel enthält. Löschen Sie die vorhandene GitHub-Bereitstellung mit [az webapp deployment source delete](/cli/azure/webapp/deployment/source). Anschließend konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source).  
 
 Im folgenden Befehl ist `<web-app>` der Name Ihrer Web-App.  
 
@@ -146,7 +146,7 @@ SSE verschlüsselt die Daten automatisch in allen Leistungsebenen (Standard oder
 
 ## <a name="enable-https-only"></a>Aktivieren der Übertragung nur über HTTPS
 
-Damit Anforderungen von Daten in und aus einem Speicherkonto geschützt sind, können Sie die Anforderungen auf HTTPS beschränken. Aktualisieren Sie das für das Speicherkonto erforderliche Protokoll mit dem Befehl [az storage account update](/cli/azure/storage/account#az_storage_account_update).
+Damit Anforderungen von Daten in und aus einem Speicherkonto geschützt sind, können Sie die Anforderungen auf HTTPS beschränken. Aktualisieren Sie das für das Speicherkonto erforderliche Protokoll mit dem Befehl [az storage account update](/cli/azure/storage/account).
 
 ```azurecli-interactive
 az storage account update --resource-group myresourcegroup --name <storage-account-name> --https-only true

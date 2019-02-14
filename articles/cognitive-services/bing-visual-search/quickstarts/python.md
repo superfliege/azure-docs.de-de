@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie ein Bild in die API für die visuelle Bing-Suche hochladen und Erkenntnisse dazu gewinnen.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 37fef6100d78b46d0fb52e486f1788eb78ea2578
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 873da64592c2c2e925d8731d4b1154db95bed31d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193759"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55863226"
 ---
 # <a name="quickstart-your-first-bing-visual-search-query-in-python"></a>Schnellstart: Ihre erste Abfrage für die visuelle Bing-Suche in Python
 

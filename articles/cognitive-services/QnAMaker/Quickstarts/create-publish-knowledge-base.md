@@ -3,18 +3,18 @@ title: 'Erstellen, Trainieren und Veröffentlichen einer Wissensdatenbank: QnA M
 titleSuffix: Azure Cognitive Services
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Die QnA Maker-Wissensdatenbank in diesem Beispiel wird aus einer einfachen FAQ-Webseite erstellt, um Fragen zur BitLocker-Schlüsselwiederherstellung zu beantworten.
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 41a8f11f817ec550ef3423d85eb107796bdd1b28
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216947"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876996"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 

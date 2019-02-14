@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: In diesem Go-REST-basierten Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer Wissensdatenbank abrufen.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/19/2018
 ms.author: diberry
-ms.openlocfilehash: a9c3a689aed2a94d51d590bbf7b396b8a1095e99
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e411047e68f13ca24e8937bddbccc261b72bc0d1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209875"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55868411"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Go
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung, um Videosuchanforderungen mit dem Bing-Videosuche-SDK für C# zu senden.
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: rosh
-ms.openlocfilehash: 820c6a57a4a8266b68c5a245c2c2cf316aa071a9
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f94db7a29827a80307f4a081d93744c5edc59edb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569080"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867782"
 ---
 # <a name="quickstart-perform-a-video-search-with-the-bing-video-search-sdk-for-c"></a>Schnellstart: Ausführen einer Videosuche mit dem Bing-Videosuche-SDK für C#
 
@@ -88,5 +88,5 @@ Beim Installieren des [[NuGet-Pakets mit dem SDK für die Videosuche]](https://w
 
 ## <a name="see-also"></a>Weitere Informationen 
 
-* [Was ist die Bing-Videosuche-API?](../overview.md)
+* [Worum handelt es sich bei der Bing-Videosuche-API?](../overview.md)
 * [Cognitive Services SDK-Beispiele für .NET](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

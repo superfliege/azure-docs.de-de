@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: quickstart
 ms.date: 11/28/2018
 ms.author: douglasl
-ms.openlocfilehash: 279588e63000883d60b159f56e8c0b4686dee5b4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: bb6c3281ffc434bd31f901b2b7f6e540f893ca76
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888769"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001901"
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>Tutorial: Erstellen einer Azure Data Factory-Instanz mit einer Azure Resource Manager-Vorlage
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [Version 1](v1/data-factory-build-your-first-pipeline-using-arm.md)
 > * [Aktuelle Version](quickstart-create-data-factory-resource-manager-template.md)
@@ -32,9 +33,11 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer Azure R
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)]
 
 ### <a name="azure-powershell"></a>Azure PowerShell
+
 Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisungen unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) befolgen.
 
 ## <a name="resource-manager-templates"></a>Resource Manager-Vorlagen
+
 Allgemeine Informationen zu Azure Resource Manager-Vorlagen finden Sie unter [Erstellen von Azure Resource Manager-Vorlagen](../azure-resource-manager/resource-group-authoring-templates.md).
 
 Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum Definieren von Data Factory-Entitäten, damit Sie das Tutorial schnell durchlaufen und die Vorlage testen können. Informationen zum Definieren der einzelnen Data Factory-Entitäten finden Sie im Abschnitt [Data Factory-Entitäten in der Vorlage](#data-factory-entities-in-the-template).
@@ -42,6 +45,7 @@ Der folgende Abschnitt enthält die vollständige Resource Manager-Vorlage zum D
 Weitere Informationen zur JSON-Syntax und Eigenschaften für Data Factory-Ressourcen in einer Vorlage finden Sie unter [Microsoft.DataFactory-Ressourcentypen](/azure/templates/microsoft.datafactory/allversions).
 
 ## <a name="data-factory-json"></a>Data Factory-JSON
+
 Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **C:\ADFTutorial**, die Folgendes enthält:
 
 ```json
@@ -265,6 +269,7 @@ Erstellen Sie eine JSON-Datei mit dem Namen **ADFTutorialARM.json** im Ordner **
 ```
 
 ## <a name="parameters-json"></a>Parameter (JSON)
+
 Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Parametern für die Azure Resource Manager-Vorlage.
 
 > [!IMPORTANT]
@@ -319,6 +324,7 @@ Erstellen Sie eine JSON-Datei namens **ADFTutorialARM-Parameters.json** mit Para
 > Für die Entwicklungs-, die Test- und die Produktionsumgebung können jeweils separate JSON-Parameterdateien mit der gleichen Data Factory-JSON-Vorlage verwendet werden. Mithilfe eines PowerShell-Skripts können Sie die Bereitstellung von Data Factory-Entitäten in diesen Umgebungen automatisieren.
 
 ## <a name="deploy-data-factory-entities"></a>Bereitstellen der Data Factory-Entitäten
+
 Führen Sie in PowerShell den folgenden Befehl aus, um die Data Factory-Entitäten mit der Resource Manager-Vorlage bereitzustellen, die Sie weiter oben erstellt haben.
 
 ```PowerShell
@@ -327,7 +333,7 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 Ihnen wird daraufhin eine Ausgabe angezeigt, die in etwa wie im folgenden Beispiel aussieht:
 
-```
+```console
 DeploymentName          : MyARMDeployment
 ResourceGroupName       : ADFTutorialResourceGroup
 ProvisioningState       : Succeeded
@@ -369,7 +375,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup"
     ```
-1. Erstellen Sie eine Variable für den Namen der Data Factory. Geben Sie den gleichen Namen an, den Sie in der Datei „ADFTutorialARM-Parameters.json“ angegeben haben.
+2. Erstellen Sie eine Variable für den Namen der Data Factory. Geben Sie den gleichen Namen an, den Sie in der Datei „ADFTutorialARM-Parameters.json“ angegeben haben.
 
     ```powershell
     $dataFactoryName = "<yourdatafactoryname>"
@@ -404,7 +410,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     
     Hier ist die Beispielausgabe:
     
-    ```
+    ```console
     Confirm
     Are you sure you want to start trigger 'ArmTemplateTestTrigger' in data factory 'ARMFactory1128'?
     [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): y
@@ -418,7 +424,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     
     Hier ist die Beispielausgabe:
     
-    ```
+    ```console
     TriggerName       : ArmTemplateTestTrigger
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : ARMFactory1128
@@ -427,31 +433,37 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
     ```
 
 ## <a name="monitor-the-pipeline"></a>Überwachen der Pipeline
+
 1. Klicken Sie nach der Anmeldung beim [Azure-Portal](https://portal.azure.com/) auf **Alle Dienste**, führen Sie eine Schlüsselwortsuche durch (beispielsweise nach **data fa**), und wählen Sie **Data Factorys** aus.
 
     ![Menü zum Durchsuchen von Data Factorys](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
+
 2. Klicken Sie auf der Seite **Data Factorys** auf die Data Factory, die Sie erstellt haben. Filtern Sie die Liste mit dem Namen Ihrer Data Factory, falls dies erforderlich ist.
 
     ![Data Factory auswählen](media/quickstart-create-data-factory-resource-manager-template/select-data-factory.png)
+
 3. Klicken Sie auf der Seite für die Data Factory auf die Kachel **Überwachung und Verwaltung**.
 
     ![Kachel „Überwachung und Verwaltung“](media/quickstart-create-data-factory-resource-manager-template/monitor-manage-tile.png)
+
 4. Die **Anwendung für die Datenintegration** sollte im Webbrowser in einer separaten Registerkarte geöffnet werden. Wechseln Sie zur **Registerkarte für die Überwachung**, falls sie nicht aktiv ist. Beachten Sie, dass die Ausführung der Pipeline von einem **Planer-Trigger** ausgeführt wurde.
 
     ![Überwachen der Pipelineausführung](media/quickstart-create-data-factory-resource-manager-template/monitor-pipeline-run.png)
 
     > [!IMPORTANT]
     > Sie sehen, dass die Pipeline nur zur vollen Stunde ausgeführt wird (z.B. 4 Uhr, 5 Uhr, 6 Uhr usw.). Klicken Sie in der Symbolleiste auf **Aktualisieren**, um die Liste zu aktualisieren, wenn die Uhrzeit die nächste volle Stunde erreicht.
+
 5. Klicken Sie in der Spalte **Aktionen** auf den Link.
 
     ![Link zu Pipelineaktionen](media/quickstart-create-data-factory-resource-manager-template/pipeline-actions-link.png)
+
 6. Sie sehen die Aktivitätsausführungen, die der Pipelineausführung zugeordnet sind. In dieser Schnellstartanleitung verfügt die Pipeline nur über eine Aktivität vom Typ „Kopieren“. Aus diesem Grund wird eine Ausführung für diese Aktivität angezeigt.
 
     ![Aktivitätsausführungen](media/quickstart-create-data-factory-resource-manager-template/activity-runs.png)
-1. Klicken Sie auf den Link unter der Spalte **Ausgabe**. Die Ausgabe des Kopiervorgangs wird im Fenster **Ausgabe** angezeigt. Klicken Sie auf die Schaltfläche „Maximieren“, um die vollständige Ausgabe anzuzeigen. Sie können das maximierte Ausgabefenster schließen.
+7. Klicken Sie auf den Link unter der Spalte **Ausgabe**. Die Ausgabe des Kopiervorgangs wird im Fenster **Ausgabe** angezeigt. Klicken Sie auf die Schaltfläche „Maximieren“, um die vollständige Ausgabe anzuzeigen. Sie können das maximierte Ausgabefenster schließen.
 
     ![Fenster „Ausgabe“](media/quickstart-create-data-factory-resource-manager-template/output-window.png)
-7. Beenden Sie den Trigger, nachdem eine erfolgreiche oder nicht erfolgreiche Ausführung angezeigt wird. Der Trigger führt die Pipeline einmal pro Stunde aus. Die Pipeline kopiert für jede Ausführung dieselbe Datei aus dem Eingabeordner in den Ausgabeordner. Führen Sie den folgenden Befehl im PowerShell-Fenster aus, um den Trigger zu beenden.
+8. Beenden Sie den Trigger, nachdem eine erfolgreiche oder nicht erfolgreiche Ausführung angezeigt wird. Der Trigger führt die Pipeline einmal pro Stunde aus. Die Pipeline kopiert für jede Ausführung dieselbe Datei aus dem Eingabeordner in den Ausgabeordner. Führen Sie den folgenden Befehl im PowerShell-Fenster aus, um den Trigger zu beenden.
     
     ```powershell
     Stop-AzureRmDataFactoryV2Trigger -ResourceGroupName $resourceGroupName -DataFactoryName $dataFactoryName -Name $triggerName
@@ -460,6 +472,7 @@ Der bereitgestellte Trigger befindet sich im Status „Beendet“. Eine Möglich
 [!INCLUDE [data-factory-quickstart-verify-output-cleanup.md](../../includes/data-factory-quickstart-verify-output-cleanup.md)]
 
 ## <a name="data-factory-entities-in-the-template"></a> JSON-Definitionen für Entitäten
+
 In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert:
 
 - [Mit Azure Storage verknüpfter Dienst](#azure-storage-linked-service)
@@ -469,6 +482,7 @@ In der JSON-Vorlage werden folgende Data Factory-Entitäten definiert:
 - [Trigger](#trigger)
 
 #### <a name="azure-storage-linked-service"></a>Mit Azure Storage verknüpfter Dienst
+
 Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der Data Factory. Sie haben im Rahmen der Schritte zur Erfüllung der Voraussetzungen einen Container erstellt und Daten in dieses Speicherkonto hochgeladen. In diesem Abschnitt geben Sie Name und Schlüssel Ihres Azure Storage-Kontos an. Informationen zu JSON-Eigenschaften zum Definieren eines mit Azure Storage verknüpften Diensts finden Sie unter [Mit Azure Storage verknüpfter Dienst](connector-azure-blob-storage.md#linked-service-properties).
 
 ```json
@@ -495,6 +509,7 @@ Die AzureStorageLinkedService-Instanz verknüpft Ihr Azure Storage-Konto mit der
 Die Verbindungszeichenfolge (connectionString) enthält die Parameter „storageAccountName“ und „storageAccountKey“. Die Werte für diese Parameter werden mithilfe einer Konfigurationsdatei übergeben. In der Definition werden außerdem die in der Vorlage definierten Variablen „azureStorageLinkedService“ und „dataFactoryName“ verwendet.
 
 #### <a name="azure-blob-input-dataset"></a>Azure-Blob-Eingabedataset
+
 Der mit Azure Storage verknüpfte Dienst gibt die Verbindungszeichenfolge an, die der Data Factory-Dienst zur Laufzeit für die Herstellung einer Verbindung zu Ihrem Azure Storage-Konto verwendet. In der Definition des Azure-Blobdatasets geben Sie die Namen des Blobcontainers, des Ordners und der Datei mit den Eingabedaten an. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](connector-azure-blob-storage.md#dataset-properties).
 
 ```json
@@ -518,10 +533,10 @@ Der mit Azure Storage verknüpfte Dienst gibt die Verbindungszeichenfolge an, di
         }
     }
 },
-
 ```
 
 #### <a name="azure-blob-output-dataset"></a>Azure-Blob-Ausgabedataset
+
 Sie geben den Namen des Ordners in der Azure Blob Storage-Instanz an, die die kopierten Daten aus dem Eingabeordner enthält. Informationen zu JSON-Eigenschaften zum Definieren eines Azure-Blobdatasets finden Sie unter [Eigenschaften des Dataset-Typs „Azure-Blob“](connector-azure-blob-storage.md#dataset-properties).
 
 ```json
@@ -548,6 +563,7 @@ Sie geben den Namen des Ordners in der Azure Blob Storage-Instanz an, die die ko
 ```
 
 #### <a name="data-pipeline"></a>Datenpipeline
+
 In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus einem Azure-Blobdataset in ein anderes Azure-Blobdataset kopiert. Informationen zu JSON-Elementen zum Definieren einer Pipeline für dieses Beispiel finden Sie unter [Pipeline-JSON](concepts-pipelines-activities.md#pipeline-json).
 
 ```json
@@ -587,6 +603,7 @@ In diesem Abschnitt definieren Sie eine Pipeline, die Daten aus einem Azure-Blob
 ```
 
 #### <a name="trigger"></a>Trigger
+
 In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro Stunde ausführt. Der bereitgestellte Trigger befindet sich im Status „Beendet“. Starten Sie den Trigger mit dem **Start-AzureRmDataFactoryV2Trigger**-Cmdlet. Weitere Informationen zu Triggern finden Sie im Artikel [Pipelineausführung und -trigger](concepts-pipeline-execution-triggers.md#triggers).
 
 ```json
@@ -624,6 +641,7 @@ In diesem Abschnitt definieren Sie einen Trigger, der die Pipeline einmal pro St
 ```
 
 ## <a name="reuse-the-template"></a>Wiederverwenden der Vorlage
+
 In diesem Tutorial haben Sie eine Vorlage zum Definieren von Data Factory-Entitäten und eine Vorlage zum Übergeben von Parameterwerten erstellt. Mit der gleichen Vorlage können Sie Data Factory-Entitäten in unterschiedlichen Umgebungen bereitstellen. Hierzu müssen Sie lediglich eine Parameterdatei für die jeweilige Umgebung erstellen und beim Bereitstellen in dieser Umgebung verwenden.
 
 Beispiel:
@@ -635,9 +653,11 @@ New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFT
 
 New-AzureRmResourceGroupDeployment -Name MyARMDeployment -ResourceGroupName ADFTutorialResourceGroup -TemplateFile ADFTutorialARM.json -TemplateParameterFile ADFTutorialARM-Parameters-Production.json
 ```
+
 Der erste Befehl verwendet eine Parameterdatei für die Entwicklungsumgebung, der zweite eine Parameterdatei für die Testumgebung und der dritte eine Parameterdatei für die Produktion.
 
 Mit der Vorlage können auch wiederholte Aufgaben durchgeführt werden. Es kann beispielsweise sein, dass Sie zahlreiche Data Factorys mit einer Pipeline oder mehreren Pipelines erstellen, die die gleiche Logik implementieren, aber für die einzelnen Data Factorys jeweils ein anderes Azure Storage-Konto verwendet wird. In diesem Szenario können Sie zur Erstellung der Data Factorys die gleiche Vorlage in der gleichen Umgebung (Entwicklungs-, Test- oder Produktionsumgebung) mit unterschiedlichen Parameterdateien verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Die Pipeline in diesem Beispiel kopiert Daten in einem Azure Blob Storage von einem Speicherort in einen anderen. Arbeiten Sie die [Tutorials](tutorial-copy-data-dot-net.md) durch, um zu erfahren, wie Sie Data Factory in anderen Szenarien verwenden können.

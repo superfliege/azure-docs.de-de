@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In diesem Schnellstart verwenden Sie die Gesichtserkennungs-API mit Ruby, um Gesichter in einem Bild zu erkennen.
 services: cognitive-services
 author: PatrickFarley
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 05/30/2018
 ms.author: pafarley
-ms.openlocfilehash: 6320e05172673abf809ac7fdbfea544ed74b0019
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b7dbbc328f61b47cb89af2974ad3c428d868d465
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221078"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857123"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Ruby
 
@@ -29,9 +29,9 @@ Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über di
 
 Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
 
-* Gesichts-ID: Eine eindeutige ID, die in verschiedenen Szenarien mit der Gesichtserkennungs-API verwendet wird.
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben.
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen.
+* Gesichts-ID: Eine eindeutige ID, die in verschiedenen Szenarien mit der Gesichtserkennungs-API verwendet wird
+* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben
+* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen
 * Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
 
 Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:

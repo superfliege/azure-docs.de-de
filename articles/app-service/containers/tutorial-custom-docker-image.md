@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: seodec18
-ms.openlocfilehash: 62cdc50b40fb1273fdc2eece050869fc2284cf6c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 6b57c3a172f39c596250b05024ad954a5d065440
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632975"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984816"
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Verwenden eines benutzerdefinierten Docker-Images für Web-App für Container
 
@@ -59,7 +59,7 @@ cd docker-django-webapp-linux
 
 Betrachten Sie _Dockerfile_ im Git-Repository. Diese Datei beschreibt die Python-Umgebung, die zur Ausführung Ihrer Anwendung erforderlich ist. Darüber hinaus richtet das Image einen [SSH](https://www.ssh.com/ssh/protocol/)-Server für eine sichere Kommunikation zwischen dem Container und dem Host ein.
 
-```docker
+```Dockerfile
 FROM python:3.4
 
 RUN mkdir /code
@@ -254,7 +254,7 @@ az webapp config appsettings set --resource-group myResourceGroup --name <app_na
 
 ### <a name="test-the-web-app"></a>Testen der Web-App
 
-Stellen Sie sicher, dass die Web-App funktioniert, indem Sie zu ihr navigieren (`http://<app_name>azurewebsites.net`). 
+Stellen Sie sicher, dass die Web-App funktioniert, indem Sie zu ihr navigieren (`http://<app_name>.azurewebsites.net`). 
 
 ![Testen der Konfiguration des Web-App-Ports](./media/app-service-linux-using-custom-docker-image/app-service-linux-browse-azure.png)
 
@@ -280,7 +280,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 * Eine [RUN](https://docs.docker.com/engine/reference/builder/#run)-Anweisung, die `apt-get` aufruft und dann das Kennwort für das Stammkonto auf `"Docker!"` festlegt.
 
-    ```docker
+    ```Dockerfile
     ENV SSH_PASSWD "root:Docker!"
     RUN apt-get update \
             && apt-get install -y --no-install-recommends dialog \
@@ -294,7 +294,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 * Eine [COPY](https://docs.docker.com/engine/reference/builder/#copy)-Anweisung, die die Docker-Engine anweist, die [sshd_config](https://man.openbsd.org/sshd_config)-Datei in das */etc/ssh/*-Verzeichnis zu kopieren. Die Konfigurationsdatei sollte auf [dieser sshd_config-Datei](https://github.com/Azure-App-Service/node/blob/master/6.11.1/sshd_config) basieren.
 
-    ```docker
+    ```Dockerfile
     COPY sshd_config /etc/ssh/
     ```
 
@@ -305,7 +305,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 * Eine [EXPOSE](https://docs.docker.com/engine/reference/builder/#expose)-Anweisung, die Port 2222 im Container verfügbar macht. Selbst wenn das Root-Kennwort bekannt ist, kann auf Port 2222 nicht aus dem Internet zugegriffen werden. Es handelt sich um einen internen Port, auf den nur von Containern innerhalb des Brückennetzwerks eines privaten virtuellen Netzwerks zugegriffen werden kann. Danach kopieren Befehle Details der SSH-Konfiguration und starten den `ssh`-Dienst.
 
-    ```docker
+    ```Dockerfile
     EXPOSE 8000 2222
     ```
 

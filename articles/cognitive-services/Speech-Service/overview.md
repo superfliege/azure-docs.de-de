@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: 'Der Speech-Dienst, ein Teil von Azure Cognitive Services, vereinigt in sich mehrere Sprachdienste, die zuvor separat verfügbar waren: Bing-Spracheingabe (umfasst die Spracherkennung und Sprachsynthese), Custom Speech und Sprachübersetzung.'
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: overview
 ms.date: 12/13/2018
 ms.author: erhopf
-ms.openlocfilehash: beb1382d2e076052583dd5bbc546259c8aae2f96
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d60e5f881e44f397090a3ba5e467c08f20137d72
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217967"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858829"
 ---
 # <a name="what-is-speech-services"></a>Was ist der Speech-Dienst?
 
@@ -55,8 +55,8 @@ Der Speech-Dienst verfügt auch über eine [REST-API](rest-apis.md), die mit jed
 
 |<br>Methode|Spracheingabe<br>Spracherkennung|Sprachsynthese<br>Spracheingabe|Spracheingabe<br>Sprachübersetzung|<br>BESCHREIBUNG|
 |-|-|-|-|-|
-|[Speech SDK](speech-sdk.md)|JA|Nein|JA|Native APIs für C#, C++ und Java zur Vereinfachung der Entwicklung.|
-|[REST-APIs](rest-apis.md)|JA|JA|Nein |Eine einfache HTTP-basierte API, mit der Sie Ihren Anwendungen problemlos Sprachfunktionen hinzufügen können.|
+|[Speech SDK](speech-sdk.md)|Ja|Nein|Ja|Native APIs für C#, C++ und Java zur Vereinfachung der Entwicklung.|
+|[REST-APIs](rest-apis.md)|Ja|Ja|Nein |Eine einfache HTTP-basierte API, mit der Sie Ihren Anwendungen problemlos Sprachfunktionen hinzufügen können.|
 
 ### <a name="websockets"></a>WebSockets
 

@@ -9,12 +9,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 0ef206cf4407c6392ae5d9a70ba156f5635715e9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814791"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892064"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) verwaltet Ihre gehostete Kubernetes-Umgebung und ermöglicht so die schnelle und einfache Bereitstellung und Verwaltung von Containeranwendungen – ganz ohne Kenntnisse im Zusammenhang mit Containerorchestrierung. Darüber hinaus übernimmt die Lösung die Betreuung laufender Vorgänge und Wartungsaufgaben für Sie, indem sie Ressourcen ganz nach Bedarf bereitstellt, aktualisiert und skaliert, ohne Ihre Anwendungen offline zu schalten.
@@ -32,7 +32,7 @@ In diesem Tutorial erfahren Sie, wie die folgenden Aufgaben bei der Erstellung e
 
 - **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
 
-- **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Notieren Sie sich die Werte für „appId“, „displayName“, „password“ und „tenant“.
+- **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Notieren Sie sich die Werte für „appId“, „displayName“, „password“ und „tenant“.
 
 ## <a name="create-the-directory-structure"></a>Erstellen der Verzeichnisstruktur
 Der erste Schritt ist das Erstellen des Verzeichnisses, das Ihre Terraform-Konfigurationsdateien für die Übung enthält.

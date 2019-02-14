@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Verwenden Sie diese Schnellstartanleitung zum Senden von Videosuchanforderungen an die Bing-Videosuche-REST-API mit Ruby.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: c006d6ace5441c16e7ff20a604340f833db59884
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 837a47b0eb1eff37eeafc1cdaad6370b8abc595f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55569250"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860203"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-ruby"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und Ruby
 
@@ -191,9 +191,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen einer Einzelseiten-Web-App](../tutorial-bing-video-search-single-page-app.md)
+> [Erstellen einer Single-Page-Webanwendung](../tutorial-bing-video-search-single-page-app.md)
 
 ## <a name="see-also"></a>Weitere Informationen 
 
- [Was ist die Bing-Videosuche-API?](../overview.md)
+ [Worum handelt es sich bei der Bing-Videosuche-API?](../overview.md)
 

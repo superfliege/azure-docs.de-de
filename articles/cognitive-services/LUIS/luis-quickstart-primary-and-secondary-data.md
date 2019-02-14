@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: In diesem Tutorial werden maschinell gelernte Daten einer Stellenbezeichnung mithilfe der Simple-Entität aus einer Äußerung extrahiert. Um die Genauigkeit der Extraktion zu steigern, fügen Sie der Simple-Entität eine Begriffsliste mit spezifischen Ausdrücken hinzu.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: diberry
-ms.openlocfilehash: 53e975719b911a27667afc8565bd86261f927068
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820979"
+ms.locfileid: "55867238"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 

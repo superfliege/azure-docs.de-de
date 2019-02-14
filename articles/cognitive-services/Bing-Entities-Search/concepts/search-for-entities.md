@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Verwenden Sie die Bing-Entitätssuche-API zum Extrahieren und Suchen von Entitäten und Orten in Suchabfragen.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: b1d46d125d390f8612c5708e1964e0626acde343
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e78cc86a91e229b5d4d4aead5709da2f694ecac1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757792"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895362"
 ---
 # <a name="searching-for-entities-with-the-bing-entity-api"></a>Suche nach Entitäten mit der Bing-Entitäts-API
 
@@ -174,7 +174,7 @@ Wenn Sie die Entitätsinformationen anzeigen (Name, Beschreibung und Bild), müs
 
 ## <a name="find-places"></a>Suchen nach Orten
 
-Das `places`-Feld ist ein [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#localentityanswer)-Objekt, das eine Liste von [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place)-Objekten enthält (weitere Informationen siehe [Entitätstypen](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)). Die Liste enthält mindestens eine lokale Entität, die die Anforderung erfüllt.
+Das `places`-Feld ist ein [LocalEntityAnswer](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)-Objekt, das eine Liste von [Place](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#place)-Objekten enthält (weitere Informationen siehe [Entitätstypen](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)). Die Liste enthält mindestens eine lokale Entität, die die Anforderung erfüllt.
 
 Orte umfassen Restaurants, Hotels oder lokale Geschäfte. Das Feld [entityPresentationInfo](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entitypresentationinfo) enthält Hinweise, die den Typ der lokalen Entität identifizieren. Die Liste enthält Hinweise wie z.B. „Ort“, „lokales Geschäft“ oder „Restaurant“. Jeder nachfolgende Hinweis im Array grenzt den Entitätstyp weiter ein. Eine Liste aller möglichen Typen finden Sie unter [Entitätstypen](https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference#entity-types)
 

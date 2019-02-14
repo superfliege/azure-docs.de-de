@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Text mithilfe von Python und der Textübersetzungs-REST-API zwischen Skripts transliterieren (konvertieren). In diesem Beispiel wird Japanisch in das lateinische Alphabet transliteriert.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: erhopf
-ms.openlocfilehash: dd875fe19bdf9d02fc7217b66c8fd442abef2d42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 845ce074b503dc395ce3444734b16d4ab8224e89
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700263"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55876265"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-python"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit Python
 

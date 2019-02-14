@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Einführung in die Projekt-URL-Vorschau
 services: cognitive-services
 author: mikedodaro
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: url-preview
 ms.topic: overview
 ms.date: 03/16/2018
 ms.author: rosh
-ms.openlocfilehash: 2e974acb1a7583fbd1a961eda4daa3732fbeff7c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 7022c3b2d2f3618d55b0a70d2690abf1497ec6a6
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218172"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865334"
 ---
 # <a name="what-is-project-url-preview"></a>Worum handelt es sich bei der Projekt-URL-Vorschau?
 Der URL-Vorschau-Endpunkt nutzt einen URL-Abfrageparameter und gibt eine JSON-Antwort mit dem Namen der Zielressource, einer kurzen Beschreibung und einem Link zu einem Bild, das in einer Vorschau angezeigt wird, zurück. Die Antwort hat außerdem das [isFamilyFriendly](url-preview-reference.md#query-parameters)-Flag, das angibt, ob die URL jugendgefährdende, raubkopierte oder andere illegale Inhalte enthält. 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung wird beschrieben, wie Sie Satzlängen (in Zeichen) ermitteln, indem Sie Node.js und die Textübersetzungs-REST-API verwenden.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 10/29/2018
 ms.author: erhopf
-ms.openlocfilehash: b27bad7b3e34353ec7e2d33cab3614affc31322b
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 29ffdaaa8e51bed3057480ee5210951c80844633
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215553"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858212"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-determine-sentence-length-with-nodejs"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Ermitteln der Satzlänge mit Node.js
 
@@ -90,7 +90,7 @@ let options = {
 };
 ```
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Eine Anforderung lässt sich am einfachsten authentifizieren, indem Sie den Abonnementschlüssel als `Ocp-Apim-Subscription-Key`-Header übergeben. Diese Vorgehensweise wird in diesem Beispiel verwendet. Alternativ können Sie den Abonnementschlüssel durch ein Zugriffstoken ersetzen und dieses als `Authorization`-Header übergeben, um Ihre Anforderung zu überprüfen. Weitere Informationen finden Sie unter [Authentifizierung](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication).
 

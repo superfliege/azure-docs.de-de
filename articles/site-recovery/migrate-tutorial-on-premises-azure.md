@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4ba25da1f356f6164137dead467bd8bc948ce3d7
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 6c97289cd1ad406769613621afdc16c8096f4aeb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037836"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116166"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>Migrieren von lokalen Computern zu Azure
 
@@ -45,7 +45,7 @@ Von paravirtualisierten Treibern exportierte Geräte werden nicht unterstützt.
 ## <a name="create-a-recovery-services-vault"></a>Erstellen eines Recovery Services-Tresors
 
 1. Melden Sie sich unter [Azure-Portal](https://portal.azure.com) > **Recovery Services** an.
-2. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Backup & Site Recovery** aus.
+2. Klicken Sie auf **Ressource erstellen** > **Verwaltungstools** > **Backup & Site Recovery**.
 3. Geben Sie in **Name** den Anzeigenamen **ContosoVMVault** ein. Wenn Sie mehrere Abonnements haben, wählen Sie das gewünschte aus.
 4. Erstellen Sie die Ressourcengruppe **ContosoRG**.
 5. Geben Sie eine Azure-Region an. Eine Liste mit den unterstützten Regionen finden Sie in den [Preisdetails zu Azure Site Recovery](https://azure.microsoft.com/pricing/details/site-recovery/)unter „Geografische Verfügbarkeit“.
@@ -135,7 +135,7 @@ Einige Schritte können im Rahmen des Migrationsvorgangs mithilfe der integriert
 - Führen Sie App-Anpassungen nach der Migration durch, z.B. die Aktualisierung von Datenbankverbindungszeichenfolgen und Webserverkonfigurationen. 
 - Führen Sie endgültige Anwendungs- und Migrationsakzeptanztests für die migrierte Anwendung durch, die nun in Azure ausgeführt wird.
 - Der [Azure-VM-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows) verwaltet VM-Interaktionen mit dem Azure Fabric Controller. Dieser ist für einige Azure-Dienste wie Azure Backup, Site Recovery und das Azure Security Center erforderlich.
-    - Wenn Sie VMware-Computer und physische Server migrieren, installiert das Mobility Service-Installationsprogramm verfügbare Azure-VM-Agents auf Windows-Computern. Auf Linux-VMs empfehlen wir, den Agent nach einem Failover zu installieren. a
+    - Wenn Sie VMware-Computer und physische Server migrieren, installiert das Mobility Service-Installationsprogramm verfügbare Azure-VM-Agents auf Windows-Computern. Auf Linux-VMs empfehlen wir, den Agent nach einem Failover zu installieren.
     - Wenn Sie Azure-VMs in eine sekundäre Region migrieren, muss der Azure-VM-Agent vor der Migration auf der VM bereitgestellt werden.
     - Wenn Sie Hyper-V-VMs zu Azure migrieren, installieren Sie nach der Migration den Azure-VM-Agent auf der Azure-VM.
 - Entfernen Sie manuell alle Site Recovery-Anbieter/-Agents von der VM. Wenn Sie VMware-VMs oder physische Server migrieren [deinstallieren Sie den Mobility Service von der Azure-VM][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer].
