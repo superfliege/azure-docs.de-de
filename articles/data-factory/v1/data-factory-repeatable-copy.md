@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 450e6a180b104d8f384fd08cc7c4cafcd53b4453
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: fa08e6da6b87de5878f099709563fb90e8669e77
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021338"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237602"
 ---
 # <a name="repeatable-copy-in-azure-data-factory"></a>Wiederholbare Kopiervorgänge in Azure Data Factory
 
@@ -114,7 +114,7 @@ Diese Spalte wird von Azure Data Factory zum Zweck der Wiederholbarkeit verwende
 1. Definieren Sie in der SQL-Zieltabelle eine Spalte vom Typ **binary (32)**. Für diese Spalte dürfen keine Einschränkungen gelten. Benennen wir für die Zwecke dieses Beispiels die Spalte „AdfSliceIdentifier“.
 
 
-    Quelltabelle:
+Quelltabelle:
 
     ```sql
     CREATE TABLE [dbo].[Student](
@@ -123,7 +123,7 @@ Diese Spalte wird von Azure Data Factory zum Zweck der Wiederholbarkeit verwende
     )
     ```
 
-    Zieltabelle: 
+Zieltabelle: 
 
     ```sql
     CREATE TABLE [dbo].[Student](
