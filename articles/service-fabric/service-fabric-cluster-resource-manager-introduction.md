@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: e3cf87ca49ae39966cffbb768dc1c191991d4036
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f3f8cf88268498d20651eab40eb655313180cadc
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096907"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203198"
 ---
 # <a name="introducing-the-service-fabric-cluster-resource-manager"></a>Einführung in den Clusterressourcen-Manager von Service Fabric
 Zur Verwaltung von IT-Systemen oder Onlinediensten wurden diesen bisher üblicherweise spezielle physische oder virtuelle Computer zugewiesen. Dienste wurden als Ebenen entworfen. Es gab eine Webebene und eine Daten- oder Speicherebene. Clientanwendungen verfügten über eine Messaging-Ebene, auf der Anforderungen eingingen und ausgingen, und einen speziellen Satz von Computern für die Zwischenspeicherung. Für jede Ebene oder jede Art von Workload gab es bestimmte fest zugeordnete Computer oder Computergruppen, so z.B. für die Datenbank und die Webserver. Wenn eine bestimmte Art von Workload eine Überlastung der Computer verursachte, auf denen sie ausgeführt wurde, wurden dieser Ebene weitere Computer mit derselben Konfiguration hinzugefügt. Jedoch konnten nicht alle Workloads so einfach skaliert werden – insbesondere für die Datenebene mussten Sie in der Regel Computer durch größere Computer ersetzen. Ganz einfach. Wenn ein Computer ausfiel, wurde dieser Teil der gesamten Anwendung mit niedriger Kapazität ausgeführt, bis der Computer wiederhergestellt werden konnte. Noch immer recht einfach (wenn auch nicht unbedingt spaßig).
@@ -43,10 +43,6 @@ Der Clusterressourcen-Manager ist die Systemkomponente, durch die Orchestrierung
 1. Erzwingen von Regeln
 2. Optimieren der Umgebung
 3. Helfen bei anderen Prozessen
-
-Sehen Sie sich das folgende Microsoft Virtual Academy-Video zur Funktionsweise des Clusterressourcen-Managers an: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=d4tka66yC_5706218965">
-<img src="./media/service-fabric-cluster-resource-manager-introduction/ConceptsAndDemoVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 ### <a name="what-it-isnt"></a>Was der Clusterressourcen-Manager nicht ist
 In herkömmlichen N-Schichten-Anwendungen gibt es immer einen [Load Balancer](https://en.wikipedia.org/wiki/Load_balancing_(computing)). Hierbei handelte es sich normalerweise um einen Netzwerklastenausgleich (Network Load Balancer, NLB) oder einen Anwendungslastenausgleich (ALB), je nachdem, an welcher Stelle im Netzwerkstapel er stattfand. Einige Load Balancer sind hardwarebasiert, wie z.B. das BigIP-Angebot von F5, andere sind softwarebasiert, wie z.B. der Netzwerklastenausgleich von Microsoft. In anderen Umgebungen wird der Lastenausgleich möglicherweise von HAProxy, nginx, Istio oder Envoy ausgeführt. In diesen Architekturen besteht die Aufgabe des Lastenausgleichs darin sicherzustellen, dass zustandslose Workloads (ungefähr) die gleiche Menge an Arbeit erhalten. Für den Lastenausgleich gab es verschiedene Strategien. Einige sendeten jeden Aufruf an einen anderen Server. Andere stellten feste/unveränderliche Sitzungen bereit. Fortgeschrittenere Load Balancer verwenden Schätzungen der tatsächlichen Auslastung oder Berichte, um einen Aufruf basierend auf den erwarteten Kosten und der aktuellen Computerauslastung weiterzuleiten.

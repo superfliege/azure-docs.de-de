@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 2b035243e577adbbefa866acbae6243a9e7e9a31
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283306"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999350"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Anpassen eines Personenmodells mit der Video Indexer-API
 
@@ -56,10 +56,10 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|name|Zeichenfolge|JA|Name für das Personenmodell|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|name|Zeichenfolge|Ja|Name für das Personenmodell|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -101,10 +101,10 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|id|Zeichenfolge|JA|Die Personenmodell-ID (beim Erstellen des Personenmodells generiert)|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|id|Zeichenfolge|Ja|Die Personenmodell-ID (beim Erstellen des Personenmodells generiert)|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -138,9 +138,9 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -193,12 +193,12 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|videoId|Zeichenfolge|JA|ID für das Video, in dem das Gesicht zu sehen ist, das Sie aktualisieren möchten. Dies wird erstellt, wenn das Video hochgeladen und indiziert wurde.|
-|faceId|integer|JA|Die ID für das zu aktualisierende Gesicht. Sie können die „faceId“ aus dem Videoindex abrufen.|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-|name|Zeichenfolge|JA|Neuer Name, mit dem das Gesicht aktualisiert wird.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|videoId|Zeichenfolge|Ja|ID für das Video, in dem das Gesicht zu sehen ist, das Sie aktualisieren möchten. Dies wird erstellt, wenn das Video hochgeladen und indiziert wurde.|
+|faceId|integer|Ja|Die ID für das zu aktualisierende Gesicht. Sie können die „faceId“ aus dem Videoindex abrufen.|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|name|Zeichenfolge|Ja|Neuer Name, mit dem das Gesicht aktualisiert wird.|
 
 Namen sind für Personenmodelle eindeutig. Wenn Sie zwei verschiedenen Gesichtern in demselben Personenmodell denselben Parameterwert für **Name** zuweisen, betrachtet Video Indexer die Gesichter als dieselbe Person und führt sie zusammen, nachdem Sie Ihr Video neu indizieren. 
 

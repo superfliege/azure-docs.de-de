@@ -1,25 +1,25 @@
 ---
 title: Einführung in den Premium-Tarif von Azure Cache for Redis | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie für Ihre Azure Cache for Redis-Instanzen im Tarif „Premium“ Redis-Persistenz Redis-Clustering und VNET-Unterstützung erstellen und verwalten.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.assetid: 30f46f9f-e6ec-4c38-a8cc-f9d4444856e5
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
-ms.author: wesmc
-ms.openlocfilehash: 906ab6c433df7cf452d1f5ab4660abce8d4674fc
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 6757a038a945bf153cb62662bee8c715c87baf19
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107513"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237739"
 ---
 # <a name="introduction-to-the-azure-cache-for-redis-premium-tier"></a>Einführung in den Premium-Tarif von Azure Cache for Redis
 Azure Cache for Redis ist ein verteilter, verwalteter Cache, mit dem Sie hoch skalierbare und reaktionsschnelle Anwendungen erstellen können, indem Sie äußerst schnellen Zugriff auf Daten bieten. 

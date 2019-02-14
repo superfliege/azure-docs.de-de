@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/06/2018
+ms.date: 02/08/2019
 ms.author: sajagtap
-ms.openlocfilehash: e44308f38a138c0e186e41fc8310f8b480cd4e09
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: aba7d2ff73fc1fdca6f57742582b38662177012d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783429"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995117"
 ---
-# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Verwenden von Azure Media Content Moderator, um nicht jugendfreie und rassistische Inhalte zu erkennen
+# <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Verwenden von Azure Media Content Moderator, um nicht jugendfreie und rassistische Inhalte zu erkennen 
 
 ## <a name="overview"></a>Übersicht
 Mit dem Medienprozessor (MP) von **Azure Media Content Moderator** können Sie die hardwareunterstützte Moderation für Ihre Videos verwenden. Sie möchten beispielsweise nicht jugendfreie und rassistische Inhalte in Videos erkennen und die gekennzeichneten Inhalte von Ihren menschlichen Moderationsteams überprüfen lassen.
@@ -31,7 +31,7 @@ Der Medienprozessor von **Azure Media Content Moderator** befindet sich derzeit 
 Dieser Artikel enthält Details zu **Azure Media Content Moderator** und zeigt die Verwendung mit dem Media Services SDK für .NET.
 
 ## <a name="content-moderator-input-files"></a>Content Moderator-Eingabedateien
-Videodateien. Derzeit werden folgende Formate unterstützt: MP4, MOV und WMV.
+Videodateien. Die folgenden Formate werden derzeit unterstützt: MP4, MOV und WMV.
 
 ## <a name="content-moderator-output-files"></a>Content Moderator-Ausgabedateien
 Die moderierte Ausgabe im JSON-Format umfasst automatisch erkannte Aufnahmen und Keyframes. Die Keyframes werden mit Zuverlässigkeitsbewertung für nicht jugendfreie oder rassistische Inhalte zurückgegeben. Sie umfassen auch ein boolesches Flag, das angibt, ob eine Überprüfung ratsam ist. Die Kennzeichnung für die Überprüfungsempfehlung wird basierend auf den internen Schwellenwerten für nicht jugendfreie und rassistische Bewertungen zugewiesen.

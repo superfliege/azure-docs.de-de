@@ -1,22 +1,22 @@
 ---
 title: Abonnementschlüssel
-titleSuffix: Language Understadning - Azure Cognitive Services
+titleSuffix: Language Understanding - Azure Cognitive Services
 description: 'LUIS verwendet zwei Schlüssel: den kostenlosen Erstellungsschlüssel zum Erstellen Ihres Modells und den berechneten Endpunktschlüssel für das Abfragen des Vorhersageendpunkts mit Benutzeräußerungen.'
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 81744e2af75410da911ee17f2c4acd05d5a57051
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 1898d6e5119d3cbc2061aff8d4a7e673abd83198
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222592"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097456"
 ---
 # <a name="authoring-and-query-prediction-endpoint-keys-in-luis"></a>Erstellungsschlüssel und Endpunktschlüssel für Vorhersageabfragen in LUIS
 LUIS verwendet zwei Schlüssel: [Erstellungs-](#programmatic-key) und [Endpunktschlüssel](#endpoint-key). Der Erstellungsschlüssel wird automatisch erstellt, wenn Sie Ihr LUIS-Konto erstellen. Wenn Sie Ihre LUIS-App veröffentlichen möchten, müssen Sie den [Endpunktschlüssel erstellen](luis-how-to-azure-subscription.md), ihn Ihrer LUIS-App [zuweisen](luis-how-to-azure-subscription.md) und ihn [für Endpunktabfragen verwenden](#use-endpoint-key-in-query). 

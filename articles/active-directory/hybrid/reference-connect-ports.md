@@ -15,12 +15,13 @@ ms.topic: reference
 ms.date: 08/02/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: b9384ae328bf4c1e155d559e888931a7155aff26
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 48d2ef0de9ae59e63cd9957200c46c788e2d785f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55485992"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56184080"
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>Erforderliche Ports und Protokolle für die Hybrid-Identität
 Das folgende Dokument ist eine technische Referenz zu den erforderlichen Ports und Protokollen für die Implementierung einer Hybrid-Identitätslösung. Sehen Sie sich die folgende Abbildung und die entsprechende Tabelle an.

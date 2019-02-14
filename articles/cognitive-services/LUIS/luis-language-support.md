@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: LUIS bietet eine Reihe von Features innerhalb des Diensts. Nicht alle Funktionen besitzen die gleiche Sprachparität. Stellen Sie sicher, dass die Features, an denen Sie interessiert sind, in Ihrer gewünschten Sprache und Kultur unterstützt werden. Eine LUIS-App ist kulturspezifisch, und die Kultur kann nach dem Festlegen nicht mehr geändert werden.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 85bd7b1c150eaa23ec5fa438a8fcbe2d5eb66f45
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 81684031ddaa1ca8fa63a6c7e512f3fe6769a639
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220416"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859809"
 ---
 # <a name="language-and-region-support-for-luis"></a>Sprach- und Regionsunterstützung für LUIS
 

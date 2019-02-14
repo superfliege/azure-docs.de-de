@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/03/2018
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 2f58bb8a1a3a0f0593513570355b8d3ba46816b9
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 66a40597178a8267febfd6ad18277d6b865c084d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54825832"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180163"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zendesk"></a>Tutorial: Azure Active Directory-Integration mit Zendesk
 
@@ -108,7 +109,12 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Zendesk d
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<subdomain>.zendesk.com`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `<subdomain>.zendesk.com`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein:
+    | |
+    |-|-|
+    | `<subdomain>.zendesk.com` |
+    | `https://<subdomain>.zendesk.com` |
+    | |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für Zendesk-Kunden](https://support.zendesk.com/hc/en-us/articles/203663676-Using-SAML-for-single-sign-on-Professional-and-Enterprise), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -162,7 +168,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Zendesk d
 
 11. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Zendesk einrichten**, um zur Anwendung Zendesk weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Zendesk anzumelden. Die Browsererweiterung führt die Konfiguration der Anwendung automatisch für Sie durch und automatisiert den Abschnitt **Konfigurieren des einmaligen Anmeldens für Zendesk**.
 
-     ![image](./media/zendesk-tutorial/d2_saml.png)
+    ![image](./media/zendesk-tutorial/d2_saml.png)
 
 ### <a name="configure-zendesk-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Zendesk
 
@@ -190,7 +196,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Zendesk d
 
     f. Klicken Sie auf **Speichern**.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -278,5 +284,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Zendesk“ klicken, sollten Sie au
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
-- [Konfigurieren der Benutzerbereitstellung](zendesk-provisioning-tutorial.md) 
-
+- [Konfigurieren der Benutzerbereitstellung](zendesk-provisioning-tutorial.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/15/2019
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 7a136f34a7dd9fada23a4225b60223220c92c665
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a1a6b31c1500c51dbbc32683d9e0e911b60dcae4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54440420"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246889"
 ---
 Organisationen haben hohen Computing-Bedarf. Zu diesen Big Compute-Workloads zählen unter anderem technische Entwicklungen und Analysen, die Berechnung finanzieller Risiken, das Rendern von Bildern, komplexe Modelle sowie Monte Carlo-Simulationen. 
 
@@ -25,12 +25,12 @@ Verwenden Sie die Azure-Cloud, um rechenintensive Linux- und Windows-Workloads e
     * Richten Sie auf virtuellen Azure-Computern oder in [VM-Skalierungsgruppen](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) Ihre eigene Clusterumgebung ein. 
     * Führen Sie für einen lokalen Cluster einen Lift & Shift-Vorgang durch, oder stellen Sie in Azure einen neuen Cluster bereit, um die Kapazität zu erhöhen. 
     * Verwenden Sie Azure Resource Manager-Vorlagen, um führende [Workload-Manager](#workload-managers), Infrastruktur und [Anwendungen](#hpc-applications) bereitzustellen. 
-    * Wählen Sie [HPC- und GPU-VM-Größen](#hpc-and-gpu-sizes) aus, die spezielle Hardware und Netzwerkverbindungen für MPI- oder GPU-Workloads enthalten. 
+    * Wählen Sie [HPC- und GPU-VM-Größen](#hpc-and-gpu-vm-sizes) aus, die spezielle Hardware und Netzwerkverbindungen für MPI- oder GPU-Workloads enthalten. 
     * Fügen Sie [Hochleistungsspeicher](#hpc-storage) für Workloads mit hoher E/A-Intensität hinzu.
 * **Hybridlösungen**
     * Erweitern Ihrer lokalen Lösung, um Spitzenworkloads auf die Azure-Infrastruktur zu verlagern („Burst“)
-    * Verwenden Sie bei Bedarf das Cloud Computing für Ihren vorhandenen [Workload-Manager](#workload-manager).
-    * Nutzen Sie [HPC- und GPU-VM-Größen](#hpc-and-gpu-sizes) für MPI- oder GPU-Workloads.
+    * Verwenden Sie bei Bedarf das Cloud Computing für Ihren vorhandenen [Workload-Manager](#workload-managers).
+    * Nutzen Sie [HPC- und GPU-VM-Größen](#hpc-and-gpu-vm-sizes) für MPI- oder GPU-Workloads.
 * **Big Compute-Lösungen als Dienst**
     * Entwickeln Sie benutzerdefinierte Big Compute-Lösungen und -Workflows, indem Sie [Azure CycleCloud](#azure-cyclecloud), [Azure Batch](#azure-batch) und die dazugehörigen [Azure-Dienste](#related-azure-services) verwenden.
     * Führen Sie Azure-fähige Engineering -und Simulationslösungen verschiedener Anbieter aus, z.B. [Altair](http://www.altair.com/), [Rescale](https://www.rescale.com/azure/) und [Cycle Computing](https://cyclecomputing.com/) (jetzt [Teil von Microsoft](https://blogs.microsoft.com/blog/2017/08/15/microsoft-acquires-cycle-computing-accelerate-big-computing-cloud/)).

@@ -16,12 +16,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.reviewer: raluthra
-ms.openlocfilehash: f72819bacd7c65ced7ccff3665789d3b96c5e30f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 546d9f6771ea75c2601630850f4e9ef082fd5623
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478364"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210984"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>Anleitung: Überprüfen riskanter Benutzer und Anmeldungen 
 
@@ -45,7 +46,7 @@ Der erste Einstiegspunkt für diesen Bericht ist der Abschnitt **Untersuchen** a
 
 In der Standardansicht für den Bericht „Riskante Benutzer“ wird Folgendes anzeigt:
 
-- Name
+- NAME
 
 - Risikozustand
 
@@ -55,7 +56,7 @@ In der Standardansicht für den Bericht „Riskante Benutzer“ wird Folgendes a
 
 - Letzte Aktualisierung des Risikos
 
-- Typ
+- Type
 
 - Status
  
@@ -104,15 +105,15 @@ Außerdem können Sie Folgendes tun:
 
 Um die gemeldeten Daten auf die von Ihnen gewünschte Stufe einzugrenzen, können Sie die Daten zu den riskanten Benutzern anhand der folgenden Standardfelder filtern:
 
-- Name
+- NAME
 
-- Benutzername
+- Username
 
 - Risikozustand
 
 - Risikostufe
 
-- Typ
+- Type
 
 - Status
 
@@ -140,11 +141,11 @@ Für den Filter **Risikostufe** können Sie eine der folgenden Optionen auswähl
 Für den Filter **Typ** können Sie eine der folgenden Optionen auswählen:
 
 - Gast
-- Mitglied
+- Member
 
 Für den Filter **Zustand** können Sie eine der folgenden Optionen auswählen:
 
-- Gelöscht
+- Deleted
 - Aktiv
 
 
@@ -165,7 +166,7 @@ Wenn Sie weitere Informationen zu einem riskanten Benutzer haben möchten, klick
 
 
 
-## <a name="risky-sign-ins-report"></a>Bericht „Riskante Anmeldungen“
+## <a name="risky-sign-ins-report"></a>Bericht über riskante Anmeldungen
 
 Mit den Informationen im Bericht „Riskante Anmeldungen“ können Sie beispielsweise Antworten auf folgende Fragen ermitteln:
 
@@ -180,7 +181,7 @@ Mit den Informationen im Bericht „Riskante Anmeldungen“ können Sie beispiel
 
 Der erste Einstiegspunkt für diesen Bericht ist der Abschnitt **Untersuchen** auf der Seite „Sicherheit“.
 
-![Bericht „Riskante Anmeldungen“](./media/howto-investigate-risky-users-signins/02.png)
+![Bericht über riskante Anmeldungen](./media/howto-investigate-risky-users-signins/02.png)
 
 In der Standardansicht für den Bericht „Riskante Anmeldungen“ wird Folgendes anzeigt:
 
@@ -203,7 +204,7 @@ In der Standardansicht für den Bericht „Riskante Anmeldungen“ wird Folgende
 - MFA erforderlich  
  
 
-![Bericht „Riskante Anmeldungen“](./media/howto-investigate-risky-users-signins/09.png)
+![Bericht über riskante Anmeldungen](./media/howto-investigate-risky-users-signins/09.png)
 
 
 Sie können die Listenansicht anpassen, indem Sie in der Symbolleiste auf **Spalten** klicken.
@@ -260,7 +261,7 @@ Um die gemeldeten Daten auf die von Ihnen gewünschte Stufe einzugrenzen, könne
 - Datum
 - Art der Risikostufe
 
-![Bericht „Riskante Anmeldungen“](./media/howto-investigate-risky-users-signins/14.png)
+![Bericht über riskante Anmeldungen](./media/howto-investigate-risky-users-signins/14.png)
 
 
 

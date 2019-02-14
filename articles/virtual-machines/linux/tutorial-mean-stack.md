@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 84860b5098e141bdfbd924d86836bc7b48b0ce8f
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 97734ad6119e89c00634035b1646bc29ac6549bd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754216"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237854"
 ---
 # <a name="tutorial-create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-virtual-machine-in-azure"></a>Tutorial: Erstellen eines MEAN-Stacks (MongoDB, Express, AngularJS und Node.js) auf einem virtuellen Linux-Computer in Azure
 
@@ -134,7 +134,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
 
 6. Erstellen Sie den Ordner *Books*, und fügen Sie ihm die Datei *server.js* hinzu, die die Konfiguration für den Webserver enthält.
 
-    ```node.js
+    ```javascript
     var express = require('express');
     var bodyParser = require('body-parser');
     var app = express();
@@ -159,7 +159,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
 
 2. Erstellen Sie im Ordner *Books* den Ordner *apps*, und fügen Sie die Datei *routes.js* mit den definierten Express-Routen hinzu.
 
-    ```node.js
+    ```javascript
     var Book = require('./models/book');
     module.exports = function(app) {
       app.get('/book', function(req, res) {
@@ -201,7 +201,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
 
 3. Erstellen Sie im Ordner *apps* den Ordner *models*, und fügen Sie die Datei *book.js* mit der definierten Konfiguration für das Buchmodell hinzu.  
 
-    ```node.js
+    ```javascript
     var mongoose = require('mongoose');
     var dbHost = 'mongodb://localhost:27017/test';
     mongoose.connect(dbHost);
@@ -223,7 +223,7 @@ In [MongoDB](http://www.mongodb.com) werden Daten in flexiblen, JSON-ähnlichen 
 
 1. Wechseln Sie wieder zum Verzeichnis *Books* (`cd ../..`), erstellen Sie dann den Ordner *public*, und fügen Sie die Datei *script.js* mit der definierten Controllerkonfiguration hinzu.
 
-    ```node.js
+    ```javascript
     var app = angular.module('myApp', []);
     app.controller('myCtrl', function($scope, $http) {
       $http( {

@@ -14,12 +14,13 @@ ms.topic: article
 ms.date: 01/31/2019
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: ef167866cb682cec71b618e972d3d402c8e050c9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: a639b14c9313179816f6376aa0c5642a645ea344
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55772609"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56180824"
 ---
 # <a name="troubleshoot-an-attribute-not-synchronizing-in-azure-ad-connect"></a>Problembehandlung bei fehlerhafter Attributsynchronisierung in Azure AD Connect
 
@@ -42,7 +43,7 @@ Vor dem Untersuchen von Attributsynchronisierungsproblemen ist es wichtig, den S
 
 * Aus AAD importieren: Azure Active Directory-Objekte werden in den AAD-Connectorbereich (AAD CS) eingefügt.
 
-* Synchronisierung: Es werden **eingehende Synchronisierungsregeln** und **ausgehende Synchronisierungsregeln** in der Reihenfolge der Priorität von niedrig zu hoch ausgeführt. Informationen zu den Synchronisierungsregeln finden Sie im **Synchronisierungsregel-Editor** in der Desktopanwendungen. Die **eingehenden Synchronisierungsregeln** übertragen den Daten aus CS zu MV. Die **ausgehenden Synchronisierungsregeln** verschieben Daten aus MV zu CS.
+* Synchronisierung: Es werden **eingehende Synchronisierungsregeln** und ausgehende Synchronisierungsregeln in der Reihenfolge der Priorität von niedrig zu hoch ausgeführt. Informationen zu den Synchronisierungsregeln finden Sie im **Synchronisierungsregel-Editor** in der Desktopanwendungen. Die **eingehenden Synchronisierungsregeln** übertragen den Daten aus CS zu MV. Die **ausgehenden Synchronisierungsregeln** verschieben Daten aus MV zu CS.
 
 * In AD exportieren: Nach der Synchronisierung werden Objekte aus AD CS in das **Active Directory** exportiert.
 

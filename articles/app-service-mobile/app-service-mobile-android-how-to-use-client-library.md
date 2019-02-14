@@ -13,12 +13,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: crdun
-ms.openlocfilehash: c0e6aa34b80389689e49ac6ad3566a3a109a96e1
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 803c9af7b6c40f7deee2b81fb7ff0ae82ef6778a
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158161"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965153"
 ---
 # <a name="how-to-use-the-azure-mobile-apps-sdk-for-android"></a>Gewusst wie: Verwenden des Azure Mobile Apps SDK für Android
 
@@ -55,7 +55,7 @@ Wenn Sie das Schnellstarttutorial nicht absolvieren möchten, führen Sie folgen
 
 1. Fügen Sie diesen Code in die *Project*-Ebene der **build.gradle**-Datei im *buildscript*-Tag ein:
 
-    ```text
+    ```gradle
     buildscript {
         repositories {
             jcenter()
@@ -65,7 +65,7 @@ Wenn Sie das Schnellstarttutorial nicht absolvieren möchten, führen Sie folgen
 
 2. Fügen Sie diesen Code in die *Module app*-Ebene der **build.gradle**-Datei im *dependencies*-Tag ein:
 
-    ```text
+    ```gradle
     compile 'com.microsoft.azure:azure-mobile-android:3.4.0@aar'
     ```
 
@@ -496,7 +496,7 @@ Das Layout wird durch mehrere XML-Codeabschnitte definiert. In einem existierend
 
 Das *listitem* -Attribut im obigen Code definiert die ID des Layouts für eine bestimmte Zeile in der Liste. Dieser Code gibt ein Kontrollkästchen und den zugehörigen Text an und wird einmal für jedes Element in der Liste instanziiert. In diesem Layout wird das Feld **id** nicht angezeigt, und bei einem komplexeren Layout würden zusätzliche Felder angezeigt. Dieser Code befindet sich in der Datei **row_list_to_do.xml**.
 
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -520,7 +520,7 @@ public class ToDoItemAdapter extends ArrayAdapter<ToDoItem> {
 
 Überschreiben Sie die **getView** -Methode der Klasse. Beispiel: 
 
-```
+```java
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View row = convertView;
@@ -959,7 +959,7 @@ Außerdem müssen Sie das Projekt für „customtabs“ konfigurieren.  Geben Si
 
 Fügen Sie der Datei `build.gradle` Ihrer Anwendung **redirectUriScheme** hinzu:
 
-```text
+```gradle
 android {
     buildTypes {
         release {
@@ -976,7 +976,7 @@ android {
 
 Fügen Sie schließlich `com.android.support:customtabs:23.0.1` zur Abhängigkeitsliste in der Datei `build.gradle` hinzu:
 
-```text
+```gradle
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.google.code.gson:gson:2.3'
@@ -1076,7 +1076,7 @@ Nutzen Sie die Active Directory-Authentifizierungsbibliothek (Active Directory A
 1. Konfigurieren Sie Ihr mobiles App-Back-End für die AAD-Anmeldung, indem Sie die im Tutorial [So konfigurieren Sie Ihre App Service-Anwendung zur Verwendung der Azure Active Directory-Anmeldung][22] beschriebenen Schritte ausführen. Schließen Sie auch den optionalen Schritt zur Registrierung einer nativen Clientanwendung ab.
 2. Installieren Sie ADAL, indem Sie die Datei „build.gradle“ so ändern, dass sie folgende Definitionen enthält:
 
-    ```
+    ```gradle
     repositories {
         mavenCentral()
         flatDir {

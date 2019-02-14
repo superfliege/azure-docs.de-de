@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 431aa2d379639b8daea2519ed643c9949102e117
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511359"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242667"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Erstellen eines Standpunktanalysemodells in Azure Machine Learning Studio
 
@@ -33,9 +33,9 @@ In diesem Tutorial erlernen Sie die erforderlichen Schritte, während wir ein St
 
 Sie finden Experimente, die in diesem Tutorial behandelt werden, im Azure AI-Katalog:
 
-[Predict Book Reviews (Vorhersagen von Buchbesprechungen)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-1)
+[Predict Book Reviews (Vorhersagen von Buchbesprechungen)](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-1)
 
-[Predict Book Reviews – Predictive Experiment (Vorhersagen von Buchbesprechungen – Vorhersageexperiment)](https://gallery.cortanaintelligence.com/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
+[Predict Book Reviews – Predictive Experiment (Vorhersagen von Buchbesprechungen – Vorhersageexperiment)](https://gallery.azure.ai/Experiment/Predict-Book-Reviews-Predictive-Experiment-1)
 
 ## <a name="step-1-clean-and-preprocess-text-dataset"></a>Schritt 1: Bereinigen und Vorverarbeiten des Textdatasets
 Wir beginnen das Experiment mit der Aufteilung der Beurteilungsergebnisse in die Kategorienbuckets „niedrig“ und „hoch“, um das Problem als Klassifizierung in zwei Klassen zu formulieren. Wir verwenden die Module [Edit Metadata](https://msdn.microsoft.com/library/azure/dn905986.aspx) und [Group Categorical Values](https://msdn.microsoft.com/library/azure/dn906014.aspx).

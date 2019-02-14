@@ -15,12 +15,13 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: d4e1b78a302919df60b9a4b134314024a110a178
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494849"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201481"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Überlegungen zum Entwurf der Azure Active Directory-Hybrid-Identität – Nächste Schritte
 Nachdem Sie die Anforderungen definiert und alle Optionen für Ihre Lösung zur Verwaltung mobiler Geräte (Mobile Device Management, MDM) untersucht haben, können Sie die nächsten Schritte zur Bereitstellung der unterstützenden Infrastruktur ausführen, die für Sie und Ihr Unternehmen geeignet ist.

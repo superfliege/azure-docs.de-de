@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402335"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237126"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -33,12 +33,12 @@ Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von 
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Durchsatzeinheit (1 MB/s eingehend, 2 MB/s ausgehend) | Bezahlung pro Stunde | Enthalten |
 | Nachrichtengröße | 1 MB | 1 MB |
-| Herausgeberrichtlinien | JA | JA |   
+| Herausgeberrichtlinien | Ja | Ja |   
 | Verbrauchergruppen | 20 | 20 |
-| Nachrichtenwiederholung | JA | JA |
+| Nachrichtenwiederholung | Ja | Ja |
 | Maximale Durchsatzeinheiten | 20 (flexibel bis 100)   | 1 Kapazitätseinheit (Capacity Unit, CU) ≈ 50 |
 | Brokerverbindungen | 1.000 enthalten | 100.000 enthalten |
-| Zusätzliche Brokerverbindungen | JA | JA |
+| Zusätzliche Brokerverbindungen | Ja | Ja |
 | Nachrichtenaufbewahrung | 1 Tag enthalten | Bis zu 7 Tage enthalten |
 | Erfassen | Bezahlung pro Stunde | Enthalten |
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 02/06/2019
 ms.author: alkohli
-ms.openlocfilehash: f7b3cc638e28e4f28694f668660a28ffe6e9fa51
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24af2150438d3db13323aaecdfd89302b8152fa9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817995"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879121"
 ---
 # <a name="troubleshoot-issues-in-azure-data-box-disk"></a>Behandeln von Problemen mit Azure Data Box Disk
 
@@ -98,7 +98,7 @@ Dies kann auf ein fehlerhaftes Dateisystem zurückzuführen sein.
 
 Das erneute Einbinden eines Laufwerks mit Lese-/Schreibzugriff funktioniert nicht mit Data Box Disk-Datenträgern. Dieses Szenario wird mit Laufwerken, die mit dislocker entschlüsselt werden, nicht unterstützt. Möglicherweise haben Sie das Gerät mithilfe des folgenden Befehls erfolgreich erneut eingebunden: 
 
-    `# mount -o remount, rw / mnt / DataBoxDisk / mountVol1 ß`
+    `# mount -o remount, rw /mnt/DataBoxDisk/mountVol1`
 
 Das erneute Einbinden war zwar erfolgreich, die Daten werden jedoch nicht beibehalten.
 

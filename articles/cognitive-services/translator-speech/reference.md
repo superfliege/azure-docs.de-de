@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Sprachübersetzungs-API.
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: e1796b2cb3efee6ff610f9dade7a10b2c2637bba
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466182"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874735"
 ---
 # <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
@@ -30,7 +30,7 @@ Die Sprachübersetzungs-API nutzt für die Bereitstellung eines Vollduplex-Kommu
 ## <a name="1-getting-started"></a>1. Erste Schritte
 Für den Zugriff auf die Textübersetzungs-API müssen Sie sich bei [Microsoft Azure registrieren](translator-speech-how-to-signup.md).
 
-## <a name="2-authentication"></a>2. Authentifizierung
+## <a name="2-authentication"></a>2. Authentication
 
 Authentifizieren Sie sich mithilfe des Abonnementschlüssels. Die Sprachübersetzungs-API unterstützt zwei Authentifizierungsmodi:
 

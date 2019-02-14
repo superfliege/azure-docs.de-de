@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: a3f47726b1776b260ff8cc5eac766c23053d4fd0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 1a21ab5af8c0dc5fbbe2c1dbab8931bd903df4ff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728401"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235987"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Eine Übersicht über die Sicherheitsfunktionen von Azure SQL-Datenbank
 
@@ -98,7 +98,7 @@ Die Bedrohungserkennung ergänzt die Überwachung durch Analysieren der Überwac
 
 ### <a name="transport-layer-security-tls-encryption-in-transit"></a>Transport Layer Security, TLS (Verschlüsselung bei der Übertragung)
 
-SQL-Datenbank schützt Kundendaten durch das Verschlüsseln von Daten bei der Übertragung mit [Transport Layer Security](https://support.microsoft.com/en-us/help/3135244/tls-1-2-support-for-microsoft-sql-server).
+SQL-Datenbank schützt Kundendaten durch das Verschlüsseln von Daten bei der Übertragung mit [Transport Layer Security](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server).
 
 > [!IMPORTANT]
 > Azure SQL-Datenbank erzwingt eine kontinuierliche Verschlüsselung (SSL/TLS) für alle Verbindungen, um sicherzustellen, dass alle Daten während der Übertragung zwischen Datenbank und Client verschlüsselt sind. Diese Verschlüsselung erfolgt unabhängig von der Einstellung für **Encrypt** oder **TrustServerCertificate** in der Verbindungszeichenfolge.

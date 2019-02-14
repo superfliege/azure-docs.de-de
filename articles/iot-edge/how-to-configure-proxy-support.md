@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: ad9ecd9c5b50657caba7522fe500a748a10cd02d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 58a51fd90eb0b89048eca7c95272523ffd10c24a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53634302"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982317"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>Konfigurieren eines IoT Edge-Geräts für die Kommunikation über einen Proxyserver
 
@@ -89,7 +89,7 @@ sudo systemctl edit iotedge
 
 Geben Sie den folgenden Text ein, und ersetzen Sie dabei **\<proxy URL>** mit der Adresse und dem Port Ihres Proxyservers. Wählen Sie dann „Speichern“ und „Beenden“ aus. 
 
-```text
+```ini
 [Service]
 Environment="https_proxy=<proxy URL>"
 ```

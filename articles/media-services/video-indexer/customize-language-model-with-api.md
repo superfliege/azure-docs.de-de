@@ -7,14 +7,14 @@ author: anikaz
 manager: johndeu
 ms.service: media-services
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 95334ac326b346da23f17d3a9d494120235abace
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5f77857c82846fe9c3d2ad4f5f82572d18401691
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53283726"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003600"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Anpassen eines Sprachmodells mit den Video Indexer-APIs
 
@@ -31,7 +31,7 @@ Der folgende Befehl erstellt ein neues benutzerdefiniertes Sprachmodell im angeg
 > [!NOTE]
 > Sie müssen das Modell mit seinen aktivierten Dateien weiterhin trainieren, damit das Modell den Inhalt seiner Dateien erlernen kann. Anleitungen zum Trainieren einer Sprache finden Sie im nächsten Abschnitt.
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine POST-Anforderung.
 
@@ -53,11 +53,11 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
-|modelName|Zeichenfolge|JA|Der Name für das Sprachmodell.|
-|Language|Zeichenfolge|JA|Die Sprache des Sprachmodells. <br/>Der Parameter **language** muss mit der Sprache im BCP-47-Format als „language tag-region“ (z.B. „en-US“) angegeben werden. Unterstützte Sprachen sind Englisch (en-US), Deutsch (de-DE), Spanisch (es-SP), Arabisch (ar-EG), Französisch (fr-FR), Hindi (hi-HI), Italienisch (it-IT), Japanisch (ja-JP), Portugiesisch (pt-BR), Russisch (ru-RU) und Chinesisch (zh-CN).  |
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|modelName|Zeichenfolge|Ja|Der Name für das Sprachmodell.|
+|Language|Zeichenfolge|Ja|Die Sprache des Sprachmodells. <br/>Der Parameter **language** muss mit der Sprache im BCP-47-Format als „language tag-region“ (z.B. „en-US“) angegeben werden. Unterstützte Sprachen sind Englisch (en-US), Deutsch (de-DE), Spanisch (es-SP), Arabisch (ar-EG), Französisch (fr-FR), Hindi (hi-HI), Italienisch (it-IT), Japanisch (ja-JP), Portugiesisch (pt-BR), Russisch (ru-RU) und Chinesisch (zh-CN).  |
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -104,7 +104,7 @@ Der folgende Befehl trainiert ein benutzerdefiniertes Sprachmodell im angegebene
 > [!NOTE]
 > Zunächst müssen Sie das Sprachmodell erstellen und seine Dateien hochladen. Sie können Dateien entweder beim Erstellen des Sprachmodells oder durch Aktualisieren des Sprachmodells hochladen. 
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine PUT-Anforderung.
 
@@ -124,10 +124,10 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -169,7 +169,7 @@ Sie sollten dann den Wert **id** des Sprachmodells für den Parameter **linguist
 
 Der folgende Befehl löscht ein benutzerdefiniertes Sprachmodell aus dem angegebenen Konto. Jedes Video, das das gelöschte Sprachmodell verwendet hat, behält den gleichen Index bei, bis Sie das Video erneut indizieren. Wenn Sie das Video erneut indizieren, können Sie dem Video ein neues Sprachmodell zuweisen. Andernfalls verwendet Video Indexer das Standardmodell, um das Video erneut zu indizieren.
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine DELETE-Anforderung.
 
@@ -189,10 +189,10 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -231,10 +231,10 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 |modelName|Zeichenfolge|Nein |Der neue Name, den Sie dem Modell geben können.|
 |enable|boolean|Nein |Wählen Sie aus, ob alle Dateien in diesem Modell aktiviert (TRUE) oder deaktiviert (FALSE) sind.|
 
@@ -280,7 +280,7 @@ Sie können die **id** der Dateien verwenden, die hier zurückgegeben wird, um d
 
 Der folgende Befehl ermöglicht es Ihnen, den Namen und den Zustand **enable** einer Datei in einem benutzerdefinierten Sprachmodell im angegebenen Konto zu aktualisieren.
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine PUT-Anforderung.
 
@@ -300,11 +300,11 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountId|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|JA|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountId|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
+|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 |fileName|Zeichenfolge|Nein |Der Name, in den der Dateiname aktualisiert werden soll.|
 |enable|boolean|Nein |Aktualisieren Sie, ob diese Datei im Sprachmodell aktiviert (TRUE) oder deaktiviert (FALSE) ist.||
 
@@ -350,10 +350,10 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|Die Sprachmodell-ID (wird beim Erstellen des Sprachmodells generiert).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -395,7 +395,7 @@ Sie können die **id** der Datei verwenden, die hier zurückgegeben wird, um den
 
 Der folgende Befehl gibt alle benutzerdefinierten Sprachmodelle im angegebenen Konto in einer Liste zurück.
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine GET-Anforderung.
 
@@ -415,9 +415,9 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -467,7 +467,7 @@ Die Antwort enthält eine Liste mit allen Sprachmodellen in Ihrem Konto und dere
 
 Der folgende Befehl löscht die angegebene Datei aus dem angegebenen Sprachmodell im angegebenen Konto. 
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine DELETE-Anforderung.
 ```
@@ -486,11 +486,11 @@ curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/C
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|JA|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
+|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -504,7 +504,7 @@ Es wird kein Inhalt zurückgegeben, wenn die Datei erfolgreich aus dem Sprachmod
 
 Gibt die Inhalte und Metadaten für die angegebene Datei aus dem ausgewählten Sprachmodell in Ihrem Konto zurück.
 
-### <a name="request-url"></a>Anforderungs-URL
+### <a name="request-url"></a>Anfrage-URL
 
 Dies ist eine GET-Anforderung.
 
@@ -523,11 +523,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|Die ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|JA|Die ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|Die ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
+|fileId|Zeichenfolge|Ja|Die ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext
 
@@ -572,11 +572,11 @@ curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 
 |**Name**|**Typ**|**Erforderlich**|**Beschreibung**|
 |---|---|---|---|
-|location|Zeichenfolge|JA|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
-|accountID|Zeichenfolge|JA|Global eindeutiger Bezeichner für das Konto|
-|modelId|Zeichenfolge|JA|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
-|fileId|Zeichenfolge|JA|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
-|accessToken|Zeichenfolge|JA|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
+|location|Zeichenfolge|Ja|Die Azure-Region, an die der Aufruf weitergeleitet werden soll. Weitere Informationen finden Sie unter [Azure-Regionen und Video Indexer](regions.md).|
+|accountID|Zeichenfolge|Ja|Global eindeutiger Bezeichner für das Konto|
+|modelId|Zeichenfolge|Ja|ID des Sprachmodells, das die Datei enthält (wird generiert, wenn das Sprachmodell erstellt wird).|
+|fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
+|accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 
 ### <a name="request-body"></a>Anforderungstext 
 

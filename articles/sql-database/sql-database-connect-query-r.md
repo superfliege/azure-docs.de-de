@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: 84017e95d41f8934de248065a2b66792628b41d2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/12/2019
+ms.openlocfilehash: 61c4edc5ec9c690944047ce67f619f0f69f62f6c
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815540"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236735"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>Schnellstart: Verwenden von Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird beschrieben, wie Sie die öffentliche Vorschauversion von
 
 Nutzen Sie die Möglichkeiten der Sprache R für erweiterte Analysen und maschinelles Lernen in der Datenbank. Diese Fähigkeit ermöglicht Berechnungen und die Verarbeitung an dem Ort, an dem sich die Daten befinden, sodass diese nicht mehr über das Netzwerk gepullt werden müssen. Nutzen Sie die Leistungsfähigkeit der R-Pakete für Unternehmen außerdem, um erweiterte Analysen in einem großen Maßstab durchzuführen.
 
-Machine Learning Services umfasst eine Basisdistribution von R zusammen mit den R-Paketen für Unternehmen von Microsoft. Die R-Funktionen und -Algorithmen von Microsoft sind auf Skalierbarkeit und Anwendbarkeit ausgelegt. Sie ermöglichen Predictive Analytics, statistische Modellierung, Datenvisualisierungen und leistungsstarke Algorithmen für maschinelles Lernen.
+Machine Learning Services umfasst eine Basisdistribution von R zusammen mit R-Paketen für Unternehmen von Microsoft. Die R-Funktionen und -Algorithmen von Microsoft sind auf Skalierbarkeit und Anwendbarkeit ausgelegt. Sie ermöglichen Predictive Analytics, statistische Modellierung, Datenvisualisierungen und leistungsstarke Algorithmen für maschinelles Lernen.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
 

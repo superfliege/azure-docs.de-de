@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/24/2018
 ms.author: jeedes
-ms.openlocfilehash: e07f893296ec20e8c722fc977f93a38a797fe5c9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6576366df214304bb30c46fa65a4bc8bc783cedf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490055"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182101"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iprova"></a>Tutorial: Azure Active Directory-Integration mit iProva
 
@@ -37,7 +38,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Um die Azure AD-Integration mit iProva konfigurieren zu können, benötigen Sie Folgendes:
 
-* Ein Azure AD-Abonnement. Falls Sie über keine Azure AD-Umgebung verfügen, erhalten Sie auf der [Microsoft Azure-Website](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion.
+* Ein Azure AD-Abonnement Falls Sie über keine Azure AD-Umgebung verfügen, erhalten Sie auf der [Microsoft Azure-Website](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion.
 * Ein SSO-fähiges iProva-Abonnement.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
@@ -133,7 +134,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut, wie in der obigen Abbildung gezeigt. Führen Sie folgende Schritte durch:
 
-    | Name | Quellattribut| Namespace |
+    | NAME | Quellattribut| Namespace |
     | ---------------| -------- | -----|
     | `samaccountname` | `user.onpremisessamaccountname`| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
     | | |

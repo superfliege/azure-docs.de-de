@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/27/2017
 ms.author: stewu
-ms.openlocfilehash: 0d27ae79ab2c14cc5fd5ca81b8b7f089e7fa294e
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 0bf0843314f38c0de28820c82e95b7921297bf40
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126223"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233047"
 ---
 # <a name="migrate-azure-data-lake-storage-gen1-across-regions"></a>Regionsübergreifendes Migrieren von Azure Data Lake Storage Gen1
 
@@ -46,7 +46,7 @@ Weitere wichtige Details, die beim Planen der Migration zu berücksichtigen sind
 
 * **Bandbreitengebühren**. [Bandbreitengebühren](https://azure.microsoft.com/pricing/details/bandwidth/) werden geltend gemacht, da Daten aus einer Azure-Region hinaus übertragen werden.
 
-* **ACLs für Ihre Daten**. Sichern Sie Ihre Daten in der neuen Region durch Anwenden von ACLs auf Dateien und Ordner. Weitere Informationen finden Sie unter [Schützen von Daten, die in Azure Data Lake Storage Gen1 gespeichert sind](data-lake-store-secure-data.md). Es wird empfohlen, dass Sie die Migration zum Aktualisieren und Anpassen Ihrer ACLs verwenden. Möglicherweise möchten die Einstellungen, die mit Ihrer aktuellen Einstellungen ähnliche verwenden. Sie können die ACLs, die auf alle Dateien angewendet werden, mithilfe vom Azure-Portal, [PowerShell-Cmdlets](/powershell/module/azurerm.datalakestore/get-azurermdatalakestoreitempermission) oder SDKs anzeigen.  
+* **ACLs für Ihre Daten**. Sichern Sie Ihre Daten in der neuen Region durch Anwenden von ACLs auf Dateien und Ordner. Weitere Informationen finden Sie unter [Schützen von Daten, die in Azure Data Lake Storage Gen1 gespeichert sind](data-lake-store-secure-data.md). Es wird empfohlen, dass Sie die Migration zum Aktualisieren und Anpassen Ihrer ACLs verwenden. Möglicherweise möchten die Einstellungen, die mit Ihrer aktuellen Einstellungen ähnliche verwenden. Sie können die ACLs, die auf alle Dateien angewendet werden, mithilfe vom Azure-Portal, [PowerShell-Cmdlets](/powershell/module/az.datalakestore/get-azdatalakestoreitempermission) oder SDKs anzeigen.  
 
 * **Speicherort von Analysediensten**. Für optimale Leistung sollten sich Ihre Analysedienste, wie etwa Azure Data Lake Analytics oder Azure HDInsight, in der gleichen Region wie Ihre Daten befinden.  
 

@@ -8,12 +8,12 @@ ms.author: gwallace
 ms.date: 05/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: cb811e3dba7be87c83b9893db682475351ada1c1
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 3881a6d0ee1139fa481908f09b6e96efda24a5cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35266998"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979002"
 ---
 # <a name="run-scripts-in-your-linux-vm"></a>Ausführen von Skripts in Ihrer Linux-VM
 
@@ -34,7 +34,7 @@ Die [benutzerdefinierte Skripterweiterung](../extensions/custom-script-linux.md)
 Die Funktion [Befehl ausführen](run-command.md) ermöglicht die Verwaltung und Problembehandlung von virtuellen Computern mithilfe von Skripts und ist selbst dann verfügbar, wenn der Computer nicht erreicht werden kann, etwa weil in der Gastfirewall der RDP- oder SSH-Port nicht geöffnet ist.
 
 * Ausführen von Skripts auf virtuellen Azure-Computern.
-* Kann mithilfe des [Azure-Portals](run-command.md), der [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), des [Azure CLIs](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) oder von [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) ausgeführt werden.
+* Kann mithilfe des [Azure-Portals](run-command.md), der [REST-API](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), des [Azure CLIs](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke) oder von [PowerShell](https://docs.microsoft.com/powershell/module/az.compute/invoke-azvmruncommand) ausgeführt werden.
 * Führen Sie im Azure-Portal schnell ein Skript aus, zeigen Sie die Ausgabe an, und wiederholen Sie bei Bedarf.
 * Skripts können direkt eingegeben werden, oder Sie können eins der integrierten Skripts ausführen.
 * Führen Sie auf Windows-Computern PowerShell-Skripts und auf Linux-Computern Bash-Skripts aus.
@@ -70,5 +70,5 @@ Erfahren Sie mehr über die verschiedenen Funktionen, die zur Ausführung von Sk
 
 * [Benutzerdefinierte Skripterweiterung](../extensions/custom-script-linux.md)
 * [Befehl ausführen](run-command.md)
-* [Hybrid-Runbook Worker](../../automation/automation-hybrid-runbook-worker.md)
+* [Hybrid-Runbook-Worker](../../automation/automation-hybrid-runbook-worker.md)
 * [Serielle Konsole](serial-console.md)

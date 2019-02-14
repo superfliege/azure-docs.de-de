@@ -14,16 +14,19 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9056abdd57640026d04779a3c5c3a201095ea045
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: bdf722ffa7a7c499ff256392886e0f229f27c7a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277470"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109893"
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Erstellen einer ASE mit einer Azure Resource Manager-Vorlage
 
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Azure App Service-Umgebungen (App Service Environments, ASEs) können mit einem über das Internet zugänglichen Endpunkt oder einem Endpunkt an einer internen Adresse in einem virtuellen Azure-Netzwerk (Virtual Network, VNET) erstellt werden. Beim Erstellen mit einem internen Endpunkt wird dieser Endpunkt über eine Azure-Komponente, den sogenannten internen Lastenausgleich (Internal Load Balancer, ILB), bereitgestellt. Eine ASE an einer internen IP-Adresse wird als ILB-ASE bezeichnet. Eine ASE mit einem öffentlichen Endpunkt wird als externe ASE bezeichnet. 
 
 Eine ASE kann über das Azure-Portal oder mit einer Azure Resource Manager-Vorlage erstellt werden. In diesem Artikel werden die Schritte und Syntaxelemente beschrieben, die Sie zum Erstellen einer externen ASE oder einer ILB-ASE mit Resource Manager-Vorlagen benötigen. Informationen zum Erstellen einer ASE im Azure-Portal finden Sie unter [Erstellen einer externen ASE][MakeExternalASE] oder [Erstellen einer ILB-ASE][MakeILBASE].
@@ -60,7 +63,7 @@ Nachdem alle notwendigen Informationen in der Datei *azuredeploy.parameters.json
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 Die Erstellung einer ASE dauert etwa eine Stunde. Danach wird die ASE im Port in der Liste der ASEs für das Abonnement angezeigt, in dem die Bereitstellung ausgelöst wurde.
@@ -146,7 +149,7 @@ Nachdem alle notwendigen Informationen in der Datei *azuredeploy.parameters.json
 $templatePath="PATH\azuredeploy.json"
 $parameterPath="PATH\azuredeploy.parameters.json"
 
-New-AzureRmResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
+New-AzResourceGroupDeployment -Name "CHANGEME" -ResourceGroupName "YOUR-RG-NAME-HERE" -TemplateFile $templatePath -TemplateParameterFile $parameterPath
 ```
 
 Es dauert in jedem ASE-Front-End etwa 40 Minuten, bis die Änderungen angewendet wurden. Bei einer ASE mit Standardgröße, die zwei Front-Ends nutzt, dauert es beispielsweise ungefähr eine Stunde und 20 Minuten, bis der Vorgang für die Vorlage abgeschlossen ist. Während der Ausführung der Vorlage kann die ASE nicht skaliert werden.  

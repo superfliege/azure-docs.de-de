@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: 47d267a2c4c122d8acbb2d3bf40e6858b4d6b77c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244180"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243535"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
 ## <a name="overview"></a>Übersicht
@@ -25,7 +25,7 @@ Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse de
 Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](http://gallery.cortanaintelligence.com/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.cortanaintelligence.com/Collection/Retail-Customer-Churn-Prediction-Template-1).
+> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](http://gallery.azure.ai/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1).
 > 
 > 
 
@@ -106,7 +106,7 @@ Die folgenden Diagramme veranschaulichen die verwendeten Daten.
  
 
 > Beachten Sie, dass diese Daten privat sind, weshalb Modell und Daten nicht freigegeben werden dürfen.
-> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment in der [Azure AI Gallery](http://gallery.cortanaintelligence.com/): [Kundenabwanderung in der Telekommunikationsbranche](http://gallery.cortanaintelligence.com/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment in der [Azure AI Gallery](http://gallery.azure.ai/): [Kundenabwanderung in der Telekommunikationsbranche](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
 > Weitere Informationen zum Implementieren eines Abwanderungsanalysemodells mit Cortana Intelligence Suite finden Sie auch in [diesem Video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) von Senior Program Manager Wee Hyong Tok. 
 > 
@@ -219,7 +219,7 @@ In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen
 
 [4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn) (in englischer Sprache)
 
-[5] [Vorlage Telco Churn Model](http://gallery.cortanaintelligence.com/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.cortanaintelligence.com/) 
+[5] [Vorlage Telco Churn Model](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.azure.ai/) 
  
 
 ## <a name="appendix"></a>Anhang

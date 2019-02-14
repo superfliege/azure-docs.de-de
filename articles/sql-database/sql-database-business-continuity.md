@@ -12,13 +12,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 998d4f45a2d4956e0e230bcf00636a965c35dd97
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: bdb89a89713c093768de3e40eda2bcbb6a311b2b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755168"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960876"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank
 
@@ -101,6 +101,7 @@ Verwenden Sie Autofailover-Gruppen, wenn Ihre Anwendung einen Teil der folgenden
 
 Die Dauer einer Wiederherstellung und die Menge an verlorenen Daten richten sich danach, wie Sie diese Features für die Geschäftskontinuität in Ihrer Anwendung einsetzen. Sie könnten z.B. je nach Anforderungen Ihrer Anwendung eine Kombination aus Datenbanksicherungen und aktiver Georeplikation verwenden. Überlegungen zum Anwendungsentwurf für Einzeldatenbanken und zum Einsatz von Pools für elastische Datenbanken mit diesen Funktionen für die Geschäftskontinuität finden Sie unter [Entwerfen einer Anwendung für die cloudbasierte Notfallwiederherstellung](sql-database-designing-cloud-solutions-for-disaster-recovery.md) und [Strategien für die Notfallwiederherstellung mit Pools für elastische Datenbanken](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
+
 Die nachstehenden Abschnitte bieten eine Übersicht über die Schritte, die zur Wiederherstellung mithilfe von Datenbanksicherungen oder der aktiven Georeplikation erforderlich sind. Weitere Schritte einschließlich der Planungsanforderungen und Schritte nach der Wiederherstellung sowie Informationen zum Simulieren eines Ausfalls, um eine Strategie für die Notfallwiederherstellung zu entwickeln, finden Sie unter [Notfallwiederherstellung für SQL-Datenbank](sql-database-disaster-recovery.md).
 
 ### <a name="prepare-for-an-outage"></a>Vorbereiten auf einen Ausfall
@@ -132,7 +133,7 @@ Wenn Sie die automatischen Sicherungen mit georedundanter Speicherung (standardm
 Nach einer Wiederherstellung müssen Sie unabhängig vom Wiederherstellungsmechanismus folgende zusätzliche Aufgaben ausführen, damit Ihre Anwendungen wieder vollständig einsatzfähig sind und von Ihren Benutzern wieder in vollem Umfang verwendet werden können:
 
 - Umleiten von Clients und Clientanwendungen an den neuen Server
-- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#manage-ip-firewall-rules-using-the-azure-portal), um entsprechende Regeln zu aktivieren).
+- Sicherstellen, dass geeignete IP-Firewallregeln auf Serverebene vorhanden sind, damit Benutzer eine Verbindung herstellen können (oder Verwenden von [Firewallregeln auf Datenbankebene](sql-database-firewall-configure.md#manage-server-level-ip-firewall-rules-using-the-azure-portal), um entsprechende Regeln zu aktivieren).
 - Sicherstellen, dass die geeigneten Anmeldeinformationen und Berechtigungen auf Ebene der Masterdatenbank vorhanden sind (oder Verwenden von [eigenständigen Benutzern](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
 - Konfigurieren der erforderlichen Überwachung
 - Konfigurieren der erforderlichen Warnungen

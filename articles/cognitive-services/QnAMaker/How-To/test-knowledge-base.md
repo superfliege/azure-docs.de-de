@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Das Testen Ihrer QnA Maker-Wissensdatenbank ist ein wichtiger Teil eines iterativen Prozesses zur Verbesserung der Genauigkeit zurückgegebener Antworten. Sie können die Wissensdatenbank über eine verbesserte Chatschnittstelle testen, die Ihnen auch Änderungen ermöglicht.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: dceeb17d8d56de37bc21790283ab73478b6d3076
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 20ebcb502e03f2d817fe18624d8c790e920c667f
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218596"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861237"
 ---
 # <a name="test-your-knowledge-base-interactively-in-qna-maker"></a>Interaktives Testen Ihrer Wissensdatenbank in QnA Maker
 

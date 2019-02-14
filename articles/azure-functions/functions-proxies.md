@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 4bfe4f9f97587b6791e73c2f04055b2dcf5d0f0d
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766213"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895617"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -94,7 +94,7 @@ Antwortparameter können als Teil der Änderung der Antwort an den Client verwen
 
 ### <a name="use-appsettings"></a>Verweisen auf Anwendungseinstellungen
 
-Sie können auch auf [Anwendungseinstellungen verweisen, die für die Funktionen-App definiert sind](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings#develop), indem Sie den Namen der Einstellung in Prozentzeichen (%) einschließen.
+Sie können auch auf [Anwendungseinstellungen verweisen, die für die Funktionen-App definiert sind](https://docs.microsoft.com/azure/azure-functions/functions-how-to-use-azure-function-app-settings), indem Sie den Namen der Einstellung in Prozentzeichen (%) einschließen.
 
 Bei der Back-End-URL *https://%ORDER_PROCESSING_HOST%/api/orders* würde „%ORDER_PROCESSING_HOST%“ z. B. durch den Wert der Einstellung ORDER_PROCESSING_HOST ersetzt.
 

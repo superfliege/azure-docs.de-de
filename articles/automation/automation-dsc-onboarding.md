@@ -9,12 +9,12 @@ ms.author: robreed
 ms.topic: conceptual
 ms.date: 08/08/2018
 manager: carmonm
-ms.openlocfilehash: 1a3cfb51cc75c89c5a4580b1b7721eb763078980
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: f9a1076ddfb840ba845718c5ca0deea8c5788e7d
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096703"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100328"
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-state-configuration"></a>Onboarding von Computern zur Verwaltung durch Azure Automation DSC
 
@@ -24,7 +24,8 @@ Wie [PowerShell DSC](/powershell/dsc/overview)(Desired State Configuration) ist 
 
 Mit Azure Automation DSC können zahlreiche Computer verwaltet werden:
 
-- Azure-VMs (im klassischen Bereitstellungsmodell und im Azure Resource Manager-Bereitstellungsmodell bereitgestellt)
+- Azure Virtual Machines
+- Virtuelle Azure-Computer (klassisch)
 - Amazon Web Services-EC2-Instanzen (AWS)
 - Physische/virtuelle Windows-Computer, lokal oder in einer anderen Cloud als Azure/AWS
 - Physische/virtuelle Linux-Computer, lokal, in Azure oder in einer anderen Cloud als Azure
@@ -35,6 +36,31 @@ Wenn Sie Computerkonfigurationen noch nicht in der Cloud verwalten möchten, kö
 > Die Verwaltung von Azure-VMs mit DSC ist kostenlos inbegriffen, wenn die installierte DSC-Erweiterung für virtuelle Computer eine höhere Version als 2.70 aufweist. Weitere Informationen finden Sie auf der [**Preisseite für Automation**](https://azure.microsoft.com/pricing/details/automation/).
 
 In den folgenden Abschnitten wird beschrieben, wie Sie jeden Computertyp in Azure Automation DSC integrieren können.
+
+## <a name="azure-virtual-machines"></a>Azure Virtual Machines
+
+Mit Azure Automation DSC können Sie problemlos Azure-VMs für die Konfigurationsverwaltung integrieren, indem Sie das Azure-Portal, Azure Resource Manager-Vorlagen oder PowerShell verwenden. Ohne Remotezugriff eines Administrators auf den virtuellen Computer registriert die Azure-VM-Erweiterung für DSC den virtuellen Computer bei Azure Automation DSC.
+Da die Azure-VM-Erweiterung für DSC asynchron ausgeführt wird, finden Sie die Schritte zum Verfolgen des Fortschritts oder zur Problembehandlung im Abschnitt [**Problembehandlung bei der Integration virtueller Azure-Computer**](#troubleshooting-azure-virtual-machine-onboarding) weiter unten.
+
+### <a name="azure-portal"></a>Azure-Portal
+
+Wechseln Sie im [Azure-Portal](https://portal.azure.com/)zu dem Azure Automation-Konto, in das Sie virtuelle Computer integrieren möchten. Klicken Sie auf der DSC-Seite auf der Registerkarte **Knoten** auf **Hinzufügen**.
+
+Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
+
+Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des gewünschten Zustands installiert ist und der Energiezustand ausgeführt wird, klicken Sie auf **Verbinden**.
+
+Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
+
+![Onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
+
+### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
+
+Azure-VMs können über Azure Resource Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Konfigurieren einer VM über die DSC-Erweiterung und Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) finden Sie eine Beispielvorlage zum Integrieren eines vorhandenen virtuellen Computers in Azure Automation DSC. Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL, die als Eingaben in dieser Vorlage verwendet werden, finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
+
+### <a name="powershell"></a>PowerShell
+
+Mit dem Cmdlet [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) können virtuelle Computer im Azure-Portal über PowerShell integriert werden.
 
 ## <a name="azure-virtual-machines-classic"></a>Virtuelle Azure-Computer (klassisch)
 
@@ -116,31 +142,6 @@ $VM | Update-AzureVM
 
 > [!NOTE]
 > Bei DSC-Knotenkonfigurationsnamen wird im Portal die Groß-/Kleinschreibung beachtet. Bei abweichender Groß-/Kleinschreibung wird der Knoten nicht auf der Registerkarte **Knoten** angezeigt.
-
-## <a name="azure-virtual-machines"></a>Azure Virtual Machines
-
-Mit Azure Automation DSC können Sie problemlos Azure-VMs für die Konfigurationsverwaltung integrieren, indem Sie das Azure-Portal, Azure Resource Manager-Vorlagen oder PowerShell verwenden. Ohne Remotezugriff eines Administrators auf den virtuellen Computer registriert die Azure-VM-Erweiterung für DSC den virtuellen Computer bei Azure Automation DSC.
-Da die Azure-VM-Erweiterung für DSC asynchron ausgeführt wird, finden Sie die Schritte zum Verfolgen des Fortschritts oder zur Problembehandlung im Abschnitt [**Problembehandlung bei der Integration virtueller Azure-Computer**](#troubleshooting-azure-virtual-machine-onboarding) weiter unten.
-
-### <a name="azure-portal"></a>Azure-Portal
-
-Wechseln Sie im [Azure-Portal](https://portal.azure.com/)zu dem Azure Automation-Konto, in das Sie virtuelle Computer integrieren möchten. Klicken Sie auf der DSC-Seite auf der Registerkarte **Knoten** auf **Hinzufügen**.
-
-Wählen Sie einen virtuellen Azure-Computer aus, der integriert werden soll.
-
-Wenn auf dem Computer nicht die PowerShell-Erweiterung für Konfiguration des gewünschten Zustands installiert ist und der Energiezustand ausgeführt wird, klicken Sie auf **Verbinden**.
-
-Geben Sie unter **Registrierung**die Werte des [lokalen Konfigurations-Managers von PowerShell DSC](/powershell/dsc/metaconfig4) ein, die für Ihren Anwendungsfall erforderlich sind, und geben Sie optional eine Knotenkonfiguration an, die dem virtuellen Computer zugewiesen werden soll.
-
-![Onboarding](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
-
-### <a name="azure-resource-manager-templates"></a>Azure-Ressourcen-Manager-Vorlagen
-
-Azure-VMs können über Azure Resource Manager-Vorlagen in Azure Automation DSC bereitgestellt und integriert werden. Unter [Konfigurieren einer VM über die DSC-Erweiterung und Azure Automation DSC](https://azure.microsoft.com/documentation/templates/dsc-extension-azure-automation-pullserver/) finden Sie eine Beispielvorlage zum Integrieren eines vorhandenen virtuellen Computers in Azure Automation DSC. Informationen zum Suchen von Registrierungsschlüssel und Registrierungs-URL, die als Eingaben in dieser Vorlage verwendet werden, finden Sie im Abschnitt [**Sichere Registrierung**](#secure-registration) weiter unten.
-
-### <a name="powershell"></a>PowerShell
-
-Mit dem Cmdlet [Register-AzureRmAutomationDscNode](/powershell/module/azurerm.automation/register-azurermautomationdscnode) können virtuelle Computer im Azure-Portal über PowerShell integriert werden.
 
 ## <a name="amazon-web-services-aws-virtual-machines"></a>Virtuelle Computer von Amazon Web Services (AWS)
 

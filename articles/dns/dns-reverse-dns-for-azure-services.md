@@ -12,14 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: cbd1a7a3a797cc20be92583bbb5ac163333729fc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a9a1b5599468df6bc85cc1d535b577c508dd0a9
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969800"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995645"
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Konfigurieren von Reverse-DNS für in Azure gehostete Dienste
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 In diesem Artikel wird erläutert, wie Reverse-DNS-Lookups für in Azure gehostete Dienste konfiguriert werden.
 
@@ -62,19 +64,19 @@ Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adressresso
 So fügen Sie vorhandenen öffentlichen IP-Adressen Reverse-DNS hinzu
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
 Um einer vorhandenen öffentlichen IP-Adresse, die noch keinen DNS-Namen aufweist, Reverse-DNS hinzuzufügen, müssen Sie auch einen DNS-Namen angeben.
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings = New-Object -TypeName "Microsoft.Azure.Commands.Network.Models.PSPublicIpAddressDnsSettings"
 $pip.DnsSettings.DomainNameLabel = "contosoapp1"
 $pip.DnsSettings.ReverseFqdn = "contosoapp1.westus.cloudapp.azure.com."
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
@@ -112,7 +114,7 @@ So erstellen Sie eine öffentliche neue Adresse mit bereits angegebener Reverse-
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-New-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
+New-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup" -Location "WestUS" -AllocationMethod Dynamic -DomainNameLabel "contosoapp2" -ReverseFqdn "contosoapp2.westus.cloudapp.azure.com."
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
@@ -134,7 +136,7 @@ So zeigen Sie den konfigurierten Wert für eine vorhandene öffentliche IP-Adres
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
@@ -156,9 +158,9 @@ So entfernen Sie eine Reverse-DNS-Eigenschaft von einer öffentlichen IP-Adresse
 #### <a name="powershell"></a>PowerShell
 
 ```powershell
-$pip = Get-AzureRmPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
+$pip = Get-AzPublicIpAddress -Name "PublicIp" -ResourceGroupName "MyResourceGroup"
 $pip.DnsSettings.ReverseFqdn = ""
-Set-AzureRmPublicIpAddress -PublicIpAddress $pip
+Set-AzPublicIpAddress -PublicIpAddress $pip
 ```
 
 #### <a name="azure-classic-cli"></a>Klassische Azure-Befehlszeilenschnittstelle
@@ -222,7 +224,7 @@ Ja. Sobald Sie die Reverse-DNS-Eigenschaft für Ihren Azure-Dienst festlegen, ve
 
 ### <a name="are-default-reverse-dns-records-created-for-my-azure-services"></a>Werden für meine Azure-Dienste Standard-Reverse-DNS-Einträge erstellt?
 
-Nein. Reverse-DNS ist eine optionale Funktion. Es werden keine Standard-DNS-Einträge erstellt, wenn Sie keine konfigurieren.
+ Nein. Reverse-DNS ist eine optionale Funktion. Es werden keine Standard-DNS-Einträge erstellt, wenn Sie keine konfigurieren.
 
 ### <a name="what-is-the-format-for-the-fully-qualified-domain-name-fqdn"></a>Wie sieht das Format für den vollqualifizierten Domänennamen (FQDN) aus?
 
@@ -234,15 +236,15 @@ Wenn bei der Reverse-DNS-Überprüfung ein Fehler auftritt, tritt beim Konfiguri
 
 ### <a name="can-i-configure-reverse-dns-for-azure-app-service"></a>Kann ich Reverse-DNS für Azure App Service konfigurieren?
 
-Nein. Reverse-DNS wird für Azure App Service nicht unterstützt.
+ Nein. Reverse-DNS wird für Azure App Service nicht unterstützt.
 
 ### <a name="can-i-configure-multiple-reverse-dns-records-for-my-azure-service"></a>Kann ich für meinen Azure-Dienst mehrere Reverse-DNS-Einträge konfigurieren?
 
-Nein. Azure unterstützt für jeden Azure-Clouddienst und jede öffentliche IP-Adresse nur einen Reverse-DNS-Eintrag.
+ Nein. Azure unterstützt für jeden Azure-Clouddienst und jede öffentliche IP-Adresse nur einen Reverse-DNS-Eintrag.
 
 ### <a name="can-i-configure-reverse-dns-for-ipv6-publicipaddress-resources"></a>Kann ich Reverse-DNS für öffentliche IPv6-IP-Adressressourcen konfigurieren?
 
-Nein. Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adressressourcen und -Clouddienste.
+ Nein. Azure unterstützt derzeit Reverse-DNS nur für öffentliche IPv4-IP-Adressressourcen und -Clouddienste.
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Kann ich aus Azure Compute Services heraus E-Mails an externe Domänen senden?
 

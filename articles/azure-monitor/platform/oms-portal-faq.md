@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: bwren
-ms.openlocfilehash: c4fab22513e42013a9dacf0b24b2d4b322ae09b6
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883397"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990427"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Häufig gestellte Fragen zum Übergang vom OMS-Portal zum Azure-Portal für Log Analytics-Benutzer
 Log Analytics verwendete zunächst ein eigenes Portal, das OMS-Portal, um die Konfiguration zu verwalten und gesammelte Daten zu analysieren.  Alle Funktionen dieses Portals wurden in das Azure-Portal übernommen, wo sie weiter entwickelt werden.
@@ -105,7 +105,7 @@ Verwalten Sie die meisten Einstellungen von „Daten“ im Menü **Erweiterte Ei
 Verwalten Sie Lösungen über das Menü **Lösungen** für den Arbeitsbereich. 
 
 ## <a name="how-do-i-install-and-remove-management-solutions"></a>Wie installiere und entferne ich Verwaltungslösungen?
-Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und entfernten sie über die **Einstellungen**. Im Azure-Portal [installieren Sie Verwaltungslösungen](../insights/solutions.md#install-a-management-solution) aus dem Azure Marketplace. [Entfernen Sie Lösungen](../insights/solutions.md#remove-a-management-solution) aus der Liste der installierten Lösungen.
+Im OMS-Portal installierten Sie Verwaltungslösungen aus dem Lösungskatalog und entfernten sie über die **Einstellungen**. Im Azure-Portal [installieren Sie Verwaltungslösungen](../insights/solutions.md#install-a-monitoring-solution) aus dem Azure Marketplace. [Entfernen Sie Lösungen](../insights/solutions.md#remove-a-monitoring-solution) aus der Liste der installierten Lösungen.
 
 ## <a name="how-do-i-create-and-manage-alerts"></a>Wie erstelle und verwalte ich Warnungen?
 Warnungsregeln basierend auf Log Analytics-Abfragen werden jetzt über die [vereinheitlichte Oberfläche für Warnungen](../../azure-monitor/platform/alerts-metric.md) verwaltet. Weitere Informationen zur Konfiguration und Verwendung von Warnungen im Azure-Portal finden Sie unter [Gewusst wie: Erweitern (Kopieren) von Warnungen aus dem OMS-Portal in Azure](../../azure-monitor/platform/alerts-extend-tool.md).

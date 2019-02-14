@@ -15,12 +15,13 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: c923023cec03e36b1795619bc9da09aee8def629
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9517ccac4006edec473e25c5e6524ce62d4e1259
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700382"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210101"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -226,7 +227,7 @@ Azure AD Hybrid Join hat Vorrang vor dem Azure AD-Registrierungsstatus. Ihr Ger�
 
 **F: Benötigen Azure AD Hybrid Join-Geräte unter Windows 10 Sichtverbindung zum Domänencontroller, um auf die Ressourcen in der Cloud zugreifen zu können?**
 
-**A:** Nein. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Wenn ein Kennwort außerhalb des Unternehmensnetzwerks (z.B. mithilfe von Azure AD SSPR) geändert wird, muss der Benutzer Sichtverbindung zum Domänencontroller haben, bevor er sich mit dem neuen Kennwort am Gerät anmelden kann. Andernfalls kann er sich nur mit seinem alten Kennwort anmelden, das von Azure AD für ungültig erklärt wird und das einmalige Anmelden verhindert. Dieses Problem tritt jedoch nicht auf, wenn Sie Windows Hello for Business verwenden. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, selbst wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
+**A:**  Nein. Nachdem die Einrichtung von Azure AD Hybrid Join unter Windows 10 abgeschlossen ist und sich der Benutzer mindestens einmal angemeldet hat, benötigt das Gerät keine Sichtverbindung zum Domänencontroller, um auf die Cloud-Ressourcen zuzugreifen. Windows 10 kann das einmalige Anmelden bei Azure AD-Anwendungen für jeden beliebigen Standort mit Internetverbindung einrichten, solange kein Kennwort geändert wird. Wenn ein Kennwort außerhalb des Unternehmensnetzwerks (z.B. mithilfe von Azure AD SSPR) geändert wird, muss der Benutzer Sichtverbindung zum Domänencontroller haben, bevor er sich mit dem neuen Kennwort am Gerät anmelden kann. Andernfalls kann er sich nur mit seinem alten Kennwort anmelden, das von Azure AD für ungültig erklärt wird und das einmalige Anmelden verhindert. Dieses Problem tritt jedoch nicht auf, wenn Sie Windows Hello for Business verwenden. Für Benutzer, die sich mit Windows Hello for Business anmelden, ist nach einer Kennwortänderung weiterhin das einmalige Anmelden bei Azure AD-Anwendungen verfügbar, selbst wenn sie keine Sichtverbindung zu ihrem Domänencontroller haben. 
 
 ---
 

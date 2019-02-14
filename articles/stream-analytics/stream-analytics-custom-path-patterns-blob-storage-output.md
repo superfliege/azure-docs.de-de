@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: fc28ddd006e8a117dddd67a6d6668b9639dddec5
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765194"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982674"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -67,8 +67,6 @@ Beachten Sie, dass jeder Datensatz im Blob die Spalte **client_id** enthält, di
 ## <a name="custom-datetime-path-patterns"></a>Benutzerdefinierte DateTime-Pfadmuster
 
 Mit benutzerdefinierten DateTime-Pfadmustern können Sie ein Ausgabeformat festlegen, das mit den Hive Streaming-Konventionen übereinstimmt, damit Azure Stream Analytics Daten an Azure HDInsight und Azure Databricks zur weiteren Verarbeitung senden kann. Benutzerdefinierte DateTime-Pfadmuster können einfach mit dem Schlüsselwort `datetime` im Feld „Pfadpräfix“ der Blobausgabe und dem Formatbezeichner implementiert werden. Beispiel: `{datetime:yyyy}`.
-
-Verwenden Sie diesen Link für das [Azure-Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true), um das Featureflag umzuschalten, das die benutzerdefinierten DateTime-Pfadmuster für die Vorschau der Blob Storage-Ausgabe aktiviert. Dieses Feature wird in Kürze im Hauptportal aktiviert.
 
 ### <a name="supported-tokens"></a>Unterstützte Token
 

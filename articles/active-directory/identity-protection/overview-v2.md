@@ -16,12 +16,13 @@ ms.topic: article
 ms.date: 10/03/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 9cb1c5ebf8809ca3f4f977b513ecaa7909b401c6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e60804e6bdf37607a08b6c530fd900e0f481a45b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452276"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56204507"
 ---
 # <a name="what-is-azure-active-directory-identity-protection-refreshed"></a>Was ist Azure Active Directory Identity Protection (aktualisiert)?
 
@@ -210,11 +211,11 @@ Weitere Informationen finden Sie unter [Zuweisen von Administratorrollen in Azur
 
 | Funktion | Azure AD Premium P2 | Azure AD Premium P1 | Azure AD Basic/Free |
 | --- | --- | --- | --- |
-| Richtlinie zum Benutzerrisiko | JA | Nein  | Nein  |
-| Richtlinie zum Anmelderisiko | JA | Nein  | Nein  |
+| Richtlinie zum Benutzerrisiko | Ja | Nein  | Nein  |
+| Richtlinie zum Anmelderisiko | Ja | Nein  | Nein  |
 | Bericht „Riskante Benutzer“ | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
 | Bericht über riskante Anmeldungen | Vollzugriff | Eingeschränkte Informationen | Eingeschränkte Informationen |
-| Richtlinie für MFA-Registrierung | JA | Nein  | Nein  |
+| Richtlinie für MFA-Registrierung | Ja | Nein  | Nein  |
 
 
 

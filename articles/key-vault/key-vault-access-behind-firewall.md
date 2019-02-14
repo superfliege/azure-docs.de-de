@@ -4,7 +4,7 @@ description: Hier wird beschrieben, wie Sie aus einer Anwendung hinter einer Fir
 services: key-vault
 documentationcenter: ''
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 50d21774-2ee1-4212-8995-570c9de603c5
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: cd5ecf60c76ec3db0bc0d867a8a807016eeea863
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 36b431d07ad517d495316963fd6710dafab6c297
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073726"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108635"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>Zugreifen auf Azure Key Vault hinter einer Firewall
 
@@ -36,7 +36,7 @@ Je nach Konfiguration und Umgebung gibt es verschiedene Varianten.
 
 Der gesamte Datenverkehr an einen Schlüsseltresor verläuft für alle drei Funktionen (Authentifizierung, Verwaltung und Datenebenenzugriff) über „HTTPS: Port 443“. Gelegentlich fällt aber auch HTTP-Datenverkehr (Port 80) für CRL an. Clients mit OCSP-Unterstützung sollten die Zertifikatsperrliste nicht erreichen, sondern nur gelegentlich [http://cdp1.public-trust.com/CRL/Omniroot2025.crl](http://cdp1.public-trust.com/CRL/Omniroot2025.crl).  
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Schlüsseltresor-Clientanwendungen müssen zur Authentifizierung auf Azure Active Directory-Endpunkte zugreifen. Der verwendete Endpunkt richtet sich nach der Azure AD-Mandantenkonfiguration, dem Typ von Prinzipal (Benutzerprinzipal oder Dienstprinzipal) und dem Kontotyp, z.B. Microsoft-Konto oder Geschäfts-, Schul- oder Unikonto.  
 

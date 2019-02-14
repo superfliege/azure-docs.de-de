@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/30/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 4021d1ac5a0b3d9d9bf19e9fb7f74952f2471c30
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: fe1227d91c0d039a94e5b9a3046b879f4f17355a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "49458842"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246882"
 ---
 | Ressource | Basic | Standard | Premium |
 |---|---|---|---|---|
@@ -24,8 +24,8 @@ ms.locfileid: "49458842"
 | Downloadbandbreite MBit/s<sup>2</sup> | 30 | 60 | 100 |
 | Uploadbandbreite MBit/s<sup>2</sup> | 10 | 20 | 50 |
 | Webhooks | 2 | 10 | 100 |
-| Georeplikation | N/V | N/V | [Unterstützt][geo-replication] |
-| Inhaltsvertrauen (Vorschauversion) | N/V | N/V | [Unterstützt][content-trust] |
+| Georeplikation | – | – | [Unterstützt][geo-replication] |
+| Inhaltsvertrauen (Vorschauversion) | – | – | [Unterstützt][content-trust] |
 
 <sup>1</sup> Die angegebenen Speichergrenzen beziehen sich auf die Größe des *inkludierten* Speichers für jeden Tariftyp. Für Imagespeicher, der diese Grenzen überschreitet, wird Ihnen ein zusätzlicher Tagestarif pro GiB in Rechnung gestellt. Weitere Informationen zu diesen Tarifen finden Sie unter [Container Registry – Preise][pricing].
 

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 2f6ceeebd18a91472ee12f04c0ac8e602b05f269
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4a65e88e3f94f64a56bde882b535030968ae354d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197550"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991275"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Erstellen von Highlights aus vorhandenen Videos
 
@@ -27,17 +27,14 @@ In diesem Thema wird veranschaulicht, wie Sie Videoinformationen (Erkenntnisse) 
     Auf der Seite werden die zusammengefassten Informationen des Videos dargestellt. 
 
     ![Einblicke](./media/video-indexer-create-new/video-indexer-summarized-insights.png)
-
 3. Klicken Sie auf die Schaltfläche **Bearbeiten**.
 
     Auf dieser Seite wird eine vollständige Aufstellung der Daten eines Videos angezeigt. Die Aufstellung ist in einzelne Blöcke unterteilt. Die Blöcke sollen das Durchgehen der Daten vereinfachen. Die Unterteilung in Blöcke kann beispielsweise darauf basieren, dass sich der Sprecher ändert oder dass es zu einer längeren Pause kommt. Sie können Ihre eigene Wiedergabeliste erstellen, die nur die gewünschten Zeilen enthält. Wenn Sie nur bestimmte Teile des Quellvideos anzeigen möchten, können Sie nach Themen/Schlüsselwörtern, Stimmungen, Personen oder Sprechern filtern. Sie können auch angeben, dass nur das Transkript oder die OCR-Daten des Videos angezeigt werden sollen.    
 
     ![Einblicke](./media/video-indexer-create-new/video-indexer-create-new-playlist.png)
-
 4. Erstellen Sie Ihre Wiedergabeliste.
 
     Wählen Sie **+**/**-**, um Ihrer Wiedergabeliste Zeilen hinzuzufügen oder Zeilen daraus zu entfernen.
-
 5. Zeigen Sie eine Vorschau Ihrer Wiedergabeliste an.
 
     Wählen Sie **Vorschau**, nachdem Sie die Wiedergabeliste erstellt haben.

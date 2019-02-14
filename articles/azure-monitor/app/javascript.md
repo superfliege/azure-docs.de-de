@@ -12,19 +12,19 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 55cbca97d369bea80ea9caece14754e81b5738a1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: fee172eccd79fd28e281b2beece9702630ac39b5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661512"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001186"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights für Webseiten
-Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](../../azure-monitor/app/app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
+Informieren Sie sich über die Leistung und Nutzung Ihrer Webseite oder App. Wenn Sie [Application Insights](app-insights-overview.md) Ihrem Seitenskript hinzufügen, erhalten Sie Zeitangaben zu Seitenladevorgängen und AJAX-Aufrufen, Anzahl und Details von Browserausnahmen und AJAX-Fehlern sowie die Anzahl von Benutzern und Sitzungen. Diese Informationen können jeweils nach Seite, Clientbetriebssystem und Browserversion, geografischer Position und anderen Dimensionen segmentiert werden. Sie können Warnungen für die Fehleranzahl oder das langsame Laden von Seiten festlegen. Und indem Sie Ablaufverfolgungsaufrufe in JavaScript-Code einfügen, können Sie nachverfolgen, wie die verschiedenen Funktionen Ihre Webseitenanwendung genutzt werden.
 
-Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen Sie lediglich einen kurzen JavaScript-Codeabschnitt hinzufügen. Wenn Sie als Webdienst [Java](java-get-started.md) oder [ASP.NET](../../azure-monitor/app/asp-net.md) verwenden, können Sie Telemetriedaten von Ihrem Server und den Clients integrieren.
+Application Insights kann mit allen Webseiten verwendet werden. Hierfür müssen Sie lediglich einen kurzen JavaScript-Codeabschnitt hinzufügen. Wenn Sie als Webdienst [Java](java-get-started.md) oder [ASP.NET](asp-net.md) verwenden, können Sie Telemetriedaten von Ihrem Server und den Clients integrieren.
 
-![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Browser“.](./media/javascript/03.png)
+![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Browser“.](media/javascript/03.png)
 
 Sie benötigen ein [Microsoft Azure](https://azure.com)-Abonnement. Falls Ihr Team über ein Unternehmensabonnement verfügt, können Sie den Besitzer bitten, Ihr Microsoft-Konto hinzuzufügen.
 
@@ -38,13 +38,13 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 
 Wenn Sie bereits die Überwachung für die Serverseite der App eingerichtet haben, verfügen Sie schon über eine Ressource:
 
-![Wählen Sie "Durchsuchen", "Entwicklerdienste", "Application Insights" aus.](./media/javascript/01-find.png)
+![Wählen Sie "Durchsuchen", "Entwicklerdienste", "Application Insights" aus.](media/javascript/01-find.png)
 
 Wenn keine Ressource vorhanden ist, erstellen Sie sie:
 
-![Wählen Sie "Neu", "Entwicklerdienste", Application Insights.](./media/javascript/01-create.png)
+![Wählen Sie "Neu", "Entwicklerdienste", Application Insights.](media/javascript/01-create.png)
 
-*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](../../azure-monitor/app/create-new-resource.md )-Abonnement.
+*Schon Fragen?* [Weitere Informationen zum Erstellen einer Ressource](create-new-resource.md )-Abonnement.
 
 ### <a name="add-the-sdk-script-to-your-app-or-web-pages"></a>Hinzufügen des SDK-Skripts zu Ihrer App oder Ihren Webseiten
 
@@ -70,7 +70,7 @@ window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&
 Fügen Sie das Skript direkt vor dem `</head>` -Tag jeder Seite ein, die Sie nachverfolgen möchten. Wenn Ihre Website über eine Masterseite verfügt, können Sie das Skript dort ablegen. Beispiel: 
 
 * Bei einem ASP.NET MVC-Projekt fügen Sie es in `View\Shared\_Layout.cshtml`
-* Öffnen Sie in einer SharePoint-Website in der Systemsteuerung [Websiteeinstellungen / Masterseite](../../azure-monitor/app/sharepoint.md).
+* Öffnen Sie in einer SharePoint-Website in der Systemsteuerung [Websiteeinstellungen / Masterseite](sharepoint.md).
 
 Das Skript enthält den Instrumentationsschlüssel, der die Daten an Ihre Application Insights-Ressource leitet. 
 
@@ -118,9 +118,9 @@ Wenn Sie die Telemetrie, die von einer Web-App an Application Insights gesendet 
 
 ![Öffnen Sie unter „portal.azure.com“ die Ressource Ihrer App, und klicken Sie auf „Einstellungen“ > „Browser“.](./media/javascript/03.png)
 
-Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](../../azure-monitor/app/troubleshoot-faq.md).
+Noch keine Daten verfügbar? Klicken Sie am oberen Seitenrand auf **Aktualisieren**. Immer noch nichts? Informationen hierzu finden Sie unter [Problembehandlung](troubleshoot-faq.md).
 
-Das Blatt „Browser“ ist ein [Metrik-Explorer-Blatt](../../azure-monitor/app/metrics-explorer.md) mit voreingestellter Filter- und Diagrammauswahl. Sie können bei Bedarf den Zeitbereich, die Filter und die Diagrammkonfiguration ändern und das Ergebnis als Favorit speichern. Klicken Sie auf **Standard wiederherstellen** , um zur ursprünglichen Blattkonfiguration zurückzukehren.
+Das Blatt „Browser“ ist ein [Metrik-Explorer-Blatt](metrics-explorer.md) mit voreingestellter Filter- und Diagrammauswahl. Sie können bei Bedarf den Zeitbereich, die Filter und die Diagrammkonfiguration ändern und das Ergebnis als Favorit speichern. Klicken Sie auf **Standard wiederherstellen** , um zur ursprünglichen Blattkonfiguration zurückzukehren.
 
 ## <a name="page-load-performance"></a>Leistung des Seitenladevorgangs
 Oben befindet sich ein segmentiertes Diagramm mit Seitenladezeiten. Die Gesamthöhe des Diagramms steht für die durchschnittliche Dauer, die zum Laden und Anzeigen von Seiten aus Ihrer App in den Browsern Ihrer Benutzer benötigt wird. Die Dauer wird ab dem Punkt gemessen, an dem der Browser die erste HTTP-Anforderung sendet, bis zu dem Punkt, an dem alle synchronen Ladeereignisse verarbeitet wurden, einschließlich Layout und ausgeführte Skripts. Hierin sind keine asynchronen Aufgaben enthalten, z. B. das Laden von Webparts aus AJAX-Aufrufen.
@@ -178,7 +178,6 @@ Klicken Sie auf eine beliebige Zeile, um besondere Details anzuzeigen.
 
 ![](./media/javascript/37.png)
 
-
 Klicken Sie auf `...` , um die gesamten Telemetriedaten für einen Ajax-Aufruf anzuzeigen.
 
 ### <a name="no-ajax-calls-reported"></a>Es wurden keine Ajax-Aufrufe gemeldet?
@@ -202,7 +201,7 @@ Legen Sie im Blatt "Diagnosesuche" als Filter die Einstellung "Seitenansicht" fe
 Wählen Sie ein Ereignis, um weitere Details anzuzeigen. Klicken Sie auf der Detailseite auf "...", um weitere Details anzuzeigen.
 
 > [!NOTE]
-> Beachten Sie bei Verwendung von [Search](../../azure-monitor/app/diagnostic-search.md), dass Sie nach ganzen Wörtern suchen müssen: „Info“ und „nfo“ ergeben keine Übereinstimmung mit „Informationen“.
+> Beachten Sie bei Verwendung von [Search](diagnostic-search.md), dass Sie nach ganzen Wörtern suchen müssen: „Info“ und „nfo“ ergeben keine Übereinstimmung mit „Informationen“.
 > 
 > 
 
@@ -227,8 +226,8 @@ Der Seitenname kann die gleichen Zeichen wie eine URL enthalten, aber alles nach
 ## <a name="usage-tracking"></a>Nutzungsverfolgung
 Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
-* [Informationen zu den Analysetools für Benutzerverhalten](../../azure-monitor/app/usage-overview.md)
-* [Informationen zur API für benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md).
+* [Informationen zu den Analysetools für Benutzerverhalten](usage-overview.md)
+* [Informationen zur API für benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md).
 
 ## <a name="video"></a> Video
 
@@ -238,7 +237,7 @@ Möchten Sie herausfinden, wofür die Benutzer Ihre App verwenden?
 
 
 ## <a name="next"></a> Nächste Schritte
-* [Nutzung nachverfolgen](../../azure-monitor/app/usage-overview.md)
-* [Benutzerdefinierte Ereignisse und Metriken](../../azure-monitor/app/api-custom-events-metrics.md)
-* [Erstellen-Messen-Lernen](../../azure-monitor/app/usage-overview.md)
+* [Nutzung nachverfolgen](usage-overview.md)
+* [Benutzerdefinierte Ereignisse und Metriken](api-custom-events-metrics.md)
+* [Erstellen-Messen-Lernen](usage-overview.md)
 

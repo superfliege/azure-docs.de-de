@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 156d06b3c3fab5df1cd4360fb9e6ec2648d8d0b6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1935c670b5c7622f45f8c96b8c2faf03da6282f3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55455064"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993631"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Behandeln von Problemen mit der Leistung von Azure SQL-Datenbank mithilfe von Intelligent Insights
 
@@ -237,7 +237,7 @@ Weitere Informationen finden Sie unter [Einführung in speicheroptimierte Tabell
 
 Dieses erkennbare Leistungsmuster zeigt eine aktuelle Leistungsminderung der Datenbankworkload im Vergleich zur Workloadbaseline der letzten sieben Tage. Der Grund dafür ist der Mangel an verfügbaren DTUs im Pool für elastische Datenbanken Ihres Abonnements. 
 
-Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-service-tiers.md#dtu-based-purchasing-model) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
+Ressourcen für SQL-Datenbank werden üblicherweise als [DTU-Ressourcen](sql-database-purchase-models.md#dtu-based-purchasing-model) bezeichnet, die aus einer Kombination von CPU- und E/A-Ressourcen (Daten- und Transaktionsprotokoll-E/A) bestehen. [Azure-Ressourcen für den Pool für elastische Datenbanken](sql-database-elastic-pool.md) dienen als Pool verfügbarer eDTU-Ressourcen, die zu Skalierungszwecken von mehreren Datenbanken gemeinsam genutzt werden. Wenn die verfügbaren eDTU-Ressourcen in Ihrem Pool elastischer Datenbanken nicht ausreichen, um alle Datenbanken im Pool zu unterstützen, wird das Problem „Mangel an DTUs im Pool für elastische Datenbanken“ vom System erkannt.
 
 ### <a name="troubleshooting"></a>Problembehandlung
 

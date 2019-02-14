@@ -14,21 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 060ff6b94c171d27dae74ea76603222253f33bab
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 87081398e844f1e2b085a7e12c2b7aafce330ec9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194286"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193763"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Einführung in die Service Fabric-Integritätsüberwachung
 Mit Azure Service Fabric wird ein Integritätsmodell eingeführt, das eine umfassende, flexible und erweiterbare Integritätsevaluierung und -berichterstellung bietet. Mithilfe dieses Modells lässt sich der Zustand des Clusters und der darin ausgeführten Dienste nahezu in Echtzeit überwachen. Sie können mühelos Integritätsdaten ermitteln und potenzielle Probleme beheben, bevor sie sich ausbreiten und umfangreiche Ausfälle verursachen. In einem typischen Modell senden die Dienste Berichte basierend auf ihren lokalen Informationen. Anhand dieser Informationen wird ein Gesamtüberblick auf Clusterebene erstellt.
 
 Die Service Fabric-Komponenten verwenden dieses umfangreiche Integritätsmodell, um ihren aktuellen Zustand zu melden. Sie können den gleichen Mechanismus verwenden, um Integritätsberichte für Anwendungen zu erstellen. Wenn Sie in hochwertige Integritätsberichte zur Erfassung Ihrer individuellen Bedingungen investieren, können Sie Probleme für Ihre ausgeführte Anwendung viel leichter erkennen und beheben.
-
-Im folgende Microsoft Virtual Academy-Video werden auch das Service Fabric-Integritätsmodell und seine Verwendung beschrieben: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=tevZw56yC_1906218965">
-<img src="./media/service-fabric-health-introduction/HealthIntroVid.png" WIDTH="360" HEIGHT="244">
-</a></center>
 
 > [!NOTE]
 > Das Integritätssubsystem wurde ursprünglich für das Überwachen von Upgrades eingeführt. Service Fabric bietet überwachte Anwendungs- und Clusterupgrades mit uneingeschränkter Verfügbarkeit, ohne Ausfallzeit und mit minimaler oder sogar ganz ohne Benutzerinteraktion. Um diese Ziele zu erreichen, überprüft das Upgrade die Integrität anhand der konfigurierten Aktualisierungsrichtlinien. Ein Upgrade kann nur dann fortgesetzt werden, wenn die gewünschten Schwellenwerte für die Integrität berücksichtigt werden. Werden die Schwellenwerte nicht erfüllt, wird entweder automatisch ein Rollback des Upgrades durchgeführt oder das Upgrade angehalten, damit Administratoren das Problem beheben können. Weitere Informationen zu Anwendungsupgrades finden Sie in [diesem Artikel](service-fabric-application-upgrade.md).

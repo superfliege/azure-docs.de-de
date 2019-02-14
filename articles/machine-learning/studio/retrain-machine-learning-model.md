@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 4fec32ac2d613486ee65416ccdfac70575ea9543
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509574"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236259"
 ---
 # <a name="retrain-an-azure-machine-learning-studio-model"></a>Erneutes Trainieren eines Azure Machine Learning Studio-Modells
 Im Rahmen der Operationalisierung von Machine Learning-Modellen in Azure Machine Learning wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden. 
@@ -53,8 +53,6 @@ Erneutes Trainieren des Webdiensts:
 * Bereitstellen des Webdiensts zum erneuten Trainieren
 * Verwenden des BES-Codes zum erneuten Trainieren des Modells
 
-Eine exemplarische Vorgehensweise für die vorangehenden Schritte finden Sie unter [Programmgesteuertes erneutes Trainieren von Machine Learning-Modellen](retrain-models-programmatically.md).
-
 > [!NOTE] 
 > Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
 
@@ -63,8 +61,6 @@ Wenn Sie einen klassischen Webdienst bereitgestellt haben:
 * Erstellen Sie einen neuen Endpunkt für den Vorhersagewebdienst
 * Rufen Sie die PATCH-URL und den Code ab.
 * Verwenden Sie die PATCH-URL, um den neuen Endpunkt auf das neu trainierte Modell zu zeigen. 
-
-Eine exemplarische Vorgehensweise für die vorangehenden Schritte finden Sie unter [Erneutes Trainieren eines klassischen Webdiensts](retrain-a-classic-web-service.md).
 
 Wenn beim erneuten Trainieren eines klassischen Webdiensts Probleme auftreten, finden Sie Hilfe unter [Problembehandlung beim erneuten Trainieren eines klassischen Azure Machine Learning Webdiensts](troubleshooting-retraining-models.md).
 
@@ -76,8 +72,6 @@ Wenn Sie einen neuen Webdienst bereitgestellt haben:
 * Aktualisieren Sie im JSON-Code den Verweis auf das `ilearner`-Blob
 * Importieren Sie den JSON-Code in eine Webdienstdefinition.
 * Aktualisieren Sie den Webdienst mit der neuen Webdienstdefinition.
-
-Eine exemplarische Vorgehensweise für die vorangehenden Schritte finden Sie unter [Erneutes Trainieren eines neuen Webdiensts mithilfe der PowerShell-Cmdlets für die Verwaltung von Machine Learning](retrain-new-web-service-using-powershell.md).
 
 Das Einrichten eines erneuten Trainings für einen klassischen Webdienst umfasst die folgenden Schritte:
 
