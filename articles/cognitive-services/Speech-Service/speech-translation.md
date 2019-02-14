@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Mit der Speech Services-API können Sie Ihren Anwendungen, Tools und Geräten End-to-End- und Echtzeit-Sprachübersetzungen sowie mehrsprachige Übersetzungen hinzufügen. Die gleiche API kann für Speech-to-Speech- und für Speech-to-Text-Übersetzungen verwendet werden.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8519e05062ad1b8b8b20dcf5caafddaa07550049
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e77bfcdf2e037c7f6221b6761df708dac01924dd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228728"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879240"
 ---
 # <a name="about-the-speech-translation-api"></a>Informationen zur Sprachübersetzungs-API
 

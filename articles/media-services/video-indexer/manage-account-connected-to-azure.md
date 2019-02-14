@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 11/19/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 43e08298618f059ff706d11ce6bbb3d486642872
-ms.sourcegitcommit: beb4fa5b36e1529408829603f3844e433bea46fe
+ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2018
-ms.locfileid: "52291815"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004538"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Verwalten eines Video Indexer-Kontos mit Azure-Verbindung
 
@@ -75,6 +75,6 @@ Wenn für Ihr Konto einige Anpassungen erforderlich ist, werden auf der Seite **
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können programmgesteuert mit Ihrem Testkonto bzw. Ihren Video Indexer-Konten interagieren, die mit Azure verbunden sind, indem Sie die Anleitung unter [Verwenden von APIs](video-indexer-use-apis.md) befolgen.
+Sie können programmgesteuert mit Ihrem Testkonto bzw. Ihren Video Indexer-Konten interagieren, die mit Azure verbunden sind. Befolgen Sie hierzu die Anweisungen unter [Verwenden von APIs](video-indexer-use-apis.md).
 
 Sie sollten hierfür denselben Azure AD-Benutzer verwenden, den Sie beim Herstellen der Verbindung mit Azure genutzt haben.

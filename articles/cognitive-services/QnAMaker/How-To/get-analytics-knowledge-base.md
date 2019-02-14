@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: QnA Maker speichert alle Chatprotokolle und andere Telemetriedaten, wenn Sie App Insights bei der Erstellung Ihres QnA Maker-Diensts aktiviert haben. Führen Sie die Beispielabfragen aus, um Ihre Chatprotokolle aus App Insights abzurufen.
 services: cognitive-services
 author: tulasim88
-manager: cgronlun
+manager: nitinme
 displayName: chat history, history, chat logs, logs
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/04/2019
 ms.author: tulasim88
-ms.openlocfilehash: 6665efed53c7864467d7a6a72d109841c3a02b53
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 288db572f6b50d370f1dab710d3b0e7ab5e50bd5
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747542"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878237"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Abrufen von Analysen zu Ihrer Wissensdatenbank
 

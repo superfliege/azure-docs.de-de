@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Zurückgeben von N besten Übersetzungen mit der Textübersetzungs-API von Microsoft
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: ea409a4295cb07800e3f48ab408135071d0faea6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 41027cf83fd6074822c70b6039906592cb8698b0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464815"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878645"
 ---
 # <a name="how-to-return-n-best-translations"></a>Zurückgeben von N besten Übersetzungen
 
@@ -35,7 +35,7 @@ Die Signatur ist:
 
 **Parameter**
 
-| Parameter | Beschreibung |
+| Parameter | BESCHREIBUNG |
 |:---|:---|
 | appId | **Erforderlich** Lassen Sie das Feld „appId“ leer, wenn sie den Autorisierungsheader verwenden. Geben Sie andernfalls eine Zeichenfolge mit „Bearer“ + „ “ + Zugriffstoken an.|
 | text | **Erforderlich** Eine Zeichenfolge, die den Text darstellt, der übersetzt werden soll. Die Textgröße darf 10.000 Zeichen nicht überschreiten.|
@@ -44,9 +44,9 @@ Die Signatur ist:
 | maxTranslations | **Erforderlich** Ein Integer, der die maximale Anzahl von Übersetzungen darstellt, die zurückgegeben werden sollen. |
 | options | **Optional** Ein TranslateOptions-Objekt, das die unten aufgeführten Werte enthält. Diese sind alle optional und entsprechen den Standardwerten für die häufigsten Einstellungen.
 
-* Category: Es wird nur der Wert „general“ unterstützt, dies ist auch der Standardwert.
+* Kategorie: Es wird nur der Wert „general“ unterstützt, dies ist auch der Standardwert.
 * ContentType: Es wird nur der Wert „text/plain“ unterstützt, dies ist auch der Standardwert.
-* State: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
+* Status: Benutzerstatus, mit dem Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
 * IncludeMultipleMTAlternatives: Dieses Flag bestimmt, ob mehr als eine Alternative aus der MT-Engine zurückgegeben wird. Der Standardwert ist „FALSE“ und enthält nur eine Alternative.
 
 ## <a name="ratings"></a>Ratings

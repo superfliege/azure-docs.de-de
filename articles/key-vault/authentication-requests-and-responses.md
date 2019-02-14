@@ -4,7 +4,7 @@ description: Authentifizierung bei AD für die Verwendung von Key Vault
 services: key-vault
 documentationcenter: ''
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 4c321939-8a5b-42ca-83c4-2f5f647ca13e
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 4d897512e5c53222cb77906200e1a33e2eeec78e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 57f04a79396cd286ea87e6a8cc7b37f5459fa14c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074052"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111525"
 ---
 # <a name="authentication-requests-and-responses"></a>Authentifizierung, Anforderungen und Antworten
 
@@ -91,7 +91,7 @@ Dieses Thema behandelt Besonderheiten für den Azure Key Vault-Dienst. Allgemein
 
 ```  
 
-## <a name="authentication"></a>Authentifizierung  
+## <a name="authentication"></a>Authentication  
  Alle Anforderungen an Azure Key Vault MÜSSEN authentifiziert werden. Azure Key Vault unterstützt Azure Active Directory-Zugriffstoken, die mithilfe von OAuth2 [[RFC6749](http://tools.ietf.org/html/rfc6749)] abgerufen werden können. 
  
  Weitere Informationen zur Registrierung Ihrer Anwendung und zur Authentifizierung für die Verwendung von Azure Key Vault finden Sie unter [Registrieren Ihrer Clientanwendung bei Azure AD](https://docs.microsoft.com/rest/api/azure/index#register-your-client-application-with-azure-ad).

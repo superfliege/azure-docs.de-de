@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: eee58708d6aec717d0f79f5c79a0c879b52d56a5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 9682611467311f06d60f6f393ebd7788f95f7f12
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176368"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56177868"
 ---
 # <a name="what-is-the-myapps-portal"></a>Was ist das MyApps-Portal?
 
@@ -49,7 +50,7 @@ Sie können jeden aktiven oder überprüften Domänennamen verwenden, der in Ihr
 
 Geben Sie diese URL an alle Benutzer weiter, die sich bei den in Azure AD integrierten Anwendungen anmelden.
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Zum Erreichen des Portals „Meine Apps“ müssen Sie mit einem Geschäfts-, Schul- oder Unikonto in Azure AD authentifiziert sein. Sie können direkt bei Azure AD authentifiziert werden. Wenn Ihre Organisation mithilfe der Active Directory-Verbunddienste (AD FS) oder anderen Technologien einen Verbund konfiguriert hat, können Sie alternativ dazu auch über Windows Server Active Directory authentifiziert werden.
 

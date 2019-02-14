@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Erfahren Sie mehr über die Beschränkung von Anforderungen und zur Verwendung der Bing-Websuche-API.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.assetid: ''
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: aahi
-ms.openlocfilehash: ec22f66c84123893823242e87d9e1ee8e912b839
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ebd754726fcde32ef2eeb8da9edb2d5ff3437ec7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185412"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55865283"
 ---
 # <a name="throttling-requests-to-the-bing-web-search-api"></a>Beschränken der Anforderungen an die Bing-Websuche-API
 

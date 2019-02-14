@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 77157cdf245546816aee748f3d388bde620c4b5f
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: a76f61902c6affdab9f70526d2de40852747f34e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165438"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888479"
 ---
-<!--author=alkohli last changed: 06/22/17-->
-
 #### <a name="to-get-the-storsimple-service-registration-key"></a>So rufen Sie den StorSimple-Dienstregistrierungsschlüssel ab
 
 1. Klicken Sie auf der Seite **StorSimple-Geräte-Manager** auf den Dienst, den Sie erstellt haben. Dies öffnet auf der rechten Seite ein neues Blatt.

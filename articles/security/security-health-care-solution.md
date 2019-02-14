@@ -4,7 +4,7 @@ description: " In diesem Artikel erfahren Sie, wie Sie mithilfe der konfigurierb
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 7e5b082d-dc9c-4d4f-b3f1-75edcdafbd8f
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e91a55f3fc5923545b6855a31514afb4a62bc361
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 060c176b97966816d421ddbe0d8017ad8558710a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540974"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113843"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>Praktische Anleitung zur Entwicklung sicherer Lösungen für das Gesundheitswesen in Azure
 Startups im Gesundheitswesen, Systemintegratoren (SIs), unabhängige Softwarehersteller (Independent Software Vendors, ISVs) und im Gesundheitswesen tätige Organisationen, die die Einführung von Azure in Erwägung ziehen, benötigen Unterstützung beim Integrieren geeigneter Sicherheitsmaßnahmen für ihre Complianceanforderungen.

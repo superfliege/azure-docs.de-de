@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Sie können die Einstellungen von Benutzerkonten sowie den Erstellungsschlüssel, der für alle Ihre Apps verwendet wird, auf der LUIS-Website verwalten.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: 51b0d3f753ab89e5809e610f5754355d1c5090b0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9fc1882a56c0e1bccdfbb658dac83e4c231ef261
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228626"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55879087"
 ---
 # <a name="manage-account-and-authoring-key"></a>Verwalten von Konto und Authoringschlüssel
 Die zwei entscheidenden Informationen für ein LUIS-Konto sind das Benutzerkonto und der Authoringschlüssel. Ihre Anmeldeinformationen werden unter [account.microsoft.com](https://account.microsoft.com) verwaltet. Ihr Authoringschlüssel wird auf der Seite **Einstellungen** der [LUIS](luis-reference-regions.md)-Website verwaltet. 

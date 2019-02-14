@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: 2f07107ad63ddd04e67528bf4f409dabf4a4d0c0
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 6e02f5a5b42da9c99a08782903cdc05ee32ec9d4
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42141155"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976917"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>VM-Erweiterung für den Network Watcher-Agent für Windows
 
@@ -79,10 +79,10 @@ Sie können Azure-VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen 
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Mit dem Befehl `Set-AzureRmVMExtension` können Sie die VM-Erweiterung für den Network Watcher-Agent auf einem vorhandenen virtuellen Computer bereitstellen:
+Mit dem Befehl `Set-AzVMExtension` können Sie die VM-Erweiterung für den Network Watcher-Agent auf einem vorhandenen virtuellen Computer bereitstellen:
 
 ```powershell
-Set-AzureRmVMExtension `
+Set-AzVMExtension `
   -ResourceGroupName "myResourceGroup1" `
   -Location "WestUS" `
   -VMName "myVM1" `
@@ -99,7 +99,7 @@ Set-AzureRmVMExtension `
 Sie können Daten zum Status von Erweiterungsbereitstellungen über das Azure-Portal und mithilfe von PowerShell abrufen. Führen Sie über das Azure PowerShell-Modul den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für eine bestimmte VM anzuzeigen:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
+Get-AzVMExtension -ResourceGroupName myResourceGroup1 -VMName myVM1 -Name networkWatcherAgent
 ```
 
 Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis protokolliert:

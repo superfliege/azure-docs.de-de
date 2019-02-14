@@ -4,7 +4,7 @@ description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schn
 services: key-vault
 documentationcenter: ''
 author: BryanLa
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 0dcfd1bd75fa54a1bbea93497a0cc872ad6d5184
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078370"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106967"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -367,14 +367,14 @@ In der folgenden Tabelle wird eine X509-Schlüsselverwendungsrichtlinie effektiv
 
 |**X509-Flags für Schlüsselverwendung**|**Key Vault-Schlüsseloptionen**|**Standardverhalten**|
 |----------|--------|--------|
-|DataEncipherment|encrypt, decrypt| N/V |
-|DecipherOnly|Entschlüsseln| N/V  |
+|DataEncipherment|encrypt, decrypt| – |
+|DecipherOnly|Entschlüsseln| –  |
 |DigitalSignature|sign, verify| Key Vault-Standard ohne Verwendungsspezifikation zum Zeitpunkt der Zertifikatserstellung | 
-|EncipherOnly|Verschlüsseln| N/V |
-|KeyCertSign|sign, verify|N/V|
+|EncipherOnly|Verschlüsseln| – |
+|KeyCertSign|sign, verify|–|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault-Standard ohne Verwendungsspezifikation zum Zeitpunkt der Zertifikatserstellung | 
-|NonRepudiation|sign, verify| N/V |
-|crlsign|sign, verify| N/V |
+|NonRepudiation|sign, verify| – |
+|crlsign|sign, verify| – |
 
 ### <a name="certificate-issuer"></a>Zertifikataussteller
 

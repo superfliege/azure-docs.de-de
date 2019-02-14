@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: In diesem Artikel wird beschrieben, wie Sie mithilfe der analyze-Methode in der API für linguistische Analyse bestimmte Eingaben in natürlicher Sprache analysieren.
 services: cognitive-services
 author: RichardSunMS
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
-ms.openlocfilehash: a14a685ba80dbd5e7e3d44e9032e5baaad5ef3fe
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b02b048719dd7707db7e97df3641a314b512177
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208634"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861679"
 ---
 # <a name="analyze-method"></a>analyze-Methode
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 NAME | Type | Erforderlich | BESCHREIBUNG
 -----|-------|----------|------------
-**language**    | Zeichenfolge | JA | Die zwei Buchstaben des ISO-Sprachcodes, der für die Analyse verwendet werden soll. Beispiel: „en“ für Englisch.
-**analyzerIds** | Liste von Zeichenfolgen | JA | Liste von GUIDs der Analysetools, die angewendet werden sollen. Weitere Informationen finden Sie in der Dokumentation zu Analysetools.
-**text**        | Zeichenfolge | JA | Die zu analysierende Rohdateneingabe. Hierbei kann es sich um eine kurze Zeichenfolge handeln, z.B. ein Wort oder einen Ausdruck, einen vollständigen Satz oder einen ganzen Absatz bzw. eine ganze Abhandlung.
+**language**    | Zeichenfolge | Ja | Die zwei Buchstaben des ISO-Sprachcodes, der für die Analyse verwendet werden soll. Beispiel: „en“ für Englisch.
+**analyzerIds** | Liste von Zeichenfolgen | Ja | Liste von GUIDs der Analysetools, die angewendet werden sollen. Weitere Informationen finden Sie in der Dokumentation zu Analysetools.
+**text**        | Zeichenfolge | Ja | Die zu analysierende Rohdateneingabe. Hierbei kann es sich um eine kurze Zeichenfolge handeln, z.B. ein Wort oder einen Ausdruck, einen vollständigen Satz oder einen ganzen Absatz bzw. eine ganze Abhandlung.
 
 ## <a name="response-json"></a>Antwort (JSON)
 

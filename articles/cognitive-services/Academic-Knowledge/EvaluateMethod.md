@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Geben Sie mithilfe der evaluate-Methode basierend auf einem Abfrageausdruck einen Satz von akademischen Entitäten zurück.
 services: cognitive-services
 author: alch-msft
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: c3449d3b61c9b8950c0530590e7f1950c06afbc3
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187296"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871318"
 ---
 # <a name="evaluate-method"></a>evaluate-Methode
 
@@ -30,7 +30,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?
 ## <a name="request-parameters"></a>Anforderungsparameter  
 NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 -----------|-----------|---------|--------
-**expr**       | Textzeichenfolge | JA | Ein Abfrageausdruck, der angibt, welche Entitäten zurückgegeben werden sollen.
+**expr**       | Textzeichenfolge | Ja | Ein Abfrageausdruck, der angibt, welche Entitäten zurückgegeben werden sollen.
 **model**      | Textzeichenfolge | Nein   | Der Name des Modells, das Sie abfragen möchten.  Derzeit wird als Standardwert *latest* verwendet.        
 **attributes** | Textzeichenfolge | Nein <br>Standard: id | Eine durch Kommas getrennte Liste, die die Attributwerte in einer Antwort angibt. Bei den Attributnamen wird zwischen Groß- und Kleinschreibung unterschieden.
 **count**        | Number | Nein <br>Standardwert: 10 | Anzahl der zurückzugebenden Ergebnisse.

@@ -12,18 +12,18 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4257baf437ec6c77ccf9fe4a7f0e6195ddd933be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5be6acc28932cb3c7f0481b18cbcffae27c3ce13
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458124"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002373"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Überwachen und Verwalten der Leistung mehrinstanzenfähiger Azure SQL-Datenbanken mit Shards in einer mehrinstanzenfähigen SaaS-App
 
 In diesem Tutorial werden verschiedene wichtige Leistungsverwaltungsszenarien in SaaS-Anwendungen überprüft. Um über alle mehrinstanzenfähigen Datenbanken mit Shards hinweg Aktivitäten mit einem Lastengenerator zu simulieren, werden die integrierten Überwachungs- und Benachrichtigungsfeatures von SQL-Datenbank veranschaulicht.
 
-Die App Wingtip Tickets SaaS Multi-tenant Database verwendet ein mit Shards konfiguriertes mehrinstanzenfähiges Datenmodell, bei dem die Daten zum Veranstaltungsort (Mandant) anhand der Mandanten-ID auf potenziell mehrere Datenbanken verteilt werden. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um dieses typische Nutzungsmuster für Datenbanken anzuwenden, können Datenbanken zentral hoch- oder herunterskaliert werden, um die Kosten einer Lösung zu optimieren. Bei einem solchen Muster ist es wichtig, die Nutzung von Datenbankressourcen zu überwachen, um sicherzustellen, dass die Lasten sinnvoll auf potenziell mehrere Datenbanken verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen und ihre [DTU](sql-database-service-tiers.md#dtu-based-purchasing-model)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
+Die App Wingtip Tickets SaaS Multi-tenant Database verwendet ein mit Shards konfiguriertes mehrinstanzenfähiges Datenmodell, bei dem die Daten zum Veranstaltungsort (Mandant) anhand der Mandanten-ID auf potenziell mehrere Datenbanken verteilt werden. Wie viele SaaS-Anwendungen ist das erwartete Workloadmuster des Mandanten unvorhersehbar und sporadisch. Mit anderen Worten, Ticketverkäufe können jederzeit erfolgen. Um dieses typische Nutzungsmuster für Datenbanken anzuwenden, können Datenbanken zentral hoch- oder herunterskaliert werden, um die Kosten einer Lösung zu optimieren. Bei einem solchen Muster ist es wichtig, die Nutzung von Datenbankressourcen zu überwachen, um sicherzustellen, dass die Lasten sinnvoll auf potenziell mehrere Datenbanken verteilt werden. Sie müssen zudem sicherstellen, dass die einzelnen Datenbanken über ausreichende Ressourcen verfügen und ihre [DTU](sql-database-purchase-models.md#dtu-based-purchasing-model)-Grenzwerte nicht erreichen. In diesem Tutorial werden Methoden zum Überwachen und Verwalten von Datenbanken behandelt, und es wird erklärt, wie Sie Korrekturmaßnahmen als Reaktion auf Workloadschwankungen ergreifen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

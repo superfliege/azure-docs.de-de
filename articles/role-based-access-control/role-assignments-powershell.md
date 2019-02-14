@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 4c9bdbcfe07eeee39733b39c074001f5caaa98ba
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4e4a920c47dc7f75dc4b6714f101d6cbda715a3a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700671"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106170"
 ---
 # <a name="manage-access-using-rbac-and-azure-powershell"></a>Verwalten des Zugriffs mit der RBAC und Azure PowerShell
 
@@ -221,7 +221,7 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung.
 
 Um eine Rolle zuzuweisen, müssen Sie sowohl das Objekt (Benutzer, Gruppe oder Anwendung) als auch den Bereich identifizieren.
 
-Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden, oder Sie verwenden [Get-AzSubscription](/powershell/module/az.profile/get-azsubscription).
+Falls Sie die Abonnement-ID nicht kennen, können Sie diese im Blatt **Abonnements** im Azure-Portal finden, oder Sie verwenden [Get-AzSubscription](/powershell/module/Az.Accounts/Get-AzSubscription).
 
 So rufen Sie die Objekt-ID für eine Azure AD-Gruppe mit [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup) ab:
 

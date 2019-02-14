@@ -13,16 +13,16 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: ''
-ms.date: 09/10/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.lastreviewed: 09/10/2018
-ms.openlocfilehash: 2513f397457c4866229605487149aa1fe03a2c68
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247730"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984272"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Bereitstellen des ASDK über die Befehlszeile
 Das ASDK ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Zur Einrichtung der Umgebung müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen. (Dies nimmt mehrere Stunden in Anspruch.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
@@ -134,7 +134,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 Wenn DHCP für Ihre Umgebung nicht aktiviert ist, müssen Sie die folgenden zusätzlichen Parameter in eine der obigen Optionen einfügen, wie im Verwendungsbeispiel zu sehen: 
 
 ```powershell
-.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -NatIPv4Subnet 10.10.10.0/24 -NatIPv4Address 10.10.10.3 -NatIPv4DefaultGateway 10.10.10.1 -TimeServer 10.222.112.26
+.\InstallAzureStackPOC.ps1 -AdminPassword $adminpass.Password -InfraAzureDirectoryTenantAdminCredential $aadcred -TimeServer 10.222.112.26
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK „InstallAzureStackPOC.ps1“ – Optionale Parameter
@@ -146,9 +146,6 @@ Wenn DHCP für Ihre Umgebung nicht aktiviert ist, müssen Sie die folgenden zus�
 |InfraAzureDirectoryTenantAdminCredential|Optional|Legt den Benutzernamen und das Kennwort für Azure Active Directory fest. Bei diesen Azure-Anmeldeinformationen muss es sich um eine Organisations-ID handeln.|
 |InfraAzureEnvironment|Optional|Wählen Sie die Azure-Umgebung aus, für die Sie diese Azure Stack-Bereitstellung registrieren möchten. Die verfügbaren Optionen sind „Public Azure“, „Azure – China“ und „Azure – US Government“.|
 |DNSForwarder|Optional|Ein DNS-Server wird als Teil der Azure Stack-Bereitstellung erstellt. Damit Computer innerhalb der Lösung Namen außerhalb des Stamps auflösen können, stellen Sie Ihren vorhandenen Infrastruktur-DNS-Server bereit. Der DNS-Server innerhalb des Stamps leitet Auflösungsanforderungen, die unbekannte Namen betreffen, an diesen Server weiter.|
-|NatIPv4Address|Für DHCP-NAT-Unterstützung erforderlich|Legt eine statische IP-Adresse für MAS-BGPNAT01 fest. Verwenden Sie diesen Parameter nur, wenn per DHCP keine gültige IP-Adresse für den Internetzugang zugewiesen werden kann.|
-|NatIPv4Subnet|Für DHCP-NAT-Unterstützung erforderlich|IP-Subnetzpräfix, das für die Unterstützung von DHCP über NAT verwendet wird. Verwenden Sie diesen Parameter nur, wenn per DHCP keine gültige IP-Adresse für den Internetzugang zugewiesen werden kann.|
-|PublicVlanId|Optional|Legt die VLAN-ID fest. Verwenden Sie diesen Parameter nur, wenn für Host und MAS-BGPNAT01 eine VLAN-ID für den Zugriff auf das physische Netzwerk (und das Internet) konfiguriert werden muss. Beispiel: .\InstallAzureStackPOC.ps1 -Verbose -PublicVLan 305|
 |Rerun|Optional|Verwenden Sie dieses Flag, um die Bereitstellung erneut durchzuführen. Alle vorherigen Eingaben werden verwendet. Das erneute Eingeben von zuvor angegebenen Daten wird nicht unterstützt, da mehrere eindeutige Werte generiert und für die Bereitstellung verwendet werden.|
 
 

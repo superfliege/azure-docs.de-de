@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Ihr Gerät lauscht immer auf ein Aktivierungswort (oder einen Aktivierungsausdruck). Wenn der Benutzer das Aktivierungswort nennt, sendet das Gerät sämtliche nachfolgende Audioaufnahmen an die Cloud, bis der Benutzer aufhört zu sprechen. Durch das Anpassen Ihres Aktivierungsworts können Sie Ihr Gerät auf effektive Weise differenzieren und Ihr Branding stärken.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 8a736d6dcdac5fe6d4eec4f2ef5e4387ebdcdc80
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 22d270d9bc337b9d7ad776baf5dd35f877c05eae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219089"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856426"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Erstellen eines benutzerdefinierten Aktivierungsworts mit dem Spracherkennungsdienst
 

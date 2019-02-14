@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: jeedes
-ms.openlocfilehash: f2ed840065b4efd4b0e519333307388dca61827d
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0742a08e0169d47307f28ff08491b0f7c7c4a914
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54807013"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201515"
 ---
 # <a name="configure-an-openidoauth-application-from-the-azure-ad-app-gallery"></a>Konfigurieren einer OpenID/OAuth-Anwendung aus dem Azure AD-App-Katalog
 
@@ -105,7 +106,7 @@ Die folgenden Schritte beschreiben den Einwilligungsprozess für Anwendungsentwi
 
 3. Wenn der Benutzer noch nicht authentifiziert ist, wird er vom Azure AD-/Authorisierungsendpunkt zum Anmelden aufgefordert.
 
-    ![Authentifizierung](./media/openidoauth-tutorial/authentication.png)
+    ![Authentication](./media/openidoauth-tutorial/authentication.png)
 
 4. Nachdem der Benutzer sich angemeldet hat, ermittelt Azure AD, ob ihm eine Seite zum Einwilligen angezeigt wird. Das Ergebnis dieser Ermittlung ist davon abhängig, ob der Benutzer (oder der Administrator seiner Organisation) die Anwendungszustimmung bereits erteilt hat.
 

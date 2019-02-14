@@ -1,25 +1,20 @@
 ---
 title: Übersicht über Service Health | Microsoft-Dokumentation
 description: Personalisierte Informationen dazu, wie Ihre Azure-Apps von aktuellen und zukünftigen Problemen und Wartungen der Azure-Dienste betroffen sind.
-services: Resource health
-documentationcenter: ''
-author: rboucher
-manager: ''
-editor: ''
-ms.assetid: ''
+services: service-health
+author: stephbaron
+ms.author: stbaron
+documentationcenter: service-health
 ms.service: service-health
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 03/27/2018
-ms.author: robb
-ms.openlocfilehash: aa7a925255b0c30b84c3b32bb53ba3f31c11fa6b
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: b771e36344ff26c9a817a0314e0f223b6e809a17
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53162289"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55871696"
 ---
 # <a name="service-health"></a>Dienstintegrität
 Service Health bietet Ihnen ein anpassbares Dashboard, das die Integrität Ihrer Azure-Dienste in den Regionen nachverfolgt, wo Sie sie verwenden. In diesem Dashboard können Sie aktive Ereignisse wie laufende Dienstprobleme, bevorstehende geplante Wartung oder relevante Integritätsempfehlungen nachverfolgen. Wenn Ereignisse inaktiv werden, werden sie bis zu 90 Tage lang in Ihrem Integritätsverlauf festgehalten. Schließlich können Sie mit dem Service Health-Dashboard Service Health-Warnungen erstellen und verwalten, die Sie proaktiv benachrichtigen, wenn Sie von Dienstproblemen betroffen sind.

@@ -3,9 +3,8 @@ title: Verwaltung der Benutzerbereitstellung für Unternehmens-Apps in Azure Act
 description: Erfahren Sie, wie Sie mithilfe von Azure Active Directory die Benutzerkontobereitstellung für Unternehmens-Apps verwalten.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
-editor: ''
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -13,14 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/13/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: ca0be0d4e2b9f76a521d8fc04195311b3603e411
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4239c07c73825f75dd39053e312ae731f6f0d7d1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180550"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162712"
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal
 In diesem Artikel wird beschrieben, wie das [Azure-Portal](https://portal.azure.com) zum Verwalten der automatischen Benutzerkontobereitstellung und zum Aufheben der Bereitstellung für Anwendungen, die dies unterstützen, verwendet wird. Weitere Informationen zur automatisierten Benutzerbereitstellung sowie zu deren Funktionsweise finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](user-provisioning.md).

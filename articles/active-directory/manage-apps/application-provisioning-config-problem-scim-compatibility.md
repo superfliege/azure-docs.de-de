@@ -4,7 +4,7 @@ description: Erfahren Sie, wie Sie häufige Kompatibilitätsprobleme mit dem Pro
 services: active-directory
 documentationcenter: ''
 author: asmalser
-manager: daveba
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
-ms.openlocfilehash: 48328a3ee379fc76fa6e70ea082395b37751d235
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181111"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190516"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -36,10 +37,10 @@ In diesem Artikel werden aktuelle und ehemalige Probleme mit dem Bereitstellungs
 
 | **SCIM 2.0-Konformitätsproblem** |  **Korrigiert?** | **Korrekturdatum**  |  
 |---|---|---|
-| Azure AD erfordert „/scim“ im Stamm der SCIM-Endpunkt-URL der Anwendung  | JA  |  18. Dezember 2018 | 
-| Erweiterungsattribute verwenden vor Attributnamen die Punktnotation „.“ anstelle der Doppelpunktnotation „:“. |  JA  | 18. Dezember 2018  | 
-|  Patchanforderungen für mehrwertige Attribute enthalten eine ungültige Syntax für Pfadfilter | JA  |  18. Dezember 2018  | 
-|  Anforderungen zur Erstellung von Gruppen enthalten einen ungültigen Schema-URI | JA  |  18. Dezember 2018  |  
+| Azure AD erfordert „/scim“ im Stamm der SCIM-Endpunkt-URL der Anwendung  | Ja  |  18. Dezember 2018 | 
+| Erweiterungsattribute verwenden vor Attributnamen die Punktnotation „.“ anstelle der Doppelpunktnotation „:“. |  Ja  | 18. Dezember 2018  | 
+|  Patchanforderungen für mehrwertige Attribute enthalten eine ungültige Syntax für Pfadfilter | Ja  |  18. Dezember 2018  | 
+|  Anforderungen zur Erstellung von Gruppen enthalten einen ungültigen Schema-URI | Ja  |  18. Dezember 2018  |  
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>Wurden die beschriebenen Dienstkorrekturen automatisch auf meine vorhandene SCIM-App angewandt?
 
@@ -59,7 +60,7 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Navigieren Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu Ihrer SCIM-Anwendung, und wählen Sie sie aus.
 3.  Kopieren Sie im Abschnitt **Eigenschaften** Ihrer SCIM-App die **Objekt-ID**.
-4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/en-us/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
+4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
 5. Führen Sie im Graph-Tester den unten stehenden Befehl aus, um die ID Ihres Bereitstellungsauftrags zu suchen. Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
  
  `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -99,7 +100,7 @@ Ja. Wenn Sie eine Anwendung mit dem alten Verhalten vor den Fehlerkorrekturen pr
 1.  Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Erstellen Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen > Anwendung erstellen** eine neue Anwendung mit der Option **Non-gallery** (Nicht aus dem Katalog).
 3.  Kopieren Sie im Abschnitt **Eigenschaften** der neuen benutzerdefinierten App die **Objekt-ID**.
-4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/en-us/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
+4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
 5. Führen Sie im Graph-Tester den folgenden Befehl aus, um die Konfiguration der Bereitstellung für Ihre App zu initialisieren.
 Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
 

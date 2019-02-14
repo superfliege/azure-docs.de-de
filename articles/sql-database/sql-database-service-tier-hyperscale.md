@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 524e10b93905372377fe388a38c5dc55fdcee877
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 49c41b436e0d935d1f9fce5ba2de10e0f2d0c99d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509987"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991225"
 ---
 # <a name="hyperscale-service-tier-preview-for-up-to-100-tb"></a>Diensttarif „Hyperscale“ (Vorschau) für bis zu 100 TB
 
@@ -32,7 +32,7 @@ Der Diensttarif „Hyperscale“ in Azure SQL-Datenbank ist der neueste Dienstta
 > [!IMPORTANT]
 > Der Diensttarif Hyperscale befindet sich derzeit in der öffentlichen Vorschau und ist nur in einigen Azure-Regionen verfügbar. Eine umfassende Liste der Regionen finden Sie unter [Diensttarif „Hyperscale“ – Verfügbare Regionen](#available-regions). In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 > [!NOTE]
-> Ausführliche Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell finden Sie unter Diensttarife [Universell](sql-database-service-tier-general-purpose.md) und [Unternehmenskritisch](sql-database-service-tier-business-critical.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
+> Ausführliche Informationen zu den Diensttarifen „Universell“ und „Unternehmenskritisch“ im V-Kern-basierten Kaufmodell finden Sie unter Diensttarife [Universell](sql-database-service-tier-general-purpose.md) und [Unternehmenskritisch](sql-database-service-tier-business-critical.md). Einen Vergleich zwischen V-Kern-basiertem Kaufmodell und DTU-basiertem Kaufmodell finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 > [!IMPORTANT]
 > Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Für Testzwecke wird empfohlen, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif Hyperscale zu aktualisieren.
 
@@ -162,7 +162,7 @@ Der Diensttarif „Hyperscale“ befindet sich derzeit in der öffentlichen Vors
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Häufig gestellte Fragen zu diesem Thema finden Sie unter [Häufig gestellte Fragen zu Hyperscale](sql-database-service-tier-hyperscale-faq.md).
-- Informationen zu Diensttarifen finden Sie unter [Diensttarife](sql-database-service-tiers.md).
+- Informationen zu Diensttarifen finden Sie unter [Diensttarife](sql-database-purchase-models.md).
 - Informationen zu Grenzwerten auf Server- und Abonnementebene finden Sie unter [Übersicht über Ressourcenlimits auf einem SQL-Datenbankserver](sql-database-resource-limits-database-server.md).
 - Informationen zu Einschränkungen des Kaufmodells für eine Einzeldatenbank finden Sie unter [Limits des auf virtuellen Kernen basierenden Kaufmodells für eine Einzeldatenbank in Azure SQL-Datenbank](sql-database-vcore-resource-limits-single-databases.md).
 - Eine Liste der Features und einen Funktionsvergleich finden Sie unter [Allgemeine SQL-Features](sql-database-features.md).

@@ -12,12 +12,13 @@ ms.service: active-directory
 ms.workload: identity
 services: active-directory
 ms.custom: it-pro;seo-update-azuread-jan
-ms.openlocfilehash: d578794a258faa9ad0222207f73e108e11f3281f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 65983a5c9273b0eb88dbb7f2e3a8779b326352b3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770451"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56205391"
 ---
 # <a name="users-groups-licensing-and-roles-for-large-organizations"></a>Benutzer, Gruppen, Lizenzierung und Rollen für große Organisationen
 
@@ -58,7 +59,7 @@ Neue Azure AD-Administratorrollen werden derzeit hinzugefügt. Im Azure-Portal o
 
 ## <a name="assign-app-access"></a>Zuweisen des App-Zugriffs
 
-Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrem Azure AD-Mandanten bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
+Sie können Azure AD nutzen, um Gruppenzugriff auf die [Unternehmens-Apps zuzuweisen, die in Ihrem Azure AD-Mandanten bereitgestellt werden](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context). Wenn Sie dynamische Gruppen mit der Gruppenzuweisung zu Apps kombinieren, können Sie Ihre Zuweisungen des Benutzerzugriffs auf Apps automatisieren, wenn Ihre Organisation wächst. Sie benötigen eine Lizenz vom Typ Azure Active Directory Premium P1 oder Premium P2, um den Zugriff auf Unternehmens-Apps zuweisen zu können.
 
 Mit Azure AD können Sie auch die Daten präzise steuern, die zwischen der App und den Gruppen ausgetauscht werden, denen Sie die Zugriffsberechtigung zuweisen. Öffnen Sie in [Unternehmensanwendungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/AllApps) eine App, und wählen Sie **Bereitstellung**, um Folgendes durchzuführen:
 
@@ -72,4 +73,4 @@ Mit Azure AD können Sie auch die Daten präzise steuern, die zwischen der App u
 
 Wenn Sie noch nicht lange als Azure AD-Administrator arbeiten, hilft Ihnen die [Dokumentation mit grundlegenden Informationen zu Azure Active Directory](https://docs.microsoft.com/azure/active-directory/fundamentals/index) weiter.
 
-Sie können auch mit dem [Erstellen von Gruppen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen von Lizenzen](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen des App-Zugriffs](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups#assign-group?context=azure/active-directory/users-groups-roles/context/ugr-context) oder [Zuweisen von Administratorrollen](directory-assign-admin-roles.md) beginnen.
+Sie können auch mit dem [Erstellen von Gruppen](/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen von Lizenzen](/azure/active-directory/fundamentals/license-users-groups?context=azure/active-directory/users-groups-roles/context/ugr-context), [Zuweisen des App-Zugriffs](/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups?context=azure/active-directory/users-groups-roles/context/ugr-context) oder [Zuweisen von Administratorrollen](directory-assign-admin-roles.md) beginnen.

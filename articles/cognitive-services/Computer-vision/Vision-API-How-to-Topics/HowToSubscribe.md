@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Abonnementschlüssel für Aufrufe der Maschinelles Sehen-API in Azure Cognitive Services abrufen können.
 services: cognitive-services
 author: KellyDF
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: c4c7ee1ab756f458c6e9fed4ff5ee54dfaba919e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 08838ce0af16cc4ae768bd5d2ecf72c57f8fae97
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222234"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858075"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Gewusst wie: Erhalten von Abonnementschlüsseln
 

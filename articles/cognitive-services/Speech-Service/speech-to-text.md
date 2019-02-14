@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Die Spracherkennungs-API überträgt Audiodatenströme in Text, den Ihre App anzeigen oder als Eingabe verarbeiten kann. Der Dienst ist über das SDK und einen RESTful-Endpunkt verfügbar.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 05/07/2018
+ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 4884756c50e181e5536ad93ae795543bf1edf8ba
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5012245a79295f1e05079f6c0a368ac832b8974a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55220220"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978577"
 ---
 # <a name="about-the-speech-to-text-api"></a>Informationen zur Spracherkennungs-API
 
@@ -44,17 +44,17 @@ Einige der Funktionen der **Spracherkennungs**-API (insbesondere im Bereich der 
 
 | Anwendungsfall | REST | SDKs |
 |-----|-----|-----|----|
-| Übertragen einer kurzen Äußerung wie einem Befehl (weniger als 15 Sekunden); keine Zwischenergebnisse | JA | JA |
-| Übertragen einer längeren Äußerung (länger als 15 Sekunden) | Nein  | JA |
-| Übertragen von Audiodatenströmen mithilfe von optionalen Zwischenergebnissen | Nein  | JA |
-| Nachvollziehen von Sprecherabsichten mithilfe von LUIS | Nein\* | JA |
-| Erstellen von Genauigkeitstests | JA | Nein  |
-| Hochladen von Datasets für die Modellanpassung | JA | Nein  |
-| Erstellen und Verwalten von Sprachmodellen | JA | Nein  |
-| Erstellen und Verwalten von Modellimplementierungen | JA | Nein  |
-| Verwalten von Abonnements | JA | Nein  |
-| Erstellen und Verwalten von Modellimplementierungen | JA | Nein  |
-| Erstellen und Verwalten von Modellimplementierungen | JA | Nein  |
+| Übertragen einer kurzen Äußerung wie einem Befehl (weniger als 15 Sekunden); keine Zwischenergebnisse | Ja | Ja |
+| Übertragen einer längeren Äußerung (länger als 15 Sekunden) | Nein  | Ja |
+| Übertragen von Audiodatenströmen mithilfe von optionalen Zwischenergebnissen | Nein  | Ja |
+| Nachvollziehen von Sprecherabsichten mithilfe von LUIS | Nein\* | Ja |
+| Erstellen von Genauigkeitstests | Ja | Nein  |
+| Hochladen von Datasets für die Modellanpassung | Ja | Nein  |
+| Erstellen und Verwalten von Sprachmodellen | Ja | Nein  |
+| Erstellen und Verwalten von Modellimplementierungen | Ja | Nein  |
+| Verwalten von Abonnements | Ja | Nein  |
+| Erstellen und Verwalten von Modellimplementierungen | Ja | Nein  |
+| Erstellen und Verwalten von Modellimplementierungen | Ja | Nein  |
 
 > [!NOTE]
 > Der REST-API implementiert Drosselung, durch die API-Anforderungen auf 25 Anforderungen pro 5 Sekunden eingeschränkt werden. Nachrichtenheader informieren über die Grenzwerte.

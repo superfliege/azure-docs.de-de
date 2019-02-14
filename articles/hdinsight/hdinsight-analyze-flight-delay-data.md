@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 311e2ee65b2c24eb1c288a2161bf371732aea452
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e95440f72580b928cd41b6d03f30459cfb70a510
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817664"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965391"
 ---
 # <a name="analyze-flight-delay-data-by-using-apache-hive-in-hdinsight"></a>Analysieren von Flugverspätungsdaten mit Apache Hive in HDInsight
 [Apache Hive](https://hive.apache.org/) ermöglicht die Ausführung eines [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/r1.2.1/mapred_tutorial.html)-Auftrags über eine SQL-ähnliche Skriptsprache namens *[HiveQL][hadoop-hiveql]*, die zur Zusammenfassung, Abfrage und Analyse großer Datenmengen verwendet werden kann.
@@ -66,13 +66,13 @@ Weitere Informationen dazu, wie Sie die Daten in Ihr eigenes Speicherkonto einf�
 
 In der folgenden Tabelle sind die in diesem Lernprogramm verwendeten Dateien aufgelistet:
 
-<table border="1">
-<tr><th>Dateien</th><th>BESCHREIBUNG</th></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql</td><td>Die HiveQL-Skriptdatei, die vom Hive-Auftrag verwendet wird. Dieses Skript wurde in ein Azure Blob Storage-Konto mit öffentlichem Zugriff hochgeladen. <a href="#appendix-b">Anhang B</a> enthält Anweisungen zum Vorbereiten und Hochladen dieser Datei in Ihr eigenes Azure Blob Storage-Konto.</td></tr>
-<tr><td>wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data</td><td>Die Eingabedaten für den Hive-Auftrag. Die Daten wurden in ein Azure Blob Storage-Konto mit öffentlichem Zugriff hochgeladen. In <a href="#appendix-a">Anhang A</a> finden Sie Anweisungen zum Einfügen und Hochladen der Daten in Ihr eigenes Azure Blob Storage-Konto.</td></tr>
-<tr><td>\tutorials\flightdelays\output</td><td>Der Ausgabepfad für den Hive-Auftrag. Der Standardcontainer wird für die Speicherung der Ausgabedaten verwendet.</td></tr>
-<tr><td>\tutorials\flightdelays\jobstatus</td><td>Der Ordner mit dem Hive-Job-Status im Standardcontainer.</td></tr>
-</table>
+|Dateien|BESCHREIBUNG|  
+|----|----|   
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/flightdelays.hql|Die HiveQL-Skriptdatei, die vom Hive-Auftrag verwendet wird. Dieses Skript wurde in ein Azure Blob Storage-Konto mit öffentlichem Zugriff hochgeladen. <a href="#appendix-b">Anhang B</a> enthält Anweisungen zum Vorbereiten und Hochladen dieser Datei in Ihr eigenes Azure Blob Storage-Konto.|
+|wasb://flightdelay@hditutorialdata.blob.core.windows.net/2013Data|Die Eingabedaten für den Hive-Auftrag. Die Daten wurden in ein Azure Blob Storage-Konto mit öffentlichem Zugriff hochgeladen. In <a href="#appendix-a">Anhang A</a> finden Sie Anweisungen zum Einfügen und Hochladen der Daten in Ihr eigenes Azure Blob Storage-Konto.|
+|\tutorials\flightdelays\output|Der Ausgabepfad für den Hive-Auftrag. Der Standardcontainer wird für die Speicherung der Ausgabedaten verwendet.|
+|\tutorials\flightdelays\jobstatus|Der Ordner mit dem Hive-Job-Status im Standardcontainer.|
+
 
 ## <a name="create-cluster-and-run-hivesqoop-jobs"></a>Erstellen eines Clusters und Ausführen der Hive-/Sqoop-Aufträge
 Hadoop MapReduce verwendet Stapelbearbeitung. Die kosteneffizienteste Möglichkeit, einen Hive-Auftrag auszuführen, besteht darin, einen Cluster für den Auftrag zu erstellen und den Auftrag nach Abschluss zu löschen. Das folgende Skript erläutert den gesamten Vorgang.
@@ -250,12 +250,11 @@ Das Hochladen der Datendatei und der [HiveQL](https://cwiki.apache.org/confluenc
 1. Rufen Sie die Website von [Research and Innovative Technology Administration, Bureau of Transportation Statistics][rita-website] (RITA) auf.
 2. Wählen Sie auf der Website die folgenden Werte aus:
 
-    <table border="1">
-    <tr><th>NAME</th><th>Wert</th></tr>
-    <tr><td>Filter Year</td><td>2013 </td></tr>
-    <tr><td>Filter Period</td><td>January</td></tr>
-    <tr><td>Felder</td><td>*Year*, *FlightDate*, *UniqueCarrier*, *Carrier*, *FlightNum*, *OriginAirportID*, *Origin*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*, *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*, *LateAircraftDelay* (Entfernen Sie die Häkchen bei allen anderen Feldern.)</td></tr>
-    </table>
+    |NAME|Wert|
+    |---|---|
+    |Filter Year|2013|
+    |Filter Period|January|
+    |Felder|*Year*, *FlightDate*, *UniqueCarrier*, *Carrier*, *FlightNum*, *OriginAirportID*, *Origin*, *OriginCityName*, *OriginState*, *DestAirportID*, *Dest*, *DestCityName*, *DestState*, *DepDelayMinutes*, *ArrDelay*, *ArrDelayMinutes*, *CarrierDelay*, *WeatherDelay*, *NASDelay*, *SecurityDelay*, *LateAircraftDelay* (Entfernen Sie die Häkchen bei allen anderen Feldern.)|
 
 3. Klicken Sie auf **Download**.
 4. Entpacken Sie die Datei im Ordner **C:\Tutorials\FlightDelay\2013Data**. Jede Datei ist eine CSV-Datei und hat eine Größe von ungefähr 60 GB.
@@ -266,11 +265,10 @@ Das Hochladen der Datendatei und der [HiveQL](https://cwiki.apache.org/confluenc
 
 1. Bereiten Sie die Parameter vor:
 
-    <table border="1">
-    <tr><th>Variablenname</th><th>Hinweise</th></tr>
-    <tr><td>$storageAccountName</td><td>Das Azure-Speicherkonto, in das Sie die Daten hochladen möchten.</td></tr>
-    <tr><td>$blobContainerName</td><td>Der Blobcontainer, in den Sie die Daten hochladen möchten.</td></tr>
-    </table>
+    |Variablenname|Notizen|
+    |---|---|
+    |$storageAccountName|Das Azure-Speicherkonto, in das Sie die Daten hochladen möchten.|
+    |$blobContainerName|Der Blobcontainer, in den Sie die Daten hochladen möchten.|
     
 2. Öffnen Sie Azure PowerShell ISE.
 3. Fügen Sie das folgende Skript in den Skriptbereich ein:
@@ -375,11 +373,10 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Apache Hive-Datend
 
 1. Bereiten Sie die Parameter vor:
 
-    <table border="1">
-    <tr><th>Variablenname</th><th>Hinweise</th></tr>
-    <tr><td>$storageAccountName</td><td>Das Azure-Speicherkonto, in das Sie das HiveQL-Skript hochladen möchten.</td></tr>
-    <tr><td>$blobContainerName</td><td>Der Blobcontainer, in den Sie das HiveQL-Skript hochladen möchten.</td></tr>
-    </table>
+    |Variablenname|Notizen|
+    |---|---|
+    |$storageAccountName|Das Azure-Speicherkonto, in das Sie das HiveQL-Skript hochladen möchten.|
+    |$blobContainerName|Der Blobcontainer, in den Sie das HiveQL-Skript hochladen möchten.|
     
 2. Öffnen Sie Azure PowerShell ISE.  
 
@@ -564,14 +561,14 @@ Eine vollständige Liste der HiveQL-Befehle finden Sie unter [Apache Hive-Datend
 
 1. Bereiten Sie die Parameter vor:
 
-    <table border="1">
-    <tr><th>Variablenname</th><th>Hinweise</th></tr>
-    <tr><td>$sqlDatabaseServerName</td><td>Der Name für den Azure SQL-Datenbankserver. Geben Sie nichts ein, um einen neuen Server zu erstellen.</td></tr>
-    <tr><td>$sqlDatabaseUsername</td><td>Der Anmeldename für den Azure SQL-Datenbankserver. Wenn $sqlDatabaseServerName ein vorhandener Server ist, werden der Anmeldename und das Anmeldekennwort für die Authentifizierung beim Server verwendet. Andernfalls werden sie zum Erstellen eines neuen Servers verwendet.</td></tr>
-    <tr><td>$sqlDatabasePassword</td><td>Das Anmeldekennwort für den Azure SQL-Datenbankserver.</td></tr>
-    <tr><td>$sqlDatabaseLocation</td><td>Dieser Wert wird nur verwendet, wenn Sie einen neuen Azure-Datenbankserver erstellen.</td></tr>
-    <tr><td>$sqlDatabaseName</td><td>Die zum Erstellen der Tabelle "AvgDelays" für den Sqoop-Auftrag verwendete SQL-Datenbank. Wenn Sie keinen Wert eingeben, wird eine Datenbank mit dem Namen "HDISqoop" erstellt. Der Tabellenname für die Sqoop-Auftragsausgabe ist "AvgDelays". </td></tr>
-    </table>
+    |Variablenname|Notizen|
+    |---|---|
+    |$sqlDatabaseServerName|Der Name für den Azure SQL-Datenbankserver. Geben Sie nichts ein, um einen neuen Server zu erstellen.|
+    |$sqlDatabaseUsername|Der Anmeldename für den Azure SQL-Datenbankserver. Wenn $sqlDatabaseServerName ein vorhandener Server ist, werden der Anmeldename und das Anmeldekennwort für die Authentifizierung beim Server verwendet. Andernfalls werden sie zum Erstellen eines neuen Servers verwendet.|
+    |$sqlDatabasePassword|Das Anmeldekennwort für den Azure SQL-Datenbankserver.|
+    |$sqlDatabaseLocation|Dieser Wert wird nur verwendet, wenn Sie einen neuen Azure-Datenbankserver erstellen.|
+    |$sqlDatabaseName|Die zum Erstellen der Tabelle "AvgDelays" für den Sqoop-Auftrag verwendete SQL-Datenbank. Wenn Sie keinen Wert eingeben, wird eine Datenbank mit dem Namen "HDISqoop" erstellt. Der Tabellenname für die Sqoop-Auftragsausgabe ist "AvgDelays".|
+
     
 2. Öffnen Sie Azure PowerShell ISE.
 

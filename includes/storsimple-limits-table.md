@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8a349916d0c0efc0f7895368a614897e3c6a15dc
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: db05ce33a9fb602d6d48d1a1606f48a7fbde246e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50964576"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889731"
 ---
-<!--author=alkohli last changed: 12/15/15-->
-
 | Begrenzungsbezeichner | Begrenzung | Kommentare |
 | --- | --- | --- |
 | Maximale Anzahl von Anmeldeinformationen für das Speicherkonto |64 | |
@@ -20,8 +18,8 @@ ms.locfileid: "50964576"
 | Maximale Anzahl von Volumes |255 | |
 | Maximale Anzahl von Zeitplänen pro Bandbreitenvorlage |168 |Einen Zeitplan für jede Stunde, jeden Tag der Woche (24 * 7). |
 | Maximale Größe eines mehrstufigen Volumes auf physischen Geräten |64 TB für 8100 und 8600 |8100 und 8600 sind physische Geräte. |
-| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br> 64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
-| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |9 TB für 8100  <br></br> 24 TB für 8600 |8100 und 8600 sind physische Geräte. |
+| Maximale Größe eines mehrstufigen Volumes auf virtuellen Geräten in Azure |30 TB für 8010  <br></br>  64 TB für 8020 |8010 und 8020 sind virtuelle Geräte in Azure, die Standardspeicher und Storage Premium verwenden. |
+| Maximale Größe eines lokal fixierten Volumes auf physischen Geräten |9 TB für 8100  <br></br>  24 TB für 8600 |8100 und 8600 sind physische Geräte. |
 | Maximale Anzahl von iSCSI-Verbindungen |512 | |
 | Maximale Anzahl von iSCSI-Verbindungen von Initiatoren |512 | |
 | Maximale Anzahl von Zugriffssteuerungsdatensätzen pro Gerät |64 | |

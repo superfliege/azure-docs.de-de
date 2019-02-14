@@ -4,7 +4,7 @@ description: Dieses Dokument enthält hilfreiche Informationen zur Automatisieru
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: a8c45ddf-5c4c-4393-b6e9-46ed1f91bf5f
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: c0001f12dd71436bacb1735828ad56b628e02360
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: ec16e6daec099adbede625c5ec6fe6909059143b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619910"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116744"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Sicherheitsplaybook in Azure Security Center (Vorschauversion)
 In diesem Dokument erfahren Sie, wie Sie mithilfe von Sicherheitsplaybooks in Azure Security Center auf sicherheitsbezogene Probleme reagieren können.
@@ -93,7 +93,7 @@ In diesem Workflow wird die Ausführungsdauer der einzelnen Aufgaben angezeigt. 
 Sie können ein vorhandenes Playbook in Security Center ändern, um eine Aktion oder Bedingungen hinzuzufügen. Klicken Sie dazu einfach auf der Registerkarte „Playbooks“ auf den Namen des Playbooks, das Sie ändern möchten. Daraufhin öffnet sich der Logik-App-Designer.
 
 > [!NOTE]
-> Weitere Informationen zum Erstellen eigener Playbooks mithilfe von Azure Logic Apps finden Sie unter [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app#add-an-action-that-responds-to-your-trigger).
+> Weitere Informationen zum Erstellen eigener Playbooks mithilfe von Azure Logic Apps finden Sie unter [Erstellen Ihres ersten Logik-App-Workflows zur Automatisierung von Prozessen zwischen Cloud-Apps und Cloud-Diensten](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app).
 
 
 ## <a name="see-also"></a>Weitere Informationen

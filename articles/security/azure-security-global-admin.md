@@ -3,17 +3,17 @@ title: Aktivieren der MFA für alle Azure-Administratoren
 description: Anleitungen zum Aktivieren von globalen Administratoren
 ms.service: security
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: barclayn
-ms.openlocfilehash: a7a08c54fe0c59e1e100e1c46e7a640da0692077
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 2dcd7f42d86000dd3b642c10f6d3db0b0d0fcb03
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181013"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116336"
 ---
 # <a name="enforce-multi-factor-authentication-mfa-for-subscription-administrators"></a>Erzwingen der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) für Abonnementadministratoren
 
