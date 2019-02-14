@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Die Text-to-Speech-API bietet mehr als 75 Stimmen in mehr als 45 Sprachen und Gebietsschemas. Wenn Sie die standardmäßigen „Voicefonts“ verwenden möchten, müssen Sie beim Aufrufen des Speech-Diensts nur den Namen der Stimme mit einigen anderen Parametern angeben.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: b413bd65582dceadd9aab912694c3b560070c4f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0836ae4a9041db27cfed35dd0f1fc0df6e541aff
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251553"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859333"
 ---
 # <a name="about-the-text-to-speech-api"></a>Informationen zur Text-to-Speech-API
 
@@ -55,11 +55,11 @@ Viele der Funktionen der **Text-to-Speech**-API, insbesondere im Bereich der Anp
 
 | Anwendungsfall | REST | SDKs |
 |-----|-----|-----|----|
-| Hochladen von Datasets für die Stimmanpassung | JA | Nein  |
-| Erstellen und Verwalten von Voicefont-Modellen | JA | Nein  |
-| Erstellen und Verwalten von Voicefont-Bereitstellungen | JA | Nein  |
-| Erstellen und Verwalten von Voicefont-Tests| JA | Nein  |
-| Verwalten von Abonnements | JA | Nein  |
+| Hochladen von Datasets für die Stimmanpassung | Ja | Nein  |
+| Erstellen und Verwalten von Voicefont-Modellen | Ja | Nein  |
+| Erstellen und Verwalten von Voicefont-Bereitstellungen | Ja | Nein  |
+| Erstellen und Verwalten von Voicefont-Tests| Ja | Nein  |
+| Verwalten von Abonnements | Ja | Nein  |
 
 > [!NOTE]
 > Der API implementiert Drosselung, durch die API-Anforderungen auf 25 Anforderungen pro 5 Sekunden eingeschränkt werden. Nachrichtenheader informieren über die Grenzwerte.

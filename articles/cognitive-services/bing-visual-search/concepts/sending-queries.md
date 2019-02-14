@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen zu den REST-API-Parametern, die in der API für die visuelle Bing-Suche verwendet werden.
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 12/18/2018
 ms.author: aahi
-ms.openlocfilehash: 07f471debad87a2fa2f6583db624e9ee204d02bc
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 88bf12aaef35657f30af6207a350b5cdc6ffc272
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821166"
+ms.locfileid: "55858483"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 

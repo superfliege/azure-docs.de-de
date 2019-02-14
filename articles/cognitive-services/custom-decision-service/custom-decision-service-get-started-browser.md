@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: Informationen zum Optimieren einer Webseite, indem API-Aufrufe direkt aus einem Browser für den Custom Decision Service vorgenommen werden.
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
-ms.openlocfilehash: db993693acc7e64a789564b92f4d0eacfa0e69f7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b356e2f0fe9235d49dffa7417cd3894059f9caf
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55225260"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867561"
 ---
 # <a name="call-api-from-a-browser"></a>Aufrufen einer API in einem Browser
 

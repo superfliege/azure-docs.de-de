@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: rezas
-ms.openlocfilehash: cd382c0daff79b487f4ecae01ad852f6e57f3a25
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d549127b5cbdb3a94e435e753592f3227cb95f3a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734248"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232213"
 ---
 # <a name="use-ip-filters"></a>Verwenden von IP-Filtern
 
@@ -72,7 +72,7 @@ Wählen Sie zum Löschen einer IP-Filterregel im Raster mindestens eine Filterre
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-cli"></a>Abrufen und Aktualisieren von IP-Filtern über die Azure-Befehlszeilenschnittstelle
 
-Die IP-Filter für Ihren IoT Hub können über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/en-us/cli/azure/?view=azure-cli-latest) abgerufen und aktualisiert werden. 
+Die IP-Filter für Ihren IoT Hub können über die [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) abgerufen und aktualisiert werden. 
 
 Wenn Sie die aktuellen IP-Filter für Ihren IoT Hub abrufen möchten, führen Sie Folgendes aus:
 
@@ -121,7 +121,7 @@ Beachten Sie, dass `<ipFilterIndexToRemove>` der Reihenfolge von IP-Filtern in `
 
 ## <a name="retrieve-and-update-ip-filters-using-azure-powershell"></a>Abrufen und Aktualisieren von IP-Filtern über Azure PowerShell
 
-Die IP-Filter für Ihren IoT Hub können über [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview?view=azps-1.2.0) abgerufen und festgelegt werden. 
+Die IP-Filter für Ihren IoT Hub können über [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) abgerufen und festgelegt werden. 
 
 ```powershell
 # Get your IoT Hub resource using its name and its resource group name
@@ -145,7 +145,7 @@ $iothubResource | Set-AzureRmResource -Force
 
 ## <a name="update-ip-filter-rules-using-rest"></a>Aktualisieren von IP-Filterregeln mit REST
 
-Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.ipFilterRules` unter [createorupdate-Methode](https://docs.microsoft.com/en-us/rest/api/iothub/iothubresource/createorupdate).
+Möglicherweise müssen Sie den IP-Filter für Ihren IoT Hub auch über den REST-Endpunkt des Azure-Ressourcenanbieters abrufen und ändern. Lesen Sie dazu `properties.ipFilterRules` unter [createorupdate-Methode](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate).
 
 
 ## <a name="ip-filter-rule-evaluation"></a>Auswertung von IP-Filterregeln

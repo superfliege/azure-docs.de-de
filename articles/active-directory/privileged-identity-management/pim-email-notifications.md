@@ -15,12 +15,13 @@ ms.date: 01/05/2019
 ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
-ms.openlocfilehash: b6ef0f46bae454a4656694496d411a5a4cff0da5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5f4eab44a55574f84f29488e78cd60522d7a52eb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178391"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171195"
 ---
 # <a name="email-notifications-in-pim"></a>E-Mail-Benachrichtigungen in PIM
 
@@ -49,9 +50,9 @@ Wer diese E-Mails für Azure AD-Rollen erhält, hängt von der Rolle, dem Ereign
 
 | Benutzer | Für die Rollenaktivierung steht Genehmigung aus | Anforderung zur Rollenaktivierung ist abgeschlossen | PIM ist aktiviert |
 | --- | --- | --- | --- |
-| Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | JA</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | JA |
-| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA |
-| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | JA |
+| Administrator für privilegierte Rollen</br>(Aktiviert/Berechtigt) | Ja</br>(nur, wenn keine expliziten genehmigenden Personen angegeben sind) | Ja* | Ja |
+| Sicherheitsadministrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
+| Globaler Administrator</br>(Aktiviert/Berechtigt) | Nein  | Ja* | Ja |
 
 \* Wenn die [Einstellung **Benachrichtigungen**](pim-how-to-change-default-settings.md#notifications) auf **Aktivieren** festgelegt ist.
 

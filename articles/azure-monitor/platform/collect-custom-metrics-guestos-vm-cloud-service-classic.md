@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: e971414cfcd069a4aa8a212f64927407be83ad39
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470935"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893577"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
 
@@ -29,7 +29,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikat
 
 - Sie müssen [Dienstadministrator oder Co-Administrator](~/articles/billing/billing-add-change-azure-subscription-administrator.md) für Ihr Azure-Abonnement sein. 
 
-- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services#portal) registriert sein. 
+- Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
 
 - Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
 

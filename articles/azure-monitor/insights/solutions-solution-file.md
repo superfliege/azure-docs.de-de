@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6511eb7a4651f0b95b7821e1959ba7e4130c2d6e
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: c84aedbdb306bbd7432c3c0b611e6e58243624e2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105796"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999367"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Erstellen einer Verwaltungslösungsdatei in Azure (Vorschau)
 > [!NOTE]
@@ -53,7 +53,7 @@ Die grundlegende Struktur einer Verwaltungslösung entspricht einer [Resource Ma
 ## <a name="parameters"></a>Parameter
 [Parameter](../../azure-resource-manager/resource-group-authoring-templates.md#parameters) sind Werte, die Sie von den Benutzern benötigen, wenn diese die Verwaltungslösung installieren.  Es gibt Standardparameter, über die alle Lösungen verfügen werden, und Sie können nach Bedarf zusätzliche Parameter zu Ihrer bestimmten Lösung hinzufügen.  Wie Benutzer die Parameterwerte bei der Installation Ihrer Lösung bereitstellen, hängt vom bestimmten Parameter ab und wie die Lösung installiert wird.
 
-Wenn Benutzer [Ihre Verwaltungslösung installieren](solutions.md#install-a-management-solution) (über Azure Marketplace oder Azure-Schnellstartvorlagen), werden sie aufgefordert, einen [Log Analytics-Arbeitsbereich und ein Automation-Konto](solutions.md#log-analytics-workspace-and-automation-account) auszuwählen.  Diese werden verwendet, um die Werte jedes Standardparameters aufzufüllen.  Der Benutzer wird nicht dazu aufgefordert, direkt Werte für die Standardparameter bereitzustellen, jedoch wird er aufgefordert, Werte für jeden zusätzlichen Parameter bereitzustellen.
+Wenn Benutzer [Ihre Verwaltungslösung installieren](solutions.md#install-a-monitoring-solution) (über Azure Marketplace oder Azure-Schnellstartvorlagen), werden sie aufgefordert, einen [Log Analytics-Arbeitsbereich und ein Automation-Konto](solutions.md#log-analytics-workspace-and-automation-account) auszuwählen.  Diese werden verwendet, um die Werte jedes Standardparameters aufzufüllen.  Der Benutzer wird nicht dazu aufgefordert, direkt Werte für die Standardparameter bereitzustellen, jedoch wird er aufgefordert, Werte für jeden zusätzlichen Parameter bereitzustellen.
 
 
 Ein Beispielparameter ist unten dargestellt.  
@@ -83,7 +83,7 @@ In der folgenden Tabelle werden die Standardparameter für alle Verwaltungslösu
 >
 >
 
-| Parameter | Typ | BESCHREIBUNG |
+| Parameter | Type | BESCHREIBUNG |
 |:--- |:--- |:--- |
 | .<Name der Region |Zeichenfolge |Azure Automation-Kontoname |
 | pricingTier |Zeichenfolge |Der Tarif für den Log Analytics-Arbeitsbereich und das Azure Automation-Konto |

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: dd90834a2e112effbfd6876b84dfe8b3ca87fcf3
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 38d5d469c920cafa33e0cc5b37846df2dc6d6ab9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015643"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236409"
 ---
 # <a name="move-data-from-an-on-premises-cassandra-database-using-azure-data-factory"></a>Verschieben von Daten aus einer lokalen Cassandra-Datenbank mit Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ ms.locfileid: "54015643"
 
 Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer lokalen Cassandra-Datenbank zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
 
-Sie können Daten aus einem lokalen Cassandra-Datenspeicher in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem Cassandra-Datenspeicher in andere Datenspeicher, aber nicht das Verschieben von Daten aus anderen Datenspeichern in einen Cassandra-Datenspeicher. 
+Sie können Daten aus einem lokalen Cassandra-Datenspeicher in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einem Cassandra-Datenspeicher in andere Datenspeicher, aber nicht das Verschieben von Daten aus anderen Datenspeichern in einen Cassandra-Datenspeicher.
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 Der Cassandra-Connector unterstützt die folgenden Versionen von Cassandra: 2.x und 3.x. Für Aktivitäten auf einer selbst gehosteten Integration Runtime wird seit IR-Version 3.7 Cassandra 3.x unterstützt.
@@ -38,26 +38,26 @@ Der Cassandra-Connector unterstützt die folgenden Versionen von Cassandra: 2.x 
 ## <a name="prerequisites"></a>Voraussetzungen
 Damit der Azure Data Factory-Dienst imstande ist, eine Verbindung mit Ihrer lokalen Cassandra-Datenbank herzustellen, müssen Sie das Datenverwaltungsgateway auf dem Computer installieren, der die Datenbank hostet, oder auf einem separaten Computer, um zu vermeiden, dass der Computer mit der Datenbank um Ressourcen konkurriert. Das Datenverwaltungsgateway ist eine Clientkomponente, die lokale Datenquellen sicher und verwaltet mit Clouddiensten verbindet. Im Artikel [Datenverwaltungsgateway](data-factory-data-management-gateway.md) finden Sie Einzelheiten zum Datenverwaltungsgateway. Schritt-für-Schritt-Anweisungen zum Einrichten des Gateways für eine Datenpipeline zum Verschieben von Daten finden Sie unter [Verschieben von Daten zwischen lokalen Standorten und Cloud](data-factory-move-data-between-onprem-and-cloud.md).
 
-Sie müssen das Gateway verwenden, um Verbindungen mit einer Cassandra-Datenbank herzustellen, sogar wenn die Datenbank in der Cloud gehostet ist, beispielsweise auf einem virtuellen Azure IaaS-Computers. Das Gateway kann auf dem gleichen virtuellen Computer wie die Datenbank oder auf einem anderen virtuellen Computer installiert sein, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.  
+Sie müssen das Gateway verwenden, um Verbindungen mit einer Cassandra-Datenbank herzustellen, sogar wenn die Datenbank in der Cloud gehostet ist, beispielsweise auf einem virtuellen Azure IaaS-Computers. Das Gateway kann auf dem gleichen virtuellen Computer wie die Datenbank oder auf einem anderen virtuellen Computer installiert sein, solange das Gateway eine Verbindung mit der Datenbank herstellen kann.
 
-Beim Installieren des Gateways wird automatisch ein Microsoft Cassandra-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit der Cassandra-Datenbank verwendet wird. Aus diesem Grund müssen Sie beim Kopieren von Daten aus der Cassandra-Datenbank manuell keine Treiber auf dem Gatewaycomputer installieren. 
+Beim Installieren des Gateways wird automatisch ein Microsoft Cassandra-ODBC-Treiber installiert, der zum Herstellen einer Verbindung mit der Cassandra-Datenbank verwendet wird. Aus diesem Grund müssen Sie beim Kopieren von Daten aus der Cassandra-Datenbank manuell keine Treiber auf dem Gatewaycomputer installieren.
 
 > [!NOTE]
 > Unter [Problembehandlung bei Gateways](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) finden Sie Tipps zur Behandlung von Verbindungs- bzw. Gatewayproblemen.
 
 ## <a name="getting-started"></a>Erste Schritte
-Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt. 
+Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einem lokalen Teradata-Datenspeicher verschiebt.
 
-- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten. 
-- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können. 
+- Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+- Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
 Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
 
 1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert. 
+2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
+3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen Cassandra-Datenspeicher verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus Cassandra in ein Azure-Blob](#json-example-copy-data-from-cassandra-to-azure-blob) in diesem Artikel. 
+Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen Cassandra-Datenspeicher verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus Cassandra in ein Azure-Blob](#json-example-copy-data-from-cassandra-to-azure-blob) in diesem Artikel.
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für Cassandra-Datenspeicher verwendet werden:
 
@@ -66,13 +66,13 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die speziell 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesCassandra**. |JA |
-| host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesCassandra**. |Ja |
+| host |Mindestens eine IP-Adresse oder ein Hostname von Cassandra-Servern.<br/><br/>Geben Sie eine durch Trennzeichen getrennte Liste mit IP-Adressen oder Hostnamen an, um gleichzeitig mit allen Servern Verbindungen herzustellen. |Ja |
 | port |Der TCP-Port, den der Cassandra-Server verwendet, um auf Clientverbindungen zu lauschen. |Nein, Standardwert: 9042 |
-| authenticationType |Basic (Standard) oder Anonymous (Anonym) |JA |
+| authenticationType |Basic (Standard) oder Anonymous (Anonym) |Ja |
 | username |Geben Sie einen Benutzernamen für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
 | password |Geben Sie ein Kennwort für das Benutzerkonto an. |Ja, wenn authenticationType auf „Basic“ (Standard) festgelegt ist. |
-| gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |JA |
+| gatewayName |Der Name des Gateways, das zum Herstellen der Verbindung mit der lokalen Cassandra-Datenbank verwendet wird. |Ja |
 | encryptedCredential |Anmeldeinformationen, die vom Gateway verschlüsselt werden. |Nein  |
 
 >[!NOTE]
@@ -116,7 +116,7 @@ Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
 **Mit Cassandra verknüpfter Dienst:**
 
-In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abschnitt [Verknüpfter Cassandra-Dienst](#linked-service-properties) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.  
+In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abschnitt [Verknüpfter Cassandra-Dienst](#linked-service-properties) enthält eine Liste mit den Eigenschaften, die von diesem verknüpften Dienst unterstützt werden.
 
 ```json
 {
@@ -143,7 +143,7 @@ In diesem Beispiel wird der verknüpfte **Cassandra** -Dienst verwendet. Der Abs
 {
     "name": "AzureStorageLinkedService",
     "properties": {
-    "type": "AzureStorage",
+        "type": "AzureStorage",
         "typeProperties": {
             "connectionString": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
         }
@@ -212,13 +212,13 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie die Liste der Eigenschaften, die von RelationalSource unterstützt werden.
 
 ```json
-{  
+{
     "name":"SamplePipeline",
-    "properties":{  
+    "properties":{
         "start":"2016-06-01T18:00:00",
         "end":"2016-06-01T19:00:00",
         "description":"pipeline with copy activity",
-        "activities":[  
+        "activities":[
         {
             "name": "CassandraToAzureBlob",
             "description": "Copy from Cassandra to an Azure blob",
@@ -254,7 +254,7 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
                 "timeout": "01:00:00"
             }
         }
-        ]    
+        ]
     }
 }
 ```
@@ -266,17 +266,17 @@ Unter [RelationalSource-Typeigenschaften](#copy-activity-properties) finden Sie 
 | BIGINT |Int64 |
 | BLOB |Byte[] |
 | BOOLEAN |BOOLEAN |
-| DECIMAL |DECIMAL |
+| DECIMAL |Decimal |
 | DOUBLE |DOUBLE |
 | FLOAT |Single |
 | INET |Zeichenfolge |
 | INT |Int32 |
 | TEXT |Zeichenfolge |
-| TIMESTAMP |Datetime |
+| TIMESTAMP |DateTime |
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |Zeichenfolge |
-| VARINT |DECIMAL |
+| VARINT |Decimal |
 
 > [!NOTE]
 > Informationen zu Sammlungstypen (map, set, list usw.) finden Sie im Abschnitt [Verwenden von Cassandra-Sammlungstypen mit einer virtuellen Tabelle](#work-with-collections-using-virtual-table) .

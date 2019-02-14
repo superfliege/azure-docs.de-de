@@ -4,18 +4,18 @@ titlesuffix: Azure Cognitive Services
 description: In diesem Dokument wird beschrieben, wie Sie Ihre Entwurfsabsicht in allen drei Phasen des Project Acoustics-Workflows zum Ausdruck bringen können.
 services: cognitive-services
 author: kegodin
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: cf38b2096e958a7484e5161277a608ec2cb88224
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb5f309a96feac2caea85fbe81b7216eecfc4b79
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470484"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873936"
 ---
 # <a name="design-process-overview"></a>Übersicht über den Entwurfsprozess
 Sie können Ihre Entwurfsabsicht in allen drei Phasen des Project Acoustics-Workflows zum Ausdruck bringen: Szeneneinrichtung vor dem Bake-Vorgang, bei der Platzierung der Tonquelle und Entwurf nach dem Bake-Vorgang. Für den Prozess muss mit der Platzierung von Halllautstärken weniger Aufschlag verknüpft werden, während der Entwickler die Kontrolle darüber behält, wie eine Szene klingt.

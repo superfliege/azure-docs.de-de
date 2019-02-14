@@ -4,7 +4,7 @@ description: In diesem Artikel erhalten Sie einen Überblick über die Datenvers
 services: security
 documentationcenter: na
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9dcb190e-e534-4787-bf82-8ce73bf47dba
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 4796dc50447b94b01d9bb4625ca9a69a73850fcd
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994401"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117900"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -260,30 +260,30 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Key Vault**             | **Clientseitig mit Clientverwaltung**      |
 | **Speicher und Datenbanken**        |                    |                    |                    |                    |
 | Datenträger (IaaS)                      | -                  | Ja, RSA 2048 Bit  | -                  |
-| SQL Server (IaaS)                | JA                | Ja, RSA 2048 Bit  | JA                |
-| Azure SQL-Datenbank/Azure SQL Data Warehouse | JA                | Ja, RSA 2048 Bit  | JA                |
-| Azure SQL (verwaltete Datenbank-Instanz) | JA                | RSA 2048 Bit, Vorschauversion  | JA                |
-| Azure Storage (Block-/Seitenblobs) | JA                | Ja, RSA 2048 Bit  | JA                |
-| Azure Storage (Dateien)            | JA                | Ja, RSA 2048 Bit  | -                  |
-| Azure Storage (Tabellen, Warteschlangen)   | JA                | -                  | JA                |
-| Cosmos DB (Document DB)          | JA                | -                  | -                  |
-| StorSimple                       | JA                | -                  | JA                |
-| Backup                           | -                  | -                  | JA                |
+| SQL Server (IaaS)                | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure SQL-Datenbank/Azure SQL Data Warehouse | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure SQL (verwaltete Datenbank-Instanz) | Ja                | RSA 2048 Bit, Vorschauversion  | Ja                |
+| Azure Storage (Block-/Seitenblobs) | Ja                | Ja, RSA 2048 Bit  | Ja                |
+| Azure Storage (Dateien)            | Ja                | Ja, RSA 2048 Bit  | -                  |
+| Azure Storage (Tabellen, Warteschlangen)   | Ja                | -                  | Ja                |
+| Cosmos DB (Document DB)          | Ja                | -                  | -                  |
+| StorSimple                       | Ja                | -                  | Ja                |
+| Backup                           | -                  | -                  | Ja                |
 | **Informationen und Analyse**   |                    |                    |                    |
-| Azure Data Factory               | JA                | -                  | -                  |
+| Azure Data Factory               | Ja                | -                  | -                  |
 | Azure Machine Learning           | -                  | RSA 2048 Bit, Vorschauversion | -                  |
-| Azure Stream Analytics           | JA                | -                  | -                  |
-| HDInsight (Azure Blob Storage)   | JA                | -                  | -                  |
-| HDInsight (Data Lake Storage)    | JA                | -                  | -                  |
-| Apache Kafka für HDInsight       | JA                | Vorschau, alle RSA-Längen | -                  |
-| Azure Data Lake Store            | JA                | Ja, RSA 2048 Bit  | -                  |
-| Azure Data Catalog               | JA                | -                  | -                  |
-| Power BI                         | JA                | -                  | -                  |
+| Azure Stream Analytics           | Ja                | -                  | -                  |
+| HDInsight (Azure Blob Storage)   | Ja                | -                  | -                  |
+| HDInsight (Data Lake Storage)    | Ja                | -                  | -                  |
+| Apache Kafka für HDInsight       | Ja                | Vorschau, alle RSA-Längen | -                  |
+| Azure Data Lake Store            | Ja                | Ja, RSA 2048 Bit  | -                  |
+| Azure Data Catalog               | Ja                | -                  | -                  |
+| Power BI                         | Ja                | -                  | -                  |
 | **IoT-Dienste**                 |                    |                    |                    |
-| IoT Hub                          | -                  | -                  | JA                |
-| Service Bus                      | JA                | -                  | JA                |
-| Event Hubs                       | JA                | -                  | -                  |
-| Event Grid                       | JA                | -                  | -                  |
+| IoT Hub                          | -                  | -                  | Ja                |
+| Service Bus                      | Ja                | -                  | Ja                |
+| Event Hubs                       | Ja                | -                  | -                  |
+| Event Grid                       | Ja                | -                  | -                  |
 
 
 ## <a name="conclusion"></a>Zusammenfassung

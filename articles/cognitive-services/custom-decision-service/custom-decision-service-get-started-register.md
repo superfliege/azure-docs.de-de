@@ -4,25 +4,25 @@ titlesuffix: Azure Cognitive Services
 description: Eine schrittweise Anleitung zum Registrieren einer neuen App bei Azure Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins
 ms.reviewer: marcozo
-ms.openlocfilehash: f642e0d4e21c180a92b4b76d05fb2c9bac9f2976
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c56aef180f5e16d2ec1931caabe04295ef288ca9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219735"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980685"
 ---
 # <a name="register-your-application"></a>Anwendung registrieren
 
 Wenn Sie Custom Decision Service für Ihre Anwendung verwenden möchten, registrieren Sie den Dienst im Portal. Die Vorgehensweise wird in diesem Artikel erläutert.
 
-1. Navigieren Sie zur [Startseite](https://ds.microsoft.com/) von Custom Decision Service. Klicken Sie auf dem Menüband auf **Mein Portal**, wie in der Abbildung hervorgehoben dargestellt:
+1. Navigieren Sie zur [Startseite](https://portal.ds.microsoft.com/) von Custom Decision Service. Klicken Sie auf dem Menüband auf **Mein Portal**, wie in der Abbildung hervorgehoben dargestellt:
 
     ![Mein Portal](./media/portal.png)
 

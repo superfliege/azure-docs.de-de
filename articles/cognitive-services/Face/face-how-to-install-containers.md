@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: Informationen zum Herunterladen, Installieren und Ausführen von Containern für die Gesichtserkennung in diesem Schritt-für-Schritt-Tutorial.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/11/2019
 ms.author: diberry
-ms.openlocfilehash: d738f089ff7af59c340a2ea9f67918c1298f9e47
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7a41bfaada64528e90f43064b34c394f9a9b8f8f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55769792"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099087"
 ---
 # <a name="install-and-run-containers"></a>Installieren und Ausführen von Containern
 
@@ -68,8 +68,8 @@ Es stehen Containerimages für die Gesichtserkennungs-API zur Verfügung.
 
 ### <a name="docker-pull-for-the-face-container"></a>Docker-Pullvorgang für den Container für die Gesichtserkennung
 
-```Docker
-docker pull mcr.microsoft.com/azure-cognitive-services/face:latest
+```
+docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 ```
 
 ## <a name="how-to-use-the-container"></a>Verwenden des Containers
@@ -132,18 +132,7 @@ Wenn Sie den Container mit einer [Ausgabenbereitstellung](./face-resource-contai
 
 Der Container für die Gesichtserkennungs-API sendet Abrechnungsinformationen an Azure und verwendet dafür eine Ressource vom Typ _Gesichtserkennungs-API_ in Ihrem Azure-Konto. 
 
-Für die Ausführung von Cognitive Services-Containern besteht keine Lizenz, wenn sie nicht zu Messzwecken mit Azure verbunden sind. Kunden müssen sicherstellen, dass Container jederzeit Abrechnungsinformationen an den Messungsdienst übermitteln können. Cognitive Services-Container senden keine Kundendaten an Microsoft. 
-
-Der Befehl `docker run` verwendet folgende Argumente für Abrechnungszwecke:
-
-| Option | BESCHREIBUNG |
-|--------|-------------|
-| `ApiKey` | Der API-Schlüssel der Ressource für die _Gesichtserkennungs-API_, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird. |
-| `Billing` | Der Endpunkt der Ressource für die _Gesichtserkennungs-API_, der zum Nachzuverfolgen von Abrechnungsinformationen verwendet wird.|
-| `Eula` | Gibt an, dass Sie die Lizenz für den Container akzeptiert haben.<br/>Der Wert dieser Option muss auf `accept` festgelegt werden. |
-
-> [!IMPORTANT]
-> Alle drei Optionen müssen mit gültigen Werten angegeben werden, damit der Container gestartet wird.
+[!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 
 Weitere Informationen zu diesen Optionen finden Sie unter [Konfigurieren von Containern](./face-resource-container-config.md).
 

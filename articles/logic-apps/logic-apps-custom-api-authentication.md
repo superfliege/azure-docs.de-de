@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/22/2017
-ms.openlocfilehash: d83a27d87ffadd15a27196a11ae3f69d84232efa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 555083235aff08476e82f0daa81203b66591f3cc
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719597"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245948"
 ---
 # <a name="secure-calls-to-custom-apis-from-azure-logic-apps"></a>Schützen von Aufrufen benutzerdefinierter APIs in Azure Logic Apps
 
@@ -94,13 +94,15 @@ Die Logik-App verwendet diese Azure AD-Anwendungsidentität zum Authentifizieren
 
 **Erstellen der Anwendungsidentität für Ihre Logik-App in PowerShell**
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sie können diese Aufgabe über den Azure Ressource Manager mit PowerShell ausführen. Führen Sie in PowerShell folgende Befehle aus:
 
-1. `Add-AzureRmAccount`
+1. `Add-AzAccount`
 
 2. `$SecurePassword = Read-Host -AsSecureString` (Kennwort eingeben und EINGABETASTE drücken)
 
-3. `New-AzureRmADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
+3. `New-AzADApplication -DisplayName "MyLogicAppID" -HomePage "http://mydomain.tld" -IdentifierUris "http://mydomain.tld" -Password $SecurePassword`
 
 4. Achten Sie darauf, dass Sie die **Mandanten-ID** (GUID für Ihren Azure AD-Mandanten), die **Anwendungs-ID** und das von Ihnen verwendete Kennwort kopieren.
 
@@ -188,11 +190,11 @@ In der obigen Vorlage ist der Abschnitt für die Autorisierung bereits eingerich
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| Mandant | JA | Die GUID für den Azure AD-Mandanten | 
-| audience | JA | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
-| clientId | JA | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
-| secret | JA | Der Schlüssel oder das Kennwort der Anwendungsidentität für den Client, der das Zugriffstoken anfordert | 
-| type | JA | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
+| Mandant | Ja | Die GUID für den Azure AD-Mandanten | 
+| audience | Ja | Die GUID für die Zielressource, auf die Sie zugreifen möchten. Dies ist die Client-ID der Anwendungsidentität für Ihre Web-App oder API-App | 
+| clientId | Ja | Die GUID für den Client, der darauf zugreifen möchte. Dies ist die Client-ID der Anwendungsidentität für Ihre Logik-App | 
+| secret | Ja | Der Schlüssel oder das Kennwort der Anwendungsidentität für den Client, der das Zugriffstoken anfordert | 
+| type | Ja | Der Authentifizierungstyp. Für die ActiveDirectoryOAuth-Authentifizierung lautet der Wert `ActiveDirectoryOAuth`. | 
 |||| 
 
 Beispiel: 
@@ -234,9 +236,9 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| type | JA | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
-| password | JA | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
-| pfx | JA | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
+| type | Ja | Der Authentifizierungstyp. Für SSL-Clientzertifikate muss der Wert `ClientCertificate` lauten. | 
+| password | Ja | Das Kennwort für den Zugriff auf das Clientzertifikat (PFX-Datei) | 
+| pfx | Ja | Der base64-codierte Inhalt des Clientzertifikats (PFX-Datei) | 
 |||| 
 
 <a name="basic"></a>
@@ -251,9 +253,9 @@ Schließen Sie im Abschnitt **Autorisierung** folgende Zeile ein:
 
 | Element | Erforderlich | BESCHREIBUNG | 
 | ------- | -------- | ----------- | 
-| type | JA | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
-| username | JA | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
-| password | JA | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
+| type | Ja | Der Authentifizierungstyp, den Sie verwenden möchten. Für die Standardauthentifizierung muss der Wert `Basic` lauten. | 
+| username | Ja | Der Benutzername, den Sie für die Authentifizierung verwenden möchten | 
+| password | Ja | Das Kennwort, das Sie für die Authentifizierung verwenden möchten | 
 |||| 
 
 <a name="azure-ad-code"></a>

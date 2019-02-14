@@ -4,7 +4,7 @@ description: Dieser Artikel beschreibt, wie Microsoft die Sicherheit seiner Azur
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
-ms.openlocfilehash: 9385c6ea8d2a04e9a8595a22e6e2ff7638394b41
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: dc9b4db37e811d8bac6df2d532fd3629d98c9650
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172971"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56104764"
 ---
 # <a name="azure-infrastructure-security"></a>Sicherheit der Azure-Infrastruktur
 Microsoft Azure wird in Rechenzentren ausgeführt, die von Microsoft verwaltet und betrieben werden. Diese geografisch voneinander getrennten Rechenzentren erfüllen die wichtigsten Branchenstandards, wie etwa ISO/IEC 27001:2013 und NIST SP 800-53, bezüglich Sicherheit und Zuverlässigkeit. Die Rechenzentren werden von Microsoft-Betriebspersonal verwaltet und überwacht. Das Betriebspersonal verfügt über langjährige Erfahrung in der Bereitstellung der weltweit größten Onlinedienste, die jeden Tag rund um die Uhr verfügbar sind.
@@ -27,7 +27,7 @@ Microsoft Azure wird in Rechenzentren ausgeführt, die von Microsoft verwaltet u
 Diese Artikelreihe enthält Informationen zu den Maßnahmen, die Microsoft zum Schutz der Azure-Infrastruktur ergreift. Die Artikel behandeln folgende Themen:
 
 - [Physische Sicherheit](azure-physical-security.md)
-- [Availability](azure-infrastructure-availability.md)
+- [Verfügbarkeit](azure-infrastructure-availability.md)
 - [Komponenten und Grenzen](azure-infrastructure-components.md)
 - [Netzwerkarchitektur](azure-infrastructure-network.md)
 - [Produktionsnetzwerk](azure-production-network.md)

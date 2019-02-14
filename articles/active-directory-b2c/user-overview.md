@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a901072875d6810711cb0b23d17555d9492c240a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9d4bcc66cfd82fee13ce57d096e061ddd8706720
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157974"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100124"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>Übersicht über Benutzerkonten in Azure Active Directory B2C
 
@@ -47,21 +47,21 @@ Beim Hinzufügen eines neuen Geschäftskontos müssen Sie die folgenden Konfigur
 Befolgen Sie zum Erstellen eines neuen Geschäftskontos die folgenden Angaben:
 
 - [Azure-Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_post_users)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Aktualisieren eines Benutzerprofils
 
 Befolgen Sie zum Aktualisieren des Profils eines Benutzers die folgenden Angaben:
 
 - [Azure-Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Zurücksetzen eines Kennworts für einen Benutzer
 
 Befolgen Sie zum Zurücksetzen des Kennworts eines Benutzers die folgenden Angaben: 
 
 - [Azure-Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
-- [Microsoft Graph](https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/user_update)
+- [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Gastbenutzer
 
@@ -69,7 +69,7 @@ Sie können in Ihrem Mandanten externe Benutzer als Gastbenutzer einladen. Ein t
 
 Wenn Sie Gastbenutzer in Ihren Mandanten eingeladen haben, geben Sie die E-Mail-Adresse des Empfängers und eine Nachricht ein, die die Einladung beschreibt. Der Einladungslink führt den Benutzer zur Zustimmungsseite, auf der die Schaltfläche **Erste Schritte** ausgewählt und die Überprüfung der Berechtigungen akzeptiert wird. Wenn an die E-Mail-Adresse kein Posteingang angefügt ist, kann der Benutzer zur Zustimmungsseite navigieren, indem er mit den Anmeldeinformationen der Einladung zu einer Microsoft-Seite wechselt. Der Benutzer ist dann gezwungen, die Einladung in gleicher Weise wie beim Klicken auf den Link in der E-Mail einzulösen. Beispiel: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
-Sie können auch mit der [Microsoft Graph-API](https://developer.microsoft.com/en-us/graph/docs/api-reference/beta/api/invitation_post) Gastbenutzer einladen.
+Sie können auch mit der [Microsoft Graph-API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) Gastbenutzer einladen.
 
 ## <a name="consumer-user"></a>Consumerbenutzer
 
