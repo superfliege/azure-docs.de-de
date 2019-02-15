@@ -20,8 +20,10 @@ items:
 - name: Versionsinformationen
   href: release-notes.md
   items:
-  - name: Version 10.0.10106.0
+  - name: Aktuelles Release
     href: release-notes-10-0-10106-0.md
+  - name: Zeitplan für die Migration zu Gen2-Regionen
+    href: gen2-migration-schedule.md
   - name: Archivierte Versionshinweise
     items:
     - name: Dezember 2018
@@ -75,7 +77,7 @@ items:
       href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
     - name: Dienstendpunkte im virtuellen Netzwerk
       href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Authentifizierung
+    - name: Authentication
       href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
     - name: Azure AD
       href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
@@ -309,9 +311,9 @@ items:
       href: sql-data-warehouse-partner-data-integration.md
     - name: Datenverwaltung
       href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: fb943b243319517da70db85a43804084724501d1
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 90b07d04766a1add27383ff3eca5cb30b25c057e
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297054"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243126"

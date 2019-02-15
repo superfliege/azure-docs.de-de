@@ -118,11 +118,11 @@ items:
       href: search-create-index-portal.md
     - name: Analysemodule
       items:
-      - name: Hinzufügen von Textanalysen
+      - name: Hinzufügen von Analysetools
         href: search-analyzers.md
-      - name: Hinzufügen von Sprachanalysen
+      - name: Hinzufügen eines Sprachanalysetools
         href: index-add-language-analyzers.md
-      - name: Hinzufügen von benutzerdefinierten Analysen
+      - name: Hinzufügen eines benutzerdefinierten Analysetools
         href: index-add-custom-analyzers.md
     - name: Hinzufügen der Vorschlagssuche
       href: index-add-suggesters.md
@@ -196,17 +196,17 @@ items:
       href: search-query-overview.md
     - name: Suchexplorer (Portal)
       href: search-explorer.md
-    - name: Einfache Syntaxbeispiele
+    - name: Einfache Abfragesyntax
+      href: query-simple-syntax.md
+    - name: Vollständige Lucene-Abfragesyntax
+      href: query-lucene-syntax.md
+    - name: Beispiele für Abfragen (einfache Syntax)
       href: search-query-simple-examples.md
-    - name: Lucene-Syntaxbeispiele
+    - name: Beispiele für Abfragen (vollständige Lucene-Syntax)
       href: search-query-lucene-examples.md
-    - name: Abfragesyntax
-      items:
-      - name: Einfache Abfragesyntax
-        href: query-simple-syntax.md
-      - name: Lucene-Abfragesyntax
-        href: query-lucene-syntax.md
-    - name: Auslagerungsergebnisse
+  - name: Behandeln von Ergebnissen
+    items:
+    - name: Seitenbezogene Features
       href: search-pagination-page-layout.md
   - name: Filtern und Sortieren von Daten
     items:
@@ -307,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: eeac3c7bf976bf1a3ccc44c30127420e00c7a776
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a38dd0b739b5f34826798370b4ffa4ad84cc525d
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099053"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56299478"
