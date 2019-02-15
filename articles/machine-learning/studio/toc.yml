@@ -8,17 +8,12 @@ items:
     href: what-is-ml-studio.md
   - name: Vergleichen unserer ML-Produkte
     href: ../service/overview-more-machine-learning.md
-  - name: Häufig gestellte Fragen
-    displayName: FAQ
-    href: faq.md
   expanded: true
-- name: Schnellstarts
+- name: Lernprogramme
   items:
   - name: Erstellen Ihres ersten Experiments
     displayName: quickstart
     href: create-experiment.md
-- name: Lernprogramme
-  items:
   - name: Erstellen einer prädiktiven Lösung
     items:
     - name: 1. Erstellen eines Experiments
@@ -199,9 +194,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/machine-learning/
   - name: Benutzerdefinierte neuronale Netze (Net#)
     href: azure-ml-netsharp-reference-guide.md
-ms.openlocfilehash: 982f2794d22f830c967607108b31fbfe0d0de359
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c9bbcd35f74e113c33ef0a8b449d806734501324
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238435"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266866"
