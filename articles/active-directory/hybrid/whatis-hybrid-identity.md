@@ -12,16 +12,17 @@ ms.topic: overview
 ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: fc18353ff89f8613847c977066e51620fb3e834f
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494663"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190465"
 ---
 # <a name="what-is-hybrid-identity"></a>Was ist eine Hybrididentität? 
 
-Heutzutage werden Unternehmen und Konzerne immer mehr zu einer Mischung aus lokalen und Cloudanwendungen.  Benutzer benötigen lokal und in der Cloud Zugriff auf diese Anwendungen. Diese Anforderung ist ein schwieriges Szenario geworden. 
+Heutzutage werden Unternehmen und Konzerne immer mehr zu einer Mischung aus lokalen Anwendungen und Cloudanwendungen.  Benutzer benötigen lokal und in der Cloud Zugriff auf diese Anwendungen. Diese Anforderung ist ein schwieriges Szenario geworden. 
 
 Identitätslösungen von Microsoft umfassen lokale und cloudbasierte Funktionen.  Diese Lösungen schaffen eine gemeinsame Benutzeridentität für die Authentifizierung und Autorisierung bei allen Ressourcen, unabhängig vom Standort. Wir bezeichnen dies als **Hybrididentität**.
 
@@ -42,13 +43,13 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 |Ziel|PHS und SSO<sup>1</sup>| PTA und SSO<sup>2</sup> | AD FS<sup>3</sup>| 
 |-----|-----|-----|-----| 
 |Automatisches Synchronisieren neuer Benutzer-, Kontakt- und Gruppenkonten, die in meiner lokalen Active Directory-Instanz erstellt werden, mit der Cloud|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
-|Einrichten meines Mandanten für Office 365-Hybridszenarien|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
+|Einrichten meines Mandanten für Office 365-Hybridszenarios|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Ermöglichen der Anmeldung und des Zugriffs auf Clouddienste für meine Benutzer mit ihrem lokalen Kennwort|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementieren des einmaligen Anmeldens mit Anmeldeinformationen des Unternehmens|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|  
 |Sicherstellen, dass keine Kennworthashes in der Cloud gespeichert werden| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Aktivieren der Multi-Factor Authentication-Cloudlösungen| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Aktivieren der lokalen Multi-Factor Authentication-Lösungen| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
-|Unterstützung von Smartcard-Authentifizierung für meine Benutzer<sup>4</sup>| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
+|Unterstützen der Smartcard-Authentifizierung für meine Benutzer<sup>4</sup>| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Anzeigen von Benachrichtigungen zum Kennwortablauf im Office-Portal und auf dem Windows 10-Desktop| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 
 > <sup>1</sup> Kennworthashsynchronisierung mit einmaligem Anmelden 

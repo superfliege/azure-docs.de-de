@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 5d844692b6199d93fa835da1021c9753311e17de
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824615"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112545"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -33,7 +33,7 @@ In diesem Dokument werden die verschiedenen Szenarien erläutert, in denen die V
 Kunden verschieben virtuelle Computer aus folgenden Gründen:
 
 - Wenn Sie bereits virtuelle Computer in einer Region bereitgestellt haben und eine neue Region hinzugefügt wurde, die sich näher an den Endbenutzern Ihrer Anwendung oder Ihres Diensts befindet, **verschieben Sie Ihre virtuellen Computer unverändert in die neue Region**, um die Wartezeit zu verringern. Die gleiche Vorgehensweise können Sie verwenden, wenn Sie Abonnements konsolidieren möchten oder Governance-/Organisationsregeln eine Verschiebung erforderlich machen. 
-- Wenn Ihr virtueller Computer als einzelne VM-Instanz oder als Teil einer Verfügbarkeitsgruppe bereitgestellt wurde und Sie die Verfügbarkeits-SLAs erhöhen möchten, können Sie **Ihre virtuellen Computer in eine Verfügbarkeitsgruppe verschieben**. 
+- Wenn Ihre VM als Einzelinstanz-VM oder als Teil einer Verfügbarkeitsgruppe bereitgestellt wurde und Sie die Verfügbarkeits-SLAs erhöhen möchten, können Sie **Ihre VMs in eine Verfügbarkeitszone verschieben**. 
 
 ## <a name="how-to-move-azure-vms"></a>Vorgehensweise zum Verschieben virtueller Azure-Computer
 Das Verschieben virtueller Computer umfasst folgende Schritte:
@@ -97,7 +97,7 @@ Dieser Abschnitt zeigt anhand der oben erwähnten [Architekturen](#typical-archi
 
 2. **VMs auf den einzelnen Ebenen mit Bereitstellung über eine Verfügbarkeitsgruppe:** Sie können Ihre virtuellen Computer in einer Verfügbarkeitsgruppe in separaten Verfügbarkeitszonen platzieren, wenn Sie die Replikation für Ihren virtuellen Computer über Azure Site Recovery aktivieren. Die SLA für die Verfügbarkeit hat nach Abschluss der Verschiebung einen Wert von 99,9 Prozent.
 
-      ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
+     ![aset-Azone.PNG](media/move-vm-overview/aset-Azone.PNG)
 
 
 ## <a name="next-steps"></a>Nächste Schritte

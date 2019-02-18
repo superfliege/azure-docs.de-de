@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: get-started-article
-ms.date: 09/18/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 6581c389cb7b1aa9c6ce6b9e84b56017264822f4
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: 7ef7216b2d3adf99b0c1fd9ace84991169106529
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232952"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55976264"
 ---
-# <a name="get-started-with-the-java-client-sdk-for-azure-media-services"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services
+# <a name="get-started-with-the-java-client-sdk-for-azure-media-services-legacy"></a>Erste Schritte mit dem Java-Client-SDK für Azure Media Services (Vorgängerversion)
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie mithilfe des Java-Client-SDK einen einfachen Dienst zur Übermittlung von VoD-Inhalten (Video-on-Demand) mit Azure Media Services implementieren.
@@ -34,7 +35,7 @@ Zum Abschließen dieses Tutorials müssen folgende Voraussetzungen erfüllt sein
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Das aktuelle [Azure Media Services-Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest)
 
-## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Gewusst wie: Importieren des Pakets mit dem Azure Media Services-Java-Client-SDK
+## <a name="how-to-import-the-azure-media-services-java-client-sdk-package"></a>Gewusst wie: Importieren des Java-Client-SDK-Pakets für Azure Media Services
 
 Fügen Sie einen Verweis auf die aktuelle Version (0.9.8) des `azure-media`-Pakets aus dem [Azure Media Services-Java-SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-media/latest) hinzu, um mit der Verwendung des Media Services-SDK für Java zu beginnen.
 
@@ -58,10 +59,10 @@ Im Code weiter unten wird ein Medienobjekt erstellt, eine Mediendatei in das Med
 Richten Sie zur Verwendung dieses Codes ein Media Services-Konto ein. Informationen zum Einrichten eines Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services-Kontos](media-services-portal-create-account.md).
 
 Der Code stellt eine Verbindung mit der Azure Media Services-API her, indem die Authentifizierung per Azure AD-Dienstprinzipal verwendet wird. Erstellen Sie eine Azure AD-Anwendung, und geben Sie die Werte für die folgenden Variablen im Code an:
-* `tenant`: Die Azure AD-Mandantendomäne, in der sich die Azure AD-Anwendung befindet.
-* `clientId`: Die Client-ID der Azure AD-Anwendung.
-* `clientKey`: Der Clientschlüssel der Azure AD-Anwendung.
-* `restApiEndpoint`: Der REST-API-Endpunkt des Azure Media Services-Kontos.
+* `tenant`: Die Azure AD-Mandantendomäne, in der sich die Azure AD-Anwendung befindet
+* `clientId`: Die Client-ID der Azure AD-Anwendung
+* `clientKey`: Der Clientschlüssel der Azure AD-Anwendung
+* `restApiEndpoint`: Der REST-API-Endpunkt des Azure Media Services-Kontos
 
 Sie können eine Azure AD-Anwendung erstellen und die obigen Konfigurationswerte über das Azure-Portal erhalten. Weitere Informationen finden Sie im Abschnitt **Dienstprinzipalauthentifizierung** unter [Erste Schritte mit der Azure AD-Authentifizierung mithilfe des Azure-Portals](https://docs.microsoft.com/azure/media-services/media-services-portal-get-started-with-aad).
 

@@ -11,12 +11,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: c79f25eff553c359d969cd80a10eabbaaf50067d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54080754"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891497"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>Starten der Überwachung Ihrer Java-Webanwendung
 
@@ -82,6 +82,8 @@ Application Insights kann Telemetriedaten von jeder mit dem Internet verbundenen
 4. Aktivieren Sie das Kontrollkästchen **Enable telemetry with Application Insights** (Telemetrie mit Application Insights aktivieren). Wählen Sie die App Insights-Ressource und den zugehörigen **Instrumentation Key** (Instrumentierungsschlüssel) aus, die bzw. den Sie mit Ihrer Java-App verknüpfen möchten.
 
    ![Eclipse-Konfigurationsmenü für Azure](./media/java-quick-start/0007-j.png)
+
+5. Nach dem Konfigurieren des Application Insights-Plug-Ins müssen Sie Ihre Anwendung [veröffentlichen/erneut veröffentlichen](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-java#publish-the-web-app-to-azure), damit sie Telemetriedaten senden kann.
 
 > [!NOTE]
 > Das Application Insights SDK für Java kann Livemetriken sammeln und visualisieren. Bei der ersten Aktivierung der Telemetriedatensammlung kann es jedoch einige Minuten dauern, bis Daten im Portal angezeigt werden. Wenn es sich um eine Test-App mit geringem Datenverkehr handelt, denken Sie daran, dass die meisten Metriken nur erfasst werden, wenn aktive Anforderungen oder Vorgänge vorhanden sind.

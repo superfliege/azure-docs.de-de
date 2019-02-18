@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f4b66f79e415be8f9598a0e6f5c875d8a2597514
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/15/2019
-ms.locfileid: "56300022"
+ms.locfileid: "56311434"
 documentType: LandingData
 title: Dokumentation zum Azure Machine Learning-Dienst
 metadata:
@@ -17,26 +17,26 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 1/30/2019
+  ms.date: 2/15/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Azure Machine Learning Service umfasst eine cloudbasierte Umgebung zum schnellen Erstellen, Trainieren und Bereitstellen von Machine Learning-Modellen. Ermitteln Sie durch automatisiertes maschinelles Lernen Algorithmen, und optimieren Sie Hyperparameter noch schneller. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Azure DevOps für maschinelles Lernen. Diese Funktionen stehen Ihnen über Ihre Python-Umgebung mit den aktuellen Open-Source-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) sowie den Dienst-SDKs zur Verfügung. Weitere Informationen finden Sie in unseren Schnellstartanleitungen und Tutorials.
+  description: Azure Machine Learning Service bietet eine Cloudumgebung zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Ermitteln Sie durch automatisiertes maschinelles Lernen Algorithmen, und optimieren Sie Hyperparameter noch schneller. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) sowie die Dienst-SDKs zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.
 sections:
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: 'Sie benötigen einen Arbeitsbereich und zugeordnete Ressourcen, um diesen Dienst verwenden zu können.  Erste Schritte:'
+    text: 'Sie benötigen einen Arbeitsbereich und zugeordnete Ressourcen, um diesen Dienst verwenden zu können.  Erste Schritte mit:'
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-get-started">Verwenden Sie die Schnellstartanleitung für das Azure-Portal</a>, um den Arbeitsbereich zu erhalten und ohne Installation zusätzlicher Komponenten ein Experiment auszuführen.
-    - html: <a href="quickstart-create-workspace-with-python">Verwenden Sie die Python-Schnellstartanleitung</a>, um das Haupt-SDK zu installieren, einen Arbeitsbereich zu erstellen und ein Experiment auf einem lokalen Notebook-Server auszuführen.
+    - html: '<a href="quickstart-get-started">Schnellstartanleitung für das Azure-Portal</a>: Erhalten eines Arbeitsbereichs und Ausführen eines Experiments ohne Installation zusätzlicher Komponenten'
+    - html: '<a href="quickstart-create-workspace-with-python">Python-Schnellstartanleitung</a>: Installieren des Haupt-SDK, Erstellen eines Arbeitsbereichs und Ausführen eines Experiments auf einem lokalen Notebook-Server'
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: paragraph
-    text: 'Hier erfahren Sie, wie Sie Daten vorbereiten, Experimente einrichten und Ihre Machine Learning-Modelle operationalisieren:'
+    text: 'Hier erfahren Sie, wie Sie Daten vorbereiten, Experimente einrichten und Ihre Machine Learning-Modelle trainieren und operationalisieren:'
   - type: list
     style: unordered
     items:

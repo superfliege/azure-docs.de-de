@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a70e83737c6b56aee3279375ec653f12810b13b4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749813"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892026"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
 
@@ -27,7 +27,7 @@ Die Bereitstellungsoption [verwaltete Instanz](sql-database-managed-instance-ind
 
 In den folgenden Schnellstarts erfahren Sie, wie Sie schnell eine verwaltete Instanz erstellen, eine VM oder eine Point-to-Site-VPN-Verbindung für Clientanwendungen konfigurieren und eine Datenbank mithilfe einer `.bak`-Datei in Ihrer neuen verwalteten Instanz wiederherstellen:
 
-- [Erstellen einer verwalteten Instanz im Azure-Portal](sql-database-managed-instance-get-started.md). Im Azure-Portal können Sie die erforderlichen Parameter (Benutzername/Kennwort, Anzahl von Kernen, maximaler Speicher) konfigurieren und automatisch eine Azure-Netzwerkumgebung erstellen, ohne sich mit Netzwerkdetails oder Infrastrukturanforderungen zu befassen. Sie müssen lediglich sicherstellen, dass Sie über einen [Abonnementtyp](sql-database-managed-instance-resource-limits.md#supported-subscription-types) verfügen, der die Erstellung einer verwalteten Instanz zulässt. Wenn Sie Ihr eigenes Netzwerk verwenden oder anpassen möchten, erfahren Sie [hier](#configure-network-environment), wie Sie die Netzwerkumgebung für eine verwaltete Instanz konfigurieren.
+- [Erstellen einer verwalteten Instanz im Azure-Portal](sql-database-managed-instance-get-started.md). Im Azure-Portal können Sie die erforderlichen Parameter (Benutzername/Kennwort, Anzahl von Kernen, maximaler Speicher) konfigurieren und automatisch eine Azure-Netzwerkumgebung erstellen, ohne sich mit Netzwerkdetails oder Infrastrukturanforderungen zu befassen. Sie müssen lediglich sicherstellen, dass Sie über einen [Abonnementtyp](sql-database-managed-instance-resource-limits.md#supported-subscription-types) verfügen, der die Erstellung einer verwalteten Instanz zulässt. Wenn Sie Ihr eigenes Netzwerk verwenden oder das Netzwerk anpassen möchten, lesen Sie die Dokumentation zum Konfigurieren der Netzwerkumgebung für eine verwaltete Instanz.
 - Eine verwaltete Instanz wird in einem eigenen VNET ohne öffentlichen Endpunkt erstellt. Für den Clientanwendungszugriff können Sie wie in einem der folgenden Schnellstarts beschrieben eine VM im gleichen VNET (in einem anderen Subnetz) oder eine Point-to-Site-VPN-Verbindung mit dem VNET auf Ihrem Clientcomputer erstellen.
   - Für die Konnektivität von Clientanwendungen (einschließlich SQL Server Management Studio) erstellen Sie eine [Azure-VM im VNET der verwalteten Instanz](sql-database-managed-instance-configure-vm.md).
   - Richten Sie auf dem Clientcomputer, auf dem Sie SQL Server Management Studio und andere Anwendungen mit Clientkonnektivität ausführen, eine [Point-to-Site-VPN-Verbindung mit Ihrer verwalteten Instanz](sql-database-managed-instance-configure-p2s.md) ein. Dies ist eine der zwei Optionen für die Konnektivität mit Ihrer verwalteten Instanz und dem zugehörigen VNET.
@@ -44,7 +44,7 @@ Sobald Sie sicher sind, dass Ihre Datenbank zu einer verwalteten Instanz migrier
 
 In diesen Schnellstarts erfahren Sie, wie Sie schnell eine Datenbanksicherung erstellen, konfigurieren und in einer verwalteten Instanz wiederherstellen. In einigen Szenarien müssen Sie die Bereitstellung von verwalteten Instanzen und der erforderlichen Netzwerkumgebung anpassen oder automatisieren. Diese Szenarien werden im Anschluss beschrieben.
 
-## <a name="customizing-network-environment"></a>Anpassen der Netzwerkumgebung
+## <a name="customize-network-environment"></a>Anpassen der Netzwerkumgebung
 
 Wenn die Instanz über das Azure-Portal erstellt wird, kann das VNET/Subnetz automatisch konfiguriert werden. Sie können das VNET/Subnetz aber auch vor der Erstellung verwalteter Instanzen erstellen, damit Sie die Parameter des VNETs/Subnetzes konfigurieren können. Die einfachste Methode zum Erstellen und Konfigurieren der Netzwerkumgebung besteht darin, das Netzwerk und das Subnetz für die verwaltete Instanz mit einer [Azure-Vorlage für die Ressourcenbereitstellung](sql-database-managed-instance-create-vnet-subnet.md) zu erstellen und zu konfigurieren. Sie müssen lediglich auf die Bereitstellungsschaltfläche von Azure Resource Manager klicken und das Formular mit Parametern ausfüllen. 
 

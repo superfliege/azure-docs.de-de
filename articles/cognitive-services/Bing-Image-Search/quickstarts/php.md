@@ -5,19 +5,19 @@ description: Verwenden Sie diese Schnellstartanleitung, um Bildsuchanforderungen
 services: cognitive-services
 documentationcenter: ''
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 9/07/2018
+ms.date: 2/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 7015d22222113c1b38c9fd43f218f243d9be7bbd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cca6fba401d8673cf97897c24a9d6de2329f19a4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181536"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232488"
 ---
 # <a name="quickstart-search-for-images-using-the-bing-image-search-rest-api-and-php"></a>Schnellstart: Suchen nach Bildern mithilfe der Bing-Bildersuche-REST-API und PHP
 
@@ -49,7 +49,7 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
     $accessKey = 'enter key here';
     $term = 'tropical ocean';
     ```
-## <a name="construct-and-perform-a-http-request"></a>Erstellen und Ausführen einer HTTP-Anforderung
+## <a name="construct-and-perform-an-http-request"></a>Erstellen und Ausführen einer HTTP-Anforderung
 
 1. Verwenden Sie die Variablen aus dem vorherigen Schritt, um eine HTTP-Anforderung für die Bildersuche-API vorzubereiten.
 
@@ -59,7 +59,7 @@ Führen Sie die folgenden Schritte aus, um diese Anwendung auszuführen.
                             'header' => $headers,
                             'method' => 'GET' ));
     ```
-2. Führen Sie die Webanforderung aus, und rufen Sie die JSON-Antwort ab.
+2. Senden Sie die Webanforderung, und rufen Sie die JSON-Antwort ab.
 
     ```php
     $context = stream_context_create($options);
@@ -81,7 +81,7 @@ Verarbeiten Sie die zurückgegebene JSON-Antwort, und geben Sie sie aus.
         return array($headers, $result);
     ```
 
-## <a name="sample-json-response"></a>JSON-Beispielantwort
+## <a name="example-json-response"></a>JSON-Beispielantwort
 
 Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese Beispielantwort wurde gekürzt, damit nur ein Ergebnis angezeigt wird.
 
@@ -125,7 +125,7 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
         },
         "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
         "accentColor":"0050B2"
-    }
+    }]
 }
 ```
 
@@ -137,7 +137,8 @@ Antworten der Bing-Bildersuche-API werden im JSON-Format zurückgegeben. Diese B
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Bing-Bildersuche?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Interaktive Onlinedemo testen](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/) 
+* [Details zu den Preisen](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/) für die Bing-Suche-APIs 
 * [Abrufen eines kostenlosen Cognitive Services-Zugriffsschlüssels](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
 * [Dokumentation zu Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
 * [Referenz zur Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

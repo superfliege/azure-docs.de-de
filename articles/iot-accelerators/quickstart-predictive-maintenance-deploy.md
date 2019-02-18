@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/26/2018
 ms.author: dobett
-ms.openlocfilehash: 22f0eae805ad112c5a6a7746897dac7e37d90028
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: fdb481961680d5f84170a25c7a76bffa8423e0cc
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53604336"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097166"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-run-a-predictive-maintenance-analysis-on-my-connected-devices"></a>Schnellstart: Ausprobieren einer cloudbasierten Lösung zum Ausführen einer Predictive Maintenance-Analyse auf meinen verbundenen Geräten
 
@@ -42,7 +42,7 @@ Geben Sie auf der Seite **Create Predictive Maintenance solution** (Predictive M
 
 Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung haben wir **Visual Studio Enterprise** und **USA, Osten** gewählt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
 
-Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Dieser Prozess dauert mindestens fünf Minuten:
+Klicken Sie auf **Erstellen**, um mit der Bereitstellung zu beginnen. Dieser Prozess dauert mindestens fünf Minuten:
 
 ![Einzelheiten zur Predictive Maintenance-Lösung](./media/quickstart-predictive-maintenance-deploy/createform.png)
 
@@ -50,9 +50,13 @@ Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Di
 
 Wenn die Bereitstellung in Ihrem Azure-Abonnement abgeschlossen ist, werden auf der Kachel der Lösung ein grünes Häkchen und **Bereit** angezeigt. Nun können Sie sich beim Dashboard für den Solution Accelerator für Predictive Maintenance anmelden.
 
-Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren neuen Solution Accelerator für Predictive Maintenance. Dem daraufhin angezeigten Bereich können Sie Informationen zum Solution Accelerator entnehmen. Wählen Sie die Option **Lösungsdashboard** aus, um Ihren Solution Accelerator für Predictive Maintenance anzuzeigen:
+Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren neuen Solution Accelerator für Predictive Maintenance.
 
-![Lösungsbereich](./media/quickstart-predictive-maintenance-deploy/solutionpanel.png)
+![Lösungsbereich](./media/quickstart-predictive-maintenance-deploy/solution.png)
+
+ Der daraufhin angezeigten Seite können Sie Informationen zum Solution Accelerator entnehmen. Wählen Sie **Go to your Solution Accelerator** (Zum Solution Accelerator wechseln) aus, um den Solution Accelerator für Predictive Maintenance anzuzeigen:
+
+![Lösungsbereich](./media/quickstart-predictive-maintenance-deploy/solutionpaneldetails.png)
 
 Klicken Sie auf **Akzeptieren**, um die Zustimmungsanforderung zu akzeptieren, die im Lösungsdashboard für Predictive Maintenance im Browser angezeigt wird:
 

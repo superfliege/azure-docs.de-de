@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: overview
-ms.date: 12/17/2018
+ms.date: 02/08/2019
 ms.author: danlep
-ms.openlocfilehash: 647890517e6f08a4602ebed8ee1057cb45f10cbe
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 35e846aa5954e3714d301c9c75cf42b31961fdfe
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54075497"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56160576"
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Kontingente und Regionsverfügbarkeit für Azure Container Instances
 
@@ -28,13 +28,13 @@ Azure Container Instances ist mit den angegebenen CPU- und Arbeitsspeicherlimits
 
 | Standort | Betriebssystem | CPU | Arbeitsspeicher (GB) |
 | -------- | -- | :---: | :-----------: |
-| Kanada, Mitte | Linux | 4 | 16 |
+| „Kanada, Mitte“, „USA, Mitte“, „USA, Osten 2“ | Linux | 4 | 16 |
 | „USA, Osten“, „Europa, Norden“, „Europa, Westen“, „USA, Westen“, „USA, Westen 2“ | Linux | 4 | 14 |
 | Japan, Osten | Linux | 2 | 8 |
-| „Australien, Osten“, „USA, Osten 2“, „Asien, Südosten“ | Linux | 2 | 7 |
+| „Australien, Osten“, „Asien, Südosten“ | Linux | 2 | 7 |
 | „Indien, Mitte“, Asien, Osten“, „USA, Norden-Mitte“, „USA, Süden-Mitte“, „Indien, Süden“ | Linux | 2 | 3,5 |
 | „USA, Osten“, „Europa, Westen“, „USA, Westen“ | Windows | 4 | 14 |
-| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Indien, Süden“, „Asien, Südosten“, „USA, Westen 2“ | Windows | 2 | 3,5 |
+| „Australien, Osten“, „Kanada, Mitte“, „Indien, Mitte“, „USA, Mitte“, „Asien, Osten“, „USA, Osten 2“, „Japan, Osten“, „USA, Norden-Mitte“, „Europa, Norden“, „USA, Süden-Mitte“, „Indien, Süden“, „Asien, Südosten“, „USA, Westen 2“ | Windows | 2 | 3,5 |
 
 Containerinstanzen, die innerhalb dieser Ressourcenlimits erstellt werden, unterliegen der Verfügbarkeit in der Bereitstellungsregion. Wenn eine Region stark ausgelastet ist, kann bei der Bereitstellung von Instanzen ein Fehler auftreten. Um einen solchen Fehler bei der Bereitstellung zu beheben, versuchen Sie, Instanzen mit niedrigeren CPU- und Arbeitsspeichereinstellungen bereitzustellen, oder führen Sie die Bereitstellung zu einem späteren Zeitpunkt durch.
 

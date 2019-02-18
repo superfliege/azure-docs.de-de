@@ -4,19 +4,19 @@ description: Führen Sie mithilfe dieses Schnellstarts Ihre erste Bildersuche mi
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: aahill
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: a7603895d623bba9d5023379643b5ea9752344a7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: dd2bf11781a6dd013f033fc535b068d449dd04d4
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195591"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238129"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-java"></a>Schnellstart: Suchen nach Bildern mit dem Bing-Bildersuche-SDK für Java
 
@@ -63,9 +63,10 @@ Installieren Sie die Abhängigkeit für das Bing-Bildersuche-SDK mithilfe von Ma
     BingImageSearchAPI client = BingImageSearchManager.authenticate(subscriptionKey);
     ```
 
-## <a name="send-a-search-request-to-the-bing-image-search-api"></a>Senden einer Suchanforderung an die Bing-Bildersuche-API
+## <a name="send-a-search-request-to-the-api"></a>Senden einer Suchanforderung an die API
 
 1. Senden Sie mithilfe von `bingImages().search()` die HTTP-Anforderung, die die Suchabfrage enthält. Speichern Sie die Antwort als `ImagesModel`-Objekt.
+
    ```java
     ImagesModel imageResults = client.bingImages().search()
                 .withQuery(searchTerm)
@@ -76,7 +77,7 @@ Installieren Sie die Abhängigkeit für das Bing-Bildersuche-SDK mithilfe von Ma
 ## <a name="parse-and-view-the-result"></a>Analysieren und Anzeigen von Ergebnissen
 
 Analysieren Sie die Bildergebnisse, die in der Antwort zurückgegeben werden.
-Wenn die Antwort Suchergebnisse enthält, speichern Sie das erste Ergebnis, und drucken Sie die Details aus, z.B. eine Miniaturansichts-URL, die ursprüngliche URL und die Gesamtzahl der zurückgegebenen Bilder.  
+Wenn die Antwort Suchergebnisse enthält, speichern Sie das erste Ergebnis, und drucken Sie die Details aus, z. B. eine Miniaturansichts-URL, die ursprüngliche URL und die Gesamtzahl zurückgegebener Bilder.  
 
 ```java
 if (imageResults != null && imageResults.value().size() > 0) {

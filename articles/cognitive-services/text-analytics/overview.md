@@ -3,25 +3,25 @@ title: Was ist Textanalyse?
 titleSuffix: Azure Cognitive Services
 description: Textanalyse in Azure Cognitive Services für Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätsverknüpfung
 services: cognitive-services
-author: ashmaka
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 10/01/2018
-ms.author: ashmaka
-ms.openlocfilehash: 73505064bf5cde4e97cd210698e21883cc9f5e38
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227878"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242925"
 ---
 # <a name="what-is-text-analytics"></a>Was ist Textanalyse?
 
 Die Textanalyse-API ist ein cloudbasierter Dienst für die erweiterte Verarbeitung natürlicher Sprache aus unformatiertem Text. Sie bietet vier Hauptfunktionen: Standpunktanalyse, Schlüsselbegriffserkennung, Sprachenerkennung und Entitätsverknüpfung.
 
-Die API basiert auf Ressourcen in [Microsoft Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und KI in der Cloud, und kann in Ihren Entwicklungsprojekten verwendet werden.
+Die API ist ein Teil von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können.
 
 ## <a name="capabilities-in-text-analytics"></a>Funktionen der Textanalyse
 

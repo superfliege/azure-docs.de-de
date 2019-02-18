@@ -7,14 +7,14 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 10/26/2018
+ms.date: 02/08/2019
 ms.author: dobett
-ms.openlocfilehash: d02e72a46e2bec69792eacef673c779310561f83
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 46ea73e0a0c2dd14dcafcaa332c7feb1c70445df
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602646"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098884"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>Schnellstart: Testen einer cloudbasierten Lösung zum Verwalten von industriellen IoT-Geräten
 
@@ -42,7 +42,7 @@ Geben Sie auf der Seite **Lösung für verbundene Factorys erstellen** einen ein
 
 Wählen Sie die gewünschten Angaben für **Abonnement** und **Region**, um den Solution Accelerator bereitzustellen. Normalerweise wählen Sie die Region, die Ihnen am nächsten liegt. In dieser Schnellstartanleitung haben wir **Visual Studio Enterprise** und **USA, Osten** gewählt. Sie müssen ein [globaler Administrator oder Benutzer](iot-accelerators-permissions.md) des Abonnements sein.
 
-Klicken Sie auf **Lösung erstellen**, um mit der Bereitstellung zu beginnen. Dieser Prozess dauert mindestens fünf Minuten:
+Klicken Sie auf **Erstellen**, um die Bereitstellung zu starten. Dieser Prozess dauert mindestens fünf Minuten:
 
 ![Details der Connected Factory-Lösung](./media/quickstart-connected-factory-deploy/createform.png)
 
@@ -54,7 +54,7 @@ Klicken Sie auf der Seite **Bereitgestellte Lösungen** auf Ihren Solution Accel
 
 ![Auswählen der neuen Lösung](./media/quickstart-connected-factory-deploy/choosenew.png)
 
-Im angezeigten Panel sehen Sie Informationen zum Solution Accelerator für Ihre verbundene Factory. Wählen Sie **Lösungsdashboard** aus, um den Solution Accelerator für Ihre verbundene Factory anzuzeigen:
+Auf der angezeigten Seite sehen Sie Informationen zum Solution Accelerator für Ihre verbundene Factory. Wählen Sie **Go to your Solution Accelerator** (Zum Solution Accelerator wechseln) aus, um den Solution Accelerator für Ihre verbundene Factory anzuzeigen:
 
 ![Lösungsbereich](./media/quickstart-connected-factory-deploy/solutionpanel.png)
 

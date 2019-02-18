@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 158c2a8919bccea03f5c7b67aef23cd07022c259
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 5a72bfccd69a51aa6bafb34bb768b48640e554af
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900509"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243007"
 ---
 # <a name="tutorial-return-azure-data-box-and-verify-data-upload-to-azure"></a>Tutorial: Zurücksenden der Azure Data Box und Überprüfen des Datenuploads in Azure
 
@@ -42,7 +42,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
 ## <a name="ship-data-box-back"></a>Zurücksenden der Data Box
 
 1. Stellen Sie sicher, dass das Gerät ausgeschaltet ist und die Kabel entfernt wurden. Wickeln Sie das mit dem Gerät gelieferte Netzkabel auf, und befestigen Sie es sicher an der Rückseite des Geräts.
-2. Wenn das Gerät in den USA versendet wird, vergewissern Sie sich, dass das Adressetikett auf der E-Ink-Anzeige angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Transportunternehmen. Falls das Adressetikett beschädigt ist oder nicht in der E-Ink-Anzeige angezeigt wird, navigieren Sie im Azure-Portal zu **Übersicht > Versandetikett herunterladen**. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an.
+2. Wenn das Gerät in den USA versendet wird, vergewissern Sie sich, dass das Adressetikett auf der E-Ink-Anzeige angezeigt wird, und vereinbaren Sie einen Abholtermin mit Ihrem Transportunternehmen. Falls das Adressetikett beschädigt oder nicht mehr vorhanden ist oder nicht in der E-Ink-Anzeige angezeigt wird, wenden Sie sich bitte an den Microsoft-Support. Navigieren Sie, sofern dies vom Support empfohlen wird, im Azure-Portal zu **Übersicht > Versandetikett herunterladen**. Laden Sie das Versandetikett herunter, und bringen Sie es am Gerät an.
 
     Wenn das Gerät in Europa versendet wird, wird das Adressetikett nicht auf der E-Ink-Anzeige angezeigt. Das Adressetikett für den Rückversand befindet sich stattdessen in einer durchsichtigen Tasche unter dem Adressetikett für den Hinversand. Entfernen Sie das alte Adressetikett, und achten Sie darauf, dass das Adressetikett gut sichtbar ist.
     
