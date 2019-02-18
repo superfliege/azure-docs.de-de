@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2018
+ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 12/19/2018
-ms.openlocfilehash: 421e3bf4465f5aa9aafc4ad666af2178faedb7c3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 112e9aa023fb29bd960b61139861db4007c61b4d
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245956"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962246"
 ---
 # <a name="considerations-for-using-virtual-machines-in-azure-stack"></a>Überlegungen zur Verwendung von virtuellen Computern in Azure Stack
 
@@ -41,8 +41,9 @@ Virtuelle Azure Stack-Computer bieten bedarfsgesteuerte, skalierbare Computingre
 | Leistung von VM-Datenträgern | Abhängig von Datenträgertyp und -größe. | Abhängig von der VM-Größe des virtuellen Computers, an den die Datenträger angefügt wurden. Lesen Sie den Artikel [In Azure Stack unterstützte VM-Größen](azure-stack-vm-sizes.md).
 | API-Versionen | Azure verfügt für alle VM-Features immer über die aktuellen API-Versionen. | Azure Stack unterstützt bestimmte Azure-Dienste und bestimmte API-Versionen für diese Dienste. Die Liste mit den unterstützten API-Versionen finden Sie in diesem Artikel im Abschnitt [API-Versionen](#api-versions). |
 | Azure-Instanzmetadatendienst | Der Azure-Instanzmetadatendienst stellt Informationen zum Ausführen von Instanzen virtueller Computer bereit, die zum Verwalten und Konfigurieren Ihrer virtuellen Computer verwendet werden können.  | Der Instanzmetadatendienst wird für Azure Stack nicht unterstützt. |
-|VM-Verfügbarkeitsgruppen|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen<br>Unterstützung von verwalteten Datenträgern|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen (bis zu 20)<br>Keine Unterstützung von verwalteten Datenträgern|
-|VM-Skalierungsgruppen|Unterstützung der Autoskalierung|Keine Unterstützung der Autoskalierung<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu.
+| VM-Verfügbarkeitsgruppen|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen|Mehrere Fehlerdomänen (zwei oder drei pro Region)<br>Mehrere Updatedomänen (bis zu 20)|
+| VM-Skalierungsgruppen|Unterstützung der Autoskalierung|Keine Unterstützung der Autoskalierung<br>Fügen Sie einer Skalierungsgruppe mit dem Portal, Resource Manager-Vorlagen oder PowerShell weitere Instanzen hinzu. |
+| Diagnose des virtuellen Computers | Linux-VM-Diagnose | Die Linux-VM-Diagnose wird in Azure Stack nicht unterstützt. Wenn Sie eine Linux-VM mit aktivierter VM-Diagnose bereitstellen, schlägt die Bereitstellung fehl. Die Bereitstellung schlägt auch fehl, wenn Sie die grundlegenden Linux-VM-Metriken über die Diagnoseeinstellungen aktivieren.
 
 ## <a name="virtual-machine-sizes"></a>Größen virtueller Computer
 
@@ -71,7 +72,7 @@ Die VM-Größen und entsprechenden Ressourcenmengen sind bei Azure Stack und Azu
 
 ## <a name="virtual-machine-extensions"></a>VM-Erweiterungen
 
- Azure Stack umfasst einige wenige Erweiterungen. Updates und zusätzliche Erweiterungen sind per Marketplace-Syndikation verfügbar.
+Azure Stack umfasst einige wenige Erweiterungen. Updates und zusätzliche Erweiterungen sind per Marketplace-Syndikation verfügbar.
 
 Verwenden Sie das folgende PowerShell-Skript, um die Liste mit den VM-Erweiterungen abzurufen, die in Ihrer Azure Stack-Umgebung verfügbar sind:
 
@@ -82,6 +83,8 @@ Get-AzureRmVmImagePublisher -Location local | `
   Select Type, Version | `
   Format-Table -Property * -AutoSize
 ```
+
+Wenn die Bereitstellung einer Erweiterung für eine VM-Bereitstellung zu lange dauert, sollten Sie eine Zeitüberschreitung der Bereitstellung zulassen und nicht versuchen, den Vorgang zum Aufheben der Zuordnung oder Löschen der VMs zu beenden.
 
 ## <a name="api-versions"></a>API-Versionen
 

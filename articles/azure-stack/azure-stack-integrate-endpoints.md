@@ -10,12 +10,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: wamota
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 0bb2f3ffb4b615451abc41d0d8945b4b3efdde53
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fee5db2cde4e4056a8cb1fca80e09511d0ca0b53
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816355"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117273"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Integration des Azure Stack-Datencenters – Veröffentlichen von Endpunkten
 
@@ -38,11 +38,11 @@ Interne Infrastruktur-VIPs sind nicht aufgeführt, da sie zum Veröffentlichen v
 |Endpunkt (VIP)|A-Eintrag des DNS-Hosts|Protokoll|Ports|
 |---------|---------|---------|---------|
 |AD FS|Adfs.*&lt;region>.&lt;fqdn>*|HTTPS|443|
-|Portal (Administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13012<br>13020<br>13021<br>13026<br>30015|
+|Portal (Administrator)|Adminportal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Administratorhosting | *.adminhosting.\<region>.\<fqdn> | HTTPS | 443 |
-|Azure Resource Manager (Administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
-|Portal (Benutzer)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13012<br>13020<br>13021<br>30015<br>13003|
-|Azure Resource Manager (Benutzer)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443<br>30024|
+|Azure Resource Manager (Administrator)|Adminmanagement.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Portal (Benutzer)|Portal.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Azure Resource Manager (Benutzer)|Management.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |Zertifikatsperrliste|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP und UDP|53|
@@ -75,11 +75,10 @@ Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung m
 |Patches und Updates|https://&#42;.azureedge.net|HTTPS|443|Öffentliche VIP - /27|
 |Registrierung|https://management.azure.com|HTTPS|443|Öffentliche VIP - /27|
 |Verwendung|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.net |HTTPS|443|Öffentliche VIP - /27|
-|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>https://www.microsoft.com/pkiops/crl<br>https://www.microsoft.com/pkiops/certs<br>https://crl.microsoft.com/pki/crl/products<br>https://www.microsoft.com/pki/certs<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Öffentliche VIP - /27<br>Öffentliches Infrastrukturnetzwerk|
+|Windows Defender|.wdcp.microsoft.com<br>.wdcpalt.microsoft.com<br>*.updates.microsoft.com<br>*.download.microsoft.com<br>https://msdl.microsoft.com/download/symbols<br>`https://www.microsoft.com/pkiops/crl`<br>`https://www.microsoft.com/pkiops/certs`<br>`https://crl.microsoft.com/pki/crl/products`<br>`https://www.microsoft.com/pki/certs`<br>https://secure.aadcdn.microsoftonline-p.com<br>|HTTPS|80<br>443|Öffentliche VIP - /27<br>Öffentliches Infrastrukturnetzwerk|
 |NTP|(IP des für die Bereitstellung bereitgestellten NTP-Servers)|UDP|123|Öffentliche VIP - /27|
 |DNS|(IP des für die Bereitstellung bereitgestellten DNS-Servers)|TCP<br>UDP|53|Öffentliche VIP - /27|
 |CRL|(URL unter CRL-Verteilungspunkten auf Ihrem Zertifikat)|HTTP|80|Öffentliche VIP - /27|
-|Infrastructure Backup|(IP oder FQDN des externen Zieldateiservers)|SMB|445|Öffentliches Infrastrukturnetzwerk|
 |LDAP|Active Directory-Gesamtstruktur, bereitgestellt für die Graph-Integration|TCP<br>UDP|389|Öffentliche VIP - /27|
 |LDAP SSL|Active Directory-Gesamtstruktur, bereitgestellt für die Graph-Integration|TCP|636|Öffentliche VIP - /27|
 |LDAP GC|Active Directory-Gesamtstruktur, bereitgestellt für die Graph-Integration|TCP|3268|Öffentliche VIP - /27|
@@ -89,9 +88,6 @@ Azure Stack unterstützt nur transparente Proxyserver. In einer Bereitstellung m
 
 > [!Note]  
 > Für ausgehende URLs erfolgt ein Lastenausgleich mithilfe von Azure Traffic Manager, um bestmögliche Konnektivität basierend auf dem geografischen Standort zu bieten. Durch URLs mit Lastenausgleich kann Microsoft Back-End-Endpunkte ohne Auswirkungen auf Kunden aktualisieren und ändern. Microsoft gibt die Liste der IP-Adressen für die URLs mit Lastenausgleich nicht frei. Sie sollten ein Gerät verwenden, das ein Filtern nach URL und nicht nach IP-Adresse unterstützt.
-
-> [!Note]  
-> In 1809 kommuniziert der Dienst für die Infrastruktursicherung mit dem externen Dateiserver aus dem öffentlichen VIP-Netzwerk. Vor 1809 hat der Dienst über das öffentliche Infrastrukturnetzwerk kommuniziert. Wenn Ihre Umgebung den Zugriff auf Infrastrukturressourcen aus dem öffentlichen VIP-Netzwerk nicht zulässt, wenden Sie den neuesten [Hotfix 1809](azure-stack-update-1809.md#post-update-steps) für Azure Stack an. Dieser Hotfix verschiebt den Dienst für die Infrastruktursicherung zurück in das öffentliche Infrastrukturnetzwerk. Wenn Sie in 1811 den Hotfix 1809 anwenden, verbleibt der Dienst für die Infrastruktursicherung im öffentlichen Infrastrukturnetzwerk. Wenn Sie den Hotfix nicht anwenden, verschiebt das Update den Dienst zurück in das öffentliche Infrastrukturnetzwerk.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: d55cebf380c4ca5183e8ff15fd193e254b66c30b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9760e6b9cdcd6f03f4377277f3426189b1fe0a61
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246584"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56182016"
 ---
 # <a name="azure-stack-integrated-systems-connection-models"></a>Verbindungsmodell von in Azure Stack integrierten Systemen
-Wenn Sie an einem in Azure Stack integrierten System interessiert sind, sollten Sie einige der [wichtigsten Aspekte bei der Rechenzentrumsintegration](azure-stack-datacenter-integration.md) hinsichtlich der Azure Stack-Bereitstellung verstehen, um zu bestimmen, wie das System in Ihr Rechenzentrum passt. Darüber hinaus müssen Sie sich genau überlegen, wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren möchten. Dieser Artikel bietet einen Überblick über diese wichtigen Entscheidungen, so z.B. zur Azure-Verbindung, zum Identitätsspeicher und Abrechnungsmodell.
+Wenn Sie daran interessiert sind, ein in Azure Stack integriertes System zu kaufen, sollten Sie einige der [wichtigsten Aspekte bei der Rechenzentrumsintegration](azure-stack-datacenter-integration.md) hinsichtlich der Azure Stack-Bereitstellung verstehen, um zu bestimmen, wie das System in Ihr Rechenzentrum passt. Darüber hinaus müssen Sie sich überlegen, wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren möchten. Dieser Artikel bietet einen Überblick über diese wichtigen Entscheidungen, so z.B. zur Azure-Verbindung, zum Identitätsspeicher und Abrechnungsmodell.
 
 Wenn Sie ein integriertes System erwerben möchten, führt Sie Ihr OEM-Hardwareanbieter (Originalgerätehersteller) dabei ausführlich durch einen Großteil des Planungsprozesses. Er führt auch die eigentliche Bereitstellung durch.
 

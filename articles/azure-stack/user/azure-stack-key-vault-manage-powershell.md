@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/16/2019
 ms.author: sethm
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: ddf08c69b5ef06d6243230230bcfdb56965aef4d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4ec662cd60e2ca8e5db76a3fda4c68df6f3164e4
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239943"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893680"
 ---
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>Verwalten von Key Vault in Azure Stack mithilfe von PowerShell
 
@@ -65,7 +65,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 Wenn die Registrierung erfolgreich war, wird die folgende Ausgabe zurückgegeben:
 
-![Registrieren](media/azure-stack-key-vault-manage-powershell/image2.png) Wenn Sie die Schlüsseltresorbefehle aufrufen, erhalten Sie möglicherweise eine Fehlermeldung wie: „Das Abonnement ist nicht für die Verwendung des Namespace „{0}“ registriert.“ Wenn Sie eine Fehlermeldung erhalten, bestätigen Sie, dass Sie [den Ressourcenanbieter Key Vault aktiviert](#enable-your-tenant-subscription-for-vault-operations) haben, wie in den bereits erwähnten Anweisungen beschrieben.
+![Registrieren](media/azure-stack-key-vault-manage-powershell/image2.png) Wenn Sie die Schlüsseltresorbefehle aufrufen, erhalten Sie möglicherweise eine Fehlermeldung wie: „Das Abonnement ist nicht für die Verwendung des Namespace „{0}“ registriert.“ Wenn Sie eine Fehlermeldung erhalten, bestätigen Sie, dass Sie den Ressourcenanbieter Key Vault aktiviert haben, wie in den bereits erwähnten Anweisungen beschrieben.
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 

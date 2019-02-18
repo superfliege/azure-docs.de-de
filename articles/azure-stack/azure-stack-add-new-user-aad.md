@@ -3,7 +3,7 @@ title: Hinzufügen neuer Azure Stack-Mandantenkonten in Azure Active Directory |
 description: Sie müssen nach dem Bereitstellen des Microsoft Azure Stack Development Kits mindestens ein Mandantenbenutzerkonto erstellen, damit Sie das Mandantenportal durchsuchen können.
 services: azure-stack
 documentationcenter: ''
-author: jeffgilb
+author: patricka
 manager: femila
 editor: ''
 ms.assetid: a75d5c88-5b9e-4e9a-a6e3-48bbfa7069a7
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
-ms.author: jeffgilb
+ms.date: 02/12/2019
+ms.author: patricka
 ms.reviewer: unknown
 ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: c0f457955bd8df7fe07e2a96469fde0a751417bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5c07288bbfbf70be62723f835192cf09d92166ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240318"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163222"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Hinzufügen neuer Azure Stack-Mandantenkonten in Azure Active Directory
 
@@ -56,14 +56,12 @@ Sie benötigen ein Azure-Abonnement, um das Azure-Portal verwenden zu können.
 7. Melden Sie sich mit dem neuen Konto am Microsoft Azure-Portal an. Ändern Sie das Kennwort, wenn Sie dazu aufgefordert werden.
 8. Melden Sie sich bei `https://portal.local.azurestack.external` mit dem neuen Konto an, um das Mandantenportal anzuzeigen.
 
-## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Erstellen eines Azure Stack-Mandantenkontos mithilfe von PowerShell
+## <a name="create-an-azure-stack-user-account-using-powershell"></a>Erstellen eines Azure Stack-Benutzerkontos mithilfe von PowerShell
 
 Falls Sie kein Azure-Abonnement besitzen, können Sie ein Mandantenbenutzerkonto nicht mithilfe des Azure-Portals hinzufügen. In diesem Fall können Sie stattdessen das Azure Active Directory-Modul für Windows PowerShell verwenden.
 
 > [!NOTE]
 > Wenn Sie ein Microsoft-Konto (Live ID) zum Bereitstellen des Azure Stack Development Kits verwenden, können Sie ein Mandantenkonto nicht mithilfe von AAD PowerShell erstellen. 
-> 
-> 
 
 1. Installieren Sie den [Microsoft Online Services-Anmelde-Assistenten für IT-Experten RTW](https://www.microsoft.com/en-us/download/details.aspx?id=41950).
 2. Installieren Sie das [Azure Active Directory-Modul für Windows PowerShell (64-Bit-Version)](https://go.microsoft.com/fwlink/p/?linkid=236297), und öffnen Sie es.
@@ -85,3 +83,6 @@ Falls Sie kein Azure-Abonnement besitzen, können Sie ein Mandantenbenutzerkonto
 1. Melden Sie sich mit dem neuen Konto bei Microsoft Azure an. Ändern Sie das Kennwort, wenn Sie dazu aufgefordert werden.
 2. Melden Sie sich bei `https://portal.local.azurestack.external` mit dem neuen Konto an, um das Mandantenportal anzuzeigen.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+[Hinzufügen von Azure Stack-Benutzern in AD FS](azure-stack-add-users-adfs.md)

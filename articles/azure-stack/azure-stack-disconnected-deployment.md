@@ -12,21 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 05bf01e2b7c380f7bb79230885e247bd8c834d14
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4481bcf7a794423f98f45e4a21a139dbe4c32b4f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691166"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210780"
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Planungsentscheidungen zu nicht mit Azure verbundenen Bereitstellungen für in Azure Stack integrierte Systeme
 Nachdem Sie entschieden haben, [wie Sie Azure Stack in Ihre Hybrid Cloud-Umgebung integrieren](azure-stack-connection-models.md), können Sie Ihre Azure Stack-Bereitstellungsentscheidungen abschließen.
 
-Sie können Azure Stack ohne Verbindung mit dem Internet bereitstellen und verwenden. Bei einer nicht mit Azure verbundenen Bereitstellung sind Sie jedoch auf einen AD FS-Identitätsspeicher und das kapazitätsbasierte Abrechnungsmodell beschränkt. Weil für Mehrinstanzenfähigkeit Azure AD verwendet werden muss, wird sie bei nicht verbundenen Bereitstellungen nicht unterstützt. 
+Sie können Azure Stack ohne Verbindung mit dem Internet bereitstellen und verwenden. Bei einer nicht mit Azure verbundenen Bereitstellung sind Sie jedoch auf einen AD FS-Identitätsspeicher und das kapazitätsbasierte Abrechnungsmodell beschränkt. Weil für Mehrinstanzenfähigkeit Azure Active Directory (Azure AD) verwendet werden muss, wird sie bei nicht verbundenen Bereitstellungen nicht unterstützt. 
 
 Wählen Sie diese Option in den folgenden Fällen:
 - Es gelten Sicherheits- oder andere Einschränkungen, die es erforderlich machen, Azure Stack in einer Umgebung bereitzustellen, die nicht mit dem Internet verbunden ist.
@@ -34,9 +34,9 @@ Wählen Sie diese Option in den folgenden Fällen:
 - Sie möchten Azure Stack als reine private Cloudlösung nutzen, die im Intranet Ihres Unternehmens bereitgestellt wird, und interessieren sich nicht für Hybridszenarien.
 
 > [!TIP]
-> Mitunter wird diese Art von Umgebung auch mit einem U-Boot verglichen.
+> Mitunter wird diese Art von Umgebung auch mit einem *U-Boot* verglichen.
 
-Eine nicht mit Azure verbundene Bereitstellung bedeutet nicht unbedingt, dass Sie später Ihre Azure Stack-Instanz nicht mit Azure für hybride VM-Mandantenszenarien verbinden können. Es bedeutet, dass Sie während der Bereitstellung keine Verbindung mit Azure haben bzw. Azure Active Directory nicht als Identitätsspeicher verwenden möchten.
+Eine nicht mit Azure verbundene Bereitstellung hindert Sie nicht daran, später Ihre Azure Stack-Instanz mit Azure für hybride VM-Mandantenszenarien zu verbinden. Es bedeutet, dass Sie während der Bereitstellung keine Verbindung mit Azure haben bzw. Azure AD nicht als Identitätsspeicher verwenden möchten.
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>Funktionen, die in von Azure getrennten Bereitstellungen eingeschränkt oder nicht verfügbar sind 
 Azure Stack wurde so konzipiert, dass die Lösung am besten funktioniert, wenn sie mit Azure verbunden ist. Daher ist es wichtig zu beachten, dass es einige Features und Funktionen gibt, die entweder beeinträchtigt sind oder im von Azure getrennten Modus nicht verfügbar sind. 

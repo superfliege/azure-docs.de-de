@@ -12,23 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/25/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: knithinc
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: 44f12c72716e98e2f28796359467685e0af579dd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42b67ae9b715670f1a0c6e0fed004487a52817d3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238245"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206466"
 ---
 # <a name="connect-to-the-asdk"></a>Herstellen einer Verbindung mit dem ASDK
 
 Zum Verwalten von Ressourcen müssen Sie zunächst eine Verbindung mit dem Azure Stack Development Kit (ASDK) herstellen. In diesem Artikel werden die Schritte zum Herstellen einer Verbindung mit dem ASDK mithilfe der folgenden Verbindungsoptionen beschrieben:
 
 * [Remotedesktopverbindung (RDP)](#connect-with-rdp). Über eine Remotedesktopverbindung kann ein einzelner Benutzer schnell eine Verbindung mit dem Development Kit herstellen.
-* [Virtuelles privates Netzwerk (VPN)](#connect-with-vpn). Bei Verwendung einer VPN-Verbindung können mehrere Benutzer parallel über Clients außerhalb der Azure Stack-Infrastruktur eine Verbindung herstellen. Eine VPN-Verbindung muss erst eingerichtet werden.
+* [Virtuelles privates Netzwerk (VPN)](#connect-with-vpn). Bei Verwendung einer VPN-Verbindung können mehrere Benutzer parallel über Clients außerhalb der Azure Stack-Infrastruktur eine Verbindung mit den Azure Stack-Portalen herstellen. Eine VPN-Verbindung muss erst eingerichtet werden.
 
 <a name="connect-with-rdp"></a>
 ## <a name="connect-to-azure-stack-using-rdp"></a>Herstellen einer Verbindung mit Azure Stack mithilfe von RDP

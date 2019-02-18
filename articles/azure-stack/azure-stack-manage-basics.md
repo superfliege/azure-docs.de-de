@@ -12,24 +12,24 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: a9bf2240e6e60a3d2d80bf4829d74f1043024d7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2c4a95bddea85d298ff9343bfd813d0b79b24b51
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239671"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164021"
 ---
 # <a name="azure-stack-administration-basics"></a>Grundlagen zur Verwaltung von Azure Stack
-Wenn Sie nicht mit der Azure Stack-Verwaltung vertraut sind, gibt es verschiedene Punkte, die Ihnen bekannt sein müssen. Dieser Leitfaden enthält einen Überblick über Ihre Rolle als Azure Stack-Betreiber sowie Informationen, die Sie Ihren Benutzern bereitstellen müssen, damit diese rasch Produktivitätssteigerungen erzielen können.
+Wenn Sie nicht mit der Azure Stack-Verwaltung vertraut sind, gibt es verschiedene Punkte, die Ihnen bekannt sein müssen. Dieser Artikel enthält einen Überblick über Ihre Rolle als Azure Stack-Betreiber sowie Informationen, die Sie Ihren Benutzern bereitstellen müssen, damit diese rasch Produktivitätssteigerungen erzielen können.
 
 ## <a name="understand-the-builds"></a>Grundlegendes zu den Builds
 
 ### <a name="integrated-systems"></a>Integrierte Systeme
 
-Wenn Sie ein integriertes Azure Stack-System verwenden, werden aktualisierte Versionen von Azure Stack über Updatepakete verteilt. Sie können diese Pakete importieren und anwenden, indem Sie im Administratorportal die Kachel „Updates“ verwenden.
+Wenn Sie ein integriertes Azure Stack-System verwenden, werden aktualisierte Versionen von Azure Stack über Updatepakete verteilt. Sie können diese Pakete importieren und anwenden, indem Sie im Administratorportal die Kachel „Updates“ verwenden. Das Aktualisieren von ASDK-Installation wird nicht unterstützt. 
  
 ### <a name="development-kit"></a>Development Kit
 

@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/09/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 707cd7e72245ce47289c0a744d7103c713acecb9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: d0051f081f005d61a1eed43d177a11781b2b3fa8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765482"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997084"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Hinzufügen von Kubernetes zum Azure Stack-Marketplace
 
@@ -65,15 +65,15 @@ Erstellen Sie einen Plan, ein Angebot und ein Abonnement für das Marketplace-El
 
 Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltungsdienst verwenden, müssen Sie einen Dienstprinzipal für Benutzer erstellen, die einen Kubernetes-Cluster bereitstellen.
 
-1. Erstellen und exportieren Sie ein Zertifikat, das zum Erstellen des Dienstprinzipals verwendet werden soll. Der folgende Codeausschnitt zeigt, wie Sie ein selbstsigniertes Zertifikat erstellen. 
+1. Erstellen und exportieren Sie ein selbstsigniertes Zertifikat, das zum Erstellen des Dienstprinzipals verwendet wird. 
 
     - Sie benötigen die folgenden Informationen:
 
        | Wert | BESCHREIBUNG |
        | ---   | ---         |
-       | Kennwort | Das Kennwort für das Zertifikat. |
-       | Lokaler Zertifikatpfad | Der Pfad und Dateiname des Zertifikats. Beispiel: `path\certfilename.pfx` |
-       | Zertifikatsname | Der Name des Zertifikats. |
+       | Kennwort | Geben Sie ein neues Kennwort für das Zertifikat ein. |
+       | Lokaler Zertifikatpfad | Geben Sie den Pfad und Dateiname des Zertifikats ein. Beispiel: `c:\certfilename.pfx` |
+       | Zertifikatsname | Geben Sie den Namen des Zertifikats ein. |
        | Zertifikatspeicherort |  Zum Beispiel, `Cert:\LocalMachine\My` |
 
     - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
@@ -82,8 +82,7 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltung
         # Creates a new self signed certificate 
         $passwordString = "<password>"
         $certlocation = "<local certificate path>.pfx"
-        $certificateName = "<certificate name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
+        $certificateName = "CN=<certificate name>"
         $certStoreLocation="<certificate store location>"
         
         $params = @{
@@ -105,24 +104,33 @@ Wenn Sie Active Directory-Verbunddienste (AD FS) als Ihren Identitätsverwaltung
         Export-PfxCertificate -cert $cert -FilePath $certlocation -Password $pwd
         ```
 
-2. Erstellen Sie mithilfe des Zertifikats einen Dienstprinzipal.
+2.  Notieren Sie sich die neue Zertifikat-ID, die in Ihrer PowerShell-Sitzung angezeigt wird, `1C2ED76081405F14747DC3B5F76BB1D83227D824`. Die ID wird verwendet, wenn Sie den Dienstprinzipal erstellen.
+
+    ```PowerShell  
+    VERBOSE: Generated new certificate 'CN=<certificate name>' (1C2ED76081405F14747DC3B5F76BB1D83227D824).
+    ```
+
+3. Erstellen Sie mithilfe des Zertifikats einen Dienstprinzipal.
 
     - Sie benötigen die folgenden Informationen:
 
        | Wert | BESCHREIBUNG                     |
        | ---   | ---                             |
        | ERCS IP | Im ASDK ist der privilegierte Endpunkt normalerweise `AzS-ERCS01`. |
-       | Anwendungsname | Ein einfacher Name für den Anwendungsdienstprinzipal |
-       | Zertifikatspeicherort | Der Pfad auf Ihrem Computer, in dem Sie das Zertifikat gespeichert haben. Beispiel: `Cert:\LocalMachine\My\<someuid>` |
+       | Anwendungsname | Geben Sie einen einfachen Namen für den Anwendungsdienstprinzipal ein. |
+       | Zertifikatspeicherort | Der Pfad auf Ihrem Computer, in dem Sie das Zertifikat gespeichert haben. Dieser wird durch den Speicherort und die Zertifikat-ID angezeigt, die im ersten Schritt generiert werden. Beispiel: `Cert:\LocalMachine\My\1C2ED76081405F14747DC3B5F76BB1D83227D824` |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
+       Wenn Sie zur Eingabe aufgefordert werden, verwenden Sie die folgenden Anmeldeinformationen, um eine Verbindung mit dem privilegierten Endpunkt herzustellen. 
+        - Benutzername: Geben Sie das CloudAdmin-Konto im Format „<Azure Stack domain>\cloudadmin“ an. (Für ASDK lautet der Benutzername „azurestack\cloudadmin“.)
+        - Password (Kennwort): Geben Sie das gleiche Kennwort ein, das während der Installation für das AzureStackAdmin-Domänenadministratorkonto bereitgestellt wurde.
+
+    - Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
         ```PowerShell  
         #Create service principal using the certificate
         $privilegedendpoint="<ERCS IP>"
         $applicationName="<application name>"
-        #certificate store location. Eg. Cert:\LocalMachine\My
-        $certStoreLocation="<certificate store location>"
+        $certStoreLocation="<certificate location>"
         
         # Get certificate information
         $cert = Get-Item $certStoreLocation
@@ -189,7 +197,7 @@ Fügen Sie dem Marketplace das folgende Ubuntu-Serverimage hinzu:
 
 1. Wählen Sie **+ Add from Azure** (+ Aus Azure hinzufügen) aus.
 
-1. Geben Sie `UbuntuServer` ein.
+1. Geben Sie `Ubuntu Server` ein.
 
 1. Wählen Sie die neueste Version des Servers aus. Überprüfen Sie die vollständige Version, und stellen Sie sicher, dass Sie über die neueste Version verfügen:
     - **Herausgeber**: Canonical

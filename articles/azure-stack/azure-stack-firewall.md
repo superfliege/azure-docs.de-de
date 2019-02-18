@@ -12,30 +12,30 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: eff526118f6fd127ba720d28296baf86abd01393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 023201d221ee5d7ec884c6a760407e8da8340d3f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246433"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207119"
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack-Firewallintegration
-Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Firewalls können zwar bei verteilten Denial-of-Service-Angriffen (DDoS), bei der Angriffserkennung und bei der Inhaltsuntersuchung hilfreich sein, andererseits können sie sich aber auch als Engpass für den Durchsatz von Azure-Speicherdiensten wie Blobs, Tabellen und Warteschlangen erweisen.
+Es empfiehlt sich, Azure Stack mit einem Firewallgerät zu schützen. Firewalls können bei der Verteidigung vor Dingen wie DDoS-Angriffen (Denial of Service), bei der Angriffserkennung sowie der Inhaltsuntersuchung helfen. Sie können allerdings auch zu einem Durchsatzengpass für Azure-Speicherdienste wie Blobs, Tabellen und Warteschlangen werden.
 
-Je nach Identitätsmodell von Azure Active Directory (Azure AD) oder Windows Server Active Directory Federation Services (AD FS) müssen Sie möglicherweise den AD FS-Endpunkt veröffentlichen. Bei Verwendung eines getrennten Bereitstellungsmodus muss der AD FS-Endpunkt veröffentlicht werden. Weitere Informationen finden Sie im Artikel zur [Rechenzentrumsintegration mithilfe von Identitäten](azure-stack-integrate-identity.md).
+ Bei Verwendung eines getrennten Bereitstellungsmodus muss der AD FS-Endpunkt veröffentlicht werden. Weitere Informationen finden Sie im Artikel zur [Rechenzentrumsintegration mithilfe von Identitäten](azure-stack-integrate-identity.md).
 
-Für die Endpunkte „Azure Resource Manager (Administrator)“, „Portal (Administrator)“ und „Schlüsseltresor (Administrator)“ ist nicht zwingend eine externe Veröffentlichung erforderlich. Als Dienstanbieter können Sie beispielsweise die Angriffsfläche verkleinern und Azure Stack nur innerhalb Ihres Netzwerks (und nicht über das Internet) verwalten.
+Für die Endpunkte „Azure Resource Manager (Administrator)“, „Portal (Administrator)“ und „Schlüsseltresor (Administrator)“ ist nicht zwingend eine externe Veröffentlichung erforderlich. Als Dienstanbieter könnten Sie beispielsweise die Angriffsfläche verkleinern, indem Sie Azure Stack nur innerhalb Ihres Netzwerks (und nicht über das Internet) verwalten.
 
-Bei einem Unternehmen kann das Unternehmensnetzwerk als externes Netzwerk fungieren. In einem solchen Szenario müssen Sie die Endpunkte veröffentlichen, um Azure Stack über das Unternehmensnetzwerk bedienen zu können.
+Bei einem Unternehmen kann das Unternehmensnetzwerk als externes Netzwerk fungieren. In diesem Szenario müssen Sie Endpunkte veröffentlichen, um Azure Stack über das Unternehmensnetzwerk bedienen zu können.
 
 ### <a name="network-address-translation"></a>Netzwerkadressenübersetzung
 Die Netzwerkadressenübersetzung (Network Address Translation, NAT) stellt die empfohlene Methode dar, um virtuellen Bereitstellungscomputern (Deployment Virtual Machine, DVM) bei der Bereitstellung sowie ERCS-VMs (Emergency Recovery Console) oder privilegierten Endpunkten (PEP) bei der Registrierung und Problembehandlung Zugriff auf externe Ressourcen und das Internet zu ermöglichen.
 
-Die NAT kann auch alternativ zu öffentlichen IP-Adressen im externen Netzwerk oder öffentlichen VIPs verwendet werden. Hiervon wird jedoch abgeraten, da diese die Benutzerfreundlichkeit des Mandanten verringert und die Komplexität erhöht. Die beiden Optionen wären eine 1:1-NAT, die noch eine öffentliche IP pro Benutzer-IP für den Pool oder viele andere erfordert: 1 NAT, die eine NAT-Regel pro Benutzer-VIP mit Zuordnungen für alle Ports erfordert, die ein Benutzer verwenden könnte.
+Die NAT kann auch alternativ zu öffentlichen IP-Adressen im externen Netzwerk oder öffentlichen VIPs verwendet werden. Hiervon wird jedoch abgeraten, da diese die Benutzerfreundlichkeit des Mandanten verringert und die Komplexität erhöht. Eine Option wäre eine 1:1-NAT, die immer noch eine öffentliche IP pro Benutzer-IP im Pool erfordert. Eine andere Option ist eine Viele-zu-Eins-NAT (*:1), die eine NAT-Regel pro Benutzer-VIP für alle Ports erfordert, die ein Benutzer verwenden könnte.
 
 Die Verwendung der NAT für öffentliche VIPs hat folgende Nachteile:
 - Durch die NAT erhöht sich der Verwaltungsaufwand für Firewallregeln, da Benutzer ihre eigenen Endpunkte und ihre eigenen Veröffentlichungsregeln im SDN-Stapel (Software Defined Networking) steuern. Benutzer müssen sich zur Veröffentlichung ihrer VIPs sowie zur Aktualisierung der Portliste an den Azure Stack-Betreiber wenden.
@@ -48,7 +48,7 @@ Derzeit wird empfohlen, die SSL-Entschlüsselung bei allem Azure Stack-Datenverk
 ## <a name="edge-firewall-scenario"></a>Szenario mit Edgefirewall
 Azure Stack wird in einer Edgebereitstellung direkt hinter dem Edgerouter oder der Firewall bereitgestellt. In diesen Szenarien kann die Firewall dem Border-Gerät übergeordnet sein (Szenario 1) und sowohl Aktiv/Aktiv- als auch Aktiv/Passiv-Firewallkonfigurationen unterstützen oder als Border-Gerät fungieren (Szenario 2) und nur eine Aktiv/Aktiv-Firewallkonfiguration unterstützen, wobei ECMP (Equal Cost Multi Path) mit BGP oder statischem Routing für Failover erforderlich ist.
 
-In der Regel werden in einer Edgebereitstellung zum Zeitpunkt der Bereitstellung über das externe Netzwerk routingfähige IP-Adressen für den öffentlichen VIP-Pool angegeben. In einem Edgeszenario wird aus Sicherheitsgründen davon abgeraten, öffentliche routingfähige IP-Adressen in anderen Netzwerken zu verwenden. Dadurch erhalten Benutzer eine vollständig selbstgesteuerte Cloudumgebung – genau wie bei einer öffentlichen Cloud (z.B. Azure).  
+Öffentliche routingfähige IP-Adressen werden für den öffentlichen VIP-Pool aus dem externen Netzwerk zur Bereitstellungszeit angegeben. In einem Edgeszenario wird aus Sicherheitsgründen davon abgeraten, öffentliche routingfähige IP-Adressen in anderen Netzwerken zu verwenden. Dadurch erhalten Benutzer eine vollständig selbstgesteuerte Cloudumgebung – genau wie bei einer öffentlichen Cloud (z.B. Azure).  
 
 ![Beispiel für eine Azure Stack-Edgefirewall](./media/azure-stack-firewall/firewallScenarios.png)
 

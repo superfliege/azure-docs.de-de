@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: rtiberiu
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 69a0bde58a365ff124bc41b6039c606cb38f71fe
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 28f8300b83f55f4b083aa1e740dcbf1db0f1dc31
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55768544"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168138"
 ---
 # <a name="azure-stack-vm-update-and-management"></a>Update und Verwaltung virtueller Computer mit Azure Stack
 Sie können die folgenden Funktionen der Azure Automation-Lösung verwenden, um virtuelle Windows- und Linux-Computer zu verwalten, die mit Azure Stack bereitgestellt werden:
@@ -100,4 +100,4 @@ Die virtuellen Azure Stack-Computer können nun zusammen mit den virtuellen Azur
 Wenn Sie eine große Anzahl von virtuellen Azure Stack-Computern verwenden, können Sie [diese Azure Resource Manager-Vorlage](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) verwenden, um die Lösung einfacher auf virtuellen Computern bereitzustellen. Die Vorlage stellt die Microsoft Monitoring Agent-Erweiterung auf einem vorhandenen virtuellen Azure Stack-Computer bereit und fügt sie einem vorhandenen Azure LogAnalytics-Arbeitsbereich hinzu.
  
 ## <a name="next-steps"></a>Nächste Schritte
-[Optimierung der Leistung von SQL Server](azure-stack-sql-server-vm-considerations.md)
+[Optimierung der Leistung von SQL Server-VMs](azure-stack-sql-server-vm-considerations.md)

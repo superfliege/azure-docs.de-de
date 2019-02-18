@@ -11,23 +11,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 3a80e3a95252b60dd39ad4ce20878922aeee5730
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e1a00ea36efa6af816c371f5498085fc2cf491b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246881"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165024"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Hinzufügen von Hostservern für den MySQL-Ressourcenanbieter
 
-Sie können eine MySQL-Instanz auf einem virtuellen Computer (VM) in [Azure Stack](azure-stack-poc.md) oder auf einer VM außerhalb Ihrer Azure Stack-Umgebung hosten, solange sich der MySQL-Ressourcenanbieter mit der Instanz verbinden kann.
+Sie können eine MySQL-Hostserverinstanz auf einem virtuellen Computer (VM) in [Azure Stack](azure-stack-poc.md) oder auf einer VM außerhalb Ihrer Azure Stack-Umgebung hosten, solange sich der MySQL-Ressourcenanbieter mit der Instanz verbinden kann.
 
 > [!NOTE]
-> MySQL-Datenbanken sollten auf dem Server des MySQL-Ressourcenanbieters erstellt werden. Der MySQL-Ressourcenanbieter sollte im Standardanbieterabonnement erstellt werden, während MySQL-Hostingserver in einem abrechenbaren Benutzerabonnement erstellt werden sollten. Der Server des Ressourcenanbieters sollte nicht zum Hosten von Benutzerdatenbanken verwendet werden.
+> Der MySQL-Ressourcenanbieter sollte im Standardanbieterabonnement erstellt werden, während MySQL-Hostingserver in einem abrechenbaren Benutzerabonnement erstellt werden sollten. Der Server des Ressourcenanbieters sollte nicht zum Hosten von Benutzerdatenbanken verwendet werden.
 
 Die MySQL-Versionen 5.6, 5.7 und 8.0 können für Ihre Hostingserver verwendet werden. Der MySQL RP unterstützt keine caching_sha2_password-Authentifizierung. Diese Unterstützung wird im nächsten Release hinzugefügt. MySQL-8.0-Server müssen für die Verwendung von mysql_native_password konfiguriert werden. MariaDB wird ebenfalls unterstützt.
 

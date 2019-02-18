@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 09/05/2018
-ms.openlocfilehash: 0fed6751d326c5da4431e953f7ded9c12688871f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c42490b7d46df77bffd13fdda02884704fb13b67
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250043"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210300"
 ---
 # <a name="back-up-azure-stack"></a>Sichern von Azure Stack
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Führen Sie eine bedarfsgesteuerte Sicherung von Azure Stack durch, indem Sie den integrierten Sicherungsdienst nutzen. Anweisungen zum Konfigurieren der PowerShell-Umgebung finden Sie unter [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md). Informationen zur Anmeldung bei Azure Stack finden Sie unter [Verwenden des Administratorportals in Azure Stack](azure-stack-manage-portals.md).
+Führen Sie eine bedarfsgesteuerte Sicherung von Azure Stack durch. Anweisungen zum Konfigurieren der PowerShell-Umgebung finden Sie unter [Installieren von PowerShell für Azure Stack](azure-stack-powershell-install.md). Informationen zur Anmeldung bei Azure Stack finden Sie unter [Verwenden des Administratorportals in Azure Stack](azure-stack-manage-portals.md).
 
 ## <a name="start-azure-stack-backup"></a>Starten der Azure Stack-Sicherung
 
@@ -121,4 +121,4 @@ Führen Sie im Azure Stack-Verwaltungsportal diese Schritte aus, um sicherzustel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über den Workflow zur Wiederherstellung nach einem Datenverlust. Siehe [Wiederherstellen nach schwerwiegendem Datenverlust](azure-stack-backup-recover-data.md).
+Erfahren Sie mehr über den Workflow zur [Wiederherstellung nach einem Datenverlust](azure-stack-backup-recover-data.md).

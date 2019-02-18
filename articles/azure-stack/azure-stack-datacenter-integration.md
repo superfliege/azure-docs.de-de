@@ -12,19 +12,19 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.lastreviewed: 09/12/2018
-ms.openlocfilehash: afb4e634b7e255ef8f2cfc84319029af7412372e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 5ececb2d3c52a1da8c1a537e6223f17a9b83921f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251876"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207533"
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Überlegungen zur Integration von Rechenzentren für integrierte Azure Stack-Systeme
-Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müsse Sie einige der wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
+Wenn Sie an einem mit Azure Stack integrierten System interessiert sind, müssen Sie die wichtigsten Aspekte bei der Planung der Bereitstellung verstehen und wissen, wie das System in Ihr Rechenzentrum passt. Dieser Artikel bietet einen allgemeinen Überblick über diese Aspekte, damit Sie wichtige Infrastrukturentscheidungen für Ihr Azure Stack-System mit mehreren Knoten treffen können. Ein Verständnis dieser Aspekte hilft Ihnen bei der Zusammenarbeit mit Ihrem OEM-Hardwareanbieter, sobald dieser Azure Stack in Ihrem Rechenzentrum bereitstellt.  
 
 > [!NOTE]
 > Azure Stack-Systeme mit mehreren Knoten können nur bei autorisierten Hardwareherstellern bezogen werden. 
@@ -53,8 +53,6 @@ Wenn für die Behandlung von Problemen, die nicht durch Schritte zur Warnungsver
 
 ### <a name="choose-identity-provider"></a>Auswählen des Identitätsanbieters
 Sie müssen bedenken, welchen Identitätsanbieter Sie für die Bereitstellung von Azure Stack nutzen möchten, Azure AD oder AD FS. Sie können die Identitätsanbieter nach der Bereitstellung nicht wechseln, ohne das System komplett neu bereitstellen zu müssen. Wenn Sie Azure AD-Kontos nicht besitzen und ein Konto verwenden, die Sie von Ihrem Cloud-Service-Anbieter bereitgestellt und Sie verwenden möchten, wechseln Sie Anbieter, und verwenden einen anderen Azure AD-Konto, die an diesem Punkt müssen, wenden Sie sich an Ihre Lösungsanbieter, um die f-Lösung erneut bereitstellen oder Sie Ihre Kosten.
-
-
 
 Ihre Wahl des Identitätsanbieters hat keinen Einfluss auf virtuelle Computer des Mandanten, auf das Identitätssystem sowie auf von ihnen verwendete Konten oder darauf, ob sie einer Active Directory-Domäne usw. beitreten können. Das ist was anderes.
 
@@ -110,7 +108,7 @@ Weitere Informationen darüber, welche PKI-Zertifikate (Public Key-Infrastruktur
 
 
 ## <a name="time-synchronization"></a>Zeitsynchronisierung
-Sie müssen einen bestimmten Zeitserver auswählen, mit dessen Hilfe Azure Stack synchronisiert wird.  Die Uhrzeitsynchronisierung ist für Azure Stack und seine Infrastrukturrollen von entscheidender Bedeutung, da sie zur Generierung von Kerberos-Tickets dient, mit denen interne Dienste sich gegenseitig authentifizieren.
+Sie müssen einen bestimmten Zeitserver auswählen, mit dessen Hilfe Azure Stack synchronisiert wird.  Die Uhrzeitsynchronisierung ist für Azure Stack und seine Infrastrukturrollen von entscheidender Bedeutung, da sie zur Generierung von Kerberos-Tickets dient, mit denen sich interne Dienste gegenseitig authentifizieren.
 
 Sie müssen eine IP-Adresse für den Zeitsynchronisierungsserver angeben. Wenngleich die meisten Komponenten in der Infrastruktur eine URL auflösen können, können einige nur IP-Adressen unterstützen. Wenn Sie die Bereitstellungsoption „Getrennt“ verwenden, müssen Sie einen Zeitserver in Ihrem Unternehmensnetzwerk angeben, von dem Sie sicher sind, dass er über das Infrastrukturnetzwerk in Azure Stack erreichbar ist.
 

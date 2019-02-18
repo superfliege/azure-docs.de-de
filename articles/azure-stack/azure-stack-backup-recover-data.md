@@ -12,22 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 9dc023eedf0ddca4e760d9d066b019b75597fb69
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3fd91ef17415e2c6ebb735fdedb098f8aa319d8c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246482"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207414"
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>Wiederherstellen nach schwerwiegendem Datenverlust
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme.*
 
-Azure Stack führt Azure-Dienste in Ihrem Rechenzentrum aus. Azure Stack kann in so kleinen Umgebungen wie vier in einem Rack installierten Knoten ausgeführt werden. Im Gegensatz dazu wird Azure in mehr als 40 Regionen in mehreren Rechenzentren und mehreren Zonen in jeder Region ausgeführt. Benutzerressourcen können mehrere Server, Racks, Rechenzentren und Regionen umfassen. Mit Azure Stack haben Sie derzeit nur die Möglichkeit, Ihre gesamte Cloud in einem einzelnen Rack bereitzustellen. Dadurch wird Ihre Cloud dem Risiko von Katastrophenfällen in Ihrem Rechenzentrum oder Ausfällen aufgrund von Produktfehlern ausgesetzt. Bei einem Notfall wird die Azure Stack-Instanz offline geschaltet. Alle Daten sind möglicherweise nicht mehr wiederherstellbar.
+Azure Stack führt Dienste in Ihrem Rechenzentrum aus und kann in so kleinen Umgebungen wie vier in einem Rack installierten Knoten ausgeführt werden. Im Gegensatz dazu wird Azure in mehr als 40 Regionen in mehreren Rechenzentren und mehreren Zonen in jeder Region ausgeführt. Benutzerressourcen können mehrere Server, Racks, Rechenzentren und Regionen umfassen. Mit Azure Stack haben Sie derzeit nur die Möglichkeit, Ihre gesamte Cloud in einem einzelnen Rack bereitzustellen. Dadurch wird Ihre Cloud dem Risiko von Katastrophenfällen in Ihrem Rechenzentrum oder Ausfällen aufgrund von Produktfehlern ausgesetzt. Bei einem Notfall wird die Azure Stack-Instanz offline geschaltet. Alle Daten sind möglicherweise nicht mehr wiederherstellbar.
 
 Je nach Grundursache des Datenverlusts müssen Sie eventuell einen einzelnen Infrastrukturdienst reparieren oder die gesamte Azure Stack-Instanz wiederherstellen. Unter Umständen müssen Sie die Wiederherstellung sogar auf einer anderen Hardware am gleichen oder an einem anderen Standort durchführen.
 

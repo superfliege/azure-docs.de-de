@@ -15,12 +15,12 @@ ms.date: 11/16/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: be537d9598eeda902254e56a9202415f4f498d93
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bee143f7e814884eda3c5dc9017895a8431e76aa
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245132"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55890551"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Hinzufügen von Linux-Images zu Azure Stack
 
@@ -38,7 +38,7 @@ Beachten Sie, dass diese Images regelmäßig aktualisiert werden. Überprüfen S
 
 Laden Sie nach Möglichkeit die Images herunter, die über die Marketplace-Verwaltung verfügbar sind, da diese für Azure Stack konzipiert und getestet wurden. 
  
-Der Azure Linux-Agent (in der Regel `WALinuxAgent` oder `walinuxagent`) ist erforderlich, aber nicht alle Versionen des Agents können mit Azure Stack verwendet werden. Verwenden Sie mindestens die Version 2.2.18, wenn Sie Ihr eigenes Image erstellen. Beachten Sie, dass [cloud-init](https://cloud-init.io/) derzeit nicht für Azure Stack unterstützt wird.
+Der Azure Linux-Agent (in der Regel `WALinuxAgent` oder `walinuxagent`) ist erforderlich, aber nicht alle Versionen des Agents können mit Azure Stack verwendet werden. Verwenden Sie mindestens die Version 2.2.20, wenn Sie Ihr eigenes Image erstellen. Beachten Sie, dass [cloud-init](https://cloud-init.io/) derzeit nicht für Azure Stack unterstützt wird.
 
 Sie können Ihr eigenes Linux-Image gemäß den folgenden Anweisungen vorbereiten:
 

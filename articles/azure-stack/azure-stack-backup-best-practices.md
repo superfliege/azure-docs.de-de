@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
-ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 11829256451990401b6de4bcf62f2b0b51010832
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.lastreviewed: 02/08/2019
+ms.openlocfilehash: d2568a4dfc4fefe9628fc63dcc0526b0876fde00
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241151"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993876"
 ---
 # <a name="infrastructure-backup-service-best-practices"></a>Bewährte Methoden für den Infrastructure Backup-Dienst
 
@@ -43,9 +43,18 @@ Für die UNC-Zeichenfolge (Universal Naming Convention) für den Pfad muss ein v
 
 ### <a name="encryption"></a>Verschlüsselung
 
+#### <a name="version-1901-and-newer"></a>Version 1901 und neuer
+
+Das Verschlüsselungszertifikat wird zum Verschlüsseln der Sicherungsdaten verwendet, die in einen externen Speicher exportiert werden. Das Zertifikat kann ein selbstsigniertes Zertifikat sein, da das Zertifikat nur für den Transport von Schlüsseln verwendet wird. Weitere Informationen zum Erstellen eines Zertifikats finden Sie unter „New-SelfSignedCertificate“.  
+Der Schlüssel muss in einem sicheren Speicherort (z.B. globales Azure Key Vault-Zertifikat) gespeichert werden. Das CER-Format des Zertifikats dient zum Verschlüsseln von Daten. Das PFX-Format muss während der Bereitstellung der Cloudwiederherstellung von Azure Stack verwendet werden, um Sicherungsdaten zu entschlüsseln.
+
+![Speichern Sie das Zertifikat an einem sicheren Speicherort.](media/azure-stack-backup/azure-stack-backup-encryption-store-cert.png)
+
+#### <a name="1811-and-older"></a>1811 und älter
+
 Der Verschlüsselungsschlüssel wird zum Verschlüsseln der Sicherungsdaten verwendet, die in einen externen Speicher exportiert werden. Der Schlüssel wird im Rahmen der [Aktivierung der Sicherung für Azure Stack mit PowerShell](azure-stack-backup-enable-backup-powershell.md) generiert.
 
-Der Schlüssel muss in einem sicheren Speicherort (z.B. öffentliches Azure Key Vault-Geheimnis) gespeichert werden. Dieser Schlüssel muss während der erneuten Bereitstellung von Azure Stack verwendet werden. 
+Der Schlüssel muss in einem sicheren Speicherort (z.B. globales Azure Key Vault-Geheimnis) gespeichert werden. Dieser Schlüssel muss während der erneuten Bereitstellung von Azure Stack verwendet werden. 
 
 ![Speichern des Schlüssels an einem sicheren Speicherort](media/azure-stack-backup/azure-stack-backup-encryption2.png)
 

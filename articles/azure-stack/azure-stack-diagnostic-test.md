@@ -10,22 +10,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: adshar
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 82a691c0e0b6280a168605d56ee628d81f10823f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: eca66bc2e737b0f9a9954cad21a446e82d753f84
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245649"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203810"
 ---
 # <a name="validate-azure-stack-system-state"></a>Überprüfen des Azure Stack-Systemstatus
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-Als Azure Stack-Betreiber die Möglichkeit zu haben, die Integrität und den Status Ihres Systems bei Bedarf zu kennen, ist sehr wichtig. Das Azure Stack-Überprüfungstool (**Test-AzureStack**) ist ein PowerShell-Cmdlet, mit dem Sie eine Reihe von Tests auf Ihrem System ausführen können, um vorliegende Fehler zu identifizieren. In der Regel werden Sie aufgefordert, dieses Tool über den [privilegierten Endpunkt (PEP)](azure-stack-privileged-endpoint.md) auszuführen, wenn Sie sich mit der Meldung eines Problems an Microsoft Customer Services Support (CSS) wenden. Wenn die systemweiten Integritäts- und Statusinformationen vorliegen, kann CSS detaillierte Protokolle sammeln und analysieren, sich auf den Bereich konzentrieren, in dem der Fehler aufgetreten ist, und mit Ihnen zusammenarbeiten, um das Problem zu beheben.
+Als Azure Stack-Betreiber in der Lage zu sein, die Integrität und den Status Ihres Systems bei Bedarf zu ermitteln, ist sehr wichtig. Das Azure Stack-Überprüfungstool (**Test-AzureStack**) ist ein PowerShell-Cmdlet, mit dem Sie eine Reihe von Tests auf Ihrem System ausführen können, um vorliegende Fehler zu identifizieren. In der Regel werden Sie aufgefordert, dieses Tool über den [privilegierten Endpunkt (PEP)](azure-stack-privileged-endpoint.md) auszuführen, wenn Sie sich mit der Meldung eines Problems an Microsoft Customer Services Support (CSS) wenden. Wenn die systemweiten Integritäts- und Statusinformationen vorliegen, kann CSS detaillierte Protokolle sammeln und analysieren, sich auf den Bereich konzentrieren, in dem der Fehler aufgetreten ist, und mit Ihnen zusammenarbeiten, um das Problem zu beheben.
 
 ## <a name="running-the-validation-tool-and-accessing-results"></a>Ausführen des Überprüfungstools und Zugreifen auf die Ergebnisse
 
@@ -93,7 +93,6 @@ Diese Tests mit geringer Auswirkung arbeiten auf einer Infrastrukturebene und li
 
 Zusätzlich zu den vorstehenden Infrastrukturtests haben Sie die Möglichkeit zur Ausführung von Cloudszenariotests, um die Funktionalität für Infrastrukturkomponenten zu überprüfen. Weil in diesen Tests die Bereitstellung von Ressourcen enthalten ist, sind zu deren Ausführung Anmeldeinformationen für Cloudadministratoren erforderlich. 
     > [!NOTE]
-    >
     > Currently you cannot run cloud scenario tests using Active Directory Federated Services (AD FS) credentials. 
 
 Die folgenden Cloudszenarien werden durch das Überprüfungstool getestet:

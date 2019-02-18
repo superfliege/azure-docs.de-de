@@ -12,22 +12,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: asganesh
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: f900fa5105f42dac57b392d41a8cd888850fc648
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d5ed8da4ea527e350b1ff73d0bd188cdad2caf71
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249490"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189207"
 ---
 # <a name="azure-stack-datacenter-integration"></a>Azure Stack-Rechenzentrumsintegration
 
-In diesem Artikel wird die Azure Stack-End-to-End-Kundenerfahrung vom Kauf einer integrierten Lösung bis zu einer erfolgreichen lokalen Bereitstellung durch einen Lösungsanbieter beschrieben. Nutzen Sie diese Informationen zur Vereinfachung Ihres Wegs und als Hilfe bei der Festlegung von Erwartungen, die Sie als Azure Stack-Kunde bei der Integration von Azure Stack in Ihr Datencenter haben sollten.
+In diesem Artikel wird die Azure Stack-End-to-End-Kundenerfahrung vom Kauf eines integrierten Systems bis zu einer erfolgreichen lokalen Bereitstellung durch einen Lösungsanbieter beschrieben. Nutzen Sie diese Informationen zur Vereinfachung Ihres Wegs und als Hilfe bei der Festlegung Ihrer Erwartungen als Azure Stack-Kunde.
 
-Als Azure Stack-Kunde sollten Sie folgende Phasen der Datencenterintegration erwarten:
+Als Azure Stack-Kunde sollten Sie die folgenden Phasen erwarten:
 
 |     |Planungsphase|Auftragsprozess|Vor der Bereitstellung|Factoryprozess|Hardwarelieferung|Lokale Bereitstellung|
 |-----|-----|-----|-----|-----|-----|-----|
@@ -63,7 +63,7 @@ Während dieser Phase müssen Sie entscheiden, wie Sie Azure Stack in Ihr Datenc
 Der Artikel [General datacenter integration considerations](azure-stack-datacenter-integration.md) (Allgemeine Überlegungen zur Datencenterintegration) enthält Informationen, die Ihnen beim Ausfüllen der Vorlage, dem so genannten Arbeitsblatt „Deployment Worksheet“ (Arbeitsblatt für die Bereitstellung), helfen sollen. 
 
 > [!IMPORTANT]
-> Während dieser Phase ist es wichtig, dass alle vorausgesetzten Informationen untersucht werden und darüber entschieden wird, bevor die Lösung bestellt wird. Denken Sie daran, dass dieser Schritt zeitaufwändig ist und dafür die Koordination und das Sammeln von Daten aus mehreren Fachrichtungen innerhalb Ihrer Organisation erforderlich ist. 
+> Während dieser Phase ist es wichtig, dass alle vorausgesetzten Informationen untersucht werden und darüber entschieden wird, bevor die Lösung bestellt wird. Denken Sie daran, dass dieser Schritt zeitaufwändig ist und dafür die Koordination und das Sammeln von Daten aus mehreren Fachrichtungen innerhalb Ihrer Organisation erforderlich ist. Falsche oder unvollständige Informationen können zu einer längeren Dauer der Bereitstellung führen. 
 
 In der Phase vor der Bereitstellung müssen Sie über Folgendes entscheiden:
 
@@ -90,7 +90,7 @@ Es ist **äußerst wichtig**, dass alle als vorausgesetzten Daten gesperrt und v
 
 -   Alle Zertifikate müssen erworben werden und einsatzbereit sein.
 
--   Der Domänenname muss festgelegt werden.
+-   Der Regionsname muss festgelegt werden.
 
 -   Alle Parameter für die Netzwerkintegration sind abgeschlossen und stimmen mit dem überein, was Sie für Ihren Lösungsanbieter freigegeben haben.
 
@@ -102,16 +102,16 @@ Zum Bereitstellen von Azure Stack muss ein Vor-Ort-Techniker vom Lösungsanbiete
 
 Im Folgenden wird beschrieben, was Sie vom Vor-Ort-Techniker während des Bereitstellungsverfahrens erwarten sollten:
 
-- Überprüfen der gesamten Verkabelung und Grenzkonnektivität, um sicherzustellen, dass die Lösung ordnungsgemäß zusammengesetzt wird und Ihre Anforderungen erfüllt
-- Konfigurieren des Lösungs-HLH
+- Überprüfen der gesamten Verkabelung und Grenzkonnektivität, um sicherzustellen, dass die Lösung ordnungsgemäß zusammengesetzt wird und Ihre Anforderungen erfüllt.
+- Konfigurieren des Lösungs-HLH (Hardware Lifecycle Host, Hardwarelebenszyklus-Host), falls vorhanden.
 - Überprüfen, ob alle BMC-, BIOS- und Netzwerkeinstellungen korrekt sind
-- Sicherstellen, dass die Firmware aller Komponenten die neueste durch die Lösung genehmigte Version aufweist
-- Starten der Bereitstellung
+- Sicherstellen, dass die Firmware aller Komponenten die neueste durch die Lösung genehmigte Version aufweist.
+- Starten der Bereitstellung.
 
 > [!NOTE]
 > Die Durchführung des Bereitstellungsverfahrens durch den Vor-Ort-Techniker kann ungefähr eine Geschäftswoche dauern.
 
-## <a name="post-integration-phase"></a>Phase nach der Integration
+## <a name="post-deployment-phase"></a>Phase nach der Bereitstellung
 Vom Partner müssen mehrere Schritte ausgeführt werden, bevor die Lösung in der Phase nach der Integration an den Kunden übergeben wird. In dieser Phase ist die Validierung wichtig, um sicherzustellen, dass das System korrekt bereitgestellt wird und einwandfrei funktioniert. 
 
 Folgende Aktionen sollten vom OEM-Partner ausgeführt werden:
@@ -122,13 +122,13 @@ Folgende Aktionen sollten vom OEM-Partner ausgeführt werden:
 
 -   [Marketplace-Syndikation](azure-stack-download-azure-marketplace-item.md#use-the-marketplace-syndication-tool-to-download-marketplace-items)
 
--   Sichern der Switchkonfigurationsdateien
+-   Sichern der Switchkonfigurations- und HLH-Konfigurationsdateien
 
 -   Entfernen des DVM
 
 -   Vorbereiten einer Kundenzusammenfassung zur Bereitstellung
 
--   [Überprüfen von Updates, um sicherzustellen, dass die Lösungssoftware auf die neueste Version aktualisiert wurde](azure-stack-updates.md)
+-   [Überprüfen von Updates, um sicherzustellen, dass die Lösungssoftware auf die neueste Version aktualisiert wurde](.\azure-stack-updates.md)
 
 Es gibt mehrere Schritte, die – je nach Installationstyp – entweder erforderlich oder optional sind.
 
