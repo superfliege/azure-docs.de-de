@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 7/20/2018
 ms.author: victorh
-ms.openlocfilehash: 2abe6c11b2a6fe9a9146f5c5689597fe3e29fa82
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 638d6c5740f999af2f1dac7cbc51e0b6aeb38c0b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "41917681"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996354"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Tutorial: Erstellen von DNS-Einträgen in einer benutzerdefinierten Domäne für eine Web-App 
 
@@ -45,6 +45,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 - [Erstellen Sie eine App Service-App](../app-service/app-service-web-get-started-html.md), oder verwenden Sie eine App, die Sie für ein anderes Tutorial erstellt haben.
 
 - Erstellen Sie in Azure DNS eine DNS-Zone, und delegieren Sie die Zone in Ihrer Registrierungsstelle an Azure DNS.
@@ -71,9 +73,9 @@ Kopieren Sie auf der Seite **Benutzerdefinierte Domänen** die IPv4-Adresse der 
 ### <a name="create-the-a-record"></a>Erstellen des A-Eintrags
 
 ```powershell
-New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
+New-AzDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
  -ResourceGroupName "MyAzureResourceGroup" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "<your web app IP address>")
+ -DnsRecords (New-AzDnsRecordConfig -IPv4Address "<your web app IP address>")
 ```
 
 ### <a name="create-the-txt-record"></a>Erstellen des TXT-Eintrags
@@ -81,9 +83,9 @@ New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" `
 App Services nutzt diesen Eintrag nur zur Konfigurationszeit, um zu bestätigen, dass sich die benutzerdefinierte Domäne in Ihrem Besitz befindet. Sie können diesen TXT-Eintrag löschen, nachdem Ihre benutzerdefinierte Domäne überprüft und in App Service konfiguriert wurde.
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName MyAzureResourceGroup `
  -Name `"@" -RecordType "txt" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -Value  "contoso.azurewebsites.net")
+ -DnsRecords (New-AzDnsRecordConfig -Value  "contoso.azurewebsites.net")
 ```
 
 ## <a name="create-the-cname-record"></a>Erstellen des CNAME-Eintrags
@@ -95,9 +97,9 @@ Wenn Ihre Domäne bereits von Azure DNS verwaltet wird (siehe [DNS-Domänendeleg
 ### <a name="create-the-record"></a>Erstellen des Eintrags
 
 ```powershell
-New-AzureRMDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
+New-AzDnsRecordSet -ZoneName contoso.com -ResourceGroupName "MyAzureResourceGroup" `
  -Name "www" -RecordType "CNAME" -Ttl 600 `
- -DnsRecords (New-AzureRmDnsRecordConfig -cname "contoso.azurewebsites.net")
+ -DnsRecords (New-AzDnsRecordConfig -cname "contoso.azurewebsites.net")
 ```
 
 Das folgende Beispiel ist die Antwort:
@@ -157,7 +159,7 @@ contoso.com text =
 Nun können Sie die benutzerdefinierten Hostnamen zur Web-App hinzufügen:
 
 ```powershell
-set-AzureRmWebApp `
+set-AzWebApp `
  -Name contoso `
  -ResourceGroupName MyAzureResourceGroup `
  -HostNames @("contoso.com","www.contoso.com","contoso.azurewebsites.net")

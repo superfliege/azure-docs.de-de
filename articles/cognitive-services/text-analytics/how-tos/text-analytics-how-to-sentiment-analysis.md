@@ -1,22 +1,22 @@
 ---
-title: Verwenden der Standpunktanalyse in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
-description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Standpunkte ermitteln.
+title: Standpunktanalyse unter Verwendung der Textanalyse von Azure Cognitive Services | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API Standpunkte ermitteln.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: e5ceb6208229baf3e07e4030992d5de85309789c
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: add284a3a001d5bc2e756f9ad4a2a3b9550b212c
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212493"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242127"
 ---
-# <a name="example-how-to-detect-sentiment-in-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mithilfe der Textanalyse
+# <a name="example-how-to-detect-sentiment-with-text-analytics"></a>Beispiel: Ermitteln von Standpunkten mit der Textanalyse
 
 Die [Standpunktanalyse-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) wertet eine Texteingabe aus und gibt für jedes Dokument eine Stimmungspunktzahl zwischen 0 (negativ) und 1 (positiv) zurück.
 

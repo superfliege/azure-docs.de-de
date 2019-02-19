@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 01/07/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 9bdc2e197b4d7aea270c954305a96a01a1371945
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121548"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991309"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen
 
@@ -83,7 +83,7 @@ Der Assistent unterstützt die Erstellung einer [Pipeline für kognitive Qualifi
 
 ### <a name="step-3---configure-index"></a>Schritt 3: Konfigurieren des Index
 
-In der Regel erfolgt eine Indexerstellung codebasiert und vor dem Laden der jeweiligen Daten. Wie in diesem Tutorial gezeigt wird, kann der Assistent jedoch einen Basisindex für jede Datenquelle erstellen, die er durchforsten kann. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet sein muss, um die einzelnen Dokumente eindeutig zu identifizieren. Außerdem können Sie Sprachanalysen oder Vorschlagsfunktionen angeben, wenn Sie Abfragen mit automatischer Vervollständigung oder vorgeschlagene Abfragen wünschen.
+In der Regel erfolgt eine Indexerstellung codebasiert und vor dem Laden der jeweiligen Daten. Wie in diesem Tutorial gezeigt wird, kann der Assistent jedoch einen Basisindex für jede Datenquelle erstellen, die er durchforsten kann. Für einen Index sind mindestens ein Name und eine Felderauflistung erforderlich, wobei ein Feld als Dokumentschlüssel gekennzeichnet sein muss, um die einzelnen Dokumente eindeutig zu identifizieren. Außerdem können Sie Sprachanalysen oder Vorschlagsfunktionen angeben, wenn Sie Abfragen mit AutoVervollständigen oder vorgeschlagene Abfragen verwenden möchten.
 
 Felder besitzen Datentypen und Attribute. Die Kontrollkästchen im oberen Bereich sind *Indexattribute*, mit denen die Verwendung des Felds gesteuert wird.
 

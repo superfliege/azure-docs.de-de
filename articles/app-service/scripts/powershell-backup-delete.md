@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 10/30/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d8a3d8f890001138f0582a099021b4537227a337
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: dbe8417e8a26cb222fe52ac7c0284b3956ed65fb
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53586413"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106935"
 ---
 # <a name="delete-a-backup-for-a-web-using-azure-powershell"></a>Löschen einer Sicherung für eine Web-App mit Azure PowerShell
 
@@ -30,6 +30,8 @@ Um dieses Skript auszuführen, benötigen Sie eine vorhandene Sicherung für ein
 
 ## <a name="sample-script"></a>Beispielskript
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/app-service/backup-delete/backup-delete.ps1?highlight=1-2,11 "Delete a backup for a web app")]
 
 ## <a name="clean-up-deployment"></a>Bereinigen der Bereitstellung 
@@ -37,7 +39,7 @@ Um dieses Skript auszuführen, benötigen Sie eine vorhandene Sicherung für ein
 Nach dem Ausführen des Skriptbeispiels können mit dem folgenden Befehl die Ressourcengruppe, die Web-App und alle zugehörigen Ressourcen entfernt werden.
 
 ```powershell
-Remove-AzureRmResourceGroup -Name myResourceGroup -Force
+Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
 ## <a name="script-explanation"></a>Erläuterung des Skripts
@@ -46,8 +48,8 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [Get-AzureRmWebAppBackupList](/powershell/module/azurerm.websites/get-azurermwebappbackuplist) | Ruft eine Liste der Sicherungen für eine Web-App ab. |
-| [Remove-AzureRmWebAppBackup](/powershell/module/azurerm.websites/remove-azurermwebappbackup) | Entfernt die angegebene Sicherung einer Web-App. |
+| [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Ruft eine Liste der Sicherungen für eine Web-App ab. |
+| [Remove-AzWebAppBackup](/powershell/module/az.websites/remove-azwebappbackup) | Entfernt die angegebene Sicherung einer Web-App. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

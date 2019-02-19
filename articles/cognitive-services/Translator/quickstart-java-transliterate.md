@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie Text mithilfe von Java und der Textübersetzungs-REST-API zwischen Skripts transliterieren (konvertieren). In diesem Beispiel wird Japanisch in das lateinische Alphabet transliteriert.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: e42aa7ec796b3be912614ced5f3a4db47f67c124
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2345204fc8b51cf1f7dc8020950c121e12676547
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210054"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961294"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-transliterate-text-using-java"></a>Schnellstart: Verwenden der Textübersetzungs-API für die Transliteration von Text mit Java
 
@@ -171,6 +171,12 @@ Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehls
 
 ```console
 gradle build
+```
+
+Führen Sie nach Abschluss des Buildvorgangs Folgendes aus:
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort

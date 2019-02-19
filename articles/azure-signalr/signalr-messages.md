@@ -1,57 +1,58 @@
 ---
-title: Meldungen und Verbindungen in Azure SignalR Service
-description: Eine Übersicht der Hauptkonzepte im Zusammenhang mit Meldungen und Verbindungen in Azure SignalR Service.
+title: Nachrichten und Verbindungen in Azure SignalR Service
+description: Eine Übersicht über die Hauptkonzepte im Zusammenhang mit Nachrichten und Verbindungen in Azure SignalR Service.
 author: sffamily
 ms.service: signalr
 ms.topic: overview
 ms.date: 09/13/2018
 ms.author: zhshang
-ms.openlocfilehash: c2348df7a1a55584807a03216e294486ddadfc52
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: ce1542278303910837a69d3184c1de86a9237f8e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352596"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996235"
 ---
-# <a name="message-and-connection-in-azure-signalr-service"></a>Meldungen und Verbindungen in Azure SignalR Service
+# <a name="messages-and-connections-in-azure-signalr-service"></a>Nachrichten und Verbindungen in Azure SignalR Service
 
-Das Abrechnungsmodell von Azure SignalR Service basiert auf der Anzahl der Verbindungen und Meldungen. Wie Meldungen und Verbindungen definiert und für Abrechnungszwecke gezählt werden, wird unten erläutert.
+Das Abrechnungsmodell für Azure SignalR Service basiert auf der Anzahl von Verbindungen und Nachrichten. In diesem Artikel erfahren Sie, wie Nachrichten und Verbindungen definiert und für Abrechnungszwecke gezählt werden.
 
-## <a name="message-formats-supported"></a>Unterstützte Meldungsformate
 
-Azure SignalR Service unterstützt dieselben Formate wie ASP.NET Core SignalR: [JSON](https://www.json.org/) und [MessagePack](/aspnet/core/signalr/messagepackhubprotocol)
+## <a name="message-formats"></a>Nachrichtenformate 
+
+Azure SignalR Service unterstützt die gleichen Formate wie ASP.NET Core SignalR: [JSON](https://www.json.org/) und [MessagePack](/aspnet/core/signalr/messagepackhubprotocol).
 
 ## <a name="message-size"></a>Nachrichtengröße
 
-Azure SignalR Service besitzt kein Limit für die Meldungsgröße.
+Die Nachrichtengröße ist bei Azure SignalR Service nicht beschränkt.
 
-In der Praxis werden großer Meldungen in kleinere Meldungen von nicht mehr als 2 KB aufgeteilt und als separate Meldungen übertragen. Das Aufteilen und Zusammensetzen der Meldungen wird von SDKs erledigt. Hierfür ist kein Entwickleraufwand erforderlich.
+Große Nachrichten werden in kleinere Nachrichten mit einer Größe von jeweils maximal 2 KB aufgeteilt und separat übertragen. Das Aufteilen und Zusammensetzen der Nachrichten wird von SDKs erledigt. Hierfür ist kein Entwickleraufwand erforderlich.
 
-Große Meldungen wirken sich aber negativ auf die Leistung der Meldungsübermittlung aus. Verwenden Sie nach Möglichkeit immer kleinere Meldungen, und führen Sie Tests durch, um die optimale Meldungsgröße für jedes Anwendungsfallszenario zu bestimmen.
+Große Nachrichten wirken sich negativ auf die Leistung der Nachrichtenübermittlung aus. Verwenden Sie nach Möglichkeit kleinere Nachrichten, und bestimmen Sie anhand von Tests die optimale Nachrichtengröße für das jeweilige Szenario.
 
-## <a name="how-to-count-messages-for-billing-purpose"></a>Wie werden Meldungen für Abrechnungszwecke gezählt?
+## <a name="how-messages-are-counted-for-billing"></a>Zählung von Nachrichten für die Abrechnung
 
-Wir zählen nur die von SignalR Service ausgehenden Meldungen und ignorieren die Ping-Meldungen zwischen Clients und Servern.
+Für die Abrechnung werden nur ausgehende Nachrichten von Azure SignalR Service gezählt. Pingnachrichten zwischen Clients und Servern werden ignoriert.
 
-Meldungen, die größer als 2 KB sind, werden als mehrere Meldungen von jeweils 2 KB gezählt. Das Diagramm mit der Meldungsanzahl im Azure-Portal wird alle 100 Nachrichten pro Hub aktualisiert.
+Nachrichten mit einer Größe von mehr als 2 KB werden als mehrere Nachrichten mit jeweils 2 KB gezählt. Das Diagramm mit der Nachrichtenanzahl im Azure-Portal wird hubspezifisch alle 100 Nachrichten aktualisiert.
 
-Beispiel: Sie besitzen drei Clients und einen Anwendungsserver. Ein Client sendet eine 4-KB-Meldung, damit der Server einen Broadcast an alle Clients durchführt. Die Anzahl von Meldungen beträgt acht: Eine Meldung vom Dienst an den Anwendungsserver, drei Meldungen vom Dienst an die Clients, wobei jede Meldung als zwei 2-KB-Nachrichten gezählt wird.
+Beispiel: Angenommen, Sie verfügen über drei Clients und einen Anwendungsserver. Ein Client sendet eine 4 KB große Nachricht, damit der Server einen Broadcast an alle Clients durchführt. In diesem Fall werden acht Nachrichten gezählt: eine Nachricht vom Dienst an den Anwendungsserver und drei Nachrichten vom Dienst an die Clients. Jede Nachricht wird als zwei Nachrichten mit jeweils 2 KB gezählt.
 
-Die im Azure-Portal angezeigte Anzahl der Meldungen ist immer noch 0, bis sie auf mehr als 100 akkumuliert ist.
+Im Azure-Portal werden weiterhin null Nachrichten angezeigt, bis mehr als 100 Nachrichten zusammengekommen sind.
 
-## <a name="how-to-count-connections"></a>Wie werden Verbindungen gezählt?
+## <a name="how-connections-are-counted"></a>Zählung von Verbindungen
 
-Es gibt Serververbindungen und Clientverbindungen. Standardmäßig verfügt jeder Anwendungsserver über fünf Verbindungen pro Hub mit SignalR Service, und jeder Client verfügt über eine Clientverbindung mit SignalR Service.
+Es gibt Serververbindungen und Clientverbindungen. Standardmäßig verfügt jeder Anwendungsserver pro Hub über fünf Verbindungen mit Azure SignalR Service, und jeder Client verfügt über eine Clientverbindung mit Azure SignalR Service.
 
-Die im Azure-Portal angezeigte Anzahl der Verbindungen umfasst sowohl Server- als auch Clientverbindungen.
+Die im Azure-Portal angezeigte Verbindungsanzahl umfasst sowohl Server- als auch Clientverbindungen.
 
-Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Die Anzahl von Serververbindungen beträgt 50: 2 App-Server · 5 Hubs · 5 Verbindungen/Hub
+Ein Beispiel: Angenommen, Sie verfügen über zwei Anwendungsserver und definieren fünf Hubs im Code. Dadurch ergeben sich 50 Serververbindungen: 2 App-Server × 5 Hubs × 5 Verbindungen pro Hub
 
-Die Berechnung von Serververbindungen weicht in ASP.NET SignalR ab. Zusätzlich zu benutzerdefinierten Hubs ist ein Standardhub vorhanden. Jeder Anwendungsserver benötigt standardmäßig fünf weitere Serververbindungen. Die Verbindungsanzahl für den Standardhub bleibt konsistent mit anderen Hubs.
+Bei ASP.NET SignalR werden Serververbindungen anders berechnet. In diesem Fall ist zusätzlich zu den definierten Hubs ein einzelner Standardhub enthalten. Jeder Anwendungsserver benötigt standardmäßig fünf weitere Serververbindungen. Die Verbindungsanzahl für den Standardhub bleibt mit der Anzahl der anderen Hubs konsistent.
 
-## <a name="how-to-count-inbound-traffic--outbound-traffic"></a>Berechnen des eingehenden Datenverkehrs/ausgehenden Datenverkehrs
+## <a name="how-inboundoutbound-traffic-is-counted"></a>Berücksichtigung von ein-/ausgehendem Datenverkehr
 
-Die Richtung (eingehend oder ausgehend) wird aus der Perspektive des SignalR-Diensts bestimmt. Der Datenverkehr wird in Bytes berechnet. Wie bei der Meldungsanzahl gilt auch beim Datenverkehr eine Samplingrate. Das Diagramm für eingehenden/ausgehenden Datenverkehr im Azure-Portal wird alle 100 KB pro Hub aktualisiert.
+Die Unterscheidung zwischen eingehendem und ausgehendem Datenverkehr basiert auf der Perspektive von Azure SignalR Service. Datenverkehr wird in Bytes berechnet. Genau wie bei der Nachrichtenanzahl gilt auch beim Datenverkehr eine Samplingrate. Das Diagramm für ein-/ausgehenden Datenverkehr im Azure-Portal wird hubspezifisch alle 100 KB aktualisiert.
 
 ## <a name="related-resources"></a>Zugehörige Ressourcen
 

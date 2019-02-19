@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung suchen Sie mithilfe von Java und der Textübersetzungs-API alternative Übersetzungen für einen Begriff sowie Verwendungsbeispiele für diese alternativen Übersetzungen.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: a1e59b8a6ceae3e2379a271a9ff55030f14a5622
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5e9c24d1f128267bcfd201de3aac27b81eb8b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223220"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961270"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von Java
 
@@ -171,6 +171,12 @@ Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehls
 
 ```console
 gradle build
+```
+
+Führen Sie nach Abschluss des Buildvorgangs Folgendes aus:
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort

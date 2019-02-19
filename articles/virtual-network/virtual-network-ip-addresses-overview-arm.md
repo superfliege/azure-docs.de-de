@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: 5472878542078e2a2dbb900965b59844d6e3b4b3
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488091"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997328"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -71,7 +71,7 @@ Alle öffentlichen IP-Adressen, die vor der Einführung von SKUs erstellt wurden
 Für öffentliche IP-Adressen vom Typ „Standard-SKU“ gilt Folgendes:
 
 - Sie verwenden immer eine statische Zuordnungsmethode.
-- Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden und ausgehenden Datenfluss, das auf einen Wert zwischen vier und 66 Minuten (Standardwert: vier Minuten) festgelegt werden kann.
+- Sie verfügen über ein anpassbares Leerlauftimeout für den ursprünglich eingehenden und ausgehenden Datenfluss, das auf einen Wert zwischen vier und 30 Minuten (Standardwert: vier Minuten) festgelegt werden kann.
 - Sind standardmäßig sicher und für eingehenden Datenverkehr geschlossen. Sie müssen zulässigen eingehenden Datenverkehr mithilfe einer [Netzwerksicherheitsgruppe](security-overview.md#network-security-groups) explizit in einer Whitelist angeben.
 - Sie werden Netzwerkschnittstellen, öffentlichen Standard Load Balancer-Instanzen, Anwendungsgateways oder VPN-Gateways zugewiesen. Weitere Informationen zu Standard Load Balancer finden Sie unter [Übersicht: Azure Load Balancer Standard](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 - Sie sind standardmäßig zonenredundant und können optional zonengebunden sein. (Sie können also zonengebunden erstellt und in einer bestimmten Verfügbarkeitszone garantiert werden.) Weitere Informationen zu Verfügbarkeitszonen finden Sie unter [Übersicht über Verfügbarkeitszonen in Azure](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) und [Azure Load Balancer Standard und Verfügbarkeitszonen](../load-balancer/load-balancer-standard-availability-zones.md?toc=%2fazure%2fvirtual-network%2ftoc.json).

@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 32d1be97405624fe929a9e9e1ff486f6a31200aa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732769"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984510"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Anmeldungen
 
@@ -32,7 +32,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > - Erstellen einer Azure AD-Anmeldung (Azure Active Directory) für eine verwaltete Instanz
 > - Gewähren von Berechtigungen für Azure AD-Anmeldungen in einer verwalteten Instanz
 > - Erstellen von Azure AD-Benutzern auf der Grundlage von Azure AD-Anmeldungen
-> - Zuweisen von Berechtigungen zu Azure AD-Benutzern und Verwalten der Datenbanksicherheit
+> - Zuweisen von Berechtigungen zu Azure AD-Benutzern und Verwalten der Datenbanksicherheit
 > - Verwenden des Identitätswechsels mit Azure AD-Benutzern
 > - Verwenden datenbankübergreifender Abfragen mit Azure AD-Benutzern
 > - Kennenlernen von Sicherheitsfeatures wie Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung

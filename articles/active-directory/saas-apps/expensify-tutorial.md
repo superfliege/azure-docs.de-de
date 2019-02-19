@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: c8d86cbcf4f5c5029f215cd6c327e05fb93f7144
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b31d22990b79cb37ea5b3b89c699b9511f8d87cf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453892"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Tutorial: Azure Active Directory-Integration mit Expensify
 
@@ -104,9 +105,12 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Expensif
 
     ![SSO-Informationen zur Domäne und zu den URLs für Expensify](common/sp-identifier.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://www.expensify.com/authentication/saml/login`.
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL im folgenden Format ein: `https://www.expensify.com/authentication/saml/loginCallback?domain=[yourdomain]`
 
     b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL ein: `https://www.expensify.com`.
+
+    > [!NOTE]
+    > Der Wert der Anmelde-URL entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam für den Expensify-Client](mailto:help@expensify.com), um diese Werte zu erhalten.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
@@ -125,18 +129,18 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Expensif
 ### <a name="configure-expensify-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Expensify
 
 Zum Aktivieren von SSO in Expensify müssen Sie in der Anwendung zuerst die **Domänensteuerung** aktivieren. Sie können die Domänensteuerung in der Anwendung mittels der [hier](https://help.expensify.com/domain-control) aufgelisteten Schritte aktivieren. Um weitere Unterstützung zu erhalten, wenden Sie sich an das [Clientsupportteam von Expensify](mailto:help@expensify.com). Führen Sie nach dem Aktivieren der Domänensteuerung die folgenden Schritte aus:
-   
+
 ![Configure single sign-on](./media/expensify-tutorial/tutorial_expensify_51.png)
-    
+
 1. Melden Sie sich bei der Expensify-Anwendung an.
-    
+
 2. Klicken Sie im linken Bereich auf **Einstellungen**, und navigieren Sie zu **SAML**.
-    
+
 3. Schalten Sie die Option **SAML-Anmeldung** zu **Aktiviert** um.
-    
+
 4. Öffnen Sie die aus Azure AD heruntergeladenen Verbundmetadaten im Editor, kopieren Sie den Inhalt, und fügen Sie ihn in das Textfeld **Identitätsanbietermetadaten** ein.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -191,7 +195,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt erstellen Sie in Expensify einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das [Clientsupportteam von Expensify](mailto:help@expensify.com), um die Benutzer der Expensify-Plattform hinzuzufügen.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -204,4 +208,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Expensify“ klicken, sollten Sie 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

@@ -16,14 +16,14 @@ ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b009e7501609ec3650bf15f2ab5051dbec0ada76
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 903a4d1a9864a9ab19df7c453adc002a8bd0f576
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55659370"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983184"
 ---
-# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-powershell"></a>Erstellen einer zonenredundanten VM-Skalierungsgruppe mit PowerShell
+# <a name="create-a-zone-redundant-virtual-machine-scale-set-with-azure-cli"></a>Erstellen einer zonenredundanten VM-Skalierungsgruppe mithilfe der Azure CLI
 Dieses Skript erstellt eine VM-Skalierungsgruppe unter Ubuntu, die sich über mehrere Verfügbarkeitszonen erstreckt. Nach dem Ausführen des Skripts können Sie per RDP auf den virtuellen Computer zugreifen.
 
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]

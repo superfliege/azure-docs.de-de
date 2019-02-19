@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: b49c69a488402e593573e7f9e4fda81057519149
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732446"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884459"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
@@ -93,7 +93,7 @@ Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ �
 6. Wählen Sie das Abonnement aus, in dem Sie das Speicherkonto erstellen möchten.
 7. Klicken Sie auf **Weiter: Erweitert >** .
 8. Übernehmen Sie unter **SICHERHEIT** und **VIRTUELLE NETZWERKE** die Standardwerte.
-9. Legen Sie im Abschnitt **Data Lake Storage Gen2 (preview)** (Data Lake Storage Gen2 (Vorschauversion)) die Option **Hierarchischer Namespace** auf **Aktiviert** fest.
+9. Legen Sie im Abschnitt **Data Lake Storage Gen2** die Option **Hierarchischer Namespace** auf **Aktiviert** fest.
 10. Klicken Sie auf **Bewerten + erstellen**, um das Speicherkonto zu erstellen.
 
     ![Screenshot mit der Speicherkontoerstellung über das Azure-Portal](./media/data-lake-storage-quickstart-create-account/azure-data-lake-storage-account-create-advanced.png)

@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 01/08/2019
+ms.date: 02/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3e192449858d6cbd2d054fa7c70276739cfe1143
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189478"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243853"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -140,19 +140,21 @@ Im DirectQuery-Modus* wird die relationale Back-End-Datenbank für die Speicheru
 
 \* Die Verfügbarkeit der Features hängt vom Tarif ab.
 
-## <a name="supported-datasources"></a>Unterstützte Datenquellen
+## <a name="supported-data-sources"></a>Unterstützte Datenquellen
 
 Tabellarische Modelle in Azure Analysis Services unterstützen eine Vielzahl von Datenquellen – von einfachen Textdateien bis zu Big Data in Azure Data Lake Store. Weitere Informationen finden Sie unter [In Azure Analysis Services unterstützte Datenquellen](analysis-services-datasource.md).
 
 ## <a name="your-data-is-secure"></a>Datensicherheit
 
-Azure Analysis Services bietet Sicherheit für Ihre sensiblen Daten auf mehreren Ebenen. Auf Serverebene: Firewall, Azure-Authentifizierung, Serveradministratorrollen und serverseitige Verschlüsselung. Außerdem wird auf Datenmodellebene per Sicherheit für Benutzerrollen, auf Zeilenebene und auf Objektebene dafür gesorgt, dass Ihre Daten sicher sind und nur den Benutzern angezeigt werden, für die dies zulässig ist.
+Azure Analysis Services bietet Sicherheit für Ihre sensiblen Daten auf mehreren Ebenen. Als Azure-Dienst bietet Analysis Services **grundlegenden** Schutz vor DDoS-Angriffen (Distributed Denial of Service). Dieser Schutz ist im Rahmen der Azure-Plattform automatisch aktiviert. Weitere Informationen finden Sie in der [Übersicht über Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md). 
+
+Auf der Serverebene bietet Analysis Services eine Firewall, Azure-Authentifizierung, Serveradministratorrollen und serverseitige Verschlüsselung. Auf der Datenmodellebene sorgen Benutzerrollen sowie die Sicherheit auf Zeilen- und Objektebene dafür, dass Ihre Daten sicher sind und nur den vorgesehenen Benutzern angezeigt werden.
 
 ### <a name="firewall"></a>Firewall
 
-Die Azure Analysis Services-Firewall blockiert alle Clientverbindungen, mit Ausnahme der IP-Adressen, die nicht in Regeln angegeben sind. Konfigurieren Sie die Regeln, mit denen zulässige IP-Adressen nach einzelnen Client-IPs oder nach dem Bereich angegeben werden. Verbindungen von Power BI (Dienst) können auch zugelassen oder blockiert werden. Konfigurieren Sie die Firewall und Regeln im Portal oder per PowerShell. Weitere Informationen finden Sie unter [Konfigurieren einer Serverfirewall](analysis-services-qs-firewall.md).
+Die Azure Analysis Services-Firewall blockiert alle Clientverbindungen, mit Ausnahme der IP-Adressen, die nicht in Regeln angegeben sind. Für neue Server ist standardmäßig kein Firewallschutz aktiviert. Es empfiehlt sich, direkt nach der Servererstellung den Firewallschutz zu aktivieren und Regeln zu konfigurieren – entweder im Rahmen eines Serverbereitstellungsskripts oder über das Portal. Konfigurieren Sie die Regeln, mit denen zulässige IP-Adressen nach einzelnen Client-IPs oder nach dem Bereich angegeben werden. Verbindungen von Power BI (Dienst) können auch zugelassen oder blockiert werden. Konfigurieren Sie die Firewall und Regeln im Portal oder per PowerShell. Weitere Informationen finden Sie unter [Konfigurieren einer Serverfirewall](analysis-services-qs-firewall.md).
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Die Benutzerauthentifizierung wird per [Azure Active Directory (AAD)](../active-directory/fundamentals/active-directory-whatis.md) durchgeführt. Beim Anmelden verwenden Benutzer eine Organisationskontoidentität mit rollenbasiertem Zugriff auf die Datenbank. Benutzeridentitäten müssen Mitglieder der Azure Active Directory-Standardinstanz für das Abonnement sein, unter dem sich der Server befindet. Weitere Informationen finden Sie unter [Authentifizierung und Benutzerberechtigungen](analysis-services-manage-users.md).
 

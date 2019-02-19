@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: alkohli
-ms.openlocfilehash: 00415cab4d5c36c74cf78a10cb71682d97236517
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099157"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117747"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in VMware (Vorschauversion)
 
@@ -66,7 +66,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein virtuelles Gerät bereitstellen:
 
 Vorbereitungen
 
-- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-requirements).
+- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um die optimale Nutzung des Geräts zu ermöglichen.
 
 ## <a name="check-the-host-system"></a>Überprüfen des Hostsystems
@@ -77,7 +77,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
  
   * Mindestens 4 Kerne
   * Mindestens 8 GB RAM 
-  * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann. 
+  * Eine mit dem Netzwerk verbundene Netzwerkschnittstelle, über die Datenverkehr ins Internet weitergeleitet werden kann.
   * Einen Betriebssystemdatenträger mit 250 GB
   * Einen virtuellen Datenträger mit 2 TB für Daten
 * VMware vSphere-Client auf Ihrem System zum Verwalten des ESXi-Hosts
@@ -89,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
 1. Kopieren Sie das Image mit dem virtuellen Gerät auf Ihr System. Dies ist das virtuelle Image (zwei Dateien), das Sie über das Azure-Portal heruntergeladen haben. Notieren Sie sich den Speicherort, an den Sie das Image kopiert haben, da Sie es später noch benötigen.
 
-2. Melden Sie sich mit dem vSphere-Webclient beim ESXi-Server an. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
+2. Melden Sie sich über einen Browser unter der folgenden URL beim ESXi-Server an: `https://<IP address of the ESXi server>`. Sie benötigen Administratorrechte, um einen virtuellen Computer zu erstellen.
 
    ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
@@ -149,20 +149,24 @@ Führen Sie die folgenden Schritte aus, um ein virtuelles Gerät in VMware berei
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
-    Scrollen Sie nach unten, bis Sie den Eintrag **New hard disk** (Neue Festplatte) sehen, und erweitern Sie ihn, um die Einstellungen anzuzeigen. Legen Sie **Virtual Device Node** (Virtueller Geräteknoten) auf **IDE controller 0** (IDE-Controller 0) fest. Klicken Sie auf **Weiter**.
+    Scrollen Sie nach unten, bis Sie den Eintrag **New hard disk** (Neue Festplatte) sehen, und erweitern Sie ihn, um die Einstellungen anzuzeigen. Legen Sie **Virtual Device Node** (Virtueller Geräteknoten) auf **IDE controller 0** (IDE-Controller 0) fest.
 
      ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
-27. Prüfen Sie auf der Seite **Für Fertigstellung bereit** alle Einstellungen, die der neuen virtuellen Maschine zugeordnet sind. Vergewissern Sie sich, dass für die CPU 4, für den Arbeitsspeicher 8.192 MB, für die Netzwerkschnittstelle 1 und für Festplatte 2 der IDE-Controller 0 angezeigt werden. Klicken Sie auf **Fertig stellen**. 
+17. *(Optional: Führen Sie diesen Schritt nur aus, wenn Sie VMware ESXi Server 6.7 verwenden.)* Klicken Sie auf der Seite **Customize settings** (Einstellungen anpassen) auf **VM options** (VM-Optionen). Navigieren Sie zu **Boot options > Firmware** (Startoptionen > Firmware), und ändern Sie die Option in **BIOS**. Standardmäßig ist der Wert auf „EFI“ festgelegt. Klicken Sie auf **Weiter**.
+
+    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+
+18. Prüfen Sie auf der Seite **Für Fertigstellung bereit** alle Einstellungen, die der neuen virtuellen Maschine zugeordnet sind. Vergewissern Sie sich, dass für die CPU 4, für den Arbeitsspeicher 8.192 MB, für die Netzwerkschnittstelle 1 und für Festplatte 2 der IDE-Controller 0 angezeigt werden. Klicken Sie auf **Fertig stellen**.
    
     ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
     ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Ihre virtuelle Maschine wird nun bereitgestellt. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die neue VM der Liste der VMs hinzugefügt wird. 
+Ihre virtuelle Maschine wird nun bereitgestellt. Es wird eine Benachrichtigung mit dem Hinweis angezeigt, dass die neue VM der Liste der VMs hinzugefügt wird.
 
 ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
-Der nächste Schritt umfasst das Inbetriebnehmen der Maschine und das Abrufen der IP-Adresse.
+Im nächsten Schritt wird der virtuelle Computer eingeschaltet und die IP-Adresse abgerufen.
 
 > [!NOTE]
 > Wir empfehlen, keine VMware-Tools auf dem virtuellen Gerät zu installieren (wie oben beschrieben wird). Die Installation von VMware-Tools führt zu einer nicht unterstützten Konfiguration.

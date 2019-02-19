@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 02/08/2019
 ms.author: alkohli
-ms.openlocfilehash: 79e2d33d1452eda35141b6ae80b46ab4eecd0909
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: e7c58978c7d6542887854c5a1996b15252fdb025
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54902159"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982402"
 ---
 # <a name="tutorial-cable-and-connect-to-your-azure-data-box"></a>Tutorial: Verkabeln und Herstellen einer Verbindung mit der Azure Data Box
 
@@ -40,7 +40,7 @@ Stellen Sie Folgendes sicher, bevor Sie beginnen:
     - Er muss mit einem Hochgeschwindigkeitsnetzwerk verbunden sein. Mindestens eine 10-GbE-Verbindung wird dringend empfohlen. Falls keine 10-GbE-Verbindung verfügbar ist, kann eine 1-GbE-Datenverbindung verwendet werden, wodurch aber die Geschwindigkeit der Kopiervorgänge leidet. 
 6. Sie verfügen über eine geeignete ebene Fläche, auf der Sie die Data Box aufstellen können. Wenn Sie das Gerät in einem standardmäßigen Rackregal einbauen möchten, benötigen Sie einen 7HE-Steckplatz in Ihrem Rack im Rechenzentrum. Sie können das Gerät waagerecht oder senkrecht in das Rack einbauen.
 7. Sie haben die folgenden Kabel zur Hand, um Ihre Data Box mit dem Hostcomputer zu verbinden.
-    - Zwei SFP+-Twinax-Kupferkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M“ verwendet.
+    - Mindestens ein SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE (zur Verwendung mit den Netzwerkschnittstellen DATA 1 und DATA 2). Die Data Box verfügt über die Netzwerkschnittstelle „Mellanox ConnectX®-3 Pro EN Dual-Port 10GBASE-T Adapters w/ PCI Express 3.0“, sodass mit dieser Schnittstelle kompatible Kabel verwendet werden können. Bei internen Tests wurde beispielsweise ein Kabel vom Typ „CISCO SFP-H10GB-CU3M 10GBASE-CU TWINMAX SFP +3M“ verwendet.
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle MGMT)
     - Ein Netzwerkkabel des Typs RJ-45 CAT 6A oder RJ-45 CAT 6 (zur Verwendung mit der Netzwerkschnittstelle DATA 3, die mit 10 GBit/s bzw. 1 GBit/s konfiguriert ist)
 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um das Gerät zu verkabeln.
     1. Schließen Sie das Netzkabel an den gekennzeichneten Netzeingang an. Das andere Ende des Netzkabels muss an eine Stromversorgungseinheit angeschlossen werden.
     2. Verbinden Sie ein Ende des RJ-45 CAT 6-Kabels mit dem MGMT-Port und das andere Ende mit einem Laptop.            
     3. Verbinden Sie ein Ende des RJ-45 CAT 6A-Kabels mit dem DATA 3-Port. DATA 3 wird mit 10 GbE konfiguriert, wenn Sie das RJ-45 CAT 6A-Kabel für die Verbindung verwenden, und mit 1 GbE, wenn Sie das RJ-45 CAT 6-Kabel verwenden.
-    4. Schließen Sie die 10-GbE-SFP+ Twinax-Kupferkabel an die Ports DATA 1 und DATA 2 an. 
+    4. Schließen Sie abhängig von den Netzwerkschnittstellen, die Sie für die Datenübertragung nutzen möchten, bis zu zwei SFP+-Twinax-Kupferkabel oder SFP+-Glasfaserkabel mit 10 GbE an die Anschlüsse „DATA 1“ und „DATA 2“ an. 
     5. Die anderen Enden der Kabel von den Datenports werden über einen 10-GbE-Switch mit dem Hostcomputer verbunden.
 
 4. Machen Sie den Netzschalter auf dem Bedienfeld des Geräts ausfindig. Schalten Sie das Gerät ein.

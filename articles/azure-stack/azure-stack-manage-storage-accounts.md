@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: a8134e2350b650f7dfe0b3a1d58d107e42493223
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: aa88c2c63d348d0c82e0ad93115ea49437a63567
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766502"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895058"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Verwalten von Speicherkonten in Azure Stack
 
@@ -67,7 +67,7 @@ Es gibt Situationen, in denen Sie ein gelöschtes Konto wiederherstellen müssen
 
 In Azure Stack gibt es hierfür eine einfache Möglichkeit:
 
-1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Artikel unter [Suchen eines Speicherkontos](#find).
+1. Navigieren Sie zur Liste der Speicherkonten. Weitere Informationen finden Sie in diesem Artikel unter „Suchen eines Speicherkontos“.
 2. Suchen Sie das gewünschte Konto in der Liste. Möglicherweise müssen Sie filtern.
 3. Überprüfen Sie den *Status* des Kontos. Dieser müsste **Gelöscht** lauten.
 4. Klicken Sie auf das Konto, um den Bereich mit den Kontodetails zu öffnen.
@@ -113,7 +113,7 @@ Einer der Nebeneffekte eines Aufbewahrungszeitraums ist, dass ein gelöschtes Ko
 Sie können Kapazität entweder mithilfe des Azure-Portals oder mit PowerShell freigeben.
 
 **Freigeben von Kapazität mithilfe des Portals:**
-1. Navigieren Sie zum Bereich „Speicherkonten“. Siehe [Suchen eines Speicherkontos](#find).
+1. Navigieren Sie zum Bereich „Speicherkonten“. Siehe „Suchen eines Speicherkontos“.
 2. Klicken Sie oben im Bereich auf **Speicherplatz freigeben**.
 3. Lesen Sie die Meldung, und klicken Sie auf **OK**.
 

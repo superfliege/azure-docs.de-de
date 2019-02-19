@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7ae3886db6391836cd8d281e44c95c5253cc8dd5
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
+ms.openlocfilehash: 8c55b9b9ce6e98e91e7c6a712e0a9dbca0964512
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323805"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985428"
 ---
 Auf jedem Clientcomputer, für den Sie eine Point-to-Site-Verbindung mit einem VNet herstellen, muss ein Clientzertifikat installiert sein. Sie generieren es aus dem Stammzertifikat und installieren es auf jedem Clientcomputer. Wenn Sie kein gültiges Clientzertifikat installieren, und der Client versucht, eine Verbindung mit dem VNET herzustellen, tritt bei der Authentifizierung ein Fehler auf.
 
@@ -31,4 +31,8 @@ Sie können mithilfe der folgenden Methoden Clientzertifikate generieren:
   * [MakeCert-Anweisungen](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-makecert.md): Wenn Sie keinen Zugriff auf einen Windows 10-Computer haben, verwenden Sie MakeCert, um Zertifikate zu generieren. MakeCert ist zwar veraltet, kann aber trotzdem zum Generieren von Zertifikaten verwendet werden. Sie können die generierten Zertifikate auf jedem unterstützten P2S-Client installieren.
   * [Linux-Anweisungen](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site-linux.md)
 
-  Wenn Sie ein Clientzertifikat auf der Grundlage eines selbstsignierten Stammzertifikats generieren, wird es automatisch auf dem Computer installiert, den Sie für die Generierung verwendet haben. Falls Sie ein Clientzertifikat auf einem anderen Clientcomputer installieren möchten, exportieren Sie es zusammen mit der gesamten Zertifikatkette als PFX-Datei. Dadurch wird eine PFX-Datei mit Angaben zum Stammzertifikat erstellt, die der Client zur Authentifizierung benötigt. Schritte zum Exportieren von Zertifikaten finden Sie unter [Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).
+  Wenn Sie ein Clientzertifikat auf der Grundlage eines selbstsignierten Stammzertifikats generieren, wird es automatisch auf dem Computer installiert, den Sie für die Generierung verwendet haben. Falls Sie ein Clientzertifikat auf einem anderen Clientcomputer installieren möchten, exportieren Sie es zusammen mit der gesamten Zertifikatkette als PFX-Datei. Dadurch wird eine PFX-Datei mit Angaben zum Stammzertifikat erstellt, die der Client zur Authentifizierung benötigt. 
+
+**So exportieren Sie das Zertifikat**
+
+Schritte zum Exportieren von Zertifikaten finden Sie unter [Generieren und Exportieren von Zertifikaten für Point-to-Site-Verbindungen mithilfe von PowerShell](../articles/vpn-gateway/vpn-gateway-certificates-point-to-site.md#clientexport).

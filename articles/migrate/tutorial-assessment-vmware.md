@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dee649c388ee1e9207d1fc0ecb454d03cda304b0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 7ad5f22b0604cb9de38f7990c88d760df97098d9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730763"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235834"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Ermitteln und Bewerten lokaler virtueller VMware-Computer für die Migration zu Azure
 
@@ -30,7 +30,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- **VMware:** Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0 oder 6.5 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit Version 5.5 oder höher, um die Collector-VM bereitzustellen.
+- **VMware**: Die virtuellen Computer, die Sie migrieren möchten, müssen von vCenter Server mit der Version 5.5, 6.0, 6.5 oder 6.7 verwaltet werden. Zusätzlich benötigen Sie einen ESXi-Host mit Version 5.5 oder höher, um die Collector-VM bereitzustellen.
 - **vCenter Server-Konto:** Sie benötigen ein schreibgeschütztes Konto, um auf vCenter Server zugreifen zu können. Dieses Konto wird in Azure Migrate zum Ermitteln der lokalen virtuellen Computer verwendet.
 - **Berechtigungen:** In vCenter Server benötigen Sie Berechtigungen zum Erstellen eines virtuellen Computers durch Importieren einer Datei im OVA-Format.
 
@@ -182,7 +182,7 @@ Importieren Sie die heruntergeladene Datei auf den vCenter Server.
     - Wählen Sie die geplante Azure-Cloud für die Migration aus (Azure Global oder Azure Government).
     - Akzeptieren Sie die Lizenzbedingungen, und lesen Sie die Drittanbieterinformationen.
     - Der Collector überprüft, ob der virtuelle Computer über Internetzugriff verfügt.
-    - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert. [Hier](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) finden Sie weitere Informationen zu den Anforderungen für Internetkonnektivität und die [Liste der URLs](https://docs.microsoft.com/azure/migrate/concepts-collector#connect-to-urls), auf die der Collector zugreift.
+    - Wenn der virtuelle Computer über einen Proxy auf das Internet zugreift, klicken Sie auf **Proxyeinstellungen**, und geben Sie die Proxyadresse und den Lauschport an. Geben Sie die Anmeldeinformationen an, wenn der Proxy eine Authentifizierung erfordert. [Hier](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) finden Sie weitere Informationen zu den Anforderungen für Internetkonnektivität und die [Liste der URLs](https://docs.microsoft.com/azure/migrate/concepts-collector), auf die der Collector zugreift.
 
       > [!NOTE]
       > Die Proxyadresse muss im Format http://ProxyIPAddress oder http://ProxyFQDN eingegeben werden. Es werden nur HTTP-Proxys unterstützt. Bei Verwendung eines abfangenden Proxys tritt bei der Internetverbindung unter Umständen zunächst ein Fehler auf, wenn Sie das Proxyzertifikat nicht importiert haben. Wie Sie dieses Problem beheben, indem Sie das Proxyzertifikat als vertrauenswürdiges Zertifikat auf dem virtuellen Collectorcomputer importieren, erfahren Sie [hier](https://docs.microsoft.com/azure/migrate/concepts-collector).

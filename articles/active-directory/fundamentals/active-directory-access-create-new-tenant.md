@@ -11,12 +11,13 @@ ms.topic: quickstart
 ms.date: 09/10/2018
 ms.author: lizross
 ms.custom: it-pro, seodec18
-ms.openlocfilehash: 33bab4b66532a4cdcbd33c2f8594476d07985f4b
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 39a5ef9d929899ac5e66c5a0e342040fc3c5074b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194817"
 ---
 # <a name="quickstart-create-a-new-tenant-in-azure-active-directory"></a>Schnellstart: Erstellen eines neuen Mandanten in Azure Active Directory
 Sie können alle Verwaltungsaufgaben über das Azure Active Directory-Portal (Azure AD-Portal) ausführen. Dazu gehört auch das Erstellen eines neuen Mandanten für Ihre Organisation. 
@@ -34,7 +35,7 @@ Melden Sie sich mit dem Konto eines globalen Administrators im [Azure-Portal](ht
 Nach der Anmeldung im Azure-Portal können Sie einen neuen Mandanten für Ihre Organisation erstellen. Ihr neuer Mandant stellt Ihre Organisation dar und unterstützt Sie dabei, eine bestimmte Microsoft Cloud Services-Instanz für Ihre internen und externen Benutzer zu verwalten.
 
 ### <a name="to-create-a-new-tenant"></a>Erstellen eines neuen Mandanten
-1. Wählen Sie **Azure Active Directory**, **Ressourcen erstellen**, **Identität** und dann **Azure Active Directory** aus.
+1. Wählen Sie **Ressource erstellen** > **Identität** > **Azure Active Directory** aus.
 
     Daraufhin wird die Seite **Verzeichnis erstellen** angezeigt.
 

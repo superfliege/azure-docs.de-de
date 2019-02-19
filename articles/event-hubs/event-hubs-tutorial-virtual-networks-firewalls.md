@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: tutorial
 ms.service: event-hubs-messaging
 ms.custom: mvc
-ms.openlocfilehash: bd76d8a7f3f41a8aa6b2e614d37f361a98ac4efd
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: e47c2af353a7f365534ba4cf9ce574c16a0ea4ca
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53281313"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233138"
 ---
 # <a name="tutorial-enable-virtual-networks-integration-and-firewalls-on-event-hubs-namespace"></a>Tutorial: Aktivieren der Integration virtueller Netzwerke und von Firewalls für den Event Hubs-Namespace
 
@@ -30,9 +30,9 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten der Firewall (IP-Filterung) mit Ihrem Event Hubs-Namespace
 
 >[!WARNING]
-> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Service Bus interagieren.
+> Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Event Hubs interagieren.
 >
-> Erstanbieterintegrationen werden nicht unterstützt, wenn virtuelle Netzwerke aktiviert sind. Sie werden in Kürze bereitgestellt.
+> Erstanbieterintegrationen werden nicht unterstützt, wenn virtuelle Netzwerke aktiviert sind.
 > Häufige Azure-Szenarien, die mit virtuellen Netzwerken nicht funktionieren:
 > * Azure-Diagnose und -Protokollierung
 > * Azure Stream Analytics

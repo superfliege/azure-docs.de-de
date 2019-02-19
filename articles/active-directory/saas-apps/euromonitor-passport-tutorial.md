@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/25/2019
+ms.date: 02/11/2019
 ms.author: jeedes
-ms.openlocfilehash: ca0bdc3b88109a8d8c46f0a6a09297b0ca197165
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ab9439cbf46fd77a24aa07cab1884e4e50720e43
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478913"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56203759"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Tutorial: Azure Active Directory-Integration mit Euromonitor Passport
 
@@ -66,7 +67,7 @@ Zum Konfigurieren der Integration von Euromonitor Passport in Azure AD müssen S
 
 4. Geben Sie **Euromonitor Passport** in das Suchfeld ein, wählen Sie im Ergebnisbereich **Euromonitor Passport** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Euromonitor Passport in der Ergebnisliste](common/search-new-app.png)
+    ![Euromonitor Passport in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
@@ -104,19 +105,19 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     ![SSO-Informationen zur Domäne und zu den URLs für Euromonitor Passport](common/preintegrated.png)
 
-5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+5. Wenn Sie die Anwendung im **SP**-initiierten Modus konfigurieren möchten, benötigen Sie das Anmelde-URL-Formular des [Euromonitor Passport-Supportteams](mailto:passport.support@euromonitor.com). Nachdem Sie die Anmelde-URL vom Euromonitor Passport-Supportteam erhalten haben, klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie die folgende Schritte aus:
 
     ![SSO-Informationen zur Domäne und zu den URLs für Euromonitor Passport](common/metadata-upload-additional-signon.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://portal.euromonitor.com`.
+    Fügen Sie den Wert der Anmelde-URL, den Sie vom Euromonitor Passport-Supportteam erhalten haben, in das Textfeld „Anmelde-URL“ ein.
 
 6. Die Euromonitor Passport-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
     ![image](./media/euromonitor-passport-tutorial/attribute1.png)
 
-7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
+7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
-    | NAME | Quellattribut|
+    | Name | Quellattribut|
     | ---------------| --------- |
     | Wert für Namensbezeichner | user.userprincipalname |
     | emailaddress | user.mail |

@@ -1,6 +1,6 @@
 ---
 title: Festlegen von Berechtigungen für Data Lake Storage Gen2 mit Azure Storage-Explorer
-description: In dieser Anleitung erfahren Sie, wie Sie mit dem Azure Storage Explorer Berechtigungen für Dateien und Verzeichnisse in Ihrem Azure Data Lake Storage Gen2-fähigen Speicherkonto (Vorschauversion) festlegen.
+description: In dieser Anleitung erfahren Sie, wie Sie mit dem Azure Storage-Explorer Berechtigungen für Dateien und Verzeichnisse in Ihrem Azure Data Lake Storage Gen2-fähigen Speicherkonto festlegen.
 services: storage
 author: roygara
 ms.custom: mvc
@@ -9,16 +9,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/11/2018
 ms.author: rogarana
-ms.openlocfilehash: fd4ca3946ed4c32a8fd2f08c1c242c33dbca2aaf
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b64b433920a5ce769122c7956c18997c28a3d11a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238312"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867051"
 ---
-# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2-preview"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe von Azure Storage Explorer mit Azure Data Lake Storage Gen2 (Vorschauversion)
+# <a name="set-file-and-directory-level-permissions-using-azure-storage-explorer-with-azure-data-lake-storage-gen2"></a>Festlegen von Berechtigungen auf Datei- und Verzeichnisebene mithilfe des Azure Storage-Explorers mit Azure Data Lake Storage Gen2
 
-Dateien, die im Azure Data Lake Storage Gen2 (Vorschauversion) gespeichert sind, unterstützen differenzierte Berechtigungen und die Verwaltung von Zugriffssteuerungslisten (ACL). In Kombination ermöglichen Ihnen differenzierte Berechtigungen und die ACL-Verwaltung den Zugriff auf Ihre Daten auf sehr präzise Weise.
+Dateien, die in Azure Data Lake Storage Gen2 gespeichert sind, unterstützen differenzierte Berechtigungen und die Verwaltung von Zugriffssteuerungslisten (Access Control Lists, ACLs). In Kombination ermöglichen Ihnen differenzierte Berechtigungen und die ACL-Verwaltung den Zugriff auf Ihre Daten auf sehr präzise Weise.
 
 In diesem Artikel erfahren Sie, wie Sie Azure Storage-Explorer für folgende Aufgaben verwenden:
 

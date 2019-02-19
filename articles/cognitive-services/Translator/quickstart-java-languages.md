@@ -4,30 +4,27 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
-ms.date: 12/03/2018
+ms.date: 02/07/2019
 ms.author: erhopf
-ms.openlocfilehash: 937fd58b28a3e64f7f4f9fc4bf52e8280af81136
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 88347076888b68459747757d655759d3f83d19a7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226970"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964558"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-java"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste unterstützter Sprachen mit Java
 
 In dieser Schnellstartanleitung rufen Sie mit der Textübersetzungs-API eine Liste der für Übersetzung, Transliteration und Wörterbuchsuche unterstützten Sprachen ab.
 
-Für diese Schnellstartanleitung wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit einer Textübersetzungsressource benötigt. Wenn Sie über kein Konto verfügen, können Sie über die [kostenlose Testversion](https://azure.microsoft.com/try/cognitive-services/) einen Abonnementschlüssel abrufen.
-
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * [Mindestens JDK 7](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
 * [Gradle](https://gradle.org/install/)
-* Ein Azure-Abonnementschlüssel für die Textübersetzung
 
 ## <a name="initialize-a-project-with-gradle"></a>Initialisieren eines Projekts mit Gradle
 
@@ -50,7 +47,7 @@ Wenn Sie zur Auswahl einer **DSL** aufgefordert werden, wählen Sie **Kotlin** a
 
 Navigieren Sie zu `build.gradle.kts`, und öffnen Sie die Datei in einer IDE oder einem Text-Editor Ihrer Wahl. Kopieren Sie anschließend diese Buildkonfiguration:
 
-```
+```java
 plugins {
     java
     application
@@ -104,7 +101,6 @@ public class GetLanguages {
 Fügen Sie der Klasse `GetLanguages` die folgenden Zeilen hinzu:
 
 ```java
-String subscriptionKey = "YOUR_SUBSCRIPTION_KEY";
 String url = "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0";
 ```
 
@@ -117,14 +113,13 @@ Fügen Sie der Klasse `GetLanguages` die folgende Zeile hinzu, um `OkHttpClient`
 OkHttpClient client = new OkHttpClient();
 ```
 
-Als Nächstes erstellen Sie die GET-Anforderung.
+Erstellen Sie als Nächstes die `GET`-Anforderung.
 
 ```java
 // This function performs a GET request.
 public String Get() throws IOException {
     Request request = new Request.Builder()
             .url(url).get()
-            .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey)
             .addHeader("Content-type", "application/json").build();
     Response response = client.newCall(request).execute();
     return response.body().string();
@@ -167,6 +162,12 @@ Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehls
 
 ```console
 gradle build
+```
+
+Führen Sie nach Abschluss des Buildvorgangs Folgendes aus:
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort

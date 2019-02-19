@@ -1,22 +1,22 @@
 ---
-title: Verwenden der Schlüsselbegriffserkennung in der Textanalyse-REST-API (Microsoft Cognitive Services in Azure) | Microsoft-Dokumentation
-description: In diesem Tutorial mit exemplarischer Vorgehensweise erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API in Microsoft Cognitive Services in Azure Schlüsselbegriffe extrahieren.
+title: Schlüsselbegriffserkennung mit der Textanalyse-REST-API | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie mithilfe der Textanalyse-REST-API von Azure Cognitive Services Schlüsselbegriffe erkennen.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: bbca745da1fe657c1316d9e4e5fbeeeabfa5e1ef
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: bbf72847dd9d9a29bf1f2fa0574b83194d07a5c6
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216743"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245608"
 ---
-# <a name="example-how-to-extract-key-phrases-in-text-analytics"></a>Beispiel: Gewusst wie: Extrahieren von Schlüsselbegriffen in der Textanalyse
+# <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Beispiel: Erkennen von Schlüsselbegriffen mithilfe der Textanalyse
 
 Die [Schlüsselbegriffserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) bewertet unstrukturierten Text und gibt für jedes JSON-Dokument eine Liste mit Schlüsselbegriffen zurück. 
 
@@ -29,13 +29,13 @@ Zurzeit unterstützt die Schlüsselbegriffserkennung Englisch, Deutsch, Spanisch
 
 ## <a name="preparation"></a>Vorbereitung
 
-Die Schlüsselbegriffserkennung funktioniert am besten, wenn Sie ihr größere Textabschnitte zur Verarbeitung übergeben. Dies steht im Gegensatz zur Standpunktanalyse, die bei kleineren Textblöcken eine bessere Leistung bietet. Um für beide Vorgänge optimale Ergebnisse zu erzielen, empfiehlt es sich ggf., die Eingaben entsprechend umzustrukturieren.
+Die Schlüsselbegriffserkennung funktioniert am besten, wenn Sie ihr größere Texte zur Verarbeitung übergeben. Dies steht im Gegensatz zur Standpunktanalyse, die mit kleineren Texten besser funktioniert. Um für beide Vorgänge optimale Ergebnisse zu erzielen, empfiehlt es sich ggf., die Eingaben entsprechend umzustrukturieren.
 
 Sie benötigen JSON-Dokumente im folgenden Format: ID, Text, Sprache.
 
 Die Dokumentgröße darf 5.000 Zeichen pro Dokument nicht übersteigen, und pro Sammlung sind bis zu 1.000 Elemente (IDs) zulässig. Die Sammlung wird im Hauptteil der Anforderung übermittelt. Das folgende Beispiel ist eine Abbildung von Inhalten, die Sie zur Schlüsselbegriffserkennung übermitteln könnten.
 
-```
+```json
     {
         "documents": [
             {
@@ -94,9 +94,9 @@ Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkann
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können.
 
-Es folgt ein Beispiel für die Ausgabe der Schlüsselbegriffserkennung:
+Beispiel für die Ausgabe der Schlüsselbegriffserkennung:
 
-```
+```json
     "documents": [
         {
             "keyPhrases": [

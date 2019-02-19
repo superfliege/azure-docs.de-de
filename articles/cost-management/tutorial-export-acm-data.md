@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 5f979f562ee871e7ae5f48de5bc53405cb3d1116
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a7c503fba534b72323472fa58b14188bc412003c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766407"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100689"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Tutorial: Erstellen und Verwalten von exportierten Daten
 
@@ -71,7 +71,7 @@ Es gibt drei Typen von Exportoptionen:
 
 **Täglicher Export der Kosten für bisherigen Kalendermonat**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden am nächsten Tag zur gleichen Zeit wie der erste Export ausgeführt. Die aktuellen Daten werden aus vorhergehenden täglichen Exporten aggregiert.
 
-**Wöchentliche Kosten für die vergangenen sieben Tage**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden jeweils am gleichen Wochentag und zur gleichen Uhrzeit wie der erste Export ausgeführt. Dabei werden Kosten für die letzten sieben Tage angegeben.
+**Wöchentlicher Export der Kosten für die vergangenen sieben Tage**: Der erste Export wird sofort ausgeführt. Nachfolgende Exporte werden jeweils am gleichen Wochentag und zur gleichen Uhrzeit wie der erste Export ausgeführt. Dabei werden Kosten für die letzten sieben Tage angegeben.
 
 **Benutzerdefiniert**: Damit können Sie wöchentliche und monatliche Exporte mit Optionen für die bisherige Woche und dem bisherigen Monat planen. *Der erste Export wird sofort ausgeführt.*
 

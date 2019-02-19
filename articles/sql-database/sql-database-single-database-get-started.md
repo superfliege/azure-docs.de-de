@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 016ad5f97c0c9ebbdd3dbc1156c38b4cc842fe9e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 66640bd60f6ba8c2f612a6bc9b88a07b13012997
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757205"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990033"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -29,7 +29,7 @@ Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azu
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 
-Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, EA- und Speicherressourcen und verwendet eins von zwei möglichen [Erwerbsmodellen(sql-database-service-tiers.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbankserver](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
+Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, E/A- und Speicherressourcen und verwendet eins von zwei möglichen [Erwerbsmodellen(sql-database-purchase-models.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbankserver](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
 
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 

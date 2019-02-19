@@ -4,17 +4,17 @@ description: Erstellen, Definieren und Bereitstellen von Artefakten mithilfe von
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 02/04/2019
 ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78ce7c1063623e0c002bb6084d8c18139b3f889f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d7b2e6848c88d9c3ac61f2eaf059e0836dc19903
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566957"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989965"
 ---
 # <a name="define-and-assign-an-azure-blueprint-with-rest-api"></a>Definieren und Zuweisen einer Azure-Blaupause mit der REST-API
 
@@ -329,6 +329,12 @@ Der Wert für `{BlueprintVersion}` ist eine Zeichenfolge mit Buchstaben, Zahlen 
 
 Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonnement zugewiesen werden. Weisen Sie die erstellte Blaupause einem der Abonnements unter Ihrer Verwaltungsgruppenhierarchie zu. Wenn die Blaupause in einem Abonnement gespeichert wird, kann sie nur diesem Abonnement zugewiesen werden. Der **Anforderungstext** gibt die zuzuweisende Blaupause, den Namen und Standort für alle Ressourcengruppen in der Blaupausendefinition sowie alle Parameter an, die in der Blaupause definiert sind und von einem oder mehreren angefügten Artefakten verwendet werden.
 
+In jedem REST-API-URI gibt es Variablen, die Sie durch Ihre eigenen Werte ersetzen müssen:
+
+- Ersetzen Sie `{tenantId}` durch Ihre Mandanten-ID.
+- Ersetzen Sie `{YourMG}` durch die ID Ihrer Verwaltungsgruppe.
+- Ersetzen Sie `{subscriptionId}` durch Ihre Abonnement-ID.
+
 1. Geben Sie für den Azure Blueprint-Dienstprinzipal die Rolle **Besitzer** für das Zielabonnement an. Die AppId ist statisch (`f71766dc-90d9-4b7d-bd9d-4499c4331c3f`), aber die Dienstprinzipal-IDs variieren je nach Mandant. Details für Ihren Mandanten können mit der folgenden REST-API angefordert werden. Sie verwendet die [Azure Active Directory Graph-API](../../active-directory/develop/active-directory-graph-api.md), die eine andere Autorisierung aufweist.
 
    - REST-API-URI
@@ -387,6 +393,25 @@ Nach dem Veröffentlichen einer Blaupause mit der REST-API kann sie einem Abonne
          "location": "westus"
      }
      ```
+
+   - Benutzerseitig zugewiesene verwaltete Identität
+
+     Eine Blaupausenzuweisung kann auch eine [benutzerseitig zugewiesene verwaltete Identität](../../active-directory/managed-identities-azure-resources/overview.md) verwenden. In diesem Fall ändert sich der Identitätsteil (**identity**) des Anforderungstexts wie folgt:  Ersetzen Sie `{yourRG}` und `{userIdentity}` durch den Namen Ihrer Ressourcengruppe bzw. durch den Namen Ihrer benutzerseitig zugewiesenen verwalteten Identität.
+
+     ```json
+     "identity": {
+         "type": "userAssigned",
+         "tenantId": "{tenantId}",
+         "userAssignedIdentities": {
+             "/subscriptions/{subscriptionId}/resourceGroups/{yourRG}/providers/Microsoft.ManagedIdentity/userAssignedIdentities/{userIdentity}": {}
+         }
+     },
+     ```
+
+     Die **benutzerseitig zugewiesene verwaltete Identität** kann sich in einem beliebigen Abonnement/in einer beliebigen Ressourcengruppe befinden, für das/für die der Benutzer, der die Blaupause zuweist, über Berechtigungen verfügt.
+
+     > [!IMPORTANT]
+     > Die benutzerseitig zugewiesene verwaltete Identität wird nicht durch Blaupausen verwaltet. Benutzer müssen angemessene Rollen und Berechtigungen zuweisen. Andernfalls ist die Blaupausenzuweisung nicht erfolgreich.
 
 ## <a name="unassign-a-blueprint"></a>Aufheben der Zuweisung einer Blaupause
 

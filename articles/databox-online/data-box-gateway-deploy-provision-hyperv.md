@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 3187c516ef22a97d2af89e08d5b99ad7a00d875d
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: cf47919ead890f0ad0e89646dde26276ebfb1127
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49166456"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109740"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Tutorial: Bereitstellen von Azure Data Box Gateway in Hyper-V (Vorschauversion)
 
@@ -66,7 +66,7 @@ Stellen Sie Folgendes sicher, bevor Sie ein Gerät bereitstellen:
 
 Vorbereitungen
 
-- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-requirements).
+- Lesen Sie die Netzwerkanforderungen für die Bereitstellung eines Data Box Gateway, und konfigurieren Sie das Netzwerk des Datencenters gemäß den Anforderungen. Weitere Informationen finden Sie unter [Data Box Gateway – Netzwerkanforderungen](data-box-gateway-system-requirements.md#networking-port-requirements).
 - Stellen Sie sicher, dass die Internetbandbreite mindestens 20 MBit/s beträgt, um die optimale Nutzung des Geräts zu ermöglichen.
 
 
@@ -84,7 +84,7 @@ Zum Erstellen eines virtuellen Geräts benötigen Sie Folgendes:
     * Einen Betriebssystemdatenträger mit 250 GB
     * Einen virtuellen Datenträger mit 2 TB für Systemdaten
 
-## <a name="provision-a-virtual-device-in-hypervisor"></a>Bereitstellen eines virtuellen Geräts in Hypervisor
+## <a name="provision-a-virtual-device-in-hypervisor"></a>Bereitstellen eines virtuellen Geräts in VMware
 
 Führen Sie die folgenden Schritte aus, um ein Gerät im Hypervisor bereitzustellen.
 

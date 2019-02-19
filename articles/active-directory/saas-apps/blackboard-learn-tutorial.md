@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 3b57bea85b76b69b1826a81aa582f5326db588cb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 30c13b511fdc4c348cb7356ccc2fb64c40239fc4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811569"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169852"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-blackboard-learn"></a>Tutorial: Azure Active Directory-Integration mit Blackboard Learn
 
@@ -211,7 +212,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-blackboard-learn-test-user"></a>Erstellen eines Blackboard Learn-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Blackboard Learn einen Benutzer mit dem Namen Britta Simon. Die Anwendung Blackboard Learn unterstützt die Just-in-Time-Benutzerbereitstellung. Stellen Sie sicher, dass die Ansprüche wie im Abschnitt **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configuring-azure-ad-single-sign-on)** beschrieben konfiguriert haben.
+In diesem Abschnitt erstellen Sie in Blackboard Learn einen Benutzer mit dem Namen Britta Simon. Die Anwendung Blackboard Learn unterstützt die Just-in-Time-Benutzerbereitstellung. Vergewissern Sie sich, dass Sie die Ansprüche wie im Abschnitt **Konfigurieren des einmaligen Anmeldens von Azure AD** beschrieben konfiguriert haben.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 

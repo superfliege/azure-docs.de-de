@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: b542ca2876149b9a60e5c5b9e3fa17284477864f
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241599"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106975"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Behandeln von Problemen mit Azure Data Box Gateway 
 
@@ -103,6 +103,7 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    In das Konto konnten keine Daten hochgeladen werden, da das Konto oder die Freigabe deaktiviert ist.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Mit dem Container konnte keine Verbindung hergestellt werden, da die Kontoberechtigungen entweder nicht korrekt oder nicht mehr aktuell sind. Überprüfen Sie Ihren Zugriff.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Es konnten keine neuen Daten hinzugefügt werden, da der Container voll ist. Überprüfen Sie die Azure-Spezifikationen für unterstützte Containergrößen unter Berücksichtigung des Typs. Azure Files unterstützt beispielsweise nur eine maximale Dateigröße von 5 TB.                                     |
+    |    2997            |    ERROR_ITEM_CANCELED                                     |    Ein unerwarteter Fehler ist aufgetreten. Dies ist ein vorübergehender Fehler, der sich von selbst behebt.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Ein unerwarteter Fehler ist aufgetreten. Der Fehler behebt sich unter Umständen von selbst. Sollte er jedoch länger als 24 Stunden bestehen bleiben, wenden Sie sich an den Microsoft-Support.                                                                                                     |
     |    16000           |    RefreshException                                        |    Diese Datei konnte nicht abgerufen werden.                                                                                                                                                                                                        |
     |    16001           |    RefreshAlreadyExistsException                           |    Diese Datei konnte nicht abgerufen werden, da sie auf Ihrem lokalen System bereits vorhanden ist.                                                                                                                                                         |

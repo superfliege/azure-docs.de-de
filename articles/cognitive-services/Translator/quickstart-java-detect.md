@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie die Sprache des bereitgestellten Texts mit Java und der Textübersetzungs-REST-API erkennen.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 12/03/2018
 ms.author: erhopf
-ms.openlocfilehash: 00ffb0eef5b7452894b27a00328dae4546d45c6f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c40736bf22f53723a69a649215cdbb79a703e515
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208436"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964099"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-detect-text-language-using-java"></a>Schnellstart: Verwenden der Textübersetzungs-API zur Erkennung der Textsprache mit Java
 
@@ -171,6 +171,12 @@ Sie können Ihre Beispiel-App jetzt ausführen. Navigieren Sie über die Befehls
 
 ```console
 gradle build
+```
+
+Führen Sie nach Abschluss des Buildvorgangs Folgendes aus:
+
+```console
+gradle run
 ```
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort

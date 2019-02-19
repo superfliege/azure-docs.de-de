@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 15ddb29f090ca8dc14befc93e3377c181038b554
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 627275855f231f5a4336075df3864448325127f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54816159"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211868"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks-captive-portal"></a>Tutorial: Azure Active Directory-Integration mit Palo Alto Networks Captive Portal
 
@@ -81,7 +82,7 @@ Führen Sie die folgenden Aufgaben aus, um das einmalige Anmelden von Azure AD m
 2. **[Konfigurieren des einmaligen Anmeldens für Palo Alto Networks Captive Portal:](#configure-palo-alto-networks-captive-portal-single-sign-on)** Konfigurieren Sie die Einstellungen für einmaliges Anmelden in der Anwendung.
 3. **[Erstellen eines Azure AD-Testbenutzers:](#create-an-azure-ad-test-user)** Testen Sie das einmalige Anmelden von Azure AD mit dem Benutzer *Britta Simon*.
 4. **[Zuweisen des Azure AD-Testbenutzers:](#assign-the-azure-ad-test-user)** Richten Sie Britta Simon für die Verwendung des einmaligen Anmeldens in Azure AD ein.
-5. **[Erstellen eines Testbenutzers für Palo Alto Networks Captive Portal:](#create-palo-alto-networks-captive-portal-test-user)** Erstellen Sie in Palo Alto Networks Captive Portal einen entsprechenden Benutzer namens *Britta Simon*, der mit dem Azure AD-Benutzer verknüpft ist.
+5. **Erstellen eines Testbenutzers für Palo Alto Networks Captive Portal:** Erstellen Sie in Palo Alto Networks Captive Portal einen entsprechenden Benutzer namens *Britta Simon*, der mit dem Azure AD-Benutzer verknüpft ist.
 6. **[Testen des einmaligen Anmeldens:](#test-single-sign-on)** Vergewissern Sie sich, dass die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD

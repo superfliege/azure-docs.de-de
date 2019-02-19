@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/18
 ms.author: cynthn
-ms.openlocfilehash: 7644940418b7322e5ec4b02b793219b44ae3aa97
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: ed17d7cd887df6d8bd749ba4426d1a791b58d457
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885148"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56171229"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe über das Azure-Portal.
@@ -46,11 +46,12 @@ Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Ima
     - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
     - Wenn Sie ein Datenträgerimage für Linux-Betriebssysteme auswählen, können Sie stattdessen einen **öffentlichen SSH-Schlüssel** auswählen. Geben Sie nur Ihren öffentlichen Schlüssel an (z.B. *~/.ssh/id_rsa.pub*). Sie können Azure Cloud Shell aus dem Portal verwenden, um [SSH-Schlüssel zu erstellen und zu verwenden](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-7. Geben Sie eine **öffentliche IP-Adresse** wie *myPublicIP* ein.
-8. Geben Sie eine eindeutige **Domänennamenbezeichnung** wie *myuniquedns* ein. Die gewünschte DNS-Bezeichnung bildet die Basis des FQDN für den Lastenausgleich vor der Skalierungsgruppe.
-9. Wählen Sie zum Bestätigen der Skalierungsgruppenoptionen **Erstellen** aus.
+    ![Grundlegende Details für die Erstellung einer VM-Skalierungsgruppe über das Azure-Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+1. Wählen Sie unter **Optionen für den Lastenausgleich auswählen** eine Lastenausgleichsoption aus (beispielsweise *Lastenausgleich*). Geben Sie die restlichen Details für Ihre Lastenausgleichsoption ein. Für *Lastenausgleich* müssen Sie beispielsweise einen Wert für **Öffentliche IP-Adresse** und **Domänennamenbezeichnung** eingeben.
+1. Geben Sie unter **Virtuelle Netzwerke konfigurieren** Details zum virtuellen Netzwerk ein. Sie können beispielsweise ein neues virtuelles Netzwerk namens *myVirtualNetwork* und ein neues Subnetz namens *default* erstellen.
+1. Wählen Sie zum Bestätigen der Skalierungsgruppenoptionen **Erstellen** aus.
+    ![Netzwerkdetails für die Erstellung einer VM-Skalierungsgruppe über das Azure-Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-networking-details.png)
 
-    ![Erstellen einer VM-Skalierungsgruppe im Azure-Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set.png)
 
 
 ## <a name="connect-to-a-vm-in-the-scale-set"></a>Herstellen einer Verbindung mit einem virtuellen Computer in der Skalierungsgruppe

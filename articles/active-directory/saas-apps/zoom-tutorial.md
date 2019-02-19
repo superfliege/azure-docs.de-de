@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/24/2018
+ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: ace02a0cb93cf3e56e4b895524b9e2d35440aecb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ca0e2c0ce12edba504745e2783844db5109ee01a
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812981"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Tutorial: Azure Active Directory-Integration mit Zoom
 
@@ -117,13 +118,17 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoom die
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
-    | NAME | Namespace  |  Quellattribut|
+    | Name | Namespace  |  Quellattribut|
     | ---------------| --------------- | --------- |
     | E-Mail-Adresse  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
     | Vorname  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
     | Nachname  | user.surname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname |
     | Telefonnummer  | user.telephonenumber  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/phone |
     | Department  | user.department  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/department |
+    | role |    user.assignedrole |http://schemas.xmlsoap.org/ws/2005/05/identity/claims/role |
+
+    > [!NOTE]
+    > Klicken Sie [hier](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal), um herauszufinden, wie Sie die Rolle in Azure AD konfigurieren.
 
     a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
@@ -141,11 +146,14 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoom die
 
     f. Klicken Sie auf **Speichern**.
 
-4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+    > [!NOTE]
+    > Zoom erwartet in der SAML-Nutzlast möglicherweise einen Gruppenanspruch. Sollten Sie also eine Gruppe erstellt haben, geben Sie die Gruppeninformationen an das [Clientsupportteam von Zoom](https://support.zoom.us/hc/en-us) weiter, damit das Team diese Gruppeninformationen bei sich konfigurieren kann. Geben Sie außerdem die Objekt-ID an das [Clientsupportteam von Zoom](https://support.zoom.us/hc/en-us) weiter, damit es diese bei sich konfigurieren kann. Gehen Sie zum Abrufen der Objekt-ID gemäß der [Dokumentation](https://support.zoom.us/hc/en-us/articles/115005887566) vor.
+
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-6. Kopieren Sie im Abschnitt **Zoom einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+8. Kopieren Sie im Abschnitt **Zoom einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -160,29 +168,29 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoom die
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Zoom-Unternehmenswebsite als Administrator an.
 
 2. Klicken Sie auf die Registerkarte **Einmaliges Anmelden** .
-   
-    ![Registerkarte für einmaliges Anmelden](./media/zoom-tutorial/IC784700.png "Einmaliges Anmelden")
+
+    ![Registerkarte für einmaliges Anmelden](./media/zoom-tutorial/ic784700.png "Einmaliges Anmelden")
 
 3. Klicken Sie auf die Registerkarte **Sicherheitskontrollen**, und navigieren Sie dann zu den Einstellungen für **Einmaliges Anmelden**.
 
 4. Führen Sie im Abschnitt „Einmaliges Anmelden“ die folgenden Schritte aus:
-   
-    ![Abschnitt für einmaliges Anmelden](./media/zoom-tutorial/IC784701.png "Einmaliges Anmelden")
-   
+
+    ![Abschnitt für einmaliges Anmelden](./media/zoom-tutorial/ic784701.png "Einmaliges Anmelden")
+
     a. Fügen Sie in das Textfeld **Anmelde-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-   
+
     b. Fügen Sie in das Textfeld **Abmelde-URL** den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-     
+
     c. Öffnen Sie das Base-64-codierte Zertifikat im Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des Identitätsanbieters** ein.
 
     d. Fügen Sie in das Textfeld **Aussteller** den Wert der **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben. 
 
     e. Klicken Sie auf **Speichern**.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Weitere Informationen finden Sie in der Dokumentation zum Zoomen [https://zoomus.zendesk.com/hc/articles/115005887566](https://zoomus.zendesk.com/hc/articles/115005887566).
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -240,17 +248,17 @@ Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bere
 ### <a name="to-provision-a-user-account-perform-the-following-steps"></a>Führen Sie zum Bereitstellen eines Benutzerkontos die folgenden Schritte aus:
 
 1. Melden Sie sich bei der **Zoom** -Unternehmenswebsite als Administrator an.
- 
+
 2. Klicken Sie auf die Registerkarte **Kontenverwaltung** und anschließend auf **Benutzerverwaltung**.
 
 3. Klicken Sie im Abschnitt „Benutzerverwaltung“ auf **Benutzer hinzufügen**.
-   
-    ![Benutzerverwaltung](./media/zoom-tutorial/IC784703.png "Benutzerverwaltung")
+
+    ![Benutzerverwaltung](./media/zoom-tutorial/ic784703.png "Benutzerverwaltung")
 
 4. Führen Sie auf der Seite **Benutzer hinzufügen** die folgenden Schritte aus:
-   
-    ![Benutzer hinzufügen](./media/zoom-tutorial/IC784704.png "Benutzer hinzufügen")
-   
+
+    ![Benutzer hinzufügen](./media/zoom-tutorial/ic784704.png "Benutzer hinzufügen")
+
     a. Wählen Sie als **Benutzertyp** die Option **Basic** aus.
 
     b. Geben Sie im Textfeld **Emails** die E-Mail-Adresse eines gültigen Azure AD-Benutzerkontos ein, das Sie bereitstellen möchten.
@@ -260,7 +268,7 @@ Damit sich Azure AD-Benutzer bei Zoom anmelden können, müssen sie in Zoom bere
 > [!NOTE]
 > Sie können Azure Active Directory-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Zoom-Benutzerkonten oder mithilfe der von Zoom bereitgestellten APIs erstellen.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
@@ -273,4 +281,3 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Zoom“ klicken, sollten Sie autom
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

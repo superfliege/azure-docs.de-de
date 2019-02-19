@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: 70dfc03c37b2e7a93218ff7e710dbd22f622d418
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 4e55a50a1a4ae1db995a6054cf9dc13382236b8e
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54813303"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189479"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-keeper-password-manager--digital-vault"></a>Tutorial: Azure Active Directory-Integration in Keeper Password Manager & Digital Vault
 
@@ -78,7 +79,7 @@ Damit das einmalige Anmelden funktioniert, muss eine Linkbeziehung zwischen eine
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Keeper Password Manager & Digital Vault müssen Sie die folgenden Schritte durchführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Keeper Password Manager & Digital Vault](#configure-keeper-password-manager-&-digital-vault-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+2. **Konfigurieren des einmaligen Anmeldens für Keeper Password Manager & Digital Vault**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
 5. **[Erstellen eines Keeper Password Manager & Digital Vault-Testbenutzers](#create-keeper-password-manager--digital-vault-test-user)**, um eine Entsprechung von Britta Simon in Keeper Password Manager & Digital Vault zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.

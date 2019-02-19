@@ -3,7 +3,7 @@ title: 'Azure-Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimn
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe des Azure-Portals ein Geheimnis in Azure Key Vault festlegen und das Geheimnis daraus abrufen.
 services: key-vault
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 98cf8387-34de-468e-ac8f-5c02c9e83e68
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: c3b605507c3878770db2c7dcb53a2ff9bb512b6b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4dd81fd03c39dec3c34e614234a563ec8c2ced38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078387"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56117101"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -58,14 +58,14 @@ An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den n
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault
 
-Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt werden. In diesem Fall fügen wir ein Kennwort hinzu, das von einer Anwendung verwendet werden kann. Das Kennwort heißt **ExamplePassword** und enthält den Wert **Pa$$w0rd**.
+Ein Geheimnis kann dem Tresor mit einigen wenigen Zusatzschritten hinzugefügt werden. In diesem Fall fügen wir ein Kennwort hinzu, das von einer Anwendung verwendet werden kann. Das Kennwort heißt **ExamplePassword**, und wir speichern darin den Wert **hVFkk965BuUv**.
 
 1. Klicken Sie auf den Key Vault-Eigenschaftenseiten auf **Geheimnisse**.
 2. Klicken Sie auf **Generieren/Importieren**.
 3. Wählen Sie auf dem Bildschirm **Geheimnis erstellen** folgende Werte aus:
     - **Uploadoptionen**: Manuell
     - **Name**: ExamplePassword
-    - **Value**: Pa$$w0rd
+    - **Wert**: hVFkk965BuUv
     - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Create**.
 
 Nachdem Sie die Meldung erhalten haben, dass das Geheimnis erfolgreich erstellt wurde, können Sie in der Liste auf das Geheimnis klicken. Daraufhin werden einige der Eigenschaften angezeigt. Wenn Sie auf die aktuelle Version klicken, sehen Sie den Wert, den Sie im vorherigen Schritt angegeben haben.

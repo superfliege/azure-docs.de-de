@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: e3687ac5941d4f4fda70f96fa9df1ec1904e102e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 783f8006ba19622761beef0ff931bcbb80edde46
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822475"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115894"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für VMware-VMs und physische Server, die nach Azure repliziert werden.
 
@@ -98,7 +98,7 @@ Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschrie
 > [!IMPORTANT]
 > Wenn Sie eine VPN-Verbindung zwischen Ihrer lokalen Umgebung und Azure hergestellt haben, müssen Sie eine Azure-VM als Prozessserver für das erneute Schützen und das Failback einrichten. Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
 
-Weitere Informationen zu den Voraussetzungen für das erneute Schützen und das Failback finden Sie in [diesem Abschnitt] ](vmware-azure-reprotect.md##before-you-begin). 
+Weitere Informationen zu den Voraussetzungen für das erneute Schützen und das Failback finden Sie in [diesem Abschnitt](vmware-azure-reprotect.md##before-you-begin). 
 
 ### <a name="configure-the-master-target-server"></a>Konfigurieren des Masterzielservers
 

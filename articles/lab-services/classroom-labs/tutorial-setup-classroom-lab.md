@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/16/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 3b425af972b0983db076ab103a33c57f7a127210
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095752"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998517"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -28,7 +28,7 @@ In diesem Tutorial führen Sie die folgenden Aktionen aus:
 
 > [!div class="checklist"]
 > * Erstellen eines Classroom-Labs
-> * Konfigurieren des Classroom-Labs
+> * Hinzufügen von Benutzern zum Lab
 > * Senden eines Registrierungslinks an Teilnehmer
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -43,13 +43,12 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 2. Wählen Sie **Anmelden**, und geben Sie Ihre Anmeldeinformationen ein. Azure Lab Services unterstützt Geschäfts-, Schul- oder Unikonten und Microsoft-Konten. 
 3. Führen Sie im Fenster **Neues Lab** die folgenden Aktionen aus: 
     1. Geben Sie unter **Name** einen Namen für Ihr Lab an. 
-    2. Geben Sie die maximale **Anzahl von Benutzern** an, die für das Lab zulässig sind. 
+    2. Geben Sie die maximale **Anzahl von virtuellen Computern** im Lab an. Die Anzahl von virtuellen Computern kann nach der Lab-Erstellung oder in einem bereits vorhandenen Lab erhöht oder verringert werden. Weitere Informationen finden Sie unter [Aktualisieren der Anzahl von virtuellen Computern im Lab](how-to-configure-student-usage.md#update-number-of-virtual-machines-in-lab).
     6. Wählen Sie **Speichern** aus.
 
         ![Erstellen eines Classroom-Labs](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. Führen Sie auf der Seite **Select virtual machine specifications** (Spezifikationen für virtuellen Computer auswählen) die folgenden Schritte aus:
     1. Wählen Sie eine **Größe** für die virtuellen Computer (VMs), die im Lab erstellt werden. 
-    2. Wählen Sie die **Region** aus, in der die VMs erstellt werden sollen. 
     3. Wählen Sie das **VM-Image** aus, das zum Erstellen von VMs im Lab verwendet werden soll. 
     4. Klicken Sie auf **Weiter**.
 
@@ -69,17 +68,15 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 7. Nachdem die Konfiguration der Vorlage abgeschlossen ist, wird die folgende Seite angezeigt: 
 
     ![Seite „Vorlage konfigurieren“ nach Abschluss des Vorgangs](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
-8. Die folgenden Schritte sind in diesem Tutorial optional: 
+8. Führen Sie auf der Seite **Vorlage konfigurieren** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
     1. Starten Sie die Vorlage für virtuelle Computer, indem Sie **Starten** wählen.
     2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. 
     3. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
     4. **Beenden** Sie den virtuellen Computer.  
     5. Geben Sie eine **Beschreibung** für die Vorlage ein.
-
-        ![„Weiter“ auf der Seite „Vorlage konfigurieren“](../media/tutorial-setup-classroom-lab/configure-template-next.png)
 9. Wählen Sie auf der Vorlagenseite die Option **Weiter**. 
 10. Führen Sie auf der Seite **Vorlage veröffentlichen** die folgenden Aktionen durch. 
-    1. Aktivieren Sie zum sofortigen Veröffentlichen der Vorlage das Kontrollkästchen *I understand I can't modify the template after publishing. This process can only be done once and can take up to an hour* (Ich weiß, dass die Vorlage nach dem Veröffentlichen nicht mehr geändert werden kann. Dieser Prozess kann nur einmal durchgeführt werden und bis zu einer Stunde dauern.), und wählen Sie **Veröffentlichen**.  
+    1. Wenn Sie die Vorlage sofort veröffentlichen möchten, wählen Sie **Veröffentlichen** aus.  
 
         > [!WARNING]
         > Nachdem die Veröffentlichung erfolgt ist, kann sie nicht mehr rückgängig gemacht werden. 
@@ -103,7 +100,9 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
 1. Klicken Sie im linken Menü auf **Benutzer**. Die Option **Zugriff beschränken** ist standardmäßig aktiviert. Wenn diese Einstellung aktiviert ist, kann sich ein Benutzer auch dann nicht beim Lab registrieren, wenn er über den Registrierungslink verfügt. Um sich zu registrieren, muss er in der Liste der Benutzer enthalten sein. Nur Benutzer in der Liste können sich über den von Ihnen gesendeten Registrierungslink beim Lab registrieren. In diesem Verfahren fügen Sie der Liste Benutzer hinzu. Alternativ können Sie **Zugriff beschränken** deaktivieren. In diesem Fall können sich Benutzer beim Lab registrieren, wenn sie über den Registrierungslink verfügen. 
 2. Klicken Sie auf der Symbolleiste auf **Benutzer hinzufügen**. 
-3. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
+
+    ![Schaltfläche „Benutzer hinzufügen“](../media/how-to-configure-student-usage/add-users-button.png)
+1. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
 
     ![Hinzufügen der E-Mail-Adressen von Benutzern](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Wählen Sie **Speichern** aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 

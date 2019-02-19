@@ -16,14 +16,15 @@ ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9abfd410e9137a897753fcf04ee113bd04749a7a
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: f3b49efa5e28eab2168c9a85d17e39ca7f0fce4a
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54881680"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984782"
 ---
 # <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von Datenträgern mit VM-Skalierungsgruppe mit Azure PowerShell
+
 Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems, der Anwendungen und der Daten von VM-Instanzen verwendet. Beim Erstellen und Verwalten einer Skalierungsgruppe muss darauf geachtet werden, eine für den erwarteten Workload geeignete Datenträgergröße und -konfiguration auszuwählen. In diesem Tutorial wird beschrieben, wie Sie VM-Datenträger erstellen und verwalten. In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
@@ -35,9 +36,9 @@ Für VM-Skalierungsgruppen werden Datenträger zum Speichern des Betriebssystems
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 6.0.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
 
 ## <a name="default-azure-disks"></a>Azure-Standarddatenträger
@@ -95,12 +96,12 @@ In dieser Tabelle ist zwar die maximale IOPS-Anzahl pro Datenträger angegeben, 
 Sie können Datenträger beim Erstellen einer Skalierungsgruppe oder für eine vorhandene Skalierungsgruppe erstellen und anfügen.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Anfügen von Datenträgern bei der Erstellung einer Skalierungsgruppe
-Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort für die VM-Instanzen an. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985.
+Erstellen Sie mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Geben Sie bei entsprechender Aufforderung einen Benutzernamen und ein Kennwort für die VM-Instanzen an. Um Datenverkehr an die einzelnen VM-Instanzen zu verteilen, wird auch ein Lastenausgleich erstellt. Der Lastenausgleich enthält Regeln zum Verteilen von Datenverkehr über TCP-Port 80 und zum Zulassen von Remotedesktop-Datenverkehr über TCP-Port 3389 und PowerShell-Remoting über TCP-Port 5985.
 
 Mit dem Parameter `-DataDiskSizeGb` werden zwei Datenträger erstellt. Der erste Datenträger hat eine Größe von *64* GB, und der zweite Datenträger hat eine Größe von *128* GB. Geben Sie Ihre gewünschten Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe an, wenn Sie dazu aufgefordert werden:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Location "EastUS" `
   -VMScaleSetName "myScaleSet" `
@@ -115,23 +116,23 @@ New-AzureRmVmss `
 Die Erstellung und Konfiguration aller Ressourcen und VM-Instanzen der Skalierungsgruppe dauert einige Minuten.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Anfügen eines Datenträgers an eine vorhandene Skalierungsgruppe
-Sie können Datenträger auch an eine vorhandene Skalierungsgruppe anfügen. Verwenden Sie die im vorherigen Schritt erstellte Skalierungsgruppe, um mit [Add-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/add-azurermvmssdatadisk) einen weiteren Datenträger hinzuzufügen. Im folgenden Beispiel wird an eine Skalierungsgruppe ein weiterer Datenträger mit *128* GB angefügt:
+Sie können Datenträger auch an eine vorhandene Skalierungsgruppe anfügen. Verwenden Sie die im vorherigen Schritt erstellte Skalierungsgruppe, um mit [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk) einen weiteren Datenträger hinzuzufügen. Im folgenden Beispiel wird an eine Skalierungsgruppe ein weiterer Datenträger mit *128* GB angefügt:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Attach a 128 GB data disk to LUN 2
-Add-AzureRmVmssDataDisk `
+Add-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -CreateOption Empty `
   -Lun 2 `
   -DiskSizeGB 128
 
 # Update the scale set to apply the change
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -143,11 +144,13 @@ Bei den Datenträgern, die erstellt und an die VM-Instanzen Ihrer Skalierungsgru
 
 Sie können die benutzerdefinierte Skripterweiterung von Azure verwenden, um den Prozess für mehrere VM-Instanzen einer Skalierungsgruppe zu automatisieren. Mit dieser Erweiterung können Skripts lokal auf jeder VM-Instanz ausgeführt werden, z.B. um angefügte Datenträger vorzubereiten. Weitere Informationen finden Sie unter [Übersicht über benutzerdefinierte Skripterweiterungen](../virtual-machines/windows/extensions-customscript.md).
 
-Im folgenden Beispiel wird mit [Add-AzureRmVmssExtension](/powershell/module/AzureRM.Compute/Add-AzureRmVmssExtension) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:
+
+Im folgenden Beispiel wird mit [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) ein Skript aus einem GitHub-Beispielrepository auf jeder VM-Instanz ausgeführt, um alle angefügten unformatierten Datenträger vorzubereiten:
+
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
@@ -158,7 +161,7 @@ $publicSettings = @{
 }
 
 # Use Custom Script Extension to prepare the attached data disks
-Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
+Add-AzVmssExtension -VirtualMachineScaleSet $vmss `
   -Name "customScript" `
   -Publisher "Microsoft.Compute" `
   -Type "CustomScriptExtension" `
@@ -166,7 +169,7 @@ Add-AzureRmVmssExtension -VirtualMachineScaleSet $vmss `
   -Setting $publicSettings
 
 # Update the scale set and apply the Custom Script Extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -174,17 +177,18 @@ Update-AzureRmVmss `
 
 Stellen Sie eine RDP-Verbindung mit einer der VM-Instanzen her, um zu bestätigen, dass die Datenträger richtig vorbereitet wurden. 
 
-Rufen Sie zuerst mit [Get-AzureRmLoadBalancer](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancer) das Lastenausgleichsobjekt ab. Zeigen Sie anschließend mit [Get-AzureRmLoadBalancerInboundNatRuleConfig](/powershell/module/AzureRM.Network/Get-AzureRmLoadBalancerInboundNatRuleConfig) die NAT-Eingangsregeln an. Mit den NAT-Regeln wird jeweils der *FrontendPort* für eine VM-Instanz aufgelistet, über die per RDP gelauscht wird. Rufen Sie abschließend mit [Get-AzureRmPublicIPAddress](/powershell/module/AzureRM.Network/Get-AzureRmPublicIpAddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
+Rufen Sie zuerst mit [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer) das Lastenausgleichsobjekt ab. Zeigen Sie anschließend mit [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig) die NAT-Regeln für eingehenden Datenverkehr an. Mit den NAT-Regeln wird jeweils der *FrontendPort* für eine VM-Instanz aufgelistet, über die per RDP gelauscht wird. Rufen Sie abschließend mit [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
+
 
 ```azurepowershell-interactive
 # Get the load balancer object
-$lb = Get-AzureRmLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
+$lb = Get-AzLoadBalancer -ResourceGroupName "myResourceGroup" -Name "myLoadBalancer"
 
 # View the list of inbound NAT rules
-Get-AzureRmLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
+Get-AzLoadBalancerInboundNatRuleConfig -LoadBalancer $lb | Select-Object Name,Protocol,FrontEndPort,BackEndPort
 
 # View the public IP address of the load balancer
-Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
+Get-AzPublicIpAddress -ResourceGroupName "myResourceGroup" -Name myPublicIPAddress | Select IpAddress
 ```
 
 Geben Sie zum Herstellen einer Verbindung mit Ihrer VM Ihre eigene öffentliche IP-Adresse und Portnummer der erforderlichen VM-Instanz an, wie in den vorherigen Befehlen zu sehen. Geben Sie bei entsprechender Aufforderung die beim Erstellen der Skalierungsgruppe verwendeten Anmeldeinformationen ein. Führen Sie diesen Schritt bei Verwendung von Azure Cloud Shell an einer lokalen PowerShell-Eingabeaufforderung oder über einen Remotedesktopclient aus. Im folgenden Beispiel wird eine Verbindung mit der VM-Instanz *1* hergestellt:
@@ -245,10 +249,10 @@ Schließen Sie die Remotedesktopverbindung mit der VM-Instanz.
 
 
 ## <a name="list-attached-disks"></a>Auflisten von angefügten Datenträgern
-Verwenden Sie [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) wie folgt, um Informationen zu den Datenträgern anzuzeigen, die an eine Skalierungsgruppe angefügt sind:
+Verwenden Sie [Get-AzVmss](/powershell/module/az.compute/get-azvmss) wie folgt, um Informationen zu den Datenträgern anzuzeigen, die an eine Skalierungsgruppe angefügt sind:
 
 ```azurepowershell-interactive
-Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
 ```
 
 Unter der *VirtualMachineProfile.StorageProfile*-Eigenschaft wird die Liste mit *DataDisks* angezeigt. Es werden Informationen zur Datenträgergröße, Speicherebene und logischen Gerätenummer (Logical Unit Number, LUN) angezeigt. Die folgende Beispielausgabe enthält ausführliche Informationen zu den drei Datenträgern, die an die Skalierungsgruppe angefügt sind:
@@ -279,21 +283,21 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Trennen eines Datenträgers
-Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie [Remove-AzureRmVmssDataDisk](/powershell/module/azurerm.compute/remove-azurermvmssdatadisk), und geben Sie die LUN des Datenträgers an, um einen Datenträger von einer Skalierungsgruppe zu trennen. Die LUNs sind in der Ausgabe von [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *3* von der Skalierungsgruppe getrennt:
+Wenn Sie einen bestimmten Datenträger nicht mehr benötigen, können Sie ihn von der Skalierungsgruppe trennen. Der Datenträger wird aus allen VM-Instanzen in der Skalierungsgruppe entfernt. Verwenden Sie [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk), und geben Sie die LUN des Datenträgers an, um einen Datenträger von einer Skalierungsgruppe zu trennen. Die LUNs sind in der Ausgabe von [Get-AzVmss](/powershell/module/az.compute/get-azvmss) im vorherigen Abschnitt enthalten. Im folgenden Beispiel wird LUN *3* von der Skalierungsgruppe getrennt:
 
 ```azurepowershell-interactive
 # Get scale set object
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
           -ResourceGroupName "myResourceGroup" `
           -VMScaleSetName "myScaleSet"
 
 # Detach a disk from the scale set
-Remove-AzureRmVmssDataDisk `
+Remove-AzVmssDataDisk `
   -VirtualMachineScaleSet $vmss `
   -Lun 2
 
 # Update the scale set and detach the disk from the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
   -ResourceGroupName "myResourceGroup" `
   -Name "myScaleSet" `
   -VirtualMachineScaleSet $vmss
@@ -301,10 +305,10 @@ Update-AzureRmVmss `
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-Löschen Sie die Ressourcengruppe und alle dazugehörigen Ressourcen mit [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup), um Ihre Skalierungsgruppe und die Datenträger zu entfernen. Der Parameter `-Force` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten. Der Parameter `-AsJob` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist.
+Löschen Sie mit [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) die Ressourcengruppe und alle dazugehörigen Ressourcen, um Ihre Skalierungsgruppe und die Datenträger zu entfernen. Der Parameter `-Force` bestätigt ohne eine zusätzliche Aufforderung, dass Sie die Ressourcen löschen möchten. Der Parameter `-AsJob` gibt die Steuerung an die Eingabeaufforderung zurück, ohne zu warten, bis der Vorgang abgeschlossen ist.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
+Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
