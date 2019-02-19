@@ -10,27 +10,42 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2018
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 68986b3d60566ee190a92c6ccf8cda767824350f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 77a806d328a6dbac0e57c9d99e06debbb25e88b8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000154"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108380"
 ---
-# <a name="azure-monitor-branding-changes"></a>Azure Monitor-Branding-Änderungen
-Dieser Artikel beschreibt die kürzlich bei Azure-Verwaltungsdiensten vorgenommenen Änderungen an Namen und Handelsnamen. 
+# <a name="azure-monitor-naming-and-terminology-changes"></a>Namens- und Terminologieänderungen bei Azure Monitor
+Vor Kurzem wurden wichtige Änderungen bei Azure Monitor vorgenommen und verschiedene Dienste zur vereinfachten Überwachung für Azure-Kunden zusammengefasst. Dieser Artikel beschreibt die neuesten Namens- und Terminologieänderungen in der Azure Monitor-Dokumentation.
 
-## <a name="consolidation-of-monitoring-services-into-azure-monitor"></a>Konsolidierung der Überwachungsdienste in Azure Monitor
+## <a name="february-2019---log-analytics-terminology"></a>Februar 2019 – Log Analytics-Terminologie
+Nach der Konsolidierung verschiedener Dienste unter Azure Monitor erfolgt nun der nächste Schritt durch Ändern der Terminologie in unserer Dokumentation, damit der Azure Monitor-Dienst und seine verschiedenen Komponenten besser beschrieben werden. 
+
+### <a name="log-analytics"></a>Log Analytics
+Azure Monitor-Protokolldaten werden weiterhin in einem Log Analytics-Arbeitsbereich gespeichert und immer noch vom gleichen Log Analytics-Dienst erfasst und analysiert, doch wird der Begriff _Log Analytics_ an vielen Stellen in _Azure Monitor-Protokolle_ geändert. Dieser Begriff gibt dessen Rolle in Azure Monitor besser wieder und sorgt für konsistentere [Metriken in Azure Monitor](platform/data-collection.md).
+
+Der Begriff _Log Analytics_ wird jetzt in erster Linie für die Seite im Azure-Portal verwendet, die zum Schreiben und Ausführen von Abfragen sowie zum Analysieren von Protokolldaten dient. Dies entspricht von der Funktion her dem [Metrik-Explorer](platform/metrics-charts.md), d.h. der Seite im Azure-Portal, die zum Analysieren von Metrikdaten verwendet wird.
+
+### <a name="log-analytics-workspaces"></a>Log Analytics-Arbeitsbereiche
+[Arbeitsbereiche](platform/manage-access.md), die Protokolldaten in Azure Monitor enthalten, werden weiterhin als Log Analytics-Arbeitsbereiche bezeichnet. Die Seite **Log Analytics** im Azure-Portal wurde in **Log Analytics-Arbeitsbereiche** umbenannt. Dort können Sie [neue Arbeitsbereiche erstellen](learn/quick-create-workspace.md) und Datenquellen konfigurieren. Analysieren Sie Ihre Protokolle und andere Überwachungsdaten in **Azure Monitor**, und konfigurieren Sie Ihren Arbeitsbereich in **Log Analytics-Arbeitsbereichen**.
+
+### <a name="management-solutions"></a>Verwaltungslösungen
+[Verwaltungslösungen](insights/solutions.md) wurden in _Überwachungslösungen_ umbenannt, da dieser Begriff deren Funktionalität besser beschreibt.
+
+
+## <a name="august-2018---consolidation-of-monitoring-services-into-azure-monitor"></a>August 2018 – Konsolidierung der Überwachungsdienste in Azure Monitor
 Log Analytics und Application Insights wurden in Azure Monitor zusammengeführt, um eine einzelne, integrierte Benutzeroberfläche für das Überwachen von Azure-Ressourcen und Hybridumgebungen zu schaffen. Es wurde keine Funktionalität entfernt, und die Benutzer können die gleichen Szenarien wie bisher ausführen, ohne Verlust oder Einschränkung bei den Features.
 
 Die Dokumentation für jeden dieser Dienste wurde für Azure Monitor zu einer einzelnen Inhaltssammlung zusammengeführt. Das hilft dem Leser, alle Inhalte für ein bestimmtes Überwachungsszenario an einem einzelnen Ort zu finden, statt mehrere Inhaltssammlungen zu Rate ziehen zu müssen. Mit der Entwicklung des konsolidierten Diensts wird auch die Integration der Inhalte zunehmen.
 
-## <a name="log-analytics-redefinition"></a>Neudefinition von Log Analytics
-Log Analytics hat eine zentrale Rolle bei der Azure-Verwaltung gespielt, indem Telemetriedaten und andere Daten aus vielen verschiedenen Quellen gesammelt und eine Abfragesprache und ein Analysemodul bereitgestellt wurden, damit Sie Einblicke in die Abläufe Ihrer Anwendungen und Ressourcen erhalten. Es wird diese kritische Rolle als Feature von Azure Monitor auch weiterhin ausfüllen. Andere Features, die wir als Teil von Log Analytics angesehen haben, wie etwa Agents und Lösungen, werden als Features von Azure Monitor neu positioniert. Ihre Funktionalität hat sich abgesehen von möglichen Verbesserungen der Benutzerfreundlichkeit im Azure-Portal nicht geändert.
+Andere Features, die wir als Teil von Log Analytics angesehen haben, wie etwa Agents und Ansichten, wurden ebenfalls als Features von Azure Monitor neu positioniert. Ihre Funktionalität hat sich abgesehen von möglichen Verbesserungen der Benutzerfreundlichkeit im Azure-Portal nicht geändert.
 
-## <a name="retirement-of-operations-management-suite-brand"></a>Einstellung der Marke „Operations Management Suite“
+
+## <a name="april-2018---retirement-of-operations-management-suite-brand"></a>April 2018 – Einstellung der Marke „Operations Management Suite“
 Operations Management Suite (OMS) war eine Bündelung der folgenden Azure-Verwaltungsdienste zu Lizenzzwecken:
 
 - Application Insights
@@ -43,7 +58,8 @@ Operations Management Suite (OMS) war eine Bündelung der folgenden Azure-Verwal
 
 
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie eine [Übersicht zu Azure Monitor](overview.md), die dessen verschiedene Komponenten und Features beschreibt.
-- Erfahren Sie mehr über die [Umstellung vom OMS-Portal](../azure-monitor/platform/oms-portal-transition.md).
+- Erfahren Sie mehr über die [Umstellung vom OMS-Portal](../log-analytics/log-analytics-oms-portal-transition.md).

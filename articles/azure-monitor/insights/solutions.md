@@ -1,6 +1,6 @@
 ---
-title: Verwaltungslösungen in Azure Monitor | Microsoft-Dokumentation
-description: Bei Verwaltungslösungen in Azure Monitor handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen.  Dieser Artikel enthält Informationen zur Installation und Verwendung von Verwaltungslösungen.
+title: Überwachungslösungen in Azure Monitor | Microsoft-Dokumentation
+description: Bei Überwachungslösungen in Azure Monitor handelt es sich um eine Sammlung von Logik-, Visualisierungs- und Datenerfassungsregeln, die Metriken zu einem bestimmten Problembereich bereitstellen.  Dieser Artikel enthält Informationen zur Installation und Verwendung von Überwachungslösungen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,27 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: 8a6a679aaf43e4a92eb380368f3d68704853d3a3
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816814"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001016"
 ---
-# <a name="management-solutions-in-azure-monitor"></a>Verwaltungslösungen in Azure Monitor
-Verwaltungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Verwaltungslösungen in Azure sowie Details zu deren Verwendung und Installation.
+# <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
+Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
 
-Verwaltungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Die Lösungen können auch andere Dienste wie etwa Azure Automation nutzen, um Aktionen im Zusammenhang mit der Anwendung oder dem Dienst auszuführen.
+> [!NOTE]
+> Überwachungslösungen wurden zuvor als Verwaltungslösungen bezeichnet.
 
-Verwaltungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen. Zusätzlich zu den [von Microsoft bereitgestellten Lösungen](solutions-creating.md) können Partner und Kunden Verwaltungslösungen erstellen und in ihrer eigenen Umgebung verwenden oder über die Community für Kunden verfügbar machen.
+Überwachungslösungen sammeln in der Regel Protokolldaten und stellen Abfragen und Ansichten bereit, um die gesammelten Daten zu analysieren. Die Lösungen können auch andere Dienste wie etwa Azure Automation nutzen, um Aktionen im Zusammenhang mit der Anwendung oder dem Dienst auszuführen.
 
-## <a name="use-management-solutions"></a>Verwenden von Verwaltungslösungen
-Beim Öffnen der **Übersichtsseite** für Ihren Log Analytics-Arbeitsbereich wird für jede im Workspace installierte Lösung eine Kachel angezeigt. 
+Überwachungslösungen können Azure Monitor für beliebige Anwendungen und Dienste hinzugefügt werden, die Sie verwenden. Die Lösungen sind in der Regel kostenlos, durch die Datensammlung können jedoch Kosten entstehen. Zusätzlich zu den [von Microsoft bereitgestellten Lösungen](solutions-creating.md) können Partner und Kunden Verwaltungslösungen erstellen und in ihrer eigenen Umgebung verwenden oder über die Community für Kunden verfügbar machen.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
+Beim Öffnen der **Übersichtsseite** in Azure Monitor wird für jede im Workspace installierte Lösung eine Kachel angezeigt. 
 
 1. Melden Sie sich beim Azure-Portal an.
 1. Öffnen Sie **Alle Dienste**, und suchen Sie **Überwachen**.
@@ -38,14 +43,14 @@ Beim Öffnen der **Übersichtsseite** für Ihren Log Analytics-Arbeitsbereich wi
 
 ![Übersicht](media/solutions/overview.png)
 
-Verwaltungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z. B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit Log Analytics eine Ad-hoc-Analyse durchführen.
+Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z.B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit [Protokollabfragen](../log-query/log-query-overview.md) eine Ad-hoc-Analyse durchführen.
 
-## <a name="list-installed-management-solutions"></a>Auflisten der installierten Verwaltungslösungen 
-Gehen Sie wie folgt vor, um die in Ihrem Abonnement installierten Verwaltungslösungen aufzulisten:
+## <a name="list-installed-monitoring-solutions"></a>Auflisten installierter Überwachungslösungen 
+Gehen Sie wie folgt vor, um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.
 
 1. Melden Sie sich beim Azure-Portal an.
 1. Öffnen Sie **Alle Dienste**, und suchen Sie **Lösungen**.
-4. Alle in Ihren Arbeitsbereichen installierten Lösungen werden aufgelistet. Auf den Namen der Lösung folgt der Name des Log Analytics-Arbeitsbereichs, in dem sie installiert ist.
+4. Alle in Ihren Arbeitsbereichen installierten Lösungen werden aufgelistet. Auf den Namen der Lösung folgt der Name des Arbeitsbereichs, in dem sie installiert ist.
 1. Mit den Dropdownfeldern am oberen Bildschirmrand können Sie die Anzeige nach Abonnement oder Ressourcengruppe filtern.
 
 
@@ -57,12 +62,12 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 
 
 
-## <a name="install-a-management-solution"></a>Installieren einer Verwaltungslösung
-Verwaltungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
+## <a name="install-a-monitoring-solution"></a>Installieren einer Überwachungslösung
+Überwachungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
 1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-management-solutions) auf **Hinzufügen**. 
 1. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). 
-1. Suchen Sie die gewünschte Verwaltungslösung, und lesen Sie ihre Beschreibung.
+1. Suchen Sie die gewünschte Überwachungslösung, und lesen Sie ihre Beschreibung.
 1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.
 1. Zu Beginn des Installationsvorgangs werden Sie zur Angabe der erforderlichen Konfiguration aufgefordert. Diese unterscheidet sich von Lösung zu Lösung.
 
@@ -81,7 +86,7 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
 
 
 ## <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics-Arbeitsbereich und Automation-Konto
-Für alle Verwaltungslösungen wird ein [Log Analytics-Arbeitsbereich](../platform/manage-access.md) zum Speichern der von der Lösung gesammelten Daten sowie zum Hosten der Protokollsuchvorgänge und Ansichten benötigt. Einige Lösungen erfordern auch ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen. Der Arbeitsbereich und das Konto müssen den folgenden Anforderungen entsprechen.
+Für alle Überwachungslösungen wird ein [Log Analytics-Arbeitsbereich](../platform/manage-access.md) zum Speichern der von der Lösung gesammelten Daten sowie zum Hosten der Protokollsuchvorgänge und Ansichten benötigt. Einige Lösungen erfordern auch ein [Automation-Konto](../../automation/automation-security-overview.md#automation-account-overview) für Runbooks und zugehörige Ressourcen. Der Arbeitsbereich und das Konto müssen den folgenden Anforderungen entsprechen.
 
 * Eine Lösungsinstallation kann jeweils nur einen Log Analytics-Arbeitsbereich und ein einzelnes Automation-Konto verwenden. Sie können die Lösung separat in mehreren Arbeitsbereichen installieren.
 * Sollte eine Lösung ein Automation-Konto benötigen, müssen der Log Analytics-Arbeitsbereich und das Automation-Konto miteinander verknüpft werden. Ein Log Analytics-Arbeitsbereich kann nur mit einem Automation-Konto verknüpft werden, und ein Automation-Konto kann nur mit einem Log Analytics-Arbeitsbereich verknüpft werden.
@@ -100,13 +105,11 @@ Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und ein
 1. Scrollen Sie im Menü zum Abschnitt **Zugehörige Ressourcen**.
 1. Wenn die Einstellung **Arbeitsbereich** aktiviert ist, ist dieses Konto mit einem Log Analytics-Arbeitsbereich verknüpft. Wenn Sie die Details des Arbeitsbereichs anzeigen möchten, klicken Sie auf **Arbeitsbereich**.
 
-## <a name="remove-a-management-solution"></a>Entfernen einer Verwaltungslösung
-Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der Liste mit den installierten Lösungen. Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
-
-
+## <a name="remove-a-monitoring-solution"></a>Entfernen einer Überwachungslösung
+Wenn Sie eine installierte Lösung entfernen möchten, suchen Sie sie in der [Liste mit den installierten Lösungen](#list-installed-monitoring-solutions). Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Rufen Sie eine [Liste mit Verwaltungslösungen von Microsoft](solutions-inventory.md) ab.
-* Machen Sie sich mit dem [Erstellen von Abfragen](../../azure-monitor/log-query/log-query-overview.md) für die Analyse der von Verwaltungslösungen gesammelten Daten vertraut.
+* Rufen Sie eine [Liste mit Überwachungslösungen von Microsoft](solutions-inventory.md) ab.
+* Machen Sie sich mit dem [Erstellen von Abfragen](../log-query/log-query-overview.md) für die Analyse der von Überwachungslösungen gesammelten Daten vertraut.
 

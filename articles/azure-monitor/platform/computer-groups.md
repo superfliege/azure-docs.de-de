@@ -1,6 +1,6 @@
 ---
-title: Computergruppen bei Protokollsuchen in Azure Log Analytics| Microsoft-Dokumentation
-description: Mit Computergruppen in Log Analytics können Sie Protokollsuchvorgänge auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, sowie wie sie diese in einer Suche verwenden.
+title: Computergruppen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Mit Computergruppen in Azure Monitor können Sie Protokollabfragen auf eine bestimmte Gruppe von Computern eingrenzen.  In diesem Artikel werden die verschiedenen Methoden beschrieben, mit denen Sie Computergruppen erstellen, und wie sie diese in einer Protokollabfrage verwenden.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,94 +11,95 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 05/03/2018
+ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: bc8688e06b430522d2aeb1bcc67f72dae2e9ac6a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7e5d04f3ead4353c88a6b56ab530f41ff15022d1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53728402"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005385"
 ---
-# <a name="computer-groups-in-log-analytics-log-searches"></a>Computergruppen in Log Analytics-Protokollsuchen
+# <a name="computer-groups-in-azure-monitor-log-quereies"></a>Computergruppen in Azure Monitor-Protokollabfragen
+Mit Computergruppen in Azure Monitor können Sie [Protokollabfragen](../log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollabfrage eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die den Computern in der Gruppe entsprechen.
 
-Mit Computergruppen in Log Analytics können Sie [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) auf eine bestimmte Gruppe von Computern eingrenzen.  Die einzelnen Gruppen werden über eine von Ihnen definierte Abfrage mit Computern aufgefüllt oder indem Sie Gruppen aus verschiedenen Quellen importieren.  Wenn die Gruppe in eine Protokollsuche eingeschlossen wird, sind die Ergebnisse auf Datensätze beschränkt, die Computern in der Gruppe entsprechen.
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="creating-a-computer-group"></a>Erstellen einer Computergruppe
-Sie können eine Computergruppe in Log Analytics mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
+Sie können eine Computergruppe in Azure Monitor mithilfe einer der Methoden in der folgenden Tabelle erstellen.  Einzelheiten zu den einzelnen Methoden finden Sie in den Abschnitten unten. 
 
 | Methode | BESCHREIBUNG |
 |:--- |:--- |
-| Protokollsuche |Erstellen Sie eine Protokollsuche, die eine Liste mit Computern zurückgibt. |
-| Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollsuche zu erstellen. |
-| Active Directory |Scannen Sie automatisch die Gruppenmitgliedschaft aller Agent-Computer, die Mitglieder einer Active Directory-Domäne sind, und erstellen Sie für die einzelnen Sicherheitsgruppen jeweils eine Gruppe in Log Analytics. (Nur für Windows-Computer)|
-| Konfigurations-Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Log Analytics. |
-| Windows Server Update Services |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Log Analytics. |
+| Protokollabfrage |Erstellen Sie eine Protokollabfrage, die eine Liste mit Computern zurückgibt. |
+| Protokollsuch-API |Verwenden Sie die Protokollsuch-API, um programmgesteuert eine Computergruppe basierend auf den Ergebnissen einer Protokollabfrage zu erstellen. |
+| Active Directory |Scannen Sie automatisch die Gruppenmitgliedschaft aller Agent-Computer, die Mitglieder einer Active Directory-Domäne sind, und erstellen Sie für die einzelnen Sicherheitsgruppen jeweils eine Gruppe in Azure Monitor. (Nur für Windows-Computer)|
+| Configuration Manager | Importieren Sie Sammlungen aus System Center Configuration Manager, und erstellen Sie für jede eine Gruppe in Azure Monitor. |
+| Windows Server Update Services |Scannen Sie automatisch WSUS-Server oder -Clients auf Zielgruppen, und erstellen Sie jeweils eine Gruppe in Azure Monitor. |
 
-### <a name="log-search"></a>Protokollsuche
-Computergruppen, die durch eine Protokollsuche erstellt wurden, enthalten alle Computer, die bei der von Ihnen definierten Abfrage zurückgegeben wurden.  Diese Abfrage wird jedes Mal ausgeführt, wenn die Computergruppe verwendet wird. Daher werden sämtliche Änderungen seit der Erstellung der Gruppe berücksichtigt.  
+### <a name="log-query"></a>Protokollabfrage
+Computergruppen, die durch eine Protokollabfrage erstellt wurden, enthalten alle Computer, die bei der von Ihnen definierten Abfrage zurückgegeben wurden.  Diese Abfrage wird jedes Mal ausgeführt, wenn die Computergruppe verwendet wird. Daher werden sämtliche Änderungen seit der Erstellung der Gruppe berücksichtigt.  
 
-Sie können für eine Computergruppe eine beliebige Abfrage verwenden. Diese muss allerdings unter Verwendung von `distinct Computer` eine eindeutige Gruppe von Computern zurückgeben.  Das folgende Beispiel enthält eine typische Suche, die Sie für eine Computergruppe verwendet können.
+Sie können für eine Computergruppe eine beliebige Abfrage verwenden. Diese muss allerdings unter Verwendung von `distinct Computer` eine eindeutige Gruppe von Computern zurückgeben.  Das folgende Beispiel enthält eine typische Abfrage, die Sie für eine Computergruppe verwendet können.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
+
+Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-Portal wie folgt vor:
+
+1. Klicken Sie im Azure-Portal im **Azure Monitor**-Menü auf **Protokolle**.
+1. Erstellen Sie eine Abfrage, mit der die in der Gruppe gewünschten Computer zurückgegeben werden, und führen Sie sie aus.
+1. Klicken Sie am oberen Bildschirmrand auf **Speichern**.
+1. Ändern Sie **Speichern unter** in **Funktion**, und wählen Sie **Diese Abfrage als Computergruppe speichern** aus.
+1. Geben Sie Werte für jede Eigenschaft der Computergruppe an, die in der Tabelle beschrieben ist, und klicken Sie auf **Speichern**.
 
 Die folgende Tabelle beschreibt die Eigenschaften, durch die eine Computergruppe definiert wird.
 
 | Eigenschaft | BESCHREIBUNG |
 |:---|:---|
-| Anzeigename   | Name der Suche, die im Portal angezeigt werden soll |
-| Category (Kategorie)       | Kategorie zum Organisieren von Suchvorgängen im Portal |
-| Abfragen          | die Abfrage für die Computergruppe |
+| NAME   | Name der Abfrage, die im Portal angezeigt werden soll |
 | Funktionsalias | ein eindeutiger Alias, mit dem die Computergruppe bei einer Abfrage identifiziert wird |
-
-Gehen Sie zum Erstellen einer Computergruppe aus einer Protokollsuche im Azure-Portal wie folgt vor:
-
-2. Öffnen Sie die **Protokollsuche**, und klicken Sie anschließend auf **gespeicherte Suchvorgänge** im oberen Bereich der Anzeige.
-3. Klicken Sie auf **Hinzufügen**, und geben Sie Werte für jede Eigenschaft der Computergruppe an.
-4. Wählen Sie **Diese Abfrage als Computergruppe speichern** aus, und klicken Sie auf **OK**.
-
+| Category (Kategorie)       | Kategorie zum Organisieren von Abfragen im Portal |
 
 
 ### <a name="active-directory"></a>Active Directory
-Wenn Sie Log Analytics für das Importieren von Active Directory-Gruppenmitgliedschaften konfigurieren, werden dabei die Gruppenmitgliedschaften von in eine Domäne eingebundenen Windows-Computern mit dem Log Analytics-Agent analysiert.  Für jede Sicherheitsgruppe in Active Directory wird in Log Analytics eine Computergruppe erstellt, und jeder Windows-Computer wird der Computergruppe hinzugefügt, die den Sicherheitsgruppen entspricht, in denen er Mitglied ist.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert.  
+Wenn Sie Azure Monitor für das Importieren von Active Directory-Gruppenmitgliedschaften konfigurieren, werden dabei die Gruppenmitgliedschaften von in eine Domäne eingebundenen Windows-Computern mit dem Log Analytics-Agent analysiert.  Für jede Sicherheitsgruppe in Active Directory wird eine Computergruppe in Azure Monitor erstellt, und jeder Windows-Computer wird den Computergruppen hinzugefügt, die den Sicherheitsgruppen entsprechen, in denen er Mitglied ist.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert.  
 
 > [!NOTE]
 > Importierte Active Directory-Gruppen enthalten nur Windows-Computer.
 
-Sie können Log Analytics zum Importieren von Active Directory-Sicherheitsgruppen in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **Active Directory** und anschließend **Active Directory-Gruppenmitgliedschaften von Computern importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
+Sie können Azure Monitor zum Importieren von Active Directory-Sicherheitsgruppen über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **Active Directory** und anschließend **Active Directory-Gruppenmitgliedschaften von Computern importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 
 ![Computergruppen aus Active Directory](media/computer-groups/configure-activedirectory.png)
 
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Wenn Sie Log Analytics für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem Log Analytics-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Log Analytics verbunden und Teil einer WSUS-Zielgruppe sind, in Log Analytics importiert. Bei Verwendung serverseitiger Zielgruppen sollte der Log Analytics-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Log Analytics importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
+Wenn Sie Azure Monitor für das Importieren von WSUS-Gruppenmitgliedschaften konfigurieren, werden dabei die Zielgruppenmitgliedschaften aller Computer mit dem Log Analytics-Agent analysiert.  Bei Verwendung clientseitiger Zielgruppen wird die Gruppenmitgliedschaft aller Computer, die mit Azure Monitor verbunden und Teil einer WSUS-Zielgruppe sind, in Azure Monitor importiert. Bei Verwendung serverseitiger Zielgruppen sollte der Log Analytics-Agent auf dem WSUS-Server installiert sein, damit die Informationen zur Gruppenmitgliedschaft in Azure Monitor importiert werden können.  Diese Mitgliedschaft wird kontinuierlich alle 4 Stunden aktualisiert. 
 
-Sie können Log Analytics zum Importieren von WSUS-Gruppen in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **WSUS** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
+Sie können Azure Monitor zum Importieren von WSUS-Gruppen über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **WSUS** und anschließend **WSUS-Gruppenmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 
 ![Computergruppen aus WSUS](media/computer-groups/configure-wsus.png)
 
 Wenn Gruppen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Wenn Sie Log Analytics konfigurieren, um Configuration Manager-Sammlungsmitgliedschaften zu importieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. 
+Wenn Sie Azure Monitor für das Importieren von Configuration Manager-Sammlungsmitgliedschaften konfigurieren, wird eine Computergruppe für jede Sammlung erstellt.  Die Informationen zu Sammlungsmitgliedschaften werden alle drei Stunden abgerufen, um die Computergruppen zu aktualisieren. 
 
-Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Log Analytics eine Verbindung herstellen](../../azure-monitor/platform/collect-sccm.md).  Anschließend können Sie den Import in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **SCCM** und anschließend **Configuration Manager-Sammlungsmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
+Bevor Sie Configuration Manager-Sammlungen importieren können, müssen Sie [zwischen Configuration Manager und Azure Monitor eine Verbindung herstellen](collect-sccm.md).  Anschließend können Sie den Import über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal konfigurieren.  Wählen Sie hierzu **Computergruppen**, **SCCM** und anschließend **Configuration Manager-Sammlungsmitgliedschaften importieren** aus.  Es ist keine weitere Konfiguration erforderlich.
 
 ![Computergruppen aus SCCM](media/computer-groups/configure-sccm.png)
 
 Wenn Sammlungen importiert wurden, werden im Menü die Anzahl der Computer, für die eine Gruppenmitgliedschaft erkannt wurde, und die Anzahl der importierten Gruppen aufgeführt.  Klicken Sie auf einen dieser Links, um die **ComputerGroup**-Datensätze mit diesen Informationen zurückzugeben.
 
 ## <a name="managing-computer-groups"></a>Verwalten von Computergruppen
-Sie können Computergruppen, die aus einer Protokollsuche oder der über die API für die Protokollsuche erstellt wurden, in den **Erweiterten Einstellungen** von Log Analytics im Azure-Portal aufrufen.  Wählen Sie hierzu **Computergruppen** und anschließend **Gespeicherte Gruppen** aus.  
+Sie können Computergruppen, die aus einer Protokollabfrage oder über die API für die Protokollsuche erstellt wurden, über **Erweiterte Einstellungen** in Ihrem Log Analytics-Arbeitsbereich im Azure-Portal aufrufen.  Wählen Sie hierzu **Computergruppen** und anschließend **Gespeicherte Gruppen** aus.  
 
 Klicken Sie auf das **x** in der Spalte **Entfernen**, um die Computergruppe zu löschen.  Klicken Sie auf das Symbol **Mitglieder anzeigen** für eine Gruppe, um die Protokollsuche für die Gruppe ausführen, mit der die Elemente zurückgegeben werden.  Sie können eine Computergruppe nicht ändern, sondern nur löschen und dann mit den geänderten Einstellungen erneut erstellen.
 
 ![Gespeicherte Computergruppen](media/computer-groups/configure-saved.png)
 
 
-## <a name="using-a-computer-group-in-a-log-search"></a>Verwenden einer Computergruppe in einer Protokollsuche
-Sie können eine aus einer Protokollsuche erstellte Computergruppe in einer Abfrage verwenden, indem Sie den zugehörigen Alias als Funktion behandeln. Üblicherweise nutzen Sie dabei die folgende Syntax:
+## <a name="using-a-computer-group-in-a-log-query"></a>Verwenden einer Computergruppe in einer Protokollabfrage
+Sie können eine aus einer Protokollabfrage erstellte Computergruppe in einer Abfrage verwenden, indem Sie den zugehörigen Alias als Funktion behandeln. Üblicherweise nutzen Sie dabei die folgende Syntax:
 
   `Table | where Computer in (ComputerGroup)`
 
@@ -122,11 +123,11 @@ Die folgende Abfrage würde UpdateSummary-Datensätze ausschließlich für Compu
 
 
 ## <a name="computer-group-records"></a>Computergruppen-Datensätze
-Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf der Protokollsuche erstellt.
+Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computergruppe, die aus Active Directory oder WSUS erstellt wurde, ein Datensatz erstellt.  Diese Datensätze sind vom Typ **ComputerGroup** und weisen die in der folgenden Tabelle aufgeführten Eigenschaften auf.  Es werden keine Datensätze für Computergruppen basierend auf Protokollabfragen erstellt.
 
 | Eigenschaft | BESCHREIBUNG |
 |:--- |:--- |
-| Typ |*ComputerGroup* |
+| Type |*ComputerGroup* |
 | SourceSystem |*SourceSystem* |
 | Computer |Der Name des Mitgliedscomputers |
 | Group |Der Anzeigename der Gruppe |
@@ -137,5 +138,5 @@ Im Log Analytics-Arbeitsbereich wird für jede Mitgliedschaft in einer Computerg
 | TimeGenerated |Das Datum und die Uhrzeit der Erstellung oder letzten Aktualisierung der Computergruppe |
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über [Protokollsuchvorgänge](../../azure-monitor/log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
+* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten.  
 
