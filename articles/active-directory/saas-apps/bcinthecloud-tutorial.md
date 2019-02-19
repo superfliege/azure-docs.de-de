@@ -4,224 +4,197 @@ description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwis
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 7dc40d2c-6349-40cb-b304-b098bd03a66c
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/1/2017
+ms.topic: tutorial
+ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 5cb622c7641a1a0d3764dbb63c2e7301a6faf4e6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aeed203a32b94e3d1dfe55eb443f8247579decac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149100"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166299"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Tutorial: Azure Active Directory-Integration in BC in der Cloud
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in BC in der Cloud integrieren.
-
 Die Integration von Azure AD in BC in der Cloud bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf BC in der Cloud Zugriff hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei BC in der Cloud anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+* Sie können in Azure AD steuern, wer auf BC in the Cloud Zugriff hat.
+* Sie können es Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei BC in the Cloud angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in BC in der Cloud konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein SSO-fähiges BC in der Cloud-Abonnement
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* BC in the Cloud-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von BC in der Cloud aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* BC in the Cloud unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-bc-in-the-cloud-from-the-gallery"></a>Hinzufügen von BC in der Cloud aus dem Katalog
+
 Zum Konfigurieren der Integration von Azure AD in BC in der Cloud müssen Sie BC in der Cloud aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um BC in der Cloud aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte durch:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![ANWENDUNGEN][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Hinzufügen**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![ANWENDUNGEN][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld als Suchbegriff **BC in der Cloud** ein.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_search.png)
+4. Geben Sie im Suchfeld **BC in the Cloud** ein, wählen Sie im Ergebnisbereich **BC in the Cloud** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-1. Wählen Sie im Ergebnisbereich die Option **BC in der Cloud** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+     ![BC in the Cloud in der Ergebnisliste](common/search-new-app.png)
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens Britta Simon das einmalige Anmelden von Azure AD mit BC in der Cloud.
-
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in BC in der Cloud als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BC in der Cloud muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in BC in der Cloud den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens **Britta Simon** das einmalige Anmelden von Azure AD mit BC in the Cloud.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in BC in the Cloud eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei BC in der Cloud müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines BC in der Cloud-Testbenutzers](#creating-a-bc-in-the-cloud-test-user)**, um eine Entsprechung von Britta Simon in BC in der Cloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für BC in the Cloud](#configure-bc-in-the-cloud-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines BC in the Cloud-Testbenutzers](#create-bc-in-the-cloud-test-user)**, um eine Entsprechung von Britta Simon in BC in the Cloud zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer BC in der Cloud-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in BC in der Cloud die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit BC in the Cloud die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **BC in der Cloud** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **BC in the Cloud** die Option **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie die folgenden Schritte im Abschnitt **Domäne und URLs für BC in der Cloud** aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für BC in the Cloud](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.bcinthecloud.com/router/loginSaml/<customerid>`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL wie Folgende ein: `https://app.bcinthecloud.com`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** die folgende URL ein: `https://app.bcinthecloud.com`.
 
-    > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von BC in der Cloud](https://www.bcinthecloud.com/supportcenter/), um diesen Wert zu erhalten. 
- 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+    > [!NOTE]
+    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Ersetzen Sie diesen Wert durch die tatsächliche Anmelde-URL. Wenden Sie sich an das [Supportteam von BC in der Cloud](https://www.bcinthecloud.com/supportcenter/), um diesen Wert zu erhalten.
 
-    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_certificate.png) 
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_general_400.png)
+6. Kopieren Sie im Abschnitt **BC in the Cloud einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **BC in der Cloud** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [BC in der Cloud-Supportteam](https://www.bcinthecloud.com/supportcenter/) senden.
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Anmelde-URL
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-bc-in-the-cloud-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für BC in the Cloud
+
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **BC in the Cloud** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von BC in the Cloud](https://www.bcinthecloud.com/supportcenter/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/create_aaduser_03.png) 
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/bcinthecloud-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="creating-a-bc-in-the-cloud-test-user"></a>Erstellen eines BC in der Cloud-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in BC in der Cloud einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Supportteam für den BC in der Cloud-Client](https://www.bcinthecloud.com/supportcenter/) zusammen, um die Benutzer in der BC in der Cloud-Anwendung hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf BC in der Cloud gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **BC in the Cloud** aus.
 
-**Führen Sie die folgenden Schritte aus, um Britta Simon BC in der Cloud zuzuweisen:**
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste **BC in der Cloud** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![BC in the Cloud-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie in der Anwendungsliste **BC in der Cloud** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Configure single sign-on](./media/bcinthecloud-tutorial/tutorial_bcinthecloud_app.png) 
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][202] 
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Benutzer zuweisen][203]
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+### <a name="create-bc-in-the-cloud-test-user"></a>Erstellen eines BC in the Cloud-Testbenutzers
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+In diesem Abschnitt erstellen Sie in BC in der Cloud einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [BC in the Cloud-Supportteam](https://www.bcinthecloud.com/supportcenter/) zusammen, um die Benutzer auf der BC in the Cloud-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
- Wenn Sie im Zugriffsbereich auf die Kachel „BC in der Cloud“ klicken, sollten Sie automatisch bei Ihrer BC in der Cloud-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter  [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „BC in the Cloud“ klicken, sollten Sie automatisch bei der BC in the Cloud-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/bcinthecloud-tutorial/tutorial_general_01.png
-[2]: ./media/bcinthecloud-tutorial/tutorial_general_02.png
-[3]: ./media/bcinthecloud-tutorial/tutorial_general_03.png
-[4]: ./media/bcinthecloud-tutorial/tutorial_general_04.png
-
-[100]: ./media/bcinthecloud-tutorial/tutorial_general_100.png
-
-[200]: ./media/bcinthecloud-tutorial/tutorial_general_200.png
-[201]: ./media/bcinthecloud-tutorial/tutorial_general_201.png
-[202]: ./media/bcinthecloud-tutorial/tutorial_general_202.png
-[203]: ./media/bcinthecloud-tutorial/tutorial_general_203.png
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

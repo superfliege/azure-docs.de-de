@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/02/2018
+ms.date: 11/28/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b725713777eb6ca25c829d327f91921b28cd4203
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a2e056baa2dd27ca0bf054d0dacf15d35e0ef384
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51035967"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977921"
 ---
 # <a name="tutorial-create-and-manage-windows-vms-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten von virtuellen Windows-Computern mit Azure PowerShell
 
@@ -42,12 +42,12 @@ Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach d
 
 ## <a name="create-resource-group"></a>Ressourcengruppe erstellen
 
-Erstellen Sie mit dem Befehl [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe.
+Erstellen Sie mit dem Befehl [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe.
 
 Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden. Vor dem virtuellen Computer muss eine Ressourcengruppe erstellt werden. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupVM* in der Region *EastUS* erstellt:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -ResourceGroupName "myResourceGroupVM" `
    -Location "EastUS"
 ```
@@ -64,10 +64,10 @@ Legen Sie mit [Get-Credential](https://docs.microsoft.com/powershell/module/micr
 $cred = Get-Credential
 ```
 
-Erstellen Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) den virtuellen Computer.
+Erstellen Sie mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm) den virtuellen Computer.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Location "EastUS" `
@@ -85,7 +85,7 @@ Stellen Sie nach Abschluss der Bereitstellung eine Remotedesktopverbindung mit d
 Führen Sie die folgenden Befehle aus, um die öffentliche IP-Adresse des virtuellen Computers zurückzugeben. Notieren Sie sich diese IP-Adresse. Sie wird in einem späteren Schritt über den Browser aufgerufen, um die Webkonnektivität zu testen.
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress `
+Get-AzPublicIpAddress `
    -ResourceGroupName "myResourceGroupVM"  | Select IpAddress
 ```
 
@@ -101,16 +101,18 @@ Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** un
 
 Der Azure Marketplace bietet zahlreiche Images, die zum Erstellen eines neuen virtuellen Computers verwendet werden können. In den vorherigen Schritten wurde ein virtueller Computer mit dem Windows Server 2016 Datacenter-Image erstellt. In diesem Schritt wird der Marketplace mithilfe des PowerShell-Moduls nach weiteren Windows-Images durchsucht, die ebenfalls als Grundlage für neue virtuelle Computer verwendet werden können. Dieser Prozess umfasst die Suche nach dem Herausgeber, dem Angebot, der SKU und optional einer Versionsnummer zur [Identifizierung](cli-ps-findimage.md#terminology) des Images.
 
-Führen Sie den Befehl [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) aus, um eine Liste mit Imageherausgebern abzurufen:
+Führen Sie den Befehl [Get-AzVMImagePublisher](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagepublisher) aus, um eine Liste mit Imageherausgebern abzurufen:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImagePublisher -Location "EastUS"
+Get-AzVMImagePublisher -Location "EastUS"
 ```
 
-Führen Sie den Befehl [Get-AzureRmVMImageOffer](/powershell/module/azurerm.compute/get-azurermvmimageoffer) aus, um eine Liste mit Imageangeboten abzurufen. Mit diesem Befehl wird die zurückgegebene Liste nach dem angegebenen Herausgeber (`MicrosoftWindowsServer`) gefiltert:
+Führen Sie den Befehl [Get-AzVMImageOffer](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimageoffer) aus, um eine Liste mit Imageangeboten abzurufen. Mit diesem Befehl wird die zurückgegebene Liste nach dem angegebenen Herausgeber (`MicrosoftWindowsServer`) gefiltert:
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageOffer -Location "EastUS" -PublisherName "MicrosoftWindowsServer"
+Get-AzVMImageOffer `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer"
 ```
 
 Die Ergebnisse sehen in etwa wie folgt aus: 
@@ -123,10 +125,13 @@ WindowsServer     MicrosoftWindowsServer EastUS
 WindowsServer-HUB MicrosoftWindowsServer EastUS
 ```
 
-Mit dem Befehl [Get-AzureRmVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) wird dann nach dem Herausgeber und dem Angebotsnamen gefiltert und eine Liste mit Imagenamen zurückgegeben.
+Mit dem Befehl [Get-AzVMImageSku](https://docs.microsoft.com/powershell/module/az.compute/get-azvmimagesku) wird dann nach dem Herausgeber und dem Angebotsnamen gefiltert und eine Liste mit Imagenamen zurückgegeben.
 
 ```azurepowershell-interactive
-Get-AzureRmVMImageSku -Location "EastUS" -PublisherName "MicrosoftWindowsServer" -Offer "WindowsServer"
+Get-AzVMImageSku `
+   -Location "EastUS" `
+   -PublisherName "MicrosoftWindowsServer" `
+   -Offer "WindowsServer"
 ```
 
 Die Ergebnisse sehen in etwa wie folgt aus: 
@@ -153,7 +158,7 @@ Skus                                      Offer         PublisherName          L
 Mithilfe dieser Informationen kann ein virtueller Computer mit einem spezifischen Image bereitgestellt werden. In diesem Beispiel wird ein virtueller Computer mit der neuesten Version eines Images vom Typ „Windows Server 2016 mit Containern“ bereitgestellt.
 
 ```azurepowershell-interactive
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM2" `
     -Location "EastUS" `
@@ -170,12 +175,12 @@ Mit dem Parameter `-AsJob` wird die VM als Hintergrundaufgabe erstellt, sodass d
 
 ## <a name="understand-vm-sizes"></a>Grundlegendes zu VM-Größen
 
-Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (CPU, GPU, Arbeitsspeicher und Ähnliches), die für den virtuellen Computer zur Verfügung gestellt werden. Virtuelle Computer müssen mit einer Größe erstellt werden, die für die erwartete Workload angemessen ist. Bei einer Zunahme der Workload kann die Größe eines vorhandenen virtuellen Computers auch geändert werden.
+Die Größe eines virtuellen Computers bestimmt die Menge an Computeressourcen (CPU, GPU und Arbeitsspeicher), die für den virtuellen Computer zur Verfügung gestellt werden. Virtuelle Computer müssen mit einer Größe erstellt werden, die für die erwartete Workload angemessen ist. Bei einer Zunahme der Workload kann die Größe eines vorhandenen virtuellen Computers auch geändert werden.
 
 ### <a name="vm-sizes"></a>VM-Größen
 
 In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.  
-| Typ                     | Gängige Größen           |    BESCHREIBUNG       |
+| Type                     | Gängige Größen           |    BESCHREIBUNG       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Allgemeiner Zweck](sizes-general.md)         |B, Dsv3, Dv3, DSv2, Dv2, Av2, DC| Ausgewogenes Verhältnis von CPU zu Arbeitsspeicher. Ideal für Entwicklung und Tests, kleine bis mittlere Anwendungen und Datenlösungen.  |
 | [Computeoptimiert](sizes-compute.md)   | Fsv2, Fs, F             | Hohes Verhältnis von CPU zu Arbeitsspeicher. Geeignet für Anwendungen, Network Appliances und Batch-Prozesse mit mittlerer Auslastung.        |
@@ -184,71 +189,73 @@ In der folgenden Tabelle sind Größen in Anwendungsfällen kategorisiert.
 | [GPU](sizes-gpu.md)          | NV, NVv2, NC, NCv2, NCv3, ND            | Spezialisierte virtuelle Computer für aufwendiges Grafikrendering und aufwendige Videobearbeitung.       |
 | [Hohe Leistung](sizes-hpc.md) | H        | Unsere virtuellen Computer mit den leistungsfähigsten CPUs, die optional über Netzwerkschnittstellen mit hohem Durchsatz (RDMA) verfügen. |
 
-### <a name="find-available-vm-sizes"></a>Abrufen der verfügbaren VM-Größen
+### <a name="find-available-vm-sizes"></a>Ermitteln der verfügbaren VM-Größen
 
-Eine Liste der in einer bestimmten Region verfügbaren VM-Größen können Sie mit dem Befehl [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) abrufen.
+Eine Liste der in einer bestimmten Region verfügbaren VM-Größen können Sie mit dem Befehl [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) abrufen.
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -Location "EastUS"
+Get-AzVMSize -Location "EastUS"
 ```
 
 ## <a name="resize-a-vm"></a>Ändern der Größe eines virtuellen Computers
 
 Nach der Bereitstellung eines virtuellen Computers kann dessen Größe geändert werden, um die Ressourcenzuordnung zu erhöhen oder zu verringern.
 
-Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen VM-Cluster verfügbar ist. Mit dem Befehl [Get-AzureRmVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) wird eine Liste der Größen zurückgegeben.
+Prüfen Sie vor der Größenänderung eines virtuellen Computers, ob die gewünschte Größe im aktuellen VM-Cluster verfügbar ist. Mit dem Befehl [Get-AzVMSize](https://docs.microsoft.com/powershell/module/az.compute/get-azvmsize) wird eine Liste der Größen zurückgegeben.
 
 ```azurepowershell-interactive
-Get-AzureRmVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
+Get-AzVMSize -ResourceGroupName "myResourceGroupVM" -VMName "myVM"
 ```
 
 Wenn die gewünschte Größe verfügbar ist, kann die Größe des virtuellen Computers im eingeschalteten Zustand geändert werden, er muss jedoch während des Vorgangs neu gestartet werden.
 
 ```azurepowershell-interactive
-$vm = Get-AzureRmVM -ResourceGroupName "myResourceGroupVM"  -VMName "myVM"
+$vm = Get-AzVM `
+   -ResourceGroupName "myResourceGroupVM"  `
+   -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_DS3_v2"
-Update-AzureRmVM -VM $vm -ResourceGroupName "myResourceGroupVM"
+Update-AzVM `
+   -VM $vm `
+   -ResourceGroupName "myResourceGroupVM"
 ```
 
 Sollte die gewünschte Größe im aktuellen Cluster nicht verfügbar sein, muss die Zuordnung des virtuellen Computers aufgehoben werden, damit die Größenänderung erfolgen kann. Beim Aufheben der Zuordnung eines virtuellen Computers werden alle Daten auf dem temporären Datenträger entfernt, und die öffentliche IP-Adresse ändert sich, sofern keine statische IP-Adresse verwendet wird.
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
-$vm = Get-AzureRmVM `
+$vm = Get-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -VMName "myVM"
 $vm.HardwareProfile.VmSize = "Standard_E2s_v3"
-Update-AzureRmVM -VM $vm `
+Update-AzVM -VM $vm `
    -ResourceGroupName "myResourceGroupVM"
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM"  `
    -Name $vm.name
 ```
 
 ## <a name="vm-power-states"></a>Betriebszustände von virtuellen Computern
 
-Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweisen. Dieser Zustand entspricht dem aktuellen Zustand des virtuellen Computers im Hypervisor.
+Ein virtueller Azure-Computer kann einen von mehreren Betriebszuständen aufweisen. 
 
-### <a name="power-states"></a>Betriebszustände
 
 | Betriebszustand | BESCHREIBUNG
 |----|----|
-| Wird gestartet | Gibt an, dass der virtuelle Computer gestartet wird. |
-| Wird ausgeführt | Gibt an, dass der virtuelle Computer ausgeführt wird. |
-| Wird beendet | Gibt an, dass der virtuelle Computer beendet wird. |
-| Beendet | Gibt an, dass der virtuelle Computer beendet wurde. Für virtuelle Computer mit beendetem Zustand fallen weiterhin Computegebühren an.  |
-| Zuordnung wird aufgehoben | Gibt an, dass die Zuordnung des virtuellen Computers aufgehoben wird. |
+| Wird gestartet | Der virtuelle Computer wird gestartet. |
+| Wird ausgeführt | Der virtuelle Computer wird ausgeführt. |
+| Wird beendet | Der virtuelle Computer wird beendet. |
+| Beendet | Die VM wurde beendet. Für virtuelle Computer mit beendetem Zustand fallen weiterhin Computegebühren an.  |
+| Zuordnung wird aufgehoben | Die Zuordnung des virtuellen Computers wird aufgehoben. |
 | Zuordnung aufgehoben | Gibt an, dass der virtuelle Computer aus dem Hypervisor entfernt wurde, auf der Steuerungsebene jedoch weiterhin verfügbar ist. Im Zustand `Deallocated` fallen für virtuelle Computer keine Computegebühren an. |
-| - | Gibt an, dass der Betriebszustand des virtuellen Computers nicht bekannt ist. |
+| - | Der Betriebszustand des virtuellen Computers ist nicht bekannt. |
 
-### <a name="find-power-state"></a>Ermitteln des Betriebszustands
 
-Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben.
+Verwenden Sie zum Abrufen des Zustands eines bestimmten virtuellen Computers den Befehl [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm). Achten Sie darauf, dass Sie einen gültigen Namen für einen virtuellen Computer und eine Ressourcengruppe angeben.
 
 ```azurepowershell-interactive
-Get-AzureRmVM `
+Get-AzVM `
     -ResourceGroupName "myResourceGroupVM" `
     -Name "myVM" `
     -Status | Select @{n="Status"; e={$_.Statuses[1].Code}}
@@ -268,10 +275,10 @@ Während der Lebensdauer eines virtuellen Computers können Sie Verwaltungsaufga
 
 ### <a name="stop-a-vm"></a>Anhalten eines virtuellen Computers
 
-Verwenden Sie [Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm), um einen virtuellen Computer zu beenden und seine Zuordnung aufzuheben:
+Verwenden Sie [Stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm), um einen virtuellen Computer zu beenden und seine Zuordnung aufzuheben:
 
 ```azurepowershell-interactive
-Stop-AzureRmVM `
+Stop-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM" -Force
 ```
@@ -281,17 +288,17 @@ Soll der virtuelle Computer bereitgestellt bleiben, verwenden Sie den Parameter 
 ### <a name="start-a-vm"></a>Starten eines virtuellen Computers
 
 ```azurepowershell-interactive
-Start-AzureRmVM `
+Start-AzVM `
    -ResourceGroupName "myResourceGroupVM" `
    -Name "myVM"
 ```
 
 ### <a name="delete-resource-group"></a>Ressourcengruppe löschen
 
-Beim Löschen einer Ressourcengruppe werden auch alle darin enthaltenen Ressourcen gelöscht.
+Beim Löschen einer Ressourcengruppe werden alle Elemente innerhalb dieser Ressourcengruppe gelöscht.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
    -Name "myResourceGroupVM" `
    -Force
 ```

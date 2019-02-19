@@ -4,223 +4,196 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: c46aa523-b58c-4a95-a800-db2e5e01c542
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/22/2018
+ms.topic: tutorial
+ms.date: 02/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 43b761897d3db49da88bdb88f6ff01821bff8e58
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 176638e845fe267839c99de434dece24ec56b911
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181094"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56167659"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-boxcryptor"></a>Tutorial: Azure Active Directory-Integration von Boxcryptor
 
 In diesem Tutorial erfahren Sie, wie Sie Boxcryptor in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von Boxcryptor in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Boxcryptor hat.
-- Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei Boxcryptor anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Boxcryptor hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Boxcryptor anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Boxcryptor konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Boxcryptor-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Boxcryptor-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Boxcryptor aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Boxcryptor unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Boxcryptor unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-boxcryptor-from-the-gallery"></a>Hinzufügen von Boxcryptor aus dem Katalog
+
 Zum Konfigurieren der Integration von Boxcryptor in Azure AD müssen Sie Boxcryptor aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Boxcryptor aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld **Boxcryptor** ein, wählen Sie im Ergebnisbereich **Boxcryptor** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Boxcryptor in der Ergebnisliste](./media/boxcryptor-tutorial/tutorial_boxcryptor_addfromgallery.png)
+4. Geben Sie im Suchfeld **Boxcryptor** ein, wählen Sie im Ergebnisbereich **Boxcryptor** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![Boxcryptor in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Boxcryptor mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Boxcryptor als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Boxcryptor muss eine Linkbeziehung eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Boxcryptor mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Boxcryptor eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Boxcryptor müssen die folgenden Schritte ausgeführt werden:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Boxcryptor-Testbenutzers](#create-a-boxcryptor-test-user)**, um eine Entsprechung von Britta Simon in Boxcryptor zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für Boxcryptor](#configure-boxcryptor-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Boxcryptor-Testbenutzers](#create-boxcryptor-test-user)**, um eine Entsprechung von Britta Simon in Boxcryptor zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Boxcryptor-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Boxcryptor die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Boxcryptor die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Boxcryptor** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Boxcryptor** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/boxcryptor-tutorial/tutorial_boxcryptor_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Boxcryptor** die folgenden Schritte aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Boxcryptor](./media/boxcryptor-tutorial/tutorial_boxcryptor_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://www.boxcryptor.com/app`.
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Bezeichner** einen Wert ein: `boxcryptor`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![SSO-Informationen zur Domäne und zu den URLs für Boxcryptor](common/sp-identifier.png)
 
-    ![Downloadlink für das Zertifikat](./media/boxcryptor-tutorial/tutorial_boxcryptor_certificate.png) 
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://www.boxcryptor.com/app`.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** den folgenden Wert ein: `boxcryptor`.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/boxcryptor-tutorial/tutorial_general_400.png)
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-1. Klicken Sie im Abschnitt **Boxcryptor-Konfiguration** auf **Boxcryptor konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Dienst-URL für einmaliges Anmelden** und die **SAML-Entitäts-ID** aus dem Abschnitt **Kurzübersicht**.
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-    ![Andromeda SCM-Konfiguration](./media/boxcryptor-tutorial/tutorial_boxcryptor_configure.png)
+6. Kopieren Sie im Abschnitt **Boxcryptor einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Boxcryptor** müssen Sie das heruntergeladene **Zertifikat (Base64)**, die **SAML-Dienst-URL für einmaliges Anmelden** und die **SAML-Entitäts-ID** an das [Boxcryptor-Supportteam](mailto:support@boxcryptor.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    a. Anmelde-URL
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-boxcryptor-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Boxcryptor
+
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Boxcryptor** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Boxcryptor](mailto:support@boxcryptor.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/boxcryptor-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/boxcryptor-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/boxcryptor-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/boxcryptor-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-boxcryptor-test-user"></a>Erstellen eines Boxcryptor-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Boxcryptor einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer oder der Domäne, die auf der Boxcryptor-Plattform auf die Whitelist gesetzt werden soll, vom [Boxcryptor-Supportteam](mailto:support@boxcryptor.com) unterstützen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Boxcryptor-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Boxcryptor gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Boxcryptor** aus.
 
-**Um Britta Simon zu Boxcryptor zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste die Option **Boxcryptor** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![Boxcryptor-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie in der Anwendungsliste die Option **Boxcryptor** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Boxcryptor-Link in der Anwendungsliste](./media/boxcryptor-tutorial/tutorial_boxcryptor_app.png)  
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+### <a name="create-boxcryptor-test-user"></a>Erstellen eines Boxcryptor-Testbenutzers
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt erstellen Sie in Boxcryptor einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer oder der Domäne, die auf der Boxcryptor-Plattform auf die Whitelist gesetzt werden soll, vom [Boxcryptor-Supportteam](mailto:support@boxcryptor.com) unterstützen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der Boxcryptor-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Boxcryptor-Kachel klicken, sollten Sie automatisch bei Ihrer Boxcryptor-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Boxcryptor“ klicken, sollten Sie automatisch bei der Boxcryptor-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/boxcryptor-tutorial/tutorial_general_01.png
-[2]: ./media/boxcryptor-tutorial/tutorial_general_02.png
-[3]: ./media/boxcryptor-tutorial/tutorial_general_03.png
-[4]: ./media/boxcryptor-tutorial/tutorial_general_04.png
-
-[100]: ./media/boxcryptor-tutorial/tutorial_general_100.png
-
-[200]: ./media/boxcryptor-tutorial/tutorial_general_200.png
-[201]: ./media/boxcryptor-tutorial/tutorial_general_201.png
-[202]: ./media/boxcryptor-tutorial/tutorial_general_202.png
-[203]: ./media/boxcryptor-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

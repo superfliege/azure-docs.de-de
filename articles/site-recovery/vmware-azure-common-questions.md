@@ -1,19 +1,19 @@
 ---
 title: 'Allgemeine Fragen: VMware-Notfallwiederherstellung in Azure mit Azure Site Recovery | Microsoft-Dokumentation'
 description: In diesem Artikel werden häufig gestellte Fragen zum Einrichten der Notfallwiederherstellung von lokalen virtuellen VMware-Computern in Azure mithilfe von Azure Site Recovery zusammengefasst.
-author: rayne-wiselman
-manager: carmonm
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 1/29/2019
+ms.date: 02/13/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aa4b0fcdfecde181eea4481cc40b898ca74fce76
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 83c9a0baa4d853c8afcb5afe1c4e5cc4ed1e0073
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235223"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>Allgemeine Fragen – VMware-zu-Azure-Replikation
 
@@ -31,8 +31,6 @@ Während der Replikation werden Daten zu Azure-Speicher repliziert, und Sie beza
 - **Wiederherstellung im Notfall**: Sie können die vollständige Notfallwiederherstellung einrichten. In diesem Szenario replizieren Sie lokale VMware-VMs zu Azure-Speicher. Dann können Sie, wenn Ihre lokale Infrastruktur nicht verfügbar ist, ein Failover zu Azure ausführen. Wenn Sie ein Failover ausführen, werden Azure-VMs aus replizierten Daten erstellt. Sie können auf Apps und Arbeitsauslastungen auf den virtuellen Azure-Computern zugreifen, bis Ihr lokales Rechenzentrum wieder verfügbar ist. Dann können Sie ein Failback aus Azure zu Ihrem lokalen Standort ausführen.
 - **Migration**: Sie können mit Site Recovery lokale VMware-VMs zu Azure migrieren. In diesem Szenario replizieren Sie lokale VMware-VMs zu Azure-Speicher. Dann führen Sie ein Failover vom lokalen Standort zu Azure aus. Nach dem Failover sind Ihre Apps und Workloads verfügbar und werden auf virtuellen Azure-Computern ausgeführt.
 
-
-
 ## <a name="azure"></a>Azure
 ### <a name="what-do-i-need-in-azure"></a>Was muss ich in Azure tun?
 Sie benötigen ein Azure-Abonnement, einen Recovery Services-Tresor, ein Speicherkonto und ein virtuelles Netzwerk. Tresor, Speicherkonto und Netzwerk müssen sich in derselben Region befinden.
@@ -44,7 +42,33 @@ Sie benötigen ein LRS- oder GRS-Speicherkonto. Wir empfehlen Ihnen die Verwendu
 Wenn Sie ein Abonnementadminstrator sind, besitzen Sie die erforderlichen Replikationsberechtigungen. Wenn nicht, benötigen Sie Berechtigungen zum Erstellen einer Azure-VM in der Ressourcengruppe und dem virtuellen Netzwerk, die Sie beim Konfigurieren von Site Reocvery angeben, und Schreibberechtigungen für das ausgewählte Speicherkonto. [Weitere Informationen](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)
 
 ### <a name="can-i-use-guest-os-server-license-on-azure"></a>Kann ich die Gastbetriebssystem-Serverlizenz in Azure verwenden?
-Ja, Microsoft Software Assurance-Kunden können den Azure-Hybridvorteil nutzen, um Lizenzierungskosten für **Windows Server-Computer** zu sparen, die zu Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden.
+Ja, Microsoft Software Assurance-Kunden können den [Azure-Hybridvorteil](https://azure.microsoft.com/en-in/pricing/hybrid-benefit/) nutzen, um Lizenzierungskosten für **Windows Server-Computer** zu sparen, die zu Azure migriert werden, oder um Azure für die Notfallwiederherstellung zu verwenden.
+
+## <a name="pricing"></a>Preise
+
+### <a name="how-are-licensing-charges-handled-during-replication-after-failover"></a>Wie werden Lizenzgebühren während der Replikation und nach dem Failover behandelt?
+
+Weitere Informationen zur Lizenzierung finden Sie in unseren [FAQs](https://aka.ms/asr_pricing_FAQ).
+
+### <a name="how-can-i-calculate-approximate-charges-during-the-use-of-site-recovery"></a>Wie kann ich die ungefähren Kosten für die Nutzung von Site Recovery berechnen?
+
+Sie können den [Preisrechner](https://aka.ms/asr_pricing_calculator) verwenden, um die Kosten für die Verwendung von Azure Site Recovery zu schätzen. Für eine detaillierte Kostenschätzung führen Sie das Bereitstellungsplanertool (https://aka.ms/siterecovery_deployment_planner)) aus, und analysieren Sie den [Kostenschätzungsbericht](https://aka.ms/asr_DP_costreport).
+
+### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>Ich nutze Azure Site Recovery seit mehr als einem Monat. Sind die ersten 31 Tage für jede geschützte Instanz immer noch kostenlos?
+
+Ja, es spielt keine Rolle, wie lange Sie Azure Site Recovery bereits verwenden. Für jede geschützte Instanz fallen in den ersten 31 Tagen keine Azure Site Recovery-Gebühren an. Wenn Sie beispielsweise in den letzten sechs Monaten zehn Instanzen geschützt haben und eine elfte Instanz mit Azure Site Recovery verbinden, fallen in den ersten 31 Tagen keine Azure Site Recovery-Gebühren für die elfte Instanz an. Für die ersten zehn Instanzen werden weiterhin Azure Site Recovery-Gebühren berechnet, da sie seit mehr als 31 Tage geschützt werden.
+
+### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Fallen während der ersten 31 Tage irgendwelche anderen Azure-Gebühren an?
+
+Ja. Auch wenn Azure Site Recovery während der ersten 31 Tage einer geschützten Instanz kostenlos ist, können für Azure Storage, Speichertransaktionen und Datenübertragungen Gebühren anfallen. Auch für einen wiederhergestellten virtuellen Computer können Azure-Computegebühren anfallen.
+
+### <a name="what-charges-do-i-incur-while-using-azure-site-recovery"></a>Welche Gebühren fallen bei der Verwendung von Azure Site Recovery an?
+
+Detaillierte Informationen finden Sie in unseren [FAQs zu anfallenden Kosten](https://aka.ms/asr_pricing_FAQ).
+
+### <a name="is-there-a-cost-associated-to-perform-dr-drillstest-failover"></a>Entstehen Kosten für die Durchführung von DR-Drills/Testfailovern?
+
+Es gibt keine separates Kosten für DR-Drills. Sobald nach dem Testfailover der virtuelle Computer erstellt wurde, werden Computegebühren berechnet.
 
 ## <a name="azure-site-recovery-components-upgrade"></a>Upgrade von Azure Site Recovery-Komponenten
 
@@ -87,8 +111,12 @@ Daten werden zu Azure-Speicher repliziert. Wenn Sie ein Failover zu Azure ausfü
 
 ## <a name="replication"></a>Replikation
 
-### <a name="what-apps-can-i-replicate"></a>Welche Apps kann ich replizieren?
+### <a name="what-applications-can-i-replicate"></a>Welche Anwendungen kann ich replizieren?
 Sie können jede App oder Arbeitsauslastung, auf einer VMware-VM ausführen, die mit den [Replikationsanforderungen](vmware-physical-azure-support-matrix.md##replicated-machines) kompatibel ist. Site Recovery bietet Unterstützung für die anwendungsorientierte Replikation, sodass für Apps ein Failover und ein Failback zum „intelligenten Zustand“ ausgeführt werden kann. Site Recovery kann in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory integriert werden. Zudem kann Site Recovery eng in die Produkte führender Anbieter wie Oracle, SAP, IBM und Red Hat eingebunden werden. [Erfahren Sie mehr](site-recovery-workload.md) über den Schutz von Workloads.
+
+### <a name="can-i-protect-a-virtual-machine-that-has-docker-disk-configuration"></a>Kann ich einen virtuellen Computer mit Dockerdatenträgerkonfiguration schützen?
+
+Nein, dieses Szenario wird nicht unterstützt.
 
 ### <a name="can-i-replicate-to-azure-with-a-site-to-site-vpn"></a>Kann ich über ein Site-to-Site-VPN zu Azure replizieren?
 Site Recovery repliziert Daten über einen öffentlichen Endpunkt oder mittels öffentlichem ExpressRoute-Peering aus einem lokalen Speicher zu Azure-Speicher. Replikation über ein Site-to-Site-VPN-Netzwerk wird nicht unterstützt.
@@ -96,11 +124,13 @@ Site Recovery repliziert Daten über einen öffentlichen Endpunkt oder mittels �
 ### <a name="can-i-replicate-to-azure-with-expressroute"></a>Kann ich mit ExpressRoute zu Azure replizieren?
 Ja, mit ExpressRoute können VMs zu Azure repliziert werden. Site Recovery repliziert Daten über einen öffentlichen Endpunkt in ein Azure Storage-Konto. Wenn Sie ExpressRoute für die Site Recovery-Replikation verwenden möchten, müssen Sie [öffentliches Peering](../expressroute/expressroute-circuit-peerings.md#publicpeering) oder [Microsoft-Peering](../expressroute/expressroute-circuit-peerings.md#microsoftpeering) einrichten. Microsoft-Peering ist die empfohlene Routingdomäne für die Replikation. Stellen Sie sicher, dass die [Netzwerkanforderungen](vmware-azure-configuration-server-requirements.md#network-requirements) auch für die Replikation erfüllt sind. Nach dem Failover virtueller Computer zu einem virtuellen Azure-Netzwerk können Sie mit [privatem Peering](../expressroute/expressroute-circuit-peerings.md#privatepeering) auf sie zugreifen.
 
+### <a name="how-can-i-change-storage-account-after-machine-is-protected"></a>Wie kann ich das Speicherkonto ändern, nachdem der Computer geschützt ist?
+
+Das Speicherkonto kann nur auf Premium aktualisiert werden. Wenn Sie ein anderes Speicherkonto verwenden möchten, müssen Sie die Replikation Ihres Quellcomputers deaktivieren und den Schutz mit einem neuen Speicherkonto wieder aktivieren. Darüber hinaus gibt es keine andere Möglichkeit, das Speicherkonto nach der Aktivierung des Schutzes zu ändern.
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Warum kann ich nicht über VPN replizieren?
 
 Wenn Sie zu Azure replizieren, erreicht der Replikationsdatenverkehr die öffentlichen Endpunkte eines Azure Storage-Kontos. Das bedeutet Sie können nur über das öffentliche Internet mit ExpressRoute replizieren (öffentliches Peering). VPN ist nicht verfügbar.
-
 
 ### <a name="what-are-the-replicated-vm-requirements"></a>Welche Anforderungen stellt die Replikation an virtuelle Computer?
 
@@ -108,6 +138,9 @@ Für die Replikation muss auf einer VMware-VM ein unterstütztes Betriebssystem 
 
 ### <a name="how-often-can-i-replicate-to-azure"></a>Wie oft kann ich zu Azure replizieren?
 Beim Replizieren von VMware-VMs zu Azure ist die Replikation fortlaufend.
+
+### <a name="can-i-retain-the-ip-address-on-failover"></a>Kann ich die IP-Adresse beim Failover behalten?
+Ja, Sie können die IP-Adresse beim Failover behalten. Stellen Sie sicher, dass Sie die Ziel-IP-Adresse vor dem Failover auf dem Blatt „Compute und Netzwerk“ angeben. Stellen Sie außerdem sicher, dass Sie die Computer zum Zeitpunkt des Failover herunterfahren, um IP-Konflikte zum Zeitpunkt des Failbacks zu vermeiden.
 
 ### <a name="can-i-extend-replication"></a>Kann ich die Replikation erweitern?
 Eine erweiterte oder verkettete Replikation wird nicht unterstützt. Fordern Sie dieses Feature im [Feedbackforum](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6097959).

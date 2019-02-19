@@ -5,15 +5,15 @@ services: expressroute
 author: mialdrid
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/25/2019
-ms.author: mialdrid
+ms.date: 02/11/2019
+ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: 0415c329364f8df312667e725f3c5376ea13a6f4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3124e98dd035080c2989849232b978c5d4a563ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098097"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100736"
 ---
 # <a name="about-expressroute-direct-preview"></a>Informationen zu ExpressRoute Direct (Vorschau)
 
@@ -58,7 +58,7 @@ Die Funktionalität ist in den meisten Szenarien vergleichbar mit der von Leitun
 
 ## <a name="circuit-skus"></a>Leitungs-SKUs
 
-ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40 GBit/s** und **100 GBit/s**.
+ExpressRoute Direct unterstützt Szenarien zur Erfassung umfangreicher Datenmengen in Azure Storage und anderen Big Data-Diensten. ExpressRoute-Leitungen für ExpressRoute Direct unterstützen nun auch die Leitungs-SKUs **40 GBit/s** und **100 GBit/s**. Die physischen Portpaare sind nur **100 GBit/s** und können mehrere virtuelle Verbindungen mit Bandbreiten von 5 GBit/s, 10 GBit/s, 40 GBit/s, 100 Gbps aufweisen (bis zu 200 GBit/s in beliebiger Kombination). 
 
 ## <a name="vlan-tagging"></a>VLAN-Kennzeichnung
 

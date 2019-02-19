@@ -4,177 +4,182 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: ab92b600-1fea-4905-b1c7-ef8e4d8c495c
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/23/2017
+ms.topic: tutorial
+ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 0429a7d0845b8590570dfb8ffc513ca3bb0ce998
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b82efa4b14800eabbbcb4b977f256a5d885fc93b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195944"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-druva"></a>Tutorial: Azure Active Directory-Integration mit Druva
 
 In diesem Tutorial erfahren Sie, wie Sie Druva in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von Druva in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Druva hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Druva anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Druva hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Druva anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in Druva konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Druva-Abonnement, das für das einmalige Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Druva-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Druva aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Druva unterstützt **SP-** und **IDP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-druva-from-the-gallery"></a>Hinzufügen von Druva aus dem Katalog
+
 Zum Konfigurieren der Integration von Druva in Azure AD müssen Sie Druva aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Druva aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld **Druva** ein, wählen Sie im Ergebnisbereich **Druva** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Druva in der Ergebnisliste](./media/druva-tutorial/tutorial_druva_addfromgallery.png)
+4. Geben Sie im Suchfeld **Druva** ein, wählen Sie im Ergebnisbereich **Druva** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![Druva in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Druva mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Druva als Pendant eines Benutzers in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Druva muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie den Wert für **Benutzername** aus Azure AD in Druva als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Druva mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Druva eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Druva müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Druva-Testbenutzers](#create-a-druva-test-user)**, um ein Pendant von Britta Simon in Druva zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für Druva](#configure-druva-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Druva-Testbenutzers](#create-druva-test-user)**, um ein Pendant von Britta Simon in Druva zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Druva-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Druva die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Druva die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Druva** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Druva** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/druva-tutorial/tutorial_druva_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Druva** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    Geben Sie im Textfeld **Bezeichner** den Zeichenfolgenwert ein: `druva-cloud`.
-    
-1. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_url1.png)
-    
-    Geben Sie im Textfeld **Anmelde-URL** diese URL ein: `https://cloud.druva.com/home`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![SSO-Informationen zur Domäne und zu den URLs für Druva](common/idp-identifier.png)
 
-    ![Downloadlink für das Zertifikat](./media/druva-tutorial/tutorial_druva_certificate.png) 
+    Geben Sie im Textfeld **Bezeichner** einen Zeichenfolgenwert ein: `druva-cloud`.
 
-1. Die Druva-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der **SAML-Tokenattribute** benutzerdefinierte Attributzuordnungen hinzufügen. 
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_attribute.png)
+    ![image](common/both-preintegrated-signon.png)
 
-1. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der vorherigen Abbildung gezeigt, und führen Sie die folgenden Schritte durch:
+    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://cloud.druva.com/home`.
 
-    | Attributname      | Attributwert      |
+6. Die Druva-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+
+    ![image](common/edit-attribute.png)
+
+7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
+
+    | NAME | Quellattribut|
     | ------------------- | -------------------- |
     | inSync\_auth\_token |Den vom Token generierten Wert eingeben |
-    
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
-    
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_attribute_04.png)
-    
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_attribute_05.png)
-    
+
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
+
+    ![image](common/new-save-attribute.png)
+
+    ![image](common/new-attribute-details.png)
+
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein. Der vom Token generierte Wert wird weiter unten in diesem Tutorial erläutert.
-    
-    d. Klicken Sie auf **OK**.    
+    c. Lassen Sie den **Namespace** leer.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    d. Wählen Sie „Source“ als **Attribut** aus.
 
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_general_400.png)
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
-1. Klicken Sie im Abschnitt **Druva-Konfiguration** auf **Druva konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+    f. Klicken Sie auf **OK**.
 
-    ![Configure single sign-on](./media/druva-tutorial/tutorial_druva_configure.png) 
+    g. Klicken Sie auf **Speichern**.
+
+8. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+
+9. Kopieren Sie im Abschnitt **Druva einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-druva-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Druva
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Druva-Unternehmenswebsite als Administrator an.
 
-1. Navigieren Sie zu **Verwalten \> Einstellungen**.
+2. Navigieren Sie zu **Verwalten \> Einstellungen**.
 
     ![Einstellungen](./media/druva-tutorial/ic795091.png "Einstellungen")
 
-1. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ die folgenden Schritte aus:
+3. Führen Sie im Dialogfeld „Einstellungen für einmaliges Anmelden“ die folgenden Schritte aus:
 
     ![Einstellungen für einmaliges Anmelden](./media/druva-tutorial/ic795092.png "Einstellungen für einmaliges Anmelden")
     
-    a. Fügen Sie in das Textfeld **Anmelde-URL des Identitätsanbieters** den Wert der **Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a. Fügen Sie in das Textfeld **ID Provider Login URL** (Anmelde-URL des Identitätsanbieters) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
         
-    b. Fügen Sie in das Textfeld für die **ID Provider Logout URL** (Abmelde-URL des Identitätsanbieters) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **ID Provider Logout URL** (Abmelde-URL des Identitätsanbieters) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
         
     c. Öffnen Sie das Base-64-codierte Zertifikat in Editor, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Zertifikat des ID-Anbieters** ein.
      
     d. Klicken Sie zum Öffnen der Seite **Einstellungen** auf **Speichern**.
 
-1. Klicken Sie auf der Seite **Einstellungen** auf **SSO-Token generieren**.
+4. Klicken Sie auf der Seite **Einstellungen** auf **SSO-Token generieren**.
 
     ![Einstellungen](./media/druva-tutorial/ic795093.png "Einstellungen")
 
-1. Führen Sie im Dialogfeld **Token für einmaliges Anmelden** die folgenden Schritte aus:
+5. Führen Sie im Dialogfeld **Token für einmaliges Anmelden** die folgenden Schritte aus:
 
     ![SSO-Token](./media/druva-tutorial/ic795094.png "SSO-Token")
     
@@ -182,43 +187,58 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     
     b. Klicken Sie auf **Schließen**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
- 
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/druva-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/druva-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/druva-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/druva-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-druva-test-user"></a>Erstellen eines Druva-Testbenutzers
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Druva gewähren.
+
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Druva** aus.
+
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
+2. Wählen Sie in der Anwendungsliste den Eintrag **Druva** aus.
+
+    ![Druva-Link in der Anwendungsliste](common/all-applications.png)
+
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-druva-test-user"></a>Erstellen eines Druva-Testbenutzers
 
 Damit sich Azure AD-Benutzer bei Druva anmelden können, müssen sie in Druva bereitgestellt werden. Im Fall von Druva ist die Bereitstellung eine manuelle Aufgabe.
 
@@ -226,80 +246,38 @@ Damit sich Azure AD-Benutzer bei Druva anmelden können, müssen sie in Druva be
 
 1. Melden Sie sich bei der **Druva** -Unternehmenswebsite als Administrator an.
 
-1. Navigieren Sie zu **Benutzer \> verwalten**.
+2. Navigieren Sie zu **Benutzer \> verwalten**.
    
-   ![Benutzer verwalten](./media/druva-tutorial/ic795097.png "Benutzer verwalten")
+    ![Benutzer verwalten](./media/druva-tutorial/ic795097.png "Benutzer verwalten")
 
-1. Klicken Sie auf **Neu erstellen**.
+3. Klicken Sie auf **Neu erstellen**.
    
-   ![Benutzer verwalten](./media/druva-tutorial/ic795098.png "Benutzer verwalten")
+    ![Benutzer verwalten](./media/druva-tutorial/ic795098.png "Benutzer verwalten")
 
-1. Führen Sie im Dialogfeld „Neuen Benutzer erstellen“ die folgenden Schritte aus:
+4. Führen Sie im Dialogfeld „Neuen Benutzer erstellen“ die folgenden Schritte aus:
    
-   ![Neuen Benutzer erstellen](./media/druva-tutorial/ic795099.png "Neuen Benutzer erstellen")
+    ![Neuen Benutzer erstellen](./media/druva-tutorial/ic795099.png "Neuen Benutzer erstellen")
    
-   a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
+    a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
    
-   b. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, z.B. **BrittaSimon**.
+    b. Geben Sie im Textfeld **Name** den Namen des Benutzers ein, z.B. **BrittaSimon**.
    
-   c. Klicken Sie auf **Benutzer erstellen**.
+    c. Klicken Sie auf **Benutzer erstellen**.
 
 >[!NOTE]
 >Sie können Azure AD-Benutzerkonten auch mithilfe anderer Tools zum Erstellen von Druva-Benutzerkonten oder mithilfe der von Druva bereitgestellten APIs erstellen.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
-
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Druva gewähren.
-
-![Zuweisen der Benutzerrolle][200] 
-
-**Um Britta Simon zu Druva zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
-
-1. Wählen Sie in der Anwendungsliste den Eintrag **Druva** aus.
-
-    ![Druva-Link in der Anwendungsliste](./media/druva-tutorial/tutorial_druva_app.png)  
-
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
-
-    ![Link „Benutzer und Gruppen“][202]
-
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Bereich „Zuweisung hinzufügen“][203]
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Druva“ klicken, sollten Sie automatisch bei Ihrer Druva-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Druva“ klicken, sollten Sie automatisch bei der Druva-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-<!--Image references-->
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-[1]: ./media/druva-tutorial/tutorial_general_01.png
-[2]: ./media/druva-tutorial/tutorial_general_02.png
-[3]: ./media/druva-tutorial/tutorial_general_03.png
-[4]: ./media/druva-tutorial/tutorial_general_04.png
-
-[100]: ./media/druva-tutorial/tutorial_general_100.png
-
-[200]: ./media/druva-tutorial/tutorial_general_200.png
-[201]: ./media/druva-tutorial/tutorial_general_201.png
-[202]: ./media/druva-tutorial/tutorial_general_202.png
-[203]: ./media/druva-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

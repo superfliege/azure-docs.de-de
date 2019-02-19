@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 08d9978134ce214a468691ec367fb1797f6e86fc
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457750"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55857871"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 
-In diesem Artikel erfahren Sie, wie Sie einen Container (Sammlung, Diagramm, Tabelle) in Azure Cosmos DB abfragen.
+In diesem Artikel erfahren Sie, wie Sie einen Container (Sammlung, Diagramm oder Tabelle) in Azure Cosmos DB abfragen.
 
 ## <a name="in-partition-query"></a>Abfrage innerhalb einer Partition
 
-Bei Abfragen von Daten in Containern leitet Azure Cosmos DB die Abfrage automatisch an die Partitionen weiter, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen, wenn für eine Abfrage Partitionsschlüsselfilter angegeben sind. Die folgende Abfrage wird beispielsweise an die DeviceId-Partition weitergeleitet, die alle Dokumente enthält, die dem Partitionsschlüsselwert „XMS-0001“ entsprechen.
+Beim Abfragen von Daten aus Containern wird die Abfrage von Azure Cosmos DB automatisch verarbeitet, wenn für die Abfrage ein Partitionsschlüsselfilter angegeben ist. Die Abfrage wird an die Partitionen weitergeleitet, die den im Filter angegebenen Partitionsschlüsselwerten entsprechen. Die folgende Abfrage wird beispielsweise an die Partition `DeviceId` weitergeleitet, die alle Dokumente enthält, die dem Partitionsschlüsselwert `XMS-0001` entsprechen.
 
 ```csharp
 // Query using partition key into a class called, DeviceReading
@@ -30,7 +30,7 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 
 ## <a name="cross-partition-query"></a>Partitionsübergreifende Abfrage
 
-Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (DeviceId) und wird an alle Partitionen verteilt, wo sie auf dem Partitionsindex ausgeführt wird. Wenn Sie eine Abfrage über mehrere Partitionen hinweg ausführen möchten, legen Sie **EnableCrossPartitionQuery** auf „true“ fest (oder „x-ms-documentdb-query-enablecrosspartition“ in der REST-API).
+Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (`DeviceId`) und wird an alle Partitionen verteilt, wo sie für den Partitionsindex ausgeführt wird. Legen Sie zum partitionsübergreifenden Ausführen einer Abfrage `EnableCrossPartitionQuery` auf „true“ (bzw. `x-ms-documentdb-query-enablecrosspartition` in der REST-API) fest.
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading
@@ -40,11 +40,11 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
     .Where(m => m.MetricType == "Temperature" && m.MetricValue > 100);
 ```
 
-Cosmos DB unterstützt die Aggregatfunktionen „COUNT“, „MIN“, „MAX“ und „AVG“ für Container mithilfe von SQL. Die Aggregatfunktionen für Container sind ab der SDK-Version 1.12.0 verfügbar. Abfragen müssen einen einzelnen Aggregat-Operator und einen einzelnen Wert in der Projektion enthalten.
+Azure Cosmos DB unterstützt die Aggregatfunktionen „COUNT“, „MIN“, „MAX“ und „AVG“ für Container mithilfe von SQL. Die Aggregatfunktionen für Container sind ab der SDK-Version 1.12.0 verfügbar. Abfragen müssen einen einzelnen Aggregate-Operator und einen einzelnen Wert in der Projektion enthalten.
 
 ## <a name="parallel-cross-partition-query"></a>Parallele partitionsübergreifende Abfrage
 
-Cosmos DB SDKs ab Version 1.9.0 unterstützen Optionen für die Ausführung paralleler Abfragen.  Parallele partitionsübergreifende Abfragen ermöglichen partitionsübergreifende Abfragen mit geringer Wartezeit. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
+Azure Cosmos DB SDKs ab Version 1.9.0 unterstützen Optionen für die Ausführung paralleler Abfragen. Parallele partitionsübergreifende Abfragen ermöglichen partitionsübergreifende Abfragen mit geringer Wartezeit. Die folgende Abfrage ist z.B. so konfiguriert, dass sie partitionsübergreifend parallel ausgeführt wird.
 
 ```csharp
 // Cross-partition Order By Query with parallel execution
@@ -57,15 +57,15 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 
 Sie können die parallele Ausführung von Abfragen verwalten, indem Sie die folgenden Parameter optimieren:
 
-- **MaxDegreeOfParallelism**: Legt die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen des Containers fest. Wenn Sie diese Eigenschaft auf „-1“ festlegen, wird der Grad der Parallelität vom SDK verwaltet. Wird „MaxDegreeOfParallelism“ nicht angegeben oder auf „0“ (Standardwert) festgelegt, besteht eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
+- **MaxDegreeOfParallelism**: Legt die maximale Anzahl gleichzeitiger Verbindungen mit den Partitionen des Containers fest. Wenn Sie diese Eigenschaft auf „-1“ festlegen, verwaltet das SDK den Grad der Parallelität. Falls  `MaxDegreeOfParallelism` nicht angegeben oder auf 0 (Standardwert) festgelegt wird, besteht eine einzelne Netzwerkverbindung mit den Partitionen des Containers.
 
-- **MaxBufferedItemCount**: Steuert das Verhältnis zwischen Abfragewartezeit und clientseitiger Arbeitsspeichernutzung. Wird diese Option weggelassen oder auf „-1“ festgelegt, wird die Anzahl von Elementen, die während der Ausführung paralleler Abfragen gepuffert werden, vom SDK verwaltet.
+- **MaxBufferedItemCount**: Steuert das Verhältnis zwischen Abfragewartezeit und clientseitiger Arbeitsspeichernutzung. Wird diese Option weggelassen oder auf „-1“ festgelegt, verwaltet das SDK die Anzahl von Elementen, die während der Ausführung paralleler Abfragen gepuffert werden.
 
-Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Bei einer partitionsübergreifenden Abfrage mit Sortieroperatoren („ORDER BY“ und/oder „TOP“) gibt das Azure Cosmos DB SDK die Abfrage parallel an verschiedene Partitionen aus und führt teilweise sortierte Ergebnisse auf der Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
+Bei gleichem Zustand der Sammlung gibt eine parallele Abfrage Ergebnisse in der gleichen Reihenfolge wie bei einer seriellen Ausführung zurück. Bei einer partitionsübergreifenden Abfrage mit Sortieroperatoren (ORDER BY, TOP) gibt das Azure Cosmos DB SDK die Abfrage parallel an verschiedene Partitionen aus. Es führt teilweise sortierte Ergebnisse auf der Clientseite zusammen, um global sortierte Ergebnisse zu generieren.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zur Partitionierung in Cosmos DB finden Sie in den folgenden Artikeln:
+Informationen zur Partitionierung in Azure Cosmos DB finden Sie in den folgenden Artikeln:
 
 - [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)
 - [Create a synthetic partition key](synthetic-partition-keys.md) (Erstellen eines synthetischen Partitionsschlüssels)

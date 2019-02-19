@@ -10,13 +10,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: v-masebo
 manager: craigg
-ms.date: 11/28/2018
-ms.openlocfilehash: b3fe6e0249143b27cb763401a8d328922ed1fe99
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 02/12/2019
+ms.openlocfilehash: af2e711cef6e97935c2e4dc90557ef4f127d1caa
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173920"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237433"
 ---
 # <a name="quickstart-use-php-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von PHP
 
@@ -26,19 +26,39 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von [PHP](http://php.net/manual
 
 Stellen Sie vor dem Ausführen dieses Beispiels sicher, dass die folgenden erforderlichen Komponenten vorhanden sind:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+
+  || Einzeldatenbank | Verwaltete Instanz |
+  |:--- |:--- |:---|
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
+  |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
+  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
 
 - PHP-Software für Ihr Betriebssystem:
 
-    - **MacOS**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
+  - **MacOS**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Linux**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
+  - **Linux**: Installieren Sie PHP, den ODBC-Treiber und dann den PHP-Treiber für SQL Server. Siehe [Schritt 1, 2 und 3](/sql/connect/php/installation-tutorial-linux-mac).
 
-    - **Windows:** Installieren Sie PHP für IIS Express und Chocolatey und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
+  - **Windows:** Installieren Sie PHP für IIS Express und Chocolatey und anschließend den ODBC-Treiber und SQLCMD. Weitere Informationen finden Sie unter [Schritt 1.2 und 1.3](https://www.microsoft.com/sql-server/developer-get-started/php/windows/).
 
-## <a name="get-database-connection"></a>Abrufen der Datenbankverbindung
+## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Server- oder Hostnamen, den Datenbanknamen und die Anmeldeinformationen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+
+3. Sehen Sie sich auf der Seite **Übersicht** bei einer Einzeldatenbank den vollqualifizierten Servernamen neben **Servername** und bei einer verwalteten Instanz den vollqualifizierten Servernamen neben **Host** an. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 ## <a name="add-code-to-query-database"></a>Hinzufügen von Code zum Abfragen der Datenbank
 

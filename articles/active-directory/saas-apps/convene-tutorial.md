@@ -4,232 +4,235 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 2540ac46-1aea-496b-a8c5-575a2690f7db
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/13/2018
+ms.topic: tutorial
+ms.date: 02/04/2019
 ms.author: jeedes
-ms.openlocfilehash: 6ff502f46cfd96b767191d11e3fcc53eb1be81d2
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7b6462083265c7fa93dd0fc496830fff21f80928
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607320"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161337"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convene"></a>Tutorial: Azure Active Directory-Integration mit Convene
 
 In diesem Tutorial erfahren Sie, wie Sie Convene in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von Convene in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Convene hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Convene anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Convene hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Convene anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Convene konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Convene-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Convene-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Convene aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Convene unterstützt **SP-initiiertes** einmaliges Anmelden.
+
+* Convene unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-convene-from-the-gallery"></a>Hinzufügen von Convene aus dem Katalog
+
 Um die Integration von Convene in Azure AD zu konfigurieren, müssen Sie Convene aus dem Katalog zu Ihrer Liste der verwalteten SaaS-Apps hinzufügen.
 
 **Um Convene aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
 4. Geben Sie in das Suchfeld **Convene** ein, wählen Sie **Convene** im Ergebnisbereich aus, und klicken Sie dann auf **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Convene in der Ergebnisliste](./media/convene-tutorial/tutorial_convene_addfromgallery.png)
+     ![Convene in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Convene, basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Convene als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Convene muss eine Linkbeziehung eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Convene basierend auf einem Testbenutzer namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Convene eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Convene müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines Convene-Testbenutzers](#create-a-convene-test-user)**, um ein Pendant von Britta Simon in Convene zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+2. **[Konfigurieren des einmaligen Anmeldens für Convene](#configure-convene-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+5. **[Erstellen eines Convene-Testbenutzers](#create-convene-test-user)**, um ein Pendant von Britta Simon in Convene zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Convene-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Convene die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Convene die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Convene** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Convene** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/convene-tutorial/tutorial_convene_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-3. Führen Sie im Abschnitt **Domäne und URLs für Convene** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten Modus** konfigurieren möchten:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Convene](./media/convene-tutorial/tutorial_convene_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://portal.convene.me.uk/saml/acs/<UID>`
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Convene](./media/convene-tutorial/tutorial_convene_url1.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Convene](common/both-replyurl.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://portal.convene.me.uk/login`.
-     
+    Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://portal.convene.me.uk/saml/acs/<UID>`.
+
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Convene](common/both-signonurl.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL ein: `https://portal.convene.me.uk/login`.
+
     > [!NOTE] 
-    > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Convene](mailto:support@convene.me.uk), um diesen Wert zu erhalten.
+    > Der Wert der Antwort-URL entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Convene](mailto:support@convene.me.uk), um diesen Wert zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-5. Die Convene-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
-    
-    ![Einmaliges Anmelden konfigurieren, Attribut](./media/convene-tutorial/tutorial_convene_attribute.png)
+6. Die Convene-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute im Abschnitt **Benutzerattribute** auf der Anwendungsintegrationsseite verwalten. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf die Schaltfläche **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
 
-6. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    ![image](common/edit-attribute.png)
 
-    ![Downloadlink für das Zertifikat](./media/convene-tutorial/tutorial_convene_certificate.png) 
+7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus: 
 
-7. Klicken Sie auf die Schaltfläche **Save** .
+    | NAME | Quellattribut|
+    | ---------------| --------------- |
+    | nameidentifier | user.mail |
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/convene-tutorial/tutorial_general_400.png)
-    
-8. Klicken Sie im Abschnitt **-Konfiguration** auf **Convene konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Convene-Konfiguration](./media/convene-tutorial/tutorial_convene_configure.png) 
+    ![image](common/new-save-attribute.png)
 
-9. Um das einmalige Anmelden bei **Convene** zu konfigurieren, senden Sie das heruntergeladene **Zertifikat (Base64)**, **Abmelde-URL, SAML-Entitäts-ID und SAML-Dienst-URL für einmaliges Anmelden** an das [Convene-Supportteam](mailto:support@convene.me.uk). Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    ![image](common/new-attribute-details.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+    b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
+
+    c. Lassen Sie den **Namespace** leer.
+
+    d. Wählen Sie „Source“ als **Attribut** aus.
+
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
+
+    f. Klicken Sie auf **OK**.
+
+    g. Klicken Sie auf **Speichern**.
+
+8. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
+
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+
+9. Kopieren Sie im Abschnitt **Convene einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-convene-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Convene
+
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Convene** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Convene](mailto:support@convene.me.uk) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/convene-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/convene-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/convene-tutorial/create_aaduser_03.png)
-
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/convene-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-convene-test-user"></a>Erstellen eines Convene-Testbenutzers
-
-Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Convene. Convene unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Convene ein neuer Benutzer erstellt.
-
->[!Note]
->Setzen Sie sich mit dem [Supportteam von Convene](mailto:support@convene.me.uk) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon das einmalige Anmelden bei Azure, indem Sie Zugriff auf Convene gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Convene** aus.
 
-**Um Britta Simon zu Convene zuzuweisen, führen Sie die folgenden Schritte aus:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Wählen Sie in der Anwendungsliste **Convene**aus.
 
-    ![Der Convene-Link in der Anwendungsliste](./media/convene-tutorial/tutorial_convene_app.png)  
+    ![Der Convene-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-convene-test-user"></a>Erstellen eines Convene-Testbenutzers
+
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Convene erstellt. Convene unterstützt die **Just-in-Time-Benutzerbereitstellung**, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Convene vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+>[!Note]
+>Setzen Sie sich mit dem [Supportteam von Convene](mailto:support@convene.me.uk) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Convene“ klicken, sollten Sie automatisch in Ihrer Convene-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Convene“ klicken, sollten Sie automatisch bei der Convene-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/convene-tutorial/tutorial_general_01.png
-[2]: ./media/convene-tutorial/tutorial_general_02.png
-[3]: ./media/convene-tutorial/tutorial_general_03.png
-[4]: ./media/convene-tutorial/tutorial_general_04.png
-
-[100]: ./media/convene-tutorial/tutorial_general_100.png
-
-[200]: ./media/convene-tutorial/tutorial_general_200.png
-[201]: ./media/convene-tutorial/tutorial_general_201.png
-[202]: ./media/convene-tutorial/tutorial_general_202.png
-[203]: ./media/convene-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

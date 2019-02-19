@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/15/2018
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4b8b5502090e1b115829b65834532dd6ce15a934
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 28710ebfaef4c82212e0208c36f50a96f0dda083
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52835912"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892047"
 ---
-# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Lab-Kontos mit Azure Lab Services
+# <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Tutorial: Einrichten eines Labkontos mit Azure Lab Services
 In Azure Lab Services fungiert ein Lab-Konto als zentrales Konto, unter dem die Labs Ihrer Organisation verwaltet werden. In Ihrem Lab-Konto können Sie anderen Benutzern die Berechtigung zum Erstellen von Labs erteilen und Richtlinien festlegen, die für alle Labs unter dem Lab-Konto gelten. In diesem Tutorial erfahren Sie, wie Sie als Lab-Administrator ein Lab-Konto erstellen. 
 
 In diesem Tutorial führen Sie die folgenden Aktionen aus:
@@ -37,11 +37,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein Lab-Konto in Azure Lab Services zu erstellen. 
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Wählen Sie im Hauptmenü auf der linken Seite **Ressource erstellen** aus.
-3. Suchen Sie im Azure Marketplace nach **Lab Services**, und wählen Sie in der Dropdownliste **Lab Services** aus. 
-4. Wählen Sie in der gefilterten Liste der Dienste **Lab Services (Vorschauversion)** aus. 
-1. Wählen Sie im Fenster **Lab-Konto erstellen** die Option **Erstellen** aus.
-2. Führen Sie im Fenster **Lab-Konto** die folgenden Aktionen aus: 
+2. Wählen Sie im Menü links **Alle Dienste** aus. Wählen Sie im Abschnitt **DEVOPS** die Option **Labkonten**. Wenn Sie das Sternchen (`*`) neben **Labkonten** wählen, wird die Option im linken Menü dem Abschnitt **FAVORITEN** hinzugefügt. Beim nächsten Mal wählen Sie **Labkonten** unter **FAVORITEN** aus.
+
+    ![Alle Dienste -> Labkonten](../media/tutorial-setup-lab-account/select-lab-accounts-service.png)
+3. Klicken Sie auf der Seite **Labkonten** auf der Symbolleiste auf **Hinzufügen**. 
+
+    ![Auswählen von „Hinzufügen“ auf der Seite „Labkonten“](../media/tutorial-setup-lab-account/add-lab-account-button.png)
+4. Führen Sie auf der Seite **Labkonto** die folgenden Aktionen aus: 
     1. Geben Sie einen **Lab-Kontonamen** ein. 
     2. Wählen Sie das **Azure-Abonnement** aus, in dem Sie das Lab-Konto erstellen möchten.
     3. Wählen Sie unter **Ressourcengruppe** die Option **Neu erstellen** aus, und geben Sie einen Namen für die Ressourcengruppe ein.
@@ -49,9 +51,11 @@ Die folgenden Schritte veranschaulichen, wie Sie Azure-Portal verwenden, um ein 
     5. Klicken Sie auf **Erstellen**. 
 
         ![Fenster zum Erstellen eines Lab-Kontos](../media/tutorial-setup-lab-account/lab-account-settings.png)
-5. Wenn die Seite für das Lab-Konto nicht angezeigt wird, klicken Sie auf die Schaltfläche **Benachrichtigungen** und dann in den Benachrichtigungen auf die Schaltfläche **Zu Ressource wechseln**. 
+5. Wählen Sie auf der Symbolleiste das **Glockensymbol** (**Benachrichtigungen**), überprüfen Sie, ob die Bereitstellung erfolgreich war, und wählen Sie dann **Zu Ressource wechseln**. 
 
-    ![Fenster zum Erstellen eines Lab-Kontos](../media/tutorial-setup-lab-account/notification-go-to-resource.png)    
+    Wählen Sie alternativ auf der Seite **Labkonten** die Option **Aktualisieren**, und wählen Sie anschließend das von Ihnen erstellte Labkonto aus. 
+
+    ![Fenster zum Erstellen eines Lab-Kontos](../media/tutorial-setup-lab-account/go-to-lab-account.png)    
 6. Folgende Seite für das **Lab-Konto** wird angezeigt:
 
     ![Seite des Lab-Kontos](../media/tutorial-setup-lab-account/lab-account-page.png)
@@ -62,9 +66,13 @@ Zum Einrichten eines Classroom-Labs in einem Labkonto muss der Benutzer Mitglied
 Um Lehrkräften die Berechtigung zum Erstellen von Labs für ihre Klassen zu erteilen, fügen Sie sie zur Rolle **Lab-Ersteller** hinzu:
 
 1. Wählen Sie auf der Seite **Lab-Konto** die Option **Zugriffssteuerung (IAM)** aus, und klicken Sie auf der Symbolleiste auf **+ Rollenzuweisung hinzufügen**. 
-2. Wählen Sie auf der Seite **Berechtigungen hinzufügen** als **Rolle** die Option **Lab-Ersteller** aus. Wählen Sie den Benutzer aus, den Sie der Rolle „Lab-Ersteller“ hinzufügen möchten, und klicken Sie auf **Speichern**. 
 
-## <a name="specify-marketplace-images-available-to-lab-owners"></a>Festlegen von Marketplace-Images für Lab-Besitzer
+    ![Zugriffssteuerung > Schaltfläche „Rollenzuweisung hinzufügen“](../media/tutorial-setup-lab-account/add-role-assignment-button.png)
+1. Wählen Sie auf der Seite **Rollenzuweisung hinzufügen** als **Rolle** die Option **Ersteller des Labs** aus. Wählen Sie den Benutzer aus, den Sie der Rolle „Ersteller des Labs“ hinzufügen möchten, und klicken Sie auf **Speichern**. 
+
+    ![Hinzufügen des Lab-Erstellers](../media/tutorial-setup-lab-account/add-lab-creator.png)
+
+## <a name="specify-marketplace-images-available-to-lab-creators"></a>Festlegen von Marketplace-Images für Lab-Ersteller
 Als Lab-Kontobesitzer können Sie die Marketplace-Images festlegen, die Lab-Ersteller zum Erstellen von Labs im Lab-Konto verwenden können. 
 
 1. Wählen Sie links im Menü die Option **Marketplace-Images** aus. Standardmäßig wird die vollständige Liste der Images (sowohl aktivierte als auch deaktivierte) angezeigt. Sie können die Liste filtern, um nur aktivierte bzw. deaktivierte Images anzuzeigen. Wählen Sie dazu in der Dropdownliste oben die Option **Enabled only**/**Disabled only** (Nur aktivierte/Nur deaktivierte). 

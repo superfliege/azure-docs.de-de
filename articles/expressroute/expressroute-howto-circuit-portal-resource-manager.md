@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 974421662a33cd9167d3c39b31d8da20db9f505f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 3abdeff3c3f1a4069130ed7c8d49d485feea4093
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091526"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894716"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>Erstellen und Ändern einer ExpressRoute-Verbindung
 > [!div class="op_single_selector"]
@@ -51,7 +51,8 @@ Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com) , un
   ![Konfigurieren von SKU-Tarif und Datenmessung](./media/expressroute-howto-circuit-portal-resource-manager/createcircuit.png)
 
   * Der **Tarif** bestimmt, ob ein ExpressRoute Standard- oder ein ExpressRoute Premium-Add-On aktiviert wird. Sie können **Standard** für die Standard-SKU bzw. **Premium** für das Premium-Add-On angeben.
-  * **Datenabrechnung** bestimmt den Abrechnungstyp. Sie können **Taktung** für einen Volumentarif und **Unbegrenzt** für einen Tarif mit Datenflatrate auswählen. Beachten Sie, dass Sie den Abrechnungstyp von **Taktung** in **Unbegrenzt** ändern können, nicht jedoch umgekehrt (**Unbegrenzt** in **Taktung**).
+  * **Datenabrechnung** bestimmt den Abrechnungstyp. Sie können **Taktung** für einen Volumentarif und **Unbegrenzt** für einen Tarif mit Datenflatrate auswählen. Beachten Sie, dass Sie den Abrechnungstyp von **Taktung** in **Unbegrenzt** ändern können.
+    > [!IMPORTANT] Sie können den Typ nicht von **Unbegrenzt** in **Taktung** ändern.
   * Der **Peeringort** ist der physische Standort, an dem Ihr Peering mit Microsoft stattfindet.
 
     > [!IMPORTANT]
@@ -117,10 +118,11 @@ Sie können bestimmte Eigenschaften einer ExpressRoute-Verbindung ändern, ohne 
 Sie können folgende Aufgaben ausführen, ohne Ausfallzeiten zu verursachen:
 
 * Aktivieren oder deaktivieren Sie ein ExpressRoute Premium-Add-On für Ihre ExpressRoute-Verbindung.
-* Erhöhen Sie die Bandbreite der ExpressRoute-Verbindung, sofern Kapazität am Port vorhanden ist. Ein Downgrade der Bandbreite einer Verbindung wird nicht unterstützt. 
-* Sie können den Abrechnungsplan von *Datentaktung* zu *Datenflatrate* ändern. Ein Ändern des Abrechnungsplans von „Datenflatrate“ in „Datentaktung“ (Volumentarif) wird nicht unterstützt.
+* Erhöhen Sie die Bandbreite der ExpressRoute-Verbindung, sofern Kapazität am Port vorhanden ist.
+  > [!IMPORTANT] Ein Downgrade der Bandbreite einer Verbindung wird nicht unterstützt. 
+* Sie können den Abrechnungsplan von *Datentaktung* zu *Datenflatrate* ändern.
+  > [!IMPORTANT] Ein Ändern des Abrechnungsplans von „Datenflatrate“ in „Datentaktung“ (Volumentarif) wird nicht unterstützt.
 * Sie können die Option *Klassische Vorgänge zulassen*aktivieren und deaktivieren.
-
 > [!IMPORTANT]
 > Unter Umständen müssen Sie die ExpressRoute-Verbindung neu erstellen, wenn nicht ausreichend Kapazität am vorhandenen Port verfügbar ist. Die Verbindung kann nicht aktualisiert werden, wenn an dieser Stelle keine zusätzliche Kapazität verfügbar ist.
 >

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: 0b6e5116a90c66852ac39f67f9f32c94470e5332
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: 82b412d7fc9e54ca213fecde783a5e27f8ee93bc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565325"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233557"
 ---
 # <a name="quickstart-use-net-core-c-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von .NET Core (C#)
 
@@ -27,19 +27,38 @@ In dieser Schnellstartanleitung verwenden Sie [.NET Core](https://www.microsoft.
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
 
-- [.NET Core für Ihr Betriebssystem](https://www.microsoft.com/net/core) ist installiert. 
+  || Einzeldatenbank | Verwaltete Instanz |
+  |:--- |:--- |:---|
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
+  |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
+  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
+
+- [.NET Core für Ihr Betriebssystem](https://www.microsoft.com/net/core) ist installiert.
 
 > [!NOTE]
 > Dieser Schnellstart verwendet die *mySampleDatabase*-Datenbank. Wenn Sie eine andere Datenbank verwenden möchten, müssen Sie die Datenbankverweise ändern und die `SELECT`-Abfrage im C# Code ändern.
 
-
 ## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Server- oder Hostnamen, den Datenbanknamen und die Anmeldeinformationen.
 
-#### <a name="get-adonet-connection-information-optional"></a>Abrufen von ADO.NET-Verbindungsinformationen (optional)
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+
+3. Sehen Sie sich auf der Seite **Übersicht** bei einer Einzeldatenbank den vollqualifizierten Servernamen neben **Servername** und bei einer verwalteten Instanz den vollqualifizierten Servernamen neben **Host** an. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+
+## <a name="get-adonet-connection-information-optional"></a>Abrufen von ADO.NET-Verbindungsinformationen (optional)
 
 1. Navigieren Sie zur Seite **mySampleDatabase**, und wählen Sie unter **Einstellungen** die Option **Verbindungszeichenfolgen**.
 

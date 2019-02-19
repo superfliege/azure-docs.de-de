@@ -11,13 +11,13 @@ author: David-Engel
 ms.author: v-daveng
 ms.reviewer: MightyPen
 manager: craigg
-ms.date: 12/21/2018
-ms.openlocfilehash: 6e2465927f748e5538935a87aaadc84b5c2b4d1f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: 597a870f98d8218d86fa601fe83d524f3a370f05
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561929"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236514"
 ---
 # <a name="quickstart-use-golang-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Golang
 
@@ -27,17 +27,37 @@ In dieser Schnellstartanleitung verwenden Sie die Programmiersprache [Golang](ht
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+
+  || Einzeldatenbank | Verwaltete Instanz |
+  |:--- |:--- |:---|
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
+  |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
+  |Laden von Daten|Laden von Adventure Works per Schnellstart|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
 
 - Installation von Golang und der dazugehörigen Software für Ihr Betriebssystem:
 
-    - **MacOS**: Installieren Sie Homebrew und Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
-    - **Ubuntu**:  Installieren Sie Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
-    - **Windows:** Installieren Sie Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).    
+  - **MacOS**: Installieren Sie Homebrew und Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/mac/).
+  - **Ubuntu**:  Installieren Sie Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/ubuntu/).
+  - **Windows:** Installieren Sie Golang. Weitere Informationen finden Sie unter [Schritt 1.2](https://www.microsoft.com/sql-server/developer-get-started/go/windows/).
 
-## <a name="sql-server-connection-information"></a>SQL Server-Verbindungsinformationen
+## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
+Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Server- oder Hostnamen, den Datenbanknamen und die Anmeldeinformationen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+
+3. Sehen Sie sich auf der Seite **Übersicht** bei einer Einzeldatenbank den vollqualifizierten Servernamen neben **Servername** und bei einer verwalteten Instanz den vollqualifizierten Servernamen neben **Host** an. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
 
 ## <a name="create-golang-project-and-dependencies"></a>Erstellen des Golang-Projekts und der Abhängigkeiten
 

@@ -4,251 +4,222 @@ description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwis
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 5211910a-ab96-4709-959a-524c4d57c43e
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/23/2017
+ms.topic: tutorial
+ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: b91a3e2a100c9c355dd3e47851f95c4d3884b51a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 2a91c5c67706c648af7eacedbc8093d5db8c6a55
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56172347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-123contactform"></a>Tutorial: Azure Active Directory-Integration in 123ContactForm
 
 In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD) in 123ContactForm integrieren.
-
 Die Integration von Azure AD in 123ContactForm bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf 123ContactForm hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei 123ContactForm anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+* Sie können in Azure AD steuern, wer Zugriff auf 123ContactForm hat.
+* Sie können es Benutzern ermöglichen, sich mit ihrem Azure AD-Konto automatisch bei 123ContactForm anzumelden (Single Sign-On, SSO; einmaliges Anmelden).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in 123ContactForm konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein 123ContactForm-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein 123ContactForm-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von 123ContactForm aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* 123ContactForm unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
+* 123ContactForm unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-123contactform-from-the-gallery"></a>Hinzufügen von 123ContactForm aus dem Katalog
+
 Zum Konfigurieren der Integration von Azure AD in 123ContactForm müssen Sie 123ContactForm aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um 123ContactForm aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte durch:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![ANWENDUNGEN][2]
-    
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
 3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-    ![ANWENDUNGEN][3]
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld als Suchbegriff **123ContactForm** ein.
+4. Geben Sie im Suchfeld **123ContactForm** ein, wählen Sie im Ergebnisbereich **123ContactForm** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/tutorial_123contactform_search.png)
+     ![123ContactForm in der Ergebnisliste](common/search-new-app.png)
 
-5. Wählen Sie im Ergebnisbereich die Option **123ContactForm** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/tutorial_123contactform_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei 123ContactForm basierend auf einem Testbenutzer mit dem Namen „Britta Simon“.
-
-Damit das einmalige Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in 123ContactForm als Pendant für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 123ContactForm muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in 123ContactForm den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit 123ContactForm basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in 123ContactForm eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens mit Azure AD bei 123ContactForm müssen Sie die folgenden Bausteine ausführen:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-3. **[Erstellen eines 123ContactForm-Testbenutzers](#creating-a-123contactform-test-user)**, um ein Pendant von Britta Simon in 123ContactForm zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für 123ContactForm](#configure-123contactform-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines 123ContactForm-Testbenutzers](#create-123contactform-test-user)**, um ein Pendant von Britta Simon in 123ContactForm zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer 123ContactForm-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in 123ContactForm die folgenden Schritte durch:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit 123ContactForm die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **123ContactForm** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **123ContactForm** die Option **Einmaliges Anmelden**.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-3. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, führen Sie im Abschnitt **Domäne und URLs für 123ContactForm** die folgenden Schritte durch:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/123contactform-tutorial/url1.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
 
-4. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, führen Sie die folgenden Schritte durch:
+    ![SSO-Informationen zur Domäne und zu den URLs für 123ContactForm](common/idp-intiated.png)
 
-    ![Configure single sign-on](./media/123contactform-tutorial/url2.png)
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/metadata`
 
-    a. Klicken Sie auf die Option **Erweiterte URL-Einstellungen anzeigen**.
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/acs`
 
-    b. Geben Sie im Textfeld **Anmelde-URL** eine URL wie die Folgende ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`.
+5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    > [!NOTE] 
+    ![SSO-Informationen zur Domäne und zu den URLs für 123ContactForm](common/metadata-upload-additional-signon.png)
+
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://www.123contactform.com/saml/azure_ad/<tenant_id>/sso`
+
+    > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diesen Wert durch die tatsächlichen URLs und den tatsächlichen Bezeichner ersetzen, was später im Tutorial erläutert wird.
-    
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
 
-    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_certificate.png) 
+6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_general_400.png)
+7. Kopieren Sie im Abschnitt **123ContactForm einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-7. Navigieren Sie zum Konfigurieren des einmaligen Anmeldens auf der Seite **123ContactForm** zu [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/), und führen Sie die folgenden Schritte aus:
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-123contactform-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für 123ContactForm
+
+1. Navigieren Sie zum Konfigurieren des einmaligen Anmeldens auf der Seite **123ContactForm** zu [https://www.123contactform.com/form-2709121/](https://www.123contactform.com/form-2709121/), und führen Sie die folgenden Schritte aus:
 
     ![Configure single sign-on](./media/123contactform-tutorial/submit.png) 
 
-    a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, d.h. **BrittaSimon@Contoso.com**.
+    a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers wie folgt ein: **BrittaSimon@Contoso.com**.
 
     b. Klicken Sie auf **Hochladen**, und navigieren Sie zur XML-Metadatendatei, die Sie aus dem Azure-Portal heruntergeladen haben.
 
     c. Klicken Sie auf **FORMULAR ÜBERMITTELN**.
 
-8. Führen Sie zum Konfigurieren von **Microsoft Azure AD – einmaliges Anmelden – App-Einstellungen konfigurieren** die folgenden Schritte durch:
-    
+2. Führen Sie zum Konfigurieren von **Microsoft Azure AD – einmaliges Anmelden – App-Einstellungen konfigurieren** die folgenden Schritte durch:
+
     ![Configure single sign-on](./media/123contactform-tutorial/url3.png)
 
-    a. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert von **BEZEICHNER** für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für 123ContactForm** in das Textfeld **Bezeichner** ein.
-    
-    b. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert von **ANTWORT-URL** für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für 123ContactForm** in das Textfeld **Antwort-URL** ein.
+    a. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert für **IDENTIFIER** (BEZEICHNER) für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Bezeichner** ein.
 
-    c. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, kopieren die den Wert von **ANMELDE-URL** für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Domäne und URLs für 123ContactForm** in das Textfeld **Anmelde-URL** ein.
+    b. Wenn Sie die Anwendung im **IdP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert für **REPLY URL** (ANTWORT-URL) für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Antwort-URL** ein.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+    c. Wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten, kopieren Sie den Wert für **SIGN ON URL** (ANMELDE-URL) für Ihre Instanz, und fügen Sie ihn im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** in das Textfeld **Anmelde-URL** ein.
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-2. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-3. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/create_aaduser_03.png) 
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-4. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/123contactform-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="creating-a-123contactform-test-user"></a>Erstellen eines 123ContactForm-Testbenutzers
 
-Die Anwendung unterstützt die Just-in-Time-Benutzerbereitstellung. Nach der Authentifizierung werden in der Anwendung automatisch Benutzer erstellt.
-
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf 123ContactForm gewähren.
 
-![Benutzer zuweisen][200] 
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Apex 123ContactForm**.
 
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu 123ContactForm durchzuführen:**
-
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
-
-    ![Benutzer zuweisen][201] 
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Wählen Sie in der Anwendungsliste **123ContactForm** aus.
 
-    ![Configure single sign-on](./media/123contactform-tutorial/tutorial_123contactform_app.png) 
+    ![123ContactForm-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][202] 
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Benutzer zuweisen][203]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-123contactform-test-user"></a>Erstellen eines 123ContactForm-Testbenutzers
+
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in 123ContactForm erstellt. 123ContactForm unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in 123ContactForm vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „123ContactForm“ klicken, sollten Sie automatisch bei Ihrer 123ContactForm-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md).
+Wenn Sie im Zugriffsbereich auf die Kachel „123ContactForm“ klicken, sollten Sie automatisch bei der 123ContactForm-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/123contactform-tutorial/tutorial_general_01.png
-[2]: ./media/123contactform-tutorial/tutorial_general_02.png
-[3]: ./media/123contactform-tutorial/tutorial_general_03.png
-[4]: ./media/123contactform-tutorial/tutorial_general_04.png
-
-[100]: ./media/123contactform-tutorial/tutorial_general_100.png
-
-[200]: ./media/123contactform-tutorial/tutorial_general_200.png
-[201]: ./media/123contactform-tutorial/tutorial_general_201.png
-[202]: ./media/123contactform-tutorial/tutorial_general_202.png
-[203]: ./media/123contactform-tutorial/tutorial_general_203.png
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

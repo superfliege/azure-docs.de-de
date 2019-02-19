@@ -1,106 +1,106 @@
 ---
-title: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit der CLI
-description: In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
+title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit der Befehlszeilenschnittstelle'
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit der Azure-Befehlszeilenschnittstelle einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
 services: data-explorer
 author: radennis
 ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
-ms.topic: howto
-ms.date: 1/31/2019
-ms.openlocfilehash: a4c9156ef80f05e247b1cfef0acd56b601a2db65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: quickstart
+ms.date: 2/4/2019
+ms.openlocfilehash: 9e0ae547df34594674dc03702310a1537717a4ed
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812683"
+ms.locfileid: "55881115"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-a-database-using-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit der CLI
+# <a name="create-an-azure-data-explorer-cluster-and-database-using-cli"></a>Erstellen eines Azure Data Explorer-Clusters und einer Datenbank mit der Befehlszeilenschnittstelle
 
-In diesem Artikel wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
+In dieser Schnellstartanleitung wird beschrieben, wie Sie mit der Azure-Befehlszeilenschnittstelle (Azure CLI) einen Azure Data Explorer-Cluster und eine Datenbank erstellen.
 
-## <a name="whats-the-difference-between-the-management-plane-and-data-plane-apis"></a>Was ist der Unterschied zwischen den Verwaltungsebenen- und Datenebenen-APIs?
+## <a name="prerequisites"></a>Voraussetzungen
 
-Es gibt zwei verschiedene API-Bibliotheken, Verwaltungs- und Datenebenen-APIs.
-Die Verwaltungs-APIs werden zum Verwalten der Ressourcen verwendet, beispielsweise zum Erstellen eines Clusters, zum Erstellen einer Datenbank, zum Löschen einer Datenverbindung, zum Ändern der Anzahl von Instanzen usw. Die Datenebenen-APIs werden verwendet, um mit den Daten zu interagieren, Abfragen auszuführen, Daten zu erfassen usw.
+Für diese Schnellstartanleitung benötigen Sie ein Azure-Abonnement. Falls Sie kein Abonnement besitzen, können Sie ein [kostenloses Konto erstellen](https://azure.microsoft.com/free/), bevor Sie beginnen.
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+
+Wenn Sie die Azure CLI lokal installieren und verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.4 verwenden. Führen Sie `az --version` aus, um Ihre Version zu überprüfen. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
 
 ## <a name="configure-the-cli-parameters"></a>Konfigurieren der CLI-Parameter
 
-Anmelden am Konto
+Die folgenden Schritte sind nicht erforderlich, wenn Sie Befehle in Cloud Shell ausführen. Bei lokaler Ausführung der CLI führen Sie die folgenden Schritte aus, um sich an Azure anzumelden und Ihr aktuelles Abonnement festzulegen:
 
-```Bash
-az login
-```
+1. Führen Sie den folgenden Befehl aus, um sich bei Azure anzumelden:
 
-Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll.
+    ```azurecli-interactive
+    az login
+    ```
 
-```Bash
-az account set --subscription "your_subscription"
-```
+2. Legen Sie das Abonnement fest, in dem der Cluster erstellt werden soll. Ersetzen Sie `MyAzureSub` durch den Namen des Azure-Abonnements, das Sie verwenden möchten:
+
+    ```azurecli-interactive
+    az account set --subscription MyAzureSub
+    ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Erstellen des Azure Data Explorer-Clusters
 
-Erstellen Sie Ihren Cluster mit dem folgenden Befehl.
+1. Erstellen Sie Ihren Cluster mit dem folgenden Befehl:
 
-```Bash
-az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
-```
-
-Geben Sie die folgenden Werte an:
+    ```azurecli-interactive
+    az kusto cluster create --name azureclitest --sku D11_v2 --resource-group testrg
+    ```
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
    |---|---|---|
    | name | *azureclitest* | Der gewünschte Name Ihres Clusters.|
    | sku | *D13_v2* | Die SKU, die für Ihren Cluster verwendet wird. |
-   | resource-group | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll. |
+   | resource-group | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
 
-Wenn Sie möchten, können Sie auch noch weitere optionale Parameter verwenden, z. B. die Kapazität des Clusters usw.
+    Sie können auch noch weitere optionale Parameter verwenden, etwa die Kapazität des Clusters.
 
-Um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde, können Sie den folgenden Befehl ausführen:
+2. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob Ihr Cluster erfolgreich erstellt wurde:
 
-```Bash
-az kusto cluster show --name azureclitest --resource-group testrg
-```
+    ```azurecli-interactive
+    az kusto cluster show --name azureclitest --resource-group testrg
+    ```
 
-Wenn das Ergebnis „provisioningState“ mit dem Wert „Succeeded“ enthält, bedeutet dies, dass der Cluster erfolgreich erstellt wurde.
+Wenn das Ergebnis „provisioningState“ mit dem Wert „Succeeded“ enthält, wurde der Cluster erfolgreich erstellt.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Erstellen der Datenbank im Azure Data Explorer-Cluster
 
-Erstellen Sie Ihre Datenbank mit dem folgenden Befehl.
+1. Erstellen Sie Ihre Datenbank mit dem folgenden Befehl:
 
-```Bash
-az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
-```
-
-Geben Sie die folgenden Werte an:
+    ```azurecli-interactive
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    ```
 
    |**Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**|
    |---|---|---|
-   | cluster-name | *azureclitest* | Der Name Ihres Clusters, in dem die Datenbank erstellt werden soll.|
+   | cluster-name | *azureclitest* | Der Name Ihres Clusters, in dem die Datenbank erstellt werden soll|
    | name | *clidatabase* | Der gewünschte Name Ihrer Datenbank.|
-   | resource-group | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll. |
+   | resource-group | *testrg* | Der Name der Ressourcengruppe, in der der Cluster erstellt werden soll |
    | soft-delete-period | *3650:00:00:00* | Der Zeitraum, in dem die Daten beibehalten werden sollen, damit sie für Abfragen verfügbar sind. |
    | hot-cache-period | *3650:00:00:00* | Der Zeitraum, in dem die Daten im Cache gespeichert werden sollen. |
 
-Durch Ausführen des folgenden Befehls können Sie die von Ihnen erstellte Datenbank anzeigen.
+2. Führen Sie den folgenden Befehl aus, um die erstellte Datenbank anzuzeigen:
 
-```Bash
-az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest
-```
+    ```azurecli-interactive
+    az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest
+    ```
 
-Das war's auch schon. Jetzt verfügen Sie über einen Cluster und eine Datenbank.
+Jetzt verfügen Sie über einen Cluster und eine Datenbank.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalten Sie die erstellten Ressourcen bei.
+* Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalten Sie die erstellten Ressourcen bei.
+* Löschen Sie den Cluster, um Ressourcen zu bereinigen. Wenn Sie einen Cluster löschen, werden auch alle darin enthaltenen Datenbanken gelöscht. Führen Sie den folgenden Befehl aus, um Ihren Cluster zu löschen:
 
-Wenn Sie einen Cluster löschen, werden auch alle darin enthaltenen Datenbanken gelöscht. Führen Sie den folgenden Befehl aus, um Ihren Cluster zu löschen.
-
-```Bash
-az kusto cluster delete --name azureclitest --resource-group testrg
-```
+    ```azurecli-interactive
+    az kusto cluster delete --name azureclitest --resource-group testrg
+    ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
+> [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md)

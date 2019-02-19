@@ -1,12 +1,12 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Evidence.com | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Evidence.com konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Pexip | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einmaliges Anmelden zwischen Azure Active Directory und Pexip konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: f9a7cb7c-ff67-40dc-872c-1fa35f9dd03b
+ms.assetid: 4f7c6d94-bbda-4f35-8dea-f6aa315fac14
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,20 +15,20 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84ea41388151087a0da965e3f8724907b615dee0
+ms.openlocfilehash: 88af97a37f88cd8b37c2a385af7f9e312a43b12f
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161573"
+ms.locfileid: "56161250"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Tutorial: Azure Active Directory-Integration mit Evidence.com
+# <a name="tutorial-azure-active-directory-integration-with-pexip"></a>Tutorial: Azure Active Directory-Integration mit Pexip
 
-In diesem Tutorial erfahren Sie, wie Sie Evidence.com in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Evidence.com in Azure AD bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Pexip in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Pexip in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer Zugriff auf Evidence.com hat.
-* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Evidence.com anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer Zugriff auf Pexip hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Pexip anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,22 +36,22 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration mit Evidence.com konfigurieren zu können, benötigen Sie Folgendes:
+Zum Konfigurieren der Azure AD-Integration mit Pexip benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Evidence.com-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Pexip-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Evidence.com unterstützt **SP-initiiertes** einmaliges Anmelden.
+* Pexip unterstützt **SP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-evidencecom-from-the-gallery"></a>Hinzufügen von Evidence.com aus dem Katalog
+## <a name="adding-pexip-from-the-gallery"></a>Hinzufügen von Pexip aus dem Katalog
 
-Zum Konfigurieren der Integration von Evidence.com in Azure AD müssen Sie Evidence.com aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+Zum Konfigurieren der Integration von Pexip in Azure AD müssen Sie Pexip aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Evidence.com aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**Führen Sie die folgenden Schritte aus, um Pexip aus dem Katalog hinzuzufügen:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -65,31 +65,31 @@ Zum Konfigurieren der Integration von Evidence.com in Azure AD müssen Sie Evide
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Evidence.com** ein, wählen Sie im Ergebnisbereich **Evidence.com** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Pexip** ein, wählen Sie im Ergebnisbereich **Pexip** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Evidence.com in der Ergebnisliste](common/search-new-app.png)
+     ![Pexip in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Evidence.com basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Evidence.com eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Pexip mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Pexip eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Evidence.com müssen Sie die folgenden Bausteine ausführen:
+Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Pexip müssen Sie die folgenden Schritte ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Evidence.com](#configure-evidence.com-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Pexip](#configure-pexip-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Evidence.com-Testbenutzers](#create-evidence.com-test-user)**, um eine Entsprechung von Britta Simon in Evidence.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Pexip-Testbenutzers](#create-pexip-test-user)**, um eine Entsprechung von Britta Simon in Pexip zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Evidence.com die folgenden Schritte aus:
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Pexip die folgenden Schritte aus:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Evidence.com** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Pexip** die Option **Einmaliges Anmelden** aus.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -103,20 +103,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Evidence
 
 4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Evidence.com](common/sp-identifier.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Pexip](common/sp-signonurl.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<yourtenant>.evidence.com`.
-
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<yourtenant>.evidence.com`.
-
-    > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Evidence.com](https://communities.taser.com/support/SupportContactUs?typ=LE), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    Geben Sie im Textfeld **Anmelde-URL** die URL ein: `https://my.videxio.com`.
 
 5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-6. Kopieren Sie im Abschnitt **Evidence.com einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+6. Kopieren Sie im Abschnitt **Pexip einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -126,19 +121,9 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Evidence
 
     c. Abmelde-URL
 
-### <a name="configure-evidencecom-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Evidence.com
+### <a name="configure-pexip-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Pexip
 
-1. Melden Sie sich in einem separaten Webbrowserfenster an Ihrem Evidence.com-Mandanten als Administrator an, und navigieren Sie zur Registerkarte **Admin** .
-
-2. Klicken Sie auf **Agentur – einmaliges Anmelden**
-
-3. Wählen Sie die Option **SAML-basiertes einmaliges Anmelden**
-
-4. Kopieren Sie die Werte für **Azure AD-Bezeichner**, **Anmelde-URL** und **Abmelde-URL**, die im Azure-Portal angezeigt werden, in die entsprechenden Felder von Evidence.com.
-
-5. Öffnen Sie die heruntergeladene Datei „Zertifikat (Base64)“ in Editor, kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **Security Certificate** (Sicherheitszertifikat) ein. 
-
-6. Speichern Sie die Konfiguration in Evidence.com.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Pexip** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Pexip](https://support.videxio.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
@@ -167,15 +152,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Evidence.com gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Pexip gewähren.
 
-1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Evidence.com**.
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Pexip** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Evidence.com** aus.
+2. Wählen Sie in der Anwendungsliste **Pexip** aus.
 
-    ![Evidence.com-Link in der Anwendungsliste](common/all-applications.png)
+    ![Pexip-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -191,27 +176,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-evidencecom-test-user"></a>Erstellen eines Evidence.com-Testbenutzers
+### <a name="create-pexip-test-user"></a>Erstellen eines Pexip-Testbenutzers
 
-Damit sich Azure AD-Benutzer anmelden können, müssen sie für den Zugriff innerhalb der Evidence.com-Anwendung bereitgestellt werden. In diesem Abschnitt wird beschrieben, wie in Evidence.com Azure AD-Benutzerkonten erstellt werden.
-
-**So stellen Sie in Evidence.com ein Benutzerkonto bereit**
-
-1. Melden Sie sich in einem Webbrowserfenster bei der Evidence.com-Unternehmenswebsite als Administrator an.
-
-2. Navigieren Sie zur Registerkarte **Admin** .
-
-3. Klicken Sie auf **Benutzer hinzufügen**.
-
-4. Klicken Sie auf die Schaltfläche **Hinzufügen** .
-
-5. Die **E-Mail-Adresse** des hinzugefügten Benutzers muss mit dem Benutzernamen des Benutzers in Azure AD übereinstimmen, dem Sie Zugriff gewähren möchten. Wenn der Benutzername und die E-Mail-Adresse in Ihrem Unternehmen nicht identisch sind, können Sie im Azure-Portal den Abschnitt **Evidence.com > Attribute > Einmaliges Anmelden** verwenden, um das an Evidence.com gesendete nameidenitifier-Element zu ändern und als E-Mail-Adresse zu verwenden.
+In diesem Abschnitt erstellen Sie in Pexip einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Pexip-Plattform ggf. vom  [Pexip-Supportteam](https://support.videxio.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Evidence.com“ klicken, sollten Sie automatisch bei der Evidence.com-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Pexip“ klicken, sollten Sie automatisch bei der Pexip-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 

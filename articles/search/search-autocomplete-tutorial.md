@@ -1,6 +1,6 @@
 ---
-title: Tutorial zum Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld – Azure Search
-description: Beispiele zum Verbessern der Benutzeroberfläche mit Ihren datenorientierten Anwendungen mithilfe der automatischen Vervollständigung und Vorschlägen von Azure Search.
+title: 'Tutorial zum Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld: Azure Search'
+description: Beispiele zum Verbessern der Benutzerfreundlichkeit Ihrer datenorientierten Anwendungen mithilfe der automatischen Vervollständigung und Vorschläge von Azure Search.
 manager: pablocas
 author: mrcarter8
 services: search
@@ -10,16 +10,21 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: a0b4301177fa1307244a784031ec890b9a20f01a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: de48f3129beba31f80f5bd4d0c131b28f2b1c91a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099107"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997163"
 ---
-# <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Tutorial: Hinzufügen der automatischen Vervollständigung von Azure Search zu Ihrem Suchfeld
+# <a name="tutorial-add-autocomplete-to-your-search-box-using-azure-search"></a>Tutorial: Hinzufügen der automatischen Vervollständigung zu Ihrem Suchfeld mit Azure Search
 
-In diesem Tutorial erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [REST-API für Azure Search](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. *Vorschläge* enthalten Empfehlungen von tatsächlichen Ergebnisse basierend auf der Eingabe des Benutzers. Die *automatische Vervollständigung*, [eine neue Vorschaufunktion](search-api-preview.md) in Azure Search, stellt Benennungen aus dem Index bereit, um die Eingabe des Benutzers zu vervollständigen. Im Folgenden werden mehrere Techniken miteinander verglichen, um die Produktivität des Benutzers zu verbessern und auf schnelle und einfache Weise zu finden, wonach der Benutzer sucht, indem die Suchfunktion direkt bei der Eingabe zur Verfügung gestellt wird.
+In diesem Tutorial erfahren Sie, wie Sie [Vorschläge](https://docs.microsoft.com/rest/api/searchservice/suggestions), die [automatische Vervollständigung](https://docs.microsoft.com/rest/api/searchservice/autocomplete) und [Facets](search-faceted-navigation.md) in der [Azure Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) und im [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) zur Erstellung eines leistungsfähigen Suchfelds verwenden. 
+
++ *Vorschläge* enthalten Empfehlungen von tatsächlichen Ergebnisse basierend auf der Eingabe des Benutzers. 
++ Die *automatische Vervollständigung*, [eine neue Previewfunktion](search-api-preview.md) in Azure Search, stellt Begriffe aus dem Index bereit, um die Eingabe des Benutzers zu vervollständigen. 
+
+Im Folgenden werden mehrere Techniken zur Steigerung der Produktivität des Benutzers verglichen, indem die Suchfunktion direkt bei der Eingabe zur Verfügung gestellt wird.
 
 Dieses Tutorial führt Sie durch eine ASP.NET MVC-basierte Anwendung, die C#-Code zum Aufrufen der [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und JavaScript zum direkten Aufrufen der REST-API für Azure Search verwendet. Die Anwendung für dieses Tutorial ist auf einen Index ausgerichtet, der mit [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)-Beispieldaten aufgefüllt wurde. Sie können entweder den Index verwenden, der in der NYCJobs-Demo bereits konfiguriert wurde, oder Ihren eigenen Index mithilfe eines Datenladers in der NYCJobs-Beispiellösung auffüllen. Im Beispiel werden die JavaScript-Bibliotheken [jQuery UI](https://jqueryui.com/autocomplete/) und [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) zur Erstellung eines Suchfelds verwendet, das die automatische Vervollständigung unterstützt. Bei Verwendung dieser Komponenten mit Azure Search werden Ihnen mehrere Beispiele zur Unterstützung der automatischen Vervollständigung durch Textvervollständigung in Ihrem Suchfeld angezeigt.
 
@@ -78,7 +83,7 @@ Dies ist ein einfaches Feld für die Texteingabe mit einer Klasse für das Forma
 
 ### <a name="javascript-code-c"></a>JavaScript-Code (C#)
 
-Im C#-Sprachbeispiel wird in der Datei „Index.cshtml“ JavaScript verwendet, um die Bibliothek jQuery UI zur automatischen Vervollständigung nutzen zu können.  Diese Bibliothek fügt den Prozess der automatischen Vervollständigung zum Suchfeld hinzu, indem im MVC-Controller asynchrone Aufrufe zum Abrufen von Empfehlungen durchgeführt werden.  Schauen Sie sich den JavaScript-Code im ersten Beispiel an:
+Im C#-Sprachbeispiel wird in der Datei „Index.cshtml“ JavaScript verwendet, um die Bibliothek jQuery UI zur automatischen Vervollständigung nutzen zu können.  Diese Bibliothek fügt die Funktion der automatischen Vervollständigung zum Suchfeld hinzu, indem im MVC-Controller asynchrone Aufrufe zum Abrufen von Empfehlungen durchgeführt werden.  Schauen Sie sich den JavaScript-Code im ersten Beispiel an:
 
 ```javascript
 $(function () {
@@ -99,7 +104,7 @@ Dieser Code wird im Browser beim Laden der Seite ausgeführt, um die automatisch
 source: "/home/suggest?highlights=false&fuzzy=false&",
 ```
 
-Diese Zeile zeigt der API zur automatischen Vervollständigung, wo die Liste der unter dem Suchfeld anzuzeigenden Elemente abgerufen werden kann.  Da es sich hierbei um ein MVC-Projekt handelt, wird die Funktion „Suggest“ (Vorschlagen) in „HomeController.cs“ aufgerufen.  Dies wird im nächsten Abschnitt näher erläutert.  Darüber hinaus werden einige Parameter zur Steuerung von Hervorhebungen, Fuzzyübereinstimmungen und Benennungen übergeben.  Die JavaScript-API zur automatischen Vervollständigung fügt den Parameter für Benennungen hinzu.
+Diese Zeile zeigt der API zur automatischen Vervollständigung, wo die Liste der unter dem Suchfeld anzuzeigenden Elemente abgerufen werden kann.  Da es sich hierbei um ein MVC-Projekt handelt, wird die Funktion „Suggest“ (Vorschlagen) in „HomeController.cs“ aufgerufen.  Dies wird im nächsten Abschnitt näher erläutert.  Darüber hinaus werden einige Parameter zur Steuerung von Hervorhebungen, Fuzzyübereinstimmungen und Benennungen übergeben.  Die JavaScript-API zur automatischen Vervollständigung fügt den Parameter für Begriffe hinzu.
 
 #### <a name="extending-the-sample-to-support-fuzzy-matching"></a>Erweitern des Beispiels zur Unterstützung von Fuzzyübereinstimmungen
 
@@ -164,7 +169,7 @@ public ActionResult Suggest(bool highlights, bool fuzzy, string term)
 Die Funktion „Suggest“ (Vorschlagen) verwendet zwei Parameter, die bestimmen, ob Treffermarkierungen zurückgegeben werden sollen oder ob zusätzlich zur Eingabe des Suchbegriffs die Fuzzyübereinstimmung verwendet werden soll.  Die Methode erstellt das Objekt „SuggestParameters“, das anschließend an die Suggest-API übergeben wird. Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
 (Optional) Fügen Sie am Anfang der Funktion „Suggest“ (Vorschlagen) einen Breakpoint hinzu und durchlaufen Sie den Code schrittweise.  Beachten Sie die vom SDK zurückgegebene Antwort und wie diese in das von der Methode zurückgegebene Ergebnis konvertiert wird.
 
-Die anderen Beispiele auf der Seite folgen bei dem Hinzufügen von Treffermarkierungen, der Textvervollständigung bei Empfehlungen zur automatischen Vervollständigung und bei Facets zur Unterstützung des clientseitigen Zwischenspeicherns der Ergebnisse der automatischen Vervollständigung dem gleichen Muster.  Überprüfen Sie alle Beispiele, um zu verstehen, wie sie funktionieren und wie Sie diese in Ihrer Suchumgebung nutzen können.
+Die anderen Beispiele auf der Seite folgen beim Hinzufügen von Treffermarkierungen, bei der Textvervollständigung für Empfehlungen zur automatischen Vervollständigung und bei Facets zur Unterstützung des clientseitigen Zwischenspeicherns der Ergebnisse der automatischen Vervollständigung dem gleichen Muster.  Überprüfen Sie alle Beispiele, um zu verstehen, wie sie funktionieren und wie Sie diese in Ihrer Suchumgebung nutzen können.
 
 ### <a name="javascript-language-example"></a>Beispiel für JavaScript-Sprachen
 

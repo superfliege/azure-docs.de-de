@@ -6,14 +6,14 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: conceptual
-ms.date: 01/18/2019
+ms.date: 02/13/2019
 ms.author: raynew
-ms.openlocfilehash: 202f3fea2445c50398b6ac228b2e58553c9b1076
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 8115065afcbd81da1527e09c07ca89ce89100d7d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767582"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236990"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>Unterstützungsmatrix für die Notfallwiederherstellung von virtuellen VMware-Computern und physischen Servern in Azure
 
@@ -64,7 +64,7 @@ Site Recovery unterstützt die Replikation beliebiger Workloads, die auf einem u
 --- | ---
 Computereinstellungen | Computer, die in Azure repliziert werden sollen, müssen die [Azure-Anforderungen](#azure-vm-requirements) erfüllen.
 Computerworkload | Site Recovery unterstützt die Replikation beliebiger Workloads (u. a. Active Directory- und SQL Server-Workloads), die auf einem unterstützten Computer ausgeführt werden. Klicken Sie [hier](https://aka.ms/asr_workload), um weitere Informationen zu erhalten.
-Windows-Betriebssystem | Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> Windows 2016 Nano Server wird nicht unterstützt.
+Windows-Betriebssystem | Windows Server 2019, 64-Bit, Windows Server 2016, 64-Bit (Server Core, Server mit Desktopdarstellung), Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 mit mindestens SP1. </br></br>  [Windows Server 2008 mit mindestens SP2 – 32-Bit und 64-Bit](migrate-tutorial-windows-server-2008.md) (nur Migration). </br></br> Windows 2016 Nano Server wird nicht unterstützt.
 Linux-Betriebssystem | Red Hat Enterprise Linux: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.6 <br/><br/>CentOS: 5.2 bis 5.11<b>\*\*</b>, 6.1 bis 6.10<b>\*\*</b>, 7.0 bis 7.6 <br/><br/>Ubuntu 14.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Ubuntu 16.04 LTS Server[ (unterstützte Kernel-Versionen)](#ubuntu-kernel-versions)<br/><br/>Debian 7/Debian 8[ (unterstützte Kernel-Versionen)](#debian-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 12 SP1, SP2, SP3 [ (unterstützte Kernelversionen)](#suse-linux-enterprise-server-12-supported-kernel-versions)<br/><br/>SUSE Linux Enterprise Server 11 SP3<b>\*\*</b>, SUSE Linux Enterprise Server 11 SP4* </br></br>Oracle Linux 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 unter dem entweder der Red Hat-kompatible Kernel oder UEK3 (Unbreakable Enterprise Kernel Release 3) ausgeführt wird <br/><br/></br>- Das Upgrade replizierter Computer von SUSE Linux Enterprise Server 11 SP3 auf SP4 wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation und aktivieren Sie sie nach dem Upgrade erneut.</br></br> - [Erfahren Sie mehr](https://support.microsoft.com/help/2941892/support-for-linux-and-open-source-technology-in-azure) über die Unterstützung von Linux und Open-Source-Technologie in Azure. Site Recovery orchestriert Failover zum Ausführen von Linux-Servern in Azure. Linux-Anbieter sollten jedoch möglicherweise den Support auf Distributionsversionen einschränken, die noch nicht veraltet sind.<br/><br/> - Bei Linux-Distributionen werden nur die vordefinierten Kernel, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind, unterstützt.<br/><br/> - Das Aktualisieren geschützter Computer über die wichtigsten Linux-Distributionsversionen hinweg wird nicht unterstützt. Um ein Upgrade auszuführen, deaktivieren Sie die Replikation, aktualisieren das Betriebssystem und aktivieren die Replikation erneut.<br/><br/> - Auf Servern mit Red Hat Enterprise Linux 5.2 bis 5.11 oder CentOS 5.2 bis 5.11 müssen die [Linux Integration Services-Komponenten (LIS)](https://www.microsoft.com/download/details.aspx?id=55106) installiert sein, um die Computer in Azure starten zu können.
 
 ### <a name="ubuntu-kernel-versions"></a>Ubuntu-Kernelversionen
@@ -159,6 +159,7 @@ Beschleunigter Netzwerkbetrieb | Nein
 **Komponente** | **Unterstützt**
 --- | ---
 Dynamischer Datenträger | Der Betriebssystem-Datenträger muss ein Basisdatenträger sein. <br/><br/>Datenträger für Daten können dynamische Datenträger sein.
+Dockerdatenträgerkonfiguration | Nein 
 Host-NFS | Ja für VMware<br/><br/> Nein für physische Server
 Host-SAN (iSCSI/FC) | Ja
 Host-vSAN | Ja für VMware<br/><br/> Nicht verfügbar für physische Server

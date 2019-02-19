@@ -9,12 +9,12 @@ ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 868658062a6407dce901b455cc92f95008df798c
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 008a24fe9822ca51b81e1f6979a3731d794a8867
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631941"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964337"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
@@ -92,7 +92,7 @@ Das Beispiel im Detail:
 * Analysen sind eine Eigenschaft der Feldklasse für ein durchsuchbares Feld.
 * Eine benutzerdefinierte Analyse ist Teil einer Indexdefinition. Sie kann geringfügig (etwa durch Anpassung einer einzelnen Option in einem einzelnen Filter) oder an mehreren Stellen angepasst werden.
 * In diesem Fall ist „my_analyzer“ die benutzerdefinierte Analyse, die wiederum den angepassten Standard-Tokenizer „my_standard_tokenizer“ und zwei token-Filter („lowercase“ und den angepassten asciifolding-Filter „my_asciifolding“) verwendet.
-* Darüber hinaus wird der benutzerdefinierte char-Filter „map_dash“ definiert, um vor der Tokenisierung sämtliche Bindestriche durch Unterstriche zu ersetzen. (Der Standard-Tokenizer unterbricht bei einem Bindestrich, aber nicht bei einem Unterstrich.)
+* Zudem werden 2 benutzerdefinierte char-Filter definiert: „map_dash“ und „remove_whitespace“. Der erste ersetzt alle Striche durch Unterstriche, der zweite entfernt alle Leerzeichen. Leerzeichen müssen in den Zuordnungsregeln UTF-8-kodiert sein. Die char-Filter werden vor der Tokenisierung angewendet und wirken sich auf die resultierenden Token aus (der Standardtokenisierer trennt bei Gedankenstrichen und Leerzeichen, nicht aber bei Unterstrichen).
 
 ~~~~
   {
@@ -116,7 +116,8 @@ Das Beispiel im Detail:
            "name":"my_analyzer",
            "@odata.type":"#Microsoft.Azure.Search.CustomAnalyzer",
            "charFilters":[
-              "map_dash"
+              "map_dash",
+              "remove_whitespace"
            ],
            "tokenizer":"my_standard_tokenizer",
            "tokenFilters":[
@@ -130,6 +131,11 @@ Das Beispiel im Detail:
            "name":"map_dash",
            "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
            "mappings":["-=>_"]
+        },
+        {
+           "name":"remove_whitespace",
+           "@odata.type":"#Microsoft.Azure.Search.MappingCharFilter",
+           "mappings":["\\u0020=>"]
         }
      ],
      "tokenizers":[

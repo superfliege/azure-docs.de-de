@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/27/2018
+ms.date: 12/04/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 1d07990abcceace81f718bcbac28ff372a784172
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 568631705b590bb2ee312b9519164be17c8443ab
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427711"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984238"
 ---
 # <a name="tutorial-create-and-manage-azure-virtual-networks-for-windows-virtual-machines-with-azure-powershell"></a>Tutorial: Erstellen und Verwalten virtueller Azure-Netzwerke für virtuelle Windows-Computer mit Azure PowerShell
 
@@ -34,9 +34,6 @@ Virtuelle Azure-Computer nutzen Azure-Netzwerke für interne und externe Kommuni
 > * Netzwerkdatenverkehr absichern
 > * Erstellen des virtuellen Back-End-Computers
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
-Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Tutorial mindestens Version 5.7.0 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="vm-networking-overview"></a>Übersicht über VM-Netzwerke
 
@@ -57,22 +54,27 @@ Während der Durchführung dieses Tutorials werden die folgenden Ressourcen erst
 - *myBackendVM*: Der virtuelle Computer, der Port 1433 für die Kommunikation mit *myFrontendVM* verwendet.
 
 
-## <a name="create-a-virtual-network-and-subnet"></a>Erstellen eines virtuellen Netzwerks und des Subnetzes
+## <a name="launch-azure-cloud-shell"></a>Starten von Azure Cloud Shell
+
+Azure Cloud Shell ist eine kostenlose interaktive Shell, mit der Sie die Schritte in diesem Artikel ausführen können. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. 
+
+Wählen Sie zum Öffnen von Cloud Shell oben rechts in einem Codeblock einfach die Option **Ausprobieren**. Sie können Cloud Shell auch auf einer separaten Browserregisterkarte starten, indem Sie zu [https://shell.azure.com/powershell](https://shell.azure.com/powershell) navigieren. Wählen Sie **Kopieren**, um die Blöcke mit dem Code zu kopieren. Fügen Sie ihn anschließend in Cloud Shell ein, und drücken Sie die EINGABETASTE, um ihn auszuführen.
+
+
+## <a name="create-subnet"></a>Erstellen eines Subnetzes 
 
 In diesem Tutorial wird ein einzelnes virtuelles Netzwerk mit zwei Subnetzen erstellt: Einem Front-End-Subnetz zum Hosten einer Webanwendung und einem Back-End-Subnetz zum Hosten eines Datenbankservers.
 
-Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *EastUS* eine Ressourcengruppe mit dem Namen *myRGNetwork*:
+Bevor Sie ein virtuelles Netzwerk erstellen können, müssen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Das folgende Beispiel erstellt am Standort *EastUS* eine Ressourcengruppe mit dem Namen *myRGNetwork*:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
+New-AzResourceGroup -ResourceGroupName myRGNetwork -Location EastUS
 ```
 
-### <a name="create-subnet-configurations"></a>Erstellen von Subnetzkonfigurationen
-
-Erstellen Sie mit [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) eine Subnetzkonfiguration namens *myFrontendSubnet*:
+Erstellen Sie mit [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) eine Subnetzkonfiguration namens *myFrontendSubnet*:
 
 ```azurepowershell-interactive
-$frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name myFrontendSubnet `
   -AddressPrefix 10.0.0.0/24
 ```
@@ -80,17 +82,17 @@ $frontendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
 Erstellen Sie dann eine Subnetzkonfiguration namens *myBackendSubnet*:
 
 ```azurepowershell-interactive
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnet = New-AzVirtualNetworkSubnetConfig `
   -Name myBackendSubnet `
   -AddressPrefix 10.0.1.0/24
 ```
 
-### <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
+## <a name="create-virtual-network"></a>Virtuelles Netzwerk erstellen
 
-Erstellen Sie ein VNET namens *myVNet* mithilfe von *myFrontendSubnet* und *myBackendSubnet* mithilfe von [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork):
+Erstellen Sie mit [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) unter Verwendung von *myFrontendSubnet* und *myBackendSubnet* ein VNET namens *myVNet*:
 
 ```azurepowershell-interactive
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myVNet `
@@ -104,12 +106,12 @@ Zu diesem Zeitpunkt wurde ein Netzwerk erstellt und in zwei Subnetze unterteilt:
 
 Dank einer öffentlichen IP-Adresse kann über das Internet auf Azure-Ressourcen zugegriffen werden. Die Zuordnungsmethode der öffentlichen IP-Adresse kann als „dynamisch“ oder „statisch“ konfiguriert werden. Standardmäßig werden öffentliche IP-Adressen dynamisch zugeordnet. Dynamische IP-Adressen werden freigegeben, wenn die Zuordnung eines virtuellen Computers aufgehoben wird. Dieses Verhalten bewirkt, dass sich die IP-Adresse bei jedem Vorgang ändert, der eine Aufhebung der VM-Zuordnung beinhaltet.
 
-Als Zuordnungsmethode kann die statische Zuordnung festgelegt werden. Dadurch wird sichergestellt, dass die IP-Adresse einem virtuellen Computer zugewiesen bleibt, auch wenn seine Zuordnung aufgehoben ist. Wenn Sie eine statisch zugeordnete IP-Adresse verwenden, kann die IP-Adresse selbst nicht angegeben werden. Stattdessen wird sie aus einem Pool verfügbarer Adressen zugeordnet.
+Als Zuordnungsmethode kann die statische Zuordnung festgelegt werden. Dadurch wird sichergestellt, dass die IP-Adresse einem virtuellen Computer zugewiesen bleibt, auch wenn seine Zuordnung aufgehoben ist. Wenn Sie eine statische IP-Adresse verwenden, kann die IP-Adresse selbst nicht angegeben werden. Stattdessen wird sie aus einem Pool verfügbarer Adressen zugeordnet.
 
-Erstellen Sie mithilfe von [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) eine öffentliche IP-Adresse namens *myPublicIPAddress*:
+Erstellen Sie mithilfe von [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse namens *myPublicIPAddress*:
 
 ```azurepowershell-interactive
-$pip = New-AzureRmPublicIpAddress `
+$pip = New-AzPublicIpAddress `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -AllocationMethod Dynamic `
@@ -120,10 +122,10 @@ Sie können den Parameter „-AllocationMethod“ in `Static` ändern, um eine s
 
 ## <a name="create-a-front-end-vm"></a>Erstellen eines virtuellen Front-End-Computers
 
-Ein virtueller Computer muss für die Kommunikation in einem virtuellen Netzwerk über eine virtuelle Netzwerkschnittstelle (NIC) verfügen. Erstellen Sie mit [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface) eine Netzwerkschnittstelle:
+Ein virtueller Computer muss für die Kommunikation in einem virtuellen Netzwerk über eine virtuelle Netzwerkschnittstelle (NIC) verfügen. Erstellen Sie mit [New-AzNetworkInterface](https://docs.microsoft.com/powershell/module/az.network/new-aznetworkinterface) eine Netzwerkschnittstelle:
 
 ```azurepowershell-interactive
-$frontendNic = New-AzureRmNetworkInterface `
+$frontendNic = New-AzNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myFrontend `
@@ -137,10 +139,10 @@ Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5
 $cred = Get-Credential
 ```
 
-Erstellen Sie die VMs mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm).
+Erstellen Sie die virtuellen Computer mit [New-AzVM](https://docs.microsoft.com/powershell/module/az.compute/new-azvm).
 
 ```azurepowershell-interactive
-New-AzureRmVM `
+New-AzVM `
    -Credential $cred `
    -Name myFrontend `
    -PublicIpAddressName myPublicIPAddress `
@@ -153,7 +155,7 @@ New-AzureRmVM `
 
 ## <a name="secure-network-traffic"></a>Netzwerkdatenverkehr absichern
 
-Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken (VNet) verbunden sind, zugelassen oder abgelehnt wird. Netzwerksicherheitsgruppen können Subnetzen oder einzelnen Netzwerkschnittstellen zugeordnet werden. Wenn eine Netzwerksicherheitsgruppe einer Netzwerkschnittstelle zugewiesen ist, gilt sie nur für den zugeordneten virtuellen Computer. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die Regeln für alle Ressourcen, die mit dem Subnetz verbunden sind.
+Eine Netzwerksicherheitsgruppe (NSG) enthält eine Liste mit Sicherheitsregeln, mit denen Netzwerkdatenverkehr für Ressourcen, die mit virtuellen Azure-Netzwerken (VNet) verbunden sind, zugelassen oder abgelehnt wird. Netzwerksicherheitsgruppen können Subnetzen oder einzelnen Netzwerkschnittstellen zugeordnet werden. Eine Netzwerksicherheitsgruppe, die einer Netzwerkschnittstelle zugewiesen ist, gilt nur für den zugeordneten virtuellen Computer. Wenn eine NSG einem Subnetz zugeordnet ist, gelten die Regeln für alle Ressourcen, die mit dem Subnetz verbunden sind.
 
 ### <a name="network-security-group-rules"></a>Netzwerksicherheitsgruppen-Regeln
 
@@ -167,10 +169,10 @@ Alle NSGs enthalten eine Gruppe von Standardregeln. Die Standardregeln können z
 
 ### <a name="create-network-security-groups"></a>Erstellen von Netzwerksicherheitsgruppen
 
-Erstellen Sie eine eingehende Regel namens *myFrontendNSGRule*, um den eingehenden Webdatenverkehr für *myFrontendVM* mithilfe von [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) zu gestatten:
+Erstellen Sie eine eingehende Regel namens *myFrontendNSGRule*, um den eingehenden Webdatenverkehr für *myFrontendVM* mithilfe von [New-AzNetworkSecurityRuleConfig](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecurityruleconfig) zuzulassen:
 
 ```azurepowershell-interactive
-$nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgFrontendRule = New-AzNetworkSecurityRuleConfig `
   -Name myFrontendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -185,7 +187,7 @@ $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
 Durch Erstellen einer Netzwerksicherheitsgruppe für das Back-End-Subnetz können Sie den Datenverkehr zu *myBackendVM* nur auf *myFrontendVM* beschränken. Im folgenden Beispiel wird eine NSG-Regel namens *myBackendNSGRule* erstellt:
 
 ```azurepowershell-interactive
-$nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
+$nsgBackendRule = New-AzNetworkSecurityRuleConfig `
   -Name myBackendNSGRule `
   -Protocol Tcp `
   -Direction Inbound `
@@ -197,20 +199,20 @@ $nsgBackendRule = New-AzureRmNetworkSecurityRuleConfig `
   -Access Allow
 ```
 
-Fügen Sie mit [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup) die Netzwerksicherheitsgruppe *myFrontendNSG* hinzu:
+Fügen Sie mit [New-AzNetworkSecurityGroup](https://docs.microsoft.com/powershell/module/az.network/new-aznetworksecuritygroup) die Netzwerksicherheitsgruppe *myFrontendNSG* hinzu:
 
 ```azurepowershell-interactive
-$nsgFrontend = New-AzureRmNetworkSecurityGroup `
+$nsgFrontend = New-AzNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myFrontendNSG `
   -SecurityRules $nsgFrontendRule
 ```
 
-Fügen Sie jetzt mit „New-AzureRmNetworkSecurityGroup“ die Netzwerksicherheitsgruppe *myBackendNSG* hinzu:
+Fügen Sie mit „New-AzNetworkSecurityGroup“ die Netzwerksicherheitsgruppe *myBackendNSG* hinzu:
 
 ```azurepowershell-interactive
-$nsgBackend = New-AzureRmNetworkSecurityGroup `
+$nsgBackend = New-AzNetworkSecurityGroup `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myBackendNSG `
@@ -220,22 +222,22 @@ $nsgBackend = New-AzureRmNetworkSecurityGroup `
 Fügen Sie die Netzwerksicherheitsgruppen zu den Subnetzen hinzu:
 
 ```azurepowershell-interactive
-$vnet = Get-AzureRmVirtualNetwork `
+$vnet = Get-AzVirtualNetwork `
   -ResourceGroupName myRGNetwork `
   -Name myVNet
 $frontendSubnet = $vnet.Subnets[0]
 $backendSubnet = $vnet.Subnets[1]
-$frontendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$frontendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name myFrontendSubnet `
   -AddressPrefix $frontendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgFrontend
-$backendSubnetConfig = Set-AzureRmVirtualNetworkSubnetConfig `
+$backendSubnetConfig = Set-AzVirtualNetworkSubnetConfig `
   -VirtualNetwork $vnet `
   -Name myBackendSubnet `
   -AddressPrefix $backendSubnet.AddressPrefix `
   -NetworkSecurityGroup $nsgBackend
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
+Set-AzVirtualNetwork -VirtualNetwork $vnet
 ```
 
 ## <a name="create-a-back-end-vm"></a>Erstellen eines virtuellen Back-End-Computers
@@ -245,7 +247,7 @@ Der virtuelle Back-End-Computer kann für dieses Tutorial am einfachsten mithilf
 Erstellen Sie *myBackendNic*:
 
 ```azurepowershell-interactive
-$backendNic = New-AzureRmNetworkInterface `
+$backendNic = New-AzNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
   -Name myBackend `
@@ -261,7 +263,7 @@ $cred = Get-Credential
 Erstellen Sie *myBackendVM*.
 
 ```azurepowershell-interactive
-New-AzureRmVM `
+New-AzVM `
    -Credential $cred `
    -Name myBackend `
    -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
@@ -271,7 +273,7 @@ New-AzureRmVM `
    -VirtualNetworkName myVNet
 ```
 
-In dem verwendeten Image ist SQL Server installiert, wird aber in diesem Tutorial nicht verwendet. SQL Server ist enthalten, damit Sie sehen, wie Sie einen virtuellen Computer für die Verarbeitung des Webdatenverkehrs und einen virtuellen Computer für die Verarbeitung der Datenbankverwaltung konfigurieren können.
+In dem Image in diesem Beispiel ist SQL Server installiert, wird aber in diesem Tutorial nicht verwendet. SQL Server ist enthalten, damit Sie sehen, wie Sie einen virtuellen Computer für die Verarbeitung des Webdatenverkehrs und einen virtuellen Computer für die Verarbeitung der Datenbankverwaltung konfigurieren können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -1,34 +1,34 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound | Microsoft-Dokumentation'
-description: In diesem Artikel erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Bridgeline Unbound konfigurieren.
+title: 'Tutorial: Azure Active Directory-Integration mit Stormboard | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Stormboard konfigurieren.
 services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: mtillman
 ms.reviewer: barbkess
-ms.assetid: b018472f-c8b3-403d-ae66-9ed26a35f413
+ms.assetid: 46780ebd-bbfe-4ddc-bf50-22052321026c
 ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 02/08/2019
+ms.date: 02/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e7c2ef0bc9736ca0a97ac4e1874e5636295ce6
+ms.openlocfilehash: 95384a03effd023511e5fd31a47c807a562894d6
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176899"
+ms.locfileid: "56197367"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound
+# <a name="tutorial-azure-active-directory-integration-with-stormboard"></a>Tutorial: Azure Active Directory-Integration mit Stormboard
 
-In diesem Tutorial erfahren Sie, wie Sie Bridgeline Unbound in Azure Active Directory (Azure AD) integrieren.
-Die Integration von Azure AD in Bridgeline Unbound bietet die folgenden Vorteile:
+In diesem Tutorial erfahren Sie, wie Sie Stormboard in Azure Active Directory (Azure AD) integrieren.
+Die Integration von Stormboard in Azure AD bietet die folgenden Vorteile:
 
-* Sie können in Azure AD steuern, wer auf Bridgeline Unbound Zugriff hat.
-* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Bridgeline Unbound anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können in Azure AD steuern, wer Zugriff auf Stormboard hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Stormboard anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
 * Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
 Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
@@ -36,23 +36,25 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Azure AD-Integration in Bridgeline Unbound konfigurieren zu können, benötigen Sie Folgendes:
+Um die Azure AD-Integration mit Stormboard konfigurieren zu können, benötigen Sie Folgendes:
 
 * Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
-* Ein Bridgeline Unbound-Abonnement, für das einmaliges Anmelden aktiviert ist
+* Stormboard-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Bridgeline unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
-* Bridgeline Unbound unterstützt die **Just-In-Time**-Bereitstellung von Benutzern.
+* Stormboard unterstützt **SP- und IDP-initiiertes** einmaliges Anmelden.
 
-## <a name="adding-bridgeline-unbound-from-the-gallery"></a>Hinzufügen von Bridgeline Unbound aus dem Katalog
+* Stormboard unterstützt die **Just-In-Time**-Benutzerbereitstellung.
 
-Zum Konfigurieren der Integration von Bridgeline Unbound in Azure AD müssen Sie Bridgeline Unbound aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
-**Um Bridgeline Unbound aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+## <a name="adding-stormboard-from-the-gallery"></a>Hinzufügen von Stormboard aus dem Katalog
+
+Zum Konfigurieren der Integration von Stormboard in Azure AD müssen Sie Stormboard aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+
+**Führen Sie zum Hinzufügen von Stormboard aus dem Katalog die folgenden Schritte aus:**
 
 1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
@@ -66,31 +68,31 @@ Zum Konfigurieren der Integration von Bridgeline Unbound in Azure AD müssen Sie
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Bridgeline Unbound** ein, wählen Sie im Ergebnisbereich **Bridgeline Unbound** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Stormboard** ein, wählen Sie im Ergebnisbereich **Stormboard** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-     ![Bridgeline Unbound in der Ergebnisliste](common/search-new-app.png)
+     ![Stormboard in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie anhand eines Testbenutzers namens **Britta Simon** das einmalige Anmelden von Azure AD mit Bridgeline Unbound.
-Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Bridgeline Unbound eingerichtet werden.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Stormboard basierend auf einem Testbenutzer mit dem Namen **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Stormboard eingerichtet werden.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Bridgeline Unbound müssen Sie die folgenden Bausteine ausführen:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Stormboard zu konfigurieren und zu testen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound ](#configure-bridgeline-unbound-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Stormboard](#configure-stormboard-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Bridgeline Unbound-Testbenutzers](#create-bridgeline-unbound-test-user)**, um eine Entsprechung von Britta Simon in Bridgeline Unbound zu erhalten, die mit der Darstellung des Benutzers in Azure AD verknüpft ist
+5. **[Erstellen eines Stormboard-Testbenutzers](#create-stormboard-test-user)**, um eine Entsprechung von Britta Simon in Stormboard zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
 In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bridgeline Unbound die folgenden Schritte aus:
+Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD mit Stormboard zu konfigurieren:
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Bridgeline Unbound** die Option **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Stormboard** die Option **Einmaliges Anmelden**.
 
     ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
@@ -102,28 +104,26 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bridgeli
 
     ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP-initiierten** Modus konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Bridgeline Unbound](common/idp-intiated.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Stormboard](common/both-replyurl.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `iApps_UPSTT_<ENVIRONMENTNAME>`
-
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.iapps.com/SAMLAssertionService.aspx`
+    Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.stormboard.com/saml2/ad/acs/<TEAMID>`.
 
 5. Klicken Sie auf **Zusätzliche URLs festlegen**, und führen Sie den folgenden Schritt aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Bridgeline Unbound](common/metadata-upload-additional-signon.png)
+    ![SSO-Informationen zur Domäne und zu den URLs für Stormboard](common/both-signonurl.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.iapps.com/CommonLogin/login?<INSTANCENAME>`
+    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.stormboard.com/saml2/ad/login/<TEAMID>`
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte mit dem tatsächlichen Bezeichner, der Antwort-URL und der Anmelde-URL aktualisieren. Wenden Sie sich an das [Clientsupportteam von Bridgeline Unbound](mailto:support@iapps.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
+    > Hierbei handelt es sich um Beispielwerte. Die Werte müssen durch die tatsächliche Antwort-URL und die tatsächliche Anmelde-URL ersetzt werden. Wenden Sie sich an das [Supportteam für den Stormboard-Client](mailto:support@stormboard.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
 6. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-7. Kopieren Sie im Abschnitt **Bridgeline Unbound einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+7. Kopieren Sie im Abschnitt **Stormboard einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
     ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
@@ -133,11 +133,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Bridgeli
 
     c. Abmelde-URL
 
-### <a name="configure-bridgeline-unbound-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Bridgeline Unbound
+### <a name="configure-stormboard-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Stormboard
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Bridgeline Unbound** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Bridgeline Unbound](mailto:support@iapps.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Stormboard** müssen Sie das heruntergeladene **Zertifikat (Base64)** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Stormboard](mailto:support@stormboard.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
@@ -164,15 +164,15 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Bridgeline Unbound gewähren.
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Stormboard gewähren.
 
-1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Bridgeline Unbound** aus.
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **Stormboard** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-2. Wählen Sie in der Anwendungsliste **Bridgeline Unbound** aus.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Stormboard** aus.
 
-    ![Die Bridgeline Unbound-Verknüpfung in der Anwendungsliste](common/all-applications.png)
+    ![Stormboard-Link in der Anwendungsliste](common/all-applications.png)
 
 3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
@@ -188,18 +188,15 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-### <a name="create-bridgeline-unbound-test-user"></a>Erstellen eines Bridgeline Unbound-Testbenutzers
+### <a name="create-stormboard-test-user"></a>Erstellen eines Stormboard-Testbenutzers
 
-In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Bridgeline Unbound erstellt. Bridgeline Unbound unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Sollte ein Benutzer noch nicht in Bridgeline Unbound vorhanden sein, wird nach der Authentifizierung ein neuer Benutzer erstellt.
+In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in Stormboard erstellt. Stormboard unterstützt die **Just-in-Time-Benutzerbereitstellung**, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Stormboard vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-> [!Note]
-> Setzen Sie sich mit dem  [Supportteam von Bridgeline Unbound](mailto:support@iapps.com) in Verbindung, wenn Sie einen Benutzer manuell erstellen müssen.
-
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Bridgeline Unbound“ klicken, sollten Sie automatisch bei der Bridgeline Unbound-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Wenn Sie im Zugriffsbereich auf die Kachel „Stormboard“ klicken, sollten Sie automatisch bei der Stormboard-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
@@ -208,3 +205,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bridgeline Unbound“ klicken, sol
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+

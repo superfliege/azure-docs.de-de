@@ -4,245 +4,214 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 51ace608-5a4f-48c0-9446-d9f86ad2e890
-ms.service: active-directory
-ms.subservice: saas-app-tutorial
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: tutorial
+ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 97520460041d0a142cebdee843274793646321f5
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0aed2f5f156c3b934f1328af984c78078c7316b6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188268"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56189972"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Tutorial: Azure Active Directory-Integration mit Dealpath
 
 In diesem Tutorial erfahren Sie, wie Sie Dealpath in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von Dealpath in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Dealpath hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Dealpath anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer Zugriff auf Dealpath hat.
+* Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Dealpath anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration mit Dealpath konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Dealpath-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Dealpath-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Dealpath aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Dealpath unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-dealpath-from-the-gallery"></a>Hinzufügen von Dealpath aus dem Katalog
+
 Zum Konfigurieren der Integration von Dealpath in Azure AD müssen Sie Dealpath aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Dealpath aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld **Dealpath** ein, wählen Sie im Ergebnisbereich **Dealpath** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Dealpath in der Ergebnisliste](./media/dealpath-tutorial/tutorial_dealpath_addfromgallery.png)
+4. Geben Sie im Suchfeld **Dealpath** ein, wählen Sie im Ergebnisbereich **Dealpath** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![Dealpath in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden mit Azure AD bei Dealpath mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Dealpath als Gegenbenutzer zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Dealpath muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in Dealpath den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Dealpath mithilfe eines Testbenutzers namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Dealpath eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Dealpath müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Dealpath-Testbenutzers](#create-a-dealpath-test-user)**, um eine Entsprechung für Britta Simon in Dealpath zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für Dealpath](#configure-dealpath-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Dealpath-Testbenutzers](#create-dealpath-test-user)**, um eine Entsprechung für Britta Simon in Dealpath zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Dealpath-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in Dealpath die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Dealpath die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Dealpath** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Dealpath** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/dealpath-tutorial/tutorial_dealpath_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie im Abschnitt **Domäne und URLs für Dealpath** die folgenden Schritte aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Dealpath](./media/dealpath-tutorial/tutorial_dealpath_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://app.dealpath.com/account/login`.
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://api.dealpath.com/saml/metadata/<ID>`
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
 
-    > [!NOTE] 
-    > Dies ist kein echter Bezeichner. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Clientsupportteam von Dealpath](mailto:kenter@dealpath.com), um den Wert zu erhalten. 
- 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatsdatei auf Ihrem Computer.
+    ![SSO-Informationen zur Domäne und zu den URLs für Dealpath](common/sp-identifier.png)
 
-    ![Downloadlink für das Zertifikat](./media/dealpath-tutorial/tutorial_dealpath_certificate.png) 
+    a. Geben Sie im Textfeld **Anmelde-URL** die URL wie folgt ein: `https://app.dealpath.com/account/login`.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://api.dealpath.com/saml/metadata/<ID>`.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/dealpath-tutorial/tutorial_general_400.png)
+    > [!NOTE]
+    > Der ID-Wert ist nicht der tatsächliche Wert. Aktualisieren Sie den Wert mit dem tatsächlichen Bezeichner. Wenden Sie sich an das [Supportteam für den Dealpath-Client](mailto:kenter@dealpath.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Klicken Sie im Abschnitt **Dealpath-Konfiguration** auf **Dealpath konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+4. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Dealpath-Konfiguration](./media/dealpath-tutorial/tutorial_dealpath_configure.png) 
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
+
+6. Kopieren Sie im Abschnitt **Dealpath einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-dealpath-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Dealpath
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Administrator bei Dealpath an.
 
-1. Klicken Sie oben rechts auf **Verwaltungstools**, navigieren Sie zu **Integrationen**, und klicken Sie dann im Abschnitt **SAML 2.0 Authentication** (SAML 2.0-Authentifizierung) auf **Einstellungen aktualisieren**:
+2. Klicken Sie oben rechts auf **Verwaltungstools**, navigieren Sie zu **Integrationen**, und klicken Sie dann im Abschnitt **SAML 2.0 Authentication** (SAML 2.0-Authentifizierung) auf **Einstellungen aktualisieren**:
 
     ![Dealpath-Konfiguration](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
-1. Führen Sie auf der Seite **Set up SAML 2.0 authentication** (SAML 2.0-Authentifizierung einrichten) die folgenden Schritte aus:
+3. Führen Sie auf der Seite **Set up SAML 2.0 authentication** (SAML 2.0-Authentifizierung einrichten) die folgenden Schritte aus:
 
     ![Dealpath-Konfiguration](./media/dealpath-tutorial/tutorial_dealpath_saml.png) 
 
-    a. Fügen Sie in das Textfeld **SAML SSO URL** (SAML-SSO-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    a. Fügen Sie in das Textfeld **SAML SSO URL** (SAML-SSO-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    b. Fügen Sie in das Textfeld **Aussteller des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. Fügen Sie in das Textfeld **Identity Provider Issuer** (Aussteller des Identitätsanbieters) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
     c. Kopieren Sie den Inhalt der heruntergeladenen Datei **certificate(Base64)** in den Editor, und fügen Sie ihn dann in das Textfeld **Öffentliches Zertifikat** ein.
 
     d. Klicken Sie auf **Einstellungen aktualisieren**.
 
-
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/dealpath-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/dealpath-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** den Namen **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/dealpath-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/dealpath-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-a-dealpath-test-user"></a>Erstellen eines Dealpath-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Dealpath einen Benutzer mit dem Namen „Britta Simon“. Arbeiten Sie mit dem  [Supportteam für den Dealpath-Client](mailto:kenter@dealpath.com) zusammen, um die Benutzer der Dealpath-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Dealpath gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Dealpath** aus.
 
-**Um Britta Simon Dealpath zuzuweisen, führen Sie die folgenden Schritte aus:**
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste die Option **Dealpath**.
 
-    ![Benutzer zuweisen][201] 
+    ![Dealpath-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie in der Anwendungsliste die Option **Dealpath**.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Dealpath-Link in der Anwendungsliste](./media/dealpath-tutorial/tutorial_dealpath_app.png)  
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+### <a name="create-dealpath-test-user"></a>Erstellen eines Dealpath-Testbenutzers
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt erstellen Sie in Dealpath einen Benutzer mit dem Namen „Britta Simon“. Arbeiten Sie mit dem [Clientsupportteam von Dealpath](mailto:kenter@dealpath.com) zusammen, um die Benutzer der Dealpath-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Dealpath“ klicken, sollten Sie automatisch bei Ihrer Dealpath-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Dealpath“ klicken, sollten Sie automatisch bei der Dealpath-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/dealpath-tutorial/tutorial_general_01.png
-[2]: ./media/dealpath-tutorial/tutorial_general_02.png
-[3]: ./media/dealpath-tutorial/tutorial_general_03.png
-[4]: ./media/dealpath-tutorial/tutorial_general_04.png
-
-[100]: ./media/dealpath-tutorial/tutorial_general_100.png
-
-[200]: ./media/dealpath-tutorial/tutorial_general_200.png
-[201]: ./media/dealpath-tutorial/tutorial_general_201.png
-[202]: ./media/dealpath-tutorial/tutorial_general_202.png
-[203]: ./media/dealpath-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

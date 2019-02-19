@@ -4,217 +4,198 @@ description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active 
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: 58579baf-53fb-4c34-a6aa-648ad8a22039
-ms.service: active-directory
+ms.service: Azure-Active-Directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/20/2018
+ms.topic: tutorial
+ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d71c8df9358ecb283f5d5c669a5058bcc39a6c2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cd09bbdbb6bfd83769846d9b2c8638f36b85b607
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434855"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186334"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>Tutorial: Azure Active Directory-Integration in Eli Onboarding
+# <a name="tutorial-azure-active-directory-integration-with-eli-onboarding"></a>Tutorial: Azure Active Directory-Integration mit Eli Onboarding
 
 In diesem Tutorial erfahren Sie, wie Sie Eli Onboarding in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von Eli Onboarding in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD steuern, wer auf Eli Onboarding Zugriff hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Eli Onboarding anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+* Sie können in Azure AD steuern, wer auf Eli Onboarding Zugriff hat.
+* Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Eli Onboarding anzumelden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in Eli Onboarding konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein Eli Onboarding-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein Eli Onboarding-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von Eli Onboarding aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* Eli Onboarding unterstützt **SP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-eli-onboarding-from-the-gallery"></a>Hinzufügen von Eli Onboarding aus dem Katalog
+
 Zum Konfigurieren der Integration von Eli Onboarding in Azure AD müssen Sie Eli Onboarding aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
 
 **Um Eli Onboarding aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![Blatt „Unternehmensanwendungen“][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![Schaltfläche „Neue Anwendung“][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld **Eli Onboarding** ein, wählen Sie im Ergebnisbereich **Eli Onboarding** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Eli Onboarding in der Ergebnisliste](./media/elionboarding-tutorial/tutorial_elionboarding_addfromgallery.png)
+4. Geben Sie im Suchfeld **Eli Onboarding** ein, wählen Sie im Ergebnisbereich **Eli Onboarding** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+
+     ![Eli Onboarding in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens Britta Simon, wie das einmalige Anmelden von Azure AD in Eli Onboarding konfiguriert und getestet wird.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Eli Onboarding als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Eli Onboarding muss eine Verknüpfungsbeziehung eingerichtet werden.
+Dieser Abschnitt veranschaulicht anhand eines Testbenutzers namens **Britta Simon**, wie das einmalige Anmelden von Azure AD mit Eli Onboarding konfiguriert und getestet wird.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Eli Onboarding eingerichtet werden.
 
 Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei Eli Onboarding müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Eli Onboarding-Testbenutzers](#create-an-eli-onboarding-test-user)**, um eine Entsprechung von Britta Simon in Eli Onboarding zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+2. **[Konfigurieren des einmaligen Anmeldens für Eli Onboarding](#configure-eli-onboarding-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines Eli Onboarding-Testbenutzers](#create-eli-onboarding-test-user)**, um eine Entsprechung von Britta Simon in Eli Onboarding zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Eli Onboarding-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Eli Onboarding die folgenden Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Eli Onboarding die folgenden Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Eli Onboarding** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Eli Onboarding** die Option **Einmaliges Anmelden**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/elionboarding-tutorial/tutorial_elionboarding_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie die folgenden Schritte auf der Seite **Domäne und URLs für Eli Onboarding** aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Eli Onboarding](./media/elionboarding-tutorial/tutorial_elionboarding_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
+
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+
+4. Führen Sie im Abschnitt **Grundlegende SAML-Konfiguration** die folgenden Schritte aus:
+
+    ![SSO-Informationen zur Domäne und zu den URLs für Eli Onboarding](common/sp-identifier.png)
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<YOUR DOMAIN URL>/sso/saml/login`.
 
-    b. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<YOUR DOMAIN URL>`
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<YOUR DOMAIN URL>`.
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an den [Eli Onboarding-Clientsupportteam](mailto:support@geteli.com), um diese Werte zu erhalten.
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Wenden Sie sich an den [Eli Onboarding-Clientsupportteam](mailto:support@geteli.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Metadaten-XML**, und speichern Sie die Metadatendatei dann auf Ihrem Computer.
+5. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um den Ihren Anforderungen entsprechenden **Verbundmetadaten-XML**-Code aus den verfügbaren Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Downloadlink für das Zertifikat](./media/elionboarding-tutorial/tutorial_elionboarding_certificate.png) 
+    ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+6. Kopieren Sie im Abschnitt **Eli Onboarding einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/elionboarding-tutorial/tutorial_general_400.png)
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
 
-1. Zum Konfigurieren des einmaligen Anmeldens bei **Eli Onboarding** müssen Sie die heruntergeladene **Metadaten-XML-Datei** an das [Eli Onboarding-Supportteam](mailto:support@geteli.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+    a. Anmelde-URL
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-eli-onboarding-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Eli Onboarding
+
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Eli Onboarding** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Eli Onboarding](mailto:support@geteli.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers 
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Schaltfläche „Azure Active Directory“](./media/elionboarding-tutorial/create_aaduser_01.png)
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/elionboarding-tutorial/create_aaduser_02.png)
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    ![Schaltfläche „Hinzufügen“](./media/elionboarding-tutorial/create_aaduser_03.png)
-
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
-
-    ![Dialogfeld „Benutzer“](./media/elionboarding-tutorial/create_aaduser_04.png)
-
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
-
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="create-an-eli-onboarding-test-user"></a>Erstellen eines Eli Onboarding-Testbenutzers
-
-In diesem Abschnitt erstellen Sie in Eli Onboarding einen Benutzer namens Britta Simon. Das [Eli Onboarding-Supportteam](mailto:support@geteli.com) kann Sie beim Hinzufügen von Benutzern auf der Eli Onboarding-Plattform unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Eli Onboarding gewähren.
 
-![Zuweisen der Benutzerrolle][200] 
+1. Wählen Sie im Azure-Portal nacheinander die Optionen **Unternehmensanwendungen**, **Alle Anwendungen** und **Eli Onboarding** aus.
 
-**Führen Sie die folgenden Schritte aus, um die Zuweisung von Britta Simon zu Eli Onboarding durchzuführen:**
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+2. Wählen Sie in der Anwendungsliste den Eintrag **Eli Onboarding** aus.
 
-    ![Benutzer zuweisen][201] 
+    ![Der Eli Onboarding-Link in der Anwendungsliste](common/all-applications.png)
 
-1. Wählen Sie in der Anwendungsliste den Eintrag **Eli Onboarding** aus.
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
 
-    ![Der Eli Onboarding-Link in der Anwendungsliste](./media/elionboarding-tutorial/tutorial_elionboarding_app.png)  
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+### <a name="create-eli-onboarding-test-user"></a>Erstellen eines Eli Onboarding-Testbenutzers
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+In diesem Abschnitt erstellen Sie in Eli Onboarding einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Eli Onboarding-Supportteam](mailto:support@geteli.com), um die Benutzer auf der Eli Onboarding-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Eli Onboarding“ klicken, sollten Sie automatisch bei Ihrer Eli Onboarding-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+Wenn Sie im Zugriffsbereich auf die Kachel „Eli Onboarding“ klicken, sollten Sie automatisch bei der Eli Onboarding-Instanz angemeldet werden, für die Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/elionboarding-tutorial/tutorial_general_01.png
-[2]: ./media/elionboarding-tutorial/tutorial_general_02.png
-[3]: ./media/elionboarding-tutorial/tutorial_general_03.png
-[4]: ./media/elionboarding-tutorial/tutorial_general_04.png
-
-[100]: ./media/elionboarding-tutorial/tutorial_general_100.png
-
-[200]: ./media/elionboarding-tutorial/tutorial_general_200.png
-[201]: ./media/elionboarding-tutorial/tutorial_general_201.png
-[202]: ./media/elionboarding-tutorial/tutorial_general_202.png
-[203]: ./media/elionboarding-tutorial/tutorial_general_203.png
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

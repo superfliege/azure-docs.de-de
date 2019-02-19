@@ -12,13 +12,13 @@ author: AyoOlubeko
 ms.author: ayolubek
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 12/19/2018
-ms.openlocfilehash: d00909eed037e4d2d414ef3121ce11f5ca489736
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/12/2019
+ms.openlocfilehash: e16d68f8c30b54c24e091d1b0c7317bf74aadeba
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564764"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234576"
 ---
 # <a name="quickstart-use-the-azure-portals-sql-query-editor-to-connect-and-query-data"></a>Schnellstart: Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten
 
@@ -28,7 +28,15 @@ Der SQL-Abfrage-Editor ist ein Browsertool im Azure-Portal, über den einfach SQ
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+
+  || Einzeldatenbank |
+  |:--- |:--- |
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) | 
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | 
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | 
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| 
+  |||
 
 > [!NOTE]
 > Stellen Sie sicher, dass die Option **Zugriff auf Azure-Dienste erlauben** in den SQL Server-Firewalleinstellungen auf **EIN** festgelegt ist. Mit dieser Option erhält der SQL-Abfrage-Editor Zugriff auf Ihre Datenbanken und Data Warehouses.

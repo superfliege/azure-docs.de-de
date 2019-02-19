@@ -6,23 +6,29 @@ manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.author: ramamill
-ms.date: 01/18/2019
-ms.openlocfilehash: e397540d33df8a509e10f52fde41fc178cdba67e
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/07/2019
+ms.openlocfilehash: 3de5996f574bf076b856a4d0cf7e18d77b1a9e5d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411746"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895685"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Beheben von Problemen bei Pushinstallationen von Mobility Service
 
 Die Installation von Mobility Service ist ein wichtiger Schritt bei der Aktivierung der Replikation. Der Erfolg dieses Schritts hängt ausschließlich davon ab, ob Sie die Voraussetzungen erfüllen und mit unterstützten Konfigurationen arbeiten. Im Folgenden werden die Gründe für die häufigsten Fehler aufgeführt, die bei der Installation von Mobility Service auftreten:
 
-* Fehler bei Anmeldeinformationen/Berechtigungen
-* Anmeldefehler
-* Verbindungsfehler
-* Nicht unterstützte Betriebssysteme
-* Fehler bei der VSS-Installation
+* [Fehler bei Anmeldeinformationen/Berechtigungen](#credentials-check-errorid-95107--95108)
+* [Anmeldefehler](#login-failures-errorid-95519-95520-95521-95522)
+* [Verbindungsfehler](#connectivity-failure-errorid-95117--97118)
+* [Fehler bei Datei- und Druckerfreigabe](#file-and-printer-sharing-services-check-errorid-95105--95106)
+* [WMI-Fehler](#windows-management-instrumentation-wmi-configuration-check-error-code-95103)
+* [Nicht unterstützte Betriebssysteme](#unsupported-operating-systems)
+* [Nicht unterstützte Startkonfigurationen](#unsupported-boot-disk-configurations-errorid-95309-95310-95311)
+* [Fehler bei der VSS-Installation](#vss-installation-failures)
+* [Gerätename in GRUB-Konfiguration anstelle von Geräte-UUID](#enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320)
+* [LVM-Volume](#lvm-support-from-920-version)
+* [Neustartwarnungen](#install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266)
 
 Wenn Sie die Replikation aktivieren, versucht Azure Site Recovery, die Pushinstallation des Mobility Service-Agents auf Ihrem virtuellen Computer auszuführen. Im Rahmen dieses Vorgangs versucht der Konfigurationsserver, eine Verbindung mit dem virtuellen Computer herzustellen und den Agent zu kopieren. Folgen Sie der unten aufgeführten Schritt-für-Schritt-Anleitung zur Problembehandlung, um eine erfolgreiche Installation zu ermöglichen.
 
@@ -56,12 +62,14 @@ Wenn beim Versuch, sich beim Quellcomputer anzumelden, ein Fehler bei der Einric
 
 Wenn Sie die Anmeldeinformationen des ausgewählten Benutzerkontos ändern möchten, folgen Sie den [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen.
 
-## <a name="login-failure-errorid-95519"></a>Fehler bei der Anmeldung (Fehler-ID: 95519)
+## <a name="login-failures-errorid-95519-95520-95521-95522"></a>Fehler bei der Anmeldung (Fehler-ID: 95519, 95520, 95521, 95522)
+
+### <a name="credentials-of-the-user-account-have-been-disabled-errorid-95519"></a>Die Anmeldeinformationen des Benutzerkontos wurden deaktiviert (Fehler-ID: 95519)
 
 Das beim Aktivieren der Replikation ausgewählte Benutzerkonto wurde deaktiviert. Um das Benutzerkonto zu aktivieren, lesen Sie [diesen](https://aka.ms/enable_login_user) Artikel, oder führen Sie den folgenden Befehl aus, wobei Sie *username* durch den tatsächlichen Benutzernamen ersetzen.
 `net user 'username' /active:yes`
 
-## <a name="login-failure-errorid-95520"></a>Fehler bei der Anmeldung (Fehler-ID: 95520)
+### <a name="credentials-locked-out-due-to-multiple-failed-login-attempts-errorid-95520"></a>Die Anmeldeinformationen wurden aufgrund mehrerer fehlgeschlagener Anmeldeversuche gesperrt (Fehler-ID: 95520)
 
 Durch mehrfache fehlerhafte Versuche des Zugriffs auf einen Computer wird das Benutzerkonto gesperrt. Der Fehler kann folgende Ursachen haben:
 
@@ -70,11 +78,11 @@ Durch mehrfache fehlerhafte Versuche des Zugriffs auf einen Computer wird das Be
 
 Ändern Sie daher die ausgewählten Anmeldeinformationen, indem Sie die [hier](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation) angegebenen Anweisungen befolgen, und wiederholen Sie den Vorgang nach einiger Zeit.
 
-## <a name="login-failure-errorid-95521"></a>Fehler bei der Anmeldung (Fehler-ID: 95521)
+### <a name="logon-servers-are-not-available-on-the-source-machine-errorid-95521"></a>Die Anmeldeserver sind auf dem Quellcomputer nicht verfügbar (Fehler-ID: 95521)
 
 Dieser Fehler tritt auf, wenn die Anmeldeserver auf dem Quellcomputer nicht verfügbar sind. Die Nichtverfügbarkeit von Anmeldeservern führt zu einem Fehler bei der Anmeldeanforderung, sodass der Mobility-Agent nicht installiert werden kann. Um sich erfolgreich anzumelden, stellen Sie sicher, dass die Anmeldeserver auf dem Quellcomputer verfügbar sind, und starten Sie den Anmeldedienst. Ausführliche Anweisungen finden Sie [hier](https://support.microsoft.com/en-in/help/139410/err-msg-there-are-currently-no-logon-servers-available).
 
-## <a name="login-failure-errorid-95522"></a>Fehler bei der Anmeldung (Fehler-ID: 95522)
+### <a name="logon-service-isnt-running-on-the-source-machine-errorid-95522"></a>Der Anmeldedienst wird auf dem Quellcomputer nicht ausgeführt (Fehler-ID: 95522)
 
 Der Anmeldedienst wird auf dem Quellcomputer nicht ausgeführt. Dies führte zu einem Fehler bei der Anmeldeanforderung. Der Mobility-Agent kann daher nicht installiert werden. Um dieses Problem zu beheben, stellen Sie sicher, dass für eine erfolgreiche Anmeldung der Anmeldedienst auf dem Quellcomputer ausgeführt wird. Um den Anmeldedienst zu starten, führen Sie den Befehl „net start Logon“ an einer Eingabeaufforderung aus, oder starten Sie den Dienst NetLogon im Task-Manager.
 
@@ -138,15 +146,17 @@ Weitere Artikel zur WMI-Problembehandlung finden Sie unter den folgenden Links.
 Eine andere häufige Ursache für Fehler ist ein nicht unterstütztes Betriebssystem. Stellen Sie sicher, dass Sie ein unterstütztes Betriebssystem/eine unterstützte Kernel-Version verwenden, um eine erfolgreiche Installation von Mobility Service zu ermöglichen. Verwenden Sie keine privaten Patches.
 In der [Dokumentation zur Unterstützungsmatrix](vmware-physical-azure-support-matrix.md#replicated-machines) können Sie sich eine Liste aller von Azure Site Recovery unterstützen Betriebssysteme und Kernelversionen ansehen.
 
-## <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Start- und Systempartitionen/Volumes sind nicht derselbe Datenträger (Fehler-ID: 95309)
+## <a name="unsupported-boot-disk-configurations-errorid-95309-95310-95311"></a>Nicht unterstützte Startdatenträgerkonfigurationen (Fehler-ID: 95309, 95310, 95311)
+
+### <a name="boot-and-system-partitions--volumes-are-not-the-same-disk-errorid-95309"></a>Start- und Systempartitionen/Volumes sind nicht derselbe Datenträger (Fehler-ID: 95309)
 
 Vor Version 9.20 wurden Start- und Systempartitionen/Volumes auf verschiedenen Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
 
-## <a name="boot-disk-not-found-errorid-95310"></a>Startdiskette nicht gefunden (Fehler-ID: 95310)
+### <a name="the-boot-disk-is-not-available-errorid-95310"></a>Der Startdatenträger ist nicht verfügbar (Fehler-ID: 95310)
 
 Eine VM ohne Startdiskette kann nicht geschützt werden. Dadurch wird die reibungslose Wiederherstellung der VM während eines Failovervorgangs sichergestellt. Das Fehlen der Startdiskette führt zu einem Fehler beim Starten des Computers nach dem Failover. Stellen Sie sicher, dass die VM eine Startdiskette enthält, und versuchen Sie es dann noch einmal. Beachten Sie auch, dass die Verwendung mehrerer Startdisketten auf dem gleichen Computer nicht unterstützt wird.
 
-## <a name="multiple-boot-disks-found-errorid-95311"></a>Mehrere Startdisketten gefunden (Fehler-ID: 95311)
+### <a name="multiple-boot-disks-present-on-the-source-machine-errorid-95311"></a>Mehrere Startdatenträger auf dem Quellcomputer vorhanden (Fehler-ID: 95311)
 
 Eine VM mit mehreren Startdisketten ist keine [unterstützte Konfiguration](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage).
 
@@ -154,9 +164,45 @@ Eine VM mit mehreren Startdisketten ist keine [unterstützte Konfiguration](vmwa
 
 Vor Version 9.20 wurden Stammpartitionen oder Volumes auf mehreren Datenträgern als Konfiguration nicht unterstützt. Ab [Version 9.20](https://support.microsoft.com/en-in/help/4478871/update-rollup-31-for-azure-site-recovery) wird diese Konfiguration unterstützt. Verwenden Sie für diese Unterstützung die neueste Version.
 
-## <a name="grub-uuid-failure-errorid-95320"></a>Fehler bei der UUID von GRUB (Fehler-ID: 95320)
+## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-errorid-95320"></a>Fehler bei Schutz aktiviert, da in der GRUB-Konfiguration erwähnter Gerätename statt UUID vorliegt (Fehler-ID: 95320)
 
-Wenn GRUB auf dem Quellcomputer den Gerätenamen statt des UUID verwendet, tritt ein Fehler bei der Installation des Mobilitäts-Agents auf. Wenden Sie sich an den Systemadministrator, um die GRUB-Datei anzupassen.
+**Mögliche Ursache**: </br>
+Die GRUB-Konfigurationsdateien („/boot/grub/menu.lst“, „/boot/grub/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“) könnten den Wert für die Parameter **root** und **resume** als tatsächliche Gerätenamen statt UUID enthalten. Site Recovery bevorzugt den UUID-Ansatz, da Gerätenamen sich beim Neustart des virtuellen Computers ändern können, da die VM möglicherweise bei dem Failover nicht den Namen beibehält, was zu Problemen führen kann. Beispiel:  </br>
+
+
+- Die folgende Zeile stammt aus der GRUB-Datei **/boot/grub2/grub.cfg**. <br>
+*linux   /boot/vmlinuz-3.12.49-11-default **root=/dev/sda2**  ${extra_cmdline} **resume=/dev/sda1** splash=silent quiet showopts*
+
+
+- Die folgende Zeile stammt aus der GRUB-Datei **/boot/grub/menu.lst**
+*kernel /boot/vmlinuz-3.0.101-63-default **root=/dev/sda2** **resume=/dev/sda1** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+
+Beachten Sie die fett formatierte Zeichenfolge oben: GRUB benutzt die tatsächlichen Gerätenamen für die Parameter „root“ und „resume“ statt UUID.
+ 
+**Wie behebe ich das Problem?**<br>
+Die Gerätenamen sollten mit dem entsprechenden UUID ersetzt werden.<br>
+
+
+1. Suchen Sie die UUID des Geräts durch Ausführen des Befehls „blkid <device name>“. Beispiel: <br>
+```
+blkid /dev/sda1
+/dev/sda1: UUID="6f614b44-433b-431b-9ca1-4dd2f6f74f6b" TYPE="swap"
+blkid /dev/sda2 
+/dev/sda2: UUID="62927e85-f7ba-40bc-9993-cc1feeb191e4" TYPE="ext3" 
+```
+
+2. Ersetzen Sie den Gerätenamen jetzt die UUID im Format „root=UUID=<UUID>“. Angenommen, Sie ersetzen die Gerätenamen durch die UUID für die Parameter „root“ und „resume“, die oben in den Dateien „/boot/grub2/grub.cfg“, „/boot/grub2/grub.cfg“ oder „/etc/default/grub“ erwähnt werden, dann sehen die Zeilen in den Dateien so aus: <br>
+*kernel /boot/vmlinuz-3.0.101-63-default **root=UUID=62927e85-f7ba-40bc-9993-cc1feeb191e4** **resume=UUID=6f614b44-433b-431b-9ca1-4dd2f6f74f6b** splash=silent crashkernel=256M-:128M showopts vga=0x314*
+3. Starten Sie den Schutz erneut.
+
+## <a name="install-mobility-service-completed-with-warning-to-reboot-errorid-95265--95266"></a>Installation des Mobilitätsdienst mit Neustartwarnung abgeschlossen (Fehler-ID: 95265, 95266)
+
+Der Site Recovery-Mobilitätsdienst verfügt über viele Komponenten, einer davon ist der Filtertreiber. Der Filtertreiber wird nur bei einem Systemneustart in den Systemspeicher geladen. Das bedeutet, dass Korrekturen des Filtertreibers nur dann übernommen werden, wenn ein neuer Filtertreiber geladen wird, was nur zum Zeitpunkt des Systemneustarts erfolgen kann.
+
+**Bitte beachten Sie**, dass es sich hierbei um eine Warnung handelt und die bestehende Replikation auch nach dem neuen Agent-Update funktioniert. Sie können sich jederzeit einen Neustart durchführen, um die Vorteile des neuen Filtertreibers zu nutzen, aber wenn Sie keinen Neustart ausführen, funktioniert auch der alte Filtertreiber weiter. So werden nach einem Update ohne Neustart, abgesehen vom Filtertreiber, **die Vorteile anderer Verbesserungen und Korrekturen im Mobilitätsdienst übernommen**. Obwohl empfohlen, ist es nicht zwingend erforderlich, nach jedem Upgrade neu zu starten. Informationen dazu, wann ein Neustart erforderlich ist, finden Sie [hier](https://aka.ms/v2a_asr_reboot).
+
+> [!TIP]
+>Bewährte Methoden zum Planen von Upgrades während eines Wartungsfensters finden Sie [hier](https://aka.ms/v2a_asr_upgrade_practice).
 
 ## <a name="lvm-support-from-920-version"></a>LVM-Unterstützung ab Version 9.20
 

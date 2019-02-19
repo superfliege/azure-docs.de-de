@@ -9,16 +9,29 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.custom: seodec2018
-ms.openlocfilehash: 9b682b9cd17c174363dcd04707a11075e30cc8e1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214826"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005045"
 ---
-# <a name="query-types-and-composition-in-azure-search"></a>Abfragetypen und -komposition in Azure Search
+# <a name="how-to-compose-a-query-in-azure-search"></a>Erstellen einer Abfrage in Azure Search
 
-In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. Genauer gesagt: Sie können angeben, welche Felder im Bereich liegen, wie die Suche durchgeführt wird, welche Felder zurückgegeben werden sollen, ob eine Filterung oder Sortierung angewendet wird usw. Wenn keine Angaben vorhanden sind, wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuchvorgang ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
+In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtripvorgangs. Parameter in der Anforderung geben Übereinstimmungskriterien für die Suche nach Dokumenten in einem Index, Ausführungsanweisungen für das Modul und Anweisungen zum Steuern der Antwort an. 
+
+Eine Abfrageanforderung ist ein komplexes Konstrukt, mit dem Sie angeben können, welche Felder im Bereich liegen, wie die Suche durchgeführt wird, welche Felder zurückgegeben werden sollen, ob eine Filterung oder Sortierung angewendet wird usw. Wenn keine Angaben vorhanden sind, wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuchvorgang ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
+
+### <a name="apis-and-tools-for-testing"></a>APIs und Tools zum Testen
+
+In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitteln von Abfragen aufgeführt.
+
+| Methodik | BESCHREIBUNG |
+|-------------|-------------|
+| [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
+| [Postman oder anderes HTTP-Testtool](search-fiddler.md) | Es wird beschrieben, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Abfragen an Azure Search einrichten.  |
+| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
+| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
 
 ## <a name="a-first-look-at-query-requests"></a>Kurzer Überblick über Abfrageanforderungen
 
@@ -52,7 +65,7 @@ Verwenden Sie zum Ausführen dieser Abfrage den [Suchexplorer und den realestate
 
 Sie können die folgende Abfragezeichenfolge in die Suchleiste des Explorers einfügen: `search=seattle townhouse +lake&searchFields=description, city&$count=true&$select=listingId, street, status, daysOnMarket, description&$top=10&$orderby=daysOnMarket`
 
-### <a name="how-query-operations-are-enabled-by-the-index"></a>Ermöglichung von Abfragevorgängen durch den Index
+## <a name="how-query-operations-are-enabled-by-the-index"></a>Ermöglichung von Abfragevorgängen durch den Index
 
 Der Indexentwurf und der Abfrageentwurf sind in Azure Search eng an einander gekoppelt. Wichtig zu wissen ist hierbei, dass das *Indexschema* mit Attributen für jedes Feld die Art der Abfrage bestimmt, die Sie erstellen können. 
 
@@ -148,17 +161,6 @@ Falls Azure Search die Ergebnisse nach einem anderen Wert als der Suchbewertung 
 
 ### <a name="hit-highlighting"></a>Treffermarkierung
 In Azure Search ist das Hervorheben der exakten Menge von Suchergebnissen, die mit der Suchabfrage übereinstimmen, dank der Parameter **`highlight`**, **`highlightPreTag`** und **`highlightPostTag`** einfach. Sie können angeben, für welche *durchsuchbaren* Felder der gefundene Text hervorgehoben werden soll. Außerdem können Sie die genauen Zeichenfolgentags angeben, die am Anfang und Ende des von Azure Search zurückgegebenen Übereinstimmungstexts angefügt werden sollen.
-
-## <a name="apis-and-tools-for-testing"></a>APIs und Tools zum Testen
-
-In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitteln von Abfragen aufgeführt.
-
-| Methodik | BESCHREIBUNG |
-|-------------|-------------|
-| [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
-| [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
-| [Fiddler, Postman oder anderes HTTP-Testtool](search-fiddler.md) | Es wird beschrieben, wie Sie einen Anforderungsheader und -text zum Senden von Abfragen an Azure Search einrichten.  |
-| [Suchexplorer im Azure-Portal](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
 
 ## <a name="see-also"></a>Weitere Informationen
 

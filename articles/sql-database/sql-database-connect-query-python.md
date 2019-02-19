@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/28/2019
-ms.openlocfilehash: b611eb02203c872e3497b5b7c12acddd9eab14c0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.date: 02/12/2019
+ms.openlocfilehash: d0dcfa3d5e387b03fe76eff34e32860ae5b17e76
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188387"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235368"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Schnellstart: Abfragen einer Azure SQL-Datenbank mithilfe von Python
 
@@ -27,20 +27,40 @@ ms.locfileid: "55188387"
 
 Für diese Schnellstartanleitung benötigen Sie Folgendes:
 
-[!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
+- Eine Azure SQL-Datenbank. In den folgenden Schnellstartanleitungen erfahren Sie jeweils, wie Sie eine Datenbank in Azure SQL-Datenbank erstellen und anschließend konfigurieren:
+
+  || Einzeldatenbank | Verwaltete Instanz |
+  |:--- |:--- |:---|
+  | Erstellen| [Portal](sql-database-single-database-get-started.md) | [Portal](sql-database-managed-instance-get-started.md) |
+  || [BEFEHLSZEILENSCHNITTSTELLE (CLI)](scripts/sql-database-create-and-configure-database-cli.md) | [BEFEHLSZEILENSCHNITTSTELLE (CLI)](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
+  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/27/quick-start-script-create-azure-sql-managed-instance-using-powershell/) |
+  | Konfigurieren | [IP-Firewallregel auf Serverebene](sql-database-server-level-firewall-rule.md)| [Verbindung von einem virtuellen Computer](sql-database-managed-instance-configure-vm.md)|
+  |||[Verbindung von einer lokalen Ressource](sql-database-managed-instance-configure-p2s.md)
+  |Laden von Daten|Laden von Adventure Works gemäß Schnellstartanleitung|[Wiederherstellen von Wide World Importers](sql-database-managed-instance-get-started-restore.md)
+  |||Wiederherstellen oder Importieren von Adventure Works über eine [BACPAC-Datei](sql-database-import.md) von [GitHub](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
+  |||
+
+  > [!IMPORTANT]
+  > Die Skripts in diesem Artikel sind für die Adventure Works-Datenbank geschrieben. Bei einer verwalteten Instanz müssen Sie entweder die Adventure Works-Datenbank in eine Instanzdatenbank importieren oder die Skripts in diesem Artikel zur Verwendung der Wide World Importers-Datenbank anpassen.
   
 - Python und verwandte Software für Ihr Betriebssystem:
   
   - **MacOS**: Installieren Sie Homebrew und Python, installieren Sie den ODBC-Treiber und SQLCMD, und installieren Sie anschließend den Python-Treiber für SQL Server. Siehe Schritte 1.2, 1.3 und 2.1 in [Erstellen von Python-Apps mit SQL Server auf macOS](https://www.microsoft.com/sql-server/developer-get-started/python/mac/). Weitere Informationen finden Sie unter [Installieren des Microsoft ODBC-Treibers unter Linux und macOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
-    
+
   - **Ubuntu**: Installieren Sie Python und andere erforderliche Pakete mit `sudo apt-get install python python-pip gcc g++ build-essential`. Laden Sie den ODBC-Treiber, SQLCMD und den Python-Treiber für SQL Server herunter, und installieren Sie sie. Anweisungen hierzu finden Sie unter [Konfigurieren einer Entwicklungsumgebung für pyodbc-Python](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
-    
+
   - **Windows:** Installieren Sie Python, den ODBC-Treiber und SQLCMD sowie den Python-Treiber für SQL Server. Anweisungen hierzu finden Sie unter [Konfigurieren einer Entwicklungsumgebung für pyodbc-Python](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
 
 ## <a name="get-sql-server-connection-information"></a>Abrufen von SQL Server-Verbindungsinformationen
 
-[!INCLUDE [prerequisites-server-connection-info](../../includes/sql-database-connect-query-prerequisites-server-connection-info-includes.md)]
-    
+Rufen Sie die Verbindungsinformationen ab, die Sie zum Herstellen einer Verbindung mit der Azure SQL-Datenbank benötigen. In den weiteren Verfahren benötigen Sie den vollqualifizierten Server- oder Hostnamen, den Datenbanknamen und die Anmeldeinformationen.
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+
+2. Navigieren Sie zur Seite **SQL-Datenbanken** oder **Verwaltete SQL-Instanzen**.
+
+3. Sehen Sie sich auf der Seite **Übersicht** bei einer Einzeldatenbank den vollqualifizierten Servernamen neben **Servername** und bei einer verwalteten Instanz den vollqualifizierten Servernamen neben **Host** an. Um den Namen des Servers oder Hosts zu kopieren, zeigen Sie darauf, und wählen Sie das Symbol **Kopieren** aus.
+
 ## <a name="create-code-to-query-your-sql-database"></a>Erstellen von Code zum Abfragen Ihrer SQL-Datenbank 
 
 1. Erstellen Sie in einem Text-Editor eine neue Datei namens *sqltest.py*.  

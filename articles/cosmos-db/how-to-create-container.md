@@ -6,107 +6,107 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 183f596c213f833a2ca633398d1102e86f328912
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 445d9f220a215eb17436d52f637b57bd3492aaae
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468851"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55864773"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Erstellen eines Azure Cosmos-Containers
 
-In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Containers (Sammlung, Tabelle, Diagramm) erläutert. Container können über das Azure-Portal, über die Azure-Befehlszeilenschnittstelle oder mithilfe unterstützter SDKs erstellt werden. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
+In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines Containers (Sammlung, Tabelle oder Diagramm) erläutert. Sie verwenden das Azure-Portal, die Azure-Befehlszeilenschnittstelle oder unterstützte SDKs. In diesem Artikel erfahren Sie, wie Sie einen Container erstellen, den Partitionsschlüssel angeben und den Durchsatz bereitstellen.
 
-## <a name="create-a-container-using-azure-portal"></a>Erstellen eines Containers über das Azure-Portal
+## <a name="create-a-container-by-using-azure-portal"></a>Erstellen eines Containers über das Azure-Portal
 
 ### <a id="portal-sql"></a>SQL-API
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Cosmos DB-Konto](create-sql-api-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-sql-api-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Sammlung** aus. Füllen Sie das Formular mit folgenden Angaben aus:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Sammlung** aus. Geben Sie anschließend die folgenden Details an:
 
-   * Erstellen Sie eine neue Datenbank, oder verwenden Sie eine bereits vorhandene Datenbank.
+   * Geben Sie an, ob Sie eine neue Datenbank erstellen oder eine vorhandene Datenbank verwenden.
    * Geben Sie eine Sammlungs-ID ein.
    * Geben Sie einen Partitionsschlüssel ein.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Geben Sie einen Durchsatz (beispielsweise 1.000 RUs) ein.
    * Klicken Sie auf **OK**.
 
-![Erstellung einer Sammlung durch die SQL-API](./media/how-to-create-container/partitioned-collection-create-sql.png)
+![Screenshot des Bereichs „Daten-Explorer“ mit hervorgehobener Option „Neue Sammlung“](./media/how-to-create-container/partitioned-collection-create-sql.png)
 
 ### <a id="portal-mongodb"></a>Azure Cosmos DB-API für MongoDB
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Cosmos DB-Konto](create-mongodb-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-mongodb-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Sammlung** aus. Füllen Sie das Formular mit folgenden Angaben aus:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Sammlung** aus. Geben Sie anschließend die folgenden Details an:
 
-   * Erstellen Sie eine neue Datenbank, oder verwenden Sie eine bereits vorhandene Datenbank.
+   * Geben Sie an, ob Sie eine neue Datenbank erstellen oder eine vorhandene Datenbank verwenden.
    * Geben Sie eine Sammlungs-ID ein.
    * Wählen Sie für die Speicherkapazität die Option **Unbegrenzt** aus.
    * Geben Sie einen Shardschlüssel ein.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Geben Sie einen Durchsatz (beispielsweise 1.000 RUs) ein.
    * Klicken Sie auf **OK**.
 
-![Erstellen einer Sammlung mit der Azure Cosmos DB-API für MongoDB](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
+![Screenshot der Azure Cosmos DB-API für MongoDB, Dialogfeld „Sammlung hinzufügen“](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
 
 ### <a id="portal-cassandra"></a>Cassandra-API
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Cosmos DB-Konto](create-cassandra-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-cassandra-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Tabelle** aus. Füllen Sie das Formular mit folgenden Angaben aus:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Tabelle** aus. Geben Sie anschließend die folgenden Details an:
 
-   * Erstellen Sie einen neuen Keyspace, oder verwenden Sie einen bereits vorhandenen Keyspace.
+   * Geben Sie an, ob Sie einen neuen Keyspace erstellen oder einen vorhandenen Keyspace verwenden.
    * Geben Sie einen Tabellennamen ein.
-   * Geben Sie die Eigenschaften ein, und geben Sie einen PRIMÄRSCHLÜSSEL an.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Geben Sie die Eigenschaften ein, und geben Sie einen Primärschlüssel an.
+   * Geben Sie einen Durchsatz (beispielsweise 1.000 RUs) ein.
    * Klicken Sie auf **OK**.
 
-![Erstellung einer Sammlung durch die Cassandra-API](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
+![Screenshot der Cassandra-API, Dialogfeld „Tabelle hinzufügen“](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
 
 > [!NOTE]
 > Bei der Cassandra-API wird der Primärschlüssel als Partitionsschlüssel verwendet.
 
 ### <a id="portal-gremlin"></a>Gremlin-API
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Cosmos DB-Konto](create-graph-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-graph-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **New Graph** (Neues Diagramm) aus. Füllen Sie das Formular mit folgenden Angaben aus:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **New Graph** (Neues Diagramm) aus. Geben Sie anschließend die folgenden Details an:
 
-   * Erstellen Sie eine neue Datenbank, oder verwenden Sie eine bereits vorhandene Datenbank.
+   * Geben Sie an, ob Sie eine neue Datenbank erstellen oder eine vorhandene Datenbank verwenden.
    * Geben Sie eine Diagramm-ID ein.
    * Wählen Sie für die Speicherkapazität die Option **Unbegrenzt** aus.
    * Geben Sie einen Partitionsschlüssel für Vertices ein.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Geben Sie einen Durchsatz (beispielsweise 1.000 RUs) ein.
    * Klicken Sie auf **OK**.
 
-![Erstellung einer Sammlung durch die Gremlin-API](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
+![Screenshot der Gremlin-API, Dialogfeld „Diagramm hinzufügen“](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
 
 ### <a id="portal-table"></a>Tabellen-API
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Cosmos DB-Konto](create-table-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-table-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
-1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Tabelle** aus. Füllen Sie das Formular mit folgenden Angaben aus:
+1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Tabelle** aus. Geben Sie anschließend die folgenden Details an:
 
    * Geben Sie eine Tabellen-ID ein.
    * Wählen Sie für die Speicherkapazität die Option **Unbegrenzt** aus.
-   * Geben Sie einen Durchsatz ein (beispielsweise 1.000 RUs).
+   * Geben Sie einen Durchsatz (beispielsweise 1.000 RUs) ein.
    * Klicken Sie auf **OK**.
 
-![Erstellung einer Sammlung durch die Tabellen-API](./media/how-to-create-container/partitioned-collection-create-table.png)
+![Screenshot der Tabellen-API, Dialogfeld „Tabelle hinzufügen“](./media/how-to-create-container/partitioned-collection-create-table.png)
 
 > [!Note]
 > Bei der Tabellen-API wird der Partitionsschlüssel jedes Mal angegeben, wenn Sie eine neue Zeile hinzufügen.
 
-## <a name="create-a-container-using-azure-cli"></a>Erstellen eines Containers über die Azure-Befehlszeilenschnittstelle
+## <a name="create-a-container-by-using-azure-cli"></a>Erstellen eines Containers mithilfe der Azure-Befehlszeilenschnittstelle
 
 ### <a id="cli-sql"></a>SQL-API
 
@@ -174,7 +174,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-## <a name="create-a-container-using-net-sdk"></a>Erstellen eines Containers mithilfe des .NET SDK
+## <a name="create-a-container-by-using-net-sdk"></a>Erstellen eines Containers mithilfe des .NET SDK
 
 ### <a id="dotnet-sql-graph"></a>SQL-API und Gremlin-API
 
@@ -198,7 +198,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-MongoDB Wire Protocol verfügt über kein Konzept für Anforderungseinheiten. Wenn Sie eine neue Sammlung mit Durchsatz erstellen möchten, verwenden Sie das Azure-Portal oder die SQL-API, wie in den vorherigen Beispielen gezeigt.
+MongoDB Wire Protocol fordert keine Einheiten an. Wenn Sie eine neue Sammlung mit Durchsatz erstellen möchten, verwenden Sie das Azure-Portal oder die SQL-API.
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
 
@@ -211,7 +211,5 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Informationen zur Partitionierung in Cosmos DB finden Sie in den folgenden Artikeln:
 
 - [Partitioning in Azure Cosmos DB](partitioning-overview.md) (Partitionierung in Azure Cosmos DB)

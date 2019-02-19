@@ -6,14 +6,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/22/2018
+ms.date: 02/05/2018
 ms.author: ramamill
-ms.openlocfilehash: 1d5c2dccabbc2acdddec6176d9b52681d4a18e68
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: b7454226b96ff2f6a76285d708a7ce2ad1c3a6de
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235885"
 ---
 # <a name="deploy-a-configuration-server"></a>Bereitstellen eines Konfigurationsservers
 
@@ -130,38 +130,42 @@ Um Unterbrechungen bei der laufenden Replikation zu vermeiden, stellen Sie siche
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 
-1. Kann ich die VM, auf der der Konfigurationsserver installiert ist, für andere Zwecke einsetzen?
+1. Wie lange ist die über OVF bereitgestellte Lizenz auf dem Konfigurationsserver gültig? Was geschieht, wenn ich die Lizenz nicht erneut aktiviere?
+
+    Bei der mit der OVA-Vorlage bereitgestellten Lizenz handelt es sich um eine Evaluierungslizenz mit einer Gültigkeit von 180 Tagen. Sie müssen die Lizenz vor dem Ablaufdatum aktivieren. Andernfalls kann dies zu einem häufigen Herunterfahren des Konfigurationsservers und damit zu einer Behinderung der Replikationsaktivitäten führen.
+
+2. Kann ich die VM, auf der der Konfigurationsserver installiert ist, für andere Zwecke einsetzen?
 
     **Nein**. Es wird empfohlen, die VM ausschließlich als Konfigurationsserver einzusetzen. Stellen Sie sicher, dass alle unter [Voraussetzungen](#prerequisites) genannten Spezifikationen für eine effiziente Verwaltung von Notfallwiederherstellungen eingehalten werden.
-2. Kann ich den Tresor, der bereits auf dem Konfigurationsserver registriert ist, mit einem neu erstellten Tresor austauschen?
+3. Kann ich den Tresor, der bereits auf dem Konfigurationsserver registriert ist, mit einem neu erstellten Tresor austauschen?
 
     **Nein**, sobald ein Tresor beim Konfigurationsserver registriert ist, sind keine Änderungen daran möglich.
-3. Kann ich den gleichen Konfigurationsserver zum Schutz von physischen und virtuellen Computern verwenden?
+4. Kann ich den gleichen Konfigurationsserver zum Schutz von physischen und virtuellen Computern verwenden?
 
     **Ja**, derselbe Konfigurationsserver kann zum Replizieren von physischen und virtuellen Computern verwendet werden. Allerdings kann ein physischer Computer nur auf eine VMware-VM zurückgesetzt werden.
-4. Welchen Zweck erfüllt ein Konfigurationsserver, und wo wird er eingesetzt?
+5. Welchen Zweck erfüllt ein Konfigurationsserver, und wo wird er eingesetzt?
 
     Weitere Informationen zu Konfigurationsservern und deren Funktionen finden Sie unter [Architektur der Replikation von VMware zu Azure](vmware-azure-architecture.md).
-5. Wo erhalte ich die neueste Version des Konfigurationsservers?
+6. Wo erhalte ich die neueste Version des Konfigurationsservers?
 
     Schritte für ein Upgrade des Konfigurationsservers über das Portal finden Sie unter [Aktualisieren des Konfigurationsservers](vmware-azure-manage-configuration-server.md#upgrade-the-configuration-server). Ausführliche Anweisungen zum Upgrade aller Site Recovery-Komponenten finden Sie [hier](https://aka.ms/asr_how_to_upgrade).
-6. Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
+7. Wo kann ich die Passphrase für den Konfigurationsserver herunterladen?
 
     Informationen zum Herunterladen der Passphrase finden Sie in [diesem Artikel](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase).
-7. Kann ich die Passphrase ändern?
+8. Kann ich die Passphrase ändern?
 
     **Nein**, es wird **dringend empfohlen, die Passphrase des Konfigurationsservers nicht zu ändern**. Eine Änderung der Passphrase unterbricht die Replikation geschützter Computer und führt zu einem kritischen Integritätszustand.
-8. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
+9. Wo kann ich die Tresorregistrierungsschlüssel herunterladen?
 
     Im **Recovery Services-Tresor**, **Verwalten** > **Site Recovery-Infrastruktur** > **Konfigurationsserver**. Klicken Sie unter „Server“ auf **Registrierungsschlüssel herunterladen**, um die Datei mit den Tresoranmeldeinformationen herunterzuladen.
-9. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
+10. Kann ich einen bestehenden Konfigurationsserver klonen und für die Replikationsorchestrierung verwenden?
 
     **Nein**, die Verwendung einer geklonten Konfigurationsserverkomponente wird nicht unterstützt.
 
-10. Kann ich die IP eines Konfigurationsservers ändern?
+11. Kann ich die IP eines Konfigurationsservers ändern?
 
     **Nein**, es wird dringend empfohlen, die IP-Adresse eines Konfigurationsservers nicht zu ändern. Stellen Sie sicher, dass es sich bei allen dem Konfigurationsserver zugewiesenen IPs um STATISCHE IPs, nicht um DHCP-IPs handelt.
-11. Kann ich den Konfigurationsserver in Azure einrichten?
+12. Kann ich den Konfigurationsserver in Azure einrichten?
 
     Es wird empfohlen, den Konfigurationsserver in der lokalen Umgebung mit direkter Sichtverbindung mit vCenter einzurichten, um Wartezeiten bei der Datenübertragung zu minimieren. Sie können geplante Sicherungen des Konfigurationsservers für [Failbackzwecke](vmware-azure-manage-configuration-server.md#failback-requirements) erstellen.
 

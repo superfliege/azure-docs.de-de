@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 34b38f979fcab765a35d8aa6f0714ce85beec6fe
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 0cc9c8dc214589e03e5a6a5405c07c9f6b3e53e6
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105184"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895838"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>Einrichten der Notfallwiederherstellung für lokale virtuelle VMware-Computer oder physische Server an einem sekundären Standort
 
@@ -218,7 +218,7 @@ Scout Update 5 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
 
 #### <a name="new-platform-support"></a>Unterstützung für die neue Plattform
 * SUSE Linux Enterprise Server 11 Service Pack 4 (SP4)
-* SLES 11 SP4 64 Bit **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** ist im Scout GA-Basispaket (**InMage_Scout_Standard_8.0.1 GA.zip**) enthalten. Laden Sie das GA-Paket aus dem Portal herunter; dieser Vorgang wird im Abschnitt zum [Erstellen eines Tresors](#create-a-vault) beschrieben.
+* SLES 11 SP4 64 Bit **InMage_UA_8.0.1.0_SLES11-SP4-64_GA_13Apr2017_release.tar.gz** ist im Scout GA-Basispaket (**InMage_Scout_Standard_8.0.1 GA.zip**) enthalten. Laden Sie das GA-Paket aus dem Portal herunter; dieser Vorgang wird im Abschnitt zum Erstellen eines Tresors beschrieben.
 
 
 #### <a name="bug-fixes-and-enhancements"></a>Programmfehlerbehebungen und Verbesserungen
@@ -252,7 +252,7 @@ Scout Update 4 ist ein kumulatives Update. Es enthält sämtliche Fixes aus Upda
   * CentOS 6.8
 
 > [!NOTE]
-> RHEL/CentOS 7 64 Bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** ist im Scout GA-Basispaket **InMage_Scout_Standard_8.0.1 GA.zip** enthalten. Laden Sie das Scout GA-Paket aus dem Portal herunter; dieser Vorgang wird im Abschnitt zum [Erstellen eines Tresors](#create-a-vault) beschrieben.
+> RHEL/CentOS 7 64 Bit **InMage_UA_8.0.1.0_RHEL7-64_GA_06Oct2016_release.tar.gz** ist im Scout GA-Basispaket **InMage_Scout_Standard_8.0.1 GA.zip** enthalten. Laden Sie das Scout GA-Paket aus dem Portal herunter; dieser Vorgang wird im Abschnitt zum Erstellen eines Tresors beschrieben.
 
 #### <a name="bug-fixes-and-enhancements"></a>Programmfehlerbehebungen und Verbesserungen
 

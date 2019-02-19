@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 12/12/2018
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: bfce998fbabb89d5e9e964bd504571756941afb4
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 555c8b0b4046fd20583597ae4f0215a815806b8e
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770485"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55860406"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>Häufig gestellte Fragen sind: Azure-zu-Azure-Replikation
 
@@ -33,6 +33,10 @@ Dieser Artikel enthält Antworten auf häufig gestellte Fragen zum Bereitstellen
 
 ### <a name="how-is-site-recovery-priced"></a>Wie werden Site Recovery-Preise kalkuliert?
 Nähere Informationen finden Sie unter [Site Recovery – Preise](https://azure.microsoft.com/blog/know-exactly-how-much-it-will-cost-for-enabling-dr-to-your-azure-vm/).
+### <a name="how-does-the-free-tier-for-azure-site-recovery-work"></a>Wie funktioniert der Free-Tarif für Azure Site Recovery?
+Jede Instanz, die mit Azure Site Recovery geschützt wird, ist für die ersten 31 Tage kostenlos. Ab dem 32. Tag wird der Schutz für die Instanz zu den oben aufgeführten Tarifen berechnet.
+###<a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Fallen während der ersten 31 Tage irgendwelche anderen Azure-Gebühren an?
+Ja. Auch wenn Azure Site Recovery während der ersten 31 Tage einer geschützten Instanz kostenlos ist, können für Azure Storage, Speichertransaktionen und Datenübertragungen Gebühren anfallen. Auch für einen wiederhergestellten virtuellen Computer können Azure-Computegebühren anfallen. [Hier](https://azure.microsoft.com/pricing/details/site-recovery) erhalten Sie ausführliche Informationen zu den Preisen.
 
 ### <a name="what-are-the-best-practices-for-configuring-site-recovery-on-azure-vms"></a>Welche bewährten Methoden gibt es für die Konfiguration von Site Recovery auf virtuellen Azure-Computern?
 1. [Grundlegendes zur Azure-zu-Azure-Architektur](azure-to-azure-architecture.md)
@@ -70,6 +74,10 @@ Mit Site Recovery können Sie VMs zwischen zwei beliebigen Regionen im gleichen 
 
 Nein, für Site Recovery ist keine Internetverbindung erforderlich. Benötigt wird jedoch ein Zugriff auf die URLs und IP-Adressbereiche von Site Recovery, wie [in diesem Artikel](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges) erwähnt.
 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>Kann ich die Anwendung mit einer separaten Ressourcengruppe für verschiedene Ebenen replizieren? 
+Ja, Sie können die Anwendung replizieren und die Notfallwiederherstellungskonfiguration auch in einer separaten Ressourcengruppe speichern.
+Angenommen, Sie verwenden eine Anwendung, bei der die App-, DB- und Web-Ebenen sich jeweils in einer separaten Ressourcengruppe befinden. Dann müssen Sie dreimal auf den [Replikations-Assistenten](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication) klicken, um alle Ebenen zu schützen. ASR repliziert diese drei Ebenen in drei verschiedenen Ressourcengruppen.
+
 ## <a name="replication-policy"></a>Replikationsrichtlinie
 
 ### <a name="what-is-a-replication-policy"></a>Was ist eine Replikationsrichtlinie?
@@ -89,9 +97,12 @@ Heutzutage können die meisten Anwendungen aus absturzkonsistenten Momentaufnahm
 Site Recovery erstellt alle 5 Minuten einen absturzkonsistenten Wiederherstellungspunkt.
 
 ### <a name="what-is-an-application-consistent-recovery-point"></a>Was ist ein anwendungskonsistenter Wiederherstellungspunkt? 
-Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Momentaufnahmen erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. 
+Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten Momentaufnahmen erstellt. Anwendungskonsistente Wiederherstellungspunkte erfassen dieselben Daten wie absturzkonsistente Momentaufnahmen. Zudem werden alle Daten im Arbeitsspeicher und alle laufenden Transaktionen erfasst. 
 
 Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
+
+### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
+In Anbetracht der Tatsache, dass anwendungskonsistente Wiederherstellungspunkte alle Daten im Arbeitsspeicher und bei der Verarbeitung erfassen, muss das Framework (z.B. VSS auf Windows) die Anwendung stilllegen. Dies kann bei sehr häufiger Ausführung zu Leistungseinbußen führen, wenn die Auslastung bereits sehr hoch ist. Es wird in der Regel empfohlen, keine niedrige Frequenz für anwendungskonsistente Wiederherstellungspunkte für Nicht-Datenbank-Workloads zu verwenden, und selbst für Datenbankworkloads genügt eine Stunde. 
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>Mit welcher Mindesthäufigkeit wird ein anwendungskonsistenter Wiederherstellungspunkt generiert?
 Die Site Recovery kann einen anwendungskonsistenten Wiederherstellungspunkt mit einer Mindesthäufigkeit von 1 pro Stunde erstellen.

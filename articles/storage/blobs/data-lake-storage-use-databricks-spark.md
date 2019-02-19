@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ (Vorschauversion) mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation'
+title: 'Tutorial: Zugreifen auf Azure-Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark | Microsoft-Dokumentation'
 description: In diesem Tutorial erfahren Sie, wie Sie Spark-Abfragen in einem Azure Databricks-Cluster ausführen, um auf Daten in einem Azure-Speicherkonto vom Typ „Data Lake Storage Gen2“ zuzugreifen.
 services: storage
 author: dineshmurthy
@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: 533665ebfa3d35ed5f03326cf5614e37056b7713
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813601"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55891656"
 ---
-# <a name="tutorial-access-data-lake-storage-gen2-preview-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Azure-Daten in Data Lake Storage Gen2 (Vorschauversion) mit Azure Databricks unter Verwendung von Spark
+# <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark
 
-In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Databricks-Cluster mit Daten in einem Azure-Speicherkonto verbinden, für das Azure Data Lake Storage Gen2 (Vorschauversion) aktiviert ist. Diese Verbindung ermöglicht die native Ausführung von Datenabfragen und -analysen über Ihren Cluster.
+In diesem Tutorial erfahren Sie, wie Sie Ihren Azure Databricks-Cluster mit Daten in einem Azure-Speicherkonto verbinden, für das Azure Data Lake Storage Gen2 aktiviert ist. Diese Verbindung ermöglicht die native Ausführung von Datenabfragen und -analysen über Ihren Cluster.
 
 In diesem Lernprogramm lernen Sie Folgendes:
 
@@ -46,7 +46,7 @@ In diesem Tutorial werden Flugdaten des Bureau of Transportation Statistics verw
 
 2. Aktivieren Sie das Kontrollkästchen **Prezipped file** (ZIP-Datei), um alle Datenfelder auszuwählen.
 
-3. Wählen Sie die Downloadschaltfläche**** aus, und speichern Sie die Ergebnisse auf Ihrem Computer. 
+3. Wählen Sie die Downloadschaltfläche aus, und speichern Sie die Ergebnisse auf Ihrem Computer **.** 
 
 4. Entzippen Sie den Inhalt der ZIP-Datei, und notieren Sie sich den Namen und den Pfad der Datei. Diese Informationen werden in einem späteren Schritt benötigt.
 
@@ -78,7 +78,7 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Dienst über das Azure-
 
 2. Geben Sie unter **Azure Databricks-Dienst** die folgenden Werte an, um einen Databricks-Dienst zu erstellen:
 
-    |Eigenschaft  |Beschreibung  |
+    |Eigenschaft  |BESCHREIBUNG  |
     |---------|---------|
     |**Arbeitsbereichsname**     | Geben Sie einen Namen für Ihren Databricks-Arbeitsbereich an.  |
     |**Abonnement**     | Wählen Sie in der Dropdownliste Ihr Azure-Abonnement aus.        |
@@ -145,7 +145,7 @@ In diesem Abschnitt erstellen Sie ein Dateisystem und einen Ordner in Ihrem Spei
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten [Bereithalten der Speicherkontokonfiguration](#config) und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben. Ersetzen Sie den Platzhalter `file-system-name` durch einen beliebigen Namen für Ihr Dateisystem.
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten „Bereithalten der Speicherkontokonfiguration“ und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben. Ersetzen Sie den Platzhalter `file-system-name` durch einen beliebigen Namen für Ihr Dateisystem.
 
 19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen. 
 
@@ -155,7 +155,7 @@ In diesem Abschnitt erstellen Sie ein Dateisystem und einen Ordner in Ihrem Spei
 
 ### <a name="copy-source-data-into-the-storage-account"></a>Kopieren von Quelldaten in das Speicherkonto
 
-Kopieren Sie mithilfe von AzCopy Daten aus Ihrer CSV-Datei** in Ihr Data Lake Storage Gen2-Konto.
+Kopieren Sie mithilfe von AzCopy Daten aus Ihrer *CSV*-Datei in Ihr Data Lake Storage Gen2-Konto.
 
 1. Öffnen Sie ein Eingabeaufforderungsfenster, und geben Sie den folgenden Befehl ein, um sich bei Ihrem Speicherkonto anzumelden:
 
@@ -165,12 +165,12 @@ Kopieren Sie mithilfe von AzCopy Daten aus Ihrer CSV-Datei** in Ihr Data Lake St
 
    Befolgen Sie die Anweisungen, die im Eingabeaufforderungsfenster angezeigt werden, um Ihr Benutzerkonto zu authentifizieren.
 
-2. Geben Sie den folgenden Befehl ein, um Daten aus der CSV-Datei** zu kopieren:
+2. Geben Sie den folgenden Befehl ein, um Daten aus der *CSV*-Datei zu kopieren:
 
    ```bash
    azcopy cp "<csv-folder-path>" https://<storage-account-name>.dfs.core.windows.net/<file-system-name>/folder1/On_Time
    ```
-   * Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Verzeichnispfad der CSV-Datei** (ohne den Namen der Datei).
+   * Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Verzeichnispfad der *CSV*-Datei (ohne den Namen der Datei).
 
    * Ersetzen Sie den Platzhalterwert `storage-account-name` durch den Namen Ihres Speicherkontos.
 
@@ -217,9 +217,9 @@ Als Nächstes können Sie damit beginnen, die Daten abzufragen, die Sie in Ihr S
 
 Führen Sie das folgende Skript aus, um Dataframes für Ihre Datenquellen zu erstellen:
 
-* Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Verzeichnispfad der CSV-Datei** (ohne den Namen der Datei).
+* Ersetzen Sie den Platzhalterwert `<csv-folder-path>` durch den Verzeichnispfad der *CSV*-Datei (ohne den Namen der Datei).
 
-* Ersetzen Sie den Platzhalterwert `<your-csv-file-name` durch den Namen Ihrer** CSV-Datei.
+* Ersetzen Sie den Platzhalterwert `<your-csv-file-name` durch den Namen Ihrer *CSV*-Datei.
 
 ```python
 #Copy this into a Cmd cell in your notebook.
