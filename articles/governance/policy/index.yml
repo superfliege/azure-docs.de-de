@@ -1,9 +1,15 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: db83cf4310cb4d74dcbbd290f650e4dcfc00c0c8
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343705"
 documentType: LandingData
 title: Dokumentation zu Azure Policy
 metadata:
-  title: 'Dokumentation zu Azure Policy – Tutorials, API-Referenz'
-  description: 'Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten.'
+  title: Dokumentation zu Azure Policy – Tutorials, API-Referenz
+  description: Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel.
   services: azure-policy
   author: DCtheGeek
   manager: carmonm
@@ -12,53 +18,56 @@ metadata:
   ms.date: 01/23/2019
   ms.author: dacoulte
 abstract:
-  description: 'Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel. Erfahren Sie anhand unserer Schnellstarts, Tutorials und Beispiele, wie Sie Richtliniendefinitionen erstellen, zuweisen und verwalten.'
+  description: Dank Azure Policy können Sie mithilfe von Richtliniendefinitionen, die Regeln und Aktionen für Ihre Ressourcen erzwingen, IT-Probleme verwalten und verhindern. Wenn Sie Azure Policy verwenden, bleiben Ressourcen stets konform mit Ihren Unternehmensstandards und Vereinbarungen zum Servicelevel.
 sections:
-  - title: Fünfminütige Schnellstarts
+- title: Fünfminütige Schnellstarts
+  items:
+  - type: paragraph
+    text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: 'Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure'
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: ./media/portal.svg
-            text: Azure-Portal
-            href: ./assign-policy-portal
-          - image:
-              src: ./media/powershell.svg
-            text: Azure PowerShell
-            href: ./assign-policy-powershell
-          - image:
-              src: ./media/cli.svg
-            text: Azure-Befehlszeilenschnittstelle
-            href: ./assign-policy-azurecli
-  - title: Schritt-für-Schritt-Tutorials
+    - image:
+        alt: Azure-Portal
+        src: ./media/portal.svg
+      text: Azure-Portal
+      href: ./assign-policy-portal
+    - image:
+        alt: Azure PowerShell
+        src: ./media/powershell.svg
+      text: Azure PowerShell
+      href: ./assign-policy-powershell
+    - image:
+        alt: Azure-Befehlszeilenschnittstelle
+        src: ./media/cli.svg
+      text: Azure-Befehlszeilenschnittstelle
+      href: ./assign-policy-azurecli
+- title: Schritt-für-Schritt-Tutorials
+  items:
+  - type: paragraph
+    text: Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure
+  - type: list
+    style: unordered
     items:
-      - type: paragraph
-        text: 'Informationen zum Erstellen, Zuweisen und Verwalten von Richtliniendefinitionen in Azure'
-      - type: list
-        style: unordered
-        items:
-          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Erstellen und Verwalten von Azure Policy</a>
-  - title: Beispiele
+    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">Erstellen und Verwalten von Azure Policy</a>
+- title: Beispiele
+  items:
+  - type: paragraph
+    text: Nutzen Sie die folgenden JSON-Beispiele als Unterstützung bei der Erstellung von Richtliniendefinitionen in Azure.
+  - type: list
+    style: unordered
+    className: spaced noBullet
     items:
-      - type: paragraph
-        text: Nutzen Sie die folgenden JSON-Beispiele als Unterstützung bei der Erstellung von Richtliniendefinitionen in Azure.
-      - type: list
-        style: unordered
-        className: spaced noBullet
-        items:
-          - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
-  - title: Verweis
+    - html: <a href="/azure/governance/policy/samples/index">Azure PowerShell</a>
+- title: Verweis
+  items:
+  - type: list
+    style: cards
+    className: cardsD
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: Befehlszeile
-            html: <p><a href="/cli/azure/policy">Azure-Befehlszeilenschnittstelle</a></p>
-          - title: PowerShell
-            html: '<p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>'
-          - title: REST-API
-            html: <p><a href="/rest/api/policy-insights/policyevents">Ereignisse</a></p><p><a href="/rest/api/policy-insights/policystates">Zustände</a></p><p><a href="/rest/api/resources/policyassignments">Zuweisungen</a></p><p><a href="/rest/api/resources/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/rest/api/resources/policysetdefinitions">Initiativendefinitionen</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Durch Richtlinie überwachte Ressourcen</a></p><p><a href="/rest/api/policy-insights/remediations">Korrekturen</a></p>
+    - title: Befehlszeile
+      html: <p><a href="/cli/azure/policy">Azure-Befehlszeilenschnittstelle</a></p>
+    - title: PowerShell
+      html: <p><a href="/powershell/module/az.resources/#policies">Azure PowerShell</a></p>
+    - title: REST-API
+      html: <p><a href="/rest/api/policy-insights/policyevents">Ereignisse</a></p><p><a href="/rest/api/policy-insights/policystates">Zustände</a></p><p><a href="/rest/api/resources/policyassignments">Zuweisungen</a></p><p><a href="/rest/api/resources/policydefinitions">Richtliniendefinitionen</a></p><p><a href="/rest/api/resources/policysetdefinitions">Initiativendefinitionen</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">Durch Richtlinie überwachte Ressourcen</a></p><p><a href="/rest/api/policy-insights/remediations">Korrekturen</a></p>

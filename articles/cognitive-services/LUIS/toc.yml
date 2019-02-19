@@ -10,6 +10,10 @@ items:
   items:
   - name: Hinzufügen einer App für eine vordefinierte Domäne
     href: luis-get-started-create-app.md
+  - name: Verwenden von .NET SDK
+    items:
+    - name: Abfragen eines Vorhersageendpunkts
+      href: sdk-csharp-quickstart-query-prediction-endpoint.md
   - name: Verwenden von REST-APIs
     items:
     - name: Abrufen der Absicht
@@ -389,9 +393,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Wissensdatenbank
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 8df7ced2d6be3901c1fbd4bd3426828f60adbcd8
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 5fc7a290d14ba1de59be758905fdd934ab772745
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330493"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340365"
