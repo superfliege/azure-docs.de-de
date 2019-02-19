@@ -1,6 +1,6 @@
 ---
-title: HTTP-Datensammler-API von Log Analytics | Microsoft Docs
-description: Mit der HTTP-Datensammler-API von Log Analytics können Sie dem Log Analytics-Repository über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen.
+title: HTTP-Datensammler-API von Azure Monitor | Microsoft-Dokumentation
+description: Mit der HTTP-Datensammler-API von Azure Monitor können Sie einem Log Analytics-Arbeitsbereich über jeden Client, der die REST-API aufrufen kann, POST JSON-Daten hinzufügen. In diesem Artikel wird beschrieben, wie Sie die API verwenden. Außerdem finden Sie Beispiele zum Veröffentlichen von Daten mit verschiedenen Programmiersprachen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -11,25 +11,27 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/12/2019
 ms.author: bwren
-ms.openlocfilehash: 9fe25821d5a234326570b1681807c6f9dfd6ffc8
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: d2bf55129465a607fdc3bce3bd1735642c64e428
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211099"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237925"
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>Senden von Daten an Log Analytics mit der HTTP-Datensammler-API (Public Preview)
-In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Log Analytics autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
+# <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)
+In diesem Artikel wird gezeigt, wie Sie die HTTP-Datensammler-API verwenden, um Protokolldaten von einem REST-API-Client an Azure Monitor zu senden.  Es wird beschrieben, wie die von Ihrem Skript oder Ihrer Anwendung gesammelten Daten formatiert und in eine Anforderung eingefügt werden müssen, um diese dann von Azure Monitor autorisieren zu lassen.  Die Beispiele werden für PowerShell, C# und Python angegeben.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 > [!NOTE]
-> Die HTTP-Datensammler-API von Log Analytics befindet sich in der Phase „Public Preview“.
+> Die HTTP-Datensammler-API von Azure Monitor befindet sich in der Phase „Public Preview“.
 
 ## <a name="concepts"></a>Konzepte
-Sie können die HTTP-Datensammler-API verwenden, um Daten von einem Client, der die REST-API aufrufen kann, an Log Analytics zu senden.  Dabei kann es sich um ein Runbook in Azure Automation handeln, das Verwaltungsdaten aus Azure oder einer anderen Cloud sammelt, oder ein anderes Verwaltungssystem, das Log Analytics zum Konsolidieren und Analysieren von Daten verwendet.
+Mit der HTTP-Datensammler-API können Sie einem Log Analytics-Arbeitsbereich in Azure Monitor über jeden Client, der eine REST-API aufrufen kann, Protokolldaten senden.  Dabei kann es sich um ein Runbook in Azure Automation handeln, das Verwaltungsdaten aus Azure oder einer anderen Cloud sammelt, oder ein anderes Verwaltungssystem, das Azure Monitor zum Konsolidieren und Analysieren von Protokolldaten verwendet.
 
-Alle Daten im Log Analytics-Repository werden als Datensätze mit einem bestimmten Datensatztyp gespeichert.  Formatieren Sie die Daten für das Senden die HTTP-Datensammler-API als mehrere Datensätze im JSON-Format.  Wenn Sie die Daten übermitteln, wird ein einzelner Datensatz im Repository für jeden Datensatz in der Anforderungsnutzlast erstellt.
+Alle Daten im Log Analytics-Arbeitsbereich werden als Datensätze mit einem bestimmten Datensatztyp gespeichert.  Formatieren Sie die Daten für das Senden die HTTP-Datensammler-API als mehrere Datensätze im JSON-Format.  Wenn Sie die Daten übermitteln, wird ein einzelner Datensatz im Repository für jeden Datensatz in der Anforderungsnutzlast erstellt.
 
 
 ![Übersicht über die HTTP-Datensammler-API](media/data-collector-api/overview.png)
@@ -62,7 +64,7 @@ Um die HTTP-Datensammler-API zu verwenden, erstellen Sie eine POST-Anforderung m
 | time-generated-field |Der Name eines Felds in den Daten, das den Zeitstempel des Datenelements enthält. Wenn Sie ein Feld angeben, wird dessen Inhalt für **TimeGenerated** verwendet. Wenn dieses Feld nicht angegeben wurde, ist der Standardwert für **TimeGenerated** die Zeit, zu der die Nachricht erfasst wurde. Der Inhalt des Nachrichtenfelds sollte das ISO 8601-Format (jjjj-mm-ttThh:mm:ssZ) einhalten. |
 
 ## <a name="authorization"></a>Autorisierung
-Jede Anforderung an die HTTP-Datensammler-API von Log Analytics muss einen „Authorization“-Header enthalten. Um eine Anforderung zu authentifizieren, müssen Sie die Anforderung mit dem primären oder sekundären Schlüssel für den Arbeitsbereich, der die Anforderung gesendet hat, signieren. Übergeben Sie anschließend diese Signatur als Teil der Anforderung.   
+Jede Anforderung an die HTTP-Datensammler-API von Azure Monitor muss einen „Authorization“-Header enthalten. Um eine Anforderung zu authentifizieren, müssen Sie die Anforderung mit dem primären oder sekundären Schlüssel für den Arbeitsbereich, der die Anforderung gesendet hat, signieren. Übergeben Sie anschließend diese Signatur als Teil der Anforderung.   
 
 Dies ist das Format für den „Authorization“-Header:
 
@@ -130,11 +132,11 @@ Sie können mehrere Datensätze in einem Anforderungsbatch zusammenfassen. Verwe
 ```
 
 ## <a name="record-type-and-properties"></a>Datensatztyp und Eigenschaften
-Sie definieren einen benutzerdefinierten Datensatztyp beim Senden von Daten über die HTTP-Datensammler-API von Log Analytics. Derzeit können Sie keine Daten in vorhandene Datensatztypen schreiben, die von anderen Datentypen und Lösungen erstellt wurden. Log Analytics liest die eingehenden Daten und erstellt dann die Eigenschaften, die den Datentypen der eingegebenen Werte entsprechen.
+Sie definieren einen benutzerdefinierten Datensatztyp beim Senden von Daten über die HTTP-Datensammler-API von Azure Monitor. Derzeit können Sie keine Daten in vorhandene Datensatztypen schreiben, die von anderen Datentypen und Lösungen erstellt wurden. Azure Monitor liest die eingehenden Daten und erstellt dann die Eigenschaften, die den Datentypen der eingegebenen Werte entsprechen.
 
-Jede Anforderung an die Log Analytics-API muss einen **Log-Type**-Header mit dem Namen für den Datensatztyp enthalten. Das Suffix **_CL** wird automatisch an den eingegebenen Namen angefügt, um es von anderen Protokolltypen wie z.B. benutzerdefinierten Protokollen zu unterscheiden. Wenn Sie beispielsweise den Namen **MyNewRecordType** eingeben, erstellt Log Analytics einen Datensatz vom Typ **MyNewRecordType_CL**. Dadurch wird sichergestellt, dass keine Konflikte zwischen benutzerdefinierten Typnamen und den im Lieferumfang von aktuellen oder zukünftiger Microsoft-Lösungen enthaltenen Typen auftreten.
+Jede Anforderung an die Datensammler-API muss einen **Log-Type**-Header mit dem Namen für den Datensatztyp enthalten. Das Suffix **_CL** wird automatisch an den eingegebenen Namen angefügt, um es von anderen Protokolltypen wie z.B. benutzerdefinierten Protokollen zu unterscheiden. Wenn Sie beispielsweise den Namen **MyNewRecordType** eingeben, erstellt Azure Monitor einen Datensatz vom Typ **MyNewRecordType_CL**. Dadurch wird sichergestellt, dass keine Konflikte zwischen benutzerdefinierten Typnamen und den im Lieferumfang von aktuellen oder zukünftiger Microsoft-Lösungen enthaltenen Typen auftreten.
 
-Um den Datentyp einer Eigenschaft festzulegen, fügt Log Analytics ein Suffix an den Eigenschaftennamen an. Wenn eine Eigenschaft einen NULL-Wert enthält, ist die Eigenschaft nicht in diesem Datensatz enthalten. Diese Tabelle enthält den Datentyp der Eigenschaft und das entsprechende Suffix:
+Um den Datentyp einer Eigenschaft festzulegen, fügt Azure Monitor ein Suffix an den Eigenschaftennamen an. Wenn eine Eigenschaft einen NULL-Wert enthält, ist die Eigenschaft nicht in diesem Datensatz enthalten. Diese Tabelle enthält den Datentyp der Eigenschaft und das entsprechende Suffix:
 
 | Datentyp der Eigenschaft | Suffix |
 |:--- |:--- |
@@ -144,10 +146,10 @@ Um den Datentyp einer Eigenschaft festzulegen, fügt Log Analytics ein Suffix an
 | Datum/Uhrzeit |_t |
 | GUID |_g |
 
-Der Datentyp, den Log Analytics für die einzelnen Eigenschaften verwendet, hängt davon ab, ob der Datensatztyp für den neuen Datensatz bereits vorhanden ist.
+Der Datentyp, den Azure Monitor für die einzelnen Eigenschaften verwendet, hängt davon ab, ob der Datensatztyp für den neuen Datensatz bereits vorhanden ist.
 
-* Wenn der Datensatztyp noch nicht vorhanden ist, erstellt Log Analytics einen neuen. Log Analytics verwendet den JSON-Typrückschluss, um den Datentyp für die einzelnen Eigenschaften des neuen Datensatzes zu ermitteln.
-* Wenn der Datensatztyp vorhanden ist, erstellt Log Analytics einen neuen Datensatz basierend auf vorhandenen Eigenschaften. Wenn der Datentyp für eine Eigenschaft im neuen Datensatz nicht übereinstimmt und nicht in den vorhandenen Typ konvertiert werden kann oder wenn der Datensatz eine nicht vorhandene Eigenschaft enthält, erstellt Log Analytics eine neue Eigenschaft mit dem relevanten Suffix.
+* Wenn der Datensatztyp nicht vorhanden ist, erstellt Azure Monitor einen neuen und verwendet dabei den JSON-Typrückschluss, um den Datentyp für die einzelnen Eigenschaften des neuen Datensatzes zu ermitteln.
+* Wenn der Datensatztyp vorhanden ist, erstellt Azure Monitor einen neuen Datensatz basierend auf vorhandenen Eigenschaften. Wenn der Datentyp für eine Eigenschaft im neuen Datensatz nicht übereinstimmt und nicht in den vorhandenen Typ konvertiert werden kann oder wenn der Datensatz eine nicht vorhandene Eigenschaft enthält, erstellt Azure Monitor eine neue Eigenschaft mit dem relevanten Suffix.
 
 Bei diesem Übermittlungseintrag würde beispielsweise ein Datensatz mit den drei Eigenschaften **number_d**, **boolean_b** und **string_s** erstellt werden:
 
@@ -157,20 +159,22 @@ Wenn Sie dann den folgenden Eintrag übermitteln, bei dem alle Werte als Zeichen
 
 ![Beispieldatensatz 2](media/data-collector-api/record-02.png)
 
-Wenn Sie dann aber diese weitere Übermittlung durchführen, erstellt Log Analytics die neuen Eigenschaften **boolean_d** und **string_d**. Diese Werte können nicht konvertiert werden:
+Wenn Sie dann aber diese weitere Übermittlung durchführen, erstellt Azure Monitor die neuen Eigenschaften **boolean_d** und **string_d**. Diese Werte können nicht konvertiert werden:
 
 ![Beispieldatensatz 3](media/data-collector-api/record-03.png)
 
-Wenn Sie dann den folgenden Eintrag übermitteln, bevor der Datensatztyp erstellt wurde, würde Log Analytics einen Datensatz mit den drei Eigenschaften **number_s**, **boolean_s** und **string_s** erstellen. In diesem Eintrag sind alle Anfangswerte als Zeichenfolge formatiert:
+Wenn Sie dann den folgenden Eintrag übermitteln, bevor der Datensatztyp erstellt wurde, erstellt Azure Monitor einen Datensatz mit den drei Eigenschaften **number_s**, **boolean_s** und **string_s**. In diesem Eintrag sind alle Anfangswerte als Zeichenfolge formatiert:
 
 ![Beispieldatensatz 4](media/data-collector-api/record-04.png)
 
 ## <a name="data-limits"></a>Datengrenzwerte
-Für die Daten, die an die Datensammlungs-API von Log Analytics gesendet werden, gelten einige Einschränkungen.
+Für die Daten, die an die Datensammlungs-API von Azure Monitor gesendet werden, gelten einige Einschränkungen.
 
-* Maximal 30 MB pro Sendung an die Datensammlungs-API von Log Analytics. Diese Größenbeschränkung gilt für eine einzelne Sendung. Wenn eine einzelne Sendung mehr als 30 MB Daten enthält, teilen Sie die Daten auf, und senden Sie kleinere Datenblöcke gleichzeitig.
+* Maximal 30 MB pro Sendung an die Datensammlungs-API von Azure Monitor. Diese Größenbeschränkung gilt für eine einzelne Sendung. Wenn eine einzelne Sendung mehr als 30 MB Daten enthält, teilen Sie die Daten auf, und senden Sie kleinere Datenblöcke gleichzeitig.
 * Maximal 32 KB für Feldwerte. Wenn ein Feldwert größer ist als 32 KB, werden die Daten abgeschnitten.
 * Die empfohlene maximale Anzahl von Feldern eines bestimmten Typs beträgt 50. Dies ist aus Sicht der Benutzerfreundlichkeit und Suchleistung ein praktikabler Wert.  
+* Eine Tabelle in einem Log Analytics-Arbeitsbereich unterstützt nur bis zu 500 Spalten (in diesem Artikel als ein Feld bezeichnet). 
+* Die maximale Anzahl von Zeichen für den Spaltennamen ist 500.
 
 ## <a name="return-codes"></a>Rückgabecodes
 Der HTTP-Statuscode 200 bedeutet, dass die Anforderung für die Verarbeitung empfangen wurde. Dies gibt an, dass der Vorgang erfolgreich abgeschlossen wurde.
@@ -196,15 +200,10 @@ Diese Tabelle enthält den vollständigen Satz von Statuscodes, die vom Dienst z
 | 503 |Dienst nicht verfügbar |ServiceUnavailable |Der Dienst kann derzeit keine Anforderungen empfangen. Bitte wiederholen Sie die Anforderung. |
 
 ## <a name="query-data"></a>Abfragen von Daten
-Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Log Analytics übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht, und dem Suffix **_CL**. Wenn Sie z.B. **MyCustomLog** verwendet haben, werden alle Datensätze mit **Type=MyCustomLog_CL** zurückgegeben.
-
->[!NOTE]
-> Wenn für Ihren Arbeitsbereich ein Upgrade auf die [neue Log Analytics-Abfragesprache](../../azure-monitor/log-query/log-query-overview.md) durchgeführt wurde, muss die obige Abfrage wie folgt geändert werden.
-
-> `MyCustomLog_CL`
+Zum Abfragen von Daten, die über die HTTP-Datensammler-API von Azure Monitor übermittelt wurden, suchen Sie nach Datensätzen mit einem **Typ**, der dem von Ihnen angegebenen **LogType**-Wert entspricht, und dem Suffix **_CL**. Wenn Sie z.B. **MyCustomLog** verwendet haben, werden alle Datensätze mit `MyCustomLog_CL` zurückgegeben.
 
 ## <a name="sample-requests"></a>Beispielanforderungen
-In den nächsten Abschnitten finden Sie Beispiele für das Senden von Daten an die HTTP-Datensammler-API von Log Analytics in verschiedenen Programmiersprachen.
+In den nächsten Abschnitten finden Sie Beispiele für das Senden von Daten an die HTTP-Datensammler-API von Azure Monitor in verschiedenen Programmiersprachen.
 
 Führen Sie für alle Beispiele folgende Schritte aus, um die Variablen für den „Authorization“-Header festzulegen:
 
@@ -226,7 +225,7 @@ $SharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 # Specify the name of the record type that you'll be creating
 $LogType = "MyRecordType"
 
-# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+# You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
 $TimeStampField = ""
 
 
@@ -321,10 +320,10 @@ namespace OIAPIExample
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
         static string sharedKey = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx";
 
-        // LogName is name of the event type that is being submitted to Log Analytics
+        // LogName is name of the event type that is being submitted to Azure Monitor
         static string LogName = "DemoExample";
 
-        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Log Analytics assumes the time is the message ingestion time
+        // You can use an optional field to specify the timestamp from the data. If the time field is not specified, Azure Monitor assumes the time is the message ingestion time
         static string TimeStampField = "";
 
         static void Main()
@@ -468,6 +467,6 @@ post_data(customer_id, shared_key, body, log_type)
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Verwenden Sie zum Abrufen von Daten aus dem Log Analytics-Repository die [Protokollsuch-API](../../azure-monitor/log-query/log-query-overview.md).
+- Verwenden Sie zum Abrufen von Daten aus dem Log Analytics-Arbeitsbereich die [Protokollsuch-API](../log-query/log-query-overview.md).
 
-- Erfahren Sie mehr über das [Erstellen einer Datenpipeline mit der Datensammler-API](../../azure-monitor/platform/create-pipeline-datacollector-api.md) mithilfe des Logic Apps-Workflows für Log Analytics.
+- Erfahren Sie mehr über das [Erstellen einer Datenpipeline mit der Datensammler-API](create-pipeline-datacollector-api.md) mithilfe des Logic Apps-Workflows für Azure Monitor.

@@ -11,22 +11,58 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/18/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
-ms.reviewer: wfayed
-ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 585fc4f1bbddb08d881414b581120b7bc14232ab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.reviewer: justini
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729933"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099291"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
 *Gilt für: Integrierte Azure Stack-Systeme*
 
-Sie können im Verwaltungsportal über die Kachel **Aktualisieren** Microsoft- oder OEM-Updatepakete für Azure Stack anwenden. Sie müssen das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren.
+Sie können im Verwaltungsportal über die Kachel **Aktualisieren** Microsoft- oder OEM-Updatepakete für Azure Stack anwenden.
+
+Wenn Sie eine integrierte Systemversion 1807 oder höher verwenden, müssen Sie das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren. Anweisungen hierzu finden Sie unter [Aktualisieren von Azure Stack durch Herunterladen des Pakets](#update-azure-stack-by-downloading-the-package).
+
+Diese Upgradeanweisungen funktionieren nur mit integrierten Azure Stack-Systemen. Wenn Sie das Azure Stack-Entwicklungssystem verwenden, müssen Sie das Installationspaket für die aktuelle Version herunterladen. Anleitungen finden Sie unter [Installieren des Azure Stack Development Kits](.\asdk\asdk-install.md).
+
+## <a name="update-azure-stack"></a>Aktualisieren von Azure Stack
+
+### <a name="select-and-apply-an-update-package"></a>Auswählen und Anwenden eines Updatepakets
+
+1. Öffnen Sie das Verwaltungsportal.
+
+2. Wählen Sie **Dashboard** aus. Wählen Sie die Kachel **Update** aus.
+
+    ![Azure Stack-Update verfügbar](media/azure-stack-apply-updates/azure-stack-updates-1901-dashboard.png)
+
+3. Notieren Sie sich die aktuelle Version Ihres Azure Stacks. Sie können auf die nächsten Vollversion aktualisieren. Wenn Sie beispielsweise Azure Stack 1811 ausführen, ist die nächste veröffentlichte Version 1901.
+
+    ![Azure Stack-Update anwenden](media/azure-stack-apply-updates/azure-stack-updates-1901-updateavailable.png)
+
+4. Wählen Sie die nächste verfügbare Version in der Liste „Updates“ aus. Sie können in der Spalte mit den Versionshinweisen **Anzeigen** auswählen, um das Thema mit den Versionshinweisen für die Version anzuzeigen, wenn Sie die Versionsänderungen überprüfen möchten.
+
+5. Wählen Sie jetzt das Update aus. Das Update wird gestartet.
+
+### <a name="review-update-history"></a>Prüfen des Updateverlaufs
+
+1. Öffnen Sie das Verwaltungsportal.
+
+2. Wählen Sie **Dashboard** aus. Wählen Sie die Kachel **Update** aus.
+
+3. Wählen Sie **Updateverlauf** aus.
+
+![Azure Stack-Updateverlauf](media/azure-stack-apply-updates/azure-stack-update-history.PNG)
+
+## <a name="update-azure-stack-by-downloading-the-package"></a>Aktualisieren von Azure Stack durch Herunterladen des Pakets
+
+Wenn Sie eine integrierte Systemversion 1807 oder höher verwenden, müssen Sie das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren.
 
 ## <a name="download-the-update-package"></a>Herunterladen des Updates
 
