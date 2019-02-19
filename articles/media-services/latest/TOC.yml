@@ -15,12 +15,15 @@ items:
 - name: Lernprogramme
   items:
   - name: 'Codieren von Remotedateien und Streamen von Videos: REST'
+    displayName: encoding, job, transform
     href: stream-files-tutorial-with-rest.md
   - name: 'Codieren von hochgeladenen Dateien und Streamen von Videos: .NET'
+    displayName: encode, encoding, job, transform
     href: stream-files-tutorial-with-api.md
   - name: 'Livestreaming: .NET'
     href: stream-live-tutorial-with-api.md
   - name: 'Analysieren Ihres Videos: .NET'
+    displayName: job, transform
     href: analyze-videos-tutorial-with-api.md
   expanded: true
 - name: Beispiele
@@ -31,32 +34,54 @@ items:
     href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Erfassen
+  - name: Clouduploads und Cloudspeicherung
+    href: storage-account-concept.md
     items:
     - name: Objekte
       href: assets-concept.md
   - name: Codieren
-    href: encoding-concept.md
     items:
+    - name: Übersicht
+      displayName: Presets
+      href: encoding-concept.md
     - name: Transformationen und Aufträge
       href: transforms-jobs-concept.md
     - name: Media Encoder Standard-Formate
       href: media-encoder-standard-formats.md
     - name: Automatisches Generieren einer Reihe von adaptiven Bitraten
       href: autogen-bitrate-ladder.md
-  - name: Analysieren
-    href: analyzing-video-audio-files-concept.md
+  - name: Media Analytics
     items:
+    - name: Übersicht
+      displayName: Presets
+      href: analyzing-video-audio-files-concept.md
     - name: Transformationen und Aufträge
       href: transforms-jobs-concept.md
-  - name: Datenstrom
+  - name: Verpackung, Bereitstellung, Schutz
     items:
+    - name: Verpackung
+      items:
+      - name: Dynamische Paketerstellung
+        href: dynamic-packaging-overview.md
+      - name: Filter
+        href: filters-concept.md
+      - name: Dynamische Manifeste
+        href: filters-dynamic-manifest-overview.md
+    - name: Content Protection
+      href: content-protection-overview.md
+      items:
+      - name: Multi-DRM-System mit Zugriffssteuerung
+        href: design-multi-drm-system-with-access-control.md
     - name: Streamingendpunkte
+      displayName: Origins
       href: streaming-endpoint-concept.md
     - name: Streaminglocators
+      displayName: URLs
       href: streaming-locators-concept.md
     - name: Streamingrichtlinien
       href: streaming-policy-concept.md
+    - name: Richtlinien für Inhaltsschlüssel
+      href: content-key-policy-concept.md
   - name: Livestreaming
     href: live-streaming-overview.md
     items:
@@ -72,36 +97,19 @@ items:
       href: live-event-states-billing.md
     - name: Latency
       href: live-event-latency.md
-  - name: Bereitstellen
+  - name: Überwachung
     items:
-    - name: Filter und dynamisches Manifest
-      href: filters-dynamic-manifest-overview.md
-  - name: Überwachen
-    items:
-    - name: Event Grid
+    - name: Ereignisse mit Event Grid
       href: reacting-to-media-services-events.md
-  - name: Schützen
-    href: content-protection-overview.md
+  - name: Beteiligte Kunden
     items:
-    - name: Richtlinien für Inhaltsschlüssel
-      href: content-key-policy-concept.md
-    - name: Streamingrichtlinien
-      href: streaming-policy-concept.md
-    - name: Streaminglocators
-      href: streaming-locators-concept.md
-    - name: Multi-DRM-System mit Zugriffssteuerung
-      href: design-multi-drm-system-with-access-control.md
-  - name: Wiedergabe
-    href: use-azure-media-player.md
-  - name: Konten
+    - name: Azure Media Player
+      href: use-azure-media-player.md
+  - name: Media Services-Entitäten
     items:
-    - name: Kontingente und Einschränkungen
-      href: limits-quotas-constraints.md
-    - name: Speicherkonten
-      href: storage-account-concept.md
-  - name: Filtern, Sortieren und Einteilen in Seiten von Entitäten
-    href: entities-overview.md
-  - name: Migrieren von v2 zu v3
+    - name: Sortieren, Filtern, Paging von Entitäten
+      href: entities-overview.md
+  - name: Hinweise zur Migration von v2 zu v3
     href: migrate-from-v2-to-v3.md
 - name: Anleitungen
   items:
@@ -113,19 +121,34 @@ items:
       href: access-api-cli-how-to.md
     - name: 'Skalieren reservierter Einheiten für Medien: CLI'
       href: media-reserved-units-cli-how-to.md
-  - name: Konfigurieren von Postman
-    href: media-rest-apis-with-postman.md
+    - name: Beginnen mit der Entwicklung
+      href: developers-guide.md
+    - name: Konfigurieren von Postman
+      href: media-rest-apis-with-postman.md
   - name: Hochladen von Inhalten
     items:
-    - name: 'Über HTTP(s): .NET'
+    - name: 'Über HTTPS: .NET'
+      displayName: upload
       href: job-input-from-http-how-to.md
     - name: 'Über eine lokale Datei: .NET'
+      displayName: upload
       href: job-input-from-local-file-how-to.md
     - name: 'Über eine lokale Datei: REST'
+      displayName: upload
       href: upload-files-rest-how-to.md
   - name: Codieren von Inhalten
     items:
-    - name: 'Anpassen der Transformationsvoreinstellungen: .NET'
+    - name: 'HTTPS als Auftragseingabe: .NET'
+      displayName: encode, encoding
+      href: job-input-from-http-how-to.md
+    - name: 'Lokale Datei als Auftragseingabe: .NET'
+      displayName: encode, encoding
+      href: job-input-from-local-file-how-to.md
+    - name: 'Lokale Datei als Auftragseingabe: REST'
+      displayName: encode
+      href: upload-files-rest-how-to.md
+    - name: 'Verwenden einer benutzerdefinierten Transformation: .NET'
+      displayName: encode, encoding, tranform
       href: customize-encoder-presets-how-to.md
   - name: Verwenden von Event Grid
     items:
@@ -215,13 +238,15 @@ items:
     href: https://github.com/Azure/Azure-Media-Services-Explorer
   - name: Versionshinweise
     href: release-notes.md
+  - name: Kontingente und Einschränkungen
+    href: limits-quotas-constraints.md
   - name: Häufig gestellte Fragen
     href: frequently-asked-questions.md
   - name: Azure-Clouds und -Regionen
     href: azure-clouds-regions.md
-ms.openlocfilehash: 0ca98ea27a77418ee5a111a67bd013ab6ad40e55
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 05b20d905a5848cfcfd0f9c6d20e4addb5c776fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330017"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340432"

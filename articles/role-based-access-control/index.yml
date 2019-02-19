@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 6972ad521ac5622086b5294dc6b49e35f10ba178
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 2f0465b954e48822470374abeadb13e90a03fa3a
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431480"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408730"
 documentType: LandingData
-title: Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC)
+title: Dokumentation zur RBAC für Azure-Ressourcen
 metadata:
   document_id: 
-  title: Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure | Microsoft-Dokumentation
+  title: Dokumentation zur rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen | Microsoft-Dokumentation
   description: Hier erfahren Sie, wie Sie mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten, welche Benutzer Zugriff auf Azure-Ressourcen besitzen, welche Aktionen für diese Ressourcen ausgeführt werden können und auf welche Bereiche die Benutzer zugreifen können.
   services: active-directory
   author: rolyon
@@ -18,10 +18,10 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 06/15/2018
+  ms.date: 02/16/2019
   ms.author: rolyon
 abstract:
-  description: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Ressourcen in Azure ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
+  description: Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ist ein System, das eine präzise Zugriffsverwaltung für Azure-Ressourcen ermöglicht. Mithilfe von RBAC können Sie Aufgaben in Ihrem Team verteilen und Benutzern nur den Zugriff gewähren, den sie zur Ausführung ihrer Aufgaben benötigen.
   aside:
     image:
       alt: 
@@ -37,12 +37,13 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Gewähren des Zugriffs für einen Benutzer</a>
+    - html: <a href="/azure/role-based-access-control/check-access">Anzeigen des Zugriffs für einen Benutzer</a>
 - title: Schritt-für-Schritt-Tutorials
   items:
   - type: list
     style: unordered
     items:
+    - html: '<a href="/azure/role-based-access-control/quickstart-assign-role-user-portal">Gewähren des Zugriffs für einen Benutzer: Portal</a>'
     - html: '<a href="/azure/role-based-access-control/tutorial-role-assignments-group-powershell">Gewähren des Zugriffs für eine Gruppe: PowerShell</a>'
     - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-powershell">Erstellen einer benutzerdefinierten Rolle: PowerShell</a>'
     - html: '<a href="/azure/role-based-access-control/tutorial-custom-role-cli">Erstellen einer benutzerdefinierten Rolle: CLI</a>'

@@ -8,12 +8,12 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 11384d1bbffb675bd322469d129464f58a48bb6b
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 1cfe7dab907a332f1a38560c39d4f6476cee81aa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53311830"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004734"
 ---
 # <a name="what-is-azure-policy"></a>Was ist Azure Policy?
 
@@ -29,7 +29,7 @@ Azure Policy ist ein Dienst in Azure, mit dem Sie Richtlinien erstellen, zuweise
 
 ## <a name="how-is-it-different-from-rbac"></a>Worin unterscheidet sich dies von der rollenbasierten Zugriffssteuerung (RBAC)?
 
-Zwischen Policy und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen Benutzeraktionen in verschiedenen Bereichen im Mittelpunkt. Sie können der Rolle „Mitwirkender“ für eine Ressourcengruppe hinzugefügt werden, damit Sie für die Ressourcengruppe Änderungen vornehmen können. Bei Policy stehen Ressourceneigenschaften während der Bereitstellung und für bereits bestehende Ressourcen im Mittelpunkt. Policy steuert Eigenschaften, z.B. die Typen oder Speicherorte von Ressourcen. Im Gegensatz zu RBAC stellt Policy ein Standardsystem für das Zulassen und explizite Ablehnen dar.
+Zwischen Policy und der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) gibt es einige entscheidende Unterschiede. Bei RBAC stehen Benutzeraktionen in verschiedenen Bereichen im Mittelpunkt. Sie können der Rolle „Mitwirkender“ für eine Ressourcengruppe hinzugefügt werden, damit Sie für die Ressourcengruppe Änderungen vornehmen können. Bei einer Richtlinie stehen Ressourceneigenschaften während der Bereitstellung und für bereits bestehende Ressourcen im Mittelpunkt. Policy steuert Eigenschaften, z.B. die Typen oder Speicherorte von Ressourcen. Im Gegensatz zu RBAC stellt Policy ein Standardsystem für das Zulassen und explizite Ablehnen dar.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-Berechtigungen in Azure Policy
 
@@ -85,7 +85,7 @@ Weitere Informationen zu Richtlinienparametern finden Sie unter [Struktur von Az
 
 Eine Initiativdefinition ist eine Auflistung von Richtliniendefinitionen, die auf das Erreichen eines einzigen übergeordneten Ziels ausgerichtet sind. Initiativdefinitionen vereinfachen das Verwalten und Zuweisen von Richtliniendefinitionen. Die Vereinfachung besteht im Gruppieren einer Reihe von Richtlinien zu einem einzelnen Element. Beispielsweise können Sie eine Initiative mit dem Titel **Überwachung im Azure Security Center aktivieren** mit dem Ziel erstellen, alle vorhandenen Sicherheitsempfehlungen in Ihrem Azure Security Center zu überwachen.
 
-Im Rahmen dieser Initiative würden Sie in etwa folgende Richtliniendefinitionen nutzen:
+Im Rahmen dieser Initiative würden Sie Richtliniendefinitionen wie etwa Folgende haben:
 
 - **Unverschlüsselte SQL-Datenbank im Security Center überwachen** – Zum Überwachen von unverschlüsselten SQL-Datenbanken und Servern.
 - **Betriebssystem-Sicherheitsrisiken in Security Center überwachen** – Zum Überwachen von Servern, die die konfigurierte Baseline nicht erfüllen.
