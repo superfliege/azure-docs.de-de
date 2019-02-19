@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/07/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: c81701dff8d7eebf08aa6b16c61e6915a905c729
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 767e64d4d53702ede7b55edc747366ab3d32ae4d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172713"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996098"
 ---
 # <a name="about-user-interface-customization-in-azure-active-directory-b2c"></a>Informationen zur Anpassung der Benutzeroberfläche (UI) in Azure Active Directory B2C
 
@@ -24,17 +24,19 @@ Dass Sie die Möglichkeit haben, der Benutzeroberfläche (UI), die Azure Active 
 Je nach Ihren Anforderungen hinsichtlich dieser Erfahrungen passen Sie die Benutzeroberfläche Ihrer Anwendung auf unterschiedliche Weise an. Beispiel: 
 
 - Wenn Sie [Benutzerflows](active-directory-b2c-reference-policies.md) verwenden, um in Ihrer Anwendung Benutzeroberflächenfeatures für Registrierung oder Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie das [Azure-Portal zum Anpassen der Benutzeroberfläche](tutorial-customize-ui.md).
+- Wenn Sie einen V2-Benutzerflow verwenden, können Sie mithilfe einer [Seitenlayoutvorlage](#page-layout-templates) das Aussehen Ihrer Benutzerflowseiten ohne weitere Anpassung ändern. Sie können beispielsweise das Design „Ozeanblau“ oder „Schiefergrau“ auf alle Seiten in Ihrem Benutzerflow anwenden.
 - Wenn Sie nur eine Anmeldung mit der begleitenden Seite für die Kennwortzurücksetzung sowie Verifizierungs-E-Mails bereitstellen, verwenden Sie dieselben Anpassungsschritte, die für eine [Azure AD-Anmeldeseite](../active-directory/fundamentals/customize-branding.md) verwendet werden.
 - Wenn Kunden versuchen, ihr Profil zu bearbeiten, bevor sie sich anmelden, werden sie zu einer Seite umgeleitet, die Sie mithilfe derselben Schritte anpassen, die zum Anpassen der Anmeldeseite von Azure AD verwendet werden.
 - Wenn Sie [benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) verwenden, um in Ihrer Anwendung Registrierung bzw. Anmeldung, Kennwortzurücksetzung oder Profilbearbeitung bereitzustellen, verwenden Sie die [Richtliniendateien zum Anpassen der Benutzeroberfläche](active-directory-b2c-ui-customization-custom.md).
 - Wenn Sie dynamische Inhalte auf Grundlage der Entscheidung eines Kunden bereitstellen müssen, verwenden Sie [benutzerdefinierte Richtlinien, die Seiteninhalte ändern können](active-directory-b2c-ui-customization-custom-dynamic.md), in Abhängigkeit von einem Parameter, der in einer Abfragezeichenfolge gesendet wird. So ändert sich beispielsweise das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf Grundlage eines Parameters, den Sie aus Ihrer Web- oder Mobilanwendung übergeben.
+- Sie können den clientseitigen JavaScript-Code in Ihren Azure AD B2C-[Benutzerflows](user-flow-javascript-overview.md) oder [benutzerdefinierten Richtlinien](page-contract.md) aktivieren.
 
 Azure AD B2C führt den Code im Browser Ihres Kunden aus und verwendet einen modernen Ansatz namens [Cross-Origin Resource Sharing](https://www.w3.org/TR/cors/) (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zur Laufzeit wird Inhalt über eine URL geladen, die Sie in einem Benutzerflow oder einer Richtlinie angeben. Sie geben verschiedene URLs für unterschiedliche Seiten an. Nachdem Inhalt über Ihr URL geladen wurde, wird er mit einem von Azure AD B2C eingefügten HTML-Fragment zusammengeführt und dann Ihrem Kunden angezeigt.
 
-Bevor Sie beginnen, lesen Sie die folgenden Anleitungen:
+Wenn Sie zum Anpassen der Benutzeroberfläche Ihre eigenen HTML- und CSS-Dateien verwenden, überprüfen Sie vor dem Start die folgenden Hinweise:
 
 - Azure AD B2C führt HTML-Inhalt in Ihre Seiten zusammen. Versuchen Sie nicht, den Standardinhalt zu kopieren oder zu ändern, den Azure AD B2C bereitstellt. Es wird empfohlen, eigene HTML-Inhalte von Grund auf neu zu erstellen und den Standardinhalt als Referenz zu verwenden.
-- Aus Gründen der Sicherheit dürfen Sie kein JavaScript in Ihren Inhalt aufnehmen.
+- JavaScript kann nun in den benutzerdefinierten Inhalt einbezogen werden.
 - Unterstützte Browserversionen sind: 
     - Internet Explorer 11, 10 und Microsoft Edge
     - Eingeschränkte Unterstützung für Internet Explorer 9 und 8
@@ -42,9 +44,23 @@ Bevor Sie beginnen, lesen Sie die folgenden Anleitungen:
     - Mozilla Firefox 38.0 und höher
 - Stellen Sie sicher, dass Sie keine Form-Tags in Ihren HTML-Code einschließen, da dies die POST-Vorgänge beeinträchtigt, die mit dem aus Azure AD B2C eingefügten HTML-Code generiert werden.
 
+## <a name="page-layout-templates"></a>Seitenlayoutvorlagen
+
+Für V2-Benutzerflows können Sie eine vordefinierte Vorlage auswählen, die Ihren Standardseiten ein besseres Aussehen verleiht und als gute Grundlage für Ihre eigene Anpassung dienen kann.
+
+Wählen Sie im linken Menü unter **Anpassen** die Option **Seitenlayouts** aus. Wählen Sie dann **Vorlage (Vorschau)** aus.
+
+![Auswählen einer Seitenlayoutvorlage](media/customize-ui-overview/template.png)
+
+Wählen Sie eine Vorlage aus der Liste aus. Mit der Vorlage **Ozeanblau** wird beispielsweise das folgende Layout auf Ihre Benutzerflowseiten angewendet:
+
+![Vorlage „Ozeanblau“](media/customize-ui-overview/ocean-blue.png)
+
+Wenn Sie eine Vorlage auswählen, wird das ausgewählte Layout auf alle Seiten in Ihrem Benutzerflow angewendet, und im Feld **Benutzerdefinierter Seiten-URI** wird der URI für jede Seite angezeigt.
+
 ## <a name="where-do-i-store-ui-content"></a>Wo speichere ich Inhalte der Benutzeroberfläche?
 
-Sie können Ihren Benutzeroberflächeninhalte überall hosten, z. B. auf [Azure-BLOB-Speicher](../storage/blobs/storage-blobs-introduction.md), Webservern, CDNs, AWS S3 oder Dateifreigabesystemen. Der wichtige Punkt hierbei ist, dass Sie die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) hosten. Sie müssen eine absolute URL verwenden, wenn Sie ihn in Ihrem Inhalt angeben.
+Wenn Sie zum Anpassen der Benutzeroberfläche Ihre eigenen HTML- und CSS-Dateien verwenden, können Sie Ihre Benutzeroberflächeninhalte überall hosten, z. B. im [Azure-BLOB-Speicher](../storage/blobs/storage-blobs-introduction.md), auf Webservern, in CDNs, AWS S3 oder Dateifreigabesystemen. Der wichtige Punkt hierbei ist, dass Sie die Inhalte auf einem öffentlich verfügbaren HTTPS-Endpunkt (mit aktiviertem CORS) hosten. Sie müssen eine absolute URL verwenden, wenn Sie ihn in Ihrem Inhalt angeben.
 
 ## <a name="how-do-i-get-started"></a>Wie fange ich an?
 

@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: iainfou
-ms.openlocfilehash: a7a7c8a6f16183d677aeb09ca62ac601cbd01289
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2366bd5543a7c3ee4a45eff74f71232a9c60989f
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694039"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098533"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Häufig gestellte Fragen zu Azure Kubernetes Service (AKS)
 
@@ -60,7 +60,7 @@ Wenn Sie Ressourcen erstellen, die mit Ihrem AKS-Cluster verwendet werden sollen
 
 ## <a name="can-i-modify-tags-and-other-properties-of-the-aks-resources-in-the-mc-resource-group"></a>Kann ich Tags und anderen Eigenschaften der AKS-Ressourcen in der Ressourcengruppe MC_* ändern?
 
-Das Ändern und Löschen der von Azure erstellten Tags und anderen Eigenschaften von Ressourcen in der Ressourcengruppe *MC_** kann zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. Unterstützt wird das Erstellen und Ändern zusätzlicher benutzerdefinierter Tags, z.B. um einen Geschäftsbereich oder eine Kostenstelle zuzuweisen. Durch das Ändern der Ressourcen unter der Ressourcengruppe *MC_** im AKS-Cluster wird das SLO unterbrochen.
+Das Ändern und Löschen der von Azure erstellten Tags und anderen Eigenschaften von Ressourcen in der Ressourcengruppe *MC_** kann zu unerwarteten Ergebnissen wie Skalierungs- und Aktualisierungsfehlern führen. Unterstützt wird das Erstellen und Ändern zusätzlicher benutzerdefinierter Tags, z.B. um einen Geschäftsbereich oder eine Kostenstelle zuzuweisen. Durch das Ändern der Ressourcen unter der Gruppe *MC_** im AKS-Cluster wird das Servicelevelziel (SLO) unterbrochen. Weitere Informationen finden Sie unter [Bietet AKS eine Vereinbarung zum Servicelevel?](#does-aks-offer-a-service-level-agreement)
 
 ## <a name="what-kubernetes-admission-controllers-does-aks-support-can-admission-controllers-be-added-or-removed"></a>Welche Kubernetes-Zugangssteuerungen werden von AKS unterstützt? Können Zulassungscontroller hinzugefügt oder entfernt werden?
 

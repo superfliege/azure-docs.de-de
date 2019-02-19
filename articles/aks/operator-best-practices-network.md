@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: iainfou
-ms.openlocfilehash: 15b389e2158cb3a2070cc09b20f79f4274fde5d9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 680e3990afa3ed08c69402e9e5403cb9a6f3266a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699124"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175454"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Best Practices für Netzwerkkonnektivität und Sicherheit in Azure Kubernetes Service (AKS)
 
@@ -120,6 +120,34 @@ Eine Web Application Firewall (WAF) bietet eine zusätzliche Sicherheitsebene, i
 
 Load Balancer oder Eingangsressourcen werden in Ihrem AKS-Cluster weiterhin ausgeführt, um die Verteilung des Datenverkehrs weiter zu optimieren. App Gateway kann zentral als Eingangscontroller mit einer Ressourcendefinition verwaltet werden. Um zu beginnen, [erstellen Sie einen Application Gateway-Eingangscontroller][app-gateway-ingress].
 
+## <a name="control-traffic-flow-with-network-policies"></a>Steuern des Datenverkehrsflusses mit Netzwerkrichtlinien
+
+**Best Practice-Anleitung**: Verwenden Sie Netzwerkrichtlinien, um Datenverkehr zu den Pods zuzulassen oder zu verweigern. Standardmäßig ist der gesamte Datenverkehr zwischen den Pods in einem Cluster zulässig. Aus Sicherheitsgründen sollten Sie Regeln definieren, um die Kommunikation zwischen den Pods einzuschränken.
+
+Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Die Verwendung von Netzwerkrichtlinien ist eine cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden. Verwenden Sie zum Steuern der Kommunikation zwischen den Pods keine Azure-Netzwerksicherheitsgruppen, sondern Netzwerkrichtlinien.
+
+Um Netzwerkrichtlinien verwenden zu können, muss das Feature beim Erstellen eines AKS-Clusters aktiviert werden. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Planen Sie im Voraus, und stellen Sie sicher, dass Sie in den Clustern Netzwerkrichtlinien aktivieren und diese bei Bedarf verwenden können.
+
+Eine Netzwerkrichtlinie wird mit einem YAML-Manifest als Kubernetes-Ressource erstellt. Die Richtlinien werden auf definierte Pods angewendet. Regeln für den ein- und ausgehenden Datenverkehr definieren dann, wie der Datenverkehr fließen kann. Im folgenden Beispiel wird eine Netzwerkrichtlinie auf Pods mit der zugewiesenen Bezeichnung *app: backend* angewendet. Die Eingangsregel erlaubt dann nur Datenverkehr von Pods mit der Bezeichnung *app: frontend*:
+
+```yaml
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: backend-policy
+spec:
+  podSelector:
+    matchLabels:
+      app: backend
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: frontend
+```
+
+Eine Anleitung für die ersten Schritte mit Richtlinien finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)][use-network-policies].
+
 ## <a name="securely-connect-to-nodes-through-a-bastion-host"></a>Herstellen einer sicheren Verbindung zu Knoten über einen Bastionhost
 
 **Best Practice-Anleitung** – Machen Sie für Ihre AKS-Knoten keine Remotekonnektivität verfügbar. Erstellen Sie einen Bastionhost oder eine Jumpbox in einem virtuellen Verwaltungsnetzwerk. Verwenden Sie den Bastionhost, um den Datenverkehr sicher in Ihren AKS-Cluster für Remoteverwaltungsaufgaben zu routen.
@@ -155,5 +183,6 @@ Dieser Artikel konzentriert sich auf Netzwerkkonnektivität und Sicherheit. Weit
 [aks-ingress-tls]: ingress-tls.md
 [aks-ingress-own-tls]: ingress-own-tls.md
 [app-gateway]: ../application-gateway/overview.md
+[use-network-policies]: use-network-policies.md
 [advanced-networking]: configure-azure-cni.md
 [aks-configure-kubenet-networking]: configure-kubenet.md

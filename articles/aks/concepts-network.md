@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: b2fc4b518ee0857014c59b84b89a0102b86f687a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6affa19c61ff4a824e390c42b7fd97554a30c9bb
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820129"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56176236"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Netzwerkkonzepte für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -102,9 +102,17 @@ Ein weiteres allgemeines Feature des Dateneingangs ist die SSL/TLS-Terminierung.
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
 
-Eine Netzwerksicherheitsgruppe filtert Datenverkehr für virtuelle Computer wie beispielsweise die AKS-Knoten. Beim Erstellen von Diensten (z. B. LoadBalancer) konfiguriert die Azure-Plattform automatisch alle erforderlichen Netzwerksicherheitsgruppen-Regeln. Sie sollten keine Netzwerksicherheitsgruppen-Regeln manuell konfigurieren, um Datenverkehr für Pods in einem AKS-Cluster zu filtern. Definieren Sie alle erforderlichen Ports und die Weiterleitung im Rahmen Ihrer Kubernetes-Dienstmanifeste, und überlassen Sie das Erstellen oder Aktualisieren der entsprechenden Regeln der Azure-Plattform.
+Eine Netzwerksicherheitsgruppe filtert Datenverkehr für virtuelle Computer wie beispielsweise die AKS-Knoten. Beim Erstellen von Diensten (z. B. LoadBalancer) konfiguriert die Azure-Plattform automatisch alle erforderlichen Netzwerksicherheitsgruppen-Regeln. Sie sollten keine Netzwerksicherheitsgruppen-Regeln manuell konfigurieren, um Datenverkehr für Pods in einem AKS-Cluster zu filtern. Definieren Sie alle erforderlichen Ports und die Weiterleitung im Rahmen Ihrer Kubernetes-Dienstmanifeste, und überlassen Sie das Erstellen oder Aktualisieren der entsprechenden Regeln der Azure-Plattform. Sie können auch Netzwerkrichtlinien verwenden, wie im nächsten Abschnitt erläutert, um automatisch auf Pods Filterregeln für den Datenverkehr anzuwenden.
 
 Es gibt standardmäßige Netzwerksicherheitsgruppen-Regeln für Datenverkehr wie beispielsweise SSH. Diese Standardregeln sind für den Zugriff auf die Clusterverwaltung und Problembehandlung bestimmt. Das Löschen dieser Standardregeln kann Probleme mit der AKS-Verwaltung und eine Nichteinhaltung des Servicelevelziels (SLO) verursachen.
+
+## <a name="network-policies"></a>Netzwerkrichtlinien
+
+Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Aus Sicherheitsgründen möchten Sie möglicherweise Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden häufig nur für erforderlichen Front-End-Dienste verfügbar gemacht, oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung zu ihnen herstellen.
+
+Netzwerkrichtlinien sind ein Kubernetes-Feature, mit dem Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerksicherheitsgruppen sind eher für die AKS-Knoten und nicht für Pods bestimmt. Die Verwendung von Netzwerkrichtlinien ist eine besser geeignete, cloudnative Möglichkeit, den Datenverkehrsfluss zu steuern. Wenn Pods in einem AKS-Cluster dynamisch erstellt werden, können automatisch die erforderlichen Netzwerkrichtlinien angewendet werden.
+
+Weitere Informationen finden Sie unter [Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)][use-network-policies].
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -139,3 +147,4 @@ Weitere Informationen zu den wesentlichen Konzepten von Kubernetes und AKS finde
 [aks-concepts-scale]: concepts-scale.md
 [aks-concepts-storage]: concepts-storage.md
 [aks-concepts-identity]: concepts-identity.md
+[use-network-policies]: use-network-policies.md

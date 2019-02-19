@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 78f00b00465b6d834f30411485a874d6d2116ea4
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081244"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099257"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -220,7 +220,9 @@ aks-nodepool1-79590246-2   Ready     agent     1h        v1.9.9
 
 Anschließend wird das Authentifizierungstoken zwischengespeichert. Erst, wenn das Token abgelaufen ist oder die Kubernetes-Konfigurationsdatei neu erstellt wurde, werden Sie aufgefordert, sich anzumelden.
 
-Wenn nach erfolgreicher Anmeldung ein Autorisierungsfehler gemeldet wird, vergewissern Sie sich, dass der Benutzer, als der Sie sich anmelden, kein Gast in Azure AD ist. (Dies ist häufig der Fall bei Verwendung der Verbundanmeldung aus einem anderen Verzeichnis.)
+Wenn nach erfolgreicher Anmeldung eine Fehlermeldung bezüglich der Autorisierung angezeigt wird, überprüfen Sie Folgendes:
+1. Der Benutzer, den Sie anmelden, ist in der Azure AD-Instanz kein Gastbenutzer (dies ist häufig der Fall, wenn Sie eine Verbundanmeldung aus einem anderen Verzeichnis verwenden).
+2. Der Benutzer ist kein Mitglied der über 200 Gruppen.
 
 ```console
 error: You must be logged in to the server (Unauthorized)
