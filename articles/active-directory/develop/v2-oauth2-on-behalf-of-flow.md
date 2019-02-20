@@ -12,51 +12,52 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 06/06/2018
+ms.topic: conceptual
+ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: e7c393f1eb654d30c5e06869f404c8523c56a21e
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e0b1e784d4ca92f0da0e37d4afc1efcf09282cb4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55093152"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56162865"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0- und Im-Auftrag-von-Ablauf von OAuth2.0
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Der Im-Auftrag-von-Ablauf von OAuth2.0 wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum eine andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den nachgelagerten Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) gesichert werden.
+Der On-Behalf-Of-Fluss von OAuth 2.0 (OBO) wird verwendet, wenn eine Anwendung eine Dienst- oder Web-API aufruft, die wiederum einen andere Dienst- oder Web-API aufrufen muss. Die Idee dabei ist, die delegierte Benutzeridentität und Berechtigungen über die Anforderungskette weiterzugeben. Damit der Dienst auf der mittleren Ebene Authentifizierungsanforderungen an den Downstream-Dienst stellen kann, muss für den Benutzer ein Zugriffstoken aus Azure Active Directory (Azure AD) abgesichert werden.
 
 > [!NOTE]
-> Der v2.0-Endpunkt unterstützt nicht alle Szenarios und Funktionen von Azure Active Directory. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
->
+> Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten. Insbesondere bekannte Clientanwendungen werden für Apps mit Microsoft-Konto (MSA) und Azure AD-Benutzergruppen nicht unterstützt. Daher funktioniert ein einheitliches Einwilligungsmuster für OBO nicht für Clients, die sich sowohl in persönlichen als auch in Geschäfts-, Schul- oder Unikonten anmelden. Um mehr darüber zu erfahren, wie Sie mit diesen Schritt des Ablaufs verarbeiten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application).
+
 
 > [!IMPORTANT]
-> Seit Mai 2018 kann ein `id_token` nicht für den OBO-Fluss verwendet werden. SPAs müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um OBO-Flüsse auszuführen. Unter [Einschränkungen](#client-limitations) finden Sie ausführliche Informationen dazu, welche Clients OBO-Aufrufe ausführen können.
+> Ab Mai 2018 können einige implizit vom Fluss abgeleitete `id_token` nicht für den OBO-Fluss verwendet werden. Single-Page-Anwendungen (SPAs) müssen ein **Zugriffstoken** an einen vertraulichen Client der mittleren Ebene übergeben, um stattdessen OBO-Flüsse auszuführen. Weitere Informationen dazu, welche Clients OBO-Aufrufe ausführen können, finden Sie unter [Einschränkungen](#client-limitations).
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
+
 Es wird davon ausgegangen, dass der Benutzer in einer Anwendung authentifiziert wurde, die den [Autorisierungscode-Vergabefluss von OAuth 2.0](v2-oauth2-auth-code-flow.md) verwendet. In diesem Fall verfügt die Anwendung über ein Zugriffstoken *für API A* (Token A), das die Benutzeransprüche und die Genehmigung für den Zugriff auf die API der mittleren Ebene enthält (API A). API A muss nun eine authentifizierte Anfrage an die nachgelagerte Web-API stellen (API B).
 
-Die folgenden Schritte entsprechen dem Im-Auftrag-von-Ablauf und werden anhand des folgenden Diagramms erläutert.
+Die folgenden Schritte entsprechen dem OBO-Fluss und werden anhand des folgenden Diagramms erläutert.
 
-![Im-Auftrag-von-Fluss von OAuth2.0](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
-
+![OAuth2.0 – On-Behalf-Of-Fluss](./media/v1-oauth2-on-behalf-of-flow/active-directory-protocols-oauth-on-behalf-of-flow.png)
 
 1. Die Clientanwendung stellt mit Token A eine Anforderung an die API A (mit dem Anspruch `aud` von API A).
-2. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
-3. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
-4. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
-5. API B gibt die Daten aus der gesicherten Ressource zurück.
+1. Die API A wird beim Azure AD-Tokenausstellungs-Endpunkt authentifiziert und fordert ein Token für den Zugriff auf die API B an.
+1. Der Azure AD-Tokenausstellungs-Endpunkt überprüft mit Token A die Anmeldeinformationen von API A und stellt das Zugriffstoken für API B aus (Token B).
+1. Token B wird im Autorisierungsheader der Anforderung an die API B festgelegt.
+1. API B gibt die Daten aus der gesicherten Ressource zurück.
 
 > [!NOTE]
-> In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die nachgelagerte API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden.
->
+> In diesem Szenario interagiert der Dienst auf der mittleren Ebene nicht mit dem Benutzer, um dessen Zustimmung für den Zugriff auf die nachgelagerte API zu erlangen. Aus diesem Grund muss die Zugriffsgewährung auf die nachgelagerte API zuvor als Teil des Genehmigungsschrittes während der Authentifizierung als Option angezeigt werden. Um zu erfahren, wie Sie dies für Ihre App einrichten, lesen Sie [Erhalten der Zustimmung für die Anwendung der mittleren Ebene](#gaining-consent-for-the-middle-tier-application). 
 
 ## <a name="service-to-service-access-token-request"></a>Dienst-zu-Dienst-Zugriffstokenanforderung
-Verwenden Sie zum Anfordern eines Zugriffstokens ein HTTP POST-Element für den mandantenspezifischen Azure AD v2.0-Endpunkt. Verwenden Sie dabei die folgenden Parameter.
+
+Verwenden Sie zum Anfordern eines Zugriffstokens einen HTTP POST-Aufruf an das mandantenspezifischen v2.0-Token unter Verwendung der folgenden Parameter:
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -65,18 +66,20 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 Es sind zwei Fälle denkbar – je nachdem, ob die Clientanwendung durch ein gemeinsames Geheimnis oder durch ein Zertifikat geschützt wird.
 
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Erster Fall: Zugriffstokenanforderung mit einem gemeinsamen Geheimnis
+
 Bei Verwendung eines gemeinsamen Geheimnisses enthält eine Dienst-zu-Dienst-Zugriffstokenanforderung die folgenden Parameter:
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| client_id |required | Die Anwendungs-ID, die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
-| client_secret |required | Das Anwendungsgeheimnis, das Sie im Anwendungsregistrierungsportal für Ihre App erstellt haben |
-| Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
-| scope |required | Eine durch Leerzeichen getrennte Scope-Liste für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md).|
-| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
+| `grant_type` | Erforderlich | Typ der Tokenanforderung. Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
+| `client_id` | Erforderlich | Die Anwendungs-ID (Client), die das [App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) oder das neue [App-Registrierungsportal (Vorschau)](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) Ihrer Anwendung zugewiesen hat. |
+| `client_secret` | Erforderlich | Das Anwendungsgeheimnis, das Sie für Ihre Anwendung im Portal generiert haben, mit dem Sie Ihre Anwendung registriert haben. |
+| `assertion` | Erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
+| `scope` | Erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md). |
+| `requested_token_use` | Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im OBO-Fluss muss der Wert muss auf `on_behalf_of` festgelegt werden. |
 
 #### <a name="example"></a>Beispiel
+
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken und Aktualisierungstoken mit dem Bereich `user.read` für die Web-API https://graph.microsoft.com angefordert.
 
 ```
@@ -95,21 +98,23 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 ```
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
+
 Eine Dienst-zu-Dienst-Zugriffstokenanforderung mit einem Zertifikat enthält die folgenden Parameter:
 
 | Parameter |  | BESCHREIBUNG |
 | --- | --- | --- |
-| grant_type |required | Typ der Tokenanforderung Bei Anforderungen mit JWT muss der Wert **urn:ietf:params:oauth:grant-type:jwt-bearer** lauten. |
-| client_id |required | Die Anwendungs-ID, die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) Ihrer App zugewiesen hat. |
-| client_assertion_type |required |Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| client_assertion |required | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
-| Assertion |required | Der Wert des bei der Anforderung verwendeten Tokens. |
-| requested_token_use |required | Gibt an, wie die Anforderung verarbeitet werden soll. Im Im-Auftrag-Fluss muss der Wert **on_behalf_of** lauten. |
-| scope |required | Eine durch Leerzeichen getrennte Scope-Liste für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md).|
+| `grant_type` | Erforderlich | Typ der Tokenanforderung Bei einer Anforderung mit JWT muss der Wert `urn:ietf:params:oauth:grant-type:jwt-bearer` sein. |
+| `client_id` | Erforderlich | Die Anwendungs-ID (Client), die das [Anwendungsregistrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) oder das neue [Anwendungsregistrierungsportal (Vorschau)](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) Ihrer Anwendung zugewiesen hat. |
+| `client_assertion_type` | Erforderlich | Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
+| `client_assertion` | Erforderlich | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md). |
+| `assertion` | Erforderlich | Der Wert des bei der Anforderung verwendeten Tokens. |
+| `requested_token_use` | Erforderlich | Gibt an, wie die Anforderung verarbeitet werden soll. Im OBO-Fluss muss der Wert muss auf `on_behalf_of` festgelegt werden. |
+| `scope` | Erforderlich | Eine durch Leerzeichen getrennte Liste von Bereichen für die Tokenanforderung. Weitere Informationen finden Sie unter [Bereiche](v2-permissions-and-consent.md).|
 
-Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
+Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters `client_secret` werden die beiden Parameter `client_assertion_type` und `client_assertion` verwendet.
 
 #### <a name="example"></a>Beispiel
+
 Mit dem folgenden HTTP POST-Element wird ein Zugriffstoken mit dem Bereich `user.read` für die Web-API https://graph.microsoft.com mit einem Zertifikat angefordert.
 
 ```
@@ -129,17 +134,19 @@ grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer
 ```
 
 ## <a name="service-to-service-access-token-response"></a>Dienst-zu-Dienst-Zugriffstokenantwort
+
 Eine erfolgreiche Antwort enthält eine JSON OAuth 2.0-Antwort mit den folgenden Parametern.
 
 | Parameter | BESCHREIBUNG |
 | --- | --- |
-| token_type |Gibt den Wert des Tokentyps an. **Bearertoken**ist der einzige Typ, den Azure AD unterstützt. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
-| scope |Der durch das Token gewährte Zugriffsbereich. |
-| expires_in |Gibt an, wie lange das Zugriffstoken gültig ist (in Sekunden). |
-| access_token |Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
-| refresh_token |Das Aktualisierungstoken für das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf des aktuellen Zugriffstokens ein neues Zugriffstoken anzufordern. Das Aktualisierungstoken wird nur bereitgestellt, wenn der Bereich `offline_access` angefordert wurde.|
+| `token_type` | Gibt den Wert des Tokentyps an. Der einzige Typ, der von Azure AD unterstützt wird, ist `Bearer`. Weitere Informationen zu Bearertoken finden Sie unter [OAuth 2.0-Autorisierungsframework: Verwendung von Bearertoken (RFC 6750)](https://www.rfc-editor.org/rfc/rfc6750.txt). |
+| `scope` | Der durch das Token gewährte Zugriffsbereich. |
+| `expires_in` | Gibt an, wie lange das Zugriffstoken in Sekunden gültig ist. |
+| `access_token` | Das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um die Authentifizierung für den empfangenden Dienst durchzuführen. |
+| `refresh_token` | Das Aktualisierungstoken für das angeforderte Zugriffstoken. Der aufrufende Dienst kann dieses Token verwenden, um nach Ablauf des aktuellen Zugriffstokens ein neues Zugriffstoken anzufordern. Das Aktualisierungstoken wird nur bereitgestellt, wenn der Bereich `offline_access` angefordert wurde. |
 
 ### <a name="success-response-example"></a>Beispiel für eine erfolgreiche Antwort
+
 Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines Zugriffstokens für die Web-API https://graph.microsoft.com.
 
 ```
@@ -154,11 +161,11 @@ Das folgende Beispiel zeigt eine erfolgreiche Antwort auf eine Anforderung eines
 ```
 
 > [!NOTE]
-> Beachten Sie, dass das obige Zugriffstoken ein Token mit V1-Formatierung ist. Dies liegt daran, dass das Token basierend auf der Ressource bereitgestellt wird, auf die zugegriffen wird. Microsoft Graph fordert V1-Token an. Azure AD erzeugt daher V1-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Zugriffstoken sollten nur von Anwendungen überprüft werden. Für Clients sollte eine Untersuchung nicht erforderlich sein. 
-
+> Das obige Zugriffstoken ist ein Token mit v1.0-Formatierung. Dies liegt daran, dass das Token basierend auf der Ressource bereitgestellt wird, auf die zugegriffen wird. Microsoft Graph fordert v1.0-Token an. Azure AD erzeugt daher v1.0-Zugriffstoken, wenn ein Client Token für Microsoft Graph anfordert. Nur Anwendungen sollten Zugriffstoken betrachten. Clients müssen diese nicht überprüfen. 
 
 ### <a name="error-response-example"></a>Beispiel für eine fehlerhafte Antwort
-Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
+
+Der Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nachgelagerte API zu erhalten, einen Fehler zurück, wenn der Zugriff auf die nachgelagerte API durch eine Richtlinie wie mehrstufige Authentifizierung begrenzt ist. Der Dienst der mittleren Ebene zeigt diesen Fehler der Clientanwendung an, so dass diese der Richtlinie entsprechend die geeignete Benutzerinteraktion bieten kann.
 
 ```
 {
@@ -173,19 +180,53 @@ Der Azure AD-Tokenendpunkt gibt bei dem Versuch, ein Zugriffstoken für eine nac
 ```
 
 ## <a name="use-the-access-token-to-access-the-secured-resource"></a>Verwenden des Zugriffstokens für den Zugriff auf die gesicherte Ressource
+
 Der Dienst der mittleren Ebene kann nun mit dem oben erhaltenen Token bei der nachgelagerte Web-API authentifizierte Anforderungen stellen. Hierfür wird das Token in den `Authorization`-Header eingetragen.
 
 ### <a name="example"></a>Beispiel
+
 ```
 GET /v1.0/me HTTP/1.1
 Host: graph.microsoft.com
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVGFlN0NkV1c3UWZkSzdNN0RyNXlvUUdLNmFEc19vdDF3cEQyZjNqRkxiNlVrcm9PcXA2cXBJclAxZVV0QktzMHEza29HN3RzXzJpSkYtQjY1UV8zVGgzSnktUHZsMjkxaFNBQSIsImFsZyI6IlJTMjU2IiwieDV0IjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIiwia2lkIjoiejAzOXpkc0Z1aXpwQmZCVksxVG4yNVFIWU8wIn0.eyJhdWQiOiJodHRwczovL2dyYXBoLm1pY3Jvc29mdC5jb20iLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaWF0IjoxNDkzOTMwMDE2LCJuYmYiOjE0OTM5MzAwMTYsImV4cCI6MTQ5MzkzMzg3NSwiYWNyIjoiMCIsImFpbyI6IkFTUUEyLzhEQUFBQUlzQjN5ZUljNkZ1aEhkd1YxckoxS1dlbzJPckZOUUQwN2FENTVjUVRtems9IiwiYW1yIjpbInB3ZCJdLCJhcHBfZGlzcGxheW5hbWUiOiJUb2RvRG90bmV0T2JvIiwiYXBwaWQiOiIyODQ2ZjcxYi1hN2E0LTQ5ODctYmFiMy03NjAwMzViMmYzODkiLCJhcHBpZGFjciI6IjEiLCJmYW1pbHlfbmFtZSI6IkNhbnVtYWxsYSIsImdpdmVuX25hbWUiOiJOYXZ5YSIsImlwYWRkciI6IjE2Ny4yMjAuMC4xOTkiLCJuYW1lIjoiTmF2eWEgQ2FudW1hbGxhIiwib2lkIjoiZDVlOTc5YzctM2QyZC00MmFmLThmMzAtNzI3ZGQ0YzJkMzgzIiwib25wcmVtX3NpZCI6IlMtMS01LTIxLTIxMjc1MjExODQtMTYwNDAxMjkyMC0xODg3OTI3NTI3LTI2MTE4NDg0IiwicGxhdGYiOiIxNCIsInB1aWQiOiIxMDAzM0ZGRkEwNkQxN0M5Iiwic2NwIjoiVXNlci5SZWFkIiwic3ViIjoibWtMMHBiLXlpMXQ1ckRGd2JTZ1JvTWxrZE52b3UzSjNWNm84UFE3alVCRSIsInRpZCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsInVuaXF1ZV9uYW1lIjoibmFjYW51bWFAbWljcm9zb2Z0LmNvbSIsInVwbiI6Im5hY2FudW1hQG1pY3Jvc29mdC5jb20iLCJ1dGkiOiJzUVlVekYxdUVVS0NQS0dRTVFVRkFBIiwidmVyIjoiMS4wIn0.Hrn__RGi-HMAzYRyCqX3kBGb6OS7z7y49XPVPpwK_7rJ6nik9E4s6PNY4XkIamJYn7tphpmsHdfM9lQ1gqeeFvFGhweIACsNBWhJ9Nx4dvQnGRkqZ17KnF_wf_QLcyOrOWpUxdSD_oPKcPS-Qr5AFkjw0t7GOKLY-Xw3QLJhzeKmYuuOkmMDJDAl0eNDbH0HiCh3g189a176BfyaR0MgK8wrXI_6MTnFSVfBePqklQeLhcr50YTBfWg3Svgl6MuK_g1hOuaO-XpjUxpdv5dZ0SvI47fAuVDdpCE48igCX5VMj4KUVytDIf6T78aIXMkYHGgW3-xAmuSyYH_Fr0yVAQ
 ```
 
+## <a name="gaining-consent-for-the-middle-tier-application"></a>Erhalten der Zustimmung für die Anwendung der mittleren Ebene
+
+Abhängig von der Benutzergruppe für Ihre Anwendung können Sie verschiedene Strategien in Betracht ziehen, um sicherzustellen, dass der OBO-Fluss erfolgreich ist. In allen Fällen geht es letztlich darum, eine ordnungsgemäße Einwilligung zu gewährleisten. Wie das geschieht, hängt jedoch davon ab, welche Benutzer Ihre Anwendung unterstützt. 
+
+### <a name="consent-for-azure-ad-only-applications"></a>Einwilligung für Nur Azure AD-Anwendungen
+
+#### <a name="default-and-combined-consent"></a>/.default und kombinierten Einwilligung
+
+Für Anwendungen, die nur Geschäfts-, Schul- oder Unikonten anmelden müssen, reicht der traditionelle Ansatz „Bekannte Clientanwendung“ aus. Die Anwendung der mittleren Ebene fügt den Client in ihrem Manifest der Liste der bekannten Clientanwendungen hinzu, und dann kann der Client einen kombinierten Einwilligungsfluss für sich selbst und die Anwendung der mittleren Ebene auslösen. Auf dem v2.0-Endpunkt geschieht dies mit Hilfe des [`/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope). Wenn Sie einen Einwilligungssbildschirm mit bekannten Clientanwendungen und `/.default` auslösen, zeigt der Bildschirm sowohl Berechtigungen für den Client an die API der mittleren Ebene an als auch die von der API der mittleren Ebene benötigten Berechtigungen an. Der Benutzer gibt die Einwilligung für beide Anwendungen, und dann funktioniert der OBO-Fluss. 
+
+Derzeit unterstützt das persönliche Microsoft-Kontosystem keine kombinierte Einwilligung, sodass dieser Ansatz für Apps, die sich gezielt in persönlichen Konten anmelden möchten, nicht funktioniert. Persönliche Microsoft-Konten, die als Gastkonten bei einem Mandanten verwendet werden, werden über das Azure AD-System verwaltet und können eine kombinierten Einwilligung durchlaufen. 
+
+#### <a name="pre-authorized-applications"></a>Vorautorisierte Anwendungen
+
+Eine neues Feature des Vorschau-Anwendungsportals sind „vorautorisierte Anwendungen“. Auf diese Weise kann eine Ressource anzeigen, dass eine bestimmte Anwendung immer die Berechtigung hat, bestimmte Bereiche zu empfangen. Dies ist vor allem nützlich, um die Verbindungen zwischen einem Front-End-Client und einer Back-End-Ressource reibungsloser zu gestalten. Eine Ressource kann mehrere vorautorisierte Anwendungen deklarieren – jede dieser Anwendungen kann diese Berechtigungen in einem OBO-Fluss anfordern und ohne Einwilligung des Benutzers empfangen.
+
+#### <a name="admin-consent"></a>Administratorzustimmung
+
+Ein Mandantenadministrator kann garantieren, dass Anwendungen die Berechtigung haben, ihre erforderlichen APIs aufzurufen, indem er die Einwilligung des Administrators für die Anwendung der mittleren Ebene erteilt. Dazu kann der Administrator die Anwendung der mittleren Ebene in seinem Mandanten suchen, die erforderliche Berechtigungsseite öffnen und die Berechtigung für die App erteilen. Weitere Informationen zur Einwilligung des Administrators finden Sie in der [Dokumentation zu Einwilligungen und Berechtigungen](v2-permissions-and-consent.md). 
+
+### <a name="consent-for-azure-ad--microsoft-account-applications"></a>Einwilligung für Azure AD- und Microsoft-Kontoanwendungen
+
+Aufgrund von Einschränkungen im Berechtigungsmodell für persönliche Konten und dem Fehlen eines leitenden Mandanten unterscheiden sich die Einwilligungsanforderungen für persönliche Konten etwas von denen von Azure AD. Es gibt weder einen Mandanten, der eine mandantenweite Einwilligung erteilt, noch die Möglichkeit, eine kombinierte Einwilligung zu erteilen. So bieten sich andere Strategien an – beachten Sie, dass diese für Anwendungen funktionieren, die nur Azure AD-Konten unterstützen müssen. 
+
+#### <a name="use-of-a-single-application"></a>Verwenden einer einzelnen Anwendung
+
+In einigen Szenarios kann es vorkommen, dass Sie nur eine einzige Paarung eines Clients der mittleren Ebene und eines Front-End-Clients haben. In diesem Szenario ist es möglicherweise einfacher, eine einzige Anwendung zu erstellen, wodurch die Notwendigkeit einer Anwendung auf mittlerer Ebene ganz entfällt. Um zwischen der Front-End- und der Web-API zu authentifizieren, können Sie Cookies, ein "id_token" oder ein Zugriffstoken für die Anwendung selbst angefordert. Fordern Sie dann die Einwilligung dieser einzelnen Anwendung zur Back-End-Ressource an. 
+
 ## <a name="client-limitations"></a>Clienteinschränkungen
+
 Wenn ein Client den impliziten Fluss verwendet, um ein „id_token“ abzurufen, und dieser Client auch über Platzhalter in einer Antwort-URL verfügt, kann das „id_token“ nicht für einen OBO-Fluss verwendet werden.  Allerdings kann ein vertraulicher Client weiterhin Zugriffstoken einlösen, die über den Fluss für die implizite Gewährung erworben wurden, selbst wenn der initiierende Client eine Antwort-URL mit Platzhaltern registriert hat. 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Erfahren Sie mehr über das OAuth 2.0-Protokoll und eine andere Möglichkeit, Dienst-zu-Dienst-Authentifizierungen mit Client-Anmeldedaten auszuführen.
+
 * [Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow](v2-oauth2-client-creds-grant-flow.md)
-* [v2.0-Protokolle – OAuth 2.0-Autorisierungscodefluss](v2-oauth2-auth-code-flow.md)
+* [OAuth 2.0-Codefluss in Azure AD v2.0](v2-oauth2-auth-code-flow.md)
+* [Verwenden des `/.default`-Bereichs](v2-permissions-and-consent.md#the-default-scope) 

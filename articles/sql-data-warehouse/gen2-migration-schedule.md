@@ -1,0 +1,143 @@
+---
+title: Migrieren eines vorhandenen Azure SQL Data Warehouse zu Gen2 | Microsoft-Dokumentation
+description: Anweisungen zum Migrieren eines vorhandenen Data Warehouse zu Gen2 und der Migrationsplan nach Region.
+services: sql-data-warehouse
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
+manager: craigg
+ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
+ms.service: sql-data-warehouse
+ms.topic: article
+ms.date: 02/09/2019
+ms.openlocfilehash: a3ec74d0b22bfafb4353eca400b389b07a58ba39
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246321"
+---
+# <a name="upgrade-your-data-warehouse-to-gen2"></a>Aktualisieren des Data Warehouse zu Gen2
+Microsoft fügt niedrigere Computetarife für Azure SQL Data Warehouse hinzu, sodass Sie die Einstiegskosten für ein Data Warehouse zur Verarbeitung anspruchsvoller Abfragen verringern können. Lesen Sie die vollständige Ankündigung unter [Azure SQL Data Warehouse Gen2 now supports lower compute tiers (Azure SQL Data Warehouse Gen2 unterstützt jetzt niedrigere Computetarife)](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/). Das neue Angebot steht bereits in den Regionen zur Verfügung, die in der folgenden Tabelle angegeben sind. In den unterstützten Regionen kann das vorhandene Gen1-Data Warehouse mit einer der folgenden Methoden auf Gen2 aktualisiert werden:
+- **Der automatische Upgradevorgang:** Automatische Upgrades beginnen, sobald der Dienst in einer Region verfügbar ist.  Wenn automatische Upgrades in einer bestimmten Region beginnen, finden Upgrades einzelner DWs während des von Ihnen ausgewählten Wartungszeitplans statt. 
+- **Selbstupgrade auf Gen2:** Wenn Sie bestimmen möchten, wann Sie aktualisieren, können Sie ein Selbstupgrade auf Gen2 ausführen. Wenn Ihre Region noch nicht unterstützt wird, können Sie Ihr Data Warehouse zu einer Region migrieren, die unterstützt wird, und dann ein Selbstupgrade auf Gen2 ausführen.
+
+## <a name="automated-schedule-and-region-availability-table"></a>Automatisierter Zeitplan und die Tabelle der verfügbaren Regionen
+In der folgenden Tabelle sehen Sie, wann der niedrigere Gen2-Computetarif in welchen Regionen zur Verfügung stehen wird und wann automatische Upgrades beginnen. Änderungen der Datumsangaben bleiben vorbehalten. Informieren Sie sich, wann Ihre Region verfügbar ist.
+
+\* gibt an, dass ein bestimmter Zeitplan für die Region zurzeit nicht verfügbar ist.
+
+| **Region** | **Niedrigerer Gen2-Computetarif verfügbar** | **Beginn automatischer Upgrades** |
+|:--- |:--- |:--- |
+| Australien, Mitte 1 |1. März 2019 |15. Juni 2019 |
+| Australien, Mitte 2 |1. März 2019 |15. Juni 2019 |
+| Australien (Osten) |Verfügbar |1. Mai 2019 |
+| Australien, Südosten |1. März 2019 |15. Juni 2019 |
+| Brasilien Süd |\* |\* |
+| Kanada, Mitte |Verfügbar |1. Mai 2019 |
+| Kanada, Osten |\* |\* |
+| USA (Mitte) |Verfügbar |1. Mai 2019 |
+| China, Osten |\* |\* |
+| China, Norden 1 |\* |\* |
+| Asien, Osten |Verfügbar |1. Mai 2019 |
+| US, Osten 1 |Verfügbar |16. März 2019 |
+| USA (Ost) 2 |Verfügbar |16. März 2019 |
+| Frankreich, Mitte |1. März 2019 |1. Mai 2019 |
+| Deutschland, Mitte |\* |\* |
+| Indien, Mitte |Verfügbar |1. Mai 2019 |
+| Indien, Süden 1 |1. März 2019 |15. Juni 2019 |
+| Japan, Osten |Verfügbar |1. Mai 2019 |
+| Japan, Westen |Verfügbar |15. Juni 2019 |
+| Korea, Mitte |1. März 2019 |1. Mai 2019 |
+| Südkorea, Süden 1 |1. März 2019 |15. Juni 2019 |
+| USA Nord Mitte |1. März 2019 |15. Juni 2019 |
+| Nordeuropa |Verfügbar |16. März 2019 |
+| USA Süd Mitte |Verfügbar |1. Mai 2019 |
+| Südostasien |Verfügbar |16. März 2019 |
+| UK, Süden |1. März 2019 |1. Mai 2019 |
+| Vereinigtes Königreich, Westen 1 |1. März 2019 |15. Juni 2019 |
+| USA, Westen-Mitte |\* |\* |
+| Europa, Westen |Verfügbar |16. März 2019 |
+| USA, Westen 1 |1. März 2019 |15. Juni 2019 |
+| USA, Westen 2 |Verfügbar |16. März 2019 |
+
+## <a name="automatic-upgrade-process"></a>Automatischer Upgradevorgang
+
+Ab dem 16. März 2019 beginnen wir mit der Planung automatischer Upgrades für Ihre Gen1-Instanzen. Um unerwartete Unterbrechungen der Verfügbarkeit des Data Warehouse zu vermeiden, werden die automatischen Upgrades während Ihres Wartungszeitplans geplant. Weitere Informationen zu Zeitplänen finden Sie unter [Anzeigen eines Wartungszeitplans](viewing-maintenance-schedule.md).
+
+Der Upgradevorgang ist mit einem kurzen Abfall der Konnektivität (ca. 5 Minuten) verbunden, wenn wir Ihr Data Warehouse neu starten.  Sobald Ihr Datawarehouse neu gestartet ist, steht es Ihnen vollständig zur Verfügung, doch unter Umständen tritt eine Beeinträchtigung der Leistung auf, während der Upgradevorgang weiterhin die Datendateien im Hintergrund aktualisiert. Die Gesamtzeit für die Leistungsminderung variiert abhängig von der Größe der Datendateien.
+
+Sie können den Prozess der Datenaktualisierung auch mit Ausführung von [ALTER INDEX REBUILD](sql-data-warehouse-tables-index.md) für alle primären Columnstore-Tabellen mit größerem SLO-Wert und größerer Ressourcenklasse nach dem Neustart beschleunigen.
+
+> [!NOTE]
+> ALTER INDEX REBUILD ist ein Offlinevorgang, und die Tabellen stehen erst dann zur Verfügung, wenn die Wiederherstellung abgeschlossen ist.
+
+## <a name="self-upgrade-to-gen2"></a>Selbstupgrade auf Gen2
+
+Wenn Sie jetzt aktualisieren möchten, können Sie optional selbst aktualisieren, indem Sie diese Schritte für ein vorhandenes Gen1-Data Warehouse ausführen. Wenn Sie sich hierfür entscheiden, müssen Sie das Selbstupgrade vor Beginn des automatischen Upgradevorgangs in dieser Region abschließen. Dadurch wird sichergestellt, dass Sie jedes Risiko vermeiden, dass das automatische Upgrade einen Konflikt verursacht.
+
+Für das Selbstupgrade können Sie zwischen zwei Optionen wählen.  Sie können entweder Ihr aktuelles Data Warehouse direkt aktualisieren oder ein Gen1-Data Warehouse in einer Gen2-Instanz wiederherstellen.
+
+- [Direktes Upgrade](upgrade-to-latest-generation.md): Mit dieser Option wird Ihr vorhandenes Gen1-Data Warehouse auf Gen2 aktualisiert. Der Upgradevorgang ist mit einem kurzen Abfall der Konnektivität (ca. 5 Minuten) verbunden, wenn wir Ihr Data Warehouse neu starten.  Sobald Ihr Data Warehouse neu gestartet ist, ist es vollständig zur Verwendung verfügbar. Wenn Sie aus beliebigem Grund von einer Gen2-Instanz zurück zu Gen1 wiederherstellen müssen, öffnen Sie eine [Supportanfrage](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-create-support-ticket).
+- [Upgrade vom Wiederherstellungspunkt](sql-data-warehouse-restore.md): Erstellen Sie einen benutzerdefinierten Wiederherstellungspunkt auf Ihrem aktuellen Gen1-Data Warehouse, und führen Sie die direkte Wiederherstellung in eine Gen2-Instanz durch. Das vorhandene Gen1-Data Warehouse bleibt bestehen. Sobald die Wiederherstellung abgeschlossen ist, ist Ihr Gen2-Data Warehouse vollständig verwendbar.  Nachdem Sie alle Test- und Überprüfungsprozesse auf der wiederhergestellten Gen2-Instanz ausgeführt haben, kann die ursprüngliche Gen1-Instanz gelöscht werden.
+    - Schritt 1: [Erstellen Sie einen benutzerdefinierten Wiederherstellungspunkt](sql-data-warehouse-restore.md#create-a-user-defined-restore-point-using-the-azure-portal) im Azure-Portal.
+    - Schritt 2: Legen Sie bei der Wiederherstellung von einem benutzerdefinierten Wiederherstellungspunkt aus die „Leistungsebene“ auf Ihren bevorzugten Gen2-Tarif fest.
+
+Zeitweise kann eine Beeinträchtigung der Leistung auftreten, während der Upgradevorgang weiterhin im Hintergrund die Datendateien aktualisiert. Die Gesamtzeit für die Leistungsminderung variiert abhängig von der Größe der Datendateien.
+
+Um den Hintergrundprozess der Datenmigration zu beschleunigen, können Sie die Datenverschiebung sofort erzwingen, indem Sie [ALTER INDEX REBUILD](sql-data-warehouse-tables-index.md) in allen primären Columnstore-Tabellen ausführen, die Sie mit einem größeren SLO-Wert und einer größeren Ressourcenklasse abrufen würden.
+
+> [!NOTE]
+> ALTER INDEX REBUILD ist ein Offlinevorgang, und die Tabellen stehen erst dann zur Verfügung, wenn die Wiederherstellung abgeschlossen ist.
+
+Wenn Probleme mit Ihrem Data Warehouse auftreten, können Sie eine [Supportanfrage](sql-data-warehouse-get-started-create-support-ticket.md) erstellen und als möglichen Grund „Migration zu Gen2“ angeben.
+
+Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse](upgrade-to-latest-generation.md).
+
+## <a name="migration-frequently-asked-questions"></a>Häufig gestellte Fragen zur Migration
+
+**F: Kostet Gen2 dasselbe wie Gen1?**
+- A: Ja.
+
+**F: Wie wirken sich die Upgrades auf meine automatisierten Skripte aus?**
+- A: Jedes Automatisierungsskript, das auf ein Servicelevelziel verweist, sollte so geändert werden, dass es dem Gen2-Äquivalent entspricht.  Ausführlichere Informationen finden Sie [hier](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal).
+
+**F: Wie lange dauert ein Selbstupgrade normalerweise?**
+- A: Sie können ein direktes Upgrade oder ein Upgrade von einem Wiederherstellungspunkt aus ausführen.  
+   - Ein direktes Upgrade bewirkt, dass Ihr Data Warehouse vorübergehend angehalten und dann fortgesetzt wird.  Ein Hintergrundprozess wird fortgesetzt, während das Data Warehouse online ist.  
+   - Es dauert länger, wenn Sie über einen Wiederherstellungspunkt aktualisieren, da das Upgrade den vollständigen Wiederherstellungsprozess durchläuft.
+
+**F: Wie lange dauert das automatische Upgrade?**
+- A: Die tatsächliche Downtime für das Upgrade ist nur die Zeit zum Anhalten und Fortsetzen des Diensts, ca. 5 bis 10 Minuten. Nach der kurzen Downtime führt ein Hintergrundprozess die Speichermigration durch. Die Dauer des Hintergrundprozesses ist abhängig von der Größe Ihres Data Warehouse.
+
+**F: Wann wird das automatische Upgrade durchgeführt?**
+- A: Während Ihres Wartungszeitplans. Durch Nutzen Ihres ausgewählten Wartungszeitplans werden Unterbrechungen für Ihr Unternehmen minimiert.
+
+**F: Was muss ich tun, wenn mein Hintergrund-Upgradeprozess nicht mehr zu reagieren scheint?**
+ - A: Starten Sie eine Neuindizierung der Columnstore-Tabellen. Beachten Sie, dass die Neuindizierung der Tabelle offline während dieses Vorgangs durchgeführt wird.
+
+**F: Was geschieht, wenn Gen2 nicht dasselbe Servicelevelziel hat wie ich auf Gen1?**
+- A: Wenn Sie ein DW600 oder DW1200 auf Gen1 ausführen, sollten Sie DW500c bzw. DW1000c verwenden, da Gen2 mehr Arbeitsspeicher, Ressourcen und höhere Leistung als Gen1 bereitstellt.
+
+**F: Kann ich die Geosicherung deaktivieren?**
+- A:  Nein. Die Geosicherung ist ein Enterprisefeature, um die Verfügbarkeit Ihres Data Warehouse aufrechtzuerhalten, falls eine Region nicht mehr verfügbar ist. Öffnen Sie eine [Supportanfrage](sql-data-warehouse-get-started-create-support-ticket.md), wenn Sie weitere Fragen haben.
+
+**F: Gibt es einen Unterschied in der T-SQL-Syntax zwischen Gen1 und Gen2?**
+- A: Es gibt keine Änderung in der T-SQL-Sprachsyntax von Gen1 zu Gen2.
+
+**F: Unterstützt Gen2 Wartungsfenster?**
+- A: Ja.
+
+**F: Kann ich nach dem Upgrade meiner Region eine neue Gen1-Instanz erstellen?**
+- A:  Nein. Nach dem Upgrade einer Region ist das Erstellen neuer Gen 1-Instanzen nicht mehr möglich.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+- [Upgradeschritte](upgrade-to-latest-generation.md)
+- [Wartungsfenster](maintenance-scheduling.md)
+- [Überwachung der Ressourcenintegrität](https://docs.microsoft.com/azure/service-health/resource-health-overview)
+- [Voraussetzungen](upgrade-to-latest-generation.md#before-you-begin)
+- [Direktes Upgrade und Upgrade von einem Wiederherstellungspunkt aus](upgrade-to-latest-generation.md)
+- [Erstellen eines benutzerdefinierten Wiederherstellungspunkts](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
+- [Wiederherstellen einer aktiven oder angehaltenen Datenbank im Azure-Portal](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [Gewusst wie: Erstellen eines Supporttickets für SQL Data Warehouse](https://go.microsoft.com/fwlink/?linkid=857950)
