@@ -4,17 +4,17 @@ description: Beschreibt, wie die von Azure Policy verwendete Definition von Ress
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/04/2019
+ms.date: 02/11/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fc0d5c4abc3b8584212798d5ea5b6ab65404e93d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: aa334f88d04bb30ce01fe12fecb3aac3c9cd572d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698291"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237416"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktur von Azure Policy-Definitionen
 
@@ -90,8 +90,20 @@ Parameter funktionieren beim Erstellen von Richtlinien genauso. Sie können die 
 > [!NOTE]
 > Parameter können einer vorhandenen und zugewiesenen Definition hinzugefügt werden. Der neue Parameter muss die **defaultValue**-Eigenschaft enthalten. Dadurch wird verhindert, dass vorhandene Zuweisungen der Richtlinie oder Initiative indirekt als ungültig erklärt werden.
 
-Beispielsweise können Sie eine Richtlinie verwenden, um die Speicherorte einzuschränken, an denen Ressourcen bereitgestellt werden können.
-Sie können die folgenden Parameter deklarieren, wenn Sie eine Richtlinie erstellen:
+### <a name="parameter-properties"></a>Parametereigenschaften
+
+Ein Parameter hat die folgenden Eigenschaften, die in der Richtliniendefinition verwendet werden:
+
+- **name:** Der Name des Parameters. Wird in der Richtlinienregel von der Bereitstellungsfunktion `parameters` verwendet. Weitere Informationen finden Sie unter [Verwenden eines Parameterwerts](#using-a-parameter-value).
+- `type`: Bestimmt, ob der Parameter eine **Zeichenfolge** oder ein **Array** ist.
+- `metadata`: Definiert untergeordnete Eigenschaften, die hauptsächlich vom Azure-Portal verwendet werden, um benutzerfreundliche Informationen anzuzeigen:
+  - `description`: Die Erläuterung des Zwecks des Parameters. Kann verwendet werden, um Beispiele zulässiger Werte bereitzustellen.
+  - `displayName`: Der Anzeigename des Parameters im Portal.
+  - `strongType`: (Optional) Wird verwendet, wenn die Richtliniendefinition über das Portal zugewiesen wird. Bietet eine kontextbezogene Liste. Weitere Informationen finden Sie unter [strongType](#strongtype).
+- `defaultValue`: (Optional) Legt den Wert des Parameters in einer Zuweisung fest, wenn kein Wert angegeben ist. Erforderlich, wenn eine vorhandene zugewiesene Richtliniendefinition aktualisiert wird.
+- `allowedValues`: (Optional) Bietet eine Liste von Werten, die der Parameter bei Zuweisung akzeptiert.
+
+Beispielsweise können Sie eine Richtliniendefinition verwenden, um die Speicherorte einzuschränken, an denen Ressourcen bereitgestellt werden können. Ein Parameter für diese Richtliniendefinition kann **allowedLocations** heißen. Dieser Parameter kann bei jeder Zuweisung der Richtliniendefinition verwendet werden, um die akzeptierten Werte zu begrenzen. Die Verwendung von **strongType** bietet erweiterte Möglichkeiten, wenn die Zuweisung über das Portal erfolgt:
 
 ```json
 "parameters": {
@@ -102,21 +114,17 @@ Sie können die folgenden Parameter deklarieren, wenn Sie eine Richtlinie erstel
             "displayName": "Allowed locations",
             "strongType": "location"
         },
-        "defaultValue": "westus2"
+        "defaultValue": "westus2",
+        "allowedValues": [
+            "eastus2",
+            "westus2",
+            "westus"
+        ]
     }
 }
 ```
 
-Der Typ eines Parameters kann Zeichenfolge oder Array sein. Die Metadateneigenschaft wird für Tools wie das Azure-Portal verwendet, um benutzerfreundliche Informationen anzuzeigen.
-
-Innerhalb der Metadateneigenschaft können Sie mit **strongType** eine Liste der Optionen im Azure-Portal mit Mehrfachauswahl angeben. Derzeit zulässige Werte für **strongType** sind:
-
-- `"location"`
-- `"resourceTypes"`
-- `"storageSkus"`
-- `"vmSKUs"`
-- `"existingResourceGroups"`
-- `"omsWorkspace"`
+### <a name="using-a-parameter-value"></a>Verwenden eines Parameterwerts
 
 In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstellungswertefunktion verwendet, um auf Parameter zu verweisen:
 
@@ -126,6 +134,19 @@ In der Richtlinienregel wird die folgende Syntax für die `parameters`Bereitstel
     "in": "[parameters('allowedLocations')]"
 }
 ```
+
+In diesem Beispiel wird auf den Parameter **allowedLocations** verwiesen, der unter [Parametereigenschaften](#parameter-properties) vorgestellt wurde.
+
+### <a name="strongtype"></a>strongType
+
+Innerhalb der `metadata`-Eigenschaft können Sie mit **strongType** im Azure-Portal eine Liste der Optionen mit Mehrfachauswahl angeben. Derzeit zulässige Werte für **strongType** sind:
+
+- `"location"`
+- `"resourceTypes"`
+- `"storageSkus"`
+- `"vmSKUs"`
+- `"existingResourceGroups"`
+- `"omsWorkspace"`
 
 ## <a name="definition-location"></a>Definitionsspeicherort
 
@@ -187,7 +208,7 @@ Logische Operatoren können geschachtelt werden. Das folgende Beispiel zeigt ein
 
 ### <a name="conditions"></a>Bedingungen
 
-Eine Bedingung überprüft, ob ein **Feld** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
+Eine Bedingung prüft, ob ein **Feld** oder der Accessor **Wert** bestimmte Kriterien erfüllt. Folgende Bedingungen werden unterstützt:
 
 - `"equals": "value"`
 - `"notEquals": "value"`
@@ -231,7 +252,53 @@ Folgende Felder werden unterstützt:
   - Diese Klammersyntax unterstützt Tagnamen, die einen Punkt enthalten.
   - Wobei **\<tagName\>** der Name des Tags ist, auf das die Bedingung geprüft wird.
   - Beispiel: `tags[Acct.CostCenter]`, wobei **Acct.CostCenter** der Name des Tags ist.
+
 - Eigenschaftenaliase – Eine Liste finden Sie unter [Aliase](#aliases).
+
+### <a name="value"></a>Wert
+
+Bedingungen können auch mithilfe von **Wert** gebildet werden. **Wert** gleicht die Bedingungen mit [Parametern](#parameters), [unterstützten Vorlagenfunktionen](#policy-functions) oder Literalen ab.
+**Wert** wird mit beliebigen unterstützten [Bedingungen](#conditions) verknüpft.
+
+#### <a name="value-examples"></a>Beispiele von Werten
+
+Dieses Beispiel einer Richtlinienregel verwendet **Wert**, um das Ergebnis der `resourceGroup()`-Funktion und der zurückgegebenen **name**-Eigenschaft mit der **like**-Bedingung `*netrg` zu vergleichen. Die Regel verweigert Ressourcen, die nicht den **Typ** `Microsoft.Network/*` haben, in Ressourcengruppen, deren Name mit `*netrg` endet.
+
+```json
+{
+    "if": {
+        "allOf": [{
+                "value": "[resourceGroup().name]",
+                "like": "*netrg"
+            },
+            {
+                "field": "type",
+                "notLike": "Microsoft.Network/*"
+            }
+        ]
+    },
+    "then": {
+        "effect": "deny"
+    }
+}
+```
+
+Diese Beispiel einer Regelrichtlinie verwendet **Wert**, um zu überprüfen, ob das Ergebnis mehrerer geschachtelter Funktionen **gleich** `true` ist. Die Regel verweigert alle Ressourcen, die nicht mindestens drei Tags haben.
+
+```json
+{
+    "mode": "indexed",
+    "policyRule": {
+        "if": {
+            "value": "[less(length(field('tags')), 3)]",
+            "equals": true
+        },
+        "then": {
+            "effect": "deny"
+        }
+    }
+}
+```
 
 ### <a name="effect"></a>Wirkung
 
@@ -274,12 +341,15 @@ Umfassende Informationen zu den einzelnen Auswirkungen, zur Reihenfolge der Ausw
 
 ### <a name="policy-functions"></a>Richtlinienfunktionen
 
-Mehrere [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) können innerhalb einer Richtlinienregel verwendet werden. Diese Funktionen werden derzeit unterstützt:
+Außer in den folgenden Bereitstellungs- und Ressourcenfunktionen können alle [Resource Manager-Vorlagenfunktionen](../../../azure-resource-manager/resource-group-template-functions.md) innerhalb einer Richtlinienregel verwendet werden:
 
-- [parameters](../../../azure-resource-manager/resource-group-template-functions-deployment.md#parameters)
-- [concat](../../../azure-resource-manager/resource-group-template-functions-array.md#concat)
-- [Ressourcengruppe](../../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)
-- [Abonnement](../../../azure-resource-manager/resource-group-template-functions-resource.md#subscription)
+- copyIndex()
+- deployment()
+- list*
+- providers()
+- reference()
+- resourceId()
+- variables()
 
 Darüber hinaus ist die `field` Funktion für Richtlinienregeln verfügbar. `field` ist in erster Linie für die Verwendung mit **AuditIfNotExists** und **DeployIfNotExists** zum Verweisen auf Felder in der Ressource bestimmt, die ausgewertet werden. Ein Beispiel hierfür finden Sie im [Beispiel für DeployIfNotExists](effects.md#deployifnotexists-example).
 

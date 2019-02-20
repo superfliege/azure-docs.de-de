@@ -1,25 +1,18 @@
 ---
 title: Azure Resource Health – FAQ | Microsoft-Dokumentation
 description: Übersicht über Azure Resource Health
-services: Resource health
-documentationcenter: dev-center-name
 author: stephbaron
-manager: ''
-editor: ''
-ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
-ms.service: service-health
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Supportability
-ms.date: 11/16/2018
 ms.author: stbaron
-ms.openlocfilehash: 821495ceb052184f3216c8ed696b39db33db00ac
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.topic: conceptual
+ms.service: service-health
+ms.date: 01/29/2019
+ms.workload: Supportability
+ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977204"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55884537"
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health – FAQ
 Erfahren Sie die Antworten auf häufig gestellte Fragen zu Azure Resource Health.
@@ -38,7 +31,7 @@ Resource Health führt auf der Grundlage des [Ressourcentyps](resource-health-ch
 
 ## <a name="what-does-each-of-the-health-status-mean"></a>Was bedeuten die einzelnen Integritätsstatus?
 Es gibt drei verschiedene Integritätsstatus:
-- Verfügbar: In der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
+- Verfügbar: Auf der Azure-Plattform liegen keine bekannten Probleme vor, die diese Ressource beeinträchtigen könnten.
 - Nicht verfügbar: Resource Health hat Probleme festgestellt, die die Ressource beeinträchtigen.
 - Unbekannt: Resource Health kann die Integrität einer Ressource nicht bestimmen, da der Dienst keine Informationen mehr zur Ressource erhält. 
 

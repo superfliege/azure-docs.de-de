@@ -1,5 +1,5 @@
 ---
-title: Informationen zu den von Media Services empfohlenen lokalen Livestreaming-Encodern – Azure | Microsoft-Dokumentation
+title: Von Media Services empfohlene Livestreaming-Encoder – Azure | Microsoft-Dokumentation
 description: Erfahren Sie etwas über die von Media Services empfohlenen lokalen Livestreaming-Encoder.
 services: media-services
 keywords: Codierung; Encoder; Medien
@@ -9,18 +9,18 @@ ms.author: johndeu
 ms.date: 01/17/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: c3e42ba9fe84ded8c60fc71f19de785945852116
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: a165fac2de89d5510b21b9185d4bc61e730b09ff
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656667"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960121"
 ---
 # <a name="recommended-live-streaming-encoders"></a>Empfohlene Livestreaming-Encoder
 
-In Media Services stellt ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) (Kanal) eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabestreams von einem Liveereignis empfangen werden können:
+In Azure Media Services stellt ein [Liveereignis](https://docs.microsoft.com/rest/api/media/liveevents) (Kanal) eine Pipeline zum Verarbeiten von Livestreaminginhalten dar. Es gibt zwei Arten, auf die Live-Eingabestreams vom Liveereignis empfangen werden können.
 
-* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (fragmentiertes MP4) mit Mehrfachbitrate an das Liveereignis gesendet, das nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Streams durchlaufen Liveereignisse ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Ein Live-Encoder kann einen Datenstrom mit Einzelbitrate an einen Pass-Through-Kanal senden, doch wird von dieser Konfiguration abgeraten, weil in diesem Fall ein Streaming mit adaptiver Bitrate auf Clientseite nicht möglich ist.
+* Von einem lokalen Liveencoder wird ein RTMP- oder Smooth Streaming-Datenstrom (fragmentiertes MP4) mit Mehrfachbitrate an das Liveereignis gesendet, das nicht für die Livecodierung mit Media Services aktiviert ist. Die erfassten Streams durchlaufen Liveereignisse ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Ein Liveencoder kann einen Datenstrom mit Einzelbitrate an einen Pass-Through-Kanal senden. Diese Konfiguration wird nicht empfohlen, da sie kein Adaptive Bitrate Streaming zum Client zulässt.
 
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
@@ -52,7 +52,7 @@ Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencoder mit 
 
 ## <a name="live-encoders-that-output-fragmented-mp4"></a>Liveencoder mit Ausgabe im fragmentierten MP4-Format
 
-Media Services empfiehlt die Verwendung eines der nachfolgenden Liveencoder, der Smooth Streaming mit Mehrfachbitrate (fragmentiertes MP4) ausgibt. Die unterstützten URL-Schemas sind `http://` und `https://`.
+Media Services empfiehlt den Einsatz eines der nachfolgenden Liveencoder, der Smooth Streaming mit Mehrfachbitrate (fragmentiertes MP4) ausgibt. Die unterstützten URL-Schemas sind `http://` und `https://`.
 
 - Ateme TITAN Live
 - Cisco Digital Media Encoder 2200
@@ -72,14 +72,14 @@ Damit Inhalte wiedergegeben werden können, müssen sowohl ein Audio- als auch e
 ### <a name="configuration-tips"></a>Konfigurationstipps
 
 - Verwenden Sie nach Möglichkeit eine Kabelverbindung zum Internet.
-- Als Faustregel zum Bestimmen der erforderlichen Bandbreite verdoppeln Sie die Streamingbitraten. Dies ist zwar keine zwingende Voraussetzung, aber hilfreich, um die Auswirkungen einer Überlastung des Netzwerks zu verringern.
+- Zum Bestimmen der erforderlichen Bandbreite müssen die Streamingbitraten verdoppelt werden. Wenngleich nicht bindend, ist diese einfache Regel hilfreich, um Netzwerküberlastungen zu verhindern.
 - Bei der Verwendung softwarebasierter Encoder schließen Sie alle nicht benötigten Programme.
-- Ändern Sie Ihre Encoderkonfiguration nicht, nachdem die Pushübertragung begonnen hat. Es hätte negative Auswirkungen für das Ereignis und kann zu einem instabilen Ereignis führen. 
-- Nehmen Sie sich unbedingt ausreichend Zeit zum Einrichten Ihres Ereignisses. Für Ereignisse in großem Maßstab empfiehlt es sich, eine Stunde vor dem Ereignis mit dem Setup zu beginnen.
+- Das Ändern der Encoderkonfiguration, nachdem die Pushübertragung begonnen hat, führt zu negativen Auswirkungen auf das Ereignis. Durch Konfigurationsänderungen kann das Ereignis instabil werden. 
+- Nehmen Sie sich zum Einrichten Ihres Ereignisses unbedingt ausreichend Zeit. Für Großereignisse empfiehlt es sich, eine Stunde vor dem Ereignis mit dem Setup zu beginnen.
 
-## <a name="how-to-become-an-on-premises-encoder-partner"></a>So werden Sie Partner für lokale Encoder
+## <a name="becoming-an-on-premises-encoder-partner"></a>Partner für lokale Encoder werden
 
-Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt Media Services Ihr Produkt, indem es Ihren Encoder Unternehmenskunden empfiehlt. Um Partner für lokale Encoder zu werden, müssen Sie die Kompatibilität Ihres lokalen Encoders mit Media Services bestätigen. Führen Sie hierzu die folgenden Überprüfungsschritte aus:
+Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt Media Services Ihr Produkt, indem es Ihren Encoder Unternehmenskunden empfiehlt. Um Partner für lokale Encoder zu werden, müssen Sie die Kompatibilität Ihres lokalen Encoders mit Media Services bestätigen. Führen Sie hierzu die folgenden Überprüfungsschritte aus.
 
 ### <a name="pass-through-live-event-verification"></a>Überprüfung von Pass-Through-Liveereignissen
 
@@ -95,7 +95,7 @@ Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt M
 10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
 11. Lassen Sie Ihren Liveencoder ungefähr 10 Minuten lang laufen.
 12. Beenden Sie das Liveereignis. 
-13. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und überprüfen Sie dies alternativ über die Vorschau-URL während der Livesitzung).
+13. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um die archivierten Medienobjekte zu beobachten, um sicherzustellen, dass die Wiedergabe auf allen Qualitätsebenen keine sichtbaren Störungen aufweist. Zum Beobachten und Überprüfen können Sie während der Livesitzung auch die Vorschau-URL verwenden.
 14. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Liveencoders.
 15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
 16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
@@ -114,18 +114,18 @@ Wenn Sie Azure Media Services-Partner für lokale Encoder werden, unterstützt M
 10. Kombinieren Sie die URL aus Schritt 8 mit dem Hostnamen aus Schritt 9, um die vollständige URL zu erhalten.
 11. Lassen Sie Ihren Liveencoder ungefähr 10 Minuten lang laufen.
 12. Beenden Sie das Liveereignis.
-13. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das archivierte Medienobjekt zu betrachten und sicherzustellen, dass die Wiedergabe in keiner der Qualitätsstufen sichtbare Störungen aufweist (oder beobachten und überprüfen Sie dies alternativ über die Vorschau-URL während der Livesitzung).
+13. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um die archivierten Medienobjekte zu beobachten, um sicherzustellen, dass die Wiedergabe auf allen Qualitätsebenen keine sichtbaren Störungen aufweist. Zum Beobachten und Überprüfen können Sie während der Livesitzung auch die Vorschau-URL verwenden.
 14. Vermerken Sie die Medienobjekt-ID, die veröffentlichte Streaming-URL für das Livearchiv und die Einstellungen sowie die verwendete Version Ihres Liveencoders.
 15. Setzen Sie den Status des Liveereignisses nach dem Erstellen der einzelnen Stichproben zurück.
 16. Wiederholen Sie die Schritte 5 bis 15 für alle Konfigurationen, die von Ihrem Encoder unterstützt werden (mit und ohne Werbesignalisierung oder Untertiteln sowie in verschiedenen Codiergeschwindigkeiten).
 
 ### <a name="longevity-verification"></a>Überprüfung der Lebensdauer
 
-Die gleichen Schritte wie in [Überprüfung von Pass-Through-Liveereignissen](#pass-through-live-event-verification), mit Ausnahme von Schritt 11. <br/>Lassen Sie Ihren Liveencoder statt für 10 Minuten mindestens eine Woche lang laufen. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das Livestreaming gelegentlich zu beobachten (oder archivierte Medienobjekte), um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
+Fügen Sie die gleichen Schritte wie bei der [Überprüfung von Pass-Through-Liveereignissen](#pass-through-live-event-verification) mit Ausnahme von Schritt 11 aus. <br/>Lassen Sie Ihren Liveencoder statt für 10 Minuten mindestens eine Woche lang laufen. Verwenden Sie einen Player wie [Azure Media Player](https://ampdemo.azureedge.net/azuremediaplayer.html), um das Livestreaming (oder ein archiviertes Medienobjekt) von Zeit zu Zeit zu beobachten, um sicherzustellen, dass die Wiedergabe keine sichtbaren Störungen aufweist.
 
 ### <a name="email-your-recorded-settings"></a>Senden Ihrer aufgezeichneten Einstellungen per E-Mail
 
-Senden Sie zum Abschluss eine E-Mail mit Ihren aufgezeichneten Einstellungen und Livearchivparametern als Benachrichtigung darüber, dass alle automatischen Überprüfungen bestanden wurden, unter amsstreaming@microsoft.com an Azure Media Services. Schließen Sie auch Ihre Kontaktinformationen für nachfolgende Kontaktaufnahmen ein. Setzen Sie sich bei Fragen zu dieser Vorgehensweise mit dem Azure Media Services-Team in Verbindung.
+Senden Sie schließlich eine E-Mail mit Ihren aufgezeichneten Einstellungen und Livearchivparametern als Benachrichtigung darüber, dass alle automatischen Überprüfungen bestanden wurden, unter amsstreaming@microsoft.com an Azure Media Services. Schließen Sie auch Ihre Kontaktinformationen für nachfolgende Kontaktaufnahmen ein. Setzen Sie sich bei Fragen zu dieser Vorgehensweise mit dem Azure Media Services-Team in Verbindung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

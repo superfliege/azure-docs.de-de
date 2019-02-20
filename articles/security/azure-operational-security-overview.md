@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die Azure-Betriebssiche
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: tomsh
-ms.openlocfilehash: 478228ccb12fbfe3ca527bf4d16af05735b7ba92
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: da58737314012255f26d344f279d855244f0c1ba
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238538"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116472"
 ---
 # <a name="azure-operational-security-overview"></a>Azure Operational Security – Übersicht
 
@@ -72,7 +72,7 @@ Azure AD enthält auch eine vollständige Suite mit [Funktionen zur Identitätsv
 - [Umfassende Überwachung](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
 - [Sicherheitsüberwachung und -warnungen](https://docs.microsoft.com/azure/operations-management-suite/oms-security-responding-alerts)
 
-Mit Azure Active Directory können Sie für alle Anwendungen, die Sie für Ihre Partner und Kunden (Geschäftskunden oder Endverbraucher) veröffentlichen, dieselben Identitäts- und Zugriffsverwaltungsfunktionen verwenden. Dadurch können Sie die Betriebskosten erheblich reduzieren.
+Mit Azure Active Directory können Sie für alle Anwendungen, die Sie für Ihre Partner und Kunden (Geschäftskunden oder Endverbraucher) veröffentlichen, dieselben Identitäts- und Zugriffsverwaltungsfunktionen verwenden.  Dadurch können Sie die Betriebskosten erheblich reduzieren.
 
 ## <a name="azure-security-center"></a>Azure Security Center
 
@@ -140,13 +140,13 @@ Network Watcher vereinfacht die Überwachung und Diagnose Ihres Azure-Netzwerks.
 Network Watcher verfügt derzeit über die folgenden Funktionen:
 
 - [Topologie](https://docs.microsoft.com/azure/network-watcher/network-watcher-topology-overview): Bietet eine Ansicht der verschiedenen Verbindungen und Beziehungen zwischen Netzwerkressourcen in einer Ressourcengruppe.
-- [Variable Paketerfassung](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview): Erfasst Paketdaten, die im virtuellen Computer ein- und ausgehen. Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
+- [Variable Paketerfassung:](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview) Erfasst die auf dem virtuellen Computer ein- und ausgehenden Paketdaten. Erweiterte Filteroptionen und präzise Steuerelemente ermöglichen beispielsweise das Festlegen von Zeit- und Größeneinschränkungen und bieten damit viel Flexibilität. Die Paketdaten können in einem Blobspeicher oder auf dem lokalen Datenträger im CAP-Format gespeichert werden.
 - [IP-Datenflussüberprüfung](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview): Überprüft basierend auf 5-Tupel-Paketparametern für Datenflussinformationen (IP-Zieladresse, IP-Quelladresse, Zielport, Quellport und Protokoll), ob ein Paket zugelassen oder abgelehnt wird. Wenn eine Sicherheitsgruppe ein Paket ablehnt, werden die Regel und die Gruppe zurückgegeben, die das Paket abgelehnt haben.
-- [Nächster Hop](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview): Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
-- [Sicherheitsgruppenansicht](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview): Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
+- [Nächster Hop:](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview) Ermittelt den nächsten Hop für Pakete, die im Azure-Netzwerkfabric weitergeleitet werden, sodass Sie eine Diagnose zur Ermittlung von falsch konfigurierten benutzerdefinierten Routen durchführen können.
+- [Sicherheitsgruppenansicht:](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview) Ruft die geltenden und angewendeten Sicherheitsregeln ab, die auf einen virtuellen Computer angewendet werden.
 - [Datenflussprotokolle für Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview): Ermöglichen die Erfassung von Protokollen zum Datenverkehr, der von den Sicherheitsregeln in der Gruppe zugelassen oder abgelehnt wird. Der Datenfluss wird durch 5-Tupel-Informationen definiert: IP-Quelladresse, IP-Zieladresse, Quellport, Zielport und Protokoll.
-- [Problembehandlung für virtuelle Netzwerkgateways und -verbindungen](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest): Ermöglicht die Behebung von Problemen, die bei virtuellen Netzwerkgateways und -verbindungen auftreten können.
-- [Grenzwerte für Netzwerkabonnements](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
+- [Gateway des virtuellen Netzwerks und Problembehandlung für Verbindungen:](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest) Bietet die Möglichkeit zur Problembehandlung bei virtuellen Netzwerkgateways und -verbindungen.
+- [Grenzwerte für Netzwerkabonnements:](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) Ermöglicht die Anzeige der Verwendung von Netzwerkressourcen mit bestimmten Grenzwerten.
 - [Diagnoseprotokolle](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview): Stellt einen zentralen Bereich für das Aktivieren oder Deaktivieren von Diagnoseprotokollen für Netzwerkressourcen in einer Ressourcengruppe bereit.
 
 Weitere Informationen finden Sie unter [Konfigurieren von Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-create).

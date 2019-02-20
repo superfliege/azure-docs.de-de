@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine Reihe von bewährten Methoden für die
 services: security
 documentationcenter: na
 author: TomShinder
-manager: mbaldwin
+manager: barbkess
 editor: TomShinder
 ms.assetid: 7f6aa45f-138f-4fde-a611-aaf7e8fe56d1
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: TomSh
-ms.openlocfilehash: d89972ff0f7e3035fa20f8d9ee2863b68fa52e9f
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 86246d3d580737837ec07ccdc89ed82914cde209
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124064"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118410"
 ---
 # <a name="azure-network-security-best-practices"></a>Bewährte Methoden für die Azure-Netzwerksicherheit
 Sie können [virtuelle Azure-Computer (VMs)](https://azure.microsoft.com/services/virtual-machines/) und Appliances mit anderen Geräten im Netzwerk verbinden, indem Sie sie in [Azure Virtual Networks](https://azure.microsoft.com/documentation/services/virtual-network/) anordnen. Dies ist ein Konstrukt, mit dem Sie virtuelle Netzwerkschnittstellenkarten mit einem virtuellen Netzwerk verbinden können, um die TCP/IP-basierte Kommunikation zwischen netzwerkfähigen Geräten zu ermöglichen. Virtuelle Computer, die mit einem Azure Virtual Network verbunden sind, können eine Verbindung mit Geräten im selben virtuellen Netzwerk, anderen virtuellen Netzwerken, im Internet oder sogar in eigenen lokalen Netzwerken herstellen.
@@ -43,11 +43,11 @@ Azure Virtual Networks ähneln einem LAN in Ihrem lokalen Netzwerk. Die Idee hin
 
 Zu den bewährten Methoden für die logische Segmentierung von Subnetzen gehören:
 
-**Bewährte Methode**: Segmentieren des größeren Adressraums in Subnetze.   
+**Bewährte Methode**: Unterteilen Sie den größeren Adressraum in Subnetze.   
 **Detail**: Sie können [CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)-basierte Subnetzprinzipien verwenden, um die Subnetze zu erstellen.
 
-**Bewährte Methode**: Erstellen von Netzwerkzugriffssteuerungen zwischen Subnetzen. Das Routing zwischen den Subnetzen wird automatisch durchgeführt, und es ist nicht erforderlich, Routingtabellen manuell zu konfigurieren. Standardmäßig gibt es keine Netzwerkzugriffssteuerung zwischen den Subnetzen, die Sie im Azure Virtual Network erstellen.   
-**Details**: Verwenden Sie eine [Netzwerksicherheitsgruppe](../virtual-network/virtual-networks-nsg.md) (NSG). Bei NSGs handelt es sich um einfache zustandsbehaftete Paketuntersuchungsgeräte, für die der 5-Tupel-Ansatz (Quell-IP, Quellport, Ziel-IP, Zielport und Layer-4-Protokoll) verwendet wird, um Zulassen/Verweigern-Regeln für den Netzwerkdatenverkehr zu erstellen. Sie können Datenverkehr für eine einzelne IP-Adresse, mehrere IP-Adressen und gesamte Subnetze in beiden Richtungen zulassen oder verweigern.
+**Bewährte Methode**: Erstellen Sie Netzwerkzugriffssteuerungen zwischen Subnetzen. Das Routing zwischen den Subnetzen wird automatisch durchgeführt, und es ist nicht erforderlich, Routingtabellen manuell zu konfigurieren. Standardmäßig gibt es keine Netzwerkzugriffssteuerung zwischen den Subnetzen, die Sie im Azure Virtual Network erstellen.   
+**Detail**: Verwenden Sie eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/virtual-networks-nsg.md). Bei NSGs handelt es sich um einfache zustandsbehaftete Paketuntersuchungsgeräte, für die der 5-Tupel-Ansatz (Quell-IP, Quellport, Ziel-IP, Zielport und Layer-4-Protokoll) verwendet wird, um Zulassen/Verweigern-Regeln für den Netzwerkdatenverkehr zu erstellen. Sie können Datenverkehr für eine einzelne IP-Adresse, mehrere IP-Adressen und gesamte Subnetze in beiden Richtungen zulassen oder verweigern.
 
 Bei der Verwendung von NSGs für die Netzwerkzugriffssteuerung zwischen Subnetzen können Sie das Ressourcen, die zu derselben Sicherheitszone oder Rolle gehören, in eigenen Subnetzen anordnen.
 
@@ -103,8 +103,8 @@ Viele Organisationen haben sich für die Hybrid-IT-Route entschieden. Bei Hybrid
 
 Beim Hybrid-IT-Szenario wird normalerweise eine Art von standortübergreifender Konnektivität verwendet. Standortübergreifende Konnektivität ermöglicht es dem Unternehmen, seine lokalen Netzwerke mit Azure Virtual Networks zu verbinden. Es sind zwei Lösungen für standortübergreifende Konnektivität verfügbar:
 
-* **Site-to-Site-VPN**: Es ist eine vertrauenswürdige, zuverlässige und bewährte Technologie, aber die Verbindung erfolgt über das Internet. Die Bandbreite ist mit einem Maximum von ca. 200 MBit/s relativ begrenzt. Site-to-Site-VPN ist für einige Szenarien eine geeignete Option und wird in Abschnitt [Deaktivieren des RDP/SSH-Zugriffs auf virtuelle Computer](#disable-rdpssh-access-to-virtual-machines) näher erläutert.
-* **Azure ExpressRoute**: Wir empfehlen, dass Sie für Ihre standortübergreifende Konnektivität [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden. ExpressRoute ist ein dedizierter WAN-Link zwischen Ihrem lokalen Standort und einem Exchange-Hostinganbieter. Da dies eine Telekommunikationsverbindung ist, werden Ihre Daten nicht über das Internet übertragen und unterliegen daher auch nicht den potenziellen Risiken der Internetkommunikation.
+* **Standort-zu-Standort-VPN**: Dies ist eine vertrauenswürdige, zuverlässige und bewährte Technologie, aber die Verbindung erfolgt über das Internet. Die Bandbreite ist mit einem Maximum von ca. 200 MBit/s relativ begrenzt. Site-to-Site-VPN ist für einige Szenarien eine geeignete Option und wird in Abschnitt [Deaktivieren des RDP/SSH-Zugriffs auf virtuelle Computer](#disable-rdpssh-access-to-virtual-machines) näher erläutert.
+* **Azure ExpressRoute:** Wir empfehlen, dass Sie für Ihre standortübergreifende Konnektivität [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) verwenden. ExpressRoute ist ein dedizierter WAN-Link zwischen Ihrem lokalen Standort und einem Exchange-Hostinganbieter. Da dies eine Telekommunikationsverbindung ist, werden Ihre Daten nicht über das Internet übertragen und unterliegen daher auch nicht den potenziellen Risiken der Internetkommunikation.
 
 ## <a name="optimize-uptime-and-performance"></a>Optimieren der Betriebszeit und Leistung
 Wenn ein Dienst ausgefallen ist, kann nicht auf Informationen zugegriffen werden. Wenn die Leistung so schlecht ist, dass die Daten nicht genutzt werden können, werden die Daten als nicht verfügbar angesehen. Aus Gründen der Sicherheit müssen Sie alles unternehmen, um sicherzustellen, dass für Ihre Dienste eine optimale Betriebszeit und Leistung gewährleistet ist.
@@ -115,30 +115,30 @@ Die Verteilung von Datenverkehr erhöht die Verfügbarkeit, weil Folgendes passi
 
 Wir empfehlen Ihnen, den Lastenausgleich nach Möglichkeit immer zu nutzen, wenn diese Vorgehensweise für Ihre Dienste geeignet ist. Es folgen Szenarien sowohl auf der Ebene des Azure Virtual Network als auch auf der globalen Ebene, zusammen mit den jeweiligen Lastausgleichsoptionen.
 
-**Szenario**: Sie haben eine Anwendung:
+**Szenario:** Sie haben eine Anwendung:
 
-- Bei denen Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele hierfür wären Einkaufswagen-Apps und Web-E-Mail-Server.
+- Bei der Anforderungen einer Benutzer-/Clientsitzung den gleichen virtuellen Back-End-Computer erreichen müssen. Beispiele hierfür wären Einkaufswagen-Apps und Web-E-Mail-Server.
 - Dabei ist nur eine sichere Verbindung zulässig. Unverschlüsselte Kommunikation mit den Servern sind keine akzeptable Option.
 - Für die mehrere HTTP-Anforderungen über die gleiche lange bestehende TCP-Verbindung an verschiedene Back-End-Server weitergeleitet werden bzw. für die dort ein Lastenausgleich erfolgen muss.
 
 **Option für den Lastenausgleich**: Verwenden Sie [Azure Application Gateway](../application-gateway/application-gateway-introduction.md), einen Lastenausgleich für HTTP-Web-Datenverkehr. Application Gateway unterstützt die End-to-End-SSL-Verschlüsselung und [SSL-Terminierung](../application-gateway/application-gateway-introduction.md) am Gateway. Webserver können dann von Ver- und Entschlüsselungs-Overheads und unverschlüsseltem Datenverkehr zu den Back-End-Servern entlastet werden.
 
-**Szenario**: Sie benötigen für eingehende Verbindungen aus dem Internet einen Lastenausgleich zwischen Ihren Servern in einem Azure Virtual Network. Szenarien sind, wenn Sie:
+**Szenario:** Sie benötigen für eingehende Verbindungen aus dem Internet einen Lastenausgleich zwischen Ihren Servern in einem virtuellen Azure-Netzwerk. Szenarien sind, wenn Sie:
 
 - Zustandslose Anwendungen haben, die eingehende Anforderungen aus dem Internet akzeptieren.
 - Keine persistenten Sitzungen oder SSL-Auslagerung benötigen. Persistente Sitzungen sind eine Methode, die für den Anwendungslastenausgleich verwendet wird, um die Serveraffinität zu erreichen.
 
 **Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen externen Lastenausgleich](../load-balancer/quickstart-create-basic-load-balancer-portal.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
 
-**Szenario**: Sie benötigen einen Lastenausgleich für Verbindungen von VMs, die sich nicht im Internet befinden. In den meisten Fällen werden die Verbindungen, die für den Lastenausgleich akzeptiert werden, von Geräten in einem Azure Virtual Network initiiert, wie z.B. SQL Server-Instanzen oder interne Webserver.   
+**Szenario:** Sie benötigen einen Lastenausgleich für Verbindungen von VMs, die sich nicht im Internet befinden. In den meisten Fällen werden die Verbindungen, die für den Lastenausgleich akzeptiert werden, von Geräten in einem Azure Virtual Network initiiert, wie z.B. SQL Server-Instanzen oder interne Webserver.   
 **Option für den Lastenausgleich**: Verwenden Sie das Azure-Portal, um [einen internen Lastenausgleich](../load-balancer/quickstart-create-basic-load-balancer-powershell.md) zu erstellen, der eingehende Anfragen auf mehrere VMs verteilt, um eine höhere Verfügbarkeit zu gewährleisten.
 
-**Szenario**: Sie benötigen globalen Lastenausgleich, da Sie:
+**Szenario:** Sie benötigen globalen Lastenausgleich, da Sie:
 
 - Eine Cloudlösung haben, die weit über mehrere Regionen verteilt ist und ein Höchstmaß an Betriebszeit (Verfügbarkeit) erfordert.
 - Ein Höchstmaß an Betriebszeit benötigen, um sicherzustellen, dass Ihr Dienst verfügbar ist, auch wenn ein ganzes Rechenzentrum nicht verfügbar ist.
 
-**Option für den Lastenausgleich**: Verwenden Sie den Azure Traffic Manager. Traffic Manager ermöglicht Ihnen den Lastenausgleich für Verbindungen mit Ihren Diensten basierend auf dem Standort des Benutzers.
+**Option für den Lastenausgleich**: Verwenden Sie Azure Traffic Manager. Traffic Manager ermöglicht Ihnen den Lastenausgleich für Verbindungen mit Ihren Diensten basierend auf dem Standort des Benutzers.
 
 Wenn ein Benutzer Ihren Dienst beispielsweise von einem EU-Standort aus anfordert, wird die Verbindung an Ihre Dienste umgeleitet, die in einem EU-Rechenzentrum angeordnet sind. Mit diesem Teil des globalen Lastenausgleichs von Traffic Manager können Sie die Leistung verbessern, da die Herstellung der Verbindung mit dem nächsten Rechenzentrum schneller als die Verbindung mit weit entfernten Rechenzentren möglich ist.
 
@@ -149,15 +149,15 @@ Das potenzielle Sicherheitsproblem bei der Verwendung dieser Protokolle über da
 
 Wir empfehlen Ihnen, den direkten RDP- und SSH-Zugriff auf Ihre virtuellen Azure-Computer über das Internet zu deaktivieren. Nachdem der direkte RDP- und SSH-Zugriff über das Internet deaktiviert wurde, haben Sie andere Möglichkeiten, um für die Durchführung der Remoteverwaltung auf diese VMs zuzugreifen.
 
-**Szenario**: Ein Benutzer kann eine Verbindung mit einem Azure Virtual Network über das Internet herstellen.   
-**Option**: [Point-to-Site-VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md) ist ein anderer Ausdruck für eine VPN-Client/Server-Verbindung mit Remotezugriff. Nachdem die Point-to-Site-Verbindung hergestellt wurde, kann der Benutzer per RDP oder SSH eine Verbindung mit allen VMs im Azure Virtual Network herstellen, mit denen der Benutzer per Point-to-Site-VPN-Verbindung verbunden ist. Hierbei wird davon ausgegangen, dass der Benutzer dazu berechtigt ist, auf diese VMs zuzugreifen.
+**Szenario:** Ein Benutzer kann eine Verbindung mit einem Azure Virtual Network über das Internet herstellen.   
+**Option**: [Punkt-zu-Standort-VPN-Verbindung](../vpn-gateway/vpn-gateway-point-to-site-create.md) ist ein anderer Ausdruck für eine VPN-Client/Server-Verbindung mit Remotezugriff. Nachdem die Punkt-zu-Standort-Verbindung hergestellt wurde, kann der Benutzer per RDP oder SSH eine Verbindung mit allen VMs im virtuellen Azure-Netzwerk herstellen, mit denen der Benutzer per Punkt-zu-Standort-Verbindung verbunden ist. Hierbei wird davon ausgegangen, dass der Benutzer dazu berechtigt ist, auf diese VMs zuzugreifen.
 
-Eine Point-to-Site-VPN-Verbindung ist sicherer als direkte RDP- oder SSH-Verbindungen, da sich der Benutzer zweimal authentifizieren muss, bevor er die Verbindung mit einer VM herstellen kann. Zunächst muss sich der Benutzer authentifizieren (und berechtigt sein), um die Point-to-Site-VPN-Verbindung herzustellen. Danach muss sich der Benutzer authentifizieren (und berechtigt sein), um die RDP- oder SSH-Sitzung zu erstellen.
+Eine Punkt-zu-Standort-VPN-Verbindung ist sicherer als direkte RDP- oder SSH-Verbindungen, da sich der Benutzer zweimal authentifizieren muss, bevor er die Verbindung mit einer VM herstellen kann. Zunächst muss sich der Benutzer authentifizieren (und berechtigt sein), um die Punkt-zu-Standort-VPN-Verbindung herzustellen. Danach muss sich der Benutzer authentifizieren (und berechtigt sein), um die RDP- oder SSH-Sitzung zu erstellen.
 
-**Szenario**: Ermöglichen Sie es Benutzern in Ihrem lokalen Netzwerk, sich mit VMs in Ihrem Azure Virtual Network zu verbinden.   
-**Option**: Über eine [Site-to-Site-VPN](../vpn-gateway/vpn-gateway-site-to-site-create.md)-Verbindung wird ein gesamtes Netzwerk über das Internet mit einem anderen Netzwerk verbunden. Sie können eine Site-to-Site-VPN-Verbindung verwenden, um Ihr lokales Netzwerk mit einem Azure Virtual Network zu verbinden. Benutzer in Ihrem lokalen Netzwerk verbinden sich über das RDP- oder SSH-Protokoll über die Site-to-Site-VPN-Verbindung. Sie müssen keinen direkten RDP- oder SSH-Zugriff über das Internet ermöglichen.
+**Szenario:** Ermöglichen Sie es Benutzern in Ihrem lokalen Netzwerk, sich mit VMs in Ihrem Azure Virtual Network zu verbinden.   
+**Option**: Über eine [Site-to-Site-VPN-Verbindung](../vpn-gateway/vpn-gateway-site-to-site-create.md) wird ein gesamtes Netzwerk über das Internet mit einem anderen Netzwerk verbunden. Sie können eine Site-to-Site-VPN-Verbindung verwenden, um Ihr lokales Netzwerk mit einem Azure Virtual Network zu verbinden. Benutzer in Ihrem lokalen Netzwerk verbinden sich über das RDP- oder SSH-Protokoll über die Site-to-Site-VPN-Verbindung. Sie müssen keinen direkten RDP- oder SSH-Zugriff über das Internet ermöglichen.
 
-**Szenario**: Verwenden Sie eine dedizierte WAN-Verbindung, um Funktionalität bereitzustellen, die der Site-to-Site-VPN-Verbindung ähnelt.   
+**Szenario:** Verwenden Sie eine dedizierte WAN-Verbindung, um Funktionalität bereitzustellen, die der Site-to-Site-VPN-Verbindung ähnelt.   
 **Option**: Verwenden Sie [ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/). Es bietet ähnliche Funktionen wie eine Site-to-Site-VPN-Verbindung. Im Folgenden werden die Hauptunterschiede erläutert:
 
 - Die dedizierte WAN-Verbindung verläuft nicht über das Internet.
@@ -169,11 +169,11 @@ Mit Dienstendpunkten von virtuellen Netzwerken werden der private Adressenbereic
 Dienstendpunkte bieten folgende Vorteile:
 
 - **Verbesserte Sicherheit für Ihre Azure-Dienstressourcen**: Mit Dienstendpunkten können Ressourcen von Azure-Diensten auf Ihr virtuelles Netzwerk beschränkt und so geschützt werden. Das Sichern von Dienstressourcen in einem virtuellen Netzwerk erhöht die Sicherheit, da der Zugriff über das öffentliche Internet auf Ressourcen vollständig verhindert und nur Datenverkehr aus Ihrem virtuellen Netzwerk zugelassen wird.
-- **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Für alle Routen in Ihrem virtuellen Netzwerk, die für Internetdatenverkehr den Weg auf Ihre lokalen und/oder virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), wird auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internet-Datenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr.
+- **Optimale Weiterleitung des Datenverkehrs für Azure-Dienste aus Ihrem virtuellen Netzwerk**: Heutzutage wird für alle Routen Ihres virtuellen Netzwerks, die für Internetdatenverkehr den Weg über Ihre lokalen bzw. virtuellen Geräte erzwingen (als Tunnelerzwingung bezeichnet), auch für den Datenverkehr von Azure-Diensten die gleiche Route wie für den Internetdatenverkehr erzwungen. Dienstendpunkte ermöglichen eine optimale Weiterleitung für Azure-Datenverkehr.
 
   Endpunkte leiten den Datenverkehr der Dienste direkt aus Ihrem virtuellen Netzwerk an den Dienst im Azure-Backbonenetzwerk. Die Verwaltung von Datenverkehr im Azure-Backbonenetzwerk ermöglicht Ihnen weiterhin die Überwachung und Überprüfung von ausgehendem Internet-Datenverkehr aus Ihren virtuellen Netzwerken durch die Tunnelerzwingung, ohne dass sich dies auf den Datenverkehr der Dienste auswirkt. Informieren Sie sich über [benutzerdefinierte Routen und die Tunnelerzwingung](../virtual-network/virtual-networks-udr-overview.md).
 
-- **Einfache Einrichtung mit weniger Verwaltungsaufwand**: Sie benötigen in Ihren virtuellen Netzwerken keine reservierten öffentlichen IP-Adressen mehr, um Azure-Ressourcen über die IP-Firewall zu schützen. Es sind keine NAT- oder Gatewaygeräte erforderlich, um die Dienstendpunkte einzurichten. Dienstendpunkte werden einfach per Klick in einem Subnetz konfiguriert. Es entsteht kein zusätzlicher Aufwand für die Verwaltung der Endpunkte.
+- **Einfache Einrichtung mit weniger Verwaltungsaufwand**: Sie benötigen in Ihren virtuellen Netzwerken keine reservierten öffentlichen IP-Adressen mehr, um Azure-Ressourcen über eine IP-Firewall zu schützen. Es sind keine NAT- oder Gatewaygeräte erforderlich, um die Dienstendpunkte einzurichten. Dienstendpunkte werden einfach per Klick in einem Subnetz konfiguriert. Es entsteht kein zusätzlicher Aufwand für die Verwaltung der Endpunkte.
 
 Weitere Informationen zu Dienstendpunkten und den Azure-Diensten und Regionen, für die Dienstendpunkte verfügbar sind, finden Sie in [Dienstendpunkte im virtuellen Netzwerk](../virtual-network/virtual-network-service-endpoints-overview.md).
 
