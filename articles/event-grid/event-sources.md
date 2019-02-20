@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/19/2019
+ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 44bd92568db3a762453e1d76a620e6c792cd8913
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b6abb0048dcc722241a2cd87354224b0fd7fa2f9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54476035"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234185"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Ereignisquellen in Azure Event Grid
 
@@ -131,6 +131,16 @@ Abonnieren Sie Blob Storage-Ereignisse, um auf Ereignisse der Bloberstellung und
 | [Resource Manager-Vorlage: Erstellen eines Blobspeichers und Abonnements](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Stellt ein Azure Blob Storage-Konto bereit und abonniert Ereignisse für dieses Speicherkonto. Sendet Ereignisse an einen WebHook. |
 | [Übersicht: Reaktion auf Blob Storage-Ereignisse](../storage/blobs/storage-blob-event-overview.md) | Übersicht über die Integration von Blob Storage in Event Grid. |
 | [Ereignisschema](event-schema-blob-storage.md) | Zeigt Felder in Blob Storage-Ereignissen an. |
+
+## <a name="maps"></a>Karten
+Abonnieren Sie Azure Maps-Ereignisse, um auf Geofenceereignisse zu reagieren. Beispielsweise kann eine Anwendung jedes Mal, wenn ein Gerät einen Geofence betritt oder verlässt, eine E-Mail-Benachrichtigung senden.
+
+|Titel  |BESCHREIBUNG  |
+|---------|---------|
+| [Reagieren auf Azure Maps-Ereignisse mithilfe von Event Grid](../azure-maps/azure-maps-event-grid-integration.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Übersicht über die Integration von Azure Maps in Event Grid. |
+| [Tutorial: Einrichten eines Geofence](../azure-maps/tutorial-geofence.md?toc=%2fazure%2fevent-grid%2ftoc.json) | In diesem Tutorial werden die grundlegenden Schritte beschrieben, die zum Einrichten eines Geofence mit Azure Maps ausgeführt werden müssen. Sie verwenden Azure Event Grid, um die Ergebnisse für den Geofence zu streamen und basierend darauf eine Benachrichtigung einzurichten. |
+| [Ereignisschema](event-schema-azure-maps.md) | Zeigt Felder in Azure Maps-Ereignissen an. |
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 912d5ec399ac59d81a7d9da9b494d8ee50e720e1
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 72aadcb5d1459518cda41f1d4dcafc670fa393c5
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736127"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55985423"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>Häufige Fehler bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung
 In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Migration von IaaS-Ressourcen vom klassischen Azure-Bereitstellungsmodell zum Azure Resource Manager-Stapel am häufigsten auftreten.
@@ -27,7 +27,7 @@ In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Mig
 | Die Migration von Bereitstellung "{deployment-name}" im HostedService "{hosted-service-name}" wird nicht unterstützt, da die Bereitstellung mehrere Verfügbarkeitsgruppen aufweist. |Zurzeit können nur gehostete Dienste mit höchstens einer Verfügbarkeitsgruppe migriert werden. Um dieses Problem zu umgehen, verschieben Sie die zusätzlichen Verfügbarkeitsgruppen und virtuellen Computer in diesen Verfügbarkeitsgruppen in einen anderen gehosteten Dienst. |
 | Die Migration von Bereitstellung "{deployment-name}" im HostedService "{hosted-service-name}" wird nicht unterstützt, da die Bereitstellung über virtuelle Computer verfügt, die nicht Teil der Verfügbarkeitsgruppe sind, obwohl der HostedService einen virtuellen Computer enthält. |Um dieses Problem zu umgehen, verschieben Sie entweder alle virtuellen Computer in eine einzige Verfügbarkeitsgruppe, oder entfernen Sie alle virtuellen Computer aus der Verfügbarkeitsgruppe im gehosteten Dienst. |
 | Das Speicherkonto / der HostedService / das virtuelle Netzwerk {virtual-network-name} wird gerade migriert und kann daher nicht geändert werden. |Dieser Fehler tritt auf, wenn der Vorgang zur Vorbereitung der Migration für die Ressource abgeschlossen ist und ein Vorgang ausgelöst wird, der die Ressource ändern würde. Aufgrund der Sperre auf der Verwaltungsebene nach dem Vorbereitungsvorgang werden alle Änderungen an der Ressource blockiert. Um die Verwaltungsebene zu entsperren, können Sie den Vorgang zum Commit der Migration ausführen, um die Migration abzuschließen, oder Sie führen den Vorgang zum Abbrechen der Migration aus, um ein Rollback des Vorbereitungsvorgangs auszuführen. |
-| Die Migration ist für den HostedService „{hosted-service-name}“ nicht zulässig, da die darin enthaltene VM „{vm-name}“ den Zustand  „RoleStateUnknown“ aufweist. Die Migration ist nur dann zulässig, wenn sich die VM in einem der folgenden Zustände befindet: Wird ausgeführt, Beendet, Beendet (Zuordnung aufgehoben). |Für den virtuellen Computer findet möglicherweise gerade eine Statusübergang statt. Dies geschieht üblicherweise während eines Updatevorgangs für HostedService, beispielsweise während eines Neustarts, der Installation einer Erweiterung usw. Es empfiehlt sich, den Updatevorgang des HostedService abzuschließen, bevor Sie versuchen, die Migration durchzuführen. |
+| Die Migration ist für den HostedService „{hosted-service-name}“ nicht zulässig, da die darin enthaltene VM „{vm-name}“ den Zustand „RoleStateUnknown“ aufweist. Die Migration ist nur dann zulässig, wenn sich die VM in einem der folgenden Zustände befindet: Wird ausgeführt, Beendet, Beendet (Zuordnung aufgehoben). |Für den virtuellen Computer findet möglicherweise gerade eine Statusübergang statt. Dies geschieht üblicherweise während eines Updatevorgangs für HostedService, beispielsweise während eines Neustarts, der Installation einer Erweiterung usw. Es empfiehlt sich, den Updatevorgang des HostedService abzuschließen, bevor Sie versuchen, die Migration durchzuführen. |
 | Die Bereitstellung „{deployment-name}“ im HostedService „{hosted-service-name}“ enthält den virtuellen Computer „{vm-name}“ mit dem Datenträger „{data-disk-name}“, dessen physische Blobgröße ({size-of-the-vhd-blob-backing-the-data-disk} Bytes) nicht der logischen VM-Datenträgergröße ({size-of-the-data-disk-specified-in-the-vm-api} Bytes) entspricht. Die Migration wird ohne Angabe einer Größe für den Datenträger für den virtuellen Azure Resource Manager-Computer fortgesetzt. | Dieser Fehler kann auftreten, wenn Sie die VHD-Blobgröße angepasst haben, ohne die Größe im VM-API-Modell zu aktualisieren. Ausführliche Schritte zur Behebung finden Sie [weiter unten](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes).|
 | Beim Überprüfen von Datenträger "<Name des Datenträgers>" mit dem Medienlink "<Datenträger-URI>" für den virtuellen Computer "<Name des virtuellen Computers>" im Clouddienst "<Name des Clouddiensts>" ist eine Speicherausnahme aufgetreten. Stellen Sie sicher, dass dieser virtuelle Computer Zugriff auf den Medienlink der virtuellen Festplatte hat. | Dieser Fehler kann auftreten, wenn die Datenträger des virtuellen Computers gelöscht wurden oder der Zugriff auf sie nicht mehr möglich ist. Vergewissern Sie sich, dass die Datenträger des virtuellen Computers vorhanden sind.|
 | Die VM "<VM-Name>" im HostedService "<Name des Clouddiensts>" enthält einen Datenträger mit dem MediaLink "<VHD-URI>". Dieser weist einen Blobnamen "<VHD-Blobname>" auf, der in Azure Resource Manager nicht unterstützt wird. | Dieser Fehler tritt auf, wenn der Name des Blobs einen Schrägstrich (/) enthält. Dies wird vom Compute-Ressourcenanbieter derzeit nicht unterstützt. |
@@ -163,9 +163,9 @@ Nach Abschluss des Migrationsvorgangs möchten Sie den virtuellen Computer mögl
 
 #### <a name="powershell"></a>PowerShell
 ```powershell
-$vm = Get-AzureRmVM -ResourceGroupName "MyRG" -Name "MyVM"
-Remove-AzureRmVMSecret -VM $vm
-Update-AzureRmVM -ResourceGroupName "MyRG" -VM $vm
+$vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
+Remove-AzVMSecret -VM $vm
+Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
 #### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 

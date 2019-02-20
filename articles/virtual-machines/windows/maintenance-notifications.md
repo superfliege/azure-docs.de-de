@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: f8cac174844d7f87687d08975b6fbf17ed47b03e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 7c391e84f335e013ce1914063ccec75ba20f8685
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543290"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980090"
 ---
 # <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Behandeln von Benachrichtigungen zu geplanten Wartungen für virtuelle Windows-Computer
 
@@ -77,12 +77,14 @@ Verwenden Sie Self-Service-Wartung am besten in den folgenden Fällen:
 
 ## <a name="check-maintenance-status-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können auch mithilfe von Azure PowerShell prüfen, wann die Wartung Ihrer virtuellen Computer geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) unter Verwendung des Parameters `-status` ermittelt werden.
+Sie können auch mithilfe von Azure PowerShell prüfen, wann die Wartung Ihrer virtuellen Computer geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) unter Verwendung des Parameters `-status` ermittelt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung für den virtuellen Computer geplant, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Name vmName -Status
+Get-AzVM -ResourceGroupName rgName -Name vmName -Status
 ```
 
 Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeben: 
@@ -97,10 +99,10 @@ Unter „MaintenanceRedeployStatus“ werden folgende Eigenschaften zurückgegeb
 
 
 
-Sie können auch den Wartungsstatus für alle virtuellen Computer in einer Ressourcengruppe abrufen. Verwenden Sie hierzu [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) ohne Angabe eines virtuellen Computers.
+Sie können auch den Wartungsstatus für alle virtuellen Computer in einer Ressourcengruppe abrufen. Verwenden Sie hierzu [Get-AzVM](https://docs.microsoft.com/powershell/module/az.compute/get-azvm) ohne Angabe eines virtuellen Computers.
  
 ```powershell
-Get-AzureRmVM -ResourceGroupName rgName -Status
+Get-AzVM -ResourceGroupName rgName -Status
 ```
 
 Die folgende PowerShell-Funktion gibt auf der Grundlage Ihrer Abonnement-ID eine Liste mit virtuellen Computern aus, für die eine Wartung geplant ist.
@@ -109,18 +111,18 @@ Die folgende PowerShell-Funktion gibt auf der Grundlage Ihrer Abonnement-ID eine
 
 function MaintenanceIterator
 {
-    Select-AzureRmSubscription -SubscriptionId $args[0]
+    Select-AzSubscription -SubscriptionId $args[0]
 
-    $rgList= Get-AzureRmResourceGroup 
+    $rgList= Get-AzResourceGroup 
 
     for ($rgIdx=0; $rgIdx -lt $rgList.Length ; $rgIdx++)
     {
         $rg = $rgList[$rgIdx]        
-    $vmList = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName 
+    $vmList = Get-AzVM -ResourceGroupName $rg.ResourceGroupName 
         for ($vmIdx=0; $vmIdx -lt $vmList.Length ; $vmIdx++)
         {
             $vm = $vmList[$vmIdx]
-            $vmDetails = Get-AzureRMVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
+            $vmDetails = Get-AzVM -ResourceGroupName $rg.ResourceGroupName -Name $vm.Name -Status
               if ($vmDetails.MaintenanceRedeployStatus )
             {
                 Write-Output "VM: $($vmDetails.Name)  IsCustomerInitiatedMaintenanceAllowed: $($vmDetails.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed) $($vmDetails.MaintenanceRedeployStatus.LastOperationMessage)"               
@@ -136,7 +138,7 @@ function MaintenanceIterator
 Der folgende Befehl enthält Informationen aus der Funktion des vorherigen Abschnitts und startet die Wartung für einen virtuellen Computer, sofern **IsCustomerInitiatedMaintenanceAllowed** auf „true“ festgelegt ist.
 
 ```powershell
-Restart-AzureRmVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
+Restart-AzVM -PerformMaintenance -name $vm.Name -ResourceGroupName $rg.ResourceGroupName 
 ```
 
 ## <a name="classic-deployments"></a>Klassische Bereitstellungen

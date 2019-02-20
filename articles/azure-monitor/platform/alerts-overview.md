@@ -8,22 +8,24 @@ ms.topic: conceptual
 ms.date: 01/28/2018
 ms.author: robb
 ms.subservice: alerts
-ms.openlocfilehash: 59b190065c678ef61b3e0dec8df13db4215a8229
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6fb49baf8ab58ae6cfe7639cedcc4466810c8b96
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486299"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003311"
 ---
 # <a name="overview-of-alerts-in-microsoft-azure"></a>Überblick über Warnungen in Microsoft Azure 
 
 In diesem Artikel wird beschrieben, was Warnungen sind, welche Vorteile sie haben und wie Sie mit der Nutzung beginnen.  
 
 
+
+
 ## <a name="what-are-alerts-in-microsoft-azure"></a>Was sind Warnungen in Microsoft Azure?
 Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen es Ihnen, Probleme zu identifizieren und zu beheben, bevor die Benutzer Ihres Systems sie bemerken. 
 
-In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, das nun auch Log Analytics und Application Insights umfasst. Die [früheren Erfahrungen mit Warnungen](alerts-classic.overview.md) und Warnungstypen werden als **klassische Warnungen** bezeichnet. Sie können diese älteren Erfahrungen und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite auf **Klassische Warnungen anzeigen** klicken. 
+In diesem Artikel wird die einheitliche Oberfläche für Warnungen in Azure Monitor behandelt, die nun auch die in Log Analytics und Application Insights verwalteten Warnungen umfasst. Die [früheren Erfahrungen mit Warnungen](alerts-classic.overview.md) und Warnungstypen werden als **klassische Warnungen** bezeichnet. Sie können diese älteren Erfahrungen und den älteren Warnungstyp anzeigen, indem Sie oben auf der Warnungsseite auf **Klassische Warnungen anzeigen** klicken. 
 
 ## <a name="overview"></a>Übersicht
 

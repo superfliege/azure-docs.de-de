@@ -10,18 +10,21 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 637cdb338496764e64c18a887673808ef4e8415a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fa48d3825b5b942497b1eabd19a1eeb7e0141058
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203452"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003141"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>Auswählen eines Seitenvertrags in Azure Active Directory B2C mit benutzerdefinierten Richtlinien
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Sie können in Azure Active Directory (Azure AD) B2C einen Seitenvertrag auswählen, indem Sie ihn mit [benutzerdefinierten Richtlinien](active-directory-b2c-overview-custom.md) konfigurieren. Ein Seitenvertrag ist eine Zusammenstellung der von Azure AD B2C bereitgestellten Elemente und des von Ihnen bereitgestellten Inhalts. Wenn Sie [JavaScript](javascript-samples.md) verwenden möchten, müssen Sie eine Vertragsversion der Seite für alle Ihre Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
+Sie können den clientseitigen JavaScript-Code in Ihren Azure Active Directory B2C- Richtlinien (Azure AD) aktivieren, und zwar unabhängig davon, ob Sie Benutzerflows oder benutzerdefinierte Richtlinien verwenden. In diesem Artikel wird das Auswählen eines Seitenvertrags in Azure AD B2C beschrieben, indem dieser mit einer [benutzerdefinierten Richtlinie](active-directory-b2c-overview-custom.md) konfiguriert wird. Ein Seitenvertrag ist eine Zusammenstellung der von Azure AD B2C bereitgestellten Elemente und des von Ihnen bereitgestellten Inhalts. Wenn Sie [JavaScript](javascript-samples.md) verwenden möchten, müssen Sie eine Vertragsversion der Seite für alle Ihre Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
+
+> [!NOTE]
+> Wenn Sie JavaScript für Benutzerflows aktivieren möchten, lesen Sie unter [Verwenden von JavaScript und Seitenvertragsversionen in einem Benutzerflow](user-flow-javascript-overview.md) nach.
 
 ## <a name="replace-datauri-values"></a>Ersetzen von DataUri-Werten
 

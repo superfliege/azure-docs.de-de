@@ -15,12 +15,12 @@ ms.workload: multiple
 ms.date: 06/20/2017
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1bd9710edddde04f76c6373a7718519f8ede8a19
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: fdc2cd8f2218d50aa49d6b4eab2800eb6c92d9c9
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730005"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55869091"
 ---
 # <a name="create-an-automatic-scaling-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Erstellen einer Formel für die automatische Skalierung von Computeknoten in einem Batch-Pool
 
@@ -376,7 +376,7 @@ await pool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von **CreatePool** nicht den Parameter _targetDedicatedComputeNodes_ oder den Parameter _targetLowPriorityComputeNodes_ an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
+> Wenn Sie einen Pool mit aktivierter automatischer Skalierung erstellen, geben Sie beim Aufruf von **CreatePool** nicht den Parameter _targetDedicatedNodes_ oder den Parameter _targetLowPriorityNodes_ an. Geben Sie stattdessen die Eigenschaften **AutoScaleEnabled** und **AutoScaleFormula** im Pool an. Die Werte für diese Eigenschaften bestimmen die Zielanzahl der einzelnen Knotentypen. Zudem müssen Sie zur manuellen Anpassung der Größe eines Pools mit aktivierter automatischer Skalierung (etwa mit [BatchClient.PoolOperations.ResizePool][net_poolops_resizepoolasync]) zunächst die automatische Skalierung im Pool **deaktivieren**, um anschließend die Größe des Pools ändern zu können.
 >
 >
 
@@ -412,7 +412,7 @@ Beachten Sie folgende Punkte, wenn Sie die automatische Skalierung für einen vo
   * Wenn Sie die autoscale-Formel oder das Auswertungsintervall weglassen, nutzt der Batch-Dienst weiterhin den aktuellen Wert dieser Einstellung.
 
 > [!NOTE]
-> Wenn Sie bei der Erstellung des Pools in .NET oder für vergleichbare Parameter in einer anderen Sprache Werte für den Parameter *targetDedicatedComputeNodes* oder *targetLowPriorityComputeNodes* der **CreatePool**-Methode angegeben haben, werden diese Werte bei der Auswertung der Formel für die automatische Skalierung ignoriert.
+> Wenn Sie bei der Erstellung des Pools in .NET oder für vergleichbare Parameter in einer anderen Sprache Werte für den Parameter *targetDedicatedNodes* oder *targetLowPriorityNodes* der **CreatePool**-Methode angegeben haben, werden diese Werte bei der Auswertung der Formel für die automatische Skalierung ignoriert.
 >
 >
 

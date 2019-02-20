@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: efc5fb022d117caeaec9da014252b501f2d06769
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450009"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002282"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -81,7 +81,7 @@ Beispielsweise sagt eine bestimmte Anzahl von Benutzern, die zu einem bestimmten
 ### <a name="sources-of-metric-data"></a>Quellen von Metrikdaten
 Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst werden. Alle diese Metriken stehen im Metrikspeicher zur Verfügung, wo sie unabhängig von ihrer Quelle zusammen bewertet werden können.
 
-**Plattformmetriken** werden von Azure-Ressourcen erstellt und geben Ihnen einen Einblick in ihre Integrität und Leistung. Jeder Ressourcentyp erstellt einen [eigenen Satz von Metriken](../../azure-monitor/platform/metrics-supported.md); dazu ist keinerlei Konfiguration erforderlich.
+**Plattformmetriken** werden von Azure-Ressourcen erstellt und geben Ihnen einen Einblick in ihre Integrität und Leistung. Jeder Ressourcentyp erstellt einen [eigenen Satz von Metriken](metrics-supported.md); dazu ist keinerlei Konfiguration erforderlich. 
 
 **Anwendungsmetriken** werden von Application Insights für Ihre überwachten Anwendungen erstellt und helfen Ihnen beim Erkennen von Leistungsproblemen und beim Nachverfolgen von Trends in der Nutzung Ihrer Anwendung. Dies beinhaltet solche Werte wie die _Serverantwortzeit_ und _Browserausnahmen_.
 
@@ -96,32 +96,39 @@ Es gibt drei grundlegende Quellen von Metriken, die von Azure Monitor erfasst we
 ### <a name="what-can-you-do-with-metrics"></a>Wozu kann ich Metriken nutzen?
 Dies sind einige der Aufgaben, die Sie mit Metriken ausführen können:
 
-- Verwenden des [Metrik-Explorers](../../azure-monitor/platform/metrics-charts.md) zum Analysieren der gesammelten Metriken und zu ihrer Darstellung in einem Diagramm. Nachverfolgen der Leistung einer Ressource (wie etwa einer VM, Website oder Logik-App) durch Anheften von Diagrammen an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).
+- Verwenden von [Metrikanalysen](metrics-charts.md) zum Analysieren der gesammelten Metriken und zu ihrer Darstellung in einem Diagramm. Nachverfolgen der Leistung einer Ressource (wie etwa einer VM, Website oder Logik-App) durch Anheften von Diagrammen an ein [Azure-Dashboard](../../azure-portal/azure-portal-dashboards.md).
 - Konfigurieren einer [Warnungsregel für eine Metrik](alerts-metric.md), die eine Benachrichtigung sendet oder eine [automatisierte Aktion](action-groups.md) ausführt, sobald der Metrikwert einen Schwellenwert überschreitet.
-- Verwenden von [Autoskalierung](../../azure-monitor/platform/autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einer Metrik über- oder unterschritten wird, herauf- oder herabzusetzen.
-- Weiterleiten von Metriken an Log Analytics, um Metrikdaten zusammen mit Protokolldaten zu analysieren und Metrikdaten länger als 93 Tage zu speichern.
-- Streamen von Metriken an einen [Event Hub](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md), um sie an [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) oder an externe Systeme weiterzuleiten.
+- Verwenden von [Autoskalierung](autoscale-overview.md), um Ressourcen basierend auf einem Schwellenwert, der von einer Metrik über- oder unterschritten wird, herauf- oder herabzusetzen.
+- Weiterleiten von Metriken an Protokolle, um Metrikdaten zusammen mit Protokolldaten zu analysieren und Metrikdaten länger als 93 Tage zu speichern. 
+- Streamen von Metriken an einen [Event Hub](stream-monitoring-data-event-hubs.md), um sie an [Azure Stream Analytics](../../stream-analytics/stream-analytics-introduction.md) oder an externe Systeme weiterzuleiten.
 - [Archivieren](../../azure-monitor/learn/tutorial-archive-data.md) des Leistungs- oder Integritätsverlaufs Ihrer Ressourcen zu Kompatibilitäts-/Überwachungszwecken oder zur Offline-Berichterstellung.
-- Zugreifen auf Metrikwerte über eine Befehlszeile oder eine benutzerdefinierte Anwendung mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) oder der [REST-API](../../azure-monitor/platform/rest-api-walkthrough.md).
+- Zugreifen auf Metrikwerte von einer Befehlszeile oder einer benutzerdefinierten Anwendung aus mithilfe von [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.insights/?view=azurermps-6.7.0) oder [REST-API](rest-api-walkthrough.md).
+
+
 
 ### <a name="viewing-metrics"></a>Anzeigen von Metriken
 Metriken in Azure Monitor werden in einer Zeitreihendatenbank gespeichert, die für den schnellen Abruf optimiert ist und Metrikwerte 93 Tage lang speichert. Kopieren Sie Metriken zur langfristigen Analyse und Trendanalyse in Protokolle.
 
-Metrikdaten werden auf vielfältige Weise verwendet, wie oben beschrieben. Verwenden Sie den [Metrik-Explorer](../../azure-monitor/platform/metrics-charts.md), um die Daten in Ihrem Metrikspeicher direkt zu analysieren und die Werte mehrerer Metriken im zeitlichen Verlauf in Diagrammen darzustellen. Sie können die Diagramme interaktiv nutzen oder an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Metriken mit der [REST-API für die Azure-Überwachung](../../azure-monitor/platform/rest-api-walkthrough.md) abzurufen.
+Metrikdaten werden auf vielfältige Weise verwendet, wie oben beschrieben. Verwenden Sie [Metrikanalysen](metrics-charts.md), um die Daten in Ihrem Metrikspeicher direkt zu analysieren und die Werte mehrerer Metriken im zeitlichen Verlauf in Diagrammen darzustellen. Sie können die Diagramme interaktiv nutzen oder an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Metriken mit der [REST-API für die Azure-Überwachung](rest-api-walkthrough.md) abzurufen.
 
-![Metrik-Explorer](media/data-collection/metrics-explorer.png)
+![Metrikanalysen](media/data-collection/metrics-explorer.png)
 
 ## <a name="logs"></a>Protokolle
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Protokolle enthalten verschiedene Arten von Daten, die in Datensätzen mit unterschiedlichen Eigenschaften für jeden Typ organisiert sind. Protokolle können numerische Werte wie Metriken enthalten, liefern aber typischerweise Textdaten mit detaillierten Beschreibungen. Außerdem unterscheiden sie sich von Metriken in ihrer Struktur und, dass sie oft nicht in regelmäßigen Abständen gesammelt werden.
 
 Ein häufiger Typ von Protokolleintrag ist ein Ereignis, das sporadisch erfasst wird. Sie werden von einer Anwendung oder einem Dienst erstellt und enthalten typischerweise genügend Informationen, um selbst einen vollständigen Kontext zu liefern. Beispielsweise kann ein Ereignis anzeigen, dass eine bestimmte Ressource erstellt oder geändert, ein neuer Host als Reaktion auf erhöhten Datenverkehr gestartet oder ein Fehler in einer Anwendung festgestellt wurde.
 
 Protokolle sind besonders nützlich, um Daten aus einer Vielzahl von Quellen für komplexe Analysen und Trends über einen bestimmten Zeitraum zu kombinieren. Da das Format der Daten variieren kann, können Anwendungen benutzerdefinierte Protokolle mit der von ihnen benötigten Struktur erstellen. Metriken können sogar in Protokollen repliziert werden, um sie mit anderen Überwachungsdaten für Trend- und andere Datenanalysen zu kombinieren.
 
+
+
 ### <a name="sources-of-log-data"></a>Quellen von Protokolldaten
 Azure Monitor kann Protokolldaten aus einer Vielzahl von Quellen sammeln, sowohl innerhalb von Azure als auch aus lokalen Ressourcen. Quellen von Protokolldaten umfassen Folgendes:
 
-- [Aktivitätsprotokolle](collect-activity-logs.md) von Azure-Ressourcen, die Informationen zu deren Konfiguration und Integrität beinhalten, und [Diagnoseprotokolle](../../azure-monitor/platform/diagnostic-logs-stream-log-store.md), die Einblick in ihren Betrieb geben.
+- [Aktivitätsprotokolle](collect-activity-logs.md) von Azure-Ressourcen, die Informationen zu deren Konfiguration und Integrität beinhalten, und [Diagnoseprotokolle](diagnostic-logs-stream-log-store.md), die Einblick in ihren Betrieb geben.
 - Agents auf virtuellen [Windows](agent-windows.md)- und [Linux](../learn/quick-collect-linux-computer.md)-Computern senden Telemetriedaten basierend auf den von Ihnen konfigurierten [Datenquellen](data-sources.md) aus dem Gastbetriebssystem und aus Anwendungen an Azure Monitor.
 - Von [Application Insights](https://docs.microsoft.com/azure/application-insights/) gesammelte Anwendungsdaten.
 - Daten, die Einblick in eine bestimmte Anwendung oder einen bestimmten Dienst geben und aus [Überwachungslösungen](../insights/solutions.md) oder Features wie Container Insights, VM Insights oder Resource Group Insights stammen.
@@ -159,12 +166,12 @@ Eine Anleitung zum Sammeln von Metriken aus Azure-Ressourcen finden Sie unter [S
 ### <a name="logs-to-metrics"></a>Protokolle auf Metriken
 Wie oben beschrieben, sind Metriken reaktionsschneller als Protokolle, sodass Sie Warnungen mit geringerer Wartezeit und zu geringeren Kosten erstellen können. Eine bedeutende Menge an numerischen Daten, die für Metriken geeignet wären, werden als Protokolle, aber nicht als Metriken in Azure Monitor gespeichert. Ein häufiges Beispiel sind aus Agents und Verwaltungslösungen gesammelte Leistungsdaten. Einige dieser Werte können in Metriken kopiert werden, wo sie für Warnungen und Analysen mit dem Metrik-Explorer zur Verfügung stehen.
 
-Erläuterungen zu diesem Feature finden Sie unter [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md). Die Liste der unterstützten Werte finden Sie unter [Unterstützte Metriken von Azure Monitor](../../azure-monitor/platform/metrics-supported.md#microsoftoperationalinsightsworkspaces).
+Erläuterungen zu diesem Feature finden Sie unter [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](alerts-metric-logs.md). Die Liste der unterstützten Werte finden Sie unter [Unterstützte Metriken von Azure Monitor](metrics-supported.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Streamen von Daten zu externen Systemen
 Über die Verwendung der Tools in Azure für die Analyse von Überwachungsdaten hinaus besteht bei Ihnen möglicherweise die Anforderung, diese auch an ein externes Tool wie ein SIEM-Produkt (Security Information and Event Management) weiterzuleiten. Diese Weiterleitung erfolgt normalerweise mithilfe von [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/) direkt von den überwachten Ressourcen aus.
 
-Weitere Informationen zu den verschiedenen Arten von Überwachungsdaten finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
+Weitere Informationen zu den verschiedenen Arten von Überwachungsdaten finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub für die Verwendung durch ein externes Tool](stream-monitoring-data-event-hubs.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

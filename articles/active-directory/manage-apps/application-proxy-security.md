@@ -3,8 +3,8 @@ title: Sicherheitsaspekte für Azure AD-Anwendungsproxy | Microsoft-Dokumentatio
 description: Die Sicherheitsaspekte bei Verwendung des Azure AD-Anwendungsproxys werden beschrieben.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/08/2017
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 3e8d9cc44e4e83dac963b3d85f7dd4d058323bf6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: ef9dbe1bb0ed9e5aad545453c409b0959bdd3fd4
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813822"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207227"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Sicherheitsaspekte beim Remotezugriff auf Apps mit dem Azure AD-Anwendungsproxy
 
@@ -129,7 +130,7 @@ Wenn der Anwendungsproxydienst die Konfigurationseinstellungen aktualisiert, tre
 Wenn Benutzer auf eine veröffentlichte Anwendung zugreifen, treten zwischen dem Anwendungsproxydienst und dem Anwendungsproxyconnector die folgenden Ereignisse ein:
 
 1. Der Dienst authentifiziert den Benutzer für die Anwendung
-2. Der Dienst fügt eine Anforderung in die Connectorwarteschlange ein
+2. Der Dienst fügt eine Anforderung in die Connectorwarteschlange ein.
 3. Ein Connector verarbeitet die Anforderung aus der Warteschlange
 4. Der Connector wartet auf eine Antwort
 5. Der Dienst streamt Daten an den Benutzer

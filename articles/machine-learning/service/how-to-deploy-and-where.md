@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: caafd5ac43ca94f8b01298b4e18e48065b7001b9
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c83342e5eb0e6c1f45daa54ea3c4f3c602ff7a39
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766621"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55878611"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>Bereitstellen von Modellen mit dem Azure Machine Learning-Dienst
 
@@ -463,7 +463,7 @@ Der Webdienst ist eine REST-API, sodass Sie Clientanwendungen in einer Reihe ver
 
 ## <a id="update"></a> Aktualisieren des Webdiensts
 
-Wenn Sie ein neues Image erstellen müssen Sie jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
+Wenn Sie ein neues Image erstellen, müssen Sie jeden Dienst, der das neue Image verwenden soll, manuell aktualisieren. Verwenden Sie die Methode `update`, um den Webdienst zu aktualisieren. Der folgende Code veranschaulicht, wie Sie den Webdienst so aktualisieren, dass er ein neues Image verwendet:
 
 ```python
 from azureml.core.webservice import Webservice

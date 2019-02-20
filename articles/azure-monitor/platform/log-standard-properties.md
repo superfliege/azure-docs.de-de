@@ -1,6 +1,6 @@
 ---
-title: Standardeigenschaften in Azure Monitor Log Analytics-Datensätzen | Microsoft-Dokumentation
-description: Beschreibt Eigenschaften, die mehreren Datentypen in Azure Monitor Log Analytics gemein sind.
+title: Standardeigenschaften in Azure Monitor-Protokolldatensätzen | Microsoft-Dokumentation
+description: Beschreibt Eigenschaften, die mehreren Datentypen in Azure Monitor-Protokollen gemein sind.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/14/2019
 ms.author: bwren
-ms.openlocfilehash: 27c732a2ddd21401ffbefa727cbb8001ec288293
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 2309e7762ad36f59e0833e675e7012ee3c459e3e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54381952"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997038"
 ---
-# <a name="standard-properties-in-log-analytics-records"></a>Standardeigenschaften in Log Analytics-Datensätzen
-Daten in [Log Analytics](../log-query/log-query-overview.md) werden als eine Menge von Datensätzen gespeichert, von denen jeder einen bestimmten Datentyp aufweist, der über eine eindeutige Menge von Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
+# <a name="standard-properties-in-azure-monitor-log-records"></a>Standardeigenschaften in Azure Monitor-Protokolldatensätzen
+Logdaten in Azure Monitor werden [als Gruppe von Datensätzen gespeichert](../log-query/log-query-overview.md), von denen jeder einen bestimmten Datentyp aufweist, der über eine eindeutige Gruppe von Eigenschaften verfügt. Viele Datentypen weisen Standardeigenschaften auf, die sie mit mehreren Typen gemein haben. In diesem Artikel werden diese Eigenschaften beschrieben, zusammen mit Beispielen für ihre Verwendung in Abfragen.
 
 Die Implementierung einiger dieser Eigenschaften ist noch nicht abgeschlossen, daher finden Sie sie in einigen Datentypen, in anderen aber noch nicht.
 
@@ -39,7 +39,7 @@ Event
 | sort by TimeGenerated asc 
 ```
 
-## <a name="type"></a>Typ
+## <a name="type"></a>Type
 Die **Type**-Eigenschaft enthält den Namen der Tabelle, aus der der Datensatz abgerufen wurde, der auch als Datensatztyp betrachtet werden kann. Diese Eigenschaft ist bei Abfragen hilfreich, die Datensätze aus mehreren Tabellen kombinieren, z. B. Abfragen mit dem Operator `search`, um zwischen Datensätzen verschiedener Typen zu unterscheiden. An einigen Stellen kann **$table** anstelle von **Type** verwendet werden.
 
 ### <a name="examples"></a>Beispiele
@@ -151,6 +151,6 @@ union withsource = tt *
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie mehr über die Art der [Speicherung von Log Analytics-Daten](../log-query/log-query-overview.md).
-- Rufen Sie eine Lektion zum [Schreiben von Abfragen in Log Analytics](../../azure-monitor/log-query/get-started-queries.md) ab.
-- Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Log Analytics-Abfragen](../../azure-monitor/log-query/joins.md) durch.
+- Erfahren Sie mehr zum [Speichern von Azure Monitor-Protokolldaten](../log-query/log-query-overview.md).
+- Arbeiten Sie eine Lektion zum [Schreiben von Protokollabfragen ](../../azure-monitor/log-query/get-started-queries.md) durch.
+- Arbeiten Sie eine Lektion zum [Verknüpfen von Tabellen in Protokollabfragen](../../azure-monitor/log-query/joins.md) durch.

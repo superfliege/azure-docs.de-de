@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c09816d45169ce9bb6c926b8b17b075ea1059ec7
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e56169d74d1669c3bb7adda06590145d2ca31b72
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55695371"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893339"
 ---
 # <a name="saas-sell-through-azure---apis"></a>SaaS – Verkaufen über Azure: APIs
 
@@ -68,7 +68,7 @@ Führen Sie die folgenden Schritte aus, um mit dem Azure-Portal eine neue Anwend
     -   **Anmelde-URL**: Geben Sie für Web-Apps/API-Anwendungen die Basis-URL Ihrer App an. **http://localhost:31544** kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können sich mit dieser URL dann bei einer Webclientanwendung anmelden.
     -   **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. **http://MyFirstAADApp**.
 
-        ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-2.png) Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt „Erste Schritte“ des [Azure AD-Entwicklerhandbuchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide#get-started) verfügbar sind.
+        ![SaaS: AD-App-Registrierungen](./media/saas-offer-app-registration-2.png) Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den Schnellstart-Einrichtungsanleitungen, die im Abschnitt „Erste Schritte“ des [Azure AD-Entwicklerhandbuchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide) verfügbar sind.
 
 5.  Klicken Sie auf **Erstellen**, wenn Sie fertig sind. Azure AD weist Ihrer Anwendung eine eindeutige Anwendungs-ID zu, und Sie gelangen auf die Hauptseite für die Registrierung Ihrer Anwendung. Je nachdem, ob es sich bei Ihrer Anwendung um eine Web- oder eine systemeigene Anwendung handelt, werden jeweils andere Optionen zum Hinzufügen weiterer Funktionen zu Ihrer Anwendung bereitgestellt.
 
@@ -148,7 +148,9 @@ Die aktuelle API-Version ist `api-version=2017-04-15`.
 
 ### <a name="resolve-subscription"></a>Abonnement auflösen
 
-Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflösen eines Tokens in eine permanente Ressourcen-ID.
+Eine POST-Aktion beim Auflösen des Endpunkts ermöglicht Benutzern das Auflösen eines Marketplace-Tokens in eine permanente Ressourcen-ID.  Die Ressourcen-ID ist der eindeutige Bezeichner des SAAS-Abonnements. 
+
+Wenn ein Benutzer zur Website eines ISV weitergeleitet wird, enthält die URL in den Abfrageparametern ein Token. Es wird erwartet, dass der ISV dieses Token verwendet und eine Anforderung zu dessen Auflösung stellt. Die Antwort enthält die eindeutige ID des SAAS-Abonnements, den Namen, die Angebots-ID und den Plan für die Ressource. Dieses Token ist nur eine Stunde gültig.
 
 *Anforderung*
 

@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: c20f455a0a325dadd3eeeb77dea7026de4834c56
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4522914f249413300ffa5bb1545d840711777bff
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757322"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235912"
 ---
 # <a name="add-a-web-api-application-to-your-azure-active-directory-b2c-tenant"></a>Hinzufügen einer Web-API-Anwendung zu Ihrem Azure Active Directory B2C-Mandanten
 
@@ -38,20 +38,20 @@ Bereiche ermöglichen die Steuerung des Zugriffs auf geschützte Ressourcen. Ber
 
 1. Wählen Sie **Anwendungen** und dann *webapi1* aus.
 2. Wählen Sie **Veröffentlichte Bereiche** aus.
-3. Geben Sie unter **Bereich** den Bereich `Hello.Read` und als Beschreibung `Read access to hello` ein.
-4. Geben Sie unter **Bereich** den Bereich `Hello.Write` und als Beschreibung `Write access to hello` ein.
+3. Geben Sie unter **Bereich** den Bereich `Read` und als Beschreibung `Read access to the application` ein.
+4. Geben Sie unter **Bereich** den Bereich `Write` und als Beschreibung `Write access to the application` ein.
 5. Klicken Sie auf **Speichern**.
 
 Mit den veröffentlichten Bereichen können einer Clientanwendung Berechtigungen für die Web-API gewährt werden.
 
 ## <a name="grant-permissions"></a>Erteilen von Berechtigungen
 
-Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müssen Sie Ihrer Anwendung Berechtigungen für die API erteilen. Im vorbereitenden Tutorial haben Sie in Azure AD B2C eine Webanwendung namens *webapp1* erstellt. Sie verwenden diese Anwendung für den Aufruf der Web-API.
+Wenn Sie über eine Anwendung eine geschützte Web-API aufrufen möchten, müssen Sie Ihrer Anwendung Berechtigungen für die API erteilen. Unter [Tutorial: Registrieren einer Anwendung in Azure Active Directory B2C](tutorial-register-applications.md) wird eine Webanwendung in Azure AD B2C mit dem Namen *webapp1* erstellt. Sie können diese Anwendung für den Aufruf der Web-API verwenden.
 
 1. Wählen Sie **Anwendungen** und anschließend Ihre Webanwendung aus.
 2. Wählen Sie **API-Zugriff** und dann **Hinzufügen** aus.
 3. Wählen Sie in der Dropdownliste **API auswählen** die Web-API *webapi1* aus.
-4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Hello.Read** und **Hello.Write** aus, die Sie zuvor festgelegt haben.
+4. Wählen Sie in der Dropdownliste **Bereiche auswählen** die Bereiche **Read** und **Write** aus, die Sie zuvor definiert haben.
 5. Klicken Sie auf **OK**.
 
 Ihre Anwendung ist für den Aufruf der geschützten Web-API registriert. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Anwendung zu verwenden. Die Anwendung bezieht eine Autorisierungsgewährung von Azure AD B2C, um auf die geschützte Web-API zuzugreifen.

@@ -1,7 +1,7 @@
 ---
 title: 'Azure HDInsight Tools: Verwenden von Visual Studio Code für Hive, LLAP oder PySpark | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mithilfe von Azure HDInsight Tools for Visual Studio Code Abfragen und Skripts erstellen und übermitteln.
-Keywords: VS Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
+Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,Interactive Hive,Interactive Query
 services: HDInsight
 documentationcenter: ''
 author: hrasheed-msft
@@ -9,75 +9,70 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/15/2018
-ms.openlocfilehash: 230c5a50efe762b8f27e6a0a84c36c74403b8ecc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/04/2019
+ms.openlocfilehash: 3301f3cdea1795db3b17bc2fa7da05bf362c744d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663875"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895067"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Verwenden von Azure HDInsight Tools for Visual Studio Code
 
-Erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code (VS Code) verwenden, um Apache Hive-Batchaufträge, interaktive Hive-Abfragen und PySpark-Skripts für Apache Spark zu erstellen und zu übermitteln. Zunächst wird die Installation von HDInsight Tools in Visual Studio Code beschrieben, und dann werden die Schritte zum Übermitteln von Aufträgen an Hive und Spark erläutert. 
+Hier erfahren Sie, wie Sie Azure HDInsight Tools for Visual Studio Code verwenden, um Apache Hive-Batchaufträge, interaktive Hive-Abfragen und PySpark-Skripts für Apache Spark zu erstellen und zu übermitteln. Zunächst wird die Installation von HDInsight Tools in Visual Studio Code beschrieben, und dann werden die Schritte zum Übermitteln von Aufträgen an Hive und Spark erläutert.  
 
-Azure HDInsight Tools kann auf den von VS Code unterstützten Plattformen installiert werden, darunter Windows, Linux und macOS. Nachstehend finden Sie die Voraussetzungen für die unterschiedlichen Plattformen.
+Azure HDInsight Tools kann auf den von Visual Studio Code unterstützten Plattformen installiert werden, darunter Windows, Linux und macOS. Nachstehend finden Sie die Voraussetzungen für die unterschiedlichen Plattformen.
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Schritte in diesem Artikel ist Folgendes erforderlich:
 
-- Ein HDInsight-Cluster. Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
-- [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx).
+- Einen HDInsight-Cluster Informationen zum Erstellen eines Clusters finden Sie unter [Hadoop-Tutorial: Erste Schritte bei der Verwendung von Hadoop in HDInsight](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md).
+- [Visual Studio Code](https://code.visualstudio.com/).
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
-- [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für VSCode
+- Die [Azure-Kontoerweiterung](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account) für Visual Studio Code
+- [Einrichten einer interaktiven PySpark-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md)
+- Ein lokales Verzeichnis mit dem Namen **HDexample**.  In diesem Artikel wird **C:\HD\HDexample** verwendet.
 
-## <a name="install-the-hdinsight-tools"></a>Installieren der HDInsight Tools
-   
-Nachdem Sie die erforderlichen Komponenten installiert haben, können Sie Azure HDInsight Tools for Visual Studio Code installieren. 
+## <a name="install-azure-hdinsight-tools"></a>Installieren von Azure HDInsight Tools
 
-### <a name="to-install-azure-hdinsight-tools"></a>So installieren Sie Azure HDInsight Tools
+Wenn die Voraussetzungen erfüllt sind, können Sie Azure HDInsight Tools for Visual Studio Code installieren.  Führen Sie die folgenden Schritte aus, um Azure HDInsight Tools zu installieren:
 
 1. Öffnen Sie Visual Studio Code.
 
-2. Klicken Sie im linken Bereich auf **Erweiterungen**. Geben Sie **HDInsight** in das Suchfeld ein.
+2. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Erweiterungen**.
 
-3. Wählen Sie neben **Azure HDInsight Tools** die Option **Installieren** aus. Nach wenigen Sekunden wird die Schaltfläche **Installieren** in **Neu laden** geändert.
+3. Geben Sie **HDInsight** in das Suchfeld ein.
 
-4. Wählen Sie **Erneut laden** aus, um die Erweiterung **Azure HDInsight Tools** zu aktivieren.
-
-5. Klicken Sie zur Bestätigung auf **Fenster erneut laden**. **Azure HDInsight Tools** wird im Bereich **Erweiterungen** angezeigt.
+4. Wählen Sie in den Suchergebnissen **Azure HDInsight Tools** aus, und wählen Sie dann **Installieren**.  
 
    ![HDInsight für Visual Studio Code Python-Installation](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
+5. Wählen Sie **Erneut laden** aus, um die Erweiterung **Azure HDInsight Tools** nach der Installation zu aktivieren.
+
+
 ## <a name="open-hdinsight-work-folder"></a>Öffnen des HDInsight-Arbeitsordners
 
-Um eine Verbindung mit Azure herstellen zu können, müssen Sie zunächst einen Arbeitsordner in Visual Studio Code erstellen.
+Führen Sie die folgenden Schritte aus, um einen Arbeitsordner zu öffnen und eine Datei in Visual Studio Code zu erstellen:
 
-### <a name="to-open-a-work-folder"></a>So öffnen Sie einen Arbeitsordner
+1. Navigieren Sie auf der Menüleiste zu **Datei** > **Ordner öffnen...** > **C:\HD\HDexample**, und wählen Sie die Schaltfläche **Ordner auswählen**. Der Ordner wird in der **Explorer**-Ansicht auf der linken Seite angezeigt.
 
-1. Klicken Sie im Menü **Datei** auf **Ordner öffnen**. Geben Sie dann entweder einen vorhandenen Ordner als Arbeitsordner an, oder erstellen Sie einen neuen Ordner. Der Ordner wird im linken Bereich angezeigt.
-
-2. Klicken Sie im linken Bereich neben dem Arbeitsordner auf das Symbol **Neue Datei**.
+2. Wählen Sie in der **Explorer**-Ansicht den Ordner **HDexample** aus, und wählen Sie dann neben dem Arbeitsordner das Symbol **Neue Datei**.
 
    ![Neue Datei](./media/hdinsight-for-vscode/new-file.png)
 
-3. Benennen Sie die neue Datei mit der Dateierweiterung „.hql“ (Hive-Abfragen) oder „.py“ (Spark-Skript). 
+3. Benennen Sie die neue Datei mit der Dateierweiterung „.hql“ (Hive-Abfragen) oder „.py“ (Spark-Skript).  In diesem Beispiel wird **HelloWorld.hql** verwendet.
 
 ## <a name="connect-to-hdinsight-cluster"></a>Herstellen einer Verbindung mit dem HDInsight-Cluster
 
-Bevor Sie Skripts aus VS Code an HDInsight-Cluster übermitteln können, müssen Sie entweder eine Verbindung mit Ihrem Azure-Konto herstellen oder einen Cluster verknüpfen (unter Verwendung des Ambari-Benutzernamens/-Kennworts oder eines in die Domäne eingebunden Kontos).
+Bevor Sie Skripts aus Visual Studio Code an HDInsight-Cluster übermitteln können, müssen Sie entweder eine Verbindung mit Ihrem Azure-Konto herstellen oder einen Cluster verknüpfen (unter Verwendung des Ambari-Benutzernamens/-Kennworts oder eines in die Domäne eingebunden Kontos).  Führen Sie die folgenden Schritte aus, um eine Verbindung mit Azure herzustellen:
 
-### <a name="to-connect-to-azure"></a>So stellen Sie eine Verbindung mit Azure her
-
-1. Erstellen Sie einen neuen Arbeitsordner und eine neue Skriptdatei, falls Sie über keine verfügen.
-
-2. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und klicken Sie im Kontextmenü auf **HDInsight: Login** (HDInsight: Anmeldung). Sie können auch **STRG+UMSCHALT+P** drücken und dann **HDInsight: Login** (HDInsight: Anmeldung) eingeben.
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie **HDInsight: Login** (HDInsight: Anmeldung) ein.
 
     ![HDInsight Tools for Visual Studio Code-Anmeldung](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
 
-3. Befolgen Sie zur Anmeldung die Anmeldeanweisungen im Bereich **AUSGABE**.
+2. Befolgen Sie Anmeldeanweisungen im Bereich **AUSGABE**.
     + Für die globale Azure-Umgebung löst der Befehl **HDInsight: Anmeldung** die Aktion **Anmelden bei Azure** im HDInsight-Explorer aus und umgekehrt.
 
         ![Anmeldeanweisungen für Azure](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin.png)
@@ -86,105 +81,103 @@ Bevor Sie Skripts aus VS Code an HDInsight-Cluster übermitteln können, müssen
 
         ![Anmeldeanweisungen für andere Umgebung](./media/hdinsight-for-vscode/hdi-azure-hdinsight-hdinsight-signin.png)
 
-    Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname links unten im Visual Studio Code-Fenster auf der Statusleiste angezeigt. 
-
-    > [!NOTE]  
-    > Aufgrund eines bekannten Azure-Authentifizierungsproblems müssen Sie einen Browser im privaten Modus oder im Inkognito-Modus öffnen. Wenn für Ihr Azure-Konto die zweistufige Authentifizierung aktiviert ist, sollten Sie anstelle der Authentifizierung per PIN die telefonische Authentifizierung verwenden.
+ Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname unten links im Visual Studio Code-Fenster auf der Statusleiste angezeigt.  
   
 
-4. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, um das Kontextmenü zu öffnen. Über das Kontextmenü können Sie folgende Aufgaben ausführen:
-
-    - Abmelden
-    - Auflisten von Clustern
-    - Festlegen von Standardclustern
-    - Übermitteln interaktiver Hive-Abfragen
-    - Übermitteln von Hive-Batchskripts
-    - Übermitteln interaktiver PySpark-Abfragen
-    - Übermitteln von PySpark-Batchskripts
-    - Festlegen der Konfiguration
-
-<h3 id="linkcluster">So verknüpfen Sie einen Cluster</h3>
+<h2 id="linkcluster">Erstellen eines Links Azure HDInsight</h2>
 
 Sie können einen normalen Cluster verknüpfen, indem Sie einen per [Apache Ambari](https://ambari.apache.org/) verwalteten Benutzernamen verwenden, oder einen per Enterprise Security Pack geschützten Hadoop-Cluster, indem Sie einen Domänenbenutzernamen (z.B. user1@contoso.com) verwenden.
-1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
+
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
 
    ![Befehl „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-command.png)
 
-2. Geben Sie die URL des HDInsight-Clusters ein, geben Sie den Benutzername und das Kennwort ein, und wählen Sie den Clustertyp aus. Es werden Erfolgsinformationen angezeigt, wenn die Überprüfung bestanden wurde.
-   
-   ![Dialogfeld „Cluster verknüpfen“](./media/hdinsight-for-vscode/link-cluster-process.png)
+2. Wählen Sie als Typ des verknüpften Clusters **Azure HDInsight** aus.
+
+3. Geben Sie die HDInsight-Cluster-URL ein.
+
+4. Geben Sie den Ambari-Benutzernamen ein. Der Standardwert lautet **Administrator**.
+
+5. Geben Sie das Ambari-Kennwort ein.
+
+6. Wählen Sie den Clustertyp aus.
+
+7. Überprüfen Sie die Ansicht **AUSGABE** auf eine Bestätigung.
 
    > [!NOTE]  
-   > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat. 
-   
-3. Sie können einen verknüpften Cluster mithilfe des Befehls **List Cluster** (Cluster auflisten) anzeigen. Jetzt können Sie ein Skript an diesen verknüpften Cluster übermitteln.
-
-   ![Verknüpfter Cluster](./media/hdinsight-for-vscode/linked-cluster.png)
-
-4. Sie können die Verknüpfung eines Clusters auch aufheben, indem Sie in der Befehlspalette **HDInsight: Unlink a Cluster** (HDInsight: Verknüpfung eines Clusters aufheben) eingeben.
+   > Der verknüpfte Benutzername und das Kennwort werden verwendet, wenn der Cluster im Azure-Abonnement angemeldet ist und einen Cluster verknüpft hat.  
 
 
-### <a name="to-link-a-generic-apache-livy-endpoint"></a>So verknüpfen Sie einen generischen Apache Livy-Endpunkt
+## <a name="create-link-generic-livy-endpoint"></a>Erstellen eines Links Generic Livy Endpoint (Generischer Livy-Endpunkt)
 
-1. Öffnen Sie die Befehlspalette, indem Sie **STRG+UMSCHALT+P** auswählen, und geben Sie dann **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
-2. Wählen Sie **Generic Livy Endpoint** (Generischer Livy-Endpunkt) aus.
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie **HDInsight: Link a Cluster** (HDInsight: Cluster verknüpfen) ein.
+
+2. Wählen Sie als Typ des verknüpften Clusters **Generic Livy Endpoint** (Generischer Livy-Endpunkt) aus.
+
 3. Geben Sie den generischen Livy-Endpunkt ein, z.B. http\://10.172.41.42:18080.
-4. Wählen Sie **Basic** (Standard) aus, wenn eine Autorisierung für den generischen Livy-Endpunkt erforderlich ist. Wählen Sie andernfalls **None** (Kein) aus.
-5. Geben Sie den Benutzernamen ein, wenn **Basic** (Standard) in Schritt 4 ausgewählt wurde.
-6. Geben Sie das Kennwort ein, wenn **Basic** (Standard) in Schritt 4 ausgewählt wurde.
-7. Der generische Livy-Endpunkt wurde erfolgreich verknüpft.
 
-   ![Verknüpfter generischer Livy-Cluster](./media/hdinsight-for-vscode/link-cluster-process-generic-livy.png)
+4. Wählen Sie als Autorisierungstyp **Standard** oder **Keine** aus.  Bei Auswahl von **Standard** gehen Sie wie folgt vor:  
+    &emsp;a. Geben Sie den Ambari-Benutzernamen ein. Der Standardwert lautet **Administrator**.  
+    &emsp;b. Geben Sie das Ambari-Kennwort ein.
+
+5. Überprüfen Sie die Ansicht **AUSGABE** auf eine Bestätigung.
 
 ## <a name="list-hdinsight-clusters"></a>Auflisten von HDInsight-Clustern
 
-Um die Verbindung zu testen, können Sie Ihre HDInsight-Cluster auflisten:
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie **HDInsight: List Cluster** (HDInsight: Cluster auflisten) ein.
 
-### <a name="to-list-hdinsight-clusters-under-your-azure-subscription"></a>So listen Sie HDInsight-Cluster unter Ihrem Azure-Abonnement auf
-1. Öffnen Sie einen Arbeitsordner, und stellen Sie eine Verbindung mit Azure her. Weitere Informationen finden Sie unter [Öffnen des HDInsight-Arbeitsordners](#open-hdinsight-work-folder) sowie unter [Herstellen einer Verbindung mit Azure](#connect-to-hdinsight-cluster).
+2. Wählen Sie das gewünschte Abonnement aus.
 
-2. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie anschließend **HDInsight: List Cluster** (HDInsight: Cluster auflisten) im Kontextmenü aus. 
-
-3. Die HDInsight-Cluster werden im Bereich **Ausgabe** angezeigt.
+3. Überprüfen Sie die Ansicht **AUSGABE**.  In der Ansicht werden Ihr verknüpfter Cluster und alle Cluster in Ihrem Azure-Abonnement angezeigt.
 
     ![Festlegen einer Standardclusterkonfiguration](./media/hdinsight-for-vscode/list-cluster-result.png)
 
-## <a name="set-a-default-cluster"></a>Festlegen eines Standardclusters
-1. Öffnen Sie einen Arbeitsordner, und stellen Sie eine Verbindung mit Azure her. Lesen Sie die Abschnitte [Öffnen des HDInsight-Arbeitsordners](#open-hdinsight-work-folder) und [So stellen Sie eine Verbindung mit Azure her](#connect-to-hdinsight-cluster).
+## <a name="set-default-cluster"></a>Festlegen des Standardclusters
 
-2. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie anschließend **HDInsight: Set Default Cluster** (HDInsight: Standardcluster festlegen) aus. 
+1. Öffnen Sie erneut den [zuvor](#open-hdinsight-work-folder) erstellten Ordner **HDexample**, falls er geschlossen wurde.  
 
-3. Wählen Sie einen Cluster als Standardcluster für die aktuelle Skriptdatei aus. Die Konfigurationsdatei **VSCode\settings.json** wird automatisch aktualisiert. 
+2. Wählen Sie die [zuvor](#open-hdinsight-work-folder) erstellte Datei **HelloWorld.hql** aus. Sie wird im Skript-Editor geöffnet.
+
+3. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
+
+4. Klicken Sie dann mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **HDInsight: Set Default Cluster** (HDInsight: Standardcluster festlegen) aus.  
+
+5. Wählen Sie einen Cluster als Standardcluster für die aktuelle Skriptdatei aus. Die Konfigurationsdatei **VSCode\settings.json** wird automatisch aktualisiert. 
 
    ![Festlegen der Standardclusterkonfiguration](./media/hdinsight-for-vscode/set-default-cluster-configuration.png)
 
 ## <a name="set-the-azure-environment"></a>Einrichten der Azure-Umgebung
-1. Drücken Sie **STRG+UMSCHALT+P**, um die Befehlspalette zu öffnen.
 
-2. Geben Sie **HDInsight: Set Azure Environment** (Azure-Umgebung festlegen) ein.
+1. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
 
-3. Wählen Sie eine Umgebung, z.B. „Azure“ oder „AzureChina“, als Ihren Standardanmeldeeintrag aus.
+2. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie **HDInsight: Set Azure Environment** (Azure-Umgebung festlegen) ein.
 
-4. Inzwischen hat das Tool Ihren Standardanmeldeeintrag bereits unter **VSCode\settings.json** gespeichert. Sie aktualisieren ihn auch direkt in dieser Konfigurationsdatei. 
+3. Wählen Sie eine Umgebung als Standardanmeldeeintrag aus.
+
+4. Inzwischen hat das Tool Ihren Standardanmeldeeintrag bereits unter **VSCode\settings.json** gespeichert. Sie können ihn auch direkt in dieser Konfigurationsdatei aktualisieren. 
 
    ![Festlegen der Konfiguration des Standardanmeldeeintrags](./media/hdinsight-for-vscode/set-default-login-entry-configuration.png)
+
 
 ## <a name="submit-interactive-hive-queries-hive-batch-scripts"></a>Übermitteln von interaktiven Hive-Abfragen und Hive-Batchskripts
 
 Mit HDInsight Tools for Visual Studio Code können Sie interaktive Hive-Abfragen und Hive-Batchskripts an HDInsight-Cluster übermitteln.
 
-1. Erstellen Sie einen neuen Arbeitsordner und eine neue Hive-Skriptdatei, falls Sie über keine verfügen.
+1. Öffnen Sie erneut den [zuvor](#open-hdinsight-work-folder) erstellten Ordner **HDexample**, falls er geschlossen wurde.  
 
-2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto oder Ihren Linkclustern her.
+2. Wählen Sie die [zuvor](#open-hdinsight-work-folder) erstellte Datei **HelloWorld.hql** aus. Sie wird im Skript-Editor geöffnet.
 
-3. Kopieren Sie den folgenden Code, fügen Sie ihn in Ihre Hive-Datei ein, und speichern Sie sie.
+3. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
+
+4. Kopieren Sie den folgenden Code, fügen Sie ihn in Ihre Hive-Datei ein, und speichern Sie sie.
 
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-4. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **HDInsight: Hive Interactive** aus, um die Abfrage zu übermitteln, oder verwenden Sie die Tastenkombination **STRG+ALT+I**. Wählen Sie **HDInsight Hive Batch** aus, um das Skript zu übermitteln, oder verwenden Sie die Tastenkombination **STRG+ALT+H**. 
 
-5. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Über das Kontextmenü können Sie anstelle der gesamten Skriptdatei auch einen Codeblock übermitteln. Nach kurzer Zeit werden die Abfrageergebnisse auf einer neuen Registerkarte angezeigt.
+5. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **HDInsight: Hive Interactive** aus, um die Abfrage zu übermitteln, oder verwenden Sie die Tastenkombination **STRG+ALT+I**.  Wählen Sie **HDInsight Hive Batch** aus, um das Skript zu übermitteln, oder verwenden Sie die Tastenkombination **STRG+ALT+H**.  
+
+6. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Über das Kontextmenü können Sie anstelle der gesamten Skriptdatei auch einen Codeblock übermitteln. Nach kurzer Zeit werden die Abfrageergebnisse auf einer neuen Registerkarte angezeigt.
 
    ![Interactive Hive-Ergebnis](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -194,18 +187,17 @@ Mit HDInsight Tools for Visual Studio Code können Sie interaktive Hive-Abfragen
 
 ## <a name="submit-interactive-pyspark-queries"></a>Übermitteln interaktiver PySpark-Abfragen
 
-### <a name="to-submit-interactive-pyspark-queries-to-hdinsight-spark-clusters"></a>Gehen Sie wie folgt vor, um interaktive PySpark-Abfragen an HDInsight Spark-Cluster zu übermitteln:
+1. Öffnen Sie erneut den [zuvor](#open-hdinsight-work-folder) erstellten Ordner **HDexample**, falls er geschlossen wurde.  
 
-1. Erstellen Sie einen neuen Arbeitsordner und eine neue PY-Datei, falls Sie über keine verfügen.
+2. Erstellen Sie anhand der [zuvor](#open-hdinsight-work-folder) erläuterten Schritte eine neue Datei vom Typ **HelloWorld.py**.
 
-    > [!NOTE]
-    > VSCode empfiehlt Ihnen, die Python-Erweiterung für die PY-Datei zu installieren. Sie können die Erweiterung installieren oder das Dialogfeld schließen.
-    > 
+3. Ihnen wird ein Dialogfeld mit einer Python-Erweiterungsempfehlung angezeigt, falls Sie Python im Abschnitt „Voraussetzungen“ nicht installiert haben.  Installieren Sie Visual Studio Code, und laden Sie das Tool erneut, um die Installation abzuschließen.
+
     >![HDInsight für Visual Studio Code Python-Installation](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
 
-2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, sofern noch keine Verbindung besteht.
+4. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
 
-3. Kopieren Sie den folgenden Code, und fügen Sie ihn in die Skriptdatei ein:
+5. Kopieren Sie den folgenden Code, und fügen Sie ihn in die Skriptdatei ein:
    ```python
    from operator import add
    lines = spark.read.text("/HdiSamples/HdiSamples/FoodInspectionData/README").rdd.map(lambda r: r[0])
@@ -219,16 +211,16 @@ Mit HDInsight Tools for Visual Studio Code können Sie interaktive Hive-Abfragen
    for i in range(0, 5):
         print(sortedCollection[i])
    ```
-4. Installieren Sie die Python-Umgebung, falls Sie dies noch nicht getan haben; siehe [Einrichten einer interaktiven PySpark-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md).
 
-5. Markieren Sie dieses Skript. Klicken Sie dann mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **HDInsight: PySpark Interactive** aus, oder verwenden Sie die Tastenkombination **STRG+ALT+I**.
+6. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie **HDInsight: PySpark Interactive** (HDInsight: PySpark (interaktiv)) aus, um die Abfrage zu übermitteln, oder verwenden Sie die Tastenkombination **STRG+ALT+I**.  
 
-6. Wählen Sie einen Cluster aus, an den Sie Ihre PySpark-Abfrage übermitteln möchten. Das Abfrageergebnis wird kurz darauf rechts auf der neuen Registerkarte angezeigt:
+7. Wählen Sie den Cluster aus, wenn Sie keinen Standardcluster angegeben haben. Über das Kontextmenü können Sie anstelle der gesamten Skriptdatei auch einen Codeblock übermitteln. Nach kurzer Zeit werden die Abfrageergebnisse auf einer neuen Registerkarte angezeigt.
 
    ![Übermitteln des Ergebnisses des Python-Auftrags](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
-7. Das Tool unterstützt auch die Abfrage der **SQL-Klausel**.
 
-   ![Übermitteln des Ergebnisses des Python-Auftrags](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Der Übertragungsstatus wird beim Ausführen von Abfragen links neben der unteren Statusleiste angezeigt. Übermitteln Sie keine weiteren Abfragen, wenn der Status **PySpark Kernel (busy)** (PySpark-Kernel (ausgelastet)) lautet. 
+8. Das Tool unterstützt auch die Abfrage der **SQL-Klausel**.
+
+   ![Übermitteln des Ergebnisses des Python-Auftrags](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) Der Übertragungsstatus wird beim Ausführen von Abfragen links neben der unteren Statusleiste angezeigt. Übermitteln Sie keine weiteren Abfragen, wenn der Status **PySpark Kernel (busy)** (PySpark-Kernel (ausgelastet)) lautet.  
 
 >[!NOTE]  
 >Die Cluster können Sitzungsinformationen speichern. Die definierte Variable, die Funktion und die entsprechenden Werte werden in der Sitzung gespeichert, sodass auf sie in mehreren Dienstaufrufen für den gleichen Cluster verwiesen werden kann. 
@@ -243,19 +235,22 @@ Führen Sie folgende Schritte aus, um Python2.x zu verwenden:
 
 1. Installieren Sie Python 2.7 auf dem lokalen Computer, und fügen Sie es dem Systempfad hinzu.
 
-2. Starten Sie VS Code neu.
+2. Starten Sie Visual Studio Code neu.
 
 3. Wechseln Sie zu Python 2, indem Sie auf der Statusleiste auf **Python XXX** klicken und dann als Ziel Python auswählen.
 
    ![Auswählen der Python-Version](./media/hdinsight-for-vscode/hdi-azure-hdinsight-select-python.png)
 
+
 ## <a name="submit-pyspark-batch-job"></a>Übermitteln eines PySpark-Batchauftrags
 
-1. Erstellen Sie einen neuen Arbeitsordner und eine neue Skriptdatei mit der Erweiterung „.py“, falls Sie über keine verfügen.
+1. Öffnen Sie erneut den [zuvor](#open-hdinsight-work-folder) erstellten Ordner **HDexample**, falls er geschlossen wurde.  
 
-2. Stellen Sie eine Verbindung mit Ihrem Azure-Konto her, sofern Sie diesen Schritt noch nicht ausgeführt haben.
+2. Erstellen Sie anhand der [zuvor](#open-hdinsight-work-folder) erläuterten Schritte eine neue Datei vom Typ **BatchFile.py**.
 
-3. Kopieren Sie den folgenden Code, und fügen Sie ihn in die Skriptdatei ein:
+3. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
+
+4. Kopieren Sie den folgenden Code, und fügen Sie ihn in die Skriptdatei ein:
 
     ```python
     from __future__ import print_function
@@ -277,6 +272,7 @@ Führen Sie folgende Schritte aus, um Python2.x zu verwenden:
             print("%s: %i" % (word, count))
         spark.stop()
     ```
+
 4. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie anschließend **HDInsight: PySpark Batch** aus, oder verwenden Sie die Tastenkombination **STRG+ALT+H**. 
 
 5. Wählen Sie einen Cluster aus, an den Sie Ihren PySpark-Auftrag übermitteln möchten. 
@@ -290,10 +286,14 @@ Nach dem Übermitteln eines Python-Auftrags werden die Übermittlungsprotokolle 
 Die **Apache Livy**-Konfiguration wird unterstützt. Entsprechende Einstellungen können Sie unter [.VSCode\settings.json](https://livy.incubator.apache.org/) im Arbeitsbereichsordner vornehmen. Derzeit wird in der Livy-Konfiguration nur das Python-Skript unterstützt. Weitere Details finden Sie in der [Livy-INFODATEI](https://github.com/cloudera/livy/blob/master/README.rst ).
 
 <a id="triggerlivyconf"></a>**Auslösen der Livy-Konfiguration**
-   
-Wählen Sie im Menü **Datei** die Option **Einstellungen** und dann im Kontextmenü die Option **Einstellungen** aus. Klicken Sie auf die Registerkarte **ARBEITSBEREICHSEINSTELLUNGEN**, um dort die Livy-Konfiguration festzulegen.
 
-Sie können auch eine Datei übermitteln. Beachten Sie dabei, dass der Ordner „.vscode“ automatisch dem Arbeitsordner hinzugefügt wird. Die Livy-Konfiguration finden Sie, indem Sie auf **.vscode\settings.json** klicken.
+Methode 1  
+1. Navigieren Sie auf der Menüleiste zu **Datei** > **Einstellungen** > **Einstellungen**.  
+2. Geben Sie in das Suchfeld **Sucheinstellungen** die Zeichenfolge **HDInsight Job Submission: Livy Conf** (HDInsight-Auftragsübermittlung: Livy-Konfiguration) ein.  
+3. Wählen Sie für das relevante Suchergebnis **Edit in settings.json** (In „settings.json“ bearbeiten) aus.
+
+Methode 2   
+Übermitteln Sie eine Datei. Beachten Sie dabei, dass der Ordner „.vscode“ automatisch dem Arbeitsordner hinzugefügt wird. Die Livy-Konfiguration finden Sie, indem Sie auf **.vscode\settings.json** klicken.
 
 + Die Projekteinstellungen:
 
@@ -342,29 +342,24 @@ Sie können auch eine Datei übermitteln. Beachten Sie dabei, dass der Ordner �
 
 ## <a name="integrate-with-azure-hdinsight-from-explorer"></a>Integration mit Azure HDInsight per Explorer
 
-Azure HDInsight wurde im linken Bereich hinzugefügt. Sie können den Cluster direkt durchsuchen und verwalten.
+**Azure HDInsight** wurde der Explorer-Ansicht hinzugefügt. Sie können Ihre Cluster direkt über **Azure HDInsight** durchsuchen und verwalten.
 
-1. Erweitern Sie **AZURE HDINSIGHT**, sofern Sie nicht angemeldet sind. Der Link **Sign in to Azure...** (Bei Azure anmelden) wird angezeigt.
+1. [Stellen Sie eine Verbindung mit Ihrem Azure-Konto her](#connect-to-hdinsight-cluster), sofern noch keine Verbindung besteht.
 
-    ![Abbildung des Anmeldelinks](./media/hdinsight-for-vscode/hid-azure-hdinsight-sign-in.png)
+2. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Explorer**.
 
-2. Klicken Sie auf **Sign in to Azure** (Anmelden bei Azure). Unten rechts werden der Anmeldelink und Code angezeigt.
-
-    ![Anmeldeanweisungen für andere Umgebung](./media/hdinsight-for-vscode/hdi-azure-hdinsight-azure-signin-code.png)
-
-3. Klicken Sie auf die Schaltfläche **Copy & Open** (Kopieren und öffnen). Fügen Sie im Browser den Code ein, und klicken Sie auf die Schaltfläche **Weiter**. In einer Meldung wird die erfolgreiche Anmeldung angezeigt.
-
-4. Nach der Anmeldung werden die verfügbaren Abonnements und Cluster (Spark, Hadoop und HBase werden unterstützt) unter **AZURE HDINSIGHT** angezeigt. 
+3. Erweitern Sie im linken Bereich **AZURE HDINSIGHT**.  Die verfügbaren Abonnements und Cluster (Spark, Hadoop und HBase werden unterstützt) werden aufgeführt. 
 
    ![Azure HDInsight-Abonnement](./media/hdinsight-for-vscode/hdi-azure-hdinsight-subscription.png)
 
-5. Erweitern Sie den Cluster, um die Hive-Metadatendatenbank und das Hive-Tabellenschema anzuzeigen.
+4. Erweitern Sie den Cluster, um die Hive-Metadatendatenbank und das Hive-Tabellenschema anzuzeigen.
 
    ![Azure HDInsight-Cluster](./media/hdinsight-for-vscode/hdi-azure-hdinsight-cluster.png)
 
+
 ## <a name="additional-features"></a>Zusätzliche Funktionen
 
-HDInsight Tools for Visual Studio Code unterstützen folgende Features:
+HDInsight für Visual Studio Code unterstützt folgende Features:
 
 - **IntelliSense-AutoVervollständigen**. Zeigt Vorschläge für Schlüsselwörter, Methoden, Variablen und Ähnliches an. Die unterschiedlichen Objekttypen werden durch entsprechende Symbole dargestellt.
 
@@ -374,39 +369,20 @@ HDInsight Tools for Visual Studio Code unterstützen folgende Features:
 
     ![Syntaxmarkierungen der HDInsight Tools für Visual Studio Code](./media/hdinsight-for-vscode/hdinsight-for-vscode-syntax-highlights.png)
 
+
+## <a name="unlink-cluster"></a>Aufheben einer Clusterverknüpfung
+
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie dann **HDInsight: Unlink a Cluster** (HDInsight: Verknüpfung eines Clusters aufheben) ein.  
+
+2. Wählen Sie den Cluster aus, dessen Verknüpfung aufgehoben werden soll.  
+
+3. Überprüfen Sie die Ansicht **AUSGABE** auf eine Bestätigung.  
+
+
+## <a name="logout"></a>Logout  
+
+Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette...**, und geben Sie dann **HDInsight: Logout** (HDInsight: Abmelden) ein.  In der Ecke unten rechts wird ein Popupelement mit dem Hinweis **Logout successfully!** (Abmeldung erfolgreich!) angezeigt.
+
+
 ## <a name="next-steps"></a>Nächste Schritte
-
-### <a name="demo"></a>Demo
-* HDInsight for VS Code: [Video](https://go.microsoft.com/fwlink/?linkid=858706)
-
-### <a name="tools-and-extensions"></a>Tools und Erweiterungen
-
-* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über VPN](spark/apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-* [Verwenden des Azure-Toolkits für IntelliJ zum Remotedebuggen von Apache Spark-Anwendungen über SSH](spark/apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Verwenden der HDInsight-Tools für IntelliJ mit Hortonworks Sandbox](hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
-* [Verwenden der HDInsight-Tools im Azure-Toolkit für Eclipse zum Erstellen von Apache Spark-Anwendungen](spark/apache-spark-eclipse-tool-plugin.md)
-* [Verwenden von Apache Zeppelin Notebooks mit einem Apache Spark-Cluster unter HDInsight](spark/apache-spark-zeppelin-notebook.md)
-* [Kernel für Jupyter Notebook in Apache Spark-Clustern für HDInsight](spark/apache-spark-jupyter-notebook-kernels.md)
-* [Verwenden von externen Paketen mit Jupyter Notebooks](spark/apache-spark-jupyter-notebook-use-external-packages.md)
-* [Installieren von Jupyter Notebook auf Ihrem Computer und Herstellen einer Verbindung zum Apache Spark-Cluster in Azure HDInsight (Vorschau)](spark/apache-spark-jupyter-notebook-install-locally.md)
-* [Visualisieren von Apache Hive-Daten mit Microsoft Power BI in Azure HDInsight](hadoop/apache-hadoop-connect-hive-power-bi.md)
-* [Visualisieren von Interactive Query-Hive-Daten mit Power BI in Azure HDInsight](./interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)
-* [Einrichten der PySpark Interactive-Umgebung für Visual Studio Code](set-up-pyspark-interactive-environment.md)
-* [Verwenden von Apache Zeppelin zum Ausführen von Apache Hive-Abfragen in Azure HDInsight](./hdinsight-connect-hive-zeppelin.md)
-
-### <a name="scenarios"></a>Szenarien
-* [Apache Spark mit BI: Durchführen interaktiver Datenanalysen mithilfe von Spark in HDInsight mit BI-Tools](spark/apache-spark-use-bi-tools.md)
-* [Apache Spark mit Machine Learning: Analysieren von Gebäudetemperaturen mithilfe von Spark in HDInsight und HVAC-Daten](spark/apache-spark-ipython-notebook-machine-learning.md)
-* [Apache Spark mit Machine Learning: Vorhersage von Lebensmittelkontrollergebnissen mithilfe von Spark in HDInsight](spark/apache-spark-machine-learning-mllib-ipython.md)
-* [Websiteprotokollanalyse mithilfe von Apache Spark in HDInsight](spark/apache-spark-custom-library-website-log-analysis.md)
-
-### <a name="create-and-running-applications"></a>Erstellen und Ausführen von Anwendungen
-* [Erstellen einer eigenständigen Anwendung mit Scala](spark/apache-spark-create-standalone-application.md)
-* [Ausführen von Remoteaufträgen in einem Apache Spark-Cluster mithilfe von Apache Livy](spark/apache-spark-livy-rest-interface.md)
-
-### <a name="manage-resources"></a>Verwalten von Ressourcen
-* [Verwalten von Ressourcen für den Apache Spark-Cluster in Azure HDInsight](spark/apache-spark-resource-manager.md)
-* [Track and debug jobs running on an Apache Spark cluster in HDInsight (Nachverfolgen und Debuggen von Aufträgen in einem Apache Spark-Cluster unter HDInsight)](spark/apache-spark-job-debugging.md)
-
-
-
+Ein Demovideo zur Verwendung von HDInsight für Visual Studio Code finden Sie unter [HDInsight Tools for VSCode](https://go.microsoft.com/fwlink/?linkid=858706) (HDInsight Tools for Visual Studio Code).

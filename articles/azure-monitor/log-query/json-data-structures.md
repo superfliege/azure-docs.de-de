@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit Zeichenfolgen in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Log Analytics über das Analytics-Portal veranschaulicht wird.
+title: Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial zur Verwendung von Azure Monitor Log Analytics im Azure-Portal zum Abfragen und Analysieren von Protokolldaten in Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 24f22d659ccfb6923ad2a038e12454716b2c5445
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: dda7ef2e4e974ea053f030a3ebe71a16872612b0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263882"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993723"
 ---
-# <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Arbeiten mit JSON und Datenstrukturen in Log Analytics-Abfragen
+# <a name="working-with-json-and-data-structures-in-azure-monitor-log-queries"></a>Arbeiten mit JSON und Datenstrukturen in Azure Monitor-Protokollabfragen
 
 > [!NOTE]
-> Sie sollten zunächst [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
+> Sie sollten zunächst [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) und [Erste Schritte mit Azure Monitor-Protokollabfragen](get-started-queries.md) lesen, bevor Sie mit dieser Lektion beginnen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -131,7 +131,7 @@ print hosts_object
 ![Schemaerstellung](media/json-data-structures/buildschema.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Weitere Informationen zur Verwendung von Protokollabfragen in Azure Monitor finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Datums- und Uhrzeitvorgänge](datetime-operations.md)

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 18d6478763fd6551cc8baac6ea54e8d91f1a28e6
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e5e134fa7dd08bad4220866dd4f5bd9b788e624e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629967"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980600"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Einführung in den Handler der Azure-Erweiterung zum Konfigurieren des gewünschten Zustands
 
@@ -70,17 +70,17 @@ In den meisten Szenarien sind Resource Manger-Bereitstellungsvorlagen die erwart
 
 Die PowerShell-Cmdlets zum Verwalten der DSC-Erweiterung werden am besten für die interaktive Problembehandlung und zum Sammeln von Informationen verwendet. Sie können die Cmdlets zum Verpacken, Veröffentlichen und Überwachen der Bereitstellung der DSC-Erweiterung verwenden. Cmdlets für die DSC-Erweiterung wurden noch nicht für die Verwendung mit dem [Standardkonfigurationsskript](#default-configuration-script) aktualisiert.
 
-Das Cmdlet **Publish-AzureRmVMDscConfiguration** durchsucht eine Konfigurationsdatei nach abhängigen DSC-Ressourcen und erstellt eine ZIP-Datei. Die ZIP-Datei enthält die Konfiguration und die erforderlichen Ressourcen für deren Inkraftsetzung. Mit dem Parameter *-OutputArchivePath* kann das Cmdlet das Paket auch lokal erstellen. Andernfalls veröffentlicht das Cmdlet die ZIP-Datei in Azure Blob Storage und schützt sie durch ein SAS-Token.
+Mit dem Cmdlet **Publish-AzVMDscConfiguration** wird eine Konfigurationsdatei nach abhängigen DSC-Ressourcen durchsucht und eine ZIP-Datei erstellt. Die ZIP-Datei enthält die Konfiguration und die erforderlichen Ressourcen für deren Inkraftsetzung. Mit dem Parameter *-OutputArchivePath* kann das Cmdlet das Paket auch lokal erstellen. Andernfalls veröffentlicht das Cmdlet die ZIP-Datei in Azure Blob Storage und schützt sie durch ein SAS-Token.
 
 Das von diesem Cmdlet erstellte PS1-Konfigurationsskript befindet sich in der ZIP-Datei im Stammverzeichnis des Archivordners. Der Modulordner wird im Archivordner in den Ressourcen platziert.
 
-Das Cmdlet **Set-AzureRmVMDscExtension** fügt die von der PowerShell DSC-Erweiterung geforderten Einstellungen in einem VM-Konfigurationsobjekt ein.
+Mit dem Cmdlet **Set-AzVMDscExtension** werden die für die PowerShell DSC-Erweiterung erforderlichen Einstellungen in einem VM-Konfigurationsobjekt eingefügt.
 
-Das Cmdlet **Get-AzureRmVMDscExtension** ruft den DSC-Erweiterungsstatus einer bestimmten VM ab.
+Mit dem Cmdlet **Get-AzVMDscExtension** wird der DSC-Erweiterungsstatus eines bestimmten virtuellen Computers abgerufen.
 
-Das Cmdlet **Get-AzureRmVMDscExtensionStatus** ruft den Status der DSC-Konfiguration ab, die vom DSC-Erweiterungshandler durchgeführt wird. Diese Aktion kann auf einem einzelnen virtuellen Computer oder einer Gruppe virtueller Computer ausgeführt werden.
+Mit dem Cmdlet **Get-AzVMDscExtensionStatus** wird der Status der DSC-Konfiguration abgerufen, die vom DSC-Erweiterungshandler durchgeführt wird. Diese Aktion kann auf einem einzelnen virtuellen Computer oder einer Gruppe virtueller Computer ausgeführt werden.
 
-Das Cmdlet **Remove-AzureRmVMDscExtension** entfernt den Erweiterungshandler aus einer bestimmten VM. Dieses Cmdlet bewirkt *nicht* die Entfernung der Konfiguration, die Deinstallation von WMF oder eine Änderung der angewendeten Einstellungen auf dem virtuellen Computer. Es wird lediglich der Erweiterungshandler entfernt. 
+Mit dem Cmdlet **Remove-AzVMDscExtension** wird der Erweiterungshandler von einem bestimmten virtuellen Computer entfernt. Dieses Cmdlet bewirkt *nicht* die Entfernung der Konfiguration, die Deinstallation von WMF oder eine Änderung der angewendeten Einstellungen auf dem virtuellen Computer. Es wird lediglich der Erweiterungshandler entfernt. 
 
 Wichtige Informationen zu Cmdlets für die Resource Manager-DSC-Erweiterung:
 
@@ -117,9 +117,9 @@ $location = 'westus'
 $vmName = 'myVM'
 $storageName = 'demostorage'
 #Publish the configuration script to user storage
-Publish-AzureRmVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
+Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzureRmVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-portal-functionality"></a>Funktionen des Azure-Portals
@@ -133,21 +133,21 @@ So richten Sie DSC im Portal ein:
 
 Für dieses Portal werden folgende Eingaben erfasst:
 
-- **Konfigurationsmodule oder -skript**: Dieses Feld ist obligatorisch. (Das Formular wurde nicht für das [Standardkonfigurationsskript](#default-configuration-script) aktualisiert.) Konfigurationsmodule und Skripts benötigen eine PS1-Datei, die ein Konfigurationsskript oder eine ZIP-Datei mit einer ps1-Konfigurationsskript auf der Stammebene aufweist. Wenn Sie eine ZIP-Datei verwenden, müssen alle abhängigen Ressourcen in Modulordnern in der ZIP-Ordner enthalten sein. Sie können die ZIP-Datei mit dem im Azure PowerShell SDK enthaltenen Cmdlet **Publish-AzureVMDscConfiguration -OutputArchivePath** erstellen. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
+- **Konfigurationsmodule oder -skript:** Dieses Feld ist obligatorisch. (Das Formular wurde nicht für das [Standardkonfigurationsskript](#default-configuration-script) aktualisiert.) Konfigurationsmodule und Skripts benötigen eine PS1-Datei, die ein Konfigurationsskript oder eine ZIP-Datei mit einer ps1-Konfigurationsskript auf der Stammebene aufweist. Wenn Sie eine ZIP-Datei verwenden, müssen alle abhängigen Ressourcen in Modulordnern in der ZIP-Ordner enthalten sein. Sie können die ZIP-Datei mit dem im Azure PowerShell SDK enthaltenen Cmdlet **Publish-AzureVMDscConfiguration -OutputArchivePath** erstellen. Die ZIP-Datei wird in Ihren Benutzer-Blobspeicher hochgeladen und durch ein SAS-Token geschützt.
 
-- **Modulspezifischer Konfigurationsname**: Sie können mehrere Konfigurationsfunktionen in eine PS1-Datei einfügen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von \\ und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration **IisInstall** lautet, geben Sie **configuration.ps1\IisInstall** ein.
+- **Modulspezifischer Konfigurationsname:** Sie können mehrere Konfigurationsfunktionen in einer PS1-Datei einfügen. Geben Sie den Namen des PS1-Konfigurationsskripts ein – gefolgt von \\ und dem Namen der Konfigurationsfunktion. Wenn der Name des PS1-Skripts z.B. „configuration.ps1“ und die Konfiguration **IisInstall** lautet, geben Sie **configuration.ps1\IisInstall** ein.
 
-- **Konfigurationsargumente**: Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im Format **argumentName1=value1,argumentName2=value2** ein. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
+- **Konfigurationsargumente:** Falls die Konfigurationsfunktion Argumente akzeptiert, geben Sie diese hier im Format **argumentName1=value1,argumentName2=value2** ein. Hierbei handelt es sich um ein anderes Format als bei den Konfigurationsargumenten, die von PowerShell-Cmdlets oder Resource Manager-Vorlagen akzeptiert werden.
 
-- **PSD1-Konfigurationsdatendatei**: Dieses Feld ist optional. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
+- **PSD1-Konfigurationsdatendatei:** Dieses Feld ist optional. Wenn Ihre Konfiguration eine Konfigurationsdatendatei in PSD1 erfordert, wählen Sie mithilfe dieses Felds eine solche Datei aus, und laden Sie sie in Ihren Benutzer-Blobspeicher hoch. Die Konfigurationsdatei wird durch ein SAS-Token in einem Blobspeicher geschützt.
 
-- **WMF-Version**: Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrer VM installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“, „5.1“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**.
+- **WMF-Version:** Gibt die Version von Windows Management Framework (WMF) an, die auf Ihrem virtuellen Computer installiert sein muss. Wenn diese Eigenschaft auf „latest“ festgelegt ist, wird die aktuelle Version von WMF installiert. Die einzigen derzeit möglichen Werte für diese Eigenschaft sind „4.0“, „5.0“, „5.1“ und „latest“. Diese möglichen Werte werden gelegentlich aktualisiert. Der Standardwert ist **neueste**.
 
-- **Datensammlung**: Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
+- **Datensammlung:** Bestimmt, ob die Erweiterung Telemetriedaten sammelt. Weitere Informationen finden Sie unter [Azure DSC extension data collection](https://blogs.msdn.microsoft.com/powershell/2016/02/02/azure-dsc-extension-data-collection-2/) (Datensammlung mit der Azure DSC-Erweiterung).
 
 - **Version**: Gibt die Version der zu installierenden DSC-Erweiterung an. Informationen zu Versionen finden Sie unter [Versionsverlauf der Azure Desired State Configuration-Erweiterung](/powershell/dsc/azuredscexthistory).
 
-- **Automatisch Upgrade für Nebenversion durchführen**: Dieses Feld entspricht dem **AutoUpdate**-Switch in den Cmdlets und ermöglicht die Erweiterung zum automatischen Aktualisieren auf die neueste Installation während der Installation. **Ja** weist den Erweiterungshandler dazu an, die neueste verfügbare Version zu verwenden, während **Nein** die Installation der angegebenen **Version** erzwingt. Wird weder **Ja** noch **Nein** ausgewählt, so entspricht dies der Auswahl von **Nein**.
+- **Nebenversion automatisch aktualisieren:** Dieses Feld entspricht dem **AutoUpdate**-Switch in den Cmdlets und ermöglicht die Erweiterung zum automatischen Aktualisieren auf die neueste Installation während der Installation. **Ja** weist den Erweiterungshandler dazu an, die neueste verfügbare Version zu verwenden, während **Nein** die Installation der angegebenen **Version** erzwingt. Wird weder **Ja** noch **Nein** ausgewählt, so entspricht dies der Auswahl von **Nein**.
 
 ## <a name="logs"></a>Protokolle
 

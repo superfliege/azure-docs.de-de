@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 366637274a8006455f05702f47c02f505a615820
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063232"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234678"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Auswählen des richtigen Tarifs in Azure Maps
 
 Azure Maps bietet zwei Tarife. Dieser Artikel soll Ihnen bei der Auswahl des richtigen Tarifs für Ihre Ansprüche helfen. Um den richtigen Tarif auszuwählen, sollten Sie sich die folgenden zwei Fragen stellen.
 
-## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welche Geofunktionen planen Sie zu verwenden?
+## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Welche Geofunktionen planen Sie, zu verwenden?
 Der Tarif S0 ist der richtige für Sie, wenn die Kerngeofunktions-APIs Ihre Dienstanforderungen erfüllen. Wenn Sie erweiterte Funktionen für Ihre Anwendung benötigen, sollten Sie den Tarif S1 in Erwägung ziehen. Beispielfunktionen sind die Raum- und Hybridbildgebung, das Abrufen von Routenbereichen und die Batchgeocodierung. Die folgende Tabelle **Tarife und Funktionen** vermittelt Ihnen einen besseren Eindruck von den Anforderungen Ihrer Anwendung. Sie hilft auch bei der Auswahl eines Tarifs, der für Ihre Anwendung am besten geeignet ist.
 
-## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Wie viele gleichzeitige Benutzer planen Sie zu unterstützen? 
+## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Wie viele gleichzeitige Benutzer planen Sie, zu unterstützen? 
 Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz verarbeitet. Bevor Sie einen Azure Maps-Tarif auswählen, sollten Sie sich einige Fragen stellen, z.B. „Wie viele gleichzeitige Benutzer möchten Sie unterstützen?“ Mit dem Tarif S0 werden bis zu **50 Abfragen pro Sekunde** verarbeitet. Mit dem Tarif S1 werden **mehr als 50 Abfragen pro Sekunde** verarbeitet.
 
 ### <a name="pricing-tier-capabilities"></a>Tarife und Funktionen
@@ -30,19 +30,22 @@ Mit den Tarifen S0 und S1 werden unterschiedliche Volumen an Datendurchsatz vera
 | Funktion                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
 | Suchen,                                  |        ✓           |     ✓    |
+| Batchgeocodierung (Preview)              |                   |     ✓    |
+| Polygone aus Suche          |                   |     ✓    |
 | Routing                                 |        ✓           |     ✓    |
+| Routenbereich                    |                   |     ✓    |
+| Batchrouting (Preview)                |                   |     ✓    |
+| Matrixrouting (Preview)               |                   |     ✓    |
 | Rendern                                  |        ✓           |     ✓    |
+| Bildgebung und Hybridbildgebung    |            |     ✓    |
 | Verkehr                                 |        ✓           |     ✓    |
 | Zeitzonen                              |        ✓           |     ✓    |
-| * Bildgebung und Hybridbildgebung (Preview)  |        ✓           |     ✓    |
-| * Routenbereich (Preview)                  |        ✓           |     ✓    |
-| * IP 2-Standort (Preview)                |        ✓           |     ✓    |
-| * Polygone aus Suche (Preview)         |        ✓           |     ✓    |
-| * Batchgeocodierung (Preview)              |        ✓           |     ✓    |
-| * Batchrouting (Preview)                |        ✓           |     ✓    |
-| * Matrixrouting (Preview)               |        ✓           |     ✓    |
+| Geolocation (Preview)                |        ✓           |     ✓    |
+| Daten (Preview)               |                   |     ✓    |
+| Räumlich (Preview)               |                   |     ✓    |
+| Geofencing (Preview)               |                   |     ✓    |
 
-\* Zugriff auf diese Funktionen aus dem Tarif S0 wird nach dem 4. Februar 4, 2019 eingestellt.
+
 
 Diese zusätzliche Datenpunkte sollten in Betracht gezogen werden:
 * Welche Art von Unternehmen haben Sie?

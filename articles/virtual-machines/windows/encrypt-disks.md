@@ -15,15 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 738bdd303d6e8e41df179021ebca521100ace325
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4875464d7e7a7f49c1532871a69f4d2224b271a6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828076"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108244"
 ---
 # <a name="encrypt-virtual-disks-on-a-windows-vm"></a>Verschlüsseln virtueller Datenträger auf einer Windows-VM
 Zum Verbessern der Sicherheit und Compliance von virtuellen Computern können virtuelle Datenträger in Azure verschlüsselt werden. Die Verschlüsselung der Datenträger basiert auf kryptografischen Schlüsseln, die in einer Azure Key Vault-Instanz gesichert werden. Diese kryptografischen Schlüssel werden von Ihnen kontrolliert, und Sie können deren Verwendung überwachen. Dieser Artikel beschreibt, wie Sie virtuelle Datenträger auf einer Windows-VM mithilfe von Azure PowerShell verschlüsseln. Sie können auch [einen virtuellen Linux-Computer mithilfe der Azure CLI verschlüsseln](../linux/encrypt-disks.md).
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="overview-of-disk-encryption"></a>Übersicht über die Datenträgerverschlüsselung
 Virtuelle Datenträger auf virtuellen Windows-Computern werden im Ruhezustand mit BitLocker verschlüsselt. Für die Verschlüsselung virtueller Datenträger in Azure fallen keine Gebühren an. Kryptografische Schlüssel werden in einer Azure Key Vault-Instanz mit Softwareschutz gespeichert. Alternativ können Sie Schlüssel auch in Hardwaresicherheitsmodulen (HSMs) mit FIPS 140-2 Level 2-Zertifizierung importieren oder generieren. Kryptografische Schlüssel dienen dem Verschlüsseln und Entschlüsseln virtueller Datenträger, die Ihrer VM angefügt sind. Sie behalten die Kontrolle über diese kryptografischen Schlüssel und können deren Verwendung überwachen. 
@@ -63,21 +65,21 @@ Die Datenträgerverschlüsselung wird derzeit in folgenden Szenarien nicht unter
 
 Erstellen Sie zum Speichern Ihrer kryptografischen Schlüssel zunächst eine Azure Key Vault-Instanz. In Azure Key Vault können Schlüssel, Geheimnisse und Kennwörter gespeichert werden, um eine sichere Implementierung in Ihre Anwendungen und Dienste zu ermöglichen. Beim Verschlüsseln virtueller Datenträger erstellen Sie einen Schlüsseltresor zum Speichern eines kryptografischen Schlüssels, der zum Verschlüsseln oder Entschlüsseln der virtuellen Datenträger verwendet wird. 
 
-Aktivieren Sie in Ihrem Azure-Abonnement mit [Register-AzureRmResourceProvider](/powershell/module/azurerm.resources/register-azurermresourceprovider) den Azure Key Vault-Anbieter, und erstellen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *USA, Osten*:
+Aktivieren Sie in Ihrem Azure-Abonnement mit [Register-AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider) den Azure Key Vault-Anbieter, und erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *USA, Osten*:
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"
 $location = "East US"
 
-Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.KeyVault"
-New-AzureRmResourceGroup -Location $location -Name $rgName
+Register-AzResourceProvider -ProviderNamespace "Microsoft.KeyVault"
+New-AzResourceGroup -Location $location -Name $rgName
 ```
 
-Die Azure Key Vault-Instanz mit den kryptografischen Schlüsseln und den dazugehörigen Computeressourcen wie Speicher sowie die VM selbst müssen sich in der gleichen Region befinden Erstellen Sie mit [New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) ein Azure Key Vault, und aktivieren Sie KEy Vault für die Verwendung mit Datenträgerverschlüsselung. Geben Sie einen eindeutigen Schlüsseltresornamen für *keyVaultName* an, wie nachfolgend gezeigt:
+Die Azure Key Vault-Instanz mit den kryptografischen Schlüsseln und den dazugehörigen Computeressourcen wie Speicher sowie die VM selbst müssen sich in der gleichen Region befinden Erstellen Sie mit [New-AzKeyVault](https://docs.microsoft.com/powershell/module/az.keyvault/new-azkeyvault) eine Azure Key Vault-Instanz, und aktivieren Sie die Key Vault-Instanz für die Verwendung mit Datenträgerverschlüsselung. Geben Sie einen eindeutigen Schlüsseltresornamen für *keyVaultName* an, wie nachfolgend gezeigt:
 
 ```azurepowershell-interactive
 $keyVaultName = "myKeyVault$(Get-Random)"
-New-AzureRmKeyVault -Location $location `
+New-AzKeyVault -Location $location `
     -ResourceGroupName $rgName `
     -VaultName $keyVaultName `
     -EnabledForDiskEncryption
@@ -85,7 +87,7 @@ New-AzureRmKeyVault -Location $location `
 
 Kryptografische Schlüssel können mit Softwareschutz oder mit HSM-Schutz gespeichert werden.  Eine Key Vault-Standardinstanz speichert nur softwaregeschützte Schlüssel. Das Verwenden eines Hardwaresicherheitsmoduls erfordert eine Key Vault-Premiuminstanz. Um diese zu erstellen, fügen Sie im vorherigen Schritt den Parameter *-SKU „Premium“* hinzu. Im folgenden Beispiel werden softwaregeschützte Schlüssel verwendet, da wir eine Key Vault-Standardinstanz erstellt haben. 
 
-Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie mithilfe von [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
+Bei beiden Schutzmodellen muss der Azure-Plattform Zugriff gewährt werden, um beim Start des virtuellen Computers die kryptografischen Schlüssel anfordern und die virtuellen Datenträger entschlüsseln zu können. Erstellen Sie mithilfe von [Add-AzureKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/add-azkeyvaultkey) einen kryptografischen Schlüssel in Ihrem Schlüsseltresor. Im folgenden Beispiel wird ein Schlüssel mit dem Namen *myKey* erstellt:
 
 ```azurepowershell-interactive
 Add-AzureKeyVaultKey -VaultName $keyVaultName `
@@ -94,12 +96,12 @@ Add-AzureKeyVaultKey -VaultName $keyVaultName `
 ```
 
 ## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
-Um den Verschlüsselungsvorgang zu testen, erstellen Sie einen virtuellen Computer mit [New-AzureRmVm](/powershell/module/azurerm.compute/new-azurermvm). Im folgenden Beispiel wird unter Verwendung eines *Windows Server 2016 Datacenter*-Images der virtuelle Computer *myVM* erstellt. Geben Sie bei entsprechender Aufforderung den Benutzernamen und das Kennwort für den virtuellen Computer ein:
+Um den Verschlüsselungsvorgang zu testen, erstellen Sie einen virtuellen Computer mit [New-AzVm](https://docs.microsoft.com/powershell/module/az.compute/new-azvm). Im folgenden Beispiel wird unter Verwendung eines *Windows Server 2016 Datacenter*-Images der virtuelle Computer *myVM* erstellt. Geben Sie bei entsprechender Aufforderung den Benutzernamen und das Kennwort für den virtuellen Computer ein:
 
 ```azurepowershell-interactive
 $cred = Get-Credential
 
-New-AzureRmVm `
+New-AzVm `
     -ResourceGroupName $rgName `
     -Name "myVM" `
     -Location $location `
@@ -112,15 +114,15 @@ New-AzureRmVm `
 
 
 ## <a name="encrypt-a-virtual-machine"></a>Verschlüsseln einer VM
-Verschlüsseln Sie Ihre VM mit [Set-AzureRmVMDiskEncryptionExtension](/powershell/module/azurerm.compute/set-azurermvmdiskencryptionextension) unter Verwendung des Azure Key Vault-Schlüssels. Im folgenden Beispiel werden alle Schlüsselinformationen abgerufen und anschließend der virtuelle Computer *myVM* verschlüsselt:
+Verschlüsseln Sie Ihre VM mit [Set-AzVMDiskEncryptionExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmdiskencryptionextension) unter Verwendung des Azure Key Vault-Schlüssels. Im folgenden Beispiel werden alle Schlüsselinformationen abgerufen und anschließend der virtuelle Computer *myVM* verschlüsselt:
 
 ```azurepowershell-interactive
-$keyVault = Get-AzureRmKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
+$keyVault = Get-AzKeyVault -VaultName $keyVaultName -ResourceGroupName $rgName;
 $diskEncryptionKeyVaultUrl = $keyVault.VaultUri;
 $keyVaultResourceId = $keyVault.ResourceId;
 $keyEncryptionKeyUrl = (Get-AzureKeyVaultKey -VaultName $keyVaultName -Name myKey).Key.kid;
 
-Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
+Set-AzVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -VMName "myVM" `
     -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl `
     -DiskEncryptionKeyVaultId $keyVaultResourceId `
@@ -128,10 +130,10 @@ Set-AzureRmVMDiskEncryptionExtension -ResourceGroupName $rgName `
     -KeyEncryptionKeyVaultId $keyVaultResourceId
 ```
 
-Bestätigen Sie die Aufforderung zum Fortsetzen der Verschlüsselung des virtuellen Computers. Der virtuelle Computer wird während des Vorgangs neu gestartet. Nach Abschluss des Verschlüsselungsvorgangs und dem Neustart des virtuellen Computers können Sie den Verschlüsselungsstatus mit [Get-AzureRmVmDiskEncryptionStatus](/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus) überprüfen:
+Bestätigen Sie die Aufforderung zum Fortsetzen der Verschlüsselung des virtuellen Computers. Der virtuelle Computer wird während des Vorgangs neu gestartet. Nach Abschluss des Verschlüsselungsvorgangs und dem Neustart des virtuellen Computers können Sie den Verschlüsselungsstatus mit [Get-AzVmDiskEncryptionStatus](https://docs.microsoft.com/powershell/module/az.compute/get-azvmdiskencryptionstatus) überprüfen:
 
 ```azurepowershell-interactive
-Get-AzureRmVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName "myVM"
+Get-AzVmDiskEncryptionStatus  -ResourceGroupName $rgName -VMName "myVM"
 ```
 
 Die Ausgabe sieht in etwa wie das folgende Beispiel aus:

@@ -12,12 +12,13 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.openlocfilehash: 04732d6541fd6132360d4c235b35979c70772922
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 7f4946251cf72d7869ec5fc2f0fd844b9c06ac34
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42142008"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161931"
 ---
 # <a name="what-happened-to-my-webapi-project-visual-studio-azure-active-directory-connected-service"></a>Was ist mit dem WebAPI-Projekt passiert (verbundener Visual Studio-Dienst für Azure Active Directory)?
 
@@ -33,7 +34,7 @@ Informationen zur Verwendung des verbundenen Diensts finden Sie unter [Erste Sch
 
 Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweise).
 
-| Typ | Verweis |
+| Type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.Owin |
 | .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
@@ -46,7 +47,7 @@ Betrifft die Projektdatei (\*.NET-Verweise) und `packages.config` (NuGet-Verweis
 
 Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
-| Typ | Verweis |
+| Type | Verweis |
 | --- | --- |
 | .NET; NuGet | EntityFramework |
 | .NET        | EntityFramework.SqlServer (nur Visual Studio 2015) |
@@ -60,7 +61,7 @@ Zusätzliche Verweise bei Auswahl der Option **Verzeichnisdaten lesen**:
 
 Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual Studio 2015):
 
-| Typ | Verweis |
+| Type | Verweis |
 | --- | --- |
 | .NET; NuGet | Microsoft.AspNet.Identity.Core |
 | .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
@@ -74,7 +75,7 @@ Die folgenden Verweise werden entfernt (nur ASP.NET 4-Projekte, wie in Visual St
 
 ## <a name="webconfig-or-appconfig-changes"></a>Änderungen an „web.config“ oder „app.config“
 
-- Die folgenden Konfigurationseinträge werden hinzugefügt:
+- Die folgenden Konfigurationseinträge wurden hinzugefügt:
 
     ```xml
     <appSettings>

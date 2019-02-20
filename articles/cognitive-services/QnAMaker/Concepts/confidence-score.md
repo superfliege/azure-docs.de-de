@@ -8,15 +8,15 @@ manager: pchoudh
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 35d447fb7024b8be0bd427305b9e43fa60b1a90d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 757ef07c1268cbf159ce98dfb8ba1980616e4a3a
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223186"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245132"
 ---
 # <a name="confidence-score-of-a-qna-maker-knowledge-base"></a>Zuverlässigkeitsbewertung für eine QnA Maker-Wissensdatenbank
 Wenn eine Benutzerabfrage mit einer Wissensdatenbank abgeglichen wird, gibt QnA Maker relevante Antworten zusammen mit einer Zuverlässigkeitsbewertung zurück. Diese Bewertung zeigt die Zuverlässigkeit dafür an, dass die Antwort die richtige Übereinstimmung für die jeweilige Benutzerabfrage ist. 
@@ -58,7 +58,7 @@ Bei der Auswahl Ihres Schwellenwerts sollten Sie die Ausgewogenheit zwischen Gen
 > Neuere Versionen von QnA Maker beinhalten Verbesserungen der Bewertungslogik und wirken sich möglicherweise auf Ihren Schwellenwert aus. Achten Sie bei jeder Aktualisierung des Diensts darauf, den Schwellenwert ggf. zu testen und anzupassen. Sie können die Version Ihres QnA-Diensts [hier](https://www.qnamaker.ai/UserSettings) überprüfen, und [hier](../How-To/troubleshooting-runtime.md) erfahren Sie, wie Sie die neuesten Updates erhalten.
 
 ## <a name="improve-confidence-scores"></a>Verbessern von Zuverlässigkeitsbewertungen
-Um die Zuverlässigkeitsbewertung einer bestimmten Antwort auf eine Benutzerabfrage zu verbessern, können Sie der Wissensdatenbank die Benutzerabfrage als alternative Frage für diese Antwort hinzufügen. Sie können auch [Wortvarianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) verwenden, um Ihrer Wissensdatenbank Synonyme für Schlüsselwörter hinzuzufügen.
+Um die Zuverlässigkeitsbewertung einer bestimmten Antwort auf eine Benutzerabfrage zu verbessern, können Sie der Wissensdatenbank die Benutzerabfrage als alternative Frage für diese Antwort hinzufügen. Sie können auch [Wortvarianten](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) verwenden, bei denen die Groß- und Kleinschreibung nicht berücksichtigt wird, um Ihrer Wissensdatenbank Synonyme für Schlüsselwörter hinzuzufügen.
 
 
 ## <a name="similar-confidence-scores"></a>Ähnliche Zuverlässigkeitsbewertungen
@@ -66,8 +66,9 @@ Wenn mehrere Antworten eine ähnliche Zuverlässigkeitsbewertung aufweisen, ist 
 
 
 ## <a name="confidence-score-differences"></a>Abweichungen zwischen Zuverlässigkeitsbewertungen
-Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Search-Indizes befinden.
-Unter dem hier angegebenen Link erhalten Sie Informationen zur Funktionsweise des Vorgangs [Veröffentlichen](../How-To/publish-knowledge-base.md).
+Die Zuverlässigkeitsbewertung einer Antwort kann zwischen der Testversion und der veröffentlichten Version der Wissensdatenbank geringfügig variieren, auch wenn der Inhalt identisch ist. Das liegt daran, dass sich die Inhalte der Test- und der veröffentlichten Wissensdatenbank in verschiedenen Azure Search-Indizes befinden. Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Frage-Antwort-Inhalte Ihrer Wissensdatenbank aus dem Testindex in einen Produktionsindex in Azure Search verschoben. Sehen Sie sich an, wie der Vorgang [Veröffentlichen](../How-To/publish-knowledge-base.md) funktioniert.
+
+Wenn Sie über eine Wissensdatenbank in verschiedenen Regionen verfügen, verwendet jede Region einen eigenen Azure Search-Index. Da verschiedene Indizes verwendet werden, werden die Ergebnisse nicht genau gleich sein. 
 
 
 ## <a name="no-match-found"></a>Keine Übereinstimmung gefunden

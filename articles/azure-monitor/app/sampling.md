@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 10/02/2018
+ms.date: 02/07/2019
 ms.reviewer: vitalyg
 ms.author: mbullwin
-ms.openlocfilehash: 0b56451231f1fda4e5bd156d0aded6e84c9c0162
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 8e9cb570f69eb29887f4f904ba7b2b35548f3771
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54117451"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55965357"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -195,6 +195,63 @@ Sie können einen beliebigen Server verwenden, um Webseiten für die Erstellung 
 Für den Prozentsatz der Stichprobenerstellung wählen Sie einen Prozentsatz, der sich als Bruch darstellen lässt (100/N, wobei N eine Ganzzahl ist).  Andere Werte werden bei der Stichprobenerstellung gegenwärtig nicht unterstützt.
 
 Wenn Sie auch auf dem Server die Stichprobenerstellung mit festem Prozentsatz aktivieren, wird die Stichprobenerstellung zwischen Client und Server synchronisiert, sodass Sie in Search zwischen den verwandten Seitenaufrufen und Anforderungen navigieren können.
+
+## <a name="aspnet-core-sampling"></a>Stichprobenentnahme für ASP.NET Core
+
+Die adaptive Stichprobenerstellung ist standardmäßig für alle ASP.NET Core-Anwendungen aktiviert. Sie können das Verhalten für die Stichprobenentnahme aktivieren oder anpassen.
+
+### <a name="turning-off-adaptive-sampling"></a>Deaktivieren der adaptiven Stichprobenerstellung
+
+Die standardmäßig festgelegte Stichprobenentnahme kann beim Hinzufügen des Application Insights-Diensts in der ```ConfigureServices```-Methode unter Verwendung von ```ApplicationInsightsServiceOptions``` deaktiviert werden:
+
+``` c#
+public void ConfigureServices(IServiceCollection services)
+{
+// ...
+
+var aiOptions = new Microsoft.ApplicationInsights.AspNetCore.Extensions.ApplicationInsightsServiceOptions();
+aiOptions.EnableAdaptiveSampling = false;
+services.AddApplicationInsightsTelemetry(aiOptions);
+
+//...
+}
+```
+
+Mit dem Code oben wird die Stichprobenentnahme deaktiviert. Führen Sie die folgenden Schritte aus, um die Stichprobenentnahme mit weiteren Anpassungsoptionen hinzuzufügen.
+
+### <a name="configure-sampling-settings"></a>Konfigurieren von Einstellungen für die Stichprobenentnahme
+
+Verwenden Sie die Erweiterungsmethoden von ```TelemetryProcessorChainBuilder``` wie unten dargestellt, um das Verhalten für die Stichprobenentnahme anzupassen.
+
+> [!IMPORTANT]
+> Wenn Sie diese Methode zum Konfigurieren der Stichprobenerstellung verwenden, müssen Sie die Einstellungen „aiOptions.EnableAdaptiveSampling = false;“ mit „AddApplicationInsightsTelemetry()“ verwenden.
+
+``` c#
+public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+{
+var configuration = app.ApplicationServices.GetService<TelemetryConfiguration>();
+
+var builder = configuration .TelemetryProcessorChainBuilder;
+// version 2.5.0-beta2 and above should use the following line instead of above. (https://github.com/Microsoft/ApplicationInsights-aspnetcore/blob/develop/CHANGELOG.md#version-250-beta2)
+// var builder = configuration.DefaultTelemetrySink.TelemetryProcessorChainBuilder;
+
+// Using adaptive sampling
+builder.UseAdaptiveSampling(maxTelemetryItemsPerSecond:10);
+ 
+// OR Using fixed rate sampling   
+double fixedSamplingPercentage = 50;
+builder.UseSampling(fixedSamplingPercentage);
+
+builder.Build();
+
+// ...
+}
+
+```
+
+**Bei Verwendung der Methode oben zum Konfigurieren der Stichprobenerstellung müssen Sie ```aiOptions.EnableAdaptiveSampling = false;```-Einstellungen mit „AddApplicationInsightsTelemetry()“ verwenden.**
+
+Andernfalls sind in der TelemetryProcessor-Kette mehrere Prozessoren für die Stichprobenentnahme vorhanden, was zu unerwarteten Folgen führt.
 
 ## <a name="fixed-rate-sampling-for-aspnet-and-java-web-sites"></a>Stichprobenerstellung mit festem Prozentsatz für ASP.NET- und Java-Websites
 Bei der Stichprobenerstellung mit festem Prozentsatz wird der Datenverkehr verringert, der von Ihren Webservern und Webbrowsern gesendet wird. Im Gegensatz zur adaptiven Stichprobenerstellung werden die Telemetriedaten nach einem von Ihnen festgelegten Prozentsatz verringert. Darüber hinaus wird die Stichprobenerstellung für Client und Server synchronisiert, sodass zugehörige Elemente beibehalten werden. Wenn Sie also beispielsweise eine Seitenansicht in Search betrachten, können Sie die dazugehörige Anforderung ermitteln.

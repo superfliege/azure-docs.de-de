@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: jeedes
-ms.openlocfilehash: dc393b8701bd72ea7f9de543de33116ea3cb5653
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: f61520994bdeeab75b6d26731dee9af15b4ccda6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48872277"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209539"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Tutorial: Azure Active Directory-Integration in join.me
+# <a name="tutorial-azure-active-directory-integration-with-joinme"></a>Tutorial: Azure Active Directory-Integration mit join.me
 
 In diesem Tutorial erfahren Sie, wie Sie join.me in Azure Active Directory (Azure AD) integrieren.
 
@@ -99,11 +100,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![image](./media/joinme-tutorial/b1_b2_select_sso.png)
 
-2. Klicken Sie im oberen Bereich des Bildschirms auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
+2. Klicken Sie oben im Bildschirm auf **Modus für einmaliges Anmelden ändern**, um den Modus **SAML** auszuwählen.
 
       ![image](./media/joinme-tutorial/b1_b2_saml_ssso.png)
 
-3. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um das einmalige Anmelden zu aktivieren.
+3. Klicken Sie im Dialogfeld **SSO-Methode auswählen** für den Modus **SAML** auf **Auswählen**, um einmaliges Anmelden zu aktivieren.
 
     ![image](./media/joinme-tutorial/b1_b2_saml_sso.png)
 
@@ -125,11 +126,11 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory** aus, und wählen Sie dann **Benutzer** und anschließend **Alle Benutzer** aus.
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
     ![image](./media/joinme-tutorial/d_users_and_groups.png)
 
-2. Wählen Sie im oberen Bereich des Bildschirms die Option **Neuer Benutzer** aus.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
     ![image](./media/joinme-tutorial/d_adduser.png)
 
@@ -139,7 +140,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
     a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
   
-    b. Geben Sie im Feld **Benutzername** die Zeichenfolge **brittasimon@yourcompanydomain.extension** ein.  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
     Zum Beispiel, BrittaSimon@contoso.com
 
     c. Wählen Sie **Eigenschaften** aus, aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich dann den Wert, der im Feld „Kennwort“ angezeigt wird.
@@ -148,7 +149,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-a-joinme-test-user"></a>Erstellen eines join.me-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in join.me eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem [join.me-Supportteam](https://help.join.me/s/?language) zusammen, um die Benutzer auf der join.me-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in join.me eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem  [join.me-Supportteam](https://help.join.me/s/?language) zusammen, um die Benutzer auf der join.me-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

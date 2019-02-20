@@ -3,21 +3,23 @@ title: Anmerkungen zu dieser Version – Custom Vision Service
 titlesuffix: Azure Cognitive Services
 services: cognitive-services
 author: anrothMSFT
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: anroth
-ms.openlocfilehash: bba65a495963142e8b3201a026dc13a8cfff8e70
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b712f47fe9272e0ae6ccb9ab9847462729434698
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55207359"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894410"
 ---
 # <a name="custom-vision-service-release-notes"></a>Custom Vision Service: Anmerkungen zu dieser Version
 
+## <a name="january-22-2019"></a>22. Januar 2019
+- Unterstützung für neue Azure-Regionen hinzugefügt: „USA, Westen 2“, „USA, Osten“, „USA, Osten 2“, „Europa, Westen“, „Europa, Norden“, „Asien, Südosten“, „Australien, Osten“, „Indien, Mitte“, „Vereinigtes Königreich, Süden“, „Japan, Osten“ und „USA, Norden-Mitte“. Die Unterstützung für „USA, Süden-Mitte“ wird fortgesetzt. 
 
 ## <a name="december-12-2018"></a>12. Dezember 2018
 - Unterstützung für den Export von Objekterkennungsmodellen (Einführung der kompakten Domäne der Objekterkennung).

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 37dd51a60d9ec6e018f58e2cfd593490d126670b
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 3dac11ac4409ddde5264307439533bd583d75a9d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54888650"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993052"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importieren und Exportieren einer DNS-Zonendatei mit der Azure-Befehlszeilenschnittstelle 
 
@@ -116,7 +116,7 @@ Um die DNS-Zone zu überprüfen, nachdem Sie die Datei importiert haben, können
     az network dns record-set list -g myresourcegroup -z contoso.com
     ```
 
-* Sie können die Einträge mithilfe des PowerShell-Cmdlets `Get-AzureRmDnsRecordSet`auflisten.
+* Sie können die Einträge mit dem Azure CLI-Befehl `az network dns record-set ns list` auflisten.
 * Sie können `nslookup` verwenden, um die Namensauflösung für die Einträge zu überprüfen. Da die Zone nicht noch delegiert ist, müssen Sie die richtigen Azure DNS-Namenserver explizit angeben. Im folgenden Beispiel wird gezeigt, wie Sie die Namen der Namenserver abrufen, die der Zone zugewiesen sind. Außerdem wird im Beispiel veranschaulicht, wie Sie den „www“-Eintrag mit `nslookup`abfragen.
 
     ```azurecli
@@ -188,6 +188,6 @@ Sie müssen sich – wie beim Zonenimport – zunächst anmelden, Ihr Abonnement
 
 Um die vorhandene Azure-DNS-Zone **contoso.com** in die Ressourcengruppe **myresourcegroup** in der Datei **contoso.com.txt** (im aktuellen Ordner) zu exportieren, führen Sie `azure network dns zone export` aus. Mit diesem Befehl wird der Azure DNS-Dienst aufgefordert, die Ressourceneintragssätze in der Zone aufzuzählen und die Ergebnisse in eine mit BIND kompatible Zonendatei zu exportieren.
 
-    ```
-    az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
-    ```
+```
+az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
+```

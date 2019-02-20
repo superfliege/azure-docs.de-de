@@ -5,17 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 05/23/2017
+ms.date: 02/06/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.openlocfilehash: 57ba4b35cf470eff040d4a2dca42c60820fa9d9e
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6eaab50360269ac1231db2696ba095b6d8841f74
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079969"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163001"
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>Die Elemente der Einladungs-E-Mail für die B2B-Zusammenarbeit – Azure Active Directory
 
@@ -66,6 +67,14 @@ Die Fußzeile enthält die Microsoft-Unternehmensmarke und informiert den Empfä
 
   ![Der Empfänger muss die Einladung nicht annehmen](media/invitation-email-elements/when-recipient-doesnt-redeem.png)
 
+## <a name="how-the-language-is-determined"></a>So wird die Sprache bestimmt
+Die den Gastbenutzern in der Einladungs-E-Mail angezeigte Sprache richtet sich nach den folgenden Einstellungen. Diese Einstellungen sind in der Reihenfolge ihres Auftretens aufgeführt. Wenn eine Einstellung nicht konfiguriert ist, bestimmt die nächste Einstellung in der Liste die Sprache. 
+- Die **messageLanguage**-Eigenschaft des [invitedUserMessageInfo](https://docs.microsoft.com/graph/api/resources/invitedusermessageinfo?view=graph-rest-1.0)-Objekts, wenn die API zum Erstellen von Einladungen verwendet wird
+-   Die **preferredLanguage**-Eigenschaft, die im [user-Objekt](https://docs.microsoft.com/graph/api/resources/user?view=graph-rest-1.0) des Gasts angegeben ist
+-   Die **Benachrichtigungssprache**, die in den Eigenschaften des Stammmandanten des Gastbenutzers (nur bei Azure AD-Mandanten) festgelegt wurde
+-   Die **Benachrichtigungssprache**, die in den Eigenschaften des Ressourcenmandanten festgelegt ist
+
+Wenn keine dieser Einstellungen konfiguriert wurde, wird als Standardsprache „Englisch (USA)“ verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

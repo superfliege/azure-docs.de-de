@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 1477242e10918a9836ceea15d418fb462e193b1b
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: f367d6e1b1c545bcad0faf030a56fdec2ffafca2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54811739"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989064"
 ---
-# <a name="implement-failover-streaming-with-azure-media-services"></a>Implementieren von Failoverstreaming mit Azure Media Services
+# <a name="implement-failover-streaming-with-media-services-legacy"></a>Implementieren von Failoverstreaming mit Media Services (veraltet)
 
 Diese exemplarische Vorgehensweise zeigt, wie Inhalte (Blobs) aus einem Medienobjekt in ein anderes Medienobjekt kopiert werden, um die Redundanz für On-Demand-Streaming zu verarbeiten. Dieses Szenario ist hilfreich, wenn Sie Azure Content Delivery Network so einrichten möchten, dass ein Failover zwischen zwei Rechenzentren durchgeführt wird, falls es bei einem der Rechenzentren zu einem Ausfall kommt. Diese exemplarische Vorgehensweise verwendet das Azure Media Services-SDK, die Azure Media Services-REST-API und das Azure Storage-SDK, um die folgenden Aufgaben zu erläutern:
 

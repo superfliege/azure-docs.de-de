@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18
-ms.openlocfilehash: aa9eb0b624df29f6fb86402c06436ed7349fa662
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 2a2fafb5da50dbd26786284592cd330df7f5557a
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273866"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113694"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geografisch verteilte Skalierung mit App Service-Umgebungen
 ## <a name="overview"></a>Übersicht
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Anwendungsszenarien, die eine sehr große Skalierung erfordern, können die Computeressourcenkapazität überschreiten, die für eine einzelne Bereitstellung einer App verfügbar ist.  Anwendungen mit Abstimmfunktion, Sportveranstaltungen und im Fernsehen übertragene Unterhaltungssendungen sind Beispiele für Szenarien, die eine extrem hohe Skalierbarkeit erfordern. Anforderungen für eine hohe Skalierbarkeit können durch das horizontale Hochskalieren von Apps erfüllt werden, wobei mehrere App-Bereitstellungen innerhalb einer Region sowie regionsübergreifend erfolgen, um extreme Lastanforderungen zu verarbeiten.
 
 App Service-Umgebungen sind eine ideale Plattform für das horizontale Hochskalieren.  Wenn eine App Service-Umgebungskonfiguration ausgewählt wurde, die eine bekannte Anforderungsrate unterstützen kann, können Entwickler nach Bedarf zusätzliche App Service-Umgebungen bereitstellen, um eine gewünschte Höchstlastkapazität zu erreichen.
@@ -43,10 +46,10 @@ Im weiteren Verlauf dieses Themas werden die Schritte zum Einrichten einer verte
 ## <a name="planning-the-topology"></a>Planen der Topologie
 Vor der Erstellung einer verteilten App ist es hilfreich, über einige Informationen zu verfügen.
 
-* **Benutzerdefinierte Domäne für die App:**   Wie lautet der Name der benutzerdefinierten Domäne, mit dem Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne *www.scalableasedemo.com*
-* **Traffic Manager-Domäne:**   Ein Domänenname muss ausgewählt werden, wenn Sie ein [Azure Traffic Manager-Profil][AzureTrafficManagerProfile] erstellen.  Dieser Name wird mit dem Suffix *trafficmanager.net* kombiniert, um einen Domäneneintrag zu registrieren, der von Traffic Manager verwaltet wird.  Für die Beispiel-App ist der ausgewählte Name *scalable-ase-demo*.  Der vollständige Domänenname, der von Traffic Manager verwaltet wird, lautet also *scalable-ase-demo.trafficmanager.net*.
-* **Strategie für die Skalierung der App:**   Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt?  Über mehrere Regionen?  Eine Kombination beider Ansätze?  Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann.  Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird.  Da Kunden aus mehr als 15 öffentlichen Azure-Regionen auswählen können, ist tatsächlich die Erstellung einer weltweiten, enorm skalierbaren Anwendung möglich.  Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
-* **Benennungskonvention für die App Service-Umgebungen:**   Jede App Service-Umgebung erfordert einen eindeutigen Namen.  Mit mehr als einer oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen.  Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet.  Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
+* **Benutzerdefinierte Domäne für die App:**  Wie lautet der Name der benutzerdefinierten Domäne, mit dem Kunden auf die App zugreifen?  Für die Beispiel-App lautet der Name der benutzerdefinierten Domäne *www.scalableasedemo.com*
+* **Traffic Manager-Domäne:**  Ein Domänenname muss ausgewählt werden, wenn Sie ein [Azure Traffic Manager-Profil][AzureTrafficManagerProfile] erstellen.  Dieser Name wird mit dem Suffix *trafficmanager.net* kombiniert, um einen Domäneneintrag zu registrieren, der von Traffic Manager verwaltet wird.  Für die Beispiel-App ist der ausgewählte Name *scalable-ase-demo*.  Der vollständige Domänenname, der von Traffic Manager verwaltet wird, lautet also *scalable-ase-demo.trafficmanager.net*.
+* **Strategie für die Skalierung der App:**  Wird die Anwendung über mehrere App Service-Umgebungen in einer Region verteilt?  Über mehrere Regionen?  Eine Kombination beider Ansätze?  Die Entscheidung sollte darauf basieren, woher der Kundendatenverkehr erwartet wird, aber auch darauf, wie gut der Rest der Back-End-Infrastruktur zur Unterstützung einer App skaliert werden kann.  Bei einer zu 100 % statusfreien Anwendung kann eine App beispielsweise hochgradig skaliert werden, indem eine Kombination von mehreren App Service-Umgebungen pro Azure-Region verwendet und dies mit App Service-Umgebungen, die in mehreren Azure-Regionen bereitgestellt sind, multipliziert wird.  Da Kunden aus mehr als 15 öffentlichen Azure-Regionen auswählen können, ist tatsächlich die Erstellung einer weltweiten, enorm skalierbaren Anwendung möglich.  Für die Beispiel-App in diesem Artikel wurden drei App Service-Umgebungen in einer einzelnen Azure-Region (USA (Mitte/Süden)) erstellt.
+* **Benennungskonvention für die App Service-Umgebungen:**  Jede App Service-Umgebung muss über einen eindeutigen Namen verfügen.  Mit mehr als einer oder zwei App Service-Umgebungen ist es hilfreich, über eine Benennungskonvention zu verfügen, um die Identifizierung der einzelnen App Service-Umgebungen zu vereinfachen.  Für die Beispiel-App wurde eine einfache Benennungskonvention verwendet.  Die Namen der drei App Service-Umgebungen sind *fe1ase*, *fe2ase* und *fe3ase*.
 * **Benennungskonvention für die Apps:**  Da mehrere Instanzen der App bereitgestellt werden, ist ein Name für jede Instanz der bereitgestellten App erforderlich.  Eine sehr praktische, aber wenig bekannte Funktion von App Service-Umgebungen ist, dass der gleiche App-Name in mehreren App Service-Umgebungen verwendet werden kann.  Da jede App Service-Umgebung ein eindeutiges Domänensuffix aufweist, können Entwickler den gleichen App-Namen in jeder Umgebung verwenden.  Ein Entwickler kann Apps beispielsweise wie folgt benennen: *myapp.foo1.p.azurewebsites.net*, *myapp.foo2.p.azurewebsites.net*, *myapp.foo3.p.azurewebsites.net* usw.  Bei der Beispiel-App hat jedoch jede Instanz der App auch einen eindeutigen Namen.  Die verwendeten Namen für die App-Instanzen sind *webfrontend1*, *webfrontend2*, und *webfrontend3*.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>Einrichten des Traffic Manager-Profils
@@ -68,13 +71,13 @@ Der Parameter *TrafficRoutingMethod* definiert die Lastenausgleichsrichtlinie, d
 
 Dem erstellten Profil werden alle App-Instanzen als native Azure-Endpunkte hinzugefügt.  Der folgende Code ruft einen Verweis auf die einzelnen Front-End-Web-Apps ab und fügt die Apps anschließend unter Verwendung des *TargetResourceId* -Parameters jeweils als Traffic Manager-Endpunkt hinzu.
 
-    $webapp1 = Get-AzureRMWebApp -Name webfrontend1
+    $webapp1 = Get-AzWebApp -Name webfrontend1
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend1 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp1.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp2 = Get-AzureRMWebApp -Name webfrontend2
+    $webapp2 = Get-AzWebApp -Name webfrontend2
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend2 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp2.Id –EndpointStatus Enabled –Weight 10
 
-    $webapp3 = Get-AzureRMWebApp -Name webfrontend3
+    $webapp3 = Get-AzWebApp -Name webfrontend3
     Add-AzureTrafficManagerEndpointConfig –EndpointName webfrontend3 –TrafficManagerProfile $profile –Type AzureEndpoints -TargetResourceId $webapp3.Id –EndpointStatus Enabled –Weight 10
 
     Set-AzureTrafficManagerProfile –TrafficManagerProfile $profile

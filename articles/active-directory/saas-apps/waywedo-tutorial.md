@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: jeedes
-ms.openlocfilehash: bc415ec7c577e221a1ab5af585dff5b4fc9ab7dc
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 5dc6d8e2cf7ac4786f30484325406a1fe696dff3
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259596"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165126"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-way-we-do"></a>Tutorial: Azure Active Directory-Integration mit Way We Do
 
@@ -198,7 +199,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in Way We Do. Way We Do unterstützt die Just-in-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Way We Do ein neuer Benutzer erstellt.
 
 > [!Note]
-> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Way We Do-Clientsupportteam](mailto:support@waywedo.com) in Verbindung.
+> Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das  [Way We Do-Clientsupportteam](mailto:support@waywedo.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

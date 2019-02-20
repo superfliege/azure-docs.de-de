@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 269ea0162f85c7bd632e0528680fc8b0e2885aa9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4536048db4abc25decf1dbf02c75833c570e41af
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818123"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118206"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB-Bindungen für Azure Functions 2.x
 
@@ -992,7 +992,7 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, Docume
 
 Dieser Abschnitt enthält die folgenden Beispiele, die ein einzelnes Dokument lesen, indem ein ID-Wert aus verschiedenen Quellen angegeben wird:
 
-* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-string-javascript)
+* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-json-javascript)
 * [HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge](#http-trigger-look-up-id-from-query-string-javascript)
 * [HTTP-Trigger: Suchen der ID in Routendaten](#http-trigger-look-up-id-from-route-data-javascript)
 * [Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“](#queue-trigger-get-multiple-docs-using-sqlquery-javascript)
@@ -1200,7 +1200,7 @@ Der JavaScript-Code sieht wie folgt aus:
 
 Dieser Abschnitt enthält die folgenden Beispiele, die ein einzelnes Dokument lesen, indem ein ID-Wert aus verschiedenen Quellen angegeben wird:
 
-* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-string-python)
+* [Warteschlangentrigger: Suchen der ID in JSON-Code](#queue-trigger-look-up-id-from-json-python)
 * [HTTP-Trigger: Suchen der ID in einer Abfragezeichenfolge](#http-trigger-look-up-id-from-query-string-python)
 * [HTTP-Trigger: Suchen der ID in Routendaten](#http-trigger-look-up-id-from-route-data-python)
 * [Warteschlangentrigger: Abrufen mehrerer Dokumente unter Verwendung von „SqlQuery“](#queue-trigger-get-multiple-docs-using-sqlquery-python)
@@ -2288,7 +2288,7 @@ Der Attributkonstruktor akzeptiert den Datenbanknamen und den Sammlungsnamen. We
     }
 ```
 
-Ein vollständiges Beispiel finden Sie unter [Ausgabe: C#-Beispiel](#output---c-example).
+Ein vollständiges Beispiel finden Sie unter „Ausgabe: C#-Beispiel“.
 
 ## <a name="output---configuration"></a>Ausgabe: Konfiguration
 

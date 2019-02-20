@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 02/07/2019
 ms.author: juliako
-ms.openlocfilehash: d176152429ecac1ed4e570533f1bc0426cc7655f
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a5a4205c97e4db25d5d0a92472610364d912b278
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767451"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55963436"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist
 
@@ -40,7 +40,7 @@ Azure Media Services v3 ist über ein Azure Resource Manager-Manifest im globale
 * [Azure-Geografien](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="region-code-name"></a>Name des Regionscodes 
+### <a name="region-code-name"></a>Name des Regionscodes 
 
 Wenn Sie den Parameter **location** festlegen müssen, müssen Sie den Regionscodenamen als **location**-Wert angeben. Sie können die folgende Zeile in der [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) ausführen, um den Codenamen der Region abzurufen, in der sich Ihr Konto befindet und an die Ihr Aufruf weitergeleitet werden soll:
 
@@ -62,6 +62,42 @@ Verwenden Sie für die Azure-Region „USA, Westen 2“ (unten angezeigt) beispi
       "subscriptionId": null
     }
 ```
+
+## <a name="endpoints"></a>Endpunkte  
+
+Die folgenden Endpunkte sind wichtig für Verbindungen mit Media Services-Konten aus verschiedenen nationalen Azure-Clouds.
+
+### <a name="global-azure"></a>Globale Azure-Umgebung
+
+|Endpunkte ||
+| --- | --- | 
+| Azure Resource Manager |  `https://management.azure.com/` |
+| Authentication | `https://login.microsoftonline.com/` | 
+| Zielgruppe | `https://management.core.windows.net/` |
+
+### <a name="azure-government"></a>Azure Government
+
+|Endpunkte||
+| --- | --- | 
+| Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
+| Authentication | `https://login.microsoftonline.us/` | 
+| Zielgruppe | `https://management.core.usgovcloudapi.net/` |
+
+### <a name="azure-germany"></a>Azure Deutschland
+
+| Endpunkte ||
+| --- | --- |  
+| Azure Resource Manager | `https://management.cloudapi.de/` |
+| Authentication | `https://login.microsoftonline.de/` |
+| Zielgruppe | `https://management.core.cloudapi.de/`|
+
+### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+
+|Endpunkte||
+| --- | --- | 
+| Azure Resource Manager | `https://management.chinacloudapi.cn/` |
+| Authentication | `https://login.chinacloudapi.cn/` |
+| Zielgruppe |  `https://management.core.chinacloudapi.cn/` |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

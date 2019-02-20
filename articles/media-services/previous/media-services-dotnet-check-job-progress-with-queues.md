@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 5ddee0ca94535688a0634ef8575f3aedad649a43
-ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
+ms.openlocfilehash: a863915ceef437957170d87ac4cc452d651a8dab
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51037493"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994946"
 ---
-# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Warteschlangenspeicher zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET
+# <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net-legacy"></a>Verwenden von Azure Queue Storage zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET (veraltet)
+
 Beim Ausführen von Codierungsaufträgen ist es nützlich, deren Status nachverfolgen zu können. Sie können Media Services zur Übermittlung von Benachrichtigungen an [Azure Queue Storage](../../storage/storage-dotnet-how-to-use-queues.md) konfigurieren. Sie können den Status des Auftrags überwachen, indem Sie Benachrichtigungen aus Queue Storage abrufen. 
 
 Auf die an den Warteschlangenspeicher übermittelten Nachrichten kann von überall auf der Welt aus zugegriffen werden. Die Benachrichtigungsarchitektur von Queue Storage ist zuverlässig und hochgradig skalierbar. Das Abrufen von Nachrichten aus Queue Storage wird gegenüber anderen Methoden empfohlen.
@@ -338,7 +339,7 @@ namespace JobNotification
 }
 ```
 
-Das vorherige Beispiel erzeugt die folgende Ausgabe: Ihre Werte können davon abweichen.
+Das Beispiel oben generiert die folgende Ausgabe: Die Werte können variieren.
 
     Created assetFile BigBuckBunny.mp4
     Upload BigBuckBunny.mp4

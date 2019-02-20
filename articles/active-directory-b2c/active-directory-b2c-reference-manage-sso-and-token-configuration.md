@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/09/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2ef37e9661139b0b1d24ddc005df7bf338397803
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c0f5be7fd77ae195b66f8a8fb052ab8573d48171
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163805"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55856358"
 ---
 # <a name="manage-sso-and-token-customization-using-custom-policies-in-azure-active-directory-b2c"></a>Verwalten von SSO und der Tokenanpassung mit benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -52,7 +52,18 @@ Im vorstehenden Beispiel werden die folgenden Werte festgelegt:
 - **Lebensdauer des Aktualisierungstokens:** Der Wert für die Lebensdauer des Aktualisierungstokens wird mit dem Metadatenelement **refresh_token_lifetime_secs** festgelegt. Der Standardwert beträgt 1.209.600 Sekunden (14 Tage).
 - **Lebensdauer für gleitendes Fenster des Aktualisierungstokens:** Wenn Sie eine Gültigkeitsdauer für das gleitende Fenster des Aktualisierungstokens festlegen möchten, legen Sie den Wert des Metadatenelements **rolling_refresh_token_lifetime_secs** fest. Der Standardwert ist 7.776.000 (90 Tage). Falls Sie keine Gültigkeitsdauer für das gleitende Fenster erzwingen möchten, ersetzen Sie das Element durch `<Item Key="allow_infinite_rolling_refresh_token">True</Item>`.
 - **Ausstelleranspruch (iss):** Der Ausstelleranspruch (iss) wird mit dem Metadatenelement **IssuanceClaimPattern** festgelegt. Die gültigen Werte sind `AuthorityAndTenantGuid` und `AuthorityWithTfp`.
-- **Festlegen des Anspruchs zur Darstellung der Richtlinien-ID:** Die Optionen zum Festlegen dieses Werts sind `TFP` (Vertrauensframework-Richtlinie) und `ACR` (Authentifizierungskontext-Referenz). Der empfohlene Wert ist `TFP`. Legen Sie für **AuthenticationContextReferenceClaimPattern** den Wert `None` fest. Fügen Sie im Element **OutputClaims** das folgende Element hinzu:
+- **Festlegen des Anspruchs zur Darstellung der Richtlinien-ID:** Die Optionen zum Festlegen dieses Werts sind `TFP` (Vertrauensframework-Richtlinie) und `ACR` (Authentifizierungskontext-Referenz). Der empfohlene Wert ist `TFP`. Legen Sie für **AuthenticationContextReferenceClaimPattern** den Wert `None` fest. 
+
+    Fügen Sie im **ClaimsSchema**-Element dieses Element hinzu: 
+    
+    ```XML
+    <ClaimType Id="trustFrameworkPolicy">
+      <DisplayName>Trust framework policy name</DisplayName>
+      <DataType>string</DataType>
+    </ClaimType>
+    ```
+    
+    Fügen Sie im **OutputClaims**-Element dieses Element hinzu:
     
     ```XML
     <OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />

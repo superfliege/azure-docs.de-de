@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/29/2019
+ms.date: 02/07/2019
 ms.author: alkohli
-ms.openlocfilehash: 34e7a578fb04b617221376f5d1065997b12d2613
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0265de5b224e62d188fe6e3b9322d5c2e3f77fa1
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55302120"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55883133"
 ---
 # <a name="azure-data-box-gateway-preview-release-notes"></a>Anmerkungen zu dieser Vorschauversion von Azure Data Box Gateway
 
@@ -52,9 +52,8 @@ Die folgende Tabelle enthält eine Zusammenfassung der bekannten Probleme in die
 | **7.** |Aktualisieren | Berechtigungen und Zugriffssteuerungslisten (ACLs) werden über einen Aktualisierungsvorgang hinaus nicht beibehalten.  | |
 | **8.** |Kopieren | Beim Kopieren von Daten wird folgender Fehler ausgegeben:  Der angeforderte Vorgang konnte aufgrund einer Dateisystemeinschränkung nicht ausgeführt werden.  |Dieser Fehler tritt auf, wenn der mit der Datei verknüpfte alternative Datenstrom 128 KB überschreitet (Höchstwert für ReFS).  |
 | **9.** |Symbolische Links |Symbolische Verknüpfungen werden nicht unterstützt.  |Symbolische Verknüpfungen mit Verzeichnissen führen dazu, dass Verzeichnisse niemals als offline markiert werden. Infolgedessen wird möglicherweise kein graues Kreuz auf den Verzeichnissen angezeigt, mit dem gekennzeichnet wird, dass die Verzeichnisse offline sind und alle zugehörigen Inhalte vollständig nach Azure hochgeladen wurden. |
-| **10.** |Onlinehilfe |Die Links des Typs „Hilfe“ im Azure-Portal sind möglicherweise nicht mit der Dokumentation verknüpft.|Diese Links werden in der allgemein verfügbaren Version funktionieren. |
-
-
+| **10.** |Freigaben |Die Aktualisierung eines vorhandenen Containers mit Seitenblobs in einer Freigabe für Blockblobs (oder umgekehrt) führt bei Dateiänderung zu Uploadfehlern.  |Dieses Verhalten tritt beim Ausführen der folgenden Schritte auf: <li> Erstellen einer Freigabe für Blockblobs auf dem Gerät. </li><li> Zuordnen der Freigabe zu einem vorhandenen Cloudcontainer mit Seitenblobs.</li><li>Aktualisieren der Freigabe. </li><li>Ändern einiger der aktualisierten Dateien, die in der Cloud bereits als Seitenblobs gespeichert sind.</li> Uploadfehler werden angezeigt. |
+| **11.** |Onlinehilfe |Die Links des Typs „Hilfe“ im Azure-Portal sind möglicherweise nicht mit der Dokumentation verknüpft.|Diese Links werden in der allgemein verfügbaren Version funktionieren. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

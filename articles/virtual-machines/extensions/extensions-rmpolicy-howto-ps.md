@@ -13,18 +13,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 82b01cec892f15f7f85f6b5f822475114b5b73c6
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434988"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980872"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Windows-Computern einzuschränken
 
 Wenn Sie die Verwendung oder Installation von bestimmten Erweiterungen auf Ihren virtuellen Windows-Computern verhindern möchten, können Sie mit PowerShell eine Azure-Richtlinie zum Einschränken von Erweiterungen für virtuelle Computer innerhalb einer Ressourcengruppe erstellen. 
 
-Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständig auf die neueste Version aktualisiert wird. Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial mindestens Version 3.6 des Azure PowerShell-Moduls verwenden. Führen Sie ` Get-Module -ListAvailable AzureRM` aus, um die Version zu finden. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. 
+Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständig auf die neueste Version aktualisiert wird. 
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
@@ -97,13 +99,13 @@ Wenn Sie fertig sind, drücken die **STRG + O** und dann die **EINGABETASTE** zu
 
 ## <a name="create-the-policy"></a>Erstellen der Richtlinie
 
-Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzureRmPolicyDefinition](/powershell/module/azurerm.resources/new-azurermpolicydefinition).
+Eine Richtliniendefinition ist ein Objekt, mit dem die Konfiguration gespeichert wird, die Sie verwenden möchten. Die Richtliniendefinition verwendet die Regeln und Parameterdateien zum Definieren der Richtlinie. Erstellen Sie eine Richtliniendefinition mithilfe des Cmdlets [New-AzPolicyDefinition](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicydefinition).
 
  Die Richtlinienregeln und Parameter sind die Dateien, die Sie erstellt und als JSON-Dateien in Ihrer Cloud Shell gespeichert haben.
 
 
 ```azurepowershell-interactive
-$definition = New-AzureRmPolicyDefinition `
+$definition = New-AzPolicyDefinition `
    -Name "not-allowed-vmextension-windows" `
    -DisplayName "Not allowed VM Extensions" `
    -description "This policy governs which VM extensions that are explicitly denied."   `
@@ -116,13 +118,13 @@ $definition = New-AzureRmPolicyDefinition `
 
 ## <a name="assign-the-policy"></a>Zuweisen der Richtlinie
 
-In diesem Beispiel wird die Richtlinie mit [New-AzureRMPolicyAssignment](/powershell/module/azurerm.resources/new-azurermpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
+In diesem Beispiel wird die Richtlinie mit [New-AzPolicyAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azpolicyassignment) einer Ressourcengruppe zugewiesen. Alle in der Ressourcengruppe **myResourceGroup** erstellten virtuellen Computer werden nicht in der Lage sein, die VM Access Agent- oder Custom Script-Erweiterungen zu installieren. 
 
-Rufen Sie mit dem [Get-AzureRMSubscription | Format-Table](/powershell/module/azurerm.profile/get-azurermsubscription)-Cmdlet Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel verwendeten benutzen.
+Rufen Sie mit dem Cmdlet [Get-AzSubscription | Format-Table](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription) Ihre Abonnement-ID ab, die Sie anstelle der im Beispiel angegebenen ID verwenden.
 
 ```azurepowershell-interactive
 $scope = "/subscriptions/<subscription id>/resourceGroups/myResourceGroup"
-$assignment = New-AzureRMPolicyAssignment `
+$assignment = New-AzPolicyAssignment `
    -Name "not-allowed-vmextension-windows" `
    -Scope $scope `
    -PolicyDefinition $definition `
@@ -139,10 +141,10 @@ $assignment
 
 ## <a name="test-the-policy"></a>Testen der Richtlinie
 
-Versuchen Sie, die VM Access-Erweiterung zu verwenden, um die Richtlinie zu testen. Bei Folgendem sollte ein Fehler mit der Meldung „Set-AzureRmVMAccessExtension: Die Ressource ‚myVMAccess‘ wurde durch eine Richtlinie abgelehnt“ auftreten.
+Versuchen Sie, die VM Access-Erweiterung zu verwenden, um die Richtlinie zu testen. Bei Folgendem sollte ein Fehler mit der Meldung „Set-AzVMAccessExtension: Die Ressource ‚myVMAccess‘ wurde durch eine Richtlinie abgelehnt“ auftreten.
 
 ```azurepowershell-interactive
-Set-AzureRmVMAccessExtension `
+Set-AzVMAccessExtension `
    -ResourceGroupName "myResourceGroup" `
    -VMName "myVM" `
    -Name "myVMAccess" `
@@ -154,13 +156,13 @@ Im Portal sollte bei der Änderung des Kennworts ein Fehler auftreten mit der �
 ## <a name="remove-the-assignment"></a>Entfernen der Zuweisung
 
 ```azurepowershell-interactive
-Remove-AzureRMPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
+Remove-AzPolicyAssignment -Name not-allowed-vmextension-windows -Scope $scope
 ```
 
 ## <a name="remove-the-policy"></a>Entfernen der Richtlinie
 
 ```azurepowershell-interactive
-Remove-AzureRmPolicyDefinition -Name not-allowed-vmextension-windows
+Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>Nächste Schritte

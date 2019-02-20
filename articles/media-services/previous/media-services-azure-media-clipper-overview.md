@@ -6,17 +6,18 @@ keywords: Clip;Schneiden;Subclip;Codierung;Medien
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 0fc04fb64e6d34c46f20b4ba5ff8a1ffc8da9c31
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 9d306bc3b9e206e5f21f9c16c0cd32bc599f1b6d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237909"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003158"
 ---
-# <a name="create-clips-with-azure-media-clipper"></a>Erstellen von Clips mit Azure Media Clipper
+# <a name="create-clips-with-azure-media-clipper"></a>Erstellen von Clips mit Azure Media Clipper 
+
 Azure Media Clipper ist eine kostenlose JavaScript-Bibliothek, mit deren Hilfe Webentwickler ihren Benutzern eine Schnittstelle zum Erstellen von Medienclips bieten können. Dieses Tool lässt sich in jede Webseite integrieren und stellt APIs zum Laden von Medienobjekten und Übermitteln von Schnittaufträgen bereit.
 
 Azure Media Clipper ermöglicht Folgendes:

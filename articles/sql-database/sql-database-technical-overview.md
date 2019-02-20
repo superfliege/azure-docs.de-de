@@ -12,15 +12,15 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f4b72a95c64467ce287d2cb762222d17334aad57
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755424"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982266"
 ---
-# <a name="the-azure-sql-database-service"></a>Der Azure SQL-Datenbank-Dienst
+# <a name="what-is-azure-sql-database-service"></a>Worum handelt es sich beim Azure SQL-Datenbank-Dienst?
 
 SQL-Datenbank ist ein relationaler verwalteter Datenbankdienst in Microsoft Azure für allgemeine Zwecke, der Strukturen wie relationale Daten, JSON, räumliche Daten und XML unterstützt. SQL-Datenbank bietet eine dynamisch skalierbare Leistung und ist in zwei verschiedenen Kaufmodellen verfügbar: im V-Kern-basierten Kaufmodell und im DTU-basierten Kaufmodell. SQL-Datenbank stellt auch Optionen wie z.B. [Columnstore-Indizes](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) für extrem umfangreiche Analysen und Berichte und [In-Memory-OLTP](sql-database-in-memory.md) für aufwendigste Transaktionsverarbeitungen bereit. Microsoft kümmert sich um sämtliche Patches und Updates der SQL-Codebasis und übernimmt damit die Verwaltung der gesamten zugrunde liegenden Infrastruktur.
 
@@ -67,10 +67,10 @@ Dynamische Skalierbarkeit ist nicht dasselbe wie automatische Skalierung. Bei de
 SQL-Datenbank bietet zwei Kaufmodelle:
 
 - Das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) bietet zur Unterstützung von einfachen bis hin zu komplexen Datenbankworkloads eine Mischung aus Compute-, Arbeitsspeicher- und E/A-Ressourcen in drei Diensttarifen. Die Computegrößen der einzelnen Ebenen bieten unterschiedliche Ressourcenzusammenstellungen, denen Sie zusätzliche Speicherressourcen hinzufügen können.
-- Beim [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen.
+- Beim [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) können Sie die Anzahl virtueller Kerne, die Arbeitsspeichermenge sowie Menge und Geschwindigkeit des Speichers auswählen. Mit dem V-Kern-basierten Kaufmodell können Sie auch den [Azure-Hybridvorteil für SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/) nutzen, um Kosten einzusparen. Weitere Informationen zum Azure-Hybridvorteil finden Sie in den [häufig gestellten Fragen](#sql-database-frequently-asked-questions-faq).
 
   > [!IMPORTANT]
-  > Der [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md) befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Zu Testzwecken empfiehlt es sich, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
+  > Der [Diensttarif „Hyperscale“](sql-database-service-tier-hyperscale.md) für Singletons befindet sich derzeit in der öffentlichen Vorschau. In Hyperscale-Datenbanken sollten noch keine Produktionsworkloads ausgeführt werden. Sie können Hyperscale-Datenbanken nicht auf andere Diensttarife aktualisieren. Zu Testzwecken empfiehlt es sich, eine Kopie der aktuellen Datenbank zu erstellen und die Kopie auf den Diensttarif „Hyperscale“ zu aktualisieren.
 
 ### <a name="elastic-pools-to-maximize-resource-utilization"></a>Pools für elastische Datenbanken zum Maximieren der Ressourcenverwendung
 
@@ -195,6 +195,41 @@ SQL-Datenbank sorgt für einfachere und produktivere Abläufe beim Erstellen und
   Ein kostenloser, herunterladbarer Open-Source-Code-Editor für Windows, macOS und Linux, der Erweiterungen unterstützt – etwa die [mssql-Erweiterung](https://aka.ms/mssql-marketplace) zum Abfragen von Microsoft SQL Server, Azure SQL-Datenbank und SQL Data Warehouse.
 
 SQL-Datenbank unterstützt das Erstellen von Anwendungen mit Python, Java, Node.js, PHP, Ruby und .NET unter macOS, Linux und Windows. SQL-Datenbank unterstützt dieselben [Verbindungsbibliotheken](sql-database-libraries.md) wie SQL Server.
+
+## <a name="sql-database-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu SQL-Datenbank
+
+### <a name="what-is-the-current-version-of-sql-database"></a>Was ist die aktuelle Version von SQL-Datenbank?
+
+Die aktuelle Version von SQL-Datenbank ist V12. Version V11 wurde eingestellt.
+
+### <a name="can-i-control-when-patching-downtime-occurs"></a>Kann ich den Zeitpunkt der Ausfallzeiten beim Patchen steuern?
+
+ Nein. Die Auswirkungen vom Patchen sind im Allgemeinen nicht merklich, wenn Sie in Ihrer App [Wiederholungslogik einsetzen](sql-database-develop-overview.md#resiliency). Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure SQL-Datenbank finden Sie unter [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank](sql-database-planned-maintenance.md).
+
+### <a name="azure-hybrid-benefit-questions"></a>Fragen zum Azure-Hybridvorteil
+
+#### <a name="are-there-dual-use-rights-with-azure-hybrid-benefit-for-sql-server"></a>Gibt es für den Azure-Hybridvorteil für SQL Server Dualnutzungsrechte?
+
+Sie verfügen für die Lizenz 180 Tage lang über Dualnutzungsrechte, um sicherzustellen, dass die Migrationen reibungslos durchgeführt werden können. Nach Ablauf der 180 Tage kann die SQL Server-Lizenz nur in der Cloud in SQL-Datenbank verwendet werden, und lokal und in der Cloud gelten keine Dualnutzungsrechte mehr.
+
+#### <a name="how-does-azure-hybrid-benefit-for-sql-server-differ-from-license-mobility"></a>Wie unterscheidet sich der Azure-Hybridvorteil für SQL Server von License Mobility?
+
+Derzeit bieten wir License Mobility-Vorteile für SQL Server-Kunden mit Software Assurance an, in deren Rahmen die Neuzuweisung von Lizenzen zu freigegebenen Drittanbieterservern möglich ist. Dieser Vorteil kann für Azure IaaS und AWS EC2 verwendet werden.
+Der Azure-Hybridvorteil für SQL Server unterscheidet sich in zwei wichtigen Bereichen von License Mobility:
+
+- Er ist mit wirtschaftlichen Vorteilen in Bezug auf das Verlagern von hochgradig virtualisierten Workloads nach Azure verbunden. SQL EE-Kunden können in Azure für die SKU „Universell“ für jeden Kern, der lokal vorhanden ist, vier Kerne für hochgradig virtualisierte Anwendungen erhalten. Bei License Mobility ergeben sich bei der Verlagerung von virtualisierten Workloads in die Cloud keine besonderen Kostenvorteile.
+- Hierbei ist ein PaaS-Ziel in Azure (eine verwaltete SQL-Datenbank-Instanz) vorhanden, das mit der lokalen SQL Server-Instanz hochgradig kompatibel ist.
+
+#### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Welche spezifischen Rechte gelten für den Azure-Hybridvorteil für SQL Server?
+
+SQL-Datenbank-Kunden sind beim Azure-Hybridvorteil für SQL Server die folgenden Rechte zugeordnet:
+
+|Lizenzspeicherbedarf|Was erhalten Sie beim Azure-Hybridvorteil für SQL Server?|
+|---|---|
+|SQL Server Enterprise Edition – Hauptkunden mit SA|<li>Zahlung des Basistarifs für SKU „Universell“ oder „Unternehmenskritisch“</li><br><li>1 Kern lokal = 4 Kerne in SKU „Universell“</li><br><li>1 Kern lokal = 1 Kern in SKU „Unternehmenskritisch“</li>|
+|SQL Server Standard Edition – Hauptkunden mit SA|<li>Zahlung des Basistarifs nur für SKU „Universell“</li><br><li>1 Kern lokal = 1 Kern in SKU „Universell“</li>|
+|||
+
 
 ## <a name="engage-with-the-sql-server-engineering-team"></a>Kontakt mit dem SQL Server-Entwicklungsteam aufnehmen
 

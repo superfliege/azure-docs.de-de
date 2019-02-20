@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: c3f10e268101cfa5aff6506a64aab98b07fb948a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464380"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998081"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Nutzen eines Azure Machine Learning Studio-Webdiensts
 
@@ -70,7 +70,7 @@ So rufen Sie den API-Schlüssel für einen klassischen Machine Learning-Webdiens
 ## <a id="connect"></a>Herstellen der Verbindung mit einem Machine Learning-Webdienst
 Sie können mit jeder Programmiersprache, die HTTP-Anforderungen und -Antworten unterstützt, eine Verbindung mit einem Machine Learning-Webdienst herstellen. Sie können Beispiele in C#, Python und R auf einer Hilfeseite für den Machine Learning-Webdienst anzeigen.
 
-**Hilfe zur Machine Learning-API** Wenn Sie einen Webdienst bereitstellen, wird Hilfe zur Machine Learning-API erstellt. Weitere Informationen finden Sie unter [Azure Machine Learning – exemplarische Vorgehensweise – Veröffentlichen eines Webdiensts](walkthrough-5-publish-web-service.md).
+**Hilfe zur Machine Learning-API** Wenn Sie einen Webdienst bereitstellen, wird Hilfe zur Machine Learning-API erstellt. Weitere Informationen finden Sie unter [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md).
 Die Machine Learning-API-Hilfeseite enthält Details zu einem Vorhersagewebdienst.
 
 1. Klicken Sie auf den Webdienst, mit dem Sie arbeiten.

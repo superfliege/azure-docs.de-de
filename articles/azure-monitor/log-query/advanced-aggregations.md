@@ -1,6 +1,6 @@
 ---
-title: Erweiterte Aggregationen in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Beschreibt einige der erweiterten Aggregationsoptionen, die für Log Analytics-Abfragen verfügbar sind.
+title: Erweiterte Aggregationen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Beschreibt einige der erweiterten Aggregationsoptionen, die für Azure Monitor-Protokollabfragen verfügbar sind.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 1116d03fc9c2328365b0bde29cf9ea900e58b7ed
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 5e2152397a4a965e6d62f8fafc2a59bf318b4a5e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186360"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005419"
 ---
-# <a name="advanced-aggregations-in-log-analytics-queries"></a>Erweiterte Aggregationen in Log Analytics-Abfragen
+# <a name="advanced-aggregations-in-azure-monitor-log-queries"></a>Erweiterte Aggregationen in Azure Monitor-Protokollabfragen
 
 > [!NOTE]
-> Vor der Durchführung dieser Lektion sollten Sie [Aggregationen in Log Analytics-Abfragen](./aggregations.md) lesen.
+> Vor der Durchführung dieser Lektion sollten Sie [Aggregationen in Azure Monitor-Protokollabfragen](./aggregations.md) lesen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Artikel werden einige der erweiterten Aggregationsoptionen beschrieben, die für Log Analytics-Abfragen verfügbar sind.
+In diesem Artikel werden einige der erweiterten Aggregationsoptionen beschrieben, die für Azure Monitor-Protokollabfragen verfügbar sind.
 
 ## <a name="generating-lists-and-sets"></a>Generieren von Listen und Sätzen
 Sie können mithilfe von `makelist` Daten nach der Reihenfolge der Werte in einer bestimmten Spalte pivotieren. So sollten Sie beispielsweise die Auftragsereignisse untersuchen, die am häufigsten auf Ihren Computern ausgeführt werden. Sie können die Daten im Wesentlichen nach der Reihenfolge der Ereignis-IDs auf den einzelnen Computern pivotieren. 
@@ -181,7 +181,7 @@ WindowsFirewall
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Informationen zur Verwendung der [Data Explorer-Abfragesprache](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Datums- und Uhrzeitvorgänge](datetime-operations.md)

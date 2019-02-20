@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Konfigurieren Sie verschiedene Einstellungen für Texterkennungscontainer für maschinelles Sehen.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: f29bb4ec8154c1d17eef18310037c42426d1522f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6aaf7f7eaeb6d011fc29457a1b58584d6af8ec9
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458651"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984561"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>Konfigurieren von Docker-Containern für die Texterkennung
 
@@ -45,7 +45,7 @@ Diese Einstellung finden Sie hier:
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die `Billing`-Einstellung gibt den Endpunkt-URI der _Maschinelles Sehen_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Maschinelles Sehen_-Ressource in Azure handeln.
+Die `Billing`-Einstellung gibt den Endpunkt-URI der _Maschinelles Sehen_-Ressource in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine _Maschinelles Sehen_-Ressource in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
 
 Diese Einstellung finden Sie hier:
 
@@ -53,7 +53,7 @@ Diese Einstellung finden Sie hier:
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|JA| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
+|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -112,7 +112,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
 
 ### <a name="basic-example"></a>Einfaches Beispiel 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
@@ -122,7 +122,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
 
 ### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \
   Eula=accept \
@@ -133,7 +133,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Texterkennu
 
 ### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-recognize-text \

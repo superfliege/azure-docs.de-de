@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 1960cac28b74980d17f37b4e06e79604e156381e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 540abeed3587959af5ca229f59343774b824547b
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55566236"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55982895"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
@@ -88,7 +88,7 @@ Erfolgreiche Kunden verfügen über sorgfältig ausgearbeitete Pläne, in denen 
 
 Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hierbei handelt es sich nicht um eine vollständige Liste. Ausführlichere Informationen finden Sie in den [nicht unterstützten Features und Konfigurationen](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#unsupported-features-and-configurations).  Es empfiehlt sich, diese technischen Probleme (sofern Sie denn bei Ihnen auftreten) vor der Migration zu beseitigen, um einen möglichst reibungslosen Ablauf zu gewährleisten.
 
-- **Probelauf mit Überprüfung/Vorbereitung/Abbruch:** Der vielleicht wichtigste Schritt für eine erfolgreiche Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager. Die Migrations-API umfasst drei Hauptschritte:  Überprüfung, Vorbereitung und Commit. Bei der Überprüfung wird der Zustand Ihrer klassischen Umgebung gelesen und ein Ergebnis mit allen Problemen zurückzugeben. Da einige Probleme jedoch möglicherweise im Azure Resource Manager-Stapel vorliegen, werden bei der Überprüfung nicht alle Probleme erkannt. Diese Probleme werden im Rahmen der Vorbereitung (dem nächsten Schritt des Migrationsprozesses) ermittelt. Bei der Vorbereitung werden die Metadaten aus dem klassischen Bereitstellungsmodell in Azure Resource Manager migriert, ohne jedoch ein Commit für die Datenbewegung auszuführen. Auf der Seite des klassischen Bereitstellungsmodells wird nichts entfernt oder verändert. Im Rahmen des Probelaufs wird die Migration vorbereitet und die Migrationsvorbereitung anschließend abgebrochen (**kein Commit ausgeführt**). Der Probelauf mit Überprüfung/Vorbereitung/Abbruch dient dazu, alle Metadaten des Azure Resource Manager-Stapels anzuzeigen und zu untersuchen (*programmgesteuert oder im Portal*), sich zu vergewissern, dass alles ordnungsgemäß migriert wird, und ggf. technische Probleme zu beheben.  Außerdem können Sie so die Migrationsdauer besser einschätzen und Ausfallzeiten entsprechend planen.  Das Verfahren mit Überprüfung/Vorbereitung/Abbruch verursacht keinerlei Ausfälle für Benutzer, und die Anwendungsnutzung wird nicht beeinträchtigt.
+- **Probelauf mit Überprüfung/Vorbereitung/Abbruch:** Der vielleicht wichtigste Schritt für eine erfolgreiche Migration vom klassischen Bereitstellungsmodell zu Azure Resource Manager. Die Migrations-API umfasst drei Hauptschritte: Überprüfung, Vorbereitung und Commit. Bei der Überprüfung wird der Zustand Ihrer klassischen Umgebung gelesen und ein Ergebnis mit allen Problemen zurückzugeben. Da einige Probleme jedoch möglicherweise im Azure Resource Manager-Stapel vorliegen, werden bei der Überprüfung nicht alle Probleme erkannt. Diese Probleme werden im Rahmen der Vorbereitung (dem nächsten Schritt des Migrationsprozesses) ermittelt. Bei der Vorbereitung werden die Metadaten aus dem klassischen Bereitstellungsmodell in Azure Resource Manager migriert, ohne jedoch ein Commit für die Datenbewegung auszuführen. Auf der Seite des klassischen Bereitstellungsmodells wird nichts entfernt oder verändert. Im Rahmen des Probelaufs wird die Migration vorbereitet und die Migrationsvorbereitung anschließend abgebrochen (**kein Commit ausgeführt**). Der Probelauf mit Überprüfung/Vorbereitung/Abbruch dient dazu, alle Metadaten des Azure Resource Manager-Stapels anzuzeigen und zu untersuchen (*programmgesteuert oder im Portal*), sich zu vergewissern, dass alles ordnungsgemäß migriert wird, und ggf. technische Probleme zu beheben.  Außerdem können Sie so die Migrationsdauer besser einschätzen und Ausfallzeiten entsprechend planen.  Das Verfahren mit Überprüfung/Vorbereitung/Abbruch verursacht keinerlei Ausfälle für Benutzer, und die Anwendungsnutzung wird nicht beeinträchtigt.
   - Die im Anschluss aufgeführten Punkte müssen vor dem Probelauf behandelt werden. Bei einem Probelauf werden Sie aber auch zuverlässig auf diese Vorbereitungsschritte hingewiesen, falls noch Handlungsbedarf besteht. Bei der Enterprise-Migration hat sich der Probelauf als sichere und praktische Methode zur Gewährleistung der Migrationsbereitschaft erwiesen.
   - Während der Vorbereitungsphase ist die Steuerungsebene (Azure-Verwaltungsvorgänge) für das gesamte virtuelle Netzwerk gesperrt, sodass während des Überprüfungs-/Vorbereitungs-/Abbruchsvorgangs keine Änderungen an den VM-Metadaten vorgenommen werden können.  Die Anwendungsfunktionen (RD, VM-Verwendung usw.) sind davon jedoch nicht betroffen.  Die Benutzer der virtuellen Computer werden den Probelauf nicht bemerken.
 
@@ -131,23 +131,25 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     - Routingtabellen
 
     Die aktuellen Azure Resource Manager-Kontingente können mithilfe der folgenden Befehle mit der neuesten Version von Azure PowerShell überprüft werden:
+    
+    [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
     **Compute***(Kerne, Verfügbarkeitsgruppen)*
 
     ```powershell
-    Get-AzureRmVMUsage -Location <azure-region>
+    Get-AzVMUsage -Location <azure-region>
     ```
 
     **Netzwerk** *(virtuelle Netzwerke, statische öffentliche IP-Adressen, öffentliche IP-Adressen, Netzwerksicherheitsgruppen, Netzwerkschnittstellen, Lastenausgleichsmodule, Routingtabellen)*
 
     ```powershell
-    Get-AzureRmUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
+    Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
     **Storage***(Speicherkonto)*
 
     ```powershell
-    Get-AzureRmStorageUsage
+    Get-AzStorageUsage
     ```
 
 - **Drosselungslimits der Azure Resource Manager-API:** Ab einer gewissen Umgebungsgröße (beispielsweise > 400 virtuelle Computer in einem VNET) werden in Azure Resource Manager unter Umständen die API-Standarddrossellungslimits für Schreibvorgänge (derzeit `1200 writes/hour`) erreicht. Erstellen Sie vor der Migration ein Supportticket, um dieses Limit für Ihr Abonnement zu erhöhen.

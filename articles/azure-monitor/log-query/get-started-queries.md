@@ -1,6 +1,6 @@
 ---
-title: Erste Schritte mit Abfragen in Azure Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten beim Schreiben von Abfragen in Log Analytics.
+title: Erste Schritte mit Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten beim Schreiben von Protokollabfragen in Azure Monitor.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 326e12444067e950b9d6ae0862424589d444b83d
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 599e6b0cd615be7275df127b0b2f174bd8e6c290
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884918"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994884"
 ---
-# <a name="get-started-with-queries-in-log-analytics"></a>Erste Schritte mit Abfragen in Log Analytics
+# <a name="get-started-with-azure-monitor-log-queries"></a>Erste Schritte mit Azure Monitor-Protokollabfragen
 
 
 > [!NOTE]
-> Vor der Durchführung dieses Tutorials sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) lesen.
+> Vor der Durchführung dieses Tutorials sollten Sie [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) lesen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie Azure Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie Azure Monitor-Protokollabfragen schreiben. Es wird Folgendes vermittelt:
 
 - Grundlegendes zur Abfragestruktur
 - Sortieren von Abfrageergebnissen
@@ -43,10 +43,10 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Log Analytics-Abfragen schreiben 
 Abfragen können entweder mit einem Tabellennamen oder dem *search*-Befehl beginnen. Sie sollten mit einem Tabellennamen beginnen, da er einen klaren Gültigkeitsbereich für die Abfrage definiert und die Abfrageleistung und -relevanz der Ergebnisse verbessert.
 
 > [!NOTE]
-> Bei der Azure Log Analytics-Abfragesprache ist die Groß-/Kleinschreibung zu beachten. Programmiersprachen-Schlüsselwörter werden in der Regel in Kleinbuchstaben geschrieben. Verwenden Sie die richtige Schreibweise bei Tabellen- oder Spaltennamen in einer Abfrage, wie im Schemabereich angezeigt wird.
+> Bei der in Azure Monitor verwendeten Data Explorer-Abfragesprache wird die Groß-/Kleinschreibung berücksichtigt. Programmiersprachen-Schlüsselwörter werden in der Regel in Kleinbuchstaben geschrieben. Verwenden Sie die richtige Schreibweise bei Tabellen- oder Spaltennamen in einer Abfrage, wie im Schemabereich angezeigt wird.
 
 ### <a name="table-based-queries"></a>Tabellenbasierte Abfragen
-In Azure Log Analytics werden Daten in Tabellen bestehend aus mehreren Spalten organisiert. Alle Tabellen und Spalten werden im Schemabereich im Analytics-Portal angezeigt. Identifizieren Sie eine Tabelle, die Sie interessiert, und untersuchen Sie dann einen Teil der Daten:
+In Azure Monitor werden Protokolldaten in Tabellen bestehend aus mehreren Spalten organisiert. Alle Tabellen und Spalten werden im Schemabereich in Log Analytics im Analytics-Portal angezeigt. Identifizieren Sie eine Tabelle, die Sie interessiert, und untersuchen Sie dann einen Teil der Daten:
 
 ```Kusto
 SecurityEvent
@@ -164,7 +164,7 @@ SecurityEvent
 
 Im vorherigen Beispiel wird die folgende Ausgabe generiert:
 
-![Log Analytics-Projektergebnisse](media/get-started-queries/project.png)
+![Abfragen von Projektergebnissen](media/get-started-queries/project.png)
 
 Sie können über **project** auch Spalten umbenennen und neue definieren. Im folgenden Beispiel wird mit „project“ Folgendes ausgeführt:
 
@@ -236,7 +236,7 @@ Perf
 
 Um die Ausgabe übersichtlicher zu gestalten, wählen Sie das jeweilige Zeitdiagramm aus, das den verfügbaren Arbeitsspeicher im Laufe der Zeit darstellt:
 
-![Log Analytics-Speicher im Laufe der Zeit](media/get-started-queries/chart.png)
+![Abfragen des Speichers über einen Zeitraum](media/get-started-queries/chart.png)
 
 
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2018
 ms.author: jeedes
-ms.openlocfilehash: 932a832d4717a788f2d9adfd98ce1ba0c4ca07a1
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: dd69616fa544c1d13e14eb8eebb92adb6350d9e8
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39507511"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56217529"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dossier"></a>Tutorial: Azure Active Directory-Integration mit Dossier
 
@@ -176,7 +177,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-dossier-test-user"></a>Erstellen eines Dossier-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Dossier einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur Dossier-Plattform ggf. vom [Dossier-Supportteam](mailto:support@intellimedia.ca) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Dossier einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der Dossier-Plattform ggf. vom  [Dossier-Supportteam](mailto:support@intellimedia.ca) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

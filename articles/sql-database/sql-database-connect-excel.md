@@ -1,6 +1,6 @@
 ---
-title: Verbinden von Excel mit SQL-Datenbank | Microsoft Docs
-description: Erfahren Sie, wie Sie Microsoft Excel mit Azure SQL-Datenbank in der Cloud verbinden. Importieren Sie Daten zwecks Berichterstellung und Untersuchung in Excel.
+title: Verbinden von Excel mit einem Singleton in Azure SQL-Datenbank | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie Microsoft Excel mit einem Singleton in Azure SQL-Datenbank verbinden. Importieren Sie Daten zwecks Berichterstellung und Untersuchung in Excel.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,21 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 552293b402c697073587e887522d2daa3e33cdb6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/12/2019
+ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754579"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237010"
 ---
-# <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einer Azure SQL-Datenbank und Erstellen eines Berichts
+# <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einem Singleton in Azure SQL-Datenbank und Erstellen eines Berichts
 
-Stellen Sie eine Verbindung von Excel mit einer SQL-Datenbank in der Cloud her, damit Sie Daten importieren und Tabellen und Diagramme basierend auf den Werten in der Datenbank erstellen können. In diesem Tutorial richten Sie die Verbindung zwischen Excel und einer Datenbanktabelle ein, speichern die Datei, in der die Daten und Verbindungsinformationen für Excel vorgehalten werden, und erstellen aus den Datenbankwerten dann ein PivotChart.
+Stellen Sie eine Verbindung für Excel mit einem Singleton in Azure SQL-Datenbank her, damit Sie Daten importieren und Tabellen und Diagramme basierend auf den Werten in der Datenbank erstellen können. In diesem Tutorial richten Sie die Verbindung zwischen Excel und einer Datenbanktabelle ein, speichern die Datei, in der die Daten und Verbindungsinformationen für Excel vorgehalten werden, und erstellen aus den Datenbankwerten dann ein PivotChart.
 
-Bevor Sie beginnen können, benötigen Sie eine SQL-Datenbank in Azure. Wenn Sie keine haben, finden Sie unter [Erstellen Ihrer ersten SQL-Datenbank](sql-database-single-database-get-started.md) eine Datenbank mit Beispieldaten, die in wenigen Minuten startklar ist. In diesem Artikel importieren Sie Beispieldaten aus diesem Artikel in Excel, doch Sie können ähnliche Schritte auch mit Ihren eigenen Daten befolgen.
+Bevor Sie beginnen können, benötigen Sie einen Singleton. Wenn Sie keinen haben, finden Sie unter [Erstellen eines Singletons](sql-database-single-database-get-started.md) und [Erstellen einer IP-Firewall auf Serverebene](sql-database-server-level-firewall-rule.md) einen Singleton mit Beispieldaten, der in wenigen Minuten einsatzbereit ist.
+
+In diesem Artikel importieren Sie Beispieldaten aus diesem Artikel in Excel, doch Sie können ähnliche Schritte auch mit Ihren eigenen Daten befolgen.
 
 Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Excel 2016](https://products.office.com/)verwendet.
 

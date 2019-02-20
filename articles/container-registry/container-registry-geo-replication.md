@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview-article
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: 784174c1fb2427441e0ed1a13b147d2440539fa9
-ms.sourcegitcommit: 0bb8db9fe3369ee90f4a5973a69c26bff43eae00
+ms.openlocfilehash: a83cf6b37a28ec38165778faa7a9ecc266cce7bd
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48870337"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858256"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -26,14 +26,18 @@ Eine Registrierung mit Georeplikation bietet folgende Vorteile:
 * Keine zusätzlichen Ausgangsgebühren, da Images aus einer lokalen, replizierten Registrierung in der gleichen Region wie Ihr Containerhost abgerufen werden
 * Zentrale Verwaltung einer Registrierung über mehrere Regionen hinweg
 
+> [!NOTE]
+> Für den Fall, dass Sie Kopien von Containerimages in mehreren Azure-Containerregistrierungen verwalten müssen, unterstützt die Azure-Containerregistrierung auch [den Import von Images](container-registry-import-images.md). Beispielsweise können Sie in einem DevOps-Workflow ein Image aus einer Entwicklungsregistrierung in eine Produktionsregistrierung importieren, ohne dazu Docker-Befehle verwenden zu müssen.
+>
+
 ## <a name="example-use-case"></a>Beispiel eines Anwendungsfalls
-Contoso betreibt eine öffentlich zugängliche Website in den USA, Kanada und Europa. Um diese Märkte mit lokalen und netzwerknahen Inhalten zu bedienen, betreibt Contoso auf [Azure Container Service](/azure/container-service/kubernetes/) (ACS) basierende Kubernetes-Cluster in den Regionen „USA, Westen“, „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“. Die Websiteanwendung, die als Docker-Image bereitgestellt ist, verwendet in allen Regionen den gleichen Code und das gleiche Image. Der für die jeweilige Region lokale Inhalt wird aus einer Datenbank abgerufen, die in jeder Region individuell bereitgestellt wird. Jede regionale Bereitstellung hat eine eigene Konfiguration für Ressourcen wie die lokale Datenbank.
+Contoso betreibt eine öffentlich zugängliche Website in den USA, Kanada und Europa. Um diese Märkte mit lokalen und netzwerknahen Inhalten zu bedienen, betreibt Contoso [Azure Kubernetes Service](/azure/aks/)-Cluster (AKS) in den Regionen „USA, Westen“, „USA, Osten“, „Kanada, Mitte“ und „Europa, Westen“. Die Websiteanwendung, die als Docker-Image bereitgestellt ist, verwendet in allen Regionen den gleichen Code und das gleiche Image. Der für die jeweilige Region lokale Inhalt wird aus einer Datenbank abgerufen, die in jeder Region individuell bereitgestellt wird. Jede regionale Bereitstellung hat eine eigene Konfiguration für Ressourcen wie die lokale Datenbank.
 
 Das Bereitstellungsteam befindet sich in Seattle im US-Bundesstaat Washington und nutzt das Rechenzentrum USA, Westen.
 
 ![Übertragung per Push in mehrere Registrierungen](media/container-registry-geo-replication/before-geo-replicate.png)<br />*Übertragung per Push in mehrere Registrierungen*
 
-Vor der Nutzung der Georeplikationsfunktionen verfügte Contoso über eine Registrierung in der Region „USA, Westen“ und eine zusätzliche Registrierung in der Region „Europa, Westen“. Um diese verschiedenen Regionen zu versorgen, musste das Entwicklungsteam Images per Push in zwei verschiedene Registrierungen übertragen.
+Vor der Nutzung der Georeplikationsfunktionen verfügte Contoso über eine Registrierung in der Region „USA, Westen“ und eine zusätzliche Registrierung in der Region „Europa, Westen“. Um diese verschiedenen Regionen zu versorgen, übertrug das Entwicklungsteam Images per Push in zwei verschiedene Registrierungen.
 
 ```bash
 docker push contoso.azurecr.io/public/products/web:1.2

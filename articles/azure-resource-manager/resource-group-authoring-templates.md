@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 07f4d170ec6f9d71ea3ecdabd88f4438fb7c1c69
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 509c9cbe3a4c2f930c9fdfda186d78118dbe4b80
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745588"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237840"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen
 
@@ -46,7 +46,7 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 | Parameter |Nein  |Werte, die bei der Bereitstellung angegeben werden, um die Bereitstellung der Ressourcen anpassen. |
 | variables |Nein  |Werte, die als JSON-Fragmente in der Vorlage verwendet werden, um Vorlagensprachausdrücke zu vereinfachen. |
 | functions |Nein  |Benutzerdefinierte Funktionen, die in der Vorlage verfügbar sind. |
-| ressourcen |Ja |Ressourcentypen, die in einer Ressourcengruppe bereitgestellt oder aktualisiert werden. |
+| ressourcen |Ja |Ressourcentypen, die in einer Ressourcengruppe oder einem Abonnement bereitgestellt oder aktualisiert werden. |
 | outputs |Nein  |Werte, die nach der Bereitstellung zurückgegeben werden. |
 
 Jedes Element weist Eigenschaften auf, die Sie festlegen können. Das folgende Beispiel zeigt die vollständige Syntax für eine Vorlage:
@@ -217,7 +217,7 @@ In Ihrer Vorlage können Sie Ihre eigenen Funktionen erstellen. Diese Funktionen
 Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkungen:
 
 * Die Funktion kann nicht auf Variablen zugreifen.
-* Die Funktion kann nicht auf Vorlagenparameter zugreifen. Das bedeutet, dass die [Parameterfunktion](resource-group-template-functions-deployment.md#parameters) auf Funktionsparameter beschränkt ist.
+* Die Funktion kann nur Parameter verwenden, die in der Funktion definiert sind. Bei Verwendung der [parameters-Funktion](resource-group-template-functions-deployment.md#parameters) innerhalb einer benutzerdefinierten Funktion sind Sie auf die Parameter für diese Funktion beschränkt.
 * Die Funktion kann keine anderen benutzerdefinierten Funktionen aufrufen.
 * Die Funktion kann nicht die [Referenzfunktion](resource-group-template-functions-resource.md#reference) verwenden.
 * Für die Parameter der Funktion können keine Standardwerte verwendet werden.
@@ -298,9 +298,23 @@ Im Ausgabenabschnitt legen Sie Werte fest, die von der Bereitstellung zurückgeg
 
 Weitere Informationen finden Sie im [Abschnitt „Outputs“ von Azure Resource Manager-Vorlagen](resource-manager-templates-outputs.md).
 
-## <a name="comments"></a>Kommentare
+<a id="comments" />
 
-Es gibt mehrere Möglichkeiten, um Kommentare zu Ihrer Vorlage hinzuzufügen.
+## <a name="comments-and-metadata"></a>Kommentare und Metadaten
+
+Es gibt mehrere Möglichkeiten, um Kommentare und Metadaten in Ihrer Vorlage hinzuzufügen.
+
+Sie können ein `metadata`-Objekt fast überall in Ihrer Vorlage hinzufügen. Resource Manager ignoriert das Objekt, aber Sie werden von Ihrem JSON-Editor möglicherweise gewarnt, dass die Eigenschaft nicht gültig ist. Definieren Sie im Objekt die erforderlichen Eigenschaften.
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+        "comments": "This template was developed for demonstration purposes.",
+        "author": "Example Name"
+    },
+```
 
 Fügen Sie für **Parameter** ein `metadata`-Objekt mit einer `description`-Eigenschaft hinzu.
 
@@ -342,18 +356,6 @@ Fügen Sie für **Ressourcen** ein `comments`-Element oder ein Metadatenobjekt h
     "properties": {}
   }
 ]
-```
-
-Sie können ein `metadata`-Objekt fast überall in Ihrer Vorlage hinzufügen. Resource Manager ignoriert das Objekt, aber Sie werden von Ihrem JSON-Editor möglicherweise gewarnt, dass die Eigenschaft nicht gültig ist. Definieren Sie im Objekt die erforderlichen Eigenschaften.
-
-```json
-{
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "metadata": {
-        "comments": "This template was developed for demonstration purposes.",
-        "author": "Example Name"
-    },
 ```
 
 Fügen Sie für **Ausgaben** dem Ausgabewert ein Metadatenobjekt hinzu.

@@ -11,20 +11,24 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: carlrab
 manager: cgronlun
-ms.date: 01/31/2019
-ms.openlocfilehash: e2159e7cc59830c3d0d10f1c5b9697ab5b45b666
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/06/2019
+ms.openlocfilehash: b50fd21e4d3325875134d2e2e9caeed9f8db75d0
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824929"
+ms.locfileid: "55875602"
 ---
 # <a name="machine-learning-services-with-r-in-azure-sql-database-preview"></a>Machine Learning Services (mit R) in Azure SQL-Datenbank (Vorschauversion)
 
 Machine Learning Services ist eine Funktion von Azure SQL-Datenbank zum Ausführen von R-Skripts in der Datenbank. Die Funktion umfasst Microsoft-R-Pakete für leistungsstarke Predictive Analytics und maschinelles Lernen. Die relationalen Daten können über gespeicherte Prozeduren, R-Anweisungen in T-SQL-Skripts oder R-Code mit T-SQL in R-Skripts verwendet werden.
 
-> [!NOTE]
-> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der öffentlichen Vorschau. Sie können sich unten [für die Vorschau registrieren](#signup).
+> [!IMPORTANT]
+> Machine Learning Services (mit R) in Azure SQL-Datenbank befindet sich derzeit in der Public Preview für Singletons und Pools für elastische Datenbanken im V-Kern-basierten Kaufmodell für die Diensttarife **Universell** und **Unternehmenskritisch**. In dieser ersten öffentlichen Vorschauversion werden weder der Diensttarif **Hyperscale** noch die Bereitstellungsoption **Verwaltete Instanz** unterstützt. R ist derzeit die einzige unterstützte Sprache. Momentan ist keine Unterstützung für Python vorhanden. 
+>
+> Die Vorschau ist derzeit in den folgenden Regionen verfügbar: „Europa, Westen“, „Europa, Norden“, „USA, Westen 2“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Asien, Südosten“, „Indien, Süden“ und „Australien, Südosten“. 
+>
+> Sie können sich unten [für die Vorschau registrieren](#signup).
 
 ## <a name="what-you-can-do-with-r"></a>Einsatzmöglichkeiten für R
 
@@ -55,10 +59,6 @@ Führen Sie die folgenden Schritte aus, um sich für die öffentliche Vorschauve
 2. Senden Sie unter [sqldbml@microsoft.com](mailto:sqldbml@microsoft.com) eine E-Mail an Microsoft, um sich für die öffentliche Vorschauversion zu registrieren. Die öffentliche Vorschauversion von Machine Learning Services (mit R) in SQL-Datenbank ist standardmäßig nicht aktiviert.
 
 Nachdem Sie für das Programm registriert wurden, führt Microsoft für Sie das Onboarding für die öffentliche Vorschauversion durch und aktiviert R für Ihre vorhandenen oder neuen Datenbanken.
-
-Machine Learning Services (mit R) in SQL-Datenbank ist derzeit nur im V-Kern-basierten Kaufmodell für die Diensttarife **Universell** und **Unternehmenskritisch** für Bereitstellungen als Singleton oder als Pool für elastische Datenbanken verfügbar. In dieser ersten öffentlichen Vorschauversion werden weder der Diensttarif **Hyperscale** noch die Bereitstellungsoption **Verwaltete Instanz** unterstützt.
-
-R ist derzeit die einzige unterstützte Sprache. Momentan ist keine Unterstützung für Python vorhanden. Die Vorschau ist anfänglich in den folgenden Regionen verfügbar: „Europa, Westen“, „Europa, Norden“, „USA, Westen 2“, „USA, Osten“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „Kanada, Mitte“, „Asien, Südosten“, „Indien, Süden“ und „Australien, Südosten“. Weitere Regionen werden später hinzugefügt.
 
 Verwenden Sie Machine Learning Services mit R während der öffentlichen Vorschauphase nicht für Produktionsworkloads.
 

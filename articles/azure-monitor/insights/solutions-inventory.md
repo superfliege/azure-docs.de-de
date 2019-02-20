@@ -13,27 +13,29 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 06/26/2018
 ms.author: bwren
-ms.openlocfilehash: 48f1789d4909a1c3af9e9ca01d0b9d0a8e6e09f8
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: aac58cc0887c566c7377edf08f5a86e2d12cdf28
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55299639"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993231"
 ---
 # <a name="data-collection-details-for-management-solutions-in-azure"></a>Ausführliche Informationen zu Datensammlungen für Verwaltungslösungen in Azure
-Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Log Analytics.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
+Dieser Artikel enthält eine Liste mit verfügbaren [Verwaltungslösungen](solutions.md) von Microsoft sowie Links zur entsprechenden ausführlichen Dokumentation.  Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Datensammlung in Azure Monitor.  Anhand der Informationen in diesem Artikel können Sie sich über die verschiedenen verfügbaren Lösungen informieren sowie den Datenfluss und die Verbindungsanforderungen für unterschiedliche Verwaltungslösungen nachvollziehen. 
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="list-of-management-solutions"></a>Liste mit Verwaltungslösungen
 
-Die folgende Tabelle enthält die von Microsoft bereitgestellten [Verwaltungslösungen](solutions.md) in Azure. Ein Eintrag in der Spalte bedeutet, dass die Lösung diese Methode verwendet, um Daten in Log Analytics zu sammeln.  Enthalten die Spalten einer Lösung keine Einträge, werden Daten aus einem anderen Azure-Dienst direkt in Log Analytics geschrieben. Über den Link der jeweiligen Lösung gelangen Sie zur detaillierten Dokumentation mit weiteren Informationen.
+Die folgende Tabelle enthält die von Microsoft bereitgestellten [Verwaltungslösungen](solutions.md) in Azure. Ein Eintrag in der Spalte bedeutet, dass die Lösung diese Methode verwendet, um Daten in Azure Monitor zu sammeln.  Wenn die Spalten einer Lösung keine Einträge enthalten, werden Daten aus einem anderen Azure-Dienst direkt in Azure Monitor geschrieben. Über den Link der jeweiligen Lösung gelangen Sie zur detaillierten Dokumentation mit weiteren Informationen.
 
 Erläuterung der Spalten:
 
-- **Microsoft Monitoring Agent**: Agent, der unter Windows und Linux zum Ausführen des Managements Packs (SCOM) sowie zum Ausführen von Verwaltungslösungen (Azure) verwendet wird. In dieser Konfiguration ist der Agent direkt mit Log Analytics und mit keiner Operations Manager-Verwaltungsgruppe verbunden. 
-- **Operations Manager**: Gleicher Agent wie Microsoft Monitoring Agent. In dieser Konfiguration besteht eine [Verbindung mit einer Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md), die wiederum mit Log Analytics verbunden ist. 
+- **Microsoft Monitoring Agent**: Agent, der unter Windows und Linux zum Ausführen des Managements Packs (SCOM) sowie zum Ausführen von Verwaltungslösungen (Azure) verwendet wird. In dieser Konfiguration ist der Agent direkt mit Azure Monitor und mit keiner Operations Manager-Verwaltungsgruppe verbunden. 
+- **Operations Manager**: Gleicher Agent wie Microsoft Monitoring Agent. In dieser Konfiguration besteht eine [Verbindung mit einer Operations Manager-Verwaltungsgruppe](../../azure-monitor/platform/om-agents.md), die wiederum mit Azure Monitor verbunden ist. 
 -  **Azure Storage**: Die Lösung sammelt Daten aus einem Azure-Speicherkonto. 
 - **Operations Manager erforderlich?**: Für die Datensammlung durch die Verwaltungslösung wird eine verbundene Operations Manager-Verwaltungsgruppe benötigt. 
-- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten**: Wenn der Agent [mit einer SCOM-Verwaltungsgruppe verbunden](../../azure-monitor/platform/om-agents.md) ist, werden Daten vom Verwaltungsserver an Log Analytics gesendet. In diesem Fall muss der Agent nicht direkt mit Log Analytics verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Log Analytics gesendet, auch wenn der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist. Dazu muss er über das [Log Analytics-Gateway](../../azure-monitor/platform/gateway.md) mit Log Analytics kommunizieren können.
+- **Über Verwaltungsgruppe gesendete Operations Manager-Agent-Daten:** Wenn der Agent [mit einer SCOM-Verwaltungsgruppe verbunden](../../azure-monitor/platform/om-agents.md) ist, werden Daten vom Verwaltungsserver an Azure Monitor gesendet. In diesem Fall muss der Agent nicht direkt mit Azure Monitor verbunden sein. Falls diese Spalte keinen Eintrag enthält, werden Daten vom Agent direkt an Azure Monitor gesendet, auch wenn der Agent mit einer SCOM-Verwaltungsgruppe verbunden ist. Dazu muss er über das [Log Analytics-Gateway](../../azure-monitor/platform/gateway.md) mit Azure Monitor kommunizieren können.
 - **Sammlungshäufigkeit**: Gibt an, wie häufig Daten von der Verwaltungslösung gesammelt werden. 
 
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 2e986e26f22e41e1cbf7b8d1c1af694522a01d06
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821574"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56169971"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -253,11 +253,11 @@ Die Tunnelerzwingung ist eine benutzerdefinierte Routingkonfiguration, bei der f
 >
 > Wenn Sie zum Steuern des Datenverkehrs keine Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, können Sie diesen Abschnitt ignorieren.
 
-Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure erlauben, HDInsight zu erreichen. Sie müssen auch Datenverkehr zwischen VMs innerhalb des Subnetzes zulassen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
+Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den Integritäts- und Verwaltungsdiensten von Azure zu HDInsight-Clustern an Port 443 zulassen. Sie müssen auch Datenverkehr zwischen VMs innerhalb des Subnetzes zulassen. Ermitteln Sie anhand der folgenden Schritte die IP-Adressen, die zugelassen werden müssen:
 
 1. Datenverkehr von den folgenden IP-Adressen muss immer zugelassen werden:
 
-    | IP-Adresse | Zulässiger Port | Richtung |
+    | Quell-IP-Adresse | Zielport | Richtung |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | Eingehend |
     | 23.99.5.239 | 443 | Eingehend |
@@ -269,7 +269,7 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
     > [!IMPORTANT]  
     > Wenn die verwendete Azure-Region nicht aufgeführt ist, verwenden Sie nur die vier IP-Adressen aus Schritt 1.
 
-    | Country | Region | Zulässige IP-Adressen | Zulässiger Port | Richtung |
+    | Country | Region | Zulässige Quell-IP-Adressen | Zulässiger Zielport | Richtung |
     | ---- | ---- | ---- | ---- | ----- |
     | Asien | Asien, Osten | 23.102.235.122</br>52.175.38.134 | 443 | Eingehend |
     | &nbsp; | Asien, Südosten | 13.76.245.160</br>13.76.136.249 | 443 | Eingehend |
@@ -306,15 +306,13 @@ Wenn Sie Netzwerksicherheitsgruppen oder benutzerdefinierte Routen verwenden, m�
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
 
+Lassen Sie für ausgehende NSG-Regeln Datenverkehr von allen Quellen im VNET an die oben genannten Adressen als „Ziel-IP-Adressen“ zu.
+
+Wenn Sie benutzerdefinierte Routen (User-Defined Routes, UDRs) verwenden, sollten Sie eine Route angeben und ausgehenden Datenverkehr vom VNET an die oben genannten IP-Adressen zulassen und den nächsten Hop dabei auf „Internet“ festlegen.
+    
 ## <a id="hdinsight-ports"></a>Erforderliche Ports
 
-Wenn Sie planen, das virtuelle Netzwerk mit einer **Firewall** abzusichern und über bestimmte Ports auf den Cluster zuzugreifen, sollten Sie Datenverkehr an den für Ihr Szenario erforderlichen Ports zulassen. Standardmäßig müssen Sie diese Ports nicht auf die Whitelist setzen:
-
-* 53
-* 443
-* 1433
-* 11000-11999
-* 14000-14999
+Wenn Sie eine **Firewall** verwenden und extern über bestimmte Ports auf den Cluster zugreifen möchten, müssen Sie möglicherweise Datenverkehr an den für Ihr Szenario erforderlichen Ports zulassen. Standardmäßig ist keine spezifische Whitelist von Ports erforderlich, solange der im vorherigen Abschnitt erläuterte Azure-Verwaltungsdatenverkehr für Cluster an Port 443 zulässig ist.
 
 Eine Liste mit Ports für bestimmte Dienste finden Sie im Dokument [Ports für Apache Hadoop-Dienste in HDInsight](hdinsight-hadoop-port-settings-for-services.md).
 

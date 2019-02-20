@@ -15,17 +15,19 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: 2613584e336243128067a76ce424e640ebdf94e0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4fb31721da679b21fa311340269cf07f93cd903
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817325"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981263"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Behandeln von Problemen bei Remotedesktopverbindungen mit einem virtuellen Azure-Computer
 Eine Verbindung über das Remotedesktopprotokoll (RDP) mit Ihrem Windows-basierten virtuellen Azure-Computer (VM, Virtual Machine) kann aus verschiedenen Gründen fehlschlagen, sodass Sie nicht auf Ihren virtuellen Computer zugreifen können. Das Problem kann mit dem Remotedesktopdienst auf dem virtuellen Computer, der Netzwerkverbindung oder dem Remotedesktopclient auf Ihrem Hostcomputer zusammenhängen. Dieser Artikel führt Sie durch einige der am häufigsten verwendeten Methoden, um die RDP-Verbindungsprobleme zu beheben. 
 
 Wenn Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie Azure-Experten im [MSDN Azure-Forum oder im Stack Overflow-Forum](https://azure.microsoft.com/support/forums/)Fragen stellen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie **Support erhalten**aus.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 <a id="quickfixrdp"></a>
 
@@ -107,7 +109,7 @@ Sofern dies noch nicht erfolgt ist, [installieren und konfigurieren Sie die neue
 In den folgenden Beispielen werden Variablen wie `myResourceGroup`, `myVM` und `myVMAccessExtension` verwendet. Ersetzen Sie diese Variablennamen und -orte durch Ihre eigenen Werte.
 
 > [!NOTE]
-> Zum Zurücksetzen der Benutzeranmeldeinformationen und der RDP-Konfiguration wird das PowerShell-Cmdlet [Set AzureRmVMAccessExtension](/powershell/module/azurerm.compute/set-azurermvmaccessextension) verwendet. In den folgenden Beispielen wird im Rahmen des Prozesses der Name `myVMAccessExtension` angegeben. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Der Name wird in der Ausgabe im Abschnitt „Erweiterungen“ angezeigt.
+> Zum Zurücksetzen der Benutzeranmeldeinformationen und der RDP-Konfiguration wird das PowerShell-Cmdlet [Set-AzVMAccessExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmaccessextension) verwendet. In den folgenden Beispielen wird im Rahmen des Prozesses der Name `myVMAccessExtension` angegeben. Wenn Sie zuvor VMAccessAgent verwendet haben, können Sie den Namen der vorhandenen Erweiterung mithilfe von `Get-AzVM -ResourceGroupName "myResourceGroup" -Name "myVM"` abrufen, um die Eigenschaften des virtuellen Computers zu überprüfen. Der Name wird in der Ausgabe im Abschnitt „Erweiterungen“ angezeigt.
 
 Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtuellen Computer erneut herzustellen. Sollte sich immer noch keine Verbindung herstellen lassen, versuchen Sie es mit dem nächsten Schritt.
 
@@ -116,7 +118,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Im folgenden Beispiel wird die RDP-Verbindung auf einem virtuellen Computer namens `myVM` am Standort `WestUS` in der Ressourcengruppe namens `myResourceGroup` zurückgesetzt:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location Westus -Name "myVMAccessExtension"
     ```
 2. **Überprüfen Sie die Netzwerksicherheitsgruppen-Regeln.** In diesem Problembehandlungsschritt wird überprüft, ob Ihre Netzwerksicherheitsgruppe eine Regel enthält, die RDP-Datenverkehr zulässt. Der Standardport für RDP ist der TCP-Port 3389. Unter Umständen wird bei der Erstellung Ihres virtuellen Computers nicht automatisch eine Regel zum Zulassen von RDP-Datenverkehr erstellt.
@@ -124,7 +126,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Weisen Sie zunächst alle Konfigurationsdaten für Ihre Netzwerksicherheitsgruppe der Variablen `$rules` zu. Im folgenden Beispiel werden Informationen zur Netzwerksicherheitsgruppe namens `myNetworkSecurityGroup` in der Ressourcengruppe namens `myResourceGroup` abgerufen:
    
     ```powershell
-    $rules = Get-AzureRmNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
+    $rules = Get-AzNetworkSecurityGroup -ResourceGroupName "myResourceGroup" `
         -Name "myNetworkSecurityGroup"
     ```
    
@@ -164,7 +166,7 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Aktualisieren Sie nun die Anmeldeinformationen auf Ihrem virtuellen Computer. Im folgenden Beispiel werden die Anmeldeinformationen auf einem virtuellen Computer namens `myVM` am Standort `WestUS` in der Ressourcengruppe namens `myResourceGroup` aktualisiert:
    
     ```powershell
-    Set-AzureRmVMAccessExtension -ResourceGroupName "myResourceGroup" `
+    Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" `
         -VMName "myVM" -Location WestUS -Name "myVMAccessExtension" `
         -UserName $cred.GetNetworkCredential().Username `
         -Password $cred.GetNetworkCredential().Password
@@ -174,14 +176,14 @@ Versuchen Sie nach jedem Problembehandlungsschritt, die Verbindung mit dem virtu
     Im folgenden Beispiel wird der virtuelle Computer namens `myVM` in der Ressourcengruppe namens `myResourceGroup` neu gestartet:
    
     ```powershell
-    Restart-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
+    Restart-AzVM -ResourceGroup "myResourceGroup" -Name "myVM"
     ```
 5. **Stellen Sie den virtuellen Computer erneut bereit.** In diesem Problembehandlungsschritt wird Ihr virtueller Computer auf einen anderen Host innerhalb von Azure neu bereitgestellt, um mögliche Plattform- oder Netzwerkprobleme zu beheben.
    
     Im folgenden Beispiel wird der virtuelle Computer namens `myVM` am Standort `WestUS` in der Ressourcengruppe namens `myResourceGroup` erneut bereitgestellt:
    
     ```powershell
-    Set-AzureRmVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
+    Set-AzVM -Redeploy -ResourceGroupName "myResourceGroup" -Name "myVM"
     ```
 
 6. **Überprüfen Sie das Routing**. Vergewissern Sie sich mit der Funktion [Nächster Hop](../../network-watcher/network-watcher-check-next-hop-portal.md) von Network Watcher, dass eine Route nicht das Weiterleiten des Datenverkehrs an einen bzw. von einem virtuellen Computer verhindert. Sie können auch die effektiven Routen überprüfen, um alle effektiven Routen für eine Netzwerkschnittstelle anzuzeigen. Weitere Informationen finden Sie unter [Problembehandlung bei Routen mit Azure PowerShell](../../virtual-network/diagnose-network-routing-problem.md).

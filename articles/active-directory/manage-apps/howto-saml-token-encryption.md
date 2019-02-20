@@ -15,12 +15,13 @@ ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: celested
 ms.reviewer: paulgarn
-ms.openlocfilehash: 0e2b6e29e159970784ab8c321bbc8c16e96b60e3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d3a2c79fd46b9c14f1bbb2794581746f6ff45cd6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757339"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56179619"
 ---
 # <a name="how-to-configure-azure-ad-saml-token-encryption-preview"></a>Gewusst wie: Konfigurieren der Azure AD-SAML-Tokenverschlüsselung (Vorschau)
 
@@ -33,19 +34,19 @@ Die Verschlüsselung der SAML-Assertionen zwischen Azure AD und der Anwendung bi
 
 Selbst ohne Tokenverschlüsselung werden Azure AD-SAML-Token niemals als Klartext über das Netzwerk weitergegeben. In Azure AD muss die Tokenanforderung/-antwort über verschlüsselte HTTPS/TLS-Kanäle durchgeführt werden, sodass die Kommunikation zwischen Identitätsanbieter, Browser und Anwendung über verschlüsselte Verbindungen erfolgt. Wägen Sie die Vorteile der Tokenverschlüsselung und den Aufwand für die Verwaltung zusätzlicher Zertifikate gegeneinander ab.   
 
-Um die Tokenverschlüsselung zu konfigurieren, müssen Sie eine X509-Zertifikatdatei mit dem öffentlichen Schlüssel in das Azure AD-Anwendungsobjekt hochladen, das die Anwendung repräsentiert. Um das X509-Zertifikat zu erhalten, können Sie es aus der Anwendung selbst herunterladen oder vom Anwendungsanbieter beziehen, sofern der Anwendungsanbieter Verschlüsselungsschlüssel bereitstellt. Falls die Anwendung die Bereitstellung eines privaten Schlüssels anfordert, kann dieser mithilfe eines Kryptografietools erstellt werden. Hierbei wird der private Schlüssel in den Schlüsselspeicher der Anwendung hochgeladen, und das zugehörige Zertifikat mit dem öffentlichen Schlüssel wird in Azure AD hochgeladen.
+Um die Tokenverschlüsselung zu konfigurieren, müssen Sie eine X.509-Zertifikatsdatei mit dem öffentlichen Schlüssel in das Azure AD-Anwendungsobjekt hochladen, das die Anwendung repräsentiert. Um das X.509-Zertifikat zu erhalten, können Sie es aus der Anwendung selbst herunterladen oder vom Anwendungsanbieter beziehen, sofern der Anwendungsanbieter Verschlüsselungsschlüssel bereitstellt. Falls die Anwendung die Bereitstellung eines privaten Schlüssels anfordert, kann dieser mithilfe eines Kryptografietools erstellt werden. Hierbei wird der private Schlüssel in den Schlüsselspeicher der Anwendung hochgeladen, und das zugehörige Zertifikat mit dem öffentlichen Schlüssel wird in Azure AD hochgeladen.
 
 Azure AD verwendet AES-256 zum Verschlüsseln der SAML-Assertionendaten.
 
 ## <a name="configure-saml-token-encryption"></a>Konfigurieren der SAML-Tokenverschlüsselung
 
-Führen Sie zur SAML-Tokenverschlüsselung die folgenden Schritte aus.
+Führen Sie zur SAML-Tokenverschlüsselung die folgenden Schritte aus:
 
 1. Rufen Sie ein Zertifikat mit einem öffentlichen Schlüssel ab, das einem in der Anwendung konfigurierten privaten Schlüssel entspricht.
 
-    Erstellen Sie ein asymmetrisches Schlüsselpaar für die Verschlüsselung. Oder, wenn die Anwendung einen öffentlichen Schlüssel für die Verschlüsselung bereitstellt, befolgen Sie die Anwendungsanweisungen zum Herunterladen des X509-Zertifikats.
+    Erstellen Sie ein asymmetrisches Schlüsselpaar für die Verschlüsselung. Wenn die Anwendung einen öffentlichen Schlüssel für die Verschlüsselung bereitstellt, befolgen Sie stattdessen die Anwendungsanweisungen zum Herunterladen des X.509-Zertifikats.
 
-    Der öffentliche Schlüssel sollte in einer X509-Zertifikatdatei im CER-Format gespeichert sein.
+    Der öffentliche Schlüssel sollte in einer X.509-Zertifikatsdatei im CER-Format gespeichert sein.
 
     Wenn die Anwendung einen Schlüssel verwendet, den Sie für Ihre Instanz erstellen, folgen Sie den Anwendungsanweisungen zum Installieren des privaten Schlüssels, mit dem die Anwendung Token von Ihrem Azure AD-Mandanten entschlüsselt.
 
@@ -66,9 +67,9 @@ Sie können das öffentliche Zertifikat Ihrer Anwendungskonfiguration im Azure-P
     > [!NOTE]
     > Die Option **Tokenverschlüsselung** ist nur für SAML-Anwendungen verfügbar, die über das Blatt **Unternehmensanwendungen** im Azure-Portal eingerichtet wurden – entweder über den Anwendungskatalog oder eine Nicht-Katalog-App. Für andere Anwendungen ist diese Menüoption deaktiviert. Für Anwendungen, die über den Abschnitt **App-Registrierungen** im Azure-Portal registriert wurden, können Sie die Verschlüsselung für SAML-Token mithilfe des Anwendungsmanifests, über Microsoft Graph oder über PowerShell konfigurieren.
 
-1. Wählen Sie auf der Seite **Tokenverschlüsselung** die Option **Zertifikat importieren** aus, um die CER-Datei mit Ihrem öffentlichen X509-Zertifikat zu importieren.
+1. Wählen Sie auf der Seite **Tokenverschlüsselung** die Option **Zertifikat importieren** aus, um die CER-Datei mit Ihrem öffentlichen X.509-Zertifikat zu importieren.
 
-    ![Importieren der CER-Datei mit dem X509-Zertifikat](./media/howto-saml-token-encryption/import-certificate-small.png)
+    ![Importieren der CER-Datei mit dem X.509-Zertifikat](./media/howto-saml-token-encryption/import-certificate-small.png)
 
 1. Nachdem das Zertifikat importiert und der private Schlüssel zur Verwendung auf Anwendungsseite konfiguriert wurde, aktivieren Sie die Verschlüsselung, indem Sie neben dem Fingerabdruckstatus auf **...** klicken und anschließend aus dem Dropdownmenü die Option **Tokenverschlüsselung aktivieren** auswählen.
 
@@ -94,7 +95,7 @@ Wenn Sie ein keyCredential-Objekt mit Graph, PowerShell oder im Anwendungsmanife
 
 ### <a name="to-configure-token-encryption-using-microsoft-graph"></a>So konfigurieren Sie die Tokenverschlüsselung mit Microsoft Graph
 
-1. Aktualisieren Sie die `keyCredentials` der Anwendung mit einem X509-Zertifikat für die Verschlüsselung. Das folgende Beispiel zeigt die erforderliche Vorgehensweise.
+1. Aktualisieren Sie die `keyCredentials` der Anwendung mit einem X.509-Zertifikat für die Verschlüsselung. Das folgende Beispiel zeigt die erforderliche Vorgehensweise.
 
     ```
     Patch https://graph.microsoft.com/beta/applications/<application objectid>

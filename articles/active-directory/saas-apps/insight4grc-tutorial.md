@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Integration von Insight4GRC in Azure Active Directory | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Insight4GRC | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Insight4GRC konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 256550dc6aaa832599747f6fe39c2ca77ed3f8d7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 08913fc2e12026d70976ea8e2169c190378f4054
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441580"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193729"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Tutorial: Integration von Insight4GRC in Azure Active Directory
+# <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>Tutorial: Azure Active Directory-Integration mit Insight4GRC
 
 In diesem Tutorial erfahren Sie, wie Sie Insight4GRC in Azure Active Directory (Azure AD) integrieren.
 
@@ -167,7 +168,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen einer Benutzerin namens Britta Simon in Insight4GRC. Insight4GRC unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Insight4GRC ein neuer Benutzer erstellt.
 
 >[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Supportteam für den Insight4GRC-Client](mailto:support.ss@rsmuk.com) in Verbindung.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das  [Insight4GRC-Clientsupportteam](mailto:support.ss@rsmuk.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -1,5 +1,5 @@
 ---
-title: Ressourcenübergreifende Suche mit Azure Log Analytics | Microsoft Docs
+title: Ressourcenübergreifende Abfragen mit Azure Monitor | Microsoft-Dokumentation
 description: In diesem Artikel wird beschrieben, wie Sie Abfragen für Ressourcen aus mehreren Arbeitsbereichen und für Daten aus einer Application Insights-App in Ihrem Abonnement ausführen können.
 services: log-analytics
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: magoedte
-ms.openlocfilehash: 42191b21faec7bb1929a12e6bc1a724d269acb1d
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: ccc9a74c4e238ebfcab0fc05a3bf825000917843
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298873"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998939"
 ---
-# <a name="perform-cross-resource-log-searches-in-log-analytics"></a>Ausführen ressourcenübergreifender Protokollsuchen in Log Analytics  
+# <a name="perform-cross-resource-log-queries-in-azure-monitor"></a>Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor  
 
-Mit Azure Log Analytics konnten Sie bislang nur Daten innerhalb des aktuellen Arbeitsbereichs analysieren. Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche waren nicht möglich.  Darüber hinaus konnten Sie Telemetrieelemente, die von Ihrer webbasierten Anwendung mit Application Insights gesammelt wurden, nur direkt in Application Insights oder über Visual Studio suchen.  Dadurch wurde auch die gemeinsame native Analyse von Betriebs- und Anwendungsdaten zu einer Herausforderung.   
+Mit Azure Monitor konnten Sie bislang nur Daten innerhalb des aktuellen Arbeitsbereichs analysieren. Abfragen für mehrere in Ihrem Abonnement definierte Arbeitsbereiche waren nicht möglich.  Darüber hinaus konnten Sie Telemetrieelemente, die von Ihrer webbasierten Anwendung mit Application Insights gesammelt wurden, nur direkt in Application Insights oder über Visual Studio suchen.  Dadurch wurde auch die gemeinsame native Analyse von Betriebs- und Anwendungsdaten zu einer Herausforderung.   
 
-Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.  Sie können diese Arten von Abfragen nur in [Log Analytics](portals.md#log-analytics-page) ausführen. Die Anzahl der Ressourcen (Log Analytics-Arbeitsbereiche und Application Insights-App), die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt. 
+Sie können jetzt nicht nur Abfragen über mehrere Log Analytics-Arbeitsbereiche ausführen, sondern auch Daten aus einer bestimmten Application Insights-App in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement in Abfragen einbeziehen. Dies bietet Ihnen eine systemweite Ansicht Ihrer Daten.  Sie können diese Arten von Abfragen nur in [Log Analytics](portals.md) ausführen. Die Anzahl der Ressourcen (Log Analytics-Arbeitsbereiche und Application Insights-App), die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt. 
 
 ## <a name="querying-across-log-analytics-workspaces-and-from-application-insights"></a>Abfragen über mehrere Log Analytics-Arbeitsbereiche und mit Application Insights
 Um einen anderen Arbeitsbereich in der Abfrage anzugeben, verwenden Sie die [*Arbeitsbereichs*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression)-ID, und verwenden Sie für eine App in Application Insights die [*App*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression)-ID.  
@@ -101,9 +101,9 @@ union Update, workspace("contosoretail-it").Update, workspace("b459b4u5-912x-46d
 ```
 
 ## <a name="using-cross-resource-query-for-multiple-resources"></a>Verwenden einer ressourcenübergreifenden Abfrage für mehrere Ressourcen
-Wenn Sie mit ressourcenübergreifenden Abfragen Daten aus mehreren Log Analytics- und Application Insights-Ressourcen korrelieren, kann die Abfrage komplex und schwierig zu verwalten werden. Sie können die Abfragestruktur vereinfachen, indem Sie mithilfe der [Funktionen in Log Analytics](../../azure-monitor/log-query/functions.md) die Abfragelogik von der Bereichsdefinition der Abfrageressourcen trennen. Das folgende Beispiel zeigt, wie Sie mehrere Application Insights-Ressourcen überwachen und die Anzahl fehlgeschlagener Anforderungen anhand des Anwendungsnamens visualisieren können. 
+Wenn Sie mit ressourcenübergreifenden Abfragen Daten aus mehreren Log Analytics-Arbeitsbereichen und Application Insights-Ressourcen korrelieren, kann die Abfrage komplex und schwierig zu verwalten werden. Sie können die Abfragestruktur vereinfachen, indem Sie mithilfe der [Funktionen in Azure Monitor-Protokollabfragen](functions.md) die Abfragelogik von der Bereichsdefinition der Abfrageressourcen trennen. Das folgende Beispiel zeigt, wie Sie mehrere Application Insights-Ressourcen überwachen und die Anzahl fehlgeschlagener Anforderungen anhand des Anwendungsnamens visualisieren können. 
 
-Erstellen Sie wie unten dargestellt eine Abfrage, die auf den Bereich der Application Insights-Ressourcen verweist. Der Befehl `withsource= SourceApp` fügt eine Spalte hinzu, die den Namen der Anwendung angibt, von der das Protokoll gesendet wurde. [Speichern Sie die Abfrage als Funktion](../../azure-monitor/log-query/functions.md#create-a-function) mit dem Alias _applicationsScoping_.
+Erstellen Sie wie unten dargestellt eine Abfrage, die auf den Bereich der Application Insights-Ressourcen verweist. Der Befehl `withsource= SourceApp` fügt eine Spalte hinzu, die den Namen der Anwendung angibt, von der das Protokoll gesendet wurde. [Speichern Sie die Abfrage als Funktion](functions.md#create-a-function) mit dem Alias _applicationsScoping_.
 
 ```Kusto
 // crossResource function that scopes my Application Insights resources
@@ -131,4 +131,5 @@ applicationsScoping
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich in der [Referenz zur Log Analytics-Suche](https://docs.microsoft.com/azure/log-analytics/query-language/kusto) über alle Optionen der Abfragesyntax, die in Log Analytics zur Verfügung stehen.    
+- Eine Übersicht über Protokollabfragen und die Strukturierung von Azure Monitor-Protokolldaten erhalten Sie unter [Analysieren von Protokolldaten in Azure Monitor](log-query-overview.md).
+- Informationen zum Anzeigen aller Ressourcen für Azure Monitor-Protokollabfragen finden Sie unter [Azure Monitor-Protokollabfragen](query-language.md).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/15/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: eca20b775b97296510545c4d2f2f005fd91d6758
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471316"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109757"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -58,11 +58,25 @@ Regionale Ausfälle sind keine Seltenheit. Deswegen stellt Azure Cosmos DB siche
 
 ## <a name="building-highly-available-applications"></a>Erstellen hochverfügbarer Anwendungen
 
-- Um Hochverfügbarkeit von Schreib- und Lesevorgängen zu garantieren, konfigurieren Sie Ihr Cosmos-Konto so, dass es mindestens zwei Regionen mit mehreren Schreibregionen umfasst. Diese Konfiguration sorgt für Verfügbarkeit, geringstmögliche Latenz und Skalierbarkeit für Lese- und Schreibvorgänge und wird durch SLAs unterstützt. Weitere Informationen finden Sie unter [Konfigurieren eines Cosmos-Kontos mit mehreren Schreibregionen](tutorial-global-distribution-sql-api.md).
+- Um Hochverfügbarkeit von Schreib- und Lesevorgängen zu garantieren, konfigurieren Sie Ihr Cosmos-Konto so, dass es mindestens zwei Regionen mit mehreren Schreibregionen umfasst. Diese Konfiguration sorgt für Verfügbarkeit, geringstmögliche Latenz und Skalierbarkeit für Lese- und Schreibvorgänge und wird durch SLAs unterstützt. Weitere Informationen finden Sie unter [Konfigurieren eines Cosmos-Kontos mit mehreren Schreibregionen](tutorial-global-distribution-sql-api.md). Informationen zum Konfigurieren von Multimasterfunktionen in Ihren Anwendungen finden Sie unter [Konfigurieren von Multimaster](how-to-multi-master.md).
 
 - Aktivieren Sie für Cosmos-Konten mit mehreren Regionen, die mit einer einzelnen Schreibregion konfiguriert sind, [„Automatisches Failover“ über die Azure-Befehlszeilenschnittstelle oder das Azure-Portal](how-to-manage-database-account.md#automatic-failover). Wenn Sie das automatische Failover aktivieren, führt Cosmos DB bei einem regionalen Ausfall ein automatisches Failover für Ihr Konto aus.  
 
 - Selbst wenn Ihr Cosmos-Konto hochverfügbar ist, ist Ihre Anwendung möglicherweise nicht richtig dafür konzipiert, hochverfügbar zu bleiben. Um die End-to-End-Hochverfügbarkeit für Ihre Anwendung zu testen, rufen Sie im Rahmen Ihrer Anwendungs- oder Notfallwiederherstellungstests regelmäßig über die [Azure-Befehlszeilenschnittstelle oder das Azure-Portal „Manuelles Failover“](how-to-manage-database-account.md#manual-failover) auf.
+
+
+Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
+
+Die folgende Tabelle zeigt die RPO- und RTO-Wert für die häufigsten Szenarien.
+
+|Anzahl der Regionen |Konfiguration |Konsistenzebene|RPO |RTO |
+|---------|---------|---------|-------|-------|
+|1    | *    |*   | < 240 Minuten | < 1 Woche |
+|> 1     | Einzelmasterreplikation | Sitzung, Präfixkonsistenz, Letztlich | < 15 Minuten | < 15 Minuten |
+|> 1     | Einzelmasterreplikation | Begrenzte Veraltung (Bounded staleness) | K & T | < 15 Minuten |
+|> 1     | Multimasterreplikation | Sitzung, Präfixkonsistenz, Letztlich | < 15 Minuten | 0 |
+|> 1     | Multimasterreplikation | Begrenzte Veraltung (Bounded staleness) | K & T | 0 |
+|> 1     | * | STARK (Strong) | 0 | < 15 Minuten |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -72,3 +86,4 @@ In den folgenden Artikeln erfahren Sie mehr über die Skalierung von Durchsatz:
 * [Globales Skalieren von bereitgestelltem Durchsatz](scaling-throughput.md)
 * [Globale Verteilung: Hintergrundinformationen](global-dist-under-the-hood.md)
 * [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md)
+* [Konfigurieren von Multimaster in Ihren Anwendungen](how-to-multi-master.md)

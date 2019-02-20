@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Referenzdokumentation für die Textübersetzungs-API Version 2.0
 services: cognitive-services
 author: Jann-Skotdal
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9491550aae8f88621d947572741f492adcf9cdd0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463224"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55861713"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -327,7 +327,7 @@ Anforderungsinhaltstyp: application/xml
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die einen Satz oder mehrere Sätze in der angegebenen Sprache enthält, in der der Wave-Stream wiedergegeben werden soll. Die Größe des gesprochenen Textes darf 2000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |Language|(leer)   |Erforderlich. Eine Zeichenfolge, die den Code der unterstützten Sprache darstellt, in die der Text gesprochen werden soll. Der Code muss in der Liste der Codes aufgeführt sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
 |format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID zurückgibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|query|Zeichenfolge|
-|options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich `|` to include multiple options. For example  `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
+|options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich `|`, um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
 |Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 

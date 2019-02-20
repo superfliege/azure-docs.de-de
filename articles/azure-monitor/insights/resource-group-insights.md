@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 2b9aee39942562ec7f17c08c0fcf46143a7a25d3
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: d5c07e0d4aca8bda42ea9f78a1475ea7bb5861f0
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53587410"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997021"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Überwachen von Ressourcengruppen mit Azure Monitor (Vorschauversion)
 
@@ -93,9 +93,9 @@ Neben den verschiedenen Elementen der Arbeitsmappe werden mehrere Felder des Typ
 
 ![Screenshot der Felder „Bearbeiten“](./media/resource-group-insights/0009-failure-edit-graph.png)
 
-Dies zeigt die zugrunde liegende Log Analytics-Abfrage an, die die Visualisierung der Tabelle steuert.
+Dadurch wird die zugrunde liegende Protokollabfrage angezeigt, die die Visualisierung der Tabelle steuert.
 
- ![Screenshot des Log Analytics-Abfragefensters](./media/resource-group-insights/0010-failure-edit-query.png)
+ ![Screenshot des Fensters der Protokollabfrage](./media/resource-group-insights/0010-failure-edit-query.png)
 
 Sie können die Abfrage direkt ändern. Oder Sie können sie als Referenz nutzen und darauf zurückgreifen, wenn Sie Ihre eigene benutzerdefinierte, parametrisierte Arbeitsmappe erstellen.
 

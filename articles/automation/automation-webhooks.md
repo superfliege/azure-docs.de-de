@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/06/2018
+ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19a771d75cd1f2a2a18a3a4c42fcc34e55afb111
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 5ab50bd5a2b5b1b0e63060986d4336774be7875b
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438846"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245863"
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>Starten eines Azure Automation-Runbooks mit einem Webhook
 
@@ -32,13 +32,13 @@ Die folgende Tabelle beschreibt die Eigenschaften, die Sie für einen Webhook ko
 | NAME |Sie können einem Webhook einen beliebigen Namen zuweisen, da er nicht für den Client verfügbar gemacht wird. Sie benötigen den Namen nur zur Identifizierung des Runbooks in Azure Automation. <br> Es empfiehlt sich, den Webhook entsprechend dem Client zu benennen, der ihn verwenden wird. |
 | URL |Die URL des Webhooks ist die eindeutige Adresse, die ein Client mit einer HTTP POST-Anforderung aufruft, um das mit dem Webhook verknüpfte Runbook zu starten. Sie wird beim Erstellen des Webhooks automatisch generiert. Sie können keine benutzerdefinierte URL angeben. <br> <br> Die URL enthält ein Sicherheitstoken, das es ermöglicht, dass das Runbook ohne weitere Authentifizierung von einem Drittanbietersystem aufgerufen werden kann. Daher sollte sie wie ein Kennwort behandelt werden. Aus Sicherheitsgründen können Sie die URL im Azure-Portal nur zu dem Zeitpunkt anzeigen, zu dem der Webhook erstellt wird. Sie sollten die URL zur späteren Verwendung an einem sicheren Ort speichern. |
 | Ablaufdatum |Ebenso wie ein Zertifikat verfügt jeder Webhook über ein Ablaufdatum, nach dem er nicht mehr verwendet werden kann. Dieses Ablaufdatum kann nach dem Erstellen des Webhooks geändert werden, solange der Webhook noch nicht abgelaufen ist. |
-| Aktiviert |Ein Webhook ist bei Erstellung standardmäßig aktiviert. Wenn Sie "Deaktiviert" festlegen, kann er von keinem Client mehr verwendet werden. Sie können die Eigenschaft **Aktiviert** beim Erstellen des Webhooks oder zu einem anderen Zeitpunkt nach der Erstellung festlegen. |
+| Aktiviert |Ein Webhook ist bei Erstellung standardmäßig aktiviert. Wenn Sie "Deaktiviert" festlegen, kann er von keinem Client verwendet werden. Sie können die Eigenschaft **Aktiviert** beim Erstellen des Webhooks oder zu einem anderen Zeitpunkt nach der Erstellung festlegen. |
 
 ### <a name="parameters"></a>Parameter
 
 Ein Webhook kann Werte für Runbookparameter definieren, die verwendet werden, wenn das Runbook von diesem Webhook gestartet wird. Der Webhook muss Werte für alle obligatorischen Parameter des Runbooks einschließen und kann Werte für optionale Parameter einschließen. Ein Parameterwert, der für ein Webhook konfiguriert wurde, kann auch nach der Erstellung des Webhooks geändert werden. Mehrere mit einem einzelnen Runbook verknüpften Webhooks können verschiedene Parameterwerte verwenden.
 
-Wenn ein Client ein Runbook mithilfe eines Webhooks startet, können die im Webhook definierten Parameterwerte nicht überschrieben werden. Um Daten aus dem Client abzurufen, kann das Runbook nur einen Parameter namens **$WebhookData** vom Typ [object] akzeptieren, der Daten enthält, die der Client in die POST-Anforderung einschließt.
+Wenn ein Client ein Runbook mithilfe eines Webhooks startet, können die im Webhook definierten Parameterwerte nicht überschrieben werden. Um Daten von Client zu empfangen, kann das Runbook einen einzelnen Parameter mit dem Namen **$WebhookData** akzeptieren. Dieser Parameter hat einen Typ [object], der Daten enthält, die der Client in die POST-Anforderung einschließt.
 
 ![WebhookData-Eigenschaften](media/automation-webhooks/webhook-data-properties.png)
 
@@ -189,7 +189,7 @@ else {
 
 Im folgenden Beispiel wird Windows PowerShell verwendet, um ein Runbook mit einem Webhook zu starten. In jeder Sprache, in der eine HTTP-Anforderung gesendet werden kann, ist auch die Verwendung eines Webhooks möglich; Windows PowerShell dient hier lediglich als Beispiel.
 
-Das Runbook erwartet im Anforderungstext eine Liste von virtuellen Computern, die in JSON formatiert ist. Das Runbook überprüft auch, ob die Header eine speziell definierte Nachricht enthalten, um sicherzustellen, dass der Webhookaufrufer gültig.
+Das Runbook erwartet im Anforderungstext eine Liste von virtuellen Computern, die in JSON formatiert ist. Das Runbook überprüft auch, ob die Header eine definierte Nachricht enthalten, um sicherzustellen, dass der Webhookaufrufer gültig ist.
 
 ```azurepowershell-interactive
 $uri = "<webHook Uri>"
@@ -200,11 +200,11 @@ $vms  = @(
         )
 $body = ConvertTo-Json -InputObject $vms
 $header = @{ message="StartedbyContoso"}
-$response = Invoke-RestMethod -Method Post -Uri $uri -Body $body -Headers $header
+$response = Invoke-WebRequest -Method Post -Uri $uri -Body $body -Headers $header
 $jobid = (ConvertFrom-Json ($response.Content)).jobids[0]
 ```
 
-Das folgende Beispiel zeigt den Anforderungstext, der dem Runbook in der **RequestBody**-Eigenschaft von **WebhookData** zur Verfügung steht. Der Text ist in JSON formatiert, da dieses Format im Anforderungstext enthalten war.
+Das folgende Beispiel zeigt den Anforderungstext, der dem Runbook in der **RequestBody**-Eigenschaft von **WebhookData** zur Verfügung steht. Der Text ist als JSON formatiert, da dieses Format im Anforderungstext enthalten war.
 
 ```json
 [

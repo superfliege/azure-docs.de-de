@@ -1,6 +1,6 @@
 ---
-title: Analysieren von Textdaten in Azure Log Analytics | Microsoft-Dokumentation
-description: Beschreibt verschiedene Optionen zum Analysieren von Daten in Log Analytics-Datensätzen, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
+title: Analysieren von Textdaten in Azure Monitor-Protokollen | Microsoft-Dokumentation
+description: Beschreibt verschiedene Optionen zum Analysieren von Protokolldaten in Azure Monitor-Datensätzen, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
 documentationcenter: ''
 author: bwren
 manager: carmonm
@@ -11,17 +11,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 0d589156824c7b9f3f6a8c31591d69479d11780a
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214129"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002196"
 ---
-# <a name="parse-text-data-in-log-analytics"></a>Analysieren von Textdaten in Log Analytics
-Einige von Log Analytics gesammelte Daten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../../log-analytics/log-analytics-data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
+# <a name="parse-text-data-in-azure-monitor-logs"></a>Analysieren von Textdaten in Azure Monitor-Protokollen
+Einige von Azure Monitor gesammelte Protokolldaten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../../log-analytics/log-analytics-data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
 
-In diesem Artikel werden verschiedene Optionen zum Analysieren von Daten in Log Analytics-Datensätzen beschrieben, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
+In diesem Artikel werden verschiedene Optionen zum Analysieren von Protokolldaten in Azure Monitor beschrieben, wenn die Daten erfasst sowie in einer Abfrage abgerufen werden, wobei jeweils ein Vergleich der relativen Vorteile erfolgt.
 
 
 ## <a name="parsing-methods"></a>Analysemethoden
@@ -60,7 +60,7 @@ Nachteile dieser Methode:
 - Bei der Ausführung komplexer Logik für eine sehr große Anzahl von Datensätzen (Milliarden von Datensätzen) kann sich ein Mehraufwand ergeben.
 
 ## <a name="parse-data-as-its-collected"></a>Analysieren von Daten beim Sammeln
-Weitere Informationen zum Analysieren von Daten beim Sammeln finden Sie unter [Erstellen benutzerdefinierter Felder in Log Analytics](../../log-analytics/log-analytics-custom-fields.md). Dadurch werden benutzerdefinierte Eigenschaften in der Tabelle erstellt, die wie jede andere Eigenschaft von Abfragen verwendet werden können.
+Weitere Informationen zum Analysieren von Daten beim Sammeln finden Sie unter [Erstellen benutzerdefinierter Felder in Azure Monitor](../platform/custom-fields.md). Dadurch werden benutzerdefinierte Eigenschaften in der Tabelle erstellt, die wie jede andere Eigenschaft von Abfragen verwendet werden können.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analysieren von Daten in Abfragen mithilfe von Mustern
 Wenn die zu analysierenden Daten durch ein Muster identifiziert werden können, das sich über Datensätze hinweg wiederholt, können Sie verschiedene Operatoren in der [Data Explorer-Abfragesprache](/azure/kusto/query/) verwenden, um den bestimmten Teil der Daten in eine oder mehrere neue Eigenschaften zu extrahieren.
@@ -106,7 +106,7 @@ AzureActivity
 | distinct UPNUserPart, Caller
 ```
 
-Um eine effiziente Analyse im großen Umfang zu ermöglichen, verwendet Log Analytics die re2-Version von Regular Expressions, die mit einigen der anderen Varianten von Regular Expressions ähnlich, aber nicht identisch ist. Weitere Informationen finden Sie in der [re2-Ausdrucksyntax](https://aka.ms/kql_re2syntax).
+Um eine effiziente Analyse im großen Umfang zu ermöglichen, verwendet Azure Monitor die re2-Version von Regular Expressions, die mit einigen der anderen Varianten von Regular Expressions ähnlich, aber nicht identisch ist. Weitere Informationen finden Sie in der [re2-Ausdrucksyntax](https://aka.ms/kql_re2syntax).
 
 
 ## <a name="parse-delimited-data-in-a-query"></a>Analysieren von durch Trennzeichen getrennten Daten in einer Abfrage

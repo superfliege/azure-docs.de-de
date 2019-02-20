@@ -12,24 +12,24 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2019
+ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 787c10ab75a3534a73e04f1bd60462ea02fcf42a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191716"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185993"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
-Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus fast allen in Azure verfügbaren VM-Größen wählen. Azure bietet eine Reihe von Größen für virtuelle Linux- und Windows-Computer für verschiedene Workloads. 
+Wenn Sie eine Knotengröße für einen Azure Batch-Pool wählen, können Sie aus fast allen in Azure verfügbaren VM-Größen wählen. Azure bietet eine Reihe von Größen für virtuelle Linux- und Windows-Computer für verschiedene Workloads.
 
 Bei der Auswahl einer VM-Größe gelten einige Ausnahmen und Einschränkungen:
+
 * Einige VM-Familien oder -Größen werden in Batch nicht unterstützt. 
 * Einige VM-Größen sind eingeschränkt und müssen explizit aktiviert werden, damit sie zugeordnet werden können.
-
 
 ## <a name="supported-vm-families-and-sizes"></a>Unterstützte VM-Familien und -Größen
 
@@ -42,16 +42,16 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-
 | Serie „Basic A“ | Basic_A0 (A0) |
 | A-Serie | Standard_A0 |
 | B-Serie | Alle |
-| DC-Serie | Alle | 
+| DC-Serie | Alle |
 | In hohem Maß arbeitsspeicheroptimiert | Alle |
-| Hb-Serie<sup>1</sup> | Alle | 
+| Hb-Serie<sup>1</sup> | Alle |
 | Hc-Serie<sup>1</sup> | Alle |
 | Lsv2-Reihe | Alle |
 | NDv2-Serie<sup>1</sup> | Alle |
-| NVv2-Serie<sup>1</sup> | Alle |
+| NVv2-Serie | Alle |
 | SAP HANA | Alle |
 
-<sup>1</sup> Wird derzeit nicht unterstützt, soll aber in Zukunft unterstützt werden.
+<sup>1</sup> Kann von Batch-Konten im Benutzerabonnementmodus verwendet werden; für das Batch-Konto im Benutzerabonnementmodus muss das Kernkontingent festgelegt sein. Weitere Informationen finden Sie unter [Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 Die folgenden VM-Größen werden nur für Knoten mit niedriger Priorität unterstützt:
 
@@ -74,6 +74,7 @@ Batch-Pools in der Clouddienstkonfiguration unterstützen alle [VM-Größen für
 ## <a name="restricted-vm-families"></a>Eingeschränkte VM-Familien
 
 Die folgenden VM-Familien können in Batch-Pools zugewiesen werden, Sie müssen jedoch eine bestimmte Kontingenterhöhung anfordern (siehe [dieser Artikel](batch-quota-limit.md#increase-a-quota)):
+
 * NCv2-Serie
 * NCv3-Serie
 * ND-Serie
@@ -82,7 +83,7 @@ Diese Größen können nur in Pools in der Konfiguration des virtuellen Computer
 
 ## <a name="size-considerations"></a>Überlegungen zu Größen
 
-* **Anwendungsanforderungen**: Berücksichtigen Sie die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Ziehen Sie für [MPI-Workloads](batch-mpi.md) mit mehreren Instanzen oder CUDA-Anwendungen spezielle [HPC](../virtual-machines/linux/sizes-hpc.md)- bzw. [GPU-fähige ](../virtual-machines/linux/sizes-gpu.md) VM-Größen in Betracht. (Informationen dazu finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).) 
+* **Anwendungsanforderungen**: Berücksichtigen Sie die Merkmale und Anforderungen der Anwendungen, die auf den Knoten ausgeführt werden sollen. Die Beantwortung der Fragen, ob es sich beispielsweise um eine Multithreadanwendung handelt und wie viel Arbeitsspeicher sie beansprucht, kann Ihnen dabei behilflich sein, die am besten geeignete und kostengünstigste Knotengröße zu bestimmen. Ziehen Sie für [MPI-Workloads](batch-mpi.md) mit mehreren Instanzen oder CUDA-Anwendungen spezielle [HPC](../virtual-machines/linux/sizes-hpc.md)- bzw. [GPU-fähige ](../virtual-machines/linux/sizes-gpu.md) VM-Größen in Betracht. (Informationen dazu finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).)
 
 * **Aufgaben pro Knoten**: Die Knotengröße wird normalerweise unter der Annahme ausgewählt, dass jeweils nur eine Aufgabe auf einem Knoten ausgeführt wird. Es kann jedoch von Vorteil sein, mehrere Aufgaben (und somit mehrere Anwendungsinstanzen) während der Auftragsausführung auf Computeknoten [parallel zu nutzen](batch-parallel-node-tasks.md). In diesem Fall wird häufig eine Knotengröße mit mehreren Kernen gewählt, um den höheren Bedarf an parallelen Aufgabenausführungen decken zu können.
 
@@ -97,6 +98,4 @@ Diese Größen können nur in Pools in der Konfiguration des virtuellen Computer
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Eine detaillierte Übersicht über Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md).
-* Informationen zur Verwendung von rechenintensiven VM-Größen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md). 
-
-
+* Informationen zur Verwendung von rechenintensiven VM-Größen finden Sie unter [Verwenden RDMA-fähiger oder GPU-fähiger Instanzen in Batch-Pools](batch-pool-compute-intensive-sizes.md).

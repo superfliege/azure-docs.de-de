@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to work with routing tables for NVA.
-ms.openlocfilehash: 7d5cd8aab0f368ffec636e6dfcacf127c910dafc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 45e5c43cf5eb8df1df5b26ffae50d2881bb086e4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190169"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115197"
 ---
 # <a name="create-a-virtual-hub-route-table-to-steer-traffic-to-a-network-virtual-appliance"></a>Erstellen einer Routingtabelle für einen virtuellen Hub für Virtual WAN zum Steuern des Datenverkehrs zu einem virtuellen Netzwerkgerät
 
@@ -36,7 +36,7 @@ Vergewissern Sie sich, dass die folgenden Kriterien erfüllt sind:
 
 1. Sie haben ein virtuelles Netzwerkgerät. Dies ist eine Drittanbietersoftware Ihrer Wahl, die in der Regel über Azure Marketplace (Link) in einem virtuellen Netzwerk bereitgestellt wird.
 2. Sie haben der Netzwerkschnittstelle des virtuellen Netzwerkgeräts eine private IP-Adresse zugewiesen. 
-3. Das virtuelle Netzwerkgerät kann nicht im virtuellen Hub bereitgestellt werden. Es muss in einem gesonderten VNET bereitgestellt werden. In diesem Artikel wird das VNET als „DMZ VNET“ bezeichnet.
+3. Das virtuelle Netzwerkgerät kann nicht im virtuellen Hub bereitgestellt werden. Es muss in einem gesonderten VNET bereitgestellt werden. In diesem Artikel wird das NVA-VNET als „DMZ VNET“ bezeichnet.
 4. Mit „DMZ VNET“ kann mindestens ein virtuelles Netzwerk verbunden sein. In diesem Artikel wird dieses VNET als „Indirektes Spoke-VNET“ bezeichnet. Diese VNETs können mithilfe von VNET-Peering mit DMZ VNET verbunden werden.
 5. Bestätigen Sie, dass Sie bereits 2 VNETs erstellt haben. Diese werden als Spoke-VNETs verwendet. In diesem Artikel sind die VNET-Spoke-Adressräume 10.0.2.0/24 und 10.0.3.0/24. Informationen zum Erstellen eine VNET finden Sie unter [Erstellen eines virtuellen Netzwerks mit PowerShell](../virtual-network/quick-create-powershell.md).
 6. Stellen Sie sicher, dass in den VNETs keine Gateways für virtuelle Netzwerke vorhanden sind.

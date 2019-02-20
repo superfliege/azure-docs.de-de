@@ -2,17 +2,17 @@
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit der CLI'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit CLI-Codeausschnitten
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: bryanla
-ms.openlocfilehash: 242398eb0bb4d4ddd2764bd66c99a7f9603ea1b9
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: f0c1db2274eea6281bd4a350909b79d048ad21c4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663943"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116722"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Verwenden des vorläufigen Löschens in Key Vault mit der CLI
 
@@ -226,5 +226,5 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 ## <a name="other-resources"></a>Weitere Ressourcen
 
 - Eine Übersicht über das Feature für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md).
-- Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
+- Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md).
 

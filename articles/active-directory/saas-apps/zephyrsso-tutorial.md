@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 47bbdc1c50f0d96f1f26d5595a9e54814fa85188
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3be3008367f5c405f65dfd37b4384726ab2456c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43310884"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209522"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zephyrsso"></a>Tutorial: Azure Active Directory-Integration mit ZephyrSSO
 
@@ -160,7 +161,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
   
 ### <a name="create-a-zephyrsso-test-user"></a>Erstellen eines ZephyrSSO-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in ZephyrSSO eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur ZephyrSSO-Plattform ggf. vom [ZephyrSSO-Supportteam](https://support.getzephyr.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in ZephyrSSO eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur ZephyrSSO-Plattform ggf. vom  [ZephyrSSO-Supportteam](https://support.getzephyr.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

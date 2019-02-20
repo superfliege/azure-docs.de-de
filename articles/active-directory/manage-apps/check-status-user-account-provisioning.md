@@ -3,8 +3,8 @@ title: Meldung zur automatischen Benutzerkontobereitstellung in Azure Active Dir
 description: In diesem Artikel erfahren Sie, wie Sie den Status von Aufträgen zu automatischen Benutzerkontobereitstellungen überprüfen und Probleme bei der Bereitstellung einzelner Benutzer behandeln.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,14 +12,15 @@ ms.tgt_pltfrm: app-mgmt
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/09/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: 833fe24f83a2f159fd00d24c67b6864ce614c445
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55203911"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56206989"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung
 
@@ -64,7 +65,7 @@ Der Zusammenfassungsbericht für die Bereitstellung wird auf der Registerkarte *
 
 * Die Angabe, ob eine [Erstsynchronisierung](user-provisioning.md#what-happens-during-provisioning) durchgeführt wurde.
 
-* Die Angabe, ob der Bereitstellungsprozess in Quarantäne versetzt wurde, und den Grund für den Quarantänestatus (etwa Fehler bei der Kommunikation mit dem Zielsystem aufgrund von ungültigen Administratoranmeldeinformationen).
+* Die Angabe, ob der Bereitstellungsprozess in Quarantäne gesetzt wurde, und den Grund für den Quarantänestatus (etwa Fehler bei der Kommunikation mit dem Zielsystem aufgrund von ungültigen Administratoranmeldeinformationen).
 
 Um die Betriebsintegrität des Zusammenfassungsberichts für die Bereitstellung zu überprüfen, sollten Administratoren zuerst im Zusammenfassungsbericht für die Bereitstellung nachsehen.
 
@@ -79,7 +80,7 @@ Alle Aktivitäten, die vom Bereitstellungsdienst ausgeführt werden, werden in d
 
 * **Ereignisse exportieren** – Ein Exportereignis wird immer dann erfasst, wenn der Azure AD-Bereitstellungsdienst ein Benutzerkonto- oder -gruppenobjekt in ein Zielsystem schreibt. Diese Ereignisse erfassen alle Benutzerattribute und deren Werte, die vom Azure AD-Bereitstellungsdienst zum Zeitpunkt des Ereignisses geschrieben wurden. Wenn beim Schreiben des Benutzerkonto- oder -gruppenobjekts in das Zielsystem ein Fehler aufgetreten ist, wird dieser hier angezeigt.
 
-* **Prozesshinterlegungsereignisse** – Prozesshinterlegungen treten auf, wenn der Bereitstellungsdienst bei dem Versuch, einen Vorgang durchzuführen, einen Fehler feststellt und beginnt, den Vorgang in einem Backoffzeitintervall zu wiederholen. Ein Hinterlegungsereignis wird immer dann erfasst, wenn ein Bereitstellungsvorgang außer Kraft gesetzt wurde.
+* **Prozesshinterlegungsereignisse** – Prozesshinterlegungen treten auf, wenn der Bereitstellungsdienst bei dem Versuch, einen Vorgang durchzuführen, einen Fehler feststellt und beginnt, den Vorgang in einem Backoffzeitintervall zu wiederholen. Ein Hinterlegungsereignis wird immer dann erfasst, wenn ein Bereitstellungsvorgang erneut versucht wurde.
 
 Bei Bereitstellungsereignissen für einen einzelnen Benutzer treten die Ereignisse in der Regel in folgender Reihenfolge auf:
 

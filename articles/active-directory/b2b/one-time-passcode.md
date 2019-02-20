@@ -10,18 +10,19 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: mal
-ms.openlocfilehash: 412e114fde8f9b9017d476083f1237c922c67bc8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: e9493f7ee3278bb42dc21574cd008fbe2f4376a1
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463054"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185144"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>Authentifizierung mit Einmalkennung per E-Mail (Vorschauversion)
 
 |     |
 | --- |
-| Die Einmalkennung (One-time passcode, OTP) per E-Mail ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
+| Die Einmalkennung (One-time passcode, OTP) per E-Mail ist eine öffentliche Previewfunktion für Azure Active Directory. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).|
 |     |
 
 Mit dem Feature „Einmalkennung per E-Mail“ werden B2B-Gastbenutzer authentifiziert, wenn sie über andere Wege (z. B. über Azure AD, ein Microsoft-Konto (MSA) oder den Verbund mit Google) nicht authentifiziert werden können. Bei der Authentifizierung mit Einmalkennung ist es nicht erforderlich, ein Microsoft-Konto zu erstellen. Wenn der Gastbenutzer eine Einladung einlöst oder auf eine freigegebene Ressource zugreift, kann er einen temporären Code anfordern, der an seine E-Mail-Adresse gesendet wird. Anschließend gibt er diesen Code ein, um den Anmeldevorgang fortzusetzen.
@@ -29,7 +30,7 @@ Mit dem Feature „Einmalkennung per E-Mail“ werden B2B-Gastbenutzer authentif
 Dieses Feature ist derzeit als Vorschauversion verfügbar (siehe [Abonnieren der Vorschauversion](#opting-in-to-the-preview) weiter unten). Im Anschluss an die Vorschauversion wird dieses Feature standardmäßig für alle Mandanten aktiviert.
 
 > [!NOTE]
-> Benutzer mit Einmalkennung müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z. B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Standarddomäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler. 
+> Benutzer mit Einmalkennung müssen sich über einen Link anmelden, der den Mandantenkontext enthält (z.B. `https://myapps.microsoft.com/?tenantid=<tenant id>` oder `https://portal.azure.com/<tenant id>` bzw. `https://myapps.microsoft.com/<verified domain>.onmicrosoft.com` bei einer überprüften Domäne). Direkte Links zu Anwendungen und Ressourcen funktionieren ebenfalls, sofern sie den Mandantenkontext enthalten. Gastbenutzer können sich derzeit nicht über Endpunkte, die keinen Mandantenkontext aufweisen, anmelden. Die Verwendung beispielsweise von `https://myapps.microsoft.com`, `https://portal.azure.com` oder dem gemeinsamen Team-Endpunkt führt zu einem Fehler. 
 
 ## <a name="user-experience-for-one-time-passcode-guest-users"></a>Benutzeroberfläche für Gastbenutzer mit Einmalkennung
 Bei der Authentifizierung mit Einmalkennung kann der Gastbenutzer seine Einladung über einen direkten Link oder mithilfe der Einladungs-E-Mail einlösen. In beiden Fällen gibt eine Nachricht im Browser an, dass ein Code an die E-Mail-Adresse des Gastbenutzers gesendet wird. Der Gastbenutzer klickt auf **Code senden**:
@@ -71,7 +72,7 @@ Es dauert möglicherweise einige Minuten, bis die Abonnierungsaktion wirksam wir
 1.  Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com/) an.
 2.  Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 3.  Wählen Sie unter **Verwalten** die Option **Organisationsbeziehungen** aus.
-4.  Wählen Sie **Einstellungen**aus.
+4.  Wählen Sie **Settings**aus.
 5.  Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschauversion)** die Option **Ja** aus.
  
 ### <a name="to-opt-in-using-powershell"></a>So abonnieren Sie mithilfe von PowerShell
@@ -92,7 +93,7 @@ Wenn das AzureADPreview-Modul keine Meldung anzeigt, dass eine neuere Version ve
    ```powershell  
    Install-Module AzureADPreview
    ```
-- Wenn nur das AzureAD-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
+- Wenn nur das AzureADPreview-Modul in den Ergebnissen angezeigt wird, führen Sie die folgenden Befehle aus, um das AzureADPreview-Modul zu installieren: 
 
    ```powershell 
    Uninstall-Module AzureAD 
@@ -138,7 +139,7 @@ Es dauert möglicherweise einige Minuten, bis die Kündigungsaktion für das Abo
 1.  Melden Sie sich als globaler Azure AD-Administrator im [Azure-Portal](https://portal.azure.com/) an.
 2.  Klicken Sie im Navigationsbereich auf **Azure Active Directory**.
 3.  Wählen Sie unter **Verwalten** die Option **Organisationsbeziehungen** aus.
-4.  Wählen Sie **Einstellungen**aus.
+4.  Wählen Sie **Settings**aus.
 5.  Wählen Sie unter **Einmalkennung per E-Mail für Gastbenutzer aktivieren (Vorschauversion)** die Option **Nein** aus.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>So deaktivieren Sie die Vorschauversion mithilfe von PowerShell

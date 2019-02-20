@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Arbeitsbereichen in Azure Log Analytics und im OMS-Portal | Microsoft-Dokumentation
-description: Arbeitsbereiche können in Azure Log Analytics und im OMS-Portal mithilfe verschiedener Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwaltet werden.
+title: Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor | Microsoft-Dokumentation
+description: Sie können Log Analytics-Arbeitsbereiche in Azure Monitor verwalten, indem Sie verschiedene Verwaltungsaufgaben für Benutzer, Konten, Arbeitsbereiche und Azure-Konten verwenden.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,18 +11,17 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 11/13/2018
+ms.date: 02/07/2019
 ms.author: magoedte
-ms.openlocfilehash: 32a31a87bacbb13cd3b2cb4561ac04e54d51ba46
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 4a777c2bd57d40b4bb6c8d36c996b655cb019e5f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55656752"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005368"
 ---
-# <a name="manage-workspaces"></a>Verwalten von Arbeitsbereichen
-
-Zum Verwalten des Zugriffs auf Log Analytics führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Dieser Artikel enthält Tipps und Verfahren für die Arbeitsbereichsverwaltung. Ein Arbeitsbereich ist im Wesentlichen ein Container, der Kontoinformationen und einfache Konfigurationsinformationen für das Konto enthält. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
+# <a name="manage-log-analytics-workspaces-in-azure-monitor"></a>Verwalten von Log Analytics-Arbeitsbereichen in Azure Monitor
+In Azure Monitor werden Protokolldaten in einem Log Analytics-Arbeitsbereich gespeichert, bei dem es sich im Wesentlichen um einen Container handelt, der Daten und Konfigurationsinformationen enthält. Zum Verwalten des Zugriffs auf Protokolldaten führen Sie verschiedene Verwaltungsaufgaben für Arbeitsbereiche durch. Sie oder andere Mitglieder Ihrer Organisation können mehrere Arbeitsbereiche nutzen, um unterschiedliche Mengen von Daten zu verwalten, die in Ihrer gesamten IT-Infrastruktur oder Teilen davon erfasst werden.
 
 Sie benötigen Folgendes, um einen Arbeitsbereich zu erstellen:
 
@@ -32,11 +31,11 @@ Sie benötigen Folgendes, um einen Arbeitsbereich zu erstellen:
 4. Ausgewählten geografischen Standort
 
 ## <a name="determine-the-number-of-workspaces-you-need"></a>Bestimmen der benötigten Anzahl von Arbeitsbereichen
-Ein Arbeitsbereich ist eine Azure-Ressource. Es handelt sich hierbei um einen Container, in dem Daten gesammelt, aggregiert, analysiert und im Azure-Portal angezeigt werden.
+Ein Log Analytics-Arbeitsbereich ist eine Azure-Ressource. Es handelt sich hierbei um einen Container, in dem Daten gesammelt, aggregiert, analysiert und in Azure Monitor angezeigt werden.
 
 Sie können mehrere Arbeitsbereiche pro Azure-Abonnement verwenden und über den Zugriff auf mehr als einen Arbeitsbereich mit einfacher Abfragemöglichkeit verfügen. In diesem Abschnitt wird beschrieben, wann es hilfreich sein kann, mehr als einen Arbeitsbereich zu erstellen.
 
-Ein Arbeitsbereich bietet jetzt Folgendes:
+Ein Log Analytics-Arbeitsbereich bietet Folgendes:
 
 * Einen geografischen Standort für die Speicherung von Daten
 * Datenisolation zum Definieren unterschiedlicher Benutzerzugriffsrechte
@@ -44,7 +43,7 @@ Ein Arbeitsbereich bietet jetzt Folgendes:
 
 Im Hinblick auf die Nutzung wird empfohlen, möglichst wenige Arbeitsbereiche zu erstellen. Dadurch werden Verwaltung und Abfragen einfacher und schneller. Auf der Grundlage der obigen Merkmale können Sie jedoch in folgenden Szenarien mehrere Arbeitsbereiche erstellen:
 
-* Sie sind ein globales Unternehmen und müssen Daten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern.
+* Sie sind ein globales Unternehmen und müssen Protokolldaten aus Gründen der Datensouveränität bzw. aus Compliancegründen in bestimmten Regionen speichern.
 * Sie nutzen Azure und möchten Gebühren für ausgehende Datenübertragungen vermeiden, indem Sie einen Arbeitsbereich in derselben Region wie die verwalteten Azure-Ressourcen nutzen.
 * Sie möchten Gebühren basierend auf der Nutzung unterschiedlichen Abteilungen bzw. Geschäftseinheiten zuordnen, indem Sie einen Arbeitsbereich für jede Abteilung oder Geschäftseinheit im eigenen Azure-Abonnement erstellen.
 * Sie sind ein Dienstanbieter mit Verwaltung und müssen die Log Analytics-Daten für jeden Kunden, den Sie verwalten, von den Daten der anderen Kunden isolieren.
@@ -55,16 +54,14 @@ Wenn Sie Windows-Agents zum Sammeln von Daten verwenden, können Sie [jeden Agen
 Bei Verwendung von System Center Operations Manager kann jede Operations Manager-Verwaltungsgruppe mit nur einem Arbeitsbereich verbunden werden. Sie können den Microsoft Monitoring Agent auf Computern installieren, die mit Operations Manager verwaltet werden, und den Agent so einrichten, dass er sowohl Daten an Operations Manager als auch an einen anderen Log Analytics-Arbeitsbereich liefert.
 
 ## <a name="workspace-information"></a>Informationen zum Arbeitsbereich
+Sie analysieren die Daten im Log Analytics-Arbeitsbereich im Menü **Azure Monitor** im Azure-Portal, die Arbeitsbereiche erstellen und verwalten Sie jedoch im Menü **Log Analytics-Arbeitsbereiche**.
+ 
 
-Sie können im Azure-Portal die Details zu Ihrem Arbeitsbereich anzeigen. 
-
-1. Melden Sie sich am [Azure-Portal](https://portal.azure.com)an, falls Sie dies noch nicht getan haben.
-
-2. Klicken Sie im Azure-Portal auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics**.  
+1. Melden Sie sich im [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Alle Dienste**. Geben Sie in der Liste mit den Ressourcen **Log Analytics** ein. Sobald Sie mit der Eingabe beginnen, wird die Liste auf der Grundlage Ihrer Eingabe gefiltert. Wählen Sie **Log Analytics-Arbeitsbereiche** aus.  
 
     ![Azure-Portal](media/manage-access/azure-portal-01.png)  
 
-3. Wählen Sie im Bereich mit den Log Analytics-Abonnements einen Arbeitsbereich aus.
+3. Wählen Sie Ihren Arbeitsbereich in der Liste aus.
 
 4. Auf der Seite für den Arbeitsbereich werden Details zu den ersten Schritten und zur Konfiguration sowie Links zu weiteren Informationen angezeigt.  
 
@@ -84,10 +81,10 @@ Für die folgenden Aktivitäten sind ebenfalls Azure-Berechtigungen erforderlich
 | Erstellen eines Arbeitsbereichs im Azure-Portal                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-### <a name="managing-access-to-log-analytics-using-azure-permissions"></a>Verwalten des Zugriffs auf Log Analytics mit Azure-Berechtigungen
+### <a name="managing-access-to-log-analytics-workspace-using-azure-permissions"></a>Verwalten des Zugriffs auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen
 Führen Sie die Schritte unter [Verwenden von Rollenzuweisungen zum Verwalten Ihrer Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md) aus, um den Zugriff auf den Log Analytics-Arbeitsbereich mit Azure-Berechtigungen zu gewähren.
 
-Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics:
+Azure verfügt über zwei integrierte Benutzerrollen für Log Analytics-Arbeitsbereiche:
 - Log Analytics-Leser
 - Log Analytics-Mitwirkender
 
@@ -149,5 +146,4 @@ Es empfiehlt sich, Zuweisungen auf der Ressourcenebene (Arbeitsbereich) vorzuneh
 ## <a name="next-steps"></a>Nächste Schritte
 * Informationen zum Erfassen der Daten von Computern in Ihrem Datencenter oder einer anderen Cloudumgebung finden Sie unter [Collect log data with the Azure Log Analytics agent](../../azure-monitor/platform/log-analytics-agent.md) (Sammeln von Protokolldaten mit dem Azure Log Analytics-Agent).
 * Informationen zum Konfigurieren der Datensammlung von virtuellen Azure-Computern finden Sie unter [Sammeln von Daten über virtuelle Azure-Computer](../../azure-monitor/learn/quick-collect-azurevm.md).  
-* [Add Log Analytics solutions from the Solutions Gallery](../../azure-monitor/insights/solutions.md) (Hinzufügen von Log Analytics-Lösungen aus dem Lösungskatalog) beschreibt das Hinzufügen von Funktionen und das Sammeln von Daten.
 

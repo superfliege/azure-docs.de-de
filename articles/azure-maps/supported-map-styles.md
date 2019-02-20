@@ -3,17 +3,17 @@ title: Unterstützte Kartenstile in Azure Maps | Microsoft-Dokumentation
 description: In Azure Maps unterstützte Kartenstile
 author: walsehgal
 ms.author: v-musehg
-ms.date: 10/02/2018
+ms.date: 02/12/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 2f426ab85d9ab15dd080a487337b8d48358ed040
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 923b9fef75fa610ee817a86ce0b4d6b322153f01
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888459"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113430"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Unterstützte Kartenstile in Azure Maps
 Azure Maps unterstützt mehrere integrierte Kartenstile, die im Folgenden beschrieben werden.
@@ -56,7 +56,16 @@ Dieser Kartenstil ist eine Hybriddarstellung, bei der Straßen und Bezeichnungen
 ## <a name="night"></a>Nacht
 **Nacht** ist eine dunkle Version des Kartenstils „Straße“ mit farbigen Straßen und Symbolen.
 
-![Nacht](./media/supported-map-styles/night.PNG)
+![Nacht](./media/supported-map-styles/night.png)
 
 **Anwendbare APIs:**
-* JS-Kartensteuerelement 
+* JS-Kartensteuerelement
+
+## <a name="roadshadedrelief"></a>road_shaded_relief
+**road shaded relief** (Relief mit schattierten Straßen) ist eine Azure Maps-Hauptformatvorlage mit Konturen der Erde.
+
+![schattiertes Relief](./media/supported-map-styles/shaded-relief.png)
+
+**Anwendbare APIs:**
+* JS-Kartensteuerelement
+* [Kartenkachel](https://docs.microsoft.com/rest/api/maps/render/getmaptile)

@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: f1adcca48882ca3a149046cbc0729612666363cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/07/2019
+ms.openlocfilehash: 59599686b2a9ccee7250e33f0786d4c7af816983
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734605"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894308"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>T-SQL-Unterschiede zwischen einer verwalteten Azure SQL-Datenbank-Instanz und SQL Server
 
@@ -27,7 +27,7 @@ Die Bereitstellungsoption „Verwaltete Instanz“ bietet umfassende Kompatibili
 
 Es bestehen dennoch einige Unterschiede in der Syntax und im Verhalten. Diese Unterschiede werden in diesem Artikel zusammengefasst und erläutert. <a name="Differences"></a>
 - [Verfügbarkeit](#availability), einschließlich der Unterschiede bei [Always On](#always-on-availability) und [Sicherungen](#backup)
-- [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credentials), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen/Benutzern](#logins--users), [Dienstschlüssel und Diensthauptschlüssel](#service-key-and-service-master-key)
+- [Sicherheit](#security), einschließlich der Unterschiede bei [Überwachung](#auditing), [Zertifikaten](#certificates), [Anmeldeinformationen](#credential), [Kryptografieanbietern](#cryptographic-providers), [Anmeldungen/Benutzern](#logins--users), [Dienstschlüssel und Diensthauptschlüssel](#service-key-and-service-master-key)
 - [Konfiguration](#configuration), einschließlich der Unterschiede bei [Pufferpoolerweiterung](#buffer-pool-extension), [Sortierung](#collation), [Kompatibilitätsgraden](#compatibility-levels),[Datenbankspiegelung](#database-mirroring), [Datenbankoptionen](#database-options), [SQL Server-Agent](#sql-server-agent), [Tabellenoptionen](#tables)
 - [Funktionen](#functionalities), einschließlich [BULK INSERT/OPENROWSET](#bulk-insert--openrowset), [CLR](#clr), [DBCC](#dbcc), [verteilter Transaktionen](#distributed-transactions), [erweiterter Ereignisse](#extended-events), [externer Bibliotheken](#external-libraries), [Filestream und Filetable](#filestream-and-filetable), [semantischer Volltextsuche](#full-text-semantic-search), [Verbindungsserver](#linked-servers), [PolyBase](#polybase), [Replikation](#replication), [RESTORE](#restore-statement), [Service Broker](#service-broker), [gespeicherter Prozeduren, Funktionen und Trigger](#stored-procedures-functions-triggers)
 - [Features mit abweichendem Verhalten in verwalteten Instanzen](#Changes)
@@ -74,7 +74,7 @@ Informationen zu Sicherungen mithilfe von T-SQL finden Sie unter [BACKUP](https:
 
 Die wichtigsten Unterschiede zwischen der Überwachung in Datenbanken in Azure SQL-Datenbank und SQL Server:
 
-- Bei der Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank wird Überwachung auf Serverebene ausgeführt. Die Dateien mit der Endung `.xel` werden in einem Azure Blob Storage-Konto gespeichert.
+- Bei der Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank wird die Überwachung auf Serverebene ausgeführt. Die Protokolldateien mit der Endung `.xel` werden in Azure Blob Storage gespeichert.
 - Bei Bereitstellungen als Singleton und in Pools für elastische Datenbanken in Azure SQL-Datenbank erfolgt die Überwachung auf Datenbankebene.
 - Auf lokalen oder virtuellen SQL Server-Computern wird die Überwachung auf Serverebene ausgeführt, Ereignisse werden jedoch in Dateisystemprotokollen bzw. Windows-Ereignisprotokollen gespeichert.
   
@@ -170,7 +170,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE SET PARTNER und SET WITNE
 - In-Memory-Objekte werden auf der Dienstebene für allgemeine Zwecke nicht unterstützt.  
 - Es gilt eine Einschränkung von 280 Dateien pro Instanz, d.h. maximal 280 Dateien pro Datenbank. Für diese Einschränkung werden Datendateien und Protokolldateien berücksichtigt.  
 - Eine Datenbank darf keine Dateigruppen mit Filestreamdaten enthalten.  Bei der Wiederherstellung treten Fehler auf, wenn die BAK-Datei `FILESTREAM`-Daten enthält.  
-- Jede Datei wird in Azure Storage Premium gespeichert. E/A und Durchsatz pro Datei hängen wie bei Azure Storage Premium-Datenträgern von der Größe der einzelnen Dateien ab. Siehe [Größen von Azure Storage Premium-Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes).  
+- Jede Datei wird in Azure Blob Storage gespeichert. E/A und Durchsatz pro Datei hängen von der Größe der jeweiligen Datei ab.  
 
 #### <a name="create-database-statement"></a>CREATE DATABASE-Anweisung
 
@@ -305,7 +305,7 @@ Weder MSDTC noch [elastische Transaktionen](sql-database-elastic-transactions-ov
 
 Einige Windows-spezifische Ziele für XEvents werden nicht unterstützt:
 
-- `etw_classic_sync target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [etw_classic_sync-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etwclassicsynctarget-target).
+- `etw_classic_sync target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [etw_classic_sync-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#etw_classic_sync_target-target).
 - `event_file target` wird nicht unterstützt. Speichern Sie Dateien mit der Endung `.xel` in Azure Blob Storage. Siehe [event_file-Ziel](https://docs.microsoft.com/sql/relational-databases/extended-events/targets-for-extended-events-in-sql-server#event_file-target).
 
 ### <a name="external-libraries"></a>Externe Bibliotheken

@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f61f420b6a738a410deed2d68acc06862600104f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 67217b63588946782d42b4287cf5f24e29ebe5bd
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563336"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55961260"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>Überwachen der Integrität Ihrer virtuellen Azure-Computer mit Azure Monitor für VMs (Vorschauversion)
 Azure beinhaltet mehrere Dienste, die einzeln eine bestimmte Rolle oder Aufgabe im Überwachungsbereich ausführen, aber ein tiefgreifender Blick auf die Integrität des auf Azure-VMs gehosteten Betriebssystems war bisher nicht verfügbar.  Zwar konnten Sie mithilfe von Log Analytics oder Azure Monitor verschiedene Bedingungen überwachen, diese waren aber nicht dafür ausgelegt, die Integrität von Kernkomponenten oder die Gesamtintegrität der VM zu modellieren und darzustellen.  Das Integritätsfeature von Azure Monitor for VMs überwacht proaktiv die Verfügbarkeit und Leistung des Windows- oder Linux-Gastbetriebssystems mit einem Modell, das Schlüsselkomponenten und ihre Beziehungen modelliert, und mit Kriterien, die angeben, wie die Integrität dieser Komponenten gemessen wird, und eine Warnung an Sie auslösen, wenn ein Zustand eingeschränkter Integrität erkannt wird.  
@@ -44,7 +44,7 @@ Informationen zum Konfigurieren von Azure Monitor for VMs finden Sie unter [Enab
 >
 >Es gibt keine Regression der Funktionen, die aktuell mit der Integritätsfunktion von Azure Monitor für VMs bereitgestellt werden.
 
->Als Folge dieser Änderung werden der Dienst und der Integritätsverlauf für einen kurzen Zeitraum unterbrochen. Die beiden Benutzeroberflächen in der Integritätsdiagnose sind betroffen: Der Zustandsänderungsverlauf wird zurückgesetzt, und die vorherigen Zustandsänderungen für Integritätskriterien stehen in der Spalte „Zustandsänderung“ der Seite „Integritätsdiagnose“ nicht zur Überprüfung zur Verfügung. Wenn Sie die Verlaufsdaten eines unternehmenskritischen virtuellen Computers benötigen, können Sie zu Referenzzwecken einen Screenshot der Integritätskriteriendaten und der entsprechenden Zustandsänderungen erstellen. 
+>Als Folge dieser Änderung sind zwei Benutzeroberflächen in der Integritätsdiagnose betroffen: Der Zustandsänderungsverlauf wird zurückgesetzt, und die vorherigen Zustandsänderungen für Integritätskriterien stehen in der Spalte „Zustandsänderung“ der Seite „Integritätsdiagnose“ nicht zur Überprüfung zur Verfügung. Wenn Sie die Verlaufsdaten eines unternehmenskritischen virtuellen Computers benötigen, können Sie zu Referenzzwecken einen Screenshot der Integritätskriteriendaten und der entsprechenden Zustandsänderungen erstellen. 
 
 ## <a name="monitoring-configuration-details"></a>Details der Überwachungskonfiguration
 Dieser Abschnitt beschreibt im Umriss die definierten standardmäßigen Integritätskriterien für die Überwachung von Azure Windows- und Linux-VMs. Alle Integritätskriterien sind so vorkonfiguriert, dass sie beim Eintreten der Fehlerbedingung eine Warnung ausgeben. 
@@ -106,7 +106,7 @@ Um die Integrität einer Azure-VM anzuzeigen, wählen Sie im linken Bereich der 
 
 ![Azure Monitor for VMs-Integritätsübersicht einer ausgewählten Azure-VM](./media/vminsights-health/vminsights-directvm-health.png)
 
-Auf der Registerkarte **Integrität** zeigt die Tabelle unter dem Abschnitt **Integrität der Gast-VM** den aktuellen Integritätsstatus Ihrer VM und die Gesamtzahl der VM-Integritätswarnungen an, die von einer Komponente mit eingeschränkter Integrität ausgelöst wurden. Weitere Informationen zur Benachrichtigungsumgebung finden Sie im Abschnitt [Warnungen](#alerting-and-alert-management).  
+Auf der Registerkarte **Integrität** zeigt die Tabelle unter dem Abschnitt **Integrität der Gast-VM** den aktuellen Integritätsstatus Ihrer VM und die Gesamtzahl der VM-Integritätswarnungen an, die von einer Komponente mit eingeschränkter Integrität ausgelöst wurden. Weitere Informationen zur Benachrichtigungsumgebung finden Sie im Abschnitt „Warnungen“.  
 
 Die für eine VM definierten Integritätszustände sind in der folgenden Tabelle beschrieben: 
 

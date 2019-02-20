@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 01/15/2019
-ms.openlocfilehash: edc6e651c3ec352115e360e50f98a3e36cd287c0
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.date: 02/11/2019
+ms.openlocfilehash: 39a7f7ce6660016f00e36c5f6619eba2fa461023
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904079"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993162"
 ---
 # <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Status von Migrationsszenarios, die von Azure Database Migration Service unterstützt werden
 Azure Database Migration Service wurde zur Unterstützung einer Vielzahl von Migrationsszenarios (Quelle/Ziel-Paare) und sowohl für die Offline- (einmalig) als auch die Onlinemigration (fortlaufende Synchronisierung) konzipiert. Der von Azure Database Migration Service bereitgestellte Szenarioumfang wird im Laufe der Zeit erweitert. In regelmäßigen Abständen werden neue Szenarios hinzugefügt. Dieser Artikel beschreibt die Migrationsszenarien, die derzeit von Azure Database Migration Service unterstützt werden, sowie die Status der einzelnen Szenarien (private [eingeschränkte] Vorschau, öffentliche Vorschau oder allgemein verfügbar).

@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: fe7d3956c1a5ead55acd8605086668e20e85e1d2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496073"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001696"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio
 
@@ -22,7 +22,7 @@ Azure Machine Learning Studio bietet Ihnen die Tools, die Sie benötigen, um ein
 
 Dabei verwenden Sie Studio zum Erstellen eines als *Trainingsexperiment* bezeichneten Experiments, in dem Sie das Modell trainieren, bewerten und bearbeiten. Sobald Sie zufrieden sind, bereiten Sie das Modell auf die Bereitstellung vor, indem Sie Ihr Trainingsexperiment in ein *Vorhersageexperiment* konvertieren, das zum Bewerten von Benutzerdaten konfiguriert ist.
 
-Ein Beispiel für diesen Vorgang finden Sie unter [Exemplarische Vorgehensweise: Entwickeln einer Predictive Analytics-Lösung für die Kreditrisikobewertung in Azure Machine Learning](walkthrough-develop-predictive-solution.md).
+Ein Beispiel für diesen Vorgang finden Sie unter [Tutorial 1: Vorhersagen des Kreditrisikos](tutorial-part1-credit-risk.md).
 
 Dieser Artikel bietet fundierte Einblicke in die Details des Vorgangs, mit dem ein Trainingsexperiment in ein Vorhersageexperiment konvertiert wird, und in die Bereitstellung dieses Vorhersageexperiments. Wenn Sie diese Details verstehen, können Sie lernen, wie Sie das bereitgestellte Modell so konfigurieren, dass es wirksamer ist.
 

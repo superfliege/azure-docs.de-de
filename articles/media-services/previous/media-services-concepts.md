@@ -11,16 +11,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 06c6451a7c8532b32a1c130f6b71df97857d2e7f
-ms.sourcegitcommit: 8e06d67ea248340a83341f920881092fd2a4163c
+ms.openlocfilehash: 413e005762ab557e0605f9b4e79a6fe5b45448b7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49353700"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993910"
 ---
-# <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte
+# <a name="azure-media-services-concepts"></a>Azure Media Services-Konzepte 
+
 Dieses Thema bietet eine Übersicht über die wichtigsten Konzepte von Media Services.
 
 ## <a name="a-idassetsassets-and-storage"></a><a id="assets"/>Medienobjekte und Speicher
@@ -74,7 +75,7 @@ Ein BLOB-Container dient zur Gruppierung eines Satzes von BLOBs. BLOB-Container 
 ### <a name="a-idlocatorslocators"></a><a id="locators"/>Locators
 [Locator](https://docs.microsoft.com/rest/api/media/operations/locator)bieten einen Einstiegspunkt für den Zugriff auf die in einem Medienobjekt enthaltenen Dateien. Anhand einer Zugriffsrichtlinie werden die Berechtigungen eines Clients und die Dauer definiert, für die der Client auf eine bestimmte Ressource zugreifen kann. Locator können eine n:1-Beziehung mit einer Zugriffsrichtlinie aufweisen, wobei verschiedene Locator verschiedenen Clients verschiedene Startzeiten und Verbindungstypen bereitstellen können, wobei alle dieselben Berechtigungen und Einstellungen für die Dauer verwenden; aufgrund einer Einschränkung der Richtlinie für den gemeinsamen Zugriff, die von Azure Storage Services festgelegt wird, können jedoch nicht mehr als fünf eindeutige Locator mit einem bestimmten Medienobjekt gleichzeitig verknüpft sein. 
 
-Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator, die zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) oder für den progressiven Download von Medien verwendet werden, und SAS-URL-Locator, die zum Hochladen oder Herunterladen von Mediendateien auf/von Azure Storage verwendet werden. 
+Media Services unterstützt zwei Arten von Locatorobjekten: OnDemandOrigin-Locators, die zum Streamen von Medien (z.B. MPEG DASH, HLS oder Smooth Streaming) oder für den progressiven Download von Medien verwendet werden, und SAS-URL-Locators, die zum Hochladen oder Herunterladen von Mediendateien in bzw. von Azure Storage verwendet werden. 
 
 >[!NOTE]
 >Die Berechtigung zum Auflisten (AccessPermissions.List) sollte beim Erstellen eines OnDemandOrigin-Locators nicht verwendet werden. 
@@ -107,8 +108,8 @@ Informationen zu unterstützten Encodern finden Sie unter [Encoder](media-servic
 ## <a name="live-streaming"></a>Livestreaming
 In Azure Media Services repräsentiert ein Kanal eine Pipeline zum Verarbeiten von Livestreaminginhalten. Es gibt zwei Arten, auf die Live-Eingabedatenströme von Kanälen empfangen werden können:
 
-* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Smooth Streaming mit Mehrfachbitrate ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-* Ein Single-Bitrate-Datenstrom (in einem der folgenden Formate: RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Von einem lokalen Liveencoder wird Multi-Bitrate-RTMP oder -Smooth Streaming (fragmentiertes MP4) an den Kanal gesendet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Live Encoder, Telestream Wirecast, Teradek, Haivision und Tricaster. Die erfassten Streams durchlaufen Kanäle ohne weitere Transcodierung oder Codierung. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
+* Ein Datenstrom mit nur einer Bitrate (in einem der folgenden Formate: RTMP oder Smooth Streaming [fragmentiertes MP4]) wird an den Kanal gesendet, der zum Ausführen der Livecodierung mit Media Services aktiviert wurde. Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 
 ### <a name="channel"></a>Kanal
 In Media Services sind [Kanäle](https://docs.microsoft.com/rest/api/media/operations/channel)für die Verarbeitung von Livestreaminginhalten zuständig. Ein Kanal stellt einen Eingabeendpunkt (Erfassungs-URL) bereit, den Sie dann einem Live-Transcoder vorlegen. Der Kanal empfängt Live-Eingabestreams aus dem Live-Transcoder und stellt diese zum Streamen durch einen oder mehrere StreamingEndpoints zur Verfügung. Zudem bieten Kanäle einen Vorschauendpunkt (Vorschau-URL), mit dem Sie eine Vorschau des Streams anzeigen und überprüfen können, bevor Sie diesen weiter verarbeiten und übermitteln.
@@ -137,7 +138,7 @@ Weitere Informationen finden Sie unter
 ### <a name="dynamic-encryption"></a>Dynamische Verschlüsselung
 Azure Media Services ermöglicht die Sicherung Ihrer Medien ab dem Zeitpunkt, an dem sie Ihren Computer durch Speicherung, Verarbeitung und Übermittlung verlassen. Mit Media Services können Sie Inhalte dynamisch verschlüsselt übermitteln, und zwar mit AES (Advanced Encryption Standard unter Verwendung eines 128-Bit-Verschlüsselungsschlüssels) und Common Encryption (CENC, allgemeine Verschlüsselung) mit PlayReady- oder Widevine-DRM. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und PlayReady-Lizenzen an autorisierte Clients.
 
-Zur Zeit können Sie die folgenden Streamingformate verschlüsseln: HLS, MPEG DASH und Smooth Streaming. Progressive Downloads können nicht verschlüsselt werden.
+Zurzeit können Sie die folgenden Streamingformate verschlüsseln: HLS, MPEG DASH und Smooth Streaming. Progressive Downloads können nicht verschlüsselt werden.
 
 Wenn ein Medienobjekt durch Media Services verschlüsselt werden soll, müssen Sie dem Medienobjekt einen Verschlüsselungsschlüssel (CommonEncryption oder EnvelopeEncryption) zuordnen und zusätzlich Autorisierungsrichtlinien für den Schlüssel konfigurieren.
 

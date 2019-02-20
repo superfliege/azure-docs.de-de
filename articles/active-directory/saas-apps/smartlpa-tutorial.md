@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jeedes
-ms.openlocfilehash: eedec7de74f3bdd7ae43d1b1eb0decd5fe83ebf6
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 01d8a52d18bb3b6317f843eb6c30061e730ee3ab
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39075313"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56161080"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartlpa"></a>Tutorial: Azure Active Directory-Integration mit SmartLPA
 
@@ -162,7 +163,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-smartlpa-test-user"></a>Erstellen eines SmartLPA-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in SmartLPA eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur SmartLPA-Plattform ggf. vom [SmartLPA-Supportteam](mailto:support@smartlpa.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in SmartLPA eine Benutzerin namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der SmartLPA-Plattform ggf. vom  [SmartLPA-Supportteam](mailto:support@smartlpa.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

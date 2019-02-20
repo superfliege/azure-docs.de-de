@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: 1e1316ef568cbc6409a8653022d9acff9837b59d
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: 9cd5a63b5b1d7000605f90752be755356d40bb4a
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52279645"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56213051"
 ---
 >[!NOTE]
 >Für Ressourcen ohne feste Vorgabe können Sie die Erhöhung von Kontingenten anfordern, indem Sie ein Supportticket öffnen. Erstellen Sie **keine** zusätzlichen Azure Media Services-Konten, um zu versuchen, höhere Grenzwerte zu erzielen.
@@ -27,7 +27,7 @@ ms.locfileid: "52279645"
 | Livekanäle pro AMS-Konto  |5|
 | Programme im angehaltenen Zustand pro Kanal  |50|
 | Programme im ausgeführten Zustand pro Kanal  |3|
-| Streamingendpunkte im ausgeführten Zustand pro AMS-Konto|2|
+| Streamingendpunkte (angehalten oder ausgeführt) pro Media Services-Konto|2|
 | Streamingeinheiten pro Streamingendpunkt  |10 |
 | Speicherkonten | 1.000<sup>(5)</sup> (feststehend) |
 | Richtlinien | 1,000,000<sup>(6)</sup> |

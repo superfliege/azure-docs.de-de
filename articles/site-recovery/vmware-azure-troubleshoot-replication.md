@@ -1,22 +1,61 @@
 ---
 title: Beheben von Replikationsproblemen bei der Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mit Azure Site Recovery | Microsoft-Dokumentation
 description: Dieser Artikel enthält Informationen zur Problembehandlung für häufige Replikationsprobleme bei der Notfallwiederherstellung von VMware-VMs und physischen Servern in Azure mit Azure Site Recovery.
-author: Rajeswari-Mamilla
+author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/18/2019
-ms.author: ramamill
-ms.openlocfilehash: 5c2d33b39614ded95ac38e07c844b0a8cafa7cd2
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.date: 02/7/2019
+ms.author: mayg
+ms.openlocfilehash: 71c07d93d75ee372a50ec4ff5fc81e92926d329b
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411474"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964772"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Beheben von Problemen bei der Replikation von VMware-VMs und physischen Servern
 
 Sie erhalten unter Umständen eine bestimmte Fehlermeldung, wenn Sie ihre virtuellen VMware-Computer oder Ihre physischen Server mithilfe von Azure Site Recovery schützen. Dieser Artikel beschreibt einige häufig auftretende Probleme bei der Replikation von lokalen VMware-VMs und physischen Servern in Azure mithilfe von [Site Recovery](site-recovery-overview.md).
+
+## <a name="monitor-process-server-health-to-avoid-replication-issues"></a>Überwachen der Prozessserverintegrität zur Vermeidung von Replikationsproblemen
+
+Es wird empfohlen, die Integrität des Prozessservers (PS) im Portal zu überwachen, um sicherzustellen, dass die Replikation für Ihre zugeordneten Quellcomputer durchgeführt wird. Navigieren Sie im Tresor zu „Verwalten“ > „Site Recovery-Infrastruktur“ > „Konfigurationsserver“. Klicken Sie auf dem Blatt „Konfigurationsserver“ unter „Zugeordnete Server“ auf den Prozessserver. Das Blatt „Prozessserver“ mit den Integritätsstatistiken wird geöffnet. Sie können die CPU-Auslastung, die Speicherauslastung, den Status der für die Replikation erforderlichen PS-Dienste, das Zertifikatablaufdatum und den verfügbaren freien Speicher nachverfolgen. Der Status aller Statistiken sollte grün angezeigt werden. 
+
+**Speicher- und CPU-Auslastung sollten unter 70 Prozent liegen, und es sollte 25 Prozent freier Speicherplatz verfügbar sein.** Freier Speicherplatz bezieht sich auf den Speicherplatz des Cachedatenträgers auf dem Prozessserver, in dem die Replikationsdaten von Quellcomputern vor dem Hochladen in Azure gespeichert werden. Stehen weniger als 20 Prozent Speicherplatz zur Verfügung, wird die Replikation für alle zugeordneten Quellcomputer gedrosselt. Sehen Sie sich die [Kapazitätsrichtlinien](./site-recovery-plan-capacity-vmware.md#capacity-considerations) an, um die erforderliche Konfiguration für die Replikation der Quellcomputer nachvollziehen zu können.
+
+Stellen Sie sicher, das die unten aufgeführten Dienste auf dem PS-Computer ausgeführt werden. Starten Sie jeden der Dienste, der nicht ausgeführt wird, bzw. starten Sie ihn neu.
+
+**Integrierter Prozessserver**
+
+* cxprocessserver
+* InMage PushInstall
+* Dienst für den Protokollupload (LogUpload)
+* InMage Scout-Anwendungsdienst
+* Microsoft Azure Recovery Services-Agent (OBEngine)
+* InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+* WWW-Publishingdienst (W3SVC)
+* MySQL
+* Microsoft Azure Site Recovery-Dienst (dra)
+
+**Horizontal skalierter Prozessserver**
+
+* cxprocessserver
+* InMage PushInstall
+* Dienst für den Protokollupload (LogUpload)
+* InMage Scout-Anwendungsdienst
+* Microsoft Azure Recovery Services-Agent (OBEngine)
+* InMage Scout VX Agent – Sentinel/Outpost (svagents)
+* tmansvc
+
+**Prozessserver für das Failback in Azure**
+
+* cxprocessserver
+* InMage PushInstall
+* Dienst für den Protokollupload (LogUpload)
+
+Stellen Sie sicher, dass „StartType“ aller Dienste auf **„Automatisch“ oder „Automatisch (Verzögerter Start)“** festgelegt ist. Für den Dienst für den Microsoft Azure Recovery Services-Agent (OBEngine) muss „StartType“ nicht wie oben angegeben festgelegt werden.
 
 ## <a name="initial-replication-issues"></a>Probleme bei der Erstreplikation
 
@@ -26,7 +65,7 @@ Fehler bei der ersten Replikation werden häufig von Konnektivitätsproblemen zw
 
 In der folgenden Liste finden Sie mögliche Wege zum Überprüfen des Quellcomputers:
 
-*  Verwenden Sie in der Befehlszeile auf dem Quellserver Telnet, um den Prozessserver über den HTTPS-Port zu pingen (HTTPS-Standardport 9443), indem Sie den folgenden Befehl ausführen. Der Befehl überprüft auf Probleme mit der Netzwerkkonnektivität sowie Probleme, durch die der Firewallport blockiert wird.
+*  Verwenden Sie in der Befehlszeile auf dem Quellserver Telnet, um den Prozessserver über den HTTPS-Port zu pingen, indem Sie den folgenden Befehl ausführen. HTTPS-Port 9443 ist der Standardport, der vom Prozessserver zum Senden und Empfangen von Replikationsdatenverkehr verwendet wird. Sie können diesen Port bei der Registrierung ändern. Der folgende Befehl überprüft auf Probleme mit der Netzwerkkonnektivität sowie Probleme, durch die der Firewallport blockiert wird.
 
 
    `telnet <process server IP address> <port>`
@@ -35,13 +74,42 @@ In der folgenden Liste finden Sie mögliche Wege zum Überprüfen des Quellcompu
    > [!NOTE]
    > Verwenden Sie Telnet, um die Konnektivität zu testen. Verwenden Sie nicht `ping`. Wenn Telnet nicht installiert ist, führen Sie die unter [Installieren des Telnet-Clients](https://technet.microsoft.com/library/cc771275(v=WS.10).aspx) aufgeführten Schritte aus.
 
+   Wenn Telnet eine Verbindung mit dem PS-Port herstellen kann, wird ein leerer Bildschirm angezeigt.
+
    Wenn Sie keine Verbindung mit dem Prozessserver herstellen können, öffnen Sie den eingehenden Port 9443 auf dem Prozessserver. Beispielsweise müssen Sie möglicherweise den eingehenden Port 9443 auf dem Prozessserver öffnen, wenn Ihr Netzwerk über ein Umkreisnetzwerk verfügt. Überprüfen Sie dann, ob das Problem weiterhin auftritt.
 
-*  Überprüfen Sie den Status des Diensts **InMage Scout VX Agent – Sentinel/OutpostStart**. Wenn der Dienst nicht ausgeführt wird, starten Sie ihn, und überprüfen Sie dann, ob das Problem weiterhin auftritt.   
+*  Wenn die Telnet-Verbindung hergestellt wurde, der Quellcomputer aber meldet, dass der PS nicht erreichbar ist, öffnen Sie auf dem Quellcomputer den Webbrowser, und überprüfen Sie ob die Adresse „https://<PS_IP>:<PS_Data_Port>/“ erreichbar ist.
+
+    Beim Aufrufen dieser Adresse wird ein HTTPS-Zertifikatfehler erwartet. Wenn Sie den Zertifikatfehler ignorieren und den Vorgang fortsetzen, wird in der Regel der Fehler „400 – Ungültige Anforderung“ angezeigt. Das bedeutet, dass der Server die Anforderung des Browsers nicht verarbeiten kann und dass die HTTPS-Standardverbindung mit dem Server ordnungsgemäß funktioniert.
+
+    War der Vorgang nicht erfolgreich, enthält die Fehlermeldung im Browser ausführlichere Informationen. Beispiel: War die Proxyauthentifizierung fehlerhaft, gibt der Proxyserver „407 – Proxyauthentifizierung erforderlich“ sowie die erforderlichen Aktionen in der Fehlermeldung zurück. 
+
+*  Suchen Sie in den folgenden Protokollen auf dem virtuellen Quellcomputer nach Fehlern im Zusammenhang mit den Netzwerkuploadfehlern:
+
+       C:\Program Files (x86)\Microsoft Azure Site Recovery\agent\svagents*.log 
 
 ### <a name="check-the-process-server"></a>Überprüfen des Prozessservers
 
 In der folgenden Liste finden Sie mögliche Wege zum Überprüfen des Prozessservers:
+
+> [!NOTE]
+> Für den Prozessserver muss eine statische IPv4-Adresse festgelegt sein, und NAT-IP darf nicht konfiguriert sein.
+
+* **Überprüfen der Konnektivität zwischen den Quellcomputern und dem Prozessserver**
+1. Wenn Sie eine Telnet-Verbindung vom Quellcomputer herstellen können, der PS über den Quellcomputer jedoch nicht erreichbar ist, überprüfen Sie die End-to-End-Verbindung zwischen „cxprocessserver“ und dem virtuellen Quellcomputer. Führen Sie dazu das Tool „cxpsclient“ auf dem virtuellen Quellcomputer aus:
+
+       <install folder>\cxpsclient.exe -i <PS_IP> -l <PS_Data_Port> -y <timeout_in_secs:recommended 300>
+
+    Überprüfen Sie die generierten Protokolle auf dem PS in den folgenden Verzeichnissen auf Details zu entsprechenden Fehlern:
+
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.err
+       and
+       C:\ProgramData\ASR\home\svsystems\transport\log\cxps.xfer
+2. Überprüfen Sie die folgenden Protokolle auf dem PS, falls kein Heartbeat vom PS vorhanden ist:
+
+       C:\ProgramData\ASR\home\svsystems\eventmanager*.log
+       and
+       C:\ProgramData\ASR\home\svsystems\monitor_protection*.log
 
 *  **Überprüfen Sie, ob der Prozessserver aktiv Daten mithilfe von Push an Azure überträgt**.
 

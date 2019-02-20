@@ -1,6 +1,6 @@
 ---
-title: Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel | Microsoft-Dokumentation
-description: Sie können das Azure-Portal verwenden, um Ihr Azure Maps-Konto und Ihre Zugriffsschlüssel zu verwalten.
+title: Verwalten Ihres Azure Maps-Kontos | Microsoft-Dokumentation
+description: Sie können das Azure-Portal verwenden, um Ihr Azure Maps-Konto zu verwalten.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/12/2018
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 81746279e935f9fa5b6ef00bc8d31e75f4d3bd20
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 488167b4893c314af99b354a2422204ebbf34c5e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103043"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113687"
 ---
-# <a name="manage-your-azure-maps-account-and-keys"></a>Verwalten Ihres Azure Maps-Kontos und der dazugehörigen Schlüssel
+# <a name="manage-your-azure-maps-account"></a>Verwalten Ihres Azure Maps-Kontos
 
-Sie können Ihr Azure Maps-Konto und die dazugehörigen Schlüssel über das Azure-Portal verwalten. Sobald Sie über ein Konto und einen Schlüssel verfügen, können Sie die APIs auf Ihrer Website oder in Ihrer mobilen Anwendung implementieren.
+Sie können Ihr Azure Maps-Konto über das Azure-Portal verwalten. Sobald Sie über ein Konto verfügen, können Sie die APIs auf Ihrer Website oder in Ihrer mobilen Anwendung implementieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -32,16 +32,6 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 4. Geben Sie die Informationen für Ihr neues Konto ein.
 
 ![Eingeben von Kontoinformationen im Portal](./media/how-to-manage-account-keys/new-account-portal.png)
-
-## <a name="manage-keys-on-the-account-page"></a>Verwalten von Schlüsseln auf der Kontoseite
-
-Nach der Kontoerstellung erhalten Sie zwei zufällig generierte Schlüssel. Diese Schlüssel verwenden Sie für die Authentifizierung bei den Azure Maps-APIs, wenn Sie Kartendaten abrufen oder eine neue JavaScript-Karteninstanz erstellen möchten.
-
-Sie finden Ihre Schlüssel im Azure-Portal. Navigieren Sie zu Ihrem Konto. Wählen Sie dann im Menü die Option **Schlüssel** aus.
-
-![Verwalten von Kontoschlüsseln im Portal](./media/how-to-manage-account-keys/account-keys-portal.png)
-
-Auf dieser Seite können Sie Ihre Schlüssel kopieren oder neue Schlüssel generieren.
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 

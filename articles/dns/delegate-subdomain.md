@@ -5,24 +5,27 @@ services: dns
 author: vhorne
 ms.service: dns
 ms.topic: article
-ms.date: 1/22/2019
+ms.date: 2/7/2019
 ms.author: victorh
-ms.openlocfilehash: 87a80703c473245660a850645ca3fef21bbd80f6
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 31543db8e177701ddfe6beaaa3091d6465b0e9cd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452716"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895479"
 ---
 # <a name="delegate-an-azure-dns-subdomain"></a>Delegieren einer Azure DNS-Unterdomäne
 
-Sie können das Azure-Portal zum Delegieren einer DNS-Unterdomäne verwenden. Beispiel: Wenn Sie die Domäne „contoso.com“ besitzen, können Sie eine Unterdomäne namens *engineering* an eine andere, separate Zone delegieren, die getrennt von der Zone „contoso.com“ verwaltet werden kann.
+Sie können das Azure-Portal zum Delegieren einer DNS-Unterdomäne verwenden. Wenn Sie beispielsweise die Domäne „contoso.com“ besitzen, können Sie eine Unterdomäne namens *engineering* an eine andere, separate Zone delegieren, die Sie getrennt von der Zone „contoso.com“ verwalten können.
+
+Falls Sie dies vorziehen, können Sie eine Unterdomäne auch mithilfe von [Azure PowerShell](delegate-subdomain-ps.md) delegieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Delegieren einer Azure DNS-Unterdomäne müssen Sie zunächst Ihre öffentliche Domäne an Azure DNS delegieren. Anweisungen zum Konfigurieren Ihrer Namenserver für die Delegierung finden Sie unter [Delegieren einer Domäne an Azure DNS](./dns-delegate-domain-azure-dns.md). Sobald Ihre Domäne an Ihre Azure DNS-Zone delegiert ist, können Sie Ihre Unterdomäne delegieren.
 
-In den Beispielen dieses Artikels wird die Domäne „contoso.com“ verwendet. Ersetzen Sie diese durch Ihre eigene Domäne, wenn Sie diese Verfahren anwenden.
+> [!NOTE]
+> In diesem Artikel wird „contoso.com“ als Beispiel verwendet. Ersetzen Sie Ihren eigenen Domänennamen durch „contoso.com“.
 
 ## <a name="create-a-zone-for-your-subdomain"></a>Erstellen einer Zone für die Unterdomäne
 
@@ -38,10 +41,13 @@ Erstellen Sie zuerst die Zone für die Unterdomäne **engineering**.
 
 ## <a name="note-the-name-servers"></a>Notieren der Namenserver
 
-Kopieren Sie anschließend die vier Namenserver für die Unterdomäne.
+Notieren Sie sich als Nächstes die vier Namenserver für die engineering-Unterdomäne.
 
-1. Notieren Sie im Bereich der Zone **engineering** die vier Namenserver für die Zone. Sie verwenden diese Namenserver später.
-2. Erstellen Sie einen **A**-Eintrag zum Testen. Erstellen Sie beispielsweise den A-Eintrag **www**, und konfigurieren Sie ihn mit der IP-Adresse **10.10.10.10**.
+Notieren Sie im Bereich der Zone **engineering** die vier Namenserver für die Zone. Sie verwenden diese Namenserver später.
+
+## <a name="create-a-test-record"></a>Erstellen eines Testeintrags
+
+Erstellen Sie einen **A**-Eintrag zum Testen. Erstellen Sie beispielsweise den A-Eintrag **www**, und konfigurieren Sie ihn mit der IP-Adresse **10.10.10.10**.
 
 ## <a name="create-an-ns-record"></a>Erstellen eines NS-Eintrags
 
@@ -59,10 +65,8 @@ Als Nächstes erstellen Sie einen Eintrag für den Namenserver (NS) für die Zon
 Verwenden Sie „nslookup“ zum Testen der Delegierung.
 
 1. Öffnen Sie ein PowerShell-Fenster.
-2. Geben Sie an einer Eingabeaufforderung Folgendes ein: `nslookup www.engineering.<your domain name>.`.
+2. Geben Sie an einer Eingabeaufforderung Folgendes ein: `nslookup www.engineering.contoso.com.`.
 3. Sie sollten eine nicht autoritative Antwort mit der Adresse **10.10.10.10** erhalten.
-
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

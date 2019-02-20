@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: hrasheed
-ms.openlocfilehash: c1c4637bf3b71ade6cceb4427180edf8bc408670
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 23fa146b7bdaef0451984d0fbc638c57691cf259
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408101"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201719"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -25,6 +25,7 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 
 * __Verwenden von Beeline aus einer SSH-Verbindung mit einem Hauptknoten oder Edgeknoten__: `-u 'jdbc:hive2://headnodehost:10001/;transportMode=http'`
 * __Verwenden von Beeline auf einem Client, Herstellen der Verbindung mit HDInsight über ein virtuelles Azure-Netzwerk__:`-u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'`
+* __Verwenden von Beeline auf einem Client, Herstellen der Verbindung mit einem HDInsight ESP-Cluster (Enterprise-Sicherheitspaket) über ein virtuelles Azure-Netzwerk__: `-u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>`
 * __Verwenden von Beeline auf einem Client, Herstellen der Verbindung mit HDInsight über das öffentliche Internet__:`-u 'jdbc:hive2://clustername.azurehdinsight.net:443/;ssl=true;transportMode=http;httpPath=/hive2' -n admin -p password`
 
 > [!NOTE]  
@@ -35,6 +36,8 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 > Ersetzen Sie `clustername` durch den Namen Ihres HDInsight-Clusters.
 >
 > Ersetzen Sie bei der Verbindung mit dem Cluster über ein virtuelles Netzwerk `<headnode-FQDN>` durch den vollqualifizierten Domänennamen eines Clusterhauptknotens.
+>
+> Ersetzen Sie bei der Verbindung mit einem ESP-Cluster (Enterprise-Sicherheitspaket) `<AAD-Domain>` durch den Namen der Azure Active Directory-Instanz (AAD), mit der der Cluster verknüpft ist. Ersetzen Sie `<username>` durch den Namen eines Kontos in der Domäne mit der Berechtigung für den Zugriff auf den Cluster.
 
 ## <a id="prereq"></a>Voraussetzungen
 
@@ -67,6 +70,12 @@ Beeline ist ein Hive-Client, der auf den Hauptknoten des HDInsight-Clusters enth
 
         ```bash
         beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/;transportMode=http'
+        ```
+    * Beim Herstellen einer Verbindung mit einem mit Azure Active Directory (AAD) verknüpften ESP-Cluster (Enterprise-Sicherheitspaket) müssen Sie auch den Domänennamen `<AAD-Domain>` und den Namen eines Domänenbenutzerkontos mit der Berechtigung für den Zugriff auf den Cluster `<username>` angeben:
+        
+        ```bash
+        kinit <username>
+        beeline -u 'jdbc:hive2://<headnode-FQDN>:10001/default;principal=hive/_HOST@<AAD-Domain>;auth-kerberos;transportMode=http' -n <username>
         ```
 
 2. Beeline-Befehle beginnen mit dem Zeichen `!`, z.B. `!help` zum Anzeigen der Hilfe. Jedoch kann `!` bei einigen Befehlen ausgelassen werden. `help` funktioniert beispielsweise auch.
@@ -271,10 +280,7 @@ Weitere Informationen zu anderen Methoden zur Verwendung von Hadoop in HDInsight
 * [Verwenden von Apache Pig mit Apache Hadoop in HDInsight](hdinsight-use-pig.md)
 * [Verwenden von MapReduce mit Apache Hadoop in HDInsight](hdinsight-use-mapreduce.md)
 
-Wenn Sie Tez mit Hive verwenden, lesen Sie folgende Dokumente:
-
-* [Verwenden der Apache Tez-Benutzeroberfläche in Windows-basiertem HDInsight](../hdinsight-debug-tez-ui.md)
-* [Verwenden der Apache Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
+Wenn Sie Tez mit Hive verwenden, lesen Sie folgendes Dokument: [Verwenden der Apache Ambari-Tez-Ansicht in Linux-basiertem HDInsight](../hdinsight-debug-ambari-tez-view.md)
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

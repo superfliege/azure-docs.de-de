@@ -2,7 +2,7 @@
 title: Veröffentlichen von Azure Media Services-Inhalten mit REST
 description: Erfahren Sie, wie Sie einen Locator erstellen, der zum Generieren einer Streaming-URL verwendet wird. Der Code verwendet die REST-API.
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 services: media-services
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 8385dedd494c0cef968cb869ded3e92ce213da5e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 185e047bb1877d5ee4660653c0e7b6b32f273a0c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33785859"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991598"
 ---
-# <a name="publish-azure-media-services-content-using-rest"></a>Veröffentlichen von Azure Media Services-Inhalten mit REST
+# <a name="publish-azure-media-services-content-using-rest"></a>Veröffentlichen von Azure Media Services-Inhalten mit REST 
 > [!div class="op_single_selector"]
 > * [.NET](media-services-deliver-streaming-content.md)
 > * [REST](media-services-rest-deliver-streaming-content.md)
@@ -140,20 +140,20 @@ Antwort:
 ### <a name="build-streaming-urls"></a>Erstellen von Streaming-URLs
 Verwenden Sie den nach der Locator-Erstellung zurückgegebenen **Path** -Wert, um die Smooth-, HLS- und MPEG DASH-URLs zu erstellen. 
 
-Smooth Streaming: **Path** + Manifestdateiname + "/manifest"
+Smooth Streaming: **Pfad** + Manifestdateiname + „/manifest“
 
 Beispiel:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest
 
-HLS: **Path** + Manifestdateiname + "/manifest(format=m3u8-aapl)"
+HLS: **Pfad** + Manifestdateiname + „/manifest(format=m3u8-aapl)“
 
 Beispiel:
 
     http://amstest1.streaming.mediaservices.windows.net/3c5fe676-199c-4620-9b03-ba014900f214/BigBuckBunny.ism/manifest(format=m3u8-aapl)
 
 
-DASH: **Path** + Manifestdateiname + "/manifest(format=mpd-time-csf)"
+DASH: **Pfad** + Manifestdateiname + „/manifest(format=mpd-time-csf)“
 
 Beispiel:
 
@@ -163,7 +163,7 @@ Beispiel:
 ### <a name="build-progressive-download-urls"></a>Erstellen von URLs für progressive Downloads
 Verwenden Sie den nach der Locator-Erstellung zurückgegebenen **Path** -Wert, um die URL für progressive Downloads zu generieren.   
 
-URL: **Path** + Name der MP4-Medienobjektdatei
+URL: **Pfad** + Name der MP4-Medienobjektdatei
 
 Beispiel:
 

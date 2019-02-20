@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in Kanbanize | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Kanbanize | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Kanbanize konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 746eaadcdb9a588087367c4c70237922cf0f14bf
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 22c136225e5a8526afd482e5ef8400198947422f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39057832"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199679"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Tutorial: Azure Active Directory-Integration in Kanbanize
+# <a name="tutorial-azure-active-directory-integration-with-kanbanize"></a>Tutorial: Azure Active Directory-Integration mit Kanbanize
 
 In diesem Tutorial erfahren Sie, wie Sie Kanbanize in Azure Active Directory (Azure AD) integrieren.
 
@@ -168,7 +169,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     > [!Note]
     > Sie können diese Werte durch Kombination der Werte von Namespace und Name des entsprechenden Attributs aus dem Abschnitt „Benutzerattribute“ im Azure-Portal abrufen.
 
-    g. Öffnen Sie im Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend (ohne Anfangs und Endmarker) in das Feld **X.509-Zertifikat** ein.
+    g. Öffnen Sie in Editor das Base64-codierte Zertifikat, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend (ohne Anfangs und Endmarker) in das Feld  **Idp X.509 Certificate** (X.509-Zertifikat des IDP) ein.
 
     h. Aktivieren Sie **Enable login with both SSO and Kanbanize** (Anmeldung mit SSO und Kanbanize aktivieren).
     
@@ -211,7 +212,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Kanbanize. Kanbanize unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Kanbanize ein neuer Benutzer erstellt.
 
 >[!Note]
->Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Kundensupportteam von Kanbanize](mailto:support@ms.kanbanize.com) in Verbindung.
+>Wenn Sie einen Benutzer manuell erstellen müssen, wenden Sie sich an das  [Kanbanize-Clientsupportteam](mailto:support@ms.kanbanize.com).
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

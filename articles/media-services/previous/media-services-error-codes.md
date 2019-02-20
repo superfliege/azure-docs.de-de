@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d485195b868b6cbca587c736ac02663491742cdb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d700423ea966cab3b0f546d21d4d2f5ca5208971
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51236873"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990512"
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services-Fehlercodes
 Wenn Sie Microsoft Azure Media Services verwenden, erhalten Sie möglicherweise HTTP-Fehlercodes vom Dienst, abhängig von Problemen wie dem Ablaufen von Authentifizierungstoken und Aktionen, die in Media Services nicht unterstützt werden. Im Folgenden werden die **HTTP-Fehlercodes** aufgelistet, die von Media Services zurückgegeben werden könnten, sowie mögliche Ursachen für diese Fehlercodes.  
@@ -56,7 +56,7 @@ Die Anforderung ist aus einem der folgenden Gründe nicht zulässig:
 
 * Das Media Services-Konto konnte nicht gefunden werden oder wurde gelöscht.
 * Das Media Services-Konto ist deaktiviert, und der Anforderungstyp ist nicht HTTP GET. Dienstvorgänge geben ebenfalls eine 403-Antwort zurück.
-* Das Authentifizierungstoken enthält die Anmeldeinformationen des Benutzers nicht: Kontoname und/oder Abonnement-ID. Sie finden diese Informationen in der Media Services-Benutzeroberflächenerweiterung für Ihr Media Services-Konto im Azure-Verwaltungsportal.
+* Das Authentifizierungstoken enthält die Anmeldeinformationen des Benutzers nicht: Kontoname oder Abonnement-ID. Sie finden diese Informationen in der Media Services-Benutzeroberflächenerweiterung für Ihr Media Services-Konto im Azure-Verwaltungsportal.
 * Auf die Ressource kann nicht zugegriffen werden.
   
   * Es wurde versucht, einen MediaProcessor zu verwenden, der für Ihr Media Services-Konto nicht verfügbar ist.

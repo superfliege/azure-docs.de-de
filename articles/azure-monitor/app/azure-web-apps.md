@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: mbullwin
-ms.openlocfilehash: bde73e9ee87ab9165c1d2dd720377d2f9c8771cb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4ec6e1288b34f04350a88697ca13ed044922ee50
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565954"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002241"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 Im [Azure-Portal](https://portal.azure.com) können Sie eine Anwendungsleistungsüberwachung für Ihre Web-Apps, mobilen Back-Ends und API-Apps in [Azure App Service](../../app-service/overview.md) einrichten. [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) instrumentiert Ihre App, um Telemetriedaten über ihre Aktivitäten an den Application Insights-Dienst zu senden, wo sie gespeichert und analysiert werden. Hier können Sie dann mithilfe von Metrikdiagrammen und Suchtools Probleme diagnostizieren, die Leistung verbessern und die Nutzung untersuchen.
@@ -29,7 +29,7 @@ Zum Konfigurieren der Überwachung kann die App auf zwei Arten instrumentiert we
 * **Buildzeit:** Sie können ein Paket in der App installieren, die Sie gerade entwickeln. Diese Option ist wesentlich flexibler. Neben den gleichen Standardpaketen können Sie auch Code schreiben, um die Telemetrie anzupassen oder Ihre eigenen Telemetriedaten zu senden. Sie können bestimmte Aktivitäten protokollieren oder Ereignisse gemäß der Semantik Ihrer App-Domäne erfassen. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Laufzeitinstrumentierung mit Application Insights
-Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um mehr zu erhalten – beispielsweise Reaktionszeiten, Überwachung von Abhängigkeitsaufrufen, intelligente Erkennung und leistungsstarke Log Analytics-Abfragesprache. 
+Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie schon über eine Art der Überwachung, und zwar von Anforderungs- und Fehlerraten. Fügen Sie Application Insights hinzu, um mehr zu erhalten, beispielsweise Reaktionszeiten, Überwachung von Abhängigkeitsaufrufen, intelligente Erkennung und die leistungsstarke Data Explorer-Abfragesprache. 
 
 1. In der Azure-Systemsteuerung für Ihre App Service-Instanz können Sie **Application Insights auswählen**.
 
@@ -42,7 +42,7 @@ Wenn Sie bereits eine App Service-Instanz in Azure ausführen, verfügen Sie sch
 
     ![Instrumentieren Ihrer Web-App](./media/azure-web-apps/create-resource.png)
 
-2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie Application Insights Daten für Ihre Anwendung erfassen soll.(Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsebenen aktiviert.)
+2. Nach Angabe der zu verwendenden Ressource können Sie plattformspezifisch auswählen, wie in Application Insights Daten für Ihre Anwendung erfasst werden sollen. (Die Überwachung von ASP.NET-Apps ist standardmäßig mit zwei verschiedenen Erfassungsebenen aktiviert.)
 
     ![Auswählen plattformspezifischer Optionen](./media/azure-web-apps/choose-options-new.png)
 

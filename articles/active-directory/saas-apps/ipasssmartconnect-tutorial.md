@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration in iPass SmartConnect | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit iPass SmartConnect | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und iPass SmartConnect konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: ecfdd3fae1d394e3b57fcd325f44cad0d1a98534
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 91a68a208496904fcc8bfe13a227c61bf313214f
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39444893"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198166"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Tutorial: Azure Active Directory-Integration in iPass SmartConnect
+# <a name="tutorial-azure-active-directory-integration-with-ipass-smartconnect"></a>Tutorial: Azure Active Directory-Integration mit iPass SmartConnect
 
 In diesem Tutorial erfahren Sie, wie Sie iPass SmartConnect in Azure Active Directory (Azure AD) integrieren.
 
@@ -184,7 +185,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-an-ipass-smartconnect-test-user"></a>Erstellen eines iPass SmartConnect-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Britta Simon. Das [iPass SmartConnect-Supportteam](mailto:help@ipass.com) kann Sie beim Hinzufügen von Benutzern oder Domänen unterstützen, die auf der iPass SmartConnect-Plattform auf die Whitelist gesetzt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der iPass SmartConnect-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in iPass SmartConnect einen Benutzer namens Britta Simon. Das  [iPass SmartConnect-Supportteam](mailto:help@ipass.com) kann Sie beim Hinzufügen von Benutzern oder Domänen unterstützen, die auf der iPass SmartConnect-Plattform auf die Whitelist gesetzt werden sollen. Wird die Domäne vom Team hinzugefügt, werden Benutzer automatisch auf der iPass SmartConnect-Plattform bereitgestellt. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

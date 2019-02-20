@@ -3,20 +3,20 @@ title: Erhöhen des Endpunktkontingents
 titleSuffix: Azure Cognitive Services
 description: Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen.
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 802a5cc629a467527c916c5a41a9c00d06e85600
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 89778375c6362007a81eab72663f56492f4fe206
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491721"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997905"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Verwenden von Microsoft Azure Traffic Manager zum Verwalten von Endpunktkontingenten über mehrere Schlüssel
 Language Understanding Intelligent Service (LUIS) bietet die Möglichkeit, das Endpunkt-Anforderungskontingent über das Kontingent eines einzelnen Schlüssels hinaus zu erhöhen. Dies erfolgt, indem Sie mehrere Schlüssel für LUIS erstellen und diese der LUIS-Anwendung auf der Seite **Veröffentlichen** im Abschnitt **Resources and Keys** (Ressourcen und Schlüssel) hinzuzufügen. 
@@ -362,6 +362,9 @@ Die erfolgreiche Antwort mit dem LUIS-Endpunkt lautet:
 ## <a name="use-the-traffic-manager-parent-profile"></a>Verwenden des übergeordneten Traffic Manager-Profils
 Damit Datenverkehr endpunktübergreifend verwaltet werden kann, müssen Sie einen Aufruf an das Traffic Manager-DNS vornehmen, um den LUIS-Endpunkt zu suchen. Dieser Aufruf erfolgt für jede LUIS-Endpunktanforderung und muss den geografischen Standort des Benutzers der LUIS-Clientanwendung simulieren. Fügen Sie den DNS-Antwortcode zwischen Ihrer LUIS-Clientanwendung und der Anforderung an LUIS nach der Endpunktvorhersage hinzu. 
 
+## <a name="resolving-a-degraded-state"></a>Auflösen des Status „Heruntergestuft“
+
+Aktivieren Sie [Diagnoseprotokolle](../../traffic-manager/traffic-manager-diagnostic-logs.md) für Traffic Manager, um festzustellen, warum der Endpunktstatus heruntergestuft wurde.
 
 ## <a name="clean-up"></a>Bereinigen
 Entfernen Sie die beiden LUIS-Endpunktschlüssel, die drei Traffic Manager-Profile und die Ressourcengruppe, die die fünf Ressourcen enthalten hat. Dies erfolgt im Azure-Portal. Löschen Sie zuerst die fünf Ressourcen aus der Ressourcenliste. Löschen Sie dann die Ressourcengruppe. 

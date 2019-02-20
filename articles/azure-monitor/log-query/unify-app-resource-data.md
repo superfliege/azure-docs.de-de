@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: magoedte
-ms.openlocfilehash: f9138ec06900f4a7f856cc90362d16496b7b4fed
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55766011"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237670"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
 Dieser Artikel beschreibt das Abfragen und Anzeigen aller Daten in Ihren Application Insights-Anwendungsprotokollen an einem Ort, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.  
@@ -32,7 +32,7 @@ ApplicationInsights
 | summarize by ApplicationName
 ```
 
-Erstellen Sie mithilfe des union-Operators eine Funktion mit der Liste der Anwendungen, und speichern Sie die Abfrage als Funktion mit dem Alias *applicationsScoping*.  
+Erstellen Sie mithilfe des union-Operators eine Funktion mit der Liste der Anwendungen, und speichern Sie die Abfrage in Ihrem Arbeitsbereich als Funktion mit dem Alias *applicationsScoping*.  
 
 ```
 union withsource=SourceApp 
@@ -45,7 +45,7 @@ app('Contoso-app5').requests
 ```
 
 >[!NOTE]
->Sie können die aufgelisteten Anwendungen jederzeit ändern. Navigieren Sie dazu zum Abfrage-Explorer im Protokoll-Portal, und bearbeiten Sie die Funktion, oder verwenden Sie das PowerShell-Cmdlet `SavedSearch`. Der Befehl `withsource= SourceApp` fügt den Ergebnissen eine Spalte hinzu, die die Anwendung angibt, von der das Protokoll gesendet wurde. 
+>Sie können die aufgelisteten Anwendungen jederzeit im Portal ändern. Navigieren Sie dazu zum Abfrage-Explorer in Ihrem Arbeitsbereich, und bearbeiten und speichern Sie dann die Funktion, oder verwenden Sie das PowerShell-Cmdlet `SavedSearch`. Der Befehl `withsource= SourceApp` fügt den Ergebnissen eine Spalte hinzu, die die Anwendung angibt, von der das Protokoll gesendet wurde. 
 >
 >Die Abfrage verwendet das Application Insights-Schema, obwohl sie im Arbeitsbereich ausgeführt wird, da die applicationsScoping-Funktion die Application Insights-Datenstruktur zurückgibt. 
 >

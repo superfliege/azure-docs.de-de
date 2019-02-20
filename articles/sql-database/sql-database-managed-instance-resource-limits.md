@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 799f47b291b3943dcb4d6b31bc8df732c28990cd
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: a9e5be3c1dcbf4461bd00b2b1ce530aa16e441ef
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816593"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962127"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>Übersicht über Ressourceneinschränkungen für verwaltete Azure SQL-Datenbank-Instanzen
 
@@ -34,7 +34,7 @@ Eine verwaltete Instanz weist Merkmale und Ressourceneinschränkungen auf, die v
 
 Eine verwaltete Azure SQL-Datenbank-Instanz kann auf zwei Hardwaregenerationen (Gen4 und Gen5) bereitgestellt werden. Hardwaregenerationen weisen unterschiedliche Merkmale auf, die in der folgenden Tabelle beschrieben sind.
 
-|   | **Gen 4** | **Gen 5** |
+|   | **Gen4** | **Gen5** |
 | --- | --- | --- |
 | Hardware | Intel E5-2673 v3-Prozessoren (Haswell) mit 2,4 GHz, angefügte SSD, virtueller Kern = 1 physischer Kern | Intel E5-2673 v4-Prozessoren (Broadwell) mit 2,3 GHz, schnelle NVMe-SSD, virtueller Kern = 1 LP (Hyperthread) |
 | Compute | 8, 16, 24 virtuelle Kerne | 8, 16, 24, 32, 40, 64, 80 V-Kerne |
@@ -51,7 +51,7 @@ Eine verwaltete Instanz verfügt über zwei Diensttarife: „Universell“und �
 | --- | --- | --- |
 | Anzahl der virtuellen Kerne\* | Gen4: 8, 16, 24<br/>Gen5: 8, 16, 24, 32, 40, 64, 80 | Gen4: 8, 16, 24, 32 <br/> Gen5: 8, 16, 24, 32, 40, 64, 80 |
 | Arbeitsspeicher | Gen4: 56 GB bis 168 GB<br/>Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne | Gen4: 56 GB bis 168 GB <br/> Gen5: 40,8 GB bis 408 GB<br/>\*Proportional zur Anzahl virtueller Kerne |
-| Max. Speichergröße | 8 TB | Gen 4: 1 TB <br/> Gen 5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
+| Max. Speichergröße | 8 TB | Gen4: 1 TB <br/> Gen5: <br/>- 1 TB für 8, 16 virtuelle Kerne<br/>- 2 TB für 24 virtuelle Kerne<br/>- 4 TB für 32, 40, 64, 80 virtuelle Kerne |
 | Max. Speicherkapazität pro Datenbank | Bestimmt durch die maximale Speichergröße pro Instanz | Bestimmt durch die maximale Speichergröße pro Instanz |
 | Max. Anzahl von Datenbanken pro Instanz | 100 | 100 |
 | Max. Datenbankdateien pro Instanz | Bis zu 280 | 32.767 Dateien pro Datenbank |

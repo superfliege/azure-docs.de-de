@@ -1,5 +1,5 @@
 ---
-title: Erfassen der Linux-Anwendungsleistung in Log Analytics | Microsoft-Dokumentation
+title: Erfassen der Linux-Anwendungsleistung in Azure Monitor | Microsoft-Dokumentation
 description: Dieser Artikel enthält Details zum Konfigurieren des Log Analytics-Agents für Linux, um Leistungsindikatoren für MySQL und Apache HTTP Server zu erfassen.
 services: log-analytics
 documentationcenter: ''
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.openlocfilehash: bf14e06f52f1b5a32ea3922083cc1f9bdbfb2aae
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 453e66934b93ab4368c4d3816d3db1a4588ae660
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104844"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001326"
 ---
-# <a name="collect-performance-counters-for-linux-applications-in-log-analytics"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Log Analytics 
+# <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Erfassen von Leistungsindikatoren für Linux-Anwendungen in Azure Monitor 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
-Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen in Log Analytics zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
+Dieser Artikel enthält Details zum Konfigurieren des [Log Analytics-Agents für Linux](https://github.com/Microsoft/OMS-Agent-for-Linux), um Leistungsindikatoren für bestimmte Anwendungen in Azure Monitor zu erfassen.  Folgende Anwendungen sind in diesem Artikel enthalten:  
 
 - [MySQL](#MySQL)
 - [Apache HTTP Server](#apache-http-server)
@@ -114,7 +114,7 @@ Diese Berechtigungen können durch Ausführen der folgenden „grant“-Befehle 
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Monitor konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -150,7 +150,7 @@ sudo /opt/microsoft/apache-cimprov/bin/apache_config.sh -u
 
 ### <a name="define-performance-counters"></a>Definieren von Leistungsindikatoren
 
-Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Analytics konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsindikatoren in Log Analytics](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
+Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten an Azure Monitor konfiguriert haben, müssen Sie die Leistungsindikatoren für die Erfassung konfigurieren.  Verwenden Sie das in [Windows- und Linux-Leistungsdatenquellen in Azure Monitor](data-sources-performance-counters.md) beschriebene Verfahren mit den Leistungsindikatoren in der folgenden Tabelle.
 
 | Objektname | Name des Leistungsindikators |
 |:--|:--|
@@ -168,4 +168,4 @@ Nachdem Sie den Log Analytics-Agent für Linux zum Senden von Daten mit Log Anal
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfassen von Leistungsindikatoren](data-sources-performance-counters.md) von Linux-Agents
-* Erfahren Sie mehr über [Protokollabfragen](../../log-analytics/log-analytics-queries.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 
+* Erfahren Sie mehr über [Protokollabfragen](../log-query/log-query-overview.md) zum Analysieren der aus Datenquellen und Lösungen gesammelten Daten. 

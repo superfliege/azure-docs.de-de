@@ -1,6 +1,6 @@
 ---
-title: Erweiterte Abfragen in Azure Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Log Analytics über das Analytics-Portal veranschaulicht wird.
+title: Erweiterte Abfragen in Azure Monitor | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Azure Monitor über das Analytics-Portal veranschaulicht wird.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: b8441d72f85c2160cf756df37722fa6037441236
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 4e5574fa5a615e43d94069a03716fa290b957342
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191545"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993213"
 ---
-# <a name="writing-advanced-queries-in-log-analytics"></a>Schreiben erweiterter Abfragen in Log Analytics
+# <a name="writing-advanced-queries-in-azure-monitor"></a>Schreiben erweiterter Abfragen in Azure Monitor
 
 > [!NOTE]
-> Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
+> Sie sollten zunächst [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit dieser Lektion beginnen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -130,7 +130,7 @@ SecurityEvent
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Informationen zur Verwendung der [Data Explorer-Abfragesprache](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Datums- und Uhrzeitvorgänge](datetime-operations.md)

@@ -11,16 +11,16 @@ author: hning86
 ms.reviewer: larryfr
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 751a1dc84f81b388a1fffb82cc3dfbc4996eed1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 1b2934ceb402dab5e9cf98e7e0a53b1b438c66a8
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249628"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111848"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>So funktioniert Azure Machine Learning Service: Architektur und Konzepte
 
-In diesem Artikel werden die Architektur und die Konzepte für Azure Machine Learning Service beschrieben. Die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung sind im folgenden Diagramm dargestellt: 
+In diesem Artikel werden die Architektur und die Konzepte für Azure Machine Learning Service beschrieben. Die wichtigsten Komponenten des Diensts und der allgemeine Workflow für seine Nutzung sind im folgenden Diagramm dargestellt:
 
 [![Azure Machine Learning Service – Architektur und Workflow](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
@@ -32,7 +32,7 @@ Für den Workflow werden in der Regel diese Schritte ausgeführt:
 1. **Abfragen des Experiments** auf protokollierte Metriken aus den aktuellen und bereits erfolgten Ausführungen. Wenn die Metriken kein gewünschtes Ergebnis anzeigen, können Sie zu Schritt 1 zurückkehren und Ihre Skripts erneut durchlaufen.
 1. Nachdem eine zufriedenstellende Ausführung gefunden wurde, können Sie das dauerhafte Modell in der **Modellregistrierung** registrieren.
 1. Entwickeln eines Bewertungsskripts
-1. **Erstellen eines Images** und Registrieren in der **Imageregistrierung** 
+1. **Erstellen eines Images** und Registrieren in der **Imageregistrierung**
 1. **Bereitstellen des Images** als **Webdienst** in Azure
 
 
@@ -61,11 +61,17 @@ Wenn Sie einen neuen Arbeitsbereich erstellen, werden darin automatisch mehrere 
 * [Azure Key Vault](https://azure.microsoft.com/services/key-vault/): Speichert Geheimnisse, die von Computezielen verwendet werden, sowie andere vertrauliche Informationen, die vom Arbeitsbereich benötigt werden.
 
 > [!NOTE]
-> Neben dem Erstellen neuer Versionen können Sie auch vorhandene Azure-Dienste verwenden. 
+> Neben dem Erstellen neuer Versionen können Sie auch vorhandene Azure-Dienste verwenden.
 
 Das folgende Diagramm enthält eine Taxonomie des Arbeitsbereichs:
 
 [![Taxonomie des Arbeitsbereichs](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+
+## <a name="experiment"></a>Experiment
+
+Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Skript. Es gehört immer zu einem Arbeitsbereich. Beim Übermitteln einer Ausführung geben Sie einen Experimentnamen an. Die Informationen für die Ausführung werden unter diesem Experiment gespeichert. Wenn Sie eine Ausführung übermitteln und einen nicht vorhandenen Experimentnamen angeben, wird automatisch ein neues Experiment mit diesem neu angegebenen Namen erstellt.
+
+Ein Beispiel zum Verwenden eines Experiments finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
 
 ## <a name="model"></a>Modell
 
@@ -79,7 +85,7 @@ Ein Beispiel zum Trainieren eines Modells finden Sie im Dokument [Schnellstart: 
 
 ### <a name="model-registry"></a>Modellregistrierung
 
-Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning Service-Arbeitsbereich nach. 
+Die Modellregistrierung verfolgt alle Modelle in Ihrem Azure Machine Learning Service-Arbeitsbereich nach.
 
 Die Modelle werden anhand des Namens und der Version identifiziert. Jedes Mal, wenn Sie ein Modell mit dem gleichen Namen wie ein bereits vorhandenes Modell registrieren, geht die Registrierung davon aus, dass es sich um eine neue Version handelt. Die Version wird inkrementiert, und das neue Modell wird unter demselben Namen registriert.
 
@@ -88,6 +94,83 @@ Bei der Registrierung des Modells können Sie zusätzliche Metadatentags bereits
 Sie können keine Modelle löschen, die von einem Image verwendet werden.
 
 Ein Beispiel für das Registrieren eines Modells finden Sie unter [Trainieren eines Bildklassifizierungsmodells mit Azure Machine Learning Service](tutorial-train-models-with-aml.md).
+
+## <a name="run-configuration"></a>Laufzeitkonfiguration
+
+Eine Laufzeitkonfiguration ist ein Satz mit Anweisungen, mit denen definiert wird, wie ein Skript auf einem bestimmten Computeziel ausgeführt werden sollte. Die Konfiguration umfasst einen weiten Bereich von Verhaltensdefinitionen, z.B. die Vorgabe, ob eine vorhandene Python-Umgebung oder eine aus einer Spezifikation erstellte Conda-Umgebung verwendet werden soll.
+
+Eine Laufzeitkonfiguration kann in einer Datei in dem Verzeichnis beständig gespeichert werden, in dem Ihr Trainingsskript enthalten ist, oder sie kann als In-Memory-Objekt erstellt und zum Übermitteln einer Ausführung verwendet werden.
+
+Beispiele für Laufzeitkonfigurationen finden Sie unter [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
+
+## <a name="datastore"></a>Datenspeicher
+
+Ein Datenspeicher ist eine Speicherabstraktion eines Azure-Speicherkontos. Der Datenspeicher kann entweder einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Back-End-Speicher verwenden. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, und Sie können auch zusätzliche Datenspeicher registrieren.
+
+Verwenden Sie die Python SDK-API oder die Azure Machine Learning-CLI, um Dateien zu speichern und aus dem Datenspeicher abzurufen.
+
+## <a name="compute-target"></a>Computeziel
+
+Ein Computeziel ist die Computeressource, die zum Ausführen Ihres Trainingsskripts oder zum Hosten Ihrer Dienstbereitstellung verwendet wird. Die unterstützten Computeziele lauten:
+
+| Computeziel | Training | Bereitstellung |
+| ---- |:----:|:----:|
+| Ihr lokaler Computer | ✓ | &nbsp; |
+| Azure Machine Learning Compute | ✓ | &nbsp; |
+| Ein virtueller Linux-Computer in Azure</br>(z. B. Data Science Virtual Machine) | ✓ | &nbsp; |
+| Azure Databricks | ✓ | &nbsp; | &nbsp; |
+| Azure Data Lake Analytics | ✓ | &nbsp; |
+| Apache Spark für HDInsight | ✓ | &nbsp; |
+| Azure Container Instances | &nbsp; | ✓ |
+| Azure Kubernetes Service | &nbsp; | ✓ |
+| Azure IoT Edge | &nbsp; | ✓ |
+| Project Brainwave</br>(Field Programmable Gate Array) | &nbsp; | ✓ |
+
+Computeziele sind einem Arbeitsbereich zugeordnet. Andere Computeziele als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
+
+### <a name="managed-and-unmanaged-compute-targets"></a>Verwaltete und nicht verwaltete Computeziele
+
+* **Verwaltet**: Computeziele, die von Azure Machine Learning Service erstellt und verwaltet werden. Diese Computeziele sind für Machine Learning-Workloads optimiert. Azure Machine Learning Compute ist das einzige verwaltete Computeziel ab dem 4. Dezember 2018. Möglicherweise werden künftig weitere verwaltete Computeziele hinzugefügt.
+
+    Sie können Machine Learning-Compute-Instanzen direkt über den Arbeitsbereich erstellen, indem Sie das Azure-Portal, das Azure Machine Learning SDK oder die Azure CLI verwenden. Alle anderen Computeziele müssen außerhalb des Arbeitsbereichs erstellt und dann angefügt werden.
+
+* **Nicht verwaltet**: Computeziele, die *nicht* von Azure Machine Learning Service verwaltet werden. Sie müssen sie ggf. außerhalb von Azure Machine Learning erstellen und anschließend vor der Nutzung an Ihren Arbeitsbereich anfügen. Für nicht verwaltete Computeziele sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern.
+
+Informationen zum Auswählen eines Computeziels für das Training finden Sie unter [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
+
+Informationen zum Auswählen eines Computeziels für die Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning Service](how-to-deploy-and-where.md).
+
+## <a name="training-script"></a>Trainingsskript
+
+Zum Trainieren eines Modells geben Sie das Verzeichnis an, in dem das Trainingsskript und die zugehörigen Dateien enthalten sind. Außerdem geben Sie einen Experimentnamen an, der zum Speichern der während des Trainings gesammelten Informationen verwendet wird. Beim Training wird das gesamte Verzeichnis in die Trainingsumgebung (Computeziel) kopiert und das von der Laufzeitkonfiguration angegebene Skript gestartet. Darüber hinaus wird auch eine Momentaufnahme des Verzeichnisses unter dem Experiment im Arbeitsbereich gespeichert.
+
+Ein Beispiel finden Sie unter [Erstellen eines Arbeitsbereichs mit Python](quickstart-get-started.md).
+
+## <a name="run"></a>Ausführen
+
+Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
+
+* Metadaten zur Ausführung (Zeitstempel, Dauer usw.)
+* Metriken, die von Ihrem Skript protokolliert werden
+* Ausgabedateien, die automatisch vom Experiment gesammelt oder explizit von Ihnen hochgeladen werden
+* Eine Momentaufnahme des Verzeichnisses, in dem Ihre Skripts enthalten sind, vor der Ausführung
+
+Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst eine untergeordnete Ausführung aufweisen können.
+
+Ein Beispiel zum Anzeigen von Ausführungen, die beim Trainieren eines Modells erstellt werden, finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
+
+## <a name="snapshot"></a>Momentaufnahme
+
+Beim Übermitteln einer Ausführung komprimiert Azure Machine Learning das Verzeichnis, in dem das Skript als ZIP-Datei enthalten ist, und sendet es an das Computeziel. Die ZIP-Datei wird dann extrahiert, und das Skript wird ausgeführt. Azure Machine Learning speichert die ZIP-Datei im Rahmen der Ausführungsaufzeichnung zudem als Momentaufnahme. Alle Benutzer mit Zugriff auf den Arbeitsbereich können eine Ausführungsaufzeichnung durchsuchen und die Momentaufnahme herunterladen.
+
+## <a name="activity"></a>Aktivität
+
+Eine Aktivität stellt einen Vorgang mit langer Ausführungsdauer dar. Die folgenden Vorgänge sind Beispiele für Aktivitäten:
+
+* Erstellen oder Löschen eines Computeziels
+* Ausführen eines Skripts auf einem Computeziel
+
+Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberfläche bereitstellen, damit Sie den Status dieser Vorgänge auf einfache Weise überwachen können.
 
 ## <a name="image"></a>Image
 
@@ -110,7 +193,7 @@ Die Imageregistrierung führt die Nachverfolgung von Images durch, die mit Ihren
 
 ## <a name="deployment"></a>Bereitstellung
 
-Eine Bereitstellung ist eine Instanziierung Ihres Images in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten. 
+Eine Bereitstellung ist eine Instanziierung Ihres Images in einem Webdienst, der in der Cloud gehostet werden kann, oder in einem IoT-Modul für Bereitstellungen von integrierten Diensten.
 
 ### <a name="web-service"></a>Webdienst
 
@@ -124,36 +207,11 @@ Ein Beispiel für die Bereitstellung eines Modells als Webdienst finden Sie unte
 
 ### <a name="iot-module"></a>IoT-Modul
 
-Ein bereitgestelltes IoT-Modul ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edgegeräten bereit. 
+Ein bereitgestelltes IoT-Modul ist ein Docker-Container, der Ihr Modell und das zugeordnete Skript oder die Anwendung sowie alle zusätzlichen Abhängigkeiten enthält. Sie stellen diese Module mit Azure IoT Edge auf Edgegeräten bereit.
 
 Wenn Sie die Überwachung aktiviert haben, erfasst Azure Telemetriedaten aus dem Modell im Azure IoT Edge-Modul. Die Telemetriedaten sind nur für Sie zugänglich und werden in Ihrer Speicherkontoinstanz gespeichert.
 
 Azure IoT Edge stellt sicher, dass Ihr Modul ausgeführt wird, und überwacht das Gerät, auf dem es gehostet wird.
-
-## <a name="datastore"></a>Datenspeicher
-
-Ein Datenspeicher ist eine Speicherabstraktion eines Azure-Speicherkontos. Der Datenspeicher kann entweder einen Azure-Blobcontainer oder eine Azure-Dateifreigabe als Back-End-Speicher verwenden. Jeder Arbeitsbereich verfügt über einen Standarddatenspeicher, und Sie können auch zusätzliche Datenspeicher registrieren. 
-
-Verwenden Sie die Python SDK-API oder die Azure Machine Learning-CLI, um Dateien zu speichern und aus dem Datenspeicher abzurufen. 
-
-## <a name="run"></a>Ausführen
-
-Eine Ausführung ist ein Datensatz, der die folgenden Informationen enthält:
-
-* Metadaten zur Ausführung (Zeitstempel, Dauer usw.)
-* Metriken, die von Ihrem Skript protokolliert werden
-* Ausgabedateien, die automatisch vom Experiment gesammelt oder explizit von Ihnen hochgeladen werden
-* Eine Momentaufnahme des Verzeichnisses, in dem Ihre Skripts enthalten sind, vor der Ausführung
-
-Eine Ausführung wird ausgelöst, wenn Sie ein Skript zum Trainieren eines Modells übermitteln. Eine Ausführung kann über null oder mehr untergeordnete Elemente verfügen. Die Ausführung der obersten Ebene weist also unter Umständen zwei untergeordnete Ausführungen auf, die beide jeweils selbst eine untergeordnete Ausführung aufweisen können.
-
-Ein Beispiel zum Anzeigen von Ausführungen, die beim Trainieren eines Modells erstellt werden, finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
-
-## <a name="experiment"></a>Experiment
-
-Ein Experiment ist eine Gruppierung vieler Ausführungen aus einem bestimmten Skript. Es gehört immer zu einem Arbeitsbereich. Beim Übermitteln einer Ausführung geben Sie einen Experimentnamen an. Die Informationen für die Ausführung werden unter diesem Experiment gespeichert. Wenn Sie eine Ausführung übermitteln und einen nicht vorhandenen Experimentnamen angeben, wird automatisch ein neues Experiment mit diesem neu angegebenen Namen erstellt.
-
-Ein Beispiel zum Verwenden eines Experiments finden Sie unter [Schnellstart: Erste Schritte mit Azure Machine Learning Service](quickstart-get-started.md).
 
 ## <a name="pipeline"></a>Pipeline
 
@@ -161,67 +219,9 @@ Machine Learning-Pipelines werden zum Erstellen und Verwalten von Workflows verw
 
 Weitere Informationen zu Machine Learning-Pipelines für diesen Dienst finden Sie unter [Pipelines und Azure Machine Learning](concept-ml-pipelines.md).
 
-## <a name="compute-target"></a>Computeziel
-
-Ein Computeziel ist die Computeressource, die zum Ausführen Ihres Trainingsskripts oder zum Hosten Ihrer Dienstbereitstellung verwendet wird. Die unterstützten Computeziele lauten: 
-
-| Computeziel | Training | Bereitstellung |
-| ---- |:----:|:----:|
-| Ihr lokaler Computer | ✓ | &nbsp; |
-| Azure Machine Learning Compute | ✓ | &nbsp; |
-| Ein virtueller Linux-Computer in Azure</br>(z. B. Data Science Virtual Machine) | ✓ | &nbsp; |
-| Azure Databricks | ✓ | &nbsp; | &nbsp; |
-| Azure Data Lake Analytics | ✓ | &nbsp; |
-| Apache Spark für HDInsight | ✓ | &nbsp; |
-| Azure Container Instances | &nbsp; | ✓ |
-| Azure Kubernetes Service | &nbsp; | ✓ |
-| Azure IoT Edge | &nbsp; | ✓ |
-| Project Brainwave</br>(Field Programmable Gate Array) | &nbsp; | ✓ |
-
-Computeziele sind einem Arbeitsbereich zugeordnet. Andere Computeziele als der lokale Computer werden von Benutzern des Arbeitsbereichs gemeinsam genutzt.
-
-### <a name="managed-and-unmanaged-compute-targets"></a>Verwaltete und nicht verwaltete Computeziele
-
-* **Verwaltet**: Computeziele, die von Azure Machine Learning Service erstellt und verwaltet werden. Diese Computeziele sind für Machine Learning-Workloads optimiert. Azure Machine Learning Compute ist das einzige verwaltete Computeziel ab dem 4. Dezember 2018. Möglicherweise werden künftig weitere verwaltete Computeziele hinzugefügt. 
-
-    Sie können Machine Learning-Compute-Instanzen direkt über den Arbeitsbereich erstellen, indem Sie das Azure-Portal, das Azure Machine Learning SDK oder die Azure CLI verwenden. Alle anderen Computeziele müssen außerhalb des Arbeitsbereichs erstellt und dann angefügt werden.
-
-* **Nicht verwaltet**: Computeziele, die *nicht* von Azure Machine Learning Service verwaltet werden. Sie müssen sie ggf. außerhalb von Azure Machine Learning erstellen und anschließend vor der Nutzung an Ihren Arbeitsbereich anfügen. Für nicht verwaltete Computeziele sind möglicherweise weitere Schritte erforderlich, um die Leistung von Machine Learning-Workloads beizubehalten oder zu verbessern.
-
-Informationen zum Auswählen eines Computeziels für das Training finden Sie unter [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
-
-Informationen zum Auswählen eines Computeziels für die Bereitstellung finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning Service](how-to-deploy-and-where.md).
-
-## <a name="run-configuration"></a>Laufzeitkonfiguration
-
-Eine Laufzeitkonfiguration ist ein Satz mit Anweisungen, mit denen definiert wird, wie ein Skript auf einem bestimmten Computeziel ausgeführt werden sollte. Die Konfiguration umfasst einen weiten Bereich von Verhaltensdefinitionen, z.B. die Vorgabe, ob eine vorhandene Python-Umgebung oder eine aus einer Spezifikation erstellte Conda-Umgebung verwendet werden soll.
-
-Eine Laufzeitkonfiguration kann in einer Datei in dem Verzeichnis beständig gespeichert werden, in dem Ihr Trainingsskript enthalten ist, oder sie kann als In-Memory-Objekt erstellt und zum Übermitteln einer Ausführung verwendet werden.
-
-Beispiele für Laufzeitkonfigurationen finden Sie unter [Auswählen und Verwenden eines Computeziels zum Trainieren Ihres Modells](how-to-set-up-training-targets.md).
-
-## <a name="training-script"></a>Trainingsskript
-
-Zum Trainieren eines Modells geben Sie das Verzeichnis an, in dem das Trainingsskript und die zugehörigen Dateien enthalten sind. Außerdem geben Sie einen Experimentnamen an, der zum Speichern der während des Trainings gesammelten Informationen verwendet wird. Beim Training wird das gesamte Verzeichnis in die Trainingsumgebung (Computeziel) kopiert und das von der Laufzeitkonfiguration angegebene Skript gestartet. Darüber hinaus wird auch eine Momentaufnahme des Verzeichnisses unter dem Experiment im Arbeitsbereich gespeichert.
-
-Ein Beispiel finden Sie unter [Erstellen eines Arbeitsbereichs mit Python](quickstart-get-started.md).
-
 ## <a name="logging"></a>Protokollierung
 
-Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SDK in Ihrem Python-Skript, um beliebige Metriken zu protokollieren. Fragen Sie nach der Ausführung die Metriken ab, um zu ermitteln, ob von der Ausführung das Modell erzeugt wurde, das Sie bereitstellen möchten. 
-
-## <a name="snapshot"></a>Momentaufnahme
-
-Beim Übermitteln einer Ausführung komprimiert Azure Machine Learning das Verzeichnis, in dem das Skript als ZIP-Datei enthalten ist, und sendet es an das Computeziel. Die ZIP-Datei wird dann extrahiert, und das Skript wird ausgeführt. Azure Machine Learning speichert die ZIP-Datei im Rahmen der Ausführungsaufzeichnung zudem als Momentaufnahme. Alle Benutzer mit Zugriff auf den Arbeitsbereich können eine Ausführungsaufzeichnung durchsuchen und die Momentaufnahme herunterladen.
-
-## <a name="activity"></a>Aktivität
-
-Eine Aktivität stellt einen Vorgang mit langer Ausführungsdauer dar. Die folgenden Vorgänge sind Beispiele für Aktivitäten:
-
-* Erstellen oder Löschen eines Computeziels
-* Ausführen eines Skripts auf einem Computeziel
-
-Aktivitäten können Benachrichtigungen über das SDK oder eine Webbenutzeroberfläche bereitstellen, damit Sie den Status dieser Vorgänge auf einfache Weise überwachen können.
+Verwenden Sie beim Entwickeln Ihrer Lösung das Azure Machine Learning Python SDK in Ihrem Python-Skript, um beliebige Metriken zu protokollieren. Fragen Sie nach der Ausführung die Metriken ab, um zu ermitteln, ob von der Ausführung das Modell erzeugt wurde, das Sie bereitstellen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -229,4 +229,5 @@ Erste Schritte mit Azure Machine Learning Service finden Sie unter:
 
 * [Was ist Azure Machine Learning Service?](overview-what-is-azure-ml.md)
 * [Schnellstart: Verwenden von Python für die ersten Schritte mit Azure Machine Learning](quickstart-get-started.md)
-* [Tutorial: Trainieren eines Bildklassifizierungsmodells mit dem Azure Machine Learning-Dienst](tutorial-train-models-with-aml.md)
+* [Tutorial: Trainieren eines Modells](tutorial-train-models-with-aml.md)
+* [Erstellen von VMs anhand einer Resource Manager-Vorlage](how-to-create-workspace-template.md)

@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit Werten für Datum und Uhrzeit in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Beschreibt das Arbeiten mit Daten für Datum und Uhrzeit in Log Analytics-Abfragen.
+title: Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Beschreibt das Arbeiten mit Daten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,25 +13,25 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 15767107a5c535cfda98da2a5177e15ca221f35d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214693"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999248"
 ---
-# <a name="working-with-date-time-values-in-log-analytics-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Log Analytics-Abfragen
+# <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen
 
 > [!NOTE]
-> Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
+> Sie sollten zunächst [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Artikel wird das Arbeiten mit Daten für Datum und Uhrzeit in Log Analytics-Abfragen beschrieben.
+In diesem Artikel wird das Arbeiten mit Daten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen beschrieben.
 
 
 ## <a name="date-time-basics"></a>Grundlagen zu Datum und Uhrzeit
-Die Log Analytics-Abfragesprache verfügt über zwei Hauptdatentypen, die Datums- und Uhrzeitangaben zugeordnet sind: datetime und timespan. Alle Datumsangaben werden in UTC ausgedrückt. Es werden zwar mehrere datetime-Formate unterstützt, jedoch wird das ISO8601-Format bevorzugt. 
+Die Data Explorer-Abfragesprache verfügt über zwei Hauptdatentypen, die Datums- und Uhrzeitangaben zugeordnet sind: datetime und timespan. Alle Datumsangaben werden in UTC ausgedrückt. Es werden zwar mehrere datetime-Formate unterstützt, jedoch wird das ISO8601-Format bevorzugt. 
 
 Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 
@@ -161,7 +161,7 @@ Event
 | Abrufen eines Datums relativ zum Wert  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Informationen zur Verwendung der [Data Explorer-Abfragesprache](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Aggregationsfunktionen](aggregations.md)

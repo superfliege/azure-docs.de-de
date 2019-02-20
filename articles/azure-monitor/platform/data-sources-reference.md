@@ -8,16 +8,18 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: ec61b179627702af7f2c4bc0fc0989230f5eca84
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885795"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001976"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Nutzen der Überwachungsdaten von Azure
 
 Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamten Azure-Plattform an einem Ort zusammen. Wir wissen aber auch, dass bisher noch nicht alle Überwachungsdaten in dieser Pipeline verfügbar sind. In diesem Artikel werden die verschiedenen Möglichkeiten für den programmgesteuerten Zugriff auf Überwachungsdaten von Azure-Diensten zusammengefasst.
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 ## <a name="options-for-data-consumption"></a>Optionen für die Datennutzung
 
@@ -40,7 +42,7 @@ Wir bringen mit der Azure Monitor-Pipeline die Überwachungsdaten von der gesamt
 | Azure Monitor-Metrikwarnungen | Benachrichtigungen | [Siehe Liste hier](metrics-supported.md) | <ul><li>**Webhook:** [Azure-Metrikwarnungen](alerts-webhooks.md)</li></ul> |
 | Azure Monitor-Aktivitätsprotokollwarnungen | Benachrichtigungen | Alle Azure-Dienste | <ul><li>**Webhook:** Azure-Aktivitätsprotokollwarnungen</li></ul> |
 | Benachrichtigungen zum automatischen Skalieren | Benachrichtigungen | [Siehe Liste hier](autoscale-overview.md#supported-services-for-autoscale) | <ul><li>**Webhook:** [Benachrichtigung über Autoskalierung mit dem Webhook-Nutzlastschema](autoscale-webhook-email.md#autoscale-notification-webhook-payload-schema)</li></ul> |
-| Warnungen zu Protokollsuchabfragen | Benachrichtigungen | Log Analytics | <ul><li>**Webhook:** [Webhookaktion für Protokollwarnungsregeln](alerts-log-webhook.md)</li></ul> |
+| Warnungen zu Protokollsuchabfragen | Benachrichtigungen | Azure Monitor-Protokolle | <ul><li>**Webhook:** [Webhookaktion für Protokollwarnungsregeln](alerts-log-webhook.md)</li></ul> |
 | Application Insights-Metrikwarnungen | Benachrichtigungen | Application Insights | <ul><li>**Webhook:** [Application Insights-Warnungen](../../azure-monitor/app/alerts.md)</li></ul> |
 | Application Insights-Webtests | Benachrichtigungen | Application Insights | <ul><li>**Webhook:** [Application Insights-Warnungen](../../azure-monitor/app/alerts.md)</li></ul> |
 

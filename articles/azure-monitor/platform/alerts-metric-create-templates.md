@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 9/27/2018
 ms.author: snmuvva
 ms.subservice: alerts
-ms.openlocfilehash: 0c7e0e539ca884739f5bf633946a4704d29b132b
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9f8d6488d12b5550c3390699b9c34380b51b60f9
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448227"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112596"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Erstellen einer Metrikwarnung anhand einer Resource Manager-Vorlage
 
 In diesem Artikel erfahren Sie, wie Sie mit [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) [neuere Metrikwarnungen](../../azure-monitor/platform/alerts-metric-near-real-time.md) in Azure Monitor konfigurieren können. Mit Resource Manager-Vorlagen können Sie programmgesteuert konsistent und reproduzierbar Ihre Umgebungen übergreifende Warnungen einrichten. Neuere metrische Warnungen sind derzeit für [diese Gruppe von Ressourcentypen](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported) verfügbar.
 
 > [!IMPORTANT]
-> Die Resource Manager-Vorlage, die für eine Metrikwarnung festgelegt wurde, funktioniert nicht für den folgenden Ressourcentyp: Microsoft.OperationalInsights/workspaces, solange sich der Support für die Metrik von Log Analytics noch in der Vorschauversion befindet. Benutzer, die die Vorschaufunktionen mit der Ressourcenvorlage verwenden möchten, können sich an [Feedback zu Azure-Warnungen](mailto:azurealertsfeedback@microsoft.com) wenden.
+> Bei der Ressourcenvorlage zum Erstellen von Metrikwarnungen für den Ressourcentyp für Azure Log Analytics-Arbeitsbereiche (`Microsoft.OperationalInsights/workspaces`) sind zusätzliche Schritte erforderlich. Weitere Informationen finden Sie im Artikel [Erstellen von Metrikwarnungen für Protokolle in Azure Monitor](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Die grundlegenden Schritte lauten wie folgt:
 

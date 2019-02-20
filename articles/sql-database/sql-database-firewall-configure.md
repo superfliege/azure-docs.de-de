@@ -11,13 +11,13 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: e4b217ada2aae159680b113b6ddcb41c9d121f24
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: dcd0c7073f2126e001a65e2142ea54a229553ebd
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753060"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894699"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>IP-Firewallregeln für Azure SQL-Datenbank and SQL Data Warehouse
 
@@ -92,7 +92,7 @@ Um die Leistung zu verbessern, werden IP-Firewallregeln auf Serverebene vorüber
 > [!TIP]
 > Mithilfe der [SQL Server-Datenbanküberwachung](sql-database-auditing.md) können Sie Firewall-Änderungen auf Server- und Datenbankebene überwachen.
 
-## <a name="manage-ip-firewall-rules-using-the-azure-portal"></a>Verwalten von IP-Firewallregeln über das Azure-Portal
+## <a name="manage-server-level-ip-firewall-rules-using-the-azure-portal"></a>Verwalten von IP-Firewallregeln auf Serverebene mit dem Azure-Portal
 
 Zum Festlegen einer IP-Firewallregel auf Serverebene im Azure-Portal können Sie entweder zur Seite „Übersicht“ für die Azure SQL-Datenbank oder zur Seite „Übersicht“ für den SQL-Datenbank-Server wechseln.
 
@@ -196,7 +196,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 | [Delete Firewall Rule](https://docs.microsoft.com/rest/api/sql/firewallrules/delete) |Server |Entfernt IP-Firewallregeln auf Serverebene |
 | [Abrufen von Firewallregeln](https://docs.microsoft.com/rest/api/sql/firewallrules/get) | Server | Ruft IP-Firewallregeln auf Serverebene ab |
 
-## <a name="server-level-ip-firewall-rule-versus-a-database-level-ip-firewall-rule"></a>IP-Firewallregel auf Serverebene im Vergleich zu IP-Firewallregel auf Datenbankebene
+## <a name="server-level-versus-database-level-ip-firewall-rules"></a>IP-Firewallregeln auf Serverebene im Vergleich zu Regeln auf Datenbankebene
 
 F: Sollten Benutzer einer Datenbank vollständig von anderen Datenbanken isoliert werden?
 Wenn ja, sollten Sie den Zugriff mit IP-Firewallregeln auf Datenbankebene gewähren. Dadurch verhindern Sie die Verwendung von IP-Firewallregeln auf Serverebene, die durch die Firewall den Zugriff auf alle Datenbanken ermöglichen und weniger Sicherheit bieten.

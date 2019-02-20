@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: bcefa3966a6c854f02ce7b3a75306b3d1c888ecd
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: b132da4a763490fa6c7a73c80f8e2e3a11b42e9b
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432594"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56173129"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-getthere"></a>Tutorial: Azure Active Directory-Integration mit GetThere
 
@@ -197,7 +198,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-getthere-test-user"></a>Erstellen eines GetThere-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in GetThere einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der GetThere-Plattform ggf. vom [Supportteam für den GetThere-Client](mailto:dataintegration@sabre.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in GetThere einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der GetThere-Plattform ggf. vom  [GetThere-Clientsupportteam](mailto:dataintegration@sabre.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

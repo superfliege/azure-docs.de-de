@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Dieser Artikel enthält Informationen zum Beheben von Problemen, die bei Verwendung des Speech-Geräte-SDK auftreten können.
 services: cognitive-services
 author: wolfma61
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: c906a45443bcba8c84a0624c74255f19a492a4e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: dbcdfd117a39939491914ebddb717f404e07f09c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217157"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55859316"
 ---
 # <a name="troubleshoot-the-speech-service-sdk"></a>Beheben von Problemen mit dem Speech-Geräte-SDK
 
@@ -67,6 +67,8 @@ Sie können überprüfen, ob Sie über einen gültigen Abonnementschlüssel verf
     curl -v -X POST "https://YOUR_REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: application/x-www-form-urlencoded" -H "Content-Length: 0"
     ```
 
+Wenn Sie einen gültigen Abonnementschlüssel eingegeben haben, gibt der Befehl ein Autorisierungstoken zurück, andernfalls wird ein Fehler zurückgegeben.
+
 ### <a name="validate-an-authorization-token"></a>Überprüfen eines Autorisierungstokens
 
 Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen Sie einen der folgenden Befehle aus, um sicherzustellen, dass das Autorisierungstoken noch gültig ist. Token sind 10 Minuten lang gültig.
@@ -101,6 +103,8 @@ Wenn Sie ein Autorisierungstoken für die Authentifizierung verwenden, führen S
     ```
     curl -v -X POST "https://YOUR_REGION.stt.speech.microsoft.com/speech/recognition/interactive/cognitiveservices/v1?language=en-US" -H "Authorization: Bearer YOUR_ACCESS_TOKEN" -H "Transfer-Encoding: chunked" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
     ```
+
+Wenn Sie ein gültiges Authentifizierungstoken eingegeben haben, gibt der Befehl das Transkript Ihrer Audiodatei zurück, andernfalls wird ein Fehler zurückgegeben.
 
 ---
 

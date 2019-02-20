@@ -4,19 +4,19 @@ titleSuffix: Language Understanding - Azure Cognitive Services
 description: Erfahren Sie, wie Sie mit bewährten Methoden bei LUIS die besten Ergebnisse für das Modell Ihrer LUIS-App erzielen.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 02/13/2019
 ms.author: diberry
-ms.openlocfilehash: 5a6f9c559ce6fe66d4fe3df9382bc931f4a55e6a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55209365"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243415"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
@@ -59,6 +59,12 @@ Erwägen Sie die folgenden Beispieläußerungen:
 
 „Book a flight“ und „Book a hotel“ verwenden das gleiche Vokabular „Book a “. Das Format ist das gleiche. Aus diesem Grund sollte nur eine Absicht verwendet werden. Extrahieren Sie die unterschiedlichen Wörter „einen Flug“ und „ein Hotelzimmer“ in Entitäten. 
 
+Weitere Informationen finden Sie unter:
+* Konzept: [Konzepte zu Absichten in Ihrer LUIS-App](luis-concept-intent.md)
+* Tutorial: [Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten](luis-quickstart-intents-only.md)
+* Gewusst wie: [Hinzufügen von Absichten, um die Absicht von Benutzeräußerungen zu bestimmen](luis-how-to-add-intents.md)
+
+
 ## <a name="do-find-sweet-spot-for-intents"></a>Streben Sie eine Balance zwischen Absichten an
 Verwenden Sie die Vorhersagedaten von LUIS, um zu bestimmen, ob die Absichten überlappen. Überlappende Absichten verwirren LUIS. Im Ergebnis ist die Absicht mit der höchsten Bewertung zu nah an einer anderen Absicht. Da LUIS nicht bei jedem Training genau denselben Pfad durch die Daten anwendet, kann eine überlappende Absicht beim Training den ersten oder zweiten Platz erreichen. Damit eine solche Überlappung nicht eintritt, sollten Sie das Ergebnis der Äußerung für jede Absicht weiter voneinander trennen. Bei einer guten Unterscheidung der Absichten sollte das Ergebnis jedes Mal die erwartete bestbewertete Absicht sein. 
  
@@ -67,6 +73,9 @@ Behalten Sie einen separaten Satz von Äußerungen bei, der nicht für [Beispiel
 
 Entwickler sollten über drei Datensätze verfügen. Der erste enthält die Beispieläußerungen zum Erstellen des Modells. Der zweite dient zum Testen des Modells am Endpunkt. Der dritte enthält die blinden Testdaten für das [Testen in Batches](luis-how-to-batch-test.md). Der letzte Datensatz wird nicht zum Trainieren der Anwendung verwendet und auch nicht an den Endpunkt gesendet.  
 
+Weitere Informationen finden Sie unter:
+* Konzept: [Erstellungszyklus für Ihre LUIS-App](luis-concept-app-iteration.md)
+
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Fügen Sie Ausdruckslisten und Muster in späteren Iterationen hinzu
 Mithilfe von [Ausdruckslisten](luis-concept-feature.md) können Sie Wörterbücher definieren, die Wörter im Zusammenhang mit Ihrer App-Domäne enthalten. Beginnen Sie die Ausdrucksliste mit wenigen Wörtern, und nutzen Sie dann das Vorschlagfeature, damit LUIS weitere für Ihre App spezifische Wörter im Vokabular kennt. Fügen Sie dem Vokabular nicht jedes Wort hinzu, da die Ausdrucksliste keine genaue Übereinstimmung darstellen soll. 
 
@@ -74,7 +83,18 @@ Mithilfe von [Ausdruckslisten](luis-concept-feature.md) können Sie Wörterbüch
 
 Verwenden Sie die [optionale Syntax](luis-concept-patterns.md) des Musters für Satzzeichen, sodass diese ignoriert werden können. Verwenden Sie die [explizite Liste](luis-concept-patterns.md#explicit-lists) um Syntaxfehler vom Typ „pattern.any“ zu kompensieren. 
 
-Wenden Sie diese Methoden nicht an, bevor Ihre App Endpunktanforderungen empfangen hat, da sie die Zuverlässigkeit beeinflussen.  
+Wenden Sie diese Methoden nicht an, bevor Ihre App Endpunktanforderungen empfangen hat. Sie sollten verstehen, wie sich die App verhält, bevor Sie Begriffslisten und Muster hinzufügen. Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach Bedarf diese Funktionen hinzu. 
+
+Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jede Funktion auf die Ergebnisse hat, wenn die App zuvor mit echtem Datenverkehr verwendet wurde. 
+
+Sie müssen diese Funktionen nicht bei jedem Durchlauf hinzufügen oder bei jeder Version ändern. 
+
+Weitere Informationen finden Sie unter:
+* Konzept: [Erstellungszyklus für Ihre LUIS-App](luis-concept-app-iteration.md)
+* Konzept: [Features für Begriffslisten in Ihrer LUIS-App](luis-concept-feature.md)
+* Konzept: [Verbessern der Vorhersagegenauigkeit mit Mustern](luis-concept-patterns.md)
+* Gewusst wie: [Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken](luis-how-to-add-features.md)
+* Gewusst wie: [Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Für alle Absichten die gleiche Menge an Äußerungen verwenden
 
@@ -86,9 +106,17 @@ Wenn Sie eine Absicht mit 100 Beispieläußerungen und eine Absicht mit 20 Beisp
 
 Diese Absicht ist die Fallbackabsicht, die alles außerhalb der Anwendung angibt. Fügen Sie der Absicht „None“ eine Beispieläußerung für jeweils 10 Beispieläußerungen im Rest der LUIS-App hinzu.
 
+Weitere Informationen finden Sie unter:
+* Konzept: [Grundlegendes zu geeigneten Äußerungen für Ihre LUIS-App](luis-concept-utterance.md)
+
 ## <a name="do-leverage-the-suggest-feature-for-active-learning"></a>Verwenden Sie das Vorschlagfeature für das aktive Lernen
 
 Verwenden Sie beim [aktiven Lernen](luis-how-to-review-endoint-utt.md) regelmäßig das **Überprüfen von Endpunktäußerungen**, anstatt Absichten zusätzliche Beispieläußerungen hinzuzufügen. Da die App ständig Endpunktäußerungen empfängt, nimmt diese Liste fortlaufend zu und ändert sich.
+
+Weitere Informationen finden Sie unter:
+* Konzept: [Konzepte für das Aktivieren des aktiven Lernens durch Überprüfen von Endpunktäußerungen](luis-concept-review-endpoint-utterances.md)
+* Tutorial: [Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen](luis-tutorial-review-endpoint-utterances.md)
+* Gewusst wie: [Überprüfen von Endpunktäußerungen im LUIS-Portal](luis-how-to-review-endoint-utt.md)
 
 ## <a name="do-monitor-the-performance-of-your-app"></a>Überwachen Sie die Leistung Ihrer App.
 
@@ -133,6 +161,11 @@ Fügen Sie vor dem Training und der Veröffentlichung 10–15 Äußerungen hinzu
 ## <a name="do-use-versions-for-each-app-iteration"></a>Verwenden von Versionen für jede App-Iteration
 
 Jeder Erstellungszyklus muss innerhalb einer neuen [Version](luis-concept-version.md) erfolgen und aus einer vorhandenen Version geklont sein. In LUIS gilt keine Beschränkung für Versionen. Ein Versionsname wird als Teil der API-Route verwendet. Daher ist es wichtig, Zeichen auswählen, die in einer URL zulässig sind, und die Anzahl von 10 Zeichen für eine Version einzuhalten. Entwickeln Sie eine Strategie für Versionsnamen, um Ihre Versionen organisiert zu halten. 
+
+Weitere Informationen finden Sie unter:
+* Konzept: [Grundlegendes zur Verwendung einer LUIS-Version](luis-concept-version.md)
+* Gewusst wie: [Verwenden von Versionen, um Staging- und Produktions-Apps nicht durch Bearbeitungsschritte oder Tests zu beeinträchtigen](luis-how-to-manage-versions.md)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

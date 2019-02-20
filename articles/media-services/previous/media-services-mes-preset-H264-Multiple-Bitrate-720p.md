@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: d19f75def9da82cabce8c2d553a898ae401b54eb
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 66984b42050657dcb65fb784626a37d8b8a86669
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250528"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55989371"
 ---
 # <a name="h264-multiple-bitrate-720p"></a>H264 Multiple Bitrate 720p
 `Media Encoder Standard` definiert eine Reihe von Codierungsvoreinstellungen, die Sie beim Erstellen von Codierungsaufträgen verwenden können. Sie können mithilfe von `preset name` angeben, in welchem Format Ihre Mediendatei codiert werden soll. Oder Sie erstellen eigene JSON- oder XML-basierte Voreinstellungen (mithilfe von UTF-8- oder UTF-16-Codierung). In diesem Fall übergeben Sie die benutzerdefinierte Voreinstellung dann an den Encoder. Eine Liste aller von diesem `Media Encoder Standard`-Encoder unterstützten Voreinstellungsnamen finden Sie unter [Task Presets for Media Encoder Standard](media-services-mes-presets-overview.md) (Aufgabenvoreinstellungen für Media Encoder Standard).  
@@ -29,7 +29,7 @@ ms.locfileid: "50250528"
  Diese Voreinstellung erzeugt einen Satz von sechs MP4-Dateien mit GOP-Ausrichtung mit Werten zwischen 3.400 KBit/s und 400 KBit/s sowie AAC-Stereoaudio. Ausführliche Informationen zu Profil, Bitrate, Samplingrate usw. dieser Voreinstellung finden Sie im unten aufgeführten XML- bzw. JSON-Code. Erläuterungen zur Bedeutung der einzelnen Elemente in diesen Voreinstellungen sowie gültige Werte für jedes Element finden Sie im Thema [Media Encoder Standard schema](media-services-mes-schema.md) (Media Encoder Standard-Schema).  
   
 > [!NOTE]
->  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel: 1920x1080, 1280x720, 1080x576, 640x360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1280x720, 720x480 oder 640x360 verwenden.  
+>  Stellen Sie bei einer ebenenübergreifenden Änderung der Werte `Width` und `Height` sicher, dass das Seitenverhältnis konsistent bleibt. Beispiel:  1.920 × 1.080, 1.280 × 720, 1.080 × 576, 640 × 360. Sie sollten keine Mischung von Seitenverhältnissen wie etwa 1.280 × 720, 720 × 480 oder 640 × 360 verwenden.  
   
  XML  
   

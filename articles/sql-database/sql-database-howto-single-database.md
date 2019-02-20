@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren von Azure SQL-Datenbank – eigenständig | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie eine eigenständige Datenbank in Azure SQL-Datenbank konfigurieren und verwalten.
+title: Konfigurieren von Azure SQL-Datenbank – Singleton | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie einen Singleton in Azure SQL-Datenbank konfigurieren und verwalten.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,13 +11,13 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 613b4b700be580c2a0847881e64eedbeedee0c65
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: c85a7106e9567859c34345528c6549bcd752f1c6
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510537"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100464"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Verwenden eines Singleton in Azure SQL-Datenbank
 
@@ -25,7 +25,7 @@ In diesem Abschnitt sind verschiedene Anleitungen, Skripts und Erläuterungen au
 
 ## <a name="migrate"></a>Migrieren
 
-- [Migrieren zu SQL-Datenbank:](sql-database-cloud-migrate.md) Erfahren Sie etwas über den empfohlenen Migrationsprozess und die Tools für die Migration zu einer verwalteten Instanz.
+- [Migrieren zu SQL-Datenbank:](sql-database-single-database-migrate.md) Erfahren Sie etwas über den empfohlenen Migrationsprozess und die Tools für die Migration zu einer verwalteten Instanz.
 - Informationen zum [Verwalten von SQL-Datenbank nach der Migration](sql-database-manage-after-migration.md).
 
 ## <a name="configure-features"></a>Konfigurieren von Features

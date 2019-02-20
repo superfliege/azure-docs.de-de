@@ -1,21 +1,21 @@
 ---
 title: Registrieren für die Textanalyse-API
 titleSuffix: Azure Cognitive Services
-description: Anweisungen für die Registrierung zur Verwendung der Textanalyse und die Ausführung innerhalb der Grenzwerte
+description: Anweisungen zum Registrieren und Verwenden des Textanalyse-Diensts.
 services: cognitive-services
-author: HeidiSteen
-manager: cgronlun
+author: aahill
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 09/12/2018
-ms.author: heidist
-ms.openlocfilehash: 1461682e01d25e1b076ec2be130b9c3844aa0884
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/13/2019
+ms.author: aahi
+ms.openlocfilehash: 355a144597ce384725d92e64d4a5e4909b18c3d7
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208362"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246101"
 ---
 # <a name="how-to-sign-up-for-the-text-analytics-api"></a>Registrieren für die Textanalyse-API
 

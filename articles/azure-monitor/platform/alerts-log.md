@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: cb4b063d17555084f4065d7d7df931b96b95d9a4
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 29050be7587f88ce7a1f5370f50dcfa1ecd68306
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751479"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990444"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
@@ -106,8 +106,7 @@ Als nächstes wird die schrittweise Anleitung zur Verwendung von Protokollwarnun
 
     Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
-Benutzer können ihre Analyseabfrage auch auf der Seite [Logs Analytics im Azure-Portal](../../azure-monitor/log-query/portals.md#log-analytics-page
-) abschließen und dann über die Schaltfläche „+ Neue Warnungsregel“ eine Warnung erstellen. Anschließend können sie die Anweisungen ab Schritt 6 im obigen Tutorial befolgen.
+Benutzer können ihre Analyseabfrage auch in [Logs Analytics](../log-query/portals.md) abschließen und dann über die Schaltfläche „Warnung festlegen“ eine Warnung erstellen. Anschließend können sie die Anweisungen ab Schritt 6 im obigen Tutorial befolgen.
 
  ![Log Analytics – Warnung festlegen](media/alerts-log/AlertsAnalyticsCreate.png)
 
@@ -317,12 +316,12 @@ Das JSON-Beispiel oben kann im Rahmen dieser exemplarischen Vorgehensweise z.B. 
 > Protokollwarnungen für Log Analytics können zudem über die [Legacywarnungs-API von Log Analytics](../../azure-monitor/platform/api-alerts.md) sowie über Legacyvorlagen von [gespeicherten Log Analytics-Suchen und -Warnungen](../../azure-monitor/insights/solutions-resources-searches-alerts.md) verwaltet werden. Weitere Informationen zur standardmäßigen Verwendung der hier beschriebenen neuen ScheduledQueryRules-API finden Sie unter [Wechseln zur neuen API für Log Analytics-Warnungen](alerts-log-api-switch.md).
 
 
-Protokollwarnungen verfügen derzeit über keine dedizierten PowerShell- oder CLI-Befehle. Sie können jedoch wie nachfolgend veranschaulicht über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im [Abschnitt „Ressourcenvorlage“](#azure-resource-template-for-application-insights) dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) verwendet werden:
+Protokollwarnungen verfügen derzeit über keine dedizierten PowerShell- oder CLI-Befehle. Sie können jedoch wie nachfolgend veranschaulicht über das PowerShell-Cmdlet von Azure Resource Manager für die weiter oben im Abschnitt „Ressourcenvorlage“ dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) verwendet werden:
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "contosoRG" -TemplateFile "D:\Azure\Templates\sampleScheduledQueryRule.json"
 ```
 
-Nachfolgend wird die Verwendung über den Azure Resource Manager-Befehl in der Azure CLI für die weiter oben im [Abschnitt „Ressourcenvorlage“](#azure-resource-template-for-application-insights) dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) veranschaulicht:
+Nachfolgend wird die Verwendung über den Azure Resource Manager-Befehl in der Azure CLI für die weiter oben im Abschnitt „Ressourcenvorlage“ dargestellte Ressourcenvorlage (sampleScheduledQueryRule.json) veranschaulicht:
 
 ```azurecli
 az group deployment create --resource-group contosoRG --template-file sampleScheduledQueryRule.json

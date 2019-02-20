@@ -11,16 +11,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/05/2019
+ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: df84562c3ff95ac6fef65ea7c9911d5e12e558ef
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.lastreviewed: 02/11/2019
+ms.openlocfilehash: c2ef0d34897171e04d0982405909183634ebb696
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744962"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115401"
 ---
 # <a name="deploy-kubernetes-to-azure-stack-using-active-directory-federated-services"></a>Bereitstellen von Kubernetes in Azure Stack mithilfe von Active Directory-Verbunddienste
 
@@ -43,13 +43,19 @@ Stellen Sie zum Einstieg sicher, dass Sie über die erforderlichen Berechtigunge
 
     Der Cluster kann nicht in einem Azure Stack-Abonnement vom Typ **Administrator** bereitgestellt werden. Sie müssen ein Abonnement vom Typ **Benutzer** verwenden. 
 
-1. Falls der Kubernetes-Cluster in Ihrem Marketplace nicht verfügbar ist, wenden Sie sich an Ihren Azure Stack-Administrator.
+1. Sie benötigen den Key Vault-Dienst in Ihrem Azure Stack-Abonnement.
+
+1. Sie benötigen den Kubernetes-Clusters in Ihrem Marketplace. 
+
+Falls Ihnen die Marketplace-Elemente Key Vault-Dienst und Kubernetes-Cluster fehlen, wenden Sie sich an Ihren Azure Stack-Administrator.
 
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
 Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure Stack-Administrator zusammenarbeiten, um den Dienstprinzipal einzurichten. Der Dienstprinzipal verschafft Ihrer Anwendung Zugriff auf Azure Stack-Ressourcen.
 
-1. Ihr Azure Stack-Administrator stellt Ihnen ein Zertifikat und die Informationen für den Dienstprinzipal bereit. Die Informationen sollten wie folgt aussehen:
+1. Ihr Azure Stack-Administrator stellt Ihnen ein Zertifikat und die Informationen für den Dienstprinzipal bereit.
+
+    - Die Dienstprinzipalinformationen sollten wie folgt aussehen:
 
     ```Text  
         ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -60,9 +66,11 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
         RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
     ```
 
-2. Weisen Sie dem neuen Dienstprinzipal eine Rolle als Mitwirkender für Ihr Abonnement zu. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Rolle](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals#assign-role-to-service-principal#assign-role-to-service-principal).
+    - Ihr Zertifikat ist eine Datei mit der Erweiterung `.pfx`. Sie speichern Ihr Zertifikat als Geheimnis in einem Schlüsseltresor.
 
-3. Erstellen Sie einen Schlüsseltresor zum Speichern des Zertifikats für die Bereitstellung.
+2. Weisen Sie dem neuen Dienstprinzipal eine Rolle als Mitwirkender für Ihr Abonnement zu. Eine Anleitung hierzu finden Sie unter [Zuweisen einer Rolle](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-service-principals).
+
+3. Erstellen Sie einen Schlüsseltresor zum Speichern des Zertifikats für die Bereitstellung. Verwenden Sie die folgenden PowerShell-Skripts anstelle des Portals.
 
     - Sie benötigen die folgenden Informationen:
 
@@ -70,12 +78,12 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
         | ---   | ---         |
         | Azure Resource Manager Endpoint | Microsoft Azure Resource Manager ist ein Verwaltungsframework, mit dem Administratoren Azure-Ressourcen bereitstellen, verwalten und überwachen können. Azure Resource Manager kann diese Aufgaben als Gruppe – anstatt einzeln – in einem gemeinsamen Vorgang verarbeiten.<br>Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
         | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
-        | Ihr Benutzername | Ihr Benutzername. |
+        | Ihr Benutzername | Verwenden Sie nur Ihren Benutzernamen statt Ihres Domänen- und Benutzernamens, z. B. `username` anstelle von `azurestack\username`. |
         | Der Name der Ressourcengruppe  | Geben Sie den Namen einer neuen Ressourcengruppe ein, oder wählen Sie eine vorhandene Ressourcengruppe aus. Der Ressourcenname muss alphanumerisch und in Kleinbuchstaben angegeben sein. |
         | KeyVault-Name | Der Name des Tresors.<br> RegEx-Muster: `^[a-zA-Z0-9-]{3,24}$` |
         | Ressourcengruppenstandort | Der Standort der Ressourcengruppe. Dies ist die Region, die Sie für die Azure Stack-Installation auswählen. |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
+    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
     ```PowerShell  
         $armEndpoint="<Azure Resource Manager Endpoint>"
@@ -103,7 +111,7 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
         Set-AzureRmKeyVaultAccessPolicy -VaultName $key_vault_name -ResourceGroupName $resource_group_name -ObjectId $objectSID -BypassObjectIdValidation -PermissionsToKeys all -PermissionsToSecrets all
     ```
 
-4. Laden Sie das Zertifikat in Key Vault hoch.
+4. Laden Sie Ihr Zertifikat in den Schlüsseltresor hoch.
 
     - Sie benötigen die folgenden Informationen:
 
@@ -111,12 +119,12 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
         | ---   | ---         |
         | Zertifikatpfad | Der FQDN oder der Dateipfad zum Zertifikat. |
         | Zertifikatkennwort | Das Kennwort für das Zertifikat. |
-        | Geheimnisname | Das im vorherigen Schritt erstellte Geheimnis. |
-        | KeyVault-Name | Der Name des im vorherigen Schritt erstellten Schlüsseltresors. |
+        | Geheimnisname | Der Geheimnisname, mit dem auf das im Tresor gespeicherte Zertifikat verwiesen wird. |
+        | Name des Schlüsseltresors | Der Namen des im vorherigen Schritt erstellten Schlüsseltresors. |
         | Azure Resource Manager Endpoint | Der Endpunkt im Azure Stack Development Kit (ASDK) lautet: `https://management.local.azurestack.external/`.<br>Der Endpunkt in integrierten Systemen lautet: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`. |
         | Ihre Abonnement-ID | Mit der [Abonnement-ID](https://docs.microsoft.com/azure/azure-stack/azure-stack-plan-offer-quota-overview#subscriptions) greifen Sie in Azure Stack auf Angebote zu. |
 
-    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten. Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
+    - Öffnen Sie PowerShell mit einer Eingabeaufforderung mit erhöhten Rechten, und [stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-user.md#connect-with-ad-fs). Führen Sie das folgende Skript mit den passenden Parameterwerten aus:
 
     ```PowerShell  
         
@@ -124,7 +132,7 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
     $tempPFXFilePath = "<certificate path>"
     $password = "<certificate password>"
     $keyVaultSecretName = "<secret name>"
-    $keyVaultName = "<keyvault name>"
+    $keyVaultName = "<key vault name>"
     $armEndpoint="<Azure Resource Manager Endpoint>"
     $subscriptionId="<Your Subscription ID>"
     # Login Azure Stack Environment
@@ -194,11 +202,11 @@ Falls Sie als Identitätslösung AD FS verwenden, müssen Sie mit Ihrem Azure St
 
 1. Geben Sie unter **Service Principal ClientId** (Dienstprinzipal-ClientId) einen Wert ein. Dieser wird vom Kubernetes Azure-Cloudanbieter verwendet. Die als Anwendungs-ID identifizierte Client-ID, wenn Ihr Azure Stack-Administrator den Dienstprinzipal erstellt hat.
 
-1. Geben Sie die **Key Vault-Ressourcengruppe** ein. 
+1. Geben Sie die **Key Vault-Ressourcengruppe** ein, die den Schlüsseltresor einbindet, der Ihr Zertifikat enthält.
 
-1. Geben Sie den **Namen des Schlüsseltresors** ein.
+1. Geben Sie den **Namen des Schlüsseltresors** des Schlüsseltresors ein, der Ihr Zertifikat als Geheimnis enthält. 
 
-1. Geben Sie das **Geheimnis des Schlüsseltresors** ein.
+1. Geben Sie das **Geheimnis des Schlüsseltresors** ein. Der Geheimnisname verweist auf Ihr Zertifikat.
 
 1. Geben Sie die **Version des Kubernetes Azure Cloudanbieters** ein. Dabei handelt es sich um die Version des Kubernetes Azure-Anbieters. Azure Stack veröffentlicht für jede Azure Stack-Version einen benutzerdefinierten Kubernetes-Build.
 

@@ -1,5 +1,5 @@
 ---
-title: Der Azure-Blobdateisystemtreiber für Azure Data Lake Storage Gen2 (Vorschauversion)
+title: Der Azure-Blobdateisystemtreiber für Azure Data Lake Storage Gen2
 description: Der ABFS-Hadoop-Dateisystemtreiber
 services: storage
 author: jamesbak
@@ -8,16 +8,16 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f50723fa494df0ff1490bf27451394a6e13da467
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240878"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55962433"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der Azure-Blobdateisystemtreiber (ABFS): Ein dedizierter Azure Storage-Treiber für Hadoop
 
-Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen2 (Vorschauversion) ist das [Hadoop-Dateisystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Mit Data Lake Storage Gen2 erhalten Benutzer von Azure Blob Storage Zugriff auf einen neuen Treiber, den Azure-Blobdateisystem- oder `ABFS`-Treiber. ABFS ist Teil von Apache Hadoop und in vielen kommerziellen Hadoop-Distributionen enthalten. Dank dieses Treibers können zahlreiche Anwendungen und Frameworks ganz ohne Code, der explizit auf den Azure Blob Storage-Dienst verweist, auf Daten in Data Lake Storage Gen2 zugreifen.
+Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen2 ist das [Hadoop-Dateisystem](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html). Mit Data Lake Storage Gen2 erhalten Benutzer von Azure Blob Storage Zugriff auf einen neuen Treiber, den Azure-Blobdateisystem- oder `ABFS`-Treiber. ABFS ist Teil von Apache Hadoop und in vielen kommerziellen Hadoop-Distributionen enthalten. Dank dieses Treibers können zahlreiche Anwendungen und Frameworks ganz ohne Code, der explizit auf den Azure Blob Storage-Dienst verweist, auf Daten in Data Lake Storage Gen2 zugreifen.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Vorherige Funktion: Der Windows Azure Storage Blob-Treiber
 
@@ -42,7 +42,7 @@ hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows
 
 Intern übersetzt der ABFS-Treiber die im URI angegebenen Ressourcen in Dateien und Verzeichnisse und führt Aufrufe für die Azure Data Lake Storage-REST-API mit diesen Verweisen aus.
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Der ABFS-Treiber unterstützt zwei Formen der Authentifizierung, sodass die Hadoop-Anwendung sicher auf Ressourcen in einem Data Lake Storage Gen2-fähigen Konto zugreifen kann. Einzelheiten zu den verfügbaren Authentifizierungsschemas finden Sie im [Azure Storage-Sicherheitsleitfaden](../common/storage-security-guide.md). Sie lauten wie folgt:
 
@@ -62,6 +62,5 @@ Der ABFS-Treiber ist vollständig in der [offiziellen Hadoop-Dokumentation](http
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Einrichten von HDInsight-Clustern](./data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 - [Erstellen eines Azure Databricks-Clusters](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Verwenden des Azure Data Lake Storage Gen2-URI](./data-lake-storage-introduction-abfs-uri.md)

@@ -1,6 +1,6 @@
 ---
-title: Arbeiten mit Zeichenfolgen in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial, in dem das Schreiben von Abfragen in Log Analytics über das Analytics-Portal veranschaulicht wird.
+title: Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen in Azure Monitor-Protokollabfragen bearbeiten, vergleichen, durchsuchen und für diese viele weitere Vorgänge ausführen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 729d98dda1ae0a1410a15ee1e40c670ca211d864
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9748cd2c37775a47eb630797dd09981c38f8f7e1
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186241"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995406"
 ---
-# <a name="working-with-strings-in-log-analytics-queries"></a>Arbeiten mit Zeichenfolgen in Log Analytics-Abfragen
+# <a name="work-with-strings-in-azure-monitor-log-queries"></a>Arbeiten mit Zeichenfolgen in Azure Monitor-Protokollabfragen
 
 
 > [!NOTE]
-> Sie sollten zunächst [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
+> Sie sollten zunächst [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) und [Erste Schritte mit Azure Monitor-Protokollabfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen bearbeiten, vergleichen, darin suchen und für diese viele weitere Vorgänge ausführen. 
+In diesem Artikel wird beschrieben, wie Sie Zeichenfolgen bearbeiten, vergleichen, darin suchen und für diese viele weitere Vorgänge ausführen.
 
 Jedem Zeichen in einer Zeichenfolge ist ein Index zugeordnet, der die Position des Zeichens festlegt. Für das erste Zeichen wird der Index 0 verwendet, für das nächste Zeichen 1 usw. Der Index wird von unterschiedlichen Zeichenfolgenfunktion verwendet. Dies wird in den folgenden Abschnitten deutlich werden. In vielen der folgenden Beispiele wird der Befehl **print** verwendet, um zu zeigen, wie sich Zeichenfolgen ohne eine bestimmte Datenquelle bearbeiten lassen.
 
@@ -51,37 +51,37 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 Operators       |BESCHREIBUNG                         |Groß-/Kleinschreibung|Beispiel (ergibt `true`)
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Equals                              |JA           |`"aBc" == "aBc"`
-`!=`           |Not Equals                          |JA           |`"abc" != "ABC"`
+`==`           |Equals                              |Ja           |`"aBc" == "aBc"`
+`!=`           |Not Equals                          |Ja           |`"abc" != "ABC"`
 `=~`           |Equals                              |Nein             |`"abc" =~ "ABC"`
 `!~`           |Not Equals                          |Nein             |`"aBc" !~ "xyz"`
 `has`          |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |Nein |`"North America" has "america"`
 `!has`         |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |Nein             |`"North America" !has "amer"` 
-`has_cs`       |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |JA|`"North America" has_cs "America"`
-`!has_cs`      |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |JA            |`"North America" !has_cs "amer"` 
+`has_cs`       |Rechter Ausdruck ist vollständig in linkem Ausdruck enthalten |Ja|`"North America" has_cs "America"`
+`!has_cs`      |Rechter Ausdruck ist nicht vollständig in linkem Ausdruck enthalten       |Ja            |`"North America" !has_cs "amer"` 
 `hasprefix`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Nein             |`"North America" hasprefix "ame"`
 `!hasprefix`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Nein             |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |JA            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |JA            |`"North America" !hasprefix_cs "CA"` 
+`hasprefix_cs`    |Rechter Ausdruck ist Präfix in linkem Ausdruck         |Ja            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |Rechter Ausdruck ist kein Präfix in linkem Ausdruck     |Ja            |`"North America" !hasprefix_cs "CA"` 
 `hassuffix`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Nein             |`"North America" hassuffix "ica"`
 `!hassuffix`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Nein             |`"North America" !hassuffix "americ"
-`hassuffix_cs`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |JA            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |JA            |`"North America" !hassuffix_cs "icA"
+`hassuffix_cs`    |Rechter Ausdruck ist Suffix in linkem Ausdruck         |Ja            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |Rechter Ausdruck ist kein Suffix in linkem Ausdruck     |Ja            |`"North America" !hassuffix_cs "icA"
 `contains`     |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Nein             |`"FabriKam" contains "BRik"`
 `!contains`    |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Nein             |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |JA           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |JA           |`"Fabrikam" !contains_cs "Kam"`
+`contains_cs`   |Rechter Ausdruck tritt als Teilzeichenfolge in linkem Ausdruck auf  |Ja           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |Rechter Ausdruck tritt nicht in linkem Ausdruck auf           |Ja           |`"Fabrikam" !contains_cs "Kam"`
 `startswith`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein             |`"Fabrikam" startswith "fab"`
 `!startswith`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Nein         |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|JA            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|JA        |`"Fabrikam" !startswith_cs "fab"`
+`startswith_cs`   |Rechter Ausdruck ist eine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Ja            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |Rechter Ausdruck ist keine Teilzeichenfolge, die am Anfang des linken Ausdrucks steht|Ja        |`"Fabrikam" !startswith_cs "fab"`
 `endswith`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein              |`"Fabrikam" endswith "Kam"`
 `!endswith`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Nein          |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|JA             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|JA         |`"Fabrikam" !endswith "brik"`
-`matches regex`|Linker Ausdruck enthält eine Übereinstimmung mit rechtem Ausdruck        |JA           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Entspricht einem der Elemente       |JA           |`"abc" in ("123", "345", "abc")`
-`!in`          |Entspricht keinem der Elemente   |JA           |`"bca" !in ("123", "345", "abc")`
+`endswith_cs`     |Rechter Ausdruck ist eine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |Rechter Ausdruck ist keine Teilzeichenfolge, die am Ende des linken Ausdrucks steht|Ja         |`"Fabrikam" !endswith "brik"`
+`matches regex`|Linker Ausdruck enthält eine Übereinstimmung mit rechtem Ausdruck        |Ja           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Entspricht einem der Elemente       |Ja           |`"abc" in ("123", "345", "abc")`
+`!in`          |Entspricht keinem der Elemente   |Ja           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof

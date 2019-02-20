@@ -11,12 +11,12 @@ services: data-factory
 documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
-ms.openlocfilehash: e296606d219623c29bedca4fb0906a955a394b30
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: ee35c7ae1b75c6fb4d656927d7e6e4384cd76836
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54013416"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003940"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Rollen und Berechtigungen für Azure Data Factory
 
@@ -78,7 +78,7 @@ Hier finden Sie einige Beispiele, die zeigen, was sich mit benutzerdefinierten R
   Dieses Szenario erfordert zwei Rollenzuweisungen.
 
   1. Weisen Sie die integrierte Rolle **Mitwirkender** auf Data Factory-Ebene zu.
-  2. Erstellen Sie eine benutzerdefinierte Rolle mit der Berechtigung *Microsoft.Resources/deployments/**. Sie können einem Benutzer diese benutzerdefinierte Rolle auf Ressourcengruppenebene zuweisen.
+  2. Erstellen Sie eine benutzerdefinierte Rolle mit der Berechtigung **Microsoft.Resources/deployments/**. Sie können einem Benutzer diese benutzerdefinierte Rolle auf Ressourcengruppenebene zuweisen.
 
 - Sie können es einem Benutzer ermöglichen, eine Data Factory über PowerShell oder das SDK zu aktualisieren, nicht aber über das Azure-Portal.
 

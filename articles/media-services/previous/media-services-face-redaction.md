@@ -4,23 +4,23 @@ description: In diesem Thema wird veranschaulicht, wie Sie Gesichter mit Azure M
 services: media-services
 documentationcenter: ''
 author: juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/09/2017
+ms.date: 02/09/2019
 ms.author: juliako;
-ms.openlocfilehash: 910cc246aa19e19b109fc660682c6b2dc239cbb7
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
+ms.openlocfilehash: 7fa1bec1b6f83b18684f6139bf6ac8db1ae9daec
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "33784449"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004892"
 ---
-# <a name="redact-faces-with-azure-media-analytics"></a>Bearbeiten von Gesichtern mit Azure Media Analytics
+# <a name="redact-faces-with-azure-media-analytics-legacy"></a>Bearbeiten von Gesichtern mit Azure Media Analytics (veraltet)
 ## <a name="overview"></a>Übersicht
 **Azure Media Redactor** ist ein [Azure Media Analytics](media-services-analytics-overview.md)-Medienprozessor (MP), der eine skalierbare Gesichtsbearbeitung in der Cloud ermöglicht. Mit der Gesichtsbearbeitung können Sie Ihr Video ändern, um Gesichter von ausgewählten Personen unscharf anzuzeigen und so unkenntlich zu machen. Es kann beispielsweise sein, dass Sie den Gesichtsbearbeitungsdienst nutzen möchten, wenn es um die öffentliche Sicherheit oder Medienarbeit geht. Die Bearbeitung von Material mit einer Länge von einigen Minuten, das mehrere Gesichter enthält, kann bei manueller Vorgehensweise Stunden dauern. Mit diesem Dienst sind für den Prozess der Gesichtsbearbeitung aber nur einige einfache Schritte erforderlich. Weitere Informationen finden Sie in [diesem](https://azure.microsoft.com/blog/azure-media-redactor/) Blog.
 
@@ -135,7 +135,7 @@ Beispiel: „foo_IDList.txt“
 
 ## <a name="blur-types"></a>Typen von Weichzeichnern
 
-Im Modus **Kombiniert** oder **Bearbeiten** gibt es fünf verschiedene Weichzeichnermodi, zwischen denen Sie über die JSON-Eingabekonfiguration wählen können: **Low**, **Med**, **High**, **Box** und **Black** (Niedrig, Medium, Hoch, Feld, Schwarz). Standardmäßig wird **Medium** verwendet.
+In den Modi **Kombiniert** und **Bearbeiten** gibt es fünf verschiedene Weichzeichnermodi, zwischen denen Sie über die JSON-Eingabekonfiguration wählen können: **Low** (Niedrig), **Med** (Medium), **High** (Hoch), **Box** (Feld) und **Black** (Schwarz). Standardmäßig wird **Medium** verwendet.
 
 Untenstehend finden Sie Beispiele für Weichzeichnertypen.
 

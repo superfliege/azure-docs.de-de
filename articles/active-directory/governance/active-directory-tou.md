@@ -12,14 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 01/10/2019
+ms.date: 02/09/2019
 ms.author: rolyon
-ms.openlocfilehash: 2b8836525e085b41cc8d011087c4fc71afe453cb
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 987b2b1ca028b816ed6909781f56c0b5174541bd
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822509"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56163766"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Nutzungsbedingungsfeature für Azure Active Directory
 Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
@@ -333,6 +334,9 @@ Sie können für die App Azure Information Protection eine Richtlinie für bedin
 Sie können für die App Microsoft Intune-Registrierung eine Richtlinie für bedingten Zugriff konfigurieren und einen Benutzer vor der Registrierung eines Geräts in Intune auffordern, den Nutzungsbedingungen zuzustimmen. Weitere Informationen finden Sie im [Blogbeitrag](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) über das Auswählen der richtigen Lösung für Nutzungsbedingungen für Ihre Organisation.
 
 ![Cloud-App Microsoft Intune](./media/active-directory-tou/cloud-app-intune.png)
+
+> [!NOTE]
+> Die Intune-Registrierungs-App wird für [Nutzungsbedingungen pro Gerät](#per-device-terms-of-use) nicht unterstützt.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/12/2018
 ms.author: bwren
-ms.openlocfilehash: fdccb4e94d9b9fd8b698575c890efad56a115a3e
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 1b86bc015b187fe75e79ba04df60a6bc5257a9b8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452818"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994013"
 ---
 # <a name="continuous-monitoring-with-azure-monitor"></a>Kontinuierliche Überwachung mit Azure Monitor
 
@@ -64,7 +64,7 @@ Mit Continuous Integration/Continuous Deployment können Sie Codeänderungen aut
 
 - Verwenden Sie [Azure Pipelines](/azure/devops/pipelines), um Continuous Deployment zu implementieren und Ihren gesamten Prozess (vom Codecommit bis zur Produktion) auf Basis Ihrer CI/CD-Tests zu automatisieren.
 - Verwenden Sie [Quality Gates](/azure/devops/pipelines/release/approvals/gates), um die Überwachung in die Prozesse vor oder nach der Bereitstellung zu integrieren. Dadurch wird sichergestellt, dass Sie die wichtigsten Integritäts-/Leistungsmetriken (KPIs) erfüllen, wenn Ihre Anwendungen von der Entwicklung in die Produktionsumgebung wechseln und Unterschiede in der Infrastrukturumgebung oder -größe sich nicht negativ auf Ihre KPIs auswirken.
-- [Unterhalten Sie separate Überwachungsinstanzen](../azure-monitor/app/separate-resources.md) zwischen Ihren verschiedenen Bereitstellungsumgebungen wie Entwicklung, Test, Canary und Produktion. Auf diese Weise wird sichergestellt, dass die gesammelten Daten für alle zugehörigen Anwendungen und Infrastrukturen relevant sind. Wenn Sie Daten umgebungsübergreifend korrelieren müssen, können Sie [Diagramme für mehrere Ressourcen im Metrik-Explorer](../azure-monitor/platform/metrics-charts.md) verwenden oder [ressourcenübergreifende Abfragen in Log Analytics](log-query/cross-workspace-query.md) erstellen.
+- [Unterhalten Sie separate Überwachungsinstanzen](../azure-monitor/app/separate-resources.md) zwischen Ihren verschiedenen Bereitstellungsumgebungen wie Entwicklung, Test, Canary und Produktion. Auf diese Weise wird sichergestellt, dass die gesammelten Daten für alle zugehörigen Anwendungen und Infrastrukturen relevant sind. Wenn Sie Daten umgebungsübergreifend korrelieren möchten, können Sie [Diagramme für mehrere Ressourcen im Metrik-Explorer](../azure-monitor/platform/metrics-charts.md) verwenden oder [ressourcenübergreifende Abfragen in Azure Monitor](log-query/cross-workspace-query.md) erstellen.
 
 
 ## <a name="create-actionable-alerts-with-actions"></a>Erstellen von handlungsrelevanten Warnungen mit Aktionen

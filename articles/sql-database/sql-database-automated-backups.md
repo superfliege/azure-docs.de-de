@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 37b88b254b350d5c9e006e882a2dc5a39b880b2c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477810"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997122"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -63,7 +63,7 @@ Die Standardaufbewahrungsdauer für eine Datenbank, die mit dem DTU-basierten Ka
 
 #### <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 
-Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt die Standardaufbewahrungszeit 7 Tage (für eigenständige Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken). Sie können für alle Azure SQL-Datenbanken (eigenständige Datenbanken, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken) die [Aufbewahrungsdauer für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
+Bei Verwendung des [auf virtuellen Kernen basierenden Kaufmodells](sql-database-service-tiers-vcore.md) beträgt der Standardaufbewahrungszeitraum 7 Tage (für Singletons, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken). Sie können für alle Azure SQL-Datenbank-Instanzen (Singletons, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken) den [Aufbewahrungszeitraum für Sicherungen in bis zu 35 Tage ändern](#how-to-change-the-pitr-backup-retention-period).
 
 > [!WARNING]
 > Wenn Sie die aktuelle Aufbewahrungsdauer reduzieren, sind alle vorhandenen Sicherungen, die außerhalb der neuen Aufbewahrungsdauer liegen, nicht mehr verfügbar. Wenn Sie die aktuelle Aufbewahrungsdauer erhöhen, behält SQL-Datenbank die vorhandenen Sicherungen bei, bis die längere Aufbewahrungsdauer erreicht ist.
@@ -80,7 +80,7 @@ Weitere Informationen finden Sie unter [Point-in-Time-Wiederherstellung](sql-dat
 
 ### <a name="backups-for-long-term-retention"></a>Sicherungen für die langfristige Aufbewahrung
 
-Eigenständige und in einem Pool zusammengefasste Datenbanken verfügen über eine Option zum Konfigurieren der langfristigen Aufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
+Singletons und in einem Pool zusammengefasste Datenbanken verfügen über eine Option zum Konfigurieren der Langzeitaufbewahrung (LTR) von vollständigen Sicherungen für eine Dauer von bis zu zehn Jahren in Azure Blob Storage. Wenn die LTR-Richtlinie aktiviert ist, werden die wöchentlichen vollständigen Sicherungen automatisch in einen anderen RA-GRS-Speichercontainer kopiert. Zur Erfüllung unterschiedlicher Konformitätsanforderungen können Sie verschiedene Aufbewahrungsdauern für wöchentliche, monatliche oder jährliche Sicherungen auswählen. Der Speicherverbrauch hängt von der ausgewählten Häufigkeit der Sicherungen und von den Aufbewahrungsdauern ab. Sie können den [LTR-Preisrechner](https://azure.microsoft.com/pricing/calculator/?service=sql-database) verwenden, um die Kosten für den LTR-Speicher zu schätzen.
 
 Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
 
@@ -168,5 +168,5 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 - Datenbanksicherungen sind ein wesentlicher Bestandteil jeder Strategie für Geschäftskontinuität und Notfallwiederherstellung, da Ihre Daten vor versehentlichen Beschädigungen und Löschungen geschützt werden. Weitere Informationen zu den anderen Geschäftskontinuitätslösungen von Azure SQL-Datenbank finden Sie unter [Übersicht über die Geschäftskontinuität mit Azure SQL-Datenbank](sql-database-business-continuity.md).
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt über das Azure-Portal finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt über das Azure-Portal](sql-database-recovery-using-backups.md).
 - Informationen zur Wiederherstellung des Zustands zu einem bestimmten Zeitpunkt mithilfe von PowerShell finden Sie unter [Wiederherstellen des Zustands einer Azure SQL-Datenbank zu einem früheren Zeitpunkt mit PowerShell](scripts/sql-database-restore-database-powershell.md).
-- Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in Azure-Blobspeicher mit dem Azure-Portal finden Sie im Artikel über das [Verwalten der langfristigen Sicherungsaufbewahrung mit dem Azure-Portal](sql-database-long-term-backup-retention-configure.md).
+- Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der Langzeitaufbewahrung automatisierter Sicherungen in Azure Blob Storage mit dem Azure-Portal finden Sie im Artikel [Verwalten der Langzeitaufbewahrung von Sicherungen mit dem Azure-Portal](sql-database-long-term-backup-retention-configure.md).
 - Informationen zum Konfigurieren, Verwalten und Wiederherstellen aus der langfristigen Aufbewahrung automatisierter Sicherungen in Azure-Blobspeicher mit Azure PowerShell finden Sie im Artikel über das [Verwalten der langfristigen Sicherungsaufbewahrung mit PowerShell](sql-database-long-term-backup-retention-configure.md).

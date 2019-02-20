@@ -15,14 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b977a2fe9dadfe42e02063fa4fa291b9be484ac
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 09145612821cb669e26e3ccb8d15611112eca700
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733137"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980073"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Bereitstellen der App in VM-Skalierungsgruppen
+
 Zum Ausführen von Anwendungen auf VM-Instanzen in einer Skalierungsgruppe müssen Sie zuerst die Anwendungskomponenten und erforderlichen Dateien installieren. In diesem Artikel werden Möglichkeiten zum Erstellen eines benutzerdefinierten VM-Image für Instanzen in einer Skalierungsgruppe oder zum automatischen Ausführen von Installationsskripts auf vorhandenen VM-Instanzen aufgezeigt. Außerdem erfahren Sie, wie Sie Anwendungs- oder Betriebssystemupdates für eine Skalierungsgruppe verwalten.
 
 
@@ -50,8 +51,8 @@ Mit der Erweiterung PowerShell DSC können Sie VM-Instanzen in einer Skalierungs
 
 - Weist die VM-Instanzen an, ein DSC-Paket von GitHub herunterzuladen: *https://github.com/Azure-Samples/compute-automation-configurations/raw/master/dsc.zip*
 - Die Erweiterung wird so festgelegt, dass ein Installationsskript ausgeführt wird: `configure-http.ps1`
-- Mit [Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss) werden Informationen zu einer Skalierungsgruppe abgerufen.
-- Mit [Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss) wird die Erweiterung auf die VM-Instanzen angewendet.
+- Mit [Get-AzVmss](/powershell/module/az.compute/get-azvmss) werden Informationen zu einer Skalierungsgruppe abgerufen.
+- Mit [Update-AzVmss](/powershell/module/az.compute/update-azvmss) wird die Erweiterung auf die VM-Instanzen angewandt.
 
 Die DSC-Erweiterung wird auf die *myScaleSet*-VM-Instanzen in der Ressourcengruppe mit dem Namen *myResourceGroup* angewendet. Geben Sie Ihre eigenen Namen wie folgt ein:
 
@@ -67,12 +68,12 @@ $dscConfig = @{
 }
 
 # Get information about the scale set
-$vmss = Get-AzureRmVmss `
+$vmss = Get-AzVmss `
                 -ResourceGroupName "myResourceGroup" `
                 -VMScaleSetName "myScaleSet"
 
 # Add the Desired State Configuration extension to install IIS and configure basic website
-$vmss = Add-AzureRmVmssExtension `
+$vmss = Add-AzVmssExtension `
     -VirtualMachineScaleSet $vmss `
     -Publisher Microsoft.Powershell `
     -Type DSC `
@@ -81,13 +82,13 @@ $vmss = Add-AzureRmVmssExtension `
     -Setting $dscConfig
 
 # Update the scale set and apply the Desired State Configuration extension to the VM instances
-Update-AzureRmVmss `
+Update-AzVmss `
     -ResourceGroupName "myResourceGroup" `
     -Name "myScaleSet"  `
     -VirtualMachineScaleSet $vmss
 ```
 
-Wenn als Upgraderichtlinie für Ihre Skalierungsgruppe *manuell* festgelegt ist, sollten Sie Ihre VM-Instanzen mit [Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance) aktualisieren. Mit diesem Cmdlet wird die aktualisierte Konfiguration für die Skalierungsgruppe auf die VM-Instanzen angewendet und Ihre Anwendung installiert.
+Wenn als Upgraderichtlinie für Ihre Skalierungsgruppe *manuell* festgelegt ist, sollten Sie Ihre VM-Instanzen mit [Update-AzVmssInstance](/powershell/module/az.compute/update-azvmssinstance) aktualisieren. Mit diesem Cmdlet wird die aktualisierte Konfiguration für die Skalierungsgruppe auf die VM-Instanzen angewendet und Ihre Anwendung installiert.
 
 
 ## <a name="install-an-app-to-a-linux-vm-with-cloud-init"></a>Installieren einer App auf einer Linux-VM mit „cloud-init“

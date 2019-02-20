@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 84f8d8ecbeacc5acb6b19462096e6fbd1aa45816
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1902d00bc69fd12e7d424a2c2ab3bea562ff4e79
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810285"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108771"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement
 
@@ -28,7 +28,7 @@ Beim Verschieben wird sowohl die Quell- als auch die Zielgruppe gesperrt. Schrei
 Wenn Sie ein Ressource verschieben, wird sie nur in eine neue Ressourcengruppe verschoben. Durch den Vorgang des Verschiebens kann der Speicherort der Ressource nicht geändert werden. Die neue Ressourcengruppe hat möglicherweise einen anderen Speicherort, das heißt jedoch nicht, dass der Speicherort der Ressource geändert wird.
 
 > [!NOTE]
-> In diesem Artikel wird beschrieben, wie Sie Ressourcen in einem vorhandenen Azure-Kontoangebot verschieben. Wenn Sie Ihr Azure-Kontoangebot ändern möchten (z.B. Upgrade von Free auf nutzungsbasierte Bezahlung), müssen Sie Ihr Abonnement konvertieren.
+> In diesem Artikel wird beschrieben, wie Sie Ressourcen zwischen vorhandenen Azure-Abonnements verschieben. Wenn Sie ein Upgrade für Ihr Azure-Abonnement durchführen möchten (z.B. Wechsel vom kostenlosen Abonnement zur nutzungsbasierten Bezahlung), müssen Sie Ihr Abonnement konvertieren.
 > * Falls Sie für eine kostenlose Testversion ein Upgrade durchführen möchten, helfen Ihnen die Informationen unter [Aktualisieren Ihrer kostenlosen Testversion oder Ihres Microsoft Imagine Azure-Abonnements auf nutzungsbasierte Bezahlung](..//billing/billing-upgrade-azure-subscription.md) weiter.
 > * Informationen zum Ändern eines Kontos mit nutzungsbasierter Bezahlung finden Sie unter [Ändern Ihres Azure-Abonnements mit nutzungsbasierter Bezahlung in ein anderes Angebot](../billing/billing-how-to-switch-azure-offer.md).
 > * Wenn Sie das Abonnement nicht konvertieren können, können Sie [eine Azure-Supportanfrage erstellen](../azure-supportability/how-to-create-azure-support-request.md). Wählen Sie **Abonnementverwaltung** als Problemtyp aus.
@@ -102,7 +102,7 @@ Die folgende Liste enthält eine allgemeine Zusammenfassung von Azure-Diensten, 
 * Dashboards im Portal
 * Power BI – sowohl Power BI Embedded als auch Power BI-Arbeitsbereichssammlung
 * Öffentliche IP-Adresse: Die öffentliche IP-Adresse der SKU „Basic“ kann verschoben werden. Öffentliche IP-Adresse der SKU „Standard“ kann nicht verschoben werden.
-* Recovery Services-Tresor – registrieren Sie sich für eine [private Vorschauversion](#recovery-services-limitations).
+* Recovery Services-Tresor – registrieren Sie sich für eine [Vorschauversion](#recovery-services-limitations).
 * Azure Cache for Redis – wenn die Azure Cache for Redis-Instanz mit einem virtuellen Netzwerk konfiguriert ist, kann die Instanz nicht in ein anderes Abonnement verschoben werden. Siehe [Einschränkungen von virtuellen Netzwerken](#virtual-networks-limitations).
 * Scheduler
 * Azure Search: Es ist nicht möglich, mehrere Search-Ressourcen in verschiedenen Regionen gleichzeitig zu verschieben. Verschieben Sie diese stattdessen in mehreren Vorgängen.
@@ -310,7 +310,7 @@ Dieser Vorgang kann einige Minuten dauern.
 
 ### <a name="recovery-services-limitations"></a>Einschränkungen von Recovery Services
 
- Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine private Vorschauversion registrieren. Schreiben Sie an AskAzureBackupTeam@microsoft.com, um die Vorschauversion zu testen.
+ Zum Verschieben eines Recovery Services-Tresors müssen Sie sich für eine [eingeschränkte öffentliche Vorschauversion](../backup/backup-azure-move-recovery-services-vault.md) registrieren.
 
 Derzeit können Sie jeweils einen Recovery Services-Tresor pro Region verschieben. Tresore, die Azure Files, die Azure-Dateisynchronisierung oder SQL auf IaaS-VMs sichern, können nicht verschoben werden.
 

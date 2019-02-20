@@ -11,12 +11,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 2ad525ee0e10064d4d606dc1f899ef813fe92ab5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 077202e65c9e63c8ca5ea1a555ccd70bf27028c6
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273495"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56232602"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-event-hubs"></a>Verwenden von VNET-Dienstendpunkten mit Azure Event Hubs
 
@@ -29,7 +29,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 >[!WARNING]
 > Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Event Hubs interagieren.
 >
-> Vertrauenswürdige Microsoft-Dienste werden bei der Implementierung von Virtual Networks nicht unterstützt und werden in Kürze bereitgestellt.
+> Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
 >
 > Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
 > - Azure Monitor

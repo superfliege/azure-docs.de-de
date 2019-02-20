@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 01/23/2019
+ms.date: 02/13/2019
 ms.author: celested
 ms.reviewer: hirsin, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 30d9cef89bed1c43fa1d058ff90fe2d9a52260f7
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d4ad41992b2ac0dfc98303601060ed299e75ddfc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096686"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234287"
 ---
 # <a name="authentication-and-authorization-error-codes"></a>Authentifizierungs- und Autorisierungsfehlercodes
 
@@ -190,7 +191,7 @@ Suchen Sie nach Informationen zu den AADSTS-Fehlercodes, die vom Azure Active Di
 | AADSTS90016 | MissingRequiredClaim: Das Zugriffstoken ist nicht gültig. Der erforderliche Anspruch fehlt. |
 | AADSTS90019 | MissingTenantRealm: Azure AD konnte die Mandanten-ID nicht aus der Anforderung ermitteln. |
 | AADSTS90022 | AuthenticatedInvalidPrincipalNameFormat: Das Format des Benutzerprinzipalnamens ist ungültig oder entspricht nicht dem erwarteten `name[/host][@realm]`-Format. Der Prinzipalname ist erforderlich, Host und Bereich sind optional und können auf NULL festgelegt werden. |
-| AADSTS90023 | InvalidRequest |
+| AADSTS90023 | InvalidRequest: Die Authentifizierungsdienstanforderung ist ungültig. |
 | AADSTS90024 | RequestBudgetExceededError: Es wurde ein vorübergehender Fehler festgestellt. Versuchen Sie es erneut. |
 | AADSTS90033 | MsodsServiceUnavailable: Der Microsoft Online Directory Service (MSODS) ist nicht verfügbar. |
 | AADSTS90036 | MsodsServiceUnretryableFailure: Unerwarteter, nicht wiederholbarer Fehler vom WCF-Dienst, der vom MSODS gehostet wird. [Öffnen Sie ein Supportticket](../fundamentals/active-directory-troubleshooting-support-howto.md), um weitere Details zum Fehler zu erhalten. |

@@ -11,20 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 manager: craigg
-ms.date: 02/06/2019
-ms.openlocfilehash: d9de6100e3bb7c3cc71a7a251d790df4907be5f2
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/07/2019
+ms.openlocfilehash: 01c4bcfcea038f3e69620cdce78719c8c5128faf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820350"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964796"
 ---
 # <a name="sql-database-application-development-overview"></a>Übersicht zur SQL-Datenbankanwendungsentwicklung
 
 In diesem Artikel werden die grundlegenden Aspekte beschrieben, die ein Entwickler beim Schreiben von Code zum Herstellen einer Verbindung mit Azure SQL-Datenbanken berücksichtigen sollte. Dieser Artikel gilt für alle Bereitstellungsmodelle von Azure SQL-Datenbank (Einzeldatenbank, Pools für elastische Datenbanken, verwaltete Instanz).
 
 > [!TIP]
-> Wenn Sie Ihre Azure SQL-Datenbank einrichten müssen, lesen Sie die ersten Schritte zu [Einzeldatenbank](sql-database-single-database-quickstart-guide.md) und [Verwaltete Instanz](sql-database-managed-instance-quickstart-guide.md).
+> Wenn Sie Ihre Azure SQL-Datenbank-Instanz einrichten müssen, lesen Sie die ersten Schritte zu [Singletons](sql-database-single-database-quickstart-guide.md) und [verwalteten Instanzen](sql-database-managed-instance-quickstart-guide.md).
 >
 
 ## <a name="language-and-platform"></a>Sprache und Plattform
@@ -49,14 +49,16 @@ Vermeiden Sie lang andauernde Transaktionen, weil jeder Infrastruktur- oder Verb
 
 ## <a name="resiliency"></a>Resilienz
 
-Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können.
-Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](sql-database-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients die Wiederholung gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](sql-database-develop-error-messages.md) ab.
+Azure SQL-Datenbank ist ein Clouddienst, in dem ggf. vorübergehende Fehler in der zugrunde liegenden Infrastruktur oder bei der Kommunikation zwischen Cloudentitäten auftreten können. Obwohl Azure SQL-Datenbank bei transitiven infrastrukturausfällen resilient ist, können solche Fehler die Konnektivität beeinträchtigen. Tritt beim Herstellen der Verbindung mit SQL-Datenbank ein vorübergehender Fehler auf, sollte Ihr Code [den Aufruf wiederholen](sql-database-connectivity-issues.md). Die Wiederholungslogik sollte Backofflogik verwenden, damit die SQL-Datenbank nicht unnötig überlastet wird, wenn mehrere Clients die Wiederholung gleichzeitig durchführen. Die Wiederholungslogik hängt von den [Fehlermeldungen für Clientprogramme von SQL-Datenbank](sql-database-develop-error-messages.md) ab.
+
+Weitere Informationen zur Vorbereitung auf geplante Wartungsereignisse in Azure SQL-Datenbank finden Sie unter [Planen von Azure-Wartungsereignissen in Azure SQL-Datenbank](sql-database-planned-maintenance.md).
 
 ## <a name="network-considerations"></a>Netzwerküberlegungen
 
 - Vergewissern Sie sich, dass auf dem Computer, der das Clientprogramm hostet, die Firewall ausgehende TCP-Kommunikation über Port 1433 zulässt.  Weitere Informationen: [Konfigurieren einer Firewall für Azure SQL-Datenbank](sql-database-configure-firewall-settings.md).
 - Wenn Ihr Clientprogramm eine Verbindung mit SQL-Datenbank herstellt, wobei der Client auf einem virtuellen Azure-Computer ausgeführt wird, müssen Sie bestimmte Portbereiche auf dem virtuellen Computer öffnen. Weitere Informationen: [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
 - Bei Clientverbindungen mit Azure SQL-Datenbankwird der Proxy manchmal umgangen und direkt mit der Datenbank interagiert. Andere Ports als 1433 werden wichtig. Weitere Informationen finden Sie unter [Verbindungsarchitektur der Azure SQL-Datenbank](sql-database-connectivity-architecture.md) und [Andere Ports als 1433 für ADO.NET 4.5 und SQL-Datenbank](sql-database-develop-direct-route-ports-adonet-v12.md).
+- Informationen zur Netzwerkkonfiguration für eine verwaltete Instanz finden Sie unter [Netzwerkkonfiguration für verwaltete Instanzen](sql-database-howto-managed-instance.md#network-configuration).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

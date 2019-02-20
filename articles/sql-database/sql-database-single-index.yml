@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3a404c9f7abae979a4f4d54c6ff502a33edc9b7f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 6dfa2cf9d5d7a4fb10c04207341915aebbf1808e
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814400"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235460"
 documentType: LandingData
 title: 'Azure SQL-Datenbank: Einzeldatenbank'
 metadata:
@@ -16,6 +16,7 @@ metadata:
   manager: craigg
   requires-business-manager-approval: false
   ms.service: sql-database
+  ms.subservice: single-database
   ms.tgt_pltfrm: na
   ms.devlang: 
   ms.topic: overview
@@ -80,6 +81,7 @@ sections:
     - html: (Vorschau) Neue Features für <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">intelligente Abfrageverarbeitung</a> in SQL Server 2019, z.B. <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#table-variable-deferred-compilation">verzögerte Kompilierung von Tabellenvariablen</a>, <a href="https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#batch-mode-on-rowstore">Batchmodus bei Rowstore-Tabellen</a> und <a href="https://docs.microsoft.com/sql/relational-databases/user-defined-functions/scalar-udf-inlining?view=azuresqldb-current&toc=%2Fazure%2Fsql-database%2Ftoc.json"> Inlining benutzerdefinierter Skalarfunktionen</a>.
     - html: (Vorschau) Neue Transact-SQL-Sprachfunktionen, z.B. <a href="https://docs.microsoft.com/sql/t-sql/functions/approx-count-distinct-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Aggregatfunktion APPROX_COUNT_DISTINCT</a> und <a href="https://docs.microsoft.com/sql/relational-databases/import-export/examples-of-bulk-access-to-data-in-azure-blob-storage?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017">Massenimport aus Azure Blob Storage</a>.
     - html: (Vorschau) Neue Vorgänge zum <a href="https://docs.microsoft.com/sql/t-sql/statements/create-columnstore-index-transact-sql?toc=%2Fazure%2Fsql-database%2Ftoc.json&view=sql-server-2017#online--on--off">Erstellen</a> und Neuerstellen des clustered columnstore-Index in SQL Server 2019 Online.
+    - html: (Vorschau) Neue <a href="https://docs.microsoft.com/azure/sql-database/sql-database-machine-learning-services-overview">Machine Learning Services (mit R) in Azure SQL-Datenbank</a>
 - title: Fünf-Minuten-Schnellstarts
   items:
   - type: paragraph

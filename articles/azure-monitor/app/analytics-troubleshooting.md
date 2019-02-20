@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 07/11/2016
+ms.date: 02/08/2019
 ms.author: mbullwin
-ms.openlocfilehash: bf999e15c04a64f717bcd7bac87e357d5ccc92e6
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: ecf0638aa999208331603ac30ccf4eb17b3c4500
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189931"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960682"
 ---
 # <a name="troubleshoot-analytics-in-application-insights"></a>Problembehandlung für Analytics in Application Insights
 Probleme mit [Analytics in Application Insights](analytics.md)? Beginnen Sie hier Analytics, das leistungsfähige Suchtool von Azure Application Insights.
@@ -36,7 +36,7 @@ Deaktivieren Sie die Erweiterung, oder verwenden Sie einen anderen Browser.
 
 Während der Portallaufzeit ist ein interner Fehler aufgetreten – Ausnahmefehler.
 
-* Löschen Sie den Browsercache. 
+* Löschen Sie den Browsercache.
 
 ## <a name="e-b"></a>403 ... Versuchen Sie, neu zu laden
 ![403 ... Versuchen Sie, neu zu laden](media/analytics-troubleshooting/020.png)

@@ -3,8 +3,8 @@ title: Automatisierte SaaS-App-Benutzerbereitstellung in Azure AD | Microsoft-Do
 description: Einführung in die Verwendung von Azure AD für die automatisierte Bereitstellung, Bereitstellungsaufhebung und fortlaufende Aktualisierung von Benutzerkonten für verschiedene SaaS-Drittanbieteranwendungen.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,14 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/30/2018
-ms.author: barbkess
+ms.author: celested
 ms.reviewer: asmalser
-ms.openlocfilehash: a4fc037ed566905133f59163ef99d5e107ca4bcc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3e8b099f845df66dfe8c43bc6f968fd63b30d09d
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55190920"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56186351"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory
 
@@ -39,7 +40,7 @@ Azure Active Directory (Azure AD) ermöglicht Ihnen das automatisierte Erstellen
 
 * Abgleich vorhandener Identitäten zwischen Quell- und Zielsystemen.
 * Anpassbare Attributzuordnungen, die definieren, welche Benutzerdaten vom Quellsystem an das Zielsystem fließen sollen.
-* Optionale E-Mail-Warnungen zu Bereitstellungsfehlern
+* Optionale E-Mail-Warnungen zu Bereitstellungsfehlern.
 * Berichterstellung und Aktivitätsprotokolle unterstützen Sie bei der Überwachung und Problembehandlung.
 
 ## <a name="why-use-automated-provisioning"></a>Argumente für die automatisierte Bereitstellung
@@ -107,7 +108,7 @@ Die Bereitstellung wird auf der Registerkarte **Bereitstellung** des Anwendungsv
 
 ![Einstellungen](./media/user-provisioning/provisioning_settings1.PNG)
 
-* **Bereichsdefinitionsfilter** teilen dem Bereitstellungsdienst mit, welche Benutzer und welche Gruppe aus dem Quellsystem im Zielsystem bereitgestellt werden sollen bzw. für welche Benutzer und für welche Gruppe diese Bereitstellung aufgehoben werden soll. Zwei Aspekte der Bereichsdefinitionsfilter werden zusammen ausgewertet und bestimmen, wer zum Geltungsbereich für die Bereitstellung gehört:
+* **Bereichsdefinitionsfilter** teilen dem Bereitstellungsdienst mit, welche Benutzer und Gruppen aus dem Quellsystem im Zielsystem bereitgestellt werden sollen bzw. für welche Benutzer und Gruppen diese Bereitstellung aufgehoben werden soll. Zwei Aspekte der Bereichsdefinitionsfilter werden zusammen ausgewertet und bestimmen, wer zum Geltungsbereich für die Bereitstellung gehört:
 
     * **Filter für Attributwerte:** Über das Menü „Quellobjektbereich“ in den Attributzuordnungen kann nach bestimmten Attributwerten gefiltert werden. So können Sie beispielsweise angeben, dass nur Benutzer mit dem Abteilungsattribut „Vertrieb“ zum Geltungsbereich für die Bereitstellung gehören sollen. Weitere Informationen finden Sie unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](define-conditional-rules-for-provisioning-user-accounts.md).
 
@@ -214,13 +215,13 @@ Nur für die Konfiguration **Nur zugewiesene Benutzer und Gruppen synchronisiere
     
 Zusammenfassung der Faktoren, die sich auf die Dauer bis zum Abschluss einer **ersten Synchronisierung** auswirken:
 
-* Die Gesamtanzahl von Benutzern und Gruppen im Bereitstellungsumfang
+* Die Gesamtanzahl von Benutzern und Gruppen im Bereitstellungsumfang.
 
-* Die Gesamtanzahl von Benutzern, Gruppen und Gruppenmitgliedern im Quellsystem (Azure AD)
+* Die Gesamtanzahl von Benutzern, Gruppen und Gruppenmitgliedern im Quellsystem (Azure AD).
 
 * Ob Benutzer im Bereitstellungsumfang mit vorhandenen Benutzern in der Zielanwendung übereinstimmen, oder ob sie zum ersten Mal erstellt werden müssen. Synchronisierungsaufträge, für die alle Benutzer zum ersten Mal angelegt werden, dauern etwa *doppelt so lange* wie Synchronisierungsaufträge, für die alle Benutzer mit vorhandenen Benutzern übereinstimmen.
 
-* Anzahl von Fehlern in den [Überwachungsprotokollen](check-status-user-account-provisioning.md). Die Leistung wird zudem beeinträchtigt, wenn viele Fehler auftreten und der Bereitstellungsdienst in den Quarantänezustand versetzt wurde. 
+* Anzahl von Fehlern in den [Überwachungsprotokollen](check-status-user-account-provisioning.md). Die Leistung wird zudem beeinträchtigt, wenn viele Fehler auftreten und der Bereitstellungsdienst in den Quarantänezustand versetzt wurde.    
 
 * Fordern Sie die Einschränkung der Datenübertragungsrate an, die vom Zielsystem implementiert wird. Einige Zielsysteme implementieren Anforderungen von Grenzwerten und Einschränkungen der Datenübertragungsrate, die die Leistung bei umfangreichen Synchronisierungsvorgängen beeinträchtigen können. Unter diesen Bedingungen kann eine App, die zu viele Anforderungen zu schnell empfängt, ihre Antwortrate verlangsamen oder die Verbindung trennen. Zur Leistungssteigerung muss der Connector angepasst werden, sodass er die App-Anforderungen nicht schneller sendet, als die App sie verarbeiten kann. Diese Anpassung ist durch die Bereitstellung von Connectors möglich, die von Microsoft erstellt wurden. 
 

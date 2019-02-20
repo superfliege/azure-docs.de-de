@@ -6,17 +6,18 @@ keywords: Clip;Schneiden;Subclip;Codierung;Medien
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 11/10/2017
+ms.date: 02/08/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 1deca68cd6a61ede7536c4d5544036a10c54209b
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 510176331a1b79a1069b42afabb63b6b326951cc
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33782789"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992311"
 ---
-# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Erstellen von Clips im Portal mit Azure Media Clipper
+# <a name="create-clips-with-azure-media-clipper-in-the-portal"></a>Erstellen von Clips im Portal mit Azure Media Clipper  
+
 Sie können Azure Media Clipper im Portal verwenden, um Clips aus Medienobjekten in Ihren Media Services-Konten zu erstellen. Navigieren Sie zunächst zu Ihrem Media Services-Konto im Portal. Wählen Sie dann die Registerkarte **Subclip** aus.
 
 Auf der Registerkarte **Subclip** können Sie damit beginnen, Clips zusammenzustellen. Im Portal lädt Clipper MP4-Dateien mit Einzelbitrate, MP4-Dateien mit Mehrfachbitrate und Livearchive, die mit einem gültigen Streamingfaktor veröffentlicht wurden. Nicht veröffentlichte Medienobjekte werden nicht geladen.
@@ -35,7 +36,7 @@ Um mit der gewünschten Genauigkeit zu navigieren – basierend auf Frames oder 
 
 Navigieren Sie zur Registerkarte **Medienobjekte**, und wählen Sie das gewünschte Objekt aus, um einen dynamischen Manifestfilter zu erstellen. Wählen Sie die Schaltfläche **Subclip** für das Hauptmenü aus. Wählen Sie im Menü „Erweiterte Einstellungen“ den dynamischen Manifestfilter als Schnittmodus aus. Sie können dann die gleichen Schritte ausführen, mit denen Sie einen gerenderten Clip produzieren, um den Filter zu erstellen. Filter können nur über ein einziges Medienobjekt erstellt werden.
 
-Die folgende Abbildung veranschaulicht Clipper im dynamischen Manifestfilter-Modus im Azure-Portal: ![Azure Media Clipper im dynamischen Manifestfilter-Modus im Azure-Portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
+Die folgende Abbildung veranschaulicht Clipper im Modus mit dynamischem Manifestfilter im Azure-Portal: ![Azure Media Clipper im Modus mit dynamischem Manifestfilter im Azure-Portal](media/media-services-azure-media-clipper-portal/media-services-azure-media-clipper-filter.PNG)
 
 ## <a name="submitting-clipping-jobs"></a>Übermitteln von Schnittaufträgen
 Wenn Sie die Zusammenstellung des Clips abgeschlossen haben, wählen Sie die Schaltfläche zum Übermitteln von Aufträgen, um den zugehörigen Schnittauftrag oder den dynamischen Manifestaufruf zu initiieren.

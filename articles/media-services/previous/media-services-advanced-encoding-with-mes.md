@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 4601628fd0fbdbd80c2b159a4578e25cb4e3c4c5
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50250766"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998704"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen 
 
@@ -238,15 +238,15 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf, die folgendermaßen interpretiert werden können:
 
-  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z.B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z.B. "Start": "15%" ODER
-  * Zeitstempel bei Ausdrücken im HH:MM:SS...- "Start" : "00:01:00"
+  * Framenummer, wenn es sich nicht um negative Integers handelt, z.B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix „%“, z.B. "Start": "15%", ODER
+  * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format, z.B. "Start" : "00:01:00"
 
     Sie können die Formate nach Belieben mischen.
 
-    "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
-  * Standardwerte: Start:{Best}
-* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
+    „Start“ unterstützt darüber hinaus auch das spezielle Makro {Best}, das versucht, den ersten „interessanten“ Frame des Inhalts zu ermitteln. (HINWEIS: „Step“ und „Range“ werden ignoriert, wenn „Start“ auf „{Best}“ festgelegt ist.)
+  * Standardwerte: Start: {Best}
+* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: „Jpg“/„Png“/„BmpFormat“. Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
 ## <a id="trim_video"></a>Kürzen eines Videos (Clipping)
 Dieser Abschnitt befasst sich mit dem Ändern der Encoder-Voreinstellungen zum Beschneiden oder Kürzen des Eingabevideos, wenn es sich bei der Eingabe um eine sogenannte Zwischendatei (Mezzanine File) oder bedarfsgesteuerte Datei handelt. Der Encoder kann darüber hinaus zum Beschneiden oder Kürzen eines Medienobjekts verwendet werden, das aus einem Livedatenstrom erfasst oder archiviert wird. Ausführliche Informationen hierzu finden Sie in [diesem Blog](https://azure.microsoft.com/blog/sub-clipping-and-live-archive-extraction-with-media-encoder-standard/).
@@ -752,7 +752,7 @@ Sie können das automatische De-Interlacing deaktivieren. Diese Option wird jedo
 
 
 ## <a id="audio_only"></a>Nur Audio-Voreinstellungen
-Dieser Abschnitt zeigt zwei auf Audio begrenzte MES-Voreinstellungen: AAC-Audio und AAC Good Quality Audio.
+In diesem Abschnitt werden zwei Nur-Audio-MES-Voreinstellungen demonstriert: AAC Audio und AAC Good Quality Audio.
 
 ### <a name="aac-audio"></a>AAC Audio
     {

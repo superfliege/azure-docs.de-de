@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: f90af5b57fcb9ed7f02bba0a184dacb17570136b
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 1709abdf1d5e90cb253e67b29c0e48f6aa29a712
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311940"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shuccho-navi"></a>Tutorial: Azure Active Directory-Integration mit Shuccho Navi
 
@@ -149,7 +150,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-shuccho-navi-test-user"></a>Erstellen eines Shuccho Navi-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Shuccho Navi einen Benutzer namens „Britta Simon“. Lassen Sie sich beim Hinzufügen der Benutzer zur Shuccho Navi-Plattform ggf. vom [Shuccho Navi-Supportteam](mailto:sys_ntabtm@nta.co.jp) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Shuccho Navi einen Benutzer namens „Britta Simon“. Lassen Sie sich beim Hinzufügen der Benutzer auf der Shuccho Navi-Plattform ggf. vom  [Shuccho Navi-Supportteam](mailto:sys_ntabtm@nta.co.jp) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

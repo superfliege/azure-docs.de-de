@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie die Spracherkennungs- und Text-to-Speech-REST-APIs verwenden. In diesem Artikel erfahren Sie mehr über Autorisierungs- und Abfrageoptionen sowie darüber, wie Sie eine Anforderung strukturieren und eine Antwort erhalten.
 services: cognitive-services
 author: erhopf
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: f369ab0ec8c460137f7e2b16a7f2696357d84c50
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0ce33f20d44ac284655569ff66825533650b9d9c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247441"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998938"
 ---
 # <a name="speech-service-rest-apis"></a>REST-APIs des Speech-Diensts
 
@@ -27,14 +27,14 @@ Bevor Sie REST-APIs verwenden, müssen Sie Folgendes wissen:
 * Die Spracherkennung-REST-API gibt nur Endergebnisse zurück. Teilergebnisse werden nicht bereitgestellt.
 * Die Text-to-Speech-REST-API erfordert einen Autorisierungsheader. Das bedeutet, dass Sie einen Tokenaustausch ausführen müssen, um auf den Dienst zuzugreifen. Weitere Informationen finden Sie unter [Authentifizierung](#authentication).
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Jede Anforderung an die Spracherkennungs- oder Text-to-Speech-REST-API erfordert einen Autorisierungsheader. Diese Tabelle zeigt, welche Header für welchen Dienst unterstützt werden:
 
 | Unterstützte Autorisierungsheader | Spracherkennung | Text-zu-Sprache |
 |------------------------|----------------|----------------|
-| Ocp-Apim-Subscription-Key | JA | Nein  |
-| Autorisierung: Bearer | JA | JA |
+| Ocp-Apim-Subscription-Key | Ja | Nein  |
+| Autorisierung: Bearer | Ja | Ja |
 
 Wenn Sie den Header `Ocp-Apim-Subscription-Key` verwenden, müssen Sie nur Ihren Abonnementschlüssel angeben. Beispiel: 
 
@@ -66,7 +66,7 @@ Content-type: application/x-www-form-urlencoded
 Content-Length: 0
 ```
 
-Der Antworttext enthält das Zugriffstoken im JWT-Format (Java Web Token).
+Der Antworttext enthält das Zugriffstoken im JWT-Format (JSON Web Token).
 
 #### <a name="powershell-sample"></a>PowerShell-Beispiel
 

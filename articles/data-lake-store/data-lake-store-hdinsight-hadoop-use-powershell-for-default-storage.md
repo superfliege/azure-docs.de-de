@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 6100a77d3c0bd1ac5e012651f1e7d359c4c67443
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
+ms.openlocfilehash: 84bed7031307316545cc8e468196c6b12cde7bb7
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954452"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237060"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell
 
@@ -39,12 +39,14 @@ Befolgen Sie die Anweisungen in den nächsten fünf Abschnitten, um HDInsight zu
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Bevor Sie mit diesem Tutorial beginnen, stellen Sie sicher, dass Sie die folgenden Anforderungen erfüllen:
 
-* **Ein Azure-Abonnement**: Siehe [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/)
-* **Azure PowerShell 1.0 oder höher**: Weitere Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
-* **Windows Software Development Kit (SDK)**: Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/downloads), um Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
-* **Azure Active Directory-Dienstprinzipal**: In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
+* **Ein Azure-Abonnement**: Navigieren Sie zu [Kostenlose Azure-Testversion](https://azure.microsoft.com/pricing/free-trial/).
+* **Azure PowerShell 1.0 oder höher:** Siehe [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+* **Windows Software Development Kit (SDK):** Wechseln Sie zu [Downloads und Tools für Windows 10](https://dev.windows.com/downloads), um das Windows SDK zu installieren. Das SDK dient zum Erstellen eines Sicherheitszertifikats.
+* **Azure Active Directory-Dienstprinzipal:** In diesem Tutorial wird beschrieben, wie ein Dienstprinzipal in Azure Active Directory (Azure AD) erstellt wird. Sie müssen jedoch Azure AD-Administrator sein, um einen Dienstprinzipal erstellen zu können. Wenn Sie Administrator sind, können Sie diese Voraussetzung ignorieren und mit dem Tutorial fortfahren.
 
     >[!NOTE]
     >Sie können einen Dienstprinzipal nur dann erstellen, wenn Sie ein Azure AD-Administrator sind. Ihr Azure AD-Administrator muss zunächst einen Dienstprinzipal erstellen, bevor Sie einen HDInsight-Cluster mit Data Lake Storage Gen1 erstellen können. Der Dienstprinzipal muss mit einem Zertifikat erstellt werden, wie unter [Erstellen eines Dienstprinzipals mit Zertifikat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority) beschrieben.
@@ -57,25 +59,25 @@ Führen Sie die folgenden Schritte aus, um ein Data Lake Storage Gen1-Konto zu e
 1. Öffnen Sie auf dem Desktop ein PowerShell-Fenster, und geben Sie anschließend die folgenden Codeausschnitte ein. Wenn Sie zum Anmelden aufgefordert werden, melden Sie sich als einer der Abonnementadministrator oder -besitzer an. 
 
         # Sign in to your Azure account
-        Connect-AzureRmAccount
+        Connect-AzAccount
 
         # List all the subscriptions associated to your account
-        Get-AzureRmSubscription
+        Get-AzSubscription
 
         # Select a subscription
-        Set-AzureRmContext -SubscriptionId <subscription ID>
+        Set-AzContext -SubscriptionId <subscription ID>
 
         # Register for Data Lake Storage Gen1
-        Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
+        Register-AzResourceProvider -ProviderNamespace "Microsoft.DataLakeStore"
 
     > [!NOTE]
-    > Wenn Sie den Data Lake Storage Gen1-Ressourcenanbieter registrieren und einen Fehler erhalten, der in etwa `Register-AzureRmResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` lautet, ist Ihr Abonnement unter Umständen nicht in der Zulassungsliste für Data Lake Storage Gen1 enthalten. Befolgen Sie die Anleitung unter [Erste Schritte mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-get-started-portal.md), um Ihr Azure-Abonnement für Data Lake Storage Gen1 zu aktivieren.
+    > Wenn Sie den Data Lake Storage Gen1-Ressourcenanbieter registrieren und einen Fehler erhalten, der in etwa `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` lautet, ist Ihr Abonnement unter Umständen nicht in der Zulassungsliste für Data Lake Storage Gen1 enthalten. Befolgen Sie die Anleitung unter [Erste Schritte mit Data Lake Storage Gen1 mithilfe des Azure-Portals](data-lake-store-get-started-portal.md), um Ihr Azure-Abonnement für Data Lake Storage Gen1 zu aktivieren.
     >
 
 2. Ein Data Lake Storage Gen1-Konto wird einer Azure-Ressourcengruppe zugeordnet. Beginnen Sie, indem Sie eine Ressourcengruppe erstellen.
 
         $resourceGroupName = "<your new resource group name>"
-        New-AzureRmResourceGroup -Name $resourceGroupName -Location "East US 2"
+        New-AzResourceGroup -Name $resourceGroupName -Location "East US 2"
 
     Folgende Ausgabe sollte angezeigt werden:
 
@@ -88,7 +90,7 @@ Führen Sie die folgenden Schritte aus, um ein Data Lake Storage Gen1-Konto zu e
 3. Erstellen Sie ein Data Lake Storage Gen1-Konto. Der angegebene Kontoname darf nur Kleinbuchstaben und Zahlen enthalten.
 
         $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 name>"
-        New-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
+        New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
 
     Folgendes sollte angezeigt werden:
 
@@ -110,7 +112,7 @@ Führen Sie die folgenden Schritte aus, um ein Data Lake Storage Gen1-Konto zu e
 4. Wenn Sie Data Lake Storage Gen1 als Standardspeicher verwenden, müssen Sie einen Stammpfad angeben, in den clusterspezifische Dateien während der Clustererstellung kopiert werden. Verwenden Sie folgende Cmdlets, um einen Stammpfad zu erstellen, der im Ausschnitt **/clusters/hdiadlcluster** enthalten ist.
 
         $myrootdir = "/"
-        New-AzureRmDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
+        New-AzDataLakeStoreItem -Folder -AccountName $dataLakeStorageGen1Name -Path $myrootdir/clusters/hdiadlcluster
 
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Einrichten der Authentifizierung für rollenbasierten Zugriff auf Data Lake Storage Gen1
@@ -152,7 +154,7 @@ In diesem Abschnitt erstellen Sie einen Dienstprinzipal für eine Azure AD-Anwen
 
         $credential = [System.Convert]::ToBase64String($rawCertificateData)
 
-        $application = New-AzureRmADApplication `
+        $application = New-AzADApplication `
             -DisplayName "HDIADL" `
             -HomePage "https://contoso.com" `
             -IdentifierUris "https://mycontoso.com" `
@@ -163,14 +165,14 @@ In diesem Abschnitt erstellen Sie einen Dienstprinzipal für eine Azure AD-Anwen
         $applicationId = $application.ApplicationId
 2. Erstellen Sie einen Dienstprinzipal, indem Sie die Anwendungs-ID verwenden.
 
-        $servicePrincipal = New-AzureRmADServicePrincipal -ApplicationId $applicationId
+        $servicePrincipal = New-AzADServicePrincipal -ApplicationId $applicationId
 
         $objectId = $servicePrincipal.Id
 3. Gewähren Sie dem Data Lake Storage Gen1-Stamm und allen Ordnern unter dem Stammpfad, den Sie zuvor angegeben haben, den Dienstprinzipalzugriff. Verwenden Sie die folgenden Cmdlets:
 
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
-        Set-AzureRmDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters -AceType User -Id $objectId -Permissions All
+        Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path /clusters/hdiadlcluster -AceType User -Id $objectId -Permissions All
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-the-default-storage"></a>Erstellen eines HDInsight-Linux-Clusters mit Data Lake Storage Gen1 als Standardspeicher
 
@@ -178,7 +180,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Linux-Cluster mit Data 
 
 1. Rufen Sie die Abonnementmandanten-ID auf, und speichern Sie sie, um sie später zu verwenden.
 
-        $tenantID = (Get-AzureRmContext).Tenant.TenantId
+        $tenantID = (Get-AzContext).Tenant.TenantId
 
 2. Erstellen Sie den HDInsight-Cluster, indem Sie die folgenden Cmdlets verwenden:
 
@@ -192,7 +194,7 @@ In diesem Abschnitt erstellen Sie einen HDInsight Hadoop-Linux-Cluster mit Data 
         $httpCredentials = Get-Credential
         $sshCredentials = Get-Credential
 
-        New-AzureRmHDInsightCluster `
+        New-AzHDInsightCluster `
                -ClusterType Hadoop `
                -OSType Linux `
                -ClusterSizeInNodes $clusterNodes `

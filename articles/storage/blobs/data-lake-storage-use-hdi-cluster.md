@@ -1,26 +1,26 @@
 ---
-title: Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
-description: Erfahren Sie, wie Sie Daten in Azure Data Lake Storage Gen2 Preview abfragen und Ergebnisse Ihrer Analyse speichern.
+title: Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
+description: Erfahren Sie, wie Sie Daten in Azure Data Lake Storage Gen2 abfragen und Ergebnisse Ihrer Analyse speichern.
 author: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: 739076289a1324cb47f0c980f0d21b153c7b5edc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: df65c29b39921eda6ba2bd682e5938f58a9e4de7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55662957"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964576"
 ---
-# <a name="use-azure-data-lake-storage-gen2-preview-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 Preview mit Azure HDInsight-Clustern
+# <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>Verwenden von Azure Data Lake Storage Gen2 mit Azure HDInsight-Clustern
 
-Zum Analysieren von Daten in einem HDInsight-Cluster können Sie die Daten in einer beliebigen Kombination von Azure Blob Storage, Azure Blob Storage mit Azure Data Lake Storage Gen2 (Vorschau) oder Azure Data Lake Storage Gen1 speichern. Alle Speichervarianten ermöglichen das sichere Löschen von HDInsight-Clustern, die für Berechnungen verwendet werden, ohne dass Benutzerdaten verloren gehen.
+Zum Analysieren von Daten in einem HDInsight-Cluster können Sie die Daten in einer beliebigen Kombination von Azure Blob Storage, Azure Blob Storage mit Azure Data Lake Storage Gen2 oder Azure Data Lake Storage Gen1 speichern. Alle Speichervarianten ermöglichen das sichere Löschen von HDInsight-Clustern, die für Berechnungen verwendet werden, ohne dass Benutzerdaten verloren gehen.
 
 Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage oder den von Azure Data Lake Storage Gen2 angebotenen hierarchischen Namespace als Standarddateisystem angeben. Mit HDInsight 3.5 können Sie (mit einigen Ausnahmen) einen Container oder den hierarchischen Namespace als Standarddateisystem auswählen.
 
-In diesem Artikel erfahren Sie, wie Data Lake Storage Gen2 mit HDInsight-Clustern funktioniert. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage mit u.a. Hadoop, Spark und Kafka](data-lake-storage-quickstart-create-connect-hdi-cluster.md).
+In diesem Artikel erfahren Sie, wie Data Lake Storage Gen2 mit HDInsight-Clustern funktioniert. Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage mit u.a. Hadoop, Spark und Kafka](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters).
 
 Azure Storage stellt eine robuste, universelle Speicherlösung dar, die problemlos mit HDInsight integriert werden kann. In HDInsight kann Azure Data Lake Storage als Standarddateisystem für den Cluster verwendet werden. Über eine HDFS-Schnittstelle (Hadoop Distributed File System) können sämtliche Komponenten in HDInsight direkt mit Dateien in Azure Data Lake Storage arbeiten.
 
@@ -154,7 +154,7 @@ az storage account create \
 ```
 
 > [!NOTE]
-> Während der Public Preview von Data Lake Storage Gen2 wird nur `--sku Standard_LRS` unterstützt.
+> In Data Lake Storage Gen2 wird nur `--sku Standard_LRS` unterstützt.
 
 Sie werden zum Angeben der geografischen Region aufgefordert, in der das Speicherkonto erstellt wird. Erstellen Sie das Speicherkonto in der Region, in der der HDInsight-Cluster erstellt werden soll.
 
@@ -209,7 +209,6 @@ Weitere Informationen finden Sie unter
 
 * [Der ABFS-Hadoop-Dateisystemtreiber für Azure Data Lake Storage Gen2](data-lake-storage-abfs-driver.md)
 * [Einführung in Azure Data Lake Storage Gen2](data-lake-storage-introduction.md)
-* [Einrichten von HDInsight-Clustern mithilfe von Azure Data Lake Storage Gen2 mit Hadoop, Spark, Kafka und anderen](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 * [Erfassen von Daten in Azure Data Lake Storage Gen2 mit DistCp](data-lake-storage-use-distcp.md)
 
 [powershell-install]: /powershell/azure/install-az-ps

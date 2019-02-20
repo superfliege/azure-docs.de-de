@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 02/06/2019
+ms.date: 02/07/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 0531c106228190fdc40f494e8eee70ec550f6404
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820254"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981756"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -25,34 +25,35 @@ Dieser Artikel hilft Ihnen, besser zu verstehen, welche Daten in Azure Cost Mana
 
 Die folgenden Informationen zeigen die derzeit unterstützten [Microsoft Azure-Angebote](https://azure.microsoft.com/support/legal/offer-details/) im Azure Cost Management.  Ein Azure-Angebot ist der Typ von Azure-Abonnement, das Sie besitzen.
 
-| Kategorie  | **Angebotsname** | **Angebotsnummer** |
+| Category (Kategorie)  | **Angebotsname** | **Angebotsnummer** |
 | --- | --- | --- |
+| **Azure Deutschland** | [Azure Deutschland – nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-de-0003p/) | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government Enterprise | MS-AZR-USGOV-0017P |
+| **Enterprise Agreement (EA)** | Enterprise Dev/Test | MS-AZR-0148P |
 | **Enterprise Agreement (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade/) | MS-AZR-0017P |
-| **Enterprise Agreement (EA)**| Enterprise Dev/Test | MS-AZR-0148P |
 | **Microsoft Developer Network (MSDN)** | [MSDN-Plattformen](https://azure.microsoft.com/offers/ms-azr-0062p/) | MS-AZR-0062P |
+| **Nutzungsbasierte Bezahlung** | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
+| **Nutzungsbasierte Bezahlung** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
+| **Nutzungsbasierte Bezahlung** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
+| **Nutzungsbasierte Bezahlung** | [Kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
+| **Nutzungsbasierte Bezahlung** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
+| **Nutzungsbasierte Bezahlung** | [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p/) | MS-AZR-0170P |
+| **Nutzungsbasierte Bezahlung** | Azure Pass | MS-AZR-0120P, MS-AZR-0122P – MS-AZR-0125P, MS-AZR-0128P – MS-AZR-0130P |
 | **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p/) | MS-AZR-0029P |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/) | MS-AZR-0059P |
 | **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/) | MS-AZR-0060P |
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/) | MS-AZR-0063P |
 | **Visual Studio** | [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/) | MS-AZR-0064P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Nutzungsbasierte Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) | MS-AZR-0003P |
-| **Direkte/Nutzungsbasierte Bezahlung** | Microsoft Azure Internal Consumption | MS-AZR-0015P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/) | MS-AZR-0023P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/) | MS-AZR-0025P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Kostenlose Testversion](https://azure.microsoft.com/offers/ms-azr-0044p/) | MS-AZR-0044P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Azure in Open](https://azure.microsoft.com/offers/ms-azr-0111p/) | MS-AZR-0111P |
-| **Direkte/Nutzungsbasierte Bezahlung** | [Azure for Students](https://azure.microsoft.com/en-us/offers/ms-azr-0170p/) | MS-AZR-0170P |
-| **Direkte/Nutzungsbasierte Bezahlung** | Azure Pass | MS-AZR-0120P, MS-AZR-0122P – MS-AZR-0125P, MS-AZR-0128P – MS-AZR-0130P |
 
 Die folgende Tabelle zeigt die nicht unterstützten Angebote:
 
-| Kategorie  | **Angebotsname** | **Angebotsnummer** |
+| Category (Kategorie)  | **Angebotsname** | **Angebotsnummer** |
 | --- | --- | --- |
 | **Cloud Solution Provider (CSP)** | Microsoft Azure | MS-AZR-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Government CSP | MS-AZR-USGOV-0145P |
 | **Cloud Solution Provider (CSP)** | Azure Deutschland in CSP für die Microsoft Cloud Deutschland | MS-AZR-DE-0145P |
-| **Direkte/Nutzungsbasierte Bezahlung** | Azure for Students Starter | MS-AZR-0144P |
+| **Nutzungsbasierte Bezahlung** | Azure for Students Starter | MS-AZR-0144P |
+| **Nutzungsbasierte Bezahlung** | [Microsoft Azure Sponsorship](https://azure.microsoft.com/offers/ms-azr-0036p/) | MS-AZR-0036P |
 | **Supportpläne** | Standard-Support | MS-AZR-0041P |
 | **Supportpläne** | Professional Direct-Support | MS-AZR-0042P |
 | **Supportpläne** | Developer Support | MS-AZR-0043P |
@@ -68,17 +69,6 @@ Wenn Sie keine Daten für ein Abonnement sehen und feststellen möchten, ob Ihr 
 ## <a name="costs-included-in-cost-management"></a>In Cost Management enthaltene Kosten
 
 Die folgenden Tabellen zeigen Daten, die in Cost Management enthalten sind oder nicht.
-
-**Kontotypen**
-
-| **Enthalten** | **Nicht enthalten** |
-| --- | --- |
-| Enterprise Agreement (EA) | Cloud Solution Provider (CSP) – Weitere Informationen finden Sie in der [Partner Center-Übersicht](https://docs.microsoft.com/azure/cloud-solution-provider/overview/partner-center-overview). |
-| Nutzungsbasierte Bezahlung (Pay-as-you-go, PAYG) |   |
-| Dev/Test |   |
-| Kostenlos, Testversion und Sponsor |   |
-| Partnernetzwerk |   |
-| Azure in Open | &nbsp;  |
 
 **Kosten und Nutzungsdaten**
 

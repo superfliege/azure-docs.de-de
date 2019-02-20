@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e402cc214f25447407754bc6269300f4f052af4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e948842a49e87df156eb59a7e25634772550d933
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232735"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235494"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
 Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
@@ -54,9 +54,9 @@ Für folgende Parameter wird ein Standardwert festgelegt:
 * Standort: Als Standardwert wird „USA, Osten“ verwendet.
 * SKU: Als Standardwert wird der neue im Preismodell von April 2018 veröffentlichte Tarif pro GB verwendet.
 
->[!WARNING]
->Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar. 
->
+> [!NOTE]
+>Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.  
+>Wenn Sie über Abonnements mit dem Preismodell vor April 2018 verfügen [https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], können Sie den Tarif **Eigenständig** auswählen. Dieser Tarif gilt dann für Abonnements mit dem Preismodell vor April 2018 sowie für Abonnements mit dem neuen Preismodell. Für Arbeitsbereiche in Abonnements, für die das neue Preismodell gewählt wurde, wird der Tarif auf **PerGB2018** festgelegt. 
 
 ### <a name="create-and-deploy-template"></a>Erstellen und Bereitstellen der Vorlage
 

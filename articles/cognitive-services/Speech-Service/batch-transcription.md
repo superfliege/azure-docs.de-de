@@ -4,19 +4,19 @@ titlesuffix: Azure Cognitive Services
 description: Batch-Transkriptionen eignen sich besonders, wenn Sie eine große Menge von Audiodaten in einen Speicher wie z.B. Azure-Blobs transkribieren möchten. Mithilfe der spezifischen Rest-API können Sie per SAS-URI (Shared Access Signature) auf Audiodateien verweisen und Transkriptionen asynchron empfangen.
 services: cognitive-services
 author: PanosPeriorellis
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: bf89180ea98473d2da3495286396a12c6f25288f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e03c388dac4a70fc45150287154406551ac2672
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228660"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55867119"
 ---
 # <a name="why-use-batch-transcription"></a>Gründe für die Verwendung von Batch-Transkriptionen
 
@@ -49,7 +49,7 @@ Die Batch-Transkriptions-API unterstützt die folgenden Formate:
 > [!NOTE]
 > Die Batch-Transkriptions-API erfordert einen S0-Schlüssel (Bezahltarif). Sie funktioniert nicht mit einem kostenlosen Schlüssel (f0).
 
-Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Das folgende JSON-Beispiel zeigt die Ausgabe eines Kanals, einschließlich der Eigenschaften für die Einrichtung eines Filters für anstößige Ausdrücke und des Modells für die Zeichensetzung.
+Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rechten Kanal während des Transkriptionsvorgangs. Die beiden JSON-Dateien mit dem Ergebnis werden jeweils von einem einzigen Kanal erstellt. Die Zeitstempel pro Äußerung ermöglicht es dem Entwickler, eine geordnete endgültige Transkription zu erstellen. Das folgende JSON-Beispiel zeigt eine Anforderung, einschließlich der Eigenschaften für die Einrichtung eines Filters für anstößige Ausdrücke, des Modells für die Zeichensetzung und Zeitstempeln auf Wortebene.
 
 ```json
 {
@@ -60,7 +60,8 @@ Bei Audiostreams in Stereo teilt die Batch-Transkriptions-API den linken und rec
   "description": "An optional description of the transcription.",
   "properties": {
     "ProfanityFilterMode": "Masked",
-    "PunctuationMode": "DictatedAndAutomatic"
+    "PunctuationMode": "DictatedAndAutomatic",
+    "AddWordLevelTimestamps" : "True"
   },
 ```
 
@@ -208,7 +209,7 @@ Derzeit wird als Speicher nur Azure Blob Storage unterstützt.
 Sie finden das Beispiel dieses Artikels in [GitHub](https://github.com/PanosPeriorellis/Speech_Service-BatchTranscriptionAPI).
 
 > [!NOTE]
-> Für eine Audiotranskription wird normalerweise eine Zeitspanne benötigt, die der Dauer der Audiodatei plus einem Mehraufwand von 2 bis 3 Minuten entspricht.
+> Wir bieten keine Zeit-SLA für Audiotranskriptionen über Batch an. Nachdem ein Transkriptionsauftrag aktiviert wurde (im Zustand „Ausgeführt“), erfolgt die Verarbeitung jedoch normalerweise schneller als in Echtzeit.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

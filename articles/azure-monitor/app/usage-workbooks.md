@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: fecd5cf3b5a6aac1133f94b4dc220eec826392f6
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54056550"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993417"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
 
@@ -77,7 +77,7 @@ Abfrageabschnitte sind sehr flexibel und können verwendet werden, um Fragen zu 
 
 * Wie viele Ausnahmen wurden von Ihrer Website während des Zeitraums ausgelöst, in dem sich die Nutzung verringert hat?
 * Wie waren die Seiteladezeiten für Benutzer verteilt, die eine Seite angezeigt haben?
-* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Anhand dieser Information können Sie nachvollziehen, ob bestimmte Benutzergruppen unterschiedliche Teilfunktionen Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der Log Analytics-Abfragesprache.)
+* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Anhand dieser Angabe können Sie nachvollziehen, ob bestimmte Benutzergruppen unterschiedliche Teilfunktionen Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der Data Explorer-Abfragesprache.)
 
 Außerdem sind Sie nicht nur auf Abfragen aus dem Kontext der Anwendung, aus der Sie die Arbeitsmappe gestartet haben, beschränkt. Sie können über mehrere von Application Insights überwachte Apps hinweg sowie auch Log Analytics-Arbeitsbereiche abfragen, solange Sie Zugriffsberechtigungen für diese Ressourcen besitzen.
 

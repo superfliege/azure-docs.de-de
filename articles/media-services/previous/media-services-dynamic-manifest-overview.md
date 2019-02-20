@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/25/2018
+ms.date: 02/10/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: e0eaf88117aa3c67f7ffecad2e3811a22449a5f8
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
+ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52312968"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000007"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -35,7 +35,7 @@ In diesem Thema werden allgemeine Szenarien behandelt, bei denen die Verwendung 
 Bei der Übermittlung Ihrer Inhalte an Kunden (Streaming von Liveveranstaltungen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
 
 * Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und 
-* verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md) , um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH. 
+* verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md) , um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH. 
 
 ### <a name="manifest-files"></a>Manifestdateien
 Wenn Sie ein Medienobjekt für das Streaming mit adaptiver Bitrate codieren, wird eine **Manifestdatei** (Wiedergabelistendatei) erstellt (die Datei ist textbasiert oder XML-basiert). Die **Manifestdatei** enthält Streamingmetadaten wie z. B. Typ (Audio, Video oder Text), Spurenname, Start-und Endzeit, Bitrate (Qualität), Sprachen, Präsentationsfenster (variables Fenster mit fester Dauer) und Videocodec (FourCC). Sie weist den Player zudem zum Abrufen des nächsten Fragments an, indem Informationen zu den nächsten für die Wiedergabe verfügbaren Videofragmenten und den zugehörigen Speicherorten angezeigt werden. Fragmente (oder Segmente) sind die eigentlichen "Blöcke" von Videoinhalten.
@@ -80,7 +80,7 @@ Es gibt bestimmte [Szenarios](media-services-dynamic-manifest-overview.md#scenar
 * Kürzen des Starts eines Videos ("Kürzen eines Videos").
 * Anpassen des Präsentationsfensters (DVR), um eine begrenzte Größe des DVR-Fensters im Player anzugeben („Anpassen des Präsentationsfensters“).
 
-Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifeste** , die auf vordefinierten [Filtern](media-services-dynamic-manifest-overview.md#filters)basieren.  Nachdem Sie die Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf die mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) unterstützten Streaminprotokolle mit adaptiver Bitrate angewendet werden: HLS, MPEG-DASH und Smooth Streaming. Beispiel: 
+Um diese Flexibilität zu erreichen, umfasst Media Services **dynamische Manifeste** , die auf vordefinierten [Filtern](media-services-dynamic-manifest-overview.md#filters)basieren.  Nachdem Sie die Filter definiert haben, können Ihre Kunden sie zum Streamen einer spezifischen Wiedergabe oder bestimmter Subclips Ihres Videos verwenden. Dazu geben sie die Filter in der Streaming-URL an. Die Filter können auf die mit der [dynamischen Paketerstellung](media-services-dynamic-packaging-overview.md) unterstützten Streamingprotokolle mit adaptiver Bitrate angewandt werden: HLS, MPEG-DASH und Smooth Streaming. Beispiel: 
 
 MPEG-DASH-URL mit Filter
 
@@ -130,7 +130,7 @@ Ihre Medienobjekte können mehrere Audiosprachen enthalten, z. B. Englisch, Spa
 ![Filtern der Sprachspuren][language_filter]
 
 ## <a name="trimming-start-of-an-asset"></a>Kürzen des Starts eines Medienobjekts
-Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z. B. die folgende Meldung vor dem Start des Ereignisses ein: "Programm beginnt sofort". Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und in die Präsentation einbezogen. Diese Informationen sollten jedoch nicht auf den Clients angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
+Bei den meisten Live-Streaming-Ereignissen führen Operatoren vor dem eigentlichen Ereignis einige Tests durch. Sie fügen z.B. die folgende Meldung vor dem Start des Ereignisses ein: „Programm beginnt sofort“. Wenn das Programm archiviert wird, werden auch die Test- und Meldungsdaten archiviert und in die Präsentation einbezogen. Diese Informationen sollten jedoch nicht auf den Clients angezeigt werden. Mit dynamischen Manifesten können Sie einen Filter für die Startzeit erstellen und die unerwünschten Daten aus dem Manifest entfernen.
 
 ![Kürzen des Starts][trim_filter]
 

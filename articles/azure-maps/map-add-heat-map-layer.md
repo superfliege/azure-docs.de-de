@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: cbf134640f981056c0996ffc6768ebc1381ce2ac
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: 957ce60b8519ccb1e3287232f7a5459a56b25bb7
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995149"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55960614"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
@@ -25,11 +25,11 @@ Wärmebilder, die auch als Punktdichtekarten bezeichnet werden, stellen eine Art
 * Die Visualisierung einer GPS-Verfolgung, bei der die Geschwindigkeit als gewichtete Höhenkarte dargestellt wird, wobei die Intensität jedes Datenpunkts auf der Geschwindigkeit basiert, stellt eine gute Möglichkeit dar, um zu veranschaulichen, an welcher Stelle das Fahrzeug beschleunigt wurde.
 
 > [!TIP]
-> Blasenebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', '$type', 'Point']` fest, um die Ebene dahingehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden.
+> Wärmebildebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die Eigenschaft `filter` der Ebene auf `['==', '$type', 'Point']` fest, um die Ebene dahingehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden.
 
 ## <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
-Wenn Sie eine Datenquelle, die aus Punkten besteht, als Wärmebild rendern möchten, übergeben Sie diese an eine Instanz der HeatMapLayer-Klasse, und fügen Sie sie der Karte wie im Folgenden dargestellt hinzu.
+Wenn Sie eine Datenquelle, die aus Punkten besteht, als Wärmebild rendern möchten, übergeben Sie diese an eine Instanz der `HeatMapLayer`-Klasse, und fügen Sie sie der Karte wie im Folgenden dargestellt hinzu.
 
 <br/>
 
@@ -42,8 +42,8 @@ In diesem Beispiel weist jeder Wärmepunkt in allen Zoomfaktoren einen Radius vo
 
 Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die Deckkraft angepasst wurden. Auf der Wärmebildebene können jedoch verschiedene Optionen angepasst werden:
 
-* `radius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Dieser Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Wenn Sie den Radius als Ausdruck festlegen, der den Radius je nach Zoomfaktor anpasst, kann dies dazu führen, dass das Wärmebild scheinbar einen Radius aufweist, der einen gleichbleibenden räumlichen Bereich auf der Karte darstellt.
-* `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Häufig werden Farbpaletten mit Farbverlauf für Wärmebilder verwendet. Sie können jedoch auch abgestufte Farbpaletten verwenden, wenn Sie die Daten des Wärmebilds als Konturdaten darstellen möchten. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert. Die Farbwerte für Wärmebilder werden als Ausdruck im `heatmap-density`-Wert festgelegt. Die Farbe am Index „0“ in einem Ausdruck für eine Farbpalette mit Farbverlauf bzw. die Standardfarbe für eine abgestufte Farbpalette definiert die Farbe in einem Bereich ohne Daten, also die Hintergrundfarbe. Viele Benutzer legen hierfür einen transparenten Wert oder ein halbtransparentes Schwarz fest. Nachfolgend finden Sie zwei Beispiele für Farbausdrücke:
+* `radius`: Definiert einen Pixelradius, in dem die einzelnen Datenpunkte gerendert werden sollen. Dieser Radius kann als feste Zahl oder als Ausdruck festgelegt werden. Mithilfe eines Ausdrucks kann der Radius auf der Grundlage des Zoomfaktors skaliert werden und stellt dann ein zusammenhängendes räumliches Gebiet auf der Karte dar (beispielsweise einen 5-Meilen-Radius).
+* `color`: Gibt an, welche Farben für das Wärmebild verwendet werden. Häufig werden Farbpaletten mit Farbverlauf für Wärmebilder verwendet. Sie können jedoch auch abgestufte Farbpaletten verwenden, wenn Sie die Daten des Wärmebilds als Konturdaten darstellen möchten. Durch diese Farbpaletten werden die Farben kleinsten bis zum größten Dichtewert definiert. Die Farbwerte für Wärmebilder werden als Ausdruck im `heatmap-density`-Wert festgelegt. Die Farbe am Index „0“ in einem Ausdruck für eine Farbpalette mit Farbverlauf bzw. die Standardfarbe für eine abgestufte Farbpalette definiert die Farbe in einem Bereich ohne Daten und kann für die Definition einer Hintergrundfarbe verwendet werden. Viele Benutzer legen hierfür einen transparenten Wert oder ein halbtransparentes Schwarz fest. Nachfolgend finden Sie zwei Beispiele für Farbausdrücke:
 
 | Ausdruck für eine Farbpalette mit Farbverlauf | Ausdruck für eine abgestufte Farbpalette | 
 |---------------------------|--------------------------|
@@ -51,8 +51,8 @@ Im vorherigen Beispiel wurde das Wärmebild angepasst, indem der Radius und die 
 
 * `opacity`: Gibt an, wie undurchsichtig oder transparent die Wärmebildebene ist.
 * `intensity`: Wendet einen Multiplikator auf die Gewichtung jedes Datenpunkts an, um die Gesamtintensität des Wärmebilds zu erhöhen. Dadurch können kleine Unterschiede in der Gewichtung von Datenpunkten einfacher visualisiert werden.
-* `weight`: Standardmäßig weisen alle Datenpunkte eine Gewichtung von 1 auf. Das bedeutet, dass alle Datenpunkte gleichmäßig gewichtet werden. Die Option „weight“ fungiert als Multiplikator und kann als Zahl oder als Ausdruck festgelegt werden. Wenn eine Zahl festgelegt wird, beispielsweise 2, entspricht das der doppelten Platzierung jedes Datenpunkts auf der Karte und somit der Verdoppelung der Dichte. Wenn Sie die Option „weight“ auf eine Zahl festlegen, wird das Wärmebild ähnlich wie mit der Option „intensity“ gerendert. Wenn jedoch ein Ausdruck verwendet wird, kann die Gewichtung der einzelnen Datenpunkte auf unterschiedlichen Faktoren und einer Metrik in den Eigenschaften des Punkts basieren. Im Beispiel der Erdbebendaten steht jeder Datenpunkt für ein Erdbeben, und die Stärke stellt eine wichtige Metrik für jedes Erdbeben dar. Es kommt ständig zu Erdbeben. Die meisten weisen jedoch eine so geringe Stärke auf, dass sie nicht spürbar sind. Wenn Sie den Wert für die Stärke in einem Ausdruck verwenden, um die Option „weight“ zuzuordnen, können relevante Erdbeben besser auf dem Wärmebild dargestellt werden.
-* Zusätzlich zu den Basisoptionen für Ebenen (minimaler/maximaler Zoomfaktor, Sichtbarkeit und Filter) ist auch die Option `source` vorhanden, um die Datenquelle zu aktualisieren, und die Option `source-layer`, wenn es sich bei Ihrer Datenquelle um eine Vektorkachelquelle handelt.
+* `weight`: Standardmäßig weisen alle Datenpunkte eine Gewichtung von 1 auf. Das bedeutet, dass alle Datenpunkte gleichmäßig gewichtet werden. Die Option „weight“ fungiert als Multiplikator und kann als Zahl oder als Ausdruck festgelegt werden. Wenn eine Zahl als Gewichtung festgelegt wird, beispielsweise 2, entspricht das der doppelten Platzierung jedes Datenpunkts auf der Karte und somit der Verdoppelung der Dichte. Wenn Sie die Option „weight“ auf eine Zahl festlegen, wird das Wärmebild ähnlich wie mit der Option „intensity“ gerendert. Wenn jedoch ein Ausdruck verwendet wird, kann die Gewichtung der einzelnen Datenpunkte auf einer Metrik in den Eigenschaften der einzelnen Datenpunkte basieren. Nehmen wir Daten von Erdbeben als Beispiel, jeder Datenpunkt stellt ein Erdbeben dar. Eine wichtige Metrik, die jeder Erdbeben-Datenpunkt aufweist, ist der Magnitudenwert. Es kommt ständig zu Erdbeben. Die meisten weisen jedoch eine so geringe Stärke auf, dass sie nicht spürbar sind. Das Verwenden des Magnitudenwerts in einem Ausdruck, um jedem Datenpunkt die Gewichtung zuzuweisen, ermöglicht eine bessere Darstellung der relevanten Erdbeben im Wärmebild.
+* Neben den Basisoptionen für Ebenen (minimaler/maximaler Zoomfaktor, Sichtbarkeit und Filter) ist auch die Option `source` vorhanden, um die Datenquelle zu aktualisieren, und die Option `source-layer`, wenn es sich bei Ihrer Datenquelle um eine Vektorkachelquelle handelt.
 
 Mit diesem Tool können Sie die verschiedenen Optionen für Wärmebildebenen testen.
 
@@ -62,7 +62,7 @@ Mit diesem Tool können Sie die verschiedenen Optionen für Wärmebildebenen tes
 </iframe>
 
 > [!TIP]
-> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nahe beieinander liegen, zu einem Punkt gruppiert. Die Anzahl der Punkte von jedem Cluster kann als weight-Ausdruck für das Wärmebild verwendet werden. Somit kann die Anzahl der Punkte reduziert werden, die gerendert werden müssen. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in der Eigenschaft „point_count“ gespeichert. 
+> Wenn Sie das Clustering für die Datenquelle aktivieren, werden die Punkte, die nahe beieinander liegen, zu einem Punkt gruppiert. Die Anzahl der Punkte von jedem Cluster kann als weight-Ausdruck für das Wärmebild verwendet werden. Somit kann die Anzahl der Punkte reduziert werden, die gerendert werden müssen. Die Anzahl der Punkte in einem Cluster wird wie im Folgenden veranschaulicht in der Eigenschaft `point_count property` gespeichert. 
 > ```JavaScript
 > var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 >    weight: ['get', 'point_count']

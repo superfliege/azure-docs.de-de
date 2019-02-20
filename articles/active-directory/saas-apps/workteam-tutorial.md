@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 8d6ca6395e4f5e1aca361c56e21afc4e6bd1fc0c
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6a1022ce74fd5514b274f498a4d4f764393e6428
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43132645"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185773"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>Tutorial: Azure Active Directory-Integration mit Workteam
 
@@ -145,7 +146,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     c. Fügen Sie in das Textfeld **SAML Entity ID** (SAML-Entitäts-ID) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **SAML Signing Certificate (Base64)** (SAML-Signaturzertifikat (Base64)) ein.
+    d. Öffnen Sie in Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt, und fügen Sie ihn anschließend in das Feld **SAML Signing Certificate (Base64)** (SAML-Signaturzertifikat (Base64)) ein.
 
     e. Klicken Sie auf **OK**.
 

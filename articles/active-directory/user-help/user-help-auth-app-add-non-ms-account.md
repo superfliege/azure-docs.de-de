@@ -11,12 +11,13 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: afcac73af84010f37eccd018f39852712e495b84
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 714a78c436b7071717e2df12c2a65999920f8c63
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55772230"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56192131"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>Hinzufügen Ihrer Nicht-Microsoft-Konten
 Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, welche die zweistufige Überprüfung verwendet, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
@@ -55,7 +56,7 @@ Fügen Sie Ihr Google-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 4. Verwenden Sie die Kamera Ihres Geräts, um auf Ihrem PC auf der Seite **Authenticator einrichten** den QR-Code zu scannen.
 
     >[!Note]
-    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den [QR-Code und die URL manuell eingeben](#add-an-account-to-the-app-manually).
+    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den QR-Code und die URL manuell eingeben.
 
 5. Überprüfen Sie die Seite **Konten** der Microsoft Authenticator-App auf Ihrem Gerät, um sicherzustellen, dass Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist.
 
@@ -94,7 +95,7 @@ Fügen Sie Ihr Facebook-Konto hinzu, indem Sie die zweistufige Überprüfung akt
 3. Verwenden Sie die Kamera Ihres Geräts, um auf Ihrem PC auf der Seite **Zweistufige Authentifizierung** den QR-Code zu scannen.
 
     >[!Note]
-    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den [QR-Code und die URL manuell eingeben](#add-an-account-to-the-app-manually).
+    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den QR-Code und die URL manuell eingeben.
 
 4. Überprüfen Sie die Seite **Konten** der Microsoft Authenticator-App auf Ihrem Gerät, um sicherzustellen, dass Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist.
 
@@ -165,7 +166,7 @@ Fügen Sie Ihr Amazon-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 6. Verwenden Sie die Kamera Ihres Geräts, um auf Ihrem PC auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten** den QR-Code zu scannen.
 
     >[!Note]
-    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den [QR-Code und die URL manuell eingeben](#add-an-account-to-the-app-manually).
+    >Wenn die Kamera nicht ordnungsgemäß funktioniert, können Sie den QR-Code und die URL manuell eingeben.
 
 5. Überprüfen Sie die Seite **Konten** der Microsoft Authenticator-App auf Ihrem Gerät, um sicherzustellen, dass Ihre Kontoinformationen korrekt sind und ein zugehöriger sechsstelliger Prüfcode vorhanden ist.
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2018
 ms.author: jeedes
-ms.openlocfilehash: d86004680bf13c9716b4ff4e7a41af73ea186f27
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 377da86003543fb53240de4d5fc672f71e1ed5f2
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39047187"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56202399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-imagineer-webvision"></a>Tutorial: Azure Active Directory-Integration mit Imagineer WebVision
 
@@ -158,7 +159,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-an-imagineer-webvision-test-user"></a>Erstellen eines Imagineer WebVision-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Imagineer WebVision einen Benutzer namens Britta Simon. Fügen Sie die Benutzer in Zusammenarbeit mit dem [Clientsupportteam von Imagineer WebVision](mailto:support@itgny.com) zur Imagineer WebVision-Plattform hinzu. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Imagineer WebVision einen Benutzer namens Britta Simon. Fügen Sie die Benutzer in Zusammenarbeit mit dem  [Supportteam von Imagineer WebVision](mailto:support@itgny.com) auf der Imagineer WebVision-Plattform hinzu. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

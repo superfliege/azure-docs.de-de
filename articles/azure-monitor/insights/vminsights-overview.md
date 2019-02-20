@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2019
 ms.author: magoedte
-ms.openlocfilehash: 0733b4179793e88759ca1c3330880546650fbe09
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 9a4c31df51f804d4738e3a2eb4ce904e793c3f1b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54856374"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004994"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>Was ist Azure Monitor für VMs (Vorschauversion)?
 
@@ -41,7 +41,7 @@ Die Features sind in Form von drei Perspektiven geordnet:
 >[!NOTE]
 >Derzeit wird das Integritätsfeature nur für virtuelle Azure-Computer und VM-Skalierungsgruppen angeboten. Die Features „Leistung“ und „Zuordnung“ unterstützen sowohl Azure-VMs als auch virtuelle Computer, die in Ihrer Umgebung oder von anderen Cloudanbieter gehostet werden.
 
-Die Integration in Log Analytics ermöglicht die leistungsstarke Aggregation und Filterung sowie die Möglichkeit zum Analysieren von Datentrends im zeitlichen Verlauf. Eine derartige umfassende Überwachung Ihrer Workloads kann nicht mit Azure Monitor, der Dienstzuordnung oder Log Analytics allein erreicht werden.  
+Die Integration in Azure Monitor-Protokollen ermöglicht die leistungsstarke Aggregation und Filterung und bietet die Möglichkeit zum Analysieren von Datentrends im zeitlichen Verlauf. Eine derartig umfassende Überwachung Ihrer Workloads kann nicht mit Azure Monitor oder der Dienstzuordnung allein erreicht werden.  
 
 Sie können diese Daten direkt in einem einzelnen virtuellen Computer anzeigen, oder Sie können eine aggregierte Ansicht Ihrer virtuellen Computer mit Azure Monitor bereitstellen. Diese Ansicht basiert auf der Perspektive der einzelnen Features:
 

@@ -11,19 +11,19 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: ea7f32a08a6a183bac21436e7d58afe10c4d7b20
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: db82c109e6ae807addafd4d188a24609c4066cd9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756647"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100671"
 ---
 # <a name="azure-sql-database-servers-and-their-management"></a>Azure SQL-Datenbank-Server und ihre Verwaltung
 
 ## <a name="what-is-an-azure-sql-database-server"></a>Was ist ein Azure SQL-Datenbank-Server?
 
-Ein SQL-Datenbank-Server ist ein logisches Konstrukt, das als zentraler Verwaltungspunkt für mehrere eigenständige oder [in einem Pool zusammengefasste](sql-database-elastic-pool.md) Datenbanken, [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Erkennung von Bedrohungen](sql-database-threat-detection.md) und [Failovergruppen](sql-database-auto-failover-group.md) fungiert. Ein SQL-Datenbank-Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der SQL-Datenbank-Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken, die von einem SQL-Datenbank-Server verwaltet werden, müssen in derselben Region wie der SQL-Datenbank-Server erstellt werden.
+Ein SQL-Datenbank-Server ist ein logisches Konstrukt, das als zentraler Verwaltungspunkt für mehrere Singletons oder [in einem Pool zusammengefasste](sql-database-elastic-pool.md) Datenbanken, [Anmeldungen](sql-database-manage-logins.md), [Firewallregeln](sql-database-firewall-configure.md), [Überwachungsregeln](sql-database-auditing.md), [Richtlinien zur Bedrohungserkennung](sql-database-threat-detection.md) und [Failovergruppen](sql-database-auto-failover-group.md) fungiert. Ein SQL-Datenbank-Server kann sich in einer anderen Region als seine Ressourcengruppe befinden. Der SQL-Datenbank-Server muss vorhanden sein, bevor Sie die Azure SQL-Datenbank erstellen können. Alle Datenbanken, die von einem SQL-Datenbank-Server verwaltet werden, müssen in derselben Region wie der SQL-Datenbank-Server erstellt werden.
 
 Ein SQL-Datenbank-Server unterscheidet sich von einer SQL Server-Instanz, mit der Sie möglicherweise in Ihrer lokalen Umgebung vertraut sind. Insbesondere gibt der SQL-Datenbank-Dienst keine Garantie bezüglich des Speicherorts der Datenbanken in Bezug auf den SQL-Datenbank-Server, von dem sie verwaltet werden, und er bietet keinen Zugriff und keine Funktionen auf Instanzebene. Im Gegensatz dazu sind die Instanzdatenbanken in einer verwalteten Instanz alle gemeinsam angeordnet – und zwar auf dieselbe Weise wie bei SQL Server in lokalen Umgebungen.
 
@@ -189,5 +189,5 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-single-database-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

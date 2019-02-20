@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 0ccb502cd5ae21468e52bdc4d56202a595cd19ef
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53594229"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213041"
 ---
 Sie können Ihre [virtuellen Computer (VMs)](../articles/virtual-machines/windows/overview.md) leicht [automatisch skalieren](../articles/azure-monitor/platform/autoscale-best-practices.md), indem Sie [VM-Skalierungsgruppen](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) und das [Feature für die automatische Skalierung von Azure Monitor](../articles/azure-monitor/platform/autoscale-overview.md) verwenden. Ihre VMs müssen Mitglieder einer Skalierungsgruppe sein, um automatisch skaliert werden zu können. Dieser Artikel enthält Informationen, mit denen Sie besser verstehen, wie Sie Ihre VMs mit automatischen und manuellen Methoden sowohl vertikal als auch horizontal skalieren können.
 
@@ -57,11 +57,11 @@ Sie können [Trigger einrichten](../articles/azure-monitor/platform/autoscale-we
 
 Sie können VMs hinzufügen oder entfernen, indem Sie die Skalierungsgruppe ändern. Im Azure-Portal können Sie die Anzahl von VMs (als **Instanzanzahl** angezeigt) in der Skalierungsgruppe verringern oder erhöhen, indem Sie die Leiste zum Außerkraftsetzen der Bedingung auf der Skalierungsseite nach links oder rechts verschieben.
 
-Mit Azure PowerShell müssen Sie das Skalierungsgruppenobjekt abrufen, indem Sie [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) verwenden. Anschließend legen Sie die **sku.capacity**-Eigenschaft auf die gewünschte Anzahl von VMs fest und aktualisieren die Skalierungsgruppe mit [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss). Mit der Azure CLI ändern Sie die Kapazität für den Befehl [az vmss scale](https://docs.microsoft.com/cli/azure/vmss#az_vmss_scale) mit dem Parameter **--new-capacity**.
+Mit Azure PowerShell müssen Sie das Skalierungsgruppenobjekt abrufen, indem Sie [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) verwenden. Anschließend legen Sie die Eigenschaft **sku.capacity** auf die gewünschte Anzahl von VMs fest und aktualisieren die Skalierungsgruppe mit [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss). Mit der Azure CLI ändern Sie die Kapazität für den Befehl [az vmss scale](/cli/azure/vmss?view=azure-cli-latest#az-vmss-scale) mit dem Parameter **--new-capacity**.
 
 ### <a name="vertical"></a>Vertical
 
-Sie können die Größe der VMs im Azure-Portal auf der Seite „Größe“ für die Skalierungsgruppe manuell ändern. Sie können Azure PowerShell mit Get-AzureRmVmss nutzen, indem Sie die Eigenschaft für die Imageverweis-SKU festlegen und dann [Update-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) und [Update-AzureRmVmssInstance](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance) verwenden.
+Sie können die Größe der VMs im Azure-Portal auf der Seite „Größe“ für die Skalierungsgruppe manuell ändern. Sie können Azure PowerShell mit „Get-AzVmss“ nutzen, indem Sie die Eigenschaft für die Imageverweis-SKU festlegen und dann [Update-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/update-azvmss) und [Update-AzVmssInstance](https://docs.microsoft.com/powershell/module/az.compute/update-azvmssinstance) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

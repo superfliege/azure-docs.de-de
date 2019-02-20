@@ -4,7 +4,7 @@ description: Dieser Artikel enthält Informationen zum Automatisieren von häufi
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: key-vault
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: barclayn
-ms.openlocfilehash: 11ace1b5cce742579256d08ecfe9d9a7412d3d7c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1679fbe0dedc88ca3e8293512f9a79bb7da69790
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822492"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56115622"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Verwalten von Key Vault mit der Azure CLI 
 
@@ -145,18 +145,18 @@ Wenn Sie mit Azure Key Vault einen softwaregeschützten Schlüssel erstellen mö
 az keyvault key create --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --protection software
 ```
 
-Wenn bereits ein Schlüssel in einer PEM-Datei vorhanden ist, können Sie diesen in Azure Key Vault hochladen. Sie können den Schlüssel wahlweise mit Software oder dem HSM schützen. Verwenden Sie den folgenden Befehl, um den Schlüssel aus der PEM-Datei zu importieren und mit Software zu schützen:
+Wenn bereits ein Schlüssel in einer PEM-Datei vorhanden ist, können Sie diesen in Azure Key Vault hochladen. Sie können den Schlüssel wahlweise mit Software oder dem HSM schützen. In diesem Beispiel wird dieser Schlüssel aus der PEM-Datei importiert und mit Software über das Kennwort „hVFkk965BuUv“ geschützt:
 
 ```azurecli
-az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "Pa$$w0rd" --protection software
+az keyvault key import --vault-name "ContosoKeyVault" --name "ContosoFirstKey" --pem-file "./softkey.pem" --pem-password "hVFkk965BuUv" --protection software
 ```
 
 Jetzt können Sie mittels seiner URI auf den Schlüssel verweisen, den Sie erstellt oder in  Azure-Schlüsseltresor hochgeladen haben. Mit **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey** können Sie immer die aktuelle Version abrufen. Verwenden Sie zum Abrufen dieser Version „https://[Name-des-Schlüsseltresors].vault.azure.net/keys/[Schlüsselname]/[Eindeutige-Schlüssel-ID]“. Beispiel: **https://ContosoKeyVault.vault.azure.net/keys/ContosoFirstKey/cgacf4f763ar42ffb0a1gca546aygd87** 
 
-Fügen Sie ein Geheimnis zum Schlüsseltresor hinzu – in diesem Fall das Kennwort „SQLPassword“ mit dem Wert „Pa$$w0rd“ für die Azure Key Vault-Instanzen. 
+Fügen Sie dem Schlüsseltresor ein Geheimnis hinzu – in diesem Fall das Kennwort „SQLPassword“ mit dem Wert „hVFkk965BuUv“ für Azure Key Vault-Instanzen. 
 
 ```azurecli
-az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "Pa$$w0rd"
+az keyvault secret set --vault-name "ContosoKeyVault" --name "SQLPassword" --value "hVFkk965BuUv "
 ```
 
 Verweisen Sie auf dieses Kennwort mithilfe des URI. Mit **https://ContosoVault.vault.azure.net/secrets/SQLPassword** können Sie immer die aktuelle Version und mit „https://[Name-des-Schlüsseltresors].vault.azure.net/secret/[Name-des-Geheimnisses]/[Eindeutige-Geheimnis-ID]“ diese Version abrufen. Beispiel: **https://ContosoVault.vault.azure.net/secrets/SQLPassword/90018dbb96a84117a0d2847ef8e7189d**
@@ -164,7 +164,7 @@ Verweisen Sie auf dieses Kennwort mithilfe des URI. Mit **https://ContosoVault.v
 Importieren Sie mithilfe einer PEM- oder PFX-Datei ein Zertifikat in den Tresor.
 
 ```azurecli
-az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "Pa$$w0rd"
+az keyvault certificate import --vault-name "ContosoKeyVault" --file "c:\cert\cert.pfx" --name "ContosoCert" --password "hVFkk965BuUv"
 ```
 
 Sehen Sie sich die von Ihnen erstellten Schlüssel, Geheimnisse oder Zertifikate an:
@@ -203,7 +203,7 @@ Ausführliche Anweisungen zum Registrieren einer Anwendung in Azure Active Direc
 Registrieren Sie eine Anwendung in Azure Active Directory:
 
 ```azurecli
-az ad sp create-for-rbac -n "MyApp" --password "Pa$$w0rd" --skip-assignment
+az ad sp create-for-rbac -n "MyApp" --password "hVFkk965BuUv" --skip-assignment
 # If you don't specify a password, one will be created for you.
 ```
 

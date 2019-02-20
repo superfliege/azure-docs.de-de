@@ -11,17 +11,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: ce7892401b2b04565a00c33c5301b9c0cd05d5f5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/11/2019
+ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732752"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098356"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migration einer SQL Server-Instanz zu einer verwalteten Azure SQL-Datenbank-Instanz
 
-Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird.
+Dieser Artikel enthält Informationen zu den Methoden, mit denen eine SQL Server 2005-Instanz (oder eine höhere Version) zu einer [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) migriert wird. Informationen zum Migrieren zu einem Singleton oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren zu einem Singleton oder einer in einem Pool zusammengefassten Datenbank](sql-database-cloud-migrate.md). Weitere Informationen zum Migrieren von anderen Plattformen finden Sie im [Leitfaden zur Azure-Datenbankmigration](https://datamigration.microsoft.com/).
 
 Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 
@@ -34,7 +34,7 @@ Die Datenbankmigration sieht im Allgemeinen folgendermaßen aus:
 - [Überwachen von Anwendungen](#monitor-applications)
 
 > [!NOTE]
-> Informationen zum Migrieren einer einzelnen Datenbank zu einer Einzeldatenbank oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-cloud-migrate.md).
+> Informationen zum Migrieren einer einzelnen Datenbank zu einer Einzeldatenbank oder einem Pool für elastische Datenbanken finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank in der Cloud](sql-database-single-database-migrate.md).
 
 ## <a name="assess-managed-instance-compatibility"></a>Bewerten der Kompatibilität der verwalteten Instanz
 
@@ -47,7 +47,7 @@ Wenn gemeldete Blockierungsprobleme vorliegen, die in der Bereitstellungsoption 
 - Wenn Sie direkten Zugriff auf das Betriebssystem oder das Dateisystem benötigen, z.B. um Drittanbieteragents oder benutzerdefinierte Agents auf demselben virtuellen SQL Server-Computer zu installieren.
 - Wenn Sie unbedingt von Features abhängig sind, die noch nicht unterstützt werden, wie z.B. FileStream / FileTable, PolyBase und instanzübergreifende Transaktionen.
 - Wenn Sie unbedingt bei einer bestimmten Version von SQL Server (z.B. 2012) bleiben müssen.
-- Wenn Ihre Computeanforderungen wesentlich niedriger sind, als bei einer verwalteten Instanz in der öffentlichen Vorschau (z.B. ein V-Kern) und eine Datenbankkonsolidierung nicht in Frage kommt.
+- Wenn Ihre Computeanforderungen wesentlich niedriger sind als bei einer verwalteten Instanz (z.B. ein virtueller Kern) und eine Datenbankkonsolidierung nicht in Frage kommt.
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>Bereitstellen für eine verwaltete Instanz mit optimaler Größe
 

@@ -10,18 +10,18 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/26/2018
+ms.date: 02/06/2019
 ms.author: magoedte
-ms.openlocfilehash: 344b049c46243c06c32ed061410f48f71bc70f54
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4d336f657baef99d97568ba722e64a1f4440367f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53580942"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984578"
 ---
-# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics
+# <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions-in-different-azure-active-directory-tenants"></a>Abonnementübergreifendes Erfassen von Azure-Aktivitätsprotokollen in Log Analytics in verschiedenen Azure Active Directory-Mandanten
 
-In diesem Artikel wird schrittweise die Methode beschrieben, mit der Sie mithilfe des Datensammlers von Azure Log Analytics (Connector für Logik-Apps) Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Verwenden Sie den in diesem Artikel beschriebenen Prozess, wenn Sie Protokolle an einen Arbeitsbereich senden müssen, der sich in einem anderen Azure Active Directory befindet. Als Managed Service Provider (MSP) beispielsweise möchten Sie vielleicht Aktivitätsprotokolle aus dem Abonnement eines Kunden erfassen und in einem Log Analytics-Arbeitsbereich Ihres eigenen Abonnements speichern.
+In diesem Artikel wird schrittweise die Methode beschrieben, mit der Sie mithilfe des Datensammlers von Azure Log Analytics (Connector für Logik-Apps) Azure-Aktivitätsprotokolle in einem Log Analytics-Arbeitsbereich erfassen. Führen Sie die in diesem Artikel beschriebenen Schritte aus, wenn Sie Protokolle an einen Arbeitsbereich senden möchten, der sich in einem anderen Azure Active Directory-Mandanten befindet. Als Managed Service Provider (MSP) beispielsweise möchten Sie vielleicht Aktivitätsprotokolle aus dem Abonnement eines Kunden erfassen und in einem Log Analytics-Arbeitsbereich Ihres eigenen Abonnements speichern.
 
 Wenn der Log Analytics-Arbeitsbereich zum gleichen oder einem anderen Azure-Abonnement gehört, sich aber im selben Azure Active Directory befindet, erfassen Sie Azure-Aktivitätsprotokolle mit den unter [Lösung für Azure-Aktivitätsprotokolle](collect-activity-logs.md) beschriebenen Schritten.
 

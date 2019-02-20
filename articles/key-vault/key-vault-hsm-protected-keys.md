@@ -4,23 +4,25 @@ description: Verwenden Sie diesen Artikel zum Planen, Generieren und anschließe
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 51abafa1-812b-460f-a129-d714fdc391da
 ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 3458bdc0f010cab622a5ddbb87cb8e1077c404a5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc7d9a8e0d2689be4a8beb5d42c43b9e18157472
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55693883"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238112"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>Gewusst wie: Generieren und Übertragen von HSM-geschützten Schlüsseln für den Azure-Schlüsseltresor
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Zur Steigerung der Sicherheit können Sie bei Verwendung des Azure-Schlüsseltresors Schlüssel in HSMs (Hardwaresicherheitsmodule) importieren oder darin generieren. Diese Schlüssel verbleiben immer innerhalb der HSM-Grenzen. Dieses Szenario wird häufig als *Bring Your Own Key* (BYOK) bezeichnet. Die HSMs sind FIPS 140-2 Ebene 2 überprüft. Für den Azure-Schlüsseltresor wird die Thales nShield-Familie der HSMs zum Schützen der Schlüssel verwendet.
 
@@ -30,7 +32,7 @@ Diese Funktion für Azure China nicht zur Verfügung.
 
 > [!NOTE]
 > Weitere Informationen zum Azure-Schlüsseltresor finden Sie unter [Was ist der Azure-Schlüsseltresor?](key-vault-whatis.md)  
-> Ein Tutorial zu den ersten Schritten, z.B. zum Erstellen eines Schlüsseltresors für HSM-geschützte Schlüssel, finden Sie unter [Erste Schritte mit Azure Key Vault](key-vault-get-started.md).
+> Ein Tutorial zu den ersten Schritten, z.B. zum Erstellen eines Schlüsseltresors für HSM-geschützte Schlüssel, finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md).
 
 Weitere Informationen zum Generieren und Übertragen eines HSM-geschützten Schlüssels über das Internet:
 
@@ -60,7 +62,7 @@ Die folgende Tabelle enthält eine Liste mit Voraussetzungen, die beim Azure-Sch
 | Azure-Abonnement |Um eine Azure Key Vault-Instanz erstellen zu können, benötigen Sie ein Azure-Abonnement: [Für kostenlose Testversion registrieren](https://azure.microsoft.com/pricing/free-trial/) |
 | Azure Key Vault-Tarif „Premium“ zur Unterstützung von HSM-geschützten Schlüsseln |Weitere Informationen zu den Dienstebenen und Funktionen für den Azure-Schlüsseltresor finden Sie auf der Website [Azure-Schlüsseltresor – Preise](https://azure.microsoft.com/pricing/details/key-vault/) . |
 | Thales-HSM, Smartcards und Supportsoftware |Sie benötigen Zugriff auf ein Thales-Hardwaresicherheitsmodul sowie grundlegende Kenntnisse zum Betrieb von Thales-HSMs. Eine Liste mit kompatiblen Modellen bzw. Informationen zum Kauf eines HSM, für den Fall, dass Sie noch keins besitzen, finden Sie unter [Thales-Hardwaresicherheitsmodul](https://www.thales-esecurity.com/msrms/buy). |
-| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und Thales nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und über ein Windows-Betriebssystem der Mindestversion Windows 7 verfügt und auf der [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.7.0) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Diese Arbeitsstation wird in den folgenden Anleitungen als verbindungslose Arbeitsstation bezeichnet.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Die zweite Arbeitsstation in den folgenden Anleitungen wird als Arbeitsstation mit Internetverbindung bezeichnet.</p></blockquote><br/> |
+| Folgende Hardware und Software:<ol><li>Eine x64-Arbeitsstation im Offlinemodus mit einem Windows-Betriebssystem der Mindestversion Windows 7 und Thales nShield-Software der Mindestversion 11.50.<br/><br/>Wenn auf dieser Arbeitsstation Windows 7 ausgeführt wird, müssen Sie [Microsoft .NET Framework 4.5](https://download.microsoft.com/download/b/a/4/ba4a7e71-2906-4b2d-a0e1-80cf16844f5f/dotnetfx45_full_x86_x64.exe) installieren.</li><li>Eine Arbeitsstation, die mit dem Internet verbunden ist und über ein Windows-Betriebssystem der Mindestversion Windows 7 verfügt und auf der [Azure PowerShell](/powershell/azure/overview?view=azps-1.2.0) (**Mindestversion 1.1.0**) installiert ist.</li><li>Ein USB-Laufwerk oder ein anderes tragbares Speichergerät mit mindestens 16 MB freiem Speicherplatz.</li></ol> |Aus Sicherheitsgründen wird empfohlen, die erste Arbeitsstation nicht mit einem Netzwerk zu verbinden. Diese Empfehlung wird jedoch nicht programmgesteuert erzwungen.<br/><br/>Diese Arbeitsstation wird in den folgenden Anleitungen als verbindungslose Arbeitsstation bezeichnet.</p></blockquote><br/>Falls Ihr Mandantenschlüssel für ein Produktionsnetzwerk gilt, empfehlen wir außerdem, eine zweite separate Arbeitsstation zu verwenden, um das Toolset herunterzuladen und den Mandantenschlüssel hochzuladen. Zu Testzwecken können Sie aber auch ein und dieselbe Arbeitsstation verwenden.<br/><br/>Die zweite Arbeitsstation in den folgenden Anleitungen wird als Arbeitsstation mit Internetverbindung bezeichnet.</p></blockquote><br/> |
 
 ## <a name="generate-and-transfer-your-key-to-azure-key-vault-hsm"></a>Generieren und Übertragen des Schlüssels an das HSM des Azure-Schlüsseltresors
 
@@ -78,21 +80,19 @@ Führen Sie für diesen ersten Schritt die folgenden Verfahren auf der Arbeitsst
 
 ### <a name="step-11-install-azure-powershell"></a>Schritt 1.1: Installieren von Azure Powershell
 
-Laden Sie auf der Arbeitsstation mit Internetverbindung das Azure PowerShell-Modul herunter, das die Cmdlets zum Verwalten des Azure-Schlüsseltresors enthält, und installieren Sie es. Hierfür ist mindestens die Version 0.8.13 erforderlich.
-
-Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
+Laden Sie auf der Arbeitsstation mit Internetverbindung das Azure PowerShell-Modul herunter, das die Cmdlets zum Verwalten des Azure-Schlüsseltresors enthält, und installieren Sie es. Installationsanweisungen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview).
 
 ### <a name="step-12-get-your-azure-subscription-id"></a>Schritt 1.2: Abrufen der Azure-Abonnement-ID
 
 Starten Sie eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
 ```Powershell
-   Add-AzureRMAccount
+   Connect-AzAccount
 ```
-Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Verwenden Sie anschließend den Befehl [Get-AzureSubscription](/powershell/module/servicemanagement/azure/get-azuresubscription?view=azuresmps-3.7.0) :
+Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. Verwenden Sie anschließend den Befehl [Get-AzSubscription](/powershell/module/az.accounts/get-azsubscription):
 
 ```powershell
-   Get-AzureRMSubscription
+   Get-AzSubscription
 ```
 Suchen Sie in der Ausgabe die ID für das Abonnement, das Sie für den Azure-Schlüsseltresor verwenden möchten. Sie benötigen diese Abonnement-ID später noch.
 
@@ -246,7 +246,6 @@ Kopieren Sie das BYOK-Toolsetpaket vom USB-Laufwerk bzw. vom tragbaren Speicherg
 
 Führen Sie für diesen dritten Schritt die folgenden Verfahren auf der verbindungslosen Arbeitsstation durch. Um diesen Schritt ausführen zu können, muss sich das HSM im Initialisierungsmodus befinden. 
 
-
 ### <a name="step-31-change-the-hsm-mode-to-i"></a>Schritt 3.1: Ändern des HSM-Modus in „I“
 
 Wenn Sie Thales nShield Edge verwenden, ändern Sie den Modus wie folgt: 1. Verwenden Sie die Taste „Mode“, um den erforderlichen Modus hervorzuheben. 2. Halten Sie innerhalb weniger Sekunden die Taste „Clear“ ein paar Sekunden lang gedrückt. Wenn der Modus geändert wurde, hört die LED des neuen Modus auf zu blinken und leuchtet dauerhaft. Möglicherweise blinkt die Status-LED erst ein paar Sekunden lang unregelmäßig und dann regelmäßig, wenn das Gerät bereit ist. Andernfalls verbleibt das Gerät im aktuellen Modus, wobei die LED des entsprechenden Modus leuchtet.
@@ -256,13 +255,13 @@ Wenn Sie Thales nShield Edge verwenden, ändern Sie den Modus wie folgt: 1. Verw
 Starten Sie eine Eingabeaufforderung, und führen Sie das Thales-new-world-Programm aus.
 
    ```cmd
-    new-world.exe --initialize --cipher-suite=DLf1024s160mRijndael --module=1 --acs-quorum=2/3
+    new-world.exe --initialize --cipher-suite=DLf3072s256mRijndael --module=1 --acs-quorum=2/3
    ```
 
 Dieses Programm erstellt eine Datei für die **Security World** unter „%NFAST_KMDATA%\local\world“ entsprechend dem Ordner „C:\ProgramData\nCipher\Key Management Data\local“. Sie können verschiedene Werte für das Quorum verwenden, aber in unserem Beispiel werden Sie aufgefordert, jeweils drei leere Karten und PINs einzugeben. Sie erhalten dann mit zwei beliebigen Karten vollständigen Zugriff auf die Security World. Diese Karten werden zur **Administratorkartengruppe** für die neue Security World.
 
 > [!NOTE]
-> Wenn Ihr HSM die neuere Cypher Suite DLf3072s256mRijndael unterstützt, können Sie „--cipher-suite=DLf1024s160mRijndael“ durch „--cipher-suite=DLf3072s256mRijndael“ ersetzen.
+> Wenn Ihr HSM die neuere Cypher Suite DLf3072s256mRijndael nicht unterstützt, können Sie „--cipher-suite= DLf3072s256mRijndael“ durch „--cipher-suite=DLf1024s160mRijndael“ ersetzen.
 
 Gehen Sie wie folgt vor:
 
@@ -493,14 +492,14 @@ Verwenden Sie ein USB-Laufwerk oder anderes tragbares Speichergerät, um die Aus
 
 ## <a name="step-5-transfer-your-key-to-azure-key-vault"></a>Schritt 5: Übertragen des Schlüssels an Azure Key Vault
 
-Verwenden Sie für diesen letzten Schritt auf der Arbeitsstation mit Internetverbindung das [Add-AzureKeyVaultKey](/powershell/module/azurerm.keyvault/add-azurekeyvaultkey)-Cmdlet, um das Schlüsselübertragungspaket hochzuladen, das Sie von der verbindungslosen Arbeitsstation in das HSM von Azure Key Vault kopiert haben:
+Verwenden Sie für diesen letzten Schritt auf der Arbeitsstation mit Internetverbindung das Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), um das Schlüsselübertragungspaket hochzuladen, das Sie von der verbindungslosen Arbeitsstation in das Azure Key Vault-HSM kopiert haben:
 
    ```powershell
-        Add-AzureKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
+        Add-AzKeyVaultKey -VaultName 'ContosoKeyVaultHSM' -Name 'ContosoFirstHSMkey' -KeyFilePath 'c:\KeyTransferPackage-ContosoFirstHSMkey.byok' -Destination 'HSM'
    ```
 
 Wenn der Upload erfolgreich ist, werden die Eigenschaften des gerade hinzugefügten Schlüssels angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem Schlüsseltresor verwenden. Weitere Informationen finden Sie im Abschnitt **Verwenden eines Hardwaresicherheitsmoduls (HSM)** im Lernprogramm [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md) .
+Sie können diesen HSM-geschützten Schlüssel jetzt in Ihrem Schlüsseltresor verwenden. Weitere Informationen finden Sie im Abschnitt **Verwenden eines Hardwaresicherheitsmoduls (HSM)** im Lernprogramm [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-overview.md) .

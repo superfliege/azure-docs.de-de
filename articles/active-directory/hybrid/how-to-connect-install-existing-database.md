@@ -16,12 +16,13 @@ ms.topic: conceptual
 ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
-ms.openlocfilehash: f863c4b115616ff709634f3c68955c3be3241707
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8254766568c54748ee3646dd627a102ffc86e743
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494186"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56191349"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank
 Azure AD Connect erfordert eine SQL Server-Datenbank zum Speichern von Daten. Sie können entweder die mit Azure AD Connect installierte SQL Server 2012 Express LocalDB-Standardinstanz oder Ihre eigene vollständige Version von SQL Server verwenden. Bei der Installation von Azure AD Connect wurde bisher immer eine neue Datenbank mit dem Namen ADSync erstellt. Ab Azure AD Connect Version 1.1.613.0 können Sie Azure AD Connect optional mit einem Verweis auf eine vorhandene ADSync-Datenbank installieren.
@@ -59,6 +60,10 @@ Bevor Sie fortfahren, beachten Sie die folgenden wichtigen Hinweise:
 2.  Sobald die MSI-Installation abgeschlossen ist, wird der Azure AD Connect-Assistent mit dem Setup im Express-Modus gestartet. Schließen Sie den Bildschirm durch Klicken auf das Symbol „Beenden“.
 ![Willkommen](./media/how-to-connect-install-existing-database/db1.png)
 3.  Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner <drive>\Programme\Microsoft Azure AD Connect. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
+
+> [!NOTE]
+> Verwenden Sie den Schalter **/UseExistingDatabase** nur, wenn die Datenbank bereits Daten aus einer früheren Installation von Azure AD Connect enthält. Dies kann beispielsweise der Fall sein, wenn Sie aus einer lokalen Datenbank zu einer vollständigen SQL Server-Datenbank wechseln oder wenn der Azure AD Connect-Server neu erstellt wurde und Sie eine SQL-Sicherung der ADSync-Datenbank aus einer früheren Installation von Azure AD Connect wiederhergestellt haben. Wenn Sie eine leere Datenbank erstellt haben und diese für die Installation verwenden, überspringen Sie diesen Schritt.
+
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 4.  Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
 ![Willkommen](./media/how-to-connect-install-existing-database/db3.png)

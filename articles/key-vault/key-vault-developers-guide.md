@@ -2,19 +2,19 @@
 title: Entwicklerhandbuch zu Azure-Schlüsseltresor
 description: Mit Azure-Schlüsseltresor können Entwickler kryptografische Schlüssel in der Microsoft Azure-Umgebung verwalten.
 services: key-vault
-author: bryanla
-manager: mbaldwin
+author: msmbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/05/2018
-ms.author: bryanla
-ms.openlocfilehash: 9ab399ae50f9b04acad411b225797f89547a2824
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.date: 02/11/2019
+ms.author: mbaldwin
+ms.openlocfilehash: 274ba6d6a1ce2e9c8f2cae0ca29de8442525391e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237535"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106478"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -23,7 +23,7 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Schlüssel und geheime Schlüssel werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
 - Ihre Kunden können die Verantwortung für ihre eigenen Schlüssel übernehmen und diese selbst verwalten, sodass Sie sich auf die Bereitstellung der Hauptfunktionen der Software konzentrieren können. Auf diese Weise müssen Ihre Anwendungen weder die Verantwortung noch die Haftung für die Mandantenschlüssel und geheimen Mandantenschlüssel Ihrer Kunden übernehmen.
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden, damit die Lösung auch für eine geografisch verteilte App geeignet ist.
-- Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-Zertifikate verwalten. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates).
+- Mit der Key Vault-Version vom September 2016 können Ihre Anwendungen nun auch Key Vault-Zertifikate verwalten. Weitere Informationen finden Sie im Artikel [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](/rest/api/keyvault/about-keys--secrets-and-certificates).
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](key-vault-whatis.md).
 
@@ -36,7 +36,7 @@ Wir veröffentlichen in regelmäßigen Abständen eine öffentliche Vorschau des
 >[!NOTE]
 >Für dieses Update von Azure Key Vault ist nur das Feature **Speicherkontoschlüssel** in der Vorschau enthalten.
 
-Diese Vorschau enthält unser neues Speicherkontoschlüssel-Feature, das über diese Schnittstellen verfügbar ist: [.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/), [REST](https://docs.microsoft.com/rest/api/keyvault/) und [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/). 
+Diese Vorschau enthält unser neues Speicherkontoschlüssel-Feature, das über diese Schnittstellen verfügbar ist: [.NET/C#](/dotnet/api/microsoft.azure.keyvault/), [REST](/rest/api/keyvault/) und [PowerShell](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault). 
 
 Weitere Informationen zum neuen Speicherkontoschlüssel-Feature finden Sie unter [Azure Key Vault storage account keys overview](key-vault-ovw-storage-keys.md) (Übersicht zu Azure Key Vault-Speicherkontoschlüsseln).
 
@@ -55,19 +55,19 @@ Im Video erwähnte Ressourcen:
 
 Azure Key Vault bietet eine Möglichkeit zum sicheren Speichern von Anmeldeinformationen und anderen Schlüsseln und Geheimnissen. Um diese abrufen zu können, muss sich Ihr Code jedoch bei Key Vault authentifizieren. Mithilfe der verwalteten Identitäten für Azure-Ressourcen kann dieses Problem leichter gelöst werden, indem für Azure-Dienste eine automatisch verwaltete Identität in Azure Active Directory (Azure AD) bereitgestellt wird. Sie können diese Identität für die Authentifizierung bei jedem Dienst verwenden, der die Azure AD-Authentifizierung einschließlich von Key Vault unterstützt. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. 
 
-Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten – Übersicht](../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Arbeit mit AAD finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](/azure/active-directory/develop/active-directory-integrating-applications).
+Weitere Informationen zu verwalteten Identitäten für Azure-Ressourcen finden Sie unter [Verwaltete Identitäten – Übersicht](../active-directory/managed-identities-azure-resources/overview.md). Weitere Informationen zur Arbeit mit AAD finden Sie im Artikel [Integrieren von Anwendungen in Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md).
 
 Bevor Sie mit Schlüsseln, Geheimnissen oder Zertifikaten in Ihrem Schlüsseltresor arbeiten können, müssen Sie diesen über die CLI, PowerShell, Azure Resource Manager-Vorlagen oder REST erstellen und verwalten. Die jeweilige Vorgehensweise wird in den folgenden Artikeln beschrieben:
 
 - [Erstellen und Verwalten von Schlüsseltresoren über die CLI](key-vault-manage-with-cli2.md)
-- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](key-vault-get-started.md)
+- [Erstellen und Verwalten von Schlüsseltresoren mit PowerShell](key-vault-overview.md)
 - [Erstellen eines Schlüsseltresors und Hinzufügen eines Geheimnisses über eine Azure Resource Manager-Vorlage](../azure-resource-manager/resource-manager-template-keyvault.md)
-- [Erstellen und Verwalten von Schlüsseltresoren über REST](https://docs.microsoft.com/rest/api/keyvault/)
+- [Erstellen und Verwalten von Schlüsseltresoren über REST](/rest/api/keyvault/)
 
 
 ## <a name="coding-with-key-vault"></a>Programmieren mit dem Schlüsseltresor
 
-Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen. Dieser Abschnitt enthält Links zu allen unterstützen Programmier- und Skriptsprachen und zu einigen Codebeispielen. 
+Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnittstellen. Dieser Abschnitt enthält Links zu allen Programmier- und Skriptsprachen und zu einigen Codebeispielen. 
 
 ### <a name="supported-programming-and-scripting-languages"></a>Unterstützte Programmier- und Skriptsprachen
 
@@ -75,35 +75,35 @@ Das Key Vault-Verwaltungssystem für Programmierer besteht aus mehreren Schnitts
 
 Über die REST-Schnittstelle können Sie auf sämtliche Key Vault-Ressourcen wie Schlüsseltresore, Schlüssel, Geheimnisse zugreifen. 
 
-[Referenz für die Key Vault-REST-API](https://docs.microsoft.com/rest/api/keyvault/). 
+[Referenz für die Key Vault-REST-API](/rest/api/keyvault/).
 
 #### <a name="net"></a>.NET
 
-[.NET-API-Referenz für Key Vault](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[.NET-API-Referenz für Key Vault](/dotnet/api/microsoft.azure.keyvault).
 
 Weitere Informationen über die .NET SDK-Version 2.x finden Sie in den [Anmerkungen zu dieser Version](key-vault-dotnet2api-release-notes.md).
 
 #### <a name="java"></a>Java
 
-[Java SDK für Key Vault](https://docs.microsoft.com/java/api/overview/azure/keyvault)
+[Java SDK für Key Vault](/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
 Die Key Vault-Verwaltungs-API und die Key Vault-Objekt-API sind in Node.js getrennt. In den folgenden Übersichtsartikeln erhalten Sie weitere Informationen zu beiden. 
 
-[Azure Key Vault-Module für Node.js](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
+[Azure Key Vault-Module für Node.js](/nodejs/api/overview/azure/key-vault)
 
 #### <a name="python"></a>Python
 
-[Azure Key Vault-Bibliotheken für Python](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+[Azure Key Vault-Bibliotheken für Python](/python/api/overview/azure/key-vault)
 
 #### <a name="azure-cli-2"></a>Azure CLI 2
 
-[Azure CLI für Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+[Azure CLI für Key Vault](/cli/azure/keyvault)
 
 #### <a name="azure-powershell"></a>Azure PowerShell 
 
-[Azure PowerShell für Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault)
+[Azure PowerShell für Key Vault](/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault)
 
 ### <a name="quick-start-guides"></a>Schnellstarthandbücher
 
@@ -139,7 +139,7 @@ Die folgenden Artikel und Szenarien bieten aufgabenspezifische Anleitungen für 
 Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in denen Key Vault oder eine Key Vault-Integration zum Einsatz kommt.
 
 - Bei der [Azure Disk Encryption](../security/azure-security-disk-encryption.md) werden das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [DM-Crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux verwendet, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen. Die Lösung ist in Azure Key Vault integriert, damit Sie die Schlüssel für die Datenträgerverschlüsselung und die geheimen Schlüssel unter Ihrem Schlüsseltresorabonnement steuern und verwalten können. Gleichzeitig können Sie sicherstellen, dass alle Daten auf den Datenträgern von virtuellen Computern im Ruhezustand in Ihrem Azure-Speicher verschlüsselt sind.
-- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) bietet eine Option zur Verschlüsselung von Daten, die im Konto gespeichert sind. Für die Schlüsselverwaltung bietet Data Lake Store zwei Modi zur Verwaltung Ihrer Master-Verschlüsselungsschlüssel (Master Encryption Keys, MEKs), die zum Entschlüsseln von Daten erforderlich sind, die im Data Lake Store gespeichert sind. Sie können die MEKs entweder von Data Lake Store für sich verwalten lassen, oder Sie verwenden das Azure Key Vault-Konto und bleiben im Besitz der MEKs. Beim Erstellen eines Data Lake Store-Kontos geben Sie die Art der Schlüsselverwaltung an. 
+- [Azure Data Lake Store](../data-lake-store/data-lake-store-get-started-portal.md) bietet eine Option zur Verschlüsselung von Daten, die im Konto gespeichert sind. Für die Schlüsselverwaltung bietet Data Lake Store zwei Modi zur Verwaltung Ihrer Master-Verschlüsselungsschlüssel (Master Encryption Keys, MEKs), die zum Entschlüsseln von Daten erforderlich sind, die im Data Lake Store gespeichert sind. Sie können die MEKs entweder von Data Lake Store für sich verwalten lassen, oder Sie verwenden das Azure Key Vault-Konto und bleiben im Besitz der MEKs. Beim Erstellen eines Data Lake Store-Kontos geben Sie die Art der Schlüsselverwaltung an.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) ermöglicht Ihnen, Ihren eigenen Mandantenschlüssel zu verwalten. Anstatt z.B. Ihren Mandantenschlüssel von Microsoft verwalten zu lassen (Standard), können Sie Ihren eigenen Mandantenschlüssel verwalten, um bestimmte Vorschriften zu erfüllen, die in Ihrer Organisation gelten. Das Verwalten Ihres eigenen Mandantenschlüssels wird auch als „Bring Your Own Key“ (BYOK) bezeichnet.
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault-Übersichten und -Konzepte
@@ -158,5 +158,3 @@ Diese Artikel enthalten Informationen zu anderen Szenarien und Diensten, in dene
 
 - Die [Microsoft Azure Key Vault-Kernbibliothek](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core) bietet die Schnittstellen **IKey** und **IKeyResolver**, um Schlüssel von Bezeichnern zu ermitteln und mit diesen Schlüsseln Vorgänge auszuführen.
 - [Microsoft Azure-Schlüsseltresorerweiterungen](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) bieten erweiterte Funktionen für den Azure-Schlüsseltresor.
-
-

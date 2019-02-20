@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f66c6956c803979ee6717f7327379c7bc9e97bb
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55181893"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112495"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Netzwerkkonfiguration für verwaltete Domänen
 Dieser Artikel hilft Ihnen bei der Problembehandlung und Lösung von Konfigurationsfehlern im Zusammenhang mit dem Netzwerk, die zu der folgenden Fehlermeldung führen:
@@ -36,7 +36,7 @@ Die häufigste Ursache von Netzwerkfehlern für Azure AD Domain Services sind un
 2. Wählen Sie in der Tabelle die NSG aus, die dem Subnetz zugeordnet ist, in dem Ihre verwaltete Domäne aktiviert ist.
 3. Klicken Sie im linken Bereich unter **Einstellungen** auf **Eingangssicherheitsregeln**.
 4. Überprüfen Sie die bestehenden Regeln, und finden Sie heraus, welche Regeln den Zugriff auf [diese Ports](active-directory-ds-networking.md#ports-required-for-azure-ad-domain-services) blockieren.
-5. Bearbeiten Sie die NSG, um Konformität sicherzustellen, indem Sie entweder die Regel löschen, eine Regel hinzufügen oder eine komplett neue NSG erstellen. Schritte zum [Hinzufügen einer Regel](#add-a-rule-to-a-network-security-group-using-the-azure-portal) oder [Erstellen einer neuen, konformen NSG](#create-a-nsg-for-azure-ad-domain-services-using-powershell) finden Sie weiter unten.
+5. Bearbeiten Sie die NSG, um Konformität sicherzustellen, indem Sie entweder die Regel löschen, eine Regel hinzufügen oder eine komplett neue NSG erstellen. Schritte zum [Hinzufügen einer Regel](#add-a-rule-to-a-network-security-group-using-the-azure-portal) und zum Erstellen einer neuen, konformen NSG finden Sie weiter unten.
 
 ## <a name="sample-nsg"></a>NSG-Beispiel
 Die folgende Tabelle zeigt ein NSG-Beispiel, das den Schutz Ihrer verwalteten Domäne sicherstellt und es Microsoft zugleich ermöglicht, Informationen zu überwachen, zu verwalten und zu aktualisieren.

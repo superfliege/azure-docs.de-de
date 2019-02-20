@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 64276047410280f8e818cf695f1fbb0c80fdd693
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497671"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997250"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio-Webdienste: Bereitstellung und Nutzung
 Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
@@ -31,10 +31,10 @@ Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung
 
 * Eine Übersicht über das Bereitstellen eines neuen Azure Resource Manager-basierten Webdiensts finden Sie unter [Bereitstellen eines neuen Webdiensts](publish-a-machine-learning-web-service.md).
 * Eine exemplarische Vorgehensweise zum Bereitstellen eines Webdiensts finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md).
-* Eine umfassende exemplarische Vorgehensweise zum Erstellen und Bereitstellen eines Webdiensts finden Sie unter [Exemplarische Vorgehensweise, Schritt 1: Erstellen eines Machine Learning-Arbeitsbereichs](walkthrough-1-create-ml-workspace.md).
+* Eine umfassende exemplarische Vorgehensweise zum Erstellen und Bereitstellen eines Webdiensts finden Sie unter [Tutorial 1: Vorhersagen des Kreditrisikos](tutorial-part1-credit-risk.md).
 * Spezifische Beispiele für das Bereitstellen eines Webdiensts finden Sie hier:
 
-  * [Exemplarische Vorgehensweise, Schritt 5: Bereitstellen eines Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md)
+  * [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md)
   * [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Mit Webdienste-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
@@ -84,7 +84,7 @@ Sie können Ihren Webdienst über das Azure Machine Learning-Webdiensteportal te
 
 * [Bereitstellen eines neuen Webdiensts](publish-a-machine-learning-web-service.md)
 * [Bereitstellen eines Azure Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md)
-* [Exemplarische Vorgehensweise, Schritt 5: Bereitstellen eines Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md)
+* [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Über Excel
 Sie können eine Excel-Vorlage zur Nutzung des Webdiensts herunterladen:

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 9f717f0ae70c503d3527d5df2e6556c120146f3b
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 430e3f0db2f053a2d5a6ea2a3e2a2d1c4418b501
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249315"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55995134"
 ---
-# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET
+# <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>Generieren von Miniaturansichten mithilfe von Media Encoder Standard mit .NET 
 
 Sie können Media Encoder Standard verwenden, um eine oder mehrere Miniaturansichten aus den Eingangsvideodaten in den Bilddateiformaten [JPEG](https://en.wikipedia.org/wiki/JPEG), [PNG](https://en.wikipedia.org/wiki/Portable_Network_Graphics) oder [BMP](https://en.wikipedia.org/wiki/BMP_file_format) zu generieren. Sie können Aufgaben einreichen, die nur Bilder erzeugen, oder Sie können das Erstellen von Miniaturansichten mit der Codierung kombinieren. Dieser Artikel enthält einige Beispiele für XML- und JSON-Miniaturansichtsvoreinstellungen für solche Szenarien. Am Ende des Artikels wird ein [Beispielcode](#code_sample) aufgeführt, der zeigt, wie das Media Services .NET SDK zum Ausführen der Codierungsaufgabe verwendet werden kann.
 
@@ -551,15 +551,15 @@ Es gelten die folgenden Bedingungen:
 * Bei der Verwendung von expliziten Zeitstempeln für "Start"/"Step"/"Range" wird davon ausgegangen, dass die Dauer der Eingabequelle mindestens 1 Minute beträgt.
 * Jpg-/Png-/BmpImage-Elemente weisen Start-, Step- und Range-Zeichenfolgenattribute auf, die folgendermaßen interpretiert werden können:
   
-  * Framenummer, wenn es sich nicht um negative ganze Zahlen handelt, z.B. "Start": "120",
-  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix "%", z.B. "Start": "15%" ODER
+  * Framenummer, wenn es sich nicht um negative Integers handelt, z.B. "Start": "120",
+  * Relativ zur Quelldauer bei Ausdrücken mit dem Suffix „%“, z.B. "Start": "15%", ODER
   * Zeitstempel bei Ausdrücken im HH:MM:SS...- Format. Beispiel: "Start" : "00:01:00"
     
     Sie können die Formate nach Belieben mischen.
     
-    "Start" unterstützt darüber hinaus auch das spezielle Makro "{Best}", das versucht, den ersten "interessanten" Frame des Inhalts zu ermitteln. (HINWEIS: "Step" und "Range" werden ignoriert, wenn "Start" auf "{Best}" festgelegt ist.)
-  * Standardwerte: Start:{Best}
-* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: "Jpg"/"Png"/"BmpFormat". Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
+    „Start“ unterstützt darüber hinaus auch das spezielle Makro {Best}, das versucht, den ersten „interessanten“ Frame des Inhalts zu ermitteln. (HINWEIS: „Step“ und „Range“ werden ignoriert, wenn „Start“ auf „{Best}“ festgelegt ist.)
+  * Standardwerte: Start: {Best}
+* Das Ausgabeformat muss für jedes Bildformat ausdrücklich bereitgestellt werden: „Jpg“/„Png“/„BmpFormat“. Falls vorhanden, ordnet MES „JpgVideo“ zu „JpgFormat“ usw. zu. "OutputFormat" führt ein neues Imagecodec-spezifisches Makro ein: "{Index}". Dieses Makro muss für Bildausgabeformate vorhanden sein (genau einmal).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

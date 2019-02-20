@@ -1,6 +1,6 @@
 ---
-title: Dateispeicherplatzverwaltung mit Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Diese Seite beschreibt, wie Sie mit Azure SQL-Datenbank Dateispeicherplatz verwalten, und bietet Codebeispiele, mit denen Sie feststellen können, ob eine Datenbank verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
+title: Speicherplatzverwaltung bei Azure SQL-Datenbank-Dateien von Singletons/Datenbanken in Pools | Microsoft-Dokumentation
+description: Diese Seite beschreibt, wie Sie in Azure SQL-Datenbank Dateispeicherplatz bei Singletons und Datenbanken in Pools verwalten. Sie enthält Codebeispiele, mit denen Sie ermitteln können, ob ein Singleton oder eine Datenbank in einem Pool verkleinert werden muss. Außerdem erhalten Sie hierin die entsprechenden Anweisungen zum Verkleinern der Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,20 +11,24 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 94b793d4ab68ae4d2b8a28961d76eed1ea875ff7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/11/2019
+ms.openlocfilehash: 32cfb108964d67f865b1d03ffa745eb468feeea7
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468630"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56110148"
 ---
-# <a name="manage-file-space-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz in Azure SQL-Datenbank
-Dieser Artikel beschreibt verschiedene Arten von Speicherplatz in der Azure SQL-Datenbank und Schritte, die ausgeführt werden können, wenn der für Datenbanken und Pools für elastische Datenbanken zugewiesene Speicherplatz explizit verwaltet werden muss.
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>Verwalten von Dateispeicherplatz für Singletons und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank
+
+Dieser Artikel beschreibt verschiedene Arten von Speicherplatz für Singletons und in Pools zusammengefassten Datenbanken in Azure SQL-Datenbank und Schritte für die direkte Verwaltung des für Datenbanken und Pools für elastische Datenbanken zugewiesenen Speicherplatzes.
+
+> [!NOTE]
+> Dieser Artikel gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in Azure SQL-Datenbank.
 
 ## <a name="overview"></a>Übersicht
 
-In Azure SQL-Datenbank gibt es Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
+In Azure SQL-Datenbank gibt es für Singletons und in Pools zusammengefassten Datenbanken Workloadmuster, bei denen die Zuordnung von zugrunde liegenden Datendateien für Datenbanken größer als die Menge der verwendeten Datenseiten werden kann. Dieser Fall kann eintreten, wenn der Platzbedarf zunimmt und Daten daraufhin gelöscht werden. Der Grund dafür ist, dass der zugeordnete Dateispeicherplatz nicht automatisch wieder freigegeben wird, wenn Daten gelöscht werden.
 
 Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Datendateien können in folgenden Szenarien erforderlich sein:
 
@@ -33,17 +37,20 @@ Die Überwachung der Dateispeicherplatzverwendung und die Verkleinerung von Date
 - Ermöglichen der Änderung einer einzelnen Datenbank oder eines Pools für elastische Datenbanken, um einen anderen Diensttarif oder eine andere Leistungsstufe mit einer geringeren maximalen Größe zu verwenden
 
 ### <a name="monitoring-file-space-usage"></a>Überwachen der Dateispeicherplatzverwendung
+
 Bei den meisten Speicherplatzmetriken, die im Azure-Portal und über die folgenden APIs angezeigt werden, wird lediglich die Größe der verwendeten Datenseiten ermittelt:
+
 - Azure Resource Manager-basierte Metrik-APIs einschließlich PowerShell [get-metrics](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermmetric)
 - T-SQL: [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database)
 
 Bei den folgenden APIs wird jedoch auch die Größe des Speicherplatzes ermittelt, der Datenbanken und Pools für elastische Datenbanken zugeordnet ist:
+
 - T-SQL:  [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
 ### <a name="shrinking-data-files"></a>Verkleinern von Datendateien
 
-Der SQL-Datenbankdienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen. 
+Der SQL-Datenbank-Dienst verkleinert Datendateien aufgrund der möglichen Auswirkungen auf die Datenbankleistung nicht automatisch, um ungenutzten zugewiesenen Speicherplatz freizugeben.  Kunden können Datendateien aber jederzeit selbst verkleinern, indem sie die Schritte unter [Freigeben von ungenutztem zugewiesenem Speicherplatz](#reclaim-unused-allocated-space) ausführen.
 
 > [!NOTE]
 > Im Gegensatz zu Datendateien verkleinert der SQL-Datenbankdienst die Protokolldateien automatisch, da dieser Vorgang die Datenbankleistung nicht beeinträchtigt. 
@@ -62,13 +69,14 @@ Es wichtig, dass Sie mit den folgenden Speicherplatzmengen vertraut sind, damit 
 
 Das folgende Diagramm veranschaulicht die Beziehung zwischen den verschiedenen Arten von Speicherplatz für eine Datenbank.
 
-![Arten von Speicherplatz und Beziehungen](./media/sql-database-file-space-management/storage-types.png) 
+![Arten von Speicherplatz und Beziehungen](./media/sql-database-file-space-management/storage-types.png)
 
-## <a name="query-a-database-for-storage-space-information"></a>Abfragen einer Datenbank nach Speicherplatzinformationen
+## <a name="query-a-single-database-for-storage-space-information"></a>Abfragen eines Singletons nach Speicherplatzinformationen
 
-Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für eine Datenbank zu ermitteln.  
+Die folgenden Abfragen können verwendet werden, um die Speicherplatzmengen für einen Singleton zu ermitteln.  
 
 ### <a name="database-data-space-used"></a>Genutzter Speicherplatz in Datenbank
+
 Ändern Sie die folgende Abfrage, um den belegten Speicherplatz der Datenbank zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
@@ -81,6 +89,7 @@ ORDER BY end_time DESC
 ```
 
 ### <a name="database-data-space-allocated-and-unused-allocated-space"></a>Zugeordneter Datenbank-Datenspeicherplatz und ungenutzter zugeordneter Speicherplatz
+
 Verwenden Sie die folgende Abfrage, um die Menge des Datenbank-Datenspeicherplatzes und die Menge des zugeordneten ungenutzten Speicherplatzes zurückzugeben.  Als Einheit für das Abfrageergebnis wird MB verwendet.
 
 ```sql
@@ -94,6 +103,7 @@ HAVING type_desc = 'ROWS'
 ```
  
 ### <a name="database-data-max-size"></a>Max. Größe für Datenbankdaten
+
 Ändern Sie die folgende Abfrage, um die maximale Größe für Datenbankdaten zurückgegeben.  Als Einheit für das Abfrageergebnis wird Byte verwendet.
 
 ```sql
@@ -137,7 +147,7 @@ ORDER BY end_time DESC
 
 Die Abfrageergebnisse zum Bestimmen des für jede Datenbank im Pool zugeordneten Speicherplatzes können addiert werden, um den gesamten Speicherplatz zu ermitteln, der für den Pool für elastische Datenbanken zugeordnet ist. Der zugewiesene Speicherplatz des Pools für elastische Datenbanken darf die maximale Größe des Pools nicht überschreiten.  
 
-Für die Installation des PowerShell-Skripts ist das SQL Server PowerShell-Modul erforderlich – Siehe [Herunterladen des PowerShell-Moduls](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module?view=sql-server-2017).
+Für die Installation des PowerShell-Skripts ist das SQL Server PowerShell-Modul erforderlich – Siehe [Herunterladen des PowerShell-Moduls](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module).
 
 ```powershell
 # Resource group name
@@ -218,7 +228,7 @@ Weitere Informationen zu diesem Befehl finden Sie unter [SHRINKDATABASE](https:/
 
 ### <a name="auto-shrink"></a>Automatisches Verkleinern
 
-Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu SHRINKDATABASE oder SHRINKFILE weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit SHRINKDATABASE und SHRINKFILE ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
+Alternativ kann für die Datenbank auch das automatische Verkleinern aktiviert werden.  Automatisches Verkleinern vereinfacht die Dateiverwaltung und wirkt sich im Vergleich zu `SHRINKDATABASE` oder `SHRINKFILE` weniger stark auf die Datenbankleistung aus.  Insbesondere beim Verwalten von Pools für elastische Datenbanken mit zahlreichen Datenbanken kann automatisches Verkleinern äußerst hilfreich sein.  Verglichen mit `SHRINKDATABASE` und `SHRINKFILE` ist das automatische Verkleinern allerdings beim Freigeben von Dateispeicherplatz unter Umständen weniger effizient.
 Wenn Sie automatisches Verkleinern aktivieren möchten, ändern Sie im folgenden Befehl den Namen der Datenbank.
 
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: jeedes
-ms.openlocfilehash: 0116cac7d0e44efee0112d57aedd4f5ee02833b3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 3f5dd7012d280580dca76e50290bc2de4322d55c
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39430714"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56198412"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-manabi-pocket"></a>Tutorial: Azure Active Directory-Integration mit Manabi Pocket
 
@@ -158,7 +159,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-manabi-pocket-test-user"></a>Erstellen eines Testbenutzers für Manabi Pocket
 
-In diesem Abschnitt erstellen Sie in Manabi Pocket einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem [Manabi Pocket-Supportteam](mailto:info-ed-cl@ntt.com), um die Benutzer in der Plattform von Manabi Pocket hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Manabi Pocket einen Benutzer mit dem Namen Britta Simon. Arbeiten Sie mit dem  [Manabi Pocket-Supportteam](mailto:info-ed-cl@ntt.com)  zusammen, um die Benutzer auf der Plattform von Manabi Pocket hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

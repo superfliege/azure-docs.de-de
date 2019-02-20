@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: 1370f541f8913d86db948a3165d6660a8cd66528
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963503"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984391"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -31,7 +31,7 @@ In diesem Dokument erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterun
 ## <a name="prerequisites"></a>Voraussetzungen
 
 > [!NOTE]  
-> Verwenden Sie die benutzerdefinierte Skripterweiterung nicht, um „Update-AzureRmVM“ mit der gleichen VM als Parameter auszuführen, da der Befehl dann auf sich selbst wartet.  
+> Verwenden Sie die benutzerdefinierte Skripterweiterung nicht, um „Update-AzVM“ mit der gleichen VM als Parameter auszuführen, da der Befehl dann auf sich selbst wartet.  
 >   
 > 
 
@@ -145,10 +145,10 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 
 ## <a name="powershell-deployment"></a>PowerShell-Bereitstellung
 
-Mit dem `Set-AzureRmVMCustomScriptExtension`-Befehl können Sie die benutzerdefinierte Skripterweiterung einem vorhandenen virtuellen Computer bereitstellen. Weitere Informationen finden Sie unter [Set-AzureRmVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmcustomscriptextension).
+Mit dem `Set-AzVMCustomScriptExtension`-Befehl können Sie die benutzerdefinierte Skripterweiterung einem vorhandenen virtuellen Computer bereitstellen. Weitere Informationen finden Sie unter [Set-AzVMCustomScriptExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmcustomscriptextension).
 
 ```powershell
-Set-AzureRmVMCustomScriptExtension -ResourceGroupName myResourceGroup `
+Set-AzVMCustomScriptExtension -ResourceGroupName myResourceGroup `
     -VMName myVM `
     -Location myLocation `
     -FileUri myURL `
@@ -173,7 +173,7 @@ $storagekey = "1234ABCD"
 $ProtectedSettings = @{"storageAccountName" = $storageaccname; "storageAccountKey" = $storagekey; "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File 1_Add_Tools.ps1"};
 
 #run command
-Set-AzureRmVMExtension -ResourceGroupName myRG `
+Set-AzVMExtension -ResourceGroupName myRG `
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "buildserver1" ` 
@@ -190,7 +190,7 @@ In diesem Beispiel können Sie einen lokalen SMB-Server als Skriptspeicherort ve
 ```powershell
 $ProtectedSettings = @{"commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File \\filesvr\build\serverUpdate1.ps1"};
  
-Set-AzureRmVMExtension -ResourceGroupName myRG 
+Set-AzVMExtension -ResourceGroupName myRG 
     -Location myLocation ` 
     -VMName myVM ` 
     -Name "serverUpdate" 
@@ -204,7 +204,7 @@ Set-AzureRmVMExtension -ResourceGroupName myRG
 ### <a name="how-to-run-custom-script-more-than-once-with-cli"></a>Mehrmaliges Ausführen der Erweiterung für benutzerdefinierte Skripts über die Befehlszeilenschnittstelle
 Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen möchten, ist diese Aktion nur unter folgenden Bedingungen möglich:
 1. Der Parameter „Name“ der Erweiterung ist identisch mit der vorherigen Bereitstellung der Erweiterung.
-2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt.  Sie können eine dynamische Eigenschaft im Befehl hinzufügen, etwa einen Zeitstempel.
+2. Sie müssen die Konfiguration aktualisieren, andernfalls wird der Befehl nicht erneut ausgeführt. In dem Befehl können Sie eine dynamische Eigenschaft hinzufügen, z.B. „timestamp“.
 
 ## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
 
@@ -213,7 +213,7 @@ Wenn Sie die Erweiterung für benutzerdefinierte Skripts mehrmals ausführen mö
 Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe des Azure PowerShell-Moduls abgerufen werden. Führen Sie den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen:
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 Die Ausgabe der Erweiterungsausführung wird in Dateien im folgenden Verzeichnis auf dem virtuellen Zielcomputer protokolliert.

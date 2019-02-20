@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 1430bc4a9de863c25e40a2655f0a1cd7a75ae0f7
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 50cec0774729073678498922b2c58f1ca62d7d82
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561385"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858279"
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Konfigurieren und Verwalten der Sicherheit von Azure SQL-Datenbank für die Geowiederherstellung oder den Failover
 
@@ -32,6 +32,9 @@ Der Hauptaspekt des Kompromisses ist, dass die Verwaltung des Notfallwiederherst
 ## <a name="how-to-configure-logins-and-users"></a>Konfigurieren von Anmeldungen und Benutzern
 
 Wenn Sie mit Anmeldungen und Benutzern (nicht mit eigenständigen Benutzern) arbeiten, müssen Sie zusätzliche Schritte durchführen, um sicherzustellen, dass die gleichen Anmeldenamen in der Masterdatenbank vorhanden sind. In den folgenden Abschnitten werden die entsprechenden Schritte und zusätzliche Aspekte behandelt.
+
+  >[!NOTE]
+  > Es ist auch möglich, Azure Active Directory-Anmeldungen (AAD) zu verwenden, um Ihre Datenbanken zu verwalten. Weitere Informationen finden Sie unter [Azure SQL-Anmeldungen und -Benutzer](https://docs.microsoft.com/azure/sql-database/sql-database-manage-logins).
 
 ### <a name="set-up-user-access-to-a-secondary-or-recovered-database"></a>Einrichten des Benutzerzugriffs auf eine sekundäre bzw. wiederhergestellte Datenbank
 

@@ -17,12 +17,13 @@ ms.workload: identity
 ms.date: 01/21/2019
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 26721aa0eac69875f6a3704025e6ab71a54a1e31
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aeb991de113b13666eeaab3f283b9eccd75fbd39
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55078099"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56166028"
 ---
 # <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Was sind Standortbedingungen beim bedingten Zugriff in Azure Active Directory? 
 
@@ -34,9 +35,9 @@ In diesem Artikel erhalten Sie die erforderlichen Informationen, um die Standort
 
 Azure AD ermöglicht das einmalige Anmelden bei Geräten, Apps und Diensten von beliebigen Orten im öffentlichen Internet aus. Mithilfe der Standortbedingung können Sie den Zugriff auf Ihre Cloud-Apps auf der Grundlage des Netzwerkstandorts eines Benutzers steuern. Häufige Anwendungsfälle für die Standortbedingung sind:
 
-- Das Vorschreiben von mehrstufiger Authentifizierung für Benutzer beim Zugriff auf einen Dienst, wenn sie sich außerhalb des Unternehmensnetzwerks befinden  
+- Das Vorschreiben von mehrstufiger Authentifizierung für Benutzer beim Zugriff auf einen Dienst, wenn sie sich außerhalb des Unternehmensnetzwerks befinden
 
-- Das Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten. 
+- Das Blockieren des Zugriffs auf einen Dienst für Benutzer, die sich in bestimmten Ländern oder Regionen aufhalten.
 
 Ein Standort ist eine Bezeichnung für einen Netzwerkspeicherort, entweder in Form eines benannten Standorts oder von vertrauenswürdigen IPs aufgrund von mehrstufiger Authentifizierung.
 
@@ -62,9 +63,9 @@ Ein benannter Standort besteht aus den folgenden Komponenten:
 
 - **Als vertrauenswürdigen Standort markieren**: Ein Flag, das Sie für einen benannten Standort festlegen können, um ihn als vertrauenswürdigen Standort auszuweisen. Normalerweise handelt es sich bei vertrauenswürdigen Standorten um Netzwerkbereiche, die der Kontrolle Ihrer IT-Abteilung unterliegen. Über den bedingten Zugriff hinaus werden vertrauenswürdige benannte Standorte auch in Sicherheitsberichten von Azure Identity Protection und Azure AD verwendet, um [falsch positive](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1) Meldungen zu reduzieren.
 
-- **Land/Region**: Mithilfe dieser Option können Sie Länder oder Regionen auswählen, um einen benannten Ort zu definieren. 
+- **Länder/Regionen:** Mithilfe dieser Option können Sie Länder oder Regionen auswählen, um einen benannten Ort zu definieren. 
 
-- **Unbekannte Bereiche einschließen**: Einige IP-Adressen sind keinem bestimmten Land zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Sie kann aktiviert werden, wenn die Richtlinie, die sich auf den benannten Standort bezieht, für unbekannte Standorte gelten soll.
+- **Unbekannte Bereiche einschließen**: Einige IP-Adressen sind keinem bestimmten Land zugeordnet. Mithilfe dieser Option können Sie auswählen, ob der benannte Standort diese IP-Adressen umfassen soll. Verwenden Sie diese Einstellung, wenn die Richtlinie für den benannten Standort auch für unbekannte Standorte gelten soll.
 
 Die Anzahl von benannten Orten, die Sie konfigurieren können, wird durch die Größe des zugehörigen Objekts in Azure AD eingeschränkt. Sie können Folgendes konfigurieren:
 

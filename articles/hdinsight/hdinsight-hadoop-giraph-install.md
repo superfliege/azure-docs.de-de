@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: ec80be0ece3596eab418ac39507954142944e34a
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 4bcd7bcef0969cec82d42ead6307e72a3abea6e1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260488"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978867"
 ---
 # <a name="install-and-use-apache-giraph-on-windows-based-hdinsight-clusters"></a>Installieren und Verwenden von Apache Giraph in Windows-basierten HDInsight-Clustern
 
@@ -46,17 +46,12 @@ Mithilfe von *Skriptaktionen*können Sie Giraph in einem beliebigen Clustertyp (
 
     ![Anpassen eines Clusters mithilfe einer Skriptaktion](./media/hdinsight-hadoop-giraph-install/hdi-script-action-giraph.png "Anpassen eines Clusters mithilfe einer Skriptaktion")
 
-    <table border='1'>
-        <tr><th>Eigenschaft</th><th>Wert</th></tr>
-        <tr><td>NAME</td>
-            <td>Geben Sie einen Namen für die Skriptaktion an. Beispiel: <b>Giraph installieren</b>.</td></tr>
-        <tr><td>Skript-URI</td>
-            <td>Geben Sie den Uniform Resource Identifier (URI) für das Skript an, das aufgerufen wird, um den Cluster anzupassen. Beispiel: <i>https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1</i></td></tr>
-        <tr><td>Knotentyp</td>
-            <td>Gibt die Knoten an, auf denen das Anpassungsskript ausgeführt wird. Sie können <b>Alle Knoten</b>, <b>Nur Hauptknoten</b> oder <b>Nur Workerknoten</b> auswählen.
-        <tr><td>Parameter</td>
-            <td>Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. Für das Skript zum Installieren von Giraph sind keine Parameter erforderlich, sodass Sie diese leer lassen können.</td></tr>
-    </table>
+    |Eigenschaft|Wert|  
+    |---|---|  
+    |NAME|Geben Sie einen Namen für die Skriptaktion an. Beispiel: **Giraph installieren**|
+    |Skript-URI|Geben Sie den Uniform Resource Identifier (URI) für das Skript an, das aufgerufen wird, um den Cluster anzupassen. Beispiel: *https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1*|
+    |Knotentyp|Gibt die Knoten an, auf denen das Anpassungsskript ausgeführt wird. Sie können **Alle Knoten**, **Nur Hauptknoten** oder **Nur Workerknoten** auswählen.
+    |Parameter|Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist. Für das Skript zum Installieren von Giraph sind keine Parameter erforderlich, sodass Sie diese leer lassen können.|  
 
     Sie können dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzufügen. Nachdem Sie die Skripts hinzugefügt haben, klicken Sie auf das Häkchen, um die Erstellung des Clusters zu starten.
 
@@ -78,6 +73,7 @@ Das Beispiel "SimpleShortestPathsComputation" demonstriert die grundlegende <a h
     Wenn die obigen Daten auseinandergezogen und der Wert (die Gewichtung) als Abstand zwischen den Objekten verwendet werden, dann könnte das so aussehen:
 
     ![tiny_graph.txt als Kreise dargestellt mit Linien unterschiedlicher Länge dazwischen](./media/hdinsight-hadoop-giraph-install/giraph-graph.png)
+
 2. Führen Sie das Beispiel "SimpleShortstPathsComputation" aus. Verwenden Sie die folgenden Azure PowerShell-Cmdlets, um das Beispiel unter Verwendung der Datei „tiny_graph.txt“ als Eingabe auszuführen.
 
     > [!IMPORTANT]  

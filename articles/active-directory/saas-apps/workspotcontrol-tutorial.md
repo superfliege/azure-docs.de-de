@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 520e625ba9689ebf35e985fe95609c62102e2493
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 8716d018756d1e6eadcd6ebeeaf4f67ad0bc4741
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49311941"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211154"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Tutorial: Azure Active Directory-Integration mit Workspot Control
 
@@ -142,7 +143,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 7. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Workspot Control an.
 
-8. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf **Setup**, und navigieren Sie dann zu **SAML**.
+8. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf  **Setup**, und navigieren Sie dann zu  **SAML**.
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
@@ -150,7 +151,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
  
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
-    a. Fügen Sie in das Textfeld **Entitäts-ID** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.   
+    a. Fügen Sie in das Textfeld **Entitäts-ID** den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.   
 
     b. Fügen Sie in das Textfeld **Anmeldedienst-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -193,7 +194,7 @@ Damit sich Azure AD-Benutzer bei Workspot Control anmelden können, müssen sie 
 
 1. Melden Sie sich bei Workspot Control als Sicherheitsadministrator an.
 
-2. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf **Users**, und navigieren Sie dann zu **Add User**.
+2. Klicken Sie auf der Symbolleiste am oberen Rand der Seite auf  **Users** (Benutzer), und navigieren Sie dann zu  **Add User** (Benutzer hinzufügen).
 
     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
-ms.openlocfilehash: 2ac8bd29b617e305d19f30590b8ec9720e9acdd3
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7e67e7836b1d80e623a11e552c81750bc6133205
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54192755"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981637"
 ---
 # <a name="preview-create-and-use-shared-images-for-virtual-machine-scale-sets-with-the-azure-powershell"></a>Vorschau: Erstellen und Verwenden von freigegebenen Images für VM-Skalierungsgruppen mit Azure PowerShell
 
@@ -42,7 +42,7 @@ Die Funktion „Katalog mit freigegebenen Images“ verfügt über mehrere Resso
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-
+[!INCLUDE [updated-for-az-vm.md](../../includes/updated-for-az-vm.md)]
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
@@ -55,10 +55,10 @@ Für das Beispiel in diesem Artikel muss ein verwaltetes Image vorhanden sein. S
 
 ## <a name="create-a-scale-set-from-the-shared-image-version"></a>Erstellen einer Skalierungsgruppe aus der Version des freigegebenen Images
 
-Erstellen Sie mit [New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) eine VM-Skalierungsgruppe. Das folgende Beispiel erstellt eine Skalierungsgruppe aus der neuen Imageversion im Rechenzentrum „USA, Westen“. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Legen Sie bei entsprechender Aufforderung Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe fest:
+Erstellen Sie mit [New-AzVmss](/powershell/module/az.compute/new-azvmss) eine VM-Skalierungsgruppe. Das folgende Beispiel erstellt eine Skalierungsgruppe aus der neuen Imageversion im Rechenzentrum „USA, Westen“. Die Azure-Netzwerkressourcen für virtuelles Netzwerk, öffentliche IP-Adresse und Lastenausgleich werden automatisch erstellt. Legen Sie bei entsprechender Aufforderung Ihre eigenen Administratoranmeldeinformationen für die VM-Instanzen in der Skalierungsgruppe fest:
 
 ```azurepowershell-interactive
-New-AzureRmVmss `
+New-AzVmss `
   -ResourceGroupName myVMSSRG `
   -Location 'South Central US' `
   -VMScaleSetName 'myScaleSet' `
@@ -77,11 +77,11 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen nicht mehr benötigen, können Sie das Cmdlet [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) verwenden, um sie zu entfernen:
+Wenn die Ressourcengruppe, die VM und alle dazugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Cmdlet [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen:
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myGalleryRG
-Remove-AzureRmResourceGroup -Name myVMSSRG
+Remove-AzResourceGroup -Name myGalleryRG
+Remove-AzResourceGroup -Name myVMSSRG
 ```
 
 

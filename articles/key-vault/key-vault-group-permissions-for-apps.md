@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie Sie vielen Anwendungen die Berechtigung zu
 services: key-vault
 documentationcenter: ''
 author: amitbapat
-manager: mbaldwin
+manager: barbkess
 tags: azure-resource-manager
 ms.assetid: 785d4e40-fb7b-485a-8cbc-d9c8c87708e6
 ms.service: key-vault
@@ -13,14 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
-ms.openlocfilehash: cd680f24eafe61bc73fa6eb91df4b4dfa5f5399b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 187d455003cf8b1c9402e24755c5f15b703cd9ad
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073426"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114398"
 ---
 # <a name="grant-several-applications-access-to-a-key-vault"></a>Gewähren des Zugriffs auf einen Schlüsseltresor für mehrere Anwendungen
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Mithilfe der Zugriffssteuerungsrichtlinie kann mehreren Anwendungen der Zugriff auf einen Schlüsseltresor gewährt werden. Eine Zugriffssteuerungsrichtlinie kann bis zu 1024 Anwendungen unterstützen und wird wie folgt konfiguriert:
 
@@ -28,12 +30,16 @@ Mithilfe der Zugriffssteuerungsrichtlinie kann mehreren Anwendungen der Zugriff 
 2. Fügen Sie alle zugehörigen Dienstprinzipale der Anwendungen zur Sicherheitsgruppe hinzu.
 3. Gewähren Sie der Sicherheitsgruppe Zugriff auf Ihre Key Vault-Instanz.
 
-Hier sind die erforderlichen Komponenten angegeben:
-* [Installieren Sie das Azure Active Directory V2-PowerShell-Modul](https://www.powershellgallery.com/packages/AzureAD).
-* [Installieren Sie Azure PowerShell](/powershell/azure/overview).
-* Zum Ausführen der folgenden Befehle benötigen Sie Berechtigungen zum Erstellen/Bearbeiten von Gruppen im Azure Active Directory-Mandanten. Falls Sie nicht über die entsprechenden Berechtigungen verfügen, müssen Sie sich ggf. an Ihren Azure Active Directory-Administrator wenden. Unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md) finden Sie nähere Informationen zur Richtlinie für Berechtigungen zum Zugriff auf Schlüsseltresore.
+## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie als Nächstes die folgenden Befehle in PowerShell aus:
+Hier finden Sie die Voraussetzungen:
+* [Installieren Sie Azure PowerShell](/powershell/azure/overview).
+* [Installieren Sie das Azure Active Directory V2-PowerShell-Modul](https://www.powershellgallery.com/packages/AzureAD).
+* Berechtigungen zum Erstellen/Bearbeiten von Gruppen im Azure Active Directory-Mandanten. Falls Sie nicht über die entsprechenden Berechtigungen verfügen, müssen Sie sich ggf. an Ihren Azure Active Directory-Administrator wenden. Unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](about-keys-secrets-and-certificates.md) finden Sie nähere Informationen zur Richtlinie für Berechtigungen zum Zugriff auf Schlüsseltresore.
+
+## <a name="granting-key-vault-access-to-applications"></a>Gewähren von Key Vault-Zugriff auf Anwendungen
+
+Führen Sie die folgenden Befehle in PowerShell aus:
 
 ```powershell
 # Connect to Azure AD 
@@ -49,7 +55,7 @@ Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId
 # You can add several members to this group, in this fashion. 
  
 # Set the Key Vault ACLs 
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
+Set-AzKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId `
 -PermissionsToKeys decrypt,encrypt,unwrapKey,wrapKey,verify,sign,get,list,update,create,import,delete,backup,restore,recover,purge `
 –PermissionsToSecrets get,list,set,delete,backup,restore,recover,purge `
 –PermissionsToCertificates get,list,delete,create,import,update,managecontacts,getissuers,listissuers,setissuers,deleteissuers,manageissuers,recover,purge,backup,restore `

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: jeedes
-ms.openlocfilehash: 30fdb55758d5fbac41452236ebaa9f96ab9bba6b
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f23a1520175827f775553e1ba949c62567cf83
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163622"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56201923"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hornbill"></a>Tutorial: Azure Active Directory-Integration mit Hornbill
 
@@ -128,7 +129,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![Hornbill-System](./media/hornbill-tutorial/tutorial_hornbill_system.png)
 
-8. Navigieren Sie zu **Sicherheit**.
+8. Navigieren zu **Sicherheit**.
 
     ![Hornbill-Sicherheit](./media/hornbill-tutorial/tutorial_hornbill_security.png)
 
@@ -195,7 +196,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Hornbill. Hornbill unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Hornbill ein neuer Benutzer erstellt.
 
 > [!Note]
-> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem [Hornbill-Supportteam](https://www.hornbill.com/support/?request/) in Verbindung.
+> Wenn Sie einen Benutzer manuell erstellen müssen, setzen Sie sich mit dem  [Hornbill-Clientsupportteam](https://www.hornbill.com/support/?request/) in Verbindung.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

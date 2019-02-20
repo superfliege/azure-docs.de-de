@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: e4e935a9c78950517623acdf8196d51793fff18a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 879a91d7007057e577631e157dae71f1566acab6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462459"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118223"
 ---
 # <a name="switch-api-preference-for-log-alerts"></a>Wechseln der API-Einstellung für Protokollwarnungen
 
@@ -30,6 +30,7 @@ Es gibt mehrere Vorteile beim Erstellen und Verwalten von Warnungen mithilfe der
 
 - Möglichkeit, [arbeitsbereichübergreifende Protokollsuche](../log-query/cross-workspace-query.md) in Warnungsregeln auszuführen und externen Ressourcen wie Log Analytics-Arbeitsbereiche oder sogar Application Insights-Apps einzubeziehen.
 - Wenn mehrere Felder in der Abfrage zum Gruppieren verwendet werden, kann der Benutzer mit der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) angeben, welches Feld im Azure-Portal zusammengefasst werden soll.
+- Für mit der [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erstellte Protokollwarnungen kann ein Zeitraum von 48 Stunden definiert werden, und Daten können für einen längeren Zeitraum als bisher abgerufen werden.
 - Erstellen von Warnungsregeln in einem Durchgang als einzelne Ressource, ohne dass drei Ebenen von Ressourcen wie mit der [Legacywarnungs-API von Log Analytics](api-alerts.md) erstellt werden müssen.
 - Einzelne befehlsorientierte Benutzerschnittstellen für alle Varianten von abfragebasierten Protokollwarnungen in Azure: Die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) kann zum Verwalten von Regeln für Log Analytics und Application Insights verwendet werden.
 - Alle neuen Protokollwarnungsfunktionen und zukünftigen Entwicklungen werden nur über die neue [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verfügbar sein.
@@ -57,6 +58,13 @@ Mit Anforderungstext, der den folgenden JSON-Code enthält.
 }
 ```
 
+Auf die API kann auch über eine PowerShell-Befehlszeile per [ARMClient](https://github.com/projectkudu/ARMClient) zugegriffen werden. Dies ist ein Open-Source-Befehlszeilentool, mit dem das Aufrufen der Azure Resource Manager-API vereinfacht wird. Dies wird im folgenden Beispiel mit dem PUT-Beispielaufruf veranschaulicht, bei dem unter Verwendung des ARMclient-Tools alle Warnungsregeln gewechselt werden, die dem spezifischen Log Analytics-Arbeitsbereich zugeordnet sind.
+
+```PowerShell
+$switchJSON = {'scheduledQueryRulesEnabled': 'true'}
+armclient PUT /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview $switchJSON
+```
+
 Wenn der Wechsel aller Warnungsregeln im Log Analytics-Arbeitsbereich zur Verwendung der neuen [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) erfolgreich ist, wird die folgende Antwort bereitgestellt.
 
 ```json
@@ -70,6 +78,12 @@ Benutzer können auch den aktuellen Status Ihres Log Analytics-Arbeitsbereichs �
 
 ```
 GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
+```
+
+Wie der obige Aufruf über die PowerShell-Befehlszeile mit dem [ARMClient](https://github.com/projectkudu/ARMClient)-Tool ausgeführt wird, sehen Sie im folgenden Beispiel.
+
+```PowerShell
+armclient GET /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
 Wenn der angegebene Log Analytics-Arbeitsbereich so umgeschaltet wurde, dass er nur [scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) verwendet, ähnelt der JSON-Antwortcode dem Beispiel unten.

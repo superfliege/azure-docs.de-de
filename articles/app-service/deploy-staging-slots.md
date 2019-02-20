@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 1d0f89285095e7edd67883a2bad1411f6e8942d2
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 7c12b34f6d735579326d4ccdd95e7831fbb777d6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54107197"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56181421"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Einrichten von Stagingumgebungen in Azure App Service
 <a name="Overview"></a>
@@ -122,7 +122,7 @@ Gehen Sie zum Austauschen von Bereitstellungsslots wie folgt vor:
 
 2. Wählen Sie die gewünschten Slots für **Quelle** und **Ziel** aus. Bei dem Ziel handelt es sich in der Regel um einen Produktionsslot. Klicken Sie auch auf die Registerkarten **Quelländerungen** und **Zieländerungen**, und vergewissern Sie sich, dass die Konfigurationsänderungen Ihren Erwartungen entsprechen. Klicken Sie anschließend auf **Austauschen**, um die Slots umgehend auszutauschen.
 
-    ![Abschließen des Austausch](./media/web-sites-staged-publishing/SwapImmediately.png)
+    ![Vollständiger Austausch](./media/web-sites-staged-publishing/SwapImmediately.png)
 
     Wenn Sie sich vor dem tatsächlichen Austausch ansehen möchten, wie der Zielslot mit den neuen Einstellungen funktioniert, klicken Sie nicht auf **Austauschen**, sondern führen Sie die Schritte unter [Mit Vorschau austauschen](#Multi-Phase) aus.
 
@@ -163,7 +163,7 @@ Gehen Sie für einen Austausch mit Vorschau wie folgt vor:
 
 4. Klicken Sie abschließend auf **Schließen**, um das Dialogfeld zu schließen.
 
-Informationen zum Automatisieren eines mehrstufigen Austauschs finden Sie unter [Automatisieren mit PowerShell](#automate-with-azure-powershell).
+Informationen zum Automatisieren eines mehrstufigen Austauschs finden Sie unter „Automatisieren mit PowerShell“.
 
 <a name="Rollback"></a>
 
@@ -204,6 +204,11 @@ Bei Verwendung des Features [Automatisch tauschen](#Auto-Swap) müssen für eini
             <add initializationPage="/Home/About" hostName="[app hostname]" />
         </applicationInitialization>
     </system.webServer>
+
+Sie können das Aufwärmverhalten ferner mit einer oder mehrerer der folgenden [App-Einstellungen](https://github.com/MicrosoftDocs/azure-docs-pr/pull/web-sites-configure.md) anpassen:
+
+- `WEBSITE_SWAP_WARMUP_PING_PATH`: Der Pfad zum Senden eines Pings zum Aufwärmen Ihrer Website. Fügen Sie diese App-Einstellung durch Angeben eines benutzerdefinierten Pfads hinzu, der mit einem Schrägstrich als Wert beginnt. Beispiel: `/statuscheck`. Standardwert: `/`. 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`: Gültige HTTP-Antwortcodes für den Aufwärmvorgang. Fügen Sie diese App-Einstellung mit einer durch Trennzeichen getrennten Liste mit HTTP-Codes hinzu. Beispiel: `200,202`. Wenn der zurückgegebene Statuscode nicht in der Liste enthalten ist, werden die Aufwärm- und Austauschvorgänge beendet. Standardmäßig sind alle Antwortcodes gültig.
 
 ## <a name="monitor-swap"></a>Überwachen des Austauschs
 
@@ -263,6 +268,8 @@ Navigieren Sie zur Ressourcenseite Ihrer App. Wählen Sie **Bereitstellungsslots
 
 ## <a name="automate-with-powershell"></a>Automatisieren mit PowerShell
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Azure PowerShell ist ein Modul, das Cmdlets für die Verwaltung von Azure über Windows PowerShell bietet, einschließlich Unterstützung der Verwaltung von Bereitstellungsslots für Azure App Service.
 
 Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur Authentifizierung von Azure PowerShell mit Ihrem Azure-Abonnement finden Sie unter [Installieren und Konfigurieren von Microsoft Azure PowerShell](/powershell/azure/overview).  
@@ -270,44 +277,44 @@ Informationen zum Installieren und Konfigurieren von Azure PowerShell sowie zur 
 - - -
 ### <a name="create-web-app"></a>Web-App erstellen
 ```PowerShell
-New-AzureRmWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
+New-AzWebApp -ResourceGroupName [resource group name] -Name [app name] -Location [location] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="create-slot"></a>Erstellen eines Slots
 ```PowerShell
-New-AzureRmWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
+New-AzWebAppSlot -ResourceGroupName [resource group name] -Name [app name] -Slot [deployment slot name] -AppServicePlan [app service plan name]
 ```
 
 - - -
 ### <a name="initiate-swap-with-preview-multi-phase-swap-and-apply-destination-slot-configuration-to-source-slot"></a>Initiieren des Austauschs mit Überprüfung (Austausch in mehreren Phasen) und Anwenden der Konfiguration des Zielslots auf den Quellslot
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action applySlotConfig -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="cancel-pending-swap-swap-with-review-and-restore-source-slot-configuration"></a>Abbrechen des ausstehenden Austauschs (Austausch mit Überprüfung) und Wiederherstellen der Konfiguration des Quellslots
 ```PowerShell
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action resetSlotConfig -ApiVersion 2015-07-01
 ```
 
 - - -
 ### <a name="swap-deployment-slots"></a>Überführen von Bereitstellungsslots
 ```PowerShell
 $ParametersObject = @{targetSlot  = "[slot name – e.g. “production”]"}
-Invoke-AzureRmResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
+Invoke-AzResourceAction -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots -ResourceName [app name]/[slot name] -Action slotsswap -Parameters $ParametersObject -ApiVersion 2015-07-01
 ```
 
 ### <a name="monitor-swap-events-in-the-activity-log"></a>Überwachen von Austauschereignissen im Aktivitätsprotokoll
 ```PowerShell
-Get-AzureRmLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
+Get-AzLog -ResourceGroup [resource group name] -StartTime 2018-03-07 -Caller SlotSwapJobProcessor  
 ```
 
 - - -
 ### <a name="delete-slot"></a>Löschen eines Slots
-```
-Remove-AzureRmResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
+```powershell
+Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microsoft.Web/sites/slots –Name [app name]/[slot name] -ApiVersion 2015-07-01
 ```
 
 - - -

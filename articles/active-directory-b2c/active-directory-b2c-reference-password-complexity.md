@@ -1,5 +1,5 @@
 ---
-title: Kennwortkomplexität in Azure Active Directory B2C | Microsoft-Dokumentation
+title: Kennwortkomplexität – Azure Active Directory B2C | Microsoft-Dokumentation
 description: Konfigurieren der Komplexitätsanforderungen für Kennwörter, die von Kunden in Azure Active Directory B2C bereitgestellt werden
 services: active-directory-b2c
 author: davidmu1
@@ -7,38 +7,39 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d1106a67d084020b714f0204b9012076817f9a4c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 2c6f3d88aae99c419b2507f421cc4dfebb2c022b
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55176063"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100202"
 ---
-# <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: Konfigurieren von Komplexitätsanforderungen für Kennwörter
+# <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>Konfigurieren der Komplexitätsanforderungen für Kennwörter in Azure Active Directory B2C
 
-> [!NOTE]
-> **Dieses Feature befindet sich in der Phase der öffentlichen Vorschau.**
+Azure Active Directory B2C (Azure AD) unterstützt das Ändern der Komplexitätsanforderungen für Kennwörter, die von einem Endbenutzer beim Erstellen eines Kontos bereitgestellt werden. Standardmäßig verwendet Azure AD B2C `Strong` Kennwörter. Azure AD B2C unterstützt außerdem Konfigurationsoptionen zur Steuerung der Komplexität von Kennwörtern, die Kunden verwenden können.
 
-Azure Active Directory B2C (Azure AD B2C) unterstützt das Ändern der Komplexitätsanforderungen für Kennwörter, die von einem Endbenutzer beim Erstellen eines Kontos bereitgestellt werden.  Standardmäßig verwendet Azure AD B2C `Strong` Kennwörter.  Azure AD B2C unterstützt außerdem Konfigurationsoptionen zur Steuerung der Komplexität von Kennwörtern, die Kunden verwenden können.
+## <a name="password-rule-enforcement"></a>Kennwortregelerzwingung
 
-## <a name="when-password-rules-are-enforced"></a>Wann werden Kennwortregeln erzwungen?
+Bei der Registrierung oder dem Zurücksetzen des Kennworts muss ein Endbenutzer ein Kennwort angeben, das die Regeln für die Komplexität erfüllt. Kennwortkomplexitätsregeln werden pro Benutzerflow erzwungen. Es ist möglich, dass ein Benutzerflow eine vierstellige PIN zur Registrierung fordert, ein anderer Benutzerflow hingegen eine Zeichenfolge von acht Zeichen. Sie können z.B. einen Benutzerflow mit unterschiedlicher Kennwortkomplexität für Erwachsene und Kinder verwenden.
 
-Bei der Registrierung oder dem Zurücksetzen des Kennworts muss ein Endbenutzer ein Kennwort angeben, das die Regeln für die Komplexität erfüllt.  Kennwortkomplexitätsregeln werden pro Benutzerflow erzwungen.  Es ist möglich, dass ein Benutzerflow eine vierstellige PIN zur Registrierung fordert, ein anderer Benutzerflow hingegen eine Zeichenfolge von acht Zeichen.  Sie können z.B. einen Benutzerflow mit unterschiedlicher Kennwortkomplexität für Erwachsene und Kinder verwenden.
+Kennwortkomplexität wird nie während der Anmeldung erzwungen. Benutzer werden nie während der Anmeldung aufgefordert, ihr Kennwort zu ändern, da es die aktuellen Komplexitätsanforderungen nicht erfüllt.
 
-Kennwortkomplexität wird nie während der Anmeldung erzwungen.  Benutzer werden nie während der Anmeldung aufgefordert, ihr Kennwort zu ändern, da es die aktuellen Komplexitätsanforderungen nicht erfüllt.
+In den folgenden Typen von Benutzerflows kann die Kennwortkomplexität konfiguriert werden:
 
-In folgenden Typen von Benutzerflows kann die Kennwortkomplexität konfiguriert werden:
+- Benutzerflow für die Registrierung oder Anmeldung
+- Benutzerflow für die Kennwortzurücksetzung
 
-* Benutzerflow für die Registrierung oder Anmeldung
-* Benutzerflow für die Kennwortzurücksetzung
-* Benutzerdefinierte Richtlinie ([Konfigurieren der Kennwortkomplexität in benutzerdefinierten Richtlinien](active-directory-b2c-reference-password-complexity-custom.md))
+Wenn Sie benutzerdefinierte Richtlinien verwenden, können Sie [die Kennwortkomplexität in einer benutzerdefinierten Richtlinie konfigurieren](active-directory-b2c-reference-password-complexity-custom.md).
 
-## <a name="how-to-configure-password-complexity"></a>Gewusst wie: Konfigurieren der Kennwortkomplexität
+## <a name="configure-password-complexity"></a>Konfigurieren der Kennwortkomplexität
 
-1. Öffnen Sie **Benutzerflows**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+4. Wählen Sie **Benutzerflows** aus.
 2. Wählen Sie einen Benutzerflow aus, und klicken Sie auf **Eigenschaften**.
 3. Ändern Sie unter **Kennwortkomplexität** die Kennwortkomplexität für diesen Benutzerflow in **Einfach**, **Stark** oder **Benutzerdefiniert**.
 
@@ -50,29 +51,29 @@ In folgenden Typen von Benutzerflows kann die Kennwortkomplexität konfiguriert 
 | STARK (Strong) | Ein Kennwort mit mindestens 8 bis 64 Zeichen. Es sind 3 der 4 Zeichentypen Ziffern, Groß- und Kleinbuchstaben oder Symbole erforderlich. |
 | Benutzerdefiniert | Diese Option bietet die bestmögliche Steuerung der Kennwortkomplexitätsregeln.  Sie ermöglicht das Konfigurieren einer benutzerdefinierten Länge.  Darüber hinaus ermöglicht sie das ausschließliche Akzeptieren von Kennwörtern, die nur aus Ziffern (PINs) bestehen. |
 
-## <a name="options-available-under-custom"></a>Unter „Benutzerdefiniert“ verfügbare Optionen
+## <a name="custom-options"></a>Benutzerdefinierte Optionen
 
 ### <a name="character-set"></a>Zeichensatz
 
 Ermöglicht Ihnen, wahlweise nur Ziffern (PIN) oder den vollständigen Zeichensatz zu akzeptieren.
 
-* **Nur Ziffern** lässt nur Ziffern (0-9) bei der Kennworteingabe zu.
-* **Alle** lässt beliebige Buchstaben, Ziffern oder Symbole zu.
+- **Nur Ziffern** lässt nur Ziffern (0-9) bei der Kennworteingabe zu.
+- **Alle** lässt beliebige Buchstaben, Ziffern oder Symbole zu.
 
 ### <a name="length"></a>Länge
 
 Ermöglicht Ihnen, die Längenanforderungen des Kennworts zu steuern.
 
-* **Mindestlänge** muss mindestens 4 sein.
-* **Maximale Länge** muss größer oder gleich der Mindestlänge und darf höchstens 64 Zeichen lang sein.
+- **Mindestlänge** muss mindestens 4 sein.
+- **Maximale Länge** muss größer oder gleich der Mindestlänge und darf höchstens 64 Zeichen lang sein.
 
 ### <a name="character-classes"></a>Zeichenklassen
 
 Ermöglicht Ihnen, die verschiedenen im Kennwort verwendeten Zeichentypen zu steuern.
 
-* **2 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort mindestens zwei Zeichentypen enthält. Beispielsweise eine Ziffer und einen Kleinbuchstaben.
-* **3 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort mindestens drei Zeichentypen enthält. Beispielsweise eine Ziffer, einen Kleinbuchstaben und einen Großbuchstaben.
-* **4 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort alle vier Zeichentypen enthält.
+- **2 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort mindestens zwei Zeichentypen enthält. Beispielsweise eine Ziffer und einen Kleinbuchstaben.
+- **3 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort mindestens drei Zeichentypen enthält. Beispielsweise eine Ziffer, einen Kleinbuchstaben und einen Großbuchstaben.
+- **4 von 4: Kleinbuchstaben, Großbuchstaben, Ziffern (0–9), Symbole** stellt sicher, dass das Kennwort alle vier Zeichentypen enthält.
 
     > [!NOTE]
     > **4 von 4** zu fordern, kann beim Endbenutzer für Frustration sorgen. Studien haben gezeigt, dass diese Anforderung die Kennwortentropie nicht verbessert. Siehe [NIST Password Guidelines](https://pages.nist.gov/800-63-3/sp800-63b.html#appA) (NIST-Kennwortrichtlinien).

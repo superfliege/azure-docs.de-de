@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: a1d52e0c6f87b9075d73508c97bd270d67d3ecf5
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8e2af866dcea3bd8ece29811b2cc8ccd4318ee54
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54817621"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242804"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -34,6 +34,10 @@ Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben,
 
 Weitere Informationen finden Sie unter [Hinweise zur Migration von Media Services v2 zu v3](migrate-from-v2-to-v3.md#known-issues).
 
+## <a name="february-2019"></a>Februar 2019
+
+Media Services v3 wird jetzt in nationalen Azure-Clouds unterstützt. Noch sind nicht alle Funktionen in allen Clouds verfügbar. Ausführliche Informationen finden Sie unter [Clouds und Regionen, in denen Azure Media Services v3 verfügbar ist](azure-clouds-regions.md).
+
 ## <a name="january-2019"></a>Januar 2019
 
 ### <a name="media-encoder-standard-and-mpi-files"></a>Media Encoder Standard und MPI-Dateien 
@@ -46,7 +50,7 @@ Sie sollten weder die MPI-Datei ändern oder entfernen noch beliebige Abhängigk
 
 Zu den Updates in der GA-Version der V3-API gehören:
        
-* Die **PresentationTimeRange**-Eigenschaften sind nicht mehr für **AssetFilters** und **AccountFilters** erforderlich. 
+* Die **PresentationTimeRange**-Eigenschaften sind nicht mehr für **Medienobjektfilter** und **Kontofilter** erforderlich. 
 * Die Abfrageoptionen „$top“ und „$skip“ für **Aufträge** und **Transformationen** wurden entfernt, und „$orderby“ wurde hinzugefügt. Beim Hinzufügen der neuen Sortierungsfunktionalität wurde festgestellt, dass die Optionen „$top“ und „$skip“ versehentlich zuvor verfügbar gemacht wurden, obwohl sie nicht implementiert sind.
 * Enumerationserweiterbarkeit wurde erneut aktiviert. Dieses Feature wurde in den Vorschauversionen des SDK aktiviert und wurde in der GA-Version versehentlich deaktiviert.
 * Zwei vordefinierte Streamingrichtlinien wurden umbenannt. **SecureStreaming** ist jetzt **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** ist jetzt **Predefined_MultiDrmStreaming**.
@@ -67,7 +71,7 @@ Das CLI 2.0-Modul ist ab sofort für [Azure Media Services v3 (allgemein verfüg
 - [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
 - [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
-- [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest): Hiermit können Sie reservierte Einheiten für Medien verwalten.
+- [az ams account mru:](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) Hiermit können Sie reservierte Einheiten für Medien verwalten. Weitere Informationen finden Sie unter [Skalieren von reservierten Einheiten für Medien](media-reserved-units-cli-how-to.md).
 
 ### <a name="new-features-and-breaking-changes"></a>Neue Features und Breaking Changes
 
@@ -179,11 +183,11 @@ Wenn Sie zwischen dem 28.09. und dem 12.10. mit der Media Services v3 CLI oder d
 Das .NET SDK enthält die folgenden Features:
 
 * **Transformationen** und **Aufträge** zum Codieren oder Analysieren von Medieninhalten. Beispiele finden Sie in den Tutorials zum [Streamen von Dateien](stream-files-tutorial-with-api.md) und [Analysieren](analyze-videos-tutorial-with-api.md).
-* **StreamingLocators** zum Veröffentlichen und Streamen von Inhalten auf Endbenutzergeräten
-* **StreamingPolicies** und **ContentKeyPolicies** zum Konfigurieren der Schlüsselübermittlung und des Inhaltsschutzes (DRM) bei der Inhaltsbereitstellung
-* **LiveEvents** und **LiveOutputs** zum Konfigurieren der Erfassung und Archivierung von Livestreaminginhalten
+* **Streaminglocators** zum Veröffentlichen und Streamen von Inhalten auf Endbenutzergeräten
+* **Streamingrichtlinien** und **Inhaltsschlüssel-Richtlinien** zum Konfigurieren der Schlüsselübermittlung und des Inhaltsschutzes (DRM) bei der Inhaltsbereitstellung
+* **Liveereignisse** und **Liveausgaben** zum Konfigurieren der Erfassung und Archivierung von Livestreaminginhalten
 * **Medienobjekte** zum Speichern und Veröffentlichen von Medieninhalten in Azure Storage 
-* **StreamingEndpoints** zum Konfigurieren und Skalieren der dynamischen Paketerstellung, der Verschlüsselung und des Streamings von Live- und On-Demand-Medieninhalten
+* **Streamingendpunkte** zum Konfigurieren und Skalieren der dynamischen Paketerstellung, der Verschlüsselung und des Streamings von Live- und On-Demand-Medieninhalten
 
 ### <a name="known-issues"></a>Bekannte Probleme
 

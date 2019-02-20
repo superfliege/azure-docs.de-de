@@ -5,15 +5,15 @@ services: networking
 author: jimdial
 ms.service: networking
 ms.topic: include
-ms.date: 08/16/2018
+ms.date: 02/07/2019
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 0394d1cc44dae270682691e2091543e5aab321f6
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: fe1993a914ea4d3bd8ab9116748198cbb0c1c43c
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55513937"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55905223"
 ---
 <a name="virtual-networking-limits-classic"></a>Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über das klassische Bereitstellungsmodell verwaltet werden (pro Abonnement). Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
@@ -76,11 +76,12 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure Resource Manager pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung im Vergleich zu den Grenzwerten Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
 
 | Ressource | Standardlimit |
-| --- | --- | --- |
+| --- | --- |
 | Load Balancer | 1000 | 
 | Regeln pro Ressource, Basic | 250 |
 | Regeln pro Ressource, Standard | 1500 | 
 | Regeln pro IP-Konfiguration | 299 |
+| Regeln pro NIC | 500 |
 | Front-End-IP-Konfiguration, Basic | 200 |
 | Front-End-IP-Konfiguration, Standard | 600 |
 | Back-End-Pool, Basic | 100, eine Verfügbarkeitsgruppe |
@@ -88,7 +89,5 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Back-End-Ressourcen pro Lastenausgleich, Standard * | 150 |
 | Hochverfügbarkeitsports, Standard | 1 pro internem Front-End |
 
-** Bis zu 150 Ressourcen, jede Kombination aus eigenständigen virtuellen Computern, Verfügbarkeitsgruppen und VM-Skalierungsgruppen.
-
-[Wenden Sie sich an den Support](../articles/azure-supportability/resource-manager-core-quotas-request.md ), falls Sie Limits der Standardwerte erhöhen müssen.
+** Bis zu 150 Ressourcen, jede Kombination aus eigenständigen VM-Ressourcen, Verfügbarkeitsgruppenressourcen und VM-Skalierungsgruppenressourcen.
 

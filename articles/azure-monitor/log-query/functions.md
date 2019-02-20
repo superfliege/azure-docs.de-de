@@ -1,6 +1,6 @@
 ---
-title: Funktionen in Azure Log Analytics | Microsoft-Dokumentation
-description: In diesem Artikel wird die Verwendung von Funktionen beschrieben, um in Log Analytics aus einer Abfrage eine andere Abfrage aufzurufen.
+title: Funktionen in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: In diesem Artikel wird die Verwendung von Funktionen beschrieben, um in Azure Monitor aus einer Abfrage eine andere Protokollabfrage aufzurufen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: bwren
-ms.openlocfilehash: 8f2855ed56d298ec4c6abee02dd59ce9471f0d2e
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 6c6bd31961022957ec1a09fef6058ad32476e1c7
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884790"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005096"
 ---
-# <a name="using-functions-in-azure-monitor-log-analytics"></a>Verwenden von Funktionen in Azure Monitor Log Analytics
+# <a name="using-functions-in-azure-monitor-log-queries"></a>Verwenden von Funktionen in Azure Monitor-Protokollabfragen
 
 > [!NOTE]
 > Sie sollten zunächst [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen, bevor Sie mit diesem Tutorial beginnen.
@@ -28,11 +28,11 @@ ms.locfileid: "52884790"
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 
-Um eine Log Analytics-Abfrage mit einer anderen Abfrage zu verwenden, können Sie diese als Funktion speichern. Dadurch können Sie komplexe Abfragen vereinfachen, indem Sie sie in Einzelteile zerlegen und gemeinsamen Code bei mehreren Abfragen wiederverwenden.
+Um eine Protokollabfrage mit einer anderen Abfrage zu verwenden, können Sie diese als Funktion speichern. Dadurch können Sie komplexe Abfragen vereinfachen, indem Sie sie in Einzelteile zerlegen und gemeinsamen Code bei mehreren Abfragen wiederverwenden.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
-Erstellen Sie eine Funktion im Azure-Portal, indem Sie auf **Speichern** klicken und dann die Informationen in der folgenden Tabelle angeben.
+Erstellen Sie eine Funktion in Log Analytics, indem Sie im Azure-Portal auf **Speichern** klicken und dann die Informationen in der folgenden Tabelle angeben.
 
 | Einstellung | BESCHREIBUNG |
 |:---|:---|
@@ -42,10 +42,10 @@ Erstellen Sie eine Funktion im Azure-Portal, indem Sie auf **Speichern** klicken
 | Category (Kategorie)       | Eine Kategorie zum Organisieren gespeicherter Abfragen und Funktionen im **Abfrage-Explorer**. |
 
 > [!NOTE]
-> Eine Funktion in Log Analytics kann keine andere Funktion enthalten.
+> Eine Funktion in Azure Monitor kann keine andere Funktion enthalten.
 
 > [!NOTE]
-> Funktionen können in Log Analytics-Abfragen, aktuell jedoch nicht in Application Insights-Abfragen, gespeichert werden.
+> Funktionen können in Azure Monitor-Protokollabfragen, aktuell jedoch nicht in Application Insights-Abfragen, gespeichert werden.
 
 
 
@@ -69,7 +69,7 @@ security_updates_last_day | where Title contains "SQL"
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Weitere Informationen zum Schreiben von Azure Monitor-Protokollabfragen finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Datums- und Uhrzeitvorgänge](datetime-operations.md)

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c280a1f7e060ab7637e8d0b2484951f72b58a89c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: fe671dec730cd1a593c6413c38625677c3f9d164
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55081193"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894104"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 
@@ -54,7 +54,7 @@ Der Data Factory-Dienst ermöglicht die Erstellung von Datenpipelines zum Versch
 In den Artikeln [Einführung in Azure Data Factory](data-factory-introduction.md) und [Erstellen der ersten Pipeline](data-factory-build-your-first-pipeline.md) finden Sie Informationen für den schnellen Einstieg in den Azure Data Factory-Dienst.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory und Machine Learning zusammen
-Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure Machine Learning Studio-Webdienst aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen. Ausführliche Informationen finden Sie im Abschnitt [Aufrufen eines Webdiensts mit der Batchausführungsaktivität](#invoking-an-azure-ml-web-service-using-the-batch-execution-activity).
+Azure Data Factory ermöglicht die einfache Erstellung von Pipelines, die einen veröffentlichten [Azure Machine Learning][azure-machine-learning]-Webdienst für Predictive Analytics nutzen. Bei Verwendung der **Batchausführungsaktivität** in einer Azure Data Factory-Pipeline können Sie einen Azure Machine Learning Studio-Webdienst aufrufen, um Vorhersagen auf der Grundlage der Daten im Batch zu erstellen. Ausführliche Informationen finden Sie im Abschnitt „Aufrufen eines Azure Machine Learning Studio-Webdiensts mit der Batchausführungsaktivität“.
 
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Azure Machine Learning Studio-Bewertungsexperimenten mit neuen Eingabedatasets neu trainiert werden. Sie können ein Azure Machine Learning Studio-Modell über eine Data Factory-Pipeline neu trainieren, indem Sie die folgenden Schritte ausführen:
 

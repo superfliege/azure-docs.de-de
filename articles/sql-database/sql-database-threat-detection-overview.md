@@ -11,13 +11,13 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 395bf57b967ebeefe0a4168b53a4341c304e3d4f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/08/2019
+ms.openlocfilehash: 5f20fc6ac19e2c9d304f4ab429e485fedaa29f64
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729505"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001884"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Bedrohungserkennung von Azure SQL-Datenbank
 
@@ -77,7 +77,7 @@ Klicken Sie auf **Threat detection alert** (Warnung der Bedrohungserkennung), um
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über die [Bedrohungserkennung für eigenständige Datenbanken und in Pools zusammengefasste Datenbanken](sql-database-threat-detection.md).
+- Erfahren Sie mehr über die [Bedrohungserkennung für Singletons und in Pools zusammengefasste Datenbanken](sql-database-threat-detection.md).
 - Erfahren Sie mehr über die [Bedrohungserkennung für die verwaltete Instanz](sql-database-managed-instance-threat-detection.md).
 - Erfahren Sie mehr über [Advanced Data Security](sql-database-advanced-data-security.md).
 - Weitere Informationen zu [Überwachung von Azure SQL-Datenbank](sql-database-auditing.md)

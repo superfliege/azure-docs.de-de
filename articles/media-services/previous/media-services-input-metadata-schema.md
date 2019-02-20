@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services-Eingabemetadaten-Schema | Microsoft-Dokumentation
+title: Azure Media Services-Eingabemetadaten-Schema | Microsoft Docs
 description: Dieses Thema enthält eine Übersicht über das Azure Media Services-Eingabemetadaten-Schema.
 author: Juliako
 manager: femila
@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2018
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 3eea59eba9fc1fc79a6f72a61860ee7e66a7df5b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 42e3464a190f296675b544e0087b664ff256f2fa
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994286"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003243"
 ---
-# <a name="input-metadata"></a>Eingeben von Metadaten
+# <a name="input-metadata-legacy"></a>Eingeben von Metadaten (veraltet)
 
 Ein Codierauftrag ist einem Eingabeasset (oder mehreren) zugeordnet, für das Sie einige Codieraufgaben durchführen möchten.  Nach Abschluss einer Aufgabe wird ein Ausgabeasset erzeugt.  Das Ausgabeasset enthält Videodaten, Audiodaten, Miniaturansichten, das Manifest usw. Das Ausgabeasset enthält auch eine Datei mit Metadaten zum Eingabeasset. Der Name der XML-Metadatendatei weist das folgende Format auf: &lt;Asset-ID&gt;_metadata.xml (z.B. „41114ad3-eb5e-4c57-8d92-5354e2b7d4a4_metadata.xml“), wobei &lt;Asset-ID&gt; der „AssetId“-Wert des Eingabeassets ist.  
 
@@ -38,7 +38,7 @@ Enthält eine Auflistung der [AssetFile-Elemente](media-services-input-metadata-
 
 Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
-| Name | Beschreibung |
+| NAME | BESCHREIBUNG |
 | --- | --- |
 | **AssetFile**<br /><br /> minOccurs="1" maxOccurs="unbounded" |Ein einzelnes untergeordnetes Element. Weitere Informationen finden Sie unter [AssetFile-Element](media-services-input-metadata-schema.md#AssetFile). |
 
@@ -48,7 +48,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
  Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Name**<br /><br /> Erforderlich |**xs:string** |Name der Assetdatei |
 | **Größe**<br /><br /> Erforderlich |**xs:long** |Größe der Assetdatei in Byte |
@@ -65,7 +65,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 > 
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Programs**<br /><br /> minOccurs="0" | |Sammlung mit allen [Programs-Elementen](media-services-input-metadata-schema.md#Programs), wenn die Assetdatei das Format MPEG-TS hat. |
 | **VideoTracks**<br /><br /> minOccurs="0" | |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dieses Element enthält eine Sammlung mit allen [VideoTracks](media-services-input-metadata-schema.md#VideoTracks), die Teil der Medienobjektdatei sind. |
@@ -76,7 +76,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Id**<br /><br /> Erforderlich |**xs:int** |Nullbasierter Index dieser Audio- oder Videospur.<br /><br /> Dies bedeutet nicht unbedingt, dass die TrackID in einer MP4-Datei verwendet wird. |
 | **Codec** |**xs:string** |Codeczeichenfolge der Videospur |
@@ -92,7 +92,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 > 
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Disposition**<br /><br /> minOccurs="0" maxOccurs="1" |[StreamDispositionType](media-services-input-metadata-schema.md#StreamDispositionType) |Enthält Informationen zur Darstellung (z.B. die Eignung einer bestimmten Audiospur für Zuschauer mit Sehbehinderung). |
 | **Metadaten**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Generische Schlüssel-Wert-Zeichenfolgen, die für verschiedene Informationen verwendet werden können. Beispiele: key="language" und value="eng". |
@@ -105,7 +105,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
  Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **SampleFormat** |**xs:string** |Beispielformat |
 | **ChannelLayout** |**xs: string** |Kanallayout |
@@ -122,7 +122,7 @@ Der Typ stellt eine bestimmte Videospur in der Assetdatei dar.
 Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **FourCC**<br /><br /> Erforderlich |**xs:string** |Videocodec-FourCC-Code |
 | **Profil** |**xs: string** |Profil der Videospur |
@@ -146,7 +146,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **key**<br /><br /> Erforderlich |**xs:string** |Schlüssel des Schlüssel-Wert-Paars |
 | **value**<br /><br /> Erforderlich |**xs:string** |Wert des Schlüssel-Wert-Paars |
@@ -155,7 +155,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 **ProgramType** ist ein globaler komplexer Typ, der ein Programm beschreibt.  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **ProgramId**<br /><br /> Erforderlich |**xs:int** |Programm-ID |
 | **NumberOfPrograms**<br /><br /> Erforderlich |**xs:int** |Anzahl von Programmen |
@@ -170,7 +170,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="attributes"></a>Attribute
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Standard**<br /><br /> Erforderlich |**xs: int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass dies die Standarddarstellung ist. |
 | **Dub**<br /><br /> Erforderlich |**xs:int** |Legen Sie dieses Attribut auf 1 fest, um anzugeben, dass dies die Dubbing-Darstellung ist. |
@@ -188,7 +188,7 @@ Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-servic
 Wrapperelement, das mehrere **Program**-Elemente enthält.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Program**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[ProgramType](media-services-input-metadata-schema.md#ProgramType) |Enthält für Assetdateien im MPEG-TS-Format Informationen zu den Programmen in der Assetdatei. |
 
@@ -198,7 +198,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
  Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **VideoTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[VideoTrackType (erbt von TrackType)](media-services-input-metadata-schema.md#VideoTrackType) |Enthält Informationen zu den Videospuren in der Assetdatei. |
 
@@ -208,7 +208,7 @@ Wrapperelement, das mehrere **Program**-Elemente enthält.
  Ein XML-Beispiel finden Sie am Ende dieses Artikels: [XML-Beispiel](media-services-input-metadata-schema.md#xml).  
 
 ### <a name="elements"></a>Elemente
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **AudioTrack**<br /><br /> minOccurs="0" maxOccurs="unbounded" |[AudioTrackType (erbt von TrackType)](media-services-input-metadata-schema.md#AudioTrackType) |Enthält Informationen zu den Audiospuren in der Assetdatei. |
 

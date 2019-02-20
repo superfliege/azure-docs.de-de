@@ -1,24 +1,24 @@
 ---
 title: Verwenden von „redis-cli.exe“ mit Azure Cache for Redis | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie „redis-cli.exe“ mit Azure Cache for Redis verwenden.
-services: azure-cache-for-redis
+services: cache
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: yegu-ms
+manager: jhubbard
 editor: ''
 ms.service: cache
 ms.workload: tbd
-ms.tgt_pltfrm: azure-cache-for-redis
+ms.tgt_pltfrm: cache
 ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
-ms.author: wesmc
-ms.openlocfilehash: 68c533235480ec49e3c561d99095d5722f6f69a4
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.author: yegu
+ms.openlocfilehash: 318d02f5da816ae8fe2fe199b9c87b3748d5d1fc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106323"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237568"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>Verwenden des Redis-Befehlszeilentools mit Azure Cache for Redis
 
@@ -30,10 +30,12 @@ Wenn Sie das Befehlszeilentool auf einer anderen Plattform ausführen möchten, 
 
 ## <a name="gather-cache-access-information"></a>Sammeln von Cachezugriffsinformationen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sie können die benötigten Informationen zum Zugriff auf den Cache mithilfe von drei Methoden sammeln:
 
 1. Über Azure CLI mit [az redis list-keys](https://docs.microsoft.com/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys)
-2. Über Azure PowerShell mit [Get-AzureRmRedisCacheKey](https://docs.microsoft.com/powershell/module/azurerm.rediscache/Get-AzureRmRedisCacheKey?view=azurermps-4.4.1)
+2. Azure PowerShell mithilfe von [Get-AzRedisCacheKey](https://docs.microsoft.com/powershell/module/az.rediscache/Get-AzRedisCacheKey)
 3. Über das Azure-Portal.
 
 In diesem Abschnitt rufen Sie die Schlüssel aus dem Azure-Portal ab.

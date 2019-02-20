@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: jeedes
-ms.openlocfilehash: 371ff15121e3da0bec5be6159fea9c6764b0aeda
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 86f2dfaf281130115ff04ff84b413e224f54cfcf
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43703373"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56168339"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jda-cloud"></a>Tutorial: Azure Active Directory-Integration mit JDA Cloud
 
@@ -170,7 +171,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
 
 ### <a name="create-a-jda-cloud-test-user"></a>Erstellen eines JDA Cloud-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in JDA Cloud einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der JDA Cloud-Plattform ggf. vom [JDA Cloud-Supportteam](https://support.jda.com/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in JDA Cloud einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der JDA Cloud-Plattform ggf. vom  [JDA Cloud-Supportteam](https://support.jda.com/) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

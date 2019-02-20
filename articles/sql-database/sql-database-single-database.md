@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: a2500988b174e49870f4da7087b3fa4c81f3c77a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: e8af73c955305c54efc478290608e627acb431ea
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754981"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099325"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Einzeldatenbank in Azure SQL-Datenbank?
 
-Die Bereitstellungsoption für Einzeldatenbanken erstellt eine eigenständige Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
+Die Bereitstellungsoption für Singletons erstellt eine Datenbank in Azure SQL-Datenbank mit einem eigenen Satz von Ressourcen und wird über einen SQL-Datenbank-Server verwaltet. Bei einer Einzeldatenbank ist jede Datenbank isoliert und somit portabel, außerdem besitzt jede Datenbank eine eigene Dienstebene im [DTU-basierten Kaufmodell](sql-database-service-tiers-dtu.md) oder [V-Kern-basierten Kaufmodell](sql-database-service-tiers-vcore.md) mit einer garantierten Computegröße.
 
 > [!IMPORTANT]
 > Einzeldatenbank ist eine der drei Bereitstellungsoptionen für Azure SQL-Datenbank. Die anderen zwei sind [Pools für elastische Datenbanken](sql-database-elastic-pool.md) und [verwaltete Instanz](sql-database-managed-instance.md).
@@ -58,5 +58,5 @@ SQL-Datenbank bietet eine Reihe von [integrierten Sicherheits- und Konformitäts
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Um schnell mit einer Einzeldatenbank zu beginnen, verwenden Sie die [Schnellstartanleitung für Einzeldatenbanken](sql-database-single-database-quickstart-guide.md).
-- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-single-database-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

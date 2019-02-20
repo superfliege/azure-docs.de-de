@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 8d2cac7635b9d97561b3cebf517c95855407cbe3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/08/2019
+ms.openlocfilehash: 27a8e160fc33729c5b5266dffeb346f0296276fd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462782"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005283"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Wiederherstellen einer Azure SQL-Datenbank mit automatisierten Datenbanksicherungen
 
@@ -71,7 +71,7 @@ Es gibt keine integrierte Funktion für Massenwiederherstellungen. Das Skript [A
 
 ## <a name="point-in-time-restore"></a>Point-in-Time-Wiederherstellung
 
-Sie können eine eigenständige Datenbank, in einem Pool zusammengefasste Datenbank oder Instanzdatenbank mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/databases) zu einem früheren Zeitpunkt als eine neue Datenbank auf demselben Server wiederherstellen. Eine Datenbank kann auf jeder Dienstebene oder Computegröße wiederhergestellt werden. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Sobald der Vorgang abgeschlossen ist, ist die wiederhergestellte Datenbank eine normale, vollständig erreichbare Onlinedatenbank. Die wiederhergestellte Datenbank wird mit normalen Tarifen basierend auf dem Diensttarif und der Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
+Sie können einen Singleton, eine in einem Pool zusammengefasste Datenbank oder eine Instanzdatenbank mit dem Azure-Portal, [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase) oder der [REST-API](https://docs.microsoft.com/rest/api/sql/databases) zu einem früheren Zeitpunkt als eine neue Datenbank auf dem gleichen Server wiederherstellen. Eine Datenbank kann auf jeder Dienstebene oder Computegröße wiederhergestellt werden. Stellen Sie sicher, dass Sie auf dem Server, auf dem Sie die Datenbank wiederherstellen, über ausreichend Ressourcen verfügen. Sobald der Vorgang abgeschlossen ist, ist die wiederhergestellte Datenbank eine normale, vollständig erreichbare Onlinedatenbank. Die wiederhergestellte Datenbank wird mit normalen Tarifen basierend auf dem Diensttarif und der Computegröße in Rechnung gestellt. Kosten entstehen erst, wenn die Datenbankwiederherstellung abgeschlossen ist.
 
 Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem früheren Zeitpunkt wiederhergestellt. Sie können die wiederhergestellte Datenbank entweder als Ersatz für die ursprüngliche Datenbank verwenden oder Daten daraus abrufen und die ursprüngliche Datenbank damit aktualisieren.
 
@@ -83,7 +83,7 @@ Im Allgemeinen wird beim Wiederherstellen der Datenbank der Zustand zu einem fr�
 
   Wenn Sie Daten aus der wiederhergestellten Datenbank abrufen möchten, um einen Benutzer- oder Anwendungsfehler zu korrigieren, müssen Sie die erforderlichen Datenwiederherstellungsskripts schreiben und ausführen, um die Daten aus der wiederhergestellten Datenbank zu extrahieren und sie in der ursprünglichen Datenbank wiederherzustellen. Der Wiederherstellungsvorgang kann zwar eine ganze Weile dauern, die wiederherstellende Datenbank wird jedoch während des Wiederherstellungsvorgangs in der Datenbankliste angezeigt. Wenn Sie diese Datenbank während der Wiederherstellung löschen, wird der Wiederherstellungsvorgang abgebrochen, und es fallen keine Kosten für die Datenbank an, für die die Wiederherstellung nicht abgeschlossen wurde.
 
-Um eine eigenständige Datenbank, in einem Pool zusammengefasste Datenbank oder Instanzdatenbank zu einem bestimmten Zeitpunkt über das Azure-Portal wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
+Um einen Singleton, eine in einem Pool zusammengefasste Datenbank oder eine Instanzdatenbank zu einem bestimmten Zeitpunkt über das Azure-Portal wiederherzustellen, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf der Symbolleiste auf **Wiederherstellen**.
 
 ![Point-in-Time-Wiederherstellung](./media/sql-database-recovery-using-backups/point-in-time-recovery.png)
 
@@ -139,7 +139,7 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über das Az
 
 ### <a name="powershell"></a>PowerShell
 
-- Wie Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste Datenbank wiederherstellen, erfahren Sie unter [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
+- Wie Sie eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken wiederherstellen, erfahren Sie unter [Restore-AzureRmSqlDatabase](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
   | Cmdlet | BESCHREIBUNG |
   | --- | --- |
@@ -155,7 +155,7 @@ Wie bereits erwähnt, kann die Datenbankwiederherstellung nicht nur über das Az
 
 ### <a name="rest-api"></a>REST-API
 
-So stellen Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste Datenbank mithilfe der REST-API wieder her:
+So stellen Sie eine einzelne Datenbank oder in einem Pool zusammengefasste Datenbanken mithilfe der REST-API wieder her
 
 | API | BESCHREIBUNG |
 | --- | --- |
@@ -164,7 +164,7 @@ So stellen Sie eine eigenständige Datenbank oder in einem Pool zusammengefasste
 
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
-Wie Sie eine eigenständige oder in einem Pool zusammengefasste Datenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
+Wie Sie eine einzelne oder in einem Pool zusammengefasste Datenbank mithilfe der Azure CLI wiederherstellen, erfahren Sie unter [az sql db restore](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-restore).
 
 ## <a name="summary"></a>Zusammenfassung
 

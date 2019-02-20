@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 84f2b4d68bf95d18a63401f796e2ffca682c808f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bc52c4eaf77b9441683eea8e5f899c6ef34d62e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567273"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002356"
 ---
 # <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
@@ -66,7 +66,7 @@ Im webbasierten Video Indexer-Portal können Sie über das Dialogfeld zum Hochla
 
 ### <a name="how-long-does-it-take-video-indexer-to-extract-insights-from-media"></a>Wie lange dauert das Extrahieren von Informationen aus Mediendateien mit Video Indexer?
 
-Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview). Für die meisten Inhaltstypen gilt bei einer angenommenen Aktivierung von zehn reservierten Einheiten vom Typ S3, dass das Indizieren eines Videos zwischen einem Drittel und der Hälfte seiner Länge beträgt (beispielsweise 3,5 bis 5 Minuten bei einem zehnminütigen Quellvideo). Ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte wird jedoch empfohlen, um die durchschnittliche Dauer einschätzen zu können.
+Die Zeit, die Video Indexer für das Indizieren einer Video- oder Audiodatei benötigt – entweder mithilfe der Video Indexer-API oder über die webbasierte Video Indexer-Oberfläche – hängt von mehreren Parametern ab. Dazu zählen die Länge und Qualität der Datei, die Anzahl der in der Datei identifizierten Informationen, die Anzahl der [reservierten Einheiten](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) und die Aktivierung oder Deaktivierung des [Streamingendpunkts](https://docs.microsoft.com/azure/media-services/previous/media-services-streaming-endpoints-overview). Es wird ein Testlauf mit mehreren Dateien Ihrer eigenen Inhalte empfohlen, um die durchschnittliche Dauer einschätzen zu können.
 
 ### <a name="can-i-create-customized-workflows-to-automate-processes-with-video-indexer"></a>Kann ich mit Video Indexer angepasste Workflows zur Automatisierung von Prozessen erstellen?
 

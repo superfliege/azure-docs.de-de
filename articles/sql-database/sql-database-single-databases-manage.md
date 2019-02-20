@@ -3,7 +3,7 @@ title: Erstellen und Verwalten von Servern und Einzeldatenbanken in Azure SQL-Da
 description: Erfahren Sie etwas über das Erstellen und Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken.
 services: sql-database
 ms.service: sql-database
-ms.subservice: standalone-database
+ms.subservice: single-database
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 7d1f11abbe88bff5a7e16984aacd4953ad4f9e12
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: 0a43414ef446beb3f5d6c8e357390363a95ac31c
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751190"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099342"
 ---
 # <a name="create-and-manage-sql-database-servers-and-single-databases-in-azure-sql-database"></a>Erstellen und Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken in Azure SQL-Datenbank
 
@@ -57,7 +57,7 @@ Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Dat
 
 ## <a name="powershell-manage-sql-database-servers-and-single-databases"></a>PowerShell: Verwalten von SQL-Datenbank-Servern und -Einzeldatenbanken
 
-Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Datenbank-Servern, eigenständigen und in Pools organisierten Datenbanken und Firewalls für SQL-Datenbank-Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
+Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Datenbank-Servern, Singletons und in Pools zusammengefassten Datenbanken und Firewalls für SQL-Datenbank-Server mithilfe von Azure PowerShell die folgenden PowerShell-Cmdlets. Wenn Sie PowerShell installieren oder aktualisieren müssen, helfen Ihnen die Informationen unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) weiter.
 
 > [!TIP]
 > PowerShell-Beispielskripts finden Sie unter [Verwenden von PowerShell zum Erstellen einer Azure SQL-Einzeldatenbank und Konfigurieren einer Firewallregel für SQL-Datenbank-Server](scripts/sql-database-create-and-configure-database-powershell.md) und [Überwachen und Skalieren einer SQL-Einzeldatenbank mithilfe von PowerShell](scripts/sql-database-monitor-and-scale-database-powershell.md).
@@ -160,5 +160,5 @@ Verwenden Sie zum Erstellen und Verwalten von Azure SQL-Servern, -Datenbanken un
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-cloud-migrate.md).
+- Weitere Informationen zum Migrieren einer SQL Server-Datenbank zu Azure finden Sie unter [Migrieren zu Azure SQL-Datenbank](sql-database-single-database-migrate.md).
 - Informationen zu unterstützten Funktionen finden Sie unter [Features (Funktionen)](sql-database-features.md).

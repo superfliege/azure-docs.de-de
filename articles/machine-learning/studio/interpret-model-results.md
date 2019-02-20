@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 11/29/2017
-ms.openlocfilehash: fe22a465c21e9522b70ba307e2ec9772674000f2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 67843efd87e0d1cdd1a392fdd24d29decae093e8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488542"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997004"
 ---
 # <a name="interpret-model-results-in-azure-machine-learning-studio"></a>Interpretieren von Modellergebnissen in Azure Machine Learning Studio
 In diesem Thema werden die Visualisierung und das Interpretieren der Vorhersageergebnisse in Azure Machine Learning Studio erläutert. Nachdem Sie ein Modell trainiert und darauf basierend Vorhersagen erstellt (das Modell ausgewertet) haben, müssen Sie das Vorhersageergebnis verstehen und interpretieren.
@@ -74,7 +74,7 @@ Es gibt in der Ergebnistabelle sechs Spalten. Die vier linken Spalten sind die v
 
 **Webdienstveröffentlichung**
 
-Sobald Sie die Vorhersageergebnisse verstanden und als solide eingestuft haben, kann das Experiment als Webdienst veröffentlicht werden, damit es in verschiedenen Anwendungen bereitgestellt und aufgerufen werden kann, um Klassenvorhersagen zu allen neuen Schwertlilien abzurufen. Informationen dazu, wie Sie ein Trainingsexperiment in ein Bewertungsexperiment ändern und als Webdienst veröffentlichen können, finden Sie unter [Veröffentlichen des Azure Machine Learning-Webdiensts](walkthrough-5-publish-web-service.md). Dieses Verfahren liefert Ihnen ein Bewertungsexperiment wie in Abbildung 3 dargestellt.
+Sobald Sie die Vorhersageergebnisse verstanden und als solide eingestuft haben, kann das Experiment als Webdienst veröffentlicht werden, damit es in verschiedenen Anwendungen bereitgestellt und aufgerufen werden kann, um Klassenvorhersagen zu allen neuen Schwertlilien abzurufen. Informationen dazu, wie Sie ein Trainingsexperiment in ein Bewertungsexperiment ändern und als Webdienst veröffentlichen können, finden Sie unter [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md). Dieses Verfahren liefert Ihnen ein Bewertungsexperiment wie in Abbildung 3 dargestellt.
 
 ![Screenshot des Bewertungsexperiments](./media/interpret-model-results/3.png)
 

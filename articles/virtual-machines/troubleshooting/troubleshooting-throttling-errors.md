@@ -13,12 +13,12 @@ ms.topic: troubleshooting
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: vashan, rajraj, changov
-ms.openlocfilehash: 15a4ff73476ce54f0617a88e040ac64d7288e9a8
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
+ms.openlocfilehash: 401bd3badc555ee001fbc355c7bdb77786c2d053
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741112"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977812"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>Behandeln von API-Drosselungsfehlern 
 
@@ -79,8 +79,8 @@ Wie oben gezeigt, enthält jeder Drosselungsfehler die `Retry-After`-Kopfzeile, 
 
 ## <a name="api-call-rate-and-throttling-error-analyzer"></a>Analysetool für API-Aufrufrate und Drosselungsfehler
 Für die API des Computeressourcenanbieters steht die Vorschauversion eines Features zur Problembehandlung zur Verfügung. Diese PowerShell-Cmdlets liefern Statistiken über die API-Anforderungsrate pro Zeitintervall pro Vorgang und die Drosselungsverletzungen pro Vorgangsgruppe (Richtlinie):
--   [Export-AzureRmLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticrequestratebyinterval)
--   [Export-AzureRmLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/azurerm.compute/export-azurermloganalyticthrottledrequests)
+-   [Export-AzLogAnalyticRequestRateByInterval](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticrequestratebyinterval)
+-   [Export-AzLogAnalyticThrottledRequests](https://docs.microsoft.com/powershell/module/az.compute/export-azloganalyticthrottledrequests)
 
 Die Statistiken über die API-Aufrufe ermöglichen umfassende Einblicke in das Verhalten der Clients eines Abonnements sowie die einfache Identifizierung von Aufrufmustern, die zu einer Drosselung führen.
 

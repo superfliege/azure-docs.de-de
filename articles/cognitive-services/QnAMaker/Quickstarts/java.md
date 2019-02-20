@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen und Codebeispiele zu Java-REST, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 9e9f9b718928614bcd018677a2ddd094fe68f2c4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 0e91aefb800eba42b715cb70d42ce09ad134fabb
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218205"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243795"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-java"></a>Verwenden der QnA Maker-REST-API mit Java 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
-- [Abrufen der aktuellen Wortvarianten](#GetAlterations)
-- [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
+- [Abrufen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#GetAlterations)
+- [Ersetzen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-java-repo-note.md)]
 

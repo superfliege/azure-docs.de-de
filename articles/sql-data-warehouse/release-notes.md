@@ -2,28 +2,27 @@
 title: Azure SQL Data Warehouse – Versionshinweise | Microsoft-Dokumentation
 description: Versionshinweise zu Azure SQL Data Warehouse
 services: sql-data-warehouse
-author: twounder
-manager: craigg
+author: mlee3gsd
+ms.author: anumjs
+ms.reviewer: jrasnick
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 11/11/2018
-ms.author: twounder
-ms.reviewer: twounder
-ms.openlocfilehash: 7a131429d8f70255e47efaac0c4b5fa99a6df7d6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/09/2019
+ms.openlocfilehash: 2ac60287c9d92ab6230e1dd6777504036e54492d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460810"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244673"
 ---
-# <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse – Versionshinweise
+# <a name="azure-sql-data-warehouse-release-notes-and-documentation-updates"></a>Updates an den Versionshinweisen und der Dokumentation zu Azure SQL Data Warehouse
 
 Azure SQL Data Warehouse (SQL DW) ist ein cloudbasiertes Enterprise Data Warehouse mit MPP (Massively Parallel Processing) zur schnellen Ausführung komplexer Abfragen für mehrere Petabytes an Daten. Verwenden Sie SQL Data Warehouse als Schlüsselkomponente einer Big Data-Lösung. Importieren Sie große Datenmengen mit einfachen PolyBase-T-SQL-Abfragen in SQL Data Warehouse, und nutzen Sie dann die Vorteile von MPP für aufwendige Analysen. Im Zuge von Integrationen und Analysen wird das Data Warehouse zur Single Version of Truth, auf die sich Ihr Unternehmen bei der Gewinnung von Erkenntnissen verlassen kann.
 
 Klicken Sie unten auf die Links, um weitere Informationen zu den neuen Features und Verbesserungen zu erhalten, die Sie in der aktuellen Version von Azure SQL Data Warehouse erwarten können. Sie können davon ausgehen, dass Sie diese Dienstupdates während Ihres identifizierten Wartungszeitplans erhalten.
 
-- [SQL DW-Version 10.0.10106.0](./release-notes-10-0-10106-0.md)
+- [SQL Data Warehouse-Version 10.0.10106.0 (Januar)](./release-notes-10-0-10106-0.md)
 - [Dezember 2018](./release-notes-december-2018.md)
 - [Oktober 2018](./release-notes-october-2018.md)
 - [September 2018](./release-notes-september-2018.md)

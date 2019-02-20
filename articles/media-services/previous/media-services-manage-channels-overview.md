@@ -4,7 +4,7 @@ description: Dieses Thema bietet eine Übersicht über das Livestreaming mit Azu
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: fb63502e-914d-4c1f-853c-4a7831bb08e8
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 3814041359884fc2862b0e90a58aabd1ad26c4cb
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 318ec5a4f9aceaf02048768cbf630eff08feff6b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382143"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998007"
 ---
-# <a name="overview-of-live-streaming-using-azure-media-services"></a>Übersicht über Livestreaming mit Azure Media Services
+# <a name="overview-of-live-streaming-using-media-services"></a>Übersicht über Livestreaming mit Media Services
 
 > [!NOTE]
 > Ab dem 12. Mai 2018 unterstützen Livekanäle nicht mehr das Erfassungsprotokoll zum RTP/MPEG-2-Transportdatenstrom. Migrieren Sie von Erfassungsprotokollen für RTP/MPEG-2 zu Erfassungsprotokollen für RTMP oder fragmentiertem MP4 (Smooth Streaming).
@@ -69,16 +69,16 @@ Die folgende Tabelle enthält eine Anleitung für den Vergleich der beiden von M
 
 | Feature | Pass-Through-Kanal | Standardkanal |
 | --- | --- | --- |
-| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |JA |
+| Die Single-Bitrate-Eingabe wird in mehreren Bitraten in der Cloud codiert. |Nein  |Ja |
 | Maximale Auflösung, Anzahl der Ebenen |1080p, 8 Ebenen, 60 fps oder mehr |720p, 6 Ebenen, 30 fps |
 | Eingabeprotokolle |RTMP, Smooth Streaming |RTMP, Smooth Streaming |
 | Preis |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) , und klicken Sie auf die Registerkarte „Live-Video“. |Informieren Sie sich auf der [Preisseite](https://azure.microsoft.com/pricing/details/media-services/) |
 | Maximale Laufzeit |Rund um die Uhr |8 Stunden |
-| Unterstützung für das Einfügen von Slates |Nein  |JA |
-| Unterstützung für Werbeeinblendungen |Nein  |JA |
-| Pass-Through-CEA-608/708-Untertitel |JA |JA |
-| Unterstützung für nicht einheitliche Eingabe-GOPs |JA |Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen |
-| Unterstützung für Eingaben mit variable Bildwiederholrate |JA |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
+| Unterstützung für das Einfügen von Slates |Nein  |Ja |
+| Unterstützung für Werbeeinblendungen |Nein  |Ja |
+| Pass-Through-CEA-608/708-Untertitel |Ja |Ja |
+| Unterstützung für nicht einheitliche Eingabe-GOPs |Ja |Nein, Eingabe muss aus festen 2-Sekunden-GOPs bestehen |
+| Unterstützung für Eingaben mit variable Bildwiederholrate |Ja |Nein, Eingabe muss eine feste Bildfrequenz aufweisen.<br/>Kleinere Abweichungen, beispielsweise bei Szenen mit viel Bewegung, werden toleriert. Der Encoder kann aber nicht bis auf 10 Frames pro Sekunde zurückfallen. |
 | Automatische Abschaltung der Kanäle, wenn der Eingabefeed verloren geht |Nein  |Nach 12 Stunden, wenn kein Programm ausgeführt wird |
 
 ## <a name="working-with-channels-that-receive-multi-bitrate-live-stream-from-on-premises-encoders-pass-through"></a>Arbeiten mit Kanälen, die Livedatenströme mit mehreren Bitraten von lokalen Encodern empfangen (Pass-Through)

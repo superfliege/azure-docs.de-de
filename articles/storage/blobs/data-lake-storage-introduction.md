@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 018171d4b2253c2cf7942f9f10424a9c695438b9
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 713905ac0c6dcd53f468fe7e9af7c565ee38ac66
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809435"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106527"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Einführung in Azure Data Lake Storage Gen2
 
@@ -76,10 +76,10 @@ Mehrere Open-Source-Plattformen unterstützen Data Lake Storage Gen2. Diese Plat
 | Plattform |  Unterstützte Version(en) | Weitere Informationen |
 | --- | --- | --- |
 | [HDInsight](https://azure.microsoft.com/services/hdinsight/) | 3.6 und höher | [Welche Apache Hadoop-Komponenten und -Versionen sind in HDInsight verfügbar?](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning?toc=%2Fen-us%2Fazure%2Fhdinsight%2Fstorm%2FTOC.json&bc=%2Fen-us%2Fazure%2Fbread%2Ftoc.json)
-| [Hadoop](https://hadoop.apache.org/) | 2.7 und höher | [Apache Hadoop-Releasearchiv](https://hadoop.apache.org/release.html) |
+| [Hadoop](https://hadoop.apache.org/) | 3.2 und höher | [Apache Hadoop-Releasearchiv](https://hadoop.apache.org/release.html) |
 | [Cloudera](https://www.cloudera.com/) | 6.1 und höher | [Cloudera Enterprise 6.x, Anmerkungen zu dieser Version](https://www.cloudera.com/documentation/enterprise/6/release-notes/topics/rg_cdh_6_release_notes.html) |
-| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 4.2 und höher | [Databricks Runtime-Versionen](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
-|[Hortonworks](https://hortonworks.com/)| 2.6 und höher | [Hortonworks-Dokumentation](https://docs.hortonworks.com/) |
+| [Azure Databricks](https://azure.microsoft.com/services/databricks/) | 5.1 und höher | [Databricks Runtime-Versionen](https://docs.databricks.com/release-notes/runtime/databricks-runtime-ver.html) |
+|[Hortonworks](https://hortonworks.com/)| 3.1.x und höher | [Configuring Cloud Data Access](https://docs.hortonworks.com/HDPDocuments/Cloudbreak/Cloudbreak-2.9.0/cloud-data-access/content/cb_configuring-access-to-adls2.html) (Konfigurieren des Zugriffs auf Clouddaten) |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -87,5 +87,4 @@ In den folgenden Artikeln werden einige der wichtigsten Konzepte von Data Lake S
 
 -   [Hierarchischer Namespace](data-lake-storage-namespace.md)
 -   [Erstellen eines Speicherkontos](data-lake-storage-quickstart-create-account.md)
--   [Erstellen eines HDInsight-Clusters mit Data Lake Storage Gen2](data-lake-storage-quickstart-create-connect-hdi-cluster.md)
 -   [Verwenden eines Data Lake Storage Gen2-Kontos in Azure Databricks](data-lake-storage-quickstart-create-databricks-account.md)

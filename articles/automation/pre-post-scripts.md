@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/18/2018
+ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c34c6c6e0a3f618cbd9337993aa6d176962fe6b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54428238"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236004"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Verwalten von Pre- und Post-Skripts (Vorschauversion)
 
@@ -26,7 +26,7 @@ Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, muss es in Ih
 
 ## <a name="using-a-prepost-script"></a>Verwenden eines Pre-/Post-Skripts
 
-Um ein Pre- und/oder Post-Skript bei einer Updatebereitstellung zu verwenden, erstellen Sie zunächst einfach eine Updatebereitstellung. Wählen Sie **Vor und nach dem Vorgang auszuführende Skripts (Vorschau)** aus. Daraufhin wird die Seite **Vor und nach dem Vorgang auszuführende Skripts auswählen** angezeigt.  
+Um ein Pre- und/oder Post-Skript bei einer Updatebereitstellung zu verwenden, erstellen Sie zunächst eine Updatebereitstellung. Wählen Sie **Vor und nach dem Vorgang auszuführende Skripts (Vorschau)** aus. Daraufhin wird die Seite **Vor und nach dem Vorgang auszuführende Skripts auswählen** angezeigt.  
 
 ![Auswählen der Skripts](./media/pre-post-scripts/select-scripts.png)
 
@@ -52,7 +52,9 @@ Wenn Sie in die Updatebereitstellungsausführung klicken, werden weitere Details
 
 ## <a name="passing-parameters"></a>Übergeben von Parametern
 
-Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines Runbooks Parameter übergeben. Parameter werden beim Erstellen der Updatebereitstellung definiert. Neben den Standardrunbookparametern ist ein zusätzlicher Parameter verfügbar: **SoftwareUpdateConfigurationRunContext**. Dieser Parameter ist eine JSON-Zeichenfolge, und wenn Sie ihn in Ihrem Pre- oder Post-Skript definieren, wird er automatisch von der Updatebereitstellung übergeben. Der Parameter enthält Informationen zur Updatebereitstellung, bei denen es sich um eine Teilmenge der von der [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) zurückgegebenen Informationen handelt. In der folgenden Tabelle sind die Eigenschaften aufgeführt, die in der Variablen bereitgestellt werden:
+Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines Runbooks Parameter übergeben. Parameter werden beim Erstellen der Updatebereitstellung definiert. Pre- und Post-Skripts erfordern Parameter vom Typ `String`. Wenn Sie einen anderen Objekttyp benötigen, können Sie mithilfe von `[System.Convert]` eine Typumwandlung vornehmen oder diese mit eigener Logik durchführen.
+
+Neben den Standardrunbookparametern ist ein zusätzlicher Parameter verfügbar. **SoftwareUpdateConfigurationRunContext**. Dieser Parameter ist eine JSON-Zeichenfolge, und wenn Sie ihn in Ihrem Pre- oder Post-Skript definieren, wird er automatisch von der Updatebereitstellung übergeben. Der Parameter enthält Informationen zur Updatebereitstellung, bei denen es sich um eine Teilmenge der von der [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) zurückgegebenen Informationen handelt. In der folgenden Tabelle sind die Eigenschaften aufgeführt, die in der Variablen bereitgestellt werden:
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext-Eigenschaften
 
@@ -70,7 +72,7 @@ Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines R
 |azureVirtualMachines     | Eine Liste der Ressourcen-IDs (resourceIds) für die Azure-VMs in der Updatebereitstellung        |
 |nonAzureComputerNames|Eine Liste der FQDNs der Nicht-Azure-Computer in der Updatebereitstellung|
 
-Im Folgenden sehen Sie ein Beispiel für die JSON-Zeichenfolge, die an den **SoftwareUpdateConfigurationRunContext**-Parameter übergeben wird:
+Das folgende Beispiel ist eine JSON-Zeichenfolge, die an den **SoftwareUpdateConfigurationRunContext**-Parameter übergeben wird:
 
 ```json
 "SoftwareUpdateConfigurationRunContext":{
@@ -174,7 +176,7 @@ $variable = Get-AutomationVariable -Name $runId
 
 ## <a name="interacting-with-non-azure-machines"></a>Interaktion mit Nicht-Azure-Computern
 
-Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugriff auf Nicht-Azure-Computer. Für die Interaktion mit den Nicht-Azure-Computern benötigen Sie Folgendes:
+Pre- und Post-Aufgaben werden im Azure-Kontext ausgeführt und haben keinen Zugriff auf Nicht-Azure-Computer. Für die Interaktion mit den Nicht-Azure-Computern benötigen Sie die folgenden Elemente:
 
 * Ein ausführendes Konto
 * Einen auf dem Computer installierten Hybrid Runbook Worker

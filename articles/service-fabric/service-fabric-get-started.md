@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f4ae164a9862a32b45fd5bd0ae7bc09a1180c344
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 373bcecfb1780aa567b1250e53096b9eed0d0f21
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733483"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55858738"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Windows
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Aktuelle Versionen:
 * Service Fabric-Tools für Visual Studio 2015 2.4.11116.1
 * Visual Studio 2017 15.9 enthält Service Fabric-Tools für Visual Studio 2.4.11024.1 
 
-Eine Liste mit unterstützten Versionen finden Sie unter [Service Fabric-Unterstützung](service-fabric-support.md).
+Eine Liste mit unterstützten Versionen finden Sie unter [Unterstützte Service Fabric-Versionen](service-fabric-versions.md).
 
 > [!NOTE]
 > Cluster mit einem Computer (OneBox) werden für Anwendungs- oder Clusterupgrades nicht unterstützt. Löschen Sie den OneBox-Cluster, und erstellen Sie ihn neu, wenn Sie ein Clusterupgrade ausführen müssen oder wenn Probleme beim Ausführen eines Anwendungsupgrades auftreten. 

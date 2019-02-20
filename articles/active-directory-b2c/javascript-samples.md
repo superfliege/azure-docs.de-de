@@ -10,22 +10,22 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: fc4d09b59e568a693b7f7951e9e716d04a5a2a49
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d664c33c4535d25ec93fd1f36c990f2764a4e071
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729267"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56000812"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>JavaScript-Beispiele für die Verwendung in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Sie können Ihren Azure Active Directory (Azure AD) B2C-Anwendungen Ihren eigenen clientseitigen JavaScript-Code hinzufügen. In diesem Artikel wird beschrieben, wie Sie Ihre [benutzerdefinierte Richtlinie](active-directory-b2c-overview-custom.md) ändern können, um die Skriptausführung zu aktivieren.
+Sie können Ihren Azure Active Directory (Azure AD) B2C-Anwendungen Ihren eigenen clientseitigen JavaScript-Code hinzufügen. In diesem Artikel wird beschrieben, wie Sie Ihren [Benutzerflow](user-flow-javascript-overview.md) oder Ihre [benutzerdefinierte Richtlinie](active-directory-b2c-overview-custom.md) ändern können, um die Skriptausführung zu aktivieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Wählen Sie einen [Seitenvertrag](page-contract.md) für die Benutzeroberflächenelemente Ihrer Anwendung aus. Wenn Sie JavaScript verwenden möchten, müssen Sie eine Vertragsversion der Seite für alle Ihre Inhaltsdefinitionen in Ihrer benutzerdefinierten Richtlinie definieren.
+Wählen Sie einen [Seitenvertrag](page-contract.md) für die Benutzeroberflächenelemente Ihrer Anwendung aus. Wenn Sie JavaScript verwenden möchten, müssen Sie eine Seitenvertragsversion für alle Ihre Inhaltsdefinitionen in Ihrem Benutzerflow oder Ihrer benutzerdefinierten Richtlinie definieren.
 
 ## <a name="add-the-scriptexecution-element"></a>Hinzufügen des ScriptExecution-Elements
 

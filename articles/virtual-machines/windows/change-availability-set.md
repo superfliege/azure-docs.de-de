@@ -13,17 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 02/12/2019
 ms.author: cynthn
-ms.openlocfilehash: 769f5052242acfbbdf29348c4a50daea750f3bba
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 1935286d94b0d72a59fc5d478705e23a7f7425e9
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54882293"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236605"
 ---
 # <a name="change-the-availability-set-for-a-windows-vm"></a>Ändern der Verfügbarkeitsgruppe für einen virtuellen Windows-Computer
 Die folgenden Schritte beschreiben, wie Sie die Verfügbarkeitsgruppe eines virtuellen Computers über Azure PowerShell ändern. Ein virtueller Computer kann nur zum Zeitpunkt der Erstellung zu einer Verfügbarkeitsgruppe hinzugefügt werden. Um die Verfügbarkeitsgruppe zu ändern, müssen Sie den virtuellen Computer löschen und neu erstellen. 
+
+Dieser Artikel wurde zuletzt am 12.02.2019 unter Verwendung von [Azure Cloud Shell](https://shell.azure.com/powershell) und Version 1.2.0 des [Az-PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps) geprüft.
+
+[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 ## <a name="change-the-availability-set"></a>Ändern der Verfügbarkeitsgruppe 
 
@@ -36,17 +40,17 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
     $newAvailSetName = "myAvailabilitySet"
 
 # Get the details of the VM to be moved to the Availability Set
-    $originalVM = Get-AzureRmVM `
+    $originalVM = Get-AzVM `
        -ResourceGroupName $resourceGroup `
        -Name $vmName
 
 # Create new availability set if it does not exist
-    $availSet = Get-AzureRmAvailabilitySet `
+    $availSet = Get-AzAvailabilitySet `
        -ResourceGroupName $resourceGroup `
        -Name $newAvailSetName `
        -ErrorAction Ignore
     if (-Not $availSet) {
-    $availSet = New-AzureRmAvailabilitySet `
+    $availSet = New-AzAvailabilitySet `
        -Location $originalVM.Location `
        -Name $newAvailSetName `
        -ResourceGroupName $resourceGroup `
@@ -56,15 +60,15 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
     }
     
 # Remove the original VM
-    Remove-AzureRmVM -ResourceGroupName $resourceGroup -Name $vmName    
+    Remove-AzVM -ResourceGroupName $resourceGroup -Name $vmName    
 
 # Create the basic configuration for the replacement VM
-    $newVM = New-AzureRmVMConfig `
+    $newVM = New-AzVMConfig `
        -VMName $originalVM.Name `
        -VMSize $originalVM.HardwareProfile.VmSize `
        -AvailabilitySetId $availSet.Id
   
-    Set-AzureRmVMOSDisk `
+    Set-AzVMOSDisk `
        -VM $newVM -CreateOption Attach `
        -ManagedDiskId $originalVM.StorageProfile.OsDisk.ManagedDisk.Id `
        -Name $originalVM.StorageProfile.OsDisk.Name `
@@ -72,7 +76,7 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
 
 # Add Data Disks
     foreach ($disk in $originalVM.StorageProfile.DataDisks) { 
-    Add-AzureRmVMDataDisk -VM $newVM `
+    Add-AzVMDataDisk -VM $newVM `
        -Name $disk.Name `
        -ManagedDiskId $disk.ManagedDisk.Id `
        -Caching $disk.Caching `
@@ -81,15 +85,24 @@ Das folgende Skript zeigt ein Beispiel für das Erfassen der erforderlichen Info
        -CreateOption Attach
     }
     
-# Add NIC(s)
-    foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {
-        Add-AzureRmVMNetworkInterface `
-           -VM $newVM `
-           -Id $nic.Id
+# Add NIC(s) and keep the same NIC as primary
+    foreach ($nic in $originalVM.NetworkProfile.NetworkInterfaces) {    
+    if ($nic.Primary -eq "True")
+        {
+            Add-AzVMNetworkInterface `
+            -VM $newVM `
+            -Id $nic.Id -Primary
+            }
+        else
+            {
+              Add-AzVMNetworkInterface `
+              -VM $newVM `
+              -Id $nic.Id 
+                }
     }
 
 # Recreate the VM
-    New-AzureRmVM `
+    New-AzVM `
        -ResourceGroupName $resourceGroup `
        -Location $originalVM.Location `
        -VM $newVM `

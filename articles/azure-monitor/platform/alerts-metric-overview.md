@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 9689854d9a28debbfbcf908391806fffac6a2006
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54450174"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005519"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
-Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können Plattformmetriken, [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md), [gängige Protokolle von Log Analytics, die in Metriken umgewandelt wurden](../../azure-monitor/platform/alerts-metric-logs.md), und Standardmetriken von Application Insights sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
+Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können Plattformmetriken, [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](../../azure-monitor/platform/alerts-metric-logs.md), und Standardmetriken von Application Insights sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
 
 ## <a name="how-do-metric-alerts-work"></a>Wie funktionieren Metrikwarnungen?
 
@@ -147,34 +147,34 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 
 |Ressourcentyp – von klassischen Metrikwarnungen unterstützt | Unterstützt von Metrikwarnungen |
 |-------------------------------------------------|----------------------------|
-| Microsoft.ApiManagement/service | JA |
-| Microsoft.Batch/batchAccounts| JA|
-|Microsoft.Cache/redis| JA
+| Microsoft.ApiManagement/service | Ja |
+| Microsoft.Batch/batchAccounts| Ja|
+|Microsoft.Cache/redis| Ja
 |Microsoft.ClassicCompute/virtualMachines | Nein  |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nein |
 |Microsoft.CognitiveServices/accounts | Nein  |
-|Microsoft.Compute/virtualMachines | JA|
-|Microsoft.Compute/virtualMachineScaleSets| JA|
+|Microsoft.Compute/virtualMachines | Ja|
+|Microsoft.Compute/virtualMachineScaleSets| Ja|
 |Microsoft.ClassicStorage/storageAccounts| Nein  |
-|Microsoft.DataFactory/datafactories | JA|
-|Microsoft.DBforMySQL/servers| JA|
-|Microsoft.DBforPostgreSQL/servers| JA|
+|Microsoft.DataFactory/datafactories | Ja|
+|Microsoft.DBforMySQL/servers| Ja|
+|Microsoft.DBforPostgreSQL/servers| Ja|
 |Microsoft.Devices/IotHubs | Nein |
 |Microsoft.DocumentDB/databaseAccounts| Nein |
-|Microsoft.EventHub/namespaces | JA|
-|Microsoft.Logic/workflows | JA|
-|Microsoft.Network/loadBalancers |JA|
-|Microsoft.Network/publicIPAddresses| JA|
-|Microsoft.Network/applicationGateways| JA|
-|Microsoft.Network/expressRouteCircuits| JA|
-|Microsoft.Network/trafficManagerProfiles | JA|
+|Microsoft.EventHub/namespaces | Ja|
+|Microsoft.Logic/workflows | Ja|
+|Microsoft.Network/loadBalancers |Ja|
+|Microsoft.Network/publicIPAddresses| Ja|
+|Microsoft.Network/applicationGateways| Ja|
+|Microsoft.Network/expressRouteCircuits| Ja|
+|Microsoft.Network/trafficManagerProfiles | Ja|
 |Microsoft.Search/searchServices | Nein |
 |Microsoft.ServiceBus/namespaces| Nein |
-|Microsoft.Storage/storageAccounts | JA|
-|Microsoft.StreamAnalytics/streamingjobs| JA|
-|Microsoft.TimeSeriesInsights/environments | JA|
-|Microsoft. Web/serverfarms | JA |
-|Microsoft. Web/sites (ohne Funktionen) | JA|
+|Microsoft.Storage/storageAccounts | Ja|
+|Microsoft.StreamAnalytics/streamingjobs| Ja|
+|Microsoft.TimeSeriesInsights/environments | Ja|
+|Microsoft. Web/serverfarms | Ja |
+|Microsoft. Web/sites (ohne Funktionen) | Ja|
 |Microsoft. Web/hostingEnvironments/multiRolePools | Nein |
 |Microsoft. Web/hostingEnvironments/workerPools| Nein 
 |Microsoft.SQL/Servers | Nein |

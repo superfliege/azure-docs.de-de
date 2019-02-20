@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: shants
-ms.openlocfilehash: 727ae9bbea4cabc5d27c32baff2123a7c03b531c
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: d82e0aa1f803001cf3bab5ec133a59f1fe19e4aa
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546860"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981416"
 ---
 # <a name="planned-maintenance-notifications-for-virtual-machine-scale-sets"></a>Benachrichtigungen zu geplanten Wartungen für VM-Skalierungsgruppen
+
 
 Azure führt regelmäßig Updates aus, um die Zuverlässigkeit, Leistung und Sicherheit der Hostinfrastruktur für virtuelle Computer (VMs) zu verbessern. Zu Updates zählen z.B. Änderungen wie das Patchen der Hostingumgebung oder das Upgraden und die Außerbetriebnahme von Hardware. Die meisten Updates wirken sich nicht auf die gehosteten virtuellen Computer aus. Updates wirken sich jedoch in den folgenden Szenarien auf virtuelle Computer aus:
 
@@ -38,10 +39,8 @@ Geplante Wartungen, die einen Neustart erfordern, werden in Wellen geplant. Jede
 
 Mit den beiden Zeitfenstern möchten wir Ihnen einerseits genügend Zeit geben, um die Wartung zu initiieren und Ihren virtuellen Computer neu zu starten, und Sie andererseits darüber informieren, wann Azure die Wartung automatisch startet.
 
-
 Sie können das Azure-Portal, PowerShell, die REST-API oder die Azure CLI verwenden, um Wartungszeitfenster für Ihre Skalierungsgruppen-VMs abzufragen und eine Self-Service-Wartung zu starten.
 
-  
 ## <a name="should-you-start-maintenance-during-the-self-service-window"></a>Sollten Sie die Wartung während des Self-Service-Fensters starten?  
 
 Die folgenden Richtlinien können Sie bei der Entscheidung unterstützen, ob Sie die Wartung zu einem Zeitpunkt starten, den Sie auswählen.
@@ -89,7 +88,7 @@ Die Spalte **Self-Service-Wartung** wird nun in der Liste der VM-Skalierungsgrup
 
 | Wert | BESCHREIBUNG |
 |-------|-------------|
-| JA | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
+| Ja | Mindestens ein virtueller Computer in Ihrer VM-Skalierungsgruppe befindet sich in einem Self-Service-Wartungsfenster. Sie können die Wartung jederzeit in diesem Self-Service-Zeitfenster starten. | 
 | Nein  | Es gibt keine virtuellen Computer in einem Self-Service-Fenster in der betroffenen VM-Skalierungsgruppe. | 
 | - | Ihre VM-Skalierungsgruppen sind nicht Teil einer geplanten Wartungsaktion.| 
 
@@ -118,12 +117,12 @@ Nach dem Starten der Wartung werden die betroffenen virtuellen Computer in Ihrer
  
 ## <a name="check-maintenance-status-by-using-powershell"></a>Überprüfen des Wartungsstatus mithilfe von PowerShell
 
-Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzureRmVmss](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
+Sie können mithilfe von Azure PowerShell einsehen, wann die Wartung von virtuellen Computern in Ihrer VM-Skalierungsgruppe geplant ist. Informationen zur geplanten Wartung können mit dem Cmdlet [Get-AzVmss](https://docs.microsoft.com/powershell/module/az.compute/get-azvmss) unter Verwendung des Parameters `-InstanceView` ermittelt werden.
  
 Wartungsinformationen werden nur zurückgegeben, wenn eine Wartung geplant ist. Ist keine Wartung geplant, die Auswirkungen auf die VM-Instanz besitzt, gibt das Cmdlet keine Wartungsinformationen zurück. 
 
 ```powershell
-Get-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
+Get-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -InstanceView
 ```
 
 Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben: 
@@ -140,10 +139,10 @@ Unter **MaintenanceRedeployStatus** werden folgende Eigenschaften zurückgegeben
 
 ### <a name="start-maintenance-on-your-vm-instance-by-using-powershell"></a>Starten der Wartung für Ihre VM-Instanz mithilfe von PowerShell
 
-Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** auf **TRUE** festgelegt wurde. Verwenden Sie das Cmdlet [Set-AzureRmVmss](/powershell/module/azurerm.compute/set-azurermvmss) mit dem Parameter `-PerformMaintenance`.
+Sie können die Wartung eines virtuellen Computers starten, wenn **IsCustomerInitiatedMaintenanceAllowed** auf **TRUE** festgelegt wurde. Verwenden Sie das Cmdlet [Set-AzVmss](/powershell/module/az.compute/set-azvmss) mit dem Parameter `-PerformMaintenance`.
 
 ```powershell
-Set-AzureRmVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
+Set-AzVmss -ResourceGroupName rgName -VMScaleSetName vmssName -InstanceId id -PerformMaintenance 
 ```
 
 ## <a name="check-maintenance-status-by-using-the-cli"></a>Überprüfen des Wartungsstatus mithilfe der CLI

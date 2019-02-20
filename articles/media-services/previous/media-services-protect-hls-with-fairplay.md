@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: 32f3f4fd3f4f299c9b084ab8604b56ea70e639a4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 49b763cba505a3423b47e5a2601db53b8e47a5fe
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368226"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993968"
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Schützen von HLS-Inhalten mit Apple FairPlay oder Microsoft PlayReady
 Mit Azure Media Services können Sie Ihre HLS-Inhalte (HTTP Live Streaming) unter Verwendung der folgenden Formate dynamisch verschlüsseln:  
@@ -54,7 +54,7 @@ Folgendes ist erforderlich, wenn Sie Media Services verwenden, um mit FairPlay v
 
 Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt werden:
 
-  * **App Cert (AC)**: PFX-Datei mit dem privaten Schlüssel. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
+  * **App Cert (AC)**: Dies ist eine PFX-Datei, die den privaten Schlüssel enthält. Sie erstellen diese Datei und verschlüsseln sie mit einem Kennwort.
 
        Wenn Sie eine Richtlinie für die Schlüsselbereitstellung konfigurieren, müssen Sie dieses Kennwort und die PFX-Datei im Base64-Format bereitstellen.
 
@@ -69,15 +69,15 @@ Folgendes muss seitens der Media Services-Schlüsselbereitstellung festgelegt we
     3. Führen Sie den folgenden Befehl an der Befehlszeile aus: Dadurch wird die PEM-Datei in eine PFX-Datei mit dem privaten Schlüssel konvertiert. Das Kennwort für die PFX-Datei wird dann von OpenSSL angefordert.
 
         „C:\OpenSSL-Win32\bin\openssl.exe“ pkcs12 -export -out FairPlay-out.pfx -inkey privatekey.pem -in FairPlay-out.pem -passin file:privatekey-pem-pass.txt
-  * **App Cert-Kennwort**: Das Kennwort des Kunden zum Erstellen der PFX-Datei.
-  * **Cert-App-Kennwort-ID**: Sie müssen das Kennwort auf die gleiche Weise wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
-  * **iv**: Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
-  * **ASK**: Dieser Schlüssel wird erstellt, wenn Sie das Zertifikat über das Apple Developer-Portal generieren. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
-  * **ASK-ID**: Diese ID wird abgerufen, wenn Sie ASK in Media Services hochladen. Sie müssen ASK mit dem **ContentKeyType.FairPlayAsk**-Enumerationswert hochladen. Dadurch wird die Media Services-ID zurückgegeben, die Sie beim Festlegen der Richtlinienoption für die Schlüsselbereitstellung verwenden sollten.
+  * **App Cert-Kennwort**: Das Kennwort zum Erstellen der PFX-Datei.
+  * **App Cert-Kennwort-ID:** Sie müssen das Kennwort ähnlich wie andere Media Services-Schlüssel hochladen. Verwenden Sie den Enumerationswert **ContentKeyType.FairPlayPfxPassword**, um die Media Services-ID abzurufen. Diese werden in der Richtlinienoption für die Schlüsselbereitstellung benötigt.
+  * **iv:** Dies ist ein zufälliger Wert von 16 Bytes. Er muss dem iv-Wert in der Richtlinie zur Übermittlung von Medienobjekten entsprechen. Sie generieren den iv-Wert und geben ihn in der Richtlinie zur Übermittlung von Medienobjekten sowie in der Richtlinienoption für die Schlüsselbereitstellung an.
+  * **ASK**: Dieser Schlüssel wird bei der Generierung der Zertifizierung über das Apple Developer-Portal empfangen. Jedes Entwicklungsteam erhält einen eindeutigen ASK. Speichern Sie eine Kopie des ASK an einem sicheren Ort. Sie müssen den ASK später als FairPlayAsk für Media Services konfigurieren.
+  * **ASK-ID:** Diese ID wird abgerufen, wenn Sie ASK in Media Services hochladen. Sie müssen ASK mit dem **ContentKeyType.FairPlayAsk**-Enumerationswert hochladen. Dadurch wird die Media Services-ID zurückgegeben, die Sie beim Festlegen der Richtlinienoption für die Schlüsselbereitstellung verwenden sollten.
 
 Folgendes muss seitens des FPS-Clients festgelegt werden:
 
-  * **App Cert (AC)**: CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlast verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
+  * **App Cert (AC)**: CER-/DER-Datei mit dem öffentlichen Schlüssel, den das Betriebssystem zur Verschlüsselung bestimmter Nutzlasten verwendet. Media Services muss den Schlüssel kennen, da er vom Player benötigt wird. Der Schlüsselbereitstellungsdienst entschlüsselt den Schlüssel mithilfe des entsprechenden privaten Schlüssels.
 
 Um einen über FairPlay verschlüsselten Stream wiederzugeben, rufen Sie zuerst den echten ASK ab, und generieren Sie dann ein echtes Zertifikat. Dieser Prozess erstellt alle drei Teile:
 
@@ -138,9 +138,9 @@ Es gelten die folgenden Bedingungen:
 * Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Medienobjekt nur eine einzelne Verschlüsselung angewendet wurde.
 * Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
 * Folgende Verschlüsselungstypen können angegeben werden:  
-  * **cenc**: Allgemeine Verschlüsselung (PlayReady oder Widevine)
-  * **cbcs-aapl**: Fairplay
-  * **cbc**: AES-Umschlagverschlüsselung
+  * **cenc:**  Allgemeine Verschlüsselung (PlayReady oder Widevine)
+  * **cbcs-aapl:** FairPlay
+  * **cbc:** AES-Umschlagverschlüsselung
 
 ## <a name="create-and-configure-a-visual-studio-project"></a>Erstellen und Konfigurieren eines Visual Studio-Projekts
 

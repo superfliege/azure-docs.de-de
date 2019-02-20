@@ -1,6 +1,6 @@
 ---
-title: Azure SQL-Datenbank-Dienstebenen – DTU | Microsoft-Dokumentation
-description: Hier erfahren Sie mehr über die Diensttarife für Einzeldatenbanken und für in einem Pool zusammengefasste Datenbanken, um verschiedene Computegrößen und Speichergrößen bereitzustellen.
+title: Azure SQL-Datenbank-Diensttarife – DTU-basiertes Kaufmodell | Microsoft-Dokumentation
+description: Erfahren Sie etwas über die Diensttarife für Singletons und für in einem Pool zusammengefasste Datenbanken im DTU-basierten Kaufmodell, um verschiedene Compute- und Speichergrößen bereitzustellen.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -11,22 +11,22 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 6319deb36088317cb289134b7068720e97cb10b7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.date: 02/08/2019
+ms.openlocfilehash: b960e0f670b66ea1759da441e7b1cf53151de7f6
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507653"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993599"
 ---
-# <a name="dtu-based-service-tiers"></a>DTU-basierte Diensttarife
+# <a name="service-tiers-in-the-dtu-based-purchase-model"></a>Diensttarife beim DTU-basierten Kaufmodell
 
-DTU-basierte Diensttarife unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
+Diensttarife beim DTU-basierten Kaufmodell unterscheiden sich durch eine Reihe von Computegrößen mit einer festen Menge an integriertem Speicher, einem festen Aufbewahrungszeitraum für Sicherungen und einem festen Preis. Alle Diensttarife im DTU-basierten Kaufmodell ermöglichen das flexible Wechseln von Computegrößen ohne Ausfallzeiten. Einzeldatenbanken und Pools für elastische Datenbanken werden nach Diensttarif und Computegröße auf Stundenbasis abgerechnet.
 
 > [!IMPORTANT]
-> Für die verwaltete SQL-Datenbank-Instanz, die sich derzeit in der öffentlichen Vorschauphase befindet, wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
+> Für die verwaltete SQL-Datenbank-Instanz wird das DTU-basierte Kaufmodell nicht unterstützt. Weitere Informationen finden Sie unter [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md).
 > [!NOTE]
-> Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-service-tiers.md).
+> Weitere Informationen zu den V-Kern-basierten Diensttarifen finden Sie unter [Auswählen eines V-Kern-Diensttarifs und von Compute-, Arbeitsspeicher-, Speicher- und E/A-Ressourcen](sql-database-service-tiers-vcore.md). Weitere Informationen zu den Unterschieden zwischen DTU-basierten Diensttarifen und V-Kern-basierten Diensttarifen finden Sie unter [Kaufmodelle für Azure SQL-Datenbank und Ressourcen](sql-database-purchase-models.md).
 
 ## <a name="compare-the-dtu-based-service-tiers"></a>Vergleich der DTU-basierten Diensttarife
 
@@ -34,8 +34,8 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 ||Basic|Standard|Premium|
 | :-- | --: |--:| --:| --:|
-|Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion||
-|Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|Während der Vorschau nicht zutreffend|
+|Zielworkload|Entwicklung und Produktion|Entwicklung und Produktion|Entwicklung und Produktion|
+|Betriebszeit-SLA|99,99 %|99,99 %|99,99 %|
 |Sicherungsaufbewahrung|7 Tage|35 Tage|35 Tage|
 |CPU|Niedrig|Niedrig, Mittel, Hoch|Mittel, Hoch|
 |E/A-Durchsatz (ungefähr) |2,5 IOPS pro DTU| 2,5 IOPS pro DTU | 48 IOPS pro DTU|
@@ -49,12 +49,12 @@ Die Auswahl einer Dienstebene hängt in erster Linie von den Anforderungen an Ge
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Begrenzungen für Einzeldatenbank-DTUs und Speicher
 
-Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](sql-database-service-tiers.md#dtu-based-purchasing-model).
+Computegrößen werden für Einzeldatenbanken als Datenbanktransaktionseinheiten (DTUs) und für Pools für elastische Datenbanken als elastische Datenbanktransaktionseinheiten (eDTUs) bezeichnet. Weitere Informationen zu DTUs und eDTUs finden Sie unter [DTU-basiertes Kaufmodell](sql-database-purchase-models.md#dtu-based-purchasing-model).
 
 ||Basic|Standard|Premium|
 | :-- | --: | --: | --: | --: |
 | Maximale Speichergröße | 2 GB | 1 TB | 4 TB  |
-| Maximale DTU-Anzahl | 5 | 3000 | 4000 | |
+| Maximale DTU-Anzahl | 5 | 3000 | 4000 | 
 ||||||
 
 > [!IMPORTANT]
@@ -88,7 +88,7 @@ Der Vergleichstest und seine Methoden werden nachstehend ausführlich beschriebe
 
 ### <a name="benchmark-summary"></a>Übersicht über den Vergleichstest
 
-ASDB misst die Leistung einer Kombination grundlegender Datenbankvorgänge, die bei OLTP-Workloads (Online Transaction Processing, Onlinetransaktionsverarbeitung) am häufigsten vorkommen. Obwohl der Vergleichstest speziell für das Cloud Computing konzipiert ist, wurden das Datenbankschema, der Datenbestand und Transaktionen so gestaltet, dass sie für die grundlegenden Elemente der am häufigsten vorkommenden OLTP-Workloads repräsentativ sind.
+Die Benchmark misst die Leistung einer Kombination grundlegender Datenbankvorgänge, die bei OLTP-Workloads (Online Transaction Processing, Onlinetransaktionsverarbeitung) am häufigsten vorkommen. Obwohl der Vergleichstest speziell für das Cloud Computing konzipiert ist, wurden das Datenbankschema, der Datenbestand und Transaktionen so gestaltet, dass sie für die grundlegenden Elemente der am häufigsten vorkommenden OLTP-Workloads repräsentativ sind.
 
 ### <a name="schema"></a>Schema
 

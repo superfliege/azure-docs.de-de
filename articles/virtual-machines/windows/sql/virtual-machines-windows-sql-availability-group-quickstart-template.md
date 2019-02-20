@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9db6736813b6d99efad687581f19d23023e1593a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 093fa1414ec624f66bc7cb4559fa8c0535834c10
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814536"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981926"
 ---
 # <a name="create-wsfc-listener-and-configure-ilb-for-an-always-on-availability-group-on-a-sql-server-vm-with-azure-quickstart-template"></a>Erstellen von WSFC und Listener sowie Konfigurieren des internen Lastenausgleichs für eine Always On-Verfügbarkeitsgruppe auf einer SQL Server-VM mit Azure-Schnellstartvorlage
 In diesem Artikel erfahren Sie, wie Sie die Bereitstellung einer Always On-Verfügbarkeitsgruppenkonfiguration für virtuelle SQL Server-Computer in Azure mithilfe von Azure-Schnellstartvorlagen teilweise automatisieren. Im Rahmen dieses Prozesses werden zwei Azure-Schnellstartvorlagen verwendet: 
@@ -153,8 +153,8 @@ Der folgende Codeausschnitt löscht den SQL-Verfügbarkeitsgruppenlistener sowoh
 
 ```PowerShell
 # Remove the AG listener
-# example: Remove-AzureRmResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
-Remove-AzureRmResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
+# example: Remove-AzResource -ResourceId '/subscriptions/a1a11a11-1a1a-aa11-aa11-1aa1a11aa11a/resourceGroups/SQLAG-RG/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/Cluster/availabilitygrouplisteners/aglistener' -Force
+Remove-AzResource -ResourceId '/subscriptions/<SubscriptionID>/resourceGroups/<resource-group-name>/providers/Microsoft.SqlVirtualMachine/SqlVirtualMachineGroups/<cluster-name>/availabilitygrouplisteners/<listener-name>' -Force
 ```
  
 ## <a name="common-errors"></a>Häufige Fehler
@@ -166,7 +166,7 @@ Die ausgewählte Verfügbarkeitsgruppe, die in der Schnellstartvorlage für den 
 ### <a name="connection-only-works-from-primary-replica"></a>Connection only works from primary replica (Die Verbindung funktioniert nur vom primären Replikat aus.)
 Dieses Verhalten ist wahrscheinlich auf eine nicht erfolgreiche Bereitstellung der Vorlage **101-sql-vm-aglistener-setup** zurückzuführen, was eine inkonsistente Konfiguration des internen Lastenausgleichs zur Folge hat. Vergewissern Sie sich, dass die Verfügbarkeitsgruppe im Back-End-Pool aufgeführt ist und dass Regeln für den Integritätstest und für den Lastenausgleich vorhanden sind. Sollte etwas fehlen, ist die Konfiguration des internen Lastenausgleichs inkonsistent. 
 
-Entfernen Sie zur Behebung dieses Problems den Listener mithilfe von [PowerShell](#remove-availability-group-listener), löschen Sie den internen Lastenausgleich über das Azure-Portal, und beginnen Sie erneut bei [Schritt 3](#step-3---manually-create-the-internal-load-balanced-ilb). 
+Entfernen Sie zur Behebung dieses Problems den Listener mithilfe von [PowerShell](#remove-availability-group-listener), löschen Sie den internen Lastenausgleich über das Azure-Portal, und beginnen Sie erneut bei Schritt 3. 
 
 ### <a name="badrequest---only-sql-virtual-machine-list-can-be-updated"></a>BadRequest - Only SQL virtual machine list can be updated (Fehlerhafte Anforderung: Nur die SQL-VM-Liste kann aktualisiert werden.)
 Dieser Fehler kann beim Bereitstellen der Vorlage **101-sql-vm-aglistener-setup** auftreten, wenn der Listener zwar über SQL Server Management Studio (SSMS), aber nicht aus dem SQL-VM-Ressourcenanbieter gelöscht wurde. Beim Löschen des Listeners über SSMS werden die Metadaten des Listeners nicht aus dem SQL-VM-Ressourcenanbieter entfernt. Der Listener muss mithilfe von [PowerShell](#remove-availability-group-listener) aus dem Ressourcenanbieter gelöscht werden. 

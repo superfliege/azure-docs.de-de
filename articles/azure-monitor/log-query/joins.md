@@ -1,6 +1,6 @@
 ---
-title: Joins in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Dieser Artikel enthält eine Lektion zur Verwendung von Joins in der Log Analytics-Abfragesprache.
+title: Joins in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Dieser Artikel enthält eine Lektion zur Verwendung von Joins in Azure Monitor-Protokollabfragen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: c1f578c11fff963ee4bec47bd3737cd224b14720
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 91ff85d8c32c0bcfa984cc690382d09765a068a2
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884862"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004640"
 ---
-# <a name="joins-in-log-analytics-queries"></a>Joins in Log Analytics-Abfragen
+# <a name="joins-in-azure-monitor-log-queries"></a>Joins in Azure Monitor-Protokollabfragen
 
 > [!NOTE]
-> Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit dem Analytics-Portal](get-started-portal.md) und [Erste Schritte mit Abfragen](get-started-queries.md) lesen.
+> Sie sollten zunächst [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md) und [Erste Schritte mit Azure Monitor-Protokollabfragen](get-started-queries.md) lesen, bevor Sie mit dieser Lektion beginnen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
@@ -105,7 +105,7 @@ Berücksichtigen Sie folgende Punkte, um eine optimale Leistung zu erzielen:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Weitere Informationen zur Verwendung von Azure Monitor-Protokollabfragen finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Aggregationsfunktionen](aggregations.md)

@@ -1,6 +1,6 @@
 ---
 title: Transaktionsreplikation mit Azure SQL-Datenbank | Microsoft-Dokumentation
-description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit eigenständigen, in einem Pool zusammengefassten und Instanzdatenbanken in Azure SQL-Datenbank.
+description: Erfahren Sie mehr über die Verwendung der SQL Server-Transaktionsreplikation mit Singletons, in einem Pool zusammengefassten Datenbanken und Instanzdatenbanken in Azure SQL-Datenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,15 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: 1c542c1e906b078b76b78ed30af8bdf67110199c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.date: 02/08/2019
+ms.openlocfilehash: d0f9ea15b692d9aba2fde217805ea5e0ecfb4dfd
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814111"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993808"
 ---
-# <a name="transactional-replication-with-standalone-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit eigenständigen, in einem Pool zusammengefassten und Instanzdatenbanken in Azure SQL-Datenbank
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>Transaktionsreplikation mit Singletons, in einem Pool zusammengefassten Datenbanken und Instanzdatenbanken in Azure SQL-Datenbank
 
 Die Transaktionsreplikation ist ein Feature von Azure SQL-Datenbank und SQL Server, die Ihnen die Replikation von Daten aus einer Tabelle in Azure SQL-Datenbank oder einem SQL-Server zu den in Remotedatenbanken platzierten Tabellen ermöglicht. Mit diesem Feature können Sie mehrere Tabellen in unterschiedlichen Datenbanken synchronisieren.
 
@@ -37,22 +37,21 @@ Die wichtigsten Komponenten der Transaktionsreplikation sind in der folgenden Ab
 
 ![Replikation zu SQL-Datenbank](media/replication-to-sql-database/replication-to-sql-database.png)
 
-
 Der **Herausgeber** ist eine Instanz oder ein Server, die bzw. der Änderungen an Tabellen (Artikeln) veröffentlicht, indem die Aktualisierungen an den Verteiler gesendet werden. Das Veröffentlichen in einer Azure SQL-Datenbank von einem lokalen SQL Server wird durch die folgenden Versionen von SQL Server unterstützt:
 
-   - SQL Server 2019 (Vorschauversion)
-   - SQL Server 2016 bis SQL 2017
-   - SQL Server 2014 SP1 CU3 oder höher (12.00.4427)
-   - SQL Server 2014 RTM CU10 (12.00.2556)
-   - SQL Server 2012 SP3 oder höher (11.0.6020)
-   - SQL Server 2012 SP2 CU8 (11.0.5634.0)
-   - Für andere Versionen von SQL Server, die keine Veröffentlichung in Objekten in Azure unterstützen, kann die Methode der [erneuten Veröffentlichung von Daten](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) verwendet werden, um Daten in neuere Versionen von SQL Server verschieben. 
+- SQL Server 2019 (Vorschauversion)
+- SQL Server 2016 bis SQL 2017
+- SQL Server 2014 SP1 CU3 oder höher (12.00.4427)
+- SQL Server 2014 RTM CU10 (12.00.2556)
+- SQL Server 2012 SP3 oder höher (11.0.6020)
+- SQL Server 2012 SP2 CU8 (11.0.5634.0)
+- Für andere Versionen von SQL Server, die keine Veröffentlichung in Objekten in Azure unterstützen, kann die Methode der [erneuten Veröffentlichung von Daten](https://docs.microsoft.com/sql/relational-databases/replication/republish-data) verwendet werden, um Daten in neuere Versionen von SQL Server verschieben. 
 
 Der **Verteiler** ist eine Instanz oder ein Server, die bzw. der Änderungen an den Artikeln von einem Herausgeber erfasst und an die Abonnenten verteilt. Der Verteiler kann entweder eine verwaltete Azure SQL-Datenbank-Instanz oder eine SQL Server-Instanz (beliebige Version, sofern nicht älter als die Herausgeber-Version) sein. 
 
-Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Herausgeber vorgenommenen Änderungen erhält. Abonnenten können eigenständige, in einem Pool zusammengefasste und Instanzdatenbanken in Azure SQL-Datenbank oder SQL-Serverdatenbanken sein. Ein Abonnent einer eigenständigen oder in einem Pool zusammengefassten Datenbank muss als Push-Abonnent konfiguriert sein. 
+Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Herausgeber vorgenommenen Änderungen erhält. Abonnenten können Singletons, in einem Pool zusammengefasste Datenbanken und Instanzdatenbanken in Azure SQL-Datenbank- oder SQL-Server-Datenbanken sein. Ein Abonnent eines Singletons oder einer in einem Pool zusammengefassten Datenbank muss als Push-Abonnent konfiguriert sein. 
 
-| Rolle | Eigenständige und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken |
+| Rolle | Singletons und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken |
 | :----| :------------- | :--------------- |
 | **Herausgeber** | Nein  | Ja | 
 | **Verteiler** | Nein  | Ja|
@@ -63,7 +62,7 @@ Der **Abonnent** ist eine Instanz oder ein Server, die bzw. der die auf dem Hera
 Es gibt verschiedene [Replikationstypen](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication?view=sql-server-2017):
 
 
-| Replikation | Eigenständige und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken|
+| Replikation | Singletons und in einem Pool zusammengefasste Datenbanken | Instanzdatenbanken|
 | :----| :------------- | :--------------- |
 | [**Transaktion**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ja (nur als Abonnent) | Ja | 
 | [**Momentaufnahme**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ja (nur als Abonnent) | Ja|
@@ -107,11 +106,11 @@ Herausgeber und Verteiler werden in zwei verwalteten Instanzen konfiguriert. Bei
 - Beide verwaltete Instanzen befinden sich am gleichen Standort.
 - Verwaltete Instanzen, die veröffentlichte Datenbanken und Verteilerdatenbanken hosten, können nicht [mithilfe von Auto-Failovergruppen georepliziert werden](sql-database-auto-failover-group.md).
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-standalone-pooled-and-instance-database"></a>Herausgeber und Verteiler am lokalen Standort mit einem Abonnenten einer eigenständigen, in einem Pool zusammengefassten und Instanzdatenbank 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>Herausgeber und Verteiler am lokalen Standort mit einem Abonnenten eines Singletons, einer in einem Pool zusammengefassten Datenbank oder einer Instanzdatenbank 
 
 ![Azure SQL-DB als Abonnent](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-In dieser Konfiguration ist eine Azure SQL-Datenbank (eigenständige, in einem Pool zusammengefasste und Instanzdatenbank) ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. Ein Abonnent einer eigenständigen oder in einem Pool zusammengefassten Datenbank muss im Pushmodus sein.  
+In dieser Konfiguration ist eine Azure SQL-Datenbank (Singleton, in einem Pool zusammengefasste und Instanzdatenbank) ein Abonnent. Diese Konfiguration unterstützt die Migration vom lokalen Standort zu Azure. Ein Abonnent einem Singleton oder einer in einem Pool zusammengefassten Datenbank muss im Pushmodus sein.  
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/05/2019
-ms.openlocfilehash: 0ae6dea86019b84e8d086a595995f8bd5b2a55ed
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/08/2019
+ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753298"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55990069"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Glossar mit Begriffen aus Azure SQL-Datenbank
 
@@ -28,9 +28,9 @@ ms.locfileid: "55753298"
 ||Pool für elastische Datenbanken|[Pool für elastische Datenbanken](sql-database-elastic-pool.md)|
 ||Verwaltete Instanz|[Verwaltete Instanz](sql-database-managed-instance.md)|
 |Serverobjekte|SQL-Datenbank-Server oder Datenbankserver|[Datenbankserver](sql-database-servers.md)|
-||Verwaltete Azure SQL-Datenbank-Instanz oder verwaltete Instanz|[Verwaltete Instanz](sql-database-managed-instance.md)|
+||Server einer verwalteten SQL-Datenbank-Instanz, Server für verwaltete Instanz oder Instanzserver|[Verwaltete Instanz](sql-database-managed-instance.md)|
 Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
-||Einzeldatenbank|Eine mit der Bereitstellungsoption für eine Einzeldatenbank als eigenständige Datenbank erstellte Datenbank|
+||Einzeldatenbank|Eine mit der Bereitstellungsoption für Singletons erstellte Datenbank|
 ||In einem Pool zusammengefasste Datenbank|Eine in einem Pool für elastische Datenbanken erstellte oder dorthin verschobene Datenbank|
 ||Instanzdatenbank|Eine in einer verwalteten Instanz erstellte Datenbank|
 ||Basic-Datenbank|Eine im Diensttarif „Basic“ des DTU-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
@@ -39,7 +39,7 @@ Datenbankobjekte|Azure SQL-Datenbank|Beliebige Datenbank in Azure SQL-Datenbank|
 ||Universelle Datenbank|Eine im Diensttarif „Universell“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
 ||Hyperscaledatenbank|Eine im Diensttarif „Hyperscale“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
 ||Unternehmenskritische Datenbank|Eine im Diensttarif „Unternehmenskritisch“ des V-Kern-basierten Kaufmodells erstellte oder dorthin verschobene Datenbank|
-|[Kaufmodelle und -ressourcen](sql-database-service-tiers.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
+|[Kaufmodelle und -ressourcen](sql-database-purchase-models.md)|DTU-basiertes Kaufmodell|[DTU-basiertes Kaufmodell](sql-database-service-tiers-dtu.md)|
 ||Auf virtuellen Kernen basierendes Erwerbsmodell|[Auf virtuellen Kernen basierendes Kaufmodell](sql-database-service-tiers-vcore.md)|
 ||Virtueller Kern|Ein Kern, der vom Hypervisor für das Gastbetriebssystem bereitgestellt wird.|
 ||Dienstebene|Eine Dienstebene in einem Kaufmodell|

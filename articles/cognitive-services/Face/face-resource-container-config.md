@@ -4,19 +4,19 @@ titlesuffix: Face - Azure Cognitive Services
 description: Konfigurationseinstellungen für Container
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 218343db4d8ac7e35f58951ee177f5c288aed3d9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476416"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979104"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -45,7 +45,7 @@ Diese Einstellung finden Sie hier:
 
 ## <a name="billing-configuration-setting"></a>Konfigurationseinstellung „Billing“
 
-Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Gesichtserkennung_ in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Ressource für die _Gesichtserkennung_ in Azure handeln.
+Die Einstellung `Billing` gibt den Endpunkt-URI der Ressource für die _Gesichtserkennung_ in Azure an, der zum Messen der Abrechnungsinformationen für den Container verwendet wird. Sie müssen einen Wert für diese Konfigurationseinstellung angeben, und bei dem Wert muss es sich um einen gültigen URI-Endpunkt für eine Ressource für die _Gesichtserkennung_ in Azure handeln. Der Container meldet die Nutzung etwa alle 10 bis 15 Minuten.
 
 Diese Einstellung finden Sie hier:
 
@@ -53,7 +53,7 @@ Diese Einstellung finden Sie hier:
 
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
-|JA| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+|Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 
@@ -112,7 +112,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
 
 ### <a name="basic-example"></a>Einfaches Beispiel 
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 \
   containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
@@ -122,7 +122,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
 
 ### <a name="logging-example-with-command-line-arguments"></a>Beispiel für die Protokollierung mit Befehlszeilenargumenten
 
-  ```Docker
+  ```
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \
   Billing={BILLING_ENDPOINT_URI} ApiKey={BILLING_KEY} \
@@ -131,7 +131,7 @@ Im Folgenden finden Sie Docker-Beispiele für den Container für die Gesichtserk
 
 ### <a name="logging-example-with-environment-variable"></a>Beispiel für die Protokollierung mit Umgebungsvariablen
 
-  ```Docker
+  ```
   SET Logging:Console:LogLevel=Information
   docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face \
   Eula=accept \

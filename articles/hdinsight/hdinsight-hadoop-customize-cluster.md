@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/05/2016
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: e11ef458fad11f04ce159d5e79c4152d2bd7e4c6
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6f67ad04fed2018ba71dd39ed03c24e6aebecf90
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746781"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984731"
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Anpassen Windows-basierter HDInsight-Cluster mithilfe von Skriptaktionen
 **Script Action** kann während der Clustererstellung zum Aufrufen [benutzerdefinierter Skripts](hdinsight-hadoop-script-actions.md) verwendet werden, um zusätzliche Software auf einem Cluster zu installieren.
@@ -62,17 +62,12 @@ HDInsight verfügt über mehrere Skripts zum Installieren der folgenden Komponen
 
     ![Anpassen eines Clusters mithilfe einer Skriptaktion](./media/hdinsight-hadoop-customize-cluster/HDI.CreateCluster.8.png "Anpassen eines Clusters mithilfe einer Skriptaktion")
 
-    <table border='1'>
-        <tr><th>Eigenschaft</th><th>Wert</th></tr>
-        <tr><td>NAME</td>
-            <td>Geben Sie einen Namen für die Skriptaktion an.</td></tr>
-        <tr><td>Skript-URI</td>
-            <td>Geben Sie den URI für das Skript an, das aufgerufen wird, um den Cluster anzupassen. s</td></tr>
-        <tr><td>Haupt-/Workerknoten</td>
-            <td>Geben Sie die Knoten (**Hauptknoten** oder **Workerknoten**) an, für die das Anpassungsskript ausgeführt wird</b>.
-        <tr><td>Parameter</td>
-            <td>Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist.</td></tr>
-    </table>
+      |Eigenschaft|Wert|  
+      |---|---|
+      |NAME|Geben Sie einen Namen für die Skriptaktion an.|
+      |Skript-URI|Geben Sie den URI für das Skript an, das aufgerufen wird, um die Cluster anzupassen.|
+      |Haupt-/Workerknoten|Geben Sie die Knoten (**Hauptknoten** oder **Workerknoten**) an, für die das Anpassungsskript ausgeführt wird.|
+      |Parameter|Geben Sie die Parameter an, sofern dies für das Skript erforderlich ist.|
 
     Drücken Sie die EINGABETASTE, um dem Cluster mehr als eine Skriptaktion zum Installieren von mehreren Komponenten hinzuzufügen.
 3. Klicken Sie auf **Auswählen**, um die Skriptaktionskonfiguration zu speichern und die Clustererstellung fortzusetzen.
@@ -80,7 +75,7 @@ HDInsight verfügt über mehrere Skripts zum Installieren der folgenden Komponen
 ## <a name="call-scripts-using-azure-powershell"></a>Aufrufen von Skripts mit Azure PowerShell
 Das folgende PowerShell-Skript veranschaulicht das Installieren von Spark auf HDInsight-Clustern mit Windows.  
 
-    ```powershell
+```powershell  
     # Provide values for these variables
     $subscriptionID = "<Azure Subscription ID>" # After "Connect-AzureRmAccount", use "Get-AzureRmSubscription" to list IDs.
 
@@ -159,7 +154,7 @@ Das folgende PowerShell-Skript veranschaulicht das Installieren von Spark auf HD
             -OSType Windows `
             -DefaultStorageContainer $defaultBlobContainerName `
             -Config $config
-    ```
+```
 
 Um andere Software zu installieren, müssen Sie die Skriptdatei im Skript ersetzen:
 
@@ -172,12 +167,14 @@ Das folgende Beispiel veranschaulicht das Installieren von Apache Spark auf HDIn
 
 1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung.
 2. Führen Sie in der NuGet-Paket-Manager-Konsole den folgenden Befehl aus.
-    ```powershell
+
+    ```powershell  
         Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
         Install-Package Microsoft.Azure.Management.ResourceManager -Pre
         Install-Package Microsoft.Azure.Management.HDInsight
     ```
-3. Verwenden Sie die folgenden using-Anweisungen in der Datei „Program.cs“:
+
+1. Verwenden Sie die folgenden using-Anweisungen in der Datei „Program.cs“:
 
     ```csharp
         using System;

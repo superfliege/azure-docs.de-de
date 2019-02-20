@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b4de9efbe85d5ab497bccd1742df23ddc1b3af43
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: bb88736762219028d58fe70d0ec32309967c95a4
+ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354658"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55830707"
 ---
 Datenspeicheroptimierte VM-Größen bieten hohen Datenträgerdurchsatz und E/A und eignen sich ideal für Big Data, SQL, NoSQL-Datenbanken, Datawarehousing und große transaktionale Datenbanken.  Beispiele bilden Cassandra, MongoDB, Cloudera und Redis. Dieser Artikel enthält Informationen zur Anzahl von vCPUs, Datenträgern und NICs sowie zum lokalen Speicherdurchsatz und zur Netzwerkbandbreite für die einzelnen optimierten Größen.
 
@@ -31,19 +31,21 @@ Storage Premium Unterstützt
 
 Storage Premium-Zwischenspeicherung: Nicht unterstützt
 
-| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger | NVMe-Datenträger-Datendurchsatz<sup>2</sup> (Lese-IOPS/Mbit/s) | Hostcachegröße<sup>3</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
+| Größe          | vCPU | Arbeitsspeicher (GiB) | Temporäre Datenträger<sup>1</sup> (GiB) | NVMe-Datenträger<sup>2</sup> | NVMe-Datenträger-Datendurchsatz<sup>3</sup> (Lese-IOPS/MBit/s) | Hostcachegröße<sup>4</sup> | Max. Anzahl Datenträger | Maximale Anzahl NICs/Erwartete Netzwerkbandbreite (Mbit/s) | 
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 340.000/2.000 | N/V | 16 | 2/3.200  | 
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 680.000/4.500 | N/V | 32 | 4/6.400  | 
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1,4 M/9.000    | N/V | 32 | 8/12.800 | 
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2,7 M/18.000   | N/V | 32 | 8/25.600 |
-| Standard_L80s_v2  | 80 | 640 | 800 | 10x1,92 TB   | 3,4 M/22.000   | N/V | 32 | 8/32.000 |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x1,92 TB  | 340.000/2.000 | – | 16 | 2/3.200  | 
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x1,92 TB  | 680.000/4.500 | – | 32 | 4/6.400  | 
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x1,92 TB  | 1,4 M/9.000    | – | 32 | 8/12.800 | 
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x1,92 TB  | 2,7 M/18.000   | – | 32 | 8/25.600 |
+| Standard_L80s_v2  | 80 | 640 | 800 | 10x1,92 TB   | 3,4 M/22.000   | – | 32 | 8/32.000 |
  
-<sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können.
+<sup>1</sup> VMs der Lsv2-Reihe verfügen über einen standardmäßigen SCSI-basierten temporären Ressourcendatenträger für die Verwendung als Auslagerungsdatei des Betriebssystems (D: unter Windows, /dev/sdb unter Linux). Dieser Datenträger bietet 80 GiB Speicher, 4.000 IOPS und eine Übertragungsrate von 80 MB/s für jeweils 8 vCPUs (beispielsweise bietet Standard_L80s_v2 800 GiB bei 40.000 IOPS und 800 MB/s). Dadurch wird sichergestellt, dass die NVMe-Laufwerke vollständig für die Anwendungsnutzung reserviert werden können. Dieser Datenträger ist kurzlebig, und beim Beenden oder Aufheben der Zuordnung gehen alle Daten verloren.
 
-<sup>2</sup> Hyper-V NVMe Direct-Technologie ermöglicht den ungedrosselten Zugriff auf NVMe-Laufwerke, die sicher dem Bereich der Gast-VM zugeordnet sind.  Für das Erreichen maximaler Leistung sind entweder der neueste WS2019-Build oder Ubuntu 18.04 oder 16.04 aus dem Azure Marketplace erforderlich.  Die Schreibleistung weicht je nach EA-Größe, Laufwerksauslastung und Kapazitätsnutzung ab.
+<sup>2</sup> Lokale NVMe-Datenträger sind kurzlebig. Die Daten auf diesen Datenträgern gehen verloren, wenn Sie den virtuellen Computer beenden oder seine Zuordnung aufheben.
 
-<sup>3</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten. 
+<sup>3</sup> Hyper-V NVMe Direct-Technologie ermöglicht den ungedrosselten Zugriff auf lokale NVMe-Laufwerke, die sicher dem Bereich der Gast-VM zugeordnet sind.  Für das Erreichen maximaler Leistung sind entweder der neueste WS2019-Build oder Ubuntu 18.04 oder 16.04 aus dem Azure Marketplace erforderlich.  Die Schreibleistung weicht je nach EA-Größe, Laufwerksauslastung und Kapazitätsnutzung ab.
+
+<sup>4</sup> VMs der Lsv2-Reihe stellen keinen Hostcache für Datenträger bereit, da dieser den Lsv2-Workloads nicht zugute kommt.  Allerdings können Lsv2-VMs die kurzlebige VM-Betriebssystemdatenträger-Option (bis zu 30 GiB) von Azure bieten. 
 
 
 

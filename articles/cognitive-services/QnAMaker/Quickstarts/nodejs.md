@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen und Codebeispiele zu Node.js-REST, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/30/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 7e7e362a2536f7adf2a7d68b096ab76d73f15a61
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: ba4af5d3b6612614dee54db7fdb1287ff7136321
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496226"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245761"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-nodejs"></a>Verwenden der QnA Maker-REST-API mit Node.js 
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
-- [Abrufen der aktuellen Wortvarianten](#GetAlterations)
-- [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
+- [Abrufen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#GetAlterations)
+- [Ersetzen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
 

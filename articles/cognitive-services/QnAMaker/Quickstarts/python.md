@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Hier finden Sie Informationen und Codebeispiele in Python, mit denen Sie schnell mit der Microsoft-Textübersetzungs-API in Microsoft Cognitive Services in Azure loslegen können.
 services: cognitive-services
 author: diberry
-manager: cgronlun
+manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: ca0d8bcbf2d4b050560d1575ef690205eacca830
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e732417daada836dc7de58fadf69e8edb4ebcb14
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222166"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244639"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>Verwenden der QnA Maker-REST-API mit Python
 <a name="HOLTop"></a>
@@ -35,8 +35,8 @@ In diesem Artikel erfahren Sie, wie Sie die [Microsoft QnA Maker-API](../Overvie
 - [Löschen einer Wissensdatenbank](#Delete)
 - [Abrufen der aktuellen Endpunktschlüssel](#GetKeys)
 - [Erneutes Generieren der aktuellen Endpunktschlüssel](#PutKeys)
-- [Abrufen der aktuellen Wortvarianten](#GetAlterations)
-- [Ersetzen der aktuellen Wortvarianten](#PutAlterations)
+- [Abrufen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#GetAlterations)
+- [Ersetzen der aktuellen Wortvarianten ohne Berücksichtigung von Groß-/Kleinbuchstaben](#PutAlterations)
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 

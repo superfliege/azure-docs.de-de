@@ -1,6 +1,6 @@
 ---
-title: Erstellen von Grafiken und Diagrammen aus Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Beschreibt unterschiedliche Visualisierungen in Azure Log Analytics, um Ihre Daten unterschiedlich anzuzeigen.
+title: Erstellen von Grafiken und Diagrammen aus Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Beschreibt verschiedene Visualisierungen in Azure Monitor, um Ihre Protokolldaten auf verschiedene Weise anzuzeigen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 049e50f5800194c4126003f7e5ff7ae60b3de768
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 381e8361d31660d90eaee3f7a500139af1ef2a82
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53186224"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992982"
 ---
-# <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Erstellen von Grafiken und Diagrammen aus Log Analytics-Abfragen
+# <a name="creating-charts-and-diagrams-from-azure-monitor-log-queries"></a>Erstellen von Grafiken und Diagrammen aus Azure Monitor-Protokollabfragen
 
 > [!NOTE]
-> Vor der Durchführung dieser Lektion sollten Sie [Advanced aggregations in Log Analytics queries (Erweiterte Aggregationen in Log Analytics-Abfragen)](advanced-aggregations.md) lesen.
+> Vor der Durchführung dieser Lektion sollten Sie [Erweiterte Aggregationen in Azure Monitor-Protokollabfragen](advanced-aggregations.md) lesen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Artikel sind unterschiedliche Visualisierungen in Azure Log Analytics beschrieben, um Ihre Daten unterschiedlich anzuzeigen.
+In diesem Artikel sind verschiedene Visualisierungen in Azure Monitor beschrieben, um Ihre Protokolldaten unterschiedlich anzuzeigen.
 
 ## <a name="charting-the-results"></a>Darstellen der Ergebnisse in Diagrammen
 Beginnen Sie mit der Überprüfung, wie viele Computer pro Betriebssystem während der letzten Stunde vorhanden waren:
@@ -93,7 +93,7 @@ Sie können zwischen diesen wechseln, indem Sie die Dropdownliste mit dem Spalte
 ![Balkendiagramm, AccountType](media/charts/charts-and-diagrams-multiDimension2.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Verwendung der Log Analytics-Abfragesprache finden Sie in folgenden weiteren Lektionen:
+Informationen zur Verwendung der [Data Explorer-Abfragesprache](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Datums- und Uhrzeitvorgänge](datetime-operations.md)

@@ -11,18 +11,40 @@ ms.author: haining
 ms.reviewer: j-martens
 ms.date: 12/20/2018
 ms.custom: seodec18
-ms.openlocfilehash: cea5f2a3eaa7bddb523d95936fbe0a50e0fd16ed
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4e7cc1340a85e1d00c2f64abeb35a99052184c52
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564339"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100175"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure Machine Learning-Dienst – Anmerkungen zu dieser Version
 
 Erfahren Sie in diesem Artikel mehr über die Versionen des Azure Machine Learning-Diensts.  Eine vollständige Beschreibung jedes SDKs finden Sie in der jeweiligen Referenzdokumentation für:
 + Das [**Haupt-SDK für Python**](https://aka.ms/aml-sdk) von Azure Machine Learning
 + Das [**Datenaufbereitungs-SDK**](https://aka.ms/data-prep-sdk) von Azure Machine Learning
+
+## <a name="2019-02-11"></a>2019-02-11
+
+### <a name="azure-machine-learning-sdk-for-python-v1015"></a>Azure Machine Learning SDK für Python v1.0.15
+
++ **Neue Features**
+  + Für Azure Machine Learning-Pipelines wurden AzureBatchStep ([Notebook](https://aka.ms/pl-azbatch)), HyperDriveStep ([Notebook](https://aka.ms/pl-hyperdrive)) und Zeitplanungsfunktionalität ([Notebook](https://aka.ms/pl-schedule)) hinzugefügt.
+  +  DataTranferStep wurde aktualisiert und funktioniert nun mit Azure SQL Server und Azure Database for PostgreSQL ([Notebook](https://aka.ms/pl-data-trans)).
+
++ **Änderungen**
+  + `PublishedPipeline.get_published_pipeline` wurde durch `PublishedPipeline.get` ersetzt.
+  + `Schedule.get_schedule` wurde durch `Schedule.get` ersetzt.
+
+### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure Machine Learning Data Prep SDK v1.0.12
+
++ **Neue Features**
+  + Data Prep unterstützt jetzt das Lesen aus einer Azure SQL-Datenbank mithilfe von Datenspeicher.
+ 
++ **Änderungen**
+  + Die Leistung des Arbeitsspeichers für bestimmte Vorgänge mit großen Datenmengen wurde deutlich verbessert.
+  + `temp_folder` erfordert nun, dass `read_pandas_dataframe()` angegeben ist.
+  + Die `name`-Eigenschaft von `ColumnProfile` ist veraltet: Verwenden Sie stattdessen `column_name`.
 
 ## <a name="2019-01-28"></a>2019-01-28
 

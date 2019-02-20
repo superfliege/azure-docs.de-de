@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: article
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14a6bdfff486f13f18d42b1bd20880347d3ebbc8
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 292063183561722eae76c3d30ce242facd22df26
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756528"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55981450"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>Einrichten von Computezielen für das Modelltraining
 
@@ -47,6 +47,11 @@ Azure Machine Learning Service bietet unterschiedliche Unterstützung für die v
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
+**Alle Computeziele können für mehrere Trainingsaufträge wiederverwendet werden**. Beispielsweise können Sie einen virtuellen Remotecomputer, den Sie an Ihren Arbeitsbereich anfügen, für mehrere Aufträge wiederverwenden.
+
+> [!NOTE]
+> Azure Machine Learning Compute kann als dauerhafte Ressource oder dynamisch beim Anfordern einer Ausführung erstellt werden. Bei der ausführungsbasierten Erstellung wird das Computeziel nach Abschluss des Trainingsauftrags entfernt, sodass Sie auf diese Weise erstellte Computeziele nicht wiederverwenden können.
+
 ## <a name="whats-a-run-configuration"></a>Was ist eine Laufzeitkonfiguration?
 
 Beim Training ist es üblich, auf dem lokalen Computer zu starten und dieses Trainingsskript später auf einem anderen Computeziel auszuführen. Mit Azure Machine Learning Service können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Skript zu ändern. 
@@ -65,7 +70,7 @@ Verwenden Sie eine vom System verwaltete Umgebung, wenn Sie möchten, dass [Cond
 
 Alles, was Sie tun müssen, ist, jede Paketabhängigkeit mit der [CondaDependency-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.conda_dependencies.condadependencies?view=azure-ml-py) anzugeben. Dann erstellt Conda eine Datei namens **conda_dependencies.yml** im Verzeichnis **aml_config** in Ihrem Arbeitsbereich mit Ihrer Liste der Paketabhängigkeiten und richtet Ihre Python-Umgebung ein, wenn Sie Ihr Trainingsexperiment übermitteln. 
 
-Die erstmalige Einrichtung einer neuen Umgebung kann einige Minuten dauern, je nach der Größe der erforderlichen Abhängigkeiten. Solange die Liste der Pakete unverändert bleibt, erfolgt die Einrichtung nur 1 Mal.
+Die erstmalige Einrichtung einer neuen Umgebung kann einige Minuten dauern, je nach der Größe der erforderlichen Abhängigkeiten. Solange die Liste der Pakete unverändert bleibt, erfolgt die Einrichtung nur einmal.
   
 Der folgende Code zeigt ein Beispiel für eine vom System verwaltete Umgebung, die „SciKit-learn“ erfordert:
     
@@ -73,7 +78,7 @@ Der folgende Code zeigt ein Beispiel für eine vom System verwaltete Umgebung, d
 
 #### <a name="user-managed-environment"></a>Vom Benutzer verwaltete Umgebung
 
-Bei benutzerverwalteten Umgebungen sind Sie für die Einrichtung Ihrer Umgebung und die Installation aller Pakete, die Ihr Trainingsskript auf dem Computeziel benötigt, verantwortlich. Wenn Ihre Trainingsumgebung bereits konfiguriert ist (z.B. auf Ihrem lokalen Computer), können Sie den Einrichtungsschritt überspringen, indem Sie `user_managed_dependencies` auf „True“ setzen. Conda wird Ihre Umgebung nicht überprüfen oder Installationen für Sie vornehmen.
+Bei benutzerverwalteten Umgebungen sind Sie für die Einrichtung Ihrer Umgebung und die Installation aller Pakete, die Ihr Trainingsskript auf dem Computeziel benötigt, selbst verantwortlich. Wenn Ihre Trainingsumgebung bereits konfiguriert ist (z.B. auf Ihrem lokalen Computer), können Sie den Einrichtungsschritt überspringen, indem Sie `user_managed_dependencies` auf TRUE festlegen. Conda wird Ihre Umgebung nicht überprüfen oder Installationen für Sie vornehmen.
 
 Der folgende Code ist ein Beispiel für die Trainingsausführungen für eine vom Benutzer verwaltete Umgebung:
 
@@ -242,7 +247,7 @@ Sie können im Azure-Portal auf Computeziele zugreifen, die Ihrem Arbeitsbereich
 
 * [Anzeigen von Computezielen](#portal-view), die an Ihren Arbeitsbereich angefügt sind
 * [Erstellen eines Computeziels](#portal-create) in Ihrem Arbeitsbereich
-* [Wiederverwenden vorhandener Computeziele](#portal-reuse)
+* [Anfügen eines Computeziels](#portal-reuse), das außerhalb des Arbeitsbereichs erstellt wurde
 
 Nachdem ein Ziel erstellt und an Ihren Arbeitsbereich angefügt wurde, verwenden Sie es in Ihrer Laufzeitkonfiguration mit einem `ComputeTarget`-Objekt: 
 
@@ -293,9 +298,11 @@ Führen Sie die vorherigen Schritte zum Anzeigen der Liste der Computeziele aus.
 
 
 
-### <a id="portal-reuse"></a>Wiederverwenden vorhandener Computeziele
+### <a id="portal-reuse"></a>Anfügen von Computezielen
 
-Führen Sie die zuvor beschriebenen Schritte aus, um die Liste der Computeziele anzuzeigen. Führen Sie dann die folgenden Schritte aus, um ein Computeziel wiederzuverwenden: 
+Um Computeziele zu verwenden, die außerhalb des Azure Machine Learning Service-Arbeitsbereichs erstellt wurde, müssen Sie sie anfügen. Durch das Anfügen eines Computeziels wird es Ihrem Arbeitsbereich zur Verfügung gestellt.
+
+Führen Sie die zuvor beschriebenen Schritte aus, um die Liste der Computeziele anzuzeigen. Führen Sie dann die folgenden Schritte aus, um ein Computeziel anzufügen: 
 
 1. Klicken Sie auf das Pluszeichen (+), um ein Computeziel hinzuzufügen. 
 1. Geben Sie einen Namen für das Computeziel ein. 

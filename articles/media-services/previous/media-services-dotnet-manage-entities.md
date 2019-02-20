@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: af5baf3444196e5a0e8412d9ab4f019fdccb033e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 7cab21919eca9ba62fa57e1c6b2089c0b8e115dc
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33783679"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979971"
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Verwalten von Medienobjekten und verwandten Entitäten mit dem Media Services .NET SDK
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "33783679"
 > 
 > 
 
-Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit .NET. 
+Dieses Thema veranschaulicht das Verwalten von Azure Media Services-Entitäten mit .NET (veraltet).
 
 >[!NOTE]
 > Ab dem 1. April 2017 werden alle Auftragsdatensätze in Ihrem Konto, die älter als 90 Tage sind, sowie alle zugehörigen Aufgabendatensätze automatisch gelöscht, selbst wenn die Gesamtanzahl von Datensätzen unterhalb des maximalen Kontingents liegt. Beispielsweise wird jeder Auftragsdatensatz in Ihrem Konto, der vor dem 31. Dezember 2016 erstellt wurde, am 1. April 2017 automatisch gelöscht. Wenn Sie die Auftrags-/Aufgabeninformationen archivieren müssen, können Sie dazu den in diesem Thema beschriebenen Code verwenden.
@@ -352,7 +352,7 @@ Im folgenden Beispiel wird ein Medienobjekt gelöscht.
 ## <a name="delete-a-job"></a>Löschen eines Auftrags
 Um einen Auftrag zu löschen, müssen Sie den Status des Auftrags überprüfen, der in der State-Eigenschaft angegeben ist. Beendete oder abgebrochene Aufträge können gelöscht werden, während Aufträge mit einem bestimmten anderen Status, z. B. in der Warteschlange, geplant oder in Verarbeitung, zunächst abgebrochen werden müssen. Anschließend können sie gelöscht werden.
 
-Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Dieser Code benötigt die Informationen im vorherigen Abschnitt dieses Themas, um einen Verweis auf einen Job zu erhalten: Abrufen eines Verweises auf einen Auftrag.
+Das folgende Codebeispiel zeigt eine Methode zum Löschen eines Auftrags, indem der Auftragsstatus überprüft und der Auftrag dann gelöscht wird, wenn er abgeschlossen oder abgebrochen wurde. Für diesen Code werden die Informationen im vorherigen Abschnitt dieses Themas benötigt, um einen Verweis auf einen Auftrag zu erhalten: Abrufen eines Verweises auf einen Auftrag.
 
 ```csharp
     static void DeleteJob(string jobId)

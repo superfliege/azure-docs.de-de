@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 11/28/2016
 ms.author: sogup
-ms.openlocfilehash: 0ed7260f35c483d17eb97e625ef72c310a3fcfdb
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d0fac3a075923b000c453480edbf18599f5fed3d
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564135"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994865"
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Verwalten der Sicherung virtueller Computer
 
@@ -142,7 +142,7 @@ Wenn Sie sich für das Beenden des Schutzes für einen virtuellen Computer entsc
 
 Mit der Beibehaltung der Wiederherstellungspunkte im Speicher sind Kosten verbunden. Der Vorteil der Beibehaltung von Wiederherstellungspunkten ist, dass Sie den virtuellen Computer bei Bedarf später wiederherstellen können. Informationen zu den Kosten, die durch die Beibehaltung der Wiederherstellungspunkte entstehen, finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/backup/). Wenn Sie alle Wiederherstellungspunkte löschen, kann der virtuelle Computer nicht mehr wiederhergestellt werden.
 
-Wenn Sie eine Sicherung mit der Option „Daten beibehalten“ beenden, laufen Wiederherstellungspunkte gemäß der Aufbewahrungsrichtlinie ab. Azure Backup behält jedoch immer mindestens einen letzten Wiederherstellungspunkt bei, bis Sie Sicherungsdaten explizit löschen. Ebenso gilt: Wenn Sie eine Datenquelle ohne Beenden der Sicherung löschen, schlagen neue Sicherungen fehl, und alte Wiederherstellungspunkte laufen gemäß der Aufbewahrungsrichtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung mit der Option „Daten löschen“ beenden.
+Der Wiederherstellungspunkt bleibt dauerhaft erhalten, bis das Sicherungselement erneut durch eine Aufbewahrungsrichtlinie geschützt wird oder StopProtection mit Löschen der Daten ausgeführt wird. Im Fall des erneuten Schutzes bestimmt die neue Richtlinie, die zugeordnet wird, die Aufbewahrung der Wiederherstellungspunkte. Ebenso gilt: Wenn Sie eine Datenquelle ohne Beenden der Sicherung löschen, schlagen neue Sicherungen fehl, und alte Wiederherstellungspunkte laufen gemäß der Aufbewahrungsrichtlinie ab. Ein letzter Wiederherstellungspunkt wird jedoch immer beibehalten, bis Sie die Sicherung mit der Option „Daten löschen“ beenden.
 
 So beenden Sie den Schutz für einen virtuellen Computer
 

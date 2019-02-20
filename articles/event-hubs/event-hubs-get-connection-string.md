@@ -10,12 +10,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 31220002f8529fd31407470e7650a4c97b62f2b4
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53535269"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56238146"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Abrufen einer Event Hubs-Verbindungszeichenfolge
 
@@ -51,13 +51,16 @@ Sie können eine neue SAS-Richtlinie hinzufügen und die Verbindungszeichenfolge
 ![Event Hubs – Abrufen der Verbindungszeichenfolge](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Abrufen der Verbindungszeichenfolge mit Azure PowerShell
-Sie können das Cmdlet „Get-AzureRmEventHubNamespaceKey“ verwenden, um die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abzurufen:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Sie können das Cmdlet „Get-AzEventHubNamespaceKey“ verwenden, um die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abzurufen:
 
 ```azurepowershell-interactive
-Get-AzureRmEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
+Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
 
-Weitere Informationen finden Sie unter [Azure Event Hubs-PowerShell-Modul](https://docs.microsoft.com/powershell/module/azurerm.eventhub/get-azurermeventhubkey).
+Weitere Informationen finden Sie unter [Azure Event Hubs-PowerShell-Modul](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey).
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Abrufen der Verbindungszeichenfolge über die Azure-Befehlszeilenschnittstelle
 Die Verbindungszeichenfolge für den Namespace können Sie wie folgt abrufen:

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 471bb1b3fb17adc9e06dba591663ee20dd9d8baf
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53721562"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108737"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -43,7 +43,7 @@ In einigen Szenarien mit hoher Arbeitsspeicherbelegung kann Ihre App tatsächlic
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>Wie automatisiere ich App Service-Web-Apps mithilfe von PowerShell?
 
-Sie können PowerShell-Cmdlets verwenden, um App Service-Web-Apps zu verwalten und zu warten. Im Blogbeitrag [Automate web apps hosted in Azure App Service by using PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/) (Automatisieren von Web-Apps, die in Azure App Service gehostet werden, mithilfe von PowerShell) wird beschrieben, wie Sie auf Azure Resource Manager basierende PowerShell-Skripts zum Automatisieren gängiger Aufgaben verwenden können. Der Blogbeitrag enthält außerdem Beispielcode für verschiedene Verwaltungsaufgaben für Web-Apps. Beschreibungen und Syntax für alle Cmdlets für App Service-Web-Apps-finden Sie unter [AzureRM.Websites](https://docs.microsoft.com/powershell/module/azurerm.websites/?view=azurermps-4.0.0).
+Sie können PowerShell-Cmdlets verwenden, um App Service-Web-Apps zu verwalten und zu warten. Im Blogbeitrag [Automate web apps hosted in Azure App Service by using PowerShell](https://blogs.msdn.microsoft.com/puneetgupta/2016/03/21/automating-webapps-hosted-in-azure-app-service-through-powershell-arm-way/) (Automatisieren von Web-Apps, die in Azure App Service gehostet werden, mithilfe von PowerShell) wird beschrieben, wie Sie auf Azure Resource Manager basierende PowerShell-Skripts zum Automatisieren gängiger Aufgaben verwenden können. Der Blogbeitrag enthält außerdem Beispielcode für verschiedene Verwaltungsaufgaben für Web-Apps. Beschreibungen und Syntax für alle Cmdlets für App Service-Web-Apps-finden Sie unter [Az.Websites](/powershell/module/az.websites).
 
 ## <a name="how-do-i-view-my-web-apps-event-logs"></a>Wie zeige ich Ereignisprotokolle meiner Web-App an?
 

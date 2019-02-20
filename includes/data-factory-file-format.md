@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: a9f956e66be03a4811868cbc2e7d6fc7dc672310
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 9b3261679b64e054bb8f750ad99983661a5b6035
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52886405"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213046"
 ---
 ## <a name="specifying-formats"></a>Angeben von Formaten
 Azure Data Factory unterstützt die folgenden Formattypen:
@@ -213,7 +213,7 @@ und ihn im folgenden Format in eine Azure SQL-Tabelle kopieren möchten, indem S
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt [Angeben der Strukturdefinition für rechteckige Datasets](#specifying-structure-definition-for-rectangular-datasets).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt „Angeben der Strukturdefinition für rechteckige Datasets“.
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. Um Daten aus dem Array zu kopieren, können Sie mit **array[x].property** den Wert der angegebenen Eigenschaft aus dem xth-Objekt extrahieren oder mit **array[*].property** in einem beliebigen Objekt mit entsprechender Eigenschaft nach dem Wert suchen.
 
 ```json
@@ -286,7 +286,7 @@ und Sie ihn in eine Azure SQL-Tabelle im folgenden Format kopieren möchten, ind
 
 Das Eingabedataset vom Typ **JsonFormat** ist wie folgt definiert: (Teildefinition ausschließlich mit den relevanten Teilen). Dies gilt insbesondere in folgenden Fällen:
 
-- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt [Angeben der Strukturdefinition für rechteckige Datasets](#specifying-structure-definition-for-rectangular-datasets).
+- Abschnitt `structure` definiert die benutzerdefinierten Spaltennamen und den entsprechenden Datentyp beim Konvertieren in tabellarische Daten. Dieser Abschnitt ist **optional**, solange Sie keine Spaltenzuordnung ausführen müssen. Weitere Details finden Sie im Abschnitt „Angeben der Strukturdefinition für rechteckige Datasets“.
 - `jsonNodeReference` gibt an, dass die Iteration und Extraktion von Daten aus den Objekten mit dem Muster unter **Array** Orderlines erfolgt.
 - `jsonPathDefinition` gibt den JSON-Pfad für jede Spalte an, die anzeigt, wo die Daten extrahiert werden sollen. In diesem Beispiel unterliegen „ordernumber“, „orderdate“ und „city“ dem Stammobjekt mit dem JSON-Pfad, der mit „$.“ beginnt. „order_pd“ und „order_price“ beginnen hingegen mit dem Pfad, der sich aus dem Array-Element ohne „$.“ ableitet.
 

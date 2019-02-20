@@ -13,14 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c46c65fe7e720e3afdd976e2480e8f183cc4398d
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 97e6029ff85ce7ee8572fd76d04a5d72b27b2950
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54901189"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55980107"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Hinzufügen von gespeicherten Log Analytics-Suchen und -Warnungen in der Verwaltungslösung (Vorschau)
+
+> [!IMPORTANT]
+> Die hier enthaltenen Informationen zur Erstellung einer Warnung mithilfe einer Resource Manager-Vorlage sind veraltet, da [Log Analytics-Warnungen auf Azure Monitor erweitert wurden](../platform/alerts-extend.md). Informationen zum Erstellen einer Protokollwarnung mithilfe einer Resource Manager-Vorlage finden Sie unter [Verwalten von Protokollwarnungen mithilfe von Azure-Ressourcenvorlagen](../platform/alerts-log.md#managing-log-alerts-using-azure-resource-template).
 
 > [!NOTE]
 > Dies ist die vorläufige Dokumentation für das Erstellen von Verwaltungslösungen, die sich derzeit in der Vorschau befinden. Jedes unten beschriebene Schema kann sich ändern.
@@ -122,9 +125,9 @@ Die Eigenschaften für Zeitplanressourcen werden in der folgenden Tabelle beschr
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Aktiviert       | JA | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
-| interval      | JA | Abfrageintervall in Minuten |
-| queryTimeSpan | JA | Länge in Minuten für die Auswertung der Ergebnisse |
+| Aktiviert       | Ja | Gibt an, ob die Warnung beim Erstellen aktiviert wird. |
+| interval      | Ja | Abfrageintervall in Minuten |
+| queryTimeSpan | Ja | Länge in Minuten für die Auswertung der Ergebnisse |
 
 Die Zeitplanressource muss von der gespeicherten Suche abhängig sein, damit sie vor dem Zeitplan erstellt wird.
 
@@ -180,10 +183,10 @@ Die Eigenschaften für Warnungsaktionsressourcen werden in den folgenden Tabelle
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Type | JA | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
-| NAME | JA | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
+| Type | Ja | Der Typ der Aktion.  Dieser lautet bei Warnungsaktionen **Warnung**. |
+| NAME | Ja | Der Anzeigename für die Warnung.  Dies ist der Name, der in der Konsole für die Warnungsregel angezeigt wird. |
 | BESCHREIBUNG | Nein  | Eine optionale Beschreibung der Warnung |
-| Schweregrad | JA | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
+| Schweregrad | Ja | Schweregrad des Warnungsdatensatzes aus den folgenden Werten:<br><br> **Kritisch**<br>**Warnung**<br>**Information**
 
 
 #### <a name="threshold"></a>Schwellenwert
@@ -191,8 +194,8 @@ Dieser Abschnitt ist ein Pflichtabschnitt. Er definiert die Eigenschaften für d
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Operator | JA | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | JA | Der Wert zum Vergleich der Ergebnisse |
+| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| Wert | Ja | Der Wert zum Vergleich der Ergebnisse |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
 Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrischer Messungen ein.
@@ -202,9 +205,9 @@ Dieser Abschnitt ist optional. Fügen Sie ihn für eine Warnung aufgrund metrisc
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| TriggerCondition | JA | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
-| Operator | JA | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
-| Wert | JA | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
+| TriggerCondition | Ja | Gibt an, ob der Schwellenwert für die Gesamtanzahl der Verstöße oder für aufeinander folgende Verstöße gegen folgende Werte steht:<br><br>**Insgesamt<br>Aufeinander folgende** |
+| Operator | Ja | Operator für den Vergleich der folgenden Werte:<br><br>**gt = Greater Than (Größer als)<br>lt = Less Than (Kleiner als)** |
+| Wert | Ja | Häufigkeit, mit der die Kriterien erfüllt werden müssen, um die Warnung auszulösen. |
 
 
 #### <a name="throttling"></a>Drosselung
@@ -221,7 +224,7 @@ Für Benutzer, die ihre Warnungen auf Azure erweitert haben, sollten bei Zeitpl�
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| AzNsNotification | JA | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
+| AzNsNotification | Ja | Die Ressourcen-ID der Azure-Aktionsgruppe, die der Warnung zugeordnet werden soll, um erforderliche Aktionen auszuführen, wenn Warnungskriterien zutreffen. |
 | CustomEmailSubject | Nein  | Benutzerdefinierte Betreffzeile der E-Mail, die an alle Adressen gesendet wird, die in der zugeordneten Aktionsgruppe angegeben sind. |
 | CustomWebhookPayload | Nein  | Benutzerdefinierte Nutzlast, die an alle Webhookendpunkte gesendet wird, die in der zugeordneten Aktionsgruppe definiert sind. Das Format hängt davon ab, was der Webhook erwartet, und muss ein gültiges serialisiertes JSON-Format sein. |
 
@@ -237,8 +240,8 @@ Jeder Zeitplan weist eine Aktion vom Typ **Warnung** auf. Dadurch werden die Det
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| Empfänger | JA | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Antragsteller | JA | Die Betreffzeile der E-Mail |
+| Empfänger | Ja | Durch Kommas getrennte Liste der E-Mail-Adressen, an die eine Benachrichtigung gesendet wird, wenn eine Warnung wie im folgenden Beispiel erstellt wird.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Antragsteller | Ja | Die Betreffzeile der E-Mail |
 | Anhang | Nein  | Anlagen werden derzeit nicht unterstützt. Wenn dieses Element enthalten ist, muss es **Keine** lauten. |
 
 ##### <a name="remediation"></a>Wiederherstellung
@@ -246,8 +249,8 @@ Dieser Abschnitt ist optional. Schließen Sie ihn ein, wenn als Reaktion auf die
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| RunbookName | JA | Der Name des Runbooks, das gestartet werden soll |
-| WebhookUri | JA | Der URI des Webhooks für das Runbook |
+| RunbookName | Ja | Der Name des Runbooks, das gestartet werden soll |
+| WebhookUri | Ja | Der URI des Webhooks für das Runbook |
 | Expiry | Nein  | Datum und Uhrzeit des Ablaufs der Wiederherstellung |
 
 ##### <a name="webhook-actions"></a>Webhookaktionen
@@ -276,9 +279,9 @@ Die Eigenschaften für Webhook-Aktionsressourcen werden in den folgenden Tabelle
 
 | Elementname | Erforderlich | BESCHREIBUNG |
 |:--|:--|:--|
-| type | JA | Der Typ der Aktion. Dieser lautet für Webhookaktionen **Webhook**. |
-| name | JA | Der Anzeigename für die Aktion. Dieser wird nicht in der Konsole angezeigt. |
-| webhookUri | JA | URI für den Webhook |
+| type | Ja | Der Typ der Aktion. Dieser lautet für Webhookaktionen **Webhook**. |
+| name | Ja | Der Anzeigename für die Aktion. Dieser wird nicht in der Konsole angezeigt. |
+| webhookUri | Ja | URI für den Webhook |
 | customPayload | Nein  | Benutzerdefinierte Nutzlast, die an den Webhook gesendet wird. Das Format hängt davon ab, was vom Webhook erwartet wird. |
 
 ## <a name="sample"></a>Beispiel

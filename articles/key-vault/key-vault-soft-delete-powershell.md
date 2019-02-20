@@ -2,17 +2,17 @@
 title: 'Azure Key Vault: Verwenden des vorläufigen Löschens mit PowerShell'
 description: Beispiele für Anwendungsfälle für vorläufiges Löschen mit PowerShell-Codeausschnitten
 author: bryanla
-manager: mbaldwin
+manager: barbkess
 ms.service: key-vault
 ms.topic: conceptual
 ms.date: 02/01/2018
 ms.author: bryanla
-ms.openlocfilehash: c979d6eccd5c185d89252302b40fdd674e3c5916
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 70437403d3b78b7f8b9eef921c933a68793450da
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657500"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56113582"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>Verwenden des vorläufigen Löschens in Key Vault mit PowerShell
 
@@ -23,14 +23,16 @@ Das Azure Key Vault-Feature für vorläufiges Löschen ermöglicht die Wiederher
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Azure PowerShell 4.0.0 oder höher: Sie müssen Azure PowerShell installieren und Ihrem Azure-Abonnement zuweisen, sofern noch nicht geschehen. Informationen finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+- Azure PowerShell 1.0.0 oder höher: Sie müssen Azure PowerShell installieren und Ihrem Azure-Abonnement zuweisen, sofern noch nicht geschehen. Informationen dazu finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview). 
 
 >[!NOTE]
 > Eine veraltete Version unserer Key Vault PowerShell-Ausgabeformatierungsdatei wurde **möglicherweise** anstelle der richtigen Version in Ihre Umgebung geladen. Es ist eine aktualisierte Version von PowerShell mit den erforderlichen Korrekturen bei der Ausgabeformatierung vorgesehen. Dieses Thema wird dann entsprechend aktualisiert. Zur Umgehung dieses Formatierungsproblems sollten Sie zurzeit folgendermaßen vorgehen:
-> - Wenn Sie feststellen, dass die zum vorläufigen Löschen fähige Eigenschaft, die in diesem Thema beschrieben wird, nicht angezeigt wird, verwenden Sie die folgende Abfrage: `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
+> - Wenn Sie feststellen, dass die zum vorläufigen Löschen fähige Eigenschaft, die in diesem Thema beschrieben wird, nicht angezeigt wird, verwenden Sie die folgende Abfrage: `$vault = Get-AzKeyVault -VaultName myvault; $vault.EnableSoftDelete`.
 
 
-Spezielle Key Vault-Referenzinformationen für PowerShell finden Sie in der [PowerShell-Referenz für Azure Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0).
+Spezifische Key Vault-Referenzinformationen für PowerShell finden Sie in der [PowerShell-Referenz für Azure Key Vault](/powershell/module/az.keyvault).
 
 ## <a name="required-permissions"></a>Erforderliche Berechtigungen
 
@@ -56,9 +58,9 @@ Sie können das vorläufige Löschen aktivieren, im die Wiederherstellung eines 
 Für einen vorhandenen Schlüsseltresor mit dem Namen „ContosoVault“ aktivieren Sie vorläufiges Löschen wie folgt: 
 
 ```powershell
-($resource = Get-AzureRmResource -ResourceId (Get-AzureRmKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
+($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enableSoftDelete" -Value "true"
 
-Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Properties
+Set-AzResource -resourceid $resource.ResourceId -Properties $resource.Properties
 ```
 
 ### <a name="new-key-vault"></a>Neuer Schlüsseltresor
@@ -66,7 +68,7 @@ Set-AzureRmResource -resourceid $resource.ResourceId -Properties $resource.Prope
 Für einen neuen Schlüsseltresor wird vorläufiges Löschen bei der Erstellung aktiviert. Dazu wird das Flag für die Aktivierung des vorläufigen Löschens zum Erstellungsbefehl hinzugefügt.
 
 ```powershell
-New-AzureRmKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
+New-AzKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Location "westus" -EnableSoftDelete
 ```
 
 ### <a name="verify-soft-delete-enablement"></a>Überprüfen der Aktivierung des vorläufigen Löschens
@@ -74,7 +76,7 @@ New-AzureRmKeyVault -Name "ContosoVault" -ResourceGroupName "ContosoRG" -Locatio
 Um sicherzustellen, dass für einen Schlüsseltresor vorläufiges Löschen aktiviert ist, führen Sie den *show*-Befehl aus, und suchen Sie nach dem Attribut „Soft Delete Enabled?“ Attribut:
 
 ```powershell
-Get-AzureRmKeyVault -VaultName "ContosoVault"
+Get-AzKeyVault -VaultName "ContosoVault"
 ```
 
 ## <a name="deleting-a-soft-delete-protected-key-vault"></a>Löschen eines mit vorläufigem Löschen geschützten Schlüsseltresors
@@ -85,7 +87,7 @@ Der Befehl zum Löschen eines Schlüsseltresors ändert das Verhalten, je nachde
 >Wenn Sie den folgenden Befehl für einen Schlüsseltresor ausführen, für den vorläufiges Löschen nicht aktiviert ist, werden dieser Schlüsseltresor und sein gesamter Inhalt ohne Optionen für die Wiederherstellung endgültig gelöscht.
 
 ```powershell
-Remove-AzureRmKeyVault -VaultName 'ContosoVault'
+Remove-AzKeyVault -VaultName 'ContosoVault'
 ```
 
 ### <a name="how-soft-delete-protects-your-key-vaults"></a>Schützen der Schlüsseltresore mit vorläufigem Löschen
@@ -99,7 +101,7 @@ Vorläufiges Löschen ist aktiviert:
 Sie können Schlüsseltresore im gelöschten Zustand für Ihr Abonnement mit dem folgenden Befehl anzeigen:
 
 ```powershell
-PS C:\> Get-AzureRmKeyVault -InRemovedState 
+PS C:\> Get-AzKeyVault -InRemovedState 
 ```
 
 - Anhand des Felds *Id* kann beim Wiederherstellen oder Bereinigen die Ressource ermittelt werden. 
@@ -111,7 +113,7 @@ PS C:\> Get-AzureRmKeyVault -InRemovedState
 Um einen Schlüsseltresor wiederherzustellen, müssen Sie den Schlüsseltresornamen, die Ressourcengruppe und den Speicherort angeben. Notieren Sie sich den Speicherort und die Ressourcengruppe des gelöschten Schlüsseltresors, da Sie diese Angaben für die Wiederherstellung benötigen.
 
 ```powershell
-Undo-AzureRmKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
+Undo-AzKeyVaultRemoval -VaultName ContosoVault -ResourceGroupName ContosoRG -Location westus
 ```
 
 Wenn ein Schlüsseltresor wiederhergestellt wird, wird eine neue Ressource mit der ursprünglichen Ressourcen-ID des Schlüsseltresors erstellt. Wenn die ursprüngliche Ressourcengruppe entfernt wird, muss vor dem Versuch der Wiederherstellung eine mit dem gleichen Namen erstellt werden.
@@ -121,7 +123,7 @@ Wenn ein Schlüsseltresor wiederhergestellt wird, wird eine neue Ressource mit d
 Der folgende Befehl löscht den Schlüssel „ContosoFirstKey“ in einem Schlüsselspeicher namens „ContosoVault“, bei dem das vorläufige Löschen aktiviert ist:
 
 ```powershell
-Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
+Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
 Wenn für einen Schlüsseltresor vorläufiges Löschen aktiviert ist und ein Schlüssel gelöscht wird, sieht es weiterhin so aus, als ob der Schlüssel gelöscht wurde – außer beim expliziten Auflisten oder Abrufen gelöschter Schlüssel. Bei den meisten Vorgängen für Schlüssel im gelöschten Zustand tritt ein Fehler auf, außer beim Auflisten, Wiederherstellen oder Bereinigen eines gelöschten Schlüssels. 
@@ -129,7 +131,7 @@ Wenn für einen Schlüsseltresor vorläufiges Löschen aktiviert ist und ein Sch
 Der folgende Befehl listet gelöschte Schlüssel im Schlüsseltresor „ContosoVault“ auf:
 
 ```powershell
-Get-AzureKeyVaultKey -VaultName ContosoVault -InRemovedState
+Get-AzKeyVaultKey -VaultName ContosoVault -InRemovedState
 ```
 
 ### <a name="transition-state"></a>Übergangsstatus 
@@ -145,7 +147,7 @@ Wie bei Schlüsseltresoren verbleiben gelöschte Schlüssel, Geheimnisse oder Ze
 So stellen Sie einen vorläufig gelöschten Schlüssel wieder her:
 
 ```powershell
-Undo-AzureKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
+Undo-AzKeyVaultKeyRemoval -VaultName ContosoVault -Name ContosoFirstKey
 ```
 
 So löschen Sie einen vorläufig gelöschten Schlüssel dauerhaft (auch als Bereinigung bezeichnet):
@@ -154,7 +156,7 @@ So löschen Sie einen vorläufig gelöschten Schlüssel dauerhaft (auch als Bere
 > Bei der Bereinigung eines Schlüssels wird er endgültig gelöscht. Das bedeutet, dass er nicht wiederhergestellt werden kann. 
 
 ```powershell
-Remove-AzureKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
+Remove-AzKeyVaultKey -VaultName ContosoVault -Name ContosoFirstKey -InRemovedState
 ```
 
 Den Aktionen zum **Wiederherstellen** und **Bereinigen** sind in einer Schlüsseltresor-Zugriffsrichtlinie eigene Berechtigungen zugewiesen. Damit ein Benutzer oder Dienstprinzipal eine Aktion zum **Wiederherstellen** oder **Bereinigen** ausführen kann, muss er über die entsprechende Berechtigung für diesen Schlüssel oder das Geheimnis verfügen. Die Berechtigung zum **Bereinigen** wird standardmäßig nicht zur Zugriffsrichtlinie eines Schlüsseltresors hinzugefügt, wenn mit der Verknüpfung „Alle“ alle Berechtigungen gewährt werden. Sie müssen die Berechtigung zum **Bereinigen** explizit gewähren. 
@@ -164,7 +166,7 @@ Den Aktionen zum **Wiederherstellen** und **Bereinigen** sind in einer Schlüsse
 Der folgende Befehl erteilt user@contoso.com die Berechtigung zum Ausführen verschiedener Vorgänge für Schlüssel in *ContosoVault*, einschließlich **Bereinigen**:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
+Set-AzKeyVaultAccessPolicy -VaultName ContosoVault -UserPrincipalName user@contoso.com -PermissionsToKeys get,create,delete,list,update,import,backup,restore,recover,purge
 ```
 
 >[!NOTE] 
@@ -176,17 +178,17 @@ Genauso wie Schlüssel werden auch geheime Schlüssel mit ihren eigenen Befehlen
 
 - Löschen eines Geheimnisses mit dem Namen „SQLPassword“: 
 ```powershell
-Remove-AzureKeyVaultSecret -VaultName ContosoVault -name SQLPassword
+Remove-AzKeyVaultSecret -VaultName ContosoVault -name SQLPassword
 ```
 
 - Auflisten aller gelöschten Geheimnisse in einem Schlüsseltresor: 
 ```powershell
-Get-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState
+Get-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState
 ```
 
 - Wiederherstellen eines Geheimnisses im gelöschten Zustand: 
 ```powershell
-Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
+Undo-AzKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
 ```
 
 - Bereinigen eines Geheimnisses im gelöschten Zustand: 
@@ -195,28 +197,28 @@ Undo-AzureKeyVaultSecretRemoval -VaultName ContosoVault -Name SQLPAssword
   > Bei der Bereinigung eines Geheimnisses wird es endgültig gelöscht. Das bedeutet, dass es nicht wiederhergestellt werden kann.
 
   ```powershell
-  Remove-AzureKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
+  Remove-AzKeyVaultSecret -VaultName ContosoVault -InRemovedState -name SQLPassword
   ```
 
 ## <a name="purging-a-soft-delete-protected-key-vault"></a>Bereinigen eines mit vorläufigem Löschen geschützten Schlüsseltresors
 
 > [!IMPORTANT]
-> Bei der Bereinigung eines Schlüsseltresors oder eines der darin enthaltenen Objekte wird er endgültig gelöscht. Das bedeutet, dass er nicht wiederhergestellt werden kann.
+> Bei der Bereinigung eines Schlüsseltresors oder eines seiner enthaltenen Objekte wird das Element endgültig gelöscht. Das bedeutet, dass es nicht wiederhergestellt werden kann.
 
-Die Bereinigungsfunktion wird verwendet, um ein Schlüsseltresorobjekt oder einen ganzen Schlüsseltresor, der zuvor vorläufig gelöscht wurde, dauerhaft zu löschen. Wie im vorherigen Abschnitt gezeigt, können Objekte, die in einem Schlüsseltresor mit aktiviertem vorläufigem Löschen gespeichert werden, mehrere Zustände durchlaufen:
-
-- **Aktiv**: vor dem Löschen
+Die Bereinigungsfunktion wird verwendet, um ein Schlüsseltresorobjekt oder einen ganzen Schlüsseltresor, der zuvor vorläufig gelöscht war, dauerhaft zu löschen. Wie im vorherigen Abschnitt gezeigt, können Objekte, die in einem Schlüsseltresor mit aktiviertem vorläufigem Löschen gespeichert werden, mehrere Zustände durchlaufen:
+- **Aktiv**: Vor dem Löschen
 - **Vorläufig gelöscht**: Nach dem Löschen, das Objekt kann aufgelistet und wieder in den aktiven Zustand zurückversetzt werden.
 - **Dauerhaft gelöscht**: Nach der Bereinigung, das Objekt kann nicht wiederhergestellt werden.
+
 
 Das Gleiche gilt für Schlüsseltresore. Um vorläufig gelöschte Schlüsseltresore und deren Inhalt dauerhaft zu löschen, müssen Sie den Schlüsseltresor selbst bereinigen.
 
 ### <a name="purging-a-key-vault"></a>Bereinigen eines Schlüsseltresors
 
-Wenn ein Schlüsseltresor bereinigt wird, wird sein gesamter Inhalt, d.h. Schlüssel, Geheimnisse und Zertifikate, endgültig gelöscht. Verwenden Sie zum Bereinigen eines vorläufig gelöschten Schlüsseltresors den Befehl `Remove-AzureRmKeyVault` mit der Option `-InRemovedState`. Geben Sie dabei den Speicherort des gelöschten Schlüsseltresors mit dem Argument `-Location location` an. Den Speicherort eines gelöschten Tresor ermitteln Sie mit dem Befehl `Get-AzureRmKeyVault -InRemovedState`.
+Wenn ein Schlüsseltresor bereinigt wird, wird sein gesamter Inhalt, d.h. Schlüssel, Geheimnisse und Zertifikate, endgültig gelöscht. Verwenden Sie zum Bereinigen eines vorläufig gelöschten Schlüsseltresors den Befehl `Remove-AzKeyVault` mit der Option `-InRemovedState`. Geben Sie dabei den Speicherort des gelöschten Schlüsseltresors mit dem Argument `-Location location` an. Den Speicherort eines gelöschten Tresor ermitteln Sie mit dem Befehl `Get-AzKeyVault -InRemovedState`.
 
 ```powershell
-Remove-AzureRmKeyVault -VaultName ContosoVault -InRemovedState -Location westus
+Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 ```
 
 ### <a name="purge-permissions-required"></a>Berechtigungen zum Bereinigen erforderlich
@@ -234,5 +236,5 @@ Beim Auflisten Ihrer gelöschten Schlüsseltresorobjekte wird angezeigt, wann ih
 ## <a name="other-resources"></a>Weitere Ressourcen
 
 - Eine Übersicht über das Feature für vorläufiges Löschen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](key-vault-ovw-soft-delete.md).
-- Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md).
+- Eine allgemeine Übersicht über die Nutzung von Azure Key Vault finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md).
 

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e642cba3354f4f8589e44d975c0cecf5692c5b5
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 02df0a5d13aeb90049383f61d743e8a11e93fc79
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432921"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56188527"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Tutorial: Azure Active Directory-Integration mit Gra-Pe
 
@@ -156,7 +157,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-gra-pe-test-user"></a>Erstellen eines Gra-Pe-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Gra-Pe einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Supportteam von Gra-Pe](https://www.toppantravel.com/inquiry/) zusammen, um die Benutzer auf der Gra-Pe-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Gra-Pe einen Benutzer namens Britta Simon. Arbeiten Sie mit dem  [Supportteam von Gra-Pe](https://www.toppantravel.com/inquiry/) zusammen, um die Benutzer auf der Gra-Pe-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor – Log Analytics-Abfragebeispiele | Microsoft-Dokumentation
-description: Beispiele für Abfragen in Log Analytics unter Verwendung der Kusto-Sprache.
+title: Beispiele für Protokollabfragen in Azure Monitor | Microsoft-Dokumentation
+description: Beispiele für Protokollabfragen in Azure Monitor unter Verwendung der Data Explorer-Abfragesprache.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/03/2018
 ms.author: bwren
-ms.openlocfilehash: d5cad3869e74f33a2d1a56352c658bb9c8f23db6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: 81852590ec714c458ebf2ba2b714d0b20f0b873c
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52885044"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55993196"
 ---
-# <a name="log-analytics-query-examples"></a>Log Analytics-Abfragebeispiele
-Dieser Artikel enthält mehrere Beispiele für [Abfragen](../../azure-monitor/log-query/log-query-overview.md) unter Verwendung der [Kusto-Sprache](https://docs.microsoft.com/azure/kusto/query/), mit denen verschiedene Arten von Daten aus Log Analytics abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
+# <a name="azure-monitor-log-query-examples"></a>Beispiele für Protokollabfragen in Azure Monitor
+Dieser Artikel enthält mehrere Beispiele für [Abfragen](log-query-overview.md) unter Verwendung der [Data Explorer-Sprache](https://docs.microsoft.com/azure/kusto/query/), mit denen verschiedene Arten von Protokolldaten aus Azure Monitor abgerufen werden. Da Daten auf unterschiedliche Weise konsolidiert und analysiert werden, können Sie anhand dieser Beispiele verschiedene Strategien ermitteln, die ggf. für Ihre eigenen Anforderungen geeignet sind.  
 
-Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](https://docs.microsoft.com/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Log Analytics haben, machen Sie sich anhand [dieser Lektion](get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
+Ausführliche Informationen zu den Schlüsselwörtern aus diesen Beispielen finden Sie in der [Kusto-Sprachreferenz](https://docs.microsoft.com/azure/kusto/query/). Sollten Sie noch keine Erfahrung mit Azure Monitor haben, machen Sie sich anhand [dieser Lektion](get-started-queries.md) mit dem Erstellen von Abfragen vertraut.
 
 ## <a name="events"></a>Ereignisse
 
@@ -440,4 +440,4 @@ Update
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Ausführliche Informationen zur Kusto-Sprache finden Sie in der entsprechenden [Sprachreferenz](/azure/kusto/query).
-- Machen Sie sich mit dem [Schreiben von Abfragen in Log Analytics](get-started-queries.md) vertraut.
+- Machen Sie sich mit dem [Schreiben von Protokollabfragen in Azure Monitor](get-started-queries.md) vertraut.

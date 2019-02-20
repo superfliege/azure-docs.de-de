@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/24/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 75aecd166d03b751f778221632fad68d279f63a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 11eb849567079bfb1293c3c1e8ce97c43b66d493
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468868"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116843"
 ---
 # <a name="choose-the-right-consistency-level"></a>Auswählen der richtigen Konsistenzebene 
 
@@ -33,6 +33,8 @@ Beachten Sie die folgenden Punkte, wenn Ihre Anwendung mit der Cosmos DB-SQL-API
 - Wenn Sie weniger strenge Konsistenzgarantien als mit Sitzungskonsistenz benötigen, wird empfohlen, die Konsistenzebene „Präfixkonsistenz“ zu verwenden.
 
 - Wenn Sie die höchste Verfügbarkeit und niedrigste Latenz benötigen, verwenden Sie die letztliche Konsistenzebene.
+
+- Wenn Sie eine noch höhere Datendauerhaftigkeit ohne Einbußen bei der Leistung benötigen, können Sie eine benutzerdefinierte Konsistenzebene auf Anwendungsebene erstellen. Weitere Informationen finden Sie unter [Implementieren einer benutzerdefinierten Synchronisierung in Ihrer Anwendung](how-to-custom-synchronization.md).
 
 ## <a name="cassandra-mongodb-and-gremlin-api"></a>Cassandra-, MongoDB- und Gremlin-API
 

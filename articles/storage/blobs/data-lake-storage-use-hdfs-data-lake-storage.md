@@ -1,6 +1,6 @@
 ---
-title: Verwenden der HDFS-CLI mit Azure Data Lake Storage Gen2 (Vorschauversion)
-description: Einführung in die HDFS-CLI für Data Lake Storage Gen2 (Vorschauversion)
+title: Verwenden der HDFS-CLI mit Azure Data Lake Storage Gen2
+description: Einführung in die HDFS-CLI für Data Lake Storage Gen2
 services: storage
 author: artemuwka
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2691346433b3cc29b22446152ea797cefb02a380
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 649fe5ebadf69a90b4794fcaf4519ea5bcc0c4a2
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55241269"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55874180"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten und deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in einem Azure Storage-Konto gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden.
+Azure Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in einem Azure Storage-Konto gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS-CLI mit HDInsight
 

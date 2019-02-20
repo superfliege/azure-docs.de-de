@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: article
-ms.date: 01/15/2019
+ms.date: 02/05/2019
 ms.author: alkohli
-ms.openlocfilehash: acf455bff739666712917008dc8090c6a95c6dc4
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f785e9e540af01b74678cf75159775cd2888e09e
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815643"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55959577"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Für Azure Data Box Gateway geltende Einschränkungen (Vorschauversion)
 
@@ -26,8 +26,7 @@ Berücksichtigen Sie die folgenden Einschränkungen beim Bereitstellen und Betre
 
 ## <a name="data-box-gateway-service-limits"></a>Für den Data Box Gateway-Dienst geltende Einschränkungen
 
-- In dieser Version ist der Dienst nur in bestimmten Regionen in den USA, Europa und Asien-Pazifik verfügbar. Weitere Informationen finden Sie unter „Regionale Verfügbarkeit“. Das Speicherkonto sollte sich physisch in der Nähe der Region befinden, in der das Gerät bereitgestellt wird (diese kann sich von der Region des Diensts unterscheiden).
-- Das Verschieben einer Data Box Gateway-Ressource in ein anderes Abonnement oder eine andere Ressourcengruppe wird nicht unterstützt. Weitere Informationen finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+[!INCLUDE [data-box-edge-gateway-service-limits](../../includes/data-box-edge-gateway-service-limits.md)]
 
 ## <a name="data-box-gateway-device-limits"></a>Für das Data Box Gateway-Gerät geltende Einschränkungen
 
@@ -37,48 +36,24 @@ In der folgenden Tabelle werden die für das Data Box Gateway-Gerät geltenden E
 |---|---|
 | Nein. der Dateien pro Gerät |100 Mio. <br> Der Grenzwert liegt bei ca. 25 Mio. Dateien pro 2 TB Datenträgerkapazität mit einer Obergrenze von 100 Mio. |
 | Nein. der Freigaben pro Gerät |24 |
+| Nein. Freigaben pro Container |1 |
 |Maximale in eine Freigabe geschriebene Dateigröße|Für ein virtuelles Gerät mit 2 TB beträgt die maximale Dateigröße 500 GB. <br> Die maximale Dateigröße steigt mit der Größe des Datenträgers im vorhergehenden Verhältnis an, bis ein Maximum von 5 TB erreicht wird. |
 
 ## <a name="azure-storage-limits"></a>Speichergrenzwerte für Azure
 
-In diesem Abschnitt werden die geltenden Einschränkungen für den Azure Storage-Dienst und die Benennungskonventionen für Azure Files, Azure-Blockblobs und Azure-Seitenblobs beschrieben, sofern für den Data Box Gateway-/Data Box Edge-Dienst zutreffend. Machen Sie sich sorgfältig mit den Speichergrenzwerten vertraut, und beachten Sie alle Empfehlungen.
-
-Aktuelle Informationen zu Grenzwerten für den Azure Storage-Dienst und bewährte Vorgehensweisen für die Benennung von Freigaben, Containern und Dateien finden Sie hier:
-
-- [Benennen und Referenzieren von Containern, Blobs und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Benennen und Referenzieren von Freigaben, Verzeichnissen, Dateien und Metadaten](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
-- [Verstehen von Blockblobs, Anfügeblobs und Seitenblobs](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
-
-> [!IMPORTANT]
-> Wenn Dateien oder Verzeichnisse die Grenzwerte des Azure Storage-Diensts überschreiten oder nicht den Benennungskonventionen für Azure Files/-Blobs entsprechen, werden diese Dateien oder Verzeichnisse nicht über den Data Box Gateway-/Data Box Edge-Dienst in Azure Storage erfasst.
+[!INCLUDE [data-box-edge-gateway-storage-limits](../../includes/data-box-edge-gateway-storage-limits.md)]
 
 ## <a name="data-upload-caveats"></a>Einschränkungen beim Hochladen von Daten
 
-Die folgenden Einschränkungen gelten für Daten, die in Azure verschoben werden.
-
-- Es wird empfohlen, dass nicht mehr als ein Gerät in den gleichen Container schreibt.
-- Wenn Sie bereits über ein Azure-Objekt (z.B. Blob oder Datei) in der Cloud verfügen, das den gleichen Namen hat wie das Objekt, das kopiert wird, überschreibt das Gerät die Datei in der Cloud.
-- Eine unter Freigabeordnern erstellte leere Verzeichnishierarchie (ohne jegliche Dateien) wird nicht in die Blobcontainer hochgeladen.
-- Wenn Sie Dateien kopieren, die größer als das Gerät sind, sollten Sie *Robocopy* oder *rsync* verwenden, um sicherzustellen, dass keine Fehler enthalten sind.
+[!INCLUDE [data-box-edge-gateway-storage-data-upload-caveats](../../includes/data-box-edge-gateway-storage-data-upload-caveats.md)]
 
 ## <a name="azure-storage-account-size-and-object-size-limits"></a>Größenbeschränkungen für das Azure-Speicherkonto und Objekte
 
-Dies sind die Grenzwerte für die Größe der Daten, die in das Speicherkonto kopiert werden. Stellen Sie sicher, dass die von Ihnen hochgeladenen Daten diesen Grenzwerten entsprechen. Die neuesten Informationen zu diesen Einschränkungen finden Sie unter [Skalierbarkeitsziele für Azure-Blobspeicher](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-blob-storage-scale-targets) und [Skalierbarkeitsziele für Azure Files](https://docs.microsoft.com/azure/storage/common/storage-scalability-targets#azure-files-scale-targets).
-
-| Größe der in das Azure-Speicherkonto kopierten Daten                      | Standardlimit          |
-|---------------------------------------------------------------------|------------------------|
-| Blockblob und Seitenblob                                            | 500 TB pro Speicherkonto|
-
+[!INCLUDE [data-box-edge-gateway-storage-acct-limits](../../includes/data-box-edge-gateway-storage-acct-limits.md)]
 
 ## <a name="azure-object-size-limits"></a>Größenbeschränkungen für das Azure-Objekt
 
-Hier sind die Größen der Azure-Objekte, die geschrieben werden können. Stellen Sie sicher, dass alle Dateien, die hochgeladen werden, diesen Einschränkungen entsprechen.
-
-| Azure-Objekttyp | Standardlimit                                             |
-|-------------------|-----------------------------------------------------------|
-| Blockblob        | ~ 8TB                                                 |
-| Seitenblob         | 1 TB <br> Jede Datei, die im Seitenblobformat hochgeladen wird, muss einem ganzzahligen Vielfachen von 512 Bytes entsprechen. Andernfalls tritt beim Hochladen ein Fehler auf. <br> VHD- und VHDX-Dateien entsprechen einem ganzzahligen Vielfachen von 512 Bytes. |
-
+[!INCLUDE [data-box-edge-gateway-storage-object-limits](../../includes/data-box-edge-gateway-storage-object-limits.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

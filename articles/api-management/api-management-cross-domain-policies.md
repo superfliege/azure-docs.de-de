@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fbafd2d224879dbe33c581c13dfe52fc9a22ae55
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510816"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098532"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies (Domänenübergreifende API Management-Richtlinien)
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -145,7 +145,7 @@ In diesem Beispiel wird die Unterstützung von Preflightanforderungen veranschau
 Diese Richtlinie kann in den folgenden [Abschnitten](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) und [Bereichen](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes) von Richtlinien verwendet werden.
 
 - **Richtlinienabschnitte**: inbound
-- **Richtlinienbereiche:** API, operation
+- **Richtlinienbereiche:** global, API, operation
 
 ## <a name="JSONP"></a> JSONP
 Die Richtlinie `jsonp` fügt einem Vorgang oder einer API Unterstützung für JSON mit Padding (JSONP) hinzu, um domänenübergreifende Aufrufe von browserbasierten Clients mit JavaScript aus zu ermöglichen. JSONP wird in JavaScript-Programmen verwendet, um Daten von einem Server in einer anderen Domäne anzufordern. JSONP umgeht die Einschränkung der meisten Webbrowser, dass der Zugriff auf Webseiten nur innerhalb derselben Domäne möglich ist.

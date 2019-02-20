@@ -1,6 +1,6 @@
 ---
 title: Office 365-Verwaltungslösung in Azure | Microsoft-Dokumentation
-description: Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in Azure.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Log Analytics erstellt werden.
+description: Dieser Artikel bietet Einzelheiten zur Konfiguration und Verwendung der Office 365-Lösung in Azure.  Er enthält eine ausführliche Beschreibung der Office 365-Datensätze, die in Azure Monitor erstellt werden.
 services: operations-management-suite
 documentationcenter: ''
 author: bwren
@@ -12,24 +12,24 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 370483b92dcd2c468cd676a32db0ded80e8814d0
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 92ba185ce3c271284ae20981408b2b12f516e3c8
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216611"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55999299"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365-Verwaltungslösung in Azure (Vorschau)
 
 ![Office 365-Logo](media/solution-office-365/icon.png)
 
-Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Log Analytics überwachen.
+Mit der Office 365-Verwaltungslösung können Sie Ihre Office 365-Umgebung in Azure Monitor überwachen.
 
 - Überwachen Sie Benutzeraktivitäten mit Ihren Office 365-Konten, um die Verwendungsmuster zu analysieren und Trends beim Verhalten zu identifizieren. Beispielsweise können Sie spezielle Verwendungsszenarien extrahieren, wie z.B. Dateien, die außerhalb Ihrer Organisation freigegeben werden, oder die am häufigsten verwendeten SharePoint-Websites.
 - Überwachen Sie Administratoraktivitäten, um Konfigurationsänderungen oder Vorgänge mit erhöhten Rechten nachzuverfolgen.
 - Ermitteln und untersuchen Sie unerwünschtes Benutzerverhalten. Dies kann an die Anforderungen Ihrer Organisation angepasst werden.
 - Demonstrieren Sie Überwachung und Compliance. Beispielsweise können Sie Dateizugriffe auf vertrauliche Dateien überwachen und so den Überwachungs- und Complianceprozess unterstützen.
-- Führen Sie eine operative Problembehandlung mithilfe der [Protokollsuchen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
+- Führen Sie eine operative Problembehandlung mithilfe der [Protokollabfragen](../log-query/log-query-overview.md) in den Office 365-Aktivitätsdaten Ihrer Organisation durch.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wird.
@@ -43,7 +43,7 @@ Folgendes ist erforderlich, bevor diese Lösung installiert und konfiguriert wir
 Bei dieser Lösung werden keine Management Packs in [verbundenen Verwaltungsgruppen](../platform/om-agents.md) installiert.
   
 ## <a name="install-and-configure"></a>Installieren und konfigurieren
-Starten Sie durch Hinzufügen der [Office 365-Lösung zu Ihrem Abonnement](solutions.md#install-a-management-solution). Führen Sie nach dem Hinzufügen die Konfigurationsschritte in diesem Abschnitt aus, um den Zugriff auf Ihr Office 365-Abonnement zu ermöglichen.
+Starten Sie durch Hinzufügen der [Office 365-Lösung zu Ihrem Abonnement](solutions.md#install-a-monitoring-solution). Führen Sie nach dem Hinzufügen die Konfigurationsschritte in diesem Abschnitt aus, um den Zugriff auf Ihr Office 365-Abonnement zu ermöglichen.
 
 ### <a name="required-information"></a>Erforderliche Informationen
 Bevor Sie diese Prozedur starten, sammeln Sie die folgenden Informationen.
@@ -375,7 +375,7 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>Deinstallieren
-Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer Verwaltungslösung](solutions.md#remove-a-management-solution) beschriebenen Prozesses entfernen. Dadurch wird das Sammeln von Daten aus Office 365 in Log Analytics jedoch nicht beendet. Gehen Sie wie folgt vor, um das Abonnement von Office 365 zu kündigen und die Datensammlung zu beenden.
+Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer Verwaltungslösung](solutions.md#remove-a-monitoring-solution) beschriebenen Prozesses entfernen. Dadurch wird das Sammeln von Daten aus Office 365 in Azure Monitor jedoch nicht beendet. Gehen Sie wie folgt vor, um das Abonnement von Office 365 zu kündigen und die Datensammlung zu beenden.
 
 1. Speichern Sie das folgende Skript als *office365_unsubscribe.ps1*.
 
@@ -479,9 +479,12 @@ Sie können die Office 365-Verwaltungslösung mithilfe des in [Entfernen einer V
 Die Office 365-Lösung ruft keine Daten von [Log Analytics-Agents](../platform/agent-data-sources.md) ab.  Sie ruft Daten direkt aus Office 365 ab.
 
 ### <a name="collection-frequency"></a>Sammlungshäufigkeit
-Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Log Analytics. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Log Analytics verfügbar.
+Es kann einige Stunden dauern, bis die Daten gesammelt werden. Sobald die Sammlung begonnen hat, sendet Office 365 immer dann, wenn ein Datensatz erstellt wurde, eine [Webhookbenachrichtigung](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications) mit detaillierten Daten an Azure Monitor. Dieser Datensatz ist innerhalb weniger Minuten nach dem Empfang in Azure Monitor verfügbar.
 
 ## <a name="using-the-solution"></a>Verwenden der Lösung
+
+[!INCLUDE [azure-monitor-solutions-overview-page](../../../includes/azure-monitor-solutions-overview-page.md)]
+
 Wenn Sie die Office 365-Lösung dem Log Analytics-Arbeitsbereich hinzufügen, wird Ihr Dashboard um die Kachel **Office 365** erweitert. Auf dieser Kachel werden ein Zahlenwert und eine grafische Darstellung der Anzahl von Computern in Ihrer Umgebung und jeweils die Updatekonformität angezeigt.<br><br>
 ![Kachel mit der Office 365-Zusammenfassung](media/solution-office-365/tile.png)  
 
@@ -501,9 +504,9 @@ Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind.
 
 
 
-## <a name="log-analytics-records"></a>Log Analytics-Datensätze
+## <a name="azure-monitor-log-records"></a>Protokolldatensätze in Azure Monitor
 
-Alle im Log Analytics-Arbeitsbereich von der Office 365-Lösung erstellten Datensätze weisen **OfficeActivity** als **Typ** auf.  Die Eigenschaft **OfficeWorkload** bestimmt, zu welchem Office 365-Dienst der Datensatz gehört: Exchange, AzureActiveDirectory, SharePoint oder OneDrive.  Die Eigenschaft **RecordType** gibt den Typ des Vorgangs an.  Die Eigenschaften für jeden Vorgangstyp variieren. Sie sind in den folgenden Tabellen dargestellt.
+Alle im Log Analytics-Arbeitsbereich in Azure Monitor von der Office 365-Lösung erstellten Datensätze weisen **OfficeActivity** als **Typ** auf.  Die Eigenschaft **OfficeWorkload** bestimmt, zu welchem Office 365-Dienst der Datensatz gehört: Exchange, AzureActiveDirectory, SharePoint oder OneDrive.  Die Eigenschaft **RecordType** gibt den Typ des Vorgangs an.  Die Eigenschaften für jeden Vorgangstyp variieren. Sie sind in den folgenden Tabellen dargestellt.
 
 ### <a name="common-properties"></a>Allgemeine Eigenschaften
 Die folgenden Eigenschaften gelten für alle Office 365-Datensätze.
@@ -708,6 +711,6 @@ Die folgende Tabelle enthält Beispiele für Protokollsuchen für Updatedatensä
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Verwenden Sie die Protokollsuche in [Log Analytics](../log-query/log-query-overview.md), um ausführliche Daten zu Updates anzuzeigen.
+* Verwenden Sie [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md), um ausführliche Aktualisierungsdaten anzuzeigen.
 * [Erstellen Sie eigene Dashboards](../learn/tutorial-logs-dashboards.md), um Ihre bevorzugten Office 365-Suchabfragen anzuzeigen.
 * [Erstellen Sie Warnungen](../platform/alerts-overview.md), um proaktiv über wichtige Office 365-Aktivitäten benachrichtigt zu werden.  

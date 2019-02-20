@@ -11,40 +11,42 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 04/27/2018
+ms.date: 01/19/2019
 ms.author: glenga
-ms.openlocfilehash: 34177cb2ea1650c4b7130d8c5a2a886655852783
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: ab502c25a632977065e55d2eeafd684203636b14
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53555029"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109910"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Verwenden des WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
-Dieser Artikel enthält Anleitungen zum Schreiben von Code für das [Azure WebJobs SDK](webjobs-sdk-get-started.md). Die Dokumentation gilt für die Versionen 2.x und 3.x, sofern nicht anders vermerkt. Die wichtigste in 3.x eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework.
+Dieser Artikel enthält Anleitungen zum Schreiben von Code für das [Azure WebJobs SDK](webjobs-sdk-get-started.md). Die Dokumentation gilt sowohl für die Version 3.x als auch für die Version 2.x des WebJobs SDK. Bei Abweichungen der API stehen Beispiele für beide Versionen zur Verfügung. Die wichtigste in Version 3.x eingeführte Änderung ist die Verwendung von .NET Core anstelle von .NET Framework.
 
 >[!NOTE]
 > [Azure Functions](../azure-functions/functions-overview.md) basiert auf dem WebJobs SDK. Dieser Artikel enthält bei einigen Themen Links zur Azure Functions-Dokumentation. Beachten Sie die folgenden Unterschiede zwischen Functions und dem WebJobs SDK:
-> * Azure Functions Version 1.x entspricht der WebJobs SDK-Version 2.x, und Azure Functions 2.x entspricht WebJobs SDK 3.x. Quellcode-Repositorys folgen der WebJobs SDK-Nummerierung, und viele verfügen über v2.x-Branches, wobei der Masterbranch aktuell 3.x-Code aufweist.
+> * Azure Functions 2.x entspricht dem WebJobs SDK 3.x. Azure Functions 1.x entspricht dem WebJobs SDK 2.x. Quellcoderepositorys orientieren sich an der WebJobs SDK-Nummerierung.
 > * Der Beispielcode für Azure Functions C#-Klassenbibliotheken entspricht dem WebJobs SDK-Code, mit der Ausnahme, dass Sie in einem WebJobs SDK-Projekt kein `FunctionName`-Attribut benötigen.
-> * Einige Bindungstypen, z. B. HTTP, Webhook und Event Grid (der auf HTTP basiert), werden nur in Functions unterstützt. 
+> * Einige Bindungstypen, z. B. HTTP, Webhook und Event Grid (der auf HTTP basiert), werden nur in Functions unterstützt.
 > 
-> Weitere Informationen finden Sie unter [Vergleich von WebJobs SDK und Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs). 
+> Weitere Informationen finden Sie unter [Vergleich von WebJobs SDK und Azure Functions](../azure-functions/functions-compare-logic-apps-ms-flow-webjobs.md#compare-functions-and-webjobs).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie [Erste Schritte mit dem WebJobs SDK](webjobs-sdk-get-started.md) gelesen haben.
+In diesem Artikel wird davon ausgegangen, dass Sie die [ersten Schritte mit dem WebJobs SDK](webjobs-sdk-get-started.md) gelesen und ausgeführt haben.
 
-## <a name="jobhost"></a>JobHost
+## <a name="webjobs-host"></a>WebJobs-Host
 
-Das `JobHost`-Objekt ist der Laufzeitcontainer für Funktionen: Damit werden Trigger überwacht und Funktionen aufgerufen. Sie erstellen das `JobHost`-Objekt in Ihrem Code und schreiben Code zum Anpassen des entsprechenden Verhaltens.
+Der Host ist ein Runtimecontainer für Funktionen.  Er lauscht auf Trigger und ruft Funktionen auf. In Version 3.x ist der Host eine Implementierung von `IHost`. In Version 2.x verwenden Sie das Objekt `JobHost`. Sie erstellen eine Hostinstanz in Ihrem Code und schreiben Code zum Anpassen des entsprechenden Verhaltens.
 
-Das ist ein entscheidender Unterschied zwischen der direkten Verwendung des WebJobs SDK und der indirekten Verwendung mithilfe von Azure Functions. In Azure Functions steuert der Dienst das `JobHost`-Objekt, und Sie können es nicht durch das Schreiben von Code anpassen. In Azure Functions können Sie das Hostverhalten über die Einstellungen in der Datei *host.json* anpassen. Bei diesen Einstellungen handelt es sich um Zeichenfolgen, nicht um Code, wodurch die Arten von Anpassungen, die Sie vornehmen können, eingeschränkt werden.
+Das ist ein entscheidender Unterschied zwischen der direkten Verwendung des WebJobs SDK und der indirekten Verwendung mithilfe von Azure Functions. In Azure Functions wird der Host durch den Dienst gesteuert und kann nicht mittels Code angepasst werden. In Azure Functions können Sie das Hostverhalten über die Einstellungen in der Datei *host.json* anpassen. Bei diesen Einstellungen handelt es sich um Zeichenfolgen, nicht um Code, wodurch die Arten von Anpassungen, die Sie vornehmen können, eingeschränkt werden.
 
-### <a name="jobhost-connection-strings"></a>JobHost-Verbindungszeichenfolgen
+### <a name="host-connection-strings"></a>Hostverbindungszeichenfolgen 
 
-Bei lokaler Ausführung sucht das WebJobs SDK in der Datei *local.settings.json* nach Storage- und Service Bus-Verbindungszeichenfolgen. Und bei der Ausführung in Azure wird in der WebJobs-Umgebung danach gesucht. Wenn Sie Ihre eigenen Namen für diese Verbindungszeichenfolgen verwenden oder sie woanders speichern möchten, können Sie diese im Code festlegen, wie hier gezeigt:
+Bei lokaler Ausführung sucht das WebJobs SDK in der Datei *local.settings.json* nach Azure Storage- und Azure Service Bus-Verbindungszeichenfolgen. Bei Ausführung in Azure sucht das WebJobs SDK in der WebJobs-Umgebung. Standardmäßig ist eine Storage-Verbindungszeichenfolgeneinstellung namens `AzureWebJobsStorage` erforderlich.  
+
+In Version 2.x des SDK können Sie eigene Namen für diese Verbindungszeichenfolgen verwenden oder sie an einem anderen Ort speichern. Sie können sie im Code festlegen, wie hier gezeigt:
 
 ```cs
 static void Main(string[] args)
@@ -52,20 +54,23 @@ static void Main(string[] args)
     var _storageConn = ConfigurationManager
         .ConnectionStrings["MyStorageConnection"].ConnectionString;
 
-    var _dashboardConn = ConfigurationManager
-        .ConnectionStrings["MyDashboardConnection"].ConnectionString;
+    //// Dashboard logging is deprecated; use Application Insights.
+    //var _dashboardConn = ConfigurationManager
+    //    .ConnectionStrings["MyDashboardConnection"].ConnectionString;
 
     JobHostConfiguration config = new JobHostConfiguration();
     config.StorageConnectionString = _storageConn;
-    config.DashboardConnectionString = _dashboardConn;
+    //config.DashboardConnectionString = _dashboardConn;
     JobHost host = new JobHost(config);
     host.RunAndBlock();
 }
 ```
 
-### <a name="jobhost-development-settings"></a>JobHost-Entwicklungseinstellungen
+Aufgrund der Verwendung der standardmäßigen .NET Core-Konfigurations-APIs steht in Version 3.x keine API zum Ändern der Verbindungszeichenfolgennamen zur Verfügung.
 
-Die `JobHostConfiguration`-Klasse verfügt über eine `UseDevelopmentSettings`-Methode, die Sie aufrufen können, um die lokale Entwicklung effizienter zu gestalten. Nachfolgend finden Sie einige der Einstellungen, die durch diese Methode geändert werden:
+### <a name="host-development-settings"></a>Hostentwicklungseinstellungen
+
+Sie können den Host im Entwicklungsmodus ausführen, um die lokale Entwicklung effizienter zu machen. Im Entwicklungsmodus ändern sich unter anderem folgende Einstellungen:
 
 | Eigenschaft | Entwicklungseinstellung |
 | ------------- | ------------- |
@@ -73,7 +78,32 @@ Die `JobHostConfiguration`-Klasse verfügt über eine `UseDevelopmentSettings`-M
 | `Queues.MaxPollingInterval`  | Ein niedriger Wert, um sicherzustellen, dass die Warteschlangenmethoden sofort ausgelöst werden.  |
 | `Singleton.ListenerLockPeriod` | 15 Sekunden, um eine schnelle iterative Entwicklung zu erleichtern. |
 
-Im folgenden Beispiel wird die Verwendung von Entwicklungseinstellungen aufgezeigt. Legen Sie eine lokale Umgebungsvariable namens `AzureWebJobsEnv` mit dem Wert `Development` fest, damit `config.IsDevelopment` bei lokaler Ausführung den Wert `true` zurückgibt.
+Die Vorgehensweise zum Aktivieren des Entwicklungsmodus hängt von der SDK-Version ab. 
+
+#### <a name="version-3x"></a>Version 3.x
+
+In Version 3.x werden die standardmäßigen ASP.NET Core-APIs verwendet. Rufen Sie die Methode [UseEnvironment](/dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.useenvironment) für die [`HostBuilder`](/dotnet/api/microsoft.extensions.hosting.hostbuilder)-Instanz auf. Übergeben Sie eine Zeichenfolge namens `development`, wie im folgenden Beispiel gezeigt:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.UseEnvironment("development");
+    builder.ConfigureWebJobs(b =>
+            {
+                b.AddAzureStorageCoreServices();
+            });
+    var host = builder.Build();
+    using (host)
+    {
+        host.Run();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
+
+Die Klasse `JobHostConfiguration` verfügt zum Aktivieren des Entwicklungsmodus über die Methode `UseDevelopmentSettings`.  Im folgenden Beispiel wird die Verwendung von Entwicklungseinstellungen aufgezeigt. Legen Sie eine lokale Umgebungsvariable namens `AzureWebJobsEnv` mit dem Wert `Development` fest, damit `config.IsDevelopment` bei lokaler Ausführung den Wert `true` zurückgibt.
 
 ```cs
 static void Main()
@@ -90,11 +120,13 @@ static void Main()
 }
 ```
 
-### <a name="jobhost-servicepointmanager-settings"></a>JobHost-ServicePointManager-Einstellungen
+### <a name="jobhost-servicepointmanager-settings"></a>Verwalten gleichzeitiger Verbindungen (Version 2.x)
 
-.NET Framework enthält eine API namens [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit), die die Anzahl der gleichzeitigen Verbindungen mit einem Host steuert. Wir empfehlen Ihnen, diesen Standardwert von 2 zu erhöhen, bevor Sie Ihren WebJobs-Host starten.
+In Version 3.x ist die Verbindungsanzahl standardmäßig nicht beschränkt. Wenn sie diese Einstellung ändern möchten, können Sie die Eigenschaft [MaxConnectionsPerServer](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver) der Klasse [WinHttpHander](/dotnet/api/system.net.http.winhttphandler) verwenden.
 
-Alle ausgehenden HTTP-Anforderungen, die Sie über eine Funktion mit `HttpClient` ausführen, durchlaufen den `ServicePointManager`. Sobald Sie das `DefaultConnectionLimit` erreicht haben, stellt der `ServicePointManager` Anforderungen vor dem Senden in die Warteschlange. Angenommen, Ihr `DefaultConnectionLimit` ist auf 2 festgelegt, und Ihr Code führt 1.000 HTTP-Anforderungen aus. Anfangs sind nur 2 Anforderungen für das Betriebssystem zugelassen. Die anderen 998 Anforderungen werden in die Warteschlange eingereiht, bis genügend Platz für sie vorhanden ist. Das bedeutet, dass ein Timeout für Ihren `HttpClient` auftreten kann, weil er *denkt*, dass er die Anforderung vorgenommen hat, aber die Anforderung wurde nie vom Betriebssystem auf den Zielserver gesendet. So tritt möglicherweise ein Verhalten auf, das scheinbar keinen Sinn ergibt: Ihr lokaler `HttpClient` benötigt 10 Sekunden, um eine Anforderung abzuschließen, aber Ihr Dienst gibt jede Anforderung in 200 ms zurück. 
+In Version 2.x wird die Anzahl gleichzeitiger Verbindungen mit einem Host über die API [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) gesteuert. Es empfiehlt sich, in Version 2.x den Standardwert „2“ zu erhöhen, bevor Sie Ihren WebJobs-Host starten.
+
+Alle ausgehenden HTTP-Anforderungen, die Sie über eine Funktion mit `HttpClient` ausführen, durchlaufen den `ServicePointManager`. Sobald Sie das `DefaultConnectionLimit` erreicht haben, stellt der `ServicePointManager` Anforderungen vor dem Senden in die Warteschlange. Angenommen, Ihr `DefaultConnectionLimit` ist auf 2 festgelegt, und Ihr Code führt 1.000 HTTP-Anforderungen aus. In diesem Fall werden zunächst nur zwei Anforderungen an das Betriebssystem übermittelt. Die anderen 998 Anforderungen werden in die Warteschlange eingereiht, bis genügend Platz für sie vorhanden ist. Das bedeutet, dass ein Timeout für Ihren `HttpClient` auftreten kann, weil er *denkt*, dass er die Anforderung vorgenommen hat, aber die Anforderung wurde nie vom Betriebssystem auf den Zielserver gesendet. So tritt möglicherweise ein Verhalten auf, das scheinbar keinen Sinn ergibt: Ihr lokaler `HttpClient` benötigt 10 Sekunden, um eine Anforderung abzuschließen, aber Ihr Dienst gibt jede Anforderung in 200 ms zurück. 
 
 Der Standardwert für ASP.NET-Anwendungen ist `Int32.MaxValue`. Und dies funktioniert wahrscheinlich gut, wenn WebJobs in einem App Service-Plan des Typs „Basic“ oder höher ausgeführt wird. Für WebJobs ist in der Regel die Always On-Einstellung erforderlich, und diese wird nur von einem App Service-Plan des Typs „Basic“ oder höher unterstützt. 
 
@@ -126,22 +158,53 @@ Automatische Trigger rufen eine Funktion als Reaktion auf ein Ereignis auf. Ein 
 Wenn Sie eine Funktion manuell auslösen möchten, verwenden Sie das `NoAutomaticTrigger`-Attribut, wie im folgenden Beispiel gezeigt:
 
 ```cs
+[NoAutomaticTrigger]
+public static void CreateQueueMessage(
+ILogger logger,
+string value,
+[Queue("outputqueue")] out string message)
+{
+    message = value;
+    logger.LogInformation("Creating queue message: ", message);
+}
+```
+
+Die Vorgehensweise zum manuellen Auslösen der Funktion hängt von der SDK-Version ab.
+
+#### <a name="version-3x"></a>Version 3.x
+
+```cs
+static async Task Main(string[] args)
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddAzureStorage();
+    });
+    var host = builder.Build();
+    using (host)
+    {
+        var jobHost = host.Services.GetService(typeof(IJobHost)) as JobHost;
+        var inputs = new Dictionary<string, object>
+        {
+            { "value", "Hello world!" }
+        };
+
+        await host.StartAsync();
+        await jobHost.CallAsync("CreateQueueMessage", inputs);
+        await host.StopAsync();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
+
+```cs
 static void Main(string[] args)
 {
     JobHost host = new JobHost();
     host.Call(typeof(Program).GetMethod("CreateQueueMessage"), new { value = "Hello world!" });
-}
-```
-
-```cs
-[NoAutomaticTrigger]
-public static void CreateQueueMessage(
-    TextWriter logger,
-    string value,
-    [Queue("outputqueue")] out string message)
-{
-    message = value;
-    logger.WriteLine("Creating queue message: ", message);
 }
 ```
 
@@ -153,7 +216,53 @@ Sie können einen Rückgabewert einer Methode für eine Ausgabebindung nutzen, i
 
 ## <a name="binding-types"></a>Bindungstypen
 
-Die folgenden Trigger- und Bindungstypen sind im `Microsoft.Azure.WebJobs`-Paket enthalten:
+Installation und Verwaltung von Bindungstypen unterscheiden sich zwischen den SDK-Versionen 3.x und 2.x. Sie finden das für einen bestimmten Bindungstyp zu installierende Paket im Abschnitt **Pakete** des jeweiligen [Referenzartikels](#binding-reference-information) für diesen Bindungstyp für Azure Functions. Eine Ausnahme ist der Trigger- und Bindungstyp „Dateien“ (für das lokale Dateisystem), der von Azure Functions nicht unterstützt wird.
+
+#### <a name="version-3x"></a>Version 3.x
+
+In Version 3.x sind die Speicherbindungen im Paket `Microsoft.Azure.WebJobs.Extensions.Storage` enthalten. Rufen Sie die Erweiterungsmethode `AddAzureStorage` in der Methode `ConfigureWebJobs` auf, wie im folgenden Beispiel zu sehen:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+            {
+                b.AddAzureStorageCoreServices();
+                b.AddAzureStorage();
+            });
+    var host = builder.Build();
+    using (host)
+    {
+        host.Run();
+    }
+}
+```
+
+Wenn Sie andere Trigger- und Bindungstypen verwenden möchten, installieren Sie das NuGet-Paket, das diese Typen enthält, und rufen Sie die in der Erweiterung implementierte Erweiterungsmethode `Add<binding>` auf. Wenn Sie also beispielsweise eine Azure Cosmos DB-Bindung verwenden möchten, installieren Sie `Microsoft.Azure.WebJobs.Extensions.CosmosDB`, und rufen Sie `AddCosmosDB` auf, wie im folgenden Beispiel gezeigt:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+            {
+                b.AddAzureStorageCoreServices();
+                b.AddCosmosDB();
+            });
+    var host = builder.Build();
+    using (host)
+    {
+        host.Run();
+    }
+}
+```
+
+Wenn Sie den Trigger „Zeitgeber“ und die Bindung „Dateien“ verwenden möchten, die beide Teil der Kerndienste sind, rufen Sie die Erweiterungsmethode `AddTimers` bzw. `AddFiles` auf.
+
+#### <a name="version-2x"></a>Version 2.x
+
+In Version 2.x des Pakets `Microsoft.Azure.WebJobs` sind folgende Trigger- und Bindungstypen enthalten:
 
 * Blob Storage
 * Queue Storage
@@ -171,11 +280,50 @@ static void Main()
 }
 ```
 
-Sie finden das für einen bestimmten Bindungstyp zu installierende Paket im Abschnitt **Pakete** des jeweiligen [Referenzartikels](#binding-reference-information) für diesen Bindungstyp für Azure Functions. Eine Ausnahme ist der Trigger- und Bindungstyp „Dateien“ (für das lokale Dateisystem), der von Azure Functions nicht unterstützt wird. Wenn Sie die Bindung „Dateien“ verwenden möchten, installieren Sie `Microsoft.Azure.WebJobs.Extensions`, und rufen Sie `UseFiles` auf.
+Wenn Sie die Bindung „Dateien“ verwenden möchten, installieren Sie `Microsoft.Azure.WebJobs.Extensions`, und rufen Sie `UseFiles` auf.
 
-### <a name="usecore"></a>UseCore
+### <a name="executioncontext"></a>Ausführungskontext (ExecutionContext)
 
-In dem zuvor erwähnten `Microsoft.Azure.WebJobs.Extensions`-Paket wird auch ein spezieller Bindungstyp bereitgestellt, den Sie durch Aufrufen der `UseCore`-Methode registrieren können. Mit dieser Bindung können Sie einen [ExecutionContext](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs)-Parameter in Ihrer Funktionssignatur definieren. Das Kontextobjekt bietet Ihnen Zugriff auf die Aufruf-ID, mit der Sie alle von einem bestimmten Funktionsaufruf erzeugten Protokolle korrelieren können. Hier sehen Sie ein Beispiel:
+WebJobs ermöglicht Bindungen an einen Ausführungskontext ([`ExecutionContext`]). Mit dieser Bindung können Sie auf den Ausführungskontext ([`ExecutionContext`]) als Parameter in Ihrer Funktionssignatur zugreifen. Im folgenden Code wird das Kontextobjekt beispielsweise verwendet, um auf die Aufruf-ID zuzugreifen, mit der Sie alle von einem bestimmten Funktionsaufruf erzeugten Protokolle korrelieren können.  
+
+```cs
+public class Functions
+{
+    public static void ProcessQueueMessage([QueueTrigger("queue")] string message,
+        ExecutionContext executionContext,
+        ILogger logger)
+    {
+        logger.LogInformation($"{message}\n{executionContext.InvocationId}");
+    }
+}
+```
+
+Die Vorgehensweise zum Binden an den Ausführungskontext ([`ExecutionContext`]) hängt von Ihrer SDK-Version ab.
+
+#### <a name="version-3x"></a>Version 3.x
+
+Rufen Sie die Erweiterungsmethode `AddExecutionContextBinding` in der Methode `ConfigureWebJobs` auf, wie im folgenden Beispiel zu sehen:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+            {
+                b.AddAzureStorageCoreServices();
+                b.AddExecutionContextBinding();
+            });
+    var host = builder.Build();
+    using (host)
+    {
+        host.Run();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
+
+In dem zuvor erwähnten `Microsoft.Azure.WebJobs.Extensions`-Paket wird auch ein spezieller Bindungstyp bereitgestellt, den Sie durch Aufrufen der `UseCore`-Methode registrieren können. Mit dieser Bindung können Sie einen [`ExecutionContext`]-Parameter in Ihrer Funktionssignatur definieren und wie folgt aktivieren:
 
 ```cs
 class Program
@@ -188,24 +336,45 @@ class Program
         host.RunAndBlock();
     }
 }
-public class Functions
-{
-    public static void ProcessQueueMessage([QueueTrigger("queue")] string message,
-        ExecutionContext executionContext,
-        ILogger logger)
-    {
-        logger.LogInformation($"{message}\n{executionContext.InvocationId}");
-    }
-}
 ```
 
 ## <a name="binding-configuration"></a>Bindungskonfiguration
 
-Viele Trigger- und Bindungstypen ermöglichen Ihnen das Konfigurieren des Verhaltens durch Festlegen von Eigenschaften in einem Konfigurationsobjekt, das Sie an den `JobHost` übergeben.
+Bei einigen Triggern und Bindungen kann das Verhalten konfiguriert werden. Die Vorgehensweise für die Konfiguration hängt von der SDK-Version ab.
+
+* **Version 3.x:** Die Konfiguration wird festgelegt, wenn die Methode `Add<Binding>` in `ConfigureWebJobs` aufgerufen wird.
+* **Version 2.x:** In dieser Version müssen Eigenschaften in einem Konfigurationsobjekt festgelegt werden, das Sie an `JobHost` übergeben.
 
 ### <a name="queue-trigger-configuration"></a>Konfiguration des Warteschlangentriggers
 
-Die Einstellungen, die Sie für den Speicherwarteschlangentrigger konfigurieren können, werden in der [„host.json“-Referenz](../azure-functions/functions-host-json.md#queues) für Azure Functions erläutert. Dem folgenden Beispiel können Sie entnehmen, wie diese in einem WebJobs SDK-Projekt festgelegt werden:
+Die Einstellungen, die Sie für den Speicherwarteschlangentrigger konfigurieren können, werden in der [„host.json“-Referenz](../azure-functions/functions-host-json.md#queues) für Azure Functions erläutert. Die folgenden Beispiele zeigen, wie Sie sie in Ihrer Konfiguration festlegen:
+
+#### <a name="version-3x"></a>Version 3.x
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddAzureStorage(a => {
+            a.BatchSize = 8;
+            a.NewBatchThreshold = 4;
+            a.MaxDequeueCount = 4;
+            a.MaxPollingInterval = TimeSpan.FromSeconds(15);
+        });
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
 
 ```cs
 static void Main(string[] args)
@@ -222,7 +391,29 @@ static void Main(string[] args)
 
 ### <a name="configuration-for-other-bindings"></a>Konfiguration für andere Bindungen
 
-Einige Trigger- und Bindungstypen definieren ihren eigenen benutzerdefinierten Konfigurationstyp. Mit dem Dateitrigger können Sie beispielsweise den zu überwachenden Stammpfad angeben:
+Einige Trigger- und Bindungstypen definieren ihren eigenen benutzerdefinierten Konfigurationstyp. Mit dem Dateitrigger können Sie beispielsweise den zu überwachenden Stammpfad angeben, wie in den folgenden Beispielen zu sehen:
+
+#### <a name="version-3x"></a>Version 3.x
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+        b.AddFiles(a => a.RootPath = @"c:\data\import");
+    });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
 
 ```cs
 static void Main()
@@ -241,7 +432,7 @@ static void Main()
 ## <a name="binding-expressions"></a>Bindungsausdrücke
 
 In Attributkonstruktorparametern können Sie Ausdrücke verwenden, die in Werte aus verschiedenen Quellen aufgelöst werden. Im folgenden Code erstellt beispielsweise der Pfad für das `BlobTrigger`-Attribut einen Ausdruck mit dem Namen `filename`. Bei Verwendung für die Ausgabebindung wird `filename` in den Namen des auslösenden Blobs aufgelöst.
- 
+
 ```cs
 public static void CreateThumbnail(
     [BlobTrigger("sample-images/{filename}")] Stream image,
@@ -261,7 +452,7 @@ Weitere Informationen zu Bindungsausdrücken finden Sie unter [Bindungsausdrück
 Mitunter möchten Sie einen Warteschlangennamen, einen Blobnamen oder Container oder einen Tabellennamen im Code angeben, anstatt ihn hart zu codieren. So möchten Sie z. B. den Warteschlangennamen für das `QueueTrigger`-Attribut in einer Konfigurationsdatei oder Umgebungsvariablen angeben.
 
 Sie erreichen dies, indem Sie ein `NameResolver`-Objekt an das `JobHostConfiguration`-Objekt übergeben. Sie schließen Platzhalter in Konstruktorparameter von Trigger- oder Bindungsattributen ein, und Ihr `NameResolver`-Code gibt die tatsächlichen Werte an, die anstelle dieser Platzhalter verwendet werden sollen. Die Platzhalter werden durch die Umschließung mit Prozentzeichen (%) gekennzeichnet, wie im folgenden Beispiel gezeigt:
- 
+
 ```cs
 public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 {
@@ -269,7 +460,7 @@ public static void WriteLog([QueueTrigger("%logqueue%")] string logMessage)
 }
 ```
 
-Mit diesem Code können Sie eine Warteschlange mit dem Namen „logqueuetest“ in der Testumgebung und eine Warteschlange mit dem Namen „logqueueprod“ in der Produktionsumgebung verwenden. Anstelle eines hartcodierten Warteschlangennamens geben Sie den Namen eines Eintrags in der `appSettings`-Auflistung an. 
+Mit diesem Code können Sie eine Warteschlange namens `logqueuetest` in der Testumgebung und eine Warteschlange namens `logqueueprod` in der Produktionsumgebung verwenden. Anstelle eines hartcodierten Warteschlangennamens geben Sie den Namen eines Eintrags in der `appSettings`-Auflistung an.
 
 Wenn Sie keine benutzerdefinierte Namensauflösung angeben, wird ein Standard-NameResolver wirksam. Der Standardwert ruft Werte aus App-Einstellungen oder Umgebungsvariablen ab.
 
@@ -284,6 +475,36 @@ public class CustomNameResolver : INameResolver
     }
 }
 ```
+
+#### <a name="version-3x"></a>Version 3.x
+
+Der Resolver wird per Abhängigkeitsinjektion konfiguriert. Für diese Beispiele ist die folgende `using`-Anweisung erforderlich:
+
+```cs
+using Microsoft.Extensions.DependencyInjection;
+```
+
+Der Resolver wird durch Aufrufen der Erweiterungsmethode [`ConfigureServices`] für [HostBuilder](/dotnet/api/microsoft.extensions.hosting.hostbuilder) hinzugefügt, wie im folgenden Beispiel zu sehen:
+
+```cs
+static async Task Main(string[] args)
+{
+    var builder = new HostBuilder();
+    var resolver = new CustomNameResolver();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+    });
+    builder.ConfigureServices(s => s.AddSingleton<INameResolver>(resolver));
+    var host = builder.Build();
+    using (host)
+    {
+        await host.RunAsync();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
 
 Übergeben Sie Ihre `NameResolver`-Klasse an das `JobHost`-Objekt, wie im folgenden Beispiel gezeigt:
 
@@ -313,7 +534,7 @@ public static void CreateQueueMessage(
     string outputQueueName = "outputqueue" + DateTime.Now.Month.ToString();
     QueueAttribute queueAttribute = new QueueAttribute(outputQueueName);
     CloudQueue outputQueue = binder.Bind<CloudQueue>(queueAttribute);
-    outputQueue.AddMessage(new CloudQueueMessage(queueMessage));
+    outputQueue.AddMessageAsync(new CloudQueueMessage(queueMessage));
 }
 ```
 
@@ -394,7 +615,7 @@ Sie können diese Einstellungen verwenden, um sicherzustellen, dass Ihre Funktio
 
 ### <a name="scope-values"></a>Bereichswerte
 
-Sie können einen **Bereichsausdruck/-wert** für das Singleton angeben, der sicherstellt, dass alle Ausführungen der Funktion in diesem Bereich serialisiert werden. Die Implementierung einer detaillierteren Sperre auf diese Weise kann eine gewisse Parallelität für Ihre Funktion ermöglichen, während andere Aufrufe entsprechend Ihren Anforderungen serialisiert werden. Im folgenden Beispiel wird beispielsweise der Bereichsausdruck an den Wert `Region` der eingehenden Nachricht gebunden. Wenn die Warteschlange 3 Nachrichten in den Regionen „East“, „East“ und „West“ enthält, werden die Nachrichten, die die Region „East“ enthalten, seriell ausgeführt, während die Nachricht mit der Region „West“ parallel dazu ausgeführt wird.
+Sie können einen **Bereichsausdruck/-wert** für das Singleton angeben, der sicherstellt, dass alle Ausführungen der Funktion in diesem Bereich serialisiert werden. Die Implementierung einer detaillierteren Sperre auf diese Weise kann eine gewisse Parallelität für Ihre Funktion ermöglichen, während andere Aufrufe entsprechend Ihren Anforderungen serialisiert werden. Im folgenden Beispiel wird beispielsweise der Bereichsausdruck an den Wert `Region` der eingehenden Nachricht gebunden. Wenn die Warteschlange drei Nachrichten in den Regionen „East“, „East“ und „West“ enthält, werden die Nachrichten, die die Region „East“ enthalten, seriell ausgeführt, während die Nachricht mit der Region „West“ parallel dazu ausgeführt wird.
 
 ```csharp
 [Singleton("{Region}")]
@@ -451,8 +672,8 @@ Mit dem Warteschlangen- und Blob-Trigger wird automatisch verhindert, dass eine 
 Mit dem Zeitgebertrigger wird automatisch sichergestellt, dass jeweils nur eine Instanz des Zeitgebers ausgeführt wird, damit zu einem geplanten Zeitpunkt nicht mehrere Funktionsinstanzen ausgeführt werden.
 
 Wenn Sie sicherstellen möchten, dass nur eine Instanz einer Funktion ausgeführt wird, auch wenn mehrere Instanzen der Host-Web-App vorhanden sind, können Sie das [Singleton](#singleton-attribute)-Attribut verwenden.
-    
-## <a name="filters"></a>Filter 
+
+## <a name="filters"></a>Filter
 
 Funktionsfilter (Vorschauversion) bieten eine Möglichkeit zum Anpassen der WebJobs-Ausführungspipeline mit Ihrer eigenen Logik. Die Filter sind mit [ASP.NET Core-Filtern](https://docs.microsoft.com/aspnet/core/mvc/controllers/filters) vergleichbar. Sie können als deklarative Attribute implementiert werden, die auf Ihre Funktionen oder Klassen angewendet werden. Weitere Informationen finden Sie unter [Funktionsfilter](https://github.com/Azure/azure-webjobs-sdk/wiki/Function-Filters).
 
@@ -476,11 +697,48 @@ Jedem von einer `ILogger`-Instanz erstellten Protokoll ist eine `Category` und e
 
 Alle Kategorien können unabhängig voneinander nach einer bestimmten Protokollebene ([LogLevel](/dotnet/api/microsoft.extensions.logging.loglevel)) gefiltert werden. So könnten Sie beispielsweise alle Protokolle für die Verarbeitung des Blob-Triggers, aber nur `Error` und höhere Ebenen für alles andere anzeigen.
 
-Um das Angeben von Filterregeln zu vereinfachen, bietet das WebJobs SDK den `LogCategoryFilter`, der an viele vorhandene Protokollierungsanbieter einschließlich Application Insights und Konsolenanwendungen übergeben werden kann.
+#### <a name="version-3x"></a>Version 3.x
 
-Der `LogCategoryFilter` verfügt über eine `Default`-Eigenschaft mit dem Anfangswert `Information`. Dies bedeutet, dass alle Nachrichten der Ebene `Information`, `Warning`, `Error`, oder `Critical` protokolliert, aber Nachrichten der Ebene `Debug` oder `Trace` weggefiltert werden.
+In Version 3.x des SDK wird die in .NET Core-integrierte Filterung verwendet. Mit der Klasse `LogCategories` können Sie Kategorien für bestimmte Funktionen, Trigger oder Benutzer definieren. Sie definiert auch Filter für bestimmte Hostzustände wie etwa `Startup` und `Results`. So können Sie die Protokollausgabe optimieren. Sollte in den definierten Kategorien keine Übereinstimmung gefunden werden, wird der Filter bei der Entscheidung, ob die Nachricht gefiltert werden soll, auf den Wert `Default` zurückgesetzt.
 
-Die `CategoryLevels`-Eigenschaft ermöglicht Ihnen das Angeben von Protokollebenen für bestimmte Kategorien, sodass Sie die Protokollierungsausgabe optimieren können. Wird im `CategoryLevels`-Wörterbuch keine Übereinstimmung gefunden, wird der Filter bei der Entscheidung, ob die Nachricht gefiltert werden soll, auf den `Default`-Wert zurückgesetzt.
+`LogCategories` erfordert die folgende using-Anweisung:
+
+```cs
+using Microsoft.Azure.WebJobs.Logging; 
+```
+
+Im folgenden Beispiel wird ein Filter erstellt, der standardmäßig alle Protokolle auf der `Warning`-Ebene filtert. Die Kategorien `Function` und `results` (äquivalent zu `Host.Results` in Version 2.x) werden auf der Ebene `Error` gefiltert. Der Filter vergleicht die aktuelle Kategorie mit allen registrierten Ebenen in der `LogCategories`-Instanz und wählt die längste Übereinstimmung aus. Dies bedeutet, dass die für `Host.Triggers` registrierte `Debug`-Ebene entweder `Host.Triggers.Queue` oder `Host.Triggers.Blob` entspricht. Dadurch können Sie umfassendere Kategorien steuern, ohne jede einzelne Kategorie hinzufügen zu müssen.
+
+```cs
+static async Task Main(string[] args)
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+    });
+    builder.ConfigureLogging(logging =>
+            {
+                logging.SetMinimumLevel(LogLevel.Warning);
+                logging.AddFilter("Function", LogLevel.Error);
+                logging.AddFilter(LogCategories.CreateFunctionCategory("MySpecificFunctionName"),
+                    LogLevel.Debug);
+                logging.AddFilter(LogCategories.Results, LogLevel.Error);
+                logging.AddFilter("Host.Triggers", LogLevel.Debug);
+            });
+    var host = builder.Build();
+    using (host)
+    {
+        await host.RunAsync();
+    }
+}
+```
+
+#### <a name="version-2x"></a>Version 2.x
+
+In Version 2.x des SDK wird zum Steuern der Filterung die Klasse `LogCategoryFilter` verwendet. Der `LogCategoryFilter` verfügt über eine `Default`-Eigenschaft mit dem Anfangswert `Information`. Dies bedeutet, dass alle Nachrichten der Ebene `Information`, `Warning`, `Error`, oder `Critical` protokolliert, aber Nachrichten der Ebene `Debug` oder `Trace` weggefiltert werden.
+
+Die Eigenschaft `CategoryLevels` ermöglicht genau wie `LogCategories` in Version 3.x das Angeben von Protokollebenen für bestimmte Kategorien, sodass Sie die Protokollierungsausgabe optimieren können. Wird im `CategoryLevels`-Wörterbuch keine Übereinstimmung gefunden, wird der Filter bei der Entscheidung, ob die Nachricht gefiltert werden soll, auf den `Default`-Wert zurückgesetzt.
 
 Im folgenden Beispiel wird ein Filter erstellt, der standardmäßig alle Protokolle auf der `Warning`-Ebene filtert. Die Kategorien `Function` und `Host.Results` werden auf der `Error`-Ebene gefiltert. Der `LogCategoryFilter` vergleicht die aktuelle Kategorie mit allen registrierten `CategoryLevels` und wählt die längste Übereinstimmung aus. Dies bedeutet, dass die für `Host.Triggers` registrierte `Debug`-Ebene entweder `Host.Triggers.Queue` oder `Host.Triggers.Blob` entspricht. Dadurch können Sie umfassendere Kategorien steuern, ohne jede einzelne Kategorie hinzufügen zu müssen.
 
@@ -498,11 +756,76 @@ config.LoggerFactory = new LoggerFactory()
 
 ### <a name="custom-telemetry-for-application-insights"></a>Benutzerdefinierte Telemetrie für Application Insights
 
-Intern verwendet der vom Application Insights-Anbieter für das WebJobs SDK erstellte `TelemetryClient` den [ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+Die Vorgehensweise für die Implementierung von benutzerdefinierter Telemetrie für [Application Insights](../azure-monitor/app/app-insights-overview.md) hängt von der verwendeten SDK-Version ab. Informationen zum Konfigurieren von Application Insights finden Sie unter [Hinzufügen der Application Insights-Protokollierung](webjobs-sdk-get-started.md#add-application-insights-logging).
 
-Der `TelemetryClient` wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Standardmäßig handelt es sich dabei um die [DefaultTelemetryClientFactory](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+#### <a name="version-3x"></a>Version 3.x
 
-Wenn Sie einen beliebigen Teil der Application Insights-Pipeline ändern möchten, können Sie Ihre eigene `ITelemetryClientFactory` angeben, und der Host verwendet Ihre Klasse, um einen `TelemetryClient` zu erstellen. Dieser Code überschreibt z. B. die `DefaultTelemetryClientFactory`, um eine Eigenschaft des `ServerTelemetryChannel` zu ändern:
+Da in Version 3.x des WebJobs SDK der generische .NET Core-Host verwendet wird, steht keine Factory für benutzerdefinierte Telemetrie mehr zur Verfügung. Sie können der Pipeline allerdings mittels Abhängigkeitsinjektion benutzerdefinierte Telemetrie hinzufügen. Für die Beispiele in diesem Abschnitt sind folgende `using`-Anweisungen erforderlich:
+
+```cs
+using Microsoft.ApplicationInsights.Extensibility;
+using Microsoft.ApplicationInsights.Channel;
+```
+
+Mit der folgenden benutzerdefinierten Implementierung von [`ITelemetryInitializer`] können Sie der standardmäßigen Telemetriekonfiguration ([`TelemetryConfiguration`]) Ihre eigene Telemetrie ([`ITelemetry`](/dotnet/api/microsoft.applicationinsights.channel.itelemetry)) hinzufügen:
+
+```cs
+internal class CustomTelemetryInitializer : ITelemetryInitializer
+{
+    public void Initialize(ITelemetry telemetry)
+    {
+        // Do something with telemetry.
+    }
+}
+```
+
+Rufen Sie im Generator [`ConfigureServices`] auf, um der Pipeline Ihre benutzerdefinierte Instanz von [`ITelemetryInitializer`] hinzuzufügen:
+
+```cs
+static void Main()
+{
+    var builder = new HostBuilder();
+    builder.ConfigureWebJobs(b =>
+    {
+        b.AddAzureStorageCoreServices();
+    });
+    builder.ConfigureLogging((context, b) =>
+    {
+        // Add Logging Providers
+        b.AddConsole();
+
+        // If this key exists in any config, use it to enable App Insights
+        string appInsightsKey = context.Configuration["APPINSIGHTS_INSTRUMENTATIONKEY"];
+        if (!string.IsNullOrEmpty(appInsightsKey))
+        {
+            // This uses the options callback to explicitly set the instrumentation key.
+            b.AddApplicationInsights(o => o.InstrumentationKey = appInsightsKey);
+        }
+    });
+    builder.ConfigureServices(services =>
+        {
+            services.AddSingleton<ITelemetryInitializer, CustomTelemetryInitializer>();
+        });
+    var host = builder.Build();
+    using (host)
+    {
+
+        host.Run();
+    }
+}
+```
+
+Beim Konstruieren der Telemetriekonfiguration ([`TelemetryConfiguration`]) werden alle registrierten Typen von [`ITelemetryInitializer`] eingeschlossen. Weitere Informationen finden Sie unter [Application Insights-API für benutzerdefinierte Ereignisse und Metriken](../azure-monitor/app/api-custom-events-metrics.md).
+
+In Version 3.x muss der Telemetrieclient ([`TelemetryClient`]) nicht mehr geleert werden, wenn der Host beendet wird. Das Abhängigkeitsinjektionssystem von .NET Core verwirft automatisch den registrierten Application Insights-Protokollierungsanbieter (`ApplicationInsightsLoggerProvider`), wodurch der Telemetrieclient ([`TelemetryClient`]) geleert wird.
+
+#### <a name="version-2x"></a>Version 2.x
+
+In Version 2.x verwendet der Telemetrieclient ([`TelemetryClient`]), der intern durch den Application Insights-Anbieter für das WebJobs SDK erstellt wurde, den Servertelemetriekanal ([ServerTelemetryChannel](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/src/ServerTelemetryChannel/ServerTelemetryChannel.cs)). Wenn der Application Insights-Endpunkt nicht verfügbar ist oder eingehende Anforderungen gedrosselt werden, [speichert dieser Kanal die Anforderungen im Dateisystem der Web-App und übermittelt sie später erneut](https://apmtips.com/blog/2015/09/03/more-telemetry-channels).
+
+Der Telemetrieclient ([`TelemetryClient`]) wird von einer Klasse erstellt, die `ITelemetryClientFactory` implementiert. Das ist standardmäßig [`DefaultTelemetryClientFactory`](https://github.com/Azure/azure-webjobs-sdk/blob/dev/src/Microsoft.Azure.WebJobs.Logging.ApplicationInsights/DefaultTelemetryClientFactory.cs).
+
+Wenn Sie einen Teil der Application Insights-Pipeline ändern möchten, können Sie Ihre eigene Telemetrieclientfactory (`ITelemetryClientFactory`) angeben. Daraufhin verwendet der Host Ihre Klasse, um einen Telemetrieclient ([`TelemetryClient`]) zu konstruieren. Dieser Code überschreibt z. B. die `DefaultTelemetryClientFactory`, um eine Eigenschaft des `ServerTelemetryChannel` zu ändern:
 
 ```csharp
 private class CustomTelemetryClientFactory : DefaultTelemetryClientFactory
@@ -538,3 +861,9 @@ config.LoggerFactory = new LoggerFactory()
 ## <a id="nextsteps"></a> Nächste Schritte
 
 In dieser Anleitung wurden Codeausschnitte bereitgestellt, die veranschaulichen, wie häufige Szenarien für das Arbeiten mit dem WebJobs SDK behandelt werden. Vollständige Beispiele finden Sie unter [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples).
+
+[ExecutionContext]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
+[TelemetryClient]: /dotnet/api/microsoft.applicationinsights.telemetryclient
+[ConfigureServices]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
+[ITelemetryInitializer]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[TelemetryConfiguration]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration

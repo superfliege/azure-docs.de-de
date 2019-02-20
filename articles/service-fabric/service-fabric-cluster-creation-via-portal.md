@@ -1,5 +1,5 @@
 ---
-title: Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft-Dokumentation
+title: Erstellen eines Service Fabric-Clusters im Azure-Portal | Microsoft Docs
 description: Erfahren Sie, wie Sie über das Azure-Portal und mithilfe von Azure Key Vault einen sicheren Service Fabric-Cluster in Azure erstellen.
 services: service-fabric
 documentationcenter: .net
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: f0c2108ee75f843e8285c5e2c5c55834643dc7da
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 71448125d7308ca28e7241fd4019aadba430214e
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52620539"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106136"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "52620539"
 > 
 > 
 
-Diese Schrittanleitung führt Sie durch die Einrichtung eines Service Fabric-Clusters (Linux oder Windows) in Azure über das Azure-Portal. In diesem Leitfaden werden die folgenden Schritte behandelt:
+Diese schrittweise Anleitung führt Sie durch die Einrichtung eines Service Fabric-Clusters (Linux oder Windows) in Azure über das Azure-Portal. In diesem Leitfaden werden die folgenden Schritte behandelt:
 
 * Erstellen eines Clusters in Azure über das Azure-Portal.
 * Authentifizieren von Administratoren mithilfe von Zertifikaten.
@@ -46,8 +46,8 @@ Wenn Sie zum ersten Mal einen Service Fabric-Cluster erstellen oder einen Cluste
 #### <a name="cluster-and-server-certificate-required"></a>Cluster- und Serverzertifikat (erforderlich)
 Dieses Zertifikat wird benötigt, um einen Cluster zu sichern und nicht autorisierte Zugriffe auf den Cluster zu verhindern. Es sorgt auf unterschiedliche Weise für Clustersicherheit:
 
-* **Clusterauthentifizierung** : Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
-* **Serverauthentifizierung** : Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation tatsächlich aus dem Cluster stammt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
+* **Clusterauthentifizierung:** Authentifiziert die Kommunikation zwischen Knoten für einen Clusterverbund. Nur Knoten, die ihre Identität mit diesem Zertifikat nachweisen können, dürfen dem Cluster beitreten.
+* **Serverauthentifizierung:** Authentifiziert die Verwaltungsendpunkte des Clusters bei einem Verwaltungsclient, sodass der Verwaltungsclient weiß, dass die Kommunikation tatsächlich mit dem Cluster erfolgt. Dieses Zertifikat stellt auch SSL für die HTTPS-Verwaltungs-API und für Service Fabric Explorer über HTTPS bereit.
 
 Für diese Zwecke muss das Zertifikat die folgenden Anforderungen erfüllen:
 
@@ -216,7 +216,7 @@ Sie verfügen jetzt über einen sicheren Cluster, der Zertifikate zur Verwaltung
 [azure-powershell]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/
 [service-fabric-rp-helpers]: https://github.com/ChackDan/Service-Fabric/tree/master/Scripts/ServiceFabricRPHelpers
 [azure-portal]: https://portal.azure.com/
-[key-vault-get-started]: ../key-vault/key-vault-get-started.md
+[key-vault-get-started]: ../key-vault/key-vault-overview.md
 [create-cluster-arm]: service-fabric-cluster-creation-via-arm.md
 [service-fabric-cluster-security]: service-fabric-cluster-security.md
 [service-fabric-cluster-security-roles]: service-fabric-cluster-security-roles.md

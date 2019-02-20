@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: 85b974e954fd99f6f10426f1961ea9f4a5343c59
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 861c68ae8163e0ba8c2af2a3d96153ac3e84855f
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811102"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55978135"
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>VMs mit niedriger Priorität in Skalierungsgruppen (Vorschau)
 
@@ -49,7 +49,7 @@ Zum Bereitstellen von VMs mit niedriger Priorität in Skalierungsgruppen können
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird in diesem [Schnellstartartikel](quick-create-portal.md) ausführlich beschrieben. Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Flag für niedrige Priorität und die Entfernungsrichtlinie festlegen:  ![Skalierungsgruppe mit MVs mit niedriger Priorität erstellen](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
+Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird in diesem [Schnellstartartikel](quick-create-portal.md) ausführlich beschrieben. Wenn Sie eine Skalierungsgruppe bereitstellen, können Sie das Flag für niedrige Priorität und die Entfernungsrichtlinie festlegen: ![Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
 ## <a name="use-the-azure-cli"></a>Verwenden der Azure-CLI
 
@@ -69,10 +69,10 @@ az vmss create \
 ## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
 
 Der Prozess zum Erstellen einer Skalierungsgruppe mit VMs mit niedriger Priorität wird im [Artikel zum Einstieg](quick-create-powershell.md) ausführlich beschrieben.
-Fügen Sie einfach den „--Priority“-Parameter [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) hinzu, und setzen Sie ihn auf *Low*, wie im folgenden Beispiel gezeigt:
+Fügen Sie einfach [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) den Parameter „--Priority“hinzu, und legen Sie ihn auf *Low* fest, wie im nachstehenden Beispiel gezeigt:
 
 ```powershell
-$vmssConfig = New-AzureRmVmssConfig `
+$vmssConfig = New-AzVmssConfig `
     -Location "East US 2" `
     -SkuCapacity 2 `
     -SkuName "Standard_DS2" `

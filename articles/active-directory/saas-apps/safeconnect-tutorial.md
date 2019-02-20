@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: jeedes
-ms.openlocfilehash: f011b9ef7229ba1e588e488be8b4fc5b098ee5ac
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: cbb94c28d56b0492fe3488d7c9e2e1257a8b9388
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40024673"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56183801"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safeconnect"></a>Tutorial: Azure Active Directory-Integration mit SafeConnect
 
@@ -153,7 +154,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-safeconnect-test-user"></a>Erstellen eines SafeConnect-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in SafeConnect eine Benutzerin namens Britta Simon. Arbeiten mit dem [SafeConnect-Supportteam](mailto:support@impulse.com) zusammen, um Benutzer der SafeConnect-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
+In diesem Abschnitt erstellen Sie in SafeConnect eine Benutzerin namens Britta Simon. Arbeiten Sie mit dem  [SafeConnect-Supportteam](mailto:support@impulse.com) zusammen, um der SafeConnect-Plattform Benutzer hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können. 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

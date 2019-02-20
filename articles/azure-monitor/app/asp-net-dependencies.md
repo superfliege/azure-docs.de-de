@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: d86df171de807c23aad6dd2cb8e2128098dede81
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 880b4e4ce09fec3caf70586c2cfb54236d13b668
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812454"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55996303"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -133,7 +133,7 @@ Klicken Sie auf einen Anforderungsfehler, und sehen Sie sich die zugeordneten Er
 ![Klicken Sie auf den Anforderungstyp, klicken Sie auf die Instanz, um eine andere Ansicht derselben Instanz abzurufen, und klicken Sie darauf, um Details zur Ausnahme zu erhalten.](./media/asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analytics
-Sie können Abhängigkeiten in der [Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguage) nachverfolgen. Hier einige Beispiele.
+Sie können Abhängigkeiten in der [Data Explorer-Abfragesprache](https://aka.ms/LogAnalyticsLanguage) nachverfolgen. Hier einige Beispiele.
 
 * Suchen fehlgeschlagener Abhängigkeitsaufrufe:
 

@@ -5,25 +5,28 @@ author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 2/7/2019
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 9164c335eb85676a419c1cb805b2217ea73c40fe
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 7cca9d9c91f35c30bbd71ae82b9f02447051078d
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497824"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55983167"
 ---
 # <a name="unified-alerting--monitoring-in-azure-monitor-replaces-classic-alerting--monitoring"></a>Einheitliche Benachrichtigung und Überwachung in Azure Monitor tritt an die Stelle von klassischer Benachrichtigung und Überwachung
 
 Azure Monitor hat sich zu einem vereinheitlichen, voll ausgestatteten Überwachungsdienst entwickelt, der nun ressourcenübergreifend einzelne Metriken und Benachrichtigungen unterstützt. Weitere Informationen finden Sie in unserem [Blogbeitrag zu Azure Monitor](https://azure.microsoft.com/blog/new-full-stack-monitoring-capabilities-in-azure-monitor/). Die neuen Überwachungs- und Benachrichtigungsplattformen von Azure sind schneller, intelligenter und erweiterbar. Dabei halten sie mit der zunehmenden Verbreitung von Cloud Computing Schritt und folgen der Philosophie der Microsoft Intelligent Cloud. 
 
-Da die neue Azure-Plattform zur Überwachung und Benachrichtigung nun verfügbar ist, stellen wir die „klassische“ Überwachungs- und Benachrichtigungsplattform – die im Abschnitt *Klassische Warnungen anzeigen* der Azure-Benachrichtigungen gehostet ist – **zum Juni 2019 ein**.
+Da die neue Azure-Plattform zur Überwachung und Benachrichtigung nun verfügbar ist, stellen wir die „klassische“ Überwachungs- und Benachrichtigungsplattform – die im Abschnitt *Klassische Warnungen anzeigen* der Azure-Benachrichtigungen gehostet wird – **zum Juni 2019 in öffentlichen Azure-Clouds ein**. Die [Azure Government-Cloud](../../azure-government/documentation-government-welcome.md) ist davon nicht betroffen.
 
  ![Klassische Warnung im Azure-Portal](media/monitoring-classic-retirement/monitor-alert-screen2.png) 
 
 Wir empfehlen Ihnen, sich mit der neuen Plattform vertraut zu machen und damit zu beginnen, Warnungen auf dieser neu zu erstellen. Für Kunden mit einer großen Anzahl Warnungen arbeiten wir an einem Verfahren zur automatisierten Umstellung vorhandener klassischer Warnungen auf das neue Warnungssystem, das Unterbrechungen und Zusatzkosten vermeidet.
+
+> [!IMPORTANT]
+> Im Aktivitätsprotokoll erstellte klassische Warnungsregeln werden nicht als veraltet eingestuft und nicht migriert. Alle im Aktivitätsprotokoll erstellten klassischen Warnungsregeln können nun über „Azure Monitor – Warnungen“ unverändert aufgerufen und verwendet werden. Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Aktivitätsprotokollwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-activity-log.md). Warnungen zur Dienstintegrität können im neuen Abschnitt „Dienstintegrität“ unverändert aufgerufen und verwendet werden. Weitere Informationen finden Sie unter [Warnungen zu Dienstintegritätsbenachrichtigungen](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).
 
 ## <a name="unified-metrics-and-alerts-in-application-insights"></a>Einheitliche Metriken und Benachrichtigungen in Application Insights
 

@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 12/24/2018
+ms.date: 02/11/2019
 ms.author: juliako
-ms.openlocfilehash: c5332cd2613bc64e3dda143381f37d27b54aa922
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789228"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243984"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -24,15 +24,13 @@ Dieser Artikel beschreibt die Schemas und Eigenschaften für Media Services-Erei
 
 Eine Liste von Beispielskripts und Tutorials finden Sie unter [Media Services-Ereignisquelle](../../event-grid/event-sources.md#azure-subscriptions).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
-
-### <a name="job-related-event-types"></a>Auftragsbezogene Ereignistypen
+## <a name="job-related-event-types"></a>Auftragsbezogene Ereignistypen
 
 Media Services gibt die nachfolgend beschriebenen **auftragsbezogenen** Ereignistypen aus. Es gibt zwei Kategorien für die **auftragsbezogenen** Ereignisse: „Überwachen von Auftragszustandsänderungen“ und „Überwachen von Auftragsausgabezustandsänderungen“. 
 
 Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange-Ereignis abonnieren. Sie können auch nur bestimmte Ereignisse abonnieren (z. B. Endzustände wie JobErrored, JobFinished und JobCanceled). 
 
-#### <a name="monitoring-job-state-changes"></a>Überwachen von Auftragszustandsänderungen
+### <a name="monitoring-job-state-changes"></a>Überwachen von Auftragszustandsänderungen
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
@@ -44,7 +42,9 @@ Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange
 | Microsoft.Media.JobCanceled| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Abgebrochen“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 | Microsoft.Media.JobErrored| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Fehler“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 
-#### <a name="monitoring-job-output-state-changes"></a>Überwachen von Auftragsausgabezustandsänderungen
+[Schemabeispiele](#event-schema-examples) folgen.
+
+### <a name="monitoring-job-output-state-changes"></a>Überwachen von Auftragsausgabezustandsänderungen
 
 | Ereignistypen | BESCHREIBUNG |
 | ---------- | ----------- |
@@ -56,11 +56,13 @@ Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange
 | Microsoft.Media.JobOutputCanceled| Rufen Sie ein Ereignis ab, wenn die Auftragsausgabe in den Zustand „Abgebrochen“ übergeht.|
 | Microsoft.Media.JobOutputErrored| Rufen Sie ein Ereignis ab, wenn die Auftragsausgabe in den Zustand „Fehler“ übergeht.|
 
-### <a name="live-event-types"></a>Liveereignistypen
+[Schemabeispiele](#event-schema-examples) folgen.
+
+## <a name="live-event-types"></a>Liveereignistypen
 
 Media Services gibt auch die nachfolgend beschriebenen **Live**-Ereignistypen aus. Es gibt zwei Kategorien für die **Liveereignisse**: Ereignisse auf Streamebene und Ereignisse auf Spurebene. 
 
-#### <a name="stream-level-events"></a>Ereignisse auf Streamebene
+### <a name="stream-level-events"></a>Ereignisse auf Streamebene
 
 Ereignisse auf Streamebene werden pro Stream oder Verbindung ausgelöst. Jedes Ereignis verfügt über einen Parameter `StreamId`, der die Verbindung oder den Stream identifiziert. Jeder Stream und jede Verbindung verfügt über mindestens eine Spur verschiedener Typen. Beispielsweise kann eine Verbindung von einem Encoder eine Audiospur und vier Videospuren umfassen. Die Streamereignistypen sind:
 
@@ -70,7 +72,9 @@ Ereignisse auf Streamebene werden pro Stream oder Verbindung ausgelöst. Jedes E
 | Microsoft.Media.LiveEventEncoderConnected | Encoder stellt die Verbindung mit dem Liveereignis her. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Verbindung des Encoders wird getrennt. |
 
-#### <a name="track-level-events"></a>Ereignisse auf Spurebene
+[Schemabeispiele](#event-schema-examples) folgen.
+
+### <a name="track-level-events"></a>Ereignisse auf Spurebene
 
 Ereignisse auf Spurebene werden pro Spur ausgelöst. Die Spurereignistypen sind:
 
@@ -83,7 +87,9 @@ Ereignisse auf Spurebene werden pro Spur ausgelöst. Die Spurereignistypen sind:
 | Microsoft.Media.LiveEventIngestHeartbeat | Wird alle 20 Sekunden für jede Spur veröffentlicht, wenn ein Liveereignis ausgeführt wird. Bietet eine Zusammenfassung der Erfassungsintegrität. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Media-Server hat eine Diskontinuität in der eingehenden Spur erkannt. |
 
-## <a name="event-schemas-and-properties"></a>Ereignisschemas und -eigenschaften
+[Schemabeispiele](#event-schema-examples) folgen.
+
+## <a name="event-schema-examples"></a>Beispiele für Ereignisschemas
 
 ### <a name="jobstatechange"></a>JobStateChange
 

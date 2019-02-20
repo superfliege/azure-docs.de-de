@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 04/04/2018
 ms.author: aelnably;nicking
 ms.custom: seodec18
-ms.openlocfilehash: ab1ae63352e66da557cad49bf5f320b577055877
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8d4290f1411749e2d8d3d27fbd792ceeeea47ef7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726560"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56100493"
 ---
 # <a name="restore-an-app-in-azure-from-a-snapshot"></a>Wiederherstellen einer App in Azure auf der Grundlage einer Momentaufnahme
 In diesem Artikel erfahren Sie, wie Sie eine App in [Azure App Service](../app-service/overview.md) auf der Grundlage einer Momentaufnahme wiederherstellen. Mithilfe der Momentaufnahmen Ihrer App können Sie die App in einem vorherigen Zustand wiederherstellen. Die Sicherung von Momentaufnahmen muss nicht aktiviert werden, da die Plattform automatisch eine Momentaufnahme aller Apps speichert, um die Wiederherstellung von Daten zu ermöglichen.
@@ -38,6 +38,7 @@ Momentaufnahmebasierte Wiederherstellungen für Apps stehen ab dem Tarif **Premi
 - Die Ziel-App oder der Zielslot wird während der Wiederherstellung beendet.
 - Für die Wiederherstellung von Plattformdaten speichert App Service Momentaufnahmen für einen Zeitraum von drei Monaten.
 - Es können nur Momentaufnahmen der letzten 30 Tage wiederhergestellt werden.
+- App Services, die in einer App Service-Umgebung ausgeführt werden, unterstützen keine Momentaufnahmen.
  
 
 ## <a name="restore-an-app-from-a-snapshot"></a>Wiederherstellen einer App auf der Grundlage einer Momentaufnahme

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 55c1bc18422bc2be5172aebcd46b76ac6051a8a4
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54885846"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001974"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -40,7 +40,9 @@ Hier sind einige Verwendungsmöglichkeiten für Diagnoseprotokolle:
 
 * Diagnoseprotokolle können zur Überwachung oder manuellen Überprüfung in einem [**Speicherkonto**](../../azure-monitor/platform/archive-diagnostic-logs.md) gespeichert werden. Mithilfe der **Diagnoseeinstellungen für Ressourcen** können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
 * [Sie können Diagnoseprotokolle zur Erfassung durch einen Drittanbieterdienst oder durch eine benutzerdefinierte Analyselösung wie Power BI an **Event Hubs**](diagnostic-logs-stream-event-hubs.md) streamen.
-* Analysieren Sie sie mit [Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md), wobei die Daten sofort in Log Analytics geschrieben werden, ohne sie zuerst in den Speicher schreiben zu müssen.  
+* Analysieren Sie sie mit [Azure Monitor](../../azure-monitor/platform/collect-azure-metrics-logs.md), wobei die Daten sofort in Azure Monitor geschrieben werden, ohne sie zuerst in den Speicher schreiben zu müssen.  
+
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
 Sie können ein Speicherkonto oder Event Hubs-Namespace verwenden, das sich nicht im gleichen Abonnement befindet wie das, das Protokolle angibt. Der Benutzer, der die Einstellung konfiguriert, benötigt den entsprechenden RBAC-Zugriff auf beide Abonnements.
 
@@ -56,7 +58,7 @@ Sie können ein Speicherkonto oder Event Hubs-Namespace verwenden, das sich nich
 
 Ressourcendiagnoseprotokolle werden mithilfe von Diagnoseeinstellungen für Ressourcen konfiguriert. Mandantendiagnoseprotokolle werden mithilfe einer Diagnoseeinstellung für Mandanten konfiguriert. Mit **Diagnoseeinstellungen** für eine Dienststeuerung können Sie Folgendes festlegen:
 
-* Wohin Diagnoseprotokolle und Metriken gesendet werden (Speicherkonto, Event Hubs und/oder Log Analytics).
+* Wohin Diagnoseprotokolle und Metriken gesendet werden (Speicherkonto, Event Hubs und/oder Azure Monitor).
 * Welche Protokollkategorien gesendet werden, und ob auch Metrikdaten gesendet werden.
 * Wie lange die einzelnen Protokollkategorien in einem Speicherkonto beibehalten werden sollen
     - Wenn für die Beibehaltungsdauer 0 Tage festgelegt sind, bedeutet dies, dass Protokolle unbegrenzt beibehalten werden. Andernfalls kann als Wert die Anzahl von Tagen (1 bis 2.147.483.647) festgelegt werden.
@@ -235,5 +237,4 @@ Wenn Sie eine Diagnoseeinstellung hinzufügen, wird das Blatt „Diagnoseeinstel
 
 * [Streamen von Diagnoseprotokollen für Ressourcen an **Event Hubs**](diagnostic-logs-stream-event-hubs.md)
 * Ändern der Diagnoseeinstellungen für Ressourcen mithilfe der Azure Monitor-REST-API ([Service Diagnostic Settings](https://docs.microsoft.com/rest/api/monitor/) (Diagnoseeinstellungen für Dienste))
-* [Analysieren von Protokollen aus Azure Storage mit Log Analytics](../../azure-monitor/platform/collect-azure-metrics-logs.md)
-
+* [Analysieren von Protokollen aus Azure Storage mit Azure Monitor](collect-azure-metrics-logs.md)

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: d0fc922191dbcdf35e3f9d1dee4af32e50dd27a7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 4ee36aaaeeda02025da6b01f4dd6c84afd72970f
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54076687"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233352"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Features und Tools für Azure Cloud Shell
 
@@ -60,8 +60,8 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Category (Kategorie)   |NAME   |
 |---|---|
 |Linux-Tools            |Bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
-|Text-Editoren           |Vim<br> Nano<br> Emacs<br> code       |
+|Azure-Tools            |[Azure CLI](https://github.com/Azure/azure-cli) und [klassische Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Text-Editoren           |code (Cloud Shell-Editor)<br> Vim<br> Nano<br> Emacs    |
 |Quellcodeverwaltung         |Git                    |
 |Buildtools            |Make<br> Maven<br> npm<br> pip         |
 |Container             |[Docker-Computer](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [Helm](https://github.com/kubernetes/helm)<br> [DC/OS-CLI](https://github.com/dcos/dcos-cli)         |
@@ -76,7 +76,7 @@ Cloud Shell enthält eine vorkonfigurierte Authentifizierung für Open Source-To
 |Go         |1.9        |
 |Java       |1.8        |
 |Node.js    |8.9.4      |
-|PowerShell |[6.1.1](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell |[6.1.2](https://github.com/PowerShell/powershell/releases)       |
 |Python     |2.7 und 3.5 (Standard)|
 
 ## <a name="next-steps"></a>Nächste Schritte

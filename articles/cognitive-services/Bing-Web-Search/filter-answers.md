@@ -4,19 +4,19 @@ titleSuffix: Azure Cognitive Services
 description: Erfahren Sie, wie Sie Suchergebnisse der Bing-Websuche-API filtern und anzeigen können.
 services: cognitive-services
 author: swhite-msft
-manager: cgronlun
+manager: nitinme
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.subservice: bing-web-search
 ms.topic: conceptual
-ms.date: 01/12/2017
+ms.date: 02/12/2019
 ms.author: scottwhi
-ms.openlocfilehash: c59cb173480fbeefa890317fb4804f07b9f58f76
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 26c38c34543683a3fc450d3a0ae932d8bd30dc98
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158178"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199492"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtern der Ergebnisse, die die Suchantwort enthält  
 
@@ -44,8 +44,16 @@ Wenn Sie das Web abfragen, gibt Bing alle Inhalte zurück, die für die Suche re
     }
 }    
 ```
+Sie können die empfangenen Inhalte mit dem Abfrageparameter [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) nach Typ filtern (z.B. Bilder, Videos und News). Wenn Bing relevante Inhalte für die angegebenen Antworten findet, werden diese zurückgegeben. Der Antwortfilter ist eine durch Trennzeichen getrennte Liste mit Antworten. 
 
-Wenn Sie an bestimmten Arten von Inhalten wie Bildern, Videos und News interessiert sind, können Sie mit dem Abfrageparameter [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#responsefilter) nur diese Antworten anfordern. Wenn Bing relevante Inhalte für die angegebenen Antworten findet, gibt Bing diese zurück. Der Antwortfilter ist eine durch Trennzeichen getrennte Liste mit Antworten. Im folgenden wird gezeigt, wie `responseFilter` zum Anfordern von Bildern, Videos und News zu Segeljollen verwendet wird. Wenn Sie die Abfragezeichenfolge codieren, ändern sich die Trennzeichen in %2C.  
+Um bestimmte Inhaltstypen wie z.B. Bilder aus der Antwort auszuschließen, können Sie das Zeichen `-` am Anfang des `responseFilter`-Werts hinzufügen. Sie trennen ausgeschlossene Inhaltstypen durch ein Komma (`,`) voneinander ab. Beispiel: 
+
+```
+&responseFilter=-images,-videos
+```
+
+
+Im folgenden wird gezeigt, wie `responseFilter` zum Anfordern von Bildern, Videos und News zu Segeljollen verwendet wird. Wenn Sie die Abfragezeichenfolge codieren, ändern sich die Trennzeichen in %2C.  
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&responseFilter=images%2Cvideos%2Cnews&mkt=en-us HTTP/1.1  
@@ -57,7 +65,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Wie Sie sehen können, hat Bing keine relevanten Video- und News-Ergebnisse gefunden, sodass die Antwort diese nicht enthält.
+Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Da Bing keine relevanten Video- und Newsergebnisse gefunden hat, enthält die Antwort diese auch nicht.
 
 ```json
 {
@@ -80,12 +88,6 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Abfrage. Wie Sie sehen
         }
     }
 }
-```
-
-Wenn Sie bestimmte Inhalte (z.B. Bilder) aus der Antwort ausschließen möchten, können Sie dazu dem Wert „responseFilter“ einen Bindestrich (Minuszeichen) voranstellen. Trennen Sie ausgeschlossene Inhaltstypen durch ein Komma voneinander ab:
-
-```
-&responseFilter=-images,-videos
 ```
 
 Obwohl Bing in der vorherigen Antwort keine Video- und News-Ergebnisse zurückgegeben hat, bedeutet dies nicht, dass es keine Video- und News-Inhalte gibt. Es bedeutet lediglich, dass sie nicht auf der Seite enthalten waren. Wenn Sie jedoch weitere [Seiten](./paging-webpages.md) mit Ergebnissen anzeigen, werden die nachfolgenden Seiten solche Ergebnisse wahrscheinlich enthalten. Auch wenn Sie die [Videosuche-API](../bing-video-search/search-the-web.md)- und [News-Suche-API](../bing-news-search/search-the-web.md)-Endpunkte direkt aufrufen, enthält die Antwort wahrscheinlich Ergebnisse.

@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: jeedes
-ms.openlocfilehash: 1fdd1e8acf446ba3e409e2ff0bf9ca18f581c299
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: d6bdc9f2214f8a23ffd1a126905faf00f2fc4264
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432651"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56199631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-glassfrog"></a>Tutorial: Azure Active Directory-Integration mit GlassFrog
 
@@ -149,7 +150,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-glassfrog-test-user"></a>Erstellen eines GlassFrog-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in GlassFrog einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer zur GlassFrog-Plattform ggf. vom [GlassFrog-Supportteam](https://support.glassfrog.com/support/solutions/9000107654) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in GlassFrog einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer auf der GlassFrog-Plattform ggf. vom  [GlassFrog-Supportteam](https://support.glassfrog.com/support/solutions/9000107654) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

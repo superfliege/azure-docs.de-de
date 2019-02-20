@@ -4,7 +4,7 @@ description: Dieser Artikel bietet eine Übersicht über die Azure Media Service
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 95c20ec4-c782-4063-8042-b79f95741d28
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/09/2019
 ms.author: juliako
-ms.openlocfilehash: 97df0876afd8b7258f985ab375b14f4aabde6e22
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 48b88aed833b0cd15f47195c67be80fe75fe153f
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33786139"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005181"
 ---
-# <a name="azure-media-services-telemetry"></a>Azure Media Services-Telemetrie
+# <a name="azure-media-services-telemetry"></a>Azure Media Services-Telemetrie  
 
 Mit Azure Media Services (AMS) können Sie auf Telemetrie-/Metrikdaten zugreifen. Mit der aktuellen Version der AMS können Sie Telemetriedaten für **Kanal**-, **StreamingEndpoint**- und **Archive**-Live-Entitäten sammeln. 
 
@@ -75,7 +75,7 @@ Eigenschaft|Wert|Beispiele/Hinweise
 PartitionKey|{Konto-ID}_{Entitäts-ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>Die Konto-ID ist im Partitionsschlüssel enthalten, um Workflows zu vereinfachen, in denen mehrere Media Services-Konten in das gleiche Speicherkonto schreiben.
 RowKey|{Sekunden bis Mitternacht}_{Zufallswert}|01688_00199<br/><br/>Der Zeilenschlüssel beginnt mit der Anzahl von Sekunden bis Mitternacht, um Abfragen nach den „oberen n“ innerhalb einer Partition zu ermöglichen. Weitere Informationen dazu finden Sie in [diesem Artikel](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern). 
 Zeitstempel|Datum/Uhrzeit|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Typ|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
+Type|Der Typ der Entität, die Telemetriedaten liefert|Kanal/StreamingEndpoint/Archiv<br/><br/>Der Ereignistyp ist einfach ein Zeichenfolgenwert.
 NAME|Der Name des Telemetrieereignisses|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|Die Uhrzeit (UTC), zu der das Telemetrieereignis aufgetreten ist.|2016-09-09T22:42:36.924Z<br/><br/>Die beobachtete Zeit wird von der Entität gemeldet, die die Telemetriedaten sendet (z.B. ein Kanal). Da zwischen Komponenten Zeitsynchronisierungsprobleme auftreten können, ist dies ein ungefährer Wert.
 ServiceID|{Service-ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -85,9 +85,9 @@ Entitätsspezifische Eigenschaften|Gemäß der Definition durch das-Ereignis|Str
 
 Es gibt drei Arten von entitätsspezifischen telemetrischen Dateneinträgen, die jeweils mit folgender Häufigkeit abgelegt werden:
 
-- Streamingendpunkte: alle 30 Sekunden
-- Livekanäle: jede Minute
-- Livearchiv: jede Minute
+- Streamingendpunkte: Alle 30 Sekunden
+- Livekanäle: Minütlich
+- Livearchiv: Minütlich
 
 **Streamingendpunkt**
 
@@ -96,7 +96,7 @@ Eigenschaft|Wert|Beispiele
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Zeitstempel|Zeitstempel|Automatischer Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Typ|Typ|StreamingEndpoint
+Type|Type|StreamingEndpoint
 NAME|NAME|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -115,7 +115,7 @@ Eigenschaft|Wert|Beispiele/Hinweise
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Zeitstempel|Zeitstempel|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Typ|Typ|Kanal
+Type|Type|Kanal
 NAME|NAME|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
@@ -140,7 +140,7 @@ Eigenschaft|Wert|Beispiele/Hinweise
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
 Zeitstempel|Zeitstempel|Zeitstempel von Azure-Tabelle 2016-09-09T22:43:42.241Z
-Typ|Typ|Archivieren
+Type|Type|Archivieren
 NAME|NAME|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|Service-ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e

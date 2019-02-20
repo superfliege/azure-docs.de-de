@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration von Vibe HCM | Microsoft-Dokumentation'
+title: 'Tutorial: Azure Active Directory-Integration mit Vibe HCM | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Vibe HCM konfigurieren.
 services: active-directory
 documentationCenter: na
@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: jeedes
-ms.openlocfilehash: 395f99c986e0a51e8dd2c440d258724e862f275c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 79787045f0379e6b672350206740297000f298c5
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48020607"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56185569"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Tutorial: Azure Active Directory-Integration von Vibe HCM
+# <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Tutorial: Azure Active Directory-Integration mit Vibe HCM
 
 In diesem Tutorial erfahren Sie, wie Sie Vibe HCM in Azure Active Directory (Azure AD) integrieren.
 
@@ -160,7 +161,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-vibe-hcm-test-user"></a>Erstellen eines Vibe HCM-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Vibe HCM einen Benutzer namens Britta Simon. Wenden Sie sich an das [Supportteam von Vibe HCM](mailto:support@vibehcm.com), um die Benutzer zur Vibe HCM-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Vibe HCM einen Benutzer namens Britta Simon. Wenden Sie sich an das  [Supportteam von Vibe HCM](mailto:support@vibehcm.com), um die Benutzer zur Vibe HCM-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

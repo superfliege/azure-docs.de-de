@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 1/30/2019
+ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0473bccbd249f70139d815b8353f1ac271df754f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: d6e083c4a7595bb70e77bca860c756abc2eaa18e
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658385"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55979648"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Lösung zum Starten/Beenden von VMs außerhalb der Geschäftszeiten in Azure Automation
 
@@ -209,7 +209,7 @@ In der folgenden Tabelle sind die in Ihrem Automation-Konto erstellten Variablen
 |External_AutoStop_TimeAggregationOperator | Der Zeitaggregationsoperator, der auf die ausgewählte Fenstergröße angewendet wird, um die Bedingung auszuwerten. Zulässige Werte sind **Average**, **Minimum**, **Maximum**, **Total** und **Last**.|
 |External_AutoStop_TimeWindow | Die Größe des Fensters, in dem Azure ausgewählte Metriken zum Auslösen einer Warnung analysiert. Für diesen Parameter können Zeiträume eingegeben werden. Mögliche Werte reichen von 5 Minuten bis 6 Stunden.|
 |External_EnableClassicVMs| Gibt an, ob die Lösung klassische virtuelle Computer als Ziel verwendet. Der Standardwert lautet „True“. Diese Variable sollte bei CSP-Abonnements auf „False“ festgelegt werden.|
-|External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen.|
+|External_ExcludeVMNames | Geben Sie die Namen der auszuschließenden VMs ein, und trennen Sie Namen durch Kommas ohne Leerzeichen. Dies ist auf 140 virtuelle Computer beschränkt. Wenn mehr als 140 VMs hinzugefügt werden, kann es bei VMs, die ausgeschlossen werden sollen, zu unbeabsichtigtem Starten oder Herunterfahren kommen.|
 |External_Start_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Startaktionen an.|
 |External_Stop_ResourceGroupNames | Gibt eine oder mehrere Zielressourcengruppen, deren Werte durch Kommas getrennt sind, für Beendigungsaktionen an.|
 |Internal_AutomationAccountName | Gibt den Namen des Automation-Kontos an.|
@@ -333,7 +333,7 @@ Es stehen einige Optionen zur Verfügung, mit denen Sie sicherstellen können, d
 
 ### <a name="exclude-a-vm"></a>Ausschließen eines virtuellen Computers
 
-Wenn Sie eine VM von der Lösung ausschließen möchten, können Sie sie der Variablen **External_ExcludeVMNames** hinzufügen. Diese Variable ist eine durch Komma getrennte Liste von bestimmten VMs, die von der Lösung zum Starten/Beenden ausgeschlossen werden sollen.
+Wenn Sie eine VM von der Lösung ausschließen möchten, können Sie sie der Variablen **External_ExcludeVMNames** hinzufügen. Diese Variable ist eine durch Komma getrennte Liste von bestimmten VMs, die von der Lösung zum Starten/Beenden ausgeschlossen werden sollen. Diese Liste ist auf 140 virtuelle Computer beschränkt. Wenn Sie dieser durch Trennzeichen getrennten Liste mehr als 140 VMs hinzufügen, kann es bei VMs, für die Ausschluss festgelegt ist, zu unbeabsichtigtem Starten oder Beenden kommen.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Ändern der Zeitpläne für das Starten und Herunterfahren
 

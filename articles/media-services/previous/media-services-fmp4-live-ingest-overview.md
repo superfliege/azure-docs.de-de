@@ -4,7 +4,7 @@ description: Diese Spezifikation beschreibt das Protokoll und Format für die fr
 services: media-services
 documentationcenter: ''
 author: cenkdin
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 43fac263-a5ea-44af-8dd5-cc88e423b4de
 ms.service: media-services
@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 02/08/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c6ff386913ed66cf4f74cb577bb8ca58e6932ada
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 16b8b5a012c5d2073a3472a70cf2064b8b0e59cd
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51228877"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55984833"
 ---
-# <a name="azure-media-services-fragmented-mp4-live-ingest-specification"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services
+# <a name="azure-media-services-fragmented-mp4-live-ingest-specification-legacy"></a>Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services (veraltet)
+
 Diese Spezifikation beschreibt das Protokoll und Format für die fragmentierte MP4-basierte Livestreamingerfassung für Azure Media Services. Media Services bietet einen Livestreamingdienst, mit dem Kunden Liveereignisse und Sendungsinhalte mit Azure als Cloudplattform in Echtzeit streamen können. In diesem Dokument werden auch optimale Verfahren zur Erstellung hoch redundanter und stabiler Mechanismen der Echtzeiterfassung beschrieben.
 
 ## <a name="1-conformance-notation"></a>1. Konformität der Schlüsselbegriffe
@@ -82,12 +83,12 @@ Video – 3.000 KBit/s, 1.500 KBit/s, 750 KBit/s
 
 Audio – 128 KBit/s
 
-### <a name="option-1-all-tracks-in-one-stream"></a>Option 1: alle Spuren in einem Stream
+### <a name="option-1-all-tracks-in-one-stream"></a>Option 1: Alle Spuren in einem Stream
 Mit dieser Option generiert ein einzelner Encoder alle Audio-/Videospuren und bündelt diese dann in einem fragmentierten MP4-Bitstrom. Der fragmentierte MP4-Bitstrom wird dann über eine einzelne HTTP POST-Verbindung gesendet. In diesem Beispiel gibt es nur einen Stream für die Livepräsentation.
 
 ![Streams – eine Spur][image2]
 
-### <a name="option-2-each-track-in-a-separate-stream"></a>Option 2: jede Spur in einem separaten Stream
+### <a name="option-2-each-track-in-a-separate-stream"></a>Option 2: Jede Spur in einem separaten Stream
 Bei dieser Option fügt der Encoder jeweils nur eine Spur in jeden fragmentierten MP4-Bitstrom ein und sendet alle Streams über separate HTTP-Verbindungen. Dies kann mit einem Encoder oder mehreren Encodern erfolgen. Aus der Perspektive der Echtzeiterfassung besteht diese Livepräsentation aus vier Streams.
 
 ![Streams – separate Spuren][image3]

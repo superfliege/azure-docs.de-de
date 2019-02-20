@@ -1,6 +1,6 @@
 ---
-title: Suchabfragen in Log Analytics | Microsoft-Dokumentation
-description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten beim Schreiben von Suchabfragen in Log Analytics.
+title: Suchabfragen in Azure Monitor-Protokollen | Microsoft-Dokumentation
+description: Dieser Artikel enthält ein Tutorial zu den ersten Schritten bei der Verwendung der Suche in Azure Monitor-Suchabfragen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
-ms.openlocfilehash: 1f3131585a8f6581690eda777b8ffc96768b3cc6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: cda66b91a0e829ec3bc84a82c190b9d856827ad3
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52884772"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56004450"
 ---
-# <a name="search-queries-in-log-analytics"></a>Suchabfragen in Log Analytics
+# <a name="search-queries-in-azure-monitor-logs"></a>Suchabfragen in Azure Monitor-Protokollen
 
 > [!NOTE]
-> Bevor Sie diese Lektion absolvieren, sollten Sie [Erste Schritte mit Abfragen in Log Analytics](get-started-queries.md) lesen.
+> Vor der Durchführung dieser Lektion sollten Sie [Erste Schritte mit Azure Monitor-Protokollabfragen](get-started-queries.md) lesen.
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-Azure Log Analytics-Abfragen können entweder mit einem Tabellennamen oder einem Suchbefehl beginnen. Dieses Tutorial behandelt suchbasierte Abfragen. Jede Methode bringt ihre eigenen Vorteile mit sich.
+Azure Monitor-Protokollabfragen können entweder mit einem Tabellennamen oder einem Suchbefehl beginnen. Dieses Tutorial behandelt suchbasierte Abfragen. Jede Methode bringt ihre eigenen Vorteile mit sich.
 
 Tabellenbasierte Abfragen definieren zunächst den Bereich der Abfrage und sind daher meist effizienter als Suchabfragen. Suchabfragen sind weniger strukturiert, weshalb Sie bei der Suche nach einem bestimmten Wert in Spalten oder Tabellen die bessere Wahl darstellen. Mit **search** kann der angegebene Wert in allen Spalten in einer bestimmten Tabelle oder in allen Tabellen gesucht werden. Die Menge der verarbeiteten Daten kann enorm sein, weshalb diese Abfragen mehr Zeit in Anspruch nehmen und sehr umfangreiche Resultsets zurückgeben können.
 
@@ -144,4 +144,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Tutorials finden Sie auf der [Website zur Log Analytics-Abfragesprache](https://aka.ms/LogAnalyticsLanguage).
+- Weitere Tutorials finden Sie auf der [Website zur Data Explorer-Abfragesprache](/azure/kusto/query/).

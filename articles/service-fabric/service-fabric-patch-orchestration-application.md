@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/01/2019
 ms.author: brkhande
-ms.openlocfilehash: 88618e5b9de9cb8ac46b9b167e6fa6dbccd73687
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 717b895696ca93444744955937c6de23626c7835
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732310"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234747"
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Patchen des Windows-Betriebssystem in Ihrem Service Fabric-Cluster
 
@@ -133,7 +133,7 @@ So aktivieren Sie den Reparatur-Manager-Dienst
 
 3. Aktualisieren Sie das Clustermanifest mit diesen Änderungen, und verwenden Sie dabei das aktualisierte Clustermanifest zum [Erstellen eines neuen Clusters](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-for-windows-server) oder zum [Aktualisieren der Clusterkonfiguration](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-upgrade-windows-server). Sobald der Cluster mit dem aktualisierten Clustermanifest ausgeführt wird, wird der in Ihrem Cluster ausgeführte Reparatur-Manager-Systemdienst mit dem Namen `fabric:/System/RepairManagerService` im Service Fabric Explorer im Abschnitt „Systemdienste“ angezeigt.
 
-### <a name="disable-automatic-windows-update-on-all-nodes"></a>Deaktivieren der automatischen Windows Update-Funktion auf allen Knoten
+### <a name="configure-windows-updates-for-all-nodes"></a>Konfigurieren von Windows-Updates für alle Knoten
 
 Automatische Windows-Updates können zu einer Verringerung der Verfügbarkeit führen, da mehrere Clusterknoten gleichzeitig neu gestartet werden können. Die App für die Patchorchestrierung versucht standardmäßig, die automatische Windows Update-Funktion auf jedem Clusterknoten zu deaktivieren. Wenn die Einstellungen jedoch von einem Administrator bzw. durch eine Gruppenrichtlinie verwaltet werden, empfiehlt es sich, die Windows Update-Richtlinie explizit auf „Bei Download benachrichtigen“ festzulegen.
 

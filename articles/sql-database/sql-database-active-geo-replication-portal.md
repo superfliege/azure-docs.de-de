@@ -11,19 +11,19 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 01/30/2019
-ms.openlocfilehash: 18e786ba45e476df2ab223a47f1b77ef6b778d7f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.date: 02/13/2019
+ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657772"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56245982"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
 In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](http://portal.azure.com) konfigurieren und ein Failover initiieren.
 
-Weitere Informationen zu Autofailover-Gruppen mit einer einzelnen Datenbank oder in einem Pool zusammengefassten Datenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
+Weitere Informationen zu Autofailover-Gruppen mit einer einzelnen Datenbank oder in einem Pool zusammengefassten Datenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen mit verwalteten Instanzen](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

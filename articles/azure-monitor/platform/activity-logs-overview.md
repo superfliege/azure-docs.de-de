@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 3a1ffb3b7a0f154b1d74ca7a8789e5fdadadec31
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 2fc09ccdf68605e444ed4b196162df6205557272
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883771"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56002100"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Überwachen der Abonnementaktivität per Azure-Aktivitätsprotokoll
 
@@ -83,7 +83,7 @@ Im Azure-Portal können Sie Ihr Aktivitätsprotokoll nach diesen Feldern filtern
 
 Nachdem Sie eine Gruppe von Filtern definiert haben, können Sie eine Abfrage in Ihrem Azure-Dashboard anheften, um immer den Überblick über bestimmte Ereignisse zu haben.
 
-Sie haben noch mehr Optionen, wenn Sie auf das Symbol **Protokolle** klicken, über das Ihre Aktivitätsprotokolldaten in der [Log Analytics-Lösung für Aktivitätsprotokolle](../../azure-monitor/platform/collect-activity-logs.md) angezeigt werden. Das Blatt „Aktivitätsprotokoll“ enthält eine einfache Filter-/Suchoberfläche für Protokolle, aber mit Log Analytics haben Sie effektivere Möglichkeiten, Ihre Daten zu pivotieren, abzufragen und zu visualisieren.
+Sie haben noch mehr Optionen, wenn Sie auf das Symbol **Protokolle** klicken, über das Ihre Aktivitätsprotokolldaten in der [Lösung zum Erfassen und Analysieren von Aktivitätsprotokollen](../../azure-monitor/platform/collect-activity-logs.md) angezeigt werden. Das Blatt „Aktivitätsprotokoll“ enthält eine einfache Filter-/Suchoberfläche für Protokolle. Mit der Funktion für Azure Monitor-Protokolle stehen Ihnen jedoch effektivere Möglichkeiten, Ihre Daten zu pivotieren, abzufragen und zu visualisieren zur Verfügung.
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>Exportieren des Aktivitätsprotokolls mit einem Protokollprofil
 Mit einem **Protokollprofil** wird gesteuert, wie das Aktivitätsprotokoll exportiert wird. Mit einem Protokollprofil können Sie Folgendes konfigurieren:
@@ -142,11 +142,11 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 
 | Eigenschaft | Erforderlich | BESCHREIBUNG |
 | --- | --- | --- |
-| Name |JA |Name des Protokollprofils. |
+| Name |Ja |Name des Protokollprofils. |
 | StorageAccountId |Nein  |Ressourcen-ID des Speicherkontos, in dem das Aktivitätsprotokoll gespeichert werden soll. |
 | serviceBusRuleId |Nein  |Service Bus-Regel-ID für den Service Bus-Namespace, unter dem Event Hubs erstellt werden sollen. Dies ist eine Zeichenfolge mit dem folgenden Format: `{service bus resource ID}/authorizationrules/{key name}`. |
-| Standort |JA |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
-| RetentionInDays |JA |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
+| Standort |Ja |Kommagetrennte Liste mit den Regionen, für die Sie Aktivitätsprotokollereignisse erfassen möchten. |
+| RetentionInDays |Ja |Anzahl von Tagen für die Aufbewahrung von Ereignissen (1 bis 2.147.483.647). Bei einem Wert von 0 werden die Protokolle dauerhaft (d.h. für immer) gespeichert. |
 | Category (Kategorie) |Nein  |Kommagetrennte Liste mit den Ereigniskategorien, die erfasst werden sollen. Mögliche Werte sind „Write“, „Delete“ und „Action“. |
 
 #### <a name="remove-a-log-profile"></a>Entfernen eines Protokollprofils

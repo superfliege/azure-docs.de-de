@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/07/2018
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: ac07b5af28dc869b6aa05c269c9225d546d651a0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 92e5fb782eed3344a55178d6ba74dfd6d7b8cafd
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490429"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235905"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -31,7 +31,9 @@ Bei Verwendung verknüpfter Vorlagen erstellen Sie eine Hauptvorlage, in der die
 
 Ein entsprechendes Tutorial finden Sie unter [Tutorial: Erstellen verknüpfter Azure Resource Manager-Vorlagen](./resource-manager-tutorial-create-linked-templates.md).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+> [!NOTE]
+> Für verknüpfte oder geschachtelte Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](deployment-modes.md) verwenden.
+>
 
 ## <a name="link-or-nest-a-template"></a>Verknüpfen oder Schachteln einer Vorlage
 
@@ -52,8 +54,6 @@ Zum Verknüpfen mit einer anderen Vorlage fügen Sie der Hauptvorlage eine **Ber
 ```
 
 Die Eigenschaften, die Sie für die Bereitstellungsressource angeben, variieren in Abhängigkeit davon, ob Sie eine externe Vorlage verknüpfen oder eine Inlinevorlage mit der Hauptvorlage schachteln.
-
-Sowohl für verknüpfte als auch geschachtelte Vorlagen können Sie nur den Bereitstellungsmodus [Inkrementell](deployment-modes.md) verwenden.
 
 ### <a name="nested-template"></a>Geschachtelte Vorlage
 
@@ -467,8 +467,8 @@ In PowerShell rufen Sie ein Token für den Container ab und stellen die Vorlagen
 
 ```azurepowershell-interactive
 Set-AzCurrentStorageAccount -ResourceGroupName ManageGroup -Name storagecontosotemplates
-$token = New-AzureStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
-$url = (Get-AzureStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
+$token = New-AzStorageContainerSASToken -Name templates -Permission r -ExpiryTime (Get-Date).AddMinutes(30.0)
+$url = (Get-AzStorageBlob -Container templates -Blob parent.json).ICloudBlob.uri.AbsoluteUri
 New-AzResourceGroupDeployment -ResourceGroupName ExampleGroup -TemplateUri ($url + $token) -containerSasToken $token
 ```
 

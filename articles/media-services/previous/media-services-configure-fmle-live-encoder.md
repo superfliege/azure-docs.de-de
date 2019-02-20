@@ -4,7 +4,7 @@ description: In diesem Thema wird beschrieben, wie Sie den Flash Media Live Enco
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 1a7cbd19b89663ab874fc5a7a86587e292b86f81
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665884"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56003736"
 ---
-# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>Verwenden des FMLE zum Senden eines Single-Bitrate-Livedatenstroms
+# <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>Verwenden von FMLE zum Senden eines Single-Bitrate-Livedatenstroms (veraltet)
 > [!div class="op_single_selector"]
 > * [FMLE](media-services-configure-fmle-live-encoder.md)
 > * [Tricaster](media-services-configure-tricaster-live-encoder.md)
@@ -77,15 +77,15 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 **Video**:
 
 * Codec: H.264
-* Profil: Hoch (Level 4.0)
-* Bitrate: 5.000 KBit/s
+* Profil: Hoch (Ebene 4.0)
+* Bitrate: 5.000 KBit/s
 * Keyframe: 2 Sekunden (60 Sekunden)
 * Bildfrequenz: 30
 
 **Audio**:
 
 * Codec: AAC (LC)
-* Bit Rate: 192 Kbit/s
+* Bitrate: 192 KBit/s
 * Abtastrate: 44,1 kHz
 
 ### <a name="configuration-steps"></a>Konfigurationsschritte
@@ -93,25 +93,25 @@ In diesem Tutorial werden die folgenden Ausgabeeinstellungen verwendet. Im restl
 
     Die Benutzeroberfläche besteht aus einer Hauptseite mit Einstellungen. Beachten Sie die folgenden empfohlenen Einstellungen, wenn Sie mit Streaming per FMLE beginnen.
 
-   * Format: H.264 Frame Rate: 30.00
-   * Input Size: 1280 x 720
-   * Bit Rate: 5000 Kbit/s (kann je nach Netzwerkbeschränkungen angepasst werden)  
+   * Format: H.264-Bildfrequenz: 30,00
+   * Eingangsgröße: 1.280 × 720
+   * Bitrate: 5.000 KBit/s (kann an Netzwerkbeschränkungen angepasst werden)  
 
-     ![FMLE](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
+     ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle3.png)
 
      Wenn Sie Datenquellen mit Zeilensprung verwenden, aktivieren Sie die Option "Deinterlace".
 2. Wählen Sie das Schraubenschlüsselsymbol neben "Format". Anschließend werden die folgenden zusätzlichen Einstellungen angezeigt:
 
-   * Profile: Main
-   * Level: 4.0
-   * Keyframe Frequency: 2 Sekunden
+   * Profil: Main
+   * Ebene: 4,0
+   * Keyframefrequenz: 2 Sekunden
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle4.png)
 3. Legen Sie die folgenden wichtigen Audioeinstellungen fest:
 
    * Format: AAC
-   * Sample Rate: 44100 Hz
-   * Bit Rate: 192 Kbit/s
+   * Abtastrate: 44.100 Hz
+   * Bitrate: 192 KBit/s
 
      ![fmle](./media/media-services-fmle-live-encoder/media-services-fmle5.png)
 4. Rufen Sie die Eingabe-URL des Kanals ab, um diese dem FMLE- **RTMP-Endpunkt**zuzuweisen.

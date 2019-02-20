@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 794c2cf6c52ead465d35d3d551cfe76e87c06787
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51237603"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55991242"
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST
+# <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST  
+
 [!INCLUDE [media-services-selector-get-started](../../../includes/media-services-selector-get-started.md)]
 
 Dieser Schnellstart führt Sie durch die Schritte zum Implementieren einer Anwendung zur Video-on-Demand (VoD)-Inhaltsübermittlung mit Azure Media Services (AMS)-REST-APIs.
@@ -268,7 +269,7 @@ Eine SAS-URL weist das folgende Format auf:
 Folgende Überlegungen sollten berücksichtigt werden:
 
 * Einem bestimmten Medienobjekt können jeweils nicht mehr als fünf eindeutige Locators zugeordnet sein. 
-* Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").    
+* Wenn Sie Ihre Dateien sofort hochladen müssen, sollten Sie Ihren StartTime-Wert auf fünf Minuten vor der aktuellen Uhrzeit festlegen. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Darüber hinaus muss der StartTime-Wert das folgende DateTime-Format aufweisen: YYYY-MM-DDTHH:mm:ssZ (Beispiel: „2014-05-23T17:53:50Z“).    
 * Gegebenenfalls tritt eine Verzögerung von 30 bis 40 Sekunden zwischen dem Erstellen eines Locators und seiner Verfügbarkeit auf. Dieses Problem gilt sowohl für [SAS-URLs](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) als auch für Ursprungslocators.
 
 Das folgende Beispiel zeigt, wie Sie einen SAS URL-Locator gemäß der Type-Eigenschaft im Anforderungstext (1 für einen SAS-Locator und 2 für einen On-Demand-Ursprungslocator) erstellen können. Die zurückgegebene **Path** -Eigenschaft enthält die URL, die Sie für den Upload der Datei verwenden müssen.
@@ -407,7 +408,7 @@ Im Erfolgsfall wird Folgendes zurückgegeben:
 
 Nach dem Erfassen der Medienobjekte in Media Services können die Medien u. a. codiert, transcodiert/multiplexiert und mit einem Wasserzeichen versehen werden, bevor sie an die Clients übermittelt werden. Diese Aktivitäten werden geplant und für mehrere Hintergrundrolleninstanzen ausgeführt, um hohe Leistung und Verfügbarkeit zu gewährleisten. Diese Aktivitäten werden als Aufträge bezeichnet, und jeder Auftrag besteht aus atomaren Tasks, welche die eigentliche Arbeit für die Medienobjektdatei leisten (weitere Informationen finden Sie in den Beschreibungen zu [Job](https://docs.microsoft.com/rest/api/media/operations/job) und [Task](https://docs.microsoft.com/rest/api/media/operations/task)).
 
-Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der häufigsten Szenarios darin, Streaming mit adaptiver Bitrate an Ihre Clients zu übermitteln. Media Services kann eine Reihe von MP4-Dateien mit adaptiver Bitrate dynamisch in eines der folgenden Formate verpacken: HTTP Live Streaming (HLS), Smooth Streaming und MPEG-DASH.
+Wie bereits erwähnt, besteht beim Arbeiten mit Azure Media Services eines der häufigsten Szenarios darin, Streaming mit adaptiver Bitrate an Ihre Clients zu übermitteln. Media Services kann eine Reihe von MP4-Dateien mit adaptiver Bitrate dynamisch in eines der folgenden Formate verpacken: HTTP Live Streaming (HLS), Smooth Streaming, MPEG-DASH.
 
 Der folgende Abschnitt veranschaulicht die Erstellung eines Auftrags, der eine Codierungsaufgabe enthält. Die Aufgabe gibt an, dass die Zwischendatei mit **Media Encoder Standard**in einen MP4-Dateisatz mit adaptiver Bitrate transcodiert werden soll. Außerdem wird in diesem Abschnitt erläutert, wie Sie den Fortschritt der Auftragsverarbeitung überwachen. Nachdem Sie den Auftrag abgeschlossen haben, können Sie Locators erstellen, die für den Zugriff auf Ihre Medienobjekte erforderlich sind.
 
@@ -458,7 +459,7 @@ Durch den folgenden Code wird die Encoder-ID angefordert.
     }
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
-Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Über die REST-API können Sie Aufträge und die zugehörigen Aufgaben auf folgende zwei Arten erstellen: Aufgaben können Inline über die Aufgabennavigationseigenschaft von Auftragsentitäten oder über die OData-Batchverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
+Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen: Aufgaben können inline über die Aufgabennavigationseigenschaft in Auftragsentitäten oder über die OData-Stapelverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
 
 Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Der folgende Abschnitt dieser Dokumentation enthält eine Liste sämtlicher [Aufgabenvoreinstellungen](https://msdn.microsoft.com/library/mt269960) , die vom Media Encoder-Standardprozessor unterstützt werden.  
 
@@ -692,7 +693,7 @@ Der folgende Code zeigt, wie Sie die ID des Ausgabemedienobjekts anfordern.
 
 ## <a id="publish_get_urls"></a>Veröffentlichen des Medienobjekts und Abrufen von URLs für Streaming und progressiven Download mit der REST-API
 
-Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Locator-Typen: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature (SAS)-Locator zum Herunterladen von Mediendateien. 
+Um ein Medienobjekt zu streamen oder herunterzuladen, müssen Sie es zunächst durch Erstellen eines Locators "veröffentlichen". Locators ermöglichen den Zugriff auf Dateien im Medienobjekt. Media Services unterstützt zwei Arten von Locatorobjekten: OnDemandOrigin-Locator zum Streamen von Medien (z. B. MPEG DASH, HLS oder Smooth Streaming) und Access Signature-Locator (SAS) zum Herunterladen von Mediendateien. 
 
 Nachdem Sie die Locator erstellt haben, können Sie die URLs erstellen, mit denen Sie die Dateien streamen oder herunterladen möchten.
 
@@ -742,7 +743,7 @@ Das folgende Beispiel zeigt, wie die AccessPolicy für Leseberechtigungen eines 
 Im Erfolgsfall wird ein 201 Erfolgscode zurückgegeben, der die erstellte AccessPolicy-Entität beschreibt. Anschließend verwenden Sie die AccessPolicy-ID zusammen mit der ID des Medienobjekts, das die zu übermittelnde Datei (z.B. ein Ausgabemedienobjekt) enthält, um die Locator-Entität zu erstellen.
 
 > [!NOTE]
-> Dieser grundlegende Workflow entspricht dem Hochladen einer Datei bei der Erfassung eines Medienobjekts (wie oben in diesem Thema beschrieben). Wie beim Hochladen von Dateien gilt Folgendes: Wenn Sie (oder die Clients) sofortigen Zugriff auf Ihre Dateien benötigen, legen Sie den StartTime-Wert auf fünf Minuten vor der aktuellen Zeit fest. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Zudem muss der StartTime-Wert das folgende DateTime-Format haben: JJJJ-MM-TTTHH:mm:ssZ (z. B. "2014-05-23T17:53:50Z").
+> Dieser grundlegende Workflow entspricht dem Hochladen einer Datei bei der Erfassung eines Medienobjekts (wie oben in diesem Thema beschrieben). Wie beim Hochladen von Dateien gilt Folgendes: Wenn Sie (oder die Clients) sofortigen Zugriff auf Ihre Dateien benötigen, legen Sie den StartTime-Wert auf fünf Minuten vor der aktuellen Zeit fest. Dies ist erforderlich, weil ggf. eine Uhrzeitabweichung zwischen dem Clientcomputer und Media Services vorliegen kann. Der StartTime-Wert muss das folgende DateTime-Format aufweisen: YYYY-MM-DDTHH:mm:ssZ (Beispiel: „2014-05-23T17:53:50Z“).
 >
 >
 

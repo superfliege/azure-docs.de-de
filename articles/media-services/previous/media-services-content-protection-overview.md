@@ -12,16 +12,17 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 89e28a9b70d078c3fe385225af305252ececefce
-ms.sourcegitcommit: 1d3353b95e0de04d4aec2d0d6f84ec45deaaf6ae
+ms.openlocfilehash: 3ac07b06e1cf7b5b24956c10e202f9baeab60b2b
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50249921"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992245"
 ---
-# <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz
+# <a name="content-protection-overview"></a>Übersicht über den Inhaltsschutz 
+
  Mit Azure Media Services können Sie Ihre Medien ab dem Zeitpunkt, an dem sie Ihren Computer verlassen, während des gesamten Prozesses der Speicherung, Verarbeitung und Übermittlung sichern. Mit Media Services können Sie Ihre zu übermittelnden Live- und On-Demand-Inhalte dynamisch mit Advanced Encryption Standard (AES-128) oder einem der drei wichtigsten DRM-Systeme verschlüsseln: Microsoft PlayReady, Google Widevine und Apple FairPlay. Media Services bietet auch einen Dienst für die Übermittlung von AES-Schlüsseln und DRM-Lizenzen (PlayReady, Widevine und FairPlay) an autorisierte Clients. 
 
 Die folgende Abbildung veranschaulicht den Media Services-Workflow zum Schutz von Inhalten: 
@@ -80,9 +81,9 @@ Es gelten die folgenden Bedingungen:
 * Der Verschlüsselungstyp muss nicht in der URL angegeben werden, wenn auf das Medienobjekt nur eine einzelne Verschlüsselung angewendet wurde.
 * Beim Verschlüsselungstyp wird die Groß-/Kleinschreibung nicht beachtet.
 * Folgende Verschlüsselungstypen können angegeben werden:
-  * **cenc**: Für PlayReady oder Widevine (Common Encryption)
-  * **cbcs-aapl**: Für FairPlay (AES-CBC-Verschlüsselung)
-  * **cbc**: Für die AES-Umschlagverschlüsselung
+  * **cenc:** Für PlayReady oder Widevine (Common Encryption)
+  * **cbcs-aapl:** Für FairPlay (AES-CBC-Verschlüsselung)
+  * **cbc:** Für AES-Umschlagverschlüsselung
 
 ## <a name="next-steps"></a>Nächste Schritte
 In den folgenden Artikeln werden die nächsten Schritte für den Einstieg in den Inhaltsschutz beschrieben:

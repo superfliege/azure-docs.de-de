@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 40e0230e6a8e03aa53a24f2497fcd016909c0ada
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d16214bf08b0e0b5a95acae380f8d644fc4461ce
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55757597"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56213037"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Storage Premium: Entwurf für hohe Leistung
 
@@ -63,7 +63,7 @@ Aus diesem Grund ist es wichtig, die optimalen Durchsatz- und IOPS-Werte zu best
 
 ## <a name="latency"></a>Latency
 
-Latenz ist die Zeit, die eine Anwendung zum Empfangen einer einzelnen Anforderung, deren Übertragung an die Speicherdatenträger und zum Zurücksenden der Antwort an den Client benötigt. Neben IOPS und Durchsatz ist dies ein weiterer wichtiger Messwert für die Leistung einer Anwendung. Die Latenz eines Storage Premium-Datenträgers ist die benötigte Zeit zum Abrufen der Informationen für eine Anforderung und deren Übermittlung zurück an die Anwendung. Storage Premium bietet durchgängig eine niedrige Latenz. Wenn Sie das Hostcache-Einstellung „ReadOnly“ für Storage Premium-Datenträger aktivieren, erhalten Sie bei Lesevorgängen eine wesentlich niedrigere Latenz. Der Datenträgercache wird weiter unten im Abschnitt *Optimieren der Anwendungsleistung*ausführlicher erläutert.
+Latenz ist die Zeit, die eine Anwendung zum Empfangen einer einzelnen Anforderung, deren Übertragung an die Speicherdatenträger und zum Zurücksenden der Antwort an den Client benötigt. Neben IOPS und Durchsatz ist dies ein weiterer wichtiger Messwert für die Leistung einer Anwendung. Die Latenz eines Storage Premium-Datenträgers ist die benötigte Zeit zum Abrufen der Informationen für eine Anforderung und deren Übermittlung zurück an die Anwendung. Storage Premium bietet durchgängig eine niedrige Latenz. Premium-Datenträger bieten für die meisten E/A-Vorgänge Latenzen im einstelligen Millisekundenbereich. Wenn Sie das Hostcache-Einstellung „ReadOnly“ für Storage Premium-Datenträger aktivieren, erhalten Sie bei Lesevorgängen eine wesentlich niedrigere Latenz. Der Datenträgercache wird weiter unten im Abschnitt *Optimieren der Anwendungsleistung*ausführlicher erläutert.
 
 Wenn Sie Ihre Anwendung optimieren, um höhere IOPS- und Durchsatzwerte zu erzielen, wirkt sich dies auf die Latenz der Anwendung aus. Prüfen Sie nach einer Optimierung der Anwendungsleistung stets die Latenz, um unerwartet hohe Latenzen zu vermeiden.
 
@@ -118,7 +118,7 @@ Die Leistungsindikatoren im Systemmonitor sind für Prozessor, Arbeitsspeicher u
 
 | Indikator | BESCHREIBUNG | Systemmonitor | iostat |
 | --- | --- | --- | --- |
-| **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s  <br>  Schreibvorgänge/s |tps  <br> r/s  <br>  w/s |
+| **IOPS oder Transaktionen pro Sekunde** |Anzahl der an den Speicherdatenträger pro Sekunde erfolgten E/A-Anforderungen. |Lesevorgänge/s  <br> Schreibvorgänge/s |tps  <br> r/s  <br>  w/s |
 | **Lese- und Schreibvorgänge auf Datenträger** |% der auf dem Datenträger ausgeführten Lese- und Schreibvorgänge. |% Lesezeit  <br>  % Schreibzeit |r/s  <br>  w/s |
 | **Durchsatz** |Menge der Daten, die pro Sekunde auf dem Datenträger gelesen oder geschrieben wurde. |Byte gelesen/s  <br>  Byte geschrieben/s |kB_read/s <br> kB_wrtn/s |
 | **Latenz** |Zeitaufwand für das Ausführen einer E/A-Anforderung an den Datenträger. |Mittlere Sek./Lesevorgänge  <br>  Mittlere Sek./Schreibvorgänge |await  <br>  svctm |

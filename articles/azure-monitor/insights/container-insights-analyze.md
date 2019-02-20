@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 02/08/2019
 ms.author: magoedte
-ms.openlocfilehash: f0f929e7caece9bea10dbe09e237bc987ad93d44
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159654"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56233999"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>Verstehen der Leistung von AKS-Clustern mit Azure Monitor für Container 
 Mit Azure Monitor für Container können Sie die Leistungsdiagramme und den Integritätsstatus verwenden, um die Workload Ihrer Azure Kubernetes Service-Cluster (AKS) aus zwei Perspektiven zu überwachen, direkt aus einem AKS-Cluster oder aus allen AKS-Clustern in einem Abonnement von Azure Monitor. Die Anzeige von Azure Container Instances (ACI) ist auch möglich, wenn Sie einen bestimmten AKS-Cluster überwachen.
@@ -68,7 +68,7 @@ Die folgende Tabelle stellt eine Aufschlüsselung der Berechnung dar, die die In
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |  
 |**Systempod**| | |  
 | |Healthy |100 % |
-| |Warnung |N/V |
+| |Warnung |– |
 | |Kritisch |<100 % |
 | |Unknown |Wenn keine Meldung in den letzten 30 Minuten erfolgt ist |
 |**Node** | | |
@@ -275,5 +275,5 @@ Es ist oft hilfreich, die Abfrageerstellung ausgehend von einem oder zwei Beispi
 | **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "cpuUsageNanoCores" &#124; summarize AvgCPUUsageNanoCores = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Container-CPU | 
 | **Wählen Sie die Anzeigeoption Liniendiagramm aus**:<br> Perf<br> &#124; where ObjectName == "K8SContainer" and CounterName == "memoryRssBytes" &#124; summarize AvgUsedRssMemoryBytes = avg(CounterValue) by bin(TimeGenerated, 30m), InstanceName | Containerspeicher |
 
-## <a name="alerting"></a>Warnungen
-Azure Monitor für Container enthält keinen vordefinierten Satz von Warnungen, die Sie kopieren und entsprechend Ihren unterstützenden Prozessen und Verfahren ändern können. In der Zwischenzeit können Sie [Protokollwarnungen mit Azure Monitor](../../azure-monitor/platform/alerts-log.md?toc=/azure/azure-monitor/toc.json) erstellen und erfahren, wie Sie Ihren eigenen Satz von Warnungen erstellen können.  
+## <a name="next-steps"></a>Nächste Schritte
+Azure Monitor für Container enthält keinen vordefinierten Satz von Warnungen, die kopiert und entsprechend Ihren unterstützenden Prozessen und Verfahren geändert werden können. Informationen zum Erstellen von empfohlenen Warnungen für hohe CPU- und Arbeitsspeicherauslastung finden Sie unter [Erstellen von Leistungswarnungen mit Azure Monitor für Container](container-insights-alerts.md).  

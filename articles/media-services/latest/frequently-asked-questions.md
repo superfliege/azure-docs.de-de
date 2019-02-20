@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 02/05/2019
 ms.author: juliako
-ms.openlocfilehash: be4c08bc31c8811655230ab89b48271f4c2b3164
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: a447c359c38c2173ea42b6d717067fc8b3a88f9a
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756579"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55875490"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Media Services v3
 
@@ -36,17 +36,7 @@ Es empfiehlt sich, Aufträge mithilfe einer HTTP(s)-URL zu übermitteln, die auf
 
 ### <a name="how-does-pagination-work"></a>Wie funktioniert die Paginierung?
 
-Media Services unterstützt $top für Ressourcen, die OData unterstützen. Allerdings muss der an $top übergebene Wert kleiner als 1000 sein (z. B. die Seitengröße für die Paginierung).
-
-Dadurch können Sie entweder mithilfe von $top eine kleine Stichprobe der Elemente abrufen (z. B. die 100 zuletzt verwendeten Elemente) oder mithilfe der Paginierung alle Elemente durchlaufen. 
-
-Das Durchlaufen von Daten mit einer benutzerdefinierten Seitengröße wird von Media Services nicht unterstützt.
-
-Weitere Informationen finden Sie unter [Filterung, Sortierung, Paginierung](entities-overview.md).
-
-### <a name="how-to-retrieve-an-entity-in-media-services-v3"></a>Wie wird eine Entität in Media Services v3 abgerufen?
-
-v3 basiert auf einer vereinheitlichten API-Oberfläche, die sowohl Verwaltungs- als auch Betriebsfunktionen auf der Basis von **Azure Resource Manager** bereitstellt. Ressourcennahmen sind in Übereinstimmung mit dem **Azure Resource Manager** immer eindeutig. Daher können Sie beliebige Zeichenfolgen für eindeutige Bezeichner (beispielsweise GUIDs) für Ressourcen verwenden.
+Bei Verwendung der Paginierung sollten Sie immer den Link „Weiter“ verwenden, um die Sammlung zu enumerieren, und sich nicht auf eine bestimmte Seitengröße verlassen. Weitere Informationen und Beispiele finden Sie unter [Filterung, Sortierung, Paginierung](entities-overview.md).
 
 ## <a name="live-streaming"></a>Livestreaming 
 

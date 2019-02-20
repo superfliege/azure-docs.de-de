@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: 2e8b2753a441b0d7f27745fdf622b26dcee7784a
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 125f1a2a041c8c05289c95bd12c10618bfc622a8
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572186"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56246900"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs
 
@@ -51,7 +51,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
 
 * **Storage Premium-Datenträger**
 
-    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können aus acht allgemein verfügbaren Datenträgergrößen auswählen: P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1024 GiB), P40 (2048 GiB), P50 (4095 GiB). In der Vorschau stehen drei Datenträgergrößen zur Auswahl: P60 mit 8192 GiB (8 TiB), P70 mit 16348 GiB (16 TiB) und P80 mit 32767 GiB (32 TiB). Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für Managed Disks unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
+    Storage Premium unterstützt VM-Datenträger, die an VMs einer bestimmten Größenserie angefügt werden können. Storage Premium unterstützt eine Vielzahl von virtuellen Azure-Computern. Sie können zwischen acht allgemein verfügbaren Datenträgergrößen auswählen:  P4 (32 GiB), P6 (64 GiB), P10 (128 GiB), P15 (256 GiB), P20 (512 GiB), P30 (1.024 GiB), P40 (2.048 GiB), P50 (4.096 GiB). Dazu kommen drei Datenträgergrößen in der Vorschauversion: P60 (8.192 GiB/8 TiB), P70 (16.384 GiB/16 TiB), P80 (32.768 GiB/32 TiB). Die Datenträgergrößen P4, P6, P15, P60, P70 und P80 werden aktuell nur für Managed Disks unterstützt. Für jede Datenträgergröße gelten eigene Leistungsspezifikationen. Je nach Anwendungsanforderung können Sie einen oder mehrere Datenträger an Ihre VM anfügen. Unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#scalability-and-performance-targets) werden die Spezifikationen ausführlicher beschrieben.
 
 * **Premium-Seitenblobs**
 
@@ -67,7 +67,7 @@ Hier sind einige Features von Storage Premium aufgeführt:
     - [Azure-Befehlszeilenschnittstelle für Azure Storage](../articles/storage/common/storage-azure-cli.md#manage-storage-accounts)
     - [Azure Storage-Ressourcenanbieter-REST-API](https://docs.microsoft.com/rest/api/storagerp) (für Azure Resource Manager-Bereitstellungen) oder eine der Azure Storage-Ressourcenanbieter-Clientbibliotheken
 
-    Informationen zu den Grenzen von Premium-Speicherkonten finden Sie unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets).
+    Informationen zu den Grenzen von Premium-Speicherkonten finden Sie unter „Skalierbarkeits- und Leistungsziele für Storage Premium“.
 
 * **Lokal redundanter Premium-Speicher**
 
@@ -138,7 +138,7 @@ Storage Premium-Konten weisen folgende Skalierbarkeitsziele auf:
 
 | Gesamtkapazität des Kontos | Gesamtbandbreite für ein lokal redundantes Speicherkonto |
 | --- | --- | 
-| Kapazität des Datenträgers: 35 TB <br>Kapazität für Momentaufnahmen: 10 TB | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
+| Datenträgerkapazität: 35 TB <br>Kapazität für Momentaufnahmen: 10 TB | Bis zu 50 Gigabit pro Sekunde für eingehenden<sup>1</sup> und ausgehenden<sup>2</sup> Datenverkehr |
 
 <sup>1</sup> Alle Daten (Anforderungen), die an ein Speicherkonto gesendet werden
 
@@ -149,7 +149,7 @@ Weitere Informationen finden Sie unter [Skalierbarkeits- und Leistungsziele für
 Wenn Sie Storage Premium-Konten für nicht verwaltete Datenträger verwenden und Ihre Anwendung die Skalierbarkeitsziele eines einzelnen Speicherkontos überschreitet, sollten Sie die Migration zu verwalteten Datenträgern erwägen. Falls die Migration zu verwalteten Datenträgern für Sie keine Option ist, können Sie Ihre Anwendung für die Nutzung mehrerer Speicherkonten erstellen. Partitionieren Sie Ihre Daten dann basierend auf diesen Speicherkonten. Wenn Sie beispielsweise 51-TB-Datenträger an mehrere VMs anfügen möchten, können Sie sie auf zwei Speicherkonten verteilen. 35 TB ist der Grenzwert pro Storage Premium-Konto. Stellen Sie sicher, dass ein Storage Premium-Konto stets Datenträger mit einer Größe von maximal 35 TB enthält.
 
 ### <a name="premium-storage-disk-limits"></a>Grenzwerte für Storage Premium-Datenträger
-Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht GA-Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15 (nur Managed Disks), P20, P30, P40 und P50. Dazu kommen drei Datenträgergrößen in der Vorschauversion: P60, P70 und P80. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
+Wenn Sie einen Storage Premium-Datenträger bereitstellen, wird anhand der Größe des Datenträgers der maximale IOPS- und Durchsatzwert (Bandbreite) ermittelt. Azure bietet acht allgemein verfügbare Typen von Storage Premium-Datenträgern: P4 (nur Managed Disks), P6 (nur Managed Disks), P10, P15 (nur Managed Disks), P20, P30, P40 und P50. Dazu kommen drei Datenträgergrößen in der Vorschauversion: P60, P70 und P80. Für jeden Typ von Storage Premium-Datenträger gelten für IOPS und den Durchsatz bestimmte Grenzwerte. Die Grenzwerte für die Datenträgertypen sind in der folgenden Tabelle beschrieben:
 
 Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in der Vorschau.
 
@@ -160,7 +160,7 @@ Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in 
 | Durchsatz pro Datenträger | 25 MB pro Sekunde | 50 MB pro Sekunde | 100 MB pro Sekunde | 125 MB pro Sekunde | 150 MB pro Sekunde | 200 MB pro Sekunde | 250 MB pro Sekunde | 250 MB pro Sekunde | 480 MB pro Sekunde | 750 MB pro Sekunde | 750 MB pro Sekunde |
 
 > [!NOTE]
-> Sorgen Sie dafür, dass auf Ihrer VM ausreichend Bandbreite für den Datenträger-Datenverkehr verfügbar ist. Dies ist unter [VMs mit Storage Premium-Unterstützung](#premium-storage-supported-vms) beschrieben. Andernfalls sind Ihr Datenträgerdurchsatz und die IOPS-Menge auf niedrigere Werte beschränkt. Der Höchstmengen für Durchsatz und IOPS basieren auf den VM-Grenzwerten, und nicht auf den Grenzwerten für Datenträger, die in der vorherigen Tabelle beschrieben sind.  
+> Sorgen Sie dafür, dass auf Ihrer VM ausreichend Bandbreite für den Datenträger-Datenverkehr verfügbar ist. Dies ist unter [VMs mit Storage Premium-Unterstützung]() beschrieben. Andernfalls sind Ihr Datenträgerdurchsatz und die IOPS-Menge auf niedrigere Werte beschränkt. Der Höchstmengen für Durchsatz und IOPS basieren auf den VM-Grenzwerten, und nicht auf den Grenzwerten für Datenträger, die in der vorherigen Tabelle beschrieben sind.  
 > Azure hat die Storage Premium-Plattform mit einem hohen Grad an Parallelität ausgelegt. Indem Sie Ihre Anwendung mit mehreren Threads entwerfen, können Sie das Hochleistungsziel erreichen, das auf den größeren Datenträgern angeboten wird.
 
 Es folgen einige wichtige Punkte, die Sie in Bezug auf die Skalierbarkeits- und Leistungsziele für Storage Premium kennen sollten:
@@ -294,7 +294,7 @@ Bei Verwendung von Storage Premium gilt für die Abrechnung Folgendes:
 
 * **Größe von Storage Premium-Datenträgern und -Blobs**
 
-    Die Abrechnung für einen Storage Premium-Datenträger bzw. ein -Blob hängt von der Größe ab, die für den Datenträger bzw. das Blob bereitgestellt wurde. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächsten Storage Premium-Datenträgeroption zu. Einzelheiten finden Sie in der Tabelle unter [Skalierbarkeits- und Leistungsziele für Storage Premium](#premium-storage-scalability-and-performance-targets). Jeder Datenträger ist einer unterstützten bereitgestellten Datenträgergröße zugeordnet und wird entsprechend berechnet. Die Abrechnung für bereitgestellte Datenträger erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Datenmenge, die auf den Datenträger geschrieben wurde, oder dem verwendeten IOPS und Durchsatz.
+    Die Abrechnung für einen Storage Premium-Datenträger bzw. ein -Blob hängt von der Größe ab, die für den Datenträger bzw. das Blob bereitgestellt wurde. Azure ordnet die bereitgestellte Größe (aufgerundet) der nächsten Storage Premium-Datenträgeroption zu. Einzelheiten finden Sie in der Tabelle unter [Skalierbarkeits- und Leistungsziele für Storage Premium](). Jeder Datenträger ist einer unterstützten bereitgestellten Datenträgergröße zugeordnet und wird entsprechend berechnet. Die Abrechnung für bereitgestellte Datenträger erfolgt anteilig auf Stundenbasis unter Verwendung des monatlichen Preises für das Storage Premium-Angebot. Wenn Sie z.B. einen Datenträger des Typs P10 bereitgestellt und diesen nach 20 Stunden gelöscht haben, erfolgt die Abrechnung für das P10-Angebot anteilig für 20 Stunden. Dies ist unabhängig von der tatsächlichen Datenmenge, die auf den Datenträger geschrieben wurde, oder dem verwendeten IOPS und Durchsatz.
 
 * **Momentaufnahmen von nicht verwalteten Premium-Datenträgern**
 

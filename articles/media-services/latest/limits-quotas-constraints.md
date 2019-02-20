@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/12/2019
 ms.author: juliako
-ms.openlocfilehash: 1bada751ffac45b36faad6e978567233901adc7d
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 9f5cf0e8be0529ce59edc9aa4cd33d470415c8a6
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700314"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56190958"
 ---
 # <a name="quotas-and-limitations-in-azure-media-services-v3"></a>Kontingente und Einschränkungen für Azure Media Services (v3)
 
@@ -37,7 +37,7 @@ In diesem Artikel werden die Kontingente und Einschränkungen für Azure Media S
 | Media Services-Konten in einem einzelnen Abonnement | 25 (feststehend) |
 | Liveausgaben im ausgeführten Zustand pro Liveereignis |3|
 | Speicherkonten | 100<sup>(4)</sup> (feststehend) |
-| Streamingendpunkte im ausgeführten Status pro Media Services-Konto|2|
+| Streamingendpunkte (angehalten oder ausgeführt) pro Media Services-Konto|2|
 | Streamingrichtlinien | 100 <sup>(3)</sup> |
 | Transformationen pro Media Services-Konto | 100  (feststehend)|
 | Eindeutige Streaminglocator, die einem Medienobjekt gleichzeitig zugeordnet sind | 100<sup>(5)</sup> (fest) |

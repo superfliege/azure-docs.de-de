@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: stewu
-ms.openlocfilehash: fff26406b036edeb48371b89f7e585160ddc58e0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 318f2b550e19f4b7f56a7b8cc592d34644dca644
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123316"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235601"
 ---
 # <a name="performance-tuning-guidance-for-using-powershell-with-azure-data-lake-storage-gen1"></a>Leitfaden zur Leistungsoptimierung für die Verwendung von PowerShell mit Azure Data Lake Storage Gen1
 
 In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden können, um eine bessere Leistung zu erzielen, wenn Sie PowerShell für die Arbeit mit Azure Data Lake Storage Gen1 verwenden:
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="performance-related-properties"></a>Leistungsbezogene Eigenschaften
 
@@ -33,13 +35,13 @@ In diesem Artikel sind die Eigenschaften aufgeführt, die optimiert werden könn
 
 Mit diesem Befehl werden Dateien aus Azure Data Lake Storage Gen1 auf den lokalen Datenträger des Benutzers heruntergeladen, indem 20 Threads pro Datei und 100 gleichzeitige Dateien verwendet werden.
 
-    Export-AzureRmDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
+    Export-AzDataLakeStoreItem -AccountName <Data Lake Storage Gen1 account name> -PerFileThreadCount 20-ConcurrentFileCount 100 -Path /Powershell/100GB/ -Destination C:\Performance\ -Force -Recurse
 
 ## <a name="how-do-i-determine-the-value-for-these-properties"></a>Wie kann ich den Wert für diese Eigenschaften ermitteln?
 
 Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert für die leistungsbezogenen Eigenschaften angegeben werden soll. Hier sind einige hilfreiche Informationen zur Vorgehensweise angegeben.
 
-* **Schritt 1: Ermitteln der Gesamtzahl von Threads** – Beginnen Sie, indem Sie die Gesamtzahl der Threads berechnen, die verwendet werden sollen. Als Faustregel gilt, dass Sie sechs Threads für jeden physischen Kern verwenden sollten.
+* **Schritt 1: Ermitteln der Gesamtanzahl von Threads** – Beginnen Sie, indem Sie die Gesamtanzahl der Threads berechnen, die verwendet werden sollen. Als Faustregel gilt, dass Sie sechs Threads für jeden physischen Kern verwenden sollten.
 
         Total thread count = total physical cores * 6
 
@@ -50,7 +52,7 @@ Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert f�
         Total thread count = 16 cores * 6 = 96 threads
 
 
-* **Schritt 2: Berechnen von PerFileThreadCount** – Wir berechnen den Wert für PerFileThreadCount basierend auf der Größe der Dateien. Für Dateien, die kleiner als 2,5 GB sind, muss dieser Parameter nicht geändert werden, da die Standardeinstellung 10 ausreicht. Für Dateien, die größer als 2,5 GB sind, sollten Sie zehn Threads als Basis für die ersten 2,5 GB nutzen und für jede weitere Steigerung der Dateigröße um 256 MB einen Thread hinzufügen. Wenn Sie einen Ordner mit Dateien mit stark variierender Größe haben, können Sie erwägen, die Dateien nach Größe zu gruppieren. Wenn die Dateigrößen sehr unterschiedlich sind, kann dies die Leistung beeinträchtigen. Falls das Gruppieren nach ähnlichen Dateigrößen nicht möglich sein sollte, ist es ratsam, den Wert für PerFileThreadCount basierend auf der größten Datei festzulegen.
+* **Schritt 2: Berechnen von „PerFileThreadCount“** – Der Wert für „PerFileThreadCount“ wird basierend auf der Größe der Dateien berechnet. Für Dateien, die kleiner als 2,5 GB sind, muss dieser Parameter nicht geändert werden, da die Standardeinstellung 10 ausreicht. Für Dateien, die größer als 2,5 GB sind, sollten Sie zehn Threads als Basis für die ersten 2,5 GB nutzen und für jede weitere Steigerung der Dateigröße um 256 MB einen Thread hinzufügen. Wenn Sie einen Ordner mit Dateien mit stark variierender Größe haben, können Sie erwägen, die Dateien nach Größe zu gruppieren. Wenn die Dateigrößen sehr unterschiedlich sind, kann dies die Leistung beeinträchtigen. Falls das Gruppieren nach ähnlichen Dateigrößen nicht möglich sein sollte, ist es ratsam, den Wert für PerFileThreadCount basierend auf der größten Datei festzulegen.
 
         PerFileThreadCount = 10 threads for the first 2.5 GB + 1 thread for each additional 256 MB increase in file size
 
@@ -60,7 +62,7 @@ Als Nächstes möchten Sie vielleicht wissen, wie Sie ermitteln, welcher Wert f�
 
         PerFileThreadCount = 10 + ((10 GB - 2.5 GB) / 256 MB) = 40 threads
 
-* **Schritt 3: Berechnen von „ConcurrentFilecount“:** Verwenden Sie die Gesamtzahl der Threads und den Wert von „PerFileThreadCount“, um „ConcurrentFileCount“ basierend auf der folgenden Gleichung zu berechnen:
+* **Schritt 3: Berechnen von „ConcurrentFilecount“** – Verwenden Sie die Gesamtanzahl der Threads und den Wert von „PerFileThreadCount“, um „ConcurrentFileCount“ basierend auf der folgenden Gleichung zu berechnen:
 
         Total thread count = PerFileThreadCount * ConcurrentFileCount
 
@@ -84,13 +86,13 @@ Sie können diese Einstellungen weiter optimieren, indem Sie den Wert für **Per
 
 ### <a name="limitation"></a>Einschränkung
 
-* **Anzahl von Dateien ist geringer als ConcurrentFileCount**: Wenn die Anzahl von hochgeladenen Dateien kleiner als der von Ihnen berechnete Wert von **ConcurrentFileCount** ist, sollten Sie **ConcurrentFileCount** reduzieren und gemäß der Anzahl von Dateien festlegen. Sie können alle verbleibenden Threads verwenden, um **PerFileThreadCount** zu erhöhen.
+* **Anzahl von Dateien ist geringer als „ConcurrentFileCount“:** Wenn die Anzahl der hochgeladenen Dateien kleiner als der von Ihnen berechnete Wert von **ConcurrentFileCount** ist, sollten Sie **ConcurrentFileCount** reduzieren und gemäß der Anzahl von Dateien festlegen. Sie können alle verbleibenden Threads verwenden, um **PerFileThreadCount** zu erhöhen.
 
-* **Zu viele Threads**: Wenn Sie die Anzahl von Threads zu stark erhöhen, ohne die Clustergröße zu erhöhen, können sich Leistungseinbußen ergeben. Es kann zu Problemen aufgrund von Konflikten kommen, die beim Kontextwechsel in der CPU entstehen.
+* **Zu viele Threads:** Wenn Sie die Anzahl von Threads zu stark erhöhen, ohne die Clustergröße zu erhöhen, können sich Leistungseinbußen ergeben. Es kann zu Problemen aufgrund von Konflikten kommen, die beim Kontextwechsel in der CPU entstehen.
 
-* **Unzureichende Parallelität**: Falls die Parallelität nicht ausreicht, ist Ihr Cluster ggf. zu klein. Sie können die Anzahl von Knoten in Ihrem Cluster erhöhen, um mehr Parallelität zu erzielen.
+* **Unzureichende Parallelität:** Wenn die Parallelität nicht ausreicht, ist Ihr Cluster eventuell zu klein. Sie können die Anzahl von Knoten in Ihrem Cluster erhöhen, um mehr Parallelität zu erzielen.
 
-* **Drosselungsfehler**: Es können Drosselungsfehler auftreten, wenn die Parallelität zu hoch ist. Falls es zu Drosselungsfehlern kommt, sollten Sie entweder die Parallelität reduzieren oder mit uns Kontakt aufnehmen.
+* **Drosselungsfehler:** Es können Drosselungsfehler auftreten, wenn die Parallelität zu hoch ist. Falls es zu Drosselungsfehlern kommt, sollten Sie entweder die Parallelität reduzieren oder mit uns Kontakt aufnehmen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwenden von Azure Data Lake Storage Gen1 für Big Data-Anforderungen](data-lake-store-data-scenarios.md) 

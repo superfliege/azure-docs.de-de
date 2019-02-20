@@ -1,6 +1,6 @@
 ---
-title: Hierarchischer Namespace für Azure Data Lake Storage Gen2 (Vorschauversion)
-description: Beschreibt das Konzept des hierarchischen Namespace für Azure Data Lake Storage Gen2 (Vorschauversion).
+title: Hierarchischer Namespace für Azure Data Lake Storage Gen2
+description: Beschreibt das Konzept des hierarchischen Namespace für Azure Data Lake Storage Gen2.
 services: storage
 author: jamesbak
 ms.service: storage
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 967e24ae6e004fe6ce2b1c0aa6c039f46be2598c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: b423d40884dd9132312e79ba0cbff00b8771b207
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244503"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877030"
 ---
-# <a name="azure-data-lake-storage-gen2-preview-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2 (Vorschauversion)
+# <a name="azure-data-lake-storage-gen2-hierarchical-namespace"></a>Hierarchischer Namespace für Azure Data Lake Storage Gen2
 
-Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 (Vorschauversion) ermöglicht, Dateisystemleistung im Umfang und zu Preisen eines Objektspeichers bereitzustellen, ist das Hinzufügen eines **hierarchischen Namespace**. Dadurch kann die Sammlung von Objekten/Dateien innerhalb eines Kontos in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen auf gleiche Weise wie beim Dateisystem auf Ihrem Computer organisiert werden. Bei aktiviertem hierarchischem Namespace kann ein Speicherkonto die Skalierbarkeit und Kosteneffizienz eines Objektspeichers mit einer Dateisystemsemantik bereitstellen, die Analyse-Engines und -Frameworks vertraut ist.
+Ein Schlüsselmechanismus, der es Azure Data Lake Storage Gen2 ermöglicht, Dateisystemleistung im Umfang und zu Preisen eines Objektspeichers bereitzustellen, ist das Hinzufügen eines **hierarchischen Namespace**. Dadurch kann die Sammlung von Objekten/Dateien innerhalb eines Kontos in einer Hierarchie von Verzeichnissen und geschachtelten Unterverzeichnissen auf gleiche Weise wie beim Dateisystem auf Ihrem Computer organisiert werden. Bei aktiviertem hierarchischem Namespace kann ein Speicherkonto die Skalierbarkeit und Kosteneffizienz eines Objektspeichers mit einer Dateisystemsemantik bereitstellen, die Analyse-Engines und -Frameworks vertraut ist.
 
 ## <a name="the-benefits-of-the-hierarchical-namespace"></a>Vorteile des hierarchischen Namespace
 
@@ -29,18 +29,17 @@ Dateisysteme, die einen hierarchischen Namespace über Blob-Daten implementieren
 
 - **Vertrauter Schnittstellenstil:** Dateisysteme werden sowohl von Entwicklern als auch Benutzern gut verstanden. Es ist nicht erforderlich, beim Wechsel zur Cloud ein neues Speicherparadigma zu erlernen, da die von Data Lake Storage Gen2 angezeigte Dateisystemschnittstelle dem sowohl von kleinen als auch großen Computern verwendeten Paradigma entspricht.
 
-Einer der Gründe, warum Objektspeicher bisher keine hierarchischen Namespaces unterstützt haben, ist, dass durch hierarchische Namespaces die Skalierbarkeit begrenzt war. Der hierarchische Namespace für Data Lake Storage Gen2 kann jedoch linear skaliert werden und beeinträchtigt weder Datenkapazität noch Leistung.
+Einer der Gründe, warum Objektspeicher bisher keine hierarchischen Namespaces unterstützt haben, ist, dass die Skalierbarkeit durch hierarchische Namespaces begrenzt wird. Der hierarchische Namespace für Data Lake Storage Gen2 kann jedoch linear skaliert werden und beeinträchtigt weder Datenkapazität noch Leistung.
 
 ## <a name="when-to-enable-the-hierarchical-namespace"></a>Aktivierungsempfehlung für den hierarchischen Namespace
 
-Das Aktivieren des hierarchischen Namespace wird für Speicherworkloads empfohlen, die für Dateisysteme entwickelt wurden, die Verzeichnisse bearbeiten. Dazu gehören alle Workloads, die primär der Analyseverarbeitung dienen. Datasets, die ein hohes Maß an Organisation erfordern, profitieren ebenfalls vom Aktivieren des hierarchischen Namespace.
+Es empfiehlt sich, den hierarchischen Namespace für Speicherworkloads zu aktivieren, die für Dateisysteme entwickelt wurden, in denen Verzeichnisse bearbeitet werden. Dazu gehören alle Workloads, die primär der Analyseverarbeitung dienen. Datasets, die ein hohes Maß an Organisation erfordern, profitieren ebenfalls vom Aktivieren des hierarchischen Namespace.
 
 Die Gründe für das Aktivieren des hierarchischen Namespace werden durch eine Gesamtkostenanalyse ermittelt. Im Allgemeinen werden durch Verbesserungen der Workloadlatenz aufgrund beschleunigter Speicherung Computeressourcen über einen kürzeren Zeitraum benötigt. Die Latenz für viele Workloads kann aufgrund der atomarischen Verzeichnisbearbeitung verbessert werden, die der hierarchische Namespace ermöglicht. Bei vielen Workloads stellt die Computeressource mehr als 85 % der Gesamtkosten dar, sodass auch nur eine geringfügige Verringerung der Workloadlatenz zu wesentlichen Einsparungen bei den Gesamtkosten führen kann. Selbst in Fällen, in denen durch das Aktivieren des hierarchischen Namespace die Speicherkosten steigen, werden dennoch die Gesamtkosten aufgrund der niedrigeren Computekosten reduziert.
 
 ## <a name="when-to-disable-the-hierarchical-namespace"></a>Deaktivierungsempfehlung für den hierarchischen Namespace
 
-Für einige Workloads des Objektspeichers bietet das Aktivieren des hierarchischen Namespace möglicherweise keine Vorteile. Beispiele dafür sind Backups, Imagespeicher und andere Anwendungen, bei denen die Objektorganisation getrennt von den eigentlichen Objekten gespeichert wird (*z.B.* in einer separaten Datenbank).
-
+Für einige Workloads des Objektspeichers bietet das Aktivieren des hierarchischen Namespace möglicherweise keine Vorteile. Beispiele dafür sind Backups, Imagespeicher und andere Anwendungen, bei denen die Objektorganisation getrennt von den eigentlichen Objekten gespeichert wird (z.B. in einer separaten Datenbank).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

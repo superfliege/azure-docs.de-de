@@ -14,12 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2018
 ms.author: jeedes
-ms.openlocfilehash: cfeadbf1d46d9e36f8619cafe29d9dd69aad6eec
-ms.sourcegitcommit: 4eddd89f8f2406f9605d1a46796caf188c458f64
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 49a311b74fbc48f414f530e962af39d17a346353
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49118187"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56175539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-phraseanet"></a>Tutorial: Azure Active Directory-Integration mit Phraseanet
 
@@ -149,7 +150,7 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta S
  
 ### <a name="create-a-phraseanet-test-user"></a>Erstellen eines Phraseanet-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Phraseanet einen Benutzer namens „Britta Simon“. Lassen Sie sich beim Hinzufügen der Benutzer zur Phraseanet-Plattform ggf. vom [Phraseanet-Supportteam](mailto:support@alchemy.fr) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Phraseanet einen Benutzer namens „Britta Simon“. Lassen Sie sich beim Hinzufügen der Benutzer auf der Phraseanet-Plattform ggf. vom  [Phraseanet-Supportteam](mailto:support@alchemy.fr) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 

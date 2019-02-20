@@ -1,30 +1,25 @@
 ---
-title: Erste Schritte mit Log Analytics im Azure-Portal | Microsoft-Dokumentation
+title: Erste Schritte mit Azure Monitor Log Analytics | Microsoft-Dokumentation
 description: Dieser Artikel ist ein Tutorial zum Schreiben von Abfragen mithilfe von Log Analytics im Azure-Portal.
 services: log-analytics
-documentationcenter: ''
 author: bwren
 manager: carmonm
-editor: ''
-ms.assetid: ''
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
-ms.openlocfilehash: 6ed8906066d66b6e16ec482a53137f9ca70ae9c7
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 2adb23b63c3a8be56dc55293c7bb06534d9305c4
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000051"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242106"
 ---
-# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Erste Schritte mit Log Analytics im Azure-Portal
+# <a name="get-started-with-azure-monitor-log-analytics"></a>Erste Schritte mit Azure Monitor Log Analytics
 
 [!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
-In diesem Tutorial erfahren Sie, wie Sie mithilfe der Log Analytics-Seite im Azure-Portal (derzeit in der Vorschauphase) Log Analytics-Abfragen schreiben können. Es wird Folgendes vermittelt:
+In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Monitor Log Analytics im Azure-Portal Azure Monitor-Protokollabfragen schreiben können. Es wird Folgendes vermittelt:
 
 - Schreiben von einfachen Abfragen
 - Grundlegendes zum Schema Ihrer Daten
@@ -35,8 +30,8 @@ In diesem Tutorial erfahren Sie, wie Sie mithilfe der Log Analytics-Seite im Azu
 - Exportieren und Freigeben von Abfragen
 
 
-## <a name="meet-the-log-analytics-page"></a>Einführung in die Log Analytics-Seite 
-Die Log Analytics-Seite ist ein Webtool, das zum Schreiben und Ausführen von Azure Log Analytics-Abfragen verwendet wird. Öffnen Sie die Seite, indem Sie im Log Analytics-Menü die Option **Protokolle (Vorschau)** auswählen. Zu Beginn wird eine neue leere Abfrage angezeigt.
+## <a name="meet-log-analytics"></a>Einführung in Log Analytics
+Log Analytics ist ein Webtool, das zum Schreiben und Ausführen von Azure Monitor-Protokollabfragen verwendet wird. Sie können es durch Auswählen von **Protokolle** im Menü „Azure Monitor“ öffnen. Zu Beginn wird eine neue leere Abfrage angezeigt.
 
 ![Startseite](media/get-started-portal/homepage.png)
 
@@ -83,7 +78,7 @@ Fügen Sie zunächst alle Elemente in die _Event_-Tabelle ein.
 Event
 ```
 
-Die Log Analytics-Seite beschränkt die Ergebnisse automatisch auf Folgendes:
+Log Analytics beschränkt die Ergebnisse automatisch auf Folgendes:
 
 - Zeitbereich:  Abfragen werden standardmäßig auf die letzten 24 Stunden beschränkt.
 - Anzahl von Ergebnissen: Ergebnisse sind auf maximal 10.000 Datensätze beschränkt.
@@ -121,7 +116,7 @@ Die Ergebnistabelle enthält oft viele Spalten. Einige der zurückgegebenen Spal
 
 
 ## <a name="select-a-time-range"></a>Auswählen eines Zeitbereichs
-Standardmäßig wendet die Log Analytics-Seite den Zeitbereich _Letzte 24 Stunden_ an. Um einen anderen Bereich zu verwenden, wählen Sie einen anderen Wert über die Zeitauswahl aus, und klicken Sie auf **Ausführen**. Neben den vordefinierten Werten können Sie die Option _Benutzerdefinierter Zeitbereich_ verwenden, um einen absoluten Bereich für Ihre Abfrage auszuwählen.
+Standardmäßig wendet Log Analytics den Zeitbereich _Letzte 24 Stunden_ an. Um einen anderen Bereich zu verwenden, wählen Sie einen anderen Wert über die Zeitauswahl aus, und klicken Sie auf **Ausführen**. Neben den vordefinierten Werten können Sie die Option _Benutzerdefinierter Zeitbereich_ verwenden, um einen absoluten Bereich für Ihre Abfrage auszuwählen.
 
 ![Zeitauswahl](media/get-started-portal/time-picker.png)
 
@@ -183,12 +178,12 @@ Das Abfrage-Explorer-Symbol wird im oberen rechten Bereich angezeigt. Hiermit we
 ![Abfrage-Explorer](media/get-started-portal/query-explorer.png)
 
 ## <a name="export-and-share-as-link"></a>Exportieren und Freigeben als Link
-Die Log Analytics-Seite unterstützt mehrere Exportmethoden:
+Log Analytics unterstützt mehrere Exportmethoden:
 
 - Excel: Speichern Sie die Ergebnisse als CSV-Datei.
-- Power BI: Exportieren Sie die Ergebnisse in Power BI. Einzelheiten finden Sie unter [Importieren von Log Analytics-Daten in Power BI](../../azure-monitor/platform/powerbi.md).
+- Power BI: Exportieren Sie die Ergebnisse in Power BI. Einzelheiten finden Sie unter [Importieren von Azure Monitor-Protokolldaten in Power BI](../../azure-monitor/platform/powerbi.md).
 - Freigabe eines Links: Die Abfrage selbst kann als Link freigegeben werden, der dann von anderen Benutzern, die Zugriff auf den gleichen Arbeitsbereich haben, gesendet und ausgeführt werden kann.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Schreiben von Log Analytics-Abfragen](get-started-queries.md).
+- Erfahren Sie mehr über das [Schreiben von Azure Monitor-Protokollabfragen](get-started-queries.md).

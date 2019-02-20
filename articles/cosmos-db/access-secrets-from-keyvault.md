@@ -1,24 +1,24 @@
 ---
 title: Verwenden von Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Schlüssel
-description: Verwenden Sie Azure Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Zeichenfolgen, -Schlüssel und -URLs.
-author: rafats
+description: Verwenden Sie Azure Key Vault zum Speichern von und Zugreifen auf Azure Cosmos DB-Verbindungszeichenfolgen, -Schlüssel und -Endpunkte.
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 08/21/2018
-ms.author: rafats
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 8a3863ff67549c77692f8629c2e7315aec94faf8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 36b0a2f18cf2917251a87405456980811af1bc3d
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463309"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56242191"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault 
 
-Wenn Sie Azure Cosmos DB für Ihre Anwendungen verwenden, können Sie über die Endpunkt-URI und den Schlüssel in der Konfigurationsdatei der Anwendung auf die Datenbank, Sammlungen und Dokumente zugreifen.  Es ist jedoch nicht sicher, Schlüssel und die URL direkt in den Anwendungscode zu integrieren, da dieser im Klartextformat für alle Benutzer verfügbar ist. Sie müssen sicherstellen, dass die URL und die Schlüssel über einen sicheren Mechanismus verfügbar sind. An dieser Stelle unterstützt Sie Azure Key Vault Sie bei der sicheren Speicherung und Verwaltung von Anwendungsgeheimnissen.
+Wenn Sie Azure Cosmos DB für Ihre Anwendungen verwenden, können Sie über den Endpunkt und den Schlüssel in der Konfigurationsdatei der Anwendung auf die Datenbank, Sammlungen und Dokumente zugreifen.  Es ist jedoch nicht sicher, Schlüssel und die URL direkt in den Anwendungscode zu integrieren, da dieser im Klartextformat für alle Benutzer verfügbar ist. Sie müssen sicherstellen, dass der Endpunkt und die Schlüssel über einen sicheren Mechanismus verfügbar sind. An dieser Stelle unterstützt Sie Azure Key Vault Sie bei der sicheren Speicherung und Verwaltung von Anwendungsgeheimnissen.
 
 Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in Key Vault zu speichern und daraus auszulesen:
 

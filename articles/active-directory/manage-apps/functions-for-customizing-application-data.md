@@ -3,8 +3,8 @@ title: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Direct
 description: Erfahren Sie, wie Ausdruckszuordnungen verwendet werden können, um Attributwerte während der automatisierten Bereitstellung von SaaS-App-Objekten in Azure Active Directory in ein akzeptables Format zu transformieren.
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: chmutali
-ms.openlocfilehash: 7b69929b210f0f30db28b18073893505d2977051
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 83a0685f75111a5552645d487589734846b05968
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179037"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56164633"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
 Wenn Sie die Bereitstellung für eine SaaS-Anwendung konfigurieren, ist einer der Attributzuordnungstypen, die Sie angeben können, eine Ausdruckszuordnung. Für diese müssen Sie einen skriptartigen Ausdruck schreiben, mit dem Sie die Daten Ihrer Benutzer in Formate umwandeln können, die für die SaaS-Anwendung einfacher zu akzeptieren sind.
@@ -34,10 +35,10 @@ Die Syntax für die Ausdrücke für Attributzuordnungen ist den Funktionen von V
   1. Attribute, die in eckige Klammern eingeschlossen werden müssen. Beispiel: [Attributname]
   2. Zeichenfolgenkonstanten, die in doppelte Anführungszeichen eingeschlossen werden müssen. Beispiel:  „USA“
   3. Andere Funktionen Beispiel:  FunctionOne(`<<argument1>>`, FunctionTwo(`<<argument2>>`))
-* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel:  „Unternehmensname: \"Contoso\"“
+* Bei Zeichenfolgenkonstanten, in denen ein umgekehrter Schrägstrich ( \ ) oder ein Anführungszeichen ( " ) benötigt wird, muss dieser bzw. dieses mit einem umgekehrten Schrägstrichsymbol ( \ ) versehen werden. Beispiel:  „Unternehmensname: \\"Contoso\\""
 
 ## <a name="list-of-functions"></a>Liste der Funktionen
-[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
+[Append](#append) &nbsp;&nbsp;&nbsp;&nbsp; [FormatDateTime](#formatdatetime) &nbsp;&nbsp;&nbsp;&nbsp; [Join](#join) &nbsp;&nbsp;&nbsp;&nbsp; [Mid](#mid) &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; [NormalizeDiacritics](#normalizediacritics) [Not](#not) &nbsp;&nbsp;&nbsp;&nbsp; [Replace](#replace) &nbsp;&nbsp;&nbsp;&nbsp; [SelectUniqueValue](#selectuniquevalue)&nbsp;&nbsp;&nbsp;&nbsp; [SingleAppRoleAssignment](#singleapproleassignment)&nbsp;&nbsp;&nbsp;&nbsp; [Split](#split)&nbsp;&nbsp;&nbsp;&nbsp;[StripSpaces](#stripspaces) &nbsp;&nbsp;&nbsp;&nbsp; [Switch](#switch)&nbsp;&nbsp;&nbsp;&nbsp; [ToLower](#tolower)&nbsp;&nbsp;&nbsp;&nbsp; [ToUpper](#toupper)
 
 - - -
 ### <a name="append"></a>Anfügen
@@ -117,7 +118,7 @@ Wenn einer der Quellwerte ein mehrwertiges Attribut ist, werden die einzelnen We
 
 | NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
-| **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind "True" oder "False". |
+| **Quelle** |Erforderlich |Boolesche Zeichenfolge |Die erwarteten **Quellwerte** sind TRUE oder FALSE. |
 
 - - -
 ### <a name="replace"></a>Replace
@@ -181,6 +182,19 @@ Ersetzt Werte in einer Zeichenfolge. Sie funktioniert unterschiedlich, je nachde
 | NAME | Erforderlich/wiederholt | Type | Notizen |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |Erforderlich |Zeichenfolge |**[appRoleAssignments]**-Objekt |
+
+- - -
+### <a name="split"></a>Split
+**Funktion:**<br> Split(Quelle, Trennzeichen)
+
+**Beschreibung:**<br> Unterteilt eine Zeichenfolge mithilfe des angegebenen Trennzeichens in ein mehrwertiges Array.
+
+**Parameter:**<br> 
+
+| NAME | Erforderlich/wiederholt | Type | Notizen |
+| --- | --- | --- | --- |
+| **Quelle** |Erforderlich |Zeichenfolge |**Quelle** , der aktualisiert werden soll. |
+| **Trennzeichen** |Erforderlich |Zeichenfolge |Gibt das Zeichen zum Aufteilen der Zeichenfolge an (Beispiel: „,“). |
 
 - - -
 ### <a name="stripspaces"></a>StripSpaces
@@ -282,8 +296,18 @@ NormalizeDiacritics([givenName])
 * **EINGABE** (givenName): „Zoë“
 * **AUSGABE**:  „Zoe“
 
-### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
+### <a name="split-a-string-into-a-multi-valued-array"></a>Unterteilen einer Zeichenfolge in ein mehrwertiges Array
+Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen in ein Array unterteilen, das in ein mehrwertiges Attribut wie das PermissionSets-Attribut von Salesforce eingegeben werden kann. In diesem Beispiel wurde eine Liste von Berechtigungssätzen in extensionAttribute5 in Azure AD eingegeben.
 
+**Ausdruck:** <br>
+Split([extensionAttribute5], ",")
+
+**Beispieleingabe/-ausgabe:** <br>
+
+* **EINGABE:** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **AUSGABE:** ["PermissionSetOne", "PermissionSetTwo"]
+
+### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
 Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung senden. <br>
 Beispielsweise möchten Sie Datumsangaben für ServiceNow formatieren.
 
@@ -302,7 +326,6 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
  Wenn der Bundesstaatscode keiner der vordefinierten Optionen entspricht, soll der Standardwert "Australien/Sydney" verwendet werden.
 
 **Ausdruck:** <br>
-
 `Switch([state], "Australia/Sydney", "NSW", "Australia/Sydney","QLD", "Australia/Brisbane", "SA", "Australia/Adelaide")`
 
 **Beispieleingabe/-ausgabe:**
@@ -310,8 +333,19 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
 * **EINGABE** (state): „QLD“
 * **AUSGABE**: „Australien/Brisbane“
 
-### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konvertieren des generierten userPrincipalName-Werts (UPN) in Kleinbuchstaben
+### <a name="replace-characters-using-a-regular-expression"></a>Ersetzen von Zeichen mit einem regulären Ausdruck
+Sie müssen Zeichen suchen, die mit einem regulären Ausdruck übereinstimmen, und diese entfernen.
 
+**Ausdruck:** <br>
+
+Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
+
+**Beispieleingabe/-ausgabe:**
+
+* **EINGABE:** (mailNickname: "john_doe72"
+* **AUSGABE**: "72"
+
+### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konvertieren des generierten userPrincipalName-Werts (UPN) in Kleinbuchstaben
 Im folgenden Beispiel wird der UPN-Wert durch die Verkettung der Quellfelder PreferredFirstName und PreferredLastName generiert, und die ToLower-Funktion konvertiert alle Zeichen der generierten Zeichenfolge in Kleinbuchstaben. 
 
 `ToLower(Join("@", NormalizeDiacritics(StripSpaces(Join(".",  [PreferredFirstName], [PreferredLastName]))), "contoso.com"))`
@@ -323,7 +357,6 @@ Im folgenden Beispiel wird der UPN-Wert durch die Verkettung der Quellfelder Pre
 * **AUSGABE**: „john.smith@contoso.com“
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
-
 Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wert für das UPN-Attribut generieren und die Eindeutigkeit im AD-Zielverzeichnis überprüfen, bevor Sie den Wert dem UPN-Attribut zuweisen.
 
 **Ausdruck:** <br>
@@ -349,4 +382,3 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 * [Verwenden von SCIM für die automatische Bereitstellung von Benutzern und Gruppen aus Azure Active Directory für Anwendungen](use-scim-to-provision-users-and-groups.md)
 * [Kontobereitstellungsbenachrichtigungen](user-provisioning.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
-

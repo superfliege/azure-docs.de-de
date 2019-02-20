@@ -15,17 +15,20 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: glenga;msangapu;david.ebbo;suwatch;pbatum;naren.soni;
 ms.custom: seodec18
-ms.openlocfilehash: d21d588660b67da024491151fe4f4376cebba46f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 43ec22836cb32c21953b9eb6871b9efe300cbf9e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53729997"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56001169"
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Ausführen von Hintergrundaufgaben mit WebJobs in Azure App Service
 
 ## <a name="overview"></a>Übersicht
 WebJobs ist ein Feature von [Azure App Service](https://docs.microsoft.com/azure/app-service/), mit dem Sie ein Programm oder Skript im selben Kontext wie eine Web-App, API-App oder mobile App ausführen können. Für die Nutzung von WebJobs fallen keine zusätzlichen Kosten an.
+
+> [!IMPORTANT]
+> WebJobs wird für Azure App Service für Linux zurzeit noch nicht unterstützt.
 
 Dieser Artikel zeigt, wie Sie WebJobs mithilfe des [Azure-Portals](https://portal.azure.com) zum Hochladen einer ausführbaren Datei oder eines Skripts bereitstellen. Informationen zum Entwickeln und Bereitstellen von WebJobs mit Visual Studio finden Sie unter [Bereitstellen von WebJobs mit Visual Studio](webjobs-dotnet-deploy-vs.md).
 

@@ -14,21 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 2b6fd2373a9cd0b376a6c8729d5952c5fc48ddf8
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f11d680330a43dd49b3c36c864f50b9dc869d172
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211851"
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Herstellung einer Verbindung mit Diensten in Service Fabric und die Kommunikation mit diesen Diensten
 In Service Fabric wird ein Dienst an irgendeinem Ort in einem Service Fabric-Cluster ausgeführt, der sich in der Regel auf mehreren virtuellen Computern befindet. Er kann entweder vom Dienstbesitzer oder automatisch von Service Fabric von einem Standort an einen anderen verschoben werden. Dienste sind nicht statisch an einen bestimmten Computer oder eine bestimmte Adresse gefunden.
 
 Eine Service Fabric-Anwendung besteht in der Regel aus vielen verschiedenen Diensten, die jeweils eine bestimmte Aufgabe ausführen. Diese Dienste können miteinander kommunizieren und so eine umfassende Funktion bilden, wie etwa das Rendern verschiedener Teile einer Webanwendung. Darüber hinaus verbinden sich Clientanwendungen zur Kommunikation mit den Diensten. Dieses Dokument erklärt, wie die Kommunikation mit und zwischen Ihren Diensten in Service Fabric eingerichtet wird.
-
-In diesem Microsoft Virtual Academy-Video wird auch die Dienstkommunikation erläutert: <center><a target="_blank" href="https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=iYFCk76yC_6706218965">  
-<img src="./media/service-fabric-connect-and-communicate-with-services/CommunicationVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
 
 ## <a name="bring-your-own-protocol"></a>Nutzen Sie Ihr eigenes Protokoll
 Service Fabric ist beim Verwalten des Lebenszyklus Ihrer Dienste behilflich, trifft aber keine Entscheidung in Bezug darauf, was Ihre Dienste tun. Dies umfasst auch die Kommunikation. Wenn Ihr Dienst von Service Fabric geöffnet wird, kann der Dienst einen Endpunkt für eingehende Anforderungen einrichten und dabei das von Ihnen bevorzugte Protokoll bzw. den gewünschten Kommunikationsstapel verwenden. Ihr Dienst lauscht an einer normalen **IP:port**-Adresse mithilfe eines beliebigen Adressierungsschemas wie etwa eines URIs. Mehrere Dienstinstanzen oder Replikate nutzen unter Umständen einen gemeinsamen Hostprozess. Dabei müssen entweder verschiedene Ports oder eine Portfreigabemethode wie etwa der http.sys-Kerneltreiber in Windows verwendet werden. In beiden Fällen muss jede Dienstinstanz bzw. jedes Replikat in einem Hostprozess eindeutig aufrufbar sein.
@@ -46,9 +42,9 @@ Service Fabric stellt einen Ermittlungs- und Auflösungsdienst namens „Naming 
 
 Beim Auflösen und Verbinden mit Diensten werden die folgenden Schritte in einer Schleife ausgeführt:
 
-* **Auflösen**: Der Endpunkt, den ein Dienst von Naming Service veröffentlicht hat, wird abgerufen.
-* **Verbinden**: Eine Verbindung mit dem Dienst wird über das auf diesem Endpunkt verwendete Protokoll hergestellt.
-* **Wiederholen**: Ein Verbindungsversuch kann aus verschiedenen Gründen fehlschlagen, z.B. wenn der Dienst seit der letzten Auflösung der Endpunktadresse verschoben wurde. In diesem Fall müssen die obigen Schritte zum Auflösen und Verbinden solange wiederholt werden, bis die Verbindung hergestellt werden kann.
+* **Auflösen:** Der Endpunkt, den ein Dienst über Naming Service veröffentlicht hat, wird abgerufen.
+* **Verbinden:** Eine Verbindung mit dem Dienst wird über das auf dem Endpunkt verwendete Protokoll hergestellt.
+* **Wiederholen:** Bei Verbindungsversuchen können aus verschiedenen Gründen Fehler auftreten, z.B. wenn der Dienst seit der letzten Auflösung der Endpunktadresse verschoben wurde. In diesem Fall müssen die obigen Schritte zum Auflösen und Verbinden solange wiederholt werden, bis die Verbindung hergestellt werden kann.
 
 ## <a name="connecting-to-other-services"></a>Herstellen einer Verbindung zu anderen Diensten
 Dienste, die innerhalb eines Clusters miteinander verbunden sind, können im Allgemeinen direkt auf die Endpunkte anderer Dienste zugreifen, da sich die Knoten in einem Cluster im gleichen Netzwerk befinden. Um die Verbindung zwischen Diensten zu erleichtern, bietet Service Fabric zusätzliche Dienste, die den Naming Service verwenden. Ein DNS-Dienst und einen Reverseproxydienst.
@@ -82,31 +78,26 @@ Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden 
 
 1. Schreiben Sie einen Dienst, der an Port 80 lauscht. Konfigurieren Sie Port 80 in „ServiceManifest.xml“ für den Dienst, und öffnen Sie einen Listener im Dienst, z.B. einem selbst gehosteten Webserver.
 
-    ```xml
-    <Resources>
-        <Endpoints>
-            <Endpoint Name="WebEndpoint" Protocol="http" Port="80" />
-        </Endpoints>
-    </Resources>
+    ```xml    <Resources> <Endpoints> <Endpoint Name="WebEndpoint" Protocol="http" Port="80" /> </Endpoints> </Resources>
     ```
     ```csharp
-        class HttpCommunicationListener : ICommunicationListener
+        class HttpCommunicationListener : ICommunicationListener
         {
             ...
 
             public Task<string> OpenAsync(CancellationToken cancellationToken)
             {
-                EndpointResourceDescription endpoint =
+                EndpointResourceDescription endpoint =
                     serviceContext.CodePackageActivationContext.GetEndpoint("WebEndpoint");
 
-                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
+                string uriPrefix = $"{endpoint.Protocol}://+:{endpoint.Port}/myapp/";
 
-                this.httpListener = new HttpListener();
+                this.httpListener = new HttpListener();
                 this.httpListener.Prefixes.Add(uriPrefix);
                 this.httpListener.Start();
 
-                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-                return Task.FromResult(publishUri);
+                string publishUri = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
+                return Task.FromResult(publishUri);
             }
 
             ...
@@ -118,7 +109,7 @@ Damit externer Datenverkehr auf Port **80**zulässig ist, müssen die folgenden 
 
             protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
             {
-                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
+                return new[] { new ServiceInstanceListener(context => new HttpCommunicationListener(context))};
             }
 
             ...
@@ -175,9 +166,9 @@ Bitte beachten Sie, dass Azure Load Balancer und der Test nur die *Knoten* kenne
 ## <a name="reliable-services-built-in-communication-api-options"></a>Reliable Services: Integrierte Optionen für Kommunikations-APIs
 Das Reliable Services-Framework wird mit mehreren vorab erstellten Kommunikationsoptionen ausgeliefert. Welche Option in Ihrem Fall am besten geeignet ist, hängt vom Programmiermodell, dem Kommunikationsframework und der Programmiersprache Ihrer Dienste ab.
 
-* **Kein bestimmtes Protokoll** : Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
+* **Kein bestimmtes Protokoll:**  Wenn Sie kein bestimmtes Kommunikationsframework verwenden und schnell eine Lösung implementieren möchten, ist das [Dienstremoting](service-fabric-reliable-services-communication-remoting.md) die ideale Lösung, da es stark typisierte Remoteprozeduraufrufe für Reliable Services und Reliable Actors zulässt. Dies ist die einfachste und schnellste Methode für den Einstieg in die Dienstkommunikation. Das Dienstremoting verarbeitet die Auflösung von Dienstadressen, die Verbindungsherstellung, Wiederholungsversuche sowie die Problembehandlung. Dies ist jeweils für C#- und Java-Anwendungen erhältlich.
 * **HTTP**: Für die sprachunabhängige Kommunikation bietet HTTP eine branchenübliche Auswahl von Tools und HTTP-Servern, die in verschiedenen Sprachen verfügbar sind und alle von Service Fabric unterstützt werden. Dienste können alle verfügbaren HTTP-Stapel verwenden, einschließlich [ASP.NET Web API](service-fabric-reliable-services-communication-webapi.md) für C#-Anwendungen. In C# geschriebene Clients können `ICommunicationClient`die Klassen `ServicePartitionClient` verwenden, wobei für Java die `CommunicationClient`- und `FabricServicePartitionClient`-Klassen [für die Dienstauflösung, HTTP-Verbindungen und Wiederholungsschleifen](service-fabric-reliable-services-communication.md) verwendet werden sollten.
-* **WCF**: Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
+* **WCF:** Wenn der vorhandene Code das WCF-Kommunikationsframework verwendet, können Sie `WcfCommunicationListener` für den Server und die Klassen `WcfCommunicationClient` und `ServicePartitionClient` für den Client verwenden. Dies ist jedoch nur für C#-Anwendungen für Windows-basierte Cluster verfügbar. Weitere Informationen finden Sie in folgenden Artikel: [WCF-basierter Kommunikationsstapel für Reliable Services](service-fabric-reliable-services-communication-wcf.md).
 
 ## <a name="using-custom-protocols-and-other-communication-frameworks"></a>Verwenden benutzerdefinierter Protokolle und anderer Kommunikationsframeworks
 Dienste können beliebige Protokolle oder Frameworks für die Kommunikation nutzen, unabhängig davon, ob es sich um ein benutzerdefiniertes binäres Protokoll über TCP-Sockets oder Streamingereignisse über [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) oder [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/) handelt. Service Fabric bietet Kommunikations-APIs, an die Sie Ihren Kommunikationsstapel anschließen können, wobei Sie sich nicht um das Ermitteln und Verbinden kümmern müssen. Weitere Informationen finden Sie im folgenden Artikel: [Das Reliable Service-Kommunikationsmodell](service-fabric-reliable-services-communication.md) .

@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 01/07/2019
-ms.openlocfilehash: 8f88579a5fcdb96622a32c5b55bf8fee744d916e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 3657844d5dd4c4dcf9b9729aaeea6c9af3ed6519
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567178"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55894876"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 
-In Azure SQL-Datenbank können Sie eine einzelne oder eine gruppierte Datenbank mit einer Richtlinie für die [langfristige Aufbewahrung von Sicherungen](sql-database-long-term-retention.md) (Long-Term Retention, LTR) konfigurieren, um automatisch Sicherungen in Azure Blob Storage für bis zu zehn Jahre aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
+In Azure SQL-Datenbank können Sie einen Singleton oder eine in einem Pool zusammengefasste Datenbank mit einer Richtlinie für die [Langzeitaufbewahrung von Sicherungen](sql-database-long-term-retention.md) (Long-Term Retention, LTR) konfigurieren, um Sicherungen automatisch für bis zu zehn Jahre in Azure Blob Storage aufzubewahren. Sie können dann mit dem Azure-Portal oder mit PowerShell eine Datenbank anhand dieser Sicherungen wiederherstellen.
 
 > [!IMPORTANT]
 > Die [verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) unterstützt derzeit keine langfristigen Aufbewahrung von Sicherungen.

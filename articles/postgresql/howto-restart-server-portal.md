@@ -5,16 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 11/16/2018
-ms.openlocfilehash: 7d409db839f94e27ac036550c22302188f37cc90
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.date: 2/7/2019
+ms.openlocfilehash: 28e99f64fdee414549c55f9666bfd53f07fb3efb
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545868"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892693"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-azure-portal"></a>Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal
-In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Möglicherweise müssen Sie Ihren Server aus Wartungsgründen neu starten, was zu einem kurzen Ausfall führt, da der Server den Vorgang ausführt.
+In diesem Thema wird erläutert, wie Sie einen Azure Database for PostgreSQL-Server neu starten können. Es kann vorkommen, dass Sie Ihren Server zu Wartungszwecken neu starten müssen. In diesem Fall kommt es zu einem kurzen Ausfall, weil der Vorgang vom Server ausgeführt wird.
 
 Der Neustart des Servers wird blockiert, wenn der Dienst ausgelastet ist. Zum Beispiel kann der Dienst einen zuvor angeforderten Vorgang (z. B. das Skalieren von virtuellen Kernen) verarbeiten.
  

@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 5eecd750642610737d346c5c270349e285106e95
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a73dab8a0df642e439e8519c404423c6689418f5
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820435"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56236973"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Behandeln von Azure Backup-Fehlern: Probleme mit dem Agent oder der Erweiterung
 
@@ -253,3 +253,6 @@ Um die Wiederherstellungspunktsammlung, die aufgrund der Sperre der Ressourcengr
 
 5. Klicken Sie auf **Löschen**, um die Wiederherstellungspunktsammlung zu bereinigen.
 6. Wiederholen Sie den Sicherungsvorgang erneut.
+
+> [!NOTE]
+ >Wenn die Ressource (RP-Sammlung) eine große Anzahl Wiederherstellungspunkte aufweist, kann beim Löschen über das Portal eine Zeitüberschreitung und damit ein Fehler auftreten. Dies ist ein bekanntes CRP-Problem, bei dem nicht alle Wiederherstellungspunkte in der veranschlagten gelöscht werden und ein Timeout des Vorgangs eintritt; allerdings gelingt der Löschvorgang normalerweise nach 2 oder 3 Wiederholungsversuchen.

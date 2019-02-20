@@ -14,18 +14,21 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 5ab5c769280bdd91a15e6107df8c9c6b7814571c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599909"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55877285"
 ---
+> [!NOTE]
+> Jede App Service-Umgebung verfügt über eine virtuelle IP-Adresse (VIP), die für den Kontakt mit der App Service-Umgebung verwendet werden kann.
+>
 # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
-Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Es gibt zwei Möglichkeiten für die Bereitstellung einer App Service-Umgebung (App Service Environment, ASE):
+Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
 
-- Mit einer VIP unter einer externen IP-Adresse, die häufig als externe ASE bezeichnet wird.
+- Mit einer VIP unter einer externen IP-Adresse, die häufig als „externe ASE“ bezeichnet wird
 - Mit der VIP unter einer internen IP-Adresse, die häufig als ILB-ASE bezeichnet wird, da der interne Endpunkt ein interner Load Balancer (ILB) ist.
 
 In diesem Artikel wird gezeigt, wie Sie eine externe ASE erstellen. Eine Übersicht über die ASE finden Sie unter [Einführung in die App Service-Umgebung][Intro]. Informationen zum Erstellen einer ILB-ASE finden Sie unter [Erstellen und Verwenden einer ILB-ASE][MakeILBASE].

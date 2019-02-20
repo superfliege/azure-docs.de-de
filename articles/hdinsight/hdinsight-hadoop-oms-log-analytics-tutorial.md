@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2af68c0b9deb9d5b065f5fae42cf4bf927f0c671
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: cd129ea68315223516ac1cd3e7577b5ee4bf92e5
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53386453"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "56005113"
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Verwenden von Azure Log Analytics zum Überwachen von HDInsight-Clustern
 
@@ -46,9 +46,19 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 In diesem Abschnitt konfigurieren Sie einen vorhandenen HDInsight Hadoop-Cluster zur Verwendung eines Azure Log Analytics-Arbeitsbereichs zum Überwachen von Aufträgen, Debugprotokollen usw.
 
-1. Öffnen Sie im Azure-Portal einen HDInsight-Cluster.
-2. Wählen Sie im linken Bereich die Option **Überwachung**.
-3. Wählen Sie im rechten Bereich die Option **Aktivieren** und dann einen vorhandenen Log Analytics-Arbeitsbereich aus. Klicken Sie anschließend auf **Speichern**.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+
+2. Wählen Sie im Menü links **Alle Dienste** aus.
+
+3. Wählen Sie unter **ANALYSEN** die Option **HDInsight clusters** (HDInsight-Cluster) aus.
+
+4. Wählen Sie links unter **Überwachung** die Option **Operations Management Suite** aus.
+
+5. Wählen Sie in der Hauptansicht unter **OMS-Überwachung** die Option **Aktivieren** aus.
+
+6. Wählen Sie in der Dropdownliste **Arbeitsbereich auswählen** einen vorhandenen Log Analytics-Arbeitsbereich aus.
+
+7. Wählen Sie **Speichern** aus.
 
     ![Aktivieren der Überwachung für HDInsight-Cluster](./media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-enable-monitoring.png "Aktivieren der Überwachung für HDInsight-Cluster")
 
@@ -91,7 +101,7 @@ Dies sind die verfügbaren HDInsight-Lösungen:
 * HDInsight Spark-Überwachung
 * HDInsight Storm-Überwachung
 
-Die Anleitung zum Installieren einer Verwaltungslösung finden Sie unter [Verwaltungslösungen in Azure](../azure-monitor/insights/solutions.md#install-a-management-solution). Installieren Sie eine HDInsight Hadoop-Überwachungslösung, um zu experimentieren. Wenn der Vorgang abgeschlossen ist, wird unter **Zusammenfassung** die Kachel **HDInsightHadoop** angezeigt. Wählen Sie die Kachel **HDInsightHadoop** aus. Die HDInsightHadoop-Lösung sieht wie folgt aus:
+Die Anleitung zum Installieren einer Verwaltungslösung finden Sie unter [Verwaltungslösungen in Azure](../azure-monitor/insights/solutions.md#install-a-monitoring-solution). Installieren Sie eine HDInsight Hadoop-Überwachungslösung, um zu experimentieren. Wenn der Vorgang abgeschlossen ist, wird unter **Zusammenfassung** die Kachel **HDInsightHadoop** angezeigt. Wählen Sie die Kachel **HDInsightHadoop** aus. Die HDInsightHadoop-Lösung sieht wie folgt aus:
 
 ![HDInsight-Überwachungslösung – Ansicht](media/hdinsight-hadoop-oms-log-analytics-tutorial/hdinsight-oms-hdinsight-hadoop-monitoring-solution.png)
 

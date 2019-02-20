@@ -7,18 +7,18 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: danlep
-ms.openlocfilehash: e2ec1b7ad6d1489836937d30b89d0f0f681a9bfa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a4b9b382755e73b6218432624c471346e9698752
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819585"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56193389"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure Container Registry: Rollen und Berechtigungen
 
 Der Azure Container Registry-Dienst unterstützt mehrere Azure-Rollen, die unterschiedliche Berechtigungsstufen für eine Azure-Containerregistrierung bereitstellen. Verwenden Sie die [rollenbasierte Zugriffssteuerung](../role-based-access-control/index.yml) (Role-Based Access Control, RBAC) von Azure, um Benutzern oder Dienstprinzipalen, die mit einer Registrierung interagieren müssen, bestimmte Berechtigungen zuzuweisen.
 
-| Rolle/Berechtigung       | Zugreifen auf Resource Manager| Erstellen/löschen einer Registrierung | [Übertragen eines Image mithilfe von Push](#push-image) | [Übertragen eines Images mithilfe von Pull](#pull-image) | Ändern von Richtlinien |   [Signieren von Images](#sign-images)  |
+| Rolle/Berechtigung       | [Zugreifen auf Resource Manager](#access-resource-manager)| [Erstellen/löschen einer Registrierung](#create-and-delete-registry) | [Übertragen eines Image mithilfe von Push](#push-image) | [Übertragen eines Images mithilfe von Pull](#pull-image) | [Ändern von Richtlinien](#change-policies) |   [Signieren von Images](#sign-images)  |
 | ---------| --------- | --------- | --------- | --------- | --------- | --------- |
 | Owner (Besitzer) | X | X | X | X | X |  |  
 | Mitwirkender | X | X | X | X | X |  |  
@@ -45,19 +45,19 @@ Für Tools wie die [Docker-Erweiterung](https://code.visualstudio.com/docs/azure
 
 ## <a name="access-resource-manager"></a>Zugreifen auf Resource Manager
 
-Der Zugriff auf den Azure Resource Manager ist für das Azure-Portal und die [Azure CLI](/cli/azure/) erforderlich. Diese Berechtigungen benötigen Sie zum Beispiel, um mit dem `az acr list`-Befehl eine Liste mit Registrierungen zu erhalten. 
+Der Zugriff auf den Azure Resource Manager ist für das Azure-Portal und die Registrierungsverwaltung mit der [Azure CLI](/cli/azure/) erforderlich. Diese Berechtigungen benötigen Sie zum Beispiel, um mit dem `az acr list`-Befehl eine Liste mit Registrierungen zu erhalten. 
 
-## <a name="createdelete-registry"></a>Erstellen/löschen einer Registrierung
+## <a name="create-and-delete-registry"></a>Erstellen und Löschen der Registrierung
 
 Die Fähigkeit zum Erstellen und Löschen von Azure-Containerregistrierungen.
 
 ## <a name="push-image"></a>Übertragen eines Image mithilfe von Push
 
-Die Fähigkeit, ein Image mithilfe von `docker push` oder ein anderes unterstütztes Artefakt mithilfe von Push an eine Registrierung zu übertragen. Dafür ist eine [Authentifizierung](container-registry-authentication.md) bei der Registrierung mit der autorisierten Identität erforderlich. 
+Die Fähigkeit, ein Image mithilfe von `docker push` oder ein anderes [unterstütztes Artefakt](container-registry-image-formats.md), z.B. ein Helm-Chart, mithilfe von Push an eine Registrierung zu übertragen. Dafür ist eine [Authentifizierung](container-registry-authentication.md) bei der Registrierung mit der autorisierten Identität erforderlich. 
 
 ## <a name="pull-image"></a>Übertragen eines Images mithilfe von Pull
 
-Die Fähigkeit, ein nicht unter Quarantäne gestelltes Image mithilfe von `docker pull` oder ein anderes unterstütztes Artefakt mithilfe von Pull aus einer Registrierung zu übertragen. Dafür ist eine [Authentifizierung](container-registry-authentication.md) bei der Registrierung mit der autorisierten Identität erforderlich.
+Die Fähigkeit, ein nicht unter Quarantäne stehendes Image mithilfe von `docker pull` oder ein anderes [unterstütztes Artefakt](container-registry-image-formats.md), z.B. ein Helm-Chart, mithilfe von Pull aus einer Registrierung zu übertragen. Dafür ist eine [Authentifizierung](container-registry-authentication.md) bei der Registrierung mit der autorisierten Identität erforderlich.
 
 ## <a name="change-policies"></a>Ändern von Richtlinien
 

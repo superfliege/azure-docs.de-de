@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 2e2bf4f0f7ba4546c2f8609ee3ec7efc072024ae
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.date: 02/07/2019
+ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751547"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964150"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -93,8 +93,8 @@ Beide Tarife garantieren eine Verfügbarkeit von 99,99% und ermöglichen es Ihne
 Folgende wichtige Merkmale kennzeichnen die universelle Dienstebene:
 
 - Entwurf für den Großteil der Geschäftsanwendungen mit typischen Leistungsanforderungen
-- Azure Storage Premium mit hoher Leistung (8 TB)
-- Integrierte [Hochverfügbarkeit](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) basierend auf zuverlässigem Azure Storage Premium und [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
+- Azure Blob Storage mit hoher Leistung (8 TB)
+- Integrierte [Hochverfügbarkeit](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability) basierend auf zuverlässigem Azure Blob Storage und [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
 Weitere Informationen finden Sie unter [Speicherebene im Tarif „Universell“](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) und [Bewährte Methoden und Aspekte der Speicherleistung für verwaltete Instanz (Universell)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
@@ -107,8 +107,8 @@ Die unternehmenskritische Dienstebene wurde für Anwendungen mit hohen E/A-Anfor
 Folgende wichtige Merkmale kennzeichnen die Dienstebene „Unternehmenskritisch“:
 
 - Konzipiert für Geschäftsanwendungen mit höchster Leistung und Hochverfügbarkeitsanforderungen
-- Enthält einen äußerst schnellen SSD-Speicher (bis zu 1 TB auf Gen 4 und bis zu 4 TB auf Gen 5)
-- Integrierte [Hochverfügbarkeit](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) basierend auf [AlwaysOn-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) und [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
+- Enthält einen äußerst schnellen lokalen SSD-Speicher (bis zu 1 TB bei Gen 4 und bis zu 4 TB bei Gen 5)
+- Integrierte [Hochverfügbarkeit](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability) basierend auf [Always On-Verfügbarkeitsgruppen](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) und [Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 - Integriertes zusätzliches [Datenbankreplikat mit Schreibschutz](sql-database-read-scale-out.md), das für Berichte und andere schreibgeschützte Workloads verwendet werden kann
 - [In-Memory-OLTP](sql-database-in-memory.md), das für Workloads mit hohen Leistungsanforderungen verwendet werden kann  
 

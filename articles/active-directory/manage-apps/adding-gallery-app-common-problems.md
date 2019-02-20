@@ -3,8 +3,8 @@ title: Probleme beim Hinzufügen einer Azure AD-Kataloganwendung | Microsoft-Dok
 description: Informationen zu den häufig auftretenden Problemen beim Hinzufügen von Azure AD-Kataloganwendungen und zur Behebung dieser Probleme
 services: active-directory
 documentationcenter: ''
-author: barbkess
-manager: daveba
+author: CelesteDG
+manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
-ms.author: barbkess
-ms.openlocfilehash: 3621ca390add5c4a50cae6ed8f2baa5e3b1e2339
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: celested
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 89d587a71eeb75f7be567cbc29a4d77ac371e3dc
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173274"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56237868"
 ---
 # <a name="problem-adding-an-azure-ad-gallery-application"></a>Probleme beim Hinzufügen einer Azure AD-Kataloganwendung
 
@@ -27,13 +28,13 @@ In diesem Artikel finden Sie Informationen zu den häufig auftretenden Problemen
 
 ## <a name="i-clicked-the-add-button-and-my-application-took-a-long-time-to-appear"></a>Nach dem Klicken auf die Schaltfläche „Hinzufügen“ wurde meine Anwendung erst nach einiger Zeit angezeigt.
 
-Unter bestimmten Umständen kann es 1 bis 2 Minuten (manchmal auch länger) dauern, bis eine Anwendung angezeigt wird, nachdem sie Ihrem Verzeichnis hinzugefügt wurde. Auch wenn dies nicht der normalen erwarteten Leistung entspricht, können Sie sehen, dass die Hinzufügung der Anwendung durchgeführt wird, indem Sie auf das Symbol **Benachrichtigungen** (Glockensymbol) oben rechts im [Azure-Portal](https://portal.azure.com/) klicken und nach einer Benachrichtigung des Typs **In Bearbeitung** oder **Abgeschlossen** mit der Bezeichnung **Anwendung erstellen** suchen.
+Unter bestimmten Umständen kann es 1 bis 2 Minuten (manchmal auch länger) dauern, bis eine Anwendung angezeigt wird, nachdem sie Ihrem Verzeichnis hinzugefügt wurde. Auch wenn dies nicht der normalen erwarteten Leistung entspricht, können Sie sehen, dass die Hinzufügung der Anwendung durchgeführt wird, indem Sie auf das Symbol **Benachrichtigungen** (Glockensymbol) rechts oben im [Azure-Portal](https://portal.azure.com/) klicken und nach einer Benachrichtigung des Typs **In Bearbeitung** oder **Abgeschlossen** mit der Bezeichnung **Anwendung wird hinzugefügt** suchen.
 
 Wenn die Anwendung nicht hinzugefügt wird oder wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen oder diese einem Supporttechniker weitergeben möchten, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
 
 ## <a name="i-clicked-the-add-button-and-my-application-didnt-appear"></a>Nach dem Klicken auf die Schaltfläche „Hinzufügen“ wurde meine Anwendung nicht angezeigt
 
-In manchen Fällen führen vorübergehende Probleme, Netzwerkprobleme oder ein Fehler dazu, dass eine Anwendung nicht hinzugefügt wird. Dies können Sie feststellen, wenn Sie oben rechts im Azure-Portal auf das Symbol **Benachrichtigungen** (Glockensymbol) klicken und ein rotes (!)-Symbol neben der Benachrichtigung **Anwendung erstellen** angezeigt wird. Dies gibt an, dass beim Erstellen der Anwendung ein Fehler aufgetreten ist.
+In manchen Fällen führen vorübergehende Probleme, Netzwerkprobleme oder ein Fehler dazu, dass eine Anwendung nicht hinzugefügt wird. Dies können Sie feststellen, wenn Sie rechts oben im Azure-Portal auf das Symbol **Benachrichtigungen** (Glockensymbol) klicken und ein rotes (!)-Symbol neben der Benachrichtigung **Anwendung wird hinzugefügt** angezeigt wird. Dies gibt an, dass beim Erstellen der Anwendung ein Fehler aufgetreten ist.
 
 Wenn beim Klicken auf die Schaltfläche **Hinzufügen** ein Fehler auftritt, wird eine **Benachrichtigung** mit einem **Fehlerstatus** angezeigt. Wenn Sie weitere Details zu dem Fehler benötigen oder diese einem Supporttechniker weitergeben möchten, können Sie ausführliche Informationen zum Fehler anzeigen, indem Sie die Schritte im Abschnitt [Anzeigen von Details einer Portalbenachrichtigung](#how-to-see-the-details-of-a-portal-notification) ausführen.
 
@@ -47,7 +48,7 @@ Zudem finden Sie weitere Informationen zur Verwendung und Funktionsweise des ein
 
 Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgende Schritte ausführen:
 
-1.  Klicken Sie in der rechten oberen Ecke des Azure-Portals auf das Symbol **Benachrichtigungen** (Glockensymbol).
+1.  Wählen Sie in der rechten oberen Ecke des Azure-Portals das Symbol **Benachrichtigungen** (Glockensymbol) aus.
 
 2.  Wählen Sie eine Benachrichtigung mit einem **Fehlerstatus** aus (mit einem roten (!) neben dem Namen).
 
@@ -60,7 +61,7 @@ Sie können die Details von Portalbenachrichtigungen anzeigen, indem Sie folgend
 
 5.  Wenn Sie weitere Unterstützung benötigen, können Sie diese Informationen auch einem Supporttechniker oder der Produktgruppe mitteilen, um Hilfe bei Ihrem Problem zu erhalten.
 
-6.  Klicken Sie auf das **Symbol** **Kopieren**rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
+6.  Klicken Sie auf das **Symbol** **Kopieren** rechts neben dem Textfeld **Fehler kopieren**, um alle Benachrichtigungsdetails zu kopieren und einem Support- oder Produktgruppentechniker mitzuteilen.
 
 ## <a name="how-to-get-help-by-sending-notification-details-to-a-support-engineer"></a>Erhalten von Unterstützung durch Senden von Benachrichtigungsdetails an einen Supporttechniker
 

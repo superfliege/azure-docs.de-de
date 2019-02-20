@@ -11,16 +11,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/29/2018
+ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 320afdb1e4f71150680e9bed6a4c1c9955c99936
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
+ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230623"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55994100"
 ---
-# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung
+# <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
  
 Die Azure Media Services-API ist eine RESTful-API. Sie können sie nutzen, um Vorgänge für Medienressourcen durchzuführen, indem Sie eine REST-API oder verfügbare Client-SDKs verwenden. Azure Media Services stellt ein Media Services-Client-SDK für Microsoft .NET bereit. Sie müssen zuerst authentifiziert werden, um berechtigt zu sein, auf Media Services-Ressourcen und die Media Services-API zuzugreifen. 
 
@@ -138,7 +138,7 @@ Wenn Sie das Media Services-.NET-Client-SDK nicht verwenden, müssen Sie manuell
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Ausnahme: „Der Remoteserver hat einen Fehler zurückgegeben: (401) Nicht autorisiert.“
+Ausnahme: Der Remoteserver hat einen Fehler zurückgegeben: 401 – nicht autorisiert.
 
 Lösung: Damit die Media Services-REST-Anforderung erfolgreich ist, muss der aufrufende Benutzer über die Rolle „Mitwirkender“ oder „Besitzer“ in dem Media Services-Konto verfügen, auf das zugegriffen werden soll. Weitere Informationen finden Sie im Abschnitt [Zugriffssteuerung](media-services-use-aad-auth-to-access-ams-api.md#access-control).
 
