@@ -12,14 +12,15 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes
-ms.openlocfilehash: 18cd96c87f294f1dd8e62f41dd759558c2013aa0
-ms.sourcegitcommit: dbfd977100b22699823ad8bf03e0b75e9796615f
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: aad699df2de8b745058784790e672f5b8c6e98e9
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50241667"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56209743"
 ---
-# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App auf einem Mandanten (Vorschau)
+# <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Gewusst wie: Anpassen von in Token ausgegebenen Ansprüchen für eine bestimmte App in einem Mandanten (Vorschau)
 
 > [!NOTE]
 > Diese Funktion ersetzt die [Anpassung von Ansprüchen](active-directory-saml-claims-customization.md), die zurzeit über das Portal bereitgestellt wird. Wenn Sie in derselben Anwendung Ansprüche über das Portal anpassen, zusätzlich zur Graph/PowerShell-Methode (in diesem Dokument erklärt), werden für diese Anwendung ausgestellte Token die Konfiguration im Portal ignorieren. Alle Konfigurationen, die mithilfe von in diesem Dokument aufgeführten Methoden vorgenommen werden, werden im Portal nicht übernommen.
@@ -243,9 +244,9 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 
 **Zeichenfolge:** IncludeBasicClaimSet
 
-**Datentyp:** Boolesch (TRUE oder FALSE)
+**Datentyp:** Boolesch („True“ oder „False“)
 
-**Zusammenfassung:** Diese Eigenschaft bestimmt, ob der grundlegende Anspruchssatz im Token von dieser Richtlinie betroffenen ist. 
+**Zusammenfassung:** Diese Eigenschaft bestimmt, ob der grundlegende Anspruchssatz in von dieser Richtlinie betroffenen Token enthalten ist. 
 
 - Wenn der Wert auf TRUE festgelegt wird, werden alle Ansprüche im grundlegenden Anspruchssatz in Token ausgegeben, die von der Richtlinie betroffen sind. 
 - Wenn der Wert auf FALSE festgelegt wird, werden die Ansprüche im grundlegenden Anspruchssatz nicht in Token ausgegeben, es sei denn, sie werden einzeln in der Ansprücheschemaeigenschaft derselben Richtlinie hinzugefügt.
@@ -257,25 +258,25 @@ Um zu steuern, welche Ansprüche ausgegeben werden und woher die Daten stammen, 
 
 **Zeichenfolge:** ClaimsSchema
 
-**Datentyp:** JSON-Blob mit mindestens einem Anspruchsschemaeinträge
+**Datentyp:** JSON-Blob mit mindestens einem Anspruchsschemaeintrag
 
 **Zusammenfassung:** Diese Eigenschaft definiert, welche Ansprüche zusätzlich zum grundlegenden und zum Hauptanspruchssatz in den von der Richtlinie betroffenen Token vorhanden sind.
-Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen (**Wert** oder **Quelle-ID-Paar**) und als welcher Anspruch die Daten ausgegeben werden (**Anspruchstyp**).
+Für jeden Anspruchsschemaeintrag in dieser Eigenschaft definiert sind bestimmte Informationen erforderlich. Geben Sie an, woher die Daten stammen (**Wert** oder **Quelle/ID-Paar**) und als welcher Anspruch die Daten ausgegeben werden (**Anspruchstyp**).
 
 ### <a name="claim-schema-entry-elements"></a>Elemente eines Anspruchsschemaeintrags
 
-**Wert:** Das Wertelement definiert einen statischen Wert als die Daten, die im Anspruch ausgegeben werden sollen.
+**Wert:** Das Wertelement definiert die Daten, die im Anspruch ausgegeben werden sollen, als statischen Wert.
 
-**Quellen-ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen. 
+**Quelle/ID-Paar:** Die Quell- und ID-Elemente definieren, woher die Daten im Anspruch stammen. 
 
 Legen Sie das Quellelement auf einen der folgenden Werte fest: 
 
-- "user": Die Daten im Anspruch sind eine Eigenschaft des Benutzerobjekts. 
-- "application": Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Anwendung (Client). 
-- "ressource": Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Ressourcen.
-- "audience": Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals, das die Zielgruppe des Tokens ist (Client- oder Ressourcendienstprinzipal).
-- "company": Die Daten im Anspruch sind eine Eigenschaft des Unternehmensobjekts des Ressourcenmandanten.
-- "transformation": Die Daten im Anspruch stammen aus Anspruchtransformationen (siehe Abschnitt „Transformation von Ansprüchen“ weiter unten in diesem Artikel).
+- „user“: Die Daten im Anspruch sind eine Eigenschaft des User-Objekts. 
+- „application“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Anwendung (Client). 
+- „resource“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals der Ressource.
+- „audience“: Die Daten im Anspruch sind eine Eigenschaft des Dienstprinzipals, der die Zielgruppe des Token ist (Client- oder Ressourcendienstprinzipal).
+- „company“: Die Daten im Anspruch sind eine Eigenschaft des Company-Objekts des Ressourcenmandanten.
+- „transformation“: Die Daten im Anspruch stammen aus Anspruchtransformationen (siehe Abschnitt „Transformation von Ansprüchen“ weiter unten in diesem Artikel).
 
 Wenn die Quelle „transformation“ ist, muss das **TransformationID**-Element in dieser Anspruchsdefinition auch enthalten sein.
 
@@ -283,7 +284,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 #### <a name="table-3-valid-id-values-per-source"></a>Tabelle 3: Gültige ID-Werte pro Quelle
 
-|Quelle|ID|BESCHREIBUNG|
+|Quelle|ID|Beschreibung|
 |-----|-----|-----|
 |Benutzer|surname|Familienname|
 |Benutzer|givenname|Vorname|
@@ -329,7 +330,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 |Anwendung, Ressourcen, Zielgruppe|tags|Dienstprinzipal-Tag|
 |Unternehmen|tenantcountry|Land des Mandanten|
 
-**TransformationID:** Das TransformationID-Element muss nur dann bereitgestellt werden, wenn das Quellelement auf „Transformation“ festgelegt ist.
+**TransformationID:** Das TransformationID-Element muss nur dann bereitgestellt werden, wenn das Quellelement auf „transformation“ festgelegt ist.
 
 - Dieses Element muss mit dem ID-Element des Transformationseintrags in der Eigenschaft **ClaimsTransformation** entsprechen, die definiert, wie die Daten für diesen Anspruch generiert werden.
 
@@ -347,7 +348,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 **Datentyp:** JSON-Blob mit mindestens einem Transformationseintrag 
 
-**Zusammenfassung:** Mit dieser Eigenschaft können Sie allgemeine Transformationen auf Quelldaten anwenden, um Ausgabedaten für Ansprüche zu generieren, die im Anspruchsschema angegebenen wurden.
+**Zusammenfassung:** Mit dieser Eigenschaft können Sie allgemeine Transformationen auf Quelldaten anwenden, um Ausgabedaten für Ansprüche zu generieren, die im Anspruchsschema angegeben wurden.
 
 **ID:** Verwenden Sie das ID-Element, um im Eintrag des TransformationID-Anspruchsschemas auf diesen Transformationseintrag zu verweisen. Dieser Wert muss für jeden Transformationseintrag innerhalb dieser Richtlinie eindeutig sein.
 
@@ -355,7 +356,7 @@ Das ID-Element identifiziert, welche Eigenschaft in der Quelle den Wert für den
 
 Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Ausgaben erwartet. Definieren Sie die Eingaben und Ausgaben mithilfe von **InputClaims**, **InputParameters** und **OutputClaims**.
 
-#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformation Methoden und erwartete Ein- und Ausgaben
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>Tabelle 4: Transformationsmethoden und erwartete Ein- und Ausgaben
 
 |Transformationsmethode|Erwartete Eingabe|Erwartete Ausgabe|BESCHREIBUNG|
 |-----|-----|-----|-----|
@@ -379,7 +380,7 @@ Auf der Grundlage der ausgewählten Methode wird eine Reihe von Eingaben und Aus
 
 ### <a name="exceptions-and-restrictions"></a>Ausnahmen und Einschränkungen
 
-**SAML-NameID und -UPN:** Die Attribute, aus denen die Werte von NameID und UPN stammen, und die zulässigen Transformationsansprüche sind begrenzt. In Tabelle 5 und Tabelle 6 finden Sie die zulässigen Werte.
+**SAML-NameID und -UPN:** Die Attribute, von denen Sie die Werte für „NameID“ und „UPN“ beziehen, und die zulässigen Anspruchstransformationen sind begrenzt. In Tabelle 5 und Tabelle 6 finden Sie die zulässigen Werte.
 
 #### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>Tabelle 5: Attribute, die als Datenquelle für SAML-NameID zulässig sind
 
@@ -447,7 +448,7 @@ Führen Sie die folgenden Schritte aus, um zu beginnen:
         Get-AzureADPolicy
     
     ```
-#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen Sie eine Richtlinie, und weisen Sie sie zu, um die grundlegenden Ansprüche aus Token zu unterdrücken, die an einen Dienstprinzipal ausgestellt wurden.
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, um die grundlegenden Ansprüche von Token zu unterdrücken, die für einen Dienstprinzipal ausgestellt wurden.
 In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruchssatz aus den Token entfernt, die an den verknüpften Dienstprinzipal ausgestellte wurden.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, verknüpft mit bestimmten Dienstprinzipalen, entfernt den grundlegenden Anspruchsatz aus den Token.
@@ -471,7 +472,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die den grundlegenden Anspruch
 
 #### <a name="example-create-and-assign-a-policy-to-include-the-employeeid-and-tenantcountry-as-claims-in-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, um EmployeeID und TenantCountry als Ansprüche in Token einzuschließen, die für einen Dienstprinzipal ausgestellt wurden
 
-In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. TenantCountry wird als Landresanspruchstyp in den SAML-Token und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
+In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpfte Dienstprinzipale ausgestellt wurden, EmployeeID und TenantCountry hinzufügt. EmployeeID wird als Namensanspruchstyp in den SAML-Token und JWTs ausgegeben. TenantCountry wird als Landesanspruchstyp in SAML-Tokens und JWTs ausgegeben. In diesem Beispiel fahren wir mit dem Einschließen des grundlegenden Anspruchssatzes in Token fort.
 
 1. Erstellen Sie eine Anspruchszuordnungsrichtlinie. Diese Richtlinie, die mit bestimmten Dienstprinzipalen verknüpft ist, fügt den Token die Ansprüche „EmployeeID“ und „TenantCountry“ hinzu.
     1. Führen Sie diesen Befehl aus, um die Richtlinie zu erstellen:  
@@ -493,7 +494,7 @@ In diesem Beispiel erstellen Sie eine Richtlinie, die Token, die für verknüpft
     Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```
 
-#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, die eine Anspruchstransformation verwendet, die für einen Dienstprinzipal ausgestellt wurde
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>Beispiel: Erstellen und Zuweisen einer Richtlinie, die eine Anspruchstransformation in Token verwendet, die für einen Dienstprinzipal ausgestellt wurden
 
 In diesem Beispiel erstellen Sie eine Richtlinie, die einen benutzerdefinierten Anspruch „JoinedData“ für JWTs ausgestellt, die für verknüpfte Dienstprinzipale ausgegeben wurden. Dieser Anspruch enthält einen Wert, der durch das Verknüpfen der Daten erstellt wird, die im Attribut „extensionattribute1“ im Benutzerobjekt mit „.sandbox“ gespeicherten wurden. In diesem Beispiel schließen wir den grundlegenden Anspruchssatz in Token aus.
 

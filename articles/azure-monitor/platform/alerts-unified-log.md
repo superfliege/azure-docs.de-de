@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: 18c05f2a9dd9f7e4a6d5ec62806870311c5eb130
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 5722db5be656641301299956172ee19249be7895
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745707"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106403"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokollwarnungen in Azure Monitor
-Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
+Dieser Artikel enthält Details zu Protokollwarnungen. Dies ist einer der Typen von Warnungen, die im Rahmen der [Azure-Warnungen](../platform/alerts-overview.md) unterstützt werden. Sie ermöglichen es Benutzern, die Analyseplattform von Azure als Basis für die Bereitstellung von Warnungen zu verwenden.
 
-Protokollwarnungen umfassen Regeln für die Protokollsuche, die für [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) oder [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) erstellt werden. Weitere Informationen zur Verwendung finden Sie unter [Erstellen von Protokollwarnungen in Azure](../../azure-monitor/platform/alerts-log.md).
+Protokollwarnungen umfassen Regeln für die Protokollabfrage, die für [Azure Monitor](../learn/tutorial-viewdata.md) oder [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) erstellt werden. Weitere Informationen zur Verwendung finden Sie unter [Erstellen von Protokollwarnungen in Azure](../platform/alerts-log.md).
 
 > [!NOTE]
-> Gängige Protokolldaten aus [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) sind nun auch auf der Metrikplattform in Azure Monitor verfügbar. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](../../azure-monitor/platform/alerts-metric-logs.md).
+> Gängige Protokolldaten aus [Azure Monitor](../learn/tutorial-viewdata.md) sind nun auch auf der Metrikplattform in Azure Monitor verfügbar. Eine Detailansicht finden Sie unter [Metrikwarnung für Protokolle](../platform/alerts-metric-logs.md).
 
 
 ## <a name="log-search-alert-rule---definition-and-types"></a>Warnungsregel für Protokollsuche – Definition und Typen
@@ -41,7 +41,7 @@ Regeln für die Protokollsuche werden anhand der folgenden Details definiert:
 
 - **Schwellenwert**:  Die Ergebnisse der Protokollsuche werden ausgewertet, um festzustellen, ob eine Warnung generiert werden soll.  Der Schwellenwert ist für verschiedene Typen von Warnungsregeln der Protokollsuche unterschiedlich.
 
-Regeln für die Protokollsuche – sowohl für [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) als auch für [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events) – können einen von zwei Typen aufweisen. Diese Typen werden in den nachstehenden Abschnitten ausführlich beschrieben.
+Regeln für die Protokollabfrage – sowohl für [Azure Monitor](../learn/tutorial-viewdata.md) als auch für [Application Insights](../app/cloudservices.md#view-azure-diagnostics-events) – können einen von zwei Typen aufweisen. Diese Typen werden in den nachstehenden Abschnitten ausführlich beschrieben.
 
 - **[Anzahl von Ergebnissen](#number-of-results-alert-rules)**. Einzelne Warnung, die generiert wird, wenn die Anzahl der von der Protokollsuche zurückgegebenen Datensätze einen angegebenen Wert überschreitet.
 - **[Metrische Maßeinheit](#metric-measurement-alert-rules)**.  Warnung, die für jedes Objekt in den Ergebnissen der Protokollsuche bei Werten generiert wird, die den angegebenen Schwellenwert überschreiten.
@@ -90,7 +90,7 @@ Warnungsregeln des Typs **Metrische Maßeinheit** erzeugen eine Warnung für jed
     
 - **Schwellenwert**: Der Schwellenwert für Warnungsregeln des Typs „Metrische Maßeinheit“ wird mittels eines Aggregatwerts und einer Anzahl von Verstößen definiert.  Wenn bei der Protokollsuche ein Datenpunkt diesen Wert überschreitet, gilt dies als Verstoß.  Wenn die Anzahl der Verstöße für ein beliebiges Objekt in den Ergebnissen den angegebenen Wert überschreitet, wird eine Warnung für dieses Objekt generiert.
 
-Ist die Option *Aggregieren nach* oder *metricColumn* nicht korrekt konfiguriert, werden Warnungsregeln unter Umständen fälschlich ausgelöst. Weitere Informationen finden Sie in der Fehlerbehandlung unter [Warnungsregel für metrische Maßeinheit ist falsch.](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
+Ist die Option *Aggregieren nach* oder *metricColumn* nicht korrekt konfiguriert, werden Warnungsregeln unter Umständen fälschlich ausgelöst. Weitere Informationen finden Sie in der Fehlerbehandlung unter [Warnungsregel für metrische Maßeinheit ist falsch](alert-log-troubleshoot.md#metric-measurement-alert-rule-is-incorrect).
 
 #### <a name="example-of-metric-measurement-type-log-alert"></a>Beispiel für den Protokollwarnungstyp „Metrische Maßeinheit“
 
@@ -99,14 +99,28 @@ Angenommen, Sie wünschen sich eine Warnung, wenn ein beliebiger Computer binnen
 - **Abfrage:** Perf | where ObjectName == "Processor" and CounterName == "% Processor Time" | summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 5m), Computer<br>
 - **Zeitraum:** 30 Minuten<br>
 - **Warnungshäufigkeit**: Fünf Minuten<br>
-- **Aggregatwert:** Größer als 90<br>
+- **Warnungslogik – Bedingung und Schwellenwert:** Größer als 90<br>
+- **Gruppenfeld (Aggregieren nach):** Computer
 - **Warnung auslösen basierend auf:** Sicherheitsverletzungen gesamt größer als 2<br>
 
-Die Abfrage ermittelt einen Durchschnittswert für jeden Computer in 5-Minuten-Intervallen.  Diese Abfrage wird alle 5 Minuten für die in den letzten 30 Minuten gesammelten Daten ausgeführt.  Nachstehend sehen Sie Beispieldaten für drei Computer.
+Die Abfrage ermittelt einen Durchschnittswert für jeden Computer in 5-Minuten-Intervallen.  Diese Abfrage wird alle 5 Minuten für die in den letzten 30 Minuten gesammelten Daten ausgeführt. Da das ausgewählte Gruppenfeld (Aggregieren nach) „Computer“ in Spaltenformat ist, wird AggregatedValue für verschiedene Werte von „Computer“ unterteilt, und die durchschnittliche Prozessorauslastung für jeden Computer wird für einen Zeitabschnitt (bin) von 5 Minuten bestimmt.  Das Ergebnis einer Beispielabfrage für (angenommen) drei Computer ist wie folgt.
+
+
+|TimeGenerated [UTC] |Computer  |AggregatedValue  |
+|---------|---------|---------|
+|20xx-xx-xxT01:00:00Z     |   srv01.contoso.com      |    72     |
+|20xx-xx-xxT01:00:00Z     |   srv02.contoso.com      |    91     |
+|20xx-xx-xxT01:00:00Z     |   srv03.contoso.com      |    83     |
+|...     |   ...      |    ...     |
+|20xx-xx-xxT01:30:00Z     |   srv01.contoso.com      |    88     |
+|20xx-xx-xxT01:30:00Z     |   srv02.contoso.com      |    84     |
+|20xx-xx-xxT01:30:00Z     |   srv03.contoso.com      |    92     |
+
+Soll das Abfrageergebnis gezeichnet werden, sieht dies folgendermaßen aus.
 
 ![Ergebnisse der Beispielabfrage](media/alerts-unified-log/metrics-measurement-sample-graph.png)
 
-Bei diesem Beispiel werden separate Warnungen für srv02 und srv03 erstellt, da diese Computer im Zeitraum dreimal gegen den Schwellenwert 90 % verstoßen haben.  Wenn **Warnung auslösen basierend auf** in **Aufeinander folgend** geändert wird, wird nur für srv03 eine Warnung generiert, da dieser bei drei aufeinander folgenden Stichproben gegen den Schwellenwert verstoßen hat.
+In diesem Beispiel wird in Zeitabschnitten von 5 Minuten für jeden der drei Computer die für 5-Minuten-Intervalle berechnete durchschnittliche Prozessorauslastung angezeigt. Der Schwellenwert von 90 wird von srv01 nur einmal im Zeitabschnitt 1:25 verletzt. Im Gegensatz dazu überschreitet srv02 den Schwellenwert von 90 in den Zeitabschnitten 1:10, 1:15 und 1:25, und srv03 überschreitet den Schwellenwert von 90 in den Zeitabschnitten 1:10, 1:15, 1:20 und 1:30. Da die Warnung so konfiguriert ist, dass sie basierend auf einer Gesamtanzahl von Sicherheitsverletzungen größer als 2 ausgelöst wird, erfüllen nur srv02 und srv03 die Kriterien. Es werden also separate Warnungen für srv02 und srv03 erstellt, da diese Computer zweimal in mehreren Zeitabschnitten den Schwellenwert von 90 % verletzt haben.  Wäre der Parameter *Warnung auslösen basierend auf:* stattdessen für die Option *Fortlaufende Sicherheitsverletzungen* konfiguriert, würde eine Warnung **nur** für srv03 ausgelöst, da dieser Computer in drei aufeinanderfolgenden Zeitabschnitten von 1:10 bis 1:20 gegen den Schwellenwert verstoßen hat. Die Warnung würde jedoch **nicht** für srv02 ausgelöst, da dieser in zwei aufeinanderfolgenden Zeitabschnitten von 1:10 bis 1:15 gegen den Schwellenwert verstoßen hat.
 
 ## <a name="log-search-alert-rule---firing-and-state"></a>Warnungsregel für die Protokollsuche – Auslösung und Zustand
 
@@ -114,11 +128,11 @@ Die Warnungsregel für die Protokollsuche funktioniert nach der Logik, die vom B
 
 Nehmen Sie jetzt an, es gibt eine Protokollwarnungsregel namens *Contoso-Log-Alert*, wie in der Konfiguration im bereitgestellten [Beispiel für den Protokollwarnungstyp „Anzahl von Ergebnissen“](#example-of-number-of-records-type-log-alert) angegeben. 
 - Um 13:05 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 0 Datensätze. Dies liegt unterhalb des Schwellenwerts und daher wurde die Warnung nicht ausgelöst. 
-- Bei der nächsten Ausführung um 13:10 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 5 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) ausgelöst wurde. 
-- Um 13:15 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 2 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) ausgelöst wurde.
+- Bei der nächsten Ausführung um 13:10 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 5 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](../platform/action-groups.md) ausgelöst wurde. 
+- Um 13:15 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis 2 Datensätze. Dadurch wurde der Schwellenwert überschritten und kurz danach die Warnung ausgelöst, indem die zugehörige [Aktionsgruppe](../platform/action-groups.md) ausgelöst wurde.
 - Bei der nächsten Ausführung um 13:20 Uhr, als „Contoso-Log-Alert“ von Azure-Warnungen ausgeführt wurde, lieferte das Protokollsuchergebnis erneut 0 Datensätze. Dies liegt unterhalb des Schwellenwerts und daher wurde die Warnung nicht ausgelöst.
 
-Aber im oben genannten Fall kann Azure-Warnungen um 13:15 Uhr nicht feststellen, dass die zugrundeliegenden Probleme, die um 13:10 Uhr erkannt wurden, bestehen bleiben und ob neue Fehler auftreten. Da die vom Benutzer bereitgestellte Abfrage möglicherweise frühere Datensätze berücksichtigt – kann Azure-Warnungen sicher sein. Um also auf Nummer sicher zu gehen, wird bei der Ausführung von „Contoso-Log-Alert“ um 13:15 Uhr die konfigurierte [Aktionsgruppe](../../azure-monitor/platform/action-groups.md) erneut ausgelöst. Wenn jetzt um 13:20 Uhr keine Datensätze mehr angezeigt werden, kann Azure-Warnungen sicher sein, dass die Ursache der Datensätze behoben wurde. Daher wechselt „Contoso-Log-Alert“ im Azure Alert-Dashboard nicht zu „Gelöst“ und/oder es werden Benachrichtigungen gesendet, um die Lösung einer Warnung anzuzeigen.
+Aber im oben genannten Fall kann Azure-Warnungen um 13:15 Uhr nicht feststellen, dass die zugrundeliegenden Probleme, die um 13:10 Uhr erkannt wurden, bestehen bleiben und ob neue Fehler auftreten. Da die vom Benutzer bereitgestellte Abfrage möglicherweise frühere Datensätze berücksichtigt – kann Azure-Warnungen sicher sein. Um also auf Nummer sicher zu gehen, wird bei der Ausführung von „Contoso-Log-Alert“ um 13:15 Uhr die konfigurierte [Aktionsgruppe](../platform/action-groups.md) erneut ausgelöst. Wenn jetzt um 13:20 Uhr keine Datensätze mehr angezeigt werden, kann Azure-Warnungen sicher sein, dass die Ursache der Datensätze behoben wurde. Daher wechselt „Contoso-Log-Alert“ im Azure Alert-Dashboard nicht zu „Gelöst“ und/oder es werden Benachrichtigungen gesendet, um die Lösung einer Warnung anzuzeigen.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Preise und Abrechnung von Protokollwarnungen
@@ -133,9 +147,8 @@ Preise für Protokollwarnungen sind auf der Seite [Azure Monitor – Preise](htt
     > Sollten ungültige Zeichen wie etwa `<, >, %, &, \, ?, /` vorhanden sein, werden sie in der Rechnung durch `_` ersetzt. Wenn ein Benutzer scheduleQueryRules-Ressourcen löschen möchte, die zur Abrechnung von Warnungsregeln unter Verwendung der [älteren Log Analytics-API](api-alerts.md) erstellt wurden, muss er den ursprünglichen Zeitplan und die Warnungsaktion mithilfe der [älteren Log Analytics-API](api-alerts.md) löschen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Erfahren Sie mehr über das [Erstellen von Protokollwarnungen in Azure](../../azure-monitor/platform/alerts-log.md).
+* Erfahren Sie mehr über das [Erstellen von Protokollwarnungen in Azure](../platform/alerts-log.md).
 * Machen Sie sich mit [Webhooks in Protokollwarnungen in Azure](alerts-log-webhook.md) vertraut.
-* Erfahren Sie mehr über [Azure-Warnungen](../../azure-monitor/platform/alerts-overview.md).
-* Erfahren Sie mehr über [Application Insights](../../azure-monitor/app/analytics.md).
-* Erfahren Sie mehr über [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).    
-
+* Erfahren Sie mehr über [Azure-Warnungen](../platform/alerts-overview.md).
+* Erfahren Sie mehr über [Application Insights](../app/analytics.md).
+* Erfahren Sie mehr über die [Protokollabfragen in Azure Monitor](../log-query/log-query-overview.md).    
