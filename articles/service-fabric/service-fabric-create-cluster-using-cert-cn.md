@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/24/2018
 ms.author: ryanwi
-ms.openlocfilehash: 78812f7bcce82090802672e3e232e713f0d047d1
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: a6607fa91d9c8556881a5532527a63b6f21ad4d1
+ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54214112"
+ms.lasthandoff: 02/09/2019
+ms.locfileid: "55977455"
 ---
 # <a name="deploy-a-service-fabric-cluster-that-uses-certificate-common-name-instead-of-thumbprint"></a>Bereitstellen eines Service Fabric-Clusters mit allgemeinem Zertifikatnamen anstelle eines Fingerabdrucks
 Keine zwei Zertifikate können den gleichen Fingerabdruck haben, was ein Clusterzertifikatrollover oder die Verwaltung erschwert. Mehrere Zertifikate können jedoch den gleichen allgemeinen Namen oder den gleichen Antragsteller haben.  Cluster mit allgemeinen Zertifikatnamen vereinfachen die Zertifikatverwaltung. In diesem Artikel wird beschrieben, wie Sie einen Service Fabric-Cluster für die Verwendung des allgemeinen Zertifikatnamens (anstelle des Zertifikatfingerabdrucks) bereitstellen.
@@ -177,13 +177,17 @@ Legen Sie anschließend die Parameterwerte *certificateCommonName*, *sourceVault
             "commonNames": [
             {
                 "certificateCommonName": "[parameters('certificateCommonName')]",
-                "certificateIssuerThumbprint": ""
+                "certificateIssuerThumbprint": "[parameters('certificateIssuerThumbprint')]"
             }
             ],
             "x509StoreName": "[parameters('certificateStoreValue')]"
         },
         ...
     ```
+> [!NOTE]
+> Das Feld „CertificateIssuerThumbprint“ ermöglicht die Angabe der erwarteten Aussteller von Zertifikaten mit einem allgemeinen Namen des angegebenen Antragstellers. Dieses Feld akzeptiert eine durch Trennzeichen getrennte Enumeration von SHA1-Fingerabdrücken. Beachten Sie, dass dies eine Verbesserung der Zertifikatsvalidierung ist. Für den Fall, dass der Aussteller nicht angegeben oder leer ist, wird das Zertifikat für die Authentifizierung akzeptiert, wenn seine Kette aufgebaut werden kann, und landet in einem für das Validierungssteuerelement vertrauenswürdigen Stamm. Wenn der Aussteller angegeben ist, wird das Zertifikat akzeptiert, falls der Fingerabdruck seines direkten Ausstellers mit einem der in diesem Feld angegebenen Werte übereinstimmt, und zwar unabhängig davon, ob dem Stamm vertraut wird oder nicht. Bitte beachten Sie, dass eine PKI verschiedene Zertifizierungsstellen nutzen kann, um Zertifikate für denselben Antragsteller auszustellen. Daher ist es wichtig, alle erwarteten Fingerabdrücke des Ausstellers für einen bestimmten Antragsteller anzugeben.
+>
+> Die Angabe des Ausstellers gilt als bewährte Methode. Auch wenn sie weggelassen wird, funktioniert sie bei Zertifikaten, die mit einem vertrauenswürdigen Stamm verkettet sind, weiterhin. Dieses Verhalten hat jedoch Einschränkungen und kann in naher Zukunft auslaufen. Beachten Sie auch, dass Cluster, die in Azure bereitgestellt und mit X.509-Zertifikaten geschützt werden, welche von einer privaten PKI ausgestellt und vom Antragsteller deklariert wurden, möglicherweise vom Azure Service Fabric-Dienst nicht (für die Cluster-zu-Dienst-Kommunikation) validiert werden können, wenn die Zertifikatsrichtlinie der PKI nicht ermittelbar, verfügbar und zugänglich ist. 
 
 ## <a name="deploy-the-updated-template"></a>Bereitstellen der aktualisierten Vorlage
 Stellen Sie nach Abschluss der Änderungen die aktualisierte Vorlage erneut bereit.

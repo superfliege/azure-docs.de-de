@@ -5,24 +5,24 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 02/07/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca1012e0f1b0b7a9e0d8bd88d94876c20d22dec5
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: fce7beeda352b9add3603fb74c558ad1b64fac2a
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473781"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55895515"
 ---
 # <a name="azure-data-lake-storage-gen2-security-guide"></a>Sicherheitsleitfaden zu Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 (Vorschau) besteht aus einer Reihe von Funktionen, die auf Azure Storage Konten basieren. Daher beziehen sich alle Verweise in diesem Artikel auf ein Azure Storage-Konto mit aktiviertem hierarchischem Namespace (Data Lake Storage Gen2-Funktionen).
+Azure Data Lake Storage Gen2 besteht aus einer Reihe von Funktionen, die auf Azure Storage-Konten basieren. Daher beziehen sich alle Verweise in diesem Artikel auf ein Azure Storage-Konto mit aktiviertem hierarchischem Namespace (Data Lake Storage Gen2-Funktionen).
 
 - Alle Daten werden automatisch mit [Storage Service Encryption (SSE)](storage-service-encryption.md) verschlüsselt, wenn sie in Azure Storage geschrieben werden. Weitere Informationen finden Sie unter [Announcing Default Encryption for Azure Blobs, Files, Table and Queue Storage](https://azure.microsoft.com/blog/announcing-default-encryption-for-azure-blobs-files-table-and-queue-storage/) (Ankündigung: Standardverschlüsselung für Azure Blobs, Files, Tables und Queue Storage).
 - Azure Active Directory (Azure AD) und die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) werden für Azure Storage sowohl für Ressourcenverwaltungsvorgänge als auch für Datenvorgänge wie folgt unterstützt:
     - Sie können RBAC-Rollen, die auf das Speicherkonto beschränkt sind, Dienstprinzipalen zuweisen und Azure AD verwenden, um Ressourcenverwaltungsvorgänge, z.B. die Schlüsselverwaltung, zu autorisieren.
-    - Die Azure AD-Integration wird in der Vorschau für Datenvorgänge für Azure Storage unterstützt. Sie können RBAC-Rollen, die sich auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder ein einzelnes Dateisystem beziehen, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md) (Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)).
+    - Die Azure AD-Integration wird in Datenvorgängen für Azure Storage unterstützt. Sie können RBAC-Rollen, die sich auf ein Abonnement, eine Ressourcengruppe, ein Speicherkonto oder ein einzelnes Dateisystem beziehen, einem Sicherheitsprinzipal oder einer verwalteten Identität für Azure-Ressourcen zuweisen. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md).
 - Delegierter Zugriff auf die Datenobjekte in Azure Storage kann mit [Shared Access Signatures](../storage-dotnet-shared-access-signature-part-1.md)erteilt werden.
 
 Dieser Artikel bietet eine Übersicht über alle Sicherheitsfunktionen, die mit Azure Storage verwendet werden können. Links führen Sie zu Artikeln, die weitere Informationen zu den einzelnen Funktionen enthalten. So können Sie Ihre Kenntnisse zu jedem Thema problemlos vertiefen.
@@ -133,7 +133,7 @@ Sicherheit auf Datenebene bezieht sich auf die Methoden zum Schützen der in Azu
 
 Sie haben drei Optionen zur Autorisierung des Zugriffs auf Datenobjekte in Azure Storage:
 
-- Verwenden Sie Azure AD, um den Zugriff auf Dateisysteme und Warteschlangen zu autorisieren (Vorschau). Azure AD bietet gegenüber anderen Ansätzen zur Autorisierung Vorteile, z.B. Wegfall der Speicherung von Geheimnissen in Ihrem Code. Weitere Informationen finden Sie unter [Authenticate access to Azure Storage using Azure Active Directory (Preview)](storage-auth-aad.md) (Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory (Vorschau)). 
+- Verwenden Sie Azure AD, um den Zugriff auf Dateisysteme und Warteschlangen zu autorisieren. Azure AD bietet gegenüber anderen Ansätzen zur Autorisierung Vorteile, z.B. Wegfall der Speicherung von Geheimnissen in Ihrem Code. Weitere Informationen finden Sie unter [Authentifizieren des Zugriffs auf Azure Storage mit Azure Active Directory](storage-auth-aad.md). 
 - Verwenden Sie Ihre Speicherkontoschlüssel, um den Zugriff per gemeinsam verwendetem Schlüssel zu autorisieren. Für die Autorisierung per gemeinsam verwendetem Schlüssel ist das Speichern Ihrer Speicherkontoschlüssel in Ihrer Anwendung erforderlich, und Microsoft empfiehlt stattdessen nach Möglichkeit die Nutzung von Azure AD. Nutzen Sie für Produktionsanwendungen oder zum Autorisieren des Zugriffs auf Azure-Tabellen und -Dateien weiterhin den gemeinsam verwendeten Schlüssel, während sich die Azure AD-Integration in der Vorschauphase befindet.
 - Verwenden Sie Shared Access Signatures, um bestimmten Datenobjekten für einen bestimmten Zeitraum kontrollierte Berechtigungen zu gewähren.
 
@@ -229,7 +229,7 @@ Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zug
 
     Dieser Artikel enthält eine Erläuterung des SAS-Modells, Beispiele für SAS und Empfehlungen bewährter Methoden für die SAS-Verwendung. Auch der Widerruf der Berechtigung wird hier erörtert.
 
-* Authentifizierung
+* Authentication
 
   * [Authentifizierung für Azure Storage-Dienste](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Erste-Schritte-Tutorial für Shared Access Signatures

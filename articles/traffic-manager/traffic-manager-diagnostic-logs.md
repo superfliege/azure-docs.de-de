@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/25/2019
 ms.author: kumud
-ms.openlocfilehash: abdc50d6d3d27ab7611994089345a997afc72cae
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a7d6893c42028790ec565961f2a2cb54035aefa1
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082611"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106460"
 ---
 # <a name="enable-diagnostic-logging-in-azure-traffic-manager"></a>Aktivieren der Diagnoseprotokollierung in Azure Traffic Manager
 
@@ -26,29 +26,31 @@ Azure Traffic Manager-Diagnoseprotokolle können Erkenntnisse zum Verhalten der 
 
 ## <a name="enable-diagnostic-logging"></a>Aktivieren der Diagnoseprotokollierung
 
-Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie mindestens Version 6.13.1 des PowerShell-Moduls *AzureRM* ausführen. Sie können `Get-Module -ListAvailable AzureRM` ausführen, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um sich bei Azure anzumelden.
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Sie können die nachfolgenden Befehle in [Azure Cloud Shell](https://shell.azure.com/powershell) oder über PowerShell auf Ihrem Computer ausführen. Azure Cloud Shell ist eine kostenlose interaktive Shell. Sie verfügt über allgemeine vorinstallierte Tools und ist für die Verwendung mit Ihrem Konto konfiguriert. Wenn Sie PowerShell auf Ihrem Computer ausführen, müssen Sie mindestens Version 1.0.0 des Azure PowerShell-Moduls ausführen. Sie können `Get-Module -ListAvailable Az` ausführen, um die installierte Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](/powershell/azure/install-az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzAccount` ausführen, um sich bei Azure anzumelden.
 
 1. **Rufen Sie das Traffic Manager-Profil ab:**
 
-    Zum Aktivieren der Diagnoseprotokollierung benötigen Sie die ID eines Traffic Manager-Profils. Rufen Sie das Traffic Manager-Profil ab, für das Sie die Diagnoseprotokollierung aktivieren möchten, indem Sie [Get-AzureRmTrafficManagerProfile](/powershell/module/AzureRM.TrafficManager/Get-AzureRmTrafficManagerProfile) verwenden. Die Ausgabe enthält die Informationen zur ID des Traffic Manager-Profils.
+    Zum Aktivieren der Diagnoseprotokollierung benötigen Sie die ID eines Traffic Manager-Profils. Rufen Sie das Traffic Manager-Profil ab, für das Sie die Diagnoseprotokollierung aktivieren möchten, indem Sie [Get-AzTrafficManagerProfile](/powershell/module/az.TrafficManager/Get-azTrafficManagerProfile) verwenden. Die Ausgabe enthält die Informationen zur ID des Traffic Manager-Profils.
 
     ```azurepowershell-interactive
-    Get-AzureRmTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
+    Get-AzTrafficManagerProfile -Name <TrafficManagerprofilename> -ResourceGroupName <resourcegroupname>
     ```
 
 2. **Aktivieren der Diagnoseprotokollierung für das Traffic Manager-Profil:**
 
-    Aktivieren Sie mit [Set-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/set-azurermdiagnosticsetting?view=latest) die Diagnoseprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
+    Aktivieren Sie mit [Set-AzureDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/set-azdiagnosticsetting?view=latest) die Diagnoseprotokollierung für das Traffic Manager-Profil, indem Sie die ID verwenden, die Sie im vorherigen Schritt abgerufen haben. Mit dem folgenden Befehl werden ausführliche Protokolle für das Traffic Manager-Profil in einem angegebenen Azure Storage-Konto gespeichert. 
 
       ```azurepowershell-interactive
-    Set-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
+    Set-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId> -StorageAccountId <storageAccountId> -Enabled $true
       ``` 
 3. **Überprüfen von Diagnoseeinstellungen:**
 
-      Überprüfen Sie die Diagnoseeinstellungen für das Traffic Manager-Profil, indem Sie [Get-AzureRmDiagnosticSetting](https://docs.microsoft.com/powershell/module/azurerm.insights/get-azurermdiagnosticsetting?view=latest) verwenden. Mit dem folgenden Befehl werden die Kategorien angezeigt, die für eine Ressource protokolliert werden.
+      Überprüfen Sie die Diagnoseeinstellungen für das Traffic Manager-Profil, indem Sie [Get-AzureDiagnosticSetting](https://docs.microsoft.com/powershell/module/az.monitor/get-azdiagnosticsetting?view=latest) verwenden. Mit dem folgenden Befehl werden die Kategorien angezeigt, die für eine Ressource protokolliert werden.
 
      ```azurepowershell-interactive
-     Get-AzureRmDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
+     Get-AzDiagnosticSetting -ResourceId <TrafficManagerprofileResourceId>
      ```  
       Stellen Sie sicher, dass für alle Protokollkategorien, die der Traffic Manager-Profilressource zugeordnet sind, „Aktiviert“ angezeigt wird. Stellen Sie außerdem sicher, dass das Speicherkonto richtig festgelegt wurde.
 

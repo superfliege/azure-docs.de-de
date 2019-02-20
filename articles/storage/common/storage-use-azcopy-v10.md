@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/09/2018
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: a4e115194d7e903edae4b4713c4f65eef9895cbf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c9009e898b00212dba4dec9bf38af2bfa057b8ea
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467117"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244605"
 ---
 # <a name="transfer-data-with-the-azcopy-v10-preview"></a>Übertragen von Daten mit AzCopy v10 (Vorschau)
 
@@ -54,8 +54,11 @@ Eine Installation von AzCopy v10 ist nicht erforderlich. Öffnen Sie eine bevorz
 ## <a name="authentication-options"></a>Authentifizierungsoptionen
 
 Mit AzCopy v10 können Sie die folgenden Optionen bei der Authentifizierung mit Azure Storage verwenden:
-- **Azure Active Directory [unterstützt von Blob und ADLS Gen2]**. Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann.
-- **SAS-Token [unterstützt von Blob und Dateidienst]**. Fügen Sie das SAS-Token dem Blobpfad in der Befehlszeile hinzu, um es zu verwenden. Sie können das SAS-Token mit dem Azure-Portal, mit [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), mit [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) oder mit anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+- **Azure Active Directory [unterstützt für Blob und ADLS Gen2-Dienste]**. Verwenden Sie ```.\azcopy login```, um sich mit Azure Active Directory anzumelden.  Dem Benutzer muss die [Rolle „Mitwirkender an Storage-Blobdaten“ zugewiesen](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-rbac) sein, damit er in den Blobspeicher mithilfe von Azure Active Directory-Authentifizierung schreiben kann.
+- **SAS-Token [unterstützt für Blob und Dateidienste]**. Fügen Sie das SAS-Token dem Blobpfad in der Befehlszeile hinzu, um es zu verwenden. Sie können das SAS-Token mit dem Azure-Portal, mit [Storage-Explorer](https://blogs.msdn.microsoft.com/jpsanders/2017/10/12/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer/), mit [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/new-azstorageblobsastoken) oder mit anderen Tools Ihrer Wahl generieren. Weitere Informationen finden Sie unter [Beispiele](https://docs.microsoft.com/azure/storage/blobs/storage-dotnet-shared-access-signature-part-2).
+
+> [!IMPORTANT]
+> Wenn Sie eine Supportanfrage an Microsoft-Support senden (oder eine Problembehandlung unter Einbeziehung eines Drittanbieters durchführen), geben Sie bitte die editierte Version des Befehls frei, den Sie auszuführen versuchen. Auf diese Weise stellen Sie sicher, dass die SAS nicht versehentlich für irgendeine Person freigegeben wird. Die editierte Version steht am Anfang der Protokolldatei. Weitere Details finden Sie weiter unten in diesem Artikel im Abschnitt „Problembehandlung“.
 
 ## <a name="getting-started"></a>Erste Schritte
 
@@ -206,11 +209,33 @@ set AZCOPY_CONCURRENCY_VALUE=<value>
 export AZCOPY_CONCURRENCY_VALUE=<value>
 # For MacOS
 export AZCOPY_CONCURRENCY_VALUE=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
 ```
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-AzCopy v10 erstellt Protokolldateien und Plandateien für alle Aufträge. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien befinden sich im Ordner „%USERPROFILE\\.azcopy“.
+AzCopy v10 erstellt Protokolldateien und Plandateien für alle Aufträge. Sie können die Protokolle verwenden, um potenzielle Probleme zu untersuchen und zu beheben. Die Protokolle enthalten den Status des Fehlers (UPLOADFAILED, COPYFAILED und DOWNLOADFAILED), den vollständigen Pfad und den Grund des Fehlers. Die Auftragsprotokolle und Plandateien sind im Ordner „%USERPROFILE\\.azcopy“ (unter Windows) bzw. im Ordner „$HOME\\.azcopy“ (unter Mac und Linux) gespeichert.
+
+> [!IMPORTANT]
+> Wenn Sie eine Supportanfrage an Microsoft-Support senden (oder eine Problembehandlung unter Einbeziehung eines Drittanbieters durchführen), geben Sie bitte die editierte Version des Befehls frei, den Sie auszuführen versuchen. Auf diese Weise stellen Sie sicher, dass die SAS nicht versehentlich für irgendeine Person freigegeben wird. Die editierte Version steht am Anfang der Protokolldatei.
+
+### <a name="change-the-location-of-the-log-files"></a>Ändern des Speicherorts der Protokolldateien
+
+Sie können den Speicherort der Protokolldateien bei Bedarf ändern oder, um eine Überfüllung des Betriebssystemdatenträgers zu vermeiden.
+
+```cmd
+# For Windows:
+set AZCOPY_LOG_LOCATION=<value>
+# For Linux:
+export AZCOPY_LOG_LOCATION=<value>
+# For MacOS
+export AZCOPY_LOG_LOCATION=<value>
+# To check the current value of the variable on all the platforms
+.\azcopy env
+# If the value is blank then the default value is currently in use
+```
 
 ### <a name="review-the-logs-for-errors"></a>Überprüfen der Protokolle auf Fehler
 

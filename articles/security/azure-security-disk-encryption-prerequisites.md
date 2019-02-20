@@ -8,12 +8,12 @@ ms.topic: article
 ms.author: mstewart
 ms.date: 01/14/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5e4a3a1fd450cf855e0ced142e6bc93d4536f2a8
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 24e757c80e23cecb50419a4855ec3ea9f94bcf3b
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827719"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112123"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure Disk Encryption – Voraussetzungen
 
@@ -133,7 +133,7 @@ Wenn Sie bereits mit den Key Vault- und Azure AD-Voraussetzungen für Azure Disk
 >Stellen Sie vor dem Löschen eines Schlüsseltresors sicher, dass Sie keine vorhandenen virtuellen Computer damit verschlüsselt haben. Um einen Tresor vor dem versehentlichen Löschen zu schützen, [aktivieren Sie das vorläufige Löschen](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) und eine [Ressourcensperre](../azure-resource-manager/resource-group-lock-resources.md) für den Tresor. 
  
 ## <a name="bkmk_KeyVault"></a> Erstellen einer Key Vault-Instanz 
-Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie können für Azure Disk Encryption einen neuen Schlüsseltresor erstellen oder einen bereits vorhandenen verwenden. Weitere Informationen zu Schlüsseltresoren finden Sie unter [Erste Schritte mit Azure Key Vault](../key-vault/key-vault-get-started.md) und [Schützen eines Schlüsseltresors](../key-vault/key-vault-secure-your-key-vault.md). Sie können eine Resource Manager-Vorlage, Azure PowerShell oder die Azure CLI verwenden, um einen Schlüsseltresor zu erstellen. 
+Azure Disk Encryption ist in [Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie können für Azure Disk Encryption einen neuen Schlüsseltresor erstellen oder einen bereits vorhandenen verwenden. Weitere Informationen zu Schlüsseltresoren finden Sie unter [Was ist Azure Key Vault?](../key-vault/key-vault-overview.md) und [Schützen eines Schlüsseltresors](../key-vault/key-vault-secure-your-key-vault.md). Sie können eine Resource Manager-Vorlage, Azure PowerShell oder die Azure CLI verwenden, um einen Schlüsseltresor zu erstellen. 
 
 
 >[!WARNING]

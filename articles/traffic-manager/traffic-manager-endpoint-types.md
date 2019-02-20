@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: fb8922424de064bc63f793479d8c3a98b506b844
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3f41edef56b238d8789264d00d73998794fec7eb
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232514"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55881994"
 ---
 # <a name="traffic-manager-endpoints"></a>Traffic Manager-Endpunkte
 Mit Microsoft Azure Traffic Manager können Sie steuern, wie Datenverkehr im Netzwerk auf Anwendungsbereitstellungen in verschiedenen Rechenzentren verteilt wird. Sie konfigurieren jede Anwendungsbereitstellung in Traffic Manager als „Endpunkt“. Wenn Traffic Manager eine DNS-Anforderung empfängt, wählt er einen verfügbaren Endpunkt, der in der DNS-Antwort zurückgegeben wird. Traffic Manager trifft die Auswahl nach dem aktuellen Endpunktstatus und der Methode für das Datenverkehrsrouting. Weitere Informationen finden Sie unter [Funktionsweise von Traffic Manager](traffic-manager-how-it-works.md).
@@ -63,7 +63,7 @@ Geschachtelte Endpunkte werden zum Kombinieren von Traffic Manager-Profilen verw
 
 Es gelten noch einige zusätzliche Aspekte in Bezug auf die Konfiguration von Web-Apps als Endpunkte in Traffic Manager:
 
-1. Nur Web-Apps mit der SKU „Standard“ oder höher können mit Traffic Manager verwendet werden. Der Versuch, eine Web App mit einer niedrigeren SKU hinzuzufügen, löst einen Fehler aus. Das Herabstufen der SKU einer vorhandenen Web-App führt dazu, dass Traffic Manager keinen Datenverkehr mehr an diese Web-App sendet.
+1. Nur Web-Apps mit der SKU „Standard“ oder höher können mit Traffic Manager verwendet werden. Der Versuch, eine Web App mit einer niedrigeren SKU hinzuzufügen, löst einen Fehler aus. Das Herabstufen der SKU einer vorhandenen Web-App führt dazu, dass Traffic Manager keinen Datenverkehr mehr an diese Web-App sendet. Weitere Informationen zu unterstützten Plänen finden Sie unter [App Service-Pläne](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/).
 2. Wenn ein Endpunkt eine HTTP-Anforderung empfängt, wird der „Hostheader“ in der Anforderung verwendet, um zu bestimmen, welche Web-App die Anforderung verarbeiten soll. Der Hostheader enthält den DNS-Namen zum Initiieren der Anforderung, z.B. „contosoapp.azurewebsites.net“. Um einen anderen DNS-Namen mit Ihrer Web-App verwenden zu können, muss der DNS-Name als benutzerdefinierter Domänenname für die App registriert sein. Wenn ein Web-App-Endpunkt als Azure-Endpunkt hinzugefügt wird, wird der DNS-Name des Traffic Manager-Profils automatisch für die App registriert. Diese Registrierung wird automatisch entfernt, wenn der Endpunkt gelöscht wird.
 3. Jedes Traffic Manager-Profil kann maximal einen Web-App-Endpunkt aus jeder Azure-Region aufweisen. Zur Umgehung dieser Einschränkung können Sie eine Web-App als externen Endpunkt konfigurieren. Weitere Informationen finden Sie in den [häufig gestellten Fragen](traffic-manager-faqs.md#traffic-manager-endpoints).
 

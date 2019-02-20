@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 946a2a05cee0cf8f3b91eef58442fbb2e26935c4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 834674eb63af75088434db0f614b11c7a36e7adf
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490446"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964813"
 ---
 # <a name="configure-usage-settings-and-policies"></a>Konfigurieren von Nutzungseinstellungen und Richtlinien
 In diesem Artikel wird beschrieben, wie Sie dem Lab Benutzer hinzufügen, diese beim Lab registrieren, die Anzahl der Stunden steuern, für die sie den virtuellen Computer verwenden können, und vieles mehr. 
@@ -29,7 +29,9 @@ Wenn Sie **Zugriff beschränken** aktiviert haben, fügen Sie der Liste Benutzer
 
 1. Klicken Sie im linken Menü auf **Benutzer**.
 2. Klicken Sie auf der Symbolleiste auf **Benutzer hinzufügen**. 
-3. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
+
+    ![Schaltfläche „Benutzer hinzufügen“](../media/how-to-configure-student-usage/add-users-button.png)
+1. Geben Sie auf der Seite **Benutzer hinzufügen** die E-Mail-Adressen von Benutzern in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein. 
 
     ![Hinzufügen der E-Mail-Adressen von Benutzern](../media/how-to-configure-student-usage/add-users-email-addresses.png)
 4. Wählen Sie **Speichern** aus. In der Liste werden die E-Mail-Adressen und der Status (registriert oder nicht registriert) von Benutzern angezeigt. 
@@ -64,11 +66,14 @@ Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen:
 
 1. Klicken Sie im linken Menü auf **Benutzer**.
 2. Wählen Sie auf der Symbolleiste die Option **Quota per user: unlimited** (Kontingent pro Benutzer: unbegrenzt) aus. 
-3. Wählen Sie auf der Seite **Quota per user** (Kontingent pro Benutzer) die Option **Anzahl der Stunden begrenzen, in denen ein Benutzer eine VM verwenden kann** aus. 
-4. Geben Sie unter **Wie viele Stunden möchten Sie den einzelnen Benutzern erlauben?** die gewünschte Stundenanzahl ein, und wählen Sie **Speichern** aus. 
+3. Wählen Sie auf der Seite **Kontingent pro Benutzer** eine der folgenden Optionen aus: 
+    1. **Ohne**. Benutzer können ihre virtuellen Computer nur während der geplanten Zeit, oder wenn der Lab-Besitzer virtuelle Computer für sie einschaltet, verwenden.
+    2. **Unbegrenzt (Standard)**. Benutzer können ihre virtuellen Computer ohne zeitliche Einschränkung verwenden.
+    3. **Anzahl von Stunden pro Benutzer angeben**. Benutzer können ihre virtuellen Computer zusätzlich zur geplanten Zeit für die festgelegte Anzahl von Stunden (siehe unten) nutzen. Wenn Sie diese Option auswählen, geben Sie die **Anzahl der Stunden** in das Textfeld ein. 
 
-    ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
-5. Jetzt sehen Sie die Anzahl der Stunden auf der Symbolleiste: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;**. 
+        ![Anzahl von Stunden pro Benutzer](../media/how-to-configure-student-usage/number-of-hours-per-user.png)
+    4. Wählen Sie **Speichern** aus. 
+5. Jetzt sehen Sie auf der Symbolleiste die geänderten Werte: **Kontingent pro Benutzer: &lt;Anzahl Stunden&gt;**. 
 
     ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/quota-per-user.png)
 
@@ -78,8 +83,19 @@ Mithilfe der folgenden Schritte können Sie Kontingente pro Benutzer festlegen:
 ### <a name="add-users-by-uploading-a-csv-file"></a>Hinzufügen von Benutzern durch Hochladen einer CSV-Datei
 Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen.
 
-1. Wählen Sie auf der Symbolleiste die Option **CSV hochladen** aus.
-2. Wählen Sie die CSV-Datei mit den Benutzer-E-Mail-Adressen aus. Die E-Mail-Adressen müssen sich alle in einer einzelnen Spalte befinden, wenn Sie die Datei in Excel öffnen. 
+1. Erstellen Sie eine CSV-Datei mit E-Mail-Adressen von Benutzern in einer Spalte.
+
+    ![Kontingent pro Benutzer](../media/how-to-configure-student-usage/csv-file-with-users.png)
+2. Wählen Sie auf der Seite **Benutzer** des Labs auf der Symbolleiste die Option **CSV hochladen** aus.
+
+    ![Schaltfläche „CSV hochladen“](../media/how-to-configure-student-usage/upload-csv-button.png)
+3. Wählen Sie die CSV-Datei mit den Benutzer-E-Mail-Adressen aus. Wenn Sie nach Auswahl der CSV-Datei den Befehl **Öffnen** wählen, sehen Sie das folgende Fenster **Benutzer hinzufügen**. Die Liste der E-Mail-Adressen wird mit E-Mail-Adressen aus der CSV-Datei aufgefüllt. 
+
+    ![Mit E-Mail-Adressen aus der CSV-Datei aufgefülltes Fenster „Benutzer hinzufügen“](../media/how-to-configure-student-usage/add-users-window.png)
+4. Klicken Sie im Fenster **Benutzer hinzufügen** auf **Speichern**. 
+5. Vergewissern Sie sich, dass in der Benutzerliste Benutzer angezeigt werden. 
+
+    ![Liste der hinzugefügten Benutzer](../media/how-to-configure-student-usage/list-of-added-users.png)
 
 ## <a name="manage-user-vms"></a>Verwalten von Benutzer-VMs
 Sobald sich die Studenten bei Azure Lab Services über den von Ihnen bereitgestellten Registrierungslink registrieren, sehen Sie die den Studenten zugewiesenen VMs auf der Registerkarte **Virtuelle Computer**. 

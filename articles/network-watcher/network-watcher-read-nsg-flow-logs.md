@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: 7c35961894cbc8fb33f15b36910021f8ad38fac8
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: dd4622e0359476f47a0ac939d59a2571e34a0a46
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976391"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112698"
 ---
 # <a name="read-nsg-flow-logs"></a>Lesen von NSG-Datenflussprotokollen
 
@@ -185,6 +185,6 @@ Anhand dieses Szenarios wird beispielhaft veranschaulicht, wie Einträge in NSG-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie [Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools](network-watcher-visualize-nsg-flow-logs-open-source-tools.md) durch, um mehr über andere Möglichkeiten zum Einsehen von NSG-Datenflussprotokollen zu erfahren.
+Unter [Verwenden von Elastic Stack](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [Verwenden von Grafana](network-watcher-nsg-grafana.md) und [Verwenden von Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) erfahren Sie mehr zu den Möglichkeiten zum Anzeigen von NSG-Flussprotokollen. Ein Open-Source-Ansatz für Azure Functions, um die Blobs direkt zu nutzen und an verschiedene Consumer von Protokollanalysen zu senden, finden Sie hier: [AzureNetworkWatcherNSGFlowLogsConnector](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
 
 Weitere Informationen zu Speicherblobs erhalten Sie im Artikel: [Azure Blob Storage-Bindungen für Azure Functions](../azure-functions/functions-bindings-storage-blob.md).

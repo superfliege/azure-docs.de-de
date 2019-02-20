@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 11/16/2018
+ms.date: 02/11/2019
 ms.author: stbaron
-ms.openlocfilehash: 7121087d9d9699a73b88e07599f70e0c7c40c1eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 6054b33e4068d36c5bfbb80120086a92a03525c8
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308279"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097507"
 ---
 # <a name="azure-status"></a>Azure-Status
-[Azure-Status](https://azure.microsoft.com/status/) bietet Ihnen eine globale Ansicht der Integrität von Azure-Diensten. Mit Azure-Status können Sie minutengenaue Informationen zur Dienstverfügbarkeit abrufen. Alle Beteiligten können auf Azure-Status zugreifen und alle Dienste anzeigen, die ihre Dienstintegrität melden. 
+Der [Azure-Status](https://azure.microsoft.com/status/) bietet Ihnen eine globale Ansicht der Integrität von Azure-Diensten und -Regionen. Mit Azure-Status können Sie minutengenaue Informationen zur Dienstverfügbarkeit abrufen. Der Azure-Status steht allgemein zur Verfügung, um alle Dienste, die über ihren Dienstzustand melden, sowie Vorfälle mit weitreichenden Auswirkungen anzuzeigen. Wenn Sie ein aktueller Azure-Benutzer sind, wir empfehlen Ihnen jedoch ausdrücklich, die personalisierte [Azure Service Health](https://aka.ms/azureservicehealth)-Umgebung zu verwenden. Azure Service Health weist alle Ausfälle, bevorstehende geplante Wartungsarbeiten und Dienstempfehlungen aus.
 
 ![Azure-Statusseite](./media/azure-status-overview/azure-status.PNG)
 

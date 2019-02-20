@@ -14,16 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1fe847bd0cdceec7eccab8218ccf787d8f4366ba
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: b3f978635127ef6aabb123d1c95b76ed06fccbbf
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195820"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097789"
 ---
 # <a name="azure-application-prerequisites"></a>Voraussetzungen für eine Azure-Anwendung
 
-In diesem Artikel sind die technischen und geschäftlichen Voraussetzungen beschrieben, die erfüllt sein müssen, damit ein verwaltetes Anwendungsangebot im Azure Marketplace veröffentlicht werden kann.
+In diesem Artikel sind die technischen und geschäftlichen Voraussetzungen beschrieben, die erfüllt sein müssen, damit ein verwaltetes Anwendungsangebot im Azure Marketplace veröffentlicht werden kann.  Falls noch nicht geschehen, sehen Sie sich das Video [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603) an.
+
 
 ## <a name="technical-requirements"></a>Technische Anforderungen
 
@@ -36,6 +37,7 @@ Zu den technischen Anforderungen gehören die folgenden Elemente:
   * [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates). Dieses Repository enthält alle derzeit verfügbaren Azure Resource Manager-Vorlagen, die von der Community bereitgestellt werden. Ein durchsuchbarer Vorlagenindex wird unter https://azure.microsoft.com/en-us/documentation/templates/ verwaltet.
 * Erstellen von Benutzeroberflächendefinitionen<br>
 Weitere Informationen finden Sie unter [Erstellen einer Benutzeroberfläche im Azure-Portal für die verwaltete Anwendung](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview). In diesem Artikel werden die grundlegenden Konzepte der Datei „createUiDefinition.json“ vorgestellt. Das Azure-Portal verwendet diese Datei zum Generieren der Benutzeroberfläche zum Erstellen einer verwalteten Anwendung.
+
 
 ## <a name="business-requirements"></a>Geschäftliche Anforderungen
 
@@ -54,6 +56,7 @@ Die geschäftlichen Anforderungen umfassen die folgenden verfahrenstechnischen, 
 * Sie müssen den Bedingungen der Teilnahmerichtlinien für Microsoft Azure Marketplace und der Herausgebervereinbarung zustimmen.
 * Sie müssen sich an die Nutzungsbedingungen für die Microsoft Azure-Website, an die Datenschutzerklärung von Microsoft und an die Microsoft Azure Certified-Programmvereinbarung halten.
 
+
 ## <a name="publishing-requirements"></a>Veröffentlichungsbedingungen
 
 Um ein neues Azure-Anwendungsangebot zu veröffentlichen, müssen die folgenden Voraussetzungen erfüllt sein:
@@ -62,10 +65,12 @@ Um ein neues Azure-Anwendungsangebot zu veröffentlichen, müssen die folgenden 
   * Titel
   * Beschreibung (im HTML-Format)
   * Ein Logobild (im PNG-Format) und in den folgenden festen Bildgrößen: 40 x 40 Pixel, 90 x 90 Pixel, 115 x 115 Pixel und 255 x 115 Pixel.
-* Nutzungsbedingungen und Datenschutzrichtlinie
+* *Nutzungsbedingungen* und *Datenschutzrichtlinie*
 * Dokumentation
 * Supportkontakte
 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Erstellen eines Azure-Anwendungsangebots](./cpp-create-offer.md) 
+Sobald Sie alle Anforderungen erfüllt haben, können Sie [ein Azure-Anwendungsangebot erstellen](./cpp-create-offer.md). 
+ 

@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatur
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: 984c74c44cb5149e0c4af83ea8ca4d88e67877ae
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52584773"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116319"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -110,12 +110,12 @@ Datenschutz beginnt mit der Steuerung des Zugriffs auf die Daten. Das Rechenzent
 
 Der Dienst Azure SQL-Datenbank ist nur über TCP-Port 1433 verfügbar. Wenn Sie von Ihrem Computer auf eine SQL-Datenbank zugreifen möchten, stellen Sie sicher, dass die Firewall Ihres Clientcomputers die ausgehende TCP-Kommunikation über TCP-Port 1433 zulässt. Blockieren Sie eingehende Verbindungen über TCP-Port 1433, wenn diese nicht für andere Anwendungen benötigt werden.
 
-#### <a name="authentication"></a>Authentifizierung
+#### <a name="authentication"></a>Authentication
 
 Authentifizierung bezieht sich darauf, auf welche Weise Sie Ihre Identität beim Herstellen der Verbindung mit der Datenbank nachweisen. SQL-Datenbank unterstützt zwei Arten der Authentifizierung:
 
--   **SQL Server-Authentifizierung**: Bei der Erstellung einer logischen SQL-Instanz wird ein einzelnes Anmeldekonto erstellt, das als SQL-Datenbank-Abonnentenkonto bezeichnet wird. Dieses Konto stellt die Verbindung unter Verwendung der [SQL Server-Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (Benutzername und Kennwort) her. Dieses Konto ist ein Administrator auf der logischen Serverinstanz und in allen Benutzerdatenbanken, die an diese Instanz angefügt sind. Die Berechtigungen des Abonnentenkontos können nicht eingeschränkt werden. Nur eines dieser Konten kann vorhanden sein.
--   **Azure Active Directory-Authentifizierung**: Die [Azure AD-Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure AD. Damit können Sie die Identitäten von Datenbankbenutzern zentral verwalten.
+-   **SQL Server-Authentifizierung**: Bei der Erstellung einer logischen SQL-Instanz wird ein einzelnes Anmeldekonto erstellt, das als Azure SQL-Datenbank-Abonnentenkonto bezeichnet wird. Dieses Konto stellt die Verbindung unter Verwendung der [SQL Server-Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-security-overview) (Benutzername und Kennwort) her. Dieses Konto ist ein Administrator auf der logischen Serverinstanz und in allen Benutzerdatenbanken, die an diese Instanz angefügt sind. Die Berechtigungen des Abonnentenkontos können nicht eingeschränkt werden. Nur eines dieser Konten kann vorhanden sein.
+-   **Azure Active Directory-Authentifizierung**: Die [Azure Active Directory-Authentifizierung](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication) ist ein Mechanismus zum Herstellen einer Verbindung mit Azure SQL-Datenbank und Azure SQL Data Warehouse unter Verwendung von Identitäten in Azure Active Directory (Azure AD). Damit können Sie die Identitäten von Datenbankbenutzern zentral verwalten.
 
 ![Azure AD-Authentifizierung mit SQL-Datenbank](./media/azure-databse-security-overview/azure-database-fig2.png)
 
@@ -176,7 +176,7 @@ Sie können die SQL-Datenbanküberwachung für folgende Zwecke verwenden:
 
 Es stehen zwei Überwachungsmethoden zur Verfügung:
 
--   **Blobüberwachung**: Protokolle werden in Azure-Blobspeicher geschrieben. Dies ist eine neuere Überwachungsmethode. Sie bietet eine höhere Leistung, unterstützt eine detailliertere Überwachung auf Objektebene und ist kostengünstiger.
+-   **Blobüberwachung**: Die Protokolle werden in Azure Blob Storage geschrieben. Dies ist eine neuere Überwachungsmethode. Sie bietet eine höhere Leistung, unterstützt eine detailliertere Überwachung auf Objektebene und ist kostengünstiger.
 -   **Tabellenüberwachung**: Protokolle werden in Azure-Tabellenspeicher geschrieben.
 
 ### <a name="threat-detection"></a>Bedrohungserkennung

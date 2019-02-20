@@ -10,14 +10,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2018
+ms.date: 02/11/2019
 ms.author: spelluru
-ms.openlocfilehash: ed6c21762fed331e2f11378ec9b6d91cba9bec11
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.reviewer: christianreddington,anthdela,juselph
+ms.openlocfilehash: 781a897c99a28fbd1b695876f477b140521068e3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48250775"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244878"
 ---
 # <a name="scale-up-your-azure-devtest-labs-infrastructure"></a>Zentrales Hochskalieren Ihrer Azure DevTest Labs-Infrastruktur
 Vor der Implementierung von DevTest Labs auf Unternehmensebene sind mehrere wichtige Entscheidungspunkte zu berücksichtigen. Diese Entscheidungspunkte auf hoher Ebene zu verstehen, hilft Organisationen bei zukünftigen Entwurfsentscheidungen. Sie sollten jedoch eine Organisation nicht daran hindern, einen Proof of Concept zu starten. Die obersten drei Bereiche für die anfängliche Planung der Hochskalierung sind:
@@ -66,4 +67,4 @@ Ein Proof of Concept für DevTest-Labs weist drei primäre Rollen mit definierte
 - **DevTest Labs-Benutzer:** Der DevTest Labs-Benutzer kann die virtuellen Computer im Lab erstellen und nutzen. Diese Personen erfüllen einige minimale Verwaltungsfunktionen auf virtuellen Computern, die sie erstellen (Starten/Beenden/Löschen/Konfigurieren ihrer virtuellen Computer). Die Benutzer können keine VMs von anderen Benutzern verwalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie im nächsten Artikel dieser Serie: [Orchestrieren der Implementierung von Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md).
+Lesen Sie den nächsten Artikel in dieser Reihe: [Orchestrieren der Implementierung von Azure DevTest Labs](devtest-lab-guidance-orchestrate-implementation.md)

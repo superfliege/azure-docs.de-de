@@ -4,7 +4,7 @@ description: Dieser Artikel enthält bewährte Methoden für die Azure Service F
 services: security
 documentationcenter: na
 author: unifycloud
-manager: mbaldwin
+manager: barbkess
 editor: tomsh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
-ms.openlocfilehash: 718b6b38121981bdec1f677537f9cd1180dfdb08
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: 8bafc4a95ca9af4567ed70c190a72f3b351da47c
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54391224"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114704"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -173,7 +173,7 @@ Das Einrichten eines Schlüsseltresors umfasst zwei grundlegende Schritte:
 
     Der Schlüsseltresor muss für die Bereitstellung aktiviert sein. Der Computeressourcenanbieter kann dann die Zertifikate vom Tresor abrufen und auf den VM-Instanzen installieren.
 
-Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Erste Schritte mit Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
+Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [Was ist Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-get-started).
 
 ## <a name="assign-users-to-roles"></a>Zuweisen von Benutzern zu Rollen
 Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das Azure-Portal verwenden.

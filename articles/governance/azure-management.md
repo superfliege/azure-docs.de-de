@@ -7,12 +7,12 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: f417338205b17c8b949156a6d5a60ef609458fc1
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 504436060a71847641635b12baa63c79c77251e6
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53088135"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56112207"
 ---
 # <a name="management-in-azure"></a>Verwaltung in Azure
 
@@ -24,7 +24,7 @@ Das folgende Diagramm veranschaulicht die verschiedenen Bereiche der Verwaltung,
 
 ![Verwaltungstechniken](../monitoring/media/management-overview/management-capabilities.png)
 
-Kein einzelner Azure-Dienst erfüllt die Anforderungen eines bestimmten Verwaltungsbereichs vollständig. Stattdessen wird jeder Bereich von mehreren Diensten umgesetzt, die zusammenarbeiten. Einige Dienste (z.B. Application Insights) bieten gezielte Überwachungsfunktionen für Webanwendungen. Andere (wie Log Analytics) speichern die Verwaltungsdaten für andere Dienste. Diese Funktion ermöglicht es Ihnen, Daten verschiedener Typen zu analysieren, die von verschiedenen Diensten erfasst werden.
+Kein einzelner Azure-Dienst erfüllt die Anforderungen eines bestimmten Verwaltungsbereichs vollständig. Stattdessen wird jeder Bereich von mehreren Diensten umgesetzt, die zusammenarbeiten. Einige Dienste (z.B. Application Insights) bieten gezielte Überwachungsfunktionen für Webanwendungen. Andere (wie Azure Monitor-Protokolle) speichern die Verwaltungsdaten für andere Dienste. Diese Funktion ermöglicht es Ihnen, Daten verschiedener Typen zu analysieren, die von verschiedenen Diensten erfasst werden.
 
 In den folgenden Abschnitten werden verschiedenen Verwaltungsbereiche kurz beschrieben und Links zu ausführlichen Inhalten zu den Azure-Hauptdiensten bereitgestellt, die für die jeweiligen Bereiche vorgesehen sind.
 

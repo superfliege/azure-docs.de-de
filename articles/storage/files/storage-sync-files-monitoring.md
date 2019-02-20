@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/28/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 032b39846d19e34f2eb87c1311feeb4bb890cb24
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5a0d02768b0fbd23e33d13c5e5c3fe84a41cdc52
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467457"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243653"
 ---
 # <a name="monitor-azure-file-sync"></a>Überwachen der Azure-Dateisynchronisierung
 
@@ -29,7 +29,7 @@ Im Azure-Portal können Sie die Integrität registrierter Server und Serverendpu
 
 ### <a name="storage-sync-service"></a>Speichersynchronisierungsdienst
 
-Um die Integrität registrierter Server und Serverendpunkte anzuzeigen, wechseln Sie im Azure-Portal zum Speichersynchronisierungsdienst. Die Integrität registrierter Server kann auf dem Blatt „Registrierte Server“ angezeigt werden. Die Integrität für Serverendpunkte ist kann auf dem Blatt „Synchronisierungsgruppen“ angezeigt werden.
+Um die Integrität registrierter Server, die Integrität der Serverendpunkte und Metriken anzuzeigen, wechseln Sie im Azure-Portal zum Speichersynchronisierungsdienst. Die Integrität registrierter Server kann auf dem Blatt „Registrierte Server“ angezeigt werden. Die Integrität für Serverendpunkte kann auf dem Blatt „Synchronisierungsgruppen“ angezeigt werden.
 
 Integrität registrierter Server
 - Wenn sich ein registrierter Server im Zustand „Online“ befindet, kommuniziert er erfolgreich mit dem Dienst.
@@ -39,6 +39,23 @@ Integrität der Serverendpunkte
 - Die Integrität der Serverendpunkte im Portal basiert auf den Synchronisierungsereignissen, die im Protokoll für Telemetrieereignisse auf dem Server protokolliert werden (ID 9102 und 9302). Wenn eine Synchronisierungssitzung aufgrund eines vorübergehenden Fehlers (z.B. Abbruchfehler) nicht erfolgreich ist, wird die Synchronisierung im Portal möglicherweise weiterhin als fehlerfrei angezeigt, solange ein Fortschritt bei der Synchronisierungssitzung verzeichnet wird (anhand von Ereignis-ID 9302 wird bestimmt, ob Dateien angewendet werden). Weitere Informationen finden Sie in der folgenden Dokumentation: [Integrität der Synchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) & [Fortschritt der Synchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#how-do-i-monitor-the-progress-of-a-current-sync-session).
 - Wenn das Portal einen Synchronisierungsfehler aufgrund eines fehlenden Fortschritts anzeigt, lesen Sie die [Dokumentation zur Problembehandlung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#common-sync-errors).
 
+Metriken
+- Die folgenden Metriken können im Speichersynchronisierungsdienst-Portal angezeigt werden:
+
+  | Metrikname | BESCHREIBUNG | Portal-Blatt/-Blätter | 
+  |-|-|-|
+  | Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download) | Synchronisierungsgruppe, Serverendpunkt |
+  | Cloudtieringrückruf | Größe der zurückgerufenen Daten | Registrierte Server |
+  | Dateien ohne Synchronisierung | Anzahl der Dateien, die nicht synchronisiert werden können | Serverendpunkt |
+  | Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download) | Synchronisierungsgruppe, Serverendpunkt |
+  | Onlinestatus des Servers | Anzahl der Taktsignale, die vom Server empfangen wurden | Registrierte Server |
+
+- Weitere Informationen finden Sie im Abschnitt [Azure Monitor](https://docs.microsoft.com/azure/storage/files/storage-sync-files-monitoring#azure-monitor). 
+
+  > [!Note]  
+  > Die Diagramme im Speichersynchronisierungsdienst-Portal haben einen Zeitbereich von 24 Stunden. Die verschiedenen Zeitbereiche oder -dimensionen können Sie mit Azure Monitor anzeigen.
+
+
 ### <a name="azure-monitor"></a>Azure Monitor
 
 Verwenden Sie [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview), um Synchronisierung, Cloudtiering und Serverkonnektivität zu überwachen. Metriken für die Azure-Dateisynchronisierung werden standardmäßig aktiviert und alle 15 Minuten an Azure Monitor gesendet.
@@ -47,14 +64,14 @@ Um Metriken der Azure-Dateisynchronisierung in Azure Monitor anzuzeigen, wählen
 
 In Azure Monitor sind die folgenden Metriken für die Azure-Dateisynchronisierung verfügbar:
 
-| Metrikname | Beschreibung |
+| Metrikname | BESCHREIBUNG |
 |-|-|
 | Bytes synchronisiert | Größe der übertragenen Daten (Upload und Download).<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 | Cloudtieringrückruf | Größe der zurückgerufenen Daten.<br><br>Einheit: Byte<br>Aggregationstyp: Summe<br>Verfügbare Dimension: Servername |
-| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Anzahl<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Dateien synchronisiert | Anzahl von Dateien, die hoch- und heruntergeladen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
-| Servertakt | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Anzahl<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
-| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Anzahl<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Dateien ohne Synchronisierung | Anzahl von Dateien, für die keine Synchronisierung möglich ist.<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Dateien synchronisiert | Anzahl der übertragenen Dateien (Upload und Download)<br><br>Einheit: Count<br>Aggregationstyp: Summe<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
+| Onlinestatus des Servers | Anzahl von Taktsignalen, die vom Server empfangen wurden.<br><br>Einheit: Count<br>Aggregationstyp: Maximum<br>Verfügbare Dimension: Servername |
+| Ergebnis der Synchronisierungssitzung | Ergebnis der Synchronisierungssitzung (1 = erfolgreiche Synchronisierungssitzung, 0 = fehlerhafte Synchronisierungssitzung)<br><br>Einheit: Count<br>Aggregationstypen: Maximum<br>Verfügbare Dimensionen: Name des Serverendpunkts, Synchronisierungsrichtung, Name der Synchronisierungsgruppe |
 
 ## <a name="windows-server"></a>Windows Server
 
@@ -84,7 +101,7 @@ Cloudtieringintegrität
   
 - Um die Rückrufaktivität auf einem Server zu überwachen, verwenden Sie die Ereignis-IDs 9005, 9006, 9009 und 9059 im Telemetrieereignisprotokoll (in der Ereignisanzeige unter „Anwendungen und Dienste\Microsoft\FileSync\Agent“).
 
-  - Die Ereignis-ID 9005 bietet Informationen zur Rückrufzuverlässigkeit für einen Serverendpunkt. Beispiele: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
+  - Die Ereignis-ID 9005 bietet Zuverlässigkeit beim Rückruf für einen Serverendpunkt. Beispiele: Gesamtanzahl eindeutiger Dateien, auf die zugegriffen wird, und Gesamtanzahl eindeutiger Dateien, bei denen beim Zugriff ein Fehler aufgetreten ist.
   - Die Ereignis-ID 9006 ermöglicht die Rückruffehlerverteilung für einen Serverendpunkt. Beispiele: Fehlerhafte Anforderungen insgesamt, ErrorCode usw. Beachten Sie, dass ein Ereignis pro Fehlercode protokolliert wird.
   - Die Ereignis-ID 9009 bietet Informationen zu Rückrufsitzungen für einen Serverendpunkt. Hierzu zählen beispielsweise DurationSeconds, CountFilesRecallSucceeded, CountFilesRecallFailed usw.
   - Die Ereignis-ID 9059 bietet Informationen zur Anwendungsrückrufverteilung für einen Serverendpunkt. Hierzu zählen beispielsweise ShareId, Anwendungsname und TotalEgressNetworkBytes.
@@ -97,7 +114,7 @@ Um die Leistungsindikatoren der Azure-Dateisynchronisierung auf dem Server zu ü
 
 Im Systemmonitor stehen die folgenden Leistungsindikatoren für die Azure-Dateisynchronisierung zur Verfügung:
 
-| Name des Leistungsobjekts\Leistungsindikators | Beschreibung |
+| Name des Leistungsobjekts\Leistungsindikators | BESCHREIBUNG |
 |-|-|
 | Übertragene AFS-Bytes\Heruntergeladene Bytes/s | Die Anzahl von pro Sekunde heruntergeladenen Bytes. |
 | Übertragene AFS-Bytes\Hochgeladene Bytes/s | Die Anzahl von pro Sekunde hochgeladenen Bytes. |

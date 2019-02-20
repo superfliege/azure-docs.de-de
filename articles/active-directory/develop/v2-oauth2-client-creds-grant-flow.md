@@ -12,17 +12,18 @@ ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 11/13/2018
+ms.topic: conceptual
+ms.date: 02/07/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 090f9771bf8d1010e4249d97d5768891f02c54b3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.collection: M365-identity-device-management
+ms.openlocfilehash: 76b752df4557ac5b0b493f1fb40d1712d37c8e22
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096601"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56207669"
 ---
 # <a name="azure-active-directory-v20-and-the-oauth-20-client-credentials-flow"></a>Azure Active Directory v2.0 und der OAuth 2.0-Clientanmeldeinformations-Flow
 
@@ -30,12 +31,12 @@ ms.locfileid: "55096601"
 
 Die [Gewährung von OAuth 2.0-Clientanmeldeinformationen](https://tools.ietf.org/html/rfc6749#section-4.4), die in RFC 6749 angegeben ist und gelegentlich als *zweibeinige OAuth-Autorisierung* bezeichnet wird, kann für den Zugriff auf webgehostete Ressourcen über die Identität einer Anwendung verwendet werden. Diese Art der Gewährung wird häufig für Interaktionen zwischen Servern verwendet, die ohne Benutzereingriff im Hintergrund ausgeführt werden müssen. Diese Anwendungstypen werden oft als *Daemons* oder *Dienstkonten* bezeichnet.
 
-Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet Azure Active Directory (Azure AD) auch die Möglichkeit, dass der aufrufende Dienst anstelle eines gemeinsamen Geheimnisses ein Zertifikat als Anmeldeinformationen verwendet.
+Beim Fluss zur Gewährung von OAuth 2.0-Clientanmeldeinformationen kann ein Webdienst (ein vertraulicher Client) seine eigenen Anmeldeinformationen zum Authentifizieren verwenden, wenn ein anderer Webdienst aufgerufen wird, anstatt die Identität eines Benutzers anzunehmen. In diesem Szenario ist der Client normalerweise ein Webdienst der mittleren Ebene, ein Daemondienst oder eine Website. Für ein höheres Maß an Sicherheit bietet die Microsoft Identity Platform auch die Möglichkeit, dass der aufrufende Dienst ein Zertifikat (statt eines gemeinsamen Geheimnisses) als Anmeldeinformationen verwendet.
 
 > [!NOTE]
 > Der v2.0-Endpunkt unterstützt nicht alle Szenarien und Funktionen von Azure AD. Lesen Sie die Informationen zu den [Einschränkungen des v2.0-Endpunkts](active-directory-v2-limitations.md), um herauszufinden, ob Sie den v2.0-Endpunkt verwenden sollten.
 
-In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung die Berechtigung zum Zugriff auf eine Ressource im Auftrag eines bestimmten Benutzers gewährt. Die Berechtigung wird in der Regel während des [Zustimmungsprozesses](v2-permissions-and-consent.md) vom Benutzer an die Anwendung delegiert. Allerdings werden Berechtigungen im Clientanmeldeinformations-Flow direkt an die Anwendung selbst erteilt. Wenn die App einer Ressource ein Token anbietet, erzwingt die Ressource, dass die App selbst und nicht der Benutzer für die Durchführung einer Aktion autorisiert ist.
+In der üblicheren *dreibeinigen OAuth-Autorisierung* wird einer Clientanwendung die Berechtigung zum Zugriff auf eine Ressource im Auftrag eines bestimmten Benutzers gewährt. Die Berechtigung wird in der Regel während des [Zustimmungsprozesses](v2-permissions-and-consent.md) vom Benutzer an die Anwendung delegiert. Allerdings werden Berechtigungen im Clientanmeldeinformations-Flow (*zweibeinige OAuth-Authentifizierung*) direkt an die Anwendung selbst erteilt. Wenn die App einer Ressource ein Token anbietet, erzwingt die Ressource, dass die App selbst (und nicht der Benutzer) für die Ausführung einer Aktion autorisiert ist. 
 
 ## <a name="protocol-diagram"></a>Protokolldiagramm
 
@@ -47,10 +48,10 @@ Der gesamte Clientanmeldeinformations-Flow ist im folgenden Diagramm dargestellt
 
 Eine App empfängt die direkte Autorisierung für den Zugriff auf eine Ressource in der Regel auf zwei Arten: 
 
-* Über eine Zugriffssteuerungsliste (Access Control List, ACL) der Ressource
-* Durch Zuweisung einer Anwendungsberechtigung in Azure AD
+* [Über eine Zugriffssteuerungsliste (Access Control List, ACL) der Ressource](#access-control-lists)
+* [Durch Zuweisung einer Anwendungsberechtigung in Azure AD](#application-permissions)
 
-Diese beiden Methoden sind in Azure AD am gebräuchlichsten und werden von uns für Clients und Ressourcen empfohlen, die den Clientanmeldeinformations-Flow ausführen. Eine Ressource kann jedoch die Clients auf andere Weise autorisieren. Jeder Ressourcenserver kann die Methode auswählen, die am sinnvollsten für seine Anwendung ist.
+Diese beiden Methoden sind in Azure AD am gebräuchlichsten und werden von uns für Clients und Ressourcen empfohlen, die den Clientanmeldeinformations-Flow ausführen. Eine Ressource kann auch wählen, dass die Clients auf andere Weise autorisiert werden sollen. Jeder Ressourcenserver kann die Methode auswählen, die am sinnvollsten für seine Anwendung ist.
 
 ### <a name="access-control-lists"></a>Zugriffssteuerungslisten
 
@@ -77,14 +78,14 @@ Wenn Sie Anwendungsberechtigungen in Ihrer App verwenden möchten, führen Sie d
 
 1. Registrieren und erstellen Sie eine App über das [App-Registrierungsportal](quickstart-v2-register-an-app.md) oder die neue [Oberfläche „App-Registrierungen“ (Vorschauversion)](quickstart-register-app.md).
 1. Wechseln Sie in dem Portal, das Sie zum Registrieren oder Erstellen Ihrer App verwendet haben, zu Ihrer App. Sie müssen beim Erstellen Ihrer App mindestens ein Anwendungsgeheimnis verwenden.
-2. Suchen Sie nach dem Abschnitt **Microsoft Graph-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
-3. **Speichern** Sie die App-Registrierung.
+1. Suchen Sie den Abschnitt **API-Berechtigungen**, und fügen Sie die **Anwendungsberechtigungen** hinzu, die von Ihrer App benötigt werden.
+1. **Speichern** Sie die App-Registrierung.
 
 #### <a name="recommended-sign-the-user-in-to-your-app"></a>Empfohlen: Anmelden des Benutzers bei Ihrer App
 
 Wenn Sie eine Anwendung erstellen, die Anwendungsberechtigungen verwendet, erfordert die App in der Regel eine Seite oder eine Sicht, auf der der Administrator Berechtigungen für die App genehmigt. Diese Seite kann Teil des Anmelde-Flows der App, Teil der App-Einstellungen oder ein dedizierter Flow „Verbinden“ sein. In vielen Fällen ist es sinnvoll, wenn die App diese Ansicht „Verbinden“ erst anzeigt, wenn ein Benutzer sich mit einem Geschäfts-, Schul- oder Unikonto von Microsoft angemeldet hat.
 
-Durch das Anmelden des Benutzers bei der App können Sie die Organisation identifizieren, der der Benutzer angehört, bevor Sie ihn zur Genehmigung der Anwendungsberechtigungen auffordern. Auch wenn es nicht unbedingt erforderlich ist, können Sie für Ihre Benutzer auf diese Weise eine intuitivere Benutzeroberfläche erstellen. Zum Anmelden des Benutzers befolgen Sie unsere [Tutorials zum v2.0-Protokoll](active-directory-v2-protocols.md).
+Durch das Anmelden des Benutzers bei Ihrer App können Sie die Organisation identifizieren, der der Benutzer angehört, bevor Sie ihn zur Genehmigung der Anwendungsberechtigungen auffordern. Auch wenn es nicht unbedingt erforderlich ist, können Sie für Ihre Benutzer auf diese Weise eine intuitivere Benutzeroberfläche erstellen. Zum Anmelden des Benutzers befolgen Sie unsere [Tutorials zum v2.0-Protokoll](active-directory-v2-protocols.md).
 
 #### <a name="request-the-permissions-from-a-directory-admin"></a>Anfordern der Berechtigungen von einem Verzeichnisadministrator
 
@@ -100,7 +101,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 ```
 
 ```
-// Pro tip: Try pasting the following request in a browser!
+// Pro tip: Try pasting the following request in a browser.
 ```
 
 ```
@@ -128,7 +129,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 | --- | --- |
 | `tenant` | Der Verzeichnismandant, der Ihrer Anwendung die angeforderten Berechtigungen erteilt hat, im GUID-Format |
 | `state` | Ein in der Anforderung enthaltener Wert, der auch in der Tokenantwort zurückgegeben wird. Es kann sich um eine Zeichenfolge mit jedem beliebigen Inhalt handeln. Der Status wird verwendet, um Informationen über den Status des Benutzers in der App zu codieren, bevor die Authentifizierungsanforderung aufgetreten ist, z.B. Informationen zu der Seite oder Ansicht, die der Benutzer besucht hat. |
-| `admin_consent` | Legen Sie diesen Parameter auf **True**fest. |
+| `admin_consent` | Legen Sie den Wert auf **True** fest. |
 
 ##### <a name="error-response"></a>Fehlerantwort
 
@@ -170,9 +171,9 @@ curl -X POST -H "Content-Type: application/x-www-form-urlencoded" -d 'client_id=
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
 | `client_id` | Erforderlich | Die Anwendungs-ID, die Ihrer App zugewiesen ist. Diese Informationen finden Sie in dem Portal, in dem Sie Ihre App registriert haben. |
-| `scope` | Erforderlich |Der Wert für den `scope`-Parameter in dieser Anforderung muss dem Ressourcenbezeichner (App-ID-URI) der gewünschten Ressource entsprechen, versehen mit dem `.default`-Suffix. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
+| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. </br>Dieser Wert weist den v2.0-Endpunkt an, von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen auszustellen, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
 | `client_secret` | Erforderlich | Das Anwendungsgeheimnis, das Sie im App-Registrierungsportal für Ihre App generiert haben. Der geheime Clientschlüssel muss vor dem Senden URL-codiert werden. |
-| `grant_type` | Erforderlich | Muss `client_credentials`lauten. |
+| `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
 
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Zweiter Fall: Zugriffstokenanforderung mit einem Zertifikat
 
@@ -191,10 +192,10 @@ scope=https%3A%2F%2Fgraph.microsoft.com%2F.default
 | Parameter | Bedingung | BESCHREIBUNG |
 | --- | --- | --- |
 | `tenant` | Erforderlich | Der Verzeichnismandant, der von der Anwendung für den Betrieb verwendet werden soll, im GUID- oder Domänennamensformat. |
-| `client_id` | Erforderlich |Die Anwendungs-ID, die Ihrer App zugewiesen ist. |
-| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br>Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. |
-| `client_assertion_type` | Erforderlich | Der Wert muss `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` sein. |
-| `client_assertion` | Erforderlich | Eine Assertion (JSON Web Token), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
+| `client_id` | Erforderlich |Die Anwendungs-ID (Client-ID), die Ihrer App zugewiesen ist. |
+| `scope` | Erforderlich | Bei dem Wert, der in dieser Anforderung für den `scope`-Parameter übergeben wird, muss es sich um den Ressourcenbezeichner (Anwendungs-ID-URI) der gewünschten Ressource mit dem Suffix `.default` handeln. Für das angegebene Microsoft Graph-Beispiel ist der Wert `https://graph.microsoft.com/.default`. <br>Dieser Wert informiert den v2.0-Endpunkt darüber, dass er von allen direkten Anwendungsberechtigungen, die Sie für Ihre App konfiguriert haben, ein Token für diejenigen ausstellen soll, die zur gewünschten Ressource gehören. Weitere Informationen zum `/.default`-Bereich finden Sie in der [Dokumentation zu Zustimmungen](v2-permissions-and-consent.md#the-default-scope). |
+| `client_assertion_type` | Erforderlich | Der Wert muss auf `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` festgelegt werden. |
+| `client_assertion` | Erforderlich | Eine Assertion (ein JSON-Webtoken), die Sie benötigen, um das Zertifikat, das Sie als Anmeldeinformationen für Ihre Anwendung registriert haben, zu erstellen und sich damit anzumelden. Informationen zum Registrieren Ihres Zertifikats sowie zum Format der Assertion finden Sie im Abschnitt [Zertifikatanmeldeinformationen](active-directory-certificate-credentials.md).|
 | `grant_type` | Erforderlich | Muss auf `client_credentials` festgelegt sein. |
 
 Beachten Sie, dass die Parameter nahezu identisch mit den Parametern der Anforderung mit dem gemeinsamen geheimen Schlüssel sind. Einziger Unterschied: Anstelle des Parameters „client_secret“ werden die beiden Parameter „client_assertion_type“ und „client_assertion“ verwendet.
@@ -261,6 +262,11 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZn
 curl -X GET -H "Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q" 'https://graph.microsoft.com/v1.0/me/messages'
 ```
 
-## <a name="code-sample"></a>Codebeispiel
+## <a name="code-samples-and-other-documentation"></a>Codebeispiele und anderes Dokumentationsmaterial
 
-Ein Beispiel für eine Anwendung, die die Gewährung von Clientanmeldeinformationen über den Endpunkt für die Administratorzustimmung implementiert, finden Sie in unserem [v2.0-Daemon-Codebeispiel](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2).
+Lesen Sie die [Übersichtsdokumentation zu Clientanmeldeinformationen](http://aka.ms/msal-net-client-credentials) aus der Microsoft-Authentifizierungsbibliothek.
+
+| Beispiel | Plattform |BESCHREIBUNG |
+|--------|----------|------------|
+|[active-directory-dotnetcore-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2) | .NET Core 2.1-Konsole | Eine einfache .NET Core-Anwendung, die die Benutzer eines Mandanten anzeigt, der Microsoft Graph unter Verwendung der Anwendungsidentität (statt im Auftrag eines Benutzers) abfragt. Das Beispiel veranschaulicht außerdem die Variante, bei der Zertifikate für die Authentifizierung verwendet werden. |
+|[active-directory-dotnet-daemon-v2](https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2)|ASP.NET MVC | Eine Webanwendung, die Daten aus Microsoft Graph unter Verwendung der Anwendungsidentität (statt im Auftrag eines Benutzers) synchronisiert. |

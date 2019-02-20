@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 01/14/2019
+ms.date: 02/12/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 894724b08876e96119bf72ce65e22c6ae884d8da
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 192a6f4841e9dc3a478da5e4b53594362955ca71
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54306878"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246880"
 ---
 ### <a name="is-bgp-supported-on-all-azure-vpn-gateway-skus"></a>Wird BGP von allen Azure-VPN-Gateway-SKUs unterstützt?
 Nein, BGP wird von Azure-VPN-Gateways vom Typ **VpnGw1**, **VpnGw2**, **VpnGw3**, **Standard** und **HighPerformance** unterstützt. Die SKU **Basic** wird NICHT unterstützt.
@@ -49,6 +49,9 @@ Das Azure-VPN-Gateway kündigt Ihren lokalen BGP-Geräten gegenüber folgende Ro
 * Ihre VNET-Adresspräfixe
 * Adresspräfixe für die einzelnen lokalen Netzwerkgateways, die mit dem Azure-VPN-Gateway verbunden sind
 * Routen, die in anderen, mit dem Azure VPN Gateway verbundenen BGP-Peeringsitzungen ermittelt wurden ( **mit Ausnahme der Standardrouten oder Routen, die sich mit VNET-Präfixen überschneiden**)
+
+### <a name="how-many-prefixes-can-i-advertise-to-azure-vpn-gateway"></a>Wie viele Präfixe kann ich Azure-VPN-Gateways ankündigen?
+Wir unterstützen bis zu 4.000 Präfixe. Die BGP-Sitzung wird verworfen, wenn die Anzahl von Präfixen den Grenzwert überschreitet.
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>Kann ich die Standardroute (0.0.0.0/0) für Azure VPN Gateways ankündigen?
 Ja.

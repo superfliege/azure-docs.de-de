@@ -5,15 +5,15 @@ services: storage
 author: jeffpatt24
 ms.service: storage
 ms.topic: article
-ms.date: 01/25/2019
+ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 376ebcbc17cc9f5c797c2985fe3c0784f5036600
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 52e0521217fb99bc5fac3fdde8f43f9c80f86ac7
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752091"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56194234"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -145,7 +145,7 @@ Ein Integritätsstatus „Keine Aktivität“ des Serverendpunkts bedeutet, dass
 
 Ein Serverendpunkt protokolliert die Synchronisierungsaktivität aus den folgenden Gründen möglicherweise nicht:
 
-- Der Server verfügt über eine aktive VSS-Synchronisationssitzung (SnapshotSync). Wenn eine VSS-Synchronisierungssitzung für einen Serverendpunkt aktiv ist, können andere Serverendpunkte auf dem selben Volume eine Synchronisierungssitzung erst starten, nachdem die VSS-Synchronisierungssitzung abgeschlossen wurde.
+- Die Agent-Version 4.3.0.0 oder älter ist installiert, und auf dem Server gibt es eine aktive VSS-Synchronisierungssitzung (SnapshotSync). Wenn eine VSS-Synchronisierungssitzung für einen Serverendpunkt aktiv ist, können andere Serverendpunkte auf dem selben Volume eine Synchronisierungssitzung erst starten, nachdem die VSS-Synchronisierungssitzung abgeschlossen wurde. Um dieses Problem zu beheben, installieren Sie die Agent-Version 5.0.2.0 oder höher, die die Synchronisierung für mehrere Serverendpunkte auf einem Volume unterstützt, wenn eine VSS-Synchronisierungssitzung aktiv ist.
 
     Um die aktuelle Synchronisierungsaktivität auf einem Server zu überprüfen, lesen Sie [Wie überwache ich den Fortschritt einer aktuellen Synchronisierungssitzung?](#how-do-i-monitor-the-progress-of-a-current-sync-session).
 
@@ -154,7 +154,7 @@ Ein Serverendpunkt protokolliert die Synchronisierungsaktivität aus den folgend
     - Agent-Version 3.x: 2 aktive Synchronisierungssitzungen pro Prozessor oder maximal 8 aktive Synchronisierungssitzungen pro Server.
 
 > [!Note]  
-> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt S[erverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
+> Wenn der Serverstatus auf dem Blatt mit den registrierten Servern „Als Offline angezeigt" lautet, führen Sie die im Abschnitt [Serverendpunkt weist einen Integritätsstatus „Keine Aktivität“ oder „Ausstehend“ auf, und der Serverstatus auf dem Blatt mit den registrierten Servern lautet „Als Offline angezeigt“](#server-endpoint-noactivity) aufgeführten Schritte aus.
 
 ## <a name="sync"></a>Synchronisierung
 <a id="afs-change-detection"></a>**Wie lange dauert es, bis eine Datei auf Servern in der Synchronisierungsgruppe synchronisiert wird, wenn ich die Datei direkt auf meiner Azure-Dateifreigabe mithilfe von SMB oder über das Portal erstellt habe?**  
@@ -538,7 +538,7 @@ Dieser Fehler tritt auf, weil direkt Änderungen an der Azure-Dateifreigabe vorg
 | **Fehlerzeichenfolge** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
 | **Korrektur erforderlich** | Ja |
 
-In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten bei den Synchronisierungssitzungen Fehler auf. Um diesen Zustand zu beheben, lesen Sie [Behandlung von Synchronisierungsfehlern nach Dateien und Verzeichnissen]().
+In Fällen, in denen viele Synchronisierungsfehler pro Datei auftreten, treten bei den Synchronisierungssitzungen Fehler auf. <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
 > [!NOTE]
 > Die Azure-Dateisynchronisierung erstellt einmal pro Tag eine temporäre VSS-Momentaufnahme auf dem Server, um Dateien mit offenen Handles zu synchronisieren.

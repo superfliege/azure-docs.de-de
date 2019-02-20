@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 80208c83c96ba78db052017c2baa3bc0db63953f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: f8a5c12bb57a8f59960320c6227174b240bcbc3d
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258849"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55892234"
 ---
 # <a name="row-level-security-with-power-bi-workspace-collections"></a>Sicherheit auf Zeilenebene mit Power BI-Arbeitsbereichssammlungen
 
@@ -94,7 +94,7 @@ Dies sind die Schritte, die in Power BI Desktop ausgeführt werden müssen. Es i
 * **username** (optional): Bei Verwendung mit RLS ist dies eine Zeichenfolge, die zum Identifizieren des Benutzers verwendet werden kann, wenn RLS-Regeln angewendet werden. Weitere Informationen finden Sie unter „Sicherheit auf Zeilenebene in Power BI Embedded“.
 * **roles** : Mit den in dieser Zeichenfolge enthaltenen Rollen wird ausgewählt, wann die Regeln der Sicherheit auf Zeilenebene (RLS) angewendet werden sollen. Wenn mehr als eine Rolle übergeben wird, sollten sie als Zeichenfolgenarray übergeben werden.
 
-Sie erstellen das Token mithilfe der [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN#Microsoft_PowerBI_Security_PowerBIToken_CreateReportEmbedToken_System_String_System_String_System_String_System_DateTime_System_String_System_Collections_Generic_IEnumerable_System_String__)-Methode. Falls die username-Eigenschaft vorhanden ist, müssen Sie in den Rollen auch mindestens einen Wert übergeben.
+Sie erstellen das Token mithilfe der [CreateReportEmbedToken](https://docs.microsoft.com/dotnet/api/microsoft.powerbi.security.powerbitoken?redirectedfrom=MSDN)-Methode. Falls die username-Eigenschaft vorhanden ist, müssen Sie in den Rollen auch mindestens einen Wert übergeben.
 
 Beispielsweise können Sie das EmbedSample ändern. Zeile 55 von DashboardController ändert sich von
 

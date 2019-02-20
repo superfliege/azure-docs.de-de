@@ -5,15 +5,15 @@ services: storage
 author: wmgries
 ms.service: storage
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 5bff36f17b407c95858924a2a88b133500c350b6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 7b6a5a46e311fa54d6957c45d35ef20d94cf7632
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751411"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56200495"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planung für die Bereitstellung einer Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -167,10 +167,14 @@ Windows Server-Failoverclustering wird von der Azure-Dateisynchronisierung für 
 > Der Azure-Dateisynchronisierungs-Agent muss auf jedem Knoten in einem Failovercluster installiert sein, damit die Synchronisierung ordnungsgemäß funktioniert.
 
 ### <a name="data-deduplication"></a>Datendeduplizierung
-Für Volumes, bei denen Cloudtiering nicht aktiviert ist, unterstützt die Azure-Dateisynchronisierung die Aktivierung der Windows Server-Datendeduplizierung auf dem Volume. Derzeit wird Interoperabilität zwischen Azure-Dateisynchronisierung mit aktiviertem Cloudtiering und Datendeduplizierung nicht unterstützt.
+**Agent-Version 5.0.2.0**   
+Die Datendeduplizierung wird auf Volumes mit aktiviertem Cloudtiering unter Windows Server 2016 und Windows Server 2019 unterstützt. Durch das Aktivieren der Deduplizierung auf einem Volume mit aktiviertem Cloudtiering können Sie weitere Dateien lokal zwischenspeichern, ohne mehr Speicher bereitstellen zu müssen.
+
+**Windows Server 2012 R2 oder ältere Agent-Versionen**  
+Für Volumes, bei denen Cloudtiering nicht aktiviert ist, unterstützt die Azure-Dateisynchronisierung die Aktivierung der Windows Server-Datendeduplizierung auf dem Volume.
 
 ### <a name="distributed-file-system-dfs"></a>Verteiltes Dateisystem (Distributed File System, DFS)
-Die Azure-Dateisynchronisierung unterstützt die Interoperabilität mit DFS-Namespaces (DFS-N) und DFS-Replikation (DFS-R) ab [Version 1.2 des Azure-Dateisynchronisierungs-Agents](https://go.microsoft.com/fwlink/?linkid=864522).
+Die Azure-Dateisynchronisierung unterstützt die Interoperabilität mit DFS-Namespaces (DFS-N) und DFS-Replikation (DFS-R).
 
 **DFS-Namespaces (DFS-N)**: Die Azure-Dateisynchronisierung wird auf DFS-N-Servern vollständig unterstützt. Sie können den Azure-Dateisynchronisierungs-Agent auf einem oder mehreren DFS-N-Membern installieren, um Daten zwischen den Serverendpunkten und dem Cloudendpunkt zu synchronisieren. Weitere Informationen finden Sie unter [Übersicht über DFS-Namespaces](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/dfs-overview).
  

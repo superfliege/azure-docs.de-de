@@ -4,7 +4,7 @@ description: Informationen zu den Best Practices in Azure Storage zum Schutz Ihr
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: ''
 ms.assetid: ''
 ms.service: security
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
-ms.openlocfilehash: ac01aaca8c147b1f474b59ac57424f5cdc5f8a8d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451866"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56108924"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Bewährte Methoden zum Schützen webbasierter und mobiler PaaS-Anwendungen mit Azure Storage
 In diesem Artikel wird eine Sammlung empfohlener Vorgehensweisen in Azure Storage zum Schutz Ihrer webbasierten und mobilen PaaS-Anwendungen (Platform-as-a-Service) erläutert. Diese empfohlenen Vorgehensweisen sind aus unseren Erfahrungen mit Azure und den Erfahrungen von Kunden wie Ihnen abgeleitet.
 
 Azure bietet Methoden zum Bereitstellen und Verwenden von Speicher, die lokal nicht möglich sind. Sie können in Azure Storage mit relativ geringem Aufwand ein hohes Maß an Skalierbarkeit und Verfügbarkeit erzielen. Azure Storage ist nicht nur die Grundlage für virtuelle Windows- und Linux-Computer in Azure, sondern unterstützt auch große verteilte Anwendungen.
 
-Azure Storage umfasst vier Dienste: Blob Storage, Table Storage, Queue Storage und File Storage. Weitere Informationen finden Sie unter [Introduction to Microsoft Azure Storage](../storage/storage-introduction.md) (Einführung in Microsoft Azure, in englischer Sprache).
+Azure Storage bietet die folgenden vier Dienste: Blobspeicher, Tabellenspeicher, Warteschlangenspeicher und Dateispeicher. Weitere Informationen finden Sie unter [Introduction to Microsoft Azure Storage](../storage/storage-introduction.md) (Einführung in Microsoft Azure, in englischer Sprache).
 
 Der [Azure Storage security guide](../storage/common/storage-security-guide.md) (Azure Storage-Sicherheitsleitfaden, in englischer Sprache) ist eine hervorragende Quelle für ausführliche Informationen zu Azure Storage und Sicherheit. In diesem Artikel zu bewährten Methoden werden einige der Konzepte im Sicherheitsleitfaden in allgemeiner Form erläutert. Er enthält zudem Links zum Sicherheitsleitfaden und anderen Quellen, die weitere Informationen bieten.
 

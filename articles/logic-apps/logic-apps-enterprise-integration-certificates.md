@@ -11,12 +11,12 @@ ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.suite: integration
 ms.topic: article
 ms.date: 08/17/2018
-ms.openlocfilehash: 5ae69d365a183f7d2a219d853241e73c1e27212b
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 38bc1615c0849a33ddfa5790a66fc05d681ce339
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42145132"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56244928"
 ---
 # <a name="secure-b2b-messages-with-certificates"></a>Schützen von B2B-Nachrichten mit Zertifikaten
 
@@ -30,6 +30,8 @@ In Ihren Unternehmensintegrations-Apps können Sie die folgenden Zertifikate ver
 * [Öffentliche Zertifikate](https://en.wikipedia.org/wiki/Public_key_certificate), die Sie über eine öffentliche [Zertifizierungsstelle (ZS)](https://en.wikipedia.org/wiki/Certificate_authority) im Internet erwerben müssen, für die jedoch keine Schlüssel erforderlich sind 
 
 * Private Zertifikate oder [*selbstsignierte Zertifikate*](https://en.wikipedia.org/wiki/Self-signed_certificate), die Sie selbst erstellen und ausstellen, für die jedoch zusätzlich private Schlüssel erforderlich sind 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="upload-a-public-certificate"></a>Hochladen eines öffentlichen Zertifikats
 
@@ -67,11 +69,11 @@ Nachdem Sie die Eigenschaften in den von Ihnen erstellten [Vereinbarungen](logic
 > [!NOTE]
 > Stellen Sie bei privaten Zertifikaten sicher, dass Sie ein entsprechendes öffentliches Zertifikat hinzufügen, das in der [AS2-Vereinbarung](logic-apps-enterprise-integration-as2.md) in den **Sende- und Empfangseinstellungen** für das Signieren und Verschlüsseln von Nachrichten angezeigt wird.
 
-1. [Fügen Sie Ihren privaten Schlüssel zu Azure Key Vault hinzu](../key-vault/key-vault-get-started.md#add), und geben Sie einen **Schlüsselnamen** an.
+1. [Fügen Sie Ihren privaten Schlüssel zu Azure Key Vault hinzu](../key-vault/certificate-scenarios.md#import-a-certificate), und geben Sie einen **Schlüsselnamen** an.
    
-2. Autorisieren Sie Azure Logic Apps für die Ausführung von Vorgängen für Azure Key Vault. Verwenden Sie zum Erteilen des Zugriffs auf den Logic Apps-Dienstprinzipal den PowerShell-Befehl [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy). Beispiel:
+2. Autorisieren Sie Azure Logic Apps für die Ausführung von Vorgängen für Azure Key Vault. Verwenden Sie zum Erteilen des Zugriffs auf den Logic Apps-Dienstprinzipal den PowerShell-Befehl [Set-AzureKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Beispiel:
 
-   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   `Set-AzKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
    '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
 3. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie im Azure-Hauptmenü die Option **Alle Ressourcen** aus. Geben Sie im Suchfeld den Namen Ihres Integrationskontos ein, und wählen Sie dann das gewünschte Integrationskonto aus.

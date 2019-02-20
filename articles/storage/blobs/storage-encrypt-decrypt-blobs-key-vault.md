@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 09bb74ead0ff52cc7a70170357ddc54a91bf00d9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239406"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116098"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>Tutorial: Verschlüsseln und Entschlüsseln von Blobs in Azure Storage per Azure Key Vault
 ## <a name="introduction"></a>Einführung
@@ -43,7 +43,7 @@ Hier eine kurze Beschreibung zur Funktionsweise der clientseitigen Verschlüssel
 4. Die verschlüsselten Daten werden dann in den Azure Storage-Dienst hochgeladen.
 
 ## <a name="set-up-your-azure-key-vault"></a>Einrichten des Azure-Schlüsseltresors
-Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die im Tutorial [Erste Schritte mit Azure Key Vault](../../key-vault/key-vault-get-started.md) beschrieben sind.
+Zum Fortsetzen dieses Tutorials müssen Sie die folgenden Schritte ausführen, die im Tutorial [Was ist Azure Key Vault?](../../key-vault/key-vault-overview.md) beschrieben sind:
 
 * Erstellen eines Schlüsseltresors
 * Hinzufügen eines Schlüssels oder geheimen Schlüssels zum Schlüsseltresor

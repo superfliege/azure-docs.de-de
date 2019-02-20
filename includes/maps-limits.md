@@ -8,15 +8,24 @@ ms.topic: include
 ms.date: 11/29/2018
 ms.author: jinzh
 ms.custom: include file
-ms.openlocfilehash: 1124e265b533b5f44c3b430746c48654883e524b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 1b5991b7e9bb870fdace4418e23c7f8ff9bf8636
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52857310"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56102050"
 ---
-Nachfolgend wird das Nutzungslimit für den **S0-Tarif** des Azure Maps-Diensts aufgeführt. Das Nutzungslimit ist tarifabhängig. Weitere Informationen zu den Azure Maps-Tarifen finden Sie unter [Azure Maps-Preisdetails](https://azure.microsoft.com/pricing/details/azure-maps/).
+Nachfolgend wird das Nutzungslimit für den **S0-Tarif** des Azure Maps-Diensts aufgeführt. Das Nutzungslimit ist tarifabhängig. 
 
 | Ressource                              | Limit des S0-Tarifs |
 |---------------------------------------|:---------------------:|
 | Maximale Anforderungsrate pro Abonnement |   50 Anforderungen pro Sekunde  |
+
+
+Nachfolgend ist das Datengrößenlimit für den Azure Maps-Datendiensts aufgeführt. Der Azure Maps-Datendienst ist nur im **Tarif S1** verfügbar.
+
+| Ressource                              | Begrenzung |
+|---------------------------------------|:---------------------:|
+| Maximale Datengröße |   50 MB  |
+
+Weitere Informationen zu den Azure Maps-Tarifen finden Sie unter [Azure Maps-Preisdetails](https://azure.microsoft.com/pricing/details/azure-maps/).

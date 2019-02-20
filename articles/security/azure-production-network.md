@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine allgemeine Beschreibung des Azure-Prod
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: 710792c890c3e48fc54507f93eeaee529ca839f8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: afae7cc6390ea4cd8c18c687e9d99400c8da9da4
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39114027"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56116931"
 ---
 # <a name="the-azure-production-network"></a>Das Azure-Produktionsnetzwerk
 Zu den Benutzern des Azure-Produktionsnetzwerks gehören sowohl externe Kunden, die auf ihre eigenen Azure-Anwendungen zugreifen, als auch interne Azure-Supportmitarbeiter, die das Produktionsnetzwerk verwalten. In diesem Artikel werden die Sicherheitszugriffsmethoden und Schutzmechanismen besprochen, mit denen Verbindungen zum Azure-Produktionsnetzwerk hergestellt werden können.
@@ -58,8 +58,8 @@ Azure verwendet hostbasierte Softwarefirewalls innerhalb des Produktionsnetzwerk
 
 Hier werden zwei Kategorien von Regeln programmiert:
 
-- **Computerkonfigurations- oder Infrastrukturregeln**: In der Standardeinstellung wird die gesamte Kommunikation blockiert. Es gibt Ausnahmen, damit ein VM Dynamic Host Configuration Protocol-Mitteilungen (DHCP) und DNS-Informationen erhalten und Datenverkehr an das „öffentliche“ Internet senden kann, und zwar an andere virtuelle Computer innerhalb des FC-Clusters und des Betriebssystem-Aktivierungsservers. Da die für die VM geltende Liste zulässiger ausgehender Ziele weder Azure-Routersubnetze noch Microsoft-Eigenschaften enthält, stellen die Regeln eine Schutzebene für sie dar.
-- **Rollenkonfigurationsdatei**: Definiert die eingehenden ACLs basierend auf dem Dienstmodell des Mandanten. Wenn ein Mandant beispielsweise auf einem bestimmten virtuellen Computer über ein Web-Front-End auf Port 80 verfügt, ist Port 80 für alle IP-Adressen geöffnet. Wenn die VM eine Workerrolle ausführt, steht diese Workerrolle nur für die VM zur Verfügung, die sich innerhalb desselben Mandanten befindet.
+- **Computerkonfigurations- oder Infrastrukturregeln:** Standardmäßig ist die gesamte Kommunikation blockiert. Es gibt Ausnahmen, damit ein VM Dynamic Host Configuration Protocol-Mitteilungen (DHCP) und DNS-Informationen erhalten und Datenverkehr an das „öffentliche“ Internet senden kann, und zwar an andere virtuelle Computer innerhalb des FC-Clusters und des Betriebssystem-Aktivierungsservers. Da die für die VM geltende Liste zulässiger ausgehender Ziele weder Azure-Routersubnetze noch Microsoft-Eigenschaften enthält, stellen die Regeln eine Schutzebene für sie dar.
+- **Regeln für Rollenkonfigurationsdatei:** Definieren die eingehenden ACLs basierend auf dem Dienstmodell des Mandanten. Wenn ein Mandant beispielsweise auf einem bestimmten virtuellen Computer über ein Web-Front-End auf Port 80 verfügt, ist Port 80 für alle IP-Adressen geöffnet. Wenn die VM eine Workerrolle ausführt, steht diese Workerrolle nur für die VM zur Verfügung, die sich innerhalb desselben Mandanten befindet.
 
 **Native Hostfirewall**: Azure Service Fabric und Azure Storage werden unter einem nativen Betriebssystem ohne Hypervisor ausgeführt. Daher wird die Windows-Firewall mit den beiden oben genannten Regelsätzen konfiguriert.
 

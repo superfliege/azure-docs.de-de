@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2018
 ms.author: kumud
-ms.openlocfilehash: 0020d1a830932ffe77f7edc54e9e2e52e04dcb15
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7a0b679ef7a1a468c8a849b0a3fb9f744a392dd3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54439101"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243602"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer-Ausgangsregeln
 
@@ -34,7 +34,7 @@ Mit Ausgangsregeln können Sie steuern:
 - Welchen IP-Adressen von VMs in welche öffentlichen IP-Adressen übersetzt werden 
 - Wie [ausgehende SNAT-Ports](load-balancer-outbound-connections.md#snat) zugeordnet werden
 - Welche Protokolle zum Übersetzen ausgehenden Datenverkehrs verwendet werden
-- Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert
+- Wie lange das Leerlauftimeout für ausgehende Verbindungen dauert (4-120 Minuten)
 - Ob eine TCP-Zurücksetzung bei Leerlauftimeout gesendet wird (in der Public Preview) 
 
 Ausgangsregeln erweitern das in Artikel [Ausgehende Verbindungen](load-balancer-outbound-connections.md) beschriebene [Szenario 2](load-balancer-outbound-connections.md#lb). Die Rangfolge der Szenarien bleibt unverändert.
@@ -90,7 +90,7 @@ Sie können die [automatische SNAT-Portzuordnung basierend auf der Back-End-Pool
 
 ### <a name="idletimeout"></a> Steuern des Leerlauftimeouts für ausgehenden Datenfluss
 
-Ausgangsregeln stellen einen Konfigurationsparameter bereit, um das Leerlauftimeout für den ausgehenden Datenfluss zu steuern und ihn an die Anforderungen Ihrer Anwendung anzupassen.  Das Leerlauftimeout für ausgehenden Datenverkehr tritt standardmäßig nach 4 Minuten ein.  Der Parameter akzeptiert einen Wert zwischen 4 und 66, um die Minutenanzahl für das Leerlauftimeout für Datenflüsse festzulegen, die dieser speziellen Regel entsprechen.
+Ausgangsregeln stellen einen Konfigurationsparameter bereit, um das Leerlauftimeout für den ausgehenden Datenfluss zu steuern und ihn an die Anforderungen Ihrer Anwendung anzupassen.  Das Leerlauftimeout für ausgehenden Datenverkehr tritt standardmäßig nach 4 Minuten ein.  Der Parameter akzeptiert einen Wert von 4 bis 120, um die Minutenanzahl für das Leerlauftimeout für Datenflüsse festzulegen, die dieser speziellen Regel entsprechen.
 
 Verwenden Sie den folgenden Parameter, um dieses Leerlauftimeout auf 1 Stunde festzulegen:
 
@@ -205,7 +205,7 @@ Beim Verwenden einer internen Load Balancer Standardinstanz ist die NAT für aus
 ## <a name="limitations"></a>Einschränkungen
 
 - Die maximale Anzahl von verwendbaren kurzlebigen Ports pro Front-End-IP-Adresse beträgt 51.200.
-- Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt zwischen 4 und 66 Minuten (240 bis 4.000 Sekunden).
+- Das konfigurierbare Leerlauftimeout für ausgehenden Datenverkehr beträgt ist 4 bis 120 Minuten (240 bis 7200 Sekunden).
 - Load Balancer unterstützt kein ICMP für die NAT ausgehenden Datenverkehrs.
 - Sie können Ausgangsregeln im Portal weder konfigurieren noch ansehen.  Verwenden Sie stattdessen Vorlagen, die REST-API, die Azure CLI 2.0 oder PowerShell.
 - Ausgangsregeln können nur auf die primäre NIC und die primäre IP-Konfiguration angewendet werden.

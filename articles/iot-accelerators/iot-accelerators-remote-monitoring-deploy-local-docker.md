@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 10/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 208526b745a117c9ee14bab21f8a5ce05accd1fe
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: 252aacfeb85f23699c6a2e2ac1f457f9e2b59b0e
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382242"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55997182"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally---docker"></a>Lokales Bereitstellen des Solution Accelerators für die Remoteüberwachung – Docker
 
@@ -54,6 +54,8 @@ set PCS
 Mit dem Befehl werden alle mit dem Skript **start.cmd** festgelegten Umgebungsvariablen angezeigt.
 
 Vergewissern Sie sich, dass Docker auf dem lokalen Computer ausgeführt wird.
+> [!NOTE]
+> Docker muss bei der Ausführung unter Windows [Linux-Container](https://docs.docker.com/docker-for-windows/) ausführen.
 
 Die in den lokalen Docker-Containern ausgeführten Microservices müssen auf die Azure-Clouddienste zugreifen. Sie können die Internetkonnektivität Ihrer Docker-Umgebung mit dem folgenden Befehl testen, um eine Internetadresse innerhalb eines Containers zu pingen:
 
@@ -66,6 +68,9 @@ Navigieren Sie zum Ausführen des Solution Accelerators zum Ordner **services\\s
 ```cmd/sh
 docker-compose up
 ```
+
+> [!NOTE] 
+> Stellen Sie sicher, dass Sie [ein lokales Laufwerk](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/issues/115) für Docker freigeben, bevor Sie `docker-compose up` ausführen.
 
 Wenn Sie diesen Befehl zum ersten Mal ausführen, lädt Docker die Microservice-Images vom Docker-Hub herunter, um die Container lokal zu erstellen. Bei nachfolgenden Ausführungen führt Docker die Container sofort aus.
 

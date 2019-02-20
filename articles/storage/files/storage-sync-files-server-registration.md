@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: cec6da78ae47b509e2bb5f8ba0007208545062e7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 493f6f3380dee4ed70bb6e0bc9bba24f93071097
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478065"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56165330"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Verwalten registrierter Server mit der Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Dies erfolgt durch Umwandeln der Windows-Server in einen Schnellcache der Azure-Dateifreigabe. Sie können alle unter Windows Server verfügbaren Protokolle für den lokalen Zugriff auf Ihre Daten (einschließlich SMB, NFS und FTPS) sowie beliebig viele Caches weltweit verwenden.
@@ -165,7 +165,10 @@ Da die Azure-Dateisynchronisierung selten der einzige Dienst ist, der in Ihrem R
 > Das Festlegen von zu niedrigen Grenzwerten wirkt sich auf die Leistung der Azure-Dateisynchronisierung und auf Rückrufe aus.
 
 ### <a name="set-azure-file-sync-network-limits"></a>Festlegen von Netzwerklimits für die Azure-Dateisynchronisierung
-Sie können die Netzwerknutzung der Azure-Dateisynchronisierung mithilfe der `StorageSyncNetworkLimit`-Cmdlets drosseln. 
+Sie können die Netzwerknutzung der Azure-Dateisynchronisierung mithilfe der `StorageSyncNetworkLimit`-Cmdlets drosseln.
+
+> [!Note]  
+> Netzwerklimits gelten nicht, wenn auf eine mehrstufige Datei zugegriffen oder das Cmdlet „Invoke-StorageSyncFileRecall“ verwendet wird.
 
 Sie können beispielsweise ein neues Drossellimit erstellen, um sicherzustellen, dass die Azure-Dateisynchronisierung an Werktagen zwischen 9:00 und 17:00 Uhr nicht mehr als 10 MBit/s verbraucht: 
 

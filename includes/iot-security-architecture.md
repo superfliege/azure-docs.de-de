@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: f2c7111373ac880d27298deb4fc919d797713f3e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995700"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56246881"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
 
@@ -225,7 +225,7 @@ Hier geht es um Bedrohungen in Bezug auf den Kommunikationspfad zwischen Geräte
 | **Komponente** | **Bedrohung** | **Lösung** | **Risiko** | **Implementierung** |
 | --- | --- | --- | --- | --- |
 | Vom Gerät zum IoT Hub |TID |(D)TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Abhören oder Beeinträchtigen der Kommunikation zwischen dem Gerät und dem Gateway |Sicherheit auf der Protokollebene. Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. In den meisten Fällen erfolgt die Kommunikation vom Gerät zum IoT Hub (Gerät initiiert die Verbindung). |
-| Von Gerät zu Gerät |TID |(D)TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Lesen von Daten bei der Übermittlung zwischen Geräten. Manipulation der Daten. Überladen des Geräts mit neuen Verbindungen. |Sicherheit auf der Protokollebene (MQTT/AMQP/HTTP/CoAP). Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. Die Lösung für die DoS-Bedrohung ist das Peering von Geräten über ein Cloud- oder Bereichsgateway und die ausschließliche Nutzung als Clients gegenüber dem Netzwerk. Das Peering kann zu einer direkten Verbindung zwischen den Peers führen, nachdem die Vermittlung über das Gateway erfolgt ist. |
+| Gerät zu Gerät |TID |(D)TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Lesen von Daten bei der Übermittlung zwischen Geräten. Manipulation der Daten. Überladen des Geräts mit neuen Verbindungen. |Sicherheit auf der Protokollebene (MQTT/AMQP/HTTP/CoAP). Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. Die Lösung für die DoS-Bedrohung ist das Peering von Geräten über ein Cloud- oder Bereichsgateway und die ausschließliche Nutzung als Clients gegenüber dem Netzwerk. Das Peering kann zu einer direkten Verbindung zwischen den Peers führen, nachdem die Vermittlung über das Gateway erfolgt ist. |
 | Von externer Entität zum Gerät |TID |Starke Kopplung der externen Entität mit dem Gerät |Abhören der Verbindung mit dem Gerät. Beeinträchtigen der Kommunikation mit dem Gerät. |Sichere Kopplung der externen Entität mit dem Gerät (NFC/Bluetooth LE). Kontrollieren des Bedienbereichs des Geräts (physisch). |
 | Vom Bereichsgateway zum Cloudgateway |TID |TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Abhören oder Beeinträchtigen der Kommunikation zwischen dem Gerät und dem Gateway |Sicherheit auf der Protokollebene (MQTT/AMQP/HTTP/CoAP). Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. |
 | Vom Gerät zum Cloudgateway |TID |TLS (PSK/RSA) zum Verschlüsseln des Datenverkehrs |Abhören oder Beeinträchtigen der Kommunikation zwischen dem Gerät und dem Gateway |Sicherheit auf der Protokollebene (MQTT/AMQP/HTTP/CoAP). Bei benutzerdefinierten Protokollen müssen Sie ermitteln, wie der Schutz ermöglicht werden kann. |

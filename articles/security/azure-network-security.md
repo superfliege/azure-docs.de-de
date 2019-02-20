@@ -4,7 +4,7 @@ description: Enthält Informationen zu cloudbasierten Computingdiensten mit eine
 services: security
 documentationcenter: na
 author: UnifyCloud
-manager: mbaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: ''
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 1d94ac5f799fc4bad13ab6a5e97a225a7499380d
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: a405583503b75a64dda2bf277a4a50be4e926d28
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405972"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56111287"
 ---
 # <a name="azure-network-security"></a>Azure-Netzwerksicherheit
 
@@ -88,11 +88,11 @@ Wenn VMs zum Hosten von Servern in Azure eingesetzt werden, stellt sich die Frag
 
 Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbindung mit einem der VNets besteht, darüber miteinander kommunizieren können. Nutzen Sie eine der folgenden Optionen (oder beide), um VNets miteinander zu verbinden:
 
-- **Peering:** Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für das VNet entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zu Peerings finden Sie unter [Peering virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Peering**: Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für das VNet entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zu Peerings finden Sie unter [Peering virtueller Netzwerke](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
  ![Peering](media/azure-network-security/azure-network-security-fig-3.png)
 
-- **VNet-zu-VNet-Verbindung:** Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss.
+- **VNet-zu-VNet-Verbindung**: Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss.
 
 ![VNet-zu-VNet-Verbindung](media/azure-network-security/azure-network-security-fig-4.png)
 
@@ -151,9 +151,9 @@ Sie können mehrere Azure-Ressourcen mit einem VNet verbinden, z.B. virtuelle Co
 
 Sie können VNets miteinander verbinden, sodass Ressourcen, für die eine Verbindung mit einem der VNets besteht, darüber miteinander kommunizieren können. Nutzen Sie eine der folgenden Optionen (oder beide), um VNets miteinander zu verbinden:
 
-- **Peering:** Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für die VNets entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zum Peering finden Sie unter [Peering in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
+- **Peering**: Hierdurch wird ermöglicht, dass Ressourcen, die mit unterschiedlichen Azure-VNets desselben Azure-Standorts verbunden sind, miteinander kommunizieren können. Die Bandbreite und Wartezeit für die VNets entspricht den Werten, die gelten, wenn die Ressourcen mit demselben VNet verbunden sind. Weitere Informationen zum Peering finden Sie unter [Peering in virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview).
 
-- **VNet-zu-VNet-Verbindung:** Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss. Weitere Informationen zum Verbinden von VNets per VNet-zu-VNet-Verbindung: Lesen Sie den Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json).
+- **VNet-zu-VNet-Verbindung**: Hierbei können Ressourcen, für die eine Verbindung mit unterschiedlichen Azure-VNets besteht, an demselben oder verschiedenen Azure-Standorten verbunden werden. Im Gegensatz zum Peering ist die Bandbreite zwischen VNets beschränkt, da der Datenverkehr über ein Azure VPN Gateway fließen muss. Weitere Informationen zum Verbinden von VNets per VNet-zu-VNet-Verbindung: Lesen Sie den Artikel [Konfigurieren einer VNET-zu-VNET-VPN-Gatewayverbindung über das Azure-Portal](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 **Lokale Konnektivität**
 
@@ -161,9 +161,9 @@ VNets können mit [lokalen](https://docs.microsoft.com/azure/virtual-network/vir
 
 Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombination der folgenden Optionen verwenden:
 
-- **Point-to-Site-VPN (Virtual Private Network):** Wird zwischen einem einzelnen PC Ihres Netzwerks und dem VNet eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem PC und dem VNet eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar, weil der Datenverkehr über das Internet übertragen wird.
+- **Point-to-Site-VPN (virtuelles privates Netzwerk)**: Wird zwischen einem einzelnen PC Ihres Netzwerks und dem VNet eingerichtet. Dieser Verbindungstyp ist gut geeignet, wenn Azure noch neu für Sie ist, oder wenn Sie ein Entwickler sind, da keine oder nur sehr geringe Änderungen Ihres vorhandenen Netzwerks erforderlich sind. Für die Verbindung wird das SSTP-Protokoll verwendet, um zwischen dem PC und dem VNet eine verschlüsselte Kommunikation über das Internet zu ermöglichen. Die Dauer der Wartezeit für ein Point-to-Site-VPN ist unvorhersehbar, weil der Datenverkehr über das Internet übertragen wird.
 
-- **Site-to-Site-VPN:** Wird zwischen Ihrem VPN-Gerät und einem Azure VPN Gateway eingerichtet. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf ein VNet zugreifen. Die Verbindung ist ein IPsec/IKE-VPN, mit dem die verschlüsselte Kommunikation über das Internet zwischen Ihrem lokalen Gerät und dem Azure VPN Gateway ermöglicht wird. Die Dauer der Wartezeit für eine Site-to-Site-Verbindung ist unvorhersehbar, da der Datenverkehr über das Internet übertragen wird.
+- **Site-to-Site-VPN**: Wird zwischen Ihrem VPN-Gerät und einem Azure VPN Gateway eingerichtet. Bei diesem Verbindungstyp können alle lokalen Ressourcen, die von Ihnen autorisiert werden, auf ein VNet zugreifen. Die Verbindung ist ein IPsec/IKE-VPN, mit dem die verschlüsselte Kommunikation über das Internet zwischen Ihrem lokalen Gerät und dem Azure VPN Gateway ermöglicht wird. Die Dauer der Wartezeit für eine Site-to-Site-Verbindung ist unvorhersehbar, da der Datenverkehr über das Internet übertragen wird.
 
 - **Azure ExpressRoute:** Wird zwischen Ihrem Netzwerk und Azure über einen ExpressRoute-Partner eingerichtet. Diese Verbindung ist privat. Der Datenverkehr wird nicht über das Internet übertragen. Die Dauer der Wartezeit für eine ExpressRoute-Verbindung ist vorhersehbar, da der Datenverkehr nicht über das Internet verläuft. Weitere Informationen zu allen vorherigen Verbindungsoptionen finden Sie unter [Diagramme zur Verbindungstopologie](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
@@ -173,9 +173,9 @@ Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombin
 
 Sie können den Netzwerkdatenverkehr zwischen Subnetzen filtern, indem Sie eine oder beide folgenden Optionen verwenden:
 
-- **Netzwerksicherheitsgruppen (NSG):** Jede Netzwerksicherheitsgruppe kann mehrere Sicherheitsregeln für die eingehende und ausgehende Richtung enthalten, mit denen Sie Datenverkehr nach IP-Adresse, Port und Protokoll für die Quelle und das Ziel filtern können. Sie können eine NSG auf jede Netzwerkschnittstelle einer VM anwenden. Außerdem können Sie eine NSG auf das Subnetz anwenden, mit dem eine Netzwerkschnittstelle oder eine andere Azure-Ressource verbunden ist. Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- **Netzwerksicherheitsgruppen (NSGs)**: Jede Netzwerksicherheitsgruppe kann mehrere Sicherheitsregeln für die eingehende und ausgehende Richtung enthalten, mit denen Sie Datenverkehr nach IP-Adresse, Port und Protokoll für die Quelle und das Ziel filtern können. Sie können eine NSG auf jede Netzwerkschnittstelle einer VM anwenden. Außerdem können Sie eine NSG auf das Subnetz anwenden, mit dem eine Netzwerkschnittstelle oder eine andere Azure-Ressource verbunden ist. Weitere Informationen zu NSGs finden Sie unter [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 
-- **Virtuelle Network Appliances:** Eine virtuelle Network Appliance ist eine VM, auf der Software zum Erzielen einer Netzwerkfunktion, z.B. einer Firewall, ausgeführt wird. In Azure Marketplace können Sie eine Liste mit verfügbaren NVAs anzeigen. Es sind auch NVAs verfügbar, die eine WAN-Optimierung und andere Funktionen für den Netzwerkdatenverkehr ermöglichen. NVAs werden normalerweise mit benutzerdefinierten oder BGP-Routen verwendet. Darüber hinaus können Sie eine NVA zum Filtern von Datenverkehr zwischen VNets verwenden.
+- **Virtuelle Network Appliances**: Eine virtuelle Network Appliance ist eine VM, auf der Software zum Ausführen einer Netzwerkfunktion, z.B. einer Firewall, betrieben wird. In Azure Marketplace können Sie eine Liste mit verfügbaren NVAs anzeigen. Es sind auch NVAs verfügbar, die eine WAN-Optimierung und andere Funktionen für den Netzwerkdatenverkehr ermöglichen. NVAs werden normalerweise mit benutzerdefinierten oder BGP-Routen verwendet. Darüber hinaus können Sie eine NVA zum Filtern von Datenverkehr zwischen VNets verwenden.
 
 **Routing**
 
@@ -183,9 +183,9 @@ Sie können das Standardrouting von Azure optional außer Kraft setzen, indem Si
 
 Azure erstellt Routentabellen, über die Ressourcen, die mit einem beliebigen Subnetz in einem beliebigen VNet verbunden sind, standardmäßig kommunizieren können. Sie können eine oder beide der folgenden Optionen implementieren, um die von Azure erstellten Standardrouten außer Kraft zu setzen:
 
-- **Benutzerdefinierte Routen:** Sie können benutzerdefinierte Routentabellen mit Routen erstellen, über die gesteuert wird, wohin der Datenverkehr für die einzelnen Subnetze geleitet wird. Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
+- **Benutzerdefinierte Routen:** Sie können benutzerdefinierte Routingtabellen mit Routen erstellen, über die gesteuert wird, wohin der Datenverkehr für die einzelnen Subnetze geleitet wird. Weitere Informationen zu benutzerdefinierten Routen finden Sie unter [Benutzerdefinierte Routen und IP-Weiterleitung](https://docs.microsoft.com/azure/virtual-network/virtual-networks-udr-overview).
 
-- **BGP-Routen:** Wenn Sie Ihr VNet über ein Azure VPN Gateway oder eine ExpressRoute-Verbindung mit dem lokalen Netzwerk verbinden, können Sie die BGP-Routen für Ihre VNets übernehmen.
+- **BGP-Routen**: Wenn Sie Ihr VNET über ein Azure VPN Gateway oder eine ExpressRoute-Verbindung mit dem lokalen Netzwerk verbinden, können Sie die BGP-Routen für Ihre VNets übernehmen.
 
 ### <a name="hybrid-internet-connectivity-connect-to-an-on-premises-network"></a>Hybrid-Internetkonnektivität: Herstellen einer Verbindung mit einem lokalen Netzwerk
 Sie können Ihr lokales Netzwerk mit einem VNet verbinden, indem Sie eine Kombination der folgenden Optionen verwenden:
@@ -282,13 +282,13 @@ Dies bedeutet, dass Sie den Zugriff zwischen einer einzelnen VM und einer Gruppe
 
 In eine NSG sind einige Regeln integriert, die Sie kennen sollten. Dies sind:
 
--   **Zulassen des gesamten Datenverkehrs in einem bestimmten virtuellen Netzwerk:** Alle VMs in demselben Azure Virtual Network können miteinander kommunizieren.
+-   **Zulassen des gesamten Datenverkehrs innerhalb eines bestimmten virtuellen Netzwerks:** Alle VMs, die mit demselben virtuellen Azure-Netzwerk verbunden sind, können miteinander kommunizieren.
 
 -   **Zulassen des Azure-Lastenausgleichs in eingehender Richtung:**  Mit dieser Regel wird Datenverkehr von jeder Quelladresse zu jeder Zieladresse für den Azure-Lastenausgleich zugelassen.
 
 -   **Eingehenden Datenverkehr verweigern:**  Mit dieser Regel wird der gesamte Datenverkehr aus dem Internet blockiert, den Sie explizit zugelassen haben.
 
--   **Zulassen des ausgehenden Datenverkehrs in das Internet:** Mit dieser Regel wird zugelassen, dass VMs Verbindungen in das Internet initiieren. Wenn Sie nicht möchten, dass diese Verbindungen initiiert werden, müssen Sie eine Regel erstellen, um diese Verbindungen zu blockieren oder die Tunnelerzwingung durchzusetzen.
+-   **Zulassen des ausgehenden Datenverkehrs in das Internet:** Mit dieser Regel wird zugelassen, dass VMs Verbindungen mit dem Internet einleiten. Wenn Sie nicht möchten, dass diese Verbindungen initiiert werden, müssen Sie eine Regel erstellen, um diese Verbindungen zu blockieren oder die Tunnelerzwingung durchzusetzen.
 
 #### <a name="system-routes-and-user-defined-routes"></a>Systemrouten und benutzerdefinierte Routen
 
@@ -320,11 +320,11 @@ Im folgende Abschnitt werden die aktuellen Einschränkung für die Routingtabell
 
 -   Jedes Subnetz des virtuellen Netzwerks verfügt über eine integrierte Systemroutingtabelle. Die Systemroutingtabelle verfügt über die folgenden drei Gruppen von Routen:
 
- -  **Lokale VNET-Routen:** direkt zu den virtuelle Zielcomputern im gleichen virtuellen Netzwerk
+ -  **Lokale VNET-Routen:** Direkt zu den Ziel-VMs im selben virtuellen Netzwerk
 
- - **Lokale Routen:** zum Azure-VPN-Gateway
+ - **Lokale Routen:** Zum Azure-VPN-Gateway
 
- -  **Standardroute:** direkt zum Internet. Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
+ -  **Standardroute:** Direkt zum Internet Pakete an private IP-Adressen, die nicht durch die vorherigen beiden Routen abgedeckt sind, werden verworfen.
 
 -   Sie können mit der Veröffentlichung von benutzerdefinierten Routen eine Routingtabelle erstellen, um eine Standardroute hinzuzufügen. Anschließend verknüpfen Sie dann die Routingtabelle mit Ihrem VNET-Subnetz, um dafür die Tunnelerzwingung zu aktivieren.
 
@@ -645,9 +645,9 @@ Für Anwendungsgateways werden folgende Metriken unterstützt:
 
 Die folgenden Protokolle werden für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log) unterstützt:
 
-- **NetworkSecurityGroupEvent:** Enthält Einträge, für die NSG-Regeln auf virtuelle Computer und Instanzrollen basierend auf der MAC-Adresse angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
+- **NetworkSecurityGroupEvent:** Enthält Einträge, für die anhand der MAC-Adresse NSG-Regeln auf virtuelle Computer und Instanzrollen angewendet werden. Der Status für diese Regeln wird alle 60 Sekunden erfasst.
 
-- **NetworkSecurityGroupRuleCounter:** Enthält Einträge dazu, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
+- **NetworkSecurityGroupRuleCounter:** Enthält Einträge darüber, wie oft jede NSG-Regel angewendet wurde, um Datenverkehr zuzulassen oder zu verweigern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Informieren Sie sich weiter über die Sicherheit, indem Sie einige unserer weiter gehenden Sicherheitsthemen lesen:

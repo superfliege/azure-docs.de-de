@@ -1,6 +1,6 @@
 ---
-title: Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools | Microsoft Docs
-description: Auf dieser Seite werden die Open-Source-Tools zum Visualisieren von NSG-Datenflussprotokollen beschrieben.
+title: Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Network Watcher und Elastic Stack | Microsoft-Dokumentation
+description: Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Elastic Stack.
 services: network-watcher
 documentationcenter: na
 author: mattreatMSFT
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 10f76ea58b859611483c99c2f4accec607bc2939
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51822907"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56099002"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Visualisieren von Azure Network Watcher-NSG-Datenflussprotokollen mit Open-Source-Tools
 
@@ -28,7 +28,7 @@ NSG-Datenflussprotokolle (Netzwerksicherheitsgruppen) enthalten Informationen f�
 Die manuelle Analyse und Auswertung dieser Datenflussprotokolle kann schwierig sein. Es gibt jedoch mehrere Open-Source-Tools, die zur Visualisierung dieser Daten beitragen können. In diesem Artikel wird eine Lösung für Visualisierung dieser Protokolle mit dem Elastic Stack bereitgestellt, mit der Sie Ihre Datenflussprotokolle schnell in einem Kibana-Dashboard indizieren und visualisieren können.
 
 > [!Warning]  
-> In den folgenden Schritten wird Version 1 der Flowprotokolle verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
+> In den folgenden Schritten werden Flowprotokolle der Version 1 verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 ## <a name="scenario"></a>Szenario
 

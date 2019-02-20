@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 77fc95c53ba89c3905ebd1aec785e22f42339369
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 8cc5dbb907c342b766cebe6da36cf580ddac5e2c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165999"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889704"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-regular-hotfixes-via-windows-powershell-for-storsimple"></a>So installieren Sie regelmäßige Hotfixes über Windows PowerShell für StorSimple
 1. Stellen Sie eine Verbindung mit der seriellen Gerätekonsole her. Weitere Informationen finden Sie unter [Schritt 1: Herstellen einer Verbindung mit der seriellen Konsole](../articles/storsimple/storsimple-update-device.md#step1).
 2. Wählen Sie im Menü der seriellen Konsole Option 1 aus, d.h. die **Anmeldung mit Vollzugriff**. Geben Sie das Kennwort ein. Das Standardkennwort lautet **Password1**.

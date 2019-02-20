@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: jowargo
-ms.openlocfilehash: fb84cc0a6e2fc427727fa0c50583b7f1a37e0160
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c572f64bdcb8846b5f73a0fee34f11c9729ee45d
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55198713"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55885054"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Ändern des Tarifs bei Azure Notification Hubs-Namespace
 Notification Hubs wird in drei Tarifen angeboten: **Free**, **Basic** und **Standard**. In diesem Artikel wird das Ändern des Tarifs für einen Azure Notification Hubs-Namespace veranschaulicht. 

@@ -1,6 +1,6 @@
 ---
-title: Konfigurieren der Replikation in verwalteter Azure SQL-Datenbank-Instanz | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zum Konfigurieren der Transaktionsreplikation in einer verwalteten Azure SQL-Datenbank-Instanz.
+title: Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zum Konfigurieren der Transaktionsreplikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,28 +11,28 @@ author: allenwux
 ms.author: xiwu
 ms.reviewer: mathoma
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: b0188a0983ea18490f3997b857386e313daa58ed
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.date: 02/07/2019
+ms.openlocfilehash: 038d8c919e68e68f886525a6c78139496edef8e1
+ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467662"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55893012"
 ---
-# <a name="configure-replication-in-azure-sql-database-managed-instance"></a>Konfigurieren der Replikation in verwalteter Azure SQL-Datenbank-Instanz
+# <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>Konfigurieren der Replikation in einer verwalteten Azure SQL-Datenbank-Instanzdatenbank
 
-Mit der Transaktionsreplikation können Sie Daten von SQL Server-Datenbanken oder Datenbanken einer verwalteten Azure SQL-Datenbank-Instanz in die verwaltete Instanz replizieren oder Änderungen, die Sie an Ihren Datenbanken in der verwalteten Instanz vornehmen, mithilfe von Push an andere SQL Server-Instanzen, eine Azure SQL-Datenbank-Einzeldatenbank oder einen Pool für elastische Datenbanken oder eine andere verwaltete Instanz übertragen. Die Replikation ist als Public Preview in der [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) verfügbar. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
+Die Transaktionsreplikation ermöglicht es Ihnen, Daten aus einer SQL Server-Datenbank oder einer anderen Instanzdatenbank in eine verwaltete Azure SQL-Datenbank-Instanzdatenbank zu replizieren. Sie können mithilfe der Transaktionsreplikation auch Änderungen, die in einer Instanzdatenbank einer verwalteten Azure SQL-Datenbank-Instanz vorgenommen wurden, in eine SQL Server-Datenbank, eine einzelne Datenbank in Azure SQL-Datenbank oder in eine in einem Pool zusammengefasste Datenbank eines Pools für elastische Azure SQL-Datenbanken pushen. Die Transaktionsreplikation steht als Public Preview in der [verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance.md) zur Verfügung. Eine verwaltete Instanz kann Verleger-, Verteiler- und Abonnentendatenbanken hosten. Unter [Konfigurationen für die Transaktionsreplikation](sql-database-managed-instance-transactional-replication.md#common-configurations) finden Sie die verfügbaren Konfigurationen.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
-Für Verleger und Verteiler in Azure SQL-Datenbank ist Folgendes erforderlich:
+Zum Konfigurieren einer verwalteten Instanz, die als Verleger oder Verteiler fungieren soll, ist Folgendes erforderlich:
 
-- Verwaltete Azure SQL-Datenbank-Instanz ohne georedundante Notfallwiederherstellungskonfiguration.
+- Die verwaltete Instanz ist derzeit nicht an einer Georeplikationsbeziehung beteiligt.
 
    >[!NOTE]
-   >Azure SQL-Datenbanken, die nicht mit „Verwalteter Instanz“ konfiguriert werden, können nur Abonnenten sein.
+   >Einzelne Datenbanken und in einem Pool zusammengefasste Datenbanken in Azure SQL-Datenbank können nur Abonnenten sein.
 
-- Alle Instanzen von SQL Server müssen sich im gleichen vNet befinden.
+- Alle verwalteten Instanzen müssen sich in demselben VNET befinden.
 
 - Für die Verbindung zwischen den Teilnehmern der Replikation wird SQL-Authentifizierung verwendet.
 
@@ -44,28 +44,25 @@ Für Verleger und Verteiler in Azure SQL-Datenbank ist Folgendes erforderlich:
 
 Unterstützt:
 
-- Mischung aus Transaktions- und Momentaufnahmereplikation von lokalen und verwalteten Azure SQL-Datenbank-Instanzen.
-
-- Abonnenten können lokale, Einzeldatenbanken in Azure SQL-Datenbank oder in Pools für elastische Datenbanken in Azure SQL-Datenbank zusammengefasste Datenbanken sein.
-
+- Mischung aus Transaktions- und Momentaufnahmereplikation von lokalen und verwalteten SQL Server-Instanzen in Azure SQL-Datenbank.
+- Abonnenten können in lokalen SQL Server-Datenbanken, einzelnen Datenbanken in Azure SQL-Datenbank oder in einem Pool zusammengefassten Datenbanken von Pools für elastische Azure SQL-Datenbanken enthalten sein.
 - Unidirektionale oder bidirektionale Replikation.
 
-Folgende Funktionen werden nicht unterstützt:
+Folgende Features werden in einer verwalteten Instanz in Azure SLQ-Datenbank nicht unterstützt:
 
 - Aktualisierbare Abonnements.
-
 - Aktive Georeplikation.
 
 ## <a name="configure-publishing-and-distribution-example"></a>Konfigurieren eines Beispiels für Veröffentlichung und Verteilung
 
-1. [Erstellen Sie eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-create-tutorial-portal.md) im Azure-Portal.
+1. [Erstellen Sie eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-create-tutorial-portal.md) im Portal.
 2. [Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) für das Arbeitsverzeichnis.
 
    Achten Sie darauf, die Speicherkontoschlüssel zu kopieren. Siehe [Anzeigen und Kopieren von Speicherzugriffsschlüssel](../storage/common/storage-account-manage.md#access-keys
 ).
-3. Erstellen Sie eine Datenbank für den Verleger.
+3. Erstellen Sie eine Instanzdatenbank für den Verleger.
 
-   Ersetzen Sie in den folgenden Beispielskripts `<Publishing_DB>` durch den Namen der Datenbank.
+   Ersetzen Sie in den nachstehenden Beispielskripts `<Publishing_DB>` durch den Namen der Instanzdatenbank.
 
 4. Erstellen Sie einen Datenbankbenutzer mit SQL-Authentifizierung für den Verteiler. Verwenden Sie ein sicheres Kennwort.
 

@@ -4,15 +4,13 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: ad45b117df545c361f17c299bee47b314a408b06
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: e2d258f327ade2149adc92bdb7fb4bcc87cdd58c
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165241"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55888552"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-the-storsimple-adapter-for-sharepoint"></a>So installieren Sie den StorSimple-Adapter für SharePoint
 1. Kopieren Sie den Installer auf den Web Front End (WFE)-Server, der auch für die Ausführung der Webanwendung SharePoint-Zentraladministration konfiguriert ist. 
 2. Verwenden Sie ein Konto mit Administratorrechten, um sich beim WFE-Server anzumelden.

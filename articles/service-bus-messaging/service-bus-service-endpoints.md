@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: 8a5832433d1d8c81c22c828ec4659c10951f680a
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103631"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56234066"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von VNET-Dienstendpunkten mit Azure Service Bus
 
@@ -29,7 +29,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 >[!WARNING]
 > Die Implementierung der VNET-Integration kann verhindern, dass andere Azure-Dienste mit Service Bus interagieren.
 >
-> Vertrauenswürdige Microsoft-Dienste werden bei der Implementierung von Virtual Networks nicht unterstützt und werden in Kürze bereitgestellt.
+> Vertrauenswürdige Microsoft-Dienste werden bei Implementierung von Virtual Networks nicht unterstützt.
 >
 > Allgemeine Azure-Szenarien, die nicht mit Virtual Networks funktionieren (beachten Sie, dass die Liste **NICHT** vollständig ist):
 > - Azure Monitor

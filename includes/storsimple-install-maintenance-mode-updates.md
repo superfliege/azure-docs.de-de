@@ -4,22 +4,20 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 01612b32e6c1b363df8a5c70405d0c709210328e
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: 720288aff462b0590bb9da509096a9305b9b6cc7
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50165892"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55889067"
 ---
-<!--author=SharS last changed: 9/17/15-->
-
 #### <a name="to-install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>So installieren Sie Wartungsmodus-Updates über Windows PowerShell für StorSimple
 1. Wenn Sie dies noch nicht getan haben, greifen Sie auf die serielle Konsole des Geräts zu, und wählen Sie Option 1, d.h. die **Anmeldung mit Vollzugriff**. 
 2. Geben Sie das Kennwort ein. Das Standardkennwort lautet **Password1**.
 3. Geben Sie an der Eingabeaufforderung Folgendes ein:
    
      `Get-HcsUpdateAvailability` 
-4. Sie werden benachrichtigt, wenn Updates verfügbar sind und ob diese Updates mit oder ohne Unterbrechungen installiert werden können. Um Updates anzuwenden, durch die der Betrieb unterbrochen wird, müssen Sie das Gerät in den Wartungsmodus versetzen. Anweisungen dazu finden Sie unter [Schritt 2: Wechseln in den Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step2) .
+4. Sie werden benachrichtigt, wenn Updates verfügbar sind und ob diese Updates mit oder ohne Unterbrechungen installiert werden können. Um Updates anzuwenden, durch die der Betrieb unterbrochen wird, müssen Sie das Gerät in den Wartungsmodus versetzen. Anweisungen dazu finden Sie unter [Schritt 2: Wechseln in den Wartungsmodus](../articles/storsimple/storsimple-update-device.md#step2).
 5. Wenn sich Ihr Gerät im Wartungsmodus befindet, geben Sie an der Eingabeaufforderung folgenden Befehl ein: `Start-HcsUpdate`
 6. Sie werden aufgefordert, diesen Schritt zu bestätigen. Nachdem Sie die Updates bestätigt haben, werden sie auf dem Controller installiert, auf den Sie gerade zugreifen. Nachdem die Updates installiert wurden, wird der Controller neu gestartet. 
 7. Überwachen Sie den Status der Aktualisierungen. Geben Sie Folgendes ein: 

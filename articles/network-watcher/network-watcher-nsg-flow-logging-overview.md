@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 06130a5ade63e23fdcd139902a19694a510393a3
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332301"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56097647"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -287,5 +287,6 @@ Der folgende Text ist ein Beispiel für ein Datenflussprotokoll. Wie Sie sehen k
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
+- Unter [Lesen von NSG-Datenflussprotokollen](network-watcher-read-nsg-flow-logs.md) erfahren Sie, wie die Datenflussprotokolle gelesen werden.
 - Unter [Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../virtual-network/virtual-network-nsg-manage-log.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) finden Sie weitere Informationen über die NSG-Protokollierung.
 - Wie Sie bestimmen, ob Datenverkehr zu oder von einem virtuellen Computer zugelassen oder verweigert ist, erfahren Sie unter [Schnellstart: Diagnostizieren eines VM-Netzwerkdatenverkehr-Filterproblems](diagnose-vm-network-traffic-filtering-problem.md).

@@ -4,7 +4,7 @@ description: In diesem Dokument wird beschrieben, wie Sie Azure Security Center 
 services: security-center
 documentationcenter: na
 author: rkarlin
-manager: mbaldwin
+manager: barbkess
 editor: ''
 ms.assetid: 8af12f1c-4dce-4212-8ac4-170d4313492d
 ms.service: security-center
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 684098dd2780e827ccc74b7fbbb16a2be75fa3e1
-ms.sourcegitcommit: eba6841a8b8c3cb78c94afe703d4f83bf0dcab13
+ms.openlocfilehash: 99bfab5a5f80fc0a49c7cc6405154394391f43e0
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52619876"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56114296"
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Verwenden von Azure Security Center zur Reaktion auf Vorfälle
 Viele Organisationen lernen erst nach einem Angriff, wie auf Sicherheitsvorfälle reagiert werden sollte. Zur Reduzierung von Kosten und Schäden ist es wichtig, dass ein Plan zur Reaktion auf Vorfälle vorhanden ist, bevor es zu einem Angriff kommt. Sie können Azure Security Center in unterschiedlichen Phasen einer Reaktion auf Vorfälle nutzen.
@@ -84,7 +84,7 @@ Judy hat sich am Azure-Portal angemeldet und verwendet die Security Center-Konso
    > In diesem Szenario führt Judy eine Bewertung der Warnung zu einer Aktivität mit schädlichen SQL-Befehlen durch. Dies ist in der Abbildung oben dargestellt.
    >
    >
-2. Klicken Sie auf die Warnung **Malicious SQL activity** (Aktivität mit schädlichen SQL-Befehlen), und überprüfen Sie die angegriffenen Ressourcen auf dem Blatt **Malicious SQL Activity** (Aktivität mit schädlichen SQL-Befehlen): ![Details zum Vorfall](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. Klicken Sie auf die Warnung **Malicious SQL activity** (Aktivität mit schädlichen SQL-Befehlen), und überprüfen Sie die angegriffenen Ressourcen auf dem Blatt **Malicious SQL Activity** (Aktivität mit schädlichen SQL-Befehlen): ![Details zum Vorfall](./media/security-center-incident-response/security-center-incident-response-fig5.png)  
 
     Auf diesem Blatt kann Judy sich Notizen dazu machen, welche Ressourcen angegriffen wurden, wie oft der Angriff durchgeführt wurde und wann er erkannt wurde.
 3. Klicken Sie auf die **Angegriffene Ressource** , um weitere Informationen zum Angriff zu erhalten.

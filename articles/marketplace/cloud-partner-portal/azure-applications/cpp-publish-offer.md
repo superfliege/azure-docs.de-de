@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/25/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 2adf07cf2337611b9136af47ce6a35b617e2e9ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: cafda8a48f9160c80edb02c3452035f912958bc7
+ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177031"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56098220"
 ---
 # <a name="publish-azure-application-offer"></a>Veröffentlichen eines Azure-Anwendungsangebots
 
@@ -46,7 +46,6 @@ In der folgenden Tabelle sind die einzelnen Veröffentlichungsschritte sowie der
 | Live                           | < 1 Tag | Das Angebot wird veröffentlicht, in den angegebenen Regionen repliziert und für die Öffentlichkeit verfügbar gemacht. |
 |   |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|   |
 
- 
 Sie können den Veröffentlichungsvorgang auf der Registerkarte **Status** für Ihr Angebot im Cloud-Partnerportal überwachen.
 
 ![Registerkarte „Status“ für ein Azure-App-Angebot](./media/offer-status-tab.png)
@@ -54,38 +53,13 @@ Sie können den Veröffentlichungsvorgang auf der Registerkarte **Status** für 
 Nach Abschluss des Veröffentlichungsvorgangs wird Ihr Angebot in der [Microsoft Azure Marketplace-Anwendungskategorie](https://azuremarketplace.microsoft.com/marketplace/apps/) aufgelistet.
 
 
-
 ## <a name="errors-and-review-feedback"></a>Fehler und Prüfungsfeedback
 
-Zusätzlich zum Veröffentlichungsstatus Ihres Angebots werden auf der Registerkarte **Status** auch Fehlermeldungen und Feedback aus dem Schritt **Review durch Microsoft** angezeigt.  In der Regel werden bei der Prüfung festgestellte Probleme als Pull-Requests (PR) bezeichnet.  Jeder PR ist mit einem Onlineelement von Visual Studio Team Services (VSTS, umbenannt in [Azure DevOps](https://azure.microsoft.com/services/devops/)) verknüpft, das Details zu dem Problem enthält.  Die folgende Abbildung zeigt ein Beispiel für einen PR-Verweis einer Prüfung.  In komplexeren Situationen erhalten Sie E-Mails von den Prüfungs- und Supportteams. 
-
-![Registerkarte „Status“ mit Prüfungsfeedback](./media/status-tab-ms-review.png)
-
-Sie müssen jedes gemeldete Problem beheben, bevor der Veröffentlichungsvorgang für das Angebot fortgesetzt wird.  Das folgende Diagramm veranschaulicht, wie sich dieser Feedbackvorgang auf den Veröffentlichungsvorgang auswirkt.
-
-![Veröffentlichungsschritte mit VSTS-Feedback](./media/pub-flow-vsts-access.png)
-
-
-### <a name="vsts-access"></a>VSTS-Zugriff
-
-Zum Anzeigen der VSTS-Elemente, auf die im Prüfungsfeedback verwiesen wird, müssen Herausgeber über eine entsprechende Autorisierung verfügen.  Andernfalls wird neuen Herausgebern die Antwortseite `401 - Not Authorized` angezeigt.  Um den Zugriff auf das VSTS-System zur Angebotsprüfung anzufordern, führen Sie die folgenden Schritte aus:
-
-1. Stellen Sie die folgenden Informationen zusammen:
-    - Name und ID des Herausgebers
-    - Angebotstyp (Azure-App), Angebotsnamen und SKU-ID
-    - Pull-Request-Link, z. B.: `https://solutiontemplates.visualstudio.com/marketplacesolutions/_git/contoso/pullrequest/<number>` Diese URL kann aus der Benachrichtigungsnachricht oder der Adresse der Antwortseite 401 abgerufen werden.
-    - Die E-Mail-Adresse(n) der Personen aus Ihrer Veröffentlichungsorganisation, für die Sie Zugriff erhalten möchten.  Dies sollten die Eigentümeradresse(n) sein, die Sie bei der Registrierung als Herausgeber im Cloud-Partnerportal angegeben haben.
-2. Erstellen Sie einen Supportvorfall.  Wählen Sie in der Titelleiste des Cloud-Partnerportals die Schaltfläche **Hilfe** und dann **Support** aus dem Menü aus.  Ihr Standardwebbrowser sollte gestartet werden und zur Microsoft-Seite für den neuen Supportvorfall navigieren.  (Möglicherweise müssen Sie sich zunächst anmelden.)
-3. Geben Sie **Marketplace-Onboarding** als **Problemtyp** und **Zugriffsproblem** als **Kategorie** an, und wählen Sie dann **Anforderung starten** aus.
-
-    ![Supportticketkategorie](./media/support-incident1.png)
-
-4. Geben Sie auf der Seite **Schritt 1 von 2** Ihre Kontaktinformationen ein, und wählen Sie **Weiter** aus.
-5. Geben Sie auf der Seite **Schritt 2 von 2** einen Vorfalltitel (z. B. `Request VSTS access`) sowie die Informationen an, die Sie im ersten Schritt (oben) gesammelt haben.  Lesen und akzeptieren Sie die Vereinbarung, und wählen Sie dann **Senden** aus.
-
-Wenn die Erstellung des Vorfalls erfolgreich war, wird eine Bestätigungsseite angezeigt.  Speichern Sie die Bestätigungsinformationen zur künftigen Bezugnahme.  Der Microsoft-Support sollte innerhalb weniger Werktage auf Ihre Zugriffsanforderung antworten.
+Zusätzlich zum Veröffentlichungsstatus Ihres Angebots werden auf der Registerkarte **Status** auch Fehlermeldungen und Feedback zu Veröffentlichungsschritten angezeigt, bei denen ein Fehler aufgetreten ist.  Wenn das Problem kritisch ist, wird die Veröffentlichung abgebrochen.  Sie müssen die gemeldeten Probleme beheben und das Angebot erneut veröffentlichen.  Da der Schritt **Prüfung durch Microsoft** eine umfassende Überprüfung Ihres Angebots und der damit verbundenen technischen Ressourcen (insbesondere der Azure Resource Manager-Vorlage) darstellt, werden Probleme in der Regel als Pull Request-Links dargestellt.  Eine Erklärung, wie Sie diese Pull Requests anzeigen und auf sie reagieren, finden Sie unter [Verarbeiten von Prüfungsfeedback](./cpp-handling-review-feedback.md).
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald eine Azure-App veröffentlicht wurde, können Sie [das bestehende Angebot aktualisieren](./cpp-update-existing-offer.md), um den sich ändernden geschäftlichen oder technischen Anforderungen gerecht zu werden. 
+Wenn Sie in einem oder mehreren der Veröffentlichungsschritte Fehler festgestellt haben, müssen Sie diese korrigieren und Ihr Angebot erneut veröffentlichen.  Wenn im Schritt **Prüfung durch Microsoft** kritische Probleme festgestellt werden, müssen Sie [das Prüfungsfeedback verarbeiten](./cpp-handling-review-feedback.md), indem Sie auf das Azure DevOps-Repository des Microsoft-Prüfungsteams zugreifen.
+
+Sobald eine Azure-App erfolgreich veröffentlicht wurde, können Sie [das bestehende Angebot aktualisieren](./cpp-update-existing-offer.md), damit es sich ändernden geschäftlichen oder technischen Anforderungen gerecht wird. 

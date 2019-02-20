@@ -1,26 +1,18 @@
 ---
-title: 'Planung und Entwurf für standortübergreifende Verbindungen: Azure VPN Gateway | Microsoft-Dokumentation'
+title: 'Planung und Entwurf für standortübergreifende Verbindungen: Azure VPN Gateway | Microsoft-Dokumentation '
 description: Erfahren Sie mehr über Planung und Entwurf von VPN-Gateways für standortübergreifende, Hybrid- und VNet-zu-VNet-Verbindungen.
 services: vpn-gateway
-documentationcenter: na
-author: cherylmc
-manager: timlt
-editor: ''
-tags: azure-service-management,azure-resource-manager
-ms.assetid: d5aaab83-4e74-4484-8bf0-cc465811e757
+author: yushwang
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 07/27/2017
-ms.author: cherylmc
-ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: yushwang
+ms.openlocfilehash: 7802061ba09a30ca34ed3804ace846118c5edb9b
+ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23125478"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56235361"
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>Planung und Entwurf für VPN Gateway
 
@@ -30,7 +22,7 @@ Die Planung und der Entwurf Ihrer standortübergreifenden und VNet-zu-VNet-Verbi
 
 ### <a name="compare"></a>Optionen der standortübergreifenden Konnektivität
 
-Wenn Sie Ihre lokalen Standorte sicher mit einem virtuellen Netzwerk verbinden möchten, stehen Ihnen drei verschiedene Möglichkeiten zur Verfügung: Standort-zu-Standort, Punkt-zu-Standort und ExpressRoute. Vergleichen Sie die verschiedenen verfügbaren standortübergreifenden Verbindungen. Die von Ihnen gewählte Option kann von verschiedenen Faktoren abhängen:
+Wenn Sie Ihre lokalen Standorte sicher mit einem virtuellen Netzwerk verbinden möchten, stehen Ihnen drei verschiedene Möglichkeiten zur Verfügung: Standort-zu-Standort, Punkt-zu-Standort und ExpressRoute.  Vergleichen Sie die verschiedenen verfügbaren standortübergreifenden Verbindungen. Die von Ihnen gewählte Option kann von verschiedenen Faktoren abhängen:
 
 * Welche Form von Durchsatz benötigt Ihre Lösung?
 * Soll die Kommunikation über das öffentliche Internet über ein sicheres VPN oder über eine private Verbindung erfolgen?

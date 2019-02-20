@@ -1,22 +1,21 @@
 ---
-title: Einführung in Azure Queue Storage | Microsoft-Dokumentation
-description: Einführung in Azure Queue Storage
+title: Einführung in Azure-Warteschlangen | Microsoft-Dokumentation
+description: Einführung in Azure-Warteschlangen
 services: storage
 author: tamram
 ms.service: storage
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/06/2019
 ms.author: tamram
 ms.subservice: queues
-ms.openlocfilehash: b173934db17b8c3ac5a48e599b75478fb214c240
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2ae0d3993df54e1c9e5a9bf93619e8f9faa8a917
+ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458396"
+ms.lasthandoff: 02/07/2019
+ms.locfileid: "55873596"
 ---
-# <a name="introduction-to-queues"></a>Einführung in Warteschlangen
+# <a name="what-are-azure-queues"></a>Was sind Azure-Warteschlangen?
 
 Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt.
 

@@ -10,14 +10,14 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: dd517c4d-1701-4247-b83c-183c4d8d8aae
 ms.date: 09/08/2016
-ms.openlocfilehash: d37d5cb2b89b82bd9741dee0946b3a77d456b22a
-ms.sourcegitcommit: 07a09da0a6cda6bec823259561c601335041e2b9
+ms.openlocfilehash: c9733346d091a6829bd5b42c80201df3a1357fe3
+ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2018
-ms.locfileid: "49405751"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56243109"
 ---
-# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Übersicht: B2B Unternehmensintegrationsszenarien in Azure Logic Apps mit Enterprise Integration Pack
+# <a name="overview-b2b-enterprise-integration-scenarios-in-azure-logic-apps-with-enterprise-integration-pack"></a>Übersicht: B2B-Unternehmensintegrationsszenarien in Azure Logic Apps mit Enterprise Integration Pack
 
 Für Business-to-Business-Workflows (B2B) und eine nahtlose Kommunikation mit Azure Logic Apps können Sie Unternehmensszenarien mithilfe der Microsoft-Cloudlösung mit dem Namen Enterprise Integration Pack ermöglichen. Organisationen können Nachrichten elektronisch austauschen, auch wenn sie unterschiedliche Protokolle und Formate verwenden. Das Pack wandelt verschiedene Formaten in ein Format um, das die Systeme von Unternehmen interpretieren und verarbeiten können. Unternehmen können Nachrichten über branchenübliche Protokolle wie [AS2](../logic-apps/logic-apps-enterprise-integration-as2.md), [X12](logic-apps-enterprise-integration-x12.md) und [EDIFACT](../logic-apps/logic-apps-enterprise-integration-edifact.md) austauschen. Sie können Nachrichten auch mit Verschlüsselung und digitalen Signaturen schützen.
 
@@ -33,7 +33,7 @@ Was sie Architektur betrifft, basiert das Enterprise Integration Pack auf „Int
 
 ## <a name="how-to-get-started-with-enterprise-integration"></a>Erste Schritte mit der Unternehmensintegration
 
-Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten. Sie können Ihre Logik-Apps auch mit [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp "Logik-Apps PowerShell") verwalten.
+Mit dem Enterprise Integration Pack und dem Logik-App-Designer im **Azure-Portal** können Sie B2B-Apps erstellen und verwalten. Sie können Ihre Logik-Apps auch mit [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp) verwalten.
 
 Es folgen die allgemeinen Schritte, die Sie ausführen müssen, ehe Sie im Azure-Portal Apps erstellen können:
 

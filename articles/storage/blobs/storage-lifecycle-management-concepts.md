@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/04/2018
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: dd74cac3000f6a280d5b8faa858c2143d17a7e55
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 284a590a484052fdb7da2f03c6155078268b2aac
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247798"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56211443"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Verwalten des Azure Blob Storage-Lebenszyklus (Vorschau)
 
@@ -37,7 +37,7 @@ Die Richtlinien zur Lebenszyklusverwaltung sind sowohl für GPv2-Konten (General
 Die Funktion zur Lebenszyklusverwaltung ist in der Vorschau kostenlos. Kunden werden die gewöhnlichen Betriebskosten für die API-Aufrufe [Blobs auflisten](https://docs.microsoft.com/rest/api/storageservices/list-blobs) und [Blobtarif festlegen](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier) in Rechnung gestellt. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
 ## <a name="register-for-preview"></a>Registrieren für die Vorschau 
-Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, damit diese Funktion für Ihr Abonnement registriert werden kann. Anforderungen werden in der Regel innerhalb von zwei Wochen genehmigt. Nach der Genehmigung beinhalten alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in den folgenden Regionen die Funktion: USA, Westen 2, USA, Westen-Mitte, USA, Osten 2 und Europa, Westen. Die Vorschau unterstützt nur Blockblobs. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
+Um sich für die öffentliche Vorschau zu registrieren, müssen Sie eine Anforderung einreichen, damit diese Funktion für Ihr Abonnement registriert werden kann. Anforderungen werden in der Regel innerhalb von 72 Stunden genehmigt. Nach der Genehmigung beinhalten alle vorhandenen und neuen GPv2- oder Blob Storage-Konten in den folgenden Regionen die Funktion: USA, Westen 2, USA, Westen-Mitte, USA, Osten 2 und Europa, Westen. Die Vorschau unterstützt nur Blockblobs. Wie bei den meisten Vorschauversionen sollte diese Funktion bis zum Erreichen der allgemeinen Verfügbarkeit nicht für Produktionsworkloads verwendet werden.
 
 Um eine Anforderung zu senden, führen Sie die folgenden PowerShell- oder CLI-Befehle aus.
 
@@ -189,7 +189,7 @@ Diese Filter sind in der Vorschauphase gültig:
 
 | Filtername | Filtertyp | Notizen | Ist erforderlich |
 |-------------|-------------|-------|-------------|
-| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | JA |
+| blobTypes   | Ein Array von vordefinierten Enumerationswerten. | In der Vorschauversion wird nur `blockBlob` unterstützt. | Ja |
 | prefixMatch | Ein Array von Zeichenfolgen für Präfixe, mit denen Übereinstimmung erzielt werden soll. Eine Präfixzeichenfolge muss mit einem Containernamen beginnen. Wenn Sie beispielsweise alle Blobs unter „https://myaccount.blob.core.windows.net/container1/foo/...“ für eine Regel zuordnen möchten, lautet der prefixMatch-Wert `container1/foo`. | Wenn Sie prefixMatch nicht definieren, gelten die Regeln für alle Blobs im Konto. | Nein  |
 
 ### <a name="rule-actions"></a>Regelaktionen

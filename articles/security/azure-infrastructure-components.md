@@ -4,7 +4,7 @@ description: Dieser Artikel enthält eine allgemeine Beschreibung der Microsoft 
 services: security
 documentationcenter: na
 author: TerryLanfear
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
-ms.openlocfilehash: b2e8ef232e1b25c7d000f4683830ff2e188047fb
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186475"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56118138"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Komponenten und Grenzen des Azure-Informationssystems
 Dieser Artikel enthält eine allgemeine Beschreibung der Azure-Architektur und -Verwaltung. Die Azure-Systemumgebung besteht aus den folgenden Netzwerken:
@@ -54,7 +54,7 @@ Das Betriebssystemteam stellt Images in Form von virtuellen Festplatten zur Verf
 
 Es gibt drei Arten von durch Fabrics verwaltete Betriebssystemimages:
 
-- Host: Ein angepasstes Betriebssystem, das auf Host-VMs ausgeführt wird
+- Host: Ein angepasstes Betriebssystem, das auf Host-VMs ausgeführt wird.
 - Nativ: Ein natives Betriebssystem, das auf Mandanten (z.B. Azure Storage) ausgeführt wird. Dieses Betriebssystem benötigt keinen Hypervisor.
 - Gast: Ein Gastbetriebssystem, das auf Gast-VMs ausgeführt wird.
 
@@ -84,7 +84,7 @@ Dienstteams sind für folgende Dienste verfügbar:
 - ISSD: Sicherheit
 - Mehrstufige Authentifizierung
 - SQL-Datenbank
-- Speicher
+- Storage
 
 ## <a name="types-of-users"></a>Benutzertypen
 Mitarbeiter (oder Auftragnehmer) von Microsoft gelten als interne Benutzer. Alle anderen Benutzer werden als externe Benutzer betrachtet. Alle internen Azure-Benutzer müssen ihren Mitarbeiterstatus mit einer Vertraulichkeitsstufe kategorisieren lassen, die ihren Zugriff auf Kundendaten (Zugriff oder kein Zugriff) definiert. Benutzerberechtigungen in Azure (Autorisierungsberechtigung nach der Authentifizierung) werden in der folgenden Tabelle beschrieben:
@@ -96,7 +96,7 @@ Mitarbeiter (oder Auftragnehmer) von Microsoft gelten als interne Benutzer. Alle
 | Azure-Bereitstellungstechniker | Intern | Zugriff auf Kundendaten | Durchführen der Bereitstellung und des Upgrades von Plattformkomponenten, Software und geplanten Konfigurationsänderungen zur Unterstützung von Azure. | Just-in-Time-Zugriff auf die Umgebung – mit eingeschränktem beständigem Zugriff auf nicht kundenbezogene Systeme. |
 | Azure-Kundensupport bei Ausfällen (Mandant) | Intern | Zugriff auf Kundendaten | Debuggen und Diagnostizieren von Plattformausfällen und Fehlern bei einzelnen Computemandanten und Azure-Konten. Analysieren von Fehlern. Steuern von wichtigen Updates für die Plattform oder die Kunden und Erzielen von technischen Verbesserungen über den Support. | Just-in-Time-Zugriff auf die Umgebung – mit eingeschränktem beständigem Zugriff auf nicht kundenbezogene Systeme. |
 | Azure Live Site Engineers (Überwachungsengineers) und Incident | Intern | Zugriff auf Kundendaten | Diagnostizieren und Beheben von Problemen mit der Plattformintegrität durch Diagnosetools. Steuern von Fehlerbehebungen für Volumetreiber, Reparatur von durch Ausfälle verursachten Posten und Unterstützung bei Maßnahmen zur Behebung von Ausfällen. | Just-in-Time-Zugriff auf die Umgebung – mit eingeschränktem beständigem Zugriff auf nicht kundenbezogene Systeme. |
-|Azure-Kunden | Extern | N/V | N/V | N/V |
+|Azure-Kunden | Extern | – | – | – |
 
 Azure verwendet eindeutige Bezeichner zur Authentifizierung von Organisationsbenutzern und Kunden (oder Prozesse, die im Namen der Organisationsbenutzer agieren). Dies gilt für alle Assets und Geräte, die Teil der Azure-Umgebung sind.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0d14b2eeb90bd360b71b315d7b4f4459f17f5672
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8898149e6858c5a1cdb2d4510ad2764ffe25fda5
+ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073762"
+ms.lasthandoff: 02/08/2019
+ms.locfileid: "55964252"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
 
@@ -65,7 +65,7 @@ Sie können einen HTTPS-Endpunkt für die Verarbeitung von Azure Marketplace- un
 
     ![Leads auswählen](./media/cloud-partner-portal-lead-management-instructions-https/https-image011.png)
 
-4. Flow zeigt ein Formular für die Eingabe von Leadinformationen an. Sie können Elemente aus der Eingabeanforderung zuordnen, indem Sie auswählen, dass dynamischer Inhalt hinzugefügt werden soll. Auf dem folgenden Screenshot wird beispielsweise **LeadTitle** verwendet.
+4. Flow zeigt ein Formular für die Eingabe von Leadinformationen an. Sie können Elemente aus der Eingabeanforderung zuordnen, indem Sie auswählen, dass dynamischer Inhalt hinzugefügt werden soll. Im folgenden Screenshot wird beispielsweise **OfferTitle** verwendet.
 
     ![Dynamischen Inhalt hinzufügen](./media/cloud-partner-portal-lead-management-instructions-https/https-image013.png)
 

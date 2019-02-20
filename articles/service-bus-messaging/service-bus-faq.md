@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 0b419343829e7e7bbbd31260b9cd0c8d93cd255d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: fce3c2975e4b82583aa09a3862f704f05a363828
+ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847814"
+ms.lasthandoff: 02/13/2019
+ms.locfileid: "56210593"
 ---
 # <a name="service-bus-faq"></a>Service Bus – Häufig gestellte Fragen
 
@@ -83,6 +83,9 @@ Genau wie andere Dienste in Azure setzt Service Bus eine Reihe spezifischer Kont
 Service Bus-Messagingdienste (Warteschlangen und Themen/Abonnements) ermöglichen Anwendungen, Nachrichten mit einer Größe bis zu 256 KB (Standard-Tarif) oder 1 MB (Premium-Tarif) zu senden. Wenn Ihre Nachrichten eine Größe über 1 MB aufweisen, verwenden Sie das [in diesem Blogbeitrag](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern) beschriebene Anspruchsprüfungsmuster.
 
 ## <a name="troubleshooting"></a>Problembehandlung
+### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Warum kann ich keinen Namespace erstellen, nachdem ich ihn aus einem anderen Abonnement gelöscht habe? 
+Wenn Sie einen Namespace aus einem Abonnement löschen, warten Sie vier Stunden, bevor Sie ihn mit dem gleichen Namen in einem anderen Abonnement erstellen. Sie erhalten andernfalls unter Umständen die folgende Fehlermeldung: `Namespace already exists`. 
+
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Welche Beispiele gibt es für Ausnahmen, die von Azure Service Bus-APIs generiert werden, und die vorgeschlagenen Aktionen?
 Eine Liste der möglichen Service Bus-Ausnahmen finden Sie in der [Übersicht über Ausnahmen][Exceptions overview].
 

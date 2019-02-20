@@ -4,7 +4,7 @@ description: Dieser Artikel umfasst eine Aufstellung ausgewählter Präsentation
 services: security
 documentationcenter: na
 author: TomShinder
-manager: MBaldwin
+manager: barbkess
 editor: TomSh
 ms.assetid: 9e5e14aa-11d7-4242-8b7e-49fd0e79817a
 ms.service: security
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: b6e4539be76449093de0587e43b0e97243602967
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 148b26cc694abaa09bf5016f3c2f2fe3a1c12a70
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2017
-ms.locfileid: "25540134"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56109808"
 ---
 # <a name="azure-security-videos-on-channel-9"></a>Azure-Sicherheitsvideos auf Channel 9
 [Channel 9](https://channel9.msdn.com/) ist eine Community, in der die Personen hinter unseren Produkten zu Wort kommen und Verbindung mit Kunden aufnehmen können.
@@ -56,7 +56,7 @@ Bereiche, die in diesem Video behandelt werden:
 
 [How to set security in DevTest Labs](https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab)
 
-Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Labrollen „Besitzer“ und „DevTest Labs-Benutzer“ sichern. Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen einem Lab hinzufügen können.
+Als Besitzer des Labs können Sie den Zugriff auf das Lab über die beiden Labrollen „Besitzer“ und „DevTest Labs-Benutzer“ sichern.  Eine Person mit der Rolle „Besitzer“ hat vollständigen Zugriff auf das Lab, wohingegen eine Person mit der Rolle „DevTest Labs-Benutzer“ nur über beschränkten Zugriff verfügt. In diesem Video wird gezeigt, wie Sie eine Person mit diesen Rollen einem Lab hinzufügen können.
 
 [Managing Secrets for Azure Apps](https://channel9.msdn.com/events/Build/2016/P456)
 
