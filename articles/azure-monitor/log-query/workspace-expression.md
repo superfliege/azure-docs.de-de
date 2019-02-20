@@ -1,6 +1,6 @@
 ---
-title: workspace()-Ausdruck in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Der workspace-Ausdruck wird in Log Analytics-Abfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
+title: workspace()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Der workspace-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: bwren
-ms.openlocfilehash: 24a737a728b0a249fda76cbff481bea284ac24aa
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1d1bb3c99c82683dde9247da86e80d800fe06631
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182943"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55992981"
 ---
-# <a name="workspace-expression-in-log-analytics-query"></a>workspace()-Ausdruck in Log Analytics-Abfragen
+# <a name="workspace-expression-in-azure-monitor-log-query"></a>workspace()-Ausdruck in Azure Monitor-Protokollabfragen
 
-Der Ausdruck `workspace` wird in Log Analytics-Abfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen. Dies ist nützlich, um Protokolldaten in einer Application Insights-Abfrage einzuschließen und um Daten übergreifend über mehrere Arbeitsbereiche in einer Protokollabfrage abzufragen.
+Der Ausdruck `workspace` wird in Azure Monitor-Abfragen verwendet, um Daten aus einem bestimmten Arbeitsbereich in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen. Dies ist nützlich, um Protokolldaten in einer Application Insights-Abfrage einzuschließen und um Daten übergreifend über mehrere Arbeitsbereiche in einer Protokollabfrage abzufragen.
 
 
 ## <a name="syntax"></a>Syntax
@@ -71,5 +71,6 @@ union
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen für das Verweisen auf Application Insights-Apps finden Sie unter [app-Ausdruck](workspace-expression.md).
-- Informationen über die Art der [Speicherung von Log Analytics-Daten](../../azure-monitor/log-query/log-query-overview.md).
+- Informationen zum Verweisen auf Application Insights-Apps finden Sie unter [app-Ausdruck](app-expression.md).
+- Erfahren Sie mehr zum Speichern von [Azure Monitor-Daten](log-query-overview.md).
+- Vollständige Dokumentation für die [Data Explorer-Abfragesprache.](/azure/kusto/query/).

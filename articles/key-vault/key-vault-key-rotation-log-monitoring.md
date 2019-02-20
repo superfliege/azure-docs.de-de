@@ -4,7 +4,7 @@ description: Dieser Artikel bietet Informationen zum Einrichten der Schlüsselro
 services: key-vault
 documentationcenter: ''
 author: barclayn
-manager: mbaldwin
+manager: barbkess
 tags: ''
 ms.assetid: 9cd7e15e-23b8-41c0-a10a-06e6207ed157
 ms.service: key-vault
@@ -13,16 +13,18 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 4dbfd993a8464c569d30f11e305d4bae000a778f
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: deb50a71b179c3cb03d5da22e336c42b26fe0bfa
+ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077707"
+ms.lasthandoff: 02/12/2019
+ms.locfileid: "56106119"
 ---
 # <a name="set-up-azure-key-vault-with-key-rotation-and-auditing"></a>Einrichten von Azure Key Vault mit Schlüsselrotation und Überwachung
 
 ## <a name="introduction"></a>Einführung
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Nach dem Erstellen eines Schlüsseltresors können Sie Schlüssel und Geheimnisse in diesem Tresor speichern. Ihre Schlüssel und Geheimnisse müssen in Ihren Anwendungen nicht mehr dauerhaft gespeichert werden, sondern können bei Bedarf aus dem Tresor angefordert werden. Dadurch können Sie Schlüssel und geheime Schlüssel ohne Auswirkungen auf das Verhalten Ihrer Anwendung aktualisieren, was eine Vielzahl von Möglichkeiten für die Verwaltung von Schlüsseln und geheimen Schlüsseln eröffnet.
 
@@ -36,7 +38,7 @@ In diesem Artikel wird Folgendes beschrieben:
 - Es wird erläutert, wie die Überwachungsprotokolle des Schlüsseltresors überwacht und wie bei unerwarteten Anforderungen Warnungen ausgelöst werden.
 
 > [!NOTE]
-> In diesem Tutorial werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Weitere Informationen hierzu finden Sie unter [Erste Schritte mit dem Azure-Schlüsseltresor](key-vault-get-started.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Schlüsseltresor mit CLI](key-vault-manage-with-cli2.md).
+> In diesem Tutorial werden nicht die Einzelheiten der erstmaligen Einrichtung Ihres Schlüsseltresors behandelt. Die entsprechenden Informationen finden Sie unter [Was ist Azure Key Vault?](key-vault-overview.md). Anleitungen für die plattformübergreifende Befehlszeilenschnittstelle finden Sie unter [Verwalten von Schlüsseltresor mit CLI](key-vault-manage-with-cli2.md).
 >
 >
 
@@ -45,7 +47,7 @@ In diesem Artikel wird Folgendes beschrieben:
 Damit eine Anwendung einen geheimen Schlüssel aus Key Vault abrufen kann, müssen Sie zuerst den geheimen Schlüssel erstellen und ihn in den Tresor hochladen. Starten Sie hierfür eine Azure PowerShell-Sitzung, und melden Sie sich mit dem folgenden Befehl bei Ihrem Azure-Konto an:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure-Kontos ein. PowerShell ruft alle Abonnements ab, die diesem Konto zugeordnet sind. PowerShell verwendet standardmäßig das erste Abonnement.
@@ -53,19 +55,19 @@ Geben Sie im Popup-Browserfenster den Benutzernamen und das Kennwort Ihres Azure
 Wenn Sie über mehrere Abonnements verfügen, müssen Sie unter Umständen das Abonnement angeben, das zum Erstellen des Schlüsseltresors verwendet wurde. Geben Sie Folgendes ein, um die Abonnements für Ihr Konto anzuzeigen:
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Geben Sie Folgendes ein, um das Abonnement anzugeben, das dem zu protokollierenden Schlüsseltresor zugeordnet ist:
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscriptionID>
+Set-AzContext -SubscriptionId <subscriptionID>
 ```
 
 Da in diesem Artikel das Speichern eines Speicherkontoschlüssels als geheimer Schlüssel demonstriert wird, müssen Sie diesen Speicherkontoschlüssel abrufen.
 
 ```powershell
-Get-AzureRmStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
+Get-AzStorageAccountKey -ResourceGroupName <resourceGroupName> -Name <storageAccountName>
 ```
 
 Nachdem Sie Ihren geheimen Schlüssel (in diesem Fall Ihren Speicherkontoschlüssel) abgerufen haben, müssen Sie ihn in eine sichere Zeichenfolge konvertieren und anschließend einen geheimen Schlüssel mit diesem Wert in Ihrem Schlüsseltresor erstellen.
@@ -73,13 +75,13 @@ Nachdem Sie Ihren geheimen Schlüssel (in diesem Fall Ihren Speicherkontoschlüs
 ```powershell
 $secretvalue = ConvertTo-SecureString <storageAccountKey> -AsPlainText -Force
 
-Set-AzureKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
+Set-AzKeyVaultSecret -VaultName <vaultName> -Name <secretName> -SecretValue $secretvalue
 ```
 
 Rufen Sie als Nächstes den URI für den erstellten geheimen Schlüssel ab. Dieser wird in einem späteren Schritt verwendet, wenn Sie den Schlüsseltresor zum Abrufen des geheimen Schlüssels aufrufen. Führen Sie den folgenden PowerShell-Befehl aus, und notieren Sie den Wert „ID“, bei dem es sich um den URI des geheimen Schlüssels handelt:
 
 ```powershell
-Get-AzureKeyVaultSecret –VaultName <vaultName>
+Get-AzKeyVaultSecret –VaultName <vaultName>
 ```
 
 ## <a name="set-up-the-application"></a>Einrichten der Anwendung
@@ -110,7 +112,7 @@ Generieren Sie dann einen Schlüssel für die Anwendung, damit diese mit Azure A
 Bevor Ihre Anwendung Aufrufe an den Schlüsseltresor durchführen kann, müssen Sie den Schlüsseltresor über Ihre Anwendung und deren Berechtigungen informieren. Der folgende Befehl verwendet den Namen des Schlüsseltresors und die Anwendungs-ID aus Ihrer Azure Active Directory-App und gewährt dem Schlüsseltresor für die Anwendung den Zugriff zum **Abrufen**.
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <clientIDfromAzureAD> -PermissionsToSecrets Get
 ```
 
 An diesem Punkt können Sie beginnen, Anwendungsaufrufe zu erstellen. In Ihrer Anwendung müssen Sie die NuGet-Pakete installieren, die für die Interaktion mit Azure Key Vault und Azure Active Directory benötigt werden. Geben Sie in der Paket-Manager-Konsole von Visual Studio die folgenden Befehle ein. Bei der Erstellung dieses Artikels lautete die aktuelle Version des Azure Active Directory-Pakets 3.10.305231913. Prüfen Sie, ob es eine neuere Version gibt, und führen Sie ggf. eine entsprechende Aktualisierung durch.
@@ -188,7 +190,7 @@ Wählen Sie in **Assets** die Option **Module** aus. In **Module** wählen Sie d
 Nachdem Sie die Anwendungs-ID für Ihre Azure Automation-Verbindung abgerufen haben, müssen Sie Ihren Schlüsseltresor informieren, dass diese Anwendung Zugriff zum Aktualisieren geheimer Schlüssel in Ihrem Tresor hat. Dies kann mit dem folgenden PowerShell-Befehl erreicht werden:
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
+Set-AzKeyVaultAccessPolicy -VaultName <vaultName> -ServicePrincipalName <applicationIDfromAzureAutomation> -PermissionsToSecrets Set
 ```
 
 Als Nächstes wählen Sie die Ressource **Runbooks** unter Ihrer Azure Automation-Instanz und dann **Runbook hinzufügen** aus. Wählen Sie **Schnellerfassung**. Benennen Sie Ihr Runbook, und wählen Sie als Runbooktyp **PowerShell** aus. Optional können Sie eine Beschreibung hinzufügen. Klicken Sie abschließend auf **Erstellen**.
@@ -205,7 +207,7 @@ try
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName         
 
     "Logging in to Azure..."
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -230,12 +232,12 @@ $VaultName = <keyVaultName>
 $SecretName = <keyVaultSecretName>
 
 #Key name. For example key1 or key2 for the storage account
-New-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
-$SAKeys = Get-AzureRmStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
+New-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName -KeyName "key2" -Verbose
+$SAKeys = Get-AzStorageAccountKey -ResourceGroupName $RGName -Name $StorageAccountName
 
 $secretvalue = ConvertTo-SecureString $SAKeys[1].Value -AsPlainText -Force
 
-$secret = Set-AzureKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
+$secret = Set-AzKeyVaultSecret -VaultName $VaultName -Name $SecretName -SecretValue $secretvalue
 ```
 
 Im Editorbereich können Sie **Testbereich** wählen, um Ihr Skript zu testen. Sobald das Skript ohne Fehler ausgeführt wird, können Sie die Option **Veröffentlichen** auswählen. Im Konfigurationsbereich für das Runbook können Sie dann einen Zeitplan dafür auswählen.
@@ -246,9 +248,9 @@ Bei der Einrichtung eines Schlüsseltresors können Sie die Überwachung aktivie
 Zunächst müssen Sie die Protokollierung für Ihren Schlüsseltresor aktivieren. Dies kann über die folgenden PowerShell-Befehle erfolgen (Details finden Sie unter [Key Vault-Protokollierung](key-vault-logging.md)):
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
-$kv = Get-AzureRmKeyVault -VaultName '<vaultName>'
-Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories AuditEvent
+$sa = New-AzStorageAccount -ResourceGroupName <resourceGroupName> -Name <storageAccountName> -Type Standard\_LRS -Location 'East US'
+$kv = Get-AzKeyVault -VaultName '<vaultName>'
+Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id -Enabled $true -Category AuditEvent
 ```
 
 Wenn diese Option aktiviert ist, beginnen Überwachungsprotokolle mit dem Sammeln von Daten im vorgesehenen Speicherkonto. Diese Protokolle enthalten Ereignisse dazu, wie, wann und von wem auf Ihre Schlüsseltresore zugegriffen wurde.

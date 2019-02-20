@@ -1,6 +1,6 @@
 ---
-title: app()-Ausdruck in Azure Log Analytics-Abfragen | Microsoft-Dokumentation
-description: Der app-Ausdruck wird in Log Analytics-Abfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
+title: app()-Ausdruck in Azure Monitor-Protokollabfragen | Microsoft-Dokumentation
+description: Der app-Ausdruck wird in Azure Monitor-Protokollabfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: bwren
-ms.openlocfilehash: 2d6f3517e988d6bd66ee9007e072ee87c71d1340
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: db92db315875348ff05ec3a34b1a9fa946479c27
+ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104659"
+ms.lasthandoff: 02/11/2019
+ms.locfileid: "55998534"
 ---
-# <a name="app-expression-in-log-analytics-query"></a>app()-Ausdruck in Log Analytics-Abfragen
+# <a name="app-expression-in-azure-monitor-query"></a>app()-Ausdruck in Azure Monitor-Abfragen
 
-Der Ausdruck `app` wird in Log Analytics-Abfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen. Dies ist nützlich, um Anwendungsdaten in einer Log Analytics-Abfrage einzuschließen und Daten übergreifend über mehrere Anwendungen in einer Application Insights-Abfrage abzufragen.
+Der `app`-Ausdruck wird in Azure Monitor-Abfragen verwendet, um Daten aus einer bestimmten Application Insights-Anwendung in der gleichen Ressourcengruppe, einer anderen Ressourcengruppe oder einem anderen Abonnement abzurufen. Dies ist nützlich, um Anwendungsdaten in eine Azure Monitor-Protokollabfrage einzuschließen und Daten in mehreren Anwendungen in einer Application Insights-Abfrage abzufragen.
 
 
 
@@ -79,4 +79,5 @@ union
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Verweisen auf Log Analytics-Arbeitsbereiche finden Sie unter [workspace-Ausdruck](workspace-expression.md).
-- Informationen über die Art der [Speicherung von Log Analytics-Daten](../../azure-monitor/log-query/log-query-overview.md).
+- Erfahren Sie mehr zum Speichern von [Azure Monitor-Daten](../../azure-monitor/log-query/log-query-overview.md).
+- Vollständige Dokumentation für die [Data Explorer-Abfragesprache.](/azure/kusto/query/).
