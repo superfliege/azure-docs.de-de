@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
-ms.openlocfilehash: cbc9fa5586b848de79c52142f75b22b744fdae38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e83ff9f3bf02a134919d497662744028e1b9acda
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105949"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343016"
 ---
 # <a name="azure-security-policies-monitored-by-azure-security-center"></a>In Azure Security Center überwachte Azure-Sicherheitsrichtlinien
 Dieser Artikel enthält eine Liste der Azure Policy-Definitionen, die in Security Center überwacht werden können. Weitere Informationen zu Sicherheitsrichtlinien finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
@@ -96,4 +96,4 @@ In diesem Artikel haben Sie erfahren, wie Sie Sicherheitsrichtlinien in Security
 * [Azure Security Center – häufig gestellte Fragen:](security-center-faq.md) Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md).
+Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../governance/policy/overview.md).

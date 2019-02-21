@@ -30,7 +30,7 @@ Das IEF sendet Daten in Ansprüchen und erhält Daten in Ansprüchen zurück. Di
 - Kann als Austausch von REST-API-Ansprüchen oder als Validierungsprofil entworfen werden, der bzw. das innerhalb eines Orchestrierungsschritts erfolgt.
 - Normalerweise wird die Eingabe des Benutzers validiert. Wenn der Wert des Benutzers abgelehnt wird, kann er erneut versuchen, einen gültigen Wert einzugeben, wodurch eventuell eine Fehlermeldung zurückgegeben werden kann.
 
-Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt
+Sie können die Interaktion auch als Orchestrierungsschritt entwerfen. Weitere Informationen finden Sie unter [Exemplarische Vorgehensweise: Integrieren von REST-API-Anspruchsaustausch-Vorgängen in Ihre Azure AD B2C User Journey als Orchestrierungsschritt](active-directory-b2c-rest-api-step-custom.md)
 
 Für das Beispiel für das Validierungsprofil verwenden wir die User Journey der Profilbearbeitung in der Starter Pack-Datei „ProfileEdit.xml“.
 
