@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: eb344d6da15a8faf8f05720ae9b1fd49bd42db2f
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: d2086f02cc981ad944c030ad40083d153c520359
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54808198"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447326"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>Was ist die „kognitive Suche“ in Azure Search?
 
@@ -32,7 +32,7 @@ Die kognitiven Fähigkeiten in Azure Search basieren auf Machine Learning-Modell
 Die Verarbeitung von natürlicher Sprache und Bildern wird während der Phase der Datenerfassung angewendet, wobei die Ergebnisse zu einem Teil einer Dokumentkomposition in einem durchsuchbaren Index in Azure Search werden. Daten stammen aus einem Azure-Dataset und werden dann über eine Indizierungspipeline übertragen, indem jeweils die erforderlichen [integrierten Fähigkeiten](cognitive-search-predefined-skills.md) verwendet werden. Die Architektur ist erweiterbar. Falls die integrierten Fähigkeiten also nicht ausreichen, können Sie [benutzerdefinierte Fähigkeiten](cognitive-search-create-custom-skill-example.md) erstellen und anfügen, um die benutzerdefinierte Verarbeitung zu integrieren. Beispiele hierfür sind ein benutzerdefiniertes Entitätsmodul oder ein benutzerdefinierter Dokumentenklassifizierer, das bzw. der auf eine bestimmte Domäne ausgerichtet ist, z.B. Finanzen, wissenschaftliche Veröffentlichungen oder Medizin.
 
 > [!NOTE]
-> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine [Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) anfügen. Dies ermöglicht uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
+> Seit dem 21. Dezember 2018 können Sie einer Azure Search-Qualifikationsgruppe eine [Cognitive Services-Ressource](cognitive-search-attach-cognitive-services.md) anfügen. Dies ermöglicht es uns, für die Ausführung von Qualifikationsgruppen mit der Gebührenberechnung zu beginnen. Ab diesem Datum haben wir außerdem damit begonnen, die Bildextraktion als Teil der Aufschlüsselung von Dokumenten zu berechnen. Die Textextraktion aus Dokumenten wird weiterhin ohne Zusatzkosten angeboten.
 >
 > Die Ausführung interner Qualifikationen ist eine Nutzung von Cognitive Services, die gemäß dem bestehenden [nutzungsbasierten Preis](https://azure.microsoft.com/pricing/details/cognitive-services/) in Rechnung gestellt wird. Die Preise für die Bildextraktion entsprechen einer Azure Search-Gebühr. Sie werden gemäß der Vorschaupreise wie auf der [Preisseite von Azure Search](https://go.microsoft.com/fwlink/?linkid=2042400) beschrieben in Rechnung gestellt.
 
@@ -96,18 +96,24 @@ Indizes werden über ein Indexschema generiert, das die Felder, Attribute und we
 
 + USA, Westen-Mitte
 + USA Süd Mitte
++ USA Nord Mitte
 + USA (Ost)
 + USA (Ost) 2
 + USA (Westen)
 + USA, Westen 2
++ USA (Mitte)
 + Kanada, Mitte
 + Europa, Westen
-+ UK, Süden
 + Nordeuropa
++ UK, Süden
++ Frankreich, Mitte
 + Brasilien Süd
 + Asien, Osten
 + Asien, Südosten
 + Indien, Mitte
++ Japan, Westen
++ Japan, Osten
++ Korea, Mitte
 + Australien (Osten)
 
 **Schritt 2: Praktische Erfahrung zur Bewältigung des Workflows**

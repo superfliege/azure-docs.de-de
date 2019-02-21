@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 37cf44e2c9d28b1aac8f2ab80ba29d126fb8651f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54422967"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417430"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
@@ -28,7 +28,7 @@ Wenn Sie ein Runbook inline aufrufen, wird es im selben Auftrag ausgeführt wie 
 
 Beim Veröffentlichen eines Runbooks müssen alle von ihm aufgerufenen untergeordneten Runbooks bereits veröffentlicht sein. Dies ist erforderlich, weil Azure Automation beim Kompilieren des Runbooks eine Zuordnung zu allen untergeordneten Runbooks erstellt. Sind diese nicht veröffentlicht, lässt sich das übergeordnete Runbook scheinbar ohne Fehler veröffentlichen, bei seinem Start wird jedoch eine Ausnahme generiert. In diesem Fall können Sie das übergeordnete Runbook erneut veröffentlichen, um korrekt auf die untergeordneten Runbooks zu verweisen. Sie müssen das übergeordnete Runbook nicht erneut veröffentlichen, wenn eines der untergeordneten Runbooks geändert wird, da die Zuordnung bereits erstellt wurde.
 
-Die Parameter eines inline aufgerufenen untergeordneten Runbooks können jeden beliebigen Datentyp aufweisen, z.B. komplexe Objekte. Es gibt keine [JSON-Serialisierung](automation-starting-a-runbook.md#runbook-parameters) wie beim Starten des Runbooks über das Azure-Portal oder mit dem Cmdlet „Start-AzureRmAutomationRunbook“.
+Die Parameter eines inline aufgerufenen untergeordneten Runbooks können jeden beliebigen Datentyp aufweisen, z.B. komplexe Objekte. Es gibt keine [JSON-Serialisierung](start-runbooks.md#runbook-parameters) wie beim Starten des Runbooks über das Azure-Portal oder mit dem Cmdlet „Start-AzureRmAutomationRunbook“.
 
 ### <a name="runbook-types"></a>Runbooktypen
 
@@ -65,7 +65,7 @@ $output = .\PS-ChildRunbook.ps1 –VM $vm –RepeatCount 2 –Restart $true
 > [!IMPORTANT]
 > Wenn Sie ein untergeordnetes Runbook mit dem Cmdlet `Start-AzureRmAutomationRunbook` mit dem Switch `-Wait` aufrufen und die Ergebnisse des untergeordneten Runbooks einem Objekt entsprechen, können Fehler auftreten. Informationen zur Umgehung dieses Fehlers finden Sie im Abschnitt zu [untergeordneten Runbooks mit Objektausgabe](troubleshoot/runbooks.md#child-runbook-object). Dort wird erläutert, wie Sie die Logik zum Abfragen der Ergebnisse implementieren und [Get-AzureRmAutomationJobOutputRecord](/powershell/module/azurerm.automation/get-azurermautomationjoboutputrecord) verwenden.
 
-Sie können das Cmdlet [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](automation-starting-a-runbook.md#starting-a-runbook-with-windows-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi.  Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der untergeordnete Auftrag für das untergeordnete Runbook erstellt wird.  Im zweiten Modus, den Sie durch Angeben des Parameters **-wait** aktivieren, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
+Sie können das Cmdlet [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) verwenden, um ein Runbook wie unter [Starten eines Runbooks mit Windows PowerShell](start-runbooks.md#start-a-runbook-with-powershell) beschrieben zu starten. Für die Verwendung dieses Cmdlets gibt es zwei Modi.  Im ersten Modus gibt das Cmdlet die Auftrags-ID zurück, sobald der untergeordnete Auftrag für das untergeordnete Runbook erstellt wird.  Im zweiten Modus, den Sie durch Angeben des Parameters **-wait** aktivieren, wartet das Cmdlet, bis der untergeordnete Auftrag abgeschlossen ist, und gibt erst dann die Ausgabe aus dem untergeordneten Runbook zurück.
 
 Der Auftrag eines mit einem Cmdlet gestarteten untergeordneten Runbooks wird in einem vom übergeordneten Runbook getrennten Auftrag ausgeführt. Im Vergleich zum Inlinestart des Runbooks führt dieses Verhalten zu einer größeren Anzahl von Aufträgen und erschwert die Nachverfolgung. Das übergeordnete Runbook kann mehrere untergeordnete Runbooks asynchron starten, ohne auf ihren Abschluss zu warten. Für diese Art der parallelen Ausführung, bei der untergeordnete Runbooks inline aufgerufen werden, muss das übergeordnete Runbook das Schlüsselwort [parallel](automation-powershell-workflow.md#parallel-processing)verwenden.
 
@@ -73,7 +73,7 @@ Die Ausgabe der untergeordneten Runbooks wird aufgrund der zeitlichen Steuerung 
 
 Wenn Sie nicht möchten, dass das übergeordnete Runbook beim Warten blockiert wird, können Sie das untergeordnete Runbook mit dem Cmdlet `Start-AzureRmAutomationRunbook` ohne den Switch `-Wait` starten. Sie müssten dann `Get-AzureRmAutomationJob` verwenden, um auf den Auftragsabschluss zu warten, und `Get-AzureRmAutomationJobOutput` und `Get-AzureRmAutomationJobOutputRecord` zum Abrufen der Ergebnisse verwenden.
 
-Parameter für ein mittels Cmdlet gestartetes untergeordnetes Runbook werden wie unter [Runbook-Parameter](automation-starting-a-runbook.md#runbook-parameters)beschrieben als Hashtabelle bereitgestellt. Es können nur einfache Datentypen verwendet werden. Enthält das Runbook einen Parameter mit einem komplexen Datentyp, muss es inline aufgerufen werden.
+Parameter für ein mittels Cmdlet gestartetes untergeordnetes Runbook werden wie unter [Runbook-Parameter](start-runbooks.md#runbook-parameters)beschrieben als Hashtabelle bereitgestellt. Es können nur einfache Datentypen verwendet werden. Enthält das Runbook einen Parameter mit einem komplexen Datentyp, muss es inline aufgerufen werden.
 
 Beim Starten untergeordneter Runbooks als separate Aufträge geht möglicherweise der Abonnementkontext verloren. Damit ein untergeordnetes Runbook Azure RM-Cmdlets für ein bestimmtes Azure-Abonnement ausführen kann, muss sich das untergeordnete Runbook unabhängig vom übergeordneten Runbook bei diesem Abonnement authentifizieren.
 
@@ -120,6 +120,6 @@ Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen den
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Starten eines Runbooks in Azure Automation](automation-starting-a-runbook.md)
+* [Starten eines Runbooks in Azure Automation](start-runbooks.md)
 * [Runbookausgabe und -meldungen in Azure Automation](automation-runbook-output-and-messages.md)
 

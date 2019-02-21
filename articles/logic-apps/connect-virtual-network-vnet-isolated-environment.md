@@ -8,13 +8,13 @@ author: ecfan
 ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
-ms.date: 02/12/2019
-ms.openlocfilehash: 8d7fc6d8f581c3ad0e0f3266ea615acadcb7bc25
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.date: 02/15/2019
+ms.openlocfilehash: d67bc99a63242dd56d65d6bdac0448c7742a6b9d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176202"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311901"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Herstellen einer Verbindung mit virtuellen Azure-Netzwerken in Azure Logic Apps mithilfe einer Integrationsdienstumgebung
 
@@ -67,9 +67,10 @@ Um den ein- und ausgehenden Datenverkehr in den Subnetzen des virtuellen Netzwer
 | Datenverkehr zu Azure Logic Apps <br>Datenverkehr aus Azure Logic Apps | Eingehend <br>Ausgehend | * <br>80 und 443 | INTERNET <br>VIRTUAL_NETWORK |
 | Azure Active Directory | Ausgehend | * <br>80 und 443 | VIRTUAL_NETWORK <br>AzureActiveDirectory |
 | Azure Storage-Abhängigkeit | Ausgehend | * <br>80 und 443 | VIRTUAL_NETWORK <br>Storage |
+| Ausführungsverlauf Ihrer Logik-App | Eingehend | * <br>443 | INTERNET <br>VIRTUAL_NETWORK |
 | Verbindungsverwaltung | Ausgehend | * <br>443 | VIRTUAL_NETWORK <br>INTERNET |
 | Veröffentlichen von Diagnoseprotokollen und Metriken | Ausgehend | * <br>443 | VIRTUAL_NETWORK <br>AzureMonitor |
-| Logic Apps-Designer: dynamische Eigenschaften <br>Ausführungsverlauf Ihrer Logik-App <br>Bereitstellen von Connectors <br>Endpunkt des Anforderungstriggers | Eingehend | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
+| Logic Apps-Designer: dynamische Eigenschaften <br>Bereitstellen von Connectors <br>Endpunkt des Anforderungstriggers | Eingehend | * <br>454 | INTERNET <br>VIRTUAL_NETWORK |
 | Abhängigkeit von der App Service-Verwaltung | Eingehend | * <br>454 und 455 | AppServiceManagement <br>VIRTUAL_NETWORK |
 | API Management: Verwaltungsendpunkt | Eingehend | * <br>3443 | APIManagement <br>VIRTUAL_NETWORK |
 | Abhängigkeit von Richtlinie zum Anmelden bei Event Hub und Überwachungs-Agent | Ausgehend | * <br>5672 | VIRTUAL_NETWORK <br>EventHub |

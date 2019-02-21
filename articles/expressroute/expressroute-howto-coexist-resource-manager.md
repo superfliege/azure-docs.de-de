@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: charwen
 ms.custom: seodec18
-ms.openlocfilehash: a35bde6e89290fd2282ba6ec829f46cb4c6fc225
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 5242f31ff35e367211d48157fd4953751d1bb148
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54103314"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416291"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>Konfigurieren von parallel bestehenden ExpressRoute- und Standort-zu-Standort-Verbindungen mithilfe von PowerShell
 > [!div class="op_single_selector"]
@@ -81,9 +81,9 @@ Sie haben die Wahl zwischen zwei Vorgehensweisen. Welches Konfigurationsverfahre
 ## <a name="new"></a>So erstellen Sie ein neues virtuelles Netzwerk und parallele Verbindungen
 Dieses Verfahren führt Sie durch das Erstellen eines VNETs sowie durch das Erstellen paralleler Site-to-Site- und ExpressRoute-Verbindungen.
 
-1. Installieren Sie die neueste Version der Azure PowerShell-Cmdlets. Informationen zum Installieren der Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/overview). Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Sie nicht so vertraut sind. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden.
+1. Installieren Sie die neueste Version der Azure PowerShell-Cmdlets. Informationen zum Installieren der Cmdlets finden Sie unter [Installieren und Konfigurieren von Azure PowerShell](/powershell/azure/azurerm/overview). Für diese Konfiguration werden unter Umständen Cmdlets verwendet, mit denen Sie nicht so vertraut sind. Achten Sie darauf, die in dieser Anleitung angegebenen Cmdlets zu verwenden.
 
-2. Melden Sie sich bei Ihrem Konto an, und richten Sie die Umgebung ein.
+1. Melden Sie sich bei Ihrem Konto an, und richten Sie die Umgebung ein.
 
   ```powershell
   Connect-AzureRmAccount

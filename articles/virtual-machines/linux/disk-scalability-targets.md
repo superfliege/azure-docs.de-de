@@ -9,12 +9,12 @@ ms.topic: article
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: linux
 ms.subservice: disks
-ms.openlocfilehash: 26b14f4b7c33c579d0a078878be70524ea59cff8
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 39e0a36b50a9e222e6016140967336ccda167514
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457563"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330051"
 ---
 # <a name="scalability-and-performance-targets-for-vm-disks-on-linux"></a>Skalierbarkeits- und Leistungsziele für VM-Datenträger unter Linux
 
@@ -36,4 +36,3 @@ Größen, die mit einem Sternchen gekennzeichnet sind, befinden sich derzeit in 
 ## <a name="see-also"></a>Weitere Informationen
 
 [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits)
-

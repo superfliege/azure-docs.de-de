@@ -12,16 +12,16 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/14/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 0073427028d20ab969b8d0135b1c831d7fdf8c73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b821c5cfa0dd9ea605d0d0a73e0b98a64a7502b7
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191965"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268650"
 ---
 # <a name="start-and-stop-the-azure-stack-development-kit-asdk"></a>Starten und Beenden des Azure Stack Development Kits (ASDK)
 Es wird nicht empfohlen, den ASDK-Hostcomputer einfach neu zu starten. Stattdessen sollten Sie die Verfahren in diesem Artikel befolgen, um ASDK-Dienste ordnungsgemäß herunterzufahren und neu zu starten. 
@@ -29,7 +29,7 @@ Es wird nicht empfohlen, den ASDK-Hostcomputer einfach neu zu starten. Stattdess
 ## <a name="stop-azure-stack"></a>Beenden von Azure Stack 
 Um Azure Stack-Dienste und den ASDK-Hostcomputer ordnungsgemäß herunterzufahren, verwenden Sie die folgenden PowerShell-Befehle:
 
-1. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\CloudAdmin“ an.
+1. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\AzureStackAdmin“ an.
 2. Starten Sie PowerShell als Administrator (nicht PowerShell ISE).
 3. Führen Sie die folgenden Befehle aus, um eine privilegierte Endpunktsitzung (PEP) einzurichten: 
 
@@ -49,7 +49,7 @@ ASDK-Dienste sollten automatisch starten, wenn der Hostcomputer gestartet wird. 
 Unabhängig davon, wie das ASDK heruntergefahren wurde, sollten Sie die folgenden Schritte durchführen, um sicherzustellen, dass alle Azure Stack-Dienste nach Einschalten des Hostcomputers gestartet und voll funktionsfähig sind: 
 
 1. Schalten Sie den ASDK-Hostcomputer ein. 
-2. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\CloudAdmin“ an.
+2. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\AzureStackAdmin“ an.
 3. Starten Sie PowerShell als Administrator (nicht PowerShell ISE).
 4. Führen Sie die folgenden Befehle aus, um eine privilegierte Endpunktsitzung (PEP) einzurichten:
 
@@ -68,7 +68,7 @@ Weitere Informationen zu den empfohlenen Verfahren zum ordnungsgemäßen Herunte
 ## <a name="troubleshoot-startup-and-shutdown"></a>Behandeln von Problemen beim Starten und Herunterfahren 
 Führen Sie diese Schritte aus, wenn die Azure Stack-Dienste nicht innerhalb von zwei Stunden nach Einschalten des ASDK-Hostcomputers erfolgreich gestartet werden:
 
-1. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\CloudAdmin“ an.
+1. Melden Sie sich auf dem ASDK-Hostcomputer als „AzureStack\AzureStackAdmin“ an.
 2. Starten Sie PowerShell als Administrator (nicht PowerShell ISE).
 3. Führen Sie die folgenden Befehle aus, um eine privilegierte Endpunktsitzung (PEP) einzurichten:
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 9c5f998470d3bf2a66d7de43bd54d5da4db57608
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a6be2fbbf946f13213f95b8876cfdddfa2ffbe67
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55221751"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329216"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Einrichten der Notfallwiederherstellung in Azure für physische lokale Server
 
@@ -78,9 +78,6 @@ Richten Sie ein [Azure Storage-Konto](../storage/common/storage-quickstart-creat
 
 - Site Recovery repliziert lokale Computer in den Azure-Speicher. Virtuelle Azure-Computer werden nach dem Failover aus dem Speicher erstellt.
 - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-- Das Speicherkonto kann ein Standard- oder [Premium](../virtual-machines/windows/premium-storage.md)-Konto sein.
-- Wenn Sie ein Premium-Konto eingerichtet haben, benötigen Sie auch ein zusätzliches Standard-Konto für die Protokolldaten.
-
 
 
 ### <a name="prepare-an-account-for-mobility-service-installation"></a>Vorbereiten eines Kontos für die Installation des Mobility Services

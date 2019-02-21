@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: dfcbbacc5df394e0d2a515d557d655af0ea44d11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5862c6ef3c420c1722ddfbc1238be4e2bf43a507
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169971"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447417"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Erweitern von Azure HDInsight per Azure Virtual Network
 
@@ -221,8 +221,6 @@ Sie können den Netzwerkdatenverkehr in einem Azure Virtual Network mit den folg
 
 Als verwalteter Dienst benötigt HDInsight uneingeschränkten Zugriff auf die HDInsight-Integritäts- und -Verwaltungsdienste für eingehenden und ausgehenden Datenverkehr aus dem VNET. Beim Verwenden von NSGs und UDRs müssen Sie sicherstellen, dass diese Dienste weiterhin mit dem HDInsight-Cluster kommunizieren können.
 
-HDInsight macht Dienste auf mehreren Ports verfügbar. Wenn Sie die Firewall eines virtuellen Geräts verwenden, müssen Sie den Datenverkehr für die Ports zulassen, die für diese Dienste verwendet werden. Weitere Informationen finden Sie im Abschnitt [Erforderliche Ports].
-
 ### <a id="hdinsight-ip"></a>HDInsight mit Netzwerksicherheitsgruppen und benutzerdefinierten Routen
 
 Wenn Sie planen, **Netzwerksicherheitsgruppen** oder **benutzerdefinierte Routen** zum Steuern des Netzwerkdatenverkehrs zu verwenden, sollten Sie vor dem Installieren von HDInsight die folgenden Aktionen durchführen:
@@ -305,8 +303,6 @@ Wenn Sie Netzwerksicherheitsgruppen verwenden, müssen Sie Datenverkehr von den 
 3. Sie müssen auch den Zugriff von __168.63.129.16__ zulassen. Diese Adresse ist der rekursive Resolver von Azure. Weitere Informationen finden Sie im Dokument [Namensauflösung für virtuelle Computer und Rolleninstanzen](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md).
 
 Weitere Informationen finden Sie im Abschnitt [Steuern des Netzwerkdatenverkehrs](#networktraffic).
-
-Lassen Sie für ausgehende NSG-Regeln Datenverkehr von allen Quellen im VNET an die oben genannten Adressen als „Ziel-IP-Adressen“ zu.
 
 Wenn Sie benutzerdefinierte Routen (User-Defined Routes, UDRs) verwenden, sollten Sie eine Route angeben und ausgehenden Datenverkehr vom VNET an die oben genannten IP-Adressen zulassen und den nächsten Hop dabei auf „Internet“ festlegen.
     

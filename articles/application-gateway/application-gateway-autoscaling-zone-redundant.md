@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 2/5/2019
 ms.author: victorh
-ms.openlocfilehash: 880a6fc9d5636ff0ac67d24d0ef66c8f48ae22fb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bc1176ea97d1c2d4fc17487c0589fb4235163b46
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743649"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446510"
 ---
 # <a name="autoscaling-and-zone-redundant-application-gateway-public-preview"></a>Automatische Skalierung und zonenredundantes Application Gateway (öffentliche Vorschau)
 
@@ -45,7 +45,7 @@ Während der Vorschauphase fallen keine Kosten für das Anwendungsgateway an. An
 |Problem|Details|
 |--|--|
 |Authentifizierungszertifikat|Nicht unterstützt.<br>Weitere Informationen finden Sie unter [Übersicht über End-to-End-SSL mit Application Gateway](ssl-overview.md#end-to-end-ssl-with-the-v2-sku).|
-|Mischen von Standard_v2 und Standardanwendungsgateway in demselben Subnetz|Nicht unterstützt.<br>Wenn die automatische Skalierung aktiviert ist, kann ein Subnetz außerdem nur über ein Anwendungsgateway verfügen.|
+|Mischen von Standard_v2 und Standardanwendungsgateway in demselben Subnetz|Nicht unterstützt|
 |Benutzerdefinierte Route im Application Gateway-Subnetz|Nicht unterstützt|
 |NSG für Eingangsportbereich| - 65200 bis 65535 für Standard_v2-SKU<br>- 65503 bis 65534 für Standard-SKU.<br>Weitere Informationen finden Sie in den [häufig gestellten Fragen](application-gateway-faq.md#are-network-security-groups-supported-on-the-application-gateway-subnet).|
 |Leistungsprotokolle in Azure-Diagnose|Nicht unterstützt.<br>Es sollten Azure-Metriken verwendet werden.|

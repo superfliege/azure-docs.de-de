@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e3f60c3b0578647e68109a21ba7d57b083bea11
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae93cce7a26666383b609ac898a25fb84caee517
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184532"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301637"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>Tutorial: Azure Active Directory-Integration mit Workday
 
@@ -113,7 +113,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     ![SSO-Informationen zur Domäne und zu den URLs für Workday](./media/workday-tutorial/tutorial_workday_url.png)
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://impl.workday.com/<tenant>/login-saml2.htmld`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://impl.workday.com/<tenant>/login-saml2.flex`.
 
     b. Geben Sie im Textfeld **Bezeichner** eine URL ein: `https://www.workday.com`
 
@@ -166,7 +166,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
     >[!NOTE]
     > Der Wert des Umgebungsattributs wird an den Wert der Mandanten-URL gebunden:  
-    >- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z.B. *https://impl.workday.com/\<tenant\>/login-saml2.htmld*), muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
+    >- Wenn der Domänenname der Workday-Mandanten-URL mit „impl“ beginnt (z.B. *https://impl.workday.com/\<tenant\>/login-saml2.flex*), muss das Attribut **Environment** (Umgebung) auf „Implementation“ (Implementierung) festgelegt werden.  
     >- Wenn der Domänenname anders beginnt, müssen Sie sich mit dem [Supportteam für den Workday-Client](https://www.workday.com/en-us/partners-services/services/support.html) in Verbindung setzen, um den passenden Wert für die **Umgebung** zu erhalten.
 
 12. Führen Sie im Abschnitt **SAML-Setup** die folgenden Schritte aus:

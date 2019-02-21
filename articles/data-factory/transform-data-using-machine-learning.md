@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/16/2018
+ms.date: 02/20/2019
 ms.author: douglasl
-ms.openlocfilehash: 052839c679fc3efa61fca612b5139ede1991890c
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: a5ba45b8a7bd507552b49b6a18582c393ad07ff5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55080241"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446034"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Erstellen von Vorhersagepipelines mithilfe von Azure Machine Learning und Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,7 +47,6 @@ Sie können einen mit verknüpften **Azure Machine Learning**-Dienst erstellen, 
 {
     "type" : "linkedServices",
     "name": "AzureMLLinkedService",
-    "apiVersion" : "2017-09-01-preview",
     "properties": {
         "type": "AzureML",
         "typeProperties": {
@@ -127,10 +126,10 @@ Der folgende JSON-Codeausschnitt definiert eine Azure Machine Learning-Batchausf
 
 | Eigenschaft          | BESCHREIBUNG                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
-| name              | Name der Aktivität in der Pipeline     | JA      |
+| name              | Name der Aktivität in der Pipeline     | Ja      |
 | Beschreibung       | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
-| type              | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **AzureMLBatchExecution**. | JA      |
-| linkedServiceName | Mit dem verknüpften Azure Machine Learning-Dienst verknüpfte Dienste. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | JA      |
+| type              | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **AzureMLBatchExecution**. | Ja      |
+| linkedServiceName | Mit dem verknüpften Azure Machine Learning-Dienst verknüpfte Dienste. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
 | webServiceInputs  | Schlüssel, Wertepaare, Zuordnung der Namen von Eingaben in den Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Eingabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Eingabeblobs. | Nein        |
 | webServiceOutputs | Schlüssel, Wertepaare, Zuordnung der Namen von Ausgaben aus dem Azure Machine Learning-Webdienst. Der Schlüssel muss mit den Ausgabeparametern übereinstimmen, die im veröffentlichten Azure Machine Learning-Webdienst definiert sind. Der Wert ist ein Paar aus verknüpften Azure Storage-Diensten und „FilePath“-Eigenschaften zum Angeben der Speicherorte von Ausgabeblobs. | Nein        |
 | globalParameters  | Schlüssel-Wert-Paare, die an den Endpunkt des Azure Machine Learning Studio-Batchausführungsdiensts übergeben werden. Die Schlüssel müssen mit den Webdienstparametern übereinstimmen, die im veröffentlichten Azure Machine Learning Studio-Webdienst definiert sind. Die Werte werden in der GlobalParameters-Eigenschaft der Azure Machine Learning Studio-Batchausführungsanforderung übergeben. | Nein        |

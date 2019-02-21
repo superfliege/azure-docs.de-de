@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/19/18
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 81e0e89a8ad17c92a707bae001d2861404cd0d10
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: cff8b8af4ca40d428edf7c6e35976bcb154a28f1
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238838"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328689"
 ---
 # <a name="static-website-hosting-in-azure-storage"></a>Hosten von statischen Websites in Azure Storage
 Mit Azure Storage GPv2-Konten können Sie statische Inhalte (HTML-, CSS-, JavaScript- und Bilddateien) direkt über einen Speichercontainer mit dem Namen *$web* bereitstellen. Durch das Hosten in Azure Storage können Sie serverlose Architekturen, wie [Azure Functions](/azure/azure-functions/functions-overview) und andere PaaS-Dienste, verwenden.
@@ -109,7 +109,7 @@ Beispielsweise die folgenden Methoden können für die Bereitstellung von Inhalt
 
 - [AzCopy](../common/storage-use-azcopy.md)
 - [Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/)
-- [Azure Pipelines](https://code.visualstudio.com/tutorials/static-website/deploy-VSTS)
+- [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/)
 - [Visual Studio Code-Erweiterung](https://code.visualstudio.com/tutorials/static-website/getting-started)
 
 Stellen Sie in allen Fällen sicher, dass Sie Dateien in den Container *$web* kopieren.

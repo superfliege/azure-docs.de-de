@@ -5,15 +5,15 @@ services: virtual-machines
 author: cynthn
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
+ms.date: 12/21/2018
 ms.author: cynthn;davberg
 ms.custom: include file
-ms.openlocfilehash: 29f1ad29bf305150592fd1e634e006f83b296bbc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 86320af20a5f296358e1fd1d38eb297a8bb1a4bb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53784462"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56331101"
 ---
 Das Konzept der Azure-Compute-Einheit (Azure Compute Unit, ACU) bietet eine Möglichkeit zum Vergleichen der Rechenleistung (CPU) zwischen den Azure-SKUs. Auf diese Weise können Sie leicht feststellen, welche SKU Ihren Leistungsanforderungen am ehesten entspricht.  Zurzeit ist der ACU-Wert auf einem kleinen virtuellen Computer (Standard_A1) auf den Standardwert 100 festgelegt, und an den übrigen SKUs kann ungefähr abgelesen werden, wie viel schneller die jeweilige SKU einen Standard-Benchmarktest ausführen kann. 
 

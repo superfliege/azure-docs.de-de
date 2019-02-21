@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: fba109e04369c05f98e863b7dd0fa3d51f40d0ad
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: a82984ce4c2a2e44306abaa63265e0c25cc6ace4
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810237"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310290"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql-server"></a>Optimieren von Masseneinfügungen und der Verwendung von kurzlebigen Daten auf einem Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie Vorgänge für Masseneinfügungen optimieren und kurzlebige Daten auf einem Azure Database for PostgreSQL-Server verwenden können.
@@ -25,9 +25,9 @@ Das Einfügen in eine nicht protokollierte Tabelle bedeutet, dass PostgreSQL Ein
 
 Verwenden Sie die folgenden Optionen, um eine nicht protokollierte Tabelle zu erstellen:
 - Erstellen Sie eine neue nicht protokollierte Tabelle mit der Syntax `CREATE UNLOGGED TABLE <tableName>`.
-- Konvertieren Sie eine vorhandene protokollierte Tabelle in eine nicht protokollierte Tabelle mit der Syntax `ALTER <tableName> SET UNLOGGED`.  
+- Konvertieren Sie eine vorhandene protokollierte Tabelle in eine nicht protokollierte Tabelle mit der Syntax `ALTER TABLE <tableName> SET UNLOGGED`.  
 
-Verwenden Sie die Syntax `ALTER <tableName> SET LOGGED`, um den Prozess umzukehren.
+Verwenden Sie die Syntax `ALTER TABLE <tableName> SET LOGGED`, um den Prozess umzukehren.
 
 ## <a name="unlogged-table-tradeoff"></a>Nachteile von nicht protokollierten Tabellen
 Nicht protokollierte Tabellen sind nicht vor Abstürzen geschützt. Eine nicht protokollierte Tabelle wird nach einem Absturz automatisch gekürzt, oder es erfolgt das nicht korrekte Herunterfahren. Der Inhalt einer nicht protokollierten Tabelle wird zudem nicht auf Standbyservern repliziert. Alle Indizes, die für eine nicht protokollierte Tabelle erstellt werden, werden ebenfalls automatisch nicht protokolliert. Nachdem der Einfügevorgang abgeschlossen wurde, konvertieren Sie die Tabelle in den protokollierten Zustand, damit der Einfügevorgang dauerhafter Art ist.

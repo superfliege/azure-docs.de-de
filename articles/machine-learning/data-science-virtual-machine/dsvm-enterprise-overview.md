@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: fca4b7cc59bf191094400892a37addf1023e2f85
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2e17ab5cfe51f3772148cc730c982671d602a79a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55472948"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340477"
 ---
 # <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Auf Data Science Virtual Machine basierende Teamanalyse und KI-Umgebung 
 [Data Science Virtual Machine](overview.md) (DSVM) bietet eine umfangreiche Umgebung in der Azure-Plattform mit vorgefertigter Software für künstliche Intelligenz (KI) und Datenanalyse. 
@@ -47,7 +47,7 @@ In dieser Artikelreihe werden Anleitungen und Hinweise zu jedem der vorangegange
 * [Überwachung](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) und [Verwaltung](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Protokollierung und Überwachung](https://docs.microsoft.com/azure/security/azure-log-audit)
 * [Rollenbasierte Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [Richtlinieneinstellung und -erzwingung](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [Richtlinieneinstellung und -erzwingung](../../governance/policy/overview.md)
 * [Antischadsoftware](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [Verschlüsselung](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
 * [Datenermittlung und Governance](https://docs.microsoft.com/azure/data-catalog/)

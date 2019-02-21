@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c1718c5a2acfe49fba4974bcf7e580c45553113d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108737"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268378"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zur Anwendungsleistung von Web-Apps in Azure
 
@@ -113,7 +113,7 @@ So schalten Sie die Ablaufverfolgung für Anforderungsfehler ein
 10. Wählen Sie **Web.config** aus.
 11. Fügen Sie „system.webServer“ diese Konfiguration hinzu (um eine bestimmte URL zu erfassen):
 
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*api*" />
@@ -129,7 +129,7 @@ So schalten Sie die Ablaufverfolgung für Anforderungsfehler ein
     </tracing>
     ```
 12. Um Probleme aufgrund langsamer Leistung zu beheben, fügen Sie diese Konfiguration hinzu (wenn die Erfassungsanforderung mehr als 30 Sekunden benötigt):
-    ```
+    ```xml
     <system.webServer>
     <tracing> <traceFailedRequests>
     <remove path="*" />

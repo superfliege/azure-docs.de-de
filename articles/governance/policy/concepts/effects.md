@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cf30d5dd8648a2b1da3f4a40399376182bf342c4
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8a784bb4e37caa28c89939bdcec5139648164b1a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562299"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340849"
 ---
-# <a name="understand-policy-effects"></a>Grundlegendes zu Richtlinienauswirkungen
+# <a name="understand-azure-policy-effects"></a>Grundlegendes zu Azure Policy-Auswirkungen
 
 Jede Richtliniendefinition in Azure Policy hat eine einzelne Auswirkung. Diese Auswirkung bestimmt, was geschieht, wenn die Richtlinienregel auf eine Übereinstimmung ausgewertet wird. Die Auswirkungen für eine neue Ressource, eine aktualisierte Ressource oder eine vorhandene Ressource sind hierbei unterschiedlich.
 

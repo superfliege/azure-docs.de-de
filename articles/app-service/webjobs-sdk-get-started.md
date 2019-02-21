@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/15/2019
 ms.author: glenga
-ms.openlocfilehash: 9e85dbe21b98ce936ede09e741e83f59a865b73e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b39c8c19b494422d34bae7145d69e8e95cb16846
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999384"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416819"
 ---
 # <a name="get-started-with-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>Erste Schnitte mit dem Azure WebJobs SDK für die ereignisgesteuerte Hintergrundverarbeitung
 
@@ -431,7 +431,7 @@ In diesem Abschnitt führen Sie die folgenden Aufgaben zum Einrichten der Applic
 
 1. Wenn Sie noch nicht über eine Application Insights-Ressource verfügen, die Sie verwenden können, [erstellen Sie eine](../azure-monitor/app/create-new-resource.md ). Legen Sie den **Anwendungstyp** auf **Allgemein** fest, und überspringen Sie die Abschnitte die dem Abschnitt **Kopieren des Instrumentierungsschlüssels** folgen.
 
-1. Wenn Sie bereits über eine Application Insights-Ressource verfügen, die Sie verwenden möchten, [kopieren Sie den Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key).
+1. Wenn Sie bereits über eine Application Insights-Ressource verfügen, die Sie verwenden möchten, [kopieren Sie den Instrumentierungsschlüssel](../azure-monitor/app/create-new-resource.md#copy-the-instrumentation-key).
 
 ### <a name="configure-app-settings"></a>Konfigurieren von App-Einstellungen 
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 68a652fe16162d96d4ec07e6690f10f0bd34f2c0
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 4dc68127f2d19426c372be027634bb2563dbfa6c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980872"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341656"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-windows-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Windows-Computern einzuschränken
 
@@ -30,7 +30,7 @@ Dieses Tutorial verwendet Azure PowerShell innerhalb der Cloud Shell, die ständ
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
-Um einzuschränken, welche Erweiterungen installiert werden können, benötigen Sie eine [Regel](/azure/azure-policy/policy-definition#policy-rule), um die Logik zum Identifizieren der Erweiterung bereitzustellen.
+Um einzuschränken, welche Erweiterungen installiert werden können, benötigen Sie eine [Regel](../../governance/policy/concepts/definition-structure.md#policy-rule), um die Logik zum Identifizieren der Erweiterung bereitzustellen.
 
 Dieses Beispiel zeigt Ihnen, wie Sie Erweiterungen ablehnen, die von „Microsoft.Compute“ veröffentlicht wurden, indem Sie eine Regeldatei in Azure Cloud Shell erstellen, aber wenn Sie lokal in PowerShell arbeiten, können Sie auch eine lokale Datei erstellen und den Pfad ($home/clouddrive) durch den Pfad zu der lokalen Datei auf Ihrem Computer ersetzen.
 
@@ -70,7 +70,7 @@ Wenn Sie fertig sind, drücken die **STRG + O** und dann die **EINGABETASTE** zu
 
 ## <a name="create-a-parameters-file"></a>Erstellen einer Parameterdatei
 
-Sie benötigen auch eine [Parameterdatei](/azure/azure-policy/policy-definition#parameters), die für Sie eine Struktur für die Übergabe einer Liste der zu blockierenden Erweiterungen erstellt. 
+Sie benötigen auch eine [Parameterdatei](../../governance/policy/concepts/definition-structure.md#parameters), die für Sie eine Struktur für die Übergabe einer Liste der zu blockierenden Erweiterungen erstellt. 
 
 Dieses Beispiel zeigt Ihnen, wie Sie eine Parameterdatei für VMs in Cloud Shell erstellen, aber wenn Sie lokal in PowerShell arbeiten, können Sie auch eine lokale Datei erstellen und den Pfad ($home/clouddrive) durch den Pfad zu der lokalen Datei auf Ihrem Computer ersetzen.
 
@@ -166,4 +166,4 @@ Remove-AzPolicyDefinition -Name not-allowed-vmextension-windows
 ```
     
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).

@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 72229a723247d6f0d68341771b073d0626ab2edb
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 2ec2ddbac5d0368aaf1b46208c9ebb44bf12a622
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745995"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447309"
 ---
 # <a name="assets"></a>Objekte
 
@@ -48,8 +48,7 @@ Einer der gängigsten Media Services-Workflows besteht aus dem Hochladen, Codier
 4. Verwenden Sie Media Services v3-APIs, um eine Transformation und einen Auftrag zur Verarbeitung Ihres Eingabemedienobjekts zu erstellen. Weitere Informationen finden Sie unter [Transformationen und Aufträge](transform-concept.md).
 5. Streamen Sie die Inhalte des Ausgabemedienobjekts.
 
-> [!TIP]
-> Unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md) finden Sie ein vollständiges .NET-Beispiel für folgende Aufgaben: Erstellen des Medienobjekts, Abrufen einer beschreibbaren SAS-URL zum Container des Medienobjekts im Container und Hochladen der Datei in den Container im Speicher über die SAS-URL.
+Unter [Erstellen einer Auftragseingabe aus einer lokalen Datei](job-input-from-local-file-how-to.md) finden Sie ein vollständiges .NET-Beispiel für folgende Aufgaben: Erstellen des Medienobjekts, Abrufen einer beschreibbaren SAS-URL zum Container des Medienobjekts im Container und Hochladen der Datei in den Container im Speicher über die SAS-URL.
 
 ### <a name="create-a-new-asset"></a>Erstellen des neuen Medienobjekts
 

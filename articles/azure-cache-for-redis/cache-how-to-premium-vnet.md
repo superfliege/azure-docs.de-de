@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: yegu
-ms.openlocfilehash: dafa9f09b6aed1f61facf3737c7e03c81b2a0e7d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 15b7bae6116d05e7bf4cd76a1ba1b93bb127fef8
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238248"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313091"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -85,7 +85,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 
 * Welche Probleme treten häufig bei einer fehlerhaften Konfiguration von Azure Cache for Redis und VNETs auf?
 * [Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
-* [Warum erhalte ich beim Versuch, eine Verbindung mit Azure Cache for Redis in einem VNET herzustellen, die Fehlermeldung, dass das Remotezertifikat ungültig ist?](#when-trying-to-connect-to-my-redis-cache-in-a-vnet-why-am-i-getting-an-error-stating-the-remote-certificate-is-invalid)
+* Warum erhalte ich beim Versuch, eine Verbindung mit Azure Cache for Redis in einem VNET herzustellen, die Fehlermeldung, dass das Remotezertifikat ungültig ist?
 * [Kann ich VNets mit einem Standard-Cache oder Basic-Cache verwenden?](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * Warum misslingt das Erstellen einer Azure Cache for Redis-Instanz in einigen Subnetzen, aber in anderen nicht?
 * [Welche Anforderungen gelten für den Subnetzadressraum?](#what-are-the-subnet-address-space-requirements)

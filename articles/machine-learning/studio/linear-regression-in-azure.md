@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 12c82d440613078e9f0593ddb9fb6c7fe7b8c362
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 5db8c4be9317706fcc8a31b916cff72fd13596d6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488354"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453295"
 ---
 # <a name="migrate-analytics-from-excel-to-azure-machine-learning-studio"></a>Migrieren von Analysen aus Excel zu Azure Machine Learning Studio
 
@@ -102,11 +102,11 @@ Unsere Lösung bestand darin, das Machine Learning-Regressionsmodell in Form ein
 
 Der Abschnitt *Web Services-Dashboard* enthält eine Excel-Arbeitsmappe als Download. Die Arbeitsmappe ist bereits vorformatiert und enthält die Webdienst-API und die Schema-Informationen. Die Arbeitsmappe wird durch Klicken auf *Download Excel Workbook* (Excel-Arbeitsmappe herunterladen) geöffnet, und Sie können sie auf Ihrem lokalen Computer speichern. 
 
-![][1]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-1.png)
 
 Kopieren Sie bei geöffnetem Arbeitsblatt Ihre vordefinierten Parameter in den blauen Parameterabschnitt, wie unten gezeigt. Sobald die Parameter eingegeben werden, ruft Excel den Machine Learning-Webdienst auf, und die prognostizierten Werte werden im grünen Abschnitt „Predicted Values“ (Prognostizierte Werte) angezeigt. Das Arbeitsblatt erstellt anhand Ihres trainierten Modells fortlaufend Prognosen für alle unter Parameter eingegebenen Zeilenelemente. Weitere Informationen zum Verwenden dieser Funktion finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts aus Excel](consuming-from-excel.md). 
 
-![][2]
+![](./media/linear-regression-in-azure/machine-learning-linear-regression-in-azure-2.png)
 
 ### <a name="optimization-and-further-experiments"></a>Optimieren und weitere Untersuchungen
 Nun, da wir mit dem Excel-Modell unseren Benchmark erreicht hatten, versuchten wir uns daran, unser Modell der linearen Regression in Machine Learning zu optimieren. Wir verwendeten das Modul [Filter-Based Feature Selection][filter-based-feature-selection], um unsere Auswahl der anfänglichen Datenelemente zu verbessern, und konnten dadurch eine Leistungsverbesserung von 4,6 % (mittlerer absoluter Fehler) erreichen. Für zukünftige Projekte werden wir diese Funktion verwenden, die uns möglicherweise wochenlanges Iterieren von Datenattributen zum Herausfinden des richtigen Funktionssatzes für das Modell erspart. 

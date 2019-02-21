@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: da75d829ccb74f7be675501b601ad3e6375bfb70
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813159"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312853"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen
 
@@ -50,7 +50,7 @@ Die Konfiguration von Active Directory für Azure Stack bestimmt die Vorgehenswe
 * Erstellen eines Dienstprinzipals für [Azure Active Directory (Azure AD)](azure-stack-create-service-principals.md#create-service-principal-for-azure-ad)
 * Erstellen eines Dienstprinzipals für [Active Directory-Verbunddienste (Azure Directory Federation Services, AD FS)](azure-stack-create-service-principals.md#create-service-principal-for-ad-fs)
 
-Die Schritte zum Zuweisen eines Dienstprinzipals zu einer Rolle sind für Azure AD und AD FS identisch. Nach der Erstellung des Dienstprinzipals können Sie durch Zuweisung zu einer Rolle [Berechtigungen delegieren](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Die Schritte zum Zuweisen eines Dienstprinzipals zu einer Rolle sind für Azure AD und AD FS identisch. Nach der Erstellung des Dienstprinzipals können Sie durch Zuweisung zu einer Rolle [Berechtigungen delegieren](azure-stack-create-service-principals.md).
 
 ## <a name="create-service-principal-for-azure-ad"></a>Erstellen des Dienstprinzipals für Azure AD
 
@@ -85,7 +85,7 @@ Wenn Sie den Schlüssel gespeichert haben, wird unter **WERT** der Schlüssel an
 
 ![Schlüsselwertwarnung für den gespeicherten Schlüssel](./media/azure-stack-create-service-principal/image15.png)
 
-Der letzte Schritt besteht im [Zuweisen einer Rolle zu Ihrer Anwendung](azure-stack-create-service-principals.md#assign-role-to-service-principal).
+Der letzte Schritt besteht im [Zuweisen einer Rolle zu Ihrer Anwendung](azure-stack-create-service-principals.md).
 
 ## <a name="create-service-principal-for-ad-fs"></a>Erstellen eines Dienstprinzipals für AD FS
 

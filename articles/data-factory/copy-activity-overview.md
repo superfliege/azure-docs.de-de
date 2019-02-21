@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: e7d08ec0d25e7666acb510c4bae5533975b21039
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296544"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311131"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -129,12 +129,12 @@ Die folgende Vorlage einer Kopieraktivität enthält eine vollständige Liste un
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft einer Kopieraktivität muss auf Folgendes festgelegt werden: **Copy** | JA |
-| inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | JA |
-| outputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Senkendaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Ausgabe. | JA |
-| typeProperties | Eine Gruppe von Eigenschaften zum Konfigurieren der Kopieraktivität. | JA |
-| Quelle | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | JA |
-| sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | JA |
+| type | Die type-Eigenschaft einer Kopieraktivität muss auf Folgendes festgelegt werden: **Copy** | Ja |
+| inputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Quelldaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Eingabe. | Ja |
+| outputs | Geben Sie das Dataset an, das Sie erstellt haben und das auf die Senkendaten verweist. Die Kopieraktivität unterstützt nur eine einzelne Ausgabe. | Ja |
+| typeProperties | Eine Gruppe von Eigenschaften zum Konfigurieren der Kopieraktivität. | Ja |
+| Quelle | Geben Sie den Quelltyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Abrufen von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | Ja |
+| sink | Geben Sie den Senkentyp für den Kopiervorgang und die zugehörigen Eigenschaften zum Schreiben von Daten an.<br/><br/>Informationen finden Sie im Abschnitt mit den Eigenschaften der Kopieraktivität im Connectorartikel, der unter [Unterstützte Datenspeicher und Formate](#supported-data-stores-and-formats) aufgeführt ist. | Ja |
 | translator | Geben Sie explizite Spaltenzuordnungen von der Quelle zur Senke an. Gilt, wenn das Standardverhalten für den Kopiervorgang Ihre Anforderungen nicht erfüllen kann.<br/><br/>Informationen finden Sie unter [Schema- und Datentypzuordnung](copy-activity-schema-and-type-mapping.md). | Nein  |
 | dataIntegrationUnits | Geben Sie die Leistungsfähigkeit von [Azure Integration Runtime](concepts-integration-runtime.md) an, um das Kopieren der Daten zu unterstützen. Ehemals Einheiten für Clouddatenverschiebungen. <br/><br/>Informationen finden Sie unter [Datenintegrationseinheiten](copy-activity-performance.md#data-integration-units). | Nein  |
 | parallelCopies | Geben Sie die Parallelität an, die die Kopieraktivität beim Lesen von Daten aus der Quelle und beim Schreiben von Daten in die Senke verwenden soll.<br/><br/>Informationen finden Sie unter [Parallele Kopie](copy-activity-performance.md#parallel-copy). | Nein  |
