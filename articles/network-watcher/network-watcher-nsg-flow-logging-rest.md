@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 58486ab821b6b01f531f62445a9d4ade1336569a
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 565b5bcce114ab5ebd2169ece11a958013cf2ee5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332012"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338902"
 ---
 # <a name="configuring-network-security-group-flow-logs-using-rest-api"></a>Konfigurieren von Flowprotokollen für Netzwerksicherheitsgruppen mit der REST-API
 
@@ -30,9 +30,6 @@ ms.locfileid: "54332012"
 > - [REST-API](network-watcher-nsg-flow-logging-rest.md)
 
 Flowprotokolle für Netzwerksicherheitsgruppen sind ein Network Watcher-Feature, mit dem Sie Informationen zu ein- und ausgehendem IP-Datenverkehr über eine Netzwerksicherheitsgruppe anzeigen können. Diese Flowprotokolle sind im JSON-Format geschrieben und zeigen ausgehende und eingehende Datenflüsse pro Regel, die NIC, auf die sich der Datenfluss bezieht, 5-Tupel-Informationen über den Datenfluss (Quell-/Ziel-IP, Quell-/Zielport, Protokoll) und Informationen zu zugelassenem oder verweigertem Datenverkehr.
-
-> [!NOTE] 
-> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihr Speicherkonto ausgegeben werden.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 

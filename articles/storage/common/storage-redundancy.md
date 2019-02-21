@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 0ba36042d02d0b4101f1e80c63af232717bcf4ca
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: ea6d94ff1ee8c27c1642f24660a6ab4f276137a8
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506786"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330782"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage-Redundanz
 
@@ -48,7 +48,7 @@ Die Preisen für die verschiedenen Redundanzoptionen finden Sie unter [Preise f�
 Informationen zu Azure Storage-Garantien in Bezug auf Dauerhaftigkeit und Verfügbarkeit finden Sie im [SLA für Azure Storage](https://azure.microsoft.com/support/legal/sla/storage/).
 
 > [!NOTE]
-> Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS). Weitere Informationen zu Storage Premium finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../virtual-machines/windows/premium-storage.md).
+> Storage Premium unterstützt nur lokal redundanten Speicher (Locally Redundant Storage, LRS).
 
 ## <a name="changing-replication-strategy"></a>Ändern der Replikationsstrategie
 Wir erlauben Ihnen, die Replikationsstrategie für Ihr Speicherkonto mithilfe von [Azure-Portal](https://portal.azure.com/), [Azure Powershell](storage-powershell-guide-full.md), [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder einer der vielen [ Azure-Clientbibliotheken](https://docs.microsoft.com/azure/index?view=azure-dotnet#pivot=sdkstools) zu ändern. Bei einer Änderung des Replikationstyps Ihres Speicherkontos treten keine Ausfallzeiten auf.

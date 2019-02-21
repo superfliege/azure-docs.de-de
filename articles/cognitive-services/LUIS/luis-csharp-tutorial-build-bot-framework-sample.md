@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: d1534f76c4ef0c1edd8d83522f2d0855def48f25
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fc8283d85cf7d516edd78f20c9a47d806fbb827b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880873"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328961"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>Der LUIS-Bot in C# wird mit Bot Framework 3.x und dem Azure Web-App-Bot erstellt.
 
@@ -45,7 +45,7 @@ Erstellen Sie mithilfe von C# einen in LUIS (Language Understanding Intelligent 
 
 3. Klicken Sie im Fenster des Web-App-Bots auf **Erstellen**.
 
-4. Geben Sie unter **Botdienst** die erforderlichen Informationen ein, und klicken Sie auf **Erstellen**. Dadurch werden der Botdienst und die LUIS-App erstellt und in Azure bereitgestellt. Wenn Sie die [Vorbereitung der Spracherkennung](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) verwenden möchten, überprüfen Sie die [Regionsanforderungen](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming), bevor Sie den Bot erstellen. 
+4. Geben Sie unter **Botdienst** die erforderlichen Informationen ein, und klicken Sie auf **Erstellen**. Dadurch werden der Botdienst und die LUIS-App erstellt und in Azure bereitgestellt. Wenn Sie die [Vorbereitung der Spracherkennung](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming) verwenden möchten, überprüfen Sie die [Regionsanforderungen](troubleshooting.md#what-luis-regions-support-bot-framework-speech-priming), bevor Sie den Bot erstellen. 
     * Legen Sie den **App-Namen** auf den Namen Ihres Bots fest. Der Name wird als Unterdomäne verwendet, wenn Ihr Bot in der Cloud bereitgestellt wird (z.B. meinnotizbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Wählen Sie das Abonnement, die [Ressourcengruppe](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), den App Service-Plan und den [Standort](https://azure.microsoft.com/regions/) aus.
     * Wählen Sie für **Botvorlage** Folgendes aus:

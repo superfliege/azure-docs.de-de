@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: 0bc53edb00ea13fdfcab3cfc398e122e6ecd7632
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106323"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268293"
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>Anzeigen von Aktivitätsprotokollen, um Aktionen an Ressourcen zu überwachen
 
@@ -34,9 +34,6 @@ Das Aktivitätsprotokoll enthält alle Schreibvorgänge (PUT, POST, DELETE), die
 Aktivitätsprotokolle werden 90 Tage lang aufbewahrt. Sie können beliebige Datumsbereiche abfragen, das Startdatum darf jedoch maximal 90 Tage zurückliegen.
 
 Sie können Informationen aus den Aktivitätsprotokollen über das Portal, PowerShell, die Azure-Befehlszeilenschnittstelle, die Insights-REST-API oder die [Insights-.NET-Bibliothek](https://www.nuget.org/packages/Microsoft.Azure.Insights/)abrufen.
-
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="the-azure-portal"></a>Das Azure-Portal
 

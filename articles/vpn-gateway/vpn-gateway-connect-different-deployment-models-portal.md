@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d2edeaf7423d3a46becf386294d2dd8c46e9ab7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508333"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417972"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -30,6 +30,8 @@ Das Verbinden eines klassischen VNet mit einem Resource Manager-VNet ähnelt dem
 Falls Sie noch kein Gateway für virtuelle Netzwerke besitzen und keins erstellen möchten, können Sie stattdessen die VNETS mittels VNET-Peering verbinden. Beim VNET-Peering wird kein VPN-Gateway verwendet. Weitere Informationen finden Sie unter [VNet-Peering](../virtual-network/virtual-network-peering-overview.md).
 
 ### <a name="before"></a>Voraussetzungen
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 * Bei den folgenden Schritten wird davon ausgegangen, dass beide VNETs bereits erstellt wurden. Wenn Sie diesen Artikel als Übung verwenden und Sie keine VNETs besitzen, finden Sie über die in den Schritten angegebenen Links Informationen zu ihrer Erstellung.
 * Stellen Sie sicher, dass sich die Adressbereiche für die VNETs weder einander überlappen noch die Bereiche für andere Verbindungen, mit denen die Gateways verbunden werden können.
@@ -226,19 +228,19 @@ In den folgenden Schritten konfigurieren Sie die Verbindung zwischen dem klassis
 Öffnen Sie die PowerShell-Konsole mit erhöhten Rechten, und melden Sie sich bei Ihrem Azure-Konto an. Nachdem Sie sich angemeldet haben, werden Ihre Kontoeinstellungen heruntergeladen, sodass sie in Azure PowerShell verfügbar sind. Das folgende Cmdlet fordert Sie zur Eingabe der Anmeldeinformationen für Ihr Azure-Konto für das Resource Manager-Bereitstellungsmodell auf:
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Rufen Sie eine Liste Ihrer Azure-Abonnements ab.
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 Wenn Sie über mehrere Abonnements verfügen, geben Sie das Abonnement an, das Sie verwenden möchten.
 
 ```powershell
-Select-AzureRmSubscription -SubscriptionName "Name of subscription"
+Select-AzSubscription -SubscriptionName "Name of subscription"
 ```
 
 Melden Sie sich anschließend an, um die klassischen PowerShell-Cmdlets zu verwenden (Dienstverwaltung). Verwenden Sie den folgenden Befehl, um Ihr Azure-Konto für das klassische Bereitstellungsmodell hinzuzufügen:

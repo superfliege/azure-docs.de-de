@@ -15,12 +15,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2fdede1308ac2c4c036d835a7be28b0e5ee180d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ea25510596903e4020e8237bc5bd389c584ead9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207074"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268430"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Administratorrollen nach Administratoraufgabe in Azure Active Directory
 
@@ -202,8 +202,8 @@ Löschen aller vorhandenen App-Kennwörter, die von den ausgewählten Benutzern 
 Deaktivieren der MFA | Globaler Administrator | 
 MFA aktivieren | Globaler Administrator | 
 Verwalten von MFA-Diensteinstellungen | Globaler Administrator | 
-Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen. | Globaler Administrator | 
-Wiederherstellen der mehrstufigen Authentifizierung für alle gespeicherten Geräte  | Globaler Administrator | 
+Ausgewählte Benutzer müssen Kontaktmethoden erneut bereitstellen. | Authentifizierungsadministrator | 
+Wiederherstellen der mehrstufigen Authentifizierung für alle gespeicherten Geräte  | Authentifizierungsadministrator | 
 
 ## <a name="mfa-server"></a>MFA-Server
 

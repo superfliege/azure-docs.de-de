@@ -13,12 +13,12 @@ ms.date: 01/31/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84a1fd3efb9eac30e70fea9622716a54769369e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 78fc7441b109c87f1ab9ff5b56ed8e055c152d10
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184124"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456060"
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator-App – häufig gestellte Fragen
 
@@ -49,7 +49,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 |Warum wird die Microsoft Authenticator-Begleit-App für Apple Watch auf meiner Watch nicht synchronisiert oder angezeigt?|Wenn die App auf Ihrer Apple Watch nicht angezeigt wird, versuchen Sie Folgendes: <ol><li>Stellen Sie sicher, dass auf Ihrer Apple Watch watchOS 4.0 oder höher ausgeführt wird.</li><li>Synchronisieren Sie Ihre Apple Watch erneut.</li></ol>|
 |Meine Apple Watch-Begleit-App ist abgestürzt. Kann ich Ihnen meine Absturzprotokolle zur Untersuchung senden? |Sie müssen zuerst sicherstellen, dass Sie sich entschieden haben, Ihre Analysen für uns freizugeben. Als TestFlight-Benutzer sind Sie bereits registriert. Andernfalls wechseln Sie zu **Einstellungen > Datenschutz > Analyse**, und wählen Sie sowohl die Option **iPhone- und Watch-Analyse freigeben** als auch **Für App-Entwickler freigeben** aus.<br><br>Nachdem Sie sich angemeldet haben, können Sie versuchen, den Absturz zu reproduzieren, damit Ihre Absturzprotokolle automatisch zur Untersuchung an uns gesendet werden. Wenn Sie den Absturz jedoch nicht reproduzieren können, können Sie die Protokolldateien manuell kopieren und an uns senden.<ol><li>Öffnen die Watch-App auf Ihrem Telefon, wechseln Sie zu **Einstellungen > Allgemein**, und klicken Sie dann auf **Watch-Analyse kopieren**.</li><li>Suchen Sie den entsprechenden Absturz unter **Einstellungen > Datenschutz > Analyse > Analysedaten**, und kopieren Sie dann den gesamten Text manuell.</li><li>Öffnen Sie die Microsoft Authenticator-App auf Ihrem Telefon, und fügen Sie den kopierten Text in das Textfeld **Für App-Entwickler freigeben** auf der Seite **Protokolle senden** ein.</li></ol>|
 |Was ist die App-Sperre, und wie kann sie meine Sicherheit erhöhen?|Um die Sicherheit Ihrer Einmalkennungen, App-Informationen und App-Einstellungen zu erhöhen, können Sie in der Microsoft Authenticator-App das Feature „App-Sperre“ aktivieren. Das Aktivieren der App-Sperre auf dem Bildschirm **Einstellungen** der Microsoft Authenticator-App bedeutet, dass Sie bei jedem Öffnen der Microsoft Authenticator-App aufgefordert werden, sich mit Ihrer PIN oder Ihren biometrischen Daten zu authentifizieren. Dieses Feature bietet zusätzlichen Schutz, die Art und Weise, wie Sie Ihre Benachrichtigungen in der Microsoft Authenticator-App genehmigen, ändert sich jedoch nicht.<br><br>**Hinweis**<br>Wenn Sie auf einem Android-Gerät in weniger als 30 Sekunden zur Microsoft Authenticator-App zurückkehren, werden Sie nicht zur erneuten Authentifizierung aufgefordert.|
-|Warum erhalte ich Benachrichtigungen über meine Kontoaktivität?|Damit Sie besser über die Aktivitäten mit Ihrem persönlichen Microsoft-Konto informiert sind, senden wir Aktivitätsbenachrichtigungen an Ihre Microsoft Authenticator-App. Diese Benachrichtigungen werden sofort angezeigt, wenn sich etwas geändert hat, und sollen zu Ihrem Schutz beitragen. Diese Benachrichtigungen wurden bisher per E-Mail und SMS gesendet. Jetzt haben wir die Benachrichtigungswege um die App erweitert. Weitere Informationen zu diesen Aktivitätsbenachrichtigungen finden Sie unter [Was passiert bei einer ungewöhnlichen Anmeldung bei Ihrem Konto?](https://support.microsoft.com/en-us/help/13967/microsoft-account-unusual-sign-in). Wenn Sie die Benachrichtigungsmethode ändern möchten, melden Sie sich bei https://account.live.com/SecurityNotifications/Update an.|
+|Warum erhalte ich Benachrichtigungen über meine Kontoaktivität?|Damit Sie besser über die Aktivitäten mit Ihrem persönlichen Microsoft-Konto informiert sind, senden wir Aktivitätsbenachrichtigungen an Ihre Microsoft Authenticator-App. Diese Benachrichtigungen werden sofort angezeigt, wenn sich etwas geändert hat, und sollen zu Ihrem Schutz beitragen. Diese Benachrichtigungen wurden bisher per E-Mail und SMS gesendet. Jetzt haben wir die Benachrichtigungswege um die App erweitert. Weitere Informationen zu diesen Aktivitätsbenachrichtigungen finden Sie unter [Was passiert bei einer ungewöhnlichen Anmeldung bei Ihrem Konto?](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Wenn Sie die Benachrichtigungsmethode ändern möchten, melden Sie sich bei https://account.live.com/SecurityNotifications/Update an.|
 
 
 ## <a name="next-steps"></a>Nächste Schritte
@@ -58,4 +58,4 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 -   Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen](security-info-manage-settings.md).
 
-- Falls Ihre Frage hier nicht beantwortet wurde, lassen Sie es uns wissen. Posten Sie Ihre Frage im [Forum der Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-US/home?forum=MicrosoftAuthenticatorApp), um Hilfe aus der Community zu erhalten, oder hinterlassen Sie einen Kommentar auf dieser Seite.
+- Falls Ihre Frage hier nicht beantwortet wurde, lassen Sie es uns wissen. Posten Sie Ihre Frage im [Forum der Microsoft Authenticator-App](https://social.technet.microsoft.com/Forums/en-us/home?forum=MicrosoftAuthenticatorApp), um Hilfe aus der Community zu erhalten, oder hinterlassen Sie einen Kommentar auf dieser Seite.

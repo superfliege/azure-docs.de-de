@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: bryanla
-ms.openlocfilehash: 3fb11ad74e3d1628cbf3f00e2aae648be3eea437
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1ac0f54aa4dfdc9db4724629c4dbfe7a4982838f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107683"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301229"
 ---
 # <a name="common-parameters-and-headers"></a>Allgemeine Parameter und Header
 
@@ -34,12 +34,14 @@ Die folgenden Informationen gelten für alle Vorgänge, die Sie ggf. im Zusammen
 ## <a name="common-error-response"></a>Allgemeine Fehlerantwort
 Der Dienst gibt anhand von HTTP-Statuscodes an, ob der Vorgang erfolgreich oder fehlerhaft war. Außerdem enthalten Fehler eine Antwort im folgenden Format:
 
+```
    {  
      "error": {  
      "code": "BadRequest",  
-     "message": "Die Schlüsseltresor-SKU ist ungültig."  
+     "message": "The key vault sku is invalid."  
      }  
    }  
+```
 
 |Elementname | Typ | BESCHREIBUNG |
 |---|---|---|

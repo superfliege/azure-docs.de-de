@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: a70c200f0260d87d35eae8728ed1f908e7061f32
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979104"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311969"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -29,11 +29,11 @@ Containereinstellungen sind [hierarchisch](#hierarchical-settings) und können m
 [!INCLUDE [Container shared configuration settings table](../../../includes/cognitive-services-containers-configuration-shared-settings-table.md)]
 
 > [!IMPORTANT]
-> Die Einstellungen [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting) und [`Eula`](#eula-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](face-how-to-install-containers.md#billing).
+> Die Einstellungen [`ApiKey`](#apikey-configuration-setting), [`Billing`](#billing-configuration-setting) und [`Eula`](#eula-setting) werden gemeinsam verwendet, und Sie müssen gültige Werte für alle drei angeben, da der Container andernfalls nicht startet. Weitere Informationen zum Instanziieren eines Containers mithilfe dieser Konfigurationseinstellungen finden Sie unter [Abrechnung](face-how-to-install-containers.md#billing).
 
 ## <a name="apikey-configuration-setting"></a>Konfigurationseinstellung „ApiKey“
 
-Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Gesichtserkennung_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-setting) angegeben wurde.
+Die `ApiKey`-Einstellung gibt den Schlüssel der Azure-Ressourcen an, mit dem die Abrechnungsinformationen für den Container verfolgt werden. Sie müssen einen Wert für „ApiKey“ angeben. Bei diesem Wert muss es sich um einen gültigen Schlüssel für die Ressource vom Typ _Gesichtserkennung_ handeln, die für die Konfigurationseinstellung [`Billing`](#billing-configuration-setting) angegeben wurde.
 
 Diese Einstellung finden Sie hier:
 

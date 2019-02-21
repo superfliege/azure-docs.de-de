@@ -17,12 +17,12 @@ ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: e983ae549664abf46de256e987e09191a2a44c0f
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 30d153863a20dcdddc702ee5a37c34a2938d7446
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728519"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327367"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optimieren virtueller Linux-Computer in Azure
 Virtuelle Linux-Maschinen (VM) lassen sich einfach über die Befehlszeile oder über das Portal erstellen. In diesem Tutorial erfahren Sie, wie Sie mit virtuellen Computern im Rahmen der Microsoft Azure Platform optimale Ergebnisse erzielen. In diesem Thema wird eine Ubuntu Server-VM verwendet, aber Sie können virtuelle Linux-Computer auch mithilfe [Ihrer eigenen Images als Vorlagen](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)erstellen.  
@@ -34,7 +34,7 @@ Dieses Thema setzt voraus, dass Sie bereits über ein funktionierendes Azure-Abo
 Nach dem Erstellen eines virtuellen Linux-Computers in Azure sind diesem zwei Datenträger zugeordnet. **/dev/sda** ist der Betriebssystem-Datenträger, **/dev/sdb** ist der temporäre Datenträger.  Verwenden Sie den Betriebssystem-Hauptdatenträger (**/dev/sda**) ausschließlich für das Betriebssystem. Er ist für den schnellen Start des virtuellen Computers optimiert und bietet keine gute Leistung für Ihre Workloads. Es empfiehlt sich, dem virtuellen Computer mindestens einen Datenträger anzufügen, um eine beständige und optimierte Datenspeicherung zu erhalten. 
 
 ## <a name="adding-disks-for-size-and-performance-targets"></a>Hinzufügen von Datenträgern für Größe und Leistung
-Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium).  Weitere Informationen zu Storage Premium-Datenträgern finden Sie im Artikel [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](../windows/premium-storage.md).
+Abhängig von der VM-Größe können Sie bis zu 16 zusätzliche Datenträger (A-Serie), 32 Datenträger (D-Serie) bzw. 64 Datenträger (G-Serie) anfügen, die jeweils eine Größe von bis zu 1 TB haben können. Orientieren Sie sich beim Hinzufügen zusätzlicher Datenträger an Ihren Platz- und IOPS-Anforderungen. Jeder Datenträger hat ein Leistungsziel von 500 IOPS (Storage Standard) bzw. von bis zu 5000 IOPS (Storage Premium).
 
 Um bei Storage Premium-Datenträgern mit der Cacheeinstellung **ReadOnly** oder **None** die höchstmögliche IOPS-Leistung zu erzielen, müssen beim Bereitstellen des Dateisystems in Linux so genannte **Barriers** deaktiviert werden. „Barriers“ werden nicht benötigt, da Schreibvorgänge auf Storage Premium-Datenträger bei diesen Cacheeinstellungen beständig sind.
 
@@ -131,9 +131,8 @@ Wenn Ihre Workloads mehr IOPS erfordern als ein einzelner Datenträger bereitste
 ## <a name="next-steps"></a>Nächste Schritte
 Denken Sie daran: Wie bei allen Optimierungen müssen auch hier vor und nach jeder Änderung Tests ausgeführt werden, um die Auswirkungen der jeweiligen Änderung zu ermitteln.  Die Optimierung ist ein schrittweise ausgeführter Prozess, der auf unterschiedlichen Computern in Ihrer Umgebung unterschiedliche Ergebnisse liefert.  Was bei einer Konfiguration funktioniert, ist für andere möglicherweise ungeeignet.
 
-Einige nützliche Links zu weiteren Ressourcen: 
+Einige nützliche Links zu weiteren Ressourcen:
 
-* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](premium-storage.md)
 * [Benutzerhandbuch für Azure Linux-Agent](../extensions/agent-linux.md)
 * [Optimieren der MySQL-Leistung auf virtuellen Azure Linux-Computern](classic/optimize-mysql.md)
 * [Konfigurieren von Software-RAID unter Linux](configure-raid.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: ff3c1e51bcf0b7d730019fad66ed8b0c3fe17a20
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: d9d87e0e6427c0a0d4b16947fd0427e1c79d8f0c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56097647"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341044"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen
 
@@ -72,8 +72,6 @@ Datenflussprotokolle enthalten die folgenden Eigenschaften:
                     * **Gesendete Bytes – Ziel zu Quelle – nur Version 2:** Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden Paketbytes enthalten den Paketheader und die Nutzlast.
 
 ## <a name="nsg-flow-logs-version-2"></a>Version 2 der NSG-Flowprotokolle
-> [!NOTE] 
-> Flowprotokolle (Version 2) sind nur in der Region „USA, Westen-Mitte“ verfügbar. Die Aktivierung von Protokollen der Version 2 in einer nicht unterstützten Region führt dazu, dass Protokolle der Version 1 in Ihr Speicherkonto ausgegeben werden.
 
 In Version 2 der Protokollierung wird der Flowzustand eingeführt. Sie können konfigurieren, welche Version von Flowprotokollen Sie erhalten. Wie Sie Datenflussprotokolle aktivieren, erfahren Sie unter [Tutorial: Verwalten von Datenflussprotokollen für Netzwerksicherheitsgruppen über das Azure-Portal](network-watcher-nsg-flow-logging-portal.md).
 

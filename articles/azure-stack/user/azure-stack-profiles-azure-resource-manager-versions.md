@@ -14,12 +14,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: 6866c6d208468e53b04ede1b5e596f0ea625c49d
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: f7d82b8cb609b390275617509946d640720f2dda
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248468"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456944"
 ---
 # <a name="resource-provider-api-versions-supported-by-profiles-in-azure-stack"></a>Von Profilen in Azure Stack unterstützte API-Versionen von Ressourcenanbietern
 
@@ -57,28 +57,6 @@ Eine Erklärung der API-Profile und des Rhythmus der Versionsveröffentlichung f
 | Abonnements | 2016-10-01 |
 
 Eine Liste mit den Versionen jedes einzelnen Ressourcentyps für die Anbieter im API-Profil finden Sie unter [Details zu 2018-03-01-hybrid](#details-for-the-2018-03-01-hybrid).
-
-## <a name="overview-of-2018-03-01-hybrid"></a>Übersicht über 2018-03-01-hybrid
-
-| Ressourcenanbieter | Api-version |
-|------------------------------------------------|------------------------------|
-| Microsoft.Compute | 2016-03-30 |
-| Microsoft.Network | 2015-06-15 |
-| Microsoft.Storage (Datenebene) | 2015-04-05  |
-| Microsoft.Storage (Steuerungsebene) | 2016-01-01   |
-| Microsoft.Websites | 2016-01-01 |
-| Microsoft.KeyVault | 2016-10-01<br>(Keine Änderung) |
-| Microsoft.Resources<br>(Azure Resource Manager selbst) | 2016-02-01 |
-| Microsoft.Authorization<Br>(Richtlinienvorgänge) | 2015-11-01 |
-| Microsoft.Insights | 2015-11-01 |
-| Microsoft.Keyvault | 2016-10-01 |
-| Richtlinie | 2015-10-01-preview |
-| Ressourcen | 2016-02-01 |
-| Resources_Links | 2016-09-01 |
-| Resources_Locks | 2016-09-01 |
-| Abonnements | 2016-06-1 |
-
-Eine Liste mit den Versionen der einzelnen Ressourcentypen für die Anbieter im API-Profil finden Sie im nächsten Abschnitt.
 
 ## <a name="details-for-the-2018-03-01-hybrid"></a>Details zu 2018-03-01-hybrid
 

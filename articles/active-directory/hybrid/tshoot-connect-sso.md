@@ -13,12 +13,12 @@ ms.date: 09/24/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9eebd695cbbc1e29ea7d2647b5955bcc2e3cfe4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6a86ce8c061450fd66b31a81ec00e51f98a39646
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175913"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415645"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Problembehandlung beim nahtlosen einmaligen Anmelden mit Azure Active Directory
 
@@ -82,8 +82,8 @@ Verwenden Sie die folgende Checkliste zur Behebung von Problemen in Bezug auf di
 - Stellen Sie sicher, dass das Benutzerkonto aus einer Active Directory-Gesamtstruktur stammt, in der nahtloses einmaliges Anmelden eingerichtet wurde.
 - Stellen Sie sicher, dass das Gerät mit dem Unternehmensnetzwerk verbunden ist.
 - Stellen Sie sicher, dass die Uhrzeit des Geräts mit der Uhrzeit von Active Directory und den Domänencontrollern synchronisiert ist und diese nicht mehr als fünf Minuten voneinander abweichen.
-- Stellen Sie sicher, dass das Computerkonto `AZUREADSSOACCT` in jeder AD-Gesamtstruktur, die SSO-fähig sein soll, vorhanden und aktiviert ist. Wenn das Computerkonto gelöscht wurde oder nicht vorhanden ist, können Sie [PowerShell-Cmdlets](#manual-reset-of-the-feature) verwenden, um es erneut zu erstellen.
-- Listen Sie vorhandene Kerberos-Tickets auf dem Gerät mit dem Befehl `klist` über eine Eingabeaufforderung auf. Stellen Sie sicher, dass die für das Computerkonto `AZUREADSSOACCT` ausgestellten Tickets vorhanden sind. Die Kerberos-Tickets von Benutzern sind normalerweise 10 Stunden gültig. Sie haben in Active Directory unter Umständen andere Einstellungen festgelegt.
+- Stellen Sie sicher, dass das Computerkonto `AZUREADSSOACC` in jeder AD-Gesamtstruktur, die SSO-fähig sein soll, vorhanden und aktiviert ist. Wenn das Computerkonto gelöscht wurde oder nicht vorhanden ist, können Sie [PowerShell-Cmdlets](#manual-reset-of-the-feature) verwenden, um es erneut zu erstellen.
+- Listen Sie vorhandene Kerberos-Tickets auf dem Gerät mit dem Befehl `klist` über eine Eingabeaufforderung auf. Stellen Sie sicher, dass die für das Computerkonto `AZUREADSSOACC` ausgestellten Tickets vorhanden sind. Die Kerberos-Tickets von Benutzern sind normalerweise 10 Stunden gültig. Sie haben in Active Directory unter Umständen andere Einstellungen festgelegt.
 - Wenn Sie die nahtlose einmalige Anmeldung für Ihren Mandanten deaktiviert und dann erneut aktiviert haben, steht die Benutzeroberfläche zum einmaligen Anmelden Benutzern erst wieder zur Verfügung, nachdem ihre zwischengespeicherten Kerberos-Tickets abgelaufen sind.
 - Löschen Sie vorhandene Kerberos-Tickets auf dem Gerät mit dem Befehl `klist purge`, und wiederholen Sie den Vorgang.
 - Überprüfen Sie die Konsolenprotokolle des Browsers (unter **Entwicklertools**), um zu ermitteln, ob Probleme vorliegen, die sich auf JavaScript beziehen.
@@ -123,7 +123,7 @@ Wenn die Problembehandlung nicht hilft, können Sie die Funktion auf Ihrem Manda
     >[!NOTE]
     >Um die gewünschte AD-Gesamtstruktur zu finden, verwenden wir den Domänenadministrator-Benutzernamen, der im Format der Benutzerprinzipalnamen (User Principal Names, UPN) (johndoe@contoso.com) oder qualifizierten SAM-Kontodomänennamen (contoso\johndoe oder contoso.com\johndoe) bereitgestellt wird. Wenn Sie qualifizierte SAM-Kontodomänennamen verwenden, verwenden wir den Domänenteil des Benutzernamens, um [den Domänencontroller des Domänenadministrators mithilfe des DNS zu suchen](https://social.technet.microsoft.com/wiki/contents/articles/24457.how-domain-controllers-are-located-in-windows.aspx). Wenn Sie stattdessen den UPN verwenden, [übersetzen wir ihn in einen qualifizierten SAM-Kontodomänennamen ](https://docs.microsoft.com/windows/desktop/api/ntdsapi/nf-ntdsapi-dscracknamesa), bevor der entsprechende Domänencontroller gesucht wird.
 
-2. Rufen Sie `Disable-AzureADSSOForest -OnPremCredentials $creds` auf. Mit diesem Befehl wird das Computerkonto `AZUREADSSOACCT` vom lokalen Domänencontroller für diese spezifische Active Directory-Gesamtstruktur entfernt.
+2. Rufen Sie `Disable-AzureADSSOForest -OnPremCredentials $creds` auf. Mit diesem Befehl wird das Computerkonto `AZUREADSSOACC` vom lokalen Domänencontroller für diese spezifische Active Directory-Gesamtstruktur entfernt.
 3. Wiederholen Sie die vorhergehenden Schritte für Active Directory-Gesamtstruktur, in der Sie die Funktion eingerichtet haben.
 
 ### <a name="step-4-enable-seamless-sso-for-each-active-directory-forest"></a>Schritt 4: Aktivieren Sie nahtloses SSO für jede Active Directory-Gesamtstruktur.

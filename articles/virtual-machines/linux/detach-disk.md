@@ -16,21 +16,19 @@ ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: df50f1ad4fc12926016b3e22669be474f4aa995f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b6fda5d16b3f694cb1d0a1a9407cda5c2a73fcbc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461375"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330629"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Trennen eines Datenträgers von einem virtuellen Linux-Computer
 
 Wenn Sie einen Datenträger, der an einen virtuellen Computer angefügt ist, nicht mehr benötigen, können Sie ihn leicht trennen. Dadurch wird der Datenträger von dem virtuellen Computer entfernt, aber nicht aus dem Speicher. In diesem Artikel wird eine Ubuntu LTS 16.04-Distribution verwendet. Wenn Sie eine andere Distribution verwenden, können die Anweisungen zum Aufheben der Datenträgereinbindung abweichen.
 
 > [!WARNING]
-> Beim Trennen eines Datenträgers wird dieser nicht automatisch gelöscht. Wenn Sie Storage Premium abonniert haben, fallen auch weiterhin Speichergebühren für den Datenträger an. Weitere Informationen finden Sie unter [Preisgestaltung und Abrechnung bei der Verwendung von Storage Premium](../windows/premium-storage.md#pricing-and-billing). 
-> 
-> 
+> Beim Trennen eines Datenträgers wird dieser nicht automatisch gelöscht. Wenn Sie Storage Premium abonniert haben, fallen auch weiterhin Speichergebühren für den Datenträger an. Weitere Informationen finden Sie unter [Preisgestaltung und Abrechnung bei der Verwendung von Storage Premium](https://azure.microsoft.com/pricing/details/storage/page-blobs/).
 
 Wenn Sie die vorhandenen Daten erneut auf dem Datenträger verwenden möchten, können Sie ihn erneut an denselben virtuellen Computer oder an einen anderen anfügen.  
 

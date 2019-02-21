@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: efce8379ecafe6e8e044b654a3c5b392ca8e9cea
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 5a9e3f63a484069bf8cd39f8a545d7c37f05c63c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55506361"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417311"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>Arbeiten mit SKUs für virtuelle Netzwerkgateways (Legacy-SKUs)
 
@@ -40,6 +40,8 @@ Dieser Artikel enthält Informationen über die Legacy-SKUs (alte SKUs) für vir
 
 ## <a name="resize"></a>Ändern der Größe eines Gateways
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sie können die Größe Ihres Gateways in eine Gateway-SKU innerhalb einer SKU-Familie ändern. Wenn Sie z.B. eine Standard-SKU haben, können Sie die Größe in eine HighPerformance-SKU ändern. Die Größe Ihrer VPN-Gateways kann zwischen den alten SKUs und den neuen SKU-Familien jedoch nicht geändert werden. Beispielsweise können Sie nicht von einer Standard-SKU zu einer VpnGw2-SKU wechseln, oder von einer Basic-SKU zu VpnGw1.
 
 Um die Größe eines Gateways für das klassische Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
@@ -51,8 +53,8 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 Um die Größe eines Gateways mithilfe von PowerShell für das Resource Manager-Bereitstellungsmodell zu ändern, verwenden Sie den folgenden Befehl:
 
 ```powershell
-$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
-Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+$gw = Get-AzVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
 Sie können die Größe eines Gateways auch im Azure-Portal ändern.
 

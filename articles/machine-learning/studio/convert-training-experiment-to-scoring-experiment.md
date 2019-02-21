@@ -9,12 +9,12 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.date: 03/28/2017
-ms.openlocfilehash: 22cfdd22a8d2adacb5a5a5c817a628fe2c072755
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1d07ad7e60e1ee9ff3216767fcfc77405d557f44
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001696"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455108"
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Vorbereiten des Modells für die Bereitstellung in Azure Machine Learning Studio
 
@@ -50,11 +50,11 @@ Klicken Sie nach dem Ausführen Ihres Experiments (unten im Experimentbereich au
 
 Das folgende Experiment trainiert z. B. ein Boosted Decision Tree-Zwei-Klassen-Modell mit Beispiel-Erhebungsdaten:
 
-![Trainingsexperiment][figure1]
+![Trainingsexperiment](./media/convert-training-experiment-to-scoring-experiment/figure1.png)
 
 Die Module in diesem Experiment führen im Wesentlichen vier verschiedene Funktionen aus:
 
-![Modulfunktionen][figure2]
+![Modulfunktionen](./media/convert-training-experiment-to-scoring-experiment/figure2.png)
 
 Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, werden einige dieser Module nicht mehr benötigt oder dienen nun einem anderen Zweck:
 
@@ -70,7 +70,7 @@ Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, we
 
 So sieht das Beispiel nach dem Klicken auf **Webdienst einrichten**aus:
 
-![Konvertiertes Vorhersageexperiment][figure3]
+![Konvertiertes Vorhersageexperiment](./media/convert-training-experiment-to-scoring-experiment/figure3.png)
 
 Die Arbeit von **Set Up Web Service** kann ausreichend sein, um das Experiment zur Bereitstellung als Webdienst vorzubereiten. Allerdings sollten Sie einige zusätzliche Aufgaben für das Experiment durchführen.
 
@@ -79,7 +79,7 @@ Im Trainingsexperiment haben Sie einen Satz von Trainingsdaten verwendet und dan
 
 Beispielsweise setzt **Set Up Web Service** standardmäßig das **Web service input**-Modul an den Beginn des Datenflusses, wie in der Abbildung oben dargestellt. Aber wir können das **Web service input**-Modul manuell hinter den Datenverarbeitungsmodulen positionieren:
 
-![Verschieben des Web Service Input][figure4]
+![Verschieben des Web Service Input](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
 Die über den Webdienst bereitgestellten Eingabedaten werden jetzt ohne Vorverarbeitung direkt an das "Score Model"-Modul übergeben.
 
@@ -88,14 +88,14 @@ Falls Sie jedoch andere Daten zurückgeben möchten, können Sie zusätzliche Mo
 
 Um beispielsweise nur die Bewertungsergebnisse und nicht den gesamten Eingabedatenvektor zurückzugeben, fügen Sie ein Modul [Select Columns in Dataset][select-columns] hinzu, um alle Spalten mit Ausnahme der Bewertungsergebnisse auszuschließen. Anschließend verschieben Sie das Modul **Web service output** zur Ausgabe des Moduls [Select Columns in Dataset][select-columns]. Das Experiment sieht wie folgt aus:
 
-![Verschieben des Web Service Output][figure5]
+![Verschieben des Web Service Output](./media/convert-training-experiment-to-scoring-experiment/figure5.png)
 
 ### <a name="add-or-remove-additional-data-processing-modules"></a>Hinzufügen oder Entfernen zusätzlicher Datenverarbeitungsmodule
 Wenn in Ihrem Experiment mehrere Module vorhanden sind, von denen Sie wissen, dass sie für die Bewertung nicht benötigt werden, können diese entfernt werden. Da wir das Modul **Web service input** an einen Punkt hinter den Datenverarbeitungsmodulen verschoben haben, können wir beispielsweise das Modul [Clean Missing Data][clean-missing-data] aus dem Vorhersageexperiment entfernen.
 
 Unser Vorhersageexperiment sieht nun folgendermaßen aus:
 
-![Entfernen zusätzlicher Module][figure6]
+![Entfernen zusätzlicher Module](./media/convert-training-experiment-to-scoring-experiment/figure6.png)
 
 
 ### <a name="add-optional-web-service-parameters"></a>Hinzufügen von optionalen Webdienst-Parametern
@@ -116,16 +116,6 @@ Nachdem das Vorhersageexperiment ausreichend vorbereitet wurde, können Sie es a
 Weitere Informationen zum vollständigen Bereitstellungsprozess finden Sie unter [Bereitstellen eines Azure Machine Learning-Webdiensts][deploy].
 
 [deploy]: publish-a-machine-learning-web-service.md
-
-
-<!-- Images -->
-[figure1]:./media/convert-training-experiment-to-scoring-experiment/figure1.png
-[figure2]:./media/convert-training-experiment-to-scoring-experiment/figure2.png
-[figure3]:./media/convert-training-experiment-to-scoring-experiment/figure3.png
-[figure4]:./media/convert-training-experiment-to-scoring-experiment/figure4.png
-[figure5]:./media/convert-training-experiment-to-scoring-experiment/figure5.png
-[figure6]:./media/convert-training-experiment-to-scoring-experiment/figure6.png
-
 
 <!-- Module References -->
 [clean-missing-data]: https://msdn.microsoft.com/library/azure/d2c5ca2f-7323-41a3-9b7e-da917c99f0c4/

@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: kasing
-ms.openlocfilehash: 42b62c819fd3d26c6ea944f968e0d5956a7f055e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 654c23474ebc96a6873f82f51f969da5c7d2d20c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987457"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343254"
 ---
 # <a name="apply-policies-to-windows-vms-with-azure-resource-manager"></a>Anwenden von Richtlinien auf virtuelle Windows-Computer mit Azure Resource Manager
 Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei. In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Richtlinien verwenden können, um das gewünschte Verhalten für die virtuellen Computer Ihrer Organisation zu definieren.
 
-Eine Einführung in Richtlinien finden Sie unter [Was ist Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+Eine Einführung in Richtlinien finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 
 ## <a name="permitted-virtual-machines"></a>Zugelassene virtuelle Computer
 Um sicherzustellen, dass virtuelle Computer für Ihre Organisation mit einer Anwendung kompatibel sind, können Sie die zulässigen Betriebssysteme einschränken. Im folgenden Richtlinienbeispiel lassen Sie nur das Erstellen von virtuellen Windows Server 2012 R2 Datacenter-Computern zu.
@@ -251,6 +251,6 @@ Wenn Sie eine lokale Lizenz besitzen, können Sie die Lizenzgebühren für Ihre 
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Informationen zum Zuweisen von Richtlinien finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](../../azure-policy/assign-policy-definition.md), [Verwenden von PowerShell zum Zuweisen von Richtlinien](../../azure-policy/assign-policy-definition-ps.md) und [Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen von Richtlinien](../../azure-policy/assign-policy-definition-cli.md).
-* Eine Einführung in Ressourcenrichtlinien finden Sie unter [Was ist Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+* Nach dem Definieren einer Richtlinienregel (wie in den vorherigen Beispielen zu sehen) müssen Sie die Richtliniendefinition erstellen und einem Bereich zuweisen. Bei dem Bereich kann es sich um ein Abonnement, um eine Ressourcengruppe oder um eine Ressource handeln. Informationen zum Zuweisen von Richtlinien finden Sie unter [Verwenden des Azure-Portals zum Zuweisen und Verwalten von Ressourcenrichtlinien](../../governance/policy/assign-policy-portal.md), [Verwenden von PowerShell zum Zuweisen von Richtlinien](../../governance/policy/assign-policy-powershell.md) und [Verwenden der Azure-Befehlszeilenschnittstelle zum Zuweisen von Richtlinien](../../governance/policy/assign-policy-azurecli.md).
+* Eine Einführung in Ressourcenrichtlinien finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).
 * Anleitungen dazu, wie Unternehmen Abonnements mit Resource Manager effektiv verwalten können, finden Sie unter [Azure-Unternehmensgerüst - Präskriptive Abonnementgovernance](/azure/architecture/cloud-adoption-guide/subscription-governance).

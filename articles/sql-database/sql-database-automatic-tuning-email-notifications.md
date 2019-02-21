@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 1b58401a6697cdc80acc9badaf018923c5a9a980
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: cdd709fa446ffe769c8c57aeb44fe592b12e92d4
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660288"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416106"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>E-Mail-Benachrichtigungen zur automatischen Optimierung
 
@@ -73,7 +73,7 @@ Der nächste Schritt ist das Erstellen eines Runbooks in Azure Automation, in de
 Führen Sie diese Schritte aus, um ein neues Azure Automation-Runbook zu erstellen:
 
 - Greifen Sie auf das Azure Automation-Konto zu, das Sie im vorherigen Schritt erstellt haben.
-- Klicken Sie im Bereich des Automation-Kontos auf der linken Seite auf das Menüelement **Runbooks**, um ein neues Azure Automation-Runbook mit dem PowerShell-Skript zu erstellen. Weitere Informationen zum Erstellen von Automation-Runbooks finden Sie unter [Erstellen eines neuen Runbooks](../automation/automation-creating-importing-runbook.md).
+- Klicken Sie im Bereich des Automation-Kontos auf der linken Seite auf das Menüelement **Runbooks**, um ein neues Azure Automation-Runbook mit dem PowerShell-Skript zu erstellen. Weitere Informationen zum Erstellen von Automation-Runbooks finden Sie unter [Erstellen eines neuen Runbooks](../automation/manage-runbooks.md#create-a-runbook).
 - Um ein neues Runbook hinzuzufügen, klicken Sie auf die Menüoption **+ Runbook hinzufügen** und dann auf **Schnellerfassung – Neues Runbook erstellen**.
 - Geben Sie im Bereich „Runbook“ den Namen Ihres Runbooks ein (in diesem Beispiel wird **AutomaticTuningEmailAutomation** verwendet). Wählen Sie als Typ des Runbooks **PowerShell** aus, und geben Sie eine Beschreibung mit dem Zweck dieses Runbooks an.
 - Klicken Sie auf die Schaltfläche **Erstellen**, um die Erstellung des neuen Runbooks abzuschließen.

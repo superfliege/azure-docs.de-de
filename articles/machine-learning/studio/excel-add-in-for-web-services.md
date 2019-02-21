@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: c9c5ad0af39b698175c4bc7cb7f720452546ec10
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 14e631edb21c43ccde04a536760c2793ead40e90
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997065"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454689"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Excel-Add-In für Azure Machine Learning Studio-Webdienste
 Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne dafür Code erstellen zu müssen.
@@ -29,13 +29,13 @@ Mit Excel können Webdienste auf einfache Weise direkt aufgerufen werden, ohne d
 
 2. Wählen Sie den Webdienst aus, indem Sie darauf klicken – in diesem Beispiel ist das „Titanic Survivor Predictor (Excel-Add-In-Beispiel) [Ergebnis]“.
    
-    ![Webdienst auswählen][01]
+    ![Webdienst auswählen](./media/excel-add-in-for-web-services/image1.png)
 3. Dadurch gelangen Sie zum Abschnitt **Predict**.  Diese Arbeitsmappe enthält bereits Beispieldaten. In einer leeren Arbeitsmappe können Sie jedoch auch eine Zelle in Excel auswählen und auf **Use sample data** klicken.
 4. Wählen Sie die Daten mit Überschriften aus, und klicken Sie auf das Symbol für den Eingabedatenbereich.  Stellen Sie sicher, dass das Kontrollkästchen „Daten haben Überschriften“ aktiviert ist.
 5. Geben Sie unter **Ausgabe** die Zellennummer ein, in der die Ausgabe erfolgen soll. Bei diesem Beispiel „H1“.
 6. Klicken Sie auf **Vorhersagen**. Wenn Sie das Kontrollkästchen "auto-predict" (automatische Vorhersage) aktivieren, löst jede Änderung in den ausgewählten Bereichen (denen, die als Eingabe festgelegt sind), eine Anforderung und eine Aktualisierung der Ausgabezellen aus, ohne dass Sie auf die Vorhersageschaltfläche klicken müssten.
    
-    ![Abschnitt „Predict“][02]
+    ![Abschnitt „Predict“](./media/excel-add-in-for-web-services/image1.png)
 
 Stellen Sie einen Webdienst bereit, oder verwenden Sie einen vorhandenen Webdienst. Weitere Informationen zum Bereitstellen eines Webdiensts finden Sie unter [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md).
 
@@ -45,10 +45,10 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 
 1. Klicken Sie in Machine Learning Studio im linken Bereich auf den Abschnitt **WEB SERVICES** , und wählen Sie den Webdienst aus.
    
-    ![Studio – Webdienst auswählen][04]
+    ![Studio – Webdienst auswählen](./media/excel-add-in-for-web-services/image4.png)
 2. Kopieren Sie den API-Schlüssel für den Webdienst.
    
-    ![Studio-API-Schlüssel][05]
+    ![Studio-API-Schlüssel](./media/excel-add-in-for-web-services/image5.png)
 3. Klicken Sie auf der Registerkarte **DASHBOARD** für den Webdienst auf die Verknüpfung **ANFORDERUNG/ANTWORT**.
 4. Wechseln Sie zum Abschnitt **Request URI** .  Kopieren und speichern Sie die URL.
 
@@ -70,23 +70,16 @@ Rufen Sie den API-Schlüssel Ihres Webdiensts ab. Wo diese Aktion durchgeführt 
 3. Wechseln Sie zum Abschnitt **Basic consumption info** . Kopieren und speichern Sie den **Primary Key** und die URL für **Request-Response**.
 4. Navigieren Sie in Excel zum Abschnitt **Web Services** (wenn Sie sich im Abschnitt **Predict** befinden, klicken Sie auf den Zurück-Pfeil, um zur Liste der Webdienste zu gelangen).
    
-    ![Webdienstauswahl aufrufen][03]
+    ![Webdienstauswahl aufrufen](./media/excel-add-in-for-web-services/image3.png)
 5. Klicken Sie auf **Webdienst hinzufügen**.
 6. Fügen Sie die URL in das Textfeld des Excel-Add-Ins mit der Beschriftung **URL**ein.
 7. Fügen Sie die API/den Primärschlüssel in das Textfeld mit der Beschriftung **API key**ein.
 8. Klicken Sie auf **Hinzufügen**.
    
-    ![URL und API-Schlüssel für einen klassischen Webdienst.][06]
+    ![URL und API-Schlüssel für einen klassischen Webdienst.](./media/excel-add-in-for-web-services/image6.png)
 9. Folgen Sie den vorherigen Anweisungen unter „Schritte zum Verwenden eines vorhandenen Webdiensts“, um den Webdienst zu verwenden.
 
 ## <a name="sharing-your-workbook"></a>Freigeben Ihrer Arbeitsmappe
 Wenn Sie Ihre Arbeitsmappe speichern, werden auch die API/der Primärschlüssel der hinzugefügten Webdienste gespeichert. Das bedeutet, dass Sie die Arbeitsmappe nur für Personen freigeben sollten, denen Sie vertrauen.
 
 Im nachstehenden Kommentarabschnitt oder in unserem [Forum](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409) können Sie Fragen stellen.
-
-[01]: ./media/excel-add-in-for-web-services/image1.png
-[02]: ./media/excel-add-in-for-web-services/image2.png
-[03]: ./media/excel-add-in-for-web-services/image3.png
-[04]: ./media/excel-add-in-for-web-services/image4.png
-[05]: ./media/excel-add-in-for-web-services/image5.png
-[06]: ./media/excel-add-in-for-web-services/image6.png

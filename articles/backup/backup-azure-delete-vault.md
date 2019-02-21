@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: d514074e56ff37cc7af6a97ea86aa9e02e3763e0
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d15e3773a9b6e3dceb0799d206070730675c211d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492282"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310965"
 ---
 # <a name="delete-a-recovery-services-vault"></a>Löschen eines Recovery Services-Tresors
 
@@ -31,7 +31,7 @@ Wenn Sie den Recovery Services-Tresor bereits geöffnet haben, können Sie zum z
 
    ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-delete-vault/open-recovery-services-vault.png) <br/>
 
-   Die Liste mit den Recovery Services-Tresoren wird angezeigt. 
+   Die Liste mit den Recovery Services-Tresoren wird angezeigt.
 
    ![Tresor in Liste auswählen](./media/backup-azure-delete-vault/choose-vault-to-delete-.png)
 
@@ -50,7 +50,7 @@ Wenn Sie den Recovery Services-Tresor bereits geöffnet haben, können Sie zum z
 
 ## <a name="delete-the-recovery-services-vault-by-force"></a>Löschen des Recovery Services-Tresors erzwingen
 
-Sie können PowerShell verwenden, um das Löschen eines Recovery Services-Tresors zu erzwingen. Erzwingen bedeutet, dass der Recovery Services-Tresor und alle dazugehörigen Sicherungsdaten dauerhaft gelöscht werden. 
+Sie können PowerShell verwenden, um das Löschen eines Recovery Services-Tresors zu erzwingen. Erzwingen bedeutet, dass der Recovery Services-Tresor und alle dazugehörigen Sicherungsdaten dauerhaft gelöscht werden.
 
 > [!Warning]
 > Wenn Sie PowerShell verwenden, um einen Recovery Services-Tresor zu löschen, müssen Sie sicher sein, dass Sie alle Sicherungsdaten im Tresor dauerhaft löschen möchten.
@@ -95,7 +95,7 @@ So löschen Sie einen Recovery Services-Tresor:
    ```powershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
    ```
-   
+
 1. Melden Sie sich bei Ihrem Abonnement im Azure-Portal an, und überprüfen Sie, ob der Tresor gelöscht wurde.
 
 
@@ -106,7 +106,6 @@ Um die Tresorabhängigkeiten manuell zu entfernen, löschen Sie die Konfiguratio
 * Azure Storage (Azure Files)-Sicherungen
 * Sicherungen von SQL Server auf einer Azure-VM
 * Azure Virtual Machines-Sicherungen
-* Microsoft Azure Recovery Services-Agentsicherungen
 
 Verwenden Sie das Menü **Sicherungsinfrastruktur** (siehe Abbildung) für:
 
@@ -125,7 +124,7 @@ Verwenden Sie das Menü **Sicherungsinfrastruktur** (siehe Abbildung) für:
 
 1. Klicken Sie bei allen Elementen der Liste mit der rechten Maustaste auf das Element, und wählen Sie im Kontextmenü die Option **Sicherung beenden** aus.
 
-    ![Sicherungstyp auswählen](./media/backup-azure-delete-vault/stop-backup-item.png) 
+    ![Sicherungstyp auswählen](./media/backup-azure-delete-vault/stop-backup-item.png)
 
     Das Menü „Sicherung beenden“ wird geöffnet.
 
@@ -154,9 +153,9 @@ Verwenden Sie das Menü **Sicherungsinfrastruktur** (siehe Abbildung) für:
 
 ## <a name="removing-azure-backup-server-or-dpm"></a>Entfernen von Azure Backup Server oder DPM
 
-1. Blättern Sie Tresor-Dashboardmenü nach unten zum Abschnitt „Verwalten“, und klicken Sie auf **Sicherungsinfrastruktur**. 
+1. Blättern Sie Tresor-Dashboardmenü nach unten zum Abschnitt „Verwalten“, und klicken Sie auf **Sicherungsinfrastruktur**.
 
-1. Klicken Sie im Untermenü auf **Sicherungsverwaltungsserver**, um die Azure Backup Server und System Center DPM-Server anzeigen. Sie können Azure-Dateiserver, SQL Server auf einer Azure-VM und Azure Virtual Machines anhalten und löschen. 
+1. Klicken Sie im Untermenü auf **Sicherungsverwaltungsserver**, um die Azure Backup Server und System Center DPM-Server anzeigen. Sie können Azure-Dateiserver, SQL Server auf einer Azure-VM und Azure Virtual Machines anhalten und löschen.
 
     ![Tresor auswählen, um das zugehörige Dashboard zu öffnen](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 

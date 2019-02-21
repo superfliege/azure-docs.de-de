@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: 536239a9ff98c76badfc042a2d59d19b8fb6f04a
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 1f71276c25e3ec1e5791d9b35f89aa95190c6afd
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770583"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341957"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Verwenden von Azure Policy, um die Installation von Erweiterungen auf virtuellen Linux-Computern einzuschränken
 
@@ -28,7 +28,7 @@ Dieses Tutorial verwendet die CLI innerhalb der Azure Cloud Shell, die ständig 
 
 ## <a name="create-a-rules-file"></a>Erstellen einer Regeldatei
 
-Um einzuschränken, welche Erweiterungen installiert werden können, benötigen Sie eine [Regel](/azure/azure-policy/policy-definition#policy-rule), um die Logik zum Identifizieren der Erweiterung bereitzustellen.
+Um einzuschränken, welche Erweiterungen installiert werden können, benötigen Sie eine [Regel](../../governance/policy/concepts/definition-structure.md#policy-rule), um die Logik zum Identifizieren der Erweiterung bereitzustellen.
 
 Dieses Beispiel zeigt Ihnen, wie Sie die Installation von Erweiterungen ablehnen, die von „Microsoft.OSTCExtensions“ veröffentlicht wurden, indem Sie eine Regeldatei in Azure Cloud Shell erstellen, aber wenn Sie lokal in der CLI arbeiten, können Sie auch eine lokale Datei erstellen und den Pfad (~/clouddrive) durch den Pfad zu der lokalen Datei auf Ihrem Computer ersetzen.
 
@@ -69,7 +69,7 @@ Wenn Sie fertig sind, drücken Sie die **Esc** Taste, und geben Sie dann **:wq**
 
 ## <a name="create-a-parameters-file"></a>Erstellen einer Parameterdatei
 
-Sie benötigen auch eine [Parameterdatei](/azure/azure-policy/policy-definition#parameters), die für Sie eine Struktur für die Übergabe einer Liste der zu blockierenden Erweiterungen erstellt. 
+Sie benötigen auch eine [Parameterdatei](../../governance/policy/concepts/definition-structure.md#parameters), die für Sie eine Struktur für die Übergabe einer Liste der zu blockierenden Erweiterungen erstellt. 
 
 Dieses Beispiel zeigt Ihnen, wie Sie eine Parameterdatei für Linux-VMs in Cloud Shell erstellen, aber wenn Sie lokal in der CLI arbeiten, können Sie auch eine lokale Datei erstellen und den Pfad (~/clouddrive) durch den Pfad zu der lokalen Datei auf Ihrem Computer ersetzen.
 
@@ -171,6 +171,6 @@ az policy assignment delete --name 'not-allowed-vmextension-linux' --resource-gr
 az policy definition delete --name 'not-allowed-vmextension-linux'
 ```
 
-
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../azure-policy/azure-policy-introduction.md).
+
+Weitere Informationen finden Sie unter [Was ist Azure Policy?](../../governance/policy/overview.md).

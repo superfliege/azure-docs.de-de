@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: 2ac140e40ec1c70bf04c35512c28e84f59522bb8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1e8bb6deeb66b506e1342fceb725b1563b822dff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989422"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453119"
 ---
 # <a name="consuming-an-azure-machine-learning-studio-web-service-from-excel"></a>Nutzen ein Azure Machine Learning Studio-Webdiensts aus Excel
 
@@ -34,7 +34,7 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 
 1. Auf der Registerkarte **DASHBOARD** für den Webdienst befindet sich die Zeile **REQUEST/RESPONSE** für den Antwort-/Anfrage-Dienst. Wenn dieser Dienst eine einzelne Ausgabe hat, sollte sich in dieser Zeile der Link **Download Excel Workbook** befinden.
    
-    ![][1]
+    ![](./media/consuming-from-excel/excellink.png)
 2. Klicken Sie auf **Download Excel Workbook**.
 
 **Neuer Webdienst**
@@ -47,13 +47,13 @@ Wenn Sie einen Webdienst haben, klicken Sie auf den Bereich **WEB SERVICES** der
 1. Öffnen Sie die Arbeitsmappe.
 2. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Bearbeitung aktivieren**.
    
-    ![][2]
+    ![](./media/consuming-from-excel/enableeditting.png)
 3. Es wird eine Sicherheitswarnung angezeigt. Klicken Sie auf die Schaltfläche **Inhalt aktivieren** zum Ausführen von Makros im Arbeitsblatt.
    
-    ![][3]
+    ![](./media/consuming-from-excel/enablecontent.png)
 4. Sobald Makros aktiviert sind, wird eine Tabelle generiert. Spalten in Blau sind als Eingabe für den RRS-Webdienst oder als **PARAMETER**erforderlich. Beachten Sie die Ausgaben des RRS-Diensts **PREDICTED VALUES** in Grün. Wenn alle Spalten für eine bestimmte Zeile gefüllt wurden, ruft die Arbeitsmappe automatisch die Bewertungs-API auf und zeigt die bewerteten Ergebnisse an.
    
-    ![][4]
+    ![](./media/consuming-from-excel/sampletable.png)
 5. Um mehr als eine Zeile zu bewerten, geben Sie in der zweiten Zeile Daten ein. Daraufhin werden die Vorhersagewerte erzeugt. Sie können auch gleichzeitig mehrere Zeilen einfügen.
 
 Sie können beliebige Excel-Funktionen (Diagramme, Power Map, bedingte Formatierungen usw.) mit den Vorhersagewerten verwenden, um die Daten zu visualisieren.    
@@ -66,8 +66,3 @@ RRS-Aufrufe werden in diesen beiden Situationen ausgeführt:
 
 1. Beim ersten Mal, wenn in einer Zeile in jedem **PARAMETER**
 2. Jedes Mal, wenn einer der **PARAMETER** in einer Zeile, in der alle **PARAMETER** vorhanden sind, geändert wird.
-
-[1]: ./media/consuming-from-excel/excellink.png
-[2]: ./media/consuming-from-excel/enableeditting.png
-[3]: ./media/consuming-from-excel/enablecontent.png
-[4]: ./media/consuming-from-excel/sampletable.png

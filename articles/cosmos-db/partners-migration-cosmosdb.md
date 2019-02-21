@@ -6,12 +6,12 @@ ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/07/2018
-ms.openlocfilehash: 25d2b9fac65525c56912e5daa7e5bcb4aa2cd5f4
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 255182fe5e6c5576077dc97831628e4a13dfc026
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036000"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453520"
 ---
 # <a name="azure-cosmos-db-nosql-migration-and-application-development-partners"></a>Azure Cosmos DB NoSQL-Migration und Anwendungsentwicklungspartner
 
@@ -38,7 +38,7 @@ Von der NoSQL-Migration bis hin zur Anwendungsentwicklung können Sie aus einer 
 |![Coeo][7]     |   App-Innovation (vorhandene Apps), <br/> Entwicklung neuer Apps |    UK     |  [Website](http://www.coeo.com/)       |
 | ![Cognizant][15] | NoSQL-Migration |USA, Kanada, Vereinigtes Königreich, Dänemark, Niederlande, Schweiz, Australien, Japan | [Website](https://www.cognizant.com/)|
 |![Infosys][8]     |  NoSQL-Migration       |    Global     |  [Website](http://www.infosys.com/)       |
-| ![Lagash][16] | NoSQL-Migration, <br/> Entwicklung neuer Apps | Argentinien, Chile, Kolumbien, Mexiko| [Website](https://lagash.com/)|
+| ![Lagash][16] | NoSQL-Migration, <br/> Entwicklung neuer Apps | Argentinien, Chile, Kolumbien, Mexiko| [Website](https://www.lagash.com/)|
 | ![Lambda3 Informatics][17] | NoSQL-Migration, <br/> Entwicklung neuer Apps | Brasilien| [Website](https://www.lambda3.com.br/)|
 |![Neal Analytics][9]     |     App-Entwicklung (neue Apps)    |    USA     |  [Website](http://www.nealanalytics.com/)       |
 |![Pragmatic Works Software Inc.][10]    |   NoSQL-Migration      |   USA      |  [Website](http://www.pragmaticworks.com/)       |

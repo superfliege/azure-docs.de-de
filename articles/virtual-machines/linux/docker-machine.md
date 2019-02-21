@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: f4be58d702b5d97722a3f9f1ee2df6b519ba4fab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: da0e393dc2ae0d93ecc49745a42ffac4669ed74b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731749"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326305"
 ---
 # <a name="how-to-use-docker-machine-to-create-hosts-in-azure"></a>Erstellen von Hosts in Azure mithilfe von Docker Machine
 In diesem Artikel erfahren Sie, wie Sie mithilfe von [Docker Machine](https://docs.docker.com/machine/) Hosts in Azure erstellen. Der Befehl `docker-machine` erstellt in Azure einen virtuellen Linux-Computer und installiert anschließend Docker. Danach können Sie Ihre Docker-Hosts in Azure mit den gleichen lokalen Tools und Workflows verwalten. Um Docker-Computer unter Windows 10 zu verwenden, müssen Sie Linux-Bash verwenden.
@@ -137,4 +137,4 @@ Um den Container in Aktion zu sehen, öffnen Sie einen Webbrowser, und geben Sie
 ![Ausführen des ngnix-Containers](./media/docker-machine/nginx.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie können Hosts auch mit der [Docker-VM-Erweiterung](dockerextension.md) erstellen. Beispiele zur Verwendung von Docker Compose finden Sie unter [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern in Azure](docker-compose-quickstart.md).
+Beispiele zur Verwendung von Docker Compose finden Sie unter [Erste Schritte mit Docker und Compose zum Definieren und Ausführen einer Anwendung mit mehreren Containern in Azure](docker-compose-quickstart.md).

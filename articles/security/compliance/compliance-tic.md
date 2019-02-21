@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: dlap
-ms.openlocfilehash: f5efeabf3cf6d52f74aa2d064dc4c67c877d34e5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: bb186ab2700b147bee3a7dd81474409ccafb76fc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751921"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341714"
 ---
 # <a name="trusted-internet-connections-guidance"></a>Leitfaden für eine vertrauenswürdige Internetverbindung
 
@@ -198,7 +198,7 @@ Azure bietet native Cloudtools, die Ihnen dabei helfen, Situationen bezüglich d
 
 ### <a name="azure-policy"></a>Azure Policy
 
-[Azure Policy](https://azure.microsoft.com/services/azure-policy/) ist ein Azure-Dienst, der Ihrer Organisation eine bessere Möglichkeit bietet, Konformitätsinitiativen zu überwachen und durchzusetzen. Azure Policy ist derzeit als öffentliche Vorschauversion in den Azure-Diensten verfügbar, die im Handel erhältlich sind. Azure Policy ist noch nicht in Azure Government verfügbar. Kunden können jetzt ihre Azure Policy-Regeln planen und testen, um eine zukünftige TIC-Konformität zu gewährleisten. 
+[Azure Policy](../../governance/policy/overview.md) ist ein Azure-Dienst, der Ihrer Organisation eine bessere Möglichkeit bietet, Konformitätsinitiativen zu überwachen und durchzusetzen. Kunden können jetzt ihre Azure Policy-Regeln planen und testen, um eine zukünftige TIC-Konformität zu gewährleisten.
 
 Azure Policy wird auf Abonnementebene angewendet. Der Dienst bietet eine zentralisierte Oberfläche, auf der Sie Konformitätsaufgaben ausführen können. Beispiele:
 - Verwalten von Initiativen
@@ -213,13 +213,13 @@ Die folgenden Beispielrichtlinien können in TIC-Konformitätsszenarien verwende
 
 |Richtlinie  |Beispielszenario  |Vorlage  |
 |---------|---------|---------|
-|Tabelle mit benutzerdefinierten Routen erzwingen | Stellen Sie sicher, dass die Standardroute in allen virtuellen Netzwerken auf ein zulässiges Gateway eines virtuellen Netzwerks für das Routing auf „Lokal“ verweist.    | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/no-user-def-route-table). |
-|Überprüfung, wenn Network Watcher nicht für eine Region aktiviert ist  | Stellen Sie sicher, dass Network Watcher für alle verwendeten Regionen aktiviert ist.  | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/net-watch-not-enabled). |
-|NSG x in jedem Subnetz  | Stellen Sie sicher, dass eine NSG (oder ein Satz von zulässigen NSGs) mit blockiertem Internetdatenverkehr auf alle Subnetze in jedem virtuellen Netzwerk angewendet wird. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-subnet). |
-|NSG x auf jedem NIC | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen virtuellen Computern angewendet wird. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/nsg-on-nic). |
-|Ein zulässiges virtuelles Netzwerk für Netzwerkschnittstellen von virtuellen Computern verwenden  | Stellen Sie sicher, dass sich alle NICs in einem zulässigen virtuellen Netzwerk befinden. | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/use-approved-vnet-vm-nics). |
-|Zulässige Standorte | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen virtuellen Netzwerken und Network Watcher-Konfiguration bereitgestellt werden.  | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/allowed-locs). |
-|Nicht zulässige Ressourcentypen, z.B. **öffentliche IP-Adressen** | Unterbinden Sie die Bereitstellung von Ressourcentypen, die über keinen Konformitätsplan verfügen. Verwenden Sie diese Richtlinie, um die Bereitstellung von Ressourcen mit öffentlichen IP-Adressen zu unterbinden. NSG-Regeln können zwar dazu verwendet werden, den eingehenden Internetdatenverkehr effektiv zu blockieren, aber indem Sie verhindern, dass öffentliche IP-Adressen verwendet werden, bieten Sie noch weniger Angriffsfläche.   | Beginnen Sie mit dieser [Vorlage](https://docs.microsoft.com/azure/azure-policy/scripts/not-allowed-res-type).  |
+|Tabelle mit benutzerdefinierten Routen erzwingen | Stellen Sie sicher, dass die Standardroute in allen virtuellen Netzwerken auf ein zulässiges Gateway eines virtuellen Netzwerks für das Routing auf „Lokal“ verweist.    | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/no-user-defined-route-table.md). |
+|Überprüfung, wenn Network Watcher nicht für eine Region aktiviert ist  | Stellen Sie sicher, dass Network Watcher für alle verwendeten Regionen aktiviert ist.  | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/network-watcher-not-enabled.md). |
+|NSG x in jedem Subnetz  | Stellen Sie sicher, dass eine NSG (oder ein Satz von zulässigen NSGs) mit blockiertem Internetdatenverkehr auf alle Subnetze in jedem virtuellen Netzwerk angewendet wird. | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/nsg-on-subnet.md). |
+|NSG x auf jedem NIC | Stellen Sie sicher, dass eine NSG mit blockiertem Internetdatenverkehr auf alle NICs auf allen virtuellen Computern angewendet wird. | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/nsg-on-nic.md). |
+|Ein zulässiges virtuelles Netzwerk für Netzwerkschnittstellen von virtuellen Computern verwenden  | Stellen Sie sicher, dass sich alle NICs in einem zulässigen virtuellen Netzwerk befinden. | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/use-approved-vnet-vm-nics.md). |
+|Zulässige Standorte | Stellen Sie sicher, dass alle Ressourcen in Regionen mit konformen virtuellen Netzwerken und Network Watcher-Konfiguration bereitgestellt werden.  | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/allowed-locations.md). |
+|Nicht zulässige Ressourcentypen, z.B. **öffentliche IP-Adressen** | Unterbinden Sie die Bereitstellung von Ressourcentypen, die über keinen Konformitätsplan verfügen. Verwenden Sie diese Richtlinie, um die Bereitstellung von Ressourcen mit öffentlichen IP-Adressen zu unterbinden. NSG-Regeln können zwar dazu verwendet werden, den eingehenden Internetdatenverkehr effektiv zu blockieren, aber indem Sie verhindern, dass öffentliche IP-Adressen verwendet werden, bieten Sie noch weniger Angriffsfläche.   | Beginnen Sie mit dieser [Vorlage](../../governance/policy/samples/not-allowed-resource-types.md).  |
 
 ### <a name="network-watcher-traffic-analytics"></a>Traffic Analytics von Network Watcher
 

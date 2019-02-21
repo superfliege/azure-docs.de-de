@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 30388185c415346b298dbada715b17e631c66769
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: fc2cfcce57ad15d2bbad3242351492e184e7fd33
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53096295"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415295"
 ---
 # <a name="configure-route-filters-for-microsoft-peering-powershell"></a>Konfigurieren von Routenfiltern für das Microsoft-Peering: PowerShell
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "53096295"
 
 Routenfilter stellen eine Möglichkeit dar, um eine Teilmenge von unterstützten Diensten durch das Microsoft-Peering zu nutzen. Die in diesem Artikel erläuterten Schritte unterstützen Sie bei der Konfiguration und Verwaltung von Routenfiltern für ExpressRoute-Verbindungen.
 
-Das Microsoft-Peering ermöglicht den Zugriff auf Dynamics 365-Dienste und Office 365-Dienste wie Exchange Online, SharePoint Online und Skype for Business sowie öffentliche Azure-Dienste wie Storage und SQL-Datenbank. Öffentliche Azure-Dienste sind auf Regionsbasis auswählbar und können nicht per öffentlichem Dienst definiert werden. 
+Das Microsoft-Peering ermöglicht den Zugriff auf Dynamics 365-Dienste und Office 365-Dienste wie Exchange Online, SharePoint Online und Skype for Business sowie öffentliche Azure-Dienste wie Storage und SQL-Datenbank. Öffentliche Azure-Dienste sind auf Regionsbasis auswählbar und können nicht per öffentlichem Dienst definiert werden.
 
 Wenn Microsoft-Peering für eine ExpressRoute-Verbindung konfiguriert und kein Routenfilter zugewiesen ist, werden alle Präfixe, die für diese Dienste ausgewählt sind, über BGP-Sitzungen angekündigt, die eingerichtet werden. Jedem Präfix wird zur Identifizierung des Diensts, der über das Präfix angeboten wird, ein BGP-Communitywert angefügt. Eine Liste der BGP-Communitywerte und der Dienste, denen sie zugeordnet sind, finden Sie unter [BGP-Communitys](expressroute-routing.md#bgp).
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/20/2017
-ms.openlocfilehash: 503a93064b81e0db35c0477a11f2ee525680c854
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e41a669e3dcd14952077cbd21e7387184546de80
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55488432"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454285"
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Verwalten von Experimentiterationen in Azure Machine Learning-Studio
 Das Entwickeln eines solchen Vorhersageanalysemodells ist ein iterativer Prozess: Sie ändern die verschiedenen Funktionen und Parameter des Experiments, und die Ergebnisse nähern sich solange an, bis Sie der Ansicht sind, ein trainiertes, effektives Modell erreicht zu haben. Wichtig für diesen Prozess ist das Verfolgen der verschiedenen Iterationen der Experimentparameter und -konfigurationen.
@@ -48,7 +48,7 @@ Angenommen, Sie erstellen ein Experiment mit dem Modul [Linear Regression][linea
 
 Wenn Sie auf **VIEW RUN HISTORY**(AUSFÜHRUNGSVERLAUF ANZEIGEN) klicken, wird eine Liste aller Testläufe angezeigt:
 
-![Beispiel für einen Ausführungsverlauf][runhistory]
+![Beispiel für einen Ausführungsverlauf](./media/manage-experiment-iterations/viewrunhistory.jpg)
 
 Klicken Sie auf einen dieser Testläufe, um eine Momentaufnahme des Experiments vom Zeitpunkt der Ausführung anzuzeigen. Die Konfiguration, die Parameterwerte, die Kommentare und die Ergebnisse werden alle gespeichert, damit eine vollständige Aufzeichnung dieses Testlaufs des Experiments zur Verfügung steht.
 
@@ -73,10 +73,6 @@ Nehmen wir beispielsweise an, Sie haben den Ausführungsverlauf des Experiments 
 5. Klicken Sie auf **RUN**(AUSFÜHREN).
 
 Sie können diese Version  des Experiments nun weiterhin ändern und ausführen, wobei ein neuer Ausführungsverlauf zur Dokumentation Ihrer Arbeit erstellt wird.
-
-<!-- Images -->
-[runhistory]:./media/manage-experiment-iterations/viewrunhistory.jpg
-
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/

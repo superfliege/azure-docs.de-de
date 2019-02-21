@@ -4,21 +4,21 @@ description: Informationen zu Upgrades für den Azure Migrate-Collector
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 11/29/2018
+ms.date: 02/19/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: 88077ac965b2abb69be145f29cbadca2ff1128d6
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f29556c8f2a5aa727ce80632eaccf5e1ed6d7c1a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836643"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415543"
 ---
 # <a name="collector-update-release-history"></a>Updatereleases für den Collector
 
 In diesem Artikel werden Informationen zu Upgrades für den [Azure Migrate-Collector](migrate-overview.md) zusammengefasst.
 
-Der Azure Migrate-Collector ist eine einfache Appliance, die zum Entdecken einer lokalen vCenter-Umgebung verwendet wird, damit vor der Migration zu Azure eine Überprüfung durchgeführt werden kann. [Weitere Informationen](concepts-collector.md).
+Der Azure Migrate-Collector ist eine einfache Appliance, die zum Entdecken einer lokalen vCenter-Umgebung verwendet wird, damit vor der Migration zu Azure eine Überprüfung durchgeführt werden kann. [Weitere Informationen](concepts-collector.md)
 
 ## <a name="continuous-discovery-upgrade-versions"></a>Kontinuierliche Ermittlung: Upgradeversionen
 

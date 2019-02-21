@@ -7,17 +7,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/26/2018
+ms.date: 02/20/2019
 author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 29e32177c899e8f42ee892be12a61c6633b23bdc
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: a6bd0097bacaa988c9c9f03c2ce827c42769aa99
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567331"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447377"
 ---
 # <a name="create-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen von Azure-SSIS Integration Runtime in Azure Data Factory
 In diesem Artikel werden die Schritte für die Bereitstellung von Azure-SSIS Integration Runtime (IR) in Azure Data Factory (ADF) beschrieben. Anschließend können Sie SQL Server Data Tools (SSDT) oder SQL Server Management Studio (SSMS) zum Bereitstellen und Ausführen von SQL Server Integration Services-Paketen (SSIS) in dieser Integration Runtime in Azure verwenden.
@@ -546,7 +546,7 @@ In diesem Abschnitt verwenden Sie eine Azure Resource Manager-Vorlage, um eine A
         "variables": {},
         "resources": [{
             "name": "<Specify a name for your data factory>",
-            "apiVersion": "2017-09-01-preview",
+            "apiVersion": "2018-06-01",
             "type": "Microsoft.DataFactory/factories",
             "location": "East US",
             "properties": {},
@@ -554,7 +554,7 @@ In diesem Abschnitt verwenden Sie eine Azure Resource Manager-Vorlage, um eine A
                 "type": "integrationruntimes",
                 "name": "<Specify a name for your Azure-SSIS IR>",
                 "dependsOn": [ "<The name of the data factory you specified at the beginning>" ],
-                "apiVersion": "2017-09-01-preview",
+                "apiVersion": "2018-06-01",
                 "properties": {
                     "type": "Managed",
                     "typeProperties": {

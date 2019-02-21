@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 02/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c27c32f19dac4e5394ca5e2f3e3722eccffb49b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a282ef88a5112593d4d8b9e304ec6ad03f44787c
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165109"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415866"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory-Passthrough-Authentifizierung: Schnellstart
 
@@ -54,7 +54,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 3. Identifizieren Sie mindestens einen weiteren Server (mit Windows Server 2012 R2 oder höher, mit aktivierter TLS 1.2), auf dem eigenständige Authentifizierungs-Agents ausgeführt werden können. Diese zusätzlichen Server werden benötigt, um die Hochverfügbarkeit von Anmeldeanforderungen sicherzustellen. Fügen Sie die Server derselben Active Directory-Gesamtstruktur wie die Benutzer hinzu, deren Kennwörter überprüft werden müssen.
 
     >[!IMPORTANT]
-    >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 12 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+    >Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 4. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Authentifizierung-Agents *ausgehende* Anforderungen an Azure AD über die folgenden Ports senden können:
@@ -109,7 +109,7 @@ Jetzt können sich Benutzer aus allen verwalteten Domänen Ihres Mandanten mit d
 Wenn Sie die Bereitstellung der Passthrough-Authentifizierung in einer Produktionsumgebung planen, sollten Sie weitere eigenständige Authentifizierungs-Agents installieren. Installieren Sie Authentifizierungs-Agents auf _anderen_ Servern als dem, auf dem Azure AD Connect ausgeführt wird. Mit dieser Einrichtung erzielen Sie Hochverfügbarkeit für Anforderungen zur Benutzeranmeldung.
 
 >[!IMPORTANT]
->Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 12 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
+>Für Produktionsumgebungen wird empfohlen, dass Sie mindestens drei Authentifizierungs-Agents auf Ihrem Mandanten ausführen. In einem System können maximal 40 Authentifizierungs-Agents pro Mandant installiert werden. Eine bewährte Methode ist die Behandlung aller Server, auf denen Authentifizierungs-Agents ausgeführt werden, als Ebene-0-Systeme (siehe [Referenz](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)).
 
 Befolgen Sie diese Anweisungen zum Herunterladen der Authentifizierungs-Agent-Software:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2018
 ms.author: barclayn
-ms.openlocfilehash: 45fb1cbf57f54f040f9dfbc522c22a2e0884d6db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6bf73bcc691e2ab27f3ec379530a59d3b616a070
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116498"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341215"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 
@@ -39,7 +39,7 @@ Die bewährten Methoden basieren auf einer gemeinsamen Linie und eignen sich fü
 Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, dass nur autorisierte Benutzer neue VMs einrichten und auf VMs zugreifen können.
 
 **Bewährte Methode**: Steuern des VM-Zugriffs.   
-**Detail**: Verwenden Sie [Azure-Richtlinien](../azure-policy/azure-policy-introduction.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
+**Detail**: Verwenden Sie [Azure-Richtlinien](../governance/policy/overview.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../azure-resource-manager/resource-group-overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. [Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md) stellen einen abonnementübergreifenden Bereich bereit. Sie organisieren Abonnements in Verwaltungsgruppen (Containern) und wenden Ihre Governancebedingungen auf diese Gruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Gruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
 

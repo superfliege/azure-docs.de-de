@@ -12,12 +12,12 @@ ms.author: aamalvea
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 11/02/2018
-ms.openlocfilehash: 64e743010b3ae615817639d9b2531b2f99979498
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: e53d77c4faea5b9461395a0098261866bdf6252f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54156901"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430426"
 ---
 # <a name="create-alerts-for-azure-sql-database-and-data-warehouse-using-azure-portal"></a>Erstellen von Warnungen für Azure SQL-Datenbank und Data Warehouse über das Azure-Portal
 
@@ -106,7 +106,6 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und:
 ||||||               
 | SQL Data Warehouse | cpu_percent | CPU-Prozentsatz | Durchschnitt | 10 Minuten |
 | SQL Data Warehouse | physical_data_read_percent | E/A-Prozentsatz für Daten | Durchschnitt | 10 Minuten |
-| SQL Data Warehouse | storage | Datenbankgröße gesamt | Maximum | 10 Minuten |
 | SQL Data Warehouse | connection_successful | Erfolgreiche Verbindungen | Gesamt | 10 Minuten |
 | SQL Data Warehouse | connection_failed | Verbindungsfehler | Gesamt | 10 Minuten |
 | SQL Data Warehouse | blocked_by_firewall | Von der Firewall blockiert | Gesamt | 10 Minuten |

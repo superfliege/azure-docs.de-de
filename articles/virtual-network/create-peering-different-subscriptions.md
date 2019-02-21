@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: jdial;anavin
-ms.openlocfilehash: 3b929c3f85bab4319fe2fef1b5c0575f0d1d972a
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 11ef6f2f09aacc175f095f7118ddb26ec77b2446
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55511675"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268361"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>Erstellen eines Peerings virtueller Netzwerke gemäß dem Ressourcen-Manager-Modell in verschiedenen Abonnements
 
@@ -280,7 +280,7 @@ Wenn sich die virtuellen Netzwerke in unterschiedlichen Abonnements befinden und
     }
     ```
 
-3. Melden Sie sich bei Azure als BenutzerA an, und stellen Sie die Vorlage über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-a-template-from-your-local-machine) oder die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) bereit. Geben Sie den Dateinamen ein, unter dem Sie in Schritt 2 den Beispiel-Json-Text gespeichert haben.
+3. Melden Sie sich bei Azure als BenutzerA an, und stellen Sie die Vorlage über das [Portal](../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-resources-from-custom-template), [PowerShell](../azure-resource-manager/resource-group-template-deploy.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-templates-stored-locally) oder die [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json#deploy-local-template) bereit. Geben Sie den Dateinamen ein, unter dem Sie in Schritt 2 den Beispiel-Json-Text gespeichert haben.
 4. Kopieren Sie den Beispiel-Json-Code aus Schritt 2 in einer Datei auf Ihrem Computer, und nehmen Sie Änderungen an den Zeilen vor, die wie folgt beginnen:
     - **name:** Ändern Sie *myVnetA/myVnetAToMyVnetB* in *myVnetB/myVnetBToMyVnetA*.
     - **id:** Ersetzen Sie `<subscription ID>` durch die Abonnement-ID von UserB, und ändern Sie *myVnetB* in *myVnetA*.

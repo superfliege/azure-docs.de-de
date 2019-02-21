@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/01/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 4999868170b73493f601f06e114a233a0f88fa35
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 35814de74fa03f9969cdd48882a5f672cfe306a1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53444134"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418073"
 ---
 Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitgestellt wird, indem Sie eine Remotedesktopverbindung mit Ihrer VM herstellen. Die beste Möglichkeit zur anfänglichen Sicherstellung, dass eine Verbindung mit Ihrer VM hergestellt werden kann, ist die Verwendung der privaten IP-Adresse anstelle des Computernamens. Auf diese Weise können Sie testen, ob die Verbindungsherstellung möglich ist, anstatt zu überprüfen, ob die Namensauflösung richtig konfiguriert ist.
 
@@ -24,8 +24,8 @@ Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitges
    - PowerShell: Verwenden Sie das Beispiel, um eine Liste mit VMs und privaten IP-Adressen aus Ihren Ressourcengruppen anzuzeigen. Es ist nicht erforderlich, dieses Beispiel vor der Verwendung zu ändern.
 
      ```powershell
-     $VMs = Get-AzureRmVM
-     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
+     $VMs = Get-AzVM
+     $Nics = Get-AzNetworkInterface | Where VirtualMachine -ne $null
 
      foreach($Nic in $Nics)
      {

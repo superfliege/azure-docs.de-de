@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8cc253f751b209332ee890c0ebc9b6846d4feab5
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: f93d9eaefe18dd012a639cd26636b56b9eb09249
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749847"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427635"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe der Azure CLI
 
@@ -113,7 +113,6 @@ Hier sehen Sie ein Beispiel für ein grundlegendes Bereitstellungsmanifest mit e
    }
    ```
 
-
 ## <a name="identify-devices-using-tags"></a>Identifizieren von Geräten mithilfe von Tags
 
 Bevor Sie eine Bereitstellung erstellen können, müssen Sie angeben können, welche Geräte Sie ansprechen möchten. Azure IoT Edge erkennt Geräte anhand von **Tags** im Gerätezwilling. Jedes Gerät kann mehrere Tags aufweisen, und Sie können diese auf jede beliebige Weise definieren, die für Ihre Lösung sinnvoll erscheint. Wenn Sie beispielsweise einen Campus mit intelligenten Gebäuden verwalten, können Sie einem Gerät etwa die folgenden Tags hinzufügen:
@@ -155,10 +154,12 @@ Sie können den Inhalt einer Bereitstellung mit dem folgenden Befehl anzeigen:
    ```cli
 az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name]
    ```
+
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist
 * **--hub-name**: Der Name des IoT-Hubs, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 
 Überprüfen Sie die Bereitstellung im Befehlsfenster. Die Eigenschaft **metrics** enthält eine Anzahl für jede Metrik, die von den einzelnen Hubs ausgewertet wird:
+
 * **targetedCount**: Eine Systemmetrik, die die Anzahl von Gerätezwillingen in IoT Hub angibt, die die Zielbedingung erfüllen.
 * **appliedCount**: Eine Systemmetrik, die die Anzahl von Geräten angibt, auf deren Modulzwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurden.
 * **reportedSuccessfulCount**: Eine Gerätemetrik, die die Anzahl von Edge-Geräten in der Bereitstellung angibt, für die von der IoT Edge-Clientruntime eine Erfolgsmeldung ausgegeben wurde.
@@ -179,6 +180,7 @@ az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [
 Wenn Sie Änderungen an einer Bereitstellung vornehmen, werden diese sofort auf alle Zielgeräte repliziert. 
 
 Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpassungen:
+
 * Wenn ein Gerät die alte Zielbedingung nicht erfüllt, wohl aber die neue, und diese Bereitstellung die höchste Priorität für das Gerät hat, wird diese Bereitstellung auf das Gerät angewendet. 
 * Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, die Zielbedingung nicht mehr erfüllt, wird diese Bereitstellung deinstalliert, und die Bereitstellung mit der nächsthöheren Priorität wird angewendet. 
 * Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, diese Zielbedingung wie auch die Zielbedingungen aller anderen Bereitstellungen nicht erfüllt, erfolgt keine Änderung auf dem Gerät. Das Gerät führt die aktuellen Module im aktuellen Zustand weiter aus, wird aber nicht mehr als Teil dieser Bereitstellung verwaltet. Sobald es die Zielbedingung einer anderen Bereitstellung erfüllt, wird diese Bereitstellung deinstalliert, und die neue Bereitstellung wird angewendet. 
@@ -188,12 +190,13 @@ Verwenden Sie den folgenden Befehl, um eine Bereitstellung zu aktualisieren:
    ```cli
 az iot edge deployment update --deployment-id [deployment id] --hub-name [hub name] --set [property1.property2='value']
    ```
+
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist
 * **--hub-name**: Der Name des IoT-Hubs, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 * **--set**: Aktualisieren einer Eigenschaft in der Bereitstellung. Sie können die folgenden Eigenschaften aktualisieren:
-    * targetCondition – z.B. `targetCondition=tags.location.state='Oregon'`
-    * Bezeichnungen 
-    * priority
+  * targetCondition – z.B. `targetCondition=tags.location.state='Oregon'`
+  * Bezeichnungen 
+  * priority
 
 
 ## <a name="delete-a-deployment"></a>Löschen einer Bereitstellung
@@ -205,6 +208,7 @@ Verwenden Sie zum Löschen einer Bereitstellung den folgenden Befehl:
    ```cli
 az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
    ```
+
 * **--deployment-id**: Der Name der Bereitstellung, die im IoT-Hub vorhanden ist
 * **--hub-name**: Der Name des IoT-Hubs, in dem die Bereitstellung vorhanden ist. Der Hub muss aus dem aktuellen Abonnement stammen. Wechseln Sie mit dem Befehl `az account set -s [subscription name]` zum gewünschten Abonnement.
 

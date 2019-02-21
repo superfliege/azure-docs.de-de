@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f464b6411e1375fa005980454a9b61d2d6c05b0b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7cd6af1dc6b947abd91c9d25a4b102e52da9d24d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819109"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456723"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Skalierungsoptionen für Anwendungen in Azure Kubernetes Service (AKS)
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 - [Manuelles Skalieren](#manually-scale-pods-or-nodes)
 - [Horizontale automatische Podskalierung (Horizontal Pod Autoscaler, HPA)](#horizontal-pod-autoscaler)
 - [Automatische Clusterskalierung ](#cluster-autoscaler)
-- Integration von Azure Container Instances (ACI) in AKS
+- [Integration von Azure Container Instances (ACI) in AKS](#burst-to-azure-container-instances)
 
 ## <a name="manually-scale-pods-or-nodes"></a>Manuelles Skalieren von Pods oder Knoten
 

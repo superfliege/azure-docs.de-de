@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/12/2017
-ms.openlocfilehash: 337e7a848b6aa141ecf4f96cd4f8f391be35a619
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 5b216242b5c1c093c5f508adce04ef7b4bec4d1e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475532"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453187"
 ---
 # <a name="use-azure-machine-learning-studio-web-service-parameters"></a>Verwenden von Azure Machine Learning Studio-Webdienstparametern
 Ein Azure Machine Learning-Webdienst wird erstellt, indem ein Experiment veröffentlicht wird, das Module mit konfigurierbaren Parametern enthält. In einigen Fällen kann es vielleicht erforderlich sein, das Verhalten des Moduls zu ändern, während der Webdienst ausgeführt wird. *Webdienstparameter* erlauben Ihnen, diese Aufgabe auszuführen. 
@@ -57,7 +57,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
 
 3. Klicken Sie auf das Symbol rechts neben **Path to blob beginning with container parameter**(Blob-Pfad beginnt mit Containerparameter). Es sieht folgendermaßen aus:
    
-   ![Symbol für Webdienstparameter][icon]
+   ![Symbol für Webdienstparameter](./media/web-service-parameters/icon.png)
    
    Wählen Sie "Set as web service parameter" (Als Webdienstparameter festlegen) aus.
    
@@ -65,7 +65,7 @@ Nehmen wir beispielsweise an, wir hätten ein Experiment mit einem Modul [Export
 4. Wenn Sie den Webdienstparameter umbenennen möchten, klicken Sie auf den Namen, geben Sie "Blob-Pfad" ein, und drücken Sie die **EINGABETASTE** . 
 5. Um einen Standardwert für den Webdienstparameter bereitzustellen, klicken Sie auf das Symbol rechts neben dem Namen, wählen Sie „Provide default value“ (Standardwert bereitstellen) aus, geben Sie einen Wert ein (z.B. „container1/output1.csv“), und drücken Sie die **EINGABETASTE**.
    
-   ![Webdienstparameter][parameter]
+   ![Webdienstparameter](./media/web-service-parameters/parameter.png)
 6. Klicken Sie auf **Ausführen**. 
 7. Klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [Classic]** oder **Deploy Web Service [New]** aus, um den Webdienst bereitzustellen.
 
@@ -78,11 +78,6 @@ Benutzer des Webdiensts können jetzt beim Zugreifen auf den Webdienst ein neues
 Ein ausführlicheres Beispiel finden Sie unter dem Eintrag [Web Service Parameters](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx) im [Machine Learning Blog](http://blogs.technet.com/b/machinelearning/archive/2014/11/25/azureml-web-service-parameters.aspx).
 
 Weitere Informationen über den Zugriff auf einen Machine Learning-Webdienst finden Sie unter [Nutzen eines veröffentlichten Webdiensts für maschinelles Lernen](consume-web-services.md).
-
-<!-- Images -->
-[icon]: ./media/web-service-parameters/icon.png
-[parameter]: ./media/web-service-parameters/parameter.png
-
 
 <!-- Module References -->
 [feature-hashing]: https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/

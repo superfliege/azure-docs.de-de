@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako;cenkdin;anilmur
-ms.openlocfilehash: 32bed77146284799faebdb8a44e2e610f49913cf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 02adb36bec574719f3f6d7f1c1b66124f96ccae1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003736"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309232"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream-legacy"></a>Verwenden von FMLE zum Senden eines Single-Bitrate-Livedatenstroms (veraltet)
 > [!div class="op_single_selector"]
@@ -64,7 +64,7 @@ In diesem Tutorial wird AAC verwendet. AAC wird jedoch vom FMLE nicht standardm�
 >
 >
 
-Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media-services-configure-fmle-live-encoder.md#configure_fmle_rtmp).
+Während der Kanal gestartet wird, können Sie [den Encoder konfigurieren](media-services-configure-fmle-live-encoder.md).
 
 > [!IMPORTANT]
 > Beachten Sie, dass die Abrechnung beginnt, sobald der Kanal betriebsbereit ist. Weitere Informationen finden Sie unter [Kanalstatus](media-services-manage-live-encoder-enabled-channels.md#states).

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/06/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a001cdafbd608aa2ad06976ec345c612197036d8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fc910ad51984204c8fc072ce49ebdfe4695be4a0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189955"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268005"
 ---
 # <a name="assign-a-managed-identity-access-to-a-resource-using-powershell"></a>Zuweisen des Zugriffs einer verwalteten Identität auf eine Ressource mithilfe von PowerShell
 
@@ -48,7 +48,7 @@ Nachdem Sie die verwaltete Identität für eine Azure-Ressource aktiviert haben,
 2. In diesem Beispiel wird einem virtuellen Azure-Computer der Zugriff auf ein Speicherkonto gewährt. Zuerst wird [Get-AzRMVM](/powershell/module/az.compute/get-azvm) verwendet, um den Dienstprinzipal für den virtuellen Computer mit dem Namen `myVM` abzurufen, der beim Aktivieren der verwalteten Identität erstellt wurde. Verwenden Sie dann [New-AzRmRoleAssignment](/powershell/module/Az.Resources/New-AzRoleAssignment), um dem virtuellen Computer **Reader** Zugriff auf ein Speicherkonto namens `myStorageAcct` zu erteilen:
 
     ```powershell
-    $spID = (Get-Az -ResourceGroupName myRG -Name myVM).identity.principalid
+    $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
     New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Reader" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.Storage/storageAccounts/<myStorageAcct>"
     ```
 

@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 8eea14703a7a4ed6fad56dc0bed981b84266e2db
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d05ec1835bc04be0ca0fc12f41322c14b5420213
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112613"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337815"
 ---
 # <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Fehler „RequestDisallowedByPolicy“ bei Azure-Ressourcenrichtlinien
 
 Dieser Artikel beschreibt die Ursache des Fehlers „RequestDisallowedByPolicy“ und bietet eine Lösung für diesen Fehler.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="symptom"></a>Symptom
 
@@ -68,5 +66,5 @@ Sehen Sie sich zum Beheben dieses Problems die Ressourcenrichtlinien an, und erm
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md)
-- [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../azure-policy/create-manage-policy.md)
+- [Was ist Azure Policy?](../governance/policy/overview.md)
+- [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md)
