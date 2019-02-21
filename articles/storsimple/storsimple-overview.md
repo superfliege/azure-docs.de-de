@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
-ms.openlocfilehash: 946b5a568d98367daec0244968b962618f22ae76
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40038214"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326924"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000-Serie: eine Hybridcloud-Speicherlösung
 ## <a name="overview"></a>Übersicht
@@ -29,7 +29,7 @@ StorSimple verwendet zur Verwaltung von gespeicherten Daten auf verschiedenen Sp
 
 Zusätzlich zur Speicherverwaltung können Sie mithilfe der StorSimple-Funktionen zum Schutz von Daten bedarfsgesteuerte und geplante Sicherungen erstellen und anschließend lokal oder in der Cloud speichern. Sicherungen erfolgen in Form von inkrementellen Momentaufnahmen, sodass sie schnell erstellt und wiederhergestellt werden können. Cloud-Momentaufnahmen können bei Wiederherstellungen im Notfall extrem wichtig sein, da sie sekundäre Speichersystemen (z. B. Backup auf Bandlaufwerken) ersetzen und es Ihnen ermöglichen, Daten bei Bedarf in Ihrem Rechenzentrum oder an anderen Standorten wiederherzustellen.
 
-![Video-Symbol](./media/storsimple-overview/video_icon.png) Sehen Sie sich das Video mit einer kurzen Einführung in Microsoft Azure StorSimple an.
+![Video-Symbol](./media/storsimple-overview/video_icon.png)  Sehen Sie sich das Video mit einer kurzen Einführung in Microsoft Azure StorSimple an.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/StorSimple-Hybrid-Cloud-Storage-Solution/player]
 
@@ -92,7 +92,7 @@ Die Cloud Appliance weist folgende Merkmale auf:
 * Sie können eine unbegrenzte Anzahl von Cloud Appliances in der Cloud erstellen und sie nach Bedarf aktivieren und deaktivieren.
 * Mit dem virtuellen Gerät können lokale Umgebungen bei der Notfallwiederherstellung und in Entwicklungs- oder Testszenarios simuliert sowie der Abruf aus Sicherungen auf Elementebene unterstützt werden.
 
-Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Premium-Speicher ein Azure-Premium-Speicherkonto benötigen. Informationen zu Premium-Speicher finden Sie unter [Premium-Speicher: Hochleistungsspeicher für Arbeitslasten auf virtuellen Azure-Computern](../virtual-machines/windows/premium-storage.md).
+Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung: dem 8010-Gerät (früher als Modell 1100 bekannt) und dem 8020-Gerät. Das 8010-Gerät bietet eine maximale Kapazität von 30 TB. Das 8020-Gerät nutzt Azure-Premium-Speicher und umfasst eine maximale Kapazität von 64 TB. (In lokalen Ebenen speichert der Azure-Premium-Speicher Daten auf SSDs. Beim Standardspeicher werden Daten auf HDDs gespeichert.) Beachten Sie, dass Sie zur Verwendung von Premium-Speicher ein Azure-Premium-Speicherkonto benötigen.
 
 Weitere Informationen zu StorSimple Cloud Appliances finden Sie unter [Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure](storsimple-8000-cloud-appliance-u2.md).
 
@@ -207,10 +207,10 @@ In der folgenden Tabelle finden Sie eine Übersicht über die unterstützten Sto
 
 | Szenario | Workload | Unterstützt | Einschränkungen | Version |
 | --- | --- | --- | --- | --- |
-| Zusammenarbeit |Dateifreigabe |JA | |Alle Versionen |
-| Zusammenarbeit |Verteilte Dateifreigabe |JA | |Alle Versionen |
+| Zusammenarbeit |Dateifreigabe |Ja | |Alle Versionen |
+| Zusammenarbeit |Verteilte Dateifreigabe |Ja | |Alle Versionen |
 | Zusammenarbeit |SharePoint |Ja* |Nur mit lokalen Volumes unterstützt |Update 2 und höher |
-| Archivierung |Einfache Dateiarchivierung |JA | |Alle Versionen |
+| Archivierung |Einfache Dateiarchivierung |Ja | |Alle Versionen |
 | Virtualisierung |Virtuelle Computer |Ja* |Nur mit lokalen Volumes unterstützt |Update 2 und höher |
 | Datenbank |SQL |Ja* |Nur mit lokalen Volumes unterstützt |Update 2 und höher |
 | Videoüberwachung |Videoüberwachung |Ja* |Unterstützt, wenn das StorSimple-Gerät nur für diese Workload verwendet wird |Update 2 und höher |
@@ -234,11 +234,11 @@ Nachfolgend finden Sie eine Liste der von StorSimple unterstützten Infrastruktu
 
 | Szenario | Workload | Unterstützt | Einschränkungen | Version |
 | --- | --- | --- | --- | --- |
-| Allgemein |ExpressRoute |JA | |Alle Versionen |
+| Allgemein |ExpressRoute |Ja | |Alle Versionen |
 | Allgemein |DataCore FC |Ja* |Unterstützt mit DataCore SANsymphony |Alle Versionen |
 | Allgemein |DFSR |Ja* |Nur mit lokalen Volumes unterstützt |Alle Versionen |
 | Allgemein |Indizierung |Ja* |Bei mehrstufigen Volumes wird nur die Indizierung der Metadaten unterstützt (nicht der Daten).<br>Bei lokalen Volumes wird eine vollständige Indizierung unterstützt. |Alle Versionen |
-| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br> Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
+| Allgemein |Virenschutz |Ja* |Bei mehrstufigen Volumes wird das Scannen nur beim Öffnen und Schließen unterstützt.<br>  Bei lokalen Volumes wird ein vollständiger Scan unterstützt. |Alle Versionen |
 
 *Ja&#42; – Lösungsrichtlinien und -einschränkungen sollten angewendet werden.*
 

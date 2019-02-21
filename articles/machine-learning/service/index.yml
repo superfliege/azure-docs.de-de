@@ -1,15 +1,15 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 46457711c1611e614f89a813b1856687beb27ac7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 372d3d88c0a160c1f294f07e58c5e11dbf5eac5e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311434"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456604"
 documentType: LandingData
 title: Dokumentation zum Azure Machine Learning-Dienst
 metadata:
   title: 'Dokumentation zum Azure Machine Learning-Dienst: Tutorials, API-Referenz | Microsoft-Dokumentation'
-  description: Der Azure Machine Learning-Dienst umfasst eine cloudbasierte Umgebung, auf die Sie zum Entwickeln, Trainieren, Testen, Bereitstellen, Verwalten und Nachverfolgen von Machine Learning-Modellen zurückgreifen können. Azure Machine Learning Service bietet umfassende Unterstützung für Open-Source-Technologien wie Scikit-learn, Tensorflow, Pytorch oder andere auf Python basierende Frameworks. In unseren Schnellstartanleitungen und Tutorials erfahren Sie, wie Sie Azure Machine Learning Service in Ihren Workflows für maschinelles Lernen einsetzen.
+  description: Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.
   services: machine-learning
   ms.service: machine-learning
   ms.subservice: core
@@ -17,12 +17,21 @@ metadata:
   manager: jhubbard
   author: j-martens
   ms.author: jmartens
-  ms.date: 2/15/2019
+  ms.date: 2/19/2019
   ms.custom: seodec18
   ms.tgt_pltfrm: na
   ms.devlang: na
 abstract:
-  description: Azure Machine Learning Service bietet eine Cloudumgebung zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Ermitteln Sie durch automatisiertes maschinelles Lernen Algorithmen, und optimieren Sie Hyperparameter noch schneller. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) sowie die Dienst-SDKs zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.
+  description: Azure Machine Learning Service bietet SDKs und Dienste zum schnellen Vorbereiten von Daten sowie zum Trainieren und Bereitstellen von Machine Learning-Modellen. Erhöhen Sie die Produktivität, und senken Sie die Kosten dank der automatischen Skalierung von Computeressourcen und Pipelines. Diese Funktionen stehen Ihnen über Open-Source-Python-Frameworks (etwa PyTorch, TensorFlow und sciKit-learn) zur Verfügung. Informationen zu den ersten Schritten finden Sie in unseren Schnellstartanleitungen und Tutorials.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: media/index/video.png
+      width: 250
+    title: Video ansehen (9:58)
+    href: https://www.youtube.com/watch?v=GBDSBInvz08
+    width: 250
 sections:
 - title: Fünfminütige Schnellstarts
   items:
@@ -51,9 +60,9 @@ sections:
   - type: list
     style: unordered
     items:
-    - html: <a href="https://aka.ms/aml-sdk">Haupt-SDK (Python)</a>
-    - html: <a href="https://aka.ms/data-prep-sdk">SDK für die Datenvorbereitung (Python)</a>
-    - html: <a href="https://aka.ms/aml-monitoring-sdk">SDK für die Überwachung (Python)</a>
+    - html: '<a href="https://aka.ms/aml-sdk">Python-Haupt-SDK</a>: Kernfunktionen, automatisiertes maschinelles Lernen, Pipelines und vieles mehr'
+    - html: '<a href="https://aka.ms/data-prep-sdk">Data Prep</a> Python SDK: Vorbereiten und Transformieren von Daten'
+    - html: '<a href="https://aka.ms/aml-monitoring-sdk">Monitoring</a> Python SDK: Erfassen von Daten für bereitgestellte Webdienste'
 - title: Weitere Azure Machine Learning-Technologien
   items:
   - type: list

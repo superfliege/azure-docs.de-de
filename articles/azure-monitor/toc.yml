@@ -315,6 +315,8 @@ items:
           href: app/asp-net-exceptions.md
         - name: Protokollablaufverfolgungen
           href: app/asp-net-trace-logs.md
+        - name: ILogger
+          href: app/ilogger.md
         - name: Leistungsindikatoren
           href: app/performance-counters.md
         - name: Abhängigkeiten
@@ -390,6 +392,8 @@ items:
           href: app/proactive-cloud-services.md
         - name: Verwalten von Regeln für die intelligente Erkennung
           href: app/proactive-arm-config.md
+        - name: E-Mail-Benachrichtigung
+          href: app/proactive-email-notification.md
       - name: Erstellen einer Ressource
         href: app/create-new-resource.md
       - name: Problembehandlung
@@ -1027,9 +1031,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 79a0748ad69348d9eec2954731ef88232c253c64
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416971"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455397"

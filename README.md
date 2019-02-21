@@ -1,5 +1,7 @@
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure-Dokumentation
 
+> Zwischen dem 5. und 9. März 2019 wird das Repository „MicrosoftDocs/azure-docs“ von der aktuellen Markdown-Engine zur Markdown-Engine [Markdig](https://github.com/lunet-io/markdig) migriert. Während dieses Zeitraums wird die Option zum Anhalten der Zusammenführung öffentlicher Pull Requests deaktiviert, damit die Migration durchgeführt werden kann.
+
 Willkommen bei der Open-Source-[Dokumentation](https://docs.microsoft.com/azure) zu [Microsoft Azure](https://azure.microsoft.com). Diese Infodatei enthält Informationen dazu, wie Sie an der Microsoft Azure-Dokumentation mitwirken können.
 
 ## <a name="getting-started"></a>Erste Schritte

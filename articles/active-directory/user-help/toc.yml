@@ -23,26 +23,6 @@ items:
     href: active-directory-passwords-reset-register.md
   - name: Zurücksetzen Ihres Kennworts
     href: user-help-reset-password.md
-- name: Hilfe zur Sicherheitsinformation (Vorschau)
-  items:
-  - name: Übersicht
-    href: user-help-security-info-overview.md
-  - name: Einrichten einer Authentifikator-App
-    href: security-info-setup-auth-app.md
-  - name: Einrichten von SMS
-    href: security-info-setup-text-msg.md
-  - name: Einrichten von Telefonanrufen
-    href: security-info-setup-phone-number.md
-  - name: Einrichten einer E-Mail-Adresse
-    href: security-info-setup-email.md
-  - name: Einrichten von Sicherheitsfragen
-    href: security-info-setup-questions.md
-  - name: Verwalten von App-Kennwörtern
-    href: security-info-app-passwords.md
-  - name: Verwalten der Sicherheitsinformation
-    href: security-info-manage-settings.md
-  - name: Anmeldung
-    href: user-help-sign-in.md?toc=./toc.json
 - name: Hilfe zur Microsoft Authenticator-App
   items:
   - name: Übersicht
@@ -60,21 +40,49 @@ items:
       href: user-help-auth-app-add-non-ms-account.md
     - name: Manuelles Hinzufügen eines Kontos
       href: user-help-auth-app-add-account-manual.md
-    expanded: true
   - name: Anmelden mit der Microsoft Authenticator-App
     href: user-help-auth-app-sign-in.md
   - name: Sichern und Wiederherstellen Ihrer Konten
     href: user-help-auth-app-backup-recovery.md
   - name: Häufig gestellte Fragen
     href: user-help-auth-app-faq.md
-- name: Hilfe zum Portal „Meine Apps“
+- name: '„Mein Profil“ (Vorschauversion): Portalhilfe'
   items:
   - name: Übersicht
-    href: user-help-my-apps-overview.md
-  - name: Was ist das Portal „Meine Apps“?
-    href: active-directory-saas-access-panel-introduction.md
-  - name: Behandeln von Problemen
-    href: active-directory-saas-access-panel-user-help.md
+    href: myprofile-portal-overview.md
+  - name: Verwalten der Sicherheitsinformation
+    href: user-help-security-info-overview.md
+  - name: Anzeigen der Anmeldeaktivitäten
+    href: myprofile-portal-recent-activity-page.md
+  - name: Verwalten Ihrer Organisationen
+    href: myprofile-portal-organizations-page.md
+  - name: Verwalten Ihrer verbundenen Geräte
+    href: myprofile-portal-devices-page.md
+  - name: Anzeigen der Informationen in Bezug auf den Datenschutz
+    href: myprofile-portal-privacy-page.md
+- name: Hilfe zur Sicherheitsinformation (Vorschau)
+  items:
+  - name: Übersicht
+    href: user-help-security-info-overview.md
+  - name: Hinzufügen von Sicherheitsinformationen während der Anmeldung
+    href: security-info-setup-signin.md
+  - name: 'Übersicht: Hinzufügen oder Aktualisieren von Verfahren für Sicherheitsinformationen'
+    href: security-info-add-update-methods-overview.md
+    items:
+    - name: Einrichten einer Authentifikator-App
+      href: security-info-setup-auth-app.md
+    - name: Einrichten von SMS
+      href: security-info-setup-text-msg.md
+    - name: Einrichten von Telefonanrufen
+      href: security-info-setup-phone-number.md
+    - name: Einrichten einer E-Mail-Adresse
+      href: security-info-setup-email.md
+    - name: Einrichten von Sicherheitsfragen
+      href: security-info-setup-questions.md
+  - name: Verwalten von App-Kennwörtern
+    href: security-info-app-passwords.md
+  - name: Anmeldung
+    href: user-help-sign-in.md?toc=./toc.json
 - name: Hilfe zur Geräteverwaltung
   items:
   - name: Übersicht
@@ -85,9 +93,17 @@ items:
     href: user-help-register-device-on-network.md
   - name: Problembehandlung bei der Meldung „Zugriff nicht möglich“
     href: user-help-device-remediation.md
-ms.openlocfilehash: 604b2c204f893bf0abaaec86f85e2159c17a8656
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+- name: Hilfe zum Portal „Meine Apps“
+  items:
+  - name: Übersicht
+    href: user-help-my-apps-overview.md
+  - name: Was ist das Portal „Meine Apps“?
+    href: active-directory-saas-access-panel-introduction.md
+  - name: Behandeln von Problemen
+    href: active-directory-saas-access-panel-user-help.md
+ms.openlocfilehash: b7d8c297559736c9f22b118d50423f980302018d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816049"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452573"

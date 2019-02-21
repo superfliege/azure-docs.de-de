@@ -1,7 +1,7 @@
 ---
 layout: LandingPage
-title: Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung – Azure Active Directory | Microsoft-Dokumentation
-description: Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.
+title: 'Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung – Azure Active Directory | Microsoft-Dokumentation'
+description: 'Die Benutzerhilfe richtet sich an Benutzer, die Unterstützung beim Einrichten und Verwenden der Sicherheitsinformation, der zweistufigen Überprüfung, der Self-Service-Kennwortzurücksetzung, der Geräteverwaltung, der Microsoft Authenticator-App und dem Portal „Meine Apps“ benötigen.'
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -11,13 +11,8 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0af4cf345efe2180249f9c9491e9f66f75ac4514
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188714"
 ---
+
 # <a name="user-help-for-authentication-apps-and-device-management"></a>Benutzerhilfe für Authentifizierung, Apps und Geräteverwaltung
 
 Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der Sicherheitsinformation und der zweistufigen Überprüfung, Zurücksetzen Ihrer eigenen Kennwörter, Einrichten und Einbinden Ihrer Azure Active Directory-Geräte und Einrichten und Verwenden der Microsoft Authenticator-App und des Portals „Meine Apps“.
@@ -29,6 +24,62 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
 
 
 <ul class="panelContent cardsF">
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Hilfe zur Microsoft Authenticator-App</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Übersicht</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Herunterladen und Installieren der App</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Hinzufügen Ihrer Konten</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Anmelden mit der App</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">Sichern und Wiederherstellen von Kontoanmeldeinformationen</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>    
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>„Mein Profil“ (Vorschauversion): Portalhilfe</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-overview">Übersicht</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-security-info-overview">Verwalten der Sicherheitsinformation</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Anzeigen der letzten Anmeldeaktivität</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Verwalten Ihrer Organisationen</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Verwalten Ihrer verbundenen Geräte</a><br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Anzeigen der Informationen in Bezug auf den Datenschutz</a><br/>                       
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <div class="cardSize">
+            <div class="cardPadding">
+                <div class="card">
+                    <div class="cardText">
+                        <h3>Hilfe zur Sicherheitsinformation (Vorschau)</h3>
+                        <p>
+                        <a href="/azure/active-directory/user-help/user-help-security-info-overview">Übersicht</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-signin">Einrichten einer Eingabeaufforderung für die Anmeldeseite</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Einrichten einer Authentifikator-App</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Einrichten von SMS</a><br/>
+                        <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Einrichten von Telefonanrufen</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-sign-in">Anmeldung</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
     <li>
         <div class="cardSize">
             <div class="cardPadding">
@@ -61,37 +112,16 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                 </div>
             </div>
         </div>
-    </li>
-<li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Hilfe zur Sicherheitsinformation (Vorschau)</h3>
-                        <p>
-                        <a href="/azure/active-directory/user-help/security-info-setup-auth-app">Einrichten einer Authentifikator-App</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-setup-text-msg">Einrichten von SMS</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-setup-phone-number">Einrichten von Telefonanrufen</a><br/>
-                        <a href="/azure/active-directory/user-help/security-info-manage-settings">Verwalten der Sicherheitsinformation</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-sign-in">Anmeldung</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
+    </li>      
     <li>
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>Hilfe zur Microsoft Authenticator-App</h3>
+                        <h3>Hilfe zur Geräteverwaltung</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-overview">Übersicht</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-download-install">Herunterladen und Installieren der App</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-add-account-overview">Hinzufügen Ihrer Konten</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-sign-in">Anmelden mit der App</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-auth-app-backup-recovery">Sichern und Wiederherstellen von Kontoanmeldeinformationen</a>
+                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Verknüpfen Ihres Arbeitsgeräts</a><br/>
+                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrieren Ihres persönlichen Geräts für die Arbeit</a>
                         </p>
                     </div>
                 </div>
@@ -112,20 +142,5 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                 </div>
             </div>
         </div>
-    </li>
-<li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Hilfe zur Geräteverwaltung</h3>
-                        <p>
-                        <a href="/azure/active-directory/user-help/user-help-join-device-on-network">Verknüpfen Ihres Arbeitsgeräts</a><br/>
-                        <a href="/azure/active-directory/user-help/user-help-register-device-on-network">Registrieren Ihres persönlichen Geräts für die Arbeit</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
+    </li>    
 </ul>
