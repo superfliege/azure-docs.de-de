@@ -53,6 +53,7 @@ items:
       - name: Xamarin
         href: mobile-apps-with-xamarin.md
   - name: 2. Migrieren von Daten
+    displayName: import
     href: import-data.md
   - name: 3. Abfragen von Daten
     href: tutorial-query-sql-api.md
@@ -76,15 +77,16 @@ items:
     href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Modelldokumentdaten
-    href: modeling-data.md
   - name: Globale Verteilung
     items:
     - name: Übersicht
+      displayName: replication, replicate, geo distribution
       href: distribute-data-globally.md
     - name: Konsistenzebenen
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels.md
     - name: Auswählen der richtigen Konsistenzebene
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: consistency-levels-choosing.md
     - name: Konsistenzebenen und Azure Cosmos DB-APIs
       href: consistency-levels-across-apis.md
@@ -93,8 +95,10 @@ items:
     - name: Hochverfügbarkeit
       href: high-availability.md
     - name: Globales Skalieren von bereitgestelltem Durchsatz
+      displayName: request units, RUs, RU
       href: scaling-throughput.md
     - name: Konflikttypen und Konfliktauflösungsrichtlinien
+      displayName: last write wins, custom
       href: conflict-resolution-policies.md
     - name: 'Globale Verteilung: Hintergrundinformationen'
       href: global-dist-under-the-hood.md
@@ -111,26 +115,36 @@ items:
   - name: Bereitgestellter Durchsatz
     items:
     - name: Anforderungseinheiten
+      displayName: RUs, RU
       href: request-units.md
     - name: Bereitstellen des Durchsatzes für Container und Datenbanken
+      displayName: request units, RUs, RU, limits, database throughput, shared throughput, container throughput
       href: set-throughput.md
   - name: Arbeiten mit einem Azure Cosmos-Konto
     href: account-overview.md
   - name: Container und Elemente
     items:
     - name: Arbeiten mit Datenbanken, Containern und Elementen
+      displayName: collection, document
       href: databases-containers-items.md
     - name: SQL-Referenz
+      displayName: collection, document
       href: sql-api-query-reference.md
     - name: Beispiele für SQL-Abfragen
+      displayName: collection, document, order by, where, top, value, aggregate, between, scalar, join, count, contains
       href: how-to-sql-query.md
+    - name: Modelldokumentdaten
+      displayName: document
+      href: modeling-data.md
     - name: Indizierung
       items:
       - name: Übersicht
         href: index-overview.md
       - name: Indexrichtlinie
+        displayName: consistent, none
         href: index-policy.md
       - name: Indextypen
+        displayName: hash, range, spatial
         href: index-types.md
       - name: Indexpfade
         href: index-paths.md
@@ -143,8 +157,10 @@ items:
       - name: Change Feed Processor
         href: change-feed-processor.md
       - name: Auslösen von Azure Functions
+        displayName: change feed
         href: change-feed-functions.md
     - name: Gültigkeitsdauer
+      displayName: delete, delete data, ttl
       href: time-to-live.md
     - name: Einschränkungen für eindeutige Schlüssel
       href: unique-keys.md
@@ -165,6 +181,7 @@ items:
     - name: Erläuterungen zur Rechnung
       href: understand-your-bill.md
     - name: Optimieren der Kosten für den bereitgestellten Durchsatz
+      displayName: request units, RUs, RU
       href: optimize-cost-throughput.md
     - name: Optimieren der Abfragekosten
       href: optimize-cost-queries.md
@@ -185,6 +202,7 @@ items:
     - name: Datenverschlüsselung
       href: database-encryption-at-rest.md
     - name: Sicherer Zugriff auf Daten
+      displayName: master key, resource token, users, roles
       href: secure-access-to-data.md
     - name: IP-Firewall
       href: firewall-support.md
@@ -241,6 +259,7 @@ items:
         - name: Node.js- und React-App
           href: tutorial-develop-mongodb-react.md
       - name: 2. Migrieren von Daten
+        displayName: import
         href: https://docs.microsoft.com/azure/dms/tutorial-mongodb-cosmos-db?toc=/azure/cosmos-db/toc.json
       - name: 3. Abfragen von Daten
         href: tutorial-query-mongodb.md
@@ -257,6 +276,7 @@ items:
       - name: Herstellen einer Verbindung mithilfe von Mongoose
         href: mongodb-mongoose.md
       - name: Globales Verteilen von Lesevorgängen
+        displayName: read preference
         href: mongodb-readpreference.md
       - name: Gültigkeitsdauer – MongoDB
         href: mongodb-time-to-live.md
@@ -266,6 +286,7 @@ items:
         href: /java/azure/spring-framework/configure-spring-data-mongodb-with-cosmos-db
         maintainContext: true
   - name: Gremlin-API
+    displayName: graph, graph database
     items:
     - name: Einführung
       href: graph-introduction.md
@@ -323,6 +344,7 @@ items:
       - name: 3. Abfragen von Daten
         href: cassandra-api-query-data.md
       - name: '4: Migrieren von Daten'
+        displayName: import
         href: cassandra-import-data.md
     - name: Anleitungen
       items:
@@ -370,6 +392,7 @@ items:
       - name: '1: Erstellen eines Kontos'
         href: tutorial-develop-table-dotnet.md
       - name: 2. Migrieren von Daten
+        displayName: import
         href: table-import.md
       - name: 3. Abfragen von Daten
         href: tutorial-query-table.md
@@ -423,6 +446,7 @@ items:
     - name: Konfigurieren von Multimaster
       href: how-to-multi-master.md
     - name: Verwalten von Konsistenzebenen
+      displayName: session, consistency prefix, strong, eventual, bounded staleness
       href: how-to-manage-consistency.md
     - name: Implementieren der benutzerdefinierten Synchronisierung
       href: how-to-custom-synchronization.md
@@ -431,8 +455,10 @@ items:
   - name: Bereitgestellter Durchsatz
     items:
     - name: Bereitstellen von Durchsatz für einen Container
+      displayName: request units, RUs, RU, collection level
       href: how-to-provision-container-throughput.md
     - name: Bereitstellen von Durchsatz für eine Datenbank
+      displayName: request units, RUs, RU, shared throughput, database level
       href: how-to-provision-database-throughput.md
   - name: Arbeiten mit Containern und Elementen
     items:
@@ -441,6 +467,7 @@ items:
     - name: Abfragen eines Containers
       href: how-to-query-container.md
     - name: Konfigurieren der Gültigkeitsdauer (TTL)
+      displayName: delete, delete data, ttl
       href: how-to-time-to-live.md
     - name: Arbeiten mit Daten unter Verwendung von Azure Storage-Explorer
       href: storage-explorer.md
@@ -627,9 +654,9 @@ items:
       href: use-cases.md
     - name: Apps für soziale Medien
       href: social-media-apps.md
-ms.openlocfilehash: f2f061aebd996f62f793ba515f574c8a3748b87f
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: f1f36d86466f93c0acac30364ba648391fb03095
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56429111"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652517"

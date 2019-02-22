@@ -25,8 +25,8 @@ items:
   items:
   - name: Authentifizierungsmethoden
     href: concept-authentication-methods.md
-  - name: Zusammengeführte Registrierung
-    href: concept-registration-mfa-sspr-converged.md
+  - name: Kombinierte Registrierung
+    href: concept-registration-mfa-sspr-combined.md
   - name: Zurücksetzen des Kennworts
     items:
     - name: Funktionsweise der Kennwortzurücksetzung
@@ -104,6 +104,12 @@ items:
         href: howto-mfa-nps-extension-rdg.md
       - name: VPN
         href: howto-mfa-nps-extension-vpn.md
+  - name: Kombinierte Registrierung
+    items:
+    - name: Aktivieren der kombinierten Registrierung
+      href: howto-registration-mfa-sspr-combined.md
+    - name: Problembehandlung für die kombinierte Registrierung
+      href: howto-registration-mfa-sspr-combined-troubleshoot.md
   - name: Kennwortschutz für Azure AD
     items:
     - name: Konfigurieren der Liste gesperrter Kennwörter
@@ -191,8 +197,6 @@ items:
         href: howto-mfa-nps-extension-errors.md
   - name: Problembehandlung
     items:
-    - name: Deaktivieren der zusammengeführten Registrierung
-      href: howto-registration-mfa-sspr-converged-troubleshoot.md
     - name: Problembehandlung bei SSPR
       href: active-directory-passwords-troubleshoot.md
     - name: Häufig gestellte Fragen zu SSPR
@@ -225,9 +229,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-active-directory
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: d834bcd12f4f8af44c467233230744571dd9b23c
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 99d21cd59b7281dbb6a34c2e3cdc9026c9955622
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660050"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585983"

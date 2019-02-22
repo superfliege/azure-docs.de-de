@@ -284,8 +284,6 @@ items:
       href: azure-stack-app-service-capacity-planning.md
     - name: Bevor Sie beginnen
       href: azure-stack-app-service-before-you-get-started.md
-    - name: Weiterverteilen von Azure App Service in Azure Stack in Fehlerdomänen
-      href: azure-stack-app-service-fault-domain-update.md
     - name: Bereitstellen eines App Service-Ressourcenanbieters
       href: azure-stack-app-service-deploy.md
     - name: Offlinebereitstellung von App Service
@@ -397,9 +395,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: Training und Zertifizierung
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: abf319c83efc03ab7f55a42baede60322f2831ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 02a071cae4a02f909ccbf00678451696721310df
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56308705"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593844"
