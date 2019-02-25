@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.subservice: common
-ms.openlocfilehash: 36889fc6cb8dbec77136dc8cea08416e51837243
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb88bf7ddaa93336c812b1ddc9794dad8daa64b7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564832"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330578"
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Migrieren zu Azure Storage Premium (Nicht verwaltete Datenträger)
 
@@ -32,7 +32,7 @@ Der Zweck dieser Anleitung ist es, neue Benutzer von Azure Storage Premium besse
 Sie können virtuelle Computer von anderen Plattformen zu Azure Storage Premium migrieren oder vorhandene Azure-VMs von Standardspeicher zu Storage Premium migrieren. In dieser Anleitung finden Sie Schritte für beide Szenarien. Befolgen Sie je nach Szenario die im entsprechenden Abschnitt angegebenen Schritte.
 
 > [!NOTE]
-> Sie finden eine Übersicht über Features und Preise für Storage Premium unter Storage Premium: [Hochleistungsspeicher für Azure Virtual Machines-Workloads](../../virtual-machines/windows/premium-storage.md). Es wird empfohlen, alle Datenträger von virtuellen Computer, die eine hohe IOPS-Leistung erfordern, zu Azure Storage Premium zu migrieren, um die beste Leistung für Ihre Anwendung zu erzielen. Wenn Ihr Datenträger keine hohe IOPS-Leistung erfordert, können Sie die Kosten beschränken, indem Sie sie im Standard-Speicher belassen. Dieser Speicher speichert Daten auf Datenträgern virtueller Computer auf Festplatten (Hard Disk Drives, HDDs) anstelle von SSDs.
+> Sie finden eine Übersicht über Features und Preise für Premium-SSDs in: [Auswählen eines Datenträgertyps für virtuelle IaaS-Computer](../../virtual-machines/windows/disks-types.md#premium-ssd). Es wird empfohlen, alle Datenträger von virtuellen Computer, die eine hohe IOPS-Leistung erfordern, zu Azure Storage Premium zu migrieren, um die beste Leistung für Ihre Anwendung zu erzielen. Wenn Ihr Datenträger keine hohe IOPS-Leistung erfordert, können Sie die Kosten beschränken, indem Sie sie im Standard-Speicher belassen. Dieser Speicher speichert Daten auf Datenträgern virtueller Computer auf Festplatten (Hard Disk Drives, HDDs) anstelle von SSDs.
 >
 
 Für den Abschluss des vollständigen Migrationsprozesses sind möglicherweise zusätzliche Aktionen vor und nach den in dieser Anleitung angegebenen Schritten erforderlich. Beispiele sind das Konfigurieren von virtuellen Netzwerken oder Endpunkten oder Ändern von Code innerhalb der Anwendung selbst, wofür ggf. in Ihrer Anwendung Ausfallzeiten anfallen. Diese Aktionen sind für jede Anwendung eindeutig. Sie sollten sie zusammen mit den Schritten in dieser Anleitung ausführen, um den kompletten Wechsel zu Storage Premium so reibungslos wie möglich zu gestalten.
@@ -69,7 +69,7 @@ Storage Premium-Konten haben zusätzlich zu den unter [Ziele für Skalierbarkeit
 |:--- |:--- |
 | Datenträgerkapazität: 35 TB<br />Kapazität für Momentaufnahmen: 10 TB |Bis zu 50 GB pro Sekunde für eingehenden und ausgehenden Datenverkehr |
 
-Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Storage Premium](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets).
+Weitere Informationen zu den Spezifikationen für Storage Premium finden Sie unter [Skalierbarkeits- und Leistungsziele für Azure Storage](storage-scalability-targets.md#premium-storage-account-scale-limits).
 
 #### <a name="disk-caching-policy"></a>Zwischenspeicherungsrichtlinie für Datenträger
 Standardmäßig ist die Richtlinie für das Zwischenspeichern für alle Premium-Datenträger *Schreibgeschützt* und für die Premium-Betriebssystem-Datenträger, die an den virtuellen Computer angeschlossen sind, *Lesen/Schreiben*. Diese Konfigurationseinstellung wird empfohlen, um die optimale E/A-Leistung für Ihre Anwendung zu erreichen. Für Datenträger mit hohem oder ausschließlichem Schreibzugriff (z. B. SQL Server-Protokolldateien) deaktivieren Sie das Zwischenspeichern, sodass Sie eine bessere Anwendungsleistung erzielen können. Die Einstellungen für das Zwischenspeichern bei vorhandenen Datenträgern können Sie über das [Azure-Portal](https://portal.azure.com) oder den Parameter *-HostCaching* des Cmdlets *Set-AzureDataDisk* aktualisieren.
@@ -748,7 +748,7 @@ Die aktuelle Konfiguration des virtuellen Computers kann speziell für die Arbei
 2. Melden Sie sich beim virtuellen Computer an, und kopieren Sie die Daten vom aktuellen Volume auf den neuen Datenträger, der diesem Volume zugeordnet ist. Führen Sie diesen Vorgang für alle aktuellen Volumes durch, die einer neuen Festplatte zugeordnet werden müssen.
 3. Ändern Sie als Nächstes die Anwendungseinstellungen, um zu den neuen Datenträgern zu wechseln, und trennen Sie die alten Volumes.
 
-Informationen zur Optimierung der Anwendung für eine bessere Datenträgerleistung finden Sie unter [Optimieren der Anwendungsleistung](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance).
+Informationen zur Optimierung der Anwendung für eine bessere Datenträgerleistung finden Sie in unserem Artikel [Entwerfen für hohe Leistung](../../virtual-machines/windows/premium-storage-performance.md) im Abschnitt „Optimieren der Anwendungsleistung“.
 
 ### <a name="application-migrations"></a>Anwendungsmigrationen
 Datenbanken und andere komplexe Anwendungen erfordern womöglich spezielle Schritte, wie vom Anwendungsanbieter für die Migration definiert. Weitere Informationen finden Sie in der Dokumentation der jeweiligen Anwendung. Beispiel: So können Datenbanken in der Regel mittels Sicherung und Wiederherstellung migriert werden.
@@ -765,7 +765,7 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 * [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](../../virtual-machines/windows/premium-storage.md)
+* [Auswählen eines Datenträgertyps für virtuelle IaaS-Computer](../../virtual-machines/windows/disks-types.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png

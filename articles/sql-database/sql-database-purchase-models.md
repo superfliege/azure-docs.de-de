@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 80e8f0a627ea33881e21d45c8be0e8d1600e4e48
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c0e7f941f9845ed7531f3adf03fbca9fbeb2787d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007728"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456689"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Kaufmodelle für Azure SQL-Datenbank
 
@@ -50,9 +50,11 @@ Die Computekosten spiegeln die gesamte Computekapazität wider, die für die Anw
 
 ## <a name="storage-costs"></a>Speicherkosten
 
-Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher. Für Ihren gesamten bereitgestellten Serverspeicher fallen keine zusätzlichen Gebühren für den Sicherungsspeicher an. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet. Beispiel: Wenn Sie über 100 GB Datenbankspeicher verfügen, erhalten Sie ohne Aufpreis einen Sicherungsspeicher von 100 GB. Wenn Sie aber 110 GB sichern, werden Ihnen die zusätzlichen 10 GB berechnet.
+Unterschiedliche Arten von Speicher werden auch unterschiedlich berechnet. Für Datenspeicher wird Ihnen der bereitgestellte Speicher basierend auf der von Ihnen gewählten maximalen Datenbank- oder Poolgröße berechnet. Die Kosten ändern sich nicht, sofern Sie dieses Maximum nicht verringern oder erhöhen. Der Sicherungsspeicher ist mit den automatischen Sicherungen Ihrer Instanz verbunden und wird dynamisch zugeordnet. Durch eine Verlängerung der Beibehaltungsdauer Ihrer Sicherungen erhöht sich auch der von Ihrer Instanz verbrauchte Sicherungsspeicher. 
 
-Für einen Sicherungsspeicher einer Einzeldatenbank wird Ihnen der Speicher anteilig berechnet, der für die Datenbanksicherungen zugeordnet wurde, abzüglich der Größe der Datenbank. Für den Sicherungsspeicher eines Pools für elastische Datenbanken wird Ihnen der Speicher anteilig berechnet, der für die Datenbanksicherungen aller Datenbanken des Pools zugeordnet wurde, abzüglich der maximalen Datengröße des Pools für elastische Datenbanken. Jede Erhöhung der Datenbankgröße oder des Pools für elastische Datenbanken oder eine Erhöhung der Transaktionsrate führt zu höherem Speicherbedarf und somit auch zu einer höheren Rechnung für Ihren Sicherungsspeicher.  Wenn Sie die maximale Datengröße erhöhen, wird dieser neue Betrag von der berechneten Größe des Sicherungsspeichers abgezogen.
+7 Tage von automatischen Sicherungen Ihrer Datenbanken werden standardmäßig in den RA-GRS Standard-Blobspeicher kopiert. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größe des Transaktionsprotokolls hängt von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die der Gesamtgröße der Datenbank entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird in GB/Monat abgerechnet.
+
+Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
 
 ## <a name="vcore-based-purchasing-model"></a>Auf virtuellen Kernen basierendes Erwerbsmodell
 

@@ -4,18 +4,18 @@ description: Bereitstellen von Modulen auf einem IoT Edge-Gerät über das Azure
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 01/03/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 8b7327796cf29c8c234c0a750c90e0689f508f7e
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 9d7729dce5419c5813de3c4dfce55c40098f5988
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53969402"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430113"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Bereitstellen von Azure IoT Edge-Modulen über das Azure-Portal
 
@@ -51,6 +51,7 @@ Das Azure-Portal verfügt über einen Assistenten, der Sie durch das Erstellen d
 
    * **IoT Edge-Modul:** Standardoption.
    * **Azure Stream Analytics-Modul:** nur Module, die aus einer Azure Stream Analytics-Workload generiert wurden.
+   * **Azure Machine Learning-Modul:** nur Modellimages, die aus einem Azure Machine Learning-Arbeitsbereich generiert wurden.
 
 1. Wählen Sie das **IoT Edge-Modul** aus.
 
@@ -82,6 +83,29 @@ Im Abschnitt zur Überprüfung wird das JSON-Bereitstellungsmanifest angezeigt, 
 ## <a name="view-modules-on-your-device"></a>Anzeigen von Modulen auf dem Gerät
 
 Nachdem Sie die Module auf Ihrem Gerät bereitgestellt haben, können Sie sie auf der Seite **Gerätedetails** des Portals anzeigen. Auf dieser Seite werden die Namen der einzelnen bereitgestellten Modul sowie nützliche Informationen wie der Bereitstellungsstatus und der Exitcode angezeigt.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Bereitstellen von Modulen aus Azure Marketplace
+
+Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem sie eine breite Palette an Unternehmensanwendungen und -lösungen durchsuchen können, die für die Ausführung unter Azure, einschließlich [IoT Edge-Modulen](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules), zertifiziert und optimiert sind. Sie können auch über das Azure-Portal unter **Ressource erstellen** auf den Azure Marketplace zugreifen.
+
+Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-Portal folgendermaßen installieren:
+
+1. Suchen Sie ein Modul, und beginnen Sie den Bereitstellungsprozess.
+
+   * Azure-Portal: Suchen Sie ein Modul, und wählen Sie **Erstellen** aus.
+
+   * Azure Marketplace:
+
+     1. Suchen Sie ein Modul, und wählen Sie **Jetzt herunterladen** aus.
+     1. Bestätigen Sie die Nutzungsbedingungen und Datenschutzrichtlinie des Anbieters durch Auswählen von **Weiter**.
+
+1. Wählen Sie Ihr Abonnement und den IoT-Hub aus, der mit dem Zielgerät verbunden ist.
+
+1. Wählen Sie **Für Gerät bereitstellen** aus.
+
+1. Geben Sie den Namen des Geräts ein, oder wählen Sie **Gerät suchen** aus, um die mit dem Hub registrierten Geräte zu durchsuchen.
+
+1. Wählen Sie **Erstellen** aus, um den Standardprozess des Konfigurieren eines Bereitstellungsmanifests fortzusetzen. Dazu gehört auch das Hinzufügen weiterer Module bei Bedarf. Details für das neue Modul, z.B. Image-URI, Erstellungsoptionen und gewünschte Eigenschaften, sind vordefiniert, können aber geändert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

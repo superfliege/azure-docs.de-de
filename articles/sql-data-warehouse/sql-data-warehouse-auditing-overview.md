@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/11/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ef791bdfafbbd49cacad1a75c7171b9a030df2a3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 701c5c175e22556aefa95d1ac3836d52cd19b845
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456220"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342303"
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Überwachung in Azure SQL Data Warehouse
 
@@ -74,10 +74,13 @@ Der folgende Abschnitt beschreibt die Konfiguration der Überwachung über das A
     ![Navigationsbereich][8]
 
     > [!IMPORTANT]
-    > Überwachungsprotokolle auf Serverebene werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
+    > Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
     >
-    > * Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
-    > * Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+    > - Alle Speicherarten (v1, v2, Blob) werden unterstützt.
+    > - Alle Konfigurationen von Speicherreplikation werden unterstützt.
+    > - **Storage Premium** wird derzeit **nicht unterstützt**.
+    > - Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+    > - **Speicher hinter einer Firewall** wird derzeit **nicht unterstützt**.
 
 8. Klicken Sie auf **Speichern**.
 

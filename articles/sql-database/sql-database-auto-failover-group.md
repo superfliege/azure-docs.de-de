@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 2857b7f5347cf546a9745dcbea02f636a798f4a2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 0cffb4fdff4bddc33c6938e27425035c929808b7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004246"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301926"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 
@@ -58,16 +58,20 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Sekundärer Server/verwaltete Instanz**
 
-  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundäre Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
+  Der SQL-Datenbank-Server oder die verwaltete Instanz, auf dem bzw. der die sekundären Datenbanken in der Failovergruppe gehostet werden. Der sekundäre Server/verwaltete Instanz kann sich nicht in der gleichen Region wie der primäre Server/verwaltete Instanz befinden.
 
-- **Hinzufügen von Datenbanken zu einer Failovergruppe auf einem SQL-Datenbank-Server**
+- **Hinzufügen einzelner Datenbanken zu Failovergruppe**
 
-  Sie können mehrere einzelne Datenbanken oder Datenbanken in einem Pool für elastische Datenbanken auf demselben SQL-Datenbank-Server in die gleiche Failovergruppe einfügen. Wenn Sie der Failovergruppe eine einzelne Datenbank hinzufügen, wird automatisch eine sekundäre Datenbank mit der gleichen Edition und Computegröße erstellt. Wenn sich die primäre Datenbank in einem Pool für elastische Datenbanken befindet, wird die sekundäre Datenbank automatisch im Pool für elastische Datenbanken gleichen Namens erstellt. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank auf dem sekundären Server erstellt.
+  Sie können mehrere einzelne Datenbanken auf demselben SQL-Datenbank-Server in dieselbe Failovergruppe einfügen. Wenn Sie der Failovergruppe eine einzelne Datenbank hinzufügen, wird auf dem sekundären Server automatisch eine sekundäre Datenbank mit derselben Edition und Computegröße erstellt.  Sie haben diesen Server beim Erstellen der Failovergruppe angegeben. Wenn Sie eine Datenbank hinzufügen, die bereits auf dem sekundären Server eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank auf dem sekundären Server erstellt.
   
 > [!IMPORTANT]
   > In einer verwalteten Instanz werden alle Benutzerdatenbanken repliziert. Sie können nicht eine Teilmenge der Benutzerdatenbanken für die Replikation in der Failovergruppe auswählen.
 
-- **Lese-/Schreib-Failovergruppenlistener**
+- **Hinzufügen von Datenbanken im Pool für elastische Datenbanken zu Failovergruppe**
+
+  Sie können mehrere oder alle Datenbanken in einem Pool für elastische Datenbanken in dieselbe Failovergruppe einfügen. Wenn sich die primäre Datenbank in einem Pool für elastische Datenbanken befindet, wird die sekundäre Datenbank automatisch im Pool für elastische Datenbanken desselben Namens (sekundärer Pool) erstellt. Sie müssen sicherstellen, dass der sekundäre Server einen Pool für elastische Datenbanken mit genau demselben Namen und ausreichend freier Kapazität zum Hosten der sekundären Datenbanken enthält, die von der Failovergruppe erstellt werden. Wenn Sie im Pool eine Datenbank hinzufügen, die bereits im sekundären Pool eine sekundäre Datenbank hat, erbt die Gruppe diese Verknüpfung für die Georeplikation. Wenn Sie eine Datenbank hinzufügen, die bereits eine sekundäre Datenbank auf einem Server hat, der nicht Teil der Failovergruppe ist, wird eine neue sekundäre Datenbank im sekundären Pool erstellt.
+  
+  - **Lese-/Schreib-Failovergruppenlistener**
 
   Ein DNS CNAME-Eintrag, der auf die URL der aktuellen primären Datenbank verweist. Er ermöglicht Lese-/Schreib-SQL-Anwendungen das transparente erneute Herstellen einer Verbindung mit der primären Datenbank, wenn die primäre Datenbank nach einem Failover geändert wird.
 

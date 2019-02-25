@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 880ae672409704ddcd5597ae758f8c786c3c0720
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 430aa6e60efe63e6741436e53152126bc15798fc
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244486"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327849"
 ---
 # <a name="azure-storage-account-overview"></a>Übersicht über Azure Storage-Konten
 
@@ -78,7 +78,7 @@ Beachten Sie bei der Benennung Ihres Speicherkontos folgende Regeln:
 Allgemeine Speicherkonten können für jede der folgenden Leistungsstufen konfiguriert werden:
 
 * Eine Standard-Leistungsstufe zum Speichern von Blobs, Dateien, Tabellen, Warteschlangen und Azure-VM-Datenträgern.
-* Eine Premium-Leistungsstufe zum ausschließlichen Speichern von Azure-VM-Datenträgern. Eine ausführliche Übersicht über Azure Storage Premium finden Sie unter [Storage Premium: Hochleistungsspeicher für Azure-VM-Workloads](../../virtual-machines/windows/premium-storage.md).
+* Eine Premium-Leistungsstufe zum ausschließlichen Speichern von nicht verwalteten VM-Datenträgern.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Zugriffsebenen für Blockblobdaten
 

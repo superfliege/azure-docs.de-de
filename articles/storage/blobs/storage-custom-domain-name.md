@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f0fe4bef436576bec90d1d770d262c2c22d280a3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: edd011509c9129e95bcf7ea49f5a84e17fffd176
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694583"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310549"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurieren eines benutzerdefinierten Domänennamens für Ihr Azure-Speicherkonto
 
@@ -56,7 +56,7 @@ Die zweite Methode verwendet ebenfalls CNAME-Einträge. Zur Vermeidung von Downt
 
 Die Zuordnung Ihrer benutzerdefinierten Domäne zu einem Blobendpunkt kann zu einer kurzzeitigen Downtime führen, während Sie die Domäne im [Azure-Portal](https://portal.azure.com) registrieren. Wenn die Domäne derzeit eine Anwendung mit einer Vereinbarung zum Servicelevel (Service-Level Agreement, SLA) unterstützt, die keine Downtime zulässt, verwenden Sie die Azure-Unterdomäne *asverify* als zwischengeschalteten Registrierungsschritt. Dieser Schritt stellt sicher, dass Benutzer auf Ihre Domäne zugreifen können, während die DNS-Zuordnung vorgenommen wird.
 
-Die Zwischenschaltungsmethode ist unter [Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify*](#register-a-custom-domain-using-the-asverify-subdomain) beschrieben.
+Die Zwischenschaltungsmethode ist unter Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify* beschrieben.
 
 ## <a name="register-a-custom-domain"></a>Registrieren einer benutzerdefinierten Domäne
 Registrieren Sie die Domäne mithilfe des Verfahrens in diesem Abschnitt, wenn die folgenden Aussagen gelten:
@@ -65,7 +65,7 @@ Registrieren Sie die Domäne mithilfe des Verfahrens in diesem Abschnitt, wenn d
 
 Mithilfe von Azure-DNS können Sie einen benutzerdefinierten DNS-Namen für Ihren Azure-Blob-Speicher erstellen. Weitere Informationen finden Sie unter [Bereitstellen von benutzerdefinierten Domäneneinstellungen für einen Azure-Dienst mit Azure DNS](https://docs.microsoft.com/azure/dns/dns-custom-domain#blob-storage).
 
-Wenn Ihre benutzerdefinierte Domäne derzeit eine Anwendung unterstützt, die keine Downtime zulässt, gehen Sie nach dem Verfahren unter [Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify*](#register-a-custom-domain-using-the-asverify-subdomain) vor.
+Wenn Ihre benutzerdefinierte Domäne derzeit eine Anwendung unterstützt, die keine Downtime zulässt, gehen Sie nach dem Verfahren unter Registrieren einer benutzerdefinierten Domäne mithilfe der Unterdomäne *asverify* vor.
 
 Erstellen Sie zum Konfigurieren eines benutzerdefinierten Domänennamens einen neuen CNAME-Eintrag in DNS. Der CNAME-Eintrag gibt einen Alias für einen Domänennamen an. In unserem Beispiel ordnet er die Adresse Ihrer benutzerdefinierten Domäne dem Blob Storage-Endpunkt Ihres Speicherkontos zu.
 
