@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 5d992d13a67c7b01f82b615e7131a20b84dec9e8
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52851015"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456230"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -24,6 +24,7 @@ In diesem Artikel erfahren Sie, wie Sie die Replikation ADE-fähiger (Azure Disk
 >
 
 ## <a name="required-user-permissions"></a>Erforderliche Benutzerberechtigungen
+Azure Site Recovery erfordert, dass der Benutzer eine Berechtigung besitzt, um den Schlüsseltresor in der Zielregion zu erstellen und Schlüssel in die Region zu kopieren.
 
 Zum Aktivieren der Replikation von ADE-VMs über das Portal muss der Benutzer über die unten aufgeführten Berechtigungen verfügen.
 - Schlüsseltresorberechtigungen
@@ -43,12 +44,22 @@ Zum Aktivieren der Replikation von ADE-VMs über das Portal muss der Benutzer ü
     - Verschlüsseln
     - Entschlüsseln
 
-Sie können die Berechtigungen verwalten, indem Sie im Portal zur Schlüsseltresorressource navigieren und die erforderlichen Berechtigungen für den Benutzer hinzufügen.
+Sie können die Berechtigungen verwalten, indem Sie im Portal zur Schlüsseltresorressource navigieren und die erforderlichen Berechtigungen für den Benutzer hinzufügen. Beispiel: Die untenstehende Schritt-für-Schritt-Anleitung zeigt, wie Sie dies für den Schlüsseltresor „ContosoWeb2Keyvault“ aktivieren können, der sich in der Quellregion befindet.
 
-![keyvaultpermissions](./media/azure-to-azure-how-to-enable-replication-ade-vms/keyvaultpermissions.png)
+
+-  Navigieren Sie zu „Start“ > „Schlüsseltresore“ > „ContosoWeb2KeyVault“ > „Zugriffsrichtlinien“
+
+![Schlüsseltresorberechtigungen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-1.png)
+
+
+
+- Sie können sehen, dass es keine Benutzerberechtigung gibt, also fügen Sie die oben genannte Berechtigung hinzu, indem Sie auf „Neues Element hinzufügen“, den Benutzer und die Berechtigungen klicken.
+
+![Schlüsseltresorberechtigungen](./media/azure-to-azure-how-to-enable-replication-ade-vms/key-vault-permission-2.png)
 
 Wenn der Benutzer, der die Notfallwiederherstellung (DR) aktiviert, nicht über die erforderlichen Berechtigungen zum Kopieren des Schlüssels verfügt, kann das folgende Skript dem Sicherheitsadministrator mit entsprechenden Berechtigungen übergeben werden, um die Verschlüsselungsgeheimnisse und Schlüssel in die Zielregion zu kopieren.
 
+Informationen zum Beheben von Problemen mit Berechtigungen finden Sie in [diesem Artikel](#trusted-root-certificates-error-code-151066).
 >[!NOTE]
 >Zum Aktivieren der Replikation der ADE-VM aus dem Portal benötigen Sie mindestens die Berechtigungen „Liste“ für die Schlüsseltresore, Schlüssel und Geheimnisse.
 >
@@ -130,6 +141,20 @@ In den nachstehenden Szenarien müssen Sie die Verschlüsselungseinstellungen f�
 Sie können mit dem [Skript](#copy-ade-keys-to-dr-region-using-powershell-script) die Verschlüsselungsschlüssel in die Zielregion kopieren und dann die Zielverschlüsselungseinstellungen unter **Recovery Services-Tresor -> repliziertes Element -> Eigenschaften > Compute und Netzwerk** aktualisieren.
 
 ![update-ade-settings](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
+
+## <a name="trusted-root-certificates-error-code-151066"></a>Beheben von Problemen mit der Berechtigung für den Schlüsseltresor während der Azure-zu-Azure-VM-Replikation
+
+**Ursache 1:** Sie haben möglicherweise einen bereits erstellten Schlüsseltresor aus der Zielregion ausgewählt, der nicht über die erforderlichen Berechtigungen verfügt.
+Sie haben einen bereits erstellten Schlüsseltresor in der Zielregion ausgewählt, anstatt ihn von Azure Site Recovery erstellen zu lassen. Stellen Sie sicher, dass der Schlüsseltresor über die benötigten Berechtigungen verfügt, wie oben erwähnt.</br>
+*Beispiel*: Ein Benutzer versucht, eine VM zu replizieren, die über einen Schlüsseltresor in der Quellregion verfügt, z.B. „ContosososourceKeyvault“.
+Der Benutzer verfügt über alle Berechtigungen für den Schlüsseltresor der Quellregion, aber während des Schutzes wählt er den bereits erstellten Schlüsseltresor „ContosotargetKeyvault“ aus, dem die Berechtigung fehlt. Der Schutz gibt daraufhin einen Fehler aus.</br>
+**Wie behebe ich das Problem?** Navigieren Sie zu „Start“ > „Schlüsseltresore“ > „ContosososourceKeyvault“ > „Zugriffsrichtlinien“, und fügen Sie Berechtigungen wie oben gezeigt hinzu. 
+
+**Ursache 2:** Sie haben möglicherweise einen bereits erstellten Schlüsseltresor aus der Zielregion ausgewählt, der nicht über die Berechtigungen zum Entschlüsseln und Verschlüsseln verfügt.
+Sie haben einen bereits erstellten Schlüsseltresor in der Zielregion ausgewählt, anstatt ihn von Azure Site Recovery erstellen zu lassen. Stellen Sie sicher, dass der Benutzer über Berechtigungen zum Entschlüsseln und Verschlüsseln verfügt, falls Sie den Schlüssel auch in der Quellregion verschlüsseln.</br>
+*Beispiel*: Ein Benutzer versucht, eine VM zu replizieren, die über einen Schlüsseltresor in der Quellregion verfügt, z.B. „ContosososourceKeyvault“.
+Der Benutzer verfügt über alle Berechtigungen für den Schlüsseltresor der Quellregion, aber während des Schutzes wählt er den bereits erstellten Schlüsseltresor „ContosotargetKeyvault“ aus, dem die Berechtigung zum Entschlüsseln und Verschlüsseln fehlt.</br>
+**Wie behebe ich das Problem?** Navigieren Sie zu „Start“ > „Schlüsseltresore“ > „ContosososourceKeyvault“ > „Zugriffsrichtlinien“, und fügen Sie Berechtigungen unter „Schlüsselberechtigungen“ > „Kryptografische Vorgänge“ hinzu.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

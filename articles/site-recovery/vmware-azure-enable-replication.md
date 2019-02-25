@@ -6,12 +6,12 @@ ms.service: site-recovery
 ms.date: 1/29/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: 85c5947fa32751bd8381d6a1d59e91ba2026f5f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: be6823486490ca6bc414e89c62a22f996aa27089
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822781"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329947"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Aktivieren der Replikation in Azure für VMware-VMs
 
@@ -88,7 +88,7 @@ Wenn Sie VMware-VMs replizieren, beachten Sie Folgendes:
 2. Unter **Eigenschaften** können Sie die Informationen zur Replikation und zum Failover für den virtuellen Computer anzeigen.
 3. In **Compute und Netzwerk** > **Compute-Eigenschaften** können Sie mehrere VM-Eigenschaften ändern:
 * Azure VM-Name: Ändern Sie ggf. den Namen, damit er die Azure-Anforderungen erfüllt.
-* Größe oder Typ der Ziel-VM: Die Standard-VM-Größe wird basierend auf der Quell-VM-Größe ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert und nur nach dem Failover geändert werden kann. Erfahren Sie mehr über [Standard](../virtual-machines/windows/disks-standard-ssd.md#scalability-and-performance-targets)- und [Premium](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)-Datenträgergrößen und IOPS.
+* Größe oder Typ der Ziel-VM: Die Standard-VM-Größe wird basierend auf der Quell-VM-Größe ausgewählt. Sie können je nach Bedarf jederzeit vor dem Failover eine andere VM-Größe auswählen. Beachten Sie, dass die VM-Datenträgergröße auch auf der Größe des Quelldatenträgers basiert und nur nach dem Failover geändert werden kann. Im Artikel [Skalierbarkeitsziele für Datenträger](../virtual-machines/windows/disk-scalability-targets.md) erfahren Sie mehr über Datenträgergrößen und IOPS.
 
     ![Eigenschaften für Compute und Netzwerk](./media/vmware-azure-enable-replication/vmproperties.png)
 

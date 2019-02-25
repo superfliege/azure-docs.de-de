@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen von benutzerdefinierten Analysetools – Azure Search
 description: Ändern Sie Texttokenizer und Zeichenfilter, die in Azure Search für Volltextsuchvorgänge verwendet wird.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,26 +19,28 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 150510ec09744b1350a93bde4e2a4dcb141867c0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 957c8033efc386d8e8cb13cbed921c597af4f11b
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007538"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302079"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>Hinzufügen von Analysetools zu einem Azure Search-Index
 
-Ein *benutzerdefiniertes Analysetool* ist eine benutzerdefinierte Kombination aus Tokenizer und optionalen Filtern, die zur Anpassung der Textverarbeitung in der Suchmaschine verwendet wird. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
+Ein *benutzerdefiniertes Analysetool* ist eine bestimmte Art von [Textanalysetool](search-analyzers.md), das aus einer benutzerdefinierten Kombination von bestehendem Tokenizer und optionalen Filtern besteht. Durch die Kombination von Tokenizern und Filtern auf neue Weise können Sie die Textverarbeitung in der Suchmaschine anpassen, um bestimmte Ergebnisse zu erzielen. Sie können beispielsweise ein benutzerdefiniertes Analysetool mit einem *Zeichenfilter* erstellen, um HTML-Markup zu entfernen, bevor Texteingaben tokenisiert werden.
+
+ Sie können mehrere benutzerdefinierte Analysetools definieren, um die Kombination der Filter zu variieren, aber jedes Feld kann nur ein Analysetool für die Indexierungsanalyse und einen für die Suchanalyse verwenden. Eine Veranschaulichung, wie ein benutzerdefiniertes Analysetool aussieht, finden Sie unter [Beispiel für ein benutzerdefiniertes Analysetool](search-analyzers.md#Example1).
 
 ## <a name="overview"></a>Übersicht
 
- Einfach ausgedrückt besteht die Rolle einer [Engine für die Volltextsuche](search-lucene-query-architecture.md) darin, Dokumente so zu verarbeiten und zu speichern, dass sie effizient abgefragt und abgerufen werden können. In erster Linie geht es um das Extrahieren wichtiger Wörter aus Dokumenten, das Einfügen der Wörter in einen Index und das anschließende Verwenden des Index zum Suchen nach Dokumenten, die mit Wörtern einer bestimmten Abfrage übereinstimmen. Der Prozess zur Extrahierung von Wörtern aus Dokumenten und Suchabfragen wird als lexikalische Analyse bezeichnet. Komponenten, die eine lexikalische Analyse durchführen, werden als Analysetool bezeichnet.
+ Einfach ausgedrückt besteht die Rolle einer [Engine für die Volltextsuche](search-lucene-query-architecture.md) darin, Dokumente so zu verarbeiten und zu speichern, dass sie effizient abgefragt und abgerufen werden können. In erster Linie geht es um das Extrahieren wichtiger Wörter aus Dokumenten, das Einfügen der Wörter in einen Index und das anschließende Verwenden des Index zum Suchen nach Dokumenten, die mit Wörtern einer bestimmten Abfrage übereinstimmen. Der Prozess zur Extrahierung von Wörtern aus Dokumenten und Suchabfragen wird als *lexikalische Analyse* bezeichnet. Komponenten, die eine lexikalische Analyse durchführen, werden als *Analysetools* bezeichnet.
 
- In Azure Search können Sie aus verschiedenen vordefinierten sprachunabhängigen Analysetools in der Tabelle [Analysetools](#AnalyzerTable) und aus sprachspezifischen Analysetools in [Sprachanalysetools (Azure Search Service-REST-API)](index-add-language-analyzers.md) auswählen. Sie haben auch die Möglichkeit, Ihre eigenen benutzerdefinierten Analysetools zu definieren.  
+ In Azure Search können Sie aus verschiedenen vordefinierten sprachunabhängigen Analysetools in der Tabelle [Analysetools](#AnalyzerTable) oder aus sprachspezifischen Analysetools in [Sprachanalysetools (Azure Search-Dienst-REST-API)](index-add-language-analyzers.md) auswählen. Sie haben auch die Möglichkeit, Ihre eigenen benutzerdefinierten Analysetools zu definieren.  
 
  Mit einem benutzerdefinierten Analysetool können Sie die Kontrolle über den Prozess der Konvertierung von Text in indizierbare und durchsuchbare Token übernehmen. Es handelt sich um eine benutzerdefinierte Konfiguration, die aus einem einzelnen vordefinierten Tokenizer, einem oder mehreren Tokenfiltern und einem oder mehreren Zeichenfiltern besteht. Der Tokenizer ist für das Aufteilen von Text in Token verantwortlich, und mit den Tokenfiltern werden die Token geändert, die vom Tokenizer ausgegeben werden. Zeichenfilter werden verwendet, um den Eingabetext vorzubereiten, bevor er vom Tokenizer verarbeitet wird. Beispielsweise kann ein Zeichenfilter bestimmte Zeichen oder Symbole ersetzen.
 
- Beispiele für häufige Szenarien, die mit benutzerdefinierten Analysetools ermöglicht werden:  
+ Beispiele für häufige Szenarien, die mit benutzerdefinierten Analysemodulen ermöglicht werden:  
 
 -   Phonetische Suche. Es wird ein phonetischer Filter hinzugefügt, um Suchen basierend auf der Aussprache eines Worts durchführen zu können, anstatt anhand der Schreibweise.  
 
@@ -50,22 +52,13 @@ Ein *benutzerdefiniertes Analysetool* ist eine benutzerdefinierte Kombination au
 
 -   ASCII-Folding. Fügen Sie den standardmäßigen ASCII-Folding-Filter hinzu, um diakritische Zeichen wie ö oder ê in Suchbegriffen zu normalisieren.  
 
- Sie können mehrere benutzerdefinierte Analysetools definieren, um die Kombination der Filter zu variieren, aber jedes Feld kann nur ein Analysetool für die Indexierungsanalyse und einen für die Suchanalyse verwenden.  
-
- Diese Seite enthält eine Liste mit unterstützten Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern. Außerdem finden Sie hier eine Beschreibung von Änderungen an der Indexdefinition mit einem Verwendungsbeispiel. Weitere Hintergrundinformationen zur zugrunde liegenden Technologie, die für die Implementierung von Azure Search genutzt wird, finden Sie unter [Analysis package summary (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html)(Zusammenfassung des Analysemodulpakets (Lucene)). Beispiele für Konfigurationen des Analysetools finden Sie unter [Analysetools in Azure Search > Beispiele](https://docs.microsoft.com/azure/search/search-analyzers#examples).
-
-
-## <a name="default-analyzer"></a>Standardanalysemodul  
-
-Standardmäßig werden durchsuchbare Felder in Azure Search mit dem [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) analysiert. Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
-
- Sie wird automatisch in jedem suchbaren Feld verwendet, es sei denn, Sie überschreiben sie explizit mit einem anderen Analysetool innerhalb der Felddefinition. Alternative Analysetools können ein benutzerdefiniertes Analysetool oder ein anderes vordefiniertes Analysetool aus der Liste der verfügbaren Analysetools [Analysatoren](#AnalyzerTable) sein.
+ Diese Seite enthält eine Liste mit unterstützten Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern. Außerdem finden Sie hier eine Beschreibung von Änderungen an der Indexdefinition mit einem Verwendungsbeispiel. Weitere Hintergrundinformationen zur zugrunde liegenden Technologie, die für die Implementierung von Azure Search genutzt wird, finden Sie unter [Analysis package summary (Lucene)](https://lucene.apache.org/core/4_10_0/core/org/apache/lucene/codecs/lucene410/package-summary.html)(Zusammenfassung des Analysemodulpakets (Lucene)). Beispiele für Konfigurationen des Analysetools finden Sie unter [Hinzufügen von Analysetools in Azure Search](search-analyzers.md#examples).
 
 ## <a name="validation-rules"></a>Validierungsregeln  
  Die Namen von Analysetools, Tokenizern, Tokenfiltern und Zeichenfiltern müssen eindeutig sein und dürfen nicht den Namen von vordefinierten Analysetools, Tokenizern, Tokenfiltern oder Zeichenfiltern entsprechen. Bereits verwendete Namen finden Sie im [Eigenschaftenverweis](#PropertyReference).
 
-## <a name="create-a-custom-analyzer"></a>Erstellen eines benutzerdefinierten Analysetools
- Sie definieren benutzerdefinierte Analysetools während der Erstellung des Index. Die Syntax zum Angeben eines benutzerdefinierten Analysetools wird in diesem Abschnitt beschrieben. Sie können sich mit der Syntax vertraut machen, indem Sie sich in [Analysetools in Azure Search](https://docs.microsoft.com/azure/search/search-analyzers#examples) Beispieldefinitionen anschauen.  
+## <a name="create-custom-analyzers"></a>Erstellen von benutzerdefinierten Analysetools
+ Sie definieren benutzerdefinierte Analysetools während der Erstellung des Index. Die Syntax zum Angeben eines benutzerdefinierten Analysetools wird in diesem Abschnitt beschrieben. Sie können sich mit der Syntax vertraut machen, indem Sie sich in [Hinzufügen von Analysetools in Azure Search](search-analyzers.md#examples) Beispieldefinitionen anschauen.  
 
  Eine Analysetooldefinition beinhaltet einen Namen, einen Typ, einen oder mehrere Zeichenfilter, maximal einen Tokenizer und einen oder mehrere Tokenfilter für die Verarbeitung nach der Tokenisierung. Zeichenfilter werden vor der Tokenisierung angewendet. Tokenfiltern und Zeichenfiltern werden von links nach rechts angewendet.
 
@@ -126,7 +119,7 @@ Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Infor
 ```  
 
 > [!NOTE]  
->  Benutzerdefinierte Analysetools, die Sie erstellen, werden im Azure-Portal nicht verfügbar gemacht. Die einzige Möglichkeit, ein benutzerdefiniertes Analysetool hinzuzufügen, ist die Verwendung von Code, mit dem beim Definieren eines Index Aufrufe an die API durchgeführt werden.  
+>  Benutzerdefinierte Analysemodule, die Sie erstellen, werden im Azure-Portal nicht verfügbar gemacht. Die einzige Möglichkeit, ein benutzerdefiniertes Analysetool hinzuzufügen, ist die Verwendung von Code, mit dem beim Definieren eines Index Aufrufe an die API durchgeführt werden.  
 
  Innerhalb einer Indexdefinition können Sie diesen Abschnitt an beliebiger Stelle im Hauptteil einer Anforderung zum Erstellen eines Index platzieren, aber normalerweise wird er am Ende platziert:  
 
@@ -148,12 +141,13 @@ Die Definition der Analysetools ist ein Teil des größeren Index. Weitere Infor
 Definitionen für Zeichenfilter, Tokenizer und Tokenfilter werden dem Index nur hinzugefügt, wenn Sie benutzerdefinierte Optionen festlegen. Um einen vorhandenen Filter oder Tokenizer unverändert zu verwenden, geben Sie ihn in der Analysetooldefinition namentlich an.
 
 <a name="Testing custom analyzers"></a>
-## <a name="test-a-custom-analyzer"></a>Testen eines benutzerdefinierten Analysetools
+
+## <a name="test-custom-analyzers"></a>Testen von benutzerdefinierten Analysetools
 
 Sie können den Vorgang **Analysetool testen** in der [REST-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) verwenden, um zu sehen, wie ein Analysetool bestimmten Text in Token zerlegt.
 
 **Anforderung**
-~~~~
+```
   POST https://[search service name].search.windows.net/indexes/[index name]/analyze?api-version=[api-version]
   Content-Type: application/json
     api-key: [admin key]
@@ -162,9 +156,9 @@ Sie können den Vorgang **Analysetool testen** in der [REST-API](https://docs.mi
      "analyzer":"my_analyzer",
      "text": "Vis-à-vis means Opposite"
   }
-~~~~
+```
 **Antwort**
-~~~~
+```
   {
     "tokens": [
       {
@@ -193,25 +187,25 @@ Sie können den Vorgang **Analysetool testen** in der [REST-API](https://docs.mi
       }
     ]
   }
- ~~~~
+```
 
- ## <a name="update-a-custom-analyzer"></a>Aktualisieren eines benutzerdefinierten Analysetools
+ ## <a name="update-custom-analyzers"></a>Aktualisieren von benutzerdefinierten Analysetools
 
 Nach der Definition kann ein Analysetool, ein Tokenizer, Tokenfilter oder Zeichenfilter nicht mehr geändert werden. Neue können nur dann einem vorhandenen Index hinzugefügt werden, wenn das `allowIndexDowntime` -Flag in der Anforderung zur Indexaktualisierung auf „true“ gesetzt ist:
 
-~~~~
+```
 PUT https://[search service name].search.windows.net/indexes/[index name]?api-version=[api-version]&allowIndexDowntime=true
-~~~~
+```
 
 Mit diesem Vorgang wird Ihr Index für mindestens ein paar Sekunden offline geschaltet, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Leistung und Schreibverfügbarkeit des Indexes können nach der Indexaktualisierung mehrere Minuten lang eingeschränkt sein, bei sehr großen Indizes auch länger. Aber diese Auswirkungen sind nur vorübergehend und lösen sich von selbst auf.
 
  <a name="ReferenceIndexAttributes"></a>
 
-## <a name="index-attribute-reference"></a>Indexattributreferenz
+## <a name="analyzer-reference"></a>Analysetoolreferenz
 
 In der folgenden Tabelle sind die Konfigurationseigenschaften für den Abschnitt mit den Analysetools, Tokenizern, Tokenfiltern und Zeichenfilter einer Indexdefinition angegeben. Die Struktur eines Analysetools, Tokenizers oder Filters in Ihrem Index besteht aus diesen Attributen. Informationen zur Zuordnung von Werten finden Sie unter [Eigenschaftenverweis](#PropertyReference).
 
- ### <a name="analyzers"></a>Analysetools
+ ### <a name="analyzers"></a>Analysemodule
 
 Bei Analysetools variieren die Indexattribute je nachdem, ob Sie vordefinierte oder benutzerdefinierte Analysetools verwenden.
 
@@ -390,5 +384,5 @@ In der folgenden Tabelle bieten die Tokenfilter, die mit Apache Lucene implement
 
 ## <a name="see-also"></a>Weitere Informationen  
  [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice/)   
- [Analysetools in Azure Search > Beispiele](https://docs.microsoft.com/azure/search/search-analyzers#examples)    
+ [Analysetools in Azure Search > Beispiele](search-analyzers.md#examples)    
  [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  

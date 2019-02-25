@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen von Vorschlagsfunktionen zu einem Azure Search-Index
 description: Aktiviert Felder für Aktionen für Eingabevorschläge für Abfragen, bei denen vorgeschlagene Abfragen aus Text aus Feldern in einem Azure Search-Index gebildet werden.
-ms.date: 01/31/2019
+ms.date: 02/13/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 35025d69865aa6890e1cd921e31ac6c26c015789
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7128e4d3b0675775dc713451ef672b28a4991499
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007698"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269925"
 ---
 # <a name="add-suggesters-to-an-azure-search-index"></a>Hinzufügen von Vorschlagsfunktionen zu einem Azure Search-Index
 
@@ -34,9 +34,12 @@ Eine **Vorschlagsfunktion** verfügt zwar über mehrere Eigenschaften, in erster
 
 Sie können nur eine **Vorschlagsfunktion**-Ressource für jeden Index verwenden (nämlich eine **Vorschlagsfunktion** in der Sammlung **Vorschlagsfunktionen**).
 
-Sie können jederzeit eine **Vorschlagsfunktion** erstellen, aber die Auswirkungen auf Ihren Index basieren auf den Feldern. Neue Felder, die einer Vorschlagsfunktion im Rahmen derselben Aktualisierung hinzugefügt werden, haben am wenigsten Auswirkungen, da keine Neuerstellung des Index erforderlich ist. Das Hinzufügen vorhandener Felder ändert jedoch die Felddefinition, was eine vollständige Neuerstellung des Index erforderlich macht.
+## <a name="creating-a-suggester"></a>Erstellen einer Vorschlagsfunktion 
 
-## <a name="usage"></a>Verwendung  
+Sie können jederzeit eine **Vorschlagsfunktion** erstellen, aber die Auswirkungen auf Ihren Index basieren auf den Feldern. 
+
++ Neue Felder, die einer Vorschlagsfunktion im Rahmen derselben Aktualisierung hinzugefügt werden, haben am wenigsten Auswirkungen, da keine Neuerstellung des Index erforderlich ist.
++ Das Hinzufügen vorhandener Felder zu einer Vorschlagsfunktion ändert jedoch die Felddefinition, was eine vollständige Neuerstellung des Index erforderlich macht.
 
  **Vorschlagsfunktionen** funktionieren am besten, wenn damit anstelle von zusammenhangslosen Begriffen oder Ausdrücken spezielle Dokumente vorgeschlagen werden sollen. Als Kandidaten eignen sich am besten Felder für Titel, Namen und sonstige relativ kurze Ausdrücke, anhand derer ein Element identifiziert werden kann. Weniger effektiv sind sich wiederholende Felder, wie etwa Kategorien und Tags, oder extrem lange Felder, etwa für Beschreibungen oder Kommentare.  
 

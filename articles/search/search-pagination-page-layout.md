@@ -1,30 +1,31 @@
 ---
-title: Paginieren von Elementen auf einer Seite mit Suchergebnissen – Azure Search
-description: Paginierung in Azure Search, einem gehosteten Cloudsuchdienst bei Microsoft Azure.
+title: Arbeiten mit Suchergebnisse – Azure Search
+description: Strukturieren und sortieren Sie Suchergebnisse, erfahren Sie die Dokumentanzahl, und fügen Sie den Suchergebnissen in Azure Search eine Inhaltsnavigation hinzu.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
-ms.devlang: rest-api
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/29/2016
+ms.date: 02/14/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 5f36dbb72e2518f7e3a27ef3aadec85312d751c2
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8cf65f0ed3ecd5c9a86d6adcdd5defd930522f85
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309315"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301552"
 ---
-# <a name="how-to-page-search-results-in-azure-search"></a>Anordnen von Suchergebnissen auf Seiten in Azure Search
-Dieser Artikel enthält Anleitungen dazu, wie die REST-API für den Azure-Suchdienst zum Implementieren von Standardelementen einer Seite mit Suchergebnissen, z. B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation, verwendet wird.
+# <a name="how-to-work-with-search-results-in-azure-search"></a>Arbeiten mit Suchergebnissen in Azure Search
+Dieser Artikel enthält Anleitungen dazu, wie Standardelemente einer Seite mit Suchergebnissen implementiert werden, z.B. Gesamtanzahl, Dokumentabruf, Sortierreihenfolge und Navigation. Seitenbezogene Optionen, die Daten oder Informationen zu Ihren Suchergebnissen beitragen, werden über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)-Anforderungen angegeben, die an den Azure Search-Dienst gesendet werden. 
 
-In jedem der unten genannten Fälle werden die seitenbezogenen Optionen, die Daten oder Informationen zu der Seite mit den Suchergebnissen beitragen, über die [Dokument durchsuchen](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) -Anforderungen angegeben, die an den Azure-Suchdienst gesendet werden. Anforderungen enthalten einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist.
+In der REST-API enthalten Anforderungen einen GET-Befehl, Pfad- und Abfrageparameter, denen der Dienst entnimmt, was angefordert wird und wie die Antwort zu formulieren ist. Im .NET-SDK ist die entsprechende API die [DocumentSearchResult-Klasse](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.documentsearchresult?view=azure-dotnet).
+
+Einige Codebeispiele beinhalten eine Web-Front-End-Schnittstelle, die Sie hier finden: [Demo-App „New York City Jobs“](http://azjobsdemo.azurewebsites.net/) und [CognitiveSearchFrontEnd](https://github.com/LuisCabrer/CognitiveSearchFrontEnd).
 
 > [!NOTE]
-> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Einzelheiten zur Anforderungssyntax finden Sie in der Dokumentation zur [REST-API für den Azure Search-Dienst](https://docs.microsoft.com/rest/api/searchservice).
-> 
+> Eine gültige Anforderung umfasst eine Reihe von Elementen, z. B. Dienst-URL und  Pfad, HTTP-Verb, `api-version` und so weiter. Aus Platzgründen wurden die Beispiele verkürzt, um nur die Syntax hervorzuheben, die für die Paginierung wichtig sind. Weitere Informationen zur Anforderungssyntax finden Sie unter [Azure Search-Dienst-REST-API](https://docs.microsoft.com/rest/api/searchservice).> 
 > 
 
 ## <a name="total-hits-and-page-counts"></a>Gesamtanzahl der Treffer und die Seitenanzahl
@@ -32,7 +33,7 @@ Grundsätzlich werden praktisch auf allen Suchseiten die Gesamtanzahl der von ei
 
 ![][1]
 
-In Azure Search verwenden Sie die Parameter `$count`, `$top` und `$skip` zur Rückgabe dieser Werte. Das folgende Beispiel enthält eine Beispielanforderung für die Gesamtanzahl der Treffer, die als `@OData.count`zurückgegeben wird:
+In Azure Search verwenden Sie die Parameter `$count`, `$top` und `$skip` zur Rückgabe dieser Werte. Das folgende Beispiel enthält eine Beispielanforderung für die Gesamtanzahl der Treffer in einem Index namens „onlineCatalog“, die als `@OData.count` zurückgegeben wird:
 
         GET /indexes/onlineCatalog/docs?$count=true
 
@@ -70,7 +71,7 @@ Oft wird für die Sortierreihenfolge standardmäßig Relevanz festgelegt, aber e
 
  ![][3]
 
-In Azure Search basiert die Sortierung auf dem `$orderby`-Ausdruck für alle Felder, die als `"Sortable": true.` indiziert werden.
+In Azure Search basiert die Sortierung auf dem `$orderby`-Ausdruck für alle Felder, die als `"Sortable": true.` indiziert werden. Eine `$orderby`-Klausel ist ein OData-Ausdruck. Informationen zur Syntax finden Sie unter [OData-Ausdruckssyntax für Filter und Sortierklauseln](query-odata-filter-orderby-syntax.md).
 
 Die Relevanz ist eng mit Bewertungsprofilen verknüpft. Sie können die Standardbewertung verwenden, bei der die Reihenfolge der Ergebnisse anhand von Textanalyse und Statistiken festgelegt wird, wobei Dokumente mit mehr oder höheren Übereinstimmungen mit einem Suchbegriff eine höhere Punktzahl erhalten.
 
@@ -83,7 +84,7 @@ Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe
  ![][5]
 
 > [!NOTE]
-> Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen eines Bewertungsprofil](https://docs.microsoft.com/rest/api/searchservice/Add-scoring-profiles-to-a-search-index) . 
+> Die Standardbewertung ist zwar für viele Szenarien ausreichend ist, aber es wird empfohlen, stattdessen die Relevanz anhand eines benutzerdefinierten Bewertungsprofil zu ermitteln. Ein benutzerdefiniertes Bewertungsprofil bietet Ihnen eine Möglichkeit, Elementen, die für Ihr Unternehmen sinnvoller sind, eine höhere Priorität zuzuordnen. Weitere Informationen finden Sie unter [Hinzufügen von Bewertungsprofilen zu einem Suchindex](index-add-scoring-profiles.md). 
 > 
 > 
 
@@ -91,7 +92,7 @@ Sie erstellen dann eine Methode, die die ausgewählten Sortieroption als Eingabe
 Ergebnisseiten bieten üblicherweise eine Suchnavigation, die sich häufig am seitlichen oder oberen Rand der Seite befindet. In Azure Search ermöglicht die Facettennavigation eine selbstgesteuerte Suche, die auf vordefinierten Filtern basiert. Nähere Informationen finden Sie unter [Facettennavigation in Azure Search](search-faceted-navigation.md) .
 
 ## <a name="filters-at-the-page-level"></a>Filter auf Seitenebene
-Wenn Ihr Lösungsentwurf dedizierte Suchseiten für bestimmte Inhaltstypen enthält (z.B. eine Anwendung für den Online-Einzelhandel mit einer Liste von Abteilungen am oberen Rand der Seite), dann können Sie einen Filterausdruck zusammen mit einem **onClick**-Ereignis einfügen, um eine Seite in einem ungefilterten Zustand zu öffnen. 
+Wenn Ihr Lösungsentwurf dedizierte Suchseiten für bestimmte Inhaltstypen enthält (z.B. eine Anwendung für den Online-Einzelhandel mit einer Liste von Abteilungen am oberen Rand der Seite), dann können Sie einen [Filterausdruck](search-filters.md) zusammen mit einem **onClick**-Ereignis einfügen, um eine Seite in einem ungefilterten Zustand zu öffnen. 
 
 Sie können einen Filter mit oder ohne Suchbegriff senden. Beispielsweise wird mit der folgenden Anforderung nach Markenname gefiltert, wobei nur die dem Filter entsprechenden Dokumente zurückgegeben werden.
 

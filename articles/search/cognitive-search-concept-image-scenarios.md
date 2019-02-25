@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: b4829b0da656c648db732b2e7564de6db8fbf2eb
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312611"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430266"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>Verarbeiten und Extrahieren von Text aus Bildern in kognitiven Suchszenarien
 
@@ -34,7 +34,7 @@ Die Bildnormalisierung kann nicht deaktiviert werden. Qualifikationen, die Bilde
 
 | Konfigurationsparameter | BESCHREIBUNG |
 |--------------------|-------------|
-| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert. Diese Bilder werden im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. |
+| imageAction   | Legen Sie diese Eigenschaft auf „none“ fest, falls bei der Erkennung von eingebetteten Bildern oder Bilddateien keine Aktion erfolgen soll. <br/>Wenn Sie die Eigenschaft auf „generateNormalizedImages“ festlegen, wird im Rahmen der Dokumentaufschlüsselung ein Array mit normalisierten Bildern generiert.<br/>Legen Sie diese Option auf „generateNormalizedImagePerPage“ fest, um ein Array von normalisierten Bildern zu erzeugen, bei dem für PDFs in Ihrer Datenquelle jede Seite in ein Ausgabebild gerendert wird.  Die Funktionalität ist die gleiche wie bei „generateNormalizedImages“ für Nicht-PDF-Dateitypen.<br/>Für alle anderen Optionen als „none“ werden diese Bilder im Feld *normalized_images* verfügbar gemacht. <br/>Der Standardwert ist „none“. Diese Konfiguration ist nur für Blobdatenquellen relevant, wenn „dataToExtract" auf „contentAndMetadata“ festgelegt ist. |
 |  normalizedImageMaxWidth | Die maximale Breite (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
 |  normalizedImageMaxHeight | Die maximale Höhe (in Pixel) für generierte normalisierte Bilder. Der Standardwert ist „2000“.|
 
@@ -62,7 +62,7 @@ Die imageAction-Eigenschaft wird in der [Indexerdefinition](https://docs.microso
 }
 ```
 
-Wenn *imageAction* auf „generateNormalizedImages“ festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Jedes Bild ist ein komplexer Typ mit folgenden Elementen:
+Wenn *imageAction* auf einen anderen Wert als „none“ festgelegt wird, enthält das neue Feld *normalized_images* ein Array von Bildern. Jedes Bild ist ein komplexer Typ mit folgenden Elementen:
 
 | Bildelement       | BESCHREIBUNG                             |
 |--------------------|-----------------------------------------|

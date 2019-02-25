@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 2f52b3d1a5aa5b934954da09d114dce1efb8ef32
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 64008a91033b1fdd9cb318e76db2b1958f2337e9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508367"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309318"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Schützen eines Dateiservers mit Azure Site Recovery 
 
@@ -58,7 +58,7 @@ Das folgende Diagramm hilft Ihnen beim Festlegen der Strategie für Ihre Dateise
 |---------|---------|---------|
 |Dateiserverumgebung mit oder ohne DFSR|   [Verwenden von Site Recovery für die Replikation](#replicate-an-on-premises-file-server-by-using-site-recovery)   |    Site Recovery unterstützt weder freigegebene Datenträgercluster noch Network Attached Storage (NAS). Falls diese Konfigurationen in Ihrer Umgebung genutzt werden, können Sie einen der anderen Ansätze verwenden. <br> Site Recovery unterstützt SMB 3.0 nicht. Die replizierte VM enthält die an Dateien vorgenommenen Änderungen nur, wenn diese am ursprünglichen Speicherort der Dateien aktualisiert werden.
 |Dateiserverumgebung mit DFSR     |  [Erweitern von DFSR auf eine Azure-IaaS-VM](#extend-dfsr-to-an-azure-iaas-virtual-machine)  |      DFSR funktioniert gut in Umgebungen mit begrenzter Bandbreite. Dieser Ansatz erfordert eine Azure-VM, die immer ausgeführt wird. Sie müssen die Kosten für die VM in Ihrer Planung berücksichtigen.         |
-|Azure-IaaS-VM     |     [Dateisynchronisierung ](#use-azure-file-sync-service-to-replicate-your-files)   |     Wenn Sie die Dateisynchronisierung in einem Notfallwiederherstellungsszenario verwenden, sind während eines Failovers manuelle Aktionen erforderlich, um sicherzustellen, dass die Dateifreigaben auf transparente Weise für die Clientcomputer zugänglich sind. Die Dateisynchronisierung erfordert, dass Port 445 für den Clientcomputer geöffnet ist.     |
+|Azure-IaaS-VM     |     Dateisynchronisierung    |     Wenn Sie die Dateisynchronisierung in einem Notfallwiederherstellungsszenario verwenden, sind während eines Failovers manuelle Aktionen erforderlich, um sicherzustellen, dass die Dateifreigaben auf transparente Weise für die Clientcomputer zugänglich sind. Die Dateisynchronisierung erfordert, dass Port 445 für den Clientcomputer geöffnet ist.     |
 
 
 ### <a name="site-recovery-support"></a>Site Recovery-Unterstützung
