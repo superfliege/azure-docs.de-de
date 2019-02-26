@@ -11,7 +11,7 @@
 ### [Notfallwiederherstellung mit Azure DNS und Traffic Manager](disaster-recovery-dns-traffic-manager.md)
 ## Planen und Entwerfen
 ### [Virtuelle Netzwerke](../virtual-network/virtual-network-vnet-plan-design-arm.md?toc=%2fazure%2fnetworking%2ftoc.json)
-### [Standortübergreifende Konnektivität – VPN](../vpn-gateway/vpn-gateway-plan-design.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [Standortübergreifende Konnektivität – VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [Standortübergreifende Konnektivität – dediziert privat](../expressroute/expressroute-workflows.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### Interoperabilität der Back-End-Konnektivität
 #### [Einleitung und Testeinrichtung](connectivty-interoperability-preface.md?toc=%2fazure%2fnetworking%2ftoc.json)

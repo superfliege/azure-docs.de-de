@@ -84,14 +84,14 @@ items:
       href: how-to-transform-data.md
     - name: Schreiben von Daten
       href: how-to-write-data.md
+  - name: Zugreifen auf Daten
+    displayName: blob get fileshare
+    href: how-to-access-data.md
   - name: Trainieren von Modellen
     items:
     - name: Einrichten von Trainingsumgebungen
       displayName: compute target, dsvm, Data Science Virtual Machine, local, cluster, aci, container instance, Databricks, data lake, lake, hdi, hdinsights
       href: how-to-set-up-training-targets.md
-    - name: Zugreifen auf Daten im Training
-      displayName: blob
-      href: how-to-access-data.md
     - name: Erstellen von Kalkulatoren im Training
       href: how-to-train-ml-models.md
     - name: Verwenden von PyTorch
@@ -187,9 +187,9 @@ items:
     href: support-for-aml-services.md
   - name: Vergleichen unserer ML-Produkte
     href: overview-more-machine-learning.md
-ms.openlocfilehash: 5743da7a23f53fee32f1fe81ecc09212fccab7c5
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 313cf4072e8bf8c6f82caa4107badd8b435ebb42
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650085"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822042"
