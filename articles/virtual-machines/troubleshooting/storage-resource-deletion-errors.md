@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 11/01/2018
 ms.author: genli
-ms.openlocfilehash: 5ab0a9a92297c46a4090583d41f22f2035bd310c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 19a0e7f3317a5c4a87b2622de170b0fc2cc137be
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816185"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326822"
 ---
 # <a name="troubleshoot-storage-resource-deletion-errors"></a>Behebung von Problemen mit Speicherressourcen-Löschfehlern
 
@@ -28,7 +28,7 @@ In bestimmten Szenarios könnten Sie auf einen der folgenden Fehler treffen, wen
 
 >**Fehler beim Löschen von # von # Blob(s):<br>BlobName.vhd: Es ist derzeit eine Lease für das Blob vorhanden, und in der Anforderung wurde keine Lease-ID angegeben.**
 
-Die auf virtuellen Azure-Computern verwendeten VHDs sind VHD-Dateien, die als Seitenblobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Weitere Informationen zu Azure-Datenträgern finden Sie unter [Informationen zu Datenträgern für virtuelle Azure-Linux-Computer](../linux/about-disks-and-vhds.md). 
+Die auf virtuellen Azure-Computern verwendeten VHDs sind VHD-Dateien, die als Seitenblobs in einem Standard- oder Premium-Speicherkonto in Azure gespeichert sind. Weitere Informationen zu Azure-Datenträgern finden Sie in unserer [Einführung in verwaltete Datenträger](../linux/managed-disks-overview.md).
 
 Azure verhindert das Löschen eines an eine VM angefügten Datenträgers, um eine Beschädigung zu vermeiden. Zudem verhindert es das Löschen von Containern und Speicherkonten mit einem Seitenblob, das an einen virtuellen Computer angefügt ist. 
 

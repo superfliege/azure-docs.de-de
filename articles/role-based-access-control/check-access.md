@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal | Microsoft-Dokumentation'
-description: Es wird beschrieben, wie Sie die Berechtigungen für die rollenbasierte Zugriffssteuerung (RBAC), die einem Benutzer, einer Gruppe, einem Dienstprinzipal oder einer verwalteten Identität zugewiesen sind, mit dem Azure-Portal anzeigen.
+title: 'Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und des Azure-Portals anzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat.
 services: role-based-access-control
 documentationCenter: ''
 author: rolyon
@@ -14,20 +14,20 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: b755dd6223c21084cafea82a1c8857f9f54b03b5
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: f388215b2829066906ee7faf41abb17307bf3fff
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52641866"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337944"
 ---
-# <a name="quickstart-view-roles-assigned-to-a-user-using-the-azure-portal"></a>Schnellstart: Anzeigen der zugewiesenen Rollen von Benutzern mit dem Azure-Portal
+# <a name="quickstart-view-the-access-a-user-has-to-azure-resources"></a>Schnellstart: Anzeigen, welchen Zugriff ein Benutzer auf Azure-Ressourcen hat
 
-Sie können das Blatt **Zugriffssteuerung (IAM)** in [Rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verwenden, um die Rollenzuweisungen für mehrere Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten anzuzeigen. In einigen Fällen kann es aber sein, dass Sie nur schnell Rollenzuweisungen für einzelne Benutzer, Gruppen, Dienstprinzipale oder verwaltete Identitäten anzeigen möchten. Die einfachste Möglichkeit ist hierbei die Verwendung der Funktion **Zugriff überprüfen** im Azure-Portal.
+Sie können das Blatt **Zugriffssteuerung (IAM)** der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwenden, um anzuzeigen, welchen Zugriff ein Benutzer oder ein anderer Sicherheitsprinzipal auf Azure-Ressourcen hat. Manchmal möchten Sie jedoch unter Umständen nur schnell den Zugriff für einen einzelnen Benutzer oder einen anderen Sicherheitsprinzipal anzeigen. Die einfachste Möglichkeit ist hierbei die Verwendung der Funktion **Zugriff überprüfen** im Azure-Portal.
 
 ## <a name="view-role-assignments"></a>Anzeigen von Rollenzuweisungen
 
-Führen Sie diese Schritte aus, um die Rollenzuweisungen für einzelne Benutzer, Gruppen, Dienstprinzipale oder verwaltete Identitäten auf Abonnementebene anzuzeigen.
+ Um den Zugriff für einen Benutzer anzuzeigen, müssen Sie dessen Rollenzuweisungen auflisten. Führen Sie diese Schritte aus, um die Rollenzuweisungen für einzelne Benutzer, Gruppen, Dienstprinzipale oder verwaltete Identitäten auf Abonnementebene anzuzeigen.
 
 1. Klicken Sie im Azure-Portal auf **Alle Dienste** und anschließend auf **Abonnements**.
 

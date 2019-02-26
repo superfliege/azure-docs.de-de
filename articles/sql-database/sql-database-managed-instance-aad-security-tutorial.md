@@ -1,6 +1,6 @@
 ---
-title: Sicherheit für verwaltete Azure SQL-Datenbank-Instanzen durch Azure AD-Anmeldungen | Microsoft-Dokumentation
-description: Hier finden Sie Informationen zu Methoden und Features für den Schutz einer verwalteten Instanz in Azure SQL-Datenbank sowie zur Verwendung von Azure AD-Anmeldungen.
+title: Sicherheit für verwaltete Azure SQL-Datenbank-Instanzen durch Azure AD-Serverprinzipale (Anmeldungen) | Microsoft-Dokumentation
+description: Hier finden Sie Informationen zu Methoden und Features für den Schutz einer verwalteten Instanz in Azure SQL-Datenbank sowie zur Verwendung von Azure AD-Serverprinzipalen (Anmeldungen).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -9,15 +9,15 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 402e10d9b99dbf0eeba8aac27071e4d78fdf0f01
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.date: 02/20/2019
+ms.openlocfilehash: 39877e01eb8b9690dc1ac7b1dbb79bab450814c4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984510"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456927"
 ---
-# <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Anmeldungen
+# <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Serverprinzipale (Anmeldungen)
 
 Bei einer verwalteten Instanz stehen nahezu die gleichen Sicherheitsfeatures zur Verfügung wie bei der neuesten Datenbank-Engine einer lokalen SQL Server-Instanz (Enterprise Edition):
 
@@ -29,16 +29,16 @@ Bei einer verwalteten Instanz stehen nahezu die gleichen Sicherheitsfeatures zur
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> - Erstellen einer Azure AD-Anmeldung (Azure Active Directory) für eine verwaltete Instanz
-> - Gewähren von Berechtigungen für Azure AD-Anmeldungen in einer verwalteten Instanz
-> - Erstellen von Azure AD-Benutzern auf der Grundlage von Azure AD-Anmeldungen
+> - Erstellen eines Azure Active Directory-Serverprinzipals (Anmeldung) für eine verwaltete Instanz
+> - Gewähren von Berechtigungen für Azure AD-Serverprinzipale (Anmeldungen) in einer verwalteten Instanz
+> - Erstellen von Azure AD-Benutzern auf der Grundlage von Azure AD-Serverprinzipalen (Anmeldungen)
 > - Zuweisen von Berechtigungen zu Azure AD-Benutzern und Verwalten der Datenbanksicherheit
 > - Verwenden des Identitätswechsels mit Azure AD-Benutzern
 > - Verwenden datenbankübergreifender Abfragen mit Azure AD-Benutzern
 > - Kennenlernen von Sicherheitsfeatures wie Bedrohungsschutz, Überwachung, Datenmaskierung und Verschlüsselung
 
 > [!NOTE]
-> Azure AD-Anmeldungen für verwaltete Instanzen befinden sich in der **Public Preview-Phase**.
+> Azure AD-Serverprinzipale (Anmeldungen) für verwaltete Instanzen befinden sich in der **Public Preview-Phase**.
 
 Weitere Informationen finden Sie im Artikel [Verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-index.yml) sowie im [Artikel zu den Funktionen](sql-database-managed-instance.md).
 
@@ -61,15 +61,15 @@ Auf verwaltete Instanzen kann nur über eine private IP-Adresse zugegriffen werd
 > [!NOTE] 
 > Da auf verwaltete Instanzen nur innerhalb des entsprechenden VNETs zugegriffen werden kann, sind [Firewallregeln für Azure SQL-Datenbank und SQL Data Warehouse](sql-database-firewall-configure.md) nicht relevant. Eine verwaltete Instanz verfügt über eine eigene [integrierte Firewall](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md).
 
-## <a name="create-an-azure-ad-login-for-a-managed-instance-using-ssms"></a>Erstellen einer Azure AD-Anmeldung für eine verwaltete Instanz mithilfe von SSMS
+## <a name="create-an-azure-ad-server-principal-login-for-a-managed-instance-using-ssms"></a>Erstellen eines Azure AD-Serverprinzipals (Anmeldung) für eine verwaltete Instanz mithilfe von SSMS
 
-Die erste Azure AD-Anmeldung muss unter Verwendung des SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` erstellt werden. Beispiele für das Herstellen einer Verbindung mit Ihrer verwalteten Instanz finden Sie in den folgenden Artikeln:
+Der erste Azure AD-Serverprinzipal (Anmeldung) muss unter Verwendung des SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` erstellt werden. Beispiele für das Herstellen einer Verbindung mit Ihrer verwalteten Instanz finden Sie in den folgenden Artikeln:
 
 - [Schnellstart: Konfigurieren einer Azure-VM für das Herstellen einer Verbindung mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-vm.md)
 - [Schnellstart: Konfigurieren einer Point-to-Site-Verbindung von einem lokalen Computer mit einer verwalteten Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen einer Azure AD-Anmeldung innerhalb der verwalteten Instanz verwendet werden. Die erste Azure AD-Anmeldung muss mit einem SQL Server-Konto vom Typ `sysadmin`erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die entfernt wird, sobald Azure AD-Anmeldungen allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> Der Azure AD-Administrator, der zum Einrichten der verwalteten Instanz verwendet wurde, kann nicht zum Erstellen eines Azure AD-Serverprinzipals (Anmeldung) innerhalb der verwalteten Instanz verwendet werden. Der erste Azure AD-Serverprinzipal (Anmeldung) muss mit einem SQL Server-Konto vom Typ `sysadmin` erstellt werden. Dabei handelt es sich um eine temporäre Einschränkung, die entfernt wird, sobald Azure AD-Serverprinzipale (Anmeldungen) allgemein verfügbar sind. Wenn Sie versuchen, die Anmeldung mit einem Azure AD-Administratorkonto zu erstellen, wird der folgende Fehler angezeigt: `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. Melden Sie sich über [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) unter Verwendung eines SQL Server-Standardkontos (Azure-fremdes AD-Konto) vom Typ `sysadmin` bei Ihrer verwalteten Instanz an.
 
@@ -109,7 +109,7 @@ Weitere Informationen finden Sie unter [CREATE LOGIN (Transact-SQL)](/sql/t-sql/
 
 ## <a name="granting-permissions-to-allow-the-creation-of-managed-instance-logins"></a>Gewähren von Berechtigungen zum Erstellen von Anmeldungen für die verwaltete Instanz
 
-Um weitere Azure AD-Anmeldungen erstellen zu können, müssen dem Prinzipal (SQL oder Azure AD) SQL Server-Rollen oder -Berechtigungen zugewiesen werden.
+Um weitere Azure AD-Serverprinzipale (Anmeldungen) erstellen zu können, müssen dem Prinzipal (SQL oder Azure AD) SQL Server-Rollen oder -Berechtigungen zugewiesen werden.
 
 ### <a name="sql-authentication"></a>SQL-Authentifizierung
 
@@ -117,10 +117,10 @@ Um weitere Azure AD-Anmeldungen erstellen zu können, müssen dem Prinzipal (SQL
 
 ### <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
-- Wenn Sie der neu erstellten Azure AD-Anmeldung die Erstellung weiterer Anmeldungen für andere Azure AD-Benutzer, -Gruppen oder -Anwendungen ermöglichen möchten, müssen Sie der Anmeldung die Serverrolle `sysadmin` oder `securityadmin` zuweisen. 
-- Der Azure AD-Anmeldung muss mindestens die Berechtigung **ALTER ANY LOGIN** gewährt werden, um weitere Azure AD-Anmeldungen erstellen zu können. 
-- Neu erstellten Azure AD-Anmeldungen werden im Master standardmäßig folgende Berechtigungen gewährt: **CONNECT SQL** und **VIEW ANY DATABASE**.
-- Die Serverrolle `sysadmin` kann innerhalb einer verwalteten Instanz zahlreichen Azure AD-Anmeldungen zugewiesen werden.
+- Wenn Sie dem neu erstellten Azure AD-Serverprinzipal (Anmeldung) die Erstellung weiterer Anmeldungen für andere Azure AD-Benutzer, -Gruppen oder -Anwendungen ermöglichen möchten, müssen Sie der Anmeldung die Serverrolle `sysadmin` oder `securityadmin` zuweisen. 
+- Dem Azure AD-Serverprinzipal (Anmeldung) muss mindestens die Berechtigung **ALTER ANY LOGIN** gewährt werden, um weitere Azure AD-Serverprinzipale (Anmeldungen) erstellen zu können. 
+- Neu erstellten Azure AD-Serverprinzipalen (Anmeldungen) werden im Master standardmäßig folgende Berechtigungen gewährt: **CONNECT SQL** und **VIEW ANY DATABASE**.
+- Die Serverrolle `sysadmin` kann innerhalb einer verwalteten Instanz zahlreichen Azure AD-Serverprinzipalen (Anmeldungen) zugewiesen werden.
 
 So fügen Sie die Anmeldung der Serverrolle `sysadmin` hinzu:
 
@@ -128,7 +128,7 @@ So fügen Sie die Anmeldung der Serverrolle `sysadmin` hinzu:
 
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
 
-1. Weisen Sie der Azure AD-Anmeldung die Serverrolle `sysadmin` zu. Verwenden Sie dazu die folgende T-SQL-Syntax:
+1. Weisen Sie dem Azure AD-Serverprinzipal (Anmeldung) die Serverrolle `sysadmin` zu. Verwenden Sie dazu die folgende T-SQL-Syntax:
 
     ```sql
     ALTER SERVER ROLE sysadmin ADD MEMBER login_name
@@ -142,11 +142,11 @@ So fügen Sie die Anmeldung der Serverrolle `sysadmin` hinzu:
     GO
     ```
 
-## <a name="create-additional-azure-ad-logins-using-ssms"></a>Erstellen zusätzlicher Azure AD-Anmeldungen mithilfe von SSMS
+## <a name="create-additional-azure-ad-server-principals-logins-using-ssms"></a>Erstellen zusätzlicher Azure AD-Serverprinzipale (Anmeldungen) mithilfe von SSMS
 
-Nachdem die Azure AD-Anmeldung erstellt und mit Berechtigungen vom Typ `sysadmin` bereitgestellt wurde, können mit dieser Anmeldung unter Verwendung von **CREATE LOGIN** und der Klausel **FROM EXTERNAL PROVIDER** weitere Anmeldungen erstellt werden.
+Nachdem der Azure AD-Serverprinzipal (Anmeldung) erstellt und mit Berechtigungen vom Typ `sysadmin` bereitgestellt wurde, können mit dieser Anmeldung unter Verwendung von **CREATE LOGIN** und der Klausel **FROM EXTERNAL PROVIDER** weitere Anmeldungen erstellt werden.
 
-1. Stellen Sie über SQL Server Management Studio unter Verwendung der Azure AD-Anmeldung eine Verbindung mit der verwalteten Instanz her. Geben Sie den Hostnamen Ihrer verwalteten Instanz ein. Wenn Sie sich mit einem Azure AD-Konto anmelden, stehen für die Authentifizierung in SSMS drei Optionen zur Auswahl:
+1. Stellen Sie über SQL Server Management Studio unter Verwendung des Azure AD-Serverprinzipals (Anmeldung) eine Verbindung mit der verwalteten Instanz her. Geben Sie den Hostnamen Ihrer verwalteten Instanz ein. Wenn Sie sich mit einem Azure AD-Konto anmelden, stehen für die Authentifizierung in SSMS drei Optionen zur Auswahl:
 
     - Active Directory: universell mit MFA-Unterstützung
     - Active Directory-Kennwortauthentifizierung
@@ -205,7 +205,7 @@ Nachdem die Azure AD-Anmeldung erstellt und mit Berechtigungen vom Typ `sysadmin
 
 1. Melden Sie sich zu Testzwecken mit der neu erstellten Anmeldung oder Gruppe bei der verwalteten Instanz an. Öffnen Sie eine neue Verbindung mit der verwalteten Instanz, und verwenden Sie bei der Authentifizierung die neue Anmeldung.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie für die neue Verbindung **Neue Abfrage** aus.
-1. Führen Sie den folgenden Befehl aus, um die Serverberechtigungen für die neu erstellte Azure AD-Anmeldung zu überprüfen:
+1. Führen Sie den folgenden Befehl aus, um die Serverberechtigungen für den neu erstellten Azure AD-Serverprinzipal (Anmeldung) zu überprüfen:
 
     ```sql
     SELECT * FROM sys.fn_my_permissions (NULL, 'DATABASE')
@@ -215,7 +215,7 @@ Nachdem die Azure AD-Anmeldung erstellt und mit Berechtigungen vom Typ `sysadmin
 > [!NOTE]
 > Azure AD-Gastbenutzer werden für Anmeldungen für die verwaltete Instanz nur unterstützt, wenn sie als Teil einer Azure AD-Gruppe hinzugefügt werden. Bei einem Azure AD-Gastbenutzer handelt es sich um ein Konto, das aus einer anderen Azure AD-Instanz in die Azure AD-Instanz eingeladen wird, der die verwaltete Instanz angehört. So kann beispielweise joe@contoso.com (Azure AD-Konto) oder steve@outlook.com (MSA-Konto) einer Gruppe in der Azure AD-Instanz „aadsqlmi“ hinzugefügt werden. Nachdem die Benutzer einer Gruppe hinzugefügt wurden, kann für die Gruppe unter Verwendung der Syntax von **CREATE LOGIN** eine Anmeldung in der **Masterdatenbank** der verwalteten Instanz erstellt werden. Gastbenutzer, die dieser Gruppe angehören, können ihre aktuellen Anmeldungen (beispielsweise joe@contoso.com oder steve@outlook.com) verwenden, um eine Verbindung mit der verwalteten Instanz herzustellen.
 
-## <a name="create-an-azure-ad-user-from-the-azure-ad-login-and-give-permissions"></a>Erstellen eines Azure AD-Benutzers auf der Grundlage der Azure AD-Anmeldung und Gewähren von Berechtigungen
+## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login-and-give-permissions"></a>Erstellen eines Azure AD-Benutzers auf der Grundlage des Azure AD-Serverprinzipals (Anmeldung) und Gewähren von Berechtigungen
 
 Die Autorisierung für einzelne Datenbanken funktioniert bei der verwalteten Instanz ganz ähnlich wie bei der lokalen SQL Server-Instanz. Ein Benutzer kann auf der Grundlage einer vorhandenen Anmeldung in einer Datenbank erstellt und mit Berechtigungen für diese Datenbank ausgestattet oder einer Datenbankrolle hinzugefügt werden.
 
@@ -229,7 +229,7 @@ Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter
 
 1. Melden Sie sich über SQL Server Management Studio unter Verwendung eines Kontos vom Typ `sysadmin` bei Ihrer verwalteten Instanz an.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
-1. Verwenden Sie im Abfragefenster die folgende Syntax, um einen Azure AD-Benutzer auf der Grundlage einer Azure AD-Anmeldung zu erstellen:
+1. Verwenden Sie im Abfragefenster die folgende Syntax, um einen Azure AD-Benutzer auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) zu erstellen:
 
     ```sql
     USE <Database Name> -- provide your database name
@@ -247,7 +247,7 @@ Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter
     GO
     ```
 
-1. Ein Azure AD-Benutzer kann auch auf der Grundlage einer Azure AD-Anmeldung erstellt werden, bei der es sich um eine Gruppe handelt.
+1. Ein Azure AD-Benutzer kann auch auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellt werden, bei dem es sich um eine Gruppe handelt.
 
     Im folgenden Beispiel wird eine Anmeldung für die Azure AD-Gruppe _mygroup_ erstellt, die in Ihrer Azure AD-Instanz vorhanden ist.
 
@@ -261,7 +261,7 @@ Weitere Informationen zum Gewähren von Datenbankberechtigungen finden Sie unter
     Alle Benutzer, die **mygroup** angehören, können auf die Datenbank **MyMITestDB** zugreifen.
 
     > [!IMPORTANT]
-    > Wenn Sie einen Benutzer (**USER**) auf der Grundlage einer Azure AD-Anmeldung erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
+    > Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzername den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
 
     Weitere Informationen finden Sie unter [CREATE USER (Transact-SQL)](/sql/t-sql/statements/create-user-transact-sql?view=azuresqldb-mi-current).
 
@@ -383,7 +383,7 @@ Die verwaltete Instanz unterstützt das Annehmen der Identität von Azure AD-Ser
 
 ## <a name="using-cross-database-queries-in-managed-instances"></a>Verwenden datenbankübergreifender Abfragen in verwalteten Instanzen
 
-Datenbankübergreifende Abfragen werden für Azure AD-Konten mit Azure AD-Anmeldungen unterstützt. Um eine datenbankübergreifende Abfrage mit einer Azure AD-Gruppe testen zu können, müssen wir eine weitere Datenbank und Tabelle erstellen. Falls Sie bereits über eine weitere Datenbank und Tabelle verfügen, können Sie die Erstellung überspringen.
+Datenbankübergreifende Abfragen werden für Azure AD-Konten mit Azure AD-Serverprinzipalen (Anmeldungen) unterstützt. Um eine datenbankübergreifende Abfrage mit einer Azure AD-Gruppe testen zu können, müssen wir eine weitere Datenbank und Tabelle erstellen. Falls Sie bereits über eine weitere Datenbank und Tabelle verfügen, können Sie die Erstellung überspringen.
 
 1. Melden Sie sich über SQL Server Management Studio unter Verwendung eines Kontos vom Typ `sysadmin` bei Ihrer verwalteten Instanz an.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf den Server, und wählen Sie **Neue Abfrage** aus.
@@ -424,15 +424,15 @@ Datenbankübergreifende Abfragen werden für Azure AD-Konten mit Azure AD-Anmeld
 
     Daraufhin sollten die Tabellenergebnisse aus **TestTable2** angezeigt werden.
 
-## <a name="additional-scenarios-supported-for-azure-ad-logins-public-preview"></a>Zusätzliche unterstützte Szenarien für Azure AD-Anmeldungen (Public Preview) 
+## <a name="additional-scenarios-supported-for-azure-ad-server-principals-logins-public-preview"></a>Zusätzliche unterstützte Szenarien für Azure AD-Serverprinzipale (Anmeldungen) (Public Preview) 
 
-- Für Azure AD-Anmeldungen werden SQL-Agent-Verwaltung und Auftragsausführungen unterstützt.
-- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Anmeldungen ausgeführt werden.
-- [Überwachung](sql-database-managed-instance-auditing.md) aller Anweisungen in Verbindung mit Azure AD-Anmeldungen und Authentifizierungsereignissen.
-- Dedizierte Administratorverbindung für Azure AD-Anmeldungen, die der Serverrolle `sysadmin` angehören.
-- Azure AD-Anmeldungen können mit dem [sqlcmd-Hilfsprogramm](/sql/tools/sqlcmd-utility) und mit dem Tool [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) verwendet werden.
-- Anmeldetrigger werden für Anmeldeereignisse unterstützt, die von Azure AD-Anmeldungen stammen.
-- Service Broker und Datenbank-E-Mails können unter Verwendung von Azure AD-Anmeldungen eingerichtet werden.
+- Für Azure AD-Serverprinzipale (Anmeldungen) werden SQL-Agent-Verwaltung und Auftragsausführungen unterstützt.
+- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Serverprinzipale (Anmeldungen) ausgeführt werden.
+- [Überwachung](sql-database-managed-instance-auditing.md) aller Anweisungen in Verbindung mit Azure AD-Serverprinzipalen (Anmeldungen) und Authentifizierungsereignissen.
+- Dedizierte Administratorverbindung für Azure AD-Serverprinzipale (Anmeldungen), die der Serverrolle `sysadmin` angehören.
+- Azure AD-Serverprinzipale (Anmeldungen) können mit dem [sqlcmd-Hilfsprogramm](/sql/tools/sqlcmd-utility) und mit dem Tool [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) verwendet werden.
+- Anmeldetrigger werden für Anmeldeereignisse unterstützt, die von Azure AD-Serverprinzipalen (Anmeldungen) stammen.
+- Service Broker und Datenbank-E-Mails können unter Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) eingerichtet werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/09/2018
 ms.author: njray
-ms.openlocfilehash: 61cad318dbbe55ef5ecf1b8167b6594ab6e57553
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 901afc8f28b617eb5bada2a0f58761ddb9f67607
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247536"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327407"
 ---
 # <a name="ibm-db2-purescale-on-azure"></a>IBM DB2 pureScale in Azure
 
@@ -89,7 +89,7 @@ Bei dieser Architektur werden die Anwendungs-, Speicher- und Datenebenen auf vir
 
 ### <a name="storage-considerations"></a>Speicheraspekt
 
-Wie Oracle RAC ist auch DB2 pureScale eine Hochleistungsdatenbank mit Block-E/A und horizontaler Skalierung. Es wird empfohlen, die größte [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)-Speicheroption zu verwenden, die Ihren Anforderungen entspricht. Kleinere Speicheroptionen eignen sich z.B. für Entwicklungs- und Testumgebungen, während Produktionsumgebungen häufig größere Speicherkapazität erfordern. Die Beispielarchitektur verwendet [P30](https://azure.microsoft.com/pricing/details/managed-disks/) aufgrund des Verhältnisses von IOPS zu Größe und Preis. Verwenden Sie unabhängig von der Größe Storage Premium für eine optimale Leistung.
+Wie Oracle RAC ist auch DB2 pureScale eine Hochleistungsdatenbank mit Block-E/A und horizontaler Skalierung. Es wird empfohlen, die größte [Azure Premium SSD](disks-types.md)-Option zu verwenden, die Ihren Anforderungen entspricht. Kleinere Speicheroptionen eignen sich z.B. für Entwicklungs- und Testumgebungen, während Produktionsumgebungen häufig größere Speicherkapazität erfordern. Die Beispielarchitektur verwendet [P30](https://azure.microsoft.com/pricing/details/managed-disks/) aufgrund des Verhältnisses von IOPS zu Größe und Preis. Verwenden Sie unabhängig von der Größe Storage Premium für eine optimale Leistung.
 
 DB2 pureScale verwendet eine Architektur mit umfassender Freigabe, bei der von allen Clusterknoten auf alle Daten zugegriffen werden kann. Premium-Speicher muss für instanzenübergreifend freigegeben werden – unabhängig davon, ob es sich um bedarfsgesteuerte oder dedizierte Instanzen handelt.
 

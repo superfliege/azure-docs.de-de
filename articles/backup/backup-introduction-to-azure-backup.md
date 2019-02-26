@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 2601f81b4abecd98d645af9bc0d368e52534a04e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487879"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447360"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -33,7 +33,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 
 * Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
 
-* Geografisch redundanter Speicher (Geo-Redundant Storage, GRS) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
+* Geografisch redundanter Speicher (Geo-Redundant Storage, GRS) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region. Dabei handelt es sich um [Azure-Regionspaare](../best-practices-availability-paired-regions.md), die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt sind. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
 **Unbegrenzte Datenübertragungen**: Bei Azure Backup ist die Menge der übertragenen eingehenden und ausgehenden Daten nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
 
@@ -44,7 +44,7 @@ Herkömmliche Sicherungslösungen haben sich dahingehend entwickelt, dass die Cl
 **Langfristige Aufbewahrung:** Sie können Recovery Services-Tresore für kurzfristige und langfristige Aufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Sie können Daten also beliebig lange in einem Tresor aufbewahren. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Informationen zu den möglichen Auswirkungen auf Ihre Sicherungsanforderungen finden Sie im Abschnitt [Sicherung und Aufbewahrung](backup-introduction-to-azure-backup.md#backup-and-retention).
 
 ## <a name="which-azure-backup-components-should-i-use"></a>Welche Azure Backup-Komponenten sollte ich verwenden?
-Die folgende Tabelle enthält Informationen dazu, was Sie mit jeder Azure Backup-Komponente schützen können: 
+Die folgende Tabelle enthält Informationen dazu, was Sie mit jeder Azure Backup-Komponente schützen können:
 
 | Komponente | Vorteile | Einschränkungen | Was wird geschützt? | Wo werden Sicherungen gespeichert? |
 | --- | --- | --- | --- | --- |
@@ -62,7 +62,7 @@ Die folgende Tabelle enthält Informationen dazu, was Sie mit jeder Azure Backup
 | Azure IaaS-VM-Sicherung |<p>**Ja**</p><p>Teil der Azure-Fabric</p><p>Speziell für die [Sicherung von Azure IaaS-VMs (Infrastructure as a Service)](backup-azure-vms-introduction.md).</p> |<p>**Nein**</p> <p>Sichern Sie virtuelle Computer in Ihrem Datencenter mit System Center DPM.</p> |<p>Recovery Services-Tresor</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>Welche Anwendungen und Workloads kann ich sichern?
-Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit Azure Backup geschützt werden können. Die Spalte „Azure Backup-Lösung“ enthält Links zur Bereitstellungsdokumentation für die Lösung. 
+Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit Azure Backup geschützt werden können. Die Spalte „Azure Backup-Lösung“ enthält Links zur Bereitstellungsdokumentation für die Lösung.
 
 | Daten oder Workload | Quellumgebung | Azure Backup-Lösung |
 | --- | --- | --- |
@@ -81,24 +81,24 @@ Die folgende Tabelle enthält eine Matrix mit den Daten und Workloads, die mit A
 In der folgenden Tabelle sind die Azure Backup-Komponenten aufgeführt, die für Linux unterstützt werden.  
 
 **Komponente** | **Linux (von Azure unterstützt)**
---- | --- 
-Azure Backup-Agent (MARS) | Keine (nur Windows-basierter Agent) 
+--- | ---
+Azure Backup-Agent (MARS) | Keine (nur Windows-basierter Agent)
 System Center DPM | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
-Azure Backup Server | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar 
+Azure Backup Server | Dateikonsistente Sicherung von Linux-Gast-VMs unter Hyper-V und VMWare<br/><br/> VM-Wiederherstellung von Hyper-V- und VMWare-Linux-Gast-VMs</br></br> Dateikonsistente Sicherungen sind für virtuelle Azure-Computer nicht verfügbar
 Azure IaaS-VM-Sicherung | App-konsistente Sicherung per [Pre-Skript- und Post-Skript-Framework](backup-azure-linux-app-consistent.md)<br/><br/> [Wiederherstellung auf Dateiebene](backup-azure-restore-files-from-vm.md)<br/><br/> [Erstellen eines virtuellen Computers aus einem wiederhergestellten Datenträger](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [Erstellen eines virtuellen Computers über einen Wiederherstellungspunkt](backup-azure-arm-restore-vms.md#create-new-create-a-vm)
 
-## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden von Storage Premium-VMs mit Azure Backup
-Azure Backup schützt Storage Premium-VMs. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive, Festkörperlaufwerk), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium finden Sie im Artikel [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../virtual-machines/windows/premium-storage.md).
+## <a name="using-premium-storage-vms-with-azure-backup"></a>Verwenden virtueller Storage Premium-Computer mit Azure Backup
+Azure Backup schützt virtuelle Storage Premium-Computer. Azure Storage Premium ist ein SSD-basierter Speicher (Solid State Drive), der auf die Unterstützung E/A-intensiver Workloads ausgelegt ist. Storage Premium ist gut für Workloads von virtuellen Computern (VMs) geeignet. Weitere Informationen zu Storage Premium und anderen Datenträgertypen finden Sie im Artikel [Auswählen eines Datenträgertyps](../virtual-machines/windows/disks-types.md).
 
-### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
-Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Storage Premium-Konto ausreichend freier Speicherplatz für den temporären Stagingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu den [Storage Premium-Einschränkungen](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+### <a name="back-up-premium-storage-vms"></a>Sichern virtueller Storage Premium-Computer
+Beim Sichern virtueller Storage Premium-Computer erstellt der Backup-Dienst einen temporären Stagingspeicherort namens „AzureBackup-“ im Storage Premium-Konto. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts. Stellen Sie sicher, dass im Storage Premium-Konto ausreichend freier Speicherplatz für den temporären Stagingspeicherort zur Verfügung steht. Weitere Informationen finden Sie im Artikel zu [Skalierbarkeitszielen für Azure Storage](../storage/common/storage-scalability-targets.md). Wenn der Sicherungsauftrag abgeschlossen ist, wird der Stagingspeicherort gelöscht. Der Preis für den Speicher, der für den Stagingspeicherort genutzt wird, entspricht den [Preisen für Storage Premium](../virtual-machines/windows/disks-types.md).
 
 > [!NOTE]
 > Ändern oder bearbeiten Sie den Stagingspeicherort nicht.
 >
 >
 
-### <a name="restore-premium-storage-vms"></a>Wiederherstellen virtueller Storage Premium-Computer
+### <a name="restore-premium-storage-vms"></a>Wiederherstellen virtueller Storage Premium-Computer
 Sie können virtuelle Storage Premium-Computer entweder unter Storage Premium oder im Standardspeicher wiederherstellen. In der Regel wird der Wiederherstellungspunkt eines virtuellen Storage Premium-Computers in Storage Premium wiederhergestellt. Unter Umständen ist es aber kostengünstiger, den Wiederherstellungspunkt eines virtuellen Storage Premium-Computers im Standardspeicher wiederherzustellen, falls Sie einen Teil der Dateien des virtuellen Computers benötigen.
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Verwendung von virtuellen Computer auf verwalteten Datenträgern

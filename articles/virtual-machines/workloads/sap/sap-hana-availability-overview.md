@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/05/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7049a4b5159687ab928cda7ddc6b1a35959529ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 1db56ad31991b85ffad415818c7c67f0ee30808d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972106"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328077"
 ---
 # <a name="sap-hana-high-availability-for-azure-virtual-machines"></a>Hochverfügbarkeit von SAP HANA für virtuelle Azure-Computer
 
@@ -45,9 +45,9 @@ Die folgenden Artikel bieten einen guten Überblick über die Verwendung von SAP
 Auch die folgenden Artikel zu SAP HANA sind zu empfehlen:
 
 - [High Availability for SAP HANA](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/6d252db7cdd044d19ad85b46e6c294a4.html) (Hochverfügbarkeit für SAP HANA)
-- [FAQ: High Availability for SAP HANA](https://archive.sap.com/documents/docs/DOC-66702) (FAQs: Hochverfügbarkeit für SAP HANA)
+- [Häufig gestellte Fragen: High Availability for SAP HANA](https://archive.sap.com/documents/docs/DOC-66702) (Hochverfügbarkeit für SAP HANA)
 - [How to Perform System Replication for SAP HANA](https://archive.sap.com/documents/docs/DOC-47702) (Gewusst wie: Durchführen der Replikation für SAP HANA)
-- [SAP HANA 2.0 SPS 01 What’s New: High Availability](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/) (SAP HANA 2.0 SPS 01 – Neuerungen: Hochverfügbarkeit)
+- [SAP HANA 2.0 SPS 01 What’s New:  High Availability](https://blogs.sap.com/2017/05/15/sap-hana-2.0-sps-01-whats-new-high-availability-by-the-sap-hana-academy/) (SAP HANA 2.0 SPS 01 – Neuerungen: Hochverfügbarkeit)
 - [Network Recommendations for SAP HANA System Replication](https://www.sap.com/documents/2016/06/18079a1c-767c-0010-82c7-eda71af511fa.html) (Empfehlungen zum Netzwerk für die SAP HANA-Systemreplikation)
 - [SAP HANA System Replication](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html) (SAP HANA-Systemreplikation)
 - [SAP HANA Service Auto-Restart](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/cf10efba8bea4e81b1dc1907ecc652d3.html) (Automatischer Neustart des SAP HANA-Diensts)
@@ -61,7 +61,7 @@ Azure bietet unterschiedliche Verfügbarkeits-SLAs für verschiedene Komponenten
 
 Unter [SLA für virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_6/) werden zwei verschiedene SLAs für zwei unterschiedliche Konfigurationen beschrieben:
 
-- Eine einzelne VM, die [Azure Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
+- Eine einzelne VM, die [Azure SSD Premium](../../windows/disks-types.md) für den Betriebssystemdatenträger und alle Datenträger verwendet. Diese Option bietet eine monatliche Betriebszeit von 99,9 Prozent.
 - Mehrere (mindestens zwei) VMs, die in einer [Azure-Verfügbarkeitsgruppe](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) organisiert sind. Diese Option bietet eine monatliche Betriebszeit von 99,95 Prozent.
 
 Gleichen Sie Ihre Anforderungen an die Verfügbarkeit mit den SLAs ab, die Azure-Komponenten bereitstellen können. Wählen Sie dann Ihre Szenarien für SAP HANA, um die von Ihnen benötigte Verfügbarkeitsstufe zu erreichen.

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: d4c0bbdfb1afcef33727ba4b5b432c5de79168d4
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495219"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327509"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -146,9 +146,9 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 
 ### <a name="disk-types-and-configurations"></a>Datenträgertypen und -konfigurationen
 
-- *Standard-Betriebssystemdatenträger*: Diese Datenträgertypen bieten persistente Daten und Zwischenspeichern. Sie sind für den Betriebssystemzugriff beim Systemstart optimiert und nicht für Transaktionsworkloads oder Data Warehouse-Workloads (analytisch) ausgelegt.
+- *Standard-Betriebssystemdatenträger*: Diese Datenträgertypen bieten persistente Daten und Zwischenspeicherung. Sie sind für den Betriebssystemzugriff beim Systemstart optimiert und nicht für Transaktionsworkloads oder Data Warehouse-Workloads (analytisch) ausgelegt.
 
-- *Nicht verwaltete Datenträger*: Mit diesen Datenträgertypen verwalten Sie die Speicherkonten, die die Dateien der virtuellen Festplatte (Virtual Hard Disk, VHD) speichern, die Ihren VM-Datenträgern entsprechen. Die VHD-Dateien werden als Seitenblobs in Azure-Speicherkonten gespeichert.
+- *Nicht verwaltete Datenträger:* Mit diesen Datenträgertypen verwalten Sie die Speicherkonten, die die Dateien der virtuellen Festplatte (Virtual Hard Disk, VHD) speichern, die Ihren VM-Datenträgern entsprechen. Die VHD-Dateien werden als Seitenblobs in Azure-Speicherkonten gespeichert.
 
 - *Verwaltete Datenträger*: Azure verwaltet die Speicherkonten, die Sie für Ihre VM-Datenträger verwenden. Sie geben den Datenträgertyp (Premium oder Standard) und die benötigte Datenträgergröße an. Azure erstellt und verwaltet den Datenträger für Sie.
 
@@ -157,8 +157,6 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 Wenn Sie einen neuen verwalteten Datenträger aus dem Portal erstellen, können Sie den **Kontotyp** des Datenträgers angeben, den Sie verwenden möchten. Beachten Sie, dass nicht alle verfügbaren Datenträger im Dropdownmenü angezeigt werden. Nachdem Sie eine bestimmte VM-Größe ausgewählt haben, zeigt das Menü nur die verfügbaren Storage Premium-SKUs an, die auf dieser VM-Größe basieren.
 
 ![Screenshot der Seite „Verwaltete Datenträger“](./media/oracle-design/premium_disk01.png)
-
-Weitere Informationen finden Sie unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/storage/storage-premium-storage).
 
 Nachdem Sie Ihren Speicher auf einer VM konfiguriert haben, sollten Sie vor dem Erstellen einer Datenbank einen Auslastungstest für die Datenträger ausführen. Wenn Sie die E/A-Rate im Hinblick auf Latenz und Durchsatz kennen, können Sie damit besser bestimmen, ob die VMs den erwarteten Durchsatz mit Latenzzielen unterstützen.
 
@@ -192,15 +190,13 @@ Es gibt drei Optionen für die Hostzwischenspeicherung:
 
 - *Schreibgeschützt*: Alle Anfragen werden für zukünftige Lesevorgänge zwischengespeichert. Alle Schreibvorgänge werden direkt in Azure Blob Storage gespeichert.
 
-- *Lese-/Schreibzugriff*: Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
+- *Lese-/Schreibzugriff*:  Dies ist ein „Vorauslese“-Algorithmus. Die Lese- und Schreibvorgänge werden für zukünftige Lesevorgänge zwischengespeichert. Schreibvorgänge ohne Durchschreiben werden zuerst im lokalen Cache gespeichert. Für SQL Server werden Schreibvorgänge in Azure Storage gespeichert, da Durchschreiben verwendet wird. Darüber hinaus bietet dies die niedrigste Datenträgerlatenz für schlanke Workloads.
 
-- *Keine* (deaktiviert): Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
+- *Keine* (deaktiviert):  Mit dieser Option können Sie den Cache umgehen. Alle Daten werden auf den Datenträger übertragen und in Azure Storage gespeichert. Diese Methode bietet Ihnen die höchste E/A-Rate für E/A-intensive Workloads. Sie müssen auch die „Transaktionskosten“ berücksichtigen.
 
 **Empfehlungen**
 
 Zur Maximierung des Durchsatzes sollten Sie für das Hostzwischenspeichern mit **Kein** beginnen. Beachten Sie bei Storage Premium, dass Sie die „Barrieren“ deaktivieren müssen, wenn Sie das Dateisystem mit der Option **Schreibgeschützt** oder **Kein** bereitstellen. Aktualisieren Sie die Datei „/etc/fstab“ mit der UUID auf die Datenträger.
-
-Weitere Informationen finden Sie unter [Storage Premium für virtuelle Linux-Computer](https://docs.microsoft.com/azure/storage/storage-premium-storage#premium-storage-for-linux-vms).
 
 ![Screenshot der Seite „Verwaltete Datenträger“](./media/oracle-design/premium_disk02.png)
 
@@ -215,14 +211,14 @@ Nachdem Ihre Einstellung für den Datenträger gespeichert wurde, können Sie di
 
 Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der nächste Schritt im Sichern des Netzwerks. Hier sind einige Empfehlungen dafür:
 
-- *NSG-Richtlinie*: Die NSG kann nach Subnetz oder Netzwerkadapter definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene Sicherheitsimplementierung und Zwangsrouting.
+- *NSG-Richtlinie*: NSG kann von einem Subnetz oder einer NIC definiert werden. Für Anwendungsfirewalls etwa vereinfacht die Zugriffssteuerung auf Subnetzebene Sicherheitsimplementierung und Zwangsrouting.
 
-- *Jumpbox*: Damit der Zugriff noch sicherer wird, sollten Administratoren keine direkte Verbindung zum Anwendungsdienst oder zur Datenbank herstellen. Eine Jumpbox wird als Medium zwischen dem Administratorcomputer und Azure-Ressourcen verwendet.
+- *Jumpbox:* Damit der Zugriff noch sicherer wird, sollten Administratoren keine direkte Verbindung zum Anwendungsdienst oder zur Datenbank herstellen. Eine Jumpbox wird als Medium zwischen dem Administratorcomputer und Azure-Ressourcen verwendet.
 ![Screenshot der Jumpbox-Topologieseite](./media/oracle-design/jumpbox.png)
 
     Der Administratorcomputer sollte nur IP-beschränkten Zugriff auf die Jumpbox bieten. Die Jumpbox sollte dann Zugriff auf Anwendung und Datenbank haben.
 
-- *Privates Netzwerk* (Subnetze): Sie sollten Anwendungsdienst und Datenbank in separaten Subnetzen unterbringen, damit eine bessere Steuerung durch die NSG-Richtlinie festgelegt werden kann.
+- *Privates Netzwerk* (Subnetze):  Sie sollten Anwendungsdienst und Datenbank in separaten Subnetzen unterbringen, damit eine bessere Steuerung durch die NSG-Richtlinie festgelegt werden kann.
 
 
 ## <a name="additional-reading"></a>Zusätzliche Lektüre
@@ -234,5 +230,5 @@ Nachdem Sie Ihre Azure-Umgebung eingerichtet und konfiguriert haben, besteht der
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen eines hoch verfügbaren virtuellen Computers](../../linux/create-cli-complete.md)
-- [Erkunden der Azure-CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)
+- [Tutorial: Erstellen von hoch verfügbaren virtuellen Computern](../../linux/create-cli-complete.md)
+- [Erkunden der Azure CLI-Beispiele für die Bereitstellung virtueller Computer](../../linux/cli-samples.md)

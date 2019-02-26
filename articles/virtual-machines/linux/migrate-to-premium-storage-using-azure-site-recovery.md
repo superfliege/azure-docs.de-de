@@ -10,16 +10,16 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
-ms.openlocfilehash: 6b5605a8e3a80d597a4a4a78d015fa556c282357
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 3a4304301b99369426aa985508d6cabd26ba2c9f
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465723"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326958"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrieren zu Storage Premium mithilfe von Azure Site Recovery
 
-[Azure Storage Premium](premium-storage.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. In diesem Leitfaden erfahren Sie, wie Sie Ihre VM-Datenträger mithilfe von [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) von einem Standardspeicherkonto zu einem Storage Premium-Konto migrieren.
+[Azure SSD Premium](disks-types.md) bietet Datenträgerunterstützung mit hoher Leistung und geringer Wartezeit für virtuelle Computer (VMs), auf denen E/A-intensive Workloads ausgeführt werden. In diesem Leitfaden erfahren Sie, wie Sie Ihre VM-Datenträger mithilfe von [Azure Site Recovery](../../site-recovery/site-recovery-overview.md) von einem Standardspeicherkonto zu einem Storage Premium-Konto migrieren.
 
 Site Recovery ist ein Azure-Dienst, der zu Ihrer Strategie für die Geschäftskontinuität und Notfallwiederherstellung beiträgt, indem er die Replikation von lokalen physischen Servern und virtuellen Computern in die Cloud (Azure) oder in ein sekundäres Datencenter orchestriert. Wenn es an Ihrem primären Standort zu Ausfällen kommt, wird ein Failover zum sekundären Standort durchgeführt, um die Verfügbarkeit von Anwendungen und Workloads zu erhalten. Wenn wieder Normalbetrieb herrscht, führen Sie das Failback zum primären Standort durch. 
 
@@ -220,7 +220,7 @@ Lesen Sie außerdem die folgenden Ressourcen, um mehr über Azure Storage und Az
 
 * [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/documentation/services/storage/)
 * [Dokumentation zu virtuellen Computern](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Storage Premium: Hochleistungsspeicher für Azure Virtual Machine-Workloads](premium-storage.md)
+* [Auswählen eines Datenträgertyps für virtuelle IaaS-Computer](disks-types.md)
 
 [1]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-1.png
 [2]:./media/migrate-to-premium-storage-using-azure-site-recovery/migrate-to-premium-storage-using-azure-site-recovery-2.png

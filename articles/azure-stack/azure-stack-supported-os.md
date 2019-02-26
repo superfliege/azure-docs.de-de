@@ -16,12 +16,12 @@ ms.date: 12/27/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 8f53bbd65053fe9ac2bf49478944dc99dac3acfd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 67022b1d00c8982d7b6e6eff77ffb648bfc557ec
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247849"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301280"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Für Azure Stack unterstützte Gastbetriebssysteme
 
@@ -53,24 +53,24 @@ Datacenter-Editionen stehen im Marketplace zum Download zur Verfügung. Kunden k
 Die im Marketplace verfügbaren Linux-Distributionen enthalten den erforderlichen Windows Azure-Linux-Agent (WALA). Wenn Sie in Azure Stack Ihr eigenes Image verwenden möchten, beachten Sie die Richtlinien unter [Hinzufügen von Linux-Images zu Azure Stack](azure-stack-linux.md).
 
 > [!NOTE]
-> Benutzerdefinierte Images müssen mit der neuesten öffentlichen WALA-Version erstellt werden. Versionen vor 2.2.18 funktionieren in Azure Stack möglicherweise nicht ordnungsgemäß.
+> Benutzerdefinierte Images müssen mit der neuesten öffentlichen WALA-Version oder mit Version 2.2.20 erstellt werden. Versionen vor 2.2.20 und zwischen 2.2.20 und 2.2.2.35 (exklusive) funktionieren in Azure Stack möglicherweise nicht ordnungsgemäß. 
 >
 > [cloud-init](https://cloud-init.io/) wird derzeit für Azure Stack nicht unterstützt.
 
 | Distribution | BESCHREIBUNG | Herausgeber | Marketplace |
 | --- | --- | --- | --- | --- | --- |
-| 6.9 (CentOS-basiert) | 64 Bit | Rogue Wave | JA |
-| 7.4 (CentOS-basiert) | 64 Bit | Rogue Wave | JA |
-| ClearLinux | 64 Bit | ClearLinux.org | JA |
+| 6.9 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
+| 7.4 (CentOS-basiert) | 64 Bit | Rogue Wave | Ja |
+| ClearLinux | 64 Bit | ClearLinux.org | Ja |
 | Container Linux |  64 Bit | CoreOS | Stable |
-| Debian 8 „Jessie“ | 64 Bit | credativ |  JA |
-| Debian 9 „Stretch“ | 64 Bit | credativ | JA |
+| Debian 8 „Jessie“ | 64 Bit | credativ |  Ja |
+| Debian 9 „Stretch“ | 64 Bit | credativ | Ja |
 | Red Hat Enterprise Linux 7.x | 64 Bit | Red Hat |Verwendung eigener Images (Bring Your Own Image, BYOI) |
-| SLES 11SP4 | 64 Bit | SUSE | JA |
-| SLES 12SP3 | 64 Bit | SUSE | JA |
-| Ubuntu 14.04-LTS | 64 Bit | Canonical | JA |
-| Ubuntu 16.04-LTS | 64 Bit | Canonical | JA |
-| Ubuntu 18.04-LTS | 64 Bit | Canonical | JA |
+| SLES 11SP4 | 64 Bit | SUSE | Ja |
+| SLES 12SP3 | 64 Bit | SUSE | Ja |
+| Ubuntu 14.04-LTS | 64 Bit | Canonical | Ja |
+| Ubuntu 16.04-LTS | 64 Bit | Canonical | Ja |
+| Ubuntu 18.04-LTS | 64 Bit | Canonical | Ja |
 
 Informationen zur Unterstützung von Red Hat Enterprise Linux finden Sie unter [Red Hat and Azure Stack: Frequently Asked Questions](https://access.redhat.com/articles/3413531) (Red Hat und Azure Stack: häufig gestellte Fragen).
 

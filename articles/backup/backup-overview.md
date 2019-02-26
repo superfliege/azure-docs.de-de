@@ -6,15 +6,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: overview
-ms.date: 01/09/2019
+ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 298c9fabca9d1994e0b952fdf8b48b70370c3ec2
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 79a53c1b11a1bac0ea83afdd1333423aff4d6aa6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490668"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428465"
 ---
 # <a name="what-is-azure-backup"></a>Was ist Azure Backup?
 
@@ -25,17 +25,19 @@ Der Azure Backup-Dienst dient zum Sichern von Daten in der Microsoft Azure-Cloud
 
 Azure Backup bietet im Wesentlichen folgende Vorteile:
 
-- **Auslagerung lokaler Sicherungen:** Azure Backup bietet eine einfache Lösung, mit der Sie Ihre lokalen Ressourcen in der Cloud sichern können. Mit Azure Backup erhalten Sie kurz- und langfristige Sicherungen, ohne komplexe lokale Sicherungslösungen einrichten zu müssen. Bandsicherungen und externe Sicherungen gehören damit der Vergangenheit an.
+- **Auslagerung lokaler Sicherungen:** Azure Backup bietet eine einfache Lösung, mit der Sie Ihre lokalen Ressourcen in der Cloud sichern können. Mit Azure Backup erhalten Sie kurz- und langfristige Sicherungen, ohne komplexe lokale Sicherungslösungen einrichten zu müssen. 
 - **Sicherung virtueller Azure-IaaS-Computer:** Azure Backup bietet unabhängige und isolierte Sicherungen zum Schutz vor dem versehentlichen Löschen von Originaldaten. Sicherungen werden in einem Recovery Services-Tresor mit integrierten verwalteten Wiederherstellungspunkten gespeichert. Konfiguration und Skalierung sind unkompliziert. Sicherungen werden außerdem optimiert und können bei Bedarf problemlos wiederhergestellt werden.
-- **Unkomplizierte Skalierung:** Dank der Leistung und unbegrenzten Skalierbarkeit der Azure-Cloud bietet Azure Backup Hochverfügbarkeit ohne Wartungs- oder Überwachungsaufwand. Sie können Warnungen einrichten, um Informationen zu Ereignissen bereitzustellen, aber Sie müssen sich nicht um die hohe Verfügbarkeit für Ihre Daten in der Cloud kümmern.
-- **Unbegrenzte Datenübertragungen:** Die Menge an übertragenen eingehenden und ausgehenden Daten wird von Azure Backup nicht beschränkt. Außerdem fallen bei Azure Backup keine Gebühren für die übertragenen Daten an. Aber wenn Sie den Azure Import/Export-Dienst nutzen, um große Datenmengen zu importieren, werden für eingehende Daten Kosten berechnet. Weitere Informationen zu diesen Kosten finden Sie unter [Workflow zur Offlinesicherung in Azure Backup](backup-azure-backup-import-export.md). Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
+- **Unkomplizierte Skalierung:** Dank der Leistung und unbegrenzten Skalierbarkeit der Azure-Cloud bietet Azure Backup Hochverfügbarkeit ohne Wartungs- oder Überwachungsaufwand. 
+- **Unbegrenzte Datenübertragungen:** Die Menge an übertragenen eingehenden und ausgehenden Daten wird von Azure Backup nicht beschränkt, und es fallen keine Kosten für die übertragenen Daten an.
+    - Ausgehende Daten sind Daten, die während eines Wiederherstellungsvorgangs aus einem Recovery Services-Tresor übertragen werden.
+    - Wenn Sie mit dem Azure Import/Export-Dienst eine erste Sicherung im Offlinemodus ausführen, um große Datenmengen zu importieren, fallen Kosten für eingehende Daten an.  [Weitere Informationen](backup-azure-backup-import-export.md) 
 - **Datenschutz:** Die Datenverschlüsselung ermöglicht eine sichere Übertragung und Speicherung Ihrer Daten in der öffentlichen Cloud. Sie speichern die Passphrase für die Verschlüsselung lokal, und sie wird niemals in Azure übertragen oder gespeichert. Wenn Daten wiederhergestellt werden sollen, sind nur Sie im Besitz der Passphrase für die Verschlüsselung bzw. des Schlüssels.
 - **Anwendungskonsistente Sicherungen:** Eine anwendungskonsistente Sicherung bedeutet, dass ein Wiederherstellungspunkt alle erforderlichen Daten zum Wiederherstellen der Sicherungskopie enthält. Azure Backup umfasst anwendungskonsistente Sicherungen, sodass sichergestellt ist, dass zum Wiederherstellen der Daten keine zusätzlichen Fixes benötigt werden. Durch die Wiederherstellung von anwendungskonsistenten Daten wird die Wiederherstellungsdauer reduziert, sodass Sie schnell zum Zustand der normalen Ausführung zurückkehren können.
-- **Kurz- und Langzeitaufbewahrung:** **Langfristige Aufbewahrung:** Sie können Recovery Services-Tresore für kurzfristige und langfristige Aufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Sie können Daten also beliebig lange in einem Tresor aufbewahren. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Informationen zu den möglichen Auswirkungen auf Ihre Sicherungsanforderungen finden Sie im Abschnitt [Sicherung und Aufbewahrung](backup-introduction-to-azure-backup.md#backup-and-retention).
-- **Automatische Speicherverwaltung**: Für Hybridumgebungen ist häufig heterogener Speicher erforderlich – teilweise lokal und teilweise in der Cloud. Bei Azure Backup fallen keine Kosten für die Verwendung von lokalen Speichergeräten an. Azure Backup sorgt im Rahmen eines Modells mit nutzungsbasierter Bezahlung für die automatische Zuteilung und Verwaltung von Sicherungsspeicher. Nutzungsbasierte Bezahlung bedeutet, dass Sie nur für den Speicher zahlen, den Sie verbrauchen. Weitere Informationen finden Sie im [Artikel zu den Preisen von Azure](https://azure.microsoft.com/pricing/details/backup).
-- **Mehrere Speicheroptionen**: Ein Aspekt der hohen Verfügbarkeit ist die Speicherreplikation. Azure Backup bietet zwei Arten der Replikation: mit [lokal redundantem Speicher](../storage/common/storage-redundancy-lrs.md) und mit [georedundantem Speicher](../storage/common/storage-redundancy-grs.md). Wählen Sie die Sicherungsspeicheroption aus, die zu Ihren Anforderungen passt:
-    - Lokal redundanter Speicher (Locally Redundant Storage, LRS) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
-    - Geografisch redundanter Speicher (Geo-Redundant Storage, GRS) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
+- **Kurz- und Langzeitaufbewahrung von Daten:** Sie können Recovery Services-Tresore für die kurzfristige und langfristige Datenaufbewahrung verwenden. Die Zeit, für die Sie Daten im Recovery Services-Tresor aufbewahren können, wird von Azure nicht begrenzt. Daten können also beliebig lange aufbewahrt werden. Bei Azure Backup gilt pro geschützter Instanz ein Limit von 9999 Wiederherstellungspunkten. Weitere Informationen zu den Auswirkungen, die dieses Limit auf Ihre Sicherungsanforderungen hat, finden Sie [hier](backup-introduction-to-azure-backup.md#backup-and-retention).
+- **Automatische Speicherverwaltung:** Für Hybridumgebungen ist häufig heterogener Speicher erforderlich – teilweise lokal und teilweise in der Cloud. Bei Azure Backup fallen keine Kosten für die Verwendung von lokalen Speichergeräten an. Azure Backup sorgt im Rahmen eines Modells mit nutzungsbasierter Bezahlung für die automatische Zuteilung und Verwaltung von Sicherungsspeicher. Dadurch zahlen Sie nur für den Speicher, den Sie tatsächlich verwenden. [Erfahren Sie mehr](https://azure.microsoft.com/pricing/details/backup) zu den Preisen.
+- **Mehrere Speicheroptionen:** Azure Backup bietet zwei Replikationsarten, um die Hochverfügbarkeit Ihres Speichers bzw. Ihrer Daten sicherzustellen.
+    - [Lokal redundanter Speicher (Locally Redundant Storage, LRS)](../storage/common/storage-redundancy-lrs.md) repliziert Ihre Daten dreimal in einer Speicherskalierungseinheit in einem Datencenter. (Es werden also drei Kopien Ihrer Daten erstellt.) Alle Kopien der Daten befinden sich in derselben Region. LRS ist eine kostengünstige Möglichkeit, um Daten vor lokalen Hardwarefehlern zu schützen.
+    - [Geografisch redundanter Speicher (Geo-Redundant Storage, GRS)](../storage/common/storage-redundancy-grs.md) ist die standardmäßige und empfohlene Replikationsoption. GRS repliziert Ihre Daten in einer sekundären Region, die mehrere hundert Kilometer vom primären Speicherort der Quelldaten entfernt ist. GRS führt zu höheren Kosten als LRS, bietet aber eine höhere Haltbarkeit Ihrer Daten (auch im Falle eines regionalen Ausfalls).
 
 
 ## <a name="whats-the-difference-between-azure-backup-and-azure-site-recovery"></a>Was ist der Unterschied zwischen Azure Backup und Azure Site Recovery?
@@ -64,52 +66,53 @@ Mit Azure Backup können sowohl lokale Computer als auch virtuelle Azure-Compute
 
 **Computer** | **Sicherungsszenario**
 --- | ---
-**Lokale Computer (physisch/virtuell)** |  Sie können einzelne lokale Computer sichern.<br/><br/>Sie können lokale Computer sichern, die durch System Center Data Protection Manager (DPM) geschützt sind.<br/><br/> Sie können lokale Computer sichern, die durch Microsoft Azure Backup Server (MABS) geschützt sind.
-**Virtuelle Azure-Computer** | Sie können einzelne virtuelle Azure-Computer sichern.<br/><br/> Sie können virtuelle Azure-Computer sichern, die durch DPM oder MABS geschützt sind.
+**Lokale Sicherung** |  (1) Führen Sie den MARS-Agent (Microsoft Azure Recovery Services) von Azure Backup auf einem lokalen Windows-Computer aus, um einzelne Dateien und den Systemzustand zu sichern. <br/><br/>(2) Sichern Sie lokale Computer auf einem Sicherungsserver (System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS)), und konfigurieren Sie dann den Sicherungsserver für die Sicherung in einem Azure Backup Recovery Services-Tresor in Azure.
+**Virtuelle Azure-Computer** | (1) Aktivieren Sie die Sicherung für einzelne virtuelle Azure-Computer. Wenn Sie die Sicherung aktivieren, installiert Azure Backup eine Erweiterung für den Azure-VM-Agent, der auf dem virtuellen Computer ausgeführt wird. Der Agent sichert den gesamten virtuellen Computer.<br/><br/> 2) Führen Sie den MARS-Agent auf einem virtuellen Azure-Computer aus. Diese Vorgehensweise ist hilfreich, wenn Sie einzelne Dateien und Ordner auf dem virtuellen Computer sichern möchten.<br/><br/> (3) Sichern Sie einen virtuellen Azure-Computer auf einem in Azure ausgeführten Server (DPM-Server oder MABS). Sichern Sie dann den DPM-Server/MABS mithilfe von Azure Backup in einem Tresor. 
 
-### <a name="back-up-servers"></a>Sichern von Servern
 
-Es empfiehlt sich ggf., lokale Server und Workloads oder virtuelle Azure-Computer und deren Workloads zunächst auf einem Sicherungsserver und anschließend in einem Recovery Services-Tresor zu sichern. 
+## <a name="why-use-a-backup-server"></a>Gründe für die Verwendung eines Sicherungsservers
 
-**Sicherungsserver** | **Details**
---- | ---
-**System Center Data Protection Manager (DPM)** | Sie können Azure Backup verwenden, um durch DPM geschützte Daten zu sichern:<br/><br/> - DPM kann lokal (physisch oder virtuell) oder in Azure ausgeführt werden.<br/><br/> - Sie können verschiedene Arten von Daten auf lokalen Computern und virtuellen Azure-Computern schützen, indem Sie die Daten auf dem DPM-Server sichern.<br/><br/> Der DPM-Server kann wiederum mithilfe des Azure Backup-Diensts in einem Recovery Services-Tresor gesichert werden.<br/><br/> Der DPM-Server und die von ihm geschützten Computer müssen sich im gleichen Netzwerk befinden. Lokale Computer können nur mithilfe eines lokalen DPM-Servers geschützt werden. Analog dazu muss DPM zum Schutz virtueller Azure-Computer in Azure ausgeführt werden.
-**Microsoft Azure Backup Server (MABS)** | Sie können Azure Backup verwenden, um durch MABS geschützte Daten zu sichern:<br/><br/> - MABS kann lokal (physisch oder virtuell) oder in Azure ausgeführt werden.<br/><br/> - Sie können verschiedene Arten von Daten auf lokalen Computern und virtuellen Azure-Computern schützen, indem Sie die Daten in MABS sichern.<br/><br/> - MABS kann wiederum mithilfe des Azure Backup-Diensts in einem Recovery Services-Tresor gesichert werden.<br/><br/> - MABS bietet ähnliche Funktionen wie DPM. Mit MABS sind jedoch keine Bandsicherungen möglich. Für MABS ist keine System Center-Lizenz erforderlich.<br/><br/> Genau wie bei DPM können lokale Computer nur mithilfe einer lokalen MABS-Instanz geschützt werden. Virtuelle Azure-Computer können nur durch MABS in Azure geschützt werden.
 
-Wenn Daten zuerst mit DPM/MABS und anschließend in einem Tresor gesichert werden, hat das folgende Vorteile:
 
-- Die Sicherung mit DPM/MABS ermöglicht neben Datei-/Ordner-/Volumesicherungen und Sicherungen des Computerzustands (Bare-Metal-/Systemstatussicherungen) auch App-fähige Sicherungen, die für gängige Apps wie SQL Server, Exchange und SharePoint optimiert sind.
-- Sie müssen nicht auf jedem Computer, den Sie sichern möchten, den Azure Backup-Agent installieren. Auf den einzelnen Computern wird jeweils der DPM-/MABS-Schutz-Agent ausgeführt, und der Microsoft Azure Recovery Services-Agent von Azure Backup wird nur auf dem DPM-Server/in der MABS-Instanz ausgeführt.
+
+Die Sicherung von Computern und Apps in MABS/DPM-Speicher mit anschließender Sicherung des DPM/MABS-Speichers in einem Tresor hat folgende Vorteile:
+
+- Die Sicherung in MABS/DPM ermöglicht neben Datei-/Ordner-/Volumesicherungen und Sicherungen des Computerzustands (Bare-Metal-/Systemstatussicherungen) auch App-fähige Sicherungen, die für gängige Apps wie SQL Server, Exchange und SharePoint optimiert sind.
+- Bei lokalen Computern müssen Sie den MARS-Agent nicht auf jedem Computer installieren, den Sie sichern möchten. Auf den einzelnen Computern wird jeweils der DPM/MABS-Schutz-Agent ausgeführt, und der MARS-Agent wird nur in der MABS/DPM-Instanz ausgeführt.
 - Sie profitieren von mehr Flexibilität und präziseren Planungsoptionen für die Sicherungsausführung.
 - Sie können Sicherungen für mehrere Computer in einer zentralen Konsole verwalten und die Computer dazu in Schutzgruppen zusammenfassen. Das ist besonders hilfreich, wenn Apps auf mehrere Computer verteilt sind und gemeinsam gesichert werden sollen.
 
-## <a name="what-can-be-backed-up"></a>Was kann gesichert werden?
+Informieren Sie sich ausführlicher über die [Funktionsweise der Sicherung](backup-architecture.md#architecture-back-up-to-dpmmabs) bei Verwendung eines Sicherungsservers sowie über die [Supportanforderungen](backup-support-matrix-mabs-dpm.md) für Sicherungsserver.
 
-**Computer** | **Sicherungsserver** | **Sichern**
+## <a name="what-can-i-back-up"></a>Was kann gesichert werden?
+
+**Computer** | **Sicherungsmethode** | **Sichern**
 --- | --- | ---
-Lokale virtuelle Windows-Computer | Keine Sicherung mit DPM oder MABS | Sicherung von Dateien, Ordnern und Systemstatus
-Virtuelle Azure-Computer (Windows und Linux) | Keine Sicherung mit DPM oder MABS | Sicherung von Dateien, Ordnern und Systemstatus<br/><br/> Sicherungen für Windows-Computer sind App-fähig, Sicherungen für Linux-Computer sind dateifähig.
-Lokale virtuelle Computer/virtuelle Azure-Computer | Durch DPM geschützt | Sicherung von allem, was durch DPM geschützt wird (einschließlich Dateien, Ordner, Freigaben, Volumes und App-spezifische Daten). [Erfahren Sie](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807), was DPM sichern kann.
-Lokale virtuelle Computer/virtuelle Azure-Computer | Durch MABS geschützt | Sicherung von allem, was durch MABS geschützt wird (einschließlich Dateien, Ordner, Freigaben, Volumes und App-spezifische Daten). Was mit MABS gesichert werden kann, erfahren Sie [hier](backup-mabs-protection-matrix.md).
+**Lokale virtuelle Windows-Computer** | Ausführen des MARS-Agents | Sicherung von Dateien, Ordnern und Systemstatus<br/><br/> Linux-Computer werden nicht unterstützt.
+**Lokale Computer** | Sicherung mit DPM/MABS | Sicherung von allem, was durch [DPM](backup-support-matrix-mabs-dpm.md#supported-backups-to-dpm) oder [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) geschützt wird (einschließlich Dateien, Ordner, Freigaben, Volumes und App-spezifische Daten) 
+**Virtuelle Azure-Computer** | Ausführen der Sicherungserweiterung des Azure-VM-Agents | Sicherung des gesamten virtuellen Computers
+**Virtuelle Azure-Computer** | Ausführen des MARS-Agents | Sicherung von Dateien, Ordnern und Systemstatus<br/><br/> Linux-Computer werden nicht unterstützt.
+**Virtuelle Azure-Computer** | Sicherung mit MABS/DPM (ausgeführt in Azure) | Sicherung von allem, was durch [MABS](backup-support-matrix-mabs-dpm.md#supported-backups-to-mabs) oder [DPM](https://docs.microsoft.com/system-center/dpm/dpm-protection-matrix?view=sc-dpm-1807) geschützt wird (einschließlich Dateien, Ordner, Freigaben, Volumes und App-spezifische Daten)
 
 ## <a name="what-backup-agents-do-i-need"></a>Welche Sicherungs-Agents benötige ich?
-**Szenario** | **Agent** | **Details**
---- | --- | ---
-Lokale Computer (kein Sicherungsserver) | Der MARS-Agent (Microsoft Azure Recovery Services) wird auf dem Windows-Computer ausgeführt. | Der MARS-Agent wird im Rahmen der Bereitstellung von Azure Backup heruntergeladen und installiert.<br/><br/> Diese Option wird nur für Windows-Computer unterstützt.
-Virtuelle Azure-Computer (kein Sicherungsserver) | Kein expliziter Agent erforderlich. Die Azure-VM-Erweiterung für die Sicherung wird auf dem virtuellen Azure-Computer ausgeführt. | Die Erweiterung wird installiert, wenn Sie die erste Azure-VM-Sicherung ausführen.<br/><br/> Diese Option wird für Windows und Linux unterstützt.
-Lokale Computer/virtuelle Azure-Computer mit DPM-Schutz | Der MARS-Agent wird auf dem DPM-Server ausgeführt. | Der MARS-Agent muss nicht auf den einzelnen Computern vorhanden sein.<br/><br/> Wenn Sie DPM bereitstellen, wird der DPM-Schutz-Agent auf allen Computern installiert, die Sie schützen möchten. 
-Sicherung von lokalen Computern und virtuellen Azure-Computern mit MABS-Schutz | Der MARS-Agent wird in der MABS-Instanz ausgeführt. | Der MARS-Agent muss nicht auf den einzelnen Computern vorhanden sein.<br/><br/> Wenn Sie MABS bereitstellen, wird der MABS-Schutz-Agent auf allen Computern installiert, die Sie schützen möchten. 
 
+**Szenario** | **Agent** 
+--- | --- 
+**Sichern virtueller Azure-Computer** | Kein Agent erforderlich. Die Azure-VM-Erweiterung für die Sicherung wird auf dem virtuellen Azure-Computer installiert, wenn Sie die erste Azure-VM-Sicherung ausführen.<br/><br/> Diese Option wird für Windows und Linux unterstützt.
+**Sichern lokaler Windows-Computer** | Für dieses Szenario muss der MARS-Agent direkt auf den Computer heruntergeladen und dort installiert und ausgeführt werden. 
+**Sichern virtueller Azure-Computer mit dem MARS-Agent** | Für dieses Szenario muss der MARS-Agent direkt auf den Computer heruntergeladen und dort installiert und ausgeführt werden. Der MARS-Agent kann parallel zur Sicherungserweiterung ausgeführt werden.
+**Sichern lokaler Computer und virtueller Azure-Computer mit DPM/MABS** | Der DPM- oder MABS-Schutz-Agent wird auf den Computern ausgeführt, die Sie schützen möchten. Der MARS-Agent wird auf dem DPM-Server/in der MABS-Instanz für die Sicherung in Azure ausgeführt.
 
 ## <a name="which-backup-agent-should-i-use"></a>Welchen Sicherungs-Agent soll ich verwenden?
 
 **Sicherung** | **Lösung** | **Einschränkung**
 --- | --- | ---
-Ich möchte lokale Windows-Computer sichern. Die Computer sind nicht durch DPM oder MABS geschützt. | Installieren Sie den MARS-Agent auf dem Computer. | Sie können Dateien, Ordner und den Systemstatus in Azure sichern. Die Sicherungen sind nicht App-fähig.
-Ich möchte lokale Linux-Computer sichern. Die Computer sind nicht durch DPM oder MABS geschützt. | Sie müssen DPM oder MABS bereitstellen, um Sicherungen in Azure zu ermöglichen.
-Ich möchte Apps sichern, die auf lokalen Windows-Computern ausgeführt werden. | Für App-fähige Sicherungen müssen Windows-Computer durch DPM oder MABS geschützt werden.
-Ich möchte virtuelle Azure-Computer sichern. | Führen Sie eine Sicherung mit Azure Backup aus. Die Sicherungserweiterung wird auf dem virtuellen Azure-Computer unter Windows oder Linux automatisch konfiguriert. | Die VM-Datenträger werden gesichert.<br/><br/> Bei virtuellen Windows-Computern ist die Sicherung App-konsistent. Für Linux ist die Sicherung dateikonsistent. Wenn Sie eine App-fähige Sicherung benötigen, müssen Sie dies mithilfe benutzerdefinierter Skripts konfigurieren.
-Ich möchte virtuelle Azure-Computer mit hoher Präzision und Flexibilität bei den Sicherungs-und Wiederherstellungseinstellungen sichern. | Schützen Sie virtuelle Azure-Computer mit DPM oder MABS (ausgeführt in Azure), um mehr Flexibilität bei der Sicherungsplanung sowie uneingeschränkte Flexibilität für den Schutz und die Wiederherstellung von Dateien, Ordnern, Volumes, Apps und Systemstatus zu erhalten.
+**Ich möchte einen vollständigen virtuellen Azure-Computer sichern.** | Aktivieren Sie die Sicherung für den virtuellen Azure-Computer. Die Sicherungserweiterung wird auf dem virtuellen Azure-Computer unter Windows oder Linux automatisch konfiguriert. | Der gesamte virtuelle Computer wird gesichert. <br/><br/> Bei virtuellen Windows-Computern ist die Sicherung App-konsistent. Für Linux ist die Sicherung dateikonsistent. Wenn Sie eine App-fähige Sicherung für virtuelle Linux-Computer benötigen, müssen Sie dies mithilfe benutzerdefinierter Skripts konfigurieren.
+**Ich möchte bestimmte Dateien/Ordner auf einem virtuellen Azure-Computer sichern.** | Stellen Sie den MARS-Agent auf dem virtuellen Computer bereit.
+**Ich möchte lokale Windows-Computer direkt sichern.** | Installieren Sie den MARS-Agent auf dem Computer. | Sie können Dateien, Ordner und den Systemstatus in Azure sichern. Die Sicherungen sind nicht App-fähig.
+**Ich möchte lokale Linux-Computer direkt sichern.** | Sie müssen DPM oder MABS bereitstellen, um Sicherungen in Azure zu ermöglichen.
+**Ich möchte lokal ausgeführte Apps sichern.** | Für App-fähige Sicherungen müssen Computer durch DPM oder MABS geschützt werden.
+**Ich benötige präzise und flexible Sicherungs- und Wiederherstellungseinstellungen für virtuelle Azure-Computer.** | Schützen Sie virtuelle Azure-Computer mit MABS/DPM (ausgeführt in Azure), um mehr Flexibilität bei der Sicherungsplanung sowie uneingeschränkte Flexibilität für den Schutz und die Wiederherstellung von Dateien, Ordnern, Volumes, Apps und Systemstatus zu erhalten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/07/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 1911b851e4e219ec4c6d2d4872b75e9c18706feb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893322"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337560"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
 
@@ -62,7 +62,7 @@ Media Services-Ressourcennamen dürfen Folgendes nicht enthalten: „<“, „>�
 
 Weitere Informationen zur Benennung in Azure Resource Manager finden Sie unter: [Namensanforderungen](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource) und [Namenskonvention](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions).
 
-## <a name="media-services-v3-api-design-principles"></a>Entwurfsprinzipien der Media Services v3-API
+## <a name="v3-api-design-principles"></a>Entwurfsprinzipien der v3-API
 
 Eines der wichtigsten Entwurfsprinzipien der v3-API ist es, die API sicherer zu machen. v3-APIs geben bei einem **Get**- oder **List**-Vorgang keine geheimen Schlüssel oder Anmeldeinformationen zurück. Die Schlüssel sind immer NULL, leer oder aus der Antwort bereinigt. Sie müssen eine separate Aktionsmethode zum Abrufen von geheimen Schlüsseln oder Anmeldeinformationen aufrufen. Separate Aktionen ermöglichen es Ihnen, verschiedene RBAC-Sicherheitsberechtigungen festzulegen, falls einige APIs geheime Schlüssel abrufen/anzeigen, während dies bei anderen APIs nicht der Fall ist. Informationen darüber, wie Sie den Zugriff über RBAC verwalten können, finden Sie unter [Verwenden von RBAC zum Verwalten des Zugriffs](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest).
 
@@ -76,25 +76,20 @@ Sehen Sie sich das Beispiel zum [Abrufen der Richtlinie für den Inhaltsschlüss
 
 ## <a name="how-can-i-get-started-with-v3"></a>Wie kann ich erste Schritte mit v3 ausführen?
 
-Als Entwickler können Sie die [REST-API](https://go.microsoft.com/fwlink/p/?linkid=873030) von Media Services oder Clientbibliotheken verwenden, die es Ihnen ermöglichen, mit der REST-API auf einfache Weise zu interagieren, um benutzerdefinierte Medienworkflows zu erstellen, zu verwalten und zu pflegen. Die Media Services v3-API basiert auf der [OpenAPI-Spezifikation](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/mediaservices/resource-manager/Microsoft.Media) (ehemals Swagger).
+Informationen zum Einstieg in die Entwicklung mit der Media Services v3-API und verschiedenen Tools und SDKs finden Sie [hier](developers-guide.md).
 
-[Azure Media Services Explorer](https://github.com/Azure/Azure-Media-Services-Explorer) (AMSE) ist ein Tool für Windows-Kunden, die sich über Media Services informieren möchten. Bei AMSE handelt es sich um eine WinForms-/C#-Anwendung zum Hochladen, Herunterladen, Codieren und Streamen von VoD- und Liveinhalten mit Media Services. Das AMSE-Tool richtet sich an Kunden, die Media Services ohne Programmieraufwand testen möchten. Der AMSE-Code wird als Ressource für Kunden bereitgestellt, die mit Media Services entwickeln möchten.
+## <a name="v3-content-map"></a>v3-Inhaltszuordnung
 
-AMSE ist ein Open-Source-Projekt mit communitybasiertem Support. (Probleme können hier gemeldet werden: https://github.com/Azure/Azure-Media-Services-Explorer/issues) Für dieses Projekt wird der [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/) (Verhaltenskodex für Microsoft Open Source) beachtet. Weitere Informationen finden Sie in den [häufig gestellten Fragen zum Verhaltenskodex](https://opensource.microsoft.com/codeofconduct/faq/). Sie können sich auch an opencode@microsoft.com wenden, wenn Sie weitere Fragen oder Anmerkungen haben.
- 
-Azure Media Services unterstützt folgende Clientbibliotheken: 
+Der Media Services v3-Inhalt ist wie folgt strukturiert (wie auch im Inhaltsverzeichnis zu sehen):
 
-|API-Referenzen|SDKs/Tools|Beispiele|
-|---|---|---|---|
-|[REST-Reference](https://aka.ms/ams-v3-rest-ref)|[REST SDK](https://aka.ms/ams-v3-rest-sdk)|[REST-Beispiele für Postman](https://github.com/Azure-Samples/media-services-v3-rest-postman)<br/>[Auf Azure Resource Manager basierte REST-API](https://github.com/Azure-Samples/media-services-v3-arm-templates)|
-|[Azure CLI-Referenz](https://aka.ms/ams-v3-cli-ref)|[Azure-Befehlszeilenschnittstelle](https://aka.ms/ams-v3-cli)|[Beispiele für die Azure-Befehlszeilenschnittstelle](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/media-services)||
-|[.NET-Referenz](https://aka.ms/ams-v3-dotnet-ref)|[.NET SDK](https://aka.ms/ams-v3-dotnet-sdk)|[.NET-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials)||
-||[.NET Core SDK](https://aka.ms/ams-v3-dotnet-sdk) (Klicken Sie auf die Registerkarte **.NET CLI**.)|[.NET Core-Beispiele](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials)||
-|[Java-Referenz](https://aka.ms/ams-v3-java-ref)|[Java SDK](https://aka.ms/ams-v3-java-sdk)||
-|[Node.js-Referenz](https://aka.ms/ams-v3-nodejs-ref)|[Node.js SDK](https://aka.ms/ams-v3-nodejs-sdk)|[Beispiele für Node.js](https://github.com/Azure-Samples/media-services-v3-node-tutorials)||
-|[Python-Referenz](https://aka.ms/ams-v3-python-ref)|[Python SDK](https://aka.ms/ams-v3-python-sdk)||
-|[Go-Referenz](https://aka.ms/ams-v3-go-ref)|[Go SDK](https://aka.ms/ams-v3-go-sdk)||
-|Ruby|[Ruby SDK](https://aka.ms/ams-v3-ruby-sdk)||
+|Abschnitte| Beschreibung|
+|---|---|
+| Übersicht | Hier werden die Funktionen von Media Services und die Möglichkeiten erläutert, die Ihnen der Dienst bietet.|
+| Schnellstarts | Hier finden Sie grundlegende Anleitungen für Einsteiger, mit denen neue Kunden Media Services schnell ausprobieren können.|
+| Tutorials | Hier finden Sie szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.|
+| Beispiele | Hier finden Sie Links zu Codebeispielen. |
+| Konzepte | Hier finden Sie ausführliche Erläuterungen zu Media Services v3-Funktionen sowie Diagramme. Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.<br/><br/>* Clouduploads und Cloudspeicherung<br/>* Codierung<br/>* Medienanalyse<br/>* Verpackung, Bereitstellung, Schutz<br/>* Livestreaming<br/>* Kontinuierliche Überwachung<br/>* Beteiligte Kunden<br/><br/>und vieles mehr... |
+| Anleitungen | Hier erfahren Sie, wie Sie eine Aufgabe ausführen.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

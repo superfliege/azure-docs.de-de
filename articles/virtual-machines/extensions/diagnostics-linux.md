@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: agaiha
-ms.openlocfilehash: 1aa9c6da2d59294c5791d65a0943bfce497f9be4
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
+ms.openlocfilehash: 434971e707cdca62c76ede9f295e7af20aa4cc3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387045"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313533"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -316,7 +316,7 @@ type | Gibt den tatsächlichen Anbieter der Metrik an.
 class | Gibt zusammen mit „counter“ die jeweilige Metrik im Namespace des Anbieters an
 Zähler | Gibt zusammen mit „class“ die jeweilige Metrik im Namespace des Anbieters an
 counterSpecifier | Gibt die jeweilige Metrik im Azure-Metrikennamespace an
-condition | (optional:) Wählt eine bestimmte Instanz des Objekts, für die die Metrik gilt, oder die Aggregation für alle Instanzen des betreffenden Objekts aus. Weitere Informationen finden Sie in den [`builtin` Metrikdefinitionen](#metrics-supported-by-builtin).
+condition | (optional:) Wählt eine bestimmte Instanz des Objekts, für die die Metrik gilt, oder die Aggregation für alle Instanzen des betreffenden Objekts aus. Weitere Informationen finden Sie in den `builtin` Metrikdefinitionen.
 sampleRate | ISO-8601-Intervall, das die Häufigkeit festlegt, mit der unformatierte Daten für diese Metrik gesammelt werden. Wenn keine Festlegung erfolgt, wird das Erfassungsintervall durch den Wert von [sampleRateInSeconds](#ladcfg) festgelegt. Die kleinste unterstützte Erfassungsrate beträgt 15 Sekunden (PT15S).
 unit | Sollte eine der folgenden Zeichenfolgen sein: „Count“, „Bytes“, „Seconds“, „Percent“, „CountPerSecond“, „BytesPerSecond“, „Millisecond“. Definiert die Einheit für die Metrik. Consumer der gesammelten Daten erwarten, dass die gesammelten Datenwerte diesen Einheiten entsprechen. LAD ignoriert dieses Feld.
 displayName | Die Bezeichnung (in der Sprache, die durch die zugehörige Gebietsschemaeinstellung festgelegt wird), die an diese Daten in Azure-Metriken angefügt wird. LAD ignoriert dieses Feld.

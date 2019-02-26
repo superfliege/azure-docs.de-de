@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: yegu
-ms.openlocfilehash: 5f448c1c66520a5941ad867eaf3c89c22693cc45
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 495fc031150d04f253279606baebb5d64d52bce7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235571"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313431"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Skalieren von Azure Cache for Redis
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -funktionen bieten. Nach dem Erstellen des Caches können Sie Größe und Tarif des Caches skalieren, wenn sich die Anforderungen Ihrer Anwendung ändern. In diesem Artikel wird erläutert, wie Sie Ihren Cache im Azure-Portal mithilfe von Tools wie Azure PowerShell und der Azure-Befehlszeilenschnittstelle skalieren.
@@ -115,7 +115,7 @@ Die folgende Liste enthält Antworten auf häufig gestellte Fragen zur Skalierun
 * [Gehen während der Skalierung Daten aus dem Cache verloren?](#will-i-lose-data-from-my-cache-during-scaling)
 * [Hat die Skalierung Auswirkungen auf meine benutzerdefinierte Einstellung für Datenbanken?](#is-my-custom-databases-setting-affected-during-scaling)
 * [Ist der Cache während der Skalierung verfügbar?](#will-my-cache-be-available-during-scaling)
-* [Warum kann bei konfigurierter geografischer Replikation meinen Cache nicht skalieren oder die Shards in einem Cluster nicht ändern?](#scaling-limitations-with-geo-relication)
+* Warum kann bei konfigurierter geografischer Replikation meinen Cache nicht skalieren oder die Shards in einem Cluster nicht ändern?
 * [Nicht unterstützte Vorgänge](#operations-that-are-not-supported)
 * [Wie lange dauert die Skalierung?](#how-long-does-scaling-take)
 * [Woher weiß ich, dass die Skalierung abgeschlossen ist?](#how-can-i-tell-when-scaling-is-complete)

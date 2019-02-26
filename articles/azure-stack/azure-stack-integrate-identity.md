@@ -10,12 +10,12 @@ ms.date: 01/23/19
 ms.author: patricka
 ms.reviewer: thoroet
 ms.lastreviewed: 01/23/19
-ms.openlocfilehash: a7753280c0b84b21f44e52c303b96f11cd4cd8af
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: a71362f4d6a69f2eaed36dd549437bb5857d555f
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765789"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456995"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack-Datencenterintegration: Identität
 Azure Stack kann mithilfe von Azure Active Directory (Azure AD) oder den Active Directory-Verbunddiensten (AD FS) als Identitätsanbieter bereitgestellt werden. Sie müssen die entsprechende Entscheidung treffen, bevor Sie Azure Stack bereitstellen. Die Bereitstellung mithilfe von AD FS wird auch als „Bereitstellen von Azure Stack im getrennten Modus“ bezeichnet.
@@ -73,7 +73,7 @@ Die folgenden Informationen sind als Eingabe für die Automatisierungsparameter 
 
 Bei Active Directory-Bereitstellungen mit mehreren Standorten sollten Sie den Active Directory-Standort konfigurieren, der Ihrer Azure Stack-Bereitstellung am nächsten gelegen ist. Durch die Konfiguration wird vermieden, dass der Azure Stack-Graph-Dienst Abfragen über einen globalen Katalogserver von einem Remotestandort auflöst.
 
-Fügen Sie das Azure Stack-Subnetz [mit öffentlicher VIP](azure-stack-network.md#public-vip-network) dem Azure AD-Standort hinzu, der Azure Stack am nächsten gelegen ist. Wenn Ihr Active Directory beispielsweise die beiden Standorte Seattle und Redmond aufweist und Azure Stack am Standort Seattle bereitgestellt ist, fügen Sie das Azure Stack-Subnetz mit öffentlicher VIP dem Azure AD-Standort für Seattle hinzu.
+Fügen Sie das Azure Stack-Subnetz [mit öffentlicher VIP](azure-stack-network.md#public-vip-network) dem Active Directory-Standort hinzu, der Azure Stack am nächsten gelegen ist. Wenn Ihr Active Directory beispielsweise die beiden Standorte Seattle und Redmond aufweist und Azure Stack am Standort Seattle bereitgestellt ist, fügen Sie das Azure Stack-Subnetz mit öffentlicher VIP dem Azure Active Directory-Standort für Seattle hinzu.
 
 Weitere Informationen zu Active Directory-Standorten finden Sie unter [Entwerfen der Standorttopologie](https://docs.microsoft.com/windows-server/identity/ad-ds/plan/designing-the-site-topology).
 

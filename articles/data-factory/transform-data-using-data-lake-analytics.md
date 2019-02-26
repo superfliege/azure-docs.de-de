@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/01/2018
 ms.author: abnarain
-ms.openlocfilehash: 1874473b3ad091ce1da0a48367548cd4432737a2
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 9918dd55181eb82257f23f8974159ed5e762fedd
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016493"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268078"
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Transformieren von Daten durch Ausführen von U-SQL-Skripts für Azure Data Lake Analytics 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -36,8 +36,8 @@ Die folgende Tabelle enthält Beschreibungen der allgemeinen Eigenschaften, die 
 
 | Eigenschaft                 | BESCHREIBUNG                              | Erforderlich                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | JA                                      |
-| **accountName**          | Name des Azure Data Lake Analytics-Kontos.  | JA                                      |
+| **type**                 | Legen Sie die type-Eigenschaft auf **AzureDataLakeAnalytics** fest. | Ja                                      |
+| **accountName**          | Name des Azure Data Lake Analytics-Kontos.  | Ja                                      |
 | **dataLakeAnalyticsUri** | URI des Azure Data Lake Analytics-Kontos.           | Nein                                        |
 | **subscriptionId**       | Azure-Abonnement-ID                    | Nein                                        |
 | **resourceGroupName**    | Azure-Ressourcengruppenname                | Nein                                        |
@@ -55,9 +55,9 @@ Verwenden Sie die Dienstprinzipalauthentifizierung, indem Sie die folgenden Eige
 
 | Eigenschaft                | BESCHREIBUNG                              | Erforderlich |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | JA      |
-| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | JA      |
-| **tenant**              | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | JA      |
+| **servicePrincipalId**  | Geben Sie die Client-ID der Anwendung an.     | Ja      |
+| **servicePrincipalKey** | Geben Sie den Schlüssel der Anwendung an.           | Ja      |
+| **tenant**              | Geben Sie die Mandanteninformationen (Domänenname oder Mandanten-ID) für Ihre Anwendung an. Diese können Sie abrufen, indem Sie im Azure-Portal mit der Maus auf den Bereich oben rechts zeigen. | Ja      |
 
 **Beispiel: Dienstprinzipalauthentifizierung**
 ```json
@@ -119,19 +119,19 @@ Die folgende Tabelle beschreibt die Namen und Eigenschaften, die für diese Akti
 
 | Eigenschaft            | BESCHREIBUNG                              | Erforderlich |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | Name der Aktivität in der Pipeline     | JA      |
+| name                | Name der Aktivität in der Pipeline     | Ja      |
 | Beschreibung         | Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.  | Nein        |
-| type                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | JA      |
-| linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |JA       |
-| scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | JA      |
-| scriptLinkedService | Verknüpfter Dienst, der eine Verknüpfung mit der **Azure Data Lake Store**- oder **Azure Storage**-Instanz herstellt, die das Skript für die Data Factory enthält. | JA      |
+| type                | Für die Data Lake Analytics-U-SQL-Aktivität ist der Aktivitätstyp **DataLakeAnalyticsU-SQL**. | Ja      |
+| linkedServiceName   | Mit Azure Data Lake Analytics verknüpfter Dienst. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md).  |Ja       |
+| scriptPath          | Der Pfad zum Ordner, der das U-SQL-Skript enthält. Beim Dateinamen wird Groß-/Kleinschreibung unterschieden. | Ja      |
+| scriptLinkedService | Verknüpfter Dienst, der eine Verknüpfung mit der **Azure Data Lake Store**- oder **Azure Storage**-Instanz herstellt, die das Skript für die Data Factory enthält. | Ja      |
 | degreeOfParallelism | Die maximale Anzahl von Knoten, die zum Ausführen des Auftrags gleichzeitig verwendet werden. | Nein        |
 | priority            | Bestimmt, welche der in der Warteschlange befindlichen Aufträge als erstes ausgeführt werden. Je niedriger die Zahl, desto höher die Priorität. | Nein        |
 | Parameter          | Parameter, die an das U-SQL-Skript übergeben werden sollen.    | Nein        |
 | runtimeVersion      | Die Runtimeversion der zu verwendenden U-SQL-Engine. | Nein        |
 | compilationMode     | <p>Der Kompilierungsmodus von U-SQL. Muss einen der folgenden Werte aufweisen: **Semantic:** Es werden nur Semantiküberprüfungen und erforderliche Integritätsprüfungen durchgeführt. **Full:** Es wird die vollständige Kompilierung ausgeführt, einschließlich Syntaxprüfung, Optimierung, Codegenerierung usw. **SingleBox:** Es wird die vollständige Kompilierung durchgeführt, wobei die TargetType-Einstellung auf „SingleBox“ festgelegt ist. Wenn Sie für diese Eigenschaft keinen Wert angeben, bestimmt der Server den optimalen Kompilierungsmodus. | Nein  |
 
-Die von Data Factory übermittelte Skriptdefinition finden Sie unter [Skriptdefinition „SearchLogProcessing.txt“](#sample-u-sql-script). 
+Die Skriptdefinition finden Sie unter [SearchLogProcessing.txt](#sample-u-sql-script). 
 
 ## <a name="sample-u-sql-script"></a>U-SQL-Beispielskript
 

@@ -5,21 +5,21 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 480d453cc906fa1b1d93e00bd4a6d2b080768a47
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 9f9a6511d63e57c6cbfa5ee2453f8038bb259047
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105835"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428991"
 ---
 # <a name="setup-diagnostic-logging"></a>Einrichten der Diagnoseprotokollierung
 
-Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/diagnostic-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einem Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite), exportieren. 
+Die Überwachung der Leistung Ihrer Server ist ein wesentlicher Bestandteil jeder Analysis Services-Lösung. Mit [Diagnoseprotokollen auf Azure-Ressourcenebene](../azure-monitor/platform/diagnostic-logs-overview.md) können Sie Protokolle überwachen und an [Azure Storage](https://azure.microsoft.com/services/storage/) senden, diese in [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) streamen und in [Azure Monitor-Protokolle](../azure-monitor/azure-monitor-log-hub.md) exportieren.
 
-![Diagnoseprotokollierung für Storage, Event Hubs oder Log Analytics](./media/analysis-services-logging/aas-logging-overview.png)
+![Diagnoseprotokollierung für Storage, Event Hubs oder Azure Monitor-Protokolle](./media/analysis-services-logging/aas-logging-overview.png)
 
 
 ## <a name="whats-logged"></a>Protokollierte Daten
@@ -82,7 +82,7 @@ Mit der Kategorie „Metriken“ werden dieselben [Servermetriken](analysis-serv
 
     * **In einem Speicherkonto archivieren**. Sie benötigen ein vorhandenes Speicherkonto, mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Siehe [Erstellen Sie ein Speicherkonto](../storage/common/storage-create-storage-account.md). Befolgen Sie die Anweisungen zum Erstellen eines allgemeinen Resource Manager-Kontos, und wählen Sie dann Ihr Speicherkonto aus, indem Sie zu dieser Seite im Portal zurückwechseln. Es dauert möglicherweise einige Minuten, bis neu erstellte Speicherkonten im Dropdownmenü angezeigt werden.
     * **An einen Event Hub streamen**. Sie benötigen einen vorhandenen Event Hub-Namespace und einen Event Hub. mit dem eine Verbindung hergestellt werden kann, um diese Option verwenden zu können. Weitere Informationen finden Sie unter [Erstellen eines Event Hubs-Namespace und eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md). Kehren Sie anschließend auf diese Seite im Portal zurück, um den Event Hub-Namespace und den Richtliniennamen auszuwählen.
-    * **An Log Analytics senden**. Zur Verwendung dieser Option benötigen Sie entweder einen vorhandenen Arbeitsbereich, oder erstellen Sie einen neuen Log Analytics-Arbeitsbereich mithilfe der Schritte zum [Erstellen eines neuen Arbeitsbereichs](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace) im Portal. Weitere Informationen zum Anzeigen Ihrer Protokolle in Log Analytics finden Sie unter [Anzeigen von Protokollen in Log Analytics](#view-logs-in-log-analytics) in diesem Artikel.
+    * **An Azure Monitor senden (Log Analytics-Arbeitsbereich)**. Für diese Option können Sie entweder einen vorhandenen Arbeitsbereich verwenden oder im Portal [eine neue Arbeitsbereichsressource erstellen](../azure-monitor/learn/quick-create-workspace.md). Weitere Informationen zum Anzeigen Ihrer Protokolle finden Sie unter [Anzeigen von Protokollen im Log Analytics-Arbeitsbereich](#view-logs-in-log-analytics) in diesem Artikel.
 
     * **Modul:** Wählen Sie diese Option aus, um xEvents zu protokollieren. Wenn die Archivierung in einem Speicherkonto erfolgt, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
     * **Dienst**. Wählen Sie diese Option aus, um Ereignisse auf Dienstebene zu protokollieren. Wenn Sie auf einem Speicherkonto archivieren, können Sie die Beibehaltungsdauer für die Diagnoseprotokolle auswählen. Protokolle werden nach Ablauf des Aufbewahrungszeitraums automatisch gelöscht.
@@ -150,47 +150,43 @@ Die Protokolle stehen in der Regel einige Stunden nach dem Einrichten der Protok
 * Löschen Sie Protokolle, die im Speicherkonto nicht mehr aufbewahrt werden sollen.
 * Legen Sie eine Beibehaltungsdauer fest, sodass ältere Protokolle aus dem Speicherkonto gelöscht werden.
 
-## <a name="view-logs-in-log-analytics"></a>Anzeigen von Protokollen in Log Analytics
+## <a name="view-logs-in-log-analytics-workspace"></a>Anzeigen von Protokollen im Log Analytics-Arbeitsbereich
 
-Metriken und Serverereignisse werden in Log Analytics in xEvents integriert, sodass eine parallele Analyse erfolgt. Log Analytics kann zudem so konfiguriert werden, dass Ereignisse von anderen Azure-Diensten empfangen werden, sodass die Diagnoseprotokollierungsdaten Ihrer Architektur ganzheitlich angezeigt werden.
+Metriken und Serverereignisse werden in Ihren Log Analytics-Arbeitsbereich in xEvents integriert, sodass eine parallele Analyse erfolgt. Der Log Analytics-Arbeitsbereich kann zudem so konfiguriert werden, dass Ereignisse von anderen Azure-Diensten empfangen werden, sodass die Diagnoseprotokollierungsdaten Ihrer Architektur ganzheitlich angezeigt werden.
 
-Zum Anzeigen der Diagnosedaten in Log Analytics öffnen Sie die Seite „Protokollsuche“ im linken Menü oder im Bereich „Verwaltung“, wie in der folgenden Abbildung dargestellt.
+Öffnen Sie zum Anzeigen Ihrer Diagnosedaten im Log Analytics-Arbeitsbereich im linken Menü **Protokolle**.
 
 ![Protokollsuchoptionen im Azure-Portal](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
-Nachdem Sie die Datensammlung aktiviert haben, klicken Sie nun in **Protokollsuche** auf **Alle gesammelten Daten**.
+Erweitern Sie im Abfrage-Generator **LogManagement** > **AzureDiagnostics**. AzureDiagnostics umfasst Modul- und Dienstereignisse. Beachten Sie, dass direkt eine Abfrage erstellt wird. Das Feld EventClass\_s enthält xEvent-Namen, die Ihnen vertraut vorkommen können, wenn Sie xEvents für die lokale Protokollierung verwendet haben. Wenn Sie auf **EventClass\_s** oder einen der Ereignisnamen klicken, wird im Log Analytics-Arbeitsbereich eine Abfrage erstellt. Speichern Sie die Abfragen, um sie zu einem späteren Zeitpunkt wiederverwenden zu können.
 
-Klicken Sie unter **Typ**, auf **AzureDiagnostics** und dann auf **Übernehmen**. AzureDiagnostics umfasst Modul- und Dienstereignisse. Beachten Sie, dass direkt eine Log Analytics-Abfrage erstellt wird. Das Feld EventClass\_s enthält xEvent-Namen, die Ihnen vertraut vorkommen können, wenn Sie xEvents für die lokale Protokollierung verwendet haben.
+### <a name="example-query"></a>Beispielabfrage
+Diese Abfrage berechnet die CPU für jedes Abfrageende-/Aktualisierungsendeergebnis für eine Modelldatenbank und einen Server und gibt sie zurück:
 
-Wenn Sie auf **EventClass\_s** oder einen der Ereignisnamen klicken, wird in Log Analytics eine Abfrage erstellt. Speichern Sie die Abfragen, um sie zu einem späteren Zeitpunkt wiederverwenden zu können.
+```Kusto
+let window =  AzureDiagnostics
+   | where ResourceProvider == "MICROSOFT.ANALYSISSERVICES" and ServerName_s =~"MyServerName" and DatabaseName_s == "Adventure Works Localhost" ;
+window
+| where OperationName has "QueryEnd" or (OperationName has "CommandEnd" and EventSubclass_s == 38)
+| where extract(@"([^,]*)", 1,Duration_s, typeof(long)) > 0
+| extend DurationMs=extract(@"([^,]*)", 1,Duration_s, typeof(long))
+| extend Engine_CPUTime=extract(@"([^,]*)", 1,CPUTime_s, typeof(long))
+| project  StartTime_t,EndTime_t,ServerName_s,OperationName,RootActivityId_g ,TextData_s,DatabaseName_s,ApplicationName_s,Duration_s,EffectiveUsername_s,User_s,EventSubclass_s,DurationMs,Engine_CPUTime
+| join kind=leftouter (
+window
+    | where OperationName == "ProgressReportEnd" or (OperationName == "VertiPaqSEQueryEnd" and EventSubclass_s  != 10) or OperationName == "DiscoverEnd" or (OperationName has "CommandEnd" and EventSubclass_s != 38)
+    | summarize sum_Engine_CPUTime = sum(extract(@"([^,]*)", 1,CPUTime_s, typeof(long))) by RootActivityId_g
+    ) on RootActivityId_g
+| extend totalCPU = sum_Engine_CPUTime + Engine_CPUTime
 
-Testen Sie auch Log Analytics, das eine Website mit erweiterter Abfrage, Dashboards und Warnfunktionen für gesammelte Daten umfasst.
-
-### <a name="queries"></a>Abfragen
-
-Ihnen stehen Hunderte von Abfragen zur Verwendung zur Verfügung. Es folgen einige Abfragen, um Ihnen den Einstieg zu erleichtern.
-Weitere Informationen zur Verwendung der neuen Abfragesprache der Protokollsuche finden Sie unter [Grundlegendes zu Protokollsuchvorgängen in Log Analytics](../log-analytics/log-analytics-log-search-new.md). 
-
-* Fragen Sie an Azure Analysis Services gesendete Rückgabeabfragen ab, die nach mehr als fünf Minuten (300.000 Millisekunden) abgeschlossen wurden.
-
-    ```
-    search * | where ( Type == "AzureDiagnostics" ) | where ( EventClass_s == "QUERY_END" ) | where toint(Duration_s) > 300000
-    ```
-
-* Identifizieren Sie horizontal hochskalierte Replikate.
-
-    ```
-    search * | summarize count() by ServerName_s
-    ```
-    Bei Verwendung der horizontalen Skalierung können Sie schreibgeschützte Replikate identifizieren, da in den Werten des Felds ServerName\_s die Replikatinstanznummer an den Namen angefügt ist. Das Ressourcenfeld enthält den Namen der Azure-Ressource, der mit dem Servernamen übereinstimmt, den Benutzer sehen. Im Feld „IsQueryScaleoutReadonlyInstance_s“ ist für Replikate „true“ angegeben.
+```
 
 
-
-> [!TIP]
-> Möchten Sie eine Log Analytics-Abfrage für andere Benutzer freigeben? Wenn Sie über ein GitHub-Konto verfügen, können Sie sie in diesem Artikel hinzufügen. Klicken Sie einfach rechts oben auf dieser Seite auf **Bearbeiten**.
+Ihnen stehen Hunderte von Abfragen zur Verwendung zur Verfügung. Weitere Informationen zu Abfragen finden Sie unter [Erste Schritte mit Azure Monitor-Protokollabfragen](../azure-monitor/log-query/get-started-queries.md).
 
 
-## <a name="tutorial---turn-on-logging-by-using-powershell"></a>Tutorial: Aktivieren der Protokollierung mit PowerShell
+## <a name="turn-on-logging-by-using-powershell"></a>Aktivieren der Protokollierung mit PowerShell
+
 In diesem kurzen Tutorial erstellen Sie ein Speicherkonto im gleichen Abonnement und der gleichen Ressourcengruppe, in denen sich Ihr Analysis Services-Server befindet. Anschließend verwenden Sie Set-AzureRmDiagnosticSetting, um die Diagnoseprotokollierung zu aktivieren, damit Ausgaben an das neue Speicherkonto gesendet werden.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -253,7 +249,7 @@ Verwenden Sie zum Aktivieren der Protokollierung das Cmdlet „Set-AzureRmDiagno
 Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine
 ```
 
-Die Ausgabe sollte ungefähr wie folgt aussehen:
+Die Ausgabe sollte in etwa wie das folgende Beispiel aussehen:
 
 ```powershell
 StorageAccountId            : 
@@ -292,7 +288,7 @@ Location                    :
 Tags                        :
 ```
 
-So wird bestätigt, dass die Protokollierung für den Server jetzt aktiviert ist und Informationen im Speicherkonto gespeichert werden.
+Diese Ausgabe bestätigt, dass die Protokollierung für den Server jetzt aktiviert ist und Informationen im Speicherkonto gespeichert werden.
 
 Sie können außerdem eine Aufbewahrungsrichtlinie für Ihre Protokolle festlegen, sodass ältere Protokolle automatisch gelöscht werden. Richten Sie beispielsweise eine Aufbewahrungsrichtlinie ein, bei der das Flag **-RetentionEnabled** auf **$true** und der Parameter **-RetentionInDays** auf **90** festgelegt sind. Protokolle, die älter als 90 Tage sind, werden dann automatisch gelöscht.
 

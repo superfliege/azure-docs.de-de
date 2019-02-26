@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: f7536b5d0815351d2e6cb67705060d2e1046c970
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 445ddb3c580218e21410c961c614a8a9e29d21a0
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857871"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328332"
 ---
 # <a name="query-an-azure-cosmos-container"></a>Abfragen eines Azure Cosmos-Containers
 
@@ -31,6 +31,8 @@ IQueryable<DeviceReading> query = client.CreateDocumentQuery<DeviceReading>(
 ## <a name="cross-partition-query"></a>Partitionsübergreifende Abfrage
 
 Die folgende Abfrage verfügt nicht über einen Filter für den Partitionsschlüssel (`DeviceId`) und wird an alle Partitionen verteilt, wo sie für den Partitionsindex ausgeführt wird. Legen Sie zum partitionsübergreifenden Ausführen einer Abfrage `EnableCrossPartitionQuery` auf „true“ (bzw. `x-ms-documentdb-query-enablecrosspartition` in der REST-API) fest.
+
+Die Eigenschaft „EnablecrossPartitionQuery“ akzeptiert einen booleschen Wert. Wenn die Eigenschaft auf „true“ festgelegt ist und die Abfrage über keinen Partitionsschlüssel verfügt, verteilt Azure Cosmos DB die Abfrage auf die Partitionen. Für die Verteilung werden einzelne Abfragen an alle Partitionen gerichtet. Zum Lesen der Abfrageergebnisse müssen die Clientanwendungen die Ergebnisse aus „FeedResponse“ auf die Eigenschaft „ContinuationToken“ überprüfen. Um alle Ergebnisse zu lesen, durchlaufen Sie die Daten so lange, bis „ContinuationToken“ NULL ist. 
 
 ```csharp
 // Query across partition keys into a class called, DeviceReading

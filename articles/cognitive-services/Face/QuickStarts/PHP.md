@@ -8,47 +8,42 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: c75745452ee819dbda75f7420c93a5629cef4e08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 93e3d9fa67cfb941abf97476e03f44a4b16e94e7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860389"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313159"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und PHP
 
-In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
+In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-API mit PHP, um menschliche Gesichter in einem Bild zu erkennen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>„Face – Detect“-Anforderung
+## <a name="initialize-the-html-file"></a>Initialisieren der HTML-Datei
 
-Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
+Erstellen Sie eine neue HTML-Datei namens *detectFaces.html*, und fügen Sie ihr den folgenden Code hinzu:
 
-* Gesichts-ID: Eine eindeutige ID, die in verschiedenen Szenarien mit der Gesichtserkennungs-API verwendet wird
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen
-* Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
+```html
+<html>
+    <head>
+        <title>Face Detect Sample</title>
+    </head>
+    <body></body>
+</html>
+```
 
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
+## <a name="write-the-php-script"></a>Schreiben des PHP-Skripts
 
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Legen Sie optional `imageUrl` auf das Bild fest, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.php`.
-1. Öffnen Sie die Datei in einem Browserfenster mit PHP-Unterstützung.
+Fügen Sie innerhalb des Elements `body` des Dokuments den folgenden Code hinzu. Dadurch wird eine einfache Benutzeroberfläche mit einem URL-Feld, einer Schaltfläche für die Gesichtsanalyse (**Analyze face**), einem Antwortbereich und einem Bereich für die Bildanzeige eingerichtet.
 
 ```php
-<html>
-<head>
-    <title>Face Detect Sample</title>
-</head>
-<body>
 <?php
 // Replace <Subscription Key> with a valid subscription key.
 $ocpApimSubscriptionKey = '<Subscription Key>';
@@ -102,13 +97,13 @@ catch (HttpException $ex)
     echo "<pre>" . $ex . "</pre>";
 }
 ?>
-</body>
-</html>
 ```
 
-## <a name="face---detect-response"></a>„Face – Detect“-Antwort
+Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren, und ggf. müssen Sie die Zeichenfolge `uriBase` ändern, damit sie den korrekte Regionsbezeichner enthält. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Das Feld `returnFaceAttributes` gibt an, welche Gesichtsattribute abgerufen werden sollen. Sie können diese Zeichenfolge je nach beabsichtigter Verwendung ändern.
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+## <a name="run-the-script"></a>Ausführen des Skripts
+
+Öffnen Sie die Datei in einem PHP-fähigen Webbrowser. Daraufhin sollte eine JSON-Zeichenfolge mit Gesichtsdaten zurückgegeben werden, die in etwa wie folgt aussieht:
 
 ```json
 [

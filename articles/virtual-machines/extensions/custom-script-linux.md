@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: roiyz
-ms.openlocfilehash: 87d15f7b351f2b8b6a8c010651d82faa66b28918
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.openlocfilehash: f8b0955afa1705dd8e3c01a943cc5e5d885f9c71
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276464"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456961"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Verwenden von Version 2 der Azure-Erweiterung für benutzerdefinierte Skripts mit virtuellen Linux-Computern
 Version 2 der Erweiterung für benutzerdefinierte Skripts lädt Skripts auf virtuelle Azure-Computer herunter und führt sie dort aus. Diese Erweiterung ist hilfreich bei der Konfiguration nach der Bereitstellung, bei der Softwareinstallation oder bei anderen Konfigurations-/Verwaltungsaufgaben. Sie können Skripts von Azure Storage oder einem anderen zugänglichen Speicherort im Internet herunterladen oder sie für die Erweiterungsruntime bereitstellen. 
 
-Die Erweiterung für benutzerdefinierte Skripts ist mit Azure Resource Manager-Vorlagen integriert. Sie können sie auch mithilfe der von PowerShell, der Azure-Befehlszeilenschnittstelle, dem Azure-Portal oder der Azure Virtual Machines-REST-API ausführen.
+Die Erweiterung für benutzerdefinierte Skripts ist mit Azure Resource Manager-Vorlagen integriert. Sie können sie auch mithilfe der PowerShell, der Azure-Befehlszeilenschnittstelle oder der Azure Virtual Machines-REST-API ausführen.
 
 In diesem Artikel wird erläutert, wie Sie die Erweiterung für benutzerdefinierte Skripts über die Azure-Befehlszeilenschnittstelle verwenden und die Erweiterung mithilfe einer Azure Resource Manager-Vorlage ausführen. Außerdem enthält dieser Artikel Schritte zur Problembehandlung für Linux-Systeme.
 

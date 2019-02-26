@@ -1,114 +1,131 @@
 ---
 title: Was ist Azure Active Directory B2C? | Microsoft-Dokumentation
-description: In diesem Artikel erfahren Sie, wie Sie die Anwendungsanmeldung mithilfe von Azure Active Directory B2C erstellen und verwalten.
+description: Hier erfahren Sie, wie Sie in Ihrer Anwendung mithilfe von Azure Active Directory B2C Identitätsumgebungen für die Registrierung, Anmeldung und Profilverwaltung erstellen und verwalten.
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 02/20/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a7ae48d65a5cceb11339c4f304a3149741c2a7e8
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 9e01ba8ae53dbcca686a9844600a5df416a685ae
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172764"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455499"
 ---
 # <a name="what-is-azure-active-directory-b2c"></a>Was ist Azure Active Directory B2C?
 
-Azure Active Directory (Azure AD) B2C ist ein Identitätsverwaltungsdienst, mit dem Sie die Interaktion von Kunden mit Ihrer Anwendung anpassen und steuern können. Diese Interaktion umfasst unter anderem das An- und Abmelden sowie das Verwalten des eigenen Profils, wenn Kunden Ihre Anwendungen verwenden. Zu Auswahl stehen unter anderem Anwendungen für iOS, Android und .NET. Azure AD B2C ermöglicht diese Aktionen und schützt gleichzeitig die Identitäten Ihrer Kunden.
+Azure Active Directory (Azure AD) B2C ist ein Identitätsverwaltungsdienst. Dieser Dienst ermöglicht die Anpassung und Steuerung der sicheren Benutzerinteraktion mit Ihren Webanwendungen, Desktopanwendungen, mobilen Anwendungen oder Single-Page-Webanwendungen. Mit Azure AD B2C können Benutzer Registrierungs- und Anmeldevorgänge ausführen, Kennwörter zurücksetzen und Profile bearbeiten. Azure AD B2C implementiert eine Form von OpenID Connect- und OAuth 2.0-Protokollen. Der zentrale Aspekt bei der Implementierung dieser Protokolle sind die Sicherheitstoken und deren Ansprüche, die einen sicheren Zugriff auf Ressourcen ermöglichen.
 
-Sie können eine in Azure AD B2C registrierte Anwendung so konfigurieren, dass sie verschiedene Identitätsverwaltungsaufgaben übernimmt. Hier einige Beispiele:
+Eine *User Journey* ist eine Anforderung, die eine Richtlinie angibt, um zu steuern, wie der Benutzer und Ihre Anwendung mit Azure AD B2C interagieren. User Journeys können in Azure AD B2C auf zwei Arten definiert werden: 
 
-- Einem Kunden ermöglichen, sich zur Verwendung Ihrer registrierten Anwendung zu registrieren
-- Einem registrierten Kunden ermöglichen, sich anzumelden und die Anwendung zu verwenden
-- Einem registrierten Kunden ermöglichen, sein Profil zu bearbeiten
-- Aktivieren der mehrstufigen Authentifizierung in der Anwendung
-- Dem Kunden ermöglichen, sich bei bestimmten Identitätsanbietern zu registrieren und anzumelden
-- Gewähren von Zugriff in Ihrer Anwendung auf von Ihnen erstellte APIs
-- Anpassen des Erscheinungsbilds für die Registrierung und Anmeldung
-- Verwalten von SSO-Sitzungen für Ihre Anwendung
+Als Anwendungsentwickler können Sie unabhängig von Ihren Identitätskenntnissen allgemeine Identitätsbenutzerabläufe über das Azure-Portal definieren. Wenn Sie Identitätsexperte, Systemintegrator, Berater oder Mitglied eines internen Identitätsteams sind, sich mit OpenID Connect-Abläufen auskennen und mit Identitätsanbietern sowie mit der anspruchsbasierten Authentifizierung vertraut sind, können Sie XML-basierte benutzerdefinierte Richtlinien verwenden.
 
-## <a name="what-do-i-need-to-think-about-before-using-azure-ad-b2c"></a>Was muss ich vor der Verwendung von Azure AD B2C berücksichtigen?
+Bevor Sie eine User Journey definieren, müssen Sie einen Azure AD B2C-Mandanten erstellen und Ihre Anwendung und Ihre API in dem Mandanten registrieren. Anschließend können Sie damit beginnen, eine User Journey mit Benutzerabläufen oder benutzerdefinierten Richtlinien zu definieren. Darüber hinaus können Sie optional Identitätsanbieter hinzufügen/ändern oder den Ablauf der User Journey anpassen.
 
-- Wie soll der Kunde mit der Anwendung interagieren können?
-- Welche Benutzeroberfläche möchte ich Kunden bereitstellen?
-- Welche Identitätsanbieter sollen Kunden in der Anwendung auswählen können?
-- Müssen beim Anmeldevorgang zusätzliche APIs ausgeführt werden?
+## <a name="protocols-and-tokens"></a>Protokolle und Token
 
-### <a name="customer-interaction"></a>Kundeninteraktion
+Azure AD B2C unterstützt für User Journeys das [OpenID Connect- und das OAuth 2.0-Protokolle](active-directory-b2c-reference-protocols.md). In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt. 
 
-Azure AD B2C unterstützt [OpenID Connect](https://openid.net/connect/) für alle Kunden. In der Azure AD B2C-Implementierung von OpenID Connect startet Ihre Anwendung die User Journey, indem sie Authentifizierungsanforderungen an Azure AD B2C ausgibt. Das Ergebnis der Anforderung ist ein `id_token`. Dieses Sicherheitstoken definiert die Identität des Kunden.
+Das Ergebnis einer an Azure AD B2C gerichteten Anforderung ist ein Sicherheitstoken (beispielsweise ein [ID-Token oder Zugriffstoken](active-directory-b2c-reference-tokens.md)). Dieses Sicherheitstoken definiert die Identität des Benutzers. Token werden von Azure AD B2C-Endpunkten (beispielsweise `/token` oder `/authorize`) empfangen. Über diese Token können Sie auf Ansprüche zugreifen, die wiederum verwendet werden können, um eine Identität zu überprüfen den Zugriff auf sichere Ressourcen zuzulassen.
 
-Jede Anwendung, die Azure AD B2C verwendet, muss über das Azure-Portal in einem Azure AD B2C-Mandanten registriert werden. Beim Registrierungsprozess werden Werte erfasst und der Anwendung zugewiesen. Zu diesen Werten gehört auch eine Anwendungs-ID, die die Anwendung eindeutig identifiziert. Es wird ein Umleitungs-URI definiert, der dazu dient, Antworten wieder an die Anwendung zurückzuleiten.
+## <a name="tenants-and-applications"></a>Mandanten und Anwendungen
+
+Ein *Mandant* in Azure AD B2C stellt Ihre Organisation dar und ist ein Verzeichnis von Benutzern. Jeder Azure AD B2C-Mandant unterscheidet sich von anderen Azure AD B2C-Mandanten und ist von diesen getrennt. Möglicherweise verfügen Sie bereits über einen Azure Active Directory-Mandanten. Der Azure AD B2C-Mandant ist jedoch ein anderer Mandant. Ein Mandant enthält Informationen zu den Benutzern, die sich zur Verwendung Ihrer Anwendung registriert haben. Dazu gehören beispielsweise Kennwörter, Profildaten und Berechtigungen. Weitere Informationen finden Sie unter [Tutorial: Erstellen eines Azure Active Directory B2C-Mandanten](tutorial-create-tenant.md) ausführen.
+
+Damit Sie Ihre Anwendung für die Verwendung von Azure AD B2C konfigurieren können, müssen Sie sie zunächst über das Azure-Portal in dem Mandanten registrieren. Beim Registrierungsprozess werden Werte erfasst und der Anwendung zugewiesen. Dazu gehören eine Anwendungs-ID, um die Anwendung eindeutig zu identifizieren, und ein Umleitungs-URI, um Antworten direkt an die Anwendung zurückzuleiten.
 
 Die Interaktion der einzelnen Anwendungen folgt einem ähnlichen allgemeinen Muster:
 
-1. Der Kunde wird in der Anweisung angewiesen, eine Richtlinie auszuführen.
-2. Der Kunde schließt die Richtlinie gemäß Richtliniendefinition ab.
-3. Die Anwendung empfängt ein Sicherheitstoken.
-4. Die Anwendung verwendet das Sicherheitstoken für den Zugriff auf eine geschützte Ressource.
-5. Der Ressourcenserver überprüft das Sicherheitstoken, um sicherzustellen, dass der Zugriff gewährt werden kann.
-6. Die Anwendung aktualisiert das Sicherheitstoken in regelmäßigen Abständen.
+1. Der Benutzer wird in der Anwendung angewiesen, eine Richtlinie auszuführen.
+2. Der Benutzer schließt die Richtlinie gemäß Richtliniendefinition ab.
+3. Die Anwendung empfängt ein Token.
+4. Die Anwendung versucht, unter Verwendung des Tokens auf eine Ressource zuzugreifen.
+5. Der Ressourcenserver überprüft das Token, um sich zu vergewissern, dass der Zugriff gewährt werden kann.
+6. Die Anwendung aktualisiert das Token von Zeit zu Zeit.
 
-Diese Schritte unterscheiden sich je nach erstelltem Anwendungstyp geringfügig.
+Führen Sie zum Registrieren einer Webanwendung die Schritte unter [Tutorial: Registrieren einer Anwendung zum Aktivieren der Registrierung und Anmeldung mit Azure AD B2C](tutorial-register-applications.md) aus. Darüber hinaus können Sie [Ihrem Azure Active Directory B2C-Mandanten eine Web-API-Anwendung hinzufügen](add-web-application.md) oder [Ihrem Active Directory B2C-Mandanten eine native Clientanwendung hinzufügen](add-native-application.md).
 
-Azure AD B2C interagiert der Reihe nach mit Identitätsanbietern, Kunden, anderen Systemen und dem lokalen Verzeichnis, um eine Identitätsaufgabe abzuschließen. Beispiel: Anmelden eines Kunden, Registrieren eines neuen Kunden oder Zurücksetzen eines Kennworts. Die zugrunde liegende Plattform, die die Vertrauensstellung zwischen mehreren Seiten herstellt und diese Schritte ausführt, wird als Identity Experience Framework bezeichnet. Mit diesem Framework und einer Richtlinie (auch als „User Journey“ oder „Vertrauensframework-Richtlinie“ bezeichnet) werden explizit die Akteure, Aktionen, Protokolle und die Abfolge der durchzuführenden Schritte definiert.
+## <a name="user-journeys"></a>User Journeys
 
-Azure AD B2C schützt Ihre Anwendungen vor Denial-of-Service- und Kennwortangriffen. Azure AD B2C verwendet Erkennungs- und Abwehrmaßnahmen wie SYN-Cookies und Raten- und Verbindungsbeschränkungen, um Ressourcen vor Denial-of-Service-Angriffen zu schützen. Diese decken zudem u.a. Brute-Force-Kennwortangriffe und Wörterbuchangriffe ab.
+Die Richtlinie in einer User Journey kann als [Benutzerablauf](active-directory-b2c-reference-policies.md) oder als [benutzerdefinierte Richtlinie](active-directory-b2c-overview-custom.md) definiert werden. Für die gängigsten Identitätsaufgaben (wie Registrierung, Anmeldung und Profilbearbeitung) stehen im Azure-Portal vordefinierte Benutzerabläufe zur Verfügung.
 
-#### <a name="user-flows"></a>Benutzerabläufe
+Mit User Journeys können Sie zur Steuerung des Verhaltens folgende Einstellungen konfigurieren:
 
-Jede an Azure AD B2C gesendete Anforderung gibt einen Benutzerflow an. Dabei handelt es sich um eine Richtlinie, die das Verhalten Ihrer Anwendung bei der Interaktion mit Azure AD B2C steuert. Für die am häufigsten verwendeten Identitätsaufgaben (z.B. Registrierung, Anmeldung und Profilbearbeitung) sind vordefinierte Benutzerflows im Azure AD B2C-Portal verfügbar.  Ein Registrierungsbenutzerflow ermöglicht beispielsweise das Steuern des Verhaltens durch Konfigurieren der folgenden Einstellungen:
-
-- Konten für soziale Netzwerke, mit denen sich der Kunde bei der Anwendung registrieren kann
-- Vom Kunden erfasste Daten, z.B. Vorname oder Postleitzahl
+- Konten für soziale Netzwerke, mit denen sich der Benutzer für die Anwendung registrieren kann
+- Vom Benutzer erfasste Daten wie Vorname oder Postleitzahl
 - Multi-Factor Authentication
-- Erscheinungsbild aller Registrierungsseiten
+- Erscheinungsbild von Seiten
 - Informationen, die an die Anwendung zurückgegeben werden
 
-#### <a name="custom-policies"></a>Benutzerdefinierte Richtlinien 
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten des [Identity Experience Framework](trustframeworkpolicy.md) in Ihrem Azure AD B2C-Mandanten definieren. Das Identity Experience Framework ist die zugrunde liegende Plattform, die die Vertrauensstellung zwischen mehreren Seiten herstellt und die Schritte in einer User Journey abwickelt. 
 
-[Benutzerdefinierte Richtlinien](active-directory-b2c-overview-custom.md) sind Konfigurationsdateien, die das Verhalten des [Identity Experience Framework](trustframeworkpolicy.md) in Ihrem Azure AD B2C-Mandanten definieren. Benutzerdefinierte Richtlinien können zur Durchführung zahlreicher Aufgaben geändert werden. Bei benutzerdefinierten Richtlinien handelt es sich um einzelne oder mehrere Dateien im XML-Format, die in einer hierarchischen Kette aufeinander verweisen. 
+Benutzerdefinierte Richtlinien können zur Durchführung zahlreicher Aufgaben geändert werden. Bei benutzerdefinierten Richtlinien handelt es sich um einzelne oder mehrere Dateien im XML-Format, die in einer hierarchischen Kette aufeinander verweisen. Für benutzerdefinierte Richtlinien steht ein [Starter Pack](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/archive/master.zip) zur Verfügung, um gängige Identitätsaufgaben zu ermöglichen. 
 
-Benutzerdefinierte Richtlinien verschiedener Typen werden in Ihrem Azure AD B2C-Mandanten nach Bedarf verwendet und können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Kundenidentität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Richtlinien werden durch Hinzufügen eines speziellen Abfrageparameters in HTTP-Authentifizierungsanforderungen verwendet.
+Benutzerdefinierte Richtlinien oder Benutzerabläufe verschiedener Art werden in Ihrem Azure AD B2C-Mandanten nach Bedarf verwendet und können anwendungsübergreifend wiederverwendet werden. Durch diese Flexibilität können Sie Benutzeroberflächen im Zusammenhang mit der Benutzeridentität mit minimalen oder ganz ohne Änderungen am Code definieren und ändern. Richtlinien werden durch Hinzufügen eines speziellen Abfrageparameters in HTTP-Authentifizierungsanforderungen verwendet. Informationen zum Erstellen Ihrer eigenen benutzerdefinierten Richtlinie finden Sie unter [Erste Schritte für benutzerdefinierte Richtlinien in Azure Active Directory B2C](active-directory-b2c-get-started-custom.md).
 
-Benutzerdefinierte Richtlinien werden wie folgt zur Steuerung von User Journeys verwendet:
+## <a name="identity-providers"></a>Identitätsanbieter 
 
-- Definieren der Interaktion mit APIs zum Erfassen zusätzlicher Informationen, Überprüfen vom Kunden bereitgestellter Ansprüche oder Auslösen externer Prozesse.
-- Ändern des Verhaltens basierend auf von APIs stammenden Ansprüchen oder von Ansprüchen im Verzeichnis wie z.B. *migrationStatus*.
-- Alle Workflows, die nicht durch integrierte Richtlinien abgedeckt sind, beispielsweise Erfassen zusätzlicher Informationen von einem Kunden bei der Anmeldung und Durchführen einer Autorisierungsprüfung für den Zugriff auf eine Ressource.
+Sie können Benutzern in Ihren Anwendungen die Anmeldung mit verschiedenen Identitätsanbietern ermöglichen. Ein *Identitätsanbieter* erstellt und verwaltet die Identitätsinformationen und stellt gleichzeitig Authentifizierungsdienste für Anwendungen bereit. Von Azure AD B2C unterstützte Identitätsanbieter können über das Azure-Portal hinzugefügt werden. 
 
-### <a name="identity-providers"></a>Identitätsanbieter
+In der Regel wird in einer Anwendung nur ein einzelner Identitätsanbieter verwendet. Sie haben aber die Möglichkeit, weitere hinzuzufügen. Um einen Identitätsanbieter in Ihrem Azure AD B2C-Mandanten zu konfigurieren, müssen Sie zunächst auf der Entwicklerwebsite des Identitätsanbieters eine Anwendung erstellen und dann den Anwendungs- oder Clientbezeichner und das Kennwort oder Clientgeheimnis der Identitätsanbieteranwendung erfassen, die Sie erstellen. Mit diesem Bezeichner und Kennwort wird die Anwendung dann konfiguriert. 
 
-Ein Identitätsanbieter ist ein Dienst, der Kundenidentitäten authentifiziert und Sicherheitstokens ausgibt. In Azure AD B2C konfigurieren Sie verschiedene Identitätsanbieter in Ihrem Mandanten – etwa ein [Microsoft-Konto](active-directory-b2c-setup-msa-app.md), [Facebook](active-directory-b2c-setup-fb-app.md) oder [Amazon](active-directory-b2c-setup-amzn-app.md). 
+In den folgenden Artikeln erfahren Sie, wie Sie einige der gängigen Identitätsanbieter zu Benutzerabläufen hinzufügen:
 
-Zum Konfigurieren eines Identitätsanbieters in Ihrem Azure AD B2C-Mandanten müssen Sie den Anwendungsbezeichner oder die Client-ID und das Kennwort oder Clientgeheimnis der erstellten Identitätsanbieteranwendung aufzeichnen. Mit diesem Bezeichner und Kennwort wird die Anwendung dann konfiguriert.
+- [Amazon](active-directory-b2c-setup-amzn-app.md)
+- [Facebook](active-directory-b2c-setup-fb-app.md)
+- [Microsoft-Konto](active-directory-b2c-setup-msa-app.md)
 
-### <a name="user-interface-experience"></a>Benutzeroberfläche
+In den folgenden Artikeln erfahren Sie, wie Sie einige der gängigen Identitätsanbieter zu benutzerdefinierten Richtlinien hinzufügen:
+- [Amazon](setup-amazon-custom.md)
+- [Google](active-directory-b2c-custom-setup-goog-idp.md)
+- [Microsoft-Konto](active-directory-b2c-custom-setup-msa-idp.md)
 
-Die meisten der HTML- und CSS-Inhalte, die für Kunden angezeigt werden, sind steuerbar. Mit dem Feature zum Anpassen der Benutzeroberfläche können Sie das Erscheinungsbild von Richtlinien anpassen. Darüber hinaus dient dieses Anpassungsfeature zur Steuerung der Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C.
+Weitere Informationen finden Sie unter [Tutorial: Hinzufügen von Identitätsanbietern zu Ihren Anwendungen in Azure Active Directory B2C](tutorial-add-identity-providers.md).
 
-Azure AD B2C führt den Code im Browser des Kunden aus und verwendet einen modernen Ansatz namens Cross-Origin Resource Sharing (CORS, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in einer Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die UI-Elemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Kunden an.
 
-Sie senden Parameter in einer Abfragezeichenfolge an Azure AD B2C. Durch Übergeben des Parameters an Ihren HTML-Endpunkt wird der Seiteninhalt dynamisch geändert. So ändern Sie beispielsweise das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters, den Sie aus Ihrer Web- oder Mobilanwendung übergeben.
+## <a name="page-customization"></a>Seitenanpassung
 
-## <a name="how-do-i-get-started-with-azure-ad-b2c"></a>Wie beginne ich mit der Nutzung von Azure AD B2C?
+Die meisten der HTML- und CSS-Inhalte, die Kunden im Rahmen einer User Journey angezeigt werden, sind steuerbar. Mithilfe der Seitenanpassung können Sie das Erscheinungsbild von benutzerdefinierten Richtlinien oder Benutzerabläufen anpassen. Darüber hinaus dient dieses Anpassungsfeature zur Steuerung der Konsistenz von Marken und visuellen Elementen zwischen Ihrer Anwendung und Azure AD B2C. 
 
-In Azure AD B2C stellt ein Mandant Ihre Organisation dar und ist ein Verzeichnis von Benutzern. Jeder Azure AD B2C-Mandant unterscheidet sich von anderen Azure AD B2C-Mandanten und ist von diesen getrennt. Ein Mandant enthält Informationen über die Kunden, die sich zur Verwendung Ihrer Anwendung registriert haben. Dazu gehören beispielsweise Kennwörter, Profildaten und Berechtigungen.
+Azure AD B2C führt den Code im Browser des Benutzers aus und verwendet einen modernen Ansatz namens CORS (Cross-Origin Resource Sharing, Ressourcenfreigabe zwischen verschiedenen Ursprüngen). Zuerst legen Sie eine URL in einer Richtlinie mit benutzerdefiniertem HTML-Inhalt fest. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an.
 
-Verknüpfen Sie Ihren Azure AD B2C-Mandanten mit Ihrem Azure-Abonnement, um sämtliche Funktionen zu aktivieren, und bezahlen Sie die Nutzungsgebühren. Führen Sie eine Registrierung bei einem Azure AD B2C-Mandanten durch, um Ihren Kunden die Anmeldung bei Ihrer Anwendung zu ermöglichen.
+Sie senden Parameter in einer Abfragezeichenfolge an Azure AD B2C. Durch Übergeben des Parameters an Ihren HTML-Endpunkt wird der Seiteninhalt dynamisch geändert. So können Sie beispielsweise das Hintergrundbild auf der Registrierungs- oder Anmeldeseite auf der Grundlage eines Parameters ändern, den Sie über Ihre Web- oder Mobilanwendung übergeben.
 
-Damit Sie Ihre Anwendung zur Verwendung von Azure AD B2C konfigurieren können, müssen Sie zunächst einen Azure AD B2C-Mandanten erstellen und die Anwendung registrieren. Führen Sie zum Registrieren der Anwendung die Schritte unter [Tutorial: Registrieren einer Anwendung zum Aktivieren der Registrierung und Anmeldung mit Azure AD B2C](tutorial-register-applications.md) aus.
-  
+Informationen zum Anpassen von Seiten in einem Benutzerablauf finden Sie unter [Tutorial: Anpassen der Benutzeroberfläche in Azure Active Directory B2C](tutorial-customize-ui.md). Informationen zum Anpassen von Seiten in einer benutzerdefinierten Richtlinie finden Sie unter [Anpassen der Benutzeroberfläche einer Anwendung mithilfe einer benutzerdefinierten Richtlinie in Azure Active Directory B2C](active-directory-b2c-ui-customization-custom.md) sowie unter [Azure Active Directory B2C: Konfigurieren der Benutzeroberfläche mit dynamischen Inhalten mithilfe von benutzerdefinierten Richtlinien](active-directory-b2c-ui-customization-custom-dynamic.md).
+
+## <a name="developer-resources"></a>Entwicklerressourcen
+
+### <a name="client-applications"></a>Clientanwendungen
+
+Zur Auswahl stehen unter anderem Anwendungen für [iOS](active-directory-b2c-devquickstarts-ios.md), [Android](active-directory-b2c-devquickstarts-android.md) und .NET. Azure AD B2C ermöglicht diese Aktionen und schützt gleichzeitig die Identitäten Ihrer Benutzer.
+
 Wenn Sie ASP.NET-Webanwendungen entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung von Web-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-web-app.md) ein.
 
 Wenn Sie Desktopanwendungen entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung von Desktop-Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app.md) ein.
 
-Wenn Sie Single-Page-Webanwendung mit Node.js entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md) ein.
+Wenn Sie Single-Page-Webanwendungen mit Node.js entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Aktivieren der Authentifizierung einseitiger Apps mit Konten unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-spa.md) ein.
+
+### <a name="apis"></a>APIs
+Wenn Ihre Client- oder Webanwendungen APIs aufrufen müssen, können Sie den sicheren Zugriff auf diese Ressourcen in Azure AD B2C einrichten.
+
+Wenn Sie ASP.NET-Webanwendungen entwickeln, richten Sie Ihre Anwendung zum Aufrufen einer geschützten API anhand der Schritte unter [Tutorial: Gewähren des Zugriffs auf eine ASP.NET-Web-API unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-web-api.md) ein.
+
+Wenn Sie Desktopanwendungen entwickeln, richten Sie Ihre Anwendung zum Aufrufen einer geschützten API anhand der Schritte unter [Tutorial: Gewähren des Zugriffs auf eine Node.js-Web-API über eine Desktop-App unter Verwendung von Azure Active Directory B2C](active-directory-b2c-tutorials-desktop-app-webapi.md) ein.
+
+Wenn Sie Single-Page-Webanwendung mit Node.js entwickeln, richten Sie Ihre Anwendung zum Authentifizieren von Konten anhand der Schritte unter [Tutorial: Gewähren des Zugriffs auf eine ASP.NET Core-Web-API über eine Single-Page-Webanwendung mithilfe von Azure Active Directory B2C](active-directory-b2c-tutorials-spa-webapi.md) ein.
+
+### <a name="javascript"></a>JavaScript
+
+Sie können Ihren Anwendungen in Azure AD B2C Ihren eigenen clientseitigen JavaScript-Code hinzufügen. Wenn Sie JavaScript in Ihrer Anwendung einrichten möchten, definieren Sie einen [Seitenvertrag](page-contract.md), und aktivieren Sie [JavaScript](javascript-samples.md) in Ihren Benutzerabläufen oder benutzerdefinierten Richtlinien.
+
+### <a name="user-accounts"></a>Benutzerkonten
+
+Viele allgemeine Aufgaben zur Mandantenverwaltung müssen programmgesteuert ausgeführt werden. Ein gutes Beispiel ist die Benutzerverwaltung. Unter Umständen müssen Sie einen vorhandenen Benutzerspeicher zu einem Azure AD B2C-Mandanten migrieren. Sie möchten die Benutzerregistrierung vielleicht auf Ihrer eigenen Seite hosten und Benutzerkonten im Azure AD B2C-Verzeichnis im Hintergrund erstellen. Diese Arten von Aufgaben erfordern die Fähigkeit zum Erstellen, Lesen, Aktualisieren und Löschen von Benutzerkonten. Hierfür können Sie die [Azure AD Graph-API](active-directory-b2c-devquickstarts-graph-dotnet.md) verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

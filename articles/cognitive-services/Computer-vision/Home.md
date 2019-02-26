@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 08/22/2018
+ms.date: 02/20/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 4322b118268ee88235190f5672585d17ea365495
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 84287191af60a5e9306f03ca2ebd10f9e347c9ac
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872642"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453051"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -45,13 +45,13 @@ Sie können Bilder analysieren, um visuelle Merkmale und Eigenschaften zu erkenn
 
 ## <a name="extract-text-from-images"></a>Extrahieren von Text aus Bildern
 
-Mit maschinellem Sehen können Sie [Text unter Verwendung von optischer Zeichenerkennung aus einem Bild in eine computerlesbare Zeichenfolge extrahieren](concept-extracting-text-ocr.md). Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts (in Grad) um die horizontale Bildachse und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und erkennt automatisch die Sprache des extrahierten Texts.
+Mit maschinellem Sehen können Sie [Text unter Verwendung von optischer Zeichenerkennung (Optical Character Recognition, OCR) aus einem Bild in eine computerlesbare Zeichenfolge extrahieren](concept-extracting-text-ocr.md). Bei Bedarf korrigiert die optische Zeichenerkennung die Drehung des erkannten Texts und liefert die Frame-Koordinaten der einzelnen Wörter. Die optische Zeichenerkennung unterstützt 25 Sprachen und ermittelt automatisch die Sprache des erkannten Texts.
 
-Sie können auch [gedruckten und handschriftlichen Text in einem Bild erkennen](concept-recognizing-text.md). Maschinelles Sehen kann sowohl gedruckten als auch handschriftlichen Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen. Hierzu zählen beispielsweise Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die Erkennung gedruckter und handschriftlicher Texte befindet sich derzeit in der Vorschauphase und wird nur für Englisch unterstützt.  
+Sie können auch [gedruckten und handschriftlichen Text in einem Bild erkennen](concept-recognizing-text.md). Maschinelles Sehen kann sowohl gedruckten als auch handschriftlichen Text in Bildern von verschiedensten Objekten mit unterschiedlichen Oberflächen und Hintergründen erkennen. Hierzu zählen beispielsweise Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die Erkennung gedruckter und handschriftlicher Texte befindet sich derzeit in der Vorschauphase und wird nur für Englisch unterstützt. 
 
 ## <a name="moderate-content-in-images"></a>Moderieren von Bildinhalten
 
-Maschinelles Sehen kann [anzügliche und nicht jugendfreie Inhalte in einem Bild erkennen](concept-detecting-adult-content.md). Dabei wird bewertet, mit welcher Wahrscheinlichkeit das Bild anzügliche oder nicht jugendfreie Inhalte enthält, und eine Zuverlässigkeitsbewertung für beides generiert. Der Filter für die Erkennung anzüglicher und nicht jugendfreier Inhalte kann mithilfe eines Schiebereglers nach Bedarf angepasst werden.
+Maschinelles Sehen ermöglicht die [Erkennung anzüglicher und nicht jugendfreier Inhalte](concept-detecting-adult-content.md) in einem Bild sowie die Rückgabe einer Zuverlässigkeitsbewertung für beides. Der Filter für die Erkennung anzüglicher und nicht jugendfreier Inhalte kann mithilfe eines Schiebereglers nach Bedarf angepasst werden.
 
 ## <a name="use-containers"></a>Verwenden von Containern
 

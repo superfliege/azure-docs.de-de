@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 11/09/2018
+ms.date: 02/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 9b30e9da523e564f531ec8e9cebe5b16653e579f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bbb5cf9a043f8f4ab4202b6113d1c1b915f3b8a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858874"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312768"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der Gesichtserkennungs-REST-API und Node.js
 
@@ -26,12 +26,21 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="create-the-nodejs-script"></a>Erstellen des Node.js-Skripts
+## <a name="set-up-the-node-environment"></a>Einrichten der Node.js-Umgebung
 
-Der folgende Code ruft die Gesichtserkennungs-API auf und ruft Gesichtsattributdaten aus einem Bild ab. Kopieren Sie den Code zunächst in einen Text-Editor. Sie müssen einige Änderungen vornehmen, bevor Sie den Code ausführen können.
+Navigieren Sie zu dem Ordner, in dem Sie Ihr Projekt erstellen möchten, und erstellen Sie eine neue Datei namens *facedetection.js*. Installieren Sie dann das Modul `requests` für dieses Projekt. Dadurch können Ihre Skripts HTTP-Anforderungen ausführen.
 
-```nodejs
+```shell
+npm install request --save
+```
+
+## <a name="write-the-nodejs-script"></a>Schreiben des Node.js-Skripts
+
+Fügen Sie den folgenden Code in *facedetection.js* ein. Mit diesen Feldern wird angegeben, wie eine Verbindung mit dem Gesichtserkennungsdienst hergestellt wird und wo die Eingabedaten abgerufen werden. Sie müssen das Feld `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren, und ggf. müssen Sie die Zeichenfolge `uriBase` ändern, damit sie den korrekte Regionsbezeichner enthält. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) Ändern Sie bei Bedarf das Feld `imageUrl`, um auf Ihr eigenes Eingabebild zu verweisen.
+
+```javascript
 'use strict';
 
 const request = require('request');
@@ -46,7 +55,12 @@ const uriBase = 'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/det
 
 const imageUrl =
     'https://upload.wikimedia.org/wikipedia/commons/3/37/Dagestani_man_and_woman.jpg';
+```
 
+Fügen Sie anschließend den folgenden Code hinzu, um die Gesichtserkennungs-API aufzurufen und Gesichtsattributdaten aus dem Eingabebild abzurufen. Das Feld `returnFaceAttributes` gibt an, welche Gesichtsattribute abgerufen werden sollen. Sie können diese Zeichenfolge je nach beabsichtigter Verwendung ändern.
+
+
+```javascript
 // Request parameters.
 const params = {
     'returnFaceId': 'true',
@@ -76,26 +90,12 @@ request.post(options, (error, response, body) => {
 });
 ```
 
-### <a name="subscription-key"></a>Abonnementschlüssel
-Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel für die Gesichtserkennungs-API.
-
-### <a name="face-endpoint-url"></a>Endpunkt-URL der Gesichtserkennungs-API
-
-Die URL `https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect` gibt den Endpunkt der Azure-Gesichtserkennungs-API an, der abgefragt werden soll. Sie müssen den ersten Teil dieser URL unter Umständen entsprechend der Region Ihres Abonnementschlüssels ändern. (Eine Liste aller Regionsendpunkte finden Sie in den [Dokumenten zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).)
-
-### <a name="url-query-string"></a>URL-Abfragezeichenfolge
-
-Das Feld `returnFaceAttributes` gibt an, welche Gesichtsattribute abgerufen werden sollen. Sie können diese Zeichenfolge je nach beabsichtigter Verwendung ändern.
-
-### <a name="image-source-url"></a>URL der Bildquelle
-Das Feld `imageUrl` gibt das Bild an, das als Eingabe verwendet werden soll. Sie können den Wert ändern, um auf ein beliebiges Bild zu verweisen, das Sie analysieren möchten.
-
 ## <a name="save-and-run-the-script"></a>Speichern und Ausführen des Skripts
 
-Nachdem Sie die Änderungen vorgenommen haben, speichern Sie die Datei als JavaScript-Skript (. js). Öffnen Sie anschließend eine Eingabeaufforderung, und führen Sie das Skript mit dem Befehl `node` aus.
+Nachdem Sie die gewünschten Änderungen vorgenommen haben, öffnen Sie eine Eingabeaufforderung, und führen Sie die Datei mit dem Befehl `node` aus.
 
 ```
-node myfile.js
+node facedetection.js
 ```
 
 Die Gesichtserkennungsinformationen sollten daraufhin als JSON-Daten im Konsolenfenster angezeigt werden. Beispiel: 
@@ -281,7 +281,7 @@ Die Gesichtserkennungsinformationen sollten daraufhin als JSON-Daten im Konsolen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Schnellstart haben Sie einen cURL-Befehl geschrieben, der die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und ihre Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
+In dieser Schnellstartanleitung haben Sie ein Node.js-Skript geschrieben, das die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
 > [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

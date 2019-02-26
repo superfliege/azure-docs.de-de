@@ -8,40 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 05/30/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: b7dbbc328f61b47cb89af2974ad3c428d868d465
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 52faef37dbd9a3ce324db9665f04d6ac9b223d9c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857123"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312394"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-ruby"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Ruby
 
-In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
+In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-API mit Ruby, um menschliche Gesichter in einem Bild zu erkennen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>„Face – Detect“-Anforderung
+## <a name="write-the-script"></a>Schreiben des Skripts
 
-Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
-
-* Gesichts-ID: Eine eindeutige ID, die in verschiedenen Szenarien mit der Gesichtserkennungs-API verwendet wird
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen
-* Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uri` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Legen Sie optional `imageUri` auf das Bild fest, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.rb`.
-1. Öffnen Sie die Ruby-Eingabeaufforderung, und führen Sie die Datei aus, z.B. `ruby myfile.rb`.
+Erstellen Sie eine neue Datei namens _faceDetection.rb_, und fügen Sie ihr den folgenden Code hinzu. Dadurch wird die Gesichtserkennungs-API für eine bestimmte Bild-URL aufgerufen.
 
 ```ruby
 require 'net/http'
@@ -75,9 +62,19 @@ end
 puts response.body
 ```
 
-## <a name="face---detect-response"></a>„Face – Detect“-Antwort
+Sie müssen den Wert `request['Ocp-Apim-Subscription-Key']` mit dem Wert Ihres Abonnementschlüssels aktualisieren und ggf. die Zeichenfolge `uri` ändern, damit sie den korrekten Regionsbezeichner enthält. (Eine Liste mit allen Regionsendpunkten finden Sie in der [Dokumentation zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) 
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Ändern Sie bei Bedarf auch das Feld `imageUri`, um auf Ihr eigenes Eingabebild zu verweisen. Ändern Sie bei Bedarf auch das Feld `returnFaceAttributes`, um die abzurufenden Gesichtsattribute anzugeben.
+
+## <a name="run-the-script"></a>Ausführen des Skripts
+
+Führen Sie das Ruby-Skript mit dem folgenden Befehl aus:
+
+```shell
+ruby faceDetection.rb
+```
+
+Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdaten ausgegeben werden. Eine erfolgreiche JSON-Antwort sieht in etwa wie folgt aus:
 
 ```json
 [
@@ -260,7 +257,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Gesichtserkennungs-APIs, die verwendet werden, um in einem Bild menschliche Gesichter zu erkennen, die Gesichter mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
+In dieser Schnellstartanleitung haben Sie ein Ruby-Skript geschrieben, das die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Gesichtserkennungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

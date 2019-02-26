@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.openlocfilehash: f5c8880535d5b4b89ec3f13caa20051ae1709925
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 86e4720f001f05534bc9af703f0f98d7ca5d95e4
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812785"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268837"
 ---
 # <a name="virtual-network-traffic-routing"></a>Routing von Datenverkehr für virtuelle Netzwerke
 
@@ -121,7 +121,7 @@ Ein Gateway des lokalen Netzwerks kann Routen mit einem Gateway des virtuellen A
 
 Wenn Sie Routen mit Azure per BGP austauschen, wird der Routentabelle aller Subnetze in einem virtuellen Netzwerk für jedes angekündigte Präfix eine separate Route hinzugefügt. Die Route wird mit *Gateway für virtuelle Netzwerke* als Quelle und Typ des nächsten Hops hinzugefügt. 
 
-Die BGP-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter BGP-Verteilung keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. Ausführliche Informationen finden Sie unter [How to disable BGP route propagation](manage-route-table.md#create-a-route-table) (Deaktivieren der BGP-Routenverteilung).
+Die ER- und VPN Gateway-Routenverteilung kann für ein Subnetz mithilfe einer Eigenschaft für eine Routentabelle deaktiviert werden. Wenn Sie Routen unter Verwendung von BGP mit Azure austauschen, werden der Routingtabelle von Subnetzen mit deaktivierter BGP-Verteilung keine Routen hinzugefügt. Die Konnektivität mit VPN-Verbindungen wird über [benutzerdefinierte Routen](#custom-routes) mit *Gateway für virtuelle Netzwerke* als Typ des nächsten Hops erreicht. Ausführliche Informationen finden Sie unter [How to disable BGP route propagation](manage-route-table.md#create-a-route-table) (Deaktivieren der BGP-Routenverteilung).
 
 ## <a name="how-azure-selects-a-route"></a>Auswahl einer Route durch Azure
 

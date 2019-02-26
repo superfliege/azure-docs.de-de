@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 02/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6cdc7ef8ee991719153f6daed01fbb76f945a7a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e233de6f0909477e5033d2a0104f9165e86a9077
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194936"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311034"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>Tutorial: Azure Active Directory-Integration mit Workplace by Facebook
 
@@ -143,31 +143,38 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Workplac
 
 1. Melden Sie sich in einem anderen Webbrowserfenster bei der Workplace by Facebook-Unternehmenswebsite als Administrator an.
   
-   > [!NOTE]
-   > Im Rahmen des SAML-Authentifizierungsprozesses werden von Workplace ggf. Abfragezeichenfolgen mit einer Größe von bis zu 2,5 KB genutzt, um Parameter an Azure AD zu übergeben.
+    > [!NOTE]
+    > Im Rahmen des SAML-Authentifizierungsprozesses werden von Workplace ggf. Abfragezeichenfolgen mit einer Größe von bis zu 2,5 KB genutzt, um Parameter an Azure AD zu übergeben.
 
-2. Wechseln Sie im **Admin Panel (Adminbereich)** zu der Registerkarte **Security (Sicherheit)** und dann zu **Authentication (Authentifizierung)**.
+2. Wechseln Sie im **Admin Panel** (Administratorbereich) zur Registerkarte **Security** (Sicherheit).
 
-3. Wählen Sie unter **SAML Authentication** (SAML-Authentifizierung) in der Dropdownliste die Option **SSO Only** (Nur SSO).
+    ![Administratorbereich](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure01.png)
 
-4. Geben Sie die Werte, die Sie im Azure-Portal aus dem Abschnitt **Workplace by Facebook-Konfiguration** kopiert haben, in die entsprechenden Felder ein:
+3. Wählen Sie unter **Authentication** (Authentifizierung) die Registerkarte **Single-Sign On (SSO)** (Einmaliges Anmelden (SSO)) aus, und führen Sie die folgenden Schritte aus:
 
-    * Fügen Sie in das Textfeld **SAML-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-    * Fügen Sie in das Textfeld **SAML-Aussteller-URL** den Wert der **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
-    * Fügen Sie in **SAML-Abmeldeumleitung** (optional) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
-    * Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
+    ![Registerkarte „Authentication“ (Authentifizierung)](./media/workplacebyfacebook-tutorial/tutorial-workplace-by-facebook-configure02.png)
 
-5. Unter Umständen müssen Sie die Audience-URL, Empfänger-URL und Assertionsverbraucherdienst-URL (ACS) eingeben, die im Abschnitt **SAML-Basiskonfiguration** aufgeführt sind.
+    a. Fügen Sie in das Textfeld **SAML-URL** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-6. Scrollen Sie im Abschnitt nach unten, und klicken Sie auf die Schaltfläche **Test SSO** (SSO testen). Ein Popupfenster mit der Azure AD-Anmeldeseite wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein, wie Sie es von der Authentifizierung kennen.
+    b. Fügen Sie in das Textfeld **SAML Issuer URI** (SAML-Aussteller-URI) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    c. Fügen Sie in **SAML-Abmeldeumleitung** (optional) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    d. Öffnen Sie im Editor das **Base64-codierte Zertifikat**, das Sie aus dem Azure-Portal heruntergeladen haben, kopieren Sie den Inhalt des Zertifikats in die Zwischenablage, und fügen Sie ihn anschließend in das Textfeld **SAML-Zertifikat** ein.
+
+    e. Kopieren Sie die **Audience URL** (Zielgruppen-URL) für Ihre Instanz, und fügen Sie sie im Azure-Portal im Abschnitt  **Grundlegende SAML-Konfiguration** in das Textfeld  **Bezeichner (Entitäts-ID)** ein.
+
+    f. Kopieren Sie die **Recipient URL** (Empfänger-URL) für Ihre Instanz, und fügen Sie sie im Azure-Portal im Abschnitt  **Grundlegende SAML-Konfiguration** in das Textfeld  **Anmelde-URL** ein.
+
+    g. Scrollen Sie im Abschnitt nach unten, und klicken Sie auf die Schaltfläche **Test SSO** (SSO testen). Ein Popupfenster mit der Azure AD-Anmeldeseite wird angezeigt. Geben Sie Ihre Anmeldeinformationen ein, wie Sie es von der Authentifizierung kennen.
 
     **Problembehandlung:** Stellen Sie sicher, das die E-Mail-Adresse, die von Azure AD zurückgegeben wird, mit dem Workplace-Konto übereinstimmt, mit dem Sie angemeldet sind.
 
-7. Nachdem der Test erfolgreich abgeschlossen wurde, können Sie an das Ende der Seite scrollen und auf die Schaltfläche **Speichern** klicken.
+    h. Nachdem der Test erfolgreich abgeschlossen wurde, können Sie an das Ende der Seite scrollen und auf die Schaltfläche **Speichern** klicken.
 
-8. Allen Benutzern von Workplace wird jetzt die Azure AD-Anmeldeseite für die Authentifizierung angezeigt.
+    i. Allen Benutzern von Workplace wird jetzt die Azure AD-Anmeldeseite für die Authentifizierung angezeigt.
 
-9. **SAML Logout Redirect (optional)** - (SAML-Abmeldeumleitung (optional))
+4. **SAML Logout Redirect (optional)** - (SAML-Abmeldeumleitung (optional))
 
     Optional können Sie angeben, dass Sie eine SAML-Abmelde-URL konfigurieren möchten, mit der auf die Azure AD-Abmeldeseite verwiesen werden kann. Wenn diese Einstellung aktiviert und konfiguriert wird, werden Benutzer nicht mehr auf die Workplace-Abmeldeseite verwiesen. Stattdessen werden Benutzer an die URL umgeleitet, die unter der Einstellung für die SAML-Abmeldeumleitung hinzugefügt wurde.
 

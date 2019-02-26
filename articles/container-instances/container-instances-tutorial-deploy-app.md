@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/21/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 54fcbe9adc8fbf4a8fba6eabbd7c2f8802fd933a
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 210254a4404a5280e326bf40057331a784ff6148
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53191092"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326738"
 ---
 # <a name="tutorial-deploy-a-container-application-to-azure-container-instances"></a>Tutorial: Bereitstellen einer Containeranwendung in Azure Container Instances
 
@@ -36,26 +36,20 @@ In diesem Abschnitt verwenden Sie die Azure CLI zum Bereitstellen des Images, da
 
 ### <a name="get-registry-credentials"></a>Abrufen von Registrierungsanmeldeinformationen
 
-Beim Bereitstellen eines Images, das in einer privaten Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie die Anmeldeinformationen der Registrierung angeben.
+Wenn Sie ein Image bereitstellen, das in einer privaten Containerregistrierung gehostet wird (wie im [zweiten Tutorial](container-instances-tutorial-prepare-acr.md)), müssen Sie Anmeldeinformationen für den Zugriff auf die Registrierung angeben. Wie in [Authentifizieren per Azure Container Registry über Azure Container Instances](../container-registry/container-registry-auth-aci.md) gezeigt, empfiehlt es sich in vielen Szenarien, einen Azure Active Directory-Dienstprinzipal mit *Pull*-Berechtigungen für Ihre Registrierung zu erstellen und zu konfigurieren. Dieser Artikel enthält Beispielskripts für die Erstellung eines Dienstprinzipals mit den erforderlichen Berechtigungen. Notieren Sie sich die Dienstprinzipal-ID und das dazugehörige Kennwort. Diese Anmeldeinformationen werden beim Bereitstellen des Containers benötigt.
 
-Rufen Sie zuerst den vollständigen Namen des Anmeldeservers für die Containerregistrierung ab (ersetzen Sie `<acrName>` durch den Namen Ihrer Registrierung):
+Darüber hinaus benötigen Sie den vollständigen Namen des Anmeldeservers für die Containerregistrierung (ersetzen Sie `<acrName>` durch den Namen Ihrer Registrierung):
 
 ```azurecli
 az acr show --name <acrName> --query loginServer
 ```
 
-Rufen Sie als Nächstes das Kennwort der Containerregistrierung ab:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
 ### <a name="deploy-container"></a>Bereitstellen des Containers
 
-Verwenden Sie nun den Befehl [az container create][az-container-create], um den Container bereitzustellen. Ersetzen Sie `<acrLoginServer>` und `<acrPassword>` durch die Werte, die Sie mit den beiden vorhergehenden Befehlen abgerufen haben. Ersetzen Sie `<acrName>` durch den Namen Ihrer Containerregistrierung und `<aciDnsLabel>` durch den gewünschten DNS-Namen.
+Verwenden Sie nun den Befehl [az container create][az-container-create], um den Container bereitzustellen. Ersetzen Sie `<acrLoginServer>` durch den Wert, den Sie mit dem obigen Befehl abgerufen haben. Ersetzen Sie `<service-principal-ID>` und `<service-principal-password>` durch die Dienstprinzipal-ID und das Kennwort, die Sie für den Zugriff auf die Registrierung erstellt haben. Ersetzen Sie `<aciDnsLabel>` durch einen gewünschten DNS-Namen.
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --dns-name-label <aciDnsLabel> --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <service-principal-ID> --registry-password <service-principal-password> --dns-name-label <aciDnsLabel> --ports 80
 ```
 
 Innerhalb weniger Sekunden sollten Sie eine erste Antwort von Azure erhalten. Der Wert `--dns-name-label` muss innerhalb der Azure-Region, in der Sie die Containerinstanz erstellen, eindeutig sein. Ändern Sie den Wert im vorherigen Befehl, wenn Sie beim Ausführen des Befehls eine Fehlermeldung bezüglich der **DNS-Namensbezeichnung** erhalten.

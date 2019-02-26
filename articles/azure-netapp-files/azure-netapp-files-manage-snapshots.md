@@ -1,6 +1,6 @@
 ---
 title: Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure NetApp Files bei Bedarf eine Momentaufnahme für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
+description: Hier erfahren Sie, wie Sie mithilfe von Azure NetApp Files Momentaufnahmen für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -12,28 +12,39 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: e3ae11adf84e858429cba4643802300f7915a166
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: 3c69cb076b3b23cd5149e05f1b6ee9ae1ba170a6
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412932"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430198"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
+
 Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
 
 ## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
-Momentaufnahmen können nur bei Bedarf erstellt werden.  Richtlinien für Momentaufnahmen werden derzeit nicht unterstützt.  
-1.  Klicken Sie im Blatt „Volume verwalten“ auf **Momentaufnahmen** und anschließend auf **+ Momentaufnahme hinzufügen**, um eine bedarfsgesteuerte Momentaufnahme für ein Volume zu erstellen.
 
-2.  Geben Sie im Fenster „Neue Momentaufnahme“ der neu erstellten Momentaufnahme einen Namen an.   
+Momentaufnahmen können nur bei Bedarf erstellt werden. Richtlinien für Momentaufnahmen werden derzeit nicht unterstützt.
 
-3. Klicken Sie auf **OK**. 
+1.  Klicken Sie auf dem Blatt „Volumes“ auf **Momentaufnahmen**.
 
+    ![Zu Momentaufnahmen navigieren](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+
+2.  Klicken Sie auf **+ Momentaufnahme hinzufügen**, um feine Momentaufnahme bei Bedarf für ein Volume zu erstellen.
+
+    ![Momentaufnahme hinzufügen](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
+
+3.  Geben Sie im Fenster „Neue Momentaufnahme“ der neu erstellten Momentaufnahme einen Namen an.   
+
+    ![Neue Momentaufnahme](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
+
+4. Klicken Sie auf **OK**. 
 
 ## <a name="restore-a-snapshot-to-a-new-volume"></a>Wiederherstellen einer Momentaufnahme auf einem neuen Volume
+
 Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstellen. 
 1. Wechseln Sie vom Blatt „Volume“ zum Blatt **Momentaufnahmen verwalten**, um die Liste der Momentaufnahmen anzuzeigen. 
 2. Wählen Sie die Momentaufnahme aus, die wiederhergestellt werden soll.  
@@ -61,7 +72,7 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
 
     *   **Virtuelles Netzwerk**  
         Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
-        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Auf den Azure NetApp Files-Dienst kann nur vom gleichen VNET aus oder per VNET-Peering von einem VNET aus zugegriffen werden, das sich in der gleichen Region befindet wie das Volume. Sie können auch über ExpressRoute von Ihrem lokalen Netzwerk aus auf das Volume zugreifen. 
+        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Sie können nur aus demselben VNET aus auf Azure NetApp Files zugreifen oder per VNET-Peering von einem VNET aus, das sich in der gleichen Region befindet wie das Volume. Sie können über Express Route von Ihrem lokalen Netzwerk aus auf das Volume zugreifen. 
 
     * **Subnetz**  
         Geben Sie das Subnetz an, das Sie für das Volume verwenden möchten.  
@@ -73,3 +84,6 @@ Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstel
 5. Klicken Sie auf **OK**.   
     Das neue Volume, auf dem die Momentaufnahme wiederhergestellt wurde, wird auf dem Blatt „Volumes“ angezeigt.
 
+## <a name="next-steps"></a>Nächste Schritte
+
+[Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: dineshm
-ms.openlocfilehash: e448ef0de9ef5560c1b4ea0df5c02e8efd8c0ea9
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: b5d7be25ba18e256352d8793689bcb63a013e20b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891656"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452600"
 ---
 # <a name="tutorial-access-data-lake-storage-gen2-data-with-azure-databricks-using-spark"></a>Tutorial: Zugreifen auf Daten vom Typ „Data Lake Storage Gen2“ mit Azure Databricks unter Verwendung von Spark
 
@@ -38,6 +38,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 * Installieren Sie AzCopy v10. Weitere Informationen finden Sie unter [Übertragen von Daten mit AzCopy v10 (Vorschau)](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
+*  Erstellen eines Dienstprinzipals Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
+
+   Bei den Schritten in diesem Artikel müssen einige bestimmte Aktionen ausgeführt werden.
+
+   :heavy_check_mark: Achten Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels darauf, dem Dienstprinzipal die Rolle **Mitwirkender an Storage-Blobdaten** zuzuweisen.
+
+   > [!IMPORTANT]
+   > Achten Sie darauf, die Rolle im Kontext des Data Lake Storage Gen2-Kontos zuzuweisen. Sie können eine Rolle der übergeordneten Ressourcengruppe oder dem übergeordneten Abonnement zuweisen. In diesem Fall tritt jedoch ein Berechtigungsfehler auf, bis die Rollenzuweisungen an das Speicherkonto weitergegeben wurden.
+
+   :heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, Anwendungs-ID und Authentifizierungsschlüssel in eine Textdatei ein. Sie benötigen sie in Kürze.
+
 ### <a name="download-the-flight-data"></a>Herunterladen der Flugdaten
 
 In diesem Tutorial werden Flugdaten des Bureau of Transportation Statistics verwendet, um die Durchführung eines ETL-Vorgangs zu veranschaulichen. Sie müssen diese Daten zum Durchführen des Tutorials herunterladen.
@@ -49,24 +60,6 @@ In diesem Tutorial werden Flugdaten des Bureau of Transportation Statistics verw
 3. Wählen Sie die Downloadschaltfläche aus, und speichern Sie die Ergebnisse auf Ihrem Computer **.** 
 
 4. Entzippen Sie den Inhalt der ZIP-Datei, und notieren Sie sich den Namen und den Pfad der Datei. Diese Informationen werden in einem späteren Schritt benötigt.
-
-## <a name="get-your-storage-account-name"></a>Abrufen des Namens Ihres Speicherkontos
-
-Sie benötigen den Namen Ihres Speicherkontos. Wählen Sie zum Abrufen dieser Information im [Azure-Portal](https://portal.azure.com/) die Option **Alle Dienste** aus, und filtern Sie nach dem Begriff *Speicher*. Wählen Sie anschließend **Speicherkonten** aus, und suchen Sie Ihr Speicherkonto.
-
-Fügen Sie den Namen in eine Textdatei ein. Sie benötigen ihn in Kürze.
-
-<a id="service-principal"/>
-
-## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
-
-Erstellen Sie gemäß den Anleitungen im folgenden Thema einen Dienstprinzipal: [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-Im Zusammenhang mit den Schritten in diesem Artikel müssen einige Aktionen ausgeführt werden.
-
-:heavy_check_mark: Stellen Sie beim Ausführen der Schritte im Abschnitt [Zuweisen der Anwendung zu einer Rolle](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) des Artikels sicher, dass Ihre Anwendung der Rolle **Blob Storage Contributor** (Blob Storage-Mitwirkender) zugewiesen ist.
-
-:heavy_check_mark: Fügen Sie beim Ausführen der Schritte im Abschnitt [Abrufen von Werten für die Anmeldung](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) des Artikels die Werte für Mandanten-ID, Anwendungs-ID und Authentifizierungsschlüssel in eine Textdatei ein. Sie benötigen sie in Kürze.
 
 ## <a name="create-an-azure-databricks-service"></a>Erstellen eines Azure Databricks-Diensts
 
@@ -145,9 +138,16 @@ In diesem Abschnitt erstellen Sie ein Dateisystem und einen Ordner in Ihrem Spei
     mount_point = "/mnt/flightdata",
     extra_configs = configs)
     ```
-18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `storage-account-name`, `application-id`, `authentication-id` und `tenant-id` durch die Werte, die Sie beim Ausführen der Schritte in den Abschnitten „Bereithalten der Speicherkontokonfiguration“ und [Erstellen eines Dienstprinzipals](#service-principal) dieses Artikels notiert haben. Ersetzen Sie den Platzhalter `file-system-name` durch einen beliebigen Namen für Ihr Dateisystem.
 
-19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen. 
+18. Ersetzen Sie in diesem Codeblock die Platzhalterwerte `application-id`, `authentication-id`, `tenant-id` und `storage-account-name` durch die Werte, die Sie bei der Vorbereitung dieses Tutorials gesammelt haben. Ersetzen Sie den Platzhalterwert `file-system-name` durch den gewünschten Namen für das Dateisystem.
+
+   * `application-id` und `authentication-id` stammen aus der App, die Sie im Rahmen der Dienstprinzipalerstellung bei Active Directory registriert haben.
+
+   * `tenant-id` stammt aus Ihrem Abonnement.
+
+   * `storage-account-name` ist der Name Ihres Azure Data Lake Storage Gen2-Speicherkontos.
+
+19. Drücken Sie **UMSCHALT+EINGABE**, um den Code in diesem Block auszuführen.
 
     Lassen Sie dieses Notebook geöffnet, da Sie ihm später Befehle hinzufügen.
 

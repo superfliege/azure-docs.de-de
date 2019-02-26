@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8f35bda8c6925bdc10097ac6d180f5998bd5cf1d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989785"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343960"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -64,9 +64,9 @@ Das Angebot für eine verwaltete Anwendung entspricht einer Produktklasse, die e
 
 Das Formular **Angebotseinstellungen** enthält folgende Felder:
 
-* **Angebots-ID**: Dieser eindeutige Bezeichner gibt das Angebot innerhalb eines Herausgeberprofils an. Diese ID ist in den Produkt-URLs, den Ressourcen-Manager-Vorlagen und in den Abrechnungsberichten sichtbar. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Gedankenstrich enden. Sie ist auf maximal 50 Zeichen beschränkt. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
-* **Herausgeber-ID**: In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
-* **Name**: Dieser Anzeigename für Ihr Angebot wird im Marketplace und im Portal angezeigt. Er darf aus höchstens 50 Zeichen bestehen. Verwenden Sie einen Markennamen mit hohem Wiedererkennungswert für Ihr Produkt. Verwenden Sie an dieser Stelle nicht den Namen Ihres Unternehmens, es sei denn, das Produkt wird unter diesem Namen beworben. Wenn Sie dieses Angebot auf Ihrer eigenen Website bewerben, vergewissern Sie sich, dass der Name exakt mit dem auf Ihrer Website übereinstimmt.
+* **Angebots-ID:** Dieser eindeutige Bezeichner gibt das Angebot innerhalb eines Herausgeberprofils an. Diese ID ist in den Produkt-URLs, den Ressourcen-Manager-Vorlagen und in den Abrechnungsberichten sichtbar. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Gedankenstrich enden. Sie ist auf maximal 50 Zeichen beschränkt. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
+* **Herausgeber-ID:** In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
+* **Name:** Dieser Anzeigename für Ihr Angebot wird im Marketplace und im Portal angezeigt. Er darf aus höchstens 50 Zeichen bestehen. Verwenden Sie einen Markennamen mit hohem Wiedererkennungswert für Ihr Produkt. Verwenden Sie an dieser Stelle nicht den Namen Ihres Unternehmens, es sei denn, das Produkt wird unter diesem Namen beworben. Wenn Sie dieses Angebot auf Ihrer eigenen Website bewerben, vergewissern Sie sich, dass der Name exakt mit dem auf Ihrer Website übereinstimmt.
 
 Klicken Sie abschließend auf **Speichern**, um Ihre Eingaben zu speichern.
 
@@ -90,22 +90,22 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
    Füllen Sie folgende Felder aus:
 
-   * **Titel**: Geben Sie einen Titel für diese SKU ein. Dieser Titel wird im Katalog für dieses Element angezeigt.
-   * **Zusammenfassung**: Geben Sie eine kurze Zusammenfassung für diese SKU ein. Dieser Text wird unterhalb des Titels angezeigt.
-   * **Beschreibung**: Geben Sie eine ausführliche Beschreibung der SKU ein.
-   * **SKU-Typ**: Die zulässigen Werte sind *Verwaltete Anwendung* und *Lösungsvorlagen*. Wählen Sie für diesen Fall *verwaltete Anwendung* aus.
-   * **Verfügbarkeit in Land/Region**: Wählen Sie die Länder und Regionen aus, in denen die verwaltete Anwendung verfügbar ist.
-   * **Preise**: Geben Sie einen Preis für die Verwaltung der Anwendung an. Wählen Sie vor der Preisfestlegung die verfügbaren Länder und Regionen aus.
+   * **Titel:** Geben Sie einen Titel für diese SKU ein. Dieser Titel wird im Katalog für dieses Element angezeigt.
+   * **Zusammenfassung:** Geben Sie eine kurze Zusammenfassung für diese SKU ein. Dieser Text wird unterhalb des Titels angezeigt.
+   * **Beschreibung:** Geben Sie eine ausführliche Beschreibung der SKU ein.
+   * **SKU-Typ:** Zulässige Werte sind *Verwaltete Anwendung* und *Lösungsvorlagen*. Wählen Sie für diesen Fall *verwaltete Anwendung* aus.
+   * **Verfügbarkeit in Land/Region:** Wählen Sie die Länder und Regionen aus, in denen die verwaltete Anwendung verfügbar ist.
+   * **Preise:** Geben Sie einen Preis für die Verwaltung der Anwendung an. Wählen Sie vor der Preisfestlegung die verfügbaren Länder und Regionen aus.
 
 1. Fügen Sie ein neues Paket hinzu. Füllen Sie im folgenden Formular den Abschnitt **Paketdetails** aus:
 
    Füllen Sie folgende Felder aus:
 
-   * **Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
-   * **Paketdatei (.zip)**: Dieses Paket enthält zwei erforderliche Dateien, die in einer ZIP-Datei komprimiert werden. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
-   * **PrincipalId**: Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
-   * **Rollendefinition**: Bei dieser Eigenschaft handelt es sich um eine Liste von allen integrierten rollenbasierten Zugriffssteuerungsrollen (RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
-   * **Richtlinieneinstellungen**: Wenden Sie eine [Azure-Richtlinie](../azure-policy/azure-policy-introduction.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../azure-policy/json-samples.md).
+   * **Version:** Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
+   * **Paketdatei (.zip):** Dieses Paket enthält zwei erforderliche Dateien, komprimiert in einer ZIP-Datei. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
+   * **PrincipalId:** Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
+   * **Rollendefinition:** Bei dieser Eigenschaft handelt es sich um eine Liste aller integrierten Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.
+   * **Richtlinieneinstellungen:** Wenden Sie eine [Azure-Richtlinie](../governance/policy/overview.md) auf Ihre verwaltete Anwendung an, um Complianceanforderungen für die bereitgestellten Lösungen anzugeben. Wählen Sie aus den verfügbaren Optionen die anzuwendenden Richtlinien aus. Geben Sie als **Richtlinienparameter** eine JSON-Zeichenfolge mit den Parameterwerten an. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
 
 Sie können mehrere Autorisierungen hinzufügen. Es wird empfohlen, eine AD-Benutzergruppe zu erstellen und die jeweilige ID unter **PrincipalId** anzugeben. Auf diese Weise können Sie der Benutzergruppe weitere Benutzer hinzufügen, ohne die SKU aktualisieren zu müssen.
 

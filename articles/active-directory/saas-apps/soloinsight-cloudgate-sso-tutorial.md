@@ -140,11 +140,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens bei Soloinsight-CloudGate
 
 3. **SAML-Signaturzertifikat**
 
-    * Navigieren Sie zur Quelle der Zertifikatdatei (Base64), die aus den Listen unter „SAML-Signaturzertifikat“ im Azure-Portal heruntergeladen wurden, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie in der Liste die Option **Edit with Notepad++** (Mit Editor++ bearbeiten). 
+    * Navigieren Sie zur Quelle der Zertifikatdatei (Base64), die aus den Listen unter „SAML-Signaturzertifikat“ im Azure-Portal heruntergeladen wurden, und klicken Sie mit der rechten Maustaste darauf. Wählen Sie in der Liste die Option **Edit with Notepad++** (Mit Notepad++ bearbeiten). 
 
         ![SAMLcertificate](./media/soloinsight-cloudgate-sso-tutorial/certificate-file.png)
 
-    * Kopieren Sie den Inhalt der Editor++-Zertifikatdatei (Base64).
+    * Kopieren Sie den Inhalt der Notepad++-Zertifikatdatei (Base64).
 
         ![Zertifikatkopie](./media/soloinsight-cloudgate-sso-tutorial/certificate-copy.png)
 
