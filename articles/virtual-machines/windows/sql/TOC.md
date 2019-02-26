@@ -35,13 +35,16 @@
 ## Konfigurieren von Hochverfügbarkeit
 ### [Verwenden von Azure Storage für Sicherung und Wiederherstellung](virtual-machines-windows-use-storage-sql-server-backup-restore.md)
 ### AlwaysOn-Verfügbarkeitsgruppe
-#### [Über eine Vorlage im Azure-Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
-#### [Über Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md)
-#### [Manuell – Voraussetzungen](virtual-machines-windows-portal-sql-availability-group-prereq.md)
-#### [Manuell – Tutorial](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
-#### [Load Balancer – Azure-Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
-#### [Load Balancer – Azure-PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+#### [Befehlszeilenschnittstelle für virtuelle Azure SQL-Computer](virtual-machines-windows-sql-availability-group-cli.md)
+#### [Vorlage im Azure-Portal](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
+#### [Azure-Schnellstartvorlagen](virtual-machines-windows-sql-availability-group-quickstart-template.md)
 #### [Mehrere Regionen](virtual-machines-windows-portal-sql-availability-group-dr.md)
+#### Manuelles Konfigurieren    
+##### [Voraussetzungen](virtual-machines-windows-portal-sql-availability-group-prereq.md)
+##### [Tutorial](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
+##### [Load Balancer – Azure-Portal](virtual-machines-windows-portal-sql-alwayson-int-listener.md)
+##### [Load Balancer – Azure-PowerShell](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md)
+
 ### Failoverclusterinstanz
 #### [Konfigurieren](virtual-machines-windows-portal-sql-create-failover-cluster.md)
 
