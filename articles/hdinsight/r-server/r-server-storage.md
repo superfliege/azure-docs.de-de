@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 7b937158be39f9a1f7f9374611a150fd11837f02
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910265"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309116"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>Azure Storage-Lösungen für ML Services in Azure HDInsight
 
@@ -119,9 +119,9 @@ Nachdem Sie dem Dienstprinzipal einen Namen gegeben und ein Kennwort dafür erst
 
 Sie können nach der Clustererstellung Clusterzugriff auf ein oder mehrere Data Lake Storage-Konten hinzufügen. Öffnen Sie den Azure-Portal-Eintrag für eine Data Lake Storage-Instanz, und wechseln Sie zu **Daten-Explorer > Zugriff > Hinzufügen**. 
 
-### <a name="how-to-access-data-lake-storage-from-ml-services-on-hdinsight"></a>Zugreifen auf Data Lake Storage mit ML Services in HDInsight
+### <a name="how-to-access-data-lake-storage-gen1-from-ml-services-on-hdinsight"></a>Zugreifen auf Data Lake Storage Gen1 mit ML Services in HDInsight
 
-Nachdem Sie Zugriff auf eine Data Lake Storage-Instanz gewährt haben, können Sie den Speicher im ML Services-Cluster auf HDInsight wie ein sekundäres Azure Storage-Konto nutzen. Der einzige Unterschied ist, dass sich das Präfix **wasb://** wie folgt in **adl://** ändert:
+Nachdem Sie Zugriff auf eine Data Lake Storage Gen1-Instanz gewährt haben, können Sie den Speicher im ML Services-Cluster auf HDInsight wie ein sekundäres Azure Storage-Konto nutzen. Der einzige Unterschied ist, dass sich das Präfix **wasb://** wie folgt in **adl://** ändert:
 
 
     # Point to the ADL Storage (e.g. ADLtest)
@@ -143,7 +143,7 @@ Nachdem Sie Zugriff auf eine Data Lake Storage-Instanz gewährt haben, können S
     # Specify the input file in HDFS to analyze
     inputFile <-file.path(bigDataDirRoot,"mysamplefile.csv")
 
-Die folgenden Befehle werden zum Konfigurieren des Data Lake Storage-Kontos mit dem RevoShare-Verzeichnis und zum Hinzufügen der CSV-Beispieldatei aus dem vorherigen Beispiel verwendet:
+Die folgenden Befehle werden zum Konfigurieren des Data Lake Storage Gen1-Kontos mit dem RevoShare-Verzeichnis und zum Hinzufügen der CSV-Beispieldatei aus dem vorherigen Beispiel verwendet:
 
 
     hadoop fs -mkdir adl://rkadl1.azuredatalakestore.net/user

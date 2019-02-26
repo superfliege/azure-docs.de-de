@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 01/29/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f1700e124d1f572d0bf0ca76ea7c465f1ecf96c1
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 35367a9ebc9ff09f40defd444f6ceb8ff54efe07
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657415"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430283"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Ausführen von Runbooks auf einem Hybrid Runbook Worker
 
 Es gibt keine Unterschiede in der Struktur von Runbooks, die in Azure Automation oder auf einem Hybrid-Runbook-Worker ausgeführt werden. Die Runbooks, die Sie in beiden Fällen verwenden, unterscheiden sich dagegen wahrscheinlich erheblich. Dies liegt daran, dass Runbooks, die für einen Hybrid Runbook Worker konzipiert sind, in der Regel Ressourcen auf dem lokalen Computer selbst oder in der lokalen Umgebung verwalten, in der der Computer bereitgestellt wurde. Runbooks in Azure Automation verwalten üblicherweise Ressourcen in der Azure-Cloud.
 
-Wenn Sie Runbooks zur Ausführung auf einem Hybrid Runbook Worker erstellen, sollten Sie diese auf dem Computer testen, der den Hybridworker hostet. Auf dem Hostcomputer sind alle PowerShell-Module und der Netzwerkzugriff vorhanden, die Sie benötigen, um die lokalen Ressourcen zu verwalten und darauf zuzugreifen. Sobald ein Runbook auf dem Hybridworkercomputer getestet wurde, können Sie es in die Azure Automation-Umgebung hochladen, wo es zur Ausführung auf dem Hybridworker verfügbar ist. Sie müssen wissen, ob Aufträge im lokalen Systemkonto für Windows oder dem speziellen Benutzerkonto **nxautomation** unter Linux ausgeführt werden. Dieses Verhalten kann geringfügige Unterschiede beim Erstellen von Runbooks für einen Hybrid Runbook Worker bedeuten. Wenn Sie Ihre Runbooks schreiben, müssen Sie auf diese Änderungen achten.
+Wenn Sie Runbooks zur Ausführung auf einem Hybrid Runbook Worker erstellen, sollten Sie diese auf dem Computer testen, der den Hybridworker hostet. Auf dem Hostcomputer sind alle PowerShell-Module und der Netzwerkzugriff vorhanden, die Sie benötigen, um die lokalen Ressourcen zu verwalten und darauf zuzugreifen. Sobald ein Runbook auf dem Hybridworkercomputer getestet wurde, können Sie es in die Azure Automation-Umgebung hochladen, wo es zur Ausführung auf dem Hybridworker verfügbar ist. Sie müssen wissen, ob Aufträge im lokalen Systemkonto für Windows oder dem speziellen Benutzerkonto `nxautomation` unter Linux ausgeführt werden. Dieses Verhalten kann geringfügige Unterschiede beim Erstellen von Runbooks für einen Hybrid Runbook Worker bedeuten. Wenn Sie Ihre Runbooks schreiben, müssen Sie auf diese Änderungen achten.
 
 ## <a name="starting-a-runbook-on-hybrid-runbook-worker"></a>Starten eines Runbooks auf einem Hybrid Runbook Worker
 
@@ -44,7 +44,7 @@ Bei Runbooks, die auf einem Hybrid Runbook Worker ausgeführt werden, kann nicht
 
 ### <a name="runbook-authentication"></a>Authentifizierung von Runbooks
 
-Runbooks werden standardmäßig im Kontext des lokalen Systemkontos für Windows und einem speziellen **nxautomation**-Benutzerkonto auf dem lokalen Computer ausgeführt. Deshalb müssen sie sich bei Ressourcen authentifizieren, auf die sie zugreifen.
+Runbooks werden standardmäßig im Kontext des lokalen Systemkontos für Windows und einem speziellen Benutzerkonto `nxautomation` auf dem lokalen Computer ausgeführt. Deshalb müssen sie sich bei Ressourcen authentifizieren, auf die sie zugreifen.
 
 Sie können die [Anmeldeinformationsobjekte](automation-credentials.md) und [Zertifikatobjekte](automation-certificates.md) in Ihrem Runbook gemeinsam mit Cmdlets zur Angabe von Anmeldeinformationen verwenden, um eine Authentifizierung für verschiedene Ressourcen durchzuführen. Das folgende Beispiel zeigt einen Teil eines Runbooks, mit dem ein Computer neu gestartet wird. Es werden Anmeldeinformationen aus einem Anmeldeinformationsobjekt und der Name des Computers aus einem Variablenobjekt abgerufen, anschließend werden diese Werte im Cmdlet "Restart-Computer" eingesetzt.
 
@@ -59,7 +59,7 @@ Sie können auch [InlineScript](automation-powershell-workflow.md#inlinescript) 
 
 ### <a name="runas-account"></a>„RunAs“-Konto
 
-Standardmäßig verwendet der Hybrid Runbook Worker für die Runbookausführung das lokale System für Windows und ein spezielles **nxautomation**-Benutzerkonto für Linux. Um zu vermeiden, dass Runbooks ihre eigene Authentifizierung für lokale Ressourcen bereitstellen müssen, können Sie für eine Hybrid Worker-Gruppe ein **RunAs**-Konto angeben. Sie geben ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen an. Alle Runbooks verwenden anschließend diese Anmeldeinformationen, wenn die Ausführung auf einem Hybrid Runbook Worker in der Gruppe erfolgt.
+Standardmäßig verwendet der Hybrid Runbook Worker für die Runbookausführung das lokale System für Windows und ein spezielles Benutzerkonto `nxautomation` für Linux. Um zu vermeiden, dass Runbooks ihre eigene Authentifizierung für lokale Ressourcen bereitstellen müssen, können Sie für eine Hybrid Worker-Gruppe ein **RunAs**-Konto angeben. Sie geben ein [Anmeldeinformationsobjekt](automation-credentials.md) mit Zugriff auf lokale Ressourcen an. Alle Runbooks verwenden anschließend diese Anmeldeinformationen, wenn die Ausführung auf einem Hybrid Runbook Worker in der Gruppe erfolgt.
 
 Der Benutzername für die Anmeldeinformationen muss eines der folgenden Formate haben:
 
@@ -247,7 +247,7 @@ $SigningCert = ( Get-ChildItem -Path cert:\LocalMachine\My\<CertificateThumbprin
 Set-AuthenticodeSignature .\TestRunbook.ps1 -Certificate $SigningCert
 ```
 
-Nachdem das Runbook signiert wurde, muss es in Ihr Automation-Konto importiert und innerhalb des Signaturblocks veröffentlicht werden. Weitere Informationen zum Importieren von Runbooks finden Sie unter [Importieren eines Runbooks aus einer Datei in Azure Automation](automation-creating-importing-runbook.md#importing-a-runbook-from-a-file-into-azure-automation).
+Nachdem das Runbook signiert wurde, muss es in Ihr Automation-Konto importiert und innerhalb des Signaturblocks veröffentlicht werden. Weitere Informationen zum Importieren von Runbooks finden Sie unter [Importieren eines Runbooks aus einer Datei in Azure Automation](manage-runbooks.md#import-a-runbook).
 
 ### <a name="linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker
 
@@ -271,7 +271,7 @@ sudo gpg --generate-key
 
 GPG führt Sie durch die Schritte zur Erstellung des Schlüsselpaares. Sie müssen einen Namen, eine E-Mail-Adresse, eine Ablaufzeit, eine Passphrase und ein Kennwort angeben und auf dem Computer auf eine ausreichende Entropie warten, damit der Schlüssel generiert werden kann.
 
-Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in nxautomation ändern. 
+Da das GPG-Verzeichnis mit sudo generiert wurde, müssen Sie seinen Besitzer in `nxautomation` ändern. 
 
 Führen Sie den folgenden Befehl aus, um den Besitzer zu ändern.
 
@@ -289,7 +289,7 @@ gpg_public_keyring_path = /var/opt/microsoft/omsagent/run/.gnupg/pubring.kbx
 
 #### <a name="verify-signature-validation-is-on"></a>Überprüfen Sie, ob die Signaturüberprüfung aktiviert ist.
 
-Wenn die Signaturüberprüfung auf dem Computer deaktiviert wurde, müssen Sie sie aktivieren. Führen Sie den folgenden Befehl aus, um die Signaturüberprüfung zu aktivieren. Ersetzen Sie `<LogAnalyticsworkspaceId>` durch Ihre Arbeitsbereichs-ID.
+Wenn die Signaturüberprüfung auf dem Computer deaktiviert wurde, müssen Sie sie aktivieren. Führen Sie den folgenden Befehl aus, um die Signaturüberprüfung zu aktivieren. Ersetzen Sie `<LogAnalyticsworkspaceId>` durch Ihre Arbeitsbereich-ID.
 
 ```bash
 sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --true <LogAnalyticsworkspaceId>
@@ -300,7 +300,7 @@ sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/
 Nachdem die Signaturüberprüfung konfiguriert ist, können Sie mit dem folgenden Befehl ein Runbook signieren:
 
 ```bash
-gpg –clear-sign <runbook name>
+gpg –-clear-sign <runbook name>
 ```
 
 Das signierte Runbook erhält den Namen `<runbook name>.asc`.

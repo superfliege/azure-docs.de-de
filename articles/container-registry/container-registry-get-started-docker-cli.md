@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: danlep
 ms.custom: seodec18, H1Hack27Feb2017
-ms.openlocfilehash: c27af57ce4fa80a4ae167ce1e27018d049923a3f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 164d705a16dd82a1c5f3ff6f5e6982f80eb40dab
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982844"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330867"
 ---
 # <a name="push-your-first-image-to-a-private-docker-container-registry-using-the-docker-cli"></a>Pushübertragung des ersten Images an eine private Containerregistrierung mit der Docker CLI
 
@@ -116,10 +116,10 @@ Wenn Sie das Nginx-Image nicht mehr benötigen, können Sie es mit dem Befehl [d
 docker rmi myregistry.azurecr.io/samples/nginx
 ```
 
-Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch ein Tag referenzierte Manifest, alle zugeordneten Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
+Um Images aus Ihrer Azure-Containerregistrierung zu entfernen, können Sie den Azure CLI-Befehl [az acr repository delete](/cli/azure/acr/repository#az-acr-repository-delete) ausführen. Mit dem folgenden Befehl werden beispielsweise das durch das `samples/nginx:latest`-Tag referenzierte Manifest, alle eindeutigen Ebenendaten und alle anderen Tags gelöscht, die auf das Manifest verweisen.
 
 ```azurecli
-az acr repository delete --name myregistry --repository samples/nginx --tag latest --manifest
+az acr repository delete --name myregistry --image samples/nginx:latest
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

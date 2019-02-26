@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Ablehnungszuweisungen mit dem Azure-Portal | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten anzeigen können, denen der Zugriff auf bestimmte Aktionen untersagt wurde.
+title: Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie mithilfe des Azure-Portals die Benutzer, Gruppen, Dienstprinzipale und verwalteten Identitäten anzeigen können, denen der Zugriff auf bestimmte Aktionen von Azure-Ressourcen untersagt wurde.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5870ddbbb8be0ebbeae7656485521a327b86d5b
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: ec5e3daf1d4d799aab043f241548a3b4177f567c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52637725"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343237"
 ---
-# <a name="view-deny-assignments-using-the-azure-portal"></a>Anzeigen von Ablehnungszuweisungen mit dem Azure-Portal
+# <a name="view-deny-assignments-for-azure-resources-using-the-azure-portal"></a>Anzeigen von Ablehnungszuweisungen für Azure-Ressourcen mit dem Azure-Portal
 
-[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, müssen Sie dennoch in der Lage sein, Ablehnungszuweisungen anzuzeigen, da diese Ihre allgemeinen Berechtigungen beeinflussen können. Um Informationen zu einer Ablehnungszuweisung zu erhalten, benötigen Sie die Berechtigung `Microsoft.Authorization/denyAssignments/read`, die in den meisten [integrierten Rollen](built-in-roles.md) enthalten ist.
+[Ablehnungszuweisungen](deny-assignments.md) blockieren Aktionen von Azure-Ressourcen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, müssen Sie dennoch in der Lage sein, Ablehnungszuweisungen anzuzeigen, da diese Ihre allgemeinen Berechtigungen beeinflussen können. Um Informationen zu einer Ablehnungszuweisung zu erhalten, benötigen Sie die Berechtigung `Microsoft.Authorization/denyAssignments/read`, die in den meisten [integrierten Rollen](built-in-roles.md) für Azure-Ressourcen enthalten ist.
 
 In diesem Artikel wird beschrieben, wie Sie mit dem Azure-Portal Ablehnungszuweisungen anzeigen.
 
@@ -55,11 +55,11 @@ Führen Sie die folgenden Schritte aus, um Ablehnungszuweisungen für ein Abonne
     | **Name** | Der Name der Ablehnungszuweisung. |
     | **Prinzipaltyp** | Benutzer, Gruppe, vom System definierte Gruppe oder Dienstprinzipal. |
     | **Verweigert**  | Der Name des Sicherheitsprinzipals, der in der Ablehnungszuweisung enthalten ist. |
-    | **ID** | Eindeutiger Bezeichner für die Ablehnungszuweisung. |
+    | **Id** | Eindeutiger Bezeichner für die Ablehnungszuweisung. |
     | **Ausgeschlossene Prinzipale** | Gibt an, ob Sicherheitsprinzipale von der Ablehnungszuweisung ausgeschlossen sind. |
     | **Gilt nicht für untergeordnete Elemente** | Gibt an, ob die Ablehnungszuweisung an Unterbereiche vererbt wird. |
     | **Durch System geschützt** | Gibt an, ob die Ablehnungszuweisung durch Azure verwaltet wird. Aktuell immer „Ja“. |
-    | **Bereich** | Eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressource. |
+    | **Umfang** | Eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressource. |
 
 1. Aktivieren Sie das Kontrollkästchen für eines der aktivierten Elemente, und klicken Sie auf **OK**, um die ausgewählten Spalten anzuzeigen.
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnu
 
     ![Ablehnungszuweisung: verweigerte Berechtigungen](./media/deny-assignments-portal/deny-assignment-denied-permissions.png)
 
-    | Aktionstyp | Beschreibung |
+    | Aktionstyp | BESCHREIBUNG |
     | --- | --- |
     | **Aktionen**  | Verweigerte Verwaltungsvorgänge. |
     | **NotActions** | Verwaltungsvorgänge, die von den verweigerten Verwaltungsvorgängen ausgeschlossen wurden. |
@@ -105,5 +105,5 @@ Führen Sie die folgenden Schritte aus, um zusätzliche Details zu einer Ablehnu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md)
-* [Auflisten von Ablehnungszuweisungen mithilfe von RBAC und der REST-API](deny-assignments-rest.md)
+* [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md)
+* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API](deny-assignments-rest.md)

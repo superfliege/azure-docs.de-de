@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung in Azure | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Zugriff für organisationsexterne Benutzer mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) in Azure verwalten.
+title: Verwalten des Zugriffs auf Azure-Ressourcen für externe Benutzer mit RBAC | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für organisationsexterne Benutzer mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) verwalten.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,19 +16,19 @@ ms.date: 03/20/2018
 ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: aec12e6dc7d331b2610546d0b0c92fa6ce0789ee
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
+ms.openlocfilehash: 770a5e61f549a10c8b313ed4d137f56dda45769e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284522"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343859"
 ---
-# <a name="manage-access-for-external-users-using-rbac"></a>Verwalten des Zugriffs für externe Benutzer mithilfe der rollenbasierten Zugriffssteuerung
+# <a name="manage-access-to-azure-resources-for-external-users-using-rbac"></a>Verwalten des Zugriffs auf Azure-Ressourcen für externe Benutzer mit RBAC
 
 Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine bessere Sicherheitsverwaltung für große Organisationen sowie für kleine und mittelständische Unternehmen, die mit externen Projektmitarbeitern, Lieferanten oder Freiberuflern arbeiten und für diese Zugriff auf bestimmte Ressourcen in der Umgebung benötigen, nicht aber auf die gesamte Infrastruktur oder abrechnungsrelevante Bereiche. Die rollenbasierte Zugriffssteuerung bietet Flexibilität: Sie können ein Azure-Abonnement besitzen, das vom Administratorkonto (Dienstadministratorrolle auf Abonnementebene) verwaltet wird, und mehrere Benutzer dazu einladen, im gleichen Abonnement zu arbeiten, ohne dass diese über Administratorrechte für das Konto verfügen.
 
 > [!NOTE]
-> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das Office 365 Admin Center bereitgestellt wurden, sind für die Nutzung bei der rollenbasierten Zugriffssteuerung nicht qualifiziert.
+> Office 365-Abonnements oder Azure Active Directory-Lizenzen (beispielsweise: Zugriff auf Azure Active Directory), die über das Office 365 Admin Center bereitgestellt wurden, sind für die Verwendung von RBAC nicht geeignet.
 
 ## <a name="assign-rbac-roles-at-the-subscription-scope"></a>Zuweisen von RBAC-Rollen für den Abonnementbereich
 
@@ -55,7 +55,7 @@ Nach dem Auswählen des Abonnements muss der Administratorbenutzer auf **Zugriff
 
 ![Hinzufügen eines neuen Benutzers im Feature „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/role-assignments-external-users/2.png)
 
-Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der Bereiche, die zugewiesen werden können, finden Sie unter [Integrierte Rollen](built-in-roles.md).
+Der nächste Schritt besteht darin, die zuzuweisende RBAC-Rolle sowie den Benutzer auszuwählen, dem die Rolle zugewiesen werden soll. Im Dropdownmenü **Rolle** werden dem Administratorbenutzer nur die integrierten RBAC-Rollen angezeigt, die in Azure verfügbar sind. Ausführlichere Erläuterungen der einzelnen Rollen und der Bereiche, die zugewiesen werden können, finden Sie unter [Integrierte Rollen für Azure-Ressourcen](built-in-roles.md).
 
 Der Administratorbenutzer muss dann die E-Mail-Adresse des externen Benutzers hinzufügen. Das erwartete Verhalten: Der Benutzer wird im vorhandenen Mandanten nicht angezeigt. Nachdem der externe Benutzer eingeladen wurde, wird er unter **Abonnements > Zugriffssteuerung (IAM)** mit allen aktuellen Benutzern angezeigt, denen derzeit für den Abonnementbereich eine RBAC-Rolle zugewiesen ist.
 

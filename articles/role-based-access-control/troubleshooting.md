@@ -1,6 +1,6 @@
 ---
-title: Beheben von RBAC-Fehlern in Azure | Microsoft-Dokumentation
-description: Beheben von Problemen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) von Azure.
+title: Problembehandlung von RBAC für Azure-Ressourcen | Microsoft-Dokumentation
+description: Beheben von Problemen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen.
 services: azure-portal
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: e204beea5bdf72c2ec5ebcf661d3c983a2e0e6b4
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 7b27c811214def7f5646f886b955d035a50c0725
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411236"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342472"
 ---
-# <a name="troubleshoot-rbac-in-azure"></a>Beheben von RBAC-Fehlern in Azure
+# <a name="troubleshoot-rbac-for-azure-resources"></a>Problembehandlung von RBAC für Azure-Ressourcen
 
-In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können.
+In diesem Artikel werden häufig gestellte Fragen über die rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen beantwortet. Sie erfahren also, was Sie erwarten können, wenn Sie die Rollen im Azure-Portal verwenden und wie Sie Zugriffsprobleme lösen können.
 
 ## <a name="problems-with-rbac-role-assignments"></a>Probleme mit RBAC-Rollenzuweisungen
 
@@ -119,6 +119,6 @@ Einige Funktionen von [Azure Functions](../azure-functions/functions-overview.md
 Ein Leser kann auf die Registerkarte **Plattformfeatures** und dann auf **Alle Einstellungen** klicken, um einige Einstellungen im Zusammenhang mit einer Funktions-App (ähnlich wie bei einer Web-App) anzuzeigen, kann diese Einstellungen jedoch nicht ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](role-assignments-portal.md)
-* [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen](change-history-report.md)
+* [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
+* [Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen](change-history-report.md)
 

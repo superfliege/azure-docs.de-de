@@ -11,18 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: tomfitz
-ms.openlocfilehash: ce95406cbcb6d9514159d84d653a9ff361713aec
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: bdba294e1ee776d90b93f715e930ec26765abb7f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744397"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343033"
 ---
 # <a name="create-resource-groups-and-resources-at-the-subscription-level"></a>Erstellen von Ressourcengruppen und Ressourcen auf Abonnementebene
 
 In der Regel stellen Sie Azure-Ressourcen für eine Ressourcengruppe in Ihrem Azure-Abonnement bereit. Sie können jedoch auch Azure-Ressourcengruppen erstellen und Azure-Ressourcen auf Abonnementebene erstellen. Um Vorlagen auf Abonnementebene bereitzustellen, verwenden Sie die Azure CLI und Azure PowerShell. Das Azure-Portal unterstützt keine Bereitstellung auf Abonnementebene.
 
-Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine [**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions)-Ressource mit einem Namen und einem Speicherort für die Ressourcengruppe. Sie können eine Ressourcengruppe erstellen und Ressourcen für diese Ressourcengruppe in derselben Vorlage bereitstellen. Folgende Ressourcen können auf Abonnementebene bereitgestellt werden: [Richtlinien](../azure-policy/azure-policy-introduction.md) und Ressourcen für die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
+Um eine Ressourcengruppe in einer Azure Resource Manager-Vorlage zu erstellen, definieren Sie eine [**Microsoft.Resources/resourceGroups**](/azure/templates/microsoft.resources/allversions)-Ressource mit einem Namen und einem Speicherort für die Ressourcengruppe. Sie können eine Ressourcengruppe erstellen und Ressourcen für diese Ressourcengruppe in derselben Vorlage bereitstellen. Folgende Ressourcen können auf Abonnementebene bereitgestellt werden: [Richtlinien](../governance/policy/overview.md) und Ressourcen für die [rollenbasierte Zugriffssteuerung](../role-based-access-control/overview.md).
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -307,7 +307,7 @@ New-AzDeployment `
 
 ### <a name="define-and-assign-policy"></a>Definieren und Zuweisen einer Richtlinie
 
-Sie können eine Richtlinie in derselben Vorlage [definieren](../azure-policy/policy-definition.md) und zuweisen.
+Sie können eine Richtlinie in derselben Vorlage [definieren](../governance/policy/concepts/definition-structure.md) und zuweisen.
 
 ```json
 {

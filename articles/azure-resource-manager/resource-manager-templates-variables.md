@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/18/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: f6c629182fdcce83c566869860480d9c70488797
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 50feca90d375d6afd3b04afe019ad9f9025f19dc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53712745"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308570"
 ---
 # <a name="variables-section-of-azure-resource-manager-templates"></a>Abschnitt „Variables“ von Azure Resource Manager-Vorlagen
 Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
@@ -58,9 +58,7 @@ Im vorherige Beispiel wurde eine Möglichkeit zum Definieren einer Variablen gez
             {
                 "name": "<name-of-array-property>",
                 "count": <number-of-iterations>,
-                "input": {
-                    <properties-to-repeat>
-                }
+                "input": <object-or-value-to-repeat>
             }
         ]
     },
@@ -68,9 +66,7 @@ Im vorherige Beispiel wurde eine Möglichkeit zum Definieren einer Variablen gez
         {
             "name": "<variable-array-name>",
             "count": <number-of-iterations>,
-            "input": {
-                <properties-to-repeat>
-            }
+            "input": <object-or-value-to-repeat>
         }
     ]
 }
@@ -117,38 +113,45 @@ Sie rufen die aktuellen Einstellungen folgendermaßen ab:
 
 ## <a name="use-copy-element-in-variable-definition"></a>Verwenden von „copy element“ in der Variablendefinition
 
-Sie können die **copy**-Syntax zum Erstellen einer Variablen mit einem Array mehrerer Elemente verwenden. Sie geben eine Zahl für die Anzahl von Elementen an. Jedes Element enthält die Eigenschaften im **input**-Objekt. Sie können „copy“ entweder innerhalb einer Variablen oder zum Erstellen der Variablen verwenden. Wenn Sie eine Variable definieren und **copy** in dieser Variablen verwenden, erstellen Sie ein Objekt, das eine Array-Eigenschaft besitzt. Wenn Sie **copy** auf der obersten Ebene verwenden und darin mindestens eine Variable definieren, erstellen Sie mindestens ein Array. Im folgenden Beispiel sind beide Ansätze dargestellt:
+Um mehrere Instanzen einer Variable zu erstellen, verwenden Sie die `copy`-Eigenschaft im Abschnitt „variables“. Erstellen Sie ein Array von Elementen, das aus dem Wert in der `input`-Eigenschaft erstellt wird. Sie können die `copy`-Eigenschaft innerhalb einer Variablen oder auf der obersten Ebene des Abschnitts „variables“ verwenden. Bei Verwendung von `copyIndex` in einer Variableniteration müssen Sie den Namen der Iteration angeben.
+
+Das folgende Beispiel zeigt die Verwendung von „copy“:
 
 ```json
 "variables": {
-    "disk-array-on-object": {
-        "copy": [
-            {
-                "name": "disks",
-                "count": 3,
-                "input": {
-                    "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
-                    "diskSizeGB": "1",
-                    "diskIndex": "[copyIndex('disks')]"
-                }
-            }
-        ]
-    },
+  "disk-array-on-object": {
     "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
+      {
+        "name": "disks",
+        "count": 3,
+        "input": {
+          "name": "[concat('myDataDisk', copyIndex('disks', 1))]",
+          "diskSizeGB": "1",
+          "diskIndex": "[copyIndex('disks')]"
         }
+      }
     ]
+  },
+  "copy": [
+    {
+      "name": "disks-top-level-array",
+      "count": 3,
+      "input": {
+        "name": "[concat('myDataDisk', copyIndex('disks-top-level-array', 1))]",
+        "diskSizeGB": "1",
+        "diskIndex": "[copyIndex('disks-top-level-array')]"
+      }
+    },
+    {
+      "name": "top-level-string-array",
+      "count": 5,
+      "input": "[concat('myDataDisk', copyIndex('top-level-string-array', 1))]"
+    }
+  ]
 },
 ```
 
-Die Variable **disk-array-on-object** enthält das folgende Objekt mit einem Array namens **disks**:
+Nachdem der copy-Ausdruck ausgewertet wurde, enthält die Variable **disk-array-on-object** das folgende Objekt mit einem Array namens **disks**:
 
 ```json
 {
@@ -194,34 +197,19 @@ Die Variable **disks-top-level-array** enthält das folgende Array:
 ]
 ```
 
-Sie können auch mehrere Objekte angeben, wenn Sie Variablen durch Kopieren erstellen. Im folgenden Beispiel werden zwei Arrays als Variablen definiert. Ein Array namens **disks-top-level-array** mit fünf Elementen. Ein anderes Array namens **a-different-array** mit drei Elementen.
+Die Variable **top-level-string-array** enthält das folgende Array:
 
 ```json
-"variables": {
-    "copy": [
-        {
-            "name": "disks-top-level-array",
-            "count": 5,
-            "input": {
-                "name": "[concat('oneDataDisk', copyIndex('disks-top-level-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('disks-top-level-array')]"
-            }
-        },
-        {
-            "name": "a-different-array",
-            "count": 3,
-            "input": {
-                "name": "[concat('twoDataDisk', copyIndex('a-different-array', 1))]",
-                "diskSizeGB": "1",
-                "diskIndex": "[copyIndex('a-different-array')]"
-            }
-        }
-    ]
-},
+[
+  "myDataDisk1",
+  "myDataDisk2",
+  "myDataDisk3",
+  "myDataDisk4",
+  "myDataDisk5"
+]
 ```
 
-Diese Vorgehensweise funktioniert gut, wenn Sie Parameterwerte annehmen und sicherstellen müssen, dass sie das richtige Format für einen Vorlagenwert aufweisen. Im folgenden Beispiel werden Parameterwerte für die Verwendung beim Definieren von Sicherheitsregeln formatiert:
+Die Verwendung von „copy“ funktioniert gut, wenn Sie Parameterwerte annehmen und diese Ressourcenwerten zuordnen müssen. Im folgenden Beispiel werden Parameterwerte für die Verwendung beim Definieren von Sicherheitsregeln formatiert:
 
 ```json
 {

@@ -1,6 +1,6 @@
 ---
-title: Erstellen von benutzerdefinierten Rollen mit Azure PowerShell | Microsoft-Dokumentation
-description: Erfahren Sie, wie benutzerdefinierte Rollen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) mithilfe von Azure PowerShell erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
+title: Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mit Azure PowerShell | Microsoft-Dokumentation
+description: Erfahren Sie, wie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe von Azure PowerShell erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 26e5b33504ff543e8442108e4368ce3b04f25df4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 92c061a7f854b46ab5aee07aa5e648ace8f9ae52
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696750"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343841"
 ---
-# <a name="create-custom-roles-using-azure-powershell"></a>Erstellen von benutzerdefinierten Rollen mit Azure PowerShell
+# <a name="create-custom-roles-for-azure-resources-using-azure-powershell"></a>Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell
 
-Wenn die [integrierten Rollen](built-in-roles.md) den Anforderungen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird das Erstellen und Verwalten benutzerdefinierter Rollen mithilfe von Azure PowerShell beschrieben.
+Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. In diesem Artikel wird das Erstellen und Verwalten benutzerdefinierter Rollen mithilfe von Azure PowerShell beschrieben.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -296,6 +296,6 @@ Are you sure you want to remove role definition with name 'Virtual Machine Opera
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
-- [Benutzerdefinierte Rollen in Azure](custom-roles.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe von Azure PowerShell](tutorial-custom-role-powershell.md)
+- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
 - [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)

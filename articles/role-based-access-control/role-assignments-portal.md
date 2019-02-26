@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und dem Azure-Portal verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
+title: Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal | Microsoft-Dokumentation
+description: Erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und dem Azure-Portal verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: c339556353967db26f022384f2cf877962dc6d83
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 1e3057108ef179af2f4692c061091fbdf59f0af2
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412307"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342336"
 ---
-# <a name="manage-access-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-azure-portal"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal
 
-Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit RBAC und dem Azure-Portal verwalten.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen, Dienstprinzipale und verwaltete Identitäten mit RBAC und dem Azure-Portal verwalten.
 
 ## <a name="open-access-control-iam"></a>Öffnen der Zugriffssteuerung (IAM)
 
@@ -41,7 +41,7 @@ Das Blatt **Zugriffssteuerung (IAM)**, auch bekannt als Identitäts- und Zugriff
 
 ## <a name="view-roles-and-permissions"></a>Anzeigen von Rollen und Berechtigungen
 
-Eine Rollendefinition ist eine Auflistung von Berechtigungen, die Sie für Rollenzuweisungen verwenden. Azure enthält über 70 [integrierte Rollen](built-in-roles.md). Führen Sie diese Schritte aus, um die Rollen und Berechtigungen anzuzeigen, die auf Verwaltungs- und Datenebene ausgeführt werden können.
+Eine Rollendefinition ist eine Auflistung von Berechtigungen, die Sie für Rollenzuweisungen verwenden. Azure weist mehr als 70 [integrierte Rollen für Azure-Ressourcen](built-in-roles.md) auf. Führen Sie diese Schritte aus, um die Rollen und Berechtigungen anzuzeigen, die auf Verwaltungs- und Datenebene ausgeführt werden können.
 
 1. Öffnen Sie das Blatt **Zugriffssteuerung (IAM)** für einen bestimmten Bereich, z.B. für eine Verwaltungsgruppe, ein Abonnement, eine Ressourcengruppe oder eine Ressource, für das bzw. die Sie Rollen und Berechtigungen anzeigen möchten.
 
@@ -165,7 +165,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Führen
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure-Portal](quickstart-assign-role-user-portal.md)
-* [Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
-* [Beheben von RBAC-Fehlern in Azure](troubleshooting.md)
-* [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../azure-resource-manager/management-groups-overview.md)
+* [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und dem Azure-Portal](quickstart-assign-role-user-portal.md)
+* [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell](tutorial-role-assignments-user-powershell.md)
+* [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md)
+* [Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen](../governance/management-groups/index.md)

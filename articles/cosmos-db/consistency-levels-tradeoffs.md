@@ -4,15 +4,15 @@ description: Kompromisse in Bezug auf Verfügbarkeit und Leistung für verschied
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/20/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: ee0dc1bec39bf95cbf4f3bf7ecea92b877a78b88
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 99b981e6b5c9bc56c10b0491474c0c8773291b7e
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113752"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309198"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung 
 
@@ -44,22 +44,23 @@ Die exakte RTT-Latenz richtet sich nach der physischen Entfernung und der Azure-
 
 - Für bestimmte Schreibvorgänge (z.B. Einfügen, Ersetzen, Upsert, Löschen) ist der Schreibdurchsatz für RUs für alle Konsistenzebenen identisch.
 
-## <a name="consistency-levels-and-data-durability"></a>Konsistenzebenen und Datendauerhaftigkeit
+## <a id="rto"></a>Konsistenzebenen und Datendauerhaftigkeit
 
-Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. In der Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das CAP-Theorem. Weitere Informationen finden Sie unter  [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md).
+Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
+
+In der Tabelle wird die Beziehung zwischen dem Konsistenzmodell und der Datendauerhaftigkeit bei einem regionsweiten Ausfall definiert. Beachten Sie unbedingt, dass es in einem verteilten System auch bei starker Konsistenz unmöglich ist, eine verteilte Datenbank mit einem RPO- und RTO-Wert von 0 (null) zu erzielen. Grund ist das CAP-Theorem. Weitere Informationen finden Sie unter  [Konsistenzebenen in Azure Cosmos DB](consistency-levels.md).
 
 |**Region(en)**|**Replikationsmodus**|**Konsistenzebene**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
 |1|Einzel- oder Multimaster|Jede Konsistenzebene|< 240 Minuten|< 1 Woche|
 |> 1|Einzelmaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|< 15 Minuten|
-|> 1|Einzelmaster|Begrenzte Veraltung (Bounded staleness)|K & T*|< 15 Minuten|
+|> 1|Einzelmaster|Begrenzte Veraltung (Bounded staleness)|K & T|< 15 Minuten|
 |> 1|Multimaster|Sitzung, Präfixkonsistenz, Letztlich|< 15 Minuten|0|
-|> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|K & T*|0|
+|> 1|Multimaster|Begrenzte Veraltung (Bounded staleness)|K & T|0|
 |> 1|Einzel- oder Multimaster|STARK (Strong)|0|< 15 Minuten|
 
-* K & T = Anzahl von „K“-Versionen (Updates) eines Elements. Oder „T“-Zeitintervall.
-
-
+K = Anzahl von „K“-Versionen (Updates) eines Elements.
+T = Zeit „T“-Zeitintervall seit dem letzten Update.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

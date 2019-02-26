@@ -11,14 +11,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 12/10/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: e87ff83470ac8d375b4eee3b69f8793e3e11c0f5
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2f3db5e6260b065c83f0e337306d38dca6e5ff51
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497416"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341401"
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>Beheben von Fehlern bei der Ressourcenanbieterregistrierung
 
@@ -45,13 +45,21 @@ Message: The subscription is not registered to use namespace {resource-provider-
 
 Die Fehlermeldung enthält in der Regel Vorschläge für die unterstützten Standorte und API-Versionen. Sie können Ihre Vorlage in einen der vorgeschlagenen Werte ändern. Die meisten – jedoch nicht alle – Anbieter werden automatisch über das Azure-Portal oder die verwendete Befehlszeilenschnittstelle registriert. Wenn Sie einen bestimmten Ressourcenanbieter bisher noch nicht verwendet haben, müssen Sie diesen Anbieter unter Umständen registrieren.
 
+Wenn Sie die automatisches Herunterfahren für virtuelle Computer deaktivieren, erhalten Sie möglicherweise eine Fehlermeldung ähnlich der folgenden:
+
+```
+Code: AuthorizationFailed
+Message: The client '<identifier>' with object id '<identifier>' does not have authorization to perform action 'Microsoft.Compute/virtualMachines/read' over scope ...
+```
+
 ## <a name="cause"></a>Ursache
 
-Für diese Fehler gibt es drei Gründe:
+Sie erhalten diese Fehler aus einem der folgenden Gründe:
 
-* Der Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
+* Der erforderliche Ressourcenanbieter wurde für Ihr Abonnement nicht registriert.
 * Die API-Version wird für den Ressourcentyp nicht unterstützt.
 * Der Standort wird für den Ressourcentyp nicht unterstützt.
+* Für das automatische Herunterfahren von virtuellen Computern muss der Microsoft.DevTestLab-Ressourcenanbieter registriert sein.
 
 ## <a name="solution-1---powershell"></a>Lösung 1: PowerShell
 

@@ -15,24 +15,24 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/4/2019
 ms.author: rkarlin
-ms.openlocfilehash: 90c508fb5ad3caf961747f2ac10bae42dd1f4c35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: c31510b0d5ca2afcd6a52cf4301e5e5eaae7da5b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114959"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343509"
 ---
 # <a name="working-with-security-policies"></a>Arbeiten mit Sicherheitsrichtlinien
 
-In diesem Artikel wird beschrieben, wie Sicherheitsrichtlinien konfiguriert werden und wie Sie sie in Security Center anzeigen. Azure Security Center weist seine [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) automatisch für jedes Abonnement zu, für das das Onboarding durchgeführt wird. Sie können sie in [Azure Policy](../azure-policy/azure-policy-introduction.md) konfigurieren und haben hierbei auch die Möglichkeit, Richtlinien übergreifend für Verwaltungsgruppen und mehrere Abonnements festzulegen.
+In diesem Artikel wird beschrieben, wie Sicherheitsrichtlinien konfiguriert werden und wie Sie sie in Security Center anzeigen. Azure Security Center weist seine [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md) automatisch für jedes Abonnement zu, für das das Onboarding durchgeführt wird. Sie können sie in [Azure Policy](../governance/policy/overview.md) konfigurieren und haben hierbei auch die Möglichkeit, Richtlinien übergreifend für Verwaltungsgruppen und mehrere Abonnements festzulegen.
 
-Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure RM-PowerShell-Moduls](../azure-policy/assign-policy-definition-ps.md).
+Anweisungen dazu, wie Richtlinien über PowerShell festgelegt werden, finden Sie unter [Schnellstart: Erstellen einer Richtlinienzuweisung zum Identifizieren nicht konformer Ressourcen mithilfe des Azure PowerShell-Moduls](../governance/policy/assign-policy-powershell.md).
 
 >[!NOTE]
 > Die Integration von Security Center in Azure Policy hat begonnen. Bestandskunden werden automatisch zur neuen integrierten Initiative in Azure Policy anstelle der vorherigen Sicherheitsrichtlinien in Security Center migriert. Diese Änderung wirkt sich nicht auf Ihre Ressourcen oder Umgebung aus, mit der Ausnahme, dass die neue Initiative in Azure Policy vorhanden ist.
 
 ## <a name="what-are-security-policies"></a>Was sind Sicherheitsrichtlinien?
-Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Policy können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten (beispielsweise personenbezogene Informationen) eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../azure-policy/azure-policy-introduction.md) fest.
+Eine Sicherheitsrichtlinie definiert die gewünschte Konfiguration Ihrer Workloads und trägt zur Erfüllung unternehmensbezogener oder gesetzlicher Sicherheitsanforderungen bei. In Azure Policy können Sie Richtlinien für Ihre Azure-Abonnements definieren und auf die Art der Workload oder auf die Vertraulichkeit der Daten abstimmen. So kann etwa für Anwendungen mit regulierten Daten (beispielsweise personenbezogene Informationen) eine höhere Sicherheitsstufe erforderlich sein als für andere Workloads. Um eine Richtlinie mehreren Abonnements oder Verwaltungsgruppen zuzuweisen, legen Sie diese in [Azure Policy](../governance/policy/overview.md) fest.
 
 Ihre Sicherheitsrichtlinien sind die Grundlage der Sicherheitsempfehlungen, die Sie in Azure Security Center erhalten. Sie können ihre Einhaltung überwachen, damit Sie potenzielle Sicherheitsrisiken identifizieren und Bedrohungen eindämmen können. Weitere Informationen zur Ermittlung der Option, die für Sie geeignet ist, finden Sie in der Liste mit den [integrierten Sicherheitsrichtlinien](security-center-policy-definitions.md).
 
@@ -52,7 +52,7 @@ Security Center erstellt für jedes Ihrer Azure-Abonnements automatisch eine Sta
 - Übergreifendes Zuweisen von Richtlinien für Verwaltungsgruppen und Abonnements, die für eine gesamte Organisation oder eine Geschäftseinheit innerhalb der Organisation stehen können
 - Überwachen der Richtlinienkonformität
 
-Weitere Informationen zu Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../azure-policy/create-manage-policy.md).
+Weitere Informationen zu Azure Policy finden Sie unter [Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung](../governance/policy/tutorials/create-and-manage.md).
 
 Eine Azure-Richtlinie umfasst die folgenden Komponenten:
 
@@ -236,4 +236,4 @@ In diesem Artikel haben Sie erfahren, wie Sicherheitsrichtlinien in Azure Policy
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Hier finden Sie häufig gestellte Fragen zur Verwendung des Diensts.
 * [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
 
-Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../azure-policy/azure-policy-introduction.md).
+Weitere Informationen zu Azure Policy finden Sie unter [Was ist Azure Policy?](../governance/policy/overview.md).

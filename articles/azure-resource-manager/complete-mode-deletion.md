@@ -1,42 +1,46 @@
 ---
-title: 'Azure Resource Manager: Tagunterstützung für Ressourcen'
-description: Zeigt, welche Azure-Ressourcentypen Tags unterstützen. Enthält Details für alle Azure-Dienste.
+title: Löschung des vollständigen Modus von Azure Resource Manager nach Ressourcentyp
+description: Zeigt, wie die Ressourcentypen die Löschung des vollständigen Modus in Azure Resource Manager-Vorlagen verarbeiten.
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270385"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302621"
 ---
-# <a name="tag-support-for-azure-resources"></a>Tagunterstützung für Azure-Ressourcen
-In diesem Artikel erfahren Sie, ob ein Ressourcentyp [Tags](resource-group-using-tags.md) unterstützt.
+# <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Löschen von Azure-Ressourcen für Bereitstellungen im vollständigen Modus
+Dieser Artikel beschreibt, wie Ressourcentypen das Löschen handhaben, wenn sie sich nicht in einer Vorlage befinden, die im vollständigen Modus bereitgestellt wird.
 
-Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [tag-support.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv) herunter.
+Die mit `Yes` markierten Ressourcentypen werden gelöscht, wenn sich der Typ nicht in der Vorlage befindet, die im vollständigen Modus bereitgestellt wird. 
+
+Die mit `No` markierten Ressourcentypen werden nicht automatisch gelöscht, wenn sie sich nicht in der Vorlage befinden. Sie werden jedoch gelöscht, wenn die übergeordnete Ressource gelöscht wird. Eine vollständige Beschreibung des Verhaltens finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
+
+Um die gleichen Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden Sie [complete-mode-deletion.csv](https://github.com/tfitzmac/resource-capabilities/blob/master/complete-mode-deletion.csv) herunter.
 
 ## <a name="microsoftaad"></a>Microsoft.AAD
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | DomainServices | Ja | 
 | DomainServices/oucontainer | Nein  | 
 
 ## <a name="microsoftaadiam"></a>microsoft.aadiam
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | diagnosticSettings | Nein  | 
 | diagnosticSettingsCategories | Nein  | 
 
 ## <a name="microsoftaddons"></a>Microsoft.Addons
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | supportProviders | Nein  | 
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft.ADHybridHealthService
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | aadsupportcases | Nein  | 
 | addsservices | Nein  | 
@@ -48,7 +52,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | services | Nein  | 
 
 ## <a name="microsoftadvisor"></a>Microsoft.Advisor
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Konfigurationen | Nein  | 
 | generateRecommendations | Nein  | 
@@ -56,7 +60,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | suppressions | Nein  | 
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft.AlertsManagement
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | actionRules | Nein  | 
 | alerts | Nein  | 
@@ -68,24 +72,24 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | smartGroups | Nein  | 
 
 ## <a name="microsoftanalysisservices"></a>Microsoft.AnalysisServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | servers | Ja | 
 
 ## <a name="microsoftapimanagement"></a>Microsoft.ApiManagement
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | reportFeedback | Nein  | 
 | service | Ja | 
 | validateServiceName | Nein  | 
 
 ## <a name="microsoftattestation"></a>Microsoft.Attestation
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | attestationProviders | Nein  | 
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | classicAdministrators | Nein  | 
 | denyAssignments | Nein  | 
@@ -100,7 +104,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | roleDefinitions | Nein  | 
 
 ## <a name="microsoftautomation"></a>Microsoft.Automation
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | automationAccounts | Ja | 
 | automationAccounts/configurations | Ja | 
@@ -110,7 +114,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | automationAccounts/webhooks | Nein  | 
 
 ## <a name="microsoftazuregeneva"></a>Microsoft.Azure.Geneva
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | environments | Nein  | 
 | environments/accounts | Nein  | 
@@ -118,24 +122,24 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | environments/accounts/namespaces/configurations | Nein  | 
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft.AzureActiveDirectory
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | b2cDirectories | Ja | 
 
 ## <a name="microsoftazurestack"></a>Microsoft.AzureStack
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | registrations | Ja | 
 | registrations/customerSubscriptions | Nein  | 
 | registrations/products | Nein  | 
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | batchAccounts | Ja | 
 
 ## <a name="microsoftbilling"></a>Microsoft.Billing
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | billingAccounts | Nein  | 
 | billingAccounts/billingProfiles | Nein  | 
@@ -189,18 +193,18 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | usagePlans | Nein  | 
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | mapApis | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftbiztalkservices"></a>Microsoft.BizTalkServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | BizTalk | Ja | 
 
 ## <a name="microsoftblueprint"></a>Microsoft.Blueprint
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | blueprintAssignments | Nein  | 
 | blueprintAssignments/assignmentOperations | Nein  | 
@@ -211,20 +215,20 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | blueprints/versions/artifacts | Nein  | 
 
 ## <a name="microsoftbotservice"></a>Microsoft.BotService
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | botServices | Ja | 
 | botServices/channels | Nein  | 
 | botServices/connections | Nein  | 
 
 ## <a name="microsoftcache"></a>Microsoft.Cache
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Redis | Ja | 
 | RedisConfigDefinition | Nein  | 
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | appliedReservations | Nein  | 
 | calculatePrice | Nein  | 
@@ -243,7 +247,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | validateReservationOrder | Nein  | 
 
 ## <a name="microsoftcdn"></a>Microsoft.Cdn
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | edgenodes | Nein  | 
 | profiles | Ja | 
@@ -253,14 +257,14 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | validateProbe | Nein  | 
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft.CertificateRegistration
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | certificateOrders | Ja | 
 | certificateOrders/certificates | Nein  | 
 | validateCertificateRegistrationInformation | Nein  | 
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | capabilities | Nein  | 
 | domainNames | Nein  | 
@@ -279,12 +283,12 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | virtualMachines/diagnosticSettings | Nein  | 
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft.ClassicInfrastructureMigrate
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | classicInfrastructureResources | Nein  | 
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft.ClassicNetwork
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | capabilities | Nein  | 
 | expressRouteCrossConnections | Nein  | 
@@ -298,7 +302,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | virtualNetworks/virtualNetworkPeerings | Nein  | 
 
 ## <a name="microsoftclassicstorage"></a>Microsoft.ClassicStorage
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | capabilities | Nein  | 
 | disks | Nein  | 
@@ -314,18 +318,18 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | vmImages | Nein  | 
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft.CognitiveServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftcommerce"></a>Microsoft.Commerce
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | RateCard | Nein  | 
 | UsageAggregates | Nein  | 
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | availabilitySets | Ja | 
 | disks | Ja | 
@@ -346,7 +350,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nein  | 
 
 ## <a name="microsoftconsumption"></a>Microsoft.Consumption
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | AggregatedCost | Nein  | 
 | Bilanzen | Nein  | 
@@ -369,13 +373,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | UsageDetails | Nein  | 
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft.ContainerInstance
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | containerGroups | Ja | 
 | serviceAssociationLinks | Nein  | 
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft.ContainerRegistry
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | registries | Ja | 
 | registries/builds | Nein  | 
@@ -401,24 +405,24 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | registries/webhooks/ping | Nein  | 
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | containerServices | Ja | 
 | managedClusters | Ja | 
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | applications | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftcortanaanalytics"></a>Microsoft.CortanaAnalytics
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftcostmanagement"></a>Microsoft.CostManagement
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Alerts | Nein  | 
 | BillingAccounts | Nein  | 
@@ -432,7 +436,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | Berichte | Nein  | 
 
 ## <a name="microsoftcustomerinsights"></a>Microsoft.CustomerInsights
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | hubs | Ja | 
 | hubs/authorizationPolicies | Nein  | 
@@ -449,33 +453,33 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | hubs/widgetTypes | Nein  | 
 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | jobs | Ja | 
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | DataBoxEdgeDevices | Ja | 
 
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | workspaces | Ja | 
 | workspaces/virtualNetworkPeerings | Nein  | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | catalogs | Ja | 
 
 ## <a name="microsoftdataconnect"></a>Microsoft.DataConnect
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | connectionManagers | Ja | 
 
 ## <a name="microsoftdatafactory"></a>Microsoft.DataFactory
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | dataFactories | Ja | 
 | dataFactories/diagnosticSettings | Nein  | 
@@ -484,7 +488,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | factories/integrationRuntimes | Nein  | 
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft.DataLakeAnalytics
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 | accounts/dataLakeStoreAccounts | Nein  | 
@@ -492,34 +496,34 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | accounts/storageAccounts/containers | Nein  | 
 
 ## <a name="microsoftdatalakestore"></a>Microsoft.DataLakeStore
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 | accounts/eventGridFilters | Nein  | 
 | accounts/firewallRules | Nein  | 
 
 ## <a name="microsoftdatamigration"></a>Microsoft.DataMigration
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | services | Ja | 
 | services/projects | Ja | 
 
 ## <a name="microsoftdbformariadb"></a>Microsoft.DBforMariaDB
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | servers | Ja | 
 | servers/recoverableServers | Nein  | 
 | servers/virtualNetworkRules | Nein  | 
 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | servers | Ja | 
 | servers/recoverableServers | Nein  | 
 | servers/virtualNetworkRules | Nein  | 
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | servers | Ja | 
 | servers/advisors | Nein  | 
@@ -530,7 +534,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | servers/waitStatistics | Nein  | 
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | IotHubs | Ja | 
 | IotHubs/eventGridFilters | Nein  | 
@@ -538,12 +542,12 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | usages | Nein  | 
 
 ## <a name="microsoftdevspaces"></a>Microsoft.DevSpaces
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Controller | Ja | 
 
 ## <a name="microsoftdevtestlab"></a>Microsoft.DevTestLab
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | labs | Ja | 
 | labs/serviceRunners | Ja | 
@@ -551,13 +555,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | schedules | Ja | 
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | databaseAccountNames | Nein  | 
 | databaseAccounts | Ja | 
 
 ## <a name="microsoftdomainregistration"></a>Microsoft.DomainRegistration
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | domains | Ja | 
 | domains/domainOwnershipIdentifiers | Nein  | 
@@ -566,14 +570,14 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | validateDomainRegistrationInformation | Nein  | 
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft.DynamicsLcs
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | lcsprojects | Nein  | 
 | lcsprojects/clouddeployments | Nein  | 
 | lcsprojects/connectors | Nein  | 
 
 ## <a name="microsofteventgrid"></a>Microsoft.EventGrid
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | domains | Ja | 
 | domains/topics | Nein  | 
@@ -583,7 +587,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | topicTypes | Nein  | 
 
 ## <a name="microsofteventhub"></a>Microsoft.EventHub
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | clusters | Ja | 
 | namespaces | Ja | 
@@ -594,13 +598,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | namespaces/eventhubs/consumergroups | Nein  | 
 
 ## <a name="microsoftfeatures"></a>Microsoft.Features
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Features | Nein  | 
 | providers | Nein  | 
 
 ## <a name="microsoftgallery"></a>Microsoft.Gallery
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | enroll | Nein  | 
 | galleryitems | Nein  | 
@@ -616,29 +620,29 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | retrieveresourcesbyid | Nein  | 
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft.GuestConfiguration
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | guestConfigurationAssignments | Nein  | 
 | software | Nein  | 
 
 ## <a name="microsofthanaonazure"></a>Microsoft.HanaOnAzure
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | hanaInstances | Ja | 
 
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | clusters | Ja | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | jobs | Ja | 
 
 ## <a name="microsoftinformationprotection"></a>Microsoft.InformationProtection
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | labelGroups | Nein  | 
 | labelGroups/labels | Nein  | 
@@ -647,7 +651,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | labelGroups/labels/subLabels/conditions | Nein  | 
 
 ## <a name="microsoftinsights"></a>microsoft.insights
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | actiongroups | Ja | 
 | activityLogAlerts | Ja | 
@@ -679,23 +683,23 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | workbooks | Ja | 
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | diagnosticSettings | Nein  | 
 | diagnosticSettingsCategories | Nein  | 
 
 ## <a name="microsoftiotcentral"></a>Microsoft.IoTCentral
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | IoTApps | Ja | 
 
 ## <a name="microsoftiotspaces"></a>Microsoft.IoTSpaces
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Graph | Ja | 
 
 ## <a name="microsoftkeyvault"></a>Microsoft.KeyVault
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | deletedVaults | Nein  | 
 | vaults | Ja | 
@@ -703,7 +707,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | vaults/secrets | Nein  | 
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | clusters | Ja | 
 | clusters/databases | Nein  | 
@@ -711,41 +715,41 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | clusters/databases/eventhubconnections | Nein  | 
 
 ## <a name="microsoftlabservices"></a>Microsoft.LabServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | labaccounts | Ja | 
 | users | Nein  | 
 
 ## <a name="microsoftlocationbasedservices"></a>Microsoft.LocationBasedServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftlocationservices"></a>Microsoft.LocationServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftloganalytics"></a>Microsoft.LogAnalytics
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Protokolle | Nein  | 
 
 ## <a name="microsoftlogic"></a>Microsoft.Logic
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | integrationAccounts | Ja | 
 | workflows | Ja | 
 
 ## <a name="microsoftmachinelearning"></a>Microsoft.MachineLearning
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | commitmentPlans | Ja | 
 | webServices | Ja | 
 | Arbeitsbereiche | Ja | 
 
 ## <a name="microsoftmachinelearningexperimentation"></a>Microsoft.MachineLearningExperimentation
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 | accounts/workspaces | Ja | 
@@ -755,24 +759,24 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | teamAccounts/workspaces/projects | Ja | 
 
 ## <a name="microsoftmachinelearningmodelmanagement"></a>Microsoft.MachineLearningModelManagement
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | workspaces | Ja | 
 | workspaces/computes | Nein  | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | Identities | Nein  | 
 | userAssignedIdentities | Ja | 
 
 ## <a name="microsoftmanagement"></a>Microsoft.Management
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | getEntities | Nein  | 
 | managementGroups | Nein  | 
@@ -781,13 +785,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | tenantBackfillStatus | Nein  | 
 
 ## <a name="microsoftmaps"></a>Microsoft.Maps
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 | accounts/eventGridFilters | Nein  | 
 
 ## <a name="microsoftmarketplace"></a>Microsoft.Marketplace
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | offers | Nein  | 
 | offerTypes | Nein  | 
@@ -801,19 +805,19 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | products | Nein  | 
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft.MarketplaceApps
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | classicDevServices | Ja | 
 | updateCommunicationPreference | Nein  | 
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft.MarketplaceOrdering
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | agreements | Nein  | 
 | offertypes | Nein  | 
 
 ## <a name="microsoftmedia"></a>Microsoft.Media
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | mediaservices | Ja | 
 | mediaservices/accountFilters | Nein  | 
@@ -833,12 +837,12 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | mediaservices/transforms/jobs | Nein  | 
 
 ## <a name="microsoftmigrate"></a>Microsoft.Migrate
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | projects | Ja | 
 
 ## <a name="microsoftnetwork"></a>Microsoft.Network
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | applicationGateways | Ja | 
 | applicationSecurityGroups | Ja | 
@@ -899,13 +903,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | webApplicationFirewallPolicies | Ja | 
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | namespaces | Ja | 
 | namespaces/notificationHubs | Ja | 
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | devices | Nein  | 
 | linkTargets | Nein  | 
@@ -916,7 +920,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | workspaces/query | Nein  | 
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | managementassociations | Nein  | 
 | managementconfigurations | Ja | 
@@ -924,7 +928,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | views | Ja | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | policyEvents | Nein  | 
 | policyStates | Nein  | 
@@ -932,35 +936,35 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | remediations | Nein  | 
 
 ## <a name="microsoftportal"></a>Microsoft.Portal
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | consoles | Nein  | 
 | dashboards | Ja | 
 | userSettings | Nein  | 
 
 ## <a name="microsoftpowerbi"></a>Microsoft.PowerBI
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | workspaceCollections | Ja | 
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft.PowerBIDedicated
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | capacities | Ja | 
 
 ## <a name="microsoftprojectoxford"></a>Microsoft.ProjectOxford
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | accounts | Ja | 
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft.RecoveryServices
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | backupProtectedItems | Nein  | 
 | vaults | Ja | 
 
 ## <a name="microsoftrelay"></a>Microsoft.Relay
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | namespaces | Ja | 
 | namespaces/authorizationrules | Nein  | 
@@ -970,13 +974,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | namespaces/wcfrelays/authorizationrules | Nein  | 
 
 ## <a name="microsoftresourcegraph"></a>Microsoft.ResourceGraph
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | ressourcen | Nein  | 
 | subscriptionsStatus | Nein  | 
 
 ## <a name="microsoftresourcehealth"></a>Microsoft.ResourceHealth
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | availabilityStatuses | Nein  | 
 | childAvailabilityStatuses | Nein  | 
@@ -986,7 +990,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | Benachrichtigungen | Nein  | 
 
 ## <a name="microsoftresources"></a>Microsoft.Resources
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | deployments | Nein  | 
 | deployments/operations | Nein  | 
@@ -1005,25 +1009,25 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | tenants | Nein  | 
 
 ## <a name="microsoftsaas"></a>Microsoft.SaaS
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | applications | Ja | 
 | saasresources | Nein  | 
 
 ## <a name="microsoftscheduler"></a>Microsoft.Scheduler
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | flows | Ja | 
 | jobcollections | Ja | 
 
 ## <a name="microsoftsearch"></a>Microsoft.Search
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | resourceHealthMetadata | Nein  | 
 | searchServices | Ja | 
 
 ## <a name="microsoftsecurity"></a>Microsoft.Security
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | advancedThreatProtectionSettings | Nein  | 
 | alerts | Nein  | 
@@ -1058,13 +1062,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | workspaceSettings | Nein  | 
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft.SecurityGraph
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | diagnosticSettings | Nein  | 
 | diagnosticSettingsCategories | Nein  | 
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | namespaces | Ja | 
 | namespaces/authorizationrules | Nein  | 
@@ -1079,13 +1083,13 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | premiumMessagingRegions | Nein  | 
 
 ## <a name="microsoftservicefabric"></a>Microsoft.ServiceFabric
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | clusters | Ja | 
 | clusters/applications | Nein  | 
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft.ServiceFabricMesh
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | applications | Ja | 
 | gateways | Ja | 
@@ -1094,12 +1098,12 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | volumes | Ja | 
 
 ## <a name="microsoftsignalrservice"></a>Microsoft.SignalRService
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | SignalR | Ja | 
 
 ## <a name="microsoftsolutions"></a>Microsoft.Solutions
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | applianceDefinitions | Ja | 
 | appliances | Ja | 
@@ -1108,7 +1112,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | jitRequests | Ja | 
 
 ## <a name="microsoftsql"></a>Microsoft.SQL
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | managedInstances | Ja |
 | managedInstances/databases | Ja (siehe Hinweis unten) |
@@ -1132,18 +1136,18 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | servers/tdeCertificates | Nein  | 
 
 > [!NOTE]
-> Die Masterdatenbank unterstützt keine Tags, diese werden jedoch in anderen Datenbanken, z.B. Azure SQL Data Warehouse-Datenbanken, unterstützt. Azure SQL Data Warehouse-Datenbanken müssen sich im aktiven (nicht angehaltenen) Zustand befinden.
+> Die Masterdatenbank unterstützt keine Tags, diese werden jedoch in anderen Datenbanken, z.B. Data Warehouse-Datenbanken, unterstützt.
 
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft.SqlVirtualMachine
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | SqlVirtualMachineGroups | Ja | 
 | SqlVirtualMachineGroups/AvailabilityGroupListeners | Nein  | 
 | SqlVirtualMachines | Ja | 
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | storageAccounts | Ja | 
 | storageAccounts/blobServices | Nein  | 
@@ -1154,7 +1158,7 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | usages | Nein  | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft.StorageSync
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | storageSyncServices | Ja | 
 | storageSyncServices/registeredServers | Nein  | 
@@ -1164,12 +1168,12 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | storageSyncServices/workflows | Nein  | 
 
 ## <a name="microsoftstorsimple"></a>Microsoft.StorSimple
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | managers | Ja | 
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft.StreamAnalytics
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | streamingjobs | Ja (siehe Hinweis unten) | 
 | streamingjobs/diagnosticSettings | Nein  | 
@@ -1178,25 +1182,25 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 > Sie können kein Tag hinzufügen, wenn Streamingaufträge ausgeführt werden. Beenden Sie die Ressource, um ein Tag hinzuzufügen.
 
 ## <a name="microsoftsubscription"></a>Microsoft.Subscription
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | CreateSubscription | Nein  | 
 | SubscriptionDefinitions | Nein  | 
 | SubscriptionOperations | Nein  | 
 
 ## <a name="microsoftsupport"></a>microsoft.support
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | supporttickets | Nein  | 
 
 ## <a name="microsoftterraformoss"></a>Microsoft.TerraformOSS
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | providerRegistrations | Ja | 
 | ressourcen | Ja | 
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft.TimeSeriesInsights
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | environments | Ja | 
 | environments/accessPolicies | Nein  | 
@@ -1204,14 +1208,14 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | environments/referenceDataSets | Ja | 
 
 ## <a name="microsoftvisualstudio"></a>microsoft.visualstudio
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | account | Ja | 
 | account/extension | Ja | 
 | account/project | Ja | 
 
 ## <a name="microsoftweb"></a>Microsoft.Web
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | apiManagementAccounts | Nein  | 
 | apiManagementAccounts/apiAcls | Nein  | 
@@ -1258,18 +1262,18 @@ Um die Daten als Datei mit durch Trennzeichen getrennten Werten abzurufen, laden
 | verifyHostingEnvironmentVnet | Nein  | 
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft.WindowsDefenderATP
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | diagnosticSettings | Nein  | 
 | diagnosticSettingsCategories | Nein  | 
 
 ## <a name="microsoftwindowsiot"></a>Microsoft.WindowsIoT
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | DeviceServices | Ja | 
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft.WorkloadMonitor
-| Ressourcentyp | Tagunterstützung |
+| Ressourcentyp | Löschung des vollständigen Modus |
 | ------------- | ----------- |
 | components | Nein  | 
 | componentsSummary | Nein  | 

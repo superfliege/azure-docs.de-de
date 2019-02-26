@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e3726037e16acdf1d6d624dbf8c2088a57b0bde6
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 703f27dab6ca6252647ecb37d17d0f4faf045097
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234540"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268685"
 ---
 # <a name="troubleshoot-hybrid-runbook-workers"></a>Problembehandlung für Hybrid Runbook Worker
 
@@ -204,7 +204,7 @@ Dies kann dadurch verursacht werden, dass der Computer bereits bei einem anderen
 
 #### <a name="resolution"></a>Lösung
 
-Um dieses Problem zu lösen, entfernen Sie den folgenden Registrierungsschlüssel, und versuchen Sie erneut, das `Add-HybridRunbookWorker`-Cmdlet auszuführen:
+Um dieses Problem zu lösen, entfernen Sie den folgenden Registrierungsschlüssel und starten den `HealthService` erneut, und versuchen Sie erneut, das `Add-HybridRunbookWorker`-Cmdlet auszuführen:
 
 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HybridRunbookWorker`
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 77763765e75500d994235bba0a5c0c3bb3e3be70
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 9917901146eb0a050531a66ab24fbd88c91c02c9
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756817"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311204"
 ---
 # <a name="get-started-with-storage-explorer"></a>Erste Schritte mit dem Storage-Explorer
 
@@ -221,7 +221,7 @@ Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer
 
 3. Benutzer B verwendet den Storage-Explorer, um das Anfügen an das Konto von Benutzer A mit der bereitgestellten SAS durchzuführen.
 
-### <a name="generate-a-sas-connection-string-for-the-account-you-want-to-share"></a>Generieren einer SAS-Verbindungszeichenfolge für das freizugebende Konto
+### <a name="generate-a-sas-query-string-for-the-account-you-want-to-share"></a>Generieren einer SAS-Abfragezeichenfolge für das freizugebende Konto
 
 1. Klicken Sie im Storage-Explorer mit der rechten Maustaste auf das Speicherkonto, das Sie freigeben möchten, und wählen Sie **Shared Access Signature abrufen...** aus.
 
@@ -231,7 +231,7 @@ Ein Beispiel: Benutzer A ist Administrator eines Azure-Abonnements, und Benutzer
 
     ![Dialogfeld „SAS abrufen“][15]
 
-3. Wählen Sie neben dem Textfeld **Verbindungszeichenfolge** die Option **Kopieren** aus, um die Verbindungszeichenfolge in die Zwischenablage zu kopieren, und klicken Sie anschließend auf **Schließen**.
+3. Wählen Sie neben dem Textfeld **Abfragezeichenfolge** die Option **Kopieren** aus, um die Abfragezeichenfolge in die Zwischenablage zu kopieren, und klicken Sie anschließend auf **Schließen**.
 
 ### <a name="attach-to-a-storage-account-by-using-a-sas-connection-string"></a>Anfügen an ein Speicherkonto unter Verwendung einer SAS-Verbindungszeichenfolge
 

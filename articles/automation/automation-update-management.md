@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0afb8a09fa9780755bcfeef678b76e176f11b348
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: df4ae4b0c3f230947e0b9a5885070049f32a4b2f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56246033"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429861"
 ---
 # <a name="update-management-solution-in-azure"></a>Lösung für die Updateverwaltung in Azure
 
@@ -188,6 +188,8 @@ Für jeden verwalteten Windows-Computer wird zwei Mal pro Tag ein Scanvorgang au
 Für jeden verwalteten Linux-Computer wird alle drei Stunden ein Scanvorgang ausgeführt.
 
 Es kann zwischen 30 Minuten und sechs Stunden dauern, bis im Dashboard aktualisierte Daten von verwalteten Computern angezeigt werden.
+
+Die durchschnittliche Nutzung von Log Analytics-Daten für einen Computer mithilfe der Updateverwaltung beträgt ungefähr 25 MB pro Monat. Dieser Wert ist nur ein Näherungswert und kann sich abhängig von Ihrer Umgebung ändern. Es wird empfohlen, Ihre Umgebung zu überwachen, um die genaue Nutzung zu ermitteln.
 
 ## <a name="viewing-update-assessments"></a>Anzeigen der Updatebewertungen
 

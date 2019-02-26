@@ -11,26 +11,26 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/10/2019
+ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f5049a5a829ce8e94b62409c9d3b1439e8431fb1
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f4838f688210f9017d691bd6a463217a75fc90d4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101347"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447513"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
-Microsoft empfiehlt das Verwalten des Zugriffs auf Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Wenn Sie jedoch immer noch das klassische Bereitstellungsmodell verwenden, müssen Sie eine klassische Rolle des Typs „Abonnementadministrator“ verwenden: Dienstadministrator und Co-Administrator. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
+Microsoft empfiehlt das Verwalten des Zugriffs auf Azure-Ressourcen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC). Wenn Sie jedoch immer noch das klassische Bereitstellungsmodell verwenden, müssen Sie eine klassische Rolle des Typs „Abonnementadministrator“ verwenden: Dienstadministrator und Co-Administrator. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellung im Vergleich zur klassischen Bereitstellung](../azure-resource-manager/resource-manager-deployment-model.md).
 
 In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Administrator“ und „Dienstadministrator“ sowie das Anzeigen des Kontoadministrators beschrieben.
 
 ## <a name="add-a-co-administrator"></a>Hinzufügen eines Co-Administrators
 
 > [!TIP]
-> Sie müssen lediglich einen Co-Administrator hinzufügen, wenn der Benutzer klassische Azure-Bereitstellungen verwalten soll. Wir empfehlen Ihnen, für alle anderen Zwecke RBAC zu nutzen.
+> Sie müssen lediglich einen Co-Administrator hinzufügen, wenn der Benutzer klassische Azure-Bereitstellungen verwalten soll, indem Sie das [PowerShell-Modul „Azure Service Management“](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure) verwenden. Wenn der Benutzer nur das Azure-Portal zum Verwalten der klassischen Ressourcen verwenden, müssen Sie den klassischen Administrator für den Benutzer nicht hinzufügen.
 
 1. Melden Sie sich als beim [Azure-Portal](https://portal.azure.com) als Dienstadministrator an.
 
@@ -155,4 +155,4 @@ Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Grundlegendes zu den verschiedenen Rollen in Azure](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Verwalten des Zugriffs mithilfe der RBAC und des Azure-Portals](../role-based-access-control/role-assignments-portal.md)
+* [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](../role-based-access-control/role-assignments-portal.md)

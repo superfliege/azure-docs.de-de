@@ -10,12 +10,12 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 keywords: PowerShell, Runbook, JSON, Azure Automation
-ms.openlocfilehash: d13f21da88ae3fb9dfa67b11285e0c3e984d5e5b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: ef97d4e2fd0951e30a725e8f2f9603a73c61f1ca
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421810"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416115"
 ---
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Bereitstellen einer Azure Resource Manager-Vorlage in einem Azure Automation-PowerShell-Runbook
 
@@ -23,7 +23,7 @@ Sie können ein [Azure Automation-PowerShell-Runbook](automation-first-runbook-t
 
 Auf diese Weise können Sie die Bereitstellung von Azure-Ressourcen automatisieren. Sie können Ihre Resource Manager-Vorlagen an einem zentralen, sicheren Ort verwalten, z.B. in Azure Storage.
 
-In diesem Thema erstellen wir ein PowerShell-Runbook, für das eine in [Azure Storage](../storage/common/storage-introduction.md) gespeicherte Resource Manager-Vorlage verwendet wird, um ein neues Azure Storage-Konto bereitzustellen.
+In diesem Artikel erstellen wir ein PowerShell-Runbook, für das eine in [Azure Storage](../storage/common/storage-introduction.md) gespeicherte Resource Manager-Vorlage verwendet wird, um ein neues Azure Storage-Konto bereitzustellen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -176,7 +176,7 @@ Speichern Sie die Datei lokal als `DeployTemplate.ps1`.
 ## <a name="import-and-publish-the-runbook-into-your-azure-automation-account"></a>Importieren und Veröffentlichen des Runbooks im Azure Automation-Konto
 
 Als Nächstes verwenden wir PowerShell, um das Runbook in Ihr Azure Automation-Konto zu importieren und es anschließend zu veröffentlichen.
-Informationen zum Importieren und Veröffentlichen eines Runbooks im Azure-Portal finden Sie unter [Erstellen oder Importieren eines Runbooks in Azure Automation](automation-creating-importing-runbook.md).
+Informationen zum Importieren und Veröffentlichen eines Runbooks im Azure-Portal finden Sie unter [Verwalten von Runbooks in Azure Automation](manage-runbooks.md).
 
 Führen Sie die folgenden PowerShell-Befehle aus, um `DeployTemplate.ps1` als PowerShell-Runbook in Ihr Automation-Konto zu importieren:
 

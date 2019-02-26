@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: raynew
-ms.openlocfilehash: ee7ebb151653b611c652c072b8cb4c07754d9b68
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 5e5a6f32eeac674a6527d333b981bbdac20a9958
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53269701"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309760"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Sichern von VMware-VMs mit Azure Backup Server
 
@@ -39,7 +39,7 @@ Azure Backup Server kommuniziert mit VMware-Servern standardmäßig über HTTPS.
 
 ### <a name="before-you-start"></a>Vorbereitung
 
-- Wenn Sie HTTPS nicht verwenden möchten, können Sie [die Standardeinstellung deaktivieren](backup-azure-backup-server-vmware.md#disable-secure-communication-protocol).
+- Wenn Sie HTTPS nicht verwenden möchten, können Sie [die Standardeinstellung deaktivieren](backup-azure-backup-server-vmware.md).
 - In der Regel stellen Sie über einen Browser auf dem Azure Backup Server-Computer mithilfe von vSphere Web Client eine Verbindung mit dem vCenter-/ESXi-Server her. Beim ersten Mal ist die Verbindung nicht sicher, und es wird Folgendes angezeigt.
 - Es ist wichtig, dass Sie verstehen, wie Azure Backup Server Sicherungen behandelt.
     - Im ersten Schritt sichert Azure Backup Server Daten auf dem lokalen Datenträgerspeicher. Azure Backup Server verwendet einen Speicherpool. Ein Speicherpool ist eine Gruppe von Datenträgern und Volumes, auf denen Azure Backup Server die Datenträger-Wiederherstellungspunkte für die geschützten Daten speichert. Bei dem Speicherpool kann es sich um direkt angeschlossenen Speicher (Directly Attached Storage, DAS), ein Fibre Channel-SAN oder ein iSCSI-Speichergerät oder-SAN handeln. Sie müssen unbedingt sicherstellen, dass genügend Speicherplatz für die lokale Sicherung Ihrer VMware-VM-Daten vorhanden ist.
@@ -308,7 +308,7 @@ Fügen Sie VMware-VMs für die Sicherung hinzu. Schutzgruppen erfassen mehrere V
 
     ![Kurzfristige Ziele angeben](./media/backup-azure-backup-server-vmware/short-term-goals.png)
 
-6. Überprüfen Sie auf der Seite **Datenträgerzuordnung überprüfen** den für die VM-Sicherungen bereitgestellten Speicherplatz.
+6. Überprüfen Sie auf der Seite **Datenträgerzuordnung überprüfen** den für die VM-Sicherungen bereitgestellten Speicherplatz. für die virtuellen Computer.
 
     - Die empfohlenen Datenträgerzuordnungen basieren auf der von Ihnen angegebenen Beibehaltungsdauer, dem Typ der Workload und der Größe der geschützten Daten. Nehmen Sie die erforderlichen Änderungen vor, und klicken Sie dann auf **Weiter**.
     -  **Datengröße:** Die Größe der Daten in der Schutzgruppe.

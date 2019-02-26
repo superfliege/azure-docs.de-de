@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 2/8/2019
 ms.author: moderakh
-ms.openlocfilehash: 88fcfec903dac9d939d658e5d06a51ab8ff1aba9
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1a86ceefdc5c3b60dc4bca5a1ac659534653aa66
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979172"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416274"
 ---
 # <a name="azure-cosmos-db-async-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Async Java SDK für die SQL-API: Versionshinweise und Ressourcen
 > [!div class="op_single_selector"]
@@ -45,13 +45,12 @@ Das Async Java SDK für die SQL-API unterscheidet sich vom Java SDK für die SQL
 ## <a name="release-notes"></a>Versionshinweise
 
 ### <a name="a-name240240"></a><a name="2.4.0"/>2.4.0
-* Direkte allgemeine Verfügbarkeit.
+* Konnektivität des direkten Modus ist jetzt allgemein verfügbar (Generally Available, GA). Ein Beispiel, das Konnektivität des direkten Modus verwendet, finden Sie im GitHub-Repository unter [azure-cosmosdb-java](https://github.com/Azure/azure-cosmosdb-java).
 * Unterstützung für QueryMetrics hinzugefügt.
-* Die APIs, die java.util.Collection akzeptieren, wurden geändert, deren Reihenfolge wichtig ist, um stattdessen java.util.List zu akzeptieren.
-  Jetzt wird List von ConnectionPolicy#getPreferredLocations(), JsonSerialization und PartitionKey(.) akzeptiert.
+* Die APIs, die java.util.Collection akzeptieren, wurden geändert, deren Reihenfolge wichtig ist, um stattdessen java.util.List zu akzeptieren. Jetzt wird List von ConnectionPolicy#getPreferredLocations(), JsonSerialization und PartitionKey(.) akzeptiert.
 
 ### <a name="a-name240-beta-1240-beta-1"></a><a name="2.4.0-beta-1"/>2.4.0-beta-1
-* Unterstützung für Direct wurde hinzugefügt.
+* Unterstützung für Konnektivität des direkten Modus hinzugefügt.
 * Die APIs, die java.util.Collection akzeptieren, wurden geändert, deren Reihenfolge wichtig ist, um stattdessen java.util.List zu akzeptieren.
   Jetzt wird List von ConnectionPolicy#getPreferredLocations(), JsonSerialization und PartitionKey(.) akzeptiert.
 * Für Dokumentabfragen im Gatewaymodus wurde ein Sitzungsfehler behoben.

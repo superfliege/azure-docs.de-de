@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/12/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 90616544b1fddb8b6def04c30202035bec04d599
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 7278eba1c9039c180f75cdd2dfd1e18a77baf423
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236004"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416784"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>Verwalten von Pre- und Post-Skripts (Vorschauversion)
 
@@ -22,7 +22,7 @@ Pre- und Post-Skripts (vor bzw. nach der Bereitstellung auszuführende Skripts) 
 
 ## <a name="runbook-requirements"></a>Anforderungen für Runbooks
 
-Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, muss es in Ihr Automation-Konto importiert und veröffentlicht werden. Weitere Informationen zu diesem Prozess finden Sie unter [Veröffentlichen eines Runbooks](automation-creating-importing-runbook.md#publishing-a-runbook).
+Damit ein Runbook als Pre- oder Post-Skript verwendet werden kann, muss es in Ihr Automation-Konto importiert und veröffentlicht werden. Weitere Informationen zu diesem Prozess finden Sie unter [Veröffentlichen eines Runbooks](manage-runbooks.md#publish-a-runbook).
 
 ## <a name="using-a-prepost-script"></a>Verwenden eines Pre-/Post-Skripts
 
@@ -52,7 +52,19 @@ Wenn Sie in die Updatebereitstellungsausführung klicken, werden weitere Details
 
 ## <a name="passing-parameters"></a>Übergeben von Parametern
 
-Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines Runbooks Parameter übergeben. Parameter werden beim Erstellen der Updatebereitstellung definiert. Pre- und Post-Skripts erfordern Parameter vom Typ `String`. Wenn Sie einen anderen Objekttyp benötigen, können Sie mithilfe von `[System.Convert]` eine Typumwandlung vornehmen oder diese mit eigener Logik durchführen.
+Beim Konfigurieren von Pre- und Post-Skripts können Sie wie beim Planen eines Runbooks Parameter übergeben. Parameter werden beim Erstellen der Updatebereitstellung definiert. Pre- und Post-Skripts unterstützen die folgenden Typen:
+
+* [char]
+* [byte]
+* [int]
+* [long]
+* [decimal]
+* [single]
+* [double]
+* [DateTime]
+* [string]
+
+Wenn Sie einen anderen Objekttyp benötigen, können Sie eine Typumwandlung in einen anderen Typ mit Ihrer eigenen Logik im Runbook durchführen.
 
 Neben den Standardrunbookparametern ist ein zusätzlicher Parameter verfügbar. **SoftwareUpdateConfigurationRunContext**. Dieser Parameter ist eine JSON-Zeichenfolge, und wenn Sie ihn in Ihrem Pre- oder Post-Skript definieren, wird er automatisch von der Updatebereitstellung übergeben. Der Parameter enthält Informationen zur Updatebereitstellung, bei denen es sich um eine Teilmenge der von der [SoftwareUpdateconfigurations-API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) zurückgegebenen Informationen handelt. In der folgenden Tabelle sind die Eigenschaften aufgeführt, die in der Variablen bereitgestellt werden:
 

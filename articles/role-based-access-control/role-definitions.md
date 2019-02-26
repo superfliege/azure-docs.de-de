@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zu Rollendefinitionen in Azure RBAC | Microsoft-Dokumentation
-description: Dieser Artikel enthält Informationen zu Rollendefinitionen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für die präzise Zugriffsverwaltung von Ressourcen in Azure.
+title: Grundlegendes zu Rollendefinitionen in RBAC für Azure-Ressourcen | Microsoft-Dokumentation
+description: Dieser Artikel enthält Informationen zu Rollendefinitionen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für die präzise Zugriffsverwaltung von Azure-Ressourcen.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/09/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: 8966eb337af07b90e7d9c697a4bfd14c543540aa
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b7f4ce9508928ccc6ab766e7164c674511bcaa37
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991360"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342778"
 ---
-# <a name="understand-role-definitions"></a>Grundlegendes zu Rollendefinitionen
+# <a name="understand-role-definitions-for-azure-resources"></a>Grundlegendes zu Rollendefinitionen für Azure-Ressourcen
 
-Wenn Sie die Funktionsweise eine Rolle nachvollziehen oder eine eigene [benutzerdefinierte Rolle](custom-roles.md) erstellen möchten, ist es hilfreich zu verstehen, wie Rollen definiert werden. Dieser Artikel geht ausführlich auf Rollendefinitionen ein und enthält einige Beispiele.
+Wenn Sie die Funktionsweise eine Rolle nachvollziehen oder eine eigene [benutzerdefinierte Rolle für Azure-Ressourcen](custom-roles.md) erstellen möchten, ist es hilfreich zu verstehen, wie Rollen definiert werden. Dieser Artikel geht ausführlich auf Rollendefinitionen ein und enthält einige Beispiele.
 
 ## <a name="role-definition-structure"></a>Struktur einer Rollendefinition
 
@@ -151,6 +151,8 @@ Da Alice über eine Platzhalteraktion (`*`) in einem Abonnementbereich verfügt,
 
 Die Berechtigungen von Bob sind ausschließlich auf `Actions` und `DataActions` beschränkt, die in der Rolle [Mitwirkenden an Storage-Blobdaten (Vorschauversion)](built-in-roles.md#storage-blob-data-contributor-preview) angegeben sind. Basierend auf der Rolle kann Bob Verwaltungs- und Datenvorgänge durchführen. Beispielsweise kann Bob Container im angegebenen Speicherkonto lesen, schreiben und löschen und zudem die Blobs lesen, schreiben und löschen.
 
+Weitere Informationen zur Verwaltung und zur Sicherheit auf Datenebene für den Speicher finden Sie im [Azure Storage-Sicherheitsleitfaden](../storage/common/storage-security-guide.md).
+
 ### <a name="what-tools-support-using-rbac-for-data-operations"></a>Welche Tools unterstützt die RBAC für Datenvorgänge?
 
 Um Datenvorgänge anzuzeigen und mit diesen zu arbeiten, müssen Sie über die richtigen Tool- oder SDK-Versionen verfügen:
@@ -225,10 +227,10 @@ Bei integrierten Rollen ist `AssignableScopes` auf den Stammbereich (`"/"`) fest
 | Rolle ist nur für die Zuweisung in der Netzwerkressourcengruppe verfügbar | `"/subscriptions/c276fc76-9cd4-44c9-99a7-4fd71546436e/resourceGroups/Network"` |
 | Rolle ist für die Zuweisung in allen Bereichen verfügbar | `"/"` |
 
-Informationen zu `AssignableScopes` für benutzerdefinierte Rollen finden Sie unter [Benutzerdefinierte Rollen](custom-roles.md).
+Informationen zu `AssignableScopes` für benutzerdefinierte Rollen finden Sie unter [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Integrierte Rollen](built-in-roles.md)
-* [Benutzerdefinierte Rollen](custom-roles.md)
+* [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md)
+* [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
 * [Vorgänge für Azure Resource Manager-Ressourcenanbieter](resource-provider-operations.md)

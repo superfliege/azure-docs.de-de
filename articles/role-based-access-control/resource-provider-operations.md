@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 71ede3d6eb35935e3fec32e8fd4bb71d6c698486
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5b9c0a71c8b01810474e4936fdd4a0852baf0ed7
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697055"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343152"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Vorgänge für Azure Resource Manager-Ressourcenanbieter
 
@@ -947,7 +947,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | --- | --- | --- |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/operationstatuses/read | Hiermit wird der Vorgangsstatus für eine ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Hiermit wird das Peering der ExpressRoute-Querverbindung gelöscht. |
-> | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/operationstatuses/read | Hiermit wird der Vorgangsstatus für das Peering einer ExpressRoute-Querverbindung abgerufen. |
+> | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Hiermit wird der Vorgangsstatus für das Peering einer ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/read | Hiermit wird das Peering einer ExpressRoute-Querverbindung abgerufen. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/write | Hiermit wird das Peering einer ExpressRoute-Querverbindung hinzugefügt. |
 > | Aktion | Microsoft.ClassicNetwork/expressroutecrossconnections/read | Hiermit werden ExpressRoute-Querverbindungen abgerufen. |
@@ -3416,7 +3416,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | Microsoft.Network/expressRouteServiceProviders/read | Ruft ExpressRoute-Dienstanbieter ab. |
 > | Aktion | Microsoft.Network/frontDoors/backendPools/delete | Löscht einen Back-End-Pool. |
 > | Aktion | Microsoft.Network/frontDoors/backendPools/read | Ruft einen Back-End-Pool ab. |
-> | Aktion | Microsoft.Network/frontDoors/backendPools/write | Erstellt oder aktualisiert einen Back-End-Pool. |
+> | Aktion | Microsoft.Network/frontDoors/backendPools/read | Erstellt oder aktualisiert einen Back-End-Pool. |
 > | Aktion | Microsoft.Network/frontDoors/delete | Löscht eine „Front Door“. |
 > | Aktion | Microsoft.Network/frontDoors/frontendEndpoints/delete | Löscht einen Front-End-Endpunkt. |
 > | Aktion | Microsoft.Network/frontDoors/frontendEndpoints/disableHttps/action | Deaktiviert HTTPS für einen Front-End-Endpunkt. |
@@ -5469,7 +5469,7 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 > | Aktion | microsoft.web/sites/hostnamebindings/read | Dient zum Abrufen von Hostnamenbindungen für Web-Apps. |
 > | Aktion | microsoft.web/sites/hostnamebindings/write | Dient zum Aktualisieren von Hostnamenbindungen für Web-Apps. |
 > | Aktion | microsoft.web/sites/hostruntime/functions/keys/read | Ruft Funktionsschlüssel der Hostruntime für Web-Apps ab. |
-> | Aktion | Microsoft.Web/sites/hostruntime/host/_master/read | Abrufen des Hauptschlüssels der Funktionen-App für Administratorvorgänge |
+> | Aktion | Microsoft.Web/sites/hostruntime/host/_master/read | Abrufen des Hauptschlüssels der Funktionen-App für Aministratorvorgänge |
 > | Aktion | Microsoft.Web/sites/hostruntime/host/action | Durchführen von Laufzeitaktionen für die Funktionen-App wie Synchronisieren von Triggern, Hinzufügen von Funktionen, Aufrufen von Funktionen, Löschen von Funktionen usw. |
 > | Aktion | microsoft.web/sites/hostruntime/host/read | Ruft den Hostruntime-Host für Web-Apps ab. |
 > | Aktion | microsoft.web/sites/hybridconnection/delete | Dient zum Löschen der Hybridverbindung für Web-Apps. |
@@ -5689,5 +5689,5 @@ Die Vorgänge für Ressourcenanbieter werden ständig weiterentwickelt. Verwende
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Benutzerdefinierte Rollen](custom-roles.md)
-- [Integrierte Rollen](built-in-roles.md)
+- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
+- [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md)

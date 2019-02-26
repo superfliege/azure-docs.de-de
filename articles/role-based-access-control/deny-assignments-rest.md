@@ -1,6 +1,6 @@
 ---
-title: Auflisten von Ablehnungszuweisungen mithilfe von RBAC und der REST-API – Azure | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Ablehnungszuweisungen für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API auflisten.
+title: 'Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie Ablehnungszuweisungen für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen und der REST-API auflisten.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 44c1d3b18bb9bdc63247379fe3f277cb6542f2da
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 29b8e0953109238b724cc8df9f456706f71a041e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975583"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341622"
 ---
-# <a name="list-deny-assignments-using-rbac-and-the-rest-api"></a>Auflisten von Ablehnungszuweisungen mithilfe von RBAC und der REST-API
+# <a name="list-deny-assignments-for-azure-resources-using-the-rest-api"></a>Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API
 
 Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden. Auch wenn Sie keine eigenen Ablehnungszuweisungen erstellen können, ist es möglich, Ablehnungszuweisungen aufzulisten, da sie sich auf Ihre geltenden Berechtigungen auswirken können. In diesem Artikel wird beschrieben, wie Sie Ablehnungszuweisungen mithilfe von RBAC und der REST-API auflisten.
 
@@ -36,7 +36,7 @@ Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azu
 
 1. Ersetzen Sie innerhalb des URI *{scope}* durch den Bereich, für den die Ablehnungszuweisungen aufgelistet werden sollen.
 
-    | Bereich | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -60,7 +60,7 @@ Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azu
 
 1. Ersetzen Sie innerhalb des URI *{scope}* durch den Bereich, für den die Ablehnungszuweisungen aufgelistet werden sollen.
 
-    | Bereich | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -95,6 +95,6 @@ Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Grundlegendes zu Ablehnungszuweisungen](deny-assignments.md)
+- [Verstehen von Ablehnungszuweisungen für Azure-Ressourcen](deny-assignments.md)
 - [Erhöhen der Zugriffsrechte für einen globalen Administrator in Azure Active Directory](elevate-access-global-admin.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

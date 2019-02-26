@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
-ms.openlocfilehash: b69b16cec08c5d29d4812258f694f2d078a9ff35
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 222957bb79a88ec7b4c6e9afd6d86fe2776dbfd3
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700977"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301790"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure-Blaupause für Sicherheit und Compliance: Hosten von PaaS-Webanwendungen für UK OFFICIAL-Workloads
 
@@ -23,7 +23,7 @@ Azure-Vorlagen (Blueprints) umfassen Leitfäden und Automatisierungsvorlagen, mi
 
 ## <a name="overview"></a>Übersicht
 
-Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automatisierungsskripts, um eine gehostete Microsoft Azure-PaaS-Webanwendungsarchitektur ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) bereitzustellen, die zur Verarbeitung von Workloads mit der Klassifizierung [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf) geeignet ist. Diese Sicherheitsklassifizierung gilt für die meisten Informationen, die von Einrichtungen des öffentlichen Sektors erstellt oder verarbeitet werden. Hierzu gehören auch routinemäßige Geschäftsvorgänge und Dienstleistungen, von denen einige schädliche Konsequenzen nach sich ziehen können, wenn sie verloren gehen, gestohlen werden oder in den Medien veröffentlicht werden. Das typische Bedrohungsprofil für die Klassifizierung „OFFICIAL“ ähnelt hierbei dem Fall eines privaten Unternehmens, das wertvolle Informationen und Dienstleistungen bereitstellt. Bei UK OFFICIAL wird davon ausgegangen, dass Daten oder Dienste der Regierung des Vereinigten Königreichs gegen Bedrohungen oder Kompromittierungen durch Angreifer mit begrenzten Fähigkeiten verteidigt werden müssen, z.B. Hactivists, Interessenparteien, investigative Journalisten, kompetente einzelne Hacker und die Mehrheit von kriminellen Einzelpersonen und Gruppen (keine erschöpfende Liste).
+Diese Vorlage für Azure Security and Compliance enthält Anleitungen und Automatisierungsskripts, um eine gehostete Microsoft Azure-PaaS-Webanwendungsarchitektur ([Platform-as-a-Service](https://azure.microsoft.com/overview/what-is-paas/)) bereitzustellen, die zur Verarbeitung von Workloads mit der Klassifizierung [UK OFFICIAL](https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/715778/May-2018_Government-Security-Classifications-2.pdf) geeignet ist. Diese Sicherheitsklassifizierung gilt für die meisten Informationen, die von Einrichtungen des öffentlichen Sektors erstellt oder verarbeitet werden. Hierzu gehören auch routinemäßige Geschäftsvorgänge und Dienstleistungen, von denen einige schädliche Konsequenzen nach sich ziehen können, wenn sie verloren gehen, gestohlen oder in den Medien veröffentlicht werden. Das typische Bedrohungsprofil für die Klassifizierung „OFFICIAL“ ähnelt hierbei dem Fall eines privaten Unternehmens, das wertvolle Informationen und Dienstleistungen bereitstellt. Bei UK OFFICIAL wird davon ausgegangen, dass Daten oder Dienste der Regierung des Vereinigten Königreichs gegen Bedrohungen oder Kompromittierungen durch Angreifer mit begrenzten Fähigkeiten verteidigt werden müssen, z.B. Hactivists, Interessenparteien, investigative Journalisten, kompetente einzelne Hacker und die Mehrheit von kriminellen Einzelpersonen und Gruppen (keine erschöpfende Liste).
 
 Diese Vorlage wurde vom UK National Cyber Security Centre (NCSC) überprüft und erfüllt die NCSC 14-Cloudsicherheitsprinzipien.
 
@@ -182,7 +182,7 @@ Ausführliche Informationen zum Schützen von Azure Storage finden Sie im [Siche
 
 #### <a name="application-insights"></a>Application Insights
 
-[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Wird zum Überwachen von Live-Webanwendungen verwendet und erkennt automatisch Leistungsanomalien, analysiert die Leistung, diagnostiziert Probleme und liefert Informationen dazu, wie Benutzer mit der App interagieren. Application Insights kann auf Plattformen bereitgestellt werden, z.B. .NET, Node.js und J2EE, die lokal oder in der Cloud gehostet werden. Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools.
+[Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Wird zum Überwachen von Live-Webanwendungen verwendet und erkennt automatisch Leistungsanomalien, analysiert die Leistung, diagnostiziert Probleme und liefert Informationen dazu, wie Benutzer mit der App interagieren. Application Insights kann auf Plattformen bereitgestellt werden (z.B. .NET, Node.js und Java EE), die lokal oder in der Cloud gehostet werden. Der Dienst lässt sich in Ihren DevOps-Prozess integrieren und verfügt über Verbindungspunkte mit einer Vielzahl von Entwicklungstools.
 
 #### <a name="application-insights-in-this-blueprint"></a>Application Insights in dieser Vorlage
 

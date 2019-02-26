@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der Azure-Befehlszeilenschnittstelle verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
+title: Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen und Anwendungen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der Azure CLI verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,23 +14,23 @@ ms.workload: identity
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6d1e64c7630f3fd35124e6671476174ddfc16bb6
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: 751f582e2cfc39b62194ec55efa5cd8580c001e3
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437098"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341713"
 ---
-# <a name="manage-access-using-rbac-and-azure-cli"></a>Verwalten des Zugriffs mithilfe der RBAC und der Azure-Befehlszeilenschnittstelle
+# <a name="manage-access-to-azure-resources-using-rbac-and-azure-cli"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der Azure CLI
 
-Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierte Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der Azure-Befehlszeilenschnittstelle verwalten.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der Azure-Befehlszeilenschnittstelle verwalten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für die Zugriffsverwaltung benötigen Sie Folgendes:
 
 * [Bash in Azure Cloud Shell](/azure/cloud-shell/overview)
-* [Azure-CLI](/cli/azure)
+* [Azure-Befehlszeilenschnittstelle](/cli/azure)
 
 ## <a name="list-roles"></a>Auflisten der Rollen
 
@@ -311,5 +311,5 @@ az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Tutorial: Erstellen einer benutzerdefinierten Rolle mithilfe der Azure CLI](tutorial-custom-role-cli.md)
-- [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/xplat-cli-azure-resource-manager.md)
+- [Tutorial: Erstellen einer benutzerdefinierten Rolle für Azure-Ressourcen mithilfe der Azure CLI](tutorial-custom-role-cli.md)
+- [Verwalten von Azure-Ressourcen und -Ressourcengruppen mithilfe der Azure-Befehlszeilenschnittstelle](../azure-resource-manager/cli-azure-resource-manager.md)

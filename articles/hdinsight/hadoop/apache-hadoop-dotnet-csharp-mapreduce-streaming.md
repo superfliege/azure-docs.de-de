@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/27/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02821abd8769a89fc1c7ad9d0dd5cf4e5a245e5f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 130ca849b39336637f53b32043874b5d037a8f0d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435309"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342922"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden von C# mit MapReduce-Streaming auf Apache Hadoop in HDInsight
 
@@ -175,7 +175,13 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
 
 2. Verwenden Sie zum Starten des MapReduce-Auftrags einen der folgenden Befehle:
 
-    * Wenn Sie __Data Lake Storage__ als Standardspeicher verwenden:
+    * Wenn Sie __Data Lake Storage Gen2__ als Standardspeicher verwenden:
+
+        ```bash
+        yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files abfs:///mapper.exe,abfs:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
+        ```
+
+    * Wenn Sie __Data Lake Storage Gen1__ als Standardspeicher verwenden:
 
         ```bash
         yarn jar /usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar -files adl:///mapper.exe,adl:///reducer.exe -mapper mapper.exe -reducer reducer.exe -input /example/data/gutenberg/davinci.txt -output /example/wordcountout
@@ -190,7 +196,7 @@ Nach dem Erstellen der Anwendung erzeugen Sie mit ihrer Hilfe die Datei `/bin/De
     In der folgenden Liste ist die Funktionsweise der einzelnen Parameter beschrieben:
 
     * `hadoop-streaming.jar`: Die JAR-Datei, die die MapReduce-Streamingfunktionen enthält.
-    * `-files`: Fügt die Dateien `mapper.exe` und `reducer.exe` zu diesem Auftrag hinzu. Die Zeichenfolge `adl:///` oder `wasb:///` vor jeder Datei ist der Pfad zum Stamm des Standardspeichers für den Cluster.
+    * `-files`: Fügt die Dateien `mapper.exe` und `reducer.exe` zu diesem Auftrag hinzu. Die Zeichenfolge `abfs:///`, `adl:///` oder `wasb:///` vor jeder Datei ist der Pfad zum Stamm des Standardspeichers für den Cluster.
     * `-mapper`: Gibt an, welche Datei den Mapper implementiert.
     * `-reducer`: Gibt an, welche Datei den Reducer implementiert.
     * `-input`: Die Eingabedaten.
