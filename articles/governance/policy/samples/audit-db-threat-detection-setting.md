@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Überwachen der Einstellung für die Bedrohungserkennung auf Azure Datenbank-Ebene'
-description: In diesem Azure Policy-Beispiel werden Richtlinien für Sicherheitswarnungen für die SQL-Datenbank überwacht, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind.
+description: In dieser Beispielrichtliniendefinition werden Richtlinien für Sicherheitswarnungen für SQL-Datenbank überwacht, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2ef0e83f73a30b0510ec728cd5c2a88845821dc9
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 73f9300d2948337b8e397f544e1dde2d5d09ed0b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241664"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342354"
 ---
-# <a name="audit-db-level-threat-detection-setting"></a>Überwachen der Einstellung für die Bedrohungserkennung auf Azure Datenbank-Ebene
+# <a name="sample---audit-db-level-threat-detection-setting"></a>Beispiel: Überwachen der Einstellung für die Bedrohungserkennung auf Azure Datenbank-Ebene
 
 Diese Richtlinie überwacht Richtlinien für Sicherheitswarnungen für SQL-Datenbank, wenn diese Richtlinien nicht auf den angegebenen Status festgelegt sind. Sie geben einen Wert an, der angibt, ob die Bedrohungserkennung aktiviert oder deaktiviert ist.
 

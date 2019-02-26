@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 1/16/2019
+ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 43ae1339b2b6880656c68957a3d4ed2d2f13b559
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d3a6b8389d44d3ad92f9305124884d97fa293429
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859540"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447107"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-python"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Python
 
@@ -26,16 +26,16 @@ In diesem Artikel wird erläutert, wie der Speech-Dienst über das Speech SDK f�
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure-Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
-* [Python 3.5 oder höher](https://www.python.org/downloads/), 64-Bit
+* [Python 3.5 oder höher](https://www.python.org/downloads/).
 * Das Python Speech SDK-Paket ist für die folgenden Betriebssysteme verfügbar: 
-    * Windows: x64
+    * Windows: x64 und x86.
     * Mac: macOS X Version 10.12 oder höher
     * Linux: Ubuntu 16.04 oder 18.04 unter x64
 * Führen Sie unter Ubuntu die folgenden Befehle aus, um die erforderlichen Pakete zu installieren:
 
   ```sh
   sudo apt-get update
-  sudo apt-get install build-essential libssl1.0.0 libcurl3 libasound2 wget
+  sudo apt-get install build-essential libssl1.0.0 libasound2 wget
   ```
 
 * Unter Windows benötigen Sie auch [Visual C++ Redistributable für Visual Studio 2017](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) für Ihre Plattform.

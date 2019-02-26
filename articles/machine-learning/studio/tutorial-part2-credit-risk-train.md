@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 8ffcfc86823d46e65e116eed86ef35fcba2a99bf
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45407e183c70fe67e6bd59e3fd86a50a31844c47
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006939"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453478"
 ---
 # <a name="tutorial-2-train-credit-risk-models---azure-machine-learning-studio"></a>Tutorial 2: Trainieren von Kreditrisikomodellen – Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Ana
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel für die Erstellung einer Predictive Analytics-Lösung mit Microsoft Azure Machine Learning. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -191,9 +191,9 @@ Klicken Sie rechts neben dem Graph auf **Scored dataset** oder auf **Scored data
 Wenn Sie diese Werte prüfen, können Sie entscheiden, welches Modell am ehesten den gewünschten Ergebnissen entspricht. Sie können zurückgehen und das Experiment erneut ausführen, indem Sie Parameterwerte in den verschiedenen Modellen ändern. 
 
 Die wissenschaftliche Vorgehensweise und Kunst der Interpretation dieser Ergebnisse und das Optimieren der Modellleistung werden in diesem Tutorial nicht behandelt. Weitere Hilfe erhalten Sie in den folgenden Artikeln:
-- [Auswerten der Modellleistung in Azure Machine Learning](evaluate-model-performance.md)
-- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning](algorithm-parameters-optimize.md)
-- [Interpretieren von Modellergebnissen in Azure Machine Learning](interpret-model-results.md)
+- [Auswerten der Modellleistung in Azure Machine Learning Studio](evaluate-model-performance.md)
+- [Auswählen von Parametern zur Optimierung von Algorithmen in Azure Machine Learning Studio](algorithm-parameters-optimize.md)
+- [Interpretieren von Modellergebnissen in Azure Machine Learning Studio](interpret-model-results.md)
 
 > [!TIP]
 > Jedes Mal, wenn Sie das Experiment ausführen, wird im Ausführungsverlauf ein Dataset für diese Iteration aufbewahrt. Sie können die Iterationen anzeigen und zu jeder von ihnen zurückkehren, indem Sie unter dem Bereich auf **VIEW RUN HISTORY** klicken. Sie können auch im Fenster **Properties** auf **Prior Run** klicken, um zur Iteration unmittelbar vor der geöffneten Iteration zurückzukehren.

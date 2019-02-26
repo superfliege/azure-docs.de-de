@@ -1,5 +1,5 @@
 ---
-title: 'Tutorial: Erstellen einer Bildverarbeitungs-App – C#'
+title: 'Beispiel: Erkunden einer Bildverarbeitungs-App in C#'
 titleSuffix: Computer Vision - Cognitive Services - Azure
 description: Hier lernen Sie eine einfache Windows-App kennen, die die Maschinelles Sehen-API in Microsoft Cognitive Services verwendet. Führen Sie eine optische Zeichenerkennung durch, erstellen Sie Miniaturansichten, und arbeiten Sie mit visuellen Merkmalen in einem Bild.
 services: cognitive-services
@@ -7,18 +7,18 @@ author: PatrickFarley
 manager: nolachar
 ms.service: cognitive-services
 ms.subservice: computer-vision
-ms.topic: article
-ms.date: 08/28/2018
+ms.topic: sample
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: b944325287593a028d28545731370dc9ea6a5ac2
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a23e45cb1e75305f41c81077c90282352327b72d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224920"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310942"
 ---
-# <a name="tutorial-build-an-image-processing-app---c35"></a>Tutorial: Erstellen einer Bildverarbeitungs-App – C&#35;
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Beispiel: Erkunden einer Bildverarbeitungs-App mit C#
 
 Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Im folgenden Beispiel können Sie eine Bild-URL oder eine lokal gespeicherte Datei übermitteln. Sie können dieses Open-Source-Beispiel als Vorlage verwenden, um Ihre eigene App für Windows mit der Maschinelles Sehen-API und Windows Presentation Foundation (WPF), einer Komponenten von .NET Framework, zu erstellen.
 

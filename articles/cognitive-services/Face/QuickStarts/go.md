@@ -8,42 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 06/25/2018
+ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: d1384e22d5a036002d59c30755a8a0e5de648102
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 752f15fd730f1244f44ba3749bff3c5bb85ca02b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882963"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312598"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Schnellstart: Erkennen von Gesichtern in einem Bild mit der REST-API und Go
 
-In dieser Schnellstartanleitung führen Sie die Gesichtserkennung für menschliche Gesichter in einem Bild durch, indem Sie die Gesichtserkennungs-API verwenden.
+In dieser Schnellstartanleitung verwenden Sie die Azure-Gesichtserkennungs-REST-API mit Go, um menschliche Gesichter in einem Bild zu erkennen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen des Beispiels benötigen Sie einen Abonnementschlüssel. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie Abonnementschlüssel für eine kostenlose Testversion abrufen.
+- Ein Abonnementschlüssel für die Gesichtserkennungs-API. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=face-api) können Sie einen Abonnementschlüssel für eine kostenlose Testversion abrufen. Gehen Sie andernfalls wie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) beschrieben vor, um den Gesichtserkennungs-API-Dienst zu abonnieren und Ihren Schlüssel zu erhalten.
+- Ein Code-Editor wie [Visual Studio Code](https://code.visualstudio.com/download)
 
-## <a name="face---detect-request"></a>„Face – Detect“-Anforderung
+## <a name="write-the-script"></a>Schreiben des Skripts
 
-Verwenden Sie die [Face – Detect](https://westcentralus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)-Methode, um Gesichter in einem Bild zu erkennen und Gesichtsattribute zurückzugeben, z.B.:
-
-* Gesichts-ID: Eine eindeutige ID, die in verschiedenen Szenarien mit der Gesichtserkennungs-API verwendet wird
-* Gesichtsrechteck: Die Position des linken und oberen Rands sowie die Breite und Höhe, um die Position des Gesichts im Bild anzugeben
-* Besondere Merkmale: Ein Array mit 27 Punkten zu Gesichtszügen, die auf die wichtigen Positionen von Gesichtskomponenten hinweisen
-* Dies können Gesichtsattribute wie Alter, Geschlecht, Intensität des Lächelns, Kopfhaltung und Gesichtsbehaarung sein.
-
-Führen Sie zum Ausführen des Beispiels die folgenden Schritte aus:
-
-1. Kopieren Sie den folgenden Code in einen Editor.
-1. Ersetzen Sie `<Subscription Key>` durch Ihren gültigen Abonnementschlüssel.
-1. Ändern Sie den Wert von `uriBase` ggf. in die Region, in der Sie Ihre Abonnementschlüssel erhalten haben.
-1. Ändern Sie optional den Wert von `imageUrl` in das Bild, das Sie analysieren möchten.
-1. Speichern Sie die Datei mit der Erweiterung `.go`.
-1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, z.B.: `go build detect-face.go`.
-1. Führen Sie die Datei aus, z.B.: `detect-face`.
+Erstellen Sie eine neue Datei namens _faceDetection.go_, und fügen Sie ihr den folgenden Code hinzu. Dadurch wird die Gesichtserkennungs-API für eine bestimmte Bild-URL aufgerufen.
 
 ```go
 package main
@@ -115,9 +100,25 @@ func main() {
 }
 ```
 
-## <a name="face---detect-response"></a>„Face – Detect“-Antwort
+Sie müssen den Wert `subscriptionKey` mit dem Wert Ihres Abonnementschlüssels aktualisieren und ggf. die Zeichenfolge `uriBase` ändern, damit sie den korrekten Regionsbezeichner enthält. (Eine Liste mit allen Regionsendpunkten finden Sie in der [Dokumentation zur Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236).) 
 
-Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein Beispiel:
+Ändern Sie bei Bedarf auch das Feld `imageUrl`, um auf Ihr eigenes Eingabebild zu verweisen. Ändern Sie bei Bedarf auch das Feld `returnFaceAttributes`, um die abzurufenden Gesichtsattribute anzugeben.
+
+## <a name="run-the-script"></a>Ausführen des Skripts
+
+Öffnen Sie eine Eingabeaufforderung, und erstellen Sie das Programm mit dem folgenden Befehl:
+
+```shell
+go build faceDetection.go
+```
+
+Führen Sie das Programm anschließend aus:
+
+```shell
+detect-face
+```
+
+Daraufhin sollte in der Konsole eine JSON-Zeichenfolge mit erkannten Gesichtsdaten ausgegeben werden. Eine erfolgreiche JSON-Antwort sieht in etwa wie folgt aus:
 
 ```json
 [
@@ -300,7 +301,7 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Hier sehen Sie ein
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erkunden Sie die Gesichtserkennungs-APIs, die verwendet werden, um in einem Bild menschliche Gesichter zu erkennen, die Gesichter mit Rechtecken zu kennzeichnen und Attribute wie Alter und Geschlecht zurückzugeben.
+In dieser Schnellstartanleitung haben Sie ein Ruby-Skript geschrieben, das die Azure-Gesichtserkennungs-API aufruft, um Gesichter in einem Bild zu erkennen und deren Attribute zurückzugeben. Sehen Sie sich als Nächstes die Referenzdokumentation zur Gesichtserkennungs-API an, um mehr zu erfahren.
 
 > [!div class="nextstepaction"]
-> [Gesichtserkennungs-APIs](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)
+> [Gesichtserkennungs-API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

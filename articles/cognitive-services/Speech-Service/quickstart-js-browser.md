@@ -1,28 +1,28 @@
 ---
 title: 'Schnellstart: Erkennen von Sprache, JavaScript (Browser) – Speech-Dienste'
 titleSuffix: Azure Cognitive Services
-description: Hier finden Sie Informationen zum Erkennen von Sprache in JavaScript in einem Browser mit dem Spracherkennungsdienst-SDK.
+description: Hier finden Sie Informationen zum Erkennen von Sprache in JavaScript in einem Browser mit dem Speech SDK.
 services: cognitive-services
 author: fmegen
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: quickstart
-ms.date: 11/06/2018
+ms.date: 2/20/2019
 ms.author: fmegen
-ms.openlocfilehash: d51624e5ae4d0e1052b562cd9142238828614597
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8e1f880c57b0db0a2f68fbe26e99679769fdee6c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872178"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56448040"
 ---
-# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-service-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Speech Service SDK
+# <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in JavaScript in einem Browser mit dem Speech SDK
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 Dieser Artikel enthält Informationen zur Erstellung einer Website mithilfe der JavaScript-Bindung des Cognitive Services Speech SDK zum Umwandeln von Sprache in Text.
-Die Anwendung basiert auf dem Microsoft Cognitive Services Speech SDK. ([Version 1.2.0 herunterladen](https://aka.ms/csspeech/jsbrowserpackage))
+Die Anwendung basiert auf dem Microsoft Cognitive Services Speech SDK. ([Version 1.3.0 herunterladen](https://aka.ms/csspeech/jsbrowserpackage))
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

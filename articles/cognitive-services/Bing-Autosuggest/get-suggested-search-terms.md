@@ -10,54 +10,38 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 09/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: b5959e014b7e531b8f52fcbe6f6492576eedd61a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c7ac631ded5d781b2d2949d65f6197e194521055
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875670"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268922"
 ---
 # <a name="what-is-bing-autosuggest"></a>Worum handelt es sich bei der Bing-Vorschlagssuche?
 
-Wenn Sie Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchfeldumgebung zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge zurück, die der Benutzer in das Suchfeld eingibt. Die Vorschläge werden in der Dropdownliste des Suchfelds angezeigt. Die vorgeschlagenen Begriffe basieren auf vorgeschlagenen Abfragen, nach denen andere Benutzer gesucht haben, und auf der Absicht des Benutzers.
+Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die Bing-Vorschlagssuche-API verwenden, um die Suchumgebung des Benutzers zu verbessern. Die Bing-Vorschlagssuche-API gibt eine Liste vorgeschlagener Abfragen basierend auf der unvollständigen Abfragezeichenfolge im Suchfeld zurück. Bei der Eingabe von Zeichen in das Suchfeld können Sie Vorschläge in einer Dropdownliste anzeigen.
 
-Diese API wird normalerweise jedes Mal aufgerufen, wenn ein Benutzer ein neues Zeichen in das Suchfeld eingibt. Die Vollständigkeit der Abfragezeichenfolge wirkt sich auf die Relevanz der vorgeschlagenen Abfragebegriffe aus, die von der API zurückgegeben werden. Wenn die Abfragezeichenfolge vollständig ist, steigt auch die Relevanz der vorgeschlagenen Abfragebegriffe in der Liste. Beispielsweise sind die Vorschläge der API für die Eingabe *s* vermutlich weniger relevant als die Abfragen, die bei der Eingabe *sailing dinghies* zurückgegeben werden.
+## <a name="bing-autosuggest-api-features"></a>Funktionen der Bing-Vorschlagssuche-API
 
-## <a name="getting-suggested-search-terms"></a>Abrufen vorgeschlagener Suchbegriffe
+| Feature                                                                                                                                                                                 | BESCHREIBUNG                                                                                                                                                            |
+|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [In Echtzeit vorgeschlagene Suchbegriffe](concepts/get-suggestions.md) | Verwenden Sie die Vorschlagssuche-API, um während der Eingabe Suchvorschläge anzuzeigen und die Benutzerfreundlichkeit Ihrer App zu verbessern. |
 
-Im folgenden Beispiel wird eine Anforderung gezeigt, die die vorgeschlagene Abfragezeichenfolgen für *sail* zurückgibt. Denken Sie daran, für den Teilabfragebegriff des Benutzers eine URL-Codierung durchzuführen, wenn Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#query) festlegen. Wenn der Benutzer also beispielsweise *sailing les* eingibt, legen Sie `q` auf `sailing+les` oder `sailing%20les` fest.
+## <a name="workflow"></a>Workflow
 
-```http
-GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
-Ocp-Apim-Subscription-Key: 123456789ABCDE
-X-MSEdge-ClientIP: 999.999.999.999
-X-Search-Location: lat:47.60357;long:-122.3295;re:100
-X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
-Host: api.cognitive.microsoft.com
-```
+Die Bing-Vorschlagssuche-API ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. 
 
-Die folgende Antwort enthält eine Liste mit [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices/bing-autosuggest-api-v7-reference#searchaction)-Objekten, in denen die vorgeschlagenen Abfragebegriffe enthalten sind.
+1. Erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api).
+2. Senden Sie jedes Mal eine Anforderung an diese API, wenn ein Benutzer ein neues Zeichen in das Suchfeld Ihrer Anwendung eingibt.
+3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 
-```json
-{
-    "url" : "https:\/\/www.bing.com\/search?q=sailing+lessons+seattle&FORM=USBAPI",
-    "displayText" : "sailing lessons seattle",
-    "query" : "sailing lessons seattle",
-    "searchKind" : "WebSearch"
-}, ...
-```
+In der Regel rufen Sie diese API jedes Mal auf, wenn ein Benutzer ein neues Zeichen in das Suchfeld Ihrer Anwendung eingibt. Je mehr Zeichen eingegeben werden, desto relevantere Suchvorschläge gibt die API zurück. Beispielsweise sind die Vorschläge, die die API unter Umständen für ein einfaches `s` zurückgibt, wahrscheinlich weniger relevant als die für `sail`.
 
-Jeder Vorschlag enthält die Felder `displayText`, `query` und `url`. Das Feld `displayText` enthält die vorgeschlagene Abfrage, die Sie zum Auffüllen der Dropdownliste des Suchfelds verwenden. Sie müssen alle in der Antwort enthaltenen Vorschläge in der angegebenen Reihenfolge anzeigen.
-
-Im Folgenden sehen Sie ein Beispiel für ein Dropdownsuchfeld mit vorgeschlagenen Suchbegriffen.
+Das folgende Beispiel zeigt ein Dropdownsuchfeld mit vorgeschlagenen Suchbegriffen der Bing-Vorschlagssuche-API.
 
 ![Dropdownliste des Suchfelds der Vorschlagssuche](./media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-Wenn der Benutzer eine vorgeschlagene Abfrage aus der Dropdownliste auswählt, können Sie den Abfragebegriff im `query`-Feld verwenden, um die [Bing-Websuche-API](../bing-web-search/search-the-web.md) aufzurufen und die Ergebnisse selbst anzuzeigen. Alternativ könnten Sie die URL im `url`-Feld verwenden, um den Benutzer zur Seite mit den Bing-Suchergebnissen weiterzuleiten.
-
-## <a name="throttling-requests"></a>Drosselungsanforderungen
-
-[!INCLUDE [cognitive-services-bing-throttling-requests](../../../includes/cognitive-services-bing-throttling-requests.md)]
+Wenn ein Benutzer einen Vorschlag aus der Dropdownliste auswählt, können Sie damit und mit einer der Bing-Suche-APIs eine Suche starten oder direkt zur Seite mit den Bing-Suchergebnissen gehen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

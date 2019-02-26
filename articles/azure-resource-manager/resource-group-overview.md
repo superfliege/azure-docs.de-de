@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/01/2019
+ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: fbfbb4e452032073d92e7c2b93f78669da0ceaf5
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691556"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268129"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 
 Azure Resource Manager ist der Bereitstellungs- und Verwaltungsdienst für Azure. Er bietet eine konsistente Verwaltungsebene, die das Erstellen, Aktualisieren und Löschen von Ressourcen in Ihrem Azure-Abonnement ermöglicht. Sie können seine Funktionen für Zugriffssteuerung, Überwachung und Kennzeichnung verwenden, um Ihre Ressourcen nach der Bereitstellung zu schützen und zu organisieren.
 
-Wenn Sie Aktionen über das Portal, PowerShell, die Azure CLI, REST-APIs oder Client-SDKs ausführen, wird Ihre Anforderung von der Azure Resource Manager-API verarbeitet. Da alle Anforderungen von der gleichen API verarbeitet werden, stehen in allen Tools konsistente Ergebnisse und Funktionen zur Verfügung.
+Wenn Sie Aktionen über das Portal, PowerShell, die Azure CLI, REST-APIs oder Client-SDKs ausführen, wird Ihre Anforderung von der Azure Resource Manager-API verarbeitet. Da alle Anforderungen von der gleichen API verarbeitet werden, stehen in allen Tools konsistente Ergebnisse und Funktionen zur Verfügung. Alle Funktionen, die über das Azure-Portal verfügbar sind, stehen auch über PowerShell, die Azure CLI, die REST-APIs und über Client-SDKs zur Verfügung. Funktionen, die ursprünglich über APIs veröffentlicht wurden, werden innerhalb von 180 Tagen ab der ursprünglichen Veröffentlichung in das Portal aufgenommen.
 
 Die folgende Abbildung zeigt, wie alle Tools mit der Azure Resource Manager-API interagieren. Die API übergibt Anforderungen an den Resource Manager-Dienst, mit dem die Anforderungen authentifiziert und autorisiert werden. Resource Manager leitet die Anforderungen dann an den entsprechenden Dienst weiter.
 

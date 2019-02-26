@@ -12,26 +12,30 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/28/2018
+ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 55a1d16ce1617ecf7bc28c7c62de8557ceeea311
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: af3738849382317eeddf8bce3d2f87e38e0fb583
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412910"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427789"
 ---
 # <a name="set-up-a-capacity-pool"></a>Einrichten eines Kapazitätspools
+
 Nach dem Einrichten eines Kapazitätspools können Sie Volumes in diesem Pool erstellen.  
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
+
 Sie müssen bereits ein NetApp-Konto erstellt haben.   
 
 [Erstellen eines NetApp-Kontos](azure-netapp-files-create-netapp-account.md)
 
 ## <a name="steps"></a>Schritte 
 
-1. Navigieren Sie zum Blatt für die Verwaltung Ihres NetApp-Kontos, und klicken Sie anschließend im Navigationsbereich auf **Kapazitätspools**.
+1. Navigieren Sie zum Blatt für die Verwaltung Ihres NetApp-Kontos, und klicken Sie anschließend im Navigationsbereich auf **Kapazitätspools**.  
+    
+    ![Navigieren zu einem Kapazitätspool](../media/azure-netapp-files/azure-netapp-files-navigate-to-capacity-pool.png)
 
 2. Klicken Sie auf **+ Pools hinzufügen**, um einen neuen Kapazitätspool zu erstellen.   
     Das Fenster für den neuen Kapazitätspool wird angezeigt.
@@ -43,18 +47,18 @@ Sie müssen bereits ein NetApp-Konto erstellt haben.
 
   * **Servicelevel**   
     In diesem Feld wird die gewünschte Leistung des Kapazitätspools angezeigt.  
-    Aktuell steht nur das Servicelevel „Premium“ zur Verfügung. 
+    Geben Sie die Dienstebene für den Kapazitätspool an: [**Premium**](azure-netapp-files-service-levels.md#Premium) oder [**Standard**](azure-netapp-files-service-levels.md#Standard).
 
-  *  **Größe**     
-      Geben Sie die Größe des Kapazitätspools an, den Sie erwerben.        
-      Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Poolgröße kann auf ein Vielfaches von 4 TiB festgelegt werden.   
+  * **Größe**     
+    Geben Sie die Größe des Kapazitätspools an, den Sie erwerben.        
+    Die Mindestgröße eines Kapazitätspools beträgt 4 TiB. Die Poolgröße kann auf ein Vielfaches von 4 TiB festgelegt werden.   
       
-      ![Neuer Kapazitätspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
+    ![Neuer Kapazitätspool](../media/azure-netapp-files/azure-netapp-files-new-capacity-pool.png)
 
 4. Klicken Sie auf **OK**.
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-[Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
-
-
+- [Dienstebenen für Azure NetApp Files](azure-netapp-files-service-levels.md)
+- Die Preise der verschiedenen Dienstebenen finden Sie unter [Preise für Azure NetApp Files (Vorschauversion)](https://azure.microsoft.com/pricing/details/storage/netapp/).
+- [Delegieren eines Subnetzes für Azure NetApp Files](azure-netapp-files-delegate-subnet.md)

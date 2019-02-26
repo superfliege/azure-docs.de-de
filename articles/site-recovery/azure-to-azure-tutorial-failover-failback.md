@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 1866a5d86d3ee47371a5eb6e14c2976798d2b4da
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: ab920094561b9143945793ddd4ea3da877a7ae90
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787847"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340534"
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions"></a>Ausführen eines Failovers und Failbacks von Azure-VMs zwischen Azure-Regionen
 
@@ -70,6 +70,16 @@ Nach dem Failover der VM müssen Sie sie erneut schützen, damit sie wieder zur�
 3. Lesen Sie die Informationen zu **Ressourcengruppe, Netzwerk, Speicher und Verfügbarkeitsgruppen**, und klicken Sie auf „OK“. Alle markierten Ressourcen (neu) werden während des Vorgangs zum erneuten Schützen erstellt.
 4. Klicken Sie auf **OK**, um einen Auftrag zum erneuten Schützen auszulösen. Dieser Auftrag liefert die neuesten Daten an den Zielstandort. Anschließend werden die Deltas zur primären Region repliziert. Die VM befindet sich jetzt in einem geschützten Zustand.
 
+> [!NOTE]
+> Weitere Informationen zum Workflow für den erneuten Schutz und dazu, was während des erneuten Schutzes passiert, finden Sie unter [Erneutes Schützen von virtuellen Azure-Computern, für die ein Failover zur primären Region durchgeführt wurde](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection).
+
+
 ## <a name="fail-back-to-the-primary-region"></a>Ausführen eines Failbacks auf die primäre Region
 
 Nachdem VMs erneut geschützt wurden, können Sie bei Bedarf ein Failback zur primären Region ausführen. Dazu richten Sie wie in diesem Artikel beschrieben ein Failover von der sekundären zur primären Region ein.
+
+![Rechtsklick zum erneuten Schützen](./media/azure-to-azure-tutorial-failover-failback/failback.png)
+
+Im vorhergehenden Screenshot wurde für den virtuellen Computer „ContosoWin2016“ ein Failover von der Region „USA, Mitte“ zur Region „USA, Osten“ und ein Failback von „USA, Osten“ zu „USA, Mitte“ ausgeführt.
+
+Beim Failover wird der virtuelle Computer in der sekundären Region (d. h. der Region für die Notfallwiederherstellung) heruntergefahren und in der primären Region erstellt und gestartet. **Hinweis:** Die virtuellen Computer für die Notfallwiederherstellung bleiben wie oben gezeigt im heruntergefahrenen Zustand mit aufgehobener Zuordnung. Dieses Verhalten ist beabsichtigt, da Azure Site Recovery die Informationen des virtuellen Computers speichert. Dies kann später beim Failover von der primären Region zur sekundären Region nützlich sein. Da für virtuelle Computer mit aufgehobener Zuordnung keine Gebühren anfallen, empfiehlt es sich, sie beizubehalten.

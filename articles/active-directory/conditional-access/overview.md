@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/14/2018
+ms.date: 02/14/2019
 ms.author: markvi
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c41771db4ff674b2f0df941286358d3154034ea1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5e6f1174351f0907ce2bef21324c7ba81c81498b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194358"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266712"
 ---
 # <a name="what-is-conditional-access-in-azure-active-directory"></a>Was ist der bedingte Zugriff in Azure Active Directory?
 
@@ -109,11 +109,7 @@ Für die Verwendung des bedingten Zugriffs ist eine Azure AD Premium-Lizenz erfo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie mehr erfahren möchten:
-    - Bedingungen: [Bedingungen beim bedingten Zugriff in Azure Active Directory](conditions.md)
+Unter [Anleitung: Planen der Bereitstellung von bedingtem Zugriff in Azure Active Directory](plan-conditional-access.md) erfahren Sie, wie Sie bedingten Zugriff in Ihrer Umgebung implementieren.
 
-    - Zugriffssteuerungen: [Zugriffssteuerungen beim bedingten Zugriff von Azure Active Directory](controls.md)
 
-- Wenn Sie Erfahrungen beim Konfigurieren von Richtlinien für bedingten Zugriff sammeln möchten, lesen Sie die Informationen unter [Quickstart: Require MFA for specific apps with Azure Active Directory conditional access](app-based-mfa.md) (Schnellstart: Vorschreiben der Verwendung der MFA für bestimmte Apps über den bedingten Zugriff von Azure Active Directory).
 
-- Einen schrittweisen Bereitstellungsplan mit empfohlenen Richtlinien finden Sie bei Bedarf unter [Bereitstellungsplan für bedingten Zugriff](https://aka.ms/conditionalaccessdeploymentplan).

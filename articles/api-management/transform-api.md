@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: eab00663918eadea485aed17a91ce01e5718c36e
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50413671"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417329"
 ---
 # <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API 
 
@@ -41,8 +41,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 + Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
 + Machen Sie sich mit dem [Konzept von Richtlinien in Azure API Management](api-management-howto-policies.md) vertraut.
-+ Absolvieren Sie den folgenden Schnellstart: [Erstellen einer Azure API Management-Instanz](get-started-create-service-instance.md).
-+ Schließen Sie darüber hinaus das folgende Tutorial ab: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
++ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
++ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -126,9 +126,10 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 1. Wählen Sie **Demo Conference API** aus.
 2. Wählen Sie **Alle Vorgänge** aus.
 3. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-4. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
-5. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
-6. Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
+4. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
+5. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
+6. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
+7. Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 

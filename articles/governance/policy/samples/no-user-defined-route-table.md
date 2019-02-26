@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Keine benutzerdefinierten Routingtabellen'
-description: Diese Beispielrichtlinie verhindert, dass virtuelle Netzwerke mit einer benutzerdefinierten Routingtabelle bereitgestellt werden.
+description: Diese Beispielrichtliniendefinition verhindert, dass virtuelle Netzwerke mit einer benutzerdefinierten Routingtabelle bereitgestellt werden.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: db0e7ec5d684f71b3a8426cdf5256adaa8467383
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 6155477f7ff70544032e4890cae215fb68523a11
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242871"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341418"
 ---
-# <a name="no-user-defined-route-table"></a>Keine benutzerdefinierten Routingtabellen
+# <a name="sample---no-user-defined-route-table"></a>Beispiel: Keine benutzerdefinierten Routingtabellen
 
 Diese Richtlinie verhindert, dass virtuelle Netzwerke mit einer benutzerdefinierten Routingtabelle bereitgestellt werden.
 

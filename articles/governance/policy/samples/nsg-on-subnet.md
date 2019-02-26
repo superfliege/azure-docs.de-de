@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: NSG x in jedem Subnetz'
-description: Diese Beispielrichtlinie erfordert, dass eine bestimmte Netzwerksicherheitsgruppe für jedes virtuelle Subnetz verwendet wird.
+description: Diese Beispielrichtliniendefinition erfordert, dass eine bestimmte Netzwerksicherheitsgruppe für jedes virtuelle Subnetz verwendet wird.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: bf02e0df860b677ed1766e083834f894251f6b63
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 1183a403c81dd71f123406991755157a4a4a1d26
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242837"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338545"
 ---
-# <a name="nsg-x-on-every-subnet"></a>Netzwerksicherheitsgruppe x auf jedem Subnetz
+# <a name="sample---network-security-group-x-on-every-subnet"></a>Beispiel: Netzwerksicherheitsgruppe x in jedem Subnetz
 
 Diese Richtlinie erfordert, dass eine bestimmte Netzwerksicherheitsgruppe für jedes virtuelle Subnetz verwendet wird. Sie geben die ID der zu verwendenden Netzwerksicherheitsgruppe an.
 

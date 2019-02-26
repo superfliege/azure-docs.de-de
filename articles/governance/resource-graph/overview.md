@@ -8,12 +8,12 @@ ms.date: 02/06/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 6b3bad4e4619f8909f5c6d71111b4fad9ddb3098
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 31b9405b7d4141890d786ab3d1cb70d11ef0c1b3
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813278"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267953"
 ---
 # <a name="what-is-azure-resource-graph"></a>Was ist Azure Resource Graph?
 
@@ -38,7 +38,7 @@ Mit Azure Resource Graph können Sie auf diese Eigenschaften zugreifen, die die 
 
 Da Sie nun besser verstehen, was Azure Resource Graph ist, erfahren Sie nun, wie Sie Abfragen erstellen können.
 
-Es ist wichtig zu wissen, dass die Abfragesprache von Azure Resource Graph auf der [Abfragesprache des Azure-Daten-Explorers](../../data-explorer/data-explorer-overview.md) basiert.
+Es ist wichtig zu wissen, dass die Abfragesprache von Azure Resource Graph auf der von Azure Data Explorer verwendeten [Kusto-Abfragesprache](../../data-explorer/data-explorer-overview.md) basiert.
 
 Informationen zu Vorgängen und Funktionen, die mit Azure Resource Graph verwendet werden können, finden Sie unter [Grundlegendes zur Abfragesprache von Azure Resource Graph](./concepts/query-language.md). Wie Sie Ressourcen durchsuchen, erfahren Sie unter [Untersuchen Ihrer Azure-Ressourcen mit Resource Graph](./concepts/explore-resources.md).
 

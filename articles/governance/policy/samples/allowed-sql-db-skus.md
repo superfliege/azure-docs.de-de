@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Zulässige SQL-Datenbank-SKUs'
-description: Diese Beispielrichtlinie erfordert, dass SQL-Datenbanken eine genehmigte SKU verwenden.
+description: Diese Beispielrichtliniendefinition erfordert, dass SQL-Datenbanken eine genehmigte SKU verwenden.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fc9d068bab17c2780d81c5626620228fd8fc6469
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5506821dd7c3061594b9e4365980677f8322139e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242650"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341265"
 ---
-# <a name="allowed-sql-db-skus"></a>Zulässige SQL-Datenbank-SKUs
+# <a name="sample---allowed-sql-db-skus"></a>Beispiel: Zulässige SQL-Datenbank-SKUs
 
 Diese Richtlinie erfordert, dass SQL-Datenbanken eine genehmigte SKU verwenden. Sie geben ein Array von zulässigen SKU-IDs oder von zulässigen SKU-Namen an.
 

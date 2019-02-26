@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Erzwingen des Vergleichsmusters'
-description: Diese Beispielrichtlinie setzt voraus, dass Ressourcen dem Vergleichsmuster für Benennungskonventionen entsprechen.
+description: In dieser Beispielrichtliniendefinition wird vorausgesetzt, dass Ressourcen dem Übereinstimmungsmuster für Benennungskonventionen entsprechen.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 4a001316afb489c7147153b5a2de076a5a425c93
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8fdbd6bc319a85c240eddcc5513c8e900329870b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241808"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341384"
 ---
-# <a name="enforce-match-pattern-for-naming-conventions"></a>Erzwingen des Vergleichsmusters für Benennungskonventionen
+# <a name="sample---enforce-match-pattern-for-naming-conventions"></a>Beispiel: Erzwingen des Übereinstimmungsmusters für Benennungskonventionen
 
 Hier legen Sie fest, dass Ressourcennamen einem Vergleichsmuster für Benennungskonventionen entsprechen. Geben Sie das zulässige Vergleichsmuster als Parameter an.
 

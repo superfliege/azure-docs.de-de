@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 67797f3bc5eadc126bad1051e793a8d3bc4590e5
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48800943"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341948"
 ---
 # <a name="azure-managed-applications-overview"></a>Übersicht über verwaltete Azure-Anwendungen
 
@@ -73,7 +73,7 @@ Wenn der Verbraucher die verwaltete Anwendung löscht, wird auch die verwaltete 
 
 ## <a name="azure-policy"></a>Azure Policy
 
-Sie können eine [Azure-Richtlinie](../azure-policy/azure-policy-introduction.md) auf Ihre verwaltete Anwendung anwenden. Richtlinien werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtlinie an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
+Sie können eine [Azure-Richtlinie](../governance/policy/overview.md) auf Ihre verwaltete Anwendung anwenden. Richtlinien werden angewendet, um sicherzustellen, dass die bereitgestellten Instanzen Ihrer verwalteten Anwendung die Daten- und Sicherheitsanforderungen erfüllen. Falls Ihre Anwendung mit sensiblen Daten interagiert, müssen Sie prüfen, wie diese Daten geschützt werden müssen. Interagiert Ihre Anwendung also beispielsweise mit Daten aus Office 365, wenden Sie eine Richtlinie an, um sicherzustellen, dass die Datenverschlüsselung aktiviert ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

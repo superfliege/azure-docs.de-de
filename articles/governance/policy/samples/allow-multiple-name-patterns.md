@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: mehrere Namensmuster'
-description: Diese Beispielrichtlinie erfordert, dass die Ressource mit einem der bereitgestellten Namensmuster übereinstimmt.
+description: Diese Beispielrichtliniendefinition erfordert, dass die Ressource mit einem der bereitgestellten Namensmuster übereinstimmt.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,16 +8,16 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 2e424b7ff79aab36a50e9b44436295cf4ff3d447
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2c77edfcb8dbf777a14e3a5ffa5b78a5689dbcbc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242973"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342523"
 ---
-# <a name="allow-multiple-name-patterns"></a>Zulassen mehrerer Namensmuster
+# <a name="sample---allow-multiple-name-patterns"></a>Beispiel: Zulassen mehrerer Namensmuster
 
-Gestatten Sie es, dass eines von vielen Namensmustern für Ressourcen verwendet werden. Geben Sie die zulässigen Namensmuster in der Richtlinienregel an.
+Lassen Sie die Verwendung von einem der vielen Namensmuster für Ressourcen zu. Geben Sie die zulässigen Namensmuster in der Richtlinienregel an.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 

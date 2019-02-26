@@ -1,6 +1,6 @@
 ---
 title: Beispiel – zulässige Speicherorte
-description: Diese Beispielrichtlinie erfordert, dass alle Ressourcen an den genehmigten Speicherorten bereitgestellt werden.
+description: Diese Beispielrichtliniendefinition erfordert, dass alle Ressourcen an den genehmigten Standorten bereitgestellt werden.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/26/2019
 ms.author: dacoulte
-ms.openlocfilehash: a13f181e90f0435f23e22a7c4db42976bd0afb44
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 70e1b2b20c4846626121dec190dff220a154b81b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243545"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341350"
 ---
-# <a name="allowed-locations"></a>Allowed locations (Zulässige Speicherorte)
+# <a name="sample---allowed-region-locations"></a>Beispiel: Zulässige Regionsstandorte
 
 Mit dieser Richtlinie können Sie die Speicherorte einschränken, die Ihre Organisation beim Bereitstellen von Ressourcen angeben kann. Wird zur Erzwingung Ihrer Geokonformitätsanforderungen verwendet. Schließt Ressourcengruppen, Microsoft.AzureActiveDirectory/b2c-Verzeichnisse und Ressourcen aus, die die Region „global“ verwenden. Sie geben ein Array von zulässigen Speicherorten an.
 

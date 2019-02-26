@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 2dc9d72afd14547a091acf64cea2c8f0bad75914
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: c5bf56482534a55d24d8ca043e36c39cec99b1f0
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234406"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267528"
 ---
 # <a name="tutorial-create-azure-resource-manager-templates-with-dependent-resources"></a>Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen
 
@@ -34,8 +34,6 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 > * Bereitstellen der Vorlage
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -156,6 +154,9 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In diesem Tutorial verwe
         -dnsLabelPrefix $dnsLabelPrefix `
         -TemplateFile azuredeploy.json
     ```
+
+    > [!NOTE]
+    > Bei der Verwendung von Azure PowerShell in Cloud Shell tritt ein Problem mit Datei-E/A-Vorgängen auf.  Die Fehlermeldung lautet wie folgt: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Die dynamischen Parameter für das Cmdlet können nicht abgerufen werden. Der Pfad „Azure:/azuredeploy.json“ wurde nicht gefunden, da er nicht vorhanden ist.)  Nehmen Sie als vorübergehende Problemumgehung den Switch **-TemplateFile** nicht in den Befehl `New-AzResourceGroupDeploy` auf. Der Befehl fordert Sie zur Eingabe des Dateinamens auf.
 
 8. Führen Sie den folgenden PowerShell-Befehl zum Auflisten des neu erstellen virtuellen Computers aus:
 

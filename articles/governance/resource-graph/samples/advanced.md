@@ -1,6 +1,6 @@
 ---
 title: Beispiele erweiterter Abfragen
-description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen.
+description: Verwenden Sie Azure Resource Graph, um einige erweiterte Abfragen auszuführen, etwa zur VMSS-Kapazität, zum Auflisten sämtlicher verwendeter Tags und zum Abgleichen von virtuellen Computern mit regulären Ausdrücken.
 services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: cb2755384f8b87c74aa283af0c75f9f869fb31cd
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 8bb1733090ac2a4f3fad837e55943706309c4a5a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54854665"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56344011"
 ---
 # <a name="advanced-resource-graph-queries"></a>Erweiterte Resource Graph-Abfragen
 

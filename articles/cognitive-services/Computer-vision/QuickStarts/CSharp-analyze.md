@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 09/10/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 8e974852c0394eb7fd9e3e13eb8cde42a23977a6
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 40145ee0e284f90dc1cf231db01d02219a58eeda
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862087"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313142"
 ---
-# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und C# in der Maschinelles Sehen-API
+# <a name="quickstart-analyze-a-local-image-using-the-rest-api-and-c-in-computer-vision"></a>Schnellstart: Analysieren eines lokalen Bilds mit der REST-API und C# in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der REST-API von Maschinelles Sehen ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds Informationen zu visuellen Merkmalen extrahieren.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services) erstellen, bevor Sie beginnen.
 
@@ -253,7 +253,7 @@ Wenn Sie die Visual Studio-Projektmappe nicht mehr benötigen, löschen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Wenn Sie schnell mit Ihren Experimenten mit den Maschinelles Sehen-APIs beginnen möchten, können Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) verwenden.
+Lernen Sie eine einfache Windows-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben.
 
 > [!div class="nextstepaction"]
-> [Tutorial zur Maschinelles Sehen-API in C&#35;](../Tutorials/CSharpTutorial.md)
+> [Tutorial zur Maschinelles Sehen-API in C#](../Tutorials/CSharpTutorial.md)

@@ -3,15 +3,15 @@ title: SQL-Abfragen für Azure Cosmos DB
 description: Informationen zu SQL-Syntax, Datenbankkonzepten und SQL-Abfragen für Azure Cosmos DB. SQL kann als JSON-Abfragesprache in Azure Cosmos DB verwendet werden.
 author: markjbrown
 ms.service: cosmos-db
-ms.topic: sample
+ms.topic: conceptual
 ms.date: 11/15/2018
 ms.author: mjbrown
-ms.openlocfilehash: f8b23533127b9798e5a677f646f94ae0a53fcde8
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 185ff9c7f50fa08ba952f1519bf406d9017982e0
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822407"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455958"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>SQL-Abfragebeispiele für Azure Cosmos DB
 
@@ -1369,13 +1369,13 @@ Jede mathematische Funktion führt eine Berechnung durch, basierend auf Eingabew
 | CEILING (num_expr) | Gibt den kleinsten ganzzahligen Wert zurück, der größer oder gleich dem angegebenen numerischen Ausdruck ist. |
 | FLOOR (num_expr) | Gibt den größten ganzzahligen Wert zurück, der kleiner oder gleich dem angegebenen numerischen Ausdruck ist. |
 | EXP (num_expr) | Gibt den Exponenten des angegebenen numerischen Ausdrucks zurück. |
-| [LOG (num_expr [,base])](#bk_log) | Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks oder den Logarithmus basierend auf der angegebenen Basis zurück. |
+| LOG (num_expr ,base) | Gibt den natürlichen Logarithmus des angegebenen numerischen Ausdrucks oder den Logarithmus basierend auf der angegebenen Basis zurück. |
 | LOG10 (num_expr) | Gibt den dekadischen Logarithmuswert des angegebenen numerischen Ausdrucks zurück. |
 | ROUND (num_expr) | Gibt einen numerischen Wert zurück, gerundet auf den nächsten ganzzahligen Wert. |
 | TRUNC (num_expr) | Gibt einen numerischen Wert zurück, gekürzt auf den nächsten ganzzahligen Wert. |
 | SQRT (num_expr) | Gibt die Quadratwurzel des angegebenen numerischen Ausdrucks zurück. |
 | SQUARE (num_expr) | Gibt das Quadrat des angegebenen numerischen Ausdrucks zurück. |
-| [POWER (num_expr, num_expr)](#bk_power) | Gibt die Potenz des angegebenen numerischen Ausdrucks über den angegebenen Wert zurück. |
+| POWER (num_expr, num_expr) | Gibt die Potenz des angegebenen numerischen Ausdrucks über den angegebenen Wert zurück. |
 | SIGN (num_expr) | Gibt den Vorzeichenwert (-1, 0, 1) des angegebenen numerischen Ausdrucks zurück. |
 | ACOS (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Kosinus der angegebene numerische Ausdruck ist. Wird auch als Arkuskosinus bezeichnet. |
 | ASIN (num_expr) | Gibt den Winkel in „rad“ (Bogenmaß) zurück, dessen Sinus der angegebene numerische Ausdruck ist. Diese Funktion wird auch als Arkussinus bezeichnet. |

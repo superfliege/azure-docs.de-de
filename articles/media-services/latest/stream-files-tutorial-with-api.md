@@ -10,14 +10,14 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 02/18/2019
 ms.author: juliako
-ms.openlocfilehash: c3671df61eea5c826227706106cbb48dc70ad55f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 82d8a8085ca285c95a550678cdc534e586a4faa7
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55157754"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415963"
 ---
 # <a name="tutorial-upload-encode-and-stream-videos-using-net"></a>Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET
 
@@ -40,7 +40,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 - Wenn Sie Visual Studio noch nicht installiert haben, können Sie [Visual Studio Community 2017](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15) abrufen.
 - [Erstellen Sie ein Media Services-Konto.](create-account-cli-how-to.md)<br/>Merken Sie sich die Werte, die Sie für den Namen der Ressourcengruppe und des Media Services-Kontos verwendet haben.
-- Führen Sie die Schritte unter [Zugriff auf Azure Media Services API mit Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
+- Führen Sie die Schritte unter [Zugreifen auf die Azure Media Services-API mit der Azure CLI](access-api-cli-how-to.md) aus, und speichern Sie die Anmeldeinformationen. Sie benötigen sie für den Zugriff auf die API.
 
 ## <a name="download-and-configure-the-sample"></a>Herunterladen und Konfigurieren des Beispiels
 
@@ -125,6 +125,10 @@ Event Grid ist für hohe Verfügbarkeit, konsistente Leistung und dynamische Ska
 Der **Auftrag** durchläuft in der Regel die folgenden Zustände: **Geplant**, **In Warteschlange**, **Wird verarbeitet**, **Abgeschlossen** (Endzustand). Wenn für den Auftrag ein Fehler aufgetreten ist, erhalten Sie den Zustand **Fehler**. Wenn der Auftrag aktuell abgebrochen wird, erhalten Sie **Abbrechen** und **Abgebrochen**, wenn dies geschehen ist.
 
 [!code-csharp[Main](../../../media-services-v3-dotnet-tutorials/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs#WaitForJobToFinish)]
+
+### <a name="job-error-codes"></a>Auftragsfehlercodes
+
+Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ### <a name="get-a-streaming-locator"></a>Abrufen eines Streaminglocators
 

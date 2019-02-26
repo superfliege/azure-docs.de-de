@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 50c17e6ce953b601cc4ac0a406f443a54b9db3e7
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: d50bb6ca67d7d09525013b65d0635e8e16b4cb4e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162717"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417277"
 ---
 # <a name="quickstart-stream-video-files---net"></a>Schnellstart: Streamen von Videodateien: .NET
 
@@ -81,6 +81,8 @@ Um den Stream zu testen, wird in diesem Artikel Azure Media Player verwendet.
 
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zu [https://aka.ms/azuremediaplayer/](https://aka.ms/azuremediaplayer/).
 2. Fügen Sie im Feld **URL:** einen der URL-Streamingwerte ein, die Sie bei der Ausführung der Anwendung abgerufen haben. 
+ 
+     Sie können die URL im HLS-, Dash- oder Smooth-Format einfügen. Der Azure Media Player wechselt auf Ihrem Gerät automatisch zu einem geeigneten Streamingprotokoll für die Wiedergabe.
 3. Drücken Sie **Player aktualisieren**.
 
 Azure Media Player kann zum Testen verwendet werden, sollte jedoch nicht in einer Produktionsumgebung zum Einsatz kommen. 
@@ -100,6 +102,10 @@ az group delete --name amsResourceGroup
 Um eine Erläuterung dazu zu erhalten, was jede Funktion im Beispiel bewirkt, untersuchen Sie den Code, und sehen Sie sich die Kommentare in [dieser Quelldatei](https://github.com/Azure-Samples/media-services-v3-dotnet-quickstarts/blob/master/AMSV3Quickstarts/EncodeAndStreamFiles/Program.cs) an.
 
 Das Tutorial zum [Hochladen, Codieren und Streamen von Dateien](stream-files-tutorial-with-api.md) bietet ein erweitertes Streamingbeispiel mit detaillierten Erläuterungen. 
+
+### <a name="job-error-codes"></a>Auftragsfehlercodes
+
+Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
 
 ## <a name="multithreading"></a>Multithreading
 

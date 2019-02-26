@@ -15,12 +15,12 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 9fce35f811a4d2440ba73e4f305ede6891928069
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 00b96b5bfa88a6c1c31d3415027ce1d4eda11e6b
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52633281"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339089"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -31,7 +31,7 @@ Wenn Azure neu für Sie ist, kann es schwierig sein, alle unterschiedlichen Roll
 
 ## <a name="how-the-roles-are-related"></a>Rollenbeziehungen
 
-Es ist hilfreich, sich mit dem Entwicklungsverlauf auszukennen, um die Rollen in Azure besser zu verstehen. Bei der ersten Veröffentlichung von Azure wurde der Zugriff auf Ressourcen mit nur drei Administratorrollen verwaltet: Kontoadministrator, Dienstadministrator und Co-Administrator. Später wurde die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen hinzugefügt. Die rollenbasierte Zugriffssteuerung in Azure ist ein neueres Autorisierungssystem, mit dem eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht wird. RBAC umfasst viele integrierte Rollen, kann in unterschiedlichen Bereichen zugewiesen werden und ermöglicht es Ihnen, Ihre eigenen benutzerdefinierten Rollen zu erstellen. Für die Verwaltung der Ressourcen in Azure AD, z.B. Benutzer, Gruppen und Domänen, gibt es mehrere Azure AD-Administratorrollen.
+Es ist hilfreich, sich mit dem Entwicklungsverlauf auszukennen, um die Rollen in Azure besser zu verstehen. Bei der ersten Veröffentlichung von Azure wurde der Zugriff auf Ressourcen mit nur drei Administratorrollen verwaltet: Kontoadministrator, Dienstadministrator und Co-Admin. Später wurde die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen hinzugefügt. Die rollenbasierte Zugriffssteuerung in Azure ist ein neueres Autorisierungssystem, mit dem eine präzise Verwaltung des Zugriffs auf Azure-Ressourcen ermöglicht wird. RBAC umfasst viele integrierte Rollen, kann in unterschiedlichen Bereichen zugewiesen werden und ermöglicht es Ihnen, Ihre eigenen benutzerdefinierten Rollen zu erstellen. Für die Verwaltung der Ressourcen in Azure AD, z.B. Benutzer, Gruppen und Domänen, gibt es mehrere Azure AD-Administratorrollen.
 
 Das folgende Diagramm enthält eine allgemeine Darstellung zur Beziehung der Rollen „Administrator für klassisches Abonnement“, „Azure RBAC“ und „Azure AD-Administrator“.
 
@@ -73,7 +73,7 @@ Die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC) ist ein Autorisierung
 | [Leser](built-in-roles.md#reader) | <ul><li>Anzeigen von Azure-Ressourcen</li></ul> | Gilt für alle Ressourcentypen. |
 | [Benutzerzugriffsadministrator](built-in-roles.md#user-access-administrator) | <ul><li>Verwalten des Benutzerzugriffs auf Azure-Ressourcen</li></ul> |  |
 
-Die verbleibenden integrierten Rollen ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Rollen](built-in-roles.md).
+Die verbleibenden integrierten Rollen ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle [Mitwirkender von virtuellen Computern](built-in-roles.md#virtual-machine-contributor) können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Eine Liste mit allen integrierten Rollen finden Sie unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](built-in-roles.md).
 
 Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen RBAC. Benutzer, Gruppen und Anwendungen, denen RBAC-Rollen zugewiesen sind, können die [APIs des klassischen Azure-Bereitstellungsmodells](../azure-resource-manager/resource-manager-deployment-model.md) nicht verwenden.
 
@@ -95,7 +95,7 @@ Azure AD-Administratorrollen werden verwendet, um Azure AD-Ressourcen in einem V
 | [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
 | [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 
-Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](/azure/active-directory/active-directory-assign-admin-roles-azure-portal).
+Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 Im Azure-Portal können Sie die Liste mit den Azure AD-Administratorrollen auf dem Blatt **Rollen und Administratoren** anzeigen.
 
@@ -122,6 +122,6 @@ Mit mehreren Azure AD-Administratorrollen sind Azure AD und Microsoft Office 365
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Was ist die rollenbasierte Zugriffssteuerung (RBAC)?](overview.md)
-- [Zuweisen von Administratorrollen in Azure Active Directory](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)
-- [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](/azure/billing/billing-add-change-azure-subscription-administrator)
+- [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](overview.md)
+- [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md)

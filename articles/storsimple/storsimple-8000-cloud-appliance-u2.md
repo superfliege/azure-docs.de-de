@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 33be58ae3ac5fcc8d0b35b240f9f378ccce134cc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 70a109b9aee46e6b6b65a9a5c139abdf1aa9bab9
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387683"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330595"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Bereitstellen und Verwalten einer StorSimple Cloud Appliance in Azure (ab Update 3)
 
@@ -45,7 +45,7 @@ Die StorSimple Cloud Appliance steht in zwei Modellen zur Verfügung, dem Standa
 | **Maximale Kapazität** |30 TB |64 TB |
 | **Azure-VM** |Standard_A3 (4 Kerne, 7 GB Arbeitsspeicher)| Standard_DS3 (4 Kerne, 14 GB Arbeitsspeicher)|
 | **Regionale Verfügbarkeit** |Alle Azure-Regionen |Azure-Regionen, die Storage Premium und DS3-Azure-VMs unterstützen<br></br>Verwenden Sie [diese Liste](https://azure.microsoft.com/regions/services/), um zu ermitteln, ob in Ihrer Region sowohl **Virtuelle Computer > DS-Serie** als auch **Storage > Disk Storage** verfügbar ist. |
-| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br>Erfahren Sie, wie Sie ein [Storage Premium-Konto erstellen](../virtual-machines/windows/premium-storage.md) |
+| **Speichertyp** |Verwendet Azure Storage Standard für lokale Datenträger<br></br> Erfahren Sie, wie Sie ein [Storage Standard-Konto erstellen](../storage/common/storage-create-storage-account.md) |Verwendet Azure Storage Premium für lokale Datenträger<sup>2</sup> <br></br> |
 | **Informationen zu Workloads** |Abrufen von Dateien aus Sicherungskopien auf Elementebene |Entwicklungs- und Testszenarien für die Cloud <br></br>Workloads mit geringer Wartezeit und höherer Leistung<br></br>Sekundäres Gerät für die Notfallwiederherstellung |
 
 <sup>1</sup>*Ehemals 1100*.
@@ -63,7 +63,7 @@ In der folgenden Tabelle sind einige wichtige Unterschiede zwischen der StorSimp
 |  | Physisches Gerät | Cloudgerät |
 | --- | --- | --- |
 | **Location** |Befindet sich im Datencenter. |Wird in Azure ausgeführt. |
-| **Netzwerkschnittstellen** |Verfügt über sechs Netzwerkschnittstellen: DATA 0 bis DATA 5. |Besitzt nur eine Netzwerkschnittstelle: DATA 0. |
+| **Netzwerkschnittstellen** |Besitzt sechs Netzwerkschnittstellen: DATA 0 bis DATA 5. |Besitzt nur eine Netzwerkschnittstelle: DATA 0. |
 | **Registrierung** |Wird während des ersten Konfigurationsschritts registriert. |Die Registrierung ist eine separate Aufgabe. |
 | **Verschlüsselungsschlüssel für Dienstdaten** |Generieren Sie den Schlüssel auf dem physischen Gerät erneut, und aktualisieren Sie dann das Cloudgerät mit dem neuen Schlüssel. |Die erneute Generierung über das Cloudgerät ist nicht möglich. |
 | **Unterstützte Volumetypen** |Unterstützt sowohl lokale als auch mehrstufige Volumes. |Unterstützt nur mehrstufige Volumes. |
@@ -94,7 +94,7 @@ Bevor Sie das Cloudgerät bereitstellen, müssen Sie in Ihrer Umgebung die folge
 Führen Sie für Ihren StorSimple-Geräte-Manager-Dienst die folgenden Updates durch, bevor Sie ein Cloudgerät erstellen:
 
 * Fügen Sie den virtuellen Computern, die als Hostserver für Ihr Cloudgerät fungieren sollen, [Zugriffssteuerungsdatensätze](storsimple-8000-manage-acrs.md) hinzu.
-* Verwenden Sie ein [Speicherkonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das Cloudgerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Standard- oder Storage Premium-Konto für das Cloudgerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md) oder eines [Storage Premium-Kontos](../virtual-machines/windows/premium-storage.md).
+* Verwenden Sie ein [Speicherkonto](storsimple-8000-manage-storage-accounts.md#add-a-storage-account) in derselben Region wie das Cloudgerät. Speicherkonten in anderen Regionen können zu Leistungseinbußen führen. Sie können ein Standard- oder Storage Premium-Konto für das Cloudgerät verwenden. Weitere Informationen zum Erstellen eines [Storage Standard-Kontos](../storage/common/storage-create-storage-account.md).
 * Verwenden Sie zum Erstellen des Cloudgeräts ein anderes Speicherkonto als das Konto, das für die Daten verwendet wird. Die Verwendung ein und desselben Speicherkontos kann zu Leistungseinbußen führen.
 
 Stellen Sie vorab sicher, dass die folgenden Informationen vorliegen:
@@ -108,7 +108,7 @@ Stellen Sie vor der Durchführung dieser Schritte sicher, dass die [Voraussetzun
 
 Führen Sie die folgenden Schritte aus, um eine StorSimple Cloud Appliance zu erstellen.
 
-### <a name="step-1-create-a-cloud-appliance"></a>Schritt 1: Erstellen eines Cloudgeräts
+### <a name="step-1-create-a-cloud-appliance"></a>Schritt 1: Erstellen einer Cloudappliance
 
 Führen Sie die folgenden Schritte aus, um die StorSimple Cloud Appliance zu erstellen.
 
@@ -116,7 +116,7 @@ Führen Sie die folgenden Schritte aus, um die StorSimple Cloud Appliance zu ers
 
 Falls das Cloudgerät in diesem Schritt nicht erfolgreich erstellt werden kann, besteht unter Umständen keine Internetverbindung. Weitere Informationen zum Behandeln von Internetverbindungsfehlern bei der Erstellung eines Cloudgeräts finden Sie [hier](#troubleshoot-internet-connectivity-errors).
 
-### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Schritt 2: Konfigurieren und Registrieren des Cloudgeräts
+### <a name="step-2-configure-and-register-the-cloud-appliance"></a>Schritt 2: Konfigurieren und Registrieren der Cloudappliance
 
 Stellen Sie vorab sicher, dass Sie über eine Kopie des Dienstdatenverschlüsselungs-Schlüssels verfügen. Der Dienstdatenverschlüsselungs-Schlüssel wird erstellt, wenn Sie Ihr erstes physisches StorSimple-Gerät beim StorSimple-Geräte-Manager-Dienst registriert haben. Sie wurden aufgefordert, ihn an einem sicheren Ort zu speichern. Wenn Sie über keine Kopie des Schlüssels für die Dienstdatenverschlüsselung verfügen, wenden Sie sich an den Microsoft-Support.
 
@@ -160,13 +160,13 @@ Der Remotezugriff auf Ihr Cloudgerät über die Windows PowerShell-Benutzeroberf
 
 Im folgenden Verfahren mit zwei Schritten wird beschrieben, wie Sie eine Remoteverbindung mit Ihrem Cloudgerät herstellen.
 
-### <a name="step-1-configure-remote-management"></a>Schritt 1: Konfigurieren der Remoteverwaltung
+### <a name="step-1-configure-remote-management"></a>Schritt 1: Remoteverwaltung konfigurieren
 
 Führen Sie die folgenden Schritte aus, um die Remoteverwaltung für Ihre StorSimple Cloud Appliance zu konfigurieren.
 
 [!INCLUDE [Configure remote management via HTTP for cloud appliance](../../includes/storsimple-8000-configure-remote-management-http-device.md)]
 
-### <a name="step-2-remotely-access-the-cloud-appliance"></a>Schritt 2: Zugreifen per Remoteverbindung auf das Cloudgerät
+### <a name="step-2-remotely-access-the-cloud-appliance"></a>Schritt 2: Zugreifen per Remoteverbindung auf die Cloudappliance
 
 Nachdem Sie die Remoteverwaltung auf dem Cloudgerät aktiviert haben, können Sie Windows PowerShell-Remoting verwenden, um für das Gerät eine Verbindung von einem anderen virtuellen Computer in demselben virtuellen Netzwerk herzustellen. Beispielsweise können Sie eine Verbindung vom virtuellen Hostcomputer herstellen, die Sie konfiguriert und zum Herstellen der iSCSI-Verbindung verwendet haben. Bei den meisten Bereitstellungen öffnen Sie einen öffentlichen Endpunkt für den Zugriff auf den virtuellen Hostcomputer, der für den Zugriff auf das Cloudgerät verwendet werden kann.
 

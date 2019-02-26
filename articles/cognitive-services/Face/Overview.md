@@ -2,33 +2,36 @@
 title: Was ist die Gesichtserkennungs-API?
 titleSuffix: Azure Cognitive Services
 description: Es wird beschrieben, wie Sie den Gesichtserkennungsdienst zum Erkennen und Analysieren von Gesichtern in Bildern verwenden.
-author: SteveMSFT
+author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: overview
-ms.date: 10/29/2018
-ms.author: sbowles
-ms.openlocfilehash: 655234bfec650ef027e325ff8df23fe91eecfd43
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.date: 02/20/2019
+ms.author: pafarley
+ms.openlocfilehash: 2f5f57f0978adbdf33ed4ce25ba9b32247ea0484
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861051"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455975"
 ---
 # <a name="what-is-the-azure-face-api"></a>Was ist die Azure-Gesichtserkennungs-API?
 
 Die Azure-Gesichtserkennungs-API ist ein „Cognitive Service“, über den Algorithmen zum Erkennen und Analysieren von menschlichen Gesichtern in Bildern bereitgestellt werden. Die Möglichkeit der Verarbeitung von Informationen zu menschlichen Gesichtern ist in vielen verschiedenen Softwareszenarien wichtig, z.B. Sicherheit, natürliche Benutzeroberfläche, Bildinhaltsanalyse und -verwaltung, mobile Apps und Robotik.
 
-Die Gesichtserkennungs-API verfügt über mehrere unterschiedliche Funktionen, die in den folgenden Abschnitten beschrieben werden. Lesen Sie weiter, um weitere Informationen zu den einzelnen Funktionen zu erhalten und zu ermitteln, ob diese Ihre Anforderungen erfüllen.
+Die Gesichtserkennungs-API verfügt über mehrere unterschiedliche Funktionen, die in den folgenden Abschnitten beschrieben werden. Weitere Informationen zu den einzelnen Funktionen finden Sie im Folgenden.
 
 ## <a name="face-detection"></a>Gesichtserkennung
 
-Mit der Gesichtserkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional kann die Gesichtserfassung eine Reihe gesichtsbezogener Attribute extrahieren, z.B. Pose, Geschlecht, Alter, Kopfhaltung, Gesichtsbehaarung und Brille.
+Mit der Gesichtserkennungs-API können menschliche Gesichter in einem Bild erkannt und die Rechteckkoordinaten ihrer Positionen zurückgegeben werden. Optional kann die Gesichtserkennung eine Reihe gesichtsbezogener Attribute extrahieren, z.B. Pose, Kopfhaltung, Geschlecht, Alter, Emotionen, Gesichtsbehaarung und Brille.
 
 ![Bild von einer Frau und einem Mann mit Rechtecken um die Gesichter und Anzeige von Alter und Geschlecht](./Images/Face.detection.jpg)
 
-Das Feature für die Gesichtserkennung ist auch über die [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar, aber wenn Sie weitere Vorgänge für Gesichtsdaten durchführen möchten, sollten Sie die Gesichtserkennungs-API (dieser Dienst) nutzen. Weitere Informationen zur Gesichtserkennung finden Sie unter [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (Erkennungs-API).
+> [!NOTE] 
+> Das Feature für die Gesichtserkennung ist auch über die [Maschinelles Sehen-API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) verfügbar, aber wenn Sie weitere Vorgänge für Gesichtsdaten durchführen möchten, sollten Sie die Gesichtserkennungs-API (dieser Dienst) nutzen. 
+
+Weitere Informationen zur Gesichtserkennung finden Sie unter [Detect API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236) (Erkennungs-API).
 
 ## <a name="face-verification"></a>Gesichtsüberprüfung
 

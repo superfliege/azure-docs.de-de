@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Zulässige ExpressRoute-Bandbreite'
-description: Diese Beispielrichtlinie erfordert, dass ExpressRoute verschiedene angegebene Bandbreiten verwendet.
+description: Diese Beispielrichtliniendefinition erfordert, dass ExpressRoute verschiedene angegebene Bandbreiten verwendet.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: fc98e9085844749153ee6f45466cc367eef2ffff
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: eacd2dd7ddecba47d00ea09cb45f99e991bfd2dc
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244742"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341605"
 ---
-# <a name="allowed-expressroute-bandwidth"></a>Zulässige ExpressRoute-Bandbreiten
+# <a name="sample---allowed-expressroute-bandwidth"></a>Beispiel: Zulässige ExpressRoute-Bandbreite
 
 Diese Richtlinie erfordert, dass ExpressRoute verschiedene angegebene Bandbreiten verwendet. Sie geben ein Array von SKUs an, das für ExpressRoute angegeben werden kann.
 

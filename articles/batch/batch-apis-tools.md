@@ -9,12 +9,12 @@ ms.topic: get-started-article
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0236947e578d12ff24e5993d253ec5597c53272a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2a9c0cf36459a2d23b8af8f69937ab9ded7f9c04
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819823"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301501"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>Übersicht über Batch-APIs und -Tools
 
@@ -69,7 +69,8 @@ Folgende weitere Tools können beim Entwickeln und Debuggen Ihrer Batch-Anwendun
 
 * [Azure-Portal][portal]: Über das Azure-Portal können Sie Batch-Pools, -Aufträge und -Aufgaben erstellen, überwachen und löschen. Sie können die Statusinformationen für diese und andere Ressourcen beim Ausführen der Aufträge anzeigen und sogar Dateien von den Computeknoten in Ihre Pools herunterladen. Beispielsweise können Sie bei der Problembehandlung die Datei `stderr.txt` einer fehlerhaften Aufgabe herunterladen. Außerdem können Sie RDP-Dateien (Remotedesktop) herunterladen, die sich zum Anmelden an Computeknoten eignen.
 * [Azure Batch Explorer][batch_labs]: Batch Explorer (früher: BatchLabs) ist ein kostenloses eigenständiges Clienttool mit zahlreichen Features, das Sie beim Erstellen, Debuggen und Überwachen von Azure Batch-Anwendungen unterstützt. Ein Installationspaket für Mac, Linux oder Windows können Sie [hier](https://azure.github.io/BatchExplorer/) herunterladen.
-* [Microsoft Azure Storage-Explorer][storage_explorer]: Dies ist zwar kein Azure Batch-Tool, aber der Storage-Explorer ist ein weiteres wertvolles Tool, das Sie beim Entwickeln und Debuggen Ihrer Batch-Lösungen einsetzen können.
+* [Azure Batch Shipyard:](https://github.com/Azure/batch-shipyard) Batch Shipyard ist ein Tool, das Sie beim Bereitstellen, Ausführen und Überwachen der containerbasierten Batchverarbeitung und von HPC-Workloads in Azure Batch unterstützt.
+* [Azure Storage-Explorer:][storage_explorer] Dies ist zwar kein Azure Batch-Tool, aber der Storage-Explorer ist ein weiteres wertvolles Tool, das Sie beim Entwickeln und Debuggen Ihrer Batch-Lösungen einsetzen können.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -81,7 +82,6 @@ Folgende weitere Tools können beim Entwickeln und Debuggen Ihrer Batch-Anwendun
 * Sehen Sie sich die [Übersicht über Batch-Features für Entwickler](batch-api-basics.md) an. Diese enthält wichtige Informationen für Entwickler, die sich auf die Verwendung von Batch vorbereiten möchten. Der Artikel enthält ausführliche Informationen zu Batch-Dienstressourcen wie Pools, Knoten, Aufträgen und Aufgaben sowie zu den zahlreichen API-Funktionen, die beim Erstellen der Batch-Anwendung verwendet werden können.
 * [Erste Schritte mit der Azure Batch-Bibliothek für .NET](tutorial-parallel-dotnet.md) erfahren Sie, wie Sie mit C# und der Batch .NET-Bibliothek eine einfache Workload mit einem allgemeinen Batch-Workflow ausführen. Es stehen auch eine [Python-Version](tutorial-parallel-python.md) und ein [Node.js-Tutorial](batch-nodejs-get-started.md) zur Verfügung.
 * Laden Sie die [Codebeispiele unter GitHub][github_samples] herunter, um sich zu informieren, wie C# und Python mit Batch verknüpft werden können, um Beispielworkloads zu planen und zu verarbeiten.
-
 
 [azure_storage]: https://azure.microsoft.com/services/storage/
 [api_java]: /java/api/overview/azure/batch

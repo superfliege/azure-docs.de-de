@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/26/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7c32a572f1090783e5da53ae2b6103ac8c9a8b77
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 01404c89665ebfea62e7bda0e7566289bb15f2ae
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752550"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300957"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Tutorial: Hochladen von Bilddaten in die Cloud mit Azure Storage
 
@@ -23,7 +23,10 @@ Dieses Tutorial ist der erste Teil einer Serie. In diesem Tutorial wird beschrie
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Bildcontaineransicht](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+![Bildcontaineransicht](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![Bildcontaineransicht](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---
@@ -66,7 +69,9 @@ Das Beispiel lädt Bilder in einen Blob-Container in einem Azure Storage-Konto h
 Ersetzen Sie im folgenden Befehl den Platzhalter `<blob_storage_account>` durch Ihren eigenen global eindeutigen Namen für das Blob Storage-Konto.  
 
 ```azurecli-interactive
-az storage account create --name <blob_storage_account> \
+blobStorageAccount=<blob_storage_account>
+
+az storage account create --name $blobStorageAccount \
 --location southeastasia --resource-group myResourceGroup \
 --sku Standard_LRS --kind blobstorage --access-tier hot 
 ```
@@ -77,11 +82,9 @@ Die App verwendet zwei Container im Blob Storage-Konto. Container ähneln Ordner
 
 Rufen Sie mit dem Befehl [az storage account keys list](/cli/azure/storage/account/keys) den Speicherkontoschlüssel ab. Verwenden Sie anschließend diesen Schlüssel, um mit dem Befehl [az storage container create](/cli/azure/storage/container) zwei Container zu erstellen.  
 
-In diesem Fall ist „`<blob_storage_account>`“ der Name des Blob Storage-Kontos, das Sie erstellt haben. Der öffentliche Zugriff für den Container *images* ist auf `off` festgelegt. Der öffentliche Zugriff für den Container *thumbnails* ist auf `container` festgelegt. Bei der Einstellung `container` für den öffentlichen Zugriff können Benutzer, die die Webseite besuchen, die Miniaturansichten anzeigen.
+Der öffentliche Zugriff für den Container *images* ist auf `off` festgelegt. Der öffentliche Zugriff für den Container *thumbnails* ist auf `container` festgelegt. Bei der Einstellung `container` für den öffentlichen Zugriff können Benutzer, die die Webseite besuchen, die Miniaturansichten anzeigen.
 
 ```azurecli-interactive
-blobStorageAccount=<blob_storage_account>
-
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
 -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -116,50 +119,96 @@ Die Web-App umfasst einen Hostingort für den Code der Beispiel-App, der aus dem
 Ersetzen Sie im folgenden Befehl `<web_app>` durch einen eindeutigen Namen. Gültige Zeichen sind `a-z`, `0-9` und `-`. Ist `<web_app>` nicht eindeutig, wird die folgende Fehlermeldung angezeigt: _Eine Website mit dem angegebenen Namen `<web_app>` ist bereits vorhanden._ Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.  
 
 ```azurecli-interactive
-az webapp create --name <web_app> --resource-group myResourceGroup --plan myAppServicePlan
+webapp=<web_app>
+
+az webapp create --name $webapp --resource-group myResourceGroup --plan myAppServicePlan
 ```
 
 ## <a name="deploy-the-sample-app-from-the-github-repository"></a>Bereitstellen der Beispiel-App aus dem GitHub-Repository
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). Ersetzen Sie `<web_app>` durch den Namen der Web-App, die Sie im vorherigen Schritt erstellt haben.
+App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source).
 
 Das Beispielprojekt enthält eine [ASP.NET MVC](https://www.asp.net/mvc)-App. Die App akzeptiert ein Bild, speichert es unter einem Speicherkonto und zeigt Bilder aus einem Container mit Miniaturansichten an. Die Web-App verwendet die Namespaces [Microsoft.WindowsAzure.Storage](/dotnet/api/microsoft.windowsazure.storage?view=azure-dotnet), [Microsoft.WindowsAzure.Storage.Blob](/dotnet/api/microsoft.windowsazure.storage.blob?view=azure-dotnet) und [Microsoft.WindowsAzure.Storage.Auth](/dotnet/api/microsoft.windowsazure.storage.auth?view=azure-dotnet) aus der Azure Storage-Clientbibliothek für die Interaktion mit Azure Storage.
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
-App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). Ersetzen Sie `<web_app>` durch den Namen der Web-App, die Sie im vorherigen Schritt erstellt haben.
-
----
-
 ```azurecli-interactive
-az webapp deployment source config --name <web_app> \
+az webapp deployment source config --name $webapp \
 --resource-group myResourceGroup --branch master --manual-integration \
 --repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp
 ```
 
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
+
+```azurecli-interactive
+az webapp deployment source config --name $webapp \
+--resource-group myResourceGroup --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+App Service unterstützt verschiedene Möglichkeiten zum Bereitstellen von Inhalt für eine Web-App. In diesem Tutorial stellen Sie die Web-App aus einem [öffentlichen GitHub-Beispielrepository](https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10) bereit. Konfigurieren Sie die GitHub-Bereitstellung für die Web-App mit dem Befehl [az webapp deployment source config](/cli/azure/webapp/deployment/source). 
+
+```azurecli-interactive
+az webapp deployment source config --name $webapp \
+--resource-group myResourceGroup --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-upload-from-webapp-node-v10
+```
+
+---
+
 ## <a name="configure-web-app-settings"></a>Konfigurieren von Einstellungen für Web-Apps
+
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
 Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](/dotnet/api/overview/azure/storage?view=azure-dotnet) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
 
-Ersetzen Sie im folgenden Befehl `<blob_storage_account>` durch den Namen Ihres Blob Storage-Kontos und `<blob_storage_key>` durch den zugehörigen Schlüssel. Ersetzen Sie `<web_app>` durch den Namen der Web-App, die Sie im vorherigen Schritt erstellt haben.
-
 ```azurecli-interactive
-az webapp config appsettings set --name <web_app> --resource-group myResourceGroup \
---settings AzureStorageConfig__AccountName=<blob_storage_account> \
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
+--settings AzureStorageConfig__AccountName=$blobStorageAccount \
 AzureStorageConfig__ImageContainer=images  \
 AzureStorageConfig__ThumbnailContainer=thumbnails \
-AzureStorageConfig__AccountKey=<blob_storage_key>  
+AzureStorageConfig__AccountKey=$blobStorageAccountKey  
 ```
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](https://docs.microsoft.com/javascript/api/azure-storage) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
+
+```azurecli-interactive
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
+
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
+--settings AzureStorageConfig__ImageContainer=images  \
+AzureStorageConfig__ThumbnailContainer=thumbnails \
+AzureStorageConfig__AccountName=$blobStorageAccount \
+AzureStorageConfig__AccountKey=$blobStorageAccountKey \
+AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Die Beispiel-Web-App verwendet die [Azure Storage-Clientbibliothek](https://github.com/Azure/azure-storage-js) zum Anfordern von Zugriffstoken, die zum Hochladen von Bildern verwendet werden. Die vom Storage SDK verwendeten Anmeldeinformationen des Speicherkontos werden in den App-Einstellungen für die Web-App festgelegt. Fügen Sie der bereitgestellten App mit dem Befehl [az webapp config appsettings set](/cli/azure/webapp/config/appsettings) App-Einstellungen hinzu.
+
+```azurecli-interactive
+az webapp config appsettings set --name $webapp --resource-group myResourceGroup \
+--settings AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
+AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey
+```
+
+---
 
 Nachdem Sie die Web-App bereitgestellt und konfiguriert haben, können Sie die Funktionalität zum Hochladen von Bildern in der App testen.
 
 ## <a name="upload-an-image"></a>Hochladen von Images
 
 Navigieren Sie zum Testen der Web-App zur URL Ihrer veröffentlichten App. Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.
-Wählen Sie den Bereich **Fotos hochladen** aus, um eine Datei auszuwählen und hochzuladen, oder ziehen Sie eine Datei in den Bereich. Das Bild wird nicht mehr angezeigt, wenn es erfolgreich hochgeladen wurde.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
+Wählen Sie den Bereich **Fotos hochladen** aus, um eine Datei auszuwählen und hochzuladen, oder ziehen Sie eine Datei in den Bereich. Das Bild wird nicht mehr angezeigt, wenn es erfolgreich hochgeladen wurde. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird.
 
 ![ImageResizer-App](media/storage-upload-process-images/figure1.png)
 
@@ -195,19 +244,21 @@ Die folgenden Klassen und Methoden werden in den vorhergehenden Tasks verwendet:
 |Klasse  |Methode  |
 |---------|---------|
 |[StorageCredentials](/dotnet/api/microsoft.windowsazure.storage.auth.storagecredentials?view=azure-dotnet)     |         |
-|[CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?view=azure-dotnet)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet#Microsoft_WindowsAzure_Storage_CloudStorageAccount_CreateCloudBlobClient)       |
-|[CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?view=azure-dotnet)     |[GetContainerReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.getcontainerreference?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobClient_GetContainerReference_System_String_)         |
-|[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)    | [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference?view=azure-dotnet#Microsoft_WindowsAzure_Storage_Blob_CloudBlobContainer_GetBlockBlobReference_System_String_)        |
+|[CloudStorageAccount](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount?view=azure-dotnet)    |  [CreateCloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.cloudstorageaccount.createcloudblobclient?view=azure-dotnet)       |
+|[CloudBlobClient](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient?view=azure-dotnet)     |[GetContainerReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobclient.getcontainerreference?view=azure-dotnet)         |
+|[CloudBlobContainer](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer?view=azure-dotnet)    | [GetBlockBlobReference](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblobcontainer.getblockblobreference?view=azure-dotnet)        |
 |[CloudBlockBlob](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob?view=azure-dotnet)     | [UploadFromStreamAsync](/dotnet/api/microsoft.windowsazure.storage.blob.cloudblockblob.uploadfromstreamasync?view=azure-dotnet)        |
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+Wählen Sie **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird. 
 
 ![Bildupload-App](media/storage-upload-process-images/upload-app-nodejs.png)
 
 Im Beispielcode ist die Route `post` für den Upload des Bilds in einen Blobcontainer verantwortlich Die Route verwendet die Module, die bei der Verarbeitung des Uploads helfen:
 
 - Mit [multer](https://github.com/expressjs/multer) wird die Uploadstrategie für den Routenhandler implementiert.
-- [into-stream](https://github.com/sindresorhus/into-stream) konvertiert den Puffer so in einen Stream, wie es für [createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html#createBlockBlobFromStream) erforderlich ist.
+- [into-stream](https://github.com/sindresorhus/into-stream) konvertiert den Puffer so in einen Stream, wie es für [createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) erforderlich ist.
 
 Wenn die Datei an die Route gesendet wird, wird ihr Inhalt im Arbeitsspeicher beibehalten, bis die Datei in den Blobcontainer hochgeladen wurde.
 
@@ -261,6 +312,85 @@ router.post('/', uploadStrategy, (req, res) => {
     });
 });
 ```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Wählen Sie **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Der Abschnitt **Generierte Miniaturansichten** bleibt leer, bis er später in diesem Thema getestet wird. 
+
+![Bildupload-App](media/storage-upload-process-images/upload-app-nodejs.png)
+
+Im Beispielcode ist die Route `post` für den Upload des Bilds in einen Blobcontainer verantwortlich Die Route verwendet die Module, die bei der Verarbeitung des Uploads helfen:
+
+- Mit [multer](https://github.com/expressjs/multer) wird die Uploadstrategie für den Routenhandler implementiert.
+- [into-stream](https://github.com/sindresorhus/into-stream) konvertiert den Puffer so in einen Stream, wie es für [createBlockBlobFromStream](http://azure.github.io/azure-sdk-for-node/azure-storage-legacy/latest/BlobService.html) erforderlich ist.
+
+Wenn die Datei an die Route gesendet wird, wird ihr Inhalt im Arbeitsspeicher beibehalten, bis die Datei in den Blobcontainer hochgeladen wurde.
+
+> [!IMPORTANT]
+> Das Laden von großen Dateien in den Arbeitsspeicher kann die Leistung Ihrer Web-App beeinträchtigen. Wenn Sie erwarten, dass Benutzer große Dateien übermitteln, sollten Sie einen Stagingprozess für Dateien im Dateisystem des Webservers in Betracht ziehen und die Uploads im Blobspeicher planen. Sobald sich die Dateien im Blobspeicher befinden, können Sie sie aus dem Dateisystem des Servers entfernen.
+
+```javascript
+const {
+  Aborter,
+  BlobURL,
+  BlockBlobURL,
+  ContainerURL,
+  ServiceURL,
+  StorageURL,
+  SharedKeyCredential,
+  uploadStreamToBlockBlob
+} = require('@azure/storage-blob');
+
+const express = require('express');
+const router = express.Router();
+const multer = require('multer');
+const inMemoryStorage = multer.memoryStorage();
+const uploadStrategy = multer({ storage: inMemoryStorage }).single('image');
+const getStream = require('into-stream');
+const containerName = 'images';
+const ONE_MEGABYTE = 1024 * 1024;
+const uploadOptions = { bufferSize: 4 * ONE_MEGABYTE, maxBuffers: 20 };
+const ONE_MINUTE = 60 * 1000;
+const aborter = Aborter.timeout(30 * ONE_MINUTE);
+
+const sharedKeyCredential = new SharedKeyCredential(
+  process.env.AZURE_STORAGE_ACCOUNT_NAME,
+  process.env.AZURE_STORAGE_ACCOUNT_ACCESS_KEY);
+const pipeline = StorageURL.newPipeline(sharedKeyCredential);
+const serviceURL = new ServiceURL(
+  `https://${process.env.AZURE_STORAGE_ACCOUNT_NAME}.blob.core.windows.net`,
+  pipeline
+);
+
+const getBlobName = originalName => {
+  // Use a random number to generate a unique file name, 
+  // removing "0." from the start of the string.
+  const identifier = Math.random().toString().replace(/0\./, ''); 
+  return `${identifier}-${originalName}`;
+};
+
+router.post('/', uploadStrategy, async (req, res) => {
+
+    const blobName = getBlobName(req.file.originalname);
+    const stream = getStream(req.file.buffer);
+    const containerURL = ContainerURL.fromServiceURL(serviceURL, containerName);
+    const blobURL = BlobURL.fromContainerURL(containerURL, blobName);
+    const blockBlobURL = BlockBlobURL.fromBlobURL(blobURL);
+
+    try {
+      
+      await uploadStreamToBlockBlob(aborter, stream,
+        blockBlobURL, uploadOptions.bufferSize, uploadOptions.maxBuffers);
+
+      res.render('success', { message: 'File uploaded to Azure Blob storage.' });   
+
+    } catch (err) {
+
+      res.render('error', { message: 'Something went wrong.' });
+
+    }
+});
+```
 ---
 
 ## <a name="verify-the-image-is-shown-in-the-storage-account"></a>Sicherstellen, dass das Bild im Speicherkonto angezeigt wird
@@ -284,7 +414,10 @@ Navigieren Sie wieder zu Ihrer App, um zu überprüfen, ob das in den Container 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 ![Bildcontaineransicht](media/storage-upload-process-images/figure2.png)
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+![Bildcontaineransicht](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
 ![Bildcontaineransicht](media/storage-upload-process-images/upload-app-nodejs-thumb.png)
 
 ---

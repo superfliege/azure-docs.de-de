@@ -1,21 +1,21 @@
 ---
 title: Schnellstarttutorial zu Indizierung und Abfragen über das Azure-Portal – Azure Search
-description: In diesem Schnellstarttutorial generieren Sie über das Azure-Portal und mit integrierten Beispieldaten einen Index in Azure Search. Machen Sie sich unter anderem mit Volltextsuche, Filtern, Facets, Fuzzysuche und Geosuche vertraut.
+description: Hier erfahren Sie, wie Sie im Azure-Portal mithilfe von integrierten Daten und mithilfe des Datenimport-Assistenten Ihren ersten Index in Azure Search erstellen und abfragen.
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 02/13/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 53be1180f074c075ed2ca2d544b9b164a3a1bdd6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 260dfc829d0869b1fc4f58ae399351c5f68dd926
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991309"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270333"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>Schnellstart: Verwenden von integrierten Portaltools für Azure Search-Importe, -Indizierungen und -Abfragen
 
@@ -94,15 +94,17 @@ Felder besitzen Datentypen und Attribute. Die Kontrollkästchen im oberen Bereic
 
 Speicheranforderungen ändern sich nicht als Folge Ihrer Auswahl. Wenn Sie z. B. das Attribut **Abrufbar** für mehrere Felder festlegen, erhöhen sich die Speicheranforderungen nicht.
 
-Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeichnern als Grundlage für das Schlüsselfeld. Zeichenfolgen werden durch Attribute als abrufbar und durchsuchbar gekennzeichnet. Ganze Zahlen werden durch Attribute als abrufbar, filterbar, sortierbar und facettierbar gekennzeichnet.
+Standardmäßig durchsucht der Assistent die Datenquelle nach eindeutigen Bezeichnern als Grundlage für das Schlüsselfeld. *Zeichenfolgen* werden durch Attribute als **Abrufbar** und **Durchsuchbar** gekennzeichnet. *Ganze Zahlen* werden durch Attribute als **Abrufbar**, **Filterbar**, **Sortierbar** und **Facettierbar** gekennzeichnet.
 
-1. Übernehmen Sie alle Standardeinstellungen.
+1. Übernehmen Sie die Standardeinstellungen. 
 
-  ![Generierter Immobilienindex](media/search-get-started-portal/realestateindex2.png)
+   Wenn Sie den Assistenten ein zweites Mal unter Verwendung einer Immobiliendatenquelle ausführen, wird der Index nicht mit Standardattributen konfiguriert. Sie müssen Attribute für künftige Importe manuell auswählen.
+
+   ![Generierter Immobilienindex](media/search-get-started-portal/realestateindex2.png)
 
 2. Wechseln Sie zur nächsten Seite.
 
-  ![Nächste Seite, Indexer erstellen](media/search-get-started-portal/next-button-create-indexer.png)
+   ![Nächste Seite, Indexer erstellen](media/search-get-started-portal/next-button-create-indexer.png)
 
 ### <a name="step-4---configure-indexer"></a>Schritt 4: Konfigurieren des Indexers
 

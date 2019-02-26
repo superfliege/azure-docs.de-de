@@ -10,25 +10,21 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/11/2019
+ms.date: 02/14/2019
 ms.topic: quickstart
 ms.author: jgao
-ms.openlocfilehash: c2684c7373d9ee4536b248650c7012c261166b81
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 37d84206246e60ed16244d6172a5e22ca18524c9
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235392"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270248"
 ---
 # <a name="quickstart-create-azure-resource-manager-templates-by-using-visual-studio-code"></a>Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Hier erfahren Sie, wie Sie Visual Studio Code und die Erweiterung „Azure Resource Manager-Tools“ verwenden, um Azure Resource Manager-Vorlagen zu erstellen und zu bearbeiten. Sie können Resource Manager-Vorlagen in Visual Studio Code auch ohne die Erweiterung erstellen, aber die Erweiterung verfügt über Optionen für die automatische Vervollständigung, die Ihnen die Entwicklung von Vorlagen vereinfachen. Weitere Informationen zu den Konzepten der Bereitstellung und Verwaltung Ihrer Azure-Lösungen finden Sie unter [Übersicht über Azure Resource Manager](resource-group-overview.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -54,6 +50,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage heißt [Standardspeicherk
     ```url
     https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json
     ```
+
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.
 4. Wählen Sie **Datei**>**Speichern unter** aus, um die Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
@@ -94,6 +91,9 @@ Wenn Sie sich mit der Bearbeitung einer Vorlage über Visual Studio Code vertrau
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
 Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartanleitung wird Azure Cloud Shell verwendet. Cloud Shell ist eine Webanwendung, die nicht konfiguriert werden muss. Cloud Shell unterstützt die Azure-Befehlszeilenschnittstelle (CLI) und Azure PowerShell.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 
 1. Melden Sie sich bei [Azure Cloud Shell](https://shell.azure.com) an.
 
@@ -148,7 +148,10 @@ Es gibt viele Methoden zum Bereitstellen von Vorlagen.  In dieser Schnellstartan
     
     ---
 
-    Aktualisieren Sie den Namen der Vorlagendatei, wenn Sie die Datei nicht unter dem Namen **azuredeploy.json** gespeichert haben.
+    > [!NOTE]
+    > Bei der Verwendung von Azure PowerShell in Cloud Shell tritt ein Problem mit Datei-E/A-Vorgängen auf.  Die Fehlermeldung lautet wie folgt: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Die dynamischen Parameter für das Cmdlet können nicht abgerufen werden. Der Pfad „Azure:/azuredeploy.json“ wurde nicht gefunden, da er nicht vorhanden ist.)  Nehmen Sie als vorübergehende Problemumgehung den Switch **-TemplateFile** nicht in den Befehl `New-AzResourceGroupDeploy` auf. Der Befehl fordert Sie zur Eingabe des Dateinamens auf.
+
+    Aktualisieren Sie den Namen der Vorlagendatei, wenn Sie die Datei nicht unter dem Namen **azuredeploy.json** gespeichert haben. 
 
     Der folgende Screenshot zeigt eine Beispielbereitstellung:
 

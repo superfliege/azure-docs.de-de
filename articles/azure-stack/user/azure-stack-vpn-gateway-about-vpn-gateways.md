@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/04/2019
+ms.date: 02/15/2019
 ms.author: sethm
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 62a0e763913ea1ca27edf88d7560c9400043bf27
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7bf7034d30a8aac187fb2eeae6569f2f495e4439
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251366"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327244"
 ---
 # <a name="about-vpn-gateway-for-azure-stack"></a>Informationen zum VPN-Gateway für Azure Stack
 
@@ -74,7 +74,7 @@ Orientieren Sie sich bei der Wahl einer geeigneten Verbindungstopologie an den D
 
 ### <a name="site-to-site"></a>Site-to-Site
 
-Eine VPN Gateway-S2S-Verbindung (*Site-to-Site*) ist eine Verbindung über einen VPN-Tunnel vom Typ „IPsec/IKE“ (IKEv1 oder IKEv2). Dieser Verbindungstyp erfordert ein lokales VPN-Gerät, das einer öffentlichen IP-Adresse zugewiesen ist. Dieses Gerät kann sich nicht hinter einer NAT befinden. S2S-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
+Eine VPN Gateway-S2S-Verbindung (*Site-to-Site*) ist eine Verbindung über einen IPsec-/IKE-VPN-Tunnel (IKEv2). Dieser Verbindungstyp erfordert ein lokales VPN-Gerät, das einer öffentlichen IP-Adresse zugewiesen ist. Dieses Gerät kann sich nicht hinter einer NAT befinden. S2S-Verbindungen können für standortübergreifende Konfigurationen und Hybridkonfigurationen verwendet werden.
 
 ![Konfigurationsbeispiel für eine Site-to-Site-VPN-Verbindung](media/azure-stack-vpn-gateway-about-vpn-gateways/vpngateway-site-to-site-connection-diagram.png)
 

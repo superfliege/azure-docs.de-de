@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell | Microsoft-Dokumentation'
-description: Mit der rollenbasierten Zugriffssteuerung (Role-based Access Control, RBAC) gewähren Sie einem Benutzer Zugriff, damit er mithilfe von Azure PowerShell alle Elemente in einem Abonnement anzeigen und alle Elemente in einer Ressourcengruppe verwalten kann.
+title: 'Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie einem Benutzer mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und Azure PowerShell Zugriff auf Azure-Ressourcen gewähren.
 services: active-directory
 documentationCenter: ''
 author: rolyon
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 02/02/2019
 ms.author: rolyon
-ms.openlocfilehash: 7f5e67edd2a5300ae1898e2620ee8ace80ac6d92
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b9aefc8eae733d9f43d1f5399c1464b40367f09e
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109026"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343475"
 ---
-# <a name="tutorial-grant-access-for-a-user-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs für einen Benutzer mithilfe von RBAC und Azure PowerShell
+# <a name="tutorial-grant-a-user-access-to-azure-resources-using-rbac-and-azure-powershell"></a>Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für einen Benutzer mit RBAC und Azure PowerShell
 
-Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Tutorial gewähren Sie einem Benutzer Zugriff, damit er mithilfe von Azure PowerShell alle Elemente in einem Abonnement anzeigen und alle Elemente in einer Ressourcengruppe verwalten kann.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Tutorial gewähren Sie einem Benutzer Zugriff, damit er mithilfe von Azure PowerShell alle Elemente in einem Abonnement anzeigen und alle Elemente in einer Ressourcengruppe verwalten kann.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -279,4 +279,4 @@ Zum Bereinigen der im Rahmen dieses Tutorials erstellten Ressourcen löschen Sie
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwalten des Zugriffs mithilfe von RBAC und PowerShell](role-assignments-powershell.md)
+> [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und Azure PowerShell](role-assignments-powershell.md)

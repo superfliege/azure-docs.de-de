@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Data Lake Store-Verschlüsselung erforderlich'
-description: Diese Beispielrichtlinie erfordert eine Verschlüsselung für Data Lake Store.
+description: Diese Beispielrichtliniendefinition erfordert, dass die Data Lake Store-Verschlüsselung aktiviert ist.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 557198fcdc2c191986cedf4b384e0bf117dfa86d
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e4de4c78bec9f4ffa6c4e2711a2d4260279ca559
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241681"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340602"
 ---
-# <a name="require-data-lake-store-encryption"></a>Data Lake Store-Verschlüsselung erforderlich
+# <a name="sample---require-data-lake-store-encryption"></a>Beispiel: Data Lake Store-Verschlüsselung erforderlich
 
 Mit dieser integrierten Richtlinie werden alle Data Lake Store-Konten abgelehnt, für die keine Verschlüsselung aktiviert ist.
 

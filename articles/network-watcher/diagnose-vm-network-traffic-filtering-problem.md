@@ -17,16 +17,16 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 1802df4e6cbe77b4bc7ee2ee49f24d8dc51de015
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 6d5c159d030303b90128513d3521a19419e4277e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32180520"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429229"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers über das Azure-Portal
 
-In dieser Schnellstartanleitung stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die ausgehende Kommunikation für eine IP-Adresse und URL sowie die eingehende Kommunikation von einer IP-Adresse. Sie bestimmen die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
+In dieser Schnellstartanleitung stellen Sie einen virtuellen Computer (Virtual Machine, VM) bereit und überprüfen dann die ausgehende Kommunikation für eine IP-Adresse und URL sowie die eingehende Kommunikation von einer IP-Adresse. Sie ermitteln die Ursache eines Kommunikationsfehlers und wie Sie ihn beheben können.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -37,14 +37,14 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 ## <a name="create-a-vm"></a>Erstellen einer VM
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
-2. Klicken Sie auf **Compute** und anschließend auf **Windows Server 2016 Datacenter** oder auf **Ubuntu Server 17.10 VM** (VM mit Ubuntu Server 17.10).
+2. Wählen Sie **Compute** und anschließend **Windows Server 2016 Datacenter** oder eine Version von **Ubuntu Server**.
 3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
     |Einstellung|Wert|
     |---|---|
-    |Name|myVm|
+    |NAME|myVm|
     |Benutzername| Geben Sie den gewünschten Benutzernamen ein.|
-    |Password| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
+    |Kennwort| Geben Sie das gewünschte Kennwort ein. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm) erfüllen.|
     |Abonnement| Wählen Sie Ihr Abonnement aus.|
     |Ressourcengruppe| Klicken Sie auf **Neu erstellen**, und geben Sie **myResourceGroup** ein.|
     |Standort| Wählen Sie **USA, Osten** aus.|
@@ -62,7 +62,7 @@ Wenn Sie die Netzwerkkommunikation mit Network Watcher testen möchten, aktivier
 Wenn bereits in mindestens einer Region eine Network Watcher-Instanz aktiviert ist, fahren Sie mit [Verwenden der IP-Flussüberprüfung](#use-ip-flow-verify) fort.
 
 1. Klicken Sie im Portal auf **Alle Dienste**. Geben Sie im Feld **Filter** die Zeichenfolge *Network Watcher* ein. Wenn in den Ergebnissen die Option **Network Watcher** angezeigt wird, wählen Sie sie aus.
-2. Aktivieren Sie eine Network Watcher-Instanz in der Region „USA, Osten“, da der virtuelle Computer in einem vorherigen Schritt in dieser Region bereitgestellt wurde. Klicken Sie auf **Regionen**, um den Bereich zu erweitern, und klicken Sie anschließend rechts neben **USA, Osten** auf **...**, wie in der folgenden Abbildung gezeigt:
+2. Aktivieren Sie eine Network Watcher-Instanz in der Region „USA, Osten“, da der virtuelle Computer in einem vorherigen Schritt in dieser Region bereitgestellt wurde. Wählen Sie die **Regionen** aus, um sie zu erweitern, und wählen Sie dann **...** rechts von **USA, Osten** aus (siehe folgende Abbildung):
 
     ![Aktivieren von Network Watcher](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
 
@@ -88,7 +88,7 @@ Wenn Sie einen virtuellen Computer erstellen, wird der ein- und ausgehende Netzw
     | Remote-IP-Adresse | 13.107.21.200 (eine der Adressen für www.bing.com)                                             |
     | Remoteport       | 80                                                                                                |
 
-    ![IP-Flussüberprüfung](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
+    ![IP-Datenflussüberprüfung](./media/diagnose-vm-network-traffic-filtering-problem/ip-flow-verify-outbound.png)
 
     Nach einigen Sekunden werden Sie im zurückgegebenen Ergebnis darüber informiert, dass der Zugriff aufgrund einer Sicherheitsregel mit dem Namen **AllowInternetOutbound** zugelassen wird. Beim Ausführen der Überprüfung wurde von Network Watcher automatisch eine Network Watcher-Instanz in der Region „USA, Osten“ erstellt, falls vor dem Ausführen der Überprüfung eine Network Watcher-Instanz in einer anderen Region vorhanden war.
 4. Führen Sie Schritt 3 erneut aus, ändern Sie dabei aber die **Remote-IP-Adresse** in **172.31.0.100**. Im zurückgegebenen Ergebnis werden Sie darüber informiert, dass der Zugriff aufgrund einer Sicherheitsregel mit dem Namen **DefaultOutboundDenyAll** verweigert wird.

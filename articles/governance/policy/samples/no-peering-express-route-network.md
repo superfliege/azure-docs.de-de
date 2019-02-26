@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Kein Netzwerkpeering zu einem ExpressRoute-Netzwerk'
-description: Diese Beispielrichtlinie verhindert, dass ein Netzwerkpeering einem Netzwerk in einer angegebenen Ressourcengruppe zugeordnet wird.
+description: Diese Beispielrichtliniendefinition verhindert, dass ein Netzwerkpeering einem Netzwerk in einer angegebenen Ressourcengruppe zugeordnet wird.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: dbd7494b5104482624448fc0525a58d68138a833
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c06e750c19227d245fcf8eaeb077691ef2c8a675
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245642"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56337602"
 ---
-# <a name="no-network-peering-to-express-route-network"></a>Kein Netzwerkpeering zu einem ExpressRoute-Netzwerk
+# <a name="sample---no-network-peering-to-express-route-network"></a>Beispiel: Kein Netzwerkpeering zu einem ExpressRoute-Netzwerk
 
 Diese Richtlinie verhindert, dass ein Netzwerkpeering einem Netzwerk in einer angegebenen Ressourcengruppe zugeordnet wird. Verwenden Sie diese Richtlinie, um eine Verbindung zu zentraler verwalteter Netzwerkinfrastruktur zu vermeiden. Sie geben den Namen der Ressourcengruppe an, um eine Zuordnung zu verhindern.
 

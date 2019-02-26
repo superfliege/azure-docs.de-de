@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 6a731750da4edfb4a71c00156c5ff527dee30941
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5597f3c017ccf2dbb58b7b6b046720c8f49803c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55824555"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312285"
 ---
 # <a name="move-azure-vms-into-availability-zones"></a>Verschieben virtueller Azure-Computer in Verfügbarkeitszonen
 Verfügbarkeitszonen in Azure schützen Ihre Anwendungen und Daten vor Rechenzentrumsausfällen. Jede Verfügbarkeitszone besteht aus mindestens einem Rechenzentrum, dessen Stromversorgung, Kühlung und Netzwerkbetrieb unabhängig funktionieren. Zur Gewährleistung der Resilienz sind in allen aktivierten Regionen mindestens drei separate Zonen vorhanden. Die physische Trennung von Verfügbarkeitszonen innerhalb einer Region schützt Anwendungen und Daten vor Ausfällen von Rechenzentren. Mit Verfügbarkeitszonen bietet Azure die branchenweit beste Betriebszeit-SLA von 99,99 % für VMs. Verfügbarkeitszonen werden wie [hier](https://docs.microsoft.com/azure/availability-zones/az-overview#regions-that-support-availability-zones) erwähnt in ausgewählten Regionen unterstützt. 
@@ -65,7 +65,7 @@ Wenn Sie Ihre virtuellen Computer als „Einzelinstanz“ in einer bestimmten Re
     > [!NOTE]
     > Azure Site Recovery ermittelt und erstellt automatisch ein virtuelles Netzwerk und ein Speicherkonto, wenn Sie die Replikation für den virtuellen Quellcomputer aktivieren. Alternativ können Sie diese Ressourcen vorab erstellen und dem virtuellen Computer beim Aktivieren der Replikation zuweisen. Alle anderen Ressourcen (siehe unten) müssen jedoch manuell in der Zielregion erstellt werden.
 
-     Informationen zum Erstellen der am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Konfiguration des virtuellen Quellcomputers finden Sie in den folgenden Dokumenten.
+     Informationen zum Erstellen der für Sie relevanten am häufigsten verwendeten Netzwerkressourcen auf Grundlage der Quell-VM-Konfiguration finden Sie in den folgenden Dokumenten.
 
     - [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group)
     - [Lastenausgleichsmodule](https://docs.microsoft.com/azure/load-balancer/#step-by-step-tutorials

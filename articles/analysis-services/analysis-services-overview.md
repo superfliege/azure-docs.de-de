@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 02/13/2019
+ms.date: 02/14/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 427f3f498ac04c68ef0b335b50c60db46b46d042
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 114dac10592213d3b2fdfff909913039b3dba344
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243853"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429433"
 ---
 # <a name="what-is-azure-analysis-services"></a>Was ist Azure Analysis Services?
 
@@ -61,9 +61,9 @@ Dieser Tarif ist am besten für unternehmenskritische Produktionsanwendungen gee
 
 |Plan  |QPUs  |Arbeitsspeicher (GB)  |
 |---------|---------|---------|
-|S1    |    40     |    10     |
-|S2    |    100     |    25     |
-|S3    |    200     |    50     |
+|S0    |    40     |    10     |
+|S1    |    100     |    25     |
+|S2    |    200     |    50     |
 |S4    |    400     |    100     |
 |S8*    |    320     |    200     |
 |S9*    |    640    |    400     |
@@ -217,7 +217,7 @@ Moderne Tools zur Untersuchung und Visualisierung von Daten wie Power BI, Excel,
 
 ## <a name="monitoring-and-diagnostics"></a>Überwachung und Diagnose
 
-Azure Analysis Services ist mit Azure-Metriken integriert und verfügt über eine große Zahl von ressourcenspezifischen Metriken, die Sie beim Überwachen der Leistung und Integrität Ihrer Server unterstützen. Weitere Informationen finden Sie unter [Überwachen von Servermetriken](analysis-services-monitor.md). Zeichnen Sie Metriken mit [Diagnoseprotokollen für Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md) auf. Überwachen Sie die Protokolle, und senden Sie sie an [Azure Storage](https://azure.microsoft.com/services/storage/), streamen Sie sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), und exportieren Sie sie in [Log Analytics](https://azure.microsoft.com/services/log-analytics/), einen Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Weitere Informationen finden Sie unter [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md).
+Azure Analysis Services ist mit Azure-Metriken integriert und verfügt über eine große Zahl von ressourcenspezifischen Metriken, die Sie beim Überwachen der Leistung und Integrität Ihrer Server unterstützen. Weitere Informationen finden Sie unter [Überwachen von Servermetriken](analysis-services-monitor.md). Zeichnen Sie Metriken mit [Diagnoseprotokollen für Azure-Ressourcen](../azure-monitor/platform/diagnostic-logs-overview.md) auf. Überwachen Sie die Protokolle, und senden Sie sie an [Azure Storage](https://azure.microsoft.com/services/storage/), streamen Sie sie an [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/), und exportieren Sie sie in [Azure Monitor-Protokolle](https://azure.microsoft.com/services/log-analytics/), einen Dienst von [Azure](https://www.microsoft.com/cloud-platform/operations-management-suite). Weitere Informationen finden Sie unter [Einrichten der Diagnoseprotokollierung](analysis-services-logging.md).
 
 Azure Analysis Services unterstützt auch [dynamische Verwaltungssichten](https://docs.microsoft.com/sql/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services) (Dynamic Management Views, DMVs). Basierend auf SQL-Syntax dienen DMVs als Schnittstelle zu Schemarowsets, die Metadaten und Überwachungsinformationen zur Serverinstanz zurückgeben.
 

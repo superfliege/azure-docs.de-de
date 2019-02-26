@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: overview
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: a7fbd9eb70c50f3bbd154726bdaa807c2bc41818
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f56893f830720c57c66eb4c17bb2771efbb73f6f
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863957"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267171"
 ---
 # <a name="what-is-the-bing-video-search-api"></a>Worum handelt es sich bei der Bing-Videosuche-API?
 
@@ -29,7 +29,7 @@ ms.locfileid: "55863957"
 | [Filtern und Einschränken von Videoergebnissen](concepts/get-videos.md#filtering-videos)                      | Filtern Sie durch die Bearbeitung von Abfrageparametern die zurückgegebenen Videos.                                                                                                       |
 | [Zuschneiden, Ändern der Größe und Anzeigen Miniaturansichten](resize-and-crop-thumbnails.md)                                                | Für die von der Bing-Videosuche-API zurückgegebenen Videos können Miniaturansichten als Vorschau bearbeitet und angezeigt werden.                                                                                      |
 | [Abrufen von beliebten Videos](trending-videos.md) | Suchen Sie nach beliebten Videos aus der ganzen Welt.                                                                                                          |
-| [Gewinnen von Erkenntnissen aus Videos](video-insights.md) | Richten Sie eine Suche nach beliebten Bildern aus der ganzen Welt ein.                                                                                                          |
+| [Gewinnen von Erkenntnissen aus Videos](video-insights.md) | Richten Sie eine Suche nach beliebten Videos aus der ganzen Welt ein.                                                                                                          |
 
 ## <a name="workflow"></a>Workflow
 

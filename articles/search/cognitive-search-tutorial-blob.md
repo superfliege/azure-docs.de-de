@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8c63b97f9d4423bf57909da7716675915a5271ef
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: a4481e1bbc6248a9616fa7b3fe1d67c7d90af56e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994049"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429416"
 ---
 # <a name="tutorial-learn-how-to-call-cognitive-search-apis-preview"></a>Tutorial: Informationen zum Aufrufen von APIs der kognitiven Suche (Vorschauversion)
 
@@ -403,9 +403,7 @@ Das Skript legt ```"maxFailedItems"``` auf -1 fest, was die Indexengine anweist,
 
 Achten Sie außerdem auf die Anweisung ```"dataToExtract":"contentAndMetadata"``` in den Konfigurationsparametern. Diese Anweisung weist den Indexer an, die Inhalte aus verschiedenen Dateiformaten sowie die den einzelnen Dateien zugeordneten Metadaten automatisch zu extrahieren. 
 
-Wenn die Inhalte extrahiert werden, können Sie ```ImageAction``` darauf festlegen, Text aus in der Datenquelle gefundenen Bildern zu extrahieren. ```"ImageAction":"generateNormalizedImages"``` weist den Indexer an, Text aus den Bildern zu extrahieren (beispielsweise das Wort „Stop“ aus einem Stop-Verkehrsschild) und ihn als Teil des Inhaltsfelds einzubetten. Dieses Verhalten betrifft sowohl die in den Dokumenten eingebetteten Bilder (denken Sie etwa an Bilder in PDF-Dateien) als auch die in der Datenquelle gefundenen Bilder, z.B. eine JPG-Datei.
-
-In dieser Vorschau ist ```"generateNormalizedImages"``` der einzig gültige Wert für ```"ImageAction"```.
+Wenn die Inhalte extrahiert werden, können Sie ```imageAction``` darauf festlegen, Text aus in der Datenquelle gefundenen Bildern zu extrahieren. Die Konfiguration ```"imageAction":"generateNormalizedImages"``` in Kombination mit der OCR- und der Textzusammenführungsqualifikation weist den Indexer an, Text aus den Bildern zu extrahieren (beispielsweise das Wort „Stop“ aus einem Stoppschild) und ihn als Teil des Inhaltsfelds einzubetten. Dieses Verhalten betrifft sowohl die in den Dokumenten eingebetteten Bilder (denken Sie etwa an Bilder in PDF-Dateien) als auch die in der Datenquelle gefundenen Bilder, z.B. eine JPG-Datei.
 
 ## <a name="check-indexer-status"></a>Überprüfen des Indexerstatus
 

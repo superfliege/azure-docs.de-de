@@ -15,12 +15,12 @@ ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: 5719d5c49d3061acd167f51f74aac109dc22ec49
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961396"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56326509"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Erstellen von VM-Datenträgerspeicher in Azure Stack
 
@@ -32,9 +32,9 @@ In diesem Artikel wird beschrieben, wie Sie VM-Datenträgerspeicher mit dem Azur
 
 Ab Version 1808 können mit Azure Stack nicht verwaltete Datenträger auf virtuellen Computern sowohl als Betriebssystemdatenträger als auch als Datenträger für Daten verwendet werden. Vor Version 1808 werden nur nicht verwaltete Datenträger unterstützt. 
 
-**[Verwaltete Datenträger](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#managed-disks)** vereinfachen die Datenträgerverwaltung für Azure-IaaS-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Größe des von Ihnen benötigten Datenträgers angeben. Azure Stack erstellt und verwaltet den Datenträger dann für Sie.
+**[Verwaltete Datenträger](../../virtual-machines/windows/managed-disks-overview.md)** vereinfachen die Datenträgerverwaltung für Azure-IaaS-VMs durch die Verwaltung der Speicherkonten, die den VM-Datenträgern zugeordnet sind. Sie müssen nur die Größe des von Ihnen benötigten Datenträgers angeben. Azure Stack erstellt und verwaltet den Datenträger dann für Sie.
 
-Zum Verwenden von **[nicht verwalteten Datenträgern](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds#unmanaged-disks)** müssen Sie ein [Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account) erstellen, unter dem die Datenträger gespeichert werden können. Die von Ihnen erstellten Datenträger werden als VM-Datenträger bezeichnet und in Containern im Speicherkonto gespeichert.
+Für nicht verwaltete Datenträger müssen Sie ein Speicherkonto erstellen, unter dem die Datenträger gespeichert werden können. Die von Ihnen erstellten Datenträger werden als VM-Datenträger bezeichnet und in Containern im Speicherkonto gespeichert.
 
 ### <a name="best-practice-guidelines"></a>Richtlinien zu bewährten Methoden
 

@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank'
+title: 'Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank'
 description: In diesem Schnellstart erfahren Sie, wie Sie einen Azure-Daten-Explorer-Cluster und eine Datenbank erstellen und Daten erfassen (laden).
 services: data-explorer
 author: orspod
@@ -8,14 +8,14 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 4b4230397da7d97b613b546f33a0cbb764675720
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
+ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50214816"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408832"
 ---
-# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank
+# <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
 Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Um den Azure-Daten-Explorer zu verwenden, erstellen Sie zuerst einen *Cluster* und anschließend eine oder mehrere *Datenbanken* in diesem Cluster. Anschließend *erfassen* (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. In diesem Schnellstart erstellen Sie einen Cluster und eine Datenbank. In nachfolgenden Artikeln erfahren Sie, wie Daten erfasst werden.
 
@@ -77,8 +77,8 @@ Sie sind nun für den zweiten Schritt bereit: das Erstellen der Datenbank.
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
     | Datenbankname | *TestDatabase* | Der Datenbankname muss innerhalb des Clusters eindeutig sein.
-    | Aufbewahrungszeitraum | *3650* | Die Zeitspanne, für die garantiert wird, dass die Daten für Abfragen verfügbar bleiben. Die Zeitspanne wird ab dem Zeitpunkt gemessen, zu dem die Daten erfasst werden.
-    | Zwischenspeicherungsdauer | *31* | Die Zeitspanne, für die häufig abgefragte Daten im SSD-Speicher oder RAM (und nicht im längerfristigen Speicher) verfügbar bleiben.
+    | Aufbewahrungszeitraum | *3650* | Die Zeitspanne (in Tagen), für die garantiert wird, dass die Daten für Abfragen verfügbar bleiben. Die Zeitspanne wird ab dem Zeitpunkt gemessen, zu dem die Daten erfasst werden.
+    | Zwischenspeicherungsdauer | *31* | Die Zeitspanne (in Tagen), für die häufig abgefragte Daten im SSD-Speicher oder RAM (und nicht im längerfristigen Speicher) verfügbar bleiben.
     | | | |
 
 1. Wählen Sie **Speichern** aus, um die Datenbank zu erstellen. Die Erstellung dauert in der Regel weniger als eine Minute. Wenn der Vorgang abgeschlossen ist, gelangen Sie zurück zur Registerkarte **Übersicht** des Clusters.
@@ -130,6 +130,6 @@ Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalte
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten aus Event Hub in Azure-Daten-Explorer](ingest-data-event-hub.md)
+> [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
 

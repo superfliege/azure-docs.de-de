@@ -8,17 +8,17 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: ad8b00ad7ef212299b67826fd8d6b411c3fb7633
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 05d48c67876b02c1909243eaa86a57fd4ab8d5c1
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868173"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312836"
 ---
-# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c35-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und C# in der Maschinelles Sehen-API
+# <a name="quickstart-generate-a-thumbnail-using-the-rest-api-and-c-in-computer-vision"></a>Schnellstart: Generieren einer Miniaturansicht mit der REST-API und C# in der Maschinelles Sehen-API
 
 In diesem Schnellstart generieren Sie eine Miniaturansicht von einem Bild, indem Sie die REST-API von Maschinelles Sehen verwenden. Mit der [Get Thumbnail](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb)-Methode können Sie eine Miniaturansicht von einem Bild generieren. Sie geben die Höhe und Breite an. Diese kann sich vom Seitenverhältnis des Eingabebilds unterscheiden. Für das maschinelle Sehen wird die intelligente Zuschneidefunktion verwendet, um den gewünschten Bereich zu identifizieren und basierend auf dieser Region Zuschneidekoordinaten zu generieren.
 
@@ -194,7 +194,7 @@ Eine erfolgreiche Antwort wird als Binärdaten zurückgegeben, die die Bilddaten
 
 Die Beispielanwendung zeigt eine erfolgreiche Antwort im Konsolenfenster an, ähnlich wie im folgenden Beispiel:
 
-```text
+```console
 Response:
 
 StatusCode: 200, ReasonPhrase: 'OK', Version: 1.1, Content: System.Net.Http.StreamContent, Headers:

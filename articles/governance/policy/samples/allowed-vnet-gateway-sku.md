@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Zulässige SKUs für Gateways für virtuelle Netzwerke'
-description: Diese Beispielrichtlinie erfordert, dass Gateways für virtuelle Netzwerke eine zulässige SKU und einen Gatewaytyp festlegen.
+description: Diese Beispielrichtliniendefinition setzt voraus, dass Gateways für virtuelle Netzwerke eine zulässige SKU und einen Gatewaytyp festlegen.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 1a9f536f57db0de205a4782c21af2ec4892bbceb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: b8df07d2ebb58cbdd290452a3a1297f49da95f1c
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241936"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342642"
 ---
-# <a name="allowed-virtual-network-gateway-skus"></a>Zulässige SKUs für Gateways für virtuelle Netzwerke
+# <a name="sample---allowed-virtual-network-gateway-skus"></a>Beispiel: Zulässige SKUs für Gateways für virtuelle Netzwerke
 
 Diese Richtlinie erfordert, dass Gateways für virtuelle Netzwerke eine zulässige SKU und einen Gatewaytyp festlegen. Sie geben ein Array von zulässigen SKUs und ein Array von zulässigen Gatewaytypen an.
 

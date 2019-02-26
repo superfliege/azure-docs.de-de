@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 0c865b8bc129f4f2809f2dbb09a836efe4cee3d9
-ms.sourcegitcommit: 9d7391e11d69af521a112ca886488caff5808ad6
+ms.openlocfilehash: 1d8a9cf10bf9b4aab02dd5033ecdd4fdc1f9423e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50093039"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429246"
 ---
 # <a name="tutorial-monitor-network-communication-between-two-virtual-machines-using-the-azure-portal"></a>Tutorial: Überwachen der Netzwerkkommunikation zwischen zwei virtuellen Computern über das Azure-Portal
 
@@ -73,11 +73,11 @@ Führen Sie die Schritte in [Erstellen des ersten virtuellen Computers](#create-
 
 |Schritt|Einstellung|Wert|
 |---|---|---|
-| 1 | Wählen Sie **Ubuntu Server 17.10 VM** aus. |                                                                         |
-| 3 | NAME                              | myVm2                                                                   |
-| 3 | Authentifizierungsart               | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
-| 3 | Ressourcengruppe                    | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
-| 6 | Erweiterungen                        | **Netzwerk-Agent für Linux**                                             |
+| 1 | Auswählen einer **Ubuntu Server**-Version |                                                                         |
+| 3 | NAME                                  | myVm2                                                                   |
+| 3 | Authentifizierungsart                   | Fügen Sie Ihren öffentlichen SSH-Schlüssel ein, oder wählen Sie **Kennwort** aus, und geben Sie ein Kennwort ein. |
+| 3 | Ressourcengruppe                        | Wählen Sie **Vorhandene verwenden** und dann **myResourceGroup** aus.                 |
+| 6 | Erweiterungen                            | **Netzwerk-Agent für Linux**                                             |
 
 Die Bereitstellung des virtuellen Computers dauert einige Minuten. Warten Sie, bis die Bereitstellung des virtuellen Computers abgeschlossen ist, bevor Sie mit den weiteren Schritten fortfahren.
 

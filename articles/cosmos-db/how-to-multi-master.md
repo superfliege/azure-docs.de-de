@@ -6,20 +6,20 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 2/12/2019
 ms.author: mjbrown
-ms.openlocfilehash: effe6fa942ce0cabace08e72dba90baf8646680e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118825"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312139"
 ---
-# <a name="how-to-configure-multi-master-in-your-applications-in-azure-cosmos-db"></a>Konfigurieren von Multimaster-Features in Ihren Anwendungen in Azure Cosmos DB
+# <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Konfigurieren von Multimaster-Features in Ihren Anwendungen, die Azure Cosmos DB verwenden
 
-Damit Sie Multimaster-Features in Ihren Anwendungen verwenden können, müssen Sie Schreibvorgänge in mehreren Regionen in Ihrer Anwendung aktivieren und die Multihoming-Funktionen konfigurieren. Legen Sie dazu die aktuelle Region fest, in der die Anwendung bereitgestellt wird.
+Damit Sie Multimaster-Funktionen in Ihren Anwendungen nutzen können, müssen Sie Schreibvorgänge in mehreren Regionen aktivieren und die Multihoming-Funktionen konfigurieren. Konfigurieren Sie Multihoming, indem Sie die aktuelle Region auf den Bereitstellungsort der Anwendung festlegen.
 
 ## <a id="netv2"></a>.NET SDK v2
 
-Legen Sie zum Aktivieren von Multimaster in Ihren Anwendungen `UseMultipleWriteLocations` auf „true“ und `SetCurrentLocation` auf die Region fest, in der die Anwendung bereitgestellt und Cosmos DB repliziert wird.
+Legen Sie zum Aktivieren von Multimaster in Ihren Anwendungen `UseMultipleWriteLocations` auf „true“ und `SetCurrentLocation` auf die Region fest, in der die Anwendung bereitgestellt und Azure Cosmos DB repliziert wird.
 
 ```csharp
 ConnectionPolicy policy = new ConnectionPolicy

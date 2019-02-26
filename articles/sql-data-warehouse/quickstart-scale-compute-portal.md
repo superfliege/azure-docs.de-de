@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.subservice: implement
 ms.date: 04/17/2018
 ms.author: kevin
-ms.reviewer: igorstan
-ms.openlocfilehash: 31ec1537a0075f486130a3bcf1017d35b47e499d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.reviewer: jrasnick
+ms.openlocfilehash: 2e3bb00cee679671ed382ee46690fc4dff8bddfb
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55463649"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453884"
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-the-azure-portal"></a>Schnellstart: Skalieren von Computeressourcen in Azure SQL Data Warehouse im Azure-Portal
 
@@ -29,11 +29,14 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Sie können ein bereits vorhandenes Data Warehouse skalieren oder mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) ein Data Warehouse namens **mySampleDataWarehouse** erstellen.  Mit diesem Schnellstart wird **mySampleDataWarehouse** skaliert.
+Sie können ein bereits vorhandenes Data Warehouse skalieren oder anhand der Informationen unter [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) ein Data Warehouse namens **mySampleDataWarehouse** erstellen.  Mit diesem Schnellstart wird **mySampleDataWarehouse** skaliert.
+
+>[!Note]
+>Ihr Data Warehouse muss zur Skalierung online sein. 
 
 ## <a name="scale-compute"></a>Skalieren von Computeressourcen
 
-Sie können in SQL Data Warehouse Computeressourcen durch Anpassen der Data Warehouse-Einheiten (DWUs) erhöhen oder verringern. Mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal](create-data-warehouse-portal.md) wurde **mySampleDataWarehouse** erstellt und mit 400 DWUs initialisiert. In den folgenden Schritten werden die DWUs für **mySampleDataWarehouse** angepasst.
+SQL Data Warehouse-Computeressourcen können durch Erhöhen bzw. Verringern der Data Warehouse-Einheiten skaliert werden. Mit dem [Schnellstart: Erstellen und Abfragen einer Azure SQL Data Warehouse-Instanz im Azure-Portal] (create-data-warehouse-portal.md) wurde **mySampleDataWarehouse** erstellt und mit 400 DWUs initialisiert. In den folgenden Schritten werden die DWUs für **mySampleDataWarehouse** angepasst.
 
 So ändern Sie Data Warehouse-Einheiten
 
@@ -54,7 +57,7 @@ So ändern Sie Data Warehouse-Einheiten
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Sie haben nun erfahren, wie die Computeressourcen für Ihr Data Warehouse skaliert werden. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
+In diesem Artikel haben Sie gelernt, wie Sie Computeressourcen für Ihr Data Warehouse skalieren. Weitere Informationen zu Azure SQL Data Warehouse erhalten Sie im Tutorial zum Laden von Daten.
 
 > [!div class="nextstepaction"]
 >[Laden von Daten in ein SQL-Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md)

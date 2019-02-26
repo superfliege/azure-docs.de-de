@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 0d0009c833c313b5416998502601285e5b710a8d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 1560dad31e00b00a2d27cf1675e05901e6611825
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112545"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309861"
 ---
 # <a name="move-azure-vms-to-another-region"></a>Verschieben virtueller Azure-Computer in eine andere Region
 
@@ -51,7 +51,7 @@ Das Verschieben virtueller Computer umfasst folgende Schritte:
 > Azure Site Recovery unterstützt aktuell das Verschieben virtueller Computer zwischen Regionen, aber keine Verschiebung innerhalb einer Region. 
 
 > [!NOTE]
-> Ausführlichere Informationen zu diesen Schritten finden Sie in der Dokumentation für die jeweiligen Szenarien aus diesem Artikel.
+> Ausführlichere Informationen zu diesen Schritten finden Sie in der [Dokumentation für die jeweiligen Szenarien](#next-steps).
 
 ## <a name="typical-architectures-for-a-multi-tier-deployment"></a>Typische Architekturen für eine Bereitstellung mit mehreren Ebenen
 Im folgenden Abschnitt werden die gängigsten Bereitstellungsarchitekturen erläutert, die von Kunden für eine Anwendung mit mehreren Ebenen in Azure verwendet werden. Als Beispiel dient hier eine Anwendung mit drei Ebenen und einer öffentlichen IP-Adresse. Die einzelnen Ebenen (Web, Anwendung und Datenbank) enthalten jeweils zwei virtuelle Computer und sind über einen Load Balancer miteinander verbunden. Die Datenbankebene verfügt dank SQL Always On-Replikation zwischen den virtuellen Computern über Hochverfügbarkeit.

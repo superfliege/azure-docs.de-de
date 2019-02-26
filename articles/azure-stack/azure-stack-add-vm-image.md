@@ -11,22 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 1/18/2019
+ms.date: 2/19/2019
 ms.author: mabrigg
 ms.reviewer: kivenkat
 ms.lastreviewed: 06/08/2018
-ms.openlocfilehash: dce158e600d3bf5dbcc552aff82959208d7b47f8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0319445f946a53ace5718dce1ad593d0a8225ecc
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55249060"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428515"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Verfügbarmachen eines VM-Images in Azure Stack
 
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*
 
-In Azure Stack können Sie VM-Images für Ihre Benutzer verfügbar machen. Auf diese Images kann durch Azure Resource Manager-Vorlagen verwiesen werden, sie können aber auch der Azure Marketplace-Benutzeroberfläche als Marketplace-Element hinzugefügt werden. Sie können entweder ein Image vom globalen Azure Marketplace verwenden oder Ihr eigenes benutzerdefiniertes Image hinzufügen. Sie können einen virtuellen Computer über das Portal oder Windows PowerShell hinzufügen.
+In Azure Stack können Sie VM-Images für Ihre Benutzer verfügbar machen. Diese Images können in Azure Resource Manager-Vorlagen verwendet werden. Sie können sie auch der Azure Marketplace-Benutzeroberfläche als Marketplace-Element hinzufügen. Verwenden Sie entweder ein Image aus dem globalen Azure Marketplace oder Ihr eigenes benutzerdefiniertes Image. Das Image kann über das Portal oder Windows PowerShell hinzugefügt werden.
 
 ## <a name="add-a-vm-image-through-the-portal"></a>Hinzufügen eines VM-Images über das Portal
 

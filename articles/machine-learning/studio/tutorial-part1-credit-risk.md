@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6789e1d6e514ce107ab96fddbaa582ccbe922bbb
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243721"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453612"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Ana
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet.  
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -55,7 +55,7 @@ Wenn Sie **Azure Machine Learning Studio** noch nicht verwendet haben, sollten S
 
 Um Machine Learning Studio verwenden zu können, benötigen Sie einen Microsoft Azure Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.  
 
-Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs](create-workspace.md).
+Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs](create-workspace.md).
 
 Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)). Wenn Sie über mehrere Arbeitsbereiche verfügen, können Sie den Arbeitsbereich im Fenster oben rechts auf der Symbolleiste auswählen.
 

@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e1724454ff67f6cfe3646b59e8302a3dd099081
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 79abead77705d13df909703a234bf72ee121a5be
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217444"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301178"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wozu dient die Microsoft Authenticator-App?
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
@@ -59,11 +59,11 @@ Wenn Sie eine PIN verwenden, um die Authentifizierung abzuschließen, können Si
 ## <a name="who-decides-if-you-use-this-feature"></a>Wer entscheidet über die Verwendung dieser Funktion?
 Je nach Kontotyp entscheidet Ihre Organisation, ob Sie die zweistufige Überprüfung verwenden müssen. Möglicherweise können Sie diese Entscheidung aber auch selbst treffen.
 
-- **Geschäfts-, Schul- oder Unikonto.** Wenn Sie ein Geschäfts-, Schul- oder Uni-Konto verwenden (z. B. alain@contoso.com), entscheidet Ihre Organisation, ob Sie die zweistufige Überprüfung verwenden müssen. Sie gibt zudem vor, welche Überprüfungsmethode anzuwenden ist. Weitere Informationen dazu, wie Sie Ihr Geschäfts-, Schul- oder Unikonto der Microsoft Authenticator-App hinzufügen, finden Sie im Artikel [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](microsoft-authenticator-app-add-work-account.md).
+- **Geschäfts-, Schul- oder Unikonto.** Wenn Sie ein Geschäfts-, Schul- oder Uni-Konto verwenden (z. B. alain@contoso.com), entscheidet Ihre Organisation, ob Sie die zweistufige Überprüfung verwenden müssen. Sie gibt zudem vor, welche Überprüfungsmethode anzuwenden ist. Weitere Informationen dazu, wie Sie Ihr Geschäfts-, Schul- oder Unikonto der Microsoft Authenticator-App hinzufügen, finden Sie im Artikel [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-add-work-school-account.md).
 
-- **Persönliches Microsoft-Konto.** Sie können die zweistufige Überprüfung auch für Ihre persönlichen Microsoft-Konten einrichten (z.B. alain@outlook.com). Weitere Informationen zum Hinzufügen Ihres persönlichen Microsoft-Kontos finden Sie unter: 
+- **Persönliches Microsoft-Konto.** Sie können die zweistufige Überprüfung auch für Ihre persönlichen Microsoft-Konten einrichten (z.B. alain@outlook.com). Weitere Informationen zum Hinzufügen Ihres persönlichen Microsoft-Kontos finden Sie unter [Hinzufügen Ihrer persönlichen Microsoft-Konten](user-help-auth-app-add-personal-ms-account.md).
 
-- **Hinzufügen Ihrer Nicht-Microsoft-Konten**. Sie können die zweistufige Überprüfung auch für Ihre nicht von Microsoft bereitgestellten Konten einrichten (z. B. alain@gmail.com). Ihre nicht von Microsoft bereitgestellten Konten verwenden möglicherweise nicht den Begriff „zweistufige Überprüfung“. Sie finden die Funktion jedoch in der Regel in den Einstellungen für die **Sicherheit** oder die **Anmeldung**. Die Microsoft Authenticator-App funktioniert mit allen Konten, für die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt werden.
+- **Hinzufügen Ihrer Nicht-Microsoft-Konten**. Sie können die zweistufige Überprüfung auch für Ihre nicht von Microsoft bereitgestellten Konten einrichten (z. B. alain@gmail.com). Ihre nicht von Microsoft bereitgestellten Konten verwenden möglicherweise nicht den Begriff „zweistufige Überprüfung“. Sie finden die Funktion jedoch in der Regel in den Einstellungen für die **Sicherheit** oder die **Anmeldung**. Die Microsoft Authenticator-App funktioniert mit allen Konten, für die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt werden. Weitere Informationen zum Hinzufügen von Nicht-Microsoft-Konten finden Sie unter [Hinzufügen Ihrer Nicht-Microsoft-Konten](user-help-auth-app-add-non-ms-account.md).
 
 ## <a name="in-this-section"></a>Inhalt dieses Abschnitts
 
@@ -71,7 +71,8 @@ Je nach Kontotyp entscheidet Ihre Organisation, ob Sie die zweistufige Überprü
 |------|------------|
 |[Herunterladen und Installieren der App](user-help-auth-app-download-install.md)|Hier erfahren Sie, wo und wie Sie die Microsoft Authenticator-App für Geräte mit Android und iOS herunterladen und installieren.|
 |[Add your work or school accounts](user-help-auth-app-add-work-school-account.md) (Hinzufügen von Geschäfts-, Schul- oder Unikonten)|Hier erfahren Sie, wie Sie Geschäfts-, Schul- oder Unikonten bzw. persönliche Konten zur Microsoft Authenticator-App hinzufügen.|
-|[Add your personal accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen persönlicher Konten)|Hier erfahren Sie, wie Sie persönliche Microsoft-Konten sowie nicht von Microsoft bereitgestellte Konten zur Microsoft Authenticator-App hinzufügen.|
+|[Add your personal accounts](user-help-auth-app-add-personal-ms-account.md) (Hinzufügen persönlicher Konten)|Hier erfahren Sie, wie Sie der Microsoft Authenticator-App persönliche Microsoft-Konten hinzufügen.|
+|[Hinzufügen Ihrer Nicht-Microsoft-Konten](user-help-auth-app-add-non-ms-account.md)|Hier erfahren Sie, wie Sie der Microsoft Authenticator-App Konten hinzufügen, die nicht von Microsoft stammen.|
 |[Manually add your accounts](user-help-auth-app-add-account-manual.md) (Manuelles Hinzufügen von Konten)|Hier erfahren Sie, wie Sie der Microsoft Authenticator-App Ihre Konten manuell hinzufügen, wenn der bereitgestellte QR-Code nicht gescannt werden kann.|
 |[Sign-in using the app](user-help-auth-app-sign-in.md) (Anmelden mit der App)|Hier erfahren Sie, wie Sie sich mit der Microsoft Authenticator-App bei verschiedenen Konten anmelden.|
 |[Sichern und Wiederherstellen von Kontoanmeldeinformationen](user-help-auth-app-backup-recovery.md)| Enthält Informationen zum Sichern und Wiederherstellen Ihrer Kontoanmeldeinformationen mithilfe der Microsoft Authenticator-App.|

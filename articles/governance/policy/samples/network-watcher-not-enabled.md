@@ -1,6 +1,6 @@
 ---
 title: 'Beispiel: Überprüfung, ob Network Watcher nicht für Region aktiviert ist'
-description: Diese Beispielrichtlinie überwacht, wenn Network Watcher für eine bestimmte Region nicht aktiviert ist.
+description: Diese Beispielrichtliniendefinition überwacht, ob Network Watcher für eine bestimmte Region nicht aktiviert ist.
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
@@ -8,14 +8,14 @@ ms.service: azure-policy
 ms.topic: sample
 ms.date: 01/23/2019
 ms.author: dacoulte
-ms.openlocfilehash: 66aca50f0697a648bda60c1dacb439fd6399a764
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 418efd2652098ed04f1d150cfe25b011cdd15eeb
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245693"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342625"
 ---
-# <a name="audit-if-network-watcher-is-not-enabled-for-region"></a>Überwachen, wenn Network Watcher für die Region nicht aktiviert ist
+# <a name="sample---audit-if-network-watcher-is-not-enabled-for-region"></a>Beispiel: Überprüfung, ob Network Watcher nicht für Region aktiviert ist
 
 Diese Richtlinie überwacht, wenn Network Watcher für eine bestimme Region nicht aktiviert ist. Sie geben den Namen der Region an, um zu überprüfen, ob Network Watcher aktiviert ist.
 

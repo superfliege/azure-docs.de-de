@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: edab126e6808e0e769929bab79f7b78c60c4eaf4
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 464520fa90cb4ad2c3da7f4df99564e27f10186b
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55480585"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56277958"
 ---
 > [!NOTE]
-> Die vollständige Projektmappe, einschließlich einer `utterances.json`-Beispieldatei, steht im [GitHub-Repository mit **LUIS-Beispielen**](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/change-model/) zur Verfügung.
+> Die vollständige Lösung steht zusammen mit einer Beispieldatei vom Typ `utterances.json` im [GitHub-Repository **cognitive-services-language-understanding**](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/quickstarts/change-model/) zur Verfügung.

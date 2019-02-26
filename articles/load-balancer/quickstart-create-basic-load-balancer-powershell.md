@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: c8c7d94e216f45551ed869b2ba921f3c79e6307a
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: d3f8ae94cd6896aba1db29a00f6f45c81995bbd1
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452682"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301263"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs mit Azure PowerShell
 In dieser Schnellstartanleitung wird gezeigt, wie Sie einen Load Balancer im Tarif „Basic“ mit Azure PowerShell erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch.
@@ -72,7 +72,8 @@ Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie ein
 
 Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenziertere Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
 
-Um einen TCP-Integritätstest zu erstellen, verwenden Sie [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *HTTP*-Port *80* überwacht:
+Um einen TCP-Integritätstest zu erstellen, verwenden Sie [New-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/new-azurermloadbalancerprobeconfig).
+Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *HTTP*-Port *80* überwacht:
 
 ```azurepowershell-interactive
 $probe = New-AzureRmLoadBalancerProbeConfig `

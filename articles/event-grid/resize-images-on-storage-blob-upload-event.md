@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/29/2019
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: b3ddaf7667baf98d9d5daa93a3106e457d0aeacb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0bd602ff6c6d42730439dac2b898899b07dcb2cc
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756868"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301450"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Tutorial: Automatisieren der Größenänderung von hochgeladenen Bildern mit Event Grid
 
@@ -27,7 +27,19 @@ Dieses Tutorial stellt Teil zwei einer Reihe von Tutorials zu Storage dar. Es er
 
 Sie verwenden die Azure-CLI und das Azure-Portal, um die Größenänderungsfunktionalität einer vorhandenen Bildupload-App hinzuzufügen.
 
-![Veröffentlichte Web-App im Microsoft Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+---
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -46,10 +58,6 @@ Sie müssen das vorherige Blob Storage-Tutorial abgeschlossen haben: [Hochladen 
 
 Falls Sie den Event Grid-Ressourcenanbieter noch nicht in Ihrem Abonnement registriert haben, stellen Sie sicher, dass er registriert ist.
 
-```azurepowershell-interactive
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.EventGrid
-```
-
 ```azurecli-interactive
 az provider register --namespace Microsoft.EventGrid
 ```
@@ -62,33 +70,30 @@ Falls Sie nicht Cloud Shell verwenden, müssen Sie sich erst mithilfe von `az lo
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Für Azure Functions ist ein allgemeines Speicherkonto erforderlich. Erstellen Sie ein separates allgemeines Speicherkonto in der Ressourcengruppe, indem Sie den Befehl [az storage account create](/cli/azure/storage/account#az-storage-account-create) verwenden.
-
-Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. 
-
-Ersetzen Sie im folgenden Befehl den Platzhalter `<general_storage_account>` durch Ihren eigenen global eindeutigen Namen für das allgemeine Speicherkonto. 
+Für Azure Functions ist ein allgemeines Speicherkonto erforderlich. Erstellen Sie zusätzlich zu dem Blobspeicherkonto, das Sie im vorherigen Tutorial erstellt haben, ein separates allgemeines Speicherkonto in der Ressourcengruppe. Verwenden Sie dazu den Befehl [az storage account create](/cli/azure/storage/account). Speicherkontonamen müssen zwischen 3 und 24 Zeichen lang sein und dürfen nur Zahlen und Kleinbuchstaben enthalten. 
 
 1. Legen Sie eine Variable fest, die den Namen der Ressourcengruppe enthält, die Sie im vorherigen Tutorial erstellt haben. 
 
     ```azurecli-interactive
-    resourceGroupName=<Name of the resource group that you created in the previous tutorial>
+    resourceGroupName=myResourceGroup
     ```
-2. Legen Sie eine Variable für den Namen des Speicherkontos fest, das für die Azure-Funktion erforderlich ist. 
+2. Legen Sie eine Variable für den Namen des neuen Speicherkontos fest, das für Azure Functions erforderlich ist. 
 
     ```azurecli-interactive
-    functionstorage=<name of the storage account to be used by function>
+    functionstorage=<name of the storage account to be used by the function>
     ```
-3. Erstellen Sie das Speicherkonto für die Azure-Funktion. Dies unterscheidet sich von dem Speicher, der die Bilder enthält. 
+3. Erstellen Sie das Speicherkonto für die Azure-Funktion. 
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location eastus --resource-group $resourceGroupName --sku Standard_LRS --kind storage
+    az storage account create --name $functionstorage --location southeastasia \
+    --resource-group $resourceGroupName --sku Standard_LRS --kind storage
     ```
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App  
 
-Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp#az-functionapp-create). 
+Sie müssen über eine Funktions-App verfügen, die die Ausführung Ihrer Funktion in Azure hostet. Die Funktionen-App bietet eine Umgebung für die serverlose Ausführung des Funktionscodes. Erstellen Sie eine Funktionen-App mithilfe des Befehls [az functionapp create](/cli/azure/functionapp). 
 
-Ersetzen Sie im folgenden Befehl den Platzhalter `<function_app>` durch den eigenen eindeutigen Namen Ihrer Funktions-App. Da der Name der Funktions-App als DNS-Standarddomäne für die Funktions-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. Ersetzen Sie `<general_storage_account>` durch den Namen des allgemeinen Speicherkontos, das Sie erstellt haben.
+Geben Sie im Befehl unten Ihren eigenen eindeutigen Funktions-App-Namen an. Da der Name der Funktions-App als DNS-Standarddomäne für die Funktions-App verwendet wird, muss der Name für alle Apps in Azure eindeutig sein. 
 
 1. Geben Sie einen Namen für die Funktions-App an, die erstellt werden soll. 
 
@@ -98,29 +103,62 @@ Ersetzen Sie im folgenden Befehl den Platzhalter `<function_app>` durch den eige
 2. Erstellen Sie die Azure-Funktion. 
 
     ```azurecli-interactive
-    az functionapp create --name $functionapp --storage-account  $functionstorage --resource-group $resourceGroupName --consumption-plan-location eastus
+    az functionapp create --name $functionapp --storage-account $functionstorage \
+    --resource-group $resourceGroupName --consumption-plan-location southeastasia
     ```
 
 Jetzt müssen Sie die Funktions-App für die Verbindung mit dem Blob Storage-Konto konfigurieren,das Sie im [vorhergehenden Tutorial][previous-tutorial] erstellt haben.
 
 ## <a name="configure-the-function-app"></a>Konfigurieren der Funktions-App
 
-Die Funktion benötigt die Verbindungszeichenfolge zum Herstellen der Verbindung mit dem Blob Storage-Konto. Der Funktionscode, den Sie im folgenden Schritt in Azure bereitstellen, sucht in der App-Einstellung „myblobstorage_STORAGE“ nach der Verbindungszeichenfolge und in der App-Einstellung „myContainerName“ nach dem Namen des Miniaturansichtcontainers. Rufen Sie die Verbindungszeichenfolge mit dem Befehl [az storage account show-connection-string](/cli/azure/storage/account) ab. Legen Sie Anwendungseinstellungen mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) fest.
+Die Funktion benötigt Anmeldeinformationen für das Blobspeicherkonto, die den Anwendungseigenschaften der Funkions-App mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) hinzugefügt werden.
 
-In den folgenden CLI-Befehlen ist `<blob_storage_account>` der Name des Blob Storage-Kontos, das Sie im vorherigen Tutorial erstellt haben.
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-1. Rufen Sie die Verbindungszeichenfolge für das Speicherkonto ab, das die Bilder enthält. 
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
 
-    ```azurecli-interactive
-    storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName --name $blobStorageAccount --query connectionString --output tsv)
-    ```
-2. Konfigurieren Sie die Funktions-App. 
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails \
+THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
 
-    ```azurecli-interactive
-    az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName --settings AzureWebJobsStorage=$storageConnectionString THUMBNAIL_CONTAINER_NAME=thumbnails THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
-    ```
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
 
-    Die Einstellung `FUNCTIONS_EXTENSION_VERSION=~2` legt fest, dass die Funktions-App unter der Version 2.x der Azure Functions-Runtime ausgeführt wird.
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString \
+THUMBNAIL_WIDTH=100 FUNCTIONS_EXTENSION_VERSION=~2
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+```azurecli-interactive
+blobStorageAccount=<name of the Blob storage account you created in the previous tutorial>
+
+blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
+-n $blobStorageAccount --query [0].value --output tsv)
+
+storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
+--name $blobStorageAccount --query connectionString --output tsv)
+
+az functionapp config appsettings set --name $functionapp --resource-group $resourceGroupName \
+--settings FUNCTIONS_EXTENSION_VERSION=~2 BLOB_CONTAINER_NAME=thumbnails \
+AZURE_STORAGE_ACCOUNT_NAME=$blobStorageAccount \
+AZURE_STORAGE_ACCOUNT_ACCESS_KEY=$blobStorageAccountKey \
+AZURE_STORAGE_CONNECTION_STRING=$storageConnectionString
+```
+
+---
+
+Die Einstellung `FUNCTIONS_EXTENSION_VERSION=~2` legt fest, dass die Funktions-App unter der Version 2.x der Azure Functions-Runtime ausgeführt wird.
 
 Sie können nun ein Funktionscodeprojekt für diese Funktions-App bereitstellen.
 
@@ -128,23 +166,30 @@ Sie können nun ein Funktionscodeprojekt für diese Funktions-App bereitstellen.
 
 # <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
 
-Das C#-Beispielskript (.csx) für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit. 
-
-Im folgenden Befehl ist `<function_app>` der Name der zuvor erstellten Funktions-App.
+Die C#-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/function-image-upload-resize) verfügbar. Stellen Sie dieses Codeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit. 
 
 ```azurecli-interactive
 az functionapp deployment source config --name $functionapp --resource-group $resourceGroupName --branch master --manual-integration --repo-url https://github.com/Azure-Samples/function-image-upload-resize
 ```
 
-# <a name="nodejstabnodejs"></a>[Node.js](#tab/nodejs)
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
 Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
 
-Im folgenden Befehl ist `<function_app>` der Name der zuvor erstellten Funktions-App.
+```azurecli-interactive
+az functionapp deployment source config --name $functionapp \
+--resource-group $resourceGroupName --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+```
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Die Node.js-Beispielfunktion für die Größenänderung ist auf [GitHub](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10) verfügbar. Stellen Sie dieses Funktionscodeprojekt für die Funktions-App mithilfe des Befehls [az functionapp deployment source config](/cli/azure/functionapp/deployment/source) bereit.
 
 ```azurecli-interactive
-az functionapp deployment source config --name <function_app> \
---resource-group myResourceGroup --branch master --manual-integration \
---repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node
+az functionapp deployment source config --name $functionapp \
+--resource-group $resourceGroupName --branch master --manual-integration \
+--repo-url https://github.com/Azure-Samples/storage-blob-resize-function-node-v10
 ```
 ---
 
@@ -152,10 +197,22 @@ Die Funktion für die Bildgrößenänderung wird durch HTTP-Anforderungen ausgel
 
 Die von der Event Grid-Benachrichtigung an die Funktion übergebenen Daten enthalten die URL des Blobs. Diese URL wird wiederum an die Eingabebindung übergeben, um das hochgeladene Bild aus dem Blob-Speicher abzurufen. Die Funktion generiert eine Miniaturansicht und schreibt den sich ergebenden Datenstrom in einen separaten Container in Blob Storage. 
 
-In diesem Projekt wird `EventGridTrigger` als Triggertyp verwendet. Es wird empfohlen, anstelle generischer HTTP-Trigger den Event Grid-Trigger zu verwenden. Event Grid überprüft automatisch Event Grid-Funktionstrigger. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md#webhook-event-delivery) implementieren.
+In diesem Projekt wird `EventGridTrigger` als Triggertyp verwendet. Es wird empfohlen, anstelle generischer HTTP-Trigger den Event Grid-Trigger zu verwenden. Event Grid überprüft automatisch Event Grid-Funktionstrigger. Bei generischen HTTP-Triggern müssen Sie die [Überprüfungsantwort](security-authentication.md) implementieren.
 
-Weitere Informationen zu dieser Funktion finden Sie unter in den [Dateien „function.json“ und „run.csx“](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/imageresizerfunc).
- 
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
+Weitere Informationen zu dieser Funktion finden Sie unter in den [Dateien „function.json“ und „run.csx“](https://github.com/Azure-Samples/function-image-upload-resize/tree/master/ImageFunctions).
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+Weitere Informationen zu dieser Funktion finden Sie in den [Dateien „function.json“ und „index.js“](https://github.com/Azure-Samples/storage-blob-resize-function-node/tree/master/Thumbnail).
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Weitere Informationen zu dieser Funktion finden Sie in den [Dateien „function.json“ und „index.js“](https://github.com/Azure-Samples/storage-blob-resize-function-node-v10/tree/master/Thumbnail).
+
+---
+
 Der Funktionsprojektcode wird direkt aus dem öffentlichen Beispielrepository bereitgestellt. Weitere Informationen zu den Bereitstellungsoptionen für Azure Functions finden Sie unter [Continuous Deployment für Azure Functions](../azure-functions/functions-continuous-deployment.md).
 
 ## <a name="create-an-event-subscription"></a>Erstellen eines Ereignisabonnements
@@ -197,11 +254,25 @@ Nachdem die Back-End-Dienste konfiguriert wurden, testen Sie die Funktion für d
 
 Navigieren Sie zum Testen der Größenänderung von Bildern in der Web-App zur URL Ihrer veröffentlichten App. Die Standard-URL der Web-App lautet `https://<web_app>.azurewebsites.net`.
 
+# <a name="nettabdotnet"></a>[\.NET](#tab/dotnet)
+
 Klicken Sie auf den Bereich **Fotos hochladen**, um eine Datei auszuwählen und hochzuladen. Sie können auch ein Foto in diese Region ziehen. 
 
 Beachten Sie, dass eine Kopie des hochgeladenen Bilds im Karussell **Generierte Miniaturansichten** angezeigt wird, nachdem das hochgeladene Bild nicht mehr angezeigt wird. Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
 
-![Veröffentlichte Web-App im Microsoft Edge-Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png) 
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
+
+# <a name="nodejs-v2-sdktabnodejs"></a>[Node.js V2 SDK](#tab/nodejs)
+
+Klicken Sie auf **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Ist der Upload erfolgreich, wird im Browser eine Erfolgsmeldung angezeigt. Klicken Sie auf den Link, um zur Startseite zurückzukehren. Eine Kopie des hochgeladenen Bilds wird im Bereich **Generierte Miniaturansichten** angezeigt. (Wird das Bild zuerst nicht angezeigt, laden Sie die Seite erneut.) Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
+
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
+
+# <a name="nodejs-v10-sdktabnodejsv10"></a>[Node.js V10 SDK](#tab/nodejsv10)
+
+Klicken Sie auf **Datei auswählen**, um eine Datei auszuwählen, und klicken Sie dann auf **Bild hochladen**. Ist der Upload erfolgreich, wird im Browser eine Erfolgsmeldung angezeigt. Klicken Sie auf den Link, um zur Startseite zurückzukehren. Eine Kopie des hochgeladenen Bilds wird im Bereich **Generierte Miniaturansichten** angezeigt. (Wird das Bild zuerst nicht angezeigt, laden Sie die Seite erneut.) Die Größe dieses Bilds wurde von der Funktion angepasst, und das Bild wurde dem Container *thumbnails* hinzugefügt und vom Webclient heruntergeladen.
+
+![Veröffentlichte Web-App im Browser](./media/resize-images-on-storage-blob-upload-event/upload-app-nodejs-thumb.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
