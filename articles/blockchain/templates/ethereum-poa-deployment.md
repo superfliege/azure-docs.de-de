@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 47f9dfea24dc3134e6a2f476affaaff7e60efe8c
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 3edd70d3012840bd66460219c32135666619a3bf
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260379"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313567"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum-PoA-Konsortium
 
@@ -359,7 +359,7 @@ Bei Verwendung der Bereitstellung, die auf der öffentlichen IP-Adresse basiert,
 
     -  Wählen Sie die gleiche Anzahl von Validierungsknoten wie die anderen Mitglieder des Netzwerks, um eine faire Verteilung sicherzustellen.
 
-    -  Verwenden Sie dieselbe Ethereum-Adresse, die im [vorherigen Schritt](#step-1-add-the-new-admin) angegeben wurde.
+    -  Verwenden Sie dieselbe Ethereum-Adresse, die im vorherigen Schritt angegeben wurde.
 
     -  Übergeben Sie auf der Registerkarte mit den *Ethereum-Einstellungen* die *URL der Konsortiumsdaten*.
 

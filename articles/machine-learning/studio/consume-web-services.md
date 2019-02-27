@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 06/02/2017
-ms.openlocfilehash: 4af7af6616b5415cd13abacd6aca13bd412d4ad8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4a05b99cf0e40e63c01aee27bd745dd165dc23b8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998081"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56452694"
 ---
 # <a name="how-to-consume-an-azure-machine-learning-studio-web-service"></a>Nutzen eines Azure Machine Learning Studio-Webdiensts
 
-Sobald Sie ein Azure Machine Learning-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
+Sobald Sie ein Azure Machine Learning Studio-Vorhersagemodell als Webdienst bereitstellen, können Sie eine REST-API verwenden, um Daten dorthin zu senden und Vorhersagen abzurufen. Sie können die Daten in Echtzeit oder im Batchmodus senden.
 
 Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Webdiensts mit Machine Learning Studio finden Sie hier:
 
@@ -32,14 +32,14 @@ Weitere Informationen zum Erstellen und Bereitstellen eines Machine Learning-Web
 ## <a name="overview"></a>Übersicht
 Mit dem Azure Machine Learning-Webdienst kommunizieren externe Anwendungen in Echtzeit mit einem Machine Learning-Workflow-Bewertungsmodell. Ein Machine Learning-Webdienstaufruf gibt Vorhersageergebnisse an eine externe Anwendung zurück. Zur Durchführung eines Machine Learning-Webdienstaufrufs übergeben Sie einen API-Schlüssel, der beim Bereitstellen einer Vorhersage erstellt wird. Der Machine Learning-Webdienst basiert auf REST, einer verbreiteten Architektur für Webprogrammierungsprojekte.
 
-Azure Machine Learning verfügt über zwei Arten von Diensten:
+Azure Machine Learning Studio verfügt über zwei Arten von Diensten:
 
 * Antwort-/Anfrage-Dienst (Request-Response Service, RRS): ein hochskalierbarer Webdienst mit niedriger Latenz, der eine Schnittstelle für zustandslose Modelle bereitstellt, die in Machine Learning Studio erstellt und bereitgestellt wurden.
 * Batch Execution Service (BES) – ein asynchroner Dienst für die Bewertung eines Stapels für Datensätze.
 
 Weitere Informationen zu Machine Learning-Webdiensten finden Sie unter [Bereitstellen eines Machine Learning-Webdiensts](publish-a-machine-learning-web-service.md).
 
-## <a name="get-an-azure-machine-learning-authorization-key"></a>Abrufen eines Autorisierungsschlüssels für Azure Machine Learning
+## <a name="get-an-azure-machine-learning-studio-authorization-key"></a>Abrufen eines Autorisierungsschlüssels für Azure Machine Learning Studio
 Wenn Sie Ihr Experiment bereitstellen, werden API-Schlüssel für den Webdienst erstellt. Sie können die Schlüssel von verschiedenen Stellen abrufen.
 
 ### <a name="from-the-microsoft-azure-machine-learning-web-services-portal"></a>Im Azure Machine Learning Web Services-Portal
@@ -103,7 +103,7 @@ Für die Verbindung mit einem Machine Learning-Webdienst muss das NuGet-Paket **
 **So führen Sie das Codebeispiel aus**
 
 1. Stellen Sie das Experiment „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
-2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Siehe oben: **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning** .
+2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Siehe **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning Studio** weiter oben.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 
 **So sieht eine vollständige Anforderung aus.**
@@ -199,7 +199,7 @@ Verwenden Sie für eine Verbindung mit einem Machine Learning-Webdienst die Bibl
 **So führen Sie das Codebeispiel aus**
 
 1. Stellen Sie „Sample 1: Download dataset from UCI: Adult 2 class dataset“ bereit, das Teil der Machine Learning-Beispielsammlung ist.
-2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Im Abschnitt **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning** zu Beginn dieses Artikels finden Sie weitere Informationen.
+2. Weisen Sie „apiKey“ den Schlüssel von einem Webdienst zu. Im Abschnitt **Abrufen eines Autorisierungsschlüssels für Azure Machine Learning Studio** zu Beginn dieses Artikels finden Sie weitere Informationen.
 3. Weisen Sie "serviceUri" die Anforderungs-URI zu.
 
 **So sieht eine vollständige Anforderung aus.**

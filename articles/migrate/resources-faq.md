@@ -4,14 +4,14 @@ description: Beantwortet häufig gestellte Fragen zu Azure Migrate
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 01/11/2019
+ms.date: 02/19/2019
 ms.author: snehaa
-ms.openlocfilehash: 1e60ee5060f5f292ed6d03cf0680d9801a0c04f4
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 9d1820215dd2b81edb694d71a1b9496237876d05
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746311"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416189"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate – Häufig gestellte Fragen (FAQ)
 
@@ -117,6 +117,10 @@ Wir haben eine kontinuierliche Profilerstellung von Leistungsdaten eingeführt (
 Die von der Collectorappliance gesammelten Daten werden im Azure-Speicherort gespeichert, den Sie beim Erstellen des Migrationsprojekts angeben. Die Daten werden sicher in einem Microsoft-Abonnement gespeichert und gelöscht, wenn der Benutzer das Azure Migrate-Projekt löscht.
 
 Wenn Sie für die Abhängigkeitsvisualisierung Agents auf den VMs installieren, werden die von den Dependency-Agents gesammelten Daten in den USA in einem Log Analytics-Arbeitsbereich gespeichert, der im Abonnement des Benutzers erstellt wurde. Diese Daten werden gelöscht, wenn Sie den Log Analytics-Arbeitsbereich in Ihrem Abonnement löschen. [Weitere Informationen](https://docs.microsoft.com/azure/migrate/concepts-dependency-visualization)
+
+### <a name="what-is-the-volume-of-data-which-is-uploaded-by-azure-migrate-in-the-case-of-continuous-profiling"></a>Wie hoch ist das Datenvolumen, das von Azure Migrate bei kontinuierlicher Profilerstellung hochgeladen wird?
+
+Das an Azure Migrate gesendete Datenvolumen hängt von verschiedenen Parametern ab. Hier eine Zahl zur Veranschaulichung: Ein Projekt mit zehn Computern (jeweils mit einem Datenträger und einer NIC) würde ungefähr 50 MB pro Tag senden. Dies ist ein ungefährer Wert, der sich auf Grundlage der Anzahl von Datenpunkten für die NICS und Datenträger ändert (die gesendeten Daten verhalten sich nicht linear, wenn die Anzahl der Computer, NICs oder Datenträger zunimmt). 
 
 ### <a name="is-the-data-encrypted-at-rest-and-while-in-transit"></a>Werden die Daten im Ruhezustand und bei der Übertragung verschlüsselt?
 

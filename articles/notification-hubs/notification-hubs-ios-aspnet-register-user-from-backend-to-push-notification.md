@@ -138,7 +138,7 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
 
     Diese Methode zeigt eine Warnung in der GUI an, wenn Ihre App während der Ausführung eine Benachrichtigung empfängt.
 
-9. Öffnen Sie die Datei `PushToUserViewController.m`, und geben Sie in der folgenden Implementierung die Tastatur zurück:
+9. Öffnen Sie die Datei `PushToUserViewController.m`, und blenden Sie in der folgenden Implementierung die Tastatur wieder ein:
 
     ```objc
     - (BOOL)textFieldShouldReturn:(UITextField *)theTextField {

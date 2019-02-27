@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 10/02/2018
 ms.author: hascipio; v-divte; v-miclar
-ms.openlocfilehash: 535a947f7a4b9c750d585ce854a14be80c4a135c
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: 381f88c4641417bceca0f988d4b1a187aedaa642
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639157"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327305"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Allgemeine Probleme bei der VHD-Erstellung (FAQ)
 
@@ -27,7 +27,7 @@ In den folgenden häufig gestellten Fragen (FAQ) werden allgemeine Probleme beha
 
 ## <a name="how-do-you-create-a-vm-from-the-azure-portal-using-the-vhd-that-is-uploaded-to-premium-storage"></a>Wie kann mithilfe der virtuellen Festplatte, die in Storage Premium hochgeladen wird, ein virtueller Computer im Azure-Portal erstellt werden?
 
-Der Azure Marketplace verfügt derzeit nicht über die Unterstützung für die Erstellung von VM-Angeboten aus Images, die sich im verwalteten Speicher oder in Azure Storage Premium befinden.  Weitere Informationen zu diesen Speicheroptionen finden Sie unter [Azure Managed Disks – Übersicht](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview) und [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).
+Der Azure Marketplace verfügt derzeit nicht über die Unterstützung für die Erstellung von VM-Angeboten aus Images, die sich im verwalteten Speicher oder in Azure Storage Premium befinden.  Weitere Informationen zu diesen Speicheroptionen finden Sie in der [Übersicht über Azure Managed Disks](https://docs.microsoft.com/azure/virtual-machines/windows/managed-disks-overview).
 
 
 ## <a name="can-you-use-generation-2-vms-for-offers"></a>Können VMs der Generation 2 für Angebote genutzt werden?
@@ -73,7 +73,7 @@ Ja. Dies ist der Fall, wenn sie unter Azure gehostet werden.  Azure weist einen 
 
 ## <a name="in-a-vm-how-do-you-manage-the-custom-script-extension-in-the-startup-task"></a>Wie wird auf einem virtuellen Computer die benutzerdefinierte Skripterweiterung in der Startaufgabe verwaltet?
 
-Im folgenden Artikel erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung über das Azure PowerShell-Modul ausführen. Sie erfahren, wie Sie eine Azure Resource Manager-Vorlage verwenden, und erhalten Informationen zu Problembehandlungsschritten für Windows-Systeme: [CustomScript-Erweiterung für Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/).
+Im folgenden Artikel erfahren Sie, wie Sie die benutzerdefinierte Skripterweiterung über das Azure PowerShell-Modul ausführen. Sie erfahren, wie Sie eine Azure Resource Manager-Vorlage verwenden, und erhalten Informationen zu Problembehandlungsschritten für Windows-Systeme: [Benutzerdefinierte Skripterweiterung für Windows](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/)
 
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Werden 32-Bit-Anwendungen oder -Dienste für den Azure Marketplace unterstützt?

@@ -94,6 +94,8 @@ items:
       href: acu.md
     - name: Benchmarkergebnisse
       href: compute-benchmark-scores.md
+    - name: vCPU-Kontingente
+      href: quotas.md
   - name: Wartung und Updates
     href: maintenance-and-updates.md
   - name: Datenträgerspeicher
@@ -124,12 +126,8 @@ items:
     href: backup-recovery.md
   - name: High Performance Computing
     href: high-performance-computing.md
-  - name: Überlegungen zur Bereitstellung
-    items:
-    - name: Richtlinien für Infrastrukturen
-      href: infrastructure-example.md
-    - name: vCPU-Kontingente
-      href: quotas.md
+  - name: Infrastrukturbeispiel
+    href: infrastructure-example.md
 - name: Anleitungen
   items:
   - name: Virtuelle Computer erstellen
@@ -461,9 +459,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Häufig gestellte Fragen
     href: faq.md
-ms.openlocfilehash: 1b6d748758ba201391c80f8bded8215ae4161fbc
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 909c367475f5c41f03f7a30bb68bfc365dde581b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430368"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889737"

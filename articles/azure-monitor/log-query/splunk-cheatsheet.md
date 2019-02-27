@@ -13,22 +13,22 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: d6065420b9081333fc257501ace868f64220ca63
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: dafafa8ff5d721034b3b10bdeb1a2fc09cd32835
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005249"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56267579"
 ---
 # <a name="splunk-to-azure-monitor-log-query"></a>Von Splunk zur Azure Monitor-Protokollabfrage
 
-Dieser Artikel dient als Unterstützung für Benutzer, die mit Splunk vertraut sind, beim Erlernen der Data Explorer-Abfragesprache zum Schreiben von Protokollabfragen in Azure Monitor. Die beiden Sprachen werden direkt miteinander verglichen, um wichtige Unterschiede sowie Ähnlichkeiten, die Ihnen eine Nutzung Ihrer vorhandenen Kenntnisse ermöglichen, zu veranschaulichen.
+Dieser Artikel dient als Unterstützung für Benutzer, die mit Splunk vertraut sind, beim Erlernen der Abfragesprache Kusto zum Schreiben von Protokollabfragen in Azure Monitor. Die beiden Sprachen werden direkt miteinander verglichen, um wichtige Unterschiede sowie Ähnlichkeiten, die Ihnen eine Nutzung Ihrer vorhandenen Kenntnisse ermöglichen, zu veranschaulichen.
 
 ## <a name="structure-and-concepts"></a>Struktur und Konzepte
 
 In der folgenden Tabelle werden Konzepte und Datenstrukturen von Splunk und Azure Monitor-Protokollen miteinander verglichen.
 
- | Konzept  | Splunk | Azure Monitor |  Kommentar
+ | Konzept  | Splunk | Azure Monitor |  Comment
  | --- | --- | --- | ---
  | Bereitstellungseinheit  | cluster |  cluster |  Azure Monitor ermöglicht beliebige clusterübergreifende Abfragen. Bei Splunk ist das nicht der Fall. |
  | Datencaches |  buckets  |  Caching und Aufbewahrungsrichtlinien |  Steuert den Zeitraum und die Cachingebene für die Daten. Diese Einstellung wirkt sich direkt auf die Leistung von Abfragen und die Kosten der Bereitstellung aus. |
@@ -44,7 +44,7 @@ In der folgenden Tabelle werden Konzepte und Datenstrukturen von Splunk und Azur
 
 In der folgenden Tabelle sind Funktionen in Azure Monitor angegeben, die Splunk-Funktionen entsprechen.
 
-|Splunk | Azure Monitor |Kommentar
+|Splunk | Azure Monitor |Comment
 |---|---|---
 |strcat | strcat()| (1) |
 |split  | split() | (1) |

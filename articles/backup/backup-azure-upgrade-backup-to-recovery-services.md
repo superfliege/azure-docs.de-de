@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
-ms.openlocfilehash: 41a826304af338814666e80dfaf584021809dbb0
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.openlocfilehash: efd069b90e2f085b7bacf4dfa72478e1232554bc
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880045"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56313359"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Durchführen eines Upgrades für einen Sicherungstresor auf einen Recovery Services-Tresor
 
@@ -38,7 +38,7 @@ Verwenden Sie die Referenz zu PowerShell-Cmdlets für das [Resource Manager-Bere
 Überprüfen Sie vor dem Upgrade Ihrer Sicherungstresore auf Recovery Service-Tresore folgende Punkte.
 
 - **Agent-Mindestversion**: Stellen Sie für das Upgrade Ihres Tresors sicher, dass der Microsoft Azure Recovery Services-Agent (MARS-Agent) mindestens die Version 2.0.9083.0 aufweist. Wenn der MARS-Agent älter ist als 2.0.9083.0, aktualisieren Sie den Agent, bevor Sie den Upgradevorgang starten.
-- **Instanzbasiertes Abrechnungsmodell**: Recovery Service-Tresore unterstützen nur das instanzbasierte Abrechnungsmodell. Wenn Sie einen Sicherungstresor mit dem veralteten speicherbasierten Abrechnungsmodell verwenden, konvertieren Sie das Abrechnungsmodell beim Upgrade.
+- **Instanzbasiertes Abrechnungsmodell**: Recovery Services-Tresore unterstützen nur das instanzbasierte Abrechnungsmodell. Wenn Sie einen Sicherungstresor mit dem veralteten speicherbasierten Abrechnungsmodell verwenden, konvertieren Sie das Abrechnungsmodell beim Upgrade.
 - **Keine Konfigurationsvorgänge für laufende Sicherungen**: Während des Upgrades ist der Zugriff auf die Verwaltungsebene eingeschränkt. Schließen Sie alle Aktionen auf Verwaltungsebene ab, und starten Sie dann das Upgrade.
 
 ## <a name="using-powershell-scripts-to-upgrade-your-vaults"></a>Durchführen von Upgrades für Ihre Tresore mithilfe von PowerShell-Skripts
@@ -98,13 +98,13 @@ Auf dem zweiten Bildschirm werden verfügbare Hilfelinks angezeigt, die Sie beim
 ![Hilfelinks auf dem Blatt „Schnellstart“](./media/backup-azure-upgrade-backup-to-recovery-services/quick-start-w-help-links.png)
 
 ## <a name="post-upgrade-steps"></a>Schritte nach dem Upgrade
-Der Recovery Services-Tresor unterstützt das Angeben von Zeitzoneninformationen in den Sicherungsrichtlinien. Nachdem der Tresor erfolgreich aktualisiert wurde, rufen Sie die Sicherungsrichtlinien im Menü „Tresoreinstellungen“ auf, und aktualisieren Sie die Zeitzoneninformationen für jede Richtlinie, die im Tresor konfiguriert wurde. Dieser Bildschirm zeigt bereits die Zeit des Sicherungszeitplans gemäß der Ortszeit an, die verwendet wurde, als Sie die Richtlinie erstellt haben. 
+Der Recovery Services-Tresor unterstützt das Angeben von Zeitzoneninformationen in den Sicherungsrichtlinien. Nachdem der Tresor erfolgreich aktualisiert wurde, rufen Sie die Sicherungsrichtlinien im Menü „Tresoreinstellungen“ auf, und aktualisieren Sie die Zeitzoneninformationen für jede Richtlinie, die im Tresor konfiguriert wurde. Dieser Bildschirm zeigt bereits die Zeit des Sicherungszeitplans gemäß der Ortszeit an, die verwendet wurde, als Sie die Richtlinie erstellt haben.
 
 ## <a name="enhanced-security"></a>Erweiterte Sicherheit
 
-Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md). 
+Wenn ein Sicherungstresor auf einen Recovery Services-Tresor aktualisiert wird, werden die Sicherheitseinstellungen für diesen Tresor automatisch aktiviert. Wenn die Sicherheitseinstellungen eingeschaltet sind, erfordern bestimmte Vorgänge wie z.B. das Löschen von Sicherungen oder das Ändern einer Passphrase einen [Azure Multi-Factor Authentication](../active-directory/authentication/multi-factor-authentication.md)-PIN. Weitere Informationen zur erhöhten Sicherheit finden Sie im Artikel [Sicherheitsfeatures für den Schutz von Hybridsicherungen](backup-azure-security-feature.md).
 
-Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden. 
+Wenn die erhöhte Sicherheit aktiviert ist, werden Daten bis zu 14 Tage beibehalten, nachdem die Wiederherstellungspunktinformationen aus dem Tresor gelöscht wurden. Den Kunden wird das Speichern dieser Sicherheitsdaten in Rechnung gestellt. Die Beibehaltung der Sicherheitsdaten gilt für Wiederherstellungspunkt, die für den Azure Backup-Agent, den Azure Backup Server und den System Center Data Protection-Manager aufgestellt wurden.
 
 ## <a name="gather-data-on-your-vault"></a>Sammeln von Daten in Ihrem Tresor
 
@@ -112,38 +112,38 @@ Konfigurieren Sie nach einem Upgrade auf einen Recovery Services-Tresor Berichte
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**Wirkt sich der Upgradeplan auf meine laufenden Sicherungen aus?**</br>
-Nein. Laufende Sicherungen werden während und nach dem Upgrade ohne Unterbrechung durchgeführt.
+### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>Wirkt sich der Upgradeplan auf meine laufenden Sicherungen aus?
+ Nein. Laufende Sicherungen werden während und nach dem Upgrade ohne Unterbrechung durchgeführt.
 
-**Was geschieht mit meinen Tresoren, wenn ich kein Upgrade durchführe?**</br>
+### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>Was geschieht mit meinen Tresoren, wenn ich kein Upgrade durchführe?
 Da alle neuen Funktionen nur für Recovery Services-Tresore gelten, wird dringend empfohlen, Ihre Tresore zu aktualisieren. Ab dem 1. September 2017 wird von Microsoft automatisch ein Upgrade von Sicherungstresoren auf Recovery Services-Tresore gestartet. Nach dem 30. November 2017 können Sicherungstresore nicht mehr mithilfe von PowerShell erstellt werden. Der Tresor kann in der Zwischenzeit jederzeit automatisch aktualisiert werden. Es empfiehlt sich, dass Sie Ihren Tresor so bald wie möglich upgraden.
 
-**Was bedeutet dieser Upgradeplan für meine vorhandenen Tools?**</br>
-Updaten Sie auf das Resource Manager-Bereitstellungsmodell. Recovery Services-Tresore wurden für die Verwendung im Resource Manager-Bereitstellungsmodell erstellt. Die Planung für das Resource Manager-Bereitstellungsmodell und das Berücksichtigen der Unterschiede in Ihren Tresoren ist dabei wichtig. 
+### <a name="what-does-this-upgrade-mean-for-my-existing-tooling"></a>Was bedeutet dieser Upgradeplan für meine vorhandenen Tools?
+Updaten Sie auf das Resource Manager-Bereitstellungsmodell. Recovery Services-Tresore wurden für die Verwendung im Resource Manager-Bereitstellungsmodell erstellt. Die Planung für das Resource Manager-Bereitstellungsmodell und das Berücksichtigen der Unterschiede in Ihren Tresoren ist dabei wichtig.
 
-**Kommt es während des Upgrades zu hohen Ausfallzeiten?**</br>
+### <a name="during-the-upgrade-is-there-much-downtime"></a>Kommt es während des Upgrades zu hohen Ausfallzeiten?
 Dies hängt von der Anzahl der Ressourcen ab, für die ein Upgrade durchgeführt werden soll. Bei kleineren Bereitstellungen (einigen Dutzend geschützten Instanzen) nimmt das gesamte Upgrade voraussichtlich maximal 20 Minuten in Anspruch. Bei größeren Bereitstellungen kann es bis zu eine Stunde dauern.
 
-**Kann ich nach dem Upgrade ein Rollback ausführen?**</br>
-Nein. Ein Rollback wird nicht unterstützt, nachdem erfolgreich ein Upgrade für die Ressourcen durchgeführt wurde.
+### <a name="can-i-roll-back-after-upgrading"></a>Kann ich nach dem Upgrade ein Rollback ausführen?
+ Nein. Ein Rollback wird nicht unterstützt, nachdem erfolgreich ein Upgrade für die Ressourcen durchgeführt wurde.
 
-**Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für das Upgrade geeignet sind?**</br>
+### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>Kann ich mein Abonnement oder meine Ressourcen überprüfen, um zu ermitteln, ob sie für das Upgrade geeignet sind?
 Ja. Der erste Schritt beim Upgrade ist die Prüfung der Ressourcen hinsichtlich ihrer Eignung für das Upgrade. Falls bei der Überprüfung der Voraussetzungen ein Fehler auftritt, erhalten Sie Meldungen über alle Gründe, aus denen das Upgrade nicht durchgeführt werden kann.
 
-**Kann ich ein Upgrade für meinen CSP-basierten Sicherungstresor durchführen?**</br>
-Nein. Derzeit kann kein Upgrade für CSP-basierte Sicherungstresore durchgeführt werden. In den nächsten Versionen wird eine Unterstützung für das Upgrade von CSP-basierten Sicherungstresoren verfügbar sein.
+### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>Kann ich ein Upgrade für meinen CSP-basierten Sicherungstresor durchführen?
+ Nein. Derzeit kann kein Upgrade für CSP-basierte Sicherungstresore durchgeführt werden. In den nächsten Versionen wird eine Unterstützung für das Upgrade von CSP-basierten Sicherungstresoren verfügbar sein.
 
-**Kann ich meinen klassischen Tresor nach dem Upgrade anzeigen?**</br>
-Nein. Sie können den klassischen Tresor nach dem Upgrade weder anzeigen noch verwalten. Sie können lediglich das neue Azure-Portal für alle Verwaltungsaktionen im Tresor verwenden.
+### <a name="can-i-view-my-classic-vault-post-upgrade"></a>Kann ich meinen klassischen Tresor nach dem Upgrade anzeigen?
+ Nein. Sie können den klassischen Tresor nach dem Upgrade weder anzeigen noch verwalten. Sie können lediglich das neue Azure-Portal für alle Verwaltungsaktionen im Tresor verwenden.
 
-**Mein Upgrade ist fehlgeschlagen, aber der Computer, der den Agent enthielt, der die Aktualisierung verlangt, ist nicht mehr vorhanden. Wie gehe ich in einem solchen Fall vor?**</br>
+### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>Mein Upgrade ist fehlgeschlagen, aber der Computer, der den Agent enthielt, der die Aktualisierung verlangt, ist nicht mehr vorhanden. Wie gehe ich in einem solchen Fall vor?
 Wenn Sie die Sicherungen von diesem Computer langfristig aufbewahren müssen, können Sie kein Upgrade des Tresors durchführen. In zukünftigen Versionen werden wir Unterstützung für das Upgrade eines solchen Tresors hinzufügen.
 Wenn Sie die Sicherungen dieses Computers nicht mehr speichern müssen, dann heben Sie die Registrierung für diesen Computer beim Tresor auf, und versuchen Sie dann erneut, das Upgrade durchzuführen.
 
-**Warum kann ich die Auftragsinformationen für meine Ressourcen nach dem Upgrade nicht finden?**</br>
+### <a name="why-cant-i-see-the-jobs-information-for-my-resources-after-upgrade"></a>Warum kann ich die Auftragsinformationen für meine Ressourcen nach dem Upgrade nicht finden?
 Die Überwachung für Sicherungen (MARS-Agent und IaaS) ist ein neues Feature, von dem Sie profitieren, wenn Sie Ihren Sicherungstresor auf den Recovery Services-Tresor upgraden. Es dauert 12 Stunden, bis die Überwachungsinformationen mit dem Dienst synchronisiert werden.
 
-**Wie melde ich ein Problem?**</br>
+### <a name="how-do-i-report-an-issue"></a>Wie melde ich ein Problem?
 Wenn irgendein Teil des Tresorupgrades fehlschlägt, beachten Sie die in der Fehlermeldung aufgeführte OperationID. Der Microsoft-Support wird proaktiv daran arbeiten, das Problem zu beheben. Bei Fragen oder Vorschlägen, senden Sie eine E-Mail an rsvaultupgrade@service.microsoft.com, unter Angabe Ihrer Abonnement-ID, des Tresornamens und der Vorgangs-ID. Es wird versucht, das Problem so schnell wie möglich zu beheben. Wiederholen Sie den Vorgang nicht, es sei denn, Sie werden von Microsoft explizit dazu aufgefordert.
 
 

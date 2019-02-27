@@ -1,7 +1,7 @@
 ---
 title: Bereitstellung und Nutzung
 titleSuffix: Azure Machine Learning Studio
-description: Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen.
+description: Mit Azure Machine Learning Studio können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,22 +10,24 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: e2add42e56f939dbfeb33ac2774d404411b1fefb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a1ddf6aae9fdd661e30719fafb6000fb6559df20
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997250"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429020"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio-Webdienste: Bereitstellung und Nutzung
-Mit Azure Machine Learning können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
+
+Mit Azure Machine Learning Studio können Sie Machine Learning-Workflows und -Modelle als Webdienste bereitstellen. Diese Webdienste können dann verwendet werden, um die Machine Learning-Modelle in Anwendungen über das Internet aufzurufen und Vorhersagen im Echtzeit- oder Batchmodus zu nutzen. Da die Webdienste RESTful sind, können Sie sie über verschiedene Programmiersprachen und Plattformen wie etwa .NET und Java sowie über Anwendungen wie Excel aufrufen.
 
 Die nächsten Abschnitte enthalten Links zu exemplarischen Vorgehensweisen, Code und Dokumentationen, die Ihnen beim Einstieg helfen.
 
 ## <a name="deploy-a-web-service"></a>Bereitstellen eines Webdiensts
 
 ### <a name="with-azure-machine-learning-studio"></a>Mit Azure Machine Learning Studio
-Mit Machine Learning Studio und dem Microsoft Azure Machine Learning-Webdiensteportal können Sie einen Webdienst bereitstellen und verwalten, ohne Code schreiben zu müssen.
+
+Im Studio-Portal und Microsoft Azure Machine Learning Web Services-Portal können Sie einen Webdienst bereitstellen und verwalten, ohne Code schreiben zu müssen.
 
 Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung eines neuen Webdiensts:
 
@@ -38,13 +40,14 @@ Unter den folgenden Links finden Sie allgemeine Informationen zur Bereitstellung
   * [Gewusst wie: Bereitstellen eines Webdiensts in mehreren Regionen](how-to-deploy-to-multiple-regions.md)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>Mit Webdienste-Ressourcenanbieter-APIs (Azure Resource Manager-APIs)
-Der Azure Machine Learning-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von REST-API-Aufrufen. Weitere Informationen finden Sie in der [Machine Learning-Webdienst](/rest/api/machinelearning/index)-Referenz (REST).
+
+Der Azure Machine Learning Studio-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von REST-API-Aufrufen. Weitere Informationen finden Sie in der Referenz zu [Machine Learning Web Service (REST)](/rest/api/machinelearning/index).
 
 <!-- [Machine Learning Web Service (REST)](https://msdn.microsoft.com/library/azure/mt767538.aspx) reference. -->
 
-
 ### <a name="with-powershell-cmdlets"></a>Mit PowerShell-Cmdlets
-Der Azure Machine Learning-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von PowerShell-Cmdlets.
+
+Der Azure Machine Learning Studio-Ressourcenanbieter für Webdienste ermöglicht die Bereitstellung und Verwaltung von Webdiensten mithilfe von PowerShell-Cmdlets.
 
 Um die Cmdlets verwenden zu können, müssen Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto anmelden. Wenn Sie mit dem Aufrufen Resource Manager-basierter PowerShell-Befehle nicht vertraut sind, nutzen Sie die Informationen unter [Verwenden von Azure PowerShell mit Azure Resource Manager](../../azure-resource-manager/powershell-azure-resource-manager.md).
 
@@ -75,11 +78,13 @@ Hier sehen Sie ein Beispiel:
 
 Ausführlichere Informationen finden Sie in den folgenden Artikeln sowie im Beispielcode:
 
-* [Azure Machine Learning-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) auf MSDN
+* Referenz zu [Azure Machine Learning Studio-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) auf MSDN
 * [Exemplarische Vorgehensweise](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt) auf GitHub
 
 ## <a name="consume-the-web-services"></a>Nutzen von Webdiensten
+
 ### <a name="from-the-azure-machine-learning-web-services-ui-testing"></a>Über die Benutzeroberfläche der Azure Machine Learning-Webdienste (Testen)
+
 Sie können Ihren Webdienst über das Azure Machine Learning-Webdiensteportal testen. Dies schließt das Testen der Schnittstellen des Request-Response Service (RRS) und des Stapelausführungsdiensts (Batch Execution Service, BES) ein.
 
 * [Bereitstellen eines neuen Webdiensts](publish-a-machine-learning-web-service.md)
@@ -87,10 +92,12 @@ Sie können Ihren Webdienst über das Azure Machine Learning-Webdiensteportal te
 * [Tutorial 3: Bereitstellen eines Kreditrisikomodells](tutorial-part3-credit-risk-deploy.md)
 
 ### <a name="from-excel"></a>Über Excel
+
 Sie können eine Excel-Vorlage zur Nutzung des Webdiensts herunterladen:
 
 * [Verwenden eines Azure Machine Learning-Webdiensts aus Excel](consuming-from-excel.md)
 * [Excel-Add-In für Azure Machine Learning-Webdienste](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>Über einen REST-basierten Client
+
 Azure Machine Learning-Webdienste sind RESTful-APIs. Diese APIs können über verschiedene Plattformen (.NET, Python, R, Java usw.) genutzt werden. Im [Microsoft Azure Machine Learning-Webdiensteportal](https://services.azureml.net) steht auf der **Nutzungsseite** Ihres Webdiensts Beispielcode zur Verfügung, der Ihnen den Einstieg erleichtert. Weitere Informationen finden Sie unter [Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md).

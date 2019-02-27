@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 02/20/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/09/2019
-ms.openlocfilehash: 616854e89a95eb83508e30099a663f0017e63784
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2acc26fc473d0e8dcb93b1439de316fbef67ae98
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115707"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416512"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack-Update 1901
 
@@ -199,7 +199,9 @@ Die Referenz für die aktualisierten Module finden Sie in der [Referenz zum Azur
            "autoUpgradeMinorVersion": "true"
    ```
 
-- Es gibt eine neue Überlegung für die genaue Planung von Azure Stack-Kapazität. Wir haben Grenzwerte für die Gesamtanzahl von virtuellen Computern festgelegt, die innerhalb von Azure Stack bereitgestellt werden können, um sicherzustellen, dass alle unsere internen Dienste die Anforderungen der Skalierung erfüllen, mit der Kunden die Anwendung ausführen. Der Grenzwert liegt bei 60 virtuellen Computern pro Host, d. h. der Maximalwert für den gesamten Stapel ist 700 (sofern der Grenzwert von 60 pro Host erreicht wird). Weitere Informationen finden Sie in der [neuen Version von Capacity Planner](http://aka.ms/azstackcapacityplanner).
+- Es gibt eine neue Überlegung für die genaue Planung von Azure Stack-Kapazität. Mit dem Update 1901 gibt es jetzt ein Limit für die Gesamtzahl virtueller Computer, die erstellt werden können.  Dieses Limit soll temporär sein, um Lösungsinstabilitäten zu vermeiden. Die Ursache des Stabilitätsproblems bei einer höheren Anzahl von VMs wird behandelt, aber es steht noch kein genauer Zeitplan für die Korrektur fest. Mit dem Update 1901 gibt es jetzt ein Limit pro Server von 60 VMs bei einem Gesamtlösungslimit von 700.  Beispielsweise wäre ein Azure Stack-VM-Limit bei 8 Servern 480 (8 * 60).  Bei einer Azure Stack-Lösung mit 12 bis 16 Servern wäre das Limit 700. Dieses Limit wurde unter Berücksichtigung aller Überlegungen hinsichtlich der Computekapazität eingerichtet, z. B. der Resilienzreserve und des CPU-Verhältnisses virtuell zu physisch, die ein Operator bei dem Stamp erhalten möchte. Weitere Informationen finden Sie in der neuen Version von Capacity Planner.  
+Falls das VM-Skalierungslimit erreicht wurde, würden die folgenden Fehlercodes als Ergebnis zurückgegeben: VMsPerScaleUnitLimitExceeded, VMsPerScaleUnitNodeLimitExceeded. 
+ 
 
 - Die Compute-API-Version wurde auf 2017-12-01 erhöht.
 
@@ -290,7 +292,7 @@ Im Folgenden werden bekannte Probleme nach der Installation zu dieser Buildversi
 
    - Wenn das Abonnement vor dem Update 1808 erstellt wurde, schlägt die Bereitstellung eines virtuellen Computers mit Managed Disks möglicherweise mit einer internen Fehlermeldung fehl. Um den Fehler zu beheben, führen Sie die folgenden Schritte für jedes Abonnement aus:
       1. Navigieren Sie im Mandantenportal zu **Abonnements**, und suchen Sie nach dem Abonnement. Wählen Sie **Ressourcenanbieter** und dann **Microsoft.Compute** aus, und klicken Sie dann auf **Erneut registrieren**.
-      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **Azure Stack – Verwalteter Datenträger** aufgeführt wird.
+      2. Navigieren Sie unter dem gleichen Abonnement zu **Zugriffssteuerung (IAM)**, und überprüfen Sie, ob **AzureStack-DiskRP-Client** aufgeführt ist.
    - Wenn Sie eine Umgebung mit mehreren Mandanten konfiguriert haben, schlägt die Bereitstellung von virtuellen Computern in einem Abonnement, dem ein Gastverzeichnis zugeordnet ist, möglicherweise mit einer internen Fehlermeldung fehl. Zum Beheben des Fehlers führen Sie die in [diesem Artikel](azure-stack-enable-multitenancy.md#registering-azure-stack-with-the-guest-directory) beschriebenen Schritte aus, um alle Gastverzeichnisse neu zu konfigurieren.
 
 - Ein virtueller Ubuntu 18.04-Computer, der mit aktivierter SSH-Autorisierung erstellt wurde, lässt nicht zu, dass Sie die SSH-Schlüssel für die Anmeldung verwenden. Um dieses Problem zu umgehen, verwenden Sie VM-Zugriff für die Linux-Erweiterung, um SSH-Schlüssel nach der Bereitstellung zu implementieren, oder verwenden Sie kennwortbasierte Authentifizierung.

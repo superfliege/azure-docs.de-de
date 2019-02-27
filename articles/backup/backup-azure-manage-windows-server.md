@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
-ms.openlocfilehash: 552ba28a9635cdd484ccd598726dcea0b3bcbc60
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261501"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268871"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Überwachen und Verwalten von Recovery Services-Tresoren
 
@@ -40,7 +40,7 @@ Die Voraussetzungen für diesen Artikel sind: ein Azure-Abonnement, ein Recovery
 
     ![Erstellen eines Recovery Services-Tresors – Schritt 1](./media/backup-azure-manage-windows-server/list-of-rs-vaults.png) <br/>
 
-4. Klicken Sie in der Liste mit den Tresoren auf einen Tresor, um dessen Dashboard **Übersicht** zu öffnen. 
+4. Klicken Sie in der Liste mit den Tresoren auf einen Tresor, um dessen Dashboard **Übersicht** zu öffnen.
 
     ![Dashboard des Recovery Services-Tresors](./media/backup-azure-manage-windows-server/rs-vault-blade.png) <br/>
 
@@ -75,7 +75,7 @@ Klicken Sie im Menü „Recovery Services-Tresor“ auf **Sicherungswarnungen**,
 
 ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts-menu.png)
 
-Im Bericht „Sicherungswarnungen“ sind die Warnungen für den Tresor aufgelistet. 
+Im Bericht „Sicherungswarnungen“ sind die Warnungen für den Tresor aufgelistet.
 
 ![Sicherungswarnungen](./media/backup-azure-manage-windows-server/backup-alerts.png)
 
@@ -124,7 +124,7 @@ Standardmäßig werden alle Details, im Bericht angezeigt, mit Ausnahme von **Ze
 
 ### <a name="change-the-filter-in-alerts-report"></a>Ändern des Filters im Bericht „Warnungen“
 
-Verwenden Sie das Menü **Filter**, um Schweregrad, Status, Startzeit und Endzeit für die Warnungen zu ändern. 
+Verwenden Sie das Menü **Filter**, um Schweregrad, Status, Startzeit und Endzeit für die Warnungen zu ändern.
 
 > [!NOTE]
 > Durch Bearbeiten des Filters für die Sicherungswarnungen werden die kritischen Warnungen oder allgemeinen Warnmeldungen im Dashboard „Übersicht“ des Tresors nicht geändert.
@@ -184,7 +184,7 @@ Um weitere Details zu den Aufträgen anzuzeigen, klicken Sie auf **In Bearbeitun
 
 Im Menü **Sicherungsaufträge** werden Informationen zu Elementtyp, Vorgang, Status, Startzeit und Dauer angezeigt.  
 
-Um das Menü „Sicherungsaufträge“ im Hauptmenü des Tresors zu öffnen, klicken Sie auf **Sicherungsaufträge**. 
+Um das Menü „Sicherungsaufträge“ im Hauptmenü des Tresors zu öffnen, klicken Sie auf **Sicherungsaufträge**.
 
 ![Sicherungselemente aus Einstellungen](./media/backup-azure-manage-windows-server/backup-jobs-menu-item.png)
 
@@ -263,17 +263,14 @@ Auf der Kachel „Sicherungsspeicher“ im Dashboard wird der in Azure genutzte 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
-**F1. Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?**
+### <a name="how-long-does-it-take-for-the-azure-backup-agent-job-status-to-reflect-in-the-portal"></a>Wie lange dauert es, bis der Auftragsstatus des Azure Backup-Agents im Portal angezeigt wird?
+Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
 
-A1. Es kann bis zu 15 Minuten dauern, bis der Status des Azure Backup-Agent-Auftrags im Azure-Portal angezeigt wird.
+### <a name="when-a-backup-job-fails-how-long-does-it-take-to-raise-an-alert"></a>Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?
+Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
 
-**F2. Wie lange dauert es, bis eine Warnung ausgelöst wird, wenn ein Sicherungsauftrag nicht erfolgreich ist?**
-
-A2. Innerhalb von 20 Minuten nach dem Azure-Sicherungsfehler wird eine Warnung ausgelöst.
-
-**F3. Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?**
-
-A3. Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
+### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>Kann es vorkommen, dass eine E-Mail nicht gesendet wird, wenn Benachrichtigungen konfiguriert sind?
+Ja. In den folgenden Situationen werden keine Benachrichtigungen gesendet.
 
 * Stündliche Benachrichtigungen wurden konfiguriert, und eine Warnung wird ausgelöst und innerhalb dieser Stunde gelöst.
 * Ein Auftrag wurde abgebrochen.

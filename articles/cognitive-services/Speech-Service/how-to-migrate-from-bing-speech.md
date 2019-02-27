@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/01/2018
 ms.author: gracez
-ms.openlocfilehash: 73df93345cf73939f33afedfd655cef847d895dc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bd9e9d64849c90d23146b814d2d48a8400d069f0
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863566"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447955"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Migrieren von der Bing-Spracheingabe zum Spracherkennungsdienst
 
@@ -65,7 +65,7 @@ Wenn Sie oder Ihr Unternehmen Anwendungen in der Entwicklungs- oder Produktionsu
 
 Die Spracherkennungsdienst-[REST-APIs](rest-apis.md) sind mit den Bing-Spracheingabe-APIs kompatibel. Wenn Sie derzeit die Bing-Spracheingabe-REST-APIs verwenden, müssen Sie nur den REST-Endpunkt ändern und zu einem Abonnementschlüssel des Spracherkennungsdiensts wechseln.
 
-Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokollen der Bing-Spracheingabe kompatibel. Wir empfehlen bei neuen Entwicklungen die Verwendung des Spracherkennungsdienst-SDK anstelle von WebSockets. Außerdem empfiehlt es sich, den vorhandenen Code zum SDK zu migrieren. Wie bei den REST-APIs erfordert jedoch bestehender Code, der die Bing-Spracheingabe via WebSockets verwendet, nur eine Änderung des Endpunkts und einen aktualisierten Schlüssel.
+Die WebSockets-Protokolle des Spracherkennungsdiensts sind auch mit den Protokollen der Bing-Spracheingabe kompatibel. Wir empfehlen bei neuen Entwicklungen die Verwendung des Speech SDK anstelle von WebSockets. Außerdem empfiehlt es sich, den vorhandenen Code zum SDK zu migrieren. Wie bei den REST-APIs erfordert jedoch bestehender Code, der die Bing-Spracheingabe via WebSockets verwendet, nur eine Änderung des Endpunkts und einen aktualisierten Schlüssel.
 
 Wenn Sie eine Bing-Spracheingabe-Clientbibliothek für eine bestimmte Programmiersprache verwenden, erfordert die Migration zum [Spracherkennungs-SDK](speech-sdk.md) Änderungen an Ihrer Anwendung, weil es sich um eine andere API handelt. Das Spracherkennungs-SDK kann Ihren Code einfacher gestalten und Ihnen auch Zugriff auf neue Features bieten.
 

@@ -2,17 +2,17 @@
 title: Erstellen von benutzerdefinierten Azure Application Gateway-Fehlerseiten
 description: In diesem Artikel erfahren Sie, wie Sie benutzerdefinierte Application Gateway-Fehlerseiten erstellen.
 services: application-gateway
-author: amitsriva
+author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 10/11/2018
+ms.date: 2/14/2019
 ms.author: victorh
-ms.openlocfilehash: 2f76347105743538e9fc1d7588ecb949f2675696
-ms.sourcegitcommit: 7b0778a1488e8fd70ee57e55bde783a69521c912
+ms.openlocfilehash: abfe33ff679bef125d9bf5b78e1790a1a4c64863
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/10/2018
-ms.locfileid: "49071028"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301603"
 ---
 # <a name="create-application-gateway-custom-error-pages"></a>Erstellen von benutzerdefinierten Application Gateway-Fehlerseiten
 
@@ -34,6 +34,7 @@ Benutzerdefinierte Fehlerseiten können auf globaler Ebene und auf Listenerebene
 - **Beide:** Die auf Listenerebene definierte benutzerdefinierte Fehlerseite hat höhere Priorität als die auf globaler Ebene festgelegte.
 
 Zum Erstellen einer benutzerdefinierten Fehlerseite benötigen Sie Folgendes:
+
 - Einen HTTP-Antwortstatuscode
 - Den entsprechenden Standort für die Fehlerseite 
 - Ein öffentlich zugängliches Azure Storage-Blob für den Standort
@@ -59,5 +60,19 @@ Nachdem Sie eine Fehlerseite angeben, lädt Application Gateway sie vom Speicher
 4. Geben Sie eine öffentlich zugängliche Blob-URL für einen bestimmten Fehlerstatuscode an, und klicken Sie auf **Speichern**. Application Gateway ist jetzt mit der benutzerdefinierten Fehlerseite konfiguriert.
 
    ![Application Gateway-Fehlercodes](media/custom-error/ag-error-codes.png)
+
+## <a name="azure-powershell-configuration"></a>Azure PowerShell-Konfiguration
+
+Sie können mithilfe von Azure PowerShell eine benutzerdefinierte Fehlerseite konfigurieren. Beispielsweise eine globale benutzerdefinierte Fehlerseite:
+
+`$updatedgateway = Add-AzApplicationGatewayCustomError -ApplicationGateway $appgw -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+Oder eine Fehlerseite auf Listenerebene:
+
+`$updatedlistener = Add-AzApplicationGatewayHttpListenerCustomError -HttpListener $listener01 -StatusCode HttpStatus502 -CustomErrorPageUrl $customError502Url`
+
+Weitere Informationen finden Sie unter [Add-AzApplicationGatewayCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewaycustomerror?view=azps-1.2.0) und [Add-AzApplicationGatewayHttpListenerCustomError](https://docs.microsoft.com/powershell/module/az.network/add-azapplicationgatewayhttplistenercustomerror?view=azps-1.3.0).
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen zur Application Gateway-Diagnose finden Sie unter [Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway](application-gateway-diagnostics.md).

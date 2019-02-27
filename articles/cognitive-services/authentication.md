@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: erhopf
-ms.openlocfilehash: f724bba5acdda20d31d067b850634178a0650cf7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2f9b477e076b038a6a695952ee3f770b30ad179b
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859743"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429467"
 ---
 # <a name="authenticate-requests-to-azure-cognitive-services"></a>Authentifizieren von Anforderungen an Azure Cognitive Services
 
@@ -58,7 +58,7 @@ curl -X POST 'https://api.cognitive.microsofttranslator.com/translate?api-versio
 --data-raw '[{ "text": "How much for the cup of coffee?" }]' | json_pp
 ```
 
-Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Schlüssels. 
+Das folgende Video veranschaulicht die Verwendung eines Cognitive Services-Schlüssels.
 
 ## <a name="authenticate-with-a-multi-service-subscription-key"></a>Authentifizieren mit einem Schlüssel für ein Abonnement für mehrere Dienste
 
@@ -127,16 +127,15 @@ Authentifizierungstoken werden als `Authorization`-Header in eine Anforderung ei
 
 ### <a name="sample-requests"></a>Beispielanforderungen
 
-Verwenden Sie diese URL, um einen Schlüssel zu einem Abonnement für einen einzelnen Dienst durch ein Authentifizierungstoken zu ersetzen: `https://api.cognitive.microsoft.com/sts/v1.0/issueToken`.
+Verwenden Sie diese URL, um einen Abonnementschlüssel durch ein Authentifizierungstoken zu ersetzen: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 ```cURL
 curl -v -X POST \
-"https://api.cognitive.microsoft.com/sts/v1.0/issueToken" \
+"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
 -H "Content-type: application/x-www-form-urlencoded" \
+-H "Content-length: 0" \
 -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
-
-Wenn Sie einen Abonnementschlüssel für mehrere Dienste verwenden möchten, müssen Sie einen regionsspezifischen Endpunkt für den Tokenaustausch verwenden. Verwenden Sie diese URL, um einen Schlüssel zu einem Abonnement für mehrere Dienste durch ein Authentifizierungstoken zu ersetzen: `https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken`.
 
 Diese Regionen für mehrere Dienste unterstützen den Tokenaustausch:
 
@@ -147,13 +146,6 @@ Diese Regionen für mehrere Dienste unterstützen den Tokenaustausch:
 | `japaneast` | `northeurope` | `southcentralus` |
 | `southeastasia` | `uksouth` | `westcentralus` |
 | `westeurope` | `westus` | `westus2` |
-
-```cURL
-curl -v -X POST \
-"https://YOUR-REGION.api.cognitive.microsoft.com/sts/v1.0/issueToken" \
--H "Content-type: application/x-www-form-urlencoded" \
--H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
-```
 
 Nach dem Erhalt eines Authentifizierungstokens müssen Sie dieses in jeder Anforderung als `Authorization`-Header übergeben. Dies ist ein Beispielaufruf der Textübersetzungs-API:
 

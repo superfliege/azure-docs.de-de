@@ -1,7 +1,7 @@
 ---
 title: Verwalten eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau
 titleSuffix: Azure Machine Learning Studio
-description: Verwalten des Zugriffs auf Azure Machine Learning-Arbeitsbereiche sowie Bereitstellen und Verwalten von ML-API-Webdiensten
+description: Verwalten des Zugriffs auf Azure Machine Learning Studio-Arbeitsbereiche sowie Bereitstellen und Verwalten von Machine Learning-API-Webdiensten
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 02/27/2017
-ms.openlocfilehash: f1904552b6c43cadd611659ed544b9f4bafcb465
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: f792c2b23c8d36225b4c05cf7a334721bd08272a
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487273"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269024"
 ---
 # <a name="manage-an-azure-machine-learning-studio-workspace"></a>Verwalten eines Azure Machine Learning Studio-Arbeitsbereichs
 
@@ -24,16 +24,16 @@ ms.locfileid: "55487273"
 > 
 > 
 
-Sie können Machine Learning-Arbeitsbereiche im Azure-Portal verwalten.
+Sie können Machine Learning Studio-Arbeitsbereiche im Azure-Portal verwalten.
 
 
 
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
-So verwalten Sie einen Arbeitsbereich im Azure-Portal
+So verwalten Sie einen Studio-Arbeitsbereich im Azure-Portal
 
 1. Melden Sie sich über das Administratorkonto eines Azure-Abonnements beim [Azure-Portal](https://portal.azure.com/) an.
-2. Geben Sie im Suchfeld oben auf der Seite „Machine Learning-Arbeitsbereiche“ ein, und wählen Sie dann **Machine Learning-Arbeitsbereiche** aus.
+2. Geben Sie im Suchfeld oben auf der Seite „Machine Learning Studio-Arbeitsbereiche“ ein, und wählen Sie dann **Machine Learning Studio-Arbeitsbereiche** aus.
 3. Klicken Sie auf den Arbeitsbereich, den Sie verwalten möchten.
 
 Neben den Standardinformationen und -optionen zur Ressourcenverwaltung stehen folgende Optionen zur Verfügung:
@@ -41,10 +41,10 @@ Neben den Standardinformationen und -optionen zur Ressourcenverwaltung stehen fo
 - **Eigenschaften anzeigen:** Auf dieser Seite werden Informationen zum Arbeitsbereich und der Ressource angezeigt. Zudem können Sie hier das Abonnement und die Ressourcengruppe ändern, mit denen der Arbeitsbereich verbunden ist.
 - **Speicherschlüssel neu synchronisieren:** Im Arbeitsbereich werden die Schlüssel für das Speicherkonto verwaltet. Wenn sich die Schlüssel für das Speicherkonto ändern, können Sie auf **Schlüssel neu synchronisieren** klicken, um die Schlüssel mit dem Arbeitsbereich zu synchronisieren.
 
-Verwenden Sie zum Verwalten der dem Arbeitsbereich zugeordneten Webdienste das Portal für Machine Learning-Webdienste. Ausführliche Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
+Verwenden Sie zum Verwalten der diesem Studio-Arbeitsbereich zugeordneten Machine Learning Web Services-Portal. Ausführliche Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md).
 
 > [!NOTE]
-> Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning-Arbeitsbereich einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
+> Zum Bereitstellen oder Verwalten neuer Webdienste muss Ihnen in dem Abonnement, für das der Webdienst bereitgestellt wird, eine Teilnehmer- oder Administratorrolle zugewiesen sein. Wenn Sie andere Benutzer in einen Machine Learning Studio-Arbeitsbereich einladen, müssen Sie ihnen eine Teilnehmer- oder Administratorrolle im Abonnement zuweisen, damit sie Webdienste bereitstellen oder verwalten können. 
 > 
 >Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Verwalten des Zugriffs mit RBAC und dem Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 

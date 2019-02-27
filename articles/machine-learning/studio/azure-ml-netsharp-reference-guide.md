@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: be6c04fe31aaa8d4b9081942b054575ff548cf5a
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 2051a14532f00f24be0c8cb0ca03a7b2b4078a45
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300369"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56457012"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>Erläuterungen zur Net#-Spezifikationssprache für neuronale Netzwerke für Azure Machine Learning Studio
 
@@ -56,7 +56,7 @@ Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindun
 
 ## <a name="supported-customizations"></a>Unterstützte Anpassungen
 
-Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learning erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
+Die Architektur der neuronalen Netzwerkmodelle, die Sie in Azure Machine Learning Studio erstellen, kann mithilfe von Net# umfassend angepasst werden. Ihre Möglichkeiten:
 
 + verdeckte Schichten erstellen und die Anzahl der Knoten in jeder Schicht steuern;
 + angeben, wie Schichten miteinander verbunden werden sollen;

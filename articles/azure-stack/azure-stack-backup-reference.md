@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: hectorl
 ms.lastreviewed: 10/25/2018
-ms.openlocfilehash: ac52e3b824efdbd5277982a7f1939e8aa0deeeb1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7930ea86f7972a6e4abb939fb148d519ca924e9
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201787"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56416716"
 ---
 # <a name="infrastructure-backup-service-reference"></a>Referenz für den Infrastructure Backup-Dienst
 
@@ -108,6 +108,23 @@ Infrastructure Backup Controller sichert Daten bedarfsgesteuert. Es empfiehlt si
 > [!Note]  
 > Es müssen keine eingehenden Ports geöffnet werden.
 
+### <a name="encryption-requirements"></a>Verschlüsselungsanforderungen
+
+Ab 1901 verwendet der Infrastructure Backup-Dienst ein Zertifikat mit einem öffentlichen Schlüssel (.CER), um Sicherungsdaten zu verschlüsseln, und ein Zertifikat mit dem privaten Schlüssel (.PFX) zum Entschlüsseln von Sicherungsdaten während der Cloudwiederherstellung.   
+ - Das Zertifikat wird für den Transport von Schlüsseln verwendet und nicht zum Einrichten einer sicheren, authentifizierten Kommunikation. Aus diesem Grund kann das Zertifikat ein selbstsigniertes Zertifikat sein. Azure Stack muss für dieses Zertifikat weder Stamm noch Vertrauensstellung überprüfen, sodass kein externer Internetzugriff erforderlich ist.
+ 
+Das selbstsignierte Zertifikat besteht aus zwei Teilen: einem mit dem öffentlichen Schlüssel und einem mit dem privaten Schlüssel:
+ - Verschlüsseln von Sicherungsdaten: Zertifikat mit dem öffentlichen Schlüssel (in .CER-Datei exportiert) wird verwendet, um Sicherungsdaten zu verschlüsseln.
+ - Entschlüsseln von Sicherungsdaten: Zertifikat mit dem privaten Schlüssel (in .PFX-Datei exportiert) wird verwendet, um Sicherungsdaten zu entschlüsseln.
+
+Das Zertifikat mit dem öffentlichen Schlüssel (.CER) wird nicht von der internen Geheimnisrotation verwaltet. Um das Zertifikat zu rotieren, müssen Sie ein neues selbstsigniertes Zertifikat erstellen und die Sicherungseinstellungen mit der neuen Datei (.CER) aktualisieren.  
+ - Alle vorhandene Sicherungen bleiben mit dem vorherigen Verschlüsselungsschlüssel verschlüsselt. Neue Sicherungen verwenden den neuen öffentlichen Schlüssel. 
+ 
+Das mit dem privaten Schlüssel (.PFX) während der Cloudwiederherstellung verwendete Zertifikat wird von Azure Stack aus Sicherheitsgründen nicht behalten. Diese Datei müssen während der Cloudwiederherstellung explizit bereitgestellt werden.  
+
+**Abwärtskompatibilitätsmodus** Ab 1901 ist die Unterstützung für Verschlüsselungsschlüssel veraltet und wird in einem zukünftigen Release entfernt. Wenn Sie von 1811 aktualisiert haben, als für die Sicherung bereits die Verwendung eines Verschlüsselungsschlüssels aktiviert war, verwendet Azure Stack weiterhin den Verschlüsselungsschlüssel. Der Abwärtskompatibilitätsmodus wird für mindestens 3 Releases unterstützt. Nach diesem Zeitraum ist dann ein Zertifikat erforderlich. 
+ * Das Aktualisieren vom Verschlüsselungsschlüssel auf ein Zertifikat ist ein unidirektionaler Vorgang.  
+ * Alle vorhandenen Sicherungen bleiben mit dem Verschlüsselungsschlüssel verschlüsselt. Neue Sicherungen verwenden das Zertifikat. 
 
 ## <a name="infrastructure-backup-limits"></a>Beschränkungen von Infrastructure Backup
 

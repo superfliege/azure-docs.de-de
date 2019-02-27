@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 194f92b84b17fc2f2c9bc8f3aca6f6ad05f65d30
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56241443"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456825"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“
@@ -52,7 +52,7 @@ Eines der Branchengeheimnisse von Data Science besteht darin, Ihre Arbeit von an
 
 Microsoft bietet einen cloudbasierten Dienst namens [Azure Machine Learning Studio](https://azure.microsoft.com/services/machine-learning-studio/), den Sie kostenlos testen können. Dabei wird ein Arbeitsbereich bereitgestellt, in dem Sie mit unterschiedlichen Machine Learning-Algorithmen experimentieren können. Nachdem Sie Ihre Lösung erstellt haben, können Sie sie als Webdienst starten.
 
-Ein Teil dieses Diensts ist der **[Azure AI-Katalog](https://gallery.azure.ai/)**. Er enthält Ressourcen, z.B. eine Sammlung mit Azure Machine Learning-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen. Er ist für alle interessierten Benutzer zugänglich.
+Ein Teil dieses Diensts ist der **[Azure AI-Katalog](https://gallery.azure.ai/)**. Er enthält Ressourcen, z.B. eine Sammlung mit Azure Machine Learning Studio-Experimenten oder Modelle, die von Benutzern erstellt und für andere Benutzer zur Verfügung gestellt wurden. Diese Experimente stellen eine hervorragende Möglichkeit dar, die investierte Arbeit anderer Benutzer als Starthilfe für Ihre eigenen Lösungen zu nutzen. Er ist für alle interessierten Benutzer zugänglich.
 
 ![Azure AI-Katalog](./media/data-science-for-beginners-copy-other-peoples-work-to-do-data-science/azure-ai-gallery.png)
 
@@ -88,8 +88,8 @@ Der [Azure AI-Katalog](https://gallery.azure.ai) enthält noch weitere Experimen
 
 Im [Azure AI-Katalog](https://gallery.azure.ai) finden Sie funktionierende Experimente, die Sie als Ausgangspunkt für Ihre eigenen Lösungen verwenden können.
 
-Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning an.
+Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science für Einsteiger“ von Microsoft Azure Machine Learning Studio an.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning](create-experiment.md)
+* [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning Studio](create-experiment.md)
 * [Einführung in Machine Learning in Microsoft Azure](what-is-machine-learning.md)

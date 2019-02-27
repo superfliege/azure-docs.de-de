@@ -12,12 +12,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 4/16/2018
 ms.author: victorh
-ms.openlocfilehash: 15a86410e8ca853c2ca2431cb9a62de628972703
-ms.sourcegitcommit: 74941e0d60dbfd5ab44395e1867b2171c4944dbe
+ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2018
-ms.locfileid: "49320100"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56302033"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>Liste mit CRS-Regelgruppen und -Regeln von Web Application Firewall
 
@@ -27,6 +27,11 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ## <a name="owasp30"></a> OWASP_3.0
 
+### <a name="General"></a> <p x-ms-format-detection="none">Allgemein</p>
+
+|RuleId|BESCHREIBUNG|
+|---|---|
+|200004|Mehrteiliger Parser hat eine mögliche fehlende Übereinstimmung für eine Grenze erkannt.|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
@@ -239,6 +244,8 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |941290|IE-XSS-Filter – Angriff erkannt|
 |941300|IE-XSS-Filter – Angriff erkannt|
 |941310|Falsch formatierte US-ASCII-Codierung für XSS-Filter – Angriff erkannt|
+|941330|IE-XSS-Filter – Angriff erkannt|
+|941340|IE-XSS-Filter – Angriff erkannt|
 |941350|UTF-7-Codierung – IE XSS – Angriff erkannt|
 |941013|Regel 941013|
 |941014|Regel 941014|
@@ -255,18 +262,29 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 |942011|Regel 942011|
 |942012|Regel 942012|
 |942100|SQL Injection-Angriff per libinjection erkannt|
+|942110|Angriff mit Einschleusung von SQL-Befehlen: Allgemeine Tests auf Einschleusung von SQL-Befehlen erkannt|
+|942130|Angriff mit Einschleusung von SQL-Befehlen: SQL-Tautologie erkannt.|
 |942140|SQL Injection-Angriff = Häufige Datenbanknamen erkannt|
 |942160|Erkennt Blind SQLI-Tests per sleep() oder benchmark().|
 |942170|Erkennt SQL Benchmark- und Sleep Injection-Angriffsversuche, einschließlich bedingter Abfragen.|
+|942190|Erkennt die Ausführung von MSSQL-Code und Versuche, Informationen auszulesen|
+|942200|Erkennt durch MySQL-Kommentare oder -Leerzeichen verschleierte Einschleusungen und die Terminierung per Backtick|
 |942230|Erkennt Angriffsversuche mit bedingter SQL-Einschleusung.|
+|942260|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung, 2/3|
 |942270|Suche nach grundlegender SQL-Einschleusung. Häufig verwendete Angriffszeichenfolge für MySQL Oracle und andere.|
 |942290|Ermittelt Angriffsversuche mit grundlegender MongoDB SQL-Einschleusung.|
+|942300|Erkennt MySQL-Kommentare, Bedingungen und Einschleusungen von „ch(ar)“|
 |942320|Erkennt Einschleusungen von gespeicherten Prozeduren/Funktionen für MySQL und PostgreSQL.|
+|942330|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen, 1/2|
+|942340|Erkennt Versuche der Umgehung der einfachen SQL-Authentifizierung, 3/3|
 |942350|Erkennt MySQL-UDF-Einschleusung und andere Versuche der Manipulation von Daten bzw. der Struktur.|
+|942360|Erkennt Versuche des Verkettens einfacher eingeschleuster SQL-Befehle und von SQL/LFI|
+|942370|Erkennt Probings von klassischen Einschleusungen von SQL-Befehlen, 2/2|
 |942013|Regel 942013|
 |942014|Regel 942014|
 |942150|Angriff mit Einschleusung von SQL-Befehlen|
 |942410|Angriff mit Einschleusung von SQL-Befehlen|
+|942430|Eingeschränkte Anomalieerkennung für SQL-Zeichen (Argumente): Anzahl von Sonderzeichen überschritten (12)|
 |942440|SQL-Kommentarsequenz erkannt|
 |942450|Hexadezimale SQL-Codierung identifiziert|
 |942015|Regel 942015|
@@ -550,6 +568,6 @@ In den folgenden Tabellen sind die Regelgruppen und Regeln aufgeführt, die bei 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich unter [Customize web application firewall rules through the portal](application-gateway-customize-waf-rules-portal.md) (Anpassen von Web Application Firewall-Regeln über das Portal) darüber, wie Sie WAF-Regeln deaktivieren können.
+Informieren Sie sich unter [Anpassen von Web Application Firewall-Regeln mit dem Azure-Portal](application-gateway-customize-waf-rules-portal.md) darüber, wie Sie WAF-Regeln deaktivieren können. 
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
