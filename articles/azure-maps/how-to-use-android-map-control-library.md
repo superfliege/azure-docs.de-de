@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: e3f7579324e1218cc2e2c3594889db776da6e529
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 57cc585d621c71872a4b7658c74f581c8998b245
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56119067"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56341078"
 ---
 # <a name="how-to-use-azure-maps-android-sdk"></a>Verwenden des Azure Maps Android SDK
 
-Das Azure Maps Android SDK ist eine Vektorenzuordnungsbibliothek für Android. Dieser Artikel führt Sie durch den Prozess der Installation des Azure Maps Android SDK, das Laden einer Karte und das Platzieren eines Pins.
+Das Azure Maps Android SDK ist eine Vektorenzuordnungsbibliothek für Android. Dieser Artikel führt Sie durch den Prozess der Installation des Android SDK für Azure Maps, das Laden einer Karte und das Platzieren eines Pins.
 
 ## <a name="prerequisites-to-get-started"></a>Voraussetzungen für den Einstieg
 
@@ -45,7 +45,7 @@ Weitere Informationen zur Installation von Android Studio und zur Erstellung ein
 
 ## <a name="set-up-a-virtual-device"></a>Einrichten eines virtuellen Geräts
 
-Mit Android Studio können Sie ein virtuelles Android-Gerät auf Ihrem Computer einrichten. Damit können Sie Ihre Anwendung während der Entwicklung testen. Um ein virtuelles Gerät einzurichten, klicken Sie auf das Symbol „Android Virtual Device (AVD)-Manager“ oben rechts auf Ihrem Projektbildschirm. Klicken Sie dann auf die Schaltfläche **Virtuelles Gerät erstellen**. Außerdem können Sie den Manager über „Tools > Android > AVD-Manager“ in der Symbolleiste aufrufen. Wählen Sie in der **Smartphones** die Option **Nexus 5 X**, und klicken Sie auf **Weiter**.
+Mit Android Studio können Sie ein virtuelles Android-Gerät auf Ihrem Computer einrichten. Damit können Sie Ihre Anwendung während der Entwicklung testen. Zum Einrichten eines virtuellen Geräts klicken Sie oben rechts auf Ihrem Projektbildschirm auf das Symbol „Android Virtual Device (AVD)-Manager“. Klicken Sie dann auf die Schaltfläche **Virtuelles Gerät erstellen**. Außerdem können Sie den Manager über **Tools > Android > AVD-Manager** in der Symbolleiste aufrufen. Wählen Sie in der **Smartphones** die Option **Nexus 5 X**, und klicken Sie auf **Weiter**.
 
 Weitere Informationen zum Einrichten eines AVD finden Sie in der Dokumentation zu [Android Studio](https://developer.android.com/studio/run/managing-avds).
 
@@ -55,7 +55,7 @@ Weitere Informationen zum Einrichten eines AVD finden Sie in der Dokumentation z
 
 Bevor Sie mit der Erstellung Ihrer Anwendung fortfahren, führen Sie die folgenden Schritte aus, um das Azure Maps Android SDK zu installieren. 
 
-1. Fügen Sie Folgendes zum Repositoryblock **allprojects** in Ihrer Datei **build.gradle** hinzu.
+1. Fügen Sie Folgendes zum Repositoryblock **Alle Projekte** in Ihrer Datei **build.gradle** hinzu.
 
     ```
     maven {
@@ -79,7 +79,7 @@ Bevor Sie mit der Erstellung Ihrer Anwendung fortfahren, führen Sie die folgend
         implementation "com.microsoft.azure.maps:mapcontrol:0.1"
         ```
 
-3. Richten Sie Berechtigungen ein, indem Sie Folgendes zu Ihrer AndroidManifest.xml hinzufügen.
+3. Richten Sie Berechtigungen ein, indem Sie Folgendes zu Ihrer Datei **AndroidManifest.xml** hinzufügen.
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -128,7 +128,7 @@ Bevor Sie mit der Erstellung Ihrer Anwendung fortfahren, führen Sie die folgend
 
     public class MainActivity extends AppCompatActivity {
         
-        static{
+        static {
             AzureMaps.setSubscriptionKey("{subscription-key}");
         }
 
@@ -187,13 +187,13 @@ Bevor Sie mit der Erstellung Ihrer Anwendung fortfahren, führen Sie die folgend
 
 ## <a name="import-classes"></a>Importieren von Klassen
 
-Nachdem Sie die obigen Schritte ausgeführt haben, werden Sie höchstwahrscheinlich Warnungen von Android Studio zu einem Teil des Textes im Code erhalten. Um diese zu bearbeiten, müssen Sie einige der Klassen importieren, die in `MainActivity.java` referenziert werden.
+Nachdem Sie die obigen Schritte ausgeführt haben, werden Sie höchstwahrscheinlich Warnungen von Android Studio zu einem Teil des Textes im Code erhalten. Zum Auflösen dieser Warnungen importieren Sie die Klassen, auf die in `MainActivity.java` verwiesen wird.
 
 Sie können diese Klassen automatisch importieren, indem Sie `Alt`+`Enter` (`Option`+`Return` auf Mac) drücken. 
 
 Klicken Sie auf die Schaltfläche **App ausführen** (oder `Control`+`R` auf einem Mac), um Ihre Anwendung zu erstellen.
 
-![Klicken Sie auf „Ausführen“.](./media/how-to-use-android-map-control-library/run-app.png)
+![Klicken Sie auf „Run“ (Ausführen).](./media/how-to-use-android-map-control-library/run-app.png)
 
 Es dauert ein paar Sekunden, bis Android Studio die Anwendung erstellt hat. Nach Abschluss des Builds können Sie Ihre Anwendung auf dem emulierten Android-Gerät testen. Es wird eine Zuordnung wie die folgende angezeigt.
 

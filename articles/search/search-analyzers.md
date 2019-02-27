@@ -4,65 +4,84 @@ description: Weisen Sie durchsuchbaren Textfeldern in einem Index Analysen zu, u
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 09/11/2017
+ms.date: 02/15/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 008a24fe9822ca51b81e1f6979a3731d794a8867
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964337"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343271"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>Analysetools für Textverarbeitung in Azure Search
 
-Ein *Analyzer* ist eine Komponente der [Volltextsuche](search-lucene-query-architecture.md), mit dem Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Typische Transformationen während der Analyse:
+Ein *Analysetool* ist eine Komponente der [Volltext-Suchmaschine](search-lucene-query-architecture.md), mit der Text in Abfragezeichenfolgen und indizierten Dokumenten verarbeitet wird. Verschiedene Analysetools bearbeiten Text je nach Szenario auf verschiedene Arten. Sprachanalysetools verarbeiten Text mit linguistischen Regeln, um die Suchqualität zu verbessern, während andere Analysetools grundlegendere Aufgaben wie z.B. das Konvertieren von Zeichen in Kleinschreibung ausführen. 
+
+Sprachanalysetools sind die am häufigsten verwendeten, und jedem durchsuchbaren Feld in einem Azure Search-Index ist ein Standard-Sprachanalysetool zugewiesen. Die folgenden Sprachtransformationen sind während der Textanalyse typisch:
 
 + Nicht unbedingt benötigte Wörter (Stoppwörter) und Satzzeichen werden entfernt.
 + Wörter mit Bindestrichen und Ausdrücke werden in Einzelwörter unterteilt.
 + Wörter in Großbuchstaben werden in Kleinbuchstaben umgewandelt.
 + Wörter werden auf ihre jeweilige Stammform reduziert, sodass unabhängig von der Zeitform eine Übereinstimmung gefunden werden kann.
 
-Linguistische Analyzer konvertieren eine Texteingabe in primitive oder Stammformulare, die beim Speichern und Abrufen von Informationen effizient sind. Die Konvertierung erfolgt während der Indizierung, wenn der Index erstellt wird, und dann erneut bei der Suche, wenn der Index gelesen wird. Sie erhalten die erwarteten Suchergebnisse eher, wenn Sie denselben Textanalyzer für beide Vorgänge verwenden.
+Linguistische Analysetools konvertieren eine Texteingabe in primitive oder Stammformulare, die beim Speichern und Abrufen von Informationen effizient sind. Die Konvertierung erfolgt während der Indizierung, wenn der Index erstellt wird, und dann erneut bei der Suche, wenn der Index gelesen wird. Sie erhalten die erwarteten Suchergebnisse eher, wenn Sie für beide Vorgänge dieselben Textanalysetools verwenden.
 
-Standardmäßig verwendet Azure Search der [Standardanalyzer von Lucene](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieser Standard kann feldspezifisch überschrieben werden. Dieser Artikel beschreibt die Bandbreite der Möglichkeiten und bietet bewährte Methoden für benutzerdefinierte Analysen. Außerdem finden Sie Beispielkonfigurationen für gängige Szenarien.
+## <a name="default-analyzer"></a>Standardanalysemodul  
 
-## <a name="supported-analyzers"></a>Unterstützte Analysen
+Azure Search verwendet standardmäßig das [Standardanalysetool von Apache Lucene (Standard-Lucene)](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html). Dieses unterteilt Text gemäß den Regeln der [Unicode-Textsegmentierung](https://unicode.org/reports/tr29/) in einzelne Elemente. Darüber hinaus konvertiert das Standardanalyseprogramm alle Zeichen in Kleinbuchstaben. Während der Indizierung und der Abfrageverarbeitung durchlaufen sowohl indizierte Dokumente als auch Suchbegriffe die Analyse.  
 
-Die folgende Liste gibt Aufschluss darüber, welche Analysen in Azure Search unterstützt werden:
+Es wird automatisch auf jedes durchsuchbare Feld verwendet. Dieser Standard kann feldspezifisch überschrieben werden. Alternative Analysetools können ein [Sprachanalysetool](index-add-language-analyzers.md), ein [benutzerdefiniertes Analysetool](index-add-custom-analyzers.md) oder ein vordefiniertes Analysetool aus der [Liste der verfügbaren Analysetools](index-add-custom-analyzers.md#AnalyzerTable) sein.
+
+
+## <a name="types-of-analyzers"></a>Typen von Analysetools
+
+Die folgende Liste gibt Aufschluss darüber, welche Analysetools in Azure Search unterstützt werden.
 
 | Category (Kategorie) | BESCHREIBUNG |
 |----------|-------------|
 | [Lucene-Standardanalyse](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | Standard. Muss nicht angegeben oder konfiguriert werden. Diese allgemeine Analyse eignet sich für die meisten Sprachen und Szenarien.|
-| Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert oder nur mit minimalen Anpassungen verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analyzer](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder eine minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](https://docs.microsoft.com/rest/api/searchservice/language-support) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Azure Search unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
+| Vordefinierte Analysen | Werden als fertiges Produkt angeboten und in der Regel unverändert verwendet. <br/>Es gibt spezialisierte und sprachspezifische Typen. Sie sind „vordefiniert“, da Sie ihren Namen angeben und sie nicht weiter konfigurieren oder anpassen. <br/><br/>[Spezialisierte (sprachunabhängige) Analysetools](index-add-custom-analyzers.md#AnalyzerTable) werden verwendet, wenn Texteingaben eine spezielle oder minimale Verarbeitung erfordern. Zu sprachunabhängigen vordefinierten Analysen zählen **Asciifolding**, **Keyword**, **Pattern**, **Simple**, **Stop** und **Whitespace**.<br/><br/>[Sprachanalyzer](index-add-language-analyzers.md) werden verwendet, wenn umfassende linguistische Unterstützung für einzelne Sprachen benötigt werden. Azure Search unterstützt 35 Lucene-Sprachanalysen und 50 Microsoft-Analysen für die Verarbeitung natürlicher Sprache. |
 |[Benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | Eine benutzerdefinierte Konfiguration einer Kombination vorhandener Elemente, bestehend aus einem Tokenizer (erforderlich) und optionalen Filtern („char“ oder „token“).|
 
-Sie können eine vordefinierte Analyse (beispielsweise **pattern** oder **stop**) anpassen, um alternative, in der [Referenz zu vordefinierten Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) dokumentierte Optionen zu verwenden. Nur wenige der vordefinierten Analysen verfügen über konfigurierbare Optionen. Versehen Sie Ihre neue Konfiguration wie üblich mit einem Namen (etwa *myPatternAnalyzer*), damit er von der Lucene-Musteranalyse zu unterscheiden ist.
+Ein paar vordefinierte Analysetools, wie z.B. **Pattern** oder **Stop**, unterstützen eine begrenzte Anzahl von Konfigurationsoptionen. Um diese Optionen festzulegen, erstellen Sie ein benutzerdefiniertes Analysetool, bestehend aus dem vordefinierten Analysetool und einer der unter [Vordefinierte Analysetoolreferenz](index-add-custom-analyzers.md#AnalyzerTable) dokumentierten alternativen Optionen. Versehen Sie Ihre neue Konfiguration wie üblich mit einem Namen (etwa *myPatternAnalyzer*), damit sie von der Lucene-Musteranalyse zu unterscheiden ist.
 
 ## <a name="how-to-specify-analyzers"></a>Angeben von Analyzern
 
-1. Erstellen Sie für benutzerdefinierte Analyzer in der Indexdefinition einen Abschnitt des Typs **analyzer**. Weitere Informationen finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Erstellen des Index) sowie unter [Create a custom analyzer](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer) (Erstellen einer benutzerdefinierten Analyse).
+1. Erstellen Sie für benutzerdefinierte Analysetools in der Indexdefinition einen Abschnitt namens **analyzer**. Weitere Informationen finden Sie unter [Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index) (Index erstellen) sowie unter [Add a custom analyzer](index-add-custom-analyzers.md) (Benutzerdefiniertes Analysetool hinzufügen).
 
-2. Legen Sie für eine [Felddefinition](https://docs.microsoft.com/rest/api/searchservice/create-index) im Index die **analyzer**-Eigenschaft auf den Namen eines Zielanalyzers fest, z.B. `"analyzer" = "keyword"`. Hierbei können Sie den Namen eines vordefinierten Analyzers, Sprachanalyzers oder benutzerdefinierte Analyzers verwenden, der auch im Indexschema definiert wurde.
+2. Legen Sie für eine [Felddefinition](https://docs.microsoft.com/rest/api/searchservice/create-index) im Index die **analyzer**-Eigenschaft auf den Namen eines Zielanalysetools fest, z.B. `"analyzer" = "keyword"`. Hierbei können Sie den Namen eines vordefinierten Analyzers, Sprachanalyzers oder benutzerdefinierte Analyzers verwenden, der auch im Indexschema definiert wurde. Planen Sie das Zuweisen des Analysetools in der Indexdefinitionsphase, bevor der Index im Dienst erstellt wird.
 
-3. Anstelle einer einzelnen Eigenschaft des Typs **analyzer** können Sie optional mithilfe der Feldparameter **indexAnalyzer** und **searchAnalyzer`** auch verschiedene Analyzer für Indizierung und Abfragen festlegen. 
+3. Anstelle einer einzelnen Eigenschaft des Typs **analyzer** können Sie optional mithilfe der Feldparameter **indexAnalyzer** und **searchAnalyzer** auch verschiedene Analysetools für Indizierung und Abfragen festlegen. Sie verwenden verschiedene Analysetools für Datenvorbereitung und -abruf, wenn eine dieser Aktivitäten eine bestimmte Transformation erfordert, die die andere nicht benötigt.
 
-3. Das Hinzufügen eines Analyzers zu einer Felddefinition verursacht einen Schreibvorgang im Index. Wenn Sie einem vorhandenen Index einen **Analyzer** hinzufügen, beachten Sie die folgenden Schritte:
+Das Zuweisen von **analyzer** oder **indexAnalyzer** zu einem Feld, das physisch bereits erstellt wurde, ist nicht zulässig. Wenn etwas unklar ist, können Sie der Aufschlüsselung in der folgenden Tabelle entnehmen, welche Aktionen aus welchen Gründen das erneute Erstellen erfordern.
  
  | Szenario | Auswirkung | Schritte |
  |----------|--------|-------|
- | Hinzufügen eines neuen Felds | Minimal | Wenn das Feld im Schema noch nicht vorhanden ist, muss keine Feldüberarbeitung vorgenommen werden, da das Feld in Ihrem Index noch nicht physisch vorhanden ist. Verwenden Sie für diese Aufgabe [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents).|
- | Hinzufügen eines Analyzers zu einem vorhandenen indizierten Feld | Neu erstellen | Der invertierte Index für dieses Feld muss von Grund auf neu erstellt werden, und der Inhalt für diese Felder muss neu indiziert werden. <br/> <br/>Für Indizes in der aktiven Entwicklung [löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index) und [erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) Sie den Index, um die neue Felddefinition zu übernehmen. <br/> <br/>Für Indizes in der Produktion sollten Sie ein neues Feld erstellen, um die überarbeitete Definition anzugeben und verwenden zu können. Verwenden Sie [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) und [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents), um das neue Feld zu integrieren. Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen. |
+ | Hinzufügen eines neuen Felds | Minimal | Wenn das Feld im Schema noch nicht vorhanden ist, muss keine Feldüberarbeitung vorgenommen werden, da das Feld in Ihrem Index noch nicht physisch vorhanden ist. Sie können mit [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren) einem vorhandenen Index ein neues Feld hinzufügen und es mit [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) auffüllen.|
+ | Fügen Sie einen **analyzer** oder **indexAnalyzer** einem vorhandenen indizierten Feld hinzu. | [rebuild](search-howto-reindex.md) | Der invertierte Index für dieses Feld muss von Grund auf neu erstellt werden, und der Inhalt für diese Felder muss neu indiziert werden. <br/> <br/>Für Indizes in der aktiven Entwicklung [löschen](https://docs.microsoft.com/rest/api/searchservice/delete-index) und [erstellen](https://docs.microsoft.com/rest/api/searchservice/create-index) Sie den Index, um die neue Felddefinition zu übernehmen. <br/> <br/>Für Indizes in der Produktion können Sie ein erneutes Erstellen aufschieben, indem Sie ein neues Feld erstellen, um die überarbeitete Definition anzugeben und anstelle der alten zu verwenden. Integrieren Sie das neue Feld mit [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren), und füllen Sie es mit [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents). Später können Sie den Index als Bestandteil der geplanten Indexwartung bereinigen, um veraltete Felder zu entfernen. |
 
-## <a name="tips-and-best-practices"></a>Tipps und bewährte Methoden
+## <a name="when-to-add-analyzers"></a>Gründe zum Hinzufügen von Analysetools
+
+Der beste Zeitpunkt zum Hinzufügen und Zuweisen von Analysetools ist während der aktiven Entwicklung, wenn das Löschen und Neuerstellen von Indizes Routine ist.
+
+Wenn eine Indexdefinition festgelegt wird, können Sie einem Index neue Analysekonstrukte anfügen, aber Sie müssen das **allowIndexDowntime**-Flag an [Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) (Index aktualisieren) übergeben, wenn Sie diesen Fehler vermeiden möchten:
+
+*„Indexupdate ist nicht zulässig, weil es eine Downtime verursachen würde. Um einem vorhandenen Index neue Analysetools, Tokenizer, Tokenfilter oder Zeichenfilter hinzuzufügen, legen Sie für den Abfrageparameter „allowIndexDowntime“ in der Indexupdateanforderung „True“ fest. Beachten Sie, dass dieser Vorgang Ihren Index für mindestens ein paar Sekunden offline schaltet, sodass Indizierungs- und Abfrageanforderungen nicht gelingen. Leistung und Schreibverfügbarkeit des Indexes können nach der Indexaktualisierung mehrere Minuten lang eingeschränkt sein, bei sehr großen Indizes auch länger.“*
+
+Gleiches gilt beim Zuweisen eines Analysetools zu einem Feld. Ein Analysetool ist ein wesentlicher Bestandteil der Felddefinition, sodass Sie es nur hinzufügen können, wenn das Feld erstellt wird. Wenn Sie Analysetools vorhandenen Feldern hinzufügen möchten, müssen Sie den Index [löschen und neu erstellen](search-howto-reindex.md) oder ein neues Feld mit dem gewünschten Analysetool hinzufügen.
+
+Wie bereits erwähnt, ist die **searchAnalyzer**-Variante eine Ausnahme. Von den drei Methoden zum Angeben von Analysetools (**analyzer**, **indexAnalyzer**, **searchAnalyzer**) kann nur das **searchAnalyzer**-Attribut bei einem vorhandenen Feld geändert werden.
+
+## <a name="recommendations-for-working-with-analyzers"></a>Empfehlungen zum Arbeiten mit Analysetools
 
 Dieser Abschnitt enthält Tipps zur Verwendung von Analyzern.
 
 ### <a name="one-analyzer-for-read-write-unless-you-have-specific-requirements"></a>Eine einzelne Analyse für Lese-/Schreibvorgänge, sofern keine besonderen Anforderungen gelten
 
-In Azure Search können Sie verschiedene Analysen für das Indizieren und Suchen nach zusätzlichen Feldparametern vom Typ `indexAnalyzer` und `searchAnalyzer` angeben. Wenn keine Angabe vorhanden ist, wird die Analyse, die mit der `analyzer`-Eigenschaft festgelegt wird, sowohl für die Indizierung als auch für die Suche verwendet. Ohne Angabe von `analyzer` wird die Standardanalyse von Lucene verwendet.
+In Azure Search können Sie verschiedene Analysetools für das Indizieren und Suchen über zusätzliche **indexAnalyzer**- und **searchAnalyzer**-Feldparameter angeben. Wenn keine Angabe vorhanden ist, wird das mit der **analyzer**-Eigenschaft festgelegte Analysetool sowohl für die Indizierung als auch für die Suche verwendet. Ohne Angabe von `analyzer` wird die Standardanalyse von Lucene verwendet.
 
 Allgemeine Regel: Verwenden Sie für die Indizierung und für Abfragen die gleiche Analyse, es sei denn, es müssen besondere Anforderungen erfüllt werden. Führen Sie die Tests sorgfältig durch. Wenn sich die Textverarbeitung zur Such- und Indizierungszeit unterscheidet, besteht das Risiko der Nichtübereinstimmung zwischen Abfrageausdrücken und indizierten Ausdrücken, wenn die Konfigurationen des Analyzers für die Suche und die Indizierung nicht abgestimmt sind.
 
@@ -82,8 +101,14 @@ Die [Search Analyzer Demo](https://alice.unearth.ai/) ist eine Demo eines Dritta
 
 Die folgenden Beispiele zeigen Analysedefinitionen für einige gängige Szenarien.
 
++ [Beispiel eines benutzerdefinierten Analysetools](#Example1)
++ [Beispiel für das Zuweisen eines Analysetools zu einem Feld](#Example2)
++ [Mischen von Analysetools für Indizierung und Suchvorgänge](#Example3)
++ [Beispiel für ein Sprachanalysetool](#Example4)
+
 <a name="Example1"></a>
-### <a name="example-1-custom-options"></a>Beispiel 1: Benutzerdefinierte Optionen
+
+### <a name="custom-analyzer-example"></a>Beispiel eines benutzerdefinierten Analysetools
 
 Dieses Beispiel zeigt eine Analysedefinition mit benutzerdefinierten Optionen. Benutzerdefinierte Optionen für char-Filter, Tokenizer und token-Filter werden separat als benannte Konstrukte angegeben, auf die dann in der Analysedefinition verwiesen wird. Vordefinierte Elemente werden unverändert verwendet und einfach über ihren Namen angegeben.
 
@@ -156,7 +181,8 @@ Das Beispiel im Detail:
 ~~~~
 
 <a name="Example2"></a>
-### <a name="example-2-override-the-default-analyzer"></a>Beispiel 2: Überschreiben der Standardanalyse
+
+### <a name="per-field-analyzer-assignment-example"></a>Beispiel für die Zuweisung eines Analysetools je Feld
 
 Die Standardanalyse ist die Standardeinstellung. Angenommen, Sie möchten die Standardeinstellung durch eine andere vordefinierte Analyse (beispielsweise „pattern“) ersetzen. Wenn Sie keine benutzerdefinierten Optionen festlegen, müssen Sie nur den Namen in der Felddefinition angeben.
 
@@ -188,9 +214,10 @@ Das Element „analyzer“ überschreibt die Standardanalyse für das jeweilige 
 ~~~~
 
 <a name="Example3"></a>
-### <a name="example-3-different-analyzers-for-indexing-and-search-operations"></a>Beispiel 3: Unterschiedliche Analysen für Indizierung und Suchvorgänge
 
-Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschiedliche Analyzer für Indizierung und Suchvorgänge anzugeben. Die Attribute `searchAnalyzer` und `indexAnalyzer` müssen als Paar angegeben werden und ersetzen das Einzelattribut `analyzer`.
+### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>Mischen von Analysetools für Indizierung und Suchvorgänge
+
+Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschiedliche Analyzer für Indizierung und Suchvorgänge anzugeben. **searchAnalyzer**- und **indexAnalyzer**-Attribut müssen als Paar angegeben werden und ersetzen das Einzelattribut **analyzer**.
 
 
 ~~~~
@@ -215,7 +242,8 @@ Die APIs enthalten zusätzliche Indexattribute, die es ermöglichen, unterschied
 ~~~~
 
 <a name="Example4"></a>
-### <a name="example-4-language-analyzer"></a>Beispiel 4: Sprachanalyse
+
+### <a name="language-analyzer-example"></a>Beispiel für ein Sprachanalysetool
 
 Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanalyse verwendet werden, während für andere Felder weiterhin die Standardanalyse (oder eine andere vordefinierte oder benutzerdefinierte Analyse) verwendet wird. Bei Verwendung einer Sprachanalyse muss sie sowohl für die Indizierung als auch für Suchvorgänge verwendet werden. Bei Feldern mit Sprachanalyse können für Indizierung und Suche keine unterschiedlichen Analysen verwendet werden.
 
@@ -250,11 +278,11 @@ Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanal
 
 + Lesen Sie unsere umfassende Erläuterung der [Funktionsweise der Volltextsuche in Azure Search](search-lucene-query-architecture.md). In diesem Artikel werden anhand von Beispielen Verhaltensweisen erklärt, die auf den ersten Blick vielleicht nicht intuitiv erscheinen.
 
-+ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
++ Probieren Sie andere Abfragesyntax in den Beispielen unter [Search Documents](https://docs.microsoft.com/rest/api/searchservice/search-documents#bkmk_examples) (Suchen nach Dokumenten) oder unter [Simple query syntax in Azure Search](query-simple-syntax.md) (Einfache Abfragesyntax in Azure Search) im Suchexplorer im Portal aus.
 
-+ Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](https://docs.microsoft.com/rest/api/searchservice/language-support) anwenden.
++ Informieren Sie sich darüber, wie Sie [sprachspezifische lexikalische Analysen](index-add-language-analyzers.md) anwenden.
 
-+ [Konfigurieren Sie benutzerdefinierte Analysen](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search) für eine minimale oder besondere Verarbeitung einzelner Felder.
++ [Konfigurieren Sie benutzerdefinierte Analysen](index-add-custom-analyzers.md) für eine minimale oder besondere Verarbeitung einzelner Felder.
 
 + Vergleichen Sie auf [dieser Demowebsite](https://alice.unearth.ai/) die Standard- und die Englischanalyse in einer Gegenüberstellung. 
 
@@ -262,11 +290,11 @@ Für Felder mit Zeichenfolgen in unterschiedlichen Sprachen kann eine Sprachanal
 
  [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Suchen nach Dokumenten (Azure Search Service-REST-API)) 
 
- [Einfache Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search) 
+ [Einfache Abfragesyntax](query-simple-syntax.md) 
 
- [Vollständige Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search) 
+ [Vollständige Lucene-Abfragesyntax](query-lucene-syntax.md) 
  
- [Verarbeiten von Suchergebnissen](https://docs.microsoft.com/azure/search/search-pagination-page-layout)
+ [Verarbeiten von Suchergebnissen](search-pagination-page-layout.md)
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png

@@ -17,12 +17,12 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd894b214366302af4651b5944e250086be14beb
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183835"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339022"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>FAQs und bekannte Probleme mit Identity Protection (aktualisiert) in Azure Active Directory
 
@@ -34,8 +34,10 @@ ms.locfileid: "56183835"
 
 Über **Benutzerrisiko ignorieren** in Identity Protection (aktualisiert) wird der Akteur im Risikoverlauf des Benutzers in Identity Protection (aktualisiert) auf **\<Administratorname mit Link zum Blatt des Benutzers\>** festgelegt.
 
+Derzeit verursacht ein bekanntes Problem Wartezeiten beim Ablauf des Schließvorgangs für Benutzerrisiken. Wenn Sie eine „Benutzerrisiko-Richtlinie“ haben, wird diese Richtlinie innerhalb von Minuten, nachdem auf „Benutzerrisiko ignorieren“ geklickt wurde, nicht mehr auf verworfene Benutzer angewendet. Allerdings gibt es bekannte Verzögerungen beim Aktualisieren des „Risikozustands“ von verworfenen Benutzern in der Benutzerumgebung. Aktualisieren Sie als Problemumgehung die Seite im Browser, um den aktuellen „Risikozustand“ eines Benutzers anzuzeigen.
 
-## <a name="risky-users-report"></a>Bericht zu riskanten Benutzern
+
+## <a name="risky-users-report"></a>Bericht „Riskante Benutzer“
 
 Bei Abfragen für das Feld **Benutzername** wird die Groß-/Kleinschreibung beachtet, bei Abfragen für das Feld **Name** hingegen nicht.
 

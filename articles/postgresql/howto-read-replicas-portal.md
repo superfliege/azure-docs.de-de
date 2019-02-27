@@ -1,166 +1,174 @@
 ---
-title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL im Azure-Portal
-description: Dieser Artikel beschreibt die Verwaltung von Azure Database for PostgreSQL-Lesereplikaten im Azure-Portal.
+title: Verwalten von Lesereplikaten für Azure Database for PostgreSQL über das Azure-Portal
+description: Erfahren Sie, wie Sie Azure Database for PostgreSQL-Lesereplikate über das Azure-Portal verwalten.
 author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/01/2019
-ms.openlocfilehash: 37150f67e29dae0357c978cfaea9abeebeef428c
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.date: 02/19/2019
+ms.openlocfilehash: b34b103d3b710b90fd7b396f2c8d0e7adc27aaca
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55691404"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454666"
 ---
-# <a name="how-to-create-and-manage-read-replicas-in-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten über das Azure-Portal
+# <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten über das Azure-Portal
+
+In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über das Azure-Portal erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
 > [!IMPORTANT]
-> Das Feature für Lesereplikate befindet sich in der Public Preview-Phase.
-
-
-In diesem Artikel erfahren Sie, wie Sie über das Azure-Portal Lesereplikate im Azure Database for PostgreSQL-Dienst erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Dokumentation der Konzepte](concepts-read-replicas.md).
+> Das Feature für Lesereplikate befindet sich in der öffentlichen Vorschau.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-- Ein [Azure Database for PostgreSQL-Server](quickstart-create-server-database-portal.md), der als Masterserver verwendet wird
+Ein [Azure Database for PostgreSQL-Server](quickstart-create-server-database-portal.md), der als Masterserver verwendet wird
 
 ## <a name="prepare-the-master-server"></a>Vorbereiten des Masterservers
-Diese Schritte zur Vorbereitung des Masters gelten nur für universelle und arbeitsspeicheroptimierte Server.
+Diese Schritte müssen durchgeführt werden, um einen Masterserver in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ vorzubereiten.
 
-Der Parameter **azure.replication_support** muss auf dem Masterserver auf REPLICA festgelegt werden. Damit die Änderung an diesem Parameter angewandt wird, ist ein Neustart des Servers erforderlich.
+Auf dem Masterserver muss der Parameter `azure.replication_support` auf **REPLICA** festgelegt werden. Bei Änderung dieses Parameters ist ein Neustart des Servers erforderlich, damit die Änderung wirksam wird.
 
 1. Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server, den Sie als Masterserver verwenden möchten, im Azure-Portal aus.
 
 2. Wählen Sie im Menü auf der linken Seite **Serverparameter** aus.
 
-3. Suchen Sie nach **azure.replication_support**.
+3. Suchen Sie nach dem Parameter `azure.replication_support`.
 
-   ![Azure Database for PostgreSQL – azure.replication_support](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![Suche nach dem Parameter „azure.replication_support“](./media/howto-read-replicas-portal/azure-replication-parameter.png)
 
-4. Legen Sie **azure.replication_support** auf REPLICA fest. **Speichern** Sie die Änderungen.
+4. Legen Sie die Parameterwert von `azure.replication_support` auf **REPLICA** fest. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern.
 
-   ![Azure Database for PostgreSQL – REPLICA und Neustart](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![Festlegen des Parameters auf REPLICA und Speichern der Änderungen](./media/howto-read-replicas-portal/save-parameter-replica.png)
 
-5. Sie erhalten nach dem Speichern eine Benachrichtigung.
+5. Nachdem Sie die Änderungen gespeichert haben, erhalten Sie eine Benachrichtigung:
 
-   ![Azure Database for PostgreSQL – Speicherbenachrichtigung](./media/howto-read-replicas-portal/parameter-save-notification.png)
+   ![Benachrichtigung zu Speichervorgang](./media/howto-read-replicas-portal/parameter-save-notification.png)
 
-6. Starten Sie den Server neu, um die Änderung nach dem Speichern zu übernehmen. Weitere Informationen zum Neustarten eines Servers finden Sie in der [Dokumentation zu Neustarts](howto-restart-server-portal.md).
+6. Starten Sie den Server neu, um die Änderungen zu übernehmen. Die Vorgehensweise zum Neustart eines Servers finden Sie unter [Neustart eines Azure Database for PostgreSQL-Servers über das Azure-Portal](howto-restart-server-portal.md).
 
 
 ## <a name="create-a-read-replica"></a>Erstellen eines Lesereplikats
-Lesereplikate können anhand der folgenden Schritte erstellt werden:
+Führen Sie die folgenden Schritte aus, um ein Lesereplikat zu erstellen:
+
 1.  Wählen Sie den vorhandenen Azure Database for PostgreSQL-Server aus, den Sie als Masterserver verwenden möchten. 
 
-2.  Wählen Sie im Menü unter „EINSTELLUNGEN“ die Option „Replikation“ aus.
+2.  Wählen Sie im Servermenü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
-   Wenn Sie **azure.replication_support** für den universellen oder arbeitsspeicheroptimierten Master nicht auf REPLICA festgelegt und den Server neu gestartet haben, werden Sie in einer Meldung dazu aufgefordert. Führen Sie dies aus, bevor Sie mit dem Erstellen fortfahren.
+   Wenn Sie den Parameter `azure.replication_support` auf einem universellen oder arbeitsspeicheroptimierten Masterserver nicht auf **REPLICA** festgelegt und den Server nicht neu gestartet haben, erhalten Sie eine Benachrichtigung. Führen Sie diese Schritte aus, bevor Sie das Replikat erstellen.
 
-3.  Wählen Sie „Replikat hinzufügen“ aus.
+3.  Wählen Sie **Replikat hinzufügen**.
 
-   ![Azure Database for PostgreSQL – Hinzufügen eines Replikats](./media/howto-read-replicas-portal/add-replica.png)
+   ![Hinzufügen eines Replikats](./media/howto-read-replicas-portal/add-replica.png)
 
-4.  Geben Sie einen Namen für den Replikatserver ein, und wählen Sie „OK“ aus, um die Erstellung des Replikats zu bestätigen.
+4.  Geben Sie einen Namen für das Lesereplikat ein. Wählen Sie **OK**, um die Erstellung des Replikats zu bestätigen.
 
-   ![Azure Database for PostgreSQL – Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png) 
+   ![Benennen des Replikats](./media/howto-read-replicas-portal/name-replica.png) 
+
+Ein Replikat wird mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können mehrere Einstellungen unabhängig vom Masterserver geändert werden: die Computegeneration, die virtuellen Kerne, der Speicher und der Aufbewahrungszeitraum für Sicherungen. Auch der Tarif kann unabhängig geändert werden, allerdings nicht in den oder aus dem Tarif „Basic“.
 
 > [!IMPORTANT]
-> Lesereplikate werden mit der gleichen Serverkonfiguration wie der Masterserver erstellt. Nachdem ein Replikat erstellt wurde, können Sie den Tarif (Ausnahme: Wechsel zu oder aus Basic), die Computegeneration, die virtuellen Kerne, den Speicher und den Aufbewahrungszeitraum für Sicherungen unabhängig vom Masterserver ändern.
+> Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, ändern Sie die Replikatkonfiguration in gleiche oder größere Werte. Durch diese Aktion wird sichergestellt, dass das Replikat mit allen Änderungen, die auf dem Masterserver durchgeführt werden, Schritt halten kann.
 
-> [!IMPORTANT]
-> Bevor Sie die Konfiguration eines Masterservers mit neuen Werten aktualisieren, sollten Sie die Konfiguration der Replikate in gleiche oder größere Werte ändern. Andernfalls wird ein Fehler verursacht. Dadurch wird sichergestellt, dass die Replikate die Änderungen am Master einhalten können. 
+Nach der Erstellung des Lesereplikats kann dieses im Fenster **Replikation** angezeigt werden:
 
-
-Nach der Erstellung des Replikatservers kann dieser im Fenster „Replikation“ angezeigt werden.
-
-![Azure Database for PostgreSQL – Neues Replikat](./media/howto-read-replicas-portal/list-replica.png)
+![Anzeigen des neuen Replikats im Fenster „Replikation“](./media/howto-read-replicas-portal/list-replica.png)
  
 
 ## <a name="stop-replication"></a>Beenden der Replikation
+Sie können die Replikation zwischen einem Masterserver und einem Lesereplikat beenden.
 
 > [!IMPORTANT]
-> Das Beenden der Replikation auf einem Server kann nicht rückgängig gemacht werden. Wenn die Replikation zwischen einem Master und dem Replikat beendet wurde, kann dies nicht rückgängig gemacht werden. Der Replikatserver wird zu einem eigenständigen Server und unterstützt nun Lese- und Schreibvorgänge. Der Server kann nicht wieder in ein Replikat umgewandelt werden.
+> Das Beenden der Replikation zwischen einem Masterserver und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
-Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Masterserver und einem Replikat im Azure-Portal zu beenden:
+Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Masterserver und einem Lesereplikat über das Azure-Portal zu beenden:
+
 1.  Wählen Sie im Azure-Portal Ihren Azure Database for PostgreSQL-Masterserver aus.
 
-2.  Wählen Sie im Menü unter „EINSTELLUNGEN“ die Option „Replikation“ aus.
+2.  Wählen Sie im Servermenü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
 3.  Wählen Sie den Replikatserver aus, für den Sie die Replikation beenden möchten.
 
-   ![Azure Database for PostgreSQL – Auswählen eines Replikats](./media/howto-read-replicas-portal/select-replica.png)
+   ![Auswählen des Replikats](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  Wählen Sie „Replikation beenden“ aus.
+4.  Wählen Sie **Replikation beenden** aus.
 
-   ![Azure Database for PostgreSQL – Auswählen von „Replikation beenden“](./media/howto-read-replicas-portal/select-stop-replication.png)
+   ![Auswählen von „Replikation beenden“](./media/howto-read-replicas-portal/select-stop-replication.png)
  
-5.  Klicken Sie auf „OK“, um zu bestätigen, dass Sie die Replikation beenden möchten.
+5.  Wählen Sie **OK**, um die Replikation zu beenden.
 
-   ![Azure Database for PostgreSQL – Bestätigen der Beendigung der Replikation](./media/howto-read-replicas-portal/confirm-stop-replication.png)
+   ![Bestätigen der Beendigung der Replikation](./media/howto-read-replicas-portal/confirm-stop-replication.png)
  
 
-## <a name="delete-a-master"></a>Löschen eines Masters
+## <a name="delete-a-master-server"></a>Löschen eines Masterservers
+Für das Löschen eines Masterservers führen Sie die gleichen Schritte wie für einen eigenständigen Azure Database for PostgreSQL-Server durch. 
 
 > [!IMPORTANT]
-> Wenn Sie einen Masterserver löschen, wird die Replikation auf allen Replikatservern beendet. Replikatserver werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
-Für das Löschen eines Masters sind die gleichen Schritte wie für einen eigenständigen Azure Database for PostgreSQL-Server erforderlich. Gehen Sie wie folgt vor, um einen Server im Azure-Portal zu löschen:
+> Wenn Sie einen Masterserver löschen, wird die Replikation auf allen Lesereplikaten beendet. Die Lesereplikate werden zu eigenständigen Servern, die nun Lese- und Schreibvorgänge unterstützen.
+
+Um einen Server über das Azure-Portal zu löschen, gehen Sie folgendermaßen vor:
 
 1.  Wählen Sie im Azure-Portal Ihren Azure Database for PostgreSQL-Masterserver aus.
 
-2.  Wählen Sie unter „Übersicht“ die Option „Löschen“ aus.
+2.  Öffnen Sie die Seite **Übersicht** für den Server. Klicken Sie auf **Löschen**.
 
-   ![Azure Database for PostgreSQL – Löschen eines Servers](./media/howto-read-replicas-portal/delete-server.png)
+   ![Auswählen des Löschvorgangs für den Masterserver auf der Übersichtsseite des Servers](./media/howto-read-replicas-portal/delete-server.png)
  
-3.  Geben Sie den Namen des Masterservers ein, und wählen Sie „Löschen“ aus, um das Löschen des Masterservers zu bestätigen.
+3.  Geben Sie den Namen des zu löschenden Masterservers ein. Wählen Sie **Löschen**, um das Löschen des Masterservers zu bestätigen.
 
-   ![Azure Database for PostgreSQL – Bestätigen des Löschvorgangs](./media/howto-read-replicas-portal/confirm-delete.png)
+   ![Bestätigen des Löschvorgangs für den Masterserver](./media/howto-read-replicas-portal/confirm-delete.png)
  
 
 ## <a name="delete-a-replica"></a>Löschen eines Replikats
-Um ein Lesereplikat zu löschen, führen Sie die gleichen Schritte wie oben zum Löschen eines Masterservers aus. Öffnen Sie zunächst die Seite „Übersicht“ des Replikats, und wählen Sie dann „Löschen“ aus.
+Sie können ein Lesereplikat auf ähnliche Weise löschen wie einen Masterserver.
 
-   ![Azure Database for PostgreSQL – Löschen eines Replikats](./media/howto-read-replicas-portal/delete-replica.png)
+- Öffnen Sie im Azure-Portal die Seite **Übersicht** für das Lesereplikat. Klicken Sie auf **Löschen**.
+
+   ![Auswählen des Löschvorgangs für das Replikat auf der Übersichtsseite des Replikats](./media/howto-read-replicas-portal/delete-replica.png)
  
-Alternativ können Sie es im Fenster „Replikation“ löschen.
+Sie können das Lesereplikat auch über das Fenster **Replikation** löschen, indem Sie folgendermaßen vorgehen:
+
 1.  Wählen Sie im Azure-Portal Ihren Azure Database for PostgreSQL-Masterserver aus.
 
-2.  Wählen Sie im Menü unter „EINSTELLUNGEN“ die Option „Replikation“ aus.
+2.  Wählen Sie im Servermenü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
-3.  Wählen Sie den Replikatserver aus, den Sie löschen möchten. 
+3.  Wählen Sie das zu löschende Lesereplikat aus.
 
-   ![Azure Database for PostgreSQL – Auswählen eines Replikats](./media/howto-read-replicas-portal/select-replica.png)
+   ![Auswahl des zu löschenden Lesereplikats](./media/howto-read-replicas-portal/select-replica.png)
  
-4.  Wählen Sie „Replikat löschen“ aus.
+4.  Wählen Sie **Replikat löschen** aus.
 
-   ![Azure Database for PostgreSQL – Auswählen von „Replikat löschen“](./media/howto-read-replicas-portal/select-delete-replica.png)
+   ![Auswahl von „Replikat löschen“](./media/howto-read-replicas-portal/select-delete-replica.png)
  
-5.  Geben Sie den Namen des Replikats ein, und wählen Sie „Löschen“ aus, um das Löschen des Replikats zu bestätigen.
+5.  Geben Sie den Namen des zu löschenden Replikats ein. Wählen Sie **Löschen**, um das Löschen des Replikats zu bestätigen.
 
-   ![Azure Database for PostgreSQL – Bestätigen des Löschvorgangs für ein Replikat](./media/howto-read-replicas-portal/confirm-delete-replica.png)
+   ![Bestätigen des Löschvorgangs für das Replikat](./media/howto-read-replicas-portal/confirm-delete-replica.png)
  
 
 ## <a name="monitor-a-replica"></a>Überwachen eines Replikats
-### <a name="max-lag-across-replicas"></a>Maximale Verzögerung zwischen Replikaten
-Die Metrik **Maximale Verzögerung zwischen Replikaten** zeigt die Verzögerung in Bytes zwischen dem Master und dem Replikat mit der größten Verzögerung. 
+Für die Überwachung von Lesereplikaten stehen zwei Metriken zur Verfügung.
 
-1.  Wählen Sie im Azure-Portal den Azure Database for PostgreSQL-**Masterserver** aus.
+### <a name="max-lag-across-replicas-metric"></a>Metrik „Maximale Verzögerung zwischen Replikaten“
+Die Metrik **Maximale Verzögerung zwischen Replikaten** zeigt die Verzögerung in Byte zwischen dem Masterserver und dem Replikat mit der größten Verzögerung. 
 
-2.  Wählen Sie „Metriken“ aus. Wählen Sie im Fenster „Metriken“ die Option **Max Lag Across Replicas** (Maximale Verzögerung zwischen Replikaten) aus.
+1.  Wählen Sie im Azure-Portal den Azure Database for PostgreSQL-Masterserver aus.
 
-    ![Azure Database for PostgreSQL – Überwachen der maximalen Verzögerung zwischen Replikaten](./media/howto-read-replicas-portal/select-max-lag.png)
+2.  Klicken Sie auf **Metriken**. Wählen Sie im Fenster **Metriken** die Option **Maximale Verzögerung zwischen Replikaten** aus.
+
+    ![Überwachen der maximalen Verzögerung zwischen Replikaten](./media/howto-read-replicas-portal/select-max-lag.png)
  
-3.  Wählen Sie als Aggregation **Max** aus. 
+3.  Wählen Sie für Ihre **Aggregation** den Wert **Max** aus.
 
-### <a name="replica-lag"></a>Replikatverzögerung
-Die Metrik **Replica Lag** (Replikatverzögerung) zeigt die Zeit seit der letzten wiedergegebenen Transaktion in diesem Replikat an. Wenn keine Transaktionen auf dem Masterserver stattfinden, gibt die Metrik diese Verzögerungszeit wieder.
 
-1.  Wählen Sie im Azure-Portal einen Azure Database for PostgreSQL-**Replikatserver** aus.
+### <a name="replica-lag-metric"></a>Metrik „Replikatverzögerung“
+Die Metrik **Replikatverzögerung** zeigt die Zeit seit der letzten wiedergegebenen Transaktion in einem Replikat an. Wenn keine Transaktionen auf dem Masterserver stattfinden, gibt die Metrik diese Verzögerungszeit wieder.
 
-2.  Wählen Sie „Metriken“ aus. Wählen Sie im Fenster „Metriken“ die Option **Replica Lag** (Replikatverzögerung) aus.
+1.  Wählen Sie im Azure-Portal das Azure Database for PostgreSQL-Lesereplikat aus.
 
-   ![Azure Database for PostgreSQL – Überwachen der Replikatverzögerung](./media/howto-read-replicas-portal/select-replica-lag.png)
+2.  Klicken Sie auf **Metriken**. Wählen Sie im Fenster **Metriken** die Option **Replikatverzögerung** aus.
+
+   ![Überwachen der Replikatverzögerung](./media/howto-read-replicas-portal/select-replica-lag.png)
  
-3.  Wählen Sie als Aggregation **Max** aus. 
+3.  Wählen Sie für Ihre **Aggregation** den Wert **Max** aus. 
  
 ## <a name="next-steps"></a>Nächste Schritte
-- Erfahren Sie mehr über [Lesereplikate in Azure Database for PostgreSQL](concepts-read-replicas.md).
+Erfahren Sie mehr über [Lesereplikate in Azure Database for PostgreSQL](concepts-read-replicas.md).

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 120e0f3c7e6af22210ba04565b86b8098851b26d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3974d1de2bd90049541dcc249f18346c9e48fd3d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186895"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456026"
 ---
 # <a name="sign-in-to-your-accounts-using-the-microsoft-authenticator-app"></a>Anmelden an Ihren Konten per Microsoft Authenticator-App
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
@@ -62,9 +62,9 @@ Nachdem Sie die Anmeldung per Telefon aktiviert haben, können Sie sich anmelden
 
     Nach der Eingabe Ihres Benutzernamens wird das Fenster **Anmeldung genehmigen** mit einer zweistelligen Zahl angezeigt, und Sie werden aufgefordert, sich mit der Microsoft Authenticator-App anzumelden. Wenn Sie diese Anmeldemethode nicht verwenden möchten, können Sie **Stattdessen Ihr Kennwort verwenden** auswählen und sich mit Ihrem Kennwort anmelden.
 
-    ![Feld „Anmeldung genehmigen“ auf dem PC](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
+    ![Feld „Anmeldung genehmigen“ auf dem Computer](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in.png)
 
-2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann die Zahl ein, die mit der Zahl im Fenster **Anmeldung genehmigen** auf Ihrem PC übereinstimmt.
+2. Öffnen Sie die Benachrichtigung bzw. die Microsoft Authenticator-App auf Ihrem Gerät, und tippen Sie dann die Zahl ein, die mit der Zahl auf dem Bildschirm **Anmeldung genehmigen** auf Ihrem Computer übereinstimmt.
 
     ![Feld „Anmeldung genehmigen“ auf dem Gerät](media/user-help-auth-app-sign-in/microsoft-auth-app-sign-in-numbers.png)
 
@@ -113,7 +113,7 @@ Die erforderlichen Schritte für die Anmeldung an Ihrem Geschäfts-, Schul- oder
 |**Was ist, wenn ich mein Smartphone verliere oder nicht zur Hand habe? Wie kann ich auf mein Konto zugreifen?**| Sie können auf der Anmeldeseite jederzeit den Link „Stattdessen Ihr Kennwort verwenden“ auswählen und wieder Ihr Kennwort verwenden. Bei Verwendung der zweistufigen Überprüfung benötigen Sie jedoch weiterhin eine zweite Methode, um Ihre Identität zu bestätigen.<br><br>**Wichtig**<br>Sie sollten unbedingt sicherstellen, dass Sie Ihrem Konto mehr als eine Überprüfungsmethode zuordnen, die auf dem aktuellen Stand ist.<br><br>Sie können Ihre Überprüfungsmethoden für persönliche Konten auf Ihrer [Sicherheitseinstellungen](https://account.live.com/proofs/manage)-Seite verwalten. Für Geschäfts-, Schul- oder Unikonten können Sie zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/MFASetup) oder **Schützen Sie Ihr Konto** Ihrer Organisation wechseln, wenn Ihr Administrator die Sicherheitsinfos aktiviert hat. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen (Vorschau)](security-info-manage-settings.md).<br><br>Wenn Sie Ihre Überprüfungsmethoden nicht verwalten können, müssen Sie sich an Ihren Administrator wenden.|
 |**Wie kann ich die Verwendung des Features beenden und wieder zur Verwendung meines Kennworts zurückkehren?**|Wählen Sie für persönliche Konten bei der Anmeldung den Link **Stattdessen Ihr Kennwort verwenden** aus. Ihre aktuelle Auswahl wird gespeichert und standardmäßig bei Ihrer nächsten Anmeldung angeboten. Falls Sie einmal zur Anmeldung per Telefon zurückkehren möchten, können Sie während der Anmeldung den Link **Stattdessen eine App verwenden** auswählen.<br><br>Für Geschäfts-, Schul- oder Unikonten müssen Sie auf die Seite für die zusätzliche Sicherheitsüberprüfung navigieren (z.B. https://aka.ms/MFASetup)) und die Microsoft Authenticator-App entfernen.|
 |**Warum kann nicht ich mehr als ein Geschäfts-, Schul- oder Uni-Konto für die Anmeldung per Telefon verwenden?**| Ein Telefon muss für ein einzelnes Geschäfts-, Schul- oder Unikonto registriert sein. Wenn Sie die Anmeldung per Telefon für ein anderes Geschäfts-, Schul- oder Unikonto aktivieren möchten, müssen Sie zuerst die Registrierung des alten Geräts über die Seite **Einstellungen** aufheben.|
-|**Kann ich mich mit meinem Telefon bei meinem PC anmelden?**| Bei Ihrem PC sollten Sie sich mithilfe von Windows Hello unter Windows 10 anmelden. Mit Windows Hello können Sie sich mit Ihrem Gesicht, Fingerabdruck oder Ihrer PIN anmelden.|
+|**Kann ich mich mit meinem Telefon bei meinem Computer anmelden?**| Bei Ihrem Computer sollten Sie sich mithilfe von Windows Hello unter Windows 10 anmelden. Mit Windows Hello können Sie sich mit Ihrem Gesicht, Fingerabdruck oder Ihrer PIN anmelden.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 - Antworten auf allgemeinere Fragen zur App finden Sie unter [Microsoft Authenticator-App – häufig gestellte Fragen](user-help-auth-app-faq.md).

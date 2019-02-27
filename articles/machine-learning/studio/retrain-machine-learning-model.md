@@ -1,7 +1,7 @@
 ---
-title: Erneutes Trainieren eines Machine Learning Studio-Modells
+title: Erneutes Trainieren und Bereitstellen eines Webdiensts
 titleSuffix: Azure Machine Learning Studio
-description: Erfahren Sie, wie Sie ein Modell erneut trainieren und den Webdienst aktualisieren, sodass er das neu trainierte Modell in Azure Machine Learning verwendet.
+description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, sodass er das neu trainierte Machine Learning-Modell in Azure Machine Learning Studio verwendet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,84 +9,186 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.date: 04/19/2017
-ms.openlocfilehash: f7558876391d25d2f6f3dd1fede4cb0d13d72bf0
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/14/2019
+ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236259"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56330510"
 ---
-# <a name="retrain-an-azure-machine-learning-studio-model"></a>Erneutes Trainieren eines Azure Machine Learning Studio-Modells
-Im Rahmen der Operationalisierung von Machine Learning-Modellen in Azure Machine Learning wird Ihr Modell trainiert und gespeichert. Anschließend kann es dann zum Erstellen eines Vorhersagewebdiensts verwendet werden. Dieser Webdienst kann von Websites, Dashboards und mobilen Apps genutzt werden. 
+# <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
-Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden. 
+Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherzustellen, dass sie fehlerfrei bleiben und auf den relevantesten verfügbaren Daten basieren. Dieser Artikel veranschaulicht das erneute Trainieren und Bereitstellen eines Machine Learning-Modells als neuer Webdienst in Studio. Wenn Sie einen klassischen Webdienst erneut trainieren möchten, [lesen Sie diese Anleitung](retrain-classic-web-service.md).
 
-Das erneute Training kann häufig durchgeführt werden. Mit dem API-Feature für programmgesteuertes erneutes Trainieren können Sie das Modell mithilfe der APIs zum erneuten Trainieren programmgesteuert erneut trainieren und den Webdienst mit dem neu trainierten Modell aktualisieren. 
+In diesem Artikel wird davon ausgegangen, dass Sie bereits einen Vorhersagewebdienst bereitgestellt haben. Wenn Sie noch nicht über einen Vorhersagewebdienst verfügen, [erfahren Sie hier, wie Sie einen Studio-Webdienst bereitstellen](publish-a-machine-learning-web-service.md).
 
-In diesem Dokument wird das erneute Trainieren beschrieben und gezeigt, wie Sie die APIs zum erneuten Trainieren verwenden.
+Befolgen Sie diese Schritte, um einen neuen Machine Learning-Webdienst zu trainieren und bereitzustellen:
 
-## <a name="why-retrain-defining-the-problem"></a>Warum erneut trainieren: Problemdefinition
-Im Rahmen des Machine Learning-Trainingsprozesses wird ein Modell mit einem Satz von Daten trainiert. Mithilfe von Machine Learning erstellte Modelle sind in der Regel nicht statisch. Wenn neue Daten verfügbar sind oder der Endkunde der API über eigene Daten verfügt, muss das Modell erneut trainiert werden.
+1. Bereitstellen eines **Webdiensts zum erneuten Trainieren**
+1. Trainieren eines neuen Modells mit Ihrem **Webdienst zum erneuten Trainieren**
+1. Aktualisieren Ihres **vorhandenen Vorhersageexperiments** zum Verwenden des neuen Modells
 
-In diesen Szenarien bietet eine programmgesteuerte API eine komfortable Möglichkeit, mit der Sie oder die Nutzer Ihrer APIs einen Client erstellen können, der das Modell einmalig oder regelmäßig unter Verwendung eigener Daten trainieren kann. Anschließend können Sie die Ergebnisse des erneuten Trainierens auswerten und die Webdienst-API aktualisieren, damit sie das neu trainierte Modell verwendet.
+## <a name="deploy-the-retraining-web-service"></a>Bereitstellen des Webdiensts zum erneuten Trainieren
 
-> [!NOTE]
-> Wenn Sie ein vorhandenes Trainingsexperiment und einen neuen Webdienst haben, können Sie einen vorhandenen Vorhersagewebdienst neu trainieren, anstatt die im folgenden Abschnitt erwähnte exemplarische Vorgehensweise durchzuführen.
-> 
-> 
+Mit einem Webdienst zum erneuten Trainieren können Sie Ihr Modell erneut mit einem neuen Satz von Parametern trainieren – z.B. neuen Daten – und zur späteren Verwendung speichern. Wenn Sie die Verbindung eines **Web Service Output** mit einem **Train Model** herstellen, gibt das Trainingsexperiment ein neues Modell aus, das Sie verwenden können.
 
-## <a name="end-to-end-workflow"></a>Kompletter Workflow
-Der Vorgang umfasst die folgenden Komponenten: Ein Trainingsexperiment und ein Vorhersageexperiment, die als Webdienst veröffentlicht werden. Damit ein trainiertes Modell erneut trainiert werden kann, muss das Trainingsexperiment als Webdienst mit der Ausgabe eines trainierten Modells veröffentlicht werden. Dies ermöglicht der API, zum erneuten Trainieren auf das Modell zuzugreifen. 
+Stellen Sie mit folgenden Schritten einen Webdienst zum erneuten Trainieren bereit:
 
-Die folgenden Schritte gelten für neue und klassische Webdienste:
+1. Stellen Sie die Verbindung eines **Web Service Input**-Moduls mit Ihrer Dateneingabe her. Dadurch wird sichergestellt, dass Ihre Daten für das erneute Training genau so verarbeitet werden wie Ihre ursprünglichen Trainingsdaten.
+1. Stellen Sie die Verbindung eines **Web Service Output**-Moduls mit der Ausgabe Ihres **Train Model** her.
+1. Wenn Sie ein **Evaluate Model**-Modul haben, können Sie die Verbindung eines **Web Service Output**-Moduls zur Ausgabe der Auswertungsergebnisse herstellen.
+1. Führen Sie das Experiment aus.
 
-Erstellen des anfänglichen Vorhersagewebdiensts:
+    Nachdem Sie Ihr Experiment ausgeführt haben, sollte der resultierende Workflow dem folgenden Image ähneln:
 
-* Erstellen eines Trainingsexperiments
-* Erstellen eines Vorhersageexperiments
-* Bereitstellen eines Vorhersagewebdiensts
+    ![Resultierender Workflow](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
-Erneutes Trainieren des Webdiensts:
+    Stellen Sie als Nächstes das Trainingsexperiment als Webdienst zum erneuten Trainieren bereit, der ein trainiertes Modell und Modellauswertungsergebnisse ausgibt.
 
-* Aktualisieren des Trainingsexperiments zum erneuten Trainieren
-* Bereitstellen des Webdiensts zum erneuten Trainieren
-* Verwenden des BES-Codes zum erneuten Trainieren des Modells
+1. Klicken Sie am unteren Rand des Experimentbereichs auf **Set Up Web Service (Webdienst einrichten)**.
+1. Wählen Sie **Deploy Web Service [New] (Webdienst bereitstellen [Neu])** aus. Das Azure Machine Learning-Webdienstportal wird mit der Seite **Webdienst bereitstellen** geöffnet.
+1. Geben Sie einen Namen für Ihren Webdienst ein, und wählen Sie einen Zahlungsplan aus.
+1. Klicken Sie auf **Bereitstellen**.
 
-> [!NOTE] 
-> Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
+## <a name="retrain-the-model"></a>Erneutes Trainieren des Modells
 
-Wenn Sie einen klassischen Webdienst bereitgestellt haben:
+In diesem Beispiel dient C# zum Erstellen der Anwendung für erneutes Trainieren. Für diese Aufgabe können Sie auch Python- oder R-Beispielcode verwenden.
 
-* Erstellen Sie einen neuen Endpunkt für den Vorhersagewebdienst
-* Rufen Sie die PATCH-URL und den Code ab.
-* Verwenden Sie die PATCH-URL, um den neuen Endpunkt auf das neu trainierte Modell zu zeigen. 
+Rufen Sie mit den folgenden Schritten die APIs zum erneuten Trainieren auf:
 
-Wenn beim erneuten Trainieren eines klassischen Webdiensts Probleme auftreten, finden Sie Hilfe unter [Problembehandlung beim erneuten Trainieren eines klassischen Azure Machine Learning Webdiensts](troubleshooting-retraining-models.md).
+1. Erstellen Sie in Visual Studio eine C#-Konsolenanwendung: **Neu** > **Projekt** > **Visual C#**  > **Klassischer Windows-Desktop** >  **Konsolen-App (.NET Framework)**.
+1. Melden Sie sich beim Machine Learning-Webdienstportal an.
+1. Klicken Sie auf den verwendeten Webdienst.
+1. Klicken Sie auf **Consume**.
+1. Klicken Sie am unteren Rand der Seite **Consume** im Abschnitt **Sample Code** auf **Batch**.
+1. Kopieren Sie den C#-Beispielcode für die Batchausführung, und fügen Sie ihn in die Datei „Program.cs“ ein. Achten Sie dabei darauf, dass der Namespace intakt bleibt.
 
-Wenn Sie einen neuen Webdienst bereitgestellt haben:
+Fügen Sie das NuGet-Paket „Microsoft.AspNet.WebApi.Client“ hinzu, wie in den Kommentaren angegeben. Vor dem Hinzufügen des Verweises auf „Microsoft.WindowsAzure.Storage.dll“ müssen Sie unter Umständen die [Clientbibliothek für Azure Storage Services](https://www.nuget.org/packages/WindowsAzure.Storage) installieren.
 
-* Anmelden bei Ihrem Azure Resource Manager-Konto
-* Rufen Sie die Webdienstdefinition ab.
-* Exportieren Sie die Webdienstdefinition als JSON-Code.
-* Aktualisieren Sie im JSON-Code den Verweis auf das `ilearner`-Blob
-* Importieren Sie den JSON-Code in eine Webdienstdefinition.
-* Aktualisieren Sie den Webdienst mit der neuen Webdienstdefinition.
+Der folgende Screenshot zeigt die Seite **Consume** im Azure Machine Learning-Webdienste-Portal.
 
-Das Einrichten eines erneuten Trainings für einen klassischen Webdienst umfasst die folgenden Schritte:
+![Seite Consume](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
 
-![Übersicht über den Prozess des erneuten Trainings][1]
+### <a name="update-the-apikey-declaration"></a>Aktualisieren der apiKey-Deklaration
 
-Das Einrichten eines erneuten Trainings für einen neuen Webdienst umfasst die folgenden Schritte:
+Suchen Sie die **apiKey**-Deklaration:
 
-![Übersicht über den Prozess des erneuten Trainings][7]
+    const string apiKey = "abc123"; // Replace this with the API key for the web service
 
-## <a name="other-resources"></a>Weitere Ressourcen
-* [Erneutes Trainieren und Aktualisieren von Azure Machine Learning-Modellen mit Azure Data Factory](https://azure.microsoft.com/blog/retraining-and-updating-azure-machine-learning-models-with-azure-data-factory/)
-* [Erstellen vieler Machine Learning-Modelle und Webdienst-Endpunkte in nur einem Experiment mit PowerShell](create-models-and-endpoints-with-powershell.md)
-* Im Video [AML-Modelle zum erneuten Trainieren mithilfe von APIs](https://www.youtube.com/watch?v=wwjglA8xllg) erfahren Sie, wie Sie APIs zum erneuten Trainieren und PowerShell zum erneuten Trainieren von in Azure Machine Learning erstellten Machine Learning-Modellen verwenden.
+Kopieren Sie auf der Seite **Consume** (Verbrauchen) im Abschnitt **Basic consumption info** (Grundlegende Verbrauchsinformationen) den Primärschlüssel, und fügen Sie ihn in die **apikey**-Deklaration ein.
 
-<!--image links-->
-[1]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE01.png
-[7]: ./media/retrain-machine-learning-model/machine-learning-retrain-models-programmatically-IMAGE07.png
+### <a name="update-the-azure-storage-information"></a>Aktualisieren der Azure Storage-Informationen
 
+Der BES-Beispielcode lädt eine Datei von einem lokalen Laufwerk (z.B. „C:\temp\CensusInput.csv“) in Azure Storage hoch, verarbeitet sie und schreibt die Ergebnisse zurück in Azure Storage.
+
+1. Anmelden beim Azure-Portal
+1. Klicken Sie in der linken Navigationsspalte auf **Weitere Dienste**, suchen Sie nach **Speicherkonten**, und wählen Sie die Option aus.
+1. Wählen Sie in der Speicherkontenliste ein Speicherkonto zum Speichern des neu trainierten Modells aus.
+1. Klicken Sie in der linken Navigationsspalte auf **Zugriffsschlüssel**.
+1. Kopieren und speichern Sie den Wert für **Primärer Zugriffsschlüssel**.
+1. Klicken Sie in der linken Navigationsspalte auf **Container**.
+1. Wählen Sie einen vorhandenen Container aus, oder erstellen Sie einen neuen, und speichern Sie den Namen.
+
+Suchen Sie die Deklarationen *StorageAccountName*, *StorageAccountKey* und *StorageContainerName*, und aktualisieren Sie die Werte mit den gespeicherten Werten aus dem Portal.
+
+    const string StorageAccountName = "mystorageacct"; // Replace this with your Azure storage account name
+    const string StorageAccountKey = "a_storage_account_key"; // Replace this with your Azure Storage key
+    const string StorageContainerName = "mycontainer"; // Replace this with your Azure Storage container name
+
+Außerdem müssen Sie sicherstellen, dass die Eingabedatei an dem im Code angegebenen Speicherort verfügbar ist.
+
+### <a name="specify-the-output-location"></a>Angeben des Ausgabespeicherorts
+
+Wenn Sie den Ausgabespeicherort in der Anforderungsnutzlast angeben, muss die Erweiterung der in *RelativeLocation* angegebenen Datei als `ilearner` angegeben werden.
+
+    Outputs = new Dictionary<string, AzureBlobDataReference>() {
+        {
+            "output1",
+            new AzureBlobDataReference()
+            {
+                ConnectionString = storageConnectionString,
+                RelativeLocation = string.Format("{0}/output1results.ilearner", StorageContainerName) /*Replace this with the location you want to use for your output file and a valid file extension (usually .csv for scoring results or .ilearner for trained models)*/
+            }
+        },
+
+Hier ist eine Beispielausgabe zum erneuten Trainieren:
+
+![Ausgabe des erneuten Trainings](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+
+### <a name="evaluate-the-retraining-results"></a>Auswerten der Ergebnisse des erneuten Trainings
+
+Wenn Sie die Anwendung ausführen, enthält die Ausgabe die URL und das erforderliche SAS-Token für den Zugriff auf die Auswertungsergebnisse.
+
+Sie können die Leistungsergebnisse des erneut trainierten Modells anzeigen, indem Sie *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen für *output2* kombinieren und die vollständige URL in die Adressleiste des Browsers einfügen.
+
+Überprüfen Sie die Ergebnisse, um festzustellen, ob das neu trainierte Modell besser ist als das vorhandene.
+
+Speichern Sie die Werte für *BaseLocation*, *RelativeLocation* und *SasBlobToken* aus den Ausgabeergebnissen.
+
+## <a name="update-the-predictive-experiment"></a>Aktualisieren des Vorhersageexperiments
+
+### <a name="sign-in-to-azure-resource-manager"></a>Anmelden bei Azure Resource Manager
+
+Melden Sie sich innerhalb Ihrer PowerShell-Umgebung zunächst mithilfe des Cmdlets [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) bei Ihrem Azure-Konto an.
+
+### <a name="get-the-web-service-definition-object"></a>Abrufen des Webdienstdefinition-Objekts
+
+Rufen Sie als nächstes mithilfe des Cmdlets [Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) das Webdienstdefinition-Objekt ab.
+
+    $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+
+Führen Sie zum Ermitteln des Ressourcengruppennamens eines vorhandenen Webdiensts das Cmdlet „Get-AzureRmMlWebService“ ohne Parameter aus, um die Webdienste in Ihrem Abonnement anzuzeigen. Suchen Sie den Webdienst, und sehen Sie sich die Webdienst-ID an. Der Ressourcengruppenname ist das vierte Element in der ID (direkt nach dem *resourceGroups* -Element). Im folgenden Beispiel lautet der Name der Ressourcengruppe „Default-MachineLearning-SouthCentralUS“.
+
+    Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
+    Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+    Name : RetrainSamplePre.2016.8.17.0.3.51.237
+    Location : South Central US
+    Type : Microsoft.MachineLearning/webServices
+    Tags : {}
+
+Alternativ können Sie sich zur Ermittlung des Ressourcengruppennamens eines vorhandenen Webdiensts beim Azure Machine Learning-Webdiensteportal anmelden. Wählen Sie den Webdienst aus. Der Ressourcengruppenname ist das fünfte Element in der Webdienst-URL (direkt nach dem *resourceGroups* -Element). Im folgenden Beispiel lautet der Name der Ressourcengruppe „Default-MachineLearning-SouthCentralUS“.
+
+    https://services.azureml.net/subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
+
+### <a name="export-the-web-service-definition-object-as-json"></a>Exportieren des Webdienstdefinition-Objekts als JSON-Code
+
+Um die Definition so zu ändern, dass das neu trainierte Modell verwendet wird, müssen Sie sie zunächst mithilfe des Cmdlets [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) in eine Datei im JSON-Format exportieren.
+
+    Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+
+### <a name="update-the-reference-to-the-ilearner-blob"></a>Aktualisieren des Verweises auf das iLearner-Blob
+
+Suchen Sie in den Assets nach „[trained model]“, und aktualisieren Sie den Wert *uri* im Knoten *locationInfo* mit dem URI des iLearner-Blobs. Der URI wird auf der Grundlage von *BaseLocation* und *RelativeLocation* aus der Ausgabe des BES-Aufrufs für das erneute Training generiert.
+
+     "asset3": {
+        "name": "Retrain Sample [trained model]",
+        "type": "Resource",
+        "locationInfo": {
+          "uri": "https://mltestaccount.blob.core.windows.net/azuremlassetscontainer/baca7bca650f46218633552c0bcbba0e.ilearner"
+        },
+        "outputPorts": {
+          "Results dataset": {
+            "type": "Dataset"
+          }
+        }
+      },
+
+### <a name="import-the-json-into-a-web-service-definition-object"></a>Importieren des JSON-Codes in ein Webdienstdefinition-Objekt
+
+Konvertieren Sie die geänderte JSON-Datei mithilfe des Cmdlets [Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) wieder in ein Webdienstdefinition-Objekt, mit dem Sie das Vorhersageexperiment aktualisieren können.
+
+    $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
+
+### <a name="update-the-web-service"></a>Aktualisieren des Webdiensts
+
+Verwenden Sie abschließend das Cmdlet [Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice), um das Vorhersageexperiment zu aktualisieren.
+
+    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+
+## <a name="next-steps"></a>Nächste Schritte
+
+Um mehr darüber zu erfahren, wie Sie Webdienste verwalten oder mehrere Experimentausführungen verfolgen können, lesen Sie die folgenden Artikel:
+
+* [Erkunden des Web Services-Portals](manage-new-webservice.md)
+* [Verwalten von Experimentiterationen](manage-experiment-iterations.md)

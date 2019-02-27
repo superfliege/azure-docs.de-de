@@ -1,6 +1,6 @@
 ---
-title: Verwenden von Data Lake Storage mit Hadoop in Azure HDInsight
-description: Erfahren Sie, wie Sie Daten in Azure Data Lake Storage abfragen und die Ergebnisse Ihrer Analyse speichern.
+title: Verwenden von Data Lake Storage Gen1 mit Hadoop in Azure HDInsight
+description: Erfahren Sie, wie Sie Daten in Azure Data Lake Storage Gen1 abfragen und die Ergebnisse Ihrer Analyse speichern.
 services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,63 +9,63 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 5ba12e48092c02f9628e15166c84e871310d7556
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fe195ba485e6653cee4a45f4a33067bf536334ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816372"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338613"
 ---
-# <a name="use-data-lake-storage-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage mit Azure HDInsight-Clustern
+# <a name="use-data-lake-storage-gen1-with-azure-hdinsight-clusters"></a>Verwenden von Data Lake Storage Gen1 mit Azure HDInsight-Clustern
 
-Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten in [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) oder beidem speichern. Beide Speichervarianten ermöglichen das sichere Löschen der HDInsight-Cluster, die für Berechnungen verwendet werden, ohne Benutzerdaten zu verlieren.
+> [!Note] 
+> Stellen Sie neue HDInsight-Cluster mithilfe von [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md) für verbesserte Leistung und neue Funktionen bereit.
 
-In diesem Artikel erfahren Sie, wie Data Lake Storage mit HDInsight-Clustern funktioniert. Weitere Informationen zur Funktionsweise von Azure Store mit HDInsight-Clustern finden Sie unter [Verwenden von Azure Storage mit Azure HDInsight-Clustern](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
+Zum Analysieren von Daten im HDInsight-Cluster können Sie die Daten in [Azure Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md) oder [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md) speichern. Alle Speichervarianten ermöglichen das sichere Löschen von HDInsight-Clustern, die für Berechnungen verwendet werden, ohne dass Benutzerdaten verloren gehen.
+
+In diesem Artikel erfahren Sie, wie Data Lake Storage Gen1 mit HDInsight-Clustern funktioniert. Weitere Informationen zur Funktionsweise von Azure Store mit HDInsight-Clustern finden Sie unter [Verwenden von Azure Storage mit Azure HDInsight-Clustern](hdinsight-hadoop-use-blob-storage.md). Weitere Informationen zum Erstellen eines HDInsight-Clusters finden Sie unter [Erstellen von Apache Hadoop-Clustern in HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!NOTE]  
-> Da auf Data Lake Storage immer über einen sicheren Kanal zugegriffen wird, ist kein `adls`-Dateisystem-Schemaname vorhanden. Sie verwenden immer `adl`.
+> Da auf Data Lake Storage Gen1 immer über einen sicheren Kanal zugegriffen wird, ist kein `adls`-Dateisystem-Schemaname vorhanden. Sie verwenden immer `adl`.
 
 
 ## <a name="availability-for-hdinsight-clusters"></a>Verfügbarkeit für HDInsight-Cluster
 
-Apache Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage als Standarddateisystem angeben. Mit HDInsight 3.5 oder einer neueren Version können Sie mit einigen wenigen Ausnahmen Azure Storage oder Azure Data Lake Storage als Standarddateisystem auswählen. 
+Apache Hadoop unterstützt eine Variante des Standarddateisystems. Das Standarddateisystem gibt ein Standardschema und eine Standardautorität vor. Es kann auch zur Auflösung relativer Pfade verwendet werden. Bei der Erstellung des HDInsight-Clusters können Sie einen Blobcontainer in Azure Storage als Standarddateisystem angeben. Mit HDInsight 3.5 oder einer neueren Version können Sie mit einigen wenigen Ausnahmen Azure Storage oder Azure Data Lake Storage Gen1 als Standarddateisystem auswählen. 
 
-Für HDInsight-Cluster kann Data Lake Storage auf zwei Arten verwendet werden:
+Für HDInsight-Cluster kann Data Lake Storage Gen1 auf zwei Arten verwendet werden:
 
 * Als Standardspeicher
 * Als zusätzlicher Speicher mit Azure Storage Blob als Standardspeicher
 
-Zum aktuellen Zeitpunkt unterstützen nur einige der HDInsight-Clustertypen/-versionen Data Lake Storage als Konten für Standardspeicher und Zusatzspeicher:
+Zum aktuellen Zeitpunkt unterstützen nur einige der HDInsight-Clustertypen/-versionen Data Lake Storage Gen1 als Konten für Standardspeicher und Zusatzspeicher:
 
-| HDInsight-Clustertyp | Data Lake Storage als Standardspeicher | Data Lake Storage als Zusatzspeicher| Notizen |
+| HDInsight-Clustertyp | Data Lake Storage Gen1 als Standardspeicher | Data Lake Storage Gen1 als zusätzlicher Speicher| Notizen |
 |------------------------|------------------------------------|---------------------------------------|------|
 | HDInsight-Version 3.6 | Ja | Ja | Mit Ausnahme von HBase|
 | HDInsight-Version 3.5 | Ja | Ja | Mit Ausnahme von HBase|
 | HDInsight-Version 3.4 | Nein  | Ja | |
 | HDInsight, Version 3.3 | Nein  | Nein  | |
 | HDInsight, Version 3.2 | Nein  | Ja | |
-| Storm | | |Sie können Data Lake Storage verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Storage auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
+| Storm | | |Sie können Data Lake Storage Gen1 verwenden, um dort Daten aus einer Storm-Topologie zu schreiben. Sie können Data Lake Storage auch zum Speichern von Verweisdaten verwenden, die anschließend von einer Storm-Topologie gelesen werden.|
 
 > [!WARNING]  
 > HDInsight HBase wird mit Azure Data Lake Storage Gen1 nicht unterstützt.
 
-Das Verwenden von Data Lake Storage als zusätzliches Speicherkonto wirkt sich nicht auf die Leistung oder die Fähigkeit aus, Daten aus dem Cluster in Azure Storage zu lesen bzw. zu schreiben.
-## <a name="use-data-lake-storage-as-default-storage"></a>Verwenden von Azure Data Lake Storage als Standardspeicher
+Das Verwenden von Data Lake Storage Gen1 als zusätzliches Speicherkonto wirkt sich nicht auf die Leistung oder die Fähigkeit aus, Daten aus dem Cluster in Azure Storage zu lesen bzw. zu schreiben.
 
-Wenn HDInsight mit Data Lake Storage als Standardspeicher bereitgestellt wird, werden die clusterbezogenen Dateien in Data Lake Storage am folgenden Ort gespeichert:
+## <a name="use-data-lake-storage-gen1-as-default-storage"></a>Verwenden von Data Lake Storage Gen1 als Standardspeicher
 
-    adl://mydatalakestore/<cluster_root_path>/
-
-Hierbei ist `<cluster_root_path>` der Name eines Ordners, den Sie in Data Lake Storage erstellen. Indem Sie einen Stammpfad für jeden Cluster angeben, können Sie dasselbe Data Lake Storage-Konto für mehrere Cluster verwenden. Beispielsweise können Sie das folgende Setup verwenden:
+Wenn HDInsight mit Data Lake Storage Gen1 als Standardspeicher bereitgestellt wird, werden die clusterbezogenen Dateien in `adl://mydatalakestore/<cluster_root_path>/` gespeichert, wobei `<cluster_root_path>` der Name eines Ordners ist, den Sie in Data Lake Storage erstellen. Indem Sie einen Stammpfad für jeden Cluster angeben, können Sie dasselbe Data Lake Storage-Konto für mehrere Cluster verwenden. Beispielsweise können Sie das folgende Setup verwenden:
 
 * Cluster1 kann den Pfad `adl://mydatalakestore/cluster1storage` nutzen.
 * Cluster2 kann den Pfad `adl://mydatalakestore/cluster2storage` nutzen.
 
-Beachten Sie, dass für beide Cluster dasselbe Data Lake Storage-Konto **mydatalakestore** verwendet wird. Jeder Cluster hat in Data Lake Storage Zugriff auf sein eigenes Stammdateisystem. Bei der Bereitstellung im Azure-Portal werden Sie aufgefordert, für den Stammpfad einen Ordnernamen wie **/clusters/\<Clustername>** zu verwenden.
+Beachten Sie, dass für beide Cluster dasselbe Data Lake Storage Gen1-Konto **mydatalakestore** verwendet wird. Jeder Cluster hat in Data Lake Storage Zugriff auf sein eigenes Stammdateisystem. Bei der Bereitstellung im Azure-Portal werden Sie aufgefordert, für den Stammpfad einen Ordnernamen wie **/clusters/\<Clustername>** zu verwenden.
 
-Um Data Lake Storage als Standardspeicher verwenden zu können, müssen Sie dem Dienstprinzipal Zugriff auf die folgenden Pfade gewähren:
+Um Data Lake Storage Gen1 als Standardspeicher verwenden zu können, müssen Sie dem Dienstprinzipal Zugriff auf die folgenden Pfade gewähren:
 
-- Das Stammverzeichnis für Data Lake Storage.  Beispiel: adl://mydatalakestore/.
+- Den Data Lake Storage Gen1-Kontostamm.  Beispiel: adl://mydatalakestore/.
 - Den Ordner für alle Clusterordner.  Beispiel: adl://mydatalakestore/clusters.
 - Den Ordner für den Cluster.  Beispiel: adl://mydatalakestore/clusters/cluster1storage.
 
@@ -73,7 +73,7 @@ Weitere Informationen zum Erstellen von Dienstprinzipalen und zum Gewähren des 
 
 ### <a name="extracting-a-certificate-from-azure-keyvault-for-use-in-cluster-creation"></a>Extrahieren eines Zertifikats aus Azure Key Vault für die Verwendung in der Clustererstellung
 
-Wenn Sie ADLS als Standardspeicher für einen neuen Cluster einrichten möchten und das Zertifikat für den Dienstprinzipal in Azure Key Vault gespeichert ist, sind einige zusätzliche Schritte erforderlich, um das Zertifikat in das richtige Format zu konvertieren. Die folgenden Codeausschnitte zeigen die Durchführung der Konvertierung.
+Wenn Sie Azure Data Lake Storage Gen1 als Standardspeicher für einen neuen Cluster einrichten möchten und das Zertifikat für den Dienstprinzipal in Azure Key Vault gespeichert ist, sind einige zusätzliche Schritte erforderlich, um das Zertifikat in das richtige Format zu konvertieren. Die folgenden Codeausschnitte zeigen die Durchführung der Konvertierung.
 
 Laden Sie zuerst das Zertifikat aus Key Vault herunter, und extrahieren Sie den `SecretValueText`.
 
@@ -105,15 +105,15 @@ New-AzureRmResourceGroupDeployment `
     -servicePrincipalApplicationId $application.ApplicationId
 ```
 
-## <a name="use-data-lake-storage-as-additional-storage"></a>Verwenden von Data Lake Storage als Zusatzspeicher
+## <a name="use-data-lake-storage-gen1-as-additional-storage"></a>Verwenden von Data Lake Storage Gen1 als zusätzlicher Speicher
 
-Sie können Data Lake Storage zudem als zusätzlichen Speicher für den Cluster verwenden. In solchen Fällen kann der Clusterstandardspeicher ein Azure Storage Blob- oder ein Data Lake Storage-Konto sein. Wenn Sie HDInsight-Aufträge mit den in Data Lake Storage gespeicherten Daten als zusätzlichem Speicher ausführen, müssen Sie den vollqualifizierten Pfad zu den Dateien verwenden. Beispiel: 
+Sie können Data Lake Storage Gen1 zudem als zusätzlichen Speicher für den Cluster verwenden. In solchen Fällen kann der Clusterstandardspeicher ein Azure Storage Blob- oder ein Data Lake Storage-Konto sein. Wenn Sie HDInsight-Aufträge mit den in Data Lake Storage gespeicherten Daten als zusätzlichem Speicher ausführen, müssen Sie den vollqualifizierten Pfad zu den Dateien verwenden. Beispiel: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
 Beachten Sie, dass die URL jetzt keinen **cluster_root_path** enthält. Dies liegt daran, dass Data Lake Storage hier kein Standardspeicher ist. Sie müssen also nur den Pfad zu den Dateien angeben.
 
-Um Data Lake Storage als zusätzlichen Speicher verwenden zu können, müssen Sie lediglich dem Dienstprinzipal Zugriff auf die Pfade gewähren, in denen Ihre Dateien gespeichert sind.  Beispiel: 
+Um Data Lake Storage Gen1 als zusätzlichen Speicher verwenden zu können, müssen Sie lediglich dem Dienstprinzipal Zugriff auf die Pfade gewähren, in denen Ihre Dateien gespeichert sind.  Beispiel: 
 
     adl://mydatalakestore.azuredatalakestore.net/<file_path>
 
@@ -129,7 +129,7 @@ Das Hinzufügen eines Data Lake Storage-Kontos als Zusatz und das Hinzufügen vo
 Um den Zugriff auf Data Lake Storage von Ihrem HDInsight-Cluster aus zu konfigurieren, benötigen Sie einen Azure Active Directory-Dienstprinzipal (Azure AD). Nur ein Azure AD-Administrator kann einen Dienstprinzipal erstellen. Der Dienstprinzipal muss mit einem Zertifikat erstellt werden. Weitere Informationen finden Sie unter [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) (Schnellstart: Einrichten von Clustern in HDInsight) und [Erstellen eines Dienstprinzipals mit selbstsigniertem Zertifikat](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate).
 
 > [!NOTE]  
-> Wenn Sie Azure Data Lake Storage als zusätzlichen Speicher für HDInsight-Cluster verwenden, wird dringend empfohlen, diesen Vorgang beim Erstellen des Clusters auszuführen, wie in diesem Artikel beschrieben. Das Hinzufügen von Azure Data Lake Storage zu einem vorhandenen HDInsight-Cluster als zusätzlicher Speicher wird nicht unterstützt.
+> Wenn Sie Azure Data Lake Storage Gen1 als zusätzlichen Speicher für HDInsight-Cluster verwenden, wird dringend empfohlen, diesen Vorgang beim Erstellen des Clusters auszuführen, wie in diesem Artikel beschrieben. Das Hinzufügen von Azure Data Lake Storage Gen1 zu einem vorhandenen HDInsight-Cluster als zusätzlicher Speicher wird nicht unterstützt.
 >
 
 ## <a name="access-files-from-the-cluster"></a>Zugreifen auf Dateien aus dem Cluster
@@ -152,18 +152,18 @@ Es gibt mehrere Möglichkeiten, wie Sie auf die Dateien in Data Lake Storage üb
 
         /example/data/sample.log
 
-## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage"></a>Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage
+## <a name="create-hdinsight-clusters-with-access-to-data-lake-storage-gen1"></a>Erstellen von HDInsight-Clustern mit Zugriff auf Data Lake Storage Gen1
 
-Unter den folgenden Links finden Sie eine ausführliche Anleitung, wie Sie HDInsight-Cluster mit Zugriff auf Data Lake Storage erstellen.
+Unter den folgenden Links finden Sie eine ausführliche Anleitung, wie Sie HDInsight-Cluster mit Zugriff auf Data Lake Storage Gen1 erstellen.
 
 * [Verwenden des Portals](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md)
 * [Erstellen von HDInsight-Clustern mit Azure Data Lake Storage Gen1 als Standardspeicher mithilfe von PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Erstellen eines HDInsight-Clusters mit Data Lake Store mithilfe einer Azure Resource Manager-Vorlage](../data-lake-store/data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
-## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-access"></a>Aktualisieren des HDInsight-Zertifikats für den Data Lake Storage-Zugriff
+## <a name="refresh-the-hdinsight-certificate-for-data-lake-storage-gen1-access"></a>Aktualisieren des HDInsight-Zertifikats für den Data Lake Storage Gen1-Zugriff
 
-Im folgenden Beispiel liest PowerShell-Code ein Zertifikat aus einer lokalen Datei oder Azure Key Vault und aktualisiert Ihren HDInsight-Cluster mit dem neuen Zertifikat für den Zugriff auf Azure Data Lake Storage. Geben Sie Ihren eigenen HDInsight-Clusternamen, den Ressourcengruppennamen, die Abonnement-ID, die App-ID und den lokalen Pfad zum Zertifikat an. Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
+Im folgenden Beispiel liest PowerShell-Code ein Zertifikat aus einer lokalen Datei oder Azure Key Vault und aktualisiert Ihren HDInsight-Cluster mit dem neuen Zertifikat für den Zugriff auf Azure Data Lake Storage Gen1. Geben Sie Ihren eigenen HDInsight-Clusternamen, den Ressourcengruppennamen, die Abonnement-ID, die App-ID und den lokalen Pfad zum Zertifikat an. Geben Sie Ihr Kennwort ein, wenn Sie dazu aufgefordert werden.
 
 ```powershell-interactive
 $clusterName = '<clustername>'
@@ -236,13 +236,13 @@ Invoke-AzureRmResourceAction `
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatibles Azure Data Lake Storage mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.
+In diesem Artikel wurde beschrieben, wie Sie HDFS-kompatibles Azure Data Lake Storage Gen1 mit HDInsight verwenden. Dadurch können Sie skalierbare Datenerfassungslösungen mit langfristiger Archivierung aufbauen und HDInsight verwenden, um die Informationen innerhalb der gespeicherten strukturierten und unstrukturierten Daten zu entsperren.
 
 Weitere Informationen finden Sie unter
 
 * [Erste Schritte mit Azure HDInsight][hdinsight-get-started]
 * [Quickstart: Set up clusters in HDInsight](../storage/data-lake-storage/quickstart-create-connect-hdi-cluster.md) (Schnellstart: Einrichten von Clustern in HDInsight)
-* [Erstellen eines HDInsight-Clusters mit Data Lake Storage (als zusätzlichem Speicher) mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [Erstellen eines HDInsight-Clusters mit Azure Data Lake Storage Gen1 (als zusätzlichem Speicher) mithilfe von Azure PowerShell](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)
 * [Hochladen von Daten in HDInsight][hdinsight-upload-data]
 * [Verwenden von Apache Hive mit HDInsight][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit HDInsight][hdinsight-use-pig]

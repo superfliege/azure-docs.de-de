@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: b31bdacbaf1ab81223d2a99472233cd5024edced
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: bfc1c419d5d58b4528b76dbed6fd0060f6b2833d
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300730"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446663"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – häufig gestellte Fragen
 In diesem Artikel werden allgemeine Fragen um Azure Backup-Dienst beantwortet.
@@ -26,12 +26,11 @@ Ja. Pro Abonnement können für jede unterstützte Region von Azure Backup bis z
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault"></a>Gibt es Beschränkungen im Hinblick auf die Anzahl von Servern/Computern, die pro Tresor registriert werden können?
 Sie können bis zu 1.000 virtuelle Azure-Computer pro Tresor registrieren. Bei Verwendung des Microsoft Azure Backup-Agents können Sie pro Tresor bis zu 50 MAB-Agents registrieren. Sie können 50 MAB-Server/DPM-Server bei einem Tresor registrieren.
 
-
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-data-from-different-servers-in-the-vault-when-restoring-data"></a>Wie kann ich Daten von unterschiedlichen Servern im Tresor isolieren, wenn meine Organisation über nur einen Tresor verfügt?
 Serverdaten, die Sie zusammen wiederherstellen möchten, sollten beim Einrichten der Sicherung die gleiche Passphrase verwenden. Wenn Sie die Wiederherstellung auf bestimmten Servern isolieren möchten, verwenden Sie eine Passphrase nur für diese Server. So können Sie beispielsweise für die Server der Personalabteilung, für die Server der Buchhaltung und für die Speicherserver jeweils eine eigene Verschlüsselungspassphrase verwenden.
 
 ### <a name="can-i-move-my-vault-between-subscriptions"></a>Kann ich meinen Tresor zwischen Abonnements verschieben?
-Nein. Der Tresor wird auf Abonnementebene erstellt und kann nach der Erstellung keinem anderen Abonnement zugewiesen werden.
+Ja. Informationen zum Verschieben eines Recovery Services-Tresors finden Sie in [diesem Artikel](backup-azure-move-recovery-services-vault.md).
 
 ### <a name="can-i-move-backup-data-to-another-vault"></a>Kann ich Sicherungsdaten zu einem anderen Tresor verschieben?
 Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen anderen Tresor verschoben werden.
@@ -40,7 +39,8 @@ Nein. In einem Tresor gespeicherte Sicherungsdaten können nicht in einen andere
 Nein. Die Speicheroptionen eines Recovery Services-Tresors können nur geändert werden, bevor Sicherungen gespeichert wurden.
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>Kann ich für virtuelle Computer, die in einem Recovery Services-Tresor gesichert wurden, eine Wiederherstellung auf Elementebene durchführen?
-Nein, die Wiederherstellung auf Elementebene wird nicht unterstützt.
+- Die Wiederherstellung auf Elementebene wird für virtuelle Azure-Computer unterstützt, die von der Azure-VM-Sicherung gesichert wurden. Weitere Informationen finden Sie in [diesem Artikel](backup-azure-restore-files-from-vm.md).
+- Die Wiederherstellung auf Elementebene wird für Online-Wiederherstellungspunkte lokaler virtueller Computer, die von Azure Backup Server oder System Center DPM gesichert wurden, nicht unterstützt.
 
 
 ## <a name="azure-backup-agent"></a>Azure Backup-Agent
@@ -76,10 +76,8 @@ Nein. Ein DPM- oder Azure Backup-Server kann nur für einen Tresor registriert w
 ### <a name="can-i-use-azure-backup-server-to-create-a-bare-metal-recovery-bmr-backup-for-a-physical-server-br"></a>Kann ich Azure Backup Server verwenden, um eine Bare Metal Recovery-Sicherung (BMR) für einen physischen Server zu erstellen? <br/>
 Ja.
 
-
 ### <a name="can-i-use-dpm-to-back-up-apps-in-azure-stack"></a>Kann ich mit DPM Apps in Azure Stack sichern?
 Nein. Sie können Azure Stack mit Azure Backup schützen, das Sichern von Apps in Azure Stack mit DPM wird von Azure Backup jedoch nicht unterstützt.
-
 
 ### <a name="if-ive-installed-azure-backup-agent-to-protect-my-files-and-folders-can-i-install-system-center-dpm-to-back-up-on-premises-workloads-to-azure"></a>Kann ich System Center DPM zum Sichern von lokalen Workloads in Azure installieren, wenn ich den Azure Backup-Agent zum Schutz meiner Dateien und Ordner installiert habe?
 Ja. Sie sollten jedoch zuerst DPM einrichten und dann den Azure Backup-Agent installieren.  Das Installieren der Komponenten in dieser Reihenfolge stellt sicher, dass der Azure Backup-Agent mit DPM verwendet werden kann. Das Installieren des Agents vor DPM wird nicht empfohlen oder unterstützt.
@@ -93,7 +91,6 @@ Ja.
 - Sie sichern Azure-VMs einmal täglich.
 
 ### <a name="what-operating-systems-are-supported-for-backup"></a>Welche Betriebssysteme werden für die Sicherung unterstützt?
-
 Azure Backup unterstützt diese Betriebssysteme für die Sicherung von Dateien und Ordnern sowie von Apps, die mithilfe von Azure Backup Server und DPM geschützt werden.
 
 **Betriebssystem**| **SKU** |**Details**
@@ -138,29 +135,23 @@ SharePoint | Summe der Inhalts- und Konfigurationsdatenbanken in einer zu sicher
 Exchange |Summe aller Exchange-Datenbanken eines zu sichernden Exchange-Servers
 BMR/Systemstatus |Jede einzelne Kopie der BMR oder des Systemstatus des zu sichernden Computers
 
-
 ### <a name="is-there-a-limit-on-the-amount-of-data-backed-up-using-a-recovery-services-vault"></a>Gibt es einen Grenzwert für die Menge der in einem Recovery Services-Tresor gesicherten Daten?
 Es gibt keine Beschränkung für die Menge der Daten, die in einem Recovery Services-Tresor gesichert werden können.
 
-### <a name="if-i-cancel-a-backup-job-once-it-has-started-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
-Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten. Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen. Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen. Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
-
-Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
-
 ### <a name="why-is-the-size-of-the-data-transferred-to-the-recovery-services-vault-smaller-than-the-data-selected-for-backup"></a>Warum ist die Datenmenge, die an den Recovery Services-Tresor übertragen wird, kleiner als die Menge der für die Sicherung ausgewählten Daten?
-
- Daten, die vom Azure Backup-Agent, von DPM oder von Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Tresor um 30 bis 40 % kleiner.
+Daten, die vom Azure Backup-Agent, von DPM oder von Azure Backup Server gesichert werden, werden vor der Übertragung komprimiert und verschlüsselt. Nach Anwendung der Komprimierung und Verschlüsselung sind die Daten im Tresor um 30 bis 40 % kleiner.
 
 ### <a name="can-i-delete-individual-files-from-a-recovery-point-in-the-vault"></a>Kann ich einzelne Dateien für einen Wiederherstellungspunkt im Tresor löschen?
 Nein. Für Azure Backup wird das Löschen oder Bereinigen von einzelnen Dateien aus gespeicherten Sicherungen nicht unterstützt.
 
-
 ### <a name="if-i-cancel-a-backup-job-after-it-starts-is-the-transferred-backup-data-deleted"></a>Werden die übertragenen Sicherungsdaten gelöscht, wenn ich einen Sicherungsauftrag nach dem Starten abbreche?
-
 Nein. Alle Daten, die vor dem Abbrechen des Sicherungsauftrags in den Tresor übertragen wurden, bleiben im Tresor erhalten.
+
 - Azure Backup nutzt einen Prüfpunktmechanismus, um den Sicherungsdaten während des Sicherungsvorgangs von Zeit zu Zeit Prüfpunkte hinzuzufügen.
 - Da in den Sicherungsdaten Prüfpunkte vorhanden sind, kann der nächste Sicherungsprozess die Integrität der Dateien überprüfen.
 - Der nächste Sicherungsauftrag erfolgt inkrementell bezogen auf die zuvor gesicherten Daten. Inkrementelle Sicherungen übertragen nur neue oder geänderte Daten, wodurch eine bessere Nutzung der Bandbreite zustande kommt.
+
+Wenn Sie einen Sicherungsauftrag für eine Azure-VM abbrechen, werden die übertragenen Daten ignoriert. Beim nächsten Sicherungsauftrag werden die Daten inkrementell bezogen auf den letzten erfolgreichen Sicherungsauftrag übertragen.
 
 ## <a name="retention-and-recovery"></a>Aufbewahrung und Wiederherstellung
 
@@ -177,7 +168,7 @@ Nein. Aufbewahrungsrichtlinien können nur bei den Sicherungspunkten angewendet 
 
 
 ### <a name="if-a-backup-is-kept-for-a-long-time-does-it-take-more-time-to-recover-an-older-data-point-br"></a>Dauert die Wiederherstellung eines älteren Datenpunkts länger, wenn eine Sicherung lange Zeit aufbewahrt wird? <br/>
-Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
+ Nein. Die Dauer zum Wiederherstellen des ältesten oder neuesten Punkts ist gleich. Jeder Wiederherstellungspunkt verhält sich wie ein vollständiger Punkt.
 
 ### <a name="if-each-recovery-point-is-like-a-full-point-does-it-impact-the-total-billable-backup-storage"></a>Wenn jeder Wiederherstellungspunkt sich wie ein vollständiger Punkt verhält, wie wirkt sich dies auf den gesamten abrechenbaren Sicherungsspeicher aus?
 Bei typischen Produkten für die langfristige Aufbewahrung werden Sicherungsdaten als vollständige Punkte gespeichert.
@@ -203,7 +194,7 @@ Nein. Die Wiederherstellung ist kostenlos, und der ausgehende Datenverkehr wird 
 Wenn eine neue Richtlinie angewendet wird, gelten der Zeitplan und die Aufbewahrungseinstellungen der neuen Richtlinie.
 
 - Bei einer Ausweitung der Aufbewahrung werden bereits vorhandene Wiederherstellungspunkte markiert, um sie gemäß der neuen Richtlinie aufzubewahren.
-- - Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
+- Bei einer Verkürzung der Aufbewahrung werden sie zum Löschen im Rahmen der nächsten Bereinigung markiert und demgemäß gelöscht.
 
 ## <a name="encryption"></a>Verschlüsselung
 

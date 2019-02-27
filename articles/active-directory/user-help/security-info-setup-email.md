@@ -1,6 +1,6 @@
 ---
-title: Einrichten der Sicherheitsinformation zur Verwendung einer E-Mail-Adresse – Azure Active Directory | Microsoft-Dokumentation
-description: Richten Sie Ihre Sicherheitsinformation ein, um Ihre Identität mithilfe einer Geschäfts-, Schul- oder Uni-E-Mail-Adresse zu bestätigen.
+title: Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung von E-Mail-Adressen – Azure Active Directory | Microsoft-Dokumentation
+description: Hier finden Sie Informationen dazu, wie Sie Ihre Sicherheitsinformationen einrichten, um Ihre Identität mithilfe Ihrer E-Mail-Adresse zu bestätigen.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,49 +9,72 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c18124286d78520e8b89a61c5d12760c9ad784c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7c6bf2c8ea6a2526f8548a785706e5ed3a7460ff
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197214"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455210"
 ---
-# <a name="set-up-security-info-to-use-email-preview"></a>Einrichten der Sicherheitsinformation zur Verwendung einer E-Mail-Adresse (Vorschauversion)
+# <a name="set-up-security-info-preview-to-use-your-email-address"></a>Einrichten der Sicherheitsinformationen (Vorschau) zum Verwenden von E-Mail-Adressen
+Mit diesen Schritten können Sie Ihre Methode für die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformationen** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
+
+Wenn Sie eine Methode für die Kennwortzurücksetzung eingerichtet haben, müssen Sie auch eine zweistufige Überprüfungsmethode per [Authentifikator-App](security-info-setup-auth-app.md), [SMS](security-info-setup-text-msg.md) oder [Telefonanruf](security-info-setup-phone-number.md) einrichten.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
-Zum Einrichten Ihrer Sicherheitsinformation müssen Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto anmelden und den Registrierungsprozess abschließen. Wenn Sie Ihre Sicherheitsinformation noch nie eingerichtet haben, werden Sie nun dazu aufgefordert.
-
-## <a name="set-up-email"></a>Einrichten einer E-Mail-Adresse
-
-Abhängig von den Einstellungen Ihrer Organisation werden Sie beim Anmelden möglicherweise aufgefordert, eine E-Mail-Adresse zu Ihrer Sicherheitsinformation hinzuzufügen. Führen Sie andernfalls zum Einrichten der E-Mail-Adresse in der Sicherheitsinformation die Schritte unter [Verwalten der Sicherheitsinformation](security-info-manage-settings.md) aus.
+## <a name="set-up-your-email-address-from-the-security-info-page"></a>Einrichten der E-Mail-Adresse über die Seite „Sicherheitsinformationen“
+Je nach den Einstellungen Ihrer Organisation können Sie Ihre E-Mail-Adresse als eine Ihrer Methoden für Sicherheitsinformationen verwenden.
 
 >[!Note]
->Es wird empfohlen, eine E-Mail-Konto zu verwenden, für das kein Netzwerkkennwort erforderlich ist.<br>Wird die E-Mail-Option nicht angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer E-Mail-Adresse für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
+>Es wird empfohlen, eine E-Mail-Adresse zu verwenden, für die kein Netzwerkkennwort erforderlich ist. Wird die E-Mail-Option nicht angezeigt, lässt Ihre Organisation unter Umständen die Nutzung einer E-Mail-Adresse für die Überprüfung nicht zu. In diesem Fall müssen Sie eine andere Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
 
-### <a name="to-use-your-email-address"></a>So verwenden Sie Ihre E-Mail-Adresse
+### <a name="to-set-up-your-email-address"></a>So richten Sie Ihre E-Mail-Adresse ein
 
-1. Wählen Sie die Option **E-Mail** aus, und geben Sie Ihre E-Mail-Adresse in das Feld ein. Verwenden Sie nicht die E-Mail-Adresse Ihres Geschäfts-, Schul- oder Unikontos.
+1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
 
-     ![Seite „Sicherheitsinformation“ mit Eingabefeld für die E-Mail-Adresse](media/security-info/security-info-keep-secure-setup-email.png)
+    ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile.png)
 
-2. Sehen Sie nach, ob Ihre Organisation eine E-Mail von Microsoft erhalten hat, geben Sie den enthaltenen Prüfcode ins Feld **Bestätigen Sie Ihre E-Mail-Adresse** ein, und klicken Sie auf **Fertig**.
+2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformationen** oder den entsprechenden Link im Block **Sicherheitsinformationen** aus, und klicken Sie dann auf der Seite **Sicherheitsinformationen** auf **Methode hinzufügen**.
 
-     ![Seite „Sicherheitsinformation“ mit dem Eingabefeld für den E-Mail-Prüfcode](media/security-info/security-info-verify-email.png)
+    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod.png)
 
-    >[!Note]
-    >Wenn Ihre Organisation keine E-Mail von Microsoft erhalten hat, vergewissern Sie sich, dass Sie die E-Mail-Adresse richtig eingegeben haben, und überprüfen Sie den Ordner für Junk-E-Mails bzw. den Spam-Ordner.
+3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **E-Mail** aus, und klicken Sie dann auf **Hinzufügen**.
 
-3. Klicken Sie auf der Seite **Keep your account secure** (Konto schützen) auf **Fertig**.
+    ![Feld „Methode hinzufügen“ mit ausgewählter Option „E-Mail“](media/security-info/securityinfo-myprofile-addemail.png)
 
-    Ihre Sicherheitsinformationen werden aktualisiert, sodass bei der Kennwortzurücksetzung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwendet wird.
+4. Geben Sie auf der Seite **E-Mail** Ihre E-Mail-Adresse ein (z.B. alain@gmail.com), und klicken Sie dann auf **Weiter**.
 
-## <a name="additional-security-info-options"></a>Zusätzliche Sicherheitsinformationsoptionen
+    ![E-Mail-Adresse angeben](media/security-info/securityinfo-myprofile-emailaddress.png)
 
-Basierend auf der Aktion, die Sie ausführen möchten, stehen verschiedene Möglichkeiten zur Verfügung, wie Ihre Organisation sich mit Ihnen in Verbindung setzen kann, um Ihre Identität zu überprüfen. Die Optionen lauten:
+    >[!Important]
+    >Verwenden Sie nicht die E-Mail-Adresse Ihres Geschäfts-, Schul- oder Unikontos.
+
+5. Geben Sie den Code ein, der an die von Ihnen angegebene E-Mail-Adresse gesendet wurde, und klicken Sie dann auf **Weiter**.
+
+    ![Code eingeben](media/security-info/securityinfo-myprofile-emailcode.png)
+
+    Ihre Sicherheitsinformationen werden aktualisiert, und Sie können bei der Kennwortzurücksetzung Ihre E-Mail-Adresse zur Bestätigung Ihrer Identität verwenden.
+
+## <a name="delete-your-email-address-from-your-security-info-methods"></a>Löschen Ihrer E-Mail-Adresse aus den Methoden für Sicherheitsinformationen
+Wenn Sie Ihre E-Mail-Adresse nicht mehr als Methode für Sicherheitsinformationen verwenden möchten, können Sie sie von der Seite **Sicherheitsinformationen** entfernen.
+
+>[!Important]
+>Wenn Sie Ihre E-Mail-Adresse versehentlich löschen, gibt es keine Möglichkeit, diesen Vorgang rückgängig zu machen. In diesem Fall müssen Sie die Methode mit den Schritten im Abschnitt [Einrichten der E-Mail-Adresse](#set-up-your-email-address-from-the-security-info-page) dieses Artikels erneut hinzufügen.
+
+### <a name="to-delete-your-email-address"></a>So löschen Sie Ihre E-Mail-Adresse
+
+1. Klicken Sie auf der Seite **Sicherheitsinformationen** auf den Link **Löschen** neben der Option **E-Mail**.
+
+    ![Link zum Löschen der E-Mail-Methode aus den Sicherheitsinformationen](media/security-info/securityinfo-myprofile-emaildelete.png)
+
+2. Klicken Sie im Bestätigungsfeld auf **Ja**, um die **E-Mail-Adresse** zu löschen. Nachdem die E-Mail-Adresse gelöscht wurde, wird sie aus den Sicherheitsinformationen entfernt und auf der Seite **Sicherheitsinformationen** nicht mehr angezeigt.
+
+## <a name="additional-security-info-methods"></a>Weitere Methoden für Sicherheitsinformationen
+Basierend auf der Aktion, die Sie ausführen möchten, stehen zusätzliche Möglichkeiten zur Verfügung, wie Ihre Organisation sich mit Ihnen in Verbindung setzen kann, um Ihre Identität zu überprüfen. Die Optionen lauten:
 
 - **Authentifikator-App:** Sie können eine Authentifikator-App herunterladen und verwenden, um entweder eine Genehmigungsbenachrichtigung oder einen nach dem Zufallsprinzip generierten Genehmigungscode für die zweistufige Überprüfung oder die Kennwortzurücksetzung zu erhalten. Ausführliche Anweisungen zum Einrichten und Verwenden der Microsoft Authenticator-App finden Sie unter [Einrichten der Sicherheitsinformation zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md).
 
@@ -65,8 +88,6 @@ Basierend auf der Aktion, die Sie ausführen möchten, stehen verschiedene Mögl
     >Wenn einige dieser Optionen fehlen, sind die entsprechenden Methoden in Ihrer Organisation wahrscheinlich nicht zugelassen. In diesem Fall müssen Sie eine verfügbare Methode auswählen oder sich an Ihren Administrator wenden, um weitere Unterstützung zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-- Wenn Sie Ihre Sicherheitsinformation aktualisieren müssen, befolgen Sie die Anweisungen im Artikel [Verwalten der Sicherheitsinformationen (Vorschauversion)](security-info-manage-settings.md).
 
 - Setzen Sie Ihr Kennwort zurück, wenn Sie es verloren oder vergessen haben. Verwenden Sie dazu das [Portal für die Kennwortzurücksetzung](https://passwordreset.microsoftonline.com/), oder führen Sie die Schritte im Artikel [Reset your work or school password](user-help-reset-password.md) (Zurücksetzen des Kennworts eines Geschäfts-, Schul- oder Unikontos) aus.
 

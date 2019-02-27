@@ -7,34 +7,34 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
-ms.openlocfilehash: a8fefdf352507f0e0c0757625297f667907eb9bc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 7e08076364cef87ec27ad34ee9af17242245bbc6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230593"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455992"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Aktivieren und Überprüfen der Kubernetes-Masterknotenprotokolle in Azure Kubernetes Service (AKS)
 
-Mit Azure Kubernetes Service (AKS) werden die Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* als verwalteter Dienst bereitgestellt. Sie erstellen und verwalten die Knoten, die *kubelet* und die Containerruntime ausführen, und stellen Ihre Anwendungen über den Managed Kubernetes-API-Server bereit. Zur Behandlung von Problemen in Ihrer Anwendung und den Diensten müssen Sie möglicherweise die Protokolle anzeigen, die von diesen Masterkomponenten generiert wurden. In diesem Artikel wird veranschaulicht, wie Sie mit Azure Log Analytics die Protokolle der Kubernetes-Masterkomponenten aktivieren und abfragen.
+Mit Azure Kubernetes Service (AKS) werden die Masterkomponenten wie *kube-apiserver* und *kube-controller-manager* als verwalteter Dienst bereitgestellt. Sie erstellen und verwalten die Knoten, die *kubelet* und die Containerruntime ausführen, und stellen Ihre Anwendungen über den Managed Kubernetes-API-Server bereit. Zur Behandlung von Problemen in Ihrer Anwendung und den Diensten müssen Sie möglicherweise die Protokolle anzeigen, die von diesen Masterkomponenten generiert wurden. In diesem Artikel wird veranschaulicht, wie Sie mit Azure Monitor-Protokollen die Protokolle der Kubernetes-Masterkomponenten aktivieren und abfragen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Wenn Sie nicht bereits über einen AKS-Cluster verfügen, erstellen Sie einen mit der [Azure CLI][cli-quickstart] oder dem [Azure-Portal][portal-quickstart]. Log Analytics funktioniert mit für RBAC und nicht für RBAC aktivierten AKS-Clustern.
+Dieser Artikel setzt einen vorhandenen AKS-Cluster voraus, der in Ihrem Azure-Konto ausgeführt wird. Wenn Sie nicht bereits über einen AKS-Cluster verfügen, erstellen Sie einen mit der [Azure CLI][cli-quickstart] oder dem [Azure-Portal][portal-quickstart]. Azure Monitor-Protokolle funktionieren mit für RBAC und nicht für RBAC aktivierten AKS-Clustern.
 
 ## <a name="enable-diagnostics-logs"></a>Aktivieren von Diagnoseprotokollen
 
-Um Daten aus mehreren Quellen zu sammeln und zu überprüfen, bietet Log Analytics eine Abfragesprache und ein Analysemodul, das Einblicke in Ihre Umgebung bereitstellt. Ein Arbeitsbereich wird verwendet, um die Daten zu sortieren und zu analysieren. Zudem können Sie andere Azure-Dienste wie Application Insights und Security Center integrieren. Um für die Analyse der Protokolle eine andere Plattform zu verwenden, können Sie stattdessen Diagnoseprotokolle an ein Azure-Speicherkonto oder einen Event Hub senden. Weitere Informationen finden Sie unter [Was ist Azure Log Analytics?][log-analytics-overview].
+Um Daten aus mehreren Quellen zu sammeln und zu überprüfen, bieten Azure Monitor-Protokolle eine Abfragesprache und ein Analysemodul, das Einblicke in Ihre Umgebung bereitstellt. Ein Arbeitsbereich wird verwendet, um die Daten zu sortieren und zu analysieren. Zudem können Sie andere Azure-Dienste wie Application Insights und Security Center integrieren. Um für die Analyse der Protokolle eine andere Plattform zu verwenden, können Sie stattdessen Diagnoseprotokolle an ein Azure-Speicherkonto oder einen Event Hub senden. Weitere Informationen finden Sie unter [Was sind Azure Monitor-Protokolle?][log-analytics-overview].
 
-Log Analytics wird im Azure-Portal aktiviert und verwaltet. Öffnen Sie zum Aktivieren der Protokollsammlung für die Kubernetes-Masterkomponenten in Ihrem AKS-Cluster das Azure-Portal in einem Webbrowser, und führen Sie die folgenden Schritte aus:
+Azure Monitor-Protokolle werden im Azure-Portal aktiviert und verwaltet. Öffnen Sie zum Aktivieren der Protokollsammlung für die Kubernetes-Masterkomponenten in Ihrem AKS-Cluster das Azure-Portal in einem Webbrowser, und führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie die Ressourcengruppe für Ihren AKS-Cluster aus, z.B. *myResourceGroup*. Wählen Sie nicht die Ressourcengruppe aus, die Ihre einzelnen AKS-Clusterressourcen enthält, z.B. *MC_myResourceGroup_myAKSCluster_eastus*.
 1. Wählen Sie auf der linken Seite **Diagnoseeinstellungen** aus.
 1. Wählen Sie Ihren AKS-Cluster aus, z.B. *myAKSCluster*, wählen Sie dann **Diagnose aktivieren** aus.
-1. Geben Sie einen Namen (etwa *myAKSClusterLogs*) ein, und wählen Sie dann die Option **An Log Analytics senden** aus.
-    * Wählen Sie für Log Analytics *Konfigurieren* aus, wählen Sie dann einen vorhandenen Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus.
+1. Geben Sie einen Namen (etwa *myAKSClusterLogs*) ein, und wählen Sie dann die Option **An Log Analytics-Arbeitsbereich senden** aus.
+    * Wählen Sie für den Log Analytics-Arbeitsbereich die Option *Konfigurieren* aus, wählen Sie dann einen vorhandenen Arbeitsbereich oder **Neuen Arbeitsbereich erstellen** aus.
     * Wenn Sie einen Arbeitsbereich erstellen müssen, geben Sie einen Namen, eine Ressourcengruppe und einen Speicherort an.
-1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Standardmäßig sind die Protokolle *kube-apiserver*, *kube-controller-manager* und *kube-scheduler* aktiviert. Sie können zusätzliche Protokolle, beispielsweise *kube-audit* und *cluster-autoscaler*, aktivieren. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics aktiviert wurde.
+1. Wählen Sie in der Liste der verfügbaren Protokolle die Protokolle aus, die Sie aktivieren möchten. Standardmäßig sind die Protokolle *kube-apiserver*, *kube-controller-manager* und *kube-scheduler* aktiviert. Sie können zusätzliche Protokolle, beispielsweise *kube-audit* und *cluster-autoscaler*, aktivieren. Sie können zurückkehren und die gesammelten Protokolle ändern, nachdem Log Analytics-Arbeitsbereiche aktiviert wurden.
 1. Wenn Sie fertig sind, wählen Sie **Speichern** aus, um die Sammlung der ausgewählten Protokolle zu aktivieren.
 
 > [!NOTE]
@@ -52,7 +52,7 @@ Log Analytics wird im Azure-Portal aktiviert und verwaltet. Öffnen Sie zum Akti
 
 Der folgende Screenshot eines Beispielportals zeigt das Fenster *Diagnoseeinstellungen* und dann die Option zum Erstellen eines Log Analytics-Arbeitsbereichs:
 
-![Aktivieren eines Log Analytics-Arbeitsbereichs für Log Analytics für einen AKS-Cluster](media/view-master-logs/enable-oms-log-analytics.png)
+![Aktivieren eines Log Analytics-Arbeitsbereichs für Azure Monitor-Protokolle eines AKS-Clusters](media/view-master-logs/enable-oms-log-analytics.png)
 
 ## <a name="schedule-a-test-pod-on-the-aks-cluster"></a>Planen eines Testpods im AKS-Cluster
 

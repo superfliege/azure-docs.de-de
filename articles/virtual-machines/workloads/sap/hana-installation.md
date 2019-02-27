@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 10c8c0043d04d99ad10e475f903979edb0ddcb70
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fc63eb792e58d960ae67138b5e58e6b705945030
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54266895"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446391"
 ---
 # <a name="how-to-install-and-configure-sap-hana-large-instances-on-azure"></a>Installieren und Konfigurieren von SAP HANA (große Instanzen) in Azure
 
@@ -70,7 +70,7 @@ Prüfen Sie insbesondere die folgenden Parameter, und passen Sie diese ggf. an:
 
 Seit SLES12 SP1 und RHEL 7.2 müssen diese Parameter in einer Konfigurationsdatei festgelegt sein, die sich im Verzeichnis „/etc/sysctl.d“ befindet. Beispielsweise muss eine Konfigurationsdatei namens „91-NetApp-HANA.conf“ erstellt werden. Für ältere SLES- und RHEL-Versionen müssen diese Parameter in „/etc/sysctl.conf“ festgelegt sein.
 
-Denken Sie bei allen RHEL-Versionen ab SLES12 an Folgendes: 
+Denken Sie bei allen RHEL-Versionen ab RHEL 6.3 an Folgendes: 
 - Der Parameter „sunrpc.tcp_slot_table_entries = 128“ muss auf „in/etc/modprobe.d/sunrpc-local.conf“ festgelegt sein. Wenn die Datei nicht vorhanden ist, müssen Sie diese zunächst erstellen, indem Sie folgenden Eintrag hinzufügen: 
     - options sunrpc tcp_max_slot_table_entries=128
 
@@ -113,7 +113,7 @@ Zusätzliche nützliche Links zu SAP unter Red Hat:
 SAP-Supporthinweise zur Implementierung von SAP HANA unter Red Hat:
 
 - [SAP Support Note #2009879 – SAP HANA Guidelines for Red Hat Enterprise Linux (RHEL) Operating System](https://launchpad.support.sap.com/#/notes/2009879/E) (SAP-Supporthinweis 2009879 – SAP HANA-Richtlinien für das RHEL-Betriebssystem [Red Hat Enterprise Linux])
-- [SAP support note #2292690 - SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690) (SAP-Supporthinweis 2292690 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 7)
+- [SAP support note #2292690 - SAP HANA DB: Recommended OS Settings for RHEL 7](https://launchpad.support.sap.com/#/notes/2292690) (2292690 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 7)
 - [SAP Support Note #2247020 - SAP HANA DB: Recommended OS Settings for RHEL 6.7](https://launchpad.support.sap.com/#/notes/2247020) (SAP-Supporthinweis 2247020 – SAP HANA DB: empfohlene Betriebssystemeinstellungen für RHEL 6.7)
 - [SAP Support Note #1391070 – Linux UUID Solutions](https://launchpad.support.sap.com/#/notes/1391070) (SAP-Supporthinweis 1391070 – Linux UUID-Lösungen)
 - [SAP support note #2228351 - Linux: SAP HANA Database SPS 110 revision 6 (or higher) on RHEL 11 or SLES 11](https://launchpad.support.sap.com/#/notes/2228351) (SAP-Supporthinweis 2228351 – Linux: SAP HANA-Datenbank SPS 11 Revision 110 (oder höher) unter RHEL 6 oder SLES 11)

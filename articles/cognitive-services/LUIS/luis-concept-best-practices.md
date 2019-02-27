@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: ba51da8b71406cb1bf7446bd66818a6a74e61317
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4a06b30c209828e7ffd9f59d1b4ece06cfe6e2dd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243415"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428906"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>Bewährte Methoden zum Erstellen einer Sprachverständnis-App mit Cognitive Services
 Verwenden Sie den App-Erstellungsprozess zur Erstellung der LUIS-App. 
@@ -77,23 +77,32 @@ Weitere Informationen finden Sie unter:
 * Konzept: [Erstellungszyklus für Ihre LUIS-App](luis-concept-app-iteration.md)
 
 ## <a name="do-add-phrase-lists-and-patterns-in-later-iterations"></a>Fügen Sie Ausdruckslisten und Muster in späteren Iterationen hinzu
-Mithilfe von [Ausdruckslisten](luis-concept-feature.md) können Sie Wörterbücher definieren, die Wörter im Zusammenhang mit Ihrer App-Domäne enthalten. Beginnen Sie die Ausdrucksliste mit wenigen Wörtern, und nutzen Sie dann das Vorschlagfeature, damit LUIS weitere für Ihre App spezifische Wörter im Vokabular kennt. Fügen Sie dem Vokabular nicht jedes Wort hinzu, da die Ausdrucksliste keine genaue Übereinstimmung darstellen soll. 
+
+Eine bewährte Methode besteht darin, diese Methoden nicht anzuwenden, bevor Ihre App getestet wurde. Sie sollten verstehen, wie sich die App verhält, bevor Sie Begriffslisten und Muster hinzufügen. Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach Bedarf diese Funktionen hinzu. Sie müssen diese Funktionen nicht bei jedem [Durchlauf](luis-concept-app-iteration.md) hinzufügen oder bei jeder Version ändern. 
+
+Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jede Funktion auf die Ergebnisse hat, nachdem das Modell mit Äußerungen getestet wurde. 
+
+Eine bewährte Methode ist das Testen über den [Endpunkt](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance), damit Sie vom zusätzlichen Vorteil des [aktiven Lernens](luis-concept-review-endpoint-utterances.md) profitieren. Der [interaktive Testbereich](luis-interactive-test.md) ist auch eine gültige Testmethode. 
+ 
+
+### <a name="phrase-lists"></a>Begriffslisten
+
+Mithilfe von [Ausdruckslisten](luis-concept-feature.md) können Sie Wörterbücher definieren, die Wörter im Zusammenhang mit Ihrer App-Domäne enthalten. Beginnen Sie die Ausdrucksliste mit wenigen Wörtern, und nutzen Sie dann das Vorschlagfeature, damit LUIS weitere für Ihre App spezifische Wörter im Vokabular kennt. Eine Begriffsliste verbessert die Absichtserkennung und die Entitätsklassifizierung durch eine stärkere Berücksichtigung des Signals, das Wörtern oder Ausdrücken zugeordnet ist, die für Ihre App von Bedeutung sind. 
+
+Fügen Sie dem Vokabular nicht jedes Wort hinzu, da die Ausdrucksliste keine genaue Übereinstimmung darstellen soll. 
+
+Weitere Informationen finden Sie unter:
+* Konzept: [Features für Begriffslisten in Ihrer LUIS-App](luis-concept-feature.md)
+* Gewusst wie: [Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken](luis-how-to-add-features.md)
+
+### <a name="patterns"></a>Muster
 
 Äußerungen echter Benutzer des Endpunkts, die sich sehr stark ähneln, können auf Muster bei der Wortwahl und -anordnung hinweisen. Das [Musterfeature](luis-concept-patterns.md) übernimmt diese Wortwahl und -anordnung zusammen mit regulären Ausdrücken, um die Vorhersagegenauigkeit zu verbessern. Ein regulärer Ausdruck im Muster ermöglicht es Ihnen, Wörter und Satzzeichen zu ignorieren, während das Muster weiterhin übereinstimmt. 
 
 Verwenden Sie die [optionale Syntax](luis-concept-patterns.md) des Musters für Satzzeichen, sodass diese ignoriert werden können. Verwenden Sie die [explizite Liste](luis-concept-patterns.md#explicit-lists) um Syntaxfehler vom Typ „pattern.any“ zu kompensieren. 
 
-Wenden Sie diese Methoden nicht an, bevor Ihre App Endpunktanforderungen empfangen hat. Sie sollten verstehen, wie sich die App verhält, bevor Sie Begriffslisten und Muster hinzufügen. Nachdem Sie das Verhalten Ihrer App ohne diese kennen, fügen Sie Ihrer App nach Bedarf diese Funktionen hinzu. 
-
-Es ist nicht schädlich, sie am Anfang der Modellentwicklung hinzuzufügen, aber es ist einfacher, festzustellen, welchen Einfluss jede Funktion auf die Ergebnisse hat, wenn die App zuvor mit echtem Datenverkehr verwendet wurde. 
-
-Sie müssen diese Funktionen nicht bei jedem Durchlauf hinzufügen oder bei jeder Version ändern. 
-
 Weitere Informationen finden Sie unter:
-* Konzept: [Erstellungszyklus für Ihre LUIS-App](luis-concept-app-iteration.md)
-* Konzept: [Features für Begriffslisten in Ihrer LUIS-App](luis-concept-feature.md)
 * Konzept: [Verbessern der Vorhersagegenauigkeit mit Mustern](luis-concept-patterns.md)
-* Gewusst wie: [Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken](luis-how-to-add-features.md)
 * Gewusst wie: [Hinzufügen von Mustern zum Verbessern der Vorhersagegenauigkeit](luis-how-to-model-intent-pattern.md)
 
 ## <a name="balance-your-utterances-across-all-intents"></a>Für alle Absichten die gleiche Menge an Äußerungen verwenden

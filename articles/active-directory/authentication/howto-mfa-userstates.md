@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbfffa94c76de2c7c4e9f4f2e67c9744e52f22c7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 39659df99951850ced07be14f81348ae9c1c1be5
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194188"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428601"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer
 
@@ -96,7 +96,7 @@ Installieren Sie zuerst das Modul mithilfe von:
 > Vergessen Sie nicht, zuerst eine Verbindung mithilfe von **Connect-MsolService** herzustellen.
 
 
-PowerShell ist eine gute Wahl, wenn Sie Benutzer massenweise aktivieren müssen. Erstellen Sie ein PowerShell-Skript, das eine Schleife durch eine Liste von Benutzern durchführt und sie aktiviert:
+ Dieses PowerShell-Beispielskript aktiviert die MFA für einen einzelnen Benutzer:
 
         Import-Module MSOnline
         $st = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
@@ -105,7 +105,7 @@ PowerShell ist eine gute Wahl, wenn Sie Benutzer massenweise aktivieren müssen.
         $sta = @($st)
         Set-MsolUser -UserPrincipalName bsimon@contoso.com -StrongAuthenticationRequirements $sta
 
-Das folgende Skript ist ein Beispiel:
+PowerShell ist eine gute Wahl für die Massenaktivierung von Benutzern. Das folgende Skript durchläuft eine Liste mit Benutzern und aktiviert die MFA für ihre Konten:
 
     $users = "bsimon@contoso.com","jsmith@contoso.com","ljacobson@contoso.com"
     foreach ($user in $users)
@@ -117,11 +117,11 @@ Das folgende Skript ist ein Beispiel:
         Set-MsolUser -UserPrincipalName $user -StrongAuthenticationRequirements $sta
     }
     
-Verwenden Sie zum Deaktivierten von MFA dieses Skript:
+Verwenden Sie zum Deaktivieren der MFA das folgende Skript:
 
     Get-MsolUser -UserPrincipalName user@domain.com | Set-MsolUser -StrongAuthenticationRequirements @()
     
-oder kann auch verkürzt werden zu:
+Es kann auch wie folgt verkürzt werden:
 
     Set-MsolUser -UserPrincipalName user@domain.com -StrongAuthenticationRequirements @()
 

@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 01/15/2019
+ms.date: 02/19/2019
 ms.author: raynew
-ms.openlocfilehash: 84890c0658970aa9f61a06764cf902a5e5ee4379
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 4be483994bd7bc5bd97b1e59df230f66e9b4e24e
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812558"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430345"
 ---
 # <a name="azure-backup-architecture"></a>Azure Backup-Architektur
 
@@ -24,12 +24,17 @@ Sie können den [Azure Backup-Dienst](backup-overview.md) verwenden, um Daten in
 
 Azure Backup sichert Daten, den Computerzustand und Workloads, die auf lokalen Computern und auf virtuellen Azure-Computern ausgeführt werden. Der Dienst kann in verschiedenen Szenarien eingesetzt werden:
 
+## <a name="how-does-azure-backup-work"></a>Wie funktioniert Azure Backup?
+
+Zum Sichern von Computern und Daten gibt es verschiedene Methoden.
+
 - **Sichern lokaler Computer:**
-    - Lokale Computer können mithilfe von Azure Backup direkt in Azure gesichert werden.
-    - Sie können lokale Computer mit System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS) schützen und die durch DPM/MABS geschützten Daten wiederum unter Verwendung von Azure Backup in Azure sichern.
+    - Sie können lokale Windows-Computer direkt in Azure mit dem MARS-Agent (Microsoft Azure Recovery Services) von Azure Backup sichern. Linux-Computer werden nicht unterstützt.
+    - Sie können lokale Computer auf einem Sicherungsserver (System Center Data Protection Manager (DPM) oder Microsoft Azure Backup Server (MABS)), und dann den Sicherungsserver in einem Azure Backup Recovery Services-Tresor in Azure sichern.
 - **Sichern virtueller Azure-Computer:**
-    - Virtuelle Azure-Computer können direkt mit Azure Backup gesichert werden.
-    - Sie können virtuelle Azure-Computer mit DPM oder MABS (ausgeführt in Azure) schützen und die durch DPM/MABS geschützten Daten wiederum mit Azure Backup sichern.
+    - Azure-VMs können direkt gesichert werden. Azure Backup installiert eine Sicherungserweiterung für den Azure-VM-Agent, der auf der VM ausgeführt wird. Damit wird die gesamte VM gesichert.
+    - Sie können bestimmte Dateien und Ordner auf der Azure-VM sichern, indem Sie den MARS-Agent ausführen.
+    - Sie können Azure-VMs auf MABS sichern, die in Azure ausgeführt werden, und dann wiederum MABS im Tresor sichern.
 
 Weitere Informationen zu sicherbaren Elementen finden Sie [hier](backup-overview.md). Weitere Informationen zu unterstützten Sicherungsszenarien finden Sie [hier](backup-support-matrix.md).
 
@@ -38,8 +43,8 @@ Weitere Informationen zu sicherbaren Elementen finden Sie [hier](backup-overview
 
 Azure Backup speichert gesicherte Daten in einem Recovery Services-Tresor. Ein Tresor ist eine Onlinespeicherentität in Azure, die zum Speichern von Daten wie Sicherungskopien, Wiederherstellungspunkten und Sicherungsrichtlinien verwendet wird.
 
-- Recovery Services-Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand.
-- In jedem Azure-Abonnement können bis zu 500 Recovery Services-Tresore erstellt werden. 
+- Tresore vereinfachen die Organisation Ihrer Sicherungsdaten und minimieren gleichzeitig den Verwaltungsaufwand.
+- In jedem Azure-Abonnement können bis zu 500 Tresore erstellt werden.
 - Sie können gesicherte Elemente in einem Tresor überwachen (einschließlich virtueller Azure-Computer und lokaler Computer).
 - Der Zugriff auf den Tresor kann mithilfe der [rollenbasierten Zugriffssteuerung](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) (Role-Based Access Control, RBAC) von Azure verwaltet werden.
 - Sie können angeben, wie die Daten im Tresor repliziert werden sollen, um für Redundanz zu sorgen:
@@ -49,18 +54,6 @@ Azure Backup speichert gesicherte Daten in einem Recovery Services-Tresor. Ein T
 
 
 
-## <a name="how-does-azure-backup-work"></a>Wie funktioniert Azure Backup?
-
-Azure Backup führt Sicherungsaufträge auf der Grundlage einer standardmäßigen oder angepassten Sicherungsrichtlinie aus. Die Art der Sicherungserstellung hängt vom Szenario ab.
-
-**Szenario** | **Details** 
---- | ---
-**Direkte Sicherung lokaler Computer** | Für die direkte Sicherung lokaler Computer verwendet Azure Backup den MARS-Agent (Microsoft Azure Recovery Services). Der Agent wird auf jedem Computer installiert, den Sie sichern möchten. <br/><br/> Diese Art von Sicherung steht für lokale Linux-Computer nicht zur Verfügung. 
-**Direkte Sicherung virtueller Azure-Computer** | Für die direkte Sicherung virtueller Azure-Computer wird auf dem virtuellen Computer eine Azure-VM-Erweiterung installiert, wenn zum ersten Mal eine Sicherung für den virtuellen Computer ausgeführt wird. 
-**Sicherung von Computern und Apps mit DPM- oder MABS-Schutz** | In diesem Szenario wird der Computer/die App zunächst im lokalen DPM- oder MABS-Speicher gesichert. Anschließend werden die Daten aus DPM/MABS von Azure Backup im Tresor gesichert. Lokale Computer können durch eine lokal ausgeführte DPM-/MABS-Instanz geschützt werden. Virtuelle Azure-Computer können durch eine in Azure ausgeführte DPM-/MABS-Instanz geschützt werden.
-
-Verschaffen Sie sich einen [Überblick](backup-overview.md), und [informieren Sie sich, was in den einzelnen Szenarien unterstützt wird](backup-support-matrix.md).
-
 
 ### <a name="backup-agents"></a>Sicherungs-Agents
 
@@ -68,17 +61,26 @@ Azure Backup bietet verschiedene Agents für unterschiedliche Sicherungsarten.
 
 **Agent** | **Details** 
 --- | --- 
-**Microsoft Azure Recovery Services-Agent (MARS)** | Dieser Agent wird zum Sichern von Dateien, Ordnern und Systemstatus auf einzelnen lokalen Windows-Servern ausgeführt.<br/><br/> Dieser Agent wird auf DPM-/MABS-Servern ausgeführt, um den lokalen DPM-/MABS-Speicherdatenträger zu sichern. Computer und Apps werden lokal auf diesem DPM-/MABS-Datenträger gesichert.
-**Azure-VM-Erweiterung** | Zur Sicherung virtueller Azure-Computer wird dem auf den virtuellen Computern ausgeführten Azure-VM-Agent eine Sicherungserweiterung hinzugefügt. 
+**Microsoft Azure Recovery Services-Agent (MARS)** | 1) Wird zum Sichern von Dateien, Ordnern und Systemstatus auf einzelnen lokalen Windows-Servern ausgeführt.<br/><br/> 2) Wird auf Azure-VMs zum Sichern von Dateien, Ordnern und dem Systemstatus ausgeführt.<br/><br/>  3) Wird auf DPM-/MABS-Servern ausgeführt, um den lokalen DPM-/MABS-Speicherdatenträger in Azure zu sichern. 
+**Azure-VM-Erweiterung** | Wird auf Azure-VMs ausgeführt, um sie in einem Tresor zu sichern.
 
 
 ## <a name="backup-types"></a>Sicherungstypen
 
 **Sicherungstyp** | **Details** | **Verwendung**
 --- | --- | ---
-**Vollständig** | Eine Sicherung enthält die gesamte Datenquelle.<br/><br/> Vollständige Sicherungen beanspruchen mehr Netzwerkbandbreite. | Wird für die erste Sicherung verwendet.
+**Vollständig** | Eine Sicherung enthält die gesamte Datenquelle. Vollständige Sicherungen beanspruchen mehr Netzwerkbandbreite. | Wird für die erste Sicherung verwendet.
 **Differenziell** |  Speichert die Blöcke, die sich seit der ersten vollständigen Sicherung geändert haben. Beansprucht weniger Netzwerk- und Speicherressourcen und speichert keine redundanten Kopien von Daten, die sich nicht geändert haben.<br/><br/> Ineffizient, da auch Datenblöcke, die sich zwischen nachfolgenden Sicherungen nicht geändert haben, übertragen und gespeichert werden. | Wird von Azure Backup nicht verwendet.
 **Inkrementell** | Hohe Speicher- und Netzwerkeffizienz. Speichert nur Datenblöcke, die sich seit der vorherigen Sicherung geändert haben. <br/><br/> Bei der inkrementellen Sicherung müssen keine zusätzlichen vollständigen Sicherungen erstellt werden. | Wird von DPM/MABS für Datenträgersicherungen sowie bei allen Sicherungen in Azure verwendet.
+
+## <a name="sql-server-backup-types"></a>Typen von SQL Server-Sicherungen
+
+**Sicherungstyp** | **Details** | **Verwendung**
+--- | --- | ---
+**Vollständige Sicherung** | Die gesamte Datenbank wird gesichert. Diese enthält alle Daten in einer bestimmten Datenbank oder einem bestimmten Satz von Dateigruppen oder Dateien sowie ausreichende Protokolle, um diese Daten wiederherzustellen. | Pro Tag kann höchstens eine vollständige Sicherung ausgelöst werden.<br/><br/> Sie können wählen, ob Sie eine vollständige Sicherung in einem täglichen oder wöchentlichen Intervall durchführen möchten.
+**Differenzielle Sicherung** | Diese Sicherung basiert auf der letzten vollständigen Datensicherung.<br/><br/> Damit werden nur die Daten erfasst, die seit der vollständigen Sicherung geändert wurden. |  Pro Tag kann höchstens eine differenzielle Sicherung ausgelöst werden.<br/><br/> Sie können eine vollständige Sicherung und eine differenzielle Sicherung nicht am gleichen Tag konfigurieren.
+**Sicherung des Transaktionsprotokolls** | Eine Zeitpunktwiederherstellung ist bis zu einer bestimmten Sekunde möglich. | Transaktionsprotokollsicherungen können höchstens alle 15 Minuten durchgeführt werden.
+
 
 ### <a name="comparison"></a>Vergleich
 
@@ -96,28 +98,16 @@ Die folgende Tabelle enthält eine Zusammenfassung der Features für die verschi
 
 **Feature** | **Lokale Windows-Computer (direkt)** | **Virtuelle Azure-Computer** | **Computer/Apps mit DPM/MABS**
 --- | --- | --- | ---
-Sicherung in einem Tresor | ![JA][green] | ![Ja][green] | ![JA][green] 
-Sicherung auf DPM-/MABS-Datenträger und anschließend in Azure | | | ![JA][green] 
-Komprimierung der gesendeten Daten für die Sicherung | ![JA][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![JA][green] 
-Inkrementelle Sicherung |![JA][green] |![Ja][green] |![JA][green] 
+Sicherung in einem Tresor | ![Ja][green] | ![Ja][green] | ![Ja][green] 
+Sicherung auf DPM-/MABS-Datenträger und anschließend in Azure | | | ![Ja][green] 
+Komprimierung der gesendeten Daten für die Sicherung | ![Ja][green] | Daten werden unkomprimiert übertragen. Etwas höherer Speicherbedarf, aber schnellere Wiederherstellung.  | ![Ja][green] 
+Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] 
 Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur für lokal bereitgestellte DPM-/MABS-Server 
 
 ![Tabellenschlüssel](./media/backup-architecture/table-key.png)
 
 
-## <a name="architecture-direct-backup-of-on-premises-windows-machines"></a>Architektur: Direkte Sicherung lokaler Windows-Computer
 
-1. Für dieses Szenario müssen Sie den MARS-Agent (Microsoft Azure Recovery Services) herunterladen und auf dem Computer installieren. Außerdem müssen Sie auswählen, was gesichert werden soll, wann Sicherungen erfolgen sollen und wie lange sie in Azure aufbewahrt werden sollen.
-2. Die erste Sicherung wird gemäß Ihren Sicherungseinstellungen ausgeführt.
-3. Der MARS-Agent verwendet den Windows-Volumeschattenkopie-Dienst (VSS), um eine Momentaufnahme der zu sichernden Volumes zu erstellen.
-    - Der MARS-Agent verwendet bei der Erstellung der Momentaufnahme nur den Writer des Windows-Systems.
-    - Der Agent verwendet keine anwendungsbezogenen VSS Writer und erfasst somit keine App-konsistenten Momentaufnahmen.
-3. Nach Erstellung der Momentaufnahme mit VSS erstellt der MARS-Agent eine virtuelle Festplatte in dem Cacheordner, den Sie im Rahmen der Sicherungskonfiguration angegeben haben, und speichert Prüfsummen für die einzelnen Datenblöcke. 
-4. Inkrementelle Sicherungen werden gemäß dem angegebenen Zeitplan ausgeführt – es sei denn, Sie führen eine Ad-hoc-Sicherung aus.
-5. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und eine neue virtuelle Festplatte wird erstellt. Sie wird komprimiert, verschlüsselt und an den Tresor gesendet.
-6. Nach Abschluss der inkrementellen Sicherung wird die neue virtuelle Festplatte mit der virtuellen Festplatte zusammengeführt, die nach der ersten Replikation erstellt wurde. So erhalten Sie den neuesten Zustand zum Vergleich für die laufende Sicherung. 
-
-![Sicherung eines lokalen Windows-Servers mit MARS-Agent](./media/backup-architecture/architecture-on-premises-mars.png)
 
 
 ## <a name="architecture-direct-backup-of-azure-vms"></a>Architektur: Direkte Sicherung virtueller Azure-Computer
@@ -136,19 +126,33 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
     - Momentaufnahmedaten werden möglicherweise nicht sofort in den Tresor kopiert. Zu Spitzenzeiten vergehen unter Umständen mehrere Stunden. Bei täglichen Sicherungsrichtlinien beträgt die Gesamtdauer der Sicherung eines virtuellen Computers weniger als 24 Stunden.
 5. Nachdem die Daten an den Tresor gesendet wurden, wird die Momentaufnahme entfernt und ein Wiederherstellungspunkt erstellt.
 
+Beachten Sie, dass Azure-VMs für Steuerbefehle einen Internetzugang benötigen. Wenn Sie auf Workloads innerhalb der VM sichern (z.B. SQL Server-Sicherung), benötigen die Sicherungsdaten auch einen Internetzugang. 
 
 ![Sicherung virtueller Azure-Computer](./media/backup-architecture/architecture-azure-vm.png)
 
+## <a name="architecture-direct-backup-of-on-premises-windows-machinesazure-vm-filesfolders"></a>Architektur: Direkte Sicherung lokaler Windows-Computer/Azure-VM-Dateien/Ordner
+
+1. Für dieses Szenario müssen Sie den MARS-Agent (Microsoft Azure Recovery Services) herunterladen und auf dem Computer installieren. Außerdem müssen Sie auswählen, was gesichert werden soll, wann Sicherungen erfolgen sollen und wie lange sie in Azure aufbewahrt werden sollen.
+2. Die erste Sicherung wird gemäß Ihren Sicherungseinstellungen ausgeführt.
+3. Der MARS-Agent verwendet den Windows-Volumeschattenkopie-Dienst (VSS), um eine Momentaufnahme der zu sichernden Volumes zu erstellen.
+    - Der MARS-Agent verwendet bei der Erstellung der Momentaufnahme nur den Writer des Windows-Systems.
+    - Der Agent verwendet keine anwendungsbezogenen VSS Writer und erfasst somit keine App-konsistenten Momentaufnahmen.
+3. Nach Erstellung der Momentaufnahme mit VSS erstellt der MARS-Agent eine virtuelle Festplatte in dem Cacheordner, den Sie im Rahmen der Sicherungskonfiguration angegeben haben, und speichert Prüfsummen für die einzelnen Datenblöcke. 
+4. Inkrementelle Sicherungen werden gemäß dem angegebenen Zeitplan ausgeführt – es sei denn, Sie führen eine Ad-hoc-Sicherung aus.
+5. Bei inkrementellen Sicherungen werden geänderte Dateien identifiziert, und eine neue virtuelle Festplatte wird erstellt. Sie wird komprimiert, verschlüsselt und an den Tresor gesendet.
+6. Nach Abschluss der inkrementellen Sicherung wird die neue virtuelle Festplatte mit der virtuellen Festplatte zusammengeführt, die nach der ersten Replikation erstellt wurde. So erhalten Sie den neuesten Zustand zum Vergleich für die laufende Sicherung. 
+
+![Sicherung eines lokalen Windows-Servers mit MARS-Agent](./media/backup-architecture/architecture-on-premises-mars.png)
 
 ## <a name="architecture-back-up-to-dpmmabs"></a>Architektur: Sicherung mit DPM/MABS
 
 1. Sie installieren den DPM- oder MABS-Schutz-Agent auf Computern, die Sie schützen möchten, und fügen die Computer einer DPM-Schutzgruppe hinzu.
     - Zum Schutz von lokalen Computern muss sich der DPM- oder MABS-Server in Ihrer lokalen Umgebung befinden.
-    - Zum Schutz von virtuellen Azure-Computern muss sich der DPM- oder MABS-Server in Azure befinden und als virtueller Azure-Computer ausgeführt werden.
+    - Zum Schutz von Azure-VMs muss sich der MABS-Server in Azure befinden und als Azure-VM ausgeführt werden.
     - Mit DPM/MABS können Sie Sicherungsvolumes, Freigaben, Dateien und Ordner schützen. Sie können Computer (Systemstatussicherung/Bare-Metal-Sicherung) sowie spezifische Apps mit App-fähigen Sicherungseinstellungen schützen.
-2. Wenn Sie den Schutz für einen Computer oder eine App in DPM einrichten, wählen Sie aus, dass eine kurzzeitige Sicherung auf dem lokalen DPM-Datenträger und eine Sicherung in Azure (Onlineschutz) erstellt werden sollen. Außerdem geben Sie an, wann die Sicherung im lokalen DPM-/MABS-Speicher und wann die Onlinesicherung in Azure ausgeführt werden soll.
-3. Der Datenträger der geschützten Workload wird gemäß dem angegebenen Zeitplan auf den lokalen DPM-Datenträgern und in Azure gesichert.
-4. Die Onlinesicherung im Tresor übernimmt der MARS-Agent, der auf dem DPM-/MABS-Server ausgeführt wird.
+2. Wenn Sie den Schutz für einen Computer oder eine App in DPM/MABS einrichten, wählen Sie aus, dass eine kurzzeitige Sicherung auf dem lokalen DPM-/MABS-Datenträger und eine Sicherung in Azure (Onlineschutz) erstellt werden sollen. Außerdem geben Sie an, wann die Sicherung im lokalen DPM-/MABS-Speicher und wann die Onlinesicherung in Azure ausgeführt werden soll.
+3. Der Datenträger der geschützten Workload wird gemäß dem angegebenen Zeitplan auf den lokalen MABS-/DPM-Datenträgern gesichert.
+4. Der MARS-Agent, der auf dem DPM-/MABS-Server ausgeführt wird, sichert die DPM-/MABS-Datenträger im Tresor.
 
 ![Sicherung von Computern/Workloads mit DPM- oder MABS-Schutz](./media/backup-architecture/architecture-dpm-mabs.png)
 
@@ -175,8 +179,8 @@ Sicherung deduplizierter Datenträger | | | ![Teilweise][yellow]<br/><br/> Nur f
 
 Weitere Informationen:
 
-- Informieren Sie sich über Datenträgerspeicher für virtuelle Computer unter [Windows](../virtual-machines/windows/about-disks-and-vhds.md) und [Linux](../virtual-machines/linux/about-disks-and-vhds.md).
-- Informieren Sie sich über [Storage Standard](../virtual-machines/windows/standard-storage.md) und [Storage Premium](../virtual-machines/windows/premium-storage.md).
+- Informieren Sie sich über Datenträgerspeicher für virtuelle Computer unter [Windows](../virtual-machines/windows/managed-disks-overview.md) und [Linux](../virtual-machines/linux/managed-disks-overview.md).
+- Erfahren Sie mehr über die verfügbaren [Datenträgertypen](../virtual-machines/windows/disks-types.md), wie Standard und Premium.
 
 
 ### <a name="backing-up-and-restoring-azure-vms-with-premium-storage"></a>Sichern und Wiederherstellen virtueller Azure-Computer mit Storage Premium 
@@ -184,9 +188,9 @@ Weitere Informationen:
 Sie können virtuelle Azure-Computer mit Storage Premium und Azure Backup sichern:
 
 - Beim Sichern virtueller Computer mit Storage Premium erstellt der Backup-Dienst im Speicherkonto einen temporären Stagingspeicherort namens „AzureBackup-“. Die Größe des Stagingspeicherorts entspricht der Größe der Momentaufnahme des Wiederherstellungspunkts.
-- Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. [Weitere Informationen](../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets) Ändern Sie den Stagingspeicherort nicht.
+- Stellen Sie sicher, dass das Premium-Speicherkonto über genügend freien Speicherplatz für den temporären Stagingspeicherort verfügt. [Weitere Informationen](../storage/common/storage-scalability-targets.md#premium-storage-account-scale-limits) Ändern Sie den Stagingspeicherort nicht.
 - Nach Abschluss des Sicherungsauftrags wird der Stagingspeicherort gelöscht.
-- Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/windows/premium-storage.md#pricing-and-billing).
+- Die Kosten für den Speicher, der für den Stagingspeicherort genutzt wird, entsprechen den [Preisen für Storage Premium](../virtual-machines/windows/disks-types.md#billing).
 
 Virtuelle Azure-Computer mit Storage Premium können in Storage Premium oder in Storage Standard wiederhergestellt werden. Üblicherweise wird Storage Premium als Wiederherstellungsziel verwendet. Es kann jedoch kostengünstiger sein, Storage Standard als Wiederherstellungsziel zu verwenden, wenn Sie nur eine Teilmenge der Dateien des virtuellen Computers benötigen.
 
