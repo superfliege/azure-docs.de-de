@@ -10,12 +10,12 @@ ms.date: 01/31/2018
 ms.topic: article
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 19a715812f1250523fd050ac8b80dee9ec664be4
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
+ms.openlocfilehash: 56f3573bbab059aed78608209cb2815413876bb0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51686261"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308722"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Behandeln von Fehlern und Ausnahmen in Azure Logic Apps
 
@@ -29,12 +29,12 @@ Für die grundlegende Behandlung von Ausnahmen und Fehlern können Sie eine *Wie
 
 Hier sind die Arten von Wiederholungsrichtlinien angegeben: 
 
-| Typ | BESCHREIBUNG | 
+| Type | BESCHREIBUNG | 
 |------|-------------| 
-| [**Standard**](#default-retry) | Bei dieser Richtlinie werden bis zu vier Wiederholungen in Intervallen durchgeführt, die sich [*exponentiell erhöhen*](#exponential-retry). Sie werden um 7,5 Sekunden skaliert, aber der obere Grenzwert liegt zwischen 5 und 45 Sekunden. | 
-| [**Exponentielles Intervall**](#exponential-retry)  | Bei dieser Richtlinie wird für den Zeitraum eines zufälligen Intervalls gewartet, das aus einem exponentiell zunehmenden Bereich ausgewählt wird, bevor die nächste Anforderung gesendet wird. | 
-| [**Festes Intervall**](#fixed-retry)  | Bei dieser Richtlinie wird für den Zeitraum des angegebenen Intervalls gewartet, bevor die nächste Anforderung gesendet wird. | 
-| [**Keine**](#no-retry)  | Die Anforderung wird nicht erneut gesendet. | 
+| **Standard** | Bei dieser Richtlinie werden bis zu vier Wiederholungen in Intervallen durchgeführt, die sich *exponentiell erhöhen*. Sie werden um 7,5 Sekunden skaliert, aber der obere Grenzwert liegt zwischen 5 und 45 Sekunden. | 
+| **Exponentielles Intervall**  | Bei dieser Richtlinie wird für den Zeitraum eines zufälligen Intervalls gewartet, das aus einem exponentiell zunehmenden Bereich ausgewählt wird, bevor die nächste Anforderung gesendet wird. | 
+| **Festes Intervall**  | Bei dieser Richtlinie wird für den Zeitraum des angegebenen Intervalls gewartet, bevor die nächste Anforderung gesendet wird. | 
+| **Keine**  | Die Anforderung wird nicht erneut gesendet. | 
 ||| 
 
 Informationen zu den Grenzwerten von Wiederholungsrichtlinien finden Sie unter [Logic Apps-Grenzwerte und -Konfiguration](../logic-apps/logic-apps-limits-and-config.md#request-limits). 
@@ -71,7 +71,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 *Erforderlich*
 
-| Wert | Typ | BESCHREIBUNG |
+| Wert | Type | BESCHREIBUNG |
 |-------|------|-------------|
 | <*retry-policy-type*> | Zeichenfolge | Der Wiederholungsrichtlinientyp, den Sie verwenden möchten: `default`, `none`, `fixed` oder `exponential` | 
 | <*retry-interval*> | Zeichenfolge | Das Wiederholungsintervall, bei dem für den Wert das [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) verwendet werden muss. Der niedrigste Wert für das Intervall ist `PT5S`, und der höchste Wert ist `PT1D`. Wenn Sie die Richtlinie mit dem exponentiellen Intervall verwenden, können Sie einen anderen Mindest- und Maximalwert angeben. | 
@@ -80,7 +80,7 @@ Oder Sie können die Wiederholungsrichtlinie manuell im Abschnitt `inputs` für 
 
 *Optional*
 
-| Wert | Typ | BESCHREIBUNG |
+| Wert | Type | BESCHREIBUNG |
 |-------|------|-------------|
 | <*minimum-interval*> | Zeichenfolge | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der niedrigste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 
 | <*maximum-interval*> | Zeichenfolge | Bei der Richtlinie mit dem exponentiellen Intervall ist dies der höchste Intervallwert für das zufällig ausgewählte Intervall im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). | 

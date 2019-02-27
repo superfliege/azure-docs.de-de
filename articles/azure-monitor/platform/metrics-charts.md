@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 594ebb6a3c82c9b9dd3ee03a8083abf052d20f49
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c71822f50879404ba943ef6e703364a09a80fbf3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991326"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310933"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor-Metrik-Explorer
 
@@ -100,20 +100,6 @@ Sie können eine Metrik nach Dimension unterteilen, um die verschiedenen Segment
    > [!NOTE]
    > Blenden Sie in einer Dimension durch Filtern und Teilen Segmente aus, die für Ihr Szenario nicht relevant sind, und stellen Sie eine bessere Übersichtlichkeit der Diagramme sicher.
 
-### <a name="new-alert-rule"></a>Neue Warnungsregel
-
-Sie können auch die Kriterien, die Sie festgelegt haben, um Ihre Metriken zu visualisieren, als Grundlage für die zugrunde liegende Logik für eine Metrik basierend auf einer Warnungsregel verwenden. 
-
-Wenn Sie auf **Neue Warnungsregel** klicken
-
-![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/015.png)
-
-Sie wechseln in den Bereich zum Erstellen von Warnungsregeln, in dem die zugrunde liegenden Metrikdimensionen aus dem Diagramm vorab ausgefüllt wurden, um das Generieren benutzerdefinierter Warnungsregeln zu vereinfachen.
-
-![Erstellen einer Warnungsregel](./media/metrics-charts/016.png)
-
-Lesen Sie [diesen Artikel](alerts-metric.md), um mehr über das Einrichten von Metrikwarnungen zu erfahren.
-
 ## <a name="lock-boundaries-of-chart-y-axis"></a>Festlegen der Grenzen der Y-Achse des Diagramms
 
 Wenn das Diagramm geringfügige Schwankungen größerer Werte enthält, ist es wichtig, den Bereich der Y-Achse festzulegen. 
@@ -138,6 +124,20 @@ So heften Sie ein konfiguriertes Diagramm an ein Dashboard an
 Klicken Sie nach der Konfiguration Ihres Diagramms rechts oben im Diagramm auf das Menü **Diagrammaktionen** und dann auf **An Dashboard anheften**.
 
 ![Abbildung eines Diagramms mit Metriken](./media/metrics-charts/00013.png)
+
+## <a name="create-alert-rules"></a>Erstellen von Warnungsregeln
+
+Sie können die Kriterien, die Sie zum Visualisieren Ihrer Metriken festgelegt haben, als Grundlage für eine Metrik basierend auf einer Warnungsregel verwenden. Die neue Warnungsregel enthält Ihre Dimensionen für Zielressource, Metrik, Teilung und Filter aus dem Diagramm. Sie können diese Einstellungen später im Erstellungsbereich für Warnungsregeln ändern.
+
+### <a name="to-create-a-new-alert-rule-click-new-alert-rule"></a>Zum Erstellen einer neuen Warnungsregel klicken Sie auf **Neue Warnungsregel**.
+
+![Schaltfläche „Neue Warnungsregel“ rot hervorgehoben](./media/metrics-charts/015.png)
+
+Sie wechseln in den Bereich zum Erstellen von Warnungsregeln, in dem die zugrunde liegenden Metrikdimensionen aus dem Diagramm vorab ausgefüllt wurden, um das Generieren benutzerdefinierter Warnungsregeln zu vereinfachen.
+
+![Erstellen einer Warnungsregel](./media/metrics-charts/016.png)
+
+Lesen Sie [diesen Artikel](alerts-metric.md), um mehr über das Einrichten von Metrikwarnungen zu erfahren.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

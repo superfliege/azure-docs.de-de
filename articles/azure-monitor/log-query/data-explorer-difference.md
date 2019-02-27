@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor – Unterschiede in der Protokollabfragesprache | Microsoft-Dokumentation
-description: Referenzinformationen für die in Azure Monitor verwendete Data Explorer-Abfragesprache. Enthält zusätzliche Elemente, die spezifisch für Azure Monitor sind, und Elemente, die in Azure Monitor-Protokollabfragen nicht unterstützt werden.
+description: Referenzinformationen für die in Azure Monitor verwendete Abfragesprache Kusto. Enthält zusätzliche Elemente, die spezifisch für Azure Monitor sind, und Elemente, die in Azure Monitor-Protokollabfragen nicht unterstützt werden.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: bwren
-ms.openlocfilehash: 9c58796fa19ffb6d38582c809f7bb6ca948bd92c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1185f3f96fd39f168d138d7dbf66e7780884b1fa
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003624"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56266729"
 ---
 # <a name="azure-monitor-log-query-language-differences"></a>Azure Monitor – Unterschiede in der Protokollabfragesprache
 
-Zwar basieren [Protokolle in Azure Monitor](log-query-overview.md) auf [Azure Data Explorer](/azure/data-explorer) und verwenden die [gleiche Abfragesprache](/azure/kusto/query), die Sprachversion bringt jedoch einige Unterschiede mit sich. In diesem Artikel werden Elemente benannt, die sich in der für Data Explorer und der für Azure Monitor-Protokollabfragen verwendeten Version der Sprache unterscheiden.
+Zwar basieren [Protokolle in Azure Monitor](log-query-overview.md) auf [Azure Data Explorer](/azure/data-explorer) und verwenden die gleiche [Abfragesprache Kusto](/azure/kusto/query), die Sprachversion bringt jedoch einige Unterschiede mit sich. In diesem Artikel werden Elemente benannt, die sich in der für Data Explorer und der für Azure Monitor-Protokollabfragen verwendeten Version der Sprache unterscheiden.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="data-explorer-elements-not-supported-in-azure-monitor"></a>In Azure Monitor nicht unterstützte Elemente von Data Explorer
-In den folgenden Abschnitten werden Elemente der Data Explorer-Abfragesprache beschrieben, die in Azure Monitor nicht unterstützt werden.
+## <a name="kql-elements-not-supported-in-azure-monitor"></a>In Azure Monitor nicht unterstützte Elemente der Abfragesprache Kusto
+In den folgenden Abschnitten werden Elemente der Abfragesprache Kusto beschrieben, die in Azure Monitor nicht unterstützt werden.
 
 ### <a name="statements-not-supported-in-azure-monitor"></a>In Azure Monitor nicht unterstützte Anweisungen
 
@@ -64,4 +64,4 @@ Die folgenden Operatoren unterstützen für Azure Monitor spezifische Features u
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Abrufen von Verweisen auf verschiedene [Ressourcen zum Schreiben von Azure Monitor-Protokollabfragen](query-language.md).
-- Hier finden Sie die vollständige [Referenzdokumentation für die Daten-Explorer-Abfragesprache](/azure/kusto/query/).
+- Greifen Sie auf die vollständige [Referenzdokumentation für die Abfragesprache Kusto](/azure/kusto/query/) zu.

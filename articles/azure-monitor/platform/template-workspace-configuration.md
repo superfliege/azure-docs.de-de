@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/11/2018
 ms.author: magoedte
-ms.openlocfilehash: e948842a49e87df156eb59a7e25634772550d933
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 46be596cbd2641b9ecd3206f44a6e7de7beed255
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235494"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417504"
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Verwalten von Log Analytics mithilfe von Azure Resource Manager-Vorlagen
 Sie können [Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md) zum Erstellen und Konfigurieren von Log Analytics-Arbeitsbereichen verwenden. Beispiele für die Aufgaben, die Sie mit Vorlagen ausführen können:
@@ -56,7 +56,7 @@ Für folgende Parameter wird ein Standardwert festgelegt:
 
 > [!NOTE]
 >Wenn Sie einen Log Analytics-Arbeitsbereich in einem Abonnement mit dem neuen Preismodell von April 2018 erstellen oder konfigurieren, ist **PerGB2018** als einziger gültiger Log Analytics-Tarif verfügbar.  
->Wenn Sie über Abonnements mit dem Preismodell vor April 2018 verfügen [https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model], können Sie den Tarif **Eigenständig** auswählen. Dieser Tarif gilt dann für Abonnements mit dem Preismodell vor April 2018 sowie für Abonnements mit dem neuen Preismodell. Für Arbeitsbereiche in Abonnements, für die das neue Preismodell gewählt wurde, wird der Tarif auf **PerGB2018** festgelegt. 
+>Wenn Sie über Abonnements mit dem [Preismodell vor April 2018](https://docs.microsoft.com/azure/azure-monitor/platform/usage-estimated-costs#new-pricing-model) verfügen, können Sie den Tarif **Eigenständig** auswählen. Dieser Tarif gilt dann für Abonnements mit dem Preismodell vor April 2018 sowie für Abonnements mit dem neuen Preismodell. Für Arbeitsbereiche in Abonnements, für die das neue Preismodell gewählt wurde, wird der Tarif auf **PerGB2018** festgelegt. 
 
 ### <a name="create-and-deploy-template"></a>Erstellen und Bereitstellen der Vorlage
 

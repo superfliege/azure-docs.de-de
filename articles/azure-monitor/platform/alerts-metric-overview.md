@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
-ms.openlocfilehash: 3c7feda32bf162499888720ce56edac55197abe4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005519"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342982"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor
 
-Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können Plattformmetriken, [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](../../azure-monitor/platform/alerts-metric-logs.md), und Standardmetriken von Application Insights sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
+Die Metrikwarnungen in Azure Monitor ergänzen die mehrdimensionalen Metriken. Diese Metriken können [Plattformmetriken](alerts-metric-near-real-time.md#metrics-and-dimensions-supported), [benutzerdefinierte Metriken](../../azure-monitor/platform/metrics-custom-overview.md), [gängige Protokolle von Azure Monitor, die in Metriken umgewandelt wurden](../../azure-monitor/platform/alerts-metric-logs.md), und Application Insights-Metriken sein. Metrikwarnungen werden in regelmäßigen Abständen ausgewertet, um zu überprüfen, ob die Bedingungen für eine oder mehrere metrische Zeitreihen erfüllt sind, und um Sie darüber zu informieren, wann die Auswertungen erfüllt sind. Metrikwarnungen sind zustandsbehaftet. Sie senden Benachrichtigungen nur dann, wenn sich der Zustand ändert.
 
 ## <a name="how-do-metric-alerts-work"></a>Wie funktionieren Metrikwarnungen?
 
@@ -65,8 +65,6 @@ Wenn die Verwendung von „myVM“ bei nachfolgenden Prüfungen weiterhin über 
 Nach einer gewissen Zeit, wenn die Nutzung von „myVM“ wieder einen normalen Wert erreicht, fällt sie wieder unter den Schwellenwert. Die Warnungsregel überwacht die Bedingung noch zweimal, um eine Benachrichtigung zur aufgelösten Bedingung zu versenden. Die Warnungsregel sendet eine aufgelöste/deaktivierte Nachricht, wenn die Warnungsbedingung drei aufeinanderfolgende Zeiträume lang nicht erfüllt ist, um Störungen im Falle von Fluktuationsbedingungen zu reduzieren.
 
 Da die aufgelöste Benachrichtigung über einen Webhook oder eine E-Mail versendet wird, wird auch der Status der Warnungsinstanz (Monitorzustand) im Azure-Portal auf „aufgelöst“ festgelegt.
-
-## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 
 ### <a name="using-dimensions"></a>Verwenden von Dimensionen
 
@@ -123,9 +121,9 @@ Diese Regel überwacht, ob die durchschnittliche CPU-Auslastung in den letzten f
 
 Wenn Sie die Anzahl der zurückliegenden Zeiträume und Verstöße erhöhen, können Sie Warnungen filtern, damit Sie nur Warnungen erhalten, die Ihrer Definition von einer erheblichen Abweichung entsprechen. [Erfahren Sie mehr über erweiterte Optionen für dynamische Schwellenwerte.](alerts-dynamic-thresholds.md#what-do-the-advanced-settings-in-dynamic-thresholds-mean)
 
-### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Überwachen mehrerer Ressourcen mithilfe von Metrikwarnungen
+## <a name="monitoring-at-scale-using-metric-alerts-in-azure-monitor"></a>Bedarfsorientierte Überwachung mithilfe von Metrikwarnungen in Azure Monitor
 
-Wie Sie bereits im vorherigen Abschnitt gesehen haben, ist es möglich, eine einzelne Metrikwarnungsregel zu verwenden, die jede einzelne Dimensionskombination (d. h. eine metrische Zeitreihe) überwacht. Vorher galt weiterhin die Beschränkung, dass eine Ressource nach der anderen bearbeitet werden muss. Azure Monitor unterstützt auch die Überwachung von mehreren Ressourcen mit einer Metrikwarnungsregel. Dieses Feature befindet sich derzeit in der Vorschauphase und wird nur auf virtuellen Computern unterstützt. Mit nur einer Metrikwarnung können die Ressourcen einer Azure-Region überwacht werden.
+Bisher haben Sie gesehen, wie eine einzelne Metrikwarnung zum Überwachen einer oder mehrerer metrischer Zeitreihen im Zusammenhang mit einer einzelnen Azure-Ressource verwendet werden kann. In vielen Fällen soll aber die gleiche Warnungsregel auf viele Ressourcen angewendet werden. Azure Monitor unterstützt auch die Überwachung von mehreren Ressourcen mit einer Metrikwarnungsregel. Dieses Feature wird derzeit nur auf virtuellen Computern unterstützt. Mit nur einer Metrikwarnung können die Ressourcen einer Azure-Region überwacht werden.
 
 Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnung auf drei Arten angeben:
 
@@ -133,7 +131,7 @@ Sie können den Bereich für die Überwachung mit einer einzelnen Metrikwarnung 
 - Alle virtuellen Computer (in einer Azure-Region) in einer oder mehreren Ressourcengruppen eines Abonnements
 - Alle virtuellen Computer (in einer Azure-Region) unter einem Abonnement
 
-Die Erstellung von Metrikwarnungsregeln zur Überwachung mehrerer Ressourcen wird derzeit nicht vom Azure-Portal unterstützt. Sie können diese Regeln mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jeden virtuellen Computer gesonderte Benachrichtigungen.
+Das Erstellen von Metrikwarnungsregeln, mit denen mehrere Ressourcen überwacht werden, ähnelt dem [Erstellen einer Metrikwarnung](alerts-metric.md), mit der eine einzelne Ressource überwacht wird. Der einzige Unterschied ist, dass Sie alle Ressourcen auswählen, die überwacht werden sollen. Sie können diese Regeln auch mit [Azure Resource Manager-Vorlagen](../../azure-monitor/platform/alerts-metric-create-templates.md#template-for-metric-alert-that-monitors-multiple-resources) erstellen. Sie erhalten für jeden virtuellen Computer gesonderte Benachrichtigungen.
 
 ## <a name="typical-latency"></a>Typische Wartezeit
 
@@ -149,7 +147,7 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 |-------------------------------------------------|----------------------------|
 | Microsoft.ApiManagement/service | Ja |
 | Microsoft.Batch/batchAccounts| Ja|
-|Microsoft.Cache/redis| Ja
+|Microsoft.Cache/redis| Ja |
 |Microsoft.ClassicCompute/virtualMachines | Nein  |
 |Microsoft.ClassicCompute/domainNames/slots/roles | Nein |
 |Microsoft.CognitiveServices/accounts | Nein  |
@@ -160,7 +158,7 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 |Microsoft.DBforMySQL/servers| Ja|
 |Microsoft.DBforPostgreSQL/servers| Ja|
 |Microsoft.Devices/IotHubs | Nein |
-|Microsoft.DocumentDB/databaseAccounts| Nein |
+|Microsoft.DocumentDB/databaseAccounts| Ja|
 |Microsoft.EventHub/namespaces | Ja|
 |Microsoft.Logic/workflows | Ja|
 |Microsoft.Network/loadBalancers |Ja|
@@ -168,16 +166,16 @@ Wenn Sie im Moment klassische Metrikwarnungen verwenden und erfahren möchten, o
 |Microsoft.Network/applicationGateways| Ja|
 |Microsoft.Network/expressRouteCircuits| Ja|
 |Microsoft.Network/trafficManagerProfiles | Ja|
-|Microsoft.Search/searchServices | Nein |
-|Microsoft.ServiceBus/namespaces| Nein |
+|Microsoft.Search/searchServices | Ja|
+|Microsoft.ServiceBus/namespaces| Ja |
 |Microsoft.Storage/storageAccounts | Ja|
 |Microsoft.StreamAnalytics/streamingjobs| Ja|
 |Microsoft.TimeSeriesInsights/environments | Ja|
 |Microsoft. Web/serverfarms | Ja |
 |Microsoft. Web/sites (ohne Funktionen) | Ja|
 |Microsoft. Web/hostingEnvironments/multiRolePools | Nein |
-|Microsoft. Web/hostingEnvironments/workerPools| Nein 
-|Microsoft.SQL/Servers | Nein |
+|Microsoft. Web/hostingEnvironments/workerPools| Nein  |
+|Microsoft.SQL/Servers | Nein  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

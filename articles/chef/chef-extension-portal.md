@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: 336ac6b81a56797ad1c1254322dbeec3e36914f3
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358149"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327543"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
 Im Azure-Portal können Sie einem Linux- oder Windows-Computer direkt die Chef-Clienterweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch den Prozess.
@@ -53,7 +53,7 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
 1. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Werte an, und wählen Sie dann **OK** aus.
 
     - **Name**: Geben Sie einen Namen für den neuen virtuellen Computer ein.
-    - **VM-Datenträgertyp**: Geben Sie entweder **SSD** oder **HDD** für den Speicherdatenträgertyp ein. Weitere Informationen zu den VM-Datenträgertypen in Azure finden Sie im Artikel [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](/azure/virtual-machines/windows/premium-storage).
+    - **VM-Datenträgertyp**: Geben Sie entweder **SSD** oder **HDD** für den Speicherdatenträgertyp ein. Weitere Informationen zu Datenträgertypen für virtuelle Computer in Azure finden Sie im Artikel [Auswählen eines Datenträgertyps](../virtual-machines/windows/disks-types.md).
     - **Benutzername**: Geben Sie einen Benutzernamen ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
     - **Authentifizierungstyp**: Wählen Sie **Kennwort** aus. Sie können auch **Öffentlicher SSH-Schlüssel** auswählen und einen Wert für einen öffentlichen SSH-Schlüssel eingeben. Für die Zwecke dieser Demo (und in den Screenshots) ist **Kennwort** ausgewählt.
     - **Kennwort** und **Kennwort bestätigen**: Geben Sie ein Kennwort für den Benutzer ein.

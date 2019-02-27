@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: 2c6569d92913a3cff9ee51529dd381386ed2a792
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: df95329128c93f326b6f2c75fb7faef1a46029cc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818990"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456502"
 ---
 # <a name="security-concepts-for-applications-and-clusters-in-azure-kubernetes-service-aks"></a>Sicherheitskonzepte für Anwendungen und Cluster in Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die wichtigsten Konzepte vorgestellt, mit denen Sie Anw
 - [Knotensicherheit](#node-security)
 - [Clusterupgrades](#cluster-upgrades)
 - [Netzwerksicherheit](#network-security)
-- Kubernetes-Geheimnisse
+- [Kubernetes-Geheimnisse](#kubernetes-secrets)
 
 ## <a name="master-security"></a>Sicherheit der Masterkomponenten
 
@@ -36,9 +36,9 @@ Standardmäßig verwendet der Kubernetes-API-Server eine öffentliche IP-Adresse
 
 AKS-Knoten sind virtuelle Azure-Computer, die von Ihnen verwaltet und gepflegt werden. Auf den Knoten wird eine optimierte Ubuntu-Linux-Distribution mit der Docker Container Runtime ausgeführt. Wenn ein AKS-Cluster erstellt oder zentral hochskaliert wird, werden die Knoten automatisch mit den aktuellen Betriebssystem-Sicherheitsupdates und -konfigurationen bereitgestellt.
 
-Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch vorgenommen. Sie können die Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [Kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als [DaemonSet][aks-daemonset] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
+Die Azure-Plattform wendet über Nacht automatisch Betriebssystem-Sicherheitspatches auf die Knoten an. Wenn ein Betriebssystem-Sicherheitsupdate einen Neustart des Hosts erfordert, wird dieser Neustart nicht automatisch vorgenommen. Sie können die Knoten manuell neu starten. Eine andere gängige Methode ist die Verwendung von [Kured][kured], einem Open-Source-Neustartdaemon für Kubernetes. Kured wird als ein [DaemonSet][aks-daemonsets] ausgeführt und überwacht jeden Knoten auf das Vorhandensein einer Datei, die angibt, dass ein Neustart erforderlich ist. Neustarts werden clusterübergreifend verwaltet, wobei derselbe [Vorgang des Absperrens und Ausgleichens](#cordon-and-drain) wie bei einem Clusterupgrade angewendet wird.
 
-Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentliche IP-Adresse bereitgestellt. Zur Problembehandlung und Verwaltung ist SSH standardmäßig aktiviert. Dieser SSH-Zugriff ist nur über die interne IP-Adresse verfügbar. Mit den Netzwerksicherheitsgruppen-Regeln von Azure können Sie den Zugriff im IP-Adressbereich weiter auf die AKS-Knoten einschränken. Wenn Sie die standardmäßige SSH-Netzwerksicherheitsgruppen-Regel löschen und den SSH-Dienst auf den Knoten deaktivieren, kann die Azure-Plattform keine Wartungsaufgaben mehr ausführen.
+Knoten werden in einem Subnetz des privaten virtuellen Netzwerks ohne öffentliche IP-Adresse bereitgestellt. Zur Problembehandlung und Verwaltung ist SSH standardmäßig aktiviert. Dieser SSH-Zugriff ist nur über die interne IP-Adresse verfügbar.
 
 Die Knoten verwenden Azure Managed Disks, um Speicher bereitzustellen. Bei den meisten VM-Knotengrößen handelt es sich um Premium-Datenträger, die von Hochleistungs-SSDs unterstützt werden. Die auf verwalteten Datenträgern gespeicherten Daten werden im Ruhezustand auf der Azure-Plattform automatisch verschlüsselt. Zur Verbesserung der Redundanz werden diese Datenträger außerdem sicher im Azure-Rechenzentrum repliziert.
 
@@ -46,7 +46,7 @@ Kubernetes-Umgebungen, ob in AKS oder an anderer Stelle, sind derzeit nicht völ
 
 ## <a name="cluster-upgrades"></a>Clusterupgrades
 
-Aus Sicherheits- und Compliancegründen (oder zur Verwendung der neuesten Features) stellt Azure Tools bereit, um das Upgrade eines AKS-Clusters und seiner Komponenten zu orchestrieren. Diese Upgradeorchestrierung umfasst sowohl die Kubernetes-Master- als auch die Agent-Komponenten. Sie können eine Liste der verfügbaren Kubernetes-Versionen für Ihren AKS-Cluster anzeigen. Um den Upgradevorgang zu starten, geben Sie eine dieser verfügbaren Versionen an. Azure verwendet dann für jeden AKS-Knoten den sicheren Vorgang des Absperrens und Ausgleichens und führt das Upgrade aus.
+Aus Sicherheits- und Compliancegründen (oder zur Verwendung der neuesten Features) stellt Azure Tools bereit, um das Upgrade eines AKS-Clusters und seiner Komponenten zu orchestrieren. Diese Upgradeorchestrierung umfasst sowohl die Kubernetes-Master- als auch die Agent-Komponenten. Sie können eine [Liste der verfügbaren Kubernetes-Versionen](supported-kubernetes-versions.md) für Ihren AKS-Cluster anzeigen. Um den Upgradevorgang zu starten, geben Sie eine dieser verfügbaren Versionen an. Azure verwendet dann für jeden AKS-Knoten den sicheren Vorgang des Absperrens und Ausgleichens und führt das Upgrade aus.
 
 ### <a name="cordon-and-drain"></a>Absperren und Ausgleichen
 

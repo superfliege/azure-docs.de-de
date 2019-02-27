@@ -1,6 +1,6 @@
 ---
-title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen in Azure
-description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie verwalten und aktualisieren.
+title: Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen in Azure – Azure Governance
+description: Hier erfahren Sie, wie Sie die Verwaltungsgruppenhierarchie anzeigen, verwalten, aktualisieren und löschen.
 author: rthorn17
 manager: rithorn
 ms.service: azure-resource-manager
@@ -10,12 +10,12 @@ ms.workload: na
 ms.date: 11/20/2018
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 10dfa9812a0546f3a8c57e28227851b6f72657fc
-ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
+ms.openlocfilehash: dbfb6ecb9f29a82a8871922982a64dbefc338969
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/29/2018
-ms.locfileid: "52582414"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342580"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>Verwalten von Ressourcen mit Verwaltungsgruppen
 
@@ -39,13 +39,13 @@ Der Name einer Verwaltungsgruppe kann über das Portal, mithilfe von PowerShell 
 
 1. Klicken Sie oben auf der Seite auf die Option **Gruppe umbenennen**.
 
-   ![Gruppe umbenennen](./media/detail_action_small.png)
+   ![Option „Gruppe umbenennen“](./media/detail_action_small.png)
 
 1. Wenn das Menü geöffnet wird, geben Sie den neuen Namen ein, der angezeigt werden soll.
 
-   ![Gruppe umbenennen](./media/rename_context.png)
+   ![Bereich „Gruppe umbenennen“](./media/rename_context.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="change-the-name-in-powershell"></a>Ändern des Namens in PowerShell
 
@@ -87,11 +87,11 @@ Um eine Verwaltungsgruppe zu löschen, müssen die folgenden Anforderungen erfü
 
    - Wenn das Symbol abgeblendet ist, zeigen Sie mit der Maus darauf, um den Grund dafür anzuzeigen.
 
-   ![Löschen einer Gruppe](./media/delete.png)
+   ![Option zum Löschen der Gruppe](./media/delete.png)
 
 1. Ein Fenster wird geöffnet, in dem Sie das Löschen der Verwaltungsgruppe bestätigen müssen.
 
-   ![Löschen einer Gruppe](./media/delete_confirm.png)
+   ![Bestätigungsfenster für das Löschen der Gruppe](./media/delete_confirm.png)
 
 1. Wählen Sie **Ja** aus.
 
@@ -195,15 +195,15 @@ Wählen Sie zum Anzeigen der Ihnen zugewiesenen Berechtigungen die Verwaltungsgr
 
 1. Klicken Sie in der Liste am Ende der Zeile des zu verschiebenden Abonnements auf die Ellipse.
 
-   ![Move](./media/move_small.png)
+   ![Option „Verschieben“](./media/move_small.png)
 
 1. Klicken Sie auf **Verschieben**.
 
 1. Klicken Sie im angezeigten Menü auf **Übergeordnete Verwaltungsgruppe**.
 
-   ![Move](./media/move_small_context.png)
+   ![Bereich „Verschieben“](./media/move_small_context.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="move-subscriptions-in-powershell"></a>Verschieben von Abonnements in PowerShell
 
@@ -254,7 +254,7 @@ Wenn Sie eine übergeordnete Verwaltungsgruppe verschieben, werden auch alle unt
 
    ![Verschieben](./media/add_context_MG.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Wählen Sie **Speichern** aus.
 
 ### <a name="move-management-groups-in-powershell"></a>Verschieben von Verwaltungsgruppen in PowerShell
 

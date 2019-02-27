@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: troubleshooting
 ms.date: 08/13/2018
 ms.author: saudas
-ms.openlocfilehash: 17f6971cfa2dcd8c8988edc063c89859abec5367
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8164e2db064523fe648ec9ef0c72754be846dff6
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55468834"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56327559"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -34,7 +34,11 @@ Die maximale Anzahl von Pods pro Knoten ist standardmäßig auf 110 festgelegt, 
 
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Bei der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich einen insufficientSubnetSize-Fehler. Wie sollte ich vorgehen?
 
-In der Netzwerkoption für ein benutzerdefiniertes virtuelles Azure-Netzwerk bei der AKS-Erstellung wird die Azure-Containernetzwerkschnittstelle (Container Network Interface, CNI) für die IP-Adressverwaltung (IPAM) verwendet. Die Anzahl der Knoten in einem AKS-Cluster kann einen beliebigen Wert zwischen 1 und 100 aufweisen. Basierend auf dem vorherigen Abschnitt sollte das Subnetz größer als das Produkt der Anzahl von Knoten und der maximalen Pods pro Knoten sein. Die Beziehung kann folgendermaßen ausgedrückt werden: Subnetzgröße > Anzahl der Knoten im Cluster × maximale Pods pro Knoten.
+Wenn Azure CNI (erweiterte Netzwerke) verwendet wird, weist AKS auf Basis des unter „Max. Pods pro Knoten“ konfigurierten Werts vorab IP-Adressen zu. Die Anzahl der Knoten in einem AKS-Cluster können zwischen 1 und 110 liegen. Basierend auf dem unter „Max. Pods pro Knoten“ konfigurierten Wert sollte die Subnetzgröße die Summe aus der Anzahl der Knoten mal der Höchstzahl der Pods pro Knoten überschreiten. Die folgende einfache Gleichung zeigt dies:
+
+Subnetzgröße > Anzahl der Knoten im Cluster (unter Berücksichtigung der zukünftigen Skalierungsanforderungen) * Max. Pods pro Knoten.
+
+Weitere Informationen finden Sie unter [Planen der IP-Adressierung für Ihren Cluster](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
 
 ## <a name="my-pod-is-stuck-in-crashloopbackoff-mode-what-should-i-do"></a>Mein Pod ist im Modus CrashLoopBackOff hängen geblieben. Wie sollte ich vorgehen?
 

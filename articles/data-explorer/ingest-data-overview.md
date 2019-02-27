@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 1/14/2019
-ms.openlocfilehash: 8d5fc1c579fd09f1a71d63dce4d1673ef5a8652b
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.date: 2/18/2019
+ms.openlocfilehash: 4fd0f0990163963fc0cc3c7caf221609da487909
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354619"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340177"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Datenerfassung im Azure-Daten-Explorer
 
@@ -39,15 +39,21 @@ Der Datenverwaltungsdienst von Azure-Daten-Explorer, der für die Datenerfassung
 
 Azure-Daten-Explorer unterstützt mehrere Erfassungsmethoden mit jeweils eigenen Zielszenarien, Vor- und Nachteilen. Azure-Daten-Explorer bietet Pipelines und Konnektoren für gängige Dienste, programmgesteuerte Erfassung über SDKs und direkten Zugriff auf die Engine für Untersuchungszwecke.
 
-### <a name="ingestion-using-pipelines"></a>Erfassung mit Pipelines
+### <a name="ingestion-using-pipelines-connectors-and-plugins"></a>Erfassung mit Pipelines, Connectors und Plug-Ins
 
-Der Azure-Daten-Explorer unterstützt derzeit die Event Hub-Pipeline, die mit dem Verwaltungsassistenten im Azure-Portal verwaltet werden kann. Weitere Informationen finden Sie unter [Quickstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md).
+Azure Data Explorer unterstützt derzeit Folgendes:
 
-### <a name="ingestion-using-connectors-and-plugins"></a>Erfassung mit Konnektoren und Plug-Ins
+* Event Grid-Pipeline, die mit dem Verwaltungs-Assistenten im Azure-Portal verwaltet werden kann. Weitere Informationen finden Sie unter [Erfassen von Azure-Blobs in Azure Data Explorer](ingest-data-event-grid.md).
 
-* Azure Data Explorer unterstützt das Logstash-Plug-In. Weitere Informationen finden Sie unter [Logstash Output Plugin for Azure Data Explorer](https://github.com/Azure/logstash-output-kusto/blob/master/README.md) (Logstash-Ausgabe-Plug-In für Azure Data Explorer).
+* Event Hub-Pipeline, die mit dem Verwaltungs-Assistenten im Azure-Portal verwaltet werden kann. Weitere Informationen finden Sie unter [Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md).
 
-* Azure Data Explorer unterstützt den Kafka-Connector. Weitere Informationen finden Sie unter [Quickstart: Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)
+* Logstash-Plug-In, siehe [Erfassen von Daten aus Logstash in Azure Data Explorer](ingest-data-logstash.md).
+
+* Kafka-Connector, siehe [Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md).
+
+### <a name="ingestion-using-integration-services"></a>Erfassung mit Integrationsdiensten
+
+* Azure Data Factory (ADF) ist ein vollständig verwalteter Datenintegrationsdienst für Analyseworkloads in Azure, mit dem Daten in und aus Azure Data Explorer kopiert werden können. Weitere Informationen finden Sie unter [Kopieren von Daten in oder aus Azure Data Explorer mithilfe von Azure Data Factory](/azure/data-factory/connector-azure-data-explorer).
 
 ### <a name="programmatic-ingestion"></a>Programmgesteuerte Erfassung
 
@@ -131,21 +137,27 @@ Formatieren Sie die Daten für alle Erfassungsmethoden außer Erfassen aus der A
 Die Schemazuordnung hilft dabei, Quelldatenfelder an Spalten der Zieltabelle zu binden.
 
 * [CSV-Zuordnung](/azure/kusto/management/mappings?branch=master#csv-mapping) (optional) funktioniert mit allen ordinalbasierten Formaten. Sie kann über den Erfassungsbefehlsparameter vorgenommen oder [in der Tabelle vorab erstellt](/azure/kusto/management/tables?branch=master#create-ingestion-mapping) und vom Erfassungsbefehlsparameter referenziert werden.
-* [JSON-Zuordnung](/azure/kusto/management/mappings?branch=master#json-mapping) (obligatorisch) und [Avro-Zuordnung](/azure/kusto/management/mappings?branch=master#avro-mapping) (obligatorisch) können über den Erfassungsbefehlsparameter vorgenommen oder [in der Tabelle vorab erstellt](/azure/kusto/management/tables#create-ingestion-mapping) und vom Erfassungsbefehlsparameter referenziert werden.
+* Die [JSON-Zuordnung](/azure/kusto/management/mappings?branch=master#json-mapping) (obligatorisch) und die [Avro-Zuordnung](/azure/kusto/management/mappings?branch=master#avro-mapping) (obligatorisch) können mit dem Erfassungsbefehlsparameter durchgeführt werden. Diese Vorgänge können auch [in der Tabelle vorab erstellt](/azure/kusto/management/tables#create-ingestion-mapping) und vom Erfassungsbefehlsparameter referenziert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
+> [Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)
+> [Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md)
+> [Erfassen von Daten aus Kafka in Azure Data Explorer](ingest-data-kafka.md)
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node](node-ingest-data.md)
+> [Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Python](python-ingest-data.md)
 
 > [!div class="nextstepaction"]
-> [Schnellstart: Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)](net-standard-ingest-data.md)
+> [Erfassen von Daten mit der Azure Data Explorer-Bibliothek für Node](node-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Erfassen von Daten mit dem .NET Standard SDK für Azure Data Explorer (Vorschauversion)](net-standard-ingest-data.md)
+
+> [!div class="nextstepaction"]
+> [Erfassen von Daten aus Logstash in Azure Data Explorer](ingest-data-logstash.md)

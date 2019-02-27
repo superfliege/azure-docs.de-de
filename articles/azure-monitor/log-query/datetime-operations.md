@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
-ms.openlocfilehash: 2465fdcc3bf7128d4813fa5f682ffda8f504f2b6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 8350524e51d8ced45586d085fe1b49274aa6db9d
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999248"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269977"
 ---
 # <a name="working-with-date-time-values-in-azure-monitor-log-queries"></a>Arbeiten mit Werten für Datum und Uhrzeit in Azure Monitor-Protokollabfragen
 
@@ -31,7 +31,7 @@ In diesem Artikel wird das Arbeiten mit Daten für Datum und Uhrzeit in Azure Mo
 
 
 ## <a name="date-time-basics"></a>Grundlagen zu Datum und Uhrzeit
-Die Data Explorer-Abfragesprache verfügt über zwei Hauptdatentypen, die Datums- und Uhrzeitangaben zugeordnet sind: datetime und timespan. Alle Datumsangaben werden in UTC ausgedrückt. Es werden zwar mehrere datetime-Formate unterstützt, jedoch wird das ISO8601-Format bevorzugt. 
+Die Abfragesprache Kusto verfügt über zwei Hauptdatentypen, die Datums- und Uhrzeitangaben zugeordnet sind: datetime und timespan. Alle Datumsangaben werden in UTC ausgedrückt. Es werden zwar mehrere datetime-Formate unterstützt, jedoch wird das ISO8601-Format bevorzugt. 
 
 Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 
@@ -45,7 +45,7 @@ Zeiträume werden als Dezimalwert gefolgt von einer Zeiteinheit ausgedrückt:
 |Mikrosekunde | Mikrosekunde  |
 |Takt        | Nanosekunde   |
 
-datetime-Werte können durch Umwandeln einer Zeichenfolge mithilfe des Operators `todatetime` erstellt werden. Zur Überprüfung der in einem bestimmten Zeitraum gesendeten VM-Heartbeats können Sie beispielsweise den[Operator „between“](/azure/kusto/query/betweenoperator) verwenden, der sich für die Angabe eines bestimmten Zeitraums eignet...
+datetime-Werte können durch Umwandeln einer Zeichenfolge mithilfe des Operators `todatetime` erstellt werden. Beispielsweise verwenden Sie zur Überprüfung der in einer bestimmten Zeitspanne gesendeten VM-Heartbeats den Operator `between`, um einen Zeitraum anzugeben.
 
 ```Kusto
 Heartbeat
@@ -82,7 +82,7 @@ Heartbeat
 ```
 
 ## <a name="converting-time-units"></a>Konvertieren von Zeiteinheiten
-Es kann hilfreich sein, einen datetime- oder timespan-Wert in einer nicht standardmäßigen Zeiteinheit auszudrücken. Angenommen beispielsweise, Sie überprüfen Fehlerereignisse der letzten 30 Minuten und benötigen eine berechnete Spalte, in der angezeigt wird, wann das Ereignis aufgetreten ist:
+Sie können einen datetime- oder timespan-Wert in einer anderen als der Standardzeiteinheit ausdrücken. Wenn Sie beispielsweise Fehlerereignisse der letzten 30 Minuten überprüfen und eine berechnete Spalte benötigen, in der angezeigt wird, wie viel Zeit seit Auftreten des Ereignisses vergangen ist, gehen Sie wie folgt vor:
 
 ```Kusto
 Event
@@ -91,7 +91,7 @@ Event
 | extend timeAgo = now() - TimeGenerated 
 ```
 
-Sie sehen, dass die Spalte _timeAgo_ Werte enthält wie z. B.: „00:09:31.5118992“. Dies bedeutet, dass sie im Format „hh:mm:ss.fffffff“ vorliegen. Wenn Sie diese Werte in _numver_ von Minuten seit der Startzeit formatieren möchten, müssen Sie diesen Wert einfach durch „1 Minute“ teilen:
+Die Spalte `timeAgo` enthält Werte wie z.B. „00:09:31.5118992“. Dies bedeutet, dass sie im Format „hh:mm:ss.fffffff“ vorliegen. Wenn Sie diese Werte in `numver` von Minuten seit der Startzeit formatieren möchten, teilen Sie diesen Wert durch „1 Minute“:
 
 ```Kusto
 Event
@@ -103,7 +103,7 @@ Event
 
 
 ## <a name="aggregations-and-bucketing-by-time-intervals"></a>Aggregationen und Zuordnung von Buckets nach Zeitintervallen
-Ein weiteres sehr gängiges Szenario besteht in der Notwendigkeit, Statistiken über einen bestimmten Zeitraum in einem bestimmten Aggregationsintervall abzurufen. Hierzu kann ein `bin`-Operator als Teil einer -Operator kann als Teil einer Summarize-Klausel verwendet werden.
+Ein weiteres gängiges Szenario besteht in der Notwendigkeit, Statistiken über einen bestimmten Zeitraum in einem bestimmten Aggregationsintervall abzurufen. Für dieses Szenario kann ein `bin`-Operator als Teil einer Summarize-Klausel verwendet werden.
 
 Mit der folgenden Abfrage können Sie die Anzahl der Ereignisse abrufen, die in der letzten halben Stunde alle 5 Minuten aufgetreten sind:
 
@@ -113,7 +113,7 @@ Event
 | summarize events_count=count() by bin(TimeGenerated, 5m) 
 ```
 
-Dadurch wird die folgende Tabelle erzeugt:  
+Diese Abfrage erzeugt die folgende Tabelle:  
 |TimeGenerated(UTC)|events_count|
 |--|--|
 |2018-08-01T09:30:00.000|54|
@@ -131,7 +131,7 @@ Event
 | summarize events_count=count() by startofday(TimeGenerated) 
 ```
 
-Dadurch werden die folgenden Ergebnisse erzeugt:
+Diese Abfrage erzeugt die folgenden Ergebnisse:
 
 |timestamp|count_|
 |--|--|
@@ -139,7 +139,7 @@ Dadurch werden die folgenden Ergebnisse erzeugt:
 |2018-07-29T00:00:00.000|12.315|
 |2018-07-30T00:00:00.000|16.847|
 |2018-07-31T00:00:00.000|12.616|
-|2018-08-01T00:00:00.000|5.416  |
+|2018-08-01T00:00:00.000|5.416|
 
 
 ## <a name="time-zones"></a>Zeitzonen
@@ -158,10 +158,10 @@ Event
 | Runden eines Werts auf die bin-Größe | [bin](/azure/kusto/query/binfunction) |
 | Abrufen einer bestimmten Datums oder einer bestimmten Uhrzeit | [ago](/azure/kusto/query/agofunction) [now](/azure/kusto/query/nowfunction)   |
 | Abrufen eines Teils des Werts | [datetime_part](/azure/kusto/query/datetime-partfunction) [getmonth](/azure/kusto/query/getmonthfunction) [monthofyear](/azure/kusto/query/monthofyearfunction) [getyear](/azure/kusto/query/getyearfunction) [dayofmonth](/azure/kusto/query/dayofmonthfunction) [dayofweek](/azure/kusto/query/dayofweekfunction) [dayofyear](/azure/kusto/query/dayofyearfunction) [weekofyear](/azure/kusto/query/weekofyearfunction) |
-| Abrufen eines Datums relativ zum Wert  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
+| Abrufen eines relativen Datumswerts  | [endofday](/azure/kusto/query/endofdayfunction) [endofweek](/azure/kusto/query/endofweekfunction) [endofmonth](/azure/kusto/query/endofmonthfunction) [endofyear](/azure/kusto/query/endofyearfunction) [startofday](/azure/kusto/query/startofdayfunction) [startofweek](/azure/kusto/query/startofweekfunction) [startofmonth](/azure/kusto/query/startofmonthfunction) [startofyear](/azure/kusto/query/startofyearfunction) |
 
 ## <a name="next-steps"></a>Nächste Schritte
-Informationen zur Verwendung der [Data Explorer-Abfragesprache](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
+Informationen zur Verwendung der [Abfragesprache Kusto](/azure/kusto/query/) mit Azure Monitor-Protokolldaten finden Sie in folgenden weiteren Lektionen:
 
 - [Zeichenfolgenvorgänge](string-operations.md)
 - [Aggregationsfunktionen](aggregations.md)

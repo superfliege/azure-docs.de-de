@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 08/10/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4f8929182995445ff0b327bc22a9cdf75ec5641b
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: 17c493568953265ac12ebccc680652ed5da6ae4d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54262581"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312990"
 ---
 # <a name="feed-power-bi-from-application-insights"></a>Datenimport nach Power BI aus Application Insights
 [Power BI](https://www.powerbi.com/) ist eine Suite aus Unternehmenstools, mit denen Sie Daten analysieren und Informationen teilen können. Auf jedem Gerät stehen leistungsfähige Dashboards zur Verfügung. Sie können Daten aus vielen Quellen kombinieren, z.B. Analytics-Abfragen aus [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md).
@@ -26,7 +26,7 @@ Es gibt drei Methoden zum Exportieren von Application Insights-Daten nach Power 
 
 * [**Exportieren von Analytics-Abfragen**](#export-analytics-queries). Dies ist die bevorzugte Methode. Schreiben Sie eine beliebige Abfrage, und exportieren Sie sie in Power BI. Sie können diese Abfrage zusammen mit anderen Daten in einem Dashboard anordnen.
 * [**Fortlaufender Export und Azure Stream Analytics**](../../azure-monitor/app/export-stream-analytics.md). Diese Methode ist hilfreich, wenn Sie Ihre Daten über längere Zeiträume speichern möchten. Wenn Sie keine erweiterte Datenaufbewahrungsanforderung erfüllen müssen, verwenden Sie die Methode zum Exportieren von Analytics-Abfragen. Für fortlaufenden Export und Stream Analytics fallen mehr Einrichtungsaufgaben und zusätzlicher Speichermehraufwand an.
-* [**Power BI-Adapter**](#power-pi-adapter). Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
+* **Power BI-Adapter**. Die Gruppe von Diagrammen ist vordefiniert, aber Sie können auch eigene Abfragen aus anderen Quellen hinzufügen.
 
 > [!NOTE]
 > Der Power BI-Adapter ist nun **veraltet**. Die vordefinierte Diagramme für diese Lösung werden durch statische nicht bearbeitbare Abfragen mit Daten aufgefüllt. Sie haben nicht die Möglichkeit, diese Abfragen zu bearbeiten, und abhängig von bestimmten Eigenschaften Ihrer Daten ist es möglich, dass die Verbindung mit Power BI erfolgreich ist, aber keine Daten aufgefüllt werden. Dies liegt an Ausschlusskriterien, die in der hartcodierten Abfrage festgelegt werden. Während diese Lösung für einige Kunden noch funktionieren kann, wird aufgrund der mangelnden Flexibilität des Adapters die Verwendung der Funktionalität [**Analytics-Abfrage exportieren**](#export-analytics-queries) empfohlen.

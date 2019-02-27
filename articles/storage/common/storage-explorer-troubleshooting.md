@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 06/15/2018
 ms.author: delhan
 ms.subservice: common
-ms.openlocfilehash: 180780c3a3a644a8da0fa544c37bc8cd252c982f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: c192b3e995cacd3085f343d1f6b2c243f1531acc
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469497"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415509"
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage-Explorer – Leitfaden zur Problembehandlung
 
@@ -54,6 +54,20 @@ Wenn Sie mit den oben beschriebenen Schritten keine selbstsignierten Zertifikate
 
 ## <a name="sign-in-issues"></a>Probleme bei der Anmeldung
 
+### <a name="blank-sign-in-dialog"></a>Leeres Anmeldedialogfeld
+Leere Anmeldedialogfelder werden meist dadurch verursacht, dass ADFS von Storage-Explorer die Durchführung einer Umleitung anfordert, die von Electron nicht unterstützt wird. Als Problemumgehung können Sie versuchen, den Gerätecodefluss für die Anmeldung zu verwenden. Führen Sie dazu die folgenden Schritte aus:
+1. Navigieren Sie zu „Experimentell“ > „Use Device Code Sign-In“ (Gerätecodeanmeldung verwenden).
+2. Öffnen Sie das Dialogfeld „Verbinden“ (über das Steckersymbol in der vertikalen Leiste auf der linken Seite oder über die Option „Konto hinzufügen“ im Kontobereich).
+3. Wählen Sie aus, an welcher Umgebung Sie sich anmelden möchten.
+4. Klicken Sie auf die Schaltfläche „Anmelden“.
+5. Befolgen Sie die Anweisungen im nächsten Bereich.
+
+Hinweis: Diese Funktion steht derzeit nur in Vorschauversion 1.7.0 zur Verfügung.
+
+Falls Sie Probleme beim Anmelden am gewünschten Konto haben, weil über Ihren Standardbrowser bereits die Anmeldung an einem anderen Konto erfolgt ist, haben Sie folgende Möglichkeiten:
+1. Kopieren Sie den Link und den Code manuell in eine private Sitzung Ihres Browsers.
+2. Kopieren Sie den Link und den Code manuell in einen anderen Browser.
+
 ### <a name="reauthentication-loop-or-upn-change"></a>Schleife für eine erneute Authentifizierung oder Änderung des UPN
 Wenn Sie sich in einer Schleife für eine erneute Authentifizierung befinden oder den UPN von einem Ihrer Konten geändert haben, versuchen Sie Folgendes:
 1. Entfernen Sie alle Konten, und schließen Sie dann den Storage-Explorer.
@@ -90,7 +104,7 @@ Wenn keine dieser Methoden funktioniert, [eröffnen Sie auf GitHub ein Problem](
 Wenn Sie nach erfolgreicher Anmeldung Ihre Abonnements nicht abrufen können, probieren Sie die folgenden Methoden zur Problembehebung:
 
 * Überprüfen Sie, ob Ihr Konto Zugriff auf die erwarteten Abonnements hat. Sie können den Zugriff überprüfen, indem Sie sich am Portal für die Azure-Umgebung anmelden, die Sie verwenden möchten.
-* Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China, Azure Deutschland, Azure US-Regierung oder Benutzerdefinierte Umgebung) erfolgt ist.
+* Stellen Sie sicher, dass die Anmeldung mit der richtigen Azure-Umgebung (Azure, Azure China 21Vianet, Azure Deutschland, Azure US Government oder Benutzerdefinierte Umgebung) erfolgt ist.
 * Wenn Sie sich hinter einem Proxy befinden, stellen Sie sicher, dass Sie den Storage-Explorer-Proxy richtig konfiguriert haben.
 * Entfernen Sie das Konto, und fügen Sie es wieder hinzu.
 * Wenn ein Link namens „Weitere Informationen“ vorhanden ist, prüfen Sie, welche Fehlermeldungen für die fehlerhaften Mandanten gemeldet werden. Wenn Sie sich nicht sicher sind, wie Sie mit den angezeigten Fehlermeldungen umgehen sollen, können Sie jederzeit [ein Thema auf GitHub erstellen](https://github.com/Microsoft/AzureStorageExplorer/issues).
@@ -116,7 +130,7 @@ Vergewissern Sie sich zunächst, dass Sie die folgenden Informationen richtig ei
 * Proxy-URL und Portnummer
 * Benutzername und Kennwort, sofern für den Proxy erforderlich
 
-Beachten Sie, dass der Storage-Explorer keine PAC-Dateien für die Konfiguration von Proxyeinstellungen unterstützt.
+Beachten Sie, dass Storage-Explorer keine Dateien für die automatische Proxykonfiguration unterstützt, die zum Konfigurieren von Proxyeinstellungen verwendet werden können.
 
 ### <a name="common-solutions"></a>Gängige Lösungen
 

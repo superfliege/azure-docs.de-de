@@ -7,47 +7,59 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: 78b362eb75ab4e0ca17045f8c32761a65897d449
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c1c81ba0f168759ab9cc05f3441e07ff03275e84
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000181"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417379"
 ---
 # <a name="what-is-video-indexer"></a>Was ist Video Indexer?
 
-Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, Azure Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) basiert. Sie ermöglicht Ihnen, mithilfe der folgenden Video Indexer-Modelle Erkenntnisse aus Ihren Videos zu gewinnen:
- 
+Microsoft Video Indexer ist eine Cloudanwendung, die auf Azure Media Analytics, Azure Search, Cognitive Services (beispielsweise Gesichtserkennungs-API, Microsoft Translator, Maschinelles Sehen-API und Custom Speech Service) basiert. Sie ermöglicht Ihnen, mithilfe der folgenden Video- und Audiomodelle von Video Indexer Erkenntnisse aus Ihren Videos zu gewinnen:
+  
+## <a name="video-insights"></a>Erkenntnisse aus Videoaufnahmen
+
+- **Gesichtserkennung:** erkennt und gruppiert im Video gezeigte Gesichter.
+- **Prominentenerkennung:** Video Indexer kann automatisch mehr als eine Million Prominente erkennen, z. B. wichtige Politiker/Politikerinnen, Schauspieler/Schauspielerinnen, Athleten/Athletinnen, Forscher/Forscherinnen und Führungskräfte aus dem Wirtschafts- und Technologiebereich. Die Daten zu diesen Prominenten sind auch auf verschiedenen bekannten Websites zu finden, z.B. IMDB und Wikipedia.
+- **Kontobasierte Gesichtsidentifikation:** Video Indexer trainiert ein Modell für ein bestimmtes Konto. Gesichter im Video werden dann basierend auf dem Modell erkannt, das speziell für Videos dieses Kontos trainiert wurde.
+- **Extraktion von Gesichtern als Miniaturbild** („bestes Gesicht“): Identifiziert automatisch das am besten aufgenommene Gesicht in der jeweiligen Gruppe von Gesichtern (basierend auf Qualität, Größe und frontaler Position) und extrahiert es als Bildobjekt.
+- **Optische Zeichenerkennung** (OCR): extrahiert im Video angezeigten Text.
+- **Moderation visueller Inhalte:** erkennt nicht jugendfreie bzw. anzügliche visuelle Inhalte.
+- **Identifikation von Beschriftungen:** identifiziert angezeigte visuelle Objekte und Aktionen.
+- **Szenenwechselerkennung:** erkennt, wenn sich im Video eine Szene ändert.
+- **Erkennung schwarzer Frames:** erkennt schwarze Frames im Video.
+- **Extraktion von Keyframes:** erkennt stabile Keyframes in einem Video.
+
+## <a name="audio-insights"></a>Erkenntnisse aus Audioaufnahmen
+
 - **Automatische Sprachenerkennung:** Die Lösung identifiziert automatisch die vorherrschend gesprochene Sprache. Unterstützt werden Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Spanisch und Russisch. Wenn die Sprache nicht erkannt werden kann, wird Englisch als Fallbacksprache verwendet.
 - **Audiotranskription:** konvertiert Sprache in Text in 12 Sprachen und lässt Erweiterungen zu. Unterstützt werden Arabisch, Chinesisch (vereinfacht), Deutsch, Englisch, Französisch, Italienisch, Japanisch, Portugiesisch (Brasilien), Spanisch, Russisch, Hindi und Koreanisch.
 - **Untertitelung:** erstellt Untertitel in drei Formaten: VTT, TTML und SRT.
 - **Verarbeitung von zwei Kanälen:** erkennt automatisch ein getrenntes Transkript und sorgt für eine Zusammenführung auf einer einzelnen Zeitachse.
-- **Rauschunterdrückung:**  bereinigt (basierend auf Skype-Filtern) Telefonaudio oder verrauschte Aufnahmen.
-- **Transkriptanpassung (Custom Recognition Intelligent Service, CRIS):** ermöglicht das Trainieren und Ausführen erweiterter benutzerdefinierter Spracherkennungsmodelle zur Erstellung branchenspezifischer Transkripte.
-- **Sprecheraufzählung:**  kann erkennen und zuordnen, welcher Sprecher wann was gesagt hat.
+- **Rauschunterdrückung:** bereinigt (basierend auf Skype-Filtern) Telefonaudio oder verrauschte Aufnahmen.
+- **Transkriptanpassung** (CRIS): ermöglicht das Trainieren und Ausführen erweiterter benutzerdefinierter Spracherkennungsmodelle zur Erstellung branchenspezifischer Transkripte.
+- **Sprecheraufzählung:** kann erkennen und zuordnen, welcher Sprecher wann was gesagt hat.
 - **Sprecherstatistiken:** bietet Statistiken zum Verhältnis zwischen Sprechern und ihrem Anteil an der Konversation.
-- **OCR (Optische Zeichenerkennung):** extrahiert im Video angezeigten Text.
-- **Extraktion von Keyframes:** erkennt stabile Keyframes in einem Video.
-- **Standpunktanalyse:** erkennt anhand von Sprache und sichtbarem Text positive, negative und neutrale Stimmungen.
-- **Moderation visueller Inhalte:** erkennt nicht jugendfreie bzw. anzügliche visuelle Inhalte.
-- **Extraktion von Schlüsselwörtern:** extrahiert Stichwörter aus Sprache und sichtbarem Text.
-- **Identifikation von Beschriftungen:** identifiziert angezeigte visuelle Objekte und Aktionen.
-- **Extrahieren von Marken:** extrahiert Marken aus Sprache und sichtbarem Text.
-- **Gesichtserkennung:** erkennt und gruppiert im Video gezeigte Gesichter.
-- **Extraktion von Gesichtern als Miniaturbild („bestes Gesicht“):** Identifiziert automatisch das am besten aufgenommene Gesicht in der jeweiligen Gruppe von Gesichtern (basierend auf Qualität, Größe und frontaler Position) und extrahiert es als Bildobjekt.
-- **Prominentenerkennung:** Video Indexer kann automatisch mehr als eine Million Prominente erkennen, z. B. wichtige Politiker/Politikerinnen, Schauspieler/Schauspielerinnen, Athleten/Athletinnen, Forscher/Forscherinnen und Führungskräfte aus dem Wirtschafts- und Technologiebereich. Die Daten zu diesen Prominenten sind auch auf verschiedenen bekannten Websites zu finden, z.B. IMDB und Wikipedia.
-- **Kontobasierte Gesichtsidentifikation:** Video Indexer trainiert ein Modell für ein bestimmtes Konto. Gesichter im Video werden dann basierend auf dem Modell erkannt, das speziell für Videos dieses Kontos trainiert wurde.
 - **Moderation von Textinhalten:** erkennt im Transkript des Audios anstößigen Text.
-- **Szenenwechselerkennung:** erkennt, wenn sich im Video eine Szene ändert.
-- **Erkennung schwarzer Frames:** erkennt schwarze Frames im Video.
 - **Audioeffekte:** erkennt Audioeffekte wie Händeklatschen, Sprache und Stille.
-- **Themenerschließung:** zieht in den Transkripten einen Rückschluss auf Hauptthemen. Eine [IPTC](https://iptc.org/standards/media-topics/)-Taxonomie erster Ebene ist eingeschlossen.
 - **Emotionserkennung:** erkennt Emotionen basierend auf Sprache und Audiosignalen. Bei den Emotionen kann es sich um Freude, Trauer, Wut oder Angst handeln.
-- **Artefakte**: Extrahiert für jedes der Modelle eine umfangreiche Menge von Artefakten mit höherem Detailgrad.
 - **Übersetzung:** erstellt Übersetzungen des Audiotranskripts in 54 Sprachen.
 
+## <a name="audio-and-video-insights-multi-channels"></a>Erkenntnisse aus Audio- und Videoaufnahmen (mehrere Kanäle)
+
+Bei Indizierung nach einem Kanal steht ein Teilergebnis für die folgenden Modelle zur Verfügung:
+
+- **Extraktion von Schlüsselwörtern:** extrahiert Stichwörter aus Sprache und sichtbarem Text.
+- **Extrahieren von Marken:** extrahiert Marken aus Sprache und sichtbarem Text.
+- **Themenerschließung:** zieht in den Transkripten einen Rückschluss auf Hauptthemen. Eine IPTC-Taxonomie erster Ebene ist eingeschlossen.
+- **Artefakte**: Extrahiert für jedes der Modelle eine umfangreiche Menge von Artefakten mit höherem Detailgrad.
+- **Standpunktanalyse:** erkennt anhand von Sprache und sichtbarem Text positive, negative und neutrale Stimmungen.
+ 
+  
+ 
 Nachdem Video Indexer die Verarbeitung und Analyse abgeschlossen hat, können Sie die Erkenntnisse aus dem Video überprüfen, zusammenstellen, suchen und veröffentlichen.
 
 Ganz gleich, ob Sie ein Inhaltsmanager oder ein Entwickler sind – der Video Indexer-Dienst kann all Ihren Anforderungen gerecht werden. Inhaltsverantwortliche können den Dienst über das Video Indexer-Webportal nutzen, ohne eine einzige Codezeile schreiben zu müssen. Weitere Informationen finden Sie unter [Tutorial: Registrieren und Hochladen Ihres ersten Videos](video-indexer-get-started.md). Entwickler können APIs zur bedarfsorientierten Verarbeitung von Inhalten nutzen. Weitere Informationen finden Sie unter [Verwenden der Video Indexer-REST-API](video-indexer-use-apis.md). Der Dienst bietet Kunden auch die Möglichkeit, mithilfe von Widgets Videodatenströme und extrahierte Erkenntnisse in ihren eigenen Anwendungen zu veröffentlichen. Weitere Informationen finden Sie unter [Embed visual widgets in your application](video-indexer-embed-widgets.md) (Einbetten von visuellen Widgets in Ihre Anwendung).

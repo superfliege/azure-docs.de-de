@@ -1,6 +1,6 @@
 ---
-title: Streamen von Azure Active Directory-Protokollen in Log Analytics mit Azure Monitor (Vorschauversion) | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle mithilfe von Azure Monitor (Vorschauversion) in Log Analytics integrieren.
+title: Streamen von Azure Active Directory-Protokollen in Azure Monitor-Protokolle (Vorschauversion) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure Active Directory-Protokolle in Azure Monitor-Protokolle integrieren (Vorschauversion).
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,30 +17,30 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51db96523a96015822f4507731bad2a398521530
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e9c1b2513f769b065883dc98b649a68d565ccc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165840"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456485"
 ---
-# <a name="integrate-azure-ad-logs-with-log-analytics-using-azure-monitor-preview"></a>Integrieren von Azure AD-Protokollen in Log Analytics mithilfe von Azure Monitor (Vorschauversion)
+# <a name="integrate-azure-ad-logs-with-azure-monitor-logs-preview"></a>Integrieren von Azure AD-Protokollen in Azure Monitor-Protokolle (Vorschauversion)
 
-Mit Log Analytics können Sie Daten abfragen, um bestimmte Ereignisse zu finden, Trends zu analysieren und datenquellenübergreifende Korrelationen vorzunehmen. Durch die Integration von Azure AD-Aktivitätsprotokollen in Log Analytics können Sie nun unter anderem folgende Aufgaben ausführen:
+Mit Azure Monitor-Protokollen können Sie Daten abfragen, um bestimmte Ereignisse zu finden, Trends zu analysieren und datenquellenübergreifende Korrelationen vorzunehmen. Durch die Integration von Azure AD-Aktivitätsprotokollen in Azure Monitor-Protokolle können Sie nun unter anderem folgende Aufgaben ausführen:
 
  * Vergleichen Ihrer Azure AD-Anmeldeprotokolle mit vom Azure Security Center veröffentlichten Sicherheitsprotokollen
 
  * Behandeln von Leistungsengpässen auf der Anmeldeseite Ihrer Anwendung durch Korrelieren von Anwendungsleistungsdaten aus Azure Application Insights  
 
-Das folgende Video einer Ignite-Sitzung veranschaulicht die Vorteile der Verwendung von Log Analytics für Azure AD-Protokolle in praktischen Benutzerszenarien.
+Das folgende Video einer Ignite-Sitzung veranschaulicht die Vorteile der Verwendung von Azure Monitor-Protokollen für Azure AD-Protokolle in praktischen Benutzerszenarien.
 
 > [!VIDEO https://www.youtube.com/embed/MP5IaCTwkQg?start=1894]
 
-In diesem Artikel erfahren Sie, wie Sie Azure AD-Protokolle (Azure Active Directory) mithilfe von Azure Monitor in Log Analytics integrieren.
+In diesem Artikel erfahren Sie, wie Sie Azure Active Directory-Protokolle (Azure AD) in Azure Monitor integrieren.
 
 ## <a name="supported-reports"></a>Unterstützte Berichte
 
-Sie können Überwachungs- und Anmeldeaktivitätsprotokolle zur weiteren Analyse an Log Analytics weiterleiten. 
+Sie können Überwachungs- und Anmeldeaktivitätsprotokolle zur weiteren Analyse an Azure Monitor-Protokolle weiterleiten. 
 
 * **Überwachungsprotokolle**: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 * **Anmeldeprotokolle**: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
@@ -58,13 +58,13 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 * Einen Benutzer, der als *globaler Administrator* oder *Sicherheitsadministrator* für den Azure AD-Mandanten fungiert.
 * Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 
-## <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
+## <a name="send-logs-to-azure-monitor-logs"></a>Senden von Protokollen an Azure Monitor-Protokolle
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. 
 
 2. Klicken Sie auf **Azure Active Directory** > **Diagnoseeinstellungen** -> **Diagnoseeinstellung hinzufügen**. Sie können auch auf der Seite **Überwachungsprotokolle** oder **Anmeldungen** auf **Exporteinstellungen** klicken, um zur Konfigurationsseite für die Diagnoseeinstellungen zu gelangen.  
     
-3. Aktivieren Sie im Menü **Diagnoseeinstellungen** das Kontrollkästchen **An Log Analytics senden**, und klicken Sie anschließend auf **Konfigurieren**.
+3. Aktivieren Sie im Menü **Diagnoseeinstellungen** das Kontrollkästchen **An Log Analytics-Arbeitsbereich senden**, und wählen Sie anschließend **Konfigurieren** aus.
 
 4. Wählen Sie den Log Analytics-Arbeitsbereich aus, an den Sie die Protokolle senden möchten, oder erstellen Sie einen neuen Arbeitsbereich im dafür vorgesehenen Dialogfeld.  
 
@@ -80,5 +80,5 @@ Sie benötigen Folgendes, um dieses Feature verwenden zu können:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Analyze Azure AD activity logs with Log Analytics (preview)](howto-analyze-activity-logs-log-analytics.md) (Analysieren von Azure AD-Aktivitätsprotokollen mit Log Analytics (Vorschauversion))
-* [Install and use the Log Analytics views for Azure Active Directory](howto-install-use-log-analytics-views.md) (Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory)
+* [Analysieren von Azure AD-Aktivitätsprotokollen mit Azure Monitor-Protokollen](howto-analyze-activity-logs-log-analytics.md)
+* [Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](howto-install-use-log-analytics-views.md)

@@ -17,12 +17,12 @@ ms.date: 08/10/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57c4f0595fdea3d266a56d125d6d86cba8b4f651
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 01cc85f7eba2aefd08192c4e3f4e5151e7645238
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195531"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269109"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: Entwurfskonzepte
 Hier erfahren Sie, welche Aspekte bei der Planung der Implementierung von Azure AD Connect berücksichtigt werden müssen. Dieses Dokument enthält ausführliche Informationen zu bestimmten Aspekten, und diese Konzepte werden auch in anderen Dokumenten kurz beschrieben.
@@ -171,7 +171,7 @@ Wenn Sie AD FS außerhalb von Azure AD Connect verwalten oder Drittanbieter-Verb
 ![Verbundkonfiguration eines Drittanbieters](./media/plan-connect-design-concepts/consistencyGuid-03.png)
 
 ### <a name="adding-new-directories-to-existing-deployment"></a>Hinzufügen von neuen Verzeichnissen zur vorhandenen Bereitstellung
-Nehmen wir an, Sie haben Azure AD Connect mit aktivierter „ConsistencyGuid“-Funktion bereitgestellt und möchten nun ein anderes Verzeichnis zur Bereitstellung hinzufügen. Wenn Sie versuchen, das Verzeichnis hinzuzufügen, überprüft der Azure AD Connect-Assistent den Status des Attributs „ms-DS-ConsistencyGuid“ im Verzeichnis. Wenn das Attribut in einem oder in mehreren Objekten im Verzeichnis konfiguriert ist, folgert der Assistent daraus, dass das Attribut von anderen Anwendungen verwendet wird und gibt die in der nachfolgenden Abbildung dargestellte Fehlermeldung aus. Wenn Sie sicher sind, dass das Attribut nicht von vorhandenen Anwendungen verwendet wird, wenden Sie sich an den Support, um Informationen zum Unterdrücken der Fehlermeldung zu erhalten.
+Nehmen wir an, Sie haben Azure AD Connect mit aktivierter „ConsistencyGuid“-Funktion bereitgestellt und möchten nun ein anderes Verzeichnis zur Bereitstellung hinzufügen. Wenn Sie versuchen, das Verzeichnis hinzuzufügen, überprüft der Azure AD Connect-Assistent den Status des Attributs „ms-DS-ConsistencyGuid“ im Verzeichnis. Wenn das Attribut in einem oder in mehreren Objekten im Verzeichnis konfiguriert ist, folgert der Assistent daraus, dass das Attribut von anderen Anwendungen verwendet wird und gibt die in der nachfolgenden Abbildung dargestellte Fehlermeldung aus. Wenn Sie sicher sind, dass das Attribut nicht von vorhandenen Anwendungen verwendet wird, können Sie die Fehlermeldung unterdrücken, indem Sie den Azure AD Connect-Assistenten mit dem oben beschriebenen **/SkipLdapSearchcontact** neu starten. Andernfalls müssen Sie sich an den Support wenden, um weitere Informationen zu erhalten.
 
 ![Hinzufügen von neuen Verzeichnissen zur vorhandenen Bereitstellung](./media/plan-connect-design-concepts/consistencyGuid-04.png)
 

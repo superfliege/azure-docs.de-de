@@ -11,21 +11,27 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 3013d8997660df95fb12c8b18c1120f726eead04
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216019"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447870"
 ---
-# <a name="application-insights-connector-management-solution-preview"></a>Application Insights-Connector-Verwaltungslösung (Vorschau)
+# <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
 ![Application Insights-Symbol](./media/app-insights-connector/app-insights-connector-symbol.png)
 
 >[!NOTE]
-> Mit der Unterstützung von [ressourcenübergreifenden Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) und dem [Anzeigen von mehreren Azure Monitor Application Insights-Ressourcen](../log-query/unify-app-resource-data.md) ist die Application Insights-Connector-Verwaltungslösung nicht erforderlich. Für die kommerzielle Azure-Cloud wird Application Insights-Connector zusammen mit dem OMS-Portal am 15. Januar 2019 offiziell als veraltet eingestellt und vom Azure Marketplace entfernt und für die Azure US Government-Cloud offiziell am 30. März 2019. Vorhandene Verbindungen sind weiterhin bis zum 30 Juni 2019 einsetzbar. Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Dies wird über die REST-API unterstützt, die im Januar 2019 bereitgestellt wird, und eine entsprechende Benachrichtigung wird unter [Azure-Updates](https://azure.microsoft.com/updates/) veröffentlicht. Weitere Informationen finden Sie unter [Wechsel des OMS-Portals zu Azure](../../azure-monitor/platform/oms-portal-transition.md).
+> Durch die Unterstützung von [ressourcenübergreifenden Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) ist die Application Insights-Connector-Verwaltungslösung nicht mehr erforderlich. Sie wurde eingestellt und aus dem Azure Marketplace entfernt. Gleichzeitig wurde das OMS-Portal entfernt, das für die kommerzielle Azure-Cloud am 15. Januar 2019 offiziell als veraltet eingestuft wurde. Für die Azure US Government-Cloud wird die Lösung am 30. März 2019 außer Betrieb gesetzt.
+>
+>Vorhandene Verbindungen sind weiterhin bis zum 30 Juni 2019 einsetzbar.  Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Ein Skript zur Verwendung von PowerShell für das Entfernen vorhandener Verbindungen finden Sie weiter unten im Abschnitt [Entfernen des Connectors mit PowerShell](#removing-the-connector-with-powershell).
+>
+>Eine Anleitung zum Abfragen von Application Insights-Protokolldaten für mehrere Anwendungen finden Sie unter [Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen](../log-query/unify-app-resource-data.md). Weitere Informationen zur Veraltung des OMS-Portals finden Sie unter [Wechsel des OMS-Portals zu Azure](../../azure-monitor/platform/oms-portal-transition.md).
+>
+> 
 
 Mit der Application Insights-Connector-Lösung können Sie Leistungsprobleme diagnostizieren und verstehen, wofür Benutzer Ihre App verwenden, wenn sie mit [Application Insights](../../azure-monitor/app/app-insights-overview.md) überwacht wird. Ansichten der gleichen Anwendungstelemetrie, die Entwickler in Application Insights sehen, sind in Log Analytics verfügbar. Durch Integration Ihrer Application Insights-Apps in Log Analytics erzielen Sie jedoch eine höhere Transparenz für Ihre Anwendungen, da sich die Vorgangs- und Anwendungsdaten an ein- und demselben Ort befinden. Sie können besser mit Ihren App-Entwicklern zusammenarbeiten, wenn jeweils die gleichen Ansichten genutzt werden. Die gemeinsamen Ansichten verringern den Zeitaufwand, der für das Erkennen und Lösen von Anwendungs- und Plattformproblemen anfällt.
 
@@ -262,6 +268,57 @@ Ein Datensatz mit dem *Typ* *ApplicationInsights* wird für jeden Eingabedatenty
 ## <a name="sample-log-searches"></a>Beispiele für Protokollsuchen
 
 Diese Lösung verfügt nicht über einen Satz mit Beispielen für Protokollsuchen, die im Dashboard angezeigt werden. Im Abschnitt [Anzeigen von Application Insights-Connector-Informationen](#view-application-insights-connector-information) werden aber Beispielabfragen für die Protokollsuche angezeigt.
+
+## <a name="removing-the-connector-with-powershell"></a>Entfernen des Connectors mit PowerShell
+Aufgrund der Veraltung des OMS-Portals können vorhandene Verbindungen nicht mehr über das Portal konfiguriert oder entfernt werden. Mit dem folgenden PowerShell-Skript können Sie vorhandene Verbindungen entfernen. Sie müssen der Besitzer oder Mitwirkender des Arbeitsbereichs und Leser der Application Insights-Ressource sein, um diesen Vorgang ausführen zu können.
+
+```PowerShell
+$Subscription_app = "App Subscription Name"
+$ResourceGroup_app = "App ResourceGroup"
+$Application = "Application Name"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+
+Connect-AzureRmAccount
+Set-AzureRmContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+```
+
+Mit dem folgenden PowerShell-Skript, das einen REST-API-Aufruf startet, können Sie eine Liste von Anwendungen abrufen. 
+
+```PowerShell
+Connect-AzureRmAccount
+$Tenant = "TenantId"
+$Subscription_workspace = "Workspace Subscription Name"
+$ResourceGroup_workspace = "Workspace ResourceGroup"
+$Workspace = "Workspace Name"
+$AccessToken = "AAD Authentication Token" 
+
+Set-AzureRmContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+
+$Headers = @{
+    "Authorization" = "Bearer $($AccessToken)"
+    "x-ms-client-tenant-id" = $Tenant
+}
+
+$Connections = Invoke-RestMethod -Method "GET" -Uri "https://management.azure.com$($LAWorkspace.ResourceId)/dataSources/?%24filter=kind%20eq%20'ApplicationInsights'&api-version=2015-11-01-preview" -Headers $Headers
+$ConnectionsJson = $Connections | ConvertTo-Json
+```
+Dieses Skript erfordert ein Bearertoken zur Authentifizierung für Azure Active Directory. Als eine Möglichkeit zum Abrufen dieses Tokens können Sie einen Artikel auf der [Dokumentationswebsite für die REST-API](https://docs.microsoft.com/rest/api/loganalytics/datasources/createorupdate) verwenden. Klicken Sie auf **Jetzt testen**, und melden Sie sich bei Ihrem Azure-Abonnement an. Sie können das Bearertoken aus der **Anforderungsvorschau** kopieren, wie es in der folgenden Abbildung dargestellt ist.
+
+
+![Bearertoken](media/app-insights-connector/bearer-token.png)
+
+
+Sie können eine Liste von Anwendungen auch mit einer Protokollabfrage abrufen:
+
+```Kusto
+ApplicationInsights | summarize by ApplicationName
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

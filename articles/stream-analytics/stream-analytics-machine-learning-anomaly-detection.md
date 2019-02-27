@@ -9,16 +9,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: bdd512972f1a684a3b76ae0323bbadd87bf0d659
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9ea9cc116a13aac2dca9edf8ba86c933310b5198
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238316"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269636"
 ---
 # <a name="anomaly-detection-in-azure-stream-analytics"></a>Anomalieerkennung in Azure Stream Analytics
 
-Azure Stream Analytics bietet integrierte Anomalieerkennungsfunktionen auf Machine Learning-Basis, die zum Überwachen der beiden am häufigsten auftretenden Anomalien verwendet werden können: temporäre und permanente. Mit den Funktionen **AnomalyDetection_SpikeAndDip** und **AnomalyDetection_ChangePoint** können Sie die Erkennung von Anomalien direkt in Ihrem Stream Analytics-Auftrag ausführen.
+Azure Stream Analytics ist sowohl in der Cloud als auch in Azure IoT Edge verfügbar und bietet integrierte Anomalieerkennungsfunktionen auf Machine Learning-Basis, die zum Überwachen der beiden am häufigsten auftretenden Anomalien verwendet werden können: temporäre und permanente. Mit den Funktionen **AnomalyDetection_SpikeAndDip** und **AnomalyDetection_ChangePoint** können Sie die Erkennung von Anomalien direkt in Ihrem Stream Analytics-Auftrag ausführen.
 
 Die Machine Learning-Modelle setzen einheitlich als Stichprobe entnommene Zeitreihen voraus. Wenn die Zeitreihen nicht einheitlich sind, können Sie einen Aggregationsschritt mit einem rollierenden Fenster vor dem Aufrufen der Erkennung von Anomalien einfügen.
 
@@ -36,13 +36,14 @@ Lücken in der Zeitreihe können darauf zurückzuführen sein, dass das Modell z
 
 ## <a name="spike-and-dip"></a>Spitzen und Senken
 
-Temporäre Anomalien im Ereignisdatenstrom einer Zeitreihe werden als Spitzen und Senken bezeichnet. Spitzen und Senken können mithilfe des auf Machine Learning basierenden **AnomalyDetection_SpikeAndDip**-Operators überwacht werden.
+Temporäre Anomalien im Ereignisdatenstrom einer Zeitreihe werden als Spitzen und Senken bezeichnet. Spitzen und Senken können mithilfe des auf Machine Learning basierenden [AnomalyDetection_SpikeAndDip](https://docs.microsoft.com/stream-analytics-query/anomalydetection-spikeanddip-azure-stream-analytics
+)-Operators überwacht werden.
 
 ![Beispiel für Anomalien bei Spitzen und Senken](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-spike-dip.png)
 
 Wenn im gleichen gleitenden Fenster eine zweite Spitze kleiner ist als die erste, ist das berechnete Ergebnis für die kleinere Spitze wahrscheinlich nicht signifikant genug im Vergleich zum Ergebnis für die erste Spitze innerhalb des angegebenen Zuverlässigkeitsgrads. Sie können versuchen, die Zuverlässigkeitsgradeinstellung des Modells zu verringern, um solche Anomalien abzufangen. Sollten Sie jedoch zu viele Warnungen erhalten, können Sie ein höheres Konfidenzintervall verwenden.
 
-Die folgende Beispielabfrage setzt eine einheitliche Eingangsrate von 1 Ereignis pro Sekunde in einem 2-minütigen gleitenden Fenster mit einer Verlaufsgröße von 120 Ereignissen voraus. Mit einem Zuverlässigkeitsgrad von 95% extrahiert die letzte SELECT-Anweisung Ergebnis und Anomalienstatus und gibt sie aus.
+Die folgende Beispielabfrage setzt eine einheitliche Eingangsrate von einem Ereignis pro Sekunde in einem zweiminütigen gleitenden Fenster mit einer Verlaufsgröße von 120 Ereignissen voraus. Mit einem Zuverlässigkeitsgrad von 95% extrahiert die letzte SELECT-Anweisung Ergebnis und Anomalienstatus und gibt sie aus.
 
 ```SQL
 WITH AnomalyDetectionStep AS
@@ -67,9 +68,9 @@ FROM AnomalyDetectionStep
 
 ## <a name="change-point"></a>Änderungspunkt
 
-Permanente Anomalien im Ereignisdatenstrom einer Zeitreihe sind Änderungen bei der Verteilung der Werte im Ereignisdatenstrom, wie Änderungen des Zuverlässigkeitsgrads und Trends. In Stream Analytics werden diese Anomalien mithilfe des auf Machine Learning basierenden **AnomalyDetection_ChangePoint**-Operators erkannt.
+Permanente Anomalien im Ereignisdatenstrom einer Zeitreihe sind Änderungen bei der Verteilung der Werte im Ereignisdatenstrom, wie Änderungen des Zuverlässigkeitsgrads und Trends. In Stream Analytics werden diese Anomalien mithilfe des auf Machine Learning basierenden [AnomalyDetection_ChangePoint](https://docs.microsoft.com/stream-analytics-query/anomalydetection-changepoint-azure-stream-analytics)-Operators erkannt.
 
-Permanente Änderungen dauern viel länger als Spitzen und Senken und könnten auf katastrophale Ereignisse hinweisen. Permanente Änderungen sind in der Regel mit bloßem Auge nicht leicht sichtbar, können aber mit dem **AnomalyDetection_ChangePoint**-Operator erkannt werden.
+Permanente Änderungen dauern viel länger als Spitzen und Senken und könnten auf katastrophale Ereignisse hinweisen. Permanente Änderungen sind in der Regel mit bloßem Auge nicht sichtbar, können aber mit dem **AnomalyDetection_ChangePoint**-Operator erkannt werden.
 
 Die folgende Abbildung ist ein Beispiel für die Änderung des Zuverlässigkeitsgrads:
 
@@ -79,7 +80,7 @@ Die folgende Abbildung ist ein Beispiel für eine Trendänderung:
 
 ![Beispiel für eine Anomalie der Trendänderung](./media/stream-analytics-machine-learning-anomaly-detection/anomaly-detection-trend-change.png)
 
-Die folgende Beispielabfrage setzt eine einheitliche Eingangsrate von 1 Ereignis pro Sekunde in einem 20-minütigen gleitenden Fenster mit einer Verlaufsgröße von 1.200 Ereignissen voraus. Mit einem Zuverlässigkeitsgrad von 80% extrahiert die letzte SELECT-Anweisung Ergebnis und Anomalienstatus und gibt sie aus.
+Die folgende Beispielabfrage setzt eine einheitliche Eingangsrate von einem Ereignis pro Sekunde in einem 20-minütigen gleitenden Fenster mit einer Verlaufsgröße von 1.200 Ereignissen voraus. Mit einem Zuverlässigkeitsgrad von 80% extrahiert die letzte SELECT-Anweisung Ergebnis und Anomalienstatus und gibt sie aus.
 
 ```SQL
 WITH AnomalyDetectionStep AS

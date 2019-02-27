@@ -8,53 +8,132 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: df7e61bb9d064c4530c0212cc02fbdd849017612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871998"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312529"
 ---
-# <a name="detecting-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
+# <a name="detect-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
 
-Außer dem Tagging und der Kategorisierung auf oberster Ebene unterstützt das maschinelle Sehen auch spezielle (oder domänenspezifische) Informationen. Spezielle Informationen kann als eigenständige Methode oder mit der allgemeinen Kategorisierung implementiert werden. Sie ermöglichen eine weitere Optimierung der 86-Kategorien-Taxonomie durch das Hinzufügen domänenspezifischer Modelle.
+Zusätzlich zur Kennzeichnung und allgemeinen Kategorisierung wird beim maschinellen Sehen auch die weiter gehende domänenspezifische Analyse unterstützt. Hierfür werden Modelle verwendet, die anhand von speziellen Daten trainiert wurden. 
 
-Es gibt zwei Optionen für die Verwendung der domänenspezifischen Modelle:
+Es gibt zwei Möglichkeiten für die Verwendung von domänenspezifischen Modellen: allein (bereichsbezogene Analyse) oder als Erweiterung der Kategorisierungsfunktion.
 
-* Bereichsbezogene Analyse  
-  Analyse nur eines ausgewählten Modells durch einen HTTP POST-Aufruf. Wenn Sie wissen, welches Modell Sie verwenden möchten, geben Sie den Namen des Modells an. Sie erhalten nur Informationen, die für dieses Modell relevant sind. Sie können diese Option beispielsweise verwenden, um nur nach berühmten Personen zu suchen. Die Antwort enthält eine Liste möglicher Übereinstimmungen mit berühmten Personen zusammen mit der jeweiligen Zuverlässigkeitsbewertung.
-* Erweiterte Analyse  
-  Analyse zur Bereitstellung zusätzlicher Details im Zusammenhang mit Kategorien der 86-Kategorien-Taxonomie. Diese Option steht zur Verwendung in Anwendungen bereit, bei denen Benutzer zusätzlich zu den Details aus einem oder mehreren domänenspezifischen Modellen auch eine generische Bildanalyse erhalten möchten. Bei Aufruf dieser Methode wird zuerst die Klassifizierung der 86-Kategorien-Taxonomie aufgerufen. Wenn eine der Kategorien mit der eines bekannten oder übereinstimmenden Modells übereinstimmt, wird die Klassifizierung ein zweites Mal aufgerufen. Wenn z. B. der `details`-Parameter des HTTP-POST-Aufrufs entweder auf „all“ festgelegt ist oder „celebrities“ enthält, ruft die Methode die Klassifizierung für berühmte Personen auf, nachdem die 86-Kategorien-Klassifizierung aufgerufen wurde. Wenn das Bild als `people_` oder als eine Unterkategorie dieser Kategorie klassifiziert ist, wird die Klassifikation für berühmte Personen aufgerufen.
+### <a name="scoped-analysis"></a>Bereichsbezogene Analyse
 
-## <a name="listing-domain-specific-models"></a>Auflisten domänenspezifischer Modelle
+Sie können ein Bild analysieren, indem Sie nur das domänenspezifische Modell nutzen. Rufen Sie hierfür die API [Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) auf. 
 
-Sie können die vom maschinellen Sehen unterstützten domänenspezifischen Modelle auflisten. Derzeit unterstützt das maschinelle Sehen die folgenden domänenspezifischen Modelle zur Erkennung von domänenspezifischen Inhalten:
+Hier ist eine JSON-Beispielantwort angegeben, die von der API **models/celebrities/analyze** für das jeweilige Bild zurückgegeben wird:
+
+![Satya Nadella (stehend)](./images/satya.jpeg)
+
+```json
+{
+  "result": {
+    "celebrities": [{
+      "faceRectangle": {
+        "top": 391,
+        "left": 318,
+        "width": 184,
+        "height": 184
+      },
+      "name": "Satya Nadella",
+      "confidence": 0.99999856948852539
+    }]
+  },
+  "requestId": "8217262a-1a90-4498-a242-68376a4b956b",
+  "metadata": {
+    "width": 800,
+    "height": 1200,
+    "format": "Jpeg"
+  }
+}
+```
+
+### <a name="enhanced-categorization-analysis"></a>Verbesserte Kategorisierungsanalyse  
+
+Sie können domänenspezifische Modelle auch verwenden, um die allgemeine Bildanalyse zu erweitern. Dies ist im Rahmen der [allgemeinen Kategorisierung](concept-categorizing-images.md) möglich, indem domänenspezifische Modelle im Parameter *details* des [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API-Aufrufs angegeben werden. 
+
+In diesem Fall wird zuerst die Klassifizierung der 86-Kategorien-Taxonomie aufgerufen. Wenn erkannte Kategorien über ein passendes domänenspezifisches Modell verfügen, wird das Bild auch über dieses Modell übergeben, und die Ergebnisse werden hinzugefügt. 
+
+Mit der folgenden JSON-Antwort wird veranschaulicht, wie die domänenspezifische Analyse als `detail`-Knoten in eine umfassendere Kategorisierungsanalyse eingebunden werden kann.
+
+```json
+"categories":[  
+  {  
+    "name":"abstract_",
+    "score":0.00390625
+  },
+  {  
+    "name":"people_",
+    "score":0.83984375,
+    "detail":{  
+      "celebrities":[  
+        {  
+          "name":"Satya Nadella",
+          "faceRectangle":{  
+            "left":597,
+            "top":162,
+            "width":248,
+            "height":248
+          },
+          "confidence":0.999028444
+        }
+      ],
+      "landmarks":[  
+        {  
+          "name":"Forbidden City",
+          "confidence":0.9978346
+        }
+      ]
+    }
+  }
+]
+```
+
+## <a name="list-the-domain-specific-models"></a>Auflisten der domänenspezifischen Modelle
+
+Derzeit werden für das maschinelle Sehen die folgenden domänenspezifischen Modelle unterstützt:
 
 | NAME | BESCHREIBUNG |
 |------|-------------|
 | Prominente | Erkennung berühmter Personen, die für Bilder unterstützt wird, die in die Kategorie `people_` klassifiziert werden |
 | Wahrzeichen | Erkennung von Wahrzeichen, die für Bilder unterstützt wird, die in die Kategorien `outdoor_` oder `building_` klassifiziert werden |
 
-### <a name="domain-model-list-example"></a>Beispiel für die Domänenmodellliste
-
-Die folgende JSON-Antwort listet die vom maschinellen Sehen unterstützten domänenspezifischen Modelle auf.
+Durch das Aufrufen der [Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd)-API werden diese Informationen zusammen mit den Kategorien zurückgegeben, für die die einzelnen Modelle gelten können:
 
 ```json
-{
-    "models": [
-        {
-            "name": "celebrities",
-            "categories": ["people_", "人_", "pessoas_", "gente_"]
-        },
-        {
-            "name": "landmarks",
-            "categories": ["outdoor_", "户外_", "屋外_", "aoarlivre_", "alairelibre_",
-                "building_", "建筑_", "建物_", "edifício_"]
-        }
-    ]
+{  
+  "models":[  
+    {  
+      "name":"celebrities",
+      "categories":[  
+        "people_",
+        "人_",
+        "pessoas_",
+        "gente_"
+      ]
+    },
+    {  
+      "name":"landmarks",
+      "categories":[  
+        "outdoor_",
+        "户外_",
+        "屋外_",
+        "aoarlivre_",
+        "alairelibre_",
+        "building_",
+        "建筑_",
+        "建物_",
+        "edifício_"
+      ]
+    }
+  ]
 }
 ```
 

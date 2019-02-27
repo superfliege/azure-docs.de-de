@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d6010b7ff03689588251a9649eecb412bf9f3a8d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: eb1fe69a7fb99949ac95291c33e76c1a32bf5439
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38701919"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310056"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>Bereitstellen des StorSimple-Geräte-Manager-Diensts für Geräte der StorSimple 8000-Serie
 
@@ -32,7 +32,7 @@ In diesem Tutorial werden die erforderlichen Schritte zum Erstellen, Löschen un
 > [!NOTE]
 > -  Das Azure-Portal unterstützt Geräte mit ausgeführtem Update 5.0 oder höher. Wenn Ihr Gerät nicht auf dem neuesten Stand ist, installieren Sie Update 5 sofort. Weitere Informationen finden Sie unter [Installieren von Update 5](storsimple-8000-install-update-5.md). 
 > - Wenn Sie eine StorSimple Cloud Appliance (8010/8020) verwenden, können Sie dieses Gerät nicht aktualisieren. Verwenden Sie die neueste Version der Software, um ein neues Cloudgerät mit Update 5.0 zu erstellen und dann ein Failover auf das neu erstellte Cloudgerät auszuführen. 
-> - Alle Geräte mit ausgeführtem Update 4.0 oder früher weisen [reduzierte Verwaltungsfunktionalität](storsimple-8000-manage-service.md#supported-operations-on-devices-running-versions-prior-to-update-5.0) auf. 
+> - Alle Geräte, auf denen Update 4.0 oder eine frühere Version ausgeführt wird, weisen verminderte Verwaltungsfunktionalität auf. 
 
 ## <a name="create-a-service"></a>Erstellen von Diensten
 Um einen StorSimple-Geräte-Manager-Dienst zu erstellen, benötigen Sie Folgendes:
@@ -93,7 +93,7 @@ Führen Sie die folgenden Schritte durch, um den Dienstregistrierungsschlüssel 
 
 Bewahren Sie den Dienstregistrierungsschlüssel an einem sicheren Ort auf. Sie benötigen diesen Schlüssel sowie den Verschlüsselungsschlüssel für Dienstdaten, um zusätzliche Geräte bei diesem Dienst zu registrieren. Nach dem Abrufen des Dienstregistrierungsschlüssels müssen Sie das Gerät mithilfe von Windows PowerShell für StorSimple konfigurieren.
 
-Einzelheiten zum Verwenden des Registrierungsschlüssels finden Sie unter [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
+Ausführliche Informationen zur Verwendung dieses Registrierungsschlüssels finden Sie unter [Schritt 3: Konfigurieren und Registrieren des Geräts über Windows PowerShell für StorSimple](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple).
 
 ## <a name="regenerate-the-service-registration-key"></a>Neugenerieren des Dienstregistrierungsschlüssels
 Sie müssen den Dienstregistrierungsschlüssel neu generieren, wenn Sie die Schlüsselrotation durchführen müssen oder wenn sich die Liste der Dienstadministratoren geändert hat. Wenn Sie den Schlüssel neu generieren, wird der neue Schlüssel nur für die Registrierung nachfolgender Geräte verwendet. Bereits registrierte Geräte sind von diesem Vorgang nicht betroffen.
@@ -143,7 +143,7 @@ Ein Gerät muss die folgenden Kriterien erfüllen, bevor es für die Initiierung
 * Während des Rollover-Prozesses des Verschlüsselungsschlüssel für Dienstdaten können Sie kein Gerät autorisieren.
 * Eine Geräte-Autorisierung ist möglich, sobald einige der beim Dienst registrierten Geräte den Verschlüsselungs-Rollover abgeschlossen haben. 
 
-### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Schritt 2: Verwenden Sie Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren.
+### <a name="step-2-use-windows-powershell-for-storsimple-to-initiate-the-service-data-encryption-key-change"></a>Schritt 2: Verwenden von Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren
 Dieser Schritt wird in der Windows PowerShell für StorSimple-Schnittstelle auf dem autorisierten StorSimple-Gerät ausgeführt.
 
 > [!NOTE]
@@ -176,7 +176,7 @@ Führen Sie die folgenden Schritte aus, um den Verschlüsselungsschlüssel für 
 #### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf physischen Geräten
 1. Verwenden Sie Windows PowerShell für StorSimple für die Verbindung mit der Konsole. Wählen Sie Option 1, um sich mit Vollzugriff anzumelden.
 2. Geben Sie an der Eingabeaufforderung Folgendes ein: `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`.
-3. Geben Sie den Verschlüsselungsschlüssel für Dienstdaten ein, den Sie in [Schritt2: Verwenden Sie Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren.](#to-initiate-the-service-data-encryption-key-change)erhalten haben.
+3. Geben Sie den Verschlüsselungsschlüssel für Dienstdaten an, den Sie in [Schritt 2: Verwenden von Windows PowerShell für StorSimple, um die Änderung des Verschlüsselungsschlüssels für Dienstdaten zu initialisieren](#to-initiate-the-service-data-encryption-key-change) abgerufen haben.
 
 #### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>So aktualisieren Sie den Dienstdatenverschlüsselungs-Schlüssel auf allen 8010/8020 Cloud Appliances
 1. Laden Sie das PowerShell-Skript [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) herunter, und richten Sie es ein. 

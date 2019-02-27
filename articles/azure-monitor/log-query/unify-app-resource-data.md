@@ -10,14 +10,14 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 02/19/2019
 ms.author: magoedte
-ms.openlocfilehash: 1dba84c686fbb873f044b4980990baa396a94c79
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237670"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56429515"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Vereinigen mehrerer Azure Monitor-Application Insights-Ressourcen 
 Dieser Artikel beschreibt das Abfragen und Anzeigen aller Daten in Ihren Application Insights-Anwendungsprotokollen an einem Ort, selbst wenn sie aus unterschiedlichen Azure-Abonnements stammen. Damit soll der veraltete Application Insights-Connector ersetzt werden. Die Anzahl der Application Insights-Ressourcen, die Sie in eine einzelne Abfrage einschließen können, ist auf 100 beschränkt.  
@@ -68,6 +68,9 @@ Der Funktionsalias gibt die Vereinigungsmenge der Anforderungen aller definierte
 
 ## <a name="query-across-application-insights-resources-and-workspace-data"></a>Abfragen über Application Insights-Ressourcen und Arbeitsbereichsdaten 
 Wenn Sie den Connector beenden und Abfragen über einen Zeitraum, der durch die Application Insights-Datenaufbewahrung (90 Tage) gekürzt wurde, ausführen müssen, führen Sie für einen mittleren Zeitraum [ressourcenübergreifende Abfragen](../../azure-monitor/log-query/cross-workspace-query.md) in dem Arbeitsbereich und für die Application Insights Ressourcen aus. Dies gilt, bis die Anwendungsdaten entsprechend der neuen Application Insights-Datenaufbewahrung gesammelt wurden. Die Abfrage erfordert einige Änderungen, da die Schemas in Application Insights und im Arbeitsbereich unterschiedlich sind. Sehen Sie sich dazu die Tabelle weiter unten in diesem Abschnitt an, in der die Schemaunterschiede hervorgehoben sind. 
+
+>[!NOTE]
+>Eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](../platform/api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](../platform/alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](../platform/alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [ scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
 
 Wenn der Connector z.B. am 1.11.2018 beendet wurde, während Sie Protokolle von Application Insights-Ressourcen und Anwendungsdaten im Arbeitsbereich abgefragt haben, würde Ihre Abfrage wie im folgenden Beispiel erstellt werden:
 

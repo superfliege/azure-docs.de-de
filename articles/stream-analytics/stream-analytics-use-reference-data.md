@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f065a7c428f191e37449145e946b26c3133ede05
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: cc8c10f8a3f515d3401dbb469a7e4a31c4fe3501
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700000"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329812"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 Verweisdaten werden auch als Nachschlagetabelle bezeichnet und sind ein begrenztes statisches oder sich nur langsam veränderndes Dataset, das für die Suche oder Korrelation mit Ihrem Datenstrom verwendet wird. In einem IoT-Szenario können Sie beispielsweise Metadaten zu Sensoren (die sich nicht oft ändern) in Verweisdaten speichern und mit IoT-Echtzeitdatenströmen verknüpfen. Azure Stream Analytics lädt Verweisdaten in den Arbeitsspeicher, um eine Streamverarbeitung mit geringer Wartezeit zu erreichen. Für den Einsatz von Verweisdaten in Ihrem Azure Stream Analytics-Auftrag verwenden Sie in der Regel [Verweisdaten für JOIN-Vorgänge](https://msdn.microsoft.com/library/azure/dn949258.aspx) in Ihrer Abfrage. 
@@ -74,7 +74,7 @@ Mit [Azure Data Factory](https://azure.microsoft.com/documentation/services/data
 
 ## <a name="azure-sql-database-preview"></a>Azure SQL-Datenbank (Vorschau)
 
-Azure SQL-Datenbank-Verweisdaten werden durch den Stream Analytics-Auftrag abgerufen und zur Verarbeitung als Momentaufnahme im Speicher gespeichert. Die Momentaufnahme der Verweisdaten wird zudem in einem Container in einem Speicherkonto gespeichert, das Sie in den Konfigurationseinstellungen angeben. Der Container wird automatisch erstellt, wenn der Auftrag gestartet wird, und automatisch gelöscht, nachdem der Auftrag beendet wurde.
+Azure SQL-Datenbank-Verweisdaten werden durch den Stream Analytics-Auftrag abgerufen und zur Verarbeitung als Momentaufnahme im Speicher gespeichert. Die Momentaufnahme der Verweisdaten wird zudem in einem Container in einem Speicherkonto gespeichert, das Sie in den Konfigurationseinstellungen angeben. Der Container wird beim Starten des Auftrags automatisch erstellt. Wenn der Auftrag beendet wird oder in den fehlerhaften Zustand übergeht, werden die automatisch erstellten Container gelöscht, sobald der Auftrag neu gestartet wird.  
 
 Wenn es sich bei den Verweisdaten um ein sich langsam änderndes Dataset handelt, müssen Sie die im Auftrag verwendete Momentaufnahme in regelmäßigen Abständen aktualisieren. In Stream Analytics können Sie beim Konfigurieren der Azure SQL-Datenbank-Eingabeverbindung eine Aktualisierungsrate festlegen. Die Stream Analytics-Runtime fragt die Azure SQL-Datenbank-Instanz in dem durch die Aktualisierungsrate angegebenen Intervall ab. Als schnellste Aktualisierungsrate wird einmal pro Minute unterstützt. Für jede Aktualisierung wird in Stream Analytics eine neue Momentaufnahme im angegebenen Speicherkonto gespeichert.
 

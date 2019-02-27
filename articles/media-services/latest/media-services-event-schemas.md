@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: reference
-ms.date: 02/11/2019
+ms.date: 02/13/2019
 ms.author: juliako
-ms.openlocfilehash: f9748d61b1aa336c5300dd414d53388f48a41368
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 8ad0efffc89a3c11f412d94b922401c23e84a3e5
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243984"
+ms.locfileid: "56268786"
 ---
 # <a name="azure-event-grid-schemas-for-media-services-events"></a>Azure Event Grid-Schemas für Media Services-Ereignisse
 
@@ -42,7 +42,7 @@ Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange
 | Microsoft.Media.JobCanceled| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Abgebrochen“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 | Microsoft.Media.JobErrored| Rufen Sie ein Ereignis ab, wenn der Auftrag in den Zustand „Fehler“ übergeht. Dies ist ein Endzustand, der Auftragsausgaben umfasst.|
 
-[Schemabeispiele](#event-schema-examples) folgen.
+Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
 
 ### <a name="monitoring-job-output-state-changes"></a>Überwachen von Auftragsausgabezustandsänderungen
 
@@ -56,7 +56,15 @@ Sie können sich für alle Ereignisse registrieren, indem Sie das JobStateChange
 | Microsoft.Media.JobOutputCanceled| Rufen Sie ein Ereignis ab, wenn die Auftragsausgabe in den Zustand „Abgebrochen“ übergeht.|
 | Microsoft.Media.JobOutputErrored| Rufen Sie ein Ereignis ab, wenn die Auftragsausgabe in den Zustand „Fehler“ übergeht.|
 
-[Schemabeispiele](#event-schema-examples) folgen.
+Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
+
+### <a name="monitoring-job-output-progress"></a>Überwachen des Fortschritts der Auftragsausgabe
+
+| Ereignistypen | BESCHREIBUNG |
+| ---------- | ----------- |
+| Microsoft.Media.JobOutputProgress| Dieses Ereignis gibt den Fortschritt der Auftragsverarbeitung von 0 bis 100 % wieder. Der Dienst versucht, ein Ereignis zu senden, wenn der Fortschrittswert um 5 % oder mehr angestiegen ist oder mehr als 30 Sekunden seit dem letzten Ereignis (Heartbeat) vergangen sind. Es ist weder garantiert, dass der Fortschrittswert bei 0 % beginnt oder 100 % erreicht, noch ist gewährleistet, dass er mit der Zeit konstant ansteigt. Mit diesem Ereignis sollte nicht ermittelt werden, ob die Verarbeitung abgeschlossen ist, sondern stattdessen die Statusänderungsereignisse verwendet werden.|
+
+Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
 
 ## <a name="live-event-types"></a>Liveereignistypen
 
@@ -72,7 +80,7 @@ Ereignisse auf Streamebene werden pro Stream oder Verbindung ausgelöst. Jedes E
 | Microsoft.Media.LiveEventEncoderConnected | Encoder stellt die Verbindung mit dem Liveereignis her. |
 | Microsoft.Media.LiveEventEncoderDisconnected | Verbindung des Encoders wird getrennt. |
 
-[Schemabeispiele](#event-schema-examples) folgen.
+Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
 
 ### <a name="track-level-events"></a>Ereignisse auf Spurebene
 
@@ -87,7 +95,7 @@ Ereignisse auf Spurebene werden pro Spur ausgelöst. Die Spurereignistypen sind:
 | Microsoft.Media.LiveEventIngestHeartbeat | Wird alle 20 Sekunden für jede Spur veröffentlicht, wenn ein Liveereignis ausgeführt wird. Bietet eine Zusammenfassung der Erfassungsintegrität. |
 | Microsoft.Media.LiveEventTrackDiscontinuityDetected | Media-Server hat eine Diskontinuität in der eingehenden Spur erkannt. |
 
-[Schemabeispiele](#event-schema-examples) folgen.
+Weitere Informationen enthalten die folgenden [Schemabeispiele](#event-schema-examples).
 
 ## <a name="event-schema-examples"></a>Beispiele für Ereignisschemas
 
@@ -245,6 +253,29 @@ Für jede Zustandsänderung von „JobOutput“ sieht das Beispielschema etwa wi
       "testKey1": "testValue1",
       "testKey2": "testValue2"
     }
+  },
+  "dataVersion": "1.0",
+  "metadataVersion": "1"
+}]
+```
+### <a name="joboutputprogress"></a>JobOutputProgress
+
+Das Beispielschema ähnelt Folgendem:
+
+ ```json
+[{
+  "topic": "/subscriptions/<subscription-id>/resourceGroups/belohGroup/providers/Microsoft.Media/mediaservices/<account-name>",
+  "subject": "transforms/VideoAnalyzerTransform/jobs/job-5AB6DE32",
+  "eventType": "Microsoft.Media.JobOutputProgress",
+  "eventTime": "2018-12-10T18:20:12.1514867",
+  "id": "00000000-0000-0000-0000-000000000000",
+  "data": {
+    "jobCorrelationData": {
+      "TestKey1": "TestValue1",
+      "testKey2": "testValue2"
+    },
+    "label": "VideoAnalyzerPreset_0",
+    "progress": 86
   },
   "dataVersion": "1.0",
   "metadataVersion": "1"

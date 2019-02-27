@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: b6a2ca70faa36b94ace8158f33e58b5e6688ece3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002196"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268191"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>Analysieren von Textdaten in Azure Monitor-Protokollen
 Einige von Azure Monitor gesammelte Protokolldaten umfassen mehrere Arten von Informationen in einer einzelnen Eigenschaft. Das Analysieren dieser Daten in mehrere Eigenschaften erleichtert die Verwendung in Abfragen. Ein gängiges Beispiel ist ein [benutzerdefiniertes Protokoll](../../log-analytics/log-analytics-data-sources-custom-logs.md), das einen kompletten Protokolleintrag mit mehreren Werten in einer einzelnen Eigenschaft sammelt. Durch die Erstellung separater Eigenschaften für die verschiedenen Werte können Sie nach den einzelnen Eigenschaften suchen und sie aggregieren.
@@ -63,7 +63,7 @@ Nachteile dieser Methode:
 Weitere Informationen zum Analysieren von Daten beim Sammeln finden Sie unter [Erstellen benutzerdefinierter Felder in Azure Monitor](../platform/custom-fields.md). Dadurch werden benutzerdefinierte Eigenschaften in der Tabelle erstellt, die wie jede andere Eigenschaft von Abfragen verwendet werden können.
 
 ## <a name="parse-data-in-query-using-patterns"></a>Analysieren von Daten in Abfragen mithilfe von Mustern
-Wenn die zu analysierenden Daten durch ein Muster identifiziert werden können, das sich über Datensätze hinweg wiederholt, können Sie verschiedene Operatoren in der [Data Explorer-Abfragesprache](/azure/kusto/query/) verwenden, um den bestimmten Teil der Daten in eine oder mehrere neue Eigenschaften zu extrahieren.
+Wenn die zu analysierenden Daten durch ein Muster identifiziert werden können, das sich über Datensätze hinweg wiederholt, können Sie verschiedene Operatoren in der [Abfragesprache Kusto](/azure/kusto/query/) verwenden, um den bestimmten Teil der Daten in eine oder mehrere neue Eigenschaften zu extrahieren.
 
 ### <a name="simple-text-patterns"></a>Einfache Textmuster
 
@@ -139,7 +139,7 @@ MyCustomCSVLog_CL
 ```
 
 ## <a name="parse-predefined-structures-in-a-query"></a>Analysieren vordefinierter Strukturen in einer Abfrage
-Wenn Ihre Daten in einer bekannten Struktur formatiert sind, können Sie möglicherweise eine der Funktionen in der [Data Explorer-Abfragesprache](/azure/kusto/query/) zum Analysieren vordefinierter Strukturen verwenden:
+Wenn Ihre Daten in einer bekannten Struktur formatiert sind, können Sie möglicherweise eine der Funktionen in der [Abfragesprache Kusto](/azure/kusto/query/) zum Analysieren vordefinierter Strukturen verwenden:
 
 - [JSON](/azure/kusto/query/parsejsonfunction)
 - [XML](/azure/kusto/query/parse-xmlfunction)

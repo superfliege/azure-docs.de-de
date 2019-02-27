@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 01/18/2019
-ms.openlocfilehash: 0bb7c047f6bd03a45aa6c5c6d07b8022ee59bec9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.date: 02/20/2019
+ms.openlocfilehash: 4f8ee5a3a72fc143822a71bcb933f34e2f371019
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217169"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453136"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-sql"></a>Verwenden der Azure Active Directory-Authentifizierung für die Authentifizierung mit SQL
 
@@ -101,16 +101,16 @@ Für die Erstellung eines eigenständigen Datenbankbenutzers in Azure SQL-Datenb
 
 ### <a name="manage-instances"></a>Verwaltete Instanzen
 
-- Azure AD-Anmeldungen und -Benutzer werden als Previewfunktion für [verwaltete Instanzen](sql-database-managed-instance.md) unterstützt.
-- Das Festlegen von Azure AD-Anmeldungen, die einer Azure AD-Gruppe als Datenbankbesitzer zugeordnet sind, wird in [verwalteten Instanzen](sql-database-managed-instance.md) nicht unterstützt.
+- Azure AD-Serverprinzipale (Anmeldungen) und -Benutzer werden als Previewfunktion für [verwaltete Instanzen](sql-database-managed-instance.md) unterstützt.
+- Das Festlegen von Azure AD-Serverprinzipalen (Anmeldungen), die einer Azure AD-Gruppe als Datenbankbesitzer zugeordnet sind, wird für [verwaltete Instanzen](sql-database-managed-instance.md) nicht unterstützt.
     - Eine Erweiterung davon sieht folgendermaßen aus: Wenn eine Gruppe der Serverrolle `dbcreator` als Teil hinzugefügt wird, können Benutzer aus dieser Gruppe eine Verbindung mit der verwalteten Instanz herstellen und neue Datenbanken erstellen, auf die Datenbank aber nicht zugreifen. Der Grund: Der neue Datenbankbesitzer ist die Sicherheitszuordnung und nicht der Azure AD-Benutzer. Dieses Problem wird nicht sichtbar, wenn der einzelne Benutzer der Serverrolle `dbcreator` hinzugefügt wird.
-- Für Azure AD-Anmeldungen werden SQL-Agent-Verwaltung und Auftragsausführung unterstützt.
-- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Anmeldungen ausgeführt werden.
-- Die Überwachung aller Anweisungen in Verbindung mit Azure AD-Anmeldungen und Authentifizierungsereignissen wird unterstützt.
-- Dedizierte Administratorverbindung für Azure AD-Anmeldungen, die der Serverrolle „sysadmin“ angehören, wird unterstützt.
+- Für Azure AD-Serverprinzipale (Anmeldungen) werden die SQL-Agent-Verwaltung und die Auftragsausführung unterstützt.
+- Vorgänge für die Datenbanksicherung und -wiederherstellung können von Azure AD-Serverprinzipalen (Anmeldungen) ausgeführt werden.
+- Die Überwachung aller Anweisungen in Verbindung mit Azure AD-Serverprinzipalen (Anmeldungen) und Authentifizierungsereignissen wird unterstützt.
+- Eine dedizierte Administratorverbindung für Azure AD-Serverprinzipale (Anmeldungen), die der Serverrolle „sysadmin“ angehören, wird unterstützt.
     - Unterstützt über das SQLCMD-Hilfsprogramm und SQL Server Management Studio.
-- Anmeldetrigger werden für Anmeldeereignisse unterstützt, die aus Azure AD-Anmeldungen stammen.
-- Service Broker und Datenbank-E-Mails können unter Verwendung einer Azure AD-Anmeldung eingerichtet werden.
+- Anmeldetrigger werden für Anmeldeereignisse unterstützt, die von Azure AD-Serverprinzipalen (Anmeldungen) stammen.
+- Service Broker und Datenbank-E-Mails können unter Verwendung eines Azure AD-Serverprinzipals (Anmeldungen) eingerichtet werden.
 
 
 ## <a name="connecting-using-azure-ad-identities"></a>Herstellen einer Verbindung mit Azure AD-Identitäten
@@ -121,7 +121,7 @@ Die Azure Active Directory-Authentifizierung unterstützt die folgenden Methoden
 - Azure AD-Prinzipalname und Kennwort
 - Anwendungstokenauthentifizierung
 
-Die folgenden Authentifizierungsmethoden werden für Azure AD-Anmeldungen (**öffentliche Vorschau**) unterstützt:
+Die folgenden Authentifizierungsmethoden werden für Azure AD-Serverprinzipale (Anmeldungen) (**öffentliche Vorschau**) unterstützt:
 
 - Azure Active Directory Password
 - Azure Active Directory Integrated
@@ -133,7 +133,7 @@ Die folgenden Authentifizierungsmethoden werden für Azure AD-Anmeldungen (**öf
 
 - Um die Verwaltungsmöglichkeiten zu verbessern, wird empfohlen, eine dedizierte Azure AD-Gruppe als Administrator bereitzustellen.   
 - Es kann immer nur ein einzelner Azure AD-Administrator (Benutzer oder Gruppe) für einen Azure SQL-Datenbankserver oder eine Azure SQL Data Warehouse-Instanz konfiguriert werden.
-  - Das Hinzufügen von Azure AD-Anmeldungen für verwaltete Instanzen (**öffentliche Vorschau**) ermöglicht es, mehrere Azure AD-Anmeldungen zu erstellen, die der Rolle `sysadmin` hinzugefügt werden können.
+  - Das Hinzufügen von Azure AD-Serverprinzipalen (Anmeldungen) für verwaltete Instanzen (**öffentliche Vorschau**) ermöglicht es, mehrere Azure AD-Serverprinzipale (Anmeldungen) zu erstellen, die der Rolle `sysadmin` hinzugefügt werden können.
 - Nur ein Azure AD-Administrator für SQL Server kann unter Verwendung eines Azure Active Directory-Kontos erstmals eine Verbindung mit dem Azure SQL-Datenbankserver, der verwalteten Instanz oder der Azure SQL Data Warehouse-Instanz herstellen. Der Active Directory-Administrator kann weitere Azure AD-Datenbankbenutzer konfigurieren.   
 - Es wird empfohlen, das Verbindungstimeout auf 30 Sekunden festzulegen.   
 - SQL Server 2016 Management Studio und SQL Server Data Tools für Visual Studio 2015 (ab Version 14.0.60311.1April 2016) unterstützen die Azure Active Directory-Authentifizierung. (Die Azure AD-Authentifizierung wird vom **.NET Framework-Datenanbieter für SqlServer**ab .NET Framework 4.6 unterstützt.) Daher können die neuesten Versionen dieser Tools und Datenebenenanwendungen (DAC und BACPAC) die Azure AD-Authentifizierung verwenden.   
@@ -147,12 +147,12 @@ Die folgenden Authentifizierungsmethoden werden für Azure AD-Anmeldungen (**öf
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Erstellen und Auffüllen von Azure AD und zum anschließenden Konfigurieren von Azure AD mit Azure SQL-Datenbank oder Azure SQL Data Warehouse finden Sie unter [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL-Datenbank, eine verwalteten Instanz oder SQL Data Warehouse](sql-database-aad-authentication-configure.md).
-- Ein Tutorial zur Verwendung von Azure AD-Anmeldungen mit verwalteten Instanzen finden Sie unter [Azure AD-Anmeldungen mit verwalteten Instanzen](sql-database-managed-instance-aad-security-tutorial.md).
+- Ein Tutorial zur Verwendung von Azure AD-Serverprinzipalen (Anmeldungen) mit verwalteten Instanzen finden Sie unter [Tutorial: Sicherheit für verwaltete Instanzen in Azure SQL-Datenbank durch Azure AD-Anmeldungen](sql-database-managed-instance-aad-security-tutorial.md).
 - Eine Übersicht über den Zugriff und die Steuerung in SQL-Datenbank finden Sie unter [Azure SQL Database access control](sql-database-control-access.md) (SQL-Datenbank – Zugriffssteuerung).
 - Eine Übersicht über Anmeldungen, Benutzer und Datenbankrollen in SQL-Datenbank finden Sie unter [SQL-Datenbank-Authentifizierung und -Autorisierung: Gewähren von Zugriff](sql-database-manage-logins.md).
 - Weitere Informationen zu Datenbankprinzipalen finden Sie unter [Prinzipale](https://msdn.microsoft.com/library/ms181127.aspx).
 - Weitere Informationen zu Datenbankrollen finden Sie unter [Datenbankrollen](https://msdn.microsoft.com/library/ms189121.aspx).
-- Die Syntax zum Erstellen von Azure AD-Anmeldungen für verwaltete Instanzen finden Sie unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
+- Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) für verwaltete Instanzen finden Sie unter [CREATE LOGIN](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current).
 - Weitere Informationen zu Firewallregeln in SQL-Datenbank finden Sie unter [Übersicht über Firewallregeln für Azure SQL-Datenbank](sql-database-firewall-configure.md).
 
 <!--Image references-->

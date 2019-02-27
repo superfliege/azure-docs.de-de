@@ -10,19 +10,19 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: dd65988146d3738d8540ddf4e54ed57813e10c16
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243535"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453986"
 ---
 # <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
 ## <a name="overview"></a>Übersicht
-Dieser Artikel bietet eine Referenzimplementierung eines Projekts zur Analyse der Kundenabwanderung, das in Azure Machine Learning erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
+Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
 
 ### <a name="acknowledgements"></a>Danksagung
-Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
+Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning Studio, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
 
 > [!NOTE]
 > Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](http://gallery.azure.ai/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1).
@@ -54,11 +54,11 @@ Ein allgemeiner Problemlösungsprozess für die Kundenabwanderung ist in den Abb
 2. Mit einem Interventionsmodell können Sie berücksichtigen, wie sich das Interventionsniveau auf die Abwanderungswahrscheinlichkeit und den Langzeitwert von Kundenbeziehungen (Customer Lifetime Value, CLV) auswirken kann.
 3. Diese Analyse bietet sich für eine qualitative Analyse an, die in eine auf Kundensegmente ausgerichtete proaktive Marketingkampagne ausgeweitet wird, um das optimale Angebot bereitzustellen.  
 
-![][1]
+![Diagramm, das zeigt, wie sich anhand von Risikotoleranz und Entscheidungsmodellen verwertbare Erkenntnisse gewinnen lassen](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
 Dieser zukunftsorientierte Ansatz stellt die beste Möglichkeit zur Behandlung von Abwanderung dar, bringt jedoch Komplexität mit sich: Wir müssen einen Multimodell-Prototyp entwickeln und Abhängigkeiten zwischen den Modellen nachverfolgen. Die Interaktion zwischen den Modellen kann gekapselt werden, wie im folgenden Diagramm veranschaulicht:  
 
-![][2]
+![Diagramm zur Interaktion zwischen Abwanderungsmodellen](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
 *Abbildung 4: Vereinheitlichter Prototyp mit mehreren Modellen*  
 
@@ -71,24 +71,24 @@ Eine interessante Ergänzung ist hier die Analyse großer Datenmengen. Die heuti
  
 
 ## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementieren des Modellierungs-Prototyps in Machine Learning Studio
-Wie kann für das soeben beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe von Azure Machine Learning Studio erreicht wird.  
+Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe von Azure Machine Learning Studio erreicht wird.  
 
 Der Multi-Modell-Ansatz ist beim Entwerfen eines globalen Prototyps für die Abwanderung zwingend erforderlich. Selbst der (voraussagende) Bewertungsteil des Ansatzes sollte mehrere Modelle einbeziehen.  
 
 Das folgende Diagramm zeigt den erstellten Prototyp, der vier Bewertungsalgorithmen in Machine Learning Studio einbezieht, um die Abwanderung vorherzusagen. Der Grund für die Verwendung eines Multi-Modell-Ansatzes besteht nicht nur darin, einen Gesamtklassifizierer zum Erhöhen der Genauigkeit zu erstellen, sondern er dient auch zum Schutz vor einer Überanpassung sowie zur Verbesserung der vorgeschriebenen Funktionsauswahl.  
 
-![][3]
+![Screenshot eines komplexen Studio-Arbeitsbereichs mit vielen verbundenen Modulen](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
 *Abbildung 5: Prototyp eines Abwanderungsmodell-Ansatzes*  
 
 Die folgenden Abschnitte enthalten Einzelheiten zum Bewertungsmodell des Prototyps, das wir mithilfe von Machine Learning Studio implementiert haben.  
 
 ### <a name="data-selection-and-preparation"></a>Datenauswahl und Vorbereitung
-Die zum Erstellen der Modelle und zum Bewerten der Kunden verwendeten Daten wurden aus einer vertikalen CRM-Lösung abgerufen, wobei die Daten verschleiert wurden, um den Datenschutz der Kunden zu gewährleisten. Die Daten enthalten Informationen über 8.000 Abonnements in den USA, und es werden drei Quellen kombiniert: Bereitstellungsdaten (Abonnementmetadaten), Aktivitätsdaten (Nutzung des Systems) und Kundensupportdaten. Die Daten beziehen keine geschäftlichen Daten der Kunden ein, so sind z. B. keine Treuemetadaten oder Bonitätsbewertungen enthalten.  
+Die zum Erstellen der Modelle und zum Bewerten der Kunden verwendeten Daten wurden aus einer vertikalen CRM-Lösung abgerufen, wobei die Daten verschleiert wurden, um den Datenschutz der Kunden zu gewährleisten. Die Daten enthalten Informationen über 8.000 Abonnements in den USA, und es werden drei Quellen kombiniert: Bereitstellungsdaten (Abonnementmetadaten), Aktivitätsdaten (Nutzung des Systems) und Kundensupportdaten. Die Daten beinhalten keine geschäftlichen Daten der Kunden, so sind z. B. keine Treuemetadaten oder Bonitätsbewertungen enthalten.  
 
-Der Einfachheit halber liegen die ETL- und Datenbereinigungsprozesse außerhalb des Anwendungsbereichs, da wir annehmen, dass die Vorbereitung der Daten bereits an anderer Stelle durchgeführt wurde.   
+Der Einfachheit halber liegen die ETL- und Datenbereinigungsprozesse außerhalb des Anwendungsbereichs, da wir annehmen, dass die Vorbereitung der Daten bereits an anderer Stelle durchgeführt wurde.
 
-Die Funktionsauswahl für die Modellerstellung basiert auf der Bewertung der vorläufigen Signifikanz für eine Reihe von in den Prozess einbezogenen Einflusswerten, wobei das Random Forest-Modul verwendet wird. Für die Implementierung in Machine Learning Studio haben wir den Mittelwert, den Medianwert und Bereiche für repräsentative Funktionen berechnet. Es wurden z. B. Mengen für die qualitativen Daten hinzugefügt, etwa Mindest- und Höchstwerte für die Benutzeraktivität.    
+Die Funktionsauswahl für die Modellerstellung basiert auf der Bewertung der vorläufigen Signifikanz für eine Reihe von in den Prozess einbezogenen Einflusswerten, wobei das Random Forest-Modul verwendet wird. Für die Implementierung in Machine Learning Studio haben wir den Mittelwert, den Medianwert und Bereiche für repräsentative Funktionen berechnet. Es wurden z. B. Mengen für die qualitativen Daten hinzugefügt, etwa Mindest- und Höchstwerte für die Benutzeraktivität.
 
 Zudem wurden temporale Informationen für die letzten sechs Monate erfasst. Wir haben die Daten eines Jahres analysiert und dabei bewiesen, dass die Auswirkung auf die Abwanderung nach sechs Monaten erheblich abnimmt, auch wenn statistisch signifikante Trends vorhanden sind.  
 
@@ -96,11 +96,11 @@ Der wichtigste Punkt dabei ist, dass der gesamte Prozess, einschließlich ETL, F
 
 Die folgenden Diagramme veranschaulichen die verwendeten Daten.  
 
-![][4]
+![Screenshot mit einem Beispiel zur Verwendung der Daten mit Rohwerten](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
 *Abbildung 6: Auszug aus der Datenquelle (verschleiert)*  
 
-![][5]
+![Screenshot mit statistischen Funktionen, die aus der Datenquelle extrahiert wurden](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
 *Abbildung 7: Aus der Datenquelle extrahierte Funktionen*
  
@@ -122,7 +122,7 @@ Wir haben die folgenden vier Machine Learning-Algorithmen für die Erstellung de
 
 Das folgende Diagramm veranschaulicht einen Teil der Experimententwurfsoberfläche, die die Reihenfolge anzeigt, in der die Modelle erstellt wurden:  
 
-![][6]  
+![Screenshot mit einem kleinen Abschnitt des Studio-Experimentbereichs](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
 *Abbildung 8: Erstellen von Modellen in Machine Learning Studio*  
 
@@ -135,18 +135,18 @@ Wir haben das Bewertungs-DataSet auch mit der Desktop-Edition von SAS Enterprise
 In diesem Abschnitt werden unsere Ergebnisse zur Genauigkeit der Modelle auf Basis des Bewertungsdatasets präsentiert.  
 
 ### <a name="accuracy-and-precision-of-scoring"></a>Richtigkeit und Genauigkeit der Bewertung
-Im Allgemeinen ist die Implementierung in Azure Machine Learning etwas ungenauer als SAS, und zwar um etwa 10–15 % (Area Under Curve oder AUC).  
+Im Allgemeinen ist die Implementierung in Azure Machine Learning Studio etwas ungenauer als SAS, und zwar um etwa 10 – 15 % (Area Under Curve oder AUC).  
 
 Die wichtigste Kennzahl in Codeänderung ist jedoch die Rate der falschen Klassifizierung: Welcher der vom Klassifizierer vorhergesagten wichtigsten N Abwanderer ist tatsächlich **nicht** abgewandert und hat trotzdem besondere Behandlung erhalten? Das folgende Diagramm vergleicht die Fehlklassifizierungsrate für alle Modelle:  
 
-![][7]
+![AUC-Diagramm mit einem Vergleich der Leistung von vier Algorithmen](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
 *Abbildung 9: Area Under Curve (AUC, Fläche unter der Kurve) für den Passauer Prototyp*
 
 ### <a name="using-auc-to-compare-results"></a>Verwenden von AUC zum Vergleichen von Ergebnissen
 „Area Under Curve“ (AUC) ist eine Metrik, die eine globale Maßeinheit für die *Trennbarkeit* zwischen den Verteilungen von Punktzahlen für positive und negative Bestände. Sie ähnelt dem traditionellen ROC-Diagramm (Receiver Operator Characteristic), aber ein wesentlicher Unterschied ist, dass die AUC-Kennzahl von Ihnen keinen Schwellenwert erfordert. Stattdessen fasst sie die Ergebnisse über **alle** möglichen Optionen zusammen. Im Gegensatz dazu zeigt das traditionelle ROC-Diagramm den positiven Wert an der vertikalen und den falsch positiven Wert an der horizontalen Achse an, wobei der Schwellenwert für die Klassifizierung variiert.   
 
-AUC wird i. Allg. als Maßstab für den Wert verschiedener Algorithmen (oder verschiedener Systeme) verwendet, da die Kennzahl den Vergleich von Modellen anhand ihrer AUC-Werte gestattet. Dies ist ein beliebter Ansatz in Branchen wie der Meteorologie oder Biosciences. Somit stellt AUC ein beliebtes Werkzeug zur Bewertung der Leistung von Klassifizierern dar.  
+AUC wird als Maßstab für den Wert verschiedener Algorithmen (oder verschiedener Systeme) verwendet, da die Kennzahl den Vergleich von Modellen anhand ihrer AUC-Werte ermöglicht. Dies ist ein beliebter Ansatz in Branchen wie der Meteorologie oder Biosciences. Somit stellt AUC ein beliebtes Werkzeug zur Bewertung der Leistung von Klassifizierern dar.  
 
 ### <a name="comparing-misclassification-rates"></a>Vergleichen der Fehlklassifikationsraten
 Wir haben die Fehlklassifikationsraten für das fragliche Dataset mithilfe der CRM-Daten von ungefähr 8.000 Kunden verglichen.  
@@ -160,14 +160,14 @@ Ebenso ist die Richtigkeit wichtiger als die Genauigkeit, da wir am stärksten a
 
 Das folgende Diagramm aus Wikipedia veranschaulicht die Beziehung in einer einfach zu verstehenden Grafik:  
 
-![][8]
+![Zwei Ziele. Ein Ziel mit lose gruppierten Treffermarkierungen, die sich aber in der Nähe der Zielscheibenmitte befinden, markiert mit „Low accuracy: good trueness, poor precision“ (Geringe Treffergenauigkeit: gute Richtigkeit, schlechte Genauigkeit) Ein weiteres Ziel mit eng gruppierten Treffermarkierungen, die aber weit von der Zielscheibenmitte entfernt sind, markiert mit „Low accuracy: poor trueness, good precision (Geringe Treffergenauigkeit: schlechte Richtigkeit, gute Genauigkeit)](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
 *Abbildung 10: Kompromiss zwischen Richtigkeit und Genauigkeit*
 
 ### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Ergebnisse für Richtigkeit und Genauigkeit für das Boosted Tree-Modell
 Das folgende Diagramm zeigt die Originalergebnisse der Bewertung mithilfe des Machine Learning-Prototyps für das Boosted Decision Tree-Modell, bei dem es sich um das genaueste der vier Modelle handelt:  
 
-![][9]
+![Tabellenausschnitt mit den Werten „Accuracy“ (Treffergenauigkeit), „Precision“ (Genauigkeit), „Recall“ (Trefferquote), „F-Score“ (F-Maß), „AUC“ (Fläche unter der Kurve), „Average Log Loss“ (logarithmische Durchschnittsdämpfung) und „Training Log Loss“ (logarithmische Trainingsdämpfung) für vier Algorithmen](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
 *Abbildung 11: Merkmale des Boosted Decision Tree-Modells*
 
@@ -200,13 +200,13 @@ Diese wichtige Beobachtung wird in Unternehmen häufig übersehen, die im Allgem
 
 Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio ist jedoch, dass die vier Informationskategorien, die nach Geschäftsbereich oder Abteilung bewertet werden, für das maschinelle Lernen hinsichtlich der Abwanderung zu einer wichtigen Quelle werden.  
 
-Eine weitere interessante Funktion von Azure Machine Learning ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning.  
+Eine weitere interessante Funktion von Azure Machine Learning Studio ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning Studio.  
 
 Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.
   
 
 ## <a name="conclusion"></a>Zusammenfassung
-In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
+In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning Studio implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
 
  
 
@@ -223,17 +223,6 @@ In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen
  
 
 ## <a name="appendix"></a>Anhang
-![][10]
+![Snapshot einer Präsentation zum Abwanderungsprototyp](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
 *Abbildung 12: Snapshot einer Präsentation zum Abwanderungs-Prototyp*
-
-[1]: ./media/azure-ml-customer-churn-scenario/churn-1.png
-[2]: ./media/azure-ml-customer-churn-scenario/churn-2.png
-[3]: ./media/azure-ml-customer-churn-scenario/churn-3.png
-[4]: ./media/azure-ml-customer-churn-scenario/churn-4.png
-[5]: ./media/azure-ml-customer-churn-scenario/churn-5.png
-[6]: ./media/azure-ml-customer-churn-scenario/churn-6.png
-[7]: ./media/azure-ml-customer-churn-scenario/churn-7.png
-[8]: ./media/azure-ml-customer-churn-scenario/churn-8.png
-[9]: ./media/azure-ml-customer-churn-scenario/churn-9.png
-[10]: ./media/azure-ml-customer-churn-scenario/churn-10.png

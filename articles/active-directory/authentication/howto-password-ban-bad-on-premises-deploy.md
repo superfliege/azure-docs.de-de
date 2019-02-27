@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4a4b760652ce38e27e12e9eb73fbe7692eddbc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e8d39b614c373c63cf1405c5db0f64581c481d1f
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204371"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417199"
 ---
 # <a name="preview-deploy-azure-ad-password-protection"></a>Vorschau: Bereitstellen des Kennwortschutzes für Azure AD
 
@@ -53,15 +53,18 @@ Dies wird vorzugsweise erreicht, indem der Computer über Windows Update mit all
     |`https://login.microsoftonline.com`|Authentifizierungsanforderungen|
     |`https://enterpriseregistration.windows.net`|Funktion für Azure AD-Kennwortschutz|
 
+* Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Verkehr mit TLS 1.2 zulassen.
 * Ein globales Administratorkonto zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
 * Ein Konto mit Active Directory-Domänenadministratorrechten in der Gesamtstruktur-Stammdomäne, um die Windows Server Active Directory-Gesamtstruktur bei Azure AD zu registrieren.
 * Alle Active Directory-Domänen, die die DC-Agent-Dienst-Software ausführen, müssen DFSR für die SYSVOL-Replikation verwenden.
 
 ## <a name="single-forest-deployment"></a>Bereitstellung in einer einzelnen Gesamtstruktur
 
-Das folgende Diagramm zeigt, wie die grundlegenden Komponenten des Azure AD-Kennwortschutzes in einer lokalen Active Directory-Umgebung zusammenarbeiten.  
+Das folgende Diagramm zeigt, wie die grundlegenden Komponenten des Azure AD-Kennwortschutzes in einer lokalen Active Directory-Umgebung zusammenarbeiten.
 
 ![Zusammenspiel der Komponenten des Azure AD-Kennwortschutzes](./media/concept-password-ban-bad-on-premises/azure-ad-password-protection.png)
+
+Vor der Bereitstellung empfiehlt es sich zu überprüfen, wie die Software funktioniert. Siehe hierzu [Konzeptionelle Übersicht über den Azure AD-Kennwortschutz](concept-password-ban-bad-on-premises.md).
 
 ### <a name="download-the-software"></a>Herunterladen der Software
 

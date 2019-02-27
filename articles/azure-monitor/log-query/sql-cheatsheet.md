@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: bwren
-ms.openlocfilehash: 121f9ff602907e64bba0c98342e38477109e9294
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 76c9e143a4127807bfffa879103fca42d2d27e71
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993662"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268327"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>Cheat Sheet für den Vergleich zwischen SQL und Azure Monitor-Protokollabfragen 
 
-Die folgende Tabelle dient als Unterstützung für Benutzer, die mit SQL vertraut sind, beim Erlernen der Data Explorer-Abfragesprache zum Schreiben von Protokollabfragen in Azure Monitor. Sehen Sie sich den T-SQL-Befehl für das Lösen eines gängigen Szenarios und die Entsprechung in einer Azure Monitor-Protokollabfrage an.
+Die folgende Tabelle dient als Unterstützung für Benutzer, die mit SQL vertraut sind, beim Erlernen der Abfragesprache Kusto zum Schreiben von Protokollabfragen in Azure Monitor. Sehen Sie sich den T-SQL-Befehl für das Lösen eines gängigen Szenarios und die Entsprechung in einer Azure Monitor-Protokollabfrage an.
 
 ## <a name="sql-to-azure-monitor"></a>Vergleich zwischen SQL und Azure Monitor
 

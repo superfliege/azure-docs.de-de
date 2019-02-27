@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: f7133ed74c9862a7e3d496a9093faaf3959e0d78
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993417"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56270146"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>Erstellen interaktiver Berichte mit Azure Monitor-Arbeitsmappen
 
@@ -77,7 +77,7 @@ Abfrageabschnitte sind sehr flexibel und können verwendet werden, um Fragen zu 
 
 * Wie viele Ausnahmen wurden von Ihrer Website während des Zeitraums ausgelöst, in dem sich die Nutzung verringert hat?
 * Wie waren die Seiteladezeiten für Benutzer verteilt, die eine Seite angezeigt haben?
-* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Anhand dieser Angabe können Sie nachvollziehen, ob bestimmte Benutzergruppen unterschiedliche Teilfunktionen Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der Data Explorer-Abfragesprache.)
+* Wie viele Benutzer haben eine Gruppe von Seiten auf Ihrer Website angezeigt, eine andere Gruppe von Seiten aber nicht? Dies kann das Verständnis fördern, ob Sie über Cluster mit Benutzern verfügen, die unterschiedliche Teilmengen der Funktionalität Ihrer Website nutzen. (Verwenden Sie den Operator `join` mit dem Modifizierer `kind=leftanti` in der [Abfragesprache Kusto](/azure/kusto/query/).)
 
 Außerdem sind Sie nicht nur auf Abfragen aus dem Kontext der Anwendung, aus der Sie die Arbeitsmappe gestartet haben, beschränkt. Sie können über mehrere von Application Insights überwachte Apps hinweg sowie auch Log Analytics-Arbeitsbereiche abfragen, solange Sie Zugriffsberechtigungen für diese Ressourcen besitzen.
 

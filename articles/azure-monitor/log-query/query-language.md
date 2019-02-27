@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: bwren
-ms.openlocfilehash: f2c4939436db5ae4c862cb311cc66a162ac716e3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 01d452f97134093e9b40b6ec32f1c9fed41564aa
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989245"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56343050"
 ---
 # <a name="azure-monitor-log-queries"></a>Protokollabfragen in Azure Monitor
-Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Protokollabfragen verwenden eine Version der gleichen Abfragesprache. Die Dokumentation über die [Azure Data Explorer-Abfragesprache](/azure/kusto/query) enthält alle Informationen zur Sprache und ist die wichtigste Ressource zum Schreiben von Azure Monitor-Protokollabfragen. Diese Seite enthält Links zu anderen Ressourcen, die Sie beim Erlernen des Schreibens von Abfragen unterstützen und die Unterschiede der Sprachversionen bei der Azure Monitor-Implementierung erläutern.
+Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Protokollabfragen verwenden eine Version der gleichen Abfragesprache Kusto. Die [Dokumentation über die Abfragesprache Kusto](/azure/kusto/query) enthält alle Informationen zur Sprache und ist die wichtigste Ressource zum Schreiben von Azure Monitor-Protokollabfragen. Diese Seite enthält Links zu anderen Ressourcen, die Sie beim Erlernen des Schreibens von Abfragen unterstützen und die Unterschiede der Sprachversionen bei der Azure Monitor-Implementierung erläutern.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -36,8 +36,8 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
 
 ## <a name="reference"></a>Verweis
 
-- [Referenz zur Abfragesprache](/azure/kusto/query) ist die vollständige Sprachreferenz für die Data Explorer-Abfragesprache.
-- [Azure Monitor-Protokollabfragesprache – Unterschiede](data-explorer-difference.md) beschreibt die Unterschiede zwischen den Versionen der Data Explorer-Abfragesprache.
+- [Referenz zur Abfragesprache](/azure/kusto/query) ist die vollständige Sprachreferenz für die Abfragesprache Kusto.
+- [Azure Monitor-Protokollabfragesprache – Unterschiede](data-explorer-difference.md) beschreibt die Unterschiede zwischen den Versionen der Abfragesprache Kusto.
 - [Standardeigenschaften in Azure Monitor-Protokolldatensätzen](../../azure-monitor/platform/log-standard-properties.md) beschreibt Standardeigenschaften aller Azure Monitor-Protokolldaten.
 - [Ausführen ressourcenübergreifender Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/cross-workspace-query.md) beschreibt, wie Sie Protokollabfragen schreiben, die Daten aus mehreren Log Analytics-Arbeitsbereichen und Application Insights-Anwendungen verwenden.
 
@@ -65,4 +65,4 @@ Azure Monitor-Protokolle basieren auf Azure Data Explorer, und Azure Monitor-Pro
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Hier finden Sie die vollständige Referenzdokumentation für die Data Explorer-Abfragesprache.](/azure/kusto/query/)
+- Greifen Sie auf die vollständige [Referenzdokumentation für die Abfragesprache Kusto](/azure/kusto/query/) zu.

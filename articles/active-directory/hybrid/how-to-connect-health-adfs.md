@@ -16,12 +16,12 @@ ms.date: 04/26/2018
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4714a4ee5f90194a3be47b1e5878dfa8e230f42b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d239d372a514b24a4e022f62ceec2dfee94d187
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173486"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430402"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Überwachen von AD FS mithilfe von Azure AD Connect Health
 Die folgende Dokumentation bezieht sich auf die Überwachung Ihrer AD FS-Infrastruktur mit Azure AD Connect Health. Informationen zum Überwachen von Azure AD Connect (Sync) mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health für die Synchronisierung](how-to-connect-health-sync.md). Informationen zur Überwachung der Active Directory-Domänendienste mit Azure AD Connect Health finden Sie unter [Verwenden von Azure AD Connect Health mit AD DS](how-to-connect-health-adds.md).
@@ -57,7 +57,7 @@ Um zusätzliche Metriken auszuwählen, einen Zeitraum anzugeben oder die Gruppie
 | Netzwerkadresse | Gruppiert die Gesamtzahl von Anforderungen basierend auf der Netzwerkadresse des Benutzers. Dies kann entweder ein Intranet oder Extranet sein. Diese Gruppierung ist nützlich, wenn Sie die prozentuale Verteilung des eingehenden Datenverkehrs für Intranet und Extranet anzeigen möchten. |
 
 
-**Metrik: Anforderungen mit Fehlern gesamt**: Die Gesamtzahl von Anforderungen mit Fehlern, die vom Verbunddienst verarbeitet wurden.  (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)
+**Metrik: Anforderungen mit Fehlern gesamt**: Die Gesamtzahl von Anforderungen mit Fehlern, die vom Verbunddienst verarbeitet wurden. (Diese Metrik steht nur in AD FS für Windows Server 2012 R2 zur Verfügung.)
 
 |Gruppieren nach | Bedeutung und Nutzen der Gruppierung |
 | --- | --- |
@@ -199,7 +199,7 @@ Private IP-Adressen (<i>10.x.x.x, 172.x.x.x und 192.168.x.x</i>) und Exchange-IP
 Falls IP-Adressen des Lastenausgleichs angezeigt werden, sendet Ihr externer Lastenausgleich höchstwahrscheinlich die Client-IP-Adresse nicht, wenn er die Anforderung an den Webanwendungsproxy-Server übergibt. Konfigurieren Sie Ihren Lastenausgleich so, dass Forward-Client-IP-Adressen ordnungsgemäß weitergegeben werden. 
 
 3. Wie kann ich die IP-Adresse blockieren?  <br />
-Sie sollten identifizierte schädliche IP-Adressen der Firewall hinzufügen oder in Exchange blockieren.   <br />
+Sie sollten identifizierte schädliche IP-Adressen der Firewall hinzufügen oder in Exchange blockieren. Bei AD FS 2016 können Sie die IP-Adresse direkt über die Eigenschaften der gesperrten IP-Adresse blockieren. [hier](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ad-fs-extranet-smart-lockout-protection#banned-ip-addresses)   <br />
 
 4. Warum werden in diesem Bericht keine Elemente angezeigt? <br />
    - Es liegen keine fehlgeschlagenen Anmeldeaktivitäten vor, für die die Schwellenwerteinstellungen überschritten werden. 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: iainfou
-ms.openlocfilehash: f5695e52528c3384c46c49c5c5ec2e451bd0be7c
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 7f964397b476d5a97ecdde0ae22bd6662a435e1a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998089"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456519"
 ---
 # <a name="kubernetes-core-concepts-for-azure-kubernetes-service-aks"></a>Grundlegende Kubernetes-Konzepte für Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ Der Clustermaster umfasst die folgenden Kubernetes-Kernkomponenten:
 
 AKS stellt einen Clustermaster mit Einzelmandant, einem dedizierten API-Server, einem Scheduler usw. bereit. Sie definieren die Anzahl und Größe der Knoten, und die Azure-Plattform konfiguriert die sichere Kommunikation zwischen Clustermaster und Clusterknoten. Die Interaktion mit dem Clustermaster erfolgt über Kubernetes-APIs, z.B. `kubectl` oder das Kubernetes-Dashboard.
 
-Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch verfügbaren *etcd*-Speicher nicht konfigurieren müssen. Er bedeutet aber auch, dass Sie nicht direkt auf den Clustermaster zugreifen können. Upgrades für Kubernetes werden über die Azure CLI oder das Azure-Portal orchestriert. Ein Upgrade erfolgt erst auf dem Clustermaster, dann auf den Knoten. Zum Beheben möglicher Probleme können Sie über Azure Log Analytics die Clustermasterprotokolle überprüfen.
+Dieser verwaltete Clustermaster bedeutet, dass Sie Komponenten wie einen hoch verfügbaren *etcd*-Speicher nicht konfigurieren müssen. Er bedeutet aber auch, dass Sie nicht direkt auf den Clustermaster zugreifen können. Upgrades für Kubernetes werden über die Azure CLI oder das Azure-Portal orchestriert. Ein Upgrade erfolgt erst auf dem Clustermaster, dann auf den Knoten. Zum Beheben möglicher Probleme können Sie über Azure Monitor-Protokolle die Clustermasterprotokolle überprüfen.
 
 Wenn Sie den Clustermaster auf eine bestimmte Weise konfigurieren müssen oder direkten Zugriff benötigen, können Sie mit [aks-engine][aks-engine] selbst einen Kubernetes-Cluster bereitstellen.
 
@@ -76,7 +76,7 @@ Wenn Sie ein anderes Hostbetriebssystem oder eine andere Containerruntime benöt
 
 Sie müssen nicht die Kubernetes-Kernkomponenten auf jedem Knoten verwalten, z.B. *kubelet*, *kube-proxy* und *kube-dns*, sie belegen jedoch einige der verfügbaren Computeressourcen. Um die Leistung und Funktionalität des Knotens zu gewährleisten, werden auf jedem Knoten die folgenden Computeressourcen reserviert:
 
-- **CPU:** 60 ms
+- **CPU**: 60 ms
 - **Arbeitsspeicher:** 20 % bis zu 4 GiB
 
 Diese Reservierungen führen dazu, dass möglicherweise eine geringere Menge verfügbarer CPU-Leistung und Arbeitsspeicher für Ihre Anwendungen angezeigt wird, als der eigentliche Knoten enthält. Wenn Ressourceneinschränkungen aufgrund der Anzahl von ausgeführten Anwendungen vorliegen, gewährleisten diese Reservierungen, dass für die Kubernetes-Kernkomponenten weiterhin CPU-Leistung und Arbeitsspeicher zur Verfügung stehen. Die Ressourcenreservierungen können nicht geändert werden.

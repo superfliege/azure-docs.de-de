@@ -1,5 +1,5 @@
 ---
-title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft Docs
+title: Ressourcen, Rollen und Access Control in Application Insights | Microsoft-Dokumentation
 description: "\"Besitzer\", \"Mitwirkende\" und \"Leser\" für die gewonnenen Unternehmensinformationen."
 services: application-insights
 documentationcenter: ''
@@ -10,14 +10,14 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 09/04/2018
+ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 023f0e560900aa582be1f28e553358adb0c87b1e
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118471"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56309249"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Ressourcen, Rollen und Zugriffssteuerung in Application Insights
 
@@ -113,6 +113,32 @@ Wenn der gewünschte Benutzer nicht im Verzeichnis enthalten ist, können Sie je
 ## <a name="related-content"></a>Verwandte Inhalte
 
 * [Rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/role-assignments-portal.md)
+
+## <a name="powershell-query-to-determine-role-membership"></a>PowerShell-Abfrage zum Bestimmen der Rollenmitgliedschaft
+
+Da bestimmte Rollen mit Benachrichtigungen und E-Mail-Warnungen verknüpft sein können, kann es hilfreich sein, eine Liste von Benutzern zu generieren, die einer bestimmten Rolle angehören. Als Hilfe zum Generieren dieser Listen bieten wir die folgenden Beispielabfragen, die entsprechend Ihren speziellen Anforderungen angepasst werden können:
+
+### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>Abfrage des gesamten Abonnements nach den Rollen „Administrator“ und „Mitwirkender“
+
+```powershell
+(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Application Insights-Ressource für Besitzer und Mitwirkende
+
+```powershell
+$resourceGroup = “RGNAME”
+$resourceName = “AppInsightsName”
+$resourceType = “microsoft.insights/components”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
+
+### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>Abfrage innerhalb des Kontexts einer bestimmten Ressourcengruppe für Besitzer und Mitwirkende
+
+```powershell
+$resourceGroup = “RGNAME”
+(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+```
 
 <!--Link references-->
 

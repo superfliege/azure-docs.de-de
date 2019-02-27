@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: e55058d6b1f76b4afcb847b946df85d5ab69971b
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 972a538fab8a2aa84f6a12df48422abb40baac82
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985422"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443436"
 ---
-# <a name="enabling-azure-ultra-ssds"></a>Aktivieren von Azure Ultra SSDs
+# <a name="enabling-azure-ultra-ssd"></a>Aktivieren von Azure SSD Ultra
 
-Azure SSD Ultra bietet hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit niedrigen Wartezeiten für Azure IaaS-VMs. Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Zu den weiteren Vorteilen von SSD Ultra gehört die Möglichkeit, die Datenträgerleistung dynamisch in Abstimmung mit Ihren Workloads ändern zu können, ohne Ihre virtuellen Computer neu starten zu müssen. SSD Ultra eignet sich für datenintensive Workloads wie SAP HANA, führende Datenbanken und Workloads mit vielen Transaktionen.
+Azure SSD Ultra bietet hohen Durchsatz, hohe IOPS und konsistenten Datenträgerspeicher mit niedrigen Wartezeiten für Azure IaaS-VMs. Dieses neue Angebot bietet Spitzenleistung auf den gleichen Verfügbarkeitsebenen wie unsere vorhandenen Datenträgerangebote. Zu den weiteren Vorteilen von SSD Ultra gehört die Möglichkeit, die Datenträgerleistung in Abstimmung mit Ihren Workloads dynamisch zu ändern, ohne Ihre virtuellen Computer neu starten zu müssen. SSD Ultra eignet sich für datenintensive Workloads wie SAP HANA, führende Datenbanken und Workloads mit vielen Transaktionen.
 
-Aktuell befinden sich Ultra SSDs in der Vorschauphase, und Sie müssen sich bei der Preview [registrieren](https://aka.ms/UltraSSDPreviewSignUp), um darauf zuzugreifen.
+Aktuell befindet sich SSD Ultra in der Vorschauphase, und Sie müssen sich für die Vorschauversion [registrieren](https://aka.ms/UltraSSDPreviewSignUp), um darauf zuzugreifen.
 
-Nach der Genehmigung, führen Sie einen der folgenden Befehle aus, um zu bestimmen, in welcher Zone in „USA, Osten 2“ Ihr SSD Ultra bereitgestellt werden soll:
+Nach der Genehmigung führen Sie einen der folgenden Befehle aus, um zu bestimmen, in welcher Zone in „USA, Osten 2“ Ihr SSD Ultra-Datenträger bereitgestellt werden soll:
 
 PowerShell: `Get-AzComputeResourceSku | where {$_.ResourceType -eq "disks" -and $_.Name -eq "UltraSSD_LRS" }`
 
@@ -35,16 +35,16 @@ Die Antwort wird dem unten gezeigten Formular ähneln, wobei X für die Zone ste
 
 Wenn der Befehl keine Antwort zurückgegeben hat, bedeutet das, dass Ihre Registrierung bei dem Feature entweder noch aussteht oder noch nicht genehmigt ist.
 
-Nachdem Sie nun wissen, in welcher Zone bereitgestellt werden soll, führen Sie die Bereitstellungsschritte in diesem Artikel aus, um Ihre ersten virtuellen Computer mit Ultra SSD-Datenträgern bereitzustellen.
+Nachdem Sie nun wissen, in welcher Zone bereitgestellt werden soll, können Sie die Bereitstellungsschritte in diesem Artikel ausführen, um Ihre ersten virtuellen Computer mit SSD Ultra bereitzustellen.
 
-## <a name="deploying-an-ultra-ssd"></a>Bereitstellen einer Ultra SSD
+## <a name="deploying-an-ultra-ssd"></a>Bereitstellen eines SSD Ultra-Datenträgers
 
 Bestimmen Sie zuerst die Größe des bereitzustellenden virtuellen Computers. Im Rahmen dieser Preview werden nur VMs der Familien DsV3 und EsV3 unterstützt. Zusätzliche Details zu diesen VM-Größen finden Sie in der zweiten Tabelle in diesem [Blog](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/).
-Ferner finden Sie Informationen in dem Beispiel [Erstellen eines virtuellen Computers mit mehreren Ultra SSD-Datenträgern](https://aka.ms/UltraSSDTemplate), wie Sie einen virtuellen Computer mit mehreren Ultra SSD-Datenträgern erstellen.
+Lesen Sie auch die Informationen dazu, wie Sie einen virtuellen Computer mit mehreren SSD Ultra-Datenträgern erstellen. Diese finden Sie im Beispiel [Erstellen eines virtuellen Computers mit mehreren SSD Ultra-Datenträgern](https://aka.ms/UltraSSDTemplate).
 
 Im Folgenden werden die Änderungen an den neuen/geänderten Resource Manager-Vorlagen beschrieben: **apiVersion** für `Microsoft.Compute/virtualMachines` und `Microsoft.Compute/Disks` muss als `2018-06-01` (oder höher) festgelegt sein.
 
-Geben Sie die Datenträger-SKU „UltraSSD_LRS“, die Datenträgerkapazität, IOPS und Durchsatz in Mbit/s an, um einen Ultra SSD-Datenträger zu erstellen. Im Folgenden finden Sie ein Beispiel, das einen Datenträger mit 1.024 GiB (GiB = 2^30 Bytes), 80.000 IOPS und 1.200 Mbit/s (Mbit/s = 10^6 Bytes/s) erstellt:
+Geben Sie die Datenträger-SKU „UltraSSD_LRS“, die Datenträgerkapazität, IOPS und Durchsatz in MBit/s an, um einen SSD Ultra-Datenträger zu erstellen. Im Folgenden finden Sie ein Beispiel, das einen Datenträger mit 1.024 GiB (GiB = 2^30 Byte), 80.000 IOPS und 1.200 MBit/s (MBit/s = 10^6 Byte/s) erstellt:
 
 ```json
 "properties": {  
@@ -57,7 +57,7 @@ Geben Sie die Datenträger-SKU „UltraSSD_LRS“, die Datenträgerkapazität, I
 }
 ```
 
-Fügen Sie den Eigenschaften der VM eine zusätzliche Funktion hinzu, um anzuzeigen, dass die Ultra SSD aktiviert ist (die vollständige Resource Manager-Vorlage finden Sie im [Beispiel](https://aka.ms/UltraSSDTemplate)):
+Fügen Sie den Eigenschaften der VM eine zusätzliche Funktion hinzu, um anzuzeigen, dass SSD Ultra aktiviert ist (die vollständige Resource Manager-Vorlage finden Sie im [Beispiel](https://aka.ms/UltraSSDTemplate)):
 
 ```json
 {
@@ -77,10 +77,10 @@ Fügen Sie den Eigenschaften der VM eine zusätzliche Funktion hinzu, um anzuzei
 
 Nachdem der virtuelle Computer bereitgestellt wurde, können Sie die Datenträger für Daten partitionieren und formatieren sowie für Ihre Workloads konfigurieren.
 
-## <a name="additional-ultra-ssd-scenarios"></a>Zusätzliche Ultra SSD-Szenarien
+## <a name="additional-ultra-ssd-scenarios"></a>Zusätzliche SSD Ultra-Szenarien
 
-- Während der Erstellung des virtuellen Computers können Ultra SSDs auch implizit erstellt werden. Allerdings erhalten diese Datenträger einen Standardwert für IOPS (500) und den Durchsatz (8 MiB/s).
-- Zusätzliche Ultra SSDs können Ultra SSD-kompatiblen VMs angefügt werden.
+- Während der Erstellung des virtuellen Computers können SSD Ultra-Datenträger auch implizit erstellt werden. Allerdings erhalten diese Datenträger einen Standardwert für IOPS (500) und den Durchsatz (8 MiB/s).
+- Zusätzliche SSD Ultra-Datenträger können an kompatible VMs angefügt werden.
 - SSD Ultra unterstützt die Anpassung der Datenträgerleistungsattribute (IOPS und Durchsatz) zur Laufzeit, ohne den Datenträger vom virtuellen Computer zu trennen. Nachdem ein Vorgang zur Größenänderung der Datenträgerleistung auf einem Datenträger gestartet wurde, kann es bis zu einer Stunde dauern, bis die Änderung tatsächlich wirksam wird.
 - Das Erhöhen der Datenträgerkapazität erfordert das Aufheben der Zuordnung eines virtuellen Computers.
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/05/2018
 ms.author: bwren
-ms.openlocfilehash: 6fc568546721511f6289600148919d28773058f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 9b3e35e8372e5488fd97da3f035c29940cb1f293
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002282"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56269194"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Von Azure Monitor gesammelte Überwachungsdaten
 [Azure Monitor](../overview.md) ist ein Dienst, der Sie bei der Überwachung Ihrer Anwendungen und der Ressourcen, auf denen sie aufbauen, unterstützt. Im Zentrum dieser Funktionalität steht die Speicherung von Telemetriedaten und weiteren Daten aus überwachten Ressourcen. Dieser Artikel enthält eine vollständige Beschreibung der Weise, in der diese Daten von Azure Monitor gespeichert und verwendet werden.
@@ -149,7 +149,7 @@ Dies sind einige der Aufgaben, die Sie mit Protokollen ausführen können:
 - Zugreifen auf Metrikwerte über eine Befehlszeile oder eine benutzerdefinierte Anwendung mit [PowerShell-Cmdlets](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) oder der [REST-API](https://dev.loganalytics.io/).
 
 ### <a name="viewing-log-data"></a>Anzeigen von Protokolldaten
-Alle Protokolldaten in Azure Monitor werden mit einer [Protokollabfrage](../log-query/log-query-overview.md) abgerufen, die mit der [Daten-Explorer-Abfragesprache](../log-query/get-started-queries.md) erstellt wurde, mit der Sie gesammelte Daten schnell abrufen, konsolidieren und analysieren können. Verwenden Sie [Log Analytics](../log-query/portals.md), um Abfragen im Azure-Portal zu schreiben und zu testen. Sie können interaktiv mit Ergebnissen arbeiten oder sie an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Protokolle mit der [REST-API für die Azure-Überwachung](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) abzurufen.
+Alle Protokolldaten in Azure Monitor werden mit einer [Protokollabfrage](../log-query/log-query-overview.md) abgerufen, die mit der [Abfragesprache Kusto](../log-query/get-started-queries.md) erstellt wurde, mit der Sie gesammelte Daten schnell abrufen, konsolidieren und analysieren können. Verwenden Sie [Log Analytics](../log-query/portals.md), um Abfragen im Azure-Portal zu schreiben und zu testen. Sie können interaktiv mit Ergebnissen arbeiten oder sie an ein Dashboard anheften, um sie mit anderen Visualisierungstools anzuzeigen. Zudem haben Sie die Möglichkeit, Protokolle mit der [REST-API für die Azure-Überwachung](../../monitoring-and-diagnostics/monitoring-rest-api-walkthrough.md) abzurufen.
 
 > [!IMPORTANT]
 > Daten aus Application Insights werden anders als andere Protokolldaten in Azure Monitor in einer separaten Partition gespeichert. Dadurch wird die gleiche Funktionalität wie für andere Protokolldaten unterstützt, jedoch müssen Sie die [Application Insights-Konsole](../app/analytics.md) oder die [Application Insights-API](https://dev.applicationinsights.io/) für den Zugriff auf diese Daten verwenden. Sie können eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) verwenden, um Anwendungsdaten zusammen mit anderen Protokolldaten zu analysieren.

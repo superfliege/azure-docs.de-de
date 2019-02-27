@@ -1,5 +1,5 @@
 ---
-title: Implementieren von CI/CD für Azure Stream Analytics mithilfe von REST-APIs
+title: Implementieren von CI/CD für Azure Stream Analytics in IoT Edge mithilfe von REST-APIs
 description: Erfahren Sie, wie Sie mithilfe von REST-APIs eine Pipeline für Continuous Integration und Deployment für Azure Stream Analytics implementieren.
 services: stream-analytics
 author: mamccrea
@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/04/2018
-ms.openlocfilehash: f22a4c4d0159efa2ac42d15ff6afdadc2d6755d0
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 40beb620e037061b189762a51e3c29d0fd251b27
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54215047"
+ms.lasthandoff: 02/14/2019
+ms.locfileid: "56268498"
 ---
-# <a name="implement-cicd-for-stream-analytics-using-apis"></a>Implementieren von CI/CD für Stream Analytics mithilfe von APIs
+# <a name="implement-cicd-for-stream-analytics-on-iot-edge-using-apis"></a>Implementieren von CI/CD für Stream Analytics in IoT Edge mithilfe von APIs
 
 Sie können Continuous Integration und Deployment für Azure Stream Analytics-Aufträge mithilfe von REST-APIs aktivieren. Dieser Artikel bietet Beispiele zu den zu verwendenden APIs und ihrer Verwendung. REST-APIs werden in Azure Cloud Shell nicht unterstützt.
 

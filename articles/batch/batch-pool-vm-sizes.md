@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/25/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 921dfc12a7353725d3f9e05d7aa3245ec8ba6084
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 43094839c9da9b00c97d1dffd53f98a3acd119d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185993"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417141"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Auswählen einer VM-Größe für Computeknoten in einem Azure Batch-Pool
 
@@ -44,14 +44,16 @@ Batch-Pools in der Konfiguration des virtuellen Computers unterstützen alle VM-
 | B-Serie | Alle |
 | DC-Serie | Alle |
 | In hohem Maß arbeitsspeicheroptimiert | Alle |
-| Hb-Serie<sup>1</sup> | Alle |
-| Hc-Serie<sup>1</sup> | Alle |
+| HB-Serie<sup>1,2</sup> | Alle |
+| HC-Serie<sup>1,2</sup> | Alle |
 | Lsv2-Reihe | Alle |
-| NDv2-Serie<sup>1</sup> | Alle |
-| NVv2-Serie | Alle |
+| NDv2-Serie<sup>1,2</sup> | Alle |
+| NVv2-Serie<sup>1</sup> | Alle |
 | SAP HANA | Alle |
 
-<sup>1</sup> Kann von Batch-Konten im Benutzerabonnementmodus verwendet werden; für das Batch-Konto im Benutzerabonnementmodus muss das Kernkontingent festgelegt sein. Weitere Informationen finden Sie unter [Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+
+<sup>1</sup> Unterstützung geplant.  
+<sup>2</sup> Kann von Batch-Konten im Benutzerabonnementmodus verwendet werden; für das Batch-Konto im Benutzerabonnementmodus muss das Kernkontingent festgelegt sein. Weitere Informationen finden Sie unter [Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 Die folgenden VM-Größen werden nur für Knoten mit niedriger Priorität unterstützt:
 

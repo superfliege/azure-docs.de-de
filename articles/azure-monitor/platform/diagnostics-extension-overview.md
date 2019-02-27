@@ -1,23 +1,21 @@
 ---
 title: Übersicht zur Azure-Diagnoseerweiterung
 description: Verwenden Sie die Azure-Diagnose zur Problembehandlung, zur Leistungsmessung, zur Überwachung und zur Datenverkehrsanalyse in Clouddiensten, virtuellen Maschinen und Service Fabric.
-services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 09/20/2018
+ms.date: 02/13/2019
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 5e3b42b1e1f72ccc4d1127f2926ee53c51d66291
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c59b97a8deec78149775a147d6476e67f405d3f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470510"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56310456"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Was ist die Azure-Diagnoseerweiterung?
-Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Virtual Machine Scale Sets und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
+Die Azure-Diagnoseerweiterung ist ein Agent innerhalb von Azure, mit dem Diagnosedaten für eine bereitgestellte Anwendung erfasst werden können. Sie können die Diagnoseerweiterung von einer Reihe verschiedener Quellen aus verwenden. Derzeit werden die Web- und Workerrollen des Azure-Clouddiensts (klassisch), Virtual Machines, Skalierungsgruppen von Virtual Machines und Service Fabric unterstützt. Andere Azure-Dienste haben unterschiedliche Diagnosemethoden. Siehe [Übersicht über die Überwachung in Microsoft Azure](../../azure-monitor/overview.md).
 
 ## <a name="linux-agent"></a>Linux-Agent
 Für virtuelle Computer mit Linux ist eine [Linux-Version der Erweiterung](../../virtual-machines/extensions/diagnostics-linux.md) verfügbar. Die gesammelten Statistiken und das Verhalten unterscheiden sich von der Windows-Version.
@@ -27,30 +25,31 @@ Die Azure-Diagnoseerweiterung kann die folgenden Datentypen erfassen:
 
 | Data source | BESCHREIBUNG |
 | --- | --- |
-| Leistungsindikatoren |Leistungsindikatoren des Betriebssystems und benutzerdefinierte Leistungsindikatoren |
+| Leistungsindikatormetriken |Leistungsindikatoren des Betriebssystems und benutzerdefinierte Leistungsindikatoren |
 | Anwendungsprotokolle |Von Ihrer Anwendung geschriebene Ablaufverfolgungsmeldungen |
 | Windows-Ereignisprotokolle |An das Windows-System für die Ereignisprotokollierung gesendete Informationen |
-| .NET-Ereignisquelle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) |
+| .NET EventSource-Protokolle |Code zum Schreiben von Ereignissen mit der .NET-Klasse [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) |
 | IIS-Protokolle |Informationen zu IIS-Websites |
-| Manifestbasiertes ETW |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows.(1) |
-| Absturzabbilder |Informationen zum Status des Prozesses im Fall eines Anwendungsabsturzes |
+| [Manifestbasierte ETW-Protokolle](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |Von einem beliebigen Prozess generierte Ereignisse der Ereignisablaufverfolgung für Windows.(1) |
+| Absturzabbilder (Protokolle) |Informationen zum Status des Prozesses bei Absturz einer Anwendung |
 | Benutzerdefinierte Fehlerprotokolle |Von Ihrer Anwendung oder Ihrem Dienst erstellte Protokolle |
-| Infrastrukturprotokolle der Azure-Diagnose |Informationen zur Diagnose selbst |
+| Infrastrukturprotokolle der Azure-Diagnose |Informationen zur Azure-Diagnose selbst |
 
 (1) Um eine Liste der ETW-Anbieter zu erhalten, führen Sie `c:\Windows\System32\logman.exe query providers` in einem Konsolenfenster auf dem Computer aus, von dem Sie die Informationen sammeln möchten.
 
 ## <a name="data-storage"></a>Datenspeicher
 Die Erweiterung speichert ihre Daten in einem von Ihnen angegebenen [Azure Storage-Konto](diagnostics-extension-to-storage.md).
 
-Sie können auch an [Application Insights](../../azure-monitor/app/cloudservices.md) gesendet werden. Als weitere Option können sie auch an [Event Hub](../../event-hubs/event-hubs-about.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden.
+Sie können auch an [Application Insights](../../azure-monitor/app/cloudservices.md) gesendet werden. 
 
-### <a name="azure-monitor"></a>Azure Monitor
-Sie können Ihre Daten auch an Azure Monitor senden. Zur Zeit ist diese Senke nur für Leistungsindikatoren anwendbar. Sie ermöglicht es Ihnen, Leistungsindikatoren, die auf Ihrem virtuellen Computer, Ihrer VMSS oder in Ihrem Clouddienst gesammelt wurden, als benutzerdefinierte Metriken an Azure Monitor zu senden. Die Azure Monitor-Senke unterstützt Folgendes:
+Als weitere Option können sie auch an [Event Hub](../../event-hubs/event-hubs-about.md) gestreamt werden, was Ihnen wiederum ermöglicht, sie an Überwachungsdienste außerhalb von Azure zu senden.
+
+Sie können Ihre Daten auch an die Datenbank für metrische Zeitreihen von Azure Monitor senden. Zur Zeit ist diese Senke nur für Leistungsindikatoren anwendbar. Hiermit können Sie Leistungsindikatoren als benutzerdefinierte Metriken senden. Dieses Feature befindet sich in der Vorschau. Die Azure Monitor-Senke unterstützt Folgendes:
 * Abrufen aller Leistungsindikatoren, die über die [APIs der Azure Monitor-Metriken](https://docs.microsoft.com/rest/api/monitor/) an Azure Monitor gesendet wurden.
-* Benachrichtigung für alle Leistungsindikatoren, die über die neue [einheitliche Oberfläche für Warnungen](../../azure-monitor/platform/alerts-overview.md) in Azure Monitor an Azure Monitor gesendet werden.
-* Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik.  Wenn Sie z. B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger auf dem virtuellen Computer (C:, D: usw.) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
+* Benachrichtigung für alle Leistungsindikatoren, die über die [Metrikwarnungen](../../azure-monitor/platform/alerts-overview.md) in Azure Monitor an Azure Monitor gesendet werden.
+* Behandeln von Platzhalteroperatoren in Leistungsindikatoren als die Dimension „Instanz“ in Ihrer Metrik.  Wenn Sie z.B. den Indikator „LogicalDisk(\*)/DiskWrites/Sek.“ erfasst haben, können Sie die Dimension „Instanz“ filtern und aufteilen, um für jeden logischen Datenträger auf dem virtuellen Computer (z.B. C:) Schreibvorgänge pro Sekunde darzustellen oder hinsichtlich dieser Vorgänge Warnungen auszugeben.
 
-Weitere Informationen zur Konfiguration dieser Senke finden Sie in der Dokumentation zum [Azur-Diagnoseschema](diagnostics-extension-schema-1dot3.md).
+Weitere Informationen zur Konfiguration dieser Senke finden Sie in der [Dokumentation zum Azure-Diagnoseschema](diagnostics-extension-schema-1dot3.md).
 
 ## <a name="versioning-and-configuration-schema"></a>Schema für Versionsverwaltung und Konfiguration
 Siehe [Azure-Diagnoseerweiterung – Versionen und Verlauf des Konfigurationsschemas](diagnostics-extension-schema.md).
