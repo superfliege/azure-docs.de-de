@@ -15,20 +15,22 @@ ms.date: 01/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: c49e521e9bf7e04eeda47c6b27c0b63cca653006
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d730efe8b09f167aaba2a4aa8e33446d44171c53
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699260"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340845"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure
-Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen, die Sie Benutzern, Gruppen und Dienstprinzipalen zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Ressourcen in Azure zugreifen. Wenn die integrierten Rollen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](custom-roles.md) erstellen.
 
-Die integrierten Rollen werden stetig weiterentwickelt. Verwenden Sie zum Abrufen der neuesten Rollendefinitionen [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) oder [az role definition list](/cli/azure/role/definition#az-role-definition-list).
+Die [rollenbasierte Zugriffssteuerung (RBAC)](overview.md) verfügt über mehrere integrierte Rollendefinitionen für Azure-Ressourcen, die Sie Benutzern, Gruppen, Dienstprinzipalen und verwalteten Identitäten zuweisen können. Durch Rollenzuweisungen wird die Art und Weise gesteuert, wie Sie auf Azure-Ressourcen zugreifen. Sollten die integrierten Rollen den individuellen Ansprüchen Ihrer Organisation nicht genügen, können Sie Ihre eigenen [benutzerdefinierten Rollen für Azure-Ressourcen](custom-roles.md) erstellen.
+
+Dieser Artikel enthält eine Liste der integrierten Rollen für Azure-Ressourcen, die ständig erweitert wird. Verwenden Sie zum Abrufen der aktuellen Rollen [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) oder [az role definition list](/cli/azure/role/definition#az-role-definition-list). Eine Liste mit Administratorrollen für Azure Active Directory finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ## <a name="built-in-role-descriptions"></a>Beschreibungen der integrierten Rollen
-Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klicken Sie auf den Rollennamen, um die Liste der `Actions`, `NotActions`, `DataActions` und `NotDataActions` für jede Rolle anzuzeigen.
+
+Die folgende Tabelle enthält eine kurze Beschreibung aller integrierten Rollen. Klicken Sie auf den Rollennamen, um die Liste der `Actions`, `NotActions`, `DataActions` und `NotDataActions` für jede Rolle anzuzeigen. Informationen zur Bedeutung dieser Aktionen und deren Anwendung auf die Verwaltung und Datenebenen finden Sie unter [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md).
 
 
 | Integrierte Rolle | BESCHREIBUNG |
@@ -139,6 +141,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 8e3af657-a8ff-443c-a75c-2fe8c4bcb635 |
 > | **Aktionen** |  |
 > | * | Erstellen und Verwalten von Ressourcen aller Typen |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="contributor"></a>Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -154,6 +162,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Authorization/elevateAccess/Action | Gewährt dem Aufrufer Zugriff vom Typ „Benutzerzugriffsadministrator“ auf der Mandantenebene. |
 > | Microsoft.Blueprint/blueprintAssignments/write | Erstellt oder aktualisiert alle Blaupausenartefakte. |
 > | Microsoft.Blueprint/blueprintAssignments/delete | Löscht alle Blaupausenartefakte. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="reader"></a>Leser
 > [!div class="mx-tableFixed"]
@@ -163,6 +175,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | acdd72a7-3385-48ef-bd42-f606fba81ae7 |
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="acrimagesigner"></a>AcrImageSigner
 > [!div class="mx-tableFixed"]
@@ -172,6 +190,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 6cef56e8-d556-48e5-a04f-b8e64114680f |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/sign/write | Pushen/Pullen von Inhaltsvertrauen-Metadaten für eine Containerregistrierung |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="acrpull"></a>AcrPull
 > [!div class="mx-tableFixed"]
@@ -181,6 +205,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 7f951dda-4ed3-4680-a7ca-43fe172d538d |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="acrpush"></a>AcrPush
 > [!div class="mx-tableFixed"]
@@ -191,6 +221,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/pull/read | Pullen oder Abrufen von Images aus einer Containerregistrierung |
 > | Microsoft.ContainerRegistry/registries/push/write | Pushen oder Schreiben von Images in eine Containerregistrierung |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="acrquarantinereader"></a>AcrQuarantineReader
 > [!div class="mx-tableFixed"]
@@ -200,6 +236,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | cdda3590-29a3-44f6-95f2-9f980659eb04 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="acrquarantinewriter"></a>AcrQuarantineWriter
 > [!div class="mx-tableFixed"]
@@ -210,6 +252,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.ContainerRegistry/registries/quarantineRead/read | Pullen oder Abrufen von Images in Quarantäne aus einer Containerregistrierung |
 > | Microsoft.ContainerRegistry/registries/quarantineWrite/write | Schreiben/Ändern des Quarantänezustands von unter Quarantäne gestellten Images |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="api-management-service-contributor"></a>Mitwirkender des API-Verwaltungsdienstes
 > [!div class="mx-tableFixed"]
@@ -225,6 +273,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="api-management-service-operator-role"></a>Operatorrolle des API Management-Diensts
 > [!div class="mx-tableFixed"]
@@ -250,6 +304,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Dient zum Abrufen einer Liste mit Benutzerschlüsseln. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="api-management-service-reader-role"></a>Leserrolle des API Management-Diensts
 > [!div class="mx-tableFixed"]
@@ -268,6 +326,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
 > | Microsoft.ApiManagement/service/users/keys/read | Dient zum Abrufen einer Liste mit Benutzerschlüsseln. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="application-insights-component-contributor"></a>Mitwirkender der Application Insights-Komponente
 > [!div class="mx-tableFixed"]
@@ -284,6 +346,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="application-insights-snapshot-debugger"></a>Application Insights-Momentaufnahmedebugger
 > [!div class="mx-tableFixed"]
@@ -298,6 +366,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="automation-job-operator"></a>Automation-Auftragsoperator
 > [!div class="mx-tableFixed"]
@@ -319,6 +393,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="automation-operator"></a>Operator für Automation
 > [!div class="mx-tableFixed"]
@@ -348,6 +428,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Automation/automationAccounts/jobs/output/read | Ruft die Ausgabe eines Auftrags ab. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="automation-runbook-operator"></a>Automation-Runbookoperator
 > [!div class="mx-tableFixed"]
@@ -362,6 +448,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="azure-kubernetes-service-cluster-admin-role"></a>Administratorrolle für Azure Kubernetes Service-Cluster
 > [!div class="mx-tableFixed"]
@@ -371,6 +463,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 0ab0b1a8-8aac-4efd-b8c2-3ee1fb270be8 |
 > | **Aktionen** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterAdminCredential/action | Listet die clusterAdmin-Anmeldeinformationen eines verwalteten Clusters auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="azure-kubernetes-service-cluster-user-role"></a>Benutzerrolle für Azure Kubernetes Service-Cluster
 > [!div class="mx-tableFixed"]
@@ -380,6 +478,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 4abbcc35-e782-43d8-92c5-2d3f1bd2253f |
 > | **Aktionen** |  |
 > | Microsoft.ContainerService/managedClusters/listClusterUserCredential/action | Listet die clusterUser-Anmeldeinformationen eines verwalteten Clusters auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="azure-stack-registration-owner"></a>Besitzer der Azure Stack-Registrierung
 > [!div class="mx-tableFixed"]
@@ -391,6 +495,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.AzureStack/registrations/products/listDetails/action | Ruft erweiterte Details für ein Azure Stack-Marketplace-Produkt ab. |
 > | Microsoft.AzureStack/registrations/products/read | Ruft die Eigenschaften eines Azure Stack-Marketplace-Produkts ab. |
 > | Microsoft.AzureStack/registrations/read | Ruft die Eigenschaften einer Azure Stack-Registrierung ab. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="backup-contributor"></a>Mitwirkender für Sicherungen
 > [!div class="mx-tableFixed"]
@@ -442,6 +552,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="backup-operator"></a>Sicherungsoperator
 > [!div class="mx-tableFixed"]
@@ -508,6 +624,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="backup-reader"></a>Sicherungsleser
 > [!div class="mx-tableFixed"]
@@ -555,6 +677,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/locations/operationStatus/read | Ruft den Vorgangsstatus eines angegebenen Vorgangs ab. |
 > | Microsoft.RecoveryServices/Vaults/backupProtectionIntents/read | Listet den gesamten beabsichtigten Sicherungsschutz auf. |
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="billing-reader"></a>Abrechnungsleser
 > [!div class="mx-tableFixed"]
@@ -570,6 +698,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
 > | Microsoft.CostManagement/*/read |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="biztalk-contributor"></a>Mitwirkender von BizTalk
 > [!div class="mx-tableFixed"]
@@ -585,6 +719,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cdn-endpoint-contributor"></a>Mitwirkender für den CDN-Endpunkt
 > [!div class="mx-tableFixed"]
@@ -601,6 +741,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cdn-endpoint-reader"></a>CDN-Endpunktleser
 > [!div class="mx-tableFixed"]
@@ -617,6 +763,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cdn-profile-contributor"></a>Mitwirkender für das CDN-Profil
 > [!div class="mx-tableFixed"]
@@ -633,6 +785,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cdn-profile-reader"></a>CDN-Profilleser
 > [!div class="mx-tableFixed"]
@@ -649,6 +807,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="classic-network-contributor"></a>Mitwirkender von klassischem Netzwerk
 > [!div class="mx-tableFixed"]
@@ -664,6 +828,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="classic-storage-account-contributor"></a>Mitwirkender von klassischem Speicherkonto
 > [!div class="mx-tableFixed"]
@@ -679,6 +849,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="classic-storage-account-key-operator-service-role"></a>Klassische Dienstrolle „Speicherkonto-Schlüsseloperator“
 > [!div class="mx-tableFixed"]
@@ -689,6 +865,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.ClassicStorage/storageAccounts/listkeys/action | Listet die Zugriffsschlüssel für die Speicherkonten auf. |
 > | Microsoft.ClassicStorage/storageAccounts/regeneratekey/action | Generiert die vorhandenen Zugriffsschlüssel für das Speicherkonto neu. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="classic-virtual-machine-contributor"></a>Mitwirkender von klassischen virtuellen Computern
 > [!div class="mx-tableFixed"]
@@ -714,6 +896,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cognitive-services-contributor"></a>Mitwirkender für Cognitive Services
 > [!div class="mx-tableFixed"]
@@ -739,6 +927,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cognitive-services-user"></a>Cognitive Services-Benutzer
 > [!div class="mx-tableFixed"]
@@ -760,6 +954,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/read | Ruft die Abonnementliste ab. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cosmos-db-account-reader-role"></a>Cosmos DB-Rolle „Kontoleser“
 > [!div class="mx-tableFixed"]
@@ -775,6 +975,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Insights/Metrics/read | Dient zum Lesen von Metriken. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 > [!div class="mx-tableFixed"]
@@ -785,6 +991,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.DocumentDB/databaseAccounts/backup/action | Sendet eine Anforderung zum Konfigurieren der Sicherung. |
 > | Microsoft.DocumentDB/databaseAccounts/restore/action | Sendet eine Wiederherstellungsanforderung. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cost-management-contributor"></a>Mitwirkender für Cost Management
 > [!div class="mx-tableFixed"]
@@ -799,6 +1011,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/read | Ruft die Abonnementliste ab. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="cost-management-reader"></a>Cost Management-Leser
 > [!div class="mx-tableFixed"]
@@ -813,6 +1031,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/read | Ruft die Abonnementliste ab. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="data-box-contributor"></a>Data Box-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -827,6 +1051,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Databox/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="data-box-reader"></a>Data Box-Leser
 > [!div class="mx-tableFixed"]
@@ -842,6 +1072,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Databox/locations/availableSkus/action | Mit dieser Methode wird die Liste der verfügbaren SKUs zurückgegeben. |
 > | Microsoft.ResourceHealth/availabilityStatuses/read | Ruft den Verfügbarkeitsstatus für alle Ressourcen im angegebenen Bereich ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="data-factory-contributor"></a>Mitwirkender von Data Factory
 > [!div class="mx-tableFixed"]
@@ -858,6 +1094,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="data-lake-analytics-developer"></a>Data Lake Analytics-Entwickler
 > [!div class="mx-tableFixed"]
@@ -889,6 +1131,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.DataLakeAnalytics/accounts/firewallRules/Delete | Dient zum Löschen einer Firewallregel. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Write | Erstellt oder aktualisiert eine Computerichtlinie. |
 > | Microsoft.DataLakeAnalytics/accounts/computePolicies/Delete | Löscht eine Computerichtlinie. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="data-purger"></a>Datenpurger
 > [!div class="mx-tableFixed"]
@@ -901,6 +1147,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Insights/components/purge/action | Daten werden aus Application Insights gelöscht |
 > | Microsoft.OperationalInsights/workspaces/*/read |  |
 > | Microsoft.OperationalInsights/workspaces/purge/action | Löscht die angegebenen Daten aus dem Arbeitsbereich. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="devtest-labs-user"></a>DevTest Labs-Benutzer
 > [!div class="mx-tableFixed"]
@@ -941,6 +1193,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | **NotActions** |  |
 > | Microsoft.Compute/virtualMachines/vmSizes/read | Listet die verfügbaren Größen auf, auf die der virtuelle Computer aktualisiert werden kann. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="dns-zone-contributor"></a>DNS Zone Contributor
 > [!div class="mx-tableFixed"]
@@ -956,6 +1212,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Supporttickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="documentdb-account-contributor"></a>Mitwirkender von DocumentDB-Konto
 > [!div class="mx-tableFixed"]
@@ -971,6 +1233,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -988,6 +1256,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="eventgrid-eventsubscription-reader"></a>EventGrid EventSubscription-Leser
 > [!div class="mx-tableFixed"]
@@ -1002,6 +1276,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.EventGrid/locations/eventSubscriptions/read | Listet regionale Ereignisabonnements auf. |
 > | Microsoft.EventGrid/locations/topicTypes/eventSubscriptions/read | Listet regionale Ereignisabonnements nach Thematyp auf. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="hdinsight-domain-services-contributor"></a>Mitwirkender für die HDInsight-Domänendienste
 > [!div class="mx-tableFixed"]
@@ -1013,6 +1293,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.AAD/*/read |  |
 > | Microsoft.AAD/domainServices/*/read |  |
 > | Microsoft.AAD/domainServices/oucontainer/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="intelligent-systems-account-contributor"></a>Mitwirkender von Intelligent Systems-Konto
 > [!div class="mx-tableFixed"]
@@ -1028,6 +1314,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="key-vault-contributor"></a>Key Vault-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -1045,6 +1337,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **NotActions** |  |
 > | Microsoft.KeyVault/locations/deletedVaults/purge/action | Dient zum endgültigen Löschen eines vorläufig gelöschten Schlüsseltresors. |
 > | Microsoft.KeyVault/hsmPools/* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="lab-creator"></a>Lab-Ersteller
 > [!div class="mx-tableFixed"]
@@ -1060,6 +1356,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.LabServices/labAccounts/getRegionalAvailability/action | Hiermit werden Informationen zur regionalen Verfügbarkeit jeder Größenkategorie abgerufen, die in einem Labkonto konfiguriert sind. |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="log-analytics-contributor"></a>Log Analytics-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -1081,6 +1383,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourcegroups/deployments/* |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="log-analytics-reader"></a>Log Analytics-Leser
 > [!div class="mx-tableFixed"]
@@ -1095,6 +1403,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | **NotActions** |  |
 > | Microsoft.OperationalInsights/workspaces/sharedKeys/read | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="logic-app-contributor"></a>Mitwirkender für Logik-Apps
 > [!div class="mx-tableFixed"]
@@ -1123,6 +1435,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | Microsoft.Web/sites/functions/listSecrets/action | Dient zum Auflisten der Geheimnisse für Web-App-Funktionen. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="logic-app-operator"></a>Logik-App-Operator
 > [!div class="mx-tableFixed"]
@@ -1147,6 +1465,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Web/connections/*/read | Liest Verbindungen. |
 > | Microsoft.Web/customApis/*/read | Liest benutzerdefinierte API. |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="managed-application-operator-role"></a>Rolle „Bediener für verwaltete Anwendung“
 > [!div class="mx-tableFixed"]
@@ -1157,6 +1481,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Solutions/applications/read | Hiermit wird eine Liste mit Anwendungen abgerufen. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="managed-applications-reader"></a>Leser für verwaltete Anwendungen
 > [!div class="mx-tableFixed"]
@@ -1168,6 +1498,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Solutions/jitRequests/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="managed-identity-contributor"></a>Mitwirkender für verwaltete Identität
 > [!div class="mx-tableFixed"]
@@ -1184,6 +1520,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="managed-identity-operator"></a>Operator für verwaltete Identität
 > [!div class="mx-tableFixed"]
@@ -1199,6 +1541,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="management-group-contributor"></a>Verwaltungsgruppenmitwirkender
 > [!div class="mx-tableFixed"]
@@ -1212,6 +1560,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Management/managementGroups/subscriptions/delete | Hebt die Zuordnung des Abonnements mit der Verwaltungsgruppe auf. |
 > | Microsoft.Management/managementGroups/subscriptions/write | Ordnet ein vorhandenes Abonnement der Verwaltungsgruppe zu. |
 > | Microsoft.Management/managementGroups/write | Erstellt oder aktualisiert eine Verwaltungsgruppe. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="management-group-reader"></a>Verwaltungsgruppenleser
 > [!div class="mx-tableFixed"]
@@ -1221,6 +1575,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | ac63b705-F282-497d-ac71-919bf39d939d |
 > | **Aktionen** |  |
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="monitoring-contributor"></a>Überwachungsmitwirkender
 > [!div class="mx-tableFixed"]
@@ -1253,6 +1613,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.WorkloadMonitor/monitors/* |  |
 > | Microsoft.WorkloadMonitor/notificationSettings/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="monitoring-metrics-publisher"></a>Herausgeber von Überwachungsmetriken
 > [!div class="mx-tableFixed"]
@@ -1264,8 +1630,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Insights/Register/Action | Dient zum Registrieren des Microsoft Insights-Anbieters. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Insights/Metrics/Write | Hiermit werden Metriken geschrieben. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="monitoring-reader"></a>Überwachungsleser
 > [!div class="mx-tableFixed"]
@@ -1277,6 +1647,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.OperationalInsights/workspaces/search/action | Führt eine Suchabfrage aus. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="network-contributor"></a>Mitwirkender von virtuellem Netzwerk
 > [!div class="mx-tableFixed"]
@@ -1292,6 +1668,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="new-relic-apm-account-contributor"></a>Mitwirkender von New Relic APM-Konto
 > [!div class="mx-tableFixed"]
@@ -1307,6 +1689,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | NewRelic.APM/accounts/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="reader-and-data-access"></a>Lese- und Datenzugriff
 > [!div class="mx-tableFixed"]
@@ -1317,6 +1705,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="redis-cache-contributor"></a>Mitwirkender von Redis-Cache
 > [!div class="mx-tableFixed"]
@@ -1332,6 +1726,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="resource-policy-contributor-preview"></a>Mitwirkender an Ressourcenrichtlinien (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1346,6 +1746,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Authorization/policysetdefinitions/* | Erstellen und Verwalten von Richtliniensätzen |
 > | Microsoft.PolicyInsights/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="scheduler-job-collections-contributor"></a>Mitwirkender von Zeitplanungsauftragssammlung
 > [!div class="mx-tableFixed"]
@@ -1361,6 +1767,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Scheduler/jobcollections/* | Erstellen und Verwalten von Auftragssammlungen |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="search-service-contributor"></a>Mitwirkender von Suchdienst
 > [!div class="mx-tableFixed"]
@@ -1376,6 +1788,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Search/searchServices/* | Erstellen und Verwalten von Suchdiensten |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="security-admin"></a>Sicherheitsadministrator
 > [!div class="mx-tableFixed"]
@@ -1405,6 +1823,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Security/securityContacts/write | Aktualisiert den Sicherheitskontakt. |
 > | Microsoft.Security/InformationProtectionPolicies/write | Aktualisiert die Information Protection-Richtlinien für die Ressource. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="security-manager-legacy"></a>Sicherheits-Manager (Legacy)
 > [!div class="mx-tableFixed"]
@@ -1423,6 +1847,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Security/* | Erstellen und Verwalten von Sicherheitskomponenten und -richtlinien |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="security-reader"></a>Sicherheit lesen
 > [!div class="mx-tableFixed"]
@@ -1439,6 +1869,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Security/*/read | Lesen von Sicherheitskomponenten und -richtlinien |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Management/managementGroups/read | Listet die Verwaltungsgruppen für den authentifizierten Benutzer auf. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="site-recovery-contributor"></a>Site Recovery-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -1474,6 +1910,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="site-recovery-operator"></a>Site Recovery-Operator
 > [!div class="mx-tableFixed"]
@@ -1539,6 +1981,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="site-recovery-reader"></a>Site Recovery-Leser
 > [!div class="mx-tableFixed"]
@@ -1578,6 +2026,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.RecoveryServices/Vaults/usages/read | Gibt Nutzungsdetails für einen Recovery Services-Tresor zurück. |
 > | Microsoft.RecoveryServices/Vaults/vaultTokens/read | Der Vorgang „Tresortoken“ kann zum Abrufen des Tresortokens für Back-End-Vorgänge auf Tresorebene verwendet werden. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="sql-db-contributor"></a>Mitwirkender von SQL DB
 > [!div class="mx-tableFixed"]
@@ -1614,6 +2068,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="sql-security-manager"></a>SQL-Sicherheits-Manager
 > [!div class="mx-tableFixed"]
@@ -1655,6 +2113,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Erstellen und Verwalten von Richtlinien für Sicherheitswarnungen von SQL Server |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="sql-server-contributor"></a>Mitwirkender von SQL Server
 > [!div class="mx-tableFixed"]
@@ -1694,6 +2158,10 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Sql/servers/extendedAuditingSettings/* |  |
 > | Microsoft.Sql/servers/securityAlertPolicies/* | Richtlinien für Sicherheitswarnungen von SQL Server bearbeiten |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-account-contributor"></a>Mitwirkender von Speicherkonto
 > [!div class="mx-tableFixed"]
@@ -1711,6 +2179,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Storage/storageAccounts/* | Erstellen und Verwalten von Speicherkonten |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-account-key-operator-service-role"></a>Dienstrolle „Speicherkonto-Schlüsseloperator“
 > [!div class="mx-tableFixed"]
@@ -1721,6 +2195,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/listkeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/regeneratekey/action | Generiert die Zugriffsschlüssel für das angegebene Speicherkonto neu. |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-blob-data-contributor-preview"></a>Mitwirkender an Storage-Blobdaten (Vorschauversion)
 > [!div class="mx-tableFixed"]
@@ -1732,10 +2212,14 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/blobServices/containers/delete | Gibt das Ergebnis beim Löschen eines Containers zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Hiermit wird eine Liste von Containern zurückgegeben. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/write | Gibt das Ergebnis des PUT-Vorgangs für den Blobcontainer zurück. |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/delete | Gibt das Ergebnis beim Löschen eines Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write | Gibt das Ergebnis beim Schreiben eines Blobs zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-blob-data-owner-preview"></a>Besitzer von Speicherblobdaten (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1745,8 +2229,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | b7e6dc6d-f1e8-4753-8033-0f276bb0955b |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/* |  |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-blob-data-reader-preview"></a>Storage-Blobdatenleser (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1756,8 +2244,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 2a2b9908-6ea1-4ae2-8e65-a410df84e7d1 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/read | Hiermit wird eine Liste von Containern zurückgegeben. |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read | Gibt ein Blob oder eine Liste von Blobs zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-queue-data-contributor-preview"></a>Mitwirkender an Storage-Warteschlangendaten (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1769,10 +2261,14 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/queueServices/queues/delete | Gibt das Ergebnis beim Löschen einer Warteschlange zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Gibt eine Warteschlange oder eine Liste von Warteschlangen zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/write | Gibt das Ergebnis beim Schreiben einer Warteschlange zurück. |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/delete | Gibt das Ergebnis beim Löschen einer Nachricht zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Gibt eine Nachricht zurück. |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/write | Gibt das Ergebnis beim Schreiben einer Nachricht zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="storage-queue-data-reader-preview"></a>Storage-Warteschlangendatenleser (Vorschau)
 > [!div class="mx-tableFixed"]
@@ -1782,8 +2278,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | **Id** | 19e7f393-937e-4f77-808e-94535e297925 |
 > | **Aktionen** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/read | Gibt eine Warteschlange oder eine Liste von Warteschlangen zurück. |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Storage/storageAccounts/queueServices/queues/messages/read | Gibt eine Nachricht zurück. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="support-request-contributor"></a>Mitwirkender für Supportanfragen
 > [!div class="mx-tableFixed"]
@@ -1795,6 +2295,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Authorization/*/read | Lesen von Autorisierungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="traffic-manager-contributor"></a>Traffic Manager-Mitwirkender
 > [!div class="mx-tableFixed"]
@@ -1810,6 +2316,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/deployments/* | Erstellen und Verwalten von Ressourcengruppenbereitstellungen |
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="user-access-administrator"></a>Benutzerzugriffsadministrator
 > [!div class="mx-tableFixed"]
@@ -1821,6 +2333,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | */Lesen | Lesen von Ressourcen aller Typen mit Ausnahme geheimer Schlüssel |
 > | Microsoft.Authorization/* | Verwalten der Autorisierung |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="virtual-machine-administrator-login"></a>VM-Administratoranmeldung
 > [!div class="mx-tableFixed"]
@@ -1834,9 +2352,13 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Network/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
 > | Microsoft.Compute/virtualMachines/loginAsAdmin/action | Hiermit melden Sie sich bei einem virtuellen Computer mit Windows-Administrator- oder Linux-Root-Benutzerrechten an. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="virtual-machine-contributor"></a>Mitwirkender von virtuellen Computern
 > [!div class="mx-tableFixed"]
@@ -1883,6 +2405,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Storage/storageAccounts/listKeys/action | Gibt die Zugriffsschlüssel für das angegebene Speicherkonto zurück. |
 > | Microsoft.Storage/storageAccounts/read | Gibt die Liste mit Speicherkonten zurück oder ruft die Eigenschaften für das angegebene Speicherkonto ab. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="virtual-machine-user-login"></a>VM-Benutzeranmeldung
 > [!div class="mx-tableFixed"]
@@ -1896,8 +2424,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Network/loadBalancers/read | Ruft eine Lastenausgleichsdefinition ab. |
 > | Microsoft.Network/networkInterfaces/read | Ruft eine Netzwerkschnittstellendefinition ab.  |
 > | Microsoft.Compute/virtualMachines/*/read |  |
+> | **NotActions** |  |
+> | *keine* |  |
 > | **DataActions** |  |
 > | Microsoft.Compute/virtualMachines/login/action | Hiermit melden Sie sich bei einem virtuellen Computer als normaler Benutzer an. |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="web-plan-contributor"></a>Mitwirkender von Webplan
 > [!div class="mx-tableFixed"]
@@ -1913,6 +2445,12 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Resources/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | Microsoft.Support/* | Erstellen und Verwalten von Support-Tickets |
 > | Microsoft.Web/serverFarms/* | Erstellen und Verwalten von Serverfarmen |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="website-contributor"></a>Mitwirkender von Website
 > [!div class="mx-tableFixed"]
@@ -1933,9 +2471,15 @@ Die folgende Tabelle enthält kurze Beschreibungen der integrierten Rollen. Klic
 > | Microsoft.Web/serverFarms/join/action |  |
 > | Microsoft.Web/serverFarms/read | Dient zum Abrufen der Eigenschaften für einen App Service-Plan. |
 > | Microsoft.Web/sites/* | Erstellen und Verwalten von Websites (die Erstellung von Websites erfordert auch Schreibberechtigungen für den zugehörigen App Service-Plan) |
+> | **NotActions** |  |
+> | *keine* |  |
+> | **DataActions** |  |
+> | *keine* |  |
+> | **NotDataActions** |  |
+> | *keine* |  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Benutzerdefinierte Rollen](custom-roles.md)
-- [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](role-assignments-portal.md)
+- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md)
 - [Berechtigungen in Azure Security Center](../security-center/security-center-permissions.md)

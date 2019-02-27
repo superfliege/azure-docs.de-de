@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a0a06ff79d1a48e8fbbc13a8e2410817c020d9a9
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: af72b0255c8e01398048f075134efb452f28b81e
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510033"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417566"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>Erstellen eines zonenredundanten Gateways für das virtuelle Netzwerk in Azure-Verfügbarkeitszonen
 
@@ -21,19 +21,21 @@ Sie können VPN- und ExpressRoute-Gateways in Azure-Verfügbarkeitszonen bereits
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 Sie können entweder eine lokal auf Ihrem Computer installierte PowerShell-Instanz oder die Azure Cloud Shell verwenden. Wenn Sie PowerShell lokal installieren und nutzen möchten, müssen Sie für dieses Feature die neueste Version des PowerShell-Moduls verwenden.
 
 [!INCLUDE [Cloud shell](../../includes/vpn-gateway-cloud-shell-powershell.md)]
 
 ### <a name="to-use-powershell-locally"></a>Lokale Verwendung von PowerShell
 
-Wenn Sie nicht die Cloud Shell nutzen, sondern PowerShell lokal auf Ihrem Computer verwenden möchten, müssen Sie das PowerShell-Modul 6.1.1 oder höher installieren. Um die installierte PowerShell-Version zu überprüfen, verwenden Sie den folgenden Befehl:
+Wenn Sie nicht Cloud Shell nutzen, sondern PowerShell lokal auf Ihrem Computer verwenden möchten, müssen Sie das PowerShell-Modul 1.0.0 oder höher installieren. Um die installierte PowerShell-Version zu überprüfen, verwenden Sie den folgenden Befehl:
 
 ```azurepowershell
-Get-Module AzureRM -ListAvailable | Select-Object -Property Name,Version,Path
+Get-Module Az -ListAvailable | Select-Object -Property Name,Version,Path
 ```
 
-Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu.
+Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps) Informationen dazu.
 
 [!INCLUDE [PowerShell login](../../includes/vpn-gateway-ps-login-include.md)]
 
@@ -62,15 +64,15 @@ $GwIPConf1   = "gwipconf1"
 Erstellen Sie eine Ressourcengruppe.
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup -ResourceGroupName $RG1 -Location $Location1
+New-AzResourceGroup -ResourceGroupName $RG1 -Location $Location1
 ```
 
 Erstellen Sie ein virtuelles Netzwerk.
 
 ```azurepowershell-interactive
-$fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
-$besub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
-$vnet = New-AzureRmVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
+$fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubnet1 -AddressPrefix $FEPrefix1
+$besub1 = New-AzVirtualNetworkSubnetConfig -Name $BESubnet1 -AddressPrefix $BEPrefix1
+$vnet = New-AzVirtualNetwork -Name $VNet1 -ResourceGroupName $RG1 -Location $Location1 -AddressPrefix $VNet1Prefix -Subnet $fesub1,$besub1
 ```
 
 ## <a name="gwsub"></a>3. Hinzufügen des Gatewaysubnetzes
@@ -80,14 +82,14 @@ Das Gatewaysubnetz enthält die reservierten IP-Adressen, die von den Diensten d
 Fügen Sie das Gatewaysubnetz hinzu.
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
-Add-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name VNet1
+Add-AzVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -AddressPrefix 10.1.255.0/27 -VirtualNetwork $getvnet
 ```
 
 Legen Sie die Konfiguration des Gatewaysubnetzes für das virtuelle Netzwerk fest.
 
 ```azurepowershell-interactive
-$getvnet | Set-AzureRmVirtualNetwork
+$getvnet | Set-AzVirtualNetwork
 ```
 ## <a name="publicip"></a>4. Anfordern einer öffentlichen IP-Adresse
  
@@ -98,7 +100,7 @@ In diesem Schritt folgen Sie den Anweisungen, die auf das von Ihnen erstellte Ga
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Standard** an, und geben Sie keine Zone an. In diesem Fall handelt es sich bei der erstellten öffentlichen IP-Adresse vom Typ „Standard“ um eine zonenredundante öffentliche IP-Adresse.   
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard
 ```
 
 ### <a name="ipzonalgw"></a>Für zonenbasierte Gateways
@@ -106,7 +108,7 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Standard** an. Geben Sie die Zone an (1, 2 oder 3). Alle Gatewayinstanzen werden in dieser Zone bereitgestellt.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Static -Sku Standard -Zone 1
 ```
 
 ### <a name="ipregionalgw"></a>Für regionsbezogene Gateways
@@ -114,14 +116,14 @@ $pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Nam
 Fordern Sie eine öffentliche IP-Adresse mit einer PublicIpaddress-SKU vom Typ **Basic** an. In diesem Fall wird das Gateway als regionsbezogenes Gateway bereitgestellt und bietet keine in das Gateway integrierte Zonenredundanz. Die Gatewayinstanzen werden jeweils in beliebigen Zonen erstellt.
 
 ```azurepowershell-interactive
-$pip1 = New-AzureRmPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
+$pip1 = New-AzPublicIpAddress -ResourceGroup $RG1 -Location $Location1 -Name $GwIP1 -AllocationMethod Dynamic -Sku Basic
 ```
 ## <a name="gwipconfig"></a>5. Erstellen der IP-Konfiguration
 
 ```azurepowershell-interactive
-$getvnet = Get-AzureRmVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
-$subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
-$gwipconf1 = New-AzureRmVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
+$getvnet = Get-AzVirtualNetwork -ResourceGroupName $RG1 -Name $VNet1
+$subnet = Get-AzVirtualNetworkSubnetConfig -Name $GwSubnet1 -VirtualNetwork $getvnet
+$gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subnet -PublicIpAddress $pip1
 ```
 
 ## <a name="gwconfig"></a>6. Erstellen des Gateways
@@ -131,13 +133,13 @@ Erstellen Sie das virtuelle Netzwerkgateway.
 ### <a name="for-expressroute"></a>Für ExpressRoute
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
 ```
 
 ### <a name="for-vpn-gateway"></a>Für VPN Gateway
 
 ```azurepowershell-interactive
-New-AzureRmVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
 ```
 
 ## <a name="faq"></a>Häufig gestellte Fragen

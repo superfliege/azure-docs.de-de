@@ -10,15 +10,15 @@ ms.subservice: manage
 ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: c9435ba10d69130a634e56992179f11399604fae
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 254d1faf0d846cc6a0e165b68db11ac0314eab33
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747491"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56430572"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Sicherung und Wiederherstellung in Azure SQL Data Warehouse
-Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Momentaufnahmen, um Ihr Data Warehouse mithilfe eines vorherigen Wiederherstellungspunkts in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
+Es wird beschrieben, wie Sicherungen und Wiederherstellungen in Azure SQL Data Warehouse funktionieren. Verwenden Sie Data Warehouse-Wiederherstellungspunkte, um einen vorherigen Zustand Ihres Data Warehouse in der primären Region wiederherzustellen oder zu kopieren. Mithilfe von georedundanten Data Warehouse-Sicherungen können Sie eine Wiederherstellung in einer anderen geografischen Region ausführen. 
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>Was ist eine Data Warehouse-Momentaufnahme?
 Mit einer *Data Warehouse-Momentaufnahme* wird ein Wiederherstellungspunkt erstellt, mit dessen Hilfe Sie einen vorherigen Zustand Ihres Data Warehouse wiederherstellen oder kopieren können.  Da SQL Data Warehouse ein verteiltes System ist, besteht eine Data Warehouse-Momentaufnahme aus zahlreichen Dateien, die in Azure Storage gespeichert sind. Momentaufnahmen erfassen inkrementelle Änderungen der Daten, die in Ihrem Data Warehouse gespeichert sind.

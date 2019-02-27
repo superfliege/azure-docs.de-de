@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/20/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
-ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: 29244c20bb4bbad8077788abbc29e6267f701d2e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/20/2019
+ms.openlocfilehash: 32e6e8ff4c37554a0c3fa50e243b241eed2953cf
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176347"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446000"
 ---
 # <a name="azure-stack-storage-capacity-planning"></a>Planen der Azure Stack-Speicherkapazität
 Die folgenden Abschnitte enthalten Informationen zur Planung der Speicherkapazität von Azure Stack, die bei der Planung des Speicherbedarfs der Lösung helfen.
@@ -38,7 +38,9 @@ Operatoren können zwischen einer Nur-Flash- und einer Hybridspeicherkonfigurati
 
 ![Planen der Azure-Speicherkapazität](media/azure-stack-capacity-planning/storage.png)
 
-In der Nur-Flash-Konfiguration ist der Cache NVMe mit wahlweise einer SATA-SSD oder NVMe für die Kapazität. In der Hybridkonfiguration ist der Cache wahlweise NVMe und eine SATA-SSD, während die Kapazität HDD ist.
+In der Nur-Flash-Konfiguration kann eine Konfiguration mit zwei Ebenen oder eine Konfiguration mit einer Ebene verwendet werden.  Wird eine Konfiguration mit einer Ebene verwendet, weisen alle Kapazitätsgeräte den gleichen Typ (z. B. NVMe, SATA-SSD oder SAS-SSD) auf, und es werden keine Cachegeräte verwendet. In einer Nur-Flash-Konfiguration mit zwei Ebenen werden in der Regel als Cachegeräte NVMe und als Kapazitätsgeräte SATA- oder SAS-SSDs verwendet.
+
+In der Hybridkonfiguration mit zwei Ebenen ist der Cache wahlweise NVMe oder eine SATA- bzw. SAS-SSD, und für die Kapazität wird HDD verwendet. 
 
 Die Speicherkonfiguration von „Direkte Speicherplätze“ und Azure Stack lässt sich wie folgt kurz zusammenfassen:
 - Ein Speicherplatzpool pro Skalierungseinheit (alle Speichergeräte werden innerhalb eines einzigen Pools konfiguriert).

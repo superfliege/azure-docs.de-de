@@ -3,17 +3,16 @@ title: Informationen zu VPN-Geräten für standortübergreifende Azure-Verbindun
 description: In diesem Artikel werden VPN-Geräte und IPsec-Parameter für standortübergreifende S2S-VPN Gateway-Verbindungen beschrieben. Er enthält Links zu Konfigurationsanleitungen und -beispielen.
 services: vpn-gateway
 author: yushwang
-manager: rossort
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 02/06/2019
+ms.date: 02/20/2019
 ms.author: yushwang
-ms.openlocfilehash: 3e3dff18bde1c02c3746aa200376b02e1fba9e05
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 7024849c796d7cef226fef1b20b0a6604f1344ba
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55765363"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454284"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -48,7 +47,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Barracuda Networks, Inc. |Barracuda NextGen Firewall X-Serie |Barracuda Firewall 6.5 |[Konfigurationshandbuch](https://techlib.barracuda.com/BFW/ConfigAzureVPNGateway) |Nicht kompatibel |
 | Brocade            |5400 Vyatta vRouter   |Virtual Router 6.6R3 GA|[Konfigurationshandbuch](http://www1.brocade.com/downloads/documents/html_product_manuals/vyatta/vyatta_5400_manual/wwhelp/wwhimpl/js/html/wwhelp.htm#href=VPN_Site-to-Site%20IPsec%20VPN/Preface.1.1.html) |Nicht kompatibel |
 | Check Point |Sicherheitsgateway |R80.10 |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[Konfigurationshandbuch](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
-| Cisco              |ASA       |8.3<br>8.4+ (IKEv2* ) |Unterstützt |[Konfigurationshandbuch * ](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
+| Cisco              |ASA       |8.3<br>8.4+ (IKEv2* ) |Unterstützt |[Konfigurationshandbuch * ](https://www.cisco.com/c/en/us/support/docs/security/adaptive-security-appliance-asa-software/214109-configure-asa-ipsec-vti-connection-to-az.html) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |Unterstützt |Unterstützt |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |Unterstützt |Unterstützt |
 | Cisco |Meraki |– |Nicht kompatibel |Nicht kompatibel |
@@ -66,7 +65,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Palo Alto Networks |Alle Geräte mit PAN-OS 5.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |[Konfigurationshandbuch](https://live.paloaltonetworks.com/t5/Configuration-Articles/How-to-Configure-VPN-Tunnel-Between-a-Palo-Alto-Networks/ta-p/59065) |[Konfigurationshandbuch](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | ShareTech | UTM der nächsten Generation (NU-Serie) | 9.0.1.3 | Nicht kompatibel | [Konfigurationshandbuch](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ-Serie, NSA-Serie<br>SuperMassive-Serie<br>E-Class-NSA-Serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nicht kompatibel |[Konfigurationshandbuch](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
-| Sophos | XG-Firewall der nächsten Generation | XG v17 | | [Konfigurationshandbuch](https://community.sophos.com/kb/127546) |
+| Sophos | XG-Firewall der nächsten Generation | XG v17 | | [Konfigurationshandbuch](https://community.sophos.com/kb/127546)<br><br>[Configuration guide - Multiple SAs](https://community.sophos.com/kb/en-us/133154) (Konfigurationshandbuch: Mehrere SAs) |
 | Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012374708)<br><br>[VTI über IKEv2/IPsec](https://help.ubnt.com/hc/en-us/articles/115012305347)
 | WatchGuard |Alle |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[Konfigurationshandbuch](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 

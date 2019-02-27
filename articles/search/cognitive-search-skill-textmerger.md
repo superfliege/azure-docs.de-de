@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/20/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: a3c64a26ed5ee7454fcfd22f47c1a161f65c6de7
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: a769a71fe1e99467121eb49a490fa2d0ab4339d3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54445354"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446409"
 ---
 #    <a name="text-merge-cognitive-skill"></a>Der kognitive Skill „Text zusammenführen“
 
@@ -78,7 +78,7 @@ Dieses Beispiel zeigt die Ausgabe der vorherigen Eingabe, vorausgesetzt, dass *i
 
 Ein gängiges Szenario für die Verwendung von „Text zusammenführen“ ist das Zusammenführen der Textdarstellung von Bildern (Text aus einem OCR-Skill oder der Titel eines Bildes) im Inhaltsfeld eines Dokuments. 
 
-Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text aus in das Dokument eingebetteten Bildern zu extrahieren. Als nächstes wird ein Feld *merged_text* erstellt, das sowohl Original- als auch OCR-Text aus jedem Bild enthält. 
+Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text aus in das Dokument eingebetteten Bildern zu extrahieren. Als nächstes wird ein Feld *merged_text* erstellt, das sowohl Original- als auch OCR-Text aus jedem Bild enthält. Weitere Informationen zur OCR-Qualifikation finden Sie [hier](https://docs.microsoft.com/en-us/azure/search/cognitive-search-skill-ocr).
 
 ```json
 {
@@ -86,7 +86,6 @@ Im folgenden Beispiel für ein Skillset wird der OCR-Skill verwendet, um Text au
   "skills":
   [
     {
-        "name": "OCR skill",
         "description": "Extract text (plain and structured) from image.",
         "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
         "context": "/document/normalized_images/*",

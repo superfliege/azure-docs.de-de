@@ -1,6 +1,6 @@
 ---
-title: Analysieren von Azure Active Directory-Aktivitätsprotokollen mithilfe von Log Analytics (Vorschauversion) | Microsoft-Dokumentation
-description: Erfahren Sie, wie Sie von Azure Active Directory-Aktivitätsprotokolle mithilfe von Log Analytics (Vorschauversion) analysieren.
+title: Analysieren von Azure Active Directory-Aktivitätsprotokollen mithilfe von Azure Monitor-Protokollen (Vorschauversion) | Microsoft-Dokumentation
+description: Hier erfahren Sie, wie Sie Azure Active Directory-Aktivitätsprotokolle mithilfe von Azure Monitor-Protokollen (Vorschauversion) analysieren.
 services: active-directory
 documentationcenter: ''
 author: priyamohanram
@@ -17,16 +17,16 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ea13d08af924427b9e7dc5def72c19d560525b8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e2e565f5b9bcd9e3e79423c742b2c95c00abd97b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188255"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454757"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-log-analytics-preview"></a>Analysieren von Azure AD-Aktivitätsprotokollen mit Log Analytics (Vorschauversion)
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>Analysieren von Azure AD-Aktivitätsprotokollen mit Azure Monitor-Protokollen (Vorschauversion)
 
-Nachdem Sie [Azure AD-Aktivitätsprotokolle mit Log Analytics integriert haben](howto-integrate-activity-logs-with-log-analytics.md), können Sie die Leistungsfähigkeit von Log Analytics nutzen, um Einblicke in Ihre Umgebung zu erhalten. Sie können auch die [Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle](howto-install-use-log-analytics-views.md) installieren, um Zugriff auf vorgefertigte Berichte zu Überwachungs- und Anmeldeereignissen in Ihrer Umgebung zu erhalten.
+Nachdem Sie [Azure AD-Aktivitätsprotokolle mit Azure Monitor-Protokollen integriert haben](howto-integrate-activity-logs-with-log-analytics.md), können Sie die Leistungsfähigkeit von Azure Monitor-Protokollen nutzen, um Einblicke in Ihre Umgebung zu erhalten. Sie können auch die [Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle](howto-install-use-log-analytics-views.md) installieren, um Zugriff auf vorgefertigte Berichte zu Überwachungs- und Anmeldeereignissen in Ihrer Umgebung zu erhalten.
 
 In diesem Artikel erfahren Sie, wie Sie die Azure AD-Aktivitätsprotokolle in Ihrem Log Analytics-Arbeitsbereich analysieren. 
 
@@ -78,10 +78,12 @@ AuditLogs
 
 Sie können auch Benachrichtigungen für Ihre Abfrage einrichten. So konfigurieren Sie beispielsweise eine Benachrichtigung, wenn mehr als 10 Anwendungen in der letzten Woche verwendet wurden:
 
-1. Wählen Sie im Arbeitsbereich **Benachrichtigung festlegen** aus, um die Seite **Regel erstellen** zu öffnen. 
-    ![Benachrichtigung festlegen](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
+1. Wählen Sie im Arbeitsbereich **Benachrichtigung festlegen** aus, um die Seite **Regel erstellen** zu öffnen.
 
-2. Wählen Sie die standardmäßig in der Benachrichtigung erstellten **Benachrichtigungskriterien** aus, und aktualisieren Sie den **Schwellenwert** in der Standardmetrik auf 10. 
+    ![Warnung festlegen](./media/howto-analyze-activity-logs-log-analytics/setalert.png)
+
+2. Wählen Sie die standardmäßig in der Benachrichtigung erstellten **Benachrichtigungskriterien** aus, und aktualisieren Sie den **Schwellenwert** in der Standardmetrik auf 10.
+
     ![Benachrichtigungskriterien](./media/howto-analyze-activity-logs-log-analytics/alertcriteria.png)
 
 3. Geben Sie einen Namen und eine Beschreibung für die Benachrichtigung ein, und wählen Sie den Schweregrad aus. In unserem Beispiel könnten wir ihn auf **Information** festlegen.
@@ -92,17 +94,17 @@ Sie können auch Benachrichtigungen für Ihre Abfrage einrichten. So konfigurier
 
 ## <a name="install-and-use-pre-built-views-for-azure-ad-activity-logs"></a>Installieren und Verwenden von vorgefertigten Ansichten für Azure AD-Aktivitätsprotokolle
 
-Sie können auch die vorgefertigten Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle herunterladen. Die Ansichten bieten mehrere Berichte, die im Zusammenhang mit allgemeinen Szenarien mit Überwachungs- und Anmeldeereignissen stehen. Sie können auch aufgrund jeglicher Daten benachrichtigen, die in den Berichten bereitgestellt werden, indem Sie die im vorherigen Abschnitt beschriebenen Schritte verwenden.
+Sie können auch die vorgefertigten Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle herunterladen. Die Ansichten bieten mehrere Berichte, die im Zusammenhang mit allgemeinen Szenarien mit Überwachungs- und Anmeldeereignissen stehen. Sie können auch aufgrund jeglicher Daten benachrichtigen, die in den Berichten bereitgestellt werden, indem Sie die im vorherigen Abschnitt beschriebenen Schritte verwenden.
 
 * **Azure AD-Kontobereitstellungsereignisse**: In dieser Ansicht werden Berichte im Zusammenhang mit der Überwachung von Bereitstellungsaktivitäten angezeigt, also z.B. die Anzahl neuer bereitgestellter Benutzer und die Bereitstellungsfehler, die Anzahl aktualisierter Benutzer und die Aktualisierungsfehler sowie die Anzahl aufgehobener Benutzerbereitstellungen und der entsprechenden Fehler.    
 * **Anmeldeereignisse**: In dieser Ansicht werden die relevantesten Berichte zur Überwachung von Anmeldeaktivitäten angezeigt, z.B. Anmeldungen nach Anwendungen, Benutzern, Geräten sowie eine Zusammenfassungsansicht, in der die Anzahl der Anmeldungen im Laufe der Zeit nachverfolgt wird.
 * **Ihre Einwilligung gebende Benutzer**: In dieser Ansicht werden Berichte im Zusammenhang mit der Benutzereinwilligung angezeigt, z.B. die Einwilligungen nach Benutzern, die Anmeldungen nach Benutzern, die ihre Einwilligung erteilt haben, sowie die Anmeldungen nach Anwendungen für alle einwilligungsabhängigen Anwendungen. 
 
-Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](howto-install-use-log-analytics-views.md). 
+Informationen zum Installieren und Verwenden von Log Analytics-Ansichten für Azure AD-Aktivitätsprotokolle finden Sie [hier](howto-install-use-log-analytics-views.md). 
 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Erste Schritte mit Abfragen in Log Analytics](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
+* [Erste Schritte mit Abfragen in Azure Monitor-Protokollen](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries)
 * [Erstellen und Verwalten von Benachrichtigungsgruppen im Azure-Portal](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)
 * [Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory](howto-install-use-log-analytics-views.md)

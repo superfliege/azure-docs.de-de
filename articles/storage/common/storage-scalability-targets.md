@@ -8,16 +8,16 @@ ms.topic: article
 ms.date: 11/08/2018
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: f8227495d7ca2e1d43b74066d359d0d59e456263
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2f00b01bb07aafca847897f0c31d24d4add7cdbf
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55451205"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328876"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-standard-storage-accounts"></a>Skalierbarkeits- und Leistungsziele für standardmäßige Speicherkonten
 
-In diesem Artikel werden die Skalierbarkeits- und Leistungsziele für standardmäßige Azure-Speicherkonten erläutert. Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckte Ziele, die jedoch erreichbar sind. In jedem Fall hängen die von Ihrem Speicherkonto erzielte Anforderungsrate und Bandbreite von der Größe der gespeicherten Objekte, den verwendeten Zugriffsmustern und der Art der von der Anwendung ausgeführten Workload ab. 
+In diesem Artikel werden die Skalierbarkeits- und Leistungsziele für Azure-Speicherkonten erläutert. Die hier aufgelisteten Ziele für Skalierbarkeit und Leistung sind hochgesteckte Ziele, die jedoch erreichbar sind. In jedem Fall hängen die von Ihrem Speicherkonto erzielte Anforderungsrate und Bandbreite von der Größe der gespeicherten Objekte, den verwendeten Zugriffsmustern und der Art der von der Anwendung ausgeführten Workload ab. 
 
 Testen Sie unbedingt Ihren Dienst, um festzustellen, ob seine Leistung Ihren Anforderungen entspricht. Wenn möglich, vermeiden Sie plötzliche Lastspitzen bei der Datenverkehrsrate, und stellen Sie sicher, dass der Datenverkehr über alle Partitionen verteilt ist.
 
@@ -26,7 +26,10 @@ Wenn Ihre Anwendung die Grenze dessen erreicht, was eine Partition an Workload b
 ## <a name="standard-storage-account-scale-limits"></a>Skalierungslimits für Standard-Speicherkonto
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="storage-resource-provider-scale-limits"></a>Skalierungslimits für Speicherressourcenanbieter 
+## <a name="premium-storage-account-scale-limits"></a>Skalierungslimits für Storage Premium-Konto
+[!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
+
+## <a name="storage-resource-provider-scale-limits"></a>Skalierungslimits für Speicherressourcenanbieter
 
 [!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
 

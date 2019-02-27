@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 02/14/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: b5aea9d7fe54402693be095350f7c095334fd4b5
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 886fa6c088f2fbabb3d3ba1cd0b15bbc488784f3
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30198110"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56418280"
 ---
 **So laden Sie VPN-Gerätekonfigurationsskripts herunter:**
 
@@ -27,7 +27,7 @@ Abhängig von Ihrem VPN-Gerät können Sie ggf. ein VPN-Gerätekonfigurationsskr
 
 - Links zu Konfigurationseinstellungen für Geräte finden Sie unter [Überprüfte VPN-Geräte](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable). Die Links zur Gerätekonfiguration werden nach bestem Wissen bereitgestellt. Die beste Vorgehensweise besteht immer darin, die aktuellen Informationen zur Konfiguration bei Ihrem Gerätehersteller zu erfragen. Die Liste enthält die von uns getesteten Versionen. Ist Ihr Betriebssystem nicht in der Liste enthalten, ist die Version vielleicht dennoch kompatibel. Wenden Sie sich an den Gerätehersteller, um zu erfragen, ob die Betriebssystemversion für Ihr VPN-Gerät kompatibel ist.
 
-- Eine Übersicht über die VPN-Gerätekonfiguration finden Sie unter [Übersicht über die Konfigurationen von VPN-Drittanbietergeräten](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
+- Eine Übersicht über die VPN-Gerätekonfiguration finden Sie unter [Übersicht über Konfigurationen von VPN-Partnergeräten](../articles/vpn-gateway/vpn-gateway-3rdparty-device-config-overview.md).
 
 - Informationen zur Bearbeitung von Gerätekonfigurationsbeispielen finden Sie unter [Bearbeiten von Gerätekonfigurationsbeispielen](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md#editing).
 

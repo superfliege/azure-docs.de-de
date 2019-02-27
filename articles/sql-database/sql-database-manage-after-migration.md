@@ -1,5 +1,5 @@
 ---
-title: 'Azure SQL-Datenbank: Verwalten nach der Migration | Microsoft-Dokumentation'
+title: 'Azure SQL-Datenbank: Verwalten von einzelnen und in einem Pool zusammengefassten Datenbanken nach der Migration | Microsoft-Dokumentation'
 description: Erfahren Sie, wie Sie Ihre Datenbank nach der Migration zu Azure SQL-Datenbank verwalten.
 services: sql-database
 ms.service: sql-database
@@ -11,28 +11,31 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 419ee13f88e63af9bebb6dda2d96530c54baa0d0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.date: 02/13/2019
+ms.openlocfilehash: 148dff16d56755755f71e24e658e29c116ac5df1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099733"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417634"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Neuer DBA in der Cloud – Verwalten Ihrer Datenbank in Azure SQL-Datenbank
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>Neuer DBA in der Cloud: Verwalten Ihrer einzelnen und in einem Pool zusammengefassten Datenbanken in Azure SQL-Datenbank
 
-Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
+Der Umstieg von der herkömmlichen, selbstverwalteten, automatisch gesteuerten Umgebung auf eine PaaS-Umgebung kann anfangs eine Herausforderung darstellen. Als App-Entwickler oder DBA möchten Sie wissen, welche Plattformfunktionen in erster Linie dafür sorgen, dass Ihre Anwendung verfügbar, leistungsfähig, sicher und zuverlässig ist – und zwar zu jeder Zeit. Dieser Artikel soll Aufklärung leisten. Hier werden die Ressourcen kurz zusammengefasst, und Sie erhalten hilfreiche Informationen zur optimalen Verwendung der wichtigsten Funktionen von SQL-Datenbank mit einzelnen und in einem Pool zusammengefassten Datenbanken. So können Sie Ihre Anwendung effizient verwalten und ausführen, um optimale Ergebnisse in der Cloud zu erzielen. Die typische Zielgruppe für diesen Artikel sind Nutzer, die
 
-- die Migration ihrer Anwendung(en) zu Azure SQL DB evaluieren – Modernisierung der Anwendung(en)
+- die Migration ihrer Anwendung(en) zu Azure SQL-Datenbank evaluieren – Modernisierung der Anwendung(en)
 - ihre Anwendung(en) gerade migrieren – Szenario für laufende Migration
 - die Migration zu Azure SQL DB gerade abgeschlossen haben – Neuer DBA in der Cloud
 
-In diesem Artikel werden wichtige Merkmale von Azure SQL DB als Plattform beschrieben, die optimale Unterstützung bieten, darunter:
+Dieser Artikel behandelt einige der Hauptmerkmale von Azure SQL-Datenbank als Plattform, die bei der Arbeit mit einzelnen und in Pools für elastische Datenbanken zusammengefasste Datenbanken optimale Unterstützung bietet. darunter:
 
 - Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 - Sicherheit und Compliance
 - Intelligente Datenbanküberwachung und -wartung
 - Datenverschiebung
+
+> [!NOTE]
+> Dieser Artikel gilt für die folgenden Bereitstellungsoptionen in Azure SQL-Datenbank: einzelne Datenbanken und Pools für elastische Datenbanken. Er gilt nicht für die Bereitstellungsoption „Verwaltete Instanz“ in SQL-Datenbank.
 
 ## <a name="business-continuity-and-disaster-recovery-bcdr"></a>Geschäftskontinuität und Notfallwiederherstellung (Business Continuity Disaster Recovery, BCDR)
 
@@ -299,11 +302,11 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 
 - **Export:** Sie können Ihre Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
 
-   ![Datenbankexport](./media/sql-database-export/database-export.png)
+   ![Datenbankexport](./media/sql-database-export/database-export1.png)
 
 - **Import:** Sie können Daten im Azure-Portal auch als BACPAC-Datei in die Datenbank importieren.
 
-   ![Datenbankimport](./media/sql-database-import/import.png)
+   ![Datenbankimport](./media/sql-database-import/import1.png)
 
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>Wie werden Daten zwischen SQL-Datenbank und SQL Server synchronisiert?
 

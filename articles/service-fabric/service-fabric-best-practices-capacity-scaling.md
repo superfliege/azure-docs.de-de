@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: d6f2ca53829642009adbc50061966c5a7e924f7e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9de6cc224c82bb07fee4d62cd5de1d1964001bab
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240402"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446816"
 ---
 # <a name="capacity-planning-and-scaling"></a>Kapazitätsplanung und Skalierung
 
@@ -33,7 +33,7 @@ Skalierungsvorgänge sollten über die Bereitstellung von Azure Resource Manager
 * Sie müssen jeweils nur 1 Knoten einer VM-Skalierungsgruppe horizontal skalieren.
   * Für das horizontale Hochskalieren um jeweils 3 oder mehr Knoten sollten Sie [einen Service Fabric-Cluster durch Hinzufügen einer VM-Skalierungsgruppe skalieren](https://docs.microsoft.com/azure/service-fabric/virtual-machine-scale-set-scale-node-type-scale-out), und es ist am sichersten, VM-Skalierungsgruppen jeweils um 1 Knoten horizontal herunter- und hochzuskalieren.
 * Für den Service Fabric-Cluster ist die Zuverlässigkeitsstufe „Silber“ oder höher und die Dauerhaftigkeitsstufe „Silber“ oder höher für alle Skalierungsgruppen festgelegt, für die Sie Regeln für die automatische Skalierung konfigurieren.
-  * Die mit den Regeln für die automatische Skalierung festgelegte minimale Kapazität muss größer oder gleich 5 VM-Instanzen und größer oder gleich der minimalen Zuverlässigkeitsstufe für den primären Knotentyp sein.
+  * Die mit den Regeln für die automatische Skalierung festgelegte minimale Kapazität muss größer oder gleich fünf VM-Instanzen und größer oder gleich der minimalen Zuverlässigkeitsstufe für den primären Knotentyp sein.
 
 > [!NOTE]
 > Der zustandsbehaftete Azure Service Fabric-Dienst „fabric:/System/InfastructureService/<NODE_TYPE_NAME>“ wird auf jedem Knotentyp mit der Dauerhaftigkeitsstufe „Silber“ oder einer höheren Dauerhaftigkeitsstufe ausgeführt. Dies ist der einzige Systemdienst, dessen Ausführung in Azure auf allen Knotentypen Ihres Clusters unterstützt wird. 

@@ -5,17 +5,17 @@ keywords: ''
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 07/25/2018
+ms.date: 02/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 20f50e286e30e32f066fe3d214bfc4c1a155776e
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 69ba0a882c0e52e7c0d063b8f77e7a0fe22526a1
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53083919"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428776"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>Bedarfsgerechtes Bereitstellen und Überwachen von IoT Edge-Modulen mithilfe des Azure-Portals
 
@@ -53,19 +53,20 @@ Zum Erstellen einer Bereitstellung müssen fünf Schritte ausgeführt werden. Di
 ### <a name="step-1-name-and-label"></a>Schritt 1: Name und Bezeichnung
 
 1. Geben Sie Ihrer Bereitstellung einen eindeutigen Namen, der bis zu 128 Kleinbuchstaben umfasst. Verwenden Sie dabei weder Leerzeichen noch die folgenden ungültigen Zeichen: `& ^ [ ] { } \ | " < > /`.
-1. Fügen Sie Bezeichnungen hinzu, um Ihre Bereitstellungen im Blick zu behalten. Bezeichnungen sind **Name-****Wert**-Paare, die Ihre Bereitstellung beschreiben. Beispiel: `HostPlatform, Linux` oder `Version, 3.0.1`.
+1. Sie können Bezeichnungen als Schlüssel-Wert-Paare hinzufügen, um Ihre Bereitstellungen im Blick zu behalten. Beispiel: **HostPlatform** und **Linux** oder **Version** und **3.0.1**.
 1. Klicken Sie auf **Weiter**, um mit Schritt 2 fortzufahren. 
 
 ### <a name="step-2-add-modules-optional"></a>Schritt 2: Hinzufügen von Modulen (optional)
 
-Es gibt zwei Arten von Modulen, die Sie einer Bereitstellung hinzufügen können. Das erste Modul basiert dabei auf einem Azure-Dienst wie Storage Account oder Stream Analytics. Das zweite dagegen entstammt Ihrem eigenen Code. Sie können einer Bereitstellung mehrere Module beider Typen hinzufügen. 
+Es gibt zwei Arten von Modulen, die Sie einer Bereitstellung hinzufügen können. Das erste Modul basiert dabei auf einem Azure-Dienst wie Storage Account oder Stream Analytics. Das zweite Modul verwendet Ihren eigenen Code. Sie können einer Bereitstellung mehrere Module beider Typen hinzufügen. 
 
 Wenn Sie eine Bereitstellung ohne Module erstellen, werden alle aktuellen Module von den Geräten entfernt. 
 
 >[!NOTE]
->Azure Machine Learning und Azure Functions unterstützen die automatisierte Azure-Dienstbereitstellung noch nicht. Verwenden Sie die benutzerdefinierte Modulbereitstellung, um diese Dienste manuell zu Ihrer Bereitstellung hinzuzufügen. 
+>Azure Functions unterstützt die automatisierte Azure-Dienstbereitstellung noch nicht. Verwenden Sie die benutzerdefinierte Modulbereitstellung, um diesen Dienst manuell zu Ihrer Bereitstellung hinzuzufügen. 
 
 Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics hinzuzufügen:
+
 1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
 1. Klicken Sie auf **Azure Stream Analytics-Modul**.
 1. Wählen Sie im Dropdownmenü Ihr **Abonnement** aus.
@@ -73,7 +74,8 @@ Führen Sie die folgenden Schritte aus, um ein Modul aus Azure Stream Analytics 
 1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
 So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul manuell hinzu:
-1. Geben Sie im Abschnitt **Registrierungseinstellungen** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Vom Edge-Agent wird der Fehler 500 zurückgegeben, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
+
+1. Geben Sie im Abschnitt **Container Registry-Einstellungen** der Seite die Namen und Anmeldeinformationen für private Containerregistrierungen an, die die Modulimages für diese Bereitstellung enthalten. Der Edge-Agent gibt den Fehler 500 zurück, wenn die Anmeldeinformationen einer Containerregistrierung für ein Docker-Image nicht gefunden wurden.
 1. Klicken Sie im Abschnitt **Bereitstellungsmodule** der Seite auf **Hinzufügen**.
 1. Klicken Sie auf **IoT Edge-Modul**.
 1. Geben Sie dem Modul einen **Namen**.
@@ -87,7 +89,7 @@ So fügen Sie benutzerdefinierten Code als Modul oder aber ein Azure-Dienstmodul
 1. Wählen Sie über das Dropdownmenü den **Gewünschten Status** für das Modul aus. Sie können zwischen folgenden Optionen wählen:
    * **Wird ausgeführt**: Dies ist die Standardoption. Das Modul wird unmittelbar nach Bereitstellung gestartet.
    * **Beendet**: Nach der Bereitstellung verbleibt das Modul im Leerlauf, bis der Start durch Sie oder ein anderes Modul ausgelöst wird.
-1. Wählen Sie **Aktivieren** aus, wenn Sie dem Modulzwilling Tags oder gewünschte Eigenschaften hinzufügen möchten. 
+1. Klicken Sie auf **Gewünschte Eigenschaften für Modulzwilling festlegen**, wenn Sie Tags oder andere Eigenschaften zum Modulzwilling hinzufügen möchten.
 1. Geben Sie **Umgebungsvariablen** für dieses Modul ein. Umgebungsvariablen stellen zusätzliche Informationen für ein Modul bereit und erleichtern so den Konfigurationsprozess.
 1. Klicken Sie auf **Speichern**, um Ihr Modul zur Bereitstellung hinzuzufügen. 
 
@@ -99,8 +101,22 @@ Routen definieren, wie Module innerhalb einer Bereitstellung miteinander kommuni
 
 Fügen Sie die Routen mit Informationen aus dem Abschnitt [Deklarieren von Routen](module-composition.md#declare-routes) hinzu, oder aktualisieren Sie diese, und wählen Sie dann **Weiter** aus, um mit dem Abschnitt zur Überprüfung fortzufahren.
 
+### <a name="step-4-specify-metrics-optional"></a>Schritt 4: Angeben von Metriken (optional)
 
-### <a name="step-4-target-devices"></a>Schritt 4: Zielgeräte
+Metriken bieten zusammenfassende Angaben zu den verschiedenen Zuständen, die ein Gerät nach dem Anwenden von Konfigurationsinhalten möglicherweise zurückmeldet.
+
+1. Geben Sie unter **Metrikname** einen Namen ein.
+
+1. Geben Sie eine Abfrage unter **Metrikkriterien** ein. Diese Abfrage basiert auf [gemeldeten Eigenschaften](module-edgeagent-edgehub.md#edgehub-reported-properties) eines IoT Edge-Hub-Modulzwillings. Die Metrik stellt die Anzahl der von der Abfrage zurückgegebenen Zeilen dar.
+
+Beispiel: 
+
+```sql
+SELECT deviceId FROM devices
+  WHERE properties.reported.lastDesiredStatus.code = 200
+```
+
+### <a name="step-5-target-devices"></a>Schritt 5: Zielgeräte
 
 Mit der Tageigenschaft Ihrer Geräte wählen Sie bestimmte Geräte als Ziele aus, die diese Bereitstellung erhalten sollen. 
 
@@ -110,9 +126,32 @@ Da mehrere Bereitstellungen dasselbe Gerät als Ziel verwenden können, sollten 
 1. Geben Sie unter **Zielbedingung** eine Bedingung ein, um festzulegen, auf welche Geräte diese Bereitstellung angewendet werden soll. Die Bedingung basiert auf den Gerätezwillingstags oder auf den gemeldeten Gerätezwillingseigenschaften und muss dem Ausdrucksformat entsprechen. Beispiel: `tags.environment='test'` oder `properties.reported.devicemodel='4000x'`. 
 1. Klicken Sie auf **Weiter**, um mit dem letzten Schritt fortzufahren.
 
-### <a name="step-5-review-template"></a>Schritt 5: Überprüfen der Vorlage
+### <a name="step-6-review-deployment"></a>Schritt 6: Bereitstellung überprüfen
 
 Überprüfen Sie die Bereitstellungsinformationen, und klicken Sie dann auf **Senden**.
+
+## <a name="deploy-modules-from-azure-marketplace"></a>Bereitstellen von Modulen aus Azure Marketplace
+
+Azure Marketplace ist ein Onlinemarktplatz für Anwendungen und Dienste, in dem sie eine breite Palette an Unternehmensanwendungen und -lösungen durchsuchen können, die für die Ausführung unter Azure, einschließlich [IoT Edge-Modulen](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules), zertifiziert und optimiert sind. Sie können auch über das Azure-Portal unter **Ressource erstellen** auf den Azure Marketplace zugreifen.
+
+Sie können ein IoT Edge-Modul entweder über Azure Marketplace oder das Azure-Portal folgendermaßen installieren:
+
+1. Suchen Sie ein Modul, und beginnen Sie den Bereitstellungsprozess.
+
+   * Azure-Portal: Suchen Sie ein Modul, und wählen Sie **Erstellen** aus.
+
+   * Azure Marketplace:
+
+     1. Suchen Sie ein Modul, und wählen Sie **Jetzt herunterladen** aus.
+     1. Bestätigen Sie die Nutzungsbedingungen und Datenschutzrichtlinie des Anbieters durch Auswählen von **Weiter**.
+
+1. Wählen Sie Ihr Abonnement und den IoT-Hub aus, der mit dem Zielgerät verbunden ist.
+
+1. Wählen Sie **Bedarfsorientiertes Bereitstellen**.
+
+1. Legen Sie fest, ob das Modul einer neuen Bereitstellung oder einem Klon einer vorhandenen Bereitstellung hinzugefügt werden soll; wählen Sie für die Klonoption die vorhandene Bereitstellung aus der Liste aus.
+
+1. Wählen Sie **Erstellen**, um mit der Erstellung einer bedarfsorientierten Bereitstellung fortzufahren. Sie können die gleichen Details angeben, wie für jede Bereitstellung.
 
 ## <a name="monitor-a-deployment"></a>Überwachen einer Bereitstellung
 
@@ -130,15 +169,17 @@ So zeigen Sie ausführliche Informationen zu einer Bereitstellung an und überwa
    * **Priorität**: Prioritätsnummer, die der Bereitstellung zugewiesen wurde
    * Mit **System metrics** - **Targeted** (Systemmetriken – Ziel) wird die Anzahl von Gerätezwillingen in IoT Hub angegeben, die die Zielbedingung erfüllen, und **Angewendet** gibt die Anzahl von Geräten an, auf deren Gerätezwillinge in IoT Hub die Bereitstellungsinhalte angewendet wurde. 
    * **Gerätemetriken**: Die Anzahl von Edge-Geräten in der Bereitstellung, für die von der IoT Edge-Clientruntime eine Erfolgs- oder Fehlermeldung ausgegeben wurde.
+   * **Benutzerdefinierte Metriken**: Die Anzahl der Edge-Geräte in der Bereitstellung, die Daten für in der Bereitstellung definierte Metriken melden.
    * **Erstellungszeit**: Zeitstempel der Bereitstellungserstellung. Dieser Zeitstempel wird zur Konfliktlösung verwendet, wenn zwei Bereitstellungen dieselbe Priorität haben. 
-2. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
-3. Überprüfen Sie die Bereitstellungsdetails. Sie können über Registerkarten die Details der Bereitstellung überprüfen.
+1. Wählen Sie die Bereitstellung aus, die Sie überwachen möchten.  
+1. Überprüfen Sie die Bereitstellungsdetails. Sie können über Registerkarten die Details der Bereitstellung überprüfen.
 
 ## <a name="modify-a-deployment"></a>Ändern einer Bereitstellung
 
 Wenn Sie Änderungen an einer Bereitstellung vornehmen, werden diese sofort auf alle Zielgeräte repliziert. 
 
 Wenn Sie die Zielbedingung ändern, erfolgen die nachfolgend aufgeführten Anpassungen:
+
 * Wenn ein Gerät die alte Zielbedingung nicht erfüllt, wohl aber die neue, und diese Bereitstellung die höchste Priorität für das Gerät hat, wird diese Bereitstellung auf das Gerät angewendet. 
 * Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, die Zielbedingung nicht mehr erfüllt, wird diese Bereitstellung deinstalliert, und die Bereitstellung mit der nächsthöheren Priorität wird angewendet. 
 * Wenn ein Gerät, auf dem diese Bereitstellung gegenwärtig ausgeführt wird, diese Zielbedingung wie auch die Zielbedingungen aller anderen Bereitstellungen nicht erfüllt, erfolgt keine Änderung auf dem Gerät. Das Gerät führt die aktuellen Module im aktuellen Zustand weiter aus, wird aber nicht mehr als Teil dieser Bereitstellung verwaltet. Sobald es die Zielbedingung einer anderen Bereitstellung erfüllt, wird diese Bereitstellung deinstalliert, und die neue Bereitstellung wird angewendet. 
@@ -153,9 +194,10 @@ Gehen Sie wie folgt vor, um Änderungen an einer Bereitstellung vorzunehmen:
 
 1. Wählen Sie die Bereitstellung aus, die Sie ändern möchten. 
 1. Nehmen Sie die gewünschten Änderungen an den folgenden Feldern vor: 
-   * Zielbedingung 
-   * Bezeichnungen 
-   * Priorität 
+   * Zielbedingung
+   * Metriken: Sie können definierte Metriken ändern oder löschen oder neue Metriken hinzufügen.
+   * Bezeichnungen
+   * Priorität
 1. Wählen Sie **Speichern** aus.
 1. Führen Sie die unter [Überwachen eine Bereitstellung](#monitor-a-deployment) beschriebenen Schritte durch, um den Rollout der Änderungen zu beobachten. 
 

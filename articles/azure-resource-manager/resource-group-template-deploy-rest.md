@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2018
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: 058d6d398f6bb54e8569e727f118a325c338049d
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: f49b8ed592422927288e24b164a04645e2e37744
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50154741"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56301382"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API
 
@@ -81,8 +81,21 @@ Sie können entweder Ihre Vorlage in den Anforderungstext einschließen oder ein
     Wenn Sie den Antwortinhalt und/oder den Anforderungsinhalt protokollieren möchten, fügen Sie **debugSetting** in die Anforderung ein.
 
   ```json
-  "debugSetting": {
-    "detailLevel": "requestContent, responseContent"
+  {
+    "properties": {
+      "templateLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "mode": "Incremental",
+      "parametersLink": {
+        "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+        "contentVersion": "1.0.0.0"
+      },
+      "debugSetting": {
+        "detailLevel": "requestContent, responseContent"
+      }
+    }
   }
   ```
 
@@ -159,22 +172,50 @@ Sie können entweder Ihre Vorlage in den Anforderungstext einschließen oder ein
 
 ## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
 
-Für Bereitstellungen, bei denen Fehler auftreten, können Sie festlegen, dass eine frühere Bereitstellung aus dem Bereitstellungsverlauf automatisch erneut bereitgestellt wird. Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
+Wenn eine Bereitstellung fehlschlägt, können Sie automatisch eine frühere, erfolgreiche Bereitstellung aus Ihrem Bereitstellungsverlauf bereitstellen. Geben Sie mit der Eigenschaft `onErrorDeployment` im Anforderungstext die erneute Bereitstellung an.
+
+Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
 
 Um die letzte erfolgreich ausgeführte Bereitstellung erneut bereitzustellen, wenn bei der aktuellen Bereitstellung Fehler auftreten, verwenden Sie folgenden Code:
 
 ```json
-"onErrorDeployment": {
-  "type": "LastSuccessful",
-},
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "LastSuccessful",
+    }
+  }
+}
 ```
 
 Um eine bestimmte Bereitstellung erneut bereitzustellen, wenn bei der aktuellen Bereitstellung Fehler auftreten, verwenden Sie folgenden Code:
 
 ```json
-"onErrorDeployment": {
-  "type": "SpecificDeployment",
-  "deploymentName": "<deploymentname>"
+{
+  "properties": {
+    "templateLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/template.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "mode": "Incremental",
+    "parametersLink": {
+      "uri": "http://mystorageaccount.blob.core.windows.net/templates/parameters.json",
+      "contentVersion": "1.0.0.0"
+    },
+    "onErrorDeployment": {
+      "type": "SpecificDeployment",
+      "deploymentName": "<deploymentname>"
+    }
+  }
 }
 ```
 
@@ -215,7 +256,7 @@ Die Parameterdatei darf nicht größer als 64 KB sein.
 Wenn Sie einen vertraulichen Wert für einen Parameter (z.B. ein Kennwort) angeben müssen, fügen Sie den Wert einem Schlüsseltresor hinzu. Rufen Sie den Schlüsseltresor während der Bereitstellung wie im vorherigen Beispiel gezeigt ab. Weitere Informationen finden Sie unter [Übergeben sicherer Werte während der Bereitstellung](resource-manager-keyvault-parameter.md). 
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Wenn Sie angeben möchten, wie Ressourcen behandelt werden sollen, die in der Ressourcengruppe enthalten sind, aber nicht in der Vorlage definiert wurden, informieren Sie sich über [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
+* Wenn Sie angeben möchten, wie Ressourcen behandelt werden sollen, die in der Ressourcengruppe enthalten sind, aber nicht in der Vorlage definiert wurden, lesen Sie die Informationen unter [Azure Resource Manager-Bereitstellungsmodi](deployment-modes.md).
 * Informationen zum Arbeiten mit asynchronen REST-Vorgängen finden Sie unter [Nachverfolgen asynchroner Vorgänge in Azure](resource-manager-async-operations.md).
 * Ein Beispiel für die Bereitstellung von Ressourcen über die .NET-Clientbibliothek finden Sie unter [Bereitstellen von Ressourcen mithilfe von .NET-Bibliotheken und einer Vorlage](../virtual-machines/windows/csharp-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 * Informationen zum Definieren von Parametern in der Vorlage finden Sie unter [Erstellen von Vorlagen](resource-group-authoring-templates.md#parameters).

@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+title: 'Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto: Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Amazon-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 207a33931d7be88355241ea8c282dc7c39c9971c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 4f60db91a1fb667586287873245fd5face343713
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169959"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427733"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Amazon-Konto mithilfe von Azure Active Directory B2C
 
 ## <a name="create-an-amazon-application"></a>Erstellen einer Amazon-Anwendung
 
-Um ein Amazon-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Amazon-Konto verfügen, können Sie eines unter [https://www.amazon.com/](https://www.amazon.com/) erstellen.
+Um ein Amazon-Konto als [Identitätsanbieter](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory B2C (Azure AD) verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Amazon-Konto verfügen, können Sie eines unter [https://www.amazon.com/](https://www.amazon.com/) erstellen.
 
 1. Melden Sie sich beim [Amazon Developer Center](https://login.amazon.com/) mit den Anmeldeinformationen für Ihr Amazon-Konto an.
 2. Wenn Sie dies nicht bereits getan haben, klicken Sie auf **Sign Up**, führen Sie die Schritte zur Registrierung von Entwicklern aus, und akzeptieren Sie die Richtlinie.

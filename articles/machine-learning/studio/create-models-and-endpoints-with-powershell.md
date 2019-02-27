@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 280538c16f5a464f759eca74cce8ff6a97bfa4b2
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 40cb4b7969ec2272936d1361be8183db84f944d8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244297"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455057"
 ---
 # <a name="use-powershell-to-create-studio-models-and-web-service-endpoints-from-one-experiment"></a>Erstellen mehrerer Studio-Modelle und Webdienst-Endpunkte in einem Experiment mit PowerShell
 
@@ -25,9 +25,9 @@ Angenommen, Sie besitzen eine Fahrradvermietung als globales Franchise-Unternehm
 
 Sie können das Modell einmalig trainieren, indem Sie eine zusammengefasste Version mit allen Datasets aller Standorte verwenden. Aber jeder Ihrer Standorte hat eine einzigartige Umgebung. Daher besteht ein besserer Ansatz darin, das Regressionsmodell separat zu trainieren, indem das Dataset für jeden Standort genutzt wird. Auf diese Weise können in jedem trainierten Modell die unterschiedlichen Ladengrößen, das Volumen, die Geografie, die Einwohnerzahl, die Fahrradfreundlichkeit der Verkehrsinfrastruktur und weitere Aspekte berücksichtigt werden.
 
-Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
+Dies wäre vermutlich der beste Ansatz. Sie möchten in Azure Machine Learning Studio aber nicht 1.000 Trainingsexperimente erstellen müssen, also ein Experiment pro Standort. Dies ist nicht nur viel zu aufwendig, sondern auch eine ineffiziente Vorgehensweise, da alle Experimente mit Ausnahme des Trainingsdatasets die gleichen Komponenten aufweisen würden.
 
-Glücklicherweise können Sie hierfür die [Azure Machine Learning-API für das erneute Trainieren](retrain-models-programmatically.md) verwenden und die Aufgabe mit [Azure Machine Learning PowerShell](powershell-module.md) automatisieren.
+Glücklicherweise können Sie hierfür die [Azure Machine Learning Studio-API für das erneute Trainieren](retrain-models-programmatically.md) verwenden und die Aufgabe mit [Azure Machine Learning Studio PowerShell](powershell-module.md) automatisieren.
 
 > [!NOTE]
 > Damit das Beispiel schneller ausgeführt wird, reduzieren Sie die Standortanzahl von 1.000 auf 10. Es gelten aber dieselben Prinzipien und Verfahren wie für 1.000 Standorte. Möchten Sie das Trainieren aber mit 1.000 Datasets vornehmen, sollten Sie die folgenden PowerShell-Skripts gleichzeitig ausführen. Die Erklärung hierzu würde den Rahmen dieses Artikels sprengen, aber im Internet finden Sie Beispiele für das PowerShell-Multithreading.  

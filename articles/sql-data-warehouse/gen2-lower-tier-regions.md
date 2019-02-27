@@ -9,20 +9,18 @@ ms.subservice: design
 ms.date: 12/03/2018
 ms.author: anvang
 ms.reviewer: igorstan
-ms.openlocfilehash: 22993395d60df23533b67ec48d0ea7f979d73e22
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: bd0ec4d334b581d86451e5e534e80c1fde1e33ac
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692461"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445236"
 ---
 # <a name="azure-sql-data-warehouse-gen2-support-for-lower-compute-tiers"></a>Azure SQL Data Warehouse Gen2-Unterstützung für niedrigere Computetarife
 
 Microsoft fügt niedrigere Computetarife für das extrem schnelle Azure SQL Data Warehouse Gen2 hinzu, sodass Sie die Einstiegskosten für ein Data Warehouse zur Verarbeitung anspruchsvoller Abfragen verringern können. Kunden profitieren von den führenden Azure SQL Data Warehouse-Features für Leistung, Flexibilität und Sicherheit, die bei 100 cDWU (Compute Data Warehouse-Einheiten) beginnen und in Minutenschnelle auf 30.000 cDWU skaliert werden können. Kunden können die Vorteile der Gen2-Leistung und -Flexibilität bei niedrigeren Computetarifen nutzen. 
 
 Durch die Beseitigung des Einstiegspunkts für das Data Warehousing der nächsten Generation öffnet Microsoft die Türen für wertorientierte Kunden, die alle Vorteile eines sicheren, leistungsstarken Data Warehouse nutzen möchten, ohne erraten zu müssen, welche Testumgebung für sie am besten geeignet ist.  Anstelle des aktuellen Einstiegspunkts von 500 cDWU können Kunden mit nur 100 cDWU beginnen.  SQL Data Warehouse Gen2 bietet weiterhin Unterstützung für Vorgänge zum Anhalten und Fortsetzen und geht im Hinblick auf Computevorgänge weit über einfache Flexibilität hinaus.  Gen2 unterstützt zudem eine unbegrenzte Columnstore-Speicherkapazität und 2,5-mal mehr Arbeitsspeicher pro Abfrage, bis zu 128 gleichzeitige Abfragen sowie adaptive Cachefeatures. So erleben Kunden im Durchschnitt die fünffache Leistung im Vergleich zu derselben Data Warehouse-Einheit in Gen 1 zum selben Preis.  Georedundante Sicherungen mit integrierter Datenschutzgarantie gehören in Gen2 zum Standard. Azure SQL Data Warehouse Gen2 kann bei Bedarf sofort skaliert werden.
-
-Die Bereitstellung von oder die Skalierung auf die Gen 2-Instanzen des niedrigeren Tarifs werden im Portal zurzeit nicht unterstützt. Wir arbeiten daran, diese Funktion zu aktivieren. Senden Sie in der Zwischenzeit ein [Ticket](sql-data-warehouse-get-started-create-support-ticket.md), wenn Sie diesen neuen Tarif nutzen möchten.
 
 ## <a name="getting-started-with-azure-sql-data-warehouse-gen2"></a>Erste Schritte mit Azure SQL Data Warehouse Gen2 
 
@@ -34,22 +32,7 @@ Führen Sie ein Upgrade des [für Compute optimierten Azure SQL Data Warehouse G
 
 ## <a name="supported-regions-for-lower-compute-tiers"></a>Unterstützte Regionen für niedrigere Computetarife
 
-- USA, Osten 1 
-- USA (Ost 2)
-- Europa, Westen
-- Nordeuropa
-- USA, Westen 2
-- Asien, Südosten
-- USA, Süden-Mitte
-- USA (Mitte) 
-- Asien, Osten
-- Japan, Osten
-- Indien, Mitte
-- Australien (Osten)
-- Australien, Südosten
-- Kanada, Mitte
-- Japan, Westen 
-- Kanada, Mitte
+[Tabelle der unterstützten verfügbaren Regionen](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

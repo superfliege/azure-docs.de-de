@@ -11,16 +11,16 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/14/2018
+ms.date: 02/14/2019
 ms.author: twhitney, mikhegn
-ms.openlocfilehash: b38946f813185a4821520b8591b7fd72a5f0cce0
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
+ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300063"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311221"
 ---
-# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Anleitung: Debuggen von Windows-Containern in Azure Service Fabric mit Visual Studio 2017
+# <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Gewusst wie: Debuggen von Windows-Containern in Azure Service Fabric mit Visual Studio 2017
 
 Mit Visual Studio 2017 Update 7 (15.7) können Sie .NET-Anwendungen in Containern als Service Fabric-Dienste debuggen. In diesem Artikel erfahren Sie, wie Sie Ihre Umgebung konfigurieren und anschließend eine .NET-Anwendung in einem Container debuggen, der in einem lokalen Service Fabric-Cluster ausgeführt wird.
 
@@ -37,10 +37,10 @@ Mit Visual Studio 2017 Update 7 (15.7) können Sie .NET-Anwendungen in Container
 1. Um die DNS-Auflösung zwischen den Containern zu unterstützen, müssen Sie Ihren lokalen Entwicklungscluster einrichten und dazu den Computernamen verwenden. Diese Schritte sind auch erforderlich, wenn Sie Dienste über den Reverseproxy addressieren möchten.
     1. Starten von PowerShell als Administrator
     2. Navigieren Sie zum Setupordner des SDK-Clusters, in der Regel `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Führen Sie das Skript `DevClusterSetup.ps1` mit dem Parameter `-UseMachineName` aus.
+    3. Ausführen des Skripts `DevClusterSetup.ps1`
 
        ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1 -UseMachineName
+         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
        ```
 
     > [!NOTE]
@@ -81,4 +81,4 @@ Es folgt eine Liste der bekannten Einschränkungen beim Debuggen von Containern 
     Visual Studio unterstützt Konsolen- und ASP.NET-Projekttypen für .NET und .NET Core.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Funktionen von Service Fabric und Containern finden Sie über diesen Link: [Übersicht über Service Fabric-Container](service-fabric-containers-overview.md).
+Weitere Informationen zu den Funktionen von Service Fabric und Containern finden Sie über diesen Link: [Service Fabric und Container](service-fabric-containers-overview.md).

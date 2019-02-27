@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: af3a654010fa676096bfad895d5814b2cefa8e71
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 7afc1170ba2503c8a8c97be9a19459c92e331449
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997122"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453578"
 ---
 # <a name="automated-backups"></a>Automatisierte Sicherungen
 
@@ -85,6 +85,11 @@ Singletons und in einem Pool zusammengefasste Datenbanken verfügen über eine O
 Wie bei PITR auch, sind die LTR-Sicherungen georedundant und per [regionsübergreifender Replikation für Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) geschützt.
 
 Weitere Informationen finden Sie unter [Langfristiges Aufbewahren von Sicherungen](sql-database-long-term-retention.md).
+
+## <a name="storage-costs"></a>Speicherkosten
+Automatisierte Sicherungen Ihrer Datenbanken von einem Zeitraum von sieben Tagen werden standardmäßig in ein Blob Storage-RA-GRS-Konto mit der SKU „Standard“ kopiert. Der Speicher wird für wöchentliche vollständige Sicherungen, tägliche differenzielle Sicherungen und im 5-Minuten-Takt kopierte Sicherungen von Transaktionsprotokollen verwendet. Die Größe des Transaktionsprotokolls hängt von der Änderungsrate der Datenbank ab. Eine Mindestspeichermenge, die der Gesamtgröße der Datenbank entspricht, wird kostenlos zur Verfügung gestellt. Zusätzlich verbrauchter Sicherungsspeicher wird pro GB und Monat abgerechnet.
+
+Weitere Informationen zu den Preisen für Storage finden Sie auf der Seite [Azure SQL-Datenbank – Preise](https://azure.microsoft.com/pricing/details/sql-database/single/). 
 
 ## <a name="are-backups-encrypted"></a>Werden Sicherungen verschlüsselt?
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: victorh
-ms.openlocfilehash: b368ef3b5503d90b0eb928113e8154aabca9c04a
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 7a090a068984a71c917cf5c33761dd78ac1ad2c8
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157138"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453255"
 ---
 # <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-portal"></a>Erstellen eines Anwendungsgateways mit einer Web Application Firewall über das Azure-Portal
 
@@ -130,7 +130,7 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 
 ## <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-In diesem Tutorial verwendet das Anwendungsgateway ein Speicherkonto, um Daten zum Zweck der Erkennung und Prävention zu speichern. Sie können auch Log Analytics oder Event Hub verwenden, um Daten aufzuzeichnen.
+In diesem Tutorial verwendet das Anwendungsgateway ein Speicherkonto, um Daten zum Zweck der Erkennung und Prävention zu speichern. Sie können auch Azure Monitor-Protokolle oder Event Hub verwenden, um Daten aufzuzeichnen.
 
 1. Klicken Sie in der linken oberen Ecke des Azure-Portals auf **Neu**.
 2. Wählen Sie die Option **Speicher** und anschließend **Speicherkonto – Blob, Datei, Tabelle, Warteschlange** aus.

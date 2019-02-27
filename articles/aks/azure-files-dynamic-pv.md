@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: iainfou
-ms.openlocfilehash: 841c65fd8420fdfe681cb99ee7054cb4edd5fcd3
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 2cf9a98a2f27c9088266a976118acdb56f8a65d7
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53968985"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300821"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-files-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure Files in Azure Kubernetes Service (AKS)
 
@@ -26,32 +26,20 @@ Es wird vorausgesetzt, dass Sie über ein AKS-Cluster verfügen. Wenn Sie noch e
 
 Außerdem muss die Version 2.0.46 oder höher der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
-## <a name="create-a-storage-account"></a>Speicherkonto erstellen
+## <a name="create-a-storage-class"></a>Erstellen einer Speicherklasse
 
-Bei der dynamischen Erstellung einer Azure Files-Freigabe als Kubernetes-Volume kann ein beliebiges Speicherkonto verwendet werden, solange es sich in der AKS-Ressourcengruppe des **Knotens** befindet. Dies ist die Gruppe mit dem Präfix *MC_*, die durch die Bereitstellung der Ressourcen für den AKS-Cluster erstellt wurde. Rufen Sie den Namen der Ressourcengruppe mit dem Befehl [az aks show][az-aks-show] ab.
+Mit einer Speicherklasse wird festgelegt, wie eine Azure-Dateifreigabe erstellt wird. In der Ressourcengruppe *_MC* wird automatisch ein Speicherkonto zur Verwendung mit der Speicherklasse und zur Speicherung von Azure-Dateifreigaben erstellt. Wählen Sie für *skuName* eine der folgenden [Azure-Speicherredundanzen][storage-skus] aus:
 
-```azurecli
-$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
-
-MC_myResourceGroup_myAKSCluster_eastus
-```
-
-Verwenden Sie den Befehl [az storage account create][az-storage-account-create], um ein Speicherkonto zu erstellen.
-
-Ersetzen Sie `--resource-group` durch den Namen der Ressourcengruppe aus dem letzten Schritt und `--name` durch einen Namen Ihrer Wahl. Geben Sie Ihren eigenen eindeutigen Speicherkontonamen ein:
-
-```azurecli
-az storage account create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name mystorageaccount --sku Standard_LRS
-```
+* *Standard_LRS:* lokal redundanter Standardspeicher (LRS)
+* *Standard_GRS:* georedundanter Standardspeicher (GRS)
+* *Standard_RAGRS:* Georedundanter Standardspeicher mit Lesezugriff (Standard-RA-GRS)
 
 > [!NOTE]
 > Azure Files kann derzeit nur mit Storage Standard verwendet werden. Wenn Sie Storage Premium verwenden, treten beim Bereitstellen des Volumes Fehler auf.
 
-## <a name="create-a-storage-class"></a>Erstellen einer Speicherklasse
+Weitere Informationen zu Kubernetes-Speicherklassen für Azure Files finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
 
-Mit einer Speicherklasse wird festgelegt, wie eine Azure-Dateifreigabe erstellt wird. In der Klasse kann ein Speicherkonto angegeben werden. Wenn kein Speicherkonto angegeben ist, müssen *skuName* and *location* angegeben werden. Es werden alle Speicherkonten in der zugeordneten Ressourcengruppe auf eine Übereinstimmung ausgewertet. Weitere Informationen zu Kubernetes-Speicherklassen für Azure Files finden Sie unter [Kubernetes-Speicherklassen][kubernetes-storage-classes].
-
-Erstellen Sie eine Datei mit dem Namen `azure-file-sc.yaml`, und fügen Sie das folgende Beispielmanifest ein. Aktualisieren Sie den Wert für *storageAccount* mit dem Namen Ihres Speicherkontos, das Sie im vorherigen Schritt erstellt haben. Weitere Informationen zu *mountOptions* finden Sie im Abschnitt [Einbindungsoptionen][mount-options].
+Erstellen Sie eine Datei mit dem Namen `azure-file-sc.yaml`, und fügen Sie das folgende Beispielmanifest ein. Weitere Informationen zu *mountOptions* finden Sie im Abschnitt [Einbindungsoptionen][mount-options].
 
 ```yaml
 kind: StorageClass
@@ -66,7 +54,6 @@ mountOptions:
   - gid=1000
 parameters:
   skuName: Standard_LRS
-  storageAccount: mystorageaccount
 ```
 
 Verwenden Sie den Befehl [kubectl apply][kubectl-apply] zum Erstellen der Speicherklasse:
@@ -295,3 +282,4 @@ Informieren Sie sich über persistente Kubernetes-Volumes bei Verwendung von Azu
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [install-azure-cli]: /cli/azure/install-azure-cli
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[storage-skus]: ../storage/common/storage-redundancy.md

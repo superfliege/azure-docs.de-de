@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 1/11/2019
 ms.author: amitsriva
-ms.openlocfilehash: 6cd21448742778b0a2a27aea41f7940b1a216cdc
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: c93434f060525f2f53f24c511bfa748a31d1fd61
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231103"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453296"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Back-End-Integrität, Diagnoseprotokolle und Metriken für Application Gateway
 
@@ -90,7 +90,7 @@ Der folgende Codeausschnitt enthält ein Beispiel für die Antwort:
 
 ## <a name="diagnostic-logging"></a>Diagnoseprotokolle
 
-Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Sie können auf einige dieser Protokolle über das Portal zugreifen. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md), Excel und Power BI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
+Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateways zu verwalten und eventuelle Fehler zu beheben. Sie können auf einige dieser Protokolle über das Portal zugreifen. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie [Azure Monitor-Protokollen](../azure-monitor/insights/azure-networking-analytics.md), Excel und Power BI angezeigt werden. In der folgenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen:
 
 * **Aktivitätsprotokoll:** Mit dem Feature [Azure-Aktivitätsprotokolle](../monitoring-and-diagnostics/insights-debugging-with-events.md) (ehemals Betriebs- und Überwachungsprotokolle) können Sie sämtliche an Ihr Azure-Abonnement übermittelten Vorgänge sowie deren Status anzeigen. Aktivitätsprotokolleinträge werden standardmäßig gesammelt und können im Azure-Portal angezeigt werden.
 * **Zugriffsprotokoll:** Mithilfe dieses Protokolls können Sie Application Gateway-Zugriffsmuster anzeigen und wichtige Informationen analysieren. Dazu gehören die IP des Aufrufers, die angeforderte URL, die Antwortlatenz, der Rückgabecode sowie die ein- und ausgehenden Bytes. Ein Zugriffsprotokoll wird alle 300 Sekunden erstellt. Dieses Protokoll enthält einen Datensatz pro Instanz von Application Gateway. Die Application Gateway-Instanz wird anhand der InstanceId-Eigenschaft identifiziert.
@@ -104,7 +104,7 @@ Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
 * **Speicherkonto:** Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
 * **Event Hubs:** Event Hubs sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
-* **Log Analytics:** Log Analytics ist am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends geeignet.
+* **Azure Monitor-Protokolle:** Azure Monitor-Protokolle eignen sich am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends.
 
 ### <a name="enable-logging-through-powershell"></a>Ermöglichen der Protokollierung mit PowerShell
 
@@ -298,7 +298,7 @@ Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzei
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Anzeigen und Analysieren der Zugriffs-, Leistungs- und Firewallprotokolle
 
-Azure [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) kann die Indikator- und Ereignisprotokolldateien aus Ihrem Blob-Speicherkonto erfassen. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
+[Azure Monitor-Protokolle](../azure-monitor/insights/azure-networking-analytics.md) können die Indikator- und Ereignisprotokolldateien aus Ihrem Blobspeicherkonto erfassen. Die Anwendung umfasst Visualisierungen und leistungsfähige Suchfunktionen zum Analysieren Ihrer Protokolle.
 
 Sie können auch eine Verbindung mit Ihrem Speicherkonto herstellen und die JSON-Protokolleinträge für Zugriffs- und Leistungsprotokolle abrufen. Nachdem Sie die JSON-Dateien heruntergeladen haben, können Sie diese in das CSV-Format konvertieren oder in Excel, Power BI oder einem anderen Datenvisualisierungstool anzeigen.
 
@@ -374,7 +374,7 @@ Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Visualisieren von Leistungsindikator- und Ereignisprotokollen mit [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md)
+* Visualisieren von Indikator- und Ereignisprotokollen mit [Azure Monitor-Protokollen](../azure-monitor/insights/azure-networking-analytics.md)
 * Blogbeitrag [Visualize your Azure activity log with Power BI](https://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) (Visualisieren von Azure-Aktivitätsprotokollen mit Power BI)
 * Blogbeitrag [View and analyze Azure activity logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) (Anzeigen und Analysieren von Azure-Aktivitätsprotokollen in Power BI und mehr)
 

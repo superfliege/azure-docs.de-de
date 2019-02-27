@@ -1,7 +1,7 @@
 ---
 title: Hinzufügen von Sprachanalysetools – Azure Search
 description: Mehrsprachige lexikalische Textanalyse für nicht englischsprachige Abfragen und Indizes in Azure Search.
-ms.date: 01/31/2019
+ms.date: 02/14/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,20 +19,20 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: b5c562994c169a8c5d51ee31a9606c5c40162603
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007608"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328291"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Azure Search-Index
 
-Ein *Sprachanalysetool* ist eine bestimmte Komponente einer [Volltextsuchmaschine](https://docs.microsoft.com/azure/search/search-lucene-query-architecture), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über eine `analyzer`-Eigenschaft. Wenn Ihr Index übersetzte Zeichenfolgen enthält, wie z.B. separate Felder für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.  
+Ein *Sprachanalysetool* ist eine bestimmte Art einer [Textanalyse](search-analyzers.md), die eine lexikalische Analyse mithilfe der linguistischen Regeln der Zielsprache durchführt. Jedes durchsuchbare Feld verfügt über die Eigenschaft **analyzer**. Wenn Ihr Index übersetzte Zeichenfolgen enthält, wie z.B. separate Felder für englischen und chinesischen Text, können Sie für jedes Feld Sprachanalysetools angeben, um auf die umfangreichen linguistischen Funktionen dieser Sprachanalysetools zuzugreifen.  
 
 Azure Search unterstützt 35 Analysetools auf Basis von Lucene und 50 Analysetools, die von Microsoft-Technologien zur Verarbeitung natürlicher Sprache unterstützt werden, die in Office und Bing zum Einsatz kommen.
 
-## <a name="compare-language-analyzer-types"></a>Vergleichen verschiedener Typen von Sprachanalysetools 
+## <a name="comparing-analyzers"></a>Vergleichen von Analysetools
 
 Einige Entwickler bevorzugen möglicherweise die vertrautere, einfachere Open Source-Lösung von Lucene. Lucene-Sprachanalysetools sind schneller, während Microsoft-Sprachanalysetools erweiterte Funktionen bieten, wie z.B. Lemmatisierung, Wortzerlegung (in Sprachen wie Deutsch, Dänisch, Niederländisch, Schwedisch, Norwegisch, Estnisch, Finnisch, Ungarisch und Slowakisch) und Entitätserkennung (URLs, E-Mails, Datumsangaben und Zahlen). Vergleichen Sie nach Möglichkeit die Analyseprogramme von Microsoft und Lucene, um die für Ihre Anforderungen passendere Lösung zu ermitteln. 
 
@@ -49,15 +49,17 @@ Standardmäßig wird das Lucene-Standardanalysetool verwendet, das für Englisch
  > [!Tip]
  > Die [Search Analyzer Demo](https://alice.unearth.ai/) bietet eine Gegenüberstellung der Ergebnisse des Lucene-Standardanalysetools, des Analysetools für Englisch von Lucene und des Tools zur Verarbeitung natürlicher Sprache (Englisch) von Microsoft. Die Ergebnisse für Ihre Sucheingaben werden für die einzelnen Analysen nebeneinander angezeigt.
 
-## <a name="analyzer-configuration"></a>Analysetoolkonfiguration
+## <a name="configuring-analyzers"></a>Konfigurieren von Analysetools
 
-Sie können für die Eigenschaft `analyzer` jedes Feldes in der Indexdefinition den Namen eines Analyseprogramms angeben, das die zu verwendende Sprache und den Anbieter festlegt. Bei der Indizierung dieses Felds und der Suche danach wird das gleiche Analyseprogramm verwendet. Beispiel: Sie können im selben Index separate Felder für englische, französische und spanische Hotelbeschreibungen verwenden.  
+Sprachanalysen werden in der vorliegenden Form verwendet. Sie können für die Eigenschaft **analyzer** aller Felder in der Indexdefinition den Namen eines Analyseprogramms festlegen, das die Sprache und den Linguistikstapel (Microsoft oder Lucene) angibt. Bei der Indizierung dieses Felds und der Suche danach wird das gleiche Analyseprogramm verwendet. Beispiel: Sie können im selben Index separate Felder für englische, französische und spanische Hotelbeschreibungen verwenden. Alternativ dazu können Sie anstelle von **analyzer** die Eigenschaften **indexAnalyzer** und **searchAnalyzer** verwenden, um unterschiedliche Analyseregeln zur Indizierungszeit und zur Abfragezeit anzuwenden. 
 
-Verwenden Sie den Abfrageparameter **searchFields**, um anzugeben, für welches sprachspezifische Feld in den Abfragen gesucht werden soll. Beispiele von Abfragen mit der Eigenschaft „analyzer“ finden Sie unter „Dokumente durchsuchen“. 
+Verwenden Sie den Abfrageparameter **searchFields**, um anzugeben, für welches sprachspezifische Feld in den Abfragen gesucht werden soll. Beispiele für Abfragen mit der Eigenschaft „analyzer“ finden Sie unter [Search Documents (Azure Search Service REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API des Azure Search-Diensts)). 
 
 Weitere Informationen zu Indexeigenschaften finden Sie unter [Erstellen eines Index &#40;Azure Search-Dienst-REST-API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index). Weitere Informationen zur Analyse in Azure Search finden Sie unter [Analysetools in Azure Search](https://docs.microsoft.com/azure/search/search-analyzers).
 
-## <a name="analyzer-list"></a>Liste der Analysetools  
+<a name="language-analyzer-list"></a>
+
+## <a name="language-analyzer-list"></a>Liste der Sprachanalysen 
  Es folgt die Liste der unterstützten Sprachen sowie die Namen der Lucene- und Microsoft-Analyseprogramme.  
 
 |Sprache|Name des Microsoft-Analysetools|Name des Lucene-Analysetools|  

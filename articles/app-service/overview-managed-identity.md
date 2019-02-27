@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/20/2018
 ms.author: mahender
-ms.openlocfilehash: 68f640f6962802c45ca369786c4e5d0d4f785fa6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 3f064769728d5d081c4a110e6c981c4b36aad384
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105076"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300583"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -280,8 +280,8 @@ Weitere Informationen zu Microsoft.Azure.Services.AppAuthentication und den zuge
 
 Für eine App mit einer verwalteten Identität sind zwei Umgebungsvariablen definiert:
 
-- MSI_ENDPOINT
-- MSI_SECRET
+- MSI_ENDPOINT: Die URL zum lokalen Tokendienst
+- MSI_SECRET: Ein Header, der als Maßnahme gegen SSRF-Angriffe (Server-Side Request Forgery) verwendet wird. Der Wert wird von der Plattform rotiert.
 
 Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die Ihre App Tokens anfordern kann. Um ein Token für eine Ressource abzurufen, senden Sie eine HTTP-GET-Anforderung mit folgenden Parametern an diesen Endpunkt:
 
@@ -289,7 +289,7 @@ Bei der Variable **MSI_ENDPOINT** handelt es sich um eine lokale URL, über die 
 > |-----|-----|-----|
 > |resource|Abfragen|Der AAD-Ressourcen-URI der Ressource, für die ein Token abgerufen werden soll. Dies kann einer der [Azure-Dienste, die die Azure AD-Authentifizierung unterstützen](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication), oder ein anderer Ressourcen-URI sein.|
 > |api-version|Abfragen|Die Version der zu verwendenden Token-API. Die einzige derzeit unterstützte Version lautet „2017-09-01“.|
-> |secret|Header|Der Wert der Umgebungsvariable „MSI_SECRET“.|
+> |secret|Header|Der Wert der Umgebungsvariable „MSI_SECRET“. Dieser Header wird als Maßnahme gegen SSRF-Angriffe (Server-Side Request Forgery) verwendet.|
 > |clientid|Abfragen|(Optional) Die ID der benutzerseitig zugewiesenen Identität, die verwendet werden soll. Sofern nicht angegeben, wird die systemseitig zugewiesene Identität verwendet.|
 
 Eine erfolgreiche 200 OK-Antwort enthält einen JSON-Text mit folgenden Eigenschaften:

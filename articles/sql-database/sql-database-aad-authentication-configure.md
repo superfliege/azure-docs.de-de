@@ -11,13 +11,13 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 manager: craigg
-ms.date: 12/03/2018
-ms.openlocfilehash: 87c3633bb3ed3537d1e258b9d8d50fd6d6356d81
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.date: 02/20/2019
+ms.openlocfilehash: ced83fc31e9e4944f7392169b703056dc5b4fd98
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960023"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454836"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL
 
@@ -143,7 +143,7 @@ Für Ihre verwaltete SQL-Datenbank-Instanz sind Leseberechtigungen für Azure AD
 
     Der Vorgang zum Ändern des Administrators kann einige Minuten in Anspruch nehmen. Anschließend wird der neue Administrator im Feld „Active Directory-Administrator“ angezeigt.
 
-Nach der Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz können Sie mit dem Erstellen von Azure AD-Anmeldungen (**öffentliche Vorschau**) anhand der <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>-Syntax beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
+Nach der Bereitstellung eines Azure AD-Administrators für die verwaltete Instanz können Sie mit dem Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) (**öffentliche Vorschau**) anhand der <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>-Syntax beginnen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration).
 
 > [!TIP]
 > Wenn Sie später einen Administrator entfernen möchten, wählen Sie oben auf der Seite „Active Directory-Administrator“ **Administrator entfernen** und anschließend **Speichern** aus.
@@ -264,7 +264,7 @@ Sie können diese Anforderungen folgendermaßen erfüllen:
 ## <a name="create-contained-database-users-in-your-database-mapped-to-azure-ad-identities"></a>Erstellen eigenständiger Datenbankbenutzer in der Datenbank, die Azure AD-Identitäten zugeordnet sind
 
 >[!IMPORTANT]
->Verwaltete Instanzen unterstützen jetzt Azure AD-Anmeldungen (**öffentliche Vorschau**), wodurch Sie Anmeldungen für Azure AD-Benutzer, Gruppen oder Anwendungen erstellen können. Mit Azure AD-Anmeldungen ist eine Authentifizierung bei der verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Anmeldungen finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
+>Verwaltete Instanzen unterstützen jetzt Azure AD-Serverprinzipale (Anmeldungen) (**öffentliche Vorschau**), wodurch Sie Anmeldungen für Azure AD-Benutzer, Gruppen oder Anwendungen erstellen können. Mit Azure AD-Serverprinzipalen (Anmeldungen) ist eine Authentifizierung bei der verwalteten Instanz möglich, ohne dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden müssen. Weitere Informationen finden Sie in der [Übersicht über verwaltete Instanzen](sql-database-managed-instance.md#azure-active-directory-integration). Die Syntax zum Erstellen von Azure AD-Serverprinzipalen (Anmeldungen) finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>.
 
 Für die Azure Active Directory-Authentifizierung ist es erforderlich, dass Datenbankbenutzer als eigenständige Datenbankbenutzer erstellt werden. Ein eigenständiger Datenbankbenutzer basierend auf einer Azure AD-Identität ist ein Datenbankbenutzer, der über keine Anmeldung für die Masterdatenbank verfügt, und der einer Identität im Azure AD-Verzeichnis zugeordnet ist, das mit der Datenbank verknüpft ist. Bei der Azure AD-Identität kann es sich entweder um ein einzelnes Benutzerkonto oder um eine Gruppe handeln. Weitere Informationen zu eigenständigen Datenbankbenutzern finden Sie unter [Eigenständige Datenbankbenutzer – machen Sie Ihre Datenbank portabel](https://msdn.microsoft.com/library/ff929188.aspx).
 
@@ -323,14 +323,11 @@ Um zu bestätigen, dass der Azure AD-Administrator ordnungsgemäß eingerichtet 
 Um einen Azure AD-basierten eigenständigen Datenbankbenutzer bereitzustellen (bei dem es sich nicht um den Serveradministrator handelt, der Besitzer der Datenbank ist), stellen Sie mithilfe einer Azure AD-Identität, die Zugriff auf die Datenbank hat, eine Verbindung mit der Datenbank her.
 
 > [!IMPORTANT]
-> Unterstützung für die Azure Active Directory-Authentifizierung wird über [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015 bereitgestellt. Die SSMS-Version von August 2016 bietet auch Unterstützung für die universelle Active Directory-Authentifizierung, die es Administratoren ermöglicht, die Multi-Factor Authentication per Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App anzufordern. Die Verwendung von Azure AD-Anmeldungen und -Benutzern (**öffentliche Vorschau**) mit SSDT wird aktuell nicht unterstützt.
+> Unterstützung für die Azure Active Directory-Authentifizierung wird über [SQL Server 2016 Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) und [SQL Server Data Tools](https://msdn.microsoft.com/library/mt204009.aspx) in Visual Studio 2015 bereitgestellt. Die SSMS-Version von August 2016 bietet auch Unterstützung für die universelle Active Directory-Authentifizierung, die es Administratoren ermöglicht, die Multi-Factor Authentication per Telefonanruf, SMS, Smartcards mit PIN oder Benachrichtigung in einer mobilen App anzufordern.
 
 ## <a name="using-an-azure-ad-identity-to-connect-using-ssms-or-ssdt"></a>Verwenden einer Azure AD-Identität zum Herstellen einer Verbindung mithilfe von SSMS oder SSDT
 
 Nachfolgend wird das Herstellen einer Verbindung mit einer SQL-­Datenbank mithilfe einer Azure AD-Identität und unter Verwendung von SQL Server Management Studio oder SQL Server Data Tools erläutert.
-
->[!IMPORTANT]
->Die Verwendung von Azure AD-Anmeldungen und -Benutzern (**öffentliche Vorschau**) mit SSDT wird aktuell nicht unterstützt.
 
 ### <a name="active-directory-integrated-authentication"></a>Integrierte Active Directory-Authentifizierung
 

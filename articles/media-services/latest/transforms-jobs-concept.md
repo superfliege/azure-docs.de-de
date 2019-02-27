@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/03/2019
+ms.date: 02/19/2019
 ms.author: juliako
-ms.openlocfilehash: e84f74fe4678a65a33c9cc728f290e7c905b2261
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: d621afd682e6040179777f4cd6d991ff31acb5a3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743734"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445490"
 ---
 # <a name="transforms-and-jobs"></a>Transformationen und Aufträge
  
@@ -27,6 +27,10 @@ Der Aktualisierungsvorgang für die Entität [Transformieren](https://docs.micro
 Ein [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) ist die eigentliche Anforderung an Azure Media Services, die erstellte **Transformation** auf ein bestimmtes Eingabevideo oder auf einen Audioinhalt anzuwenden. Nachdem die Transformation erstellt wurde, können Sie mithilfe von Media Services-APIs oder der veröffentlichten SDKs Aufträge übermitteln. Der **Auftrag** gibt Informationen wie den Speicherort des Eingabevideos und den Speicherort für die Ausgabe an. Sie können den Speicherort Ihres Eingabevideos über HTTPS-URLs, SAS-URLs oder [Medienobjekte](https://docs.microsoft.com/rest/api/media/assets). Fortschritt und Status von Aufträgen können abgerufen werden, indem die Ereignisse mit Event Grid überwacht werden. Weitere Informationen finden Sie unter [Überwachen von Ereignissen mit EventGrid](job-state-events-cli-how-to.md).
 
 Der Update-Vorgang für den [Auftrag](https://docs.microsoft.com/rest/api/media/jobs) kann verwendet werden, um die Eigenschaften *description*, und *priority* nach dem Übermitteln des Auftrags zu ändern. Eine Änderung an der *priority*-Eigenschaft wird nur wirksam, wenn sich der Auftrag noch in der Warteschlange befindet. Wenn die Verarbeitung des Auftrags gestartet oder bereits beendet wurde, hat das Ändern der Priorität keine Auswirkungen.
+
+Das folgende Diagramm zeigt den Workflow für Transformationen/Aufträge:
+
+![Transformationen](./media/encoding/transforms-jobs.png)
 
 > [!NOTE]
 > Eigenschaften von **Transform** und **Job** vom Datetime-Typ sind immer im UTC-Format angegeben.
@@ -49,10 +53,21 @@ Angenommen, Sie möchten den ersten Frame aller Ihrer Videos als Miniaturbild ex
 
 Eine **Transformation** hilft Ihnen, die Konfiguration zu erstellen (Schritt 1) und dann Aufträge mithilfe dieser Konfiguration zu übermitteln (Schritt 2).
 
+## <a name="job-error-codes"></a>Auftragsfehlercodes
+
+Weitere Informationen finden Sie unter [Fehlercodes](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode).
+
 ## <a name="paging"></a>Paging
 
 Informationen finden Sie unter [Filterung, Sortierung, Paginierung von Media Services-Entitäten](entities-overview.md).
 
+## <a name="configure-media-reserved-units"></a>Konfigurieren von reservierten Einheiten für Medien
+
+Für die Audioanalyse- und Videoanalyseaufträge, die von Media Services v3 oder Video Indexer ausgelöst werden, wird dringend empfohlen, Ihr Konto mit zehn S3-MRUs (Media Reserved Units, reservierte Einheiten für Medien) bereitzustellen. Erstellen Sie im [Azure-Portal](https://portal.azure.com/) ein Supportticket, falls Sie mehr als zehn S3-MRUs benötigen.
+
+Details dazu finden Sie unter [Skalieren der Medienverarbeitung an der Befehlszeilenschnittstelle](media-reserved-units-cli-how-to.md).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Hochladen, Codieren und Streamen von Videodateien](stream-files-tutorial-with-api.md)
+- [Tutorial: Hochladen, Codieren und Streamen von Videos mithilfe von .NET](stream-files-tutorial-with-api.md)
+- [Tutorial: Analysieren von Videos mit Media Services v3 mithilfe von .NET](analyze-videos-tutorial-with-api.md)

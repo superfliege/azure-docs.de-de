@@ -8,28 +8,28 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: luywang
 ms.custom: include file
-ms.openlocfilehash: 5c7c9938b6a0b3d2e6050940154a8dc3f114341e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53638868"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443322"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Sicherung und Notfallwiederherstellung für Azure IaaS-Datenträger
 
 In diesem Artikel wird beschrieben, wie Sie die Sicherung und Notfallwiederherstellung (Disaster Recovery, DR) von virtuellen IaaS-Computern (Virtual Machines, VMs) und Datenträgern in Azure planen. Im Dokument werden sowohl Managed Disks als auch nicht verwaltete Datenträger behandelt.
 
-Zuerst werden die integrierten Fehlertoleranzfunktionen der Azure-Plattform behandelt, die Schutz vor lokalen Ausfällen bieten. Dann werden die Notfallszenarien behandelt, die durch die integrierten Funktionen nicht vollständig abgedeckt werden. Außerdem werden einige Beispiele für Workloadszenarien angegeben, für die unterschiedliche Aspekte der Sicherung und Notfallwiederherstellung gelten können. Anschließend werden mögliche Lösungen für die Notfallwiederherstellung von IaaS-Datenträgern beschrieben. 
+Zuerst werden die integrierten Fehlertoleranzfunktionen der Azure-Plattform behandelt, die Schutz vor lokalen Ausfällen bieten. Dann werden die Notfallszenarien behandelt, die durch die integrierten Funktionen nicht vollständig abgedeckt werden. Außerdem werden einige Beispiele für Workloadszenarien angegeben, für die unterschiedliche Aspekte der Sicherung und Notfallwiederherstellung gelten können. Anschließend werden mögliche Lösungen für die Notfallwiederherstellung von IaaS-Datenträgern beschrieben.
 
 ## <a name="introduction"></a>Einführung
 
-Für die Azure-Plattform werden verschiedene Methoden in Bezug auf die Redundanz und Fehlertoleranz verwendet, um Kunden vor lokalen Hardwareausfällen zu schützen. Beispiele für lokale Ausfälle sind Probleme mit einem Azure Storage-Servercomputer, auf dem ein Teil der Daten für einen virtuellen Datenträger gespeichert wird, oder Ausfälle einer SSD oder HDD auf diesem Server. Solche isolierten Ausfälle von Hardwarekomponenten können während des normalen Betriebs auftreten. 
+Für die Azure-Plattform werden verschiedene Methoden in Bezug auf die Redundanz und Fehlertoleranz verwendet, um Kunden vor lokalen Hardwareausfällen zu schützen. Beispiele für lokale Ausfälle sind Probleme mit einem Azure Storage-Servercomputer, auf dem ein Teil der Daten für einen virtuellen Datenträger gespeichert wird, oder Ausfälle einer SSD oder HDD auf diesem Server. Solche isolierten Ausfälle von Hardwarekomponenten können während des normalen Betriebs auftreten.
 
 Die Azure-Plattform ist so konzipiert, dass sie diesen Ausfällen gegenüber sehr robust ist. Notfälle größeren Umfangs können zu Ausfällen oder zur Nichterreichbarkeit vieler Speicherserver oder sogar eines gesamten Rechenzentrums führen. Obwohl Ihre VMs und Datenträger im Normalfall vor lokalen Ausfällen geschützt sind, sind weitere Schritte erforderlich, um Ihre Workload vor schwerwiegenden Ausfällen ganzer Regionen (z.B. im Katastrophenfall) zu schützen, die Auswirkungen auf Ihre VMs und Datenträger haben können.
 
 Neben möglichen Ausfällen der Plattform können auch Probleme mit der Kundenanwendung oder mit Daten auftreten. Eine neue Version Ihrer Anwendung kann beispielsweise unabsichtlich zu einer Änderung der Daten führen, die sie beschädigt. In diesem Fall sollten Sie eine vorherige Version der Anwendung und der Daten wiederherstellen, die den letzten bekannten fehlerfreien Status enthält. Dies erfordert die Durchführung von regelmäßigen Sicherungsvorgängen.
 
-Sie müssen Ihre IaaS-VM-Datenträger in einer anderen Region sichern, um eine regionale Notfallwiederherstellung zu ermöglichen. 
+Sie müssen Ihre IaaS-VM-Datenträger in einer anderen Region sichern, um eine regionale Notfallwiederherstellung zu ermöglichen.
 
 Bevor wir uns mit den Optionen für die Sicherung und Notfallwiederherstellung befassen, sollen noch einmal einige Methoden für den Umgang mit lokalen Ausfällen beschrieben werden.
 
@@ -49,7 +49,7 @@ Aufgrund dieser Architektur konnte Azure für IaaS-Datenträger durchgängig ein
 
 Lokale Hardwareausfälle auf dem Computehost oder auf der Speicherplattform können in einigen Fällen zu einer vorübergehenden Nichtverfügbarkeit der VM führen. Dies ist durch die [Azure-Vereinbarung zum Servicelevel (SLA)](https://azure.microsoft.com/support/legal/sla/virtual-machines/) für die VM-Verfügbarkeit abgedeckt. Für Azure wird auch eine branchenführende SLA für einzelne VM-Instanzen bereitgestellt, die Azure-Premium-SSD-Datenträger nutzen.
 
-Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten. 
+Um Anwendungsworkloads vor Ausfallzeiten aufgrund der vorübergehenden Nichtverfügbarkeit eines Datenträgers oder einer VM zu schützen, können Kunden [Verfügbarkeitsgruppen](../articles/virtual-machines/windows/manage-availability.md) nutzen. Zwei oder mehr virtuelle Computer in einer Verfügbarkeitsgruppe sorgen für die Redundanz der Anwendung. Azure erstellt diese VMs und Datenträger dann in separaten Fehlerdomänen mit unterschiedlichen Stromversorgungs-, Netzwerk- und Serverkomponenten.
 
 Wegen dieser separaten Fehlerdomänen wirken sich lokale Hardwareausfälle in der Regel nicht gleichzeitig auf mehrere VMs in der Gruppe aus. Separate Fehlerdomänen gewährleisten Hochverfügbarkeit Ihrer Anwendung. Eine bewährte Methode besteht darin, Verfügbarkeitsgruppen zu verwenden, wenn Hochverfügbarkeit erforderlich ist. Im nächsten Abschnitt wird die Notfallwiederherstellung behandelt.
 
@@ -98,11 +98,11 @@ Datenprobleme von IaaS-Anwendungen sind eine weitere Möglichkeit. Stellen Sie s
 
 ## <a name="disaster-recovery-solution-azure-backup"></a>Lösung für Notfallwiederherstellung: Azure Backup 
 
-[Azure Backup](https://azure.microsoft.com/services/backup/) kann für Sicherungen und Notfallwiederherstellungen verwendet werden und funktioniert mit [Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) und [nicht verwalteten Datenträgern](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks). Sie können einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen erstellen. 
+[Azure Backup](https://azure.microsoft.com/services/backup/) kann für Sicherungen und Notfallwiederherstellungen verwendet werden und funktioniert mit [verwalteten Datenträgern](../articles/virtual-machines/windows/managed-disks-overview.md) und nicht verwalteten Datenträgern. Sie können einen Sicherungsauftrag mit zeitbasierten Sicherungen, unkomplizierter Wiederherstellung von virtuellen Computern und Aufbewahrungsrichtlinien für Sicherungen erstellen.
 
-Wenn Sie [Premium-SSD-Datenträger](../articles/virtual-machines/windows/premium-storage.md), [verwaltete Datenträger](../articles/virtual-machines/windows/managed-disks-overview.md) oder andere Datenträgertypen mit der Option für [lokal redundanten Speicher](../articles/storage/common/storage-redundancy-lrs.md) verwenden, ist es besonders wichtig, regelmäßig Sicherungen für die Notfallwiederherstellung zu erstellen. Azure Backup speichert die Daten zur langfristigen Aufbewahrung in Ihrem Recovery Services-Tresor. Wählen Sie die Option [Georedundanter Speicher](../articles/storage/common/storage-redundancy-grs.md) für den Recovery Services-Tresor von Backup. Diese Option stellt sicher, dass Sicherungen als Schutz vor regionalen Katastrophen in einer anderen Azure-Region repliziert werden.
+Wenn Sie [Premium-SSDs](../articles/virtual-machines/windows/disks-types.md), [verwaltete Datenträger](../articles/virtual-machines/windows/managed-disks-overview.md) oder andere Datenträgertypen mit der Option für [lokal redundanten Speicher](../articles/storage/common/storage-redundancy-lrs.md) verwenden, ist es besonders wichtig, regelmäßig Sicherungen für die Notfallwiederherstellung zu erstellen. Azure Backup speichert die Daten zur langfristigen Aufbewahrung in Ihrem Recovery Services-Tresor. Wählen Sie die Option [Georedundanter Speicher](../articles/storage/common/storage-redundancy-grs.md) für den Recovery Services-Tresor von Backup. Diese Option stellt sicher, dass Sicherungen als Schutz vor regionalen Katastrophen in einer anderen Azure-Region repliziert werden.
 
-Bei [nicht verwalteten Datenträgern](../articles/virtual-machines/windows/about-disks-and-vhds.md#unmanaged-disks) können Sie den lokal redundanten Speichertyp für IaaS-Datenträger verwenden. Stellen Sie aber sicher, dass Azure Backup mit der Option für georedundanten Speicher für den Recovery Services-Tresor aktiviert ist.
+Bei nicht verwalteten Datenträgern können Sie den lokal redundanten Speichertyp für IaaS-Datenträger verwenden. Stellen Sie aber sicher, dass Azure Backup mit der Option für georedundanten Speicher für den Recovery Services-Tresor aktiviert ist.
 
 > [!NOTE]
 > Wenn Sie den [georedundanten Speicher](../articles/storage/common/storage-redundancy-grs.md) oder [georedundanten Speicher mit Lesezugriff](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) als Option für Ihre nicht verwalteten Datenträger verwenden, benötigen Sie trotzdem konsistente Momentaufnahmen für die Sicherung und die Notfallwiederherstellung. Verwenden Sie entweder [Azure Backup](https://azure.microsoft.com/services/backup/) oder [konsistente Momentaufnahmen](#alternative-solution-consistent-snapshots).
@@ -136,7 +136,7 @@ Um dieses Problem zu beheben, bietet Azure Backup anwendungskonsistente Sicherun
 
 Wenn Azure Backup einen Sicherungsauftrag zur geplanten Zeit initiiert, wird die auf der VM installierte Sicherungserweiterung zum Erstellen einer Momentaufnahme ausgelöst. Diese Momentaufnahme wird in Koordination mit dem Volumeschattenkopie-Dienst (Volume Shadow Copy Service, VSS) erstellt, um eine konsistente Momentaufnahme der Datenträger auf dem virtuellen Computer zu erhalten, ohne dass dieser heruntergefahren werden muss. Mit der Sicherungserweiterung auf der VM werden alle Schreibvorgänge geleert, bevor die konsistente Momentaufnahme für alle Datenträger erstellt wird. Nachdem die Momentaufnahme erstellt wurde, werden die Daten von Azure Backup an den Sicherungstresor übertragen. Um den Sicherungsvorgang effizienter zu gestalten, werden vom Dienst nur diejenigen Datenblöcke identifiziert und übertragen, die nach der letzten Sicherung geändert wurden.
 
-Für die Wiederherstellung können Sie die verfügbaren Sicherungen über Azure Backup anzeigen und dann eine Wiederherstellung initiieren. Sie können Azure-Sicherungen per [Azure-Portal](https://portal.azure.com/), [PowerShell](../articles/backup/backup-azure-vms-automation.md) oder [Azure CLI](/cli/azure/) erstellen und wiederherstellen. 
+Für die Wiederherstellung können Sie die verfügbaren Sicherungen über Azure Backup anzeigen und dann eine Wiederherstellung initiieren. Sie können Azure-Sicherungen per [Azure-Portal](https://portal.azure.com/), [PowerShell](../articles/backup/backup-azure-vms-automation.md) oder [Azure CLI](/cli/azure/) erstellen und wiederherstellen.
 
 ### <a name="steps-to-enable-a-backup"></a>Schritte zum Aktivieren einer Sicherung
 
@@ -166,15 +166,15 @@ Wenn Sie eine VM reparieren oder neu erstellen müssen, können Sie sie über di
 
 -   Sie können eine neue VM als Zeitpunktdarstellung Ihrer gesicherten VM erstellen.
 
--   Sie können die Datenträger wiederherstellen und die Vorlage dann für die VM verwenden, um die wiederhergestellte VM anzupassen und neu zu erstellen. 
+-   Sie können die Datenträger wiederherstellen und die Vorlage dann für die VM verwenden, um die wiederhergestellte VM anzupassen und neu zu erstellen.
 
 Weitere Informationen hierzu finden Sie in der Anleitung zum [Wiederherstellen virtueller Computer über das Azure-Portal](../articles/backup/backup-azure-arm-restore-vms.md). In diesem Dokument werden auch die einzelnen Schritte zum Wiederherstellen von gesicherten VMs im gekoppelten Rechenzentrum beschrieben, indem Ihr georedundanter Sicherungstresor im Falle einer Katastrophe für das primäre Rechenzentrum verwendet wird. In diesem Fall verwendet Azure Backup den Computedienst der sekundären Region, um den wiederhergestellten virtuellen Computer zu erstellen.
 
-Sie können PowerShell auch zum [Wiederherstellen einer VM](../articles/backup/backup-azure-arm-restore-vms.md#restore-a-vm-during-an-azure-datacenter-disaster) oder [Erstellen einer neuen VM aus wiederhergestellten Datenträgern](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks) verwenden.
+Sie können PowerShell auch zum [Erstellen eines neuen virtuellen Computers auf der Grundlage von wiederhergestellten Datenträgern](../articles/backup/backup-azure-vms-automation.md#create-a-vm-from-restored-disks) verwenden.
 
 ## <a name="alternative-solution-consistent-snapshots"></a>Alternative Lösung: Konsistente Momentaufnahmen
 
-Wenn Sie Azure Backup nicht nutzen können, können Sie Ihren eigenen Sicherungsmechanismus mithilfe von Momentaufnahmen implementieren. Es ist kompliziert, konsistente Momentaufnahmen für alle Datenträger zu erstellen, die von einer VM verwendet werden, und diese Momentaufnahmen dann in einer anderen Region zu replizieren. Aus diesem Grund ist die Nutzung des Backup-Diensts für Azure eine bessere Option als das Erstellen einer benutzerdefinierten Lösung. 
+Wenn Sie Azure Backup nicht nutzen können, können Sie Ihren eigenen Sicherungsmechanismus mithilfe von Momentaufnahmen implementieren. Es ist kompliziert, konsistente Momentaufnahmen für alle Datenträger zu erstellen, die von einer VM verwendet werden, und diese Momentaufnahmen dann in einer anderen Region zu replizieren. Aus diesem Grund ist die Nutzung des Backup-Diensts für Azure eine bessere Option als das Erstellen einer benutzerdefinierten Lösung.
 
 Bei Verwendung von georedundantem Speicher mit Lesezugriff / georedundantem Speicher für Datenträger werden Momentaufnahmen automatisch in einem sekundären Rechenzentrum repliziert. Wenn Sie lokal redundanten Speicher für Datenträger nutzen, müssen Sie die Daten selbst replizieren. Weitere Informationen finden Sie unter [Sichern nicht verwalteter Azure-VM-Datenträger mithilfe inkrementeller Momentaufnahmen](../articles/virtual-machines/windows/incremental-snapshots.md).
 
@@ -216,7 +216,7 @@ Die Erstellung der Momentaufnahmen allein ist für die Notfallwiederherstellung 
 
 Bei Verwendung von georedundantem Speicher oder georedundantem Speicher mit Lesezugriff für Ihre Datenträger werden die Momentaufnahmen automatisch in der sekundären Region repliziert. Es kann einige Minuten dauern, bis die Replikation beginnt. Wenn das primäre Rechenzentrum ausfällt, bevor die Replikation der Momentaufnahmen fertig gestellt ist, können Sie nicht vom sekundären Rechenzentrum aus auf die Momentaufnahmen zugreifen. Die Wahrscheinlichkeit hierfür ist relativ gering.
 
-> [!NOTE] 
+> [!NOTE]
 > Wenn sich nur die Datenträger in einem georedundanten Speicher oder georedundanten Speicher mit Lesezugriff befinden, schützt dies den virtuellen Computer nicht vor Notfällen. Sie müssen außerdem koordinierte Momentaufnahmen erstellen oder Azure Backup verwenden. Dies ist erforderlich, um für eine VM einen konsistenten Zustand wiederherzustellen.
 
 Wenn Sie lokal redundanten Speicher verwenden, müssen Sie die Momentaufnahmen sofort nach dem Erstellen der Momentaufnahme in ein anderes Speicherkonto kopieren. Das Ziel des Kopiervorgangs könnte ein lokal redundantes Speicherkonto in einer anderen Region sein, was dazu führt, dass sich die Kopie in einer weiter entfernten Region befindet. Sie können die Momentaufnahme auch in ein georedundantes Speicherkonto mit Lesezugriff in derselben Region kopieren. In diesem Fall wird die Momentaufnahme zeitverzögert in der entfernten sekundären Region repliziert. Ihre Sicherung ist vor Katastrophen am primären Standort geschützt, nachdem der Kopiervorgang und die Replikation abgeschlossen sind.
@@ -260,12 +260,10 @@ Der Hauptunterschied zwischen georedundantem Speicher und georedundantem Speiche
 
 Wenn es sich um einen Ausfall größeren Umfangs handelt, kann das Azure-Team ggf. ein geografisches Failover auslösen und die primären DNS-Einträge ändern, um auf den sekundären Speicher zu verweisen. An diesem Punkt können Sie bei Aktivierung von georedundantem Speicher oder georedundantem Speicher mit Lesezugriff auf die Daten in der Region zugreifen, die bisher die sekundäre Region war. Anders ausgedrückt: Wenn Ihr Speicherkonto vom Typ georedundanter Speicher ist und ein Problem auftritt, können Sie nur dann auf den sekundären Speicher zugreifen, wenn ein geografisches Failover durchgeführt wird.
 
-Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](../articles/storage/common/storage-disaster-recovery-guidance.md). 
+Weitere Informationen finden Sie unter [Vorgehensweise beim Ausfall von Azure Storage](../articles/storage/common/storage-disaster-recovery-guidance.md).
 
 >[!NOTE] 
 >Microsoft steuert, ob ein Failover erfolgt. Das Failover wird nicht pro Speicherkonto gesteuert und die Entscheidung daher nicht individuell pro Kunde getroffen. Zum Implementieren der Notfallwiederherstellung für bestimmte Speicherkonten oder VM-Datenträger müssen Sie die Verfahren verwenden, die weiter oben in diesem Artikel beschrieben wurden.
-
-
 
 [1]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-1.png
 [2]: ./media/virtual-machines-common-backup-and-disaster-recovery-for-azure-iaas-disks/backup-and-disaster-recovery-for-azure-iaas-disks-2.png

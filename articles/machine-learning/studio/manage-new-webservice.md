@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/28/2017
-ms.openlocfilehash: c682bca1f3d4f0e2659ed107a2b15e4e4e28b0d9
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 1bf9889f601795c1ba70abdd17f6e8c9a01785f1
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492486"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453867"
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-studio-web-services-portal"></a>Verwalten eines Webdiensts im Azure Machine Learning Studio Web Services-Portal
 Im Microsoft Azure Machine Learning Web Services-Portal können Sie Ihre neuen und klassischen Machine Learning-Webdienste verwalten. Da klassische und neue Webdienste auf unterschiedlichen zugrunde liegenden Technologien basieren, gibt es für beide geringfügig andere Verwaltungsfunktionen.
@@ -28,7 +28,8 @@ Das Machine Learning Web Services-Portal bietet diese Möglichkeiten:
 * Erstellen, Löschen und Aktualisieren von Abrechnungsplänen (nur neu)
 * Hinzufügen und Löschen von Endpunkten (nur klassisch)
 
-
+>[!NOTE]
+>Klassische Webdienste können Sie auch in [Machine Learning Studio](http://studio.azureml.net) auf der Registerkarte **Webdienste** verwalten.
 
 ## <a name="permissions-to-manage-new-resources-manager-based-web-services"></a>Berechtigungen zum Verwalten von neuen Resource Manager-basierten Webdiensten
 
@@ -38,7 +39,7 @@ Wenn die Benutzer nicht über die korrekten Berechtigungen verfügen, um auf Res
 
 *Web Service deployment failed (Bereitstellung des Webdiensts ist fehlgeschlagen). This account does not have sufficient access to the Azure subscription that contains the Workspace (Dieses Konto besitzt keine ausreichenden Zugriffsberechtigungen für das Azure-Abonnement mit dem Workspace). In order to deploy a Web Service to Azure, the same account must be invited to the Workspace and be given access to the Azure subscription that contains the Workspace.* (Für die Bereitstellung eines Webdiensts in Azure muss das gleiche Konto für den Workspace eingeladen werden und Zugriff auf das Azure-Abonnement mit dem Workspace erhalten).
 
-Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning-Arbeitsbereichs](create-workspace.md).
+Weitere Informationen zum Erstellen eines Arbeitsbereichs finden Sie unter [Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs](create-workspace.md).
 
 Weitere Informationen zum Festlegen von Zugriffsberechtigungen finden Sie unter [Verwalten des Zugriffs mit RBAC und dem Azure-Portal](../../role-based-access-control/role-assignments-portal.md).
 
@@ -107,7 +108,7 @@ Das Dashboard des Plans enthält die folgenden Informationen:
 
 ## <a name="manage-classic-web-services"></a>Verwalten von klassischen Webdiensten
 > [!NOTE]
-> Die Verfahren in diesem Abschnitt gelten für das Verwalten klassischer Webdienste im Azure Machine Learning Web Services-Portal. Informationen zum Verwalten klassischer Webdienste über Machine Learning Studio und das Azure-Portal finden Sie unter [Verwalten eines Azure Machine Learning-Arbeitsbereichs](manage-workspace.md).
+> Die Verfahren in diesem Abschnitt gelten für das Verwalten klassischer Webdienste im Azure Machine Learning Web Services-Portal. Informationen zum Verwalten klassischer Webdienste über Machine Learning Studio und das Azure-Portal finden Sie unter [Verwalten eines Azure Machine Learning Studio-Arbeitsbereichs](manage-workspace.md).
 > 
 > 
 

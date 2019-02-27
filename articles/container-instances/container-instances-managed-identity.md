@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/22/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: bf807a4d24b72c948707ade28f06c4eb2a54c0a0
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 321dfaa1a58cc806394f4807c38cbdc599cfd7a0
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657024"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311562"
 ---
 # <a name="how-to-use-managed-identities-with-azure-container-instances"></a>Verwenden von verwalteten Identitäten mit Azure Container Instances
 
@@ -27,6 +27,9 @@ In diesem Artikel erfahren Sie mehr über verwaltete Identitäten in Azure Conta
 > * Verwenden der verwalteten Identität zum Zugreifen auf eine Key Vault-Instanz über einen ausgeführten Container
 
 Passen Sie die Beispiele an, um Identitäten in Azure Container Instances zu aktivieren und für den Zugriff auf andere Azure-Dienste zu verwenden. Die Beispiele sind interaktiv. In der Praxis würden Ihre Containerimages Code ausführen, um auf Azure-Dienste zuzugreifen.
+
+> [!NOTE]
+> Sie können derzeit keine verwaltete Identität in einer Containergruppe verwenden, die in einem virtuellen Netzwerk bereitgestellt wird.
 
 ## <a name="why-use-a-managed-identity"></a>Gründe für die Verwendung einer verwalteten Identität
 

@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: cherylmc
-ms.openlocfilehash: e635eddabe239268829d3a907df10392c7e1b6a3
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: e574759ff8af172841db9fc94ee860a19dd14200
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850957"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415364"
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-using-powershell"></a>Generieren und Exportieren von Zertifikaten für Punkt-zu-Standort-Verbindungen mithilfe von PowerShell
 
@@ -47,7 +47,7 @@ In den Beispielen wird das Cmdlet „New-SelfSignedCertificate“ zum Generieren
 
 ### <a name="example-1"></a>Beispiel 1
 
-Dieses Beispiel verwendet die deklarierte Variable „$cert“ aus dem vorherigen Abschnitt. Wenn Sie die PowerShell-Konsole nach dem Erstellen des selbstsignierten Stammzertifikats geschlossen haben oder zusätzliche Clientzertifikate in einer neuen PowerShell-Konsolensitzung erstellen, verwenden Sie die Schritte in [Beispiel 2](#ex2).
+Verwenden Sie dieses Beispiel, wenn Sie die PowerShell-Konsole nach dem Erstellen des selbstsignierten Stammzertifikats nicht geschlossen haben. Dieses Beispiel wird aus dem vorherigen Abschnitt fortgesetzt und verwendet die deklarierte Variable „$cert“. Wenn Sie die PowerShell-Konsole nach dem Erstellen des selbstsignierten Stammzertifikats geschlossen haben oder zusätzliche Clientzertifikate in einer neuen PowerShell-Konsolensitzung erstellen, verwenden Sie die Schritte in [Beispiel 2](#ex2).
 
 Ändern Sie das Beispiel, und führen Sie es aus, um ein Clientzertifikat zu generieren. Wenn Sie das folgende Beispiel ausführen, ohne es zu ändern, ist das Ergebnis ein Clientzertifikat mit dem Namen P2SChildCert.  Wenn Sie dem untergeordneten Zertifikat einen anderen Namen geben möchten, ändern Sie den CN-Wert. Ändern Sie die TextExtension nicht, wenn Sie dieses Beispiel ausführen. Das Clientzertifikat, das Sie generieren, wird auf Ihrem Computer automatisch in „Certificates - Current User\Personal\Certificate“ installiert.
 

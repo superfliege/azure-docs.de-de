@@ -16,25 +16,25 @@ ms.topic: article
 ms.date: 10/16/2018
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: 791322c71b4d1b49e1367fb0f179e7b0513a1e94
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 6788568510a0aa10a859236aebc3f3edb2de7527
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55975652"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329608"
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-with-powershell"></a>Anfügen eines Datenträgers an einen virtuellen Windows-Computer mithilfe von PowerShell
 
 In diesem Artikel wird beschrieben, wie Sie mithilfe von PowerShell sowohl neue als auch vorhandene Datenträger an einen virtuellen Windows-Computer anfügen. 
 
 Lesen Sie zunächst diese Tipps:
+
 * Die Größe des virtuellen Computers bestimmt, wie viele Datenträger Sie anfügen können. Weitere Informationen finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
-* Für die Verwendung von Storage Premium benötigen Sie einen virtuellen Computer mit einem für Storage Premium geeigneten Typ, z.B. die DS- oder GS-Serie. Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+* Für die Verwendung von SSD Premium-Datenträgern benötigen Sie einen [virtuellen Computer mit einem für Storage Premium geeigneten Typ](sizes-memory.md), z. B. die DS- oder GS-Serie.
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
-
 
 ## <a name="add-an-empty-data-disk-to-a-virtual-machine"></a>Hinzufügen eines leeren Datenträgers zu einem virtuellen Computer
 
@@ -61,11 +61,12 @@ Update-AzVM -VM $vm -ResourceGroupName $rgName
 ### <a name="using-managed-disks-in-an-availability-zone"></a>Verwenden von verwalteten Datenträgern in einer Verfügbarkeitszone
 Verwenden Sie zum Erstellen eines Datenträgers in einer Verfügbarkeitszone [New-AzDiskConfig](https://docs.microsoft.com/powershell/module/az.compute/new-azdiskconfig) mit dem `-Zone`-Parameter. Im folgenden Beispiel wird ein Datenträger in Zone *1* erstellt.
 
+Verwenden Sie zum Erstellen eines Datenträgers in einer Verfügbarkeitszone [New-AzureRmDiskConfig](/powershell/module/azurerm.compute/new-azurermdiskconfig) mit dem `-Zone`-Parameter. Im folgenden Beispiel wird ein Datenträger in Zone *1* erstellt.
 
 ```powershell
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
-$location = 'East US 2' 
+$location = 'East US 2'
 $storageType = 'Premium_LRS'
 $dataDiskName = $vmName + '_datadisk1'
 
@@ -78,10 +79,9 @@ $vm = Add-AzVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -Managed
 Update-AzVM -VM $vm -ResourceGroupName $rgName
 ```
 
-
 ### <a name="initialize-the-disk"></a>Datenträger initialisieren
 
-Nachdem Sie einen leeren Datenträger hinzugefügt haben, müssen Sie ihn initialisieren. Um den Datenträger zu initialisieren, können Sie sich bei einem virtuellen Computer anmelden und die Datenträgerverwaltung verwenden. Wenn Sie bei der Erstellung [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) aktiviert und ein Zertifikat auf dem virtuellen Computer installiert haben, können Sie den Datenträger mit einem PowerShell-Remoteaufruf initialisieren. Alternativ können Sie auch eine benutzerdefinierte Skripterweiterung verwenden: 
+Nachdem Sie einen leeren Datenträger hinzugefügt haben, müssen Sie ihn initialisieren. Um den Datenträger zu initialisieren, können Sie sich bei einem virtuellen Computer anmelden und die Datenträgerverwaltung verwenden. Wenn Sie bei der Erstellung [WinRM](https://docs.microsoft.com/windows/desktop/WinRM/portal) aktiviert und ein Zertifikat auf dem virtuellen Computer installiert haben, können Sie den Datenträger mit einem PowerShell-Remoteaufruf initialisieren. Alternativ können Sie auch eine benutzerdefinierte Skripterweiterung verwenden:
 
 ```azurepowershell-interactive
     $location = "location-name"
@@ -89,7 +89,7 @@ Nachdem Sie einen leeren Datenträger hinzugefügt haben, müssen Sie ihn initia
     $fileName = "script-file-name"
     Set-AzVMCustomScriptExtension -ResourceGroupName $rgName -Location $locName -VMName $vmName -Name $scriptName -TypeHandlerVersion "1.4" -StorageAccountName "mystore1" -StorageAccountKey "primary-key" -FileName $fileName -ContainerName "scripts"
 ```
-        
+
 Die Skriptdatei kann Code für die Initialisierung der Datenträger enthalten. Beispiel:
 
 ```azurepowershell-interactive
@@ -109,10 +109,9 @@ Die Skriptdatei kann Code für die Initialisierung der Datenträger enthalten. B
     }
 ```
 
-
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>Hinzufügen eines vorhandenen Datenträgers zu einem virtuellen Computer
 
-Sie können einen vorhandenen verwalteten Datenträger als Datenträger für Daten an einen virtuellen Computer anfügen. 
+Sie können einen vorhandenen verwalteten Datenträger als Datenträger für Daten an einen virtuellen Computer anfügen.
 
 ```azurepowershell-interactive
 $rgName = "myResourceGroup"

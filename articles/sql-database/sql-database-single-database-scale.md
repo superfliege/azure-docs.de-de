@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: 7afdcc402840aede1fe9678bf5f4012213edf9fa
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 1eac1da2d8d9a289cb456fc08d7e7c2bc7784aa6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961345"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454020"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Skalieren von Einzeldatenbankressourcen in Azure SQL-Datenbank
 
@@ -42,7 +42,7 @@ Nach der anfänglichen Auswahl der Anzahl an virtuellen Kernen können Sie eine 
 
 Wenn Sie den Diensttarif und/oder die Computegröße einer Datenbank ändern, wird ein Replikat der ursprünglichen Datenbank mit der neuen Computegröße erstellt, und anschließend werden die Verbindungen auf dieses Replikat umgestellt. Während dieses Vorgangs gehen keine Daten verloren. Allerdings sind die Verbindungen zur Datenbank inaktiv, während kurz auf das Replikat umgestellt wird. Daher werden möglicherweise einige aktive Transaktionen zurückgesetzt. Die Dauer der Umstellung kann variieren, aber sie liegt im Allgemeinen in 99 Prozent der Fälle unter 30 Sekunden. Falls im Moment der Verbindungstrennung viele Transaktionen stattfinden, kann die Umstellung unter Umständen auch länger dauern.
 
-Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Beispielsweise sollte die zentrale Hochskalierung für eine 250-GB-Datenbank beim Wechsel in einen, aus einem oder innerhalb eines allgemeinen Diensttarifs innerhalb von sechs Stunden abgeschlossen sein. Bei einer Datenbank der gleichen Größe, deren Computegrößen innerhalb des Diensttarifs „Unternehmenskritisch“ geändert werden, sollte das zentrale Hochskalieren innerhalb von drei Stunden beendet sein.
+Die Dauer des gesamten zentralen Hochskalierungsvorgangs hängt in der Regel sowohl von der Größe als auch vom Diensttarif der Datenbank vor und nach der Änderung ab. Wenn die Computegröße einer Datenbank beliebiger Größe innerhalb des Diensttarifs „Universell“ geändert wird, sollte dies innerhalb weniger Minuten abgeschlossen sein. Die Wartezeit beim Ändern der Computegröße innerhalb des Tarifs „Unternehmenskritisch“ beträgt pro 100 GB üblicherweise maximal 90 Minuten.
 
 > [!TIP]
 > Weitere Informationen zum Überwachen aktuell ausgeführter Vorgänge finden Sie unter: [Verwalten von Vorgängen mit der SQL-REST-API](https://docs.microsoft.com/rest/api/sql/operations/list), [Verwalten von Vorgängen mithilfe der CLI](/cli/azure/sql/db/op), [Überwachen von Vorgängen mit T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) und unter diesen beiden PowerShell-Befehlen: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) und [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).

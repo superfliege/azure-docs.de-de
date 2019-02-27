@@ -7,14 +7,14 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/10/2018
+ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: b0eae86a4927f716c974086411e1098f2e9a190d
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6702bfabd27b56ce473fe8eb14aadc9dc6e8e7c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55498028"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338868"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Entwickeln von Skriptaktionen mit HDInsight
 
@@ -142,7 +142,7 @@ Für die meisten Vorgänge müssen Sie das Dateisystem nicht angeben. Mit dem fo
 hdfs dfs -put /usr/hdp/current/giraph/giraph-examples.jar /example/jars/
 ```
 
-In diesem Beispiel verwendet der Befehl `hdfs` auf transparente Weise den Standardclusterspeicher. Für manche Vorgänge müssen Sie möglicherweise den URI angeben. Z.B. `adl:///example/jars` für Data Lake Storage und `wasb:///example/jars` für Azure Storage.
+In diesem Beispiel verwendet der Befehl `hdfs` auf transparente Weise den Standardclusterspeicher. Für manche Vorgänge müssen Sie möglicherweise den URI angeben. Geben Sie beispielsweise `adl:///example/jars` für Azure Data Lake Storage Gen1, `abfs:///example/jars` für Data Lake Storage Gen2 oder `wasb:///example/jars` für Azure Storage an.
 
 ### <a name="bPS7"></a>Schreiben von Informationen in STDOUT und STDERR
 

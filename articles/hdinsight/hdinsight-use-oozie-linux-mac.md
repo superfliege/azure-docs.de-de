@@ -8,13 +8,13 @@ author: omidm1
 ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 11c5d44d44bf66bc7f50dac13c1c7cf0ae7acfff
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.date: 02/15/2019
+ms.openlocfilehash: b77f87ef922d2f759fd8d72505effa3d8e96c403
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994384"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339428"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Verwenden von Apache Oozie mit Apache Hadoop zum Definieren und Ausführen eines Workflows in Linux-basiertem Azure HDInsight
 
@@ -301,7 +301,7 @@ Die Auftragsdefinition beschreibt, wo sich die workflow.xml-Datei befindet. Sie 
     ```
 
     > [!NOTE]  
-    > Falls der HDInsight-Cluster Azure Storage als Standardspeicher verwendet, beginnt der Inhalt des Elements `<value>` mit `wasb://`. Wenn stattdessen Azure Data Lake Storage verwendet wird, beginnt er mit `adl://`.
+    > Falls der HDInsight-Cluster Azure Storage als Standardspeicher verwendet, beginnt der Inhalt des Elements `<value>` mit `wasb://`. Wenn stattdessen Azure Data Lake Storage Gen1 verwendet wird, beginnt er mit `adl://`. Wenn Azure Data Lake Storage Gen2 verwendet wird, beginnt er mit `abfs://`.
 
     Speichern Sie den Inhalt des Elements `<value>`. Dieser wird im nächsten Schritt verwendet.
 
@@ -732,7 +732,7 @@ In diesem Lernprogramm haben Sie gelernt, wie ein Oozie-Workflow definiert und e
 
 * [Verwenden des zeitbasierten Oozie-Koordinators mit Hadoop in HDInsight zum Definieren von Workflows und Koordinieren von Aufträgen][hdinsight-oozie-coordinator-time]
 * [Hochladen von Daten für Hadoop-Aufträge in HDInsight][hdinsight-upload-data]
-* [Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop][hdinsight-use-sqoop]
+* [Verwenden von Sqoop mit Hadoop in HDInsight][hdinsight-use-sqoop]
 * [Was sind Apache Hive und HiveQL in Azure HDInsight?][hdinsight-use-hive]
 * [Verwenden von Apache Pig mit Apache Hadoop in HDInsight][hdinsight-use-pig]
 * [Entwickeln von Java MapReduce-Programmen für HDInsight][hdinsight-develop-mapreduce]

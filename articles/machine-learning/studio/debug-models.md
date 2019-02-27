@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2017
-ms.openlocfilehash: a6708a1c414277cd4ee9b90851e19a94ea86c55b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 2810a059bebc3fa89aef8f75b27250328d81e678
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491670"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455278"
 ---
 # <a name="debug-your-model-in-azure-machine-learning-studio"></a>Debuggen Ihres Modells in Azure Machine Learning Studio
 
@@ -33,7 +33,7 @@ Dieser Artikel beschreibt mögliche Ursachen für diese Fehler.
 
 Für das Modul [Train Model][train-model] werden zwei Eingaben erwartet:
 
-1. Der Typ des Modells für maschinelles Lernen aus der in Azure Machine Learning bereitgestellten Modellsammlung.
+1. Der Typ des Modells für maschinelles Lernen aus der in Azure Machine Learning Studio bereitgestellten Modellsammlung.
 2. Die Trainingsdaten mit einer angegebenen Spalte „Label“, die die vorherzusagende Variable angibt. (Bei den anderen Spalten wird davon ausgegangen, dass es sich um Features handelt).
 
 Für dieses Modul kann in den folgenden Fällen ein Fehler auftreten:

@@ -5,15 +5,15 @@ services: virtual-machines
 author: msraiye
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 6/8/2018
+ms.date: 02/20/2019
 ms.author: raiye
 ms.custom: include file
-ms.openlocfilehash: 733d2896ef15d2e78073268e263a144ea25846ec
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 98231ab55ce66f06d591dc9c933e4790460625c8
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985427"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56458450"
 ---
 # <a name="enable-write-accelerator"></a>Aktivieren der Schreibbeschleunigung
 
@@ -42,17 +42,17 @@ Bei der Verwendung der Schreibbeschleunigung für einen Azure-Datenträger/eine 
 
 - Die Premium-Datenträgerzwischenspeicherung muss auf „Keine“ oder „Schreibgeschützt“ festgelegt werden. Alle anderen Zwischenspeicherungsmodi werden nicht unterstützt.
 - Momentaufnahmen werden derzeit nicht für Datenträger mit aktivierter Schreibbeschleunigung unterstützt. Während der Sicherung schließt der Azure Backup-Dienst an die VM angefügte Datenträger mit aktivierter Schreibbeschleunigung automatisch aus.
-- Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=32 KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
+- Der beschleunigte Pfad wird nur für kleinere E/A-Größen (<=512 KiB) verwendet. In Workloadsituationen, bei denen Daten in einem Massenvorgang geladen oder die Transaktionsprotokollpuffer vor ihrer persistenten Speicherung stärker befüllt werden, wird für die auf Datenträger geschriebenen E/A-Vorgänge wahrscheinlich nicht der beschleunigte Pfad verwendet.
 
 Die Anzahl von Azure Storage Premium-VHDs pro VM, die von der Schreibbeschleunigung unterstützt werden können, ist begrenzt. Die aktuellen Limits lauten wie folgt:
 
 | VM-SKU | Anzahl von Datenträgern mit Schreibbeschleunigung | Datenträger-IOPS der Schreibbeschleunigung pro VM |
 | --- | --- | --- |
-| M128ms, 128s | 16 | 8.000 |
-| M64ms, M64ls, M64s | 8 | 4000 |
-| M32ms, M32ls, M32ts, M32s | 4 | 2000 |
-| M16ms, M16s | 2 | 1000 |
-| M8ms, M8s | 1 | 500 |
+| M128ms, 128s | 16 | 20000 |
+| M64ms, M64ls, M64s | 8 | 10000 |
+| M32ms, M32ls, M32ts, M32s | 4 | 5.000 |
+| M16ms, M16s | 2 | 2500 |
+| M8ms, M8s | 1 | 1250 |
 
 Die IOPS-Grenzwerte gelten pro VM und *nicht* pro Datenträger. Alle Datenträger mit Schreibbeschleunigung verwenden denselben IOPS-Grenzwert pro VM.
 

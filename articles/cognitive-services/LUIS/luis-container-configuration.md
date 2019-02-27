@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: diberry
-ms.openlocfilehash: 281358e51ed8585e5deb407b2432ee3b7ee1537f
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ee08f5e15180a618d1a9c48b7d59b9e1f8bc90ae
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983262"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329114"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Konfigurieren von Docker-Containern für Language Understanding 
 
@@ -193,5 +193,5 @@ ApiKey={APPLICATION_ID} \
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen finden Sie unter [Installieren und Ausführen von Containern](luis-container-howto.md).
-* Unter [Häufig gestellte Fragen (FAQ)](luis-resources-faq.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit LUIS-Funktionen.
+* Unter [Problembehandlung ](troubleshooting.md) finden Sie Informationen zum Beheben von Problemen im Zusammenhang mit LUIS-Funktionen.
 * Verwenden weiterer [Cognitive Services-Container](../cognitive-services-container-support.md)

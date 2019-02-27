@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c85d405502890253bcdb80c652ed53f58546de9c
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 32c326ff7bef98f9d8f4f20664889109d291a6ea
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747049"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328842"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -68,10 +68,10 @@ Stellen Sie die virtuellen Computer in Azure bereit, indem Sie Folgendes verwend
 Sie können eine vollständig installierte SAP HANA-Plattform auch über die [SAP Cloudplattform](https://cal.sap.com/) auf den Azure Virtual Machine-Diensten bereitstellen. Der Installationsvorgang ist unter [Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/cal-s4h) beschrieben, oder nutzen Sie die [hier](https://github.com/AzureCAT-GSI/SAP-HANA-ARM) beschriebene Automatisierung.
 
 ### <a name="choose-azure-storage-type"></a>Auswählen des Azure-Speichertyps
-Azure bietet zwei Speichertypen, die sich für virtuelle Azure-Computer mit SAP HANA eignen:
+Azure bietet zwei Speichertypen, die sich für virtuelle Azure-Computer mit SAP HANA eignen: HDD Standard und SSD Premium. Weitere Informationen zu diesen Datenträgertypen finden Sie in unserem Artikel [Auswählen eines Datenträgertyps](../../windows/disks-types.md).
 
-- [Azure Storage Standard](https://docs.microsoft.com/azure/virtual-machines/windows/standard-storage)
-- [Azure Premium-Speicher](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage)
+- HDD Standard
+- SSD Premium
 
 Azure bietet zwei Bereitstellungsmethoden für virtuelle Festplatten (VHDs) in Azure Storage Standard und Premium. Wenn das allgemeine Szenario dies zulässt, sollten Sie Bereitstellungen mit [verwalteten Azure-Datenträgern](https://azure.microsoft.com/services/managed-disks/) verwenden.
 
@@ -408,7 +408,7 @@ Laut bewährten DT 2.0-Methoden sollte der Datenträger-E/A-Durchsatz pro physis
 
 Der DT 2.0-VM müssen mehrere Azure-Datenträger angefügt und ein Software-RAID (Striping) muss auf Betriebssystemebene erstellt werden, um den maximalen Datenträgerdurchsatz pro virtuellem Computer zu erzielen. Ein einzelner Azure-Datenträger kann nicht genügend Durchsatz bereitstellen, um die VM-Obergrenze in dieser Hinsicht zu erreichen. Azure Storage Premium ist zur Ausführung von DT 2.0 obligatorisch. 
 
-- Nähere Informationen zu den verfügbaren Azure-Datenträgertypen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage).
+- Nähere Informationen zu den verfügbaren Azure-Datenträgertypen finden Sie [hier](../../windows/disks-types.md).
 - Nähere Informationen zum Erstellen eines Software-RAID über mdadm finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/configure-raid).
 - Nähere Informationen zur LVM-Konfiguration zum Erstellen eines Stripesetvolumes für maximalen Durchsatz finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/linux/configure-lvm).
 

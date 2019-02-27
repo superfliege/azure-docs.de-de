@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 8fb7ea1841d788c1d8e7809a0641140228fd2ea5
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/20/2019
+ms.openlocfilehash: bfceb8feacdad428a6e4c23272fd9092a356f107
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233155"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453323"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transparente Datenverschlüsselung für SQL-Datenbank und Data Warehouse
 
@@ -33,7 +33,7 @@ SQL Server kann bei der Ausführung auf einem virtuellen Azure-Computer auch ein
 
 ## <a name="service-managed-transparent-data-encryption"></a>Von einem Dienst verwaltete transparente Datenverschlüsselung
 
-In Azure ist bei der Standardeinstellung für die transparente Datenverschlüsselung der Verschlüsselungsschlüssel der Datenbank durch ein integriertes Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Server eindeutig. Wenn sich eine Datenbank in einer Georeplikationsbeziehung befindet, werden die primäre und die sekundäre Geodatenbank vom übergeordneten Serverschlüssel der primären Datenbank geschützt. Sind zwei Datenbanken mit dem gleichen Server verbunden, verwenden sie auch das gleiche integrierte Zertifikat. Microsoft führt für diese Zertifikate nach spätestens 90 Tagen automatisch eine Rotation durch.
+In Azure ist bei der Standardeinstellung für die transparente Datenverschlüsselung der Verschlüsselungsschlüssel der Datenbank durch ein integriertes Serverzertifikat geschützt. Das integrierte Serverzertifikat ist für jeden Server eindeutig. Wenn sich eine Datenbank in einer Georeplikationsbeziehung befindet, werden die primäre und die sekundäre Geodatenbank vom übergeordneten Serverschlüssel der primären Datenbank geschützt. Sind zwei Datenbanken mit dem gleichen Server verbunden, verwenden sie auch das gleiche integrierte Zertifikat. Microsoft rotiert diese Zertifikate gemäß der internen Sicherheitsrichtlinie automatisch, und der Stammschlüssel wird von einem Microsoft-internen Geheimnisspeicher geschützt.
 
 Microsoft verschiebt und verwaltet auch die Schlüssel nahtlos, die für die Georeplikation und Wiederherstellung benötigt werden.
 
@@ -42,7 +42,7 @@ Microsoft verschiebt und verwaltet auch die Schlüssel nahtlos, die für die Geo
 
 ## <a name="customer-managed-transparent-data-encryption---bring-your-own-key"></a>Vom Kunden verwaltete Transparent Data Encryption – BYOK (Bring Your Own Key)
 
-[TDE mit vom Kunden verwalteten Schlüsseln in Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) erlaubt die Verschlüsselung des Datenbank-Verschlüsselungsschlüssels (Database Encryption Key, DEK) mit einem vom Kunden verwalteten asymmetrischen Schlüssel, der als TDE-Schutzvorrichtung bezeichnet wird.  Die TDE-Schutzvorrichtung wird in einer Instanz von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (dem cloudbasierten, externen Schlüsselverwaltungssystem von Azure) gespeichert, die dem Kunden gehört und von ihm verwaltet wird. Der auf der Startseite einer Datenbank gespeicherte TDE-DEK wird durch die TDE-Schutzvorrichtung, die in Azure Key Vault gespeichert ist und den Schlüsseltresor niemals verlässt, verschlüsselt und entschlüsselt.  SQL-Datenbank müssen die Berechtigungen für den Schlüsseltresor des Kunden gewährt werden, damit der DEK ver- und entschlüsselt werden kann. Wenn die Berechtigungen des logischen SQL-Servers für den Schlüsseltresor widerrufen werden, ist kein Zugriff mehr auf die Datenbank möglich, und alle Daten bleiben verschlüsselt. Bei Azure SQL-Datenbank ist die TDE-Schutzvorrichtung auf der logischen SQL Server-Ebene festgelegt und wird von allen Datenbanken geerbt, die diesem Server zugeordnet sind. Bei der [verwalteten Azure SQL-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen *verschlüsselten* Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
+[TDE mit vom Kunden verwalteten Schlüsseln in Azure Key Vault](transparent-data-encryption-byok-azure-sql.md) erlaubt die Verschlüsselung des Datenbank-Verschlüsselungsschlüssels (Database Encryption Key, DEK) mit einem vom Kunden verwalteten asymmetrischen Schlüssel, der als TDE-Schutzvorrichtung bezeichnet wird.  Dies wird in der Regel auch als „Bring Your Own Key-Unterstützung“ (BYOK) für Transparent Data Encryption bezeichnet. Im BYOK-Szenario wird die TDE-Schutzvorrichtung in einer Instanz von [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (dem cloudbasierten, externen Schlüsselverwaltungssystem von Azure) gespeichert, die dem Kunden gehört und von ihm verwaltet wird. Die TDE-Schutzvorrichtung kann [vom Schlüsseltresor generiert oder von einem lokalen HSM-Gerät auf den Schlüsseltresor übertragen werden](https://docs.microsoft.com/en-us/azure/key-vault/about-keys-secrets-and-certificates#key-vault-keys). Der auf der Startseite einer Datenbank gespeicherte TDE-DEK wird durch die TDE-Schutzvorrichtung, die in Azure Key Vault gespeichert ist und den Schlüsseltresor niemals verlässt, verschlüsselt und entschlüsselt.  SQL-Datenbank müssen die Berechtigungen für den Schlüsseltresor des Kunden gewährt werden, damit der DEK ver- und entschlüsselt werden kann. Wenn die Berechtigungen des logischen SQL-Servers für den Schlüsseltresor widerrufen werden, ist kein Zugriff mehr auf die Datenbank möglich, und alle Daten bleiben verschlüsselt. Bei Azure SQL-Datenbank ist die TDE-Schutzvorrichtung auf der logischen SQL Server-Ebene festgelegt und wird von allen Datenbanken geerbt, die diesem Server zugeordnet sind. Bei der [verwalteten Azure SQL-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-howto-managed-instance) ist die TDE-Schutzvorrichtung auf Instanzebene festgelegt und wird von allen *verschlüsselten* Datenbanken für diese Instanz geerbt. In diesem Dokument bezieht sich der Begriff *Server* sowohl auf den Server als auch die Instanz (sofern nicht anders angegeben).
 
 Mit TDE und Azure Key Vault-Integration können Benutzer Aufgaben der Schlüsselverwaltung steuern, z.B. Schlüsselrotationen, Schlüsseltresorberechtigungen und Schlüsselsicherungen. Außerdem können sie die Überwachung und Berichterstellung für alle TDE-Schutzvorrichtungen aktivieren, die Azure Key Vault-Funktionalität nutzen. Key Vault bietet eine zentrale Schlüsselverwaltung, verwendet streng überwachte Hardwaresicherheitsmodule (HSMs) und ermöglicht die Aufgabentrennung zwischen dem Verwalten von Schlüsseln und Daten, um Sicherheitsrichtlinien einzuhalten.
 Weitere Informationen zur transparenten Datenverschlüsselung (TDE) mit Azure Key Vault-Integration (Bring Your Own Key-Unterstützung) für Azure SQL-Datenbank, verwaltete SQL-Instanz und Data Warehouse finden Sie unter [Azure SQL – Transparent Data Encryption: Bring Your Own Key-Unterstützung](transparent-data-encryption-byok-azure-sql.md).

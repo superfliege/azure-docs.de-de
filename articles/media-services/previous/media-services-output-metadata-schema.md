@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: ec4b03629b56c09973c1ecc5c55930c33c24990b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997574"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312581"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 ## <a name="overview"></a>Übersicht
@@ -29,7 +29,7 @@ Media Services überprüft die eingegebenen Assets nicht präventiv, um Metadate
 
 Wenn Sie die Metadatendatei untersuchen möchten, können Sie einen **SAS**-Locator erstellen und die Datei auf Ihren lokalen Computer herunterladen.  
 
-In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf denen die Ausgabemetadaten (&lt;Quelldateiname&gt;_manifest.xml) basieren. Weitere Informationen zur Datei, in der die Metadaten zum Eingabemedienobjekt enthalten sind, finden Sie unter [Eingeben von Metadaten](media-services-input-metadata-schema.md).  
+In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf denen die Ausgabemetadaten (&lt;Quelldateiname&gt;_manifest.xml) basieren. Weitere Informationen zur Datei, in der die Metadaten zum Eingabemedienobjekt enthalten sind, finden Sie unter „Eingeben von Metadaten (veraltet)“.  
 
 Sie finden den vollständigen Schemacode und das XML-Beispiel am Ende des Artikels.  
 
@@ -39,10 +39,10 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein [„AssetFile“-Element](media-services-output-metadata-schema.md), das Teil der „AssetFiles“-Sammlung ist. |
+| **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein AssetFile-Element, das Teil der AssetFiles-Sammlung ist. |
 
-## <a name="AssetFile "></a> „AssetFile“-Element
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+## <a name="AssetFile "></a> AssetFile-Element
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
 | NAME | Type | BESCHREIBUNG |
@@ -54,24 +54,24 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **Sources** |Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen. Weitere Informationen finden Sie unter [„Source“-Element](media-services-output-metadata-schema.md). |
-| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Weitere Informationen finden Sie unter [„VideoTracks“-Element](media-services-output-metadata-schema.md). |
-| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren. Weitere Informationen finden Sie unter [„AudioTracks“-Element](media-services-output-metadata-schema.md). |
+| **Sources** |Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen. Weitere Informationen finden Sie unter „Source-Element“. |
+| **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Weitere Informationen finden Sie unter „VideoTracks-Element“. |
+| **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren. Weitere Informationen finden Sie unter „AudioTracks-Element“. |
 
 ## <a name="Sources "></a> „Sources“-Element
 Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter [„Source“-Element](media-services-output-metadata-schema.md). |
+| **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter „Source-Element“. |
 
 ## <a name="Source "></a> „Source“-Element
 Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
 | NAME | Type | BESCHREIBUNG |
@@ -81,17 +81,17 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 ## <a name="VideoTracks "></a> VideoTracks-Element
 Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **VideoTracks**-Element stellt eine Sammlung aller Videotitel dar.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Videospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„VideoTrack“-Element](media-services-output-metadata-schema.md#VideoTrack). |
+| **VideoTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Videospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter „VideoTrack-Element“. |
 
 ## <a name="VideoTrack"></a> „VideoTrack“-Element
 Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
 | NAME | Type | BESCHREIBUNG |
@@ -113,17 +113,17 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 ## <a name="AudioTracks "></a> „AudioTracks“-Element
 Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **AudioTracks**-Element stellt eine Sammlung aller Audiotitel dar.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter [„AudioTrack“-Element](media-services-output-metadata-schema.md). |
+| **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter „AudioTrack-Element“. |
 
 ## <a name="AudioTrack "></a> „AudioTrack“-Element
 Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
 | NAME | Type | BESCHREIBUNG |
@@ -139,12 +139,12 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 ### <a name="child-elements"></a>Untergeordnete Elemente
 | NAME | BESCHREIBUNG |
 | --- | --- |
-| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter [„LoudnessMeteringResultParameters“-Element](media-services-output-metadata-schema.md). |
+| **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter „LoudnessMeteringResultParameters-Element“. |
 
 ## <a name="LoudnessMeteringResultParameters "></a> „LoudnessMeteringResultParameters“-Element
 Parameter für das Messergebnis der Lautheit.  
 
-[Hier](media-services-output-metadata-schema.md#xml) finden Sie ein XML-Beispiel.  
+[Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
 | NAME | Type | BESCHREIBUNG |

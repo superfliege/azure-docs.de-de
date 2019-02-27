@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+title: 'Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto: Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Facebook-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ea1afb83c3e381c33b1c29c224d1ce0cc1d3d080
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 56534589c89fefb38f206f1c57da7996ae43e81d
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163040"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428498"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-facebook-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Facebook-Konto mithilfe von Azure Active Directory B2C
 
 ## <a name="create-a-facebook-application"></a>Erstellen einer Facebook-Anwendung
 
-Um ein Facebook-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Facebook-Konto verfügen, können Sie unter [https://www.facebook.com/](https://www.facebook.com/) eines erstellen.
+Um ein Facebook-Konto als [Identitätsanbieter](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Facebook-Konto verfügen, können Sie unter [https://www.facebook.com/](https://www.facebook.com/) eines erstellen.
 
 1. Melden Sie sich auf der [Facebook-Entwickler-Website](https://developers.facebook.com/) mit den Anmeldeinformationen für Ihr Facebook-Konto an.
 2. Wenn Sie dies noch nicht getan haben, müssen Sie sich als Facebook-Entwickler registrieren. Dazu wählen Sie oben rechts auf der Seite die Option **Register** (Registrieren) aus, akzeptieren die Facebook-Richtlinien und führen die Registrierungsschritte aus.

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.prod: vs-devops-alm
-ms.date: 09/12/2018
+ms.date: 02/19/2019
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 1582cc7e48adcf895dc7c07e7ab485790650ac14
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 7530545c3577a662ac0075b83b3eb7e4a8a40f89
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54911910"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428566"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-Images in Azure
-Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) verfügbar.
+Die Verwendung von Visual Studio auf einem vorkonfigurierten virtuellen Azure-Computer (VM) ist eine schnelle und einfache Methode zum Erzielen einer einsatzfähigen Entwicklungsumgebung ohne Ausgangsvoraussetzungen. Systemimages mit verschiedenen Visual Studio-Konfigurationen sind im [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?search=visual%20studio&page=1) verfügbar.
 
 Neu bei Azure? [Erstellen Sie ein kostenloses Azure-Konto](https://azure.microsoft.com/free).
 
@@ -34,8 +34,8 @@ Images für die letzten Hauptversionen, Visual Studio 2017 und Visual Studio 201
 
 | Releaseversion                                              | Editionen                     |     Produktversion      |
 |:------------------------------------------------------------:|:----------------------------:|:------------------------:|
-|    Visual Studio 2019: Vorschauversion (Vorschauversion 2)                   |           Enterprise         | Version 16.0.0 Vorschauversion 2 |
-| Visual Studio 2017: Aktuelle Version (Version 15.9)                    |    Enterprise, Community     |      Version 15.9.4      |
+|    Visual Studio 2019: Vorschauversion (Vorschauversion 3)                   |           Enterprise         | Version 16.0.0 Vorschauversion 3 |
+| Visual Studio 2017: Aktuelle Version (Version 15.9)                    |    Enterprise, Community     |      Version 15.9.7      |
 |         Visual Studio 2017: RTW                              |    Enterprise, Community     |      Version 15.0.20     |
 |   Visual Studio 2015: Aktuelle Version (Update 3)                      |    Enterprise, Community     |  Version 14.0.25431.01   |
 |         Visual Studio 2015: RTW                              |             Keine             | (für Wartung abgelaufen)  |

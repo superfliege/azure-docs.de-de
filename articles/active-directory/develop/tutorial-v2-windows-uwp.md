@@ -3,7 +3,7 @@ title: Erste Schritte mit UWP in Azure AD v2.0 | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie UWP-Anwendungen (Universelle Windows-Plattform) eine API aufrufen können, die Zugriffstoken vom Azure Active Directory v2.0-Endpunkt anfordert.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: jmprieur
 manager: mtillman
 editor: ''
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/24/2018
-ms.author: andret
+ms.date: 02/18/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f7d4e586dcb90153fb4d037c9c9821cd3ea3182
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6e130da9bf12d25cc5c77c825512717bdf2ba5a1
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176712"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408815"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (XAML)
 
@@ -74,14 +74,11 @@ In der in diesem Leitfaden erstellten Anwendung werden eine Schaltfläche, über
 2. Kopieren Sie folgenden Befehl, und fügen Sie ihn in das Fenster **Paket-Manager-Konsole** ein:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client
     ```
 
 > [!NOTE]
-> Der obige Befehl installiert die [Microsoft Authentication Library (MSAL)](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet). Die MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Azure Active Directory v2.0 geschützt werden.
-
-> [!NOTE]
-> Dieses Tutorial verwendet noch nicht die neueste Version von MSAL.NET, aber wir arbeiten an der Aktualisierung.
+> Der obige Befehl installiert die [Microsoft Authentication Library (MSAL)](https://aka.ms/msal-net). Die MSAL kümmert sich um das Erfassen, Zwischenspeichern und Aktualisieren von Benutzertoken für den Zugriff auf APIs, die von Azure Active Directory v2.0 geschützt werden.
 
 ## <a name="initialize-msal"></a>MSAL initialisieren
 In diesem Schritt erfahren Sie, wie Sie eine Klasse zur Handhabung der Interaktion mit MSAL (beispielsweise die Handhabung von Token) erstellen.
@@ -159,7 +156,8 @@ Dieser Abschnitt zeigt, wie Sie über die MSAL ein Token für die Microsoft Grap
     
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, App.PublicClientApp.Users.FirstOrDefault());
+                var accounts = await App.PublicClientApp.GetAccountsAsync();
+                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -203,15 +201,15 @@ Die `AcquireTokenSilentAsync`-Methode dient zum Verwalten des Abrufens und Erneu
 
 Für die `AcquireTokenSilentAsync`-Methode tritt schließlich ein Fehler auf. Gründe hierfür können sein, dass Benutzer sich entweder abgemeldet oder ihr Kennwort auf einem anderen Gerät geändert haben. Wenn die MSAL feststellt, dass das Problem durch Anfordern einer interaktiven Aktion gelöst werden kann, löst sie eine `MsalUiRequiredException`-Ausnahme aus. Ihre Anwendung kann diese Ausnahme auf zwei Arten handhaben:
 
-* Sie kann sofort `AcquireTokenAsync` aufrufen. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird. Dieses Muster wird normalerweise in Onlineanwendungen verwendet, in denen keine Offlineinhalte für den Benutzer verfügbar sind. Die in diesem Leitfaden generierte Beispielanwendung basiert auf diesem Muster. Sie können dies bei der ersten Ausführung des Beispiels in Aktion sehen. 
-    * Da bisher noch kein Benutzer die Anwendung genutzt hat, enthält `PublicClientApp.Users.FirstOrDefault()` einen NULL-Wert, und es wird die Ausnahme `MsalUiRequiredException` ausgelöst.
-    * Der Code im Beispiel behandelt die Ausnahme dann durch das Aufrufen von `AcquireTokenAsync`. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird.
+* Sie kann sofort `AcquireTokenAsync` aufrufen. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird. Dieses Muster wird normalerweise in Onlineanwendungen verwendet, in denen keine Offlineinhalte für den Benutzer verfügbar sind. Die in diesem Leitfaden generierte Beispielanwendung basiert auf diesem Muster. Sie können dies bei der ersten Ausführung des Beispiels in Aktion sehen.
+  * Da bisher noch kein Benutzer die Anwendung genutzt hat, enthält `accounts.FirstOrDefault()` einen NULL-Wert, und es wird die Ausnahme `MsalUiRequiredException` ausgelöst.
+  * Der Code im Beispiel behandelt die Ausnahme dann durch das Aufrufen von `AcquireTokenAsync`. Dieser Aufruf führt dazu, dass der Benutzer zum Anmelden aufgefordert wird.
 
 * Stattdessen kann für Benutzer auch ein visueller Hinweis gegeben werden, dass eine interaktive Anmeldung erforderlich ist, damit diese den richtigen Zeitpunkt für die Anmeldung auswählen können. Oder die Anwendung kann später noch einmal versuchen, `AcquireTokenSilentAsync` auszuführen. Dieses Muster wird häufig verwendet, wenn Benutzer andere Anwendungsfunktionen ohne Störungen nutzen können, z.B. wenn Offlineinhalte in der Anwendung verfügbar sind. In diesem Fall können Benutzer entscheiden, wann sie sich anmelden, um entweder auf die geschützte Ressource zuzugreifen oder die veralteten Informationen zu aktualisieren. Alternativ dazu kann die Anwendung auch versuchen, `AcquireTokenSilentAsync` erneut auszuführen, wenn das Netzwerk nach einem kurzzeitigen Ausfall wiederhergestellt wurde.
 
 ## <a name="call-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Aufrufen der Microsoft Graph-API mit dem zuvor bezogenen Token
 
-* Fügen Sie folgende neue Methode zur Datei **MainPage.xaml.cs** hinzu. Diese Methode dient zum Richten einer `GET`-Anforderung an die Graph-API mithilfe eines [Authorize]-Headers:
+* Fügen Sie folgende neue Methode zur Datei **MainPage.xaml.cs** hinzu. Diese Methode dient zum Richten einer `GET`-Anforderung an die Graph-API mithilfe eines `Authorization`-Headers:
 
     ```csharp
     /// <summary>
@@ -255,11 +253,12 @@ In dieser Beispielanwendung dient die `GetHttpContentWithToken`-Methode zum Rich
     /// </summary>
     private void SignOutButton_Click(object sender, RoutedEventArgs e)
     {
-        if (App.PublicClientApp.Users.Any())
+        var accounts = await App.PublicClientApp.GetAccountsAsync();
+        if (accounts.Any())
         {
             try
             {
-                App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+                App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault());
                 this.ResultText.Text = "User has signed-out";
                 this.CallGraphButton.Visibility = Visibility.Visible;
                 this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -333,7 +332,7 @@ Das Anwendungsmanifest muss zusätzliche Funktionen aktivieren, um eine integrie
     ```
 
 > [!IMPORTANT]
-> Die integrierte Windows-Authentifizierung ist standardmäßig nicht für dieses Beispiel konfiguriert, da für Anwendungen, welche die Funktion *Unternehmensauthentifizierung* oder *Freigegebene Benutzerzertifikate* anfordern, im Windows Store eine höhere Überprüfungsebene erforderlich ist und nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten. Aktivieren Sie diese Einstellung nur, wenn Sie die integrierte Windows-Authentifizierung mit einer Azure Active Directory-Verbunddomäne benötigen.
+> Die [integrierte Windows-Authentifizierung](https://aka.ms/msal-net-iwa) ist standardmäßig nicht für dieses Beispiel konfiguriert, da für Anwendungen, welche die Funktion *Unternehmensauthentifizierung* oder *Freigegebene Benutzerzertifikate* anfordern, im Windows Store eine höhere Überprüfungsebene erforderlich ist und nicht alle Entwickler die Überprüfung auf der höheren Ebene durchführen möchten. Aktivieren Sie diese Einstellung nur, wenn Sie die integrierte Windows-Authentifizierung mit einer Azure Active Directory-Verbunddomäne benötigen.
 
 ## <a name="test-your-code"></a>Testen Ihres Codes
 

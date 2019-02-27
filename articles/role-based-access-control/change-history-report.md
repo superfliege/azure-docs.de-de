@@ -1,6 +1,6 @@
 ---
-title: Anzeigen von Aktivitätsprotokollen für Änderungen an der rollenbasierten Zugriffssteuerung in Azure | Microsoft-Dokumentation
-description: Anzeigen von Aktivitätsprotokollen für Änderungen an der rollenbasierten Zugriffssteuerung (RBAC) für die letzten 90 Tage
+title: Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen | Microsoft-Dokumentation
+description: Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen (Role-Based Access Control, rollenbasierte Zugriffssteuerung) an Azure-Ressourcen für die letzten 90 Tage
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/02/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6ff09647dc3271c947b3037afcfacc33951ddb07
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 01ac309d333b6e2456c53e0352067471514198c9
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117647"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338808"
 ---
-# <a name="view-activity-logs-for-rbac-changes"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen
+# <a name="view-activity-logs-for-rbac-changes-to-azure-resources"></a>Anzeigen von Aktivitätsprotokollen für RBAC-Änderungen an Azure-Ressourcen
 
-In einigen Fällen benötigen Sie Informationen zu Änderungen bei der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
+In einigen Fällen benötigen Sie Informationen zu RBAC-Änderungen an Azure-Ressourcen, beispielsweise für die Überwachung oder Problembehandlung. Jedes Mal, wenn ein Benutzer Änderungen an den Rollenzuweisungen oder Rollendefinitionen innerhalb Ihrer Abonnements vornimmt, werden die Änderungen im [Azure-Aktivitätsprotokoll](../azure-monitor/platform/activity-logs-overview.md) aufgezeichnet. Sie können die Aktivitätsprotokolle öffnen, um alle RBAC-Änderungen für die letzten 90 Tage anzuzeigen.
 
 ## <a name="operations-that-are-logged"></a>Protokollierte Vorgänge
 

@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 03/14/2018
-ms.openlocfilehash: 79882fc895262f0fb607ec048e7912ae5f2efdd7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: e8e50aa49595addeab3369f74b618c31b7cf1625
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242667"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454377"
 ---
 # <a name="create-a-sentiment-analysis-model-in-azure-machine-learning-studio"></a>Erstellen eines Standpunktanalysemodells in Azure Machine Learning Studio
 
-Mit Azure Machine Learning können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
+Mit Azure Machine Learning Studio können Sie Textanalysemodelle erstellen und operationalisieren. Diese Modelle können Ihnen z.B. helfen, Probleme bei der Klassifizierung von Dokumenten oder Stimmungsanalyse zu lösen.
 
 In einem Experiment zur Textanalyse würden Sie in der Regel Folgendes tun:
 
@@ -66,7 +66,7 @@ Als Alternativansatz zum Extrahieren von N-Gramm-Features können Sie das Featur
 ## <a name="step-3-train-classification-or-regression-model"></a>Schritt 3: Trainieren des Klassifikations- oder Regressionsmodells
 Jetzt ist der Text in numerische Featurespalten transformiert. Da das Dataset weiterhin Zeichenfolgenspalten aus vorherigen Phasen enthält, schließen wir sie mit „Select Columns in Dataset“ aus.
 
-Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in Azure Machine Learning verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
+Anschließend verwenden wir [Two-Class Logistic Regression](https://msdn.microsoft.com/library/azure/dn905994.aspx) zur Vorhersage unseres Ziels: hohes oder niedriges Beurteilungsergebnis. An diesem Punkt wurde das Textanalyseproblem in ein reguläres Klassifizierungsproblem transformiert. Sie können die in Azure Machine Learning Studio verfügbaren Tools zur Verbesserung des Modells verwenden. Beispielsweise können Sie mit verschiedenen Klassifizierungen experimentieren, um herauszufinden, wie präzise die von ihnen gelieferten Ergebnisse sind, oder die Genauigkeit durch Optimierung der Hyperparameter verbessern.
 
 ![Trainieren und bewerten](./media/text-analytics-module-tutorial/scoring-text.png)
 

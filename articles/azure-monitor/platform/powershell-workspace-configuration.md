@@ -2,24 +2,18 @@
 title: Verwenden von PowerShell zum Erstellen und Konfigurieren eines Log Analytics-Arbeitsbereichs | Microsoft-Dokumentation
 description: Log Analytics verwendet Daten von Servern in Ihrer lokalen oder Cloudinfrastruktur. Sie können Computerdaten aus dem Azure-Speicher sammeln, wenn sie von Azure-Diagnose generiert werden.
 services: log-analytics
-documentationcenter: ''
 author: richrundmsft
-manager: jochan
-editor: ''
-ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: e34d45d2d7c81ec5f15a5441ce2bb0f082c65155
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 5b64ecbb82e88b43546946ef30bf3107874af170
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54884111"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446476"
 ---
 # <a name="manage-log-analytics-using-powershell"></a>Verwalten von Log Analytics mit PowerShell
 Mit den [PowerShell-Cmdlets für Log Analytics](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/) können Sie verschiedene Funktionen in Log Analytics von der Befehlszeile oder in einem Skript ausführen.  Beispiele für die Aufgaben, die Sie mit PowerShell ausführen können:
@@ -63,7 +57,7 @@ Das folgende Beispielskript veranschaulicht Folgendes:
 11. Erfassen des Leistungsindikators „Verfügbarer Arbeitsspeicher in MB“ von Windows-Computern
 12. Sammeln eines benutzerdefinierten Protokolls 
 
-```
+```PowerShell
 
 $ResourceGroup = "oms-example"
 $WorkspaceName = "log-analytics-" + (Get-Random -Maximum 99999) # workspace names need to be unique - Get-Random helps with this for the example code
@@ -184,53 +178,52 @@ New-AzureRmOperationalInsightsWindowsPerformanceCounterDataSource -ResourceGroup
 
 # Custom Logs
 New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -CustomLogRawJson "$CustomLog" -Name "Example Custom Log Collection"
-
 ```
-Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch definiert. Das Protokolltrennzeichen könnte auch ein Zeitstempel sein.  Diese Formate werden unterstützt:
+Im obigen Beispiel wurde regexDelimiter als „\\n“ für den Zeilenumbruch definiert. Das Protokolltrennzeichen kann auch ein Zeitstempel sein.  Diese Formate werden unterstützt:
 
 | Format | Das RegEx-Format von JSON verwendet zwei \\ für jedes „\“ in einem standardmäßigen RegEx, also muss \\ beim Testen in einer RegEx-App zu „\“ reduziert werden. |
 | --- | --- |
-| JJJJ-MM-TT HH:MM:SS  | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
-| M/T/JJJJ HH:MM:SS AM/PM | (([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm) |
-| tt/MMM/jjjj HH:MM:SS | ((([0-3]\\\\d)\|(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]) |
-| MMM tt jjjj HH:MM:SS | (((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?)) |
-| jjMMtt HH:mm:ss | ([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
-| ttMMjj HH:mm:ss | (([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9]) |
-| MMM t HH:mm:ss | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9]) |
-| MMM t HH:mm:ss<br> zwei Leerzeichen nach MMM | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
-| MMM t HH:mm:ss | (Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9]) |
-| tt/MMM/jjjj:HH:mm:ss +zzzz<br> dabei ist „+“ ein „+“ oder ein „-“<br> dabei ist „zzzz“ der Zeitversatz | (([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4}) |
-| jjjj-MM-ttTHH:mm:ss<br> Das „T“ steht für den Buchstaben „T“ | ((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9] |
+| `YYYY-MM-DD HH:MM:SS` | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
+| `M/D/YYYY HH:MM:SS AM/PM` | `(([0-1]\\\\d)\|[0-9])/(([0-3]\\\\d)\|(\\\\d))/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]\\\\s(AM\|PM\|am\|pm)` |
+| `dd/MMM/yyyy HH:MM:SS` | `((([0-3]\\\\d)\` |`(\\\\d))/(Jan\|Feb\|Mar\|May\|Apr\|Jul\|Jun\|Aug\|Oct\|Sep\|Nov\|Dec\|jan\|feb\|mar\|may\|apr\|jul\|jun\|aug\|oct\|sep\|nov\|dec)/((\\\\d{2})\|(\\\\d{4}))\\\\s((\\\\d)\` | `([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9])` |
+| `MMM dd yyyy HH:MM:SS` | `(((?:Jan(?:uary)?\|Feb(?:ruary)?\|Mar(?:ch)?\|Apr(?:il)?\|May\|Jun(?:e)?\|Jul(?:y)?\|Aug(?:ust)?\|Sep(?:tember)?\|Sept\|Oct(?:ober)?\|Nov(?:ember)?\|Dec(?:ember)?)).*?((?:(?:[0-2]?\\\\d{1})\|(?:[3][01]{1})))(?![\\\\d]).*?((?:(?:[1]{1}\\\\d{1}\\\\d{1}\\\\d{1})\|(?:[2]{1}\\\\d{3})))(?![\\\\d]).*?((?:(?:[0-1][0-9])\|(?:[2][0-3])\|(?:[0-9])):(?:[0-5][0-9])(?::[0-5][0-9])?(?:\\\\s?(?:am\|AM\|pm\|PM))?))` |
+| `yyMMdd HH:mm:ss` | `([0-9]{2}([0][1-9]\|[1][0-2])([0-2][0-9]\|[3][0-1])\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `ddMMyy HH:mm:ss` | `(([0-2][0-9]\|[3][0-1])([0][1-9]\|[1][0-2])[0-9]{2}\\\\s\\\\s?([0-1]?[0-9]\|[2][0-3]):[0-5][0-9]:[0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s?([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0-1]?[0-9]\|[2][0-3]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM  d HH:mm:ss` <br> zwei Leerzeichen nach MMM | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `MMM d HH:mm:ss` | `(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\s([0]?[1-9]\|[1-2][0-9]\|[3][0-1])\\\\s([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])` |
+| `dd/MMM/yyyy:HH:mm:ss +zzzz` <br> dabei ist „+“ ein „+“ oder ein „-“ <br> dabei ist „zzzz“ der Zeitversatz | `(([0-2][1-9]\|[3][0-1])\\\\/(Jan\|Feb\|Mar\|Apr\|May\|Jun\|Jul\|Aug\|Sep\|Oct\|Nov\|Dec)\\\\/((19\|20)[0-9][0-9]):([0][0-9]\|[1][0-2]):([0-5][0-9]):([0-5][0-9])\\\\s[\\\\+\|\\\\-][0-9]{4})` |
+| `yyyy-MM-ddTHH:mm:ss` <br> Das „T“ steht für den Buchstaben „T“ | `((\\\\d{2})\|(\\\\d{4}))-([0-1]\\\\d)-(([0-3]\\\\d)\|(\\\\d))T((\\\\d)\|([0-1]\\\\d)\|(2[0-4])):[0-5][0-9]:[0-5][0-9]` |
 
 ## <a name="configuring-log-analytics-to-index-azure-diagnostics"></a>Konfigurieren von Log Analytics zum Indizieren der Azure-Diagnose
 Für die Überwachung von Azure-Ressourcen ohne Agents müssen die Ressourcen Azure-Diagnose aktiviert haben und zum Schreiben in einen Log Analytics-Arbeitsbereich konfiguriert worden sein. Bei diesem Ansatz werden Daten direkt an Log Analytics gesendet, und Daten müssen nicht in ein Speicherkonto geschrieben werden. Unterstützte Ressourcen:
 
 | Ressourcentyp | Protokolle | Metriken |
 | --- | --- | --- |
-| Anwendungsgateways    | JA | JA |
-| Automation-Konten     | JA | |
-| Batch-Konten          | JA | JA |
-| Data Lake Analytics     | JA | | 
-| Data Lake Store         | JA | |
-| Elastischer SQL-Pool        |     | JA |
-| Event Hub-Namespace     |     | JA |
-| IoT Hubs                |     | JA |
-| Key Vault               | JA | |
-| Load Balancer          | JA | |
-| Logic Apps              | JA | JA |
-| Netzwerksicherheitsgruppen | JA | |
-| Azure Cache for Redis             |     | JA |
-| Suchdienste         | JA | JA |
-| Service Bus-Namespace   |     | JA |
-| SQL (v12)               |     | JA |
-| Websites               |     | JA |
-| Webserverfarmen        |     | JA |
+| Anwendungsgateways    | Ja | Ja |
+| Automation-Konten     | Ja | |
+| Batch-Konten          | Ja | Ja |
+| Data Lake Analytics     | Ja | | 
+| Data Lake Store         | Ja | |
+| Elastischer SQL-Pool        |     | Ja |
+| Event Hub-Namespace     |     | Ja |
+| IoT Hubs                |     | Ja |
+| Key Vault               | Ja | |
+| Load Balancer          | Ja | |
+| Logic Apps              | Ja | Ja |
+| Netzwerksicherheitsgruppen | Ja | |
+| Azure Cache for Redis             |     | Ja |
+| Suchdienste         | Ja | Ja |
+| Service Bus-Namespace   |     | Ja |
+| SQL (v12)               |     | Ja |
+| Websites               |     | Ja |
+| Webserverfarmen        |     | Ja |
 
 Ausführliche Informationen zu den verfügbaren Metriken finden Sie unter [Supported metrics with Azure Monitor](../../azure-monitor/platform/metrics-supported.md) (Von Azure Monitor unterstützte Metriken).
 
 Ausführliche Informationen zu den verfügbaren Protokollen finden Sie unter [Supported services and schema for Diagnostic Logs](../../azure-monitor/platform/diagnostic-logs-schema.md) (Unterstützte Dienste und Schema für Diagnoseprotokolle).
 
-```
+```PowerShell
 $workspaceId = "/subscriptions/d2e37fee-1234-40b2-5678-0b2199de3b50/resourcegroups/oi-default-east-us/providers/microsoft.operationalinsights/workspaces/rollingbaskets"
 
 $resourceId = "/SUBSCRIPTIONS/ec11ca60-1234-491e-5678-0ea07feae25c/RESOURCEGROUPS/DEMO/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/DEMO" 
@@ -254,7 +247,7 @@ Das folgende Beispiel veranschaulicht die Vorgehensweise:
 3. Aktualisieren der neu erstellten Konfiguration zum Indizieren von Daten von zusätzlichen Speicherorten
 4. Löschen der neu erstellten Konfiguration
 
-```
+```PowerShell
 # validTables = "WADWindowsEventLogsTable", "LinuxsyslogVer2v0", "WADServiceFabric*EventTable", "WADETWEventTable" 
 $workspace = (Get-AzureRmOperationalInsightsWorkspace).Where({$_.Name -eq "your workspace name"})
 

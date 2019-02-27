@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 79cf839a23d41058e0d9583a378dc063cd220136
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1d7f58780819202eb02e3a48b4b5e0ac108a0432
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981756"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447462"
 ---
 # <a name="understand-cost-management-data"></a>Grundlegendes zu Cost Management-Daten
 
@@ -61,6 +61,8 @@ Die folgende Tabelle zeigt die nicht unterstützten Angebote:
 | **Supportpläne** | Azure Government Standard Support | MS-AZR-USGOV-0041P |
 | **Supportpläne** | Azure Government Pro-Direct Support | MS-AZR-USGOV-0042P |
 | **Supportpläne** | Azure Government Developer Support | MS-AZR-USGOV-0043P |
+
+Für Kunden mit Angeboten der Kategorie „Nutzungsbasierte Zahlung“, „MSDN“ und „Visual Studio“ stehen seit dem 02.10.2018 Daten in Cost Management zur Verfügung.
 
 Wenn Sie keine Daten für ein Abonnement sehen und feststellen möchten, ob Ihr Abonnement zu den unterstützten Angeboten gehört, können Sie überprüfen, ob Ihr Abonnement unterstützt wird. Um zu überprüfen, ob ein Azure-Abonnement unterstützt wird, melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie anschließend **Alle Dienste** im linken Menübereich aus. Wählen Sie in der Liste der Dienste **Abonnements** aus. Klicken Sie im Menü der Abonnentenliste auf das Abonnement, das Sie überprüfen möchten. Ihr Abonnement wird auf der Registerkarte „Übersicht“ angezeigt und Sie können das **Angebot** und **Angebots-ID** sehen. Die folgende Abbildung zeigt ein Beispiel.
 

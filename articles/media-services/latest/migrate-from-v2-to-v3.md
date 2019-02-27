@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 02/04/2019
 ms.author: juliako
-ms.openlocfilehash: b05c174bf96e78efd66f2c673e46ab43700c09f9
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 4f67158c0de8cdd161bce269059af6d421bb68b5
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744165"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340347"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>Hinweise zur Migration von Media Services v2 zu v3
 
@@ -45,11 +45,11 @@ Wenn Sie derzeit über einen Videodienst verfügen, der auf Basis von der [älte
 
 * Für dateibasierte Auftragsverarbeitung können Sie als Eingabe eine HTTP(S)-URL verwenden.<br/>Sie müssen noch keine Inhalte in Azure gespeichert haben und müssen auch keine Objekte erstellen.
 * Führt das Konzept von [Transformationen](transforms-jobs-concept.md) für dateibasierte Auftragsverarbeitung ein. Eine Transformation kann verwendet werden, um wiederverwendbare Konfigurationen und Azure Resource Manager-Vorlagen zu erstellen, und um Verarbeitungseinstellungen zwischen mehreren Kunden oder Mandanten zu isolieren.
-* Ein Medienobjekt kann mehrere [Streaminglocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die dynamische Paketerstellung und dynamische Verschlüsselung haben.
+* Ein Medienobjekt kann mehrere [Streaminglocators](streaming-locators-concept.md) mit verschiedenen Einstellungen für die [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung haben.
 * Der [Inhaltsschutz](content-key-policy-concept.md) unterstützt Features mit mehreren Schlüsseln.
 * Wenn Media Services zum Transcodieren eines Beitragsfeeds mit Einzelbitrate in einen Ausgabestream mit mehreren Bitraten verwendet wird, können Sie Liveereignisse streamen, die bis zu 24 Stunden lang sind.
 * Neue Unterstützung für Livestreaming mit niedriger Latenz für Liveereignisse. Weitere Informationen finden Sie unter [Latenz](live-event-latency.md).
-* Die Vorschau von Liveereignissen unterstützt die dynamische Paketerstellung und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
+* Die Vorschau von Liveereignissen unterstützt die [dynamische Paketerstellung](dynamic-packaging-overview.md) und dynamische Verschlüsselung. Dadurch wird in der Vorschau der Inhaltsschutz sowie auch die Paketerstellung für DASH und HLS ermöglicht.
 * Die Liveausgabe ist einfacher zu verwenden als die Programmentität in den v2-APIs. 
 * Verbesserte RTMP-Unterstützung (höhere Stabilität und bessere Unterstützung für Quellcodierer).
 * Sichere RTMPS-Erfassung.<br/>Bei der Erstellung eines Liveereignisses erhalten Sie vier Erfassungs-URLs. Die vier Erfassungs-URLs sind nahezu identisch und verfügen über das gleiche Streamingtoken (AppId). Nur der Portnummernteil unterscheidet sich. Zwei der URLs dienen als primäre URL und Backup-URL für RTMPS.   

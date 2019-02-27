@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2018
+ms.date: 02/20/2019
 ms.author: terrylan
-ms.openlocfilehash: af73225e08488d490e50456d235805af17ef0066
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 48a7e52d4284e5c2db1d77d24d91fd4701aad8d7
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112216"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455755"
 ---
 # <a name="azure-network-architecture"></a>Azure-Netzwerkarchitektur
 Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als Branchenstandard geltenden Kern-, Verteilungs- und Zugriffsmodells und verfügt über unterschiedliche Hardwareschichten (Layer). Zu diesen Layern zählen:
@@ -28,7 +28,7 @@ Die Netzwerkarchitektur von Azure beruht auf einer geänderten Version des als B
 - Verteilung (Accessrouter und L2-Aggregation). Die Verteilungsschicht trennt das L3-Routing vom L2-Switching.
 - Zugriff (L2-Hostswitches)
 
-Die Netzwerkarchitektur besteht aus zwei Schichten von Layer 2-Switches. Eine Schicht aggregiert den Datenverkehr von der anderen Schicht. Die zweite Schicht führt Schleifen aus, um Redundanz zu integrieren. Dies ermöglicht einen flexibleren VLAN-Speicherbedarf und verbessert die Portskalierung. Die Architektur sorgt für eine klare Trennung zwischen L2 und L3 und ermöglicht dadurch die Verwendung von Hardware in jedem einzelnen unterschiedlichen Layer im Netzwerk. Fehler auf einem Layer, die sich auf die anderen Layer auswirken, können so minimiert werden. Mithilfe von Trunks lassen sich Ressourcen freigeben, wie z.B. die Konnektivität zur L3-Infrastruktur.
+Die Netzwerkarchitektur besteht aus zwei Schichten von Layer 2-Switches. Eine Schicht aggregiert den Datenverkehr von der anderen Schicht. Die zweite Schicht führt Schleifen aus, um Redundanz zu integrieren. Die Architektur ermöglicht einen flexibleren VLAN-Speicherbedarf und verbessert die Portskalierung. Die Architektur sorgt für eine klare Trennung zwischen L2 und L3 und ermöglicht dadurch die Verwendung von Hardware in jedem einzelnen unterschiedlichen Layer im Netzwerk. Fehler auf einem Layer, die sich auf die anderen Layer auswirken, können so minimiert werden. Mithilfe von Trunks lassen sich Ressourcen freigeben, wie z.B. die Konnektivität zur L3-Infrastruktur.
 
 ## <a name="network-configuration"></a>Netzwerkkonfiguration
 Die Netzwerkarchitektur eines Azure-Clusters in einem Rechenzentrum besteht aus den folgenden Geräten:
@@ -51,10 +51,10 @@ Beim Quantum 10-Entwurf wird Layer 3-Switching über mehrere Geräte verteilt in
 Die Distribution-/Access-L3-Router (ARs) übernehmen das Hauptrouting für die Distribution- und Accesslayer. Diese Geräte werden zusammen bereitgestellt und sind das Standardgateway für Subnetze. Jedes AR-Paar kann je nach Kapazität mehrere L2-Aggregation-Switchpaare unterstützen. Die maximale Anzahl hängt sowohl von der Kapazität des Geräts als auch den Fehlerdomänen ab. Eine typische Anzahl besteht aus drei L2-Aggregation-Switchpaaren pro AR-Paar.
 
 ### <a name="l2-aggregation-switches"></a>L2-Aggregation-Switches  
-Diese Geräte dienen als Sammelpunkt für L2-Datenverkehr. Sie stellen die Verteilungsschicht für das L2-Fabric dar und können große Mengen an Datenverkehr verarbeiten. Da diese Geräte Datenverkehr aggregieren, werden 802.1Q-Funktionalität und Technologien mit hoher Bandbreite vorausgesetzt, wie z.B. Portaggregation und 10 GbE.
+Diese Geräte dienen als Sammelpunkt für L2-Datenverkehr. Sie stellen die Verteilungsschicht für das L2-Fabric dar und können große Mengen an Datenverkehr verarbeiten. Da diese Geräte Datenverkehr aggregieren, werden 802.1Q-Funktionalität und Technologien mit hoher Bandbreite vorausgesetzt, etwa Portaggregation und 10 GbE.
 
 ### <a name="l2-host-switches"></a>L2-Hostswitches
-Hosts erstellen eine direkte Verbindung zu diesen Switches. Dabei kann es sich um im Rack eingebaute Switches oder Bereitstellungen für Gehäuse handeln. Der 802.1Q-Standard ermöglicht das Definieren eines VLANs als natives VLAN, das als normales (nicht gekennzeichnetes) Ethernet-Frame behandelt wird. Unter normalen Umständen werden Frames auf dem nativen VLAN an einen Trunkport gemäß 802. 1Q-Standard ohne Tags übertragen und empfangen. Dieses Feature wurde für die Migration zu 802. 1Q entwickelt und ist auch mit Geräten kompatibel, die nicht den 802.1Q-Standard erfüllen. In dieser Architektur verwendet nur die Netzwerkinfrastruktur das native VLAN.
+Hosts erstellen eine direkte Verbindung zu diesen Switches. Dabei kann es sich um in ein Rack eingebaute Switches oder Bereitstellungen für Gehäuse handeln. Der 802.1Q-Standard ermöglicht das Definieren eines VLANs als natives VLAN, das als normales (nicht gekennzeichnetes) Ethernet-Frame behandelt wird. Unter normalen Umständen werden Frames auf dem nativen VLAN an einen Trunkport gemäß 802. 1Q-Standard ohne Tags übertragen und empfangen. Dieses Feature wurde für die Migration zu 802. 1Q entwickelt und ist auch mit Geräten kompatibel, die nicht den 802.1Q-Standard erfüllen. In dieser Architektur verwendet nur die Netzwerkinfrastruktur das native VLAN.
 
 Diese Architektur gibt einen Standard für eine native VLAN-Auswahl an. Durch den Standard wird sichergestellt, dass die AR-Geräte möglichst über ein eindeutiges natives VLAN für jeden Trunk und die L2-Aggregation-zu-L2-Aggregation-Trunks verfügen. Die L2-Aggregation-zu-L2-Host-Switch-Trunks verfügen über ein nicht standardmäßiges natives VLAN.
 
@@ -72,23 +72,15 @@ Sie haben verschiedene Optionen zur VLAN-Implementierung, die Sie über das Azur
 ### <a name="edge-architecture"></a>Edgearchitektur
 Azure-Rechenzentren basieren auf stark redundanten und gut bereitgestellten Netzwerkinfrastrukturen. Microsoft implementiert Netzwerke innerhalb der Azure-Rechenzentren mit n+1-Redundanzarchitekturen, die immer über den Anforderungen liegen. Vollständige Failoverfeatures innerhalb und zwischen Rechenzentren tragen dazu bei, die Netzwerk- und Dienstverfügbarkeit sicherzustellen. Extern werden Rechenzentren von dedizierten Netzwerkverbindungen mit hoher Bandbreite verarbeitet. Diese Verbindungen verbinden redundant Eigenschaften mit mehr als 1.200 Internetdienstanbietern auf der ganzen Welt an mehreren Peeringpunkten. Dies bietet potenzielle Edgekapazität von mehr als 2.000 Gbit/s über das Netzwerk.
 
-Filterungsrouter auf dem Edge- und Accesslayer des Azure-Netzwerks bieten bewährte Sicherheit auf Paketebene. Dadurch werden nicht autorisierte Versuche verhindert, eine Verbindung mit Azure herzustellen. Die Router sorgen dafür, dass die Pakete auch tatsächlich Daten im erwarteten Format enthalten und das Client-/Server-Kommunikationsschema erfüllen. Azure implementiert eine mehrstufige Architektur, die aus den folgenden Netzwerkisolierungs- und Zugriffssteuerungskomponenten besteht:
+Filterungsrouter auf dem Edge- und Accesslayer des Azure-Netzwerks bieten anerkannte Sicherheit auf Paketebene und tragen dazu bei, nicht autorisierte Versuche zum Herstellen einer Verbindung mit Azure zu verhindern. Die Router sorgen dafür, dass die Pakete auch tatsächlich Daten im erwarteten Format enthalten und das Client-/Server-Kommunikationsschema erfüllen. Azure implementiert eine mehrstufige Architektur, die aus den folgenden Netzwerkisolierungs- und Zugriffssteuerungskomponenten besteht:
 
 - **Edgerouter**: Diese isolieren die Anwendungsumgebung vom Internet. Edgerouter bieten Spoofingschutz und beschränken den Zugriff mithilfe von ACLs.
 - **Verteilungsrouter (Access)**: Diese lassen nur durch Microsoft genehmigte IP-Adressen zu, bieten Spoofingschutz und anerkannte Verbindungen mithilfe von ACLs.
 
-### <a name="a10-ddos-mitigation-architecture"></a>A10-DDoS-Architektur zur Risikominderung
-Denial-of-Service-Angriffe stellen weiterhin ein echtes Risiko für die Zuverlässigkeit der Onlinedienste dar. Angesichts immer gezielterer und ausgefeilterer Angriffe sowie der zunehmenden geografischen Diversifizierung der von Microsoft bereitgestellten Dienste hat die Identifizierung von Angriffen und die Reduzierung ihrer Auswirkungen oberste Priorität. Die folgenden Details erläutern, wie das A10-DDoS-System zur Risikominderung vom Standpunkt der Netzwerkarchitektur implementiert wird.
+### <a name="ddos-mitigation"></a>DDoS-Entschärfung
+Verteilte Denial-of-Service-Angriffe (Distributed Denial Of Service, DDoS) stellen weiterhin ein echtes Risiko für die Zuverlässigkeit der Onlinedienste dar. Angesichts immer gezielterer und ausgefeilterer Angriffe sowie der zunehmenden geografischen Diversifizierung der von Microsoft bereitgestellten Dienste hat die Identifizierung von Angriffen und die Reduzierung ihrer Auswirkungen oberste Priorität.
 
-Azure nutzt A10-Netzwerkgeräte am DCR (Rechenzentrumsrouter), die automatische Erkennung und Risikominderung bieten. Die A10-Lösung verwendet die Azure-Netzwerküberwachung, um Datenverkehrsflusspakete stichprobenhaft zu überprüfen und zu ermitteln, ob ein Angriff stattfindet. Wenn ein Angriff erkannt wird, werden A10-Geräte zur Bereinigung eingesetzt, um das Risiko von Angriffen zu reduzieren. Nur dann wird der bereinigte Datenverkehr direkt aus dem DCR an das Azure-Rechenzentrum weitergeleitet. Microsoft verwendet die A10-Lösung, um die Azure-Netzwerkinfrastruktur zu schützen.
-
-Zu den DDoS-Schutzmechanismen der A10-Lösung gehören:
-
-- UDP IPv4- und IPv6-Überlastungsschutz
-- ICM IPv4- und IPv6-Überlastungsschutz
-- TCP IPv4- und IPv6-Überlastungsschutz
-- TCP SYN-Angriffsschutz für IPv4 und IPv6
-- Fragmentierungsangriff
+[Azure DDoS Protection Standard](../virtual-network/ddos-protection-overview.md) bietet Schutz vor DDoS-Angriffen. Weitere Informationen finden Sie unter [Azure DDoS Protection: Bewährte Methoden und Referenzarchitekturen](azure-ddos-best-practices.md).
 
 > [!NOTE]
 > Microsoft bietet standardmäßig für alle Azure-Kunden DDoS-Schutz.

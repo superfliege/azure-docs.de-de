@@ -17,37 +17,37 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de2aa262dff54f2b8e535aa646e9a8cac7719567
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7220fc6b239d20e9f1fc81e7d18b4d7ca6f0ded5
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165262"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453629"
 ---
 # <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>Installieren und Verwenden der Log Analytics-Ansichten für Azure Active Directory
 
-Mithilfe der Log Analytics-Ansichten für Azure Active Directory können Sie die Azure AD-Aktivitätsprotokolle in Ihrem Azure AD-Mandanten analysieren und durchsuchen. Azure AD-Aktivitätsprotokolle umfassen:
+Mithilfe der Log Analytics-Ansichten für Azure Active Directory können Sie die Azure AD-Aktivitätsprotokolle in Ihrem Azure AD-Mandanten analysieren und durchsuchen. Azure AD-Aktivitätsprotokolle umfassen:
 
 * Überwachungsprotokolle: Mit dem [Aktivitätsbericht zu Überwachungsprotokollen](concept-audit-logs.md) erhalten Sie Zugriff auf den Verlauf aller Aufgaben, die in Ihrem Mandanten durchgeführt werden.
 * Anmeldeprotokolle: Mit dem [Aktivitätsbericht zu Anmeldungen](concept-sign-ins.md) können Sie ermitteln, von wem die Aufgaben durchgeführt wurden, die in den Überwachungsprotokollen aufgeführt sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Um die Log Analytics-Ansichten zu verwenden, benötigen Sie Folgendes:
+Um die Log Analytics-Ansichten verwenden zu können, benötigen Sie Folgendes:
 
 * Einen Log Analytics-Arbeitsbereich in Ihrem Azure-Abonnement. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace).
 * Führen Sie zuerst die Schritte aus, um [die Azure AD-Aktivitätsprotokolle in Ihren Log Analytics-Arbeitsbereich umzuleiten](howto-integrate-activity-logs-with-log-analytics.md).
 * Laden Sie die Ansichten aus dem [GitHub-Repository](https://aka.ms/AADLogAnalyticsviews) auf Ihren lokalen Computer herunter.
 
-## <a name="install-the-log-analytics-views"></a>Installieren der Log Analytics-Ansichten
+## <a name="install-the-log-analytics-views"></a>Installieren der Log Analytics-Ansichten
 
-1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich. Navigieren Sie hierzu zuerst zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** aus. Geben Sie **Log Analytics** in das Textfeld ein, und wählen Sie **Log Analytics** aus. Wählen Sie den Arbeitsbereich aus, zu dem Sie die Aktivitätsprotokolle im Rahmen der Voraussetzungen umgeleitet haben.
+1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich. Navigieren Sie hierzu zuerst zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** aus. Geben Sie **Log Analytics** in das Textfeld ein, und wählen Sie **Log Analytics-Arbeitsbereiche** aus. Wählen Sie den Arbeitsbereich aus, zu dem Sie die Aktivitätsprotokolle im Rahmen der Voraussetzungen umgeleitet haben.
 2. Wählen Sie **Ansicht-Designer**aus, dann **Importieren**, und wählen Sie dann **Datei auswählen** aus, um die Ansichten von Ihrem lokalen Computer zu importieren.
 3. Wählen Sie die Ansichten aus, die Sie aus den Voraussetzungen heruntergeladen haben, und wählen Sie **Speichern** aus, um den Import zu speichern. Führen Sie diesen Vorgang für die Ansichten **Azure AD-Kontobereitstellungsereignisse** und **Anmeldeereignisse** aus.
 
 ## <a name="use-the-views"></a>Verwenden der Ansichten
 
-1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich. Navigieren Sie hierzu zuerst zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** aus. Geben Sie **Log Analytics** in das Textfeld ein, und wählen Sie **Log Analytics** aus. Wählen Sie den Arbeitsbereich aus, zu dem Sie die Aktivitätsprotokolle im Rahmen der Voraussetzungen umgeleitet haben.
+1. Navigieren Sie zu Ihrem Log Analytics-Arbeitsbereich. Navigieren Sie hierzu zuerst zum [Azure-Portal](https://portal.azure.com), und wählen Sie **Alle Dienste** aus. Geben Sie **Log Analytics** in das Textfeld ein, und wählen Sie **Log Analytics-Arbeitsbereiche** aus. Wählen Sie den Arbeitsbereich aus, zu dem Sie die Aktivitätsprotokolle im Rahmen der Voraussetzungen umgeleitet haben.
 
 2. Sobald Sie sich in Ihrem Arbeitsbereich befinden, wählen Sie **Zusammenfassung des Arbeitsbereichs** aus. Die folgenden drei Ansichten sollten angezeigt werden:
 
@@ -73,5 +73,5 @@ Um die Log Analytics-Ansichten zu verwenden, benötigen Sie Folgendes:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Analysieren von Aktivitätsprotokollen in Log Analytics](howto-analyze-activity-logs-log-analytics.md)
-* [Erste Schritte mit Log Analytics im Azure-Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)
+* [Analysieren von Aktivitätsprotokollen mit Azure Monitor-Protokollen](howto-analyze-activity-logs-log-analytics.md)
+* [Erste Schritte mit Azure Monitor-Protokollen im Azure-Portal](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-analytics-portal)

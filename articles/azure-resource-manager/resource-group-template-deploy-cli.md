@@ -10,14 +10,14 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2019
+ms.date: 02/14/2019
 ms.author: tomfitz
-ms.openlocfilehash: a97e49c8d1a972e2b9d9ff34173d9aed07a22a19
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0c298ba2074a57bd182b23e5fd9bc6b68ee496ad
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55295541"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300448"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure-CLI
 
@@ -90,7 +90,9 @@ In der Regel stellen Sie alle Ressourcen in der Vorlage als einzelne Ressourceng
 
 ## <a name="redeploy-when-deployment-fails"></a>Erneute Bereitstellung bei Bereitstellungsfehlern
 
-Für Bereitstellungen, bei denen Fehler auftreten, können Sie festlegen, dass eine frühere Bereitstellung aus dem Bereitstellungsverlauf automatisch erneut bereitgestellt wird. Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
+Wenn eine Bereitstellung fehlschlägt, können Sie automatisch eine frühere, erfolgreiche Bereitstellung aus Ihrem Bereitstellungsverlauf bereitstellen. Zum Angeben einer erneuten Bereitstellung verwenden Sie den Parameter `--rollback-on-error` im Bereitstellungsbefehl.
+
+Zur Verwendung dieser Option müssen die Bereitstellungen eindeutige Namen aufweisen, damit sie im Verlauf identifiziert werden können. Wenn die Bereitstellungen keine eindeutigen Namen aufweisen, wird die vorherige erfolgreich ausgeführte Bereitstellung im Verlauf möglicherweise durch die aktuelle fehlerhafte Bereitstellung überschrieben. Diese Option kann nur für Bereitstellungen auf Stammebene verwendet werden. Bereitstellungen aus einer geschachtelten Vorlage können nicht erneut bereitgestellt werden.
 
 Um die letzte erfolgreiche Bereitstellung erneut bereitzustellen, fügen Sie den Parameter `--rollback-on-error` als Flag hinzu.
 

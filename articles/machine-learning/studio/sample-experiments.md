@@ -10,18 +10,18 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/05/2018
-ms.openlocfilehash: e62e5a1df2b5ad3099d2ef7e5dc33b0d11683988
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 221f78dbeb6bfb0c76ac12280511a8d5a5138c38
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245931"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453408"
 ---
 # <a name="create-azure-machine-learning-studio-experiments-from-working-examples-in-azure-ai-gallery"></a>Erstellen von Azure Machine Learning Studio-Experimenten aus funktionierenden Beispielen in Azure AI Gallery
 
 Hier erfahren Sie, wie Sie Beispielexperimente aus dem [Azure AI-Katalog](https://gallery.azure.ai/) verwenden, anstatt Machine Learning-Experimente von Grund auf neu zu erstellen. Auf der Grundlage der Beispiele können Sie eine eigene Machine Learning-Lösung erstellen.
 
-Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
+Der Katalog enthält Beispielexperimente des Microsoft Azure Machine Learning Studio-Teams und Beispiele aus der Machine Learning-Community. Sie können zudem auch Fragen stellen oder Anmerkungen zu Experimenten veröffentlichen.
 
 Die Nutzung des Katalogs wird in dem dreiminütigen Video [Kopieren der Arbeit anderer für Ihre Data Science](data-science-for-beginners-copy-other-peoples-work-to-do-data-science.md) der Reihe [Data Science für Einsteiger](data-science-for-beginners-the-5-questions-data-science-answers.md) veranschaulicht.
 

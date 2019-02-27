@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: d0af6c098f68c23bf9ef6161bd307afec518ead7
-ms.sourcegitcommit: 698ba3e88adc357b8bd6178a7b2b1121cb8da797
+ms.openlocfilehash: cc4893837feeec6116750a7e37e7621af11ab0a4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53011684"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453918"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Verwenden von Azure API Management mit virtuellen Netzwerken
 Mit Azure Virtual Networks (VNets) können Sie alle Ihre Azure-Ressourcen in einem Netzwerk platzieren, das nicht über das Internet geroutet werden kann, und zu dem Sie den Zugang kontrollieren. Diese Netzwerke können dann durch verschiedene VPN-Technologien mit Ihren lokalen Netzwerken verbunden werden. Beginnen Sie mit dem folgenden Thema, um weitere Informationen zu Azure Virtual Networks zu erhalten: [Übersicht über Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -126,11 +126,11 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
 >[!IMPORTANT]
 > Die Ports, deren *Zweck* **fett** formatiert ist, sind zur erfolgreichen Bereitstellung des API Management-Diensts erforderlich. Die Blockierung der anderen Ports beeinträchtigt jedoch die Möglichkeit, den ausgeführten Dienst zu verwenden und zu überwachen.
 
-* **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Prüfung von SSL-Vertrauensketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung zu ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
++ **SSL-Funktionalität**: Zum Aktivieren der Erstellung und Prüfung von SSL-Vertrauensketten benötigt der API Management-Dienst eine ausgehende Netzwerkverbindung zu ocsp.msocsp.com, mscrl.microsoft.com und crl.microsoft.com. Diese Abhängigkeit ist nicht erforderlich, wenn Zertifikate, die Sie in API Management hochladen, die vollständige Kette zum Stamm der Zertifizierungsstelle enthalten.
 
-* **DNS-Zugriff**: Ausgehender Zugriff über Port 53 wird für die Kommunikation mit DNS-Servern benötigt. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz, in der sich API Management befindet, erreichbar sein.
++ **DNS-Zugriff**: Ausgehender Zugriff über Port 53 wird für die Kommunikation mit DNS-Servern benötigt. Wenn ein benutzerdefinierter DNS-Server am anderen Ende eines VPN-Gateways vorhanden ist, muss der DNS-Server über das Subnetz, in der sich API Management befindet, erreichbar sein.
 
-* **Metriken und Systemüberwachung**: Ausgehende Netzwerkverbindung zu Azure Monitoring-Endpunkten, die unter folgenden Domänen aufgelöst werden: 
++ **Metriken und Systemüberwachung**: Ausgehende Netzwerkverbindung zu Azure Monitoring-Endpunkten, die unter folgenden Domänen aufgelöst werden: 
 
     | Azure-Umgebung | Endpunkte                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -138,17 +138,22 @@ Beim Hosten einer API Management-Dienstinstanz in einem VNET werden die in der f
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
     | Azure China       | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
 
-* **SMTP-Relay**: Ausgehende Netzwerkverbindungen für das SMTP-Relay. Die Auflösung erfolgt unter dem Host `ies.global.microsoft.com`.
++ **SMTP-Relay**: Ausgehende Netzwerkverbindungen für das SMTP-Relay. Die Auflösung erfolgt unter dem Host `ies.global.microsoft.com`.
 
-* **Diagnose im Azure-Portal**: Wenn Sie bei Verwendung der API Management-Erweiterung in einem virtuellen Netzwerk die Übermittlung von Diagnoseprotokollen aus dem Azure-Portal ermöglichen möchten, wird ausgehender Zugriff auf `dc.services.visualstudio.com` am Port 443 benötigt. Dies ermöglicht die Behandlung von Problemen, die bei der Verwendung von Erweiterungen auftreten können.
++ **CAPTCHA des Entwicklerportals:** Ausgehende Netzwerkverbindungen für das CAPTCHA des Entwicklerportals. Die Auflösung erfolgt unter dem Host `client.hip.live.com`.
 
-* **ExpressRoute-Setup**: Eine gängige Kundenkonfiguration sieht das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Bei diesem Datenverkehr funktioniert die Verbindung mit Azure API Management nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren. Die Lösung besteht darin, mindestens eine benutzerdefinierte Route (User-Defined Route, [UDR][UDRs]) im Subnetz zu definieren, das den Azure API Management-Dienst enthält. Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
-  Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:
- * Die ExpressRoute-Konfiguration kündigt 0.0.0.0/0 an und tunnelt standardmäßig allen ausgehenden Datenverkehr zwangsweise lokal.
- * Die für das Subnetz mit dem Azure API Management-Dienst geltende UDR definiert 0.0.0.0/0 mit „Internet“ als Typ des nächsten Hops.
- Gemeinsam führen diese Schritte dazu, dass die benutzerdefinierte Route auf Subnetzebene Vorrang vor erzwungenen ExpressRoute-Tunneln hat. Dadurch wird ausgehender Internetzugriff aus dem Azure API Management-Dienst sichergestellt.
++ **Diagnose im Azure-Portal**: Wenn Sie bei Verwendung der API Management-Erweiterung in einem virtuellen Netzwerk die Übermittlung von Diagnoseprotokollen aus dem Azure-Portal ermöglichen möchten, wird ausgehender Zugriff auf `dc.services.visualstudio.com` am Port 443 benötigt. Dies ermöglicht die Behandlung von Problemen, die bei der Verwendung von Erweiterungen auftreten können.
 
-* **Routing durch virtuelle Netzwerkgeräte**: Es gibt Konfigurationen, bei denen eine benutzerdefinierte Route mit einer Standardroute (0.0.0.0/0) verwendet wird, um den Internetdatenverkehr aus dem API Management-Subnetz durch ein in Azure ausgeführtes virtuelles Netzwerkgerät zu leiten. Diese blockieren Verwaltungsdatenverkehr aus dem Internet an die API Management-Dienstinstanz, die im Subnetz des virtuellen Netzwerks bereitgestellt ist. Diese Konfiguration wird nicht unterstützt.
++ **ExpressRoute-Setup**: Eine gängige Kundenkonfiguration sieht das Definieren einer eigenen Standardroute (0.0.0.0/0) vor, die ausgehenden Internetdatenverkehr stattdessen zwingt, die lokale Infrastruktur zu durchlaufen. Bei diesem Datenverkehr funktioniert die Verbindung mit Azure API Management nicht mehr, da ausgehender Datenverkehr entweder lokal blockiert oder mittels NAT in eine nicht mehr nachvollziehbare Gruppe von Adressen übersetzt wird, die nicht mehr mit verschiedenen Azure-Endpunkten funktionieren. Die Lösung besteht darin, mindestens eine benutzerdefinierte Route (User-Defined Route, [UDR][UDRs]) im Subnetz zu definieren, das den Azure API Management-Dienst enthält. Eine benutzerdefinierte Route definiert subnetzspezifische Routen, die anstelle der Standardroute berücksichtigt werden.
+
+    Nach Möglichkeit sollte die folgende Konfiguration verwendet werden:
+
+     * Die ExpressRoute-Konfiguration kündigt 0.0.0.0/0 an und tunnelt standardmäßig allen ausgehenden Datenverkehr zwangsweise lokal.
+     * Die für das Subnetz mit dem Azure API Management-Dienst geltende UDR definiert 0.0.0.0/0 mit „Internet“ als Typ des nächsten Hops.
+
+    Gemeinsam führen diese Schritte dazu, dass die benutzerdefinierte Route auf Subnetzebene Vorrang vor erzwungenen ExpressRoute-Tunneln hat. Dadurch wird ausgehender Internetzugriff aus dem Azure API Management-Dienst sichergestellt.
+
++ **Routing durch virtuelle Netzwerkgeräte**: Es gibt Konfigurationen, bei denen eine benutzerdefinierte Route mit einer Standardroute (0.0.0.0/0) verwendet wird, um den Internetdatenverkehr aus dem API Management-Subnetz durch ein in Azure ausgeführtes virtuelles Netzwerkgerät zu leiten. Diese blockieren Verwaltungsdatenverkehr aus dem Internet an die API Management-Dienstinstanz, die im Subnetz des virtuellen Netzwerks bereitgestellt ist. Diese Konfiguration wird nicht unterstützt.
 
 >[!WARNING]
 >Azure API Management wird nicht mit ExpressRoute-Konfigurationen unterstützt, die **fälschlicherweise Routen „über Kreuz“ vom öffentlichen Peeringpfad zum privaten Peeringpfad ankündigen**. ExpressRoute-Konfigurationen, für die öffentliches Peering konfiguriert ist, erhalten Routenankündigungen von Microsoft für zahlreiche Microsoft Azure-IP-Adressbereiche. Wenn diese Adressbereiche fälschlicherweise „über Kreuz“ im privaten Peeringpfad angekündigt werden, führt dies dazu, dass alle ausgehenden Netzwerkpakete aus dem Subnetz des Azure API Management-Diensts fälschlicherweise zwangsweise zur lokalen Netzwerkinfrastruktur eines Kunden getunnelt werden. Dieser Netzwerkdatenfluss unterbricht Azure API Management. Die Lösung für dieses Problem besteht darin, „Über-Kreuz-Ankündigungen“ von Routen vom öffentlichen Peeringpfad zum privaten Peeringpfad zu verhindern.

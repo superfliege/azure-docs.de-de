@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: vainolo
-ms.author: vainolo
+ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: d092b4e8096b311ba9ca9d3fbceea8fb57bf4aa9
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 08c71ac1aba659a2e0fbb6655b6ee0a21576bf5d
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234661"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339786"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Erste Schritte bei der Überwachung von SQL-Datenbank
 
@@ -43,8 +43,11 @@ Sie können die SQL-Datenbank-Überwachung für folgende Zwecke verwenden:
 > [!IMPORTANT]
 > Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
 >
-> - Bei **Storage Premium** werden Anfügeblobs derzeit **nicht unterstützt**.
+> - Alle Speicherarten (v1, v2, Blob) werden unterstützt.
+> - Alle Konfigurationen von Speicherreplikation werden unterstützt.
+> - **Storage Premium** wird derzeit **nicht unterstützt**.
 > - Die **Speicherung in VNET** wird derzeit **nicht unterstützt**.
+> - **Speicher hinter einer Firewall** wird derzeit **nicht unterstützt**.
 
 ## <a id="subheading-8"></a>Definieren von Überwachungsrichtlinien auf Serverebene und auf Datenbankebene
 

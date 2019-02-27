@@ -6,12 +6,12 @@ author: vhorne
 ms.service: application-gateway
 ms.date: 11/16/2018
 ms.author: amsriva
-ms.openlocfilehash: 71990244db859a61885968a502d9849a36d81dce
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
+ms.openlocfilehash: 9bccc9258a6bd9a6fef4956d0f32cb00dd3c542d
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425161"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454258"
 ---
 # <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 
@@ -133,7 +133,7 @@ Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Mo
 
 ### <a name="application-gateway-waf-reports"></a>WAF-Überwachung
 
-Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center und Log Analytics erreicht.
+Die Integrität Ihres Anwendungsgateways sollte unbedingt überwacht werden. Die Überwachung der Integrität Ihrer Web Application Firewall und der durch sie geschützten Anwendungen wird mittels Protokollierung und Integration in Azure Monitor, Azure Security Center und Azure Monitor-Protokolle erreicht.
 
 ![Diagnose](./media/waf-overview/diagnostics.png)
 
@@ -149,7 +149,7 @@ Jedes Anwendungsgatewayprotokoll ist in [Azure Monitor](../monitoring-and-diagno
 
 #### <a name="logging"></a>Protokollierung
 
-Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedrohung. Die Protokollierung ist in Azure Diagnostics-Protokolle integriert, und Warnungen werden in einem JSON-Format erfasst. Diese Protokolle können in [Log Analytics](../azure-monitor/insights/azure-networking-analytics.md) integriert werden.
+Die Application Gateway-WAF bietet detaillierte Berichte zu jeder erkannten Bedrohung. Die Protokollierung ist in Azure Diagnostics-Protokolle integriert, und Warnungen werden in einem JSON-Format erfasst. Diese Protokolle können in [Azure Monitor-Protokolle](../azure-monitor/insights/azure-networking-analytics.md) integriert werden.
 
 ![imageURLroute](./media/waf-overview/waf2.png)
 

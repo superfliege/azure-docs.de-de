@@ -8,23 +8,23 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 1967ba60088cae2b946cfcfe1467c2de5aebccdf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: a85fb65ad971bfc70bdab0689e99921e616b56ac
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879950"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308858"
 ---
-# <a name="image-categorization-with-computer-vision"></a>Bildkategorisierung mit maschinellem Sehen
+# <a name="categorize-images"></a>Kategorisieren von Bildern
 
-Zusätzlich zu Tagging und Beschreibungen gibt das maschinelle Sehen auf der Taxonomie basierende Kategorien zurück, die in früheren Versionen definiert wurden. Diese Kategorien sind als eine Taxonomie mit über-/untergeordneten vererbbaren Hierarchien organisiert. Alle Kategorien sind in Englisch. Sie können einzeln oder in Kombination mit unseren neuen Taggingmodellen verwendet werden.
+Zusätzlich zu Tags und Beschreibungen gibt maschinelles Sehen auf der Taxonomie basierende Kategorien zurück, die in einem Bild erkannt wurden. Im Gegensatz zu Tags sind Kategorien in einer Vererbungshierarchie mit über- und untergeordneten Elementen organisiert. Außerdem gibt es weniger davon (86, im Gegensatz zu Tausenden von Tags). Alle Kategorienamen sind in Englisch. Die Kategorisierung kann eigenständig oder parallel zum neueren Tagmodell erfolgen.
 
 ## <a name="the-86-category-concept"></a>Das 86-Kategorien-Konzept
 
-Basierend auf einer Liste mit 86 Kategorien, die in der folgenden Abbildung dargestellt sind, kann ein Bild in allgemeine bis spezifische Kategorien eingeordnet werden. Die vollständige Taxonomie im Textformat finden Sie unter [Kategorietaxonomie](category-taxonomy.md).
+Maschinelles Sehen kann ein Bild mithilfe der Liste mit 86 Kategorien in der folgenden Abbildung allgemein oder spezifisch kategorisieren. Die vollständige Taxonomie im Textformat finden Sie unter [Kategorietaxonomie](category-taxonomy.md).
 
 ![Gruppierte Listen aller Kategorien in der Kategorietaxonomie](./Images/analyze_categories-v2.png)
 

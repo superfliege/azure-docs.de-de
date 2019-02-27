@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 9ea62d731cf0c16c17f3c2e4f3e1954661289934
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 038d41ae299076754a2f778ec67aac04e630d476
+ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245540"
+ms.locfileid: "56270180"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/development-lifecycle-knowledge-base.md) helfen Ihnen bei sämtlichen Schritten der Verwaltung Ihrer Wissensdatenbank. Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu verbessern und bessere Ergebnisse für die Endbenutzer Ihrer Anwendung bzw. Ihres Chatbots zu liefern.
@@ -25,6 +25,18 @@ Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/deve
 Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../Concepts/data-sources-supported.md) für die Datenextraktion basierend auf Ihrem Dokumenttyp. 
 
 Ganz allgemein sollten die Seiten mit häufig gestellten Fragen eigenständig bereitgestellt und nicht mit anderen Informationen kombiniert werden. Produkthandbücher sollten klare Überschriften und vorzugsweise eine Indexseite aufweisen. 
+
+## <a name="creating-good-questions-and-answers"></a>Formulieren guter Fragen und Antworten
+
+### <a name="good-questions"></a>Gute Fragen
+
+Die besten Fragen sind einfach. Überlegen Sie sich das Schlüsselwort oder den Ausdruck für jede Frage. Formulieren Sie dann eine einfache Frage zu diesem Schlüsselwort oder Ausdruck. 
+
+Fügen Sie so viele alternative Fragen hinzu, wie Sie benötigen, aber halten Sie die Änderungen einfach. Das Hinzufügen weiterer Wörter oder Ausdrücke, die nicht dem Hauptzweck der Frage entsprechen, hilft QnA Maker nicht, eine Übereinstimmung zu finden. 
+
+### <a name="good-answers"></a>Gute Antworten
+
+Die besten Antworten sind einfache Antworten, aber nicht so einfach wie Ja und Nein. Wenn Ihre Antwort auf andere Quellen verweisen oder eine umfassende Erfahrung mit Medien und Links bieten soll, verwenden Sie [Tags](../how-to/metadata-generateanswer-usage.md), um zu unterscheiden, welche Art von Antwort Sie erwarten, und senden Sie dann dieses Tag mit der Abfrage, um die richtige Antwortversion zu erhalten.
 
 ## <a name="chit-chat"></a>Geplauder
 Fügen Sie Ihrem Bot Geplauder hinzu, um ihn mit geringem Aufwand gesprächiger und ansprechender zu gestalten. Sie können beim Erstellen Ihrer Wissensdatenbank ganz einfach Geplauderdatasets für 3 vordefinierte Persönlichkeiten hinzufügen und diese jederzeit ändern. Weitere Informationen zum [Hinzufügen von Geplauder zur Wissensdatenbank](../How-To/chit-chat-knowledge-base.md). 
@@ -58,7 +70,6 @@ Nutzen Sie unbedingt auch die von QnA Maker unterstützten Rangfolgefeatures. Da
 ### <a name="choosing-a-threshold"></a>Auswählen eines Schwellenwerts
 Die standardmäßige Zuverlässigkeitsbewertung, die als Schwellenwert verwendet wird, ist 50. Sie können sie jedoch für Ihre Wissensdatenbank gemäß Ihren Bedürfnissen ändern. Da jede Wissensdatenbank anders ist, sollten Sie den Schwellenwert testen und einen Wert auswählen, der für Ihre Wissensdatenbank am besten geeignet ist. Erfahren Sie mehr über die [Zuverlässigkeitsbewertung](../Concepts/confidence-score.md). 
 
-
 ### <a name="add-alternate-questions"></a>Hinzufügen alternativer Fragen
 [Alternative Fragen](../How-To/edit-knowledge-base.md) verbessern die Wahrscheinlichkeit einer Übereinstimmung mit einer Benutzerfrage. Alternative Fragen sind besonders dann nützlich, wenn es mehrere Möglichkeiten gibt, die gleiche Frage zu stellen. Dies können z.B. Änderungen in der Satzstruktur und in der Wortwahl sein.
 
@@ -81,7 +92,7 @@ Auch wenn für die englische Sprache Synonyme teilweise unterstützt werden, ver
 |kaufen|erwerben<br>Internetbanking<br>E-Banking|
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Verwenden unterschiedlicher Wörter für die Unterscheidung von Fragen
-Die QnA Maker-Algorithmen für Übereinstimmungen und Rangfolgen, die eine Benutzerfrage einer Frage in der Wissensdatenbank zuordnen, funktionieren am besten, wenn jede Frage eine andere Anforderung behandelt. Die Wiederholung derselben Wortgruppe in unterschiedlichen Fragen reduziert die Wahrscheinlichkeit, dass die richtige Antwort für eine bestimmte Benutzerfrage mit diesen Wörtern ausgewählt wird. 
+Die QnA Maker-Algorithmen für Rangfolgen, die eine Benutzerfrage einer Frage in der Wissensdatenbank zuordnen, funktionieren am besten, wenn jede Frage eine andere Anforderung behandelt. Die Wiederholung derselben Wortgruppe in unterschiedlichen Fragen reduziert die Wahrscheinlichkeit, dass die richtige Antwort für eine bestimmte Benutzerfrage mit diesen Wörtern ausgewählt wird. 
 
 Beispielsweise könnten Sie zwei separate QnAs mit den folgenden Fragen haben:
 
@@ -91,7 +102,6 @@ Beispielsweise könnten Sie zwei separate QnAs mit den folgenden Fragen haben:
 |Wo ist der *Standort* des Geldautomaten?|
 
 Da diese beiden QnAs sehr ähnliche Wörter verwenden, könnte diese Ähnlichkeit für viele Benutzeranfragen sehr ähnliche Bewertungen verursachen, die als *„Wo ist der Standort des `<x>`“* formuliert sind. Versuchen Sie stattdessen, mit Abfragen wie *„Wo ist der Parkplatz?“* und *„Wo ist der Geldautomat?“* klar zu unterscheiden, indem Sie Wörter wie „Standort“ vermeiden, die in vielen Fragen in Ihrer Wissensdatenbank vorkommen könnten. 
-
 
 ## <a name="collaborate"></a>Zusammenarbeiten
 QnA Maker ermöglicht Benutzern das [Zusammenarbeiten](../How-to/collaborate-knowledge-base.md) an einer Knowledge Base. Benutzer benötigen Zugriff auf die Azure QnA Maker-Ressourcengruppe, um auf Wissensdatenbanken zugreifen zu können. Einige Organisationen lagern die Bearbeitung und Verwaltung ihrer Knowledge Base aus, möchten aber eventuell trotzdem weiterhin den Zugriff auf ihre Azure-Ressourcen schützen. Dieses Modell aus bearbeitenden und genehmigenden Personen erfolgt durch das Einrichten von zwei identischen [QnA Maker-Diensten](../How-to/set-up-qnamaker-service-azure.md) in unterschiedlichen Abonnements, von denen einer für den Bearbeitungs- und Testzyklus ausgewählt wird. Nach Abschluss der Tests werden die Inhalte der Wissensdatenbank mit einem [Import-/Export](../Tutorials/migrate-knowledge-base.md)vorgang an den QnA Maker-Dienst der genehmigenden Person übertragen, die die Wissensdatenbank schließlich veröffentlicht und den Endpunkt aktualisiert.

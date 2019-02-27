@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e56cc5a893c5a88a5b64466d6feceb20ccd8cdc
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167846"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445541"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
@@ -118,7 +118,8 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
     *   Geben Sie im Feld **Domäne** die Unterdomäne Ihres Zendesk-Mandanten ein.
     Beispiel: Für ein Konto mit der Mandanten-URL https://my-tenant.zendesk.com lautet Ihre Unterdomäne **my-tenant**.
 
-6. Das **Geheime Token** für Ihr Zendesk-Konto finden Sie unter **Administrator > API > Einstellungen**. 
+6. Das **Geheime Token** für Ihr Zendesk-Konto finden Sie unter **Administrator > API > Einstellungen**.
+   Vergewissern Sie sich, dass **Tokenzugriff** auf **Aktiviert** festgelegt ist.
 
     ![Zendesk-Bereitstellung](./media/zendesk-provisioning-tutorial/ZenDesk4.png) ![Zendesk-Bereitstellung](./media/zendesk-provisioning-tutorial/ZenDesk2.png)
 

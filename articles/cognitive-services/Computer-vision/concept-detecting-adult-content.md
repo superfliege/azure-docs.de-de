@@ -8,27 +8,34 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 64db05e5e40b76d219ea0e3214c20297f32da4b5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69a4c136e9c210dd40e004b8d5e1c1a2a8fceaa7
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861271"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312531"
 ---
-# <a name="detecting-adult-and-racy-content"></a>Erkennen von nicht jugendfreien und freizügigen Inhalten
+# <a name="detect-adult-and-racy-content"></a>Erkennen von nicht jugendfreien und freizügigen Inhalten
 
-Die verschiedenen visuellen Kategorien umfassen auch die Gruppe der nicht jugendfreien und anzüglichen Inhalte, die eine Erkennung solcher jugendgefährdenden Inhalte ermöglicht und die Anzeige von Bildern mit sexuellen Inhalten einschränkt. Der Filter zur Erkennung nicht jugendfreier und anzüglicher Inhalte kann durch einen Schieberegler entsprechend den Anforderungen des Benutzers eingestellt werden.
+Maschinelles Sehen kann nicht jugendfreie Inhalte in Bildern erkennen, damit Entwickler die Anzeige solcher Bilder in ihrer Software einschränken können. Inhaltsflags werden mit einem Wert von 0 bis 1 angewendet, damit Entwickler die Ergebnisse ihren eigenen Vorgaben entsprechend interpretieren können. 
 
-## <a name="defining-adult-and-racy-content"></a>Definieren von nicht jugendfreien und anzüglichen Inhalten
+> [!NOTE]
+> Dieses Feature wird auch vom Dienst [Azure Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview) angeboten. Diese Alternative kann als Lösung für strengere Szenarien zur Inhaltsmoderation eingesetzt werden, wie etwa für die Textmoderation oder Workflows für die Überprüfung durch Personen.
 
-Unter den verschiedenen visuellen Merkmalen, die von der [Methode zum Analysieren von Bildern](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) abgedeckt werden, ermöglicht das visuelle Merkmal „Adult“ (Erwachsen) die Erkennung von nicht jugendfreien und anzüglichen Bildern. „Adult“ (Erwachsen) Bilder sind gemäß Definition pornografischer Natur und stellen oft Nacktheit und sexuelle Handlungen dar. „Racy“ (Anzüglich) Bilder sind gemäß Definition sexuell suggestiv und enthalten häufig in sexueller Hinsicht weniger explizite Inhalte als Bilder, die als „Adult“ (Erwachsen) gekennzeichnet sind. Der visuelle Merkmalstyp „Adult“ (Erwachsen) wird häufig verwendet, um die Anzeige von Bildern mit sexuell suggestiven und explizit sexuellen Inhalten einzuschränken.
+## <a name="content-flag-definitions"></a>Definitionen für Inhaltsflags
 
-## <a name="identifying-adult-and-racy-content"></a>Identifizieren von nicht jugendfreien und freizügigen Inhalten
+Als **Adult** (erwachsen) gekennzeichnete Bilder sind gemäß Definition pornografischer Natur und stellen oft Nacktheit und sexuelle Handlungen dar. 
 
-Die Methode zum Analysieren von Bildern gibt zwei Eigenschaften, `isAdultContent` und `isRacyContent`, in der JSON-Antwort der Methode zurück, um nicht jugendfreie und anzügliche Inhalte zu identifizieren. Beide Eigenschaften geben einen booleschen Wert zurück, entweder „true“ oder „false“. Die Methode gibt auch zwei Eigenschaften zurück, `adultScore` und `racyScore`, die jeweils die Zuverlässigkeitsbewertungen für die Identifizierung von nicht jugendfreien und anzüglichen Inhalten darstellen. Ein Zuverlässigkeitsfilter für anzügliche und nicht jugendfreie Inhalte kann mithilfe eines Schiebereglers nach Bedarf auf Basis Ihres bestimmten Szenarios angepasst werden.
+Als **Racy** (anzüglich) gekennzeichnete Bilder sind gemäß Definition sexuell suggestiv und enthalten häufig in sexueller Hinsicht weniger explizite Inhalte als Bilder, die als **Adult (erwachsen)** gekennzeichnet sind. 
+
+## <a name="identify-adult-and-racy-content"></a>Identifizieren von nicht jugendfreien und freizügigen Inhalten
+
+Die [Analyse](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API.
+
+Die Methode zum Analysieren von Bildern gibt zwei boolesche Eigenschaften, `isAdultContent` und `isRacyContent`, in der JSON-Antwort der Methode zurück, um nicht jugendfreie bzw. anzügliche Inhalte zu identifizieren. Die Methode gibt auch zwei Eigenschaften zurück, `adultScore` und `racyScore`, die jeweils die Zuverlässigkeitsbewertungen für die Identifizierung von nicht jugendfreien und anzüglichen Inhalten darstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

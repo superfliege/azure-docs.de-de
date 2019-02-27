@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: rezas
-ms.openlocfilehash: 65de1279c47f5992dd82e9f4634b3de52925769c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 0cb3bc63f9c3d63c68edba0b4162970e18fca76d
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568378"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312700"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>IoT Hub-Abfragesprache für Geräte- und Modulzwillinge, Aufträge und Nachrichtenrouting
 
@@ -361,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt [Erste Schritte mit Gerätezwillingsabfragen](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) finden Sie einige Beispiele für SELECT-Klauseln.
+**Attribute_name** bezieht sich auf jede Eigenschaft des JSON-Dokuments in der FROM-Sammlung. Im Abschnitt „Erste Schritte mit Gerätezwillingsabfragen“ finden Sie einige Beispiele für SELECT-Klauseln.
 
 Derzeit werden andere Auswahlklauseln als **SELECT*** nur in Aggregatabfragen für Gerätezwillinge unterstützt.
 

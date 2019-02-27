@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 02/11/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: aff57e58ffd247bcc697908f2f25cbf17ff9b91a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: c5514a43602106cf045b575d289e02b591468359
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244129"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338460"
 ---
 # <a name="governance-of-azure-devtest-labs-infrastructure---resources"></a>Governance der Azure DevTest Labs-Infrastruktur – Ressourcen
 Dieser Artikel behandelt die Ausrichtung und die Verwaltung von Ressourcen für DevTest Labs in Ihrer Organisation. 
@@ -56,7 +56,7 @@ Wie halte ich eine übergreifende Benennungskonvention in meiner DevTest Labs-Um
 ### <a name="answer"></a>Antwort
 Es kann sinnvoll sein, aktuelle Benennungskonventionen im Unternehmen auf den Azure-Betrieb auszudehnen und sie über die gesamte DevTest Labs-Umgebung konsistent zu machen.
 
-Wir empfehlen, bei der Bereitstellung von DevTest Labs bestimmte Ausgangsrichtlinien zu implementieren. Sie stellen diese Richtlinien mit einem zentralen Skript und JSON-Vorlagen bereit, um Konsistenz durchzusetzen. Benennungsrichtlinien können mithilfe von Azure-Richtlinien implementiert werden, die auf Abonnementebene angewendet werden. JSON-Beispiele für Azure Policy finden Sie unter [Azure Policy-Beispiele](../azure-policy/json-samples.md).
+Wir empfehlen, bei der Bereitstellung von DevTest Labs bestimmte Ausgangsrichtlinien zu implementieren. Sie stellen diese Richtlinien mit einem zentralen Skript und JSON-Vorlagen bereit, um Konsistenz durchzusetzen. Benennungsrichtlinien können mithilfe von Azure-Richtlinien implementiert werden, die auf Abonnementebene angewendet werden. JSON-Beispiele für Azure Policy finden Sie unter [Azure Policy-Beispiele](../governance/policy/samples/index.md).
 
 ## <a name="number-of-users-per-lab-and-labs-per-organization"></a>Anzahl der Benutzer pro Lab und Labs pro Organisation
 
@@ -76,7 +76,7 @@ Sie können auch ein Lab für ein bestimmtes Projekt in Azure DevOps Projects ve
 Wie lässt sich das Löschen von Ressourcen in einem Lab verhindern?
 
 ### <a name="answer"></a>Antwort
-Es empfiehlt sich, ordnungsgemäße Berechtigungen auf Lab-Ebene festzulegen, so dass nur autorisierte Benutzer Ressourcen löschen oder Lab-Richtlinien ändern können. Entwickler sollten innerhalb der Gruppe **DevTest Labs-Benutzer** platziert werden. Der Entwicklungsleiter oder der Infrastruktur-Lead sollte als **DevTest Labs-Besitzer** festgelegt werden. Wir empfehlen, nur zwei Lab-Besitzer festzulegen. Diese Richtlinie wird auf das Coderepository ausgeweitet, um Beschädigungen zu vermeiden. Lab-Benutzer verfügen über Rechte zur Nutzung von Ressourcen, sie können aber keine Lab-Richtlinien aktualisieren. Der folgende Artikel listet die Rollen und Rechte auf, über die jede integrierte Gruppe innerhalb eines Labs verfügt: [Add owners and users in Azure DevTest Labs](devtest-lab-add-devtest-user.md) (Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs). 
+Es empfiehlt sich, ordnungsgemäße Berechtigungen auf Lab-Ebene festzulegen, so dass nur autorisierte Benutzer Ressourcen löschen oder Lab-Richtlinien ändern können. Entwickler sollten innerhalb der Gruppe **DevTest Labs-Benutzer** platziert werden. Der Entwicklungsleiter oder der Infrastruktur-Lead sollte als **DevTest Labs-Besitzer** festgelegt werden. Wir empfehlen, nur zwei Lab-Besitzer festzulegen. Diese Richtlinie wird auf das Coderepository ausgeweitet, um Beschädigungen zu vermeiden. Lab-Benutzer verfügen über Rechte zur Nutzung von Ressourcen, sie können aber keine Lab-Richtlinien aktualisieren. Der folgende Artikel listet die Rollen und Rechte auf, über die jede integrierte Gruppe innerhalb eines Labs verfügt: [Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs](devtest-lab-add-devtest-user.md).
 
 ## <a name="move-lab-to-another-resource-group"></a>Verschieben eines Labs in eine andere Ressourcengruppe 
 

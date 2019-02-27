@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c9d8b875d7e5a831af52eae8abc642632cb5f635
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 287e4d63ca60200340a88dd45d6b8912a62b74cd
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238384"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454690"
 documentType: LandingData
 title: Verwaltete Azure SQL-Datenbank-Instanz
 metadata:
@@ -75,7 +75,7 @@ sections:
     style: unordered
     items:
     - html: Der <a href="sql-database-managed-instance#business-critical-service-tier">Diensttarif „Unternehmenskritisch“</a> befindet sich jetzt in der Phase der <a href="https://azure.microsoft.com/blog/migrate-mission-critical-sql-workloads-to-the-most-economical-cloud-destination/">allgemeinen Verfügbarkeit (General Availability, GA)</a>.
-    - html: (Vorschauversion) Erstellen Sie <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-Anmeldungen auf Instanzebene</a>, indem Sie <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> verwenden.
+    - html: (Vorschauversion) Erstellen Sie <a href="https://aka.ms/managed-instance-aadlogins">Azure AD-Dienstprinzipale auf Instanzebene (Anmeldungen)</a>, indem Sie <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN FROM EXTERNAL PROVIDER</a> verwenden.
     - html: (Vorschauversion) Erstellen Sie Instanzen mit einer <a href="https://aka.ms/managed-instance-collation">Sortierung auf Serverebene Ihrer Wahl</a>.
     - html: <a href="https://aka.ms/managed-instance-configurable-backup-retention">Konfigurieren der Sicherungsaufbewahrung für einen Zeitraum von bis zu 35 Tagen</a> für die Point-in-Time-Wiederherstellung. Beachten Sie, dass die langfristige Sicherungsaufbewahrung (bis zu zehn Jahre) noch nicht aktiviert ist, sodass Sie als Alternative <a href="https://docs.microsoft.com/sql/relational-databases/backup-restore/copy-only-backups-sql-server">ausschließlich kopierbare Sicherungen</a> nutzen können.
     - html: (Vorschauversion) Verwenden Sie <a href="https://aka.ms/managed-instance-failover-groups">geografisch verteilte Failovergruppen</a>, um eine Kopie der Instanz in einer anderen Region vorzuhalten und sicherzustellen, dass Ihre Daten auch bei einer regionalen Katastrophe verfügbar sind.

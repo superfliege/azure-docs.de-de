@@ -9,13 +9,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 03/26/2018
-ms.openlocfilehash: d7df1c65b8588b97a6beb0a4c2428b3c6430c3b2
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.date: 02/15/2019
+ms.openlocfilehash: 2f16ba3fde73705d431ba97d65059b178020bb62
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53635696"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56340296"
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-apache-hadoop-on-hdinsight-and-sql-database"></a>Importieren und Exportieren von Daten zwischen Apache Hadoop unter HDInsight und einer SQL-Datenbank mithilfe von Apache Sqoop
 
@@ -105,7 +105,7 @@ GO
     In den Daten sind die Felder durch ein Tabstoppzeichen getrennt und die Zeilen durch ein Zeilenumbruchzeichen abgeschlossen.
 
     > [!IMPORTANT]  
-    > Der Pfad `wasb:///` funktioniert mit Clustern, die Azure Storage als Standardclusterspeicher verwenden. Verwenden Sie für Cluster, die Azure Data Lake Storage nutzen, stattdessen `adl:///`.
+    > Der Pfad `wasb:///` funktioniert mit Clustern, die Azure Storage als Standardclusterspeicher verwenden. Verwenden Sie für Cluster, die Azure Data Lake Storage Gen2 nutzen, stattdessen `abfs:///`. Verwenden Sie für Cluster, die Azure Data Lake Storage Gen1 nutzen, stattdessen `adl:///`.
 
 2. Sobald der Import abgeschlossen ist, verwenden Sie den folgenden Befehl zum Auflisten der Daten in dem neuen Verzeichnis:
 
@@ -160,7 +160,7 @@ Für den Import und Export von SQL Server-Daten können Sie ebenfalls Sqoop verw
 
 Nun wissen Sie, wie Sqoop verwendet haben. Weitere Informationen finden Sie unter:
 
-* [Verwenden von Apache Oozie mit HDInsight:](../hdinsight-use-oozie.md) Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
+* [Verwenden von Apache Oozie mit HDInsight](../hdinsight-use-oozie.md): Verwenden der Sqoop-Aktion in einem Oozie-Workflow.
 * [Analysieren von Daten zu Flugverspätungen mit HDInsight](../hdinsight-analyze-flight-delay-data.md): Verwenden von Apache Hive zum Analysieren von Daten zu Flugverspätungen und Verwenden von Sqoop zum Exportieren von Daten in Azure SQL-Datenbank.
 * [Hochladen von Daten in HDInsight](../hdinsight-upload-data.md): Andere Methoden zum Hochladen von Daten in HDInsight/Azure Blob Storage.
 

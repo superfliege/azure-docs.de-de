@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 4885be7547d404505b50c563036f260166cbc2cc
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 6b980ae7539642e67609be802b2e31b287d09f72
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833821"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415266"
 ---
 # <a name="network-security-groups-with-azure-site-recovery"></a>Netzwerksicherheitsgruppen mit Azure Site Recovery
 
@@ -45,7 +45,7 @@ Es ist für Sie unter Umständen nicht immer klar erkennbar, wenn Netzwerksicher
 
 Azure Site Recovery ermöglicht die Notfallwiederherstellung und Migration zu Azure für lokale [Hyper-V-Computer](hyper-v-azure-architecture.md), [virtuelle VMware-Computer](vmware-azure-architecture.md) und [physische Server](physical-azure-architecture.md). In allen Szenarien der Migration von einem lokalen Standort zu Azure werden die Replikationsdaten an ein Azure Storage-Konto gesendet und darin gespeichert. Während der Replikation zahlen Sie keine Gebühren für die VM. Wenn Sie einen Failover zu Azure ausführen, erstellt Site Recovery automatisch Azure-IaaS-VMs.
 
-Sobald nach einem Failover zu Azure VMs erstellt worden sind, kann mit NSGs der Netzwerkdatenverkehr zu dem virtuellen Netzwerk und den virtuellen Computern beschränkt werden. Site Recovery erstellt nicht NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen Azure-NGSs erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
+Sobald nach einem Failover zu Azure VMs erstellt worden sind, kann mit NSGs der Netzwerkdatenverkehr zu dem virtuellen Netzwerk und den virtuellen Computern beschränkt werden. Site Recovery erstellt nicht NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen Azure-NSGs erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
 
 Angenommen, die VM-Konfiguration ähnelt nach dem Failover dem oben beschriebenen [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
 -   Sie können **Contoso VNet** und **Contoso Subnet** im Rahmen der DR-Planung in der Azure-Zielregion erstellen.
@@ -61,7 +61,7 @@ Azure Site Recovery ermöglicht die Notfallwiederherstellung für [Azure-VMs](az
 
 Stellen Sie für die Azure-VM-Replikation sicher, dass die NSG-Regeln in der Azure-Quellregion [ausgehende Konnektivität](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges) für den Replikationsdatenverkehr zulassen. Sie können diese erforderlichen Regeln auch über diese [NSG-Beispielkonfiguration](azure-to-azure-about-networking.md#example-nsg-configuration) testen und überprüfen.
 
-Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen NGSs in der Azure-Zielregion erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
+Site Recovery erstellt bzw. repliziert keine NSGs als Teil des Failovervorgangs. Sie sollten die erforderlichen NSGs in der Azure-Zielregion erstellen, bevor das Failover initiiert wird. Dann können Sie NSGs automatisch während des Failovers mithilfe von Automatisierungsskripts vom Failover betroffenen virtuellen Computern mit den leistungsstarken [Wiederherstellungsplänen](site-recovery-create-recovery-plans.md) von Site Recovery zuordnen.
 
 Berücksichtigen Sie das weiter oben beschriebene [Beispielszenario](concepts-network-security-group-with-site-recovery.md#using-network-security-groups):
 -   Site Recovery kann Replikate von **Contoso VNet** und **Contoso Subnet** in der Azure-Zielregion erstellen, wenn die Replikation für den virtuellen Computer aktiviert ist.

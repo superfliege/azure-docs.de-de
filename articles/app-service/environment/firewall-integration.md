@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/20/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 87331ed0d9e5a4ff51e3669390d1b40dea58574a
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
+ms.openlocfilehash: af6a32d7e32f23561b207c729402eaea7925f520
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54389232"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453850"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Sperren einer App Service-Umgebung
 
@@ -75,18 +75,18 @@ Diese Verwendung von Application Gateway ist nur ein Beispiel dafür, wie Sie Ih
 
 ## <a name="logging"></a>Protokollierung 
 
-Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Log Analytics senden. Sie können ein beliebiges unterstütztes Ziel in Ihre App integrieren, indem Sie im Azure Firewall-Portal zu „Diagnoseprotokolle“ navigieren und die Protokolle für das gewünschte Ziel aktivieren. Wenn Sie sich für die Integration in Log Analytics entscheiden, können Sie Protokolle für sämtlichen Datenverkehr einsehen, der an Azure Firewall gesendet wird. Öffnen Sie zum Anzeigen des abgelehnten Datenverkehrs das Log Analytics-Portal, wählen Sie „Protokolle“ aus, und geben Sie eine Abfrage wie die Folgende ein: 
+Azure Firewall kann Protokolle an Azure Storage, Event Hub oder Azure Monitor-Protokolle senden. Sie können ein beliebiges unterstütztes Ziel in Ihre App integrieren, indem Sie im Azure Firewall-Portal zu „Diagnoseprotokolle“ navigieren und die Protokolle für das gewünschte Ziel aktivieren. Wenn Sie sich für die Integration in Azure Monitor-Protokolle entscheiden, können Sie Protokolle für sämtlichen Datenverkehr einsehen, der an Azure Firewall gesendet wird. Öffnen Sie zum Anzeigen des abgelehnten Datenverkehrs das Portal mit dem Log Analytics-Arbeitsbereich, wählen Sie „Protokolle“ aus, und geben Sie eine Abfrage wie die folgende ein: 
 
     AzureDiagnostics | where msg_s contains "Deny" | where TimeGenerated >= ago(1h)
  
-Die Integration Ihrer Azure Firewall-Instanz in Log Analytics ist sehr nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Log Analytics finden Sie unter [Analysieren von Log Analytics-Daten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)
+Die Integration Ihrer Azure Firewall-Instanz in Azure Monitor-Protokolle ist sehr nützlich, wenn Sie eine Anwendung erstmals einrichten und nicht alle Anwendungsabhängigkeiten kennen. Weitere Informationen zu Azure Monitor-Protokollen finden Sie unter [Analysieren von Protokolldaten in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview).
  
 ## <a name="dependencies"></a>Abhängigkeiten
 
 Die folgenden Informationen sind nur erforderlich, wenn Sie ein anderes Firewallgerät als Azure Firewall konfigurieren möchten. 
 
 - Dienste, die Dienstendpunkte unterstützen, sollten mit Dienstendpunkten konfiguriert werden.
-- IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr.
+- IP-Adressabhängigkeiten gelten für Nicht-HTTP/S-Datenverkehr (TCP- und UDP-Datenverkehr).
 - FQDN-HTTP/HTTPS-Endpunkte können in Ihrem Firewallgerät bereitgestellt werden.
 - Platzhalter-HTTP/HTTPS-Endpunkte sind Abhängigkeiten, die von Ihrer App Service-Umgebung abhängig sein können, basierend auf einer Reihe von Qualifizierern. 
 - Linux-Abhängigkeiten sind nur relevant, wenn Sie in Ihrer App Service-Umgebung Linux-Apps bereitstellen. Wenn Sie in Ihrer App Service-Umgebung keine Linux-Apps bereitstellen, müssen diese Adressen Ihrer Firewall nicht hinzugefügt werden. 

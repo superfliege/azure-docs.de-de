@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: raynew
-ms.openlocfilehash: c36572230387ffc33a46913dbcc1259ea65f84f5
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: bd1761ecf16bbfb0d3fdc354ab1b9fa1f42f9c17
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104232"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328577"
 ---
 # <a name="contoso---scale-a-migration-to-azure"></a>Contoso – Migration nach Azure in großem Umfang
 
@@ -44,8 +44,8 @@ Artikel 14: Skalieren einer Migration zu Azure | Nachdem Contoso verschiedene Ko
 Das IT Leadership-Team hat eng mit den Geschäftspartnern zusammengearbeitet, um zu verstehen, was das Unternehmen mit dieser Migration erreichen möchte:
 
 - **Unternehmenswachstum**: Contoso wächst und sorgt für eine größere Belastung der lokalen Systeme und Infrastrukturen.
-- **Effizienzsteigerung**: Contoso muss unnötige Verfahren beseitigen und Prozesse für Entwickler und Benutzer optimieren. Die IT-Abteilung muss schnell sein, weder Geld noch Zeit verschwenden, und Kundenanforderungen schneller bearbeiten.
-- **Steigerung der Flexibilität**: Die Contoso-IT-Abteilung muss schneller auf die Unternehmensanforderungen reagieren. Die IT-Experten müssen schneller reagieren als die Änderungen im Marketplace geschehen, um den Erfolg in einer globalen Wirtschaft zu garantieren. Es darf nicht im Weg stehen oder zum Geschäftshindernis werden.
+- **Effizienzsteigerung:** Contoso muss unnötige Verfahren beseitigen und Prozesse für Entwickler und Benutzer optimieren. Die IT-Abteilung muss schnell sein, weder Geld noch Zeit verschwenden, und Kundenanforderungen schneller bearbeiten.
+- **Steigerung der Flexibilität:** Die Contoso-IT-Abteilung muss schneller auf die Unternehmensanforderungen reagieren. Die IT-Experten müssen schneller reagieren als die Änderungen im Marketplace geschehen, um den Erfolg in einer globalen Wirtschaft zu garantieren. Es darf nicht im Weg stehen oder zum Geschäftshindernis werden.
 - **Skalierung**: Da das Unternehmen erfolgreich wächst, muss das Contoso-IT-Team Systeme bereitstellen, die mit der gleichen Geschwindigkeit wachsen können.
 - **Verbessern von Kostenmodellen:** Contoso möchte die Kapitalanforderungen im IT-Budget verringern.  Contoso möchte Cloudfunktionen zur Skalierung nutzen und die Notwendigkeit teurer Hardware reduzieren.
 - **Senken von Lizenzierungskosten:** Contoso möchte die Kosten für die Cloud minimieren.
@@ -292,11 +292,10 @@ Contoso muss ermitteln, wie diese Komponenten unter Berücksichtigung von Überl
 **Konfigurationsserver** | Basierend auf der Schätzung von Contoso, dass etwa 100–200 VMs gleichzeitig repliziert werden, und basierend auf den [Größenanforderungen des Konfigurationsservers](../site-recovery/site-recovery-plan-capacity-vmware.md#size-recommendations-for-the-configuration-server-and-inbuilt-process-server) berechnet Contoso den erforderlichen Konfigurationsservercomputer folgendermaßen:<br/><br/> CPU: 16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz)<br/><br/> Memory: 32 GB<br/><br/> Cachedatenträger: 1 TB<br/><br/> Datenänderungsrate: 1 TB bis 2 TB<br/><br/> Zusätzlich zur Erfüllung der Größenanforderungen muss Contoso sicherstellen, dass der Konfigurationsserver optimal platziert wird: im gleichen Netzwerk und LAN-Segment wie die VMs, die migriert werden sollen.
 **Prozessserver** | Contoso stellt einen eigenständigen dedizierten Prozessserver bereit, der 100–200 VMs replizieren kann:<br/><br/> CPU: 16 vCPUs (2 Sockets * 8 Kerne mit 2,5 GHz)<br/><br/> Memory: 32 GB<br/><br/> Cachedatenträger: 1 TB<br/><br/> Datenänderungsrate: 1 TB bis 2 TB<br/><br/> An den Prozessserver werden hohe Anforderungen gestellt, daher sollte er sich auf einem ESXi-Host befinden, der die Datenträger-E/A-Vorgänge, den Netzwerkdatenverkehr und die CPU-Anforderungen für die Replikation verarbeiten kann. Contoso zieht für diesen Zweck einen dedizierten Host in Betracht. 
 **Netzwerk** | Contoso hat die aktuelle Site-to-Site-VPN-Infrastruktur überprüft und beschlossen, Azure ExpressRoute zu implementieren. Die Implementierung ist von entscheidender Bedeutung, da sie die Latenz senken und die Bandbreite bei der Verbindung mit „USA, Osten 2“ verbessern wird, der primären Azure-Region von Contoso.<br/><br/> **Überwachung:** Contoso muss die vom Prozessserver übertragenen Daten sorgfältig überwachen. Wenn die Daten die Netzwerkbandbreite überlasten, zieht Contoso eine [Drosselung der Bandbreite für den Prozessserver](../site-recovery/site-recovery-plan-capacity-vmware.md#control-network-bandwidth) in Betracht.
-**Azure Storage** | Für die Migration muss Contoso den richtigen Typ und die richtige Anzahl von Azure Storage-Zielkonten ermitteln.  Site Recovery repliziert VM-Daten in den Azure-Speicher.<br/><br/> Site Recovery kann eine Replikation in Storage-Konten vom Typ „Standard“ oder „Premium“ (SSD) ausführen.<br/><br/> Um die richtigen Entscheidungen zum Thema Speicher zu treffen, muss Contoso die [Speicherlimits](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) überprüfen und das erwartete Wachstum und die damit verbundene erhöhte Nutzung im Lauf der Zeit berücksichtigen. Angesichts des Migrationstempos und der Priorität der Migrationen hat Contoso beschlossen, Storage Premium-Konten zu verwenden.<br/><br/> Während des Migrationsprozesses werden mehrere Storage-Konten erstellt und wiederverwendet.
-Contoso hat die Entscheidung getroffen, Managed Disks für alle in Azure bereitgestellten VMs zu nutzen.  Der erforderliche IOPS-Wert bestimmt, ob es sich bei den Datenträgern um Standard-Datenträger (HDD) oder Premium-Datenträger (SSD) handeln wird.<br/>.<br/>
+**Azure Storage** | Für die Migration muss Contoso den richtigen Typ und die richtige Anzahl von Azure Storage-Zielkonten ermitteln.  Site Recovery repliziert VM-Daten in den Azure-Speicher.<br/><br/> Site Recovery kann eine Replikation in Storage-Konten vom Typ „Standard“ oder „Premium“ (SSD) ausführen.<br/><br/> Um die richtigen Entscheidungen zum Thema Speicher zu treffen, muss Contoso die [Speicherlimits](../virtual-machines/windows/disks-types.md) überprüfen und das erwartete Wachstum und die damit verbundene erhöhte Nutzung im Lauf der Zeit berücksichtigen. Angesichts des Migrationstempos und der Priorität von Migrationsvorgängen hat Contoso beschlossen, SSD Premium-Datenträger zu verwenden.<br/><br/>
+Contoso hat die Entscheidung getroffen, Managed Disks für alle in Azure bereitgestellten VMs zu nutzen.  Der erforderliche IOPS-Wert bestimmt, ob es sich bei den Datenträgern um HDD Standard-Datenträger, SSD Standard-Datenträger oder Premium-Datenträger (SSD) handelt.<br/><br/>
 
-
-#### <a name="data-migration-service"></a>Data Migration Service 
+#### <a name="data-migration-service"></a>Data Migration Service
 
 Der Azure Database Migration Service (DMS) ist ein vollständig verwalteter Dienst, der die nahtlose Migration von mehreren Datenbankquellen zu Azure-Datenplattformen mit minimalen Ausfallzeiten ermöglicht.
 

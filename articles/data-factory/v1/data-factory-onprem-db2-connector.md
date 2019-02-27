@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e190faca778f4a65a3bd4a29d05c01a89ee7e11
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816729"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311527"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Verschieben von Daten aus DB2 mithilfe der Kopieraktivität von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -72,7 +72,7 @@ Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden S
 2. Erstellen Sie DataSets zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang. 
 3. Erstellen Sie eine Pipeline mit einer Kopieraktivität, die ein DataSet als Eingabe und ein DataSet als Ausgabe akzeptiert. 
 
-Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Dienste, DataSets und die Pipeline) erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das „JSON-Beispiel: Kopieren von Daten aus DB2 in Azure Blob Storage“ zeigt die JSON-Definitionen für die Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen DB2-Datenspeicher verwendet werden.
+Wenn Sie den Kopier-Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Dienste, DataSets und die Pipeline) erstellt. Bei Verwendung von Tools oder APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format. Das JSON-Beispiel „Kopieren von Daten aus DB2 in Azure Blob Storage“ zeigt die JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einem lokalen DB2-Datenspeicher verwendet werden.
 
 Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für DB2-Datenspeicher verwendet werden.
 
@@ -116,7 +116,7 @@ Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen e
 
 Das Beispiel enthält die folgenden Data Factory-Entitäten:
 
-- Einen verknüpften DB2-Dienst vom Typ [OnPremisesDb2](data-factory-onprem-db2-connector.md#linked-service-properties)
+- Einen verknüpften DB2-Dienst vom Typ [OnPremisesDb2](data-factory-onprem-db2-connector.md)
 - Einen mit Azure Blob Storage verknüpften Dienst vom Typ [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
 - Ein Eingabe-[DataSet](data-factory-create-datasets.md) vom Typ [RelationalTable](data-factory-onprem-db2-connector.md#dataset-properties)
 - Ein [Ausgabedataset](data-factory-create-datasets.md) vom Typ [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)

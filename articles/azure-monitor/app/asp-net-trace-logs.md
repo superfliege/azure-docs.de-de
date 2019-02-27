@@ -10,17 +10,18 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 05/03/2017
+ms.date: 02/19/2019
 ms.author: mbullwin
-ms.openlocfilehash: 5c809153b3b86a5460bd2c235d9f6226fb50a024
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: f89eca6fb8893210f4c65adc42598ab0e0b531f4
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118794"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454314"
 ---
-# <a name="explore-net-trace-logs-in-application-insights"></a>Untersuchen von .NET-Ablaufverfolgungsprotokollen in Application Insights
-Wenn Sie NLog, log4Net oder „System.Diagnostics.Trace“ für die Diagnoseablaufverfolgung in Ihrer ASP.NET-Anwendung verwenden, können Sie Ihre Protokolle an [Azure Application Insights][start] senden, um sie dort zu untersuchen und zu durchsuchen. Die Protokolle werden mit den anderen Telemetriedaten aus Ihrer Anwendung zusammengeführt, damit Sie die Ablaufverfolgungen für die Verarbeitung der einzelnen Benutzeranforderungen identifizieren und mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
+# <a name="explore-netnet-core-trace-logs-in-application-insights"></a>Untersuchen von .NET/.NET Core-Ablaufverfolgungsprotokollen in Application Insights
+
+Wenn Sie ILogger, NLog, log4Net oder „System.Diagnostics.Trace “ für die Diagnoseablaufverfolgung in Ihrer ASP.NET/ASP.NET Core-Anwendung verwenden, können Sie Ihre Protokolle an [Azure Application Insights][start] senden, um sie dort zu untersuchen und zu durchsuchen. Die Protokolle werden mit den anderen Telemetriedaten aus Ihrer Anwendung zusammengeführt, damit Sie die Ablaufverfolgungen für die Verarbeitung der einzelnen Benutzeranforderungen identifizieren und mit anderen Ereignissen und Ausnahmeberichten in Beziehung setzen können.
 
 > [!NOTE]
 > Benötigen Sie das Protokollerfassungsmodul? Dabei handelt es sich um einen nützlichen Adapter für die Protokollierung von Drittanbietern. Falls Sie nicht bereits NLog, log4Net oder „System.Diagnostics.Trace“ verwenden, können Sie auch einfach direkt [Application Insights TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) aufrufen.
@@ -30,23 +31,18 @@ Wenn Sie NLog, log4Net oder „System.Diagnostics.Trace“ für die Diagnoseabla
 ## <a name="install-logging-on-your-app"></a>Installieren der Protokollierung in Ihrer App
 Installieren Sie das ausgewählte Protokollierungsframework in Ihrem Projekt. Damit sollte ein Eintrag in der Datei „app.config“ oder „web.config“ vorgenommen werden.
 
-Wenn Sie System.Diagnostics.Trace verwenden, müssen Sie einen Eintrag in „web.config“ hinzufügen:
-
 ```XML
-
     <configuration>
-     <system.diagnostics>
-       <trace autoflush="false" indentsize="4">
-         <listeners>
-           <add name="myListener"
-             type="System.Diagnostics.TextWriterTraceListener"
-             initializeData="TextWriterOutput.log" />
-           <remove name="Default" />
-         </listeners>
-       </trace>
-     </system.diagnostics>
+      <system.diagnostics>
+    <trace autoflush="true" indentsize="0">
+      <listeners>
+        <add name="myAppInsightsListener" type="Microsoft.ApplicationInsights.TraceListener.ApplicationInsightsTraceListener, Microsoft.ApplicationInsights.TraceListener" />
+      </listeners>
+    </trace>
+  </system.diagnostics>
    </configuration>
 ```
+
 ## <a name="configure-application-insights-to-collect-logs"></a>Konfigurieren von Application Insights für das Erfassen von Protokollen
 Falls Sie dies noch nicht getan haben, **[fügen Sie Ihrem Projekt Application Insights hinzu](../../azure-monitor/app/asp-net.md)**. Es wird eine Option angezeigt, mit der Sie den Log Collector einfügen können.
 
@@ -60,15 +56,28 @@ Verwenden Sie diese Methode, wenn der Projekttyp vom Application Insights-Instal
 1. Wenn Sie log4Net oder NLog verwenden möchten, installieren Sie es in Ihrem Projekt.
 2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie dann **NuGet-Pakete verwalten**aus.
 3. Suchen Sie nach "Application Insights".
-4. Wählen Sie das entsprechende Paket aus:
+4. Wählen Sie eins der folgenden Pakete aus:
 
-   * Microsoft.ApplicationInsights.TraceListener (zum Erfassen von System.Diagnostics.Trace-Aufrufen)
-   * Microsoft.ApplicationInsights.EventSourceListener (zum Erfassen von EventSource-Ereignissen)
-   * Microsoft.ApplicationInsights.EtwCollector (zum Erfassen von ETW-Ereignissen)
-   * Microsoft.ApplicationInsights.NLogTarget
-   * Microsoft.ApplicationInsights.Log4NetAppender
+   - Für ILogger: [Microsoft.Extensions.Logging.ApplicationInsights](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.Extensions.Logging.ApplicationInsights.svg)](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights/)
+   - Für NLog: [Microsoft.ApplicationInsights.NLogTarget](http://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.NLogTarget.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.NLogTarget/)
+   - Für Log4Net: [Microsoft.ApplicationInsights.Log4NetAppender](http://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.Log4NetAppender.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Log4NetAppender/)
+   - Für System.Diagnostics: [Microsoft.ApplicationInsights.TraceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.TraceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.TraceListener/)
+   - [Microsoft.ApplicationInsights.DiagnosticSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.DiagnosticSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener/)
+   - [Microsoft.ApplicationInsights.EtwCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EtwCollector.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EtwCollector/)
+   - [Microsoft.ApplicationInsights.EventSourceListener](http://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
+[![NuGet](https://img.shields.io/nuget/vpre/Microsoft.ApplicationInsights.EventSourceListener.svg)](https://www.nuget.org/packages/Microsoft.ApplicationInsights.EventSourceListener/)
 
-Das NuGet-Paket installiert die erforderlichen Assemblys und ändert auch die Datei "web.config" oder "app.config".
+Das NuGet-Paket installiert die erforderlichen Assemblys und ändert ggf. die Datei „web.config“ oder „app.config“.
+
+## <a name="ilogger"></a>ILogger
+
+Beispiele für die Verwendung der Application Insights-ILogger-Implementierung mit Konsolenanwendungen und ASP.NET Core finden Sie in [diesem Artikel](ilogger.md).
 
 ## <a name="insert-diagnostic-log-calls"></a>Einfügen von Diagnoseprotokollaufrufen
 Wenn Sie System.Diagnostics.Trace verwenden, wäre ein typischer Aufruf:
@@ -185,7 +194,7 @@ Verwenden Sie die [Java-Protokolladapter](../../azure-monitor/app/java-trace-log
 ### <a name="emptykey"></a>Eine Fehlermeldung "Instrumentationsschlüssel darf nicht leer sein" wird angezeigt.
 Anscheinend haben Sie das Protokollierungsadapter-Nuget-Paket installiert, ohne Application Insights zu installieren.
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder dem Wiederverwenden einer vorhandenen Ressource einlädt. Damit sollte das Problem behoben sein.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf `ApplicationInsights.config`. Wählen Sie dann **Application Insights aktualisieren** aus. Ein Dialogfeld wird angezeigt, das Sie zur Anmeldung bei Azure und zum Erstellen einer Application Insights-Ressource oder zum Wiederverwenden einer vorhandenen Ressource einlädt. Damit sollte das Problem behoben sein.
 
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>Ablaufverfolgungen werden in der Diagnosesuche angezeigt, aber nicht die anderen Ereignisse.
 Manchmal kann es eine Weile dauern, bis alle Ereignisse und Anforderungen über die Pipeline abgerufen werden.

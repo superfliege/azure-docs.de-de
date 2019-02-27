@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 2e35afe996ec80411d2e0e339fd4d49adecd1239
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5c45918a2cdcdd0a848e392d125849953af976ea
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857939"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445116"
 ---
 # <a name="ship-an-application"></a>Ausliefern einer Anwendung
 
@@ -47,19 +47,19 @@ Die erforderlichen Speech SDK-Dateien können im gleichen Verzeichnis wie die An
 
 ## <a name="linux"></a>Linux
 
+Das Speech SDK unterstützt derzeit die Distributionen Ubuntu 16.04 und 18.04.
 Für eine native Anwendung müssen Sie die Speech SDK-Bibliothek `libMicrosoft.CognitiveServices.Speech.core.so` ausliefern.
 Stellen Sie sicher, dass Sie die der Anwendung entsprechende Version (x86, x64) auswählen. Je nach verwendeter Linux-Version müssen Sie möglicherweise auch die folgenden Abhängigkeiten einbinden:
 
 * Freigegebene Bibliotheken der GNU C-Bibliothek (einschließlich der POSIX Threads Programming-Bibliothek `libpthreads`)
 * OpenSSL-Bibliothek (`libssl.so.1.0.0`)
-* cURL-Bibliothek (`libcurl.so.4`)
 * Freigegebene Bibliothek für ALSA-Anwendungen (`libasound.so.2`)
 
-Unter Ubuntu 16.04 oder 18.04 sollten die GNU C-Bibliotheken z.B. bereits standardmäßig installiert sein. Die letzten drei Bibliotheken können mit folgenden Befehlen installiert werden:
+Unter Ubuntu sollten die GNU C-Bibliotheken bereits standardmäßig installiert sein. Die letzten drei Bibliotheken können mit folgenden Befehlen installiert werden:
 
 ```sh
 sudo apt-get update
-sudo apt-get install libssl1.0.0 libcurl3 libasound2 wget
+sudo apt-get install libssl1.0.0 libasound2 wget
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

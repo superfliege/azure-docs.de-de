@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: dd9314b8c61a98e6bc080503bcdd6b5c6257bd49
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: b7d498b34fa3e247d5d4688f8d87213e7707fd86
+ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750561"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56408781"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Zeitreihenanalysen in Azure Data Explorer
 
@@ -224,9 +224,9 @@ demo_many_series1
 |   |   |
 | --- | --- |
 |   | Count |
-|   | 23115 |
+|   | 18339 |
 
-Jetzt erstellen wir einen Satz aus 23115 Zeitreihen der Metrik für die Anzahl von Lesevorgängen. Wir fügen die `by`-Klausel zur make-series-Anweisung hinzu, wenden lineare Regression an und wählen die beiden Zeitreihen aus, bei denen der signifikanteste Abwärtstrend zu beobachten war:
+Jetzt erstellen wir einen Satz aus 18.339 Zeitreihen der Metrik für die Anzahl von Lesevorgängen. Wir fügen die `by`-Klausel zur make-series-Anweisung hinzu, wenden lineare Regression an und wählen die beiden Zeitreihen aus, bei denen der signifikanteste Abwärtstrend zu beobachten war:
 
 ```kusto
 let min_t = toscalar(demo_many_series1 | summarize min(TIMESTAMP));  
@@ -235,7 +235,7 @@ demo_many_series1
 | make-series reads=avg(DataRead) on TIMESTAMP in range(min_t, max_t, 1h) by Loc, Op, DB
 | extend (rsquare, slope) = series_fit_line(reads)
 | top 2 by slope asc 
-| render timechart with(title='Service Traffic Outage for 2 instances (out of 23115)')
+| render timechart with(title='Service Traffic Outage for 2 instances (out of 18339)')
 ```
 
 ![Die Top 2 der Zeitreihen](media/time-series-analysis/time-series-top-2.png)
@@ -258,6 +258,6 @@ demo_many_series1
 |   | Loc 15 | 37 | 1151 | -102743.910227889 |
 |   | Loc 13 | 37 | 1249 | -86303.2334644601 |
 
-In weniger als zwei Minuten hat Azure Data Explorer 20.000 Zeitreihen analysiert und zwei anomale Zeitreihen erkannt, in denen die Anzahl von Lesevorgängen plötzlich sehr stark gesunken ist.
+In weniger als zwei Minuten hat Azure Data Explorer fast 20.000 Zeitreihen analysiert und zwei anomale Zeitreihen erkannt, in denen die Anzahl von Lesevorgängen plötzlich sehr stark gesunken ist.
 
 Diese erweiterte Funktionalität und die hohe Verarbeitungsgeschwindigkeit von Azure Data Explorer sorgen für eine einzigartige, leistungsstarke Lösung für die Analyse von Zeitreihen.

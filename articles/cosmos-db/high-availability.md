@@ -4,15 +4,15 @@ description: Dieser Artikel beschreibt, wie Azure Cosmos DB Hochverfügbarkeit b
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/15/2018
+ms.date: 2/13/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: fc818d2d7db60a8def99c2ad635580253dc795e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: b5e99b421e66f087a1793f5301736e192ef75c08
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109757"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56311238"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>Hochverfügbarkeit mit Azure Cosmos DB
 
@@ -64,19 +64,7 @@ Regionale Ausfälle sind keine Seltenheit. Deswegen stellt Azure Cosmos DB siche
 
 - Selbst wenn Ihr Cosmos-Konto hochverfügbar ist, ist Ihre Anwendung möglicherweise nicht richtig dafür konzipiert, hochverfügbar zu bleiben. Um die End-to-End-Hochverfügbarkeit für Ihre Anwendung zu testen, rufen Sie im Rahmen Ihrer Anwendungs- oder Notfallwiederherstellungstests regelmäßig über die [Azure-Befehlszeilenschnittstelle oder das Azure-Portal „Manuelles Failover“](how-to-manage-database-account.md#manual-failover) auf.
 
-
-Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet.
-
-Die folgende Tabelle zeigt die RPO- und RTO-Wert für die häufigsten Szenarien.
-
-|Anzahl der Regionen |Konfiguration |Konsistenzebene|RPO |RTO |
-|---------|---------|---------|-------|-------|
-|1    | *    |*   | < 240 Minuten | < 1 Woche |
-|> 1     | Einzelmasterreplikation | Sitzung, Präfixkonsistenz, Letztlich | < 15 Minuten | < 15 Minuten |
-|> 1     | Einzelmasterreplikation | Begrenzte Veraltung (Bounded staleness) | K & T | < 15 Minuten |
-|> 1     | Multimasterreplikation | Sitzung, Präfixkonsistenz, Letztlich | < 15 Minuten | 0 |
-|> 1     | Multimasterreplikation | Begrenzte Veraltung (Bounded staleness) | K & T | 0 |
-|> 1     | * | STARK (Strong) | 0 | < 15 Minuten |
+- Bei einer global verteilten Datenbankumgebung besteht eine direkte Beziehung zwischen der Konsistenzebene und der Datendauerhaftigkeit bei einem Ausfall in der gesamten Region. Wenn Sie Ihren Plan für die Geschäftskontinuität entwickeln, müssen Sie wissen, wie viel Zeit maximal vergehen darf, bis die Anwendung nach einer Störung vollständig wiederhergestellt ist. Die Zeit, die für die vollständige Wiederherstellung einer Anwendung erforderlich ist, wird als RTO (Recovery Time Objective) bezeichnet. Sie müssen auch wissen, über welchen Zeitraum kürzlich durchgeführte Datenupdates maximal verloren gehen dürfen, wenn die Anwendung nach einer Störung wiederhergestellt wird. Der Zeitraum der Updates, der verloren gehen darf, wird als RPO (Recovery Point Objective) bezeichnet. Informationen zum Anzeigen von RPO und RTO für Azure Cosmos DB finden Sie unter [Kompromisse in Bezug auf Konsistenz, Verfügbarkeit und Leistung](consistency-levels-tradeoffs.md#rto).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

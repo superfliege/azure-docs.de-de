@@ -1,6 +1,6 @@
 ---
-title: Benutzerdefinierte Rollen in Azure | Microsoft-Dokumentation
-description: Informationen zum Definieren benutzerdefinierter Rollen in der rollenbasierten Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) für die präzise Verwaltung des Zugriffs auf Ressourcen in Azure.
+title: Benutzerdefinierte Rollen für Azure-Ressourcen | Microsoft-Dokumentation
+description: Informationen zum Erstellen benutzerdefinierter Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für die präzise Verwaltung des Zugriffs auf Azure-Ressourcen
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8d2e3dc989a44de0c7c091dfbe1254a0e204faae
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 6307c57f32700c0c2dd2e5da15b98a2a54dbe9c4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697128"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339327"
 ---
-# <a name="custom-roles-in-azure"></a>Benutzerdefinierte Rollen in Azure
+# <a name="custom-roles-for-azure-resources"></a>Benutzerdefinierte Rollen für Azure-Ressourcen
 
-Wenn die [integrierten Rollen](built-in-roles.md) den Anforderungen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Verzeichnis (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Jedes Verzeichnis kann bis zu 2.000 benutzerdefinierte Rollen enthalten. Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
+Wenn die integrierten Rollen für Azure-Ressourcen den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen [benutzerdefinierten Rollen](built-in-roles.md) erstellen. Genau wie integrierte Rollen können auch benutzerdefinierte Rollen Benutzern, Gruppen und Dienstprinzipalen auf Abonnement-, Ressourcengruppen- und Ressourcenebene zugewiesen werden. Benutzerdefinierte Rollen werden in einem Azure AD-Verzeichnis (Azure Active Directory) gespeichert und können für mehrere Abonnements genutzt werden. Jedes Verzeichnis kann bis zu 2.000 benutzerdefinierte Rollen enthalten. Benutzerdefinierte Rollen können mit Azure PowerShell, der Azure CLI oder der REST-API erstellt werden.
 
 ## <a name="custom-role-example"></a>Beispiel einer benutzerdefinierten Rolle
 
@@ -107,7 +107,7 @@ Wie integrierte Rollen legt die `AssignableScopes`-Eigenschaft die Bereiche fest
 | Anzeigen einer benutzerdefinierten Rolle | `Microsoft.Authorization/ roleDefinition/read` | Benutzer, die in einem Bereich zu diesem Vorgang berechtigt sind, können die benutzerdefinierten Rollen anzeigen, die für die Zuweisung in diesem Bereich verfügbar sind. Benutzerdefinierte Rollen können bei allen integrierten Rollen für die Zuweisung verfügbar sein. |
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Erstellen benutzerdefinierter Rollen mit Azure PowerShell](custom-roles-powershell.md)
-- [Erstellen benutzerdefinierter Rollen mithilfe der Azure CLI](custom-roles-cli.md)
-- [Grundlegendes zu Rollendefinitionen](role-definitions.md)
-- [Beheben von RBAC-Fehlern in Azure](troubleshooting.md)
+- [Erstellen benutzerdefinierter Rollen für Azure-Ressourcen mithilfe von Azure PowerShell](custom-roles-powershell.md)
+- [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der Azure CLI](custom-roles-cli.md)
+- [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)
+- [Problembehandlung von RBAC für Azure-Ressourcen](troubleshooting.md)

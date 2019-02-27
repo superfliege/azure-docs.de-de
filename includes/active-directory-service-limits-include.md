@@ -5,15 +5,15 @@ services: active-directory
 author: curtand
 ms.service: active-directory
 ms.topic: include
-ms.date: 11/06/2018
+ms.date: 02/19/2019
 ms.author: curtand
 ms.custom: include file
-ms.openlocfilehash: 104b4653e1be55c84182571a1e7f333d39f1639f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 619dd7f3b01e2e7ce71e945fce77aa73cb87f264
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51264180"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56443375"
 ---
 Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für den Azure Active Directory-Dienst (Azure AD).
 
@@ -28,3 +28,4 @@ Nachstehend finden Sie die Verwendungs- und andere Diensteinschränkungen für d
 | Anpassung des Zugriffsbereichs |<ul><li>Für Benutzer mit Lizenzen für Azure AD Premium oder Enterprise Mobility Suite gibt es keine Beschränkung der Anzahl von Anwendungen, die pro Endbenutzer im Zugriffsbereich angezeigt werden.</li><li>Für Benutzer mit Lizenzen für die Edition „Free“ oder „Azure AD Basic“ von Azure Active Directory werden maximal zehn App-Kacheln (z.B. „Box“, „Salesforce“ oder „Dropbox“) im Zugriffsbereich angezeigt. Diese Beschränkung gilt nicht für Administratorkonten.</li></ul> |
 | Berichte | In einem Bericht können maximal 1.000 Zeilen angezeigt oder heruntergeladen werden. Weitere Daten werden abgeschnitten. |
 | Verwaltungseinheiten | Ein Objekt kann höchstens 30 Verwaltungseinheiten angehören. |
+| Administratorrollen und -berechtigungen | <li>Eine Gruppe kann nicht als Besitzer hinzugefügt werden.<li>Eine Gruppe kann nicht zu einer Rolle zugewiesen werden.<li>Standardbenutzerberechtigungen können nicht über Mandantenswitches hinaus geändert werden (Benutzereinstellungen in Azure AD). |

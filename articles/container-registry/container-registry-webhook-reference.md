@@ -7,16 +7,16 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: danlep
-ms.openlocfilehash: 8bae44215cdc17e9f1617c909ef197f2757fc114
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 42790905509e2ea8bbba87587ed01b1929221db5
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48857753"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329318"
 ---
 # <a name="azure-container-registry-webhook-reference"></a>Referenz zu Azure Container Registry-Webhooks
 
-Sie können für Ihre Containerregistrierung [Webhooks konfigurieren](container-registry-webhook.md), die Ereignisse generieren, wenn dafür bestimmte Aktionen durchgeführt werden. Beispielsweise können Sie Webhooks aktivieren, die bei den Vorgängen `push` und `delete` für Containerimages ausgelöst werden. Wenn ein Webhook ausgelöst wird, sendet Azure Container Registry eine HTTP- oder HTTPS-Anforderung mit Informationen zum Ereignis an einen von Ihnen angegebenen Endpunkt. Ihr Endpunkt kann den Webhook dann verarbeiten und entsprechend agieren.
+Sie können für Ihre Containerregistrierung [Webhooks konfigurieren](container-registry-webhook.md), die Ereignisse generieren, wenn dafür bestimmte Aktionen durchgeführt werden. Aktivieren Sie beispielsweise Webhooks, die bei den Vorgängen `push` und `delete` für Containerimages ausgelöst werden. Wenn ein Webhook ausgelöst wird, sendet Azure Container Registry eine HTTP- oder HTTPS-Anforderung mit Informationen zum Ereignis an einen von Ihnen angegebenen Endpunkt. Ihr Endpunkt kann den Webhook dann verarbeiten und entsprechend agieren.
 
 In den folgenden Abschnitten wird das Schema von Webhookanforderungen, die von unterstützten Ereignissen generiert werden, ausführlich beschrieben. Die Ereignisabschnitte enthalten das Nutzlastschema für den Ereignistyp, eine Beispiel-Anforderungsnutzlast und mindestens einen Beispielbefehl zum Auslösen des Webhooks.
 
@@ -40,17 +40,17 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="push-event-payload"></a>Nutzlast des Push-Ereignisses
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
-|`timestamp`|Datetime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
+|`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
 |`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="target"></a>Ziel
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`size`|Int32|Die Byte-Anzahl des Inhalts. Entspricht dem Feld „Length“ (Länge).|
@@ -61,7 +61,7 @@ Auslösung per Webhook, wenn ein Containerimage per Pushvorgang in ein Repositor
 
 ### <a name="request"></a>request
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
 |`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
@@ -104,17 +104,17 @@ Wird per Webhook ausgelöst, wenn ein Repository oder Manifest gelöscht wird. W
 
 ### <a name="delete-event-payload"></a>Ereignisnutzlast löschen
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |-------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID des Webhookereignisses.|
-|`timestamp`|Datetime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
+|`timestamp`|DateTime|Der Zeitpunkt, zu dem das Webhookereignis ausgelöst wurde.|
 |`action`|Zeichenfolge|Die Aktion, die das Webhookereignis ausgelöst hat.|
 |[Ziel](#delete_target)|Komplexer Typ|Das Ziel des Ereignisses, von dem das Webhookereignis ausgelöst wurde.|
 |[Anforderung](#delete_request)|Komplexer Typ|Die Anforderung, die das Webhookereignis generiert hat.|
 
 ### <a name="delete_target"></a> Ziel
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`mediaType`|Zeichenfolge|Der MIME-Typ des Objekts, auf das verwiesen wird.|
 |`digest`|Zeichenfolge|Zusammenfassung des Inhalts gemäß Definition in der HTTP-API-Spezifikation der Registrierung (V2).|
@@ -122,7 +122,7 @@ Wird per Webhook ausgelöst, wenn ein Repository oder Manifest gelöscht wird. W
 
 ### <a name="delete_request"></a> Anforderung
 
-|Element|Typ|BESCHREIBUNG|
+|Element|Type|BESCHREIBUNG|
 |------------------|----------|-----------|
 |`id`|Zeichenfolge|Die ID der Anforderung, die das Ereignis initiiert hat.|
 |`host`|Zeichenfolge|Der extern zugängliche Hostname der Registrierungsinstanz, der im HTTP-Hostheader von eingehenden Anforderungen angegeben ist.|
@@ -154,10 +154,10 @@ Beispiel: Befehle der [Azure-Befehlszeilenschnittstelle](/cli/azure/acr), mit de
 
 ```azurecli
 # Delete repository
-az acr repository delete -n MyRegistry --repository MyRepository
+az acr repository delete --name MyRegistry --repository MyRepository
 
-# Delete manifest
-az acr repository delete -n MyRegistry --repository MyRepository --tag MyTag --manifest
+# Delete image
+az acr repository delete --name MyRegistry --image MyRepository:MyTag
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

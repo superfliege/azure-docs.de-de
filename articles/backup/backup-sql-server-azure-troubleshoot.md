@@ -1,26 +1,19 @@
 ---
-title: Anleitung für die Azure Backup-Problembehandlung für SQL Server-VMs | Microsoft-Dokumentation
-description: Informationen zur Problembehandlung zum Sichern von SQL Server-VMs in Azure.
+title: Problembehandlung für die SQL Server-Datenbanksicherung mit Azure Backup | Microsoft-Dokumentation
+description: Informationen zur Problembehandlung beim Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern mit Azure Backup
 services: backup
-documentationcenter: ''
-author: rayne-wiselman
-manager: carmonm
-editor: ''
-keywords: ''
-ms.assetid: ''
+author: anuragm
+manager: shivamg
 ms.service: backup
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 02/19/2019
 ms.author: anuragm
-ms.custom: ''
-ms.openlocfilehash: 0d910269a16223c610e4606cdd6660cc5d43947f
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0beb65d6ef7c036c8a294f53eeb3db327457ea84
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55296120"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428618"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>Problembehandlung zum Sichern von SQL Server in Azure
 
@@ -28,11 +21,11 @@ Dieser Artikel enthält Informationen zur Problembehandlung zum Schutz von SQL S
 
 ## <a name="public-preview-limitations"></a>Einschränkungen der Public Preview
 
-Informationen zum Anzeigen der Einschränkungen der öffentlichen Vorschau finden im Artikel [Sichern einer SQL Server-Datenbank in Azure](backup-azure-sql-database.md#public-preview-limitations).
+Informationen zum Anzeigen der Einschränkungen der öffentlichen Vorschau finden im Artikel [Sichern einer SQL Server-Datenbank in Azure](backup-azure-sql-database.md#preview-limitations).
 
 ## <a name="sql-server-permissions"></a>SQL Server-Berechtigungen
 
-Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, muss auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installiert sein. Wenn die Fehlermeldung **UserErrorSQLNoSysadminMembership** angezeigt wird, bedeutet das, dass Ihre SQL-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) aus.
+Zum Konfigurieren des Schutzes für eine SQL Server-Datenbank auf einem virtuellen Computer, muss auf diesem virtuellen Computer die Erweiterung **AzureBackupWindowsWorkload** installiert sein. Wenn die Fehlermeldung **UserErrorSQLNoSysadminMembership** angezeigt wird, bedeutet das, dass Ihre SQL-Instanz nicht über die erforderlichen Berechtigungen für die Sicherung verfügt. Um diesen Fehler zu beheben, führen Sie die Schritte in [Festlegen von Berechtigungen für Nicht-Marketplace-SQL-VMs](backup-azure-sql-database.md#fix-sql-sysadmin-permissions) aus.
 
 ## <a name="troubleshooting-errors"></a>Fehler bei der Problembehandlung
 
@@ -56,13 +49,13 @@ In den folgenden Tabellen sind nach Fehlercode geordnet.
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
 | Diese SQL-Datenbank unterstützt nicht den angeforderten Sicherungstyp. | Tritt auf, wenn das Wiederherstellungsmodell der Datenbank den angeforderten Sicherungstyp nicht zulässt. Der Fehler kann in den folgenden Situationen auftreten: <br/><ul><li>Eine Datenbank, die ein einfaches Wiederherstellungsmodell verwendet, lässt keine Protokollsicherung zu.</li><li>Die differenzielle Sicherung und die Protokollsicherung sind für eine Masterdatenbank nicht zulässig.</li></ul>Weitere Einzelheiten finden Sie in der Dokumentation [Wiederherstellungsmodelle (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server). | Wenn bei der Protokollsicherung für die DB im einfachen Wiederherstellungsmodell ein Fehler auftritt, probieren Sie eine der folgenden Optionen aus:<ul><li>Wenn sich die Datenbank im einfachen Wiederherstellungsmodus befindet, deaktivieren Sie die Protokollsicherungen.</li><li>Verwenden Sie [Anzeigen oder Ändern des Wiederherstellungsmodells einer Datenbank (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server), um das Wiederherstellungsmodell für die Datenbank in „Vollständig“ oder „Massenprotokolliert“ zu ändern. </li><li> Wenn Sie das Wiederherstellungsmodell nicht ändern möchten und bei der Sicherung mehrerer Datenbanken mit einer Standardrichtlinie arbeiten, die nicht geändert werden kann, ignorieren Sie den Fehler. Die vollständigen und differenziellen Sicherungen werden gemäß Zeitplan ausgeführt. Die Protokollsicherungen werden übersprungen, was in diesem Fall erwartet wird.</li></ul>Wird es sich jedoch um eine Masterdatenbank handelt, und Sie differenzielle Sicherungen oder Protokollsicherungen konfiguriert haben, verwenden Sie einen der folgenden Schritte:<ul><li>Verwenden Sie das Portal, um den Sicherungsrichtlinienzeitplan für die Masterdatenbank in „Vollständig“ zu ändern.</li><li>Wenn Sie bei der Sicherung mehrerer Datenbanken mit einer Standardrichtlinie arbeiten, die nicht geändert werden kann, ignorieren Sie den Fehler. Die vollständige Sicherung wird gemäß Zeitplan ausgeführt. Differenzielle Sicherungen oder Protokollsicherungen werden nicht ausgeführt, was in diesem Fall erwartet wird.</li></ul> |
-| Der Vorgang wurde abgebrochen, da auf der gleichen Datenbank bereits ein widersprüchlicher Vorgang ausgeführt wurde. | Weitere Informationen finden Sie im [Blogeintrag zum Sichern und Wiederherstellen von Einschränkungen](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database), die gleichzeitig ausgeführt werden.| [Verwenden Sie SQL Server Management Studio (SSMS) zum Überwachen von Sicherungsaufträgen.](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms) Nachdem bei dem widersprüchlichen Vorgang ein Fehler aufgetreten ist, wiederholen Sie den Vorgang.|
+| Der Vorgang wurde abgebrochen, da auf der gleichen Datenbank bereits ein widersprüchlicher Vorgang ausgeführt wurde. | Weitere Informationen finden Sie im [Blogeintrag zum Sichern und Wiederherstellen von Einschränkungen](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database), die gleichzeitig ausgeführt werden.| [Verwenden Sie SQL Server Management Studio (SSMS) zum Überwachen von Sicherungsaufträgen.](manage-monitor-sql-database-backup.md) Nachdem bei dem widersprüchlichen Vorgang ein Fehler aufgetreten ist, wiederholen Sie den Vorgang.|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
 | Fehlermeldung | Mögliche Ursachen | Empfohlene Maßnahme |
 |---|---|---|
-| Die SQL-Datenbank ist nicht vorhanden. | Die Datenbank wurde entweder gelöscht oder umbenannt. | <ul><li>Überprüfen Sie, ob die Datenbank versehentlich gelöscht oder umbenannt wurde.</li><li>Wenn die Datenbank versehentlich gelöscht wurde, stellen Sie sie am ursprünglichen Speicherort wieder her, um weiter Sicherungen anzulegen.</li><li>Wenn Sie die Datenbank gelöscht haben und zukünftig keine weiteren Sicherungen benötigen, klicken Sie im Recovery Services-Tresor auf [Sicherung beenden mit „Daten löschen/beibehalten“](backup-azure-sql-database.md#manage-azure-backup-operations-for-sql-on-azure-vms).</li>|
+| Die SQL-Datenbank ist nicht vorhanden. | Die Datenbank wurde entweder gelöscht oder umbenannt. | Überprüfen Sie, ob die Datenbank versehentlich gelöscht oder umbenannt wurde.<br/><br/> Wenn die Datenbank versehentlich gelöscht wurde, stellen Sie sie am ursprünglichen Speicherort wieder her, um weiter Sicherungen anzulegen.<br/><br/> Wenn Sie die Datenbank gelöscht haben und zukünftig keine weiteren Sicherungen benötigen, klicken Sie im Recovery Services-Tresor auf [Sicherung beenden mit „Daten löschen/beibehalten“](manage-monitor-sql-database-backup.md).
 
 ### <a name="usererrorsqllsnvalidationfailure"></a>UserErrorSQLLSNValidationFailure
 

@@ -7,14 +7,14 @@ ms.author: heidist
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 02/14/2019
 ms.custom: seodec2018
-ms.openlocfilehash: 62f9d24204e734b7b5e2ed97f361ccf228ba89dc
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 5cddf69f700c971d22384dadb00d3becc4a8385f
+ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005045"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56300874"
 ---
 # <a name="how-to-compose-a-query-in-azure-search"></a>Erstellen einer Abfrage in Azure Search
 
@@ -22,14 +22,14 @@ In Azure Search ist eine Abfrage eine vollständige Spezifikation eines Roundtri
 
 Eine Abfrageanforderung ist ein komplexes Konstrukt, mit dem Sie angeben können, welche Felder im Bereich liegen, wie die Suche durchgeführt wird, welche Felder zurückgegeben werden sollen, ob eine Filterung oder Sortierung angewendet wird usw. Wenn keine Angaben vorhanden sind, wird eine Abfrage für alle durchsuchbaren Felder als Volltextsuchvorgang ausgeführt, und es wird ein Resultset ohne Bewertungen in willkürlicher Reihenfolge zurückgegeben.
 
-### <a name="apis-and-tools-for-testing"></a>APIs und Tools zum Testen
+## <a name="apis-and-tools-for-testing"></a>APIs und Tools zum Testen
 
 In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitteln von Abfragen aufgeführt.
 
 | Methodik | BESCHREIBUNG |
 |-------------|-------------|
 | [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
-| [Postman oder anderes HTTP-Testtool](search-fiddler.md) | Es wird beschrieben, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Abfragen an Azure Search einrichten.  |
+| [Postman oder Fiddler](search-fiddler.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in Azure Search. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an Azure Search einrichten.  |
 | [SearchIndexClient (.NET)](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchindexclient?view=azure-dotnet) | Client, der zum Abfragen eines Azure Search-Index verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md#core-scenarios)  |
 | [Search Documents (REST API)](https://docs.microsoft.com/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
 
@@ -76,7 +76,7 @@ Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein 
 Der obige Screenshot zeigt eine unvollständige Liste der Indexattribute für das „realestate“-Beispiel. Das gesamte Indexschema können Sie im Portal anzeigen. Weitere Informationen zu Indexattributen finden Sie unter [Create Index REST API](https://docs.microsoft.com/rest/api/searchservice/create-index) (REST-API zum Erstellen von Indizes).
 
 > [!Note]
-> Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](https://docs.microsoft.com/rest/api/searchservice/synonym-map-operations), [benutzerdefinierte Analysetools](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search), [Vorschlagskonstrukte (für AutoVervollständigen und Vorschlagssuche)](https://docs.microsoft.com/rest/api/searchservice/suggesters) sowie die [Bewertungslogik für Ergebnisse](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index).
+> Einige Abfragefunktionen werden für den gesamten Index und nicht nur für einzelne Felder aktiviert. Zu diesen Funktionen zählen [Synonymzuordnungen](search-synonyms.md), [benutzerdefinierte Analysetools](index-add-custom-analyzers.md), [Vorschlagskonstrukte (für AutoVervollständigen und Vorschlagssuche)](index-add-suggesters.md) sowie die [Bewertungslogik für Ergebnisse](index-add-scoring-profiles.md).
 
 ## <a name="elements-of-a-query-request"></a>Elemente einer Abfrageanforderung
 
@@ -94,9 +94,9 @@ Alle anderen Suchparameter sind optional. Die vollständige Liste der Attribute 
 
 ## <a name="choose-a-parser-simple--full"></a>Auswählen eines Parsers: einfach | vollständig
 
-Azure Search basiert auf Apache Lucene und ermöglicht Ihnen die Wahl zwischen zwei Abfrageparsern zur Verarbeitung von typischen und spezialisierten Abfragen. Anforderungen mit dem einfachen Parser werden mit der [einfachen Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search) formuliert. Dieser Parser ist aufgrund seiner Geschwindigkeit und Effizienz bei Freitextabfragen standardmäßig ausgewählt. Diese Syntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z.B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
+Azure Search basiert auf Apache Lucene und ermöglicht Ihnen die Wahl zwischen zwei Abfrageparsern zur Verarbeitung von typischen und spezialisierten Abfragen. Anforderungen mit dem einfachen Parser werden mit der [einfachen Abfragesyntax](query-simple-syntax.md) formuliert. Dieser Parser ist aufgrund seiner Geschwindigkeit und Effizienz bei Freitextabfragen standardmäßig ausgewählt. Diese Syntax unterstützt eine Reihe von allgemeinen Suchoperatoren, z.B. AND, OR, NOT, Begriff, Suffix und Rangfolgeoperatoren.
 
-Die vollständige [Lucene-Abfragesyntax](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_syntax) wird aktiviert, wenn Sie der Anforderung `queryType=full` hinzufügen. So wird die häufig genutzte und ausdrucksstarke Abfragesprache verfügbar gemacht, die im Rahmen von [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) entwickelt wurde. Die vollständige Syntax erweitert die einfache Syntax. Jede Abfrage, die Sie für die einfache Syntax schreiben, kann mit dem vollständigen Lucene-Parser ausgeführt werden. 
+Die vollständige [Lucene-Abfragesyntax](query-Lucene-syntax.md#bkmk_syntax) wird aktiviert, wenn Sie der Anforderung `queryType=full` hinzufügen. So wird die häufig genutzte und ausdrucksstarke Abfragesprache verfügbar gemacht, die im Rahmen von [Apache Lucene](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html) entwickelt wurde. Die vollständige Syntax erweitert die einfache Syntax. Jede Abfrage, die Sie für die einfache Syntax schreiben, kann mit dem vollständigen Lucene-Parser ausgeführt werden. 
 
 Die folgenden Beispiele veranschaulichen den entscheidenden Punkt: Die gleiche Abfrage liefert bei der Verwendung unterschiedlicher queryType-Einstellungen verschiedene Ergebnisse. In der ersten Abfrage wird `^3` als Teil des Suchbegriffs behandelt.
 
@@ -118,16 +118,16 @@ Azure Search unterstützt eine breite Palette von Abfragetypen.
 
 | Abfragetyp | Verwendung | Beispiele und weitere Informationen |
 |------------|--------|-------------------------------|
-| Freitextsuche | Suchparameter und einer der beiden Parser| Die Volltextsuche sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern im Index. Sie funktioniert so, wie Sie es von einer Suchmaschine wie Google oder Bing erwarten. Bei dem Beispiel in der Einführung handelt es sich um eine Volltextsuche.<br/><br/>Die Volltextsuche durchläuft (standardmäßig) eine Textanalyse mit dem Lucene-Standardanalysetool, um alle Begriffe in Kleinbuchstaben umzuwandeln und Stoppwörter wie „das“ zu entfernen. Sie können die Standardeinstellung außer Kraft setzen und durch [nicht englischsprachige Analysetools](https://docs.microsoft.com/rest/api/searchservice/language-support#analyzer-list) oder [spezielle Analysetools](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable) überschreiben, die die Textanalyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. | 
-| Gefilterte Suche | [OData-Filterausdruck](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) und einer der beiden Parser | Filterabfragen werten einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Im Gegensatz zu einer Suche wird bei einer Filterabfrage der genaue Inhalt eines Felds abgeglichen, einschließlich Unterscheidung nach Groß-/Kleinschreibung bei Zeichenfolgenfeldern. Ein weiterer Unterschied ist, dass Filterabfragen in der OData-Syntax ausgedrückt werden. <br/>[Beispiel für einen Filterausdruck](search-query-simple-examples.md#example-3-filter-queries) |
+| Freitextsuche | Suchparameter und einer der beiden Parser| Die Volltextsuche sucht nach einem oder mehreren Begriffen in allen *durchsuchbaren* Feldern im Index. Sie funktioniert so, wie Sie es von einer Suchmaschine wie Google oder Bing erwarten. Bei dem Beispiel in der Einführung handelt es sich um eine Volltextsuche.<br/><br/>Die Volltextsuche durchläuft (standardmäßig) eine Textanalyse mit dem Lucene-Standardanalysetool, um alle Begriffe in Kleinbuchstaben umzuwandeln und Stoppwörter wie „das“ zu entfernen. Sie können die Standardeinstellung außer Kraft setzen und durch [nicht englischsprachige Analysetools](index-add-language-analyzers.md#language-analyzer-list) oder [spezielle sprachunabhängig Analysetools](index-add-custom-analyzers.md#AnalyzerTable) überschreiben, die die Textanalyse ändern. Ein Beispiel hierfür ist ein [Schlüsselwort](https://lucene.apache.org/core/4_10_3/analyzers-common/org/apache/lucene/analysis/core/KeywordAnalyzer.html), durch das der gesamte Inhalt eines Felds als ein einzelnes Token behandelt wird. Dies ist nützlich für Daten wie Postleitzahlen, IDs und einige Produktnamen. | 
+| Gefilterte Suche | [OData-Filterausdruck](query-odata-filter-orderby-syntax.md) und einer der beiden Parser | Filterabfragen werten einen booleschen Ausdruck für alle *filterbaren* Felder in einem Index aus. Im Gegensatz zu einer Suche wird bei einer Filterabfrage der genaue Inhalt eines Felds abgeglichen, einschließlich Unterscheidung nach Groß-/Kleinschreibung bei Zeichenfolgenfeldern. Ein weiterer Unterschied ist, dass Filterabfragen in der OData-Syntax ausgedrückt werden. <br/>[Beispiel für einen Filterausdruck](search-query-simple-examples.md#example-3-filter-queries) |
 | Geografische Suche | [Typ „Edm.GeographyPoint“](https://docs.microsoft.com/rest/api/searchservice/supported-data-types) für das Feld, Filterausdruck und einer der beiden Parser | In einem Feld mit dem Typ „Edm.GeographyPoint“ gespeicherte Koordinaten werden für Steuerelemente zur Umgebungssuche oder kartenbasierten Suche verwendet. <br/>[Beispiel für die geografische Suche](search-query-simple-examples.md#example-5-geo-search)|
 | Bereichssuche | Filterausdruck und einfacher Parser | In Azure Search werden Bereichsabfragen anhand des Filterparameters erstellt. <br/>[Beispiel für den Bereichsfilter](search-query-simple-examples.md#example-4-range-filters) | 
-| [Filterung in einem Feld](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fields) | Suchparameter und vollständiger Parser | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die Filterung in einem Feld](search-query-lucene-examples.md#example-2-intra-field-filtering) |
-| [Fuzzysuche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_fuzzy) | Suchparameter und vollständiger Parser | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-3-fuzzy-search) |
-| [NEAR-Suche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_proximity) | Suchparameter und vollständiger Parser | Sucht nach Begriffen, die in einem Dokument nahe beieinander vorkommen. <br/>[Beispiel für die NEAR-Suche](search-query-lucene-examples.md#example-4-proximity-search) |
-| [Term Boosting](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_termboost) | Suchparameter und vollständiger Parser | Weist einem Dokument, das den verstärkten Begriff enthält, im Vergleich zu anderen Dokumenten, bei denen dies nicht der Fall ist, einen höheren Rang zu. <br/>[Beispiele für die Begriffsverstärkung (Term Boosting)](search-query-lucene-examples.md#example-5-term-boosting) |
-| [Suche mit regulären Ausdrücken](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_regex) | Suchparameter und vollständiger Parser | Sucht basierend auf dem Inhalt eines regulären Ausdrucks nach Übereinstimmungen. <br/>[Beispiel für einen regulären Ausdruck](search-query-lucene-examples.md#example-6-regex) |
-|  [Platzhalter- oder Präfixsuche](https://docs.microsoft.com/rest/api/searchservice/Lucene-query-syntax-in-Azure-Search#bkmk_wildcard) | Suchparameter und vollständiger Parser | Sucht basierend auf einem Präfix und dem Tildezeichen (`~`) oder einem einzelnen Zeichen (`?`) nach Übereinstimmungen. <br/>[Beispiel für die Platzhaltersuche](search-query-lucene-examples.md#example-7-wildcard-search) |
+| [Filterung in einem Feld](query-lucene-syntax.md#bkmk_fields) | Suchparameter und vollständiger Parser | Erstellen Sie einen zusammengesetzten Abfrageausdruck für ein einzelnes Feld. <br/>[Beispiel für die Filterung in einem Feld](search-query-lucene-examples.md#example-2-intra-field-filtering) |
+| [Fuzzysuche](query-lucene-syntax.md#bkmk_fuzzy) | Suchparameter und vollständiger Parser | Sucht nach Begriffen mit ähnlichem Aufbau oder ähnlicher Rechtschreibung. <br/>[Beispiel für die Fuzzysuche](search-query-lucene-examples.md#example-3-fuzzy-search) |
+| [NEAR-Suche](query-lucene-syntax.md#bkmk_proximity) | Suchparameter und vollständiger Parser | Sucht nach Begriffen, die in einem Dokument nahe beieinander vorkommen. <br/>[Beispiel für die NEAR-Suche](search-query-lucene-examples.md#example-4-proximity-search) |
+| [Term Boosting](query-lucene-syntax.md#bkmk_termboost) | Suchparameter und vollständiger Parser | Weist einem Dokument, das den verstärkten Begriff enthält, im Vergleich zu anderen Dokumenten, bei denen dies nicht der Fall ist, einen höheren Rang zu. <br/>[Beispiele für die Begriffsverstärkung (Term Boosting)](search-query-lucene-examples.md#example-5-term-boosting) |
+| [Suche mit regulären Ausdrücken](query-lucene-syntax.md#bkmk_regex) | Suchparameter und vollständiger Parser | Sucht basierend auf dem Inhalt eines regulären Ausdrucks nach Übereinstimmungen. <br/>[Beispiel für einen regulären Ausdruck](search-query-lucene-examples.md#example-6-regex) |
+|  [Platzhalter- oder Präfixsuche](query-lucene-syntax.md#bkmk_wildcard) | Suchparameter und vollständiger Parser | Sucht basierend auf einem Präfix und dem Tildezeichen (`~`) oder einem einzelnen Zeichen (`?`) nach Übereinstimmungen. <br/>[Beispiel für die Platzhaltersuche](search-query-lucene-examples.md#example-7-wildcard-search) |
 
 ## <a name="manage-search-results"></a>Verarbeiten von Suchergebnissen 
 
@@ -156,7 +156,7 @@ Weitere Informationen zum Paging von Suchergebnissen finden Sie im Artikel [Anor
 ### <a name="ordering-results"></a>Sortieren von Ergebnissen
 Wenn Sie Ergebnisse für eine Suchabfrage erhalten, können Sie anfordern, dass Azure Search die Ergebnisse sortiert nach den Werten in einem bestimmten Feld bereitstellt. Azure Search sortiert die Suchergebnisse standardmäßig basierend auf der Rangfolge der Suchbewertung eines Dokuments, die von [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)abgeleitet wird.
 
-Falls Azure Search die Ergebnisse nach einem anderen Wert als der Suchbewertung sortiert zurückgeben soll, können Sie den Suchparameter **`orderby`** verwenden. Sie können den Wert des Parameters **`orderby`** angeben, um Feldnamen und Aufrufe der [**`geo.distance()`-Funktion**](https://docs.microsoft.com/rest/api/searchservice/OData-Expression-Syntax-for-Azure-Search) für räumliche Werte einzubinden. Auf jeden Ausdruck kann `asc` folgen, um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden. Verwenden Sie **`desc`**, um anzugeben, dass die Ergebnisse in absteigender Reihenfolge zurückgegeben werden sollen. Standardmäßig wird die aufsteigende Sortierung verwendet.
+Falls Azure Search die Ergebnisse nach einem anderen Wert als der Suchbewertung sortiert zurückgeben soll, können Sie den Suchparameter **`orderby`** verwenden. Sie können den Wert des Parameters **`orderby`** angeben, um Feldnamen und Aufrufe der [**`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Werte einzubinden. Auf jeden Ausdruck kann `asc` folgen, um anzugeben, dass die Ergebnisse in aufsteigender Reihenfolge angefordert werden. Verwenden Sie **`desc`**, um anzugeben, dass die Ergebnisse in absteigender Reihenfolge zurückgegeben werden sollen. Standardmäßig wird die aufsteigende Sortierung verwendet.
 
 
 ### <a name="hit-highlighting"></a>Treffermarkierung

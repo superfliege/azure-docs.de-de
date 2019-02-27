@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 1b0e99998aaf29c366cce1926f930174686cfee6
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585950"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414897"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Verwenden von Nachrichtenrouten und benutzerdefinierten Endpunkten für D2C-Nachrichten
 
@@ -34,7 +34,7 @@ Es kann vorkommen, dass sich für eine einzelne Nachricht Übereinstimmungen mit
 
 Eine IoT Hub-Instanz verfügt standardmäßig über einen [integrierten Endpunkt](iot-hub-devguide-messages-read-builtin.md). Sie können benutzerdefinierte Endpunkte für das Routing von Nachrichten erstellen, indem Sie andere Dienste Ihres Abonnements mit dem Hub verknüpfen. IoT Hub unterstützt derzeit Azure Storage Container, Event Hubs, Service Bus-Warteschlangen und Service Bus-Themen als benutzerdefinierte Endpunkte.
 
-Bei Verwendung von Routing und benutzerdefinierten Endpunkten werden Nachrichten nur an den integrierten Endpunkt übermittelt, wenn sich keine Übereinstimmung mit einer Abfrage ergibt. Fügen Sie für die Übermittlung von Nachrichten an den integrierten Endpunkt und einen benutzerdefinierten Endpunkt eine Route hinzu, die Nachrichten an den Endpunkt **events** sendet.
+Bei Verwendung von Routing und benutzerdefinierten Endpunkten werden Nachrichten nur an den integrierten Endpunkt übermittelt, wenn sich keine Übereinstimmung mit einer Abfrage ergibt. Fügen Sie für die Übermittlung von Nachrichten an den integrierten Endpunkt und einen benutzerdefinierten Endpunkt eine Route hinzu, die Nachrichten an den integrierten Endpunkt **events** sendet.
 
 > [!NOTE]
 > * IoT Hub unterstützt nur das Schreiben von Daten in Azure Storage-Container als BLOBs.

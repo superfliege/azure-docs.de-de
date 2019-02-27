@@ -17,16 +17,16 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0b7515a5c22b98fb14499e07057ff52311fc6e67
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: acdd2f5cb345ca5c5462394ae5c6135ad43b2143
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55744818"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415703"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Verwenden von Azure zum Hosten und Ausführen von SAP-Workloadszenarien
 
-Mit Microsoft Azure können Sie Ihre geschäftskritischen SAP-Workloads und -Szenarien zuverlässig auf einer skalierbaren, konformen und in Unternehmen bewährten Plattform ausführen.  Profitieren Sie von der Skalierbarkeit, Flexibilität und den Einsparungsmöglichkeiten von Azure. Dank der erweiterten Partnerschaft zwischen Microsoft und SAP können Sie SAP-Anwendungen in Dev/Test- und Produktionsszenarien in Azure ausführen – und erhalten dabei vollständigen Support. Wir können Sie in allen Belangen unterstützen, von SAP NetWeaver bis SAP S4/HANA, für SAP BI, von Linux bis Windows, von SAP HANA bis SQL.
+Mit Microsoft Azure können Sie Ihre geschäftskritischen SAP-Workloads und -Szenarien zuverlässig auf einer skalierbaren, konformen und in Unternehmen bewährten Plattform ausführen.  Profitieren Sie von der Skalierbarkeit, Flexibilität und den Einsparungsmöglichkeiten von Azure. Dank der erweiterten Partnerschaft zwischen Microsoft und SAP können Sie SAP-Anwendungen in Dev/Test- und Produktionsszenarien in Azure ausführen – und erhalten dabei vollständigen Support. Wir können Sie in allen Belangen unterstützen, von SAP NetWeaver bis SAP S/4HANA, SAP BI, von Linux bis Windows, von SAP HANA bis SQL.
 
 Neben dem Hosten von SAP NetWeaver-Szenarien mit verschiedenen DBMS-Lösungen in Azure können Sie auch andere SAP-Workloadszenarien hosten, z.B. SAP BI unter Azure. 
 

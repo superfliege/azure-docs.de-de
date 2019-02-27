@@ -8,19 +8,19 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 7919a84ffe948c9b6a8f68fc1372f1976c09bc79
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 91618b211fdd869daf74491b175d6359ffa3f30c
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864280"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312190"
 ---
 # <a name="describe-images-with-human-readable-language"></a>Beschreiben von Bildern in lesbarer Sprache
 
-Algorithmen zum maschinellen Sehen analysieren den Inhalt eines Bilds. Diese Analyse bildet die Grundlage für eine „Beschreibung“, die in einer für Menschen lesbaren Sprache in vollständigen Sätzen angezeigt wird. Die Beschreibung ist eine Zusammenfassung dessen, was im Bild gefunden wird. Algorithmen für maschinelles Sehen generieren verschiedene Beschreibungen auf der Grundlage der im Bild erkannten visuellen Merkmale. Jede Beschreibung wird ausgewertet und eine Zuverlässigkeitsbewertung generiert. Dann wird eine Liste in der Reihenfolge von höchster Zuverlässigkeitsbewertung zu niedrigster zurückgegeben.
+Die Maschinelles Sehen-API kann ein Bild analysieren und einen für Menschen lesbaren Satz mit der Beschreibung des Inhalts generieren. Der Algorithmus gibt eigentlich mehrere Beschreibungen zurück, die auf unterschiedlichen visuellen Merkmalen basieren, und jede Beschreibung erhält eine Zuverlässigkeitsbewertung. Die endgültige Ausgabe ist eine Liste mit Beschreibungen, die absteigend nach Zuverlässigkeitsbewertung sortiert ist.
 
 ## <a name="image-description-example"></a>Beispiel zur Bildbeschreibung
 

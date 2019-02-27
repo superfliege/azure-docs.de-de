@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
 ms.custom: mvc
-ms.openlocfilehash: ca0a6569dda89586c629cc46909862de4f27cf04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4ab04fc69d29d9bb5386261f6453b2f47bfd66bc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160910"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446323"
 ---
 # <a name="azure-stack-compute-capacity-planning"></a>Planen der Azure Stack-Computekapazität
 Die [für Azure Stack unterstützten VM-Größen](./user/azure-stack-vm-sizes.md) sind eine Teilmenge der in Azure unterstützten VM-Größen. Azure erzwingt Ressourcengrenzwerte auf verschiedene Arten, um einen übermäßigen Ressourcenverbrauch (auf dem lokalen Server und auf der Dienstebene) zu vermeiden. Wenn keine Einschränkungen für die Nutzung durch Mandanten gelten würden, würde die Mandantenerfahrung beeinträchtigt, wenn andere Mandanten Ressourcen übermäßig nutzen. Für ausgehenden Netzwerkdatenverkehr des virtuellen Computers gelten Bandbreitenobergrenzen für Azure Stack, die mit den Azure-Einschränkungen übereinstimmen. Für Speicherressourcen wurden für Azure Stack Speicher-IOPs-Grenzwerte implementiert, um den allgemeinen übermäßigen Ressourcenverbrauch durch Mandanten für Speicherzugriff zu vermeiden.  
@@ -43,7 +43,7 @@ Wenn ein Server ausfällt, werden auf dem fehlerhaften Server gehostete virtuell
 
 Die folgende Berechnung ergibt den insgesamt verfügbaren Arbeitsspeicher, der für Mandanten-VM-Platzierung verwendet werden kann. Diese Speicherkapazität gilt für die Gesamtheit der Azure Stack-Skalierungseinheit.
 
-  Verfügbarer Speicher für VM-Platzierung = Serverspeicher gesamt – Resilienzreserve – Azure Stack-Infrastrukturmehraufwand <sup>1</sup>
+  Verfügbarer Speicher für VM-Platzierung = Serverspeicher gesamt – Resilienzreserve – von ausgeführten VMs verwendeter Arbeitsspeicher – Azure Stack-Infrastrukturmehraufwand <sup>1</sup>
 
   Resilienzreserve = H + R * (N-1) + V * (N-2)
 

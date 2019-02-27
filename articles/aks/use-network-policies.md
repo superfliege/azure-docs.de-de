@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/12/2019
 ms.author: iainfou
-ms.openlocfilehash: ade5a39273aa807f6c69f76342a0f715c7a96309
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 250c4fc6e51bacc68c965394b9fd430b1b75a52c
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232173"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447173"
 ---
 # <a name="secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>Sicherer Datenverkehr zwischen Pods durch Netzwerkrichtlinien in Azure Kubernetes Service (AKS)
 
@@ -27,21 +27,7 @@ Dieser Artikel veranschaulicht die Verwendung der Netzwerkrichtlinien, um den Fl
 
 Es muss die Azure CLI-Version 2.0.56 oder höher installiert und konfiguriert sein. Führen Sie  `az --version` aus, um die Version zu ermitteln. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie weitere Informationen unter [Installieren der Azure CLI][install-azure-cli].
 
-## <a name="overview-of-network-policy"></a>Übersicht über die Netzwerkrichtlinie
-
-Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Zur Verbesserung der Sicherheit können Sie Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden z.B. häufig nur für erforderlichen Front-End-Dienste verfügbar gemacht, oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung zu ihnen herstellen.
-
-Netzwerkrichtlinien sind eine Kubernetes-Ressource, mit der Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerkrichtlinien werden als YAML-Manifeste definiert und können als Bestandteil eines größeren Manifests, das auch eine Bereitstellung oder einen Dienst erstellt, einbezogen werden.
-
-Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Datenverkehr wie folgt definiert, und erweitern sie dann:
-
-* Lehnen Sie jeglichen Datenverkehr zum Pod ab.
-* Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
-* Lassen Sie Datenverkehr basierend auf dem Namespace zu.
-
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Erstellen eines AKS-Clusters und Aktivieren der Netzwerkrichtlinie
-
-Die Netzwerkrichtlinie kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. Um einen AKS-Cluster mit Netzwerkrichtlinie zu erstellen, aktivieren Sie zuerst Sie ein Featureflag für Ihr Abonnement. Um das Featureflag *EnableNetworkPolicy* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
+Um einen AKS-Cluster mit Netzwerkrichtlinie zu erstellen, aktivieren Sie zuerst Sie ein Featureflag für Ihr Abonnement. Um das Featureflag *EnableNetworkPolicy* zu registrieren, verwenden Sie den Befehl [az feature register][az-feature-register] wie im folgenden Beispiel gezeigt:
 
 ```azurecli-interactive
 az feature register --name EnableNetworkPolicy --namespace Microsoft.ContainerService
@@ -59,7 +45,25 @@ Wenn Sie fertig sind, aktualisieren Sie die Registrierung des *Microsoft.Contain
 az provider register --namespace Microsoft.ContainerService
 ```
 
-Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking]. Das folgende Beispielskript:
+## <a name="overview-of-network-policy"></a>Übersicht über die Netzwerkrichtlinie
+
+Standardmäßig können alle Pods in einem AKS-Cluster Datenverkehr ohne Einschränkungen senden und empfangen. Zur Verbesserung der Sicherheit können Sie Regeln definieren, die den Datenverkehrsfluss steuern. Back-End-Anwendungen werden z.B. häufig nur für erforderlichen Front-End-Dienste verfügbar gemacht, oder Datenbankkomponenten sind nur für die Anwendungsebenen zugänglich, die eine Verbindung zu ihnen herstellen.
+
+Netzwerkrichtlinien sind eine Kubernetes-Ressource, mit der Sie den Datenverkehrsfluss zwischen Pods steuern können. Anhand von Einstellungen wie zugewiesene Bezeichnungen, Namespace oder Port für den Datenverkehr können Sie Datenverkehr zulassen oder verweigern. Netzwerkrichtlinien werden als YAML-Manifeste definiert und können als Bestandteil eines größeren Manifests, das auch eine Bereitstellung oder einen Dienst erstellt, einbezogen werden.
+
+Um Netzwerkrichtlinien in Aktion zu sehen, erstellen Sie eine Richtlinie, die Datenverkehr wie folgt definiert, und erweitern sie dann:
+
+* Lehnen Sie jeglichen Datenverkehr zum Pod ab.
+* Lassen Sie Datenverkehr basierend auf Podbezeichnungen zu.
+* Lassen Sie Datenverkehr basierend auf dem Namespace zu.
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>Erstellen eines AKS-Clusters und Aktivieren der Netzwerkrichtlinie
+
+Die Netzwerkrichtlinie kann nur aktiviert werden, wenn der Cluster erstellt wird. Ohne einen vorhandenen AKS-Cluster können Sie keine Netzwerkrichtlinie aktivieren. 
+
+Um eine Netzwerkrichtlinie mit einem AKS-Cluster zu verwenden, müssen Sie das [Azure CNI-Plug-In][azure-cni] verwenden und eigene virtuelle Netzwerke und Subnetze definieren. Detaillierte Informationen zur Planung der erforderlichen Subnetzadressbereiche finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service (AKS)][use-advanced-networking].
+
+Das folgende Beispielskript:
 
 * Erstellt ein virtuelles Netzwerk und ein Subnetz.
 * Erstellt einen Azure Active Directory-Dienstprinzipal (AD) für die Verwendung mit dem AKS-Cluster.
@@ -86,7 +90,7 @@ az network vnet create \
     --subnet-prefix 10.240.0.0/16
 
 # Create a service principal and read in the application ID
-read SP_ID <<< $(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
+SP_ID=$(az ad sp create-for-rbac --password $SP_PASSWORD --skip-assignment --query [appId] -o tsv)
 
 # Wait 15 seconds to make sure that service principal has propagated
 echo "Waiting for service principal to propagate..."
@@ -241,6 +245,9 @@ spec:
           app: webapp
           role: frontend
 ```
+
+> [!NOTE]
+> Diese Netzwerkrichtlinie verwendet ein *namespaceSelector*- und ein *podSelector*-Element für die Eingangsregel. Die YAML-Syntax ist wichtig in Bezug darauf, ob die Eingangsregeln additiv sind oder nicht. In diesem Beispiel müssen beide Elemente übereinstimmen, damit die Eingangsregel angewendet wird. Kubernetes-Versionen vor *1.12* interpretieren diese Elemente unter Umständen nicht korrekt und beschränken den Netzwerkdatenverkehr ggf. nicht wie erwartet. Weitere Informationen finden Sie unter [Behavior of to and from selectors][policy-rules] (Verhalten der Selektoren „to“ und „from“).
 
 Wenden Sie die aktualisierte Netzwerkrichtlinie über den Befehl [kubectl apply][kubectl-apply] an, und geben Sie den Namen Ihres YAML-Manifests an:
 
@@ -442,6 +449,7 @@ Weitere Informationen zur Verwendung von Richtlinien finden Sie unter [Network P
 [kubernetes-network-policies]: https://kubernetes.io/docs/concepts/services-networking/network-policies/
 [azure-cni]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
+[policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

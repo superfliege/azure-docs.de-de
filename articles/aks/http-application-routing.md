@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 0bca7281c390388bd860219fb6f2eacb96b99df0
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742387"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312278"
 ---
 # <a name="http-application-routing"></a>HTTP-Anwendungsrouting
 
@@ -38,6 +38,9 @@ Das Add-On für HTTP-Anwendungsrouting kann beim Bereitstellen eines AKS-Cluster
 ```azurecli
 az aks create --resource-group myResourceGroup --name myAKSCluster --enable-addons http_application_routing
 ```
+
+> [!TIP]
+> Falls Sie mehrere Add-Ons aktivieren möchten, geben Sie sie als eine durch Trennzeichen getrennte Liste an. Verwenden Sie zum Aktivieren von HTTP-Anwendungsrouting und -überwachung das Format `--enable-addons http_application_routing,monitoring`.
 
 Sie können auch HTTP-Routing für einen vorhandenen AKS-Cluster mithilfe des Befehls [az aks enable-addons][az-aks-enable-addons] aktivieren. Zum Aktivieren von HTTP-Routing für einen vorhandenen Cluster fügen Sie den Parameter `--addons` hinzu und geben *Http_application_routing* wie im folgenden Beispiel gezeigt an:
 

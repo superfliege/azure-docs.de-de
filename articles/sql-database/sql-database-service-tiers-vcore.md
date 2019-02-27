@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: da43d1261b0ba9bd65998fbaa9fe9e364e686071
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a9a38d30ec2a8e9139470531960d47fef1025269
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992125"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328621"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>V-Kern-Diensttarife, Azure-Hybridvorteil und Migration
 
@@ -42,7 +42,7 @@ Die folgende Tabelle zeigt die Unterschiede zwischen diesen drei Tarifen:
 |Am besten geeignet für:|Die meisten geschäftlichen Workloads. Ermöglicht budgetorientierte ausgewogene und skalierbare Compute- und Speicheroptionen.|Geschäftsanwendungen mit hohen E/A-Anforderungen. Ermöglicht höchste Resilienz gegenüber Ausfällen durch mehrere isolierte Replikate.|Die meisten geschäftlichen Workloads mit hohen Anforderungen an skalierbaren Speicher und Leseskalierung|
 |Compute|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|Gen4: 1 bis 24 V-Kerne<br/>Gen5: 1 bis 80 V-Kerne|
 |Arbeitsspeicher|Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern | Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern |Gen4: 7 GB pro Kern<br>Gen5: 5,1 GB pro Kern|
-|Storage|Verwendet [Storage Premium (Remote)](../virtual-machines/windows/premium-storage.md):<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
+|Storage|Verwendet Remotespeicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 8 TB |Verwendet lokalen SSD-Speicher:<br/>Einzeldatenbank: 5 GB – 4 TB<br/>Verwaltete Instanz: 32 GB – 4 TB |Flexibel, automatische Speichervergrößerung nach Bedarf. Unterstützt bis zu 100 TB Speicher und mehr. Lokaler SSD-Speicher für den lokalen Pufferpoolcache und den lokalen Datenspeicher. Azure-Remotespeicher als endgültiger langfristiger Datenspeicher. |
 |E/A-Durchsatz (ungefähr)|Einzeldatenbank: 500 IOPS pro V-Kern mit maximal 7.000 IOPS</br>Verwaltete Instanz: Hängt von der [Größe der Datei](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) ab|5000 IOPS pro Kern mit maximal 200.000 IOPS|TBD|
 |Verfügbarkeit|1 Replikat, keine Leseskalierung|3 Replikate, 1 [Replikat, Leseskalierung](sql-database-read-scale-out.md),<br/>Zonenredundante HA|?|
 |Backups|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md), 7-35 Tage (standardmäßig 7 Tage)|Sicherung auf der Grundlage von Momentaufnahmen im Azure-Remotespeicher. Diese Momentaufnahmen werden für die schnelle Wiederherstellung verwendet. Sicherungen werden sofort ausgeführt und haben keine Auswirkungen auf die E/A-Computeleistung. Wiederherstellungen sind sehr schnell und entsprechen nicht der Größe eines Datenvorgangs (benötigen eher Minuten als Stunden oder Tage).|

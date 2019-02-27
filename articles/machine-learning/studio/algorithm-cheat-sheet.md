@@ -10,16 +10,16 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 83a8a7f927e78f3524128338d874334ebf0b3df1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 77cd485b7ca7f9965a8baf9026b68060067d6ebe
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884000"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453935"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-studio"></a>Cheat Sheet mit Machine Learning-Algorithmen für Azure Machine Learning Studio
 
-Mithilfe des **Cheat Sheet für Azure Machine Learning-Algorithmen** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
+Mithilfe des **Cheat Sheet für Azure Machine Learning Studio-Algorithmen** können Sie den richtigen Algorithmus für ein Predictive Analytics-Modell wählen.
 
 [Azure Machine Learning Studio](https://studio.azureml.net/) bietet eine umfangreiche Bibliothek von Algorithmen der Typen ***Regression***, ***Klassifizierung***, ***Clustering*** und ***Erkennung von Anomalien***. Jede ist speziell auf eine andere Art von Machine Learning-Problem ausgelegt.
 
@@ -27,14 +27,12 @@ Mithilfe des **Cheat Sheet für Azure Machine Learning-Algorithmen** können Sie
 
 **Laden Sie das Cheat Sheet hier herunter: [Machine Learning – Cheat Sheet für Algorithmen (11x17 Zoll)](https://download.microsoft.com/download/A/6/1/A613E11E-8F9C-424A-B99D-65344785C288/microsoft-machine-learning-algorithm-cheat-sheet-v7.pdf)**
 
-![Machine Learning – Cheat Sheet für Algorithmen: Erfahren Sie, wie ein Machine Learning-Algorithmus ausgewählt wird.][cheat-sheet]
-
-[cheat-sheet]: ./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png
+![Machine Learning – Cheat Sheet für Algorithmen: Erfahren Sie, wie ein Machine Learning-Algorithmus ausgewählt wird.](./media/algorithm-cheat-sheet/machine-learning-algorithm-cheat-sheet-small_v_0_6-01.png)
 
 Sie können das Cheat Sheet für Machine Learning Studio-Algorithmen im Kleinformat herunterladen und drucken, um praktische Hilfe bei der Wahl eines Algorithmus zu erhalten.
 
 > [!NOTE]
-> Hilfe bei der Verwendung dieses Spickzettels für die Auswahl des richtigen Algorithmus sowie eine eingehendere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung finden Sie unter [Auswählen von Algorithmen für Microsoft Azure Machine Learning](algorithm-choice.md).
+> Hilfe bei der Verwendung dieses Spickzettels für die Auswahl des richtigen Algorithmus sowie eine eingehendere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung finden Sie unter [Auswählen von Algorithmen für Azure Machine Learning Studio](algorithm-choice.md).
 
 ## <a name="notes-and-terminology-definitions-for-the-machine-learning-studio-algorithm-cheat-sheet"></a>Hinweise und Terminologiedefinitionen für das Cheat Sheet für Machine Learning Studio-Algorithmen
 
@@ -44,7 +42,7 @@ Sie können das Cheat Sheet für Machine Learning Studio-Algorithmen im Kleinfor
 
 * Es gibt drei Arten von maschinellem Lernen: **beaufsichtigtes Lernen**, **unbeaufsichtigtes Lernen** und **vertiefendes Lernen**.
 
-  * Beim **beaufsichtigten Lernen** wird jeder Datenpunkt bezeichnet oder einer Kategorie oder einem Wert zugeordnet.  Ein Beispiel für eine Kategoriebezeichnung ist die Zuordnung eines Bildes zu "Katze" oder "Hund".  Ein Beispiel für eine Wertbezeichnung ist der Verkaufspreis für ein gebrauchtes Auto. Ziel beim beaufsichtigten Lernen ist es, viele bezeichnete Beispiele wie diese zu untersuchen und dann Vorhersagen zu zukünftigen Datenpunkten zu treffen. Zum Beispiel, um neue Fotos mit dem richtigen Tier zu identifizieren oder präzise Verkaufspreise für gebrauchte Pkw festzulegen. Dies ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Alle Module in Azure Machine Learning sind Algorithmen zum beaufsichtigten Lernen, mit Ausnahme von [K-Means-Clustering][k-means-clustering].
+  * Beim **beaufsichtigten Lernen** wird jeder Datenpunkt bezeichnet oder einer Kategorie oder einem Wert zugeordnet.  Ein Beispiel für eine Kategoriebezeichnung ist die Zuordnung eines Bildes zu "Katze" oder "Hund".  Ein Beispiel für eine Wertbezeichnung ist der Verkaufspreis für ein gebrauchtes Auto. Ziel beim beaufsichtigten Lernen ist es, viele bezeichnete Beispiele wie diese zu untersuchen und dann Vorhersagen zu zukünftigen Datenpunkten zu treffen. Zum Beispiel, um neue Fotos mit dem richtigen Tier zu identifizieren oder präzise Verkaufspreise für gebrauchte Pkw festzulegen. Dies ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Alle Module in Azure Machine Learning Studio sind Algorithmen zum beaufsichtigten Lernen, mit Ausnahme von [K-Means-Clustering][k-means-clustering].
 
   * Beim **unbeaufsichtigten Lernen** sind Datenpunkten keine Bezeichnungen zugeordnet. Stattdessen besteht das Ziel von Algorithmen zum unbeaufsichtigten Lernen im Organisieren der Daten in einer bestimmten Form oder in der Beschreibung ihrer Struktur. Dies kann das Gruppieren in Clustern bedeuten, wie bei K-Means, oder das Suchen nach unterschiedlichen Möglichkeiten zur Darstellung komplexer Daten in einfacherer Form.
 

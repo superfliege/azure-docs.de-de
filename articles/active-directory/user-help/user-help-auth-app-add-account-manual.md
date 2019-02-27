@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0d46fc8a152c4426832669ce22d4aa78ac640e6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e82e8f6caafb38b758f552913def234a92a0d83
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173941"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454649"
 ---
 # <a name="manually-add-an-account-to-the-app"></a>Manuelles Hinzufügen eines Kontos zur App
 Wenn die Kamera den QR-Code nicht erfassen kann, können Sie Ihre Kontoinformationen manuell der Microsoft Authenticator-App für die zweistufige Überprüfung hinzufügen. Dies gilt für Geschäfts-, Schul- oder Unikonten sowie für nicht von Microsoft bereitgestellte Konten.
@@ -29,7 +29,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 
 ## <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
 
-1. Beachten Sie auf Ihrem PC auf der Seite **Mobile App konfigurieren** den angegebenen **Code** und die **URL**. Lassen Sie diese Seite geöffnet, damit Sie den Code und die URL sehen können.
+1. Beachten Sie auf Ihrem Computer auf der Seite **Mobile App konfigurieren** den angegebenen **Code** und die **URL**. Lassen Sie diese Seite geöffnet, damit Sie den Code und die URL sehen können.
     
     ![Bildschirm, der den QR-Code enthält](./media/user-help-auth-app-add-account-manual/auth-app-barcode.png)
 
@@ -47,7 +47,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 
 ## <a name="add-your-google-account"></a>Hinzufügen Ihres Google-Kontos
 
-1. Wählen Sie auf Ihrem PC auf der Seite **Authenticator einrichten**, die den QR-Code enthält, die Option **KANN NICHT GESCANNT WERDEN** aus.
+1. Wählen Sie auf Ihrem Computer auf der Seite **Authenticator einrichten**, die den QR-Code enthält, die Option **KANN NICHT GESCANNT WERDEN** aus.
 
     Die Seite **Der Barcode kann nicht gescannt werden** wird mit dem geheimen Code angezeigt. Lassen Sie diese Seite geöffnet, damit Sie den geheimen Code sehen können.
 
@@ -55,7 +55,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 
 3. Geben Sie einen **Kontonamen** (z. B. Google) ein, geben Sie den **geheimen Schlüssel** aus Schritt 1 ein, und wählen Sie dann **Fertig stellen** aus.
 
-4. Geben Sie auf Ihrem PC auf der Seite **Authenticator einrichten** den in der App für Ihr Google-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Überprüfen** aus.
+4. Geben Sie auf Ihrem Computer auf der Seite **Authenticator einrichten** den in der App für Ihr Google-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Überprüfen** aus.
 
     Der Bildschirm **Konten** der App zeigt den Namen Ihres Kontos und einen sechsstelligen Prüfcode an. Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
 
@@ -70,7 +70,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 
 3. Geben Sie einen **Kontonamen** (z. B. Facebook) ein, geben Sie den **geheimen Schlüssel** aus Schritt 1 ein, und wählen Sie dann **Fertig stellen** aus.
 
-4. Geben Sie auf Ihrem PC auf der Seite **Zweistufige Authentifizierung** den in der App für Ihr Facebook-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Überprüfen** aus.
+4. Geben Sie auf Ihrem Computer auf der Seite **Zweistufige Authentifizierung** den in der App für Ihr Facebook-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Überprüfen** aus.
 
     Der Bildschirm **Konten** der App zeigt den Namen Ihres Kontos und einen sechsstelligen Prüfcode an. Um die Sicherheit zu erhöhen, wird der Prüfcode alle 30 Sekunden geändert, um zu verhindern, dass jemand einen Code mehrmals verwendet.
 
@@ -80,7 +80,7 @@ Bei den für Ihre Konten bereitgestellten Codes wird die Groß-/Kleinschreibung 
 ## <a name="add-your-amazon-account"></a>Hinzufügen Ihres Amazon-Kontos
 Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfung aktivieren und dann das Konto zur App hinzufügen.
 
-1. Wählen Sie auf Ihrem PC auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten**, die den QR-Code enthält, die Option **Der Barcode kann nicht gescannt werden** aus.
+1. Wählen Sie auf Ihrem Computer auf der Seite **Wählen Sie, wie Sie Codes erhalten möchten**, die den QR-Code enthält, die Option **Der Barcode kann nicht gescannt werden** aus.
 
     Die Meldung **Der Barcode kann nicht gescannt werden** wird mit dem geheimen Code angezeigt. Lassen Sie diese Meldung geöffnet, damit Sie den geheimen Code sehen können.
 
@@ -90,9 +90,9 @@ Sie können Ihr Amazon-Konto hinzufügen, indem Sie die zweistufige Überprüfun
 
 4. Schließen Sie den Registrierungsprozess ab, einschließlich des Hinzufügens einer zusätzlichen Überprüfungsmethode, wie z. B. einer Textnachricht, und wählen Sie dann **Code senden** aus.
 
-5. Geben Sie auf Ihrem PC auf der Seite **Sicherungsmethode hinzufügen** den von der Sicherungsmethode für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
+5. Geben Sie auf Ihrem Computer auf der Seite **Sicherungsmethode hinzufügen** den von der Sicherungsmethode für Ihr Amazon-Konto angegebenen sechsstelligen Prüfcode ein, und wählen Sie dann **Code verifizieren und fortfahren** aus.
 
-6. Entscheiden Sie auf der Seite „Fast fertig“, ob Ihr PC als vertrauenswürdiges Gerät gespeichert werden soll, und wählen Sie dann **OK. Aktivieren der zweistufigen Überprüfung** aus.
+6. Entscheiden Sie auf der Seite „Fast fertig“, ob Ihr Computer als vertrauenswürdiges Gerät gespeichert werden soll, und klicken Sie dann auf **OK. Aktivieren der zweistufigen Überprüfung** aus.
 
     Die Seite **Erweiterte Sicherheitseinstellungen** wird mit Ihren aktualisierten Details der zweistufigen Überprüfung (Zwei-Schritt-Verifizierung) angezeigt.
 

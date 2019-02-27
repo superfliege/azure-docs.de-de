@@ -1,25 +1,22 @@
 ---
-title: Erstellen eines Anwendungsgateways als Host für mehrere Websites – Azure-Portal | Microsoft-Dokumentation
+title: 'Erstellen eines Anwendungsgateways als Host für mehrere Websites: Azure-Portal'
 description: Erfahren Sie, wie Sie über das Azure-Portal ein Anwendungsgateway erstellen, mit dem mehrere Websites gehostet werden.
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
 ms.topic: article
-ms.workload: infrastructure-services
-ms.date: 12/28/2017
+ms.date: 2/20/2019
 ms.author: victorh
-ms.openlocfilehash: fc418f58b299dcba08fda65000c5356c51f471e6
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 09bb81b0382f18c9cb94e5e4d0932dc6597ae73c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52993314"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454296"
 ---
 # <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>Erstellen und Konfigurieren eines Anwendungsgateways als Host mehrerer Websites über das Azure-Portal
 
-Sie können mit dem Azure-Portal das [Hosting mehrerer Websites](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Tutorial definieren Sie Back-End-Adresspools mithilfe von virtuellen Computern. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Tutorial wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
+Sie können mit dem Azure-Portal das [Hosting mehrerer Websites](multiple-site-overview.md) konfigurieren, wenn Sie ein [Anwendungsgateway](overview.md) erstellen. In diesem Artikel definieren Sie Back-End-Adresspools mithilfe von virtuellen Computern. Anschließend konfigurieren Sie Listener und Regeln basierend auf Domänen in Ihrem Besitz, um sicherzustellen, dass Webdatenverkehr von geeigneten Servern in den Pools empfangen wird. In diesem Artikel wird vorausgesetzt, dass Sie mehrere Domänen besitzen und die Beispiele zu *www.contoso.com* und *www.fabrikam.com* verwenden.
 
 In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
@@ -35,7 +32,7 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
@@ -141,6 +138,8 @@ In diesem Beispiel erstellen Sie zwei virtuelle Computer, die als Back-End-Serve
 3. Klicken Sie auf **OK**.
 4. Erstellen Sie einen zweiten Listener mit dem Namen *fabrikamListener*, und verwenden Sie hierfür Ihren zweiten Domänennamen. In diesem Beispiel wird *www.fabrikam.com* verwendet.
 
+![Multi-Site-Listener](media/create-multiple-sites-portal/be-listeners.png)
+
 ## <a name="create-routing-rules"></a>Erstellen von Routingregeln
 
 Regeln werden in der Reihenfolge verarbeitet, in der sie aufgeführt sind, wobei Datenverkehr gemäß der ersten erfüllten Regel unabhängig von der Genauigkeit weitergeleitet wird. Wenn Sie beispielsweise eine Regel mit einem einfachen Listener und eine Regel mit einem Listener für mehrere Standorte auf demselben Port aktiviert haben, muss die Regel mit dem Listener für mehrere Standorte vor der Regel mit dem einfachen Listener aufgeführt sein, damit die Regel für mehrere Standorte wie erwartet funktioniert. 
@@ -180,12 +179,4 @@ Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erst
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie Folgendes gelernt:
-
-> [!div class="checklist"]
-> * Erstellen eines Anwendungsgateways
-> * Erstellen von virtuellen Computern für Back-End-Server
-> * Erstellen von Back-End-Pools mit den Back-End-Servern
-> * Erstellen von Back-End-Listenern
-> * Erstellen von Routingregeln
-> * Erstellen eines CNAME-Eintrags in Ihrer Domäne
+[Konfigurieren von App Service mit Application Gateway](create-web-app.md)

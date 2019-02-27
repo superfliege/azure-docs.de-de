@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/22/2018
 ms.author: genli
-ms.openlocfilehash: dd75d5a3186bbb6ba82e2deb83a7e8429e32a3f2
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
+ms.openlocfilehash: 4476e4732dfcf8d79c9678a7ff4719eba10e48f3
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53134521"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445780"
 ---
 #  <a name="an-internal-error-occurs-when-you-try-to-connect-to-an-azure-vm-through-remote-desktop"></a>Interner Fehler beim Herstellen einer Verbindung mit einem virtuellen Azure-Computer über Remotedesktop
 
@@ -65,23 +65,25 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
     1. Beenden Sie den Dienst oder die Anwendung, der bzw. die den Dienst 3389 verwendet:
 
-        Stop-Service -Name <ServiceName>
+            Stop-Service -Name <ServiceName> -Force
 
     2. Starten Sie den Terminaldienst:
 
-        Start-Service -Name Termservice
+            Start-Service -Name Termservice
 
 2. Wenn die Anwendung nicht beendet werden kann oder diese Methode nicht für Sie zutrifft, ändern Sie den Port für RDP:
 
     1. Ändern Sie den Port:
 
-        Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
+            Set-ItemProperty -Path 'HKLM\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp' -name PortNumber -value <Hexportnumber>
 
-        Stop-Service -Name Termservice Start-Service -Name Termservice
+            Stop-Service -Name Termservice -Force
+            
+            Start-Service -Name Termservice 
 
     2. Legen Sie die Firewall für den neuen Port fest:
 
-        Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
+            Set-NetFirewallRule -Name "RemoteDesktop-UserMode-In-TCP" -LocalPort <NEW PORT (decimal)>
 
     3. [Aktualisieren Sie die Netzwerksicherheitsgruppe für den neuen Port](../../virtual-network/security-overview.md) im Azure-Portal (RDP-Port).
 
@@ -89,7 +91,13 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
 1.  Führen Sie in einer PowerShell-Instanz nacheinander die folgenden Befehle aus, um das selbstsignierte RDP-Zertifikat zu erneuern:
 
-        Import-Module PKI Set-Location Cert:\LocalMachine $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) Remove-Item -Path $RdpCertThumbprint
+        Import-Module PKI 
+    
+        Set-Location Cert:\LocalMachine 
+        
+        $RdpCertThumbprint = 'Cert:\LocalMachine\Remote Desktop\'+((Get-ChildItem -Path 'Cert:\LocalMachine\Remote Desktop\').thumbprint) 
+        
+        Remove-Item -Path $RdpCertThumbprint
 
         Stop-Service -Name "SessionEnv"
 
@@ -112,7 +120,9 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
         md c:\temp
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt 
+        
+        takeown /f "C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"
 
@@ -120,7 +130,9 @@ Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine
 
         icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "BUILTIN\Administrators:(F)"
 
-        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt Restart-Service TermService -Force
+        icacls C:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\AfterScript_permissions.txt 
+        
+        Restart-Service TermService -Force
 
 4. Starten Sie den virtuellen Computer neu, und versuchen Sie dann, eine Remotedesktopverbindung mit dem virtuellen Computer herzustellen. Falls der Fehler weiterhin auftritt, fahren Sie mit dem nächsten Schritt fort.
 
@@ -161,7 +173,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
 
     In diesem Skript wird davon ausgegangen, dass der dem angefügten Betriebssystemdatenträger zugewiesene Laufwerkbuchstabe „F“ ist. Ersetzen Sie diesen durch den entsprechenden Wert für Ihren virtuellen Computer.
 
-    ```powershell
+    ```
     reg load HKLM\BROKENSYSTEM F:\windows\system32\config\SYSTEM.hiv
 
     REM Enable Serial Console
@@ -191,6 +203,7 @@ Um das Sicherungsprotokoll und die serielle Konsole zu aktivieren, führen Sie d
         Md F:\temp
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c > c:\temp\BeforeScript_permissions.txt
+        
         takeown /f "F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys" /a /r
 
         icacls F:\ProgramData\Microsoft\Crypto\RSA\MachineKeys /t /c /grant "NT AUTHORITY\System:(F)"

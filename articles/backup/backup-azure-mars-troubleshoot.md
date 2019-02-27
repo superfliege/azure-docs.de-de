@@ -3,17 +3,17 @@ title: Behandeln von Problemen mit dem Azure Backup-Agent
 description: Behandeln von Problemen mit der Installation und Registrierung des Azure Backup-Agents
 services: backup
 author: saurabhsensharma
-manager: shreeshd
+manager: shivamg
 ms.service: backup
 ms.topic: conceptual
-ms.date: 7/25/2018
+ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: 65eb6ef088c9baae67d65607ede771f3c9d11a41
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ce6293e63e672df9683ab607a304f8c7275911c5
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114141"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446612"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>Problembehandlung beim Microsoft Azure Recovery Services-Agent (MARS)
 
@@ -24,8 +24,13 @@ Erfahren Sie, wie Sie möglicherweise auftretende Fehler bei der Konfiguration, 
 | ---     | ---     | ---    |
 | **Fehler** </br> *Es wurden ungültige Tresoranmeldeinformationen angegeben. Die Datei ist entweder beschädigt oder enthält nicht die aktuellen Anmeldeinformationen für den Wiederherstellungsdienst. (ID: 34513)* | <ul><li> Die Tresoranmeldeinformationen sind ungültig (d.h. sie wurden mehr als 48 Stunden vor der Registrierung heruntergeladen).<li>Der MARS-Agent kann keine Dateien in das temporäre Windows-Verzeichnis herunterladen. <li>Die Tresoranmeldeinformationen befinden sich an einem Netzwerkspeicherort. <li>TLS 1.0 ist deaktiviert.<li> Ein konfigurierter Proxyserver blockiert die Verbindung. <br> |  <ul><li>Laden Sie die neuen Tresoranmeldeinformationen herunter. (**Hinweis**: Wenn zuvor mehrere Dateien mit Tresoranmeldeinformationen heruntergeladen wurden, ist nur die zuletzt heruntergeladene Datei innerhalb von 48 Stunden gültig.) <li>Starten Sie **IE** > **Einstellungen** > **Internetoptionen** > **Sicherheit** > **Internet**. Wählen Sie als Nächstes **Stufe anpassen** aus, und scrollen Sie zum Abschnitt zum Dateidownload. Wählen Sie anschließend **Aktivieren** aus.<li>Möglicherweise müssen Sie diese Websites auch in IE unter [Vertrauenswürdige Sites](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins#network-and-connectivity-requirements) hinzufügen.<li>Ändern Sie die Einstellungen dahingehend, dass ein Proxyserver verwendet wird. Geben Sie dann die Proxyserverdetails an. <li> Passen Sie Datum und Uhrzeit an die Ihres Computers an.<li>Wenn Sie eine Fehlermeldung erhalten, die darauf hinweist, dass Dateidownloads unzulässig sind, befindet sich wahrscheinlich viele Dateien im Verzeichnis „C:/Windows/Temp“.<li>Navigieren Sie zu „C:/Windows/Temp“, und prüfen Sie, ob es mehr als 60.000 oder 65.000 Dateien mit der Erweiterung TMP gibt. Wenn dies der Fall ist, löschen Sie diese Dateien.<li>Vergewissern Sie sich, dass .NET Framework 4.6.2 installiert ist. <li>Wenn Sie TLS 1.0 aufgrund von PCI-Compliance deaktiviert haben, lesen Sie die Informationen auf dieser [Seite zur Problembehandlung](https://support.microsoft.com/help/4022913). <li>Wenn Sie eine Antivirensoftware auf dem Server installiert haben, schließen Sie die folgenden Dateien von der Antivirenprüfung aus: <ul><li>CBengine.exe<li>CSC.exe (Diese Datei ist mit dem .NET Framework verknüpft. Auf dem Server ist eine Datei namens „CSC.exe“ für jede .NET-Version installiert. Schließen Sie sämtliche mit .NET Framework-Versionen verknüpfte Dateien mit dem Namen „CSC.exe“ auf dem betroffenen Server aus. <li>Speicherort des Ablageordners oder Caches <br>*Der Standardspeicherort für den Ablageordner oder der Pfad für den Cachespeicherort lautet „C:\Programme\Microsoft Azure Recovery Services Agent\Scratch“*.<br><li>Der Ordner „Bin“ C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
+## <a name="unable-to-download-vault-credential-file"></a>Herunterladen der Datei mit Tresoranmeldeinformationen nicht möglich
 
-## <a name="the-mars-agent-was-unable-to-connect-to-azure-backup"></a>Der MARS-Agent konnte keine Verbindung mit Azure Backup herstellen.
+| Fehlerdetails | Empfohlene Aktionen |
+| ---     | ---    |
+|Fehler beim Herunterladen der Datei mit Tresoranmeldeinformationen. (ID: 403) | <ul><li> Versuchen Sie, die Tresoranmeldeinformationen über einen anderen Browser herunterzuladen, oder führen Sie die folgenden Schritte aus: <ul><li> Starten Sie Internet Explorer, und drücken Sie F12. </li><li> Wechseln Sie zur Registerkarte **Netzwerk**, um den Internet Explorer-Cache und Cookies zu löschen. </li> <li> Aktualisieren Sie die Seite.<br>(ODER)</li></ul> <li> Prüfen Sie, ob das Abonnement deaktiviert/abgelaufen ist.<br>(ODER)</li> <li> Prüfen Sie, ob eine Firewallregel das Herunterladen der Datei mit den Tresoranmeldeinformationen blockiert. <br>(ODER)</li> <li> Stellen Sie sicher, dass Sie den Grenzwert für den Tresor (50 Computer pro Tresor) nicht überschritten haben.<br>(ODER)</li>  <li> Stellen Sie sicher, dass der Benutzer über die Azure Backup-Berechtigungen zum Herunterladen von Tresoranmeldeinformationen und zum Registrieren des Servers beim Tresor verfügt. Informationen dazu finden Sie in  [diesem Artikel](backup-rbac-rs-vault.md).</li></ul> | 
+
+## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Es konnte keine Verbindung zwischen dem Microsoft Azure Recovery Services-Agent und Microsoft Azure Backup hergestellt werden.
 
 | Fehlerdetails | Mögliche Ursachen | Empfohlene Aktionen |
 | ---     | ---     | ---    |
@@ -54,6 +59,9 @@ Erfahren Sie, wie Sie möglicherweise auftretende Fehler bei der Konfiguration, 
 ## <a name="backups-dont-run-according-to-the-schedule"></a>Sicherungen werden nicht gemäß dem Zeitplan ausgeführt.
 Wenn geplante Sicherungen nicht automatisch ausgelöst werden, während manuelle Sicherungen problemlos funktionieren, führen Sie die folgenden Aktionen aus
 
+- Stellen Sie sicher, dass der Sicherungszeitplan für Windows Server nicht mit dem Sicherungszeitplan für Azure Files and Folders in Konflikt steht.
+- Wechseln Sie zu **Systemsteuerung** > **Verwaltung** > **Taskplaner**. Erweitern Sie **Microsoft**, und wählen Sie **Onlinesicherung** aus. Doppelklicken Sie auf **Microsoft-OnlineBackup**, und wechseln Sie zur Registerkarte **Trigger**. Vergewissern Sie sich, dass der Status der Aufgabe **Aktiviert** ist. Wenn dies nicht der Fall ist, wählen Sie **Bearbeiten** aus, aktivieren Sie das Kontrollkästchen **Aktiviert**, und klicken Sie auf **OK**. Navigieren Sie auf der Registerkarte **Allgemein** zu **Sicherheitsoptionen**, und stellen Sie sicher, dass das für die Ausführung der Aufgabe ausgewählte Benutzerkonto **SYSTEM** oder die Gruppe **Lokale Administratoren** auf dem Server ist.
+
 - Überprüfen Sie, ob PowerShell 3.0 oder höher auf dem Server installiert ist. Um die PowerShell-Version zu überprüfen, führen Sie den folgenden Befehl aus, und überprüfen Sie, ob der *Hauptteil* der Versionsnummer mindestens 3 ist.
 
   `$PSVersionTable.PSVersion`
@@ -67,9 +75,6 @@ Wenn geplante Sicherungen nicht automatisch ausgelöst werden, während manuelle
   `PS C:\WINDOWS\system32> Get-ExecutionPolicy -List`
 
   `PS C:\WINDOWS\system32> Set-ExecutionPolicy Unrestricted`
-
-- Wechseln Sie zu **Systemsteuerung** > **Verwaltung** > **Taskplaner**. Erweitern Sie **Microsoft**, und wählen Sie **Onlinesicherung** aus. Doppelklicken Sie auf **Microsoft-OnlineBackup**, und wechseln Sie zur Registerkarte **Trigger**. Vergewissern Sie sich, dass der Status der Aufgabe **Aktiviert** ist. Wenn dies nicht der Fall ist, wählen Sie **Bearbeiten** aus, und aktivieren Sie das Kontrollkästchen **Aktiviert**. Wechseln Sie auf der Registerkarte **Allgemein** zu **Sicherheitsoptionen**. Stellen Sie sicher, dass das für die Ausführung der Aufgabe ausgewählte Benutzerkonto **SYSTEM** oder die Gruppe **Lokale Administratoren** auf dem Server ist.
-
 
 > [!TIP]
 > Um sicherzustellen, dass die vorgenommenen Änderungen durchgängig übernommen werden, starten Sie den Server nach dem Durchführen der oben genannten Schritte neu.
@@ -99,7 +104,7 @@ Azure Backup kann das Wiederherstellungsvolume möglicherweise auch nach einigen
 
 8.  Starten Sie den Microsoft iSCSI-Initiator-Dienst neu. Klicken Sie dazu mit der rechten Maustaste auf den Dienst, wählen Sie **Beenden** aus, klicken Sie noch einmal mit der rechten Maustaste, und wählen Sie **Starten** aus.
 
-9.  Wiederholen Sie die Wiederherstellung mit der **sofortigen Wiederherstellung**.
+9.  Wiederholen Sie die Wiederherstellung mit der [**sofortigen Wiederherstellung**](backup-instant-restore-capability.md).
 
 Wenn bei der Wiederherstellung weiterhin ein Fehler auftritt, starten Sie Ihren Server oder Client neu. Wenn Sie keinen Neustart durchführen möchten oder auch nach einem Neustart des Servers ein Fehler bei der Wiederherstellung auftritt, führen Sie die Wiederherstellung über einen anderen Computer aus. Führen Sie die Schritte in [diesem Artikel](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine) aus.
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
-ms.openlocfilehash: 53f81a06a0a10d4526816b5117eb12f01d75e25a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 301de81fc9b8bdb8b295700de33065d988379334
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55819160"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428793"
 ---
 # <a name="write-to-apache-hadoop-hdfs-from-apache-storm-on-hdinsight"></a>Schreiben in Apache Hadoop HDFS aus Apache Storm auf HDInsight
 
@@ -50,15 +50,18 @@ Bei der Installation von Java und dem JDK auf Ihrer Entwicklungsworkstation kön
 HdfsBolt verwendet das von Ihnen bereitgestellte Dateischema, um zu verstehen, wie in HDFS geschrieben wird. Verwenden Sie mit HDInsight eines der folgenden Schemas:
 
 * `wasb://`: Wird mit einem Azure Storage-Konto verwendet.
-* `adl://`: Wird mit Azure Data Lake Storage verwendet.
+* `abfs://`: Wird mit Azure Data Lake Storage Gen2 verwendet.
+* `adl://`: Wird mit Azure Data Lake Storage Gen1 verwendet.
 
 Die folgende Tabelle enthält Beispiele für die Verwendung des Dateischemas für verschiedene Szenarien:
 
-| Schema | Hinweise |
+| Schema | Notizen |
 | ----- | ----- |
 | `wasb:///` | Das Standardspeicherkonto ist ein Blobcontainer in einem Azure Storage-Konto. |
-| `adl:///` | Das Standardspeicherkonto ist ein Verzeichnis in Azure Data Lake Storage. Während der Clustererstellung geben Sie das Verzeichnis in Data Lake Storage an, das den HDFS-Stamm des Clusters darstellt. Beispiel: das `/clusters/myclustername/`-Verzeichnis. |
+| `abfs:///` | Das Standardspeicherkonto ist ein Verzeichnis in einem Azure Data Lake Storage Gen2-Konto. |
+| `adl:///` | Das Standardspeicherkonto ist ein Verzeichnis in Azure Data Lake Storage Gen1. Während der Clustererstellung geben Sie das Verzeichnis in Data Lake Storage an, das den HDFS-Stamm des Clusters darstellt. Beispiel: das `/clusters/myclustername/`-Verzeichnis. |
 | `wasb://CONTAINER@ACCOUNT.blob.core.windows.net/` | Ein nicht standardmäßiges (zusätzliches) Azure Storage-Konto, das dem Cluster zugeordnet ist. |
+| `abfs://CONTAINER@ACCOUNT.dfs.core.windows.net/` | Ein nicht standardmäßiges (zusätzliches) Azure Storage-Konto, das dem Cluster zugeordnet ist. |
 | `adl://STORENAME/` | Der Stamm des vom Cluster verwendeten Data Lake Storage. Mit diesem Schema können Sie auf Daten zugreifen, die sich außerhalb des das Clusterdateisystem enthaltenden Verzeichnisses befinden. |
 
 Weitere Informationen finden Sie unter Apache.org in dem Verweis auf [HdfsBolt](https://storm.apache.org/releases/current/javadocs/org/apache/storm/hdfs/bolt/HdfsBolt.html).
@@ -180,7 +183,7 @@ Informationen zum Verwenden dieses Skripts mit Ihrem Cluster finden Sie im Dokum
         hdfs.url: wasb:///
 
     > [!IMPORTANT]  
-    > Dieses Beispiel setzt voraus, dass Ihr Cluster ein Azure Storage-Konto als Standardspeicher verwendet. Wenn Ihr Cluster Azure Data Lake Storage verwendet, verwenden Sie stattdessen `hdfs.url: adl:///`.
+    > Dieses Beispiel setzt voraus, dass Ihr Cluster ein Azure Storage-Konto als Standardspeicher verwendet. Wenn Ihr Cluster Azure Data Lake Storage Gen2 verwendet, verwenden Sie stattdessen `hdfs.url: abfs:///`. Wenn Ihr Cluster Azure Data Lake Storage Gen1 verwendet, verwenden Sie stattdessen `hdfs.url: adl:///`.
     
     Verwenden Sie __STRG + X__, um die Datei zu speichern. Geben Sie dann __Y__ ein, und drücken Sie die __EINGABETASTE__. Mit den Werten in dieser Datei bestimmen Sie die Data Lake Storage-URL und den Namen des Verzeichnisses, in das Daten geschrieben werden.
 

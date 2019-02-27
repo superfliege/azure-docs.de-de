@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+title: 'Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto: Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit GitHub-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 60fd7ec53681f9b96970d8a33e5610115e579615
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f1c1ac91c08fe27445f4b9631500543d1d0287bd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166083"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56427274"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-github-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem GitHub-Konto mithilfe von Azure Active Directory B2C
 
@@ -23,7 +23,7 @@ ms.locfileid: "55166083"
 > Dieses Feature befindet sich in der Vorschauphase.
 > 
 
-Um ein GitHub-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein GitHub-Konto verfügen, können Sie eines unter [https://www.github.com/](https://www.github.com/) erstellen.
+Um ein GitHub-Konto als [Identitätsanbieter](active-directory-b2c-reference-oauth-code.md) in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein GitHub-Konto verfügen, können Sie eines unter [https://www.github.com/](https://www.github.com/) erstellen.
 
 ## <a name="create-a-github-oauth-application"></a>Erstellen einer GitHub-OAuth-Anwendung
 

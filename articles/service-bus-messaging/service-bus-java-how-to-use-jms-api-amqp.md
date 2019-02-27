@@ -1,5 +1,5 @@
 ---
-title: Verwenden von AMQP 1.0 mit der Java Service Bus-API | Microsoft-Dokumentation
+title: Verwenden von AMQP 1.0 mit der Java Service Bus-API | Microsoft Docs
 description: Erfahren Sie, wie Sie den Java Message Service (JMS) mit Azure Service Bus und Advanced Message Queuing Protocol (AMQP) 1.0 verwenden.
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2018
 ms.author: aschhab
-ms.openlocfilehash: f0c3aac95b1d19dc3f217cc146532254d8740ca0
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 23a0c731eea22a772d7423bc3047af1183d55b7f
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54853288"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56312888"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Verwenden der JMS (Java Message Service)-API mit Service Bus und AMQP 1.0
 AMQP (Advanced Message Queuing Protocol) 1.0 ist ein effizientes, zuverlässiges Messagingprotokoll auf Wire-Ebene, mit dem Sie robuste und plattformübergreifende Messaginganwendungen erstellen können.
@@ -44,7 +44,8 @@ Folgende vier JAR-Dateien müssen aus dem Apache Qpid JMS AMQP 1.0-Verteilungsar
 * geronimo-jms\_1.1\_spec-1.0.jar
 * qpid-jms-client-[version].jar
 
-> ![HINWEIS] JMS-JAR-Namen und -Versionen haben sich möglicherweise geändert. Ausführliche Informationen finden Sie unter [Qpid JMS (AMQP 1.0)](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
+> [!NOTE]
+> JMS-JAR-Namen und -Versionen haben sich möglicherweise geändert. Ausführliche Informationen finden Sie unter [Qpid JMS (AMQP 1.0)](https://qpid.apache.org/maven.html#qpid-jms-amqp-10).
 
 ## <a name="coding-java-applications"></a>Programmieren von Java-Anwendungen
 ### <a name="java-naming-and-directory-interface-jndi"></a>JNDI (Java Naming and Directory Interface; Java Benennungs- und Verzeichnisschnittstelle)

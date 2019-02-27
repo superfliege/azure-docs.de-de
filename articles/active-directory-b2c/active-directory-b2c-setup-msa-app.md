@@ -1,5 +1,5 @@
 ---
-title: Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C | Microsoft-Dokumentation
+title: 'Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto: Azure Active Directory B2C | Microsoft-Dokumentation'
 description: Bereitstellen von Registrierung und Anmeldung für Kunden mit Microsoft-Konten in Ihren Anwendungen mithilfe von Azure Active Directory B2C.
 services: active-directory-b2c
 author: davidmu1
@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0565b9ec1e78a5ce1f40e4f2e1f46e84fbb53a94
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 13e199a56a3cdd4f8e5a21f162fe0397c6f397cd
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172730"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428254"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Einrichten der Registrierung und Anmeldung mit einem Microsoft-Konto mithilfe von Azure Active Directory B2C
 
 ## <a name="create-a-microsoft-account-application"></a>Erstellen einer Microsoft-Kontoanwendung
 
-Um ein Microsoft-Konto als Identitätsanbieter in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Microsoft-Konto verfügen, können Sie eines unter [https://www.live.com/](https://www.live.com/) erstellen.
+Um ein Microsoft-Konto als [Identitätsanbieter](active-directory-b2c-reference-oidc.md) in Azure Active Directory (Azure AD) B2C verwenden zu können, müssen Sie eine Anwendung in Ihrem Mandanten erstellen, die es darstellt. Wenn Sie noch über kein Microsoft-Konto verfügen, können Sie eines unter [https://www.live.com/](https://www.live.com/) erstellen.
 
 1. Melden Sie sich beim [Microsoft App-Registrierungsportal](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) mit den Anmeldeinformationen für Ihr Microsoft-Konto an.
 2. Wählen Sie oben rechts **App hinzufügen** aus.

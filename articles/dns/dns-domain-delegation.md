@@ -4,14 +4,14 @@ description: Grundlegendes zum Ändern der Domänendelegierung und zum Verwenden
 services: dns
 author: vhorne
 ms.service: dns
-ms.date: 1/22/2019
+ms.date: 2/19/2019
 ms.author: victorh
-ms.openlocfilehash: d1de1212280c6767862233f990c9fc5e0cf97473
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 85f7318ac584e324f58d2ad470dc896e79e416d5
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54461025"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56417887"
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Delegieren von DNS-Zonen mit Azure DNS
 
@@ -27,7 +27,7 @@ Das Domain Name System ist eine Hierarchie von Domänen. Die Hierarchie beginnt 
 
 **Domänenregistrierungsstelle:** Eine Domänenregistrierungsstelle ist ein Unternehmen, das Internetdomänennamen bereitstellen kann. Das Unternehmen überprüft, ob die Internetdomäne, die Sie verwenden möchten, noch verfügbar ist, und ermöglicht es Ihnen, sie zu erwerben. Sobald der Domänenname registriert wurde, sind Sie der rechtmäßige Besitzer des Domänennamens. Wenn Sie bereits über eine Internetdomäne verfügen, verwenden Sie für die Delegierung an Azure DNS die aktuelle Domänenregistrierungsstelle.
 
-Weitere Informationen dazu, wer der Besitzer eines bestimmten Domänennamens ist, oder Informationen zum Kauf einer Domäne finden Sie im Thema zur [Verwaltung von Internetdomänen in Azure AD](https://msdn.microsoft.com/library/azure/hh969248.aspx).
+Eine Liste von anerkannten Domänenregistrierungsstellen finden Sie unter [ICANN-Accredited Registrars](https://www.icann.org/registrar-reports/accredited-list.html) (Von der ICANN anerkannte Registrierungsstellen).
 
 ### <a name="resolution-and-delegation"></a>Auflösung und Delegierung
 

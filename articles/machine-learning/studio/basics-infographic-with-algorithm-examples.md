@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodc18
 ms.date: 12/18/2017
-ms.openlocfilehash: 2db14056b6b5ccf16c8009c21bfcff00954a7802
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 78daf4534334d56c962d97e7a9aac8a7910db34c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242892"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453595"
 ---
 # <a name="downloadable-infographic-machine-learning-basics-with-algorithm-examples"></a>Herunterladbare Infografik: Grundlagen von Machine Learning mit Algorithmusbeispielen
 
@@ -33,7 +33,7 @@ Laden Sie diese einfach verständliche Infografikübersicht über Grundlagen von
 
 ## <a name="more-help-with-algorithms-for-beginners-and-advanced-users"></a>Weitere Hilfe zu Algorithmen für Einsteiger und erfahrene Benutzer
 
-* Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Gewusst wie: Auswählen von Algorithmen für Microsoft Azure Machine Learning](algorithm-choice.md).
+* Eine ausführlichere Erläuterung der verschiedenen Typen von Algorithmen für maschinelles Lernen und ihrer Verwendung sowie zur Auswahl des richtigen Algorithmus für Ihre Lösung finden Sie unter [Auswählen von Algorithmen für Azure Machine Learning Studio](algorithm-choice.md).
 * Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning unter [Modell initialisieren][initialize-model].
 * Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Modulliste von A bis Z für Machine Learning Studio][a-z-list].
 * Eine Übersicht über den Azure AI-Katalog und die zahlreichen von der Community erstellten verfügbaren Ressourcen finden Sie unter [Freigeben und Entdecken von Ressourcen im Azure AI-Katalog](gallery-how-to-use-contribute-publish.md).

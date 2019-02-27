@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/28/2018
+ms.date: 02/19/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 646d5a1aec7387d8f7ee632f5e46f988e1bc012c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: fd0f8241c07f603089b896dcfc9ece29f1e33d1c
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882215"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428203"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Übergeben eines Zugriffstokens über einen Benutzerflow an Ihre Anwendung in Azure Active Directory B2C
 
@@ -24,12 +24,12 @@ ms.locfileid: "55882215"
 
 Ein [Benutzerflow](active-directory-b2c-reference-policies.md) in Azure Active Directory B2C (Azure AD) ermöglicht es Benutzern Ihrer Anwendung, sich mit einem Identitätsanbieter zu registrieren oder anzumelden. Bei diesem Vorgang empfängt Azure AD B2C zunächst ein [Zugriffstoken](active-directory-b2c-reference-tokens.md) vom Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie aktivieren einen Anspruch in Ihrem Benutzerflow, um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registrieren.
 
-Azure AD B2C unterstützt aktuell nur die Übergabe des Zugriffstokens für [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)-Identitätsanbieter, zu denen [Facebook](active-directory-b2c-setup-fb-app.md) und [Google](active-directory-b2c-setup-goog-app.md) gehören. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
+Azure AD B2C unterstützt die Übergabe des Zugriffstokens von [OAuth 2.0](active-directory-b2c-reference-oauth-code.md)- und [OpenID Connect](active-directory-b2c-reference-oidc.md)-Identitätsanbietern. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ihre Anwendung muss einen [v2-Benutzerflow](user-flow-versions.md) verwenden.
-- Ihr Benutzerflow ist mit einem OAuth 2.0-Identitätsanbieter konfiguriert.
+- Ihr Benutzerflow ist mit einem OAuth 2.0- oder OpenID Connect-Identitätsanbieter konfiguriert.
 
 ## <a name="enable-the-claim"></a>Aktivieren des Anspruchs
 

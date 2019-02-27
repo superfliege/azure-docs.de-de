@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d8959e25280a9d1dd62549c698f7b2b6b98d6154
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.date: 02/20/2019
+ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964150"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454740"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>Verwenden der Advanced Data Security einer Azure SQL-Datenbank mit virtuellen Netzwerken und nahezu 100iger % Kompatibilität
 
@@ -47,7 +47,7 @@ Eine verwaltete Instanz kombiniert die besten Features, die sowohl in Azure SQL-
 | --- | --- |
 |Kein Kauf und keine Verwaltung von Hardware <br>Kein zusätzlicher Aufwand für die Verwaltung der zugrunde liegenden Infrastruktur <br>Schnelle Bereitstellung und Dienstskalierung <br>Automatische Patches und Versionsupgrades <br>Integration in andere PaaS-Datendienste |Betriebszeit-SLA von 99,99 %  <br>Integrierte [Hochverfügbarkeit](sql-database-high-availability.md) <br>Schutz der Daten durch [automatische Sicherungen](sql-database-automated-backups.md) <br>Vom Kunden konfigurierbare Aufbewahrungsdauer für Sicherungen <br>Vom Benutzer initiierte [Sicherungen](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>Funktion für [Point-in-Time-Datenbankwiederherstellung](sql-database-recovery-using-backups.md#point-in-time-restore) |
 |**Sicherheit und Konformität** | **Verwaltung**|
-|Isolierte Umgebung ([VNET-Integration](sql-database-managed-instance-connectivity-architecture.md), Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD-Authentifizierung](sql-database-aad-authentication.md), Unterstützung für einmaliges Anmelden <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-Anmeldungen</a> (**öffentliche Vorschau**) <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>[SQL-Überwachung](sql-database-managed-instance-auditing.md) <br>[Bedrohungserkennung](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service
+|Isolierte Umgebung ([VNET-Integration](sql-database-managed-instance-connectivity-architecture.md), Dienst mit einzelnem Mandanten, dedizierte Compute- und Speicherressourcen) <br>[Transparent Data Encryption (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD-Authentifizierung](sql-database-aad-authentication.md), Unterstützung für einmaliges Anmelden <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-Serverprinzipale (Anmeldungen)</a> (**öffentliche Vorschau**) <br>Gleiche Kompatibilitätsstandards wie für Azure SQL-Datenbank <br>[SQL-Überwachung](sql-database-managed-instance-auditing.md) <br>[Bedrohungserkennung](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager-API zur Automatisierung der Dienstbereitstellung und -skalierung <br>Funktionen des Azure-Portals für die manuelle Dienstbereitstellung und -skalierung <br>Data Migration Service
 
 Die wichtigsten Features der verwalteten Instanz sind in der folgenden Tabelle angegeben:
 
@@ -150,9 +150,9 @@ Die Migration einer verschlüsselten Datenbank zur verwalteten Instanz wird übe
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory-Integration
 
-Die Bereitstellungsoption für die verwaltete Instanz unterstützt herkömmliche SQL Server-Datenbank-Engine-Anmeldungen und in Azure Active Directory (AAD) integrierte Anmeldungen. AAD-Anmeldungen (**öffentliche Vorschau**) sind die Azure-Cloudversion von lokalen Datenbankanmeldungen, die Sie in Ihrer lokalen Umgebung verwenden. AAD-Anmeldungen ermöglichen Ihnen das Angeben von Benutzern und Gruppen von Ihrem Azure Active Directory-Mandanten als Prinzipale, die auch tatsächlich im Bereich der Instanz liegen. So können Sie jeden Vorgang auf Instanzebene ausführen – auch datenbankübergreifende Abfragen innerhalb derselben verwalteten Instanz.
+Die Bereitstellungsoption für die verwaltete Instanz unterstützt herkömmliche SQL Server-Datenbank-Engine-Anmeldungen und in Azure Active Directory (AAD) integrierte Anmeldungen. Azure AD-Serverprinzipale (Anmeldungen) (**öffentliche Vorschau**) sind die Azure-Cloudversion von lokalen Datenbankanmeldungen, die Sie in Ihrer lokalen Umgebung verwenden. Azure AD-Serverprinzipale (Anmeldungen) ermöglichen Ihnen das Angeben von Benutzern und Gruppen von Ihrem Azure Active Directory-Mandanten als Prinzipale, die auch tatsächlich im Bereich der Instanz liegen. So können Sie jeden Vorgang auf Instanzebene ausführen – auch datenbankübergreifende Abfragen innerhalb derselben verwalteten Instanz.
 
-Eine neue Syntax wird eingeführt, um AAD-Anmeldungen zu erstellen (**öffentliche Vorschau**), **FROM EXTERNAL PROVIDER**. Weitere Informationen zur Syntax finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>, und lesen Sie auch den Artikel [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
+Eine neue Syntax wird eingeführt, um Azure AD-Serverprinzipale (Anmeldungen) zu erstellen (**öffentliche Vorschau**), **FROM EXTERNAL PROVIDER**. Weitere Informationen zur Syntax finden Sie unter <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">CREATE LOGIN</a>, und lesen Sie auch den Artikel [Bereitstellen eines Azure Active Directory-Administrators für Ihre verwaltete SQL-Datenbank-Instanz](sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-managed-instance).
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory-Integration und Multi-Factor Authentication
 

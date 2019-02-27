@@ -11,20 +11,20 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 203cb07c9450a590b45caa66092fe0199d985058
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978152"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56342676"
 ---
-# <a name="try-the-speech-service-for-free"></a>Kostenloses Testen des Speech-Diensts
+# <a name="try-speech-services-for-free"></a>Kostenloses Testen von Speech Services
 
 Die ersten Schritte mit dem Speech-Dienst sind einfach und erschwinglich. Mit einer 30-tägigen kostenlosen Testversion können Sie die Funktionen des Diensts kennenlernen und feststellen, ob er sich für Ihre Anwendungen eignet.
 
-Wenn Sie mehr Zeit benötigen, können Sie sich für ein Microsoft Azure-Konto registrieren: Es beinhaltet ein Guthaben von 200 US-Dollar, das Sie bis zu 30 Tage lang auf ein kostenpflichtiges Abonnement für den Speech-Dienst anwenden können.
+Wenn Sie mehr Zeit benötigen, können Sie sich für ein Microsoft Azure-Konto registrieren. Es sieht ein Guthaben von 200 US-Dollar vor, das Sie bis zu 30 Tage auf ein kostenpflichtiges Abonnement für den Speech-Dienst anwenden können.
 
-Schließlich bietet der Speech-Dienst einen kostenlosen Tarif mit geringem Datenvolumen, der sich für die Entwicklung von Anwendungen eignet. Dieses kostenlose Abonnement können Sie auch nach Ablauf des Guthabens behalten.
+Schließlich bieten Speech Services einen kostenlosen Tarif mit geringem Datenvolumen, der sich für die Entwicklung von Anwendungen eignet. Dieses kostenlose Abonnement können Sie auch nach Ablauf des Guthabens behalten.
 
 ## <a name="free-trial"></a>Kostenlose Testversion
 
@@ -36,9 +36,9 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
 1. Wählen Sie die Registerkarte **Spracheingabe-APIs** aus.
 
-   ![Registerkarte „Sprachdienste“](media/index/try-speech-api-free-trial1.png)
+   ![Registerkarte „Speech Services“](media/index/try-speech-api-free-trial1.png)
 
-1. Wählen Sie unter **Sprachdienste** die Schaltfläche **API-Schlüssel abrufen** aus.
+1. Wählen Sie unter **Speech Services** die Schaltfläche **API-Schlüssel anfordern** aus.
 
    ![API-Schlüssel](media/index/try-speech-api-free-trial2.png)
 
@@ -50,24 +50,24 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
     Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Klicken Sie zunächst auf **Mit Microsoft anmelden** und dann auf **Konto erstellen**, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
 
-Nachdem Sie sich bei „Cognitive Services ausprobieren“ angemeldet haben, beginnt Ihr kostenloser Testzeitraum. Auf der angezeigten Webseite sind alle Azure Cognitive Services-Dienste aufgeführt, für die Sie zurzeit über Testabonnements verfügen. Neben **Sprachdienste** werden zwei Abonnementschlüssel angezeigt. Sie können beide Schlüssel in Ihren Anwendungen verwenden.
+Nachdem Sie sich bei „Cognitive Services ausprobieren“ angemeldet haben, beginnt Ihr kostenloser Testzeitraum. Auf der angezeigten Webseite sind alle Azure Cognitive Services-Dienste aufgeführt, für die Sie zurzeit über Testabonnements verfügen. Neben **Speech Services** werden zwei Abonnementschlüssel angezeigt. Sie können beide Schlüssel in Ihren Anwendungen verwenden.
 
 > [!NOTE]
 > Alle kostenlosen Testabonnements sind der Region „USA, Westen“ zugewiesen. Wenn Sie Anforderungen vornehmen, müssen Sie den `westus`-Endpunkt verwenden.
 
 ## <a name="new-azure-account"></a>Neues Azure-Konto
 
-Neue Azure-Konten erhalten ein Guthaben von 200 USD, das bis zu 30 Tage lang verfügbar ist. Sie können dieses Guthaben zum weiteren Testen des Sprachdiensts oder zur Anwendungsentwicklung verwenden.
+Neue Azure-Konten erhalten ein Guthaben von 200 USD, das bis zu 30 Tage lang verfügbar ist. Sie können dieses Guthaben zum weiteren Testen der Speech Services oder zur Anwendungsentwicklung verwenden.
 
 Um sich für ein neues Azure-Konto zu registrieren, navigieren Sie zur [Azure-Registrierungsseite](https://azure.microsoft.com/free/ai/), klicken Sie auf **Kostenlos starten**, und erstellen Sie ein neues Azure-Konto mithilfe Ihres Microsoft-Kontos.
 
 Sie können sich für ein kostenloses Microsoft-Konto im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Klicken Sie zunächst auf **Mit Microsoft anmelden** und dann auf **Konto erstellen**, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
 
-Nachdem Sie das Azure-Konto erstellt haben, führen Sie die Schritte im nächsten Abschnitt aus, um ein Abonnement für den Sprachdienst zu erstellen.
+Nachdem Sie das Azure-Konto erstellt haben, führen Sie die Schritte im nächsten Abschnitt aus, um ein Abonnement für die Speech Services zu erstellen.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Erstellen einer Speech-Ressource in Azure
 
-Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Sprachdiensts (kostenloser oder kostenpflichtiger Tarif) hinzuzufügen.
+So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech Services-Ressource hinzu
 
 1. Melden Sie sich mit Ihrem Microsoft-Konto am [Azure-Portal](https://portal.azure.com/) an.
 
@@ -89,9 +89,9 @@ Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Sprachdiensts (
 
     * Einen Namen für die neue Ressource. Über den Namen können Sie mehrere Abonnements für denselben Dienst unterscheiden.
     * Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
-    * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit ist der Speech-Dienst in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
+    * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit sind die Speech Services in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
     * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
-    * Erstellen Sie eine neue Ressourcengruppe für dieses Abonnement für den Sprachdienst, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
+    * Erstellen Sie eine neue Ressourcengruppe für dieses Speech-Abonnement, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
     * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.
     * Klicken Sie auf **Erstellen**.
 
@@ -114,7 +114,7 @@ Um von einem Abonnement zu einem anderen zu wechseln (z.B. wenn Ihre kostenlose 
 > Schlüssel der kostenlosen Testversion werden in der Region „USA, Westen“ (`westus`) erstellt. Ein über das Azure-Dashboard erstelltes Abonnement kann sich in einer anderen Region befinden, wenn Sie dies wünschen.
 
 * Wenn Ihre Anwendung ein [Speech SDK](speech-sdk.md) verwendet, geben Sie beim Erstellen einer Sprachkonfiguration den Regionscode (z.B. `westus`) an.
-* Wenn Ihre Anwendung eine der [REST-APIs](rest-apis.md) des Sprachdiensts verwendet, ist die Region Teil des Endpunkt-URIs, den Sie bei der Anforderung verwenden.
+* Wenn Ihre Anwendung eine der [REST-APIs](rest-apis.md) der Speech Services verwendet, ist die Region Teil des Endpunkt-URI, den Sie bei der Anforderung verwenden.
 
 Schlüssel, die für eine Region erstellt wurden, sind nur in dieser Region gültig. Der Versuch, sie mit anderen Regionen zu verwenden, führt zu Authentifizierungsfehlern.
 

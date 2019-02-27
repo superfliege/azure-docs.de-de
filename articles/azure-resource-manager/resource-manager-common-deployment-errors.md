@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/16/2018
+ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: 600b79ec0b34d6b79b1b56719dd800bbe8ec803a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a5c08536614476de38c7bfde524a12163162bed4
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487148"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339259"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -36,7 +36,7 @@ In diesem Artikel werden einige häufige Azure-Bereitstellungsfehler beschrieben
 | AccountPropertyCannotBeSet | Überprüfen Sie die verfügbaren Speicherkontoeigenschaften. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
 | AllocationFailed | Im Cluster oder in der Region sind keine Ressourcen verfügbar, oder die angeforderte Größe des virtuellen Computers kann nicht unterstützt werden. Wiederholen Sie die Anforderung zu einem späteren Zeitpunkt, oder fordern Sie eine andere Größe für den virtuellen Computer an. | [Bereitstellungs- und Zuteilungsprobleme bei Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md) und [Bereitstellungs- und Zuteilungsprobleme bei Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) und [Problembehandlung bei Zuordnungsfehlern](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Warten Sie, bis der gleichzeitige Vorgang abgeschlossen ist. | |
-| AuthorizationFailed | Ihr Konto oder Dienstprinzipal verfügt nicht über ausreichende Zugriffsberechtigungen zum Durchführen der Bereitstellung. Überprüfen Sie die Rolle, zu der Ihr Konto gehört, sowie deren Zugriffsberechtigungen für den Bereitstellungsumfang. | [Rollenbasierte Access Control in Azure](../role-based-access-control/role-assignments-portal.md) |
+| AuthorizationFailed | Ihr Konto oder Dienstprinzipal verfügt nicht über ausreichende Zugriffsberechtigungen zum Durchführen der Bereitstellung. Überprüfen Sie die Rolle, zu der Ihr Konto gehört, sowie deren Zugriffsberechtigungen für den Bereitstellungsumfang.<br><br>Unter Umständen wird dieser Fehler angezeigt, wenn ein erforderlicher Ressourcenanbieter nicht registriert ist. | [Rollenbasierte Access Control in Azure](../role-based-access-control/role-assignments-portal.md)<br><br>[Lösen von Registrierungsfehlern](resource-manager-register-provider-errors.md) |
 | BadRequest | Sie haben Bereitstellungswerte gesendet, die nicht den von Resource Manager erwarteten Werten entsprechen. Überprüfen Sie die interne Statusmeldung, um Hilfe zur Problembehandlung zu erhalten. | [Vorlagenreferenz](/azure/templates/) und [Unterstützte Speicherorte](resource-manager-templates-resources.md#location) |
 | Konflikt: | Sie fordern einen Vorgang an, der im aktuellen Zustand der Ressource nicht zulässig ist. Eine Größenänderung für den Datenträger ist beispielsweise nur zulässig, wenn ein virtueller Computer erstellt wird oder die Zuweisung des virtuellen Computers aufgehoben wurde. | |
 | DeploymentActive | Warten Sie, bis die gleichzeitige Bereitstellung für diese Ressourcengruppe abgeschlossen ist. | |

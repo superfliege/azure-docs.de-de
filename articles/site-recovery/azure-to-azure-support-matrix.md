@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 01/21/2019
 ms.author: raynew
-ms.openlocfilehash: 5f3d884720bce5777a358a27dc477eabd5263d0c
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4c58d053412b8f90b6423454fcda814e8cf6da75
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245183"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56329012"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Unterstützungsmatrix für die Replikation von einer Azure-Region in eine andere
 
@@ -177,8 +177,8 @@ In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Da
 
 **Komponente** | **Unterstützung** | **Details**
 --- | --- | ---
-Maximale Größe des Betriebssystemdatenträgers | 2.048 GB | [Erfahren Sie mehr](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms) zu VM-Datenträgern.
-Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer von der Replikation ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)
+Maximale Größe des Betriebssystemdatenträgers | 2.048 GB | [Erfahren Sie mehr](../virtual-machines/windows/managed-disks-overview.md) zu VM-Datenträgern.
+Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer von der Replikation ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/windows/managed-disks-overview.md)
 Maximale Größe des Datenträgers | 4095 GB |
 Maximale Anzahl von Datenträgern | Bis zu 64, gemäß der Unterstützung für eine bestimmte Azure-VM-Größe | [Erfahren Sie mehr](../virtual-machines/windows/sizes.md) zu VM-Größen.
 Änderungsrate für Datenträger | Maximal 10 MBit/s pro Datenträger für Storage Premium. Maximal 2 MBit/s pro Datenträger für Standardspeicher. | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über dem Maximalwert liegt, kann dies durch die Replikation nicht aufgeholt werden.<br/><br/>  Falls der Maximalwert aber nur sporadisch überschritten wird, kann die Replikation aufholen, aber es kommt ggf. zu einer leichten Verzögerung bei den Wiederherstellungspunkten.
@@ -194,7 +194,7 @@ Verschlüsselung ruhender Daten (SSE) | Unterstützt | SSE ist die Standardeinst
 Azure Disk Encryption (ADE) für Windows | VMs, die für die [Verschlüsselung mit der Azure AD-App aktiviert sind](https://aka.ms/ade-aad-app), werden unterstützt. |
 Azure Disk Encryption (ADE) für Linux | Nicht unterstützt |
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nicht unterstützt | Wenn Sie Datenträger auf dem virtuellen Computer hinzufügen oder entfernen, müssen Sie die Replikation deaktivieren und dann für den virtuellen Computer wieder aktivieren.
-Ausschließen von Datenträgern | Nicht unterstützt|   Temporäre Datenträger sind standardmäßig ausgeschlossen.
+Ausschließen von Datenträgern | [Unterstützt über PowerShell](https://review.docs.microsoft.com/azure/site-recovery/azure-to-azure-powershell?branch=pr-en-us-66458#replicate-azure-virtual-machine) |  Temporäre Datenträger sind standardmäßig ausgeschlossen.
 Speicherplätze direkt  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
 Dateiserver mit horizontaler Skalierung  | Für absturzkonsistente Wiederherstellungspunkte unterstützt. Anwendungskonsistente Wiederherstellungspunkte werden nicht unterstützt. |
 LRS | Unterstützt |

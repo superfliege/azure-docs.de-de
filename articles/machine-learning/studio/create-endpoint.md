@@ -1,7 +1,7 @@
 ---
-title: Erstellen von Webdienstendpunkten
+title: Erstellen von Webdienst-Endpunkten
 titleSuffix: Azure Machine Learning Studio
-description: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
+description: Erstellen von Webdienst-Endpunkten in Azure Machine Learning Studio Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -9,48 +9,46 @@ ms.topic: article
 author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18
-ms.date: 10/04/2016
-ms.openlocfilehash: fc3a92aaf13f13682cfc56333618436ffe3d65ef
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.date: 02/15/2019
+ms.openlocfilehash: 62505a89be5535f7b8b7b50ad2462e33d44db57a
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55493370"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56454003"
 ---
-# <a name="creating-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Erstellen von Endpunkten für bereitgestellte Azure Machine Learning Studio-Webdienste
+# <a name="create-endpoints-for-deployed-azure-machine-learning-studio-web-services"></a>Erstellen von Endpunkten für bereitgestellte Azure Machine Learning Studio-Webdienste
+
 > [!NOTE]
->  In diesem Thema werden für einen **klassischen** Machine Learning-Webdienst geltende Verfahren beschrieben.
-> 
-> 
+> Die in diesem Thema beschriebenen Verfahren beziehen sich auf einen **klassischen** Machine Learning-Webdienst.
 
-Wenn Sie Webdienste erstellen, die Sie an Ihre Kunden weiter verkaufen, müssen Sie jedem Kunden trainierte Modelle zur Verfügung stellen, die weiter mit dem Experiment verknüpft sind, anhand dessen der Webdienst erstellt wurde. Darüber hinaus müssen Aktualisierungen am Experiment selektiv auf einen Endpunkt angewendet werden, ohne die Anpassungen zu überschreiben.
+Nach der Bereitstellung eines Webdiensts wird ein Standardendpunkt für den Dienst erstellt. Der Standardendpunkt kann über seinen API-Schlüssel aufgerufen werden. Über das Webdienstportal können Sie zusätzliche Endpunkte mit eigenen Schlüsseln hinzufügen.
+Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet. Zu jedem Endpunkt gehören eine eindeutige URL und ein Autorisierungsschlüssel, den Sie zur Verteilung an Ihre Kunden nutzen können.
 
-Hierzu ermöglicht Ihnen Azure Machine Learning Studio, mehrere Endpunkte für einen bereitgestellten Webdienst zu erstellen. Jeder Endpunkt im Webdienst wird unabhängig adressiert, gedrosselt und verwaltet. Zu jedem Endpunkt gehört eine eindeutige URL und ein Autorisierungsschlüssel zur Verteilung an Ihre Kunden.
+## <a name="add-endpoints-to-a-web-service"></a>Hinzufügen von Endpunkten zu einem Webdienst
 
-
-
-## <a name="adding-endpoints-to-a-web-service"></a>Hinzufügen von Endpunkten zu einem Webdienst
-Es gibt zwei Möglichkeiten zum Hinzufügen eines Endpunkts zu einem Webdienst.
-
-* Programmgesteuert
-* Über das Azure Machine Learning Web Services-Portal
-
-Nach dem Erstellen kann der Endpunkt über synchrone APIs, Batch-APIs und Excel-Arbeitsblätter genutzt werden. Zusätzlich zum Hinzufügen von Endpunkten über diese Benutzeroberfläche können Sie auch die Endpunktverwaltungs-APIs verwenden, um Endpunkte programmgesteuert hinzuzufügen.
+Mithilfe des Azure Machine Learning-Webdienstportals können Sie einen Endpunkt zu einem Webdienst hinzufügen. Nach dem Erstellen kann der Endpunkt über synchrone APIs, Batch-APIs und Excel-Arbeitsblätter genutzt werden.
 
 > [!NOTE]
 > Wenn Sie dem Webdienst zusätzliche Endpunkte hinzugefügt haben, können Sie den Standardendpunkt nicht löschen.
-> 
-> 
 
-## <a name="adding-an-endpoint-programmatically"></a>Programmgesteuertes Hinzufügen eines Endpunkts
-Sie können Ihrem Webdienst einen Endpunkt mithilfe des Beispielcodes [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs) programmgesteuert hinzufügen.
-
-## <a name="adding-an-endpoint-using-the-azure-machine-learning-web-services-portal"></a>Hinzufügen eines Endpunkts über das Azure Machine Learning Web Services-Portal
 1. Klicken Sie in Machine Learning Studio links auf „Webdienste“.
-2. Klicken Sie unten im Dashboard des Webdiensts auf **Manage endpoints**. Das Azure Machine Learning Web Services-Portal wird mit der Seite mit den Endpunkten für den Webdienst geöffnet.
+2. Klicken Sie unten im Dashboard des Webdiensts auf **Manage endpoints** (Endpunkte verwalten). Das Azure Machine Learning-Webdienstportal wird mit der Seite mit den Endpunkten für den Webdienst geöffnet.
 3. Klicken Sie auf **New**.
 4. Geben Sie einen Namen und eine Beschreibung für den neuen Endpunkt ein. Endpunktnamen dürfen maximal 24 Zeichen lang sein und müssen aus Kleinbuchstaben oder Zahlen bestehen. Wählen Sie die Protokollierungsstufe aus, und legen Sie fest, ob Beispieldaten aktiviert sind. Weitere Informationen zur Protokollierung finden Sie unter [Aktivieren der Protokollierung für Machine Learning-Webdienste](web-services-logging.md).
 
-## <a name="next-steps"></a>Nächste Schritte
-[Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md)
+## <a id="scaling"></a> Skalieren eines Webdiensts durch Hinzufügen zusätzlicher Endpunkte
 
+Standardmäßig ist jeder veröffentlichte Webdienst so konfiguriert, dass er 20 Anforderungen gleichzeitig unterstützt, wobei maximal 200 Anforderungen gleichzeitig unterstützt werden können. Azure Machine Learning Studio optimiert die Einstellung automatisch, um die beste Leistung für Ihren Webdienst zu bieten. Der Portalwert wird ignoriert.
+
+Wenn Sie die API stärker als mit dem unterstützen Maximalwert von 200 gleichzeitigen Aufrufen auslasten möchten, müssen Sie mehrere Endpunkte im gleichen Webdienst erstellen. Sie können die Last dann wahllos auf alle Endpunkte verteilen.
+
+Die Skalierung eines Webdiensts ist eine gängige Aufgabe. Gründe für die Skalierung sind eine Unterstützung von mehr als 200 gleichzeitigen Anforderungen, das Erhöhen der Verfügbarkeit mittels mehrerer Endpunkte oder das Bereitstellen getrennter Endpunkte für den Webdienst. Sie können die Skalierung erhöhen, indem Sie über das [Azure Machine Learning-Webdienstportal](https://services.azureml.net/) zusätzliche Endpunkte für den gleichen Webdienst hinzufügen.
+
+Bedenken Sie, dass sich eine hohe Anzahl gleichzeitiger Aufrufe nachteilig auswirken kann, wenn die API nicht mit einer entsprechend hohen Rate aufgerufen wird. Es können sporadische Timeouts und/oder Spitzen in die Latenz auftreten, wenn eine für eine hohe Auslastung konfigurierte API relativ gering ausgelastet wird.
+
+Die synchronen APIs werden in der Regel in Situationen verwendet, in denen eine niedrige Latenz erwünscht ist. Mit Latenz ist hier der Zeitraum gemeint, der von der API benötigt wird, um eine Anforderung abzuschließen, wobei keinerlei Netzwerkverzögerungen berücksichtigt werden. Angenommen, Sie haben eine API mit einer Latenz von 50 ms (Millisekunden). Um die verfügbare Kapazität mit der Drosselungsstufe High (Hoch) und einer Höchstzahl gleichzeitiger Anrufe = 20 voll nutzen zu können, müssen Sie diese API 20 * 1000 / 50 = 400 Mal pro Sekunde aufrufen. Wenn dieses Beispiel fortgesponnen wird, ermöglicht eine Höchstzahl von 200 gleichzeitigen Aufrufen 4.000 Aufrufe der API pro Sekunde, sofern die Latenz 50 ms beträgt.
+
+## <a name="next-steps"></a>Nächste Schritte
+
+[Nutzen eines Azure Machine Learning-Webdiensts](consume-web-services.md)

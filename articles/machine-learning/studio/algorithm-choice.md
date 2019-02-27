@@ -10,20 +10,24 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-ms.author=pakalra, previous-author=pakalra
 ms.date: 12/18/2017
-ms.openlocfilehash: 222891df5b54a8f2c3464fc3bddf9f6b32c28d36
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2955ebb97ed4875dadababd41c9ee2c78846a96c
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244792"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56456978"
 ---
 # <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Auswählen von Algorithmen für Azure Machine Learning Studio
 
 Die Antwort auf die Frage „Welchen Algorithmus für Machine Learning sollte ich verwenden?“ lautet immer „Kommt darauf an“. Es hängt von der Größe, Qualität und Art der Daten ab. Es hängt davon ab, was Sie mit der Antwort anfangen möchten. Es hängt davon ab, wie die mathematische Logik des Algorithmus in Anweisungen für den Computer übersetzt wurde, den Sie verwenden. Und es hängt davon ab, wie viel Zeit Sie haben. Selbst der erfahrenste Datenanalyst kann Ihnen nicht sagen, welcher Algorithmus die besten Ergebnisse liefert, bevor er ihn ausprobiert hat.
 
+Machine Learning Studio unterstützt moderne Algorithmen, z.B. skalierbare Boosted Decision-Strukturen, Bayessche Empfehlungssysteme, tiefe neuronale Netze und die von Microsoft Research entwickelten „Entscheidungsdschungel“. Skalierbare Open Source-Pakete für Machine Learning-Pakete, z.B. Vowpal Wabbit, sind ebenfalls enthalten. Machine Learning Studio unterstützt Algorithmen für Machine Learning für mehrklassige und binäre Klassifizierung, Regression und Clustering. Siehe die vollständigen Liste der [Machine Learning-Module](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/index).
+Die Dokumentation enthält einige Informationen zu jedem Algorithmus und zur Anpassung von Parametern, um den Algorithmus für Ihre Zwecke zu optimieren.  
+
+
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Das "Machine Learning – Cheat Sheet für Algorithmen"
 
-Das **Cheat Sheet für Microsoft Azure Machine Learning-Algorithmen** erleichtert Ihnen die Auswahl des richtigen Lernalgorithmus für Predictive Analytics-Lösungen aus der Azure Machine Learning Studio-Algorithmusbibliothek.
+Das **Cheat Sheet für Microsoft Azure Machine Learning Studio-Algorithmen** erleichtert Ihnen die Auswahl des richtigen Lernalgorithmus für Predictive Analytics-Lösungen aus der Azure Machine Learning Studio-Algorithmusbibliothek.
 In diesem Artikel werden Sie durch seine Verwendung geführt.
 
 > [!NOTE]
@@ -31,7 +35,7 @@ In diesem Artikel werden Sie durch seine Verwendung geführt.
 > 
 > 
 
-Dieses Cheat Sheet richtet sich an eine ganz bestimmte Zielgruppe: einen unerfahrenen Datenanalysten mit Machine Learning-Kenntnissen auf Studentenniveau, der einen Algorithmus für den Einstieg in Azure Machine Learning Studio auswählen möchte. Dies bedeutet, dass einige Verallgemeinerungen und Vereinfachungen getroffen werden, Sie aber dennoch auf dem richtigen Weg sind. Dies bedeutet außerdem, dass hier zahlreiche Algorithmen nicht aufgeführt sind. Der Satz verfügbarer Methoden in Azure Machine Learning wächst stetig, und sobald er vollständiger ist, werden wir einen neuen hinzufügen.
+Dieses Cheat Sheet richtet sich an eine ganz bestimmte Zielgruppe: einen unerfahrenen Datenanalysten mit Machine Learning-Kenntnissen auf Studentenniveau, der einen Algorithmus für den Einstieg in Azure Machine Learning Studio auswählen möchte. Dies bedeutet, dass einige Verallgemeinerungen und Vereinfachungen getroffen werden, Sie aber dennoch auf dem richtigen Weg sind. Dies bedeutet außerdem, dass hier zahlreiche Algorithmen nicht aufgeführt sind. Der Satz verfügbarer Methoden in Azure Machine Learning Studio wächst stetig, und sobald er vollständiger ist, werden wir einen neuen hinzufügen.
 
 Diese Empfehlungen sind eine Zusammenstellung aus Feedback und Tipps von zahlreichen Datenanalysten und Machine Learning-Experten. Wir konnten uns nicht bei allem einigen, aber ich habe versucht, unsere Meinung zu einem groben Konsens zu vereinheitlichen. Die meisten Aussagen bei abweichenden Meinungen beginnen mit "Es hängt davon ab...".
 
@@ -52,7 +56,7 @@ Hier folgt ein Beispiel aus der [Azure AI Gallery](http://gallery.azure.ai/). Da
 
 Algorithmen zum beaufsichtigten Lernen treffen Vorhersagen auf Grundlage eines Satzes von Beispielen. Beispielsweise können historische Aktienkurse herangezogen werden, um Vermutungen über zukünftige Preise abzugeben. Jedes für das Training verwendete Beispiel wird mit dem Wert der von Interesse ist, bezeichnet – in diesem Fall dem Aktienkurs. Ein Algorithmus zum beaufsichtigten Lernen sucht nach Mustern in diesen Wertebezeichnungen. Er kann alle Informationen verwenden, die relevant sein könnten – den Wochentag, die Jahreszeit, die Finanzdaten des Unternehmens, den Branchentyp, das Vorhandensein störender geopolitischer Ereignisse – und jeder Algorithmus sucht nach anderen Arten von Mustern. Nachdem der Algorithmus das beste Muster gefunden hat, das ihm möglich ist, verwendet er dieses Muster, um Vorhersagen für bezeichnungslose Testdaten zu treffen – die Preise von morgen.
 
-Beaufsichtigtes Lernen ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Mit einer Ausnahme sind alle Module in Azure Machine Learning Algorithmen zum beaufsichtigten Lernen. Es gibt mehrere spezifische Typen beaufsichtigten Lernens, die in Azure Machine Learning repräsentiert werden: Klassifizierung, Regression und Erkennung von Anomalien.
+Beaufsichtigtes Lernen ist eine häufige und nützliche Verwendung für das maschinelle Lernen. Mit einer Ausnahme sind alle Module in Azure Machine Learning Studio Algorithmen zum beaufsichtigten Lernen. Es gibt mehrere spezifische Typen beaufsichtigten Lernens, die in Azure Machine Learning Studio repräsentiert werden: Klassifizierung, Regression und Erkennung von Anomalien.
 
 * **Klassifizierung**. Wenn die Daten zur Vorhersage einer Kategorie verwendet werden, wird beaufsichtigtes Lernen auch als Klassifizierung bezeichnet. Dies ist der Fall, wenn ein Bild als ein Bild einer "Katze" oder eines "Hundes" eingeordnet wird. Wenn es nur zwei Auswahlmöglichkeiten gibt, wird dies als **zweiklassige** oder **binomiale Klassifizierung** bezeichnet. Wenn es mehr Kategorien gibt, z. B. beim Vorhersagen des Gewinners des NCAA March Madness-Turniers, ist dieses Problem als **mehrklassige Klassifizierung** bekannt.
 * **Regression**. Wenn ein Wert vorhergesagt wird, wie bei Aktienkursen, wird beaufsichtigtes Lernen als Regression bezeichnet.
@@ -65,7 +69,7 @@ Beim unbeaufsichtigten Lernen sind Datenpunkten keine Bezeichnungen zugeordnet. 
 ### <a name="reinforcement-learning"></a>Vertiefendes Lernen
 
 Beim vertiefenden Lernen wählt der Algorithmus eine Aktion als Reaktion auf jeden Datenpunkt aus. Der Lernalgorithmus erhält außerdem kurz danach ein Erfolgssignal, das angibt, wie gut die Entscheidung war.
-Auf dieser Grundlage ändert der Algorithmus die Strategie zum Erreichen des bestmöglichen Ergebnisses. Derzeit bietet Azure Machine Learning keine Algorithmen zum vertiefenden Lernen. Vertiefendes Lernen wird häufig in der Robotik angewendet. Dabei ist der Satz der Sensorenwerte zu einem bestimmten Zeitpunkt ein Datenpunkt, und der Algorithmus muss dann die nächste Aktion des Roboters auswählen. Diese Methode eignet sich auch für Anwendungen im Zusammenhang mit dem Internet der Dinge.
+Auf dieser Grundlage ändert der Algorithmus die Strategie zum Erreichen des bestmöglichen Ergebnisses. Derzeit bietet Azure Machine Learning Studio keine Algorithmen zum vertiefenden Lernen. Vertiefendes Lernen wird häufig in der Robotik angewendet. Dabei ist der Satz der Sensorenwerte zu einem bestimmten Zeitpunkt ein Datenpunkt, und der Algorithmus muss dann die nächste Aktion des Roboters auswählen. Diese Methode eignet sich auch für Anwendungen im Zusammenhang mit dem Internet der Dinge.
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>Überlegungen bei der Auswahl eines Algorithmus
 
@@ -81,14 +85,14 @@ Wenn nur begrenzte Zeit zur Verfügung steht, kann dies die Auswahl des Algorith
 
 ### <a name="linearity"></a>Linearität
 
-Viele Algorithmen für maschinelles Lernen nutzen Linearität. Lineare Klassifizierungsalgorithmen gehen davon aus, dass sich Klassen durch einer gerade Linie (oder deren höher dimensionale Entsprechung) trennen lassen. Dies schließt logistische Regression und Support Vector Machines ein (wie sie in Azure Machine Learning implementiert sind).
+Viele Algorithmen für maschinelles Lernen nutzen Linearität. Lineare Klassifizierungsalgorithmen gehen davon aus, dass sich Klassen durch einer gerade Linie (oder deren höher dimensionale Entsprechung) trennen lassen. Dies schließt logistische Regression und Support Vector Machines ein (wie sie in Azure Machine Learning Studio implementiert sind).
 Linear Regressionsalgorithmen gehen davon aus, dass Datentrends einer geraden Linie folgen. Diese Annahmen sind für einige Probleme nicht schlecht, verschlechtern bei anderen aber die Genauigkeit.
 
-![Nicht lineare Klassengrenze][1]
+![Nicht lineare Klassengrenze](./media/algorithm-choice/image1.png)
 
 ***Nicht lineare Klassengrenze*** *– Die Verwendung eines linearen Klassifizierungsalgorithmus würde zu einer verringerten Genauigkeit führen.*
 
-![Daten mit einem nicht linearen Trend][2]
+![Daten mit einem nicht linearen Trend](./media/algorithm-choice/image2.png)
 
 ***Daten mit einem nicht linearen Trend*** *– Die Verwendung einer linearen Regressionsmethode würde wesentlich höhere Fehler erzeugen als nötig.*
 
@@ -98,7 +102,7 @@ Trotz ihrer Gefahren sind lineare Algorithmen als erster Ansatzpunkt sehr belieb
 
 Parameter sind die Knöpfe, an denen ein Datenanalyst drehen kann, wenn er einen Algorithmus einrichtet. Es handelt sich dabei um Zahlen, die das Verhalten des Algorithmus beeinflussen, z. B. Fehlertoleranz oder Anzahl von Iterationen oder Optionen zwischen Varianten der Verhaltensweisen des Algorithmus. Die Trainingsdauer und die Genauigkeit des Algorithmus können beim Finden der richtigen Einstellungen manchmal sehr empfindlich reagieren. Normalerweise erfordern Algorithmen mit vielen Parametern die meisten Testversuche, um eine gute Kombination zu finden.
 
-Alternativ biete Azure Machine Learning den Modulblock [Parameter Sweeping](algorithm-parameters-optimize.md) , der automatisch alle Parameterkombinationen bei der von Ihnen beliebig auswählbaren Granularität ausprobiert. Zwar stellt dies eine hervorragende Möglichkeit dar, um sicherzustellen, dass Sie den gesamten Parameterbereich abgedeckt haben, doch die Zeit, die zum Trainieren eines Modells erforderlich ist, steigt exponentiell mit der Anzahl der Parameter.
+Alternativ biete Azure Machine Learning Studio den Modulblock [Parameter Sweeping](algorithm-parameters-optimize.md), der automatisch alle Parameterkombinationen bei der von Ihnen beliebig auswählbaren Granularität ausprobiert. Zwar stellt dies eine hervorragende Möglichkeit dar, um sicherzustellen, dass Sie den gesamten Parameterbereich abgedeckt haben, doch die Zeit, die zum Trainieren eines Modells erforderlich ist, steigt exponentiell mit der Anzahl der Parameter.
 
 Der Vorteil ist, dass das Vorhandensein vieler Parameter normalerweise darauf hindeutet, dass ein Algorithmus über größere Flexibilität verfügt. Mit ihm kann man häufig eine sehr gute Genauigkeit erzielen. Vorausgesetzt, dass Sie die richtige Kombination von Parametereinstellungen finden.
 
@@ -155,7 +159,7 @@ Einige Lernalgorithmen treffen bestimmte Annahmen über die Struktur der Daten o
 Wie zuvor erwähnt, passt die [lineare Regression](https://msdn.microsoft.com/library/azure/dn905978.aspx) eine Linie (oder Ebene oder Hyperebene) an das Dataset an. Es handelt sich um ein Arbeitspferd, einfach und schnell, aber möglicherweise ein wenig zu stark vereinfachend für einige Probleme.
 Hier finden Sie ein [Tutorial zur linearen Regression](linear-regression-in-azure.md).
 
-![Daten mit einem linearen Trend][3]
+![Daten mit einem linearen Trend](./media/algorithm-choice/image3.png)
 
 ***Daten mit einem linearen Trend***
 
@@ -163,7 +167,7 @@ Hier finden Sie ein [Tutorial zur linearen Regression](linear-regression-in-azur
 
 Obwohl es verwirrenderweise „Regression“ im Namen trägt, handelt es sich bei der logistischen Regression tatsächlich um ein leistungsfähiges Tool für die [zweiklassige](https://msdn.microsoft.com/library/azure/dn905994.aspx) und [mehrklassige](https://msdn.microsoft.com/library/azure/dn905853.aspx) Klassifizierung. Sie ist schnell und einfach. Die Tatsache, dass sie eine S-förmige Kurve anstelle einer geraden Linie verwendet, prädestiniert sie für den Einsatz beim Unterteilen von Daten in Gruppen. Die logistische Regression liefert lineare Klassengrenzen. Wenn Sie sie also verwenden, vergewissern Sie sich, dass Sie mit einer linearen Näherung leben können.
 
-![Logistische Regression mit zweiklassigen Daten mit nur einem Merkmal][4]
+![Logistische Regression mit zweiklassigen Daten mit nur einem Merkmal](./media/algorithm-choice/image4.png)
 
 ***Eine logistische Regression mit zweiklassigen Daten mit nur einem Merkmal*** *– die Klassengrenze ist der Punkt, an dem die logistische Kurve gleich nah an beiden Klassen ist*
 
@@ -171,7 +175,7 @@ Obwohl es verwirrenderweise „Regression“ im Namen trägt, handelt es sich be
 
 Decision Forests (Entscheidungswälder; [Regression](https://msdn.microsoft.com/library/azure/dn905862.aspx), [zweiklassig](https://msdn.microsoft.com/library/azure/dn906008.aspx) und [mehrklassig](https://msdn.microsoft.com/library/azure/dn906015.aspx)), Decision Jungles (Entscheidungsdschungel; [zweiklassig](https://msdn.microsoft.com/library/azure/dn905976.aspx) und [mehrklassig](https://msdn.microsoft.com/library/azure/dn905963.aspx)) und Boosted Decision Trees (verstärkte Entscheidungsbäume; [Regression](https://msdn.microsoft.com/library/azure/dn905801.aspx) und [zweiklassig](https://msdn.microsoft.com/library/azure/dn906025.aspx)) basieren alle auf Entscheidungsbäumen (Decision Trees), einem grundlegenden Machine Learning-Konzept. Es gibt viele Varianten von Entscheidungsbäumen, aber alle machen dasselbe – sie unterteilen den Merkmalsraum in Bereiche mit größtenteils derselben Bezeichnung. Dies können Bereiche mit konsistenter Kategorie oder mit konstantem Wert sein, je nachdem, ob Sie eine Klassifizierung oder Regression durchführen.
 
-![Entscheidungsbaum unterteilt einen Merkmalsraum][5]
+![Entscheidungsbaum unterteilt einen Merkmalsraum](./media/algorithm-choice/image5.png)
 
 ***Ein Entscheidungsbaum unterteilt einen Merkmalsraum in Bereiche mit grob einheitlichen Werten***
 
@@ -183,21 +187,21 @@ Verstärkte Entscheidungsbäume (Boosted Decision Trees) vermeiden eine Überanp
 
 ### <a name="neural-networks-and-perceptrons"></a>Neuronale Netzwerke und Perzeptrons
 
-Neuronale Netzwerke sind vom Gehirn inspirierte Lernalgorithmen, die [mehrklassige](https://msdn.microsoft.com/library/azure/dn906030.aspx), [zweiklassige](https://msdn.microsoft.com/library/azure/dn905947.aspx) und [Regressionsprobleme](https://msdn.microsoft.com/library/azure/dn905924.aspx) abdecken. Es gibt eine unendliche Vielfalt von neuronalen Netzwerken, aber alle in Azure Machine Learning enthaltenen haben die Form von gerichteten azyklischen Graphen (Directed Acyclic Graphs, DAG). Das bedeutet, dass Eingabemerkmale durch eine Abfolge von Schichten vorwärts weitergegeben werden (niemals zurück), bevor sie in Ausgaben umgewandelt werden. In jeder Schicht werden Eingaben in verschiedenen Kombinationen gewichtet, summiert und an die nächste Schicht übergeben. Diese Kombination aus einfachen Berechnungen resultiert in der Fähigkeit, komplexe Klassengrenzen und Datentrends lernen zu können – fast schon Zauberei. Netzwerke dieser Art mit vielen Schichten führen das "tiefe Lernen" aus, das den Stoff für so viele Technikberichte und Science-Fiction liefert.
+Neuronale Netzwerke sind vom Gehirn inspirierte Lernalgorithmen, die [mehrklassige](https://msdn.microsoft.com/library/azure/dn906030.aspx), [zweiklassige](https://msdn.microsoft.com/library/azure/dn905947.aspx) und [Regressionsprobleme](https://msdn.microsoft.com/library/azure/dn905924.aspx) abdecken. Es gibt eine unendliche Vielfalt von neuronalen Netzwerken, aber alle in Azure Machine Learning Studio enthaltenen haben die Form von gerichteten azyklischen Graphen (Directed Acyclic Graphs, DAG). Das bedeutet, dass Eingabemerkmale durch eine Abfolge von Schichten vorwärts weitergegeben werden (niemals zurück), bevor sie in Ausgaben umgewandelt werden. In jeder Schicht werden Eingaben in verschiedenen Kombinationen gewichtet, summiert und an die nächste Schicht übergeben. Diese Kombination aus einfachen Berechnungen resultiert in der Fähigkeit, komplexe Klassengrenzen und Datentrends lernen zu können – fast schon Zauberei. Netzwerke dieser Art mit vielen Schichten führen das "tiefe Lernen" aus, das den Stoff für so viele Technikberichte und Science-Fiction liefert.
 
 Diese hohe Leistung gibt es jedoch nicht umsonst. Das Training neuronaler Netzwerke kann sehr lange dauern, insbesondere bei großen Datasets mit vielen Merkmalen. Sie verfügen außerdem über mehr Parameter als die meisten Algorithmen, was bedeutet, dass "Parameter Sweeping" die Trainingsdauer extrem verlängert.
 Und für die Streber, die [ihre eigene Netzwerkstruktur spezifizieren](https://go.microsoft.com/fwlink/?LinkId=402867)möchten, sind die Möglichkeiten geradezu unerschöpflich.
 
-![Von neuronalen Netzwerken gelernte Grenzen][6]
+![Von neuronalen Netzwerken gelernte Grenzen](./media/algorithm-choice/image6.png)
 ***Die von neuronalen Netzwerken gelernten Grenzen können komplex und unregelmäßig sein.***
 
 Das [Two-Class Averaged Perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) (zweiklassiges, gemitteltes Perzeptron) ist die neuronale Netzwerkantwort auf in den Himmel schießende Trainingsdauern. Er verwendet eine Netzwerkstruktur, die lineare Klassengrenzen liefert. Nach heutigen Standards ist es geradezu primitiv, aber es funktioniert schon sehr lange robust und ist klein genug, um schnell zu lernen.
 
 ### <a name="svms"></a>SVMs
 
-Support Vector Maschines (SVMs) finden die Grenze, die Klassen mit maximalem Abstand voneinander trennt. Wenn sich die beiden Klassen nicht klar trennen lassen, findet der Algorithmus die bestmögliche Grenze. In der in Azure Machine Learning geschriebenen Form erzielt die [zweiklassige SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) dies ausschließlich mit einer geraden Linie. (In SVM-Terminologie heißt das, dass sie einen "linearen Kernel" verwendet.) Da sie diese linearen Näherung vollzieht, kann sie relativ schnell ausgeführt werden. Richtig glänzen tut sie bei merkmalsintensiven Daten, z. B. Texten oder Genomdaten. In diesen Fällen können SVMs Klassen schneller und mit weniger Überanpassung trennen als die meisten anderen Algorithmen, wobei sie zusätzlich auch nur recht bescheidene Speichermengen beanspruchen.
+Support Vector Maschines (SVMs) finden die Grenze, die Klassen mit maximalem Abstand voneinander trennt. Wenn sich die beiden Klassen nicht klar trennen lassen, findet der Algorithmus die bestmögliche Grenze. In der in Azure Machine Learning Studio geschriebenen Form erzielt die [zweiklassige SVM](https://msdn.microsoft.com/library/azure/dn905835.aspx) dies ausschließlich mit einer geraden Linie. (In SVM-Terminologie heißt das, dass sie einen "linearen Kernel" verwendet.) Da sie diese linearen Näherung vollzieht, kann sie relativ schnell ausgeführt werden. Richtig glänzen tut sie bei merkmalsintensiven Daten, z. B. Texten oder Genomdaten. In diesen Fällen können SVMs Klassen schneller und mit weniger Überanpassung trennen als die meisten anderen Algorithmen, wobei sie zusätzlich auch nur recht bescheidene Speichermengen beanspruchen.
 
-![Support Vector Machine-Klassengrenze][7]
+![Support Vector Machine-Klassengrenze](./media/algorithm-choice/image7.png)
 
 ***Eine typische Normale Support Vector Machine-Klassengrenze maximiert den Abstand, der zwei Klassen trennt.***
 
@@ -207,34 +211,34 @@ Unter Verwendung einer raffinierten Erweiterung der nicht linearen SVMs zieht di
 
 ### <a name="bayesian-methods"></a>Bayes-Methoden
 
-Bayes-Methoden haben eine extrem wünschenswerte Eigenschaft: Sie vermeiden Überanpassungen. Sie erreichen dies, indem sie im Voraus einige Annahmen über die wahrscheinliche Verteilung der Antwort treffen. Ein weiterer Nebeneffekt dieses Ansatzes ist, dass sie nur sehr wenige Parameter besitzen. Azure Machine Learning enthält beide Bayes-Algorithmen für sowohl Klassifizierung ([Two-Class Bayes' Point Machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)) als auch Regression ([Bayes Linear Regression](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
+Bayes-Methoden haben eine extrem wünschenswerte Eigenschaft: Sie vermeiden Überanpassungen. Sie erreichen dies, indem sie im Voraus einige Annahmen über die wahrscheinliche Verteilung der Antwort treffen. Ein weiterer Nebeneffekt dieses Ansatzes ist, dass sie nur sehr wenige Parameter besitzen. Azure Machine Learning Studio enthält beide Bayes-Algorithmen für sowohl Klassifizierung ([Two-Class Bayes' Point Machine](https://msdn.microsoft.com/library/azure/dn905930.aspx)) als auch Regression ([Bayes Linear Regression](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
 Beachten Sie, dass diese voraussetzen, dass die Daten durch eine gerade Linie aufgeteilt oder angepasst werden können.
 
 Rein historisch sei darauf hingewiesen, dass Bayes' Point Machines bei Microsoft Research entwickelt wurden. Ihnen liegt einige außergewöhnlich schöne theoretische Arbeit zugrunde. Der interessierte Student sei auf den [Originalartikel in JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) und einen [aufschlussreichen Blog von Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx) verwiesen.
 
 ### <a name="specialized-algorithms"></a>Spezialisierte Algorithmen
-Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Sammlung von Azure Machine Learning gibt es Algorithmen mit verschiedenen Spezialisierungen:
+Wenn Sie ein sehr spezielles Ziel haben, könnten Sie Glück haben. In der Sammlung von Azure Machine Learning Studio gibt es Algorithmen mit verschiedenen Spezialisierungen:
 
 - Rangvorhersage ([Ordinal-Regression](https://msdn.microsoft.com/library/azure/dn906029.aspx))
 - Anzahlvorhersage ([Poisson-Regression](https://msdn.microsoft.com/library/azure/dn905988.aspx))
 - Anomalieerkennung (ein Algorithmus basierend auf der [Hauptkomponentenanalyse](https://msdn.microsoft.com/library/azure/dn913102.aspx) (Principal Components Analysis) und einer basierend auf [Support Vector Machines](https://msdn.microsoft.com/library/azure/dn913103.aspx))
 - Clustering ([K-Means](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))
 
-![PCA-basierte Erkennung von Anomalien][8]
+![PCA-basierte Erkennung von Anomalien](./media/algorithm-choice/image8.png)
 
 ***PCA-basierte Erkennung von Anomalien*** *– die überwiegende Mehrheit der Daten liegt in einer stereotypen Verteilung; von dieser Verteilung erheblich abweichende Punkte sind verdächtig*
 
-![Mittels K-Means gruppiertes Dataset][9]
+![Mittels K-Means gruppiertes Dataset](./media/algorithm-choice/image9.png)
 
 ***Ein Dataset wird mithilfe von K-Means in fünf Cluster gruppiert***
 
 Es gibt auch einen [mehrklassigen One-vs-All-Ensemble-Klassifizierer](https://msdn.microsoft.com/library/azure/dn905887.aspx), der das N-klassige Klassifizierungsproblem in N-1 zweiklassige Klassifizierungsprobleme aufteilt. Genauigkeit, Trainingsdauer und Linearitätseigenschaften werden von den verwendeten zweiklassigen Klassifizierern bestimmt.
 
-![Zweiklassige Klassifizierer so kombiniert, dass sie einen dreiklassigen Klassifizierer bilden][10]
+![Zweiklassige Klassifizierer so kombiniert, dass sie einen dreiklassigen Klassifizierer bilden](./media/algorithm-choice/image10.png)
 
 ***Ein Paar zweiklassiger Klassifizierer wird so kombiniert, dass sich ein dreiklassiger Klassifizierer ergibt***
 
-Azure Machine Learning umfasst außerdem Zugriff auf ein leistungsfähiges Machine Learning-Framework namens [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
+Azure Machine Learning Studio umfasst außerdem Zugriff auf ein leistungsfähiges Machine Learning-Framework namens [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
 VW widersetzt sich einer Kategorisierung, weil es sowohl Klassifizierungs- als auch Regressionsprobleme lernen und sogar von teilweise bezeichnungslosen Daten lernen kann. Sie können es so konfigurieren, dass es jeden einer Anzahl von Lernalgorithmen, Verlustfunktionen und Optimierungsalgorithmen verwendet. Es wurde von Grund auf unter den Aspekten Effizienz, Parallelität und extreme Schnelligkeit entwickelt. Es verarbeitet unglaublich große Merkmalsgruppen, ohne einen nennenswerten Aufwand zu zeigen.
 Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Formel 1-Wagen in einem Feld aus Stockcar-Algorithmen. Nicht jedes Problem eignet sich für den Einsatz von VW, aber wenn sich Ihres eignet, kann es durchaus den zeitlichen Aufwand lohnen, sich mit der Schnittstelle auseinanderzusetzen. Es steht auch als [eigenständiger Open Source-Code](https://github.com/JohnLangford/vowpal_wabbit) in mehreren Sprachen zur Verfügung.
 
@@ -245,16 +249,3 @@ Begonnen und geleitet von John Langford bei Microsoft Research, ist VW ein Forme
 * Eine in Kategorien unterteilte Liste aller in Machine Learning Studio verfügbaren Algorithmen für maschinelles Lernen finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio unter [Initialisieren des Modells](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model).
 
 * Eine vollständige alphabetische Liste aller in Machine Learning Studio verfügbaren Algorithmen und Module finden Sie in der Hilfe zu den Algorithmen und Modulen in Machine Learning Studio in der [Modulliste von A bis Z für Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list).
-
-<!-- Media -->
-
-[1]: ./media/algorithm-choice/image1.png
-[2]: ./media/algorithm-choice/image2.png
-[3]: ./media/algorithm-choice/image3.png
-[4]: ./media/algorithm-choice/image4.png
-[5]: ./media/algorithm-choice/image5.png
-[6]: ./media/algorithm-choice/image6.png
-[7]: ./media/algorithm-choice/image7.png
-[8]: ./media/algorithm-choice/image8.png
-[9]: ./media/algorithm-choice/image9.png
-[10]: ./media/algorithm-choice/image10.png

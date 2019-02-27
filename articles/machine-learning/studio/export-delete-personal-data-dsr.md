@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 05/25/2018
-ms.openlocfilehash: 096f310b7c82718ea836d1b2048ca665a1e1e2f4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 49f045e8da5094f583c01c514bf92f6bf3fe1c09
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994949"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453357"
 ---
 # <a name="export-and-delete-in-product-user-data-from-azure-machine-learning-studio"></a>Exportieren und Löschen von im Produkt enthaltenen Benutzerdaten aus Azure Machine Learning Studio
 
@@ -70,8 +70,8 @@ Benutzer können auch ihren gesamten Arbeitsbereich löschen:
 ![Löschen eines kostenlosen Arbeitsbereichs in Machine Learning Studio](./media/export-delete-personal-data-dsr/delete-studio-data-workspace.png)
  
 ## <a name="export-studio-data-with-powershell"></a>Exportieren von Studio-Daten mit PowerShell
-Verwenden Sie PowerShell, um alle Informationen aus Azure Machine Learning Studio mithilfe von Befehlen in ein portables Format zu exportieren. Informationen hierzu finden Sie im Artikel [PowerShell-Modul für Azure Machine Learning](powershell-module.md).
+Verwenden Sie PowerShell, um alle Informationen aus Azure Machine Learning Studio mithilfe von Befehlen in ein portables Format zu exportieren. Informationen hierzu finden Sie im Artikel [PowerShell-Modul für Azure Machine Learning Studio](powershell-module.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie unter [REST-API-Referenz für Azure Machine Learning](https://docs.microsoft.com/rest/api/machinelearning/). 
+Eine Dokumentation zur Abrechnung von Webdiensten und Vertragsplänen finden Sie in der Referenz zu [Azure Machine Learning Studio-REST-APIs für die Verwaltung](https://docs.microsoft.com/rest/api/machinelearning/). 

@@ -11,17 +11,17 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/11/2019
-ms.openlocfilehash: 754f2845911307cdd698bff4aa3e891f5c1bcdbd
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/18/2019
+ms.openlocfilehash: c5f90776cb0e8617f0e524bd6b1701f4bf20d0a1
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234780"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56415702"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database"></a>Schnellstart: Importieren einer BACPAC-Datei in eine Datenbank in Azure SQL-Datenbank
 
-Sie können eine SQL Server-Datenbank mithilfe einer [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)-Datei in eine Datenbank in Azure SQL-Datenbank importieren. Sie können die Daten aus einer `BACPAC`-Datei, die im Azure Blob Storage gespeichert ist (nur Standardspeicher), oder aus dem lokalen Speicher an einem lokalen Speicherort importieren. Um die Importgeschwindigkeit durch die Bereitstellung von mehr und schnelleren Ressourcen zu maximieren, skalieren Sie Ihre Datenbank während des Importvorgangs auf eine höhere Dienstebene und Computegröße. Sie können dann nach erfolgreichem Import zentral herunterskalieren. 
+Sie können eine SQL Server-Datenbank mithilfe einer [BACPAC](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac)-Datei in eine Datenbank in Azure SQL-Datenbank importieren. Sie können die Daten aus einer `BACPAC`-Datei, die im Azure Blob Storage gespeichert ist (nur Standardspeicher), oder aus dem lokalen Speicher an einem lokalen Speicherort importieren. Um die Importgeschwindigkeit durch die Bereitstellung von mehr und schnelleren Ressourcen zu maximieren, skalieren Sie Ihre Datenbank während des Importvorgangs auf eine höhere Dienstebene und Computegröße. Sie können dann nach erfolgreichem Import zentral herunterskalieren.
 
 > [!NOTE]
 > Der Kompatibilitätsgrad der importierten Datenbank beruht auf dem Kompatibilitätsgrad der Quelldatenbank.
@@ -30,22 +30,27 @@ Sie können eine SQL Server-Datenbank mithilfe einer [BACPAC](https://docs.micro
 
 ## <a name="import-from-a-bacpac-file-in-the-azure-portal"></a>Importieren aus einer BACPAC-Datei im Azure-Portal
 
-In diesem Abschnitt wird gezeigt, wie Sie im [Azure-Portal](https://portal.azure.com) eine Azure SQL-Datenbank aus einer `BACPAC`-Datei erstellen, die im Azure Blob Storage gespeichert ist. Das Portal unterstützt *nur* das Importieren einer BACPAC-Datei aus Azure Blob Storage.
+Das [Azure-Portal](https://portal.azure.com) unterstützt *nur* das Erstellen einer Einzeldatenbank in Azure SQL-Datenbank und *nur* aus einer in Azure Blob-Speicher gespeicherten BACPAC-Datei.
 
 > [!NOTE]
-> Bei [einer verwalteten Instanz](sql-database-managed-instance.md) ist es derzeit nicht möglich, eine Datenbank aus einer `BACPAC`-Datei über das Azure-Portal in eine Instanzdatenbank zu migrieren.
+> Bei [einer verwalteten Instanz](sql-database-managed-instance.md) ist es derzeit nicht möglich, eine Datenbank aus einer BACPAC-Datei über das Azure-Portal in eine Instanzdatenbank zu migrieren. Verwenden Sie zum Importieren in eine verwalteten Instanz SQL Server Management Studio oder SQLPackage.
 
-Wenn Sie über das Azure-Portal in eine einzelne Datenbank importieren möchten, öffnen Sie die Seite für den Datenbankserver für diese Datenbank, und wählen Sie auf der Symbolleiste **Datenbank importieren** aus.  
+1. Wenn Sie über das Azure-Portal aus einer BACPAC-Datei in eine neue Einzeldatenbank importieren möchten, öffnen Sie die entsprechende Seite für den Datenbankserver, und wählen Sie auf der Symbolleiste **Datenbank importieren** aus.  
 
-   ![Datenbankimport](./media/sql-database-import/import.png)
+   ![Datenbankimport 1](./media/sql-database-import/import1.png)
 
-Wählen Sie das Speicherkonto, den Container und die zu importierende `BACPAC`-Datei aus. Geben Sie die Größe der neuen Datenbank (in der Regel identisch mit dem Ursprung) und die SQL Server-Anmeldeinformationen für das Ziel an. Eine Liste der möglichen Werte für eine neue Azure SQL-Datenbank finden Sie unter [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+2. Wählen Sie das Speicherkonto und den Container für die BACPAC-Datei aus, und wählen Sie dann die BACPAC-Datei, aus der importiert werden soll.
+3. Geben Sie die Größe der neuen Datenbank (in der Regel identisch mit dem Ursprung) und die SQL Server-Anmeldeinformationen für das Ziel an. Eine Liste der möglichen Werte für eine neue Azure SQL-Datenbank finden Sie unter [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
-### <a name="monitor-imports-progress"></a>Überwachen des Fortschritts eines Importvorgangs
+   ![Datenbankimport 2](./media/sql-database-import/import2.png)
 
-Um den Fortschritt eines Importvorgangs zu überwachen, öffnen Sie die Seite für den Server der Datenbank, und wählen Sie unter **Einstellungen** die Option **Import-/Exportverlauf** aus. Bei erfolgreicher Ausführung weist der Import den Status **Abgeschlossen** auf.
+4. Klicken Sie auf **OK**.
 
-Zum Überprüfen, ob die Datenbank auf dem Datenbankserver aktiv ist, wählen Sie **SQL-Datenbanken** aus, und prüfen Sie, ob der Status der neuen Datenbank **Online** lautet.
+5. Um den Fortschritt eines Importvorgangs zu überwachen, öffnen Sie die Seite für den Server der Datenbank, und wählen Sie unter **Einstellungen** die Option **Import-/Exportverlauf** aus. Bei erfolgreicher Ausführung weist der Import den Status **Abgeschlossen** auf.
+
+   ![Datenbankimportstatus](./media/sql-database-import/import-status.png)
+
+6. Zum Überprüfen, ob die Datenbank auf dem Datenbankserver aktiv ist, wählen Sie **SQL-Datenbanken** aus, und prüfen Sie, ob der Status der neuen Datenbank **Online** lautet.
 
 ## <a name="import-from-a-bacpac-file-using-sqlpackage"></a>Importieren aus einer BACPAC-Datei mit SqlPackage
 
@@ -60,7 +65,7 @@ SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.
 ```
 
 > [!IMPORTANT]
-> Wenn Sie hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herstellen möchten, der eine einzelne Datenbank verwaltet, muss Port 1433 in der Firewall geöffnet sein. Um eine Verbindung mit einer verwalteten Instanz herzustellen, benötigen Sie eine [Point-to-Site-Verbindung](/sql-database-managed-instance-configure-p2s.md) oder eine ExpressRoute-Verbindung.
+> Wenn Sie hinter einer Unternehmensfirewall eine Verbindung mit einem SQL-Datenbankserver herstellen möchten, der eine einzelne Datenbank verwaltet, muss Port 1433 in der Firewall geöffnet sein. Um eine Verbindung mit einer verwalteten Instanz herzustellen, benötigen Sie eine [Point-to-Site-Verbindung](sql-database-managed-instance-configure-p2s.md) oder eine ExpressRoute-Verbindung.
 >
 
 In diesem Beispiel wird gezeigt, wie eine Datenbank mithilfe von SqlPackage mit universeller Active Directory-Authentifizierung importiert wird.
@@ -69,12 +74,16 @@ In diesem Beispiel wird gezeigt, wie eine Datenbank mithilfe von SqlPackage mit 
 SqlPackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="import-from-a-bacpac-file-using-powershell"></a>Importieren aus einer BACPAC-Datei mit PowerShell
+## <a name="import-into-a-single-database-from-a-bacpac-file-using-powershell"></a>Importieren in eine Einzeldatenbank aus einer BACPAC-Datei mithilfe von PowerShell
+
+> [!NOTE]
+> Bei [einer verwalteten Instanz](sql-database-managed-instance.md) ist es derzeit nicht möglich, eine Datenbank aus einer BACPAC-Datei über Azure PowerShell in eine Instanzdatenbank zu migrieren. Verwenden Sie zum Importieren in eine verwalteten Instanz SQL Server Management Studio oder SQLPackage.
+
 
 Verwenden Sie das [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport)-Cmdlet, um eine Anforderung für einen Datenbankimport beim Azure SQL-Datenbankdienst einzureichen. Je nach Größe der Datenbank nimmt der Importvorgang einige Zeit in Anspruch.
 
  ```powershell
- $importRequest = New-AzureRmSqlDatabaseImport 
+ $importRequest = New-AzureRmSqlDatabaseImport
     -ResourceGroupName "<your_resource_group>" `
     -ServerName "<your_server>" `
     -DatabaseName "<your_database>" `
@@ -121,6 +130,6 @@ Sie können auch die folgenden Assistenten verwenden:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Informationen zum Herstellen einer Verbindung mit einer importierten SQL-Datenbank und zum Abfragen einer solchen Datenbank finden Sie unter [Schnellstart: Azure SQL-Datenbank: Verwenden von SQL Server Management Studio zum Herstellen der Verbindung und Abfragen von Daten](sql-database-connect-query-ssms.md).
-- Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
+- Einen Blogbeitrag des SQL Server-Kundenberatungsteams zur Migration mithilfe von BACPAC-Dateien finden Sie unter [Migrating from SQL Server to Azure SQL Database using BACPAC Files](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407) (Migrieren von SQL Server zu Azure SQL-Datenbank mithilfe von BACPAC-Dateien).
 - Eine Erläuterung des gesamten Migrationsprozesses von SQL Server-Datenbanken, einschließlich Empfehlungen zur Leistung, finden Sie unter [Migrieren einer SQL Server-Datenbank zu Azure SQL-Datenbank](sql-database-single-database-migrate.md).
 - Informationen zum sicheren Verwalten und Freigeben von Speicherschlüsseln und SAS finden Sie im [Azure Storage-Sicherheitsleitfaden](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

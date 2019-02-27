@@ -8,23 +8,26 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 02/11/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 81e846c6ffc0361b7154c962dbc047b9e5ae55e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1056b8be113d56342aea8f83d5325737f7ecb93b
+ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872984"
+ms.lasthandoff: 02/15/2019
+ms.locfileid: "56308450"
 ---
 # <a name="face-detection-with-computer-vision"></a>Gesichtserkennung mit maschinellem Sehen
 
-Das maschinelle Sehen erkennt menschliche Gesichter auf einem Bild und generiert Alter, Geschlecht und Rechteck für jedes erkannte Gesicht. Maschinelles Sehen bietet einen Teil der Funktionen aus der [Gesichtserkennung](/azure/cognitive-services/face/). Der Gesichtserkennungsdienst ermöglicht eine detailliertere Analyse zur Erkennung von Gesichtsausdruck, Kopfhaltung und Ähnlichem.  
+Maschinelles Sehen erkennt menschliche Gesichter auf einem Bild und generiert für jedes erkannte Gesicht das Alter, Geschlecht und Rechteck. 
+
+> [!NOTE]
+> Dieses Feature wird auch vom Azure-Dienst [Gesichtserkennung](/azure/cognitive-services/face/) geboten. Diese Alternative bietet eine detailliertere Gesichtsanalyse, einschließlich Gesichtsidentifikation und Posenerkennung. 
 
 ## <a name="face-detection-examples"></a>Beispiele für die Gesichtserkennung
 
-Das erste Beispiel zeigt die JSON-Antwort, die vom maschinellen Sehen für ein Bild mit einem einzelnen menschlichen Gesicht zurückgegeben wird.
+Das folgende Beispiel zeigt die JSON-Antwort, die von Maschinelles Sehen für ein Bild mit einem einzelnen menschlichen Gesicht zurückgegeben wird.
 
 ![Bildanalyse: Woman Roof Face](./Images/woman_roof_face.png)
 
@@ -51,7 +54,7 @@ Das erste Beispiel zeigt die JSON-Antwort, die vom maschinellen Sehen für ein B
 }
 ```
 
-Das zweite Beispiel zeigt die JSON-Antwort, die für ein Bild mit mehreren menschlichen Gesichtern zurückgegeben wird.
+Das nächste Beispiel zeigt die JSON-Antwort, die für ein Bild mit mehreren menschlichen Gesichtern zurückgegeben wird.
 
 ![Bildanalyse: Family Photo Face](./Images/family_photo_face.png)
 
@@ -110,4 +113,4 @@ Das zweite Beispiel zeigt die JSON-Antwort, die für ein Bild mit mehreren mensc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie mehr über die Konzepte zum [Erkennen domänenspezifischer Inhalte](concept-detecting-domain-content.md).
+In der Referenzdokumentation unter [Analyze Image](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) erfahren Sie mehr zum Einsatz der Gesichtserkennungsfunktion.

@@ -12,12 +12,12 @@ ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 775e6968282c94abec64fb410f2cc720ba0913e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ad6dda9e41f1ea87439ffc315f020d4e3566e0c6
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168433"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453544"
 ---
 # <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
 Wenn Ihre Organisation eine zweistufige Überprüfung verwendet, können Sie Ihr Geschäfts-, Schul- oder Unikonto für die Verwendung der Microsoft Authenticator-App als eine der Überprüfungsmethoden einrichten.
@@ -27,7 +27,7 @@ Wenn Ihre Organisation eine zweistufige Überprüfung verwendet, können Sie Ihr
 
 ## <a name="add-your-work-or-school-account"></a>Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos
 
-1. Navigieren Sie auf Ihrem PC zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/mfasetup).
+1. Navigieren Sie auf Ihrem Computer zur Seite [Zusätzliche Sicherheitsüberprüfung](https://aka.ms/mfasetup).
 
     >[!Note]
     >Wenn die Seite **Zusätzliche Sicherheitsüberprüfung** nicht angezeigt wird, hat Ihr Administrator möglicherweise die Sicherheitsinformation (Vorschau) aktiviert. Befolgen Sie in diesem Fall die Anweisungen im Abschnitt [Einrichten der Sicherheitsinformation zur Verwendung einer Authentifikator-App](security-info-setup-auth-app.md). Ist dies nicht der Fall, bitten Sie den Helpdesk Ihrer Organisation um Unterstützung. Weitere Informationen zu Sicherheitsinformationen finden Sie unter [Verwalten Ihrer Sicherheitsinformationen (Vorschau)](security-info-manage-settings.md).
@@ -40,7 +40,7 @@ Wenn Ihre Organisation eine zweistufige Überprüfung verwendet, können Sie Ihr
 
 3. Öffnen Sie die Microsoft Authenticator-App, wählen Sie oben rechts das Symbol zum **Anpassen und Steuern** aus, und wählen Sie dann nacheinander **Konto hinzufügen** und **Geschäfts-, Schul- oder Unikonto** aus.
 
-4. Verwenden Sie zum Scannen des QR-Codes vom Bildschirm **Mobile App konfigurieren** auf Ihrem PC die Kamera Ihres Geräts, und wählen Sie dann **Fertig** aus.
+4. Verwenden Sie zum Scannen des QR-Codes auf dem Bildschirm **Mobile App konfigurieren** auf Ihrem Computer die Kamera Ihres Geräts, und wählen Sie dann **Fertig** aus.
 
     >[!Note]
     >Wenn die Kamera den QR-Code nicht erfassen kann, können Sie Ihre Kontoinformationen manuell der Microsoft Authenticator-App für die zweistufige Überprüfung hinzufügen. Weitere Informationen und eine Beschreibung der Vorgehensweise finden Sie unter [Manuelles Hinzufügen Ihres Kontos](user-help-auth-app-add-account-manual.md).

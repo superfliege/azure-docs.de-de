@@ -6,18 +6,19 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/23/2018
-ms.openlocfilehash: 6f16428b6e5eacedd32712c6ccb212c376e244e8
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 3f57f37ce8c0406e45eff68031bd084e5b22063a
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537238"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414582"
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>Erstellen und Verwalten von VNET-Dienstendpunkten und -Regeln für Azure Database for PostgreSQL mithilfe des Azure-Portals | Microsoft-Dokumentation
 VNET-Dienstendpunkte und -Regeln erweitern den privaten Adressraum eines virtuellen Netzwerks auf Ihren Azure Database for PostgreSQL-Server. Eine Übersicht über die VNet-Dienstendpunkte für Azure Database for PostgreSQL, einschließlich Einschränkungen, finden Sie unter [Azure Database for PostgreSQL Server VNet service endpoints (VNet-Dienstendpunkte für Azure Database for PostgreSQL Server)](concepts-data-access-and-security-vnet.md). VNET-Dienstendpunkte sind in allen unterstützten Regionen für Azure Database for PostgreSQL verfügbar.
 
 > [!NOTE]
 > VNET-Dienstendpunkte werden nur für Server vom Typ „Universell“ und „Arbeitsspeicheroptimiert“ unterstützt.
+> Wenn beim VNET-Peering der Datenverkehr über eine gemeinsame VNet Gateway-Instanz mit Dienstendpunkten fließt und an den Peer fließen soll, erstellen Sie eine ACL/VNET-Regel, damit Azure Virtual Machines im Gateway-VNET auf den Azure Database for PostgreSQL-Server zugreifen kann.
 
 ## <a name="create-a-vnet-rule-and-enable-service-endpoints-in-the-azure-portal"></a>Erstellen einer VNET-Regel und Aktivieren von Dienstendpunkten im Azure-Portal
 

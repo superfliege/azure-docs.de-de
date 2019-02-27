@@ -1,6 +1,6 @@
 ---
-title: Verwalten des Zugriffs mithilfe der RBAC und der Azure-REST-API | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mithilfe der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
+title: 'Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API: Azure | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie Sie den Zugriff auf Azure-Ressourcen für Benutzer, Gruppen und Anwendungen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) und der REST-API verwalten. Dazu gehören das Auflisten, Erteilen und Entfernen des Zugriffs.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,20 +15,20 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 859a410a4ff9204e8e52fbd2cc3b38823f4bb830
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: c2ef9b0070cc9ac190b773f023ffc18d1b251a41
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435217"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338409"
 ---
-# <a name="manage-access-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs mithilfe der RBAC und der REST-API
+# <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API
 
-Der Zugriff auf Ressourcen in Azure wird mithilfe der [rollenbasierten Zugriffssteuerung](overview.md) (Role-Based Access Control, RBAC) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der REST-API verwalten.
+Der Zugriff auf Azure-Ressourcen wird mithilfe der [rollenbasierten Zugriffssteuerung (RBAC)](overview.md) verwaltet. In diesem Artikel wird beschrieben, wie Sie den Zugriff für Benutzer, Gruppen und Anwendungen mit der RBAC und der REST-API verwalten.
 
 ## <a name="list-access"></a>Auflisten des Zugriffs
 
-Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an. Zum Aufrufen der API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den angegebenen Bereich. Einigen [integrierten Rollen](built-in-roles.md) wird der Zugriff auf diesen Vorgang gewährt.
+Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rollenzuweisungen aufzulisten, verwenden Sie eine der REST-APIs unter [Rollenzuweisungen – Auflisten](/rest/api/authorization/roleassignments/list). Um die Ergebnisse einzugrenzen, geben Sie einen Bereich und einen optionalen Filter an. Zum Aufrufen der API benötigen Sie Zugriff auf den Vorgang `Microsoft.Authorization/roleAssignments/read` für den angegebenen Bereich. Einigen [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) wird der Zugriff auf diesen Vorgang gewährt.
 
 1. Beginnen Sie mit der folgenden Anforderung:
 
@@ -38,7 +38,7 @@ Zum Auflisten des Zugriffs in RBAC führen Sie die Rollenzuweisungen auf. Um Rol
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, für den die Rollen aufgelistet werden sollen.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -77,7 +77,7 @@ In RBAC erstellen Sie zum Gewähren des Zugriffs eine Rollenzuweisung. Um eine R
     
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich für die Rollenzuweisung.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -105,7 +105,7 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Ent
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* durch den Bereich, um die Rollenzuweisung zu entfernen.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -117,4 +117,4 @@ In RBAC entfernen Sie eine Rollenzuweisung, um den Zugriff zu entfernen. Zum Ent
 
 - [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../azure-resource-manager/resource-group-template-deploy-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)
-- [Erstellen benutzerdefinierter Rollen mithilfe der REST-API](custom-roles-rest.md)
+- [Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API](custom-roles-rest.md)

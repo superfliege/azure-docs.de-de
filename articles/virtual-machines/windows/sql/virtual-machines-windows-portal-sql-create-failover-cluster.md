@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: a882ad2bbb700c7d1a1c812d7a05aa14b8038f9a
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 62b0f7adf0eb1dd3e3fd7493096c2261a1c1076d
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359934"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328551"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurieren der SQL Server-Failoverclusterinstanz auf Azure Virtual Machines
 
@@ -180,7 +180,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
    | SQL Server | 1433 | Dies ist der normale Port für Standardinstanzen von SQL Server. Falls Sie ein Image aus dem Katalog verwendet haben, ist dieser Port automatisch geöffnet.
    | Integritätstest | 59999 | Beliebiger geöffneter TCP-Port. In einem späteren Schritt konfigurieren Sie für den [Integritätstest](#probe) des Lastenausgleichs und den Cluster die Verwendung dieses Ports.  
 
-1. Fügen Sie dem virtuellen Computer Speicher hinzu. Ausführliche Informationen finden Sie im Artikel zum [Hinzufügen von Speicher](../premium-storage.md).
+1. Fügen Sie dem virtuellen Computer Speicher hinzu. Ausführliche Informationen finden Sie im Artikel zum [Hinzufügen von Speicher](../disks-types.md).
 
    Für beide virtuellen Computer sind jeweils mindestens zwei Datenträger für Daten erforderlich.
 
@@ -188,7 +188,7 @@ Wenn diese Voraussetzungen erfüllt sind, können Sie mit dem Erstellen Ihres Fa
       >[!NOTE]
       >Wenn Sie Datenträger mit NTFS-Formatierung anfügen, können Sie S2D nur ohne Datenträger-Eignungsprüfung aktivieren.  
 
-   Fügen Sie an jede VM mindestens zwei Storage Premium-Datenträger (SSD) an. Wir empfehlen Ihnen die Verwendung von Datenträgern, die mindestens vom Typ „P30“ (1 TB) sind.
+   Fügen Sie an jede VM mindestens zwei SSD Premium-Datenträger an. Wir empfehlen Ihnen die Verwendung von Datenträgern, die mindestens vom Typ „P30“ (1 TB) sind.
 
    Legen Sie die Hostzwischenspeicherung auf **Schreibgeschützt** fest.
 

@@ -10,12 +10,12 @@ author: ericlicoding
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: b663177a07446b888bc7bf9e919bf180458d36bc
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55487007"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453952"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Auswerten der Modellleistung in Azure Machine Learning Studio
 
@@ -29,7 +29,7 @@ Dieser Artikel veranschaulicht, wie die Leistung eines Modells in Azure Machine 
 
 Die Auswertung der Leistung eines Modells ist eine der wesentlichen Phasen im Datenanalyseprozess. Sie gibt an, wie erfolgreich die Bewertung (die Vorhersagen) eines Datasets eines trainierten Modells war. 
 
-In Azure Machine Learning wird die Auswertung von Modellen durch zwei der wichtigsten Machine Learning-Module unterstützt: [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model]. Mit diesen Modulen können Sie die Leistung Ihres Modells im Hinblick auf verschiedene Kennzahlen anzeigen, die beim maschinellen Lernen und in der Statistik häufig verwendet werden.
+In Azure Machine Learning Studio wird die Auswertung von Modellen durch zwei der wichtigsten Machine Learning-Module unterstützt: [Evaluate Model][evaluate-model] und [Cross-Validate Model][cross-validate-model]. Mit diesen Modulen können Sie die Leistung Ihres Modells im Hinblick auf verschiedene Kennzahlen anzeigen, die beim maschinellen Lernen und in der Statistik häufig verwendet werden.
 
 ## <a name="evaluation-vs-cross-validation"></a>Auswertung und Kreuzvalidierung im Vergleich
 Die Auswertung und die Kreuzvalidierung sind Standardmethoden zum Messen der Leistung von Modellen. Bei beiden Methoden werden Auswertungskennzahlen generiert, die mit denen anderer Modelle geprüft oder verglichen werden können.
@@ -83,7 +83,7 @@ Nach dem Ausführen des Experiments können Sie die Auswertungsergebnisse prüfe
 Abbildung 4. Ergebnisse der Kreuzvalidierung eines Regressionsmodells.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Auswerten eines binären Klassifizierungsmodells
-Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der hauptsächliche Unterschied besteht hier in der Auswahl der Kennzahlen, die in Azure Machine Learning berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) ein Azure Machine Learning-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
+Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der Hauptunterschied besteht hier in der Auswahl der Metriken, die in Azure Machine Learning Studio berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) ein Studio-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:
@@ -105,7 +105,7 @@ Nach dem Ausführen des Experiments können Sie auf den Ausgabeport des Moduls [
 
 Genauigkeit (Accuracy) ist dabei der Anteil der richtig klassifizierten Fälle. Sie ist normalerweise die erste Kennzahl, die Sie sich bei der Auswertung eines Klassifikators ansehen. Wenn die Testdaten jedoch unausgeglichen sind (die meisten Fälle einer der Klassen angehören) oder Sie überwiegend an der Leistung einer der beiden Klassen interessiert sind, wird mit der Genauigkeit die Effektivität eines Klassifikators nicht wirklich erfasst. Angenommen, beim Klassifizierungsszenario für das Einkommensniveau testen Sie Daten, bei denen 99 % der Fälle Mitarbeiter angeben, deren Einkommen pro Jahr kleiner oder gleich 50K ist. Bei der Vorhersage der Klasse "<=50K" für alle Fälle kann eine Genauigkeit von 0,99 erreicht werden. Der Klassifikator scheint in diesem Fall eine durchweg solide Leistung zu liefern, in Wirklichkeit werden aber alle Personen mit höherem Einkommen (die 1 %) nicht richtig klassifiziert.
 
-Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spezifischeren Aspekte der Auswertung erfassen. Bevor die Einzelheiten dieser Kennzahlen besprochen werden, ist es wichtig, die Wahrheitsmatrix der Auswertung einer binären Klassifizierung zu verstehen. Die Klassen in den Trainingsdaten können nur zwei mögliche Werte annehmen, die normalerweise positiv oder negativ ausfallen. Die positiven und negativen Fälle, die ein Klassifikator richtig vorhersagt, werden als "richtig positiv" (RP) bzw. "richtig negativ" (RN) bezeichnet. Dementsprechend werden die falsch klassifizierten Fälle als "falsch positiv" (FP) und "falsch negativ" (FN) bezeichnet. Bei der Wahrheitsmatrix handelt es sich um eine tabellarische Aufstellung der Anzahl der Fälle, die sich in eine dieser vier Kategorien einordnen lassen. In Azure Machine Learning wird automatisch festgelegt, welche der beiden Klassen im Dataset als positive Klasse eingeordnet wird. Wenn es sich bei den Klassenwerten um boolesche Werte oder ganze Zahlen handelt, werden die mit "richtig" oder "1" kategorisierten Fälle der positiven Klasse zugewiesen. Wenn die Bezeichner Zeichenfolgen sind, wie hier im Beispiel zum Dataset zur Einkommenserhebung, werden sie alphabetisch sortiert. Die erste Ebene wird als negative Klasse eingestuft und die zweite Ebene als positive Klasse.
+Aus diesem Grund ist es nützlich, weitere Kennzahlen zu berechnen, die die spezifischeren Aspekte der Auswertung erfassen. Bevor die Einzelheiten dieser Kennzahlen besprochen werden, ist es wichtig, die Wahrheitsmatrix der Auswertung einer binären Klassifizierung zu verstehen. Die Klassen in den Trainingsdaten können nur zwei mögliche Werte annehmen, die normalerweise positiv oder negativ ausfallen. Die positiven und negativen Fälle, die ein Klassifikator richtig vorhersagt, werden als "richtig positiv" (RP) bzw. "richtig negativ" (RN) bezeichnet. Dementsprechend werden die falsch klassifizierten Fälle als "falsch positiv" (FP) und "falsch negativ" (FN) bezeichnet. Bei der Wahrheitsmatrix handelt es sich um eine tabellarische Aufstellung der Anzahl der Fälle, die sich in eine dieser vier Kategorien einordnen lassen. In Azure Machine Learning Studio wird automatisch festgelegt, welche der beiden Klassen im Dataset als positive Klasse eingeordnet wird. Wenn es sich bei den Klassenwerten um boolesche Werte oder ganze Zahlen handelt, werden die mit "richtig" oder "1" kategorisierten Fälle der positiven Klasse zugewiesen. Wenn die Bezeichner Zeichenfolgen sind, wie hier im Beispiel zum Dataset zur Einkommenserhebung, werden sie alphabetisch sortiert. Die erste Ebene wird als negative Klasse eingestuft und die zweite Ebene als positive Klasse.
 
 ![Wahrheitsmatrix der binären Klassifizierung.](./media/evaluate-model-performance/6a.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77ada606412506e3d3d23189d8a5267e1f58a8f7
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733075"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428481"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Protokollieren von Ereignissen in Azure Event Hubs mit Azure API Management
 Azure Event Hubs ist ein hochgradig skalierbarer Dateneingangsdienst, der Millionen von Ereignissen pro Sekunde erfassen kann. Auf diese Weise können Sie riesige Datenmengen verarbeiten und analysieren, die von vernetzten Geräten und Anwendungen erzeugt werden. Event Hubs fungiert als „Eingangstür“ für eine Ereignispipeline. Nach der Erfassung in Event Hubs können Sie Daten mit einem beliebigen Echtzeit-Analyseanbieter oder mit Batchverarbeitungs-/Speicheradaptern umwandeln und speichern. Event Hubs entkoppelt die Erzeugung eines Datenstroms von Ereignissen von der Nutzung dieser Ereignisse, sodass  Ereignisconsumer nach einem eigenen Zeitplan auf Ereignisse zugreifen können.
@@ -119,7 +119,7 @@ Klicken Sie auf **Speichern** , um die aktualisierte Richtlinienkonfiguration zu
 * Erfahren Sie mehr über die Integration der API-Verwaltung und Event Hubs
   * [Verweis zu Protokollierungstool](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
   * [log-to-eventhub policy reference](https://docs.microsoft.com/azure/api-management/api-management-advanced-policies#log-to-eventhub)
-  * [Überwachen von APIs mit Azure API Management, Event Hubs und Runscope](api-management-log-to-eventhub-sample.md)  
+  * [Überwachen von APIs mit Azure API Management, Event Hubs und Moesif](api-management-log-to-eventhub-sample.md)  
 * Erfahren Sie mehr über die [Integration in Azure Application Insights](api-management-howto-app-insights.md).
 
 [publisher-portal]: ./media/api-management-howto-log-event-hubs/publisher-portal.png

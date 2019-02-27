@@ -8,12 +8,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 1/11/2019
 ms.author: victorh
-ms.openlocfilehash: 81a84e1ff4a9ed974a69762ce35075780e8d1f96
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 040aeda10410cc164c3f68b6615ebfb12d45541e
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991530"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56453486"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Häufig gestellte Fragen zu Azure Application Gateway
 
@@ -346,7 +346,7 @@ Sie können das PowerShell-Cmdlet `Get-AzureRmApplicationGatewayBackendHealth` v
 
 ### <a name="what-is-the-retention-policy-on-the-diagnostics-logs"></a>Welche Aufbewahrungsrichtlinie gilt für die Diagnoseprotokolle?
 
-Diagnoseprotokolle gelangen in die Speicherkonten von Kunden, und Kunden können die Aufbewahrungsrichtlinie je nach Präferenz festlegen. Diagnoseprotokolle können auch an einen Event Hub oder Log Analytics gesendet werden. Weitere Details finden Sie unter [Application Gateway-Diagnose](application-gateway-diagnostics.md).
+Diagnoseprotokolle gelangen in die Speicherkonten von Kunden, und Kunden können die Aufbewahrungsrichtlinie je nach Präferenz festlegen. Diagnoseprotokolle können auch an einen Event Hub oder Azure Monitor-Protokolle gesendet werden. Weitere Details finden Sie unter [Application Gateway-Diagnose](application-gateway-diagnostics.md).
 
 ### <a name="how-do-i-get-audit-logs-for-application-gateway"></a>Wie erhalte ich die Überwachungsprotokolle für Application Gateway?
 
@@ -358,7 +358,7 @@ Ja, Application Gateway unterstützt Warnungen. Warnungen werden für Metriken k
 
 ### <a name="how-do-i-analyze-traffic-statistics-for-application-gateway"></a>Wie lassen sich Datenverkehrsstatistiken für Application Gateway analysieren?
 
-Sie können Zugriffsprotokolle über eine Reihe von Mechanismen wie Azure Log Analytics, Excel, Power BI usw. anzeigen und analysieren.
+Sie können Zugriffsprotokolle über eine Reihe von Mechanismen wie Azure Monitor-Protokolle, Excel, Power BI usw. anzeigen und analysieren.
 
 Wir haben auch eine Resource Manager-Vorlage veröffentlicht, die die beliebte [GoAccess](https://goaccess.io/)-Protokollanalyse für Application Gateway Access Logs installiert und ausführt. GoAccess stellt wertvolle HTTP-Datenverkehrsstatistiken wie eindeutige Besucher, angeforderte Dateien, Hosts, Betriebssysteme, Browser, HTTP-Statuscodes und vieles mehr zur Verfügung. Weitere Informationen finden Sie in der [Infodatei im Resource Manager-Vorlagenordner auf GitHub](https://aka.ms/appgwgoaccessreadme).
 

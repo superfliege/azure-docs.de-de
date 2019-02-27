@@ -1,6 +1,6 @@
 ---
-title: Erstellen von benutzerdefinierten Rollen mithilfe der REST-API – Azure | Microsoft-Dokumentation
-description: Informationen zum Erstellen benutzerdefinierter Rollen für rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) mithilfe der REST-API. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
+title: 'Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API: Azure | Microsoft-Dokumentation'
+description: Hier erfahren Sie, wie benutzerdefinierte Rollen mit der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen mithilfe der REST-API erstellt werden. Dies umfasst das Auflisten, Erstellen, Aktualisieren und Löschen von benutzerdefinierten Rollen.
 services: active-directory
 documentationcenter: na
 author: rolyon
@@ -15,16 +15,16 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 8a1bbe8217e2d4a9846f56124e248e19cbe70b19
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: cfcb7ef2a4fc02932f9d03c277b105c4b1e0ff3a
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37436061"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56338766"
 ---
-# <a name="create-custom-roles-using-the-rest-api"></a>Erstellen benutzerdefinierter Rollen mithilfe der REST-API
+# <a name="create-custom-roles-for-azure-resources-using-the-rest-api"></a>Erstellen von benutzerdefinierten Rollen für Azure-Ressourcen mithilfe der REST-API
 
-Wenn die [integrierten Rollen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird das Erstellen und Verwalten benutzerdefinierter Rollen mithilfe der REST-API beschrieben.
+Wenn die [integrierten Rollen für Azure-Ressourcen](built-in-roles.md) den Ansprüchen Ihrer Organisation nicht entsprechen, können Sie Ihre eigenen benutzerdefinierten Rollen erstellen. In diesem Artikel wird das Erstellen und Verwalten benutzerdefinierter Rollen mithilfe der REST-API beschrieben.
 
 ## <a name="list-roles"></a>Auflisten der Rollen
 
@@ -38,7 +38,7 @@ Verwenden Sie zum Auflisten aller Rollen oder Abrufen von Informationen zu einer
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* mit dem Bereich, für den Sie die Rollen auflisten möchten.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -67,7 +67,7 @@ Informationen zum Abrufen von Informationen zu einer einzelnen Rolle über den A
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* mit dem Bereich, für den Sie die Rollen auflisten möchten.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -115,7 +115,7 @@ Um eine benutzerdefinierte Rolle zu erstellen, verwenden Sie die [Rollendefiniti
 
 1. Ersetzen Sie im URI *{scope}* durch die ersten `assignableScopes` der benutzerdefinierten Rolle.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -179,7 +179,7 @@ Um eine benutzerdefinierte Rolle zu aktualisieren, verwenden Sie die [Rollendefi
 
 1. Ersetzen Sie im URI *{scope}* durch die ersten `assignableScopes` der benutzerdefinierten Rolle.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -262,7 +262,7 @@ Verwenden Sie zum Löschen einer benutzerdefinierten Rolle die [Rollendefinition
 
 1. Ersetzen Sie innerhalb des URIs *{scope}* mit dem Bereich, in dem Sie die benutzerdefinierte Rolle löschen möchten.
 
-    | Umfang | Typ |
+    | Bereich | Type |
     | --- | --- |
     | `subscriptions/{subscriptionId}` | Abonnement |
     | `subscriptions/{subscriptionId}/resourceGroups/myresourcegroup1` | Ressourcengruppe |
@@ -272,6 +272,6 @@ Verwenden Sie zum Löschen einer benutzerdefinierten Rolle die [Rollendefinition
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Benutzerdefinierte Rollen in Azure](custom-roles.md)
-- [Verwalten des Zugriffs mithilfe der RBAC und der REST-API](role-assignments-rest.md)
+- [Benutzerdefinierte Rollen für Azure-Ressourcen](custom-roles.md)
+- [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und der REST-API](role-assignments-rest.md)
 - [Azure REST-API-Referenz](/rest/api/azure/)

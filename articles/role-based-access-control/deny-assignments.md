@@ -1,6 +1,6 @@
 ---
-title: Grundlegendes zu Ablehnungszuweisungen in Azure RBAC | Microsoft-Dokumentation
-description: Informationen zu Ablehnungszuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Ressourcen in Azure.
+title: Verstehen von Ablehnungszuweisungen für Azure-Ressourcen | Microsoft-Dokumentation
+description: Informationen zu Ablehnungszuweisungen in der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fa1a979c01999bd79c45d24e4c7771edaf346dd8
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
+ms.openlocfilehash: 53716fa343df25026dcc668ed8483673d934d1ad
+ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52632414"
+ms.lasthandoff: 02/18/2019
+ms.locfileid: "56339123"
 ---
-# <a name="understand-deny-assignments"></a>Grundlegendes zu Ablehnungszuweisungen
+# <a name="understand-deny-assignments-for-azure-resources"></a>Verstehen von Ablehnungszuweisungen für Azure-Ressourcen
 
-Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe oder einem Dienstprinzipal, um den Zugriff zu verweigern. Ablehnungszuweisungen blockieren Aktionen für bestimmte Benutzer, selbst wenn diesen durch eine Rollenzuweisung Zugriff erteilt wurde. Einige Ressourcenanbieter in Azure umfassen jetzt Ablehnungszuweisungen. Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Azure festgelegt werden.
+Ähnlich wie eine Rollenzuweisung verknüpft eine *Ablehnungszuweisung* in einem bestimmten Bereich einen Satz von Aktionen mit einem Benutzer, einer Gruppe oder einem Dienstprinzipal, um den Zugriff zu verweigern. Ablehnungszuweisungen hindern Benutzer an der Ausführung bestimmter Aktionen für Azure-Ressourcen, auch wenn ihnen über eine Rollenzuweisung Zugriff erteilt wird. Einige Ressourcenanbieter in Azure umfassen jetzt Ablehnungszuweisungen. Derzeit sind Ablehnungszuweisungen **schreibgeschützt** und können nur von Microsoft festgelegt werden.
 
 Ablehnungszuweisungen unterscheiden sich in gewisser Weise von Rollenzuweisungen. Ablehnungszuweisungen können Prinzipale ausschließen und die Vererbung an untergeordnete Bereiche verhindern. Ablehnungszuweisungen werden auch auf Zuweisungen für [klassische Abonnementadministratoren](rbac-and-directory-admin-roles.md) angewendet.
 
@@ -37,7 +37,7 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 > [!div class="mx-tableFixed"]
 > | Eigenschaft | Erforderlich | Typ | BESCHREIBUNG |
 > | --- | --- | --- | --- |
-> | `DenyAssignmentName` | JA | Zeichenfolge | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
+> | `DenyAssignmentName` | Ja | Zeichenfolge | Der Anzeigename der Ablehnungszuweisung. Namen müssen für einen bestimmten Bereich eindeutig sein. |
 > | `Description` | Nein  | Zeichenfolge | Die Beschreibung der Ablehnungszuweisung. |
 > | `Permissions.Actions` | Mindestens ein Actions- oder ein DataActions-Element | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, auf die die Ablehnungszuweisung den Zugriff blockiert. |
 > | `Permissions.NotActions` | Nein  | String[] | Ein Array von Zeichenfolgen, welche die Verwaltungsvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
@@ -45,7 +45,7 @@ In diesem Artikel wird die Definition von Ablehnungszuweisungen beschrieben.
 > | `Permissions.NotDataActions` | Nein  | String[] | Ein Array von Zeichenfolgen, welche die Datenvorgänge angeben, die von der Ablehnungszuweisung auszuschließen sind. |
 > | `Scope` | Nein  | Zeichenfolge | Eine Zeichenfolge, die den Bereich festlegt, für den die Ablehnungszuweisung gilt. |
 > | `DoNotApplyToChildScopes` | Nein  | Boolescher Wert | Gibt an, ob die Ablehnungszuweisung für untergeordnete Bereiche gilt. Der Standardwert ist „false“. |
-> | `Principals[i].Id` | JA | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |
+> | `Principals[i].Id` | Ja | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung gilt. Die Festlegung einer leeren GUID `00000000-0000-0000-0000-000000000000` repräsentiert alle Prinzipale. |
 > | `Principals[i].Type` | Nein  | String[] | Ein Array von Objekttypen, das durch „Principals[i].Id“ dargestellt wird. Eine leere GUID `SystemDefined` repräsentiert alle Prinzipale. |
 > | `ExcludePrincipals[i].Id` | Nein  | String[] | Ein Array aus Azure AD-Prinzipalobjekt-IDs (Benutzer, Gruppe, Dienstprinzipal oder verwaltete Identität), für die die Ablehnungszuweisung nicht gilt. |
 > | `ExcludePrincipals[i].Type` | Nein  | String[] | Ein Array von Objekttypen, das durch „ExcludePrincipals[i].Id“ dargestellt wird. |
@@ -60,5 +60,5 @@ Zur Unterstützung von Ablehnungszuweisungen wurde der **systemseitig definierte
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Auflisten von Ablehnungszuweisungen mithilfe von RBAC und der REST-API](deny-assignments-rest.md)
-* [Grundlegendes zu Rollendefinitionen](role-definitions.md)
+* [Auflisten von Ablehnungszuweisungen für Azure-Ressourcen mithilfe der REST-API](deny-assignments-rest.md)
+* [Grundlegendes zu Rollendefinitionen für Azure-Ressourcen](role-definitions.md)

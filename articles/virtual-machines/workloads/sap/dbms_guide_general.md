@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 87d3a44b01dff81242f935c7737bd170fe744536
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 54511ac4dfdc05ec1880695b1ae2360f0b5e8162
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54246873"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328366"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -106,12 +106,12 @@ Was IaaS angeht, sind Installation und Konfiguration von Windows, Linux und DBMS
 
 
 ## <a name="65fa79d6-a85f-47ee-890b-22e794f51a64"></a>Speicherstruktur einer VM für RDBMS-Bereitstellungen
-Damit Sie die Informationen in diesem Kapitel nachvollziehen können, müssen Sie [dieses][deployment-guide-3] Kapitel im [Bereitstellungshandbuch][deployment-guide] verstanden haben. Sie sollten die verschiedenen VM-Serien samt ihren Unterschieden und die Unterschiede zwischen Azure-Standardspeicher und [Storage Premium](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage) kennen, damit Sie dieses Kapitel verstehen.
+Damit Sie die Informationen in diesem Kapitel nachvollziehen können, müssen Sie [dieses][deployment-guide-3] Kapitel im [Bereitstellungshandbuch][deployment-guide] verstanden haben. Sie sollten die verschiedenen VM-Serien samt ihren Unterschieden und die Unterschiede zwischen Storage Standard und Storage Premium kennen, damit Sie dieses Kapitel verstehen. Weitere
 
 In Bezug auf Azure Storage für Azure VMs sollten Sie die folgenden Artikel gelesen haben:
 
-- [Informationen zu Datenträgern für virtuelle Azure-Windows-Computer](https://docs.microsoft.com/azure/virtual-machines/windows/about-disks-and-vhds)
-- [Informationen zu Datenträgern für virtuelle Azure-Linux-Computer](https://docs.microsoft.com/azure/virtual-machines/linux/about-disks-and-vhds)
+- [Azure Managed Disks – Übersicht](../../windows/managed-disks-overview.md)
+- [Einführung in verwaltete Azure-Datenträger](../../linux/managed-disks-overview.md)
 
 In einer Basiskonfiguration eignet sich eine Bereitstellungsstruktur, bei der das Betriebssystem, das DBMS und eventuelle SAP-Binärdateien von den Datenbankdateien getrennt sind. Daher wird empfohlen, dass bei SAP-Systemen, die auf Azure-VMs ausgeführt werden, das Basis-VHD (oder der Datenträger) mit dem Betriebssystem, den ausführbaren Dateien für das Datenbankverwaltungssystem und den ausführbaren SAP-Dateien installiert wird. Die DBMS-Datendateien und -Protokolldateien werden in Azure Storage (Standardspeicher oder Storage Premium) auf separaten Datenträgern gespeichert und als logische Datenträger an die ursprünglichen Azure-VM mit dem Betriebssystemimage angefügt. Vor allem für Linux-Bereitstellungen sind möglicherweise unterschiedliche Empfehlungen dokumentiert. Dies gilt insbesondere für SAP HANA.
 
@@ -134,10 +134,8 @@ Azure erzwingt ein IOPS-Kontingent pro Datenträger. Diese Kontingente sind für
 > [!NOTE]
 > Um die Vorteile vom [SLA für VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) von Azure zu nutzen, müssen alle angefügten Datenträger vom Typ Azure Storage Premium sein, einschließlich der Basis-VHD.
 
-
 > [!NOTE]
 > Es wird nicht unterstützt, Hauptdatenbankdateien (Daten- und Protokolldateien) von SAP-Datenbanken auf Speicherhardware zu hosten, die sich in gemeinsam untergebrachten Drittanbieter-Datencentern neben Azure-Datencentern befindet. Für SAP-Workload wird für Daten- und Transaktionsprotokolldateien von SAP-Datenbanken nur Speicher unterstützt, der als nativer Azure-Dienst umgesetzt ist.
-> 
 
 Die Platzierung der Datenbankdateien, der Protokolldateien und der Wiederholungsdateien sowie der verwendete Azure Storage-Typ müssen durch die Anforderungen an IOPS, Latenz und Durchsatz bestimmt werden. Damit ausreichend IOPS verfügbar sind, müssen Sie möglicherweise mehrere Datenträger oder einen größeren Storage Premium-Datenträger verwenden. Falls Sie mehrere Datenträger verwenden, müssen Sie einen Softwarestripe über die Datenträger hinweg erstellen, die die Datendateien oder Protokoll-/Wiederholungsdateien enthalten. In solchen Fällen sind die IOPS- und die Datenträgerdurchsatz-SLAs der zugrunde liegenden Storage Premium-Datenträger oder der maximal erzielbare IOPS der Azure-Standardspeicherdatenträger kumulativ für das resultierende Stripeset.
 

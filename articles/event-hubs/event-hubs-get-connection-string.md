@@ -3,23 +3,23 @@ title: Abrufen einer Verbindungszeichenfolge – Azure Event Hubs | Microsoft-Do
 description: Dieser Artikel enthält Anweisungen zum Abrufen einer Verbindungszeichenfolge, mit der Clients eine Verbindung mit Azure Event Hubs herstellen können.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: article
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: ee4bd5d2acf1a029486f83ee721b9e1f72347958
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/19/2019
+ms.author: spelluru
+ms.openlocfilehash: edd197fb6d578df064c67a422767e3e70a0c8142
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238146"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56445099"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Abrufen einer Event Hubs-Verbindungszeichenfolge
 
-Zur Verwendung von Event Hubs müssen Sie einen Event Hubs-Namespace erstellen. Ein Namespace ist ein Bereichscontainer, der mehrere Event Hubs- und Kafka-Themen aufnehmen kann. Mit dem Namespace erhalten Sie einen eindeutigen [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Nach dem Erstellen eines Namespace können Sie die Verbindungszeichenfolge abrufen, die für die Kommunikation mit Event Hubs erforderlich ist.
+Zur Verwendung von Event Hubs müssen Sie einen Event Hubs-Namespace erstellen. Ein Namespace ist ein Bereichscontainer für mehrere Event Hubs- oder Kafka-Themen. Mit dem Namespace erhalten Sie einen eindeutigen [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name). Nach dem Erstellen eines Namespace können Sie die Verbindungszeichenfolge abrufen, die für die Kommunikation mit Event Hubs erforderlich ist.
 
 In der Verbindungszeichenfolge für Azure Event Hubs sind die folgenden Komponenten eingebettet:
 
@@ -37,30 +37,29 @@ Eine Verbindungszeichenfolge kann beispielsweise wie folgt aussehen: `Endpoint=s
 In diesem Artikel werden verschiedene Möglichkeiten zum Abrufen der Verbindungszeichenfolge beschrieben.
 
 ## <a name="get-connection-string-from-the-portal"></a>Abrufen der Verbindungszeichenfolge im Portal
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an. 
+2. Wählen Sie im linken Navigationsmenü die Option **Alle Dienste** aus. 
+3. Wählen Sie im Abschnitt **Analytics** die Option **Event Hubs** aus. 
+4. Wählen Sie in der Liste der Event Hubs Ihren Event Hub aus.
+6. Wählen Sie auf der Seite **Event Hubs-Namespace** im linken Menü die Option **Freigegebene Zugriffsrichtlinien** aus.
 
-Nachdem Sie den Event Hubs-Namespace erstellt haben, können Sie im Abschnitt „Übersicht“ des Portals wie unten gezeigt die Verbindungszeichenfolge abrufen:
+    ![Menüelement „Freigegebene Zugriffsrichtlinien“](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+7. Wählen Sie in der Liste der Richtlinien eine **freigegebene Zugriffsrichtlinie** aus. Die Standardrichtlinie heißt: **RootManageSharedAccessPolicy**. Sie können eine Richtlinie mit entsprechenden Berechtigungen (Lesen, Schreiben) hinzufügen und diese Richtlinie verwenden. 
 
-![Event Hubs-Verbindungszeichenfolge](./media/event-hubs-get-connection-string/event-hubs-get-connection-string1.png)
+    ![Freigegebene Zugriffsrichtlinien für Event Hubs](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
+8. Wählen Sie neben dem Feld **Verbindungszeichenfolge – Primärschlüssel** die Schaltfläche **Kopieren** aus. 
 
-Wenn Sie im Abschnitt „Übersicht“ auf den Link für die Verbindungszeichenfolge klicken, wird wie in der folgenden Abbildung dargestellt die Registerkarte „SAS-Richtlinien“ geöffnet:
-
-![Event Hubs – SAS-Richtlinien](./media/event-hubs-get-connection-string/event-hubs-get-connection-string2.png)
-
-Sie können eine neue SAS-Richtlinie hinzufügen und die Verbindungszeichenfolge abrufen oder die bereits erstellte Standardrichtlinie verwenden. Wenn die Richtlinie geöffnet ist, kann die Verbindungszeichenfolge wie in der folgenden Abbildung gezeigt abgerufen werden:
-
-![Event Hubs – Abrufen der Verbindungszeichenfolge](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
+    ![Event Hubs – Abrufen der Verbindungszeichenfolge](./media/event-hubs-get-connection-string/event-hubs-get-connection-string3.png)
 
 ## <a name="getting-the-connection-string-with-azure-powershell"></a>Abrufen der Verbindungszeichenfolge mit Azure PowerShell
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Sie können das Cmdlet „Get-AzEventHubNamespaceKey“ verwenden, um die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abzurufen:
+Mit dem Cmdlet [Get-AzEventHubNamespaceKey](/powershell/module/az.eventhub/get-azeventhubkey) können Sie die Verbindungszeichenfolge für den angegebenen Richtlinien- oder Regelnamen wie unten gezeigt abrufen:
 
 ```azurepowershell-interactive
 Get-AzEventHubKey -ResourceGroupName dummyresourcegroup -NamespaceName dummynamespace -AuthorizationRuleName RootManageSharedAccessKey
 ```
-
-Weitere Informationen finden Sie unter [Azure Event Hubs-PowerShell-Modul](https://docs.microsoft.com/powershell/module/az.eventhub/get-azeventhubkey).
 
 ## <a name="getting-the-connection-string-with-azure-cli"></a>Abrufen der Verbindungszeichenfolge über die Azure-Befehlszeilenschnittstelle
 Die Verbindungszeichenfolge für den Namespace können Sie wie folgt abrufen:
@@ -69,7 +68,7 @@ Die Verbindungszeichenfolge für den Namespace können Sie wie folgt abrufen:
 az eventhubs namespace authorization-rule keys list --resource-group dummyresourcegroup --namespace-name dummynamespace --name RootManageSharedAccessKey
 ```
 
-Weitere Informationen finden Sie unter [Azure-Befehlszeilenschnittstelle für Event Hubs](https://docs.microsoft.com/cli/azure/eventhubs).
+Weitere Informationen zu Azure-CLI-Befehlen für Event Hubs finden Sie unter [Azure-Befehlszeilenschnittstelle für Event Hubs](/cli/azure/eventhubs).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 92914b26497634de1a0c61738c6aba37acb37c17
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6a568fa724d0d403833e938ae8b01556fe96cf1f
+ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109316"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56428636"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Szenarien für die Clustersicherheit in Service Fabric
 Ein Azure Service Fabric-Cluster ist eine Ressource, die sich in Ihrem Besitz befindet. Sie müssen Ihre Cluster schützen, um zu verhindern, dass nicht autorisierte Benutzer eine Verbindung mit ihnen herstellen. Ein sicherer Cluster ist besonders wichtig, wenn Sie Produktionsworkloads im Cluster ausführen. Es ist zwar möglich, einen ungeschützten Cluster zu erstellen, doch falls der Cluster Verwaltungsendpunkte im öffentlichen Internet verfügbar macht, können anonyme Benutzer eine Verbindung mit ihm herstellen. Nicht geschützte Cluster werden für Produktionsworkloads nicht unterstützt. 
@@ -73,7 +73,12 @@ Service Fabric-Cluster bieten unterschiedliche Einstiegspunkte für ihre Verwalt
 Für in Azure ausgeführte Cluster können Sie den Zugriff auf die Verwaltungsendpunkte auch mit Azure Active Directory (Azure AD) schützen. Um zu erfahren, wie die benötigten Azure AD-Artefakte erstellt und bei der Erstellung des Clusters mit Daten aufgefüllt werden, lesen Sie [Einrichten von Azure AD, um Clients zu authentifizieren](service-fabric-cluster-creation-setup-aad.md).
 
 ## <a name="security-recommendations"></a>Sicherheitsempfehlungen
-Für Azure-Cluster wird für Knoten-zu Knoten-Sicherheit die Verwendung der Azure AD-Sicherheit empfohlen, um Clients und Zertifikate zu authentifizieren.
+Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der gegenseitigen Client-zu-Knoten-Authentifizierung Folgendes empfohlen:
+*   Verwendung von Azure Active Directory für die Clientidentität
+*   Ein Zertifikat für die Serveridentität und SSL-Verschlüsselung der HTTP-Kommunikation
+
+Für Service Fabric-Cluster, die in einem öffentlichen, in Azure gehosteten Netzwerk bereitgestellt werden, wird im Zusammenhang mit der Knoten-zu-Knoten-Sicherheit die Verwendung eines Clusterzertifikats zum Authentifizieren von Knoten empfohlen. 
+
 
 Für eigenständige Windows Server-Cluster sollten Sie die Windows-Sicherheit mit gruppenverwalteten Dienstkonten verwenden, wenn Sie über Windows Server 2012 R2 und Windows Active Directory verfügen. Verwenden Sie andernfalls die Windows-Sicherheit mit Windows-Konten.
 

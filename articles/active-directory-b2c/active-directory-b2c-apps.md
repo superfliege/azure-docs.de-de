@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 7ea179ff7e4b525e86003faadfb92e090476bd81
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 116abd259d11e66be2dc158d833c569f06aaa923
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172645"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446374"
 ---
 # <a name="applications-types-that-can-be-used-in-active-directory-b2c"></a>In Azure Active Directory B2C verwendbare Anwendungstypen
 
@@ -91,10 +91,10 @@ Die Web-API kann dann mit dem Token die Identität des API-Aufrufers überprüfe
 Eine Web-API kann Token von vielen Clienttypen empfangen, einschließlich Webanwendungen, Desktop- und mobilen Anwendungen, Single-Page-Anwendungen, serverseitigen Daemons und anderen Web-APIs. Hier sehen Sie ein Beispiel für den vollständigen Ablauf für eine Webanwendung, die eine Web-API aufruft:
 
 1. Die Webanwendung führt eine Richtlinie aus, und der Benutzer schließt die Benutzeroberfläche ab.
-2. Azure AD B2C gibt ein `access_token` und einen Autorisierungscode an den Browser zurück.
-3. Der Browser stellt das `access_token` und den Autorisierungscode für den Umleitungs-URI bereit.
-4. Der Webserver überprüft das `access token` und legt ein Sitzungscookie fest.
-5. Das `access_token` wird für Azure AD B2C mit dem Autorisierungscode, der Anwendungsclient-ID und den Anmeldeinformationen bereitgestellt.
+2. Azure AD B2C gibt `id_token` (OpenID Connect) und einen Autorisierungscode an den Browser zurück.
+3. Der Browser stellt das `id_token` und den Autorisierungscode für den Umleitungs-URI bereit.
+4. Der Webserver überprüft das `id_token` und legt ein Sitzungscookie fest.
+5. Der Webserver fragt Azure AD B2C nach `access_token`. Dabei gibt er den Autorisierungscode, die Anwendungsclient-ID sowie Clientanmeldeinformationen an.
 6. Das `access_token` und das `refresh_token` werden an den Webserver zurückgegeben.
 7. Die Web-API wird mit dem `access_token` in einem Autorisierungsheader aufgerufen.
 8. Die Web-API überprüft das Token.

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: c1d9047de814b7a80210fe2502d219921f5829a4
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 561eff75ef4268acd3f737f7aaa92ccaacfda7f3
+ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976901"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56328714"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Schnellstart: Manuelle Installation von SAP HANA (Einzelinstanz) auf Azure-VMs
 ## <a name="introduction"></a>Einführung
@@ -195,7 +195,7 @@ Basierend auf den SAP HANA TDI-Speicheranforderungen ([SAP HANA TDI Storage Requ
 | --- | --- | --- | --- | --- | --- |
 | GS5 | 448 GB | 2 x P30 | 1 x P20 | 1 x P10 | 1 x P10 | 
 
-Bei der vorgeschlagenen Datenträgerkonfiguration werden das HANA-Datenvolume und -Protokollvolume auf der gleichen Gruppe von Azure Storage Premium-Datenträgern angeordnet, für die das Striping per LVM oder MDADM durchgeführt wird. Es ist nicht erforderlich, eine RAID-Redundanzebene zu definieren, da bei Azure Storage Premium aus Redundanzgründen drei Images der Datenträger aufbewahrt werden. Um sicherzustellen, dass Sie eine ausreichende Speichermenge konfigurieren, sehen Sie die [SAP HANA TDI Storage Requirements](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA TDI-Speicheranforderungen) und den [SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm) (SAP HANA-Server-Installations- und Updateleitfaden) ein. Informieren Sie sich auch über die verschiedenen VHD-Durchsatzvolumes (Virtual Hard Disk) der unterschiedlichen Azure Storage Premium-Datenträger, die unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](https://docs.microsoft.com/azure/storage/storage-premium-storage) dokumentiert sind. 
+Bei der vorgeschlagenen Datenträgerkonfiguration werden das HANA-Datenvolume und -Protokollvolume auf der gleichen Gruppe von Azure Storage Premium-Datenträgern angeordnet, für die das Striping per LVM oder MDADM durchgeführt wird. Es ist nicht erforderlich, eine RAID-Redundanzebene zu definieren, da bei Azure Storage Premium aus Redundanzgründen drei Images der Datenträger aufbewahrt werden. Um sicherzustellen, dass Sie eine ausreichende Speichermenge konfigurieren, sehen Sie die [SAP HANA TDI Storage Requirements](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html) (SAP HANA TDI-Speicheranforderungen) und den [SAP HANA Server Installation and Update Guide](http://help.sap.com/saphelp_hanaplatform/helpdata/en/4c/24d332a37b4a3caad3e634f9900a45/frameset.htm) (SAP HANA-Server-Installations- und Updateleitfaden) ein. Informieren Sie sich auch über die verschiedenen VHD-Durchsatzvolumes (Virtual Hard Disk) der unterschiedlichen Azure Storage Premium-Datenträger, die unter [Storage Premium-Hochleistungsspeicher und verwaltete Datenträger für VMs](../../windows/disks-types.md) dokumentiert sind. 
 
 Sie können den HANA DBMS-VMs weitere Storage Premium-Datenträger hinzufügen, um Datenbank- oder Transaktionsprotokollsicherungen zu speichern.
 
@@ -206,9 +206,7 @@ Weitere Informationen zu den beiden wichtigsten Tools zum Konfigurieren von Stri
 
 Weitere Informationen zum Anfügen von Datenträgern an Azure-VMs, auf denen Linux als Gast-Betriebssystem ausgeführt wird, finden Sie unter [Hinzufügen eines Datenträgers zu einem virtuellen Linux-Computer](../../linux/add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Azure Storage Premium ermöglicht es Ihnen, Zwischenspeicherungsmodi für Datenträger zu definieren. Für das Stripeset mit „/hana/data“ und „/hana/log“ sollte die Zwischenspeicherung von Datenträgern deaktiviert sein. Für die anderen Volumes (Datenträger) sollte der Zwischenspeicherungsmodus auf **ReadOnly** festgelegt sein.
-
-Weitere Informationen finden Sie unter [Storage Premium: Hochleistungsspeicher für Workloads auf virtuellen Azure-Computern](../../windows/premium-storage.md).
+SSD Premium-Datenträger von Azure ermöglichen es Ihnen, Zwischenspeicherungsmodi für Datenträger zu definieren. Für das Stripeset mit „/hana/data“ und „/hana/log“ sollte die Zwischenspeicherung von Datenträgern deaktiviert sein. Für die anderen Volumes (Datenträger) sollte der Zwischenspeicherungsmodus auf **ReadOnly** festgelegt sein.
 
 Um JSON-Beispielvorlagen für die Erstellung von virtuellen Computern zu suchen, wechseln Sie zu [Azure Quickstart Templates](https://github.com/Azure/azure-quickstart-templates) (Azure-Schnellstartvorlagen).
 Die Vorlage „vm-simple-sles“ ist eine grundlegende Vorlage. Sie enthält einen Speicherabschnitt mit einem zusätzlichen 100-GB-Datenträger. Diese Vorlage kann als Basis verwendet werden. Sie können die Vorlage an Ihre spezifischen Konfiguration anpassen.

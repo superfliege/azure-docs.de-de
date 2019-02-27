@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 02/17/2019
 ms.author: juliako
-ms.openlocfilehash: b399e18aa3cdd83d0c6907999f6446fd566259a1
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4127b6b2b2601b640a6fda4ccb60960d1762ee81
+ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998585"
+ms.lasthandoff: 02/19/2019
+ms.locfileid: "56414743"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -29,10 +29,10 @@ In diesem Artikel wird veranschaulicht, wie Sie die API zum [Hochladen eines Vid
 Nachdem Ihr Video hochgeladen wurde, kann das Video von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das [mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
 
 ## <a name="uploading-considerations"></a>Überlegungen zum Hochladen
-    
+
 - Wenn Sie das Video über eine URL hochladen (bevorzugt), muss der Endpunkt mit TLS 1.2 (oder höher) gesichert werden.
-- Die Uploadgröße mit der URL-Option ist auf 10 GB begrenzt.
-- Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt. 
+- Die Uploadgröße mit der URL-Option ist auf 25 GB begrenzt.
+- Die Uploadgröße mit der Bytearray-Option ist auf 2 GB begrenzt.
 - Die Bytearray-Option umfasst ein Timeout nach 30 Minuten.
 - Die im Parameter `videoURL` angegebene URL muss codiert sein.
 

@@ -5,15 +5,15 @@ author: yossi-y
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
-ms.openlocfilehash: 36be305e60806ba2cdea260fc46bc329c43284cb
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 53cd84d669a3f14d5ac028cc29ae483962860f72
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429785"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56447213"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Abfragen von Protokollwarnungen in Azure Monitor
 [Warnungsregeln, die auf Azure Monitor-Protokollen basieren](alerts-unified-log.md), werden in regelmäßigen Abständen ausgeführt. Sie sollten deshalb sicherstellen, dass sie so geschrieben sind, dass Mehraufwand und Latenz minimiert werden. Dieser Artikel enthält Empfehlungen zum Schreiben effizienter Abfragen für Protokollwarnungen und einen Prozess zum Konvertieren vorhandener Abfragen. 
@@ -31,16 +31,11 @@ Mithilfe von Abfragen, die mit `search` oder `union` beginnen, können Sie über
 
 ```Kusto
 search "Memory"
-
 search * | where == "Memory"
-
 search ObjectName: "Memory"
-
 search ObjectName == "Memory"
-
 union * | where ObjectName == "Memory"
 ```
- 
 
 Zwar sind `search` und `union` beim Durchsuchen von Daten hilfreich, da Begriffe im gesamten Datenmodell gesucht werden, doch sind sie nicht so effizient wie eine Tabelle, weil mehrere Tabellen durchsucht werden müssen. Da Abfragen in Warnungsregeln in regelmäßigen Abständen ausgeführt werden, kann dies zu übermäßigem Mehraufwand und somit zu größerer Latenz für die Warnung führen. Aufgrund dieses Mehraufwands sollten Abfragen für Protokollwarnungsregeln in Azure immer mit einer Tabelle beginnen, um einen klaren Bereich festzulegen. Dadurch verbessern sich die Abfrageleistung und die Relevanz der Ergebnisse.
 
@@ -55,7 +50,9 @@ app('Contoso-app1').requests,
 app('Contoso-app2').requests, 
 workspace('Contoso-workspace1').Perf 
 ```
- 
+
+>[!NOTE]
+>Eine [ressourcenübergreifende Abfrage](../log-query/cross-workspace-query.md) in Protokollwarnungen wird in der neuen [scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) unterstützt. Standardmäßig verwendet Azure Monitor die [Legacywarnungs-API von Log Analytics](api-alerts.md) zum Erstellen neuer Protokollwarnungsregeln über das Azure-Portal, es sei denn, Sie nehmen einen Umstieg von der [Legacyprotokollwarnungen-API](alerts-log-api-switch.md#process-of-switching-from-legacy-log-alerts-api) vor. Nach dem Umstieg wird die neue API standardmäßig für neue Warnungsregeln im Azure-Portal verwendet, und Sie können Protokollwarnungsregeln für ressourcenübergreifende Abfragen erstellen. Sie können Protokollwarnungsregeln für [ressourcenübergreifende Abfragen](../log-query/cross-workspace-query.md) erstellen, ohne den Umstieg vorzunehmen, indem Sie die [ARM-Vorlage für die scheduledQueryRules-API](alerts-log.md#log-alert-with-cross-resource-query-using-azure-resource-template) verwenden. Diese Warnungsregel wird jedoch über die [ scheduledQueryRules-API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) und nicht über das Azure-Portal verwaltet.
 
 ## <a name="examples"></a>Beispiele
 Die folgenden Beispiele umfassen Protokollabfragen mit `search` und `union` und enthalten Schritte, mit denen Sie diese Abfragen für die Verwendung mit Warnungsregeln ändern können.
