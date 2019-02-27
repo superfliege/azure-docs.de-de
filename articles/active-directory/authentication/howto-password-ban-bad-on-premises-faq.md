@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4528cde92c5f738fa3fa7f4a649d84b1e79431
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4d3b0f7cdacfb781ba7925be8146c10919c5269b
+ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56175947"
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56455533"
 ---
 # <a name="preview-azure-ad-password-protection-on-premises---frequently-asked-questions"></a>Vorschau: Lokaler Azure AD-Kennwortschutz – häufig gestellte Fragen
 
@@ -31,17 +31,31 @@ ms.locfileid: "56175947"
 
 Die allgemeine Verfügbarkeit ist für das 1. Quartal 2019 (vor Ende März 2019) geplant. Vielen Dank an alle Benutzer, die uns bisher Feedback zu dieser Funktion haben zukommen lassen. Wir wissen das zu schätzen!
 
+**F: Welche Informationen zur Auswahl eines sicheren Kennworts sollten Benutzer erhalten?**
+
+Die aktuelle Anleitung von Microsoft zu diesem Thema finden Sie unter folgendem Link:
+
+[Microsoft-Kennwortleitfaden](https://www.microsoft.com/en-us/research/publication/password-guidance)
+
 **F: Wird der lokale Azure AD-Kennwortschutz in nicht öffentlichen Clouds unterstützt?**
 
-Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt.
+Nein. Der lokale Azure AD-Kennwortschutz wird nur in der öffentlichen Cloud unterstützt. Für die Verfügbarkeit in der nicht öffentlichen Cloud wurde kein Datum angekündigt.
 
 **F: Wie kann ich die Vorteile des Azure AD-Kennwortschutzes auf eine Untergruppe meiner lokalen Benutzer anwenden?**
 
-Nicht unterstützt. Sobald der Azure AD-Kennwortschutz einmal bereitgestellt und aktiviert ist, trifft er keine Unterscheidungen mehr – alle Benutzer genießen dieselben Sicherheitsvorteile.
+Nicht unterstützt. Sobald der Azure AD-Kennwortschutz bereitgestellt und aktiviert ist, werden keine Unterscheidungen getroffen – alle Benutzer genießen dieselben Sicherheitsvorteile.
 
 **F: Wird die Parallelinstallation des Azure AD-Kennwortschutzes mit anderen kennwortfilterbasierten Produkten unterstützt?**
 
 Ja. Unterstützung für mehrere registrierte Kennwortfilter-DLLs ist ein Hauptmerkmal von Windows und nicht spezifisch für den Azure AD-Kennwortschutz. Alle registrierten Kennwortfilter-DLLs müssen zustimmen, bevor ein Kennwort akzeptiert wird.
+
+**F: Wie kann ich den Azure AD-Kennwortschutz in meiner Active Directory-Umgebung bereitstellen und konfigurieren, ohne Azure zu verwenden?**
+
+Nicht unterstützt. Der Azure AD-Kennwortschutz ist ein Azure-Feature, das auf eine lokale Active Directory-Umgebung ausgeweitet werden kann.
+
+**F: Wie kann ich den Inhalt der Richtlinie auf Active Directory-Ebene ändern?**
+
+Nicht unterstützt. Die Richtlinie kann nur über das Azure AD-Verwaltungsportal verwaltet werden. Siehe auch die Antwort auf die vorherige Frage.
 
 **F: Warum ist DFSR für die sysvol-Replikation erforderlich?**
 
@@ -53,13 +67,57 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 [Das Ende ist nahe für FRS](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
+**F: Wie viel Datenträger-Speicherplatz benötigt das Feature auf der Systemvolumefreigabe der Domäne?**
+
+Die genaue Speicherplatznutzung variiert, da sie von verschiedenen Faktoren abhängig ist, z.B. von der Anzahl und Länge der gesperrten Token in der globalen Sperrliste von Microsoft und der kundenspezifischen Sperrliste jedes Mandanten sowie vom Verschlüsselungsoverhead. Diese Listen werden im Lauf der Zeit wahrscheinlich erweitert. Angesichts dieser Tatsache ist es eine sinnvolle Annahme, dass das Feature mindestens fünf (5) Megabytes Speicherplatz auf der Systemvolumefreigabe der Domäne benötigen wird.
+
 **F: Warum ist ein Neustart erforderlich, um die DC-Agent-Software zu installieren oder zu aktualisieren?**
 
 Diese Anforderung wird durch das Kernverhalten von Windows verursacht.
 
 **F: Gibt es eine Möglichkeit, einen DC-Agent so zu konfigurieren, dass er einen bestimmten Proxyserver verwendet?**
 
+ Nein. Da der Proxyserver zustandslos ist, spielt es keine Rolle, welcher Proxyserver genau verwendet wird.
+
+**F: Kann der Azure AD-Kennwortschutz-Proxydienst neben anderen Diensten wie Azure AD Connect bereitgestellt werden?**
+
+Ja. Der Azure AD-Kennwortschutz-Proxydienst und Azure AD Connect führen nie zu direkten Konflikten.
+
+**F: Muss ich mir Sorgen machen, dass durch die Bereitstellung dieses Features die Leistungsgrenze meiner Domänencontroller erreicht wird?**
+
+Der Domänencontroller-Agent-Dienst für den Azure AD-Kennwortschutz sollte sich nicht wesentlich auf die Leistung des Domänencontrollers in einer stabilen Active Directory-Bereitstellung auswirken.
+
+Die meisten Kennwortänderungsvorgänge in Active Directory-Bereitstellungen machen nur einen sehr geringen Teil der gesamten Workload auf einem Domänencontroller aus. Ein Beispiel: Stellen Sie sich eine Active Directory-Domäne mit 10.000 Benutzerkonten und einer MaxPasswordAge-Richtlinie von 30 Tagen vor. Durchschnittlich werden in dieser Domäne 10.000/30 Monate = ~333 Kennwortänderungsvorgänge pro Tag stattfinden – dies ist auch für einen einzelnen Domänencontroller eine sehr geringe Anzahl. Sehen wir uns den ungünstigsten Fall an: Alle ~333 Änderungsvorgänge finden innerhalb einer Stunde auf einem einzelnen Domänencontroller statt. Ein solches Szenario könnte eintreten, wenn viele Mitarbeiter am Montagmorgen zur Arbeit kommen und ihre Kennwörter ändern müssen. Selbst in diesem Fall würden nur ~333/60 Minuten = 6 Kennwortänderungen pro Minute stattfinden – auch dies ist keine signifikante Last.
+
+Wenn Ihre aktuellen Domänencontroller allerdings bereits mit eingeschränkter Leistung ausgeführt werden (z.B. die Limits für CPU, Datenträger-Speicherplatz, Datenträger-E/A usw. bereits ausgereizt sind), ist es ratsam, weitere Domänencontroller hinzuzufügen oder den verfügbaren Speicherplatz zu erweitern, bevor Sie dieses Feature bereitstellen. Informationen zur Speicherplatznutzung auf dem Systemvolume-Datenträger finden Sie auch in der vorherigen Frage.
+
+**F: Ich möchte den Azure AD-Kennwortschutz auf einigen wenigen Domänencontrollern in meiner Domäne testen. Kann ich erzwingen, dass für Kennwortänderungen durch Benutzer nur diese bestimmten Domänencontroller verwendet werden?**
+
+ Nein. Das Windows-Clientbetriebssystem steuert, welcher Domänencontroller verwendet wird, wenn ein Benutzer sein Kennwort ändert. Der Domänencontroller wird anhand von Faktoren wie Active Directory-Standort und -Subnetzzuordnungen, der umgebungsspezifischen Netzwerkkonfiguration usw. ausgewählt. Der Azure AD-Kennwortschutz hat keine Kontrolle über diese Faktoren und kann nicht beeinflussen, welcher Domänencontroller für die Änderung eines Benutzerkennworts ausgewählt wird.
+
+Eine Möglichkeit, um dieses Ziel zumindest teilweise zu erreichen, besteht darin, den Azure AD-Kennwortschutz auf allen Domänencontrollern in einem bestimmten Active Directory-Standort bereitzustellen. Dieses Vorgehen bietet eine angemessene Abdeckung für alle Windows-Clients, die diesem Standort zugewiesen sind, und damit auch für die Benutzer, die sich bei diesen Clients anmelden und ihre Kennwörter ändern.
+
+**F: Wenn ich den Domänencontroller-Agent-Dienst für den Azure AD-Kennwortschutz nur auf dem primären Domänencontroller (PDC) installiere, sind damit auch alle anderen Domänencontroller in der Domäne geschützt?**
+
+ Nein. Wenn das Kennwort eines Benutzers auf einem Domänencontroller geändert wird, bei dem es sich nicht um den PDC handelt, wird das Klartextkennwort niemals an den PDC gesendet (dies ist eine weit verbreitete Fehlannahme). Sobald ein neues Kennwort auf einem bestimmten Domänencontroller akzeptiert wurde, verwendet dieser Domänencontroller das Kennwort, um die Kennworthashes für die verschiedenen Authentifizierungsprotokolle zu erstellen und speichert diese Hashes im Verzeichnis. Das Klartextkennwort wird nicht gespeichert. Die aktualisierten Hashes werden an den PDC repliziert. Benutzerkennwörter können in einigen Fällen direkt auf dem PDC geändert werden – auch dies hängt von verschiedenen Faktoren ab, wie z.B. der Netzwerktopologie und der Gestaltung des Active Directory-Standorts. (Siehe auch die Antwort auf die vorherige Frage.)
+
+Zusammenfassend gesagt: Die Bereitstellung des Domänencontroller-Agent-Diensts für den Azure AD-Kennwortschutz auf dem PDC ist erforderlich, um eine 100-prozentige Sicherheitsabdeckung des Features in der gesamten Domäne zu erzielen. Wenn das Feature nur auf dem PDC bereitgestellt wird, können die anderen Domänencontroller in der Domäne nicht von den Sicherheitsvorteilen des Azure AD-Kennwortschutzes profitieren.
+
+**F: Ist für den Azure AD-Kennwortschutz ein System Center Operations Manager-Managementpack verfügbar?**
+
  Nein.
+
+## <a name="additional-content"></a>Zusätzliche Inhalte
+
+Die folgenden Links gehören nicht zur grundlegenden Dokumentation zum Azure AD-Kennwortschutz, sind aber eine nützliche Quelle für zusätzliche Informationen zu diesem Feature.
+
+[Email Phishing Protection Guide – Part 15: Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/) (Leitfaden zum Schutz von E-Mail-Phishing, Teil 15: Implementieren des Microsoft Azure AD-Kennwortschutzdiensts [auch für lokale Umgebungen!])
+
+[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529) (Azure AD-Kennwortschutz und intelligente Sperren jetzt in der öffentlichen Vorschau!)
+
+## <a name="microsoft-premierunified-support-training-available"></a>Training zu Microsoft Premier und Unified Support verfügbar
+
+Wenn Sie mehr über den Azure AD-Kennwortschutz erfahren und den Dienst in Ihrer Umgebung bereitstellen möchten, können Sie den proaktiven Dienst von Microsoft nutzen, der allen Kunden mit einem Premier Support- oder Unified Support-Vertrag zur Verfügung steht. Der Dienst heißt Azure Active Directory- Kennwortschutz. Weitere Informationen erhalten Sie von Ihrem Technical Account Manager.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
