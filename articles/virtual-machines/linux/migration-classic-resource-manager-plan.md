@@ -136,7 +136,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     az network list-usages -l <azure-region> -o jsonc
     ```
 
-    **Storage***(Speicherkonto)*
+    **Storage** *(Speicherkonto)*
     
     ```bash
     az storage account show-usage

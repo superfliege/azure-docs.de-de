@@ -134,7 +134,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     
     [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
-    **Compute***(Kerne, Verfügbarkeitsgruppen)*
+    **Compute** *(Kerne, Verfügbarkeitsgruppen)*
 
     ```powershell
     Get-AzVMUsage -Location <azure-region>
@@ -146,7 +146,7 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     Get-AzUsage /subscriptions/<subscription-id>/providers/Microsoft.Network/locations/<azure-region> -ApiVersion 2016-03-30 | Format-Table
     ```
 
-    **Storage***(Speicherkonto)*
+    **Storage** *(Speicherkonto)*
 
     ```powershell
     Get-AzStorageUsage
