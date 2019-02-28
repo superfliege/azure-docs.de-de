@@ -3,7 +3,7 @@ title: 'Schnellstart: Bereitstellen einer Web-App in Azure Service Fabric Mesh |
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Visual Studio eine ASP.NET Core-Website erstellen und in Azure Service Fabric Mesh veröffentlichen.
 services: service-fabric-mesh
 documentationcenter: .net
-author: tylermsft
+author: dkkapur
 manager: jeconnoc
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/17/2018
-ms.author: twhitney
+ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 35ce19d796a9889d734bd5dde20a7c56485656f1
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: b30676e0c5782a95c629571cadead7bf58211789
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888538"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804916"
 ---
 # <a name="quickstart-create-and-deploy-a-web-app-to-azure-service-fabric-mesh"></a>Schnellstart: Erstellen und Bereitstellen einer Web-App in Azure Service Fabric Mesh
 
