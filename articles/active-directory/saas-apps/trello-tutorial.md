@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ad65cbbe16b66e71b67a3c61d3265f0e3a6729e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fae38ba2e8cd415751d021cd3b264fb9cac0be61
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205442"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880018"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trello"></a>Tutorial: Azure Active Directory-Integration mit Trello
 
@@ -237,7 +237,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Trello“ klicken, sollten Sie aut
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

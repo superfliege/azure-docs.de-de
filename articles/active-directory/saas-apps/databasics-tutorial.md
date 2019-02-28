@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53a1d00c4e61df3a160b4f96b6b285d824410bb7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5d336e7408b31b433338a1e3d5e46f0b4b1b2d9c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56165279"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>Tutorial: Azure Active Directory-Integration mit DATABASICS
 
@@ -193,7 +193,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „DATABASICS“ klicken, sollten Sie
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

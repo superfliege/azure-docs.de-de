@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ca0e2c0ce12edba504745e2783844db5109ee01a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 4175b626040f5fcb7ec157120f19b89508e67239
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237704"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872606"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zoom"></a>Tutorial: Azure Active Directory-Integration mit Zoom
 
@@ -118,7 +118,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Zoom die
 
 6. Konfigurieren Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** das SAML-Tokenattribut wie in der obigen Abbildung gezeigt, und führen Sie die folgenden Schritte aus:
     
-    | Name | Namespace  |  Quellattribut|
+    | NAME | Namespace  |  Quellattribut|
     | ---------------| --------------- | --------- |
     | E-Mail-Adresse  | user.mail  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/mail |
     | Vorname  | user.givenname  | http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname |
@@ -276,7 +276,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Zoom“ klicken, sollten Sie autom
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

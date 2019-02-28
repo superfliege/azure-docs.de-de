@@ -3,19 +3,19 @@ title: Bereitstellen eines simulierten X.509-Geräts für Azure IoT Hub mithilfe
 description: 'Azure-Schnellstartanleitung: Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des C#-Geräte-SDK für Azure IoT Hub Device Provisioning Service In dieser Schnellstartanleitung werden individuelle Registrierungen verwendet.'
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/09/18
+ms.date: 04/09/2018
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: d9b4777067ed1ee9f253714bc82c2a20aaa0d127
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 832d7306c7e397a92e92fb25018b5021e4ac87fb
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997042"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672286"
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten X.509-Geräts mithilfe des C#-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -25,8 +25,8 @@ Diese Schritte zeigen Ihnen, wie Sie mit den [Azure IoT Samples for C# (Azure Io
 Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie auch die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie fortfahren. 
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Wird zur Registrierung mehrerer verwandter Geräte verwendet.
-- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Wird zur Registrierung eines einzelnen Geräts verwendet.
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
+- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
 
 In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 

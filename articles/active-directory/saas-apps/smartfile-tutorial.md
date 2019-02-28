@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3a68a651ec62305f396dff07526d071bae82cc0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7972ddb836b7318b232316d751947355d356f6a1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170225"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartfile"></a>Tutorial: Azure Active Directory-Integration mit SmartFile
 
@@ -193,7 +193,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „SmartFile“ klicken, sollten Sie 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

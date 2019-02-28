@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84ea41388151087a0da965e3f8724907b615dee0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: dc6bcd30a9835fe3cece103b9a773fb24cadbe4a
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161573"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-evidencecom"></a>Tutorial: Azure Active Directory-Integration mit Evidence.com
 
@@ -77,10 +77,10 @@ Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem A
 Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Evidence.com müssen Sie die folgenden Bausteine ausführen:
 
 1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Konfigurieren des einmaligen Anmeldens für Evidence.com](#configure-evidence.com-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
+2. **[Konfigurieren des einmaligen Anmeldens für Evidence.com](#configure-evidencecom-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren
 3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
 4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Erstellen eines Evidence.com-Testbenutzers](#create-evidence.com-test-user)**, um eine Entsprechung von Britta Simon in Evidence.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
+5. **[Erstellen eines Evidence.com-Testbenutzers](#create-evidencecom-test-user)**, um eine Entsprechung von Britta Simon in Evidence.com zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist
 6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
@@ -215,7 +215,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Evidence.com“ klicken, sollten S
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

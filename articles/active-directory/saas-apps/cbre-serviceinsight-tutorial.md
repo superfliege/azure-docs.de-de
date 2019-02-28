@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/04/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b2652676ad1187db4f58779fa0b891aa286fe01
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a7a2f85c17805d2bd0313bffd1b0b555e1e4d99c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181200"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866979"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cbre-serviceinsight"></a>Tutorial: Azure Active Directory-Integration in CBRE ServiceInsight
 
@@ -211,7 +211,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „CBRE ServiceInsight“ klicken, so
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

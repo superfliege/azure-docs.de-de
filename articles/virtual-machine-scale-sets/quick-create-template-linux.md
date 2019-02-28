@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 03/27/18
+ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 29cc340820fbf0e35b8b142f0bea91da82ff7b61
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 481c05f01992ea682176d68211feeea26711e29c
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55728349"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56671878"
 ---
 # <a name="quickstart-create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Schnellstart: Erstellen einer Linux-VM-Skalierungsgruppe mit einer Azure-Vorlage
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe und stellen eine Beispielanwendung mit einer Azure Resource Manager-Vorlage bereit.

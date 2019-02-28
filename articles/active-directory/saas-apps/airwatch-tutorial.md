@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d91f395f2fd7e65f66f1a885dbd09e725029858
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f9bbf8e4ebf59e8084d0a831c55685238c053e13
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183954"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882704"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-airwatch"></a>Tutorial: Azure Active Directory-Integration mit AirWatch
 
@@ -118,7 +118,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit AirWatch
 
 6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
-    | Name |  Quellattribut|
+    | NAME |  Quellattribut|
     |---------------|----------------|
     | UID | user.userprincipalname |
     | | |
@@ -305,7 +305,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „AirWatch“ klicken, sollten Sie a
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9e1844320786fe8a2a856b06b3a8093ca49568eb
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 7cc6153681a05944ea83b756a0439ff0c8922f91
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446357"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959526"
 ---
 # <a name="quickstart-recognize-speech-in-c-on-linux-by-using-the-speech-sdk"></a>Schnellstart: Erkennen von Sprache in C++ unter Linux mit dem Speech SDK
 
@@ -31,7 +31,7 @@ Sie benötigen einen Abonnementschlüssel für den Spracherkennungsdienst, um di
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-Die aktuelle Version des Cognitive Services Speech SDK ist `1.3.0`.
+Die aktuelle Version des Cognitive Services Speech SDK ist `1.3.1`.
 
 Das Speech SDK für Linux kann verwendet werden, um sowohl 32-Bit- als auch 64-Bit-Anwendungen zu erstellen. Die erforderlichen Bibliotheken und Headerdateien können als TAR-Datei von https://aka.ms/csspeech/linuxbinary heruntergeladen werden.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 66dc029348c66e9204aaeea5f6a9f0ebf89c8bbb
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1cb2eb42757d321648ea1ace000913916b1b7a05
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456621"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880664"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>Tutorial: Azure Active Directory-Integration mit FreshGrade
 
@@ -190,7 +190,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „FreshGrade“ klicken, sollten Sie
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

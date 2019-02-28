@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/30/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4768c38b2e76bfa8cdff3187c32c03fdaaf57bbf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a2c6b95d62f6210ecfdd560bc1c00a3e055be3ee
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207652"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dmarcian"></a>Tutorial: Azure Active Directory-Integration mit dmarcian
 
@@ -143,15 +143,15 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit dmarcian
 
 2. Klicken Sie oben rechts auf **Profile** (Profil), und navigieren Sie zu **Preferences** (Einstellungen).
 
-    ![Einstellungen ](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
+    ![Einstellungen](./media/dmarcian-tutorial/tutorial_dmarcian_pref.png)
 
 3. Scrollen Sie nach unten, und klicken Sie auf den Abschnitt **Single Sign-On** (Einmaliges Anmelden) und dann auf **Configure** (Konfigurieren).
 
-    ![Einmaliges Anmelden ](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
+    ![Einmaliges Anmelden](./media/dmarcian-tutorial/tutorial_dmarcian_sso.png)
 
 4. Legen Sie auf der Seite **SAML Single Sign-On** (Einmaliges Anmelden für SAML) den Wert für **Status** auf **Enabled** (Aktiviert) fest, und führen Sie die folgenden Schritte aus:
 
-    ![Authentifizierung ](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
+    ![Authentifizierung](./media/dmarcian-tutorial/tutorial_dmarcian_auth.png)
 
     * Klicken Sie im Abschnitt **Add dmarcian to your Identity Provider** (dmarcian zum Identitätsanbieter hinzufügen) auf **Copy** (Kopieren), um die **Assertionsverbraucherdienst-URL** für Ihre Instanz zu kopieren, und fügen Sie sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** ins Textfeld **Antwort-URL** ein.
 
@@ -229,15 +229,15 @@ Damit sich Azure AD-Benutzer bei dmarcian anmelden können, müssen sie in dmarc
 
 2. Klicken Sie oben rechts auf **Profile** (Profil), und navigieren Sie zu **Manage Users** (Benutzer verwalten).
 
-    ![Der Benutzer ](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
+    ![Der Benutzer](./media/dmarcian-tutorial/tutorial_dmarcian_user.png)
 
 3. Klicken Sie rechts im Abschnitt **SSO Users** (SSO-Benutzer) auf **Add New User** (Neuen Benutzer hinzufügen).
 
-    ![Benutzer hinzufügen ](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
+    ![Benutzer hinzufügen](./media/dmarcian-tutorial/tutorial_dmarcian_addnewuser.png)
 
 4. Führen Sie im Popup **Add New User** (Neuen Benutzer hinzufügen) die folgenden Schritte aus:
 
-    ![Neuer Benutzer ](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
+    ![Neuer Benutzer](./media/dmarcian-tutorial/tutorial_dmarcian_save.png)
 
     a. Geben Sie im Textfeld **New User Email** (E-Mail-Adresse des neuen Benutzers) die E-Mail-Adresse des Benutzers ein, etwa **brittasimon@contoso.com**.
 
@@ -253,7 +253,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „dmarcian“ klicken, sollten Sie a
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e2d59019d0e224691973baa3c45f46cddc5d878f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0c089e6f72af6fce7b97c0b3d467a9e1696cf87a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168169"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Tutorial: Azure Active Directory-Integration mit LaunchDarkly
 
@@ -227,7 +227,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „LaunchDarkly“ klicken, sollten S
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 389f8852aa9cc39e099d79aa531a5bb83f72c068
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 57a48bb1b50c73ef51b4a3cb744a80c3fc69f4a5
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200682"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-etouches"></a>Tutorial: Azure Active Directory-Integration mit etouches
 
@@ -242,7 +242,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „etouches“ klicken, sollten Sie a
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

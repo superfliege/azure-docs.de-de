@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 293c718524678d5fa03a06744fa69a93e35b33a1
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: dbd51700ec3045e6fbe66f7005444d9b56082869
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243805"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875282"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-communifire"></a>Tutorial: Azure Active Directory-Integration mit Communifire
 
@@ -214,7 +214,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Communifire“ klicken, sollten Si
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

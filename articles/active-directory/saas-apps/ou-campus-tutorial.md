@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 51ce72e16aff23341bca9b593e5551d6ad5c8544
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 16fb5b9e988030ee6dd8d7bd57d559aaaefc1faa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344241"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881157"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ou-campus"></a>Tutorial: Azure Active Directory-Integration in OU Campus
 
@@ -190,7 +190,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OU Campus“ klicken, sollten Sie 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

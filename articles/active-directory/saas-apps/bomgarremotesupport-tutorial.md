@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/07/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ca7445ef71eeb49d157f8066b81bc822d8b78ca
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f26b0ccb28dbb29f05ef45f4d53984b4295b760c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217733"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870141"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bomgar-remote-support"></a>Tutorial: Azure Active Directory-Integration mit Bomgar Remote Support
 
@@ -197,7 +197,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bomgar Remote Support“ klicken, 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

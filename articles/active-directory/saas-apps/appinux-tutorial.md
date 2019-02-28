@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b459e02ca0655e6965c8b68062f37b9950dce847
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ce6d6f08cd507f18db1d072984aecae634aab8db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56179670"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appinux"></a>Tutorial: Azure Active Directory-Integration mit Appinux
 
@@ -234,7 +234,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Appinux“ klicken, sollten Sie au
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

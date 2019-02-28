@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f97718cf7698c5a27c3eee21e91ddd912f352121
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 04d80d7a660bb9fabbe926471dc08c7269882569
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311646"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879559"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-schoox"></a>Tutorial: Azure Active Directory-Integration in Schoox
 
@@ -197,7 +197,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Schoox“ klicken, sollten Sie aut
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

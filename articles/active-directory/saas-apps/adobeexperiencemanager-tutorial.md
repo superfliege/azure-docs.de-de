@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7b24d1040c75e93bf26639e33aa46001b4e9c008
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2ceab0ee0180a6888ef99a7aefb1e5d176ab6c05
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170651"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873167"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-experience-manager"></a>Tutorial: Azure Active Directory-Integration mit Adobe Experience Manager
 
@@ -267,7 +267,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Experience Manager“ klicke
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

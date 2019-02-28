@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.custom: mvc
-ms.openlocfilehash: 23af00b8a8e061056e9b7ad8ea2c999414783ad6
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 2bbe69d114df61f6ca01add0b3459220d59d83e0
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538105"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880514"
 ---
 # <a name="tutorial-design-an-azure-database-for-mariadb-database-by-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MariaDB-Datenbank mithilfe des Azure-Portals
 
@@ -28,6 +28,8 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 > * Abfragen von Daten
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
+
+Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 
@@ -172,7 +174,7 @@ Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und
    - **Wiederherstellungspunkt**: Wählen Sie im angezeigten Zeitraum einen Zeitpunkt aus, den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
    - **Auf neuem Server wiederherstellen**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
    - **Standort**: Die Region ist identisch mit dem Quellserver und kann nicht geändert werden.
-   - **Tarif**: Der Tarif ist identisch mit dem Quellserver und kann nicht geändert werden.
+   - **Tarif:** Der Tarif ist identisch mit dem Quellserver und kann nicht geändert werden.
    
 3. Klicken Sie auf **OK**, um den Zustand des Servers [zu einem Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Durch das Wiederherstellen eines Servers wird eine neue Kopie des Servers zum ausgewählten Zeitpunkt erstellt. 
 

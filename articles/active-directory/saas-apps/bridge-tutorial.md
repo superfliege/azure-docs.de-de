@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89aa2912b94580bd3814f6b28dc1f13b62130a20
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 506ab9f39a025c4e0b67275c2b07609b0b8333be
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56186983"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridge"></a>Tutorial: Azure Active Directory-Integration mit Bridge
 
@@ -193,7 +193,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bridge“ klicken, sollten Sie aut
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

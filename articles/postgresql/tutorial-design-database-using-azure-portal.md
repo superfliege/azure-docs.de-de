@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
 ms.date: 03/20/2018
-ms.openlocfilehash: 441b56aa683ac01566d2fd2877b9b8b912194f3a
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 869bee8fcd0d1c2876ac7317fb239a1d5c61cb87
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53536524"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56864548"
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for PostgreSQL-Instanz mit dem Azure-Portal
 
@@ -78,7 +78,7 @@ Der Azure Database for PostgreSQL-Dienst verwendet eine Firewall auf der Servere
 
 1.  Klicken Sie nach Abschluss der Bereitstellung im linken Menü auf **Alle Ressourcen**, und geben Sie den Namen **mydemoserver** ein, um nach dem neu erstellten Server zu suchen. Klicken Sie auf den im Suchergebnis aufgelisteten Servernamen. Die Seite **Übersicht** für Ihren Server wird geöffnet und enthält Optionen für die weitere Konfiguration.
 
-   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2.  Wählen Sie auf der Serverseite die Option **Verbindungssicherheit** aus. 
 
@@ -98,7 +98,7 @@ Als Sie den Azure Database for PostgreSQL-Server erstellt haben, wurde auch die 
 
 1. Klicken Sie im Azure-Portal im linken Menü auf **Alle Ressourcen**, und suchen Sie nach dem Server, den Sie gerade erstellt haben.
 
-   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server ](./media/tutorial-design-database-using-azure-portal/4-locate.png)
+   ![Azure-Datenbank für PostgreSQL – Suchen nach dem Server](./media/tutorial-design-database-using-azure-portal/4-locate.png)
 
 2. Klicken Sie auf den Servernamen **mydemoserver**.
 
@@ -195,7 +195,7 @@ Stellen Sie sich vor, Sie haben versehentlich diese Tabelle gelöscht. Dies ist 
    - **Wiederherstellungspunkt**: Wählen Sie einen Zeitpunkt vor der Änderung des Servers aus.
    - **Zielserver**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
    - **Standort**: Sie können nicht die Region wählen. Standardmäßig ist dieser Wert mit dem Quellserver identisch.
-   - **Tarif**: Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
+   - **Tarif:** Sie können diesen Wert beim Wiederherstellen eines Servers nicht ändern. Er ist mit dem Wert für den Quellserver identisch. 
 3.  Klicken Sie auf **OK**, um den [Server zu einem Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Beim Wiederherstellen eines Servers im Zustand eines anderen Zeitpunkts wird ein Duplikat des ursprünglichen Servers im Zustand des von Ihnen angegebenen Zeitpunkts als neuer Server erstellt – vorausgesetzt, dieser Zeitpunkt liegt innerhalb des Aufbewahrungszeitraums für Ihren [Tarif](./concepts-pricing-tiers.md).
 
 ## <a name="next-steps"></a>Nächste Schritte

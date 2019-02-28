@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 886bb1c0f27a5d928e615a64e07b91185c6bb632
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 3142f52d43cd884d11a40431d23120cc8a6ee8c3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56344233"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878301"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-cloud"></a>Tutorial: Azure Active Directory-Integration mit webMethods Integration Cloud
 
@@ -215,7 +215,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „webMethods Integration Cloud“ kl
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

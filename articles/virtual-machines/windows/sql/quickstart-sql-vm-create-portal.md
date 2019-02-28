@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 234625825c1d9729d4f06f2bb0c96325cdd81f22
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 0a583a75b72286718b34b84e67ee5aff34726be0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329344"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56818237"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>Schnellstart: Erstellen eines virtuellen Windows-Computer mit SQL Server 2017 im Azure-Portal
 
@@ -150,7 +150,7 @@ Durch den Zugriff auf den Computer können Sie die Computer- und SQL Server-Eins
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn der virtuelle SQL-Computer nicht kontinuierlich ausgeführt werden muss, können Sie unnötige Kosten vermeiden, indem Sie ihn anhalten, wenn er nicht verwendet wird. Sie können darüber hinaus alle dem virtuellen Computer zugeordneten Ressourcen endgültig entfernen, indem Sie die zugeordnete Ressourcengruppe im Portal löschen. Dadurch wird auch der virtuelle Computer endgültig gelöscht, lassen Sie daher bei Verwendung dieses Befehls Vorsicht walten. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../../../azure-resource-manager/resource-group-portal.md).
+Wenn der virtuelle SQL-Computer nicht kontinuierlich ausgeführt werden muss, können Sie unnötige Kosten vermeiden, indem Sie ihn anhalten, wenn er nicht verwendet wird. Sie können darüber hinaus alle dem virtuellen Computer zugeordneten Ressourcen endgültig entfernen, indem Sie die zugeordnete Ressourcengruppe im Portal löschen. Dadurch wird auch der virtuelle Computer endgültig gelöscht, lassen Sie daher bei Verwendung dieses Befehls Vorsicht walten. Weitere Informationen finden Sie unter [Verwalten von Azure-Ressourcen über das Portal](../../../azure-resource-manager/manage-resource-groups-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

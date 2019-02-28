@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 04/01/2018
 ms.custom: mvc
-ms.openlocfilehash: 352444dcb3beace0e1618aadba50b56cdcd9d003
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 17a147b12d660e25bfba1e3b987f9c6ae219942d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53545789"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882585"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-azure-cli"></a>Tutorial: Entwerfen einer Azure Database for MySQL-Instanz mithilfe der Azure CLI
 
@@ -27,6 +27,8 @@ Azure Database for MySQL ist ein relationaler Datenbankdienst in der Microsoft C
 > * Abfragen von Daten
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
+
+Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 Sie können Azure Cloud Shell im Browser verwenden oder [die Azure CLI auf Ihrem Computer installieren]( /cli/azure/install-azure-cli), um die Codeblöcke in diesem Tutorial auszuführen.
 

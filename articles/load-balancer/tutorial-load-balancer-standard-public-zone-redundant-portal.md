@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 05/17/2018
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: d2e81e4f2eda730dc064699f42ba7bfb49648082
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230831"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882636"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -177,7 +177,7 @@ Zum Verteilen von Datenverkehr auf die virtuellen Computer enthält ein Back-End
 4. Klicken Sie auf **Neue Back-End-Ressource hinzufügen**, um jeden virtuellen Computer  (*myVM2* und *myVM3*) zum Back-End-Pool der Load Balancer-Instanz hinzuzufügen.
 5. Klicken Sie auf **Hinzufügen**.
 
-    ![Hinzufügen zum Back-End-Adresspool ](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
+    ![Hinzufügen zum Back-End-Adresspool](./media/load-balancer-standard-public-availability-zones-portal/add-backend-pool.png)
 
 3. Vergewissern Sie sich, dass in der Back-End-Pool-Einstellung für Ihren Load Balancer alle drei VMs (**myVM1**, **myVM2** und **myVM3**) angezeigt werden.
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 296008d84547b9562216725250af43cc863be17e
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 423500b2e5734489c4e99209d4ec4dc905dbd58c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339717"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Tutorial: Azure Active Directory-Integration mit Front
 
@@ -222,7 +222,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Front“ klicken, sollten Sie auto
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/08/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77e7c2ef0bc9736ca0a97ac4e1874e5636295ce6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 52055b4cc0d5625adcb52f09088b0fb7b2cb6af8
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176899"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bridgeline-unbound"></a>Tutorial: Azure Active Directory-Integration mit Bridgeline Unbound
 
@@ -203,7 +203,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Bridgeline Unbound“ klicken, sol
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

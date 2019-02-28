@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/13/2018
+ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 90431ea7649b38da6cbbd242b00c21278d8e8967
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 57e71261bad950b409da7a58b53712d84dc1b3df
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268888"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815857"
 ---
 # <a name="tutorial-use-condition-in-azure-resource-manager-templates"></a>Tutorial: Verwenden von Bedingungen in Azure Resource Manager-Vorlagen
 
@@ -150,11 +150,8 @@ New-AzResourceGroupDeployment `
     -dnsLabelPrefix $dnsLabelPrefix `
     -storageAccountName $storageAccountName `
     -newOrExisting $newOrExisting `
-    -TemplateFile azuredeploy.json
+    -TemplateFile "$HOME/azuredeploy.json"
 ```
-
-> [!NOTE]
-> Bei der Verwendung von Azure PowerShell in Cloud Shell tritt ein Problem mit Datei-E/A-Vorgängen auf.  Die Fehlermeldung lautet wie folgt: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Die dynamischen Parameter für das Cmdlet können nicht abgerufen werden. Der Pfad „Azure:/azuredeploy.json“ wurde nicht gefunden, da er nicht vorhanden ist.)  Nehmen Sie als vorübergehende Problemumgehung den Switch **-TemplateFile** nicht in den Befehl `New-AzResourceGroupDeploy` auf. Der Befehl fordert Sie zur Eingabe des Dateinamens auf.
 
 > [!NOTE]
 > Für die Bereitstellung tritt ein Fehler auf, wenn **newOrExisting** auf **new** festgelegt, aber das Speicherkonto mit dem angegebenen Speicherkontonamen bereits vorhanden ist.

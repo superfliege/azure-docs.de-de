@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 11/02/2018
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: 58b97dd2df29a829b843d20c14cdb15644357653
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: b4d8214608e8193172da078fc352c66145253ada
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053703"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878964"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 
@@ -45,7 +45,7 @@ Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-
 
 2. Wählen Sie die gewünschte **Quelle**, das **Teamprojekt**, das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
 
-   ![Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline ](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
+   ![Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
 3. Wählen Sie abschließend die gewünschte Vorlage für die Buildpipeline aus. In diesem Tutorial wird die Vorlage **ASP.NET** ausgewählt. 
 

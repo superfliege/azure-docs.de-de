@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab9439cbf46fd77a24aa07cab1884e4e50720e43
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: da24aba207bca7fbcf3d34933ffe1ba83336722b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203759"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-euromonitor-passport"></a>Tutorial: Azure Active Directory-Integration mit Euromonitor Passport
 
@@ -117,7 +117,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 7. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
 
-    | Name | Quellattribut|
+    | NAME | Quellattribut|
     | ---------------| --------- |
     | Wert für Namensbezeichner | user.userprincipalname |
     | emailaddress | user.mail |
@@ -214,7 +214,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Euromonitor Passport“ klicken, s
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

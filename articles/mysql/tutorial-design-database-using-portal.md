@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: tutorial
 ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: bf46b047af69dcd1a751661a701b1eb9b7f75563
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 54d5fdf925769a5dd0db73ae964419388cae913c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537728"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866945"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>Tutorial: Entwerfen einer Azure Database for MySQL-Datenbank mithilfe des Azure-Portals
 Azure-Datenbank für MySQL ist ein verwalteter Dienst, mit dem Sie hochverfügbare MySQL-Datenbanken in der Cloud ausführen, verwalten und skalieren können. Mit dem Azure-Portal können Sie mühelos Ihren Server verwalten und eine Datenbank entwerfen.
@@ -27,6 +27,8 @@ In diesem Tutorial verwenden Sie das Azure-Portal, um Folgendes zu lernen:
 > * Abfragen von Daten
 > * Aktualisieren von Daten
 > * Wiederherstellen von Daten
+
+Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
 Öffnen Sie Ihren bevorzugten Browser, und besuchen Sie das [Microsoft Azure-Portal](https://portal.azure.com/). Geben Sie Ihre Anmeldeinformationen ein, um sich beim Portal anzumelden. Die Standardansicht ist Ihr Dienstdashboard.
@@ -151,7 +153,7 @@ Angenommen, Sie haben versehentlich eine wichtige Datenbanktabelle gelöscht und
    - **Wiederherstellungspunkt**: Wählen Sie im angezeigten Zeitraum einen Zeitpunkt aus, den Sie wiederherstellen möchten. Stellen Sie sicher, dass Sie die lokale Zeitzone in UTC konvertieren.
    - **Auf neuem Server wiederherstellen**: Geben Sie einen neuen Servernamen für die Wiederherstellung ein.
    - **Standort**: Die Region ist identisch mit dem Quellserver und kann nicht geändert werden.
-   - **Tarif**: Der Tarif ist identisch mit dem Quellserver und kann nicht geändert werden.
+   - **Tarif:** Der Tarif ist identisch mit dem Quellserver und kann nicht geändert werden.
    
 3. Klicken Sie auf **OK**, um den Status des Servers [auf einen Zeitpunkt wiederherzustellen](./howto-restore-server-portal.md), der vor dem Löschen der Tabelle liegt. Das Wiederherstellen des Zustands eines Servers erstellt eine neue Kopie des Servers zum angegebenen Zeitpunkt. 
 

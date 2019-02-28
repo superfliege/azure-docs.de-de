@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c3a46e5a3e28ad36e13885ebad16874530cb0142
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9aa10274d3e153e40ad0e13abe0924c4619f6e7d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182628"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873898"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dow-jones-factiva"></a>Tutorial: Azure Active Directory-Integration mit Dow Jones Factiva
 
@@ -186,7 +186,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Dow Jones Factiva“ klicken, soll
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

@@ -9,14 +9,14 @@ ms.topic: tutorial
 author: cforbe
 ms.author: cforbe
 ms.reviewer: trbye
-ms.date: 02/04/2018
+ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7be1bf8c003315fc4dbed449283f7c92850edced
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 4f6c1af2051d946b29e2022c90d0ad9820b4d283
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752040"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823500"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>Tutorial: Vorbereiten von Daten für die Regressionsmodellierung
 
@@ -320,24 +320,24 @@ combined_df.keep_columns(columns=[
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>Max</th>
+      <th>max</th>
       <th>Count</th>
-      <th>Missing Count</th>
-      <th>Not Missing Count</th>
-      <th>Percent missing</th>
-      <th>Error Count</th>
-      <th>Empty count</th>
-      <th>0.1% Quantile</th>
-      <th>1% Quantile</th>
-      <th>5% Quantile</th>
-      <th>25% Quantile</th>
-      <th>50% Quantile</th>
-      <th>75% Quantile</th>
-      <th>95% Quantile</th>
-      <th>99% Quantile</th>
-      <th>99.9% Quantile</th>
+      <th>Fehlt (Anzahl)</th>
+      <th>Fehlt nicht (Anzahl)</th>
+      <th>Fehlt (Prozent)</th>
+      <th>Fehler (Anzahl)</th>
+      <th>Leer (Anzahl)</th>
+      <th>0,1 % Quantil</th>
+      <th>1 % Quantil</th>
+      <th>5 % Quantil</th>
+      <th>25 % Quantil</th>
+      <th>50 % Quantil</th>
+      <th>75 % Quantil</th>
+      <th>95 % Quantil</th>
+      <th>99 % Quantil</th>
+      <th>99,9 % Quantil</th>
       <th>Standardabweichung</th>
-      <th>Mean</th>
+      <th>Mittelwert</th>
     </tr>
   </thead>
   <tbody>
@@ -472,24 +472,24 @@ latlong_filtered_df.keep_columns(columns=[
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>Max</th>
+      <th>max</th>
       <th>Count</th>
-      <th>Missing Count</th>
-      <th>Not Missing Count</th>
-      <th>Percent missing</th>
-      <th>Percent missing</th>
-      <th>Empty count</th>
-      <th>0.1% Quantile</th>
-      <th>1% Quantile</th>
-      <th>5% Quantile</th>
-      <th>25% Quantile</th>
-      <th>50% Quantile</th>
-      <th>75% Quantile</th>
-      <th>95% Quantile</th>
-      <th>99% Quantile</th>
-      <th>99.9% Quantile</th>
-      <th>Standard Deviation</th>
-      <th>Mean</th>
+      <th>Fehlt (Anzahl)</th>
+      <th>Fehlt nicht (Anzahl)</th>
+      <th>Fehlt (Prozent)</th>
+      <th>Fehler (Anzahl)</th>
+      <th>Leer (Anzahl)</th>
+      <th>0,1 % Quantil</th>
+      <th>1 % Quantil</th>
+      <th>5 % Quantil</th>
+      <th>25 % Quantil</th>
+      <th>50 % Quantil</th>
+      <th>75 % Quantil</th>
+      <th>95 % Quantil</th>
+      <th>99 % Quantil</th>
+      <th>99,9 % Quantil</th>
+      <th>Standardabweichung</th>
+      <th>Mittelwert</th>
     </tr>
   </thead>
   <tbody>
@@ -606,24 +606,24 @@ latlong_filtered_df.keep_columns(columns='store_forward').get_profile()
       <th></th>
       <th>Type</th>
       <th>Min</th>
-      <th>Max</th>
+      <th>max</th>
       <th>Count</th>
-      <th>Missing Count</th>
-      <th>Not Missing Count</th>
-      <th>Percent missing</th>
-      <th>Error Count</th>
-      <th>Empty count</th>
-      <th>0.1% Quantile</th>
-      <th>1% Quantile</th>
-      <th>5% Quantile</th>
-      <th>25% Quantile</th>
-      <th>50% Quantile</th>
-      <th>75% Quantile</th>
-      <th>95% Quantile</th>
-      <th>99% Quantile</th>
-      <th>99.9% Quantile</th>
-      <th>Standard Deviation</th>
-      <th>Mean</th>
+      <th>Fehlt (Anzahl)</th>
+      <th>Fehlt nicht (Anzahl)</th>
+      <th>Fehlt (Prozent)</th>
+      <th>Fehler (Anzahl)</th>
+      <th>Leer (Anzahl)</th>
+      <th>0,1 % Quantil</th>
+      <th>1 % Quantil</th>
+      <th>5 % Quantil</th>
+      <th>25 % Quantil</th>
+      <th>50 % Quantil</th>
+      <th>75 % Quantil</th>
+      <th>95 % Quantil</th>
+      <th>99 % Quantil</th>
+      <th>99,9 % Quantil</th>
+      <th>Standardabweichung</th>
+      <th>Mittelwert</th>
     </tr>
   </thead>
   <tbody>

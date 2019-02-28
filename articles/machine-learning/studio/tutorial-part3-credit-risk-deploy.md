@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 6e3f0613e89ef7d6e9b44e519226a793940d41f6
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f64000ed502ee817f907e6ac9c89c2f037725a39
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006497"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56823789"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>Tutorial 3: Bereitstellen eines Kreditrisikomodells – Azure Machine Learning Studio
 
@@ -23,7 +23,7 @@ Dieses Tutorial befasst sich eingehend mit der Entwicklung einer Predictive Ana
 
 Stellen Sie sich vor, Sie müssen das Kreditrisiko von Personen anhand der Daten auf einem Kreditantrag vorhersagen.  
 
-Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel für die Erstellung einer Predictive Analytics-Lösung mit Microsoft Azure Machine Learning. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet. 
+Die Bewertung des Kreditrisikos ist allerdings ein komplexes Problem und wurde daher in diesem Tutorial etwas vereinfacht. Diese Aufgabenstellung dient als Beispiel dafür, wie Sie eine Predictive Analytics-Lösung mit Microsoft Azure Machine Learning Studio erstellen können. Für diese Lösung werden Azure Machine Learning Studio und ein Machine Learning-Webdienst verwendet. 
 
 In diesem dreiteiligen Tutorial werden zunächst öffentlich verfügbare Kreditrisikodaten verwendet.  Als Nächstes entwickeln und trainieren Sie ein Vorhersagemodell.  Abschließend stellen Sie das Modell als Webdienst bereit.
 
@@ -234,7 +234,7 @@ Die schnellste und einfachste Möglichkeit, auf einen klassischen Webdienst zuzu
 
 Die Web-App-Vorlagen können eine benutzerdefinierte Web-App erstellen, der die Eingabedaten und die zurückgegebenen Ergebnisse des Webdiensts bekannt sind. Dafür müssen Sie nur Zugriff auf den Webdienst und die Daten gewähren, und die Vorlage übernimmt den Rest.
 
-Weitere Informationen zur Verwendung von Web-App-Vorlagen finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](consume-web-service-with-web-app-template.md).
+Weitere Informationen zur Verwendung von Web-App-Vorlagen finden Sie unter [Verwenden eines Azure Machine Learning-Webdiensts mit einer Web-App-Vorlage](/azure/machine-learning/studio/consume-web-services).
 
 
 

@@ -6,23 +6,23 @@ author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
 ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: v-rada
 ms.topic: overview
-ms.openlocfilehash: e613f660d4d1abfd45b11d71c2abfda53331cc31
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: c3f8d06cf68714f3a8abc203421ae3ff9b533ca6
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211203"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737806"
 ---
 # <a name="what-is-custom-translator"></a>Worum handelt es sich bei Custom Translator?
 
 [Custom Translator](https://portal.customtranslator.azure.ai) ist ein Feature des Microsoft Translator-Diensts, der Übersetzungsunternehmen, App-Entwicklern und Sprachdienstanbietern das Erstellen von angepassten Systemen für neuronale maschinelle Übersetzung (NMT) ermöglicht. Das angepasste Übersetzungssystem wird nahtlos in vorhandene Anwendungen, Workflows und Websites integriert. [Custom Translator](https://portal.customtranslator.azure.ai/) bietet ähnliche Funktionen wie [Microsoft Translator Hub](https://hub.microsofttranslator.com/) für die statistische maschinelle Übersetzung (Statistical Machine Translation, SMT), aber ausschließlich für Systeme für neuronale maschinelle Übersetzung (Neural Machine Translation, NMT).
 
-Mit [Custom Translator](https://portal.customtranslator.azure.ai) erstellte Übersetzungssysteme sind über dieselbe cloudbasierte, [sichere](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), leistungsstarke, hochgradig skalierbare [Textübersetzungs-API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) von Microsoft verfügbar, die jeden Tag Milliarden von Übersetzungen ermöglicht. 
+Mit [Custom Translator](https://portal.customtranslator.azure.ai) erstellte Übersetzungssysteme sind über dieselbe cloudbasierte, [sichere](https://cognitive.uservoice.com/knowledgebase/articles/1147537-api-and-customization-confidentiality), leistungsstarke, hochgradig skalierbare [Textübersetzungs-API V3](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-translate?tabs=curl) von Microsoft verfügbar, die jeden Tag Milliarden von Übersetzungen ermöglicht.
 
-Custom Translator unterstützt mehr als drei Dutzend Sprachen und nimmt eine direkte Zuordnung an die für NMT verfügbaren Sprachen vor. Eine vollständige Liste finden Sie unter [Sprach- und Regionsunterstützung für die Textübersetzungs-API]( https://docs.microsoft.com/azure/cognitive-services/translator/language-support).
+Custom Translator unterstützt mehr als drei Dutzend Sprachen und nimmt eine direkte Zuordnung an die für NMT verfügbaren Sprachen vor. Eine vollständige Liste finden Sie unter [Sprach- und Regionsunterstützung für die Textübersetzungs-API](https://docs.microsoft.com/azure/cognitive-services/translator/language-support#customization).
 
 ## <a name="features"></a>Features
 
@@ -48,7 +48,7 @@ Wenn der geeignete Typ und die entsprechende Menge von Trainingsdaten bereitgest
 
 ## <a name="be-productive-and-cost-effective"></a>Produktiv und kosteneffektiv
 
-Mit [Custom Translator](https://portal.customtranslator.azure.ai) sind für das Trainieren und Bereitstellen eines benutzerdefinierten Systems keine Programmierkenntnisse erforderlich. 
+Mit [Custom Translator](https://portal.customtranslator.azure.ai) sind für das Trainieren und Bereitstellen eines benutzerdefinierten Systems keine Programmierkenntnisse erforderlich.
 
 Mithilfe des sicheren [Custom Translator](https://portal.customtranslator.azure.ai)-Portals können Benutzer Trainingsdaten hochladen, Systeme trainieren, Systeme testen und sie über eine intuitive Benutzeroberfläche in einer Produktionsumgebung bereitstellen. Das System steht dann innerhalb weniger Stunden (die tatsächliche Zeit hängt von der Größe der Trainingsdaten ab) zu umfassenden Nutzung bereit.
 

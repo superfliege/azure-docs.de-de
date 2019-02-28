@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: overview
 ms.date: 01/18/2019
 ms.author: alkohli
-ms.openlocfilehash: b43dac7f81b92ac504427dab164d23d9ebb1ec03
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: d0d5ee18e37436562f1e9e15571dc39fb0e00129
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54411406"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875028"
 ---
 # <a name="what-is-azure-data-box"></a>Was ist Azure Data Box?
 
@@ -76,7 +76,7 @@ Data Box umfasst die folgenden Komponenten:
 
 * **Data Box-Gerät**: Ein physisches Gerät, das folgende Aufgaben hat: Primäres Speichermedium, Verwaltung der Kommunikation mit dem Cloudspeicher und Gewährleistung der Sicherheit und Vertraulichkeit aller Daten, die auf dem Gerät gespeichert sind. Das Data Box-Gerät bietet eine nutzbare Speicherkapazität von 80 TB. 
 
-    ![Vorder- und Rückseite des Data Box-Geräts ](media/data-box-overview/data-box-combined3.png)
+    ![Vorder- und Rückseite des Data Box-Geräts](media/data-box-overview/data-box-combined3.png)
 
     
 * **Data Box-Dienst:** Eine Erweiterung des Azure-Portals, mit der Sie ein Data Box-Gerät auf einer zentralen Webbenutzeroberfläche verwalten können, auf die an verschiedenen geografischen Standorten zugegriffen werden kann. Sie verwenden den Data Box-Dienst für die tägliche Verwaltung Ihres Data Box-Geräts. Zu den Aufgaben des Diensts gehören das Erstellen und Verwalten von Aufträgen, das Anzeigen und Verwalten von Warnmeldungen und das Verwalten von Freigaben.  

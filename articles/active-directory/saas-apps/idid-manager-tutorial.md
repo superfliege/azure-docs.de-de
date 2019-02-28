@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 524d1fbe69dc2f9c233834fa961c8a9e0b7c2d00
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 29a8158bbc4e43f913d4b6931f7d5f41d3236898
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196789"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877332"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idid-manager"></a>Tutorial: Azure Active Directory-Integration mit iDiD Manager
 
@@ -185,7 +185,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „iDiD Manager“ klicken, sollten S
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

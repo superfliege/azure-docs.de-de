@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3145e2ffd7e5fab1ecfc5c7cd83746e6cd8d5936
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b024447eba938976019d662f410fbe08b979b1ac
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207129"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56882568"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asset-bank"></a>Tutorial: Azure Active Directory-Integration mit Asset Bank
 
@@ -197,7 +197,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Asset Bank“ klicken, sollten Sie
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

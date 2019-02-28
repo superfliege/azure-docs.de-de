@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a160c604050f567f3fc0f77ca20a22349f07fd9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 225945c3accb9a92cc4a04faa9ba029092feae57
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341163"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868687"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>Tutorial: Azure Active Directory-Integration mit Adobe Creative Cloud
 
@@ -261,7 +261,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Adobe Creative Cloud“ klicken, s
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

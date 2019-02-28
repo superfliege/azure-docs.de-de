@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a4c3d952edd115748c6a63f031d9c8e115aedb1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 1af6214833109ad89e8b5f27eefc0c99cdaf2496
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884459"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984185"
 ---
 # <a name="quickstart-create-an-azure-data-lake-storage-gen2-storage-account"></a>Schnellstart: Erstellen eines Azure Data Lake Storage Gen2-Speicherkontos
 
@@ -83,7 +83,7 @@ Führen Sie die folgenden Schritte aus, um über das Azure-Portal eine Ressource
 Führen Sie diese Schritte aus, wenn Sie ein allgemeines Speicherkonto vom Typ „General Purpose v2“ über das Azure-Portal erstellen möchten:
 
 > [!NOTE]
-> Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
+> Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung.
 
 1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Alle Dienste**. Scrollen Sie anschließend nach unten zu **Speicher** und klicken Sie auf **Speicherkonten**. Klicken Sie im angezeigten Fenster **Speicherkonten** auf **Hinzufügen**.
 2. Wählen Sie das **Abonnement** und die **Ressourcengruppe** aus, die Sie zuvor erstellt haben.
@@ -141,7 +141,7 @@ Login-AzAccount
 Wenn Sie eine neue Ressourcengruppe mithilfe von PowerShell erstellen möchten, verwenden Sie den Befehl [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup): 
 
 > [!NOTE]
-> Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
+> Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung.
 
 ```powershell
 # put resource group in a variable so you can use the same group name going forward,
@@ -201,7 +201,7 @@ az group create `
 ```
 
 > [!NOTE]
-> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung. In Sovereign Clouds ist er nicht verfügbar.
+> > Der hierarchische Namespace steht derzeit in allen öffentlichen Regionen zur Verfügung.
 
 ### <a name="create-a-general-purpose-v2-storage-account"></a>Erstellen eines Speicherkontos vom Typ „Allgemein v2 (GPv2)“
 

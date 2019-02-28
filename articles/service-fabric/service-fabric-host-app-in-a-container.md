@@ -3,7 +3,7 @@ title: Bereitstellen von .NET-Apps in einem Container in Azure Service Fabric | 
 description: Hier erfahren Sie, wie Sie eine vorhandene .NET-Anwendung mit Visual Studio in einen Container packen und Container in Service Fabric lokal debuggen. Die Containeranwendung wird per Push an eine Azure-Containerregistrierung übertragen und in einem Service Fabric-Cluster bereitgestellt. Bei der Bereitstellung in Azure nutzt die Anwendung Azure SQL-Datenbank für die dauerhafte Speicherung von Daten.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -13,13 +13,13 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
-ms.author: twhitney
-ms.openlocfilehash: 5bd43378d626d48f2ce05423fc49f85305b5858b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.author: aljo
+ms.openlocfilehash: bd92ac2a36fdb15741799571d3ceff7fbbb36eef
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55151446"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807523"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Tutorial: Bereitstellen einer .NET-App in einem Windows-Container in Azure Service Fabric
 

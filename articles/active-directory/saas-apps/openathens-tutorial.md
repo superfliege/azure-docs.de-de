@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1cda27ac27dc7ce76ffe525d002ec9443cb39aa
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d0e1c104380974c04309a7c2c80c976cfb2a099b
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176151"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867183"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-openathens"></a>Tutorial: Azure Active Directory-Integration mit OpenAthens
 
@@ -222,7 +222,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „OpenAthens“ klicken, sollten Sie
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

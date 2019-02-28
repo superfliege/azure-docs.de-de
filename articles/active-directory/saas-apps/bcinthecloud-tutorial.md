@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aeed203a32b94e3d1dfe55eb443f8247579decac
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2040b20ce984e774f80c76f09b5fbacebef4fe30
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166299"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877689"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bc-in-the-cloud"></a>Tutorial: Azure Active Directory-Integration in BC in der Cloud
 
@@ -193,7 +193,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „BC in the Cloud“ klicken, sollte
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

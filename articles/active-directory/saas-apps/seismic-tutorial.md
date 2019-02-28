@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: f2fbca8a87044efc9e9b625247fd0f1271892e96
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: c95e8ce960cf2ddd70e49ce6d00a882455a41bb1
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56318978"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56869944"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-seismic"></a>Tutorial: Azure Active Directory-Integration mit Seismic
 
@@ -192,7 +192,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Seismic“ klicken, sollten Sie au
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

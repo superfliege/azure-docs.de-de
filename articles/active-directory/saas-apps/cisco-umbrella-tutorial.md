@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 222ac0b5dede45b9ae2b6fe9ba464e738ea48b94
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4f51ade234c8792f235bd8c9218b3c6ef9f22de7
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194256"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870821"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-umbrella"></a>Tutorial: Azure Active Directory-Integration in Cisco Umbrella
 
@@ -147,7 +147,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
 6. Laden Sie unter **Option A: Upload XML file** (Option A: XML-Datei hochladen) die **Verbundmetadaten-XML**-Datei hoch, die Sie aus dem Azure-Portal heruntergeladen haben. Nach dem Hochladen der Metadaten werden die folgenden Werte automatisch aufgefüllt. Klicken Sie anschließend auf **Next** (Weiter).
 
-    ![Dateiauswahl ](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
+    ![Dateiauswahl](./media/cisco-umbrella-tutorial/tutorial_cisco-umbrella_choosefile.png)
 
 7. Klicken Sie im Abschnitt **Validate SAML Configuration** (SAML-Konfiguration überprüfen) auf **TEST YOUR SAML CONFIGURATION** (SAML-KONFIGURATION TESTEN).
 
@@ -245,7 +245,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Cisco Umbrella“ klicken, sollten
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

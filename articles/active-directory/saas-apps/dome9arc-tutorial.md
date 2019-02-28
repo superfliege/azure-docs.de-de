@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91ef20398bc3e15b1ee47c6e7c28795f4d9bc08c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: da98268d0a6ee015c848e9fe91cb3deecf28c4f4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190941"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875700"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dome9-arc"></a>Tutorial: Azure Active Directory-Integration mit Dome9 Arc
 
@@ -281,7 +281,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Dome9 Arc“ klicken, sollten Sie 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

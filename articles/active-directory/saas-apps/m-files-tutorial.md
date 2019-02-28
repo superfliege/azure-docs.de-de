@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 5664711287a54f64e2bdece7191821ba00b2da18
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 13c3b74c50c8417d8d410f8a1975a8c50eb9fdd9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456400"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56875530"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Tutorial: Azure Active Directory-Integration mit M-Files
 
@@ -219,7 +219,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „M-Files“ klicken, sollten Sie au
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

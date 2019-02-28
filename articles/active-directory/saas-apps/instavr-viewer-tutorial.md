@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19039a6a1337c2ddc7494805b18f564466d4f1f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 85e773d74231b0b0847dad41a071be499724e2d4
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168730"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Tutorial: Azure Active Directory-Integration mit InstaVR Viewer
 
@@ -136,11 +136,11 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei InstaVR 
 
 2. Klicken Sie auf das **Benutzersymbol**, und wählen Sie **Account** (Konto) aus.
 
-    ![InstaVR Viewer-Konfiguration ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Scrollen Sie nach unten bis zu **SAML Auth** (SAML-Authentifizierung), und führen Sie die folgenden Schritte aus:
 
-    ![InstaVR Viewer-Konfiguration ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. Fügen Sie im Textfeld **SSO URL** (SSO-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
@@ -215,21 +215,21 @@ In diesem Abschnitt wird in InstaVR Viewer ein Benutzer namens Britta Simon erst
 
 2. Wählen Sie im linken Navigationsbereich **Package** (Paket) und dann **Make package for Web** (Paket für das Web erstellen) aus.
 
-    ![InstaVR Viewer-Konfiguration ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Wählen Sie **Herunterladen** aus.
 
-    ![InstaVR Viewer-Konfiguration ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Wählen Sie **Open Hosted Page** (Gehostete Seite öffnen). Anschließend werden Sie zur Anmeldung an Azure AD weitergeleitet.
 
-    ![InstaVR Viewer-Konfiguration ](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![InstaVR Viewer-Konfiguration](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Geben Sie Ihre Azure AD-Anmeldeinformationen ein, um sich per SSO bei Azure AD anzumelden.
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
