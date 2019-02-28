@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 535dd04efd9f150365b24ae175ee90fbb247305f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28b15e950aa4ebbfcb1b04bfd495b3accf13528e
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846675"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586901"
 ---
 # <a name="get-started-with-service-bus-topics"></a>Erste Schritte mit Service Bus-Themen
 
@@ -41,40 +41,11 @@ Dieses Tutorial enthält die folgenden Schritte:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1. Erstellen eines Namespace mithilfe des Azure-Portals
-
-> [!NOTE] 
-> Service Bus-Namespace und -Messagingentitäten können auch mit [PowerShell](/powershell/azure/get-started-azureps) erstellt werden. Weitere Informationen finden Sie unter [Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen](service-bus-manage-with-ps.md).
-
-Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können Sie zum Abschnitt [Erstellen eines Themas mit dem Azure-Portal](#2-create-a-topic-using-the-azure-portal) springen.
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-topic-using-the-azure-portal"></a>2. Erstellen eines Themas mit dem Azure-Portal
+[!INCLUDE [service-bus-create-topics-subscriptions-portal](../../includes/service-bus-create-topics-subscriptions-portal.md)]
 
-1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Sollte **Service Bus** nicht angezeigt werden, klicken Sie auf **Alle Dienste** oder auf **Alle Ressourcen**.) Klicken Sie auf den Namespace, in dem das Thema erstellt werden soll. 
-3. Das Fenster mit der Namespaceübersicht wird geöffnet. Klicken Sie auf **Themen**:
-   
-    ![Erstellen eines Themas][createtopic1]
-4. Klicken Sie auf **+ Thema**.
-   
-    ![Auswählen von Themen][createtopic2]
-5. Geben Sie einen Namen für das Thema ein. Behalten Sie bei den anderen Optionen die Standardwerte bei.
-   
-    ![„Neu“ wählen][createtopic3]
-6. Klicken Sie im unteren Bereich des Dialogfelds auf **Erstellen**.
-
-## <a name="3-create-a-subscription-to-the-topic"></a>3. Erstellen eines Abonnements für das Thema
-
-1. Klicken Sie im Bereich mit den Portalressourcen auf den Namespace, den Sie in Schritt 1 erstellt haben, klicken Sie auf **Themen**, und klicken Sie anschließend auf den Namen des Themas, das Sie in Schritt 2 erstellt haben.
-2. Klicken Sie oben im Übersichtsbereich auf **+ Abonnement**, um diesem Thema ein Abonnement hinzuzufügen.
-
-    ![Erstellen des Abonnements][createtopic4]
-
-3. Geben Sie einen Namen für das Abonnement ein. Behalten Sie bei den anderen Optionen die Standardwerte bei.
-
-## <a name="4-send-messages-to-the-topic"></a>4. Senden von Nachrichten an das Thema
+## <a name="send-messages-to-the-topic"></a>Senden von Nachrichten an das Thema
 
 Erstellen Sie mithilfe von Visual Studio eine C#-Konsolenanwendung, um Nachrichten an das Thema senden zu können.
 
@@ -231,7 +202,7 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
    
       ![Nachrichtengröße][topic-message]
 
-## <a name="5-receive-messages-from-the-subscription"></a>5. Empfangen von Nachrichten aus dem Abonnement
+## <a name="receive-messages-from-the-subscription"></a>Empfangen von Nachrichten aus dem Abonnement
 
 Erstellen Sie zum Empfangen der soeben gesendeten Nachrichten eine weitere .NET Core-Konsolenanwendung, und installieren Sie das NuGet-Paket **Microsoft.Azure.ServiceBus**. Die Vorgehensweise ist dabei ähnlich wie bei der Absenderanwendung.
 

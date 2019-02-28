@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 96d5e94cb60888f7e098e31d7f06481a766cabd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4abec80df4aeeb4c20d56b43ba122ee7266905a6
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998517"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649584"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Tutorial: Einrichten eines Classroom-Labs 
 In diesem Tutorial richten Sie ein Classroom-Lab mit virtuellen Computern ein, die von den Teilnehmern im Classroom verwendet werden.  
@@ -69,10 +69,8 @@ Ein Labbesitzer kann andere Benutzer zur Rolle **Ersteller des Labs** hinzufüge
 
     ![Seite „Vorlage konfigurieren“ nach Abschluss des Vorgangs](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. Führen Sie auf der Seite **Vorlage konfigurieren** die folgenden Schritte aus: Diese Schritte sind für das Tutorial **optional**.
-    1. Starten Sie die Vorlage für virtuelle Computer, indem Sie **Starten** wählen.
     2. Stellen Sie eine Verbindung mit der Vorlage für virtuelle Computer her, indem Sie **Verbinden** wählen. 
-    3. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer. 
-    4. **Beenden** Sie den virtuellen Computer.  
+    3. Installieren und konfigurieren Sie die Software in der Vorlage für virtuelle Computer.     
     5. Geben Sie eine **Beschreibung** für die Vorlage ein.
 9. Wählen Sie auf der Vorlagenseite die Option **Weiter**. 
 10. Führen Sie auf der Seite **Vorlage veröffentlichen** die folgenden Aktionen durch. 

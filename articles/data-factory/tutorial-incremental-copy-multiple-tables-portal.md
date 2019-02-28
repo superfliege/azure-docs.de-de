@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 686e008a83924460b1f85212b5c06796b6bc8217
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e6a24bfe25513b1b4eacd8bc192caa5518c896c6
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354211"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593198"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>Inkrementelles Laden aus mehreren SQL Server-Tabellen in eine Azure SQL-Datenbank
 In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer lokalen SQL Server-Instanz in eine Azure SQL-Datenbank geladen werden.    
@@ -508,9 +508,9 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die ForEac
     1. Wählen Sie die Option **Import parameter** (Importparameter). 
     1. Geben Sie die folgenden Werte für die Parameter an: 
 
-        | NAME | Typ | Wert | 
+        | NAME | Type | Wert | 
         | ---- | ---- | ----- |
-        | LastModifiedtime | Datetime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
+        | LastModifiedtime | DateTime | `@{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue}` |
         | TableName | Zeichenfolge | `@{activity('LookupOldWaterMarkActivity').output.firstRow.TableName}` |
     
         ![Stored Procedure-Aktivität – Einstellungen für gespeicherte Prozeduren](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sproc-settings.png)

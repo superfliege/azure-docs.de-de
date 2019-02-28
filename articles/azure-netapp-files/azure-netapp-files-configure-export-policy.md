@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: 08de7e2ca8cd993a0931f5b16cb9d6c9a04e53dc
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 115c6726ed150b9a76685bd5a558d547d215958f
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39010955"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587734"
 ---
-# <a name="configure-export-policy-for-a-volume-optional"></a>Konfigurieren der Exportrichtlinie für ein Volume (optional)
+# <a name="configure-export-policy-for-a-volume"></a>Konfigurieren der Exportrichtlinie für ein Volume
 
 Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure NetApp Files-Volume konfigurieren. 
 
@@ -39,7 +39,7 @@ Sie können optional die Exportrichtlinie zum Steuern des Zugriffs auf ein Azure
         * IPv4-Adresse (Beispiel: `10.1.12.24`) 
         * IPv4-Adresse mit einer Subnetzmaske, ausgedrückt als Anzahl von Bits (Beispiel: `10.1.12.10/4`)
 
-    * **Zugriff**  
+    * **zugreifen**  
         Wählen Sie einen der folgenden Berechtigungstypen aus:  
         * Kein Zugriff 
         * Lesen/Schreiben

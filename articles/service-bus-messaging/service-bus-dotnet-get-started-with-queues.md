@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2075f8f83392c9ddd1761a96958fcb6cb12dc013
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3cf43de73fd06da6965d0baf17878c5fb10d7caf
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816423"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587173"
 ---
 # <a name="get-started-with-service-bus-queues"></a>Erste Schritte mit Service Bus-Warteschlangen
 
@@ -40,20 +40,10 @@ Dieses Tutorial enthält die folgenden Schritte:
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="create-a-namespace-using-the-azure-portal"></a>Erstellen eines Namespace mithilfe des Azure-Portals
-
-> [!NOTE] 
-> Service Bus-Namespace und -Messagingentitäten können auch mit [PowerShell](/powershell/azure/get-started-azureps) erstellt werden. Weitere Informationen finden Sie unter [Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen](service-bus-manage-with-ps.md).
-
-Falls Sie bereits einen Service Bus Messaging-Namespace erstellt haben, können Sie zum Abschnitt „Erstellen einer Warteschlange mit dem Azure-Portal“ springen.
-
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="create-a-queue-using-the-azure-portal"></a>Erstellen einer Warteschlange mithilfe des Azure-Portals
-
-Falls Sie bereits eine Service Bus-Warteschlange erstellt haben, fahren Sie mit dem Abschnitt „Senden von Nachrichten an die Warteschlange“ fort.
-
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
+
 
 ## <a name="send-messages-to-the-queue"></a>Senden von Nachrichten an die Warteschlange
 

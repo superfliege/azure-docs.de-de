@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: c43c410c731dc46e9eda64bffcfdf49800653dd5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f352542f72226358cd700359eb5aac16e1aa8ad5
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998220"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652483"
 ---
 # <a name="subscribe-to-events-for-a-blob-storage-account-with-azure-cli"></a>Abonnieren von Ereignissen für ein Blobspeicherkonto mit der Azure CLI
 
@@ -25,7 +25,6 @@ Dieses Skript erstellt ein Event Grid-Abonnement für die Ereignisse für ein Bl
 [!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
-
 
 ## <a name="sample-script"></a>Beispielskript
 

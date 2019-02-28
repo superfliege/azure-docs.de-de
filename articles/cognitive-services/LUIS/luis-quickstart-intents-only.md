@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: b4ac0ccb249bac7149014861056c10f9093d6759
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 067829a1d9425ede1320242e364eca7c30bb7053
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878158"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593912"
 ---
 # <a name="tutorial-build-luis-app-to-determine-user-intentions"></a>Tutorial: Erstellen einer LUIS-App zum Bestimmen von Benutzerabsichten
 
@@ -165,9 +165,13 @@ Kehren Sie zum LUIS-Portal zurück, und erstellen Sie eine neue Absicht, um zu b
     |Lebenslauf für die Stelle als Techniker übermitteln|
     |This is my c.v. für Stelle 234123 in Tampa.|
 
-    [![Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot der Eingabe neuer Äußerungen für die Absicht „ApplyForJob“")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+<!--
 
-    Die bezeichnete Absicht ist rot umrandet, da LUIS nicht sicher ist, ob diese Absicht richtig ist. Durch Trainieren der App lernt LUIS, ob die Äußerungen der richtigen Absicht zugeordnet sind. 
+    [![Screenshot of entering new utterances for ApplyForJob intent](media/luis-quickstart-intents-only/utterance-applyforjob.png "Screenshot of entering new utterances for ApplyForJob intent")](media/luis-quickstart-intents-only/utterance-applyforjob.png#lightbox)
+
+    The labeled intent is outlined in red because LUIS is currently uncertain the intent is correct. Training the app tells LUIS the utterances are on the correct intent. 
+
+-->
 
 ## <a name="train-again"></a>Erneutes Trainieren
 

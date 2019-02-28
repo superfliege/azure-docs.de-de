@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 39f71ffbe6369ada4f04c456cdb3b15d257a3ef1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 2e0dc5c69a6cc875f4e673a494387db79c1dd1fa
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700365"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672544"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account-sdk-version-3-preview"></a>Erstellen einer .NET-Konsolen-App zum Verwalten von Daten in einem Azure Cosmos DB-SQL-API-Konto (Vorschau von Version 3 des SDK)
 
@@ -76,14 +76,16 @@ Prima. Damit ist die Einrichtung abgeschlossen und wir können mit dem Schreiben
 
 ## <a id="Connect"></a>Schritt 3: Herstellen einer Verbindung mit einem Azure Cosmos DB-Konto
 1. Ersetzen Sie zunächst in der Datei **Program.cs** die Verweise am Anfang der C#-Anwendung durch die folgenden Verweise:
-    ```csharp
-    using System;
-    using System.Threading.Tasks;
-    using System.Configuration;
-    using Microsoft.Azure.Cosmos;
-    using System.Collections.Generic;
-    using System.Net;
-    ```
+
+   ```csharp
+   using System;
+   using System.Threading.Tasks;
+   using System.Configuration;
+   using Microsoft.Azure.Cosmos;
+   using System.Collections.Generic;
+   using System.Net;
+   ```
+
 1. Fügen Sie nun in der öffentlichen Klasse ``Program`` die folgenden Konstanten und Variablen hinzu:
     ```csharp
     public class Program

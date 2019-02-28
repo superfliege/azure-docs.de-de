@@ -9,12 +9,12 @@ ms.date: 12/11/2017
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: autoscale
-ms.openlocfilehash: b9d54dc1483da20b4c411047af0b44b681fe197c
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 9c8803ff73b3e70c19a409ef6c1e072b5f7c8b53
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429275"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734267"
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>Erstellen einer Einstellung für die automatische Skalierung von Azure-Ressourcen basierend auf Leistungsdaten oder einem Zeitplan
 
@@ -55,7 +55,7 @@ In den folgenden Schritten erfahren Sie, wie Sie den Bildschirm für die automat
 
    ![Speichern einer Einstellung für die automatische Skalierung](./media/tutorial-autoscale-performance-schedule/Autoscale-Setting-Save.png)
 
- ## <a name="configure-default-profile"></a>Konfigurieren des Standardprofils
+## <a name="configure-default-profile"></a>Konfigurieren des Standardprofils
 1. Geben Sie unter **Name** einen Namen für die Einstellung für die automatischen Skalierung an.
 2. Vergewissern Sie sich im Standardprofil, dass der **Skalierungsmodus** auf „Auf eine bestimmte Anzahl von Instanzen skalieren“ festgelegt ist.
 3. Legen Sie die Anzahl der Instanzen auf **1** fest. Durch diese Einstellung wird sichergestellt, dass das die Anzahl der Instanzen im Standardprofil auf „1“ zurückgesetzt wird, wenn kein anderes Profil aktiv oder wirksam ist.

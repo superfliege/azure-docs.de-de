@@ -4,14 +4,14 @@ description: Erfahren Sie, wie Sie das Open-Source-basierte Azure Cosmos DB-Date
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 02/19/2019
+ms.date: 02/22/2019
 ms.author: dech
-ms.openlocfilehash: 972602bb6c5fc80433c2479516f8d0a5d885e4dd
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c2020688359fafe6cf39dacc84c84ea79251ddbb
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446935"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733349"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrieren Ihrer Daten zu Azure Cosmos DB mithilfe des Datenmigrationstools
 
@@ -58,7 +58,7 @@ Das Importtool verfügt zwar über eine grafische Benutzeroberfläche (dtui.exe)
 
 ## <a id="Install"></a>Installation
 
-Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung herunterladen und lokal kompilieren oder eine [vorkompilierte Binärdatei herunterladen](https://cosmosdbtools.blob.core.windows.net/datamigrationtool/2019.02.19-1.8.2/dt-1.8.2.zip), und dann eine der folgenden Dateien ausführen:
+Der Quellcode des Migrationstools ist auf GitHub in [diesem Repository](https://github.com/azure/azure-documentdb-datamigrationtool) verfügbar. Sie können die Lösung herunterladen und lokal kompilieren oder eine [vorkompilierte Binärdatei herunterladen](http://aka.ms/csdmtool), und dann eine der folgenden Dateien ausführen:
 
 * **Dtui.exe**: GUI-Version des Tools
 * **Dt.exe**: Befehlszeilenversion des Tools

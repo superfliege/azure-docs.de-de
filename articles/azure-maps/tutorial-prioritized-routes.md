@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5458c7e74728952df89380a3649c6ed60eb6ea9a
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 0ec047f38596bed4d3f0bc5520dc9c7fc18b4c24
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55749762"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585235"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>Ermitteln von Routen für verschiedene Fortbewegungsarten per Azure Maps
 
@@ -248,7 +248,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verw
         datasource.add(routeLine, 0);
     });
     ```
-    Der obige Codeausschnitt fragt den Azure Maps-Routingdienst über die Methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest) ab und analysiert die Antwort anschließend unter Verwendung von [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) im GeoJSON-Format. Danach wird ein Koordinatenarray für die zurückgegebene Route erstellt und der Datenquelle hinzugefügt. Außerdem wird der Index 0 hinzufügt, um sicherzustellen, dass das Rendering dafür vor allen anderen Linien in der Datenquelle erfolgt. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route, und wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel). 
+    Der obige Codeausschnitt fragt den Azure Maps-Routingdienst über die Methode [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) ab und analysiert die Antwort anschließend unter Verwendung von [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) im GeoJSON-Format. Danach wird ein Koordinatenarray für die zurückgegebene Route erstellt und der Datenquelle hinzugefügt. Außerdem wird der Index 0 hinzufügt, um sicherzustellen, dass das Rendering dafür vor allen anderen Linien in der Datenquelle erfolgt. Dieser Schritt wird ausgeführt, da die Berechnung einer LKW-Route häufig länger dauert als die Berechnung einer PKW-Route, und wenn die Linie für die LKW-Route nach der PKW-Route zur Datenquelle hinzugefügt wird, wird sie darüber gerendert. Der LKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (ein hübsches Blau) und eine Strichstärke (9 Pixel). 
 
 4. Fügen Sie den folgenden JavaScript-Code hinzu, um die Route für ein Auto anzufordern und die Ergebnisse anzuzeigen:
 
@@ -267,7 +267,7 @@ In diesem Abschnitt wird veranschaulicht, wie Sie die Maps-Routendienst-API verw
         datasource.add(routeLine);
     });
     ```
-    In diesem Codeausschnitt wird die Abfrage der LKW-Route für einen PKW verwendet. Der Azure Maps-Routingdienst wird über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/services.route?view=azure-iot-typescript-latest)-Methode abgefragt und die Antwort anschließend im GeoJSON-Format unter Verwendung von [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.geojson.geojsonroutedirectionsresponse?view=azure-iot-typescript-latest) analysiert. Als Nächstes wird ein Array mit Koordinaten für die zurückgegebene Route erstellt und der Datenquelle hinzugefügt. Der PKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (Violett) und eine Strichstärke (5 Pixel). 
+    In diesem Codeausschnitt wird die Abfrage der LKW-Route für einen PKW verwendet. Der Azure Maps-Routingdienst wird über die [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest)-Methode abgefragt und die Antwort anschließend im GeoJSON-Format unter Verwendung von [getGeoJsonRouteDirectionsResponse](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routegeojson?view=azure-iot-typescript-latest) analysiert. Als Nächstes wird ein Array mit Koordinaten für die zurückgegebene Route erstellt und der Datenquelle hinzugefügt. Der PKW-Routenlinie werden zwei Eigenschaften hinzugefügt: eine Strichfarbe (Violett) und eine Strichstärke (5 Pixel). 
 
 5. Speichern Sie die Datei **MapTruckRoute.html**, und aktualisieren Sie Ihren Browser, um das Ergebnis zu betrachten. Für eine erfolgreiche Verbindung mit den Maps-APIs sollten Sie eine Karte ähnlich der folgenden sehen.
 

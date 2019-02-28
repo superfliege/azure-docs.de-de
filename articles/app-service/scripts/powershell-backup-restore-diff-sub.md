@@ -15,12 +15,12 @@ ms.topic: sample
 ms.date: 11/21/2018
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 845d47af75495a158e56312126c8e246b43f789f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e8879b67b79523cc35fb28a707a6c77f3efb75c0
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112767"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56584978"
 ---
 # <a name="restore-a-web-app-from-a-backup-in-another-subscription-using-powershell"></a>Wiederherstellen einer Web-App aus einer Sicherung in einem anderen Abonnement mithilfe von PowerShell
 
@@ -48,7 +48,7 @@ Das Skript verwendet die folgenden Befehle. Jeder Befehl in der Tabelle ist mit 
 
 | Get-Help | Notizen |
 |---|---|
-| [Add-AzAccount](/powershell/module/az.profile/add-azaccount) | Fügt ein authentifiziertes Konto hinzu, das für Cmdlet-Anforderungen von Azure Resource Manager verwendet werden soll.  |
+| [Add-AzAccount](/powershell/module/az.accounts/connect-azaccount) | Fügt ein authentifiziertes Konto hinzu, das für Cmdlet-Anforderungen von Azure Resource Manager verwendet werden soll.  |
 | [Get-AzWebAppBackupList](/powershell/module/az.websites/get-azwebappbackuplist) | Ruft eine Liste der Sicherungen für eine Web-App ab. |
 | [New-AzWebApp](/powershell/module/az.websites/new-azwebapp) | Erstellt eine Web-App. |
 | [Restore-AzWebAppBackup](/powershell/module/az.websites/restore-azwebappbackup) | Stellt eine Web-App aus einer zuvor ausgeführten Sicherung wieder her. |

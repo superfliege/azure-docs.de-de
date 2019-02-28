@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 11/26/2018
 ROBOTS: NOINDEX
-ms.openlocfilehash: 460edc7f092764cce3584c81371db4801fbd69bc
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c866bb1ff5603f08377ed96ddd81eedf71e243bf
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240011"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593233"
 ---
 # <a name="tutorial-set-up-resources-for-validation-as-a-service"></a>Tutorial: Einrichten von Ressourcen für Validation-as-a-Service
 
@@ -92,7 +92,7 @@ Gewähren Sie als Azure AD-Administrator im Namen Ihres Mandanten der VaaS-Azure
 
 ## <a name="create-an-azure-storage-account"></a>Erstellen eines Azure-Speicherkontos
 
-Während der Testausführung gibt VaaS Diagnoseprotokolle an ein Azure Storage-Konto aus. Das Speicherkonto kann nicht nur für Testprotokolle, sondern auch zum Hochladen der OEM-Erweiterungspakete für den Lösungsvalidierungsworkflow verwendet werden.
+Während der Testausführung gibt VaaS Diagnoseprotokolle an ein Azure Storage-Konto aus. Das Speicherkonto kann nicht nur für Testprotokolle, sondern auch zum Hochladen der OEM-Erweiterungspakete für den Workflow für die Paketvalidierung verwendet werden.
 
 Das Azure Storage-Konto wird in der öffentlichen Azure-Cloud und nicht in Ihrer Azure Stack-Umgebung gehostet.
 
