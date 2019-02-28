@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: 1d576b24e96d6c4c88d6fbef86cb1c6cf7f7c61a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: d275455f502cf20eaa573c1716c38023f8e7236e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268129"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821899"
 ---
 # <a name="azure-resource-manager-overview"></a>Übersicht über den Azure-Ressourcen-Manager
 
@@ -148,7 +148,7 @@ Sie können die Vorlage auch für Aktualisierungen der Infrastruktur verwenden. 
 
 Der Resource Manager bietet Erweiterungen für Szenarien, in denen zusätzliche Vorgänge erforderlich sind – beispielsweise das Installieren bestimmter Software, die nicht Teil des Setups ist. Wenn Sie bereits einen Konfigurationsverwaltungsdienst verwenden (etwa DSC, Chef oder Puppet), können Sie ihn mithilfe von Erweiterungen auch weiter nutzen. Informationen zu Erweiterungen für virtuelle Computer finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
-Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, da Sie mit der Vorlage für Ihre Lösung beginnen und diese dann an die speziellen Anforderungen anpassen können. Ein Beispiel finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Sie können auch eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](resource-manager-export-template.md) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
+Wenn Sie eine Lösung über das Portal erstellen, enthält sie automatisch eine Bereitstellungsvorlage. Sie müssen die Vorlage nicht völlig neu erstellen, da Sie mit der Vorlage für Ihre Lösung beginnen und diese dann an die speziellen Anforderungen anpassen können. Ein Beispiel finden Sie unter [Schnellstart: Erstellen und Bereitstellen von Azure Resource Manager-Vorlagen über das Azure-Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Sie können auch eine Vorlage für eine vorhandene Ressourcengruppe abrufen, indem Sie entweder den aktuellen Zustand der Ressourcengruppe exportieren oder die Vorlage anzeigen, die für eine bestimmte Bereitstellung verwendet wurde. Das Anzeigen der [exportierten Vorlage](./manage-resource-groups-portal.md#export-resource-groups-to-templates) ist hilfreich, um sich über die Vorlagensyntax zu informieren.
 
 Die Vorlage wird schließlich zu einem Teil des Quellcodes für Ihre App. Sie können sie in das Quellcoderepository einchecken und im Verlauf der App-Entwicklung aktualisieren. Sie können die Vorlage mit Visual Studio bearbeiten.
 

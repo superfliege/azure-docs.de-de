@@ -428,6 +428,8 @@ items:
       href: vmware-azure-troubleshoot-failback-reprotect.md
     - name: Behandlung von Problemen beim Upgrade von Microsoft Azure Site Recovery-Anbietern
       href: vmware-azure-troubleshoot-upgrade-failures.md
+    - name: Behandeln von vCenter-Ermittlungsfehlern
+      href: vmware-azure-troubleshoot-vcenter-discovery-failures.md
   - name: Hyper-V
     items:
     - name: Problembehandlung für die Hyper-V-Replikation
@@ -462,9 +464,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=site-recovery
-ms.openlocfilehash: 49cdd301f87db09e4950339e1925ac313a8cdd33
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 04547a737cc05b3f1049d76e536366e608ee665a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454785"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866435"

@@ -420,8 +420,6 @@ items:
         href: platform/collect-azure-metrics-logs.md
       - name: Diagnose- oder Protokolldaten aus dem Azure-Speicher
         href: platform/azure-storage-iis-table.md
-      - name: Azure PaaS-Ressourcen
-        href: platform/collect-azurepass-posh.md
       - name: Korrelieren von benutzerdefinierten Datenquellen
         href: app/custom-data-correlation.md
     - name: Sammeln von benutzerdefinierten Daten
@@ -448,10 +446,10 @@ items:
         href: platform/archive-diagnostic-logs.md
       - name: Speichern von Diagnoseprotokollen
         href: platform/diagnostic-logs-stream-log-store.md
+      - name: Azure-Ressourcendaten an Event Hub
+        href: platform/stream-monitoring-data-event-hubs.md
       - name: Streamen von Aktivitätsprotokollen an Event Hubs
         href: platform/activity-logs-stream-event-hubs.md
-      - name: Protokolle und Metriken an Event Hub
-        href: platform/stream-monitoring-data-event-hubs.md
       - name: Diagnoseprotokolle an Event Hub
         href: platform/diagnostic-logs-stream-event-hubs.md
       - name: Anwendungsdaten an Log Analytics
@@ -636,8 +634,9 @@ items:
   - name: Visualisieren von Daten
     items:
     - name: Ansichten
-      href: platform/view-designer.md
       items:
+      - name: Ansicht-Designer
+        href: platform/view-designer.md
       - name: Kachelreferenz
         href: platform/view-designer-tiles.md
       - name: Referenz zur Visualisierungskomponente
@@ -1031,9 +1030,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 519c8213c715995fea89475e81f8c63f41190d65
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 7ca33f101a86f08ce8249bd43975d6ed2aab6141
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455397"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888167"
