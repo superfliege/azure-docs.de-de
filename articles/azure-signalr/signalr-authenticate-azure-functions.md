@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/18/2018
 ms.author: zhshang
-ms.openlocfilehash: b66d4c9fb3bce03248f5696d5a7b2b7b62b7ffd3
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 0ed30b9ad38db71798edd75ee133a08670fd33fe
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746370"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890197"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Tutorial: Azure SignalR Service-Authentifizierung mit Azure Functions
 
@@ -304,7 +304,7 @@ Beim Senden einer Nachricht kann die App entscheiden, ob sie an alle verbundenen
 
 1. Öffnen Sie in VS Code die Datei **SignalRInfo/function.json**.
 
-1. Fügen Sie in der Eigenschaft *userId* der *SignalRConnectionInfo*-Bindung einen [Bindungsausdruck](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings#binding-expressions-and-patterns) ein: `{headers.x-ms-client-principal-name}`. Damit wird der Wert auf den Benutzernamen des authentifizierten Benutzers festgelegt. Das Attribut sollte nun wie folgt aussehen:
+1. Fügen Sie in der Eigenschaft *userId* der *SignalRConnectionInfo*-Bindung einen [Bindungsausdruck](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings) ein: `{headers.x-ms-client-principal-name}`. Damit wird der Wert auf den Benutzernamen des authentifizierten Benutzers festgelegt. Das Attribut sollte nun wie folgt aussehen:
 
     ```json
     {

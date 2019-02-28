@@ -4,18 +4,19 @@ description: In dieser Schnellstartanleitung für die Sprache Go fügen Sie eine
 titleSuffix: Language Understanding - Microsoft Cognitive Services
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: 4bc76f67b2d8908abe601aa1fcdfd1962678c548
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 60594137306bfe58024877947959f2865fffe019
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865650"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961804"
 ---
 # <a name="quickstart-change-model-using-go"></a>Schnellstart: Ändern des Modells mit Go
 
@@ -45,7 +46,7 @@ In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpun
 
 3. Fügen Sie die generische HTTP-Anforderungsfunktion hinzu, die das Übergeben des Erstellungsschlüssels im Header beinhaltet. 
 
-   [!code-go[Add HTTP request function which includes passing authoring key in header. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
+   [!code-go[Add HTTP request function which includes passing authoring key in header.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=12-36 "Add HTTP request function, which includes passing authoring key in header. ")]
 
 4. Fügen Sie Beispieläußerungen aus der JSON-Datei hinzu.
 
@@ -53,15 +54,15 @@ In dieser Schnellstartanleitung übergeben Sie Äußerungen an einen LUIS-Endpun
 
 5. Fordern Sie das Training an. Hierbei wird eine Hilfsfunktion verwendet, um das VERB für die gleiche Route als Trainingsstatus festzulegen. 
 
-   [!code-go[Request training. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
+   [!code-go[Request training.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=77-86 "Request training. ")]
 
 6. Fordern Sie den Trainingsstatus an. Hierbei wird eine Hilfsfunktion verwendet, um das VERB für die gleiche Route als Trainingsanforderung festzulegen. 
 
-   [!code-go[Request training status. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
+   [!code-go[Request training status.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=87-90 "Request training status. ")]
 
 7. Fügen Sie die main-Funktion zum Behandeln der Befehlszeilenanalyse hinzu.
 
-   [!code-go[Add main function to handle command line parsing. ](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
+   [!code-go[Add main function to handle command line parsing.](~/samples-luis/documentation-samples/quickstarts/change-model/go/add-utterances.go?range=38-60 "Add main function to handle command-line parsing.")]
 
 ## <a name="add-an-utterance-from-the-command-line-train-and-get-status"></a>Hinzufügen einer Äußerung über die Befehlszeile, Trainieren und Abrufen des Status
 

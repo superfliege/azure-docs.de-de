@@ -10,16 +10,16 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 7371808db8d40948f501b051692172fd6a84e2ac
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 1390a3be20dd1fc66bb04939f9ce41139db3cb2e
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270214"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56873269"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung
 
@@ -66,15 +66,23 @@ Ihre Azure AD-Benutzerobjekt-ID wird von der Vorlage zum Konfigurieren von Berec
 
 1. Führen Sie den folgenden Azure PowerShell- oder Azure CLI-Befehl aus:  
 
+    # <a name="clitabcli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/CLI)
     ```azurecli-interactive
     echo "Enter your email address that is associated with your Azure subscription):" &&
     read upn &&
     az ad user show --upn-or-object-id $upn --query "objectId" &&
-    ```
+    ```   
+    # <a name="powershelltabpowershell"></a>[PowerShell](#tab/PowerShell)
     ```azurepowershell-interactive
-    $upn = Read-Host -Prompt "Input your user principal name (email address) used to sign in to Azure"
+    $upn = Read-Host -Prompt "Enter your user principal name (email address) used to sign in to Azure"
     (Get-AzADUser -UserPrincipalName $upn).Id
     ```
+    oder
+    ```azurepowershell-interactive
+    $displayName = Read-Host -Prompt "Enter your user display name (i.e. John Dole, see the upper right corner of the Azure portal)"
+    (Get-AzADUser -DisplayName $displayName).Id
+    ```
+    ---
 2. Notieren Sie sich die Objekt-ID. Sie benötigen sie später in diesem Tutorial.
 
 So erstellen Sie einen Schlüsseltresor:
@@ -187,12 +195,9 @@ $location = Read-Host -Prompt "Enter the location (i.e. centralus)"
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateFile azuredeploy.json `
-    -TemplateParameterFile azuredeploy.parameters.json
+    -TemplateFile "$HOME/azuredeploy.json" `
+    -TemplateParameterFile "$HOME/azuredeploy.parameters.json"
 ```
-
-> [!NOTE]
-> Bei der Verwendung von Azure PowerShell in Cloud Shell tritt ein Problem mit Datei-E/A-Vorgängen auf.  Die Fehlermeldung lautet wie folgt: *Cannot retrieve the dynamic parameters for the cmdlet. Cannot find path 'Azure:/azuredeploy.json' because it does not exist.* (Die dynamischen Parameter für das Cmdlet können nicht abgerufen werden. Der Pfad „Azure:/azuredeploy.json“ wurde nicht gefunden, da er nicht vorhanden ist.)  Nehmen Sie als vorübergehende Problemumgehung die Switches **-TemplateFile** und **TemplateParameterFile** nicht in den Befehl `New-AzResourceGroupDeploy` auf. Der Befehl fordert Sie zur Eingabe des Dateinamens auf.
 
 Verwenden Sie beim Bereitstellen der Vorlage die gleiche Ressourcengruppe wie für den Schlüsseltresor. Das erleichtert später die Bereinigung der Ressourcen. Sie müssen dann nicht zwei Ressourcengruppen löschen, sondern nur eine.
 

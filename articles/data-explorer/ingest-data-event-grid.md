@@ -8,12 +8,12 @@ ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/30/2019
-ms.openlocfilehash: 343baedb77eb5c8a250e2ab967332dc0905f5112
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 6dac6fb18f221ddb45e5b5b7e325868915732368
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55743683"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804643"
 ---
 # <a name="quickstart-ingest-azure-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>Schnellstart: Erfassen von Azure-Blobs in Azure Data Explorer durch Abonnieren von Event Grid-Benachrichtigungen
 
@@ -58,7 +58,7 @@ Erstellen Sie in Azure Data Explorer eine Tabelle, an die Event Hubs Daten sende
 
 1. Wählen Sie im Azure-Portal unter Ihrem Cluster die Option **Abfrage** aus.
 
-    ![Anwendungslink „Abfrage“](media/ingest-data-event-hub/query-explorer-link.png)
+    ![Anwendungslink „Abfrage“](media/ingest-data-event-grid/query-explorer-link.png)
 
 1. Kopieren Sie den folgenden Befehl in das Fenster, und wählen Sie **Ausführen**, um die Tabelle (TestTable) zu erstellen, die die erfassten Daten erhalten soll.
 
@@ -82,11 +82,11 @@ Stellen Sie nun über Azure Data Explorer eine Verbindung mit der Event Grid-Ins
 
 1. Wählen Sie unter dem von Ihnen erstellten Cluster zuerst **Datenbanken** und dann **TestDatabase** aus.
 
-    ![Testdatenbank auswählen](media/ingest-data-event-hub/select-test-database.png)
+    ![Testdatenbank auswählen](media/ingest-data-event-grid/select-test-database.png)
 
 1. Wählen Sie **Datenerfassung** und dann **Datenverbindung hinzufügen** aus.
 
-    ![Datenerfassung](media/ingest-data-event-hub/data-ingestion-create.png)
+    ![Datenerfassung](media/ingest-data-event-grid/data-ingestion-create.png)
 
 1. Wählen Sie als Verbindungstyp Folgendes aus: **Blobspeicher**.
 
@@ -185,9 +185,9 @@ Wenn Sie Ihre Event Grid-Instanz nicht mehr benötigen, bereinigen Sie **test-hu
 
 1. Klicken Sie ganz links im Azure-Portal auf **Ressourcengruppen** und anschließend auf die erstellte Ressourcengruppe.  
 
-    Wenn das linke Menü reduziert ist, wählen Sie ![Schaltfläche „Erweitern“](media/ingest-data-event-hub/expand.png) , um es zu erweitern.
+    Wenn das linke Menü reduziert ist, wählen Sie ![Schaltfläche „Erweitern“](media/ingest-data-event-grid/expand.png) , um es zu erweitern.
 
-   ![Auswählen einer zu löschenden Ressourcengruppe](media/ingest-data-event-hub/delete-resources-select.png)
+   ![Auswählen einer zu löschenden Ressourcengruppe](media/ingest-data-event-grid/delete-resources-select.png)
 
 1. Wählen Sie unter **test-resource-group** die Option **Ressourcengruppe löschen** aus.
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7bc6b57122072c2fe0c063c1278cf11d97469b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0e86ede90a19d829e87b47d49fa4a12a17fe1d5c
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191315"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56867047"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-snowflake"></a>Tutorial: Azure Active Directory-Integration mit Snowflake
 
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
     > [!NOTE]
     > Dies ist separat von dem Kontext, den Sie oben rechts unter Ihrem Benutzernamen ausgewählt haben.
     
-    ![Der Snowflake-Administrator ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Der Snowflake-Administrator](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 10. Öffnen Sie das **heruntergeladene Base64-Zertifikat** im Editor. Kopieren Sie den Wert zwischen „-----BEGIN CERTIFICATE-----“ und „-----END CERTIFICATE-----“, und fügen Sie ihn unten in die Anführungszeichen neben **certificate** ein. Fügen Sie unter **ssoUrl** den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben. Wählen Sie die Option **Alle Abfragen**, und klicken Sie auf **Ausführen**.
 
@@ -219,11 +219,11 @@ Damit sich Azure AD-Benutzer bei Snowflake anmelden können, müssen sie in Snow
 
 2. **Wechseln Sie die Rolle** zu **ACCOUNTADMIN**, indem Sie auf der Seite oben rechts auf **Profil** klicken.  
 
-    ![Der Snowflake-Administrator ](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
+    ![Der Snowflake-Administrator](./media/snowflake-tutorial/tutorial_snowflake_accountadmin.png)
 
 3. Erstellen Sie den Benutzer durch Ausführen der folgenden SQL-Abfrage, wobei Sie sicherstellen, dass „Anmeldename“ (Login name) auf den Azure AD-Benutzernamen auf dem Arbeitsblatt festgelegt ist, wie unten dargestellt.
 
-    ![Snowflake adminsql ](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
+    ![Snowflake adminsql](./media/snowflake-tutorial/tutorial_snowflake_usersql.png)
 
     ```
     use role accountadmin;
@@ -238,7 +238,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Snowflake“ klicken, sollten Sie 
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

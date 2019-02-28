@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 08/17/2018
-ms.openlocfilehash: 7798af5d667bcf70ba562bb7198f9af570f3005a
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 57ed02463555ce9e958aedd9c2b317f7a167567b
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044415"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985885"
 ---
 # <a name="get-started-with-azure-table-storage-and-the-azure-cosmos-db-table-api-using-net"></a>Erste Schritte mit Azure Table Storage und der Azure Cosmos DB-Tabellen-API mit .NET
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -36,7 +36,6 @@ Für dieses Beispiel benötigen Sie Folgendes:
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Allgemeine Azure Storage-Bibliothek für .NET (Vorschau)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/) –  ein erforderliches Vorschaupaket, das in Produktionsumgebungen unterstützt wird. 
 * [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table): Diese Bibliothek ist derzeit nur für .NET Standard verfügbar, für .NET Core noch nicht.
-* [Azure Configuration Manager für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure-Speicherkonto](../storage/common/storage-quickstart-create-account.md)
 
 [!INCLUDE [storage-dotnet-client-library-version-include](../../includes/storage-dotnet-client-library-version-include.md)]
@@ -77,14 +76,11 @@ Es gibt drei empfohlene Pakete, auf die Sie in Ihrem Projekt verweisen müssen, 
 
 * [Microsoft Azure Cosmos DB-Tabellenbibliothek für .NET](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table) Mit diesem Paket erhalten Sie programmgesteuerten Zugriff auf Datenressourcen in Ihrem Azure Table Storage-Konto bzw. Ihrem Konto für die Azure Cosmos DB-Tabellen-API. Diese Bibliothek ist derzeit nur für .NET Standard verfügbar, für .NET Core noch nicht.
 
-* [Microsoft Azure Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): Mit diesem Paket wird eine Klasse zum Analysieren einer Verbindungszeichenfolge in einer Konfigurationsdatei bereitgestellt. Dies gilt unabhängig davon, wo die Anwendung ausgeführt wird.
-
 Führen Sie diese Schritte aus, um die NuGet-Pakete abzurufen:
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
 2. Suchen Sie online nach „Microsoft.Azure.Storage.Common“, wählen Sie Version <= 9.0.0.1, und wählen Sie **Installieren** aus, um die allgemeine Azure Storage-Bibliothek für .NET (Vorschau) und die zugehörigen Abhängigkeiten zu installieren. Stellen Sie sicher, dass das Kontrollkästchen **Vorabversion einbeziehen** aktiviert ist, da es sich um ein Vorschaupaket handelt.
 3. Suchen Sie online nach „Microsoft.Azure.CosmosDB.Table“, und wählen Sie **Installieren** aus, um die Microsoft Azure Cosmos DB-Tabellenbibliothek zu installieren.
-4. Suchen Sie online nach „WindowsAzure.ConfigurationManager“, und wählen Sie **Installieren** aus, um die Microsoft Azure Configuration Manager-Bibliothek zu installieren.
 
 > [!NOTE]
 > Die ODataLib-Abhängigkeiten in der allgemeinen Storage-Bibliothek für .NET werden mit den ODataLib-Paketen aufgelöst, die auf NuGet verfügbar sind (nicht von WCF Data Services). Die ODataLib-Bibliotheken können direkt heruntergeladen werden, oder es wird über Ihr Codeprojekt durch NuGet darauf verwiesen. Die spezifischen ODataLib-Pakete, die von der Speicherclientbibliothek verwendet werden, lauten [OData](https://nuget.org/packages/Microsoft.Data.OData/), [Edm](https://nuget.org/packages/Microsoft.Data.Edm/) und [Spatial](https://nuget.org/packages/System.Spatial/). Diese Bibliotheken werden von Azure Table Storage-Klassen verwendet und sind erforderliche Abhängigkeiten für die Programmierung mit der allgemeinen Storage-Bibliothek.
