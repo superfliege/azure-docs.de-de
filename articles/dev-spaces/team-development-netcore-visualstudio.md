@@ -12,12 +12,12 @@ ms.date: 12/09/2018
 ms.topic: tutorial
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 7a77b8a1a2205465956d8c30a3fee6aec5e8428b
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: af0a4a719f964e400119be313842f385b410406c
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663790"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817421"
 ---
 # <a name="team-development-with-azure-dev-spaces"></a>Teamentwicklung mit Azure Dev Spaces
 
@@ -77,7 +77,7 @@ Als Erstes müssen wir eine Baseline unserer Dienste bereitstellen. Diese Bereit
 > [!TIP]
 > Die oben aufgeführten Schritte dienen zum manuellen Einrichten einer Baseline. Teams sollten jedoch CI/CD verwenden, um Ihre Baseline mit dem committeten Code auf dem neuesten Stand zu halten.
 >
-> In unserer [Anleitung zum Einrichten von CI/CD mit Azure DevOps](how-to/setup-cicd.md) erfahren Sie, wie Sie einen Workflow erstellen, der in etwa der Darstellung im folgenden Diagramm entspricht.
+> In unserer [Anleitung zum Einrichten von CI/CD mit Azure DevOps](how-to/setup-cicd.md) erfahren Sie, wie Sie einen Workflow erstellen, der in etwa der Darstellung im folgenden Diagramm entspricht:
 >
 > ![CI/CD-Beispieldiagramm](media/common/ci-cd-complex.png)
 
@@ -125,9 +125,9 @@ Hier sehen Sie ein Diagramm, in dem die Funktionsweise der verschiedenen Bereich
 Mit dieser integrierten Funktion von Azure Dev Spaces können Sie End-to-End-Tests für Code in einer gemeinsamen Umgebung ausführen, ohne dass die einzelnen Entwickler den kompletten Dienststapel in ihrem Bereich neu erstellen müssen. Für dieses Routing müssen Weitergabeheader in Ihrem App-Code weitergeleitet werden, wie im vorherigen Schritt in diesem Leitfaden erläutert.
 
 ### <a name="test-code-running-in-the-devscott-space"></a>Testen von Code, der im Bereich _dev/scott_ ausgeführt wird
-Wenn Sie Ihre neue Version von *mywebapi* in Verbindung mit *webfrontend* testen möchten, öffnen Sie in Ihrem Browser die URL des öffentlichen Zugriffspunkts für *webfrontend* (beispielsweise http://dev.webfrontend.123456abcdef.eastus.aksapp.io), und navigieren Sie zur Seite „Info“. Die ursprüngliche Nachricht „Hello from webfrontend and Hello from mywebapi“ sollte angezeigt werden.
+Wenn Sie Ihre neue Version von *mywebapi* in Verbindung mit *webfrontend* testen möchten, öffnen Sie in Ihrem Browser die URL des öffentlichen Zugriffspunkts für *webfrontend* (beispielsweise http://dev.webfrontend.123456abcdef.eus.azds.io), und navigieren Sie zur Seite „Info“. Die ursprüngliche Nachricht „Hello from webfrontend and Hello from mywebapi“ sollte angezeigt werden.
 
-Fügen Sie nun den Teil „scott.s.“ zur URL hinzu, sodass sie ungefähr wie folgt lautet: http://scott.s.dev.webfrontend.123456abcdef.eastus.aksapp.io. Aktualisieren Sie anschließend den Browser. Der im Projekt *mywebapi* festgelegte Breakpoint sollte erreicht werden. Klicken Sie auf F5, um den Vorgang fortzusetzen. Im Browser sollte jetzt die neue Nachricht „Hello from webfrontend and mywebapi now says something new.“ angezeigt werden. Der Grund hierfür ist, dass der Pfad zum aktualisierten Code in *mywebapi* im Bereich _dev/scott_ ausgeführt wird.
+Fügen Sie nun den Teil „scott.s.“ zur URL hinzu, sodass sie ungefähr wie folgt lautet: http://scott.s.dev.webfrontend.123456abcdef.eus.azds.io. Aktualisieren Sie anschließend den Browser. Der im Projekt *mywebapi* festgelegte Breakpoint sollte erreicht werden. Klicken Sie auf F5, um den Vorgang fortzusetzen. Im Browser sollte jetzt die neue Nachricht „Hello from webfrontend and mywebapi now says something new.“ angezeigt werden. Der Grund hierfür ist, dass der Pfad zum aktualisierten Code in *mywebapi* im Bereich _dev/scott_ ausgeführt wird.
 
 Sobald Sie einen Bereich _dev_ haben, der immer die aktuellen Änderungen enthält, und vorausgesetzt, Ihre Anwendung ist zur Nutzung des in diesem Abschnitt des Tutorials beschriebenen bereichsbasierten Routings von Dev Spaces konzipiert, sollte es leicht nachvollziehbar sein, von welch großem Nutzen Dev Spaces beim Testen neuer Features im Kontext der größeren Anwendung sein kann. Anstatt _alle_ Dienste in Ihrem privaten Bereich bereitstellen zu müssen, können Sie einen von _dev_ abgeleiteten privaten Bereich erstellen und darin nur die Dienste bereitstellen, an denen Sie tatsächlich arbeiten. Die Routinginfrastruktur von Dev Spaces übernimmt dann den Rest: Sie nutzt alle Dienste, die Sie in Ihrem privaten Bereich findet, und verwendet standardmäßig wieder die aktuelle Version im Bereich _dev_. Und besser noch: _Mehrere_ Entwickler können zur gleichen Zeit aktiv unterschiedliche Dienste in ihrem eigenen Bereich entwickeln, ohne einander zu stören.
 
