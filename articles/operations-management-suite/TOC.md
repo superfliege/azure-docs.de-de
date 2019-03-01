@@ -2,7 +2,7 @@
 ## [Agent-Überwachung](../monitoring/index.md)
 
 # Erste Schritte
-## [Log Analytics](../log-analytics/log-analytics-get-started.md)
+## [Azure Monitor-Protokolle](../log-analytics/log-analytics-get-started.md)
 ## [Automatisierung](/azure/automation/)
 ## [Sicherung](../backup/backup-introduction-to-azure-backup.md)
 ## [Site Recovery](../site-recovery/site-recovery-overview.md)
@@ -11,7 +11,7 @@
 # Anleitung
 
 ## Analysieren
-### [Log Analytics](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+### [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ## Automatisieren
 ### [Azure Automation – Übersicht](../automation/automation-intro.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 

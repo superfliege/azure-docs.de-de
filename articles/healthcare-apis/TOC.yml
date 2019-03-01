@@ -1,0 +1,56 @@
+items:
+- name: Azure-API für FHIR
+  href: index.yml
+- name: Übersicht
+  items:
+  - name: Informationen zur Azure-API für FHIR
+    href: overview.md
+  - name: Informationen zum FHIR-Server für Azure
+    href: overview-open-source-server.md
+- name: Schnellstarts
+  items:
+  - name: 'Bereitstellen der Azure-API für FHIR: Portal'
+    href: fhir-paas-portal-quickstart.md
+  - name: 'Bereitstellen der Azure-API für FHIR: PowerShell'
+    href: fhir-paas-powershell-quickstart.md
+  - name: 'Bereitstellen der Azure-API für FHIR: CLI'
+    href: fhir-paas-cli-quickstart.md
+  - name: 'Bereitstellen des FHIR-Servers für Azure: Portal'
+    href: fhir-oss-portal-quickstart.md
+  - name: 'Bereitstellen des FHIR-Servers für Azure: PowerShell'
+    href: fhir-oss-powershell-quickstart.md
+  - name: 'Bereitstellen des FHIR-Servers für Azure: CLI'
+    href: fhir-oss-cli-quickstart.md
+  expanded: true
+- name: Lernprogramme
+  items:
+  - name: Zugriff auf die FHIR-API mit Postman
+    href: access-fhir-postman-tutorial.md
+  expanded: false
+- name: Anleitungen
+  items:
+  - name: Registrieren einer Ressourcenanwendung
+    href: register-resource-azure-ad-client-app.md
+  - name: Registrieren einer vertraulichen Clientanwendung
+    href: register-confidential-azure-ad-client-app.md
+  - name: Registrieren einer öffentlichen Clientanwendung
+    href: register-public-azure-ad-client-app.md
+  - name: Registrieren einer Dienstclientanwendung
+    href: register-service-azure-ad-client-app.md
+  - name: 'Abrufen eines Tokens für die Azure-API für FHIR: CLI'
+    href: get-healthcare-apis-access-token-cli.md
+  - name: Ermitteln von Identitätsobjekt-IDs
+    href: find-identity-object-ids.md
+  expanded: false
+- name: Ressourcen
+  items:
+  - name: Häufig gestellte Fragen
+    href: fhir-faq.md
+  - name: Unterstützte Features
+    href: fhir-features-supported.md
+ms.openlocfilehash: 60d0d4b8368a64b9ef66608de6824cec9876b8be
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958115"

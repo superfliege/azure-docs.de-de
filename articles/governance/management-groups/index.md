@@ -2,21 +2,11 @@
 title: 'Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen: Azure Governance'
 description: Informationen zu Verwaltungsgruppen und ihrer Verwendung sowie zur Funktionsweise ihrer Berechtigungen
 author: rthorn17
-manager: rithorn
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 11/20/2018
+ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 9d606a46bd08ce3e999806bed2357968e5ffd914
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339286"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organisieren Ihrer Ressourcen mit Azure-Verwaltungsgruppen
 
@@ -30,9 +20,9 @@ Sie können eine flexible Struktur von Verwaltungsgruppen und Abonnements aufbau
 
 ![Struktur](./media/tree.png)
 
-Erstellen Sie eine Hierarchie, damit Sie eine Richtlinie anwenden können, beispielsweise zum Einschränken der VM-Standorte auf die Region „USA, Westen“ für die Gruppe „Verwaltungsgruppe Infrastrukturteam“. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
+Erstellen Sie eine Hierarchie, damit Sie eine Richtlinie anwenden können, beispielsweise zum Einschränken der VM-Standorte auf die Region „USA, Westen“ für die Gruppe „Produktion“. Diese Richtlinie wird an beide EA-Abonnements in dieser Verwaltungsgruppe vererbt und gilt für alle virtuellen Computer dieses Abonnements. Diese Sicherheitsrichtlinie kann nicht vom Besitzer der Ressource oder des Abonnements geändert werden und bietet damit eine verbesserte Governance.
 
-Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie zahlreiche Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [RBAC](../../role-based-access-control/overview.md)-Zuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.
+Ein weiteres Szenario, in dem Sie Verwaltungsgruppen verwenden würden, ist das Gewähren von Benutzerzugriff auf mehrere Abonnements. Indem Sie mehrere Abonnements unter diese Verwaltungsgruppe verschieben, haben Sie die Möglichkeit, eine [RBAC](../../role-based-access-control/overview.md)-Zuweisung (Role-Based Access Control, rollenbasierte Zugriffssteuerung) in der Verwaltungsgruppe zu erstellen, die diesen Zugriff an alle Abonnements vererbt.
 Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles ermöglichen, was sie benötigen, ohne dass in einem Skript RBAC für verschiedene Abonnements eingerichtet werden muss.
 
 ### <a name="important-facts-about-management-groups"></a>Wichtige Fakten zu Verwaltungsgruppen
@@ -42,12 +32,12 @@ Eine Zuweisung in der Verwaltungsgruppe kann Benutzern den Zugriff auf alles erm
   - Dieser Grenzwert schließt nicht die Stammebene oder die Abonnementebene ein.
 - Jede Verwaltungsgruppe und jedes Abonnement kann nur ein übergeordnetes Element unterstützen.
 - Jede Verwaltungsgruppe kann zahlreiche untergeordnete Elemente besitzen.
-- Alle Abonnements und Verwaltungsgruppen sind in einer einzelnen Hierarchie in jedem Verzeichnis enthalten. Weitere Informationen zu den Ausnahmen während der Vorschauphase finden Sie unter [Wichtige Fakten zur Stammverwaltungsgruppe](#important-facts-about-the-root-management-group).
+- Alle Abonnements und Verwaltungsgruppen sind in einer einzelnen Hierarchie in jedem Verzeichnis enthalten. Siehe [Wichtige Fakten zur Stammverwaltungsgruppe](#important-facts-about-the-root-management-group)
 
 ## <a name="root-management-group-for-each-directory"></a>Stammverwaltungsgruppe für jedes Verzeichnis
 
 Jedes Verzeichnis erhält eine einzelne Verwaltungsgruppe auf oberster Ebene, die als Stammverwaltungsgruppe bezeichnet wird.
-Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [Verzeichnisadministrator muss seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md), um der erste Besitzer dieser Gruppe zu sein. Sobald der Administrator der Besitzer der Gruppe ist, kann er jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten.
+Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Verwaltungsgruppen und Abonnements untergeordnet sind. Diese Stammverwaltungsgruppe ermöglicht das Anwenden von globalen Richtlinien und RBAC-Zuweisungen auf Verzeichnisebene. Der [globale Azure AD-Administrator muss seine eigenen Rechte erhöhen](../../role-based-access-control/elevate-access-global-admin.md), um der erste Besitzer dieser Stammgruppe zu sein. Sobald der Administrator der Besitzer der Gruppe ist, kann er jede RBAC-Rolle anderen Benutzern oder Gruppen des Verzeichnisses zuweisen, um die Hierarchie zu verwalten.
 
 ### <a name="important-facts-about-the-root-management-group"></a>Wichtige Fakten zur Stammverwaltungsgruppe
 
@@ -60,7 +50,7 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
   - Neue Abonnements werden bei ihrer Erstellung standardmäßig der Stammverwaltungsgruppe zugeordnet.
 - Alle Azure-Kunden können die Stammverwaltungsgruppe sehen, aber nicht alle Kunden besitzen Zugriff, um diese Stammverwaltungsgruppe zu verwalten.
   - Jeder Benutzer, der Zugriff auf ein Abonnement besitzt, kann den Kontext erkennen, in dem sich das Abonnement in der Hierarchie befindet.  
-  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Verzeichnisadministratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald sie über Zugriff verfügen, können die Verzeichnisadministratoren eine beliebige RBAC-Rolle anderen Benutzern zum Verwalten zuweisen.  
+  - Niemand erhält Standardzugriff auf die Stammverwaltungsgruppe. Globale Azure AD-Administratoren sind die einzigen Benutzer, die ihre Rechte erhöhen können, um Zugriff zu erlangen.  Sobald sie über Zugriff verfügen, können die globalen Administratoren eine beliebige RBAC-Rolle anderen Benutzern zum Verwalten zuweisen.  
 
 > [!IMPORTANT]
 > Jede Zuweisung von Benutzerzugriff oder Richtlinienzuweisung für die Stammverwaltungsgruppe **gilt für alle Ressourcen im Verzeichnis**.
@@ -69,21 +59,21 @@ Die Stammverwaltungsgruppe ist in die Hierarchie integriert, sodass ihr alle Ver
 
 ## <a name="initial-setup-of-management-groups"></a>Erstmalige Einrichtung von Verwaltungsgruppen
 
-Wenn ein Benutzer mit der Verwendung von Verwaltungsgruppen beginnt, findet ein erster Einrichtungsvorgang statt. Der erste Schritt besteht darin, dass die Stammverwaltungsgruppe im Verzeichnis erstellt wird. Sobald diese Gruppe erstellt wurde, werden alle Abonnements, die im Verzeichnis vorhanden sind, zu untergeordneten Elementen der Stammverwaltungsgruppe erklärt. Der Grund für diesen Vorgang besteht im Sicherstellen, dass nur eine Verwaltungsgruppenhierarchie in einem Verzeichnis vorhanden ist. Die einzige Hierarchie innerhalb des Verzeichnisses kann administrative Kunden das Anwenden von globalem Zugriff und globalen Richtlinien ermöglichen, die andere Kunden im Verzeichnis nicht umgehen können. Alles, was dem Stamm zugewiesen wird, gilt für alle Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen innerhalb des Verzeichnisses, weil eine Hierarchie im Verzeichnis vorhanden ist.
+Wenn ein Benutzer mit der Verwendung von Verwaltungsgruppen beginnt, findet ein erster Einrichtungsvorgang statt. Der erste Schritt besteht darin, dass die Stammverwaltungsgruppe im Verzeichnis erstellt wird. Sobald diese Gruppe erstellt wurde, werden alle Abonnements, die im Verzeichnis vorhanden sind, zu untergeordneten Elementen der Stammverwaltungsgruppe erklärt. Der Grund für diesen Vorgang besteht im Sicherstellen, dass nur eine Verwaltungsgruppenhierarchie in einem Verzeichnis vorhanden ist. Die einzige Hierarchie innerhalb des Verzeichnisses kann administrative Kunden das Anwenden von globalem Zugriff und globalen Richtlinien ermöglichen, die andere Kunden im Verzeichnis nicht umgehen können. Alles, was dem Stamm zugewiesen wird, gilt für die gesamte Hierarchie. Diese umfasst alle Verwaltungsgruppen, Abonnements, Ressourcengruppen und Ressourcen innerhalb des Azure AD-Mandanten.
 
 ## <a name="trouble-seeing-all-subscriptions"></a>Probleme beim Anzeigen aller Abonnements
 
-Bei einigen Verzeichnissen, bei denen früh in der Vorschauphase (vor dem 25. Juni 2018) mit der Verwendung von Verwaltungsgruppen begonnen wurde, trat ein Problem auf, aufgrund dessen die Abonnements nicht in die Hierarchie aufgenommen wurden.  Die Prozesse zum Aufnehmen von Abonnements in die Hierarchie wurden implementiert, nachdem eine Rollen- oder Richtlinienzuweisung für die Stammverwaltungsgruppe im Verzeichnis durchgeführt wurde.
+Bei einigen Verzeichnissen, bei denen früh in der Vorschauphase (vor dem 25. Juni 2018) mit der Verwendung von Verwaltungsgruppen begonnen wurde, trat ein Problem auf, aufgrund dessen die Abonnements nicht in der Hierarchie enthalten waren.  Die Prozesse zum Aufnehmen von Abonnements in die Hierarchie wurden implementiert, nachdem eine Rollen- oder Richtlinienzuweisung für die Stammverwaltungsgruppe im Verzeichnis durchgeführt wurde.
 
 ### <a name="how-to-resolve-the-issue"></a>So lösen Sie das Problem:
 
 Sie haben zwei Optionen zur Behebung dieses Problems.
 
 1. Entfernen aller Rollen- und Richtlinienzuweisungen aus der Stammverwaltungsgruppe
-    1. Werden alle Richtlinien- und Rollenzuweisungen aus der Stammverwaltungsgruppe entfernt, gleicht der Dienst beim nächsten Zyklus über Nacht alle Abonnements mit der Hierarchie ab.  Mit diesem Vorgang soll sichergestellt werden, dass nicht versehentlich Zugriff auf alle Mandantenabonnements gewährt oder eine Richtlinienzuweisung für diese Abonnements ausgeführt wurde.
-    1. Die beste Methode für diesen Vorgang ohne Beeinträchtigung Ihrer Dienste besteht darin, die Rollen- oder Richtlinienzuweisungen auf der Ebene unterhalb der Stammverwaltungsgruppe anzuwenden. Anschließend können Sie alle Zuweisungen aus dem Stammbereich entfernen.
+   1. Werden alle Richtlinien- und Rollenzuweisungen aus der Stammverwaltungsgruppe entfernt, gleicht der Dienst beim nächsten Zyklus über Nacht alle Abonnements mit der Hierarchie ab.  Mit diesem Vorgang soll sichergestellt werden, dass nicht versehentlich Zugriff auf alle Mandantenabonnements gewährt oder eine Richtlinienzuweisung für diese Abonnements ausgeführt wurde.
+   1. Die beste Methode für diesen Vorgang ohne Beeinträchtigung Ihrer Dienste besteht darin, die Rollen- oder Richtlinienzuweisungen auf der Ebene unterhalb der Stammverwaltungsgruppe anzuwenden. Anschließend können Sie alle Zuweisungen aus dem Stammbereich entfernen.
 1. Direktes Aufrufen der API, um den Abgleichvorgang zu starten.
-    1. Jeder Kunde im Verzeichnis kann die API *TenantBackfillStatusRequest* oder *StartTenantBackfillRequest* aufrufen. Wird die StartTenantBackfillRequest-API aufgerufen, initiiert sie den ersten Einrichtungsvorgang, bei dem alle Abonnements in die Hierarchie verschoben werden. Bei diesem Vorgang wird außerdem damit begonnen, die Festlegung aller neuen Abonnements als untergeordnetes Element der Stammverwaltungsgruppe zu erzwingen. Dabei werden keine Zuweisungen auf Stammebene geändert. Durch Aufrufen der API geben Sie an, dass die Anwendung einer Richtlinien- oder Zugriffszuweisung auf Stammebene auf alle Abonnements akzeptabel ist.
+   1. Jeder Kunde im Verzeichnis kann die API *TenantBackfillStatusRequest* oder *StartTenantBackfillRequest* aufrufen. Wird die StartTenantBackfillRequest-API aufgerufen, initiiert sie den ersten Einrichtungsvorgang, bei dem alle Abonnements in die Hierarchie verschoben werden. Bei diesem Vorgang wird außerdem damit begonnen, die Festlegung aller neuen Abonnements als untergeordnetes Element der Stammverwaltungsgruppe zu erzwingen. Dabei werden keine Zuweisungen auf Stammebene geändert. Durch Aufrufen der API geben Sie an, dass die Anwendung einer Richtlinien- oder Zugriffszuweisung auf Stammebene auf alle Abonnements akzeptabel ist.
 
 Sollten Sie Fragen zu diesem Abgleichvorgang haben, wenden Sie sich an managementgroups@microsoft.com.  
   
@@ -95,17 +85,18 @@ Beispielsweise kann die RBAC-Rolle „VM-Mitwirkender“ einer Verwaltungsgruppe
 
 Die folgende Abbildung zeigt die Liste der Rollen und die unterstützten Aktionen für Verwaltungsgruppen.
 
-| Name der RBAC-Rolle             | Erstellen | Umbenennen | Move | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
-|:-------------------------- |:------:|:------:|:----:|:------:|:-------------:| :------------:|:-----:|
-|Owner (Besitzer)                       | X      | X      | X    | X      | X             | X             | X     |
-|Mitwirkender                 | X      | X      | X    | X      |               |               | X     |
-|MG-Mitwirkender*             | X      | X      | X    | X      |               |               | X     |
-|Leser                      |        |        |      |        |               |               | X     |
-|MG-Leser*                  |        |        |      |        |               |               | X     |
-|Ressourcenrichtlinienmitwirkender |        |        |      |        |               | X             |       |
-|Benutzerzugriffsadministrator   |        |        |      |        | X             |               |       |
+| Name der RBAC-Rolle             | Erstellen | Umbenennen | Verschieben** | Löschen | Zuweisen des Zugriffs | Zuweisen der Richtlinie | Lesen  |
+|:-------------------------- |:------:|:------:|:------:|:------:|:-------------:| :------------:|:-----:|
+|Owner (Besitzer)                       | X      | X      | X      | X      | X             | X             | X     |
+|Mitwirkender                 | X      | X      | X      | X      |               |               | X     |
+|MG-Mitwirkender*             | X      | X      | X      | X      |               |               | X     |
+|Leser                      |        |        |        |        |               |               | X     |
+|MG-Leser*                  |        |        |        |        |               |               | X     |
+|Ressourcenrichtlinienmitwirkender |        |        |        |        |               | X             |       |
+|Benutzerzugriffsadministrator   |        |        |        |        | X             |               |       |
 
 *: MG-Mitwirkender und MG-Leser lassen nur zu, dass Benutzer diese Aktionen im Bereich der Verwaltungsgruppe ausführen.  
+**: Bei Rollenzuweisungen für die Stammverwaltungsgruppe muss kein Abonnement bzw. keine Verwaltungsgruppe in die und aus der Stammverwaltungsgruppe verschoben werden.  Ausführliche Informationen zum Verschieben von Elementen in der Hierarchie finden Sie unter [Verwalten von Ressourcen mit Verwaltungsgruppen](manage.md).
 
 ### <a name="custom-rbac-role-definition-and-assignment"></a>Definition und Zuweisung der benutzerdefinierten RBAC-Rolle
 
@@ -113,17 +104,11 @@ Benutzerdefinierte RBAC-Rollen werden zurzeit für Verwaltungsgruppen nicht unte
 
 ## <a name="audit-management-groups-using-activity-logs"></a>Überwachen von Verwaltungsgruppen mithilfe von Aktivitätsprotokollen
 
-Verwenden Sie zum Nachverfolgen von Verwaltungsgruppen über diese API die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs). Zurzeit ist es nicht möglich, PowerShell, die CLI oder das Azure-Portal zum Nachverfolgen der Verwaltungsgruppenaktivität zu verwenden.
+Verwaltungsgruppen werden im [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) unterstützt. Alle Ereignisse, die für eine Verwaltungsgruppe auftreten, können am gleichen zentralen Ort wie bei anderen Azure-Ressourcen gesucht werden.  Sie können beispielsweise alle Änderungen an Rollen- oder Richtlinienzuweisungen anzeigen, die für eine bestimmte Verwaltungsgruppe vorgenommen wurden.
 
-1. Als Mandantenadministrator des Azure AD-Mandanten [erhöhen Sie die Zugriffsrechte](../../role-based-access-control/elevate-access-global-admin.md), und weisen Sie dann dem überwachenden Benutzer eine Leserrolle über den Bereich `/providers/microsoft.insights/eventtypes/management` zu.
-1. Rufen Sie als überwachender Benutzer die [Mandantenaktivitätsprotokoll-API](/rest/api/monitor/tenantactivitylogs) auf, um Verwaltungsgruppenaktivitäten anzuzeigen. Es wird empfohlen, für alle Verwaltungsgruppenaktivitäten nach dem Ressourcenanbieter **Microsoft.Management** zu filtern.  Beispiel:
+![Aktivitätsprotokolle mit Verwaltungsgruppen](media/al-mg.png)
 
-```http
-GET "/providers/Microsoft.Insights/eventtypes/management/values?api-version=2015-04-01&$filter=eventTimestamp ge '{greaterThanTimeStamp}' and eventTimestamp le '{lessThanTimestamp}' and eventChannels eq 'Operation' and resourceProvider eq 'Microsoft.Management'"
-```
-
-> [!NOTE]
-> Um diese API bequem über die Befehlszeile aufzurufen, verwenden Sie [ARMClient](https://github.com/projectkudu/ARMClient).
+Wenn Sie Verwaltungsgruppen außerhalb des Azure-Portals abfragen möchten, sieht der Zielbereich für Verwaltungsgruppen wie folgt aus: **"/providers/Microsoft.Management/managementGroups/{yourMgID}"**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -131,6 +116,6 @@ Weitere Informationen zu Verwaltungsgruppen finden Sie unter folgenden Links:
 
 - [Erstellen von Verwaltungsgruppen zum Organisieren von Azure-Ressourcen](create.md)
 - [Ändern, Löschen oder Verwalten Ihrer Verwaltungsgruppen](manage.md)
-- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](https://aka.ms/mgPSdocs)
-- [Überprüfen von Verwaltungsgruppen in der REST-API](https://aka.ms/mgAPIdocs)
-- [Überprüfen von Verwaltungsgruppen in der Azure CLI](https://aka.ms/mgclidoc)
+- [Überprüfen von Verwaltungsgruppen im Azure PowerShell-Ressourcenmodul](/powershell/module/az.resources#resources)
+- [Überprüfen von Verwaltungsgruppen in der REST-API](/rest/api/resources/managementgroups)
+- [Überprüfen von Verwaltungsgruppen in der Azure CLI](/cli/azure/account/management-group)
