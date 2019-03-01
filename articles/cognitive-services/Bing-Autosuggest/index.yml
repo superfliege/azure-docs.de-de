@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2105919e0c21ef57ae2cd19450110df384252e97
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 43d28cde7e4287b5394087000b5e730a94748713
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730935"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010632"
 documentType: LandingData
 title: Dokumentation zur Bing-Vorschlagssuche
 metadata:
@@ -12,18 +12,39 @@ metadata:
   title: 'Dokumentation zur Bing-Vorschlagssuche: Tutorials, Schnellstartanleitungen, API-Referenzen | Microsoft-Dokumentation'
   description: Erfahren Sie, wie Sie mit der Bing-Vorschlagssuche-API vorgeschlagene Abfragen auf Basis einer partiellen Abfrage erhalten. In Tutorials wird gezeigt, wie Sie Apps erstellen, die den Dienst nutzen.
   services: cognitive-services
-  author: v-jaswel
-  manager: kamrani
+  author: aahill
+  manager: nitinme
   ms.service: cognitive-services
   ms.subservice: bing-autosuggest
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 10/10/2017
-  ms.author: v-jaswel
+  ms.date: 02/20/2019
+  ms.author: aahi
 abstract:
-  description: Mit der Bing-Vorschlagssuche-API können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Begriffen, die andere Benutzer gesucht haben.  Während der Benutzer beispielsweise die einzelnen Zeichen seines Suchbegriffs eingibt, rufen Sie diese API auf und füllen die Dropdown-Liste des Suchfelds mit den vorgeschlagenen Abfragezeichenfolgen. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie mehr über die Vorschlagssuche-API.
+  description: Mit der Bing-Vorschlagssuche-API können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Begriffen, die andere Benutzer gesucht haben.  Während Benutzer beispielsweise die einzelnen Zeichen ihres Suchbegriffs eingeben, können Sie diese API aufrufen, um die Dropdown-Liste des Suchfelds mit Vorschlägen aufzufüllen. In unseren Schnellstartanleitungen, Tutorials und Beispielen erfahren Sie mehr über die Vorschlagssuche-API.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/bing-autosuggest/overview
+      html: <p>Informationen zur Bing-Vorschlagssuche-API</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Worum handelt es sich bei der Bing-Vorschlagssuche-API?
+    - href: /azure/cognitive-services/bing-autosuggest/concepts/get-suggestions
+      html: <p>Hier erfahren Sie, wie Sie Suchvorschläge in Echtzeit abrufen.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Abrufen von Vorschlägen über die Bing-Vorschlagssuche-API
+    - href: /azure/cognitive-services/bing-autosuggest/language-support
+      html: <p>Lesen Sie, welche Sprachen von der API unterstützt werden.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Unterstützte Sprachen
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
@@ -60,7 +81,7 @@ sections:
   - type: paragraph
     text: 'Erfahren Sie, wie Sie Anwendungen mit der Bing-Vorschlagssuche-API entwickeln:'
   - type: paragraph
-    text: <a href="tutorials/autosuggest.md">Einzelseiten-Web-App</a> &#124; <a href="tutorials/autosuggest-source.md">Quellcode</a>
+    text: <a href="tutorials/autosuggest.md">Einzelseiten-Web-App</a>
 - title: Verweis
   items:
   - type: list
