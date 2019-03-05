@@ -15,16 +15,17 @@ ms.workload: NA
 ms.date: 09/01/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 619f77b6b50a005b4b5cc688bdbf32d1ce3dce26
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 2ef38e34403a9c04eac5132c66682a045a589cf8
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810813"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733060"
 ---
 # <a name="tutorial-create-an-application-with-a-java-web-api-front-end-service-and-a-stateful-back-end-service-on-service-fabric"></a>Tutorial: Erstellen einer Anwendung mit einem Java-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst auf Service Fabric
 
-Dieses Tutorial ist der erste Teil einer Serie. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren.
+Dieses Tutorial ist der erste Teil einer Serie. Das Ergebnis ist eine Anwendung mit einem Java-Web-Front-End, mit der Abstimmungsergebnisse im Cluster in einem zustandsbehafteten Back-End-Dienst gespeichert werden. Für diese Tutorialreihe benötigen Sie einen funktionierenden Entwicklercomputer mit Mac OSX oder Linux. Wenn Sie die Abstimmungsanwendung nicht manuell erstellen möchten, können Sie den [Quellcode für die fertige Anwendung herunterladen](https://github.com/Azure-Samples/service-fabric-java-quickstart) und mit [Durchlaufen der Beispielanwendung für die Abstimmung](service-fabric-tutorial-create-java-app.md#walk-through-the-voting-sample-application) fortfahren. Gegebenenfalls ist auch die [Schnellstartanleitung für Java Reliable Services](service-fabric-quickstart-java-reliable-services.md) hilfreich.
+
 
 ![Voting-App (lokal)](./media/service-fabric-tutorial-create-java-app/votingjavalocal.png)
 
@@ -53,7 +54,7 @@ Bevor Sie mit diesem Tutorial beginnen können, müssen Sie Folgendes tun:
 
 ## <a name="create-the-front-end-java-stateless-service"></a>Erstellen des zustandslosen Front-End-Java-Diensts
 
-Erstellen Sie zunächst das Web-Front-End der Abstimmungsanwendung. Bei diesem zustandslosen Java-Dienst wird ein einfacher HTTP-Server bereitgestellt, der eine AngularJS-basierte Webbenutzeroberfläche hostet. Anforderungen von einem Benutzer werden von diesem zustandslosen Dienst verarbeitet und als Remoteprozeduraufruf an den zustandsbehafteten Dienst gesendet, um die Stimmen zu speichern. 
+Erstellen Sie zunächst das Web-Front-End der Abstimmungsanwendung. Eine AngularJS-basierte Webbenutzeroberfläche sendet Anforderungen an den zustandslosen Java-Dienst, der einen einfachen HTTP-Server ausführt. Dieser Dienst verarbeitet die jeweiligen Anforderungen und sendet einen Remoteprozeduraufruf an den zustandsbehafteten Dienst, um die Stimmen zu speichern. 
 
 1. Starten Sie Eclipse.
 
@@ -85,7 +86,7 @@ Die Tabelle enthält eine kurze Beschreibung der einzelnen Elemente im Paket-Exp
 
 ### <a name="add-html-and-javascript-to-the-votingweb-service"></a>Hinzufügen von HTML und JavaScript zum VotingWeb-Dienst
 
-Um eine Benutzeroberfläche zu erhalten, die vom zustandslosen Dienst gerendert werden kann, fügen Sie in *VotingApplication/VotingWebPkg/Code* eine HTML-Datei hinzu. Diese HTML-Datei wird dann von dem einfachen HTTP-Server gerendert, der in den zustandslosen Java-Dienst eingebettet ist.
+Fügen Sie eine HTML-Datei hinzu, um eine Benutzeroberfläche hinzuzufügen, die vom zustandslosen Dienst gerendert werden kann. Diese HTML-Datei wird dann von dem einfachen HTTP-Server gerendert, der in den zustandslosen Java-Dienst eingebettet ist.
 
 1. Erweitern Sie das Verzeichnis *VotingApplication*, um zum Verzeichnis *VotingApplication/VotingWebPkg/Code* zu gelangen.
 
@@ -209,7 +210,7 @@ app.controller("VotingAppController", ['$rootScope', '$scope', '$http', '$timeou
 
 Öffnen Sie im Unterprojekt **VotingWeb** die Datei *VotingWeb/src/statelessservice/VotingWeb.java*. Der **VotingWeb**-Dienst ist das Gateway für den zustandslosen Dienst und ist für das Einrichten des Kommunikationslisteners für die Front-End-API zuständig.
 
-Ersetzen Sie den Inhalt der **createServiceInstanceListeners**-Methode in der Datei durch Folgendes, und speichern Sie Ihre Änderungen.
+Ersetzen Sie in der Datei den Inhalt der vorhandenen Methode **createServiceInstanceListeners** durch Folgendes, und speichern Sie Ihre Änderungen:
 
 ```java
 @Override
@@ -387,7 +388,7 @@ public class HttpCommunicationListener implements CommunicationListener {
 
 ### <a name="configure-the-listening-port"></a>Konfigurieren des Lauschports
 
-Beim Erstellen des Front-End-Diensts für den VotingWeb-Dienst wählt Service Fabric einen Port aus, an dem der Dienst lauscht.  Der VotingWeb-Dienst fungiert als Front-End für diese Anwendung und akzeptiert externen Datenverkehr. Daher binden wir diesen Dienst an einen festen und bekannten Port. Öffnen Sie im Paket-Explorer die Datei *VotingApplication/VotingWebPkg/ServiceManifest.xml*.  Navigieren Sie im Abschnitt **Ressourcen** zur Ressource **Endpunkt**, und legen Sie den Wert für **Port** auf 8080 oder einen anderen Port fest. Wenn Sie die Anwendung lokal bereitstellen und ausführen möchten, muss der Anwendungslauschport auf dem Computer geöffnet und verfügbar sein. Fügen Sie den folgenden Codeausschnitt ins Element **ServiceManifest** (d.h. direkt unter dem ```<DataPackage>```-Element) ein.
+Beim Erstellen des Front-End-Diensts für den VotingWeb-Dienst wählt Service Fabric einen Port aus, an dem der Dienst lauscht.  Der VotingWeb-Dienst fungiert als Front-End für diese Anwendung und akzeptiert externen Datenverkehr. Daher binden wir diesen Dienst an einen festen und bekannten Port. Öffnen Sie im Paket-Explorer die Datei *VotingApplication/VotingWebPkg/ServiceManifest.xml*.  Suchen Sie im Abschnitt **Resources** die Ressource **Endpoint**, und ändern Sie den Wert **Port** in „8080“. (Dieser Port wird im weiteren Verlauf des Tutorials verwendet.) Wenn Sie die Anwendung lokal bereitstellen und ausführen möchten, muss der Anwendungslauschport auf dem Computer geöffnet und verfügbar sein. Fügen Sie den folgenden Codeausschnitt ins Element **ServiceManifest** (d.h. direkt unter dem ```<DataPackage>```-Element) ein.
 
 ```xml
 <Resources>
@@ -547,9 +548,11 @@ class VotingDataService extends StatefulService implements VotingRPC {
 }
 ```
 
+Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird jetzt erstellt.
+
 ## <a name="create-the-communication-interface-to-your-application"></a>Erstellen der Kommunikationsschnittstelle für Ihre Anwendung
 
-Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird jetzt erstellt. Der nächste Schritt ist das Verbinden der beiden Dienste. Sowohl der Front-End- als auch der Back-End-Dienst nutzen die Schnittstelle „VotingRPC“, mit der die Vorgänge der Abstimmungsanwendung definiert werden. Diese Schnittstelle wird vom Front-End- und Back-End-Dienst implementiert, um Remoteprozeduraufrufe (RPCs) zwischen den beiden Diensten zu ermöglichen. Da Eclipse das Hinzufügen von Gradle-Unterprojekten nicht unterstützt, muss das Paket, das diese Schnittstelle enthält, manuell hinzugefügt werden.
+ Als Nächstes wird eine Verbindung zwischen dem zustandslosen Front-End-Dienst und dem Back-End-Dienst hergestellt. Beide Dienste nutzen die Schnittstelle „VotingRPC“, die die Vorgänge der Abstimmungsanwendung definiert. Diese Schnittstelle wird vom Front-End- und Back-End-Dienst implementiert, um Remoteprozeduraufrufe (RPCs) zwischen den beiden Diensten zu ermöglichen. Da Eclipse das Hinzufügen von Gradle-Unterprojekten leider nicht unterstützt, muss das Paket, das diese Schnittstelle enthält, manuell hinzugefügt werden.
 
 1. Klicken Sie im Paket-Explorer mit der rechten Maustaste auf das Projekt **Voting**, und klicken Sie dann auf **Neu > Ordner**. Nennen Sie den Ordner **VotingRPC/src/rpcmethods**.
 
@@ -576,7 +579,7 @@ Das Gerüst für den zustandslosen Front-End-Dienst und den Back-End-Dienst wird
     }
     ``` 
 
-4. Erstellen Sie im Verzeichnis *Voting/VotingRPC* eine Datei mit dem Namen *build.gradle*, und fügen Sie Folgendes in diese Datei ein. Diese Gradle-Datei wird verwendet, um für die JAR-Datei, die von den anderen Diensten importiert wird, den Buildvorgang und die Erstellung durchzuführen. 
+4. Erstellen Sie im Verzeichnis *Voting/VotingRPC* eine leere Datei mit dem Namen *build.gradle*, und fügen Sie Folgendes in diese Datei ein. Diese Gradle-Datei wird verwendet, um für die JAR-Datei, die von den anderen Diensten importiert wird, den Buildvorgang und die Erstellung durchzuführen. 
 
     ```gradle
     apply plugin: 'java'
@@ -896,12 +899,14 @@ An diesem Punkt ist die Anwendung bereit für die Bereitstellung in einem lokale
     ```bash
     docker run -itd -p 19080:19080 -p 8080:8080 -p --name sfonebox servicefabricoss/service-fabric-onebox
     ``` 
+    Ausführlichere Anweisungen finden Sie im [Einrichtungsleitfaden für OS X](service-fabric-get-started-mac.md).
 
     Bei der Ausführung auf einem Linux-Computer starten Sie den lokalen Cluster mit dem folgenden Befehl: 
 
     ```bash 
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
+    Ausführlichere Anweisungen finden Sie im [Einrichtungsleitfaden für Linux](service-fabric-get-started-linux.md).
 
 4. Klicken Sie im Paket-Explorer für Eclipse mit der rechten Maustaste auf das Projekt **Voting**, und klicken Sie dann auf **Service Fabric > Publish Application... (Anwendung veröffentlichen...)**. 
 5. Wählen Sie im Fenster **Publish Application** (Anwendung veröffentlichen) in der Dropdownliste die Option **Local.json** aus, und klicken Sie auf **Publish** (Veröffentlichen).

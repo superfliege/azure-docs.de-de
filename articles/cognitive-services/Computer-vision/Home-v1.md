@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/10/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 35002ccfc294b59a13e6826b4ca75a1ab6c68b62
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 812f957ffe2a3f24ead4ef0fe66a25c3cfd17995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870298"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866911"
 ---
 # <a name="what-is-computer-vision-api-version-10"></a>Worum handelt es sich bei der Maschinelles Sehen-API Version 1.0?
 
@@ -29,7 +29,7 @@ ms.locfileid: "55870298"
 * Taggen von Bildern basierend auf dem Inhalt
 * Kategorisieren von Bildern
 * Identifizieren des Typs und der Qualität von Bildern
-* [Erkennen menschlicher Gesichter und Zurückgeben ihrer Koordinaten ](#Faces)
+* [Erkennen menschlicher Gesichter und Zurückgeben ihrer Koordinaten](#Faces)
 * Erkennen domänenspezifischer Inhalte
 * Generieren von Beschreibungen der Inhalte
 * Verwenden der optischen Zeichenerkennung zum Identifizieren von gedrucktem Text in Bildern
