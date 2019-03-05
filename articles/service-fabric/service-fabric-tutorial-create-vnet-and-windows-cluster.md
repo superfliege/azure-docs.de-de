@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/19/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 590e1e5853ccf4a525477f194c78f1fd8ce679ed
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 64ba17053179d428f5ef7e5ce9685240bde6665f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453068"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822990"
 ---
 # <a name="tutorial-deploy-a-service-fabric-windows-cluster-into-an-azure-virtual-network"></a>Tutorial: Bereitstellen eines Service Fabric-Windows-Clusters in einem virtuellen Azure-Netzwerk
 
@@ -178,7 +178,7 @@ Erstellen Sie zwei Azure AD-Anwendungen, um den Zugriff auf den Cluster zu steu
 Führen Sie `SetupApplications.ps1` aus, und geben Sie die Mandanten-ID, den Clusternamen und die Antwort-URL der Webanwendung als Parameter an.  Geben Sie außerdem Benutzernamen und Kennwörter für die Benutzer an.  Beispiel: 
 
 ```PowerShell
-$Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysftestcluster' -WebApplicationReplyUrl 'https://mysftestcluster.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
+$Configobj = .\SetupApplications.ps1 -TenantId '<MyTenantID>' -ClusterName 'mysfcluster123' -WebApplicationReplyUrl 'https://mysfcluster123.eastus.cloudapp.azure.com:19080/Explorer/index.html' -AddResourceAccess
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestUser' -Password 'P@ssword!123'
 .\SetupUser.ps1 -ConfigObj $Configobj -UserName 'TestAdmin' -Password 'P@ssword!123' -IsAdmin
 ```
@@ -272,7 +272,7 @@ Fügen Sie die Parameterwerte in der Parameterdatei [azuredeploy.parameters.json
 
 Richten Sie als Nächstes die Netzwerktopologie ein, und stellen Sie den Service Fabric-Cluster bereit. Mit der Resource Manager-Vorlage [azuredeploy.json][template] werden ein virtuelles Netzwerk (VNET) sowie ein Subnetz und eine Netzwerksicherheitsgruppe (NSG) für Service Fabric erstellt. Außerdem wird mit der Vorlage ein Cluster mit aktivierter Zertifikatsicherheit bereitgestellt.  Verwenden Sie für Produktionscluster ein Zertifikat einer Zertifizierungsstelle als Clusterzertifikat. Es kann ein selbstsigniertes Zertifikat zum Schützen von Testclustern verwendet werden.
 
-Mit der Vorlage in diesem Artikel wird ein Cluster bereitgestellt, der das Clusterzertifikat anhand des Zertifikatfingerabdrucks identifiziert.  Zwei Zertifikate können nicht den gleichen Fingerabdruck haben, was die Zertifikatverwaltung erschwert. Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht.  Unter [Ändern des Clusters von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“](service-fabric-cluster-change-cert-thumbprint-to-cn.md) erfahren Sie, wie Sie den Cluster aktualisieren, um allgemeine Zertifikatnamen für die Zertifikatverwaltung zu verwenden.
+Mit der Vorlage in diesem Artikel wird ein Cluster bereitgestellt, der das Clusterzertifikat anhand des Zertifikatfingerabdrucks identifiziert.  Zwei Zertifikate können nicht den gleichen Fingerabdruck haben, was die Zertifikatverwaltung erschwert. Durch den Wechsel von „Zertifikatfingerabdruck“ zu „Allgemeiner Name“ bei einem bereitgestellten Cluster wird die Zertifikatverwaltung vereinfacht.  Unter [Ändern des Clusters in Zertifikatverwaltung mit allgemeinen Namen](service-fabric-cluster-change-cert-thumbprint-to-cn.md) erfahren Sie, wie Sie den Cluster aktualisieren, um allgemeine Zertifikatnamen für die Zertifikatverwaltung zu verwenden.
 
 ### <a name="create-a-cluster-using-an-existing-certificate"></a>Erstellen eines Clusters mit einem vorhandenen Zertifikat
 

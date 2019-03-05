@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Azure-Computer in Python | Microsoft-Dokumentation'
-description: In diesem Tutorial konfigurieren Sie eine Python-Anwendung zum Lesen eines Geheimnisses aus einem Schlüsseltresor.
+title: 'Tutorial: Verwenden eines virtuellen Linux-Computers und einer Python-Anwendung zum Speichern von Geheimnissen in Azure Key Vault | Microsoft-Dokumentation'
+description: In diesem Tutorial wird beschrieben, wie Sie eine Python-Anwendung zum Lesen eines Geheimnisses aus Azure Key Vault konfigurieren.
 services: key-vault
 documentationcenter: ''
 author: prashanthyv
@@ -12,69 +12,67 @@ ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: 1e364003093d5e37a75830386cafe855b0bdcad2
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: b7077653ec959f99491cecd71573c091772448f4
+ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467400"
+ms.lasthandoff: 02/24/2019
+ms.locfileid: "56749629"
 ---
-# <a name="tutorial-use-azure-key-vault-with-an-azure-virtual-machine-in-python"></a>Tutorial: Tutorial: Verwenden von Azure Key Vault mit einem virtuellen Azure-Computer in Python
+# <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Tutorial: Verwenden eines virtuellen Linux-Computers und einer Python-App zum Speichern von Geheimnissen in Azure Key Vault
 
 Azure Key Vault unterstützt Sie beim Schutz von Geheimnissen wie den API-Schlüsseln und Datenbank-Verbindungszeichenfolgen, die für den Zugriff auf Ihre Anwendungen, Dienste und IT-Ressourcen benötigt werden.
 
-In diesem Tutorial führen Sie die Schritte aus, um eine Azure-Webanwendung zu erhalten, die unter Verwendung von verwalteten Identitäten für Azure-Ressourcen Informationen aus Azure Key Vault liest. Folgendes wird vermittelt:
+In diesem Tutorial richten Sie eine Azure-Webanwendung ein, die unter Verwendung von verwalteten Identitäten für Azure-Ressourcen Informationen aus Azure Key Vault liest. Folgendes wird vermittelt:
 
 > [!div class="checklist"]
 > * Erstellen eines Schlüsseltresors
-> * Speichern eines Geheimnisses im Schlüsseltresor
-> * Erstellen Sie einen virtuellen Azure-Computer.
-> * Aktivieren Sie eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) für den virtuellen Computer.
+> * Speichern eines Geheimnisses in Ihrem Schlüsseltresor
+> * Erstellen einer virtuellen Linux-Maschine
+> * Aktivieren einer [verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md) für den virtuellen Computer
 > * Erteilen der erforderlichen Berechtigungen zum Lesen von Daten aus dem Schlüsseltresor für die Konsolenanwendung
-> * Abrufen eines Geheimnisses aus dem Schlüsseltresor
+> * Abrufen eines Geheimnisses aus Ihrem Schlüsseltresor
 
-Lesen Sie die Informationen zu [grundlegenden Konzepten zu Key Vault](key-vault-whatis.md#basic-concepts), bevor Sie fortfahren.
+Stellen Sie vor dem Fortfahren sicher, dass Sie mit den [Grundlagen von Key Vault](key-vault-whatis.md#basic-concepts) vertraut sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Für alle Plattformen wird Folgendes benötigt:
 
-* Git ([Download](https://git-scm.com/downloads))
+* [Git](https://git-scm.com/downloads).
 * Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-* [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), Version 2.0.4 oder höher. Diese ist für Windows, Mac und Linux verfügbar.
+* [Azure CLI Version 2.0.4 oder höher](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder Azure Cloud Shell.
 
-### <a name="managed-service-identity-and-how-it-works"></a>Verwaltete Dienstidentität und ihre Funktionsweise
-In diesem Tutorial wird die verwaltete Dienstidentität (MSI) verwendet.
+[!INCLUDE [Azure Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-Azure Key Vault dient zum sicheren Speichern von Anmeldeinformationen, damit sich diese nicht in Ihrem Code befinden. Um diese abzurufen, müssen Sie sich bei Key Vault authentifizieren. Und für die Authentifizierung bei Key Vault benötigen Sie wiederum Anmeldeinformationen. Dies ist ein klassisches Bootstrap-Problem. MSI stellt über Azure und Azure Active Directory (Azure AD) eine „Bootstrap-Identität“ bereit, die die ersten Schritte erheblich vereinfacht.
+## <a name="understand-managed-service-identity"></a>Grundlegendes zur verwalteten Dienstidentität
 
-Wenn Sie MSI für einen Azure-Dienst aktivieren (beispielsweise Virtual Machines, App Service oder Functions), erstellt Azure einen [Dienstprinzipal](key-vault-whatis.md#basic-concepts) für die Instanz des Diensts in Azure AD. Azure fügt die Anmeldeinformationen für den Dienstprinzipal in der Instanz des Diensts ein. 
+Azure Key Vault dient zum sicheren Speichern von Anmeldeinformationen, damit sich diese nicht in Ihrem Code befinden. Um diese abzurufen, müssen Sie sich bei Azure Key Vault authentifizieren. Für die Authentifizierung bei Key Vault benötigen Sie aber Anmeldeinformationen. Es handelt sich um ein klassisches Bootstrap-Problem. Die verwaltete Dienstidentität (Managed Service Identity, MSI) stellt über Azure und Azure Active Directory (Azure AD) eine Bootstrap-Identität bereit, die die ersten Schritte erheblich vereinfacht.
+
+Wenn Sie MSI für einen Azure-Dienst aktivieren (z. B. Virtual Machines, App Service oder Functions), erstellt Azure einen Dienstprinzipal für die Instanz des Diensts in Azure AD. Die Anmeldeinformationen für den Dienstprinzipal werden in die Instanz des Diensts eingefügt.
 
 ![MSI](media/MSI.png)
 
-Als Nächstes ruft Ihr Code einen lokalen, für die Azure-Ressource verfügbaren Metadatendienst auf, um ein Zugriffstoken zu erhalten.
-Ihr Code verwendet das vom lokalen MSI-Endpunkt erhaltene Zugriffstoken für die Authentifizierung bei einem Azure Key Vault-Dienst. 
+Als Nächstes ruft Ihr Code einen lokalen, für die Azure-Ressource verfügbaren Metadatendienst auf, um ein Zugriffstoken zu erhalten. Ihr Code verwendet das vom lokalen MSI-Endpunkt erhaltene Zugriffstoken für die Authentifizierung bei einem Azure Key Vault-Dienst.
 
-## <a name="log-in-to-azure"></a>Anmelden an Azure
+## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Geben Sie Folgendes ein, um sich mithilfe der Azure-Befehlszeilenschnittstelle bei Azure anzumelden:
 
-```azurecli
+```azurecli-interactive
 az login
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit dem Befehl [az group create](/cli/azure/group#az-group-create) eine Ressourcengruppe. Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Eine Azure-Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
-Wählen Sie einen Namen für die Ressourcengruppe aus, und fügen Sie den Platzhalter ein.
-Im folgenden Beispiel wird eine Ressourcengruppe am Standort „USA, Westen“ erstellt:
+Erstellen Sie mit dem Befehl `az group create` eine Ressourcengruppe am Standort „USA, Westen“, indem Sie den folgenden Code verwenden. Ersetzen Sie `YourResourceGroupName` durch einen Namen Ihrer Wahl.
 
-```azurecli
+```azurecli-interactive
 # To list locations: az account list-locations --output table
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-Die eben erstellte Ressourcengruppe wird im gesamten Artikel verwendet.
+Diese Ressourcengruppe wird im gesamten Tutorial verwendet.
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
@@ -84,26 +82,27 @@ Als Nächstes erstellen Sie einen Schlüsseltresor in der Ressourcengruppe aus d
 * Ressourcengruppenname
 * Standort: **USA, Westen**.
 
-```azurecli
+```azurecli-interactive
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
+
 An diesem Punkt ist nur Ihr Azure-Konto zum Ausführen von Vorgängen für den neuen Tresor autorisiert.
 
 ## <a name="add-a-secret-to-the-key-vault"></a>Hinzufügen eines Geheimnisses zum Schlüsseltresor
 
-Wir fügen ein Geheimnis hinzu, um die Vorgehensweise zu veranschaulichen. Sie können eine SQL-Verbindungszeichenfolge oder beliebige andere Informationen speichern, die sicher aufbewahrt, aber für Ihre Anwendung verfügbar gemacht werden müssen.
+Wir fügen ein Geheimnis hinzu, um die Vorgehensweise zu veranschaulichen. Es kann sein, dass Sie eine SQL-Verbindungszeichenfolge oder andere Informationen speichern möchten, die sowohl sicher als auch für Ihre Anwendung zugänglich sein müssen.
 
 Geben Sie die folgenden Befehle ein, um im Schlüsseltresor ein Geheimnis namens *AppSecret* zu erstellen. Dieses Geheimnis speichert den Wert **MySecret**.
 
-```azurecli
+```azurecli-interactive
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
 ```
 
-## <a name="create-a-virtual-machine"></a>Erstellen eines virtuellen Computers
+## <a name="create-a-linux-virtual-machine"></a>Erstellen einer virtuellen Linux-Maschine
 
-Erstellen Sie mit dem Befehl [az vm create](/cli/azure/vm) eine VM.
+Erstellen Sie mit dem Befehl `az vm create` einen virtuellen Computer.
 
-Im folgenden Beispiel wird eine VM mit dem Namen *myVM* erstellt und ein Benutzerkonto mit dem Namen *azureuser* hinzugefügt. Der Parameter `--generate-ssh-keys` generiert automatisch einen SSH-Schlüssel und legt ihn am Speicherort für den Standardschlüssel ab (*~/.ssh*). Um stattdessen einen bestimmten Satz mit Schlüsseln zu verwenden, können Sie die Option `--ssh-key-value` nutzen.
+Im folgenden Beispiel wird eine VM mit dem Namen **myVM** erstellt und ein Benutzerkonto mit dem Namen **azureuser** hinzugefügt. Der Parameter `--generate-ssh-keys` generiert automatisch einen SSH-Schlüssel und legt ihn am Speicherort für den Standardschlüssel ab (**~/.ssh**). Um stattdessen einen bestimmten Satz mit Schlüsseln zu erstellen, können Sie die Option `--ssh-key-value` nutzen.
 
 ```azurecli-interactive
 az vm create \
@@ -116,7 +115,7 @@ az vm create \
 
 Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauert einige Minuten. In der folgenden Beispielausgabe wird angezeigt, dass die Erstellung des virtuellen Computers erfolgreich war:
 
-```
+```azurecli
 {
   "fqdns": "",
   "id": "/subscriptions/<guid>/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachines/myVM",
@@ -129,71 +128,97 @@ Das Erstellen des virtuellen Computers und der unterstützenden Ressourcen dauer
 }
 ```
 
-Beachten Sie Ihren eigenen `publicIpAddress`-Wert in der Ausgabe Ihres virtuellen Computers. Diese Adresse wird in den nächsten Schritten verwendet, um auf den virtuellen Computer zuzugreifen.
+Notieren Sie sich in der Ausgabe Ihres virtuellen Computers die Adressangabe unter `publicIpAddress`. Sie verwenden diese Adresse in späteren Schritten, um auf den virtuellen Computer zuzugreifen.
 
-## <a name="assign-an-identity-to-the-virtual-machine"></a>Zuweisen einer Identität zum virtuellen Computer
-In diesem Schritt erstellen wir eine vom System zugewiesene Identität für den virtuellen Computer. Führen Sie in der Azure CLI den folgenden Befehl aus:
+## <a name="assign-an-identity-to-the-vm"></a>Zuweisen einer Identität zum virtuellen Computer
 
-```
+Erstellen Sie eine vom System zugewiesene Identität für den virtuellen Computer, indem Sie den folgenden Befehl ausführen:
+
+```azurecli-interactive
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-Die Ausgabe des Befehls lautet: Beachten Sie den Wert von **systemAssignedIdentity**. 
+Die Ausgabe des Befehls lautet:
 
-```
+```azurecli
 {
   "systemAssignedIdentity": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
   "userAssignedIdentities": {}
 }
 ```
 
-## <a name="give-the-virtual-machine-identity-permission-to-the-key-vault"></a>Dem Schlüsseltresor Berechtigungen für die Identität des virtuellen Computers erteilen
-Jetzt können wir dem Schlüsseltresor die Identitätsberechtigung erteilen. Führen Sie den folgenden Befehl aus:
+Notieren Sie sich den Namen in `systemAssignedIdentity`. Sie benötigen ihn im nächsten Schritt.
 
-```
+## <a name="give-the-vm-identity-permission-to-key-vault"></a>Erteilen von Berechtigungen für die VM-Identität für Key Vault
+
+Nun können Sie für die von Ihnen erstellte Identität die Key Vault-Berechtigung erteilen. Führen Sie den folgenden Befehl aus:
+
+```azurecli-interactive
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
 ```
 
-## <a name="log-in-to-the-virtual-machine"></a>Melden Sie sich beim virtuellen Computer an.
+## <a name="log-in-to-the-vm"></a>Anmelden am virtuellen Computer
 
-Melden Sie sich beim virtuellen Computer an, indem Sie [dieses Tutorial](https://docs.microsoft.com/azure/virtual-machines/windows/connect-logon) durchführen.
+Melden Sie sich über ein Terminal am virtuellen Computer an.
 
-## <a name="create-and-run-the-sample-python-app"></a>Erstellen und Ausführen der Python-Beispiel-App
-
-Die folgende Beispieldatei heißt *Sample.py*. Die Datei verwendet die [Anforderungsbibliothek](https://pypi.org/project/requests/2.7.0/), um HTTP-GET-Aufrufe auszuführen.
-
-## <a name="edit-samplepy"></a>Bearbeiten der Datei „Sample.py“
-Nachdem Sie „Sample.py“ erstellt haben, öffnen Sie die Datei, und kopieren Sie den folgenden Code. Der Code ist ein zweistufiger Prozess: 
-1. Rufen Sie ein Token vom lokalen MSI-Endpunkt auf dem virtuellen Computer ab. Der Endpunkt ruft dann ein Token aus Azure Active Directory ab.
-2. Übergeben Sie das Token an den Schlüsseltresor, und rufen Sie Ihr Geheimnis ab. 
-
-```
-    # importing the requests library 
-    import requests 
-
-    # Step 1: Fetch an access token from an MSI-enabled Azure resource      
-    # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
-    MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
-    r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"}) 
-      
-    # Extracting data in JSON format 
-    # This request gets an access token from Azure Active Directory by using the local MSI endpoint
-    data = r.json() 
-    
-    # Step 2: Pass the access token received from the previous HTTP GET call to the key vault
-    KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
-    kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
-    
-    print(kvSecret.json()["value"])
+```terminal
+ssh azureuser@<PublicIpAddress>
 ```
 
-Durch die Ausführung des folgenden Befehls sollte der Wert des Geheimnisses angezeigt werden: 
+## <a name="install-python-library-on-the-vm"></a>Installieren der Python-Bibliothek auf dem virtuellen Computer
 
+Laden Sie die Python-Bibliothek [requests](https://pypi.org/project/requests/2.7.0/) herunter, und installieren Sie sie, um HTTP GET-Aufrufe durchzuführen.
+
+## <a name="create-edit-and-run-the-sample-python-app"></a>Erstellen, Bearbeiten und Ausführen der Python-Beispiel-App
+
+Erstellen Sie eine Python-Datei mit dem Namen **Sample.py**.
+
+Öffnen Sie die Datei „Sample.py“, und bearbeiten Sie sie, damit sie den folgenden Code enthält:
+
+```python
+# importing the requests library
+  import requests
+  
+# Step 1: Fetch an access token from an MSI-enabled Azure resource      
+  # Note that the resource here is https://vault.azure.net for the public cloud, and api-version is 2018-02-01
+  MSI_ENDPOINT = "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fvault.azure.net"
+  r = requests.get(MSI_ENDPOINT, headers = {"Metadata" : "true"})
+
+# Extracting data in JSON format 
+  # This request gets an access token from Azure Active Directory by using the local MSI endpoint
+  data = r.json()
+
+# Step 2: Pass the access token received from the previous HTTP GET call to the key vault
+  KeyVaultURL = "https://prashanthwinvmvault.vault.azure.net/secrets/RandomSecret?api-version=2016-10-01"
+  kvSecret = requests.get(url = KeyVaultURL, headers = {"Authorization": "Bearer " + data["access_token"]})
+
+print(kvSecret.json()["value"])
 ```
+
+Mit dem obigen Code wird ein zweistufiger Prozess durchgeführt:
+
+   1. Ein Token wird vom lokalen MSI-Endpunkt auf dem virtuellen Computer abgerufen. Der Endpunkt ruft dann ein Token aus Azure Active Directory ab.
+   1. Das Token wird an den Schlüsseltresor übergeben, und Ihr Geheimnis wird abgerufen.
+
+Führen Sie den folgenden Befehl aus: Der Wert des Geheimnisses sollte angezeigt werden.
+
+```console
 python Sample.py
 ```
 
-Der Code oben veranschaulicht, wie Sie mit Azure Key Vault Vorgänge auf einem virtuellen Windows-Computer ausführen. 
+In diesem Tutorial haben Sie gelernt, wie Sie Azure Key Vault mit einer Python-App verwenden, die auf einem virtuellen Linux-Computer ausgeführt wird.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Löschen Sie die Ressourcengruppe, den virtuellen Computer und alle zugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Wählen Sie hierzu die Ressourcengruppe für den virtuellen Computer aus, und wählen Sie **Löschen**.
+
+Löschen Sie den Schlüsseltresor mit dem Befehl `az keyvault delete`:
+
+```azurecli-interactive
+az keyvault delete --name
+                   [--resource-group]
+                   [--subscription]
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

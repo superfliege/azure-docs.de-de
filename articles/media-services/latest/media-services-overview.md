@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 02/07/2019
+ms.date: 02/26/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 0f4fd963ce3649c901a76f6677be059ba5be25af
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: de1bd8599682baae860737401d02c7c1dec9e223
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56337560"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56960648"
 ---
 # <a name="what-is-azure-media-services-v3"></a>Was ist Azure Media Services v3?
 
@@ -76,19 +76,19 @@ Sehen Sie sich das Beispiel zum [Abrufen der Richtlinie für den Inhaltsschlüss
 
 ## <a name="how-can-i-get-started-with-v3"></a>Wie kann ich erste Schritte mit v3 ausführen?
 
-Informationen zum Einstieg in die Entwicklung mit der Media Services v3-API und verschiedenen Tools und SDKs finden Sie [hier](developers-guide.md).
+Informationen zum Einstieg in die Entwicklung mit der Media Services v3-API und verschiedenen Tools und SDKs finden Sie unter [Beginnen mit der Entwicklung](developers-guide.md).
 
 ## <a name="v3-content-map"></a>v3-Inhaltszuordnung
 
 Der Media Services v3-Inhalt ist wie folgt strukturiert (wie auch im Inhaltsverzeichnis zu sehen):
 
-|Abschnitte| Beschreibung|
+|Abschnitte| BESCHREIBUNG|
 |---|---|
 | Übersicht | Hier werden die Funktionen von Media Services und die Möglichkeiten erläutert, die Ihnen der Dienst bietet.|
 | Schnellstarts | Hier finden Sie grundlegende Anleitungen für Einsteiger, mit denen neue Kunden Media Services schnell ausprobieren können.|
-| Tutorials | Hier finden Sie szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.|
+| Lernprogramme | Hier finden Sie szenariobasierte Verfahren für einige der wichtigsten Media Services-Aufgaben.|
 | Beispiele | Hier finden Sie Links zu Codebeispielen. |
-| Konzepte | Hier finden Sie ausführliche Erläuterungen zu Media Services v3-Funktionen sowie Diagramme. Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.<br/><br/>* Clouduploads und Cloudspeicherung<br/>* Codierung<br/>* Medienanalyse<br/>* Verpackung, Bereitstellung, Schutz<br/>* Livestreaming<br/>* Kontinuierliche Überwachung<br/>* Beteiligte Kunden<br/><br/>und vieles mehr... |
+| Konzepte | Hier finden Sie ausführliche Erläuterungen zu [Media Services v3-Konzepten und -Funktionen](concepts-overview.md). Es empfiehlt sich, sich vor Entwicklungsbeginn mit den grundlegenden Konzepten vertraut zu machen, die in diesen Themen behandelt werden.<br/><br/>* Clouduploads und Cloudspeicherung<br/>* Codierung<br/>* Medienanalyse<br/>* Verpackung, Bereitstellung, Schutz<br/>* Livestreaming<br/>* Überwachung<br/>* Beteiligte Kunden<br/><br/>und vieles mehr... |
 | Anleitungen | Hier erfahren Sie, wie Sie eine Aufgabe ausführen.|
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: fb3358775881f102ecea62fbd20a1e4d85dda308
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "54001633"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56886433"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
 
@@ -45,49 +45,11 @@ Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten insta
 
 Jedes [Abonnement eines Themas](service-bus-messaging-overview.md#topics) kann eine Kopie jeder Nachricht empfangen. Die Themen sind in Bezug auf das Protokoll und die Semantik vollständig mit Service Bus-Warteschlangen kompatibel. Service Bus-Themen unterstützen ein umfassendes Auswahlregel-Array mit Filterbedingungen. Es sind optionale Aktionen vorhanden, mit denen Nachrichteneigenschaften festgelegt oder geändert werden. Jedes Mal, wenn sich für eine Regel eine Übereinstimmung ergibt, wird eine Nachricht erzeugt. Weitere Informationen zu Regeln, Filtern und Aktionen finden Sie unter diesem [Link](topic-filters.md).
 
-## <a name="sign-in-to-the-azure-portal"></a>Melden Sie sich auf dem Azure-Portal an.
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Beginnen Sie im [Azure-Portal][Azure portal], und melden Sie sich mit Ihrem Azure-Abonnement an. Der erste Schritt ist die Erstellung eines Service Bus-Namespace vom Typ **Messaging**.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
-## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
 
-Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [vollqualifizierten Domänennamen][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
-2. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-3. Wählen Sie den Tarif („Standard“ oder „Premium“) aus, nachdem Sie sichergestellt haben, dass der Name verfügbar ist.
-4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-5. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
-6. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
-7. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
-
-  ![Namespace](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
-
-Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit denen Sie jeweils die volle Kontrolle über sämtliche Aspekte des Namespace haben. Führen Sie diese Schritte aus, um die erste Regel zu kopieren:
-
-1. Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
-2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
-3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
-4. Klicken Sie im Fenster **Richtlinie: RootManageSharedAccessKey** neben **Primäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
-
-    ![connection-string][connection-string]
-5. Wiederholen Sie den vorherigen Schritt, um den Wert von **Primärschlüssel** zu kopieren und zur späteren Verwendung an einem temporären Speicherort einzufügen.
-
-## <a name="create-a-topic-and-subscriptions"></a>Erstellen eines Themas und von Abonnements
-
-Geben Sie zum Erstellen eines Service Bus-Themas den Namespace an, unter dem die Erstellung erfolgen soll. Im folgenden Beispiel wird veranschaulicht, wie Sie im Portal ein Thema erstellen:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Sollte **Service Bus** nicht angezeigt werden, klicken Sie auf **Alle Dienste**.)
-2. Klicken Sie auf den Namespace, in dem das Thema erstellt werden soll.
-3. Klicken Sie im Namespacefenster auf **Themen** und dann im Fenster **Themen** auf **+ Themen**.
-4. Geben Sie den **Themennamen** ein, und lassen Sie die anderen Werte unverändert.
-5. Klicken Sie unten im Fenster auf **Erstellen**.
-6. Notieren Sie sich den Themennamen.
-7. Wählen Sie das gerade erstellte Thema aus.
-8. Klicken Sie auf **+ Abonnement**, geben Sie den Abonnementnamen **S1** ein, und lassen Sie die anderen Werte unverändert.
-9. Wiederholen Sie den vorherigen Schritt noch zweimal, um die Abonnements mit den Namen **S2** und **S3** zu erstellen.
 
 ## <a name="create-filter-rules-on-subscriptions"></a>Erstellen von Filterregeln zu Abonnements
 
@@ -103,9 +65,9 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Navigieren Sie zum Ordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters` mit den Beispielen.
+2. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Halten Sie die Verbindungszeichenfolge bereit, die Sie im Abschnitt [Abrufen der Verwaltungsanmeldeinformationen](#obtain-the-management-credentials) dieses Tutorials in den Editor kopiert haben. Außerdem benötigen Sie den Namen des Themas, das Sie im vorherigen Abschnitt erstellt haben.
+3. Halten Sie die Verbindungszeichenfolge bereit, die Sie im Abschnitt „Abrufen der Verwaltungsanmeldeinformationen“ dieses Tutorials in den Editor kopiert haben. Außerdem benötigen Sie den Namen des Themas, das Sie im vorherigen Abschnitt erstellt haben.
 
 4. Geben Sie an der Eingabeaufforderung den folgenden Befehl ein:
 
@@ -451,7 +413,7 @@ Fahren Sie mit dem nächsten Tutorial fort, um weitere Informationen zur Verwend
 > [Aktualisieren des Bestands mit PowerShell und Themen/Abonnements](service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[vollqualifizierten Domänennamen]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
 [connection-string]: ./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png

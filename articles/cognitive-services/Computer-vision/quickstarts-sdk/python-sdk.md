@@ -8,24 +8,27 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 02/26/2019
 ms.author: pafarley
-ms.openlocfilehash: 3043067f326f782c51be38382070ae0db0e90f4d
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: d14b9c88b447583eedc8b50f4f9acf80ae4e3c75
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56314170"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889629"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>Azure Cognitive Services: SDK für maschinelles Sehen für Python
 
-Über den Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen. Algorithmen für maschinelles Sehen analysieren den Inhalt eines Bilds auf unterschiedliche Weise – je nachdem, für welche visuellen Merkmale Sie sich interessieren. So kann maschinelles Sehen beispielsweise erkennen, ob ein Bild anzügliche oder nicht jugendfreie Inhalte enthält, nach allen Gesichtern auf einem Bild suchen sowie handschriftlichen oder gedruckten Text erkennen. Dieser Dienst ist mit gängigen Bildformaten wie JPEG und PNG kompatibel. 
+Über den Dienst für maschinelles Sehen haben Entwickler Zugriff auf erweiterte Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen. Algorithmen für maschinelles Sehen analysieren den Inhalt eines Bilds auf unterschiedliche Weise – je nachdem, für welche visuellen Merkmale Sie sich interessieren. 
 
-Maschinelles Sehen kann in Ihrer Anwendung für Folgendes verwendet werden:
+* [Analysieren eines Bilds](#analyze-an-image)
+* [Abrufen der Motivdomänenliste](#get-subject-domain-list)
+* [Analysieren eines Bilds nach Domäne](#analyze-an-image-by-domain)
+* [Generieren einer Bildbeschreibung in Textform](#get-text-description-of-an-image)
+* [Extrahieren von handschriftlichem Text aus einem Bild](#get-text-from-image)
+* [Generieren einer Miniaturansicht](#generate-thumbnail)
 
-- Analysieren von Bildern, um Erkenntnisse zu gewinnen
-- Extrahieren von Text aus Bildern
-- Generieren von Miniaturansichten
+Weitere Informationen zu diesem Dienst finden Sie unter [Worum handelt es sich bei maschinellem Sehen?][computervision_docs].
 
 Weitere Dokumentationen:
 
@@ -34,11 +37,21 @@ Weitere Dokumentationen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure-Abonnement ([Kostenloses Konto erstellen][azure_sub])
-* [Azure-Ressource für maschinelles Sehen][computervision_resource]
 * [Python 3.6+][python]
+* Kostenloser [Schlüssel für maschinelles Sehen][computervision_resource] und die zugeordnete Region. Diese Werte werden beim Erstellen der Instanz des Clientobjekts [ComputerVisionAPI][ref_computervisionclient] benötigt. Die Werte können mit einer der folgenden Methoden ermittelt werden. 
 
-Wenn Sie ein Konto für die Maschinelles Sehen-API benötigen, können Sie über die [Azure-Befehlszeilenschnittstelle][azure_cli] mithilfe des folgenden Befehls ein entsprechendes Konto erstellen:
+### <a name="if-you-dont-have-an-azure-subscription"></a>Vorgehensweise ohne Azure-Abonnement
+
+Erstellen Sie über **Jetzt testen!** einen kostenlosen Schlüssel. Dieser ist sieben Tage lang gültig. Wenn der Schlüssel erstellt wurde, kopieren Sie den Schlüssel und den Namen der Region. Diese Angaben sind zum [Erstellen des Clients](#create-client) erforderlich.
+
+Speichern Sie nach der Schlüsselerstellung Folgendes:
+
+* Schlüsselwert: Eine Zeichenfolge mit 32 Zeichen im Format `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`. 
+* Schlüsselregion: Die Unterdomäne der Endpunkt-URL (https://**westcentralus**.api.cognitive.microsoft.com).
+
+### <a name="if-you-have-an-azure-subscription"></a>Vorgehensweise mit Azure-Abonnement
+
+Wenn Sie ein Konto für die Maschinelles Sehen-API benötigen, können Sie über die [Azure-Befehlszeilenschnittstelle][azure_cli] mithilfe des folgenden Befehls ganz einfach ein entsprechendes Konto in Ihrem Abonnement erstellen. Wählen Sie den Ressourcengruppennamen (beispielsweise „my-cogserv-group“) und den Namen der Ressource für maschinelles Sehen (beispielsweise „my-computer-vision-resource“). 
 
 ```Bash
 RES_REGION=westeurope 
@@ -54,18 +67,20 @@ az cognitiveservices account create \
     --yes
 ```
 
-## <a name="installation"></a>Installation
+<!--
+## Installation
 
-Installieren Sie das Azure Cognitive Services SDK für maschinelles Sehen mit [pip][pip] – optional in einer [virtuellen Umgebung][venv].
+Install the Azure Cognitive Services Computer Vision SDK with [pip][pip], optionally within a [virtual environment][venv].
 
-### <a name="configure-a-virtual-environment-optional"></a>Konfigurieren einer virtuellen Umgebung (optional)
+### Configure a virtual environment (optional)
 
-Mit einer [virtuellen Umgebung][virtualenv] können Sie die Umgebung Ihres Grundsystems und die Umgebung des Azure SDK auf Wunsch voneinander isolieren. Dies ist jedoch nicht zwingend erforderlich. Führen Sie die folgenden Befehle aus, um mit [venv][venv] eine virtuelle Umgebung zu konfigurieren (beispielsweise `cogsrv-vision-env`):
+Although not required, you can keep your base system and Azure SDK environments isolated from one another if you use a [virtual environment][virtualenv]. Execute the following commands to configure and then enter a virtual environment with [venv][venv], such as `cogsrv-vision-env`:
 
 ```Bash
 python3 -m venv cogsrv-vision-env
 source cogsrv-vision-env/bin/activate
 ```
+-->
 
 ### <a name="install-the-sdk"></a>Installieren des SDKs
 
@@ -75,15 +90,26 @@ Installieren Sie das [Azure Cognitive Services SDK für maschinelles Sehen für
 pip install azure-cognitiveservices-vision-computervision
 ```
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Nachdem Sie die Ressource für maschinelles Sehen erstellt haben, benötigen Sie ihre **Region** und einen ihrer **Kontoschlüssel**, um das Clientobjekt zu instanziieren.
 
 Verwenden Sie diese Werte, wenn Sie die Instanz des Clientobjekts [ComputerVisionAPI][ref_computervisionclient] erstellen. 
 
-### <a name="get-credentials"></a>Abrufen von Anmeldeinformationen
+<!--
 
-Verwenden Sie den folgenden Codeausschnitt für die [Azure-Befehlszeilenschnittstelle][cloud_shell], um zwei Umgebungsvariablen mit der **Region** und einem der **Schlüssel** des Kontos für maschinelles Sehen aufzufüllen. (Diese Werte stehen auch im [Azure-Portal][azure_portal] zur Verfügung.) Der Ausschnitt ist für die Bash-Shell formatiert.
+For example, use the Bash terminal to set the environment variables:
+
+```Bash
+ACCOUNT_REGION=<resourcegroup-name>
+ACCT_NAME=<computervision-account-name>
+```
+
+### For Azure subscription usrs, get credentials for key and region
+
+If you do not remember your region and key, you can use the following method to find them. If you need to create a key and region, you can use the method for [Azure subscription holders](#if-you-have-an-azure-subscription) or for [users without an Azure subscription](#if-you-dont-have-an-azure-subscription).
+
+Use the [Azure CLI][cloud_shell] snippet below to populate two environment variables with the Computer Vision account **region** and one of its **keys** (you can also find these values in the [Azure portal][azure_portal]). The snippet is formatted for the Bash shell.
 
 ```Bash
 RES_GROUP=<resourcegroup-name>
@@ -101,46 +127,27 @@ export ACCOUNT_KEY=$(az cognitiveservices account keys list \
     --query key1 \
     --output tsv)
 ```
+-->
 
 ### <a name="create-client"></a>Erstellen des Clients
 
-Nachdem Sie die Umgebungsvariablen `ACCOUNT_REGION` und `ACCOUNT_KEY` aufgefüllt haben, können Sie das Clientobjekt [ComputerVisionAPI][ref_computervisionclient] erstellen.
+Erstellen Sie das Clientobjekt [ComputerVisionAPI][ref_computervisionclient]. Ändern Sie im folgenden Codebeispiel die Werte für Region und Schlüssel in Ihre eigenen Werte.
 
 ```Python
 from azure.cognitiveservices.vision.computervision import ComputerVisionAPI
 from azure.cognitiveservices.vision.computervision.models import VisualFeatureTypes
 from msrest.authentication import CognitiveServicesCredentials
 
-import os
-region = os.environ['ACCOUNT_REGION']
-key = os.environ['ACCOUNT_KEY']
+region = "westcentralus"
+key = "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 credentials = CognitiveServicesCredentials(key)
 client = ComputerVisionAPI(region, credentials)
 ```
 
-## <a name="usage"></a>Verwendung
+Für die folgenden Aufgaben wird ein Clientobjekt vom Typ [ComputerVisionAPI][ref_computervisionclient] vorausgesetzt.
 
-Nach der Initialisierung eines Clientobjekts vom Typ [ComputerVisionAPI][ref_computervisionclient] haben Sie folgende Möglichkeiten:
-
-* Analysieren eines Bilds: Sie können verschiedene Aspekte eines Bilds analysieren (etwa Gesichter, Farben und Tags).   
-* Generieren von Miniaturansichten: Sie können ein benutzerdefiniertes JPEG-Bild als Miniaturansicht des ursprünglichen Bilds erstellen.
-* Generieren einer Bildbeschreibung: Sie können auf der Grundlage der Motivdomäne eine Beschreibung des Bilds generieren. 
-
-Weitere Informationen zu diesem Dienst finden Sie unter [Worum handelt es sich bei maschinellem Sehen?][computervision_docs].
-
-## <a name="examples"></a>Beispiele
-
-Die folgenden Abschnitte enthalten einige Codeausschnitte für gängige Aufgaben im Zusammenhang mit maschinellem Sehen:
-
-* [Analysieren eines Bilds](#analyze-an-image)
-* [Abrufen der Motivdomänenliste](#get-subject-domain-list)
-* [Analysieren eines Bilds nach Domäne](#analyze-an-image-by-domain)
-* [Generieren einer Bildbeschreibung in Textform](#get-text-description-of-an-image)
-* [Extrahieren von handschriftlichem Text aus einem Bild](#get-text-from-image)
-* [Generieren einer Miniaturansicht](#generate-thumbnail)
-
-### <a name="analyze-an-image"></a>Analysieren eines Bilds
+### <a name="analyze-an-image"></a>Analysieren von Bildern
 
 Mit [`analyze_image`][ref_computervisionclient_analyze_image] können verschiedene Aspekte eines Bilds analysiert werden. Verwenden Sie die Eigenschaft [`visual_features`][ref_computervision_model_visualfeatures], um festzulegen, welche Analysen für das Bild ausgeführt werden sollen. Gängige Werte sind `VisualFeatureTypes.tags` und `VisualFeatureTypes.description`.
 
@@ -169,8 +176,13 @@ for x in models.models_property:
 Mit [`analyze_image_by_domain`][ref_computervisionclient_analyze_image_by_domain] können Sie eine Bildanalyse auf der Grundlage der Motivdomäne durchführen. Rufen Sie die [Liste unterstützter Motivdomänen](#get-subject-domain-list) ab, um den passenden Domänennamen zu verwenden.  
 
 ```Python
+# type of prediction
 domain = "landmarks"
-url = "https://upload.wikimedia.org/wikipedia/commons/thumb/1/12/Broadway_and_Times_Square_by_night.jpg/450px-Broadway_and_Times_Square_by_night.jpg"
+
+# Public domain image of Eiffel tower
+url = "https://images.pexels.com/photos/338515/pexels-photo-338515.jpeg"
+
+# English language response
 language = "en"
 
 analysis = client.analyze_image_by_domain(domain, url, language)
@@ -202,6 +214,10 @@ for caption in analysis.captions:
 Sie können handschriftlichen oder gedruckten Text aus einem Bild extrahieren. Dazu sind zwei SDK-Aufrufe erforderlich: [`recognize_text`][ref_computervisionclient_recognize_text] und [`get_text_operation_result`][ref_computervisionclient_get_text_operation_result]. Der Aufruf von „recognize_text“ ist asynchron. In den Ergebnissen des Aufrufs von „get_text_operation_result“ müssen Sie anhand von [`TextOperationStatusCodes`][ref_computervision_model_textoperationstatuscodes] überprüfen, ob der erste Aufruf abgeschlossen wurde, bevor Sie die Textdaten extrahieren. Die Ergebnisse enthalten den Text sowie die Koordinaten des umgebenden Rechtecks für den Text. 
 
 ```Python
+# import models
+from azure.cognitiveservices.vision.computervision.models import TextRecognitionMode
+from azure.cognitiveservices.vision.computervision.models import TextOperationStatusCodes
+
 url = "https://azurecomcdn.azureedge.net/cvt-1979217d3d0d31c5c87cbd991bccfee2d184b55eeb4081200012bdaf6a65601a/images/shared/cognitive-services-demos/read-text/read-1-thumbnail.png"
 mode = TextRecognitionMode.handwritten
 raw = True
@@ -231,10 +247,19 @@ if result.status == TextOperationStatusCodes.succeeded:
 
 Mit [`generate_thumbnail`][ref_computervisionclient_generate_thumbnail] können Sie eine Miniaturansicht (JPG) eines Bilds generieren. Die Proportionen der Miniaturansicht können von den Proportionen des ursprünglichen Bilds abweichen. 
 
-Im folgenden Beispiel wird zum lokalen Speichern der neuen Miniaturansicht das [Pillow][pypi_pillow]-Paket verwendet.
+Installieren Sie **Pillow**, um dieses Beispiel zu verwenden:
+
+```bash
+pip install Pillow
+``` 
+
+Verwenden Sie nach der Installation von Pillow das Paket im folgenden Codebeispiel, um das Miniaturbild zu generieren:
 
 ```Python
+# Pillow package
 from PIL import Image
+
+# IO package to create local image
 import io
 
 width = 50
@@ -281,17 +306,16 @@ except HTTPFailure as e:
 
 Bei der Verwendung des [ComputerVisionAPI][ref_computervisionclient]-Clients kann es zu vorübergehenden Fehlern kommen. Diese können auf durch den Dienst erzwungene [Ratenlimits][computervision_request_units] oder auf andere vorübergehende Probleme (etwa auf Netzwerkausfälle) zurückzuführen sein. Informationen zur Behandlung solcher Fehler finden Sie im Leitfaden für Cloudentwurfsmuster unter [Wiederholungsmuster][azure_pattern_retry] sowie unter dem dazugehörigen [Trennschalter-Muster][azure_pattern_circuit_breaker].
 
-## <a name="next-steps"></a>Nächste Schritte
-
 ### <a name="more-sample-code"></a>Weiterer Beispielcode
 
 Im GitHub-Repository des SDK stehen zahlreiche Beispiele für das Computer Vision Python SDK zur Verfügung. Diese Beispiele enthalten Beispielcode für weitere gängige Szenarien im Zusammenhang mit maschinellem Sehen:
 
 * [recognize_text][recognize-text]
 
-### <a name="additional-documentation"></a>Zusätzliche Dokumentation
+## <a name="next-steps"></a>Nächste Schritte
 
-Eine ausführlichere Dokumentation zum Dienst für maschinelles Sehen finden Sie auf „docs.microsoft.com“ in der [Azure-Dokumentation für maschinelles Sehen][computervision_docs].
+> [!div class="nextstepaction"]
+> [Anwenden von Inhaltstags auf Bilder](../concept-tagging-images.md)
 
 <!-- LINKS -->
 [pip]: https://pypi.org/project/pip/

@@ -8,14 +8,14 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/01/2018
 ms.author: dech
-ms.openlocfilehash: 5c416b6db5cc7708c5523d6da12af651d706811e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 11b89cd33346c2d6da2269bbc2a4b9550f3120b3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54037649"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587384"
 ---
-# <a name="quickstart-build-an-aspnet-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Schnellstart: Erstellen einer ASP.NET-Web-App mit Azure Cosmos DB unter Verwendung der SQL-API und des Azure-Portals
+# <a name="quickstart-build-an-aspnet-web-app-using-azure-cosmos-db-sql-api-account"></a>Schnellstart: Erstellen einer ASP.NET-Web-App mit einem Azure Cosmos DB-SQL-API-Konto
 
 > [!div class="op_single_selector"]
 > * [.NET (Vorschauversion)](create-sql-api-dotnet-preview.md)

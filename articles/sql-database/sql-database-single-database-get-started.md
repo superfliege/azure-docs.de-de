@@ -11,13 +11,13 @@ author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 02/04/2019
-ms.openlocfilehash: 66640bd60f6ba8c2f612a6bc9b88a07b13012997
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 02/25/2019
+ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55990033"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984882"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -29,7 +29,7 @@ Melden Sie sich zum Durchführen aller Schritte in diesem Schnellstart beim [Azu
 
 ## <a name="create-a-single-database"></a>Erstellen einer Einzeldatenbank
 
-Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, E/A- und Speicherressourcen und verwendet eins von zwei möglichen [Erwerbsmodellen(sql-database-purchase-models.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbankserver](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
+Eine Einzeldatenbank enthält einen definierten Satz von Compute-, Arbeitsspeicher-, EA- und Speicherressourcen und verwendet eins von zwei möglichen [Erwerbsmodellen](sql-database-purchase-models.md). Wenn Sie eine Einzeldatenbank erstellen, legen Sie auch einen [SQL-Datenbankserver](sql-database-servers.md) für ihre Verwaltung fest und platzieren ihn in einer [Azure-Ressourcengruppe](../azure-resource-manager/resource-group-overview.md) in einer bestimmten Region.
 
 So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
@@ -42,8 +42,8 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und klicken Sie auf **OK**.
    - **Quelle auswählen**: Wählen Sie in der Dropdownliste **Sample (AdventureWorksLT)** aus.
 
-    >[!IMPORTANT]
-    >Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
+    > [!IMPORTANT]
+    > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
   
    ![Erstellen einer Einzeldatenbank](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -56,18 +56,18 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
    - **Kennwort bestätigen**: Geben Sie das Kennwort erneut ein.
    - **Standort**: Wählen Sie in der Dropdownliste einen gültigen Standort aus.  
 
-   >[!IMPORTANT]
-   >Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
+   > [!IMPORTANT]
+   > Notieren Sie sich die Serveradministratoranmeldung (Anmelde-ID) und das Kennwort, damit Sie sich für diesen und andere Schnellstarts beim Server und bei den Datenbanken anmelden können. Falls Sie die Anmeldeinformationen vergessen, können Sie auf der Seite **SQL Server** die Anmelde-ID abrufen oder das Kennwort zurücksetzen. Um die Seite **SQL Server** zu öffnen, wählen Sie nach dem Erstellen der Datenbank auf der Seite **Übersicht** für die Datenbank den Servernamen aus.
 
     ![Server erstellen](./media/sql-database-get-started-portal/create-database-server.png)
 
 6. Wählen Sie **Auswählen**.
 7. Wählen Sie im Formular **SQL-Datenbank** die Option **Tarif** aus. Sehen Sie sich die Anzahl von Datenbanktransaktionseinheiten (Database Transaction Unit, DTU) und den verfügbaren Speicher für die einzelnen Dienstebenen an.
 
-   >[!NOTE]
-   >In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
-   >[!IMPORTANT]
-   >In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: „Vereinigtes Königreich, Norden“, „USA, Westen-Mitte“, „Vereinigtes Königreich, Süden2“, „China, Osten“, „US DoD, Mitte“, „Deutschland, Mitte“, „US DoD, Osten“, „US Gov, Südwesten“, „US Gov, Süden-Mitte“, „Deutschland, Nordosten“, „China, Norden“ und „US Gov, Osten“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt. Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > [!NOTE]
+   > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
+   > [!IMPORTANT]
+   > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Wählen Sie für diesen Schnellstart die Dienstebene **Standard** und anschließend mithilfe des Schiebereglers **10 DTUs (S0)** und **1** GB Speicher aus.
 9. Wählen Sie **Übernehmen**.  

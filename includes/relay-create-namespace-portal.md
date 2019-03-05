@@ -4,18 +4,18 @@ ms.service: service-bus-relay
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: clemensv
-ms.openlocfilehash: 13ac2ec0569dc79791eca9efb2bd51e7b76ddd05
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: bbcf38ab54632144920b729f433c222f426d96dc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51572150"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56825582"
 ---
 1. Melden Sie sich beim [Azure-Portal][Azure portal] an.
 2. Klicken Sie im Menü auf der linken Seite auf **+ Ressource erstellen**. Wählen Sie dann **Integration** > **Relay** aus. Wenn **Relay** in der Liste nicht angezeigt wird, klicken Sie in der oberen rechten Ecke auf **Alle anzeigen**. 
 3. Geben Sie unter **Namespace erstellen** einen Namespacenamen ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
 4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-5. Wählen Sie im Feld [Ressourcengruppe](../articles/azure-resource-manager/resource-group-portal.md) eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.  
+5. Wählen Sie im Feld [Ressourcengruppe](../articles/azure-resource-manager/manage-resource-groups-portal.md) eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.  
 6. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
    
     ![Namespace erstellen][create-namespace]
@@ -28,7 +28,7 @@ ms.locfileid: "51572150"
 3. Klicken Sie unter **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
    
     ![connection-info][connection-info]
-4. Klicken Sie unter **Richtlinie: RootManageSharedAccessKey** neben **Verbindungszeichenfolge – Primärschlüssel** auf die Schaltfläche **Kopieren**. Dadurch wird die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage kopiert. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
+4. Wählen Sie unter **Richtlinie: RootManageSharedAccessKey** die Schaltfläche **Kopieren** neben **Verbindungszeichenfolge – Primärschlüssel** aus. Dadurch wird die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage kopiert. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
    
     ![connection-string][connection-string]
 

@@ -7,17 +7,17 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 1ab6fe13df111b5f56da1f368fc0dacf0a6206fc
-ms.sourcegitcommit: 4bf542eeb2dcdf60dcdccb331e0a336a39ce7ab3
+ms.date: 02/21/2019
+ms.openlocfilehash: e87f9b4905abec2c00ed238445b3e36e41cfa2f6
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56408832"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674870"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank
 
-Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Um den Azure-Daten-Explorer zu verwenden, erstellen Sie zuerst einen *Cluster* und anschließend eine oder mehrere *Datenbanken* in diesem Cluster. Anschließend *erfassen* (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. In diesem Schnellstart erstellen Sie einen Cluster und eine Datenbank. In nachfolgenden Artikeln erfahren Sie, wie Daten erfasst werden.
+Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Untersuchung von Daten (Protokoll- und Telemetriedaten). Um den Azure Data Explorer zu verwenden, erstellen Sie zuerst einen Cluster und anschließend eine oder mehrere Datenbanken in diesem Cluster. Anschließend erfassen (laden) Sie Daten in eine Datenbank, damit Sie diese abfragen können. In diesem Schnellstart erstellen Sie einen Cluster und eine Datenbank.
 
 Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
@@ -27,7 +27,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
 ## <a name="create-a-cluster"></a>Erstellen eines Clusters
 
-Sie erstellen einen Azure-Daten-Explorer-Cluster in einer Azure-Ressourcengruppe mit einem definierten Satz von Compute- und Speicherressourcen.
+Erstellen Sie einen Azure Data Explorer-Cluster mit einem definierten Satz von Compute- und Speicherressourcen in einer Azure-Ressourcengruppe.
 
 1. Klicken Sie in der linken oberen Ecke des Portals auf die Schaltfläche **Ressource erstellen** (+).
 
@@ -37,28 +37,22 @@ Sie erstellen einen Azure-Daten-Explorer-Cluster in einer Azure-Ressourcengruppe
 
 1. Wählen Sie unter **Azure Data Explorer** unten auf dem Bildschirm **Erstellen** aus.
 
-1. Geben Sie einen eindeutigen Namen für den Cluster ein, wählen Sie Ihr Abonnement aus, und erstellen Sie die Ressourcengruppe *test-resource-group*.
-
-    ![Ressourcengruppe erstellen](media/create-cluster-database-portal/create-resource-group.png)
-
-1. Füllen Sie das Formular mit den folgenden Informationen aus.
+1. Geben Sie die folgenden Informationen als grundlegende Clusterdetails an.
 
    ![Erstellen eines Clusterformulars](media/create-cluster-database-portal/create-cluster-form.png)
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Clustername | Ein eindeutiger Clustername | Wählen Sie einen eindeutigen Namen aus, der Ihren Cluster identifiziert. Beispiel: *mytestcluster*. Der Domänenname *[Region].kusto.windows.net* wird an den angegebenen Namen angefügt. Der Name darf nur Kleinbuchstaben und Zahlen enthalten. Er muss zwischen 3 und 22 Zeichen lang sein.
     | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Cluster verwenden möchten.|
-    | Ressourcengruppe | *test-resource-group* | Erstellen Sie eine neue Ressourcengruppe. |
+    | Ressourcengruppe | *test-resource-group* | Verwenden Sie eine vorhandene Ressourcengruppe, oder erstellen Sie eine neue Ressourcengruppe. |
+    | Clustername | Ein eindeutiger Clustername | Wählen Sie einen eindeutigen Namen aus, der Ihren Cluster identifiziert. Beispiel: *mydataexplorercluster*. Der Domänenname *[Region].kusto.windows.net* wird an den angegebenen Namen angefügt. Der Name darf nur Kleinbuchstaben und Zahlen enthalten. Er muss zwischen 3 und 22 Zeichen lang sein.
     | Standort | *USA, Westen* | Wählen Sie für diesen Schnellstart die Option *USA, Westen* aus. Wählen Sie für ein Produktionssystem die Region aus, die Ihre Anforderungen am besten erfüllt.
     | Computespezifikationen | *D13_v2* | Wählen Sie für diesen Schnellstart die Spezifikation mit dem niedrigsten Preis aus. Wählen Sie für ein Produktionssystem die Spezifikation aus, die Ihre Anforderungen am besten erfüllt.
     | | |
 
-1. Wählen Sie **Erstellen** aus, um den Server bereitzustellen. Die Bereitstellung dauert in der Regel etwa zehn Minuten. Wählen Sie auf der Symbolleiste die Option **Benachrichtigungen** aus, um den Bereitstellungsvorgang zu überwachen.
+1. Wählen Sie **Bewerten + erstellen**, um Ihre Clusterdetails zu überprüfen, und dann **Erstellen**, um den Cluster bereitzustellen. Die Bereitstellung dauert normalerweise etwa zehn Minuten.
 
-    ![Benachrichtigungen](media/create-cluster-database-portal/notifications.png)
-
-1. Wenn der Prozess abgeschlossen ist, wählen Sie **Benachrichtigungen** und dann **Zu Ressource wechseln** aus.
+1. Wählen Sie nach Abschluss der Bereitstellung die Option **Zu Ressourcengruppe wechseln**.
 
     ![Zu Ressource wechseln](media/create-cluster-database-portal/notification-resource.png)
 
@@ -68,7 +62,7 @@ Sie sind nun für den zweiten Schritt bereit: das Erstellen der Datenbank.
 
 1. Wählen Sie auf der Registerkarte **Übersicht** die Option **Datenbank erstellen** aus.
 
-    ![Schritt zwei: Erstellen einer Datenbank](media/create-cluster-database-portal/database-creation.png)
+    ![Schritt 2: Erstellen einer Datenbank](media/create-cluster-database-portal/database-creation.png)
 
 1. Füllen Sie das Formular mit den folgenden Informationen aus.
 
@@ -78,26 +72,22 @@ Sie sind nun für den zweiten Schritt bereit: das Erstellen der Datenbank.
     |---|---|---|
     | Datenbankname | *TestDatabase* | Der Datenbankname muss innerhalb des Clusters eindeutig sein.
     | Aufbewahrungszeitraum | *3650* | Die Zeitspanne (in Tagen), für die garantiert wird, dass die Daten für Abfragen verfügbar bleiben. Die Zeitspanne wird ab dem Zeitpunkt gemessen, zu dem die Daten erfasst werden.
-    | Zwischenspeicherungsdauer | *31* | Die Zeitspanne (in Tagen), für die häufig abgefragte Daten im SSD-Speicher oder RAM (und nicht im längerfristigen Speicher) verfügbar bleiben.
+    | Zwischenspeicherungsdauer | *31* | Die Zeitspanne (in Tagen), wie lange häufig abgefragte Daten im SSD-Speicher oder RAM (und nicht im längerfristigen Speicher) verfügbar bleiben.
     | | | |
 
-1. Wählen Sie **Speichern** aus, um die Datenbank zu erstellen. Die Erstellung dauert in der Regel weniger als eine Minute. Wenn der Vorgang abgeschlossen ist, gelangen Sie zurück zur Registerkarte **Übersicht** des Clusters.
+1. Wählen Sie **Erstellen**, um die Datenbank zu erstellen. Die Erstellung dauert in der Regel weniger als eine Minute. Wenn der Vorgang abgeschlossen ist, gelangen Sie zurück zur Registerkarte **Übersicht** des Clusters.
 
 ## <a name="run-basic-commands-in-the-database"></a>Ausführen von grundlegenden Befehlen in der Datenbank
 
 Da Sie nun über einen Cluster und eine Datenbank verfügen, können Sie Abfragen und Befehle ausführen. Es sind noch keine Daten in der Datenbank vorhanden, aber Sie können bereits sehen, wie die Tools funktionieren.
 
-1. Wählen Sie unter Ihrem Cluster **Abfrage** aus.
-
-    ![Datenbankabfrage](media/create-cluster-database-portal/query-database.png)
-
-1. Fügen Sie den folgenden Befehl im Abfragefenster ein: `.show databases`. Wählen Sie dann **Ausführen** aus.
+1. Wählen Sie unter Ihrem Cluster **Abfrage** aus. Fügen Sie den Befehl `.show databases` im Abfragefenster ein, und wählen Sie anschließend die Option **Ausführen**.
 
     ![Anzeigen von Datenbankbefehlen](media/create-cluster-database-portal/show-databases.png)
 
     Im Resultset wird **TestDatabase** angezeigt, die einzige Datenbank im Cluster.
 
-1. Fügen Sie den folgenden Befehl im Abfragefenster ein: `.show tables`. Wählen Sie diesen Befehl dann im Fenster aus. Klicken Sie auf **Run** (Ausführen).
+1. Fügen Sie den Befehl `.show tables` im Abfragefenster ein, und wählen Sie die Option **Ausführen**.
 
     Dieser Befehl gibt ein leeres Resultset zurück, da Sie noch nicht über Tabellen verfügen. Sie fügen im nächsten Artikel dieser Serie eine Tabelle hinzu.
 
@@ -115,17 +105,11 @@ Sie können einen Cluster je nach Geschäftsanforderungen beenden und neu starte
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie unsere anderen Schnellstarts und Tutorials durchgehen möchten, behalten Sie die erstellten Ressourcen bei. Andernfalls bereinigen Sie **test-resource-group**, damit keine Kosten entstehen.
+Falls Sie andere Schnellstartanleitungen und Tutorials durcharbeiten möchten, ist es ratsam, die erstellten Ressourcen beizubehalten. Andernfalls sollten Sie eine Ressourcenbereinigung durchführen, damit keine Kosten entstehen.
 
-1. Klicken Sie ganz links im Azure-Portal auf **Ressourcengruppen** und anschließend auf die erstellte Ressourcengruppe.  
+1. Wählen Sie ganz links im Azure-Portal die Option **Ressourcengruppen** und anschließend die Ressourcengruppe, die Ihren Data Explorer-Cluster enthält.  
 
-    Wenn das linke Menü reduziert ist, wählen Sie ![Schaltfläche „Erweitern“](media/create-cluster-database-portal/expand.png) , um es zu erweitern.
-
-   ![Auswählen einer zu löschenden Ressourcengruppe](media/create-cluster-database-portal/delete-resources-select.png)
-
-1. Wählen Sie unter **test-resource-group** die Option **Ressourcengruppe löschen** aus.
-
-1. Geben Sie im neuen Fenster den Namen der zu löschenden Ressourcengruppe (*test-resource-group*) ein, und wählen Sie dann **Löschen** aus.
+1. Wählen Sie **Ressourcengruppe löschen**, um die gesamte Ressourcengruppe zu löschen. Bei Verwendung einer vorhandenen Ressourcengruppe können Sie auch auswählen, dass nur der Data Explorer-Cluster gelöscht werden soll.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

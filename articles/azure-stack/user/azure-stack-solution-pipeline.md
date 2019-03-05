@@ -15,12 +15,12 @@ ms.date: 02/19/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 11/07/2018
-ms.openlocfilehash: bfbafea13f49ada59dae88e0336f926a8ad89d36
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: deaf7defe5aca4f53df073b19e471a52bd7b8a5d
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430249"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878743"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Tutorial: Bereitstellen von Apps in Azure und Azure Stack
 
@@ -335,7 +335,7 @@ In diesem Teil des Tutorials führen Sie die folgenden Schritte aus:
 > [!Note]
  > Für die Ausführung von Windows Server und SQL Server benötigen Sie eine Azure Stack-Umgebung mit den passenden syndizierten Images. Darüber hinaus muss App Service bereitgestellt sein. Anforderungen für Azure Stack-Bediener finden Sie im Abschnitt „Voraussetzungen“ der App Service-Dokumentation.
 
-Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/), z.B. Web-App-Code aus Azure DevOps Services, für die Bereitstellung in beiden Clouds.
+Der hybride CI/CD-Ansatz kann für Anwendungscode und Infrastrukturcode verwendet werden. Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/), z. B. Web-App-Code aus Azure DevOps Services, für die Bereitstellung in beiden Clouds.
 
 ### <a name="add-code-to-an-azure-devops-services-project"></a>Hinzufügen von Code zu einem Azure DevOps Services-Projekt
 

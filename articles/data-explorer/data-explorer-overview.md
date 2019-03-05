@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: ebce27f3558661aca9e1bd6e7130c96c396d33ee
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: bb173981e3f06c923fa7357eb64777493bd17b8c
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257121"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56958268"
 ---
 # <a name="what-is-azure-data-explorer"></a>Was ist der Azure-Daten-Explorer?
 
@@ -45,11 +45,11 @@ Die folgende Abbildung zeigt die verschiedenen Aspekte der Arbeit mit Azure-Date
 
 Die Arbeit im Azure-Daten-Explorer folgt im Allgemeinen diesem Muster:
 
-1. **Datenbank erstellen**: Erstellen Sie einen *Cluster* und anschließend eine oder mehrere *Datenbanken* im Cluster. [Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
+1. **Datenbank erstellen:** Erstellen Sie einen *Cluster* und anschließend eine oder mehrere *Datenbanken* im Cluster. [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
 
-1. **Daten erfassen**: Laden Sie Daten in Datenbanktabellen, sodass Sie diese abfragen können. [Schnellstart: Erfassen von Daten aus Event Hub in Azure-Daten-Explorer](ingest-data-event-hub.md)
+1. **Daten erfassen:** Laden Sie Daten in Datenbanktabellen, sodass Sie diese abfragen können. [Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
-1. **Datenbank abfragen**: Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten im Azure-Daten-Explorer](web-query-data.md)
+1. **Datenbank abfragen:** Nutzen Sie unsere Webanwendung, um Abfragen auszuführen und um deren Abfrageergebnisse zu prüfen und zu teilen. Sie steht im Azure-Portal sowie als eigenständige Anwendung zur Verfügung. Darüber hinaus können Sie Abfragen programmgesteuert (mit einem SDK) oder an einen REST-API-Endpunkt senden. [Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)
 
 ## <a name="query-experience"></a>Abfrageverhalten
 
@@ -57,7 +57,7 @@ Eine Abfrage in Azure-Daten-Explorer ist eine schreibgeschützte Anforderung, Da
 
 Azure-Daten-Explorer eignet sich gleichermaßen gut für die Verarbeitung großer Mengen strukturierter, halbstrukturierter (geschachtelte JSON-Typen) und unstrukturierter Daten (Freitext). Er ermöglicht das Suchen nach bestimmten Textbegriffen, das Auffinden konkreter Ereignisse und das Durchführen metrischer Berechnungen für strukturierte Daten. Azure-Daten-Explorer schlägt eine Brücke zwischen Protokollen mit unstrukturiertem Text und strukturierten Zahlen und Dimensionen, indem Werte zur Laufzeit aus Freitextfeldern extrahiert werden. Das Durchsuchen der Daten wird durch eine Kombination aus schneller Textindizierung, ColumnStore- und Zeitreihenvorgängen erleichtert.
 
-Die Funktionen von Azure-Daten-Explorer werden durch andere Dienste erweitert, die auf seiner leistungsfähigen Abfragesprache aufbauen, u.a. durch [Log Analytics](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) und [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/).
+Die Funktionen von Azure Data Explorer werden durch andere Dienste erweitert, die auf seiner leistungsfähigen Abfragesprache aufbauen, u. a. durch [Azure Monitor-Protokolle](/azure/log-analytics/), [Application Insights](/azure/application-insights/), [Time Series Insights](/azure/time-series-insights/) und [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection/).
 
 ## <a name="feedback"></a>Feedback
 
@@ -71,8 +71,8 @@ Wir würden uns sehr über Ihr Feedback zu Azure-Daten-Explorer und seiner Abfra
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Schnellstart: Erstellen eines Azure-Daten-Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
+[Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md)
 
-[Schnellstart: Erfassen von Daten aus Event Hub in Azure-Daten-Explorer](ingest-data-event-hub.md)
+[Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer](ingest-data-event-hub.md)
 
-[Schnellstart: Abfragen von Daten im Azure-Daten-Explorer](web-query-data.md)
+[Schnellstart: Abfragen von Daten in Azure Data Explorer](web-query-data.md)

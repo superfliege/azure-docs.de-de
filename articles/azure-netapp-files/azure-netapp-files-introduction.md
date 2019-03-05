@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/28/2018
 ms.author: b-juche
-ms.openlocfilehash: eb7354f8e099f28f4a3476b16c11f5f2d8feda00
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: d16d13d1f57c1ef189db3db781705cd70cd71e8d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53412486"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56586187"
 ---
 # <a name="introduction-to-azure-netapp-files"></a>Einführung in Azure NetApp Files
 Der Azure NetApp Files-Dienst ist ein leistungsstarker Dateispeicherdienst auf Unternehmensniveau. Azure NetApp Files unterstützt jeden Workloadtyp und ist standardmäßig hochverfügbar. Sie können über den Dienst garantierte Dienst- und Leistungsebenen auswählen und Momentaufnahmen einrichten. 
@@ -30,10 +30,6 @@ Die Azure NetApp Files-Dokumentation enthält Anweisungen zum Erstellen und Verw
 > Alle in dieser Dokumentation beschriebenen Aufgaben setzen voraus, dass Sie am Public Preview-Programm teilnehmen und auf der Whitelist für den Zugriff auf den Azure-Ressourcenanbieter „Microsoft.NetApp“ stehen. Unter [Registrieren für Azure NetApp Files](azure-netapp-files-register.md) finden Sie Informationen zur Teilnahme am Public Preview-Programm. 
 
 **Erste Schritte** 
-1. [Registrieren für Azure NetApp Files](azure-netapp-files-register.md)
-1. [Erstellen eines NetApp-Kontos](azure-netapp-files-create-netapp-account.md)
-1. [Einrichten eines Kapazitätspools](azure-netapp-files-set-up-capacity-pool.md)
-1. [Erstellen eines Volumes für Azure NetApp Files](azure-netapp-files-create-volumes.md)
-1. [Konfigurieren der Exportrichtlinie für ein Volume (optional)](azure-netapp-files-configure-export-policy.md)
 
-
+* [Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md) 
+* [Schnellstart: Einrichten von Azure NetApp Files und Erstellen eines Volumes](azure-netapp-files-quickstart-set-up-account-create-volumes.md)

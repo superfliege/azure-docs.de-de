@@ -6,15 +6,15 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.custom: mvc
-ms.date: 05/29/2018
+ms.date: 02/22/2019
 ms.topic: tutorial
 ms.service: iot-hub
-ms.openlocfilehash: bb9bcfcc5f78ee82f187d331055e8f2fd2ed9e64
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ebd206f6de031ea73d621568e091632e2e8123b9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745808"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674501"
 ---
 # <a name="tutorial-use-a-simulated-device-to-test-connectivity-with-your-iot-hub"></a>Tutorial: Verwenden eines simulierten Geräts zum Testen der Konnektivität mit Ihrem IoT Hub
 
@@ -122,7 +122,7 @@ Hierbei sehen Sie jetzt einen Authentifizierungsfehler, wenn die Anwendung versu
 
 Wenn Ihr Gerät eines der IoT Hub-Geräte-SDKs nutzt, generiert der SDK-Bibliothekscode das SAS-Token, das zum Authentifizieren mit dem Hub verwendet wird. Ein SAS-Token wird aus dem Namen Ihres Hub, dem Namen Ihres Geräts und dem Geräteschlüssel generiert.
 
-Bei einigen Szenarien, z.B. in einem Cloudprotokollgateway oder als Teil eines benutzerdefinierten Authentifizierungsschemas, müssen Sie das SAS-Token ggf. selbst generieren. Zum Behandeln von Problemen mit Ihrem SAS-Generierungscode ist es nützlich, wenn Sie ein als funktionierend bekanntes SAS-Token zur Verwendung beim Testen generieren können.
+Bei einigen Szenarien, z.B. in einem Cloudprotokollgateway oder als Teil eines benutzerdefinierten Authentifizierungsschemas, müssen Sie das SAS-Token ggf. selbst generieren. Zum Behandeln von Problemen mit Ihrem SAS-Generierungscode ist es nützlich, ein als funktionierend bekanntes SAS-Token zur Verwendung beim Testen zu generieren.
 
 > [!NOTE]
 > Das Beispiel „SimulatedDevice-2.js“ enthält Beispiele zum Generieren eines SAS-Tokens jeweils mit und ohne SDK.
@@ -133,7 +133,7 @@ Führen Sie den folgenden Befehl aus, um mit der CLI ein als funktionierend beka
 az iot hub generate-sas-token --device-id MyTestDevice --hub-name {YourIoTHubName}
 ```
 
-Notieren Sie sich den gesamten Text des generierten SAS-Tokens. Ein SAS-Token sieht wie folgt aus: `'SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307'`
+Notieren Sie sich den gesamten Text des generierten SAS-Tokens. Ein SAS-Token sieht wie folgt aus: `SharedAccessSignature sr=tutorials-iot-hub.azure-devices.net%2Fdevices%2FMyTestDevice&sig=....&se=1524155307`
 
 Navigieren Sie in einem Terminalfenster auf Ihrem Entwicklungscomputer zum Stammordner des Node.js-Beispielprojekts, das Sie heruntergeladen haben. Navigieren Sie anschließend zum Ordner **iot-hub\Tutorials\ConnectivityTests\simulated-device**.
 
@@ -189,13 +189,9 @@ Im Terminalfenster werden Informationen angezeigt, während Telemetriedaten an I
 
 ![Senden von Nachrichten vom simulierten Gerät](media/tutorial-connectivity/sim-3-sending.png)
 
-Sie können die Option **Metriken** im Portal nutzen, um sicherzustellen, dass die Telemetrienachrichten Ihren IoT Hub erreichen:
+Sie können die Option **Metriken** im Portal nutzen, um sicherzustellen, dass die Telemetrienachrichten Ihren IoT Hub erreichen. Wählen Sie Ihren IoT Hub in der Dropdownliste **Ressourcen** aus, wählen Sie **Telemetry messages sent** (Gesendete Telemetrienachrichten) als Metrik aus, und legen Sie den Zeitraum auf **Letzte Stunde** fest. Im Diagramm wird die Aggregatanzahl von Nachrichten angezeigt, die vom simulierten Gerät gesendet werden:
 
-![Navigieren zu IoT Hub-Metriken](media/tutorial-connectivity/metrics-portal.png)
-
-Wählen Sie Ihren IoT Hub in der Dropdownliste **Ressourcen** aus, wählen Sie **Telemetry messages sent** (Gesendete Telemetrienachrichten) als Metrik aus, und legen Sie den Zeitraum auf **Letzte Stunde** fest. Im Diagramm wird die Aggregatanzahl von Nachrichten angezeigt, die vom simulierten Gerät gesendet werden:
-
-![Anzeigen von IoT Hub-Metriken](media/tutorial-connectivity/metrics-active.png)
+![Anzeigen von IoT Hub-Metriken](media/tutorial-connectivity/metrics-portal.png)
 
 Es dauert einige Minuten, bis die Metriken nach dem Starten des simulierten Geräts zur Verfügung stehen.
 

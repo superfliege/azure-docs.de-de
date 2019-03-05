@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 64c0a42ac3cc074e5fd9e2824180009431b11e1e
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231970"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56986327"
 ---
-# <a name="quickstart-create-a-public-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ über das Portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Basic“ über das Azure-Portal
 
 Durch die Verteilung der eingehenden Anforderungen auf virtuelle Computer (VMs) ermöglicht ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer zu erstellen und den Datenverkehr auf VMs zu verteilen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Load Balancer, Back-End-Server und Netzwerkressourcen im Tarif „Basic“ erstellen und konfigurieren.
 
@@ -32,23 +32,25 @@ Melden Sie sich zur Durchführung der Aufgaben dieser Schnellstartanleitung am [
 
 ## <a name="create-a-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
 
-Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“, indem Sie das Portal verwenden. Der von Ihnen erstellte Name und die öffentliche IP-Adresse werden automatisch als Front-End des Load Balancers konfiguriert.
+Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“ über das Portal. Der von Ihnen erstellte Name und die öffentliche IP-Adresse werden automatisch als Front-End des Load Balancers konfiguriert.
 
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-   
-1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
-   
-   - **Name**: Geben Sie *MyLoadBalancer* ein.
-   - **Typ**: Wählen Sie **Öffentlich** aus. 
-   - **SKU**: Wählen Sie **Basic** aus.
-   - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen**. 
-     - Feld **Öffentliche IP-Adresse**: Geben Sie *MyPublicIP* ein.
-     - **Öffentliche IP-Adresse konfigurieren** > **Zuweisung**: Wählen Sie **Dynamisch** aus.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *MyResourceGroupLB* ein, und wählen Sie anschließend **OK** aus. 
-   
-1. Klicken Sie auf **Erstellen**.
-   
-![Einrichten eines Load Balancers](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
+
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | NAME                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Basic** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | *MyPublicIP*   |
+    | Zuweisung| statischen|
+
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
+
 
 ## <a name="create-back-end-servers"></a>Erstellen von Back-End-Servern
 

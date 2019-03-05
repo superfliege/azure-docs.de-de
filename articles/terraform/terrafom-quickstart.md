@@ -7,16 +7,16 @@ ms.service: terraform
 ms.topic: quickstart
 ms.date: 02/04/2019
 ms.author: nepeters
-ms.openlocfilehash: 408e07e9b6214dbd223bd4ec7959b00ecc414f1e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: b3d872008c95d94a8401e6f38665c3c88616a168
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869176"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736922"
 ---
 # <a name="create-a-terraform-configuration-for-azure"></a>Erstellen einer Terraform-Konfiguration für Azure
 
-In diesem Beispiel erfahren Sie, wie Sie eine Terraform-Konfiguration erstellen und diese Konfiguration in Azure bereitstellen. Am Ende des Beispiels haben Sie eine Azure Cosmos DB-Instanz und Azure Container Instances sowie eine Anwendung bereitgestellt, die mit diesen beiden Ressourcen verwendet werden kann. In diesem Dokument werden sämtliche Schritte in Azure Cloud Shell ausgeführt. (Die Terraform-Tools sind in Azure Cloud Shell vorinstalliert.) Wenn Sie das Beispiel auf Ihrem eigenen System durchgehen möchten, finden Sie [hier](../virtual-machines/linux/terraform-install-configure.md) eine Installationsanleitung für Terraform.
+In diesem Beispiel erfahren Sie, wie Sie eine Terraform-Konfiguration erstellen und diese Konfiguration in Azure bereitstellen. Am Ende des Beispiels haben Sie eine Azure Cosmos DB-Instanz, eine Azure-Containerinstanz sowie eine Anwendung bereitgestellt, die mit diesen beiden Ressourcen verwendet werden kann. In diesem Dokument werden sämtliche Schritte in Azure Cloud Shell ausgeführt. (Die Terraform-Tools sind in Azure Cloud Shell vorinstalliert.) Wenn Sie das Beispiel auf Ihrem eigenen System durchgehen möchten, finden Sie [hier](../virtual-machines/linux/terraform-install-configure.md) eine Installationsanleitung für Terraform.
 
 ## <a name="create-first-configuration"></a>Erstellen der ersten Konfiguration
 

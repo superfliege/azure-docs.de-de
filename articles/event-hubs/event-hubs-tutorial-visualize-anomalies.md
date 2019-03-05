@@ -8,13 +8,13 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.openlocfilehash: 5f9af39616e45983a7ec592f33c3f2ffd34ea34f
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.date: 02/26/2019
+ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233403"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888660"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -324,6 +324,8 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten**, **Jetzt** und dann erne
 
     ![Screenshot: Angeben des Titels und Untertitels für die Dashboardkachel](./media/event-hubs-tutorial-visualize-anomalies/power-bi-tile-details.png)
 
+    > [!IMPORTANT]
+    > Wenn Sie die Beispielanwendung ausführen und Daten an den Event Hub streamen, ändert sich die Zahl auf dieser Kachel schnell (sekündlich). Der Grund dafür ist, dass die Stream Analytics-Abfrage den Wert tatsächlich **jede Sekunde** aktualisiert. Aktualisieren Sie die Abfrage, sodass ein rollierendes Fenster von 3 Minuten verwendet wird, um die Summe der letzten Minuten anzuzeigen. 
 11. Fügen Sie eine weitere Visualisierung hinzu. Wiederholen Sie die ersten Schritte:
 
    * Klicken Sie auf **Kachel hinzufügen**.

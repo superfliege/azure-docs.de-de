@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a494e403b8afa1424640ac2e24d0f832b3de02dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 89b264c35d7dc269252a156aad6a24a565dbd6ea
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210610"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872675"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>Tutorial: Azure Active Directory-Integration mit Apex Portal
 
@@ -217,8 +217,8 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 In diesem Abschnitt wird in Apex Portal ein Benutzer namens Britta Simon erstellt. Apex Portal unterstützt die Just-in-Time-Benutzerbereitstellung, die standardmäßig aktiviert ist. Für Sie steht in diesem Abschnitt kein Aktionselement zur Verfügung. Ist ein Benutzer noch nicht in Apex Portal vorhanden, wird nach der Authentifizierung ein neuer Benutzer erstellt.
 
-> [!NOTE]
-> Wenn Sie einen Benutzer manuell erstellen müssen, müssen Sie sich an das [Apex Portal-Supportteam wenden](mailto:support@apexanalytix.com).
+> [!NOTE]
+> Wenn Sie einen Benutzer manuell erstellen müssen, müssen Sie sich an das  [Apex Portal-Supportteam](mailto:support@apexanalytix.com) wenden.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
@@ -228,7 +228,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „Apex Portal“ klicken, sollten Si
 
 ## <a name="additional-resources"></a>Weitere Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 

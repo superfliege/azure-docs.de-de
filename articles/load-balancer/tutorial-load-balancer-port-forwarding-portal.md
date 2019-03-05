@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/18
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: da41b33f3e5d24c0391c8486d9c0b372877eff21
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 6cb9e839b1fffd29ce1d78e82fb4ab054b92efc6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232191"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959124"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Tutorial: Konfigurieren der Portweiterleitung im Azure Load Balancer mit dem Portal
 
@@ -44,25 +44,26 @@ Melden Sie sich für alle Schritte in diesem Tutorial im Azure-Portal unter [htt
 
 Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Standard“, der den Datenverkehr über virtuelle Computer ausgleichen kann. Ein Load Balancer im Tarif „Standard“ unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Tarif „Standard“ erstellen, müssen Sie dafür auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Lastenausgleichs-Front-End konfiguriert und standardmäßig als **LoadBalancerFrontend** benannt ist. 
 
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-   
-1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
-   
-   - **Name**: Geben Sie *MyLoadBalancer* ein.
-   - **Typ**: Wählen Sie **Öffentlich** aus. 
-   - **SKU**: Wählen Sie **Standard** aus.
-   - **Öffentliche IP-Adresse**: Wählen Sie **Neu erstellen** aus, und geben Sie *MyPublicIP* in das Textfeld ein.
-   - **Konfigurieren der öffentlichen IP-Adresse** > **Verfügbarkeitszone**: Wählen Sie **Zonenredundant** aus.
-   - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *MyResourceGroupLB* ein, und wählen Sie anschließend **OK** aus. 
-   - **Standort**: Wählen Sie **Europa, Westen** aus. 
-     
-     >[!NOTE]
-     >Stellen Sie sicher, dass Sie Ihren Load Balancer und alle seine Ressourcen an einem Standort erstellen, der Verfügbarkeitszonen unterstützt. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen unterstützen](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
-   
-1. Klicken Sie auf **Erstellen**.
-   
-![Einrichten eines Load Balancers](./media/tutorial-load-balancer-port-forwarding-portal/1-load-balancer.png)
+1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | NAME                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Standard** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
+     
+    >[!NOTE]
+     >Stellen Sie sicher, dass Sie Ihren Load Balancer und alle seine Ressourcen an einem Standort erstellen, der Verfügbarkeitszonen unterstützt. Weitere Informationen siehe [Regionen, die Verfügbarkeitszonen unterstützen](../availability-zones/az-overview.md#regions-that-support-availability-zones). 
+
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.  
+  
 ## <a name="create-and-configure-back-end-servers"></a>Erstellen und Konfigurieren von Back-End-Servern
 
 Erstellen Sie ein virtuelles Netzwerk mit zwei virtuellen Computern, und fügen Sie die VMs dem Back-End-Pool Ihres Load Balancers hinzu. 

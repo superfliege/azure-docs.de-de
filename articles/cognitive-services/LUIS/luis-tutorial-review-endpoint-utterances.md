@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 88ac9f07fb8791ca3d64123663b0380a56220cdd
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 25841971a2e7921c89c63032e8fd48bc528263aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865951"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878171"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Tutorial: Beheben unsicherer Vorhersagen durch Überprüfung von Endpunktäußerungen
 In diesem Tutorial verbessern Sie App-Vorhersagen, indem Sie die über den LUIS-HTTPS-Endpunkt erhaltenen Äußerungen, bei denen LUIS unsicher ist, überprüfen bzw. korrigieren. Bei einigen Äußerungen kann eine Überprüfung hinsichtlich der Absicht und bei anderen eine Überprüfung hinsichtlich der Entität erforderlich sein. Sie sollten Endpunktäußerungen regelmäßig im Rahmen der geplanten LUIS-Wartung überprüfen. 
@@ -50,11 +50,13 @@ Führen Sie die folgenden Schritte aus:
 
 1.  Laden Sie die [App-JSON-Datei](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json) herunter, und speichern Sie sie.
 
-2. Importieren Sie den JSON-Code in eine neue App.
+1. Importieren Sie den JSON-Code in eine neue App.
 
-3. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `review`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
+1. Klonen Sie die Version von der Registerkarte **Versionen** aus dem Abschnitt **Verwalten**, und geben Sie ihr den Namen `review`. Durch Klonen können Sie ohne Auswirkungen auf die ursprüngliche Version mit verschiedenen Features von LUIS experimentieren. Da der Versionsname als Teil der URL-Route verwendet wird, darf er keine Zeichen enthalten, die in einer URL ungültig sind.
 
-    Wenn Sie dieses Tutorial mit einer neuen, importierten App verwenden, müssen Sie auch das Trainieren und Veröffentlichen durchführen und die Äußerungen dem Endpunkt mit einem [Skript](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) oder in einem Browser vom Endpunkt hinzufügen. Fügen Sie die folgenden Äußerungen hinzu:
+1. Trainieren und veröffentlichen Sie die neue App.
+
+1. Verwenden Sie den Endpunkt, um die folgenden Äußerungen hinzuzufügen. Dies ist entweder mit einem [Skript](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) oder über den Endpunkt in einem Browser möglich. Fügen Sie die folgenden Äußerungen hinzu:
 
    [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
 
@@ -64,13 +66,13 @@ Führen Sie die folgenden Schritte aus:
 
 1. [!INCLUDE [Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wählen Sie im linken Navigationsbereich die Option **Review endpoint utterances** (Endpunktäußerungen überprüfen). Die Liste wird für die Absicht **ApplyForJob** gefiltert. 
+1. Wählen Sie im linken Navigationsbereich die Option **Review endpoint utterances** (Endpunktäußerungen überprüfen). Die Liste wird für die Absicht **ApplyForJob** gefiltert. 
 
-    [ ![Screenshot: Schaltfläche „Review endpoint utterances“ (Endpunktäußerungen überprüfen) im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
+    [![Screenshot: Schaltfläche „Review endpoint utterances“ (Endpunktäußerungen überprüfen) im linken Navigationsbereich](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
-3. Schalten Sie **Entities view** (Entitätsansicht) um, um die bezeichneten Entitäten anzuzeigen. 
+1. Schalten Sie **Entities view** (Entitätsansicht) um, um die bezeichneten Entitäten anzuzeigen. 
     
-    [ ![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit hervorgehobenem Umschalter „Entities view“ (Entitätsansicht)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
+    [![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit hervorgehobenem Umschalter „Entities view“ (Entitätsansicht)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |Äußerung|Richtige Absicht|Fehlende Entitäten|
     |:--|:--|:--|
@@ -78,29 +80,29 @@ Führen Sie die folgenden Schritte aus:
 
     Diese Äußerung weist nicht die richtige Absicht auf und hat eine Bewertung von weniger als 50%. Die Absicht **ApplyForJob** verfügt über 21 Äußerungen, während für **GetJobInformation** nur sieben Äußerungen vorhanden sind. Zusätzlich zum richtigen Zuordnen der Endpunktäußerung sollten der Absicht **GetJobInformation** weitere Äußerungen hinzugefügt werden. Diese Übung können Sie selbstständig durchführen. Alle Absichten, mit Ausnahme von **None** (Keine), sollten ungefähr über die gleiche Anzahl von Beispieläußerungen verfügen. Die Absicht **None** (Keine) sollte etwa 10% der gesamten Äußerungen in der App aufweisen. 
 
-4. Wählen Sie für die Absicht `I'm looking for a job with Natual Language Processing` die richtige Absicht **GetJobInformation** in der Spalte **Aligned intent** (Zugeordnete Absicht) aus. 
+1. Wählen Sie für die Absicht `I'm looking for a job with Natual Language Processing` die richtige Absicht **GetJobInformation** in der Spalte **Aligned intent** (Zugeordnete Absicht) aus. 
 
-    [ ![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit Zuordnung der Äußerung zur Absicht](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
+    [![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) mit Zuordnung der Äußerung zur Absicht](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png)](./media/luis-tutorial-review-endpoint-utterances/align-intent-1.png#lightbox)
 
-5. In derselben Äußerung lautet die Entität für `Natural Language Processing` „keyPhrase“. Dies sollte stattdessen eine **Job**-Entität sein. Wählen Sie `Natural Language Processing` und dann in der Liste die **Job**-Entität aus.
+1. In derselben Äußerung lautet die Entität für `Natural Language Processing` „keyPhrase“. Dies sollte stattdessen eine **Job**-Entität sein. Wählen Sie `Natural Language Processing` und dann in der Liste die **Job**-Entität aus.
 
-    [ ![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) – Bezeichnen der Entität in der Äußerung](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
+    [![Screenshot: „Review endpoint utterances“ (Endpunktäußerungen überprüfen) – Bezeichnen der Entität in der Äußerung](./media/luis-tutorial-review-endpoint-utterances/label-entity.png)](./media/luis-tutorial-review-endpoint-utterances/label-entity.png#lightbox)
 
-6. Wählen Sie in derselben Zeile den Kreis mit dem Häkchen in der Spalte **Add to aligned intent** (Zugeordneter Absicht hinzufügen). 
+1. Wählen Sie in derselben Zeile den Kreis mit dem Häkchen in der Spalte **Add to aligned intent** (Zugeordneter Absicht hinzufügen). 
 
-    [ ![Screenshot: Abschließen der Äußerungszuordnung in der Absicht](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
+    [![Screenshot: Abschließen der Äußerungszuordnung in der Absicht](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png)](./media/luis-tutorial-review-endpoint-utterances/align-utterance.png#lightbox)
 
     Mit dieser Aktion wird die Äußerung aus **Review endpoint utterances** (Endpunktäußerungen überprüfen) in die Absicht **GetJobInformation** verschoben. Die Endpunktäußerung ist jetzt eine Beispieläußerung für diese Absicht. 
 
-7. Überprüfen Sie die restlichen Äußerungen dieser Absicht, bezeichnen Sie die Äußerungen, und korrigieren Sie die zugeordnete Absicht (**Aligned intent**), falls dies erforderlich ist.
+1. Überprüfen Sie die restlichen Äußerungen dieser Absicht, bezeichnen Sie die Äußerungen, und korrigieren Sie die zugeordnete Absicht (**Aligned intent**), falls dies erforderlich ist.
 
-8. Wenn alle Äußerungen korrekt sind, können Sie das Kontrollkästchen in den einzelnen Zeilen aktivieren und dann die Option **Add selected** (Ausgewählte hinzufügen) wählen, um die Äußerungen richtig auszurichten. 
+1. Wenn alle Äußerungen korrekt sind, können Sie das Kontrollkästchen in den einzelnen Zeilen aktivieren und dann die Option **Add selected** (Ausgewählte hinzufügen) wählen, um die Äußerungen richtig auszurichten. 
 
-    [ ![Screenshot: Abschließen der restlichen Äußerungen in Bezug auf die zugeordnete Absicht](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
+    [![Screenshot: Abschließen der restlichen Äußerungen in Bezug auf die zugeordnete Absicht](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. Die Liste sollte diese Äußerungen nicht mehr enthalten. Falls weitere Äußerungen angezeigt werden, können Sie die Liste weiter durcharbeiten, Absichten korrigieren und alle fehlenden Entitäten bezeichnen, bis die Liste leer ist. 
+1. Die Liste sollte diese Äußerungen nicht mehr enthalten. Falls weitere Äußerungen angezeigt werden, können Sie die Liste weiter durcharbeiten, Absichten korrigieren und alle fehlenden Entitäten bezeichnen, bis die Liste leer ist. 
 
-10. Wählen Sie in der Liste „Filter“ die nächste Absicht aus, und fahren Sie dann mit dem Korrigieren von Äußerungen und dem Bezeichnen von Entitäten fort. Beachten Sie, dass der letzte Schritt für eine Absicht jeweils entweder das Auswählen von **Add to aligned intent** (Zugeordneter Absicht hinzufügen) in der Zeile mit der Äußerung oder das Aktivieren des Kontrollkästchens für jede Absicht und Auswählen von **Add selected** (Ausgewählte auswählen) oberhalb der Tabelle ist.
+1. Wählen Sie in der Liste „Filter“ die nächste Absicht aus, und fahren Sie dann mit dem Korrigieren von Äußerungen und dem Bezeichnen von Entitäten fort. Beachten Sie, dass der letzte Schritt für eine Absicht jeweils entweder das Auswählen von **Add to aligned intent** (Zugeordneter Absicht hinzufügen) in der Zeile mit der Äußerung oder das Aktivieren des Kontrollkästchens für jede Absicht und Auswählen von **Add selected** (Ausgewählte auswählen) oberhalb der Tabelle ist.
 
     Setzen Sie diese Vorgehensweise fort, bis alle Absichten und Entitäten in der Filterliste eine leere Liste aufweisen. Dies ist eine sehr kleine App. Der Überprüfungsprozess dauert nur wenige Minuten. 
 

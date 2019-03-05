@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: e4e4c9ae764e1278251c01d41a0617ed2e88e439
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4ebc9b83c3aa135c90f18ff982621e862cb01d72
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242313"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56879610"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Was ist mit der Azure Machine Learning Workbench geschehen?
 
@@ -60,7 +60,7 @@ Ausführungsverläufe heißen jetzt **Experimente**. Sie können die Experimente
 
 Das Arbeitsbereich-Dashboard im Portal wird nur in den Browsern Microsoft Edge, Chrome und Firefox unterstützt:
 
-[ ![Onlineportal](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
+[![Onlineportal](./media/overview-what-happened-to-workbench/image001.png)] (./media/overview-what-happened-to-workbench/image001.png#lightbox)
 
 Beginnen Sie, Ihre Modelle mithilfe des neuen CLIs und SDKs zu trainieren und ihre Ausführungsverläufe mit diesen nachzuverfolgen. Wie das geht, können Sie mit dem [Tutorial: Trainieren von Modellen mit Azure Machine Learning Service](tutorial-train-models-with-aml.md) lernen.
 
@@ -109,7 +109,7 @@ Wenn Sie das neue Python SDK in der neuesten Version verwenden, können Sie mit 
 
 In dieser aktuellen Version wurde die Erweiterung in Azure Machine Learning für Visual Studio Code umbenannt sowie erweitert und verbessert, um die zuvor genannten neuen Features zu unterstützen.
 
-[ ![Azure Machine Learning für Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
+[![Azure Machine Learning für Visual Studio Code](./media/overview-what-happened-to-workbench/vscode.png)] (./media/overview-what-happened-to-workbench/vscode-big.png#lightbox)
 
 ## <a name="what-about-domain-packages"></a>Was ist über Domänenpakete zu sagen?
 

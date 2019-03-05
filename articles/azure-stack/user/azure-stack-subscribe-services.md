@@ -13,23 +13,23 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 11/13/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: efemmano
 ms.lastreviewed: 11/13/2018
-ms.openlocfilehash: 66c462dee3a2940a7a090101ffb9cec7e4ff1e7c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 431c31b39103e5ef21cb83b388167cab57e0c129
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981281"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56649083"
 ---
 # <a name="tutorial-create-and-test-a-subscription"></a>Tutorial: Erstellen und Testen eines Abonnements
 
 In diesem Tutorial erfahren Sie, wie Sie ein Abonnement mit einem Angebot erstellen und es anschließend testen. Für den Test melden Sie sich beim Azure Stack-Benutzerportal als Cloudadministrator an, abonnieren das Angebot und erstellen dann einen virtuellen Computer.
 
 > [!TIP]
-> Für eine komplexere Evaluierung können Sie [ein Abonnement für einen bestimmten Benutzer erstellen](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) und sich dann als dieser Benutzer beim Benutzerportal anmelden. 
+> Für eine komplexere Evaluierung können Sie [ein Abonnement für einen bestimmten Benutzer erstellen](../azure-stack-subscribe-plan-provision-vm.md#create-a-subscription-as-a-cloud-operator) und sich dann als dieser Benutzer beim Benutzerportal anmelden.
 
 In diesem Tutorial erfahren Sie, wie Sie ein Azure Stack-Angebot abonnieren.
 
@@ -60,10 +60,10 @@ Wenn Sie als Benutzer ein Angebot abonnieren möchten, müssen Sie sich beim Azu
 
 ## <a name="test-the-offer"></a>Testen des Angebots
 
-Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, indem Sie einen virtuellen Computer bereitstellen, der die Funktionen des neuen Abonnements verwendet. 
+Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, indem Sie einen virtuellen Computer bereitstellen, der die Funktionen des neuen Abonnements verwendet.
 
 > [!NOTE]
-> Dieser Test setzt voraus, dass dem Azure Stack-Marketplace ein virtueller Windows Server 2016 Datacenter-Computer hinzugefügt wurde. 
+> Dieser Test setzt voraus, dass dem Azure Stack-Marketplace ein virtueller Windows Server 2016 Datacenter-Computer hinzugefügt wurde.
 
 1. Melden Sie sich am Benutzerportal an.
 
@@ -84,7 +84,6 @@ Wenn Sie beim Benutzerportal angemeldet sind, können Sie das Angebot testen, in
 > [!NOTE]
 > Die Bereitstellung des virtuellen Computers dauert einige Minuten.
 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Tutorial haben Sie Folgendes gelernt:
@@ -92,7 +91,6 @@ In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
 > * Abonnieren von Angeboten 
 > * Testen des Angebots
-
 
 > [!div class="nextstepaction"]
 > [Tutorial: create a VM using a community template](azure-stack-create-vm-template.md) (Erstellen eines virtuellen Computers über eine Communityvorlage)

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 69c9a6d2d059ffbac5fe3e0ddb103eaec51123c3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: fa6d2b7d1fbd99e482cc013720c39b4b150f6742
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54264019"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889544"
 ---
 # <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe des Azure-Portals
 Microsoft Azure Service Bus ist ein Nachrichtenbroker für die Unternehmensintegration, der sicheres Messaging und absolute Zuverlässigkeit bietet. Ein typisches Service Bus-Szenario umfasst normalerweise die Entkopplung von zwei oder mehr Anwendungen, Diensten oder Prozessen und die Übertragung von Zustands- oder Datenänderungen. Szenarien dieser Art können die Planung mehrerer Batchaufträge in einer anderen Anwendung oder einem Dienst oder die Auslösung der Auftragsabwicklung umfassen. Beispielsweise kann es sein, dass ein Einzelhandelsunternehmen seine Point-of-Sale-Daten an ein Backoffice oder regionales Verteilungszentrum sendet, um den Bestand auffüllen bzw. aktualisieren zu lassen. Bei diesem Szenario sendet die Client-App Nachrichten an eine Service Bus-Warteschlange und empfängt Nachrichten von dieser Warteschlange.  
@@ -33,46 +33,9 @@ Damit Sie dieses Tutorial ausführen können, müssen folgende Komponenten insta
 - [Visual Studio 2017 Update 3 (Version 15.3, 26730.01)](https://www.visualstudio.com/vs) oder höher
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) ab Version 2.0
 
-## <a name="log-on-to-the-azure-portal"></a>Anmelden am Azure-Portal
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Beginnen Sie im [Azure-Portal][Azure portal], und melden Sie sich mit Ihrem Azure-Abonnement an. Der erste Schritt ist die Erstellung eines Service Bus-Namespace vom Typ **Messaging**.
-
-## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
-
-Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [vollqualifizierten Domänennamen][] verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
-2. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-3. Wählen Sie den Tarif („Standard“ oder „Premium“) aus, nachdem Sie sichergestellt haben, dass der Name verfügbar ist.
-4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-5. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
-6. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
-7. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
-
-![Namespace](./media/service-bus-quickstart-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
-
-Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit denen Sie jeweils die volle Kontrolle über sämtliche Aspekte des Namespace haben. Führen Sie diese Schritte aus, um die erste Regel zu kopieren: 
-
-1.  Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
-2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
-3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
-4. Klicken Sie im Fenster **Richtlinie: RootManageSharedAccessKey** neben **Primäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein. 
-
-    ![connection-string][connection-string]
-5. Wiederholen Sie den vorherigen Schritt, um den Wert von **Primärschlüssel** zu kopieren und zur späteren Verwendung an einem temporären Speicherort einzufügen.
-
-## <a name="create-a-queue"></a>Erstellen einer Warteschlange
-
-Geben Sie zum Erstellen einer Service Bus-Warteschlange den Namespace an, unter dem die Erstellung erfolgen soll. Im folgenden Beispiel wird veranschaulicht, wie Sie im Portal eine Warteschlange erstellen:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Wird **Service Bus** nicht angezeigt, klicken Sie auf **More services** (Weitere Dienste)).
-2. Klicken Sie auf den Namespace, in dem die Warteschlange erstellt werden soll.
-3. Klicken Sie im Namespacefenster auf **Warteschlangen** und dann im Fenster **Warteschlangen** auf **+ Warteschlange**.
-4. Geben Sie den **Warteschlangennamen** ein, und lassen Sie die anderen Werte unverändert.
-5. Klicken Sie unten im Fenster auf **Erstellen**.
-6. Notieren Sie sich den Warteschlangennamen.
+[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
 
 ## <a name="send-and-receive-messages"></a>Senden und Empfangen von Nachrichten
 
@@ -82,28 +45,22 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
 
 1. Klonen Sie das [Service Bus-GitHub-Repository](https://github.com/Azure/azure-service-bus/), indem Sie den folgenden Befehl ausführen:
 
-   ```shell
+   ```
    git clone https://github.com/Azure/azure-service-bus.git
    ```
-
 3. Navigieren Sie zum Beispielordner `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
-
-4. Kopieren Sie die Verbindungszeichenfolge und den Warteschlangennamen, den Sie im Abschnitt [Abrufen der Verwaltungsanmeldeinformationen](#obtain-the-management-credentials) beschafft haben.
-
+4. Kopieren Sie die Verbindungszeichenfolge und den Warteschlangennamen, den Sie im Abschnitt „Abrufen der Verwaltungsanmeldeinformationen“ beschafft haben.
 5.  Geben Sie an einer Eingabeaufforderung den folgenden Befehl ein:
 
-   ```shell
-   dotnet build
-   ```
-
+    ```
+    dotnet build
+    ```
 6.  Navigieren Sie zum Ordner `bin\Debug\netcoreapp2.0`.
-
 7.  Geben Sie den folgenden Befehl ein, um das Programm auszuführen. Ersetzen Sie `myConnectionString` durch den zuvor abgerufenen Wert und `myQueueName` durch den Namen der von Ihnen erstellten Warteschlange:
 
-   ```shell
-   dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
-   ``` 
-
+    ```shell
+    dotnet BasicSendReceiveQuickStart.dll -ConnectionString "myConnectionString" -QueueName "myQueueName"
+    ``` 
 8. Verfolgen Sie, wie zehn Nachrichten an die Warteschlange gesendet und anschließend von der Warteschlange empfangen werden:
 
    ![Programmausgabe](./media/service-bus-quickstart-portal/dotnet.png)
@@ -254,8 +211,7 @@ In diesem Artikel haben Sie einen Service Bus-Namespace und weitere erforderlich
 
 
 [kostenloses Konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[vollqualifizierten Domänennamen]: https://wikipedia.org/wiki/Fully_qualified_domain_name
+[fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name
 [Azure portal]: https://portal.azure.com/
 
-[connection-string]: ./media/service-bus-quickstart-portal/connection-string.png
 [service-bus-flow]: ./media/service-bus-quickstart-portal/service-bus-flow.png

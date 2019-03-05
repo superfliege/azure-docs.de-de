@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2018
+ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 1395c79b9c39d7376f39446eac6da8ee80b2ef18
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 97d1cf2817ebfbf2eb1a6ba5a4d20d457b6369c6
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232667"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961736"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Standard“ für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -40,21 +40,20 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 In diesem Abschnitt erstellen Sie einen öffentlichen Load Balancer für den Lastenausgleich virtueller Computer. Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Standard-Tarif erstellen, müssen Sie für diesen auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupSLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
-    | Typ          | Öffentlich                                        |
-    | SKU           | Standard                          |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**, und geben Sie *myPublicIP* in das Textfeld ein. Für die öffentliche IP-Adresse ist standardmäßig die Standard-SKU ausgewählt. Wählen Sie für **Verfügbarkeitszone** die Option **Zonenredundant** aus. |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |
-    |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroupSLB* ein.    |
-    | Standort           | Wählen Sie **Europa, Westen** aus.                          |
-    
-
-![Einrichten eines Load Balancers](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Standard** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
@@ -84,7 +83,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie zwei virtuelle C
         2. Geben Sie auf der Seite **Netzwerksicherheitsgruppe erstellen** als **Name** den Namen *myNetworkSecurityGroup* ein, und klicken Sie auf **OK**.
 5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
 6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
-7. Erstellen Sie anhand der Schritte 1 bis 6 einen zweiten virtuellen Computer namens *VM2* mit *myAvailabilityset* als Verfügbarkeitsgruppe, *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe. 
+7. Erstellen Sie mit den Schritten 1 bis 6 einen weiteren virtuellen Computer namens *VM2* mit *myVnet* als virtuellem Netzwerk, *myBackendSubnet* als Subnetz und *myNetworkSecurityGroup* als Netzwerksicherheitsgruppe. 
 
 ### <a name="create-nsg-rule"></a>Erstellen der NSG-Regel
 

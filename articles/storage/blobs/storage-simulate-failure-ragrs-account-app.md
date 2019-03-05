@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 01/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2d86c0c4838fb2ae9d839e64a067824019133d8b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 0cbb4d2bc6449dc1cf12a374085b429743224995
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54024432"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872878"
 ---
 # <a name="tutorial-simulate-a-failure-in-accessing-read-access-redundant-storage"></a>Tutorial: Simulieren eines Fehlers bei Zugriff auf redundanten Speicher mit Lesezugriff
 
@@ -75,7 +75,7 @@ Wählen Sie anschließend **File** (Datei) und dann **Save** (Speichern) aus, um
 
 ### <a name="interrupting-the-application"></a>Unterbrechen der Anwendung
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Führen Sie die Anwendung in Ihrer integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) oder in einer Shell aus.
 
@@ -83,7 +83,7 @@ Drücken Sie im Konsolenfenster **eine Taste**, um die Anwendung anzuhalten, wä
 
 ![Szenario-App](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Führen Sie die Anwendung in Ihrer integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) oder in einer Shell aus.
 
@@ -113,7 +113,7 @@ Heben Sie die Auskommentierung der folgenden Zeilen auf, und ersetzen Sie `STORA
          }
 ```
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Drücken Sie zum Fortsetzen der Anwendung eine **beliebige Taste**.
 
@@ -123,7 +123,7 @@ Hierbei handelt es sich um das Muster [Trennschalter](https://docs.microsoft.com
 
 ![Einfügen einer benutzerdefinierten Regel](media/storage-simulate-failure-ragrs-account-app/figure3.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Nachdem Sie den Fehler eingeleitet haben, geben Sie **G** ein, um ihn zu testen.
 
@@ -133,7 +133,7 @@ Sie werden darüber informiert, dass die sekundäre Pipeline anstelle der primä
 
 ### <a name="simulate-primary-endpoint-restoration"></a>Simulieren der Wiederherstellung des primären Endpunkts
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Durch die benutzerdefinierte Regel, die Sie im vorherigen Schritt in Fiddler festgelegt haben, treten beim Senden von Anforderungen an den primären Endpunkt Fehler auf.
 
@@ -153,7 +153,7 @@ Drücken Sie anschließend zum Fortsetzen der Anwendung **eine Taste**. Die Anwe
 
 ![Fortsetzen der Anwendung](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Durch die benutzerdefinierte Regel, die Sie im vorherigen Schritt in Fiddler festgelegt haben, treten beim Senden von Anforderungen an den primären Endpunkt Fehler auf.
 
@@ -173,11 +173,11 @@ Sie können eine ungültige statische Route für alle Anforderungen an den prim�
 
 ### <a name="start-and-pause-the-application"></a>Starten und Anhalten der Anwendung
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Führen Sie die Anwendung in Ihrer integrierten Entwicklungsumgebung (Integrated Development Environment, IDE) oder in einer Shell aus. Drücken Sie im Konsolenfenster **eine Taste**, um die Anwendung anzuhalten, während diese aus dem primären Endpunkt liest.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Da Sie das Beispiel steuern, müssen Sie es nicht unterbrechen, um den Fehler zu testen.
 
@@ -210,13 +210,13 @@ Geben Sie den folgenden Befehl an einer Windows-Eingabeaufforderung oder einem L
 
 Ersetzen Sie `<destination_ip>` durch die IP-Adresse Ihres Speicherkontos und `<gateway_ip>` durch die IP-Adresse Ihres lokalen Hosts.
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Drücken Sie zum Fortsetzen der Anwendung eine **beliebige Taste**.
 
 Sobald die Anwendung erneut gestartet wird, treten beim Senden von Anforderungen an den primären Endpunkt Fehler auf. Die Anwendung versucht fünfmal, erneut eine Verbindung mit dem primären Endpunkt herzustellen. Wenn der Verbindungsaufbau mehr als fünfmal scheitert, fordert die Anwendung das Bild vom sekundären Endpunkt an, der schreibgeschützt ist. Nachdem die Anwendung das Bild erfolgreich 20 Mal vom sekundären Endpunkt abgerufen hat, versucht sie, eine Verbindung mit dem primären Endpunkt herzustellen. Wenn dieser weiterhin nicht erreichbar ist, beginnt die Anwendung erneut mit dem Lesen aus dem sekundären Endpunkt. Hierbei handelt es sich um das Muster [Trennschalter](/azure/architecture/patterns/circuit-breaker) (Circuit Breaker), das im vorherigen Tutorial beschrieben wurde.
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Nachdem Sie den Fehler eingeleitet haben, geben Sie **G** ein, um ihn zu testen. Sie werden darüber informiert, dass die sekundäre Pipeline anstelle der primären Pipeline verwendet wird.
 
@@ -236,14 +236,14 @@ Geben Sie den folgenden Befehl an einer Windows-Eingabeaufforderung oder in eine
 
 `route delete <destination_ip>`
 
-# <a name="net-python-and-java-v7-tabdotnet-python-java-v7"></a>[.NET, Python und Java v7] (#tab/dotnet-python-java-v7)
+# <a name="net-python-and-java-v7tabdotnet-python-java-v7"></a>[.NET, Python und Java v7](#tab/dotnet-python-java-v7)
 
 Drücken Sie eine **beliebige Taste**, um die Ausführung der Anwendung fortzusetzen. Die Anwendung liest nun erneut aus dem primären Endpunkt, bis 999 Lesevorgänge erfasst wurden.
 
 ![Fortsetzen der Anwendung](media/storage-simulate-failure-ragrs-account-app/figure4.png)
 
 
-# <a name="java-v10-tabjava-v10"></a>[Java v10] (#tab/Java-v10)
+# <a name="java-v10tabjava-v10"></a>[Java v10](#tab/Java-v10)
 
 Geben Sie **G** ein, um den Download zu testen. Die Anwendung meldet, dass sie jetzt wieder die primäre Pipeline verwendet.
 

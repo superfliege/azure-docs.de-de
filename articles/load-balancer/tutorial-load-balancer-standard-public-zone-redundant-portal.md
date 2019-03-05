@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: e83991f553d00af11cfc275137f8e73ebab2098c
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56882636"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56982792"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -50,16 +50,20 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie beim Erstellen des Load Balancers eine neue öffentliche IP-Adresse erstellen, erfolgt automatisch eine Konfiguration mit der SKU „Standard“, und darüber hinaus ist der Load Balancer auch automatisch zonenredundant.
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Load Balancer ein:
-    - *myLoadBalancer*: Name des Load Balancers
-    - **Öffentlich**: Typ des Loac Balancers
-     - *myPublicIP*: Für die neue öffentliche IP-Adresse, die Sie erstellen. Klicken Sie hierfür auf **Öffentliche IP-Adresse auswählen** und dann auf **Neue erstellen**. Wählen Sie für den Namenstyp *myPublicIP* die SKU „Standard“ und **Zonenredundant** für **Verfügbarkeitszone** aus.
-    - *myResourceGroupLBAZ*: Für den Namen der neuen Ressourcengruppe, die Sie erstellen.
-    - **westeurope**: Standort
-3. Klicken Sie auf **Erstellen**, um den Load Balancer zu erstellen.
-   
-    ![Einrichten eines Load Balancers](./media/load-balancer-standard-public-availability-zones-portal/1a-load-balancer.png)
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLBAZ* in das Textfeld ein.|
+    | NAME                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Standard** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
+   
 
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 

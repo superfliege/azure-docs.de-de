@@ -11,12 +11,12 @@ ms.service: automation
 ms.subservice: change-inventory-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: ffa14e3fb3fd41d6a30e1cf30713b26d7ecd255a
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 2cce925f4b3e1acc6c93019615b81983a5c95f6f
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436011"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56815891"
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Ermitteln der Software, die auf Ihren Azure-Computern und anderen Computern installiert ist
 
@@ -58,8 +58,10 @@ Konfigurieren Sie den gewünschten Standort, den Log Analytics-Arbeitsbereich un
 Mit einem [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json)-Arbeitsbereich werden Daten gesammelt, die von Features und Diensten wie der Bestandsfunktion generiert werden.
 Der Arbeitsbereich ist ein zentraler Ort zum Überprüfen und Analysieren von Daten aus mehreren Quellen.
 
+[!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
 Das Aktivieren der Lösung kann bis zu 15 Minuten dauern. Während dieses Zeitraums sollten Sie das Browserfenster nicht schließen.
-Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Log Analytics angezeigt.
+Nachdem die Lösung aktiviert wurde, werden Informationen zur installierten Software und Änderungen der VM-Datenflüsse zu Azure Monitor-Protokollen angezeigt.
 Es kann zwischen 30 Minuten und 6 Stunden dauern, bis die Daten für die Analyse verfügbar sind.
 
 ## <a name="onboard-a-vm"></a>Integrieren eines virtuellen Computers
@@ -101,7 +103,7 @@ Wenn Sie beispielsweise nach „Contoso“ suchen, wird die gesamte Software zur
 
 ## <a name="search-inventory-logs-for-installed-software"></a>Durchsuchen von Bestandsprotokollen nach installierter Software
 
-Bei der Bestandsfunktion werden Protokolldaten generiert, die an Log Analytics gesendet werden. Um die Protokolle per Ausführung von Abfragen zu durchsuchen, klicken Sie oben im Fenster **Bestand** auf **Log Analytics**.
+Bei der Inventur werden Protokolldaten generiert, die an Azure Monitor-Protokolle gesendet werden. Um die Protokolle per Ausführung von Abfragen zu durchsuchen, klicken Sie oben im Fenster **Bestand** auf **Log Analytics**.
 
 Die Bestandsdaten werden unter dem Typ **ConfigurationData** gespeichert.
 Die folgende Log Analytics-Beispielabfrage gibt die Bestandsergebnisse zurück, bei denen der Herausgeber „Microsoft Corporation“ lautet.
@@ -113,11 +115,11 @@ ConfigurationData
 | summarize arg_max(TimeGenerated, *) by SoftwareName, Computer
 ```
 
-Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Log Analytics finden Sie unter [Azure Log Analytics](../azure-monitor/log-query/log-query-overview.md).
+Weitere Informationen zur Ausführung von Abfragen und zum Durchsuchen von Protokolldateien in Azure Monitor-Protokollen finden Sie unter [Azure Monitor-Protokolle](../azure-monitor/log-query/log-query-overview.md).
 
 ### <a name="single-machine-inventory"></a>Bestandsermittlung für einen einzelnen Computer
 
-Zum Anzeigen des Softwarebestands für einen einzelnen Computer können Sie über die Seite mit den Azure-VM-Ressourcen auf die Bestandsfunktion zugreifen oder Log Analytics zum Filtern nach dem entsprechenden Computer verwenden.
+Zum Anzeigen des Softwarebestands für einen einzelnen Computer können Sie über die Seite mit den Azure-VM-Ressourcen auf die Bestandsfunktion zugreifen oder Azure Monitor-Protokolle zum Filtern nach dem entsprechenden Computer verwenden.
 Mit der folgenden Log Analytics-Beispielabfrage wird eine Liste mit Software für einen Computer mit dem Namen ContosoVM zurückgegeben.
 
 ```loganalytics

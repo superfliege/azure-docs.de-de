@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/17/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 76e55c643378e689f12d485100a81ccefa4196f4
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 5f3b9b48fc5f15738c3de9928ca0bb220a66db12
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229811"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56985987"
 ---
 # <a name="tutorial-load-balance-vms-within-an-availability-zone-with-standard-load-balancer-by-using-the-azure-portal"></a>Tutorial: Durchführen eines Lastenausgleichs für virtuelle Computer innerhalb einer Verfügbarkeitszone mit Load Balancer Standard im Azure-Portal
 
@@ -48,18 +48,22 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 Für Load Balancer Standard wird nur eine öffentliche Standard-IP-Adresse unterstützt. Wenn Sie eine neue öffentliche IP-Adresse beim Erstellen des Lastenausgleichs erstellen, wird dieser automatisch als Version mit der SKU „Standard“ konfiguriert. Er ist automatisch auch zonenredundant.
 
 1. Wählen Sie oben links auf dem Bildschirm **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** folgende Werte für den Lastenausgleich ein:
-    - **myLoadBalancer**: Der Name für den Lastenausgleich.
-    - **Öffentlich**: Der Typ des Lastenausgleichs.
-      - **myPublicIPZonal**: Die neue öffentliche IP-Adresse, die Sie erstellen. Wählen Sie **Öffentliche IP-Adresse auswählen**. Klicken Sie anschließend auf **Neu erstellen**. Geben Sie **myPublicIP** als Namen ein. Für die SKU wird standardmäßig „Standard“ verwendet. Wählen Sie für **Verfügbarkeitszone** die Option **Zone 1**.
-    - **myResourceGroupZLB**: Der Name der neuen Ressourcengruppe, die Sie erstellen.
-    - **westeurope**. Dies ist der Standort.
-3. Wählen Sie **Erstellen**, um den Lastenausgleich zu erstellen.
-   
-    ![Erstellen einer Load Balancer Standard-Zoneninstanz mit dem Azure-Portal](./media/tutorial-load-balancer-standard-zonal-portal/create-load-balancer-zonal-frontend.png)
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
 
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupZLB* in das Textfeld ein.|
+    | NAME                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Standard** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    |Verfügbarkeitszone| Wählen Sie **1**.    |
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
 
-## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
+ ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk. Außerdem erstellen Sie zwei virtuelle Computer in der derselben Zone (Zone 1) für die Region, die dem Back-End-Pool Ihres Lastenausgleichs hinzugefügt werden. Anschließend installieren Sie IIS auf den virtuellen Computern, um das Testen des zonenredundanten Lastenausgleichs zu unterstützen. Wenn eine VM ausfällt, schlägt auch der Integritätstest für die VM in derselben Zone fehl. Der Datenverkehr wird von anderen VMs innerhalb derselben Zone bereitgestellt.
 

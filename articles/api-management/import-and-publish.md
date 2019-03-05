@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/24/2019
 ms.author: apimpm
-ms.openlocfilehash: 4173c0b26b2d176549d3a89cc6fdfa928b6cca5b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 0e104f4cbdef7edc5c109781509e3924400e5ba4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52963843"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56959730"
 ---
 # <a name="import-and-publish-your-first-api"></a>Importieren und Veröffentlichen Ihrer ersten API 
 
@@ -48,7 +48,7 @@ In diesem Tutorial lernen Sie Folgendes:
 In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifikation importieren und veröffentlichen.
  
 1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
-2. Wählen Sie in der Liste die Option **OpenAPI-Spezifikation** aus.
+2. Wählen Sie **OpenAPI-Spezifikation** in der Liste aus, und klicken Sie im Popupfenster auf **Vollständig**.
 
     ![Erstellen einer API](./media/api-management-get-started/create-api.png)
 
@@ -65,7 +65,8 @@ In diesem Abschnitt wird gezeigt, wie Sie eine Back-End-API mit OpenAPI-Spezifik
     | **URL-Schema**            | *HTTPS*                                            | Legt fest, welche Protokolle für den Zugriff auf die API verwendet werden können.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **API-URL-Suffix**        | *conference*                                       | Das Suffix wird an die Basis-URL für den API Management-Dienst angehängt. API Management unterscheidet APIs durch deren Suffix. Daher muss jede API eines bestimmten Herausgebers ein eindeutiges Suffix haben.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | **Produkte**              | *Unbegrenzt*                                        | Bei Produkten handelt es sich um API-Zuordnungen. Sie können ein Produkt mit einer Reihe von APIs versehen und sie Entwicklern über das Entwicklerportal zur Verfügung stellen. <br/>Zur Veröffentlichung einer API muss diese einem Produkt (in diesem Beispiel: *Unbegrenzt*) zugeordnet werden. Wenn Sie diese neue API einem Produkt hinzufügen möchten, geben Sie den Produktnamen ein. (Dieser Schritt kann auch später auf der Seite **Einstellungen** ausgeführt werden.) Dieser Schritt kann mehrfach wiederholt werden, um die API mehreren Produkten hinzuzufügen.<br/>Entwickler müssen ein Produkt zunächst abonnieren, um Zugriff auf die API zu erhalten. Wenn sie ein Produkt abonnieren, erhalten sie einen Abonnementschlüssel, der für jede API in diesem Produkt gilt. <br/> Wenn Sie die APIM-Instanz erstellt haben, sind Sie bereits Administrator und haben somit alle Produkte abonniert.<br/> Standardmäßig enthält jede API Management-Instanz zwei Beispielprodukte: **Starter** und **Unbegrenzt**. |
-    | Versionsverwaltung für diese API?         |                                                    | Weitere Informationen zur Versionsverwaltung finden Sie unter [Veröffentlichen mehrerer Versionen Ihrer API](api-management-get-started-publish-versions.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+    | **Tags**                  |                                                    | Tags zum Organisieren von APIs. Tags können zum Suchen, Gruppieren oder Filtern verwendet werden.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+    | **Versionsverwaltung für diese API?**     |                                                    | Weitere Informationen zur Versionsverwaltung finden Sie unter [Veröffentlichen mehrerer Versionen Ihrer API](api-management-get-started-publish-versions.md).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
     >[!NOTE]
     > Zur Veröffentlichung der API muss sie einem Produkt zugeordnet werden. Dies ist auf der Seite **Einstellungen** möglich.

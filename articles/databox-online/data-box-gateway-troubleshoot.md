@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 02/26/2019
 ms.author: alkohli
-ms.openlocfilehash: d94e2db66c8c5dac2b4d8551ae34a07cd68fd635
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: e6042d9a1d6dc0e737fb4cf7e55d2c6938f9b0f4
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106975"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961044"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Behandeln von Problemen mit Azure Data Box Gateway 
 
@@ -103,6 +103,7 @@ Alle Fehler, die während der Upload- und Aktualisierungsprozesse aufgetreten si
     |    2006            |    ERROR_CLOUD_ACCOUNT_DISABLED                            |    In das Konto konnten keine Daten hochgeladen werden, da das Konto oder die Freigabe deaktiviert ist.                                                                                                                                                            |
     |    2007            |    ERROR_CLOUD_ACCOUNT_PERMISSIONS                         |    Mit dem Container konnte keine Verbindung hergestellt werden, da die Kontoberechtigungen entweder nicht korrekt oder nicht mehr aktuell sind. Überprüfen Sie Ihren Zugriff.                                                                                                               |
     |    2008            |    ERROR_CLOUD_CONTAINER_SIZE_LIMIT_REACHED                |    Es konnten keine neuen Daten hinzugefügt werden, da der Container voll ist. Überprüfen Sie die Azure-Spezifikationen für unterstützte Containergrößen unter Berücksichtigung des Typs. Azure Files unterstützt beispielsweise nur eine maximale Dateigröße von 5 TB.                                     |
+    |    2009            |    ERROR_CLOUD_CONTAINER_MISSING                |     Daten konnten nicht hochgeladen werden, da der Container, welcher der Freigabe zugeordnet ist, nicht vorhanden ist.                                     |    
     |    2997            |    ERROR_ITEM_CANCELED                                     |    Ein unerwarteter Fehler ist aufgetreten. Dies ist ein vorübergehender Fehler, der sich von selbst behebt.                                                                           |
     |    2998            |    ERROR_UNMAPPED_FAILURE                                  |    Ein unerwarteter Fehler ist aufgetreten. Der Fehler behebt sich unter Umständen von selbst. Sollte er jedoch länger als 24 Stunden bestehen bleiben, wenden Sie sich an den Microsoft-Support.                                                                                                     |
     |    16000           |    RefreshException                                        |    Diese Datei konnte nicht abgerufen werden.                                                                                                                                                                                                        |

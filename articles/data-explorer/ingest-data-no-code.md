@@ -8,18 +8,19 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 2/5/2019
-ms.openlocfilehash: 145a56bee857debdbf028834a3ed378efd8671c8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: c171962fd6177a01afdb8e9605b09574c99f485e
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447496"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889221"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>Tutorial: Erfassen von Daten in Azure Data Explorer ohne jeglichen Code
 
-In diesem Tutorial wird beschrieben, wie Sie Diagnose- und Aktivitätsprotokolldaten in einem Azure Data Explorer-Cluster erfassen, ohne jeglichen Code verwenden zu müssen. Mit dieser einfachen Erfassungsmethode können Sie schnell damit beginnen, Azure Data Explorer zu Datenanalysezwecken abzufragen.
+In diesem Tutorial wird beschrieben, wie Sie Daten aus Diagnose- und Aktivitätsprotokolldaten in einem Azure Data Explorer-Cluster erfassen, ohne jeglichen Code schreiben zu müssen. Mit dieser einfachen Erfassungsmethode können Sie schnell damit beginnen, Azure Data Explorer zu Datenanalysezwecken abzufragen.
 
 In diesem Tutorial lernen Sie Folgendes:
+
 > [!div class="checklist"]
 > * Erstellen von Tabellen und einer Erfassungszuordnung in einer Azure Data Explorer-Datenbank
 > * Formatieren der erfassten Daten mit einer Updaterichtlinie
@@ -33,15 +34,15 @@ In diesem Tutorial lernen Sie Folgendes:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md). In diesem Tutorial lautet der Datenbankname *AzureMonitoring*.
+* [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md). In diesem Tutorial lautet der Datenbankname *TestDatabase*.
 
-## <a name="azure-monitoring-data-provider---diagnostic-and-activity-logs"></a>Datenanbieter für Azure-Überwachung: Diagnose- und Aktivitätsprotokolle
+## <a name="azure-monitor-data-provider-diagnostic-and-activity-logs"></a>Azure Monitor-Datenanbieter: Diagnose- und Aktivitätsprotokolle
 
-Hier können Sie die Daten anzeigen, die von den Diagnose- und Aktivitätsprotokollen der Azure-Überwachung bereitgestellt werden, und sich damit vertraut machen. Basierend auf diesen Datenschemas erstellen wir eine Erfassungspipeline.
+Hier können Sie die Daten anzeigen, die von den Diagnose- und Aktivitätsprotokollen von Azure Monitor bereitgestellt werden, und sich damit vertraut machen. Basierend auf diesen Datenschemas erstellen wir eine Erfassungspipeline.
 
 ### <a name="diagnostic-logs-example"></a>Beispiel für Diagnoseprotokolle
 
-Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-Dienst ausgegeben werden und Daten zum Betrieb dieses Diensts liefern. Daten werden mit einem Aggregationsintervall von einer Minute aggregiert. Jedes Diagnoseprotokollereignis enthält einen Datensatz. Hier ist ein Beispiel für ein Azure Data Explorer-Metrikereignisschema zur Abfragedauer angegeben:
+Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-Dienst ausgegeben werden und Daten zum Betrieb dieses Diensts liefern. Daten werden mit einem Aggregationsintervall von einer Minute aggregiert. Jedes Ereignis in einem Diagnoseprotokoll enthält einen Datensatz. Hier ist ein Beispiel für ein Azure Data Explorer-Metrikereignisschema zur Abfragedauer angegeben:
 
 ```json
 {
@@ -59,7 +60,7 @@ Bei Azure-Diagnoseprotokollen handelt es sich um Metriken, die von einem Azure-D
 
 ### <a name="activity-logs-example"></a>Beispiel für Aktivitätsprotokoll
 
-Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die eine Sammlung mit Datensätzen enthalten. Die Protokolle liefern Erkenntnisse zu den Vorgängen, die für Ressourcen Ihres Abonnements durchgeführt wurden. Im Gegensatz zu Diagnoseprotokollen verfügt ein Aktivitätsprotokollereignis über ein Array mit Datensätzen. Zu einem späteren Zeitpunkt des Tutorials müssen wir dieses Array aufteilen. Hier ist ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs angegeben:
+Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die eine Sammlung mit Datensätzen enthalten. Die Protokolle liefern Erkenntnisse zu den Vorgängen, die für Ressourcen Ihres Abonnements durchgeführt wurden. Im Gegensatz zu Diagnoseprotokollen verfügt jedes Ereignis eines Aktivitätsprotokolls über ein Array mit Datensätzen. Zu einem späteren Zeitpunkt des Tutorials müssen wir dieses Array aufteilen. Hier ist ein Beispiel für ein Aktivitätsprotokollereignis zur Überprüfung des Zugriffs angegeben:
 
 ```json
 {
@@ -116,23 +117,23 @@ Azure-Aktivitätsprotokolle sind Protokolle auf Abonnementebene, die eine Sammlu
 }
 ```
 
-## <a name="set-up-ingestion-pipeline-in-azure-data-explorer"></a>Einrichten einer Erfassungspipeline in Azure Data Explorer 
+## <a name="set-up-an-ingestion-pipeline-in-azure-data-explorer"></a>Einrichten einer Erfassungspipeline in Azure Data Explorer
 
-Die Einrichtung der Azure Data Explorer-Pipeline umfasst verschiedene Schritte, z. B. die [Tabellenerstellung und Datenerfassung](/azure/data-explorer/ingest-sample-data#ingest-data). Sie können die Daten auch ändern, zuordnen und aktualisieren.
+Das Einrichten einer Azure Data Explorer-Pipeline umfasst mehrere Schritte, z. B. die [Tabellenerstellung und Datenerfassung](/azure/data-explorer/ingest-sample-data#ingest-data). Sie können die Daten auch ändern, zuordnen und aktualisieren.
 
-### <a name="connect-to-azure-data-explorer-web-ui"></a>Herstellen einer Verbindung mit der Azure Data Explorer-Webbenutzeroberfläche
+### <a name="connect-to-the-azure-data-explorer-web-ui"></a>Herstellen einer Verbindung mit der Azure Data Explorer-Webbenutzeroberfläche
 
-1. Wählen Sie in der Azure Data Explorer-Datenbank *AzureMonitoring* die Option **Abfrage**, um die Azure Data Explorer-Webbenutzeroberfläche zu öffnen.
+Wählen Sie in Azure Data Explorer für *TestDatabase* die Option **Abfrage**, um die Azure Data Explorer-Webbenutzeroberfläche zu öffnen.
 
-    ![Abfragen](media/ingest-data-no-code/query-database.png)
+![Seite „Abfrage“](media/ingest-data-no-code/query-database.png)
 
-### <a name="create-target-tables"></a>Erstellen von Zieltabellen
+### <a name="create-the-target-tables"></a>Erstellen der Zieltabellen
 
 Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabellen in der Azure Data Explorer-Datenbank zu erstellen.
 
-#### <a name="diagnostic-logs-table"></a>Tabelle für Diagnoseprotokolle
+#### <a name="the-diagnostic-logs-table"></a>Tabelle für Diagnoseprotokolle
 
-1. Erstellen Sie in der Datenbank *AzureMonitoring* die Tabelle *DiagnosticLogsRecords*, in die die Datensätze des Diagnoseprotokolls eingefügt werden, indem Sie den Steuerungsbefehl `.create table` verwenden:
+1. Erstellen Sie in der Datenbank *TestDatabase* eine Tabelle mit dem Namen *DiagnosticLogsRecords*, um die Diagnoseprotokoll-Datensätze zu speichern. Verwenden Sie den folgenden `.create table`-Steuerungsbefehl:
 
     ```kusto
     .create table DiagnosticLogsRecords (Timestamp:datetime, ResourceId:string, MetricName:string, Count:int, Total:double, Minimum:double, Maximum:double, Average:double, TimeGrain:string)
@@ -140,19 +141,19 @@ Verwenden Sie die Azure Data Explorer-Webbenutzeroberfläche, um die Zieltabelle
 
 1. Wählen Sie **Ausführen**, um die Tabelle zu erstellen.
 
-    ![Ausführen der Abfrage](media/ingest-data-no-code/run-query.png)
+    ![Abfrage ausführen](media/ingest-data-no-code/run-query.png)
 
-#### <a name="activity-logs-tables"></a>Tabellen für Aktivitätsprotokolle
+#### <a name="the-activity-logs-tables"></a>Tabellen für Aktivitätsprotokolle
 
-Da die Struktur von Aktivitätsprotokollen nicht tabellarisch ist, müssen Sie die Daten bearbeiten und jedes Ereignis auf mindestens einen Datensatz erweitern. Die Rohdaten werden in der Zwischentabelle *ActivityLogsRawRecords* erfasst. Die Daten werden nun bearbeitet und erweitert. Die erweiterten Daten werden anschließend mit einer Updaterichtlinie in der Tabelle *ActivityLogsRecords* erfasst. Aus diesem Grund müssen Sie für die Erfassung von Aktivitätsprotokollen zwei separate Tabellen erstellen.
+Da die Struktur von Aktivitätsprotokollen nicht tabellarisch ist, müssen Sie die Daten bearbeiten und jedes Ereignis auf mindestens einen Datensatz erweitern. Die Rohdaten werden in einer Zwischentabelle mit dem Namen *ActivityLogsRawRecords* erfasst. Die Daten werden nun bearbeitet und erweitert. Die erweiterten Daten werden anschließend mit einer Updaterichtlinie in der Tabelle *ActivityLogsRecords* erfasst. Dies bedeutet, dass Sie zwei separate Tabellen für das Erfassen von Aktivitätsprotokollen erstellen müssen.
 
-1. Erstellen Sie in der Datenbank *AzureMonitoring* die Tabelle *ActivityLogsRecords*, in die die Datensätze von Aktivitätsprotokollen eingefügt werden. Führen Sie die folgende Azure Data Explorer-Abfrage aus, um die Tabelle zu erstellen:
+1. Erstellen Sie eine Tabelle mit dem Namen *ActivityLogsRecords* in der Datenbank *TestDatabase*, um Aktivitätsprotokoll-Datensätze zu erhalten. Führen Sie zum Erstellen der Tabelle die folgende Azure Data Explorer-Abfrage aus:
 
     ```kusto
     .create table ActivityLogsRecords (Timestamp:datetime, ResourceId:string, OperationName:string, Category:string, ResultType:string, ResultSignature:string, DurationMs:int, IdentityAuthorization:dynamic, IdentityClaims:dynamic, Location:string, Level:string)
     ```
 
-1. Erstellen Sie die Zwischentabelle *ActivityLogsRawRecords* für Daten in der Datenbank *AzureMonitoring*, um die Bearbeitung der Daten zu ermöglichen:
+1. Erstellen Sie die Zwischentabelle mit dem Namen *ActivityLogsRawRecords* für Daten in der Datenbank *TestDatabase*, um die Bearbeitung der Daten zu ermöglichen:
 
     ```kusto
     .create table ActivityLogsRawRecords (Records:dynamic)
@@ -168,23 +169,23 @@ Da die Struktur von Aktivitätsprotokollen nicht tabellarisch ist, müssen Sie d
 
  Da das Datenformat `json` lautet, ist eine Datenzuordnung erforderlich. Mit der `json`-Zuordnung wird jeder JSON-Pfad einem Tabellenspaltennamen zugeordnet.
 
-#### <a name="diagnostic-logs-table-mapping"></a>Tabellenzuordnung für Diagnoseprotokolle
+#### <a name="table-mapping-for-diagnostic-logs"></a>Tabellenzuordnung für Diagnoseprotokolle
 
-Verwenden Sie die folgende Abfrage, um die Daten der Tabelle zuzuordnen:
+Verwenden Sie die folgende Abfrage, um die Daten der Diagnoseprotokolle der Tabelle zuzuordnen:
 
 ```kusto
 .create table DiagnosticLogsRecords ingestion json mapping 'DiagnosticLogsRecordsMapping' '[{"column":"Timestamp","path":"$.time"},{"column":"ResourceId","path":"$.resourceId"},{"column":"MetricName","path":"$.metricName"},{"column":"Count","path":"$.count"},{"column":"Total","path":"$.total"},{"column":"Minimum","path":"$.minimum"},{"column":"Maximum","path":"$.maximum"},{"column":"Average","path":"$.average"},{"column":"TimeGrain","path":"$.timeGrain"}]'
 ```
 
-#### <a name="activity-logs-table-mapping"></a>Tabellenzuordnung für Aktivitätsprotokolle
+#### <a name="table-mapping-for-activity-logs"></a>Tabellenzuordnung für Aktivitätsprotokolle
 
-Verwenden Sie die folgende Abfrage, um die Daten der Tabelle zuzuordnen:
+Verwenden Sie die folgende Abfrage, um die Daten der Aktivitätsprotokolle der Tabelle zuzuordnen:
 
 ```kusto
 .create table ActivityLogsRawRecords ingestion json mapping 'ActivityLogsRawRecordsMapping' '[{"column":"Records","path":"$.records"}]'
 ```
 
-### <a name="create-update-policy"></a>Erstellen einer Updaterichtlinie
+### <a name="create-the-update-policy-for-activity-logs-data"></a>Erstellen der Updaterichtlinie für die Daten der Aktivitätsprotokolle
 
 1. Erstellen Sie eine [Funktion](/azure/kusto/management/functions), mit der die Datensatzsammlung so erweitert wird, dass jeder Wert der Sammlung in einer separaten Zeile angeordnet wird. Verwenden Sie den Operator [`mvexpand`](/azure/kusto/query/mvexpandoperator):
 
@@ -207,89 +208,91 @@ Verwenden Sie die folgende Abfrage, um die Daten der Tabelle zuzuordnen:
     }
     ```
 
-2. Fügen Sie der Zieltabelle eine [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) hinzu. Hiermit wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *ActivityLogsRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *ActivityLogsRecords* erfasst:
+2. Fügen Sie die [Updaterichtlinie](/azure/kusto/concepts/updatepolicy) der Zieltabelle hinzu. Mit dieser Richtlinie wird die Abfrage automatisch für alle neu erfassten Daten in der Zwischentabelle *ActivityLogsRawRecords* ausgeführt, und die Ergebnisse werden in der Tabelle *ActivityLogsRecords* erfasst:
 
     ```kusto
     .alter table ActivityLogsRecords policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
     ```
 
-## <a name="create-an-event-hub-namespace"></a>Erstellen eines Event Hub-Namespace
+## <a name="create-an-azure-event-hubs-namespace"></a>Erstellen eines Azure Event Hubs-Namespace
 
-Mit Azure-Diagnoseprotokollen können Metriken in ein Speicherkonto oder einen Event Hub exportiert werden. In diesem Tutorial leiten wir Metriken über einen Event Hub weiter. Sie erstellen mit den folgenden Schritten einen Event Hubs-Namespace und einen Event Hub für Diagnoseprotokolle. Bei der Azure-Überwachung wird der Event Hub *insights-operational-logs* für Aktivitätsprotokolle erstellt.
+Mit Azure-Diagnoseprotokollen können Metriken in ein Speicherkonto oder einen Event Hub exportiert werden. In diesem Tutorial leiten wir die Metriken über einen Event Hub weiter. Sie erstellen mit den folgenden Schritten einen Event Hubs-Namespace und einen Event Hub für die Diagnoseprotokolle. Azure Monitor erstellt den Event Hub *insights-operational-logs* für die Aktivitätsprotokolle.
 
-1. Erstellen Sie einen Event Hub, indem Sie im Azure-Portal eine Azure Resource Manager-Vorlage verwenden. Verwenden Sie die folgende Schaltfläche, um die Bereitstellung zu starten. Klicken Sie mit der rechten Maustaste, und wählen Sie **In neuem Fenster öffnen**, damit Sie die restlichen Schritte in diesem Artikel ausführen können. Mit der Schaltfläche **In Azure bereitstellen** gelangen Sie zum Azure-Portal.
+1. Erstellen Sie einen Event Hub, indem Sie im Azure-Portal eine Azure Resource Manager-Vorlage verwenden. Klicken Sie zum Ausführen der restlichen Schritte dieses Artikels mit der rechten Maustaste auf die Schaltfläche **In Azure bereitstellen**, und wählen Sie die Option **In neuem Fenster öffnen**. Mit der Schaltfläche **In Azure bereitstellen** gelangen Sie zum Azure-Portal.
 
-    [![In Azure bereitstellen](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![Schaltfläche „In Azure bereitstellen“](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
-1. Erstellen Sie einen Event Hub-Namespace und einen Event Hub für die Diagnoseprotokolle.
+1. Erstellen Sie einen Event Hubs-Namespace und einen Event Hub für die Diagnoseprotokolle.
 
     ![Event Hub-Erstellung](media/ingest-data-no-code/event-hub.png)
 
-    Füllen Sie das Formular mit den folgenden Informationen aus. Verwenden Sie für alle nicht in der folgenden Tabelle aufgeführten Einstellungen die jeweiligen Standardwerte.
+1. Füllen Sie das Formular mit den folgenden Informationen aus. Verwenden Sie für alle Einstellungen, die nicht in der folgenden Tabelle aufgeführt sind, die jeweiligen Standardwerte.
 
-    **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
+    **Einstellung** | **Empfohlener Wert** | **Beschreibung**
     |---|---|---|
-    | Abonnement | Ihr Abonnement | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
-    | Ressourcengruppe | *test-resource-group* | Erstellen Sie eine neue Ressourcengruppe. |
-    | Standort | Wählen Sie die Region aus, die Ihre Anforderungen am besten erfüllt. | Erstellen Sie den Event Hub-Namespace an demselben Standort wie die anderen Ressourcen.
-    | Namespacename | *AzureMonitoringData* | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert.
-    | Event Hub-Name | *DiagnosticLogsData* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. |
-    | Name der Consumergruppe | *adxpipeline* | Erstellen Sie einen Consumergruppennamen. Hiermit können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |
+    | **Abonnement** | *Ihr Abonnement* | Wählen Sie das Azure-Abonnement aus, das Sie für Ihren Event Hub verwenden möchten.|
+    | **Ressourcengruppe** | *test-resource-group* | Erstellen Sie eine neue Ressourcengruppe. |
+    | **Location** | Wählen Sie die Region aus, die Ihre Anforderungen am besten erfüllt. | Erstellen Sie den Event Hubs-Namespace an demselben Standort wie die anderen Ressourcen.
+    | **Namespacename** | *AzureMonitoringData* | Wählen Sie einen eindeutigen Namen, der Ihren Namespace identifiziert.
+    | **Event Hub-Name** | *DiagnosticLogsData* | Der Event Hub befindet sich unter dem Namespace, der einen eindeutigen Bereichscontainer bereitstellt. |
+    | **Name der Consumergruppe** | *adxpipeline* | Erstellen Sie einen Consumergruppennamen. Durch Consumergruppen können mehrere verarbeitende Anwendungen jeweils über eine separate Ansicht des Ereignisdatenstroms verfügen. |
     | | |
 
-## <a name="connect-azure-monitoring-logs-to-event-hub"></a>Herstellen einer Verbindung für Protokolle der Azure-Überwachung mit einem Event Hub
+## <a name="connect-azure-monitor-logs-to-your-event-hub"></a>Verbinden von Azure Monitor-Protokollen mit Ihrem Event Hub
 
-### <a name="diagnostic-logs-connection-to-event-hub"></a>Verbindung von Diagnoseprotokollen mit einem Event Hub
+Jetzt müssen Sie für Ihre Diagnoseprotokolle und Aktivitätsprotokolle eine Verbindung mit dem Event Hub herstellen.
 
-Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Es gibt mehrere Ressourcentypen, die das Exportieren von Diagnoseprotokollen ermöglichen, z. B. Event Hub-Namespace, KeyVault, IoT Hub und Azure Data Explorer-Cluster. In diesem Tutorial verwenden wir den Azure Data Explorer-Cluster als unsere Ressource.
+### <a name="connect-diagnostic-logs-to-your-event-hub"></a>Herstellen einer Verbindung für Diagnoseprotokolle mit Ihrem Event Hub
+
+Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Mehrere Ressourcentypen unterstützen Diagnoseprotokolle, z. B. Event Hubs-Namespace, Azure Key Vault, Azure IoT Hub und Azure Data Explorer-Cluster. In diesem Tutorial verwenden wir einen Azure Data Explorer-Cluster als unsere Ressource.
 
 1. Wählen Sie im Azure-Portal Ihren Kusto-Cluster aus.
+1. Wählen Sie **Diagnoseeinstellungen** und dann den Link **Diagnose aktivieren**. 
 
     ![Diagnoseeinstellungen](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Diagnoseeinstellungen**.
-1. Klicken Sie auf den Link **Diagnose aktivieren**. Das Fenster **Diagnoseeinstellungen** wird geöffnet.
-
-    ![Fenster „Diagnoseeinstellungen“](media/ingest-data-no-code/diagnostic-settings-window.png)
-
-1. Im Bereich **Diagnoseeinstellungen**:
-    1. Vergeben Sie einen Namen für Ihre Diagnoseprotokolldaten: *ADXExportedData*
-    1. Aktivieren Sie das Kontrollkästchen **AllMetrics** (optional).
+1. Der Bereich **Diagnoseeinstellungen** wird geöffnet. Führen Sie die folgenden Schritte aus:
+    1. Geben Sie den Diagnoseprotokolldaten den Namen *ADXExportedData*.
+    1. Aktivieren Sie unter **METRIC** das Kontrollkästchen **AllMetrics** (optional).
     1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**.
-    1. Klicken Sie auf **Konfigurieren**.
+    1. Wählen Sie **Konfigurieren**aus.
 
-1. Konfigurieren Sie im Bereich **Event Hub auswählen** den Export für den von Ihnen erstellten Event Hub:
-    1. Wählen Sie für **Event Hub-Namespace auswählen** in der Dropdownliste die Option *AzureMonitoringData*.
-    1. Wählen Sie für **Event Hub-Name auswählen** in der Dropdownliste die Option *diagnosticlogsdata*.
-    1. Wählen Sie **Event Hub-Richtlinienname auswählen** in der Dropdownliste.
+    ![Bereich „Diagnoseeinstellungen“](media/ingest-data-no-code/diagnostic-settings-window.png)
+
+1. Konfigurieren Sie im Bereich **Event Hub auswählen**, wie Daten aus Diagnoseprotokollen auf den von Ihnen erstellten Event Hub exportiert werden sollen:
+    1. Wählen Sie in der Liste **Event Hub-Namespace auswählen** die Option *AzureMonitoringData*.
+    1. Wählen Sie in der Liste **Event Hub-Name auswählen** die Option *diagnosticlogsdata*.
+    1. Wählen Sie in der Liste **Event Hub-Richtlinienname auswählen**  die Option **RootManagerSharedAccessKey**.
     1. Klicken Sie auf **OK**.
 
-1. Klicken Sie auf **Speichern**. Im Fenster werden der Namespace, Name und Richtlinienname für den Event Hub angezeigt.
+1. Wählen Sie **Speichern** aus.
 
-    ![Speichern der Diagnoseeinstellungen](media/ingest-data-no-code/save-diagnostic-settings.png)
+### <a name="connect-activity-logs-to-your-event-hub"></a>Verbinden von Aktivitätsprotokollen mit Ihrem Event Hub
 
-### <a name="activity-logs-connection-to-event-hub"></a>Verbindung von Aktivitätsprotokollen mit einem Event Hub
+1. Wählen Sie im Azure-Portal im Menü auf der linken Seite die Option **Aktivitätsprotokoll**.
+1. Das Fenster **Aktivitätsprotokoll** wird geöffnet. Wählen Sie **In Event Hub exportieren**.
 
-1. Wählen Sie im Azure-Portal auf der linken Seite die Option **Aktivitätsprotokoll**.
-1. Das Fenster **Aktivitätsprotokoll** wird geöffnet. Klicken Sie auf **In Event Hub exportieren**.
+    ![Fenster „Aktivitätsprotokoll“](media/ingest-data-no-code/activity-log.png)
 
-    ![Aktivitätsprotokoll](media/ingest-data-no-code/activity-log.png)
-
-1. Im Fenster **Aktivitätsprotokoll exportieren**:
+1. Das Fenster **Aktivitätsprotokoll exportieren** wird geöffnet:
  
-    ![Exportieren des Aktivitätsprotokolls](media/ingest-data-no-code/export-activity-log.png)
+    ![Fenster „Aktivitätsprotokoll exportieren“](media/ingest-data-no-code/export-activity-log.png)
 
-    1. Wählen Sie Ihr Abonnement aus.
-    1. Wählen Sie in der Dropdownliste **Regionen** die Option **Alle auswählen**.
-    1. Aktivieren Sie das Kontrollkästchen **In einen Event Hub exportieren**.
-    1. Klicken Sie auf **Service Bus-Namespace auswählen**, um den Bereich **Event Hub auswählen** zu öffnen.
-    1. Wählen Sie im Bereich **Event Hub auswählen** in den Dropdownmenüs Folgendes aus: Ihr Abonnement, Ihren Event Hub-Namespace *AzureMonitoringData* und den Event Hub-Standardrichtliniennamen.
-    1. Klicken Sie auf **OK**.
-    1. Klicken Sie oben rechts im Fenster auf **Speichern**. Ein Event Hub mit dem Namen *insights-operational-logs* wird erstellt.
+1. Führen Sie im Fenster **Aktivitätsprotokoll exportieren** die folgenden Schritte aus:
+      1. Wählen Sie Ihr Abonnement aus.
+      1. Wählen Sie in der Liste **Regionen** die Option **Alle auswählen**.
+      1. Aktivieren Sie das Kontrollkästchen **In einen Event Hub exportieren**.
+      1. Wählen Sie **Service Bus-Namespace auswählen**, um den Bereich **Event Hub auswählen** zu öffnen.
+      1. Wählen Sie im Bereich **Event Hub auswählen** Ihr Abonnement aus.
+      1. Wählen Sie in der Liste **Event Hub-Namespace auswählen** die Option *AzureMonitoringData*.
+      1. Wählen Sie in der Liste **Event Hub-Richtlinienname auswählen** den Event Hub-Standard-Richtliniennamen aus.
+      1. Klicken Sie auf **OK**.
+      1. Wählen Sie oben links im Fenster die Option **Speichern**.
+   Ein Event Hub mit dem Namen *insights-operational-logs* wird erstellt.
 
 ### <a name="see-data-flowing-to-your-event-hubs"></a>Verfolgen des Datenflusses zu Ihren Event Hubs
 
-1. Warten Sie einige Minuten, bis die Verbindung definiert wurde und der Export der Aktivitätsprotokolle für den Event Hub abgeschlossen ist. Navigieren Sie zu Ihrem Event Hub-Namespace, um die von Ihnen erstellten Event Hubs anzuzeigen.
+1. Warten Sie einige Minuten, bis die Verbindung definiert und der Export des Aktivitätsprotokolls auf den Event Hub abgeschlossen wurde. Navigieren Sie zu Ihrem Event Hubs-Namespace, um die von Ihnen erstellten Event Hubs anzuzeigen.
 
     ![Erstellte Event Hubs](media/ingest-data-no-code/event-hubs-created.png)
 
@@ -297,77 +300,79 @@ Wählen Sie eine Ressource aus, für die Metriken exportiert werden sollen. Es g
 
     ![Event Hub-Daten](media/ingest-data-no-code/event-hubs-data.png)
 
-## <a name="connect-event-hub-to-azure-data-explorer"></a>Herstellen einer Verbindung für ein Event Hub mit Azure Data Explorer
+## <a name="connect-an-event-hub-to-azure-data-explorer"></a>Herstellen einer Verbindung für einen Event Hub mit Azure Data Explorer
 
-### <a name="diagnostic-logs-data-connection"></a>Datenverbindung für Diagnoseprotokolle
+Nun müssen Sie die Datenverbindungen für Ihre Diagnose- und Aktivitätsprotokolle herstellen.
 
-1. Wählen Sie in Ihrem Azure Data Explorer-Cluster *kustodocs* im Menü auf der linken Seite die Option **Datenbanken**.
-1. Wählen Sie im Fenster **Datenbanken** Ihren Datenbanknamen *AzureMonitoring* aus.
+### <a name="create-the-data-connection-for-diagnostic-logs"></a>Erstellen der Datenverbindung für Diagnoseprotokolle
+
+1. Wählen Sie in Ihrem Azure Data Explorer-Cluster mit dem Namen *kustodocs* im Menü auf der linken Seite die Option **Datenbanken**.
+1. Wählen Sie im Fenster **Datenbanken** Ihre Datenbank *TestDatabase* aus.
 1. Wählen Sie im Menü auf der linken Seite die Option **Datenerfassung**.
 1. Klicken Sie im Fenster **Datenerfassung** auf **+ Datenverbindung hinzufügen**.
 1. Geben Sie im Fenster **Datenverbindung** die folgenden Informationen ein:
 
-    ![Event Hub-Verbindung](media/ingest-data-no-code/event-hub-data-connection.png)
+    ![Event Hub-Datenverbindung](media/ingest-data-no-code/event-hub-data-connection.png)
 
     Datenquelle:
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Name der Datenverbindung | *DiagnosticsLogsConnection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
-    | Event Hub-Namespace | *AzureMonitoringData* | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
-    | Event Hub | *diagnosticlogsdata* | Der von Ihnen erstellte Event Hub. |
-    | Consumergruppe | *adxpipeline* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
+    | **Name der Datenverbindung** | *DiagnosticsLogsConnection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
+    | **Event Hub-Namespace** | *AzureMonitoringData* | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
+    | **Event Hub** | *diagnosticlogsdata* | Der von Ihnen erstellte Event Hub. |
+    | **Consumergruppe** | *adxpipeline* | Die Consumergruppe, die in dem von Ihnen erstellten Event Hub definiert ist. |
     | | |
 
     Zieltabelle:
 
-    Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In diesem Tutorial wird statisches Routing (Standardeinstellung) verwendet, für das der Tabellenname, das Dateiformat und die Zuordnung angegeben werden müssen. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) daher deaktiviert.
+    Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In diesem Tutorial verwenden Sie statisches Routing (Standardeinstellung), für das Sie den Tabellennamen, das Datenformat und die Zuordnung angeben. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) deaktiviert.
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Table | *DiagnosticLogsRecords* | Die Tabelle, die Sie in der Datenbank *AzureMonitoring* erstellt haben. |
-    | Datenformat | *JSON* | Das Format in der Tabelle. |
-    | Spaltenzuordnung | *DiagnosticLogsRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *AzureMonitoring* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen von *DiagnosticLogsRecords* zugeordnet werden.|
+    | **Tabelle** | *DiagnosticLogsRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
+    | **Spaltenzuordnung** | *DiagnosticLogsRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *DiagnosticLogsRecords* zugeordnet werden.|
     | | |
 
-1. Klicken Sie auf **Erstellen**  
+1. Klicken Sie auf **Erstellen**.  
 
-### <a name="activity-logs-data-connection"></a>Datenverbindung für Aktivitätsprotokolle
+### <a name="create-the-data-connection-for-activity-logs"></a>Erstellen der Datenverbindung für Aktivitätsprotokolle
 
-Wiederholen Sie die Schritte im Abschnitt [Datenverbindung für Diagnoseprotokolle](#diagnostic-logs-data-connection), um eine Datenverbindung für Aktivitätsprotokolle zu erstellen.
+Wiederholen Sie die Schritte des Abschnitts „Erstellen der Datenverbindung für Diagnoseprotokolle“, um die Datenverbindung für Ihre Aktivitätsprotokolle zu erstellen.
 
-1. Fügen Sie die folgenden Einstellungen im Fenster **Datenverbindung** ein:
+1. Verwenden Sie im Fenster **Datenverbindung** die folgenden Einstellungen:
 
     Datenquelle:
 
     **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Name der Datenverbindung | *ActivityLogsConnection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
-    | Event Hub-Namespace | *AzureMonitoringData* | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
-    | Event Hub | *insights-operational-logs* | Der von Ihnen erstellte Event Hub. |
-    | Consumergruppe | *$Default* | Die Standardconsumergruppe. Bei Bedarf können Sie auch eine andere Consumergruppe erstellen. |
+    | **Name der Datenverbindung** | *ActivityLogsConnection* | Der Name der Verbindung, die Sie im Azure-Daten-Explorer erstellen möchten.|
+    | **Event Hub-Namespace** | *AzureMonitoringData* | Der von Ihnen zuvor ausgewählte Name, der Ihren Namespace identifiziert. |
+    | **Event Hub** | *insights-operational-logs* | Der von Ihnen erstellte Event Hub. |
+    | **Consumergruppe** | *$Default* | Die Standardconsumergruppe. Bei Bedarf können Sie auch eine andere Consumergruppe erstellen. |
     | | |
 
     Zieltabelle:
 
-    Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In diesem Tutorial wird statisches Routing (Standardeinstellung) verwendet, für das der Tabellenname, das Dateiformat und die Zuordnung angegeben werden müssen. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) daher deaktiviert.
+    Es stehen zwei Routingoptionen zur Verfügung: *statisch* und *dynamisch*. In diesem Tutorial verwenden Sie statisches Routing (Standardeinstellung), für das der Tabellenname, das Datenformat und die Zuordnung angegeben werden müssen. Lassen Sie das Kontrollkästchen **My data includes routing info** (Meine Daten enthalten Routinginformationen) deaktiviert.
 
      **Einstellung** | **Empfohlener Wert** | **Feldbeschreibung**
     |---|---|---|
-    | Table | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *AzureMonitoring* erstellt haben. |
-    | Datenformat | *JSON* | Das Format in der Tabelle. |
-    | Spaltenzuordnung | *ActivityLogsRawRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *AzureMonitoring* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen von *ActivityLogsRawRecords* zugeordnet werden.|
+    | **Tabelle** | *ActivityLogsRawRecords* | Die Tabelle, die Sie in der Datenbank *TestDatabase* erstellt haben. |
+    | **Datenformat** | *JSON* | Das Format, das in der Tabelle verwendet wird. |
+    | **Spaltenzuordnung** | *ActivityLogsRawRecordsMapping* | Die Zuordnung, die Sie in der Datenbank *TestDatabase* erstellt haben und mit der eingehende JSON-Daten den Spaltennamen und Datentypen der Tabelle *ActivityLogsRawRecords* zugeordnet werden.|
     | | |
 
-1. Klicken Sie auf **Erstellen**  
+1. Klicken Sie auf **Erstellen**.  
 
 ## <a name="query-the-new-tables"></a>Abfragen der neuen Tabellen
 
-Sie verfügen über eine Pipeline, durch die Daten fließen. Da die Erfassung über den Cluster standardmäßig fünf Minuten dauert, sollten Sie den Datenfluss einige Minuten lang zulassen, bevor Sie mit dem Abfragen beginnen.
+Sie verfügen nun über eine Pipeline, durch die Daten fließen. Da die Erfassung über den Cluster standardmäßig fünf Minuten dauert, sollten Sie den Datenfluss einige Minuten lang zulassen, bevor Sie mit dem Abfragen beginnen.
 
-### <a name="diagnostic-logs-table-query-example"></a>Beispiel: Abfragen der Tabelle für Diagnoseprotokolle
+### <a name="an-example-of-querying-the-diagnostic-logs-table"></a>Beispiel für Abfrage der Tabelle für Diagnoseprotokolle
 
-Mit der folgenden Abfrage werden Daten zur Abfragedauer aus den Datensätzen von Azure Data Explorer-Diagnoseprotokollen analysiert:
+Mit der folgenden Abfrage werden Daten zur Abfragedauer aus den Datensätzen von Diagnoseprotokollen in Azure Data Explorer analysiert:
 
 ```kusto
 DiagnosticLogsRecords
@@ -383,9 +388,9 @@ Abfrageergebnisse:
 |   | 00:06.156 |
 | | |
 
-### <a name="activity-logs-table-query-example"></a>Beispiel: Abfragen der Tabelle für Aktivitätsprotokolle
+### <a name="an-example-of-querying-the-activity-logs-table"></a>Beispiel für eine Abfrage der Tabelle für Aktivitätsprotokolle
 
-Mit der folgenden Abfrage werden die Daten aus den Datensätzen von Azure Data Explorer-Aktivitätsprotokollen analysiert:
+Mit der folgenden Abfrage werden die Daten aus den Datensätzen von Aktivitätsprotokollen in Azure Data Explorer analysiert:
 
 ```kusto
 ActivityLogsRecords
@@ -403,7 +408,7 @@ Abfrageergebnisse:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich, wie Sie viele weitere Abfragen für Daten schreiben können, die Sie aus Azure Data Explorer extrahieren, indem Sie den folgenden Artikel lesen:
+Informieren Sie sich folgenden Artikel, wie Sie viele weitere Abfragen für Daten schreiben können, die Sie aus Azure Data Explorer extrahieren:
 
 > [!div class="nextstepaction"]
-> [Schreiben von Abfragen für Azure Data Explorer](write-queries.md)
+> [Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)

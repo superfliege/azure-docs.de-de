@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/08/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: 2f6e8b40907d02e62ede95a44fa10168f7590bd5
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: d28a88efc1a9f980d74737936bb960ba13573fa3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606247"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675091"
 ---
 # <a name="tutorial-detect-anomalies-at-the-edge-with-the-remote-monitoring-solution-accelerator"></a>Tutorial: Erkennen von Anomalien im Edgebereich mit dem Solution Accelerator für die Remoteüberwachung
 
@@ -55,12 +55,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Zum Hinzufügen eines IoT Edge-Geräts zu Ihrem Solution Accelerator für die Remoteüberwachung müssen Sie zwei Schritte ausführen. In diesem Abschnitt erfahren Sie, wie Sie:
 
-* Ein IoT Edge-Gerät auf der Seite **Geräte** in der Webbenutzeroberfläche für die Remoteüberwachung hinzufügen
+* Auf der Seite **Device Explorer** der Webbenutzeroberfläche für die Remoteüberwachung ein IoT Edge-Gerät hinzufügen
 * Die IoT Edge-Runtime auf einer Linux-VM installieren
 
 ### <a name="add-an-iot-edge-device-to-your-solution"></a>Hinzufügen eines IoT Edge-Geräts zu Ihrer Lösung
 
-Um dem Solution Accelerator für die Remoteüberwachung ein IoT Edge-Gerät hinzuzufügen, navigieren Sie in der Webbenutzeroberfläche zur Seite **Geräte**, und klicken Sie auf **+ Neues Gerät**.
+Um dem Solution Accelerator für die Remoteüberwachung ein IoT Edge-Gerät hinzuzufügen, navigieren Sie auf der Webbenutzeroberfläche zur Seite **Device Explorer**, und klicken Sie auf **+ Neues Gerät**.
 
 Wählen Sie im Bereich **Neues Gerät** die Option **IoT Edge-Gerät** aus, und geben Sie **oil-pump** als Geräte-ID ein. Für alle anderen Einstellungen können Sie die Standardwerte beibehalten. Klicken Sie anschließend auf **Übernehmen**:
 
@@ -68,13 +68,13 @@ Wählen Sie im Bereich **Neues Gerät** die Option **IoT Edge-Gerät** aus, und 
 
 Notieren Sie sich die Geräteverbindungszeichenfolge. Sie benötigen Sie im nächsten Abschnitt dieses Tutorials.
 
-Wenn Sie im Solution Accelerator für die Remoteüberwachung ein Gerät beim IoT-Hub registrieren, wird es in der Webbenutzeroberfläche auf der Seite **Geräte** aufgelistet:
+Wenn Sie im Solution Accelerator für die Remoteüberwachung ein Gerät beim IoT-Hub registrieren, wird es auf der Webbenutzeroberfläche auf der Seite **Device Explorer** aufgelistet:
 
 [![Neues IoT Edge-Gerät](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-inline.png)](./media/iot-accelerators-remote-monitoring-edge/newedgedevice-expanded.png#lightbox)
 
 Um die Verwaltung der IoT Edge-Geräte in der Lösung zu vereinfachen, erstellen Sie eine Gerätegruppe, und fügen Sie das IoT Edge-Gerät hinzu:
 
-1. Wählen Sie das Gerät **oil-pump** in der Liste auf der Seite **Geräte** aus, und klicken Sie dann auf **Aufträge**.
+1. Wählen Sie das Gerät **oil-pump** in der Liste auf der Seite **Device Explorer** aus, und klicken Sie dann auf **Aufträge**.
 
 1. Erstellen Sie einen Auftrag mit den folgenden Einstellungen, um dem Gerät das Tag **IsEdge** hinzuzufügen:
 
@@ -84,13 +84,13 @@ Um die Verwaltung der IoT Edge-Geräte in der Lösung zu vereinfachen, erstellen
     | Auftragsname | AddEdgeTag |
     | Schlüssel     | IsOilPump |
     | Wert   | J     |
-    | Typ    | Text  |
+    | Type    | Text  |
 
     [![Hinzufügen eines Tags](./media/iot-accelerators-remote-monitoring-edge/addtag-inline.png)](./media/iot-accelerators-remote-monitoring-edge/addtag-expanded.png#lightbox)
 
 1. Klicken Sie auf **Übernehmen** und dann auf **Schließen**.
 
-1. Klicken Sie auf der Seite **Geräte** auf **Manage device groups** (Gerätegruppen verwalten).
+1. Klicken Sie auf der Seite **Device Explorer** auf **Gerätegruppen verwalten**.
 
 1. Klicken Sie auf **Create new device group** (Neue Gerätegruppe erstellen). Erstellen Sie eine neue Gerätegruppe mit den folgenden Einstellungen:
 
@@ -100,7 +100,7 @@ Um die Verwaltung der IoT Edge-Geräte in der Lösung zu vereinfachen, erstellen
     | Feld   | Tags.IsOilPump |
     | Operator | = (ist gleich) |
     | Wert    | J |
-    | Typ     | Text |
+    | Type     | Text |
 
     [![Erstellen einer Gerätegruppe](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-inline.png)](./media/iot-accelerators-remote-monitoring-edge/createdevicegroup-expanded.png#lightbox)
 
@@ -300,7 +300,7 @@ Auf der Seite **Bereitstellungen** werden die folgenden Metriken angezeigt:
 
 Sie können die Temperaturtelemetriedaten von Ihrer Ölpumpe in der Webbenutzeroberfläche für die Remoteüberwachung anzeigen:
 
-1. Navigieren Sie zur Seite **Geräte**, und wählen Sie die Ölpumpe aus.
+1. Navigieren Sie zur Seite **Device Explorer**, und wählen Sie die Ölpumpe aus.
 1. Klicken Sie im Abschnitt **Telemetrie** des Bereichs **Gerätedetails** auf **Temperatur**:
 
     [![Anzeigen von Telemetriedaten](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-inline.png)](./media/iot-accelerators-remote-monitoring-edge/viewtelemetry-expanded.png#lightbox)

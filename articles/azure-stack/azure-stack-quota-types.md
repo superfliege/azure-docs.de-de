@@ -16,12 +16,12 @@ ms.date: 12/07/2018
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 88cbfc895d188162d0f242a5aceaab721a6c877f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: def9026fb0422d8868af098f12180617aefe7eff
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55239095"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877944"
 ---
 # <a name="quota-types-in-azure-stack"></a>Kontingenttypen in Azure Stack
 
@@ -74,7 +74,7 @@ Es gibt zwei verschiedene Möglichkeiten, ein vorhandenes Kontingent anzuzeigen:
 3.  Wählen Sie in dem Blatt, das geöffnet wird, **Dienste und Kontingente** aus.
 4.  Wählen Sie das Kontingent aus, das Sie anzeigen möchten, indem Sie in der Spalte **Name** darauf klicken.
 
-    [ ![Kontingente](media/azure-stack-quota-types/quotas1sm.png "Kontingente anzeigen") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kontingente](media/azure-stack-quota-types/quotas1sm.png "Kontingente anzeigen")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 ### <a name="resource-providers"></a>Ressourcenanbieter
 
@@ -92,7 +92,7 @@ Es gibt zwei Möglichkeiten, ein Kontingent zu bearbeiten:
 2.  Wählen Sie den Plan aus, für den Sie ein Kontingent bearbeiten möchten, indem Sie auf seinen Namen klicken.
 3.  Wählen Sie in dem Blatt, das geöffnet wird, **Dienste und Kontingente** aus.
 4.  Wählen Sie das Kontingent aus, das Sie bearbeiten möchten, indem Sie in der Spalte **Name** darauf klicken.
-    [ ![Kontingente](media/azure-stack-quota-types/quotas1sm.png "Kontingente anzeigen") ](media/azure-stack-quota-types/quotas1.png#lightbox)
+    [![Kontingente](media/azure-stack-quota-types/quotas1sm.png "Kontingente anzeigen")](media/azure-stack-quota-types/quotas1.png#lightbox)
 
 5.  Wählen Sie auf dem Blatt, das geöffnet wird, **In Compute bearbeiten**, **Im Netzwerk bearbeiten** oder **Im Speicher bearbeiten** aus.
     ![Kontingente](media/azure-stack-quota-types/quotas3.png "Kontingente anzeigen ")    

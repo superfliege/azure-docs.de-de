@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 8e31717f9fd232a7c256b65d044a97396af8f960
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 0978db31f4aa8caa273c63c2f55d5146b19dea26
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56448586"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878012"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-unity-beta"></a>Schnellstart: Erkennen von Sprache mit dem Speech SDK für Unity (Beta)
 
@@ -35,7 +35,7 @@ Für dieses Projekt benötigen Sie Folgendes:
 
 * [Unity 2018.3 oder höher](https://store.unity.com/)
 * [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)
-* Einen Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
+* Ein Abonnementschlüssel für den Speech-Dienst. [Hier erhalten Sie einen kostenlosen Schlüssel.](get-started.md)
 * Zugriff auf das Mikrofon Ihres Computers
 
 ## <a name="create-a-unity-project"></a>Erstellen eines Unity-Projekts
@@ -74,7 +74,7 @@ Wir fügen unserer Szene eine minimalistische Benutzeroberfläche mit einer Scha
 
 Die Benutzeroberfläche sollte dann in etwa wie folgt aussehen:
 
-[ ![Screenshot der Schnellstart-Benutzeroberfläche im Unity-Editor](media/sdk/qs-csharp-unity-02-ui-inline.png) ](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
+[![Screenshot der Schnellstart-Benutzeroberfläche im Unity-Editor](media/sdk/qs-csharp-unity-02-ui-inline.png)](media/sdk/qs-csharp-unity-02-ui-expanded.png#lightbox)
 
 ## <a name="add-the-sample-code"></a>Hinzufügen des Beispielcodes
 
@@ -111,7 +111,7 @@ Die Benutzeroberfläche sollte dann in etwa wie folgt aussehen:
 
 * Klicken Sie nach dem Start der App auf die Schaltfläche, und sprechen Sie einen englischen Ausdruck oder Satz in das Mikrofon Ihres Computers. Ihre Spracheingabe wird an den Spracherkennungsdienst übermittelt und in Text transkribiert, der im Fenster angezeigt wird.
 
-  [ ![Screenshot der ausgeführten Schnellstart-App im Unity-Spielefenster](media/sdk/qs-csharp-unity-03-output-inline.png) ](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
+  [![Screenshot der ausgeführten Schnellstart-App im Unity-Spielefenster](media/sdk/qs-csharp-unity-03-output-inline.png)](media/sdk/qs-csharp-unity-03-output-expanded.png#lightbox)
 
 * Überprüfen Sie das [Konsolenfenster](https://docs.unity3d.com/Manual/Console.html) auf Debugmeldungen.
 

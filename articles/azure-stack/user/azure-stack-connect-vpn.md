@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 10/24/2018
+ms.date: 02/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: 882724c5f45cc2c5b3debb8fa80538239a98b749
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240691"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594354"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack mit Azure über ein VPN
 
@@ -34,7 +34,7 @@ In diesem Artikel wird das Erstellen eines Site-to-Site-VPN beschrieben, mit dem
 Vergewissern Sie sich vor dem Durchführen der Verbindungskonfiguration, dass Sie über folgende Elemente verfügen:
 
 * Eine Bereitstellung (mit mehreren Knoten) für integrierte Azure Stack-Systeme, die direkt mit dem Internet verbunden ist. Ihr Bereich mit den externen öffentlichen IP-Adressen muss direkt über das öffentliche Internet erreichbar sein.
-* Ein gültiges Azure-Abonnement. Wenn Sie über kein Azure-Abonnement verfügen, [können Sie hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?b=17.06).
+* Ein gültiges Azure-Abonnement. Wenn Sie kein Azure-Abonnement haben, [können Sie hier ein kostenloses Azure-Konto erstellen](https://azure.microsoft.com/free/?b=17.06).
 
 ### <a name="vpn-connection-diagram"></a>VPN-Verbindungsdiagramm
 
@@ -74,7 +74,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 
 1. Öffnen Sie über das Dashboard die zuvor erstellte Ressource des virtuellen Netzwerks (**AzureVNet**).
 2. Wählen Sie im Bereich **Einstellungen** die Option **Subnetze** aus.
-3. Wählen Sie **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
+3. Klicken Sie auf **Gatewaysubnetz**, um dem virtuellen Netzwerk ein Gatewaysubnetz hinzuzufügen.
 4. Der Name des Subnetzes wird standardmäßig auf **GatewaySubnet** festgelegt.
 
    >[!IMPORTANT]
@@ -305,4 +305,4 @@ Im Abschnitt **Verbindung** können Sie die Datenmenge ermitteln, die über die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Deploy apps to Azure and Azure Stack (Bereitstellen von Apps in Azure und Azure Stack)](azure-stack-solution-pipeline.md)
+* [Deploy apps to Azure and Azure Stack (Bereitstellen von Apps in Azure und Azure Stack)](azure-stack-solution-pipeline.md)

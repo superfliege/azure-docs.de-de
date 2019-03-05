@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Hinzufügen eines Gastbenutzers mit PowerShell für die Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation'
+title: 'Schnellstart: Hinzufügen eines Gastbenutzers mit PowerShell – Azure Active Directory | Microsoft-Dokumentation'
 description: In diesem Schnellstart erfahren Sie, wie Sie mit PowerShell eine Einladung an einen externen Benutzer für die Azure AD B2B-Zusammenarbeit senden.
 services: active-directory
 ms.service: active-directory
@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3cb34fa0552eaa8f0d567ff85843e4b7df3fa967
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8417e2118de01d00e8b0450374a9b10bff40221f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205374"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675142"
 ---
 # <a name="quickstart-add-a-guest-user-with-powershell"></a>Schnellstart: Hinzufügen von Gastbenutzern mit PowerShell
 

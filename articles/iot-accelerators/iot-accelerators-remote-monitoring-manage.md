@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 11/15/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: a2dc5653b7579d9c5db4667d84e6e5b5082abaab
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 869f6d2391632c77e01e4383c1457f88b9171c8b
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448073"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56651191"
 ---
 # <a name="tutorial-configure-devices-connected-to-your-monitoring-solution"></a>Tutorial: Konfigurieren von Geräten, die mit der Überwachungslösung verbunden sind
 
@@ -36,7 +36,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
-Navigieren Sie in der Lösung zur Seite **Devices** (Geräte), und klicken Sie dann auf **+ New Device** (+ Neues Gerät):
+Navigieren Sie in der Lösung zur Seite **Device Explorer**, und klicken Sie dann auf **+ Neues Gerät**:
 
 [![Bereitstellen eines simulierten Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesprovision-expanded.png#lightbox)
 
@@ -46,7 +46,7 @@ Wählen Sie im Panel **New device** (Neues Gerät) die Option **Simulated** (Sim
 
 ## <a name="test-the-simulated-device"></a>Testen des simulierten Geräts
 
-Um zu testen, ob das simulierte Engine-Gerät Telemetriedaten sendet und Eigenschaftswerte meldet, wählen Sie es auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Live-Informationen zur Engine werden im Bereich **Device Details** (Gerätedetails) angezeigt:
+Um zu testen, ob das simulierte Engine-Gerät Telemetriedaten sendet und Eigenschaftswerte meldet, wählen Sie es auf der Seite **Device Explorer** in der Liste mit den Geräten aus. Live-Informationen zur Engine werden im Bereich **Device Details** (Gerätedetails) angezeigt:
 
 [![Anzeigen des neuen simulierten Engine-Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesviewnew-expanded.png#lightbox)
 
@@ -60,7 +60,7 @@ Scrollen Sie zum Anzeigen von detaillierten Diagnosedaten im Panel **Device Deta
 
 ## <a name="reconfigure-a-device"></a>Neukonfigurieren eines Geräts
 
-Um zu testen, ob Sie die Konfigurationseigenschaften der Engine aktualisieren können, wählen Sie sie auf der Seite **Devices** (Geräte) in der Liste mit den Geräten aus. Klicken Sie anschließend auf **Aufträge**, und wählen Sie **Eigenschaften** aus. Im Panel „Jobs“ (Aufträge) werden die aktualisierbaren Eigenschaftswerte für das ausgewählte Gerät angezeigt:
+Um zu testen, ob Sie die Konfigurationseigenschaften der Engine aktualisieren können, wählen Sie sie auf der Seite **Device Explorer** in der Liste mit den Geräten aus. Klicken Sie anschließend auf **Aufträge**, und wählen Sie **Eigenschaften** aus. Im Panel „Jobs“ (Aufträge) werden die aktualisierbaren Eigenschaftswerte für das ausgewählte Gerät angezeigt:
 
 [![Neukonfigurieren eines Geräts](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesreconfigure-expanded.png#lightbox)
 
@@ -83,7 +83,7 @@ Um für Sie als Bediener das Organisieren und Verwalten Ihrer Geräte zu vereinf
 * Das Team „Smart Vehicle“ (Intelligentes Fahrzeug) verwaltet LKW und Geräte für die Prototyperstellung.
 * Das Team „Smart Building“ (Intelligentes Gebäude) verwaltet Kältemaschinen, Aufzüge und Motoren.
 
-Navigieren Sie zum Anzeigen Ihrer gesamten Geräte zur Seite **Devices** (Geräte), und wählen Sie den Filter **All devices** (Alle Geräte):
+Navigieren Sie zum Anzeigen Ihrer gesamten Geräte zur Seite **Device Explorer**, und wählen Sie den Filter **Alle Geräte**:
 
 [![Anzeigen aller Geräte](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesalldevices-expanded.png#lightbox)
 
@@ -103,7 +103,7 @@ Wählen Sie im Panel **Jobs** (Aufträge) die Option **Tag**, legen Sie den Auft
 
 ### <a name="create-filters"></a>Erstellen von Filtern
 
-Sie können jetzt die Tagwerte zum Erstellen von Filtern verwenden. Klicken Sie auf der Seite **Devices** (Geräte) auf **Manage device groups** (Gerätegruppen verwalten):
+Sie können jetzt die Tagwerte zum Erstellen von Filtern verwenden. Klicken Sie auf der Seite **Device Explorer** auf **Gerätegruppen verwalten**:
 
 [![Verwalten von Gerätegruppen](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-inline.png)](./media/iot-accelerators-remote-monitoring-manage/devicesmanagefilters-expanded.png#lightbox)
 

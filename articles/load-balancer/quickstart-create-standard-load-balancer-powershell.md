@@ -10,75 +10,83 @@ Customer intent: I want to create a Standard Load balancer so that I can load ba
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: qucikstart
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/22/2018
 ms.author: kumud
 ms:custom: seodec18
-ms.openlocfilehash: 62ccf86d138ff71706aca4c19f548f175e6c09ce
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 56fc3942b82d43273ea39f6075382bcb255fc0f7
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54447614"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673818"
 ---
 # <a name="get-started"></a>Schnellstart: Erstellen einer Load Balancer Standard-Instanz mit Azure PowerShell
+
 In dieser Schnellstartanleitung erfahren Sie, wie Sie mit Azure PowerShell eine Load Balancer Standard-Instanz erstellen. Zum Testen des Lastenausgleichs stellen Sie zwei virtuelle Computer (VMs) mit Windows Server bereit und führen für eine Web-App zwischen den VMs einen Lastenausgleich durch. Weitere Informationen zu Load Balancer Standard finden Sie unter [Übersicht: Azure Standard Load Balancer](load-balancer-standard-overview.md).
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/azurerm/install-azurerm-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Login-AzureRmAccount` ausführen, um eine Verbindung mit Azure herzustellen. 
+Wenn Sie PowerShell lokal installieren und verwenden möchten, müssen Sie für diesen Artikel mindestens Version 5.4.1 des Azure PowerShell-Moduls verwenden. Führen Sie `Get-Module -ListAvailable Az` aus, um die installierte Version zu ermitteln. Wenn Sie ein Upgrade ausführen müssen, finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-Az-ps) Informationen dazu. Wenn Sie PowerShell lokal ausführen, müssen Sie auch `Connect-AzAccount` ausführen, um eine Verbindung mit Azure herzustellen.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Bevor Sie eine Load Balancer-Instanz erstellen können, müssen Sie mit [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupLB* am Standort *EastUS* erstellt:
+Bevor Sie Ihren Lastenausgleich erstellen können, müssen Sie mit [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) eine Ressourcengruppe erstellen. Im folgenden Beispiel wird eine Ressourcengruppe mit dem Namen *myResourceGroupLB* am Standort *EastUS* erstellt:
 
 ```azurepowershell-interactive
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS"
 ```
+
 ## <a name="create-a-public-ip-address"></a>Erstellen einer öffentlichen IP-Adresse
-Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird in der Ressourcengruppe *myResourceGroupLB* eine öffentliche IP-Adresse mit dem Namen *myPublicIP* erstellt:
+
+Um über das Internet auf Ihre App zugreifen zu können, benötigen Sie eine öffentliche IP-Adresse für den Load Balancer. Erstellen Sie mit [New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress) eine öffentliche IP-Adresse. Im folgenden Beispiel wird in der Ressourcengruppe *myResourceGroupLB* eine öffentliche IP-Adresse mit dem Namen *myPublicIP* erstellt:
 
 ```azurepowershell-interactive
-$publicIP = New-AzureRmPublicIpAddress `
+$publicIP = New-AzPublicIpAddress `
 -Name "myPublicIP" `
 -ResourceGroupName "myResourceGroupLB" `
 -Location "EastUS" `
 -Sku "Standard" `
 -AllocationMethod "Static"
-  
 ```
+
 ## <a name="create-standard-load-balancer"></a>Erstellen einer Load Balancer Standard-Instanz
- In diesem Abschnitt konfigurieren Sie die Front-End-IP-Adresse und den Back-End-Adresspool für den Load Balancer und erstellen anschließend den Load Balancer im Tarif „Basic“.
- 
-### <a name="create-frontend-ip"></a>Erstellen der Front-End-IP-Adresse
-Erstellen Sie eine Front-End-IP-Adresse mit [New-AzureRmLoadBalancerFrontendIpConfig](/powershell/module/azurerm.network/new-azurermloadbalancerfrontendipconfig). Im folgenden Beispiel wird eine Front-End-IP-Konfiguration mit dem Namen *myFrontEnd* erstellt und die Adresse *myPublicIP* angefügt: 
+
+In diesem Abschnitt konfigurieren Sie die Front-End-IP-Adresse und den Back-End-Adresspool für den Lastenausgleich und erstellen anschließend die Load Balancer Standard-Instanz.
+
+### <a name="create-front-end-ip"></a>Erstellen der Front-End-IP-Adresse
+
+Erstellen Sie mit [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig) eine Front-End-IP-Adresse. Im folgenden Beispiel wird eine Front-End-IP-Konfiguration namens *myFrontEnd* erstellt und die Adresse *myPublicIP* angefügt:
 
 ```azurepowershell-interactive
-$frontendIP = New-AzureRmLoadBalancerFrontendIpConfig `
+$frontendIP = New-AzLoadBalancerFrontendIpConfig `
   -Name "myFrontEnd" `
   -PublicIpAddress $publicIP
 ```
 
-### <a name="configure-backend-address-pool"></a>Konfigurieren des Back-End-Adresspools
+### <a name="configure-back-end-address-pool"></a>Konfigurieren des Back-End-Adresspools
 
-Erstellen Sie einen Back-End-Adresspool mit [New-AzureRmLoadBalancerBackendAddressPoolConfig](/powershell/module/azurerm.network/new-azurermloadbalancerbackendaddresspoolconfig). In den verbleibenden Schritten werden die virtuellen Computer an diesen Back-End-Pool angefügt. Im folgenden Beispiel wird ein Back-End-Adresspool namens *myBackEndPool* erstellt:
+Erstellen Sie mit [New-AzLoadBalancerBackendAddressPoolConfig](/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) einen Back-End-Adresspool. In den verbleibenden Schritten werden die virtuellen Computer an diesen Back-End-Pool angefügt. Im folgenden Beispiel wird ein Back-End-Adresspool namens *myBackEndPool* erstellt:
 
 ```azurepowershell-interactive
-$backendPool = New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
+$backendPool = New-AzLoadBalancerBackendAddressPoolConfig -Name "myBackEndPool"
 ```
+
 ### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
-Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Falls bei einem virtuellen Computer innerhalb eines Intervalls von 15 Sekunden zwei aufeinanderfolgende Fehler auftreten, wird er standardmäßig aus der Load Balancer-Verteilung entfernt. Integritätstests werden auf der Grundlage eines Protokolls oder einer spezifischen Integritätsprüfungsseite für Ihre App erstellt. 
+Damit der Load Balancer den Status Ihrer App überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. Falls bei einem virtuellen Computer innerhalb eines Intervalls von 15 Sekunden zwei aufeinanderfolgende Fehler auftreten, wird er standardmäßig aus der Load Balancer-Verteilung entfernt. Integritätstests werden auf der Grundlage eines Protokolls oder einer spezifischen Integritätsprüfungsseite für Ihre App erstellt.
 
 Im folgenden Beispiel wird ein TCP-Test erstellt. Sie können auch benutzerdefinierte HTTP-Tests für differenziertere Integritätsprüfungen erstellen. Bei Verwendung eines benutzerdefinierten HTTP-Tests müssen Sie die Integritätsprüfungsseite erstellen, z.B. *healthcheck.aspx*. Der Test muss die HTTP-Antwort **200 OK** zurückgeben, damit der Load Balancer den Host nicht aus der Rotation entfernt.
 
-Um einen TCP-Integritätstest zu erstellen, verwenden Sie [Add-AzureRmLoadBalancerProbeConfig](/powershell/module/azurerm.network/add-azurermloadbalancerprobeconfig). Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *HTTP*-Port *80* überwacht:
+Erstellen Sie mithilfe von [Add-AzLoadBalancerProbeConfig](/powershell/module/az.network/add-azloadbalancerprobeconfig) einen TCP-Integritätstest. Im folgenden Beispiel wird ein Integritätstest mit dem Namen *myHealthProbe* erstellt, der die einzelnen virtuellen Computer an *HTTP*-Port *80* überwacht:
 
 ```azurepowershell-interactive
-$probe = New-AzureRmLoadBalancerProbeConfig `
+$probe = New-AzLoadBalancerProbeConfig `
   -Name "myHealthProbe" `
   -RequestPath healthcheck2.aspx `
   -Protocol http `
@@ -90,10 +98,10 @@ $probe = New-AzureRmLoadBalancerProbeConfig `
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 Mithilfe einer Load Balancer-Regel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt werden soll. Sie definieren die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport. Um sicherzustellen, dass nur fehlerfreie virtuelle Computer Datenverkehr empfangen, definieren Sie zudem den zu verwendenden Integritätstest.
 
-Erstellen Sie mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/add-azurermloadbalancerruleconfig) eine Load Balancer-Regel. Im folgenden Beispiel wird eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
+Erstellen Sie mit [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/add-azloadbalancerruleconfig) eine Lastenausgleichsregel. Im folgenden Beispiel wird eine Lastenausgleichsregel mit dem Namen *myLoadBalancerRule* erstellt und der Datenverkehr an *TCP*-Port *80* ausgeglichen:
 
 ```azurepowershell-interactive
-$lbrule = New-AzureRmLoadBalancerRuleConfig `
+$lbrule = New-AzLoadBalancerRuleConfig `
   -Name "myLoadBalancerRule" `
   -FrontendIpConfiguration $frontendIP `
   -BackendAddressPool $backendPool `
@@ -105,17 +113,17 @@ $lbrule = New-AzureRmLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>Erstellen der NAT-Regeln
 
-Erstellen Sie NAT-Regeln mit [Add-AzureRmLoadBalancerRuleConfig](/powershell/module/azurerm.network/new-azurermloadbalancerinboundnatruleconfig). Im folgenden Beispiel werden NAT-Regeln mit den Namen *myLoadBalancerRDP1* und *myLoadBalancerRDP2* erstellt, um RDP-Verbindungen zu den Back-End-Servern über die Ports 4221 und 4222 zuzulassen:
+Erstellen Sie mit [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig) NAT-Regeln. Im folgenden Beispiel werden NAT-Regeln mit den Namen *myLoadBalancerRDP1* und *myLoadBalancerRDP2* erstellt, um RDP-Verbindungen mit den Back-End-Servern über die Ports 4221 und 4222 zuzulassen:
 
 ```azurepowershell-interactive
-$natrule1 = New-AzureRmLoadBalancerInboundNatRuleConfig `
+$natrule1 = New-AzLoadBalancerInboundNatRuleConfig `
 -Name 'myLoadBalancerRDP1' `
 -FrontendIpConfiguration $frontendIP `
 -Protocol tcp `
 -FrontendPort 4221 `
 -BackendPort 3389
 
-$natrule2 = New-AzureRmLoadBalancerInboundNatRuleConfig `
+$natrule2 = New-AzLoadBalancerInboundNatRuleConfig `
 -Name 'myLoadBalancerRDP2' `
 -FrontendIpConfiguration $frontendIP `
 -Protocol tcp `
@@ -125,10 +133,10 @@ $natrule2 = New-AzureRmLoadBalancerInboundNatRuleConfig `
 
 ### <a name="create-load-balancer"></a>Erstellen eines Load Balancers
 
-Erstellen Sie die Load Balancer Standard-Instanz mit [New-AzureRmLoadBalancer](/powershell/module/azurerm.network/new-azurermloadbalancer). Im folgenden Beispiel wird ein öffentlicher Load Balancer im Tarif „Basic“ mit dem Namen myLoadBalancer erstellt, indem die in den obigen Schritten erstellte Front-End-IP-Konfiguration, der Back-End-Pool, der Integritätstest, die Lastenausgleichsregel und die NAT-Regeln verwendet werden:
+Erstellen Sie mit [New-AzLoadBalancer](/powershell/module/az.network/new-azloadbalancer) die Load Balancer Standard-Instanz. Im folgenden Beispiel wird unter Verwendung der Front-End-IP-Konfiguration, des Back-End-Pools, des Integritätstests, der Lastenausgleichsregel und der NAT-Regeln aus den obigen Schritten eine öffentliche Load Balancer Standard-Instanz namens „myLoadBalancer“ erstellt:
 
 ```azurepowershell-interactive
-$lb = New-AzureRmLoadBalancer `
+$lb = New-AzLoadBalancer `
 -ResourceGroupName 'myResourceGroupLB' `
 -Name 'MyLoadBalancer' `
 -Location 'eastus' `
@@ -144,31 +152,32 @@ $lb = New-AzureRmLoadBalancer `
 Bevor Sie einige VMs bereitstellen und Ihren Load Balancer testen können, müssen Sie unterstützende Netzwerkressourcen erstellen: ein virtuelles Netzwerk und virtuelle NICs. 
 
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
-Erstellen Sie mit [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz namens *mySubnet* erstellt:
+Erstellen Sie mit [New-AzVirtualNetwork](/powershell/module/az.network/new-azvirtualnetwork) ein virtuelles Netzwerk. Im folgenden Beispiel wird ein virtuelles Netzwerk namens *myVnet* mit einem Subnetz namens *mySubnet* erstellt:
 
 ```azurepowershell-interactive
 # Create subnet config
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
+$subnetConfig = New-AzVirtualNetworkSubnetConfig `
   -Name "mySubnet" `
   -AddressPrefix 10.0.2.0/24
 
 # Create the virtual network
-$vnet = New-AzureRmVirtualNetwork `
+$vnet = New-AzVirtualNetwork `
   -ResourceGroupName "myResourceGroupLB" `
   -Location "EastUS" `
   -Name "myVnet" `
   -AddressPrefix 10.0.0.0/16 `
   -Subnet $subnetConfig
 ```
+
 ### <a name="create-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 Erstellen Sie eine Netzwerksicherheitsgruppe, um eingehende Verbindungen für Ihr virtuelles Netzwerk zu definieren.
 
 #### <a name="create-a-network-security-group-rule-for-port-3389"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für Port 3389
-Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um RDP-Verbindungen über Port 3389 mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) zuzulassen.
+Erstellen Sie mit [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) eine Netzwerksicherheitsgruppen-Regel, um RDP-Verbindungen über den Port 3389 zuzulassen.
 
 ```azurepowershell-interactive
 
-$rule1 = New-AzureRmNetworkSecurityRuleConfig `
+$rule1 = New-AzNetworkSecurityRuleConfig `
 -Name 'myNetworkSecurityGroupRuleRDP' `
 -Description 'Allow RDP' `
 -Access Allow `
@@ -182,10 +191,10 @@ $rule1 = New-AzureRmNetworkSecurityRuleConfig `
 ```
 
 #### <a name="create-a-network-security-group-rule-for-port-80"></a>Erstellen einer Netzwerksicherheitsgruppen-Regel für Port 80
-Erstellen Sie eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen über Port 80 mit [New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) zuzulassen.
+Erstellen Sie mit [New-AzNetworkSecurityRuleConfig](/powershell/module/az.network/new-aznetworksecurityruleconfig) eine Netzwerksicherheitsgruppen-Regel, um eingehende Verbindungen über den Port 80 zuzulassen.
 
 ```azurepowershell-interactive
-$rule2 = New-AzureRmNetworkSecurityRuleConfig `
+$rule2 = New-AzNetworkSecurityRuleConfig `
 -Name 'myNetworkSecurityGroupRuleHTTP' `
 -Description 'Allow HTTP' `
 -Access Allow `
@@ -197,12 +206,13 @@ $rule2 = New-AzureRmNetworkSecurityRuleConfig `
 -DestinationAddressPrefix * `
 -DestinationPortRange 80
 ```
+
 #### <a name="create-a-network-security-group"></a>Erstellen einer Netzwerksicherheitsgruppe
 
-Erstellen Sie eine Netzwerksicherheitsgruppe mit [New-AzureRmNetworkSecurityGroup](/powershell/module/azurerm.network/new-azurermnetworksecuritygroup).
+Erstellen Sie mit [New-AzNetworkSecurityGroup](/powershell/module/az.network/new-aznetworksecuritygroup) eine Netzwerksicherheitsgruppe.
 
 ```azurepowershell-interactive
-$nsg = New-AzureRmNetworkSecurityGroup `
+$nsg = New-AzNetworkSecurityGroup `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
 -Name 'myNetworkSecurityGroup' `
@@ -210,11 +220,11 @@ $nsg = New-AzureRmNetworkSecurityGroup `
 ```
 
 ### <a name="create-nics"></a>Erstellen von NICs
-Erstellen Sie virtuelle NICs per [New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface). Im folgenden Beispiel werden zwei virtuelle Netzwerkkarten erstellt. (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
+Erstellen Sie mit [New-AzNetworkInterface](/powershell/module/az.network/new-aznetworkinterface) virtuelle NICs. Im folgenden Beispiel werden zwei virtuelle Netzwerkkarten erstellt. (jeweils eine virtuelle NIC pro virtuellem Computer, den Sie in den folgenden Schritten für Ihre App erstellen). Sie können jederzeit weitere virtuelle NICs und virtuelle Computer erstellen und dem Load Balancer hinzufügen:
 
 ```azurepowershell-interactive
 # Create NIC for VM1
-$nicVM1 = New-AzureRmNetworkInterface `
+$nicVM1 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
 -Name 'MyNic1' `
@@ -224,7 +234,7 @@ $nicVM1 = New-AzureRmNetworkInterface `
 -Subnet $vnet.Subnets[0]
 
 # Create NIC for VM2
-$nicVM2 = New-AzureRmNetworkInterface `
+$nicVM2 = New-AzNetworkInterface `
 -ResourceGroupName 'myResourceGroupLB' `
 -Location 'EastUS' `
 -Name 'MyNic2' `
@@ -232,16 +242,15 @@ $nicVM2 = New-AzureRmNetworkInterface `
 -NetworkSecurityGroup $nsg `
 -LoadBalancerInboundNatRule $natrule2 `
 -Subnet $vnet.Subnets[0]
-
 ```
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 Fügen Sie die virtuellen Computer in eine Verfügbarkeitsgruppe ein, um die Hochverfügbarkeit Ihrer App zu optimieren.
 
-Erstellen Sie mithilfe von [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
+Erstellen Sie mithilfe von [New-AzAvailabilitySet](/powershell/module/az.compute/new-azavailabilityset) eine Verfügbarkeitsgruppe. Im folgenden Beispiel wird eine Verfügbarkeitsgruppe namens *myAvailabilitySet* erstellt:
 
 ```azurepowershell-interactive
-$availabilitySet = New-AzureRmAvailabilitySet `
+$availabilitySet = New-AzAvailabilitySet `
   -ResourceGroupName "myResourceGroupLB" `
   -Name "myAvailabilitySet" `
   -Location "EastUS" `
@@ -256,12 +265,12 @@ Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5
 $cred = Get-Credential
 ```
 
-Nun können Sie mit [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) die VMs erstellen. Im folgenden Beispiel werden zwei VMs und die erforderlichen Komponenten des virtuellen Netzwerks erstellt, falls sie nicht bereits vorhanden sind:
+Nun können Sie mit [New-AzVM](/powershell/module/az.compute/new-azvm) die virtuellen Computer erstellen. Im folgenden Beispiel werden zwei VMs und die erforderlichen Komponenten des virtuellen Netzwerks erstellt, falls sie nicht bereits vorhanden sind:
 
 ```azurepowershell-interactive
 for ($i=1; $i -le 2; $i++)
 {
-    New-AzureRmVm `
+    New-AzVm `
         -ResourceGroupName "myResourceGroupLB" `
         -Name "myVM$i" `
         -Location "East US" `
@@ -278,25 +287,27 @@ for ($i=1; $i -le 2; $i++)
 Mit dem Parameter `-AsJob` wird die VM als Hintergrundaufgabe erstellt, sodass die PowerShell-Aufforderungen für Sie zurückgegeben werden. Sie können die Details von Hintergrundaufträgen mit dem `Job`-Cmdlet anzeigen. Die Erstellung und Konfiguration der beiden virtuellen Computer dauert einige Minuten.
 
 ### <a name="install-iis-with-custom-web-page"></a>Installieren von IIS mit benutzerdefinierter Webseite
- 
-Installieren Sie IIS mit einer benutzerdefinierten Webseite wie folgt auf beiden virtuellen Back-End-Computern:
 
-1. Rufen Sie die öffentliche IP-Adresse des Load Balancers ab. Verwenden Sie `Get-AzureRmPublicIPAddress`, um die öffentliche IP-Adresse des Load Balancers abzurufen.
+Installieren Sie IIS mit einer benutzerdefinierten Webseite auf beiden virtuellen Back-End-Computern:
+
+1. Rufen Sie die öffentliche IP-Adresse des Load Balancers ab. Verwenden Sie `Get-AzPublicIPAddress`, um die öffentliche IP-Adresse des Load Balancers abzurufen.
 
   ```azurepowershell-interactive
-    Get-AzureRmPublicIPAddress `
+    Get-AzPublicIPAddress `
     -ResourceGroupName "myResourceGroupLB" `
     -Name "myPublicIP" | select IpAddress
   ```
 2. Erstellen Sie eine Remotedesktopverbindung mit VM1, indem Sie die öffentliche IP-Adresse verwenden, die Sie im vorherigen Schritt abgerufen haben. 
 
-  ```azurepowershell-interactive
+   ```azurepowershell-interactive
 
       mstsc /v:PublicIpAddress:4221  
   
-  ```
+   ```
+
 3. Geben Sie die Anmeldeinformationen für *VM1* ein, um die RDP-Sitzung zu starten.
 4. Starten Sie Windows PowerShell auf VM1, und verwenden Sie die folgenden Befehle, um den IIS-Server zu installieren und die HTM-Standarddatei zu aktualisieren.
+
     ```azurepowershell-interactive
     # Install IIS
       Install-WindowsFeature -name Web-Server -IncludeManagementTools
@@ -307,14 +318,15 @@ Installieren Sie IIS mit einer benutzerdefinierten Webseite wie folgt auf beiden
     #Add custom htm file
      Add-Content -Path "C:\inetpub\wwwroot\iisstart.htm" -Value $("Hello World from host" + $env:computername)
     ```
+
 5. Schließen Sie die RDP-Verbindung mit *myVM1*.
 6. Erstellen Sie eine RDP-Verbindung mit *myVM2*, indem Sie den Befehl `mstsc /v:PublicIpAddress:4222` ausführen, und wiederholen Sie Schritt 4 für *VM2*.
 
 ## <a name="test-load-balancer"></a>Testen des Load Balancers
-Rufen Sie mit [Get-AzureRmPublicIPAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) die öffentliche IP-Adresse Ihres Load Balancers ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
+Rufen Sie mit [Get-AzPublicIPAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse Ihres Lastenausgleichs ab. Im folgenden Beispiel wird die IP-Adresse für *myPublicIP* abgerufen, die wir zuvor erstellt haben:
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIPAddress `
+Get-AzPublicIPAddress `
   -ResourceGroupName "myResourceGroupLB" `
   -Name "myPublicIP" | select IpAddress
 ```
@@ -327,15 +339,15 @@ Sie können eine erzwungene Aktualisierung Ihres Webbrowsers durchführen, um zu
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) entfernen.
+Wenn Ressourcengruppe, virtueller Computer und alle zugehörigen Ressourcen nicht mehr benötigt werden, können Sie sie mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen.
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name myResourceGroupLB
+Remove-AzResourceGroup -Name myResourceGroupLB
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Tarif „Basic“ erstellt, virtuelle Computer angefügt, eine Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
+In dieser Schnellstartanleitung haben Sie einen Lastenausgleich im Standard-Tarif erstellt, virtuelle Computer angefügt, die Datenverkehrsregel für den Lastenausgleich sowie einen Integritätstest konfiguriert und den Lastenausgleich getestet. Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials zu Azure Load Balancer.
 
 > [!div class="nextstepaction"]
 > [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)

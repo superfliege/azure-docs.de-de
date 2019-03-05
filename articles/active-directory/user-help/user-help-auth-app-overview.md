@@ -12,14 +12,18 @@ ms.topic: overview
 ms.date: 01/24/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79abead77705d13df909703a234bf72ee121a5be
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: 8585557672c7db15e07be6a5e663ba1811e07694
+ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56301178"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56961311"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Wozu dient die Microsoft Authenticator-App?
+
+>[!Important]
+>Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+
 Die Microsoft Authenticator-App unterstützt Sie bei der Kontoanmeldung, wenn Sie die zweistufige Überprüfung verwenden. Mit der zweistufigen Überprüfung können Sie die Sicherheit des Zugriffs auf Ihre Konten erhöhen, insbesondere, wenn Sie vertrauliche Informationen anzeigen. Kennwörter können vergessen, gestohlen oder kompromittiert werden. Die zweistufige Überprüfung ist eine zusätzliche Sicherheitsmaßnahme, die zum Schutz Ihres Kontos beiträgt, indem sie den Zugriff durch Unbefugte erschwert.
 
 Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfolgen:
@@ -31,9 +35,9 @@ Die Verwendung der Microsoft Authenticator-App kann auf verschiedene Arten erfol
 >[!Important]
 >Die Microsoft Authenticator-App funktioniert mit jeder App, für die die zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
 
->Dieser Inhalt richtet sich an Benutzer. Administratoren finden in der [Azure Active Directory-Dokumentation](https://docs.microsoft.com/azure/active-directory) weitere Informationen zum Einrichten und Verwalten der Azure Active Directory-Umgebung (Azure AD).
+>Ihre Organisation erfordert möglicherweise die Verwendung einer Authentifikator-App zum Anmelden und für den Zugriff auf Ihre Organisationsdaten und -dokumente. Ihr Benutzername kann in der App zwar angezeigt werden, das Konto ist jedoch erst tatsächlich als Überprüfungsmethode eingerichtet, nachdem Sie den Registrierungsprozess abgeschlossen haben. Weitere Informationen finden Sie unter [Hinzufügen Ihres Geschäfts-, Schul- oder Unikontos](user-help-auth-app-overview.md).
 
->Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie dem Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429). Erhalten Sie weitere Informationen zur Meldung [Dieses Microsoft-Konto ist nicht vorhanden.](https://support.microsoft.com/help/13811), wenn Sie sich bei Ihrem Microsoft-Konto anmelden.
+>Wenn Sie Probleme bei der Anmeldung bei Ihrem Konto haben, lesen Sie den Artikel [Wenn Sie sich nicht bei Ihrem Microsoft-Konto anmelden können](https://support.microsoft.com/help/12429). Erhalten Sie weitere Informationen zur Meldung [Dieses Microsoft-Konto ist nicht vorhanden.](https://support.microsoft.com/help/13811), wenn Sie sich bei Ihrem Microsoft-Konto anmelden.
 
 ## <a name="terminology"></a>Begriff
 |Begriff|BESCHREIBUNG|

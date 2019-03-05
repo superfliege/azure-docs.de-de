@@ -13,14 +13,14 @@ ms.date: 11/28/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df5d42135c538ca3d0a63252805efb44cef7e8b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 536edcf74bff6f89dade4a713c40c9bef12e18af
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190465"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56881803"
 ---
-# <a name="what-is-hybrid-identity"></a>Was ist eine Hybrididentität? 
+# <a name="what-is-hybrid-identity"></a>Was ist eine Hybrididentität?
 
 Heutzutage werden Unternehmen und Konzerne immer mehr zu einer Mischung aus lokalen Anwendungen und Cloudanwendungen.  Benutzer benötigen lokal und in der Cloud Zugriff auf diese Anwendungen. Diese Anforderung ist ein schwieriges Szenario geworden. 
 
@@ -30,7 +30,7 @@ Um Hybrididentität zu erreichen, kann, je nach Szenario, eine der drei Authenti
 
 - **[Kennworthashsynchronisierung (Password hash synchronization, PHS)](whatis-phs.md)**  
 - **[Passthrough-Authentifizierung (PTA)](how-to-connect-pta.md)**  
-- **[Verbund](whatis-fed.md)** 
+- **[Verbund (AD FS)](whatis-fed.md)** 
 
 Diese Authentifizierungsmethoden bieten auch [SSO](how-to-connect-sso.md)-Funktionen.  Einmaliges Anmelden meldet Benutzer automatisch bei ihren Unternehmensgeräten an, die mit dem Unternehmensnetzwerk verbunden sind.
 
@@ -47,7 +47,7 @@ Im Folgenden sind einige verbreitete Hybrididentitäts- und Zugriffsverwaltungss
 |Ermöglichen der Anmeldung und des Zugriffs auf Clouddienste für meine Benutzer mit ihrem lokalen Kennwort|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Implementieren des einmaligen Anmeldens mit Anmeldeinformationen des Unternehmens|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| ![Empfohlen](./media/whatis-hybrid-identity/ic195031.png) |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|  
 |Sicherstellen, dass keine Kennworthashes in der Cloud gespeichert werden| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
-|Aktivieren der Multi-Factor Authentication-Cloudlösungen| |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
+|Aktivieren der cloudbasierten Lösungen für mehrstufige Authentifizierung|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)|![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Aktivieren der lokalen Multi-Factor Authentication-Lösungen| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Unterstützen der Smartcard-Authentifizierung für meine Benutzer<sup>4</sup>| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 
 |Anzeigen von Benachrichtigungen zum Kennwortablauf im Office-Portal und auf dem Windows 10-Desktop| | |![Empfohlen](./media/whatis-hybrid-identity/ic195031.png)| 

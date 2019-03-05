@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: ed2d1256508e588000970879dae7ac653797fbf9
-ms.sourcegitcommit: b4755b3262c5b7d546e598c0a034a7c0d1e261ec
+ms.openlocfilehash: 7f20f237b83550b4c78b1fb7488e62119470a85a
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54883312"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56876992"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>Integration eines virtuellen Netzwerks für Azure Data Lake Storage Gen1
 
@@ -87,7 +87,7 @@ Einige der verfügbaren Optionen sind:
 
 1.  Navigieren Sie zum Azure-Portal, und melden Sie sich an Ihrem Konto an.
  
-2.  [Erstellen Sie ein neues virtuelles Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) unter Ihrem Abonnement. Sie können auch zu einem vorhandenen virtuellen Netzwerk navigieren. Das virtuelle Netzwerk muss sich in derselben Region wie das Data Lake Storage Gen 1-Konto befinden.
+2.  [Erstellen Sie ein neues virtuelles Netzwerk](https://docs.microsoft.com/azure/virtual-network/quick-create-portal) in Ihrem Abonnement. Sie können auch zu einem vorhandenen virtuellen Netzwerk navigieren. Das virtuelle Netzwerk muss sich in derselben Region wie das Data Lake Storage Gen 1-Konto befinden.
  
 3.  Wählen Sie auf dem Blatt **Virtuelles Netzwerk** die Option **Dienstendpunkte**.
  

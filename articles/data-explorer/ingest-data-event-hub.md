@@ -7,13 +7,13 @@ ms.author: v-orspod
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 09/24/2018
-ms.openlocfilehash: 5d9819d60e21c80b882db1d12b0318599fa54095
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.date: 02/2/2018
+ms.openlocfilehash: 7b724219750154c5ec1410af64175bc70f5cbd6c
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729736"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56805814"
 ---
 # <a name="quickstart-ingest-data-from-event-hub-into-azure-data-explorer"></a>Schnellstart: Erfassen von Daten aus Event Hub in Azure Data Explorer
 
@@ -103,11 +103,7 @@ Als Nächstes stellen Sie über Azure Data Explorer eine Verbindung mit dem Even
 
     ![Testdatenbank auswählen](media/ingest-data-event-hub/select-test-database.png)
 
-1. Wählen Sie **Datenerfassung** und dann **Datenverbindung hinzufügen** aus.
-
-    ![Datenerfassung](media/ingest-data-event-hub/data-ingestion-create.png)
-
-1. Füllen Sie das Formular mit den folgenden Informationen aus, und wählen Sie dann **Erstellen** aus.
+1. Wählen Sie **Datenerfassung** und dann **Datenverbindung hinzufügen** aus. Füllen Sie dann das Formular mit den folgenden Informationen aus. Wählen Sie **Erstellen**, wenn Sie fertig sind.
 
     ![Event Hub-Verbindung](media/ingest-data-event-hub/event-hub-connection.png)
 

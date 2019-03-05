@@ -11,33 +11,38 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 3940c2f239a4354cfb44a499f7375f4ba34f8aa8
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.date: 02/18/2019
+ms.openlocfilehash: 3bf0f62b0a8d909231ad747435ce363e6686fe80
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892026"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874748"
 ---
 # <a name="getting-started-with-azure-sql-database-managed-instance"></a>Erste Schritte mit verwalteten Azure SQL-Datenbank-Instanzen
 
-Die Bereitstellungsoption [verwaltete Instanz](sql-database-managed-instance-index.yml) erstellt eine Datenbank mit nahezu uneingeschränkter Kompatibilität mit der aktuellen lokalen SQL Server-Datenbank-Engine (Enterprise Edition). Darüber hinaus bietet sie eine native Implementierung eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zur Behebung allgemeiner Sicherheitsrisiken sowie ein vorteilhaftes [Geschäftsmodell](https://azure.microsoft.com/pricing/details/sql-database/) für Kunden mit lokaler SQL Server-Instanz. In diesem Abschnitt erfahren Sie, wie Sie schnell eine verwaltete Instanz konfigurieren und erstellen und Ihre Datenbanken migrieren.
+Bei der Bereitstellungsoption [Verwaltete Instanz](sql-database-managed-instance-index.yml) wird eine Datenbank mit nahezu uneingeschränkter Kompatibilität mit der aktuellen lokalen SQL Server-Datenbank-Engine (Enterprise Edition) erstellt. Darüber hinaus bietet sie eine native Implementierung eines [virtuellen Netzwerks (VNET)](../virtual-network/virtual-networks-overview.md) zur Behebung allgemeiner Sicherheitsrisiken sowie ein vorteilhaftes [Geschäftsmodell](https://azure.microsoft.com/pricing/details/sql-database/) für Kunden mit lokaler SQL Server-Instanz. In diesem Artikel erfahren Sie, wie Sie schnell eine verwaltete Instanz konfigurieren und erstellen und Ihre Datenbanken migrieren.
 
 ## <a name="quickstart-overview"></a>Schnellstartübersicht
 
-In den folgenden Schnellstarts erfahren Sie, wie Sie schnell eine verwaltete Instanz erstellen, eine VM oder eine Point-to-Site-VPN-Verbindung für Clientanwendungen konfigurieren und eine Datenbank mithilfe einer `.bak`-Datei in Ihrer neuen verwalteten Instanz wiederherstellen:
+In den folgenden Schnellstarts erfahren Sie, wie Sie schnell eine verwaltete Instanz erstellen, eine VM oder eine Point-to-Site-VPN-Verbindung für Clientanwendungen konfigurieren und eine Datenbank mithilfe einer `.bak`-Datei in Ihrer neuen verwalteten Instanz wiederherstellen.
 
-- [Erstellen einer verwalteten Instanz im Azure-Portal](sql-database-managed-instance-get-started.md). Im Azure-Portal können Sie die erforderlichen Parameter (Benutzername/Kennwort, Anzahl von Kernen, maximaler Speicher) konfigurieren und automatisch eine Azure-Netzwerkumgebung erstellen, ohne sich mit Netzwerkdetails oder Infrastrukturanforderungen zu befassen. Sie müssen lediglich sicherstellen, dass Sie über einen [Abonnementtyp](sql-database-managed-instance-resource-limits.md#supported-subscription-types) verfügen, der die Erstellung einer verwalteten Instanz zulässt. Wenn Sie Ihr eigenes Netzwerk verwenden oder das Netzwerk anpassen möchten, lesen Sie die Dokumentation zum Konfigurieren der Netzwerkumgebung für eine verwaltete Instanz.
-- Eine verwaltete Instanz wird in einem eigenen VNET ohne öffentlichen Endpunkt erstellt. Für den Clientanwendungszugriff können Sie wie in einem der folgenden Schnellstarts beschrieben eine VM im gleichen VNET (in einem anderen Subnetz) oder eine Point-to-Site-VPN-Verbindung mit dem VNET auf Ihrem Clientcomputer erstellen.
+### <a name="configure-environment"></a>Konfigurieren der Umgebung
+Zunächst müssen Sie Ihre verwaltete Instanz mit der Netzwerkumgebung erstellen, in der sie angeordnet werden soll. Außerdem müssen Sie die Verbindung vom Computer bzw. virtuellen Computer aktivieren, auf dem Sie Abfragen für die verwaltete Instanz ausführen. Sie können die folgenden Leitfäden verwenden:
+
+- [Erstellen einer verwalteten Instanz im Azure-Portal](sql-database-managed-instance-get-started.md). Im Azure-Portal können Sie die erforderlichen Parameter (Benutzername/Kennwort, Anzahl von Kernen und maximale Speichermenge) konfigurieren und automatisch die Azure-Netzwerkumgebung erstellen, ohne sich mit Netzwerkdetails oder Infrastrukturanforderungen befassen zu müssen. Sie müssen lediglich sicherstellen, dass Sie über einen [Abonnementtyp](sql-database-managed-instance-resource-limits.md#supported-subscription-types) verfügen, für den derzeit die Erstellung einer verwalteten Instanz zulässig ist. Wenn Sie ein eigenes Netzwerk verwenden oder das Netzwerk anpassen möchten, helfen Ihnen die Informationen unter [Konfigurieren eines vorhandenen virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-configure-vnet-subnet.md) oder [Erstellen eines virtuellen Netzwerks für eine verwaltete Azure SQL-Datenbank-Instanz](sql-database-managed-instance-create-vnet-subnet.md) weiter.
+- Eine verwaltete Instanz wird in einem eigenen VNET ohne öffentlichen Endpunkt erstellt. Für den Clientanwendungszugriff können Sie wie in einem der folgenden Schnellstartanleitungen beschrieben **eine VM in demselben VNET (in einem anderen Subnetz)** oder **eine Point-to-Site-VPN-Verbindung mit dem VNET auf Ihrem Clientcomputer erstellen**:
+
   - Für die Konnektivität von Clientanwendungen (einschließlich SQL Server Management Studio) erstellen Sie eine [Azure-VM im VNET der verwalteten Instanz](sql-database-managed-instance-configure-vm.md).
   - Richten Sie auf dem Clientcomputer, auf dem Sie SQL Server Management Studio und andere Anwendungen mit Clientkonnektivität ausführen, eine [Point-to-Site-VPN-Verbindung mit Ihrer verwalteten Instanz](sql-database-managed-instance-configure-p2s.md) ein. Dies ist eine der zwei Optionen für die Konnektivität mit Ihrer verwalteten Instanz und dem zugehörigen VNET.
 
   > [!NOTE]
   > Sie können auch ExpressRoute oder eine Site-to-Site-Verbindung über Ihr lokales Netzwerk verwenden. Diese Methoden werden in den Schnellstarts jedoch nicht behandelt.
 
-Nachdem Sie eine verwaltete Instanz erstellt und den Zugriff konfiguriert haben, können Sie mit der Migration Ihrer Datenbanken in der lokalen SQL Server-Instanz oder auf Azure-VMs beginnen. Die Migration schlägt fehl, wenn die zu migrierende Quelldatenbank nicht unterstützte Features enthält. Um Fehler zu vermeiden und die Kompatibilität zu überprüfen, können Sie den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installieren. Dieser analysiert Ihre Datenbanken in SQL Server und ermittelt sämtliche Probleme, die die Migration zu einer verwalteten Instanz verhindern können (beispielsweise das Vorhandensein von [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) oder mehreren Protokolldateien). Nachdem Sie diese Probleme behoben haben, sind Ihre Datenbanken bereit für die Migration zur verwalteten Instanz. Der [Assistent für Datenbankexperimente](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) ist ein nützliches Tool, das Ihre Workload in SQL Server aufzeichnen und in der verwalteten Instanz wiedergeben kann, um zu ermitteln, ob nach der Migration zu einer verwalteten Instanz Leistungsprobleme zu erwarten sind.
+### <a name="migrate-your-databases"></a>Migrieren Ihrer Datenbanken 
+Nachdem Sie eine verwaltete Instanz erstellt und den Zugriff konfiguriert haben, können Sie mit der Migration Ihrer Datenbanken von lokalen SQL Server-Instanzen oder Azure-VMs beginnen. Die Migration schlägt fehl, wenn die zu migrierende Quelldatenbank nicht unterstützte Features enthält. Um Fehler zu vermeiden und die Kompatibilität zu überprüfen, können Sie den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) installieren. Dieser analysiert Ihre Datenbanken in SQL Server und ermittelt sämtliche Probleme, die die Migration zu einer verwalteten Instanz verhindern können (beispielsweise das Vorhandensein von [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) oder mehreren Protokolldateien). Nachdem Sie diese Probleme behoben haben, sind Ihre Datenbanken bereit für die Migration zur verwalteten Instanz. Der [Assistent für Datenbankexperimente](https://blogs.msdn.microsoft.com/datamigration/2018/08/06/release-database-experimentation-assistant-dea-v2-6/) ist ein nützliches Tool, das Ihre Workload in SQL Server aufzeichnen und in der verwalteten Instanz wiedergeben kann, um zu ermitteln, ob nach der Migration zu einer verwalteten Instanz Leistungsprobleme zu erwarten sind.
 
-Sobald Sie sicher sind, dass Ihre Datenbank zu einer verwalteten Instanz migriert werden kann, können Sie die nativen Wiederherstellungsfunktionen von SQL Server verwenden, um eine Datenbank aus einer `.bak`-Datei in einer verwalteten Instanz wiederherzustellen. Einen Schnellstart finden Sie unter [Wiederherstellen einer Datenbank aus einer Sicherung in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md). In diesem Schnellstart stellen Sie eine Datenbank mit dem Transact-SQL-Befehl `RESTORE` aus einer in Azure Blob Storage gespeicherten `.bak`-Datei wieder her. 
+Sobald Sie sicher sind, dass Ihre Datenbank zu einer verwalteten Instanz migriert werden kann, können Sie die nativen Wiederherstellungsfunktionen von SQL Server verwenden, um eine Datenbank aus einer `.bak`-Datei in einer verwalteten Instanz wiederherzustellen. Sie können diese Methode verwenden, um Datenbanken von der SQL Server-Datenbank-Engine, die lokal installiert ist, oder von virtuellen Azure-Computern zu migrieren. Einen Schnellstart finden Sie unter [Wiederherstellen einer Datenbank aus einer Sicherung in einer verwalteten Instanz](sql-database-managed-instance-get-started-restore.md). In diesem Schnellstart stellen Sie eine Datenbank mit dem Transact-SQL-Befehl `RESTORE` aus einer in Azure Blob Storage gespeicherten `.bak`-Datei wieder her. 
 
 > [!TIP]
 > Informationen zum Erstellen einer Sicherung Ihrer Datenbank in Azure Blob Storage mit dem Transact-SQL-Befehl `BACKUP` finden Sie unter [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url).
@@ -66,6 +71,6 @@ In den Artikeln in diesen Schnellstarts erfahren Sie, wie Sie schnell eine verwa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Machen Sie sich mit einer [allgemeinen Liste unterstützter Features in verwalteten Instanzen](sql-database-features.md) sowie mit [Details und bekannten Problemen](sql-database-managed-instance-transact-sql-information.md) vertraut.
-- Informieren Sie sich über [technische Merkmale der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits). 
+- Machen Sie sich mit der [allgemeinen Liste mit unterstützten Features in verwalteten Instanzen](sql-database-features.md) sowie mit [Details und bekannten Problemen](sql-database-managed-instance-transact-sql-information.md) vertraut.
+- Informieren Sie sich über [technische Eigenschaften der verwalteten Instanz](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits). 
 - Weiterführende Schrittanleitungen finden Sie unter [Verwenden einer verwalteten Instanz in Azure SQL-Datenbank](sql-database-howto-managed-instance.md). 

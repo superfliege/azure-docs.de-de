@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 0530dbac88fcfbfb05ab29d1c5934a468f263034
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: aff92e8dd45fecc3fabd005e8921eda7add07fb4
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55096635"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56804955"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Tutorial: Erstellen eines Labs mithilfe von Azure DevTest Labs
 In diesem Tutorial erstellen Sie ein Lab über das Azure-Portal. Ein Lab-Administrator richtet ein Lab in einer Organisation ein, erstellt VMs im Lab und konfiguriert Richtlinien. Lab-Benutzer (z.B. Entwickler und Tester) fordern virtuelle Computer im Lab an, stellen eine Verbindung mit ihnen her und nutzen sie. 
@@ -80,7 +80,7 @@ Die folgenden Schritte beschreiben, wie Sie mithilfe des Azure-Portals ein Lab i
 1. Nach ihrer Erstellung sehen Sie sie in der Liste **Abrufbare virtuelle Computer**. 
 
     > [!NOTE] 
-    > Beim Hinzufügen einer Linux-VM zu einem Lab können Sie den SSH- und RDP-Zugriff auf die VM aktivieren. Wenn Sie den Zugriff nicht beim Erstellen der VM aktivieren, können Sie manuell Regeln in der Netzwerksicherheitsgruppe hinzufügen, die der VM zugeordnet ist, um Ports für SSH und RDP zu öffnen.
+    > Auf der Seite **Erweiterte Einstellungen** können Sie öffentliche, private oder freigegebene IP-Adressen für den virtuellen Computer konfigurieren. Wenn **freigegebene IPs** aktiviert sind, aktiviert Azure DevTest Labs automatisch RDP für virtuelle Windows-Computer und SSH für virtuelle Linux-Computer. Bei der Erstellung von virtuellen Computern mit **öffentlichen IP-Adressen** sind RDP und SSH ohne Änderungen durch DevTest Labs aktiviert.  
 
 ## <a name="add-a-user-to-the-lab-user-role"></a>Hinzufügen eines Benutzers zur Rolle „Lab-Benutzer“
 

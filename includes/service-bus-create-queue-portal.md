@@ -5,34 +5,21 @@ services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: include
-ms.date: 06/29/2018
+ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 7ed298fc8f13685c4872c4c54ba1e447debea79f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 17f27ac36ed5c0f348495b5364ef37e3f1632243
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702631"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56588691"
 ---
-Vergewissern Sie sich, dass Sie bereits wie [hier][namespace-how-to] gezeigt einen Service Bus-Namespace erstellt haben.
+## <a name="create-a-queue-in-the-azure-portal"></a>Erstellen einer Warteschlange im Azure-Portal
+4. Wählen Sie auf der Seite **Service Bus-Namespace** im linken Navigationsmenü die Option **Warteschlangen** aus.
+5. Wählen Sie auf der Seite **Warteschlangen** auf der Symbolleiste die Option **+ Warteschlange** aus.
+5. Geben Sie einen **Namen** für die Warteschlange ein, und lassen Sie die anderen Werte unverändert.
+6. Wählen Sie jetzt **Erstellen**.
+ 
+    ![Warteschlangen -> + Warteschlange -> Namen eingeben -> Erstellen](./media/service-bus-create-queue-portal/create-queue3.png)
 
-1. Melden Sie sich beim [Azure-Portal][azure-portal] an.
-2. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Sollte **Service Bus** nicht angezeigt werden, klicken Sie auf **Alle Dienste**.)
-3. Klicken Sie auf den Namespace, in dem die Warteschlange erstellt werden soll. In diesem Fall: **sbnstest1**.
-   
-    ![Erstellen einer Warteschlange][createqueue1]
-4. Klicken Sie im Namespacefenster auf **Warteschlangen** und dann im Fenster **Warteschlangen** auf **+ Warteschlange**.
-   
-    ![„Warteschlangen“ wählen][createqueue2]
-5. Geben Sie den **Warteschlangennamen** ein, und lassen Sie die anderen Werte unverändert.
-   
-    ![„Neu“ wählen][createqueue3]
-6. Klicken Sie unten im Fenster auf **Erstellen**.
-
-[createqueue1]: ./media/service-bus-create-queue-portal/create-queue1.png
-[createqueue2]: ./media/service-bus-create-queue-portal/create-queue2.png
-[createqueue3]: ./media/service-bus-create-queue-portal/create-queue3.png
-
-[namespace-how-to]: ../articles/service-bus-messaging/service-bus-create-namespace-portal.md
-[azure-portal]: https://portal.azure.com

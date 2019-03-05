@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 11/30/2018
+ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: 00b96b5bfa88a6c1c31d3415027ce1d4eda11e6b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: c53b9f13c365a5ace227f792f5b0c80ae8fac6ff
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339089"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807353"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -48,11 +48,15 @@ Kontoadministrator, Dienstadministrator und Co-Administrator sind die drei Rolle
 | Dienstadministrator | 1 pro Azure-Abonnement | <ul><li>Verwalten von Diensten im [Azure-Portal](https://portal.azure.com)</li><li>Zuweisen von Benutzern zur Rolle „CO-Administrator“</li></ul> | Standardmäßig ist der Kontoadministrator für ein neues Abonnement gleichzeitig auch der Dienstadministrator.<br>Der Dienstadministrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist.<br>Der Dienstadministrator hat Vollzugriff auf das Azure-Portal. |
 | Co-Administrator | 200 pro Abonnement | <ul><li>Gleiche Zugriffsrechte wie der Dienstadministrator, aber kann die Zuordnung von Abonnements zu Azure-Verzeichnissen nicht ändern</li><li>Zuweisen von Benutzern zur Rolle „Co-Administrator“, aber kann den Dienstadministrator nicht ändern</li></ul> | Der Co-Administrator verfügt über gleichwertigen Zugriff wie ein Benutzer, dem für den Abonnementbereich die Rolle „Besitzer“ zugewiesen ist. |
 
-Im Azure-Portal können Sie sehen, welche Benutzer als Kontoadministrator und Dienstadministrator zugewiesen sind, indem Sie die Eigenschaften Ihres Abonnements anzeigen.
+Im Azure-Portal können Sie auf der Registerkarte **Klassische Administratoren** Co-Administratoren verwalten oder den Dienstadministrator anzeigen.
 
-![Kontoadministrator und Dienstadministrator im Azure-Portal](./media/rbac-and-directory-admin-roles/account-admin-service-admin.png)
+![Klassische Azure-Abonnementadministratoren im Azure-Portal](./media/rbac-and-directory-admin-roles/classic-administrators.png)
 
-Informationen dazu, wie Sie Administratoren für klassische Abonnements hinzufügen oder ändern, finden Sie in der Dokumentation zur Azure-Abrechnung unter [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md).
+Im Azure-Portal können Sie auf dem Eigenschaftenblatt Ihres Abonnements den Dienstadministrator anzeigen/ändern oder den Kontoadministrator anzeigen.
+
+![Kontoadministrator und Dienstadministrator im Azure-Portal](./media/rbac-and-directory-admin-roles/account-admin.png)
+
+Weitere Informationen finden Sie unter [Verwaltung von Azure-Abonnements im klassischen Bereitstellungsmodell](classic-administrators.md).
 
 ### <a name="azure-account-and-azure-subscriptions"></a>Azure-Konto und Azure-Abonnements
 
@@ -81,9 +85,11 @@ Im Azure-Portal werden Rollenzuweisungen, für die RBAC genutzt wird, auf dem Bl
 
 ![Blatt „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
-Wenn Sie auf die Option **Rollen** klicken, wird die Liste mit den integrierten und benutzerdefinierten Rollen angezeigt.
+Wenn Sie auf die Registerkarte **Rollen** klicken, wird die Liste mit den integrierten und benutzerdefinierten Rollen angezeigt.
 
 ![Integrierte Rollen im Azure-Portal](./media/rbac-and-directory-admin-roles/roles-list.png)
+
+Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf Azure-Ressourcen mit RBAC und dem Azure-Portal](role-assignments-portal.md).
 
 ## <a name="azure-ad-administrator-roles"></a>Azure AD-Administratorrollen
 
@@ -95,9 +101,7 @@ Azure AD-Administratorrollen werden verwendet, um Azure AD-Ressourcen in einem V
 | [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
 | [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 
-Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
-
-Im Azure-Portal können Sie die Liste mit den Azure AD-Administratorrollen auf dem Blatt **Rollen und Administratoren** anzeigen.
+Im Azure-Portal können Sie die Liste mit den Azure AD-Administratorrollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
 ![Azure AD-Administratorrollen im Azure-Portal](./media/rbac-and-directory-admin-roles/directory-admin-roles.png)
 
@@ -124,4 +128,4 @@ Mit mehreren Azure AD-Administratorrollen sind Azure AD und Microsoft Office 365
 
 - [Was ist die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) für Azure-Ressourcen?](overview.md)
 - [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
-- [Hinzufügen oder Ändern von Azure-Abonnementadministratoren](../billing/billing-add-change-azure-subscription-administrator.md)
+- [Verwaltung von Azure-Abonnements im klassischen Bereitstellungsmodell](classic-administrators.md)

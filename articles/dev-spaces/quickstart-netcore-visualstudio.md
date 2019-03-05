@@ -12,12 +12,12 @@ ms.date: 07/09/2018
 ms.topic: quickstart
 description: Schnelle Kubernetes-Entwicklung mit Containern und Microservices in Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container
-ms.openlocfilehash: 224b8fac3634e5ee9e5ffadc7664bd046467d2ce
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 89fd64be0ea7b5b02ed446f2ee6d4c6a9c69dd0e
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55660849"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56819683"
 ---
 # <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-net-core-and-visual-studio"></a>Schnellstart: Erstellen eines Kubernetes-Entwicklungsbereichs mit Azure Dev Spaces (.NET Core und Visual Studio)
 
@@ -32,9 +32,7 @@ In diesem Leitfaden lernen Sie Folgendes:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Ein Kubernetes-Cluster mit Kubernetes 1.9.6 oder höher in der Region „EastUS“, „EastUS2“, „CentralUS“, „WestUS2“, „WestEurope“, „SoutheastAsia“, „CanadaCentral“ oder „CanadaEast“ mit aktiviertem HTTP-Anwendungsrouting.
-
-  ![Achten Sie darauf, dass HTTP-Anwendungsrouting aktiviert ist.](media/common/Kubernetes-Create-Cluster-3.PNG)
+- Ein Kubernetes-Cluster mit Kubernetes 1.9.6 oder höher in der Region „EastUS“, „EastUS2“, „CentralUS“, „WestUS2“, „WestEurope“, „SoutheastAsia“, „CanadaCentral“ oder „CanadaEast“
 
 - Visual Studio 2017 mit installierter Workload für Webentwicklung. Ist diese Version nicht installiert, können Sie sie [hier](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) herunterladen.
 

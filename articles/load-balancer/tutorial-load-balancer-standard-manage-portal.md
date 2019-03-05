@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/20/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 7caddde5c7695d0c572dc139b52cd0743e39d778
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: fa40f4f666444209f70d3f49b7947450af01ec36
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671998"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983285"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Tutorial: Vornehmen eines Lastausgleichs für den Internetdatenverkehr virtueller Computer mit dem Azure-Portal
 
@@ -45,21 +45,22 @@ Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Az
 In diesem Abschnitt erstellen Sie einen öffentlichen Load Balancer für den Lastenausgleich virtueller Computer. Ein Load Balancer im Standard-Tarif unterstützt nur eine öffentliche Standard-IP-Adresse. Wenn Sie einen Load Balancer im Standard-Tarif (Load Balancer Standard) erstellen, müssen Sie dafür auch eine neue öffentliche Standard-IP-Adresse erstellen, die als Front-End konfiguriert ist. Dieses hat standardmäßig den Namen *LoadBalancerFrontend*. 
 
 1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Erstellen**:
-    
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
+
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupSLB* in das Textfeld ein.|
     | NAME                   | *myLoadBalancer*                                   |
-    | Type          | Öffentlich                                        |
-    | SKU           | Standard                          |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**, und geben Sie *myPublicIP* in das Textfeld ein. Für die öffentliche IP-Adresse ist standardmäßig die Standard-SKU ausgewählt. Wählen Sie für **Verfügbarkeitszone** die Option **Zonenredundant** aus. |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |
-    |Ressourcengruppe | Klicken Sie auf **Neu erstellen**, und geben Sie *myResourceGroupSLB* ein.    |
-    | Standort           | Wählen Sie **Europa, Westen** aus.                          |
-    
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Standard** aus.                          |
+    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Name der öffentlichen IP-Adresse              | Geben Sie *myPublicIP* in das Textfeld ein.   |
+    |Verfügbarkeitszone| Wählen Sie **Zonenredundant** aus.    |
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
 
-![Einrichten eines Load Balancers](./media/load-balancer-standard-public-portal/create-load-balancer.png)
-   
+  
 ## <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
 In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk sowie drei virtuelle Computer für den Back-End-Pool Ihres Load Balancers und installieren anschließend IIS auf den virtuellen Computern, um den Lastenausgleich zu testen.

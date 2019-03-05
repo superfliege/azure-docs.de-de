@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bb1ec22d4113c7b9cecbc428bf70ac91d9a7e75
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 3da54c4f7fae5a613d88f169d58a083f9273c0d3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56457907"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587887"
 ---
 # <a name="set-up-your-security-info-preview-from-the-sign-in-page-prompt"></a>Einrichten Ihrer Sicherheitsinformationen (Vorschauversion) über die Aufforderung auf der Anmeldeseite
 Wenn Sie direkt nach der Anmeldung bei Ihrem Geschäfts-, Schul- oder Unikonto zum Einrichten Ihrer Sicherheitsinformationen aufgefordert werden, können Sie diese Schritte ausführen.
@@ -70,7 +70,7 @@ Führen Sie diese Schritte aus, um die Sicherheitsinformationen für Ihr Geschä
 
     ![Testen des Kontos mit der Authenticator-App](media/security-info/securityinfo-prompt-test-app.png)
 
-8. Bestätigen Sie die Benachrichtigung in der Microsoft Authenticator-App, und wählen Sie dann **Weiter**.
+8. Bestätigen Sie die Benachrichtigung in der Microsoft Authenticator-App, und klicken Sie dann auf **Weiter**.
 
     ![Erfolgsmeldung zur Verbindung der App und Ihres Kontos](media/security-info/securityinfo-prompt-auth-app-success.png).
 

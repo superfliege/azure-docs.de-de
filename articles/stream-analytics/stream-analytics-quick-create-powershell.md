@@ -8,12 +8,12 @@ ms.date: 12/20/2018
 ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
-ms.openlocfilehash: 5591e8174f15d552bf7295d1c3fe9cb5257c0f2e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b79800f9a9f0eb44c16c7f45fa97c55eca8ecd1a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438897"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737942"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-using-azure-powershell"></a>Schnellstart: Erstellen eines Stream Analytics-Auftrags mit Azure PowerShell
 
@@ -23,40 +23,42 @@ Der Beispielauftrag liest Streamingdaten von einem IoT Hub-Gerät. Die Eingabeda
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.  
 
-* Für diese Schnellstartanleitung ist das Azure PowerShell-Modul Version 3.6 oder höher erforderlich. Führen Sie `Get-Module -ListAvailable AzureRM` aus, um die Version zu ermitteln, die auf Ihrem lokalen Computer installiert ist. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
+* Für diesen Schnellstart ist das Azure PowerShell-Modul erforderlich. Führen Sie `Get-Module -ListAvailable Az` aus, um die Version zu ermitteln, die auf Ihrem lokalen Computer installiert ist. Wenn Sie eine Installation oder ein Upgrade ausführen müssen, finden Sie unter [Install and configure Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-Az-ps) (Installieren des Azure PowerShell-Moduls) Informationen dazu.
 
 * Einige IoT Hub-Aktionen werden nicht von Azure PowerShell unterstützt und müssen mit Version 2.0.24 oder höher der Azure-Befehlszeilenschnittstelle (Azure CLI) und der IoT-Erweiterung für die Azure CLI ausgeführt werden. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) und verwenden Sie `az extension add --name azure-cli-iot-ext` zum Installieren der IoT-Erweiterung.
 
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich mit dem Befehl `Connect-AzureRmAccount` bei Ihrem Azure-Abonnement an, und geben Sie im Popupbrowserfenster Ihre Azure-Anmeldeinformationen ein:
+Melden Sie sich mit dem Befehl `Connect-AzAccount` bei Ihrem Azure-Abonnement an, und geben Sie im Popupbrowserfenster Ihre Azure-Anmeldeinformationen ein:
 
 ```powershell
 # Connect to your Azure account
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 Falls Sie mehrere Abonnements haben, führen Sie die folgenden Cmdlets aus, um das Abonnement auszuwählen, das Sie für diesen Schnellstart verwenden möchten. Ersetzen Sie `<your subscription name>` durch den Namen Ihres Abonnements:  
 
 ```powershell
 # List all available subscriptions.
-Get-AzureRmSubscription
+Get-AzSubscription
 
 # Select the Azure subscription you want to use to create the resource group and resources.
-Get-AzureRmSubscription -SubscriptionName "<your subscription name>" | Select-AzureRmSubscription
+Get-AzSubscription -SubscriptionName "<your subscription name>" | Select-AzSubscription
 ```
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Erstellen Sie mit [New-AzureRmResourceGroup](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
+Erstellen Sie mit [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) eine Azure-Ressourcengruppe. Eine Ressourcengruppe ist ein logischer Container, in dem Azure-Ressourcen bereitgestellt und verwaltet werden.
 
 ```powershell
 $resourceGroup = "StreamAnalyticsRG"
 $location = "WestUS2"
-New-AzureRmResourceGroup `
+New-AzResourceGroup `
    -Name $resourceGroup `
    -Location $location 
 ```
@@ -111,17 +113,17 @@ Der folgende Azure CLI-Codeblock führt viele Befehle aus, um die erforderlichen
 
 Im folgenden Azure PowerShell-Codeblock werden Befehle zum Erstellen von Blobspeicher für die Ausgabe des Auftrags verwendet. Sehen Sie sich die Abschnitte an, um den Code zu verstehen.
 
-1. Erstellen Sie mit dem Cmdlet [New-AzureRmStorageAccount](https://docs.microsoft.com/powershell/module/azurerm.storage/New-AzureRmStorageAccount) ein allgemeines Standardspeicherkonto.  In diesem Beispiel wird ein Speicherkonto namens **myasaquickstartstorage** mit lokal redundantem Speicher (LRS) und Blobverschlüsselung (standardmäßig aktiviert) erstellt.  
+1. Erstellen Sie mit dem Cmdlet [New-AzStorageAccount](https://docs.microsoft.com/powershell/module/az.storage/New-azStorageAccount) ein allgemeines Standardspeicherkonto.  In diesem Beispiel wird ein Speicherkonto namens **myasaquickstartstorage** mit lokal redundantem Speicher (LRS) und Blobverschlüsselung (standardmäßig aktiviert) erstellt.  
    
 2. Rufen Sie den Kontext des Speicherkontos (`$storageAccount.Context`) ab, der das zu verwendende Speicherkonto definiert. Beim Arbeiten mit Speicherkonten verweisen Sie auf den Kontext, statt die Anmeldeinformationen wiederholt anzugeben. 
 
-3. Erstellen Sie mithilfe von [New-AzureStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontainer) einen Container.
+3. Erstellen Sie mithilfe von [New-AzStorageContainer](https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontainer) einen Container.
 
 4. Kopieren Sie den vom Code ausgegebenen Speicherschlüssel, und speichern Sie ihn (Sie benötigen ihn später zum Erstellen der Ausgabe des Streamingauftrags).
 
    ```powershell
    $storageAccountName = "myasaquickstartstorage"
-   $storageAccount = New-AzureRmStorageAccount `
+   $storageAccount = New-AzStorageAccount `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName `
      -Location $location `
@@ -131,11 +133,11 @@ Im folgenden Azure PowerShell-Codeblock werden Befehle zum Erstellen von Blobspe
    $ctx = $storageAccount.Context
    $containerName = "container1"
    
-   New-AzureStorageContainer `
+   New-AzStorageContainer `
      -Name $containerName `
      -Context $ctx
    
-   $storageAccountKey = (Get-AzureRmStorageAccountKey `
+   $storageAccountKey = (Get-AzStorageAccountKey `
      -ResourceGroupName $resourceGroup `
      -Name $storageAccountName).Value[0]
    
@@ -145,7 +147,7 @@ Im folgenden Azure PowerShell-Codeblock werden Befehle zum Erstellen von Blobspe
 
 ## <a name="create-a-stream-analytics-job"></a>Erstellen eines Stream Analytics-Auftrags
 
-Erstellen Sie mit dem Cmdlet [New-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsjob?view=azurermps-5.4.0) einen Stream Analytics-Auftrag. Dieses Cmdlet akzeptiert den Auftragsnamen, den Ressourcengruppennamen und die Auftragsdefinition als Parameter. Beim Auftragsnamen kann es sich um einen beliebigen Anzeigenamen handeln, der Ihren Auftrag identifiziert. Er darf nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und muss zwischen 3 und 63 Zeichen lang sein. Bei der Auftragsdefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Erstellen eines Auftrags erforderlich sind. Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu:
+Erstellen Sie mit dem Cmdlet [New-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsjob?view=azurermps-5.4.0) einen Stream Analytics-Auftrag. Dieses Cmdlet akzeptiert den Auftragsnamen, den Ressourcengruppennamen und die Auftragsdefinition als Parameter. Beim Auftragsnamen kann es sich um einen beliebigen Anzeigenamen handeln, der Ihren Auftrag identifiziert. Er darf nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und muss zwischen 3 und 63 Zeichen lang sein. Bei der Auftragsdefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Erstellen eines Auftrags erforderlich sind. Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu:
 
 ```json
 {    
@@ -161,12 +163,12 @@ Erstellen Sie mit dem Cmdlet [New-AzureRmStreamAnalyticsJob](https://docs.micros
 }
 ```
 
-Führen Sie anschließend das Cmdlet `New-AzureRmStreamAnalyticsJob` aus. Ersetzen Sie dabei den Wert der Variablen `jobDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragsdefinition gespeichert haben. 
+Führen Sie anschließend das Cmdlet `New-AzStreamAnalyticsJob` aus. Ersetzen Sie dabei den Wert der Variablen `jobDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragsdefinition gespeichert haben. 
 
 ```powershell
 $jobName = "MyStreamingJob"
 $jobDefinitionFile = "C:\JobDefinition.json"
-New-AzureRmStreamAnalyticsJob `
+New-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -File $jobDefinitionFile `
   -Name $jobName `
@@ -175,7 +177,7 @@ New-AzureRmStreamAnalyticsJob `
 
 ## <a name="configure-input-to-the-job"></a>Konfigurieren einer Eingabe für den Auftrag
 
-Fügen Sie mit dem Cmdlet [New-AzureRmStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsinput?view=azurermps-5.4.0) eine Eingabe zu Ihrem Auftrag hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragseingabenamen, den Ressourcengruppennamen und die Auftragseingabedefinition als Parameter. Bei der Auftragseingabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Eingabe eines Auftrags erforderlich sind. In diesem Beispiel erstellen Sie einen Blobspeicher als Eingabe. 
+Fügen Sie mit dem Cmdlet [New-AzStreamAnalyticsInput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsinput?view=azurermps-5.4.0) eine Eingabe zu Ihrem Auftrag hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragseingabenamen, den Ressourcengruppennamen und die Auftragseingabedefinition als Parameter. Bei der Auftragseingabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Eingabe eines Auftrags erforderlich sind. In diesem Beispiel erstellen Sie einen Blobspeicher als Eingabe. 
 
 Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobInputDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Ersetzen Sie den Wert für `accesspolicykey` durch den `SharedAccessKey`-Teil der IoT Hub-Verbindungszeichenfolge, die Sie zuvor gespeichert haben.
 
@@ -208,12 +210,12 @@ Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobInputDefin
 }
 ```
 
-Führen Sie als Nächstes das Cmdlet `New-AzureRmStreamAnalyticsInput` aus. Ersetzen Sie dabei den Wert der Variablen `jobDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragseingabedefinition gespeichert haben. 
+Führen Sie als Nächstes das Cmdlet `New-AzStreamAnalyticsInput` aus. Ersetzen Sie dabei den Wert der Variablen `jobDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragseingabedefinition gespeichert haben. 
 
 ```powershell
 $jobInputName = "IoTHubInput"
 $jobInputDefinitionFile = "C:\JobInputDefinition.json"
-New-AzureRmStreamAnalyticsInput `
+New-AzStreamAnalyticsInput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobInputDefinitionFile `
@@ -222,7 +224,7 @@ New-AzureRmStreamAnalyticsInput `
 
 ## <a name="configure-output-to-the-job"></a>Konfigurieren einer Ausgabe für den Auftrag
 
-Fügen Sie mit dem Cmdlet [New-AzureRmStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticsoutput?view=azurermps-5.4.0) eine Ausgabe zu Ihrem Auftrag hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragsausgabenamen, den Ressourcengruppennamen und die Auftragsausgabedefinition als Parameter. Bei der Auftragsausgabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Ausgabe eines Auftrags erforderlich sind. In diesem Beispiel wird der Blobspeicher als Ausgabe verwendet. 
+Fügen Sie mit dem Cmdlet [New-AzStreamAnalyticsOutput](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticsoutput?view=azurermps-5.4.0) eine Ausgabe zu Ihrem Auftrag hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragsausgabenamen, den Ressourcengruppennamen und die Auftragsausgabedefinition als Parameter. Bei der Auftragsausgabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Ausgabe eines Auftrags erforderlich sind. In diesem Beispiel wird der Blobspeicher als Ausgabe verwendet. 
 
 Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobOutputDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Ersetzen Sie den Wert für `accountKey` durch den Zugriffsschlüssel Ihres Speicherkontos. Dieser Wert ist in „$storageAccountKey“ gespeichert. 
 
@@ -256,12 +258,12 @@ Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobOutputDefi
 }
 ```
 
-Führen Sie anschließend das Cmdlet `New-AzureRmStreamAnalyticsOutput` aus. Ersetzen Sie den Wert der Variablen `jobOutputDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei der Auftragsausgabedefinition gespeichert haben. 
+Führen Sie anschließend das Cmdlet `New-AzStreamAnalyticsOutput` aus. Ersetzen Sie den Wert der Variablen `jobOutputDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei der Auftragsausgabedefinition gespeichert haben. 
 
 ```powershell
 $jobOutputName = "BlobOutput"
 $jobOutputDefinitionFile = "C:\JobOutputDefinition.json"
-New-AzureRmStreamAnalyticsOutput `
+New-AzStreamAnalyticsOutput `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobOutputDefinitionFile `
@@ -270,7 +272,7 @@ New-AzureRmStreamAnalyticsOutput `
 
 ## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
 
-Fügen Sie Ihrem Auftrag mithilfe des Cmdlets [New-AzureRmStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/new-azurermstreamanalyticstransformation?view=azurermps-5.4.0) eine Transformation hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragstransformationsnamen, den Ressourcengruppennamen und die Auftragstransformationsdefinition als Parameter. Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobTransformationDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Die JSON-Datei enthält einen Abfrageparameter, der die Transformationsabfrage definiert:
+Fügen Sie Ihrem Auftrag mithilfe des Cmdlets [New-AzStreamAnalyticsTransformation](https://docs.microsoft.com/powershell/module/az.streamanalytics/new-azstreamanalyticstransformation?view=azurermps-5.4.0) eine Transformation hinzu. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragstransformationsnamen, den Ressourcengruppennamen und die Auftragstransformationsdefinition als Parameter. Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `JobTransformationDefinition.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Die JSON-Datei enthält einen Abfrageparameter, der die Transformationsabfrage definiert:
 
 ```json
 {     
@@ -284,12 +286,12 @@ Fügen Sie Ihrem Auftrag mithilfe des Cmdlets [New-AzureRmStreamAnalyticsTransfo
 }
 ```
 
-Führen Sie anschließend das Cmdlet `New-AzureRmStreamAnalyticsTransformation` aus. Ersetzen Sie dabei den Wert der Variablen `jobTransformationDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragstransformationsdefinition gespeichert haben. 
+Führen Sie anschließend das Cmdlet `New-AzStreamAnalyticsTransformation` aus. Ersetzen Sie dabei den Wert der Variablen `jobTransformationDefinitionFile` durch den Pfad, an dem Sie die JSON-Datei mit der Auftragstransformationsdefinition gespeichert haben. 
 
 ```powershell
 $jobTransformationName = "MyJobTransformation"
 $jobTransformationDefinitionFile = "C:\JobTransformationDefinition.json"
-New-AzureRmStreamAnalyticsTransformation `
+New-AzStreamAnalyticsTransformation `
   -ResourceGroupName $resourceGroup `
   -JobName $jobName `
   -File $jobTransformationDefinitionFile `
@@ -307,12 +309,12 @@ New-AzureRmStreamAnalyticsTransformation `
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Starten des Stream Analytics-Auftrags und Überprüfen der Ausgabe
 
-Starten Sie den Auftrag mit dem Cmdlet [Start-AzureRmStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0). Dieses Cmdlet übernimmt den Auftragsnamen, den Ressourcengruppennamen, den Ausgabestartmodus und die Startzeit als Parameter. `OutputStartMode` akzeptiert die Werte `JobStartTime`, `CustomTime` und `LastOutputEventTime`. Weitere Informationen zur Bedeutung dieser Werte finden Sie in der PowerShell-Dokumentation im Abschnitt [Parameter](https://docs.microsoft.com/powershell/module/azurerm.streamanalytics/start-azurermstreamanalyticsjob?view=azurermps-5.4.0). 
+Starten Sie den Auftrag mit dem Cmdlet [Start-AzStreamAnalyticsJob](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0). Dieses Cmdlet übernimmt den Auftragsnamen, den Ressourcengruppennamen, den Ausgabestartmodus und die Startzeit als Parameter. `OutputStartMode` akzeptiert die Werte `JobStartTime`, `CustomTime` und `LastOutputEventTime`. Weitere Informationen zur Bedeutung dieser Werte finden Sie in der PowerShell-Dokumentation im Abschnitt [Parameter](https://docs.microsoft.com/powershell/module/az.streamanalytics/start-azstreamanalyticsjob?view=azurermps-5.4.0). 
 
 Nach der Ausführung des folgenden Cmdlets wird als Ausgabe `True` zurückgegeben, wenn der Auftrag gestartet wird. Im Speichercontainer wird ein Ausgabeordner mit den transformierten Daten erstellt. 
 
 ```powershell
-Start-AzureRmStreamAnalyticsJob `
+Start-AzStreamAnalyticsJob `
   -ResourceGroupName $resourceGroup `
   -Name $jobName `
   -OutputStartMode 'JobStartTime'
@@ -323,7 +325,7 @@ Start-AzureRmStreamAnalyticsJob `
 Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie den Löschvorgang überspringen und Auftrag vorläufig beenden. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle in diesem Schnellstart erstellten Ressourcen, indem Sie das folgende Cmdlet ausführen:
 
 ```powershell
-Remove-AzureRmResourceGroup `
+Remove-AzResourceGroup `
   -Name $resourceGroup 
 ```
 

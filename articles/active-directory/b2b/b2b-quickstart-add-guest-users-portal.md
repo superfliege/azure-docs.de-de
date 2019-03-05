@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Hinzufügen von Gastbenutzern im Azure-Portal'
+title: 'Schnellstart: Hinzufügen von Gastbenutzern im Azure-Portal: Azure Active Directory'
 description: In diesem Schnellstart erfahren Sie, wie Azure AD-Administratoren B2B-Gastbenutzer im Azure-Portal hinzufügen, und wie der B2B-Einladungsworkflow aussieht.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8916711ab7d5278f34a3d4ad101a0aabb883f84c
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56182696"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669974"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Schnellstart: Hinzufügen von Gastbenutzern zu Ihrem Verzeichnis im Azure-Portal
 

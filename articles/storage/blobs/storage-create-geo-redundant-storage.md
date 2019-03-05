@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: d2fef3a47cbcb4cfd8bce8978003eca1044d7de3
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: b031e7b772389aa81fd214d31365c20018cf48ae
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510632"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874442"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Tutorial: Erstellen einer hochverfügbaren Anwendung mit Blobspeicher
 
@@ -37,24 +37,24 @@ Im ersten Teil der Serie lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-# <a name="net-tabdotnet"></a>[.NET] (#tab/dotnet)
+# <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
 * Installieren Sie [Visual Studio 2017](https://www.visualstudio.com/downloads/) mit den folgenden Workloads:
   - **Azure-Entwicklung**
 
   ![Azure-Entwicklung (unter Web & Cloud)](media/storage-create-geo-redundant-storage/workloads.png)
 
-# <a name="python-tabpython"></a>[Python] (#tab/python)
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 * [Installieren Sie Python.](https://www.python.org/downloads/)
 * Laden Sie das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python) herunter, und installieren Sie es.
 
-# <a name="java-v7-sdk--tabjava-v7"></a>[Java V7 SDK ] (#tab/java-v7)
+# <a name="java-v7-sdk-tabjava-v7"></a>[Java V7 SDK ](#tab/java-v7)
 
 * Installieren Sie [Maven](http://maven.apache.org/download.cgi), und konfigurieren Sie es so, dass es über die Befehlszeile verwendet werden kann.
 * Installieren und konfigurieren Sie ein [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).
 
-# <a name="java-v10-sdk-tabjava-v10"></a>[Java V10 SDK] (#tab/java-v10)
+# <a name="java-v10-sdktabjava-v10"></a>[Java V10 SDK](#tab/java-v10)
 
 * Installieren Sie [Maven](http://maven.apache.org/download.cgi), und konfigurieren Sie es so, dass es über die Befehlszeile verwendet werden kann.
 * Installieren und konfigurieren Sie ein [JDK](http://www.oracle.com/technetwork/java/javase/downloads/index.html).

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: 9da2f8fa345ad3447d7c3344772458c451cf427e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867238"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56732703"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -233,7 +233,9 @@ Da ein Name eine beliebige Zeichenfolge sein kann, sagt LUIS Entitäten präzise
 
     [![Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Screenshot: Popupdialogfeld zum Erstellen einer neuen Begriffsliste")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
-    Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, können Sie sich die verwandten Werte (**Related Values**) ansehen und alle Wörter hinzufügen, die für Sie relevant sind. 
+    Wenn Sie der Begriffsliste weitere Wörter hinzufügen möchten, wählen Sie **Empfehlen**, überprüfen Sie dann die neuen **verwandte Werte** und fügen sie alle relevanten Werte hinzu. 
+
+    Achten Sie darauf, dass die Option **Diese Werte sind austauschbar** aktiviert bleibt, da diese Werte alle als Synonyme für Aufträge behandelt werden sollen. Erfahren Sie mehr über die Konzepte von austauschbaren bzw. nicht austauschbaren [Begriffslisten](luis-concept-feature.md#how-to-use-phrase-lists).
 
 1. Klicken Sie auf **Speichern**, um die Begriffsliste zu aktivieren.
 

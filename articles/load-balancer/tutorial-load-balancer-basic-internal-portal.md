@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/28/2018
+ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 16c9eea61391511f7515308131b3541e186cd7ae
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: b8600ed03140e302c730d44c6410d2020b7c48a3
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232616"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56983182"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>Tutorial: Ausgleichen der internen Datenverkehrslast mithilfe eines Lastenausgleichs im Tarif „Basic“ über das Azure-Portal
 
@@ -87,20 +87,23 @@ Erstellen Sie einen internen Load Balancer im Tarif „Basic“, indem Sie das P
 
 1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
    
-1. Geben Sie im Bereich **Lastenausgleich erstellen** diese Werte ein (bzw. wählen Sie sie aus):
+2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
+
+    | Einstellung                 | Wert                                              |
+    | ---                     | ---                                                |
+    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
+    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
+    | NAME                   | *myLoadBalancer*                                   |
+    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
+    | Type          | Wählen Sie **Öffentlich** aus.                                        |
+    | SKU           | Wählen Sie **Basic** aus.                          |
+    | Virtuelles Netzwerk           | Wählen Sie *MyVNet* aus.                          |    
+| Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
+    | Zuweisung der öffentlichen IP-Adresse              | Wählen Sie **Statisch** aus.   |
+    | Private IP-Adresse|Geben Sie eine Adresse ein, die im Adressraum Ihres virtuellen Netzwerks und Subnetzes enthalten ist (beispielsweise *10.3.0.7*).  |
+
+3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**. 
    
-   - **Name**: Geben Sie *MyLoadBalancer* ein.
-   - **Typ**: Wählen Sie **Intern** aus. 
-   - **SKU**: Wählen Sie **Basic** aus.
-   - **Virtuelles Netzwerk**: Wählen Sie **Virtuelles Netzwerk auswählen** und anschließend **MyVNet** aus.
-   - **Subnetz**: Wählen Sie **Subnetz auswählen** und anschließend **MyBackendSubnet** aus.
-   - **IP-Adresszuweisung**: Wählen Sie **Statisch** aus (sofern noch nicht ausgewählt).
-   - **Private IP-Adresse**: Geben Sie eine Adresse ein, die im Adressraum Ihres virtuellen Netzwerks und Subnetzes enthalten ist (beispielsweise *10.3.0.7*).
-   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
-   
-1. Klicken Sie auf **Erstellen**.
-   
-![Einrichten eines Load Balancers](./media/tutorial-load-balancer-basic-internal-portal/1-load-balancer.png)
 
 ## <a name="create-basic-load-balancer-resources"></a>Erstellen von Ressourcen für den Load Balancer im Tarif „Basic“
 

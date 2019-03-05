@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 01/07/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 880f28a6f6e0029812e50dd97ff96d149c956b33
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55252250"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594303"
 ---
 # <a name="interactive-feature-verification-testing"></a>Testen der interaktiven Featureüberprüfung  
 
@@ -30,116 +30,87 @@ Mit dem Testframework für die interaktive Featureüberprüfung können Sie Test
 
 In diesem Artikel wird ein einfaches manuelles Szenario beschrieben. Der Test überprüft das Ersetzen eines Datenträgers in Azure Stack. Das Framework erfasst bei jedem Schritt Diagnoseprotokolle. Sie können Probleme debuggen, sobald sie gefunden werden. Das Framework ermöglicht auch die Weitergabe von Protokollen, die von anderen Tools oder Prozessen erzeugt wurden, sowie die Abgabe von Feedback für das Szenario.
 
-## <a name="overview-of-a-test-pass"></a>Übersicht über einen Testdurchlauf
+> [!Important]  
+> In diesem Artikel wird auf die Schritte für die Datenträgeridentifizierung verwiesen. Hierbei handelt es sich lediglich um eine Demonstration, da jegliche Ergebnisse des Testdurchlauf-Workflows nicht für die Überprüfung neuer Lösungen verwendet werden dürfen.
+
+## <a name="overview-of-interactive-testing"></a>Übersicht über interaktives Testen
 
 Ein Test für den Austausch eines Datenträgers ist ein gängiges Szenario. In diesem Beispiel umfasst der Test sieben Schritte:
 
-1.  Erstellen eines neuen Workflows vom Typ **Testdurchlauf**
-2.  Auswählen von **Disk Identification Test** (Datenträgeridentifizierungstest)
-3.  Starten des Tests
-4.  Auswählen der Aktionen im interaktiven Überprüfungsszenario
-5.  Überprüfen des Ergebnisses des Szenarios
-6.  Senden des Testergebnisses an Microsoft
-7.  Überprüfen des Status im VaaS-Portal
+1. Erstellen eines neuen Workflows vom Typ **Testdurchlauf**
+1. Auswählen von **Disk Identification Test** (Datenträgeridentifizierungstest)
+1. Ausführen des manuellen Schritts, wenn Sie dazu aufgefordert werden
+1. Überprüfen des Ergebnisses des Szenarios
+1. Senden des Testergebnisses an Microsoft
 
 ## <a name="create-a-new-test-pass"></a>Erstellen eines neuen Testdurchlaufs
 
-1.  Navigieren Sie zum [Azure Stack-Überprüfungsportal](https://www.azurestackvalidation.com), und melden Sie sich an.
+Falls Sie über keinen vorhandenen Testdurchlauf verfügen, führen Sie die [Schritte zum Planen eines Tests](azure-stack-vaas-schedule-test-pass.md) aus.
 
-2.  Erstellen Sie eine neue Lösung, oder wählen Sie eine bereits vorhandene Lösung aus.
+## <a name="schedule-the-test"></a>Planen des Tests
 
-3.  Wählen Sie auf der Kachel **Testdurchlauf** die Option **Starten** aus.
-
-    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image1.png)
-
-4.  Geben Sie einen Namen für den Workflow **Testdurchlauf** ein.
-
-5.  Geben Sie die Umgebung sowie allgemeine Testparameter gemäß den Anweisungen im Artikel [Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack](azure-stack-vaas-parameters.md) ein.
-
-6.  Die Diagnoseverbindungszeichenfolge muss dem Format entsprechen, das im Abschnitt [Testparameter](azure-stack-vaas-parameters.md#test-parameters) des Artikels [Allgemeine Workflowparameter für Validation-as-a-Service in Azure Stack](azure-stack-vaas-parameters.md) angegeben ist.
-
-7.  Geben Sie die erforderlichen Parameter für den Test ein.
-
-8.  Wählen Sie den Agent für die Ausführung des interaktiven Testlaufs aus.
-
-> [!Note]  
-> Zum Testen der interaktiven Featureüberprüfung für die Datenträgeridentifizierung müssen Domänenadministratorbenutzer und Kennwort angegeben werden.
-
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image2.png)
-
-## <a name="select-the-test"></a>Auswählen des Tests
-
-1.  Wählen Sie **Disk Identification Test\<Version>** (Datenträgeridentifizierungstest<Version>) aus.
+1. Wählen Sie **Disk Identification Test** (Datenträgeridentifizierungstest) aus.
 
     > [!Note]  
     > Die Version des Tests erhöht sich, wenn Verbesserungen am Testbegleitmaterial vorgenommen werden. Sofern von Microsoft nicht anders angegeben, sollte immer die höchste Version verwendet werden.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image4.png)
 
-2.  Wählen Sie **Bearbeiten** aus, um den Domänenadministratorbenutzer und das Kennwort anzugeben.
+1. Wählen Sie **Bearbeiten** aus, um den Namen und das Kennwort des Domänenadministratorbenutzers anzugeben.
 
-3.  Wählen Sie den passenden Testausführungs-Agent/die DVM aus, auf der der Test gestartet werden soll.
+1. Wählen Sie den passenden Testausführungs-Agent/die DVM aus, auf der der Test gestartet werden soll.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image5.png)
 
-4.  Wählen **Übermitteln** aus, um den Test zu starten.
+1. Wählen **Übermitteln** aus, um den Test zu starten.
 
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image6.png)
 
-## <a name="start-the-test"></a>Starten des Tests
+1. Greifen Sie über den Agent, den Sie im vorherigen Schritt ausgewählt haben, auf die Benutzeroberfläche für die interaktive Prüfung zu.
 
-Die Aufforderungen des Tests für die Datenträgeridentifizierung werden auf dem Computer angezeigt, der den VaaS-Agent ausführt. Hierbei handelt es sich in der Regel um die DVM oder Jumpbox für die Azure Stack-Instanz.
+    ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
 
-![Alt text](media/azure-stack-vaas-interactive-feature-verification/image8.png)
-
-## <a name="choose-the-actions"></a>Auswählen der Aktionen
-
-1.  Unter den Links **Dokumentation** und **Überprüfung** finden Sie Anweisungen von Microsoft für dieses Szenario.
+1. Unter den Links **Dokumentation** und **Überprüfung** finden Sie Anweisungen von Microsoft für dieses Szenario.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image9.png)
 
-2.  Klicken Sie auf **Weiter**.
+1. Klicken Sie auf **Weiter**.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image10.png)
 
-3.  Befolgen Sie die Anweisungen, um das Skript für die Vorüberprüfung auszuführen.
+1. Befolgen Sie die Anweisungen, um das Skript für die Vorüberprüfung auszuführen.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image11.png)
 
-4.  Führen Sie nach erfolgreicher Ausführung des Skripts für die Vorüberprüfung das manuelle Szenario (Datenträgeraustausch) gemäß den Links **Dokumentation** und **Überprüfung** auf der Registerkarte **Informationen** durch.
+1. Führen Sie nach erfolgreicher Ausführung des Skripts für die Vorüberprüfung das manuelle Szenario (Datenträgeraustausch) gemäß den Links **Dokumentation** und **Überprüfung** auf der Registerkarte **Informationen** durch.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image12.png)
 
-5.  Lassen Sie das Dialogfeld während der Durchführung des manuellen Szenarios geöffnet.
+    > [!Important]  
+    > Lassen Sie das Dialogfeld während der Durchführung des manuellen Szenarios geöffnet.
 
-6.  Folgen Sie nach Abschluss des manuellen Szenarios den Anweisungen zum Ausführen des Skripts für die Nachüberprüfung.
+1. Folgen Sie nach Abschluss des manuellen Szenarios den Anweisungen zum Ausführen des Skripts für die Nachüberprüfung.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image13.png)
 
-7.  Wählen Sie nach erfolgreichem Abschluss des manuellen Szenarios (Datenträgeraustausch) die Option **Weiter** aus.
+1. Wählen Sie nach erfolgreichem Abschluss des manuellen Szenarios (Datenträgeraustausch) die Option **Weiter** aus.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image14.png)
 
-> [!Important]  
-> Wenn Sie das Fenster schließen, wird der Test vorzeitig beendet.
+    > [!Important]  
+    > Wenn Sie das Fenster schließen, wird der Test vorzeitig beendet.
 
-## <a name="check-the-status"></a>Überprüfen des Status
-
-1.  Nach Abschluss des Tests werden Sie um Feedback gebeten.
+1. Geben Sie Feedback zur Testerfahrung. Diese Fragen helfen Microsoft dabei, die Erfolgsrate und die Veröffentlichungsqualität des Szenarios zu beurteilen.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image15.png)
 
-2.  Diese Fragen helfen Microsoft dabei, die Erfolgsrate und die Veröffentlichungsqualität des Szenarios zu beurteilen.
-
-## <a name="send-the-test-result"></a>Senden des Testergebnisses
-
-1.  Fügen Sie alle Protokolldateien an, die Sie an Microsoft übermitteln möchten.
+1. Fügen Sie alle Protokolldateien an, die Sie an Microsoft übermitteln möchten.
 
     ![Alt text](media/azure-stack-vaas-interactive-feature-verification/image16.png)
 
-2.  Akzeptieren Sie die Lizenzbedingungen für die Feedbackübermittlung.
+1. Akzeptieren Sie die Lizenzbedingungen für die Feedbackübermittlung.
 
-3.  Wählen Sie **Übermitteln** aus, um die Ergebnisse an Microsoft zu senden.
+1. Wählen Sie **Übermitteln** aus, um die Ergebnisse an Microsoft zu senden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

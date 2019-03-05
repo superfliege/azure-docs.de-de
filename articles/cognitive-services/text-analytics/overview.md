@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 0de4e0d750d8ae3061ed0b80d706dec545338a90
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 7623f98b9fd6c4bad8a41050e39b6e0e8650dccc
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242925"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889280"
 ---
 # <a name="what-is-text-analytics"></a>Was ist Textanalyse?
 
@@ -64,11 +64,11 @@ Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artik
 
 ## <a name="data-limits"></a>Datengrenzwerte
 
-Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.000 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen. Wenn Sie dennoch einen höheren Grenzwert benötigen, [kontaktieren Sie uns](https://azure.microsoft.com/overview/sales-number/), damit Ihre Anforderungen besprochen werden können.
+Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Der aktuelle Grenzwert liegt bei 5.120 Zeichen für jedes Dokument. Wenn Sie größere Dokumente analysieren müssen, können Sie diese in kleinere Blöcke aufteilen. Wenn Sie dennoch einen höheren Grenzwert benötigen, [kontaktieren Sie uns](https://azure.microsoft.com/overview/sales-number/), damit Ihre Anforderungen besprochen werden können.
 
 | Begrenzung | Wert |
 |------------------------|---------------|
-| Maximale Größe eines einzelnen Dokuments | 5.000 Zeichen (von [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gemessen) |
+| Maximale Größe eines einzelnen Dokuments | 5.120 Zeichen (von [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) gemessen) |
 | Maximale Größe der gesamte Anforderung | 1 MB |
 | Maximale Anzahl von Dokumenten in einer Anforderung | 1.000 Dokumente |
 
@@ -80,7 +80,7 @@ Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Sie zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Sie können eine Texteingabe (maximal 5.000 Zeichen) einfügen, um die Sprache (bis zu 120 verschiedene) zu erkennen, eine Standpunktbewertung zu berechnen und Schlüsselbegriffe zu extrahieren. Es ist keine Registrierung erforderlich.
+Testen Sie zunächst die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/text-analytics/). Sie können eine Texteingabe (maximal 5.120 Zeichen) einfügen, um die Sprache (bis zu 120 verschiedene) zu erkennen, eine Standpunktbewertung zu berechnen und Schlüsselbegriffe zu extrahieren. Es ist keine Registrierung erforderlich.
 
 Wenn Sie bereit sind, die API direkt aufzurufen:
 

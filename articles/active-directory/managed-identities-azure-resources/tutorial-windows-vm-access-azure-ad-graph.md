@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 08/20/2018
 ms.author: priyamo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed94b7571acb0ced124644dafc59d805d5112e8a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 10b74b85235cc47375f6289b52371bc588105ad9
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268565"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56890095"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-ad-graph-api"></a>Tutorial: Verwenden einer systemseitig zugewiesenen verwalteten Identität einer Windows-VM für den Zugriff auf die Azure AD Graph-API
 
@@ -43,13 +43,17 @@ In diesem Tutorial erfahren Sie, wie Sie eine systemseitig zugewiesene verwaltet
 
 ## <a name="connect-to-azure-ad"></a>Stellen Sie eine Verbindung mit Azure AD her.
 
-Sie müssen eine Verbindung mit Azure AD herstellen, um die VM einer Gruppe zuzuweisen und ihr die Berechtigung zum Abrufen der Gruppenmitgliedschaften zu erteilen.
+Sie müssen eine Verbindung mit Azure AD herstellen, um die VM einer Gruppe zuzuweisen und ihr die Berechtigung zum Abrufen der Gruppenmitgliedschaften zu erteilen. Sie können das Cmdlet „Connect-AzureAD“ direkt oder mit dem TenantId-Parameter verwenden, falls Sie über mehrere Mandanten verfügen.
 
 ```powershell
 Connect-AzureAD
 ```
+OR
+```powershell
+Connect-AzureAD -TenantId "Object Id of the tenant"
+```
 
-## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Hinzufügen Ihrer VM-Identität zu einer Gruppe in Azure AD
+## <a name="add-your-vm-identity-to-a-group-in-azure-ad"></a>Fügen Sie Ihre VM-Identität einer Gruppe in Azure AD hinzu.
 
 Wenn Sie die systemseitig zugewiesene verwaltete Identität auf der Windows-VM aktivieren, wird ein Dienstprinzipal in Azure AD erstellt.  Nun müssen Sie die VM einer Gruppe hinzufügen.  Im folgenden Beispiel wird eine neue Gruppe in Azure AD erstellt und der Dienstprinzipal Ihrer VM dieser Gruppe hinzugefügt:
 
@@ -79,7 +83,13 @@ Sie benötigen Azure AD PowerShell, um diese Option verwenden zu können. Falls 
    ```powershell
    Connect-AzureAD
    ```
+   Verwenden Sie zum Herstellen einer Verbindung mit einer bestimmten Azure Active Directory-Instanz den Parameter _TenantId_ wie folgt:
 
+   ```PowerShell
+   Connect-AzureAD -TenantId "Object Id of the tenant"
+   ```
+
+   
 2. Führen Sie die folgenden PowerShell-Befehle aus, um dem Dienstprinzipal, der Ihre VM-Identität darstellt, die Anwendungsberechtigung ``Directory.Read.All`` zuzuweisen.
 
    ```powershell

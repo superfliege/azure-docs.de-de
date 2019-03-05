@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 02/19/2018
 ms.author: raynew
-ms.openlocfilehash: 17ec7723044cec391ebe390bbcfba3aa6f2f29ca
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 61219fc4e1fc329708a7e58ee6a293e4e25cca31
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56446850"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887810"
 ---
 # <a name="back-up-sql-server-databases-on-azure-vms"></a>Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern 
 
@@ -52,8 +52,7 @@ Für diese öffentliche Vorschauversion gelten einige Einschränkungen.
 - Sicherungs-und Wiederherstellungsvorgänge für FCI-Spiegeldatenbanken, -Datenbankmomentaufnahmen und -Datenbanken werden nicht unterstützt.
 - Datenbanken mit einer großen Anzahl von Dateien können nicht geschützt werden. Die maximale Anzahl von unterstützten Dateien ist nicht deterministisch. Sie hängt nicht nur von der Anzahl der Dateien, sondern auch von der Pfadlänge der Dateien ab. 
 
-Weitere Informationen zu unterstützten bzw. nicht unterstützten Szenarien finden Sie im [Abschnitt mit den häufig gestellten Fragen](https://docs.microsoft.com/azure/backup/backup-azure-sql-database#faq).
-
+Lesen Sie [häufig gestellte Fragen](faq-backup-sql-server.md) zur Sicherung von SQL Server-Datenbanken.
 ## <a name="scenario-support"></a>Unterstützung von Szenarien
 
 **Unterstützung** | **Details**
@@ -69,9 +68,9 @@ Weitere Informationen zu unterstützten bzw. nicht unterstützten Szenarien find
 Bevor Sie Ihre SQL Server-Datenbank sichern können, müssen folgende Bedingungen erfüllt sein:
 
 1. Identifizieren oder [erstellen](backup-azure-sql-database.md#create-a-recovery-services-vault) Sie einen Recovery Services-Tresor in der gleichen Region oder dem gleichen Gebietsschema wie der virtuelle Computer, der die SQL Server-Instanz hostet.
-2. [Überprüfen Sie die erforderlichen Berechtigungen für virtuelle Computer](backup-azure-sql-database.md#set-permissions-for-non-marketplace-sql-vms) zum Sichern der SQL-Datenbanken.
+2. [Überprüfen Sie die erforderlichen Berechtigungen für virtuelle Computer](#fix-sql-sysadmin-permissions) zum Sichern der SQL-Datenbanken.
 3. Stellen Sie sicher, dass der virtuelle Computer über [Netzwerkkonnektivität](backup-azure-sql-database.md#establish-network-connectivity) verfügt.
-4. Vergewissern Sie sich, dass die SQL Server-Datenbanken in Übereinstimmung mit den [Benennungsrichtlinien](backup-azure-sql-database.md#sql-database-naming-guidelines-for-azure-backup) für Azure Backup benannt sind.
+4. Vergewissern Sie sich, dass die SQL Server-Datenbanken in Übereinstimmung mit den [Benennungsrichtlinien](backup-azure-sql-database.md) für Azure Backup benannt sind.
 5. Stellen Sie sicher, dass Sie keine anderen Sicherungslösungen für die Datenbank aktiviert sind. Deaktivieren Sie alle anderen SQL Server-Sicherungen, bevor Sie dieses Szenario einrichten. Sie können Azure Backup für einen virtuellen Azure-Computer zusammen mit Azure Backup für eine auf dem virtuellen Computer ausgeführte SQL Server-Datenbank ohne Konflikte aktivieren.
 
 
@@ -197,7 +196,7 @@ Konfigurieren Sie die Sicherung wie folgt:
 
     - Auswahl der Standardrichtlinie: **HourlyLogBackup**.
     - Auswählen einer vorhandenen, zuvor für SQL erstellten Sicherungsrichtlinie
-    - [Definieren einer neuen Richtlinie](backup-azure-sql-database.md#define-a-backup-policy) basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
+    - [Definieren einer neuen Richtlinie](backup-azure-sql-database.md#configure-a-backup-policy) basierend auf Ihrer RPO und Ihrer Beibehaltungsdauer
     - Vorhandene Sicherungsrichtlinien können während der Vorschauphase nicht bearbeitet werden.
     
 9. Wählen Sie im Menü **Sicherung** die Option **Sicherung aktivieren** aus.
@@ -326,7 +325,7 @@ Wenn Sie Berechtigungen aufgrund des Fehlers **UserErrorSQLNoSysadminMembership*
 
     ![Meldung über erfolgreiche Bereitstellung](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-Alternativ können Sie durch Auswahl der Option **ON** (EIN) in der entsprechenden Dropdownliste in der Spalte **AUTOPROTECT** den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) für die gesamte Instanz oder Always On-Verfügbarkeitsgruppe aktivieren. Das Feature für den [automatischen Schutz](backup-azure-sql-database.md#auto-protect-sql-server-in-azure-vm) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe in Zukunft hinzugefügt werden.  
+Alternativ können Sie durch Auswahl der Option **ON** (EIN) in der entsprechenden Dropdownliste in der Spalte **AUTOPROTECT** den [automatischen Schutz](backup-azure-sql-database.md#enable-auto-protection) für die gesamte Instanz oder Always On-Verfügbarkeitsgruppe aktivieren. Das Feature für den [automatischen Schutz](backup-azure-sql-database.md#enable-auto-protection) ermöglicht nicht nur den gleichzeitigen Schutz aller vorhandenen Datenbanken, sondern schützt auch automatisch alle neuen Datenbanken, die dieser Instanz oder Verfügbarkeitsgruppe in Zukunft hinzugefügt werden.  
 
    ![Aktivieren des automatischen Schutzes für die AlwaysOn-Verfügbarkeitsgruppe](./media/backup-azure-sql-database/enable-auto-protection.png)
 

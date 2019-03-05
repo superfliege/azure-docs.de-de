@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 06/18/2018
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 88e55573e88a45d7733e12c3bb8751763a0ef901
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 0885671d777d79c6f8a9fc993aa1224312705bce
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113361"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56650902"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Tutorial: Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service
 
@@ -199,6 +199,15 @@ Erstellen Sie für das Beispiel der Domäne `contoso.com` anhand der folgenden T
 | - | - | - |
 | Eine Datei | `@` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
 | TXT | `@` | `<app_name>.azurewebsites.net` |
+
+> [!NOTE]
+> Wenn Sie zum Hinzufügen einer Unterdomäne (wie `www.contoso.com`) einen A-Eintrag anstelle eines empfohlenen [CNAME-Eintrags](#map-a-cname-record) verwenden möchten, sollten Ihr A-Eintrag und TXT-Eintrag stattdessen wie in der folgenden Tabelle aussehen:
+>
+> | Eintragstyp | Host | Wert |
+> | - | - | - |
+> | Eine Datei | `www` | IP-Adresse aus dem Schritt [Kopieren der IP-Adresse der App](#info) |
+> | TXT | `www` | `<app_name>.azurewebsites.net` |
+>
 
 Wenn die Einträge hinzugefügt werden, sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 

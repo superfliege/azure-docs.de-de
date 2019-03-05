@@ -1,5 +1,5 @@
 ---
-title: Self-Service-Anmeldungsportal für Azure Active Directory B2B-Zusammenarbeit | Microsoft-Dokumentation
+title: Self-Service-Registrierungsportal für B2B-Zusammenarbeit – Azure Active Directory | Microsoft-Dokumentation
 description: Die Azure Active Directory B2B-Zusammenarbeit ermöglicht Geschäftspartnern den gezielten Zugriff auf Ihre Unternehmensanwendungen und unterstützt so Ihre unternehmensübergreifenden Beziehungen.
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e2f22188d825cfb5d51efe1f305fb2f8f52f6e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0c3ad424e8cab444b2405715eaa468411166ebd9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185042"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56674275"
 ---
 # <a name="self-service-portal-for-azure-ad-b2b-collaboration-sign-up"></a>Self-Service-Anmeldungsportal für Azure AD B2B-Zusammenarbeit
 

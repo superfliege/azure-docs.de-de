@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 3b7b70a5ac0c74cc920df823d1f9ae1152f86bff
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55561194"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736582"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
 
@@ -55,10 +55,10 @@ So führen Sie diesen Schnellstart durch:
 
 Nachdem Sie die Laufzeit, SDKs, Visual Studio-Tools und Docker installiert haben und Docker ausgeführt wird, erstellen Sie einen lokalen Entwicklungscluster mit fünf Knoten.
 
-> [!IMPORTANT]
-> Docker **muss** ausgeführt werden, bevor Sie einen Cluster erstellen können.
+> [!Note]
+> Docker muss beim Erstellen des Clusters ausgeführt werden, damit der Cluster mit aktivierten Containerfunktionen erstellt wird. Wenn Docker nicht ausgeführt wird, müssen Sie den Cluster erneut erstellen, um Containerfunktionen zu aktivieren.
+> Die Anweisung, Docker beim Erstellen des Clusters auszuführen, ist zwar für diesen bestimmten Schnellstart nicht erforderlich, ist jedoch als bewährte Methode angegeben.
 > Testen Sie, ob Docker ausgeführt wird, indem Sie ein Terminalfenster öffnen und `docker ps` ausführen, um zu sehen, ob ein Fehler auftritt. Wenn in der Antwort kein Fehler angegeben wird, wird Docker ausgeführt, und Sie sind bereit, einen Cluster zu erstellen.
-
 
 1. Öffnen Sie als Administrator ein neues PowerShell-Fenster mit erhöhten Rechten.
 2. Führen Sie den folgenden PowerShell-Befehl aus, um einen Entwicklungscluster zu erstellen:

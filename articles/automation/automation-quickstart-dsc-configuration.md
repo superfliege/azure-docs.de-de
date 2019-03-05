@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: c0a7bb9dfe8553515816efd53785dbe661cee0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: f272f72a0bcae70a25bada266dc6b080f46526cd
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54431587"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817717"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>Konfigurieren eines virtuellen Linux-Computers per Desired State Configuration
 
@@ -144,5 +144,5 @@ In dieser Schnellstartanleitung haben Sie eine Linux-VM in DSC integriert, eine 
 
 * Weitere Informationen zu PowerShell Desired State Configuration finden Sie unter [Windows PowerShell DSC – Übersicht](https://docs.microsoft.com/powershell/dsc/overview).
 * Weitere Informationen zur Verwaltung von Automation DSC mit PowerShell finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0).
-* Informationen zum Weiterleiten von DSC-Berichten an Log Analytics für Berichterstellungs- und Warnzwecke finden Sie unter [Weiterleiten von Azure Automation DSC-Berichtsdaten an OMS Log Analytics](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics). 
+* Informationen zum Weiterleiten von DSC-Berichten an Azure Monitor-Protokolle für Berichterstellungs- und Warnzwecke finden Sie unter [Weiterleiten von Azure Automation DSC-Berichtsdaten an Azure Monitor-Protokolle](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics). 
 

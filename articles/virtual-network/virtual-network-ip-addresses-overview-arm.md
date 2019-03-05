@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2019
 ms.author: jdial
-ms.openlocfilehash: e145642a12db941d52c55081032e247b6d65d38b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: a71870115c3ea5e64c8b365d6c4aa64920bc6ca3
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55997328"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675040"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>IP-Adresstypen und Zuordnungsmethoden in Azure
 
@@ -121,7 +121,7 @@ Ein [Azure VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fa
 
 ### <a name="application-gateways"></a>Anwendungsgateways
 
-Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. Diese öffentliche IP-Adresse fungiert als VIP (virtuelle IP-Adresse) mit Lastenausgleich. Sie können der Front-End-Konfiguration eines Application Gateways nur eine *dynamische* öffentliche IP-Adresse des Typs „Basic“ zuweisen.
+Sie können eine öffentliche IP-Adresse einem Azure [Application Gateway](../application-gateway/application-gateway-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)zuordnen, indem Sie sie der **Front-End** -Konfiguration des Gateways zuweisen. Diese öffentliche IP-Adresse fungiert als VIP (virtuelle IP-Adresse) mit Lastenausgleich. Sie können der V1-Front-End-Konfiguration eines Anwendungsgateway nur eine *dynamische* öffentliche IP-Adresse des Typs „Basic“ und einer V2-Front-End-Konfiguration nur eine statische Adresse mit der SKU „Basic“ oder „Standard“ zuweisen.
 
 ### <a name="at-a-glance"></a>Auf einen Blick
 In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffentliche IP-Adresse einer Ressource der obersten Ebene zugeordnet sein kann, und die möglichen Zuweisungsverfahren (dynamisch oder statisch) angegeben.
@@ -131,7 +131,7 @@ In der Tabelle unten sind die spezifischen Eigenschaften, über die eine öffent
 | Virtueller Computer |Netzwerkschnittstelle |Ja |Ja |
 | Lastenausgleich mit Internetzugriff |Front-End-Konfiguration |Ja |Ja |
 | VPN-Gateway |Gateway-IP-Konfiguration |Ja |Ja |
-| Anwendungsgateway |Front-End-Konfiguration |Ja |Ja |
+| Anwendungsgateway |Front-End-Konfiguration |Ja (nur V1) |Ja (nur V2) |
 
 ## <a name="private-ip-addresses"></a>Private IP-Adressen
 Private IP-Adressen ermöglichen Azure-Ressourcen die Kommunikation mit anderen Ressourcen in einem [virtuellen Netzwerk](virtual-networks-overview.md) oder in einem lokalen Netzwerk über ein VPN-Gateway oder eine ExpressRoute-Verbindung, ohne dass dabei eine über das Internet erreichbare IP-Adresse verwendet wird.

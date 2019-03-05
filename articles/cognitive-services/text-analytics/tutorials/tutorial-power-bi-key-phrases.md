@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: 2439244edcc1b7026a2cc8a62a946188e279f15f
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 4489fc82f836d8c311fcd776e211670897618b54
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245829"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56889476"
 ---
 # <a name="tutorial-integrate-power-bi-with-the-text-analytics-cognitive-service"></a>Tutorial: Integrieren von Power BI in die Textanalyse von Cognitive Services
 
@@ -94,7 +94,7 @@ Die [Schlüsselbegriffs-API](//westus.dev.cognitive.microsoft.com/docs/services/
 | | |
 | - | - |
 | `id`  | Ein eindeutiger Bezeichner für dieses Dokument in der Anforderung. Dieses Feld ist auch in der Antwort enthalten. So können Sie bei der Verarbeitung mehrerer Dokumente die extrahierten Schlüsselbegriffe problemlos dem Dokument zuordnen, aus dem sie stammen. Da Sie in diesem Tutorial nur ein Dokument pro Anforderung verarbeiten, können Sie den Wert von `id` als vordefinierten Code aufnehmen, damit dieser für jede Anforderung identisch ist.|
-| `text`  | Der zu verarbeitende Text. Der Wert dieses Felds stammt aus der Spalte `Merged`, die Sie im [vorherigen Abschnitt](#PreparingData) erstellt haben und die Betreffzeile zusammen mit dem Kommentartext enthält. Die Schlüsselbegriffs-API erfordert, dass diese Daten höchstens ca. 5000 Zeichen umfassen.|
+| `text`  | Der zu verarbeitende Text. Der Wert dieses Felds stammt aus der Spalte `Merged`, die Sie im [vorherigen Abschnitt](#PreparingData) erstellt haben und die Betreffzeile zusammen mit dem Kommentartext enthält. Die Schlüsselbegriffs-API erfordert, dass diese Daten höchstens ca. 5.120 Zeichen umfassen.|
 | `language` | Der Code zur Darstellung der natürlichen Sprache, in der das Dokument geschrieben ist. Alle Nachrichten in den Beispieldaten sind in Englisch verfasst, sodass Sie den Wert `en` für dieses Feld als vordefinierten Code aufnehmen können.|
 
 ## <a name="create-a-custom-function"></a>Erstellen einer benutzerdefinierten Funktion
