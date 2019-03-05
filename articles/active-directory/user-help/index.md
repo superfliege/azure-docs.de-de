@@ -51,10 +51,9 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                         <p>
                         <a href="/azure/active-directory/user-help/myprofile-portal-overview">Übersicht</a><br/>
                         <a href="/azure/active-directory/user-help/user-help-security-info-overview">Verwalten der Sicherheitsinformation</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-recent-activity-page">Anzeigen der letzten Anmeldeaktivität</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Verwalten Ihrer Organisationen</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Verwalten Ihrer verbundenen Geräte</a><br/>
-                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Anzeigen der Informationen in Bezug auf den Datenschutz</a><br/>                       
+                        <a href="/azure/active-directory/user-help/myprofile-portal-organizations-page">Manage your organizations</a> (Verwalten Ihrer Organisationen)<br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-devices-page">Manage your connected devices</a> (Verwalten Ihrer verbundenen Geräte)<br/>
+                        <a href="/azure/active-directory/user-help/myprofile-portal-privacy-page">Anzeigen der datenschutzbezogenen Informationen</a>
                         </p>
                     </div>
                 </div>
