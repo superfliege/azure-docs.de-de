@@ -1,41 +1,45 @@
 ---
-title: 'Schnellstart: Erstellen und Verwenden einer Dateifreigabe für Windows | Microsoft-Dokumentation'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie eine Dateifreigabe für Windows erstellen und verwenden.
+title: 'Azure-Schnellstart: Erstellen und Verwenden einer Azure Files-Freigabe auf virtuellen Windows-Computern | Microsoft-Dokumentation'
+description: In dieser Schnellstartanleitung wird über das Azure-Portal eine Azure Files-Freigabe eingerichtet und mit einem virtuellen Windows-Computer verbunden. Sie stellen eine Verbindung mit der Files-Freigabe her und laden eine Datei in die Files-Freigabe hoch. Anschließend erstellen Sie eine Momentaufnahme der Files-Freigabe, ändern die darin enthaltene Datei und stellen eine vorherige Momentaufnahme der Files-Freigabe wieder her.
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.topic: quickstart
 ms.date: 02/01/2019
-ms.author: wgries
-ms.component: files
-ms.openlocfilehash: 141a8c9d63d3f0fd615ec0648b15c669f28f7118
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.author: rogarana
+ms.subservice: files
+ms.openlocfilehash: 12dea044dab2aafad1d7597214d159011b5ab536
+ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55663994"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56652466"
 ---
-# <a name="quickstart-create-and-use-an-azure-file-share-for-windows"></a>Schnellstart: Erstellen und Verwenden einer Dateifreigabe für Windows
-Der Artikel zeigt die grundlegenden Schritte für die Erstellung und Verwendung einer Azure-Dateifreigabe. Der Schwerpunkt dieser Schnellstartanleitung liegt auf der schnellen Einrichtung einer Azure-Dateifreigabe, damit Sie sich mit der Funktionsweise des Diensts vertraut machen können. Sollten Sie eine ausführlichere Anleitung für die Erstellung und Verwendung von Azure-Dateifreigaben in Ihrer Umgebung benötigen, finden Sie diese unter [Verwenden einer Azure-Dateifreigabe mit Windows](storage-how-to-use-files-windows.md).
+# <a name="quickstart-create-and-manage-azure-files-share-with-windows-virtual-machines"></a>Schnellstart: Erstellen und Verwalten einer Azure Files-Freigabe mit virtuellen Windows-Computern
+
+Der Artikel zeigt die grundlegenden Schritte zur Erstellung und Verwendung einer Azure Files-Freigabe. Der Schwerpunkt dieser Schnellstartanleitung liegt auf der schnellen Einrichtung einer Azure Files-Freigabe, damit Sie sich mit der Funktionsweise des Diensts vertraut machen können. Sollten Sie eine ausführlichere Anleitung für die Erstellung und Verwendung von Azure-Dateifreigaben in Ihrer Umgebung benötigen, finden Sie diese unter [Verwenden einer Azure-Dateifreigabe mit Windows](storage-how-to-use-files-windows.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
+
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 ## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
-Vor dem Erstellen einer Azure-Dateifreigabe müssen für diese Schnellstartanleitung zunächst folgende Elemente eingerichtet werden:
+
+In dieser Schnellstartanleitung wird Folgendes eingerichtet:
 
 - Ein Azure-Speicherkonto und eine Azure-Dateifreigabe
 - Ein virtueller Computer mit Windows Server 2016 Datacenter
 
-### <a name="create-a-storage-account"></a>Erstellen eines Speicherkontos
+### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Um eine Azure-Dateifreigabe verwenden zu können, müssen Sie zunächst ein Azure-Speicherkonto erstellen. Ein Speicherkonto ist ein gemeinsam genutzter Pool mit Speicherplatz, in dem Sie eine Azure-Dateifreigabe oder andere Speicherressourcen wie Blobs oder Warteschlangen bereitstellen können. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
+Um eine Azure-Dateifreigabe verwenden zu können, müssen Sie zunächst ein Azure-Speicherkonto erstellen. Ein Speicherkonto vom Typ „Allgemein v2“ bietet Zugriff auf sämtliche Azure Storage-Dienste: Blobs, Dateien, Warteschlangen und Tabellen. In dieser Schnellstartanleitung wird ein universelles v2-Speicherkonto erstellt. Die Schritte für die Erstellung einer anderen Art von Speicherkonto sind jedoch ähnlich. Ein Speicherkonto kann eine unbegrenzte Anzahl von Freigaben enthalten. Auf einer Freigabe kann eine unbegrenzte Anzahl von Dateien gespeichert werden, bis die Kapazitätsgrenzen des Speicherkontos erreicht sind.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ### <a name="create-an-azure-file-share"></a>Erstellen einer Azure-Dateifreigabe
+
 Als Nächstes erstellen Sie eine Dateifreigabe.
 
 1. Wählen Sie nach Abschluss der Bereitstellung des Azure-Speicherkontos die Option **Zu Ressource wechseln** aus.
@@ -58,6 +62,7 @@ Als Nächstes erstellen Sie eine Dateifreigabe.
 Sie haben nun ein Azure-Speicherkonto und eine Dateifreigabe mit einer einzelnen Datei in Azure erstellt. Als Nächstes erstellen Sie den virtuellen Azure-Computer mit Windows Server 2016 Datacenter, der in dieser Schnellstartanleitung den lokalen Server darstellt.
 
 ### <a name="deploy-a-vm"></a>Bereitstellen einer VM
+
 1. Erweitern Sie als Nächstes das Menü auf der linken Seite des Portals, und wählen Sie im Azure-Portal oben links die Option **Ressource erstellen**.
 1. Suchen Sie im Suchfeld oberhalb der Liste mit den **Azure Marketplace**-Ressourcen nach **Windows Server 2016 Datacenter**, und wählen Sie den Eintrag aus. Klicken Sie anschließend auf **Erstellen**.
 1. Wählen Sie auf der Registerkarte **Grundlagen** unter **Projektdetails** die Ressourcengruppe aus, die Sie für diese Schnellstartanleitung erstellt haben.
@@ -81,7 +86,7 @@ Sie haben jetzt einen neuen virtuellen Computer erstellt und einen Datenträger 
 
    ![Herstellen einer Verbindung mit einem virtuellen Azure-Computer über das Portal](./media/storage-files-quick-create-use-windows/connect-vm.png)
 
-1. Übernehmen Sie auf der Seite zum Herstellen der Verbindung mit dem virtuellen Computer**** die Standardoptionen, um über die **IP-Adresse** und die **Portnummer** *3389* eine Verbindung herzustellen. Wählen Sie anschließend **RDP-Datei herunterladen** aus.
+1. Übernehmen Sie auf der Seite zum **Herstellen der Verbindung mit dem virtuellen Computer** die Standardoptionen, um über die **IP-Adresse** und die **Portnummer** *3389* eine Verbindung herzustellen. Wählen Sie anschließend **RDP-Datei herunterladen** aus.
 1. Öffnen Sie die heruntergeladene RDP-Datei, und klicken Sie auf **Verbinden**, wenn Sie dazu aufgefordert werden.
 1. Wählen Sie im Fenster **Windows-Sicherheit** die Option **Weitere Optionen** und dann **Anderes Konto verwenden** aus. Geben Sie den Benutzernamen im Format *localhost\<Benutzername>* ein. &lt;<Benutzername>&gt; ist hierbei der VM-Administratorbenutzername, den Sie für den virtuellen Computer erstellt haben. Geben Sie das Kennwort ein, das Sie für den virtuellen Computer erstellt haben, und wählen Sie anschließend **OK** aus.
 
@@ -112,6 +117,7 @@ Sie haben jetzt einen neuen virtuellen Computer erstellt und einen Datenträger 
       ![UNC-Pfad aus dem Verbindungsbereich von Azure Files](./media/storage-files-quick-create-use-windows/portal_netuse_connect3.png)
 
 ## <a name="create-a-share-snapshot"></a>Erstellen einer Freigabemomentaufnahme
+
 Nach dem Zuordnen des Laufwerks können Sie eine Momentaufnahme erstellen.
 
 1. Navigieren Sie im Portal zu Ihrer Dateifreigabe, und wählen Sie **Momentaufnahme erstellen** aus.
@@ -132,7 +138,7 @@ Nach dem Zuordnen des Laufwerks können Sie eine Momentaufnahme erstellen.
 
 ## <a name="restore-from-a-snapshot"></a>Wiederherstellen aus einer Momentaufnahme
 
-1. Wählen Sie im Portal *qsTestFile* und anschließend die Schaltfläche **Wiederherstellen** aus.
+1. Klicken Sie auf dem Blatt der Dateifreigabemomentaufnahme mit der rechten Maustaste auf *qsTestFile*, und wählen Sie **Wiederherstellen** aus.
 1. Wählen Sie **Originaldatei überschreiben** aus.
 
    ![Schaltflächen „Herunterladen“ und „Wiederherstellen“](./media/storage-files-quick-create-use-windows/snapshot-download-restore-portal.png)
@@ -147,6 +153,7 @@ Nach dem Zuordnen des Laufwerks können Sie eine Momentaufnahme erstellen.
    ![Schaltfläche „Löschen“](./media/storage-files-quick-create-use-windows/portal-snapshots-delete.png)
 
 ## <a name="use-a-share-snapshot-in-windows"></a>Verwenden einer Freigabemomentaufnahme unter Windows
+
 Die Momentaufnahmen Ihrer eingebundenen Azure-Dateifreigabe können genau wie lokale VSS-Momentaufnahmen auf der Registerkarte „Vorherige Versionen“ angezeigt werden.
 
 1. Navigieren Sie im Datei-Explorer zu der eingebundenen Freigabe.
