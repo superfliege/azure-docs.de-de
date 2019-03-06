@@ -12,15 +12,15 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/25/2019
+ms.date: 02/26/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04631431c03f6fdd378bfa99edb9b67f8d6a0cad
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: cf47e3b48f1047af88a19c59459c19c078f71a63
+ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193916"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "56984474"
 ---
 # <a name="create-a-batch-account-with-the-azure-portal"></a>Erstellen eines Batch-Kontos mit dem Azure-Portal
 
@@ -42,19 +42,21 @@ Hintergrundinformationen zu Batch-Konten und -Szenarien finden Sie in der [Funkt
 
     ![Erstellen eines Batch-Kontos][account_portal]
 
-    a. **Kontoname**: Der ausgewählte Name muss innerhalb der Azure-Region, in der das Konto erstellt wird, eindeutig sein (siehe **Standort** weiter unten). Der Kontoname darf nur Kleinbuchstaben und Zahlen enthalten und muss 3 bis 24 Zeichen lang sein.
+    a. **Abonnement**: Das Abonnement, in dem das Batch-Konto erstellt werden soll. Wenn Sie nur über ein Abonnement verfügen, ist es standardmäßig ausgewählt.
 
-    b. **Abonnement**: Das Abonnement, in dem das Batch-Konto erstellt werden soll. Wenn Sie nur über ein Abonnement verfügen, ist es standardmäßig ausgewählt.
+    b. **Ressourcengruppe**: Eine vorhandene Ressourcengruppe für Ihr neues Batch-Konto. Optional können Sie auch eine neue Ressourcengruppe erstellen.
 
-    c. **Ressourcengruppe**: Eine vorhandene Ressourcengruppe für Ihr neues Batch-Konto. Optional können Sie auch eine neue Ressourcengruppe erstellen.
+    c. **Kontoname**: Der ausgewählte Name muss innerhalb der Azure-Region, in der das Konto erstellt wird, eindeutig sein (siehe **Standort** weiter unten). Der Kontoname darf nur Kleinbuchstaben und Zahlen enthalten und muss 3 bis 24 Zeichen lang sein.
 
     d. **Standort**: Die Azure-Region, in der das Batch-Konto erstellt werden soll. Nur die von Ihrem Abonnement und der Ressourcengruppe unterstützten Regionen werden als Optionen angezeigt.
 
-    e. **Speicherkonto** (optional): Ein Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Dies ist bei den meisten Batch-Konten empfehlenswert. Informationen zu den Optionen für Speicherkonten in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account). Wählen Sie im Portal ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
+    e. **Speicherkonto**: Ein optionales Azure Storage-Konto, das Sie dem Batch-Konto zuordnen. Die beste Leistung erzielen Sie mit einem Speicherkonto vom Typ „Allgemein v2“. Informationen zu allen Speicherkontooptionen in Batch finden Sie unter [Entwickeln von parallelen Computelösungen in größerem Umfang mit Batch](batch-api-basics.md#azure-storage-account). Wählen Sie im Portal ein vorhandenes Speicherkonto aus, oder erstellen Sie ein neues.
 
       ![Speicherkonto erstellen][storage_account]
 
-    f. **Poolzuordnungsmodus**: In den meisten Szenarien übernehmen Sie die Standardeinstellung **Batch-Dienst**.
+    f. **Poolzuordnungsmodus**: Auf der Registerkarte mit den **erweiterten** Einstellungen können Sie **Batch-Dienst** oder **Benutzerabonnement** als Poolzuordnungsmodus angeben. In den meisten Szenarien übernehmen Sie die Standardeinstellung **Batch-Dienst**.
+
+      ![Batch-Poolzuordnungsmodus][pool_allocation]
 
 1. Wählen Sie **Erstellen**, um das Konto zu erstellen.
 
@@ -115,7 +117,7 @@ Verwenden Sie beim Erstellen des Batch-Kontos im Modus „Benutzerabonnement“ 
 
 ### <a name="configure-subscription-quotas"></a>Konfigurieren von Abonnementkontingenten
 
-Für Batch-Konten vom Typ „Benutzerabonnement“ sind standardmäßig keine Kernkontingente festgelegt. Kernkontingente müssen manuell festgelegt werden, da typische Batch-Kernkontingente nicht für Konten im Modus „Benutzerabonnement“ gelten.
+Für Batch-Konten vom Typ „Benutzerabonnement“ sind standardmäßig keine Kernkontingente festgelegt. Kernkontingente müssen manuell festgelegt werden, da Batch-Standardkernkontingente nicht für Konten im Modus „Benutzerabonnement“ gelten.
 
 1. Wählen Sie im [Azure-Portal][azure_portal] Ihr Batch-Konto im Modus „Benutzerabonnement“ aus, um die dazugehörigen Einstellungen und Eigenschaften anzuzeigen.
 
@@ -142,8 +144,8 @@ Neben der Verwendung des Azure-Portals stehen Ihnen zum Erstellen und Verwalten 
 [marketplace_portal]: ./media/batch-account-create-portal/marketplace-batch.png
 [account_blade]: ./media/batch-account-create-portal/batch_blade.png
 [account_portal]: ./media/batch-account-create-portal/batch-account-portal.png
+[pool_allocation]: ./media/batch-account-create-portal/batch-pool-allocation.png
 [account_keys]: ./media/batch-account-create-portal/batch-account-keys.png
-[account_url]: ./media/batch-account-create-portal/account_url.png
 [storage_account]: ./media/batch-account-create-portal/storage_account.png
 [subscription_access]: ./media/batch-account-create-portal/subscription_iam.png
 [add_permission]: ./media/batch-account-create-portal/add_permission.png

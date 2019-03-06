@@ -9,8 +9,7 @@ items:
     href: deep-learning-dsvm-overview.md
   - name: Was ist die Geo AI Data Science VM?
     href: geo-ai-dsvm-overview.md
-  expanded: true
-- name: Erste Schritte
+- name: Schnellstarts
   items:
   - name: Erstellen einer Data Science-VM für Windows
     href: provision-vm.md
@@ -22,27 +21,8 @@ items:
     href: provision-deep-learning-dsvm.md
   - name: Erstellen einer Geo AI Data Science VM
     href: provision-geo-ai-dsvm.md
-- name: Anleitung
-  items:
-  - name: Verwenden einer Data Science-VM für Windows
-    href: vm-do-ten-things.md
-  - name: Verwenden einer Data Science-VM für Linux
-    href: linux-dsvm-walkthrough.md
-  - name: Verwenden einer Deep Learning-VM
-    href: use-deep-learning-dsvm.md
-  - name: Verwenden einer Geo AI Data Science VM
-    href: use-geo-ai-dsvm.md
-- name: Enterprise-Leitfaden
-  items:
-  - name: Übersicht
-    href: dsvm-enterprise-overview.md
-  - name: Skalieren
-    href: dsvm-pools.md
-  - name: Active Directory-Integration
-    href: dsvm-common-identity.md
-  - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
-    href: dsvm-secure-access-keys.md
-- name: Verweis
+  expanded: true
+- name: Konzepte
   items:
   - name: Ermitteln der DSVM
     href: dsvm-tools-overview.md
@@ -50,7 +30,7 @@ items:
     href: dsvm-deep-learning-ai-frameworks.md
   - name: ML- und Data Science-Tools
     href: dsvm-ml-data-science-tools.md
-  - name: Sprachen
+  - name: Languages
     href: dsvm-languages.md
   - name: Entwicklungstools
     href: dsvm-tools-development.md
@@ -62,10 +42,29 @@ items:
     href: dsvm-data-platforms.md
   - name: Beispiele und exemplarische Vorgehensweisen
     href: dsvm-samples-and-walkthroughs.md
-  expanded: true
+- name: Anleitungen
+  items:
+  - name: Verwenden einer Data Science-VM für Windows
+    href: vm-do-ten-things.md
+  - name: Verwenden einer Data Science-VM für Linux
+    href: linux-dsvm-walkthrough.md
+  - name: Verwenden einer Deep Learning-VM
+    href: use-deep-learning-dsvm.md
+  - name: Verwenden einer Geo AI Data Science VM
+    href: use-geo-ai-dsvm.md
+  - name: Enterprise-Leitfaden
+    items:
+    - name: Übersicht
+      href: dsvm-enterprise-overview.md
+    - name: Skalieren
+      href: dsvm-pools.md
+    - name: Active Directory-Integration
+      href: dsvm-common-identity.md
+    - name: Sichere Anmeldeinformationen für den Ressourcenzugriff
+      href: dsvm-secure-access-keys.md
 - name: Ressourcen
   items:
-  - name: Entwicklerhandbuch für R
+  - name: R-Entwicklerhandbuch
     href: ../r-developers-guide.md
   - name: Blog
     href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
@@ -73,9 +72,9 @@ items:
     href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
   - name: Stack Overflow
     href: https://stackoverflow.com/search?q=dsvm
-ms.openlocfilehash: e1617f3f5c36a5b006003e2f375dfac4143af7cd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: eddadfc7b10cea364f8235bbd8ba378d9aeaf362
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032563"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57431630"

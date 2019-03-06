@@ -9,21 +9,24 @@
 
 ## Lernprogramme
 ### Java (VS Code und CLI)
-#### [1: Erste Schritte](get-started-java.md)
+#### [1 – Erste Schritte](get-started-java.md)
 #### [2: Entwicklung mit mehreren Diensten](multi-service-java.md)
 #### [3: Teamentwicklung](team-development-java.md)
 ### .NET Core (VS Code und CLI)
-#### [1: Erste Schritte](get-started-netcore.md)
+#### [1 – Erste Schritte](get-started-netcore.md)
 #### [2: Entwicklung mit mehreren Diensten](multi-service-netcore.md)
 #### [3: Teamentwicklung](team-development-netcore.md)
 ### .NET Core (Visual Studio 2017)
-#### [1: Erste Schritte](get-started-netcore-visualstudio.md)
+#### [1 – Erste Schritte](get-started-netcore-visualstudio.md)
 #### [2: Entwicklung mit mehreren Diensten](multi-service-netcore-visualstudio.md)
 #### [3: Teamentwicklung](team-development-netcore-visualstudio.md)
 ### Node.js (VS Code und CLI)
-#### [1: Erste Schritte](get-started-nodejs.md)
+#### [1 – Erste Schritte](get-started-nodejs.md)
 #### [2: Entwicklung mit mehreren Diensten](multi-service-nodejs.md)
 #### [3: Teamentwicklung](team-development-nodejs.md)
+
+## Konzepte
+### [Funktionsweise von Dev Spaces](how-dev-spaces-works.md)
 
 ## Anleitung
 ### [Erstellen eines Kubernetes-Clusters mit Azure Cloud Shell](how-to/create-cluster-cloud-shell.md)
