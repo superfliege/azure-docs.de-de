@@ -93,7 +93,7 @@ Aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal, und konfigur
 
     ![Link „Einmaliges Anmelden“][4]
 
-1. Wählen Sie im Fenster **Einmaliges Anmelden** im Feld **SSO-Mode****SAML-basierte Anmeldung** aus.
+1. Wählen Sie im Fenster **Einmaliges Anmelden** im Feld **SSO-Mode** **SAML-basierte Anmeldung** aus.
  
     ![Fenster „Einmaliges Anmelden“](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_samlbase.png)
 

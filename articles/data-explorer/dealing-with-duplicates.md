@@ -46,7 +46,7 @@ _data
 
 Untersuchen Sie Ihre geschäftlichen Anforderungen und die Toleranz gegenüber doppelten Daten. Bei manchen Datasets ist ein gewisser prozentualer Anteil doppelter Daten kein Problem. Wenn die duplizierten Daten keine größeren Auswirkungen haben, können Sie sie einfach ignorieren. Vorteil: Es entsteht kein Zusatzaufwand bei der Datenerfassung, und die Abfrageleistung wird nicht beeinträchtigt.
 
-### <a name="solution-2-handle-duplicate-rows-during-query"></a>Lösung 2: Behandeln doppelter Zeilen im Rahmen beim Abfragen
+### <a name="solution-2-handle-duplicate-rows-during-query"></a>Lösung 2: Behandeln doppelter Zeilen im Rahmen von Abfragen
 
 Die doppelten Datenzeilen können auch beim Abfragen herausgefiltert werden. Mit der Aggregatfunktion [`arg_max()`](/azure/kusto/query/arg-max-aggfunction) können Sie die doppelten Datensätze herausfiltern und den letzten Datensatz auf der Grundlage des Zeitstempels (oder einer anderen Spalte) zurückgeben. Vorteil: Die Datenerfassung wird beschleunigt, da die Deduplizierung bereits bei der Abfrage erfolgt. Darüber hinaus stehen alle Datensätze (einschließlich Duplikate) für die Überwachung und Problembehandlung zur Verfügung. Nachteil: Durch die Verwendung der Funktion `arg_max` erhöhen sich bei jeder Datenabfrage die Abfragezeit und die CPU-Last. Je nach abgefragter Datenmenge kann es vorkommen, dass die Lösung nicht mehr funktioniert oder zu viel Arbeitsspeicher benötigt und auf eine andere Option ausgewichen werden muss.
 
