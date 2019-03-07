@@ -39,7 +39,7 @@ Wählen Sie anschließend die Organisation aus, in der die Erweiterung installie
 
 Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrem Azure DevOps-Konto an, und suchen Sie Ihr Projekt auf dem Projektdashboard. Sie können Ihrem Projekt eine [Buildpipeline](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav) hinzufügen oder eine bereits vorhandenen Buildpipeline ändern. Wenn Sie bereits über eine Buildpipeline verfügen, können Sie mit [Hinzufügen des Emulator-Buildtasks zur Builddefinition](#addEmulatorBuildTaskToBuildDefinition) fortfahren.
 
-1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.** > **Neue Buildpipeline**
+1. Navigieren Sie zum Erstellen einer neuen Builddefinition in Azure DevOps zur Registerkarte **Builds**. Klicken Sie auf **+Neu.**  >  **Neue Buildpipeline**
 
    ![Erstellen einer neuen Buildpipeline](./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png)
 
