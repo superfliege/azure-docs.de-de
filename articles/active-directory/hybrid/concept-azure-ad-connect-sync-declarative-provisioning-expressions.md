@@ -74,8 +74,7 @@ Folgende Operatoren können verwendet werden:
 * **Vergleich**: &lt;, &lt;=, &lt;&gt;, =, &gt;, &gt;=
 * **Mathematik**: +, -, \*, -
 * **Zeichenfolge**: &amp; (Verkettung)
-* 
-  **Logischer Ausdruck**: &&amp;amp; (und), || (oder)
+* **Logischer Ausdruck**: &&amp;amp; (und), || (oder)
 * **Auswertungsreihenfolge**: ( )
 
 Operatoren werden von links nach rechts ausgewertet und haben bei der Auswertung die gleiche Priorität. Dies bedeutet, dass der Multiplikator (\*) nicht vor der Subtraktion (-) ausgewertet wird. „2\*(5+3)“ ist nicht dasselbe wie „2\*5+3“. Die Klammern werden verwendet, um die Reihenfolge der Auswertung zu ändern, wenn die Auswertungsreihenfolge von links nach rechts nicht geeignet ist.
