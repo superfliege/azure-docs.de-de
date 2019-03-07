@@ -146,7 +146,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     a. Aktivieren Sie das Kontrollkästchen **Use Single Sign-On (SSO)** (Einmaliges Anmelden (SSO) verwenden).
 
-    b. Wählen Sie als SSO-Anbieter**** in der Dropdownliste die Option **Azure Active Directory** aus.
+    b. Wählen Sie als **SSO-Anbieter** in der Dropdownliste die Option **Azure Active Directory** aus.
 
     c. Verwenden Sie im Textfeld **Issuer URL** (Aussteller-URL) den Bezeichnerwert, den Sie im Azure-Portal im Abschnitt **Grundlegende SAML-Konfiguration** verwendet haben.
 
@@ -154,7 +154,7 @@ Führen Sie die folgenden Schritte aus, um das einmalige Anmelden von Azure AD m
 
     e. Fügen Sie im Textfeld **SLO endpoint URL** (SLO-Endpunkt-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    f. Wählen Sie als SAML-Signaturalgorithmus**** in der Dropdownliste die Option **SHA256** aus.
+    f. Wählen Sie als **SAML-Signaturalgorithmus** in der Dropdownliste die Option **SHA256** aus.
 
     g. Öffnen Sie die heruntergeladene Zertifikatdatei (Base64) im Editor. Kopieren Sie den Inhalt in die Zwischenablage, und fügen Sie ihn in das Textfeld für das X.509-Zertifikat ein.
 

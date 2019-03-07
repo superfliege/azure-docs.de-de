@@ -151,15 +151,15 @@ Melden Sie sich zum Konfigurieren des einmaligen Anmeldens für HighGear bei Ihr
 
 1. Geben Sie als **Name des Identitätsanbieters** eine kurze Beschreibung ein. Diese wird auf der Anmeldeseite auf der SSO-Schaltfläche von HighGear angezeigt. Beispiel:  Azure AD
 
-2. Fügen Sie in HighGear im Feld für die URL für einmaliges Anmelden**** den Wert aus dem Feld **Anmelde-URL** ein, das sich in Azure im Abschnitt **HighGear einrichten** befindet.
+2. Fügen Sie in HighGear im Feld für die **URL für einmaliges Anmelden** den Wert aus dem Feld **Anmelde-URL** ein, das sich in Azure im **Abschnitt HighGear** einrichten befindet.
 
-3. Fügen Sie in HighGear im Feld für die Entitäts-ID des Identitätsanbieters**** den Wert aus dem Feld **Azure AD-Bezeichner** ein, das sich in Azure im Abschnitt **HighGear einrichten** befindet.
+3. Fügen Sie in HighGear im Feld für die **Entitäts-ID des Identitätsanbieters** den Wert aus dem Feld **Azure AD-Bezeichner** ein, das sich in Azure im **Abschnitt HighGear** einrichten befindet.
 
-4. Fügen Sie in HighGear im Feld für die URL für einmaliges Abmelden**** den Wert aus dem Feld **Abmelde-URL** ein, das sich in Azure im Abschnitt **HighGear einrichten** befindet.
+4. Fügen Sie in HighGear im Feld für die **URL für einmaliges Abmelden** den Wert aus dem Feld **Abmelde-URL** ein, das sich in Azure im **Abschnitt HighGear** einrichten befindet.
 
-5. Öffnen Sie das Zertifikat, das Sie aus dem Abschnitt **SAML-Signaturzertifikat** in Azure heruntergeladen haben, im Editor. Das Zertifikat muss im Format **Zertifikat (Base64)** vorliegen. Kopieren Sie den Inhalt des Zertifikats aus dem Editor, und fügen Sie ihn in HighGear in das Feld für das Identitätsanbieterzertifikat**** ein.
+5. Öffnen Sie das Zertifikat, das Sie aus dem Abschnitt **SAML-Signaturzertifikat** in Azure heruntergeladen haben, im Editor. Das Zertifikat muss im Format **Zertifikat (Base64)** vorliegen. Kopieren Sie den Inhalt des Zertifikats aus dem Editor, und fügen Sie ihn in HighGear in das Feld für das **Identitätsanbieterzertifikat** ein.
 
-6. Fordern Sie beim [HighGear-Supportteam](mailto:support@highgear.com) per E-Mail Ihr HighGear-Zertifikat an. Gehen Sie gemäß den erhaltenen Anweisungen vor, um das Feld für das HighGear-Zertifikat**** und das Feld für das HighGear-Zertifikatkennwort**** auszufüllen.
+6. Fordern Sie beim [HighGear-Supportteam](mailto:support@highgear.com) per E-Mail Ihr HighGear-Zertifikat an. Gehen Sie gemäß den erhaltenen Anweisungen vor, um das Feld für das **HighGear-Zertifikat** und das Feld für das **HighGear-Zertifikatkennwort** auszufüllen.
 
 7. Klicken Sie auf die Schaltfläche **Speichern**, um die HighGear-SSO-Konfiguration zu speichern.
 
