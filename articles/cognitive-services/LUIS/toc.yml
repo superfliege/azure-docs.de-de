@@ -10,6 +10,14 @@ items:
   items:
   - name: Hinzufügen einer App für eine vordefinierte Domäne
     href: luis-get-started-create-app.md
+  - name: Verwenden des LUIS-Portals
+    items:
+    - name: 1. Erstellen einer App
+      displayName: intent, entity, create app, test, example utterance
+      href: get-started-portal-build-app.md
+    - name: 2. Bereitstellen einer App
+      displayName: assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish
+      href: get-started-portal-deploy-app.md
   - name: Verwenden von .NET SDK
     items:
     - name: Abfragen eines Vorhersageendpunkts
@@ -251,6 +259,7 @@ items:
   - name: Datenschutz
     href: luis-user-privacy.md
   - name: Regionen
+    displayName: failover, fail-over, fail over, Europe, EU, Austrailia, business continuity, bcdr
     href: luis-reference-regions.md
   - name: Grenzen
     href: luis-boundaries.md
@@ -394,9 +403,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: Wissensdatenbank
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: 1bc49d2665c143a434f56d9d58bbe3d51cb42404
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 59950ced82f3b50ec5d0fe340157016954d2ff0b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338724"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779758"

@@ -63,47 +63,49 @@ items:
       href: how-to-search-for-address.md
     - name: Rendern von benutzerdefinierten Daten auf einer statischen Karte
       href: how-to-render-custom-data.md
-  - name: Erstellen von JavaScript-Karten
+  - name: Entwickeln mit dem Web SDK
     items:
-    - name: Verwenden des Kartensteuerelements
-      href: how-to-use-map-control.md
-    - name: Erstellen einer Karte
-      href: map-create.md
-    - name: Auswählen eines Kartenstils
-      href: choose-map-style.md
-    - name: Hinzufügen von Kartensteuerelementen
-      href: map-add-controls.md
-    - name: Hinzufügen einer Symbolebene
-      href: map-add-pin.md
-    - name: Hinzufügen eines Popups
-      href: map-add-popup.md
-    - name: Hinzufügen einer Blasenebene
-      href: map-add-bubble-layer.md
-    - name: Hinzufügen einer Form
-      href: map-add-shape.md
-    - name: Hinzufügen einer Wärmebildebene
-      href: map-add-heat-map-layer.md
-    - name: Hinzufügen einer Bildebene
-      href: map-add-image-layer.md
-    - name: Hinzufügen einer Kachelebene
-      href: map-add-tile-layer.md
-    - name: Hinzufügen von HTML-Markern
-      href: map-add-custom-html.md
-    - name: Dienste
+    - name: Kartensteuerelement
+      items:
+      - name: Verwenden des Kartensteuerelements
+        href: how-to-use-map-control.md
+      - name: Erstellen einer Karte
+        href: map-create.md
+      - name: Auswählen eines Kartenstils
+        href: choose-map-style.md
+      - name: Hinzufügen von Steuerelementen zur Karte
+        href: map-add-controls.md
+      - name: Hinzufügen einer Symbolebene
+        href: map-add-pin.md
+      - name: Hinzufügen eines Popups
+        href: map-add-popup.md
+      - name: Hinzufügen einer Blasenebene
+        href: map-add-bubble-layer.md
+      - name: Hinzufügen von Formen
+        href: map-add-shape.md
+      - name: Hinzufügen einer Wärmebildebene
+        href: map-add-heat-map-layer.md
+      - name: Überlagern eines Bilds
+        href: map-add-image-layer.md
+      - name: Hinzufügen von Kachelebenen
+        href: map-add-tile-layer.md
+      - name: HTML-Marker
+        href: map-add-custom-html.md
+      - name: Anzeigen des Verkehrs
+        href: map-show-traffic.md
+      - name: Interaktion mit Mausereignissen
+        href: map-events.md
+      - name: Ermöglichen des Zugriffs auf Ihre App
+        href: map-accessibility.md
+    - name: Dienstmodule
       items:
       - name: Anzeigen von Suchergebnissen
         href: map-search-location.md
       - name: Abrufen von Informationen von einer Koordinate
         href: map-get-information-from-coordinate.md
-      - name: Anzeigen einer Richtung von A nach B
+      - name: Anzeigen einer Wegbeschreibung von A nach B
         href: map-route.md
-    - name: Anzeigen des Verkehrs
-      href: map-show-traffic.md
-    - name: Interaktion mit Mausereignissen
-      href: map-events.md
-    - name: Zugängliche Kartenanwendungen
-      href: map-accessibility.md
-  - name: Erstellen von Android-Karten
+  - name: Entwickeln mit dem Android SDK
     items:
     - name: Verwenden des Android-Kartensteuerelements
       href: how-to-use-android-map-control-library.md
@@ -150,7 +152,7 @@ items:
 - name: Ressourcen
   items:
   - name: Nutzungsbedingungen für Azure Maps
-    href: http://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
+    href: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31.
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/azure-maps
   - name: Preisrechner
@@ -197,9 +199,9 @@ items:
       href: /azure/iot-edge
     - name: IoT-Geräte-SDKs
       href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
-ms.openlocfilehash: b0584c77ed7d8b3ed6c6962d02b75e061a97bf14
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 2d974c96dd953c7a2727bcd5b1bcc3b60ad807a0
+ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336732"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57569228"

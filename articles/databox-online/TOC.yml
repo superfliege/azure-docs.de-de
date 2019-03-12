@@ -40,6 +40,8 @@ items:
         href: data-box-gateway-manage-bandwidth-schedules.md
       - name: Zugriff, Stromversorgung, Konnektivität
         href: data-box-gateway-manage-access-power-connectivity-mode.md
+      - name: Über PowerShell
+        href: data-box-gateway-connect-powershell-interface.md
     - name: Problembehandlung
       href: data-box-gateway-troubleshoot.md
   - name: Versionshinweise
@@ -74,6 +76,8 @@ items:
     items:
     - name: Entwickeln eines C#-Moduls
       href: data-box-edge-create-iot-edge-module.md
+    - name: Verwalten über PowerShell
+      href: data-box-edge-connect-powershell-interface.md
 - name: Ressourcen
   items:
   - name: Beispiele für ein Data Box Edge-C#-Modul (.NET)
@@ -82,9 +86,9 @@ items:
     href: https://azure.microsoft.com/services/storage/databox/edge/
   - name: Preise
     href: https://azure.microsoft.com/pricing/details/storage/databox/edge/
-ms.openlocfilehash: 447696a07ca7decc2d07d3752e3e6dfe6b6c688b
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 0ce74b9b3000c04c7e94358c8c93bade74cfd81f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55963742"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551319"

@@ -124,8 +124,6 @@ items:
     href: monitor.md
   - name: Sicherung und Wiederherstellung
     href: backup-recovery.md
-  - name: High Performance Computing
-    href: high-performance-computing.md
   - name: Infrastrukturbeispiel
     href: infrastructure-example.md
 - name: Anleitungen
@@ -313,43 +311,46 @@ items:
         href: excel-cluster-hpcpack.md
   - name: Verwalten von Speicher
     items:
-    - name: Häufig gestellte Fragen zu Datenträgern
-      href: faq-for-disks.md
     - name: Hinzufügen eines Datenträgers
       items:
       - name: Azure Powershell
         href: attach-disk-ps.md
       - name: Azure-Portal
         href: attach-managed-disk-portal.md
-    - name: Durchführen von Vergleichstest für einen Datenträger
-      href: disks-benchmarks.md
     - name: Trennen eines Datenträgers
       href: detach-disk.md
+    - name: Bereitstellen von Datenträgern mit Vorlage
+      href: using-managed-disks-template-deployments.md
     - name: Ändern der Größe eines Datenträgers
       href: expand-os-disk.md
     - name: Erstellen einer Momentaufnahme eines Datenträgers
       href: snapshot-copy-managed-disk.md
     - name: Sichern nicht verwalteter Datenträger
       href: incremental-snapshots.md
-    - name: Konvertieren von Datenträgern zwischen Standard und Premium
-      href: convert-disk-storage.md
-    - name: Migrieren zu Storage Premium mit Azure Site Recovery
-      href: migrate-to-premium-storage-using-azure-site-recovery.md
+    - name: Migration und Konvertierung
+      items:
+      - name: Konvertieren von Datenträgern zwischen Standard und Premium
+        href: convert-disk-storage.md
+      - name: Migrieren zu Storage Premium mit Azure Site Recovery
+        href: migrate-to-premium-storage-using-azure-site-recovery.md
+      - name: Migrieren zu Managed Disks
+        href: migrate-to-managed-disks.md
+      - name: Nicht verwalteter virtueller Computer zu Managed Disks
+        href: convert-unmanaged-to-managed-disks.md
+    - name: Leistung
+      items:
+      - name: Aktivieren der Schreibbeschleunigung
+        href: how-to-enable-write-accelerator.md
+      - name: Aktivieren von Ultra-SSDs
+        href: disks-enable-ultra-ssd.md
+      - name: Durchführen von Vergleichstest für einen Datenträger
+        href: disks-benchmarks.md
     - name: Ermitteln nicht angefügter Datenträger
       href: find-unattached-disks.md
     - name: Verwenden von File Storage
-      href: mount-azure-file-storage.md
-    - name: Bereitstellen von Datenträgern mit Vorlage
-      href: using-managed-disks-template-deployments.md
-    - name: Aktivieren der Schreibbeschleunigung
-      href: how-to-enable-write-accelerator.md
-    - name: Aktivieren von Ultra-SSDs
-      href: disks-enable-ultra-ssd.md
-    - name: Migrieren zu Managed Disks
-      href: migrate-to-managed-disks.md
-      items:
-      - name: Nicht verwalteter virtueller Computer zu Managed Disks
-        href: convert-unmanaged-to-managed-disks.md
+      href: ../../storage/files/storage-files-quick-create-use-windows.md
+    - name: Häufig gestellte Fragen zu Datenträgern
+      href: faq-for-disks.md
   - name: Verwalten von Netzwerken
     href: ps-common-network-ref.md
     items:
@@ -461,9 +462,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Häufig gestellte Fragen
     href: faq.md
-ms.openlocfilehash: 3ddf84852fee0dc30aa9bc7e9d49f06493f6b0cc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 78a321bbf5bbf3c970d7b6caef3409d55d33c808
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448440"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57732510"
