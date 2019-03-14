@@ -1,6 +1,6 @@
 ---
 title: 'Azure-Schnellstart: Erstellen einer Warteschlange in Azure Storage mithilfe des Azure-Portals | Microsoft-Dokumentation'
-description: 'In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Warteschlange zu erstellen. Anschließend verwenden Sie das Azure-Portal für Folgendes:'
+description: In dieser Schnellstartanleitung verwenden Sie das Azure-Portal, um eine Warteschlange zu erstellen. Anschließend verwenden Sie das Azure-Portal, um eine Nachricht hinzuzufügen, die Eigenschaften der Nachricht anzuzeigen und die Nachricht aus der Warteschlange zu entfernen.
 services: storage
 author: tamram
 ms.custom: mvc
