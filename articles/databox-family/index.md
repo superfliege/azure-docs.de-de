@@ -1,6 +1,6 @@
 ---
 title: Azure Data Box-Dokumentation
-description: Die Produkte der Azure Data Box-Familie bieten unterschiedliche Speicherkapazitäten, um Terabytes an Daten schnell, kostengünstig und zuverlässig an Azure zu senden. Microsoft beschleunigt die sichere Datenübertragung, indem Ihnen proprietäre Speichergeräte zugesandt werden, die eine Offline- oder Netzwerkdatenübertragung ermöglichen.
+description: 'Die Produkte der Azure Data Box-Familie bieten unterschiedliche Speicherkapazitäten, um Terabytes an Daten schnell, kostengünstig und zuverlässig an Azure zu senden. Microsoft beschleunigt die sichere Datenübertragung, indem Ihnen proprietäre Speichergeräte zugesandt werden, die eine Offline- oder Netzwerkdatenübertragung ermöglichen.'
 services: databox
 author: alkohli
 manager: twooley
@@ -11,16 +11,10 @@ ms.devlang: na
 ms.topic: hub-page
 ms.date: 09/24/2018
 ms.author: alkohli
-ms.openlocfilehash: 09e0debba88ed87ab84b567e797d3ae63ec32a81
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157104"
 ---
+<div id="main" class="v2">
 <h1>Azure Data Box</h1>
 <p>Die Produkte der Azure Data Box-Familie bieten unterschiedliche Speicherkapazitäten, um Terabytes (TB) an Daten schnell, kostengünstig und zuverlässig an Azure zu senden. Microsoft beschleunigt die sichere Datenübertragung, indem Ihnen proprietäre Speichergeräte zugesandt werden, die eine Offline- oder Netzwerkdatenübertragung ermöglichen.</p>
-
 <h2>Offlinedatenübertragung</h2>
 <p>Bei eingeschränkter Netzwerkbandbreite, bzw. wenn keine Netzwerkverbindung vorhanden ist.</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -79,7 +73,6 @@ ms.locfileid: "54157104"
         </a>
     </li>
 </ul>
-
 <h2>Onlinedatenübertragung</h2>
 <p>Per Netzwerkübertragung</p>
 <ul class="cardsA panelContent singlePanelContent cols cols3" style="display:flex!important;">
@@ -120,3 +113,4 @@ ms.locfileid: "54157104"
         </a>
     </li>
 </ul>
+</div>

@@ -5,7 +5,7 @@ items:
   items:
   - name: Was ist Power BI Embedded?
     href: https://docs.microsoft.com/power-bi/developer/azure-pbie-what-is-power-bi-embedded
-- name: Tutorials
+- name: Lernprogramme
   items:
   - name: Einbetten von Inhalt für Kundenbeispiel
     href: https://docs.microsoft.com/power-bi/developer/embed-sample-for-customers
@@ -78,12 +78,12 @@ items:
   - name: Preisrechner
     href: https://azure.microsoft.com/pricing/calculator/#power-bi-embedded88e5eed8-6a98-4891-a739-15b602b4fb34
   - name: Power BI-Community
-    href: http://community.powerbi.com/t5/Developer/bd-p/Developer
+    href: https://community.powerbi.com/t5/Developer/bd-p/Developer
   - name: Stack Overflow
     href: https://go.microsoft.com/fwlink/?linkid=848281
-ms.openlocfilehash: 6bd64279c7193e04cbfadbb605e15c61f73ab37c
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: 40d190de6a417a72488619f4d55c825466bc026f
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39389431"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57876832"

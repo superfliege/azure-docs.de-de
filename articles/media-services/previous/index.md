@@ -1,24 +1,19 @@
 ---
-title: Dokumentation für Azure Media Services – Tutorials, API-Referenz | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) sicheres On-Demand- oder Livevideostreaming in Broadcastqualität verwenden. Tutorials, API-Referenzen und mehr.
+title: 'Dokumentation für Azure Media Services – Tutorials, API-Referenz | Microsoft-Dokumentation'
+description: 'Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) sicheres On-Demand- oder Livevideostreaming in Broadcastqualität verwenden. Tutorials, API-Referenzen und mehr.'
 services: media-services
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: ''
+ms.assetid: null
 ms.service: media-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 02/08/2018
+ms.date: 03/14/2019
 ms.author: carolz
-ms.openlocfilehash: dce69041176840765817d561f61a0d5f3d2b9a66
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998024"
 ---
+
 # <a name="media-services-documentation"></a>Dokumentation zu Media Services  
 
 Hier erfahren Sie, wie Sie mithilfe von Media Services (einer erweiterbaren Cloudplattform) Videos in Broadcastqualität streamen. Anhand von Tutorials, API-Referenzen und anderem Dokumentationsmaterial wird gezeigt, wie Sie Video- oder Audiostreams (bedarfsgesteuert oder live) sicher und mit Skalierung für Millionen von Benutzern übermitteln.

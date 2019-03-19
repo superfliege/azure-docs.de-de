@@ -11,9 +11,9 @@ ms.date: 02/21/2019
 ms.topic: hub-page
 ---
 
+<div id="main" class="v2">
 <h1>Dokumentation zu Azure Cognitive Services</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">Hier erfahren Sie, wie Sie intelligente Algorithmen für natürliche Kommunikationsmethoden in Ihre Apps, Websites und Bots integrieren, damit diese sehen, hören, sprechen sowie Benutzeranforderungen interpretieren können. Tutorials, Schnellstartanleitungen, API-Referenzen und Beispiele veranschaulichen die Vorgehensweise.</p>
-
 <ul class="cardsY panelContent singlePanelContent" style="display:flex!important;">
         <li>
             <a href="/azure/cognitive-services/welcome/">
@@ -386,3 +386,4 @@ ms.topic: hub-page
         </div>
     </li>
 </ul>
+</div>
