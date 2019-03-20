@@ -40,6 +40,9 @@ items:
   - name: Vergleichen von Speicheroptionen
     href: ../hdinsight-hadoop-compare-storage-options.md
     maintainContext: true
+  - name: Grundlegendes zu verwalteten Identitäten
+    href: ../hdinsight-managed-identities.md
+    maintainContext: true
 - name: Anleitung
   items:
   - name: Verwenden einer Apache Hadoop-Sandbox
@@ -75,10 +78,6 @@ items:
         href: apache-hadoop-use-hive-powershell.md
       - name: Verwenden von .NET SDK
         href: apache-hadoop-use-hive-dotnet-sdk.md
-      - name: Verwenden von Remotedesktop
-        href: apache-hadoop-use-hive-remote-desktop.md
-      - name: Verwenden der Abfragekonsole
-        href: apache-hadoop-use-hive-query-console.md
     - name: Verwenden einer benutzerdefinierten Java-Funktion in Hive
       href: apache-hadoop-hive-java-udf.md
     - name: Verwenden von MapReduce mit Apache Hadoop
@@ -159,15 +158,11 @@ items:
       href: apache-hadoop-connect-excel-hive-odbc-driver.md
     - name: Herstellen einer Verbindung unter Verwendung des Apache Hive-JDBC-Treiber
       href: apache-hadoop-connect-hive-jdbc-driver.md
-    - name: Analysieren gespeicherter Sensordaten
-      href: apache-hive-analyze-sensor-data.md
     - name: Analysieren gespeicherter Tweets
       href: ../hdinsight-analyze-twitter-data-linux.md
       maintainContext: true
     - name: Generieren von Empfehlungen mithilfe von Apache Mahout
       href: apache-hadoop-mahout-linux-mac.md
-    - name: Analysieren von Websiteprotokollen mit Apache Hive
-      href: apache-hive-analyze-website-log.md
     - name: Analysieren von Application Insights-Telemetrieprotokollen
       href: ../spark/apache-spark-analyze-application-insight-logs.md
       maintainContext: true
@@ -207,9 +202,6 @@ items:
       maintainContext: true
     - name: Verwenden von Hue
       href: ../hdinsight-hadoop-hue-linux.md
-      maintainContext: true
-    - name: Verwenden von Apache Solr
-      href: ../hdinsight-hadoop-solr-install-linux.md
       maintainContext: true
     - name: Verwenden von Apache Zeppelin
       href: ../hdinsight-apache-spark-zeppelin-notebook.md
@@ -321,8 +313,11 @@ items:
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
       maintainContext: true
-    - name: Skalieren eines HDInsight-Clusters
+    - name: Manuelles Skalieren eines Clusters
       href: ../hdinsight-scaling-best-practices.md
+      maintainContext: true
+    - name: Autoskalierung von Clustern
+      href: ../hdinsight-autoscale-clusters.md
       maintainContext: true
     - name: Verwenden von externen Metadatenspeichern
       href: ../hdinsight-use-external-metadata-stores.md
@@ -495,9 +490,6 @@ items:
     - name: Ausführen von Apache Hadoop MapReduce-Beispielen
       href: ../hdinsight-run-samples.md
       maintainContext: true
-    - name: Verwenden von Apache Solr für Cluster
-      href: ../hdinsight-hadoop-solr-install-linux.md
-      maintainContext: true
     - name: Verarbeiten umfangreicher Graphen mithilfe von Apache Giraph
       href: ../hdinsight-hadoop-giraph-install.md
       maintainContext: true
@@ -510,26 +502,14 @@ items:
     - name: Entwickeln von Java-Anwendungen mithilfe von Apache Maven
       href: ../hdinsight-hbase-build-java-maven.md
       maintainContext: true
-    - name: Anpassen mithilfe von Skriptaktionen
-      href: ../hdinsight-hadoop-customize-cluster.md
-      maintainContext: true
     - name: Zugreifen auf Apache Hadoop YARN-Anwendungsprotokolle
       href: ../hdinsight-hadoop-access-yarn-app-logs.md
       maintainContext: true
     - name: Generieren von Filmempfehlungen mithilfe von Apache Mahout
       href: ../hdinsight-mahout.md
       maintainContext: true
-    - name: Analysieren von Daten zu Flugverspätungen
-      href: ../hdinsight-analyze-flight-delay-data.md
-      maintainContext: true
     - name: Entwickeln von Skriptaktionen
       href: ../hdinsight-hadoop-script-actions.md
-      maintainContext: true
-    - name: Analysieren von Twitter-Daten
-      href: ../hdinsight-analyze-twitter-data.md
-      maintainContext: true
-    - name: Verwalten von Clustern mit dem Azure-Portal
-      href: ../hdinsight-administer-use-management-portal.md
       maintainContext: true
     - name: Überwachen von Clustern mithilfe der Apache Ambari-API
       href: ../hdinsight-monitor-use-ambari-api.md
@@ -556,9 +536,9 @@ items:
   - name: Windows-Tools für HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: c679970484666a6087b33276eb545304a3b2793c
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c2272c9ae3b5f26dc1c83b7af5850a44aed6abdc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887028"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224395"

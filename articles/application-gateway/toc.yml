@@ -40,12 +40,26 @@ items:
     href: cli-samples.md
 - name: Konzepte
   items:
-  - name: Funktionsweise von Application Gateway
-    href: how-application-gateway-works.md
-  - name: Application Gateway-Komponenten
-    href: application-gateway-components.md
-  - name: Konfigurationsübersicht
-    href: configuration-overview.md
+  - name: Grundlagen
+    items:
+    - name: Funktionsweise von Application Gateway
+      href: how-application-gateway-works.md
+    - name: Application Gateway-Komponenten
+      href: application-gateway-components.md
+    - name: Konfigurationsübersicht
+      href: configuration-overview.md
+  - name: Routing
+    items:
+    - name: Hosten mehrerer Websites
+      href: multiple-site-overview.md
+    - name: URL-Routing
+      href: url-route-overview.md
+    - name: Umleitung
+      href: redirect-overview.md
+    - name: Erneutes Generieren von HTTP-Headern
+      href: rewrite-http-headers.md
+    - name: Benutzerdefinierte Fehlerseiten
+      href: custom-error.md
   - name: SSL
     items:
     - name: Übersicht über SSL-Richtlinien
@@ -58,20 +72,16 @@ items:
       href: waf-overview.md
     - name: WAF-Konfiguration
       href: application-gateway-waf-configuration.md
-  - name: URL-Routing
-    href: url-route-overview.md
-  - name: Hosten mehrerer Websites
-    href: multiple-site-overview.md
+  - name: Systemüberwachung
+    items:
+    - name: Integritätstest
+      href: application-gateway-probe-overview.md
+    - name: Diagnose
+      href: application-gateway-diagnostics.md
   - name: Automatische Skalierung und Zonenredundanz
     href: application-gateway-autoscaling-zone-redundant.md
-  - name: Umleitungsunterstützung
-    href: redirect-overview.md
-  - name: Erneutes Generieren von HTTP-Headern
-    href: rewrite-http-headers.md
   - name: App Service-Web-App und Unterstützung mehrerer Mandanten
     href: application-gateway-web-app-overview.md
-  - name: Systemüberwachung
-    href: application-gateway-probe-overview.md
   - name: WebSocket-Unterstützung
     href: application-gateway-websocket.md
   - name: Häufig gestellte Fragen
@@ -96,6 +106,8 @@ items:
       href: create-ssl-portal.md
     - name: 'SSL-Beendigung: PowerShell'
       href: tutorial-ssl-powershell.md
+    - name: 'End-to-End-SSL: Portal'
+      href: end-to-end-ssl-portal.md
     - name: 'End-to-End-SSL: PowerShell'
       href: application-gateway-end-to-end-ssl-powershell.md
     - name: Erneuern von Zertifikaten
@@ -180,10 +192,6 @@ items:
       href: how-to-troubleshoot-application-gateway-session-affinity-issues.md
     - name: Fehler vom Typ „Ungültiges Gateway“ (502)
       href: application-gateway-troubleshooting-502.md
-    - name: Diagnose
-      href: application-gateway-diagnostics.md
-  - name: Benutzerdefinierte Fehlerseiten
-    href: custom-error.md
 - name: Verweis
   items:
   - name: CRS-Regeln
@@ -218,9 +226,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: bd544dc507be3caade81ee45c3a5d704392c5694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ce92641c82ffd577b0611fb5da4e8e78816ae32f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170325"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225347"

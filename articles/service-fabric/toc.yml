@@ -66,11 +66,13 @@ items:
     items:
     - name: 1 – Erstellen eines Clusters in Azure
       href: service-fabric-tutorial-create-vnet-and-windows-cluster.md
-    - name: 2 – Skalieren des Clusters
+    - name: 2. Überwachen eines Clusters
+      href: service-fabric-tutorial-monitor-cluster.md
+    - name: 3. Skalieren des Clusters
       href: service-fabric-tutorial-scale-cluster.md
-    - name: 3 – Aktualisieren der Clusterruntime
+    - name: 4. Aktualisieren der Clusterruntime
       href: service-fabric-tutorial-upgrade-cluster.md
-    - name: 4. Löschen eines Clusters
+    - name: 5. Löschen eines Clusters
       href: service-fabric-tutorial-delete-cluster.md
   - name: Erstellen eines eigenständigen Clusters in AWS
     items:
@@ -837,9 +839,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 41e92402762d0adc63f374e49ef86d3e7e060fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bb1cfedbaf699ff951a03adc47b93332412d1e5a
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57873841"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225279"
