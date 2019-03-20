@@ -78,6 +78,7 @@
 #### [HA unter Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-shared-disk.md)
 #### [HA unter Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-guide-wsfc-file-share.md)
 #### [HA unter SUSE Linux für die (A)SCS-Instanz](high-availability-guide-suse.md)
+#### [Hochverfügbarkeit unter SUSE Linux für die (A)SCS-Instanz mit Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Hochverfügbarkeit unter Red Hat Enterprise Linux für die (A)SCS-Instanz](high-availability-guide-rhel.md)
 ### Vorbereitung der Azure-Infrastruktur
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-infrastructure-wsfc-shared-disk.md)
@@ -90,6 +91,7 @@
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-shared-disk.md)
 #### [Windows mit SOFS-Dateifreigabe für die (A)SCS-Instanz](sap-high-availability-installation-wsfc-file-share.md)
 #### [SUSE Linux mit NFS für die (A)SCS-Instanz](high-availability-guide-suse.md)
+#### [SUSE Linux mit NFS für die (A)SCS-Instanz mit Azure NetApp Files](high-availability-guide-suse-netapp-files.md)
 #### [Hochverfügbarkeit für SAP NetWeaver unter Red Hat Enterprise Linux](high-availability-guide-rhel.md)
 ### SAP-Multi-SID
 #### [Windows mit freigegebenem Datenträger für die (A)SCS-Instanz](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)

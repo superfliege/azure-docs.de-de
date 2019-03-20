@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9a99e7133b24d37af5ce36c717d03bb0fdae7da5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: c68bf4cf8bcc50069f3741ac0f1746363c1f82ac
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57861807"
 documentType: LandingData
 title: Dokumentation zu Speech-Diensten
 metadata:
@@ -24,7 +24,7 @@ metadata:
   ms.author: erhopf
   ms.custom: seodec18
 abstract:
-  description: Erfahren Sie, wie Sie mit Speech-Diensten und dem Speech SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Der Spracherkennungsdienst verfügt auch über eine REST-API, die mit jeder Programmiersprache kompatibel ist, die HTTP-Anforderungen beherrscht.
+  description: Erfahren Sie, wie Sie mit Speech-Diensten und dem Speech SDK Ihren Apps sprachaktivierte Features hinzufügen. Sie können mit dem Sprach-SDK Ihren Apps Funktionen für <i>Sprache-zu-Text</i> (Spracherkennung (Speech Recognition, SR)), <i>Absicht</i>, <i>Übersetzung</i> und <i>Sprachsynthese</i> (Text-to-Speech, TTS) hinzufügen. Der Speech-Dienst verfügt auch über REST-APIs, die mit jeder Programmiersprache kompatibel sind, bei der HTTP-Anforderungen verwendet werden können.
 sections:
 - items:
   - type: list

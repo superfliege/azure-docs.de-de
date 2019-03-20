@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 82ba644f844c59b59f449e137c64b767d5dffbff
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: f0d4a689e783f8c460ee54b3613ac0fe432b59ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55464023"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57862787"
 documentType: LandingData
 title: Azure IoT Edge
 metadata:
@@ -15,7 +15,7 @@ metadata:
   ms.service: iot-edge
   services: iot-edge
   ms.topic: landing-page
-  ms.date: 01/30/2019
+  ms.date: 03/13/2019
   ms.author: kgremban
 abstract:
   description: Azure IoT Edge ist ein IoT-Dienst (Internet of Things, Internet der Dinge), der auf IoT Hub aufbaut. Dieser Dienst ist für Kunden bestimmt, die Daten auf Geräten (im „Edge“-Bereich des Netzwerks) analysieren möchten, anstatt in der Cloud. Indem Teile Ihrer Workload in den Edge-Bereich verschoben werden, benötigen Ihre Geräte weniger Zeit für das Senden von Nachrichten in die Cloud und können schneller auf Statusänderungen reagieren.
@@ -32,7 +32,7 @@ sections:
 - title: Fünfminütige Schnellstarts
   items:
   - type: paragraph
-    text: 'Stellen Sie Ihr erstes IoT Edge-Modul bereit, und verarbeiten Sie Daten auf einem simulierten Gerät:'
+    text: 'Erstellen Sie einen virtuellen Azure-Computer, konfigurieren Sie ihn für die Ausführung als IoT Edge-Gerät, und stellen Sie Code dafür bereit:'
   - type: list
     style: icon48
     items:

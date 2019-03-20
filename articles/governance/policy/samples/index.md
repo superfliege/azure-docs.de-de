@@ -1,19 +1,13 @@
 ---
 title: Index der Richtlinienbeispiele
-description: Index von Beispielen für Azure Policy Kategorien, einschließlich Benennung, Tags, Key Vault, Netzwerk, Speicher und mehr
+description: 'Index von Beispielen für Azure Policy Kategorien, einschließlich Benennung, Tags, Key Vault, Netzwerk, Speicher und mehr'
 services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 01/26/2019
+ms.date: 03/19/2019
 ms.author: dacoulte
-ms.openlocfilehash: 6b820da0e124805ad866ab7fedef8495aca1d7e8
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339837"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-Beispiele
 
@@ -24,6 +18,8 @@ In der folgenden Tabelle sind Links zu Beispielen für Azure Policy enthalten. D
 [!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
 
 [!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
+
+[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
 
 [!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
 

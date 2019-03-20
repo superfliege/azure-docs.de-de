@@ -282,12 +282,24 @@ items:
             href: app/profiler-servicefabric.md
           - name: Aktivieren des Profilers für einen virtuellen Azure-Computer
             href: app/profiler-vm.md
+          - name: Profiler für Linux-App-Dienste (Vorschauversion)
+            href: app/profiler-aspnetcore-linux.md
           - name: Profilereinstellungen
             href: app/profiler-settings.md
           - name: Nachverfolgen von Anforderungen für die Profilerstellung
             href: app/profiler-trackrequests.md
           - name: Problembehandlung für den Profiler
             href: app/profiler-troubleshooting.md
+        - name: Debuggen von Momentaufnahmen
+          items:
+          - name: Übersicht
+            href: app/snapshot-debugger.md
+          - name: Aktivieren des Momentaufnahmedebuggers für eine App Service-Instanz
+            href: app/snapshot-debugger-appservice.md
+          - name: Aktivieren des Momentaufnahmedebuggers für andere Umgebungen
+            href: app/snapshot-debugger-vm.md
+          - name: Problembehandlung für Momentaufnahmedebugger
+            href: app/snapshot-debugger-troubleshoot.md
         - name: Diagnose
           href: ../application-insights/app-insights-azure-diagnostics.md
         - name: Vorschau
@@ -305,7 +317,7 @@ items:
         - name: ASP.NET Core
           href: app/asp-net-core.md
           items:
-          - name: Profiler für Linux-App-Dienste
+          - name: Profiler für Linux-App-Dienste (Vorschauversion)
             href: app/profiler-aspnetcore-linux.md
         - name: Konsole
           href: app/console.md
@@ -327,8 +339,6 @@ items:
           href: app/annotations.md
         - name: ApplicationInsights.config
           href: app/configuration-with-applicationinsights-config.md
-        - name: Debuggen von Momentaufnahmen
-          href: app/snapshot-debugger.md
       - name: Java-Apps
         items:
         - name: Web-Apps
@@ -1034,9 +1044,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: Codebeispiele
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 84cda925280e7497b2538d958a841bba3fc48d60
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 661ffa0c16b17186523c7b36e571a38785a2ea5c
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189868"

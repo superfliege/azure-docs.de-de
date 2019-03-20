@@ -32,15 +32,17 @@ items:
 - name: Konzepte
   items:
   - name: Eingabetypen für einen Auftrag
-    href: stream-analytics-add-inputs.md
     items:
+    - name: Übersicht über Eingaben
+      href: stream-analytics-add-inputs.md
     - name: Streamingdateneingaben
       href: stream-analytics-define-inputs.md
     - name: Verweisdateneingaben
       href: stream-analytics-use-reference-data.md
   - name: Ausgabetypen für einen Auftrag
-    href: stream-analytics-define-outputs.md
     items:
+    - name: Übersicht über Ausgaben
+      href: stream-analytics-define-outputs.md
     - name: Ausgabe an Cosmos DB
       href: stream-analytics-documentdb-output.md
     - name: Ausgabe an Azure SQL-Datenbank
@@ -122,9 +124,10 @@ items:
     items:
     - name: Skalieren mit Streamingeinheiten
       href: stream-analytics-streaming-unit-consumption.md
-    - name: Skalieren mit Abfrageparallelisierung
-      href: stream-analytics-parallelization.md
+    - name: Skalieren mit Parallelisierung
       items:
+      - name: Abfrageparallelisierung
+        href: stream-analytics-parallelization.md
       - name: Erhöhen des Durchsatzes
         href: stream-analytics-scale-jobs.md
     - name: Skalieren mit ML-Funktionen
@@ -428,16 +431,16 @@ items:
   - name: Dienstupdates
     href: https://azure.microsoft.com/updates/?product=stream-analytics
   - name: Stack Overflow
-    href: http://stackoverflow.com/questions/tagged/azure-stream-analytics
+    href: https://stackoverflow.com/questions/tagged/azure-stream-analytics
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest
   - name: Fallstudien
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 'Whitepaper: Ereignisverarbeitung in Echtzeit'
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: 24c475fcbe1bda825693ee04f9381922c46633ad
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 127d7aa2588a47084dd43eb7f22adf9f73f90dce
+ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539240"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "57853007"
