@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f10bae780ebb05d3450f4dab7e53fa87fe25b022
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5e9558eae43b351aa198b64bb2a7903c756064c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54189552"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58168016"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Asynchrones Aktualisieren mit der REST-API
 
@@ -57,7 +57,7 @@ Sie können beispielsweise das POST-Verb für die Refreshes-Sammlung verwenden, 
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 Alle Aufrufe müssen mit einem gültigen Azure Active Directory-Token (OAuth 2) im Autorisierungsheader authentifiziert werden und die folgenden Anforderungen erfüllen:
 
@@ -98,13 +98,13 @@ Die Text kann wie folgt aussehen:
 
 Es müssen keine Parameter angegeben werden. Es wird jeweils der Standard angewendet.
 
-|NAME  |Typ  |BESCHREIBUNG  |Standard  |
-|---------|---------|---------|---------|
-|Typ     |  Enum       |  Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
-|CommitMode     |  Enum       |  Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
-|MaxParallelism     |   int      |  Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
-|RetryCount    |    int     |   Gibt an, wie oft der Vorgang wiederholt wird, bevor ein Fehler auftritt.      |     0    |
-|Objekte     |   Array      |   Ein Array von zu verarbeitenden Objekten. Jedes Objekt umfasst Folgendes: „table“ bei Verarbeitung der gesamten Tabelle oder „table“ und „partition“ bei Verarbeitung einer Partition. Wenn keine Objekte angegeben sind, wird das gesamte Modell aktualisiert. |   Verarbeiten des gesamten Modells      |
+| NAME             | Type  | BESCHREIBUNG  |Standard  |
+|------------------|-------|--------------|---------|
+| `Type`           | Enum  | Der auszuführende Verarbeitungstyp. Die Typen werden an die TMSL-Typen des [refresh-Befehls](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl) angepasst: full, clearValues, calculate, dataOnly, automatic und defragment. Der add-Typ wird nicht unterstützt.      |   automatic      |
+| `CommitMode`     | Enum  | Legt fest, ob für Objekte ein Commit in Batches oder erst nach Abschluss ausgeführt wird. Folgende Modi sind verfügbar: default, transactional, partialBatch.  |  transactional       |
+| `MaxParallelism` | Int   | Dieser Wert legt die maximale Anzahl der Threads fest, für die Verarbeitungsbefehle parallel ausgeführt werden. Dieser Wert wird an die MaxParallelism-Eigenschaft angepasst, die im [Sequence-Befehl](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl) (TMSL) oder mit anderen Methoden festgelegt werden kann.       | 10        |
+| `RetryCount`     | Int   | Gibt an, wie oft der Vorgang wiederholt wird, bevor ein Fehler auftritt.      |     0    |
+| `Objects`        | Array | Ein Array von zu verarbeitenden Objekten. Jedes Objekt umfasst Folgendes: „table“ bei Verarbeitung der gesamten Tabelle oder „table“ und „partition“ bei Verarbeitung einer Partition. Wenn keine Objekte angegeben sind, wird das gesamte Modell aktualisiert. |   Verarbeiten des gesamten Modells      |
 
 CommitMode entspricht partialBatch und wird beim anfänglichen Laden umfangreicher DataSets verwendet, das Stunden dauern kann. Wenn beim Aktualisierungsvorgang nach dem erfolgreichen Committen für einen oder mehrere Batches Fehler auftreten, bleiben die erfolgreich committeten Batches committet (erfolgreich committete Batches werden nicht zurückgesetzt).
 

@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 7f0af2c64d04d83cc3eb4043007979c17c75e051
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55877285"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105164"
 ---
 > [!NOTE]
 > Jede App Service-Umgebung verfügt über eine virtuelle IP-Adresse (VIP), die für den Kontakt mit der App Service-Umgebung verwendet werden kann.
->
-# <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
+> 
+> # <a name="create-an-external-app-service-environment"></a>Erstellen einer externen App Service-Umgebung #
 
 Die Azure App Service-Umgebung ist eine Bereitstellung von Azure App Service in einem Subnetz in einem virtuellen Azure-Netzwerk (VNET). Eine App Service-Umgebung (App Service Environment, ASE) kann auf zwei Arten bereitgestellt werden:
 

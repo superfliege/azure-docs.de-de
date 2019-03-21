@@ -7,13 +7,13 @@ ms.author: davidmu
 ms.date: 11/05/2018
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: b2c
-ms.openlocfilehash: 5f771e51a0114c321d1dfcbaf305dd9923040032
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.subservice: B2C
+ms.openlocfilehash: 08a5e288d58d86cdad18561cb8a08a31f44ae498
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009728"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Lösungen und Schulung für Azure Active Directory B2C
 
@@ -28,3 +28,4 @@ Azure Active Directory (Azure AD) B2C ermöglicht Organisationen die Implementie
 | [Migrieren der Anwendungsauthentifizierung zu Azure AD B2C in einer Hybridumgebung](https://aka.ms/MigratetoAADB2C) | In heutigen modernen Organisationen erfolgen die digitale Transformation und die Verlagerung in die Cloud in Phasen, die es für die meisten Organisationen erforderlich machen, zumindest vorübergehend in einer Hybrididentitätsumgebung zu operieren.<br><br>Diese Anleitung konzentriert sich auf das Erstellen des Migrationsplans zum Verschieben Ihrer ersten Anwendung in Azure AD B2C und behandelt die Überlegungen zur Ausführung dieses Vorgangs, während Sie sich in einer Hybrididentitätsumgebung befinden. |
 | [Überlegungen zur Datenschutz-Grundverordnung (DSGVO) für kundenseitige Anwendungen](https://aka.ms/AADB2CandGDPR) | Bei allen kundenseitigen Anwendungen muss die DSGVO von allen Organisationen berücksichtigt werden, die an Projekten arbeiten, die personenbezogenen Daten enthalten und EU-Bürgern dienen.<br><br>Diese Lösungsanleitung konzentriert sich darauf, wie Azure AD B2C als flexible Komponente Ihres umfassenden DSGVO-Complianceansatzes verwendet werden kann, einschließlich wie Azure AD B2C-Komponenten jedes der wichtigsten DSGVO-Rechte für Einzelpersonen unterstützen. |
 | Arbeiten mit benutzerdefinierten Richtlinien:<br><ul><li>[Einführung in benutzerdefinierte Richtlinien](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Introduction.pdf)</li><li>[Verwendung von benutzerdefinierten Richtlinien auf Mandanten](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Leveraging%20Custom%20Policies%20for%20your%20Tenant.pdf)</li><li>[Strukturrichtlinien und Verwalten von Schlüsseln](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Structuring%20Policies%20and%20Managing%20Keys.pdf)</li><li>[Bring Your Own Identity und Migrieren von Benutzern](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Bring-your-own-identity%20and%20Migrating%20Users.pdf)</li><li>[Problembehandlung bei Richtlinien und Überwachen des Zugriffs](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Troubleshooting%20Policies%20and%20Auditing.pdf)</li><li>[Ausführliche Informationen zum Schema benutzerdefinierter Richtlinien](https://download.microsoft.com/download/3/6/1/36187D50-A693-4547-848A-176F17AE1213/Deep%20Dive%20on%20Azure%20AD%20B2C%20Custom%20Policies/Azure%20AD%20B2C%20Custom%20Policies%20-%20Deep%20Dive%20on%20Custom%20Policy%20Schema.pdf)</li><br>| In dieser Dokumentreihe wird ausführlich auf benutzerdefinierte Richtlinien in Azure AD B2C eingegangen, wobei die am häufigsten verwendeten erweiterten Identitätsszenarien vorgestellt werden.<br><br> Dazu gehören das Implementieren und Verwalten von benutzerdefinierten Richtlinien für diese Szenarien und das Diagnostizieren mit den verfügbaren Tools. Darüber hinaus wird ein ausführlicher Überblick darüber vermittelt, wie benutzerdefinierte Richtlinien funktionieren und an Ihre spezifischen Anforderungen angepasst werden können. |
+

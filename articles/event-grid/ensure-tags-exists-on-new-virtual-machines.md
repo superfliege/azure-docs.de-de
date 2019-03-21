@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: eamono
-ms.openlocfilehash: d7113842aff4d6d9ec66439d1d43e5e24333d3f1
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: d0764131f0e7e321a87ed383636606b2124ef7d9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467569"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58173769"
 ---
 # <a name="tutorial-integrate-azure-automation-with-event-grid-and-microsoft-teams"></a>Tutorial: Integration von Azure Automation mit Event Grid und Microsoft Teams
 
@@ -31,6 +31,8 @@ In diesem Tutorial lernen Sie Folgendes:
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
+
+[!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
 Um dieses Tutorial abzuschließen, ist ein [Azure Automation-Konto](../automation/automation-offering-get-started.md) erforderlich, um das vom Azure Event Grid-Abonnement ausgelöste Runbook aufzunehmen.
 

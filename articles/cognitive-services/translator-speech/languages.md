@@ -10,18 +10,19 @@ ms.subservice: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 482968af53694f7d40a7077435d33a83884c8808
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 63592a0afc7e5da0a37c25c226b92b587aa5f886
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873042"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673698"
 ---
 # <a name="languages-supported-by-the-translator-speech-api"></a>Von der Sprachübersetzungs-API unterstützte Sprachen
 
 [!INCLUDE [Deprecation note](../../../includes/cognitive-services-translator-speech-deprecation-note.md)]
 
-Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Sprachen für die Sprachübersetzung unterstützt werden, ist die Sprache-zu-Sprache- oder die Sprache-zu-Text-Übersetzung verfügbar. Wenn die Zielsprache nicht für die Sprachübersetzung unterstützt wird, ist nur die Sprache-zu-Text-Übersetzung verfügbar. 
+Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Sprachen für die Sprachübersetzung unterstützt werden, ist die Sprache-zu-Sprache- oder die Sprache-zu-Text-Übersetzung verfügbar. Wenn die Zielsprache nicht für die Sprachübersetzung unterstützt wird, ist nur die Sprache-zu-Text-Übersetzung verfügbar.
 
 | Sprache    |
 |:----------- |
@@ -34,9 +35,9 @@ Die Sprachübersetzung wird für folgende Sprachen unterstützt. Wenn beide Spra
 | Japanisch      |
 | Portugiesisch (Brasilien)     |
 | Russisch      |
-| Spanisch      | 
+| Spanisch      |
 
-Die Sprachübersetzungs-API unterstützt die folgenden Sprachen als Zielsprachen für eine Spracherkennungsübersetzungen. 
+Die Sprachübersetzungs-API unterstützt die folgenden Sprachen als Zielsprachen für eine Spracherkennungsübersetzungen.
 
 | Sprache für Textausgabe    | Sprachcode |
 |:----------- |:-------------:|
@@ -47,7 +48,7 @@ Die Sprachübersetzungs-API unterstützt die folgenden Sprachen als Zielsprachen
 | Bulgarisch      | `bg`          |
 | Chinesisch (traditionell)      | `yue`          |
 | Katalanisch      | `ca`          |
-| Chinesisch (vereinfacht)      | `zh-Hans`          | 
+| Chinesisch (vereinfacht)      | `zh-Hans`          |
 | Chinesisch (traditionell)      | `zh-Hant`          |
 | Kroatisch      | `hr`          |
 | Tschechisch      | `cs`          |
@@ -116,4 +117,4 @@ Die Ressource „languages“ gibt die Liste der unterstützten Sprachen für Sp
 
 Für einen schnellen Überblick über die Sprachen werden auf der Microsoft Translator-Website alle Sprachen angezeigt, die von der Translator-Text-API und -Sprach-API unterstützt werden. Diese Liste enthält keine entwicklerspezifischen Informationen wie z.B. Sprachcodes.
 
-[Die Liste der Sprachen](https://www.microsoft.com/translator/languages.aspx) 
+[Die Liste der Sprachen](https://www.microsoft.com/translator/languages.aspx)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: 3948b0e1445aef5b9030e5e40f4bd4ec7ea1bf51
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: fe9ec05b3d8f084f58d5836f1a077e952966ecef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175756"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119325"
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>Einbinden einer CoreOS Linux-VM in eine verwaltete Domäne
 In diesem Artikel wird beschrieben, wie Sie eine CoreOS Linux-VM in eine durch Azure AD Domain Services verwaltete Domäne einbinden.
@@ -113,10 +113,9 @@ sudo adcli join -D CONTOSO100.COM -U bob@CONTOSO100.COM -K /etc/krb5.keytab -H c
 
 > [!NOTE]
 > **Problembehandlung:** Gehen Sie folgendermaßen vor, wenn Ihre verwaltete Domäne über *adcli* nicht gefunden werden kann:
-  * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
-  * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
-  * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
->
+>   * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
+>   * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
+>   * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
 
 Starten Sie den SSSD-Dienst. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
   ```

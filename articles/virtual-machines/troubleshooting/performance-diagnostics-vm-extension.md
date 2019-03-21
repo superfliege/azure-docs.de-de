@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: 415cf34a8b19400091807005e1e9943aa025f244
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 769305cc3d838832f8f445ac9623a1724603f968
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002739"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure-VM-Erweiterung für die Leistungsdiagnose unter Windows
 
@@ -89,7 +89,7 @@ Der folgende JSON-Code zeigt das Schema für die Azure-VM-Erweiterung für die L
 
 Führen Sie die folgenden Anweisungen aus, um die Erweiterung auf virtuellen Windows-Computern zu installieren:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Wählen Sie den virtuellen Computer aus, auf dem Sie diese Erweiterung installieren möchten.
 
     ![Screenshot: Azure-Portal mit Hervorhebung von virtuellen Computern](media/performance-diagnostics-vm-extension/select-the-virtual-machine.png)
@@ -112,7 +112,7 @@ Führen Sie die folgenden Anweisungen aus, um die Erweiterung auf virtuellen Win
 ## <a name="remove-the-extension"></a>Entfernen der Erweiterung
 Um die Erweiterung von einem virtuellen Computer zu entfernen, führen Sie die folgenden Schritte aus:
 
-1. Melden Sie sich am [Azure-Portal](http://portal.azure.com) an, und wählen Sie den virtuellen Computer, von dem Sie diese Erweiterung entfernen möchten, und dann das Blatt **Erweiterungen** aus. 
+1. Melden Sie sich am [Azure-Portal](https://portal.azure.com) an, und wählen Sie den virtuellen Computer, von dem Sie diese Erweiterung entfernen möchten, und dann das Blatt **Erweiterungen** aus. 
 2. Wählen Sie in der Liste für den Eintrag der Erweiterung für die Leistungsdiagnose die Option (**…**) und dann **Deinstallieren**.
 
     ![Screenshot: Blatt „Erweiterungen“ mit Hervorhebung der Option „Deinstallieren“](media/performance-diagnostics-vm-extension/uninstall-the-extension.png)
@@ -125,7 +125,7 @@ Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bere
 
 ```
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "vmName": {

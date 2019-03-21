@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: c63618a5a4ede91de06ecad95a330041227aece9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: c0cf0a31aac4a4b647cd766c93e3ebbde1fb72e7
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52958739"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769328"
 ---
 # <a name="overview-of-migration-guidance-for-azure-germany"></a>Übersicht über die Migrationsanleitung für Azure Deutschland
 
@@ -78,7 +78,7 @@ Diese Begriffe werden in den Azure Deutschland-Migrationsartikeln verwendet:
 
 **Quelle** beschreibt, von wo Sie Ressourcen migrieren (z. B. Azure Deutschland):
 
-- **Quellmandantenname**: Der Name des Mandanten in Azure Deutschland (alles nach dem **@**-Zeichen im Kontonamen). Die Mandantennamen in Azure Deutschland enden alle mit **microsoftazure.de**.
+- **Quellmandantenname**: Der Name des Mandanten in Azure Deutschland (alles nach dem **\@**-Zeichen im Kontonamen). Die Mandantennamen in Azure Deutschland enden alle mit **microsoftazure.de**.
 - **Quellmandanten-ID**: Die ID des Mandanten in Azure Deutschland. Die Mandanten-ID wird im Azure-Portal angezeigt, wenn Sie den Mauszeiger über den Kontonamen in der oberen rechten Ecke bewegen.
 - **Quellabonnement-ID**: Die ID des Quellabonnements in Azure Deutschland. Sie können mehrere Abonnements im selben Mandanten haben. Stellen Sie immer sicher, dass Sie das richtige Abonnement verwenden.
 - **Quellregion**: Entweder „Deutschland, Mitte“ (**germanycentral**) oder „Deutschland, Nordosten“ (**germanynortheast**), je nachdem, wo sich die zu migrierende Ressource befindet.

@@ -11,18 +11,19 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
-ms.openlocfilehash: 282a20beb11172aa3a1d2c7326dc38ce8a7acfcf
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: fe348daa4613e0b515244686e48ed63a41991d81
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54062654"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009371"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Erstellen von Time Series Insights-Ressourcen mit Azure Resource Manager-Vorlagen
 
 In diesem Artikel wird das Erstellen und Bereitstellen von Time Series Insights-Ressourcen mithilfe von Azure Resource Manager-Vorlagen, PowerShell und des Time Series Insights-Ressourcenanbieters beschrieben.
 
 Time Series Insights unterstützt die folgenden Ressourcen:
+
    | Ressource | BESCHREIBUNG |
    | --- | --- |
    | Environment | Eine Time Series Insights-Umgebung ist eine logische Gruppierung von Ereignissen, die aus Ereignisbrokern gelesen, gespeichert und für Abfragen verfügbar gemacht werden. Weitere Informationen finden Sie unter [Planen Ihrer Azure Time Series Insights-Umgebung](time-series-insights-environment-planning.md). |
@@ -65,7 +66,7 @@ Kopieren Sie die Datei [201-timeseriesinsights-environment-with-eventhub](https:
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "eventHubNamespaceName": {
@@ -116,7 +117,7 @@ Beispielsweise wird die folgende Parameterdatei verwendet, um eine Umgebung und 
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "eventHubNamespaceName": {
@@ -268,7 +269,7 @@ Outputs                 :
 Die Startseite der Schnellstartvorlage auf GitHub enthält auch die Schaltfläche **Deploy to Azure** (In Azure bereitstellen). Wenn Sie darauf klicken, wird im Azure-Portal die Seite „Benutzerdefinierte Bereitstellung“ geöffnet. Auf dieser Seite können Sie Werte für jeden Parameter aus der Tabelle mit den [erforderlichen Parametern](time-series-insights-manage-resources-using-azure-resource-manager-template.md#required-parameters) oder den [optionalen Parametern](time-series-insights-manage-resources-using-azure-resource-manager-template.md#optional-parameters) eingeben oder auswählen. Wenn Sie nach dem Angeben der Einstellungen auf die Schaltfläche **Kauf** klicken, wird die Vorlagenbereitstellung initiiert.
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-timeseriesinsights-environment-with-eventhub%2Fazuredeploy.json" target="_blank">
-    <img src="http://azuredeploy.net/deploybutton.png"/>
+    <img src="https://azuredeploy.net/deploybutton.png"/>
 </a>
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 08/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: 60d49d0983189d72f1463a5e55a14b767e041e21
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 3e516eff2ff3262064fa32a8fe31e1f27cd8d4b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57998758"
 ---
 # <a name="migrate-storage-resources-to-global-azure"></a>Migrieren von Speicherressourcen zu Azure weltweit
 
@@ -51,6 +51,7 @@ Get-AzureRmStorageAccountKey -Name <saname> -ResourceGroupName <rgname>
 Wie immer benötigen Sie nur einen der beiden Schlüssel für jedes Speicherkonto.
 
 Beispiel:
+
 URI-Teil | Beispielwert
 -------- | --------------
 Quell-storageAccount | `migratetest`

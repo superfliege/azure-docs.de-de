@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 08/31/2018
 ms.author: danlep
-ms.openlocfilehash: 85b67fb4fa474bb00b5b7ca66580273671081cdf
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 2687a64bfd952888086862d929a3e5869aee5a4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478188"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003437"
 ---
 # <a name="use-azure-container-instances-as-a-jenkins-build-agent"></a>Verwenden von Azure Container Instances als Jenkins-Build-Agent
 
@@ -73,7 +73,7 @@ Weitere Informationen zu Azure Container Instances finden Sie unter [Azure Conta
    sudo cat /var/lib/jenkins/secrets/initialAdminPassword
    ```
 
-5. Navigieren Sie in einem Browser zu http://localhost:8080, ohne die SSH-Sitzung und den Tunnel zu schließen. Fügen Sie das ursprüngliche Administratorkennwort in das Feld ein, und wählen Sie dann **Continue** (Fortfahren).
+5. Navigieren Sie in einem Browser zu `http://localhost:8080`, ohne die SSH-Sitzung und den Tunnel zu schließen. Fügen Sie das ursprüngliche Administratorkennwort in das Feld ein, und wählen Sie dann **Continue** (Fortfahren).
 
    ![Der Bildschirm „Entsperren von Jenkins“ mit dem Feld für das Administratorkennwort](./media/container-instances-jenkins/jenkins-portal-05.png)
 

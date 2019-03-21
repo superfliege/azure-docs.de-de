@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/23/2017
 ms.author: alkohli
-ms.openlocfilehash: cfd0e4dbb6a4f24df5ba42cd45f9c16fbe5b493c
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 93c77b5f678c4e6b3170d2c7612bef3f104f0b6b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2017
-ms.locfileid: "23493130"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002600"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit Azure Automation-Runbooks
 
@@ -50,7 +50,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Laden Sie die NuGet-CLI in den Ordner herunter](http://www.nuget.org/downloads), den Sie im vorherigen Schritt erstellt haben. Es gibt verschiedene Versionen von _nuget.exe_. Wählen Sie die für Ihr SDK entsprechende Version aus. Jeder Downloadlink verweist direkt auf eine _EXE_-Datei. Führen Sie die Datei nicht über den Browser aus, sondern klicken Sie mit der rechten Maustaste auf die Datei, und speichern Sie sie auf Ihrem Computer.
+2. [Laden Sie die NuGet-CLI in den Ordner herunter](https://www.nuget.org/downloads), den Sie im vorherigen Schritt erstellt haben. Es gibt verschiedene Versionen von _nuget.exe_. Wählen Sie die für Ihr SDK entsprechende Version aus. Jeder Downloadlink verweist direkt auf eine _EXE_-Datei. Führen Sie die Datei nicht über den Browser aus, sondern klicken Sie mit der rechten Maustaste auf die Datei, und speichern Sie sie auf Ihrem Computer.
 
     Sie können auch den folgenden Befehl ausführen, um das Skript in den zuvor erstellten Ordner herunterzuladen und zu speichern.
     
@@ -187,16 +187,16 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
 2. Auf dem Blatt **Automation-Konto hinzufügen**:
 
-    1. Geben Sie den **Namen** für Ihr Automation-Konto an.
-    2. Wählen Sie das **Abonnement** aus, das mit Ihrem StorSimple-Geräte-Manager-Dienst verknüpft ist.
-    3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    4. Wählen Sie einen **Speicherort** aus (nach Möglichkeit denselben, in dem auch Ihr Dienst ausgeführt wird).
-    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
-    5. Aktivieren Sie optional die Option **An Dashboard anheften**. Klicken Sie auf **Erstellen**.
+   1. Geben Sie den **Namen** für Ihr Automation-Konto an.
+   2. Wählen Sie das **Abonnement** aus, das mit Ihrem StorSimple-Geräte-Manager-Dienst verknüpft ist.
+   3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+   4. Wählen Sie einen **Speicherort** aus (nach Möglichkeit denselben, in dem auch Ihr Dienst ausgeführt wird).
+   5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
+   5. Aktivieren Sie optional die Option **An Dashboard anheften**. Klicken Sie auf **Create**.
 
-        ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
+       ![create-automation-account](./media/storsimple-8000-automation-azurerm-runbook/create-automation-account.png)
 
-    Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde. Weitere Informationen zum Erstellen eines Automation-Kontos finden Sie unter [Erstellen eines ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
+      Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde. Weitere Informationen zum Erstellen eines Automation-Kontos finden Sie unter [Erstellen eines ausführenden Kontos](https://docs.microsoft.com/azure/automation/automation-create-runas-account).
 
 3. Um sicherzustellen, dass das erstellte Automation-Konto auf den StorSimple-Geräte-Manager-Dienst zugreifen kann, müssen Sie dem Automation-Konto entsprechende Berechtigungen zuzuweisen. Wechseln Sie in Ihrem StorSimple-Geräte-Manager-Dienst zu **Access Control**. Klicken Sie auf **+ Hinzufügen**, und geben Sie den Namen Ihres Azure Automation-Kontos an. **Speichern** Sie die Einstellungen.
 
@@ -208,7 +208,7 @@ Führen Sie die folgenden Schritte aus, um ein Automation-Modul für die Geräte
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 
-6. Wechseln Sie zu **Prozessautomatisierung > Runbooks, und klicken Sie auf + Runbook hinzufügen**. Klicken Sie auf dem Blatt **Runbook hinzufügen** auf die Option **Vorhandenes Runbook importieren**. Zeigen Sie auf die Windows PowerShell-Skriptdatei für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Erstellen**.
+6. Wechseln Sie zu **Prozessautomatisierung > Runbooks, und klicken Sie auf + Runbook hinzufügen**. Klicken Sie auf dem Blatt **Runbook hinzufügen** auf die Option **Vorhandenes Runbook importieren**. Zeigen Sie auf die Windows PowerShell-Skriptdatei für die **Runbookdatei**. Das Runbooktyp wird automatisch ausgewählt. Geben Sie einen Namen und eine optionale Beschreibung für das Runbook an. Klicken Sie auf **Create**.
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/import-runbook.png)
 

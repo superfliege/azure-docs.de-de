@@ -15,12 +15,12 @@ ms.date: 01/08/2019
 ms.author: sethm
 ms.reviewer: avishwan
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: 44cf5b2cc7547a4e85c65215fdc1e4fe2cb585a9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 81f06e0f5d5201b902504d8275f356f9a1731065
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098898"
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Erstellen und Veröffentlichen eines Marketplace-Elements
 
@@ -69,19 +69,19 @@ ms.locfileid: "55243639"
 
 10. Ersetzen Sie **My Marketplace Items** durch eine Liste der Kategorien, in denen Ihr Marketplace-Element angezeigt werden soll.
 
-   ```json
-   "categories":[
-   "My Marketplace Items"
-   ],
-   ```
+    ```json
+    "categories":[
+    "My Marketplace Items"
+    ],
+    ```
 
 11. Informationen zur weiteren Bearbeitung der Datei „manifest.json“ finden Sie unter [Referenz: Datei „manifest.json“ für Marketplace-Elemente](#reference-marketplace-item-manifestjson).
 
 12. Öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus, um die Ordner in eine AZPKG-Datei zu packen:
 
-   ```shell
-   AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
-   ```
+    ```shell
+    AzureGalleryPackager.exe package –m <path to manifest.json> -o <output location for the package>
+    ```
 
     > [!NOTE]
     > Der vollständige Pfad zum Ausgabepaket muss vorhanden sein. Wenn der Ausgabepfad „C:\MarketPlaceItem\yourpackage.azpkg“ lautet, muss der Ordner „C:\MarketPlaceItem“ vorhanden sein.
@@ -192,8 +192,8 @@ Im Azure Stack-Portal werden folgende Symbole und Texte für Marketplace-Element
 
 ### <a name="create-blade"></a>Blatt "Erstellen"
 
-![Blatt "Erstellen"](media/azure-stack-marketplace-item-ui-reference/image1.png)
+![Blatt "Erstellen"](media/azure-stack-create-and-publish-marketplace-item/image1.png)
 
 ### <a name="marketplace-item-details-blade"></a>Blatt „Details“ für ein Marketplace-Element
 
-![Blatt „Details“ für ein Marketplace-Element](media/azure-stack-marketplace-item-ui-reference/image3.png)
+![Blatt „Details“ für ein Marketplace-Element](media/azure-stack-create-and-publish-marketplace-item/image3.png)

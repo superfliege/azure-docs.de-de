@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: a74a160eae88a2d03460a1346479c333d8f9d524
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb6bb491ca71e5ced5aecc8137e9e1cbd950e80b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109898"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091867"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>Verwalten des StorSimple Virtual Array mithilfe des StorSimple Geräte-Manager-Diensts
 ![Setup-Prozessablauf](./media/storsimple-virtual-array-manager-service-administration/manage4.png)
@@ -42,7 +42,7 @@ In diesem Artikel lernen Sie Folgendes:
 Der StorSimple-Geräte-Manager-Dienst wird in Microsoft Azure ausgeführt. Er stellt Verbindungen mit mehreren StorSimple Virtual Arrays her. Diese Geräte werden über ein zentrales browserbasiertes Microsoft Azure-Portal verwaltet. Gehen Sie wie folgt vor, um eine Verbindung mit dem StorSimple-Geräte-Manager-Dienst herzustellen:
 
 #### <a name="to-connect-to-the-service"></a>So stellen Sie eine Verbindung mit dem Dienst her
-1. Wechseln Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
+1. Navigieren Sie zu [https://ms.portal.azure.com](https://ms.portal.azure.com).
 2. Melden Sie sich mit den Anmeldeinformationen Ihres Microsoft-Kontos beim Microsoft Azure-Portal (rechts oben) an.
 3. Navigieren Sie zu „Durchsuchen“ > „Filter“ unter „StorSimple-Geräte-Manager“, um alle Geräte-Manager in einem bestimmten Abonnement anzuzeigen.
 
@@ -53,17 +53,17 @@ Klicken Sie auf die Verfahren in der Tabelle, um weitere Informationen zu den ei
 
 #### <a name="storsimple-device-manager-workflows"></a>StorSimple-Geräte-Manager-Workflows
 | Gewünschte Aktion | Verfahren |
-| --- | --- | --- |
-| Dienst erstellen</br>Löschen von Diensten</br>Abrufen des Dienstregistrierungsschlüssels</br>Dienstregistrierungsschlüssel erneut generieren |[Bereitstellen des StorSimple-Geräte-Manager-Diensts](storsimple-virtual-array-manage-service.md) |
+| --- | --- |
+| Erstellen von Diensten</br>Löschen von Diensten</br>Abrufen des Dienstregistrierungsschlüssels</br>Neugenerieren des Dienstregistrierungsschlüssels |[Bereitstellen des StorSimple-Geräte-Manager-Diensts](storsimple-virtual-array-manage-service.md) |
 | Anzeigen der Aktivitätsprotokolle |[Verwenden der StorSimple-Dienstübersicht](storsimple-virtual-array-service-summary.md) |
 | Deaktivieren eines Virtual Arrays</br>Löschen eines Virtual Arrays |[Deaktivieren oder Löschen eines Virtual Array](storsimple-virtual-array-deactivate-and-delete-device.md) |
 | Notfallwiederherstellung und Gerätefailover</br>Failovervoraussetzungen</br>Business Continuity Disaster Recovery (BCDR)</br>Fehler während der Notfallwiederherstellung |[Notfallwiederherstellung und Gerätefailover für das StorSimple Virtual Array](storsimple-virtual-array-failover-dr.md) |
 | Sichern von Freigaben und Volumes</br>Erstellen einer manuellen Sicherung</br>Ändern des Sicherungszeitplans</br>Anzeigen von vorhandenen Backups |[Sichern des StorSimple Virtual Array](storsimple-virtual-array-backup.md) |
 | Klonen von Freigaben aus einem Sicherungssatz</br>Klonen von Volumes aus einem Sicherungssatz</br>Wiederherstellung auf Elementebene (nur Dateiserver) |[Klonen aus einer Sicherung des StorSimple Virtual Array](storsimple-virtual-array-clone.md) |
-| Informationen zu Speicherkonten</br>Hinzufügen von Speicherkonten</br>Bearbeiten eines Speicherkontos</br>Löschen eines Speicherkontos |[Verwalten von Speicherkonten für das StorSimple Virtual Array](storsimple-virtual-array-manage-storage-accounts.md) |
+| Informationen zu Speicherkonten</br>Hinzufügen von Speicherkonten</br>Bearbeiten eines Speicherkontos</br>Löschen von Speicherkonten |[Verwalten von Speicherkonten für das StorSimple Virtual Array](storsimple-virtual-array-manage-storage-accounts.md) |
 | Informationen zu Access Control-Datensätzen</br>Hinzufügen oder Ändern von Access Control-Datensätzen </br>Löschen von Access Control-Datensätzen |[Verwalten von Access Control-Datensätzen für das StorSimple Virtual Array](storsimple-virtual-array-manage-acrs.md) |
 | Anzeigen von Auftragsdetails |[Verwalten von StorSimple Virtual Array-Aufträgen](storsimple-virtual-array-manage-jobs.md) |
-| Konfigurieren von Warnungseinstellungen</br>Warnungsbenachrichtigungen empfangen</br>Warnungen verwalten</br>Überprüfen von Warnungen |[Anzeigen und Verwalten von Warnungen für das StorSimple Virtual Array](storsimple-virtual-array-manage-alerts.md) |
+| Konfigurieren der Warnungseinstellungen</br>Warnungsbenachrichtigungen empfangen</br>Warnungen verwalten</br>Überprüfen von Warnungen |[Anzeigen und Verwalten von Warnungen für das StorSimple Virtual Array](storsimple-virtual-array-manage-alerts.md) |
 | Ändern des Geräteadministratorkennworts |[Ändern des StorSimple Virtual Array-Geräteadministratorkennworts](storsimple-virtual-array-change-device-admin-password.md) |
 | Softwareupdates installieren |[Virtual Array aktualisieren](storsimple-virtual-array-install-update.md) |
 

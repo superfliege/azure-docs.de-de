@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: bb2ebeedb1b34288a3d402ffdf4df80aa3be83cd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 1102a8c80b0040c7044d64c674d956d339238623
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154074"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086648"
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Einbinden eines virtuellen Red Hat Enterprise Linux 7-Computers in eine verwaltete Domäne
 Dieser Artikel zeigt, wie ein virtueller Red Hat Enterprise Linux 7-Computer (RHEL) einer durch Azure AD-Domänendienste verwalteten Domäne beitritt.
@@ -86,12 +86,11 @@ Nachdem die erforderlichen Pakete auf dem virtuellen Linux-Computer installiert 
     sudo realm discover CONTOSO100.COM
     ```
 
-     > [!NOTE]
-     > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *realm discover* (Bereich ermitteln) nicht gefunden werden kann:
-     * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
-     * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
-     * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
-     >
+   > [!NOTE]
+   > **Problembehandlung:** Wenn Ihre verwaltete Domäne über *realm discover* (Bereich ermitteln) nicht gefunden werden kann:
+   >   * Stellen Sie durch Pingen sicher, dass die VM die Domäne erreichen kann.
+   >   * Überprüfen Sie, ob die VM tatsächlich in demselben virtuellen Netzwerk bereitgestellt wurde, in dem die verwaltete Domäne verfügbar ist.
+   >   * Überprüfen Sie, ob Sie die DNS-Servereinstellungen aktualisiert haben, sodass das virtuelle Netzwerk auf die Domänencontroller der verwalteten Domäne verweist.
 
 2. Initialisieren Sie Kerberos. Geben Sie in Ihrem SSH-Terminal folgenden Befehl ein:
 

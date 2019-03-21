@@ -7,12 +7,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 03/21/2018
 ms.author: danlep
-ms.openlocfilehash: ba3c6a6bd4fb330eb64b5408eb72095f4de46a7b
-ms.sourcegitcommit: 67abaa44871ab98770b22b29d899ff2f396bdae3
+ms.openlocfilehash: 55c84907ab41f6da9d7a0989c68a1c1f90c5e424
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/08/2018
-ms.locfileid: "48856645"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551023"
 ---
 # <a name="container-image-storage-in-azure-container-registry"></a>Speichern von Containerimages in Azure Container Registry
 
@@ -40,7 +40,7 @@ Die folgende Tabelle beschreibt das Containerimage und die Speichergrenzen für 
 | Bilder | Keine Begrenzung |
 | Ebenen | Keine Begrenzung |
 | Tags | Keine Begrenzung|
-| Speicher | 5 TB |
+| Storage | 5 TB |
 
 Eine hohe Anzahl von Repositorys und Tags können die Leistung Ihrer Registrierung beeinträchtigen. Löschen Sie regelmäßig unbenutzte Repositorys, Tags und Images als Teil der Wartungsroutine für Ihre Registrierung. Gelöschte Registrierungsressourcen wie Repositorys, Images und Tags können nach dem Löschen *nicht* wiederhergestellt werden. Weitere Informationen zum Löschen von Registrierungsressourcen finden Sie unter [Löschen von Containerimages in Azure Container Registry](container-registry-delete.md).
 
@@ -56,6 +56,6 @@ Weitere Informationen zu den verschiedenen Azure Container Registry-SKUs (Basic,
 
 <!-- LINKS - External -->
 [portal]: https://portal.azure.com
-[pricing]: http://aka.ms/acr/pricing
+[pricing]: https://aka.ms/acr/pricing
 
 <!-- LINKS - Internal -->

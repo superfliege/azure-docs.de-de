@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 74b21a9dd8faa8eb35aa8a2ef738bd6303e4cdd7
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 1203f33458c83bbde7a263022b78563bad183143
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195804"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56870736"
 ---
 # <a name="azure-application-marketplace-tab"></a>Registerkarte „Marketplace“ für eine Azure-Anwendung
 
@@ -66,7 +66,7 @@ In der folgenden Tabelle sind die Marketingartefakte beschrieben.
 
 In der nächsten Bildschirmaufnahme ist ein Beispiel für ein Marketplace-Suchergebnis gezeigt.
 
-![Suchergebnis für Marketplace-Angebot ](./media/azureapp-marketplace-example-browse.png)
+![Suchergebnis für Marketplace-Angebot](./media/azureapp-marketplace-example-browse.png)
 
 Die folgende Abbildung zeigt, wie das Angebot im Marketplace angezeigt wird, nachdem ein Kunde im Suchergebnis auf die Kachel des Angebots geklickt hat.
 

@@ -14,31 +14,31 @@ ms.devlang: java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: c11b59f8ea432075b147a391de4b7bd3331e639e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ef24e356c9ac8424fc519a3b16af5d37a20e706f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2018
-ms.locfileid: "27704421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999803"
 ---
 # <a name="how-to-use-the-azure-slave-plug-in-with-hudson-continuous-integration"></a>Verwenden des Azure-Plug-Ins für Sekundärgeräte mit Hudson Continuous Integration
 Das Azure-Plug-In für Sekundärgeräte für Hudson ermöglicht Ihnen das Bereitstellen untergeordneter Knoten in Azure beim Ausführen von verteilten Builds.
 
-## <a name="install-the-azure-slave-plug-in"></a>Installieren des Azure-Plug-Ins für Sekundärgeräte
+## <a name="install-the-azure-slave-plug-in"></a>Installieren des Azure Slave-Plug-Ins
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 2. Klicken Sie unter **Manage Hudson** auf **Manage Plugins**.
 3. Klicken Sie auf die Registerkarte **Available**.
 4. Klicken Sie auf **Search**, und geben Sie **Azure** ein, um relevante Plug-Ins aufzulisten.
    
-    Wenn Sie einen Bildlauf durch die Liste der verfügbaren Plug-Ins durchführen möchten, finden Sie das Azure-Plug-In für Sekundärgeräte im Abschnitt **Cluster Management and Distributed Build** auf der Registerkarte **Others**.
-5. Aktivieren Sie das Kontrollkästchen **Azure-Plug-In für Sekundärgeräte**.
+    Wenn Sie einen Bildlauf durch die Liste der verfügbaren Plug-Ins durchführen möchten, finden Sie das Azure Slave-Plug-In im Abschnitt **Cluster Management and Distributed Build** auf der Registerkarte **Others**.
+5. Aktivieren Sie das Kontrollkästchen **Azure Slave Plugin**.
 6. Klicken Sie auf **Installieren**.
 7. Starten Sie Hudson neu.
 
 Da das Plug-In jetzt installiert ist, wären die nächsten Schritte das Konfigurieren des Plug-Ins mit Ihrem Azure-Abonnementprofil und das Erstellen einer Vorlage, die verwendet wird, um den virtuellen Computer für den untergeordneten Knoten zu erstellen.
 
-## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurieren des Azure-Plug-Ins für Sekundärgeräte mit Ihrem Abonnementprofil
-Ein Abonnementprofil, das als Veröffentlichungseinstellungen bezeichnet wird, ist eine XML-Datei, die sichere Anmeldeinformationen und einige zusätzliche Informationen enthält, die Sie für die Arbeit mit Azure in Ihrer Entwicklungsumgebung benötigen. Um das Azure-Plug-In für Sekundärgeräte zu konfigurieren, benötigen Sie Folgendes:
+## <a name="configure-the-azure-slave-plug-in-with-your-subscription-profile"></a>Konfigurieren des Azure Slave-Plug-Ins mit Ihrem Abonnementprofil
+Ein Abonnementprofil, das als Veröffentlichungseinstellungen bezeichnet wird, ist eine XML-Datei, die sichere Anmeldeinformationen und einige zusätzliche Informationen enthält, die Sie für die Arbeit mit Azure in Ihrer Entwicklungsumgebung benötigen. Um das Azure Slave-Plug-In zu konfigurieren, benötigen Sie Folgendes:
 
 * Ihre Abonnement-ID
 * Ein Verwaltungszertifikat für Ihr Abonnement
@@ -64,7 +64,7 @@ Sie finden dies in Ihrem [Abonnementprofil]. Es folgt ein Beispiel für ein Abon
 
     </PublishData>
 
-Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure-Plug-In für Sekundärgeräte zu konfigurieren.
+Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azure Slave-Plug-In zu konfigurieren.
 
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
 2. Klicken Sie auf **Configure System**.
@@ -82,7 +82,7 @@ Sobald Sie Ihr Abonnementprofil haben, gehen Sie folgendermaßen vor, um das Azu
 6. Klicken Sie auf **Verify Configuration**.
 7. Wenn die Konfiguration erfolgreich überprüft wurde, klicken Sie auf **Speichern**.
 
-## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Einrichten einer Vorlage für virtuelle Computer für das Azure-Plug-In für Sekundärgeräte
+## <a name="set-up-a-virtual-machine-template-for-the-azure-slave-plug-in"></a>Einrichten einer Vorlage für virtuelle Computer für das Azure Slave-Plug-In
 Eine Vorlage für virtuelle Computer definiert die Parameter, die das Plug-In zum Erstellen eines untergeordneten Knotens in Azure verwendet. In den folgenden Schritten erstellen Sie eine Vorlage für einen virtuellen Ubuntu-Computer.
 
 1. Klicken Sie im Hudson-Dashboard auf **Manage Hudson**.
@@ -97,7 +97,7 @@ Eine Vorlage für virtuelle Computer definiert die Parameter, die das Plug-In zu
 8. Wählen Sie eine Region aus, in der der virtuelle Computer erstellt wird.
 9. Wählen Sie die passende Größe des virtuellen Computers aus.
 10. Geben Sie ein Speicherkonto an, in dem der virtuelle Computer erstellt wird. Stellen Sie sicher, dass es sich in der gleichen Region wie der Clouddienst befindet, den Sie verwenden möchten. Wenn Sie neuen Speicher erstellen möchten, können Sie dieses Feld leer lassen.
-11. Die Aufbewahrungszeit gibt die Anzahl der Minuten an, bevor Hudson ein Sekundärgerät im Leerlauf löscht. Behalten Sie hier den Standardwert 60 bei.
+11. Die Aufbewahrungszeit gibt die Anzahl der Minuten an, bevor Hudson einen Slave im Leerlauf löscht. Behalten Sie hier den Standardwert 60 bei.
 12. Wählen Sie unter **Usage**die entsprechende Bedingung für die Verwendung dieses untergeordneten Knotens aus. Wählen Sie vorerst **Utilize this node as much as possible**aus.
     
      Zu diesem Zeitpunkt sieht das Formular in etwa so aus:
@@ -183,12 +183,12 @@ In diesem Abschnitt erstellen Sie eine Hudson-Aufgabe, die auf einen untergeordn
 Hudson erstellt dann einen untergeordneten Knoten mithilfe der im vorherigen Abschnitt erstellten Vorlage und führt das Skript aus, das Sie im Buildschritt für diese Aufgabe angegeben haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Java Developer Center].
+Weitere Informationen zum Verwenden von Azure mit Java finden Sie im [Azure Developer Center für Java].
 
 <!-- URL List -->
 
-[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
-[Abonnementprofil]: http://go.microsoft.com/fwlink/?LinkID=396395
+[Azure Developer Center für Java]: https://azure.microsoft.com/develop/java/
+[Abonnementprofil]: https://go.microsoft.com/fwlink/?LinkID=396395
 
 <!-- IMG List -->
 

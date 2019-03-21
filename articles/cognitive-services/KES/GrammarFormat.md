@@ -10,16 +10,16 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 72dec3effe5e350818c01cf65c9140e778effd17
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 844bd9a88c52fd398fc66c71e59da513c0d7d90d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860285"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544323"
 ---
 # <a name="grammar-format"></a>Grammatikformat
 
-Bei der Grammatik handelt es sich um eine XML-Datei, die den gewichteten Satz von Abfragen in natürlicher Sprache angibt, die der Dienst interpretieren kann, und die angibt, wie diese Abfragen in natürlicher Sprache in Semantikabfrageausdrücke konvertiert werden.  Die Grammatiksyntax basiert auf [SRGS](http://www.w3.org/TR/speech-grammar/). Dabei handelt es sich um einen W3C-Standard für Spracherkennungsgrammatiken mit Erweiterungen zur Unterstützung von Datenindexintegration und Semantikfunktionen.
+Bei der Grammatik handelt es sich um eine XML-Datei, die den gewichteten Satz von Abfragen in natürlicher Sprache angibt, die der Dienst interpretieren kann, und die angibt, wie diese Abfragen in natürlicher Sprache in Semantikabfrageausdrücke konvertiert werden.  Die Grammatiksyntax basiert auf [SRGS](https://www.w3.org/TR/speech-grammar/). Dabei handelt es sich um einen W3C-Standard für Spracherkennungsgrammatiken mit Erweiterungen zur Unterstützung von Datenindexintegration und Semantikfunktionen.
 
 In diesem Artikel werden die einzelnen syntaktischen Elemente beschrieben, die in einer Grammatik verwendet werden können.  Eine vollständige Grammatik, die die Verwendung dieser Elemente im Kontext veranschaulicht, finden Sie in [diesem Beispiel](#example).
 

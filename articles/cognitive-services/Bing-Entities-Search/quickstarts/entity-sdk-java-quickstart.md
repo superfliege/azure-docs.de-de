@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: ea13ae5bc649ae3a803fb8446fa009fac94874a8
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a5a3bb38f832d13a39a061453e6ef7910ba5cccf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094108"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-java"></a>Schnellstart: Senden einer Suchanforderung mit dem Bing-Entitätssuche-SDK für Java
 
@@ -67,7 +67,7 @@ Installieren Sie die Abhängigkeit für das Bing-Entitätssuche-SDK mithilfe von
 
 ## <a name="create-a-search-client"></a>Erstellen eines Suchclients
 
-2. Implementieren Sie den `dominantEntityLookup`-Client, der Ihren API-Endpunkt und eine Instanz der `ServiceClientCredentials`-Klasse erfordert.
+1. Implementieren Sie den `dominantEntityLookup`-Client, der Ihren API-Endpunkt und eine Instanz der `ServiceClientCredentials`-Klasse erfordert.
 
     ```java
     public static EntitySearchAPIImpl getClient(final String subscriptionKey) {
@@ -80,47 +80,47 @@ Installieren Sie die Abhängigkeit für das Bing-Entitätssuche-SDK mithilfe von
 
     Führen Sie zum Implementieren von `ServiceClientCredentials` die folgenden Schritte aus:
 
-    1. Überschreiben Sie die Funktion `applyCredentialsFilter()` mit einem `OkHttpClient.Builder`-Objekt als Parameter. 
+   1. Überschreiben Sie die Funktion `applyCredentialsFilter()` mit einem `OkHttpClient.Builder`-Objekt als Parameter. 
         
-        ```java
-        //...
-        new ServiceClientCredentials() {
-                @Override
-                public void applyCredentialsFilter(OkHttpClient.Builder builder) {
-                //...
-                }
-        //...
-        ```
+       ```java
+       //...
+       new ServiceClientCredentials() {
+               @Override
+               public void applyCredentialsFilter(OkHttpClient.Builder builder) {
+               //...
+               }
+       //...
+       ```
     
-    2. Rufen Sie `builder.addNetworkInterceptor()` in `applyCredentialsFilter()` auf. Erstellen Sie ein neues `Interceptor`-Objekt, und überschreiben Sie seine `intercept()`-Methode, um ein Interceptor-Objekt vom Typ `Chain` zu übernehmen.
+   2. Rufen Sie `builder.addNetworkInterceptor()` in `applyCredentialsFilter()` auf. Erstellen Sie ein neues `Interceptor`-Objekt, und überschreiben Sie seine `intercept()`-Methode, um ein Interceptor-Objekt vom Typ `Chain` zu übernehmen.
 
-        ```java
-        //...
-        builder.addNetworkInterceptor(
-            new Interceptor() {
-                @Override
-                public Response intercept(Chain chain) throws IOException {
-                //...    
-                }
-            });
-        ///...
-        ```
+       ```java
+       //...
+       builder.addNetworkInterceptor(
+           new Interceptor() {
+               @Override
+               public Response intercept(Chain chain) throws IOException {
+               //...    
+               }
+           });
+       ///...
+       ```
 
-    3. Erstellen Sie in der Funktion `intercept` Variablen für Ihre Anforderung. Verwenden Sie `Request.Builder()` zum Erstellen Ihrer Anforderung. Fügen Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzu, und geben Sie `chain.proceed()` für das Anforderungsobjekt zurück.
+   3. Erstellen Sie in der Funktion `intercept` Variablen für Ihre Anforderung. Verwenden Sie `Request.Builder()` zum Erstellen Ihrer Anforderung. Fügen Sie dem Header `Ocp-Apim-Subscription-Key` Ihren Abonnementschlüssel hinzu, und geben Sie `chain.proceed()` für das Anforderungsobjekt zurück.
             
-        ```java
-        //...
-        public Response intercept(Chain chain) throws IOException {
-            Request request = null;
-            Request original = chain.request();
-            Request.Builder requestBuilder = original.newBuilder()
-                    .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
-            request = requestBuilder.build();
-            return chain.proceed(request);
-        }
-        //...
-        ```
-## <a name="send-a-request-and-receive-a-response"></a>Senden einer Anforderung und Erhalten einer Antwort
+       ```java
+       //...
+       public Response intercept(Chain chain) throws IOException {
+           Request request = null;
+           Request original = chain.request();
+           Request.Builder requestBuilder = original.newBuilder()
+                   .addHeader("Ocp-Apim-Subscription-Key", subscriptionKey);
+           request = requestBuilder.build();
+           return chain.proceed(request);
+       }
+       //...
+       ```
+      ## <a name="send-a-request-and-receive-a-response"></a>Senden einer Anforderung und Erhalten einer Antwort
 
 1. Erstellen Sie eine neue Instanz des Suchclients mit Ihrem Abonnementschlüssel. Verwenden Sie `client.entities().search()`, um eine Suchanforderung für die Suchabfrage `satya nadella` zu senden und eine Antwort zu erhalten. 
     
@@ -130,7 +130,7 @@ Installieren Sie die Abhängigkeit für das Bing-Entitätssuche-SDK mithilfe von
             "satya nadella", null, null, null, null, null, null, "en-us", null, null, SafeSearch.STRICT, null);
     ```
 
-2. Wenn Entitäten zurückgegeben wurden, konvertieren Sie sie in eine Liste. Durchlaufen Sie sie, und geben Sie die dominante Entität aus.
+1. Wenn Entitäten zurückgegeben wurden, konvertieren Sie sie in eine Liste. Durchlaufen Sie sie, und geben Sie die dominante Entität aus.
 
     ```java
     if (entityData.entities().value().size() > 0){

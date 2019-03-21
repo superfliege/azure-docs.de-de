@@ -8,14 +8,14 @@ author: derek1ee
 ms.author: deli
 ms.reviewer: klam
 ms.assetid: e69542ec-d10f-4f17-9b7a-2ee441ee7d68
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 09/17/2018
-ms.openlocfilehash: f1f7e67fbd5d8a9ebfae03c00eb0de36e86d9a97
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3b2cfc932c6322df8237ec7cdf820fc4242bfa72
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949586"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57887220"
 ---
 # <a name="create-and-schedule-your-first-job-with-azure-scheduler---azure-portal"></a>Erstellen und Planen des ersten Auftrags mit Azure Scheduler – Azure-Portal
 
@@ -34,7 +34,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="h
 
    ![Erstellen einer Ressource in Scheduler](./media/scheduler-get-started-portal/scheduler-v2-portal-marketplace-create.png)
 
-   Erstellen Sie nun einen Auftrag, der eine GET-Anforderung an die folgende URL sendet: `http://www.microsoft.com/` 
+   Erstellen Sie nun einen Auftrag, der eine GET-Anforderung an die folgende URL sendet: `https://www.microsoft.com/` 
 
 1. Geben Sie unter **Scheduler-Auftrag** folgende Informationen ein:
 
@@ -51,7 +51,7 @@ Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie sich <a href="h
    |----------|---------------|-------------| 
    | **Aktion** | **Http** | Der Typ der auszuführenden Aktion. | 
    | **Methode** | **Get** | Die aufzurufende Methode. | 
-   | **URL** | **http://www.microsoft.com** | Die Ziel-URL. | 
+   | **URL** | **https://www.microsoft.com** | Die Ziel-URL. | 
    |||| 
    
    ![Definieren eines Auftrags](./media/scheduler-get-started-portal/scheduler-v2-portal-action-settings.png)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
-ms.openlocfilehash: 758183efd6a6a2c2b8d172c52ad3bd5c5e12d969
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55169133"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119903"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>Aktivieren von Azure Active Directory Domain Services mithilfe von PowerShell
 In diesem Artikel wird gezeigt, wie Sie Azure Active Directory (AD) Domain Services mithilfe von PowerShell aktivieren.
@@ -141,8 +141,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **Vergessen Sie nicht die zusätzlichen Konfigurationsschritte nach der Bereitstellung der verwalteten Domäne.**
 > Nachdem die verwaltete Domäne bereitgestellt wurde, müssen Sie noch die folgenden Aufgaben ausführen:
 > * **[Aktualisieren Sie DNS-Einstellungen](active-directory-ds-getting-started-dns.md)** für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-* **[Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
->
+> * **[Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services](active-directory-ds-getting-started-password-sync.md)**, damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
 
 
 ## <a name="powershell-script"></a>PowerShell-Skript
@@ -226,8 +225,7 @@ New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$
 > **Vergessen Sie nicht die zusätzlichen Konfigurationsschritte nach der Bereitstellung der verwalteten Domäne.**
 > Nachdem die verwaltete Domäne bereitgestellt wurde, müssen Sie noch die folgenden Aufgaben ausführen:
 > * Aktualisieren Sie DNS-Einstellungen für das virtuelle Netzwerk, damit virtuelle Computer die verwaltete Domäne für den Domänenbeitritt oder die Domänenauthentifizierung finden können.
-* Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services, damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
->
+> * Aktivieren Sie die Kennwortsynchronisierung für Azure AD Domain Services, damit sich Endbenutzer mit ihren Unternehmensanmeldeinformationen an der verwalteten Domäne anmelden können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Nachdem die verwaltete Domäne erstellt wurde, führen Sie die folgenden Konfigurationsaufgaben aus, damit Sie die verwaltete Domäne verwenden können:

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/03/2019
-ms.openlocfilehash: 3b98214da259e9e429c938f8ca7963c9f525e862
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 74d322c9e7d45a26f9e095bd7ae9f2bbe506ba49
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55560820"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306934"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure CLI-Beispiele für Azure SQL-Datenbank
 
@@ -51,9 +51,9 @@ Die folgende Tabelle enthält Links zu Azure CLI-Skriptbeispielen für verwaltet
 
 | |  |
 |---|---|
-| [Erstellen einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/create-azure-sql-managed-instance-using-azure-cli/) | Dieses CLI-Skript veranschaulicht die Erstellung einer verwalteten Instanz. |
-| [Aktualisieren einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/11/14/modify-azure-sql-database-managed-instance-using-azure-cli/) | Dieses CLI-Skript veranschaulicht die Aktualisierung einer verwalteten Instanz. |
-| [Verschieben einer Datenbank in eine andere verwaltete Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Dieses CLI-Skript veranschaulicht die Wiederherstellung einer Datenbanksicherung aus einer Instanz in einer anderen. |
+| [Erstellen einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../create-azure-sql-managed-instance-using-azure-cli/) | Dieses CLI-Skript veranschaulicht die Erstellung einer verwalteten Instanz. |
+| [Aktualisieren einer verwalteten Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../modify-azure-sql-database-managed-instance-using-azure-cli/) | Dieses CLI-Skript veranschaulicht die Aktualisierung einer verwalteten Instanz. |
+| [Verschieben einer Datenbank in eine andere verwaltete Instanz](https://blogs.msdn.microsoft.com/sqlserverstorageengine/20../../cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/) | Dieses CLI-Skript veranschaulicht die Wiederherstellung einer Datenbanksicherung aus einer Instanz in einer anderen. |
 |||
 
 Erfahren Sie mehr über die [Azure CLI-API für verwaltete Instanzen](sql-database-managed-instance-create-manage.md#azure-cli-create-and-manage-managed-instances), und finden Sie [hier weitere Beispiele](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44).

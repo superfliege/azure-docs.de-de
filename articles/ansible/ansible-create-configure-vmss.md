@@ -1,19 +1,19 @@
 ---
 title: Erstellen von VM-Skalierungsgruppen mit Ansible in Azure
 description: Informationen zum Erstellen und Konfigurieren einer VM-Skalierungsgruppe in Azure mit Ansible
-ms.service: ansible
+ms.service: azure
 keywords: ansible, azure, devops, bash, playbook, vm, vm-skalierungsgruppen, vmss
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/24/2018
-ms.openlocfilehash: 920a631ed379651751641c22e4b43f6731197377
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 1176987ab318a97a7db6a12e619e7b7db06ad2da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054157"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097888"
 ---
 # <a name="create-virtual-machine-scale-sets-in-azure-using-ansible"></a>Erstellen von VM-Skalierungsgruppen mit Ansible in Azure
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre VM-Skalierungsgruppe in Azure wie jede andere Azure-Ressource verwalten. In diesem Artikel erfahren Sie, wie Sie Ansible verwenden können, um eine VM-Skalierungsgruppe zu erstellen und horizontal hochzuskalieren. 
@@ -276,5 +276,5 @@ Die Ergebnisse der Befehlsausführung in Cloud Shell zeigen, dass anschließend 
 ## <a name="next-steps"></a>Nächste Schritte
 > [!div class="nextstepaction"] 
 > [Bereitstellen von Anwendungen für VM-Skalierungsgruppen mithilfe von Ansible](https://docs.microsoft.com/azure/ansible/ansible-deploy-app-vmss)
-
+> 
 > [Automatisches Skalieren einer VM-Skalierungsgruppe mit Ansible](https://docs.microsoft.com/azure/ansible/ansible-auto-scale-vmss)

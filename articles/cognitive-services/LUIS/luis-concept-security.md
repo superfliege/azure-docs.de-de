@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: ac4095d19904db10d4d60364dd2c739e8105c171
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4465488dc02568932e839d3234bdb672d59e6804
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55863618"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089844"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Zugriff für die Erstellung und Benutzerzugriff auf Endpunkte
 Erstellungszugriff ist für Besitzer und Projektmitarbeiter möglich. Bei einer privaten App ist der Zugriff auf den Endpunkt für Besitzer und Projektmitarbeiter möglich. Bei einer öffentlichen App ist der Zugriff auf den Endpunkt für jede Person möglich, die über ein eigenes LUIS-Konto und die öffentliche App-ID verfügt. 
@@ -53,7 +53,7 @@ Der Zugriff zum Abfragen des Endpunkts wird von einer Einstellung auf der Seite 
 Der Endpunkt einer privaten App ist nur für Folgendes verfügbar:
 
 |Schlüssel und Benutzer|Erklärung|
-|--|--|--|
+|--|--|
 |Erstellungsschlüssel des Besitzers| Bis zu 1.000 Endpunkttreffer|
 |Erstellungsschlüssel von Projektmitarbeitern| Bis zu 1.000 Endpunkttreffer|
 |Jeder LUIS von einem Ersteller oder Projektmitarbeiter zugewiesene Schlüssel|Basierend auf dem Tarif für die Schlüsselverwendung|

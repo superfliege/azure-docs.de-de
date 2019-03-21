@@ -17,12 +17,12 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 776e3f7047e2f6b43063e085a8ae7a8d29835a75
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c851b5ef024e6584e6f8c93995208b08a91fbb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096672"
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect-Synchronisierung: Beheben von LargeObject-Fehlern, die auf das userCertificate-Attribut zurückzuführen sind
 
@@ -79,9 +79,9 @@ Stellen Sie sicher, dass keine Synchronisierung ausgeführt wird, während Sie e
 > [!Note]
 > Die vorhergehenden Schritte gelten nur für neuere Versionen (1.1.xxx.x) von Azure AD Connect mit dem integrierten Planer. Wenn Sie ältere Versionen (1.0.xxx.x) von Azure AD Connect verwenden, die die Windows-Aufgabenplanung nutzen, oder einen eigenen benutzerdefinierten Scheduler (nicht üblich) verwenden, um eine regelmäßige Synchronisierung auszulösen, müssen Sie sie bzw. ihn deaktivieren.
 
-3. Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
+1. Starten Sie **Synchronization Service Manager**, indem Sie zu „START“ > „Synchronization Service“ navigieren.
 
-4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
+1. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *In Arbeit* angezeigt wird.
 
 ### <a name="step-2-find-the-existing-outbound-sync-rule-for-usercertificate-attribute"></a>Schritt 2: Suchen der vorhandenen ausgehenden Synchronisierungsregel für das userCertificate-Attribut
 Eine Synchronisierungsregel sollte vorhanden sein, die aktiviert und so konfiguriert ist, dass sie das userCertificate-Attribut für User-Objekte in Azure AD exportiert. Suchen Sie diese Synchronisierungsregel, um ihre Konfiguration für **Rangfolge** und **Bereichsfilter** zu ermitteln:

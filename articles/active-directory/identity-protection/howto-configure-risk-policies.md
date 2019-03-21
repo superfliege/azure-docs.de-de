@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9f759eb815e8d0d03d4cdd7fe4ed603ff39d34f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b578c0187f7b804b6261fec9d299f83d7dc1832
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015140"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>Anleitung: Konfigurieren von Risikorichtlinien in Azure Active Directory Identity Protection (aktualisiert)
 
@@ -31,6 +31,8 @@ Azure AD erkennt Risikoereignisse, die auf potenziell gefährdete Identitäten h
 
 - Mit der Richtlinie zum Anmelderisiko können Sie eine Reaktion auf Echtzeitrisikoereignisse konfigurieren, die während der Anmeldung eines Benutzers erkannt wurden. 
 - Mit der Richtlinie zum Benutzerrisiko können Sie eine Reaktion auf alle aktiven Benutzerrisiken konfigurieren, die im Laufe der Zeit für einen Benutzer erkannt wurden.  
+
+> [!VIDEO https://www.youtube.com/embed/zEsbbik-BTE]
 
 
 ## <a name="what-is-the-sign-in-risk-policy"></a>Was ist die Richtlinie zum Anmelderisiko?

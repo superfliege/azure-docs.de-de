@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: d4464f6188efb479f21a23bf936a8222061d9987
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: ec43b79109181457f8ef8e214e296969db5dcb26
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244136"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56593402"
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>Konfigurieren von Hochverfügbarkeitsports für internen Lastenausgleich
 
@@ -38,9 +38,9 @@ Die Abbildung zeigt die folgende Konfiguration des in diesem Artikel beschrieben
 
 ![Beispielbereitstellung für Hochverfügbarkeitsports](./media/load-balancer-configure-ha-ports/haports.png)
 
-
-
 ## <a name="configure-high-availability-ports"></a>Konfigurieren von Hochverfügbarkeitsports
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Richten Sie zur Konfiguration von Hochverfügbarkeitsports einen internen Lastenausgleich mit den virtuellen Netzwerkgeräten im Back-End-Pool ein. Richten Sie eine entsprechende Konfiguration des Integritätstests des Lastenausgleichs ein, um die Integrität der virtuellen Netzwerkgeräte und die Lastenausgleichsregel mit Hochverfügbarkeitsports zu ermitteln. Die auf den allgemeinen Lastenausgleich bezogene Konfiguration ist im Artikel [Erstellen eines internen Lastenausgleichs über das Azure-Portal](load-balancer-get-started-ilb-arm-portal.md) abgedeckt. Dieser Artikel hebt die Konfiguration von Hochverfügbarkeitsports hervor.
 
@@ -51,7 +51,6 @@ Die Konfiguration umfasst im Wesentlichen das Festlegen des Werts des Front-End-
 Aktivieren Sie zum Konfigurieren von Hochverfügbarkeitsports mithilfe des Azure-Portals das Kontrollkästchen **HA-Ports**. Wenn diese ausgewählt ist, wird die entsprechende Port- und Protokollkonfiguration automatisch ausgefüllt. 
 
 ![Konfiguration von Hochverfügbarkeitsports über das Azure-Portal](./media/load-balancer-configure-ha-ports/haports-portal.png)
-
 
 ### <a name="configure-a-high-availability-ports-load-balancing-rule-via-the-resource-manager-template"></a>Konfigurieren einer Lastenausgleichsregel für Hochverfügbarkeitsports mithilfe der Resource Manager-Vorlage
 
@@ -91,7 +90,7 @@ Sie können die Hochverfügbarkeitsports mit der API-Version 2017-08-01 für Mic
 Verwenden Sie den folgenden Befehl, um die Lastenausgleichsregel für Hochverfügbarkeitsports während der Erstellung des internen Lastenausgleichs mithilfe von PowerShell zu erstellen:
 
 ```powershell
-lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
+lbrule = New-AzLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol "All" -FrontendPort 0 -BackendPort 0
 ```
 
 ### <a name="configure-a-high-availability-ports-load-balancer-rule-with-azure-cli"></a>Konfigurieren einer Lastenausgleichsregel für Hochverfügbarkeitsports mithilfe der Azure CLI

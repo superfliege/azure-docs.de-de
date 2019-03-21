@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 39271bdda7adf7e8e65d3b5d5ea1844be1ecf233
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237942"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531928"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Verwalten des Ablaufs von Azure Blob-Speicher in Azure CDN
 > [!div class="op_single_selector"]
@@ -177,7 +177,7 @@ Sie können die [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com
    - [Set Blob Properties](https://msdn.microsoft.com/library/azure/ee691966.aspx)
 
 ## <a name="testing-the-cache-control-header"></a>Testen des Cache-Control-Headers
-Sie können die Einstellungen der Gültigkeitsdauer Ihrer Blobs einfach überprüfen. Mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers können Sie überprüfen, ob Ihr Blob den `Cache-Control`-Antwortheader enthält. Sie können die Antwortheader außerdem über ein Tool wie [wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/) oder [Fiddler](http://www.telerik.com/fiddler) untersuchen.
+Sie können die Einstellungen der Gültigkeitsdauer Ihrer Blobs einfach überprüfen. Mithilfe der [Entwicklertools](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/) Ihres Browsers können Sie überprüfen, ob Ihr Blob den `Cache-Control`-Antwortheader enthält. Sie können die Antwortheader außerdem über ein Tool wie [wget](https://www.gnu.org/software/wget/), [Postman](https://www.getpostman.com/) oder [Fiddler](https://www.telerik.com/fiddler) untersuchen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erfahren Sie, wie Sie den Ablauf von Clouddienstinhalten in Azure CDN verwalten können.](cdn-manage-expiration-of-cloud-service-content.md)

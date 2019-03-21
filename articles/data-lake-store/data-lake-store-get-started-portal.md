@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: 91c069f845ef6291f867099e59e79fd059d8caf1
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: a99d8a265cdc72b6bd1dd45ab670f514d828f808
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320224"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005703"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>Erste Schritte mit Data Lake Storage Gen1 unter Verwendung des Azure-Portals
 
@@ -76,9 +76,9 @@ Wenn Sie Schlüssel aus einem Azure Key Vault zum Konfigurieren der Verschlüsse
 
 > [!NOTE]
 > Sie können ein Data Lake Storage Gen1-Konto auch mithilfe von Azure Resource Manager-Vorlagen erstellen. Diese Vorlagen stehen unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/resources/templates/?term=data+lake+store) zur Verfügung:
-    - Ohne Datenverschlüsselung: [Bereitstellen des Azure Data Lake Storage Gen1-Kontos ohne Datenverschlüsselung](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
-    - Mit Datenverschlüsselung über Data Lake Storage Gen1: [Bereitstellen des Data Lake Storage Gen1-Kontos mit Verschlüsselung (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
-    - Mit Datenverschlüsselung über Azure Key Vault: [Bereitstellen des Data Lake Storage Gen1-Kontos mit Verschlüsselung (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
+> - Ohne Datenverschlüsselung: [Bereitstellen des Azure Data Lake Storage Gen1-Kontos ohne Datenverschlüsselung](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/).
+> - Mit Datenverschlüsselung über Data Lake Storage Gen1: [Bereitstellen des Data Lake Storage Gen1-Kontos mit Verschlüsselung (Data Lake)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/).
+> - Mit Datenverschlüsselung über Azure Key Vault: [Bereitstellen des Data Lake Storage Gen1-Kontos mit Verschlüsselung (Key Vault)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/).
 > 
 > 
 

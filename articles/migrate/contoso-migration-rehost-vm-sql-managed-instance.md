@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 76af79cc9ef1ebea30b30a291f451b7b0a4f3ba6
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 832614c46f0269460245d081f20897b591e31fce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101566"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-an-azure-vm-and-sql-database-managed-instance"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale App auf einer Azure-VM und einer verwalteten Azure SQL-Datenbank-Instanz
 
@@ -222,7 +222,7 @@ Contoso berücksichtigt die folgenden Faktoren:
 - Ein Subnetz kann nur einer Routingtabelle zugeordnet sein.
 - Für die Erstellung von Routingtabellen in Microsoft Azure fallen keine zusätzlichen Gebühren an.
 
- Die Contoso-Administratoren führen die folgenden Schritte aus, um das Routing einzurichten:
+  Die Contoso-Administratoren führen die folgenden Schritte aus, um das Routing einzurichten:
 
 1. Es wird eine UDR-Tabelle (Routingtabelle) in der Ressourcengruppe **ContosoNetworkingRG** erstellt.
 
@@ -441,11 +441,11 @@ Nach der Einrichtung von Quelle und Ziel erstellen die Contoso-Administratoren e
 
 1. Unter **Infrastruktur vorbereiten** > **Replikationseinstellungen** > **Replikationsrichtlinie** >  **Erstellen und zuordnen** erstellen die Administratoren die Richtlinie **ContosoMigrationPolicy**.
 2. Es werden die Standardeinstellungen verwendet:
-    - **RPO-Schwellenwert**: Standardwert von 60 Minuten. Mit diesem Wert wird festgelegt, wie oft Wiederherstellungspunkte erstellt werden. Wenn dieser Grenzwert bei der fortlaufenden Replikation überschritten wird, wird eine Warnung generiert.
-    - **Aufbewahrung des Wiederherstellungspunkts**: Standardwert von 24 Stunden. Dieser Wert gibt den Aufbewahrungszeitraum für die einzelnen Wiederherstellungspunkte an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden.
-    - **Häufigkeit App-konsistenter Momentaufnahmen**: Standardwert von 1 Stunde. Dieser Wert gibt die Häufigkeit an, mit der anwendungskonsistente Momentaufnahmen erstellt werden.
+   - **RPO-Schwellenwert**: Standardwert von 60 Minuten. Mit diesem Wert wird festgelegt, wie oft Wiederherstellungspunkte erstellt werden. Wenn dieser Grenzwert bei der fortlaufenden Replikation überschritten wird, wird eine Warnung generiert.
+   - **Aufbewahrung des Wiederherstellungspunkts**: Standardwert von 24 Stunden. Dieser Wert gibt den Aufbewahrungszeitraum für die einzelnen Wiederherstellungspunkte an. Replizierte VMs können für jeden Punkt eines Zeitfensters wiederhergestellt werden.
+   - **Häufigkeit App-konsistenter Momentaufnahmen**: Standardwert von 1 Stunde. Dieser Wert gibt die Häufigkeit an, mit der anwendungskonsistente Momentaufnahmen erstellt werden.
  
-    ![Replikationsrichtlinie – Erstellen](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
+     ![Replikationsrichtlinie – Erstellen](./media/contoso-migration-rehost-vm-sql-managed-instance/replication-policy.png)
 
 3. Die Richtlinie wird dem Konfigurationsserver automatisch zugeordnet. 
 

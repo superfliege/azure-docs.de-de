@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 845227ea5e32d10eaed555cee80c8fc520a1771a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105551"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098771"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>Überwachen der Identität und des Zugriffs im Azure Security Center (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Security Center die Identität und Zugriffsaktivitäten von Benutzern überwachen.
@@ -68,11 +68,11 @@ Unter **Übersicht** finden Sie eine Liste von Empfehlungen. Die erste Spalte en
 
 1. Wählen Sie eine Empfehlung aus. Das Fenster der Empfehlung wird geöffnet und zeigt Folgendes an:
 
-  - Beschreibung der Empfehlung
-  - Liste der fehlerhaften und fehlerfreien Abonnements
-  - Liste der Ressourcen, die aufgrund einer fehlerhaften Bewertung nicht überprüft wurden oder aufgrund der Ausführung in einem Abonnement mit dem Free-Tarif nicht bewertet wurden
+   - Beschreibung der Empfehlung
+   - Liste der fehlerhaften und fehlerfreien Abonnements
+   - Liste der Ressourcen, die aufgrund einer fehlerhaften Bewertung nicht überprüft wurden oder aufgrund der Ausführung in einem Abonnement mit dem Free-Tarif nicht bewertet wurden
 
-  ![Fenster der Empfehlung][3]
+   ![Fenster der Empfehlung][3]
 
 1. Um weitere Einzelheiten zu erhalten, wählen Sie ein Abonnement in der Liste aus.
 
@@ -81,27 +81,27 @@ Unter **Abonnements** finden Sie eine Liste von Abonnements. Die erste Spalte en
 
 ![Registerkarte „Abonnements“][4]
 
-1.  Wählen Sie ein Abonnement aus. Eine zusammenfassende Darstellung mit drei Registerkarten wird geöffnet:
+1. Wählen Sie ein Abonnement aus. Eine zusammenfassende Darstellung mit drei Registerkarten wird geöffnet:
 
-  - **Empfehlungen**: Basiert auf vom Security Center ausgeführten Bewertungen, bei denen ein Fehler aufgetreten ist.
-  - **Bestandene Bewertungen**: Liste der vom Security Center ausgeführten Bewertungen, die bestanden wurden.
-  - **Nicht verfügbare Bewertungen**: Liste von Bewertungen, bei denen ein Fehler aufgetreten ist oder ein Abonnement mit mehr als 600 Konten vorkommt.
+   - **Empfehlungen**: Basiert auf vom Security Center ausgeführten Bewertungen, bei denen ein Fehler aufgetreten ist.
+   - **Bestandene Bewertungen**: Liste der vom Security Center ausgeführten Bewertungen, die bestanden wurden.
+   - **Nicht verfügbare Bewertungen**: Liste von Bewertungen, bei denen ein Fehler aufgetreten ist oder ein Abonnement mit mehr als 600 Konten vorkommt.
 
-  Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für das ausgewählte Abonnement und den Schweregrad der einzelnen Empfehlungen.
+   Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für das ausgewählte Abonnement und den Schweregrad der einzelnen Empfehlungen.
 
-  ![Empfehlungen für das ausgewählte Abonnement][5]
+   ![Empfehlungen für das ausgewählte Abonnement][5]
 
 1. Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung, eine Liste von fehlerhaften und fehlerfreien Abonnements und eine Liste von nicht überprüften Ressourcen zu erhalten.
 
-  ![Beschreibung der Empfehlung][6]
+   ![Beschreibung der Empfehlung][6]
 
-  Unter **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
+   Unter **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
 
-  ![Bestandene Bewertungen][7]
+   ![Bestandene Bewertungen][7]
 
 1. Wählen Sie eine bestandene Bewertung aus der Liste aus, um eine Beschreibung der Bewertung und eine Liste von fehlerfreien Abonnements zu erhalten. Auf einer Registerkarte für fehlerhafte Abonnements werden alle Abonnements aufgeführt, bei denen ein Fehler aufgetreten ist.
 
-  ![Bestandene Bewertungen][8]
+   ![Bestandene Bewertungen][8]
 
 ## <a name="recommendations"></a>Empfehlungen
 Der folgenden Tabelle können Sie entnehmen, welche Identitäts- und Zugriffsempfehlungen verfügbar sind und welche Aktionen bei ihrer Anwendung jeweils ausgeführt werden.

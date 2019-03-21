@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/27/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32f53742de3242fb3b60a15d436ec6cd842aa429
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c8c86ad6e4b11f21c648083fac35e15eec7658c1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56183992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-knowledgeowl"></a>Tutorial: Azure Active Directory-Integration von KnowledgeOwl
 
@@ -110,6 +110,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Informationen zur Domäne und zu den URLs für KnowledgeOwl für das einmalige Anmelden](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL nach folgendem Muster ein:
+
     |||
     |-|-|
     | `https://app.knowledgeowl.com/sp`|
@@ -117,6 +118,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     |||
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
+
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -132,6 +134,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Informationen zur Domäne und zu den URLs für KnowledgeOwl für das einmalige Anmelden](./media/knowledgeowl-tutorial/tutorial_knowledgeowl_url1.png)
 
     Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+    
     |||
     |-|-|
     | `https://subdomain.knowledgeowl.com/help/saml-login`|
@@ -185,29 +188,29 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Klicken Sie auf **Settings** (Einstellungen), und wählen Sie dann **Security** (Sicherheit) aus.
 
-    ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure1.png)
+     ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Scrollen Sie bis zu **SAML SSO Integration**, und führen Sie die folgenden Schritte aus:
     
-    ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure2.png)
+     ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure2.png)
 
-    a. Wählen Sie **Enable SAML SSO** (SAML-SSO aktivieren) aus.
+     a. Wählen Sie **Enable SAML SSO** (SAML-SSO aktivieren) aus.
 
-    b. Kopieren Sie den Wert **SP Entity ID** (SP-Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für KnowledgeOwl** im Textfeld **Bezeichner (Entitäts-ID)** ein.
+     b. Kopieren Sie den Wert **SP Entity ID** (SP-Entitäts-ID), und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für KnowledgeOwl** im Textfeld **Bezeichner (Entitäts-ID)** ein.
 
-    c. Kopieren Sie den Wert **SP Login URL** (SP-Anmelde-URL), und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für KnowledgeOwl** in den Textfeldern **Anmelde-URL und Antwort-URL** ein.
+     c. Kopieren Sie den Wert **SP Login URL** (SP-Anmelde-URL), und fügen Sie ihn im Azure-Portal im Abschnitt **Domänen und URLs für KnowledgeOwl** in den Textfeldern **Anmelde-URL und Antwort-URL** ein.
 
-    d. Fügen Sie im Textfeld **IdP entityID** (IdP-Entitäts-ID) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+     d. Fügen Sie im Textfeld **IdP entityID** (IdP-Entitäts-ID) den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Fügen Sie im Textfeld **IdP Login URL** (IdP-Anmelde-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+     e. Fügen Sie im Textfeld **IdP Login URL** (IdP-Anmelde-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    f. Fügen Sie im Textfeld **IdP Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+     f. Fügen Sie im Textfeld **IdP Logout URL** (IdP-Abmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    g. Laden Sie das heruntergeladene Zertifikat aus dem Azure-Portal hoch, indem Sie auf **Upload IdP Certificate** (IdP-Zertifikat hochladen) klicken.
+     g. Laden Sie das heruntergeladene Zertifikat aus dem Azure-Portal hoch, indem Sie auf **Upload IdP Certificate** (IdP-Zertifikat hochladen) klicken.
 
-    h. Klicken Sie auf **Map SAML Attributes** (SAML-Attribute zuordnen), um Attribute zuzuordnen, und führen Sie die folgenden Schritte aus:
+     h. Klicken Sie auf **Map SAML Attributes** (SAML-Attribute zuordnen), um Attribute zuzuordnen, und führen Sie die folgenden Schritte aus:
     
-    ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure3.png)
+     ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure3.png)
 
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` im Textfeld **SSO ID** ein.
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` im Textfeld **Username/Email** (Benutzername/E-Mail) ein.
@@ -215,9 +218,9 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     * Geben Sie `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` im Textfeld **Last Name** (Nachname) ein.
     * Klicken Sie unten auf der Seite auf **Speichern**.
 
-    i. Klicken Sie unten auf der Seite auf **Speichern** .
+      i. Klicken Sie unten auf der Seite auf **Speichern** .
 
-    ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure4.png)
+      ![KnowledgeOwl-Konfiguration](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 

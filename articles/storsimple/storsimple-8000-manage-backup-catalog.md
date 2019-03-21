@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.openlocfilehash: ac2577c6cd350d6d437d55e61ec73d954cb24893
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 07d9e03f1631ebce88a7a7c2e33be62f21dda522
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076784"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-backup-catalog"></a>Verwalten des Sicherungskatalogs mithilfe des StorSimple-Geräte-Manager-Diensts
 ## <a name="overview"></a>Übersicht
@@ -86,7 +86,7 @@ Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehal
 
 #### <a name="to-delete-a-backup-set"></a>Löschen eines Sicherungssatzes
  Navigieren Sie zum StorSimple-Geräte-Manager-Dienst, und klicken Sie dann auf **Sicherungskatalog**.
-2. Filtern Sie die Auswahl wie folgt:
+1. Filtern Sie die Auswahl wie folgt:
    
    1. Geben Sie den Zeitraum an. 
    2. Wählen Sie das entsprechende Gerät aus. 
@@ -97,15 +97,15 @@ Löschen Sie eine Sicherung, wenn Sie die zugeordneten Daten nicht mehr beibehal
 
       ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog1.png)
 
-3. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Sie sehen nun die Sicherungssätze aufgeschlüsselt nach den Volumes, die sie enthalten. Die Optionen **Wiederherstellen** und **Löschen** stehen über das (über einen Klick mit der rechten Maustaste zu öffnende) Kontextmenü für den Sicherungssatz zur Verfügung. Klicken Sie mit der rechten Maustaste auf den ausgewählten Sicherungssatz, und wählen Sie **Löschen** aus.
+1. Wählen Sie einen Sicherungssatz aus und erweitern Sie diesen. Sie sehen nun die Sicherungssätze aufgeschlüsselt nach den Volumes, die sie enthalten. Die Optionen **Wiederherstellen** und **Löschen** stehen über das (über einen Klick mit der rechten Maustaste zu öffnende) Kontextmenü für den Sicherungssatz zur Verfügung. Klicken Sie mit der rechten Maustaste auf den ausgewählten Sicherungssatz, und wählen Sie **Löschen** aus.
 
     ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog3.png)
 
-4. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie die angezeigten Informationen, und klicken Sie auf **Löschen**. Die ausgewählte Sicherung wird endgültig gelöscht.
+1. Wenn Sie zur Bestätigung aufgefordert werden, überprüfen Sie die angezeigten Informationen, und klicken Sie auf **Löschen**. Die ausgewählte Sicherung wird endgültig gelöscht.
 
     ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog4.png)  
 
-5. Sie werden benachrichtigt, wenn der Löschvorgang durchgeführt wird und wenn er erfolgreich abgeschlossen wurde. Aktualisieren Sie die Abfrage auf dieser Seite, nachdem der Löschvorgang abgeschlossen wurde. Der gelöschte Sicherungssatz wird nicht mehr in der Liste der Sicherungssätze angezeigt.
+1. Sie werden benachrichtigt, wenn der Löschvorgang durchgeführt wird und wenn er erfolgreich abgeschlossen wurde. Aktualisieren Sie die Abfrage auf dieser Seite, nachdem der Löschvorgang abgeschlossen wurde. Der gelöschte Sicherungssatz wird nicht mehr in der Liste der Sicherungssätze angezeigt.
 
     ![Wechseln zum Sicherungskatalog](./media/storsimple-8000-manage-backup-catalog/bucatalog7.png)
 

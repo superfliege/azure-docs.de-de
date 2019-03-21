@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: f2bd1d863a7900b50712eb23c1088c6b271befa3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755888"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006800"
 ---
 # <a name="application-map-triage-distributed-applications"></a>Anwendungsübersicht: Selektieren verteilter Anwendungen
 
@@ -42,13 +42,13 @@ Durch Klicken auf „Übersichtskomponenten aktualisieren“ wird die Übersicht
 
 Wenn es sich bei allen Komponenten um Rollen in einer einzelnen Application Insights-Ressource handelt, ist dieser Ermittlungsschritt nicht erforderlich. Nach dem ersten Ladevorgang für eine solche Anwendung sind alle Komponenten vorhanden.
 
-![Screenshot: Anwendungsübersicht](media/app-map/001.png)
+![Screenshot: Anwendungsübersicht](media/app-map/app-map-001.png)
 
 Eines der wichtigsten Ziele dieser Oberfläche ist es, komplexe Topologien mit Hunderten von Komponenten zu visualisieren.
 
 Klicken Sie auf eine beliebige Komponente, um die zugehörigen Details anzuzeigen und zur Selektierung von Leistungs- und Fehleraspekten für diese Komponente zu wechseln.
 
-![Flyout](media/app-map/application-map-001.png)
+![Flyout](media/app-map/application-map-002.png)
 
 ### <a name="investigate-failures"></a>Untersuchen von Fehlern
 

@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: b5e6853653bab96cd11196ba03fbeadbdc6b337f
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: c114c726bea34465972a282acac6b8acbbf9a80f
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816210"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670419"
 ---
 # <a name="basic-concepts"></a>Grundlegende Konzepte
 
@@ -198,7 +199,7 @@ Die Antwort des `detailed`-Formats enthält [N beste Werte](#n-best-values) erg�
 
 ### <a name="n-best-values"></a>N beste Werte
 
-Listener, ob Personen oder Computer, können nie sicher sein, dass sie *genau* das gehört haben, was gesprochen wurde. Ein Listener kann nur einer bestimmten Interpretation einer Äußerung eine *Wahrscheinlichkeit* zuweisen. 
+Listener, ob Personen oder Computer, können nie sicher sein, dass sie *genau* das gehört haben, was gesprochen wurde. Ein Listener kann nur einer bestimmten Interpretation einer Äußerung eine *Wahrscheinlichkeit* zuweisen.
 
 Unter normalen Umständen ist die Wahrscheinlichkeit hoch, dass Personen im Gespräch mit anderen, mit denen sie häufig interagieren, die gesprochenen Wörter erkennen. Sprachlistener auf Computerbasis streben ein ähnliches Genauigkeitsniveau an, und unter den richtigen Bedingungen [erzielen sie einen Gleichstand mit Menschen](https://blogs.microsoft.com/next/2016/10/18/historic-achievement-microsoft-researchers-reach-human-parity-conversational-speech-recognition/#sm.001ykosqs14zte8qyxj2k9o28oz5v).
 
@@ -308,7 +309,7 @@ Der Microsoft Speech Service erkennt alle Formen der menschlichen Sprache, einsc
 
 | *Profanity*-Wert | BESCHREIBUNG |
 | - | - |
-| `masked` | Maskiert anstößige Ausdrücke mit Sternchen. Dies ist das Standardverhalten. | 
+| `masked` | Maskiert anstößige Ausdrücke mit Sternchen. Dies ist das Standardverhalten. |
 | `removed` | Entfernt anstößige Ausdrücke aus allen Ergebnissen. |
 | `raw` | Erkennt anstößige Ausdrücke in allen Ergebnissen und gibt sie zurück. |
 
@@ -322,7 +323,7 @@ Wenn der *profanity*-Abfrageparameter den Wert *removed* hat, entfernt der Diens
 
 #### <a name="profanity-only-utterances"></a>Äußerungen, die nur aus anstößigen Ausdrücken bestehen
 
-Angenommen, ein Benutzer spricht *nur* anstößige Ausdrücke, wenn eine Anwendung den Dienst so konfiguriert hat, dass anstößige Ausdrücke entfernt werden. Wenn der Erkennungsmodus in diesem Szenario *Diktat* oder *Konversation* ist, gibt der Dienst kein *speech.result* zurück. Wenn der Erkennungsmodus *interaktiv* ist, gibt der Dienst ein *speech.result* mit dem Statuscode *NoMatch* zurück. 
+Angenommen, ein Benutzer spricht *nur* anstößige Ausdrücke, wenn eine Anwendung den Dienst so konfiguriert hat, dass anstößige Ausdrücke entfernt werden. Wenn der Erkennungsmodus in diesem Szenario *Diktat* oder *Konversation* ist, gibt der Dienst kein *speech.result* zurück. Wenn der Erkennungsmodus *interaktiv* ist, gibt der Dienst ein *speech.result* mit dem Statuscode *NoMatch* zurück.
 
 ### <a name="profanity-value-raw"></a>Profanity-Wert `Raw`
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 78834f1f12d2c748cb885e437496f2acf11b69ee
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9b3a91399ddcae687a982527c02d23d31eec4289
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232759"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891483"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>Erstellen eines neuen Berichts aus einem Dataset in Power BI-Arbeitsbereichssammlungen
 
@@ -209,4 +209,4 @@ var embedCreateConfiguration = {
 [Power BI Core-NuGut-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.Core/)  
 [Power BI JavaScript-Paket](https://www.nuget.org/packages/Microsoft.PowerBI.JavaScript/)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 11/06/2018
 ms.author: mjbrown
-ms.openlocfilehash: 445d9f220a215eb17436d52f637b57bd3492aaae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864773"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258291"
 ---
 # <a name="create-an-azure-cosmos-container"></a>Erstellen eines Azure Cosmos-Containers
 
@@ -23,7 +23,7 @@ In diesem Artikel werden die verschiedenen Möglichkeiten zur Erstellung eines C
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-sql-api-dotnet.md#create-a-database-account), oder wählen Sie ein bereits vorhandenes Konto aus.
+1. [Erstellen Sie ein neues Azure Cosmos DB-Konto](create-sql-api-dotnet.md#create-account), oder wählen Sie ein bereits vorhandenes Konto aus.
 
 1. Öffnen Sie den Bereich **Daten-Explorer**, und wählen Sie **Neue Sammlung** aus. Geben Sie anschließend die folgenden Details an:
 
@@ -198,7 +198,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-MongoDB Wire Protocol fordert keine Einheiten an. Wenn Sie eine neue Sammlung mit Durchsatz erstellen möchten, verwenden Sie das Azure-Portal oder die SQL-API.
+> MongoDB Wire Protocol fordert keine Einheiten an. Wenn Sie eine neue Sammlung mit Durchsatz erstellen möchten, verwenden Sie das Azure-Portal oder die SQL-API.
 
 ### <a id="dotnet-cassandra"></a>Cassandra-API
 

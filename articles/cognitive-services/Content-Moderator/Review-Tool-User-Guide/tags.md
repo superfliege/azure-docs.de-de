@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 942b30ab9949a28c42949913d90e7448c22b658f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: fa3b7be6ac7cc398685bf5ad7d21173bcb072b69
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55206274"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118407"
 ---
 # <a name="create-and-use-moderation-tags"></a>Erstellen und Verwenden von Moderationstags
 
@@ -23,15 +23,15 @@ Neben den beiden Standardtags **isadult** (**a**) und **isracy** (**r**) können
 
 ## <a name="create-tags"></a>Erstellen von Tags
 
-1.  Wählen Sie Tags auf der Registerkarte „Einstellungen“.
+1. Wählen Sie Tags auf der Registerkarte „Einstellungen“.
 
-  ![Tags für die Inhaltsmoderation](images/tags-1.png)
+   ![Tags für die Inhaltsmoderation](images/tags-1.png)
 
-2.  Geben Sie für den Tag einen kurzen Code bestehend aus zwei Buchstaben ein.
-3.  Geben Sie einen Namen für den Tag ein. Der Name sollte kurz und beschreibend sein. Beispiel: **isbullying**.
-4.  Geben Sie eine Beschreibung ein.
-5.  Klicken Sie auf "Hinzufügen".
-6.  Wenn Sie alle gewünschten Tags erstellt haben, klicken Sie auf „Speichern“.
+2. Geben Sie für den Tag einen kurzen Code bestehend aus zwei Buchstaben ein.
+3. Geben Sie einen Namen für den Tag ein. Der Name sollte kurz und beschreibend sein. Beispiel: **isbullying**.
+4. Geben Sie eine Beschreibung ein.
+5. Klicken Sie auf "Hinzufügen".
+6. Wenn Sie alle gewünschten Tags erstellt haben, klicken Sie auf „Speichern“.
 
 ![Tags für die Inhaltsmoderation definieren](images/tags-2-define.png)
 

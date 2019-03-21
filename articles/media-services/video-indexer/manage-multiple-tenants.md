@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 02/10/2019
 ms.author: ikbarmen
-ms.openlocfilehash: 3b6daa60e8c8945d49170a00da5bd3ffb57b48ac
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e98cf44db01de1f99836e247066ba01006eac97b
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000113"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56733298"
 ---
 # <a name="manage-multiple-tenants"></a>Verwalten mehrerer Mandanten
 
@@ -56,7 +56,7 @@ Mit dieser Option können Anpassungsmodelle (Person, Sprache und Marken) gemeins
 
 Wenn Sie [Videos hochladen](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?), können Sie pro Mandant ein anderes Partitionsattribut angeben. Dies ermöglicht die Isolation in der [Such-API](https://api-portal.videoindexer.ai/docs/services/operations/operations/Search-videos?). Durch Angabe des Partitionsattributs in der Such-API erhalten Sie nur die Ergebnisse der angegebenen Partition. 
 
- ### <a name="considerations"></a>Überlegungen
+### <a name="considerations"></a>Überlegungen
 
 * Möglichkeit, dass Mandanten Inhalte und benutzerdefinierte Modelle gemeinsam nutzen.
 * Ein Mandant wirkt sich auf die Leistung anderer Mandanten aus.

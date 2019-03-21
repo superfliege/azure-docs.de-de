@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 2aa5522b8200f87df633759ee136f744cd1b8099
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 6588690629d2e266469a4b8ea533c5650f3fc0ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57890881"
 ---
 # <a name="introduction-to-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Einführung in die Data Science-VM für geografische KI
 
@@ -44,7 +44,7 @@ Mit der Integration von geografischen und Standortinformationen in Ihre Daten er
 
 Die [Data Science-VM (DSVM)](overview.md) von Microsoft ist eine verbreitete Experimentier- und Modellierungsumgebung in Azure, die umfassende Tools für KI, maschinelles Lernen und Data Science bereitstellt. Diese Plattformen und Tools sind zu Ihrer Entlastung vorkonfiguriert, sodass Sie sofort produktiv werden können. 
 
-Durch die Kombination der Vorhersagefunktionen der Data Science-VM mit der Skalierbarkeit der Azure-Cloud und die Software für räumliche Analysen von [ESRI](http://www.esri.com) erhalten Datenanalysten und Geoanalysten nun eine produktive Plattform, die ihnen neue Erkenntnisse aus ihren Daten und neue Möglichkeiten bietet. 
+Durch die Kombination der Vorhersagefunktionen der Data Science-VM mit der Skalierbarkeit der Azure-Cloud und die Software für räumliche Analysen von [ESRI](https://www.esri.com) erhalten Datenanalysten und Geoanalysten nun eine produktive Plattform, die ihnen neue Erkenntnisse aus ihren Daten und neue Möglichkeiten bietet. 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

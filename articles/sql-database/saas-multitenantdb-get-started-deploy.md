@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, stein
 manager: craigg
 ms.date: 10/16/2018
-ms.openlocfilehash: cb64b96f179bd71c3f885a54b17decb794b40c1a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8f19303dba7fcf2a9edb325464fdd3748220903e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567382"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994921"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen Anwendung mit Sharding
 
@@ -66,9 +66,9 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 ### <a name="steps"></a>Schritte
 
 1. Klicken Sie auf die folgende blaue Schaltfläche **Bereitstellung in Azure**.
-    - Das Azure-Portal mit der Vorlage für die Wingtip Tickets-SaaS-Bereitstellung wird geöffnet.
+   - Das Azure-Portal mit der Vorlage für die Wingtip Tickets-SaaS-Bereitstellung wird geöffnet.
 
-    [![Schaltfläche „Bereitstellung in Azure“][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
+     [![Schaltfläche „Bereitstellung in Azure“][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
 1. Geben Sie die erforderlichen Parameterwerte für die Bereitstellung ein.
 
@@ -125,9 +125,9 @@ Jeder Veranstaltungsort erhält eine personalisierte Web-App, über die Veransta
 Auf der zentralen Webseite **Veranstaltungshub** wird eine Liste mit Links zu den Mandanten in der jeweiligen Bereitstellung aufgeführt. Anhand der folgenden Schritte können Sie die Webseite **Veranstaltungshub** und die jeweilige Web-App erkunden:
 
 1. Öffnen Sie den **Ereignis-Hub** in Ihrem Webbrowser:
-    - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
+   - http://events.wingtip-mt.&lt;Benutzer&gt;.trafficmanager.net &nbsp; *(Ersetzen Sie &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)*
 
-    ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
+     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
 2. Klicken Sie im **Ereignis-Hub** auf **Fabrikam Jazz Club**.
 
@@ -208,7 +208,7 @@ Als Nächstes stellen wir einen anderen Mandanten bereit, dieses Mal in seiner e
 
 Betrachten wir nun einige der Ressourcen, die bereitgestellt wurden:
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com), zur Liste der Ressourcengruppen. Öffnen Sie die Ressourcengruppe, die Sie bei der Bereitstellung der Anwendung erstellt haben.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com), zur Liste der Ressourcengruppen. Öffnen Sie die Ressourcengruppe, die Sie bei der Bereitstellung der Anwendung erstellt haben.
 
    ![Ressourcengruppe](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
@@ -275,7 +275,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 -->
 
-[link-aka-ms-deploywtp-mtapp-52k]: http://aka.ms/deploywtp-mtapp
+[link-aka-ms-deploywtp-mtapp-52k]: https://aka.ms/deploywtp-mtapp
 
 
 [link-azure-get-started-powershell-41q]: https://docs.microsoft.com/powershell/azure/get-started-azureps
@@ -286,7 +286,7 @@ A [series of related tutorials] is available that build upon this initial deploy
 
 <!--  Image references.
 
-[image-deploy-to-azure-blue-48d]: http://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
+[image-deploy-to-azure-blue-48d]: https://aka.ms/deploywtp-mtapp "Button for Deploy to Azure."
 -->
 
 [image-deploy-to-azure-blue-48d]: media/saas-multitenantdb-get-started-deploy/deploy.png "Schaltfläche „Bereitstellung in Azure“"

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: shlo
-ms.openlocfilehash: ec5ebfa29af13b5a34617be7f423fd7bc220636b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 80b1f90ee0d9f5003c39eb6a853a07d2d64ca482
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017751"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085336"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>Grundlegendes zu Azure Data Factory-Preisen anhand von Beispielen
 
@@ -33,7 +33,7 @@ Um dieses Szenario zu realisieren, müssen Sie eine Pipeline mit folgenden Eleme
 
 3. Einen Zeitplantrigger, der die Pipeline einmal pro Stunde ausführt.
 
- ![Szenario1](media/pricing-concepts/scenario1.png)
+   ![Szenario1](media/pricing-concepts/scenario1.png)
 
 | **Vorgänge** | **Typen und Einheiten** |
 | --- | --- |

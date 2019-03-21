@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 78aa65614920d093b6ba0b8fa43614fd7f3c5176
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: a498fb2bc3efcc3a081a0ab854df107135a4e008
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104691"
 ---
 # <a name="prepare-your-azure-application-technical-assets"></a>Vorbereiten der technischen Ressourcen einer Azure-Anwendung
 
@@ -48,11 +48,11 @@ Lesen Sie die folgende Dokumentation zu Azure-Anwendungen. Diese Dokumentation e
   - [Erstellen von Definitionsdateien](https://docs.microsoft.com/azure/managed-applications/publish-service-catalog-app)
   - [Veröffentlichen der Marketplace-Anwendung](https://docs.microsoft.com/azure/managed-applications/publish-marketplace-app)
 
- - Beispiele:
+  - Beispiele:
 
-   - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/managed-applications/cli-samples)
-   - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
-   - [Verwaltete Anwendungslösungen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
+    - [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/azure/managed-applications/cli-samples)
+    - [Azure PowerShell](https://docs.microsoft.com/azure/managed-applications/powershell-samples)
+    - [Verwaltete Anwendungslösungen](https://docs.microsoft.com/azure/managed-applications/sample-projects)
 
 ## <a name="fundamental-technical-knowledge"></a>Grundlegende technische Kenntnisse
 

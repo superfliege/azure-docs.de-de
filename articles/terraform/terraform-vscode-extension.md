@@ -2,19 +2,19 @@
 title: Installieren und Verwenden der Azure Terraform-Erweiterung für Visual Studio Code
 description: Erfahren Sie, wie Sie die Azure Terraform-Erweiterung in Visual Studio Code installieren und verwenden.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, Azure, DevOps, Visual Studio Code, Erweiterung
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 08/31/2018
-ms.openlocfilehash: 137a57638207a05f797692b25a5d5a31bd66ce3d
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: b1102649e48af8cb36a64f1142c078bf9ebc0d99
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074579"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006192"
 ---
 # <a name="install-and-use-the-azure-terraform-visual-studio-code-extension"></a>Installieren und Verwenden der Azure Terraform-Erweiterung für Visual Studio Code
 
@@ -59,7 +59,7 @@ Sie müssen [Node.js 6.0 oder höher](https://nodejs.org/) installieren, um Terr
 
 ### <a name="install-graphviz"></a>Installieren von GraphViz
 
-Sie müssen [GraphViz installieren](http://graphviz.org/), um die Visualisierungsfunktion von Terraform zu verwenden.
+Sie müssen [GraphViz installieren](https://graphviz.org/), um die Visualisierungsfunktion von Terraform zu verwenden.
 
 >[!NOTE]
 >Wenn Sie überprüfen möchten, ob GraphViz installiert ist, öffnen Sie ein Terminalfenster, und geben Sie `dot -V` ein.
@@ -128,7 +128,7 @@ In dieser Übung erstellen Sie eine grundlegende Terraform-Konfigurationsdatei, 
     ![Speichern unter; „main.tf“](media/terraform-vscode-extension/tf-save-as-main.png)
 
 1. Wählen Sie **Speichern** aus.
-- Klicken Sie auf der Menüleiste auf **Datei > Ordner öffnen**. Navigieren Sie zum neu erstellten Ordner, und wählen Sie diesen aus.
+1. Klicken Sie auf der Menüleiste auf **Datei > Ordner öffnen**. Navigieren Sie zum neu erstellten Ordner, und wählen Sie diesen aus.
 
 ### <a name="run-terraform-init-command"></a>Ausführen des Terraform-Befehls *init*
 

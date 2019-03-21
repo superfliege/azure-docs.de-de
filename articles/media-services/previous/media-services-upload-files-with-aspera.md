@@ -11,15 +11,15 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: 179be5df8013d4e79eca473036d1a09875cbcc61
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 28b6732745947043847ce944243bc87398e159fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56865908"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892146"
 ---
 # <a name="upload-files-into-a-media-services-account-using-the-aspera-server-on-demand-service-on-azure"></a>Hochladen von Dateien in ein Media Services-Konto mithilfe des Diensts „Aspera Server On Demand“ in Azure 
 
@@ -89,44 +89,44 @@ Melden Sie sich beim Azure Marketplace an, und gehen Sie anschließend wie hier 
 
     Der folgende Screenshot zeigt die Zugriffserstellung: 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera010.png)
 
     Der folgende Screenshot zeigt die Oberflächen für die Nutzungsberichte im Portal: 
 
-   ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
+    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera011.png)
 
 ## <a name="upload-files-with-aspera"></a>Hochladen von Dateien mit Aspera
 
 1. Laden Sie die Aspera-Clientsoftware herunter, und installieren Sie sie:
     
-    * [Browser-Plug-In](http://downloads.asperasoft.com/connect2/)
-    * [Rich Client](http://downloads.asperasoft.com/en/downloads/2)
+    * [Browser-Plug-In](https://downloads.asperasoft.com/connect2/)
+    * [Rich Client](https://downloads.asperasoft.com/en/downloads/2)
 
 2. Führen Sie Ihre erste Übertragung durch. Gehen Sie wie folgt vor, wenn Sie mithilfe des Aspera-Clients Daten über den Aspera-Übertragungsdienst übertragen möchten: 
 
-    1. Erstellen Sie über das Aspera-Portal einen Zugriffsschlüssel.  
-    2. Laden Sie den Aspera-Client herunter, und installieren/lizenzieren Sie ihn. (Die Software finden Sie im Aspera-Portal.)  
+   1. Erstellen Sie über das Aspera-Portal einen Zugriffsschlüssel.  
+   2. Laden Sie den Aspera-Client herunter, und installieren/lizenzieren Sie ihn. (Die Software finden Sie im Aspera-Portal.)  
 
-    >[!NOTE]
-    >Konfigurationsinformationen finden Sie im Aspera-Clienthandbuch.
+      >[!NOTE]
+      >Konfigurationsinformationen finden Sie im Aspera-Clienthandbuch.
     
-    3. Rufen Sie über das [Azure-Portal](https://portal.azure.com/) einige Informationen des Speicherkontos ab, das Ihrem Azure Media-Konto zugeordnet ist. Hierzu zählen insbesondere Name und Schlüssel sowie der Name des Speicherblobcontainers, in dem der Inhalt platziert werden soll. 
+   3. Rufen Sie über das [Azure-Portal](https://portal.azure.com/) einige Informationen des Speicherkontos ab, das Ihrem Azure Media-Konto zugeordnet ist. Hierzu zählen insbesondere Name und Schlüssel sowie der Name des Speicherblobcontainers, in dem der Inhalt platziert werden soll. 
 
-        * Die Speicherinformationen können Sie im Portal wie folgt ermitteln: Suchen Sie nach Ihrem Speicherkonto, klicken Sie auf die Zugriffsschlüssel, und kopieren Sie den Namen und den Schlüssel Ihres Kontos.
-        * Gehen Sie zum Ermitteln des Containernamens wie folgt vor: Suchen Sie nach Ihrem Speicherkonto, wählen Sie **Blobs** aus, und wählen Sie anschließend den Namen des Containers aus, in den Sie den Inhalt hochladen möchten. 
+       * Die Speicherinformationen können Sie im Portal wie folgt ermitteln: Suchen Sie nach Ihrem Speicherkonto, klicken Sie auf die Zugriffsschlüssel, und kopieren Sie den Namen und den Schlüssel Ihres Kontos.
+       * Gehen Sie zum Ermitteln des Containernamens wie folgt vor: Suchen Sie nach Ihrem Speicherkonto, wählen Sie **Blobs** aus, und wählen Sie anschließend den Namen des Containers aus, in den Sie den Inhalt hochladen möchten. 
 
-    Der folgende Screenshot zeigt den **Verbindungs-Manager** des Aspera-Clients, in dem Sie den Speichertyp „Azure“, die Anmeldeinformationen und den Blobcontainer angeben müssen:
+      Der folgende Screenshot zeigt den **Verbindungs-Manager** des Aspera-Clients, in dem Sie den Speichertyp „Azure“, die Anmeldeinformationen und den Blobcontainer angeben müssen:
 
-    ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
+      ![Aspera](./media/media-services-upload-files-with-aspera/media-services-upload-files-with-aspera012.png)
 
 ## <a name="resources"></a>Ressourcen
 
 In diesem Artikel wurden die folgenden Ressourcen erwähnt: 
 
-* [Connect-Browser-Plug-In](http://downloads.asperasoft.com/connect2/)
-* [Connect-Handbuch](http://downloads.asperasoft.com/en/documentation/8)
-* [Aspera-Client](http://downloads.asperasoft.com/en/downloads/2)
-* [Clienthandbuch](http://downloads.asperasoft.com/en/documentation/2)
+* [Connect-Browser-Plug-In](https://downloads.asperasoft.com/connect2/)
+* [Connect-Handbuch](https://downloads.asperasoft.com/en/documentation/8)
+* [Aspera-Client](https://downloads.asperasoft.com/en/downloads/2)
+* [Clienthandbuch](https://downloads.asperasoft.com/en/documentation/2)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8898149e6858c5a1cdb2d4510ad2764ffe25fda5
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 905ce1eca9996140da5f9d33aa7f9749a4ef7034
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55964252"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894120"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>Konfigurieren der Leadverwaltung zur Verwendung eines HTTPS-Endpunkts
 
@@ -88,7 +88,7 @@ Sie können einen HTTPS-Endpunkt für die Verarbeitung von Azure Marketplace- un
    - **An**: Geben Sie mindestens eine gültige E-Mail-Adresse ein.
    - **Betreff**: Flow ermöglicht das Hinzufügen dynamischer Inhalte (wie etwa **LeadSource** im folgenden Screenshot).
 
-    ![Hinzufügen einer E-Mail-Aktion mit dynamischem Inhalt](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
+     ![Hinzufügen einer E-Mail-Aktion mit dynamischem Inhalt](./media/cloud-partner-portal-lead-management-instructions-https/https-myflows-configure-email-dynamic-content.png)
 
    - **Text**: Fügen Sie über die Liste für dynamische Inhalte die gewünschten Informationen in den E-Mail-Text ein. Verwenden Sie beispielsweise „LastName“ (Nachname), „FirstName“ (Vorname), „Email“ (E-Mail-Adresse) und „Company“ (Unternehmen).
 
@@ -117,7 +117,7 @@ Das JSON-Testbeispiel verwendet folgendes Schema:
 
 ``` json
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "https://json-schema.org/draft-04/schema#",
   "definitions": {},
   "id": "http://example.com/example.json",
   "properties": {

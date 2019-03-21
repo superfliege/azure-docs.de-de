@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 139fe946b013b1c86404bdef6ed06314af349c89
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343135"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58202706"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>Verwenden benutzerdefinierter C#-Funktionen mit Apache Hive- und Apache Pig-Streaming für Apache Hadoop in HDInsight
 
@@ -172,13 +172,13 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
 
 6. Laden Sie die EXE-Dateien mithilfe einer der folgenden Methoden hoch:
 
-    * Wenn Sie ein __Azure-Speicherkonto__ verwenden, klicken Sie auf das Symbol für den Upload, und navigieren Sie dann zum Ordner **bin\debug** für das Projekt **HiveCSharp**. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **OK**.
+   * Wenn Sie ein __Azure-Speicherkonto__ verwenden, klicken Sie auf das Symbol für den Upload, und navigieren Sie dann zum Ordner **bin\debug** für das Projekt **HiveCSharp**. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **OK**.
 
-        ![Symbol für den Upload](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
+       ![Symbol für den Upload](./media/apache-hadoop-hive-pig-udf-dotnet-csharp/upload.png)
     
-    * Wenn Sie __Azure Data Lake Storage__ verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann __Hochladen__ aus. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **Öffnen**.
+   * Wenn Sie __Azure Data Lake Storage__ verwenden, klicken Sie mit der rechten Maustaste auf einen leeren Bereich in der Dateiliste, und wählen Sie dann __Hochladen__ aus. Wählen Sie anschließend die Datei **HiveCSharp.exe** aus, und klicken Sie auf **Öffnen**.
 
-    Sobald der Upload der Datei __HiveCSharp.exe__ abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei __PigUDF.exe__.
+     Sobald der Upload der Datei __HiveCSharp.exe__ abgeschlossen ist, wiederholen Sie den Uploadvorgang für die Datei __PigUDF.exe__.
 
 ## <a name="run-an-apache-hive-query"></a>Ausführen einer Apache Hive-Abfrage
 
@@ -216,11 +216,7 @@ Weitere Informationen zu der mit den verschiedenen HDInsight-Versionen bereitges
 
 ## <a name="run-an-apache-pig-job"></a>Ausführen eines Apache Pig-Auftrags
 
-1. Verwenden Sie eine der folgenden Methoden, um die Verbindung zu Ihrem HDInsight-Cluster herzustellen:
-
-    * Wenn Sie einen __Linux-basierten__ HDInsight-Cluster verwenden, verwenden Sie SSH. Beispiel: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
-    
-    * Wenn Sie einen __Windows-basierten__-HDInsight-Cluster verwenden, [stellen Sie die Verbindung zum Cluster mit dem Remotedesktop her](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp).
+1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her. Beispiel: `ssh sshuser@mycluster-ssh.azurehdinsight.net`. Weitere Informationen finden Sie unter [Verwenden von SSH mit HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 2. Starten Sie die Pig-Befehlszeile mit einem der folgenden Befehle:
 

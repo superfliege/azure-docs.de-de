@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 5ff0a70d8b370655df1eef55dac68804a1db406b
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: f83ee40c97e49add539a44a6ba764024a8e47bfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55082145"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081490"
 ---
 # <a name="create-and-manage-claimable-vms-in-azure-devtest-labs"></a>Erstellen und Verwalten anforderbarer virtueller Computer in einem Lab in Azure DevTest Labs
 Einen anforderbaren virtuellen Computer fügen Sie einem Lab in ähnlicher Weise hinzu wie [einen virtuellen Standardcomputer](devtest-lab-add-vm.md), d.h. über eine *Basis*, also entweder über ein [benutzerdefiniertes Image](devtest-lab-create-template.md), eine [Formel](devtest-lab-manage-formulas.md) oder ein [Marketplace-Image](devtest-lab-configure-marketplace-images.md). In diesem Tutorial wird erläutert, wie Sie über das Azure-Portal einem Lab in DevTest Labs einen anforderbaren virtuellen Computer hinzufügen. Zudem wird der Vorgang beschrieben, mit dem ein Benutzer den virtuellen Computer anfordert und diesen Anspruch auch wieder aufhebt.
@@ -64,12 +64,12 @@ Ein Benutzer kann mit einem der folgenden Schritte jeden virtuellen Computer aus
 
 * Klicken Sie in der Liste „Claimable virtual machines“ (Anforderbare virtuelle Computer) unten im Bereich „Übersicht“ des Labs mit der rechten Maustaste auf einen der virtuellen Computer in der Liste, und wählen Sie **Claim machine** (Computer anfordern) aus.
 
- ![Anfordern eines bestimmten anforderbaren virtuellen Computers.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
+  ![Anfordern eines bestimmten anforderbaren virtuellen Computers.](./media/devtest-lab-add-vm/devtestlab-claim-VM.png)
 
 
 * Wählen Sie oben im Bereich Übersicht die Option **Claim any** (Beliebigen Computer anfordern) aus. Aus der Liste der anforderbaren virtuellen Computer wird ein virtueller Computer zufällig zugewiesen.
 
- ![Fordern Sie einen beliebigen anforderbaren virtuellen Computer an.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
+  ![Fordern Sie einen beliebigen anforderbaren virtuellen Computer an.](./media/devtest-lab-add-vm/devtestlab-claim-any.png)
 
 
 Nachdem ein Benutzer einen virtuellen Computer angefordert hat, wird dieser in die Liste „My virtual machines“ (Meine virtuellen Computer) des Benutzers verschoben und kann von keinem anderen Benutzer mehr angefordert werden.

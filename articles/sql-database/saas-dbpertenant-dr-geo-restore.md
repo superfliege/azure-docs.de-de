@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/14/2019
-ms.openlocfilehash: 14c43fbc138d6d70b65f6afd1ef174488e066796
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c96f2dc2b44ea2118d9f0dd6c988017efcba5800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116774"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 
@@ -32,13 +32,13 @@ Die Geowiederherstellung ist die kostengünstigste Notfallwiederherstellungslös
 
 In diesem Tutorial werden sowohl der Wiederherstellungs- als auch der Rückführungsworkflow vorgestellt. Folgendes wird vermittelt:
 > [!div class="checklist"]
-
->* Datenbankinformationen und Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog synchronisieren.
->* Eine Spiegelimageumgebung in einer Wiederherstellungsregion einrichten, in der die Anwendung sowie die Server und Pools enthalten sind.   
->* Den Katalog und die Mandantendatenbanken mithilfe der Geowiederherstellung wiederherstellen.
->* Den Mandantenkatalog und die geänderten Mandantendatenbanken nach Behebung des Ausfalls mithilfe der Georeplikation zurückführen.
->* Den Katalog aktualisieren, nachdem jede Datenbank wiederhergestellt (oder zurückgeführt) wurde, um den aktuellen Speicherort der aktiven Kopie der Datenbank jedes Mandanten nachzuverfolgen.
->* Sicherstellen, dass sich die Anwendung und die Mandantendatenbank immer zusammen in derselben Azure-Region befinden, um die Wartezeit zu verringern. 
+> 
+> * Datenbankinformationen und Konfigurationsinformationen für den Pool für elastische Datenbanken im Mandantenkatalog synchronisieren.
+> * Eine Spiegelimageumgebung in einer Wiederherstellungsregion einrichten, in der die Anwendung sowie die Server und Pools enthalten sind.   
+> * Den Katalog und die Mandantendatenbanken mithilfe der Geowiederherstellung wiederherstellen.
+> * Den Mandantenkatalog und die geänderten Mandantendatenbanken nach Behebung des Ausfalls mithilfe der Georeplikation zurückführen.
+> * Den Katalog aktualisieren, nachdem jede Datenbank wiederhergestellt (oder zurückgeführt) wurde, um den aktuellen Speicherort der aktiven Kopie der Datenbank jedes Mandanten nachzuverfolgen.
+> * Sicherstellen, dass sich die Anwendung und die Mandantendatenbank immer zusammen in derselben Azure-Region befinden, um die Wartezeit zu verringern. 
  
 
 Bevor Sie mit diesem Tutorial beginnen, müssen Sie die folgenden Voraussetzungen erfüllen:
@@ -194,13 +194,13 @@ Solange der Anwendungsendpunkt in Traffic Manager deaktiviert ist, ist die Anwen
 
 * Aktualisieren Sie in Ihrem Webbrowser den Wingtip Tickets-Event Hub, nachdem die Katalogdatenbank wiederhergestellt wurde, aber bevor die Mandanten wieder online sind.
 
-    * Sie können in der Fußzeile sehen, dass der Name des Katalogservers jetzt das Suffix „-recovery“ aufweist und der Server sich in der Wiederherstellungsregion befindet.
+  * Sie können in der Fußzeile sehen, dass der Name des Katalogservers jetzt das Suffix „-recovery“ aufweist und der Server sich in der Wiederherstellungsregion befindet.
 
-    * Mandanten, die noch nicht wiederhergestellt wurden, sind als offline markiert und können nicht ausgewählt werden.   
+  * Mandanten, die noch nicht wiederhergestellt wurden, sind als offline markiert und können nicht ausgewählt werden.   
  
     ![Wiederherstellungsprozess](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Wenn Sie die Veranstaltungsseite eines Mandanten direkt öffnen, während der Mandant offline ist, wird auf der Seite eine Benachrichtigung angezeigt, dass der Mandant offline ist. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.
+  * Wenn Sie die Veranstaltungsseite eines Mandanten direkt öffnen, während der Mandant offline ist, wird auf der Seite eine Benachrichtigung angezeigt, dass der Mandant offline ist. Versuchen Sie beispielsweise, wenn Contoso Concert Hall offline ist, „http://events.wingtip-dpt.&lt;Benutzer&gt;.trafficmanager.net/contosoconcerthall“ zu öffnen.
 
     ![Wiederherstellungsprozess](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
@@ -245,13 +245,13 @@ Nach Abschluss des Wiederherstellungsprozesses sind die Anwendung und alle Manda
 
 4. Öffnen Sie die Wiederherstellungsressourcengruppe, und beachten Sie die folgenden Elemente:
 
-    * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix „-recovery“. Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
+   * Die Wiederherstellungsversionen des Katalog- und des tenants1-Servers mit dem Suffix „-recovery“. Die wiederhergestellten Katalog- und Mandantendatenbanken auf diesen Servern haben alle die Namen, die in der ursprünglichen Region verwendet wurden.
 
-    * Der SQL-Server „tenants2-dpt-&lt;Benutzer&gt;-recovery“. Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
+   * Der SQL-Server „tenants2-dpt-&lt;Benutzer&gt;-recovery“. Dieser Server wird dazu verwendet, neue Mandanten während des Ausfalls bereitzustellen.
 
-    * Der App Service namens „events-wingtip-dpt-&lt;Wiederherstellungsregion&gt;-&lt;Benutzer&gt;. Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App.
+   * Der App Service namens „events-wingtip-dpt-&lt;Wiederherstellungsregion&gt;-&lt;Benutzer&gt;. Dies ist die Wiederherstellungsinstanz der Veranstaltungen-App.
 
-    ![Contoso-Ressourcen in der Wiederherstellungsregion](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
+     ![Contoso-Ressourcen in der Wiederherstellungsregion](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
 5. Öffnen Sie den SQL-Server „tenants2-dpt-&lt;Benutzer&gt;-recovery“. Beachten Sie, dass der Server die Datenbank „hawthornhall“ und den Pool für elastische Datenbanken „Pool1“ enthält. Die Datenbank „hawthornhall“ ist im Pool für elastische Datenbanken „Pool1“ als elastische Datenbank konfiguriert.
 
@@ -367,12 +367,12 @@ Mandantendatenbanken können während einer Rückführung für einige Zeit über
 
 In diesem Tutorial haben Sie Folgendes gelernt:
 > [!div class="checklist"]
-
->* Verwenden des Mandantenkatalogs, um in regelmäßigen Abständen aktualisierte Konfigurationsinformationen zu speichern, sodass eine Spiegelimage-Wiederherstellungsumgebung in einer anderen Region erstellt werden kann
->* Wiederherstellen von Azure SQL-Datenbanken in der Wiederherstellungsregion mithilfe der Geowiederherstellung
->* Aktualisieren des Mandantenkatalogs entsprechend den Speicherorten der wiederhergestellten Mandantendatenbanken 
->* Verwenden eines DNS-Alias, um einer Anwendung eine durchgängige Verbindung mit dem Mandantenkatalog zu ermöglichen, ohne dass eine Neukonfiguration erforderlich ist
->* Verwenden der Georeplikation, um wiederhergestellte Datenbanken in ihre ursprüngliche Region zurückzuführen, nachdem ein Ausfall behoben wurde
+> 
+> * Verwenden des Mandantenkatalogs, um in regelmäßigen Abständen aktualisierte Konfigurationsinformationen zu speichern, sodass eine Spiegelimage-Wiederherstellungsumgebung in einer anderen Region erstellt werden kann
+> * Wiederherstellen von Azure SQL-Datenbanken in der Wiederherstellungsregion mithilfe der Geowiederherstellung
+> * Aktualisieren des Mandantenkatalogs entsprechend den Speicherorten der wiederhergestellten Mandantendatenbanken 
+> * Verwenden eines DNS-Alias, um einer Anwendung eine durchgängige Verbindung mit dem Mandantenkatalog zu ermöglichen, ohne dass eine Neukonfiguration erforderlich ist
+> * Verwenden der Georeplikation, um wiederhergestellte Datenbanken in ihre ursprüngliche Region zurückzuführen, nachdem ein Ausfall behoben wurde
 
 Führen Sie jetzt das Tutorial [Notfallwiederherstellung für eine mehrinstanzenfähige SaaS-Anwendung über Datenbankgeoreplikation](saas-dbpertenant-dr-geo-replication.md) aus, um zu erfahren, wie sich durch Verwenden der Georeplikation die Zeit deutlich verkürzen lässt, die zum Wiederherstellen einer umfangreichen mehrinstanzenfähigen Anwendung erforderlich ist.
 

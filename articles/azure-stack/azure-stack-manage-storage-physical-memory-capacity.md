@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 4a9c7221fbb549494e3ed112e2ab4e66c4b7dadd
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: cb5b64869a26133e1c08095a816c2d2854f85b94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55770634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103501"
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Verwalten der Kapazität des physischen Speichers für Azure Stack
 
@@ -39,11 +39,11 @@ Im folgenden Flussdiagramm ist der allgemeine Prozess zum Hinzufügen von Speich
 ## <a name="add-memory-to-an-existing-node"></a>Hinzufügen von Speicher zu einem vorhandenen Knoten
 Die folgenden Schritte enthalten einen allgemeinen Überblick über den Prozess zum Hinzufügen von Speicher. 
 
-> [!Warning]  
-Befolgen Sie diese Schritte nicht, ohne zuvor die vom OEM-Anbieter bereitgestellte Dokumentation zu Rate gezogen zu haben.
-
-> [!Warning]  
-Die gesamte Skalierungseinheit muss heruntergefahren werden, da ein rollierendes Upgrade für den Speicher nicht unterstützt wird.
+> [!Warning]
+> Befolgen Sie diese Schritte nicht, ohne zuvor die vom OEM-Anbieter bereitgestellte Dokumentation zu Rate gezogen zu haben.
+> 
+> [!Warning]
+> Die gesamte Skalierungseinheit muss heruntergefahren werden, da ein rollierendes Upgrade für den Speicher nicht unterstützt wird.
 
 1. Beenden Sie Azure Stack mit den Schritten, die im Artikel [Starten und Beenden von Azure Stack](azure-stack-start-and-stop.md) dokumentiert sind.
 2. Aktualisieren Sie den Speicher auf den einzelnen physischen Computern mithilfe der Dokumentation des Hardwareherstellers.

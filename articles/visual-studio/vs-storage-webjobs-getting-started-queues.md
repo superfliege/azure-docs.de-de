@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: 74aea3ad4c3dda8abc69275ad4d683fbcf485ccc
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f6f1a3a7f0a406e1dbb40f4bfc6a358da7ac68fa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53722905"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999540"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Erste Schritte mit Azure-Warteschlangenspeicher und verbundenen Visual Studio-Diensten (WebJob-Projekte)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -27,7 +27,7 @@ Dieser Artikel beschreibt die ersten Schritte bei der Verwendung von Azure Queue
 
 Dieser Artikel enthält C#-Codebeispiele, die zeigen, wie das Azure WebJobs-SDK (Version 1.x) mit dem Azure-Warteschlangenspeicherdienst verwendet wird.
 
-Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/queues/storage-dotnet-how-to-use-queues.md). Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](http://www.asp.net).
+Die Warteschlangenspeicherung in Azure ist ein Dienst zur Speicherung großer Anzahlen von Nachrichten, auf die von überall auf der Welt mit authentifizierten Anrufen über HTTP oder HTTPS zugegriffen werden kann. Eine einzelne Warteschlangennachricht kann bis zu 64 KB groß sein, und eine Warteschlange kann Millionen von Nachrichten enthalten. Deren Anzahl ist nur durch die Kapazität des Speicherkontos begrenzt. Weitere Informationen finden Sie unter [Erste Schritte mit Azure Queue Storage mit .NET](../storage/queues/storage-dotnet-how-to-use-queues.md). Weitere Informationen zu ASP.NET finden Sie unter [ASP.NET](https://www.asp.net).
 
 ## <a name="how-to-trigger-a-function-when-a-queue-message-is-received"></a>Auslösen einer Funktion, wenn eine Warteschlangennachricht empfangen wird
 Zum Schreiben einer Funktion, die das WebJobs-SDK aufruft, wenn eine Warteschlangennachricht empfangen wird, verwenden Sie das **QueueTrigger** -Attribut. Der Attributkonstruktor verwendet einen Zeichenfolgenparameter, der den Namen der Warteschlange angibt. Informationen zum dynamischen Festlegen des Warteschlangennamens finden Sie unter [Gewusst wie: Festlegen von Konfigurationsoptionen](#how-to-set-configuration-options).
@@ -44,7 +44,7 @@ public static void ProcessQueueMessage([QueueTrigger("logqueue")] string logMess
 
 Neben **string** kann der Parameter Folgendes sein: ein Bytearray, ein **CloudQueueMessage**-Objekt oder ein POCO-Objekt, das Sie definieren.
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Im folgenden Beispiel enthält die Warteschlangenmeldung JSON-Code für ein **BlobInformation**-Objekt, das eine Eigenschaft **BlobName** enthält. Das SDK deserialisiert das Objekt automatisch.
 
 ```csharp
@@ -54,7 +54,7 @@ public static void WriteLogPOCO([QueueTrigger("logqueue")] BlobInformation blobI
 }
 ```
 
-Das SDK verwendet das [Newtonsoft.Json NuGet-Paket](http://www.nuget.org/packages/Newtonsoft.Json) zum Serialisieren und Deserialisieren von Nachrichten. Wenn Sie Warteschlangennachrichten in einem Programm erstellen, das nicht das WebJobs-SDK verwendet, können Sie Code wie im folgenden Beispiel zum Erstellen einer POCO-Warteschlangennachricht schreiben, die das SDK analysieren kann.
+Das SDK verwendet das [Newtonsoft.Json NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json) zum Serialisieren und Deserialisieren von Nachrichten. Wenn Sie Warteschlangennachrichten in einem Programm erstellen, das nicht das WebJobs-SDK verwendet, können Sie Code wie im folgenden Beispiel zum Erstellen einer POCO-Warteschlangennachricht schreiben, die das SDK analysieren kann.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "log.txt" };
@@ -72,7 +72,7 @@ public async static Task ProcessQueueMessageAsync([QueueTrigger("logqueue")] str
 }
 ```
 
-Async-Funktion können, wie in der folgenden Abbildung dargestellt, über ein [Abbruchtoken](http://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)verfügen, das ein Blob kopiert. (Eine Erläuterung des Platzhalters **queueTrigger** finden Sie im Abschnitt [Blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) .)
+Async-Funktion können, wie in der folgenden Abbildung dargestellt, über ein [Abbruchtoken](https://www.asp.net/mvc/overview/performance/using-asynchronous-methods-in-aspnet-mvc-4#CancelToken)verfügen, das ein Blob kopiert. (Eine Erläuterung des Platzhalters **queueTrigger** finden Sie im Abschnitt [Blobs](#how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message) .)
 
 ```csharp
 public async static Task ProcessQueueMessageAsyncCancellationToken(
@@ -201,7 +201,7 @@ public static void CreateQueueMessage(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Zum Erstellen einer Warteschlangennachricht, die ein POCO-Objekt anstelle einer Zeichenfolge enthält, übergeben Sie den POCO-Typ als Ausgabeparameter an den **Queue** -Attributkonstruktor.
 
 ```csharp
@@ -296,7 +296,7 @@ public static void DeleteBlob(
 }
 ```
 
-### <a name="poco-plain-old-clr-objecthttpenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](http://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
+### <a name="poco-plain-old-clr-objecthttpsenwikipediaorgwikiplainoldclrobject-queue-messages"></a>POCO-Warteschlangennachrichten [(Plain Old CLR Object)](https://en.wikipedia.org/wiki/Plain_Old_CLR_Object)
 Für ein POCO-Objekt, das als JSON-Code in der Warteschlangenmeldung gespeichert wird, können Sie Platzhalter verwenden, mit denen Eigenschaften des Parameters **blobPath** des **Queue**-Attributs benannt werden. Sie können auch Metadateneigenschaftennamen der Warteschlange als Platzhalter verwenden. Siehe [Abrufen der Warteschlange oder von Metadaten der Warteschlangennachricht](#get-queue-or-queue-message-metadata).
 
 Das folgende Beispiel kopiert ein Blob in ein neues Blob mit einer anderen Erweiterung. Die Warteschlangennachricht ist ein **BlobInformation**-Objekt, das die Eigenschaften **BlobName** und **BlobNameWithoutExtension** enthält. Die Eigenschaftsnamen dienen als Platzhalter im Blobpfad für die **Blob** -Attribute.
@@ -311,7 +311,7 @@ public static void CopyBlobPOCO(
 }
 ```
 
-Das SDK verwendet das [Newtonsoft.Json NuGet-Paket](http://www.nuget.org/packages/Newtonsoft.Json) zum Serialisieren und Deserialisieren von Nachrichten. Wenn Sie Warteschlangennachrichten in einem Programm erstellen, das nicht das WebJobs-SDK verwendet, können Sie Code wie im folgenden Beispiel zum Erstellen einer POCO-Warteschlangennachricht schreiben, die das SDK analysieren kann.
+Das SDK verwendet das [Newtonsoft.Json NuGet-Paket](https://www.nuget.org/packages/Newtonsoft.Json) zum Serialisieren und Deserialisieren von Nachrichten. Wenn Sie Warteschlangennachrichten in einem Programm erstellen, das nicht das WebJobs-SDK verwendet, können Sie Code wie im folgenden Beispiel zum Erstellen einer POCO-Warteschlangennachricht schreiben, die das SDK analysieren kann.
 
 ```csharp
 BlobInformation blobInfo = new BlobInformation() { BlobName = "boot.log", BlobNameWithoutExtension = "boot" };

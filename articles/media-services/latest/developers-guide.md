@@ -16,12 +16,12 @@ ms.workload: media
 ms.date: 02/22/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 97123ec795353073b912bd83e0abb45e23549a75
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: b9c89b6cb6dbc6cb217be671eb0e52c0416811ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56749799"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889844"
 ---
 # <a name="start-developing-with-media-services-v3-api-using-sdkstools"></a>Einstieg in die Entwicklung mit der Media Services v3-API und mit SDKs/Tools
 
@@ -95,7 +95,7 @@ Machen Sie sich mit der [.NET-Referenzdokumentation](https://aka.ms/ams-v3-dotne
 - [Verwenden der dynamischen DRM-Verschlüsselung und des Lizenzbereitstellungsdiensts](protect-with-drm.md)
 - [Abrufen eines Signaturschlüssels aus der vorhandenen Richtlinie](get-content-key-policy-dotnet-howto.md)
 - [Erstellen von Filtern mit dem Media Services .NET SDK](filters-dynamic-manifest-dotnet-howto.md)
-- [Erweiterte Video-on-Demand-Beispiele von Azure Functions v2 mit Media Services v3](http://aka.ms/ams3functions)
+- [Erweiterte Video-on-Demand-Beispiele von Azure Functions v2 mit Media Services v3](https://aka.ms/ams3functions)
 
 ## <a name="java"></a>Java
 

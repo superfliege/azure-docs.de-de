@@ -3,17 +3,16 @@ title: 'Azure Kubernetes Service (AKS): Kontingente und Verfügbarkeit in den Re
 description: Hier finden Sie Informationen zu den Standardkontingenten und zur Verfügbarkeit von Azure Kubernetes Service (AKS) in den Regionen.
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: overview
-ms.date: 08/01/2018
+ms.topic: conceptual
+ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: 9fbc769ef428c41f0e133ec1e139ba9900025dc4
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c8a2c0cac963fcc0622cff547e85593a13aa076a
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56879355"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57243830"
 ---
 # <a name="quotas-and-region-availability-for-azure-kubernetes-service-aks"></a>Kontingente und Verfügbarkeit von Azure Kubernetes Service (AKS) in den Regionen
 
@@ -32,12 +31,14 @@ Alle anderen Netzwerk-, Compute- und Speichereinschränkungen gelten für die be
 Azure Kubernetes Service (AKS) ist in den folgenden Regionen verfügbar:
 
 - Australien (Osten)
+- Australien, Südosten
 - Kanada, Mitte
 - Kanada, Osten
 - USA (Mitte)
 - Asien, Osten
 - USA (Ost)
 - USA (Ost 2)
+- Frankreich, Mitte
 - Japan, Osten
 - Nordeuropa
 - Asien, Südosten

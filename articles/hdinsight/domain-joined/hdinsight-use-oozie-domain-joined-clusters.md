@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive,seodec18
 ms.topic: conceptual
 ms.date: 02/15/2019
-ms.openlocfilehash: b0ec8bf52b0b41aef4ea4cc2bfb6ed8fdcd170ec
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 15cdc78559a8f299e2bf0f357bbb7c0664881712
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343288"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116893"
 ---
 # <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Ausführen von Apache Oozie in HDInsight Hadoop-Clustern mit Enterprise-Sicherheitspaket
 
@@ -38,9 +38,9 @@ Sie können Oozie auch dazu verwenden, bestimmte Aufträge für ein System zu pl
 Weitere Informationen zu Secure Shell (SSH) finden Sie unter [Herstellen einer Verbindung mit HDInsight (Hadoop) per SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
 1. Stellen Sie mithilfe von SSH eine Verbindung mit dem HDInsight-Cluster her:  
- ```bash
-ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
- ```
+   ```bash
+   ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
+   ```
 
 2. Überprüfen Sie mit dem Befehl `klist`, ob die Kerberos-Authentifizierung erfolgreich war. Falls dies nicht der Fall ist, verwenden Sie `kinit`, um die Kerberos-Authentifizierung einzuleiten.
 
@@ -54,23 +54,25 @@ ssh [DomainUserName]@<clustername>-ssh.azurehdinsight.net
 ## <a name="define-the-workflow"></a>Definieren des Workflows
 Definitionen von Oozie-Workflows werden in der Apache-Prozessdefinitionssprache (Hadoop Process Definition Language, hPDL) geschrieben. hPDL ist eine XML-Prozessdefinitionssprache. Führen Sie zum Definieren des Workflows die folgenden Schritte aus:
 
-1.  Richten Sie den Arbeitsbereich eines Domänenbenutzers ein:
- ```bash
-hdfs dfs -mkdir /user/<DomainUser>
-cd /home/<DomainUserPath>
-cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
-tar -xvf oozie-examples.tar.gz
-hdfs dfs -put examples /user/<DomainUser>/
- ```
-Ersetzen Sie `DomainUser` durch den Namen des Domänenbenutzers. Ersetzen Sie `DomainUserPath` durch den Pfad des Stammverzeichnisses für den Domänenbenutzer. Ersetzen Sie `ClusterVersion` durch die Hortonworks Data Platform-Version (HDP) Ihres Clusters.
+1. Richten Sie den Arbeitsbereich eines Domänenbenutzers ein:
+   ```bash
+   hdfs dfs -mkdir /user/<DomainUser>
+   cd /home/<DomainUserPath>
+   cp /usr/hdp/<ClusterVersion>/oozie/doc/oozie-examples.tar.gz .
+   tar -xvf oozie-examples.tar.gz
+   hdfs dfs -put examples /user/<DomainUser>/
+   ```
+   Ersetzen Sie `DomainUser` durch den Namen des Domänenbenutzers. 
+   Ersetzen Sie `DomainUserPath` durch den Pfad des Stammverzeichnisses für den Domänenbenutzer. 
+   Ersetzen Sie `ClusterVersion` durch die Hortonworks Data Platform-Version (HDP) Ihres Clusters.
 
-2.  Verwenden Sie die folgende Anweisung zum Erstellen und Bearbeiten einer neuen Datei:
- ```bash
-nano workflow.xml
- ```
+2. Verwenden Sie die folgende Anweisung zum Erstellen und Bearbeiten einer neuen Datei:
+   ```bash
+   nano workflow.xml
+   ```
 
 3. Nachdem der Nano-Editor geöffnet wurde, verwenden Sie den folgenden XML-Code als Inhalt der Datei:
- ```xml
+   ```xml
     <?xml version="1.0" encoding="UTF-8"?>
     <workflow-app xmlns="uri:oozie:workflow:0.4" name="map-reduce-wf">
        <credentials>
@@ -165,25 +167,25 @@ nano workflow.xml
        </kill>
        <end name="end" />
     </workflow-app>
- ```
+   ```
 4. Ersetzen Sie `clustername` durch den Namen des Clusters. 
 
 5. Drücken Sie zum Speichern der Datei STRG+X. Geben Sie `Y` ein. Drücken Sie anschließend die **EINGABETASTE**.
 
     Der Workflow ist in zwei Teile gegliedert:
-    *   **Anmeldeinformationsabschnitt.** In diesen Abschnitt werden die Anmeldeinformationen eingegeben, die für die Authentifizierung von Oozie-Aktionen verwendet werden:
+   * **Anmeldeinformationsabschnitt.** In diesen Abschnitt werden die Anmeldeinformationen eingegeben, die für die Authentifizierung von Oozie-Aktionen verwendet werden:
 
-       In diesem Beispiel wird die Authentifizierung für Hive-Aktionen verwendet. Weitere Informationen finden Sie unter [Action Authentication](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html) (Aktionsauthentifizierung).
+     In diesem Beispiel wird die Authentifizierung für Hive-Aktionen verwendet. Weitere Informationen finden Sie unter [Action Authentication](https://oozie.apache.org/docs/4.2.0/DG_ActionAuthentication.html) (Aktionsauthentifizierung).
 
-       Der Anmeldeinformationsdienst ermöglicht es Oozie-Aktionen, für den Zugriff auf Hadoop-Dienste die Identität des Benutzers anzunehmen.
+     Der Anmeldeinformationsdienst ermöglicht es Oozie-Aktionen, für den Zugriff auf Hadoop-Dienste die Identität des Benutzers anzunehmen.
 
-    *   **Aktionsabschnitt.** Dieser Abschnitt enthält drei Aktionen – „map-reduce“, die Hive-Server 2-Aktion und die Hive-Server 1-Aktion:
+   * **Aktionsabschnitt.** Dieser Abschnitt enthält drei Aktionen – „map-reduce“, die Hive-Server 2-Aktion und die Hive-Server 1-Aktion:
 
-      - Die Aktion „map-reduce“ führt ein Beispiel aus einem Oozie-Paket für „map-reduce“ aus, das die aggregierte Wortanzahl ausgibt.
+     - Die Aktion „map-reduce“ führt ein Beispiel aus einem Oozie-Paket für „map-reduce“ aus, das die aggregierte Wortanzahl ausgibt.
 
-       - Die Hive-Server 2- und Hive-Server 1-Aktionen führen eine Abfrage in einer mit HDInsight bereitgestellten Hive-Beispieltabelle aus.
+     - Die Hive-Server 2- und Hive-Server 1-Aktionen führen eine Abfrage in einer mit HDInsight bereitgestellten Hive-Beispieltabelle aus.
 
-        Die Hive-Aktionen verwenden die im Anmeldeinformationsabschnitt definierten Anmeldeinformationen für die Authentifizierung anhand des Schlüsselworts `cred` im Aktionselement.
+     Die Hive-Aktionen verwenden die im Anmeldeinformationsabschnitt definierten Anmeldeinformationen für die Authentifizierung anhand des Schlüsselworts `cred` im Aktionselement.
 
 6. Kopieren Sie mit folgendem Befehl die Datei `workflow.xml` nach `/user/<domainuser>/examples/apps/map-reduce/workflow.xml`:
      ```bash

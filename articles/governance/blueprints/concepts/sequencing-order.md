@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: bd12aabf0ca8f82261e6b3c677d7306ee46c4171
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: b3adec799da582dc30ecd716a530ca6032f5c2e4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308616"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990563"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>Verstehen der Bereitstellungsreihenfolge in Azure Blueprint
 
@@ -114,6 +114,6 @@ Wird eine Artefaktabhängigkeit deklariert, die keine Änderung der Standardreih
 
 - Erfahren Sie mehr über den [Lebenszyklus von Blaupausen](lifecycle.md).
 - Machen Sie sich mit der Verwendung [statischer und dynamischer Parameter](parameters.md) vertraut.
-- Erfahren Sie, wie Sie[Ressourcen in Blaupausen sperren](resource-locking.md).
+- Erfahren Sie, wie Sie [Ressourcen in Blaupausen sperren](resource-locking.md) können.
 - Lernen Sie, wie Sie [vorhandene Zuweisungen aktualisieren](../how-to/update-existing-assignments.md).
 - Beheben Sie Probleme bei der Blaupausenzuweisung mithilfe des [allgemeinen Leitfadens zur Problembehandlung](../troubleshoot/general.md).

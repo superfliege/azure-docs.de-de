@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 0d03a4d4-e8a8-4c81-aed5-bfd2a28c7f0c
 ms.topic: article
 ms.date: 05/31/2016
-ms.openlocfilehash: ec6f98ca0f0260a0d7bed16538f557931cd2e33e
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92f522c72f69218e55b1ee4cfff74511a30288b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080009"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904540"
 ---
 # <a name="schema-updates-for-azure-logic-apps---august-1-2015-preview"></a>Schemaaktualisierungen für Azure Logic Apps – 1. August 2015 (Vorschau)
 
@@ -352,7 +352,7 @@ Deshalb erhalten Sie mithilfe des vorherigen `repeat`-Beispiels diese Ausgaben:
    },
    "outputs": {
       "headers": { },
-      "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"http://schemas.live.com/Web/\">...</html>"
+      "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"https://schemas.live.com/Web/\">...</html>"
    },
    "status": "Succeeded"
 } ]
@@ -369,7 +369,7 @@ Jetzt erhalten Sie stattdessen diese Ausgaben:
       },
       "outputs": {
          "headers": { },
-         "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"http://schemas.live.com/Web/\">...</html>"
+         "body": "<!DOCTYPE html><html lang=\"en\" xml:lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\" xmlns:Web=\"https://schemas.live.com/Web/\">...</html>"
       },
       "status": "Succeeded"
 } ]
@@ -384,7 +384,7 @@ Bisher mussten Sie zum Aufrufen des `body` der Aktion beim Verweisen auf diese A
       "repeat": "@outputs('pingBing').repeatItems",
       "inputs": {
          "method": "POST",
-         "uri": "http://www.example.com",
+         "uri": "https://www.example.com",
          "body": "@repeatItem().outputs.body"
       }
    }
@@ -400,7 +400,7 @@ Stattdessen können Sie jetzt diese Version verwenden:
       "foreach": "@outputs('pingBing')",
       "inputs": {
          "method": "POST",
-         "uri": "http://www.example.com",
+         "uri": "https://www.example.com",
          "body": "@item().outputs.body"
       }
    }
@@ -461,4 +461,4 @@ Für künftige Inhaltstypen wird die Funktion `parse()` in `json()` umbenannt.
 
 ## <a name="enterprise-integration-apis"></a>APIs für die Unternehmensintegration
 
-Verwaltete Versionen für APIs für die Unternehmensintegration, wie AS2, werden von diesem Schema noch nicht unterstützt. Sie können jedoch die vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Weitere Informationen finden Sie in der [Integrationsroadmap](http://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) unter „Verwenden der bereits bereitgestellten API-Apps“. 
+Verwaltete Versionen für APIs für die Unternehmensintegration, wie AS2, werden von diesem Schema noch nicht unterstützt. Sie können jedoch die vorhandenen bereitgestellten BizTalk-APIs über die HTTP-Aktion verwenden. Weitere Informationen finden Sie in der [Integrationsroadmap](https://www.zdnet.com/article/microsoft-outlines-its-cloud-and-server-integration-roadmap-for-2016/) unter „Verwenden der bereits bereitgestellten API-Apps“. 

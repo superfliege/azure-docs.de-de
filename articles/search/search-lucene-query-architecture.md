@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
-ms.openlocfilehash: dedfc7db6aef6d55fd50c94a217bdc489b9615f3
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633860"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537228"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Funktionsweise der Volltextsuche in Azure Search
 
@@ -55,14 +55,14 @@ Das folgende Beispiel ist eine Suchanfrage, die Sie per [REST-API](https://docs.
 
 ~~~~
 POST /indexes/hotels/docs/search?api-version=2017-11-11 
-{  
-    "search": "Spacious, air-condition* +\"Ocean view\"",  
-    "searchFields": "description, title",  
+{
+    "search": "Spacious, air-condition* +\"Ocean view\"",
+    "searchFields": "description, title",
     "searchMode": "any",
-    "filter": "price ge 60 and price lt 300",  
+    "filter": "price ge 60 and price lt 300",
     "orderby": "geo.distance(location, geography'POINT(-159.476235 22.227659)')", 
     "queryType": "full" 
- } 
+}
 ~~~~
 
 Für diese Anforderung führt das Suchmodul die folgenden Schritte aus:
@@ -117,7 +117,7 @@ Standardmäßig (`searchMode=any`) wird vom Suchmodul die weniger eingeschränkt
 Angenommen, wir legen jetzt `searchMode=all` fest. In diesem Fall wird die Leerstelle als Vorgang vom Typ „and“ interpretiert. Jeder der restlichen Begriffe muss im Dokument vorhanden sein, damit sich dafür eine Übereinstimmung ergibt. Die sich ergebende Beispielabfrage wird dann wie folgt interpretiert: 
 
 ~~~~
-+Spacious,+air-condition*+"Ocean view"  
++Spacious,+air-condition*+"Ocean view"
 ~~~~
 
 Eine geänderte Abfragestruktur für diese Abfrage, bei der ein übereinstimmendes Dokument der Schnittpunkt aller drei Unterabfragen ist, würde wie folgt lauten: 
@@ -155,7 +155,7 @@ Wenn die Standardanalyse den Ausdruck verarbeitet, werden „ocean view“ und �
 Das Verhalten einer Analyse kann mit der [Analyse-API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) getestet werden. Geben Sie den Text ein, den Sie analysieren möchten, um zu ermitteln, welche Ausdrücke von der jeweiligen Analyse generiert werden. Sie können beispielsweise die folgende Anfrage ausgeben, um zu ermitteln, wie die Standardanalyse den Text „air-condition“ verarbeitet:
 
 ~~~~
-{ 
+{
     "text": "air-condition",
     "analyzer": "standard"
 }
@@ -164,7 +164,7 @@ Das Verhalten einer Analyse kann mit der [Analyse-API](https://docs.microsoft.co
 Die Standardanalyse teilt den Eingabetext in die folgenden beiden Token auf und fügt Attribute wie Start- und Endoffset (zur Hervorhebung von Treffern) und die Position (für den Wortgruppenabgleich) hinzu:
 
 ~~~~
-{  
+{
   "tokens": [
     {
       "token": "air",
@@ -195,11 +195,11 @@ Die lexikalische Analyse gilt nur für Abfragetypen, für die vollständige Ausd
 Der Dokumentabruf bezieht sich auf das Suchen nach Dokumenten mit übereinstimmenden Ausdrücken im Index. Diese Phase lässt sich am besten anhand eines Beispiels beschreiben. Wir beginnen mit einem Hotelindex mit dem folgenden einfachen Schema: 
 
 ~~~~
-{   
-    "name": "hotels",     
-    "fields": [     
-        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },     
-        { "name": "title", "type": "Edm.String", "searchable": true },     
+{
+    "name": "hotels",
+    "fields": [
+        { "name": "id", "type": "Edm.String", "key": true, "searchable": false },
+        { "name": "title", "type": "Edm.String", "searchable": true },
         { "name": "description", "type": "Edm.String", "searchable": true }
     ] 
 } 
@@ -208,28 +208,28 @@ Der Dokumentabruf bezieht sich auf das Suchen nach Dokumenten mit übereinstimme
 Wir nehmen weiter an, dass dieser Index die folgenden vier Dokumente enthält: 
 
 ~~~~
-{ 
+{
     "value": [
-        {         
-            "id": "1",         
-            "title": "Hotel Atman",         
-            "description": "Spacious rooms, ocean view, walking distance to the beach."   
-        },       
-        {         
-            "id": "2",         
-            "title": "Beach Resort",        
-            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."     
-        },       
-        {         
-            "id": "3",         
-            "title": "Playa Hotel",         
+        {
+            "id": "1",
+            "title": "Hotel Atman",
+            "description": "Spacious rooms, ocean view, walking distance to the beach."
+        },
+        {
+            "id": "2",
+            "title": "Beach Resort",
+            "description": "Located on the north shore of the island of Kauaʻi. Ocean view."
+        },
+        {
+            "id": "3",
+            "title": "Playa Hotel",
             "description": "Comfortable, air-conditioned rooms with ocean view."
-        },       
-        {         
-            "id": "4",         
-            "title": "Ocean Retreat",         
+        },
+        {
+            "id": "4",
+            "title": "Ocean Retreat",
             "description": "Quiet and secluded"
-        }    
+        }
     ]
 }
 ~~~~
@@ -327,7 +327,7 @@ Für die drei Dokumente, für die sich Übereinstimmungen mit unserer Beispielab
 search=Spacious, air-condition* +"Ocean view"  
 ~~~~
 ~~~~
-{  
+{
   "value": [
     {
       "@search.score": 0.25610128,

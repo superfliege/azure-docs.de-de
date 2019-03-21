@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e49cffc5ba08d400c733ef7c211132c4909f9ef4
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 32962e6d40103c23a0ec7fd1116aec8820f513bd
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343560"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57780285"
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>Erstellen und Verwalten von Richtlinien zur Konformitätserzwingung
 
@@ -87,32 +87,32 @@ Sie haben eine integrierte Richtliniendefinition zugewiesen und können nun weit
       - Richtlinienregeln/-bedingungen (in unserem Fall: VM-SKU-Größe gleich G-Serie)
       - Wirkung der Richtlinie (in unserem Fall: **deny**, also „Ablehnen“)
 
-    Der JSON-Code sollte wie folgt aussehen. Fügen Sie den überarbeiteten Code in das Azure-Portal ein.
+   Der JSON-Code sollte wie folgt aussehen. Fügen Sie den überarbeiteten Code in das Azure-Portal ein.
 
-    ```json
-    {
-        "policyRule": {
-            "if": {
-                "allOf": [{
-                        "field": "type",
-                        "equals": "Microsoft.Compute/virtualMachines"
-                    },
-                    {
-                        "field": "Microsoft.Compute/virtualMachines/sku.name",
-                        "like": "Standard_G*"
-                    }
-                ]
-            },
-            "then": {
-                "effect": "deny"
-            }
-        }
-    }
-    ```
+   ```json
+   {
+       "policyRule": {
+           "if": {
+               "allOf": [{
+                       "field": "type",
+                       "equals": "Microsoft.Compute/virtualMachines"
+                   },
+                   {
+                       "field": "Microsoft.Compute/virtualMachines/sku.name",
+                       "like": "Standard_G*"
+                   }
+               ]
+           },
+           "then": {
+               "effect": "deny"
+           }
+       }
+   }
+   ```
 
-    Die *field*-Eigenschaft in der Richtlinienregel muss einen der folgenden Werte aufweisen: „Name“, „Type“, „Location“, „Tags“ oder einen Alias. Ein Beispiel für einen Alias wäre `"Microsoft.Compute/VirtualMachines/Size"`.
+   Die *field*-Eigenschaft in der Richtlinienregel muss einen der folgenden Werte aufweisen: „Name“, „Type“, „Location“, „Tags“ oder einen Alias. Ein Beispiel für einen Alias wäre `"Microsoft.Compute/VirtualMachines/Size"`.
 
-    Weitere Beispiele für Azure-Richtlinien finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
+   Weitere Beispiele für Azure-Richtlinien finden Sie unter [Azure Policy-Beispiele](../samples/index.md).
 
 1. Wählen Sie **Speichern** aus.
 

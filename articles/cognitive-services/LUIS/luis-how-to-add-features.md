@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/16/2019
 ms.author: diberry
-ms.openlocfilehash: f3376b8077302eb6bd9a96710f92d692b641cac4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0723c3730ca0ae6325d828fbb5f41698cb807dd3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866779"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56874884"
 ---
 # <a name="use-phrase-lists-to-boost-signal-of-word-list"></a>Verwenden von Begriffslisten, um das Signal von Wortlisten zu verstärken
 
@@ -44,7 +44,7 @@ LUIS ermöglicht bis zu 10 Begriffslisten pro App.
 
 5. Klicken Sie auf **Diese Werte sind austauschbar**, wenn die hinzugefügten Begriffslistenwerte Alternativen sind, die austauschbar verwendet werden können.
 
-    ![Begriffsliste – vorgeschlagene Werte – Aktivieren des Kontrollkästchens „Austauschbar“ ](./media/luis-add-features/interchangeable.png)
+    ![Begriffsliste – vorgeschlagene Werte – Aktivieren des Kontrollkästchens „Austauschbar“](./media/luis-add-features/interchangeable.png)
 
 6. Klicken Sie auf **Speichern**. Die Begriffsliste „Cities“ wird der Seite **Begriffslisten** hinzugefügt.
 

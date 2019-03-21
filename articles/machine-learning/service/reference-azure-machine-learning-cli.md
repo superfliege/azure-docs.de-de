@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: c860aca538fcb2fbcff65aebecf062c4c428c84c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 4b7cd15b1746bac6f61ef46108ade6cf1fb3b7ff
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894647"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>Verwenden der CLI-Erweiterung für Azure Machine Learning Service
 
@@ -43,7 +43,7 @@ Die CLI ist kein Ersatz für das Azure Machine Learning SDK. Sie stellt ein erg�
 ## <a name="prerequisites"></a>Voraussetzungen
 
 
-* Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+* Für die Verwendung der CLI benötigen Sie ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie heute die [kostenlose oder kostenpflichtige Version des Azure Machine Learning Service](https://aka.ms/AMLFree) aus.
 
 * Die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
 
@@ -91,7 +91,7 @@ Die folgenden Befehle veranschaulichen, wie Sie mit der CLI Ressourcen verwalten
     az configure --defaults aml_workspace=myworkspace group=myresourcegroup
     ```
     
-* Anfügen eines AKS-Clusters
++ Anfügen eines AKS-Clusters
 
     ```azurecli-interactive
     az ml computetarget attach aks -n myaks -i myaksresourceid -g myrg -w myworkspace
@@ -107,7 +107,7 @@ Die folgenden Befehle veranschaulichen, wie Sie die CLI zum Arbeiten mit Experim
     az ml project attach --experiment-name myhistory
     ```
 
-* Starten Sie eine Ausführung Ihres Experiments. Geben Sie bei Verwendung dieses Befehls den Namen der runconfig-Datei an, die die Laufzeitkonfiguration enthält. Das Computeziel verwendet die Laufzeitkonfiguration, um die Trainingsumgebung für das Modell zu erstellen. In diesem Beispiel wird die Laufzeitkonfiguration aus der Datei `./aml_config/myrunconfig.runconfig` geladen.
+* Starten Sie eine Ausführung Ihres Experiments. Geben Sie bei Verwendung dieses Befehls den Namen der runconfig-Datei an, die die Laufzeitkonfiguration enthält. Das Computeziel verwendet die Ausführungskonfiguration, um die Trainingsumgebung für das Modell zu erstellen. In diesem Beispiel wird die Ausführungskonfiguration aus der Datei `./aml_config/myrunconfig.runconfig` geladen.
 
     ```azurecli-interactive
     az ml run submit -c myrunconfig train.py

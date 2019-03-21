@@ -5,20 +5,19 @@ services: virtual-machines-linux
 author: MashaMSFT
 manager: craigg
 ms.date: 12/5/2018
-ms.topic: hero-article
+ms.topic: conceptual
 tags: azure-service-management
 ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
-ms.technology: database-engine
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d6a82414974c00d5fa2a7cfe5c1dd00ceaeb3bfa
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 468db9d62a98e079fbe6954843e23a518eaabd0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011719"
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Bereitstellen eines virtuellen SQL Server-Computers über das Azure-Portal
 
@@ -77,23 +76,23 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Geben Sie im Feld **Name des virtuellen Computers** einen Namen für die neue Linux-VM ein.
 1. Geben Sie dann die folgenden Werte ein, oder wählen Sie sie aus:
-    * **Region**: Wählen Sie die für Sie geeignete Azure-Region aus.
-    * **Verfügbarkeitsoptionen**: Wählen Sie die Verfügbarkeits- und Redundanzoption aus, die für Ihre Apps und Daten am besten geeignet ist.
-    * **Größe ändern**: Wählen Sie diese Option aus, um eine VM-Größe auszuwählen, und klicken Sie anschließend auf **Auswählen**. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
+   * **Region**: Wählen Sie die für Sie geeignete Azure-Region aus.
+   * **Verfügbarkeitsoptionen**: Wählen Sie die Verfügbarkeits- und Redundanzoption aus, die für Ihre Apps und Daten am besten geeignet ist.
+   * **Größe ändern**: Wählen Sie diese Option aus, um eine VM-Größe auszuwählen, und klicken Sie anschließend auf **Auswählen**. Weitere Informationen zu VM-Größen finden Sie unter [Größen für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes).
 
-    ![Auswählen einer VM-Größe](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
+     ![Auswählen einer VM-Größe](./media/provision-sql-server-linux-virtual-machine/vmsizes.png)
 
    > [!TIP]
    > Verwenden Sie für Entwicklungsaufgaben und Funktionstests mindestens die VM-Größe **DS2**. Für Leistungstests sollten Sie mindestens **DS13** verwenden.
 
-    * **Authentifizierungstyp:** Wählen Sie **Öffentlicher SSH-Schlüssel** aus.
+   * **Authentifizierungstyp:** Wählen Sie **Öffentlicher SSH-Schlüssel** aus.
 
-    > [!Note]
-    > Für die Authentifizierung können Sie einen öffentlichen SSH-Schlüssel oder ein Kennwort verwenden. SSH ist sicherer. Wie Sie einen SSH-Schlüssel generieren, erfahren Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
+     > [!Note]
+     > Für die Authentifizierung können Sie einen öffentlichen SSH-Schlüssel oder ein Kennwort verwenden. SSH ist sicherer. Wie Sie einen SSH-Schlüssel generieren, erfahren Sie unter [Erstellen und Verwenden eines SSH-Schlüsselpaars (öffentlich und privat) für virtuelle Linux-Computer in Azure](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys).
 
-    * **Benutzername**: Geben Sie den Administratornamen für die VM ein.
-    * **Öffentlicher SSH-Schlüssel**: Geben Sie Ihren öffentlichen RSA-Schlüssel ein.
-    * **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus, und wählen Sie dann in der Liste **Öffentliche Eingangsports hinzufügen** den Port **SSH (22)** aus. Dieser Schritt ist in diesem Schnellstart notwendig, um eine Verbindung herzustellen und die SQL Server-Konfiguration durchzuführen. Wenn Sie eine Remoteverbindung mit SQL Server herstellen möchten, aktivieren Sie auch **MS SQL (1433)**, um Port 1433 für Verbindungen über das Internet zu öffnen.
+   * **Benutzername**: Geben Sie den Administratornamen für die VM ein.
+   * **Öffentlicher SSH-Schlüssel**: Geben Sie Ihren öffentlichen RSA-Schlüssel ein.
+   * **Öffentliche Eingangsports**: Wählen Sie **Ausgewählte Ports zulassen** aus, und wählen Sie dann in der Liste **Öffentliche Eingangsports hinzufügen** den Port **SSH (22)** aus. Dieser Schritt ist in diesem Schnellstart notwendig, um eine Verbindung herzustellen und die SQL Server-Konfiguration durchzuführen. Wenn Sie eine Remoteverbindung mit SQL Server herstellen möchten, aktivieren Sie auch **MS SQL (1433)**, um Port 1433 für Verbindungen über das Internet zu öffnen.
 
    ![Eingehende Ports](./media/provision-sql-server-linux-virtual-machine/port-settings.png)
 
@@ -121,7 +120,7 @@ Die IP-Adresse Ihres virtuellen Computers finden Sie im Azure-Portal.
 
 Wenn Sie mit Windows arbeiten und nicht über eine BASH-Shell verfügen, installieren Sie einen SSH-Client (beispielsweise PuTTY).
 
-1. [Laden Sie PuTTY herunter, und installieren Sie es.](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
+1. [Laden Sie PuTTY herunter, und installieren Sie es.](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
 
 1. Führen Sie PuTTY aus.
 

@@ -5,8 +5,6 @@ services: traffic-manager
 documentationcenter: ''
 author: liumichelle
 manager: dkays
-editor: ''
-ms.assetid: f89be3be-a16f-4d47-bcae-db2ab72ade17
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: a6f7a690cac5718216636d3191f348c71bcfb5d6
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 906e1840f35ab14997c727551b893a0219eb78d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734350"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099017"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Verwenden von Lastenausgleichsdiensten in Azure
 
@@ -70,26 +68,26 @@ Das folgende Diagramm zeigt die Architektur dieses Szenarios:
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 2. Geben Sie die folgenden grundlegenden Informationen ein:
 
-  * **Name**: Geben Sie Ihren Traffic Manager-Profilen einen DNS-Präfixnamen.
-  * **Routingmethode:** Wählen Sie die Routingmethode für Datenverkehr in der Richtlinie aus. Weitere Informationen zu den Methoden finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
-  * **Abonnement**: Wählen Sie das Abonnement mit dem Profil aus.
-  * **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die das Profil enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
-  * **Ressourcengruppenstandort:** Der Traffic Manager-Dienst ist global und nicht an einen Standort gebunden. Allerdings müssen Sie eine Region für die Gruppe angeben, in der sich die dem Traffic Manager-Profil zugeordneten Metadaten befinden. Dieser Standort hat keine Auswirkung auf die Laufzeitverfügbarkeit des Profils.
+   * **Name**: Geben Sie Ihren Traffic Manager-Profilen einen DNS-Präfixnamen.
+   * **Routingmethode:** Wählen Sie die Routingmethode für Datenverkehr in der Richtlinie aus. Weitere Informationen zu den Methoden finden Sie unter [Informationen zu Traffic Manager-Routingmethoden für Datenverkehr](traffic-manager-routing-methods.md).
+   * **Abonnement**: Wählen Sie das Abonnement mit dem Profil aus.
+   * **Ressourcengruppe**: Wählen Sie die Ressourcengruppe aus, die das Profil enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
+   * **Ressourcengruppenstandort:** Der Traffic Manager-Dienst ist global und nicht an einen Standort gebunden. Allerdings müssen Sie eine Region für die Gruppe angeben, in der sich die dem Traffic Manager-Profil zugeordneten Metadaten befinden. Dieser Standort hat keine Auswirkung auf die Laufzeitverfügbarkeit des Profils.
 
 3. Klicken Sie zum Generieren des Traffic Manager-Profils auf **Erstellen**.
 
-  ![Blatt „Erstellen“ von Traffic Manager](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
+   ![Blatt „Erstellen“ von Traffic Manager](./media/traffic-manager-load-balancing-azure/s1-create-tm-blade.png)
 
 ### <a name="step-2-create-the-application-gateways"></a>Schritt 2: Erstellen des Anwendungsgateways
 
 1. Klicken Sie im Azure-Portal im linken Bereich auf **Ressource erstellen** > **Netzwerk** > **Application Gateway**.
 2. Geben Sie die folgenden allgemeinen Informationen zum Anwendungsgateway an:
 
-  * **Name**: Der Name des Anwendungsgateways.
-  * **SKU-Größe:** Die Größe des Anwendungsgateways. Sie haben die Wahl zwischen „Klein“, „Mittel“ und „Groß“.
-  * **Instanzenanzahl:** Die Anzahl der Instanzen (ein Wert von 2 bis 10).
-  * **Ressourcengruppe**: Die Ressourcengruppe, die das Anwendungsgateway enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
-  * **Standort**: Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse den gleichen Standort wie das Gateway aufweisen müssen.
+   * **Name**: Der Name des Anwendungsgateways.
+   * **SKU-Größe:** Die Größe des Anwendungsgateways. Sie haben die Wahl zwischen „Klein“, „Mittel“ und „Groß“.
+   * **Instanzenanzahl:** Die Anzahl der Instanzen (ein Wert von 2 bis 10).
+   * **Ressourcengruppe**: Die Ressourcengruppe, die das Anwendungsgateway enthält. Dies kann eine neue oder vorhandene Ressourcengruppe sein.
+   * **Standort**: Die Region für das Anwendungsgateway. Dieser Standort ist mit dem Standort der Ressourcengruppe identisch. Der Standort ist wichtig, da das virtuelle Netzwerk und die öffentliche IP-Adresse den gleichen Standort wie das Gateway aufweisen müssen.
 3. Klicken Sie auf **OK**.
 4. Definieren Sie das virtuelle Netzwerk, Subnetz, die Front-End-IP-Adresse und Listenerkonfigurationen für das Anwendungsgateway. In diesem Szenario ist die Front-End-IP-Adresse **Öffentlich**, um das spätere Hinzufügen als Endpunkt zum Traffic Manager-Profil zu ermöglichen.
 5. Konfigurieren Sie den Listener mit einer der folgenden Optionen:
@@ -106,11 +104,11 @@ Ein Anwendungsgateway, das mit einer pfadbasierten Regel konfiguriert wird, ben�
 2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** aus, und klicken Sie dann auf **Hinzufügen**, um die VMs hinzuzufügen, die Sie den Back-End-Pools der Webebene zuordnen möchten.
 3. Geben Sie den Namen des Back-End-Pools und alle IP-Adressen der Computer im Pool ein. In diesem Szenario stellen wir eine Verbindung mit zwei Back-End-Serverpools mit virtuellen Computern her.
 
-  ![Application Gateway: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+   ![Application Gateway: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. Wählen Sie anschließend in den **Einstellungen** des Anwendungsgateways **Regeln** aus, und klicken Sie dann auf die Schaltfläche **Pfadbasiert**, um eine Regel hinzuzufügen.
 
-  ![Application Gateway-Regeln: Schaltfläche „Pfadbasiert“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
+   ![Application Gateway-Regeln: Schaltfläche „Pfadbasiert“](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
 5. Geben Sie die folgenden Informationen an, um die Regel zu konfigurieren.
 
@@ -140,13 +138,13 @@ In diesem Szenario wird Traffic Manager mit Anwendungsgateways verbunden (die en
 1. Öffnen Sie Ihr Traffic Manager-Profil. Durchsuchen Sie hierfür Ihre Ressourcengruppe, oder suchen Sie den Namen des Traffic Manager-Profils in **Alle Ressourcen**.
 2. Wählen Sie im linken Bereich **Endpunkte** aus, und klicken Sie dann auf **Hinzufügen**, um einen Endpunkt hinzuzufügen.
 
-  ![Traffic Manager-Endpunkte: Schaltfläche „Hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
+   ![Traffic Manager-Endpunkte: Schaltfläche „Hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
 3. Erstellen Sie einen Endpunkt durch Eingabe der folgenden Informationen:
 
-  * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
-  * **Name**: Geben Sie den Namen des Endpunkts ein.
-  * **Zielressourcentyp:** Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie dann unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
+   * **Typ**: Wählen Sie den Typ des Endpunkts für den Lastenausgleich aus. Wählen Sie in diesem Szenario **Azure-Endpunkt**, da wir diesen mit den Anwendungsgatewayinstanzen verbinden, die wir zuvor konfiguriert haben.
+   * **Name**: Geben Sie den Namen des Endpunkts ein.
+   * **Zielressourcentyp:** Wählen Sie **Öffentliche IP-Adresse** aus. Wählen Sie dann unter **Zielressource** die öffentliche IP des zuvor konfigurierten Anwendungsgateways aus.
 
    ![Traffic Manager: „Endpunkt hinzufügen“](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
@@ -173,7 +171,7 @@ Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden S
 1. Suchen Sie in der Ressourcengruppe den Lastenausgleich, den Sie in den vorherigen Schritten erstellt haben.
 2. Klicken Sie unter **Einstellungen** auf **Back-End-Pools** und dann auf **Hinzufügen**, um einen neuen Back-End-Pool hinzuzufügen.
 
-  ![Lastenausgleich: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+   ![Lastenausgleich: „Back-End-Pool hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
 3. Geben Sie einen Namen für den Back-End-Pool ein.
 4. Fügen Sie dem Back-End-Pool entweder einzelne VMs oder eine Verfügbarkeitsgruppe hinzu.
@@ -182,7 +180,7 @@ Weitere Informationen zum Konfigurieren eines internen Lastenausgleichs finden S
 
 1. Wählen Sie in Ihrem Lastenausgleich unter **Einstellungen** den Punkt **Tests** aus, und klicken Sie dann auf **Hinzufügen**, um einen Test hinzuzufügen.
 
- ![Lastenausgleich: „Test hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+   ![Lastenausgleich: „Test hinzufügen“](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
 2. Geben Sie einen Namen für den Test ein.
 3. Wählen Sie **Protokoll** für den Test aus. Bei einer Datenbank ist es vermutlich besser, einen TCP-Test statt eines HTTP-Tests durchzuführen. Weitere Informationen zu Lastenausgleichstests finden Sie unter [Grundlegendes zu Lastenausgleichstests](../load-balancer/load-balancer-custom-probe-overview.md).

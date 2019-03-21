@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-custom-search
 ms.topic: tutorial
-ms.date: 10/16/2017
+ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: c1124e710c3bb2cc4d00595989ccb95e584025c4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f44d4e6e5a0ee940394e09ceff8a425700d34e1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884493"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100731"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
@@ -49,11 +49,11 @@ So erstellen Sie eine benutzerdefinierte Bing-Suchinstanz:
   
 4. Klicken Sie nach der Anmeldung auf **Neue benutzerdefinierte Suche**. Geben Sie im Fenster **Neue benutzerdefinierte Suchinstanz erstellen** einen Namen ein, der sinnvoll ist und den Typ des Inhalts beschreibt, den die Suche zurückgibt. Sie können den Namen jederzeit ändern.  
   
-  ![Screenshot des Felds „Neue benutzerdefinierte Suchinstanz erstellen“](../media/newCustomSrch.png)  
+   ![Screenshot des Felds „Neue benutzerdefinierte Suchinstanz erstellen“](../media/newCustomSrch.png)  
   
 5. Klicken Sie auf „OK“, geben Sie eine URL an, und ob Unterseiten der URL eingeschlossen werden sollen.  
   
-  ![Screenshot der URL-Definitionsseite](../media/newCustomSrch1-a.png)  
+   ![Screenshot der URL-Definitionsseite](../media/newCustomSrch1-a.png)  
 
 
 ## <a name="add-active-entries"></a>Hinzufügen aktiver Einträge
@@ -97,28 +97,28 @@ Die benutzerdefinierte Suche stellt eine gehostete Benutzeroberfläche zum Rende
   
 2. Wählen Sie ein Layout aus.  
   
-  ![Screenshot des Schritts zum Auswählen des Layouts der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-select-layout.png)  
+   ![Screenshot des Schritts zum Auswählen des Layouts der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-select-layout.png)  
   
 3. Wählen Sie ein Farbdesign aus.  
   
-  ![Screenshot zum Auswählen des Farbdesigns der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-select-color-theme.png)  
+   ![Screenshot zum Auswählen des Farbdesigns der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-select-color-theme.png)  
 
-  Wenn Sie das Farbdesign zur besseren Integration in Ihre Web-App optimieren müssen, klicken Sie auf **Design anpassen**. Nicht alle Farbkonfigurationen sind auf alle Layoutdesigns anwendbar. Um eine Farbe zu ändern, geben Sie den RGB-Hexadezimalwert der Farbe (z.B. #366eb8) in das entsprechende Textfeld ein. Alternativ klicken Sie auf die Farbschaltfläche und dann auf die Schattierung, die für Sie geeignet ist. Beachten Sie bei der Farbenauswahl stets die Barrierefreiheit.
+   Wenn Sie das Farbdesign zur besseren Integration in Ihre Web-App optimieren müssen, klicken Sie auf **Design anpassen**. Nicht alle Farbkonfigurationen sind auf alle Layoutdesigns anwendbar. Um eine Farbe zu ändern, geben Sie den RGB-Hexadezimalwert der Farbe (z.B. #366eb8) in das entsprechende Textfeld ein. Alternativ klicken Sie auf die Farbschaltfläche und dann auf die Schattierung, die für Sie geeignet ist. Beachten Sie bei der Farbenauswahl stets die Barrierefreiheit.
   
-  ![Screenshot zum Anpassen des Farbdesigns der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-customize-color-theme.png)  
+   ![Screenshot zum Anpassen des Farbdesigns der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-customize-color-theme.png)  
 
   
 4. Geben Sie die zusätzlichen Konfigurationsoptionen an.  
   
-  ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-additional-configurations.png)  
+   ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-additional-configurations.png)  
   
-  Um erweiterte Konfigurationen zu nutzen, klicken Sie auf **Erweiterte Konfigurationen anzeigen**. Dadurch werden Konfigurationen wie z.B. *Linkziel* den Optionen für die Websuche, *Filter aktivieren* den Bild- und Videooptionen und *Suchfeld-Textplatzhalter* den verschiedenen Optionen hinzugefügt.
+   Um erweiterte Konfigurationen zu nutzen, klicken Sie auf **Erweiterte Konfigurationen anzeigen**. Dadurch werden Konfigurationen wie z.B. *Linkziel* den Optionen für die Websuche, *Filter aktivieren* den Bild- und Videooptionen und *Suchfeld-Textplatzhalter* den verschiedenen Optionen hinzugefügt.
 
-  ![Screenshot des Schritts der erweiterten Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-advanced-configurations.png)  
+   ![Screenshot des Schritts der erweiterten Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-advanced-configurations.png)  
   
 5. Wählen Sie Ihre Abonnementschlüssel in den Dropdownlisten aus. Alternativ können Sie den Abonnementschlüssel manuell eingeben. Informationen zum Abrufen von Schlüsseln finden Sie unter [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search-api).  
   
-  ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Screenshot des Schritts der zusätzlichen Konfigurationen der gehosteten Benutzeroberfläche](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -140,66 +140,66 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
   
 3. Wählen Sie im Fenster **Neues Projekt** die Option **Visual C#-/Web-/ ASP.NET Core-Webanwendung** aus, benennen Sie Ihr Projekt, und klicken Sie dann auf **OK**.  
   
-  ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-project.png)  
+   ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-project.png)  
   
 4. Wählen Sie im Fenster **Neue ASP.NET Core-Webanwendung** die Option **Webanwendung** aus, und klicken Sie auf **OK**.  
   
-  ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-webapp.png)  
+   ![Screenshot des Fensters des neuen Projekts](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Bearbeiten von „Index.cshtml“
 
 1. Erweitern Sie im **Projektmappen-Explorer** die Option **Seiten**, und doppelklicken Sie auf **index.cshtml**, um die Datei zu öffnen.  
   
-  ![Screenshot des Projektmappen-Explorers mit erweiterten Seiten und ausgewählter Datei „index.cshtml“](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
+   ![Screenshot des Projektmappen-Explorers mit erweiterten Seiten und ausgewählter Datei „index.cshtml“](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
 2. Löschen Sie in „index.cshtml“ den gesamten Code ab Zeile 7 (einschließlich).  
   
-  ```razor
-  @page
-  @model IndexModel
-  @{
+   ```razor
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }    
-  ```  
+   }    
+   ```  
   
 3. Fügen Sie ein Zeilenumbruchelement und ein div-Element hinzu, das als Container fungiert.  
   
-  ```html
-  @page
-  @model IndexModel
-  @{
+   ```html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch"></div>
-  ```  
+   }
+   <br />
+   <div id="customSearch"></div>
+   ```  
   
 4. Scrollen Sie auf der Seite **Gehostete Benutzeroberfläche** zum Abschnitt mit dem Titel **Nutzen der Benutzeroberfläche**. Klicken Sie auf die *Endpunkte*, um auf den JavaScript-Codeausschnitt zuzugreifen. Sie können den Codeausschnitt auch abrufen, indem Sie auf **Produktion** und dann die Registerkarte **Gehostete Benutzeroberfläche** klicken.
   
-  <!-- Get new screenshot after prod gets new bits
-  ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
-  -->
+   <!-- Get new screenshot after prod gets new bits
+   ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
+   -->
   
 5. Fügen Sie das Skriptelement in den Container ein, den Sie hinzugefügt haben.  
   
-  ``` html
-  @page
-  @model IndexModel
-  @{
+   ``` html
+   @page
+   @model IndexModel
+   @{
       ViewData["Title"] = "Home page";
-  }
-  <br />
-  <div id="customSearch">
+   }
+   <br />
+   <div id="customSearch">
       <script type="text/javascript" 
           id="bcs_js_snippet"
           src="https://ui.customsearch.ai /api/ux/rendering-js?customConfig=<YOUR-CUSTOM-CONFIG-ID>&market=en-US&safeSearch=Moderate&version=latest&q=">
       </script>
-  </div>
-  ```  
+   </div>
+   ```  
   
 6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **wwwroot**, und klicken Sie auf **Im Browser anzeigen**.  
   
-  ![Screenshot des Projektmappen-Explorers: Auswählen der Option „Ansicht“ aus dem wwwroot-Kontextmenü im Browser](./media/custom-search-webapp-view-in-browser.png)  
+   ![Screenshot des Projektmappen-Explorers: Auswählen der Option „Ansicht“ aus dem wwwroot-Kontextmenü im Browser](./media/custom-search-webapp-view-in-browser.png)  
 
 Die neue benutzerdefinierte Suchwebseite sollte ähnlich wie das folgende Beispiel aussehen:
 

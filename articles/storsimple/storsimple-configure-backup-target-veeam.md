@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2016
 ms.author: hkanna
-ms.openlocfilehash: f06b74493bad546997f82ed6eef0a89cffb7c75b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: e7659cca9081834d41f64ef0fbd8ea3686044bfd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51261977"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011999"
 ---
 # <a name="storsimple-as-a-backup-target-with-veeam"></a>StorSimple als Sicherungsziel mit Veeam
 
@@ -104,7 +104,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -209,16 +209,16 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 
 ### <a name="operating-system-best-practices"></a>Bewährte Methoden für das Betriebssystem
 
--   Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
--   Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
--   Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
--   Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
--   Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
-    - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
-    - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Windows-PowerShell als Administrator aus, und geben Sie Folgendes ein:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
+- Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
+- Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
+- Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
+- Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
+  - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
+  - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Windows-PowerShell als Administrator aus, und geben Sie Folgendes ein:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Bewährte Methoden für StorSimple
 
@@ -265,6 +265,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
 | Zusätzliches Kontingent  | 4  |   | 42 (GFS-Anforderung gesamt)  |
+
 \* Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um die Anforderungen Ihrer Sicherungsrichtlinie zu erfüllen.
 
 ## <a name="set-up-veeam-storage"></a>Einrichten von Veeam-Speicher
@@ -319,7 +320,7 @@ Hier sehen Sie ein Beispiel für einen GFS-Rotationszeitplan für „Vier Wochen
 |---|---|---|
 | Wöchentlich (Woche 1 - 4) | Samstag | Montag - Freitag |
 | Monatlich  | Samstag  |   |
-| Jährlich | Samstag  |   |   |
+| Jährlich | Samstag  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-backup-job"></a>Zuweisen von StorSimple-Volumes zu einem Veeam-Sicherungsauftrag
@@ -384,6 +385,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen auf den lokalen und StorS
 | Monatlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 12 | 12 |
 | Jährlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 1 | 1 |
 |Größenanforderungen für GFS-Volumes |  |  |  | 18*|
+
 \* Die Gesamtkapazität umfasst 17 TiB für StorSimple-Datenträger und 1 TiB für lokale RAID-Volumes.
 
 
@@ -398,7 +400,7 @@ GFS-Rotation mit wöchentlichem, monatlichem und jährlichem Zeitplan
 | Woche 3 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Woche 4 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Monatlich | StorSimple monatlich |   |   |   |   |   |
-| Jährlich | StorSimple jährlich  |   |   |   |   |   |   |
+| Jährlich | StorSimple jährlich  |   |   |   |   |   |
 
 ### <a name="assign-storsimple-volumes-to-a-veeam-copy-job"></a>Zuweisen von StorSimple-Volumes zu einem Veeam-Kopierauftrag
 
@@ -469,9 +471,9 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 1. [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 2. Herunterladen und Einrichten des [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1)-PowerShell-Skripts.
 3. Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Stellen Sie sicher, dass Sie das Skript mit `-WhatIf $true` ausführen, um festzustellen, welche Änderungen das Skript durchführt. Sobald die Überprüfung abgeschlossen ist, lassen Sie `-WhatIf $false` ausführen. Führen Sie den folgenden Befehl aus:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
 4. Um das Skript zum Sicherungsauftrag hinzuzufügen, bearbeiten Sie die erweiterten Auftragsoptionen in Veeam.
 
     ![Erweiterte Einstellungen in Veeam, Registerkarte mit Skripteinstellungen](./media/storsimple-configure-backup-target-using-veeam/veeamimage22.png)
@@ -510,7 +512,7 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
+- [Speicherszenarien: Schlanke Speicherzuweisung](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
 - [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 

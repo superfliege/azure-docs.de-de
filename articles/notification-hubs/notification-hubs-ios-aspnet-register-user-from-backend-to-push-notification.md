@@ -14,12 +14,12 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 67baa204d50d1319559abcc58e0ae00e1810ebaf
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: ff77a955c34941d87a1f653726ab3f19e84aa440
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54452648"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101974"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrieren des aktuellen Benutzers für Pushbenachrichtigungen mit ASP.NET
 
@@ -42,9 +42,9 @@ In diesem Artikel erfahren Sie, wie Sie Pushbenachrichtigungs-Registrierungen mi
    * **Textfeld:** Password
    * **Schaltfläche:** Login
 
-    Ihr Storyboard sieht nun wie folgt aus:
+     Ihr Storyboard sieht nun wie folgt aus:
 
-    ![][0]
+     ![][0]
 
 2. Erstellen Sie im Assistant Editor Outlets für alle Switches, und rufen Sie sie auf. Verbinden Sie die Textfelder mit dem View Controller (delegate) und erstellen Sie eine **Action** für die **login**-Schaltfläche.
 

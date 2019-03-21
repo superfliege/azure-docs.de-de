@@ -10,17 +10,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: sethm
 ms.reviewer: jiahan
 ms.lastreviewed: 01/18/2019
-ms.openlocfilehash: e38612e0d4e0707525b313c79143018c74c4c77b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 4edaf782b193e99dfe4002eedb6f3a046fb7dcd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326509"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081456"
 ---
 # <a name="create-virtual-machine-disk-storage-in-azure-stack"></a>Erstellen von VM-Datenträgerspeicher in Azure Stack
 
@@ -68,56 +68,56 @@ Jeder nicht verwaltete Datenträger, den Sie hinzufügen, sollte in einem separa
 
 ### <a name="use-the-portal-to-create-and-attach-a-new-data-disk"></a>Verwenden des Portals zum Erstellen und Anfügen eines neuen Datenträgers für Daten
 
-1.  Wählen Sie im Portal die Optionen **Alle Dienste** > **Virtuelle Computer**.    
-    ![Beispiel: VM-Dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
+1. Wählen Sie im Portal die Optionen **Alle Dienste** > **Virtuelle Computer**.    
+   ![Beispiel: VM-Dashboard](media/azure-stack-manage-vm-disks/vm-dashboard.png)
 
-2.  Wählen Sie einen virtuellen Computer aus, der zuvor erstellt wurde.   
-    ![Beispiel: Auswählen eines virtuellen Computers auf dem Dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
+2. Wählen Sie einen virtuellen Computer aus, der zuvor erstellt wurde.   
+   ![Beispiel: Auswählen eines virtuellen Computers auf dem Dashboard](media/azure-stack-manage-vm-disks/select-a-vm.png)
 
-3.  Wählen Sie für den virtuellen Computer die Option **Datenträger** > **Datenträger hinzufügen**.       
-    ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/Attach-disks.png)    
+3. Wählen Sie für den virtuellen Computer die Option **Datenträger** > **Datenträger hinzufügen**.       
+   ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/Attach-disks.png)    
 
-4.  Datenträger:
-    -  Geben Sie die **LUN** ein. Die LUN muss eine gültige Zahl sein.
-    -  Wählen Sie **Datenträger erstellen**.
-    ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
+4. Datenträger:
+   -  Geben Sie die **LUN** ein. Die LUN muss eine gültige Zahl sein.
+   -  Wählen Sie **Datenträger erstellen**.
+   ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/add-a-data-disk-create-disk.png)
 
-5.  Führen Sie auf dem Blatt „Verwalteten Datenträger erstellen“ die folgenden Schritte aus:
-    -  Geben Sie unter **Name** den Namen des Datenträgers ein.
-    -  Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe.
-    -  Wählen Sie den **Speicherort** aus. Der Speicherort ist standardmäßig auf den Container festgelegt, der auch den Betriebssystem-Datenträger enthält.
-    -  Wählen Sie den **Kontotyp** aus. 
-        ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/create-manage-disk.png)
+5. Führen Sie auf dem Blatt „Verwalteten Datenträger erstellen“ die folgenden Schritte aus:
+   - Geben Sie unter **Name** den Namen des Datenträgers ein.
+   - Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe.
+   - Wählen Sie den **Speicherort** aus. Der Speicherort ist standardmäßig auf den Container festgelegt, der auch den Betriebssystem-Datenträger enthält.
+   - Wählen Sie den **Kontotyp** aus. 
+      ![Beispiel: Anfügen eines neuen Datenträgers an den virtuellen Computer](media/azure-stack-manage-vm-disks/create-manage-disk.png)
 
-        **SSD Premium**  
-        Premium-Datenträger (SSD) basieren auf Solid State Drives und bieten konsistente Leistung mit geringen Wartezeiten. Sie bieten das beste Preis-Leistungs-Verhältnis und eignen sich ideal für E/A-intensive Anwendungen und Produktionsworkloads.
+      **SSD Premium**  
+      Premium-Datenträger (SSD) basieren auf Solid State Drives und bieten konsistente Leistung mit geringen Wartezeiten. Sie bieten das beste Preis-Leistungs-Verhältnis und eignen sich ideal für E/A-intensive Anwendungen und Produktionsworkloads.
        
-        **HDD Standard**  
-        Standard-Datenträgern (HDD) basieren auf magnetischen Laufwerken und werden für Anwendungen bevorzugt, in denen nur selten auf Daten zugegriffen wird. Zonenredundante Datenträger basieren auf zonenredundantem Speicher, der Ihre Daten in mehreren Zonen repliziert, und sind auch dann verfügbar, wenn eine einzelne Zone ausfällt. 
+      **HDD Standard**  
+      Standard-Datenträgern (HDD) basieren auf magnetischen Laufwerken und werden für Anwendungen bevorzugt, in denen nur selten auf Daten zugegriffen wird. Zonenredundante Datenträger basieren auf zonenredundantem Speicher, der Ihre Daten in mehreren Zonen repliziert, und sind auch dann verfügbar, wenn eine einzelne Zone ausfällt. 
 
-    -  Wählen Sie den **Quelltyp** aus.
+   - Wählen Sie den **Quelltyp** aus.
 
-       Erstellen Sie einen Datenträger auf der Grundlage einer Momentaufnahme eines anderen Datenträgers oder eines Blobs in einem Speicherkonto. Sie können auch einen leeren Datenträger erstellen.
+     Erstellen Sie einen Datenträger auf der Grundlage einer Momentaufnahme eines anderen Datenträgers oder eines Blobs in einem Speicherkonto. Sie können auch einen leeren Datenträger erstellen.
 
-        **Momentaufnahme**  
-        Ist eine Momentaufnahme verfügbar, wählen Sie sie aus. Die Momentaufnahme muss im Abonnement und am Speicherort des virtuellen Computers verfügbar sein.
+      **Momentaufnahme**  
+      Ist eine Momentaufnahme verfügbar, wählen Sie sie aus. Die Momentaufnahme muss im Abonnement und am Speicherort des virtuellen Computers verfügbar sein.
 
-        **Speicherblob**  
-        - Fügen Sie den URI des Speicherblobs hinzu, das das Datenträgerimage enthält.  
-        - Wählen Sie **Durchsuchen**, um das Blatt „Speicherkonten“ zu öffnen. Anweisungen hierzu finden Sie unter [Bereitstellen von VM-Datenträgerspeicher in Azure Stack](#add-a-data-disk-from-a-storage-account).
-        - Wählen Sie den Betriebssystemtyp des Images aus, also **Windows**, **Linux** oder **None (data disk)** (Keiner (Datenträger)).
+      **Speicherblob**  
+     - Fügen Sie den URI des Speicherblobs hinzu, das das Datenträgerimage enthält.  
+     - Wählen Sie **Durchsuchen**, um das Blatt „Speicherkonten“ zu öffnen. Anweisungen hierzu finden Sie unter [Bereitstellen von VM-Datenträgerspeicher in Azure Stack](#add-a-data-disk-from-a-storage-account).
+     - Wählen Sie den Betriebssystemtyp des Images aus, also **Windows**, **Linux** oder **None (data disk)** (Keiner (Datenträger)).
 
-        **None (empty disk)** (Keiner (leerer Datenträger))
+       **None (empty disk)** (Keiner (leerer Datenträger))
 
-    -  Wählen Sie unter **Größe (GiB)** die Größe aus.
+   - Wählen Sie unter **Größe (GiB)** die Größe aus.
 
-       Die Kosten für Standard-Datenträger sind von der Größe des Datenträgers abhängig. Die Kosten und die Leistung von Premium-Datenträgern hängen von der Größe des Datenträgers ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise ](https://go.microsoft.com/fwlink/?linkid=843142).
+     Die Kosten für Standard-Datenträger sind von der Größe des Datenträgers abhängig. Die Kosten und die Leistung von Premium-Datenträgern hängen von der Größe des Datenträgers ab. Weitere Informationen finden Sie unter [Verwaltete Datenträger – Preise ](https://go.microsoft.com/fwlink/?linkid=843142).
 
-    -  Klicken Sie auf **Erstellen**. Azure Stack erstellt und überprüft den verwalteten Datenträger.
+   - Klicken Sie auf **Erstellen**. Azure Stack erstellt und überprüft den verwalteten Datenträger.
 
-5.  Nachdem der Datenträger von Azure Stack erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **DATENTRÄGER** aufgeführt.   
+5. Nachdem der Datenträger von Azure Stack erstellt und an den virtuellen Computer angefügt wurde, wird der neue Datenträger in den Datenträgereinstellungen des virtuellen Computers unter **DATENTRÄGER** aufgeführt.   
 
-    ![Beispiel: Anzeigen des Datenträgers](media/azure-stack-manage-vm-disks/view-data-disk.png)
+   ![Beispiel: Anzeigen des Datenträgers](media/azure-stack-manage-vm-disks/view-data-disk.png)
 
 ### <a name="add-a-data-disk-from-a-storage-account"></a>Hinzufügen eines Datenträgers in einem Speicherkonto
 

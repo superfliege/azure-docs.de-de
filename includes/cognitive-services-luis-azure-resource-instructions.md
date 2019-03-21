@@ -10,11 +10,11 @@ ms.topic: include
 ms.custom: include file
 ms.date: 01/18/2019
 ms.author: diberry
-ms.openlocfilehash: 7ba217f483e9b57f60bd836011c8887994b36ea6
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: fe376db04847cacf075f5fbbd35b6cf1f2ebd889
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757595"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56740743"
 ---
 Wenn Sie noch keine Erfahrung mit Cognitive Services oder Azure haben, erstellen Sie einen [temporären Schlüssel](https://azure.microsoft.com/try/cognitive-services/). Wenn Sie ein Azure-Konto besitzen, erstellen Sie eine neue Ressource im Portal. Language Understanding-Endpunktabfragen unterstützen zwei Azure-Ressourcentypen: **Language Understanding** oder die Ressource **Cognitive Service**. Sie benötigen den Namen der Ressource, wenn Sie den Schlüssel der App [zuweisen](../articles/cognitive-services/luis/luis-how-to-azure-subscription.md).

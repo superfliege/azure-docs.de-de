@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 84e0d02f2608a6ee94ee409345e530357d394671
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096570"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>Erstellen einer Azure-kompatiblen VHD
 
@@ -48,25 +48,25 @@ Alternativ dazu bietet Azure eine Reihe von genehmigten Linux-Distributionen.  E
 Erstellen Sie im [Microsoft Azure-Portal](https://ms.portal.azure.com/) das Basisimage, indem Sie folgende Schritte ausführen.
 
 1. Melden Sie sich beim Portal mit dem Microsoft-Konto für das Azure-Abonnement an, in dem Sie Ihr VM-Angebot veröffentlichen möchten.
-2. Erstellen Sie eine neue Ressourcengruppe, und geben Sie den **Ressourcengruppennamen**, das **Abonnement** und den **Ressourcengruppenstandort** an.  Weitere Informationen finden Sie unter [Verwalten von Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal#manage-resource-groups).
+2. Erstellen Sie eine neue Ressourcengruppe, und geben Sie den **Ressourcengruppennamen**, das **Abonnement** und den **Ressourcengruppenstandort** an.  Weitere Informationen finden Sie unter [Verwalten von Ressourcengruppen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
 3. Klicken Sie in der linken Menüleiste auf **Virtuelle Computer**, um die Seite mit den Einzelheiten zu Ihren virtuellen Computern anzuzeigen. 
 4. Klicken Sie auf dieser neuen Seite auf **+ Hinzufügen**, um das Blatt **Compute** anzuzeigen.  Wenn Sie den gewünschten VM-Typ auf dem anfänglichen Bildschirm nicht sehen, können Sie nach dem Namen Ihrer Basis-VM suchen. Beispiel:
 
     ![Blatt „Compute“ für die neue VM](./media/publishvm_014.png)
 
 5. Nachdem Sie das richtige virtuelle Image ausgewählt haben, geben Sie die folgenden Werte an:
-  * Geben Sie auf dem Blatt **Grundlagen** einen **Namen** für den virtuellen Computer ein. Dieser muss 1–15 alphanumerische Zeichen umfassen. (In diesem Beispiel wird `DemoVm009` verwendet.)
-  * Geben Sie einen **Benutzernamen** und ein sicheres **Kennwort** für die Erstellung eines lokalen Kontos auf dem virtuellen Computer ein.  (Hier wird `adminUser` verwendet.)  Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
-  * Wählen Sie die Ressourcengruppe aus, die Sie erstellt haben (hier: `DemoResourceGroup`).
-  * Wählen Sie den **Standort** eines Azure-Rechenzentrums aus (hier: `West US`).
-  * Klicken Sie auf **OK**, um diese Werte zu speichern. 
+   * Geben Sie auf dem Blatt **Grundlagen** einen **Namen** für den virtuellen Computer ein. Dieser muss 1–15 alphanumerische Zeichen umfassen. (In diesem Beispiel wird `DemoVm009` verwendet.)
+   * Geben Sie einen **Benutzernamen** und ein sicheres **Kennwort** für die Erstellung eines lokalen Kontos auf dem virtuellen Computer ein.  (Hier wird `adminUser` verwendet.)  Das Kennwort muss 8 bis 123 Zeichen lang sein und drei der folgenden vier Komplexitätsanforderungen erfüllen: ein Kleinbuchstabe, ein Großbuchstabe, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-windows-faq#what-are-the-username-requirements-when-creating-a-vm).
+   * Wählen Sie die Ressourcengruppe aus, die Sie erstellt haben (hier: `DemoResourceGroup`).
+   * Wählen Sie den **Standort** eines Azure-Rechenzentrums aus (hier: `West US`).
+   * Klicken Sie auf **OK**, um diese Werte zu speichern. 
 
-6.  Wählen Sie anhand der folgenden Empfehlungen die Größe der VM aus, die Sie bereitstellen möchten:
-  * Wenn Sie planen, die VHD lokal zu entwickeln, spielt die Größe keine Rolle. Die Verwendung eines kleineren virtuellen Computers wird empfohlen.
-  * Wenn Sie vorhaben, das Image in Azure zu entwickeln, sollten Sie eine der empfohlenen VM-Größen für das ausgewählte Image verwenden.
-  * Preisinformationen finden Sie im Portal in der Auswahl **Empfohlener Tarif** . Hier werden die drei empfohlenen Größen angezeigt, die vom Herausgeber bereitgestellt werden. (In diesem Fall ist der Herausgeber Microsoft.)
+6. Wählen Sie anhand der folgenden Empfehlungen die Größe der VM aus, die Sie bereitstellen möchten:
+   * Wenn Sie planen, die VHD lokal zu entwickeln, spielt die Größe keine Rolle. Die Verwendung eines kleineren virtuellen Computers wird empfohlen.
+   * Wenn Sie vorhaben, das Image in Azure zu entwickeln, sollten Sie eine der empfohlenen VM-Größen für das ausgewählte Image verwenden.
+   * Preisinformationen finden Sie im Portal in der Auswahl **Empfohlener Tarif** . Hier werden die drei empfohlenen Größen angezeigt, die vom Herausgeber bereitgestellt werden. (In diesem Fall ist der Herausgeber Microsoft.)
 
-    ![Blatt „Größe“ für die neue VM](./media/publishvm_015.png)
+   ![Blatt „Größe“ für die neue VM](./media/publishvm_015.png)
 
 7. Legen Sie auf dem Blatt **Einstellungen** die Option **Verwaltete Datenträger verwenden** auf **Nein** fest.  Auf diese Weise können Sie die neue VHD manuell verwalten. (Auf dem Blatt **Einstellungen** können Sie auch weitere Optionen für Speicher und Netzwerk ändern. Sie können z.B. unter **Datenträgertyp** die Option **Premium (SSD)** auswählen.)  Klicken Sie auf **OK** , um fortzufahren.
 

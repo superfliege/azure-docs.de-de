@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: subsarma
-ms.openlocfilehash: bbbce45b7c321fd4934374c76f2a4421b125d46f
-ms.sourcegitcommit: 59914a06e1f337399e4db3c6f3bc15c573079832
+ms.openlocfilehash: c2ef842fd62ef060f06536d66387c3facd0627b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/19/2018
-ms.locfileid: "31600953"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994687"
 ---
 # <a name="use-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>Registrieren von Hostnamen in Ihrem eigenen DNS-Server mit dynamischem DNS
 
@@ -63,7 +63,7 @@ fi
 
 Sie können den Befehl `nsupdate` auch verwenden, um sichere DDNS-Updates durchzuführen. Wenn Sie beispielsweise einen Bind-DNS-Server nutzen, wird ein Schlüsselpaar aus öffentlichem und privatem Schlüssel [generiert](http://linux.yyz.us/nsupdate/). Der DNS-Server wird mit dem öffentlichen Teil des Schlüssels [konfiguriert](http://linux.yyz.us/dns/ddns-server.html), damit die Signatur der Anforderung überprüft werden kann. Um das Schlüsselpaar für `nsupdate` bereitzustellen, verwenden Sie die `-k`-Option zum Signieren der DDNS-Updateanforderung.
 
-Wenn Sie einen Windows-DNS-Server nutzen, können Sie die Kerberos-Authentifizierung mit dem Parameter `-g` in `nsupdate` verwenden, doch dies ist nicht in der Windows-Version von `nsupdate` verfügbar. Um Kerberos zu verwenden, laden Sie die Anmeldeinformationen mit `kinit`. Sie können die Anmeldeinformationen z.B. aus einer [Schlüsseltabellendatei](http://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html) laden, und dann übernimmt `nsupdate -g` die Anmeldeinformationen aus dem Cache.
+Wenn Sie einen Windows-DNS-Server nutzen, können Sie die Kerberos-Authentifizierung mit dem Parameter `-g` in `nsupdate` verwenden, doch dies ist nicht in der Windows-Version von `nsupdate` verfügbar. Um Kerberos zu verwenden, laden Sie die Anmeldeinformationen mit `kinit`. Sie können die Anmeldeinformationen z.B. aus einer [Schlüsseltabellendatei](https://www.itadmintools.com/2011/07/creating-kerberos-keytab-files.html) laden, und dann übernimmt `nsupdate -g` die Anmeldeinformationen aus dem Cache.
 
 Bei Bedarf können Sie Ihren VMs ein Suffix für die DNS-Suche hinzufügen. Das DNS-Suffix wird in der Datei */etc/resolv.conf* angegeben. In den meisten Linux-Distributionen wird der Inhalt dieser Datei automatisch verwaltet. Daher lässt sie sich in der Regel nicht bearbeiten. Sie können das Suffix aber außer Kraft setzen, indem Sie den Befehl `supersede` des DHCP-Clients verwenden. Um das Suffix außer Kraft zu setzen, fügen Sie die folgende Zeile in die Datei */etc/dhcp/dhclient.conf* ein:
 

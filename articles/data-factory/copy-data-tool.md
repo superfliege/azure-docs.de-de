@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.author: yexu
-ms.openlocfilehash: 8941ec26cef5e3dc2f17faf0d7eb843b76f8926f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 107687c785433f81870449d1445136b5148a4d2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "36331837"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101753"
 ---
 # <a name="copy-data-tool-in-azure-data-factory"></a>Tool zum Kopieren von Daten in Azure Data Factory
 Das Tool zum Kopieren von Daten in Azure Data Factory vereinfacht und optimiert die Verarbeitung der Sammelerfassung von Daten in einem Data Lake. Dies ist normalerweise ein erster Schritt in einem End-to-End-Szenario für die Datenintegration.  Sie sparen Zeit, insbesondere bei Verwendung von Azure Data Factory für die erstmalige Sammelerfassung von Daten aus einer Datenquelle. Die Verwendung dieses Tools ist z.B. mit den folgenden Vorteilen verbunden:
@@ -48,7 +48,7 @@ Mit diesem Tool können Sie mit einem intuitiven Fluss problemlos Daten in wenig
 5. Überprüfen Sie die **Zusammenfassung** der Data Factory-Entitäten, die erstellt werden sollen. 
 6. **Bearbeiten** Sie die Pipeline, um die Einstellungen für die Kopieraktivität nach Bedarf zu aktualisieren. 
 
- Das Tool wurde von Beginn an für Big Data konzipiert und bietet Unterstützung für verschiedene Daten- und Objekttypen. Sie können es zum Verschieben von Hunderten von Ordnern, Dateien oder Tabellen verwenden. Das Tool unterstützt die automatische Datenvorschau, Schemaerfassung und automatische Zuordnung sowie das Filtern von Daten.
+   Das Tool wurde von Beginn an für Big Data konzipiert und bietet Unterstützung für verschiedene Daten- und Objekttypen. Sie können es zum Verschieben von Hunderten von Ordnern, Dateien oder Tabellen verwenden. Das Tool unterstützt die automatische Datenvorschau, Schemaerfassung und automatische Zuordnung sowie das Filtern von Daten.
 
 ![Tool zum Kopieren von Daten](./media/copy-data-tool/copy-data-tool.png)
 

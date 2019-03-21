@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9504a710711ba10d72c3f87045f498b652cfea44
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 32acee78b1aadbe5a461de6ea4475cf28503c325
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55193436"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113026"
 ---
 # <a name="string-claims-transformations"></a>Transformationen von Zeichenfolgen-Ansprüchen
 
@@ -78,10 +78,10 @@ Das selbstbestätigte technische Profil ruft das technische Validierungsprofil *
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
- - Eingabeparameter:
-    - **stringComparison**:  ordinalIgnoreCase
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
+    - Eingabeparameter:
+  - **stringComparison**:  ordinalIgnoreCase
 - Ergebnis: Fehler wird ausgelöst.
 
 ## <a name="changecase"></a>ChangeCase 
@@ -113,11 +113,11 @@ Mithilfe dieses Anspruchstyps können Sie jeden Zeichenfolgen-Anspruchstyp in Gr
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **email**: SomeOne@contoso.com
+  - **email**: SomeOne@contoso.com
 - Eingabeparameter:
     - **toCase:** LOWER
 - Ausgabeansprüche:
-    - **email**: someone@contoso.com
+  - **email**: someone@contoso.com
 
 ## <a name="createstringclaim"></a>CreateStringClaim 
 
@@ -181,8 +181,8 @@ Mithilfe dieser Anspruchstransformation können Sie überprüfen, ob ein Anspruc
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **inputClaim1**: someone@contoso.com
-    - **inputClaim2**: someone@outlook.com
+  - **inputClaim1**: someone@contoso.com
+  - **inputClaim2**: someone@outlook.com
 - Eingabeparameter:
     - **operator:**  NOT EQUAL
     - **ignoreCase**: true
@@ -321,7 +321,7 @@ Mithilfe dieser Anspruchstransformation können Sie eine beliebige Zeichenfolge 
 - Eingabeparameter:
     - **stringFormat**:  cpim_{0}@{RelyingPartyTenantId}
 - Ausgabeansprüche:
-    - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
+  - **outputClaim**: cpim_5164db16-3eee-4629-bfda-dcc3326790e9@b2cdemo.onmicrosoft.com
 
 ## <a name="formatstringmultipleclaims"></a>FormatStringMultipleClaims
 
@@ -494,7 +494,7 @@ Mithilfe dieser Anspruchstransformation können Sie den Domänennamen hinter dem
 ### <a name="example"></a>Beispiel
 
 - Eingabeansprüche:
-    - **emailAddress**: joe@outlook.com
+  - **emailAddress**: joe@outlook.com
 - Ausgabeansprüche:
     - **domain**: outlook.com
 

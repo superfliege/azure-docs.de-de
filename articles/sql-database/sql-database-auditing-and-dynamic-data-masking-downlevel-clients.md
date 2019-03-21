@@ -11,13 +11,13 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 manager: craigg
-ms.date: 01/14/2019
-ms.openlocfilehash: 76fe764d828a7fa6e4ebb015f98b9af485d5df5f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.date: 02/25/2019
+ms.openlocfilehash: 2c95ec4d88e55af0becc73719bcc6126501267db
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567084"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56866826"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL-Datenbank – Unterstützung für kompatible Clients und IP-Endpunktänderungen für die Tabellenüberwachung
 
@@ -28,6 +28,7 @@ ms.locfileid: "55567084"
 Die [Datenbanküberwachung](sql-database-auditing.md) erfolgt automatisch bei SQL-Clients, die eine TDS-Umleitung unterstützen. Beachten Sie, dass diese Umleitung bei Verwendung der Blobüberwachungsmethode nicht angewendet wird.
 
 ## <a id="subheading-1"></a>Unterstützung für kompatible Clients
+
 Jeder Client, der TDS 7.4 implementiert, sollte auch die Umleitung unterstützen. Zu den Ausnahmen gehören JDBC 4.0, in dem die Umleitungsfunktion nicht vollständig unterstützt wird, und Tedious for Node.JSS, in dem die Umleitungsfunktion nicht implementiert wurde.
 
 Für "Vorgängerversionsclients", d. h. Clients, die TDS 7.3 und ältere Versionen unterstützen, sollte der vollqualifizierte Domänenname des Servers in der Verbindungszeichenfolge geändert werden:
@@ -46,6 +47,7 @@ Eine unvollständige Liste der "Vorgängerversionsclients":
 **Anmerkung:** Die oben genannte Änderung des vollqualifizierten Domänennamens des Servers kann sich auch als nützlich erweisen bei der Anwendung einer Richtlinie für die Überwachung auf SQL Server-Ebene, ohne dass ein Konfigurationsschritt in jeder Datenbank ausgeführt werden muss (temporäre Minderung).
 
 ## <a id="subheading-2"></a>IP-Endpunkt-Änderungen beim Aktivieren der Überwachung
+
 Beachten Sie, dass sich beim Aktivieren der Tabellenüberwachung der IP-Endpunkt Ihrer Datenbank ändert. Wenn Sie strenge Firewall-Einstellungen haben, aktualisieren Sie diese Firewalleinstellungen entsprechend.
 
 Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
@@ -78,5 +80,4 @@ Der neue Datenbank-IP-Endpunkt ist abhängig von der Region der Datenbank:
 | USA, Westen-Mitte |52.161.29.186, 52.161.27.213 |
 | Kanada, Mitte |13.88.248.106, 13.88.248.110 |
 | Kanada, Osten |40.86.227.82, 40.86.225.194 |
-| Großbritannien, Norden |13.87.101.18, 13.87.100.232 |
-| Vereinigtes Königreich, Süden 2 |13.87.32.202, 13.87.32.226 |
+| UK, Süden |13.87.32.202, 13.87.32.226 |

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 690ce08aa15a9677b04931ed1965ef819614ee84
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 76b607502324c3ca25b3536d5197a97dbb80399d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102144"
 ---
 # <a name="update-azure-marketplace-and-appsource-offers"></a>Aktualisieren von Azure Marketplace- und AppSource-Angeboten
 
@@ -41,7 +41,7 @@ Einige Attribute von Angeboten oder SKUs können nicht geändert werden, nachdem
 - SKU-ID 
 - Anzahl von Datenträgern vorhandener SKUs
 - Abrechnungs-/Lizenzmodelländerungen an vorhandenen SKUs
-- Versionstags, z. B.: `1.0.1`
+- Versionstags, z.B.: `1.0.1`
 
 
 ## <a name="common-update-operations"></a>Gängige Aktualisierungsvorgänge
@@ -68,19 +68,19 @@ Führen Sie die folgenden Schritte aus, um diese Änderungen zu implementieren.
 
 Für Azure Marketplace-Angebote:
 
-2. Wählen Sie die Registerkarte **SKUs** aus.  Wählen Sie die SKU aus, die Sie ändern möchten.
-3. Klicken Sie unter dem Feld **Verfügbare Länder/Regionen** auf die Schaltfläche **Länder auswählen**.
-4. Fügen Sie im Dialogfeld mit den verfügbaren Regionen die Regionen für diese SKU hinzu, oder entfernen Sie sie.
+1. Wählen Sie die Registerkarte **SKUs** aus.  Wählen Sie die SKU aus, die Sie ändern möchten.
+1. Klicken Sie unter dem Feld **Verfügbare Länder/Regionen** auf die Schaltfläche **Länder auswählen**.
+1. Fügen Sie im Dialogfeld mit den verfügbaren Regionen die Regionen für diese SKU hinzu, oder entfernen Sie sie.
 
 Für AppSource-Angebote:
 
-2. Wählen Sie die Registerkarte **Storefrontdetails** aus.
-3. Klicken Sie neben der Bezeichnung **Unterstützte Länder/Regionen** auf **Unterstützte Länder/Regionen**. 
-4. Fügen Sie im Dialogfeld mit den unterstützten Länder/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
+1. Wählen Sie die Registerkarte **Storefrontdetails** aus.
+1. Klicken Sie neben der Bezeichnung **Unterstützte Länder/Regionen** auf **Unterstützte Länder/Regionen**. 
+1. Fügen Sie im Dialogfeld mit den unterstützten Länder/Regionen die Regionen für dieses Angebot hinzu, oder entfernen Sie sie.
 
 Für beide Marketplaces:
 
-5. Wählen Sie **Veröffentlichen** aus, um den Veröffentlichungsvorgang zu starten. 
+1. Wählen Sie **Veröffentlichen** aus, um den Veröffentlichungsvorgang zu starten. 
 
 Wenn eine SKU in einer neuen Region zur Verfügung gestellt wird, haben Sie die Möglichkeit, mithilfe der Funktion **Preisdaten exportieren** die Preise für diese bestimmte Region anzugeben. Wenn Sie eine Region erneut hinzufügen, die zuvor einmal verfügbar war, können Sie die Preise in dieser Region nicht aktualisieren, da Preisänderungen nicht zulässig sind.
 

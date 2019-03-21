@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 7ab63b869d9cd8a5b1f2b60429c5b54d0da5761f
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 647923ce87e66314d7a95beb88cc842230f28774
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002072"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077070"
 ---
 # <a name="deprecated-canary-release-microservices-with-vamp-on-an-azure-container-service-dcos-cluster"></a>(VERALTET) Canary-Release-Microservices mit VAMP in einem Azure Container Service-DC/OS-Cluster
 
@@ -31,7 +31,7 @@ In dieser exemplarischen Vorgehensweise richten wir VAMP in Azure Container Serv
 
 [Canary-Releasing](https://martinfowler.com/bliki/CanaryRelease.html) ist eine intelligente Bereitstellungsstrategie, die von innovativen Unternehmen wie Netflix, Facebook und Spotify übernommen wurde. Sie stellt einen sinnvollen Ansatz dar, da sie Probleme verringert, Sicherheitsnetze schafft und Innovationen fördert. Warum wenden daher nicht alle Unternehmen diesen Ansatz an? Die Erweiterung einer CI/CD-Pipeline um Canary-Strategien vergrößert die Komplexität und erfordert Kenntnisse und Erfahrungen zu DevOps. Dies reicht aus, um kleinere wie auch größere Unternehmen zu blockieren, bevor sie überhaupt angefangen haben. 
 
-[VAMP](http://vamp.io/) ist ein Open-Source-System, das die Umstellung vereinfachen und Ihren bevorzugten Containerplaner um Canary-Releasing-Funktionen erweitern soll. Die Canary-Funktionen von VAMP gehen über auf Prozentsätzen basierende Rollouts hinaus. Der Datenverkehr kann gefiltert und in eine Vielzahl von Bedingungen unterteilt werden, z.B. zur Anvisierung von bestimmten Benutzern, IP-Adressbereichen oder Geräten. VAMP verfolgt Leistungsmetriken nach und analysiert diese, was die Automatisierung auf Basis von realistischen Daten ermöglicht. Zudem können Sie automatische Rollbacks für Fehler einrichten oder einzelne Dienstvarianten basierend auf Lasten oder Latenzen skalieren.
+[VAMP](https://vamp.io/) ist ein Open-Source-System, das die Umstellung vereinfachen und Ihren bevorzugten Containerplaner um Canary-Releasing-Funktionen erweitern soll. Die Canary-Funktionen von VAMP gehen über auf Prozentsätzen basierende Rollouts hinaus. Der Datenverkehr kann gefiltert und in eine Vielzahl von Bedingungen unterteilt werden, z.B. zur Anvisierung von bestimmten Benutzern, IP-Adressbereichen oder Geräten. VAMP verfolgt Leistungsmetriken nach und analysiert diese, was die Automatisierung auf Basis von realistischen Daten ermöglicht. Zudem können Sie automatische Rollbacks für Fehler einrichten oder einzelne Dienstvarianten basierend auf Lasten oder Latenzen skalieren.
 
 ## <a name="set-up-azure-container-service-with-dcos"></a>Einrichten von Azure Container Service mit DC/OS
 
@@ -62,12 +62,12 @@ Für VAMP ist Elasticsearch zur Sammlung und Aggregation von Metriken erforderli
 
 2. Wählen Sie im Popupmenü **Neuen Dienst bereitstellen** den **JSON-Modus** aus.
 
-  ![Auswählen des JSON-Modus](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
+   ![Auswählen des JSON-Modus](./media/container-service-dcos-vamp-canary-release/02_deploy_service_json_mode.png)
 
 3. Fügen Sie folgenden JSON-Code ein. In dieser Konfiguration wird der Container mit 1 GB RAM und einer grundlegenden Integritätsprüfung über den Elasticsearch-Port ausgeführt.
   
-  ```JSON
-  {
+   ```JSON
+   {
     "id": "elasticsearch",
     "instances": 1,
     "cpus": 0.2,
@@ -89,47 +89,47 @@ Für VAMP ist Elasticsearch zur Sammlung und Aggregation von Metriken erforderli
         "maxConsecutiveFailures": 0
       }
     ]
-  }
-  ```
+   }
+   ```
   
 
 3. Klicken Sie auf **Bereitstellen**.
 
-  DC/OS stellt den Elasticsearch-Container bereit. Der Fortschritt kann auf der Seite **Dienste** nachverfolgt werden.  
+   DC/OS stellt den Elasticsearch-Container bereit. Der Fortschritt kann auf der Seite **Dienste** nachverfolgt werden.  
 
-  ![Bereitstellen von Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
+   ![Bereitstellen von Elasticsearch](./media/container-service-dcos-vamp-canary-release/03_deply_elasticsearch.png)
 
 ### <a name="deploy-vamp"></a>Bereitstellen von VAMP
 
 Sobald Elasticsearch als **Wird ausgeführt** gemeldet wird, können Sie das VAMP-DC/OS-Universe-Paket hinzufügen. 
 
 1. Navigieren Sie zu **Universe**, und suchen Sie nach **VAMP**. 
-  ![VAMP in DC/OS Universe](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
+   ![VAMP in DC/OS Universe](./media/container-service-dcos-vamp-canary-release/04_universe_deploy_vamp.png)
 
 2. Klicken Sie neben dem VAMP-Paket auf **Installieren**, und wählen Sie **Erweiterte Installation** aus.
 
 3. Scrollen Sie nach unten, und geben Sie folgende Elasticsearch-URL ein: `http://elasticsearch.marathon.mesos:9200`. 
 
-  ![Eingeben der Elasticsearch-URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
+   ![Eingeben der Elasticsearch-URL](./media/container-service-dcos-vamp-canary-release/05_universe_elasticsearch_url.png)
 
 4. Klicken Sie auf **Überprüfen und installieren**, und dann auf **Installieren**, um die Bereitstellung zu starten.  
 
-  DC/OS stellt alle erforderlichen VAMP-Komponenten bereit. Der Fortschritt kann auf der Seite **Dienste** nachverfolgt werden.
+   DC/OS stellt alle erforderlichen VAMP-Komponenten bereit. Der Fortschritt kann auf der Seite **Dienste** nachverfolgt werden.
   
-  ![Bereitstellen von VAMP als Universe-Paket](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
+   ![Bereitstellen von VAMP als Universe-Paket](./media/container-service-dcos-vamp-canary-release/06_deploy_vamp.png)
   
 5. Nach Abschluss der Bereitstellung können Sie auf die VAMP-Benutzeroberfläche zugreifen:
 
-  ![VAMP-Dienst in DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
+   ![VAMP-Dienst in DC/OS](./media/container-service-dcos-vamp-canary-release/07_deploy_vamp_complete.png)
   
-  ![VAMP-Benutzeroberfläche](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
+   ![VAMP-Benutzeroberfläche](./media/container-service-dcos-vamp-canary-release/08_vamp_ui.png)
 
 
 ## <a name="deploy-your-first-service"></a>Bereitstellen des ersten Diensts
 
 Stellen Sie nach der Einrichtung von VAMP einen Dienst aus einer Blaupause bereit. 
 
-In der einfachsten Form beschreibt eine [VAMP-Blaupause](http://vamp.io/documentation/using-vamp/blueprints/) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
+In der einfachsten Form beschreibt eine [VAMP-Blaupause](https://vamp.io/documentation/using-vamp/blueprints/) die bereitzustellenden Endpunkte (Gateways), Cluster und Dienste. VAMP verwendet Cluster, um unterschiedliche Varianten desselben Diensts zur Durchführung eines Canary-Release oder A/B-Tests in logische Gruppen zu gruppieren.  
 
 In diesem Szenario wird eine monolithische Beispielanwendung namens [ **sava**](https://github.com/magneticio/sava) in der Version 1.0 verwendet. Die monolithische Anwendung wird in einem Docker-Container verpackt, der sich im Docker-Hub unter „magneticio/sava:1.0.0“ befindet. Die App wird normalerweise auf Port 8080 ausgeführt, Sie sollten sie in diesem Fall jedoch über Port 9050 bereitstellen. Stellen Sie die App mithilfe einer einfachen Blaupause über VAMP bereit.
 
@@ -139,11 +139,11 @@ In diesem Szenario wird eine monolithische Beispielanwendung namens [ **sava**](
 
 3. Fügen Sie die folgende YAML-Blaupausendatei ein. Diese Blaupause enthält einen Cluster mit nur einer Dienstvariante, die wir in einem späteren Schritt ändern:
 
-  ```YAML
-  name: sava                        # deployment name
-  gateways:
+   ```YAML
+   name: sava                        # deployment name
+   gateways:
     9050: sava_cluster/webport      # stable endpoint
-  clusters:
+   clusters:
     sava_cluster:               # cluster to create
      services:
         -
@@ -152,7 +152,7 @@ In diesem Szenario wird eine monolithische Beispielanwendung namens [ **sava**](
             deployable: magneticio/sava:1.0.0
             ports:
               webport: 8080/http # cluster endpoint, used for canary releasing
-  ```
+   ```
 
 4. Klicken Sie auf **Speichern**. VAMP initiiert die Bereitstellung.
 
@@ -202,9 +202,9 @@ So führen Sie den neuen sava 1.1-Dienst mit der ausgeführten Bereitstellung zu
 
 2. Klicken Sie auf **Hinzufügen**, und fügen Sie die folgende YAML-Datei der Blaupause ein: Diese Blaupause beschreibt eine neue Dienstvariante (sava:1.1.0) für die Bereitstellung des vorhandenen Clusters (sava_cluster).
 
-  ```YAML
-  name: sava:1.1.0      # blueprint name
-  clusters:
+   ```YAML
+   name: sava:1.1.0      # blueprint name
+   clusters:
     sava_cluster:       # cluster to update
       services:
         -
@@ -213,17 +213,17 @@ So führen Sie den neuen sava 1.1-Dienst mit der ausgeführten Bereitstellung zu
             deployable: magneticio/sava:1.1.0    
             ports:
               webport: 8080/http # cluster endpoint to update
-  ```
+   ```
   
 3. Klicken Sie auf **Speichern**. Die Blaupause wird auf der Seite **Blaupausen** gespeichert und aufgeführt.
 
 4. Öffnen Sie das Aktionsmenü in der sava:1.1-Blaupause, und klicken Sie auf **Zusammenführen zu**.
 
-  ![VAMP-Benutzeroberfläche – Blaupausen](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
+   ![VAMP-Benutzeroberfläche – Blaupausen](./media/container-service-dcos-vamp-canary-release/20_sava110_mergeto.png)
 
 5. Wählen Sie die **sava**-Bereitstellung aus, und klicken Sie auf **Zusammenführen**.
 
-  ![VAMP-Benutzeroberfläche – Zusammenführen der Blaupause für die Bereitstellung](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
+   ![VAMP-Benutzeroberfläche – Zusammenführen der Blaupause für die Bereitstellung](./media/container-service-dcos-vamp-canary-release/21_sava110_merge.png)
 
 VAMP stellt die neue Dienstvariante „sava:1.1.0“ bereit, die in der Blaupause zusammen mit sava:1.0.0 im **sava_cluster** der ausgeführten Bereitstellung beschrieben wird. 
 
@@ -241,11 +241,11 @@ Stellen Sie bei beiden sava-Versionen, die im selben Cluster bereitgestellt werd
 
 2. Legen Sie die Gewichtsverteilung auf 50/50 % fest, und klicken Sie auf **Speichern**.
 
-  ![VAMP-Benutzeroberfläche – Schieberegler für die Gewichtung des Gateways](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
+   ![VAMP-Benutzeroberfläche – Schieberegler für die Gewichtung des Gateways](./media/container-service-dcos-vamp-canary-release/24_sava_cluster_webport_weight.png)
 
 3. Kehren Sie zu Ihrem Browser zurück, und aktualisieren Sie die sava-Seite einige Male. Die sava-Anwendung wechselt nun zwischen einer sava:1.0-Seite und einer sava:1.1-Seite.
 
-  ![Wechseln zwischen den Diensten sava1.0 und sava1.1](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
+   ![Wechseln zwischen den Diensten sava1.0 und sava1.1](./media/container-service-dcos-vamp-canary-release/25_sava_100_101.png)
 
 
   > [!NOTE]
@@ -264,23 +264,23 @@ Sie können eine Bedingung erstellen, um alle Firefox-Benutzer zu filtern und an
 
 2. Geben Sie die Bedingung **user-agent == Firefox** ein, und klicken Sie auf ![VAMP-Benutzeroberfläche – Speichern](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
 
-  VAMP fügt die Bedingung mit einer Standardstärke von 0 % hinzu. Um die Filterung des Datenverkehrs zu starten, müssen Sie die Stärke der Bedingung anzupassen.
+   VAMP fügt die Bedingung mit einer Standardstärke von 0 % hinzu. Um die Filterung des Datenverkehrs zu starten, müssen Sie die Stärke der Bedingung anzupassen.
 
 3. Klicken Sie auf ![VAMP-Benutzeroberfläche – Bearbeiten](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png), um die auf die Bedingung angewendete **STÄRKE** zu ändern.
  
 4. Legen Sie die **STÄRKE** auf 100 % fest, und klicken Sie zum Speichern auf ![VAMP-Benutzeroberfläche – Speichern](./media/container-service-dcos-vamp-canary-release/vamp_ui_save.png).
 
-  VAMP sendet nun sämtlichen Datenverkehr, der die Bedingung erfüllt (alle Firefox-Benutzer), an sava:1.0.0.
+   VAMP sendet nun sämtlichen Datenverkehr, der die Bedingung erfüllt (alle Firefox-Benutzer), an sava:1.0.0.
 
-  ![VAMP-Benutzeroberfläche – Anwenden der Bedingung auf das Gateway](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
+   ![VAMP-Benutzeroberfläche – Anwenden der Bedingung auf das Gateway](./media/container-service-dcos-vamp-canary-release/26_apply_condition.png)
 
 5. Abschließend stellen Sie die Gewichtung des Gateways so ein, dass sämtlicher verbleibender Datenverkehr (alle Benutzer, die kein Firefox verwenden) an die neue sava:1.1.0-Seite gesendet wird. Klicken Sie neben **GEWICHTUNG** auf ![VAMP-Benutzeroberfläche – Bearbeiten](./media/container-service-dcos-vamp-canary-release/vamp_ui_edit.png), und legen Sie die Gewichtungsverteilung so fest, dass der gesamte Datenverkehr an die Route „sava/sava_cluster/sava:1.1.0/webport“ umgeleitet wird.
 
-  Sämtlicher Datenverkehr, der nicht von der Bedingung gefiltert wurde, wird nun an die neue sava:1.1.0-Seite umgeleitet.
+   Sämtlicher Datenverkehr, der nicht von der Bedingung gefiltert wurde, wird nun an die neue sava:1.1.0-Seite umgeleitet.
 
 6. Um den Filter selbst anzuwenden, öffnen Sie zwei verschiedene Browser (einen Firefox- und einen anderen Browser), und rufen Sie über beide Browser den sava-Dienst auf. Alle Firefox-Anforderungen werden an sava:1.0.0 gesendet, während alle anderen Browser an sava:1.1.0 umgeleitet werden.
 
-  ![VAMP-Benutzeroberfläche – Filtern von Datenverkehr](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
+   ![VAMP-Benutzeroberfläche – Filtern von Datenverkehr](./media/container-service-dcos-vamp-canary-release/27_filter_traffic.png)
 
 ## <a name="summing-up"></a>Zusammenfassung
 
@@ -291,9 +291,9 @@ Zudem haben wir einige leistungsstarke Funktionen von VAMP besprochen, z.B. die 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Informationen zum Verwalten von VAMP-Aktionen finden Sie unter [VAMP-REST-API](http://vamp.io/documentation/api/api-reference/).
+* Informationen zum Verwalten von VAMP-Aktionen finden Sie unter [VAMP-REST-API](https://vamp.io/documentation/api/api-reference/).
 
 * Erstellen Sie VAMP-Automatisierungsskripts in Node.js, und führen Sie sie als [VAMP-Workflows](https://vamp.io/documentation/using-vamp/v1.0.0/workflows/#create-a-workflow) aus.
 
-* Weitere Informationen finden Sie in den zusätzlichen [VAMP-Tutorials](http://vamp.io/documentation/tutorials/).
+* Weitere Informationen finden Sie in den zusätzlichen [VAMP-Tutorials](https://vamp.io/documentation/tutorials/).
 

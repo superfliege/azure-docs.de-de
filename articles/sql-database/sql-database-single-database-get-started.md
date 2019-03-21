@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
-ms.openlocfilehash: 64d16073062c0fd7f0b97a64950ceab9efc0eacf
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 5aeb84e5086fb0cf5c30e175ad419ee70bed55ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984882"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075184"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-portal"></a>Schnellstart: Erstellen einer Einzeldatenbank in Azure SQL-Datenbank über das Azure-Portal
 
@@ -42,8 +42,8 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
    - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, geben Sie *myResourceGroup* ein, und klicken Sie auf **OK**.
    - **Quelle auswählen**: Wählen Sie in der Dropdownliste **Sample (AdventureWorksLT)** aus.
 
-    > [!IMPORTANT]
-    > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
+     > [!IMPORTANT]
+     > Sie müssen die Daten **Sample (AdventureWorksLT)** auswählen, um diesen Schnellstart und andere Schnellstarts für Azure SQL-Datenbank, in denen diese Daten verwendet werden, einfach ausführen zu können.
   
    ![Erstellen einer Einzeldatenbank](./media/sql-database-get-started-portal/create-database-1.png)
 
@@ -67,7 +67,7 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
    > [!NOTE]
    > In diesem Schnellstart wird das [DTU-basierte Kaufmodell](sql-database-service-tiers-dtu.md) verwendet, das [V-Kern-basierte Kaufmodell](sql-database-service-tiers-vcore.md) ist jedoch ebenfalls verfügbar.
    > [!IMPORTANT]
-   > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+   > In allen Regionen außer den folgenden ist im Premium-Tarif derzeit mehr als 1 TB Speicher verfügbar: Regionen „China, Osten“, „China, Norden“, „Deutschland, Mitte“, „Deutschland, Nordosten“, „USA, Westen-Mitte“, „US DoD“ und „US Government, Mitte“. In diesen Regionen ist der Speicher im Tarif „Premium“ auf 1 TB begrenzt.  Weitere Informationen finden Sie unter [Einschränkungen von P11 und P15](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 8. Wählen Sie für diesen Schnellstart die Dienstebene **Standard** und anschließend mithilfe des Schiebereglers **10 DTUs (S0)** und **1** GB Speicher aus.
 9. Wählen Sie **Übernehmen**.  
@@ -76,9 +76,9 @@ So erstellen Sie eine Einzeldatenbank mit den AdventureWorksLT-Beispieldaten:
 
 10. Klicken Sie im Formular **SQL-Datenbank** auf **Erstellen**, um die Ressourcengruppe, den Server und die Datenbank bereitzustellen.
 
-   Die Bereitstellung nimmt einige Minuten in Anspruch. Sie können auf der Symbolleiste auf **Benachrichtigungen** klicken, um den Status des Bereitstellungsprozesses zu überwachen.
+    Die Bereitstellung nimmt einige Minuten in Anspruch. Sie können auf der Symbolleiste auf **Benachrichtigungen** klicken, um den Status des Bereitstellungsprozesses zu überwachen.
 
-   ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
+    ![Benachrichtigung](./media/sql-database-get-started-portal/notification.png)
 
 ## <a name="query-the-database"></a>Abfragen der Datenbank
 

@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 3abe7bae5506b721d4baf1e18da390b3e67977d8
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 5a1cae376ab9db2b0c4b5e0e5514bf7745593433
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894579"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Erstellen und Bereitstellen von Logik-Apps mit Azure Resource Manager-Vorlagen
 
@@ -82,7 +82,7 @@ Im Anschluss werden die Parameter in der Vorlage beschrieben:
 | Parameter | BESCHREIBUNG | Beispiel für JSON-Definition | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | Definiert den Namen der Logik-App, die durch diese Vorlage erstellt wird. | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | Definiert den Speicherort, der zu Testzwecken gepingt werden soll. | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
+| `testUri` | Definiert den Speicherort, der zu Testzwecken gepingt werden soll. | "testUri": { "type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} | 
 ||||
 
 Bei Bedarf können Sie sich ausführlicher über die [REST-API für Logic Apps-Workflowdefinition und -eigenschaften](https://docs.microsoft.com/rest/api/logic/workflows) sowie über das [Erstellen von Workflowdefinitionen für Logik-Apps per JSON-Code](logic-apps-author-definitions.md) informieren.

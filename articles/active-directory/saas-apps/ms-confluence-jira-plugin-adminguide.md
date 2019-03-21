@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b81129ada4710eff58d50bf998802e8ac1b2788
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1a674748e9e95828436df25222f6daad881e0487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191060"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109136"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>Atlassian Jira und Confluence – Administratorhandbuch für Azure Active Directory
 
@@ -110,33 +110,33 @@ Die folgende Abbildung zeigt den Konfigurationsbildschirm in JIRA und Confluence
 
 ![Plug-In-Konfigurationsbildschirm](./media/ms-confluence-jira-plugin-adminguide/jira.png)
 
-*   **Metadaten-URL**: Die URL zum Abrufen der Verbundmetadaten von Azure AD.
+* **Metadaten-URL**: Die URL zum Abrufen der Verbundmetadaten von Azure AD.
 
-*   **Bezeichner**: Die URL, die Azure AD zum Überprüfen der Quelle der Anforderung verwendet. Sie wird dem Element **Bezeichner** in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/“ ab.
+* **Bezeichner**: Die URL, die Azure AD zum Überprüfen der Quelle der Anforderung verwendet. Sie wird dem Element **Bezeichner** in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/“ ab.
 
-*   **Antwort-URL**: Die Antwort-URL in Ihrem Identitätsanbieter (IdP), die die SAML-Anmeldung initiiert. Sie wird dem **Antwort-URL**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
+* **Antwort-URL**: Die Antwort-URL in Ihrem Identitätsanbieter (IdP), die die SAML-Anmeldung initiiert. Sie wird dem **Antwort-URL**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
 
-*   **Anmelde-URL**: Die Anmelde-URL in Ihrem IdP, die die SAML-Anmeldung initiiert. Sie wird dem **Anmelde**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
+* **Anmelde-URL**: Die Anmelde-URL in Ihrem IdP, die die SAML-Anmeldung initiiert. Sie wird dem **Anmelde**-Element in Azure AD zugeordnet. Das Plug-In leitet diese URL automatisch als „https://*<Domäne:Port>*/plugins/servlet/saml/auth“ ab.
 
-*   **IdP-Entitäts-ID**: Die Entitäts-ID, die Ihr IdP verwendet. Dieses Feld wird gefüllt, wenn die Metadaten-URL aufgelöst ist.
+* **IdP-Entitäts-ID**: Die Entitäts-ID, die Ihr IdP verwendet. Dieses Feld wird gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-*   **Anmelde-URL**: Die Anmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
+* **Anmelde-URL**: Die Anmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-*   **Abmelde-URL**: Die Abmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
+* **Abmelde-URL**: Die Abmelde-URL aus Ihrem IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-*   **X.509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
+* **X.509-Zertifikat**: Das X.509-Zertifikat Ihres IdP. Dieses Feld wird aus Azure AD gefüllt, wenn die Metadaten-URL aufgelöst ist.
 
-*   **Anmeldeschaltflächen-Name**: Der Name der Anmeldeschaltfläche, die Ihre Organisation Benutzern auf der Anmeldeseite anzeigen möchte.
+* **Anmeldeschaltflächen-Name**: Der Name der Anmeldeschaltfläche, die Ihre Organisation Benutzern auf der Anmeldeseite anzeigen möchte.
 
-*   **SAML-Benutzer-ID-Speicherorte**: Der Speicherort, wo die JIRA- bzw. Confluence-Benutzer-ID in der SAML-Antwort erwartet wird. Dies kann in **NameID** oder einem benutzerdefinierten Attributnamen sein.
+* **SAML-Benutzer-ID-Speicherorte**: Der Speicherort, wo die JIRA- bzw. Confluence-Benutzer-ID in der SAML-Antwort erwartet wird. Dies kann in **NameID** oder einem benutzerdefinierten Attributnamen sein.
 
-*   **Attributname**: Name des Attributs, in dem die Benutzer-ID erwartet werden kann.
+* **Attributname**: Name des Attributs, in dem die Benutzer-ID erwartet werden kann.
 
-*   **Startbereichsermittlung aktivieren**: Erforderliche Auswahl, wenn das Unternehmen auf Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) basierendes Anmelden einsetzt.
+* **Startbereichsermittlung aktivieren**: Erforderliche Auswahl, wenn das Unternehmen auf Active Directory-Verbunddiensten (Active Directory Federation Services, AD FS) basierendes Anmelden einsetzt.
 
-*   **Domänenname**: Der Domänenname bei AD FS-basiertem Anmelden.
+* **Domänenname**: Der Domänenname bei AD FS-basiertem Anmelden.
 
-*   **Einmaliges Anmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
+* **Einmaliges Anmelden aktivieren**: Erforderliche Auswahl, wenn eine Abmeldung bei Azure AD erfolgen soll, wenn ein Benutzer sich bei JIRA oder Confluence abmeldet.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

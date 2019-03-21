@@ -10,12 +10,12 @@ author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: 803a52994536d2d6f39a064f97af7831af0cebb6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 0819c232412e1619f82a25476a8318d26c8087da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453170"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105725"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Azure Machine Learning Studio
 
@@ -95,21 +95,21 @@ Zuerst fügen wir ein Modul hinzu, mit dem die Spalte **normalized-losses** voll
 
 1. Klicken Sie auf das Modul [Select Columns in Dataset][select-columns] aus, und klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
 
-    - Klicken Sie auf der linken Seite auf **With rules**
-    - Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Mit diesen Regeln wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu durchlaufen (mit Ausnahme derer, die wir jetzt ausschließen werden).
-    - Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Eine Liste von Spalten wird angezeigt. Wählen Sie **normalized-losses** aus. Daraufhin wird die Spalte dem Textfeld hinzugefügt.
-    - Klicken Sie auf die Schaltfläche mit dem Häkchen („OK“), um die Spaltenauswahl zu schließen (unten rechts).
+   - Klicken Sie auf der linken Seite auf **With rules**
+   - Klicken Sie unter **Begin With** (Beginnen mit) auf **All columns** (Alle Spalten). Mit diesen Regeln wird [Select Columns in Dataset][select-columns] angewiesen, alle Spalten zu durchlaufen (mit Ausnahme derer, die wir jetzt ausschließen werden).
+   - Wählen Sie in den Dropdownlisten die Optionen **Ausschließen** und **Spaltennamen** aus, und klicken Sie auf das Textfeld. Eine Liste von Spalten wird angezeigt. Wählen Sie **normalized-losses** aus. Daraufhin wird die Spalte dem Textfeld hinzugefügt.
+   - Klicken Sie auf die Schaltfläche mit dem Häkchen („OK“), um die Spaltenauswahl zu schließen (unten rechts).
 
-    ![Starten der Spaltenauswahl und Ausschließen der Spalte „normalized-losses“](./media/create-experiment/launch-column-selector.png)
+     ![Starten der Spaltenauswahl und Ausschließen der Spalte „normalized-losses“](./media/create-experiment/launch-column-selector.png)
 
-    Der Eigenschaftenbereich für **Select Columns in Dataset** zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
+     Der Eigenschaftenbereich für **Select Columns in Dataset** zeigt nun an, dass mit Ausnahme von **normalized-losses** alle Spalten des Datasets übergeben werden.
 
-    ![Eigenschaftenbereich: Anzeige, dass die Spalte „normalized-losses“ ausgeschlossen wurde](./media/create-experiment/showing-excluded-column.png)
+     ![Eigenschaftenbereich: Anzeige, dass die Spalte „normalized-losses“ ausgeschlossen wurde](./media/create-experiment/showing-excluded-column.png)
 
-    > [!TIP] 
-    > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
+     > [!TIP] 
+     > Sie können einen Kommentar zu einem Modul eingeben, indem Sie auf das Modul doppelklicken und Text eingeben. Auf diese Weise können Sie mit einem Blick sehen, welche Funktion das Modul in Ihrem Experiment erfüllt. Doppelklicken Sie in diesem Fall auf das Modul [Select Columns in Dataset][select-columns], und geben Sie den Kommentar „normalized-losses ausschließen“ ein.
 
-    ![Doppelklicken auf ein Modul, um einen Kommentar hinzuzufügen](./media/create-experiment/add-comment.png)
+     ![Doppelklicken auf ein Modul, um einen Kommentar hinzuzufügen](./media/create-experiment/add-comment.png)
 
 1. Ziehen Sie das Modul [Clean Missing Data][clean-missing-data] in den Experimentbereich, und verbinden Sie es mit dem Modul [Select Columns in Dataset][select-columns]. Klicken Sie im **Eigenschaftenbereich** unter **Cleaning mode** (Reinigungsmodus) auf die Option **Remove entire row** (Gesamte Zeile entfernen). Mit diesen Optionen wird [Clean Missing Data][clean-missing-data] (Fehlende Daten bereinigen) angewiesen, Daten durch das Entfernen von Zeilen mit fehlenden Werten zu bereinigen. Doppelklicken Sie auf das Modul, und geben Sie den Kommentar "Remove missing value rows" ein.
 

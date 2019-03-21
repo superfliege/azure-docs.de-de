@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/25/2019
 ms.author: danlep
-ms.openlocfilehash: 394cd1d7f6b806a49c2de471647fd16ba4451d5c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: ebf4b413ecfbdf850f0d9e6ebc50f166e27bee0a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978502"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081847"
 ---
 # <a name="find-windows-vm-images-in-the-azure-marketplace-with-azure-powershell"></a>Suchen nach Windows-VM-Images im Azure Marketplace mit Azure PowerShell
 
@@ -37,7 +37,7 @@ Sie können auch über die [Azure Marketplace](https://azuremarketplace.microsof
 Die folgende Tabelle enthält eine Teilmenge der verfügbaren SKUs für die angegebenen Herausgeber und Angebote:
 
 | Herausgeber | Angebot | Sku |
-|:--- |:--- |:--- |:--- |
+|:--- |:--- |:--- |
 | MicrosoftWindowsServer |Windows Server |2019-Datacenter |
 | MicrosoftWindowsServer |Windows Server |2019-Datacenter-Core |
 | MicrosoftWindowsServer |Windows Server |2019-Datacenter-with-Containers |
@@ -173,7 +173,7 @@ Skus
 Dann für die SKU *2019-Datacenter*:
 
 ```powershell
-$skuName="2016-Datacenter"
+$skuName="2019-Datacenter"
 Get-AzVMImage -Location $locName -Publisher $pubName -Offer $offerName -Sku $skuName | Select Version
 ```
 

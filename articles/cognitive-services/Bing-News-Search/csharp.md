@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 1/10/2019
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: 74ac8602e61404214f300682f5696100b8fa0c60
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: f7c5ce2ce4725277fc08634a021d2b38d11abc1c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074794"
 ---
 # <a name="quickstart-search-for-news-using-c-and-the-bing-news-search-rest-api"></a>Schnellstart: Suchen nach Nachrichten mit C# und der Bing-News-Suche-REST-API
 
@@ -28,7 +28,7 @@ Diese Anwendung ist zwar in C# geschrieben, an sich ist die API aber ein RESTful
 
 * Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition.
 * Das [Json.NET](https://www.newtonsoft.com/json)-Framework, das als NuGet-Paket verfügbar ist
-* Unter Linux/macOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden
+* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
 
 [!INCLUDE [cognitive-services-bing-news-search-signup-requirements](../../../includes/cognitive-services-bing-news-search-signup-requirements.md)]
 
@@ -53,7 +53,7 @@ Siehe auch [Cognitive Services-Preise – Bing-Suche-API](https://azure.microsof
     const string uriBase = "https://api.cognitive.microsoft.com/bing/v7.0/news/search";
     const string searchTerm = "Microsoft";
     ```
-## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Erstellen einer Struktur zum Formatieren der Bing-News-Suche-Antwort
+   ## <a name="create-a-struct-to-format-the-bing-news-search-response"></a>Erstellen einer Struktur zum Formatieren der Bing-News-Suche-Antwort
 
 1. Definieren Sie eine `SearchResult`-Struktur, die die Bildersuchergebnisse und JSON-Headerinformationen enthält.
 

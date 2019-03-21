@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 9b53a26f5163eae17198302fc26c079185cb7bd8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: af9b34d90098409135020fa8a45ecd0253f25b22
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355071"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57454543"
 ---
 # <a name="create-azure-marketplace-and-appsource-offers"></a>Erstellen von Azure Marketplace- und AppSource-Angeboten
 
@@ -55,7 +55,7 @@ Wenn Sie ein Angebot erstellen, geben Sie erforderliche und optionale Daten in j
 |      --------       |   -------                                                            |
 | **Angebotseinstellungen**  | Erfasst Informationen zum Angebot und zur Identität des Herausgebers.                    |
 | **SKUs**            | Definiert die technischen und geschäftlichen Merkmale für jede SKU-Version (Stock Keeping Unit) Ihres Angebots. |
-| **Testversion**      | Definiert für diejenigen Typen, die diese optionale Funktion unterstützen, eine Demo für Ihr Angebot.  Weitere Informationen finden Sie unter [Was ist die Testversion?](../../cloud-partner-portal-orig/what-is-test-drive.md)  |
+| **Testversion**      | Definiert für diejenigen Typen, die diese optionale Funktion unterstützen, eine Demo für Ihr Angebot.  Weitere Informationen finden Sie unter [Was ist die Testversion?](../test-drive/what-is-test-drive.md)  |
 | **Marketplace** oder **Storefront** | Erfasst die Texte, Dokumente und Bilder zur Listung des Angebots auf dem Marketplace. |
 | **Unterstützung**         | Erfasst Kontaktinformationen für Kunden-, Entwicklungs- und Onlinesupport  |
 |  |  |

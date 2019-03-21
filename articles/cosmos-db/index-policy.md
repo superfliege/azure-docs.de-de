@@ -4,14 +4,14 @@ description: Erhalten Sie Informationen zur Funktionsweise der Indizierung in Az
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2018
+ms.date: 3/1/2019
 ms.author: mjbrown
-ms.openlocfilehash: 6c145b58a1f0eaaf93fb5797028e11ba8338d6be
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 0ba5cdd4f92390634d6d2bea8add8309cb1f4d3e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460232"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014501"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Indizierungsrichtlinie in Azure Cosmos DB
 
@@ -23,9 +23,9 @@ Sie können die standardmäßige Indizierungsrichtlinie für einen Azure Cosmos-
 
 * **Konfigurieren von Indizierungsmodi:** Durch die Verwendung der Indizierungsrichtlinie für einen Container können Sie verschiedene Indizierungsmodi wie *Konsistent* oder *Kein* konfigurieren.
 
-## <a name="indexing-modes"></a>Indizierungsmodi 
+## <a name="indexing-modes"></a>Indizierungsmodi
 
-Azure Cosmos DB unterstützt zwei Indizierungsmodi, die Sie in einem Azure Cosmos-Container konfigurieren können. Sie können die folgenden zwei Indizierungsmodi über die Indizierungsrichtlinie konfigurieren: 
+Azure Cosmos DB unterstützt zwei Indizierungsmodi, die Sie in einem Azure Cosmos-Container konfigurieren können. Sie können die folgenden zwei Indizierungsmodi über die Indizierungsrichtlinie konfigurieren:
 
 * **Konsistent:** Wenn die Richtlinie eines Azure Cosmos-Containers auf „Konsistent“ festgelegt ist, gilt für die Abfragen für einen bestimmten Container die gleiche Konsistenzebene wie die für Punktlesevorgänge angegebene Ebene (z.B. „stark“, „begrenzte Veraltung“, „Sitzung“ oder „letztlich“). 
 

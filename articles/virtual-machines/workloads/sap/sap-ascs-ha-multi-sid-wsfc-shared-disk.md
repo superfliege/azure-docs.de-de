@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ee5dc346def58ea7362a763d088145eb0d04a608
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 777fda4317abf431c83b7328084085841eb1f757
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34656729"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007983"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -56,7 +56,7 @@ ms.locfileid: "34656729"
 
 [deployment-guide]:deployment-guide.md
 
-[dr-guide-classic]:http://go.microsoft.com/fwlink/?LinkID=521971
+[dr-guide-classic]:https://go.microsoft.com/fwlink/?LinkID=521971
 
 [getting-started]:get-started.md
 
@@ -223,7 +223,7 @@ In diesem Artikel wird der Übergang von einer einzelnen ASCS/SCS-Installation z
 >Dies bedeutet, dass die maximale Anzahl von SAP ASCS/SCS-Instanzen auf einem WSFC-Cluster gleich der maximalen Anzahl privater Front-End-IPs pro internem Azure-Lastenausgleichsmodul ist.
 >
 
-Weitere Informationen zu den Grenzwerten für den Lastenausgleich finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleich“ unter [Netzwerklimits: Azure Resource Manager][networking-limits-azure-resource-manager].
+Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -243,7 +243,7 @@ Das Ziel besteht darin, mehrere SAP ABAP ASCS- oder SAP Java SCS-Clusterinstanze
 
 ![Mehrere SAP ASCS/SCS-Clusterinstanzen in Azure][sap-ha-guide-figure-6002]
 
-Weitere Informationen zu den Grenzwerten für den Lastenausgleich finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleich“ unter [Netzwerklimits: Azure Resource Manager][networking-limits-azure-resource-manager].
+Weitere Informationen zu den Grenzwerten für Lastenausgleichsmodule finden Sie im Abschnitt „Private Front-End-IP pro Lastenausgleichsmodul“ unter [Netzwerkgrenzwerte: Azure Resource Manager][networking-limits-azure-resource-manager].
 
 Die vollständige Szene mit zwei hoch verfügbaren SAP-Systemen sieht dann so aus:
 
@@ -279,7 +279,7 @@ Sie können eine zusätzliche SAP ASCS/SCS-Instanz auf dem vorhandenen WSFC-Clus
 Sie können einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz mit den folgenden Parametern erstellen:
 
 | Neuer virtueller SAP ASCS/SCS-Hostname | Zugeordnete IP-Adresse |
-| --- | --- | --- |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
 Der neue Hostname und die neue IP-Adresse werden im DNS-Manager angezeigt, wie im folgenden Screenshot dargestellt:

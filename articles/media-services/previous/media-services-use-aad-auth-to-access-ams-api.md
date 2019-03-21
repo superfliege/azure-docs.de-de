@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: juliako
-ms.openlocfilehash: b846e1fe4552c6cec356a7e7828135b0e1fdf315
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa13ffe450b60bd8c896636911268a98b49bbc0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55994100"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104130"
 ---
 # <a name="access-the-azure-media-services-api-with-azure-ad-authentication"></a>Zugreifen auf die Azure Media Services-API per Azure AD-Authentifizierung  
  
@@ -71,20 +71,20 @@ Im obigen Diagramm stellen die Zahlen den Fluss der Anforderungen in chronologis
 1. Fordern Sie einen Benutzer zur Eingabe von Anmeldeinformationen auf.
 2. Fordern Sie ein Azure AD-Zugriffstoken mit den folgenden Parametern an:  
 
-    * Azure AD-Mandanten-Endpunkt
+   * Azure AD-Mandanten-Endpunkt
 
-        Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
-    * Media Services-Ressourcen-URI. 
+       Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
+   * Media Services-Ressourcen-URI. 
 
-        Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
+       Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
 
-    * Client-ID für (native) Media Services-Anwendungen.
-    * Umleitungs-URI für Media Services-Anwendungen (nativ)
-    * Ressourcen-URI für REST Media Services
+   * Client-ID für (native) Media Services-Anwendungen.
+   * Umleitungs-URI für Media Services-Anwendungen (nativ)
+   * Ressourcen-URI für REST Media Services
         
-        Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
+       Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
 
-    Informationen zu den Werten dieser Parameter finden Sie unter [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal), indem Sie die Option für die Benutzerauthentifizierung wählen.
+     Informationen zu den Werten dieser Parameter finden Sie unter [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal), indem Sie die Option für die Benutzerauthentifizierung wählen.
 
 3. Das Azure AD-Zugriffstoken wird an den Client gesendet.
 4. Der Client sendet eine Anforderung an die Azure Media-REST-API mit dem Azure AD-Zugriffstoken.
@@ -113,20 +113,20 @@ In der obigen Abbildung stellen die Zahlen den Fluss der Anforderungen in chrono
     
 1. Eine App der mittleren Ebene (Web-API oder Webanwendung) fordert ein Azure AD-Zugriffstoken an, das die folgenden Parameter enthält:  
 
-    * Azure AD-Mandantenendpunkt.
+   * Azure AD-Mandantenendpunkt.
 
-        Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
-    * Media Services-Ressourcen-URI. 
+       Die Informationen zum Mandanten können über das Azure-Portal abgerufen werden. Platzieren Sie den Cursor in der oberen rechten Ecke über dem Namen des angemeldeten Benutzers.
+   * Media Services-Ressourcen-URI. 
 
-        Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
+       Dieser URI ist für Media Services-Konten identisch, die sich in derselben Azure-Umgebung befinden (z.B. https://rest.media.azure.net).
 
-    * Ressourcen-URI für REST Media Services
+   * Ressourcen-URI für REST Media Services
 
-        Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
+       Der URI gibt den REST-API-Endpunkt an (z.B. https://test03.restv2.westus.media.azure.net/api/).
 
-    * Werte der Azure AD-Anwendung: Client-ID und geheimer Clientschlüssel.
+   * Werte der Azure AD-Anwendung: Client-ID und geheimer Clientschlüssel.
     
-    Informationen zu den Werten dieser Parameter finden Sie unter [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal), indem Sie die Option für die Dienstprinzipalauthentifizierung wählen.
+     Informationen zu den Werten dieser Parameter finden Sie unter [Get started with Azure AD authentication by using the Azure portal](media-services-portal-get-started-with-aad.md) (Erste Schritte mit der Azure AD-Authentifizierung mit dem Azure-Portal), indem Sie die Option für die Dienstprinzipalauthentifizierung wählen.
 
 2. Das Azure AD-Zugriffstoken wird an die mittlere Ebene gesendet.
 4. Die mittlere Ebene sendet eine Anforderung mit dem Azure AD-Token an die Azure Media-REST-API.

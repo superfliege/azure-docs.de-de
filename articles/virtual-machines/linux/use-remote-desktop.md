@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 44b0f8b3d11b737ad88f7d33b036b52d24b70e33
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: dec0b8bcd5a0e0d20ead5b149405e3716589ba53
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50960326"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995727"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Installieren und Konfigurieren von Remotedesktop zum Herstellen einer Verbindung mit einem virtuellen Linux-Computer in Azure
 Virtuelle Linux-Computer (Linux-VMs) in Azure werden normalerweise von der Befehlszeile aus mithilfe einer SSH-Verbindung (Secure Shell) verwaltet. Wenn Sie erst in Linux einsteigen oder schnell eine Fehlerbehandlung durchführen müssen, ist die Verwendung von Remotedesktop unter Umständen einfacher. Dieser Artikel erläutert im Detail die Installation und Konfiguration von Desktopumgebung ([XFCE](https://www.xfce.org)) und Remotedesktop ([XRDP](http://www.xrdp.org)) für Ihren virtuellen Linux-Computer mithilfe des Resource Manager-Bereitstellungsmodells.
@@ -103,7 +103,7 @@ Nach der Authentifizierung wird die XFCE-Desktopumgebung geladen. Sie sieht ähn
 
 ![XFCE-Desktopverbindung über XRDP](./media/use-remote-desktop/xfce-desktop-environment.png)
 
-Wenn Ihr lokaler RDP-Client die Authentifizierung auf Netzwerkebene (NLA) verwendet, müssen Sie diese Verbindungseinstellung deaktivieren. NLA wird derzeit nicht von XRDP unterstützt. Sie können auch alternative RDP-Lösungen verwenden, die NLA unterstützen, wie z.B. [FreeRDP](http://www.freerdp.com).
+Wenn Ihr lokaler RDP-Client die Authentifizierung auf Netzwerkebene (NLA) verwendet, müssen Sie diese Verbindungseinstellung deaktivieren. NLA wird derzeit nicht von XRDP unterstützt. Sie können auch alternative RDP-Lösungen verwenden, die NLA unterstützen, wie z.B. [FreeRDP](https://www.freerdp.com).
 
 
 ## <a name="troubleshoot"></a>Problembehandlung

@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2018
+ms.date: 03/14/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: a27cd45ebec41a90a1627bff157c1058b83a25e6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011797"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Häufig gestellte Fragen zu Cloudyn
 
@@ -75,7 +75,7 @@ Nachdem Sie die vorherigen Schritte ausgeführt haben, können Sie innerhalb von
 Dies ist das häufigste Szenario, wie Benutzerkonten den Status *InitiallySuspended* erhalten.
 
 > Admin1 kann ein Microsoft Cloud Solution Provider oder Enterprise Agreement-Benutzer sein. Seine Organisation ist bereit, Cloudyn einzuführen.  Er registriert sich über das Azure-Portal und meldet sich im Cloudyn-Portal an. Da er den Cloudyn-Dienst registriert und sich im Cloudyn-Portal anmeldet, wird Admin1 zum *primären Administrator*. Admin1 erstellt keine Benutzerkonten. Mithilfe des Cloudyn-Portals erstellt er jedoch Azure-Konten und eine Entitätshierarchie. Admin1 informiert Admin2, einen Mandantenadministrator, dass er sich für Cloudyn registrieren und sich beim Cloudyn-Portal anmelden muss.
-
+> 
 > Admin2 registriert sich über das Azure-Portal. Wenn er jedoch versucht, sich beim Cloudyn-Portal anzumelden, wird eine Fehlermeldung zurückgegeben, die besagt, dass sein Konto **gesperrt** ist. Der primäre Administrator, Admin1, wird über die Kontosperrung benachrichtigt. Admin1 muss das Konto von Admin2 aktivieren, *Administratorzugriff auf die richtigen Entitäten* gewähren, bestimmt Benutzerverwaltungszugriff und das Benutzerkonto aktivieren.
 
 

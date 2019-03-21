@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/11/2018
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: cdaa151f0603cddc9ca1bf17b0ff304f646cfdde
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e826c7a3fc12e819fd6f145d42b7381087d5970c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55462833"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000246"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -29,7 +29,7 @@ Vor dem Erstellen eines Importauftrags zum Übertragen von Daten in Azure Blob S
     - Informationen zu Speichercontainern finden Sie unter [Erstellen eines Speichercontainers](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Eine angemessene Anzahl von Datenträgern der [unterstützten Typen](storage-import-export-requirements.md#supported-disks). 
 - Ein Windows-System, auf dem eine [unterstützte Betriebssystemversion](storage-import-export-requirements.md#supported-operating-systems) ausgeführt wird. 
-- Aktivierte BitLocker-Verschlüsselung auf dem Windows-System. Lesen Sie hierzu die [Schrittweise Anleitung zur Windows BitLocker-Laufwerkverschlüsselung](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+- Aktivierte BitLocker-Verschlüsselung auf dem Windows-System. Lesen Sie hierzu die [Schrittweise Anleitung zur Windows BitLocker-Laufwerkverschlüsselung](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Laden Sie Version 1 von WAImportExport](https://aka.ms/waiev1) auf das Windows-System herunter. Entzippen Sie die Dateien in den Standardordner `waimportexportv1`. Beispiel: `C:\WaImportExportV1`.
 - Sie benötigen ein FedEx/DHL-Konto.  
     - Das Konto muss gültig sein, es muss Guthaben vorhanden sein und es muss der Rückversand aktiviert sein.
@@ -47,7 +47,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 
 1.  Stellen Sie die Verbindung Ihrer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 1.  Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
-2.  Aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Wenn Sie ein Windows Server-System verwenden, lesen Sie die Anweisungen unter [Aktivieren von BitLocker auf Windows Server 2012 R2](http://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
+2.  Aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Wenn Sie ein Windows Server-System verwenden, lesen Sie die Anweisungen unter [Aktivieren von BitLocker auf Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 3.  Kopieren Sie Daten in das verschlüsselte Volume. Verwenden Sie Drag & Drop oder Robocopy oder ein ähnliches Kopiertool.
 4.  Öffnen Sie ein PowerShell- oder Befehlszeilenfenster mit Administratorrechten. Um das Verzeichnis in den Ordner mit den entzippten Daten zu ändern, führen Sie den folgenden Befehl aus:
     
@@ -94,14 +94,14 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 4. Gehen Sie unter **Grundlegende Einstellungen** wie folgt vor:
 
-    - Wählen Sie **Import in Azure** aus.
-    - Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
-        - Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
-        - Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
-    - Wählen Sie ein Abonnement aus.
-    - Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.  
+   - Wählen Sie **Import in Azure** aus.
+   - Geben Sie einen aussagekräftigen Namen für den Importauftrag ein. Verwenden Sie den Namen, um den Fortschritt Ihrer Aufträge zu verfolgen.
+       - Der Name darf nur Kleinbuchstaben, Ziffern und Bindestriche enthalten.
+       - Der Name muss mit einem Buchstaben beginnen und darf keine Leerzeichen enthalten.
+   - Wählen Sie ein Abonnement aus.
+   - Wählen Sie eine Ressourcengruppe aus, oder geben Sie eine Gruppe ein.  
 
-    ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
+     ![Importauftrag erstellen – Schritt 1](./media/storage-import-export-data-to-blobs/import-to-blob3.png)
 
 3. Gehen Sie unter **Auftragsdetails** wie folgt vor:
 
@@ -113,21 +113,21 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 
 4. Gehen Sie unter **Informationen für Rücksendung** wie folgt vor:
 
-    - Wählen Sie den Spediteur in der Dropdownliste aus.
-    - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. Wenn Sie keine Kontonummer haben, erstellen Sie ein [FedEx](http://www.fedex.com/us/oadr/)- oder [DHL](http://www.dhl.com/)-Spediteurkonto.
-    - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region. 
+   - Wählen Sie den Spediteur in der Dropdownliste aus.
+   - Geben Sie eine gültige Spediteurkontonummer ein, die Sie mit diesem Spediteur erstellt haben. Microsoft verwendet dieses Konto, um die Laufwerke nach Abschluss des Importauftrags an Sie zurückzuschicken. Wenn Sie keine Kontonummer haben, erstellen Sie ein [FedEx](https://www.fedex.com/us/oadr/)- oder [DHL](http://www.dhl.com/)-Spediteurkonto.
+   - Geben Sie vollständige und gültige Kontaktdaten an: Name, Telefonnummer, E-Mail-Adresse, Straße, Stadt, PLZ, Bundesstaat/Provinz und Land/Region. 
         
-        > [!TIP] 
-        > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
+       > [!TIP] 
+       > Geben Sie anstelle einer E-Mail-Adresse für einen einzelnen Benutzer, eine Gruppen E-Mail-Adresse ein. Dadurch wird sichergestellt, dass Sie Benachrichtigungen erhalten, selbst wenn ein Administrator geht.
 
-    ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
+     ![Importauftrag erstellen – Schritt 3](./media/storage-import-export-data-to-blobs/import-to-blob5.png)
    
 5. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
-    - Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
-    - Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
+   - Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
+   - Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
 
-    ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
+     ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 
 ## <a name="step-3-ship-the-drives"></a>Schritt 3: Versenden der Laufwerke 
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 1dd6be61aab91bb15cc42939689e3c7399bee3db
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e9b240a17614593cd04280a13e006c4d06e832fd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236531"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904275"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>Informationen zum Authentifizieren und Autorisieren mit Power BI-Arbeitsbereichssammlungen
 
@@ -182,4 +182,4 @@ Nachdem aus **Power BI-Arbeitsbereichssammlungen** ein Bericht an den Benutzer g
 [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md)  
 [PowerBI-CSharp Git-Repository](https://github.com/Microsoft/PowerBI-CSharp)
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)

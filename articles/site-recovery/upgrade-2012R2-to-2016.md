@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: site-recovery
 ms.date: 12/03/2018
 ms.author: rajanaki
-ms.openlocfilehash: e7644128a3f0e0ea531933286e95b15149fdebd3
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: b67290f72f762331a6d699fb79aef0c0d7f9fb65
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57853272"
 ---
 # <a name="upgrade-windows-server-2012-r2-hosts-scvmm-2012-r2-configured-with-azure-site-recovery-to-windows-server-2016--scvmm-2016"></a>Aktualisieren von Windows Server 2012 R2-Hosts und SCVMM 2012 R2-Instanzen, die mit Azure Site Recovery konfiguriert sind, auf Windows Server 2016 und SCVMM 2016
 
@@ -50,8 +50,8 @@ Beachten Sie Folgendes, bevor Sie das Upgrade durchführen:
     - Stellen Sie sicher, dass die neuen SCVMM-Instanzen, die Sie dem Cluster hinzufügen, die gleichen Namen wie zuvor aufweisen. 
 
 - Wenn Sie zwischen zwei Standorten replizieren, die auf beiden Seiten von SCVMM verwaltet werden, müssen Sie zuerst ein Upgrade des Wiederherstellungsstandorts und danach ein Upgrade des primären Standort durchführen.
-> [!WARNING]
-> Wählen Sie während des Upgrades von SCVMM 2012 R2 unter „Verwaltung verteilter Schlüssel“ die Option **Store encryption keys in Active Directory** (Verschlüsselungsschlüssel in Active Directory speichern) aus. Gehen Sie bei der Auswahl der Einstellungen für das Dienstkonto und die Verwaltung verteilter Schlüssel sorgfältig vor. Abhängig von Ihrer Auswahl sind verschlüsselte Daten (z. B. Kennwörter in Vorlagen) nach dem Upgrade möglicherweise nicht verfügbar, wodurch die Replikation mit Azure Site Recovery beeinträchtigt werden kann.
+  > [!WARNING]
+  > Wählen Sie während des Upgrades von SCVMM 2012 R2 unter „Verwaltung verteilter Schlüssel“ die Option **Store encryption keys in Active Directory** (Verschlüsselungsschlüssel in Active Directory speichern) aus. Gehen Sie bei der Auswahl der Einstellungen für das Dienstkonto und die Verwaltung verteilter Schlüssel sorgfältig vor. Abhängig von Ihrer Auswahl sind verschlüsselte Daten (z. B. Kennwörter in Vorlagen) nach dem Upgrade möglicherweise nicht verfügbar, wodurch die Replikation mit Azure Site Recovery beeinträchtigt werden kann.
 
 > [!IMPORTANT]
 > Weitere Informationen finden Sie in der ausführlichen SCVMM-Dokumentation zu den [Voraussetzungen](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#requirements-and-limitations).
@@ -79,8 +79,8 @@ Bevor Sie Ihre Windows Server 2012 R2-Hosts aktualisieren, müssen Sie SCVMM 201
 
 4. [Installieren Sie VMM 2016.](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#install-vmm-2016)
 5. Starten Sie SCVMM, und überprüfen Sie den Status jedes Hosts auf der Registerkarte **Fabrics**. Klicken Sie zum Abrufen des aktuellen Status auf **Aktualisieren**. Der angezeigte Status sollte „Eingreifen erforderlich“ lauten. 
-17. Installieren Sie den aktuellen [Microsoft Azure Site Recovery-Anbieter](http://aka.ms/downloaddra) auf dem SCVMM-Server.
-16. Installieren Sie den aktuellen [Microsoft Azure Recovery Service-Agent (MARS)](http://aka.ms/latestmarsagent) auf jedem Host im Cluster. Klicken Sie auf „Aktualisieren“, um sicherzustellen, dass SCVMM die Hosts erfolgreich abfragen kann.
+17. Installieren Sie den aktuellen [Microsoft Azure Site Recovery-Anbieter](https://aka.ms/downloaddra) auf dem SCVMM-Server.
+16. Installieren Sie den aktuellen [Microsoft Azure Recovery Service-Agent (MARS)](https://aka.ms/latestmarsagent) auf jedem Host im Cluster. Klicken Sie auf „Aktualisieren“, um sicherzustellen, dass SCVMM die Hosts erfolgreich abfragen kann.
 
 **Aktualisieren der Windows Server 2012 R2-Hosts auf Windows Server 2016**
 
@@ -97,8 +97,8 @@ Bevor Sie Ihre Windows Server 2012 R2-Hosts aktualisieren, müssen Sie SCVMM 201
 1.  Deinstallieren Sie den ASR-Anbieter, indem Sie zu „Systemsteuerung“ -> „Programme“ -> „Programme und Features“ -> „Microsoft Azure Site Recovery“ navigieren und auf „Deinstallieren“ klicken.
 2. Führen Sie die [hier](https://docs.microsoft.com/system-center/vmm/upgrade-vmm?view=sc-vmm-2016#upgrade-a-standalone-vmm-server) beschriebenen Schritte für den Upgrademodus aus, den Sie verwenden möchten.
 3. Starten Sie die SCVMM-Konsole, und überprüfen Sie den Status jedes Hosts auf der Registerkarte **Fabrics**. Klicken Sie zum Abrufen des aktuellen Status auf **Aktualisieren**. Der angezeigte Status sollte „Eingreifen erforderlich“ lauten.
-4. Installieren Sie den aktuellen [Microsoft Azure Site Recovery-Anbieter](http://aka.ms/downloaddra) auf dem SCVMM-Server.
-5. Installieren Sie den aktuellen [Microsoft Azure Recovery Service-Agent (MARS)](http://aka.ms/latestmarsagent) auf jedem Host im Cluster. Klicken Sie auf „Aktualisieren“, um sicherzustellen, dass SCVMM die Hosts erfolgreich abfragen kann.
+4. Installieren Sie den aktuellen [Microsoft Azure Site Recovery-Anbieter](https://aka.ms/downloaddra) auf dem SCVMM-Server.
+5. Installieren Sie den aktuellen [Microsoft Azure Recovery Service-Agent (MARS)](https://aka.ms/latestmarsagent) auf jedem Host im Cluster. Klicken Sie auf „Aktualisieren“, um sicherzustellen, dass SCVMM die Hosts erfolgreich abfragen kann.
 
 
 **Aktualisieren der Windows Server 2012 R2-Hosts auf Windows Server 2016**

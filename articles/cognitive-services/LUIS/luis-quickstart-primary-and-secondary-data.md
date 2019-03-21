@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: diberry
-ms.openlocfilehash: d333eb6baa41321fdf7daca3c545d5d5e3ed5fe4
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b9ddd82d18b7f67f61e5c1589511ea6db4fa18a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100291"
 ---
 # <a name="tutorial-extract-names-with-simple-entity-and-a-phrase-list"></a>Tutorial: Extrahieren von Namen mit der Simple-Entität und einer Begriffsliste
 
@@ -127,7 +127,7 @@ Entitäten vom Typ „Simple“ erfordern viele Beispiele, um zu einer guten Kon
     |Apply for tile work. (Bewerbung als Fliesenleger.)|Kachel|
     |Attached resume for landscape architect. (Anbei mein Lebenslauf für die Position als Landschaftsarchitekt.)|landscape architect (Landschaftsarchitekt)|
     |My curriculum vitae for professor of biology is enclosed. (Anbei finden Sie mein Curriculum Vitae für die Stelle als Biologieprofessor.)|professor of biology (Biologieprofessor)|
-    |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|Git 
+    |I would like to apply for the position in photography. (Ich möchte mich gerne als Fotograf bewerben.)|photography (Fotografie)|
 
 ## <a name="mark-job-entity-in-other-intents"></a>Markieren der Job-Entität in weiteren Absichten
 

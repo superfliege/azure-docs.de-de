@@ -15,12 +15,12 @@ ms.date: 01/22/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 8073dff6dbd8bbceb16d7fdcf8d39012233c32d6
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 24c500251c8e91b7542c5c9d3e77676205c88c1f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240453"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090966"
 ---
 # <a name="scale-unit-node-actions-in-azure-stack"></a>Knotenaktionen für Skalierungseinheiten in Azure Stack
 
@@ -42,15 +42,15 @@ So zeigen Sie den Status einer Skalierungseinheit an
 3. Wählen Sie in den Ergebnissen die Skalierungseinheit aus.
 4. Wählen Sie links unter **Allgemein** den Eintrag **Knoten** aus.
 
-  Zeigen Sie die folgenden Informationen an:
+   Zeigen Sie die folgenden Informationen an:
 
-  - Die Liste der einzelnen Knoten
-  - Betriebsstatus (siehe unten die Liste)
-  - Energiestatus („wird ausgeführt“ oder „beendet“)
-  - Servermodell
-  - IP-Adresse des Baseboard-Verwaltungscontrollers (BMC)
-  - Gesamtanzahl von Kernen
-  - Gesamtspeichermenge
+   - Die Liste der einzelnen Knoten
+   - Betriebsstatus (siehe unten die Liste)
+   - Energiestatus („wird ausgeführt“ oder „beendet“)
+   - Servermodell
+   - IP-Adresse des Baseboard-Verwaltungscontrollers (BMC)
+   - Gesamtanzahl von Kernen
+   - Gesamtspeichermenge
 
 ![Status einer Skalierungseinheit](media/azure-stack-node-actions/multinodeactions.png)
 

@@ -6,17 +6,17 @@ documentationcenter: ''
 author: KumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/08/2017
 ms.author: kumud
-ms.openlocfilehash: 28ea626adf87ad9f115b5acc5452dfc91ad833c5
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0832010707fc9b5d5f435aac29940db6905d18d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51245006"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009290"
 ---
 # <a name="add-disable-enable-or-delete-endpoints"></a>Hinzufügen, Deaktivieren, Aktivieren oder Löschen von Endpunkten
 
@@ -29,7 +29,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 
 ## <a name="to-add-a-cloud-service-or-an-app-service-endpoint-to-a-traffic-manager-profile"></a>So fügen Sie einem Traffic Manager-Profil einen Clouddienst- oder App-Dienstendpunkt hinzu
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie auf der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf dem Blatt **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte**.
 4. Klicken Sie auf dem dann angezeigten Blatt **Endpunkte** auf **Hinzufügen**.
@@ -49,7 +49,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 
 ## <a name="to-disable-an-endpoint"></a>So deaktivieren Sie einen Endpunkt
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie auf der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf dem Blatt **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte**. 
 4. Klicken Sie auf den Endpunkt, den Sie deaktivieren möchten, und klicken Sie dann auf dem angezeigten Blatt **Endpunkt** auf **Bearbeiten**.
@@ -58,7 +58,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 
 ## <a name="to-enable-an-endpoint"></a>So aktivieren Sie einen Endpunkt
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie auf der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf dem Blatt **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte**. 
 4. Klicken Sie auf den Endpunkt, den Sie deaktivieren möchten, und klicken Sie dann auf dem angezeigten Blatt **Endpunkt** auf **Bearbeiten**.
@@ -67,7 +67,7 @@ Sie können auch einzelne Endpunkte deaktivieren, die Teil eines Traffic Manager
 
 ## <a name="to-delete-an-endpoint"></a>So löschen Sie einen Endpunkt
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an.
 2. Suchen Sie auf der Suchleiste des Portals nach dem Namen des **Traffic Manager-Profils**, das Sie ändern möchten, und klicken Sie in den angezeigten Ergebnissen auf das Traffic Manager-Profil.
 3. Klicken Sie auf dem Blatt **Traffic Manager-Profil** im Abschnitt **Einstellungen** auf **Endpunkte**. 
 4. Klicken Sie auf den Endpunkt, den Sie deaktivieren möchten, und klicken Sie dann auf dem angezeigten Blatt **Endpunkt** auf **Bearbeiten**.

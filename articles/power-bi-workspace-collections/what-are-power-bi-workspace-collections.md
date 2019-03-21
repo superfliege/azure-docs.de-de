@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: 73b13dcea84ba322072217c3feacebdefb3bf1e6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6650eed6bf2559e9fb76b573189179a7f5df81ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43052038"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896703"
 ---
 # <a name="what-are-power-bi-workspace-collections"></a>Was sind Power BI-Arbeitsbereichssammlungen?
 
@@ -87,4 +87,4 @@ Sie können jetzt vorhandene Berichte bearbeiten oder neue Berichte direkt in Ih
 [PowerBI-CSharp Git-Repository](https://github.com/Microsoft/PowerBI-CSharp)  
 [PowerBI-Node Git-Repository](https://github.com/Microsoft/PowerBI-Node)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)

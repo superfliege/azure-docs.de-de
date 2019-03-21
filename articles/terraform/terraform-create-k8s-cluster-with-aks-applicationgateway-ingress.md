@@ -2,19 +2,19 @@
 title: Erstellen eines Kubernetes-Clusters mit Application Gateway als Eingangscontroller mit Azure Kubernetes Service (AKS)
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Application Gateway als Eingangscontroller veranschaulicht wird
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, virtueller Computer, Azure, Kubernetes, eingehend, Application Gateway
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 1/10/2019
-ms.openlocfilehash: 6add7323fdbcf07681e8566437632aa6679828e4
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 477b2ec1af4c52f51c3ab20ac2ddf7ef043dfcc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891980"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994349"
 ---
 # <a name="create-a-kubernetes-cluster-with-application-gateway-ingress-controller-using-azure-kubernetes-service-and-terraform"></a>Erstellen eines Kubernetes-Clusters mit Application Gateway-Eingangscontroller unter Verwendung von Azure Kubernetes Service und Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) verwaltet Ihre gehostete Kubernetes-Umgebung. Mit AKS können Sie ganz ohne Kenntnisse im Bereich Containerorchestrierung schnell und einfach containerbasierte Anwendungen bereitstellen und verwalten. Darüber hinaus übernimmt die Lösung die Betreuung laufender Vorgänge und Wartungsaufgaben für Sie, indem sie Ressourcen ganz nach Bedarf bereitstellt, aktualisiert und skaliert, ohne Ihre Anwendungen offline zu schalten.
@@ -36,16 +36,16 @@ In diesem Tutorial erfahren Sie, wie Sie die folgenden Aufgaben ausführen, um e
 - **Konfigurieren von Terraform:** Befolgen Sie die Anweisungen im Artikel [Installieren und Konfigurieren von Terraform zum Bereitstellen von VMs und sonstiger Infrastruktur in Azure](/azure/virtual-machines/linux/terraform-install-configure).
 
 - **Azure-Dienstprinzipal:** Befolgen Sie die Anweisungen im Abschnitt **Erstellen des Dienstprinzipals** des Artikels [Erstellen eines Azure-Dienstprinzipals mit der Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest). Notieren Sie sich die Werte für „appId“, „displayName“ und „password“.
-    - Führen Sie den folgenden Befehl aus, und notieren Sie sich die Objekt-ID des Dienstprinzipals:
+  - Führen Sie den folgenden Befehl aus, und notieren Sie sich die Objekt-ID des Dienstprinzipals:
 
     ```bash
-     az ad sp list --display-name <displayName>
+    az ad sp list --display-name <displayName>
     ```
 
 ## <a name="create-the-directory-structure"></a>Erstellen der Verzeichnisstruktur
 Der erste Schritt ist das Erstellen des Verzeichnisses, das Ihre Terraform-Konfigurationsdateien für die Übung enthält.
 
-1. Navigieren Sie zum [Azure-Portal](http://portal.azure.com).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 
 1. Öffnen Sie [Azure Cloud Shell](/azure/cloud-shell/overview). Falls Sie zuvor noch keine Umgebung ausgewählt haben, wählen Sie **Bash** als Umgebung aus.
 
@@ -99,8 +99,8 @@ Erstellen Sie die Terraform-Konfigurationsdatei, die den Azure-Anbieter deklarie
     ```bash
     :wq
     ```
-## <a name="define-input-variables"></a>Definieren von Eingabevariablen
-Erstellen Sie die Terraform-Konfigurationsdatei, in der alle für diese Bereitstellung erforderlichen Variablen aufgeführt werden.
+   ## <a name="define-input-variables"></a>Definieren von Eingabevariablen
+   Erstellen Sie die Terraform-Konfigurationsdatei, in der alle für diese Bereitstellung erforderlichen Variablen aufgeführt werden.
 1. Erstellen Sie in Cloud Shell eine Datei namens `variables.tf`.
     ```bash
     vi variables.tf

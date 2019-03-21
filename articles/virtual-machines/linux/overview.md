@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 66ba6aa874e84ce86d54d5ea0f827a83dc6564b4
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: a5203d75e673a7b8206446553414ff933e00b0b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208550"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008942"
 ---
 # <a name="azure-and-linux"></a>Azure und Linux
 Microsoft Azure ist eine wachsende Sammlung von integrierten Diensten der öffentlichen Cloud, z.B. für Analysen, virtuelle Computer, Datenbanken, mobile Geräte, Netzwerke, Speicher und Web. Azure eignet sich also perfekt zum Hosten Ihrer Lösungen.  Microsoft Azure stellt eine skalierbare Computingplattform bereit, bei der Sie nur für die tatsächliche gewünschte Nutzung bezahlen – ohne dass Sie in lokale Hardware investieren müssen.  Azure ist darauf ausgelegt, dass Sie Ihre Lösungen wie gewünscht vertikal und horizontal auf den Stand hochskalieren, der für die Erfüllung der Anforderungen Ihrer Kunden erforderlich ist.
@@ -59,7 +59,7 @@ Um eine sinnvolle DevOps-Kultur zu erzielen, muss die gesamte Infrastruktur als 
 * [Azure-Vorlagen](create-ssh-secured-vm-from-template.md)
 * [Azure VMAccess](using-vmaccess-extension.md)
 
-Azure führt Unterstützung für [cloud-init](http://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Zurzeit werden die Ubuntu-VMs von Canonical mit standardmäßig aktiviertem cloud-init bereitgestellt.  RHEL, CentOS und Fedora von Red Hat unterstützen zwar „cloud-init“, auf den von Red Hat verwalteten Azure-Images ist „cloud-init“ derzeit jedoch nicht installiert.  Wenn Sie „cloud-init“ unter einem Betriebssystem der Red Hat-Familie verwenden möchten, müssen Sie ein benutzerdefiniertes Image mit installiertem „cloud-init“ erstellen.
+Azure führt Unterstützung für [cloud-init](https://cloud-init.io/) für die meisten Linux-Distributionen ein, die dies unterstützen.  Zurzeit werden die Ubuntu-VMs von Canonical mit standardmäßig aktiviertem cloud-init bereitgestellt.  RHEL, CentOS und Fedora von Red Hat unterstützen zwar „cloud-init“, auf den von Red Hat verwalteten Azure-Images ist „cloud-init“ derzeit jedoch nicht installiert.  Wenn Sie „cloud-init“ unter einem Betriebssystem der Red Hat-Familie verwenden möchten, müssen Sie ein benutzerdefiniertes Image mit installiertem „cloud-init“ erstellen.
 
 * [Verwenden von cloud-init auf virtuellen Linux-Computern in Azure](using-cloud-init.md)
 

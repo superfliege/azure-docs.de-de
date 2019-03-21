@@ -1,5 +1,5 @@
 ---
-title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft-Dokumentation
+title: Systemanforderungen für Microsoft Azure StorSimple Virtual Arrays | Microsoft Docs
 description: Erfahren Sie mehr über die Software- und Netzwerkanforderungen für StorSimple Virtual Array.
 services: storsimple
 documentationcenter: NA
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 7e5cf79613bdbd62427e99a0d1f2aa29ed8f85be
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54245190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999504"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>Systemanforderungen für StorSimple Virtual Array
 ## <a name="overview"></a>Übersicht
@@ -95,11 +95,11 @@ In der folgenden Tabelle sind die Ports aufgeführt, die in der Firewall für iS
 | **Portnr.<sup>1</sup>** | **ein oder aus** | **Portbereich** | **Erforderlich** | **Hinweise** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |aus |WAN |Nein  |Der ausgehende Port wird für den Internetzugriff zum Abrufen von Updates verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
-| TCP 443 (HTTPS) |aus |WAN |JA |Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
+| TCP 443 (HTTPS) |aus |WAN |Ja |Der ausgehende Port wird für den Zugriff auf Daten in der Cloud verwendet. <br></br>Der ausgehende Webproxy kann vom Benutzer konfiguriert werden. |
 | UDP 53 (DNS) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten DNS-Server verwenden. <br></br> Beachten Sie, dass bei der Bereitstellung eines Dateiservers die Verwendung eines lokalen DNS-Servers empfohlen wird. |
 | UDP 123 (NTP) |aus |WAN |In einigen Fällen; siehe Hinweise. |Dieser Port ist nur dann erforderlich, wenn Sie einen internetbasierten NTP-Server verwenden.<br></br> Beachten Sie, dass bei der Bereitstellung eines Dateiservers empfohlen wird, die Zeit mit Ihren Active Directory-Domänencontrollern zu synchronisieren. |
-| TCP 80 (HTTP) |Geben Sie in |LAN |JA |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. <br></br> Beachten Sie, dass beim Zugriff auf die lokale Benutzeroberfläche über HTTP automatisch eine Umleitung auf HTTPS erfolgt. |
-| TCP 443 (HTTPS) |Geben Sie in |LAN |JA |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. |
+| TCP 80 (HTTP) |Geben Sie in |LAN |Ja |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. <br></br> Beachten Sie, dass beim Zugriff auf die lokale Benutzeroberfläche über HTTP automatisch eine Umleitung auf HTTPS erfolgt. |
+| TCP 443 (HTTPS) |Geben Sie in |LAN |Ja |Dies ist der eingehende Port für die lokale Benutzeroberfläche auf dem StorSimple-Gerät für die lokale Verwaltung. |
 | TCP 3260 (iSCSI) |Geben Sie in |LAN |Nein  |Dieser Port wird für den Datenzugriff über iSCSI verwendet. |
 
 <sup>1</sup> Es müssen keine eingehenden Ports für das öffentliche Internet geöffnet werden.
@@ -125,12 +125,12 @@ Es empfiehlt sich, die Firewallregeln für den ausgehenden Verkehr basierend auf
 | --- | --- |
 | `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` <br>`https://login.windows.net`|StorSimple-Geräte-Manager-Dienst<br>Zugriffssteuerungsdienst (ACS)<br>Azure-Servicebus<br>Authentifizierungsdienst|
 | `http://*.backup.windowsazure.com` |Geräteregistrierung |
-| `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |Zertifikatswiderruf |
+| `https://crl.microsoft.com/pki/*`<br>`https://www.microsoft.com/pki/*` |Zertifikatswiderruf |
 | `https://*.core.windows.net/*`<br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure-Speicherkonten und Überwachung |
-| `http://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`http://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`http://download.microsoft.com`<br>`http://wustat.windows.com`<br>`http://ntservicepack.microsoft.com` |Microsoft Update-Server<br> |
+| `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft Update-Server<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |Supportpaket |
-| `http://*.data.microsoft.com ` |Telemetriedienst in Windows. Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/en-us/kb/3068708). |
+| `https://*.data.microsoft.com ` |Telemetriedienst in Windows. Informationen finden Sie im [Update für Kundenzufriedenheit und Diagnosetelemetrie](https://support.microsoft.com/en-us/kb/3068708). |
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Vorbereiten des Portals zum Bereitstellen von StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)

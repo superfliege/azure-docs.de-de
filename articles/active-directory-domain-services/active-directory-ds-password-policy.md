@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: 5fc50aeeb2764f90a111c2466ff5a9deefe1e65c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 513cccb8b83eb4a69df1bc6172f1f02485215e35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167987"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086002"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien in verwalteten Domänen
 Dieser Artikel beschreibt die Standardkennwortrichtlinien in einer verwalteten Domäne. Sie erfahren auch, wie Sie diese Richtlinien konfigurieren können.
@@ -89,28 +89,28 @@ So erstellen Sie eine benutzerdefinierte FGPP in Ihrer verwalteten Domäne
 7. Klicken Sie rechts im Bereich **Aufgaben** auf **Neu** und dann auf **Kennworteinstellungen**.
 8. Geben Sie im Dialogfeld **Kennworteinstellungen erstellen** die benutzerdefinierten Kennworteinstellungen an, die als Teil der benutzerdefinierten FGPP angewendet werden sollen. Denken Sie daran, die Rangfolge entsprechend festzulegen, um die Standard-FGPP außer Kraft zu setzen.
 
-  ![Erstellen einer benutzerdefinierten FGPP](./media/how-to/custom-fgpp.png)
+   ![Erstellen einer benutzerdefinierten FGPP](./media/how-to/custom-fgpp.png)
 
-  > [!TIP]
-  > **Denken Sie daran, die Option „Vor versehentlichem Löschen schützen“ zu deaktivieren.** Wenn diese Option aktiviert ist, kann die FGPP nicht gespeichert werden.
-  >
-  >
+   > [!TIP]
+   > **Denken Sie daran, die Option „Vor versehentlichem Löschen schützen“ zu deaktivieren.** Wenn diese Option aktiviert ist, kann die FGPP nicht gespeichert werden.
+   >
+   >
 
 9. Klicken Sie in **Direkt anwendbar auf** auf die Schaltfläche **Hinzufügen**. Klicken Sie im Dialogfeld **Benutzer oder Gruppen auswählen** auf die Schaltfläche **Speicherorte**.
 
-  ![Auswählen von „Benutzer und Gruppen“](./media/how-to/fgpp-applies-to.png)
+   ![Auswählen von „Benutzer und Gruppen“](./media/how-to/fgpp-applies-to.png)
 
 10. Erweitern Sie im Dialogfeld **Speicherorte** den Domänennamen, und klicken Sie auf **AADDC Users**. Sie können jetzt eine Gruppe aus der integrierten Benutzer-Organisationseinheit auswählen, auf die die FGPP angewendet werden soll.
 
-  ![Auswählen der Organisationseinheit, zu der die Gruppe gehört](./media/how-to/fgpp-container.png)
+    ![Auswählen der Organisationseinheit, zu der die Gruppe gehört](./media/how-to/fgpp-container.png)
 
 11. Geben Sie den Namen der Gruppe ein, und klicken Sie auf die Schaltfläche **Namen überprüfen**, um zu überprüfen, ob die Gruppe vorhanden ist.
 
-  ![Auswählen der Gruppe zum Anwenden der FGPP](./media/how-to/fgpp-apply-group.png)
+    ![Auswählen der Gruppe zum Anwenden der FGPP](./media/how-to/fgpp-apply-group.png)
 
 12. Der Name der Gruppe wird im Abschnitt **Direkt anwendbar auf** angezeigt. Klicken Sie auf die Schaltfläche **OK**, um diese Änderungen zu speichern.
 
-  ![FGPP angewendet](./media/how-to/fgpp-applied.png)
+    ![FGPP angewendet](./media/how-to/fgpp-applied.png)
 
 > [!TIP]
 > **Anwendung benutzerdefinierter Kennwortrichtlinien für Benutzerkonten in einer benutzerdefinierten Organisationseinheit**: Differenzierte Kennwortrichtlinien (FGPP) können nur auf Gruppen angewendet werden. Erstellen Sie eine Gruppe, die die Benutzer in dieser Organisationseinheit enthält, um eine benutzerdefinierte Kennwortrichtlinie nur für Benutzer aus einer benutzerdefinierten Organisationseinheit zu konfigurieren.

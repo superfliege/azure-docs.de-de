@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 9361c8b17d1b43b4ef63aca6ab4660571efddcde
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: a40619000998d7222781094db2829aabcc6a7fb2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492786"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100767"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Tutorial: Bereitstellen von VM-Erweiterungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -68,13 +68,13 @@ Azure-Schnellstartvorlagen ist ein Repository für Resource Manager-Vorlagen. St
 1. Wählen Sie **Öffnen** aus, um die Datei zu öffnen.  
     Die Vorlage definiert fünf Ressourcen:
 
-    * **Microsoft.Storage/storageAccounts**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * **Microsoft.Network/publicIPAddresses**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * **Microsoft.Network/virtualNetworks**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * **Microsoft.Network/networkInterfaces**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * **Microsoft.Compute/virtualMachines**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * **Microsoft.Storage/storageAccounts**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * **Microsoft.Network/publicIPAddresses**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * **Microsoft.Network/virtualNetworks**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * **Microsoft.Network/networkInterfaces**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * **Microsoft.Compute/virtualMachines**. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 
 1. Wählen Sie **Datei** > **Speichern unter** aus, um eine Kopie der Datei als *azuredeploy.json* auf dem lokalen Computer zu speichern.
 
@@ -108,14 +108,14 @@ Fügen Sie der vorhandenen Vorlage eine VM-Erweiterungsressource mit folgendem I
 
 Weitere Informationen zu dieser Ressourcendefinition finden Sie in der [Erweiterungsreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines/extensions). Im Anschluss sind einige zentrale Elemente aufgeführt:
 
-* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Untergeordnete Ressourcen](./resource-manager-templates-resources.md#child-resources).
+* **name:** Da es sich bei der Erweiterungsressource um eine untergeordnete Ressource des VM-Objekts handelt, muss der Name mit dem VM-Namenspräfix versehen werden. Weitere Informationen finden Sie unter [Untergeordnete Ressourcen](./resource-group-authoring-templates.md#child-resources).
 * **dependsOn:** Erstellen Sie die Erweiterungsressource nach der Erstellung des virtuellen Computers.
 * **fileUris:** Die Speicherorte der Skriptdateien. Falls Sie sich gegen die Verwendung des angegebenen Speicherorts entscheiden, müssen Sie die Werte aktualisieren.
 * **commandToExecute:** Dieser Befehl ruft das Skript auf.  
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstellen der Vorlage“ unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template). Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
+Informationen zum Bereitstellungsverfahren finden Sie im Abschnitt „Bereitstellen der Vorlage“ unter [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md#deploy-the-template) verwendet haben. Es empfiehlt sich, ein generiertes Kennwort für das Administratorkonto des virtuellen Computers zu verwenden. Informationen finden Sie in diesem Artikel im Abschnitt [Voraussetzungen](#prerequisites).
 
 ## <a name="verify-the-deployment"></a>Überprüfen der Bereitstellung
 

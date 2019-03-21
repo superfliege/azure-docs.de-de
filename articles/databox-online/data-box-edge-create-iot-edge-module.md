@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 01/31/2019
 ms.author: alkohli
-ms.openlocfilehash: d0b171f05bb2243da83509348b099bebcb44ebc7
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 81407a298ccfe1b9884fc5d5b815ac8c18ffee6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508707"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094676"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge-preview"></a>Entwickeln eines C#-IoT Edge-Moduls zum Verschieben von Dateien in Data Box Edge (Vorschau)
 
@@ -71,14 +71,14 @@ Eine Azure Container Registry-Instanz ist eine private Docker-Registrierung in A
 2. Wählen Sie **Ressource erstellen > Container > Containerregistrierung** aus. Klicken Sie auf **Create**.
 3. Stellen Sie Folgendes bereit:
 
-    1. Einen eindeutigen **Registrierungsnamen** in Azure, der 5 bis 50 alphanumerische Zeichen umfasst.
-    2. Wählen Sie ein **Abonnement**aus.
-    3. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe.
-    4. Wählen Sie einen **Speicherort**aus. Es wird empfohlen, den gleichen Speicherort zu verwenden, der der Data Box Edge-Ressource zugeordnet ist.
-    5. Legen Sie **Administratorbenutzer** auf **Aktivieren** fest.
-    6. Legen Sie die SKU auf **Basic** fest.
+   1. Einen eindeutigen **Registrierungsnamen** in Azure, der 5 bis 50 alphanumerische Zeichen umfasst.
+   2. Wählen Sie ein **Abonnement**aus.
+   3. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine neue Ressourcengruppe.
+   4. Wählen Sie einen **Speicherort**aus. Es wird empfohlen, den gleichen Speicherort zu verwenden, der der Data Box Edge-Ressource zugeordnet ist.
+   5. Legen Sie **Administratorbenutzer** auf **Aktivieren** fest.
+   6. Legen Sie die SKU auf **Basic** fest.
 
-    ![Erstellen einer Containerregistrierung](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
+      ![Erstellen einer Containerregistrierung](./media/data-box-edge-create-iot-edge-module/create-container-registry-1.png)
  
 4. Klicken Sie auf **Erstellen**.
 5. Navigieren Sie nach der Erstellung der Containerregistrierung zu dieser Registrierung, und klicken Sie auf **Zugriffsschlüssel**.

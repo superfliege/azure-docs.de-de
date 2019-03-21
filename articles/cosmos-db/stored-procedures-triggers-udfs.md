@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 89cc7906c0503daa11f0a34520c17552a4e6b5af
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d1960fbc9fc9e8c1d672b66d3cf1f41399842059
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58083197"
 ---
 # <a name="stored-procedures-triggers-and-user-defined-functions"></a>Gespeicherte Prozeduren, Trigger und benutzerdefinierte Funktionen
 
@@ -26,7 +26,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 
 * **Unteilbare Transaktionen:** Cosmos DB stellt sicher, dass die in einer einzelnen gespeicherten Prozedur oder einem Trigger ausgeführten Datenbankvorgänge unteilbar sind. Durch diese Unteilbarkeit kann eine Anwendung zusammengehörige Vorgänge in einem einzelnen Batch kombinieren, sodass entweder alle Vorgänge erfolgreich ausgeführt werden oder keiner von ihnen.
 
-- **Leistung:** Die JSON-Daten sind dem Typensystem der JavaScript-Sprache zugeordnet. Diese Zuordnung ermöglicht eine Reihe von Optimierungen, beispielsweise die verzögerte Materialisierung von JSON-Dokumenten im Pufferpool und deren bedarfsgesteuerte Bereitstellung für den ausführenden Code. Weitere Leistungsvorteile betreffen die Übertragung der Geschäftslogik in die Datenbank:
+* **Leistung:** Die JSON-Daten sind dem Typensystem der JavaScript-Sprache zugeordnet. Diese Zuordnung ermöglicht eine Reihe von Optimierungen, beispielsweise die verzögerte Materialisierung von JSON-Dokumenten im Pufferpool und deren bedarfsgesteuerte Bereitstellung für den ausführenden Code. Weitere Leistungsvorteile betreffen die Übertragung der Geschäftslogik in die Datenbank:
 
    * *Batchverarbeitung:* Sie können Vorgänge wie Einfügungen gruppieren und dann gleichzeitig übermitteln. Die durch die Wartezeit des Netzwerkdatenverkehrs verursachten Kosten und der erhöhte Speicheraufwand für die Erstellung separater Transaktionen werden erheblich verringert.
 
@@ -34,7 +34,7 @@ Das Schreiben von gespeicherten Prozeduren, Triggern und benutzerdefinierten Fun
 
    * *Sequenzierung:* Manchmal erfordern Vorgänge einen Auslösemechanismus, der eine oder zusätzliche Aktualisierungen an den Daten vornehmen kann. Neben der Unteilbarkeit ergeben sich durch die Ausführung auf dem Server auch Leistungsvorteile.
 
-- **Kapselung:** Mithilfe gespeicherter Prozeduren kann die Logik an einem Ort zusammengefasst werden. Durch die Kapselung wird eine Abstraktionsebene über den Daten hinzugefügt, die es Ihnen erlaubt, Ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsebene ist hilfreich, wenn die Daten kein Schema aufweisen und Sie keine zusätzliche Logik direkt in der Anwendung hinzufügen müssen. Durch diese Abstraktion können Sie den Zugriff über die Scripts optimieren und dadurch Ihre Daten schützen.
+* **Kapselung:** Mithilfe gespeicherter Prozeduren kann die Logik an einem Ort zusammengefasst werden. Durch die Kapselung wird eine Abstraktionsebene über den Daten hinzugefügt, die es Ihnen erlaubt, Ihre Anwendungen unabhängig von den Daten zu entwickeln. Diese Abstraktionsebene ist hilfreich, wenn die Daten kein Schema aufweisen und Sie keine zusätzliche Logik direkt in der Anwendung hinzufügen müssen. Durch diese Abstraktion können Sie den Zugriff über die Scripts optimieren und dadurch Ihre Daten schützen.
 
 > [!TIP]
 > Gespeicherte Prozeduren eignen sich am besten für schreibintensive Vorgänge. Bei der Entscheidung, wo Sie gespeicherte Prozeduren verwenden, sollten Sie die Kapselung der maximal möglichen Anzahl von Schreibvorgängen optimieren. Gespeicherte Prozeduren sind im Allgemeinen nicht die effizienteste Methode zur Ausführung zahlreicher Lesevorgänge. Eine große Anzahl an den Client zurückzugebender Lesevorgänge mithilfe von gespeicherten Prozeduren in einem Batch zusammenzufassen, bietet daher nicht den gewünschten Nutzen.

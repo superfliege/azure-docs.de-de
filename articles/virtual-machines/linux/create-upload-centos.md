@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2018
 ms.author: szark
-ms.openlocfilehash: a46f2b4ed1bb3fc5fff65a627bd3d808ed85ffce
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 4e32d2357636cb488d3a58b78b025860da3f74c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52967281"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091357"
 ---
 # <a name="prepare-a-centos-based-virtual-machine-for-azure"></a>Vorbereiten eines CentOS-basierten virtuellen Computers für Azure
 
@@ -301,11 +301,11 @@ Die Vorbereitung eines virtuellen CentOS 7-Computers für Azure entspricht in et
 
 10. Wenn Sie das Image aus **VMware, VirtualBox oder KVM** erstellen: Stellen Sie sicher, dass die Hyper-V-Treiber in „initramfs“ enthalten sind:
 
-   Bearbeiten Sie `/etc/dracut.conf`und fügen Sie Inhalt hinzu:
+    Bearbeiten Sie `/etc/dracut.conf`und fügen Sie Inhalt hinzu:
 
         add_drivers+=”hv_vmbus hv_netvsc hv_storvsc”
 
-   Erstellen Sie initramfs neu:
+    Erstellen Sie initramfs neu:
 
         # sudo dracut -f -v
 
@@ -316,7 +316,7 @@ Die Vorbereitung eines virtuellen CentOS 7-Computers für Azure entspricht in et
 
 12. Richten Sie keinen SWAP-Raum auf dem BS-Datenträger ein.
 
-   Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Passen Sie nach dem Installieren des Azure Linux-Agents (siehe vorheriger Schritt) die folgenden Parameter in `/etc/waagent.conf` an:
+    Der Azure Linux Agent kann SWAP-Raum automatisch mit dem lokalen Ressourcendatenträger konfigurieren, der nach der Bereitstellung in Azure mit dem virtuellen Computer verknüpft ist. Beachten Sie, dass der lokale Ressourcendatenträger ein *temporärer* Datenträger ist und geleert werden kann, wenn die Bereitstellung des virtuellen Computers aufgehoben wird. Passen Sie nach dem Installieren des Azure Linux-Agents (siehe vorheriger Schritt) die folgenden Parameter in `/etc/waagent.conf` an:
 
         ResourceDisk.Format=y
         ResourceDisk.Filesystem=ext4

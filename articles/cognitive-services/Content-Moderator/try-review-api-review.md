@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: d963cdd484727ac46aed1915643dd92462e2c643
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55857809"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101464"
 ---
 # <a name="create-reviews-from-the-api-console"></a>Erstellen von Überprüfungen über die API-Konsole
 
@@ -33,35 +33,35 @@ Um die API über die Online-Konsole zu testen, benötigen Sie einige Werte, die 
 
 Die einfachste Möglichkeit, auf eine Testkonsole zuzugreifen, ist über das Fenster **Anmeldeinformationen**.
 
-1.  Wählen Sie im Fenster **Anmeldeinformationen** die Option [Überprüfungs-API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
+1. Wählen Sie im Fenster **Anmeldeinformationen** die Option [Überprüfungs-API-Referenz](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4).
 
-  Die Seite **Überprüfung – Erstellen** wird geöffnet.
+   Die Seite **Überprüfung – Erstellen** wird geöffnet.
 
-2.  Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
+2. Wählen Sie für **API-Testkonsole öffnen** die Region aus, die Ihrem Standort am ehesten nahekommt.
 
-  ![Regionsauswahl auf der Seite „Überprüfung – Erstellen“](images/test-drive-region.png)
+   ![Regionsauswahl auf der Seite „Überprüfung – Erstellen“](images/test-drive-region.png)
 
-  Die API-Konsole **Überprüfung – Erstellen** wird geöffnet.
+   Die API-Konsole **Überprüfung – Erstellen** wird geöffnet.
   
-3.  Geben Sie Werte für die gewünschten Abfrageparameter, den Inhaltstyp und Ihren Abonnementschlüssel ein. Geben Sie im Feld **Anforderungstext** den Inhalt (z.B. den Speicherort des Bildes), Metadaten und andere mit dem Inhalt verbundene Informationen an.
+3. Geben Sie Werte für die gewünschten Abfrageparameter, den Inhaltstyp und Ihren Abonnementschlüssel ein. Geben Sie im Feld **Anforderungstext** den Inhalt (z.B. den Speicherort des Bildes), Metadaten und andere mit dem Inhalt verbundene Informationen an.
 
-  ![Abfrageparameter, Header und Feld „Anforderungstext“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-1.PNG)
+   ![Abfrageparameter, Header und Feld „Anforderungstext“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-1.PNG)
   
-4.  Wählen Sie **Senden** aus. Es wird eine Überprüfungs-ID erstellt. Kopieren Sie diese ID für die folgenden Schritte.
+4. Wählen Sie **Senden** aus. Es wird eine Überprüfungs-ID erstellt. Kopieren Sie diese ID für die folgenden Schritte.
 
-  ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
+   ![Feld „Antwortinhalt“ mit Überprüfungs-ID in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-2.PNG)
   
-5.  Wählen Sie **Abrufen**, und öffnen Sie die API durch Auswählen der Schaltfläche, die Ihrer Region entspricht. Geben Sie auf der Ergebnisseite die Werte für **teamName**, **ReviewID** und **subscription key** ein. Wählen Sie die Schaltfläche **Senden** auf der Seite. 
+5. Wählen Sie **Abrufen**, und öffnen Sie die API durch Auswählen der Schaltfläche, die Ihrer Region entspricht. Geben Sie auf der Ergebnisseite die Werte für **teamName**, **ReviewID** und **subscription key** ein. Wählen Sie die Schaltfläche **Senden** auf der Seite. 
 
-  ![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
+   ![Abrufergebnisse in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-3.PNG)
   
-6.  Es werden die Ergebnisse des Suchvorgangs angezeigt.
+6. Es werden die Ergebnisse des Suchvorgangs angezeigt.
 
-  ![Feld „Antwortinhalt“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-4.PNG)
+   ![Feld „Antwortinhalt“ in der Konsole „Überprüfen – Erstellen“](images/test-drive-review-4.PNG)
   
-7.  Wählen Sie auf dem Content Moderator-Dashboard **Überprüfung** > **Bild**. Das durchsuchte Bild wird angezeigt und kann für die Überprüfung durch Personen verwendet werden.
+7. Wählen Sie auf dem Content Moderator-Dashboard **Überprüfung** > **Bild**. Das durchsuchte Bild wird angezeigt und kann für die Überprüfung durch Personen verwendet werden.
 
-  ![Prüfungstool-Bild eines Fußballs](images/test-drive-review-5.PNG)
+   ![Prüfungstool-Bild eines Fußballs](images/test-drive-review-5.PNG)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

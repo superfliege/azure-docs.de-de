@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: d7f67015d4df20ea39c1225d52be36340b8f65d1
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556975"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116180"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Tutorial: Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Darüber hinaus erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden.
@@ -56,16 +56,16 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 7. Geben Sie die folgenden Informationen ein, wenn Sie zurück auf das Blatt **Neue Ausgabe** gelangen:
 
-    * **Gruppenarbeitsbereich**: Wählen Sie einen Arbeitsbereich in Ihrem Power BI-Mandanten aus, in dem Sie das Dataset erstellen möchten.
-    * **Datasetname**:  Geben Sie `sa-dataset` ein. Sie können auch einen anderen Namen verwenden. Wenn Sie dies tun, sollten Sie sich den Namen zur späteren Verwendung notieren.
-    * **Tabellenname**: Geben Sie `fraudulent-calls` ein. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen.
+   * **Gruppenarbeitsbereich**: Wählen Sie einen Arbeitsbereich in Ihrem Power BI-Mandanten aus, in dem Sie das Dataset erstellen möchten.
+   * **Datasetname**:  Geben Sie `sa-dataset` ein. Sie können auch einen anderen Namen verwenden. Wenn Sie dies tun, sollten Sie sich den Namen zur späteren Verwendung notieren.
+   * **Tabellenname**: Geben Sie `fraudulent-calls` ein. Derzeit darf die Power BI-Ausgabe von Stream Analytics-Aufträgen nur eine Tabelle pro Dataset aufweisen.
 
-    ![Power BI-Arbeitsbereich mit Dataset und Tabelle](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
+     ![Power BI-Arbeitsbereich mit Dataset und Tabelle](./media/stream-analytics-power-bi-dashboard/create-pbi-ouptut-with-dataset-table.png)
 
-    > [!WARNING]
-    > Wenn Power BI über ein Dataset und eine Tabelle mit den gleichen Namen wie das Dataset und die Tabelle im Stream Analytics-Auftrag verfügt, werden die vorhandenen Elemente überschrieben.
-    > Es wird empfohlen, dieses Dataset und diese Tabelle nicht explizit in Ihrem Power BI-Konto zu erstellen. Diese werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden das Dataset und die Tabelle nicht erstellt.
-    >
+     > [!WARNING]
+     > Wenn Power BI über ein Dataset und eine Tabelle mit den gleichen Namen wie das Dataset und die Tabelle im Stream Analytics-Auftrag verfügt, werden die vorhandenen Elemente überschrieben.
+     > Es wird empfohlen, dieses Dataset und diese Tabelle nicht explizit in Ihrem Power BI-Konto zu erstellen. Diese werden automatisch erstellt, wenn Sie Ihren Stream Analytics-Auftrag starten und der Auftrag damit beginnt, Power BI mit Ausgaben zu füttern. Wenn die Auftragsabfrage keine Ergebnisse generiert, werden das Dataset und die Tabelle nicht erstellt.
+     >
 
 8. Klicken Sie auf **Create**.
 
@@ -189,13 +189,13 @@ Der Stream Analytics-Auftrag beginnt mit der Suche nach betrügerischen Anrufen,
     * Fügen Sie einen Wert hinzu, und wählen Sie **fraudulentcalls**.
     * Wählen Sie für **Das anzuzeigende Zeitfenster** die letzten zehn Minuten aus.
 
-    ![Kachel zum Erstellen eines Liniendiagramms in Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
+      ![Kachel zum Erstellen eines Liniendiagramms in Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
 9. Klicken Sie auf **Weiter**, fügen Sie einen Titel und einen Untertitel hinzu, und klicken Sie auf **Übernehmen**.
 
-    Im Power BI-Dashboard werden jetzt zwei Ansichten mit Daten zu betrügerischen Anrufen angezeigt, die in den Streamingdaten erkannt wurden.
+     Im Power BI-Dashboard werden jetzt zwei Ansichten mit Daten zu betrügerischen Anrufen angezeigt, die in den Streamingdaten erkannt wurden.
 
-    ![Fertiges Power BI-Dashboard mit zwei Kacheln zu betrügerischen Anrufen](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
+     ![Fertiges Power BI-Dashboard mit zwei Kacheln zu betrügerischen Anrufen](./media/stream-analytics-power-bi-dashboard/pbi-dashboard-fraudulent-calls-finished.png)
 
 
 ## <a name="learn-more-about-power-bi"></a>Weitere Informationen zu Power BI

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 3ca3222f47b6a728905f895007269e3c22acd66d
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: cefde79cf8c544a6900b1efa5dbcefbc43638d40
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53789941"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009967"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Notfallwiederherstellung für Hyper-V-VMs in Azure
 
@@ -24,8 +24,8 @@ Dieser Artikel hilft Ihnen, die Netzwerkzuordnung bei der Replikation von Hyper-
 ## <a name="prepare-network-mapping-for-replication-to-azure"></a>Vorbereiten der Netzwerkzuordnung für die Replikation nach Azure
 
 Wenn die Replikation nach Azure ausgeführt wird, erfolgt die Netzwerkzuordnung zwischen VM-Netzwerken auf einem VMM-Quellserver und virtuellen Azure-Zielnetzwerken. Die Zuordnung ermöglicht Folgendes:
-    -  **Netzwerkverbindung** – Stellt sicher, dass replizierte Azure-VMs mit dem zugeordneten Netzwerk verbunden sind. Alle Computer, auf denen ein Failover im selben Netzwerk ausgeführt wird, können untereinander eine Verbindung herstellen, selbst wenn das Failover in verschiedenen Wiederherstellungsplänen stattgefunden hat.
-    - **Netzwerkgateway** – Wenn im Azure-Zielnetzwerk ein Netzwerkgateway eingerichtet ist, können die VMs eine Verbindung mit anderen lokalen virtuellen Computern herstellen.
+-  **Netzwerkverbindung** – Stellt sicher, dass replizierte Azure-VMs mit dem zugeordneten Netzwerk verbunden sind. Alle Computer, auf denen ein Failover im selben Netzwerk ausgeführt wird, können untereinander eine Verbindung herstellen, selbst wenn das Failover in verschiedenen Wiederherstellungsplänen stattgefunden hat.
+- **Netzwerkgateway** – Wenn im Azure-Zielnetzwerk ein Netzwerkgateway eingerichtet ist, können die VMs eine Verbindung mit anderen lokalen virtuellen Computern herstellen.
 
 Die Netzwerkzuordnung funktioniert wie folgt:
 

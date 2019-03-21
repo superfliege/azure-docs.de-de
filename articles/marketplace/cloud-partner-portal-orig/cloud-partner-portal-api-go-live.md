@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c7d643f0c7885e64636a107d22ce332b1ba9371c
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: ea3f26d70c4a4ce07c988612890687504a4cf5ac
+ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806055"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56594677"
 ---
 <a name="go-live"></a>Live schalten
 =======
@@ -35,7 +35,7 @@ Diese API startet den Prozess zum Überführen einer App in den Produktionsstatu
 |  --------      |   ---------------                                                           | ------------- |
 | publisherId    | Herausgeber-ID für das abzurufende Angebot, z. B. `contoso`       |  Zeichenfolge       |
 | offerId        | Angebots-ID des abzurufenden Angebots                                   |  Zeichenfolge       |
-| api-version    | Neueste Version der API                                                   |  Datum         |
+| api-version    | Aktuelle Version der API                                                   |  Datum         |
 |  |  |  |
 
 
@@ -67,9 +67,9 @@ Diese API startet den Prozess zum Überführen einer App in den Produktionsstatu
 
 ### <a name="response-status-codes"></a>Antwortstatuscodes
 
-| **Code** |  ** Beschreibung**                                                                        |
+| **Code** |  **Beschreibung**                                                                        |
 | -------- |  ----------------                                                                        |
 |  202     | `Accepted`: Die Anforderung wurde erfolgreich angenommen. Die Antwort enthält eine Position, um den Vorgangsstatus nachzuverfolgen. |
 |  400     | `Bad/Malformed request`: Zusätzliche Fehlerinformationen sind im Antworttext zu finden. |
-|  404     |  `Not found`: Die angegebene Entität ist nicht vorhanden.                                       |
+|  404     |  `Not found` – die angegebene Entität ist nicht vorhanden.                                       |
 |  |  |

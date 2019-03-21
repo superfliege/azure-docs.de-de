@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 5d873b18db8ac52c40736a629ff78e3282365730
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 4dbbaeea736dd46478ad9992201ea28bd7bfc2ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54473978"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855502"
 ---
 # <a name="deploy-and-manage-notification-hubs-using-powershell"></a>Bereitstellen und Verwalten von Notification Hubs mit PowerShell
 
@@ -86,7 +86,7 @@ $NamespaceManager=[Microsoft.Azure.NotificationHubs.NamespaceManager]::CreateFro
 Write-Output "NamespaceManager object for the [$Namespace] namespace has been successfully created."
 ```
 
-## <a name="provisioning-a-new-notification-hub"></a>Bereitstellung eines neuen Notification Hubs
+## <a name="provisioning-a-new-notification-hub"></a>Bereistellung eines neuen Notification Hubs
 
 Verwenden Sie zum Bereitstellen eines neuen Notification Hubs die [.NET-API für Notification Hubs].
 
@@ -154,9 +154,9 @@ Es stehen auch einige einsatzbereite Skripts zum Download zur Verfügung:
 
 - [Service Bus PowerShell-Skripts](https://code.msdn.microsoft.com/windowsazure/Service-Bus-PowerShell-a46b7059)
 
-[Kaufoptionen]: http://azure.microsoft.com/pricing/purchase-options/
-[Spezielle Angebote]: http://azure.microsoft.com/pricing/member-offers/
-[Kostenlose Testversion]: http://azure.microsoft.com/pricing/free-trial/
+[Kaufoptionen]: https://azure.microsoft.com/pricing/purchase-options/
+[Spezielle Angebote]: https://azure.microsoft.com/pricing/member-offers/
+[Kostenlose Testversion]: https://azure.microsoft.com/pricing/free-trial/
 [Installieren und Konfigurieren von Azure PowerShell]: /powershell/azureps-cmdlets-docs
 [.NET-API für Notification Hubs]: https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
 [Get-AzureSBNamespace]: https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azuresbnamespace

@@ -15,12 +15,12 @@ ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
-ms.openlocfilehash: 8e83da53d0b2f71abc1f74a0ca8fbc2405e75bda
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aebc308f6bfaddbe8e9b430096cb6698d7dd06c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56736582"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099068"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Schnellstart: Bereitstellen einer .NET Reliable Services-Anwendung in Service Fabric
 
@@ -47,9 +47,10 @@ So führen Sie diesen Schnellstart durch:
 2. [Installation von Git](https://git-scm.com/)
 3. [Installieren Sie das Microsoft Azure Service Fabric-SDK](https://www.microsoft.com/web/handlers/webpi.ashx?command=getinstallerredirect&appid=MicrosoftAzure-ServiceFabric-CoreSDK).
 4. Führen Sie den folgenden Befehl aus, um für Visual Studio die Bereitstellung im lokalen Service Fabric-Cluster zu ermöglichen:
-    ```powershell
-    Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
-    ```
+
+   ```powershell
+   Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
+   ```
     
 ## <a name="build-a-cluster"></a>Erstellen eines Clusters
 
@@ -63,14 +64,14 @@ Nachdem Sie die Laufzeit, SDKs, Visual Studio-Tools und Docker installiert haben
 1. Öffnen Sie als Administrator ein neues PowerShell-Fenster mit erhöhten Rechten.
 2. Führen Sie den folgenden PowerShell-Befehl aus, um einen Entwicklungscluster zu erstellen:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1"
+   ```
 3. Führen Sie den folgenden Befehl aus, um das lokale Cluster-Manager-Tool zu starten:
 
-    ```powershell
-    . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
-    ```
+   ```powershell
+   . "C:\Program Files\Microsoft SDKs\Service Fabric\Tools\ServiceFabricLocalClusterManager\ServiceFabricLocalClusterManager.exe"
+   ```
 
 >[!NOTE]
 > Die Beispielanwendung in dieser Schnellstartanleitung verwendet Features, die unter Windows 7 nicht verfügbar sind.
@@ -131,23 +132,23 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 2. Öffnen Sie die Datei **/VotingData/Controllers/VoteDataController.cs**, und legen Sie in der **Put**-Methode dieser Web-API (Zeile 54) einen Breakpoint fest.
 
 3. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Der erste Breakpoint befindet sich im API-Controller des Web-Front-Ends.
-    * An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
+   * An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
 
-    ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+     ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
 
-    * Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
-    * Senden Sie anschließend die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
-    * Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
+   * Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
+   * Senden Sie anschließend die HTTP-Anforderung PUT an den Reverseproxy **(2)**.
+   * Geben Sie zum Schluss die Antwort vom Back-End-Dienst an den Client zurück **(3)**.
 
 4. Drücken Sie **F5**, um fortzufahren.
-    - Gewähren Sie bei entsprechender Aufforderung durch den Browser der Gruppe „ServiceFabricAllowedUsers“ Lese- und Ausführungsberechtigungen für den Debugmodus.
-    - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
+   - Gewähren Sie bei entsprechender Aufforderung durch den Browser der Gruppe „ServiceFabricAllowedUsers“ Lese- und Ausführungsberechtigungen für den Debugmodus.
+   - Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
 
-    ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+     ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
-    * In der ersten Zeile der Methode **(1)** wird das `StateManager`-Element verwendet, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
-    * Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
-    * Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
+   - In der ersten Zeile der Methode **(1)** wird das `StateManager`-Element verwendet, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
+   - Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
+   - Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
 5. Drücken Sie **F5**, um fortzufahren.
 
 Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.

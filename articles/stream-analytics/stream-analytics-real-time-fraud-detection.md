@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 73fffda6ec0ae0a65af9b5aa8505e3b9551bd3b4
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558174"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995111"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Erste Schritte mit Azure Stream Analytics: Betrugsermittlung in Echtzeit
 
@@ -68,7 +68,7 @@ In diesem Verfahren erstellen Sie zuerst einen Event Hub-Namespace und fügen di
 
 5. Klicken Sie auf den neuen Namespace, und wählen Sie im Bereich „Namespace“ **Event Hub** aus.
 
-   ![Schaltfläche „Event Hub hinzufügen“ zum Erstellen eines neuen Event Hubs ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
+   ![Schaltfläche „Event Hub hinzufügen“ zum Erstellen eines neuen Event Hubs](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
 6. Vergeben Sie einen Namen für den neuen Event Hub `asa-eh-frauddetection-demo`. Sie können auch einen anderen Namen verwenden. In diesem Fall sollten Sie sich den Namen notieren, da Sie ihn später noch benötigen. Vorerst müssen Sie keine weiteren Optionen für den Event Hub festlegen.
 
@@ -114,20 +114,20 @@ Bevor Sie die TelcoGenerator-App starten, müssen Sie sie so konfigurieren, dass
 
 ### <a name="configure-the-telcogenerator-app"></a>Konfigurieren der TelcoGenerator-App
 
-1.  Notieren Sie im Editor, in den Sie die kopierte Verbindungszeichenfolge eingefügt haben, den Wert `EntityPath`, und entfernen Sie das `EntityPath`-Paar (danken Sie daran, das voranstehende Semikolon zu entfernen). 
+1. Notieren Sie im Editor, in den Sie die kopierte Verbindungszeichenfolge eingefügt haben, den Wert `EntityPath`, und entfernen Sie das `EntityPath`-Paar (danken Sie daran, das voranstehende Semikolon zu entfernen). 
 
-2.  Öffnen Sie in einem Editor die Datei „telcodatagen.exe.config“ im Ordner, in dem sich die entzippte Datei „TelcoGenerator.zip“ befindet. (Es gibt mehrere Konfigurationsdateien. Stellen Sie daher sicher, dass Sie die richtige Datei öffnen.)
+2. Öffnen Sie in einem Editor die Datei „telcodatagen.exe.config“ im Ordner, in dem sich die entzippte Datei „TelcoGenerator.zip“ befindet. (Es gibt mehrere Konfigurationsdateien. Stellen Sie daher sicher, dass Sie die richtige Datei öffnen.)
 
-3.  Legen Sie im Element `<appSettings>` Folgendes fest:
+3. Legen Sie im Element `<appSettings>` Folgendes fest:
 
-    * Legen Sie den Wert des Schlüssels `EventHubName` auf den Event Hub-Namen fest (d.h. auf den Wert des Entitätspfads).
-    * Legen Sie den Wert des Schlüssels `Microsoft.ServiceBus.ConnectionString` auf die Verbindungszeichenfolge fest. 
+   * Legen Sie den Wert des Schlüssels `EventHubName` auf den Event Hub-Namen fest (d.h. auf den Wert des Entitätspfads).
+   * Legen Sie den Wert des Schlüssels `Microsoft.ServiceBus.ConnectionString` auf die Verbindungszeichenfolge fest. 
 
-    Der Abschnitt `<appSettings>` sollte wie im folgenden Beispiel aussehen. (Der Übersichtlichkeit halber wurden die Zeilen umbrochen und einige Zeichen aus dem Autorisierungstoken entfernt.)
+   Der Abschnitt `<appSettings>` sollte wie im folgenden Beispiel aussehen. (Der Übersichtlichkeit halber wurden die Zeilen umbrochen und einige Zeichen aus dem Autorisierungstoken entfernt.)
 
    ![TelcoGenerator-Konfigurationsdatei mit Event Hub-Namen und Verbindungszeichenfolge](./media/stream-analytics-real-time-fraud-detection/stream-analytics-telcogenerator-config-file-app-settings.png)
  
-4.  Speichern Sie die Datei . 
+4. Speichern Sie die Datei . 
 
 ### <a name="start-the-app"></a>Starten der App
 1.  Öffnen Sie ein Befehlsfenster, und wechseln Sie zum Ordner, in dem sich die entzippte TelcoGenerator-App befindet.
@@ -191,6 +191,7 @@ Nachdem Sie einen Datenstrom von Anrufereignissen eingerichtet haben, können Si
    |Event Hub-Namespace  |  asa-eh-ns-demo |  Geben Sie den Namen des Event Hub-Namespace ein.   |
    |Event Hub-Name  | asa-eh-frauddetection-demo | Wählen Sie den Namen Ihres Event Hubs aus.   |
    |Event Hub-Richtlinienname  | asa-policy-manage-demo | Wählen Sie die Zugriffsrichtlinie aus, die Sie zuvor erstellt haben.   |
+
     </br>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
@@ -359,6 +360,7 @@ Wenn ein Blob Storage-Konto vorhanden ist, können Sie dieses verwenden. In dies
    |Abonnement   |  \<Ihr Abonnement\> |  Wählen Sie das Azure-Abonnement mit dem von Ihnen erstellten Speicherkonto aus. Das Speicherkonto kann sich im gleichen oder in einem anderen Abonnement befinden. In diesem Beispiel wird davon ausgegangen, dass Sie ein Speicherkonto im gleichen Abonnement erstellt haben. |
    |Speicherkonto  |  asaehstorage |  Geben Sie den Namen des von Ihnen erstellten Speicherkontos ein. |
    |Container  | asa-fraudulentcalls-demo | Wählen Sie „Neu erstellen“ aus, und geben Sie einen Containernamen ein. |
+
     <br/>
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png" alt="Create blob output for Stream Analytics job" width="300px"/>
     

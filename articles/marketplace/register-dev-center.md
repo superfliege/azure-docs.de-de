@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 479278400aa056a7cebcefaa2eedee3d98bc9a15
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815234"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57889742"
 ---
 # <a name="register-in-dev-center"></a>Registrieren bei Dev Center  
 Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind, öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung.  
 1.  Registrieren Sie sich bei Dev Center als Verkäufer.  
-    *   Um sich als Verkäufer zu registrieren und anzumelden, besuchen Sie die Azure Dev Center-Seite unter [dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure).  
+    *   Um sich als Verkäufer zu registrieren und anzumelden, besuchen Sie die Azure Dev Center-Seite unter [dev.windows.com/registration?accountprogram=azure](https://dev.windows.com/registration?accountprogram=azure).  
 2.  Schließen Sie den Assistenten `Help us protect your account` (Unterstützen Sie uns beim Schutz Ihres Kontos) ab, der Ihre Identität anhand Ihrer Telefonnummer oder E-Mail-Adresse überprüft.  
 
     ![Felder für die Telefonnummer im Assistenten „Unterstützen Sie uns beim Schutz Ihres Kontos“](./media/marketplace-publishers-guide/registerdevcenteremail.png)  
@@ -82,7 +82,7 @@ Um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind
 
     *   Ein virtueller Computer mit stundenbasiertem Abrechnungsmodell wäre ein Beispiel für ein kommerzielles Angebot.  
 
----  
+---
 
 ## <a name="get-help-with-dev-center-registration"></a>Hilfe zur Dev Center-Registrierung  
 Wenn Sie Probleme mit der Registrierung bei Dev Center haben, führen Sie die folgenden Schritte aus, um ein Supportticket zu übermitteln.  
@@ -125,7 +125,7 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
 
 4.  Klicken Sie auf die Schaltfläche „Weiter“. 
 
----   
+---
 
 ## <a name="add-tax-information"></a>Hinzufügen von Steuerinformationen  
 1.  Melden Sie sich mit Ihrer Microsoft-ID bei Dev Center an.  
@@ -142,57 +142,57 @@ Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen: 
 
-*   **Für welche Herausgeber ist eine Dev Center-Kontoregistrierung erforderlich?** 
-> Herausgeber, die in der Auflistungsart „Transact“ veröffentlichen: VM, Azure-Apps: Lösungsvorlagen und verwaltete Apps.  
+* **Für welche Herausgeber ist eine Dev Center-Kontoregistrierung erforderlich?** 
+  > Herausgeber, die in der Auflistungsart „Transact“ veröffentlichen: VM, Azure-Apps: Lösungsvorlagen und verwaltete Apps.  
 
-*   **Wozu wird ein Dev Center-Konto benötigt?**
-> Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/azure/marketplace/become-publisher), um weitere Informationen zu erhalten.
+* **Wozu wird ein Dev Center-Konto benötigt?**
+  > Ein Dev Center-Konto ist erforderlich, damit Microsoft dem Kunden die Transact-Auflistungsart im Namen des Herausgebers berechnen kann. Die Dev Center-Kontoregistrierung ermöglicht es Microsoft, Rechts-, Steuer- und Bankinginformationen zu Ihrem Unternehmen zu überprüfen. Klicken Sie [hier](https://docs.microsoft.com/azure/marketplace/become-publisher), um weitere Informationen zu erhalten.
 
-*   **Wie beginne ich mit der Dev Center-Registrierung?**
-> Überprüfen Sie zur Vermeidung von Duplikaten, ob Ihr Unternehmen nicht bereits ein Dev Center-Konto registriert hat. Sie müssen mit dem Microsoft-Konto angemeldet sein, das Sie Ihrem Entwicklerkonto zuordnen möchten. Wenn Sie noch kein Microsoft-Konto haben, können Sie [hier](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) ein neues erstellen. (Beispiel: contoso_marketplace@live.com) Wechseln Sie zum Anmelden und Registrieren zu https://dev.windows.com/en-us/registration?accountProgram=Azure.
-<br>Weitere Informationen zum Registrierungsprozess finden Sie [hier](https://docs.microsoft.com/azure/marketplace/register-dev-center).</br>
+* **Wie beginne ich mit der Dev Center-Registrierung?**
+  > Überprüfen Sie zur Vermeidung von Duplikaten, ob Ihr Unternehmen nicht bereits ein Dev Center-Konto registriert hat. Sie müssen mit dem Microsoft-Konto angemeldet sein, das Sie Ihrem Entwicklerkonto zuordnen möchten. Wenn Sie noch kein Microsoft-Konto haben, können Sie [hier](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) ein neues erstellen. (Beispiel: contoso_marketplace@live.com) Wechseln Sie zum Anmelden und Registrieren zu https://dev.windows.com/en-us/registration?accountProgram=Azure.
+  > <br>Weitere Informationen zum Registrierungsprozess finden Sie [hier](https://docs.microsoft.com/azure/marketplace/register-dev-center).</br>
 
-*   **Soll ich für den Kontotyp „Individual“ (Einzelperson) oder „Company“ (Unternehmen) auswählen?**
-> Zum Veröffentlichen eines Transaktionsangebots in Marketplace müssen Sie bei der Registrierung für Ihr Dev Center-Konto „Company“ (Unternehmen) auswählen.
+* **Soll ich für den Kontotyp „Individual“ (Einzelperson) oder „Company“ (Unternehmen) auswählen?**
+  > Zum Veröffentlichen eines Transaktionsangebots in Marketplace müssen Sie bei der Registrierung für Ihr Dev Center-Konto „Company“ (Unternehmen) auswählen.
 
-*   **Kann dich den Kontotyp nach der Kontoerstellung von „Individual“ (Einzelperson) in „Company“ (Unternehmen) ändern?**
-> Nein, der Kontotyp kann nach der Kontoerstellung nicht aktualisiert werden.
+* **Kann dich den Kontotyp nach der Kontoerstellung von „Individual“ (Einzelperson) in „Company“ (Unternehmen) ändern?**
+  > Nein, der Kontotyp kann nach der Kontoerstellung nicht aktualisiert werden.
 
-*   **Warum erhalte ich die Fehlermeldung „City is required“ (Die Stadt ist erforderlich), obwohl ich die Stadt richtig eingegeben habe?**
-> Prüfen Sie, ob Sie auch die Postleitzahl richtig eingegeben haben. Stadt und Postleitzahl werden abgeglichen.
+* **Warum erhalte ich die Fehlermeldung „City is required“ (Die Stadt ist erforderlich), obwohl ich die Stadt richtig eingegeben habe?**
+  > Prüfen Sie, ob Sie auch die Postleitzahl richtig eingegeben haben. Stadt und Postleitzahl werden abgeglichen.
 
-*   **Wie erhalte ich einen Angebotscode?**
-> Füllen Sie das Formular für die [Marketplace-Registrierung](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus, um einen Dev Center-Angebotscode zu erhalten.
+* **Wie erhalte ich einen Angebotscode?**
+  > Füllen Sie das Formular für die [Marketplace-Registrierung](https://azuremarketplace.microsoft.com/en-us/sell/signup) aus, um einen Dev Center-Angebotscode zu erhalten.
  
-*   **Was erwartet mich nach Abschluss der Registrierung?**
-> Suchen Sie nach einer E-Mail von verify@microsoft.com mit der Betreffzeile „Action needed: Verify your email account with Microsoft“ (Aktion erforderlich: Lassen Sie Ihr E-Mail-Konto bei Microsoft überprüfen). Klicken Sie auf den zeitempfindlichen Link zur Überprüfung, um die Registrierung abzuschließen. *Wenn Sie innerhalb von 24 Stunden keine E-Mail erhalten haben, überprüfen Sie den Spamordner.*
+* **Was erwartet mich nach Abschluss der Registrierung?**
+  > Suchen Sie nach einer E-Mail von verify@microsoft.com mit der Betreffzeile „Action needed: Verify your email account with Microsoft“ (Aktion erforderlich: Lassen Sie Ihr E-Mail-Konto bei Microsoft überprüfen). Klicken Sie auf den zeitempfindlichen Link zur Überprüfung, um die Registrierung abzuschließen. *Wenn Sie innerhalb von 24 Stunden keine E-Mail erhalten haben, überprüfen Sie den Spamordner.*
 
-*   **Welche Schritte folgen auf die Dev Center-Überprüfung?**
-> Wechseln Sie zu „Your programs” (Ihre Programme) (https://developer.microsoft.com/dashboard/Account/Programs)), und melden Sie sich beim Dev Center-Konto an. Wenn Azure nicht als registrierte Anwendung angezeigt wird, suchen Sie unter „Recommended programs for you“ (Für Sie empfohlene Programme), und suchen Sie dort nach Azure, um „Get Started“ (Erste Schritte) auszuwählen.
+* **Welche Schritte folgen auf die Dev Center-Überprüfung?**
+  > Wechseln Sie zu „Your programs” (Ihre Programme) (https://developer.microsoft.com/dashboard/Account/Programs)), und melden Sie sich beim Dev Center-Konto an. Wenn Azure nicht als registrierte Anwendung angezeigt wird, suchen Sie unter „Recommended programs for you“ (Für Sie empfohlene Programme), und suchen Sie dort nach Azure, um „Get Started“ (Erste Schritte) auszuwählen.
 
-*   **Wie verknüpfe ich mein Dev Center-Konto mit meinem Cloud-Partnerportal-Herausgeberprofil?**
-> Der letzte Schritt vor der Veröffentlichung besteht darin, Ihr Dev Center-Konto mit Ihrem Cloud-Partnerportal-[Profil](https://cloudpartner.azure.com/#profile) zu verknüpfen. Wenn Ihr Dev Center-Konto nicht mit Ihrem Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) identisch ist, fügen Sie Ihr Dev Center-Konto als neuen [Benutzer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) im Cloud-Partnerportal hinzu. Melden Sie sich im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) mit Ihrem Dev Center-Konto an. Wählen Sie das Herausgeberprofil im Menü aus, das sich oben rechts im Webbrowser befindet. Wählen Sie „Link Dev Center Account“ (Dev Center-Konto verknüpfen) aus.
+* **Wie verknüpfe ich mein Dev Center-Konto mit meinem Cloud-Partnerportal-Herausgeberprofil?**
+  > Der letzte Schritt vor der Veröffentlichung besteht darin, Ihr Dev Center-Konto mit Ihrem Cloud-Partnerportal-[Profil](https://cloudpartner.azure.com/#profile) zu verknüpfen. Wenn Ihr Dev Center-Konto nicht mit Ihrem Konto im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) identisch ist, fügen Sie Ihr Dev Center-Konto als neuen [Benutzer](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-manage-users) im Cloud-Partnerportal hinzu. Melden Sie sich im [Cloud-Partnerportal](https://cloudpartner.azure.com/#alloffers) mit Ihrem Dev Center-Konto an. Wählen Sie das Herausgeberprofil im Menü aus, das sich oben rechts im Webbrowser befindet. Wählen Sie „Link Dev Center Account“ (Dev Center-Konto verknüpfen) aus.
 
-*   **Warum wird meine Dev Center-Anwendung abgelehnt?**
-> Die externe Überprüfungsgesellschaft (Duns & Bradstreet) konnte Sie unter der von Ihnen angegebenen Telefonnummer nicht erreichen. Wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, um den Überprüfungsprozess neu zu starten.
+* **Warum wird meine Dev Center-Anwendung abgelehnt?**
+  > Die externe Überprüfungsgesellschaft (Duns & Bradstreet) konnte Sie unter der von Ihnen angegebenen Telefonnummer nicht erreichen. Wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, um den Überprüfungsprozess neu zu starten.
 
 > oder
-
+> 
 > Die Kontoregistrierung wurde aufgrund geografischer Aspekte abgelehnt. Unternehmen mit Niederlassungen an einem anderen Standort als dem Hauptsitz benötigen nur ein Dev Center-Konto.
  
-*   **Wie soll ich vorgehen, wenn der Unternehmensname, den ich verwenden möchte, in Dev Center bereits vorhanden ist?**
-> Weisen Sie einen temporären Unternehmensnamen zu, wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, und stellen Sie für die Supportmitarbeiter die Registrierungsunterlagen Ihres Unternehmens bereit.
+* **Wie soll ich vorgehen, wenn der Unternehmensname, den ich verwenden möchte, in Dev Center bereits vorhanden ist?**
+  > Weisen Sie einen temporären Unternehmensnamen zu, wenden Sie sich unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) an den Support, und stellen Sie für die Supportmitarbeiter die Registrierungsunterlagen Ihres Unternehmens bereit.
 
-*   **Wie füge ich meine Steuer- und Auszahlungsinformationen hinzu?**
-> Transaktionsangebote können erst veröffentlicht werden, nachdem die Steuer und Bankdaten im Dev Center-Konto angegeben wurden.  Weitere Informationen zum Hinzufügen von Kontoinformationen finden Sie im Abschnitt [Hinzufügen von Bank- und Steuerinformationen](https://docs.microsoft.com/azure/marketplace/register-dev-center).
+* **Wie füge ich meine Steuer- und Auszahlungsinformationen hinzu?**
+  > Transaktionsangebote können erst veröffentlicht werden, nachdem die Steuer und Bankdaten im Dev Center-Konto angegeben wurden.  Weitere Informationen zum Hinzufügen von Kontoinformationen finden Sie im Abschnitt [Hinzufügen von Bank- und Steuerinformationen](https://docs.microsoft.com/azure/marketplace/register-dev-center).
 
-*   **Kann ich das Dev Center Microsoft-Anmeldekonto wechseln?**
->  Nein. Nachdem ein Dev Center-Konto erstellt wurde, kann das Besitzerkonto nicht mehr gewechselt werden. In diesem Fall müssen Sie ein neues Dev Center-Konto mit dem gewünschten Microsoft-Konto einrichten.
+* **Kann ich das Dev Center Microsoft-Anmeldekonto wechseln?**
+  >  Nein. Nachdem ein Dev Center-Konto erstellt wurde, kann das Besitzerkonto nicht mehr gewechselt werden. In diesem Fall müssen Sie ein neues Dev Center-Konto mit dem gewünschten Microsoft-Konto einrichten.
 
-*   **Wo kann ich mich mit Fragen zur Dev Center-Registrierung an den Support wenden?**
-Um auf den Support zuzugreifen, besuchen Sie die Seite „Windows-Support für Entwickler“ unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
+* **Wo kann ich mich mit Fragen zur Dev Center-Registrierung an den Support wenden?**
+  Um auf den Support zuzugreifen, besuchen Sie die Seite „Windows-Support für Entwickler“ unter [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support). 
 
 ## <a name="next-steps"></a>Nächste Schritte
 *   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
  
----  
+---

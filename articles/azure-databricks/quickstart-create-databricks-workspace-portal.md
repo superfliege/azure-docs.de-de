@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.date: 07/23/2018
 ms.custom: mvc
-ms.openlocfilehash: 1c8f280d58d12df33b687fa9c09712176987cdd1
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 1e0e5deea8602b3da16074155e69c952227b8609
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53259544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117675"
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>Schnellstart: Ausführen eines Spark-Auftrags in Azure Databricks mit dem Azure-Portal
 
@@ -74,11 +74,11 @@ In diesem Abschnitt erstellen Sie einen Azure Databricks-Arbeitsbereich über da
 
     Übernehmen Sie alle anderen Standardwerte bis auf Folgendes:
 
-    * Geben Sie einen Namen für den Cluster ein.
-    * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **4.0**.
-    * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
+   * Geben Sie einen Namen für den Cluster ein.
+   * Erstellen Sie im Rahmen dieses Artikels einen Cluster mit der Runtime **4.0**.
+   * Aktivieren Sie das Kontrollkästchen **Terminate after \_\_ minutes of inactivity** (Nach \_\_ Minuten Inaktivität beenden). Geben Sie an, nach wie vielen Minuten der Cluster beendet werden soll, wenn er nicht verwendet wird.
     
-    Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
+     Klicken Sie auf **Cluster erstellen**. Sobald der Cluster ausgeführt wird, können Sie Notizbücher an den Cluster anfügen und Spark-Aufträge ausführen.
 
 Weitere Informationen zum Erstellen von Clustern in Azure Databricks finden Sie unter [Creating Clusters](https://docs.azuredatabricks.net/user-guide/clusters/create.html) (Erstellen von Clustern).
 
@@ -89,12 +89,12 @@ Laden Sie eine Datei mit JSON-Beispieldaten herunter, und speichern Sie sie in A
 1. Laden Sie diese Datei mit JSON-Beispieldaten [von GitHub](https://raw.githubusercontent.com/Azure/usql/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json) auf Ihren lokalen Computer herunter. Klicken Sie mit der rechten Maustaste darauf, und speichern Sie die unformatierte Datei an einem lokalen Speicherort.
 
 2. Wenn Sie noch nicht über ein Speicherkonto verfügen, sollten Sie jetzt eins erstellen.
-    - Klicken Sie im Azure-Portal auf **Ressource erstellen**. Wählen Sie die Kategorie **Storage** und dann die Option **Speicherkonten**.
-    - Geben Sie einen eindeutigen Namen für das Speicherkonto an.
-    - Wählen Sie **Kontoart** aus: **Blob-Speicher**
-    - Wählen Sie eine Namen für die **Ressourcengruppe** aus. Verwenden Sie dieselbe Ressourcengruppe, die Sie für den Databricks-Arbeitsbereich erstellt haben.
+   - Klicken Sie im Azure-Portal auf **Ressource erstellen**. Wählen Sie die Kategorie **Storage** und dann die Option **Speicherkonten**.
+   - Geben Sie einen eindeutigen Namen für das Speicherkonto an.
+   - Wählen Sie **Kontoart** aus: **Blob-Speicher**
+   - Wählen Sie eine Namen für die **Ressourcengruppe** aus. Verwenden Sie dieselbe Ressourcengruppe, die Sie für den Databricks-Arbeitsbereich erstellt haben.
     
-    Weitere Informationen finden Sie unter [Erstellen eines Azure Blob Storage-Kontos](../storage/common/storage-quickstart-create-account.md).
+     Weitere Informationen finden Sie unter [Erstellen eines Azure Blob Storage-Kontos](../storage/common/storage-quickstart-create-account.md).
 
 3. Erstellen Sie einen Speichercontainer im Blob Storage-Konto, und laden Sie die JSON-Beispieldatei in den Container hoch. Sie können das Azure-Portal oder den [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) verwenden, um die Datei hochzuladen.
 
@@ -130,21 +130,21 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
     Ersetzen Sie im folgenden Codeausschnitt `{YOUR CONTAINER NAME}`, `{YOUR STORAGE ACCOUNT NAME}` und `{YOUR STORAGE ACCOUNT ACCESS KEY}` durch die entsprechenden Werte für Ihr Azure Storage-Konto. Fügen Sie den Codeausschnitt in eine leere Zelle des Notizbuchs ein, und drücken Sie UMSCHALT+EINGABE, um die Codezelle auszuführen.
 
-    * **Einbinden des Speicherkontos mit DBFS (empfohlen)**. In diesem Codeausschnitt wird der Pfad des Azure Storage-Konto in `/mnt/mypath` eingebunden. Daher muss zukünftig beim Zugreifen auf das Azure Storage-Konto nicht der vollständige Pfad angegeben werden. Sie können nur `/mnt/mypath` verwenden.
+   * **Einbinden des Speicherkontos mit DBFS (empfohlen)**. In diesem Codeausschnitt wird der Pfad des Azure Storage-Konto in `/mnt/mypath` eingebunden. Daher muss zukünftig beim Zugreifen auf das Azure Storage-Konto nicht der vollständige Pfad angegeben werden. Sie können nur `/mnt/mypath` verwenden.
 
-          dbutils.fs.mount(
-            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
-            mountPoint = "/mnt/mypath",
-            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+         dbutils.fs.mount(
+           source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+           mountPoint = "/mnt/mypath",
+           extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
 
-    * **Direktes Zugreifen auf das Speicherkonto**
+   * **Direktes Zugreifen auf das Speicherkonto**
 
-          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+         spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
 
-    Eine Anleitung zum Abrufen des Speicherkontoschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-manage.md#access-keys).
+     Eine Anleitung zum Abrufen des Speicherkontoschlüssels finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-manage.md#access-keys).
 
-    > [!NOTE]
-    > Sie können auch Azure Data Lake Store mit einem Spark-Cluster in Azure Databricks verwenden. Eine entsprechende Anleitung finden Sie unter [Azure Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084).
+     > [!NOTE]
+     > Sie können auch Azure Data Lake Store mit einem Spark-Cluster in Azure Databricks verwenden. Eine entsprechende Anleitung finden Sie unter [Azure Data Lake Store](https://go.microsoft.com/fwlink/?linkid=864084).
 
 4. Führen Sie eine SQL-Anweisung aus, um eine temporäre Tabelle mit Daten aus der JSON-Beispieldatendatei **small_radio_json.json** zu erstellen. Ersetzen Sie die Platzhalterwerte im folgenden Codeausschnitt durch den Namen Ihres Containers bzw. Ihres Speicherkontos. Fügen Sie den Codeausschnitt in eine Codezelle des Notizbuchs ein, und drücken Sie UMSCHALT+EINGABE. In dem Codeausschnitt gibt `path` den Speicherort der JSON-Datei an, die Sie in Ihr Azure-Speicherkonto hochgeladen haben.
 
@@ -183,12 +183,12 @@ Gehen Sie wie folgt vor, um ein Notizbuch in Databricks zu erstellen, das Notizb
 
     ![Anpassen des Balkendiagramms](./media/quickstart-create-databricks-workspace-portal/databricks-notebook-customize-plot.png "Anpassen des Balkendiagramms")
 
-    * Legen Sie **Schlüssel** auf **gender** fest.
-    * Legen Sie **Series groupings** (Reihengruppierungen) auf **level** fest.
-    * Legen Sie **Werte** auf **level** fest.
-    * Legen Sie **Aggregation** auf **ANZAHL** fest.
+   * Legen Sie **Schlüssel** auf **gender** fest.
+   * Legen Sie **Series groupings** (Reihengruppierungen) auf **level** fest.
+   * Legen Sie **Werte** auf **level** fest.
+   * Legen Sie **Aggregation** auf **ANZAHL** fest.
 
-    Klicken Sie auf **Anwenden**.
+     Klicken Sie auf **Anwenden**.
 
 9. Die Ausgabe zeigt die visuelle Darstellung wie im folgenden Screenshot dargestellt:
 

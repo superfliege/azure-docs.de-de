@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 11/07/2018
-ms.openlocfilehash: 7609f3b0c04bdf74c87123f1125973219e6dda17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 4dbf53df4d3f34e80757f9575981b4b053587d97
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567212"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012668"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Bereitstellen und Untersuchen einer eigenständigen SaaS-Anwendung für einzelne Mandanten, die Azure SQL-Datenbank verwendet
 
@@ -76,11 +76,11 @@ In der App werden Veranstaltungsorte vorgestellt.  Die Veranstaltungsorte sind d
 
 1. Öffnen Sie die Ereignisseite für jeden der drei Mandanten in eigenen Browserregisterkarten:
 
-    - http://events.contosoconcerthall.&lt;Benutzer&gt;.trafficmanager.net
-    - http://events.dogwooddojo.&lt;Benutzer&gt;.trafficmanager.net
-    - http://events.fabrikamjazzclub.&lt;Benutzer&gt;.trafficmanager.net
+   - http://events.contosoconcerthall.&lt;Benutzer&gt;.trafficmanager.net
+   - http://events.dogwooddojo.&lt;Benutzer&gt;.trafficmanager.net
+   - http://events.fabrikamjazzclub.&lt;Benutzer&gt;.trafficmanager.net
 
-    (Ersetzen Sie in jeder URL &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)
+     (Ersetzen Sie in jeder URL &lt;Benutzer&gt; durch den Benutzerwert Ihrer Bereitstellung.)
 
    ![Ereignisse](./media/saas-standaloneapp-get-started-deploy/fabrikam.png)
 
@@ -96,7 +96,7 @@ In einer Produktionsumgebung erstellen Sie normalerweise einen CNAME-DNS-Eintrag
 
 Betrachten wir einige der Ressourcen, die bereitgestellt wurden:
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur Liste der Ressourcengruppen.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Liste der Ressourcengruppen.
 2. Die drei Mandantenressourcengruppen sollten angezeigt werden.
 3. Öffnen Sie die Ressourcengruppe **wingtip-sa-fabrikam-&lt;Benutzer&gt;** mit den Ressourcen für die Bereitstellung des Fabrikam Jazz Club.  Der Server **fabrikamjazzclub-&lt;Benutzer&gt;** enthält die Datenbank **fabrikamjazzclub**.
 

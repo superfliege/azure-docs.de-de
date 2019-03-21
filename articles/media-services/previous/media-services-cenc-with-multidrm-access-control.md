@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: willzhan;kilroyh;yanmf;juliako
-ms.openlocfilehash: 94baa1235388ce99d013f8267f8410dcc206a51d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 336552c142e504ae7296314512f00688e30d032e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894358"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Entwerfen eines Inhaltsschutzsystems mit Zugriffssteuerung über Azure Media Services 
 
@@ -28,7 +28,7 @@ Das Entwerfen und Aufbauen eines DRM-Subsystems (Digital Rights Management) für
 
 Zielgruppe sind Entwickler, die an einem DRM-Subsystem für OTT- oder Onlinestreaming-/Multibildschirmlösungen arbeiten, oder Leser, die sich für ein DRM-Subsystem interessieren. Es wird angenommen, dass Leser mit mindestens einer der DRM-Technologien auf dem Markt vertraut sind, wie z.B. PlayReady, Widevine, FairPlay oder Adobe Access.
 
-Der vorliegende Artikel zu DRM bietet auch Informationen zur allgemeinen Verschlüsselung (Common Encryption, CENC) mit Multi-DRM. Bei Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass CENC mit mehreren nativen DRM-Systemen auf verschiedenen Clientplattformen verwendet wird. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
+Der vorliegende Artikel zu DRM bietet auch Informationen zur allgemeinen Verschlüsselung (Common Encryption, CENC) mit Multi-DRM. Bei Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass CENC mit mehreren nativen DRM-Systemen auf verschiedenen Clientplattformen verwendet wird. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
 
 CENC mit mehreren DRM-Systemen bietet folgende Vorteile:
 
@@ -156,7 +156,7 @@ Die folgende Tabelle zeigt die Zuordnung.
 | **Schlüsselverwaltung** |Für Referenzimplementierung nicht erforderlich |
 | **Content Management** |C#-Konsolenanwendung |
 
-Anders gesagt: Sowohl IDP als auch STS werden mit Azure AD verwendet. Für den Player wird die [Azure Media Player-API](http://amp.azure.net/libs/amp/latest/docs/). Sowohl Media Services als auch Media Player unterstützen DASH und CENC mit mehreren DRM-Systemen.
+Anders gesagt: Sowohl IDP als auch STS werden mit Azure AD verwendet. Für den Player wird die [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Sowohl Media Services als auch Media Player unterstützen DASH und CENC mit mehreren DRM-Systemen.
 
 Das folgende Diagramm zeigt die allgemeine Struktur und den allgemeinen Ablauf bei dieser Technologiezuordnung:
 
@@ -208,7 +208,7 @@ Die Implementierung umfasst die folgenden Schritte:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Erstellen Sie mithilfe der [Azure Media Player-API](http://amp.azure.net/libs/amp/latest/docs/) einen Player. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
+8. Erstellen Sie mithilfe der [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) einen Player. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
 
 9. Die folgende Tabelle zeigt die Zuordnung für das Testsystem.
 

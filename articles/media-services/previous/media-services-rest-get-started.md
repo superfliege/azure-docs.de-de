@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d27b508362193b79d7464ae49683479b2f8fc7ba
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991242"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295129"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>Erste Schritte zum Bereitstellen von Inhalten nach Bedarf mithilfe von REST  
 
@@ -41,7 +41,7 @@ Für den Einstieg in die Entwicklung mit Media Services mithilfe von REST-APIs g
 * Ein Azure-Konto. Ausführliche Informationen finden Sie unter [Einen Monat kostenlos testen](https://azure.microsoft.com/pricing/free-trial/).
 * Media Services-Konto. Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Kenntnisse darüber, wie Sie mit der Media Services-REST-API Code entwickeln. Weitere Informationen finden Sie unter [Media Services-REST-API – Übersicht](media-services-rest-how-to-use.md).
-* Eine Anwendung Ihrer Wahl, die HTTP-Anforderungen und -Antworten senden kann. In diesem Lernprogramm wird [Fiddler](http://www.telerik.com/download/fiddler)verwendet.
+* Eine Anwendung Ihrer Wahl, die HTTP-Anforderungen und -Antworten senden kann. In diesem Lernprogramm wird [Fiddler](https://www.telerik.com/download/fiddler)verwendet.
 
 Die folgenden Aufgaben werden in diesem Schnellstart beschrieben.
 
@@ -331,7 +331,7 @@ Im Erfolgsfall wird die folgende Antwort zurückgegeben:
 Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie die eigentliche Datei mithilfe der Azure Storage-REST-APIs in einen Azure Blob Storage-Container hochladen. Sie müssen die Dateien als Blockblobs hochladen. Seitenblobs werden von Azure Media Services nicht unterstützt.  
 
 > [!NOTE]
-> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
+> Sie müssen den Dateinamen der Uploaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Beispiel: `https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4?`.
 >
 >
 
@@ -459,7 +459,7 @@ Durch den folgenden Code wird die Encoder-ID angefordert.
     }
 
 ### <a name="create-a-job"></a>Erstellen eines Auftrags
-Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen: Aufgaben können inline über die Aufgabennavigationseigenschaft in Auftragsentitäten oder über die OData-Stapelverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](http://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
+Je nach Art der Verarbeitung, die Sie durchführen möchten, können einem Auftrag eine oder mehrere Aufgaben zugeordnet sein. Sie haben zwei Möglichkeiten, um über die REST-API Aufträge und die zugehörigen Aufgaben zu erstellen: Aufgaben können inline über die Aufgabennavigationseigenschaft in Auftragsentitäten oder über die OData-Stapelverarbeitung definiert werden. Das Media Services SDK verwendet die Batchverarbeitung. Zur einfacheren Lesbarkeit der Codebeispiele in diesem Artikel werden die Tasks jedoch inline definiert. Weitere Informationen zur Batchverarbeitung finden Sie unter [Open Data Protocol (OData) Batch Processing](https://www.odata.org/documentation/odata-version-3-0/batch-processing/)(in englischer Sprache).
 
 Das folgende Beispiel zeigt, wie Sie einen Auftrag mit einer Aufgabe erstellen und bereitstellen, die für die Codierung eines Videos mit einer bestimmten Auflösung und Qualität konfiguriert wurde. Der folgende Abschnitt dieser Dokumentation enthält eine Liste sämtlicher [Aufgabenvoreinstellungen](https://msdn.microsoft.com/library/mt269960) , die vom Media Encoder-Standardprozessor unterstützt werden.  
 
@@ -817,8 +817,6 @@ Nachdem Sie AccessPolicy und Locator konfiguriert haben, können Sie Dateien mit
 
 > [!NOTE]
 > Sie müssen den Dateinamen der Downloaddatei in den **Path** -Wert des Locators einfügen, den Sie im vorherigen Abschnitt empfangen haben. Zum Beispiel, https://storagetestaccount001.blob.core.windows.net/asset-e7b02da4-5a69-40e7-a8db-e8f4f697aac0/BigBuckBunny.mp4? . . .
->
->
 
 Weitere Informationen zum Arbeiten mit Azure Storage-Blobs finden Sie unter [REST-API für den Blobdienst](https://docs.microsoft.com/rest/api/storageservices/Blob-Service-REST-API).
 
@@ -912,7 +910,7 @@ Zum Streamen von MPEG DASH fügen Sie (format=mpd-time-csf) nach „/manifest“
 
 
 ## <a id="play"></a>Wiedergeben Ihrer Inhalte
-Verwenden Sie zum Streamen von Videos [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+Verwenden Sie zum Streamen von Videos [Azure Media Services Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 Fügen Sie zum Testen des progressiven Downloads eine URL in einen Browser ein (z. B. Internet Explorer, Chrome, Safari).
 

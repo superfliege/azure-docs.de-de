@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 332382282c2b55b52bb23f278a25868c09360619
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007595"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>Erstellen und Hochladen eines OpenBSD-Datenträgerimages in Azure
 In diesem Artikel erfahren Sie, wie Sie eine virtuelle Festplatte (Virtual Hard Disk, VHD) mit dem OpenBSD-Betriebssystem erstellen und hochladen. Nach dem Hochladen können Sie sie als eigenes Image verwenden, um über Azure CLI einen virtuellen Computer (Virtual Machine, VM) in Azure zu erstellen.
@@ -56,7 +56,7 @@ Führen Sie auf dem virtuellen Computer, auf dem Sie das Betriebssystem OpenBSD 
     echo "https://ftp.openbsd.org/pub/OpenBSD" > /etc/installurl
     ```
    
-4. Standardmäßig ist der Benutzer `root` auf virtuellen Computern in Azure deaktiviert. Benutzer können auf dem virtuellen OpenBSD-Computer mit dem Befehl `doas` Befehle mit erweiterten Rechten ausführen. „Doas“ ist standardmäßig aktiviert. Weitere Informationen finden Sie unter [doas.conf](http://man.openbsd.org/doas.conf.5). 
+4. Standardmäßig ist der Benutzer `root` auf virtuellen Computern in Azure deaktiviert. Benutzer können auf dem virtuellen OpenBSD-Computer mit dem Befehl `doas` Befehle mit erweiterten Rechten ausführen. „Doas“ ist standardmäßig aktiviert. Weitere Informationen finden Sie unter [doas.conf](https://man.openbsd.org/doas.conf.5). 
 
 5. Installieren und konfigurieren Sie die Voraussetzungen für den Azure-Agent wie folgt:
 
@@ -175,6 +175,6 @@ ssh azureuser@<ip address>
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zur Hyper-V-Unterstützung unter OpenBSD 6.1 finden Sie unter [OpenBSD 6.1](https://www.openbsd.org/61.html) und [hyperv.4](http://man.openbsd.org/hyperv.4).
+Weitere Informationen zur Hyper-V-Unterstützung unter OpenBSD 6.1 finden Sie unter [OpenBSD 6.1](https://www.openbsd.org/61.html) und [hyperv.4](https://man.openbsd.org/hyperv.4).
 
 Informationen zum Erstellen eines virtuellen Computers aus verwalteten Datenträgern finden Sie unter [az disk](/cli/azure/disk). 

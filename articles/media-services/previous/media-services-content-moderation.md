@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: aba7d2ff73fc1fdca6f57742582b38662177012d
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: eb16f5e1e72e5a9379ad530ab9677adba2ccbbcd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899562"
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Verwenden von Azure Media Content Moderator, um nicht jugendfreie und rassistische Inhalte zu erkennen 
 
@@ -226,7 +226,7 @@ The following example of a Content Moderator JSON output was truncated.
 ## <a name="related-links"></a>Verwandte Links
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-[Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

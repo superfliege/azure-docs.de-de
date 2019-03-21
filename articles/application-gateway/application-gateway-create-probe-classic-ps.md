@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 2b661968fd64f4d2a61bc59f9b99b1eea6b01f86
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52997269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004987"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>Erstellen eines benutzerdefinierten Tests für ein Azure Application Gateway (klassisch) mithilfe von PowerShell
 
@@ -151,7 +151,7 @@ Die Konfigurationsparameter sind:
 |Parameter|BESCHREIBUNG|
 |---|---|
 |**Name** |Referenzname für den benutzerdefinierten Test. |
-* **Protocol** | Verwendetes Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).|
+| **Protokoll** | Verwendetes Protokoll (mögliche Werte: „HTTP“ und „HTTPS“).|
 | **Host** und **Pfad** | Vollständiger URL-Pfad, der vom Anwendungsgateway aufgerufen wird, um die Integrität der Instanz zu ermitteln. Beispiel: Für die Website „http://contoso.com/“ können Sie den benutzerdefinierten Test für „http://contoso.com/path/custompath.htm“ konfigurieren, damit die HTTP-Antwort bei den Überprüfungen des Tests erfolgreich ist.|
 | **Intervall** | Konfiguriert die Intervalle der Testausführungen (in Sekunden).|
 | **Timeout** | Definiert das Timeout des Tests für eine HTTP-Antwortprüfung.|
@@ -165,14 +165,14 @@ Zum Ändern der aktuellen Konfiguration eines Anwendungsgateways sind drei Schri
 
 1. Rufen Sie die XML-Datei mit `Get-AzureApplicationGatewayConfig` ab. Dieses Cmdlet exportiert die XML-Konfigurationsdatei, damit ihr die Einstellungen für die Überprüfung hinzugefügt werden können.
 
-  ```powershell
-  Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
-  ```
+   ```powershell
+   Get-AzureApplicationGatewayConfig -Name "<application gateway name>" -Exporttofile "<path to file>"
+   ```
 
 1. Öffnen Sie die XML-Datei in einem Texteditor. Fügen Sie nach `<frontendport>` den Abschnitt `<probe>` hinzu.
 
-  ```xml
-<Probes>
+   ```xml
+   <Probes>
     <Probe>
         <Name>Probe01</Name>
         <Protocol>Http</Protocol>
@@ -182,12 +182,12 @@ Zum Ändern der aktuellen Konfiguration eines Anwendungsgateways sind drei Schri
         <Timeout>15</Timeout>
         <UnhealthyThreshold>5</UnhealthyThreshold>
     </Probe>
-</Probes>
-  ```
+   </Probes>
+   ```
 
-  Fügen Sie den Namen des Tests im Abschnitt „backendHttpSettings“ der XML-Datei wie im folgenden Beispiel hinzu:
+   Fügen Sie den Namen des Tests im Abschnitt „backendHttpSettings“ der XML-Datei wie im folgenden Beispiel hinzu:
 
-  ```xml
+   ```xml
     <BackendHttpSettings>
         <Name>setting1</Name>
         <Port>80</Port>
@@ -196,9 +196,9 @@ Zum Ändern der aktuellen Konfiguration eines Anwendungsgateways sind drei Schri
         <RequestTimeout>120</RequestTimeout>
         <Probe>Probe01</Probe>
     </BackendHttpSettings>
-  ```
+   ```
 
-  Speichern Sie die XML-Datei.
+   Speichern Sie die XML-Datei.
 
 1. Aktualisieren Sie die Konfiguration des Anwendungsgateways mit der neuen XML-Datei, und verwenden Sie dazu `Set-AzureApplicationGatewayConfig`. Dieses Cmdlet aktualisiert das Anwendungsgateway mit der neuen Konfiguration.
 

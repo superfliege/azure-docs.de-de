@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: efcd2e279d1bf387bc11c238a0592ecee6545cc4
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 7a3abd854ec5e492407d1fbdc8d170f2a27ba1bc
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053618"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56816724"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Ereignisanalyse und Visualisierung mit Application Insights
 
@@ -48,50 +48,6 @@ Application Insights bietet eine eigene Ansicht zum Abfragen sämtlicher eingehe
 ![Application Insights-Anforderungsdetails](media/service-fabric-diagnostics-event-analysis-appinsights/ai-metrics-explorer.png)
 
 Weitere Informationen zu den Funktionen des Application Insights-Portals finden Sie in der [Dokumentation zum Application Insights-Portal](../azure-monitor/app/app-insights-dashboards.md).
-
-### <a name="configuring-application-insights-with-wad"></a>Konfigurieren von Application Insights mit WAD
-
->[!NOTE]
->Dies gilt gegenwärtig nur für Windows-Cluster.
-
-Es gibt grundsätzlich zwei Möglichkeiten, um Daten von WAD an Azure Application Insights zu senden. Hierzu wird der WAD-Konfiguration eine Application Insights-Senke hinzugefügt, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) beschrieben.
-
-#### <a name="add-an-application-insights-instrumentation-key-when-creating-a-cluster-in-azure-portal"></a>Hinzufügen eines Application Insights-Instrumentierungsschlüssels beim Erstellen eines Clusters im Azure-Portal
-
-![Hinzufügen eines AI-Schlüssels](media/service-fabric-diagnostics-event-analysis-appinsights/azure-enable-diagnostics.png)
-
-Wenn beim Erstellen eines Clusters die Diagnose aktiviert ist („Ein“), wird ein optionales Feld angezeigt, in dem ein Application Insights-Instrumentierungsschlüssel eingegeben werden kann. Wenn Sie hier Ihren Application Insights-Schlüssel einfügen, wird die Application Insights-Senke automatisch in der Resource Manager-Vorlage konfiguriert, die zum Bereitstellen Ihres Clusters verwendet wird.
-
-#### <a name="add-the-application-insights-sink-to-the-resource-manager-template"></a>Hinzufügen der Application Insights-Senke zur Resource Manager-Vorlage
-
-Fügen Sie in „WadCfg“ der Resource Manager-Vorlage durch Einfügen der folgenden beiden Änderungen eine Senke („Sink“) hinzu:
-
-1. Fügen Sie die Konfiguration der Senke hinzu, sobald das Deklarieren von `DiagnosticMonitorConfiguration` abgeschlossen ist:
-
-    ```json
-    "SinksConfig": {
-        "Sink": [
-            {
-                "name": "applicationInsights",
-                "ApplicationInsights": "***ADD INSTRUMENTATION KEY HERE***"
-            }
-        ]
-    }
-
-    ```
-
-2. Nehmen Sie die Senke in `DiagnosticMonitorConfiguration` auf, indem Sie die folgende Zeile in `DiagnosticMonitorConfiguration` von `WadCfg` hinzufügen (unmittelbar bevor `EtwProviders` deklariert werden):
-
-    ```json
-    "sinks": "applicationInsights"
-    ```
-
-In den beiden obigen Codeausschnitten wurde für die Senke der Name „applicationInsights“ verwendet. Dieser Name muss nicht verwendet werden. Solange der Name der Senke in „sinks“ eingefügt wird, können Sie eine beliebige Zeichenfolge als Name festlegen.
-
-Protokolle aus dem Cluster werden derzeit als **Ablaufverfolgungen** in der Application Insights-Protokollanzeige angezeigt. Da die meisten Ablaufverfolgungen der Plattform als „Information“ eingestuft werden, haben Sie auch die Möglichkeit, die Senkenkonfiguration so zu ändern, dass nur Protokolle vom Typ „Kritisch“ und „Fehler“ gesendet werden. Dies kann durch Hinzufügen von „Kanälen“ zur Senke erfolgen, wie in [diesem Artikel](../azure-monitor/platform/diagnostics-extension-to-application-insights.md) erläutert.
-
->[!NOTE]
->Wenn Sie im Portal oder in der Resource Manager-Vorlage einen falschen Application Insights-Schlüssel verwenden, müssen Sie ihn manuell ändern und den Cluster aktualisieren und erneut bereitstellen.
 
 ### <a name="configuring-application-insights-with-eventflow"></a>Konfigurieren von Application Insights mit EventFlow
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: ed172d552e1e4c9ee27c58abcd7ad2d98df21579
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 115a459c6a9e4ea96931c89272a49396f0656258
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "23125498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993338"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-classic-powershell"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von Netzwerksicherheitsgruppen mit klassischem PowerShell
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -37,7 +37,7 @@ In diesem Beispiel wird eine einfache DMZ mit vier Windows-Servern und Netzwerks
 ## <a name="environment-description"></a>Beschreibung der Umgebung
 In diesem Beispiel umfasst ein Abonnement folgende Ressourcen:
 
-* Zwei Clouddienste: "FrontEnd001" und "BackEnd001"
+* Zwei Clouddienste: „FrontEnd001“ und „BackEnd001“
 * Ein virtuelles Netzwerk, "CorpNetwork", mit zwei Subnetzen: "FrontEnd" und "BackEnd"
 * Eine Netzwerksicherheitsgruppe, die auf beide Subnetze angewendet wird
 * Eine Windows Server-Instanz, die einen Anwendungswebserver darstellt ("IIS01")
@@ -98,15 +98,15 @@ Jede Regel wird im Folgenden detailliert beschrieben (**Hinweis:** Jedes Element
    * Der Parameter „Priority“ legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Wenn eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
    * Der Parameter "Action" gibt an, ob Datenverkehr, auf den diese Regel zutrifft, blockiert oder zugelassen wird.
 
-    ```PowerShell    
-    Get-AzureNetworkSecurityGroup -Name $NSGName | `
+     ```PowerShell    
+     Get-AzureNetworkSecurityGroup -Name $NSGName | `
         Set-AzureNetworkSecurityRule -Name "Enable Internal DNS" `
         -Type Inbound -Priority 100 -Action Allow `
         -SourceAddressPrefix VIRTUAL_NETWORK -SourcePortRange '*' `
         -DestinationAddressPrefix $VMIP[4] `
         -DestinationPortRange '53' `
         -Protocol *
-    ```
+     ```
 
 3. Diese Regel lässt RDP-Datenverkehr aus dem Internet an den RDP-Port auf jedem Server im gebundenen Subnetz zu. Diese Regel verwendet zwei bestimmte Arten von Adresspräfixen: „VIRTUAL_NETWORK“ und „INTERNET“. Diese Tags sind eine einfache Möglichkeit, eine größere Bandbreite an Adresspräfixen zu verarbeiten.
 
@@ -544,7 +544,7 @@ Else { Write-Host "Validation passed, now building the environment." -Foreground
 Speichern Sie diese XML-Datei mit dem aktualisierten Speicherort, und fügen Sie den Link zu dieser Datei in die $NetworkConfigFile-Variable im vorausgehenden Skript ein.
 
 ```XML
-<NetworkConfiguration xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
+<NetworkConfiguration xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/ServiceHosting/2011/07/NetworkConfiguration">
   <VirtualNetworkConfiguration>
     <Dns>
       <DnsServers>

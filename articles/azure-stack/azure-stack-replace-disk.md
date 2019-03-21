@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 0a73119c7d079498f0e766fb92904c86ff5131c8
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767221"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56734624"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>Ersetzen eines physischen Datenträgers in Azure Stack
 
@@ -39,7 +39,7 @@ Wenn ein Datenträger ausfällt, teilt Ihnen eine Warnung mit, dass die Konnekti
 
 Wenn Sie die Warnung öffnen, informiert Sie die Warnungsbeschreibung über den Skalierungseinheitsknoten und das exakte physische Einschubfach für den Datenträger, den Sie ersetzen müssen. Azure Stack hilft Ihnen darüber hinaus, den fehlerhaften Datenträger mithilfe von LED-Anzeigefunktionen zu identifizieren.
 
- ## <a name="replace-the-disk"></a>Austausch des Datenträgers
+## <a name="replace-the-disk"></a>Austausch des Datenträgers
 
 Befolgen Sie die FRU-Anweisungen des OEM-Hardwareanbieters beim tatsächlichen Austausch des Datenträgers.
 
@@ -50,7 +50,7 @@ Um die Verwendung eines nicht unterstützten Datenträgers in einem integrierten
 
 Nachdem Sie den Datenträger ersetzt haben, ermittelt Azure Stack automatisch den neuen Datenträger und startet die Reparatur des virtuellen Datenträgers.
  
- ## <a name="check-the-status-of-virtual-disk-repair"></a>Überprüfen des Status der Reparatur des virtuellen Datenträgers
+## <a name="check-the-status-of-virtual-disk-repair"></a>Überprüfen des Status der Reparatur des virtuellen Datenträgers
  
  Nachdem Sie den Datenträger ersetzt haben, können Sie den Integritätsstatus des virtuellen Datenträgers und den Verlauf des Reparaturauftrags mithilfe des privilegierten Endpunkts überwachen. Führen Sie diese Schritte auf einem beliebigen Computer aus, der über Netzwerkkonnektivität mit dem privilegierten Endpunkt verfügt.
 

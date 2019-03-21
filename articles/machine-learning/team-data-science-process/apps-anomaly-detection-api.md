@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
-ms.openlocfilehash: e407aee98bef9917a99e3305e2c99dbdd0c182e0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e5f428062155ea732dce785955ac76011f3e4678
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57899348"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning Anomaly Detection-API
 ## <a name="overview"></a>Übersicht
@@ -32,7 +32,7 @@ Diese Machine Learning-Erkennungselemente verfolgen diese Art von Wertänderunge
 
 Das Anomaly Detection-Angebot verfügt über nützliche Tools für die ersten Schritte.
 
-* Mit der [Webanwendung](http://anomalydetection-aml.azurewebsites.net/) können Sie die Ergebnisse von Anomaly Detection-APIs für Ihre Daten auswerten und visualisieren.
+* Mit der [Webanwendung](https://anomalydetection-aml.azurewebsites.net/) können Sie die Ergebnisse von Anomaly Detection-APIs für Ihre Daten auswerten und visualisieren.
 
 > [!NOTE]
 > Probieren Sie die **IT Anomaly Insights-Lösung**, die von [dieser API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) unterstützt wird.
@@ -110,9 +110,9 @@ Die Anomaly Detection-API unterstützt Erkennungsmodule in drei allgemeinen Kate
 | Kategorie des Erkennungsmoduls | Erkennungsmodul | BESCHREIBUNG | Eingabeparameter | Ausgaben |
 | --- | --- | --- | --- | --- |
 | Spitzenerkennungsmodule |TSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Werte vom ersten und dritten Quartil |*tspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |TSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
-| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. | |
+| Spitzenerkennungsmodule | ZSpike-Erkennungsmodul |Erkennen von Spitzen und Abfällen basierend auf der Entfernung der Datenpunkte von ihrem Mittelwert |*zspikedetector.Sensitivity:* nimmt einen Integerwert im Bereich von 1 bis 10 an, Standardwert: 3. Höhere Werte erfassen extremere Werte und führen zu weniger Empfindlichkeit. |ZSpike: Binärwerte – „1“, wenn eine Spitze oder ein Abfall erkannt wird, andernfalls „0“. |
 | Erkennungsmodul für langsame Trends |Erkennungsmodul für langsame Trends |Erkennen von langsamen positiven Trends anhand der festgelegten Empfindlichkeit |*trenddetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |tscore: Gleitzahl, die für die Anomaliebewertung des Trends steht. |
-| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. | |
+| Erkennungsmodule für Pegeländerungen | Erkennungsmodul für bidirektionale Pegeländerungen |Erkennen von Pegeländerungen in Aufwärts- und Abwärtsrichtung anhand der festgelegten Empfindlichkeit |*bileveldetector.Sensitivity:* Schwellenwert für den Erkennungswert (Standardwert: 3,25. 3,25 bis 5 ist ein geeigneter Bereich für die Auswahl. Je höher der Wert ist, desto geringer ist die Empfindlichkeit). |rpscore: Gleitzahl, die für die Anomaliebewertung von Pegeländerungen in Aufwärts- und Abwärtsrichtung steht. |
 
 ### <a name="parameters"></a>Parameter
 Weitere ausführliche Informationen zu diesen Eingabeparametern sind in der folgenden Tabelle aufgeführt:

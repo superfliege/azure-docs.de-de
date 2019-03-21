@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: mayg
-ms.openlocfilehash: f2d8d070a8adbe7992795b06722427da2830cb50
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53253679"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106541"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>Skalieren für das Failback mit zusätzlichen Prozessservern
 
@@ -24,8 +24,8 @@ Wenn Sie VMware-VMs oder physische Server mithilfe von [Site Recovery](site-reco
 
 Stellen Sie sicher, dass Sie eine [Kapazitätsplanung](site-recovery-plan-capacity-vmware.md) für die VMware-Replikation durchgeführt haben. Dadurch können Sie feststellen, wie und wann Sie zusätzliche Prozessserver bereitstellen sollten.
 
->[!NOTE]
-Die Verwendung einer geklonten Prozessserverkomponente wird nicht unterstützt. Befolgen Sie die Schritte in diesem Artikel für jede PS-Hochskalierung.
+> [!NOTE]
+> Die Verwendung einer geklonten Prozessserverkomponente wird nicht unterstützt. Befolgen Sie die Schritte in diesem Artikel für jede PS-Hochskalierung.
 
 ### <a name="sizing-requirements"></a>Größenanforderungen 
 
@@ -56,11 +56,11 @@ Laden Sie die Installationsdatei für den Prozessserver wie folgt herunter:
 3. Wählen Sie den Konfigurationsserver aus, um die Detailsseite des Servers aufzurufen. Klicken Sie dann auf **+ Prozessserver**.
 4. Wählen Sie unter **Prozessserver hinzufügen** >  **Geben Sie an, wo Sie Ihren Prozessserver bereitstellen möchten** die Option **Prozessserver für horizontales Hochskalieren lokal bereitstellen** aus.
 
-  ![Seite „Server hinzufügen“](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
+   ![Seite „Server hinzufügen“](./media/vmware-azure-set-up-process-server-scale/add-process-server.png)
 1. Klicken Sie auf **Einheitliches Setup von Microsoft Azure Site Recovery herunterladen**. Dadurch wird die neueste Version der Installationsdatei heruntergeladen.
 
-  > [!WARNING]
-  Bei der Installationsversion des Prozessservers sollte es sich um die gleiche oder eine frühere Version wie die von Ihnen ausgeführte Version des Konfigurationsservers handeln. Eine einfache Möglichkeit, die Versionskompatibilität sicherzustellen, ist die Verwendung des gleichen Installers, den Sie zuletzt zum Installieren oder Aktualisieren Ihres Konfigurationsservers verwendet haben.
+   > [!WARNING]
+   > Bei der Installationsversion des Prozessservers sollte es sich um die gleiche oder eine frühere Version wie die von Ihnen ausgeführte Version des Konfigurationsservers handeln. Eine einfache Möglichkeit, die Versionskompatibilität sicherzustellen, ist die Verwendung des gleichen Installers, den Sie zuletzt zum Installieren oder Aktualisieren Ihres Konfigurationsservers verwendet haben.
 
 ## <a name="install-from-the-ui"></a>Installieren über die Benutzeroberfläche
 

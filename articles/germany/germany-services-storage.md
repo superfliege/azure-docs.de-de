@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: ralfwi
-ms.openlocfilehash: a98ad6603f2fa50391761acd73225e7aeffb14e6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: bf9bc9742f516e642c8f8bcc18e97bf269dce738
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100284"
 ---
 # <a name="azure-germany-storage-services"></a>Speicherdienste von Azure Deutschland
 ## <a name="storage"></a>Storage
@@ -39,7 +39,7 @@ Die Speicherdienstverschlüsselung schützt ruhende Daten in Azure Storage-Konte
 ### <a name="storage-service-availability-by-azure-germany-region"></a>Speicherdienstverfügbarkeit nach Azure Deutschland-Region
 
 | Dienst | Deutschland, Mitte | Deutschland, Nordosten |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | [Blob Storage](../storage/common/storage-introduction.md#blob-storage) |Allgemein verfügbar |Allgemein verfügbar |
 | [Azure Files](../storage/common/storage-introduction.md#azure-files) | Allgemein verfügbar | Allgemein verfügbar |
 | [Tabellenspeicherung](../storage/common/storage-introduction.md#table-storage) |Allgemein verfügbar  |Allgemein verfügbar |

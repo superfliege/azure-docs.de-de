@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/05/2018
 ms.author: roiyz
-ms.openlocfilehash: f29c995c4fb4a1e87c95295779ff83dd133ac61c
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 520ff1dfeefc8cca66710745012ee54b550a19a0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984391"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097922"
 ---
 # <a name="custom-script-extension-for-windows"></a>CustomScript-Erweiterung für Windows
 
@@ -123,11 +123,11 @@ Diese Elemente müssen als vertrauliche Daten behandelt und in der Konfiguration
 >Bei Eigenschaftennamen wird zwischen Groß- und Kleinschreibung unterschieden. Um Bereitstellungsprobleme zu vermeiden, verwenden Sie die Namen wie hier gezeigt.
 
 #### <a name="property-value-details"></a>Details zu Eigenschaftswerten
- * `commandToExecute` (**erforderlich**, Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, wenn der Befehl Geheimnisse (z.B. Kennwörter) enthält oder die „fileUris“ vertraulich sind.
-* `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
-* `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
-* `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
-* `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
+* `commandToExecute` (**erforderlich**, Zeichenfolge): Das auszuführende Skript für den Einstiegspunkt. Verwenden Sie dieses Feld, wenn der Befehl Geheimnisse (z.B. Kennwörter) enthält oder die „fileUris“ vertraulich sind.
+  * `fileUris` (optional, Zeichenfolgenarray): die URLs für die herunterzuladenden Dateien.
+  * `timestamp` (optional, 32-Bit-Integer): Durch Ändern dieses Felds können Sie eine erneute Ausführung des Skripts auslösen.  Jeder Integerwert ist akzeptabel; er muss sich lediglich vom vorherigen Wert unterscheiden.
+  * `storageAccountName` (optional, Zeichenfolge): der Name des Speicherkontos. Wenn Sie Speicheranmeldeinformationen angeben, muss es sich bei allen `fileUris` um URLs für Azure-Blobs handeln.
+  * `storageAccountKey` (optional, Zeichenfolge): der Zugriffsschlüssel des Speicherkontos.
 
 Die folgenden Werte können in öffentlichen oder geschützten Einstellungen festgelegt werden. Die Erweiterung lehnt jedoch jede Konfiguration ab, bei der die Werte sowohl in öffentlichen als auch in geschützten Einstellungen festgelegt sind.
 * `commandToExecute`

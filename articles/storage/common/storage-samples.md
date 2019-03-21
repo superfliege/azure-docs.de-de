@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/03/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1eac8f79ea53643659f8780ee03f8ced13c7dcd
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 411b43ec631c77246da1ee55f2532486f8b55ffc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452225"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006629"
 ---
 # <a name="azure-storage-samples"></a>Beispiele für Azure Storage
 
@@ -63,8 +63,8 @@ Um die Beispiele für C++ zu untersuchen, laden Sie die [Speicherclientbibliothe
 |----------|---------------|-------------|
 | .NET | [Referenz zur .NET-Clientbibliothek](https://msdn.microsoft.com/library/azure/mt347887.aspx) | [Quellcode für die Speicherclientbibliothek für .NET](https://github.com/Azure/azure-storage-net) |
 | Java | [Referenz zur Java-Clientbibliothek](https://docs.microsoft.com/java/api/overview/azure/storage) | [Quellcode für die Speicherclientbibliothek für Java](https://github.com/azure/azure-storage-java) |
-| Node.js | [Referenz zurNode.js-Clientbibliothek](http://azure.github.io/azure-storage-node) | [Quellcode für die Speicherclientbibliothek für Node.js](https://github.com/Azure/azure-storage-node) |
-| C++ | [Referenz zur C++-Clientbibliothek](http://azure.github.io/azure-storage-cpp/) | [Quellcode für die Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)|
+| Node.js | [Referenz zurNode.js-Clientbibliothek](https://azure.github.io/azure-storage-node) | [Quellcode für die Speicherclientbibliothek für Node.js](https://github.com/Azure/azure-storage-node) |
+| C++ | [Referenz zur C++-Clientbibliothek](https://azure.github.io/azure-storage-cpp/) | [Quellcode für die Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp)|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

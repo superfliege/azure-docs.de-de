@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 97766472ea5f7b62a452e6cc5a71a77426e975ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f7f8e86f17b0fdb715afc96dba80db0746440cef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56235409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078124"
 ---
 # <a name="tutorial-create-a-translation-app-with-wpf"></a>Tutorial: Erstellen einer Übersetzungs-App mit WPF
 
@@ -108,12 +108,12 @@ Wir sehen uns nun an, was erstellt werden soll.
 
 Die Benutzeroberfläche enthält die folgenden Komponenten:
 
-| Name | Typ | Beschreibung |
+| NAME | Type | BESCHREIBUNG |
 |------|------|-------------|
 | `FromLanguageComboBox` | Kombinationsfeld | Zeigt eine Liste mit den Sprachen an, die von Microsoft Translator für Textübersetzungen unterstützt werden. Der Benutzer wählt die Ausgangssprache für die Übersetzung aus. |
 | `ToLanguageComboBox` | Kombinationsfeld | Dient zum Auswählen der Zielsprache für die Übersetzung und zeigt die gleiche Sprachenliste wie `FromComboBox` an. |
-| `TextToTranslate` | Textfeld | Ermöglicht dem Benutzer das Eingeben des zu übersetzenden Texts. |
-| `TranslateButton` | Schaltfläche | Verwenden Sie diese Schaltfläche, um Text zu übersetzen. |
+| `TextToTranslate` | TextBox | Ermöglicht dem Benutzer das Eingeben des zu übersetzenden Texts. |
+| `TranslateButton` | Taste | Verwenden Sie diese Schaltfläche, um Text zu übersetzen. |
 | `TranslatedTextLabel` | Bezeichnung | Dient zum Anzeigen der Übersetzung. |
 | `DetectedLanguageLabel` | Bezeichnung | Zeigt die erkannte Sprache des zu übersetzenden Texts an (`TextToTranslate`). |
 
@@ -240,11 +240,11 @@ Unser gesamtes Projekt ist in der `MainWindow : Window`-Klasse gekapselt. Wir be
    // In the following sections, we'll add code below this.
    }
    ```
-   4. Fügen Sie Ihren Cognitive Services-Abonnementschlüssel hinzu, und speichern Sie.
+   1. Fügen Sie Ihren Cognitive Services-Abonnementschlüssel hinzu, und speichern Sie.
 
 In diesem Codeblock haben wir zwei Membervariablen deklariert, die Informationen zu den verfügbaren Sprachen für die Übersetzung enthalten:
 
-| Variable | Typ | Beschreibung |
+| Variable | Type | BESCHREIBUNG |
 |----------|------|-------------|
 |`languageCodes` | Array von Zeichenfolgen |Dient zum Zwischenspeichern der Sprachcodes. Der Translator-Dienst identifiziert Sprachen mithilfe von Kurzcodes (etwa `en` für Englisch). |
 |`languageCodesAndTitles` | Sortiertes Wörterbuch | Ordnet die Anzeigenamen auf der Benutzeroberfläche den in der API verwendeten Kurzcodes zu. Dabei wird die alphabetische Sortierung (ohne Berücksichtigung der Groß-/Kleinschreibung) eingehalten. |

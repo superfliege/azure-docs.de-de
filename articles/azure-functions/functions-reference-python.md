@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: dadb645067a0f6cac436d638a829ac4c0937bd60
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 8fa093d629eb7c655ea277b1d57f35193394f722
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54304374"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56730000"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -109,7 +109,7 @@ Freigegebener Code sollte in einem separaten Ordner gespeichert werden. Um auf M
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Die von der Functions-Runtime verwendeten Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, wobei sich die eigentlichen Bibliotheksdateien im Ordner `bin` befinden. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](functions-triggers-bindings.md#local-development-azure-functions-core-tools), indem Sie Azure Functions Core Tools verwenden. 
+Die von der Functions-Runtime verwendeten Bindungserweiterungen sind in der Datei `extensions.csproj` definiert, wobei sich die eigentlichen Bibliotheksdateien im Ordner `bin` befinden. Wenn Sie lokal entwickeln, müssen Sie [Bindungserweiterungen registrieren](./functions-bindings-register.md#local-development-azure-functions-core-tools), indem Sie Azure Functions Core Tools verwenden. 
 
 Wenn Sie ein Functions-Projekt in Ihrer Funktions-App in Azure bereitstellen, sollte der gesamte Inhalt des Ordners „FunctionApp“ in das Paket aufgenommen werden, aber nicht der Ordner selbst.
 

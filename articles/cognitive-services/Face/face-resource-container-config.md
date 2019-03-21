@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 02/08/2019
+ms.date: 02/25/2019
 ms.author: diberry
-ms.openlocfilehash: 6a4d20073275e3d858cecb73c2e95c97ea53a647
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4215b008af21a3473a1d2dcef5f73a1b19133215
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311969"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56821558"
 ---
 # <a name="configure-face-docker-containers"></a>Konfigurieren von Docker-Containern für die Gesichtserkennung
 
@@ -54,6 +54,49 @@ Diese Einstellung finden Sie hier:
 |Erforderlich| NAME | Datentyp | BESCHREIBUNG |
 |--|------|-----------|-------------|
 |Ja| `Billing` | Zeichenfolge | URI des Abrechnungsendpunkts<br><br>Beispiel:<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0` |
+
+<!-- specific to face only -->
+
+## <a name="cloudai-configuration-settings"></a>Konfigurationseinstellungen unter „CloudAI“
+
+Die Konfigurationseinstellungen im Abschnitt `CloudAI` umfassen containerspezifische Optionen für Ihren Container. Die folgenden Einstellungen und Objekte werden beim Container für die Gesichtserkennung im Abschnitt `CloudAI` unterstützt:
+
+| NAME | Datentyp | BESCHREIBUNG |
+|------|-----------|-------------|
+| `Storage` | Objekt | Das vom Container für die Gesichtserkennung verwendete Speicherszenario. Weitere Informationen zu Speicherszenarien und den zugehörigen Einstellungen für das `Storage`-Objekt finden Sie unter [Einstellungen für das Speicherszenario](#storage-scenario-settings). |
+
+### <a name="storage-scenario-settings"></a>Einstellungen für das Speicherszenario
+
+Der Container für die Gesichtserkennung kann Blob-, Cache-, Meta- und Warteschlangendaten speichern. So werden beispielsweise Trainingsindizes und -ergebnisse für eine große Personengruppe als Blobdaten gespeichert. Der Container für die Gesichtserkennung bietet zwei unterschiedliche Speicherszenarien für die Interaktion mit diesen Datentypen und deren Speicherung:
+
+* Arbeitsspeicher  
+  Alle vier Datentypen werden im Arbeitsspeicher gespeichert. Sie sind weder verteilt noch persistent. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, gehen sämtliche Daten für den betreffenden Container im Speicher verloren.  
+  Dies ist das Standardspeicherszenario für den Container für die Gesichtserkennung.
+* Azure  
+  Der Container für die Gesichtserkennung verwendet Azure Storage und Azure Cosmos DB, um diese vier Datentypen auf permanente Speicher zu verteilen. Blob- und Warteschlangendaten werden durch Azure Storage verarbeitet. Meta- und Cachedaten werden von Azure Cosmos DB verarbeitet. Wenn der Container für die Gesichtserkennung beendet oder entfernt wird, werden sämtliche gespeicherte Daten für den betreffenden Container in Azure Storage und Azure Cosmos DB gespeichert.  
+  Für die Ressourcen, die beim Azure-Speicherszenario verwendet werden, gelten die folgenden zusätzlichen Anforderungen:
+  * Die Azure Storage-Ressource muss den Kontotyp StorageV2 verwenden.
+  * Die Azure Cosmos DB-Ressource muss die Azure Cosmos DB-API für MongoDB verwenden.
+
+Die Speicherszenarien und die zugehörigen Konfigurationseinstellungen werden vom `Storage`-Objekt unter dem Konfigurationsabschnitt `CloudAI` verwaltet. Die folgenden Konfigurationseinstellungen sind im `Storage`-Objekt verfügbar:
+
+| NAME | Datentyp | BESCHREIBUNG |
+|------|-----------|-------------|
+| `StorageScenario` | Zeichenfolge | Das vom Container unterstützte Speicherszenario. Folgende Werte sind verfügbar:<br/>`Memory`: Standardwert. Der Container verwendet nicht persistenten und nicht verteilten Speicher im Arbeitsspeicher für die temporäre Nutzung durch einen einzelnen Knoten. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container zerstört.<br/>`Azure`: Der Container verwendet Azure-Ressourcen für die Speicherung. Wenn der Container beendet oder entfernt wird, wird der Speicher für diesen Container beibehalten.|
+| `ConnectionStringOfAzureStorage` | Zeichenfolge | Die Verbindungszeichenfolge für die Azure Storage-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
+| `ConnectionStringOfCosmosMongo` | Zeichenfolge | Die MongoDB-Verbindungszeichenfolge für die Azure Cosmos DB-Ressource, die vom Container verwendet wird.<br/>Diese Einstellung gilt nur, wenn `Azure` für die Konfigurationseinstellung `StorageScenario` angegeben wurde. |
+
+Der folgende Befehl gibt beispielsweise das Azure-Speicherszenario an und stellt Beispielverbindungszeichenfolgen für die Azure Storage- und Cosmos DB-Ressourcen bereit, die zum Speichern von Daten für Container für die Gesichtserkennung verwendet werden.
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
+
+Das Speicherszenario wird getrennt von den Ein- und-Ausgabeeinbindungen verarbeitet. Sie können eine Kombination dieser Features für einen einzelnen Container angeben. Der folgende Befehl definiert beispielsweise eine Docker-Bindungseinbindung für den Ordner `D:\Output` auf dem Hostcomputer als Ausgabeeinbindung und instanziiert anschließend einen Container auf der Grundlage des Containerimages für die Gesichtserkennung. Protokolldateien werden dabei im JSON-Format in der Ausgabeeinbindung gespeichert. Der Befehl gibt auch das Azure-Speicherszenario an und stellt Beispielverbindungszeichenfolgen für die Azure Storage- und Cosmos DB-Ressourcen bereit, die zum Speichern von Daten für Container für die Gesichtserkennung verwendet werden.
+
+  ```Docker
+  docker run --rm -it -p 5000:5000 --memory 4g --cpus 1 --mount type=bind,source=D:\Output,destination=/output containerpreview.azurecr.io/microsoft/cognitive-services-face Eula=accept Billing=https://westcentralus.api.cognitive.microsoft.com/face/v1.0 ApiKey=0123456789 Logging:Disk:Format=json CloudAI:Storage:StorageScenario=Azure CloudAI:Storage:ConnectionStringOfCosmosMongo="mongodb://samplecosmosdb:0123456789@samplecosmosdb.documents.azure.com:10255/?ssl=true&replicaSet=globaldb" CloudAI:Storage:ConnectionStringOfAzureStorage="DefaultEndpointsProtocol=https;AccountName=sampleazurestorage;AccountKey=0123456789;EndpointSuffix=core.windows.net"
+  ```
 
 ## <a name="eula-setting"></a>Eula-Einstellung
 

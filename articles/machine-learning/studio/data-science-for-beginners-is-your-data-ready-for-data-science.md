@@ -5,17 +5,17 @@ description: Vier Kriterien, die Ihre Daten erfüllen müssen, um für Data Scie
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/03/2018
-ms.openlocfilehash: 4f474fd6ac2fa6a4f44aacf0eacb85a92fdf1de9
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 9cd2d1264d08887f75eaf7ae624b6a45ec8d6a34
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456468"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817574"
 ---
 # <a name="is-your-data-ready-for-data-science"></a>Sind Ihre Daten für Data Science bereit?
 ## <a name="video-2-data-science-for-beginners-series"></a>Video 2: Reihe „Data Science für Einsteiger“
@@ -104,4 +104,4 @@ Sehen Sie sich unbedingt auch die anderen vier Videos in der Reihe *Data Science
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen eines ersten Data Science-Experiments mit Machine Learning Studio](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](what-is-machine-learning.md)
+* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

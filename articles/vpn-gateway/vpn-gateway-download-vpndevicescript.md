@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: yushwang
-ms.openlocfilehash: d13e0ea365b25bc17ff2d23dfaf86bc057774744
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: f7ee53c10c6597dbf98f8f85fc31fe789137471e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415492"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996328"
 ---
 # <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>Herunterladen von VPN-Gerätekonfigurationsskripts für S2S-VPN-Verbindungen
 
@@ -53,7 +53,7 @@ Erstellen Sie ein Azure-VPN-Gateway, ein lokales Netzwerkgateway und eine Verbin
 
 Führen Sie nach der Erstellung der Verbindungsressource die folgenden Schritte aus, um die VPN-Gerätekonfigurationsskripts herunterzuladen:
 
-1. Navigieren Sie in einem Browser zum [Azure-Portal](http://portal.azure.com), und melden Sie sich ggf. mit Ihrem Azure-Konto an.
+1. Navigieren Sie in einem Browser zum [Azure-Portal](https://portal.azure.com), und melden Sie sich ggf. mit Ihrem Azure-Konto an.
 2. Navigieren Sie zu der Verbindungsressource, die Sie erstellt haben. Klicken Sie auf „Alle Dienste“ > „NETZWERK“ > „Verbindungen“, um eine Liste mit allen Verbindungsressourcen anzuzeigen.
 
     ![connection-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)

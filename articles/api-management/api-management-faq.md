@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: e80ebcd6de7a793450a0503c99af151e96658ea9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99b54a5fe5c28eb66a61fad61d23b94f0955f126
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876741"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56728567"
 ---
 # <a name="azure-api-management-faqs"></a>Häufig gestellte Fragen zu Azure API Management
 Hier erhalten Sie Antworten auf häufig gestellte Fragen sowie Informationen zu Mustern und bewährten Methoden für Azure API Management.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="contact-us"></a>Kontakt
 * [Wie kann ich dem Team von Microsoft Azure API Management eine Frage stellen?](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)
@@ -89,9 +91,9 @@ So fügen Sie Benutzer zur Gruppe „Administratoren“ hinzu:
 
 Der neu hinzugefügte Mitwirkende kann nun Azure PowerShell-[Cmdlets](https://docs.microsoft.com/powershell/azure/overview) verwenden. So melden Sie sich als Administrator an:
 
-1. Verwenden Sie das `Connect-AzureRmAccount`-Cmdlet, um sich anzumelden.
-2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzureRmContext -SubscriptionID <subscriptionGUID>`.
-3. Rufen Sie mithilfe von `Get-AzureRmApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` eine URL für einmaliges Anmelden ab.
+1. Verwenden Sie das `Connect-AzAccount`-Cmdlet, um sich anzumelden.
+2. Legen Sie den Kontext auf das Abonnement fest, das den Dienst enthält. Verwenden Sie hierfür `Set-AzContext -SubscriptionID <subscriptionGUID>`.
+3. Rufen Sie mithilfe von `Get-AzApiManagementSsoToken -ResourceGroupName <rgName> -Name <serviceName>` eine URL für einmaliges Anmelden ab.
 4. Greifen Sie über die URL auf das Verwaltungsportal zu.
 
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>Weshalb ist die Richtlinie, die ich hinzufügen möchte, im Richtlinien-Editor nicht verfügbar?
@@ -132,11 +134,11 @@ Ja. Weitere Informationen finden Sie in den Schnellstartvorlagen für den [Azure
 Ja. Sie können dafür PowerShell verwenden oder das Zertifikat direkt an die API übermitteln. Dadurch wird die Überprüfung der Zertifikatkette deaktiviert, und Sie können selbstsignierte oder privat signierte Zertifikate für die Kommunikation zwischen API Management und den Back-End-Diensten verwenden.
 
 #### <a name="powershell-method"></a>PowerShell-Methode ####
-Verwenden Sie das PowerShell-Cmdlet [`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (für ein neues Back-End) oder [`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (für ein vorhandenes Back-End), und legen Sie den Parameter `-SkipCertificateChainValidation` auf `True` fest. 
+Verwenden Sie das PowerShell-Cmdlet [`New-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/new-azapimanagementbackend) (für ein neues Back-End) oder [`Set-AzApiManagementBackend`](https://docs.microsoft.com/powershell/module/az.apimanagement/set-azapimanagementbackend) (für ein vorhandenes Back-End), und legen Sie den Parameter `-SkipCertificateChainValidation` auf `True` fest. 
 
 ```powershell
-$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
-New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+$context = New-AApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
 ```
 
 #### <a name="direct-api-update-method"></a>Direkte API-Updatemethode ####

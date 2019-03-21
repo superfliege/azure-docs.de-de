@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 02/01/2019
+ms.date: 02/25/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fbd4782d7fde089f9770e148564ec5941da3dc8e
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: e14e35cc8589bb524bae791ccd74952da90bdb04
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753587"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56871535"
 ---
 # <a name="disaster-recovery-and-storage-account-failover-preview-in-azure-storage"></a>Notfallwiederherstellung und Speicherkontofailover (Vorschau) in Azure Storage
 
@@ -152,7 +152,6 @@ Nicht verwaltete Datenträger werden als Seitenblobs in Azure Storage gespeicher
 4. Warten Sie, bis die **Letzte Synchronisierung** aktualisiert wurde und hinter der Zeit liegt, zu der Sie die VM gelöscht haben. Dieser Schritt ist wichtig. Denn wenn der sekundäre Endpunkt bei Auftreten des Failovers nicht vollständig mit den VHD-Dateien aktualisiert wurde, funktioniert die VM in der neuen primären Region möglicherweise nicht.
 5. Initiieren Sie das Kontofailover.
 6. Warten Sie, bis das Kontofailover abgeschlossen ist und die sekundäre Region zur neuen primären Region geworden ist.
-6. Erstellen Sie ein Speicherkonto in der neuen primären Region und kopieren Sie nicht verwalteten Datenträger dorthin.
 7. Erstellen Sie eine neue VM in der neuen primären Region, und hängen Sie die VHDs wieder an.
 8. Starten Sie die neue VM.
 

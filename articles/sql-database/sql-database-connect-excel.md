@@ -12,12 +12,12 @@ ms.author: craigg
 ms.reviewer: ''
 manager: craigg
 ms.date: 02/12/2019
-ms.openlocfilehash: c456954c3bf68fd87e51162ea6aab1d0a54b86ad
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: e1cd0d8462c31c8b843f7962f923accc6b63ae00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103399"
 ---
 # <a name="connect-excel-to-a-single-database-in-azure-sql-database-and-create-a-report"></a>Verbinden von Excel mit einem Singleton in Azure SQL-Datenbank und Erstellen eines Berichts
 
@@ -43,10 +43,10 @@ Sie benötigen auch eine Kopie von Excel. In diesem Artikel wird [Microsoft Exce
 
 4. Wählen Sie im Dialogfeld **SQL Server-Datenbank** auf der linken Seite **Datenbank** aus, und geben Sie dann Ihren **Benutzernamen** und das **Kennwort** für den SQL-Datenbank-Server ein, mit dem Sie eine Verbindung herstellen möchten. Wählen Sie **Verbinden** aus, um den **Navigator** zu öffnen. 
 
-  ![Servername und Anmeldeinformationen eingeben](./media/sql-database-connect-excel/connect-to-server.png)
+   ![Servername und Anmeldeinformationen eingeben](./media/sql-database-connect-excel/connect-to-server.png)
 
-  > [!TIP]
-  > Je nach Netzwerkumgebung kann es sein, dass Sie keine Verbindung herstellen können, oder die Verbindung geht verloren, wenn der SQL-Datenbank-Server keinen Datenverkehr von Ihrer Client-IP-Adresse zulässt. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), klicken Sie nacheinander auf „Server mit SQL Server“, Ihren Server und unter „Einstellungen“ auf „Firewall“, und fügen Sie Ihre Client-IP-Adresse hinzu. Weitere Einzelheiten finden Sie unter [Konfigurieren von Firewalleinstellungen](sql-database-configure-firewall-settings.md) .
+   > [!TIP]
+   > Je nach Netzwerkumgebung kann es sein, dass Sie keine Verbindung herstellen können, oder die Verbindung geht verloren, wenn der SQL-Datenbank-Server keinen Datenverkehr von Ihrer Client-IP-Adresse zulässt. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), klicken Sie nacheinander auf „Server mit SQL Server“, Ihren Server und unter „Einstellungen“ auf „Firewall“, und fügen Sie Ihre Client-IP-Adresse hinzu. Weitere Einzelheiten finden Sie unter [Konfigurieren von Firewalleinstellungen](sql-database-configure-firewall-settings.md) .
 
 5. Wählen Sie im **Navigator** in der Liste die Datenbank aus, mit der Sie arbeiten möchten, wählen Sie die Tabellen oder Ansichten aus, mit denen Sie arbeiten möchten (hier wurde **vGetAllCategories** ausgewählt), und wählen Sie dann **Laden** aus, um die Daten aus Ihrer Datenbank in Ihr Excel-Arbeitsblatt zu verschieben.
 
@@ -75,17 +75,17 @@ Nachdem Sie die Verbindung hergestellt haben, stehen mehrere unterschiedliche Op
 Wenn Sie die Verbindungsdetails dauerhaft speichern möchten, können Sie eine ODC-Datei erstellen und diese Verbindung zu einer Option machen, die im Dialogfeld **Vorhandene Verbindungen** ausgewählt werden kann. 
 
 1. Wählen Sie auf der Menüleiste im oberen Bereich der Seite die Registerkarte **Daten** und dann **Vorhandene Verbindungen** aus, um das Dialogfeld **Vorhandene Verbindungen** zu öffnen. 
-    1. Wählen Sie **Browse for more** (Suche fortsetzen) aus, um das Dialogfeld **Datenquelle auswählen** zu öffnen.   
-    2. Wählen Sie die Datei **+NewSqlServerConnection.odc** und dann **Öffnen** aus, um den **Datenverbindungs-Assistenten** zu öffnen.
+   1. Wählen Sie **Browse for more** (Suche fortsetzen) aus, um das Dialogfeld **Datenquelle auswählen** zu öffnen.   
+   2. Wählen Sie die Datei **+NewSqlServerConnection.odc** und dann **Öffnen** aus, um den **Datenverbindungs-Assistenten** zu öffnen.
 
-    ![Neue Verbindung](media/sql-database-connect-excel/new-connection.png)
+      ![Neue Verbindung](media/sql-database-connect-excel/new-connection.png)
 
 2. Geben Sie im **Datenverbindungs-Assistenten** den Servernamen und die Anmeldeinformationen für SQL-Datenbank ein. Klicken Sie auf **Weiter**. 
-    1. Wählen Sie in der Dropdownliste die Datenbank aus, die die Daten enthält. 
-    2. Wählen Sie die Tabelle oder Ansicht aus, an der Sie interessiert sind. Hier wurde vGetAllCategories ausgewählt.
-    3. Klicken Sie auf **Weiter**. 
+   1. Wählen Sie in der Dropdownliste die Datenbank aus, die die Daten enthält. 
+   2. Wählen Sie die Tabelle oder Ansicht aus, an der Sie interessiert sind. Hier wurde vGetAllCategories ausgewählt.
+   3. Klicken Sie auf **Weiter**. 
 
-    ![Datenverbindungs-Assistent](media/sql-database-connect-excel/data-connection-wizard.png) 
+      ![Datenverbindungs-Assistent](media/sql-database-connect-excel/data-connection-wizard.png) 
 
 3. Wählen Sie auf dem nächsten Bildschirm des Datenverbindungs-Assistenten den Speicherort der Datei, den **Dateinamen** und den **Anzeigenamen** aus. Sie können auch das Kennwort in der Datei speichern, dadurch können jedoch Ihre Daten möglicherweise unerwünschten Zugriffen ausgesetzt werden. Wählen Sie anschließend **Fertig stellen** aus. 
 

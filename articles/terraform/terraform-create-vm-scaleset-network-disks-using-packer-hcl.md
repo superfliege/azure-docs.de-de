@@ -2,19 +2,19 @@
 title: Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
 description: Verwenden Sie Terraform, um eine Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image zu konfigurieren und mit einer Version zu versehen – einschließlich eines virtuellen Netzwerks und verwalteter angefügter Datenträger.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, Skalierungsgruppe, virtueller Computer, Netzwerk, Speicher, Module, benutzerdefinierte Images, Packer
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/29/2017
-ms.openlocfilehash: 12c6ebc9b29c356ad169dbd921e71c7aa0c273b7
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 5aff45b4a6b5da62569e0a39c13239a726e6b80b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077503"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001995"
 ---
 # <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set-from-a-packer-custom-image"></a>Verwenden von Terraform zum Erstellen einer Azure-VM-Skalierungsgruppe aus einem benutzerdefinierten Packer-Image
 
@@ -180,7 +180,7 @@ In diesem Schritt erstellen Sie die folgenden Ressourcen im Netzwerk, das zuvor 
 - Einen Azure-Back-End-Adresspool, der dem Lastenausgleich zugewiesen werden muss 
 - Einen Integritätstestport, der von der Anwendung verwendet und für den Lastenausgleich konfiguriert wird 
 - Eine VM-Skalierungsgruppe, die sich hinter dem Lastenausgleich befindet und in dem zuvor bereitgestellten VNet ausgeführt wird
-- Über das benutzerdefinierte Image installiertes [nginx](http://nginx.org/) auf den Knoten der VM-Skalierungsgruppe
+- Über das benutzerdefinierte Image installiertes [nginx](https://nginx.org/) auf den Knoten der VM-Skalierungsgruppe
 
 
 Fügen Sie am Ende der Datei `vmss.tf` den folgenden Code hinzu:

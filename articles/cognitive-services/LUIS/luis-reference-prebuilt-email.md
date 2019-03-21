@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 51e6a5da0d757023bd7cd1f61c77387a77b77de4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4a48bb4a6e988d4352f957c6435a9c1bf0a3e5fb
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869037"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340115"
 ---
 # <a name="email-prebuilt-entity-for-a-luis-app"></a>Vordefinierte E-Mail-Entität für eine LUIS-App
 Die E-Mail-Entität extrahiert die vollständige E-Mail-Adresse aus einer Äußerung. Da diese Entität bereits trainiert wurde, müssen Sie den Anwendungsabsichten keine Beispieläußerungen mit E-Mail-Adressen hinzufügen. Die E-Mail-Entität wird nur in der Kultur `en-us` unterstützt. 
@@ -42,7 +42,10 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.email** veransc
       "entity": "patti.owens@microsoft.com",
       "type": "builtin.email",
       "startIndex": 31,
-      "endIndex": 55
+      "endIndex": 55,
+      "resolution": {
+        "value": "patti.owens@microsoft.com"
+      }
     }
   ]
 }

@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a46bc954d137ad610310d83d3ad7f54370b9177b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d9cb9877015f2cfe61799a56be6490a3f4e2fb60
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184039"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012771"
 ---
 # <a name="single-sign-on-saml-protocol"></a>SAML-Protokoll für einmaliges Anmelden
 
@@ -170,7 +170,7 @@ Eine Antwort mit einem Issuer-Element sieht beispielsweise wie im folgenden Beis
 
 Das `Status` -Element gibt an, ob die Anmeldung erfolgreich war. Es enthält das `StatusCode`-Element, das einen Code oder mehrere geschachtelte Codes enthält, die den Status der Anforderung darstellen. Außerdem enthält es das `StatusMessage` -Element mit spezifischen, während der Anmeldung generierten Fehlermeldungen.
 
-<!-- TODO: Add a authentication protocol error reference -->
+<!-- TODO: Add an authentication protocol error reference -->
 
 Im folgenden Beispiel finden Sie eine SAML-Antwort auf einen fehlerhaften Anmeldeversuch.
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: 53281af4cf3ce49272ffe9fc48ab0f85cea276b2
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: fbaa89140033ee3b07017370e31e69601aa298db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213620"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078758"
 ---
 # <a name="consulting-services-for-azure-marketplace-and-appsource"></a>Beratungsdienste für Azure Marketplace und AppSource
 Mit Beratungsdiensten in Azure Marketplace und AppSource können Microsoft-Partner eine Verbindung zwischen Kunden und Diensten herstellen, um die Nutzung von Azure zu unterstützen und auszuweiten und den Kunden beim Erreichen ihrer Unternehmensziele zu helfen. 
@@ -41,12 +41,12 @@ Die Marketplace-Storefronts sind auf Zielgruppen und Microsoft-Cloudprodukte aus
 
 Die auf Microsoft Dynamics 365, Office 365 und Power BI basierenden Dienstangebote sind für das Listing in AppSource geeignet. Weitere Informationen finden Sie unter [Richtlinien zum Listing von Microsoft AppSource-Beratungsdiensten](https://smp-cdn-prod.azureedge.net/documents/Microsoft%20AppSource%20Partner%20Listing%20Guidelines.pdf). 
 
->[!Note]
->Beratungsdienste in Azure Marketplace sollten Angebote einsetzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine **technische Zielgruppe richten. ** Beratungsdienste in AppSource sollten Angebote einsetzen, die schwerpunktmäßig auf ihr Fachwissen bei der Bereitstellung qualitativ hochwertiger Lösungen für Dynamics 365, Power BI oder PowerApps ausgerichtet sind
-
-
->[!TIP]
->Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“.
+> [!Note]
+> Beratungsdienste in Azure Marketplace sollten Angebote einsetzen, die sich mit Schwerpunkt auf *Azure-technischen Lösungen und Diensten* an eine **technische Zielgruppe richten. ** Beratungsdienste in AppSource sollten Angebote einsetzen, die schwerpunktmäßig auf ihr Fachwissen bei der Bereitstellung qualitativ hochwertiger Lösungen für Dynamics 365, Power BI oder PowerApps ausgerichtet sind
+> 
+> 
+> [!TIP]
+> Zur Veröffentlichung in der digitalen Azure Marketplace-Ladenzeile wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ die Option „Azure“ aus. Zur Veröffentlichung auf AppSource wählen Sie im Cloud-Partnerportal im Dropdownmenü „Primäres Produkt“ entweder „Dynamics 365“, „Power BI“ oder „Power Apps“.
 
 ## <a name="eligible-partners-and-supported-countries"></a>Geeignete Partner und unterstützte Länder
 

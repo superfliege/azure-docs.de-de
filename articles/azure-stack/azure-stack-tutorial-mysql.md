@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 8fc3246c76d7d09ea4518b5c548d5dbe05cc7a84
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ff1b137fb6461c4ebd17451b89a180364d833d4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56164259"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116791"
 ---
 # <a name="tutorial-offer-highly-available-mysql-databases"></a>Tutorial: Anbieten von hoch verfügbaren MySQL-Datenbanken
 
@@ -67,7 +67,7 @@ Führen Sie die Schritte in diesem Abschnitt aus, um den MySQL Server-Cluster mi
 - Drei Linux-VMs zum Hosten des MySQL-Clusters
 
 1. 
-[!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
+   [!INCLUDE [azs-admin-portal](../../includes/azs-admin-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Compute** und dann auf **MySQL with Replication**.
 
@@ -168,7 +168,7 @@ Nachdem der MySQL-Cluster durch einen Azure Stack-Bediener erstellt, konfigurier
 > Führen Sie diese Schritte als Mandantenbenutzer im Azure Stack-Benutzerportal mit einem Abonnement aus, das MySQL Server-Funktionen (Microsoft.MySQLAdapter-Dienst) bereitstellt.
 
 1. 
-[!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
+   [!INCLUDE [azs-user-portal](../../includes/azs-user-portal.md)]
 
 2. Klicken Sie auf **\+** **Ressource erstellen** > **Daten \+ Speicher** und dann auf **MySQL-Datenbank**.<br><br>Geben Sie die erforderlichen Datenbankeigenschaften – Name, Sortierung – sowie das Abonnement und den Standort für die Bereitstellung an. 
 

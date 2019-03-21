@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: f2c9385e55559e53c9118e047bdddbe178a10770
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 73f810072fce9345208593342df597b72c522a73
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894511"
 ---
 # <a name="build-a-nodejs-and-mongodb-app-in-azure-app-service-on-linux"></a>Erstellen einer Node.js- und MongoDB-App in Azure App Service unter Linux
 
@@ -336,7 +336,7 @@ In diesem Schritt ändern Sie das `article`-Datenmodell und veröffentlichen die
 Fügen Sie in `ArticleSchema` einen `String`-Typ mit dem Namen `comment` hinzu. Anschließend sollte Ihr Schemacode wie folgt aussehen:
 
 ```javascript
-var ArticleSchema = new Schema({
+let ArticleSchema = new Schema({
   ...,
   user: {
     type: Schema.ObjectId,
@@ -362,7 +362,7 @@ Fügen Sie in der `update`-Funktion eine Zuweisung für `article.comment` hinzu.
 
 ```javascript
 exports.update = function (req, res) {
-  var article = req.article;
+  let article = req.article;
 
   article.title = req.body.title;
   article.content = req.body.content;

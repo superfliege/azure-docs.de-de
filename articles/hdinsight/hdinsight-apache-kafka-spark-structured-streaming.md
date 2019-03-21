@@ -9,12 +9,12 @@ ms.custom: hdinsightactive,seodec18
 ms.topic: tutorial
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 4dcf482e02d38e18b7b86fc57565a47510627d44
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: e470f9d6f33e8b534be22132881f4806bed85f5d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652863"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078362"
 ---
 # <a name="tutorial-use-apache-spark-structured-streaming-with-apache-kafka-on-hdinsight"></a>Tutorial: Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka in HDInsight
 
@@ -131,12 +131,12 @@ Führen Sie zum Erstellen eines virtuellen Azure-Netzwerks und zum anschließend
 
     Diese Vorlage erstellt die folgenden Ressourcen:
 
-    * Ein Kafka-auf-HDInsight-3.6-Cluster.
-    * Einen Spark 2.2.0-Cluster in HDInsight 3.6.
-    * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
+   * Ein Kafka-auf-HDInsight-3.6-Cluster.
+   * Einen Spark 2.2.0-Cluster in HDInsight 3.6.
+   * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
 
-    > [!IMPORTANT]  
-    > Das in diesem Tutorial für strukturiertes Streaming verwendete Notebook benötigt Spark 2.2.0 in HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
+     > [!IMPORTANT]  
+     > Das in diesem Tutorial für strukturiertes Streaming verwendete Notebook benötigt Spark 2.2.0 in HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
 
 2. Geben Sie im Abschnitt **Benutzerdefinierte Vorlage** folgende Informationen an:
 

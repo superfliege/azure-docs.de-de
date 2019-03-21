@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf2e1b97d228de47634e570a407ec03d7a13e540
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 4c831a5a939e946d7189e4d35eaf051508e904a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199638"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999531"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication
 
@@ -68,7 +68,7 @@ Manchmal können Ihren Benutzern Meldungen von Multi-Factor Authentication angez
 
 | Fehlercode | Fehlermeldung | Empfohlene Schritte | 
 | ---------- | ------------- | ----------------- |
-| **OathCodeIncorrect** | Falscher Code wurde eingegeben/der OATH-Code ist falsch | Dies ist kein Fehler. Der Benutzer hat einen falschen Code eingegeben. | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. | 
+| **OathCodeIncorrect** | Falscher Code wurde eingegeben/der OATH-Code ist falsch | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. | 
 | **SMSAuthFailedMaxAllowedCodeRetryReached** | Maximal zulässige Anzahl von Codewiederholungen erreicht | Der Benutzer hat die Überprüfung zu oft nicht bestanden. Abhängig von Ihren Einstellungen muss die Sperre jetzt möglicherweise durch einen Administrator aufgehoben werden.  |
 | **SMSAuthFailedWrongCodeEntered** | Falscher Code eingegeben/OTP der Textmeldung ist falsch | Der Benutzer hat den falschen Code eingegeben. Fordern Sie ihn auf, es erneut zu versuchen, indem er einen neuen Code anfordert oder sich erneut anmeldet. |
 

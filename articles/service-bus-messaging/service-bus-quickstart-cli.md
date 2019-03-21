@@ -9,12 +9,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 02/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 338907585ade0a33f74ca3e6337f1dd5cf8cc211
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076886"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>Schnellstart: Erstellen einer Service Bus-Warteschlange mithilfe der Azure CLI
 
@@ -61,31 +61,31 @@ Kopieren Sie nach Ausführung des letzten Befehls die Verbindungszeichenfolge un
 
 Nachdem Sie den Namespace und die Warteschlange erstellt haben und Sie über die erforderlichen Anmeldeinformationen verfügen, sind Sie zum Senden und Empfangen von Nachrichten bereit. Sie können sich den Code in [diesem GitHub-Ordner mit Beispielen](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters) ansehen.
 
-2. Klonen Sie das [Service Bus-GitHub-Repository](https://github.com/Azure/azure-service-bus/) auf Ihrem Computer, indem Sie den folgenden Befehl ausführen:
+1. Klonen Sie das [Service Bus-GitHub-Repository](https://github.com/Azure/azure-service-bus/) auf Ihrem Computer, indem Sie den folgenden Befehl ausführen:
 
    ```bash
    git clone https://github.com/Azure/azure-service-bus.git
    ```
 
-2. Ändern Sie das aktuelle Verzeichnis in den Ordner mit den Beispielen, indem Sie normale Schrägstriche als Pfadtrennzeichen verwenden:
+1. Ändern Sie das aktuelle Verzeichnis in den Ordner mit den Beispielen, indem Sie normale Schrägstriche als Pfadtrennzeichen verwenden:
 
    ```bash
    cd azure-service-bus/samples/Java/azure-servicebus/QueuesGettingStarted
    ```
 
-3. Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
+1. Führen Sie den folgenden Befehl aus, um die Anwendung zu erstellen:
    
    ```bash
    mvn clean package -DskipTests
    ```
 
-4. Führen Sie den folgenden Befehl aus, um das Programm auszuführen, und ersetzen Sie dabei die Verbindungszeichenfolge durch den zuvor kopierten Wert:
+1. Führen Sie den folgenden Befehl aus, um das Programm auszuführen, und ersetzen Sie dabei die Verbindungszeichenfolge durch den zuvor kopierten Wert:
 
    ```bash
    java -jar ./target/queuesgettingstarted-1.0.0-jar-with-dependencies.jar -c "<SERVICE BUS NAMESPACE CONNECTION STRING>" 
    ```
 
-6. Verfolgen Sie, wie zehn Nachrichten an die Warteschlange gesendet werden. Die Reihenfolge der Nachrichten wird nicht garantiert. Sie können aber sehen, dass die Nachrichten gesendet und dann bestätigt und empfangen werden, und Sie sehen die Nutzlastdaten:
+1. Verfolgen Sie, wie zehn Nachrichten an die Warteschlange gesendet werden. Die Reihenfolge der Nachrichten wird nicht garantiert. Sie können aber sehen, dass die Nachrichten gesendet und dann bestätigt und empfangen werden, und Sie sehen die Nutzlastdaten:
 
     ```
     Message sending: Id = 0

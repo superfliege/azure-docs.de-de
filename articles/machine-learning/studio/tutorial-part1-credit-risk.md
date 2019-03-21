@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: c067b0e6a85e0b5c4bd4cbb582de13bb1bc87774
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: f69b3f2c8de4cf137583ad7a33e8edfe31373096
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453612"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904506"
 ---
 # <a name="tutorial-1-predict-credit-risk---azure-machine-learning-studio"></a>Tutorial 1: Vorhersagen des Kreditrisikos: Azure Machine Learning Studio
 
@@ -70,7 +70,7 @@ Nachdem Ihr Arbeitsbereich erstellt wurde, öffnen Sie Machine Learning Studio (
 ## <a name="upload"></a>Hochladen vorhandener Daten
 
 Um ein Vorhersagemodell für Kreditrisiken zu entwickeln, benötigen Sie Daten, die Sie zum Trainieren und anschließenden Testen des Modells verwenden können. In diesem Tutorial verwenden Sie den Datensatz „UCI Statlog (German Credit Data)“ aus dem UC Irvine Machine Learning-Repository. Sie finden den Datensatz unter folgender URL:   
-<a href="http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">http://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
+<a href="https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)">https://archive.ics.uci.edu/ml/datasets/Statlog+(German+Credit+Data)</a>
 
 Sie verwenden die Datei mit dem Namen **german.data**. Laden Sie die Datei auf Ihre lokale Festplatte herunter.  
 
@@ -212,18 +212,18 @@ Zum Verwenden von [Edit Metadata][edit-metadata] müssen Sie zuerst die zu ände
 
 1. Suchen Sie im Bereich **Properties** nach dem Parameter **New column name**. Geben Sie in diesem Feld eine Liste der Namen für die 21 Spalten im Dataset ein, durch Kommas getrennt und in der Reihenfolge der Spalten. Die Spaltennamen können Sie der Datasetdokumentation auf der UCI-Website entnehmen, oder Sie können einfach die folgende Liste kopieren und einfügen:  
 
-  ```   
-  Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
-  ```
+   ```   
+   Status of checking account, Duration in months, Credit history, Purpose, Credit amount, Savings account/bond, Present employment since, Installment rate in percentage of disposable income, Personal status and sex, Other debtors, Present residence since, Property, Age in years, Other installment plans, Housing, Number of existing credits, Job, Number of people providing maintenance for, Telephone, Foreign worker, Credit risk  
+   ```
 
-  Der Bereich „Eigenschaften“ sieht wie folgt aus:
+   Der Bereich „Eigenschaften“ sieht wie folgt aus:
 
-  ![Eigenschaften für „Edit Metadata“](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
+   ![Eigenschaften für „Edit Metadata“](./media/tutorial-part1-credit-risk/edit-metadata-properties.png)
 
-  > [!TIP]
-  > Wenn Sie die Spaltenüberschriften überprüfen möchten, führen Sie das Experiment aus (klicken Sie unter dem Experimentbereich auf **RUN** ). Wenn die Ausführung abgeschlossen ist (in [Edit Metadata][edit-metadata] wird ein grünes Häkchen angezeigt), klicken Sie auf den Ausgabeport des Moduls [Edit Metadata][edit-metadata], und wählen Sie **Visualize**. Auf die gleiche Weise können Sie die Ausgabe jedes anderen Moduls anzeigen, um den Datenfortschritt im Experiment zu sehen.
-  > 
-  > 
+   > [!TIP]
+   > Wenn Sie die Spaltenüberschriften überprüfen möchten, führen Sie das Experiment aus (klicken Sie unter dem Experimentbereich auf **RUN** ). Wenn die Ausführung abgeschlossen ist (in [Edit Metadata][edit-metadata] wird ein grünes Häkchen angezeigt), klicken Sie auf den Ausgabeport des Moduls [Edit Metadata][edit-metadata], und wählen Sie **Visualize**. Auf die gleiche Weise können Sie die Ausgabe jedes anderen Moduls anzeigen, um den Datenfortschritt im Experiment zu sehen.
+   > 
+   > 
 
 ### <a name="create-training-and-test-datasets"></a>Erstellen von Trainings- und Testdatasets
 

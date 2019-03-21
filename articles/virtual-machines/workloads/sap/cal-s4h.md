@@ -16,21 +16,21 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/15/2016
 ms.author: hermannd
-ms.openlocfilehash: a99fb959ae1ac1434bedffd782a7c4e0a302d361
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c59fcf43cb4767f1d95d769dfce4d5c8755e45ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39431409"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990493"
 ---
 # <a name="deploy-sap-s4hana-or-bw4hana-on-azure"></a>Bereitstellen von SAP S/4HANA oder BW/4HANA in Azure
 In diesem Artikel wird beschrieben, wie Sie S/4HANA über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. Zum Bereitstellen anderer SAP HANA-basierter Lösungen, z.B. BW/4HANA, befolgen Sie dieselben Schritte.
 
 > [!NOTE]
-Weitere Informationen zur SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
-
+> Weitere Informationen zur SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur [SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience).
+> 
 > [!NOTE]
-Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell zum Bereitstellen der SAP Cloud Appliance Library nutzen. Wir empfehlen allerdings, das neue Ressourcen-Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
+> Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell zum Bereitstellen der SAP Cloud Appliance Library nutzen. Wir empfehlen allerdings, das neue Ressourcen-Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
 
 ## <a name="step-by-step-process-to-deploy-the-solution"></a>Vorgehensweise zum Bereitstellen der Lösung
 
@@ -49,8 +49,8 @@ Die Seite **Lösungen** zeigt einige der SAP CAL HANA-basierten Lösungen, die i
 
     c. Erteilen Sie der SAP CAL die Berechtigung zur Bereitstellung in Ihrem Azure-Abonnement.
 
-    > [!NOTE]
-    Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
+   > [!NOTE]
+   >  Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Ressourcen-Manager-Modell bereitgestellt werden.
 
 1. Erstellen Sie ein neues SAP CAL-Konto. Die Seite **Konten** zeigt drei Optionen für Azure: 
 
@@ -96,10 +96,10 @@ Sie haben erfolgreich ein SAP CAL-Konto mit den folgenden Möglichkeiten erstell
 Nun können Sie beginnen, S/4HANA in Ihrem Benutzerabonnement in Azure bereitzustellen.
 
 > [!NOTE]
-Bevor Sie fortfahren, bestimmen Sie, ob Sie über Azure-vCPU-Kontingente für virtuelle Azure-Computer der H-Serie verfügen. Derzeit verwendet die SAP CAL VMs der H-Serie von Azure, um einige der SAP HANA-basierten Lösungen bereitzustellen. Ihr Azure-Abonnement verfügt möglicherweise nicht über vCPU-Kontingente für die H-Serie. Falls dem so ist, müssen Sie den Azure-Support kontaktieren, um ein Kontingent von mindestens 16 vCPUs der H-Serie anzufordern.
-
+> Bevor Sie fortfahren, bestimmen Sie, ob Sie über Azure-vCPU-Kontingente für virtuelle Azure-Computer der H-Serie verfügen. Derzeit verwendet die SAP CAL VMs der H-Serie von Azure, um einige der SAP HANA-basierten Lösungen bereitzustellen. Ihr Azure-Abonnement verfügt möglicherweise nicht über vCPU-Kontingente für die H-Serie. Falls dem so ist, müssen Sie den Azure-Support kontaktieren, um ein Kontingent von mindestens 16 vCPUs der H-Serie anzufordern.
+> 
 > [!NOTE]
-Wenn Sie eine Lösung in Azure in der SAP CAL bereitstellen, stellen Sie möglicherweise fest, dass Sie nur eine Azure-Region auswählen können. Für eine Bereitstellung in Azure-Regionen, die nicht der von der SAP CAL vorgeschlagenen Region entsprechen, müssen Sie bei SAP ein CAL-Abonnement erwerben. Sie müssen ggf. auch in einer Nachricht SAP bitten, Ihre CAL so zu aktivieren, dass eine Bereitstellung in Azure-Regionen möglich wird, die sich von den anfänglich vorgeschlagenen unterscheidet.
+> Wenn Sie eine Lösung in Azure in der SAP CAL bereitstellen, stellen Sie möglicherweise fest, dass Sie nur eine Azure-Region auswählen können. Für eine Bereitstellung in Azure-Regionen, die nicht der von der SAP CAL vorgeschlagenen Region entsprechen, müssen Sie bei SAP ein CAL-Abonnement erwerben. Sie müssen ggf. auch in einer Nachricht SAP bitten, Ihre CAL so zu aktivieren, dass eine Bereitstellung in Azure-Regionen möglich wird, die sich von den anfänglich vorgeschlagenen unterscheidet.
 
 ### <a name="deploy-a-solution"></a>Bereitstellen einer Lösung
 
@@ -120,7 +120,7 @@ Wir veranschaulichen nun die grundlegende Vorgehensweise zur Bereitstellung.
 
     d. Geben Sie für die Lösung ein **Masterkennwort** mit acht oder neun Zeichen ein. Das Kennwort wird von den Administratoren der verschiedenen Komponenten verwendet.
 
-   ![Einfacher SAP CAL-Modus: Instanz erstellen](./media/cal-s4h/s4h-pic10a.png)
+   ![SAP CAL Basic Mode: Create Instance (Instanz erstellen)](./media/cal-s4h/s4h-pic10a.png)
 
 1. Klicken Sie auf **Erstellen** und im angezeigten Meldungsfeld auf **OK**.
 

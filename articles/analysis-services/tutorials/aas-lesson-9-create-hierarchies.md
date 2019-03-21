@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f34b2fd2ba5f6e3e1433fb8dac04d931a36920d0
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 5eb80051052138924cdb30655609215974435839
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188962"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56729915"
 ---
 # <a name="create-hierarchies"></a>Erstellen von Hierarchien
 
@@ -72,7 +72,7 @@ Dieses Thema ist Teil eines Tutorials zur Tabellenmodellierung, das in der richt
     *  WeekNumberOfYear
     *  DayNumberOfWeek
   
- ## <a name="whats-next"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 [Lektion 10: Erstellen von Partitionen](../tutorials/aas-lesson-10-create-partitions.md) 
   
   

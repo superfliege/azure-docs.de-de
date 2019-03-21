@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: cenkd;juliako
-ms.openlocfilehash: c982707b24f18e840e866b1dcc858fe2aceb686e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4f72738d0ca9b8c6dc170892a985d821923a4405
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000007"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894018"
 ---
 # <a name="filters-and-dynamic-manifests"></a>Filter und dynamische Manifeste
 
@@ -34,7 +34,7 @@ In diesem Thema werden allgemeine Szenarien behandelt, bei denen die Verwendung 
 ## <a name="overview"></a>Übersicht
 Bei der Übermittlung Ihrer Inhalte an Kunden (Streaming von Liveveranstaltungen oder Video-on-Demand) besteht Ihr Ziel darin, qualitativ hochwertige Videos für unterschiedliche Geräte unter verschiedenen Netzwerkbedingungen zu übermitteln. Gehen Sie wie folgt vor, um dieses Ziel zu erreichen:
 
-* Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und 
+* Codieren Sie den Stream in einen Videostream mit mehreren Bitraten ([mit adaptiver Bitrate](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) (dies betrifft die Qualität und die Netzwerkbedingungen), und 
 * verwenden Sie [Media Services Dynamic Packaging](media-services-dynamic-packaging-overview.md) , um den Stream dynamisch erneut in verschiedene Protokolle zu packen (dies betrifft das Streaming auf verschiedenen Geräten). Media Services unterstützt die folgenden Technologien mit Adaptive Bitrate Streaming: HTTP Live Streaming (HLS), Smooth Streaming und MPEG DASH. 
 
 ### <a name="manifest-files"></a>Manifestdateien

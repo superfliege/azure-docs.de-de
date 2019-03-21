@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: ddf40538fc3d6e39fe48ff49311f86314008b4ce
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52994760"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888467"
 ---
 # <a name="security-frame-authorization--mitigations"></a>Sicherheitskonzept: Autorisierung | Risikominderung 
 | Produkt/Dienst | Artikel |
@@ -397,7 +397,7 @@ return result;
 | **SDL-Phase**               | Entwickeln |  
 | **Zutreffende Technologien** | Allgemein, MVC5 |
 | **Attribute**              | N/V, Identitätsanbieter: ADFS, Identitätsanbieter: Azure AD |
-| **Referenzen**              | [Authentication and Authorization in ASP.NET Web API](http://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) (Authentifizierung und Autorisierung in der ASP.NET-Web-API) |
+| **Referenzen**              | [Authentication and Authorization in ASP.NET Web API](https://www.asp.net/web-api/overview/security/authentication-and-authorization-in-aspnet-web-api) (Authentifizierung und Autorisierung in der ASP.NET-Web-API) |
 | **Schritte** | <p>Rolleninformationen für die Anwendungsbenutzer können von Azure AD- oder ADFS-Ansprüchen abgeleitet werden, wenn die Anwendung sie als Identitätsanbieter nutzt, oder sie können von der Anwendung selbst bereitgestellt werden. In beiden Fällen müssen die Benutzerrolleninformationen von der benutzerdefinierten Autorisierungsimplementierung überprüft werden.</p><p>Rolleninformationen für die Anwendungsbenutzer können von Azure AD- oder ADFS-Ansprüchen abgeleitet werden, wenn die Anwendung sie als Identitätsanbieter nutzt, oder sie können von der Anwendung selbst bereitgestellt werden. In beiden Fällen müssen die Benutzerrolleninformationen von der benutzerdefinierten Autorisierungsimplementierung überprüft werden.</p>
 
 ### <a name="example"></a>Beispiel

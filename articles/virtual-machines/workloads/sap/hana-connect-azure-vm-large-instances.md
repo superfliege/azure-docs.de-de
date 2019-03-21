@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9116dd8a27b268b656f688083032a127177d2d51
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 2628cafada47b2602b195c44d4b6f2e6b16012ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53754559"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092768"
 ---
 # <a name="connecting-azure-vms-to-hana-large-instances"></a>Verbinden von Azure-VMs mit HANA (große Instanzen)
 
@@ -85,7 +85,7 @@ Einige der IP-Adressbereiche, die für die Bereitstellung von HANA (große Insta
 
 - **Adressraum des virtuellen Netzwerks:** Der **Adressraum des virtuellen Netzwerks** umfasst die IP-Adressbereiche, die Sie dem Adressraumparameter in den virtuellen Azure-Netzwerken zuweisen. Diese Netzwerke stellen Verbindungen mit der SAP HANA-Umgebung (große Instanzen) her.
 
- Es wird empfohlen, diesen Adressraumparameter als mehrzeiligen Wert anzulegen. Er sollte den Subnetzbereich des virtuellen Azure-Computers und die Subnetzbereiche des Azure-Gateways umfassen. Dieser Subnetzbereich wurde in der vorherigen Abbildung dargestellt. Er darf weder mit dem Adressbereich Ihrer lokalen Umgebung oder Ihres Server-IP-Pools noch mit ER-P2P-Adressbereichen überlappen. 
+  Es wird empfohlen, diesen Adressraumparameter als mehrzeiligen Wert anzulegen. Er sollte den Subnetzbereich des virtuellen Azure-Computers und die Subnetzbereiche des Azure-Gateways umfassen. Dieser Subnetzbereich wurde in der vorherigen Abbildung dargestellt. Er darf weder mit dem Adressbereich Ihrer lokalen Umgebung oder Ihres Server-IP-Pools noch mit ER-P2P-Adressbereichen überlappen. 
  
 Wie erhalten Sie diese IP-Adressbereiche? 
 
@@ -108,7 +108,7 @@ Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adre
   
 - **Adressbereich des Server-IP-Pools:** Dieser IP-Adressbereich wird verwendet, um jedem SAP HANA-Server (große Instanzen) eine eigene IP-Adresse zuzuweisen. Die empfohlene Subnetzgröße ist ein /24-CIDR-Block. Bei Bedarf kann auch eine geringere Größe mit nur 64 IP-Adressen genutzt werden. Aus diesem Bereich werden die ersten 30 IP-Adressen für die Verwendung durch Microsoft reserviert. Stellen Sie sicher, dass Sie dies berücksichtigen, wenn Sie die Größe des Bereichs auswählen. Dieser Bereich darf weder mit den lokalen noch mit anderen Azure-IP-Adressen überlappen. Wie erhalten Sie diesen IP-Adressbereich? Das Netzwerkteam Ihres Unternehmens oder Ihr Dienstanbieter sollte einen IP-Adressbereich bereitstellen, der in Ihrem Netzwerk derzeit nicht verwendet wird. 
 
- **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
+  **Dieser Bereich ist ein IP-Adressbereich, der an Microsoft übermittelt werden muss, wenn eine Erstbereitstellung angefordert wird**.
  
 Sie müssen die zuvor beschriebenen IP-Adressbereiche planen und definieren. Es müssen jedoch nicht alle an Microsoft übertragen werden. Sie müssen die folgenden IP-Adressbereiche für Microsoft angeben:
 

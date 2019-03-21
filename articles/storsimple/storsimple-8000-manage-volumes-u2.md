@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
-ms.openlocfilehash: b748e203e3bf769eef8ce728bbb9471b8d13fb9a
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822305"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093329"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>Verwalten von Volumes mithilfe des StorSimple-Geräte-Manager-Diensts (Update 3 und höher)
 
@@ -235,7 +235,7 @@ Möglicherweise empfiehlt es sich, ein lokales Volume in ein mehrstufiges Volume
    * Wenn Sie den Typ in **Mehrstufig** ändern und dieses Volume für archivierte Daten verwendet werden soll, aktivieren Sie das Kontrollkästchen **Verwenden Sie dieses Volume für Archivdaten, auf die Sie seltener zugreifen**.
    * Wenn Sie ein lokales Volume als mehrstufig konfigurieren oder _umgekehrt_, wird die folgende Meldung angezeigt.
    
-    ![Meldung beim Ändern des Volumetyps](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
+     ![Meldung beim Ändern des Volumetyps](./media/storsimple-8000-manage-volumes-u2/changevoltype3.png)
 
 7. Klicken Sie zum Speichern der Änderungen auf **Speichern**. Wenn Sie zur Bestätigung aufgefordert werden, klicken Sie auf **Ja**, um den Konvertierungsvorgang fortzusetzen. 
 

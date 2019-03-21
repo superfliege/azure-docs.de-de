@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c29cf0604e651902474d85dbd6edd3208e6b5944
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 55a829f2ed32152d14ef637c8079f7af8c487bea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097643"
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Verschieben von Daten von einem SFTP-Server mithilfe von Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den verknüpften FTP-Dienst spezifisch sind.
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | type | Die Typeigenschaft muss auf `Sftp` festgelegt sein. |Ja |
 | host | Name oder IP-Adresse des SFTP-Servers. |Ja |
 | port |Port, an dem der SFTP-Server lauscht. Der Standardwert lautet: 21 |Nein  |
@@ -65,7 +65,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `Basic` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username | Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | password | Kennwort für den Benutzer (username) | Ja |
 
@@ -115,7 +115,7 @@ Legen Sie zum Verwenden der Standardauthentifizierung `authenticationType` auf `
 Legen Sie zum Verwenden der Authentifizierung mit öffentlichem SSH-Schlüssel `authenticationType` auf `SshPublicKey` fest, und geben Sie über die im letzten Abschnitt beschriebenen allgemeinen Eigenschaften des SFTP-Connectors hinaus die folgenden Eigenschaften an:
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | username |Benutzer, der Zugriff auf den SFTP-Server hat. |Ja |
 | privateKeyPath | Geben Sie den absoluten Pfad der privaten Schlüsseldatei ein, auf die das Gateway zugreifen kann. | Geben Sie entweder `privateKeyPath` oder `privateKeyContent` an. <br><br> Betrifft nur das Kopieren von Daten von einem lokalen SFTP-Server. |
 | privateKeyContent | Eine serialisierte Zeichenfolge mit dem Inhalt des privaten Schlüssels. Der Kopier-Assistent kann die private Schlüsseldatei lesen und den privaten Schlüsselinhalt automatisch extrahieren. Wenn Sie andere Tools/SDKs verwenden, nutzen Sie stattdessen die privateKeyPath-Eigenschaft. | Geben Sie entweder den `privateKeyPath` oder den `privateKeyContent` an. |

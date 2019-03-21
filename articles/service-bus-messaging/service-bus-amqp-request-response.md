@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 13495107aff24b868a4188c25768868945e70db8
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121569"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1.0 in Microsoft Azure Service Bus: anforderungs-/antwortbasierte Vorgänge
 
@@ -45,72 +45,72 @@ Alle in diesem Dokument beschriebenen Vorgänge folgen einem Anforderungs-/Antwo
 
 Erstellt einen Link zum Verwaltungsknoten zum Senden von Anforderungen  
   
-```  
-requestLink = session.attach(     
-role: SENDER,   
-    target: { address: "<entity address>/$management" },   
-    source: { address: ""<my request link unique address>" }   
-)  
-  
-```  
+```
+requestLink = session.attach(
+role: SENDER,
+    target: { address: "<entity address>/$management" },
+    source: { address: ""<my request link unique address>" }
+)
+
+```
   
 ### <a name="create-link-for-receiving-responses"></a>Erstellen eines Links zum Empfangen von Antworten  
 
 Erstellt einen Link zum Empfangen von Antworten vom Verwaltungsknoten  
   
-```  
-responseLink = session.attach(    
-role: RECEIVER,   
-    source: { address: "<entity address>/$management" }   
-    target: { address: "<my response link unique address>" }   
-)  
-  
-```  
+```
+responseLink = session.attach(
+role: RECEIVER,
+    source: { address: "<entity address>/$management" }
+    target: { address: "<my response link unique address>" }
+)
+
+```
   
 ### <a name="transfer-a-request-message"></a>Übertragen einer Anforderungsnachricht  
 
 Überträgt eine Anforderungsnachricht  
 Ein Transaktionsstatus kann optional für Vorgänge hinzugefügt werden, die Transaktionen unterstützen.
 
-```  
-requestLink.sendTransfer(  
-        Message(  
-                properties: {  
-                        message-id: <request id>,  
-                        reply-to: "<my response link unique address>"  
-                },  
-                application-properties: {  
-                        "operation" -> "<operation>",  
+```
+requestLink.sendTransfer(
+        Message(
+                properties: {
+                        message-id: <request id>,
+                        reply-to: "<my response link unique address>"
+                },
+                application-properties: {
+                        "operation" -> "<operation>",
                 }
         ),
         [Optional] State = transactional-state: {
                 txn-id: <txn-id>
         }
 )
-```  
+```
   
 ### <a name="receive-a-response-message"></a>Empfangen einer Antwortnachricht  
 
 Empfängt die Antwortnachricht über den Antwortlink  
   
-```  
-responseMessage = responseLink.receiveTransfer()  
-```  
+```
+responseMessage = responseLink.receiveTransfer()
+```
   
 Die Antwortnachricht hat folgende Form:
   
-```  
-Message(  
-properties: {     
-        correlation-id: <request id>  
-    },  
-    application-properties: {  
-            "statusCode" -> <status code>,  
-            "statusDescription" -> <status description>,  
-           },         
-)  
-  
-```  
+```
+Message(
+properties: {
+        correlation-id: <request id>
+    },
+    application-properties: {
+            "statusCode" -> <status code>,
+            "statusDescription" -> <status description>,
+           },
+)
+
+```
   
 ### <a name="service-bus-entity-address"></a>Adresse der Service Bus-Entität  
 
@@ -607,7 +607,7 @@ Jeder Zuordnungseintrag im Array enthält die folgenden Eigenschaften:
 `com.microsoft:correlation-filter:list` ist ein beschriebenes Array, das Folgendes enthält:
 
 |Index (falls vorhanden)|Werttyp|Wertinhalt|  
-|---------|----------------|--------------|--------------------|  
+|---------|----------------|--------------|
 | 0 | Zeichenfolge | Korrelations-ID |
 | 1 | Zeichenfolge | Nachrichten-ID |
 | 2 | Zeichenfolge | To |

@@ -11,18 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/25/2018
-ms.openlocfilehash: 47ba057091f0660bf1449f062edfacde710d2f1a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 34159d059b976043fac415470421970056320acc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428176"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996494"
 ---
 # <a name="provider-resource-usage-api"></a>Ressourcennutzungs-API für Anbieter
+
 Der Begriff *Anbieter* bezieht sich auf den Dienstadministrator und alle delegierten Anbieter. Azure Stack-Operators und delegierte Anbieter können die Nutzungs-API für Anbieter verwenden, um einen Einblick in die Nutzung ihrer direkten Mandanten zu erhalten. Wie im Diagramm dargestellt, kann P0 beispielsweise die Anbieter-API aufrufen, um die Nutzungsinformationen zur direkten Nutzung von P1 und P2 abzurufen, und P1 kann die Nutzungsinformationen von P3 und P4 abrufen.
 
 ![Konzeptuelles Modell der Anbieterhierarchie](media/azure-stack-provider-resource-api/image1.png)
@@ -38,6 +39,7 @@ Die Nutzungs-API ist eine Anbieter-API. Aus diesem Grund muss dem Aufrufer im Ab
 | GET |https://{ARM-Endpunkt}/subscriptions/{Abo-ID}/providers/Microsoft.Commerce.Admin/subscriberUsageAggregates?reportedStartTime={gemeldeteStartzeit}&reportedEndTime={gemeldeteAbschlusszeit}&aggregationGranularity={Granularität}&subscriberId={Abo1.1}&api-version=2015-06-01-preview&continuationToken={Tokenwert} |
 
 ### <a name="arguments"></a>Argumente
+
 | **Argument** | **Beschreibung** |
 | --- | --- |
 | *armendpunkt* |Azure Resource Management-Endpunkt Ihrer Azure Stack-Umgebung. Nach Azure Stack-Konvention folgt der Name des Azure Resource Manager-Endpunkts dem Format `https://adminmanagement.{domain-name}`. Wenn der Domänenname für das Development Kit beispielsweise *local.azurestack.external* lautet, ist der Resource Manager-Endpunkt `https://adminmanagement.local.azurestack.external`. |
@@ -79,6 +81,7 @@ meterID1",
 ```
 
 ### <a name="response-details"></a>Genaue Angaben zu Antwort
+
 | **Argument** | **Beschreibung** |
 | --- | --- |
 | *id* |Eindeutige ID des Nutzungsaggregats. |
@@ -101,9 +104,10 @@ Um Nutzungsdaten zu generieren, benötigen Sie Ressourcen, die ausgeführt werde
 1. [Installieren Sie PowerShell für Azure Stack-](azure-stack-powershell-install.md)
 2. Konfigurieren Sie die PowerShell-Umgebung des [Azure Stack-Benutzers](user/azure-stack-powershell-configure-user.md) oder des [Azure Stack-Betreibers](azure-stack-powershell-configure-admin.md). 
 3. Um die Nutzungsdaten abzurufen, verwenden Sie das PowerShell-Cmdlet [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates):
-```powershell
-Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
-```
+   ```powershell
+   Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+   ```
+
 ### <a name="rest-api"></a>REST-API
 
 Sie können Nutzungsinformationen für gelöschte Abonnements sammeln, indem Sie den Microsoft.Commerce.Admin-Dienst aufrufen. 

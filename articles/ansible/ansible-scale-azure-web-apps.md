@@ -1,19 +1,19 @@
 ---
 title: Skalieren von Azure App Service-Web-Apps mit Ansible
 description: Hier erfahren Sie, wie Sie Ansible verwenden, um eine Web-App mit Java 8 und der Tomcat-Containerruntime in App Service unter Linux zu erstellen.
-ms.service: ansible
+ms.service: azure
 keywords: Ansible, Azure, DevOps, Bash, Playbook, Azure App Service, Web-App, skalieren, Java
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/08/2018
-ms.openlocfilehash: 4ef8320d3eba841ee64557e31e63b4e79ee3aa92
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 2bafb73afa35c7670ac45f7027545277c70075ef
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159892"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57792275"
 ---
 # <a name="scale-azure-app-service-web-apps-by-using-ansible"></a>Skalieren von Azure App Service-Web-Apps mit Ansible
 [Azure App Service-Web-Apps](https://docs.microsoft.com/azure/app-service/overview) (oder einfach Web-Apps) dient zum Hosten von Webanwendungen, REST-APIs und mobilen Back-Ends. Sie können in Ihrer bevorzugten Sprache entwickeln: .NET, .NET Core, Java, Ruby, Node.js, PHP oder Python.

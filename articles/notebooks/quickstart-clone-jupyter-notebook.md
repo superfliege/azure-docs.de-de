@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: d7122b78-6daa-4bea-883b-ff832cfecef3
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 6f36879828f5927cbb5477b32cdb6b4832010d4c
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: cfce5765cda1e3a1dfb7eb073719191b13b0696e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413131"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089198"
 ---
 # <a name="quickstart-clone-a-notebook"></a>Schnellstart: Klonen eines Notebooks
 
@@ -40,13 +40,13 @@ Beim Klonen wird stattdessen eine Kopie eines GitHub-Notebooks in ihrem Azure No
 
 1. Geben Sie im Dialogfeld **Upload GitHub Repository** (GitHub-Repository hochladen), das nun angezeigt wird, die folgenden Details ein, und wählen Sie dann **Import** (Importieren) aus:
 
-    - **GitHub-Repository**: Microsoft/cognitive-services-notebooks (mit diesem Namen werden die Jupyter-Notebooks für Azure Cognitive Services unter [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) geklont).
-    - **Clone recursively** (Rekursiv klonen): (nicht aktiviert)
-    - **Projektname**: Cognitive Services Clone (Cognitive Services-Klon)
-    - **Project ID** (Projekt-ID): cognitive-services-clone (cognitive-services-klon)
-    - **Public** (Öffentlich): (nicht aktiviert)
+   - **GitHub-Repository**: Microsoft/cognitive-services-notebooks (mit diesem Namen werden die Jupyter-Notebooks für Azure Cognitive Services unter [https://github.com/Microsoft/cognitive-services-notebooks](https://github.com/Microsoft/cognitive-services-notebooks) geklont).
+   - **Clone recursively** (Rekursiv klonen): (nicht aktiviert)
+   - **Projektname**: Cognitive Services Clone (Cognitive Services-Klon)
+   - **Project ID** (Projekt-ID): cognitive-services-clone (cognitive-services-klon)
+   - **Public** (Öffentlich): (nicht aktiviert)
 
-    ![Popupfenster „GitHub-Repository hochladen“ zur Erfassung von Repositoryinformationen](media/quickstarts/upload-github-repo-popup.png)
+     ![Popupfenster „GitHub-Repository hochladen“ zur Erfassung von Repositoryinformationen](media/quickstarts/upload-github-repo-popup.png)
 
 1. Haben Sie ein bisschen Geduld, bis der Prozess abgeschlossen ist; das Klonen eines Repositorys kann einige Minuten in Anspruch nehmen.
 

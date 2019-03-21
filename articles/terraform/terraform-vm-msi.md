@@ -2,19 +2,19 @@
 title: Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteter Identität
 description: Verwenden Sie ein Marketplace-Image, um einen virtuellen Terraform-Computer für Linux mit verwalteter Identität und Remotezustandsverwaltung zur einfachen Bereitstellung von Ressourcen in Azure zu erstellen.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, MSI, VM, Remotezustand, Azure
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 3/12/2018
-ms.openlocfilehash: 3f10e5dfd0a4aac859c1a946b5f0a680899e0888
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a1a980e1f8b004c4a3dba53e4f83367022074c7c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007960"
 ---
 # <a name="use-an-azure-marketplace-image-to-create-a-terraform-linux-virtual-machine-with-managed-identities-for-azure-resources"></a>Verwenden eines Azure Marketplace-Images zum Erstellen eines virtuellen Terraform-Computers für Linux mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -77,7 +77,7 @@ Das Terraform-VM-Image führt die folgenden Schritte aus:
 
 ## <a name="access-and-configure-a-linux-terraform-virtual-machine"></a>Zugreifen auf eine Terraform-VM für Linux und Konfigurieren der VM
 
-Nachdem der virtuelle Computer erstellt wurde, können Sie sich über SSH bei diesem Computer anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt „Grundlagen“ für die Textshellschnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org/)herunterladen.
+Nachdem der virtuelle Computer erstellt wurde, können Sie sich über SSH bei diesem Computer anmelden. Verwenden Sie dazu die Kontoanmeldeinformationen, die Sie in Schritt 3 im Abschnitt „Grundlagen“ für die Textshellschnittstelle erstellt haben. Unter Windows können Sie ein SSH-Clienttool wie [PuTTY](https://www.putty.org/)herunterladen.
 
 Nachdem Sie über SSH eine Verbindung mit dem virtuellen Computer hergestellt haben, müssen Sie den verwalteten Identitäten für Azure-Ressourcen auf dem virtuellen Computer Berechtigungen vom Typ „Mitwirkender“ für das gesamte Abonnement erteilen. 
 

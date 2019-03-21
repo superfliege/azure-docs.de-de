@@ -5,17 +5,17 @@ description: Dieser Artikel veranschaulicht, wie die Leistung eines Modells in A
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: e5c85451ca48aab8f980b89de41ebf40f1f97ff3
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 37ab56c377bc53a7300b51ffc709ea8d1b9d6f9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453952"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891585"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio"></a>Auswerten der Modellleistung in Azure Machine Learning Studio
 
@@ -83,7 +83,7 @@ Nach dem Ausführen des Experiments können Sie die Auswertungsergebnisse prüfe
 Abbildung 4. Ergebnisse der Kreuzvalidierung eines Regressionsmodells.
 
 ## <a name="evaluating-a-binary-classification-model"></a>Auswerten eines binären Klassifizierungsmodells
-Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der Hauptunterschied besteht hier in der Auswahl der Metriken, die in Azure Machine Learning Studio berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](http://archive.ics.uci.edu/ml/datasets/Adult) ein Studio-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
+Bei der binären Klassifizierung hat die Zielvariable nur zwei mögliche Ergebnisse, z. B.: {0, 1} oder {falsch, wahrt}, {negativ, positiv}. Angenommen, Sie erhalten ein Dataset mit Mitarbeiterdaten, das verschiedene Variablen zu Demografie und Beschäftigung enthält, und Sie werden gebeten, das Einkommensniveau vorherzusagen, eine binäre Variable mit den Werten {„<=50 K“, „>50 K“}. Anders gesagt: Die negative Klasse gibt die Mitarbeiter an, deren Einkommen pro Jahr kleiner oder gleich 50 K (50.000) ist, und die positive Klasse alle anderen Mitarbeiter. Wie beim Regressionsszenario werden ein Modell trainiert, einige Daten bewertet und die Ergebnisse ausgewertet. Der Hauptunterschied besteht hier in der Auswahl der Metriken, die in Azure Machine Learning Studio berechnet und ausgegeben werden. Zur Veranschaulichung des Vorhersageszenarios für das Einkommensniveau wird mit dem Dataset [Adult](https://archive.ics.uci.edu/ml/datasets/Adult) ein Studio-Experiment erstellt und anschließend die Leistung eines logistischen Zwei-Klassen-Regressionsmodells ausgewertet, einem häufig eingesetzten binärer Klassifikator.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:
@@ -133,7 +133,7 @@ Abbildung 8. Kreuzvalidierung eines binären Klassifizierungsmodells.
 Abbildung 9. Ergebnisse der Kreuzvalidierung eines binären Klassifikators.
 
 ## <a name="evaluating-a-multiclass-classification-model"></a>Auswerten eines Modells für die Multiklassenklassifizierung
-In diesem Experiment wird das beliebte Dataset [Iris](http://archive.ics.uci.edu/ml/datasets/Iris "Iris") verwendet, das Fälle der drei verschiedenen Typen (Klassen) der Iris enthält. Für jeden Fall sind vier Funktionswerte (Länge/Breite des Kelchblatts und Länge/Breite des Blütenblatts) definiert. In den vorhergehenden Experimenten wurden die Modelle mit den gleichen Datasets trainiert und getestet. Hier werden nun mithilfe des Moduls [Split Data][split] zwei Teilmengen der Daten erstellt. Das Modell wird mit der ersten Teilmenge trainiert und anschließend mit der zweiten Teilmenge bewertet und ausgewertet. Das Iris-Dataset wird im [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml/index.html) öffentlich zur Verfügung gestellt und kann mit einem [Import Data][import-data]-Modul heruntergeladen werden.
+In diesem Experiment wird das beliebte Dataset [Iris](https://archive.ics.uci.edu/ml/datasets/Iris "Iris") verwendet, das Fälle der drei verschiedenen Typen (Klassen) der Iris enthält. Für jeden Fall sind vier Funktionswerte (Länge/Breite des Kelchblatts und Länge/Breite des Blütenblatts) definiert. In den vorhergehenden Experimenten wurden die Modelle mit den gleichen Datasets trainiert und getestet. Hier werden nun mithilfe des Moduls [Split Data][split] zwei Teilmengen der Daten erstellt. Das Modell wird mit der ersten Teilmenge trainiert und anschließend mit der zweiten Teilmenge bewertet und ausgewertet. Das Iris-Dataset wird im [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.html) öffentlich zur Verfügung gestellt und kann mit einem [Import Data][import-data]-Modul heruntergeladen werden.
 
 ### <a name="creating-the-experiment"></a>Erstellen des Experiments
 Fügen Sie Ihrem Arbeitsbereich in Azure Machine Learning Studio die folgenden Module hinzu:

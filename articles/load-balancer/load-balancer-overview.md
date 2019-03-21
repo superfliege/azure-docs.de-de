@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/11/2019
 ms.author: kumud
-ms.openlocfilehash: 9ca8e6876b67167429dbc0b5e6c3f5b454878c2a
-ms.sourcegitcommit: ba9f95cf821c5af8e24425fd8ce6985b998c2982
+ms.openlocfilehash: c2f6a614524f0dfb242db11618fda94ce57e6e6a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54382677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111530"
 ---
 # <a name="what-is-azure-load-balancer"></a>Was versteht man unter Azure Load Balancer?
 
@@ -94,8 +94,8 @@ Load Balancer stellt die folgenden grundlegenden Funktionen für TCP und UDP-Anw
 
     Alle ausgehenden Flows von privaten IP-Adressen in Ihrem virtuellen Netzwerk zu öffentlichen IP-Adressen im Internet können in eine Front-End-IP-Adresse von Load Balancer übersetzt werden. Wenn ein öffentliches Front-End über eine Lastenausgleichsregel an einen virtuellen Back-End-Computer gebunden ist, programmiert Azure ausgehende Verbindungen so, dass sie automatisch in die IP-Adresse des öffentlichen Front-Ends übersetzt werden.
 
-    * Es werden einfache Upgrades und eine Notfallwiederherstellung von Diensten ermöglicht, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann.
-    * Die Verwaltung von Zugriffssteuerungslisten wird vereinfacht. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste zentral hoch- oder herunterskaliert oder erneut bereitgestellt werden.  Wenn ausgehende Verbindungen in weniger IP-Adressen übersetzt werden als Computer vorhanden sind, ist ein geringeres Maß an Whitelisting nötig.
+  * Es werden einfache Upgrades und eine Notfallwiederherstellung von Diensten ermöglicht, da das Front-End dynamisch einer anderen Instanz des Diensts zugeordnet werden kann.
+  * Die Verwaltung von Zugriffssteuerungslisten wird vereinfacht. Zugriffssteuerungslisten, die als Front-End-IP-Adressen ausgedrückt werden, ändern sich nicht, wenn Dienste zentral hoch- oder herunterskaliert oder erneut bereitgestellt werden.  Wenn ausgehende Verbindungen in weniger IP-Adressen übersetzt werden als Computer vorhanden sind, ist ein geringeres Maß an Whitelisting nötig.
 
     Weitere Informationen finden Sie unter [Ausgehende Verbindungen](load-balancer-outbound-connections.md).
 

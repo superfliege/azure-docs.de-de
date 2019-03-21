@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/21/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6551eab45fdfb5070b29de4152cf2b3e3d008f69
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 0138ea8dcbd780ca8aa87178dad41bdca1a72267
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082151"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900657"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement-application-offer"></a>Erstellen eines Dynamics 365 for Customer Engagement-Angebots
 
@@ -28,7 +28,7 @@ In diesem Abschnitt werden das Erstellen und Veröffentlichen eines Dynamics 365
 
 ## <a name="new-offer-form"></a>Formular „Neues Angebot“
 
-Melden Sie sich beim [Cloud-Partnerportal](http://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ **Dynamics 365 for Customer Engagement** aus:
+Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ **Dynamics 365 for Customer Engagement** aus:
 
 ![Menüelement „Neues Angebot“ für Dynamics 365 for Customer Engagement-Anwendung](./media/new-dyn365ce-menu-item.png)
 

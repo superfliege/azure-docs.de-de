@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 10/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 4184d3605c464b5da495de0698155dda1ae4e474
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b7cc47c449b91693831dda74bf987f595fe65681
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54438710"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997882"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Verwalten von StorSimple-Geräten mit SDK-basierten Azure Resource Manager-Skripts
 
@@ -77,7 +77,7 @@ Das in diesem Beispiel verwendete Skript listet alle Aufträge auf einem StorSim
         mkdir C:\scripts\StorSimpleSDKTools
         cd C:\scripts\StorSimpleSDKTools
     ```    
-2. [Laden Sie die NuGet-CLI in den Ordner herunter](http://www.nuget.org/downloads), den Sie im vorherigen Schritt erstellt haben. Es gibt verschiedene Versionen von _nuget.exe_. Wählen Sie die für Ihr SDK entsprechende Version aus. Jeder Downloadlink verweist direkt auf eine _EXE_-Datei. Führen Sie die Datei nicht über den Browser aus, sondern klicken Sie mit der rechten Maustaste auf die Datei, und speichern Sie sie auf Ihrem Computer.
+2. [Laden Sie die NuGet-CLI in den Ordner herunter](https://www.nuget.org/downloads), den Sie im vorherigen Schritt erstellt haben. Es gibt verschiedene Versionen von _nuget.exe_. Wählen Sie die für Ihr SDK entsprechende Version aus. Jeder Downloadlink verweist direkt auf eine _EXE_-Datei. Führen Sie die Datei nicht über den Browser aus, sondern klicken Sie mit der rechten Maustaste auf die Datei, und speichern Sie sie auf Ihrem Computer.
 
     Sie können auch den folgenden Befehl ausführen, um das Skript in den zuvor erstellten Ordner herunterzuladen und zu speichern.
     

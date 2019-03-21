@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 43992d25590a58b24c48aad8bfbf6f91b17699ee
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098080"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092666"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Entwickeln von Azure Functions mithilfe von Visual Studio  
 
@@ -143,7 +143,7 @@ Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als B
 
 1. Stellen Sie sicher, dass Sie [das Projekt für die lokale Entwicklung konfiguriert haben](#configure-the-project-for-local-development).
 
-2. Fügen Sie für die entsprechende Bindung das geeignete NuGet-Erweiterungspaket hinzu. Weitere Informationen finden Sie im Artikel zu Triggern und Bindungen unter [Lokale Entwicklung in C# mit Visual Studio oder Visual Studio Code](functions-triggers-bindings.md#local-csharp). Die bindungsspezifischen Anforderungen für NuGet-Pakete sind im Referenzartikel für die Bindung angegeben. Paketanforderungen für den Event Hubs-Trigger finden Sie im [Referenzartikel zu Event Hubs-Bindungen](functions-bindings-event-hubs.md).
+2. Fügen Sie für die entsprechende Bindung das geeignete NuGet-Erweiterungspaket hinzu. Weitere Informationen finden Sie im Artikel zu Triggern und Bindungen unter [Lokale Entwicklung in C# mit Visual Studio oder Visual Studio Code](./functions-bindings-register.md#local-csharp). Die bindungsspezifischen Anforderungen für NuGet-Pakete sind im Referenzartikel für die Bindung angegeben. Paketanforderungen für den Event Hubs-Trigger finden Sie im [Referenzartikel zu Event Hubs-Bindungen](functions-bindings-event-hubs.md).
 
 3. Falls für die Bindung bestimmte App-Einstellungen erforderlich sind, können Sie diese der Sammlung **Values** in der [Datei mit lokalen Einstellungen](functions-run-local.md#local-settings-file) hinzufügen. Diese Werte werden verwendet, wenn die Funktion lokal ausgeführt wird. Wenn die Funktion in der Funktions-App in Azure ausgeführt wird, werden die [Einstellungen für Funktions-Apps](#function-app-settings) verwendet.
 
@@ -163,7 +163,7 @@ Wie bei Triggern auch, werden Eingabe- und Ausgabebindungen Ihrer Funktion als B
         }
     }
     ```
-Die Verbindung mit dem Warteschlangenspeicher stammt aus der Einstellung `AzureWebJobsStorage`. Weitere Informationen finden Sie im Referenzartikel für die spezifische Bindung. 
+   Die Verbindung mit dem Warteschlangenspeicher stammt aus der Einstellung `AzureWebJobsStorage`. Weitere Informationen finden Sie im Referenzartikel für die spezifische Bindung. 
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
 
@@ -220,8 +220,6 @@ So aktivieren Sie Application Insights für Ihre Funktions-App in Azure
 Weitere Informationen finden Sie unter [Überwachen von Azure Functions](functions-monitoring.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
-
-Weitere Informationen zu Azure Functions-Tools finden Sie im Abschnitt „Common Questions“ (häufig gestellte Fragen) des Blogbeitrags [Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) (in englischer Sprache).
 
 Weitere Informationen zu Azure Functions Core-Tools finden Sie unter [Lokales Codieren und Testen von Azure-Funktionen](functions-run-local.md).
 

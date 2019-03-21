@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 03/03/2018
 ms.author: naziml
 ms.custom: seodec18
-ms.openlocfilehash: 4681dad55807705a2ce8e9908cbd3ee53fb3c32e
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: c1930777f44266755f20400d063ec938ee631adb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089317"
 ---
 # <a name="configuring-a-web-application-firewall-waf-for-app-service-environment"></a>Konfigurieren einer Web Application Firewall (WAF) für eine App Service-Umgebung
 ## <a name="overview"></a>Übersicht
@@ -66,7 +66,7 @@ Fügen Sie, wie in der folgenden Abbildung gezeigt, den Verwaltungsendpunkt hinz
 
 ![Verwaltungsendpunkt hinzufügen][AddManagementEndpoint]
 
-Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu http://test.cloudapp.net:8000 navigieren. Es sollte, wie in der folgenden Abbildung gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
+Navigieren Sie in einem Browser zum Verwaltungsendpunkt für Ihren Clouddienst. Wenn der Clouddienst „test.cloudapp.net“ heißt, greifen Sie auf diesen Endpunkt zu, indem Sie zu `http://test.cloudapp.net:8000` navigieren. Es sollte, wie in der folgenden Abbildung gezeigt, eine Anmeldeseite angezeigt werden, auf der Sie sich mit den Anmeldeinformationen anmelden können, die Sie beim Einrichten der WAF-VM angegeben haben.
 
 ![Anmeldeseite für die Verwaltung][ManagementLoginPage]
 

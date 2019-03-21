@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: tutorial
-ms.date: 01/09/2019
+ms.date: 03/13/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 78b309336b21c3b6a58a37b1729f675db111c5d0
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 32c46f0a488d775275b3a367aa2913f034569041
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57903928"
 ---
 # <a name="tutorial-add-a-sample-model-from-the-portal"></a>Tutorial: Hinzufügen eines Beispielmodells aus dem Portal
 
@@ -57,7 +57,7 @@ Melden Sie sich beim [Portal](https://portal.azure.com/) an.
 
 Ihr Beispielmodell verwendet Cachespeicherressourcen. Wenn Sie Ihr Beispielmodell nicht zum Testen verwenden, sollten Sie es von Ihrem Server entfernen.
 
-In diesen Schritten wird beschrieben, wie Sie ein Modell mithilfe von SSMS auf einem Server löschen. Sie können ein Modell auch über das Vorschaufeature des Web-Designers löschen.
+In diesen Schritten wird beschrieben, wie Sie ein Modell mithilfe von SSMS auf einem Server löschen.
 
 1. Klicken Sie in SSMS im **Objekt-Explorer** auf **Verbinden** > **Analysis Services**.
 

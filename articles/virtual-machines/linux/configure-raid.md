@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 2bced71a7211907e0e517e47c4f5d301d4a56f56
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e773fdcb031f0f8f896ea40d76231fd54a603dc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089028"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurieren von Software-RAID unter Linux
 Ein häufiges Szenario ist die Verwendung von Software-RAID auf virtuellen Linux-Computern in Azure, um mehrere angefügte Datenträger als einzelnes RAID-Gerät darzustellen. Dies kann normalerweise angewendet werden, um die Leistung zu verbessern und optimierten Durchsatz im Vergleich zur Verwendung eines einzelnen Datenträgers zu ermöglichen.
@@ -31,20 +31,20 @@ Es sind zwei oder mehr leere Datenträger erforderlich, um ein RAID-Gerät zu ko
 
 ## <a name="install-the-mdadm-utility"></a>Installieren des mdadm-Dienstprogramms
 * **Ubuntu**
-```bash
-sudo apt-get update
-sudo apt-get install mdadm
-```
+  ```bash
+  sudo apt-get update
+  sudo apt-get install mdadm
+  ```
 
 * **CentOS und Oracle Linux**
-```bash
-sudo yum install mdadm
-```
+  ```bash
+  sudo yum install mdadm
+  ```
 
 * **SLES und openSUSE**
-```bash  
-zypper install mdadm
-```
+  ```bash  
+  zypper install mdadm
+  ```
 
 ## <a name="create-the-disk-partitions"></a>Erstellen der Datenträgerpartitionen
 In diesem Beispiel erstellen wir eine einzelne Datenträgerpartition unter „/dev/sdc“. Die neue Datenträgerpartition wird „/dev/sdc1“ genannt.

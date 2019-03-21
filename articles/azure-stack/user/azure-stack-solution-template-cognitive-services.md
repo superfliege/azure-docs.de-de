@@ -15,12 +15,12 @@ ms.date: 12/11/2018
 ms.author: mabrigg
 ms.reviewer: guanghu
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: 1ccbe8b268725cf3d0747486a20e0597d023662e
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 8080355bebf00c9f37c28ae8ed54bba092f8dc17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55890602"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099932"
 ---
 # <a name="deploy-azure-cognitive-services-to-azure-stack"></a>Bereitstellen von Azure Cognitive Services in Azure Stack
 
@@ -67,12 +67,12 @@ Bevor Sie beginnen, müssen Sie folgende Aktionen ausführen:
 
 Erstellen Sie in Azure eine Cognitive Service-Ressource, um eine Vorschau der Gesichtserkennungs-, LUIS- oder Texterkennungscontainer anzuzeigen. Sie müssen den Abonnementschlüssel und die Endpunkt-URL der Ressource verwenden, um die Cognitive Service-Container zu instanziieren.
 
-1.  Erstellen Sie eine Azure-Ressource im Azure-Portal. Wenn Sie die Container für die Gesichtserkennung in einer Vorschau anzeigen möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Gesichtserkennungsressource erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
+1. Erstellen Sie eine Azure-Ressource im Azure-Portal. Wenn Sie die Container für die Gesichtserkennung in einer Vorschau anzeigen möchten, müssen Sie zuerst im Azure-Portal eine entsprechende Gesichtserkennungsressource erstellen. Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Cognitive Services-Kontos im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account).
 
-    >  [!Note]  
-    >  Die Ressource für Gesichtserkennung oder maschinelles Sehen muss den F0-Tarif verwenden.
+   > [!Note]
+   >  Die Ressource für Gesichtserkennung oder maschinelles Sehen muss den F0-Tarif verwenden.
 
-2.  Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab. Nachdem die Azure-Ressource erstellt wurde, müssen Sie den Abonnementschlüssel und die Endpunkt-URL dieser Ressource verwenden, um den entsprechenden Gesichtserkennungs-, LUIS- oder Texterkennungscontainer für die Vorschau zu instanziieren.
+2. Rufen Sie die Endpunkt-URL und den Abonnementschlüssel für die Azure-Ressource ab. Nachdem die Azure-Ressource erstellt wurde, müssen Sie den Abonnementschlüssel und die Endpunkt-URL dieser Ressource verwenden, um den entsprechenden Gesichtserkennungs-, LUIS- oder Texterkennungscontainer für die Vorschau zu instanziieren.
 
 ## <a name="create-a-kubernetes-secret"></a>Erstellen eines Kubernetes-Geheimnisses 
 

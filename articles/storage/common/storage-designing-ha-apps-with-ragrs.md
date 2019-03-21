@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/17/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 47ca2febeffe395ba2482165f04ee29aa0193c63
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: be1c46c5bc2c8edcfeca81c82095687c4ddfd894
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55512243"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225823"
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>Entwerfen hochverfügbarer Anwendungen mithilfe von RA-GRS
 
@@ -123,7 +123,7 @@ Es gibt im Grunde zwei zu berücksichtigende Szenarien bei der Reaktion auf eine
 
     In diesem Szenario treten Leistungseinbußen auf, da alle Leseanforderungen zunächst auf dem primären Endpunkt ausgeführt werden, dann warten, bis das Timeout abläuft, und anschließend zum sekundären Endpunkt wechseln.
 
-Für diese Szenarien sollten Sie feststellen, ob es ein fortlaufendes Problem mit dem primären Endpunkt gibt, und alle Leseanforderungen direkt an den sekundären Endpunkt senden, indem Sie die **LocationMode**-Eigenschaft auf **SecondaryOnly** festlegen. Zu diesem Zeitpunkt sollten Sie die Anwendung auch auf die Ausführung im schreibgeschützten Modus festlegen. Dieser Ansatz wird als [Trennschalter-Muster](https://msdn.microsoft.com/library/dn589784.aspx) bezeichnet.
+Für diese Szenarien sollten Sie feststellen, ob es ein fortlaufendes Problem mit dem primären Endpunkt gibt, und alle Leseanforderungen direkt an den sekundären Endpunkt senden, indem Sie die **LocationMode**-Eigenschaft auf **SecondaryOnly** festlegen. Zu diesem Zeitpunkt sollten Sie die Anwendung auch auf die Ausführung im schreibgeschützten Modus festlegen. Dieser Ansatz wird als [Trennschalter-Muster](/azure/architecture/patterns/circuit-breaker) bezeichnet.
 
 ### <a name="update-requests"></a>Aktualisieren von Anforderungen
 
@@ -216,7 +216,7 @@ Um möglicherweise inkonsistente Daten zu erkennen, kann der Client den Wert des
 
 Es ist wichtig, zu testen, ob Ihre Anwendung sich erwartungsgemäß verhält, wenn wiederholbare Fehler auftreten. Beispielsweise müssen Sie testen, ob die Anwendung zur sekundären Region und in den schreibgeschützten Modus wechselt, wenn ein Problem entdeckt wird, und zurückwechselt, wenn die primäre Region wieder verfügbar ist. Zu diesem Zweck benötigen Sie eine Möglichkeit zum Simulieren von wiederholbaren Fehlern und deren Auftrittshäufigkeit.
 
-Sie können [Fiddler](http://www.telerik.com/fiddler) zum Abfangen und Bearbeiten von HTTP-Antworten in einem Skript verwenden. Dieses Skript kann Antworten vom primären Endpunkt identifizieren und den HTTP-Statuscode in einen Statuscode ändern, den die Speicherclientbibliothek als wiederholbaren Fehler erkennt. Dieser Codeausschnitt zeigt ein einfaches Beispiel eines Fiddler-Skripts, das Antworten auf Leseanforderungen an die **employeedata**-Tabelle abfängt, um einen 502-Status zurückzugeben:
+Sie können [Fiddler](https://www.telerik.com/fiddler) zum Abfangen und Bearbeiten von HTTP-Antworten in einem Skript verwenden. Dieses Skript kann Antworten vom primären Endpunkt identifizieren und den HTTP-Statuscode in einen Statuscode ändern, den die Speicherclientbibliothek als wiederholbaren Fehler erkennt. Dieser Codeausschnitt zeigt ein einfaches Beispiel eines Fiddler-Skripts, das Antworten auf Leseanforderungen an die **employeedata**-Tabelle abfängt, um einen 502-Status zurückzugeben:
 
 ```java
 static function OnBeforeResponse(oSession: Session) {
@@ -228,7 +228,7 @@ static function OnBeforeResponse(oSession: Session) {
 }
 ```
 
-Sie könnten dieses Beispiel erweitern, um ein größeres Spektrum an Anforderungen abzufangen, und nur den **responseCode** für einige Anforderungen ändern, um ein realistischeres Szenario zu simulieren. Weitere Informationen zum Anpassen von Fiddler-Skripts finden Sie unter [Modifying a Request or Response](http://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) (Ändern einer Anforderung oder Antwort) in der Fiddler-Dokumentation.
+Sie könnten dieses Beispiel erweitern, um ein größeres Spektrum an Anforderungen abzufangen, und nur den **responseCode** für einige Anforderungen ändern, um ein realistischeres Szenario zu simulieren. Weitere Informationen zum Anpassen von Fiddler-Skripts finden Sie unter [Modifying a Request or Response](https://docs.telerik.com/fiddler/KnowledgeBase/FiddlerScript/ModifyRequestOrResponse) (Ändern einer Anforderung oder Antwort) in der Fiddler-Dokumentation.
 
 Wenn Sie die Schwellenwerte für den Wechsel Ihrer Anwendung in den schreibgeschützten Modus konfigurierbar gemacht haben, ist das Testen des Verhaltens anhand von Transaktionsvolumes außerhalb von Produktionsumgebungen einfacher.
 

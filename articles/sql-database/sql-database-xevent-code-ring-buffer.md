@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: b15a884821fa067c329766169cb4c704e9ed069a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f47c6b63ce5f18aa896b086ec884b9a3020cadd2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993280"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>Code des Ringpufferziels für erweiterte Ereignisse in SQL-Datenbank
 
@@ -57,7 +57,7 @@ In diesem Thema finden Sie ein Transact-SQL-Codebeispiel, mit dem folgende Aufga
 
 Das folgende Codebeispiel für einen Ringpuffer kann mit kleineren Änderungen sowohl für Azure SQL-Datenbank als auch für Microsoft SQL Server ausgeführt werden. Der Unterschied besteht im Vorhandensein des Knotens „_database“ im Namen einiger dynamischer Verwaltungssichten (DMVs) in der FROM-Klausel in Schritt 5. Beispiel: 
 
-* sys.dm_xe **_database**_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
 * sys.dm_xe_session_targets
 
 &nbsp;

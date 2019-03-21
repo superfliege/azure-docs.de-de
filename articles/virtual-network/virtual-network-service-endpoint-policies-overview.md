@@ -6,17 +6,17 @@ documentationcenter: na
 author: sumeetmittal
 ms.service: virtual-network
 ms.devlang: NA
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 6e5748f5a76ade9cc1bb91902eb0fddcec2a6daa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104487"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>Richtlinien für Dienstendpunkte in virtuellen Netzwerken (Vorschau)
 
@@ -158,11 +158,11 @@ Für Richtlinien für Dienstendpunkte steht keine zentrale Protokollierung zur V
 - Der Zugriff wird für Konten verweigert, die in den Endpunktrichtlinien aufgeführt sind.
   - Netzwerksicherheitsgruppen oder Firewallfilter blockieren möglicherweise den Zugriff.
   - Wenn das Entfernen bzw. erneute Anwenden der Richtlinie zu Konnektivitätsverlust führt, gehen Sie folgendermaßen vor:
-   - Überprüfen Sie, ob der Azure-Dienst so konfiguriert ist, dass der Zugriff aus dem virtuellen Netzwerk über Endpunkte zugelassen ist. Überprüfen Sie zudem, ob die Standardrichtlinie für die Ressource auf *Alle zulassen* festgelegt ist.
+    - Überprüfen Sie, ob der Azure-Dienst so konfiguriert ist, dass der Zugriff aus dem virtuellen Netzwerk über Endpunkte zugelassen ist. Überprüfen Sie zudem, ob die Standardrichtlinie für die Ressource auf *Alle zulassen* festgelegt ist.
       > [!NOTE]      
       > Dienstressourcen müssen nicht in virtuellen Netzwerken gesichert werden, um Zugriff über Endpunktrichtlinien zu erhalten. Als Best Practice für die Sicherheit empfehlen wir jedoch, die Dienstressourcen über Dienstendpunkte in Ihren vertrauenswürdigen Netzwerken – z.B. Ihren virtuellen Azure-Netzwerken – oder lokal über eine IP-Firewall zu sichern.
   
-   - Überprüfen Sie, ob die Dienstdiagnose den Datenverkehr über die Endpunkte anzeigt.
+    - Überprüfen Sie, ob die Dienstdiagnose den Datenverkehr über die Endpunkte anzeigt.
     - Überprüfen Sie, ob die Flowprotokolle der Netzwerksicherheitsgruppen den Zugriff anzeigen und ob die Speicherprotokolle den Zugriff wie erwartet über Dienstendpunkte anzeigen.
     - Wenden Sie sich an den Azure-Support.
 - Der Zugriff wird für Konten verweigert, die in den Richtlinien für Dienstendpunkte nicht aufgeführt sind.

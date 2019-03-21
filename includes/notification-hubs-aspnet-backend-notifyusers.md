@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/04/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 9a94f76e2d1fe930d2d6d43e81a756f0cb15d23d
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 8413044beff68390dbccdf16c4477e113a85f81b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125115"
 ---
 ## <a name="create-the-webapi-project"></a>Erstellen des WebAPI-Projekts
 
@@ -55,7 +55,7 @@ Gehen Sie zum Erstellen des neuen ASP.NET-WebAPI-Back-Ends wie folgt vor:
     * Wählen Sie einen bereits erstellten App Service-Plan aus.
     * Wählen Sie **Einen neuen App Services-Plan erstellen** aus, und erstellen Sie einen neuen Plan.
 
-  Sie benötigen für dieses Lernprogramm keine Datenbank. Wählen Sie nach der Wahl Ihres App Service-Plans **OK** aus, um das Projekt zu erstellen.
+   Sie benötigen für dieses Lernprogramm keine Datenbank. Wählen Sie nach der Wahl Ihres App Service-Plans **OK** aus, um das Projekt zu erstellen.
 
     ![Das Fenster „Microsoft Azure-Web-App konfigurieren“][B5]
 
@@ -84,9 +84,9 @@ In diesem Abschnitt erstellen Sie für das neue Back-End eine neue Meldungshandl
    * Für die Anforderung wird die *Standardauthentifizierung* verwendet.
    * Bei der Benutzernamen-Zeichenfolge und der Kennwortzeichenfolge handelt es sich um die gleiche Zeichenfolge.
 
-  Andernfalls wird die Anforderung abgelehnt. Diese Authentifizierung ist keine echte Vorgehensweise zur Authentifizierung und Autorisierung. Hierbei handelt es sich lediglich um ein einfaches Beispiel für dieses Tutorial.
+   Andernfalls wird die Anforderung abgelehnt. Diese Authentifizierung ist keine echte Vorgehensweise zur Authentifizierung und Autorisierung. Hierbei handelt es sich lediglich um ein einfaches Beispiel für dieses Tutorial.
 
-  Wenn die Anforderungsnachricht von `AuthenticationTestHandler` authentifiziert und autorisiert wurde, wird der Benutzer der Standardauthentifizierung an die aktuelle Anforderung in [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) angefügt. Die Benutzerinformationen in „HttpContext“ werden später von einem anderen Controller (RegisterController) verwendet, um der Registrierungsanforderung für die Benachrichtigung ein [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) hinzuzufügen.
+   Wenn die Anforderungsnachricht von `AuthenticationTestHandler` authentifiziert und autorisiert wurde, wird der Benutzer der Standardauthentifizierung an die aktuelle Anforderung in [HttpContext](https://msdn.microsoft.com/library/system.web.httpcontext.current.aspx) angefügt. Die Benutzerinformationen in „HttpContext“ werden später von einem anderen Controller (RegisterController) verwendet, um der Registrierungsanforderung für die Benachrichtigung ein [Tag](https://msdn.microsoft.com/library/azure/dn530749.aspx) hinzuzufügen.
 
     ```csharp
     public class AuthenticationTestHandler : DelegatingHandler

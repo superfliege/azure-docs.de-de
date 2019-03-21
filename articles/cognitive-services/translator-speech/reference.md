@@ -10,12 +10,13 @@ ms.subservice: translator-speech
 ms.topic: reference
 ms.date: 05/18/2018
 ms.author: v-jansko
-ms.openlocfilehash: c68d9c3d40ffa3d4a5a5ae635fbc0ea0a010239c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 3493f6d25461836d8f6e48ce4213b0f5b78b6372
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874735"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56675108"
 ---
 # <a name="translator-speech-api"></a>Sprachübersetzungs-API
 
@@ -90,7 +91,7 @@ Beachten Sie, dass die Gesamtgröße der Datei (Bytes 4 – 7) und die Größe d
 Nach dem Senden des WAV-Headers (RIFF) sendet der Client Blöcke der Audiodaten. Der Client streamt in der Regel Blöcke mit einer festen Größe, die eine feste Dauer darstellen (z.B. ein Stream mit jeweils 100 ms Audio).
 
 ### <a name="signal-the-end-of-the-utterance"></a>Signalisieren des Endes einer Äußerung
-Die Sprachübersetzungs-API gibt das Transkript und die Übersetzung des Audiostreams zurück, während Sie die Audiodaten übermitteln. Das letzte Transkript, die letzte Übersetzung und die übersetzten Audiodaten werden erst nach dem Ende der Äußerung zurückgegeben. In einigen Fällen ist es eventuell notwendig, das Ende der Äußerung zu erzwingen. Übermitteln Sie 2,5 Sekunden Stille, um damit das Ende der Äußerung zu erzwingen. 
+Die Sprachübersetzungs-API gibt das Transkript und die Übersetzung des Audiostreams zurück, während Sie die Audiodaten übermitteln. Das letzte Transkript, die letzte Übersetzung und die übersetzten Audiodaten werden erst nach dem Ende der Äußerung zurückgegeben. In einigen Fällen ist es eventuell notwendig, das Ende der Äußerung zu erzwingen. Übermitteln Sie 2,5 Sekunden Stille, um damit das Ende der Äußerung zu erzwingen.
 
 ### <a name="final-result"></a>Endergebnis
 Ein finales Spracherkennungsergebnis wird am Ende einer Äußerung generiert. Der Dienst überträgt ein Ergebnis mit einer WebSocket-Nachricht vom Typ „Text“ an den Client. Die Nachricht beinhaltet die JSON-Serialisierung eines Objekts mit den folgenden Eigenschaften:
@@ -112,7 +113,7 @@ Im Folgenden wird ein Beispiel für ein Endergebnis aufgeführt:
 {
   type: "final"
   id: "23",
-  recognition: "what was said", 
+  recognition: "what was said",
   translation: "translation of what was said",
   audioStreamPosition: 319680,
   audioSizeBytes: 35840,
@@ -143,7 +144,7 @@ Im Folgenden wird ein Beispiel für ein Endergebnis aufgeführt:
 {
   type: "partial"
   id: "23.2",
-  recognition: "what was", 
+  recognition: "what was",
   translation: "translation of what was",
   audioStreamPosition: 319680,
   audioSizeBytes: 25840,
@@ -193,46 +194,3 @@ Wenn eine Clientanwendung die Audiowiedergabe abgeschlossen und das letzte Ender
 |401    |Nicht autorisiert. Stellen Sie sicher, dass Anmeldeinformationen festgelegt sind, dass diese gültig sind und dass es bei Ihrem Abonnement für den Azure-Datenmarkt keine Probleme gibt und ein Saldo verfügbar ist.|||
 |500    |Ein Fehler ist aufgetreten. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
 |503    |Der Server ist vorübergehend nicht verfügbar.  Versuchen Sie die Anforderung erneut. Wenn der Fehler weiterhin besteht, melden Sie ihn mit dem Ablaufverfolgungsbezeichner des Clients (X-ClientTraceId) oder dem Anforderungsbezeichner (X-RequestId).|||
-
-    
-
-
-    
-
-
-
-
-
-    
-    
-
-
-
-
-    
-
-
-
-
-    
-
-
-
-
-    
-
-            
-
-
-
-
-        
-
-
-
-
-
-
-
-
-

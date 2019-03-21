@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/04/2018
-ms.openlocfilehash: 861784a2d22d15253c61884bfab62667c0560bcd
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0b75085754a66fabf07076282c977acd7f10a556
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250639"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992316"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Referenz zum Cmdlet „Start-AzsReadinessChecker“
 
@@ -299,6 +299,7 @@ In diesem Beispiel erhält das Bereitstellungs- oder Supportteam den Bereitschaf
 > -RegionName
 
 Gibt den Regionsnamen der Azure Stack-Bereitstellung an.
+
 |  |  |
 |----------------------------|--------------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge        |
@@ -310,6 +311,7 @@ Gibt den Regionsnamen der Azure Stack-Bereitstellung an.
 > -FQDN
 
 Gibt den externen FQDN der Azure Stack-Bereitstellung an, der auch als Alias für ExternalFQDN und ExternalDomainName verwendet wird.
+
 |  |  |
 |----------------------------|--------------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge        |
@@ -321,6 +323,7 @@ Gibt den externen FQDN der Azure Stack-Bereitstellung an, der auch als Alias fü
 > -IdentitySystem
 
 Gibt die gültigen Werte des Identitätssystems der Azure Stack-Bereitstellung an, d.h. AAD oder ADFS für Azure Active Directory bzw. Active Directory-Verbunddienste (AD FS).
+
 |  |  |
 |----------------------------|--------------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge        |
@@ -333,6 +336,7 @@ Gibt die gültigen Werte des Identitätssystems der Azure Stack-Bereitstellung a
 > -PfxPassword
 
 Gibt das den PFX-Zertifikatdateien zugeordnete Kennwort an.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |SecureString |
@@ -344,6 +348,7 @@ Gibt das den PFX-Zertifikatdateien zugeordnete Kennwort an.
 > -PaaSCertificates
 
 Gibt die Hashtabelle an, die Pfade und Kennwörter für PaaS-Zertifikate enthält.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Hashtable |
@@ -355,6 +360,7 @@ Gibt die Hashtabelle an, die Pfade und Kennwörter für PaaS-Zertifikate enthäl
 > -DeploymentDataJSONPath
 
 Gibt die JSON-Konfigurationsdatei mit Azure Stack-Bereitstellungsdaten an. Diese Datei wird für die Bereitstellung generiert.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -366,6 +372,7 @@ Gibt die JSON-Konfigurationsdatei mit Azure Stack-Bereitstellungsdaten an. Diese
 > -PfxPath
 
 Gibt den Pfad zu einem problematischen Zertifikat an, für das die Import-/Exportroutine, die für die Zertifikatüberprüfung in diesem Tool angegeben ist, behandelt werden muss.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -377,6 +384,7 @@ Gibt den Pfad zu einem problematischen Zertifikat an, für das die Import-/Expor
 > -ExportPFXPath  
 
 Gibt den Zielpfad für die resultierende PFX-Datei von der Import-/Exportroutine an.  
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -388,6 +396,7 @@ Gibt den Zielpfad für die resultierende PFX-Datei von der Import-/Exportroutine
 > -Subject
 
 Gibt ein sortiertes Wörterbuch des Fachgebiets für die Generierung von Zertifikatanforderungen an.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |OrderedDictionary   |
@@ -415,6 +424,7 @@ Gibt den SAN-Typ der Zertifikatanforderung an. Gültige Werte: MultipleCSR, Sing
 > -OutputRequestPath
 
 Gibt den Zielpfad für die Zertifikatanforderungsdateien an (das Verzeichnis muss bereits vorhanden sein).
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -426,6 +436,7 @@ Gibt den Zielpfad für die Zertifikatanforderungsdateien an (das Verzeichnis mus
 > -AADServiceAdministrator
 
 Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Directory-Dienstadministrator an.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |PSCredential   |
@@ -437,6 +448,7 @@ Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Direct
 > -AADDirectoryTenantName
 
 Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Directory-Namen an.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -448,6 +460,7 @@ Gibt den für die Azure Stack-Bereitstellung zu verwendenden Azure Active Direct
 > -AzureEnvironment
 
 Gibt die Instanz der Azure-Dienste mit den Konten, Verzeichnissen und Abonnements an, die für die Azure Stack-Bereitstellung und -Registrierung verwendet werden sollen.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -460,6 +473,7 @@ Gibt die Instanz der Azure-Dienste mit den Konten, Verzeichnissen und Abonnement
 > -RegistrationAccount
 
 Gibt das Registrierungskonto an, das für die Azure Stack-Registrierung verwendet werden soll.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -471,6 +485,7 @@ Gibt das Registrierungskonto an, das für die Azure Stack-Registrierung verwende
 > -RegistrationSubscriptionID
 
 Gibt die Registrierungsabonnement-ID an, die für die Azure Stack-Registrierung verwendet werden soll.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Guid     |
@@ -482,6 +497,7 @@ Gibt die Registrierungsabonnement-ID an, die für die Azure Stack-Registrierung 
 > -ReportPath
 
 Gibt den Pfad für den Bereitschaftsbericht an, für den standardmäßig das aktuelle Verzeichnis und der Standardberichtsname festgelegt sind.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -527,6 +543,7 @@ Gibt an, ob PaaS-Dienste/-Hostnamen zu Zertifikatanforderungen hinzugefügt werd
 > -ReportSections
 
 Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details ausgelassen werden sollen.
+
 |  |  |
 |----------------------------|---------|
 |Geben Sie Folgendes ein:                        |Zeichenfolge   |
@@ -539,6 +556,7 @@ Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details au
 > -Summary
 
 Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details ausgelassen werden sollen.
+
 |  |  |
 |----------------------------|------------------|
 |Geben Sie Folgendes ein:                        |SwitchParameter   |
@@ -550,6 +568,7 @@ Gibt an, ob nur die Berichtszusammenfassung angezeigt werden soll und Details au
 > -CleanReport
 
 Entfernt die vorherige Ausführung und den Überprüfungsverlauf und schreibt Überprüfungen in einen neuen Bericht.
+
 |  |  |
 |----------------------------|------------------|
 |Geben Sie Folgendes ein:                        |SwitchParameter   |
@@ -574,6 +593,7 @@ Gibt den benutzerdefinierte Pfad zum Speichern des Bereitschaft-JSON-Berichts un
 > -Confirm
 
 Fordert vor der Ausführung des Cmdlets zur Bestätigung auf.
+
 |  |  |
 |----------------------------|------------------|
 |Geben Sie Folgendes ein:                        |SwitchParameter   |
@@ -586,6 +606,7 @@ Fordert vor der Ausführung des Cmdlets zur Bestätigung auf.
 > -WhatIf
 
 Zeigt, was geschieht, wenn das Cmdlet ausgeführt wird. Das Cmdlet wird nicht ausgeführt.
+
 |  |  |
 |----------------------------|------------------|
 |Geben Sie Folgendes ein:                        |SwitchParameter   |
@@ -594,3 +615,4 @@ Zeigt, was geschieht, wenn das Cmdlet ausgeführt wird. Das Cmdlet wird nicht au
 |Standardwert:              |False             |
 |Pipelineeingabe akzeptieren:      |False             |
 |Platzhalterzeichen akzeptieren: |False             |
+

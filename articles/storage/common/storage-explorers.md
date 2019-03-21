@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2017
 ms.author: dineshmurthy
 ms.subservice: common
-ms.openlocfilehash: c45c70055817eeeed19f9c8a832a76b10beceaa6
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: ae6ceee33aa6d96c360782c33232e0c7561cf209
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58015334"
 ---
 # <a name="azure-storage-client-tools"></a>Azure Storage-Clienttools
 Häufig möchten Benutzer von Azure Storage ihre Daten mithilfe eines Azure Storage-Clienttools anzeigen oder mit den Daten interagieren. In den folgenden Tabellen sind eine Reihe von Tools aufgeführt, die Ihnen dies ermöglichen. Ein Block ist jeweils mit „X“ gekennzeichnet, wenn er das Aufzählen und/oder Zugreifen auf die Datenabstraktion ermöglicht. In der Tabelle ist auch angegeben, ob die Tools kostenlos sind. Mit „Testversion“ wird angegeben, dass es eine kostenlose Testversion gibt, das vollständige Produkt aber nicht kostenfrei ist. Mit „J/N“ wird angegeben, dass eine Version kostenlos erhältlich ist und eine andere Version zum Kauf zur Verfügung steht.
@@ -55,7 +55,7 @@ Dies ist nur eine Momentaufnahme der verfügbaren Azure Storage-Clienttools. Die
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://storageexplorer.com/">Microsoft Azure Storage-Explorer</a></td>
+    <td><a href="https://storageexplorer.com/">Microsoft Azure Storage-Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -107,7 +107,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td>Linux</td>
   </tr>
   <tr>
-    <td><a href="http://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Azure Management Studio</a></td>
+    <td><a href="https://www.cerebrata.com/products/azure-management-studio/introduction">Cerabrata: Azure Management Studio</a></td>
     <td>X</td>
     <td>X</td>
     <td>X</td>
@@ -149,7 +149,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.cloudberrylab.com/explorer/microsoft-azure.aspx">CloudBerry Explorer</a></td>
+    <td><a href="https://www.cloudberrylab.com/explorer/microsoft-azure.aspx">CloudBerry Explorer</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -163,7 +163,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
+    <td><a href="https://www.gapotchenko.com/cloudcombine">Cloud Combine</a></td>
     <td>X</td>
     <td>X</td>
     <td></td>
@@ -191,7 +191,7 @@ Wir haben die Funktionalität oder Qualität nicht überprüft, die für die fol
     <td></td>
   </tr>
   <tr>
-    <td><a href="http://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
+    <td><a href="https://www.gladinet.com/Azure-Storage/index.htm">Gladinet Cloud</a></td>
     <td>X</td>
     <td></td>
     <td></td>

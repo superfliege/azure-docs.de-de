@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 42f3378196b4e3e1dfe1234e801e87875f9c61fc
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 11b6553fe8aceef0d3d15977998dd870c275128a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247652"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532744"
 ---
 # <a name="enable-a-licensed-image-in-your-lab-in-azure-devtest-labs"></a>Aktivieren eines lizenzierten Image im Lab in Azure DevTest Labs
 
@@ -77,7 +77,7 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
    >
 
 
-1. Wählen Sie **Speichern**aus. 
+1. Wählen Sie **Speichern** aus. 
 
     In der Liste der Marketplace-Images weist dieses Image nun den Status **Nutzungsbedingungen akzeptiert** auf und steht für Benutzer zum Erstellen virtueller Computer zur Verfügung.
 
@@ -90,7 +90,7 @@ Sie können die programmgesteuerte Bereitstellung für ein lizenziertes Image an
 ## <a name="related-blog-posts"></a>Verwandte Blogbeiträge
 
 - [Custom images or formulas? (Benutzerdefinierte Images oder Formeln?)](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
-- [Copying Custom Images between Azure DevTest Labs (Kopieren benutzerdefinierter Images zwischen Azure DevTest Labs)](http://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
+- [Copying Custom Images between Azure DevTest Labs (Kopieren benutzerdefinierter Images zwischen Azure DevTest Labs)](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

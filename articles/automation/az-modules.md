@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e9240949c589717303fe00205c5374b5e3a6a791
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56007498"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585061"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Unterstützung für Az-Module in Azure Automation
 
@@ -31,7 +31,7 @@ Beim Importieren eines `Az`-Moduls in Ihr Automation-Konto wird das Modul in der
 * Wenn ein anderes Modul, das vom Modul abhängig ist, in eine PowerShell-Sitzung importiert wird
 
 > [!IMPORTANT]
-> Es ist wichtig sicherzustellen, dass Runbooks in einem Automation-Konto entweder nur `Az`- oder `AzureRM`-Module in die von Runbooks verwendeten PowerShell-Sitzungen importieren und nicht beide. Wenn `Az` vor `AzureRM` in ein Runbook importiert wird, wird das Runbook abgeschlossen, aber es wird ein [Fehler mit Bezug auf die Methode get_SerializationSettings](/troubleshoot/runbooks.md#get-serializationsettings) in den Auftragsdatenströmen angezeigt, und Cmdlets wurden möglicherweise nicht ordnungsgemäß ausgeführt. Wenn Sie `AzureRM` und dann `Az` importieren, wird Ihr Runbook immer noch vollständig sein, aber Sie werden einen Fehler in den Auftragsdatenströmen sehen, der besagt, dass sowohl `Az` als auch `AzureRM` nicht in der gleichen Sitzung importiert oder im gleichen Runbook verwendet werden können.
+> Es ist wichtig sicherzustellen, dass Runbooks in einem Automation-Konto entweder nur `Az`- oder `AzureRM`-Module in die von Runbooks verwendeten PowerShell-Sitzungen importieren und nicht beide. Wenn `Az` vor `AzureRM` in ein Runbook importiert wird, wird das Runbook abgeschlossen, aber es wird ein [Fehler mit Bezug auf die Methode get_SerializationSettings](troubleshoot/runbooks.md#get-serializationsettings) in den Auftragsdatenströmen angezeigt, und Cmdlets wurden möglicherweise nicht ordnungsgemäß ausgeführt. Wenn Sie `AzureRM` und dann `Az` importieren, wird Ihr Runbook immer noch vollständig sein, aber Sie werden einen Fehler in den Auftragsdatenströmen sehen, der besagt, dass sowohl `Az` als auch `AzureRM` nicht in der gleichen Sitzung importiert oder im gleichen Runbook verwendet werden können.
 
 ## <a name="migrating-to-az-modules"></a>Migrieren zu Az-Modulen
 

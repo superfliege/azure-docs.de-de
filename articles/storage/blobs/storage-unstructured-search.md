@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 12/13/2018
 ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 42c67d73ee776488fbe932676f61cb7166c2984b
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: acf01788a1ac8ed8ca476941c402801abfbd8adf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011306"
 ---
 # <a name="tutorial-search-unstructured-data-in-cloud-storage"></a>Tutorial: Suchen von unstrukturierten Daten in Cloudspeicher
 
@@ -39,7 +39,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Jedes Speicherkonto muss zu einer Azure-Ressourcengruppe gehören. Eine Ressourcengruppe ist ein logischer Container zur Gruppierung Ihrer Azure-Dienste. Beim Erstellen eines Speicherkontos haben Sie die Möglichkeit, eine neue Ressourcengruppe zu erstellen oder eine vorhandene Ressourcengruppe zu verwenden. In diesem Tutorial wird eine neue Ressourcengruppe erstellt.
 
-Melden Sie sich beim [Azure-Portal](http://portal.azure.com) an.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
 [!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
@@ -63,7 +63,7 @@ Für dieses Tutorial verwenden Sie einen einzelnen Container zum Speichern der T
 
 5. Wählen Sie **OK** aus, um den Container zu erstellen.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/storageactinfo.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/storageactinfo.png)
 
 ## <a name="upload-the-example-data"></a>Hochladen der Beispieldaten
 
@@ -77,7 +77,7 @@ Nachdem Sie jetzt über einen Container verfügen, können Sie die Beispieldaten
 
 4. Wählen Sie **Hochladen** aus, um mit dem Hochladen zu beginnen.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/upload.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/upload.png)
 
 Der Uploadprozess kann einen Moment dauern.
 
@@ -107,7 +107,7 @@ In diesem Tutorial verwenden Sie einen Suchdienst, um die aus „clinicaltrials.
 
 8. Wählen Sie **Erstellen** aus, um den Suchdienst zu erstellen.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/createsearch2.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/createsearch2.png)
 
 ## <a name="connect-your-search-service-to-your-container"></a>Verbinden des Azure Search-Diensts mit Ihrem Container
 
@@ -127,13 +127,13 @@ Nachdem Sie jetzt über einen Suchdienst verfügen, können Sie ihn an Ihren Blo
 
 2. Da es sich bei den von Ihnen verwendeten Blobs um Textdateien handelt, legen Sie **Analysemodus** auf **Text** fest.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/datasources.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/datasources.png)
 
 3. Wählen Sie **Speichercontainer** aus, um die verfügbaren Speicherkonten aufzulisten.
 
 4. Wählen Sie Ihr Speicherkonto und dann den Container aus, den Sie zuvor erstellt haben.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/datacontainer.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/datacontainer.png)
 
 5. Klicken Sie auf **Auswählen**, um zu **Neue Datenquelle** zurückzukehren, und wählen Sie dann **OK** aus, um fortzufahren.
 
@@ -147,7 +147,7 @@ Nachdem Sie jetzt über einen Suchdienst verfügen, können Sie ihn an Ihren Blo
 
 3. Aktivieren Sie unter **metadata_storage_name** das Kontrollkästchen des Attributs **Abrufbar**.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/valuestoselect.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/valuestoselect.png)
 
 4. Klicken Sie auf **OK**, um die Seite **Indexer erstellen** zu öffnen.
 
@@ -172,7 +172,7 @@ Die Spalte **FELDNAME** enthält die Parameter. Die folgende Tabelle enthält ei
 
 1. Geben Sie einen Namen in das Feld **Name** ein, und wählen Sie **OK** aus.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/exindexer.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/exindexer.png)
 
 2. Der Bereich **Daten importieren** wird wieder angezeigt. Wählen Sie **OK** aus, um den Verbindungsprozess abzuschließen.
 
@@ -186,19 +186,19 @@ Die folgenden Schritte zeigen Ihnen, wo Sie den Suchexplorer finden. Zudem werde
 
 1. Navigieren Sie zu „Alle Ressourcen“, und suchen Sie nach dem neu erstellten Suchdienst.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/exampleurl.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/exampleurl.png)
 
 2. Wählen Sie Ihren Index aus, um ihn zu öffnen.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/overview.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/overview.png)
 
 3. Wählen Sie **Suchexplorer** aus, um den Suchexplorer zu öffnen, in dem Sie Liveabfragen für Ihre Daten ausführen können.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/indexespane.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/indexespane.png)
 
 4. Wählen Sie **Suchen** aus, während das Feld für die Abfragezeichenfolge leer ist. Eine leere Abfrage gibt *alle* Daten aus Ihren Blobs zurück.
 
-  ![Unstrukturierte Suche](media/storage-unstructured-search/emptySearch.png)
+   ![Unstrukturierte Suche](media/storage-unstructured-search/emptySearch.png)
 
 ### <a name="perform-a-full-text-search"></a>Durchführen einer Volltextsuche
 

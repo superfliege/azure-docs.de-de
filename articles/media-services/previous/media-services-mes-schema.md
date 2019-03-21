@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 58306780978189749b592b6cd9d13c63ecd25641
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 837235e04ce190a4481e1f19789d8e9ff9cb7578
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996150"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259241"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-Schema
 In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, auf dem [Media Encoder Standard-Voreinstellungen](media-services-mes-presets-overview.md) basieren. Der Artikel enthält eine Beschreibung der Elemente und der dazugehörigen gültigen Werte.  
@@ -27,13 +27,15 @@ In diesem Artikel werden einige Elemente und Typen des XML-Schemas beschrieben, 
 Dient zum Definieren einer Voreinstellung für die Codierung.  
 
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Codieren** |[Codieren](media-services-mes-schema.md#Encoding) |Stammelement, mit dem angegeben wird, dass die Eingabequellen codiert werden sollen. |
 | **Ausgaben** |[Ausgaben](media-services-mes-schema.md#Output) |Auflistung der gewünschten Ausgabedateien. |
-| **StretchMode**<br/>minOccurs="0"<br/>default="AutoSize|xs:string|Festlegen der Größe des Ausgabevideoframes, des Abstands, der Pixel oder des Anzeigeseitenverhältnisses. **StretchMode** kann einen der folgenden Werte haben: **None**, **AutoSize** (Standard) oder **AutoFit**.<br/><br/>**None:** Befolgen Sie strikt die Ausgabeauflösung (z.B. die **Breite** und **Höhe** in der Voreinstellung), ohne das Pixelseitenverhältnis oder das Anzeigeseitenverhältnis des Eingabevideos zu berücksichtigen. Empfohlen wird die Verwendung beispielsweise für [Zuschnitte](media-services-crop-video.md), in denen das Ausgabevideo ein anderes Seitenverhältnis aufweist als das Eingabevideo. <br/><br/>**AutoSize**: Die Ausgabeauflösung passt in das Fenster (Breite x Höhe), das durch die Voreinstellung festgelegt wurde. Der Encoder erzeugt jedoch ein Ausgabevideo mit einem quadratischen Pixelseitenverhältnis (1:1). Daher kann entweder die Ausgabebreite oder -höhe überschrieben werden, um das Anzeigeseitenverhältnis der Eingabe ohne Abstand anzupassen. Wenn die Eingabe beispielsweise 1920x1080 ausweist und die Codierungsvoreinstellung 1280x1280 erfordert, wird der Höhenwert in der Voreinstellung überschrieben, und die Ausgabe erfolgt im Format 1280x720, sodass das Eingabeseitenverhältnis von 16:9 beibehalten wird. <br/><br/>**AutoFit**: Passen Sie bei Bedarf den Abstand des Ausgabevideos an (im Letterbox- oder Pillarboxformat), um die gewünschte Ausgabeauflösung zu erzielen. Achten Sie dabei darauf, dass der aktive Videobereich in der Ausgabe das gleiche Seitenverhältnis wie in der Eingabe aufweist. Angenommen, die Eingabe ist 1920x1080 und die Codierungsvoreinstellung fordert 1280x1280. Dann hat das Ausgabevideo das Format 1280x1280, doch es enthält ein inneres Rechteck mit dem aktiven Video (1280x720) mit einem Seitenverhältnis von 16:9 und mit 280 Pixel hohen Bereichen oben und unten im Letterboxformat. Ein weiteres Beispiel: Wenn die Eingabe 1440x1080 beträgt und die Codierungsvoreinstellung 1280x720 verlangt, liegt die Ausgabe bei 1280x720, was ein inneres Rechteck von 960x720 im Seitenverhältnis 4:3 und 160 Pixel breiten Bereichen links und rechts im Pillarboxformat enthält. 
+| **StretchMode**<br/>minOccurs="0"<br/>default="AutoSize|xs:string|Festlegen der Größe des Ausgabevideoframes, des Abstands, der Pixel oder des Anzeigeseitenverhältnisses. **StretchMode** kann einen der folgenden Werte haben: **None**, **AutoSize** (Standard) oder **AutoFit**.<br/><br/>**Keine:** Befolgen Sie strikt die Ausgabeauflösung (z.B. die **Breite** und **Höhe** in der Voreinstellung), ohne das Pixelseitenverhältnis oder das Anzeigeseitenverhältnis des Eingabevideos zu berücksichtigen. Empfohlen wird die Verwendung beispielsweise für [Zuschnitte](media-services-crop-video.md), in denen das Ausgabevideo ein anderes Seitenverhältnis aufweist als das Eingabevideo. <br/><br/>**AutoSize**: Die Ausgabeauflösung passt in das Fenster (Breite x Höhe), das durch die Voreinstellung festgelegt wurde. Der Encoder erzeugt jedoch ein Ausgabevideo mit einem quadratischen Pixelseitenverhältnis (1:1). Daher kann entweder die Ausgabebreite oder -höhe überschrieben werden, um das Anzeigeseitenverhältnis der Eingabe ohne Abstand anzupassen. Wenn die Eingabe beispielsweise 1920x1080 ausweist und die Codierungsvoreinstellung 1280x1280 erfordert, wird der Höhenwert in der Voreinstellung überschrieben, und die Ausgabe erfolgt im Format 1280x720, sodass das Eingabeseitenverhältnis von 16:9 beibehalten wird. <br/><br/>**AutoFit**: Passen Sie bei Bedarf den Abstand des Ausgabevideos an (im Letterbox- oder Pillarboxformat), um die gewünschte Ausgabeauflösung zu erzielen. Achten Sie dabei darauf, dass der aktive Videobereich in der Ausgabe das gleiche Seitenverhältnis wie in der Eingabe aufweist. Angenommen, die Eingabe ist 1920x1080 und die Codierungsvoreinstellung fordert 1280x1280. Dann hat das Ausgabevideo das Format 1280x1280, doch es enthält ein inneres Rechteck mit dem aktiven Video (1280x720) mit einem Seitenverhältnis von 16:9 und mit 280 Pixel hohen Bereichen oben und unten im Letterboxformat. Ein weiteres Beispiel: Wenn die Eingabe 1440x1080 beträgt und die Codierungsvoreinstellung 1280x720 verlangt, liegt die Ausgabe bei 1280x720, was ein inneres Rechteck von 960x720 im Seitenverhältnis 4:3 und 160 Pixel breiten Bereichen links und rechts im Pillarboxformat enthält. 
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Version**<br/><br/> Erforderlich |**xs: decimal** |Die voreingestellte Version. Es gelten die folgenden Einschränkungen: xs:fractionDigits value="1" und xs:minInclusive value="1", z.B. **version="1.0"**. |
@@ -42,6 +44,7 @@ Dient zum Definieren einer Voreinstellung für die Codierung.
 Enthält eine Sequenz der unten angegebenen Elemente:  
 
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |Einstellungen für die H.264-Videocodierung |
@@ -52,6 +55,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 
 ## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |Derzeit wird nur die Einwegverschlüsselung unterstützt. |
@@ -62,6 +66,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |Auflistung von Ausgabevideoebenen |
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | Wenn die Eingabe kein Video enthält, können Sie den Encoder zwingen, eine monochrome Videospur hinzuzufügen. Verwenden Sie zu diesem Zweck Condition="InsertBlackIfNoVideoBottomLayerOnly" (Video nur für die unterste Bitrate hinzufügen) oder Condition="InsertBlackIfNoVideo" (Video für alle Ausgabebitraten hinzufügen). Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-advanced-encoding-with-mes.md#no_video).|
@@ -71,6 +76,7 @@ Enthält eine Sequenz der unten angegebenen Elemente:
 Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Audiodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit der Attributeinstellung **InsertBlackIfNoVideo** von H264Video können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine Videospur hinzuzufügen. Weitere Informationen dazu finden Sie in [diesem Artikel](media-services-advanced-encoding-with-mes.md#no_video).
               
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |Auflistung von H264-Ebenen |
@@ -82,6 +88,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
 > 
 
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs="0"<br/><br/> default="Auto" |**xs: string** |Es kann sich um einen der folgenden **xs: string**-Werte handeln: **Auto**, **Baseline**, **Main**, **High**. |
@@ -104,16 +111,19 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
  Weitere Informationen zu AAC finden Sie unter [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding).  
 
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Profil**<br/><br/> minOccurs="0"<br/><br/> default="AACLC" |**xs: string** |Es kann sich um einen der folgenden Werte handeln: **AACLC**, **HEAACV1** oder **HEAACV2**. |
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs: string** |Um zu erzwingen, dass der Encoder ein Asset erstellt, das bei einer Eingabe ohne Audio eine stille Audiospur enthält, geben Sie den Wert „InsertSilenceIfNoAudio“ an.<br/><br/> Wenn Sie eine Eingabe an den Encoder senden, die keine Audiodaten, sondern nur Videodaten enthält, besteht das Ausgabemedienobjekt standardmäßig nur aus Dateien mit Videodaten. Einige Player können derartige Ausgabedatenströme möglicherweise nicht verarbeiten. Mit dieser Einstellung können Sie den Encoder zwingen, der Ausgabe in diesem Szenario eine stille Audiospur hinzuzufügen. |
 
 ### <a name="groups"></a>Gruppen
+
 | Verweis | BESCHREIBUNG |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |In der Beschreibung von [AudioGroup](media-services-mes-schema.md#AudioGroup) finden Sie Informationen zur richtigen Anzahl von Kanälen, zur Samplingrate und zur Bitrate, die für die einzelnen Profile festgelegt werden kann. |
@@ -122,6 +132,7 @@ Wenn Sie eine Eingabe an den Encoder senden, die nur Audiodaten und keine Videod
 Ausführliche Informationen dazu, welche Werte für die einzelnen Profile gelten, finden Sie unten in der Tabelle mit den „Audiocodec-Details“.  
 
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Channels**<br/><br/> minOccurs="0" |**xs: int** |Gibt die Anzahl von codierten Audiokanälen an. Folgende Optionen sind gültig: 1, 2, 5, 6, 8.<br/><br/> Standardwert: 2. |
@@ -129,14 +140,16 @@ Ausführliche Informationen dazu, welche Werte für die einzelnen Profile gelten
 | **Bitrate**<br/><br/> minOccurs="0" |**xs: int** |Bitrate für die Codierung der Audiodaten in KBit/s |
 
 ### <a name="audio-codec-details"></a>Audiocodec-Details
+
 Audiocodec|Details  
 -----------------|---  
-**AACLC**|1:<br/><br/> - 11.025: 8 &lt;= Bitrate &lt; 16<br/><br/> - 12.000: 8 &lt;= Bitrate &lt; 16<br/><br/> - 16.000: 8 &lt;= Bitrate &lt;32<br/><br/>- 22.050: 24 &lt;= Bitrate &lt; 32<br/><br/> - 24.000: 24 &lt;= Bitrate &lt; 32<br/><br/> - 32.000: 32 &lt;= Bitrate &lt;= 192<br/><br/> - 44.100: 56 &lt;= Bitrate &lt;= 288<br/><br/> - 48.000: 56 &lt;= Bitrate &lt;= 288<br/><br/> - 88.200: 128 &lt;= Bitrate &lt;= 288<br/><br/> - 96.000 : 128 &lt;= Bitrate &lt;= 288<br/><br/> 2:<br/><br/> - 11.025: 16 &lt;= Bitrate &lt; 24<br/><br/> - 12.000: 16 &lt;= Bitrate &lt; 24<br/><br/> - 16.000: 16 &lt;= Bitrate &lt;= 40<br/><br/> - 22.050: 32 &lt;= Bitrate &lt;= 40<br/><br/> - 24.000: 32 &lt;= Bitrate &lt;= 40<br/><br/> - 32.000:  40 &lt;= Bitrate &lt;= 384<br/><br/> - 44.100: 96 &lt;= Bitrate &lt;= 576<br/><br/> - 48.000: 96 &lt;= Bitrate &lt;= 576<br/><br/> - 88.200: 256 &lt;= Bitrate &lt;= 576<br/><br/> - 96.000: 256 &lt;= Bitrate &lt;= 576<br/><br/> 5/6:<br/><br/> - 32.000: 160 &lt;= Bitrate &lt;= 896<br/><br/> - 44.100: 240 &lt;= Bitrate &lt;= 1.024<br/><br/> - 48.000: 240 &lt;= Bitrate &lt;= 1.024<br/><br/> - 88.200: 640 &lt;= Bitrate &lt;= 1.024<br/><br/> - 96.000: 640 &lt;= Bitrate &lt;= 1.024<br/><br/> 8:<br/><br/> - 32.000: 224 &lt;= Bitrate &lt;= 1.024<br/><br/> - 44.100: 384 &lt;= Bitrate &lt;= 1.024<br/><br/> - 48.000: 384 &lt;= Bitrate &lt;= 1.024<br/><br/> - 88.200: 896 &lt;= Bitrate &lt;= 1.024<br/><br/> - 96.000: 896 &lt;= Bitrate &lt;= 1.024  
-**HEAACV1**|1:<br/><br/> - 22050: Bitrate = 8<br/><br/> - 24.000: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32.000: 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44.100: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48.000: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200: Bitrate = 64<br/><br/> 2:<br/><br/> - 32.000: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 44.100: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 48.000: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 88.200: 96 &lt;= Bitrate &lt;= 128<br/><br/> - 96.000: 96 &lt;= Bitrate &lt;= 128<br/><br/> 5/6:<br/><br/> - 32.000: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 44.100: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 48.000: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 88.200: 256 &lt;= Bitrate &lt;= 320<br/><br/> - 96.000: 256 &lt;= Bitrate &lt;= 320<br/><br/> 8:<br/><br/> - 32.000: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 44.100: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 48.000: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 88.200: 384 &lt;= Bitrate &lt;= 448<br/><br/> - 96.000: 384 &lt;= Bitrate &lt;= 448  
-**HEAACV2**|2:<br/><br/> - 22.050: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 24.000: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32.000: 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44.100: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48.000: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88.200: 64 &lt;= Bitrate &lt;= 64  
+**AACLC** |1:<br/><br/> - 11.025: 8 &lt;= Bitrate &lt; 16<br/><br/> - 12.000: 8 &lt;= Bitrate &lt; 16<br/><br/> - 16.000: 8 &lt;= Bitrate &lt;32<br/><br/>- 22.050: 24 &lt;= Bitrate &lt; 32<br/><br/> - 24.000: 24 &lt;= Bitrate &lt; 32<br/><br/> - 32.000: 32 &lt;= Bitrate &lt;= 192<br/><br/> - 44.100: 56 &lt;= Bitrate &lt;= 288<br/><br/> - 48.000: 56 &lt;= Bitrate &lt;= 288<br/><br/> - 88.200: 128 &lt;= Bitrate &lt;= 288<br/><br/> - 96.000 : 128 &lt;= Bitrate &lt;= 288<br/><br/> 2:<br/><br/> - 11.025: 16 &lt;= Bitrate &lt; 24<br/><br/> - 12.000: 16 &lt;= Bitrate &lt; 24<br/><br/> - 16.000: 16 &lt;= Bitrate &lt;= 40<br/><br/> - 22.050: 32 &lt;= Bitrate &lt;= 40<br/><br/> - 24.000: 32 &lt;= Bitrate &lt;= 40<br/><br/> - 32.000:  40 &lt;= Bitrate &lt;= 384<br/><br/> - 44.100: 96 &lt;= Bitrate &lt;= 576<br/><br/> - 48.000: 96 &lt;= Bitrate &lt;= 576<br/><br/> - 88.200: 256 &lt;= Bitrate &lt;= 576<br/><br/> - 96.000: 256 &lt;= Bitrate &lt;= 576<br/><br/> 5/6:<br/><br/> - 32.000: 160 &lt;= Bitrate &lt;= 896<br/><br/> - 44.100: 240 &lt;= Bitrate &lt;= 1.024<br/><br/> - 48.000: 240 &lt;= Bitrate &lt;= 1.024<br/><br/> - 88.200: 640 &lt;= Bitrate &lt;= 1.024<br/><br/> - 96.000: 640 &lt;= Bitrate &lt;= 1.024<br/><br/> 8:<br/><br/> - 32.000: 224 &lt;= Bitrate &lt;= 1.024<br/><br/> - 44.100: 384 &lt;= Bitrate &lt;= 1.024<br/><br/> - 48.000: 384 &lt;= Bitrate &lt;= 1.024<br/><br/> - 88.200: 896 &lt;= Bitrate &lt;= 1.024<br/><br/> - 96.000: 896 &lt;= Bitrate &lt;= 1.024  
+**HEAACV1** |1:<br/><br/> - 22050: Bitrate = 8<br/><br/> - 24.000: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32.000: 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44.100: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48.000: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88200: Bitrate = 64<br/><br/> 2:<br/><br/> - 32.000: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 44.100: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 48.000: 16 &lt;= Bitrate &lt;= 128<br/><br/> - 88.200: 96 &lt;= Bitrate &lt;= 128<br/><br/> - 96.000: 96 &lt;= Bitrate &lt;= 128<br/><br/> 5/6:<br/><br/> - 32.000: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 44.100: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 48.000: 64 &lt;= Bitrate &lt;= 320<br/><br/> - 88.200: 256 &lt;= Bitrate &lt;= 320<br/><br/> - 96.000: 256 &lt;= Bitrate &lt;= 320<br/><br/> 8:<br/><br/> - 32.000: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 44.100: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 48.000: 96 &lt;= Bitrate &lt;= 448<br/><br/> - 88.200: 384 &lt;= Bitrate &lt;= 448<br/><br/> - 96.000: 384 &lt;= Bitrate &lt;= 448  
+**HEAACV2** |2:<br/><br/> - 22.050: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 24.000: 8 &lt;= Bitrate &lt;= 10<br/><br/> - 32.000: 12 &lt;= Bitrate &lt;= 64<br/><br/> - 44.100: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 48.000: 20 &lt;= Bitrate &lt;= 64<br/><br/> - 88.200: 64 &lt;= Bitrate &lt;= 64  
   
 ## <a name="Clip"></a> Clip
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |Gibt die Startzeit einer Darstellung an. Der Wert von „StartTime“ muss mit den absoluten Zeitstempeln des Eingabevideos übereinstimmen. Wenn beispielsweise das erste Bild des Eingabevideos den Zeitstempel 12:00:10.000 hat, sollte „StartTime“ mindestens 12:00:10.000 betragen. |
@@ -144,11 +157,13 @@ Audiocodec|Details
 
 ## <a name="Output"></a> Ausgabe
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **FileName** |**xs:string** |Der Name der Ausgabedatei.<br/><br/> Sie können die Makros in der folgenden Tabelle verwenden, um die Ausgabedateinamen zu erstellen. Beispiel: <br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
 ### <a name="macros"></a>Makros
+
 | Makro | BESCHREIBUNG |
 | --- | --- |
 | **{Basename}** |Wenn Sie die VoD-Codierung durchführen, umfasst {Basename} die ersten 32 Zeichen der AssetFile.Name-Eigenschaft für die primäre Datei im Eingabeasset.<br/><br/> Wenn das Eingabeasset ein Live-Archiv ist, wird {Basename} aus den trackName-Attributen im Servermanifest abgeleitet. Wenn Sie einen Subclipauftrag mit TopBitrate übermitteln, z.B. „<VideoStream\>TopBitrate</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der Videoebene mit der höchsten Bitrate.<br/><br/> Falls Sie stattdessen zum Übermitteln eines Subclipauftrags alle Eingabebitraten verwenden, z.B. „<VideoStream\>*</VideoStream\>“, und die Ausgabedatei Videodaten enthält, umfasst {Basename} die ersten 32 Zeichen des trackName-Elements der entsprechenden Videoebene. |
@@ -162,6 +177,7 @@ Audiocodec|Details
 
 ## <a name="Video"></a> Video (komplexer Typ erbt vom Codec)
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Starten** |**xs:string** | |
@@ -186,6 +202,7 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 
 ## <a name="FormatGroup"></a> FormatGroup (Gruppe)
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
@@ -194,30 +211,35 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 
 ## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>Element
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>Element
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>Element
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
@@ -225,42 +247,49 @@ Alternativ können Sie das **PreserveResolutionAfterRotation**-Flag verwenden un
 | **Quality**<br/><br/> minOccurs="0" |**xs:int** |Gültige Werte:  1(worst)-100(best) |
 
 ### <a name="attributes"></a>Attribute
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a> BmpImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |
 
 ## <a name="JpgImage"></a> JpgImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |
 
 ## <a name="PngImage"></a> PngImage (komplexer Typ erbt vom Video)
 ### <a name="elements"></a>Elemente
+
 | NAME | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |PNG-Ebenen |

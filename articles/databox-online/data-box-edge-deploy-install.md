@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/01/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: 243697c20f10a019a73326c3bd79e23fc3342640
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ddcaca46a2b8f9501337b3591d6ed666876e1de9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113599"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093768"
 ---
 # <a name="tutorial-install-azure-data-box-edge-preview"></a>Tutorial: Installieren von Azure Data Box Edge (Vorschauversion)
 
@@ -94,15 +94,15 @@ Das Gerät muss in einem standardmäßigen 19-Zoll-Rack installiert werden. Gehe
     ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-1.png)
 
 2. Installieren Sie nun die äußeren Schienen an den vertikalen Blechwinkeln des Rackschranks. Die Gleitschienen sind jeweils mit **Front** (Vorne) gekennzeichnet. Diese Seite muss an der Vorderseite des Gehäuses befestigt werden.    
-    1. Suchen Sie die Fixierungsstifte, die sich vorne und hinten an der Schienenbaugruppe befinden. Fahren Sie die Schiene so weit aus, dass sie zwischen die Rackständer passt. Befestigen Sie zuerst die äußere Schiene an der Rückseite des Racks. Positionieren Sie die hintere Befestigungsklammer auf der Innenseite der hinteren Befestigungslöcher des Racks.   
+   1. Suchen Sie die Fixierungsstifte, die sich vorne und hinten an der Schienenbaugruppe befinden. Fahren Sie die Schiene so weit aus, dass sie zwischen die Rackständer passt. Befestigen Sie zuerst die äußere Schiene an der Rückseite des Racks. Positionieren Sie die hintere Befestigungsklammer auf der Innenseite der hinteren Befestigungslöcher des Racks.   
 
-    2. Halten Sie den Auslöser an der hinteren Klammer gedrückt, um die Metallhaken auszufahren. Richten Sie die hintere Klammer aus, führen Sie sie in die Befestigungslöcher ein, und lassen Sie anschließend den Auslöser los.
+   2. Halten Sie den Auslöser an der hinteren Klammer gedrückt, um die Metallhaken auszufahren. Richten Sie die hintere Klammer aus, führen Sie sie in die Befestigungslöcher ein, und lassen Sie anschließend den Auslöser los.
 
-    3. Richten Sie die vordere Klammer an den Befestigungslöchern aus.
+   3. Richten Sie die vordere Klammer an den Befestigungslöchern aus.
 
-    4. Die vordere Klammer sollte nun am Rack befestigt sein. Bei Bedarf können die Schienen mit Schrauben vom Typ „M5 X 10L“ an den Ständern befestigt werden. 
+   4. Die vordere Klammer sollte nun am Rack befestigt sein. Bei Bedarf können die Schienen mit Schrauben vom Typ „M5 X 10L“ an den Ständern befestigt werden. 
 
-    ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
+      ![Installieren der Schienen für die Rackmontage](./media/data-box-edge-deploy-install/rack-mount-rail-2.png)
 
 3. Wenn Sie die innere Schiene am Gehäuse befestigen, müssen die Schlüssellochöffnungen der inneren Schiene an den Fixierstiften an der Gehäuseseite ausgerichtet werden. Stellen Sie sicher, dass die Köpfe der Fixierstifte des Gehäuses durch die Schlüssellochöffnungen der inneren Schiene ragen. Ziehen Sie die Schiene in Richtung Gehäusefront, bis die Schiene hörbar einrastet. Wiederholen Sie den Vorgang mit der anderen inneren Schiene. Schieben Sie das Gehäuse mit der inneren Schiene in den Schlitten, um die Rackmontage abzuschließen.
 

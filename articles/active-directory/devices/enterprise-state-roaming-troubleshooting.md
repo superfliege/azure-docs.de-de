@@ -19,12 +19,12 @@ ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bf7919a2dc69bc834a5834d10a5a297a2ad6949
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9e2b99871cc1da2b1e8e136fc4d689e90dfad77a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081235"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Problembehandlung bei Enterprise State Roaming-Einstellungen in Azure Active Directory
 
@@ -47,7 +47,7 @@ Wenn Ihr Problem mithilfe der folgenden Anleitungen nicht gelöst wird, können 
 * **Betroffene Benutzer:** Funktioniert die Synchronisierung für einen oder mehrere Benutzer bzw. funktioniert sie nicht? Wie viele Geräte sind pro Benutzer betroffen? Werden alle nicht synchronisiert, oder werden einige synchronisiert und einige nicht?
 * **Informationen zum Benutzer**: Welche Identität verwendet der Benutzer, um sich beim Gerät anzumelden? Wie meldet sich der Benutzer beim Gerät an? Ist er Mitglied einer ausgewählten Sicherheitsgruppe, die synchronisieren darf? 
 * **Informationen zum Gerät**: Gehört dieses Gerät Azure AD oder einer Domäne an? Welche Builds sind auf dem Gerät installiert? Welches sind die neuesten Updates?
-- **Datum/Uhrzeit/Zeitzone**: Wann genau (Tag und Uhrzeit) haben Sie den Fehler beobachtet (geben Sie auch die Zeitzone an)?
+* **Datum/Uhrzeit/Zeitzone**: Wann genau (Tag und Uhrzeit) haben Sie den Fehler beobachtet (geben Sie auch die Zeitzone an)?
 
 Diese Informationen helfen uns, Ihr Problem so schnell wie möglich zu beheben.
 
@@ -59,8 +59,8 @@ Dieser Abschnitt enthält Vorschläge zum Beheben und Diagnostizieren von Proble
 1. Melden Sie sich nach dem Einbinden Ihres Windows 10-PCs in eine Domäne, die Enterprise State Roaming zulässt, mit Ihrem Geschäftskonto an. Wechseln Sie zu **Einstellungen** > **Konten** > **Einstellungen synchronisieren**, und vergewissern Sie sich, dass die Synchronisierung und die einzelnen Einstellungen aktiviert sind und dass oben auf der Seite mit den Einstellungen angegeben ist, dass die Synchronisierung mit Ihrem Geschäftskonto durchgeführt wird. Überprüfen Sie unter **Einstellungen** > **Konten** > **Ihre Infos**, ob das gleiche Konto auch als Ihr Anmeldekonto verwendet wird. 
 1. Stellen Sie sicher, dass die Synchronisierung über mehrere Computer hinweg funktioniert, indem Sie einige Änderungen auf dem ursprünglichen Computer vornehmen, z.B. die Taskleiste auf dem Bildschirm nach rechts oder oben verschieben. Beobachten Sie, wie die Änderung innerhalb von fünf Minuten an den zweiten Computer weitergegeben wird. 
 
-  * Durch Sperren und Entsperren des Bildschirms (Windows-Taste+L) kann eine Synchronisierung ausgelöst werden.
-  * Sie müssen auf beiden Computern dasselbe Anmeldekonto für die Synchronisierung verwenden, da das Enterprise State Roaming an das Benutzerkonto und nicht das Computerkonto gebunden ist.
+   * Durch Sperren und Entsperren des Bildschirms (Windows-Taste+L) kann eine Synchronisierung ausgelöst werden.
+   * Sie müssen auf beiden Computern dasselbe Anmeldekonto für die Synchronisierung verwenden, da das Enterprise State Roaming an das Benutzerkonto und nicht das Computerkonto gebunden ist.
 
 **Mögliches Problem**: Die Steuerelemente sind auf der Seite **Einstellungen** nicht verfügbar, und die Meldung „Einige Windows-Funktionen sind nur verfügbar, wenn Sie ein Microsoft-Konto oder -Geschäftskonto verwenden“ wird angezeigt. Dieses Problem kann bei Geräten auftreten, die einer Domäne zugeordnet wurden und in Azure AD registriert sind, aber nicht erfolgreich bei Azure AD authentifiziert wurden. Eine mögliche Ursache ist, dass die Geräterichtlinie angewendet werden muss, aber diese Anwendung asynchron erfolgt und sich um einige Stunden verzögert. 
 

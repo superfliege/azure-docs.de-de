@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/20/2018
 ms.author: roiyz
-ms.openlocfilehash: ddb999c252f0802ef57942de694340ae29f2d8ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 0bb49d3d75b88f197a42e02f03f89480563537ef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51240357"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005479"
 ---
 # <a name="how-to-install-and-configure-trend-micro-deep-security-as-a-service-on-a-windows-vm"></a>Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer
 [!INCLUDE [virtual-machines-extensions-deprecation-statement](../../../includes/virtual-machines-extensions-deprecation-statement.md)]
@@ -34,7 +34,7 @@ Wenn Sie über ein aktuelles Abonnement von Trend Micro für eine lokale Lösung
 
 ## <a name="install-the-deep-security-agent-on-a-new-vm"></a>Installieren von Deep Security Agent auf einem neuen virtuellen Computer
 
-Mit dem [Azure-Portal](http://portal.azure.com) können Sie die Trend Micro-Sicherheitserweiterung installieren, wenn Sie ein Image aus dem **Marketplace** zum Erstellen des virtuellen Computers verwenden. Wenn Sie einen einzelnen virtuellen Computer erstellen, ist die Verwendung des Portals eine einfache Möglichkeit, den Trend Micro-Schutz hinzuzufügen.
+Mit dem [Azure-Portal](https://portal.azure.com) können Sie die Trend Micro-Sicherheitserweiterung installieren, wenn Sie ein Image aus dem **Marketplace** zum Erstellen des virtuellen Computers verwenden. Wenn Sie einen einzelnen virtuellen Computer erstellen, ist die Verwendung des Portals eine einfache Möglichkeit, den Trend Micro-Schutz hinzuzufügen.
 
 Durch Verwendung eines Eintrags aus dem **Marketplace** wird ein Assistent geöffnet, der Ihnen beim Einrichten des virtuellen Computers hilft. Sie verwenden das Blatt **Einstellungen** (das dritte Blatt des Assistenten), um die Trend Micro-Sicherheitserweiterung zu installieren.  Allgemeine Anweisungen dazu finden Sie unter [Erstellen eines virtuellen Computers unter Windows im Azure-Portal](../windows/classic/tutorial.md).
 
@@ -94,4 +94,4 @@ Es dauert einige Minuten, bis der Agent gestartet wird, wenn er installiert ist.
 
 <!-- Link references -->
 [Anmelden bei einem virtuellen Computer, auf dem Windows Server ausgeführt wird]:../windows/classic/connect-logon.md
-[Azure-VM-Erweiterungen und -Features]: http://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409
+[Azure-VM-Erweiterungen und -Features]: https://go.microsoft.com/fwlink/p/?linkid=390493&clcid=0x409

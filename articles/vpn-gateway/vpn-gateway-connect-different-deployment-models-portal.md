@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 9779885869666ffd1198afcda944823b99d52e5b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: bf7d80bbbe63204cda47719a7d7c019013ad800b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099170"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>Verbinden von virtuellen Netzwerken aus unterschiedlichen Bereitstellungsmodellen über das Portal
 
@@ -114,7 +114,7 @@ Wenn Sie bereits ein VNET mit einem VPN-Gateway besitzen, stellen Sie sicher, da
 1. Aktivieren Sie auf der Seite **Neue VPN-Verbindung** das Kontrollkästchen **Gateway sofort erstellen**.
 2. Klicken Sie auf **Optionale Gatewaykonfiguration**, um die Seite **Gatewaykonfiguration** zu öffnen.
 
-  ![Öffnen der Seite „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen der Seite „Gatewaykonfiguration“")
+   ![Öffnen der Seite „Gatewaykonfiguration“](./media/vpn-gateway-connect-different-deployment-models-portal/optionalgatewayconfiguration.png "Öffnen der Seite „Gatewaykonfiguration“")
 3. Klicken Sie auf **Subnetz – Erforderliche Einstellungen konfigurieren**, um die Seite **Subnetz hinzufügen** zu öffnen. Der **Name** ist bereits mit dem erforderlichen Wert konfiguriert: **GatewaySubnet**.
 4. **Adressbereich** bezieht sich auf den Bereich für das Gatewaysubnetz. Obwohl Sie ein Gatewaysubnetz mit einem /29-Adressbereich (3 Adressen) erstellen können, wird empfohlen, ein Gatewaysubnetz mit einer höheren Anzahl von IP-Adressen zu erstellen. Dadurch werden zukünftige Konfigurationen unterstützt, die möglicherweise eine höhere Anzahl von verfügbaren IP-Adressen erfordern. Verwenden Sie möglichst /27 oder /28. Sie können die [Beispielwerte](#values) nutzen, wenn Sie diese Schritte als Übung verwenden. In diesem Beispiel verwenden wir 10.0.0.32/28. Klicken Sie auf **OK**, um das Gatewaysubnetz zu erstellen.
 5. Auf der Seite **Gatewaykonfiguration** bezieht sich **Größe** auf die Gateway-SKU. Wählen Sie die Gateway-SKU für das VPN-Gateway aus.
@@ -192,16 +192,16 @@ In diesem Abschnitt ersetzen Sie die Platzhalter-IP-Adresse, die Sie beim Festle
 2. Klicken Sie auf der Seite für Ihr virtuelles Netzwerk auf **Übersicht**.
 3. Klicken Sie unter **VPN-Verbindungen** auf den Namen des lokalen Standorts in der Abbildung.
 
-  ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
+   ![VPN-Verbindungen](./media/vpn-gateway-connect-different-deployment-models-portal/vpnconnections.png "VPN-Verbindungen")
 4. Klicken Sie auf der Seite **Standort-zu-Standort-VPN-Verbindungen** auf den Namen des Standorts.
 
-  ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
+   ![Standortname](./media/vpn-gateway-connect-different-deployment-models-portal/sitetosite3.png "Lokaler Standortname")
 5. Klicken Sie auf der Seite „Verbindung“ für den lokalen Standort auf den Namen des lokalen Standorts, um die Seite **Lokaler Standort** zu öffnen.
 
-  ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
+   ![Öffnen von „Lokaler Standort“](./media/vpn-gateway-connect-different-deployment-models-portal/openlocal.png "Öffnen von „Lokaler Standort“")
 6. Ersetzen Sie auf der Seite **Lokaler Standort** die **IP-Adresse des VPN-Gateways** durch die IP-Adresse des Ressourcen-Manager-Gateways.
 
-  ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
+   ![Gateway-IP-Adresse](./media/vpn-gateway-connect-different-deployment-models-portal/gwipaddress.png "Gateway-IP-Adresse")
 7. Klicken Sie auf **OK**, um die IP-Adresse zu aktualisieren.
 
 ## <a name="RMtoclassic"></a>Abschnitt 4 – Erstellen der Verbindung zwischen dem Resource Manager-VNET und dem klassischen VNET

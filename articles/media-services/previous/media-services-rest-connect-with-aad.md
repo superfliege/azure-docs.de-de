@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/20/2019
 ms.author: willzhan;juliako;johndeu
-ms.openlocfilehash: ef81e0c4d04d57edbffa16b817b34af5f3bf8c26
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4b6bd97d7e87832f774f7a09f7e0deeb4047e695
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55995628"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294466"
 ---
 # <a name="use-azure-ad-authentication-to-access-the-media-services-api-with-rest"></a>Verwenden der Azure AD-Authentifizierung zum Zugreifen auf die Media Services-API mit REST
 
@@ -60,8 +60,8 @@ Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkt
 
 |Einstellung|Beispiel|BESCHREIBUNG|
 |---|-------|-----|
-|Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service, Sicherheitstokendienst) für Azure AD wird unter Verwendung des folgenden Formats erstellt: https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
-|REST-API-Endpunkt|https://amshelloworld.restv2.westus.media.azure.net/api/|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
+|Azure Active Directory-Mandantendomäne|microsoft.onmicrosoft.com|Ein STS-Endpunkt (Secure Token Service, Sicherheitstokendienst) für Azure AD wird unter Verwendung des folgenden Formats erstellt: <https://login.microsoftonline.com/{your-ad-tenant-name.onmicrosoft.com}/oauth2/token>. Azure AD stellt ein JWT für den Ressourcenzugriff aus (ein Zugriffstoken).|
+|REST-API-Endpunkt|<https://amshelloworld.restv2.westus.media.azure.net/api/>|Dies ist der Endpunkt, über den alle Aufrufe der Media Services-REST-API in Ihrer Anwendung durchgeführt werden.|
 |Client-ID (Anwendungs-ID)|f7fbbb29-a02d-4d91-bbc6-59a2579259d2|Client-ID der Azure AD-Anwendung. Die Client-ID ist erforderlich, um das Zugriffstoken abzurufen. |
 |Geheimer Clientschlüssel|+mUERiNzVMoJGggD6aV1etzFGa1n6KeSlLjIq+Dbim0=|Azure AD-Anwendungsschlüssel (Clientgeheimnis). Das Clientgeheimnis ist erforderlich, um das Zugriffstoken abzurufen.|
 
@@ -69,7 +69,7 @@ Für den Zugriff auf die Media Services-API müssen Sie die folgenden Datenpunkt
 
 Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 
-1. Melden Sie sich beim [Azure-Portal](http://portal.azure.com)an.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com)an.
 2. Navigieren zu Ihrer AMS-Instanz.
 3. Wählen Sie **API-Zugriff** aus.
 4. Klicken Sie auf **Verbindung mit Azure Media Services-API über Dienstprinzipal herstellen**.
@@ -83,33 +83,33 @@ Führen Sie die folgenden Schritte aus, um die Informationen abzurufen:
 
     Wenn Sie ein neues Speicherkonto erstellen möchten, gehen Sie wie folgt vor:
     
-    1. Klicken Sie auf **Neu erstellen**.
-    2. Geben Sie einen Namen ein.
-    3. Klicken Sie erneut auf **Neu erstellen**.
-    4. Klicken Sie auf **Speichern**.
+   1. Klicken Sie auf **Neu erstellen**.
+   2. Geben Sie einen Namen ein.
+   3. Klicken Sie erneut auf **Neu erstellen**.
+   4. Klicken Sie auf **Speichern**.
 
-    ![API-Zugriff](./media/connect-with-rest/new-app.png)
+      ![API-Zugriff](./media/connect-with-rest/new-app.png)
 
-    Die neue App wird auf der Seite angezeigt.
+      Die neue App wird auf der Seite angezeigt.
 
 6. Rufen Sie die **Client-ID** (Anwendungs-ID) ab.
     
-    1. Wählen Sie die Anwendung aus.
-    2. Die **Client-ID** wird im Fenster rechts angezeigt. 
+   1. Wählen Sie die Anwendung aus.
+   2. Die **Client-ID** wird im Fenster rechts angezeigt. 
 
-    ![API-Zugriff](./media/connect-with-rest/existing-client-id.png)
+      ![API-Zugriff](./media/connect-with-rest/existing-client-id.png)
 
-7.  Rufen Sie den **Schlüssel** der Anwendung (das Clientgeheimnis) ab. 
+7. Rufen Sie den **Schlüssel** der Anwendung (das Clientgeheimnis) ab. 
 
-    1. Klicken Sie auf die Schaltfläche **Anwendung verwalten** (beachten Sie, dass sich die Client-ID unter **Anwendungs-ID** befindet). 
-    2. Klicken Sie auf **Schlüssel**.
+   1. Klicken Sie auf die Schaltfläche **Anwendung verwalten** (beachten Sie, dass sich die Client-ID unter **Anwendungs-ID** befindet). 
+   2. Klicken Sie auf **Schlüssel**.
     
-        ![API-Zugriff](./media/connect-with-rest/manage-app.png)
-    3. Generieren Sie den App-Schlüssel (das Clientgeheimnis), indem Sie **BESCHREIBUNG** und **LÄUFT AB** ausfüllen und auf **Speichern** klicken.
+       ![API-Zugriff](./media/connect-with-rest/manage-app.png)
+   3. Generieren Sie den App-Schlüssel (das Clientgeheimnis), indem Sie **BESCHREIBUNG** und **LÄUFT AB** ausfüllen und auf **Speichern** klicken.
     
-        Nach dem Klicken auf die Schaltfläche **Speichern** wird der Schlüsselwert angezeigt. Kopieren Sie den Schlüsselwert, bevor Sie das Blatt verlassen.
+       Nach dem Klicken auf die Schaltfläche **Speichern** wird der Schlüsselwert angezeigt. Kopieren Sie den Schlüsselwert, bevor Sie das Blatt verlassen.
 
-    ![API-Zugriff](./media/connect-with-rest/connect-with-rest03.png)
+   ![API-Zugriff](./media/connect-with-rest/connect-with-rest03.png)
 
 Sie können Werte für AD-Verbindungsparameter für Ihre Datei „web.config“ oder „app.config“ hinzufügen, um diese später im Code zu verwenden.
 

@@ -15,12 +15,12 @@ ms.date: 01/23/2019
 ms.author: mabrigg
 ms.reviewer: alfredop
 ms.lastreviewed: 01/08/2019
-ms.openlocfilehash: aca051dd20ceaeb608baa144a81e0584043a1c52
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 6f2a2eb9902e8567b5fa27ed93dd8be2fe3a01b3
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002046"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56587071"
 ---
 # <a name="manage-tenant-registration-in-azure-stack"></a>Verwalten der Mandantenregistrierung in Azure Stack
 
@@ -60,7 +60,7 @@ Weitere Informationen zu Azure Stack und API-Profilen finden Sie unter [Verwalte
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet „New-AzureRmResource“, um einen Mandanten hinzuzufügen. [Stellen Sie eine Verbindung mit Azure Stack her](/azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
+Verwenden Sie das Cmdlet „New-AzureRmResource“, um einen Mandanten hinzuzufügen. [Stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
 
 ```powershell
   New-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01 -Properties
@@ -91,7 +91,7 @@ Rufen Sie eine Liste aller Mandanten ab, die einer Registrierung hinzugefügt wu
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet „Get-AzureRmResource“, um alle registrierten Mandanten aufzulisten. [Stellen Sie eine Verbindung mit Azure Stack her](/azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
+Verwenden Sie das Cmdlet „Get-AzureRmResource“, um alle registrierten Mandanten aufzulisten. [Stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
 
 ```powershell
   Get-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions" -ApiVersion 2017-06-01
@@ -142,7 +142,7 @@ Sie können einen Mandanten entfernen, der einer Registrierung hinzugefügt wurd
 
 ### <a name="powershell"></a>PowerShell
 
-Verwenden Sie das Cmdlet „Remove-AzureRmResource“, um einen Mandanten zu entfernen. [Stellen Sie eine Verbindung mit Azure Stack her](/azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
+Verwenden Sie das Cmdlet „Remove-AzureRmResource“, um einen Mandanten zu entfernen. [Stellen Sie eine Verbindung mit Azure Stack her](azure-stack-powershell-configure-admin.md), und verwenden Sie dann in einer Eingabeaufforderung mit erhöhten Rechten das folgende Cmdlet:
 
 ```powershell
   Remove-AzureRmResource -ResourceId "subscriptions/{registrationSubscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.AzureStack/registrations/{registrationName}/customerSubscriptions/{customerSubscriptionId}" -ApiVersion 2017-06-01

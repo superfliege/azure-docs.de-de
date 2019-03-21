@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: fa3798a35804998936e0ac166fceff02b01231a0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 9d3a62ec1c9ede1f25f2b53f800642a792b3aa28
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171509"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534394"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>Übersicht über Reverse-DNS und die Unterstützung in Azure
 
@@ -109,7 +109,7 @@ Sie können mit Azure DNS [Ihre Reverse-Lookupzonen hosten und die PTR-Einträge
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
+Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
 <br>
 Erfahren Sie, wie [die Reverse-Lookupzone für Ihren vom ISP zugewiesenen IP-Adressbereich in Azure DNS gehostet wird](dns-reverse-dns-for-azure-services.md).
 <br>

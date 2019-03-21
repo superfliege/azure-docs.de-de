@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviwer: japere,asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f10a1f38b2c793bffb6061c6eefdccef7ac5c57b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7f7418c16d5d5312d2a9a7913da49941ef0a7870
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204524"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090456"
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>Problem beim Anmelden bei der Website des Zugriffsbereichs
 
@@ -168,23 +168,23 @@ Um die Self-Service-Kennwortzurücksetzung zu aktivieren, führen Sie die folgen
 
 Um den Multi-Factor Authentication-Status eines Benutzers zu überprüfen, führen Sie die folgenden Schritte aus:
 
-1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
+1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 
-2.  Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
+2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
 
-3.  Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
+3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
 
-4.  Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
+4. Klicken Sie im Navigationsmenü auf **Benutzer und Gruppen**.
 
-5.  Klicken Sie auf **Alle Benutzer**.
+5. Klicken Sie auf **Alle Benutzer**.
 
-6.  Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
+6. Klicken Sie oben im Bereich auf die Schaltfläche **Multi-Factor Authentication**.
 
-7.  Wenn das **Multi-Factor Authentication-Verwaltungsportal** geöffnet ist, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
+7. Wenn das **Multi-Factor Authentication-Verwaltungsportal** geöffnet ist, stellen Sie sicher, dass Sie sich auf der Registerkarte **Benutzer** befinden.
 
-8.  Suchen Sie den Benutzer, indem Sie die Liste der Benutzer durchsuchen, filtern oder sortieren.
+8. Suchen Sie den Benutzer, indem Sie die Liste der Benutzer durchsuchen, filtern oder sortieren.
 
-9.  Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
+9. Wählen Sie den Benutzer aus der Benutzerliste aus, und wählen Sie die gewünschte Option für die Multi-Factor Authentication: **Aktivieren**, **Deaktivieren** oder **Erzwingen**.
 
    >[!NOTE]
    >Wenn ein Benutzer sich im Status **Erzwungen** befindet, können Sie den Status vorübergehend auf **Deaktiviert** festlegen, damit der Benutzer sich wieder bei seinem Konto anmelden kann. Sobald der Benutzer wieder bei seinem Konto angemeldet ist, können Sie den Status in **Aktiviert** ändern, damit der Benutzer bei der nächsten Anmeldung seine Kontaktinformationen erneut registrieren muss. Alternativ können Sie Schritte unter [Überprüfen der Kontaktinformationen für die Authentifizierung eines Benutzers](#check-a-users-authentication-contact-info) ausführen, um diese Daten für den Benutzer zu überprüfen oder festzulegen.

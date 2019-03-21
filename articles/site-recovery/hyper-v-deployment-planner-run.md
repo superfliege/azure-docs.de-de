@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16c37f5ccaed7c161ecaae65a07c5da7400aad3c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 776523bb001848e6ecc153f670a96e3143e2ac0d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815070"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006352"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Ausführen des Azure Site Recovery-Bereitstellungsplaners für die Hyper-V-Notfallwiederherstellung in Azure
 
@@ -34,6 +34,7 @@ Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen P
 ```
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
+
 | Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GetVMList |
@@ -83,6 +84,7 @@ In der folgenden Tabelle sind die erforderlichen und optionalen Parameter des To
 ```
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
+
 | Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | StartProfiling |
@@ -164,6 +166,7 @@ Die folgende Tabelle enthält eine Liste mit den erforderlichen und optionalen T
 ```
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
+
 | Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GenerateReport |
@@ -271,6 +274,7 @@ Führen Sie das Tool im GetThroughput-Modus aus, um den Durchsatz zu schätzen, 
 ```
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
+
  Parametername | BESCHREIBUNG |
 |---|---|
 | -Operation | GetThroughput |

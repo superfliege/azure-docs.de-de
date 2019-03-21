@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 065b2511da568ee2cdc0a989b34905b4010ea32e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: c0d50f3a66d940618f2bc421537b113120a2eaca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58006285"
 ---
 # <a name="building-scalable-cloud-databases"></a>Erstellen skalierbarer Clouddatenbanken
 
@@ -62,7 +62,7 @@ Im Allgemeinen steht den Endkunden mit den Tools für elastische Datenbanken bei
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Clientbibliothek für elastische Datenbanken ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – zum **Herunterladen** der Bibliothek
+- Clientbibliothek für elastische Datenbanken ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22), [.NET](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) – zum **Herunterladen** der Bibliothek
 
 - [Erste Schritte mit Tools für elastische Datenbanken](sql-database-elastic-scale-get-started.md): Zum Testen der **Beispiel-App**, die Clientfunktionen veranschaulicht.
 

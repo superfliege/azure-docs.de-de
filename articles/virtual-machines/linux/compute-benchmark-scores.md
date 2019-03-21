@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
-ms.openlocfilehash: 1d7f11b7d9db87ebea5cb31b2918dba3fe8a56b2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 2a558f2cf91907e85bb8b14c7214a63afd1faca0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51262351"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001400"
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Compute-Benchmarkergebnisse für virtuelle Linux-Computer
 Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äußerst leistungsfähig Azure-VMs unter Ubuntu. Compute-Benchmarkergebnisse stehen auch für [virtuelle Windows-Computer](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)zur Verfügung.
@@ -369,7 +369,7 @@ Die folgenden CoreMark-Benchmarkergebnisse zeigen die Computeleistung für äuß
 | Standard_M128s | Intel(R) Xeon(R) CPU E7-8890 v3 \@ 2,50GHz | 128 | 4 | 2.064,3 | 1.275.445 | 19.510 | 1,53% | 42 |
 
 ## <a name="about-coremark"></a>Informationen zu CoreMark
-Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](http://www.eembc.org/coremark/faq.php) unter Ubuntu berechnet. CoreMark wurde so konfiguriert, dass die Anzahl der Threads auf die Anzahl der virtuellen CPUs und die Parallelität auf PThreads festgelegt waren. Die Zielanzahl von Iterationen wurde basierend auf der erwarteten Leistung angepasst, um eine Laufzeit von mindestens 20 Sekunden (in der Regel viel länger) zu ermöglichen. Das Endergebnis stellt die Anzahl der abgeschlossenen Iterationen geteilt durch die Anzahl der Sekunden für die Testausführung dar. Jeder Test wurde mindestens sieben Mal auf jedem virtuellen Computer ausgeführt. Die Daten der Testausführung sind oben angegeben. Die Tests wurden auf mehreren VMs in öffentlichen Azure-Regionen, in denen die VM unterstützt wurde, am Ausführungsdatum ausgeführt. Die Serien „Basic A“ und „Basic B“ (Burstable) sind nicht enthalten, da ihre Leistung variiert. Die N-Serie ist nicht enthalten, da sie GPU-basiert ist und CoreMark die GPU-Leistung nicht misst.
+Die Linux-Zahlen wurden durch die Ausführung von [CoreMark](https://www.eembc.org/coremark/faq.php) unter Ubuntu berechnet. CoreMark wurde so konfiguriert, dass die Anzahl der Threads auf die Anzahl der virtuellen CPUs und die Parallelität auf PThreads festgelegt waren. Die Zielanzahl von Iterationen wurde basierend auf der erwarteten Leistung angepasst, um eine Laufzeit von mindestens 20 Sekunden (in der Regel viel länger) zu ermöglichen. Das Endergebnis stellt die Anzahl der abgeschlossenen Iterationen geteilt durch die Anzahl der Sekunden für die Testausführung dar. Jeder Test wurde mindestens sieben Mal auf jedem virtuellen Computer ausgeführt. Die Daten der Testausführung sind oben angegeben. Die Tests wurden auf mehreren VMs in öffentlichen Azure-Regionen, in denen die VM unterstützt wurde, am Ausführungsdatum ausgeführt. Die Serien „Basic A“ und „Basic B“ (Burstable) sind nicht enthalten, da ihre Leistung variiert. Die N-Serie ist nicht enthalten, da sie GPU-basiert ist und CoreMark die GPU-Leistung nicht misst.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Speicherkapazitäten, Details zu Datenträgern und weitere Überlegungen zur Auswahl von Größen für virtuelle Computer finden Sie unter [Größen für virtuelle Computer](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

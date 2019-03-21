@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a81754b9b95c7cc6e257707aec188abf1dab58c3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194868"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077818"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Tableau Online für die automatische Benutzerbereitstellung
 
@@ -106,13 +106,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie unter dem Abschnitt **Administratoranmeldeinformationen** die **Domäne**, den **Administratorbenutzernamen**, das **Administratorkennwort** und die **Inhalts-URL** Ihres Tableau Online-Kontos ein:
 
-    *   Tragen Sie im Feld **Domäne** die Unterdomäne basierend auf Schritt 6 ein.
+   * Tragen Sie im Feld **Domäne** die Unterdomäne basierend auf Schritt 6 ein.
 
-    *   Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos im Clarizen-Mandanten ein. Beispiel: admin@contoso.com.
+   * Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos im Clarizen-Mandanten ein. Beispiel: admin@contoso.com.
 
-    *   Geben Sie im Feld **Administratorkennwort** das Kennwort des Administratorkontos für den Administratorbenutzernamen ein.
+   * Geben Sie im Feld **Administratorkennwort** das Kennwort des Administratorkontos für den Administratorbenutzernamen ein.
 
-    *   Tragen Sie im Feld **Inhalts-URL** die Unterdomäne basierend auf Schritt 6 ein.
+   * Tragen Sie im Feld **Inhalts-URL** die Unterdomäne basierend auf Schritt 6 ein.
 
 6. Nach der Anmeldung Ihres Administratorkontos für Tableau Online können die Werte für **Domäne** und **Inhalts-URL** aus der URL der Administratorseite extrahiert werden.
 

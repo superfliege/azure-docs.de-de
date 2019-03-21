@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pbutlerm
-ms.openlocfilehash: f13d49fde7f0e40f6dcb026fcb20cb11c028c64b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100882"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57446708"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Angebote für Azure Marketplace und Microsoft AppSource
 
@@ -41,7 +41,7 @@ Das Verfahren zum Erstellen eines neuen Angebots unterscheidet sich je nach Ange
 
 ## <a name="test-drive"></a>Testversion
 
-*Testversion* ist ein Marketplace-Feature, das Kunden für jedes derart aktivierte Angebot eine Demo-Option zum Testen vor dem Kauf bietet.  Die Funktion „Testversion“ ist auf die folgenden Angebotstypen beschränkt: [Azure-Anwendungen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-Anwendungen](./saas-app/cpp-saas-offer.md) und [virtuelle Computer](./virtual-machine/cpp-virtual-machine-offer.md).  Diese Funktion erfordert, dass der Herausgeber eine Testversionsvorlage erstellt, die an sein Angebot angepasst ist.  Weitere Informationen finden Sie im Abschnitt [Testversion](../cloud-partner-portal-orig/what-is-test-drive.md).
+*Testversion* ist ein Marketplace-Feature, das Kunden für jedes derart aktivierte Angebot eine Demo-Option zum Testen vor dem Kauf bietet.  Die Funktion „Testversion“ ist auf die folgenden Angebotstypen beschränkt: [Azure-Anwendungen](./azure-applications/cpp-azure-app-offer.md), [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md), [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md), [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md), [ SaaS-Anwendungen](./saas-app/cpp-saas-offer.md) und [virtuelle Computer](./virtual-machine/cpp-virtual-machine-offer.md).  Diese Funktion erfordert, dass der Herausgeber eine Testversionsvorlage erstellt, die an sein Angebot angepasst ist.  Weitere Informationen finden Sie im Abschnitt [Testversion](./test-drive/what-is-test-drive.md).
 
 Sie können die vorhandenen Marketplace-Angebote mit Testversionen durchsuchen, indem Sie den Filter [Testversion](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=test-drive) verwenden. 
 

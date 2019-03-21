@@ -1,19 +1,19 @@
 ---
 title: Erste Schritte mit der Azure IoT Hub-Geräteverwaltung (Node) | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie mithilfe der IoT Hub-Geräteverwaltung den Neustart eines Remotegeräts initiieren. Sie verwenden das Azure IoT SDK für Node.js, um eine simulierte Geräte-App mit einer direkten Methode und eine Dienst-App zu implementieren, die die direkte Methode aufruft.
-author: juanjperez
-manager: cberlin
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/25/2017
-ms.author: juanpere
-ms.openlocfilehash: 278765957156b56c3c476678b8db0efe5fb73c68
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
+ms.openlocfilehash: b1a224c4170349f0797d2d57acbf45e8b7649bd8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118267"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531571"
 ---
 # <a name="get-started-with-device-management-node"></a>Erste Schritte mit der Geräteverwaltung (Node)
 
@@ -239,7 +239,7 @@ Sie können die Apps nun ausführen.
 
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 
-[lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
+[lnk-free-trial]: https://azure.microsoft.com/pricing/free-trial/
 [Azure portal]: https://portal.azure.com/
 [Using resource groups to manage your Azure resources]: ../azure-portal/resource-group-portal.md
 [lnk-dm-github]: https://github.com/Azure/azure-iot-device-management

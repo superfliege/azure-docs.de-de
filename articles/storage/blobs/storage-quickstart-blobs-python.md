@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: 94e9d19302c4a51d1401a88248431f237bf59758
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: 95b960245e00a353bb165e1f1d38db56bce62a8f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743507"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996731"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit Python
 
@@ -69,7 +69,7 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 ```
 Suchen Sie im Ordner *Documents* nach den beiden Dateien, bevor Sie fortfahren. Wenn Sie diese Dateien öffnen, sehen Sie, dass sie identisch sind.
 
-Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Azure Storage-Explorer](http://storageexplorer.com), verwenden. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht. 
+Sie können zum Anzeigen der Dateien in Blob Storage auch ein Tool, z.B. den [Azure Storage-Explorer](https://storageexplorer.com), verwenden. Der Azure Storage-Explorer ist ein kostenloses plattformübergreifendes Tool, das Ihnen den Zugriff auf die Speicherkontoinformationen ermöglicht. 
 
 Drücken Sie nach erfolgreicher Überprüfung der Dateien eine beliebige Taste, um die Demo zu beenden und die Testdateien zu löschen. Nachdem Sie nun wissen, welche Aktionen das Beispiel ausführt, öffnen Sie die Datei *example.py*, und sehen Sie sich den Code an. 
 

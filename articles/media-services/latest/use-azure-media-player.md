@@ -11,12 +11,12 @@ ms.workload: ''
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: juliako
-ms.openlocfilehash: 4dd0f697d16d7a2fbeec8f712d98e6a7c439cb4e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 6de626323c82689d0ead4f5aaad2a2e43187ebd0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54064677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896992"
 ---
 # <a name="azure-media-player-overview"></a>Übersicht über Azure Media Player
 
@@ -24,13 +24,13 @@ Azure Media Player ist ein Webvideoplayer für die Wiedergabe von Medieninhalten
 
 Mit Microsoft Azure Media Services können Inhalte in den Streamingformaten HLS, DASH und Smooth Streaming wiedergegeben werden. Der Azure Media Player erkennt diese unterschiedlichen Formate und übernimmt automatisch die beste Verknüpfung basierend auf den Funktionen von Plattform und Browser. Media Services ermöglicht auch die dynamische Verschlüsselung von Medienobjekten mit PlayReady-Verschlüsselung oder AES-128-Bit-Umschlagverschlüsselung. Der Azure Media Player ermöglicht bei entsprechender Konfiguration die Entschlüsselung von PlayReady- und AES-128-Bit-verschlüsselten Inhalten. 
 
-[Mit kostenloser Testversion starten](http://azure.microsoft.com/en-us/pricing/free-trial/)
+[Mit kostenloser Testversion starten](https://azure.microsoft.com/en-us/pricing/free-trial/)
 
 ## <a name="use-azure-media-player-demo-page"></a>Verwenden der Azure Media Player-Demoseite
 
 ### <a name="start-using"></a>Jetzt beginnen
 
-Sie können die [Azure Media Player-Demoseite](http://aka.ms/amp) verwenden, um Azure Media Services-Beispiele oder Ihren eigenen Stream wiederzugeben.  
+Sie können die [Azure Media Player-Demoseite](https://aka.ms/amp) verwenden, um Azure Media Services-Beispiele oder Ihren eigenen Stream wiederzugeben.  
 
 Fügen Sie zum Wiedergeben eines neuen Videos eine andere URL ein, und wählen Sie die Option **Aktualisieren**.
 
@@ -40,7 +40,7 @@ Wählen Sie **Erweiterte Optionen**, um die Wiedergabeoptionen zu konfigurieren 
 
 ### <a name="monitor-diagnostics-of-a-video-stream"></a>Überwachen der Diagnosedaten eines Videostreams
 
-Sie können mithilfe der [Azure Media Player-Demoseite](http://aka.ms/amp) die Diagnosedaten eines Videostreams überwachen. 
+Sie können mithilfe der [Azure Media Player-Demoseite](https://aka.ms/amp) die Diagnosedaten eines Videostreams überwachen. 
 
 ![Azure Media Player-Diagnose](./media/azure-media-player/diagnostics.png)
 

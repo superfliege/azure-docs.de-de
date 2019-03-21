@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 3454f9eecf1f06391b21bc7a3dcd89b7f8e78853
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 13746779d37f6faa6d25f73d6c78523f174b658c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54105354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835238"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Um das SDK und das dazugehörige Runtimepaket über das Befehlszeilenprogramm �
 2. Fügen Sie der Quellenliste das Service Fabric-Repository hinzu.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. Fügen Sie das `dotnet`-Repository Ihrer Quellenliste hinzu.
@@ -162,7 +162,7 @@ Nach der Aktualisierung Ihrer Quellen können Sie das SDK installieren. Installi
 sudo apt-get install servicefabricsdkcommon
 ```
 
->   [!TIP]
+> [!TIP]
 >   Mit den folgenden Befehlen wird das Akzeptieren der Lizenz für Service Fabric-Pakete automatisiert:
 >   ```bash
 >   echo "servicefabric servicefabric/accepted-eula-ga select true" | sudo debconf-set-selections
@@ -219,7 +219,7 @@ Die Gerüstbautools von Service Fabric unterstützen Sie beim Erstellen von Serv
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.0/install.sh | bash
     nvm install node
     ```
-2. Installieren Sie den [Yeoman](http://yeoman.io/)-Vorlagengenerator über npm auf dem Computer:
+2. Installieren Sie den [Yeoman](https://yeoman.io/)-Vorlagengenerator über npm auf dem Computer:
 
     ```bash
     npm install -g yo
@@ -276,7 +276,7 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse-IDE für J
 
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe** > **Neue Software installieren...** aus.
 
-3. Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **http://dl.microsoft.com/eclipse**.
+3. Geben Sie im Feld **Work with** (Arbeiten mit) Folgendes ein: **https://dl.microsoft.com/eclipse**.
 
 4. Wählen Sie **Hinzufügen**.
 

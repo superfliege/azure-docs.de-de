@@ -11,22 +11,22 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 66137f01672820584f97273ddca26a66ada781ba
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312529"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339010"
 ---
 # <a name="detect-domain-specific-content"></a>Erkennen domänenspezifischer Inhalte
 
-Zusätzlich zur Kennzeichnung und allgemeinen Kategorisierung wird beim maschinellen Sehen auch die weiter gehende domänenspezifische Analyse unterstützt. Hierfür werden Modelle verwendet, die anhand von speziellen Daten trainiert wurden. 
+Zusätzlich zur Kennzeichnung und allgemeinen Kategorisierung wird beim maschinellen Sehen auch die weiter gehende domänenspezifische Analyse unterstützt. Hierfür werden Modelle verwendet, die anhand von speziellen Daten trainiert wurden.
 
 Es gibt zwei Möglichkeiten für die Verwendung von domänenspezifischen Modellen: allein (bereichsbezogene Analyse) oder als Erweiterung der Kategorisierungsfunktion.
 
 ### <a name="scoped-analysis"></a>Bereichsbezogene Analyse
 
-Sie können ein Bild analysieren, indem Sie nur das domänenspezifische Modell nutzen. Rufen Sie hierfür die API [Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) auf. 
+Sie können ein Bild analysieren, indem Sie nur das domänenspezifische Modell nutzen. Rufen Sie hierfür die API [Models/\<model\>/Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) auf.
 
 Hier ist eine JSON-Beispielantwort angegeben, die von der API **models/celebrities/analyze** für das jeweilige Bild zurückgegeben wird:
 
@@ -55,28 +55,28 @@ Hier ist eine JSON-Beispielantwort angegeben, die von der API **models/celebriti
 }
 ```
 
-### <a name="enhanced-categorization-analysis"></a>Verbesserte Kategorisierungsanalyse  
+### <a name="enhanced-categorization-analysis"></a>Verbesserte Kategorisierungsanalyse
 
-Sie können domänenspezifische Modelle auch verwenden, um die allgemeine Bildanalyse zu erweitern. Dies ist im Rahmen der [allgemeinen Kategorisierung](concept-categorizing-images.md) möglich, indem domänenspezifische Modelle im Parameter *details* des [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API-Aufrufs angegeben werden. 
+Sie können domänenspezifische Modelle auch verwenden, um die allgemeine Bildanalyse zu erweitern. Dies ist im Rahmen der [allgemeinen Kategorisierung](concept-categorizing-images.md) möglich, indem domänenspezifische Modelle im Parameter *details* des [Analyze](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API-Aufrufs angegeben werden.
 
-In diesem Fall wird zuerst die Klassifizierung der 86-Kategorien-Taxonomie aufgerufen. Wenn erkannte Kategorien über ein passendes domänenspezifisches Modell verfügen, wird das Bild auch über dieses Modell übergeben, und die Ergebnisse werden hinzugefügt. 
+In diesem Fall wird zuerst die Klassifizierung der 86-Kategorien-Taxonomie aufgerufen. Wenn erkannte Kategorien über ein passendes domänenspezifisches Modell verfügen, wird das Bild auch über dieses Modell übergeben, und die Ergebnisse werden hinzugefügt.
 
 Mit der folgenden JSON-Antwort wird veranschaulicht, wie die domänenspezifische Analyse als `detail`-Knoten in eine umfassendere Kategorisierungsanalyse eingebunden werden kann.
 
 ```json
-"categories":[  
-  {  
+"categories":[
+  {
     "name":"abstract_",
     "score":0.00390625
   },
-  {  
+  {
     "name":"people_",
     "score":0.83984375,
-    "detail":{  
-      "celebrities":[  
-        {  
+    "detail":{
+      "celebrities":[
+        {
           "name":"Satya Nadella",
-          "faceRectangle":{  
+          "faceRectangle":{
             "left":597,
             "top":162,
             "width":248,
@@ -85,8 +85,8 @@ Mit der folgenden JSON-Antwort wird veranschaulicht, wie die domänenspezifische
           "confidence":0.999028444
         }
       ],
-      "landmarks":[  
-        {  
+      "landmarks":[
+        {
           "name":"Forbidden City",
           "confidence":0.9978346
         }
@@ -108,20 +108,20 @@ Derzeit werden für das maschinelle Sehen die folgenden domänenspezifischen Mod
 Durch das Aufrufen der [Models](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd)-API werden diese Informationen zusammen mit den Kategorien zurückgegeben, für die die einzelnen Modelle gelten können:
 
 ```json
-{  
-  "models":[  
-    {  
+{
+  "models":[
+    {
       "name":"celebrities",
-      "categories":[  
+      "categories":[
         "people_",
         "人_",
         "pessoas_",
         "gente_"
       ]
     },
-    {  
+    {
       "name":"landmarks",
-      "categories":[  
+      "categories":[
         "outdoor_",
         "户外_",
         "屋外_",

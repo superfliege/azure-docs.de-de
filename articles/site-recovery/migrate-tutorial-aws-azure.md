@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ce48e9a17ab6b63c7fb8caa752258e218ca51ba3
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 74329624b6e0f1b105349d87a6d166efad520076
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226382"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010925"
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>Migrieren von AWS-VMs (Amazon Web Services) zu Azure
 
@@ -33,12 +33,12 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Vergewissern Sie sich, dass auf den zu migrierenden virtuellen Computern eine unterstützte Betriebssystemversion ausgeführt wird. Unterstützte Versionen: 
-      - Windows Server 2016 
-      - Windows Server 2012 R2
-      - Windows Server 2012 
-      - 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher
-      - Red Hat Enterprise Linux 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)  *(Instanzen, auf denen RedHat PV-Treiber ausgeführt werden, werden nicht unterstützt.)*
-      - CentOS 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)
+  - Windows Server 2016 
+  - Windows Server 2012 R2
+  - Windows Server 2012 
+  - 64-Bit-Version von Windows Server 2008 R2 SP1 oder höher
+  - Red Hat Enterprise Linux 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)  *(Instanzen, auf denen RedHat PV-Treiber ausgeführt werden, werden nicht unterstützt.)*
+  - CentOS 6.4 bis 6.10, 7.1 bis 7.6 (nur virtualisierte HVM-Instanzen)
  
 - Der Mobilitätsdienst muss auf jeder VM installiert sein, die Sie replizieren möchten. 
 
@@ -172,39 +172,39 @@ Aktivieren Sie die Replikation für jede VM, die migriert werden soll. Wenn die 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Wählen Sie auf der Seite für Ihren Tresor unter **Erste Schritte** die Option **Site Recovery**.
 2. Wählen Sie unter **Für lokale Computer und Azure-VMs** die Option **Schritt 1: Replizieren der Anwendung** aus. Geben Sie auf den Seiten des Assistenten die folgenden Informationen an. Wählen Sie auf einer Seite jeweils **OK**, wenn Sie fertig sind:
-    - 1: Konfigurieren der Quelle
+   - 1: Konfigurieren der Quelle
 
-    |  |  |
-    |-----|-----|
-    | Quelle: | Wählen Sie **Lokal**.|
-    | Quellpfad:| Geben Sie den Namen Ihrer Konfigurationsserver-EC2-Instanz ein.|
-    |Computertyp: | Wählen Sie **Physische Computer**.|
-    | Prozessserver: | Wählen Sie den Konfigurationsserver in der Dropdownliste aus.|
+     |  |  |
+     |-----|-----|
+     | Quelle: | Wählen Sie **Lokal**.|
+     | Quellpfad:| Geben Sie den Namen Ihrer Konfigurationsserver-EC2-Instanz ein.|
+     |Computertyp: | Wählen Sie **Physische Computer**.|
+     | Prozessserver: | Wählen Sie den Konfigurationsserver in der Dropdownliste aus.|
 
-    - 2: Konfigurieren des Ziels
+   - 2: Konfigurieren des Ziels
 
-    |  |  |
-    |-----|-----|
-    | Ziel: | Übernehmen Sie den Standardwert.|
-    | Abonnement: | Wählen Sie das Abonnement aus, das Sie verwendet haben.|
-    | Ressourcengruppe nach Failover:| Verwenden Sie die Ressourcengruppe, die Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
-    | Bereitstellungsmodell nach dem Failover: | Wählen Sie **Ressourcen-Manager**.|
-    | Speicherkonto: | Wählen Sie das Speicherkonto aus, das Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
-    | Azure-Netzwerk: | Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren**.|
-    | Azure-Netzwerk nach Failover: | Wählen Sie das Netzwerk aus, das Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
-    | Subnetz: | Wählen Sie in der Dropdownliste die Option **Standard**.|
+     |  |  |
+     |-----|-----|
+     | Ziel: | Übernehmen Sie den Standardwert.|
+     | Abonnement: | Wählen Sie das Abonnement aus, das Sie verwendet haben.|
+     | Ressourcengruppe nach Failover:| Verwenden Sie die Ressourcengruppe, die Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
+     | Bereitstellungsmodell nach dem Failover: | Wählen Sie **Ressourcen-Manager**.|
+     | Speicherkonto: | Wählen Sie das Speicherkonto aus, das Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
+     | Azure-Netzwerk: | Wählen Sie **Jetzt für die ausgewählten Computer konfigurieren**.|
+     | Azure-Netzwerk nach Failover: | Wählen Sie das Netzwerk aus, das Sie unter [Vorbereiten der Azure-Ressourcen](#prepare-azure-resources) erstellt haben.|
+     | Subnetz: | Wählen Sie in der Dropdownliste die Option **Standard**.|
 
-    - 3: Auswählen von physischen Computern
+   - 3: Auswählen von physischen Computern
 
-      Wählen Sie **Physischer Computer**, und geben Sie dann die Werte für **Name**, **IP-Adresse** und **Betriebssystemtyp** der EC2-Instanz ein, die Sie migrieren möchten. Klicken Sie auf **OK**.
+     Wählen Sie **Physischer Computer**, und geben Sie dann die Werte für **Name**, **IP-Adresse** und **Betriebssystemtyp** der EC2-Instanz ein, die Sie migrieren möchten. Klicken Sie auf **OK**.
 
-    - 4: Konfigurieren von Eigenschaften
+   - 4: Konfigurieren von Eigenschaften
 
-      Wählen Sie das Konto aus, das Sie auf dem Konfigurationsserver erstellt haben, und wählen Sie anschließend **OK**.
+     Wählen Sie das Konto aus, das Sie auf dem Konfigurationsserver erstellt haben, und wählen Sie anschließend **OK**.
 
-    - 5: Konfigurieren der Replikationseinstellungen
+   - 5: Konfigurieren der Replikationseinstellungen
 
-      Vergewissern Sie sich, dass in der Dropdownliste die Replikationsrichtlinie **myReplicationPolicy** ausgewählt ist, und wählen Sie anschließend **OK**.
+     Vergewissern Sie sich, dass in der Dropdownliste die Replikationsrichtlinie **myReplicationPolicy** ausgewählt ist, und wählen Sie anschließend **OK**.
 
 3. Wählen Sie **Replikation aktivieren**, wenn der Assistent abgeschlossen ist.
 
@@ -245,10 +245,10 @@ Führen Sie ein tatsächliches Failover für die EC2-Instanzen durch, um sie zu 
 1. Stellen Sie sicher, dass die VM unter **Replizierte Elemente** angezeigt wird.
 2. Klicken Sie jeweils mit der rechten Maustaste auf eine VM, und wählen Sie dann die Option **Migration abschließen**. Die folgenden Schritte werden ausgeführt:
 
-    - Dadurch wird der Migrationsvorgang abgeschlossen, die Replikation für die AWS-VM wird beendet, und die Site Recovery-Abrechnung für die VM wird eingestellt.
-    - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht. 
+   - Dadurch wird der Migrationsvorgang abgeschlossen, die Replikation für die AWS-VM wird beendet, und die Site Recovery-Abrechnung für die VM wird eingestellt.
+   - In diesem Schritt werden die Replikationsdaten entfernt. Die migrierten virtuellen Computer werden nicht gelöscht. 
 
-    ![Abschließen der Migration](./media/migrate-tutorial-aws-azure/complete-migration.png)
+     ![Abschließen der Migration](./media/migrate-tutorial-aws-azure/complete-migration.png)
 
 > [!WARNING]
 > *Brechen Sie ein Failover in Bearbeitung nicht ab*. Bevor das Failover gestartet wird, wird die VM-Replikation beendet. Wenn Sie ein in Bearbeitung befindliches Failover abbrechen, wird das Failover beendet, aber die Replikation der VM wird nicht erneut durchgeführt.  

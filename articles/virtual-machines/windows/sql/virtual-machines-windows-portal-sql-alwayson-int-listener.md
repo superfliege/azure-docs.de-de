@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 5e665cd0bcfdea436c2f493187c5bbea756f8f09
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 3b90ae3e9808b22b6d6c41e3ac11bec0293bd4bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248304"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107881"
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Konfigurieren eines Load Balancers für eine AlwaysOn-Verfügbarkeitsgruppe in Azure
 In diesem Artikel erfahren Sie, wie Sie einen Load Balancer für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern erstellen, auf denen Azure Resource Manager ausgeführt wird. Eine Verfügbarkeitsgruppe benötigt einen Load Balancer, wenn sich die SQL Server-Instanzen auf virtuellen Azure-Computern befinden. Der Load-Balancer speichert die IP-Adresse für den Verfügbarkeitsgruppenlistener. Wenn sich eine Verfügbarkeitsgruppe über mehrere Regionen erstreckt, benötigt jede Region einen Load Balancer.
@@ -66,7 +66,7 @@ Erstellen Sie zuerst den Load Balancer.
    | Einstellung | Wert |
    | --- | --- |
    | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
-   | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Load Balancer, damit Anwendungen innerhalb desselben virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, eine Verbindung mit der Verfügbarkeitsgruppe über eine öffentliche Internetverbindung herzustellen. |
+   | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Lastenausgleich, wodurch Anwendungen innerhalb des gleichen virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, über eine öffentliche Internetverbindung eine Verbindung mit der Verfügbarkeitsgruppe herzustellen. |
    | **Virtuelles Netzwerk** |Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
    | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
    | **IP-Adresszuweisung** |**Statisch** |
@@ -235,18 +235,18 @@ Um einem Load Balancer über das Azure-Portal eine IP-Adresse hinzuzufügen, geh
 
 10. Konfigurieren Sie die neue Lastenausgleichsregel mit den folgenden Einstellungen:
 
-   |Einstellung |Wert
-   |:-----|:----
-   |**Name** |Ein Name zur Identifizierung der Lastenausgleichsregel. 
-   |**Frontend IP address** (Front-End-IP-Adresse) |Wählen Sie die erstellte IP-Adresse aus. 
-   |**Protokoll** |TCP
-   |**Port** |Verwenden Sie den Port, den die SQL Server-Instanzen verwenden. Eine Standardinstanz verwendet Port 1433, wenn Sie dies dahingehend geändert haben. 
-   |**Back-End-Port** |Verwenden Sie denselben Wert wie **Port**.
-   |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
-   |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
-   |**Sitzungspersistenz** |Keine
-   |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
-   |**Floating IP (Direct Server Return)** | Aktiviert
+    |Einstellung |Wert
+    |:-----|:----
+    |**Name** |Ein Name zur Identifizierung der Lastenausgleichsregel. 
+    |**Frontend IP address** (Front-End-IP-Adresse) |Wählen Sie die erstellte IP-Adresse aus. 
+    |**Protokoll** |TCP
+    |**Port** |Verwenden Sie den Port, den die SQL Server-Instanzen verwenden. Eine Standardinstanz verwendet Port 1433, wenn Sie dies dahingehend geändert haben. 
+    |**Back-End-Port** |Verwenden Sie denselben Wert wie **Port**.
+    |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
+    |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
+    |**Sitzungspersistenz** |Keine
+    |**Leerlaufzeitüberschreitung (Minuten)** |Standard (4)
+    |**Floating IP (Direct Server Return)** | Aktiviert
 
 ### <a name="configure-the-availability-group-to-use-the-new-ip-address"></a>Konfigurieren der Verfügbarkeitsgruppe zur Verwendung der neuen IP-Adresse
 

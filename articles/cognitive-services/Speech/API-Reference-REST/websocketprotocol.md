@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1d6c0a8ca04949216e6410ff81b15f79c7067522
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55217287"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076189"
 ---
 # <a name="bing-speech-websocket-protocol"></a>WebSocket-Protokoll für die Bing-Spracheingabe
 
@@ -91,7 +92,7 @@ Clients *müssen* HTTP-Cookies unterstützen, wie unter [RFC 6265](https://tools
 
 ### <a name="http-redirection"></a>HTTP-Umleitung
 
-Clients *müssen* die Standardumleitungsmechanismen unterstützen, die über die [HTTP-Protokollspezifikation](http://www.w3.org/Protocols/rfc2616/rfc2616.html) angegeben werden.
+Clients *müssen* die Standardumleitungsmechanismen unterstützen, die über die [HTTP-Protokollspezifikation](https://www.w3.org/Protocols/rfc2616/rfc2616.html) angegeben werden.
 
 ### <a name="speech-endpoints"></a>Sprachendpunkte
 
@@ -99,9 +100,9 @@ Clients *müssen* einen geeigneten Endpunkt des Spracherkennungsdiensts nutzen. 
 
 | Mode | path | Dienst-URI |
 | -----|-----|-----|
-| Interactive | /speech/recognition/interactive/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
-| Unterhaltung | /speech/recognition/conversation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| Diktieren | /speech/recognition/dictation/cognitiveservices/v1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Interactive | /speech/recognition/interactive/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
+| Unterhaltung | /speech/recognition/conversation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
+| Diktieren | /speech/recognition/dictation/cognitiveservices/v1 | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 Weitere Informationen finden Sie auf der Seite zum [Dienst-URI](../GetStarted/GetStartedREST.md#service-uri).
 
@@ -131,13 +132,13 @@ Bei WebSocket-Textnachrichten muss ein Nachrichtenpfad im *Path*-Header angegebe
 
 ### <a name="binary-websocket-messages"></a>Binäre WebSocket-Nachrichten
 
-Binäre WebSocket-Nachrichten verfügen über eine binäre Nutzlast. Im Spracherkennungsdienst-Protokoll werden Audiodaten an den bzw. vom Dienst übertragen, indem binäre WebSocket-Nachrichten verwendet werden. Alle andere Nachrichten sind WebSocket-Textnachrichten. 
+Binäre WebSocket-Nachrichten verfügen über eine binäre Nutzlast. Im Spracherkennungsdienst-Protokoll werden Audiodaten an den bzw. vom Dienst übertragen, indem binäre WebSocket-Nachrichten verwendet werden. Alle andere Nachrichten sind WebSocket-Textnachrichten.
 
 Wie WebSocket-Textnachrichten auch, bestehen binäre WebSocket-Nachrichten aus einem Header und einem Textabschnitt. In den ersten beiden Bytes der binären WebSocket-Nachricht ist in [Big-Endian](https://en.wikipedia.org/wiki/Endianness)-Reihenfolge die 16-Bit-Integergröße des Headerabschnitts angegeben. Die Mindestgröße für den Headerabschnitt beträgt 0 Byte. Die maximale Größe beträgt 8.192 Byte. Für den Text in den Headern von binären WebSocket-Nachrichten *muss* die [US-ASCII](https://tools.ietf.org/html/rfc20)-Codierung verwendet werden.
 
 Header in einer binären WebSocket-Nachricht sind in demselben Format wie in WebSocket-Textnachrichten codiert. Das Format *Name:Wert* ist durch ein einzelnes Absatzzeichenpaar getrennt. Bei binären WebSocket-Nachrichten muss ein Nachrichtenpfad im *Path*-Header angegeben werden. Der Wert dieses Headers muss einen der Sprachprotokollnachricht-Typen aufweisen, die weiter unten in diesem Dokument definiert sind.
 
-Im Spracherkennungsdienst-Protokoll werden WebSocket-Nachrichten sowohl in Textform als auch in binärer Form verwendet. 
+Im Spracherkennungsdienst-Protokoll werden WebSocket-Nachrichten sowohl in Textform als auch in binärer Form verwendet.
 
 ## <a name="client-originated-messages"></a>Nachrichten vom Client
 
@@ -187,7 +188,7 @@ Clients *müssen* sofort eine `speech.config`-Nachricht senden, nachdem sie die 
 Wie bei allen vom Client stammenden Nachrichten im Spracherkennungsdienst-Protokoll, *muss* die `speech.config`-Nachricht einen *X-Timestamp*-Header enthalten, mit dem die UTC-Uhrzeit des Clients für den Zeitpunkt aufgezeichnet wird, zu dem die Nachricht an den Dienst gesendet wurde. Für die `speech.config`-Nachricht ist *kein* *X-RequestId*-Header erforderlich, da diese Nachricht nicht einer bestimmten Sprachanforderung zugeordnet ist.
 
 #### <a name="message-payload"></a>Nachrichtennutzlast
-Die Nutzlast der `speech.config`-Nachricht ist eine JSON-Struktur, die Informationen zur Anwendung enthält. Diese Informationen sind im folgenden Beispiel dargestellt. Informationen im Client- und Gerätekontext sind im *context*-Element der JSON-Struktur enthalten. 
+Die Nutzlast der `speech.config`-Nachricht ist eine JSON-Struktur, die Informationen zur Anwendung enthält. Diese Informationen sind im folgenden Beispiel dargestellt. Informationen im Client- und Gerätekontext sind im *context*-Element der JSON-Struktur enthalten.
 
 ```JSON
 {
@@ -527,7 +528,7 @@ Die Fehlerbeschreibung sollte maximal 50 Zeichen lang sein und idealerweise eine
 | ServerUnavailable | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den HTTP-Statuscode `503 Server Unavailable` für die WebSocket-Upgradeanforderung zurückgegeben hat. |
 | ServerError | Der Client konnte keine Verbindung mit dem Dienst herstellen, da der Dienst den Statuscode `HTTP 500` für interne Fehler für die WebSocket-Upgradeanforderung zurückgegeben hat. |
 | Timeout | Für die Verbindungsanforderung des Clients ist eine Zeitüberschreitung aufgetreten, ohne dass eine Antwort vom Dienst erhalten wurde. Das Feld *End* enthält den Zeitpunkt, zu dem für den Client die Zeitüberschreitung aufgetreten ist und das Warten auf die Verbindung beendet wurde. |
-| ClientError | Der Client hat die Verbindung aufgrund eines internen Clientfehlers beendet. | 
+| ClientError | Der Client hat die Verbindung aufgrund eines internen Clientfehlers beendet. |
 
 ### <a name="metric-microphone"></a>`Microphone`-Metrik
 
@@ -636,7 +637,7 @@ Wenn der Spracherkennungsdienst Protokollverletzungen eines Clients erkennt, bee
 
 #### <a name="incorrect-message-format"></a>Fehlerhaftes Nachrichtenformat
 
-Wenn ein Client eine Textnachricht oder binäre Nachricht an den Dienst sendet, die nicht im richtigen Format gemäß dieser Spezifikation codiert ist, schließt der Dienst die Verbindung mit dem Statuscode *1007 Invalid Payload Data*. 
+Wenn ein Client eine Textnachricht oder binäre Nachricht an den Dienst sendet, die nicht im richtigen Format gemäß dieser Spezifikation codiert ist, schließt der Dienst die Verbindung mit dem Statuscode *1007 Invalid Payload Data*.
 
 Der Dienst gibt diesen Statuscode aus verschiedenen Gründen zurück. Dies wird anhand der folgenden Beispiele veranschaulicht:
 

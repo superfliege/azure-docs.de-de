@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 17be364959c5cdc1beaf48aa86966ede5c7c7309
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219361"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117437"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>So verwenden Sie ein Unterhaltungslernmodul mit anderen Botentwicklungstechnologien.
 
@@ -119,11 +119,11 @@ Im Gegensatz zu einzelnen Unterhaltungslernmodell-Bots können Sie dies nicht in
 2. Geben Sie „Hallo“ ein.  Das der Wert `isOpen` nicht festgelegt ist, wird der Bot „I’m sorry we’re closed“ sagen und die Sitzung beenden.
 
 #### <a name="scenario-2-store-is-open"></a>Szenario 2: Store geöffnet
-3. Geben Sie „open store“ ein.  Dadurch wird `isOpen` auf „true“ festgelegt.
-4. Geben Sie „shop“ ein.
-5. Geben Sie „Hallo“ ein.  Da der Wert `isOpen` auf „true“ festgelegt ist, wird der Bot „What would you like to buy?“ sagen.
-6. Geben Sie „chair“ ein. „Chair“ wird im CL-Speicher als Entität `purchaseItem` gespeichert. Es wird der Rückruf zum Beenden der Sitzung aufgerufen, der diesen Wert in den Konversationsspeicher kopiert.
-7. Geben Sie „history“ ein.  Der Bot sagt „You bought chair“, da dies Ihr letzter `purchaseItem` war.
+1. Geben Sie „open store“ ein.  Dadurch wird `isOpen` auf „true“ festgelegt.
+1. Geben Sie „shop“ ein.
+1. Geben Sie „Hallo“ ein.  Da der Wert `isOpen` auf „true“ festgelegt ist, wird der Bot „What would you like to buy?“ sagen.
+1. Geben Sie „chair“ ein. „Chair“ wird im CL-Speicher als Entität `purchaseItem` gespeichert. Es wird der Rückruf zum Beenden der Sitzung aufgerufen, der diesen Wert in den Konversationsspeicher kopiert.
+1. Geben Sie „history“ ein.  Der Bot sagt „You bought chair“, da dies Ihr letzter `purchaseItem` war.
 
 ## <a name="conclusion"></a>Zusammenfassung
 

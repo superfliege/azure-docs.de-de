@@ -1,5 +1,5 @@
 ---
-title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft-Dokumentation
+title: Tutorial für SaaS-Anwendungen mit einer Datenbank pro Mandant – Azure SQL-Datenbank | Microsoft Docs
 description: Erfahren Sie, wie Sie die mehrinstanzenfähige Wingtip Tickets-SaaS-Anwendung, mit der das Muster mit einer Datenbank pro Mandant und andere SaaS-Muster mithilfe von Azure SQL-Datenbank dargestellt werden, bereitstellen und erkunden.
 services: sql-database
 ms.service: sql-database
@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 957652a63768d25e6b180feb826551ec340b9bf0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 97570a16c7d87a3c8182909b61c04fde30b3fe9b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453670"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000207"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Bereitstellen und Kennenlernen einer mehrinstanzenfähigen SaaS-App, die das Muster mit einer Datenbank pro Mandant mit SQL-Datenbank verwendet
 
@@ -56,7 +56,7 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 
 1. Wenn Sie **Bereitstellung in Azure** auswählen, wird das Azure-Portal mit der SaaS-Bereitstellungsvorlage für eine Datenbank pro Mandant von Wingtip Tickets geöffnet.
 
-   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="http://azuredeploy.net/deploybutton.png"/></a>
+   <a href="https://aka.ms/deploywingtipdpt" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
 1. Geben Sie die Werte für die erforderlichen Parameter in die Vorlage ein.
 
@@ -65,7 +65,7 @@ Wählen Sie nun Ihre Namen aus, und notieren Sie sich diese.
 
     - **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und geben Sie den eindeutigen Namen ein, den Sie zuvor für die Ressourcengruppe ausgewählt haben.
     - **Standort**: Wählen Sie in der Dropdownliste einen Standort aus.
-    - **Benutzer**: Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
+    - **User:** Verwenden Sie den zuvor ausgewählten Wert für den Benutzernamen.
 
 1. Stellen Sie die Anwendung bereit.
 
@@ -127,7 +127,7 @@ Die Wingtip-Anwendung verwendet  [*Azure Traffic Manager*](../traffic-manager/t
 
     In der folgenden Tabelle werden die Teile des oben genannten Formats erläutert.
 
-    | URL-Teil        | Beschreibung       |
+    | URL-Teil        | BESCHREIBUNG       |
     | :-------------- | :---------------- |
     | http://events.wingtip-dpt | Die Veranstaltungs-Teile der Wingtip-App<br /><br /> Durch *-dpt* unterscheidet sich die Wingtip Tickets-Implementierung *mit einer Datenbank pro Mandant* von anderen Implementierungen, z.B. der Implementierung mit einer *einzelnen* App pro Mandant (*-sa*) oder der Implementierung mit einer *mehrinstanzenfähigen Datenbank* (*-mt*). |
     | .*&lt;Benutzer&gt;* | Im Beispiel ist dies *af1*. |
@@ -186,9 +186,9 @@ Wenn Sie die Hintergrundaufträge steuern und überwachen möchten, verwenden Si
 
 4. Bei `$OneTime = $false` startet der Lastgenerator die Hintergrundaufträge und wird dann weiterhin ausgeführt. Alle 10 Sekunden überprüft er, ob neue Mandanten bereitgestellt wurden. Wenn Sie `$OneTime = $true` festlegen, startet der Lastgenerator die Hintergrundaufträge und beendet dann die Ausführung im Vordergrund. Behalten Sie `$OneTime = $false` für dieses Tutorial bei.
 
-  Verwenden Sie STRG+C oder den Stoppvorgang STRG+UNTBR, wenn Sie den Lastgenerator beenden oder neu starten möchten.
+   Verwenden Sie STRG+C oder den Stoppvorgang STRG+UNTBR, wenn Sie den Lastgenerator beenden oder neu starten möchten.
 
-  Wenn der Lastengenerator weiter im Vordergrund ausgeführt wird, verwenden Sie eine andere Instanz von PowerShell ISE, um andere PowerShell-Skripts auszuführen.
+   Wenn der Lastengenerator weiter im Vordergrund ausgeführt wird, verwenden Sie eine andere Instanz von PowerShell ISE, um andere PowerShell-Skripts auszuführen.
 
 &nbsp;
 
@@ -221,7 +221,7 @@ Aktualisieren Sie den Event Hub, damit der neue Mandant in der Liste angezeigt w
 
 Nachdem Sie für die Sammlung der Mandanten jetzt die Ausführung einer Last gestartet haben, sehen wir uns einige der bereitgestellten Ressourcen an.
 
-1. Navigieren Sie im  [Azure-Portal](http://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server  **catalog-dpt-&lt;BENUTZER&gt;** .
+1. Navigieren Sie im  [Azure-Portal](https://portal.azure.com) zu Ihrer Liste von SQL-Servern. Öffnen Sie den Server  **catalog-dpt-&lt;BENUTZER&gt;** .
     - Der Katalogserver enthält die beiden Datenbanken **tenantcatalog** und **basetenantdb** (eine Vorlagendatenbank, die kopiert wird, um neue Mandanten zu erstellen).
 
    ![Datenbanken](./media/saas-dbpertenant-get-started-deploy/databases.png)

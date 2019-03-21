@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 0e3d6255d6e2787d407d24a4217a0262ae4c974d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 1d87774ab667dd2d4f7f9fa7827a3ddf17c09044
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53098476"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010933"
 ---
 # <a name="connect-an-amazon-web-services-account"></a>Herstellen einer Verbindung mit einem Amazon Web Services-Konto
 
@@ -127,11 +127,11 @@ Sie erstellen einen S3-Bucket zum Speichern detaillierter Abrechnungsinformation
 6. Klicken Sie auf der Seite „Review (Überprüfen) auf **Create bucket (Bucket erstellen)**. Die Liste Ihrer Buckets wird angezeigt.
 7. Klicken Sie auf den Bucket, den Sie erstellt haben, und wählen Sie die Registerkarte **Permissions (Berechtigungen)** und dann **Bucket Policy (Bucketrichtlinie)** aus. Der Editor für Bucketrichtlinien wird geöffnet.
 8. Kopieren Sie das folgende JSON-Beispiel, und fügen Sie es in den Editor für Bucketrichtlinien ein.
-  - Ersetzen Sie `<BillingBucketName>` durch den Namen Ihres S3-Buckets.
-  - Ersetzen Sie `<ReadOnlyUserOrRole>` durch die Rolle oder den Benutzer-ARN, die/den Sie zuvor kopiert haben.
+   - Ersetzen Sie `<BillingBucketName>` durch den Namen Ihres S3-Buckets.
+   - Ersetzen Sie `<ReadOnlyUserOrRole>` durch die Rolle oder den Benutzer-ARN, die/den Sie zuvor kopiert haben.
 
-  ```json
-  {
+   ```json
+   {
     "Version": "2012-10-17",
     "Id": "Policy1426774604000",
     "Statement": [
@@ -169,8 +169,8 @@ Sie erstellen einen S3-Bucket zum Speichern detaillierter Abrechnungsinformation
             "Resource": "arn:aws:s3:::<BillingBucketName>/*"
         }
     ]
-  }
-  ```
+   }
+   ```
 
 9. Klicken Sie auf **Speichern**.  
     ![Klicken Sie im Editor für Bucketrichtlinien auf „Save“ (Speichern).](./media/connect-aws-account/bucket-policy-editor.png)

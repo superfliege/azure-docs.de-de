@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
-ms.openlocfilehash: f6c2fbe5daeb114d6a5ea77c9823f1fa5bfe8425
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5d47b938560fb1bd15adfe1a1c2d35b7359d47a3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864467"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57977410"
 ---
 # <a name="graph-search-method"></a>graph search-Methode
 
@@ -29,6 +29,7 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/graph/search?
 <br>
 
 ## <a name="request-parameters"></a>Anforderungsparameter  
+
 NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 -----------|-----------|---------|--------
 **mode**       | Textzeichenfolge | Ja | Der Name des Modus, den Sie verwenden möchten. Der Wert lautet entweder *json* oder *lambda*.
@@ -45,7 +46,9 @@ Für die *json*-Suche ist der POST-Text ein JSON-Objekt. Das JSON-Objekt beschre
 Für die *Lambda*-Suche ist der POST-Text eine einfache Textzeichenfolge. Der POST-Text ist eine LIKQ-Lambda-Abfragezeichenfolge, die eine einzelne C#-Anweisung ist (siehe die [Spezifikation der Abfragezeichenfolge ](LambdaSearchSyntax.md) für die *lambda*-Suche). 
 
 <br>
+
 ## <a name="response-json"></a>Antwort (JSON)
+
 NAME | BESCHREIBUNG
 -------|-----   
 **results** | Ein Array mit 0 oder mehr Entitäten, die mit den Abfrageausdruck übereinstimmen. Jede Entität enthält die Werte der angeforderten Attribute. Dieses Feld ist vorhanden, wenn die Anforderung erfolgreich verarbeitet wurde.
@@ -55,6 +58,7 @@ NAME | BESCHREIBUNG
 Wenn die Abfrage nicht innerhalb von _800 ms_ verarbeitet werden kann, wird ein _timeout_-Fehler zurückgegeben. 
 
 <br>
+
 #### <a name="example"></a>Beispiel:
 
 ##### <a name="json-search"></a>JSON-Suche

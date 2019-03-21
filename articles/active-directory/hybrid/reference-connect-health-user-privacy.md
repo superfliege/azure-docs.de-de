@@ -14,12 +14,12 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0a7dc5152bb1ede5f7311e74815a6d58782d32a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112754"
 ---
 # <a name="user-privacy-and-azure-ad-connect-health"></a>Datenschutz und Azure AD Connect Health 
 
@@ -62,17 +62,17 @@ Weitere Informationen finden Sie unter [Entfernen eines Servers aus Azure AD Con
 Azure AD Connect Health bietet auch die Option zum Beenden der Datensammlung für **alle** im Mandanten registrierten Dienste. Vor einer derartigen Aktion wird eine sorgfältige Abwägung und vollumfängliche Bestätigung aller globalen Administratoren empfohlen. Nach Einleitung des Vorgangs beendet der Connect Health-Dienst den Empfang und die Verarbeitung aller Daten sowie die Berichterstellung für Ihre gesamten Dienste. Vorhandene Daten werden im Connect Health-Dienst nicht mehr als 30 Tage lang aufbewahrt.
 Wenn Sie die Datensammlung für bestimmte Server beenden möchten, führen Sie die unter Löschen von bestimmten Servern beschriebenen Schritte aus. Um die mandantenweise Datensammlung zu beenden, führen Sie die folgenden Schritte aus, um die Datensammlung zu beenden und alle Dienste des Mandanten zu löschen.
 
-1.  Klicken Sie im Hauptblatt unter „Konfiguration“ auf **Allgemeine Einstellungen**. 
-2.  Klicken Sie oben auf dem Blatt auf die Schaltfläche **Datensammlung beenden**. Die anderen Optionen unter den Einstellungen zur Mandantenkonfiguration werden deaktiviert, sobald der Prozess gestartet wird.  
+1. Klicken Sie im Hauptblatt unter „Konfiguration“ auf **Allgemeine Einstellungen**. 
+2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Datensammlung beenden**. Die anderen Optionen unter den Einstellungen zur Mandantenkonfiguration werden deaktiviert, sobald der Prozess gestartet wird.  
  
- ![Beenden der Datensammlung](./media/reference-connect-health-user-privacy/gdpr4.png)
+   ![Beenden der Datensammlung](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3.  Vergewissern Sie sich anhand der Liste über die eingebundenen Dienste, die durch das Beenden von Datensammlungen betroffen sind. 
-4.  Geben Sie den exakten Mandantennamen ein, um die Aktionsschaltfläche **Löschen** zu aktivieren.
-5.  Klicken Sie auf **Löschen**, um das Löschen aller Dienste auszulösen. Connect Health beendet den Empfang und die Verarbeitung aller Daten sowie die Berichterstellung von Ihren eingebundenen Diensten. Der gesamte Vorgang kann bis zu 24 Stunden dauern. Beachten Sie, dass dieser Schritt nicht rückgängig gemacht werden kann. 
-6.  Nachdem der Vorgang abgeschlossen ist, werden keine registrierten Dienste mehr in Connect Health angezeigt. 
+3. Vergewissern Sie sich anhand der Liste über die eingebundenen Dienste, die durch das Beenden von Datensammlungen betroffen sind. 
+4. Geben Sie den exakten Mandantennamen ein, um die Aktionsschaltfläche **Löschen** zu aktivieren.
+5. Klicken Sie auf **Löschen**, um das Löschen aller Dienste auszulösen. Connect Health beendet den Empfang und die Verarbeitung aller Daten sowie die Berichterstellung von Ihren eingebundenen Diensten. Der gesamte Vorgang kann bis zu 24 Stunden dauern. Beachten Sie, dass dieser Schritt nicht rückgängig gemacht werden kann. 
+6. Nachdem der Vorgang abgeschlossen ist, werden keine registrierten Dienste mehr in Connect Health angezeigt. 
 
- ![Nach dem Beenden der Datensammlung](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![Nach dem Beenden der Datensammlung](./media/reference-connect-health-user-privacy/gdpr5.png)
 
 ## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Erneutes Aktivieren der Datensammlung und Überwachung in Azure AD Connect Health
 Um die Überwachung in Azure AD Connect Health für einen zuvor gelöschten überwachten Dienst erneut zu aktivieren, müssen Sie den Health-Agent auf allen Servern deinstallieren und [erneut installieren](how-to-connect-health-agent-install.md).
@@ -85,14 +85,14 @@ Die mandantenweise Datensammlung kann in Azure AD Connect Health fortgesetzt wer
 > 24 Stunden nach der Deaktivierungsaktion stehen die folgenden Schritte zur Verfügung.
 > Nach dem erneuten Aktivieren der Datensammlung enthalten die Erkenntnisse und Überwachungsdaten in Connect Health keine älteren Daten, die zuvor gesammelt wurden. 
 
-1.  Klicken Sie im Hauptblatt unter „Konfiguration“ auf **Allgemeine Einstellungen**. 
-2.  Klicken Sie oben auf dem Blatt auf die Schaltfläche **Datensammlung aktivieren**. 
+1. Klicken Sie im Hauptblatt unter „Konfiguration“ auf **Allgemeine Einstellungen**. 
+2. Klicken Sie oben auf dem Blatt auf die Schaltfläche **Datensammlung aktivieren**. 
  
- ![Aktivieren der Datensammlung](./media/reference-connect-health-user-privacy/gdpr6.png)
+   ![Aktivieren der Datensammlung](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3.  Geben Sie den exakten Mandantennamen ein, um die Schaltfläche **Aktivieren** zu aktivieren.
-4.  Klicken Sie auf die Schaltfläche **Aktivieren**, um die Berechtigung für die Datensammlung im Connect Health-Dienst zu gewähren. Die Änderung wird kurzfristig übernommen. 
-5.  Führen Sie den [Installationsvorgang](how-to-connect-health-agent-install.md) aus, um den Agent in den zu überwachenden Servern neu zu installieren, und die Dienste werden im Portal angezeigt.  
+3. Geben Sie den exakten Mandantennamen ein, um die Schaltfläche **Aktivieren** zu aktivieren.
+4. Klicken Sie auf die Schaltfläche **Aktivieren**, um die Berechtigung für die Datensammlung im Connect Health-Dienst zu gewähren. Die Änderung wird kurzfristig übernommen. 
+5. Führen Sie den [Installationsvorgang](how-to-connect-health-agent-install.md) aus, um den Agent in den zu überwachenden Servern neu zu installieren, und die Dienste werden im Portal angezeigt.  
 
 
 ## <a name="next-steps"></a>Nächste Schritte

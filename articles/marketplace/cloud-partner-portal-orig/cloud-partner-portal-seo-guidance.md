@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: b8ca5fc5348818a7d0f1075557d4fe5c7e3bef44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806292"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834335"
 ---
 <a name="azure-marketplace-seo-publisher-guide"></a>Azure Marketplace-Herausgeberleitfaden für SEO
 =======================================
 
 ### <a name="general-explanation-of-algorithm"></a>Allgemeine Erläuterung des Algorithmus
 
-Für den Marketplace wird Azure Search genutzt, um die Suchfunktionen für die Website bereitzustellen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](http://lucene.apache.org/core/) verwendet.
+Für den Marketplace wird Azure Search genutzt, um die Suchfunktionen für die Website bereitzustellen. Der Algorithmus basiert auf dem Maß für Vorkommenshäufigkeit–inverse Dokumenthäufigkeit (term frequency–inverse document frequency, [Tf-idf-Maß](https://en.wikipedia.org/wiki/Tf–idf)). Es wird die Standardversion des [Lucene-Analysetools](https://lucene.apache.org/core/) verwendet.
 
 Grundsätzlich werden alle Textfelder, Kategorien und Branchen in die Gewichtung der Relevanz einbezogen. Spezielle Begriffe, die von Apps selten, in Ihrer App aber häufig verwendet werden, führen zu einer höheren Trefferquote bei einer Suche. Das heißt, ein Einbeziehen von Begriffen wie „VM“ würde nur wenige Vorteile bieten, wogegen „Azure Search“ sehr viel spezieller wäre.
 Nachstehend sind die wichtigsten zu berücksichtigenden Felder aufgeführt.

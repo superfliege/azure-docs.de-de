@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie einen Webdienst aktualisieren, sodass er das 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: b57dd40c8610953563a3d5b8861e144d775b4eb7
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330510"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108119"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells
 
@@ -42,7 +42,7 @@ Stellen Sie mit folgenden Schritten einen Webdienst zum erneuten Trainieren bere
 
     Nachdem Sie Ihr Experiment ausgeführt haben, sollte der resultierende Workflow dem folgenden Image ähneln:
 
-    ![Resultierender Workflow](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE04.png)
+    ![Resultierender Workflow](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE04.png)
 
     Stellen Sie als Nächstes das Trainingsexperiment als Webdienst zum erneuten Trainieren bereit, der ein trainiertes Modell und Modellauswertungsergebnisse ausgibt.
 
@@ -68,7 +68,7 @@ Fügen Sie das NuGet-Paket „Microsoft.AspNet.WebApi.Client“ hinzu, wie in de
 
 Der folgende Screenshot zeigt die Seite **Consume** im Azure Machine Learning-Webdienste-Portal.
 
-![Seite Consume](media/retrain-existing-arm-web-service/machine-learning-retrain-models-consume-page.png)
+![Seite Consume](media/retrain-machine-learning/machine-learning-retrain-models-consume-page.png)
 
 ### <a name="update-the-apikey-declaration"></a>Aktualisieren der apiKey-Deklaration
 
@@ -114,7 +114,7 @@ Wenn Sie den Ausgabespeicherort in der Anforderungsnutzlast angeben, muss die Er
 
 Hier ist eine Beispielausgabe zum erneuten Trainieren:
 
-![Ausgabe des erneuten Trainings](media/retrain-existing-arm-web-service/machine-learning-retrain-models-programmatically-IMAGE06.png)
+![Ausgabe des erneuten Trainings](media/retrain-machine-learning/machine-learning-retrain-models-programmatically-IMAGE06.png)
 
 ### <a name="evaluate-the-retraining-results"></a>Auswerten der Ergebnisse des erneuten Trainings
 

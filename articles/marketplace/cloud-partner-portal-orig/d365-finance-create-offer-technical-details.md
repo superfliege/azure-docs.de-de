@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: cb8e5074d0cd99f5c7cb2130e6f9181eb5382015
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806191"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120294"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>Ausfüllen des Formulars „Technische Informationen“
 ===========================================
@@ -36,9 +36,9 @@ ms.locfileid: "48806191"
 
 -   **App Test Automation** (App-Testautomatisierung): erforderlich – das VS-codierte Testpaket, das Sie für automatisierte Tests von Erweiterungen erstellen müssen.
 
-2.  Laden Sie im Abschnitt **Additional Information for the extension** (Zusätzliche Informationen zur Erweiterung) weitere Informationen zu Ihrer Erweiterung hoch. Diese Informationen werden während der Validierung verwendet.
+1. Laden Sie im Abschnitt **Additional Information for the extension** (Zusätzliche Informationen zur Erweiterung) weitere Informationen zu Ihrer Erweiterung hoch. Diese Informationen werden während der Validierung verwendet.
 
-    ![Formular für zusätzliche Informationen zur App-Erweiterung](./media/d365-financials/image016.png)
+   ![Formular für zusätzliche Informationen zur App-Erweiterung](./media/d365-financials/image016.png)
 
 
 -   **URL to Product Documentation** (URL in der Produktdokumentation): erforderlich – URL zur Dokumentation für die Erweiterung.

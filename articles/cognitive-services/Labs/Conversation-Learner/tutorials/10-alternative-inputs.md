@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: c60dc2ca93547b93ce2ee457393570479069c899
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 10335f9c74b9033b303c960a77af136cc80d75bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55216267"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094363"
 ---
 # <a name="how-to-use-alternative-inputs"></a>Alternative Eingaben
 
@@ -48,6 +48,8 @@ Alternative Eingaben sind alternative, semantisch gleichwertige Benutzeräußeru
 3. Geben Sie als Entitätsname „City“ (Stadt) ein.
 4. Klicken Sie auf die Schaltfläche „Erstellen“.
 
+![](../media/T10_actions.png)
+
 Jetzt erstellen wir drei Aktionen.
 
 ### <a name="create-the-first-action"></a>Erstellen der ersten Aktion
@@ -58,11 +60,15 @@ Jetzt erstellen wir drei Aktionen.
 4. Geben Sie im Feld „Disqualifying Entities“ (Disqualifizierende Entitäten) die Zeichenfolge „city“ (Stadt) ein.
 5. Klicken Sie auf die Schaltfläche „Erstellen“.
 
+![](../media/T10_action_create_1.png)
+
 ### <a name="create-the-second-action"></a>Erstellen der zweiten Aktion
 
 1. Klicken Sie im linken Bereich auf „Aktionen“ und anschließend auf die Schaltfläche „Neue Aktion“.
 2. Geben Sie im Feld „Bot's response...“ (Antwort des Bots...) den Satz „Das Wetter in $Stadt ist wahrscheinlich sonnig“ ein.
 3. Klicken Sie auf die Schaltfläche „Erstellen“.
+
+![](../media/T10_action_create_2.png)
 
 ### <a name="create-the-third-action"></a>Erstellen der dritten Aktion
 
@@ -71,7 +77,11 @@ Jetzt erstellen wir drei Aktionen.
 3. Geben Sie im Feld „Disqualifying Entities“ (Disqualifizierende Entitäten) die Zeichenfolge „city“ (Stadt) ein.
 4. Klicken Sie auf die Schaltfläche „Erstellen“.
 
+![](../media/T10_action_create_3.png)
+
 Jetzt haben Sie drei Aktionen.
+
+![](../media/T10_actions.png)
 
 ### <a name="train-the-model"></a>Trainieren des Modells
 
@@ -82,7 +92,9 @@ Jetzt haben Sie drei Aktionen.
 5. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „Denver“ ein.
 6. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
 7. Wählen Sie die Antwort „The weather in Denver is probably sunny.“ (Das Wetter in Denver ist wahrscheinlich sonnig.) aus.
-8. Klicken Sie auf die Schaltfläche „Speichern“.
+8. Klicken Sie auf die Schaltfläche „Änderung übermitteln“.
+
+![](../media/T10_training_1.png)
 
 Wir trainieren das Modell weiter, indem wir einen weiteren Trainingsdialog erstellen.
 
@@ -96,7 +108,9 @@ Wir trainieren das Modell weiter, indem wir einen weiteren Trainingsdialog erste
 6. Klicken Sie auf „Seattle“ und anschließend in der Entitätsliste auf „City“ (Stadt).
 7. Klicken Sie auf die Schaltfläche „Score Actions“ (Bewertungsaktionen).
 8. Wählen Sie die Antwort „The weather in Seattle is probably sunny.“ (Das Wetter in Seattle ist wahrscheinlich sonnig.) aus.
-9. Klicken Sie auf die Schaltfläche „Speichern“.
+9. Klicken Sie auf die Schaltfläche „Änderung übermitteln“.
+
+![](../media/T10_training_2.png)
 
 ### <a name="third-model-train-dialog-using-alternative-input"></a>Dritter Modelltrainingsdialog mit alternativen Eingaben
 
@@ -106,27 +120,29 @@ Wir trainieren das Modell weiter, indem wir einen weiteren Trainingsdialog erste
     - Das Modell ist nicht mit Sicherheit die beste Option, daher hat es standardmäßig das höchste Perzentil gewählt.
 4. Klicken Sie auf die Schaltfläche „Training abbrechen“ und dann auf „Bestätigen“.
 
-![](../media/tutorial8_closescores.png)
+![](../media/T10_training_3.png)
 
 Jetzt optimieren wir das System mit alternativen Eingaben. Sie können alternative Eingaben während des Trainings oder später hinzufügen.
 
-5. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge), und wählen Sie dann „What can you do?“ (Was können Sie tun?) aus der Liste der Trainingsdialoge aus.
-6. Klicken Sie im Chatbereich auf die Äußerung „What can you do?“ (Was können Sie tun?).
-7. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „help“ (Hilfe) ein, und drücken Sie die EINGABETASTE.
-8. Klicken Sie auf die Schaltfläche „Änderungen speichern“.
+1. Klicken Sie im linken Bereich auf „Train Dialogs“ (Trainingsdialoge), und wählen Sie dann „What can you do?“ (Was können Sie tun?) aus der Liste der Trainingsdialoge aus.
+1. Klicken Sie im Chatbereich auf die Äußerung „What can you do?“ (Was können Sie tun?).
+1. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „help“ (Hilfe) ein, und drücken Sie die EINGABETASTE.
+1. Klicken Sie auf die Schaltfläche „Änderungen speichern“.
 
-![](../media/tutorial8_helpalternates.png)
+![](../media/T10_training_4.png)
 
 Nun fügen wir eine weitere alternative Eingabe für Houston hinzu.
 
-9. Klicken Sie im Chatbereich auf die Äußerung „What's the weather in Seattle?“ (Wie ist das Wetter in Seattle?).
-10. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „forecast for Houston“ (Vorhersage für Houston) ein, und drücken Sie die EINGABETASTE.
-    - Die Fehlermeldung hebt die Tatsache hervor, dass alternative Eingaben semantisch gleichwertig sein und die gleichen Entitäten wie die ursprüngliche Äußerung enthalten müssen, nicht nur die gleichen Werte von Entitäten. Das Vorhandensein der gleichen Entitäten ist erforderlich.
-11. Klicken Sie auf „Houston“, und wählen Sie „city“ (Stadt) aus der Entitätenliste aus.
-12. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „forecast for Seattle“ (Vorhersage für Seattle) ein, und drücken Sie die EINGABETASTE.
-13. Klicken Sie auf „Seattle“, und wählen Sie „city“ (Stadt) aus der Entitätenliste aus.
-14. Klicken Sie auf die Schaltfläche „Änderungen speichern“.
-15. Klicken Sie auf die Schaltfläche „Save Edit“ (Bearbeitung speichern).
+1. Klicken Sie im Chatbereich auf die Äußerung „What's the weather in Seattle?“ (Wie ist das Wetter in Seattle?).
+1. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „forecast for Houston“ (Vorhersage für Houston) ein, und drücken Sie die EINGABETASTE.
+   - Die Fehlermeldung hebt die Tatsache hervor, dass alternative Eingaben semantisch gleichwertig sein und die gleichen Entitäten wie die ursprüngliche Äußerung enthalten müssen, nicht nur die gleichen Werte von Entitäten. Das Vorhandensein der gleichen Entitäten ist erforderlich.
+1. Klicken Sie auf „Houston“, und wählen Sie „city“ (Stadt) aus der Entitätenliste aus.
+1. Geben Sie im Feld „Add alternative input...“ (Alternative Eingabe hinzufügen) die Zeichenfolge „forecast for Seattle“ (Vorhersage für Seattle) ein, und drücken Sie die EINGABETASTE.
+1. Klicken Sie auf „Seattle“, und wählen Sie „city“ (Stadt) aus der Entitätenliste aus.
+1. Klicken Sie auf die Schaltfläche „Änderungen speichern“.
+1. Klicken Sie auf die Schaltfläche „Save Edit“ (Bearbeitung speichern).
+
+![](../media/T10_training_5.png)
 
 ### <a name="testing-the-model"></a>Testen des Modells
 
@@ -134,7 +150,7 @@ Nun fügen wir eine weitere alternative Eingabe für Houston hinzu.
 2. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „help me“ (Hilfe) ein.
 3. Geben Sie im Chatbereich unter „Type your message...“ (Nachricht eingeben...) die Zeichenfolge „forecast for Denver“ (Vorhersage für Denver) ein.
 
-![](../media/tutorial8_altcities.png)
+![](../media/T10_logdialog.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

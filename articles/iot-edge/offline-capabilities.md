@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 7bf672715b45233807ab848c78aeb1bed2d352e9
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: e82c842ec8fce703c48c98eaf09ea5c8d91be9be
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699345"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57307988"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices-preview"></a>Grundlegendes zu erweiterten Offlinefunktionen für IoT Edge-Geräte und -Module sowie untergeordnete Geräte (Vorschau)
 
@@ -73,7 +73,7 @@ Zur Verbesserung der Stabilität empfiehlt es sich, die in Ihrer Umgebung verwen
 
 ```json
 {
-    "dns": [“1.1.1.1”]
+    "dns": ["1.1.1.1"]
 }
 ```
 
@@ -136,7 +136,7 @@ Sie können Umgebungsvariablen und die Erstellungsoptionen für das IoT Edge-Hub
 
 Ersetzen Sie `<HostStoragePath>` und `<ModuleStoragePath>` durch den Speicherpfad für Ihren Host und Ihr Modul; bei beiden muss es sich um absolute Pfade handeln. Binden Sie in den Erstellungsoptionen die Speicherpfade für Host und Modul zusammen. Erstellen Sie dann eine Umgebungsvariable, die auf den Speicherpfad für das Modul zeigt.  
 
-Beispielsweise bedeutet `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`, dass das Verzeichnis **/etc/iotedge/storage** in Ihrem Hostsystem dem Verzeichnis **/iotedge/storage/** für den Container zugeordnet ist. In einem weiteren Beispiel zu Windows-Systemen bedeutet `"Binds":["C:\\temp:C:\\contemp]"`, dass das Verzeichnis **C:\\temp** in Ihrem Hostsystem dem Verzeichnis **C:\\contemp** für den Container zugeordnet ist. 
+Beispielsweise bedeutet `"Binds":["/etc/iotedge/storage/:/iotedge/storage/"]`, dass das Verzeichnis **/etc/iotedge/storage** in Ihrem Hostsystem dem Verzeichnis **/iotedge/storage/** für den Container zugeordnet ist. In einem weiteren Beispiel zu Windows-Systemen bedeutet `"Binds":["C:\\temp:C:\\contemp"]`, dass das Verzeichnis **C:\\temp** in Ihrem Hostsystem dem Verzeichnis **C:\\contemp** für den Container zugeordnet ist. 
 
 Weitere Details zu Erstellungsoptionen finden Sie in der [Docker-Dokumentation](https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate).
 

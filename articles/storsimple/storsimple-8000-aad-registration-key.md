@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: b1ea195ab0b06c4ca0fab37fe7e5701229b34938
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 01d36188c1684eae8303cb20ba0fd0c708ff91ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49387037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079911"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Verwenden der neuen Authentifizierung für StorSimple
 
@@ -59,7 +59,7 @@ Wenn die Authentifizierungs-URL nach dem Datum der Einstellung nicht in den Fire
 Ermitteln Sie bei Verwendung eines StorSimple 8000-Geräts anhand der folgenden Tabelle, welche Aktion Sie abhängig von der verwendeten Gerätesoftwareversion ausführen müssen.
 
 | Geräteversion| Auszuführende Aktion                                    |
-|--------------------------|------------------------|--------------------|--------------------------------------------------------------|
+|--------------------------|------------------------|
 | Das Gerät verfügt mindestens über Update 5 und ist offline. <br> Sie erhalten eine Warnung mit dem Hinweis, dass die URL nicht in der Whitelist enthalten ist.|1. Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen. Siehe [Authentifizierungs-URLs](#url-changes-for-aad-authentication).<br>2. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys).<br>3. [Stellen Sie eine Verbindung mit der Windows PowerShell-Schnittstelle des StorSimple 8000-Geräts her](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. Verwenden Sie das Cmdlet `Redo-DeviceRegistration`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|
 | Das Gerät verfügt mindestens über Update 5 und ist online.| Es ist keine Aktion erforderlich.                                       |
 | Das Gerät verfügt über Update 4 oder eine niedrigere Version und ist offline. |1. Ändern Sie die Firewallregeln, um die Authentifizierungs-URL einzuschließen.<br>2. [Laden Sie Update 5 über den Katalogserver herunter](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Wenden Sie Update 5 über die Hotfixmethode an](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Rufen Sie den AAD-Registrierungsschlüssel aus dem Dienst ab](#aad-based-registration-keys).<br>5. [Stellen Sie eine Verbindung mit der Windows PowerShell-Schnittstelle des StorSimple 8000-Geräts her](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. Verwenden Sie das Cmdlet `Redo-DeviceRegistration`, um das Gerät über Windows PowerShell zu registrieren. Geben Sie den Schlüssel an, den Sie im vorherigen Schritt abgerufen haben.|

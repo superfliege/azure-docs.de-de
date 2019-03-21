@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: bd229179-7199-4aab-bae0-1baf072c7659
 ms.date: 05/26/2017
-ms.openlocfilehash: 25b33242b9f7bddf0497067f111ca3fb4a1ea570
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 620ede672d71338abeff5198fd5f94e92dc193d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600715"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57895854"
 ---
 # <a name="create-custom-apis-you-can-call-from-azure-logic-apps"></a>Erstellen benutzerdefinierter APIs, die über Azure Logic Apps aufgerufen werden können
 
@@ -25,7 +25,7 @@ Obwohl Azure Logic Apps [100+ integrierte Connectors](../connectors/apis-list.md
 * Um Kunden zu helfen, Ihren Dienst zum Verwalten professioneller oder persönlicher Aufgaben zu verwenden.
 * Erweitern von Reichweite, Erkennbarkeit und Verwendung Ihres Diensts.
 
-Connectors sind grundsätzlich Web-APIs, die REST-APIs für austauschbare Schnittstellen, [Swagger-Metadatenformat](http://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung von Connectors verwenden. Sie können Ihre APIs auch in [Azure App Service](../app-service/overview.md) hosten, einem „Platform as a Service“-Angebot (PaaS), das eine der besten, einfachsten und skalierbarsten Möglichkeiten zum Hosten von APIs bietet. 
+Connectors sind grundsätzlich Web-APIs, die REST-APIs für austauschbare Schnittstellen, [Swagger-Metadatenformat](https://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung von Connectors verwenden. Sie können Ihre APIs auch in [Azure App Service](../app-service/overview.md) hosten, einem „Platform as a Service“-Angebot (PaaS), das eine der besten, einfachsten und skalierbarsten Möglichkeiten zum Hosten von APIs bietet. 
 
 Damit benutzerdefinierte APIs mit Logik-Apps funktionieren, kann Ihre API [*Aktionen*](./logic-apps-overview.md#logic-app-concepts) bereitstellen, die bestimmte Aufgaben in Logis App-Workflows ausführen. Ihre API kann auch als [*Trigger*](./logic-apps-overview.md#logic-app-concepts) dienen, der einen Logik-App-Workflow startet, wenn neue Daten oder ein Ereignis eine angegebene Bedingung erfüllen. Dieses Thema beschreibt allgemeine Muster, die Sie zum Erstellen von Aktionen und Triggern in Ihrer API befolgen können, basierend auf dem Verhalten, dass Ihre API bieten soll.
 
@@ -41,11 +41,11 @@ Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten,
 > * [Python](../app-service/containers/quickstart-python.md)
 > * [Ruby](../app-service/containers/quickstart-ruby.md)
 >
-> API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](http://github.com/logicappsio) oder [Blog](https://aka.ms/logicappsblog).
+> API-App-Beispiele für Logik-Apps finden Sie im [Azure Logic Apps GitHub-Repository](https://github.com/logicappsio) oder [Blog](https://aka.ms/logicappsblog).
 
 ## <a name="how-do-custom-apis-differ-from-custom-connectors"></a>Wie unterscheiden sich benutzerdefinierte APIs von benutzerdefinierten Connectors?
 
-Benutzerdefinierte APIs und [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) sind Web-APIs, die REST-APIs für austauschbare Schnittstellen, das [Swagger-Metadatenformat](http://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da diese APIS und Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung benutzerdefinierter APIs und Connectors verwenden.
+Benutzerdefinierte APIs und [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) sind Web-APIs, die REST-APIs für austauschbare Schnittstellen, das [Swagger-Metadatenformat](https://swagger.io/specification/) für Dokumentation und JSON als Datenaustauschformat verwenden. Da diese APIS und Connectors REST-APIs sind, die über HTTP-Endpunkte kommunizieren, können Sie eine beliebige Sprache wie .NET, Java oder Node.js für die Erstellung benutzerdefinierter APIs und Connectors verwenden.
 
 Mit benutzerdefinierten APIs können Sie APIs aufrufen, die keine Connectors sind, und Endpunkte bereitstellen, die Sie mit HTTP + Swagger, Azure API Management oder App Services aufrufen können. Benutzerdefinierte Connectors funktionieren wie benutzerdefinierte APIs, haben aber auch diese Merkmale:
 
@@ -63,7 +63,7 @@ Weitere Informationen zu benutzerdefinierten Connectors finden Sie unter
 
 ## <a name="helpful-tools"></a>Nützliche Tools
 
-Eine benutzerdefinierte API funktioniert am besten mit Logik-Apps, wenn die API auch über ein [Swagger-Dokument](http://swagger.io/specification/) verfügt, das die API-Vorgänge und -Parameter beschreibt.
+Eine benutzerdefinierte API funktioniert am besten mit Logik-Apps, wenn die API auch über ein [Swagger-Dokument](https://swagger.io/specification/) verfügt, das die API-Vorgänge und -Parameter beschreibt.
 Viele Bibliotheken wie [Swashbuckle](https://github.com/domaindrivendev/Swashbuckle) können die Swagger-Datei automatisch für Sie generieren. Um die Swagger-Datei für Anzeigenamen, Eigenschaftentypen usw. mit Anmerkungen zu versehen, können Sie auch [TRex](https://github.com/nihaue/TRex) verwenden, damit Ihre Swagger-Datei gut mit Logik-Apps funktioniert.
 
 <a name="actions"></a>
@@ -176,7 +176,7 @@ Um beispielsweise Ihren Dienst in regelmäßigen Abständen auf neue Dateien zu 
 | Anforderung enthält `triggerState`? | API-Antwort | 
 | -------------------------------- | -------------| 
 | Nein  | Zurückgeben eines HTTP-`202 ACCEPTED`-Status zuzüglich eines `location`-Headers, wobei `triggerState` auf den aktuellen Zeitpunkt und das `retry-after`-Intervall auf 15 Sekunden festgelegt ist. | 
-| JA | Überprüfen Ihres Diensts auf Dateien, die nach `DateTime` für `triggerState` hinzugefügt wurden. | 
+| Ja | Überprüfen Ihres Diensts auf Dateien, die nach `DateTime` für `triggerState` hinzugefügt wurden. | 
 ||| 
 
 | Anzahl der gefundenen Dateien | API-Antwort | 

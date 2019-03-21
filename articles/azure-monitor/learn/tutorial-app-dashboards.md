@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 5ce99e06ea1a8e72a8767367ddfd7bbb845c8400
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 3abe0511200bf5828b485b15a4b8a512731c4ffa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54318422"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082125"
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Erstellen benutzerdefinierter KPI-Dashboards mithilfe von Azure Application Insights
 
@@ -42,18 +42,18 @@ Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim 
 ## <a name="create-a-new-dashboard"></a>Erstellen eines neuen Dashboards
 Ein einzelnes Dashboard kann Ressourcen aus mehreren Anwendungen, Ressourcengruppen und Abonnements enthalten.  Starten Sie das Tutorial, indem Sie ein neues Dashboard für Ihre Anwendung erstellen.  
 
-2.  Wählen Sie im Bereich „Dashboard“ die Option **Neues Dashboard**
+1. Wählen Sie im Bereich „Dashboard“ die Option **Neues Dashboard**
 
-    ![Neues Dashboard](media/tutorial-app-dashboards/1newdashboard.png)
+   ![Neues Dashboard](media/tutorial-app-dashboards/1newdashboard.png)
 
-3. Geben Sie einen Namen für das Dashboard ein.
-4. Werfen Sie einen Blick auf den **Kachelkatalog**. Dort finden Sie verschiedene Kacheln, die Sie zum Dashboard hinzufügen können.  Sie können aber nicht nur Kacheln aus dem Katalog hinzufügen. Sie haben außerdem die Möglichkeit, Diagramme und andere Ansichten direkt aus Application Insights an das Dashboard anzuheften.
-5. Suchen Sie die Kachel **Markdown**, und ziehen Sie sie in Ihr Dashboard.  Diese Kachel ermöglicht es Ihnen, in Markdown formatierten Text hinzuzufügen. Diese Funktion eignet sich ideal, um Ihrem Dashboard beschreibenden Text hinzuzufügen.
-6. Fügen Sie den Eigenschaften der Kachel Text hinzu, und passen Sie deren Größe im Dashboardbereich an.
+1. Geben Sie einen Namen für das Dashboard ein.
+1. Werfen Sie einen Blick auf den **Kachelkatalog**. Dort finden Sie verschiedene Kacheln, die Sie zum Dashboard hinzufügen können.  Sie können aber nicht nur Kacheln aus dem Katalog hinzufügen. Sie haben außerdem die Möglichkeit, Diagramme und andere Ansichten direkt aus Application Insights an das Dashboard anzuheften.
+1. Suchen Sie die Kachel **Markdown**, und ziehen Sie sie in Ihr Dashboard.  Diese Kachel ermöglicht es Ihnen, in Markdown formatierten Text hinzuzufügen. Diese Funktion eignet sich ideal, um Ihrem Dashboard beschreibenden Text hinzuzufügen.
+1. Fügen Sie den Eigenschaften der Kachel Text hinzu, und passen Sie deren Größe im Dashboardbereich an.
     
     ![Bearbeiten der Markdown-Kachel](media/tutorial-app-dashboards/2dashboard-text.png)
 
-6. Klicken Sie oben auf dem Bildschirm auf **Anpassung abgeschlossen**, um den Bearbeitungsmodus für die Kachel zu beenden.
+1. Klicken Sie oben auf dem Bildschirm auf **Anpassung abgeschlossen**, um den Bearbeitungsmodus für die Kachel zu beenden.
 
 ## <a name="add-health-overview"></a>Hinzufügen der Integritätsübersicht
 Ein Dashboard, das nur statischen Text enthält, ist nicht besonders interessant. Fügen Sie daher eine Kachel aus Application Insights hinzu, um Informationen zu Ihrer Anwendung darzustellen.  Application Insights-Kacheln lassen sich aus dem Kachelkatalog hinzufügen oder direkt von Application Insights-Bildschirmen anheften.  Dadurch können Sie Diagramme und Ansichten konfigurieren, mit denen Sie bereits vertraut sind, bevor Sie diese an Ihr Dashboard anheften.  Fügen Sie zuerst die Standardübersicht über die Integrität Ihrer Anwendung hinzu.  Dies erfordert keine Konfiguration und ermöglicht minimale Anpassungen im Dashboard.

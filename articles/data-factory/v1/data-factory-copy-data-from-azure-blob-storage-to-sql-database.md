@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0a46a5707d1901c18d850ff9cfd8d4b09b72c646
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 7accb8f2d97f5e4b4dc19ba93ab9edc1a4e6ce8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021270"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541332"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Tutorial: Kopieren von Daten aus Blob Storage in SQL-Datenbank mithilfe von Data Factory
 > [!div class="op_single_selector"]
@@ -93,7 +93,7 @@ Nun bereiten Sie Ihre Azure Blob Storage-Instanz und Azure SQL-Datenbank durch A
     John, Doe
     Jane, Doe
     ```
-2. Verwenden Sie Tools wie den [Azure Storage-Explorer](http://storageexplorer.com/) zum Erstellen des Containers **adftutorial** und zum Hochladen der Datei **emp.txt** in den Container.
+2. Verwenden Sie Tools wie den [Azure Storage-Explorer](https://storageexplorer.com/) zum Erstellen des Containers **adftutorial** und zum Hochladen der Datei **emp.txt** in den Container.
 
     ![Azure Storage-Explorer. Kopieren von Daten aus Blob Storage in SQL-Datenbank](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. Verwenden Sie das folgende SQL-Skript, um die Tabelle **emp** in der Azure SQL-Datenbank zu erstellen.  

@@ -12,12 +12,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/28/2019
 ms.author: jowargo
-ms.openlocfilehash: c572f64bdcb8846b5f73a0fee34f11c9729ee45d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99ea21b3eb01a674a89c70a1b923f02e600cc3c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55885054"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999481"
 ---
 # <a name="change-pricing-tier-of-an-azure-notification-hubs-namespace"></a>Ändern des Tarifs bei Azure Notification Hubs-Namespace
 Notification Hubs wird in drei Tarifen angeboten: **Free**, **Basic** und **Standard**. In diesem Artikel wird das Ändern des Tarifs für einen Azure Notification Hubs-Namespace veranschaulicht. 
@@ -77,7 +77,7 @@ Zum **Aktualisieren des Namespacetarifs** senden Sie einen PUT-Befehl, wie im fo
 
 ```REST
 PUT: https://management.core.windows.net/{subscription ID}/services/ServiceBus/Namespaces/{namespace name}/notificationhubplan
-Body: <NotificationHubPlan xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"><SKU>Standard</SKU></NotificationHubPlan>
+Body: <NotificationHubPlan xmlns:i="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/netservices/2010/10/servicebus/connect"><SKU>Standard</SKU></NotificationHubPlan>
 ```
 
 

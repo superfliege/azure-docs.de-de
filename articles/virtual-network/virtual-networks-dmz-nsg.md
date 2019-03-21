@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
-ms.openlocfilehash: 680b47fd65cfde1fe01dfff9b74ddd42d1a73c1f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 68655ea03f53fe7100f67d111fcd3c8595bdf4c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54052392"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109391"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>Beispiel 1 – Erstellen einer einfachen DMZ unter Verwendung von NSGs mit einer Azure Resource Manager-Vorlage 
 [Zurück zur Seite mit Best Practices zu Sicherheitsgrenzen][HOME]
@@ -97,14 +97,14 @@ Jede Regel wird wie folgt ausführlicher erläutert:
     ``` 
 
 2. Die erste Regel in diesem Beispiel lässt DNS-Datenverkehr zwischen allen internen Netzwerken und dem DNS-Server im Back-End-Subnetz zu. Die Regel weist einige wichtige Parameter auf:
-  * „destinationAddressPrefix„ – das Präfix der Zieladresse ist auf „10.0.2.4“ festgelegt, sodass DNS-Datenverkehr den DNS-Server erreichen darf.
-  * „Direction“ gibt an, in welcher Datenverkehrsflussrichtung diese Regel wirksam wird. Die Richtung kann aus der Perspektive des Subnetzes oder virtuellen Computers bestimmt werden (je nachdem, wie diese NSG gebunden ist). Wenn die Richtung „eingehend“ lautet und Datenverkehr an das Subnetz gesendet wird, wird die Regel angewendet. Auf Datenverkehr, der das Subnetz verlässt, wirkt sich die Regel dagegen nicht aus.
-  * Der Parameter „Priority“ legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Wenn eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
-  * Der Parameter „Access“ gibt an, ob Datenverkehr, auf den diese Regel zutrifft, blockiert („Deny“) oder zugelassen („Allow“) wird.
+   * „destinationAddressPrefix„ – das Präfix der Zieladresse ist auf „10.0.2.4“ festgelegt, sodass DNS-Datenverkehr den DNS-Server erreichen darf.
+   * „Direction“ gibt an, in welcher Datenverkehrsflussrichtung diese Regel wirksam wird. Die Richtung kann aus der Perspektive des Subnetzes oder virtuellen Computers bestimmt werden (je nachdem, wie diese NSG gebunden ist). Wenn die Richtung „eingehend“ lautet und Datenverkehr an das Subnetz gesendet wird, wird die Regel angewendet. Auf Datenverkehr, der das Subnetz verlässt, wirkt sich die Regel dagegen nicht aus.
+   * Der Parameter „Priority“ legt die Reihenfolge fest, in der ein Datenverkehrsfluss ausgewertet wird. Je niedriger die Nummer ist, desto höher ist die Priorität. Wenn eine Regel auf einen bestimmten Datenverkehrsfluss angewendet wird, werden keine weiteren Regeln verarbeitet. Wenn daher eine Regel mit Priorität 1 Datenverkehr zulässt und eine Regel mit Priorität 2 Datenverkehr ablehnt und beide Regeln auf einen Datenverkehrsfluss zutreffen, wird dieser Datenverkehr zugelassen, da Regel 1 mit der höheren Priorität greift und keine weiteren Regeln angewendet werden.
+   * Der Parameter „Access“ gibt an, ob Datenverkehr, auf den diese Regel zutrifft, blockiert („Deny“) oder zugelassen („Allow“) wird.
 
-    ```JSON
-    "properties": {
-    "securityRules": [
+     ```JSON
+     "properties": {
+     "securityRules": [
       {
         "name": "enable_dns_rule",
         "properties": {
@@ -119,7 +119,7 @@ Jede Regel wird wie folgt ausführlicher erläutert:
           "direction": "Inbound"
         }
       },
-    ```
+     ```
 
 3. Diese Regel lässt RDP-Datenverkehr aus dem Internet an den RDP-Port auf jedem Server im gebundenen Subnetz zu. 
 
@@ -221,23 +221,23 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 1. Ein Internetbenutzer fordert eine HTTP-Seite von der öffentlichen IP-Adresse der NIC an, die mit der IIS01-NIC verknüpft ist.
 2. Die öffentliche IP-Adresse übergibt Datenverkehr an das VNet in Richtung IIS01 (Webserver).
 3. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-  2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-  3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. Datenverkehr trifft an interner IP-Adresse des Webservers IIS01 ein (10.0.1.5).
 5. IIS01 lauscht auf Webdatenverkehr, empfängt diese Anforderung und beginnt mit der Verarbeitung der Anforderung.
 6. IIS01 fragt Informationen von SQL Server unter AppVM01 ab.
 7. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 8. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-  2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-  3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
-  4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an Firewall) trifft nicht zu, weiter zur nächsten Regel.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 9. AppVM01 empfängt die SQL-Abfrage und antwortet.
 10. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 11. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-  2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
+    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
+    2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 12. Der IIS-Server empfängt die SQL-Antwort, erstellt die HTTP-Antwort und sendet sie an den Anforderer.
 13. Da im Front-End-Subnetz keine ausgehenden Regeln vorhanden sind, wird die Antwort zugelassen, und der Internetbenutzer empfängt die angeforderte Webseite.
 
@@ -245,8 +245,8 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 1. Ein Serveradministrator fordert im Internet eine RDP-Sitzung mit IIS01 über die öffentliche IP-Adresse der NIC an, die mit der IIS01-NIC verknüpft ist (diese öffentliche IP-Adresse kann über das Portal oder PowerShell abgerufen werden).
 2. Die öffentliche IP-Adresse übergibt Datenverkehr an das VNet in Richtung IIS01 (Webserver).
 3. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-  2. NSG-Regel 2 (RDP) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. Da keine ausgehenden Regeln vorhanden sind, werden Standardregeln angewendet, und der zurückkommende Datenverkehr wird zugelassen.
 5. Die RDP-Sitzung wird aktiviert.
 6. IIS01 fordert zur Eingabe von Benutzername und Kennwort auf.
@@ -261,7 +261,7 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 2. Die Netzwerkkonfiguration für das VNet listet DNS01 (10.0.2.4 im Back-End-Subnetz) als primären DNS-Server auf, IIS01 sendet die DNS-Anforderung an DNS01.
 3. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 4. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  * NSG-Regel 1 (DNS) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   * NSG-Regel 1 (DNS) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 5. DNS-Server empfängt Anforderung.
 6. Die Adresse ist nicht im DNS-Server zwischengespeichert, daher fragt der DNS-Server die Adresse bei einem DNS-Stammserver im Internet ab.
 7. Keine ausgehenden Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
@@ -269,23 +269,23 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 9. Der DNS-Server speichert die Antwort zwischen und gibt die Antwort auf die ursprüngliche Anforderung zurück an IIS01.
 10. Keine ausgehenden Regeln im Back-End-Subnetz, Datenverkehr wird zugelassen.
 11. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-  2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
+    1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
+    2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 12. IIS01 empfängt die Antwort von DNS01.
 
 #### <a name="allowed-web-server-access-file-on-appvm01"></a>(*Zugelassen*) Webserver-Zugriffsdatei unter AppVM01
 1. IIS01 fragt nach einer Datei unter AppVM01.
 2. Keine ausgehenden Regeln im Front-End-Subnetz, Datenverkehr wird zugelassen.
 3. Das Back-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-  2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-  3. NSG-Regel 3 (Internet an IIS01) trifft nicht zu, weiter zur nächsten Regel.
-  4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft nicht zu, weiter zur nächsten Regel.
+   4. NSG-Regel 4 (IIS01 an AppVM01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. AppVM01 empfängt die Anforderung und antwortet mit der Datei (autorisierter Zugriff vorausgesetzt).
 5. Da es keine ausgehenden Regeln im Back-End-Subnetz gibt, wird die Antwort zugelassen.
 6. Das Front-End-Subnetz beginnt mit der Verarbeitung der eingehenden Regel:
-  1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
-  2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
+   1. Es gibt keine NSG-Regel für eingehenden Datenverkehr vom Back-End- zum Front-End-Subnetz, daher trifft keine der NSG-Regeln zu.
+   2. Da die standardmäßige Systemregel Datenverkehr zwischen Subnetzen zulässt, wird der Datenverkehr zugelassen.
 7. Der IIS-Server empfängt die Datei.
 
 #### <a name="denied-rdp-to-backend"></a>(*Verweigert*) RDP an Back-End
@@ -312,9 +312,9 @@ Jede Regel wird wie folgt ausführlicher erläutert:
 1. Ein Internetbenutzer fordert SQL-Daten von IIS01 an.
 2. Da keine öffentlichen IP-Adressen mit der NIC dieses Servers verknüpft sind, würde dieser Datenverkehr nie in das VNet eingehen und den Server nicht erreichen.
 3. Wenn eine öffentliche IP-Adresse aus beliebigem Grund aktiviert wäre, würde das Front-End-Subnetz mit der Verarbeitung der eingehenden Regel beginnen:
-  1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
-  2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
-  3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
+   1. NSG-Regel 1 (DNS) trifft nicht zu, weiter zur nächsten Regel.
+   2. NSG-Regel 2 (RDP) trifft nicht zu, weiter zur nächsten Regel.
+   3. NSG-Regel 3 (Internet an IIS01) trifft zu, Datenverkehr wird zugelassen, Regelverarbeitung wird beendet.
 4. Datenverkehr trifft an interner IP-Adresse von IIS01 ein (10.0.1.5).
 5. IIS01 lauscht nicht auf Port 1433, daher wird diese Anforderung nicht beantwortet.
 

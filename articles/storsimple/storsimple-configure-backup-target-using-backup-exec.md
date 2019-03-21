@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
-ms.openlocfilehash: 8cde3402ef52747e61333c56903309259e07599a
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747593"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011141"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>StorSimple als Sicherungsziel mit Backup Exec
 
@@ -94,6 +94,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 |------------------------|---------------|-----------------|
 | Lokale Speicherkapazität | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Cloudspeicherkapazität | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Bei der Speichergröße wird von nicht deduplizierten und nicht komprimierten Daten ausgegangen.
 
 **StorSimple-Kapazitäten für primäre und sekundäre Sicherungen**
@@ -206,16 +207,16 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 
 ### <a name="operating-system-best-practices"></a>Bewährte Methoden für das Betriebssystem
 
--   Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
--   Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
--   Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
--   Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
--   Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
-   - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
-   - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Azure-PowerShell als Administrator aus, und geben Sie Folgendes ein:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
+- Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
+- Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
+- Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
+- Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
+  - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
+  - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Azure-PowerShell als Administrator aus, und geben Sie Folgendes ein:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Bewährte Methoden für StorSimple
 
@@ -259,6 +260,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
 | Zusätzliches Kontingent  | 4  |   | 42 (GFS-Anforderung gesamt)  |
+
 \* Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um die Anforderungen Ihrer Sicherungsrichtlinie zu erfüllen.
 
 ## <a name="set-up-backup-exec-storage"></a>Einrichten von Backup Exec-Speicher
@@ -312,7 +314,7 @@ Hier sehen Sie ein Beispiel für einen GFS-Rotationszeitplan für „Vier Wochen
 |---|---|---|
 | Wöchentlich (Woche 1 - 4) | Samstag | Montag - Freitag |
 | Monatlich  | Samstag  |   |
-| Jährlich | Samstag  |   |   |
+| Jährlich | Samstag  |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-backup-job"></a>Zuweisen von StorSimple-Volumes zu einem Backup Exec-Sicherungsauftrag
@@ -373,6 +375,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 | Monatlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 12 | 12 |
 | Jährlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 1 | 1 |
 |Größenanforderungen für GFS-Volumes |  |  |  | 18*|
+
 \* Die Gesamtkapazität umfasst 17 TiB für StorSimple-Datenträger und 1 TiB für lokale RAID-Volumes.
 
 
@@ -385,7 +388,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 | Woche 3 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Woche 4 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Monatlich | StorSimple monatlich |   |   |   |   |   |
-| Jährlich | StorSimple jährlich  |   |   |   |   |   |   |
+| Jährlich | StorSimple jährlich  |   |   |   |   |   |
 
 
 ### <a name="assign-storsimple-volumes-to-a-backup-exec-archive-and-deduplication-job"></a>Zuweisen von StorSimple-Volumes zu einem Backup Exec-Archivierungs- und Deduplizierungsauftrag
@@ -445,15 +448,15 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>So starten oder löschen Sie eine Cloudmomentaufnahme
 
-1.  [Installieren Sie Azure PowerShell](/powershell/azure/overview).
+1. [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 2. Herunterladen und Einrichten des [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1)-PowerShell-Skripts.
 3. Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Stellen Sie sicher, dass Sie das Skript mit `-WhatIf $true` ausführen, um festzustellen, welche Änderungen das Skript durchführt. Sobald die Überprüfung abgeschlossen ist, lassen Sie `-WhatIf $false` ausführen. Führen Sie den folgenden Befehl aus:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Fügen Sie das Skript Ihrem Sicherungsauftrag in Backup Exec hinzu, indem Sie die Befehle für die Vor- und Nachverarbeitung in den Backup Exec-Auftragsoptionen bearbeiten.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Fügen Sie das Skript Ihrem Sicherungsauftrag in Backup Exec hinzu, indem Sie die Befehle für die Vor- und Nachverarbeitung in den Backup Exec-Auftragsoptionen bearbeiten.
 
-    ![Backup Exec-Konsole, Sicherungsoptionen, Registerkarte mit Befehlen für die Vor- und Nachverarbeitung](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
+   ![Backup Exec-Konsole, Sicherungsoptionen, Registerkarte mit Befehlen für die Vor- und Nachverarbeitung](./media/storsimple-configure-backup-target-using-backup-exec/image25.png)
 
 > [!NOTE]
 > Es empfiehlt sich, die Sicherungsrichtlinie für StorSimple-Cloudmomentaufnahmen als Nachverarbeitungsskript am Ende des täglichen Sicherungsauftrags auszuführen. Weitere Informationen zum Sichern und Wiederherstellen Ihrer Sicherungsanwendungsumgebung, um Ihre RPO- und RTO-Ziele zu erfüllen, erhalten Sie von Ihrem Sicherungsarchitekten.

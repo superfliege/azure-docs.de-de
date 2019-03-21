@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6b97968540914bf1edf5624d04e8f47956de7f0d
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822254"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084605"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>Kopieren von Daten in eine bzw. aus einer lokalen Oracle-Instanz mit Azure Data Factory
 
@@ -56,11 +56,11 @@ Das Gateway ist auch dann erforderlich, wenn Oracle in einer Azure IaaS-VM (Infr
 Dieser Connector für Oracle unterstützt zwei Treiberversionen:
 
 - **Microsoft-Treiber für Oracle (empfohlen)**: Ab dem Datenverwaltungsgateway Version 2.7 wird mit dem Gateway automatisch ein Microsoft-Treiber für Oracle installiert. Sie müssen den Treiber nicht installieren oder aktualisieren, um eine Verbindung mit Oracle herzustellen. Sie können auch eine bessere Kopierleistung erzielen, wenn Sie diesen Treiber verwenden. Die folgenden Versionen von Oracle-Datenbanken werden unterstützt:
-    - Oracle 12c R1 (12.1)
-    - Oracle 11g R1, R2 (11.1, 11.2)
-    - Oracle 10g R1, R2 (10.1, 10.2)
-    - Oracle 9i R1, R2 (9.0.1, 9.2)
-    - Oracle 8i R3 (8.1.7)
+  - Oracle 12c R1 (12.1)
+  - Oracle 11g R1, R2 (11.1, 11.2)
+  - Oracle 10g R1, R2 (10.1, 10.2)
+  - Oracle 9i R1, R2 (9.0.1, 9.2)
+  - Oracle 8i R3 (8.1.7)
 
     > [!NOTE]
     > Der Oracle-Proxyserver wird nicht unterstützt.
@@ -69,7 +69,7 @@ Dieser Connector für Oracle unterstützt zwei Treiberversionen:
     > Der Microsoft-Treiber für Oracle unterstützt zurzeit nur das Kopieren von Daten aus Oracle. Der Treiber unterstützt nicht das Schreiben in Oracle. Die Testverbindungsfunktion auf der Registerkarte **Diagnose** des Datenverwaltungsgateways unterstützt diesen Treiber nicht. Alternativ können Sie den Assistenten zum Kopieren verwenden, um die Konnektivität zu überprüfen.
     >
 
-- **Oracle-Datenanbieter für .NET**: Sie können den Oracle-Datenanbieter verwenden, um Daten aus oder nach Oracle zu kopieren. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](http://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die entsprechende Version (32-Bit oder 64-Bit) auf dem Computer, auf dem das Gateway installiert ist. Der [Oracle-Datenanbieter .NET 12.1](http://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
+- **Oracle-Datenanbieter für .NET**: Sie können den Oracle-Datenanbieter verwenden, um Daten aus oder nach Oracle zu kopieren. Diese Komponente ist in [Oracle Data Access Components (ODAC) für Windows](https://www.oracle.com/technetwork/topics/dotnet/downloads/)enthalten. Installieren Sie die entsprechende Version (32-Bit oder 64-Bit) auf dem Computer, auf dem das Gateway installiert ist. Der [Oracle-Datenanbieter .NET 12.1](https://docs.oracle.com/database/121/ODPNT/InstallSystemRequirements.htm#ODPNT149) kann auf Oracle Database 10g, Version 2 oder höher, zugreifen.
 
     Wenn Sie **XCopy-Installation** auswählen, führen Sie die in der Datei „readme.htm“ beschriebenen Schritte aus. Es wird empfohlen, den Installer mit der Benutzeroberfläche auszuwählen (nicht den XCopy-Installer).
 
@@ -183,7 +183,7 @@ Wenn bei der Kopieraktivität eine Quelle vom Typ **OracleSource** verwendet wir
 | writeBatchTimeout |Die Wartezeit für den Abschluss der Batcheinfügung, bevor ein Timeout auftritt. |**timespan**<br/><br/> Beispiel: 00:30:00 (30 Minuten) |Nein  |
 | writeBatchSize |Fügt Daten in die SQL-Tabelle ein, wenn die Puffergröße den Wert von **writeBatchSize** erreicht. |Integer (Gesamtanzahl von Zeilen) |Nein (Standardwert: 100) |
 | sqlWriterCleanupScript |Gibt eine Abfrage für die auszuführende Kopieraktivität an, damit die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein  |
-| sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll.  Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein  |
+| sliceIdentifierColumnName |Gibt den Spaltennamen der Spalte an, die die Kopieraktivität mit einem automatisch generierten Slicebezeichner auffüllen soll. Der Wert für **sliceIdentifierColumnName** wird verwendet, um Daten eines bestimmten Slice bei erneuter Ausführung zu bereinigen. |Der Spaltenname einer Spalte, die den Datentyp **binary(32)** aufweist. |Nein  |
 
 ## <a name="json-examples-for-copying-data-to-and-from-the-oracle-database"></a>JSON-Beispiele zum Kopieren von Daten in die bzw. aus der Oracle-Datenbank
 
@@ -557,7 +557,7 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 **Fehlermeldung**
 
-    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .Net Framework Data Provider. It may not be installed.
+    Copy activity met invalid parameters: 'UnknownParameterName', Detailed message: Unable to find the requested .NET Framework Data Provider. It may not be installed.
 
 **Mögliche Ursachen**
 
@@ -566,10 +566,10 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 
 **Lösung**
 
-* Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [installieren Sie ihn](http://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario.
+* Falls Sie den .NET Framework-Datenanbieter für Oracle nicht installiert haben, [installieren Sie ihn](https://www.oracle.com/technetwork/topics/dotnet/downloads/), und wiederholen Sie anschließend das Szenario.
 * Falls Sie die Fehlermeldung auch nach der Installation des Anbieters erhalten, führen Sie die folgenden Schritte aus:
-   1. Öffnen Sie die Computerkonfigurationsdatei für .NET 2.0 aus dem Ordner <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
-   2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Es sollte ein Eintrag vorhanden sein, wie im folgenden Beispiel unter **system.data** > **DbProviderFactories** gezeigt: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
+    1. Öffnen Sie die Computerkonfigurationsdatei für .NET 2.0 aus dem Ordner <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v2.0.50727\CONFIG\machine.config.
+    2. Suchen Sie nach **Oracle-Datenanbieter für .NET**. Es sollte ein Eintrag vorhanden sein, wie im folgenden Beispiel unter **system.data** > **DbProviderFactories** gezeigt: `<add name="Oracle Data Provider for .NET" invariant="Oracle.DataAccess.Client" description="Oracle Data Provider for .NET" type="Oracle.DataAccess.Client.OracleClientFactory, Oracle.DataAccess, Version=2.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342" />`
 * Kopieren Sie diesen Eintrag in die Datei „machine.config“ im folgenden .NET 4.0-Ordner: <Systemdatenträger\>:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config. Ändern Sie die Version dann in „4.xxx.x.x“.
 * Führen Sie **gacutil /i [Anbieterpfad]** aus, um „<ODP.NET-Installationspfad\>\11.2.0\client_1\odp.net\bin\4\Oracle.DataAccess.dll“ im globalen Assemblycache (GAC) zu installieren.
 

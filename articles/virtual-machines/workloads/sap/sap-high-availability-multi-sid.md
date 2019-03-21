@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05fda1b4f71f67714b4723e15533d3555d497249
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: e5d8357d17f8a6b463546789dd4627b74924a763
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321669"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080997"
 ---
 # <a name="create-an-sap-netweaver-multi-sid-configuration"></a>Erstellen einer SAP NetWeaver Multi-SID-Konfiguration
 
@@ -114,7 +114,7 @@ Sie können eine zusätzliche SAP ASCS/SCS-Instanz auf dem vorhandenen WSFC-Clus
 Sie können einen DNS-Eintrag für den virtuellen Hostnamen der ASCS/SCS-Instanz mit den folgenden Parametern erstellen:
 
 | Neuer virtueller SAP ASCS/SCS-Hostname | Zugeordnete IP-Adresse |
-| --- | --- | --- |
+| --- | --- |
 |pr5-sap-cl |10.0.0.50 |
 
 Neuer Hostname und neue IP-Adresse werden, wie im folgenden Screenshot ersichtlich ist, im DNS-Manager angezeigt:

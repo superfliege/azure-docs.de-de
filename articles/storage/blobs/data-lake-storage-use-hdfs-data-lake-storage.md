@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: artek
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: f1f4cb036f4df226d651f8f4d0f5c7492f453a0a
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: c77981574ff2e507af7012f26f742dda62d952fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56269739"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57991963"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>Verwenden der HDFS-CLI mit Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in einem Azure Storage-Konto gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden.
+Azure Data Lake Storage Gen2 ermöglicht einen mit einem [Hadoop Distributed File System (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) vergleichbaren Zugriff auf Daten sowie deren Verwaltung. Unabhängig davon, ob ein HDInsight-Cluster angehängt ist oder ein Apache Spark-Auftrag mithilfe von Azure Databricks ausgeführt wird, um Analysen für in einem Azure Storage-Konto gespeicherte Daten vorzunehmen, können Sie die Befehlszeilenschnittstelle (CLI) zum Abrufen und Bearbeiten der geladenen Daten verwenden.
 
 ## <a name="hdfs-cli-with-hdinsight"></a>HDFS-CLI mit HDInsight
 
@@ -77,10 +77,6 @@ Weitere Informationen zur HDFS-CLI finden Sie in der [offiziellen Dokumentation]
 ## <a name="hdfs-cli-with-azure-databricks"></a>HDFS-CLI mit Azure Databricks
 
 Databricks bietet eine einfach zu verwendende Befehlszeilenschnittstelle, die auf der Databricks-REST-API basiert. Das Open-Source-Projekt wird auf [GitHub](https://github.com/databricks/databricks-cli) gehostet. Nachfolgend sind die häufig verwendeten Befehle aufgeführt.
-
-### <a name="create-a-file-system"></a>Erstellen eines Dateisystems
-
-Fügen Sie die Anleitung hier ein.
 
 ### <a name="get-a-list-of-files-or-directories"></a>Abrufen einer Liste mit Dateien oder Verzeichnissen
 

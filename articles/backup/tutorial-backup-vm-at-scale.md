@@ -9,12 +9,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: a73568fd1dd7ed6b6cd3a7938768db4982725658
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 99f5b09d0b5dfc144dca7f19efff3f0656a82b35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497878"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093244"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Verwenden des Azure-Portals zum Sichern mehrerer virtueller Computer
 
@@ -77,16 +77,16 @@ Nach dem Erstellen des Recovery Services-Tresors konfigurieren Sie im nächsten 
     ![Workload auswählen](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
 5. Geben Sie im Menü **Sicherungsrichtlinie** für **Richtlinienname** den Namen *Finance* ein. Geben Sie die folgenden Änderungen für die Sicherungsrichtlinie ein:
-    - Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
-    - Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
-    - Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
-    - Verwenden Sie für **Aufbewahrung für monatlichen Sicherungspunkt** den Wiederherstellungspunkt vom ersten Sonntag des Monats, und legen Sie als Aufbewahrungszeit 36 Monate fest.
-    - Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
-    - Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
+   - Legen Sie für **Sicherungshäufigkeit** die Zeitzone auf *Central Time* fest. Der Sportkomplex befindet sich in Texas, und der Besitzer möchte die lokale Zeit verwenden. Lassen Sie die Sicherungshäufigkeit auf täglich um 3:30 Uhr festgelegt.
+   - Legen Sie für **Aufbewahrung für täglichen Sicherungspunkt** den Zeitraum auf 90 Tage fest.
+   - Verwenden Sie für **Aufbewahrung für wöchentlichen Sicherungspunkt** den Wiederherstellungspunkt *Monday*, und legen Sie als Aufbewahrungszeit 52 Wochen fest.
+   - Verwenden Sie für **Aufbewahrung für monatlichen Sicherungspunkt** den Wiederherstellungspunkt vom ersten Sonntag des Monats, und legen Sie als Aufbewahrungszeit 36 Monate fest.
+   - Deaktivieren Sie die Option **Aufbewahrung für jährlichen Sicherungspunkt**. Der Leiter der Finanzabteilung möchte die Daten nicht länger als 36 Monate aufbewahren.
+   - Klicken Sie auf **OK**, um die Sicherungsrichtlinie zu erstellen.
 
-    ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
+     ![Workload auswählen](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
-    Nach ihrer Erstellung weisen Sie die Sicherungsrichtlinie den virtuellen Computern zu.
+     Nach ihrer Erstellung weisen Sie die Sicherungsrichtlinie den virtuellen Computern zu.
 
 6. Wählen Sie im Dialogfeld **Virtuelle Computer auswählen** den virtuellen Computer *myVM* aus, und klicken Sie auf **OK**, um die Sicherungsrichtlinie auf die virtuellen Computer anzuwenden.
 

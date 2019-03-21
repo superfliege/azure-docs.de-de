@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/25/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 74fdfed23d30dbf88b2faa6028039159010d9afc
-ms.sourcegitcommit: 7862449050a220133e5316f0030a259b1c6e3004
+ms.openlocfilehash: 37de2de18656f0f8ba85495b3fd72315e0bd885b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/22/2018
-ms.locfileid: "53756174"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113077"
 ---
 # <a name="automate-custom-reports-with-azure-application-insights-data"></a>Automatisieren von benutzerdefinierten Berichten mit Azure Application Insights-Daten
 
@@ -110,12 +110,12 @@ availabilityResults
     
     (Die Werte vom Typ „AI_“ befinden sich unter „API-Zugriff“ für die Application Insights-Ressource, für die ein Bericht erstellt werden soll. Sollten Sie über keinen Application Insights-API-Schlüssel verfügen, können Sie mithilfe der Option **API-Schlüssel erstellen** einen API-Schlüssel erstellen.)
     
-    * AI_APP_ID: Anwendungs-ID
-    * AI_APP_KEY: API-Schlüssel
-    * SendGridAPI: SendGrid-API-Schlüssel
+   * AI_APP_ID: Anwendungs-ID
+   * AI_APP_KEY: API-Schlüssel
+   * SendGridAPI: SendGrid-API-Schlüssel
 
-    > [!NOTE]
-    > Falls Sie über kein SendGrid-Konto verfügen, können Sie eines erstellen. Die SendGrid-Dokumentation für Azure Functions finden Sie [hier](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Eine kurze Erläuterung der Vorgehensweise zum Einrichten von SendGrid sowie zum Generieren eines API-Schlüssels finden Sie am Ende dieses Artikels. 
+     > [!NOTE]
+     > Falls Sie über kein SendGrid-Konto verfügen, können Sie eines erstellen. Die SendGrid-Dokumentation für Azure Functions finden Sie [hier](https://docs.microsoft.com/azure/azure-functions/functions-bindings-sendgrid). Eine kurze Erläuterung der Vorgehensweise zum Einrichten von SendGrid sowie zum Generieren eines API-Schlüssels finden Sie am Ende dieses Artikels. 
 
 9. Klicken Sie auf **Integrieren** und anschließend unter „Ausgaben“ auf **SendGrid ($return)**.
 

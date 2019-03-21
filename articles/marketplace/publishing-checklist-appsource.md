@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 0f8234424d5f684577833f34d89ac3da9d4d16fa
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 5521602331b50c70ab31e6ea2f5eec8f6a3911ad
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826021"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736522"
 ---
 # <a name="publishing-checklist-for-appsource"></a>Veröffentlichungsprüfliste für AppSource  
 Überprüfen Sie die erforderlichen Komponenten vor dem Start des Veröffentlichungsprozesses.  
@@ -35,4 +35,4 @@ Folgende Artefakte sind erforderlich, um Ihre App in AppSource zu veröffentlich
 ## <a name="next-steps"></a>Nächste Schritte
 *   Besuchen Sie die Seite [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md).  
 
----  
+---

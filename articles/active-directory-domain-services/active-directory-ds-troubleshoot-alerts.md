@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 492b15bddad598d65c15c48f04d3148c41cd3c7e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7d99f5a5d027c825fa1145328bb9576229ce39b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817528"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121994"
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services – Problembehandlung von Warnungen
 Dieser Artikel enthält Leitfäden für die Problembehandlung aller Warnungen, denen Sie in Ihrer verwalteten Domäne begegnen können.
@@ -42,10 +42,10 @@ Verwenden Sie die Problembehandlungsschritte für die ID oder Meldung in der War
 | AADDS108 | *Das von Azure AD Domain Services verwendete Abonnement wurde in ein anderes Verzeichnis verschoben. Für eine ordnungsgemäße Funktionsweise von Azure AD Domain Services muss ein aktives Abonnement im gleichen Verzeichnis vorhanden sein.* | [Verzeichnisse durch Abonnement verschoben](#aadds108-subscription-moved-directories) |
 | AADDS109 | *Eine Ressource, die für Ihre verwaltete Domäne verwendet wird, wurde gelöscht. Diese Ressource ist erforderlich, damit Azure AD Domain Services ordnungsgemäß funktioniert.* | [Eine Ressource wurde gelöscht.](#aadds109-resources-for-your-managed-domain-cannot-be-found) |
 | AADDS110 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist voll und hat keinen Platz für den zusätzlichen Domänencontroller, der erstellt werden muss.* | [Subnetz ist voll](#aadds110-the-subnet-associated-with-your-managed-domain-is-full) |
-| AADDS111 | *Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.* * | Dienstprinzipal nicht autorisiert |
+| AADDS111 | *Ein Dienstprinzipal, den Azure AD Domain Services für Ihre Domäne verwendet, ist für das Verwalten von Ressourcen im Azure-Abonnement nicht autorisiert. Der Dienstprinzipal muss die entsprechenden Berechtigungen für Ihre verwaltete Domäne erhalten.* | [Dienstprinzipal nicht autorisiert](#aadds111-service-principal-unauthorized) |
 | AADDS112 | *Das Subnetz des virtuellen Netzwerks in dieser Domäne verfügt möglicherweise nicht über genügend IP-Adressen. Azure AD Domain Services benötigt mindestens zwei verfügbare IP-Adressen innerhalb des Subnetzes, in dem es aktiviert ist. Es wird empfohlen, mindestens 3 bis 5 freie IP-Adressen innerhalb des Subnetzes bereitzuhalten. Dies kann aufgetreten sein, wenn andere virtuelle Computer innerhalb des Subnetzes bereitgestellt wurden und damit die Anzahl der verfügbaren IP-Adressen ausgeschöpft wurde oder wenn die Anzahl der verfügbaren IP-Adressen im Subnetz beschränkt ist.* | [Nicht genügend IP-Adressen](#aadds112-not-enough-ip-address-in-the-managed-domain) |
 | AADDS113 | *Für die von Azure AD Domain Services verwendeten Ressourcen wurde ein unerwarteter Zustand erkannt, und sie können nicht wiederhergestellt werden.* | [Ressourcen nicht wiederherstellbar](#aadds113-resources-are-unrecoverable) |
-| AADDS114 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist ungültig und kann nicht verwendet werden.* * | [Subnetz ungültig](#aadds114-subnet-invalid) |
+| AADDS114 | *Das für die Bereitstellung von Azure AD Domain Services ausgewählte Subnetz ist ungültig und kann nicht verwendet werden.* | [Subnetz ungültig](#aadds114-subnet-invalid) |
 | AADDS115 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann nicht betrieben werden, da der Zielbereich gesperrt wurde.* | [Ressourcen gesperrt](#aadds115-resources-are-locked) |
 | AADDS116 | *Mindestens eine der Netzwerkressourcen, die von der verwalteten Domäne verwendet werden, kann aufgrund von Richtlinienbeschränkungen nicht betrieben werden.* | [Ressourcen nicht verwendbar](#aadds116-resources-are-unusable) |
 | AADDS500 | *Die verwaltete Domäne wurde zuletzt am [Datum] mit Azure AD synchronisiert. Benutzer können sich möglicherweise nicht bei der verwalteten Domäne anmelden, oder Gruppenmitgliedschaften sind möglicherweise nicht mit Azure AD synchronisiert.* | [Die Synchronisierung wurde eine Weile nicht durchgeführt.](#aadds500-synchronization-has-not-completed-in-a-while) |
@@ -103,13 +103,13 @@ Innerhalb des virtuellen Netzwerks können Computer Anforderungen für Azure-Res
 
 1. [Löschen Sie Ihre verwaltete Domäne](active-directory-ds-disable-aadds.md) aus Ihrem Verzeichnis.
 2. Korrigieren Sie den IP-Adressbereich für das Subnetz
-  1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Wählen Sie das virtuelle Netzwerk aus, das Sie für Azure AD Domain Services verwenden möchten.
-  3. Klicken Sie unter „Einstellungen“ auf **Adressbereich**.
-  4. Aktualisieren Sie den Adressbereich, indem Sie auf den vorhandenen Adressbereich klicken und ihn bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Achten Sie dabei darauf, dass sich der neue Adressbereich in einem privaten IP-Bereich befindet. Speichern Sie die Änderungen.
-  5. Klicken Sie in linken Navigationsbereich auf **Subnetze**.
-  6. Klicken Sie in der Tabelle auf das Subnetz, das Sie bearbeiten möchten.
-  7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
+   1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Wählen Sie das virtuelle Netzwerk aus, das Sie für Azure AD Domain Services verwenden möchten.
+   3. Klicken Sie unter „Einstellungen“ auf **Adressbereich**.
+   4. Aktualisieren Sie den Adressbereich, indem Sie auf den vorhandenen Adressbereich klicken und ihn bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Achten Sie dabei darauf, dass sich der neue Adressbereich in einem privaten IP-Bereich befindet. Speichern Sie die Änderungen.
+   5. Klicken Sie in linken Navigationsbereich auf **Subnetze**.
+   6. Klicken Sie in der Tabelle auf das Subnetz, das Sie bearbeiten möchten.
+   7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
 3. Befolgen Sie die Anweisungen im Handbuch [Erste Schritte mit Azure Active Directory Domain Services](active-directory-ds-getting-started.md), um Ihre verwaltete Domäne neu zu erstellen. Achten Sie darauf, ein virtuelles Netzwerk mit einem privaten IP-Adressbereich auszuwählen.
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](active-directory-ds-admin-guide-join-windows-vm-portal.md).
 8. Um sicherzustellen, dass die Warnung aufgelöst wurde, überprüfen Sie den Status Ihrer Domäne nach zwei Stunden noch einmal.
@@ -160,13 +160,13 @@ Sie können das mit Azure AD Domain Services verknüpfte Abonnement wieder in da
 
 Azure AD Domain Services erstellt für eine ordnungsgemäße Funktion bestimmte Ressourcen während der Bereitstellung, einschließlich öffentlicher IP-Adressen, Netzwerkkarten und Load Balancer. Wenn eine der genannten Ressourcen gelöscht wird, führt dies dazu, dass Ihre verwaltete Domäne in einen nicht unterstützten Zustand übergeht und damit nicht mehr verwaltet werden kann. Diese Warnung tritt auf, wenn eine Person, die Azure AD Domain Services-Ressourcen bearbeiten kann, eine erforderliche Ressource löscht. Die folgenden Schritte beschreiben, wie Sie Ihre verwaltete Domäne wiederherstellen.
 
-1.  Navigieren Sie zur Statusseite von Azure AD Domain Services.
-  1.    Navigieren Sie im Azure-Portal zur Seite [Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
-  2.    Klicken Sie im linken Navigationsbereich auf **Integrität**.
-2.  Überprüfen Sie, ob die Warnung weniger als 4 Stunden alt ist.
-  1.    Klicken Sie auf der Seite „Integrität“ auf die Warnung mit der ID **AADDS109**.
-  2.    Die Warnung hat einen Zeitstempel für das erste Auftreten. Wenn dieser Zeitstempel weniger als 4 Stunden alt ist, besteht die Möglichkeit, dass Azure AD Domain Services die gelöschte Ressource wiederherstellen kann.
-3.  Wenn die Warnung mehr als 4 Stunden alt ist, kann die verwaltete Domäne nicht wiederhergestellt werden. Sie müssen Azure AD Domain Services löschen und neu erstellen.
+1. Navigieren Sie zur Statusseite von Azure AD Domain Services.
+   1.    Navigieren Sie im Azure-Portal zur Seite [Azure AD Domain Services](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).
+   2.    Klicken Sie im linken Navigationsbereich auf **Integrität**.
+2. Überprüfen Sie, ob die Warnung weniger als 4 Stunden alt ist.
+   1.    Klicken Sie auf der Seite „Integrität“ auf die Warnung mit der ID **AADDS109**.
+   2.    Die Warnung hat einen Zeitstempel für das erste Auftreten. Wenn dieser Zeitstempel weniger als 4 Stunden alt ist, besteht die Möglichkeit, dass Azure AD Domain Services die gelöschte Ressource wiederherstellen kann.
+3. Wenn die Warnung mehr als 4 Stunden alt ist, kann die verwaltete Domäne nicht wiederhergestellt werden. Sie müssen Azure AD Domain Services löschen und neu erstellen.
 
 
 ## <a name="aadds110-the-subnet-associated-with-your-managed-domain-is-full"></a>AADDS110: Das Ihrer verwalteten Domäne zugeordnete Subnetz ist voll
@@ -203,13 +203,13 @@ Unsere Dienstprinzipale benötigen Zugriff, um Ressourcen in Ihrer verwalteten D
 
 1. Löschen Sie Ihre verwaltete Domäne aus Ihrem Mandanten.
 2. Korrigieren Sie den IP-Adressbereich für das Subnetz
-  1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
-  2. Wählen Sie das virtuelle Netzwerk aus, das Sie für Azure AD Domain Services verwenden möchten.
-  3. Klicken Sie unter „Einstellungen“ auf **Adressbereich**.
-  4. Aktualisieren Sie den Adressbereich, indem Sie auf den vorhandenen Adressbereich klicken und ihn bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Speichern Sie die Änderungen.
-  5. Klicken Sie in linken Navigationsbereich auf **Subnetze**.
-  6. Klicken Sie in der Tabelle auf das Subnetz, das Sie bearbeiten möchten.
-  7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
+   1. Navigieren Sie zur [Seite „Virtuelle Netzwerke“ im Azure-Portal](https://portal.azure.com/?feature.canmodifystamps=true&Microsoft_AAD_DomainServices=preview#blade/HubsExtension/Resources/resourceType/Microsoft.Network%2FvirtualNetworks).
+   2. Wählen Sie das virtuelle Netzwerk aus, das Sie für Azure AD Domain Services verwenden möchten.
+   3. Klicken Sie unter „Einstellungen“ auf **Adressbereich**.
+   4. Aktualisieren Sie den Adressbereich, indem Sie auf den vorhandenen Adressbereich klicken und ihn bearbeiten oder einen zusätzlichen Adressbereich hinzufügen. Speichern Sie die Änderungen.
+   5. Klicken Sie in linken Navigationsbereich auf **Subnetze**.
+   6. Klicken Sie in der Tabelle auf das Subnetz, das Sie bearbeiten möchten.
+   7. Aktualisieren Sie den Adressbereich, und speichern Sie Ihre Änderungen.
 3. Befolgen Sie die Anweisungen im Handbuch [Erste Schritte mit Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started), um Ihre verwaltete Domäne neu zu erstellen. Achten Sie darauf, ein virtuelles Netzwerk mit einem privaten IP-Adressbereich auszuwählen.
 4. Um den Beitritt Ihrer virtuellen Computer zu Ihrer neuen Domäne zu realisieren, befolgen Sie die Anweisungen in [diesem Handbuch](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal).
 5. Überprüfen Sie in zwei Stunden die Integrität Ihrer Domäne, um sicherzustellen, dass Sie die Schritte ordnungsgemäß abgeschlossen haben.

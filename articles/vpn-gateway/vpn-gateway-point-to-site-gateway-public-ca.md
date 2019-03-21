@@ -5,21 +5,21 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8d5dca65734640dc9e756f9130e6b362178781f2
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453512"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848924"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>Übergang von einem Gatewayzertifikat einer öffentlichen Zertifizierungsstelle für P2S
 
 Azure VPN Gateway stellt für P2S-Verbindungen keine selbstsignierten Zertifikate auf Azure-Ebene für Gateways mehr aus. Ausgestellte Zertifikate werden nun von einer öffentlichen Zertifizierungsstelle signiert. Allerdings verwenden einige der älteren Gateways ggf. weiterhin selbstsignierte Zertifikate. Diese selbstsignierten Zertifikate stehen kurz vor ihrem Ablaufdatum und müssen auf Zertifikate von öffentlichen Zertifizierungsstellen umgestellt werden.
 
 >[!NOTE]
-> Selbstsignierte Zertifikate, die für die P2S-Clientauthentifizierung verwendet werden, sind von dieser Azure-Zertifikatänderung nicht betroffen. Sie können selbstsignierte Zertifikate weiterhin wie gewohnt ausstellen und verwenden.
+> * Selbstsignierte Zertifikate, die für die P2S-Clientauthentifizierung verwendet werden, sind von dieser Azure-Zertifikatänderung nicht betroffen. Sie können selbstsignierte Zertifikate weiterhin wie gewohnt ausstellen und verwenden.
 >
 
 Die Zertifikate in diesem Kontext sind ein zusätzliches Zertifikat auf der Azure-Ebene. Es handelt sich dabei nicht um die Zertifikatketten, die Sie beim Generieren Ihrer eigenen selbstsignierten Stammzertifikate und Clientzertifikate für die Authentifizierung verwenden. Diese Zertifikate sind nicht von der Änderung betroffen und laufen an den von Ihnen generierten Ablaufdaten ab.
@@ -38,7 +38,7 @@ Von dieser Änderung sind nur ältere Gateways betroffen. Wenn Ihr Gatewayzertif
 >
 > **Alle verbleibenden Gateways werden am 12 März 2019 ab 18:00 Uhr (UTC) umgestellt**.
 >
-> Der Übergangsprozess für das Gateway nimmt bis zu zwei Stunden in Anspruch. Kunden erhalten eine E-Mail, wenn der Übergangsprozess für ihr Gateway abgeschlossen ist.
+> Kunden erhalten eine E-Mail, wenn der Übergangsprozess für ihr Gateway abgeschlossen ist.
 > 
 
 ## <a name="1-verify-your-certificate"></a>1. Überprüfen Ihres Zertifikats
@@ -50,8 +50,8 @@ Von dieser Änderung sind nur ältere Gateways betroffen. Wenn Ihr Gatewayzertif
 2. Öffnen oder extrahieren Sie die ZIP-Datei, und wechseln Sie zum Ordner „Generic“. Im Ordner „Generic“ finden Sie zwei Dateien, von denen eine *VPNSettings.xml* ist.
 3. Öffnen Sie Datei *VPNSettings.xml* in einem beliebigen XML-Viewer/-Editor. Suchen Sie in der XML-Datei nach den folgenden Feldern:
 
-  * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
-  * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
+   * `<ServerCertRootCn>DigiCert Global Root CA</ServerCertRootCn>`
+   * `<ServerCertIssuerCn>DigiCert Global Root CA</ServerCertIssuerCn>`
 4. Wenn „DigiCert Global Root CA“ für *ServerCertRotCn* und *ServerCertIssuerCn* angezeigt wird, sind Sie von dieser Aktualisierung nicht betroffen und müssen die Schritte in diesem Artikel nicht durchführen. Wenn jedoch etwas anderes angezeigt wird, unterliegt Ihr Gatewayzertifikat der Aktualisierung und wird umgestellt.
 
 ### <a name="classic"></a>Klassisch

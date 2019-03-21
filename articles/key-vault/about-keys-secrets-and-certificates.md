@@ -3,7 +3,7 @@ title: Informationen zu Schlüsseln, Geheimnissen und Zertifikaten im Azure Key 
 description: Hier finden Sie eine Übersicht über die Azure Key Vault-REST-Schnittstelle sowie Informationen für Entwickler zu Schlüsseln, Geheimnissen und Zertifikaten.
 services: key-vault
 documentationcenter: ''
-author: BryanLa
+author: msmbaldwin
 manager: barbkess
 tags: azure-resource-manager
 ms.assetid: abd1b743-1d58-413f-afc1-d08ebf93828a
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.author: bryanla
-ms.openlocfilehash: 49879d36937a0f0d7ccf1a82cf8b6ca09453894d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.author: mbaldwin
+ms.openlocfilehash: 01d9f763983da2415aba0f9bae81414017bc2f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106967"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842565"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Informationen zu Schlüsseln, Geheimnissen und Zertifikaten
 
@@ -39,10 +39,10 @@ Die folgenden Abschnitte enthalten allgemeine Informationen über die Implementi
 
 Die Spezifikationen von JavaScript Object Notation (JSON) und JavaScript Object Signing and Encryption (JOSE) sind wichtige Hintergrundinformationen.  
 
--   [JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
+-   [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key)  
 -   [JSON Web Encryption (JWE)](http://tools.ietf.org/html/draft-ietf-jose-json-web-encryption)  
 -   [JSON Web Algorithms (JWA)](http://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms)  
--   [JSON Web Signature (JWS)](http://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
+-   [JSON Web Signature (JWS)](https://tools.ietf.org/html/draft-ietf-jose-json-web-signature)  
 
 ### <a name="data-types"></a>Datentypen
 
@@ -112,7 +112,7 @@ Die kryptografischen Module, die Key Vault verwendet – sowohl HSM als auch Sof
 #### <a name="curve-types"></a>Kurventypen
 
 -   **P-256**: Die NIST-Kurve P-256, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
--   **P-256K**: Die SEC-Kurve SECP256K1, definiert unter [SEC 2: Recommended Elliptic Curve Domain Parameters (SEC 2: Empfohlene Domänenparameter für elliptische Kurven)](http://www.secg.org/sec2-v2.pdf).
+-   **P-256K**: Die SEC-Kurve SECP256K1, definiert unter [SEC 2: Recommended Elliptic Curve Domain Parameters (SEC 2: Empfohlene Domänenparameter für elliptische Kurven)](https://www.secg.org/sec2-v2.pdf).
 -   **P-384**: Die NIST-Kurve P-384, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 -   **P-521**: Die NIST-Kurve P-521, definiert unter [DSS FIPS PUB 186-4](https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf).
 
@@ -166,7 +166,7 @@ Key Vault unterstützt keine EXPORT-Vorgänge. Sobald ein Schlüssel im System b
 
 Benutzer können die kryptografischen Vorgänge, die Key Vault pro Schlüssel unterstützt, mithilfe der key_ops-Eigenschaft des JWK-Objekts einschränken.  
 
-Weitere Informationen zu JWK-Objekten finden Sie unter [JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
+Weitere Informationen zu JWK-Objekten finden Sie unter [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).  
 
 ###  <a name="key-attributes"></a>Schlüsselattribute
 
@@ -189,7 +189,7 @@ Noch nicht gültige und abgelaufene Schlüssel, die außerhalb des *nbf* / *exp*
 
 Weitere Informationen zu Datentypen finden Sie unter [Datentypen](#data-types).
 
-Weitere Informationen zu anderen möglichen Attributen finden Sie unter [JSON Web Key (JWK)](http://tools.ietf.org/html/draft-ietf-jose-json-web-key).
+Weitere Informationen zu anderen möglichen Attributen finden Sie unter [JSON Web Key (JWK)](https://tools.ietf.org/html/draft-ietf-jose-json-web-key).
 
 ### <a name="key-tags"></a>Schlüsseltags
 
@@ -409,10 +409,10 @@ Zertifikatkontakte enthalten Kontaktinformationen zum Senden von Benachrichtigun
 
 Wenn für die Richtlinie eines Zertifikats eine automatische Verlängerung festgelegt ist, wird bei den folgenden Ereignissen eine Benachrichtigung gesendet.  
 
--   Vor der Zertifikatverlängerung
--   Nach der Zertifikatverlängerung, um mitzuteilen, ob das Zertifikat erfolgreich verlängert wurde, oder ob ein Fehler aufgetreten ist, sodass die manuelle Zertifikatverlängerung erforderlich ist.  
+- Vor der Zertifikatverlängerung
+- Nach der Zertifikatverlängerung, um mitzuteilen, ob das Zertifikat erfolgreich verlängert wurde, oder ob ein Fehler aufgetreten ist, sodass die manuelle Zertifikatverlängerung erforderlich ist.  
 
- Wenn in der Richtlinie für ein Zertifikat die manuelle Verlängerung festgelegt ist (nur E-Mail), wird eine Benachrichtigung gesendet, sobald das Zertifikat verlängert werden muss.  
+  Wenn in der Richtlinie für ein Zertifikat die manuelle Verlängerung festgelegt ist (nur E-Mail), wird eine Benachrichtigung gesendet, sobald das Zertifikat verlängert werden muss.  
 
 ### <a name="certificate-access-control"></a>Zertifikatzugriffssteuerung
 

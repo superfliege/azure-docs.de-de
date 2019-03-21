@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 5f77857c82846fe9c3d2ad4f5f82572d18401691
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c2c722331c95e72bae5605606564a2083e2802e3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003600"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075031"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>Anpassen eines Sprachmodells mit den Video Indexer-APIs
 
@@ -306,7 +306,7 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 |fileId|Zeichenfolge|Ja|ID der Datei, die aktualisiert wird (wird generiert, wenn die Datei bei der Erstellung oder Aktualisierung des Sprachmodells hochgeladen wird).|
 |accessToken|Zeichenfolge|Ja|Zugriffstoken (der Bereich muss [Kontozugriffstoken](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?) sein) zum Authentifizieren des Aufrufs. Zugriffstoken laufen nach einer Stunde ab.|
 |fileName|Zeichenfolge|Nein |Der Name, in den der Dateiname aktualisiert werden soll.|
-|enable|boolean|Nein |Aktualisieren Sie, ob diese Datei im Sprachmodell aktiviert (TRUE) oder deaktiviert (FALSE) ist.||
+|enable|boolean|Nein |Aktualisieren Sie, ob diese Datei im Sprachmodell aktiviert (TRUE) oder deaktiviert (FALSE) ist.|
 
 ### <a name="request-body"></a>Anforderungstext
 

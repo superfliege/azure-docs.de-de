@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: d97171003507ea0d7412c0706f9deea02fe06c0d
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0553bd904cfaabaefce4e6ab3f7fbf5d356922d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56418410"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100359"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Überwachen von Gerät-zu-Cloud-Nachrichten in Azure IoT mit der verteilten Ablaufverfolgung (Vorschau)
 
@@ -214,7 +214,7 @@ Um den Prozentsatz der in der Cloud zu überwachenden Nachrichten zu ändern, m�
 
     ![Aktualisieren des Samplingmodus](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-2.png)
 
-    ![Aktualisieren der Samplingrate ](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
+    ![Aktualisieren der Samplingrate](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-3.png)
 
 ### <a name="bulk-update-for-multiple-devices"></a>Massenaktualisierung für mehrere Geräte
 
@@ -269,7 +269,7 @@ Eine Beschreibung der unterschiedlichen Protokolltypen finden Sie unter [Azure I
 Um den Fluss von IoT-Nachrichten zu visualisieren, richten Sie die Beispiel-App für die Anwendungsübersicht ein. Die Beispiel-App sendet die Protokolle der verteilten Ablaufverfolgung mithilfe einer Azure-Funktion und einem Event Hub an die [Anwendungsübersicht](../application-insights/app-insights-app-map.md).
 
 > [!div class="button"]
-<a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Beispiel in GitHub abrufen</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Beispiel in GitHub abrufen</a>
 
 In dieser Abbildung ist die verteilte Ablaufverfolgung mit drei Routingendpunkten in der Anwendungsübersicht dargestellt:
 

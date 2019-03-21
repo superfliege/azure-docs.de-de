@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 096bc96558f0fe33f8046622dc2443728674e405
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 825a6035a997eb27a3e8e5833a792bdd985997c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084622"
 ---
 # <a name="speech-devices-sdk-license-agreement"></a>Lizenzbedingungen für das SDK für sprachaktivierte Geräte
 
@@ -52,7 +52,7 @@ e) Weitergeben, Veröffentlichen oder Verleihen der Software (ausgenommen des de
 
 f) Sie dürfen die Software nur in Verbindung mit Microsoft Azure Cognitive Services, Spracherkennungsdienst verwenden.
 
-**3\. DATENSAMMLUNG.** Diese Software kann mit anderen Microsoft-Produkten interagieren, die Daten erfassen, die an Microsoft übertragen werden. Weitere Informationen dazu, wie Microsoft erfasste personenbezogene Daten verarbeitet, finden Sie in der Microsoft-Datenschutzerklärung unter http://go.microsoft.com/fwlink/?LinkId=248681.
+**3\. DATENSAMMLUNG.** Diese Software kann mit anderen Microsoft-Produkten interagieren, die Daten erfassen, die an Microsoft übertragen werden. Weitere Informationen dazu, wie Microsoft erfasste personenbezogene Daten verarbeitet, finden Sie in der Microsoft-Datenschutzerklärung unter https://go.microsoft.com/fwlink/?LinkId=248681.
 
 **4\. VORABVERSION DER SOFTWARE.** Die Software ist eine Vorabversion. Sie funktioniert möglicherweise nicht ordnungsgemäß. Sie kann sich von der im Handel erhältlichen Version unterscheiden.
 
@@ -83,9 +83,9 @@ b) Kanada. Wenn Sie diese Software in Kanada erworben haben, können Sie den Emp
 c) Deutschland und Österreich.
 
 > (i) Gewährleistung. Die ordnungsgemäß lizenzierte Software funktioniert im Wesentlichen wie in den Materialien von Microsoft, die im Lieferumfang der Software enthalten sind, beschrieben wird. Microsoft bietet jedoch keine vertragliche Garantie in Bezug auf die lizenzierte Software.
-
+> 
 > (ii) Haftungsbeschränkung. Bei Vorsatz, grober Fahrlässigkeit, Ansprüchen basierend auf dem Produkthaftungsgesetz sowie bei Tod, Personenschäden oder physischen Verletzungen haftet Microsoft nach den gesetzlichen Bestimmungen.
-
+> 
 > Gemäß der vorstehenden Klausel (ii) haftet Microsoft nur dann für leichte Fahrlässigkeit, wenn Microsoft gegen wesentliche Vertragspflichten (sog. „Kardinalpflichten“) verstoßen hat, deren Erfüllung eine ordnungsgemäße Ausübung dieser Vereinbarung erst ermöglichen, deren Verstoß den Zweck dieser Vereinbarung gefährden würde und auf deren Einhaltung eine Partei regelmäßig vertrauen darf. In sonstigen Fällen von leichter Fahrlässigkeit haftet Microsoft nicht für leichte Fahrlässigkeit.
 
 **15\. GEWÄHRLEISTUNGSAUSSCHLUSS. DIE SOFTWARE WIRD „WIE BESEHEN“ LIZENZIERT. SIE TRAGEN DAS MIT DER NUTZUNG VERBUNDENE RISIKO. MICROSOFT ÜBERNIMMT KEINE AUSDRÜCKLICHEN GEWÄHRLEISTUNGEN, GARANTIEN ODER BEDINGUNGEN. IM DURCH DAS ANWENDBARE RECHT GESTATTETEN UMFANG SCHLIESST MICROSOFT SÄMTLICHE STILLSCHWEIGENDEN GEWÄHRLEISTUNGEN DER HANDELSÜBLICHKEIT, EIGNUNG FÜR EINEN BESTIMMTEN ZWECK UND NICHTVERLETZUNG VON RECHTEN DRITTER AUS.**

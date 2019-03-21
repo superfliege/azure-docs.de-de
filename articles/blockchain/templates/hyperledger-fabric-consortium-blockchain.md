@@ -10,12 +10,12 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: caleteet
 manager: femila
-ms.openlocfilehash: acbd41b7203e458a5ed60382354c862748863053
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: ce1afbd5499e798888e77f52d7b652e7e1f548fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328026"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005819"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric-Konsortiumsnetzwerk
 
@@ -78,11 +78,11 @@ Geben Sie in **Grundlagen** Werte für die Standardparameter für jede Bereitste
 
 | Parametername | BESCHREIBUNG | Zulässige Werte |
 |---|---|---|
-**Ressourcenpräfix**| Namenspräfix für Ressourcen, die als Teil der Bereitstellung verfügbar sind |Max. 6 Zeichen |
-**Benutzername**| Der Benutzername des Administrators für jeden bereitgestellten virtuellen Computer dieses Members. |1–64 Zeichen |
-**Authentifizierungstyp**| Die Methode zur Authentifizierung des virtuellen Computers. |Kennwort oder öffentlicher SSH-Schlüssel|
-**Kennwort (Authentifizierungstyp = Kennwort)**|Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
-**SSH-Schlüssel (Authentifizierungstyp = öffentlicher SSH-Schlüssel)**|Der Secure Shell-Schlüssel für die Remoteanmeldung. ||
+**Ressourcenpräfix** | Namenspräfix für Ressourcen, die als Teil der Bereitstellung verfügbar sind |Max. 6 Zeichen |
+**Benutzername** | Der Benutzername des Administrators für jeden bereitgestellten virtuellen Computer dieses Members. |1–64 Zeichen |
+**Authentifizierungstyp** | Die Methode zur Authentifizierung des virtuellen Computers. |Kennwort oder öffentlicher SSH-Schlüssel|
+**Kennwort (Authentifizierungstyp = Kennwort)** |Das Kennwort für das Administratorkonto jedes bereitgestellten, virtuellen Computers. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|12–72 Zeichen|
+**SSH-Schlüssel (Authentifizierungstyp = öffentlicher SSH-Schlüssel)** |Der Secure Shell-Schlüssel für die Remoteanmeldung. ||
 **Abonnement** |Das Abonnement für die Bereitstellung ||
 **Ressourcengruppe** |Die Ressourcengruppe, für die das Konsortiumsnetzwerk bereitgestellt wird ||
 **Location** |Die Azure-Region, in der der erste Member bereitgestellt wird ||
@@ -97,10 +97,10 @@ Nehmen Sie in **Netzwerkeinstellungen** die Eingaben für das Erstellen eines Ko
 
 | Parametername | BESCHREIBUNG | Zulässige Werte |
 |---|---|---|
-**Network Configuration**|Sie können ein neues Netzwerk erstellen oder einem vorhandenen beitreten. Wenn Sie *Vorhandenem beitreten* auswählen, müssen Sie zusätzliche Werte angeben. |Neues Netzwerk <br/> Vorhandenem beitreten |
-**HLF CA-Kennwort**|Ein Kennwort, das für die Zertifikate verwendet wird, die von den Zertifizierungsstellen generiert werden, die als Teil der Bereitstellung erstellt werden. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|1–25 Zeichen |
+**Network Configuration** |Sie können ein neues Netzwerk erstellen oder einem vorhandenen beitreten. Wenn Sie *Vorhandenem beitreten* auswählen, müssen Sie zusätzliche Werte angeben. |Neues Netzwerk <br/> Vorhandenem beitreten |
+**HLF CA-Kennwort** |Ein Kennwort, das für die Zertifikate verwendet wird, die von den Zertifizierungsstellen generiert werden, die als Teil der Bereitstellung erstellt werden. Das Kennwort muss Zeichen aus drei der folgenden Zeichentypen enthalten: 1 Großbuchstaben, 1 Kleinbuchstaben, 1 Ziffer und 1 Sonderzeichen.<br /><br />Alle VMs haben zunächst dasselbe Kennwort, das nach der Bereitstellung jedoch geändert werden kann.|1–25 Zeichen |
 **Organisationssetup** |Sie können Namen und Zertifikat Ihres Unternehmens anpassen oder Standardwerte verwenden.|Standard <br/> Erweitert |
-**VPN-Netzwerkeinstellungen**| Bereitstellen eines VPN-Tunnelgateways für den Zugriff auf die virtuellen Computer | Ja <br/> Nein  |
+**VPN-Netzwerkeinstellungen** | Bereitstellen eines VPN-Tunnelgateways für den Zugriff auf die virtuellen Computer | Ja <br/> Nein  |
 
 Klicken Sie auf **OK**.
 
@@ -112,8 +112,8 @@ In **Fabrickonfiguration** können Sie Netzwerkgröße und Leistung konfiguriere
 
 | Parametername | BESCHREIBUNG | Zulässige Werte |
 |---|---|---|
-**Skalierungstyp**|Der Bereitstellungstyp entweder eines einzelnen virtuellen Computers mit mehreren Containern oder mehrerer virtueller Computer in einem Erweiterungsmodell.|Einzelner virtueller Computer oder mehrere VMs |
-**VM-Datenträgertyp**|Der Typ des Speichers für die einzelnen bereitgestellten Knoten. <br/> Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter [Auswählen eines Datenträgertyps](../../virtual-machines/windows/disks-types.md).|SSD Standard <br/> SSD Premium |
+**Skalierungstyp** |Der Bereitstellungstyp entweder eines einzelnen virtuellen Computers mit mehreren Containern oder mehrerer virtueller Computer in einem Erweiterungsmodell.|Einzelner virtueller Computer oder mehrere VMs |
+**VM-Datenträgertyp** |Der Typ des Speichers für die einzelnen bereitgestellten Knoten. <br/> Weitere Informationen zu den verfügbaren Datenträgertypen finden Sie unter [Auswählen eines Datenträgertyps](../../virtual-machines/windows/disks-types.md).|SSD Standard <br/> SSD Premium |
 
 ### <a name="multiple-vm-deployment-additional-settings"></a>Bereitstellung mehrerer VMs (zusätzliche Einstellungen)
 
@@ -123,8 +123,8 @@ In **Fabrickonfiguration** können Sie Netzwerkgröße und Leistung konfiguriere
 |---|---|---|
 **Anzahl der Auftraggeberknoten** |Die Anzahl der Knoten, die Transaktionen in einen Block sortieren (organisieren). <br />Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) zu Hyperledger. |1–4 |
 **VM-Größe von Auftraggeberknoten** |Die Größe des virtuellen Computers, der für Auftraggeberknoten im Netzwerk verwendet wird|Standard Bs,<br />Standard DS,<br />Standard FS |
-**Anzahl der Peerknoten**| Knoten, deren Besitzer das Konsortium ist und die Transaktionen ausführen und den Status einer Ledgerkopie verwalten.<br />Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) zu Hyperledger.|1–4 |
-**Knotenstatuspersistenz** |Die Persistenzengine, die von den Peerknoten verwendet wird. Sie können diese Engine für jeden Peerknoten konfigurieren. Nachstehend finden Sie Details für mehrere Peerknoten.|CouchDB </br>LevelDB |
+**Anzahl der Peerknoten** | Knoten, deren Besitzer das Konsortium ist und die Transaktionen ausführen und den Status einer Ledgerkopie verwalten.<br />Weitere Informationen zum Sortierdienst finden Sie in der [Dokumentation](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html) zu Hyperledger.|1–4 |
+**Knotenstatuspersistenz** |Die Persistenzengine, die von den Peerknoten verwendet wird. Sie können diese Engine für jeden Peerknoten konfigurieren. Nachstehend finden Sie Details für mehrere Peerknoten.|CouchDB <br />LevelDB |
 **VM-Größe von Peerknoten** |Die Größe des virtuellen Computers, die für alle Knoten im Netzwerk verwendet wird|Standard Bs,<br />Standard DS,<br />Standard FS |
 
 ### <a name="multiple-peer-node-configuration"></a>Konfiguration mit mehreren Peerknoten

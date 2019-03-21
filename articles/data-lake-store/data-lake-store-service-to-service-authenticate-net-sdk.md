@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 3075f515b8095451a873727fef696fd523664d0a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5ec6325f3fae21e62fe4a3fb6452aa11158047a4
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891710"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57340234"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 unter Verwendung des .NET SDK
 > [!div class="op_single_selector"]
@@ -24,11 +24,10 @@ ms.locfileid: "55891710"
 > * [Verwenden des .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
 > * [Verwenden von Python](data-lake-store-service-to-service-authenticate-python.md)
 > * [Verwenden der REST-API](data-lake-store-service-to-service-authenticate-rest-api.md)
-> 
->  
+>
+>
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe des .NET SDK die Dienst-zu-Dienst-Authentifizierung mit Azure Data Lake Storage Gen1 durchführen. Informationen zur Authentifizierung von Endbenutzern mit Data Lake Storage Gen1 unter Verwendung des .NET SDK finden Sie unter [Authentifizierung von Endbenutzern bei Data Lake Storage Gen1 mithilfe des .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
-
 
 ## <a name="prerequisites"></a>Voraussetzungen
 * **Visual Studio 2013, 2015 oder 2017** In der Anleitung unten wird Visual Studio 2017 verwendet.
@@ -80,11 +79,11 @@ using Microsoft.IdentityModel.Clients.ActiveDirectory;
 ```
 
 ## <a name="service-to-service-authentication-with-client-secret"></a>Dienst-zu-Dienst-Authentifizierung mit geheimem Clientschlüssel
-Fügen Sie diesen Codeausschnitt der .NET-Clientanwendung hinzu. Ersetzen Sie die Platzhalterwerte mit den aus einer (als Voraussetzung angegebenen) Azure AD-Webanwendung abgerufenen Werten.  Mit diesem Codeausschnitt kann Ihre Anwendung unter Verwendung des Clientgeheimnisses/-schlüssels für die Azure AD-Webanwendung **nicht interaktiv** mit Data Lake Storage Gen1 authentifiziert werden. 
+Fügen Sie diesen Codeausschnitt der .NET-Clientanwendung hinzu. Ersetzen Sie die Platzhalterwerte mit den aus einer (als Voraussetzung angegebenen) Azure AD-Webanwendung abgerufenen Werten. Mit diesem Codeausschnitt kann Ihre Anwendung unter Verwendung des Clientgeheimnisses/-schlüssels für die Azure AD-Webanwendung **nicht interaktiv** mit Data Lake Storage Gen1 authentifiziert werden.
 
 ```csharp
 private static void Main(string[] args)
-{    
+{
     // Service principal / application authentication with client secret / key
     // Use the client ID of an existing AAD "Web App" application.
     string TENANT = "<AAD-directory-domain>";
@@ -125,5 +124,3 @@ In diesem Artikel haben Sie erfahren, wie Sie die Dienst-zu-Dienst-Authentifizie
 
 * [Kontoverwaltungsvorgänge für Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-get-started-net-sdk.md)
 * [Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK](data-lake-store-data-operations-net-sdk.md)
-
-

@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
-ms.openlocfilehash: 188e58261cec90e9afcc885f3da21fa3fab3b746
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2925ca5a303876a68b6d605c7312d43af102b6e0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55875432"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088467"
 ---
 # <a name="tutorial-connect-to-bing-news-search-api-with-connected-services-in-visual-studio-and-c"></a>Tutorial: Herstellen einer Verbindung mit der Bing-News-Suche-API mithilfe von verbundenen Diensten in Visual Studio und C#
 
@@ -87,14 +87,14 @@ Dieser Artikel enthält Details zur Verwendung des Visual Studio-Features „Ver
 
 Nachdem Sie die Unterstützung für die Bing-News-Suche-API zu Ihrem Projekt hinzugefügt haben, können Sie die API jetzt verwenden, um einer Webseite intelligente Suchfunktionen hinzuzufügen.
 
-1.  Fügen Sie in der Datei *Startup.cs* in der Methode `ConfigureServices` einen Aufruf von `IServiceCollection.AddSingleton` ein. Dadurch wird ein Konfigurationsobjekt mit den Schlüsseleinstellungen erstellt, die für den Code in Ihrem Projekt verfügbar sind.
+1. Fügen Sie in der Datei *Startup.cs* in der Methode `ConfigureServices` einen Aufruf von `IServiceCollection.AddSingleton` ein. Dadurch wird ein Konfigurationsobjekt mit den Schlüsseleinstellungen erstellt, die für den Code in Ihrem Projekt verfügbar sind.
  
    ```csharp
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddMvc();
-            services.AddSingleton<IConfiguration>(Configuration);
-        }
+       public void ConfigureServices(IServiceCollection services)
+       {
+           services.AddMvc();
+           services.AddSingleton<IConfiguration>(Configuration);
+       }
    ```
 
 

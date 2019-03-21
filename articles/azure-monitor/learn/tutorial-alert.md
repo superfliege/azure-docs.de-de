@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 300f0ddc8b738b5fd8578ed0b33cc15000c1098a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 70a11867dded3b7156f6b212ceb4756ee7c287f6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54101784"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079161"
 ---
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Überwachen der Anwendungsintegrität und Senden entsprechender Warnungen mit Azure Application Insights
 
@@ -69,18 +69,18 @@ Verfügbarkeitstests in Application Insights ermöglichen Ihnen das automatische
 ## <a name="create-an-alert-from-metrics"></a>Warnung auf Grundlage von Metriken erstellen
 Zusätzlich zum Senden von Warnungen durch einen Verfügbarkeitstest können Sie eine Warnung auf Grundlage aller Leistungsmetriken erstellen, die für Ihre Anwendung erfasst werden.
 
-2. Wählen Sie im Menü **Konfigurieren** die Option **Warnungen** aus.  Daraufhin wird der Bereich „Azure-Warnungen“ geöffnet.  Möglicherweise sind hier weitere Warnungsregeln für andere Dienste konfiguriert.
-3. Klicken Sie auf **Metrikwarnung hinzufügen**.  Daraufhin wird der Bereich zum Erstellen einer neuen Warnungsregel geöffnet.
+1. Wählen Sie im Menü **Konfigurieren** die Option **Warnungen** aus.  Daraufhin wird der Bereich „Azure-Warnungen“ geöffnet.  Möglicherweise sind hier weitere Warnungsregeln für andere Dienste konfiguriert.
+1. Klicken Sie auf **Metrikwarnung hinzufügen**.  Daraufhin wird der Bereich zum Erstellen einer neuen Warnungsregel geöffnet.
 
     ![Metrikwarnung hinzufügen](media/tutorial-alert/add-metric-alert.png)
 
-4. Geben Sie einen **Namen** für die Warnungsregel ein, und wählen Sie in der Dropdownliste Ihre Anwendung als **Ressource** aus.
-5. Wählen Sie eine **Metrik** zum Abrufen aus.  Ein Diagramm wird angezeigt, das den Wert dieser Anforderung während der letzten 24 Stunden angibt.  Dies hilft Ihnen beim Festlegen der Bedingung für die Metrik.
+1. Geben Sie einen **Namen** für die Warnungsregel ein, und wählen Sie in der Dropdownliste Ihre Anwendung als **Ressource** aus.
+1. Wählen Sie eine **Metrik** zum Abrufen aus.  Ein Diagramm wird angezeigt, das den Wert dieser Anforderung während der letzten 24 Stunden angibt.  Dies hilft Ihnen beim Festlegen der Bedingung für die Metrik.
 
     ![Hinzufügen einer Warnungsregel](media/tutorial-alert/add-alert-01.png)
 
-6. Geben Sie eine **Bedingung** und einen **Schwellenwert** für die Warnung ein. Dies ist die Anzahl der Fälle, in denen die Metrik überschritten werden muss, damit eine Warnung erstellt wird. 
-6. Aktivieren Sie unter **Benachrichtigen über** das Kontrollkästchen **E-Mail-Besitzer, Mitwirkende und Leser**, damit an diese Benutzer eine E-Mail gesendet wird, wenn die Warnungsbedingung erfüllt ist, und fügen Sie ggf. die E-Mail-Adressen weiterer Empfänger hinzu.  Hier können Sie auch einen Webhook oder eine Logik-App angeben, die ausgeführt werden, wenn die Bedingung erfüllt ist.  Mit diesen kann versucht werden, die Auswirkungen des erkannten Problems zu minimieren oder 
+1. Geben Sie eine **Bedingung** und einen **Schwellenwert** für die Warnung ein. Dies ist die Anzahl der Fälle, in denen die Metrik überschritten werden muss, damit eine Warnung erstellt wird. 
+1. Aktivieren Sie unter **Benachrichtigen über** das Kontrollkästchen **E-Mail-Besitzer, Mitwirkende und Leser**, damit an diese Benutzer eine E-Mail gesendet wird, wenn die Warnungsbedingung erfüllt ist, und fügen Sie ggf. die E-Mail-Adressen weiterer Empfänger hinzu.  Hier können Sie auch einen Webhook oder eine Logik-App angeben, die ausgeführt werden, wenn die Bedingung erfüllt ist.  Mit diesen kann versucht werden, die Auswirkungen des erkannten Problems zu minimieren oder 
 
     ![Hinzufügen einer Warnungsregel](media/tutorial-alert/add-alert-02.png)
 

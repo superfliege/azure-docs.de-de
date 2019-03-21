@@ -16,12 +16,12 @@ ms.date: 07/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbe9a10c85efa2f52a04f5c2fab87421a08f0a16
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3a7b9c8827979ac4135bcaf4dfeef7cd5de02b2d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199798"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118441"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure Active Directory Connect-Synchronisierung: Konfigurieren des bevorzugten Datenspeicherorts für Office 365-Ressourcen
 In diesem Thema wird ausführlich erläutert, wie Sie das Attribut für den bevorzugten Datenspeicherort in der Azure Active Directory Connect-Synchronisierung (Azure AD) konfigurieren. Wenn jemand Multi-Geo Capabilities in Office 365 verwendet, legen Sie mit diesem Attribut den geografischen Standort der Office 365-Daten des Benutzers fest. (Die Benennungen *Region* und *geografischer Raum* werden synonym verwendet.)
@@ -192,8 +192,8 @@ Im Allgemeinen ist der vollständige Synchronisierungszyklus erforderlich. Der G
    3. Wählen Sie im Dialogfeld **Vollständiger Import** und dann **OK** aus.
    4. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
-    > [!NOTE]
-    > Sie können den vollständigen Import im lokalen Active Directory Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. D.h., Sie hätten in Schritt 2 oben in diesem Artikel keine Änderungen vornehmen müssen.
+      > [!NOTE]
+      > Sie können den vollständigen Import im lokalen Active Directory Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. D.h., Sie hätten in Schritt 2 oben in diesem Artikel keine Änderungen vornehmen müssen.
 
 2. Führen Sie **Vollständiger Import** auf dem Azure AD Connector aus:
 

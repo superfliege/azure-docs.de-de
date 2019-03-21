@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08ad61070fd3bfb8472cffb51fd0b1bb4bcf169b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ef499e49fc4d1a0dc79dfc4efb818f7330b57b6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169376"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995202"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-web-apis-preview"></a>Schnellstart: Konfigurieren einer Clientanwendung für den Zugriff auf Web-APIs (Vorschauversion)
 
@@ -74,11 +74,11 @@ Fügen Sie Ihrer Anwendung wie folgt einen Umleitungs-URI hinzu:
 
 1. Führen Sie diese Schritte aus, um einen benutzerdefinierten Umleitungs-URI für Web-Apps und öffentliche Clientanwendungen hinzuzufügen:
 
-    1. Suchen Sie nach dem Abschnitt **Umleitungs-URI**.
-    1. Wählen Sie den Typ der zu erstellenden Anwendung aus: **Web** oder **Öffentlicher Client (Mobilgerät und Desktop)**.
-    1. Geben Sie den Umleitungs-URI für Ihre Anwendung ein.
-        * Geben Sie für Webanwendungen die Basis-URL Ihrer Anwendung an. http://localhost:31544 kann beispielsweise die URL für eine Webanwendung sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
-        * Geben Sie für öffentliche Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. https://MyFirstApp.
+   1. Suchen Sie nach dem Abschnitt **Umleitungs-URI**.
+   1. Wählen Sie den Typ der zu erstellenden Anwendung aus: **Web** oder **Öffentlicher Client (Mobilgerät und Desktop)**.
+   1. Geben Sie den Umleitungs-URI für Ihre Anwendung ein.
+      * Geben Sie für Webanwendungen die Basis-URL Ihrer Anwendung an. `http://localhost:31544` kann beispielsweise die URL für eine Webanwendung sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden.
+      * Geben Sie für öffentliche Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. https://MyFirstApp.
 
 1. Führen Sie diese Schritte aus, um eine Auswahl aus den vorgeschlagenen Umleitungs-URIs für öffentliche Clients (Mobilgerät, Desktop) zu treffen:
 

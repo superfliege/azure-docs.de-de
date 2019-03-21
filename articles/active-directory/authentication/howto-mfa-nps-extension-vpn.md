@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfe77602d138224c848cc915bbba5a7084c29650
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c22b035b325582cf4a12ff10a9abbedb8837229b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117879"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integration Ihrer VPN-Infrastruktur in Azure MFA mit der Netzwerkrichtlinienserver-Erweiterung für Azure
 
@@ -30,20 +30,20 @@ Die Netzwerkrichtlinien- und Zugriffsdienste bieten Organisationen folgende Mög
 
 * Zuweisen eines zentralen Orts für die Verwaltung und Steuerung von Netzwerkanforderungen, um Folgendes anzugeben:
 
-    * Wer kann eine Verbindung herstellen 
+  * Wer kann eine Verbindung herstellen 
     
-    * Zu welchen Tageszeiten sind Verbindungen zulässig 
+  * Zu welchen Tageszeiten sind Verbindungen zulässig 
     
-    * Dauer der Verbindungen
+  * Dauer der Verbindungen
     
-    * Sicherheitsstufe, die Clients für die Verbindungsherstellung verwenden müssen
+  * Sicherheitsstufe, die Clients für die Verbindungsherstellung verwenden müssen
 
     Anstatt Richtlinien in jedem VPN oder auf jedem Remotedesktopgateway-Server anzugeben, kann dies erfolgen, nachdem diese einem zentralen Ort zugewiesen wurden. Das RADIUS-Protokoll wird verwendet, um die zentralisierte Authentifizierung, Autorisierung und Ressourcenerfassung (Authentication, Authorization, Accounting – AAA) bereitzustellen. 
 
 * Richten Sie Netzwerkzugriffsschutz-Clientintegritätsrichtlinien (Network Access Protection, NAP) ein, die bestimmen, ob Geräten uneingeschränkter oder eingeschränkter Zugriff auf Netzwerkressourcen gewährt wird, und erzwingen Sie deren Durchsetzung.
 
 * Möglichkeit zum Erzwingen der Authentifizierung und Autorisierung für den Zugriff auf 802.1X-fähige Funkzugriffspunkte und Ethernet-Switches   
-Weitere Informationen finden Sie unter [Netzwerkrichtlinienserver (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
+  Weitere Informationen finden Sie unter [Netzwerkrichtlinienserver (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top). 
 
 Um die Sicherheit zu erhöhen und ein hohes Maß an Kompatibilität zu bieten, können Organisationen NPS in Azure Multi-Factor Authentication integrieren, um sicherzustellen, dass Benutzer die zweistufige Überprüfung verwenden, um eine Verbindung mit dem virtuellen Port auf dem VPN-Server herzustellen. Damit Benutzern Zugriff gewährt wird, müssen sie die von ihnen festgelegte Kombination aus Benutzername und Kennwort und andere Informationen angeben. Diese Informationen müssen vertrauenswürdig und dürfen nicht problemlos duplizierbar sein. Dazu gehören z.B. eine Mobiltelefonnummer, eine Festnetznummer oder eine Anwendung auf einem mobilen Gerät.
 

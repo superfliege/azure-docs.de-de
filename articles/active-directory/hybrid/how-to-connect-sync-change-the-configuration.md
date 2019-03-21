@@ -16,12 +16,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17f832947e289933fb7cde9513bc6e091aec30ae
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122976"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -294,7 +294,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 
     | Attributflusstyp | Zielattribut | Quelle | Einmal anwenden | Mergetyp |
     | --- | --- | --- | --- | --- |
-    | Direkt | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | Deaktiviert | Aktualisieren |
+    | Ausdruck | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | Deaktiviert | Aktualisieren |
 
 7. Klicken Sie auf **Hinzufügen**, um die Regel für eingehende Daten zu erstellen.
 
@@ -349,8 +349,8 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
    3. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
    4. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
-    > [!NOTE]
-    > Sie können den vollständigen Import im lokalen AD-Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. Anders gesagt: Sie mussten in [Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema) keine Änderungen vornehmen.
+      > [!NOTE]
+      > Sie können den vollständigen Import im lokalen AD-Connector überspringen, wenn das Quellattribut bereits in der Liste der importierten Attribute enthalten ist. Anders gesagt: Sie mussten in [Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema](#step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema) keine Änderungen vornehmen.
 
 2. Führen Sie im **Azure AD-Connector** einen **vollständigen Import** aus:
 

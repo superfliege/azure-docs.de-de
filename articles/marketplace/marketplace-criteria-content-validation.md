@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: fb12fe381cb4df6139fae7289279220f72984484
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000403"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Richtlinien für die Azure Marketplace-Auflistung
 
@@ -72,16 +72,18 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 ----
 
 ## <a name="container-offer-requirements"></a>Anforderungen für Containerangebote
+
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal | 
 |:--- |:--- |:--- |:--- |
 |1 |Angebotseinstellungen | <br>• Angebots-ID: Max. 50 Zeichen <br>• Herausgeber-ID: Aus Dropdownliste auswählen <br>• Name: Max. 50 Zeichen | Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht). | 
-| 2 | SKUs | Partnerklicks auf neue SKUs.| Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht).  |  |
+| 2 | SKUs | Partnerklicks auf neue SKUs.| Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht).  |
 | 3 | Marketplace-Artefakte | Logos werden korrekt angezeigt. |<br>• Das Logo enthält das „Herobild“ (das großformatige Bild im Azure-Portal). <br>• Logos: klein (48×48) und groß (216×216) sind erforderlich. <br>• Anforderungen für das Herobild: https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-solution-template-offer-publish<br>• Screenshots (max. fünf):  Das Cloudpartnerportal erfordert ein PNG-Bild mit einer Auflösung von 1280×720.|
 | 4 | Leadverwaltung |<br>• Leadverwaltung: Wählen Sie das System aus, in dem Ihre Leads gespeichert werden. <br>• [Hier](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads) erfahren Sie, wie Sie Ihr CRM-System verbinden. | |
 
 ----
 
 ## <a name="consulting-offer-requirements"></a>Anforderungen für Beratungsangebote
+
 |  | Auflistungselement | Anforderungen – einfach | Anforderungen – optimal |
 |:--- |:--- |:--- |:--- |
 | 1 | Titel des Angebots  |  <br>• Die Art und die Dauer des Diensts müssen eindeutig im folgenden Format angegeben sein: NAME: DAUER, ART. (d.h. „Angebotserstellung: 1 Woche, Proof-of-Concept“)  | <br>• Der Name des Herausgebers wird nicht wiederholt. <br>• Entspricht dem Stil des Titels in der Beschreibung (lange Titel sind nicht erwünscht). | 
@@ -103,4 +105,4 @@ Alle Angebote müssen die unter [Anforderungen für alle Auflistungen](https://d
 *   [Bestimmen des Listingtyps für Ihre Lösung](https://docs.microsoft.com/azure/marketplace/determine-your-listing-type)
 
  
----  
+---

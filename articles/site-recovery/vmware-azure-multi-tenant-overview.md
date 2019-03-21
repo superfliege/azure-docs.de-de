@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 2e68ad6d999a5ff003abe35a0cce75bc5f2cebef
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723925"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104453"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Übersicht über die Unterstützung mehrerer Mandanten für die VMware-Notfallwiederherstellung in Azure mit CSP
 
@@ -75,17 +75,17 @@ Konfigurieren Sie den Konfigurationsserver mit einem Konto, dem eine besondere R
 1. Erstellen Sie eine neue Rolle durch Klonen der vordefinierten Rolle *Schreibgeschützt*, und geben Sie ihr einen passenden Namen (z.B. „Azure_Site_Recovery“ wie in diesem Beispiel).
 2. Weisen Sie dieser Rolle die folgenden Berechtigungen zu:
 
-    * **Datenspeicher**: Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
-    * **Netzwerk**: Netzwerk zuweisen
-    * **Ressource**: VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
-    * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
-    * **VM – Konfiguration**: Alle
-    - **VM – Interaktion** > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
-    - **VM – Bestand** > Aus vorhandenen erstellen, Neu erstellen, Registrieren, Registrierung aufheben
-    - **VM – Bereitstellung** > Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
-    - **VM – Momentaufnahmeverwaltung** > Momentaufnahmen entfernen
+   * **Datenspeicher**: Speicherplatz zuordnen, Datenspeicher durchsuchen, Low-Level-Dateivorgänge, Datei entfernen, Dateien virtueller Computer aktualisieren
+   * **Netzwerk**: Netzwerk zuweisen
+   * **Ressource**: VM zu Ressourcenpool zuweisen, ausgeschaltete VM migrieren, eingeschaltete VM migrieren
+   * **Aufgaben**: Aufgabe erstellen, Aufgabe aktualisieren
+   * **VM – Konfiguration**: Alle
+   * **VM – Interaktion** > Frage beantworten, Geräteverbindung, CD-Medien konfigurieren, Diskettenmedien konfigurieren, Ausschalten, Einschalten, VMware-Tools installieren
+   * **VM – Bestand** > Aus vorhandenen erstellen, Neu erstellen, Registrieren, Registrierung aufheben
+   * **VM – Bereitstellung** > Download virtueller Computer zulassen, Upload von Dateien virtueller Computer zulassen
+   * **VM – Momentaufnahmeverwaltung** > Momentaufnahmen entfernen
 
-        ![Das Dialogfeld „Rolle bearbeiten“](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
+       ![Das Dialogfeld „Rolle bearbeiten“](./media/vmware-azure-multi-tenant-overview/edit-role-permissions.png)
 
 3. Weisen Sie dem vCenter-Konto (das im Konfigurationsserver des Mandanten verwendet wird) für verschiedene Objekte Zugriffsebenen wie folgt zu:
 

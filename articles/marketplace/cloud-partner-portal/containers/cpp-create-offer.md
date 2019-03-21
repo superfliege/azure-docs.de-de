@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 71a69a8c299d4469c151102b0dbd5cdb70c296ec
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: 3b2a34a5ed2c6b57bfce0b9a4cf35cdf14cff9c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57900079"
 ---
 # <a name="create-a-new-container-offer-with-the-cloud-partner-portal"></a>Erstellen eines neuen Containerangebots mit dem Cloud-Partnerportal
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie einen Azure Marketplace-Eintrag für
 
 ## <a name="new-offer-form"></a>Formular „Neues Angebot“ 
 
-Melden Sie sich beim [Cloud-Partnerportal](http://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ die Option **Container**, um das Formular **Neues Angebot** anzuzeigen und dann mit dem Definieren von Ressourcen für ein neues Containerangebot zu beginnen.
+Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ die Option **Container**, um das Formular **Neues Angebot** anzuzeigen und dann mit dem Definieren von Ressourcen für ein neues Containerangebot zu beginnen.
 
 ![Option „Container“ für neues Angebot auswählen](./media/azure-container-offer.png)
 

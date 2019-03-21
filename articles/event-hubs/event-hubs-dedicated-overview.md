@@ -15,12 +15,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: d418715ab651721d03b67bd411eb90607391bf10
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 2a1785b9c749a8c413987974446190aafc08ed3a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237126"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105589"
 ---
 # <a name="overview-of-event-hubs-dedicated"></a>Übersicht über Event Hubs Dedicated
 
@@ -29,7 +29,7 @@ Die *Event Hubs Dedicated*-Kapazität bietet Bereitstellungen mit einem Mandante
 Die folgende Tabelle enthält einen Vergleich der verfügbaren Dienstebenen von Event Hubs. Für das Event Hubs Dedicated-Angebot gilt im Gegensatz zu den nutzungsbasierten Preisen für die meisten Standard-Funktionen ein fester Monatspreis. Der Dedicated-Tarif umfasst die Funktionen des Standard-Tarifs, jedoch mit Kapazität auf Unternehmensniveau für Kunden mit anspruchsvollen Workloads. 
 
 | Feature | Standard | Dediziert |
-| --- |:---:|:---:|:---:|
+| --- |:---:|:---:|
 | Eingangsereignisse | Bezahlung pro Million Ereignisse | Enthalten |
 | Durchsatzeinheit (1 MB/s eingehend, 2 MB/s ausgehend) | Bezahlung pro Stunde | Enthalten |
 | Nachrichtengröße | 1 MB | 1 MB |

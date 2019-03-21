@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 02/28/2019
 ms.author: jeffgilb
 ms.reviewer: scottnap
-ms.lastreviewed: 09/17/2018
-ms.openlocfilehash: ed2205455c4d3c82554f3d552bacc059fffa68e7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.lastreviewed: 02/28/2019
+ms.openlocfilehash: 09805719262f0a1d30f3b38af4b5209667d25e5a
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174655"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195369"
 ---
 # <a name="add-public-ip-addresses"></a>Hinzufügen öffentlicher IP-Adressen
 *Anwendungsbereich: Integrierte Azure Stack-Systeme und Azure Stack Development Kit*  
@@ -53,11 +53,6 @@ Zunächst müssen Sie den Adressblock abrufen, den Sie Azure Stack hinzufügen m
 8.   Geben Sie den Adressblock in CIDR-Notation ein, den Sie hinzufügen möchten.  Beispiel:  192.168.203.0/24
 9.  Wenn Sie einen gültigen CIDR-Bereich im Feld „Adressbereich“ (CIDR-Block) angeben, werden die Felder „IP-Startadresse“, „IP-Endadresse“ und „Verfügbare IP-Adressen“ automatisch mit Daten aufgefüllt.  Sie sind schreibgeschützt und werden automatisch generiert, sodass Sie diese Angaben nicht ändern können, ohne den Wert im Feld „Adressbereich“ zu ändern.
 10. Nach dem Überprüfen der Informationen auf dem Blatt und dem Bestätigen, dass alle Angaben richtig sind, klicken Sie auf „OK“, um die Änderung zu übernehmen und den Adressbereich Azure Stack hinzuzufügen.
-
-## <a name="update-the-acls-on-your-top-of-rack-switches"></a>Aktualisieren der ACLs für Ihre ToR-Switches
-Die letzte Aktion, die Sie ausführen müssen, damit der neu hinzugefügte IP-Bereich funktioniert, ist die Aktualisierung der Zugriffssteuerungslisten (ACLs) für Ihre ToR-Switches (Top-of-Rack).  Die ACLs für die ToR-Switches sind so gesperrt, dass die Konnektivität außerhalb von Azure Stack mit dem neu hinzugefügten IP-Bereich erst funktioniert, wenn der neue Bereich den ACLs für den Switch hinzugefügt wird.  
-
-Sie müssen sich mit Ihrem OEM in Verbindung setzen und mit ihm zusammenarbeiten, um die ACLs für ToR-Switches zu aktualisieren.  OEMs verfügen über die erforderlichen Tools, um dies auf unterstützte Weise auszuführen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

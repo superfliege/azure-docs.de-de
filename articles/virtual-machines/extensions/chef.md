@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
-ms.openlocfilehash: 159ce1b565068e2cfdb3cb1cb2e5b5f72ff6848f
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089164"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef-VM-Erweiterung für Linux und Windows
 
@@ -69,7 +69,7 @@ Der folgende JSON-Code zeigt das Schema für die Chef-VM-Erweiterung. Die Erweit
 ### <a name="core-property-values"></a>Kerneigenschaftswerte
 
 | NAME | Wert/Beispiel | Datentyp
-| ---- | ---- | ---- | ----
+| ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | Zeichenfolge (Datum) |
 | Herausgeber | `Chef.Bootstrap.WindowsAzure` | Zeichenfolge |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | Zeichenfolge |

@@ -16,17 +16,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
-ms.openlocfilehash: eb5d731fbef22c70aaf970bf64aa90361e47a542
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53194197"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011278"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>Bereitstellen von SAP IDES EHP7 SP3 für SAP ERP 6.0 in Azure
 In diesem Artikel wird beschrieben, wie Sie ein SAP IDES-System mit SQL Server und einem Windows-Betriebssystem über die SAP Cloud Appliance Library (SAP CAL) 3.0 in Azure bereitstellen. In den Screenshots ist dieser Prozess Schritt für Schritt dargestellt. Führen Sie die gleichen Schritte aus, um eine andere Lösung bereitzustellen.
 
-Informationen zu Ihren ersten Schritten mit der SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur neuen [SAP Cloud Appliance Library 3.0](http://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
+Informationen zu Ihren ersten Schritten mit der SAP Cloud Appliance Library finden Sie auf der Website [SAP Cloud Appliance Library](https://cal.sap.com/). SAP bietet auch einen Blog zur neuen [SAP Cloud Appliance Library 3.0](https://scn.sap.com/community/cloud-appliance-library/blog/2016/05/27/sap-cloud-appliance-library-30-came-with-a-new-user-experience). 
 
 > [!NOTE]
 > Ab dem 29. Mai 2017 können Sie das Azure Resource Manager-Bereitstellungsmodell zusätzlich zum weniger bevorzugten klassischen Bereitstellungsmodell für die Bereitstellung der SAP CAL nutzen. Wir empfehlen allerdings, das neue Resource Manager-Bereitstellungsmodell zu verwenden und das klassische Bereitstellungsmodell außer Acht zu lassen.
@@ -46,8 +46,8 @@ Nach der Anmeldung bei der SAP CAL gelangen Sie in der Regel über die erste Sei
     
     c. Erteilen Sie der SAP CAL die Berechtigung zur Bereitstellung in Ihrem Azure-Abonnement.
 
-    > [!NOTE]
-    Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Resource Manager-Modell bereitgestellt werden.
+   > [!NOTE]
+   >  Die nächsten Schritte zeigen, wie Sie ein SAP CAL-Konto für Resource Manager-Bereitstellungen erstellen. Wenn Sie bereits über ein SAP CAL-Konto verfügen, das mit dem klassischen Bereitstellungsmodell verknüpft ist, *müssen* Sie folgende Schritte zum Erstellen eines neuen SAP CAL-Kontos ausführen. Das neue SAP CAL-Konto muss im Resource Manager-Modell bereitgestellt werden.
 
 1. Beim Erstellen eines neuen SAP CAL-Kontos zeigt die Seite **Accounts** (Konten) für Azure zwei Optionen an: 
 
@@ -91,7 +91,7 @@ Sie haben erfolgreich ein SAP CAL-Konto mit den folgenden Möglichkeiten erstell
 - Bereitstellung von SAP-Systemen in Ihrem Azure-Abonnement
 
 > [!NOTE]
-Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstellen können, müssen Sie sich für ein SAP CAL-Abonnement registrieren. Andernfalls wird die Lösung auf der Übersichtsseite möglicherweise als **Locked** (Gesperrt) angezeigt.
+> Bevor Sie Ihre auf Windows und SQL Server basierende SAP IDES-Lösung bereitstellen können, müssen Sie sich für ein SAP CAL-Abonnement registrieren. Andernfalls wird die Lösung auf der Übersichtsseite möglicherweise als **Locked** (Gesperrt) angezeigt.
 
 ### <a name="deploy-a-solution"></a>Bereitstellen einer Lösung
 1. Wählen Sie nach dem Einrichten eines SAP CAL-Kontos die Lösung **The SAP IDES solution on Windows and SQL Server** (Die SAP IDES-Lösung unter Windows und SQL Server) aus. Klicken Sie auf **Create Instance** (Instanz erstellen), und bestätigen Sie die Nutzungsbedingungen. 

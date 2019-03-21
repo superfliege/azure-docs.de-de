@@ -1,8 +1,14 @@
---- 
+---
 layout: HubPage
 hide_bc: true
 title: Microsoft Azure-Dokumentation
-description: 'Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.'
+description: Erfahren Sie, wie Sie mit Microsoft Azure-Clouddiensten leistungsstarke Anwendungen erstellen und verwalten. Laden Sie die Dokumentation, Beispielcode, Tutorials und vieles mehr herunter.
+ms.openlocfilehash: 023dd29d536ba1d5d963ca1c6b833f016acb7250
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56736451"
 ---
 <div id="main" class="v2">
     <div class="container">

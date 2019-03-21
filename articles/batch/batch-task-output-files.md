@@ -10,15 +10,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 11/14/2018
+ms.date: 03/05/2019
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 0aa0be7ae9658259b327014c5678777c963e6cb5
-ms.sourcegitcommit: 70471c4febc7835e643207420e515b6436235d29
+ms.openlocfilehash: 1d2d53213af34377d23c9ea140bab15822fc1b2e
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54302815"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444768"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Beibehalten von Taskdaten mithilfe der Batch-Dienst-API in Azure Storage
 
@@ -36,9 +36,6 @@ Azure Batch bietet mehr als eine Möglichkeit zum Beibehalten der Taskausgabe. D
 - Sie möchten die Ausgabe von Batch-Tasks und Auftrags-Manager-Aufgaben in Pools beibehalten, die mit den Konfigurationen des virtuellen Computers erstellt wurden.
 - Sie möchten die Ausgabe in einem Azure Storage-Container mit einem beliebigen Namen beibehalten.
 - Sie möchten die Ausgabe in einem Azure Storage-Container beibehalten, der auf Grundlage des [Batch-Dateikonventionenstandards](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) benannt wurde. 
-
-> [!NOTE]
-> Die Batch-Dienst-API unterstützt keine persistenten Daten aus Tasks, die in Pools ausgeführt werden, die mit der Clouddienstkonfiguration erstellt wurden. Informationen zur Beibehaltung von Taskausgaben aus Pools mit der Clouddienstkonfiguration finden Sie unter [Beibehalten von Auftrags- und Taskdateien in Azure Storage mit der Batch-Dateikonventionenbibliothek für .NET](batch-task-output-file-conventions.md).
 
 Wenn Ihr Szenario sich von den oben aufgeführten unterscheidet, müssen Sie möglicherweise einen anderen Ansatz in Betracht ziehen. Die Batch-Dienst-API unterstützt beispielsweise derzeit kein Streaming von Ausgaben an Azure Storage während der Ausführung des Tasks. Um die Ausgabe zu streamen, sollten Sie die Bibliothek für Batch-Dateikonventionen für .NET verwenden. Für andere Sprachen müssen Sie Ihre eigene Lösung implementieren. Weitere Informationen zu anderen Optionen für das Beibehalten der Taskausgabe finden Sie unter [Persistente Aufträge und Aufgabenausgabe in Azure Storage](batch-task-output.md).
 

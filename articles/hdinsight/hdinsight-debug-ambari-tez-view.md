@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: 9b8b92b7a672a4d344b17d4ade497749766f8a91
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 7d8a654b6b2f429119323fa5d18eb0596f63e6f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719692"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105266"
 ---
 # <a name="use-apache-ambari-views-to-debug-apache-tez-jobs-on-hdinsight"></a>Debuggen von Apache Tez-Aufträgen in HDInsight mithilfe von Apache Ambari-Ansichten
 
@@ -90,14 +90,14 @@ Gehen Sie folgendermaßen vor, um eine Hive-Abfrage mit Tez auszuführen:
 
 5. Auf den Registerkarten auf dieser Seite können Sie die folgenden Informationen anzeigen:
 
-    * **Abfragedetails:** Details zu der Hive-Abfrage
-    * **Zeitachse:** Informationen zur Ausführungsdauer der einzelnen Verarbeitungsphasen
-    * **Konfigurationen:** Die für diese Abfrage verwendete Konfiguration
+   * **Abfragedetails:** Details zu der Hive-Abfrage
+   * **Zeitachse:** Informationen zur Ausführungsdauer der einzelnen Verarbeitungsphasen
+   * **Konfigurationen:** Die für diese Abfrage verwendete Konfiguration
 
-    Sie können über die Links in __Abfragedetails__ Informationen zur __Anwendung__ oder dem __DAG__ (gerichteter azyklischer Graph) für diese Abfrage suchen.
+     Sie können über die Links in __Abfragedetails__ Informationen zur __Anwendung__ oder dem __DAG__ (gerichteter azyklischer Graph) für diese Abfrage suchen.
     
-    * Der Link __Anwendung__ zeigt Informationen zur YARN-Anwendung für diese Abfrage an. Von hier aus können Sie auf die YARN-Anwendungsprotokolle zugreifen.
-    * Der Link __DAG__ zeigt Informationen zum gerichteten azyklischen Graph für diese Abfrage an. Sie können sich hier eine grafische Darstellung des gerichteten azyklischen Graphen (DAG) ansehen. Sie erhalten auch Informationen zu den Scheitelpunkten im gerichteten azyklischen Graph.
+   * Der Link __Anwendung__ zeigt Informationen zur YARN-Anwendung für diese Abfrage an. Von hier aus können Sie auf die YARN-Anwendungsprotokolle zugreifen.
+   * Der Link __DAG__ zeigt Informationen zum gerichteten azyklischen Graph für diese Abfrage an. Sie können sich hier eine grafische Darstellung des gerichteten azyklischen Graphen (DAG) ansehen. Sie erhalten auch Informationen zu den Scheitelpunkten im gerichteten azyklischen Graph.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.author: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 47646a1593f01c4ea695b549bbde22260ffaf2f7
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 83e2f6f42de5c729667f366a6e068f1c8bd71f02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011070"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Der Azure-Blobdateisystemtreiber (ABFS): Ein dedizierter Azure Storage-Treiber für Hadoop
 
@@ -21,7 +21,7 @@ Eine der Hauptmethoden für den Zugriff auf Daten in Azure Data Lake Storage Gen
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Vorherige Funktion: Der Windows Azure Storage Blob-Treiber
 
-Die ursprüngliche Unterstützung von Azure Blob Storage wurde durch den Windows Azure Storage Blob-Treiber (oder [WASB-Treiber](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) bereitgestellt. Dieser Treiber hatte die komplexe Aufgabe, die für die Hadoop-Dateisystemschnittstelle erforderliche Dateisystemsemantik der objektspeicherorientierten Schnittstelle zuzuordnen, die von Azure Blob Storage verfügbar gemacht wird. Dieser Treiber unterstützt das Modell zwar weiterhin und bietet blitzschnellen Zugriff auf Daten in Blobs, enthält aber auch eine große Menge an Code für die entsprechende Zuordnung, was ihn nicht gerade wartungsfreundlich macht. Darüber hinaus muss der Treiber bei einigen Vorgängen (beispielsweise bei [FileSystem.rename()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) und [FileSystem.delete()](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) für Verzeichnisse) eine große Anzahl von Vorgängen ausführen, da Objektspeicher keine Verzeichnisse unterstützen. Dies wirkt sich nachteilig auf die Leistung aus. Der ABFS-Treiber wurde entwickelt, um die Mängel in WASB zu bewältigen.
+Die ursprüngliche Unterstützung von Azure Blob Storage wurde durch den Windows Azure Storage Blob-Treiber (oder [WASB-Treiber](https://hadoop.apache.org/docs/current/hadoop-azure/index.html)) bereitgestellt. Dieser Treiber hatte die komplexe Aufgabe, die für die Hadoop-Dateisystemschnittstelle erforderliche Dateisystemsemantik der objektspeicherorientierten Schnittstelle zuzuordnen, die von Azure Blob Storage verfügbar gemacht wird. Dieser Treiber unterstützt das Modell zwar weiterhin und bietet blitzschnellen Zugriff auf Daten in Blobs, enthält aber auch eine große Menge an Code für die entsprechende Zuordnung, was ihn nicht gerade wartungsfreundlich macht. Darüber hinaus muss der Treiber bei einigen Vorgängen (beispielsweise bei [FileSystem.rename()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) und [FileSystem.delete()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) für Verzeichnisse) eine große Anzahl von Vorgängen ausführen, da Objektspeicher keine Verzeichnisse unterstützen. Dies wirkt sich nachteilig auf die Leistung aus. Der ABFS-Treiber wurde entwickelt, um die Mängel in WASB zu bewältigen.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Der Azure-Blobdateisystemtreiber
 
@@ -52,13 +52,13 @@ Der ABFS-Treiber unterstützt zwei Formen der Authentifizierung, sodass die Hado
 
 ### <a name="configuration"></a>Konfiguration
 
-Die gesamte Konfiguration für den ABFS-Treiber ist in der Konfigurationsdatei <code>core-site.xml</code> gespeichert. Bei Hadoop-Distributionen mit [Ambari](http://ambari.apache.org/) kann die Konfiguration auch über das Webportal oder über die Ambari-REST-API verwaltet werden.
+Die gesamte Konfiguration für den ABFS-Treiber ist in der Konfigurationsdatei <code>core-site.xml</code> gespeichert. Bei Hadoop-Distributionen mit [Ambari](https://ambari.apache.org/) kann die Konfiguration auch über das Webportal oder über die Ambari-REST-API verwaltet werden.
 
-Details zu allen unterstützten Konfigurationseinträgen finden Sie in der [offiziellen Hadoop-Dokumentation](http://hadoop.apache.org/docs/current/hadoop-azure/index.html).
+Details zu allen unterstützten Konfigurationseinträgen finden Sie in der [offiziellen Hadoop-Dokumentation](https://hadoop.apache.org/docs/current/hadoop-azure/index.html).
 
 ### <a name="hadoop-documentation"></a>Hadoop-Dokumentation
 
-Der ABFS-Treiber ist vollständig in der [offiziellen Hadoop-Dokumentation](http://hadoop.apache.org/docs/current/hadoop-azure/index.html) dokumentiert.
+Der ABFS-Treiber ist vollständig in der [offiziellen Hadoop-Dokumentation](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) dokumentiert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

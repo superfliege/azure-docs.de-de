@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 0990ae2c21017c0d6ff25478eb4b5e3bfb4f0d11
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 743b4d4888738579a023e879dc7b6e95cd23ccc7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251434"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994370"
 ---
 # <a name="create-a-conversation-learner-model-using-nodejs"></a>Erstellen eines Unterhaltungslernmodells mithilfe von Node.js
 
@@ -33,7 +33,7 @@ Das Projekt „Unterhaltungslernmodul“ besteht aus einem SDK, das Sie zu Ihrem
   
 - LUIS-Erstellungsschlüssel:
 
-  1. Melden Sie sich bei [http://www.luis.ai](http://www.luis.ai) an.
+  1. Melden Sie sich bei [https://www.luis.ai](https://www.luis.ai) an.
 
   2. Klicken Sie auf Ihren Namen in der oberen rechten Ecke, und klicken Sie dann auf „Einstellungen“.
 
@@ -78,35 +78,35 @@ Das Projekt „Unterhaltungslernmodul“ besteht aus einem SDK, das Sie zu Ihrem
 
     Dadurch wird der generische leere Bot in `cl-bot-01/src/app.ts` ausgeführt.
 
-3. Öffnen Sie den Browser, und navigieren Sie zu http://localhost:3978.
+3. Öffnen Sie den Browser, und navigieren Sie zu `http://localhost:3978`.
 
 Sie verwenden nun das Unterhaltungslernmodul und können ein Unterhaltungslernmodell erstellen und trainieren.  
 
 > [!NOTE]
-> Am Anfang ist das Projekt „Unterhaltungslernmodul“ nur über eine Einladung verfügbar.  Wenn http://localhost:3978/ui den HTTP-Fehler `403` anzeigt, bedeutet das, dass Ihr Konto nicht eingeladen wurde.  [Fordern Sie eine Einladung an](https://aka.ms/conversation-learner-request-invite).
+> Am Anfang ist das Projekt „Unterhaltungslernmodul“ nur über eine Einladung verfügbar.  Wenn `http://localhost:3978/ui` den HTTP-Fehler `403` anzeigt, bedeutet das, dass Ihr Konto nicht eingeladen wurde.  [Fordern Sie eine Einladung an](https://aka.ms/conversation-learner-request-invite).
 
 ## <a name="tutorials-demos-and-switching-between-bots"></a>Tutorials, Demos und Wechseln zwischen Bots
 
 Durch die obigen Anweisungen wurde der generische leere Bot gestartet.  So führen Sie stattdessen ein Tutorial oder einen Demobot aus:
 
-1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter http://localhost:3978/ui/home zurück.
+1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter `http://localhost:3978/ui/home` zurück.
     
 2. Wenn ein anderer Bot ausgeführt wird (wie `npm start` oder `npm run demo-pizza`), beenden Sie diesen.  Sie müssen den Benutzeroberflächenprozess nicht beenden oder den Webbrowser schließen.
 
 3. Führen Sie einen Demobot über die Befehlszeile aus (siehe Schritt 2).  Folgende Demos sind verfügbar:
 
-  ```bash
-  npm run tutorial-general
-  npm run tutorial-entity-detection
-  npm run tutorial-session-callbacks
-  npm run tutorial-api-calls
-  npm run tutorial-hybrid
-  npm run demo-password
-  npm run demo-pizza
-  npm run demo-storage
-  ```
+   ```bash
+   npm run tutorial-general
+   npm run tutorial-entity-detection
+   npm run tutorial-session-callbacks
+   npm run tutorial-api-calls
+   npm run tutorial-hybrid
+   npm run demo-password
+   npm run demo-pizza
+   npm run demo-storage
+   ```
 
-4. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie http://localhost:3978/ui/home laden. 
+4. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie `http://localhost:3978/ui/home` laden. 
 
 5. Klicken Sie auf „Tutorials importieren“, und wählen Sie auf der Conversation Learner-Benutzeroberfläche das Demomodell aus, das der von Ihnen gestarteten Demo entspricht.
 
@@ -114,7 +114,7 @@ Die Quelldateien für die Demos befinden sich unter `cl-bot-01/src/demos`.
 
 ## <a name="create-a-bot-which-includes-back-end-code"></a>Erstellen eines Bots mit Back-End-Code
 
-1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter http://localhost:3978/ui/home zurück.
+1. Wenn Sie die Webbenutzeroberfläche des Unterhaltungslernmoduls geöffnet haben, kehren Sie zur Modellliste unter `http://localhost:3978/ui/home` zurück.
     
 2. Wenn ein Bot ausgeführt wird (z.B. `npm run demo-pizza`), beenden Sie diesen.  Sie müssen den Benutzeroberflächenprozess nicht beenden oder den Webbrowser schließen.
 
@@ -127,7 +127,7 @@ Die Quelldateien für die Demos befinden sich unter `cl-bot-01/src/demos`.
     npm start
     ```
 
-5. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie http://localhost:3978/ui/home laden. 
+5. Wenn Sie dies nicht bereits getan haben, wechseln Sie zur Webbenutzeroberfläche des Unterhaltungslernmoduls in Chrome, indem Sie `http://localhost:3978/ui/home` laden. 
 
 6. Erstellen Sie ein neues Unterhaltungslernmodell auf der Benutzeroberfläche, und beginnen Sie mit dem Training.
 

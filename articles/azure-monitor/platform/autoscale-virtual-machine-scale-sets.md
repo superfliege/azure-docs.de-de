@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 02/22/2016
 ms.author: ancav
 ms.subservice: autoscale
-ms.openlocfilehash: 23618b545814e89a7343d2db4664405855051c1b
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 6da653bc94c8b549282ab9124dba23b08771c5f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080776"
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>Konfiguration der erweiterten automatischen Skalierung mithilfe von Resource Manager-Vorlagen für VM Scale Sets
 Sie können VM-Skalierungsgruppen basierend auf Leistungsmetrik-Schwellenwerten horizontal herunter- und hochskalieren – entweder nach einem sich wiederholenden Zeitplan oder zu einem bestimmten Datum. Außerdem können Sie E-Mail- und Webhookbenachrichtigungen für Skalierungsaktionen konfigurieren. Diese exemplarische Vorgehensweise zeigt ein Beispiel für die Konfiguration der oben genannten Objekte mithilfe einer Resource Manager-Vorlage für eine VM-Skalierungsgruppe.
@@ -47,14 +47,14 @@ In dieser exemplarischen Vorgehensweise verwenden wir den [Azure-Ressourcen-Expl
 
 4. Dies ist ein hypothetisches Skalierungsszenario, das wir für diese exemplarische Vorgehensweise verwenden.
 
-    * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, horizontal hoch- oder herunterskalieren.*
-    * **Länge der Nachrichtenwarteschlange:** Ich verwende eine Service Bus-Warteschlange für die eingehenden Nachrichten, die an meine Anwendung gerichtet sind. Ich verwende die Anzahl von Warteschlangennachrichten und CPU%. Außerdem konfiguriere ich ein Standardprofil zum Auslösen einer Skalierungsaktion, wenn entweder die Nachrichtenanzahl oder die CPU-Nutzung in Prozent den Schwellenwert erreicht.\*
-    * **Zeitpunkt innerhalb einer Woche und Tageszeit:** Ich möchte ein sich wöchentlich wiederholendes, auf der Tageszeit basierendes Profil namens „Wochentage, morgens“ verwenden. Den Verlaufsdaten habe ich entnommen, dass es besser ist, über eine bestimmte Anzahl von VM-Instanzen zu verfügen, damit meine Anwendungslast während dieser Zeit bewältigt werden kann.\*
-    * **Sondertermine:** Ich habe ein Profil vom Typ „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last verarbeiten kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird.\*
-    * *Die letzten zwei Profile können auch andere auf Leistungsmetriken basierende Regeln umfassen. In diesem Fall werden jedoch stattdessen die auf Leistungsmetriken basierenden Standardregeln verwendet. Regeln sind für sich wiederholende und datumsbasierte Profile optional.*
+   * **Lastbasiert:** Ich möchte je nach Last meiner Anwendung, die in meiner Skalierungsgruppe gehostet wird, horizontal hoch- oder herunterskalieren.*
+   * **Länge der Nachrichtenwarteschlange:** Ich verwende eine Service Bus-Warteschlange für die eingehenden Nachrichten, die an meine Anwendung gerichtet sind. Ich verwende die Anzahl von Warteschlangennachrichten und CPU%. Außerdem konfiguriere ich ein Standardprofil zum Auslösen einer Skalierungsaktion, wenn entweder die Nachrichtenanzahl oder die CPU-Nutzung in Prozent den Schwellenwert erreicht.\*
+   * **Zeitpunkt innerhalb einer Woche und Tageszeit:** Ich möchte ein sich wöchentlich wiederholendes, auf der Tageszeit basierendes Profil namens „Wochentage, morgens“ verwenden. Den Verlaufsdaten habe ich entnommen, dass es besser ist, über eine bestimmte Anzahl von VM-Instanzen zu verfügen, damit meine Anwendungslast während dieser Zeit bewältigt werden kann.\*
+   * **Sondertermine:** Ich habe ein Profil vom Typ „Tag der Produkteinführung“ hinzugefügt. Ich plane für bestimmte Tage im Voraus, damit meine Anwendung die Last verarbeiten kann, die durch Marketingankündigungen und die Einführung neuer Produkte verursacht wird.\*
+   * *Die letzten zwei Profile können auch andere auf Leistungsmetriken basierende Regeln umfassen. In diesem Fall werden jedoch stattdessen die auf Leistungsmetriken basierenden Standardregeln verwendet. Regeln sind für sich wiederholende und datumsbasierte Profile optional.*
 
-    Die Profil- und Regelpriorisierung der Engine für die automatische Skalierung wird auch im Artikel [Empfohlene Methoden für die automatische Skalierung](autoscale-best-practices.md) erläutert.
-    Eine Liste mit gängigen Metriken für die automatische Skalierung finden Sie unter [Allgemeine Metriken für die automatische Skalierung](autoscale-common-metrics.md).
+     Die Profil- und Regelpriorisierung der Engine für die automatische Skalierung wird auch im Artikel [Empfohlene Methoden für die automatische Skalierung](autoscale-best-practices.md) erläutert.
+     Eine Liste mit gängigen Metriken für die automatische Skalierung finden Sie unter [Allgemeine Metriken für die automatische Skalierung](autoscale-common-metrics.md).
 
 5. Stellen Sie sicher, dass Sie sich im Ressourcen-Explorer im Modus **Lesen/Schreiben** befinden.
 

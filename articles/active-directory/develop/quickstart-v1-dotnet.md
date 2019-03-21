@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b06ceb86e8406657766be1375889fcfe1b4673d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2b55f7e615f2c2edb604d5b9433db6cc48d9f36f
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204541"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223392"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-a-net-desktop-wpf-app"></a>Schnellstart: Anmelden von Benutzern und Aufrufen der Microsoft Graph-API aus einer .NET Desktop-App (WPF-App)
 
@@ -77,9 +77,9 @@ Nachdem Sie nun eine Anwendung in Azure AD erstellt haben, können Sie ADAL inst
 
 1. Öffnen Sie im `DirectorySearcher`-Projekt die Datei `app.config`.
 1. Ersetzen Sie die Werte der Elemente im Abschnitt `<appSettings>` durch die Werte, die Sie im Azure-Portal eingegeben haben. Sobald Ihr Code ADAL verwendet, verweist er auf diese Werte.
-  * `ida:Tenant` ist die Domäne Ihres Azure AD-Mandanten, z.B. contoso.onmicrosoft.com.
-  * `ida:ClientId` ist die Client-ID Ihrer Anwendung, die Sie aus dem Portal kopiert haben.
-  * `ida:RedirectUri` ist die Umleitungs-URL, die Sie im Portal registriert haben.
+   * `ida:Tenant` ist die Domäne Ihres Azure AD-Mandanten, z.B. contoso.onmicrosoft.com.
+   * `ida:ClientId` ist die Client-ID Ihrer Anwendung, die Sie aus dem Portal kopiert haben.
+   * `ida:RedirectUri` ist die Umleitungs-URL, die Sie im Portal registriert haben.
 
 ## <a name="step-3-use-adal-to-get-tokens-from-azure-ad"></a>Schritt 3: Verwenden von ADAL zum Abrufen von Tokens aus Azure AD
 
@@ -172,7 +172,7 @@ Das Grundprinzip von ADAL ist wie folgt: Wann immer Ihre Anwendung ein Zugriffst
                 MessageBox.Show(ex.Message);
             }
 
-            // If user interaction is required, proceed to main page without singing the user in.
+            // If user interaction is required, proceed to main page without signing the user in.
             return;
         }
 

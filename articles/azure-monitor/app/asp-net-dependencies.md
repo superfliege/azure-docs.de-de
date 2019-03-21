@@ -1,5 +1,5 @@
 ---
-title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft-Dokumentation
+title: Abhängigkeitsnachverfolgung in Azure Application Insights | Microsoft Docs
 description: Analysieren Sie die Auslastung, Verfügbarkeit und Leistung Ihrer lokalen oder Microsoft Azure-Webanwendung mit Application Insights.
 services: application-insights
 documentationcenter: .net
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 8bcb00029acbe8c64e29addbc9291a694f1de98b
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56267716"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888082"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>Einrichten von Application Insights: Abhängigkeitsüberwachung
 Eine *Abhängigkeit* ist eine externe Komponente, die von Ihrer App aufgerufen wird. In der Regel handelt es sich um einen Dienst, der über HTTP oder eine Datenbank oder ein Dateisystem aufgerufen wird. [Application Insights](../../azure-monitor/app/app-insights-overview.md) misst, wie lange die Anwendung auf Abhängigkeiten wartet, und wie oft ein Abhängigkeitsaufruf nicht funktioniert. Sie können bestimmte Aufrufe untersuchen, und diese mit Anforderungen und Ausnahmen in Verbindung bringen.
@@ -50,7 +50,7 @@ Teilinformationen von Abhängigkeiten werden automatisch durch das [Application 
 
 ## <a name="where-to-find-dependency-data"></a>Hier finden Sie Abhängigkeitsdaten
 * [Anwendungszuordnung](#application-map) visualisiert Abhängigkeiten zwischen Ihrer App und angrenzenden Komponenten.
-* [Die Blätter „Performance“ (Leistung) „Browser“ und „Failure“ (Fehler)](#performance-and-blades) zeigen Serverabhängigkeitsdaten.
+* [Die Blätter „Performance“ (Leistung) „Browser“ und „Failure“ (Fehler)](#performance-and-failure-blades) zeigen Serverabhängigkeitsdaten.
 * [Das Blatt „Browser“](#ajax-calls) zeigt AJAX-Aufrufe von Browsern Ihrer Benutzer.
 * Navigieren Sie zu langsamen oder fehlgeschlagenen Aufrufen, um ihre Abhängigkeitsaufrufe zu überprüfen.
 * [Analyse](#analytics) kann verwendet werden, um Abhängigkeitsdaten abzufragen.

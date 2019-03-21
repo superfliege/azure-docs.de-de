@@ -3,7 +3,7 @@ title: Debuggen von Windows-Containern mit Service Fabric und VS | Microsoft-Dok
 description: Erfahren Sie, wie Sie Windows-Container in Azure Service Fabric mit Visual Studio 2017 debuggen.
 services: service-fabric
 documentationcenter: .net
-author: TylerMSFT
+author: aljo-microsoft
 manager: msfussell
 editor: ''
 ms.service: service-fabric
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/14/2019
-ms.author: twhitney, mikhegn
-ms.openlocfilehash: 9801db8a38a8c21aea26b42f4fe01bd4a43988c5
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.author: aljo, mikhegn
+ms.openlocfilehash: 9fe66e40376d9098244a1268fe9884cd416a36c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311221"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113570"
 ---
 # <a name="how-to-debug-windows-containers-in-azure-service-fabric-using-visual-studio-2017"></a>Gewusst wie: Debuggen von Windows-Containern in Azure Service Fabric mit Visual Studio 2017
 
@@ -35,19 +35,19 @@ Mit Visual Studio 2017 Update 7 (15.7) können Sie .NET-Anwendungen in Container
 1. Stellen Sie sicher, dass der Docker für den Windows-Dienst ausgeführt wird, bevor Sie mit dem nächsten Schritt fortfahren.
 
 1. Um die DNS-Auflösung zwischen den Containern zu unterstützen, müssen Sie Ihren lokalen Entwicklungscluster einrichten und dazu den Computernamen verwenden. Diese Schritte sind auch erforderlich, wenn Sie Dienste über den Reverseproxy addressieren möchten.
-    1. Starten von PowerShell als Administrator
-    2. Navigieren Sie zum Setupordner des SDK-Clusters, in der Regel `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
-    3. Ausführen des Skripts `DevClusterSetup.ps1`
+   1. Starten von PowerShell als Administrator
+   2. Navigieren Sie zum Setupordner des SDK-Clusters, in der Regel `C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup`.
+   3. Ausführen des Skripts `DevClusterSetup.ps1`
 
-       ``` PowerShell
-         C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
-       ```
+      ``` PowerShell
+        C:\Program Files\Microsoft SDKs\Service Fabric\ClusterSetup\DevClusterSetup.ps1
+      ```
 
-    > [!NOTE]
-    > Sie können `-CreateOneNodeCluster` zum Einrichten eines Einzelknotenclusters verwenden. Mit dem Standardwert wird ein lokaler Cluster mit fünf Knoten erstellt.
-    >
+      > [!NOTE]
+      > Sie können `-CreateOneNodeCluster` zum Einrichten eines Einzelknotenclusters verwenden. Mit dem Standardwert wird ein lokaler Cluster mit fünf Knoten erstellt.
+      >
 
-    Weitere Informationen zum DNS-Dienst in Service Fabric finden Sie unter [DNS-Dienst in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Weitere Informationen zur Verwendung des Service Fabric-Reverseproxys von Diensten aus, die in einem Container ausgeführt werden, finden Sie unter [Reverseproxy – spezieller Umgang mit Diensten, die in Containern ausgeführt werden](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
+      Weitere Informationen zum DNS-Dienst in Service Fabric finden Sie unter [DNS-Dienst in Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-dnsservice). Weitere Informationen zur Verwendung des Service Fabric-Reverseproxys von Diensten aus, die in einem Container ausgeführt werden, finden Sie unter [Reverseproxy – spezieller Umgang mit Diensten, die in Containern ausgeführt werden](service-fabric-reverseproxy.md#special-handling-for-services-running-in-containers).
 
 ### <a name="known-limitations-when-debugging-containers-in-service-fabric"></a>Bekannte Einschränkungen beim Debuggen von Containern in Service Fabric
 

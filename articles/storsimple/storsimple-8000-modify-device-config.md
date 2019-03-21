@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
-ms.openlocfilehash: 18fceca51ed67f5beca344160a73ae3f3d1a4b62
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 774f5a73a5fc30352698c0af0c279fbbe488c480
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55491653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008380"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Ändern der StorSimple-Gerätekonfiguration
 
@@ -71,7 +71,7 @@ Ihr Gerät muss die Zeit synchronisieren, damit es sich beim Cloudspeicher-Diens
 
 Wenn Sie den NTP-Server konfigurieren, müssen Sie sich vergewissern, dass Ihr Netzwerk zulässt, dass der NTP-Datenverkehr von Ihrem Rechenzentrum in das Internet fließt. Wenn Sie einen öffentlichen NTP-Server angeben, müssen Sie sicherstellen, dass Ihre Netzwerkfirewalls und anderen Sicherheitseinrichtungen so konfiguriert sind, dass NTP-Datenverkehr in das externe und aus dem externen Netzwerk fließen kann. Wenn bidirektionaler NTP-Datenverkehr nicht zugelassen ist, müssen Sie einen internen NTP-Server verwenden (ein Windows-Domänencontroller bietet diese Funktion). Wenn Ihr Gerät die Zeit nicht synchronisieren kann, kann es möglicherweise nicht mit Ihrem Cloudspeicheranbieter kommunizieren.
 
-Um eine Liste der öffentlichen NTP-Server anzuzeigen, wechseln Sie zu [NTP.Servers Web](http://support.ntp.org/bin/view/Servers/WebHome).
+Um eine Liste der öffentlichen NTP-Server anzuzeigen, wechseln Sie zu [NTP.Servers Web](https://support.ntp.org/bin/view/Servers/WebHome).
 
 ### <a name="what-happens-if-the-device-is-deployed-in-a-different-time-zone"></a>Was passiert, wenn das Gerät in einer anderen Zeitzone bereitgestellt wird?
 

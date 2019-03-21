@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 03920bc3ed17eac9d76cea78877f1f008e83f4dd
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: bcaf470fae34056fe932cf8b5fd3076899f895ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195972"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880278"
 ---
 # <a name="create-a-new-saas-application-offer"></a>Erstellen eines neuen SaaS-Anwendungsangebots
 
@@ -34,6 +34,7 @@ In der nächsten Abbildung ist der Prozess für das Erstellen eines SaaS-Anwendu
 ## <a name="offer-components"></a>Angebotskomponenten
 
 Ein SaaS-Anwendungsangebot besteht aus fünf Abschnitten, die in der folgenden Tabelle beschrieben sind:
+
 |  **Ressourcengruppe**   |  **Beschreibung**  |
 |  ---------------   |  ---------------  |
 |    Angebotseinstellungen  |  Wird dazu verwendet, eine eindeutige Identität für die SaaS-Anwendung (App) zu konfigurieren.                 |
@@ -45,7 +46,7 @@ Ein SaaS-Anwendungsangebot besteht aus fünf Abschnitten, die in der folgenden T
 
 ## <a name="new-offer-form"></a>Formular „Neues Angebot“
 
-Melden Sie sich beim [Cloud-Partnerportal](http://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ die Option **SaaS-Apps** aus, um das Formular „Neues Angebot“ anzuzeigen und mit dem Definieren von Ressourcen für ein neues SaaS-Anwendungsangebot zu beginnen.
+Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, und wählen Sie dann in der linken Menüleiste die Option **+ Neues Angebot**. Wählen Sie im Menü „Neues Angebot“ die Option **SaaS-Apps** aus, um das Formular „Neues Angebot“ anzuzeigen und mit dem Definieren von Ressourcen für ein neues SaaS-Anwendungsangebot zu beginnen.
 
 ![Menü „Neues Angebot“ für SaaS-Apps](./media/azure-new-saas-offer.png)
 

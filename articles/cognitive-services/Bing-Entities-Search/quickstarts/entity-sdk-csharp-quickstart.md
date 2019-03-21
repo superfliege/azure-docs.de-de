@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 6a365ef5421de3ceb31c5cc78a424f786f174ab3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 99b7f05304b48b7d885a80705d05fbe24854150f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861917"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080640"
 ---
 # <a name="send-a-search-request-with-the-bing-entity-search-sdk-for-c"></a>Senden einer Suchanforderung mit dem Bing-Entitätssuche-SDK für C#
 
@@ -26,7 +26,7 @@ Verwenden Sie diese Schnellstartanleitung, um unter Verwendung des Bing-Entität
 
 * Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition.
 * Das [Json.NET](https://www.newtonsoft.com/json)-Framework, das als NuGet-Paket verfügbar ist
-* Unter Linux/macOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden
+* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
 * Das [NuGet-Paket mit dem SDK für die Bing-News-Suche](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.EntitySearch/1.2.0). Bei der Installation dieses Pakets wird auch Folgendes installiert:
     * Microsoft.Rest.ClientRuntime
     * Microsoft.Rest.ClientRuntime.Azure
@@ -52,13 +52,13 @@ Verwenden Sie die Option `Manage NuGet Packages` des Projektmappen-Explorers, un
 
 ## <a name="create-a-client-and-send-a-search-request"></a>Erstellen eines Clients und Senden einer Suchanforderung
 
-2. Erstellen Sie einen neuen Suchclient. Erstellen Sie ein neues Element vom Typ `ApiKeyServiceClientCredentials`, um Ihren Abonnementschlüssel hinzuzufügen.
+1. Erstellen Sie einen neuen Suchclient. Erstellen Sie ein neues Element vom Typ `ApiKeyServiceClientCredentials`, um Ihren Abonnementschlüssel hinzuzufügen.
 
     ```csharp
     var client = new EntitySearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
     ```
 
-3. Verwenden Sie die Funktion `Entities.Search()` des Clients, um nach Ihrer Abfrage zu suchen:
+1. Verwenden Sie die Funktion `Entities.Search()` des Clients, um nach Ihrer Abfrage zu suchen:
     
     ```csharp
     var entityData = client.Entities.Search(query: "Satya Nadella");

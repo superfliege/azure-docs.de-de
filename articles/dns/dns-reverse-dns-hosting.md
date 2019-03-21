@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: victorh
-ms.openlocfilehash: 2d576a0d51eb723efdd1652898c2c019ee7475a8
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: cb2f04c692d4b5f385a89ba6a3071c20ef1bdf21
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118254"
 ---
 # <a name="host-reverse-dns-lookup-zones-in-azure-dns"></a>Hosten von Reverse-DNS-Lookupzonen in Azure DNS
 
@@ -131,7 +131,7 @@ Im folgenden Beispiel wird die Erstellung eines PTR-Eintrags in einer Reverse-DN
 1. Geben Sie für **DOMÄNENNAME** den vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) der Ressource an, die die IP-Adresse verwendet.
 1. Klicken Sie im unteren Bereich auf **OK**, um den DNS-Eintrag zu erstellen.
 
- ![Bereich „Datensatzgruppe hinzufügen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure5.png)
+   ![Bereich „Datensatzgruppe hinzufügen“ mit ausgefüllten Feldern](./media/dns-reverse-dns-hosting/figure5.png)
 
 Die folgenden Beispiele zeigen, wie diese Aufgabe mit PowerShell oder mit der Azure-Befehlszeilenschnittstelle durchgeführt wird:
 
@@ -269,6 +269,6 @@ Weitere Informationen finden Sie unter [Importieren und Exportieren einer DNS-Zo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](http://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
+Weitere Informationen zu Reverse-DNS finden Sie unter [Reverse DNS](https://en.wikipedia.org/wiki/Reverse_DNS_lookup) in der Wikipedia.
 <br>
 Erfahren Sie, wie Sie [Reverse-DNS-Einträge für Ihre Azure-Dienste verwalten](dns-reverse-dns-for-azure-services.md).

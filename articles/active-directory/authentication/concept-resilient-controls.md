@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e5fb263819a5bb96175f636f53a16c28649a3f39
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b006a4fbb8d1059f5096f5c1585853953b69042f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339548"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082142"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -94,18 +94,18 @@ Alternativ kann Ihre Organisation auch Notfallplanrichtlinien erstellen. Um Notf
 Wenn Sie bei einer Unterbrechung über die Gefährdung informiert sind, ist das Risiko geringer, und es ist ein wichtiger Bestandteil des Planungsprozesses. Um Ihren Notfallplan zu erstellen, bestimmen Sie zunächst die folgenden geschäftlichen Anforderungen Ihrer Organisation:
 
 1. Ermitteln Sie im voraus Ihre unternehmenskritischen Apps: Auf welche Apps müssen Sie Zugriff gewähren, sogar mit einem höheren Risiko- und niedrigeren Sicherheitsstatus? Erstellen Sie eine Liste dieser Apps, und stellen Sie sicher, dass alle anderen Beteiligten (Business, Sicherheit, Rechtswesen, Geschäftsleitung) zustimmen, dass diese Apps auch bei Verlust der gesamten Zugriffssteuerung noch ausgeführt werden müssen. Wahrscheinlich gelangen Sie zu folgenden Kategorien:
-  * **Kategorie 1: Unternehmenskritische Apps**, die nicht mehr als ein paar Minuten nicht verfügbar sein dürfen, z.B. Apps, die direkten Einfluss auf den Umsatz des Unternehmens haben.
-  * **Kategorie 2: Wichtige Apps**, auf die das Unternehmen innerhalb weniger Stunden wieder zugreifen muss.
-  * **Kategorie 3: Apps mit niedriger Priorität**, die eine Unterbrechung von einigen Tagen vertragen können.
+   * **Kategorie 1: Unternehmenskritische Apps**, die nicht mehr als ein paar Minuten nicht verfügbar sein dürfen, z.B. Apps, die direkten Einfluss auf den Umsatz des Unternehmens haben.
+   * **Kategorie 2: Wichtige Apps**, auf die das Unternehmen innerhalb weniger Stunden wieder zugreifen muss.
+   * **Kategorie 3: Apps mit niedriger Priorität**, die eine Unterbrechung von einigen Tagen vertragen können.
 2. Für Apps der Kategorie 1 und 2 empfiehlt Microsoft Ihnen, im voraus zu planen welche, Zugriffsebene Sie zulassen möchten:
-  * Wünschen Sie Vollzugriff oder eingeschränkte Sitzungen, z.B. Downloadeinschränkungen?
-  * Möchten Sie den Zugriff auf einen Teil der App, aber nicht die gesamte App erlauben?
-  * Möchten Sie IT-Mitarbeitern den Zugriff gewähren und den Administratorzugriff blockieren, bis die Zugriffssteuerung wiederhergestellt ist?
+   * Wünschen Sie Vollzugriff oder eingeschränkte Sitzungen, z.B. Downloadeinschränkungen?
+   * Möchten Sie den Zugriff auf einen Teil der App, aber nicht die gesamte App erlauben?
+   * Möchten Sie IT-Mitarbeitern den Zugriff gewähren und den Administratorzugriff blockieren, bis die Zugriffssteuerung wiederhergestellt ist?
 3. Microsoft empfiehlt Ihnen auch, für solche Apps zu planen, welche Zugriffsmöglichkeiten Sie absichtlich öffnen, und welche Sie schließen werden:
-  * Möchten Sie den Zugriff nur über den Browser zulassen und Rich Clients blockieren, die Daten offline speichern können?
-  * Möchten Sie den Zugriff nur für Benutzer innerhalb des Unternehmensnetzwerks zulassen und externe Benutzer blockieren?
-  * Möchten Sie den Zugriff während der Unterbrechung nur aus bestimmten Ländern oder Regionen zulassen?
-  * Möchten Sie, dass Richtlinien für Notfallplanrichtlinien, insbesondere für unternehmenskritische Apps, ohne Erfolg oder erfolgreich sind, wenn eine alternative Zugriffssteuerung nicht verfügbar ist?
+   * Möchten Sie den Zugriff nur über den Browser zulassen und Rich Clients blockieren, die Daten offline speichern können?
+   * Möchten Sie den Zugriff nur für Benutzer innerhalb des Unternehmensnetzwerks zulassen und externe Benutzer blockieren?
+   * Möchten Sie den Zugriff während der Unterbrechung nur aus bestimmten Ländern oder Regionen zulassen?
+   * Möchten Sie, dass Richtlinien für Notfallplanrichtlinien, insbesondere für unternehmenskritische Apps, ohne Erfolg oder erfolgreich sind, wenn eine alternative Zugriffssteuerung nicht verfügbar ist?
 
 #### <a name="microsoft-recommendations"></a>Empfehlungen von Microsoft
 
@@ -251,7 +251,7 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
 Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet, können Sie die folgende Alternative erwägen:
 
 1. Wenn Sie über die ausgehende IP-Adresse des Unternehmensnetzwerks verfügen, können Sie sie zum Aktivieren der ausschließlichen Authentifizierung bei dem Unternehmensnetzwerk als vertrauenswürdige IP-Adresse hinzufügen.
- 2. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
+   1. Wenn Sie nicht über ausgehende IP-Adressen verfügen oder Sie das Aktivieren des Zugriffs innerhalb und außerhalb des Unternehmensnetzwerks benötigten, können Sie den gesamten IPv4-Adressraum als vertrauenswürdige IP-Adressen hinzufügen, indem Sie 0.0.0.0/1 und 128.0.0.0/1 angeben.
 
 >[!IMPORTANT]
  > Wenn Sie die vertrauenswürdigen IP-Adressen verwenden, um die Blockierung des Zugriffs aufzuheben, werden keine Risikoereignisse im Zusammenhang mit IP-Adressen (z.B. unmöglicher Ortswechsel oder unbekannte Orte) generiert.
@@ -264,9 +264,9 @@ Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet,
 * [Dokumentation zur Azure AD-Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
 * [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [Konfigurieren benannter Orte in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
- * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business– Bereitstellungshandbuch](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
- * [Password Guidance (Kennwortleitfaden) – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [Password Guidance (Kennwortleitfaden) – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Was sind Bedingungen beim bedingten Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Was sind die Zugriffssteuerungen beim bedingten Zugriff mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

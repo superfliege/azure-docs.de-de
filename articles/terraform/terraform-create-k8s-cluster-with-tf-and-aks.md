@@ -2,24 +2,24 @@
 title: Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service (AKS) und Terraform
 description: Tutorial, in dem das Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform veranschaulicht wird
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, virtueller Computer, Azure, Kubernetes
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 12/04/2018
-ms.openlocfilehash: 57615ecd4c81359360004b732736bf757c0026c3
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: d8438f5ddbbb3744811448aeb563be602b04516d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009099"
 ---
 # <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Erstellen eines Kubernetes-Clusters mit Azure Kubernetes Service und Terraform
 [Azure Kubernetes Service (AKS)](/azure/aks/) verwaltet Ihre gehostete Kubernetes-Umgebung und ermöglicht so die schnelle und einfache Bereitstellung und Verwaltung von Containeranwendungen – ganz ohne Kenntnisse im Zusammenhang mit Containerorchestrierung. Darüber hinaus übernimmt die Lösung die Betreuung laufender Vorgänge und Wartungsaufgaben für Sie, indem sie Ressourcen ganz nach Bedarf bereitstellt, aktualisiert und skaliert, ohne Ihre Anwendungen offline zu schalten.
 
-In diesem Tutorial erfahren Sie, wie die folgenden Aufgaben bei der Erstellung eines [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes)-Clusters mit [Terraform](http://terraform.io) und AKS ausgeführt werden:
+In diesem Tutorial erfahren Sie, wie die folgenden Aufgaben bei der Erstellung eines [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes)-Clusters mit [Terraform](https://terraform.io) und AKS ausgeführt werden:
 
 > [!div class="checklist"]
 > * Verwenden von HCL (HashiCorp-Sprache) zum Definieren eines Kubernetes-Clusters
@@ -37,7 +37,7 @@ In diesem Tutorial erfahren Sie, wie die folgenden Aufgaben bei der Erstellung e
 ## <a name="create-the-directory-structure"></a>Erstellen der Verzeichnisstruktur
 Der erste Schritt ist das Erstellen des Verzeichnisses, das Ihre Terraform-Konfigurationsdateien für die Übung enthält.
 
-1. Navigieren Sie zum [Azure-Portal](http://portal.azure.com).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 
 1. Öffnen Sie [Azure Cloud Shell](/azure/cloud-shell/overview). Falls Sie zuvor noch keine Umgebung ausgewählt haben, wählen Sie **Bash** als Umgebung aus.
 

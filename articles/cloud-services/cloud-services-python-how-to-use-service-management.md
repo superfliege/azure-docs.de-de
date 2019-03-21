@@ -14,12 +14,12 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: df949b65ac4a193c9e7bdb6ee3c32d7026f7c93d
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 573c6d3ded8fea58e0c9ba1afa7da2d8dd0fce91
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782963"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531833"
 ---
 # <a name="use-service-management-from-python"></a>Verwenden der Dienstverwaltung aus Python
 In diesem Leitfaden wird die programmgesteuerte Durchführung gängiger Dienstverwaltungsaufgaben aus Python erläutert. Die **ServiceManagementService**-Klasse im [Azure SDK für Python](https://github.com/Azure/azure-sdk-for-python) unterstützt den programmgesteuerten Zugriff auf viele der Dienstverwaltungsfunktionen, die im [Azure-Portal][management-portal] zur Verfügung stehen. Sie können mit diesen Funktionen Clouddienste, Bereitstellungen, Datenverwaltungsdienste und virtuelle Computer erstellen, aktualisieren und löschen. Diese Funktionalität kann bei der Erstellung von Anwendungen hilfreich sein, die programmgesteuert auf Dienstverwaltungsfunktionen zugreifen müssen.
@@ -44,7 +44,7 @@ Um eine Verbindung mit dem Dienstverwaltungs-Endpunkt herzustellen, benötigen S
 >
 
 ### <a name="management-certificates-on-windowsmaclinux-openssl"></a>Verwaltungszertifikate unter Windows/Mac/Linux (OpenSSL)
-Sie können Ihr Verwaltungszertifikat mithilfe von [OpenSSL](http://www.openssl.org/) erstellen. Sie müssen zwei Zertifikate erstellen, eins für den Server (eine `.cer`-Datei) und eins für den Client (eine `.pem`-Datei). Führen Sie zum Erstellen der `.pem` -Datei Folgendes aus:
+Sie können Ihr Verwaltungszertifikat mithilfe von [OpenSSL](https://www.openssl.org/) erstellen. Sie müssen zwei Zertifikate erstellen, eins für den Server (eine `.cer`-Datei) und eins für den Client (eine `.pem`-Datei). Führen Sie zum Erstellen der `.pem` -Datei Folgendes aus:
 
     openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout mycert.pem -out mycert.pem
 
@@ -52,7 +52,7 @@ Führen Sie zum Erstellen des `.cer` -Zertifikats Folgendes aus:
 
     openssl x509 -inform pem -in mycert.pem -outform der -out mycert.cer
 
-Weitere Informationen zu Azure-Zertifikaten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md). Eine vollständige Beschreibung von OpenSSL-Parametern finden Sie in der Dokumentation unter [http://www.openssl.org/docs/apps/openssl.html](http://www.openssl.org/docs/apps/openssl.html).
+Weitere Informationen zu Azure-Zertifikaten finden Sie unter [Übersicht über Zertifikate für Azure Cloud Services](cloud-services-certs-create.md). Eine vollständige Beschreibung von OpenSSL-Parametern finden Sie in der Dokumentation unter [https://www.openssl.org/docs/apps/openssl.html](https://www.openssl.org/docs/apps/openssl.html).
 
 Nach der Erstellung dieser Dateien laden Sie die `.cer`-Datei in Azure hoch. Wählen Sie im [Azure-Portal][management-portal] auf der Registerkarte **Einstellungen** die Option **Hochladen** aus. Notieren Sie sich, wo Sie die `.pem`-Datei gespeichert haben.
 
@@ -400,7 +400,7 @@ Weitere Informationen zum Erfassen eines virtuellen Linux-Computers im klassisch
 Weitere Informationen zum Erfassen eines virtuellen Windows-Computers im klassischen Bereitstellungsmodell finden Sie unter [Erfassen eines virtuellen Windows-Computers](../virtual-machines/windows/classic/capture-image-classic.md).
 
 ## <a name="What's Next"> </a>Nächste Schritte
-Da Sie nun mit den Grundlagen der Dienstverwaltung vertraut sind, können Sie auf die [vollständige API-Referenzdokumentation für das Azure Python SDK](http://azure-sdk-for-python.readthedocs.org/) zugreifen und komplexe Aufgaben mühelos durchführen, um Ihre Python-Anwendung zu verwalten.
+Da Sie nun mit den Grundlagen der Dienstverwaltung vertraut sind, können Sie auf die [vollständige API-Referenzdokumentation für das Azure Python SDK](https://azure-sdk-for-python.readthedocs.org/) zugreifen und komplexe Aufgaben mühelos durchführen, um Ihre Python-Anwendung zu verwalten.
 
 Weitere Informationen finden Sie im [Python Developer Center](https://azure.microsoft.com/develop/python/).
 
@@ -423,7 +423,7 @@ Weitere Informationen finden Sie im [Python Developer Center](https://azure.micr
 [Delete a virtual machine]: #DeleteVM
 [Next steps]: #NextSteps
 [management-portal]: https://portal.azure.com/
-[svc-mgmt-rest-api]: http://msdn.microsoft.com/library/windowsazure/ee460799.aspx
+[svc-mgmt-rest-api]: https://msdn.microsoft.com/library/windowsazure/ee460799.aspx
 
 
 [cloud service]:/azure/cloud-services/

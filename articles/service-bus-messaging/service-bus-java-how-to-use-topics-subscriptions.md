@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: aschhab
-ms.openlocfilehash: cd2d5812d1b61e1d8fcc00fbc824be8ceac696de
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: a8b9c4c6cf9671e114da6ef9fc1f2ad0a730fb61
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54849956"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57872618"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Verwenden von Service Bus-Themen und -Abonnements mit Java
 
@@ -46,46 +46,9 @@ Anders als bei Service Bus-Warteschlangen, bei denen jede Nachricht von einem ei
 
 Mit Service Bus-Themen und -Abonnements können Sie viele Nachrichten an eine große Anzahl von Benutzern und Anwendungen verarbeiten.
 
-## <a name="create-a-service-bus-namespace"></a>Erstellen eines Service Bus-Namespace
+[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-Ein Service Bus-Messaging-Namespace stellt einen eindeutigen Bereichscontainer bereit, auf den über seinen [vollqualifizierten Domänennamen](https://wikipedia.org/wiki/Fully_qualified_domain_name) verwiesen wird. In diesem Container erstellen Sie jeweils mindestens eine Warteschlange, ein Thema und ein Abonnement. Im folgenden Beispiel wird ein Service Bus-Messaging-Namespace in einer neuen oder vorhandenen [Ressourcengruppe](/azure/azure-resource-manager/resource-group-portal) erstellt:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **+ Ressource erstellen**, und klicken Sie anschließend auf **Enterprise Integration** > **Service Bus**.
-2. Geben Sie im Dialogfeld **Namespace erstellen** einen Namen für den Namespace ein. Das System überprüft sofort, ob dieser Name verfügbar ist.
-3. Wählen Sie den Tarif („Standard“ oder „Premium“) aus, nachdem Sie sichergestellt haben, dass der Name verfügbar ist.
-4. Wählen Sie im Feld **Abonnement** ein Azure-Abonnement aus, in dem der Namespace erstellt werden soll.
-5. Wählen Sie im Feld **Ressourcengruppe** eine vorhandene Ressourcengruppe für den Namespace aus, oder erstellen Sie eine neue Ressourcengruppe.      
-6. Wählen Sie im Feld **Standort** das Land oder die Region aus, in dem bzw. in der Ihr Namespace gehostet werden soll.
-7. Klicken Sie auf **Create**. Ihr Dienstnamespace wird nun erstellt und aktiviert. Ggf. müssen Sie einige Minuten warten, bis die Ressourcen für Ihr Konto durch das System bereitgestellt werden.
-
-  ![Namespace](./media/service-bus-tutorial-topics-subscriptions-portal/create-namespace.png)
-
-### <a name="obtain-the-management-credentials"></a>Abrufen der Verwaltungsanmeldeinformationen
-
-Beim Erstellen eines neuen Namespace wird automatisch eine SAS-Regel (Shared Access Signature) mit einem zugeordneten Paar aus primären und sekundären Schlüsseln generiert, mit denen Sie jeweils die volle Kontrolle über sämtliche Aspekte des Namespace haben. Führen Sie diese Schritte aus, um die erste Regel zu kopieren:
-
-1. Klicken Sie auf **Alle Ressourcen** und dann auf den neu erstellten Namespacenamen.
-2. Klicken Sie im Namespacefenster auf **Richtlinien für gemeinsamen Zugriff**.
-3. Klicken Sie im Bildschirm **Richtlinien für gemeinsamen Zugriff** auf **RootManageSharedAccessKey**.
-4. Klicken Sie im Fenster **Richtlinie: RootManageSharedAccessKey** neben **Primäre Verbindungszeichenfolge** auf die Schaltfläche **Kopieren**, um die Verbindungszeichenfolge zur späteren Verwendung in die Zwischenablage zu kopieren. Fügen Sie diesen Wert in den Editor oder an einem anderen temporären Speicherort ein.
-
-    ![connection-string](./media/service-bus-tutorial-topics-subscriptions-portal/connection-string.png)
-5. Wiederholen Sie den vorherigen Schritt, um den Wert von **Primärschlüssel** zu kopieren und zur späteren Verwendung an einem temporären Speicherort einzufügen.
-
-## <a name="create-a-topic"></a>Erstellen eines Themas 
-Geben Sie zum Erstellen eines Service Bus-Themas den Namespace an, unter dem die Erstellung erfolgen soll. Im folgenden Beispiel wird veranschaulicht, wie Sie im Portal ein Thema erstellen:
-
-1. Klicken Sie im linken Navigationsbereich des Portals auf **Service Bus**. (Sollte **Service Bus** nicht angezeigt werden, klicken Sie auf **Alle Dienste**.)
-2. Klicken Sie auf den Namespace, in dem das Thema erstellt werden soll.
-3. Klicken Sie im Namespacefenster auf **Themen** und dann im Fenster **Themen** auf **+ Themen**.
-4. Geben Sie **BasicTopic** als **Name** des Themas ein, und lassen Sie die anderen Werte unverändert.
-5. Klicken Sie unten im Fenster auf **Erstellen**.
-
-
-## <a name="create-subscriptions-for-the-topic"></a>Erstellen von Abonnements für das Thema
-1. Wählen Sie das erstellte **Thema** aus.
-2. Klicken Sie auf **+ Abonnement**, geben Sie den Abonnementnamen **Subscription1** ein, und lassen Sie die anderen Werte unverändert.
-3. Wiederholen Sie den vorherigen Schritt noch zweimal, um Abonnements mit dem Namen **Subscription2** und **Subscription3** zu erstellen.
+[!INCLUDE [service-bus-create-topics-three-subscriptions-portal](../../includes/service-bus-create-topics-three-subscriptions-portal.md)]
 
 
 ## <a name="configure-your-application-to-use-service-bus"></a>Konfigurieren Ihrer Anwendung für die Verwendung von Service Bus
@@ -509,7 +472,7 @@ Message sending: Id = 9
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie unter [Service Bus-Warteschlangen, -Themen und -Abonnements][Service Bus queues, topics, and subscriptions].
 
-[Azure SDK for Java]: http://azure.microsoft.com/develop/java/
+[Azure SDK for Java]: https://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md
 [Service Bus queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md
 [SqlFilter]: /dotnet/api/microsoft.azure.servicebus.sqlfilter

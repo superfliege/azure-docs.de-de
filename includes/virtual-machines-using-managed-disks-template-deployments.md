@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: 0c21ba3df6805c053f3d318d1ca3734a89c2ab60
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
+ms.openlocfilehash: 6085eb2b520217c4e678a75032e8a1cb4b9343ec
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49400123"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58261371"
 ---
 # <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen
 
@@ -26,8 +26,8 @@ Zunächst wird die Bereitstellung nicht verwalteter Datenträger betrachtet. Fü
 ```json
 {
     "type": "Microsoft.Storage/storageAccounts",
+    "apiVersion": "2018-07-01",
     "name": "[variables('storageAccountName')]",
-    "apiVersion": "2016-01-01",
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Standard_LRS"
@@ -41,8 +41,8 @@ Innerhalb eines Objekts für einen virtuellen Computer fügen Sie eine Abhängig
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -100,8 +100,8 @@ Sie brauchen zum Erstellen eines virtuellen Computers mit verwalteten Datenträg
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -142,8 +142,8 @@ Anstatt die Datenträgerkonfiguration im Objekt des virtuellen Computers anzugeb
 ```json
 {
     "type": "Microsoft.Compute/disks",
+    "apiVersion": "2018-06-01",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
-    "apiVersion": "2017-03-30",
     "location": "[resourceGroup().location]",
     "sku": {
         "name": "Standard_LRS"
@@ -161,8 +161,8 @@ Innerhalb des VM-Objekts verweisen Sie auf das anzufügende Datenträgerobjekt. 
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
+    "apiVersion": "2018-10-01",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
     "dependsOn": [
@@ -206,8 +206,8 @@ Fügen Sie zum Erstellen verwalteter Verfügbarkeitsgruppen mit virtuellen Compu
 
 ```json
 {
-    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
+    "apiVersion": "2018-10-01",
     "location": "[resourceGroup().location]",
     "name": "[variables('avSetName')]",
     "properties": {

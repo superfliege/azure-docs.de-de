@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: alinast
-ms.openlocfilehash: 912a3ed558f8fabfcad517aeb7b7e864cf8f359e
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e7efe1a8632643e2a299b6c9a1b1407414deee4b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436924"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57542946"
 ---
 # <a name="understand-digital-twins-object-models-and-spatial-intelligence-graph"></a>Grundlegendes zu Digital Twins-Objektmodellen und zum Raumintelligenzgraphen
 
@@ -99,7 +99,7 @@ Wenn Sie weitere Informationen zur Verwendung von Raumintelligenzgraphen wünsch
 
 Erfahren Sie mehr über das [Verwenden von Swagger](how-to-use-swagger.md).
 
-Alle API-Aufrufe müssen mit [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) authentifiziert werden. Für die APIs gelten die [REST-API-Richtlinien von Microsoft](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Für die meisten APIs, die Auflistungen zurückgeben, werden die [OData](http://www.odata.org/getting-started/basic-tutorial/#queryData)-Systemabfrageoptionen unterstützt.
+Alle API-Aufrufe müssen mit [OAuth](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code) authentifiziert werden. Für die APIs gelten die [REST-API-Richtlinien von Microsoft](https://github.com/Microsoft/api-guidelines/blob/master/Guidelines.md). Für die meisten APIs, die Auflistungen zurückgeben, werden die [OData](https://www.odata.org/getting-started/basic-tutorial/#queryData)-Systemabfrageoptionen unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

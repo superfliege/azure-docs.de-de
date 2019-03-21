@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: 3bc42bf5b83f9ff983c3d8d88a9a496cc395096c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4c7e0e091aeecb205c63b8fa7e97d7592f15b856
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992584"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084377"
 ---
 # <a name="media-encoder-standard-formats-and-codecs"></a>Media Encoder Standard-Formate und -Codecs
 
@@ -27,7 +27,7 @@ Dieser Artikel enthält eine Liste der gängigsten Import- und Exportdateiformat
 ## <a name="input-containerfile-formats"></a>Eingabecontainer/Dateiformate
 
 | Dateiformate (Dateierweiterungen) | Unterstützt |
-| --- | --- | --- | --- |
+| --- | --- |
 | FLV (mit H.264- und AAC-Codecs) (.flv) |Ja |
 | MXF (.mxf) |Ja |
 | GXF (.gxf) |Ja |
@@ -56,7 +56,7 @@ oder
 
 ## <a name="input-video-codecs"></a>Codecs für Videoeingang
 | Codecs für Videoeingang | Unterstützt |
-| --- | --- | --- | --- |
+| --- | --- |
 | AVC 8-Bit/10-Bit, bis zu 4:2:2, einschließlich AVCIntra |8-Bit 4:2:0 und 4:2:2 |
 | Avid DNxHD (in MXF) |Ja |
 | DVCPro/DVCProHD (in MXF) |Ja |
@@ -79,7 +79,7 @@ oder
 
 ## <a name="input-audio-codecs"></a>Codecs für Audioeingang
 | Codecs für Audioeingang | Unterstützt |
-| --- | --- | --- | --- |
+| --- | --- |
 | AAC (AAC-LC, AAC-HE und AAC-HEv2; bis 5.1) |Ja |
 | MPEG Layer 2 |Ja |
 | MP3 (MPEG-1 Audio Layer 3) |Ja |

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: 91cabd6601ca8d0c0eabfdb5726d4bd6b37492a6
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: dc84d5850656a0898fba328b652d86f3d8995bef
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54216082"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118373"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>Senden von Daten an eine geeignete Azure Storage-Blobebene mit Azure Data Box
 
@@ -109,8 +109,8 @@ Nachfolgend wird beschrieben, wie Sie die Blobebene mithilfe eines Azure PowerSh
     >> }
     PS C:\WINDOWS\system32>
     ```
-> [!TIP]
-> Wenn die Daten bei der Erfassung archiviert werden sollen, legen Sie die heiße Ebene als Standard für das Konto fest. Wenn die Standardebene „Kalt “ ist, fällt eine Sondergebühr für frühzeitiges Löschen (30 Tage) an, wenn die Daten sofort in die Archivebene verschoben werden.
+   > [!TIP]
+   > Wenn die Daten bei der Erfassung archiviert werden sollen, legen Sie die heiße Ebene als Standard für das Konto fest. Wenn die Standardebene „Kalt “ ist, fällt eine Sondergebühr für frühzeitiges Löschen (30 Tage) an, wenn die Daten sofort in die Archivebene verschoben werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

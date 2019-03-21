@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 24a957260e3e3f161ce9e2e61b746f9b052e784d
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
+ms.openlocfilehash: 82310857276c53c85af033ae32a3aeef4f33c8da
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52264368"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109374"
 ---
 # <a name="create-a-cicd-pipeline-for-php-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für PHP mit Azure DevOps Projects
 
@@ -65,7 +65,7 @@ Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Esse
 
     ![Dashboardansicht](_img/azure-devops-project-php/dashboardnopreview.png) 
     
- Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert.  Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit automatisch auf Ihrer Website bereitgestellt wird, mit einem Team an einer PHP-App zusammenarbeiten.
+   Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert.  Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit automatisch auf Ihrer Website bereitgestellt wird, mit einem Team an einer PHP-App zusammenarbeiten.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Ausführen eines Commits für Codeänderungen und Ausführen von CI/CD
 

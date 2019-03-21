@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 01/10/2019
 ms.author: v-gedod
 ms.custom: seodec2018
-ms.openlocfilehash: 0922010ad6993c8bb1571c24595370895e49c498
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 648e1701154c725a0645bd520045238030a71ea9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108694"
 ---
 # <a name="quickstart-search-for-news-with-the-bing-news-search-sdk-for-java"></a>Schnellstart: Suchen nach Nachrichten mit dem Bing-News-Suche-SDK für Java
 
@@ -138,4 +138,4 @@ import java.io.IOException;
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-[Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)
+> [Erstellen einer Single-Page-Web-App](tutorial-bing-news-search-single-page-app.md)

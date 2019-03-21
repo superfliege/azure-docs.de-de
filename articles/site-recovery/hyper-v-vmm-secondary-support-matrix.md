@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4fa8e28d9ccc16482ca937a220eae83e282da7e9
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2b801df6036566840dd96bde0801ab018d0614b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55210028"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103093"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Hyper-V-VMs in einem sekundären Standort
 
@@ -55,15 +55,15 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 **Konfiguration** | **Unterstützt**  
 --- | --- 
-Host – NIC-Teamvorgang | JA 
-Host – VLAN | JA 
-Host – IPv4 | JA 
+Host – NIC-Teamvorgang | Ja 
+Host – VLAN | Ja 
+Host – IPv4 | Ja 
 Host – IPv6 | Nein  
 Gast-VM – NIC-Teamvorgang | Nein 
-Gast-VM – IPv4 | JA
+Gast-VM – IPv4 | Ja
 Gast-VM – IPv6 | Nein 
-Gast-VM – Windows/Linux – Statische IP-Adresse | JA
-Gast-VM – Multi-NIC | JA
+Gast-VM – Windows/Linux – Statische IP-Adresse | Ja
+Gast-VM – Multi-NIC | Ja
 
 
 ## <a name="storage"></a>Storage
@@ -73,9 +73,9 @@ Gast-VM – Multi-NIC | JA
 **Speicher (Host)** | **Unterstützt**
 --- | --- 
 NFS | –
-SMB 3.0 |  JA
-SAN (ISCSI) | JA
-Multipfad (MPIO) | JA
+SMB 3.0 |  Ja
+SAN (ISCSI) | Ja
+Multipfad (MPIO) | Ja
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
@@ -83,19 +83,19 @@ Multipfad (MPIO) | JA
 --- | --- | 
 VMDK |  –
 VHD/VHDX | Ja (bis zu 16 Datenträger)
-Gen 2-VM | JA
+Gen 2-VM | Ja
 Freigegebener Clusterdatenträger | Nein 
 Verschlüsselter Datenträger | Nein 
 UEFI| –
 NFS | Nein 
 SMB 3.0 | Nein 
 RDM | –
-Datenträger > 1 TB | JA
-Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | JA
-Speicherplätze | JA
+Datenträger > 1 TB | Ja
+Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja
+Speicherplätze | Ja
 Datenträger laufendem Systembetrieb hinzufügen/entfernen | Nein 
-Ausschließen von Datenträgern | JA
-Multipfad (MPIO) | JA
+Ausschließen von Datenträgern | Ja
+Multipfad (MPIO) | Ja
 
 ## <a name="vaults"></a>Tresore
 
@@ -109,7 +109,7 @@ Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerh
 Der Anbieter koordiniert die Kommunikation zwischen VMM-Servern. 
 
 **Neueste** | **Updates**
---- | --- | --- | --- | ---
+--- | --- 
 5.1.19 ([über das Portal verfügbar](https://aka.ms/downloaddra)) | [Neueste Features und Fixes](https://support.microsoft.com/kb/3155002)
 
 

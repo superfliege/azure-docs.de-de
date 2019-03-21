@@ -3,18 +3,18 @@ title: Einführung in IoT Solution Accelerators – Azure | Microsoft-Dokumentat
 description: Enthält eine Beschreibung der Azure IoT Solution Accelerators. Bei IoT Solution Accelerators handelt es sich um vollständige End-to-End-IoT-Lösungen, die fertig für die Bereitstellung sind.
 author: dominicbetts
 ms.author: dobett
-ms.date: 11/09/2018
+ms.date: 03/09/2019
 ms.topic: overview
 ms.custom: mvc
 ms.service: iot-accelerators
 services: iot-accelerators
 manager: timlt
-ms.openlocfilehash: 79c8f0f1c987de6320770416641300f3b8bb7c1d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 042c3c2925e9d537847f16f02d841d793456fb03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53607200"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58172817"
 ---
 # <a name="what-are-azure-iot-solution-accelerators"></a>Was sind Azure IoT Solution Accelerators?
 
@@ -78,7 +78,7 @@ Alle Solution Accelerators basieren auf den gleichen Entwurfsprinzipien und -zie
 
 Die ursprünglichen Solution Accelerators wurden mit .NET geschrieben, indem eine MVC-Architektur (Model-View-Controller) verwendet wurde. Microsoft führt für die Solution Accelerators die Aktualisierung auf eine neue Microservice-Architektur durch. Die folgende Tabelle zeigt den aktuellen Status der Solution Accelerators mit Links zu den GitHub-Repositorys:
 
-| Solution Accelerator   | Architecture  | Sprachen     |
+| Solution Accelerator   | Architecture  | Languages     |
 | ---------------------- | ------------- | ------------- |
 | Remoteüberwachung      | Microservices | [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java) und [.NET](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet) |
 | Predictive Maintenance | MVC           | [.NET](https://github.com/Azure/azure-iot-predictive-maintenance)          |

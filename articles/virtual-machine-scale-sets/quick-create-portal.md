@@ -17,12 +17,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 03/27/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a9975b6f44a97d198dc308e263879c3358aab82
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a2081bab2aebf0d49f3bde2467dac1fa683452ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56672694"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58008718"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Schnellstart: Erstellen einer VM-Skalierungsgruppe im Azure-Portal
 Mit einer VM-Skalierungsgruppe können Sie eine Gruppe identischer, automatisch skalierender virtueller Computer bereitstellen und verwalten. Sie können die Anzahl virtueller Computer in der Skalierungsgruppe manuell skalieren oder basierend auf der Ressourcennutzung, z.B. CPU-Auslastung, Speicherbedarf oder Netzwerkdatenverkehr, Regeln für die automatische Skalierung definieren. Daraufhin wird der Datenverkehr durch einen Azure-Lastenausgleich auf die VM-Instanzen in der Skalierungsgruppe verteilt. In dieser Schnellstartanleitung erstellen Sie eine VM-Skalierungsgruppe über das Azure-Portal.
@@ -31,7 +31,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 
 ## <a name="log-in-to-azure"></a>Anmelden an Azure
-Melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 
 ## <a name="create-virtual-machine-scale-set"></a>Erstellen einer VM-Skalierungsgruppe
@@ -43,10 +43,10 @@ Sie können eine Skalierungsgruppe mit einem Windows Server-Image oder Linux-Ima
 4. Wählen Sie den gewünschten Betriebssystemtyp aus, z.B. *Windows Server 2016 Datacenter*.
 5. Geben Sie den gewünschten Ressourcengruppennamen (z.B. *myResourceGroup*) und den Standort (z.B. *USA, Osten*) ein.
 6. Geben Sie den gewünschten Benutzernamen ein, und wählen Sie den bevorzugten Authentifizierungstyp aus.
-    - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
-    - Wenn Sie ein Datenträgerimage für Linux-Betriebssysteme auswählen, können Sie stattdessen einen **öffentlichen SSH-Schlüssel** auswählen. Geben Sie nur Ihren öffentlichen Schlüssel an (z.B. *~/.ssh/id_rsa.pub*). Sie können Azure Cloud Shell aus dem Portal verwenden, um [SSH-Schlüssel zu erstellen und zu verwenden](../virtual-machines/linux/mac-create-ssh-keys.md).
+   - Ein **Kennwort** muss 12 Zeichen lang sein und zur Erfüllung der Komplexitätsanforderungen drei der folgenden vier Elemente enthalten: einen Kleinbuchstaben, einen Großbuchstaben, eine Zahl und ein Sonderzeichen. Weitere Informationen finden Sie im Artikel zu den [Anforderungen an Benutzernamen und Kennwörter](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm).
+   - Wenn Sie ein Datenträgerimage für Linux-Betriebssysteme auswählen, können Sie stattdessen einen **öffentlichen SSH-Schlüssel** auswählen. Geben Sie nur Ihren öffentlichen Schlüssel an (z.B. *~/.ssh/id_rsa.pub*). Sie können Azure Cloud Shell aus dem Portal verwenden, um [SSH-Schlüssel zu erstellen und zu verwenden](../virtual-machines/linux/mac-create-ssh-keys.md).
 
-    ![Grundlegende Details für die Erstellung einer VM-Skalierungsgruppe über das Azure-Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
+     ![Grundlegende Details für die Erstellung einer VM-Skalierungsgruppe über das Azure-Portal](./media/virtual-machine-scale-sets-create-portal/create-scale-set-basic-details.png)
 1. Wählen Sie unter **Optionen für den Lastenausgleich auswählen** eine Lastenausgleichsoption aus (beispielsweise *Lastenausgleich*). Geben Sie die restlichen Details für Ihre Lastenausgleichsoption ein. Für *Lastenausgleich* müssen Sie beispielsweise einen Wert für **Öffentliche IP-Adresse** und **Domänennamenbezeichnung** eingeben.
 1. Geben Sie unter **Virtuelle Netzwerke konfigurieren** Details zum virtuellen Netzwerk ein. Sie können beispielsweise ein neues virtuelles Netzwerk namens *myVirtualNetwork* und ein neues Subnetz namens *default* erstellen.
 1. Wählen Sie zum Bestätigen der Skalierungsgruppenoptionen **Erstellen** aus.

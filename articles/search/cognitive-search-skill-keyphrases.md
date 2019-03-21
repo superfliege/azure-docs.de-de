@@ -8,15 +8,15 @@ ms.service: search
 ms.devlang: NA
 ms.workload: search
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 8c760a7881894b688591230952e2a685880b8d08
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
+ms.openlocfilehash: 422b97414142c36669ed449a21c6045fd774581a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54412164"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57902653"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Der kognitive Skill „Schlüsselbegriffserkennung“
 
@@ -38,12 +38,14 @@ Die maximale Größe eines Datensatzes ist 50.000 Zeichen, gemessen durch `Strin
 ## <a name="skill-parameters"></a>Skillparameter
 
 Bei den Parametern wird zwischen Groß- und Kleinschreibung unterschieden.
+
 | Eingaben                | BESCHREIBUNG |
 |---------------------|-------------|
 | defaultLanguageCode | (Optional) Der Sprachcode, der auf Dokumente angewendet wird, in denen die Sprache nicht explizit angegeben ist.  Wenn kein Standardsprachcode festgelegt ist, wird Englisch (en) als Standardsprachcode verwendet. <br/> Siehe die [vollständige Liste der unterstützten Sprachen](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
 | maxKeyPhraseCount   | (Optional) Die maximale Anzahl der Schlüsselbegriffe, die erzeugt werden. |
 
 ## <a name="skill-inputs"></a>Skilleingaben
+
 | Eingaben     | BESCHREIBUNG |
 |--------------------|-------------|
 | text | Der zu analysierende Text|

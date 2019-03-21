@@ -6,12 +6,12 @@ ms.date: 11/27/2018
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: f7b546e8a0ca52fd2037e471f01787bb64db032d
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52842746"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090745"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>Beibehalten von IP-Adressen während eines Failovers
 
@@ -62,10 +62,10 @@ Bei einem Ausfall in der Quellregion kann Unternehmen A ein Failover für alle R
 
 - Da die IP-Zieladressen bereits vor dem Failover eingerichtet wurden, kann Unternehmen A das Failover orchestrieren und nach dem Failover automatisch Verbindungen zwischen **Wiederherstellungs-VNET** und **Azure VNET** herstellen. Dies ist in der nachfolgenden Abbildung dargestellt.
 - Je nach den Anwendungsanforderungen können Verbindungen zwischen den beiden VNETs (**Wiederherstellungs-VNET** und **Azure VNET**) in der Zielregion vor, während (als Zwischenschritt) oder nach dem Failover hergestellt werden.
-    - Das Unternehmen kann [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) verwenden, um anzugeben, wann die Verbindungen hergestellt werden.
-    - Die Verbindungen zwischen den VNETs können per VNET-Peering oder per Site-to-Site-VPN hergestellt werden.
-        - Beim VNET-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen.
-        - Die [Preise](https://azure.microsoft.com/pricing/details/virtual-network) für VNET-Peering werden anders berechnet als die [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway) für VPN Gateway (VNET-zu-VNET). Für Failover empfiehlt sich in der Regel die Verwendung der gleichen Verbindungsmethode wie in den Quellnetzwerken, einschließlich des Netzwerktyps, um unvorhersehbare Netzwerkvorfälle zu minimieren.
+  - Das Unternehmen kann [Wiederherstellungspläne](site-recovery-create-recovery-plans.md) verwenden, um anzugeben, wann die Verbindungen hergestellt werden.
+  - Die Verbindungen zwischen den VNETs können per VNET-Peering oder per Site-to-Site-VPN hergestellt werden.
+      - Beim VNET-Peering wird kein VPN-Gateway verwendet, und es gelten andere Einschränkungen.
+      - Die [Preise](https://azure.microsoft.com/pricing/details/virtual-network) für VNET-Peering werden anders berechnet als die [Preise](https://azure.microsoft.com/pricing/details/vpn-gateway) für VPN Gateway (VNET-zu-VNET). Für Failover empfiehlt sich in der Regel die Verwendung der gleichen Verbindungsmethode wie in den Quellnetzwerken, einschließlich des Netzwerktyps, um unvorhersehbare Netzwerkvorfälle zu minimieren.
 
     ![Ressourcen in Azure: Vollständiges Failover](./media/site-recovery-retain-ip-azure-vm-failover/azure-to-azure-connectivity-full-region-failover2.png)
 
@@ -128,13 +128,13 @@ In diesem Szenario führt **Unternehmen B** eine Hybridbereitstellung aus, bei d
 Vor dem Failover sieht die Netzwerkarchitektur wie folgt aus.
 
 - Anwendungs-VMs werden in der Azure-Region „Asien, Osten“ gehostet.
--  „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
-    - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze in **Quell-VNET** aufgeteilt sind:
-        - **Subnetz 1**: 10.1.1.0/24
-        - **Subnetz 2**: 10.1.2.0/24
-        - **Subnetz 3**: 10.1.3.0/24, in dem ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet wird. Dieses virtuelle Netzwerk hat den Namen **Quell-VNET**.
- - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“:
-    - „Asien, Südosten“ verfügt über ein Wiederherstellungs-VNET (**Wiederherstellungs-VNET**), das mit **Quell-VNET** identisch ist.
+- „Asien, Osten“ verfügt über ein VNET (**Quell-VNET**) mit dem Adressraum 10.1.0.0/16.
+  - „Asien, Osten“ weist Workloads auf, die auf drei Subnetze in **Quell-VNET** aufgeteilt sind:
+    - **Subnetz 1**: 10.1.1.0/24
+    - **Subnetz 2**: 10.1.2.0/24
+    - **Subnetz 3**: 10.1.3.0/24, in dem ein virtuelles Azure-Netzwerk mit dem Adressraum 10.1.0.0/16 verwendet wird. Dieses virtuelle Netzwerk hat den Namen **Quell-VNET**.
+      - Die sekundäre Azure-Region (Zielregion) ist „Asien, Südosten“:
+  - „Asien, Südosten“ verfügt über ein Wiederherstellungs-VNET (**Wiederherstellungs-VNET**), das mit **Quell-VNET** identisch ist.
 - Für VMs in „Asien, Osten“ wird über Azure ExpressRoute oder Site-to-Site-VPN eine Verbindung mit einem lokalen Rechenzentrum hergestellt.
 - Zur Reduzierung des RTO-Werts (Recovery Time Objective) stellt Unternehmen B vor dem Failover Gateways im Wiederherstellungs-VNET in der Azure-Region „Asien, Südosten“ bereit.
 - Unternehmen B weist die IP-Zieladressen für replizierte virtuelle Computer zu und überprüft sie. Die IP-Zieladresse für jeden virtuellen Computer entspricht jeweils der IP-Quelladresse.

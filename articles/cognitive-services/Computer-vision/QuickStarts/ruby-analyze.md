@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/28/2018
+ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: dcb7807513c03b3bc61f780582b429a54cee561c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8ae2cd5f3a866b2d026ad4f3babc89bc9af68dc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57904489"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-rest-api-and-ruby-in-computer-vision"></a>Schnellstart: Analysieren eines Remotebilds mit der REST-API und Ruby in der Maschinelles Sehen-API
 
@@ -178,10 +178,6 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Das Beispiel analy
 }
 
 ```
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie die Datei nicht mehr benötigen, löschen Sie sie.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

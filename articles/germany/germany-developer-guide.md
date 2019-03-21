@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/13/2017
 ms.author: ralfwi
-ms.openlocfilehash: bee3d1bf2cc02e0216b54c53a62e4fd6bdcba357
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5b0816079cdccd8a75830764fc8b1ad8a4d1b95e
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51229365"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530323"
 ---
 # <a name="azure-germany-developer-guide"></a>Microsoft Azure Deutschland – Entwickler- und Benutzerhandbuch
 Bei der Azure Deutschland-Umgebung handelt es sich um eine Instanz von Microsoft Azure, die vom Rest des Microsoft-Netzwerks getrennt ist. Dieses Handbuch erläutert die Unterschiede, die Anwendungsentwickler und -administratoren kennen müssen, um mit dieser separaten Region von Azure interagieren und arbeiten zu können.
@@ -52,7 +52,7 @@ In der folgenden Tabelle finden Sie Informationen für die Zuordnung von Endpunk
 | --- | --- |
 | ActiveDirectoryServiceEndpointResourceId | https://management.core.cloudapi.de/ |
 | GalleryUrl                               | https://gallery.cloudapi.de/ |
-| ManagementPortalUrl                      | http://portal.microsoftazure.de/ |
+| ManagementPortalUrl                      | https://portal.microsoftazure.de/ |
 | ServiceManagementUrl                     | https://management.core.cloudapi.de/ |
 | PublishSettingsFileUrl                   | https://manage.microsoftazure.de/publishsettings/index |
 | ResourceManagerUrl                       | https://management.microsoftazure.de/ |

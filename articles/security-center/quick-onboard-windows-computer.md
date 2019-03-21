@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: 3cc6cdb84b2c77b15b79c7d6a04cc7c6ae0721e5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: bee4618ff08c89bbdab7413ca7f7f74a266d96dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56115860"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077903"
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>Schnellstart: Einbinden von Windows-Computern in Azure Security Center
 Nachdem Sie Ihre Azure-Abonnements integriert haben, können Sie Security Center für Ressourcen aktivieren, die außerhalb von Azure ausgeführt werden, z.B. lokale Ressourcen oder Ressourcen in anderen Clouds, indem Sie den Microsoft Monitoring Agent bereitstellen.
@@ -37,7 +37,7 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 1. Melden Sie sich beim [Azure-Portal](https://azure.microsoft.com/features/azure-portal/) an.
 2. Wählen Sie im Menü **Microsoft Azure** die Option **Security Center**. **Security Center – Übersicht** wird geöffnet.
 
- ![Übersicht über das Security Center][2]
+   ![Übersicht über das Security Center][2]
 
 3. Wählen Sie im Security Center im Hauptmenü die Option **Erste Schritte** aus.
 4. Wählen Sie die Registerkarte **Erste Schritte** aus.
@@ -48,13 +48,13 @@ Vor dem Start dieses Schnellstarts müssen Sie zum Tarif „Standard“ von Secu
 
     ![Hinzufügen eines Azure-fremden Computers](./media/quick-onboard-windows-computer/non-azure.png)
 
-  Das Blatt **Direkt-Agent** wird mit einem Link zum Herunterladen eines Windows- oder Linux-Agents sowie Schlüsseln für Ihre Arbeitsbereichs-ID geöffnet, die Sie zum Konfigurieren des Agents benötigen.
+   Das Blatt **Direkt-Agent** wird mit einem Link zum Herunterladen eines Windows- oder Linux-Agents sowie Schlüsseln für Ihre Arbeitsbereichs-ID geöffnet, die Sie zum Konfigurieren des Agents benötigen.
 
-6.  Klicken Sie auf den Link **Windows-Agent herunterladen** für den entsprechenden Prozessortyp Ihres Computers, um die Setupdatei herunterzuladen.
+6. Klicken Sie auf den Link **Windows-Agent herunterladen** für den entsprechenden Prozessortyp Ihres Computers, um die Setupdatei herunterzuladen.
 
-7.  Klicken Sie rechts von **Arbeitsbereichs-ID** auf das Kopiersymbol, und fügen Sie die ID in Editor ein.
+7. Klicken Sie rechts von **Arbeitsbereichs-ID** auf das Kopiersymbol, und fügen Sie die ID in Editor ein.
 
-8.  Klicken Sie rechts von **Primärschlüssel** auf das Kopiersymbol, und fügen Sie den Schlüssel in Editor ein.
+8. Klicken Sie rechts von **Primärschlüssel** auf das Kopiersymbol, und fügen Sie den Schlüssel in Editor ein.
 
 ## <a name="install-the-agent"></a>Installieren des Agents
 Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
@@ -68,7 +68,7 @@ Jetzt müssen Sie die heruntergeladene Datei auf dem Zielcomputer installieren.
 7. Wenn der Computer in einen Log Analytics-Arbeitsbereich in Azure Government Cloud melden soll, wählen Sie **Azure US-Regierung** in der Dropdownliste **Azure Cloud** aus.  Wenn der Computer über einen Proxyserver mit dem Log Analytics-Dienst kommunizieren muss, klicken Sie auf **Erweitert**, und stellen Sie die URL sowie die Portnummer des Proxyservers bereit.
 8. Klicken Sie auf **Weiter**, nachdem Sie die Bereitstellung der erforderlichen Konfigurationseinstellungen abgeschlossen haben.
 
-  ![Installieren des Agents][5]
+   ![Installieren des Agents][5]
 
 9. Überprüfen Sie Ihre Auswahl auf der Seite **Bereit zum Installieren**, und klicken Sie dann auf **Installieren**.
 10. Klicken Sie auf der Seite **Die Konfiguration wurde erfolgreich abgeschlossen** auf **Fertig stellen**.

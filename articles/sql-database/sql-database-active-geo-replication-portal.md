@@ -12,16 +12,16 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
-ms.openlocfilehash: 4ddeef417490b5b928f46dce428acc3e5febe159
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 2e63c44db2391f63078f0945caa69a43c0c464cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001365"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Konfigurieren der aktiven Georeplikation für Azure SQL-Datenbank im Azure-Portal und Initiieren eines Failovers
 
-In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](http://portal.azure.com) konfigurieren und ein Failover initiieren.
+In diesem Artikel erfahren Sie, wie Sie die [aktive Georeplikation für Einzeldatenbanken und in einem Pool zusammengefasste Datenbanken](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities) in Azure SQL-Datenbank mithilfe des [Azure-Portals](https://portal.azure.com) konfigurieren und ein Failover initiieren.
 
 Weitere Informationen zu Autofailover-Gruppen mit einer einzelnen Datenbank oder in einem Pool zusammengefassten Datenbanken finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen für eine einzelne Datenbank und in einem Pool zusammengefasste Datenbanken](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools). Weitere Informationen zu Autofailover-Gruppen mit verwalteten Instanzen (Vorschau) finden Sie unter [Bewährte Methoden der Verwendung von Failovergruppen mit verwalteten Instanzen](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances).
 
@@ -32,7 +32,7 @@ Wenn Sie die aktive Georeplikation über das Azure-Portal konfigurieren möchten
 * Eine Azure SQL-Datenbank: Die primäre Datenbank, die in eine andere geografische Region repliziert werden soll.
 
 > [!Note]
-Wenn Sie das Azure-Portal verwenden, können Sie nur eine sekundäre Datenbank im selben Abonnement wie die primäre Datenbank erstellen. Wenn die sekundäre Datenbank in einem anderen Abonnement vorhanden sein muss, verwenden Sie die [REST-API zum Erstellen der Datenbank](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) oder die [ALTER DATABASE-Transact-SQL-API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
+> Wenn Sie das Azure-Portal verwenden, können Sie nur eine sekundäre Datenbank im selben Abonnement wie die primäre Datenbank erstellen. Wenn die sekundäre Datenbank in einem anderen Abonnement vorhanden sein muss, verwenden Sie die [REST-API zum Erstellen der Datenbank](https://docs.microsoft.com/rest/api/sql/databases/createorupdate) oder die [ALTER DATABASE-Transact-SQL-API](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql).
 
 ## <a name="add-a-secondary-database"></a>Hinzufügen einer sekundären Datenbank
 
@@ -46,7 +46,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 > [!NOTE]
 > Wenn die Partnerdatenbank bereits vorhanden ist (z.B. aufgrund der Beendigung einer vorherigen Georeplikationsbeziehung), tritt für den Befehl ein Fehler auf.
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zu der Datenbank, die Sie für die Georeplikation einrichten möchten.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu der Datenbank, die Sie für die Georeplikation einrichten möchten.
 2. Wählen Sie auf der Seite „SQL-Datenbank“ die Option **Georeplikation**, und wählen Sie dann die Region aus, in der die sekundäre Datenbank erstellt werden soll. Sie können jede Region außer der Region auswählen, in der die primäre Datenbank gehostet wird. Es empfiehlt sich jedoch, die Partnerregion im [Regionspaar](../best-practices-availability-paired-regions.md) zu verwenden.
 
     ![Konfigurieren der Georeplikation](./media/sql-database-geo-replication-portal/configure-geo-replication.png)
@@ -66,7 +66,7 @@ Nachdem die sekundäre Datenbank erstellt und das Seeding ausgeführt wurde, beg
 
 Für die sekundäre Datenbank kann ein Wechsel durchgeführt werden, bei dem sie zur primären Datenbank wird.  
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
 2. Wählen Sie auf dem Blatt „SQL-Datenbank“ **Alle Einstellungen** > **Georeplikation** aus.
 3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die zur neuen primären Datenbank werden soll. Klicken Sie anschließend auf **Failover**.
 
@@ -84,7 +84,7 @@ Es gibt einen kurzer Zeitraum, in dem beide Datenbanken während des Rollenwechs
 
 Dieser Vorgang beendet die Replikation zur sekundären Datenbank dauerhaft und ändert die Rolle der sekundären Datenbank in eine normale Datenbank mit Lese-/Schreibzugriff. Wenn die Verbindung mit der sekundären Datenbank unterbrochen wird, ist der Befehl zwar erfolgreich, aber die sekundäre Datenbank wird erst mit Lese-/ Schreibzugriff versehen, nachdem die Verbindung wiederhergestellt wurde.  
 
-1. Navigieren Sie im [Azure-Portal](http://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur primären Datenbank in der Georeplikationspartnerschaft.
 2. Wählen Sie auf der Seite „SQL-Datenbank“ die Option **Georeplikation** aus.
 3. Wählen Sie in der Liste **SEKUNDÄRE DATENBANKEN** die Datenbank aus, die Sie aus der Georeplikationspartnerschaft entfernen möchten.
 4. Klicken Sie auf **Replikation beenden**.

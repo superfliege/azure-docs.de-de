@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: f6bf672905fe7752a6c3d07492861f43af43e1f5
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 57212da1a8da7ee6c57faf2413b88a413df04817
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893968"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57315128"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-data-store-for-a-windows-virtual-machine-classic"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Datenspeicher für einen virtuellen Windows-Computer (klassisch)
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Die [Diagnoseerweiterung](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) von Azure Monitor (auch „WAD“ oder „Diagnose“ genannt) ermöglicht es Ihnen, Metriken und Protokolle vom Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
@@ -31,7 +33,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit klassischen virt
 
 - Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
 
-- Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
 
 ## <a name="create-a-classic-virtual-machine-and-storage-account"></a>Erstellen eines klassischen virtuellen Computers und eines Speicherkontos
 
@@ -145,7 +147,7 @@ Erteilen Sie dieser App für die Ressource, für die Sie Metriken ausgeben möch
 1. Starten Sie PowerShell, und melden Sie sich an.
 
     ```powershell
-    Login-AzureRmAccount
+    Login-AzAccount
     ```
 
 1. Legen Sie zunächst den Kontext für Ihren klassischen virtuellen Computer fest.
@@ -157,7 +159,7 @@ Erteilen Sie dieser App für die Ressource, für die Sie Metriken ausgeben möch
 1. Legen Sie den Kontext des klassischen Speicherkontos fest, das mit dem virtuellen Computer erstellt wurde.
 
     ```powershell
-    $StorageContext = New-AzureStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
+    $StorageContext = New-AzStorageContext -StorageAccountName <name of your storage account from earlier steps> -storageaccountkey "<storage account key from earlier steps>"
     ```
 
 1.  Legen Sie mit dem folgenden Befehl den Diagnosedateipfad auf eine Variable fest:

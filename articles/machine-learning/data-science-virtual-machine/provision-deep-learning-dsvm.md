@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: 53ddea5426d2adfa7b0ddfcbda3375efae8d0859
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 42430c847149f7eda2f0dbed1cff006a92f372ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250805"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57845187"
 ---
 # <a name="provision-a-deep-learning-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine in Azure 
 
@@ -49,10 +49,10 @@ Es folgen die Schritte zum Erstellen einer Instanz der Deep Learning Virtual Mac
 > [!NOTE]
 > Die DLVM unterstützt alle GPU-VM-Instanzen der Serie NC und ND. Bei der Bereitstellung der DLVM müssen Sie einen der in Azure verfügbaren Standorte mit GPUs auswählen. Überprüfen Sie auf der Seite [Azure Produkte nach Region](https://azure.microsoft.com/regions/services/) die verfügbaren Standorte, und suchen Sie unter **Compute** nach **NC-Serie**, **NCv2-Serie**, **NCv3-Serie** oder **ND-Serie**. 
 
-   2. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie (NC, NCv2, NCv3) oder der ND-Serie aus, der die funktionalen Anforderungen erfüllt und dem Kostenrahmen entspricht. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
+1. **Einstellungen**: Wählen Sie eine GPU-VM-Größe der NC-Serie (NC, NCv2, NCv3) oder der ND-Serie aus, der die funktionalen Anforderungen erfüllt und dem Kostenrahmen entspricht. Erstellen Sie ein Speicherkonto für Ihre VM.  ![dlvm-settings](./media/dlvm-provision-step-2.PNG)
    
-   3. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
-   5. **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
+1. **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
+1. **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Ein Link zu den Bedingungen der Transaktion wird bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
 
 > [!NOTE]
 > Die Bereitstellung sollte ungefähr 10 bis 20 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
@@ -66,7 +66,7 @@ Nach der VM-Erstellung können Sie sich mithilfe von Remotedesktop mit den Anmel
 
 ### <a name="linux-edition"></a>Linux-Edition
 
-Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Auf einem Windows-Client können Sie ein SSH-Clienttool wie [PuTTY](http://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
+Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmelden. Verwenden Sie dabei die Kontoanmeldeinformationen, die Sie im Abschnitt **Grundlagen** von Schritt 3 für die Textshell-Schnittstelle erstellt haben. Auf einem Windows-Client können Sie ein SSH-Clienttool wie [PuTTY](https://www.putty.org) herunterladen. Falls Sie einen grafischen Desktop bevorzugen (X Windows System), können Sie die X11-Weiterleitung von PuTTY verwenden oder den X2Go-Client installieren.
 
 > [!NOTE]
 > Der X2Go-Client hat bei unseren Tests eine bessere Leistung als X11 und höher erzielt. Es wird empfohlen, den X2Go-Client als grafische Desktop-Benutzeroberfläche zu nutzen.
@@ -76,7 +76,7 @@ Nachdem die VM erstellt wurde, können Sie sich mithilfe von SSH an der VM anmel
 #### <a name="installing-and-configuring-x2go-client"></a>Installieren und Konfigurieren des X2Go-Clients
 Die Linux DLVM wird bereits mit X2Go-Server bereitgestellt und ist zum Akzeptieren von Clientverbindungen bereit. Führen Sie auf dem Client die folgenden Schritte aus, um eine Verbindung mit dem grafischen Desktop des virtuellen Linux-Computers herzustellen:
 
-1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
+1. Laden Sie den X2Go-Client für Ihre Clientplattform von [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)herunter, und installieren Sie ihn.    
 2. Führen Sie den X2Go-Client aus, und wählen Sie die Option **Neue Sitzung**aus. Es wird ein Konfigurationsfenster mit mehreren Registerkarten geöffnet. Geben Sie die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
      * **Host**: Der Hostname oder die IP-Adresse Ihrer Linux Data Science VM.

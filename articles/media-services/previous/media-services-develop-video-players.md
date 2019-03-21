@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 6c57c8ad85ef83e8739bc2bf35b3bd0dc6d5a902
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b8d4ff3e833dcbe92802845796e3b826735b68ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880686"
 ---
 # <a name="develop-video-player-applications"></a>Entwickeln von Videoplayeranwendungen
 ## <a name="overview"></a>Übersicht
@@ -44,10 +44,10 @@ Weitere Informationen finden Sie unter:
 ## <a name="other-tools-for-creating-player-applications"></a>Weitere Tools zum Erstellen von Playeranwendungen
 Sie können auch die folgenden SDKs verwenden:
 
-* [Smooth Streaming Client SDK](http://www.iis.net/downloads/microsoft/smooth-streaming) 
+* [Smooth Streaming Client SDK](https://www.iis.net/downloads/microsoft/smooth-streaming) 
 * [Smooth Streaming Windows Store-App](media-services-build-smooth-streaming-apps.md)
-* [Microsoft-Medienplattform: Player-Framework](http://playerframework.codeplex.com/) 
-* [HTML5 Player Framework-Dokumentation](http://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
+* [Microsoft-Medienplattform: Player-Framework](https://playerframework.codeplex.com/) 
+* [HTML5 Player Framework-Dokumentation](https://playerframework.codeplex.com/wikipage?title=HTML5%20Player&referringTitle=Documentation) 
 * [Microsoft Smooth Streaming-Plug-In für OSMF](https://www.microsoft.com/download/details.aspx?id=36057) 
 * [Lizenzierung des Microsoft® Smooth Streaming Client Porting Kit](https://aka.ms/sspk) 
 * [Entwickeln von Videoanwendungen für Xbox](https://xbox.create.msdn.com/) 

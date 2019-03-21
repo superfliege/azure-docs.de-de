@@ -12,12 +12,12 @@ ms.author: ayolubek
 ms.reviewer: sstein
 manager: craigg
 ms.date: 10/30/2018
-ms.openlocfilehash: 2780215e409886be82ac70642dabe05c9257945e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d4c5a2ca88f982626c8c2a8b37e4a7d6dfdbe599
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568446"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076359"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-azure-sql-databases"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Azure SQL-Datenbanken
 
@@ -27,7 +27,7 @@ In diesem Tutorial können Sie auf eine Gruppe von Mandantendatenbanken aufgetei
 In diesem Tutorial lernen Sie Folgendes kennen:
 
 > [!div class="checklist"]
-
+> 
 > * Bereitstellen einer Ad-hoc-Berichtsdatenbank
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 
@@ -147,7 +147,7 @@ Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan au
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-
+> 
 > * Ausführen verteilter Abfragen für alle Mandantendatenbanken
 > * Stellen Sie eine Ad-hoc-Berichtsdatenbank bereit, und fügen Sie Schemas hinzu, um verteilte Abfragen auszuführen.
 

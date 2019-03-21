@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: c2497fef359d4a519c6d4927dfc0c38ee3d80d88
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997898"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Serverkonzepte in Azure Database for MariaDB
 Dieser Artikel enthält Aspekte und Richtlinien für die Arbeit mit Azure Database for MariaDB-Servern.
@@ -36,6 +36,7 @@ Sie können in einer Instanz des Azure Database for MariaDB-Servers eine oder me
 ## <a name="how-do-i-secure-an-azure-database-for-mariadb-server"></a>Wie schütze ich einen Azure Database for MariaDB-Server?
 
 Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sichergestellt werden.
+
 |||
 | :--| :--|
 | **Authentifizierung und Autorisierung** | Azure Database for MariaDB-Server unterstützen die systemeigene MySQL-Authentifizierung. Mithilfe der Anmeldeinformationen des Serveradministrators können Sie eine Verbindung mit dem Server herstellen und sich authentifizieren. |

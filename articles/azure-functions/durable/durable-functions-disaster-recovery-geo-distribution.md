@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 0fb2103b982d5b2fc1a04455b451459ede12166e
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: 1363dd3c620789b9f3c8ce1dbe0892ee61d66051
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53336934"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108204"
 ---
 # <a name="disaster-recovery-and-geo-distribution"></a>Notfallwiederherstellung und geografische Verteilung
 
@@ -24,7 +24,7 @@ ms.locfileid: "53336934"
 In Durable Functions werden sämtliche Zustände in Azure Storage persistent gespeichert. Ein [Aufgabenhub](durable-functions-task-hubs.md) ist ein logischer Container für Azure Storage-Ressourcen, die zur Orchestrierung verwendet werden. Orchestrator- und Aktivitätsfunktionen können nur miteinander interagieren, wenn sie zum selben Aufgabenhub gehören.
 In den beschriebenen Szenarien werden Bereitstellungsoptionen empfohlen, um bei Notfallwiederherstellungsaktivitäten die Verfügbarkeit zu erhöhen und Ausfallzeiten zu minimieren.
 
-Dabei ist zu beachten, dass diese Szenarien auf Aktiv/Passiv-Konfigurationen basieren, da sie von der Verwendung von Azure Storage gesteuert werden. Dieses Muster besteht aus der Bereitstellung einer (passiven) Sicherungsfunktionen-App in einer anderen Region. Der Traffic Manager überwacht die primäre (aktive) Funktionen-App zur Sicherstellung der Verfügbarkeit. Fällt die primäre App aus, wird ein Failover zur Sicherungsfunktionen-App durchgeführt. Weitere Informationen finden Sie im Artikel zur [Prioritätsmethode für das Datenverkehrsrouting](../../traffic-manager/traffic-manager-routing-methods.md#a-name--priorityapriority-traffic-routing-method) des [Traffic Managers](https://azure.microsoft.com/services/traffic-manager/).
+Dabei ist zu beachten, dass diese Szenarien auf Aktiv/Passiv-Konfigurationen basieren, da sie von der Verwendung von Azure Storage gesteuert werden. Dieses Muster besteht aus der Bereitstellung einer (passiven) Sicherungsfunktionen-App in einer anderen Region. Der Traffic Manager überwacht die primäre (aktive) Funktionen-App zur Sicherstellung der Verfügbarkeit. Fällt die primäre App aus, wird ein Failover zur Sicherungsfunktionen-App durchgeführt. Weitere Informationen finden Sie im Artikel zur [Prioritätsmethode für das Datenverkehrsrouting](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method) des [Traffic Managers](https://azure.microsoft.com/services/traffic-manager/).
 
 >[!NOTE]
 >

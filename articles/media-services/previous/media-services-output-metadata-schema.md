@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: cdcdcff8a5c016cfd3074a950ad6060e55b8b0fe
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 42227095c69924cd2922673d020b349aa29f2daa
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312581"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58259515"
 ---
 # <a name="output-metadata"></a>Ausgeben von Metadaten
 ## <a name="overview"></a>Übersicht
@@ -33,7 +33,7 @@ In diesem Artikel werden die Elemente und Typen des XML-Schemas beschrieben, auf
 
 Sie finden den vollständigen Schemacode und das XML-Beispiel am Ende des Artikels.  
 
-## <a name="AssetFiles "></a> „AssetFiles“-Stammelement
+## <a name="AssetFiles"></a> „AssetFiles“-Stammelement
 Sammlung von „AssetFile“-Einträgen für den Codierauftrag.  
 
 ### <a name="child-elements"></a>Untergeordnete Elemente
@@ -41,7 +41,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | --- | --- |
 | **AssetFile**<br/><br/> minOccurs="0" maxOccurs="1" |Ein AssetFile-Element, das Teil der AssetFiles-Sammlung ist. |
 
-## <a name="AssetFile "></a> AssetFile-Element
+## <a name="AssetFile"></a> AssetFile-Element
 [Hier](#xml) finden Sie ein XML-Beispiel.  
 
 ### <a name="attributes"></a>Attribute
@@ -58,7 +58,7 @@ Sammlung von „AssetFile“-Einträgen für den Codierauftrag.
 | **VideoTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Weitere Informationen finden Sie unter „VideoTracks-Element“. |
 | **AudioTracks**<br/><br/> minOccurs="0" maxOccurs="1" |Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Dies ist die Sammlung aller dieser Audiospuren. Weitere Informationen finden Sie unter „AudioTracks-Element“. |
 
-## <a name="Sources "></a> „Sources“-Element
+## <a name="Sources"></a> „Sources“-Element
 Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medienobjektdatei zu erzeugen.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -68,7 +68,7 @@ Sammlung von Eingabe-/Quellmediendateien, die verarbeitet wurde, um diese Medien
 | --- | --- |
 | **Quelle**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird. Weitere Informationen finden Sie unter „Source-Element“. |
 
-## <a name="Source "></a> „Source“-Element
+## <a name="Source"></a> „Source“-Element
 Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -78,7 +78,7 @@ Ein Eingabe-/Quelldatei, die zum Generieren dieses Medienobjekts verwendet wird.
 | --- | --- | --- |
 | **Name**<br/><br/> Erforderlich |**xs:string** |Name der Eingabequelldatei. |
 
-## <a name="VideoTracks "></a> VideoTracks-Element
+## <a name="VideoTracks"></a> VideoTracks-Element
 Jede physische Medienobjektdatei kann null oder mehr Videospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **VideoTracks**-Element stellt eine Sammlung aller Videotitel dar.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -110,7 +110,7 @@ Eine bestimmte Videospur im übergeordneten Mediendateiobjekt.
 | **TargetBitrate**<br/><br/> minInclusive ="0"<br/><br/> Erforderlich |**xs:int** |Durchschnittliche Bitrate dieser Videospur entsprechend der Anforderung der Codierungsvoreinstellung in kBit/s. |
 | **MaxGOPBitrate**<br/><br/> minInclusive ="0" |**xs:int** |Maximale durchschnittliche GOP-Bitrate für diese Videospur in kBit/s. |
 
-## <a name="AudioTracks "></a> „AudioTracks“-Element
+## <a name="AudioTracks"></a> „AudioTracks“-Element
 Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die zu einem entsprechenden Containerformat zusammengeführt werden. Das **AudioTracks**-Element stellt eine Sammlung aller Audiotitel dar.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -120,7 +120,7 @@ Jede physische Medienobjektdatei kann null oder mehr Audiospuren enthalten, die 
 | --- | --- |
 | **AudioTrack**<br/><br/> minOccurs="1" maxOccurs="unbounded" |Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt. Weitere Informationen finden Sie unter „AudioTrack-Element“. |
 
-## <a name="AudioTrack "></a> „AudioTrack“-Element
+## <a name="AudioTrack"></a> „AudioTrack“-Element
 Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -141,7 +141,7 @@ Eine bestimmte Audiospur im übergeordneten Mediendateiobjekt.
 | --- | --- |
 | **LoudnessMeteringResultParameters**<br/><br/> minOccurs="0" maxOccurs="1" |Parameter für das Messergebnis der Lautheit. Weitere Informationen finden Sie unter „LoudnessMeteringResultParameters-Element“. |
 
-## <a name="LoudnessMeteringResultParameters "></a> „LoudnessMeteringResultParameters“-Element
+## <a name="LoudnessMeteringResultParameters"></a> „LoudnessMeteringResultParameters“-Element
 Parameter für das Messergebnis der Lautheit.  
 
 [Hier](#xml) finden Sie ein XML-Beispiel.  
@@ -162,7 +162,7 @@ Parameter für das Messergebnis der Lautheit.
 
 ## <a name="schema-code"></a>Schemacode
     <?xml version="1.0" encoding="utf-8"?>  
-    <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
+    <xs:schema xmlns:xs="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.2"  
                xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
                targetNamespace="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata"  
                elementFormDefault="qualified">  
@@ -513,7 +513,7 @@ Parameter für das Messergebnis der Lautheit.
 
 Es folgt ein XML-Beispiel der Datei mit den Ausgabemetadaten.  
 
-    <AssetFiles xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"   
+    <AssetFiles xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="https://www.w3.org/2001/XMLSchema"   
                 xmlns="http://schemas.microsoft.com/windowsazure/mediaservices/2013/05/mediaencoder/metadata">  
       <AssetFile Name="BigBuckBunny_H264_3400kbps_AAC_und_ch2_96kbps.mp4" Size="4646283" Duration="PT8.4288444S">  
         <Sources>  

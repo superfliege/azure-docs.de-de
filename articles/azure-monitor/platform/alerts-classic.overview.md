@@ -7,12 +7,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/29/2018
 ms.author: robb
-ms.openlocfilehash: 596b7eb53d82f8eee7da439314994fd0951c7e64
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: 3b6ddd99d7b198cdc5274b2944a723e68864bd4f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993039"
 ---
 # <a name="what-are-classic-alerts-in-microsoft-azure"></a>Was sind klassische Warnungen in Microsoft Azure?
 
@@ -80,10 +80,10 @@ Für die älteren Metrikwarnungen werden jedoch keine Aktionsgruppen verwendet. 
 - Aufrufen eines Webhooks, um zusätzliche automatisierte Aktionen auszuführen
 
 Webhooks ermöglichen die Automatisierung und Fehlerbehebung, z.B. mit folgenden Komponenten:
-    - Azure Automation-Runbook
-    - Azure Function
-    - Azure-Logik-App
-    - ein Drittanbieter-Dienst
+- Azure Automation-Runbook
+- Azure Function
+- Azure-Logik-App
+- ein Drittanbieter-Dienst
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen über Warnregeln und ihre Konfiguration erhalten Sie hier:

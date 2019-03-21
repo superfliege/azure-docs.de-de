@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: aaaec6e02c9280801fbf7e3b5a8eaa1ae4a1ff43
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 3d4c1029315e754410f31b13042d1d6acb105da1
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54429768"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309688"
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Streamen des Azure-Aktivitätsprotokolls an Event Hubs
 Sie können das [Azure-Aktivitätsprotokoll](../../azure-monitor/platform/activity-logs-overview.md) nahezu in Echtzeit in jede beliebige Anwendung streamen, indem Sie eine der folgenden Möglichkeiten nutzen:
@@ -58,21 +58,24 @@ Wenn Sie dem Protokollprofil für das Aktivitätsprotokoll das Streamingfeature 
 6. Wenn Sie über mehrere Abonnements verfügen, können Sie diesen Vorgang wiederholen und alle Daten an denselben Event Hub senden.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhandene Protokollprofil entfernen und dann ein neues Profil erstellen.
 
-1. Ermitteln Sie mithilfe von `Get-AzureRmLogProfile`, ob ein Protokollprofil vorhanden ist.  Wenn ein Protokollprofil vorhanden ist, suchen Sie die *name*-Eigenschaft.
-2. Verwenden Sie `Remove-AzureRmLogProfile`, um das Protokollprofil mithilfe des Werts aus der *name*-Eigenschaft zu entfernen.
+1. Ermitteln Sie mithilfe von `Get-AzLogProfile`, ob ein Protokollprofil vorhanden ist.  Wenn ein Protokollprofil vorhanden ist, suchen Sie die *name*-Eigenschaft.
+2. Verwenden Sie `Remove-AzLogProfile`, um das Protokollprofil mithilfe des Werts aus der *name*-Eigenschaft zu entfernen.
 
     ```powershell
     # For example, if the log profile name is 'default'
-    Remove-AzureRmLogProfile -Name "default"
+    Remove-AzLogProfile -Name "default"
     ```
-3. Verwenden Sie `Add-AzureRmLogProfile`, um ein neues Protokollprofil zu erstellen:
+3. Verwenden Sie `Add-AzLogProfile`, um ein neues Protokollprofil zu erstellen:
 
    ```powershell
    # Settings needed for the new log profile
    $logProfileName = "default"
-   $locations = (Get-AzureRmLocation).Location
+   $locations = (Get-AzLocation).Location
    $locations += "global"
    $subscriptionId = "<your Azure subscription Id>"
    $resourceGroupName = "<resource group name your event hub belongs to>"
@@ -81,7 +84,7 @@ Wenn bereits ein Protokollprofil vorhanden ist, müssen Sie zuerst das vorhanden
    # Build the service bus rule Id from the settings above
    $serviceBusRuleId = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.EventHub/namespaces/$eventHubNamespace/authorizationrules/RootManageSharedAccessKey"
 
-   Add-AzureRmLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
+   Add-AzLogProfile -Name $logProfileName -Location $locations -ServiceBusRuleId $serviceBusRuleId
    ```
 
 ### <a name="via-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle

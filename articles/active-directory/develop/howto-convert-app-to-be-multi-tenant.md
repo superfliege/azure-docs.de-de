@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: justhu, elisol
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 766eb7864a6bce296daafc86179e2deed77f8e02
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 44feaecd42a8c3ce0ac0c712aa27b2480fd2a486
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163121"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56806928"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>Gewusst wie: Anmelden von Azure Active Directory-Benutzern mit dem mehrinstanzenfähigen Anwendungsmuster
 
@@ -39,7 +39,7 @@ Sie müssen vier einfache Schritte zum Konvertieren der Anwendung in eine mehrin
 1. [Aktualisieren der Anwendungsregistrierung, sodass sie mehrinstanzenfähig ist](#update-registration-to-be-multi-tenant)
 2. [Aktualisieren des Codes zum Senden von Anforderungen an den Endpunkt „/common“](#update-your-code-to-send-requests-to-common)
 3. [Aktualisieren des Codes zum Verarbeiten mehrerer Ausstellerwerte](#update-your-code-to-handle-multiple-issuer-values)
-4. Interpretieren der Benutzer- und Administratorzustimmung und Vornehmen der entsprechenden Codeänderungen
+4. [Interpretieren der Benutzer- und Administratorzustimmung und Vornehmen der entsprechenden Codeänderungen](#understand-user-and-admin-consent)
 
 Betrachten wir jeden Schritt im Detail. Sie können auch direkt zu [dieser Liste von Beispielen für Mehrinstanzenfähigkeit][AAD-Samples-MT] wechseln.
 

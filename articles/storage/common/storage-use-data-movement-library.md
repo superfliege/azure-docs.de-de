@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: fd64376f68a177f12b2105ae0974eeeeefa94f4b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460079"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996151"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Übertragen von Daten mit der Microsoft Azure Storage Data Movement-Bibliothek
 
@@ -193,7 +193,7 @@ public static async Task TransferLocalFileToAzureBlob(CloudStorageAccount accoun
 
 Dieser Code fragt uns nach dem Pfad zu einer lokalen Datei, dem Namen eines neuen oder vorhandenen Containers und dem Namen eines neuen Blobs. Die `TransferManager.UploadAsync`-Methode führt das Hochladen mithilfe dieser Informationen aus.
 
-Klicken Sie auf `F5`, um die Anwendung auszuführen. Sie können überprüfen, ob der Upload erfolgt ist, indem Sie Ihr Storage-Konto mit dem [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) anzeigen.
+Klicken Sie auf `F5`, um die Anwendung auszuführen. Sie können überprüfen, ob der Upload erfolgt ist, indem Sie Ihr Storage-Konto mit dem [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) anzeigen.
 
 ## <a name="set-number-of-parallel-operations"></a>Festlegen der Anzahl paralleler Vorgänge
 Eine großartige Funktion der Data Movement-Bibliothek ist die Möglichkeit, die Anzahl der parallelen Vorgänge festzulegen, um den Durchsatz bei der Datenübertragung zu erhöhen. Standardmäßig ist die Anzahl der parallelen Vorgänge in der Data Movement-Bibliothek auf 8 * das Anzahl von Kernen im Computer festgelegt.

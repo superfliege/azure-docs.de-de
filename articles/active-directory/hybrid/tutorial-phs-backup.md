@@ -12,12 +12,12 @@ ms.date: 01/30/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c68dba4a188e5acf88cc39b02e535d89a1c9e46
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2281bc451a5acf9e4e634a124161a3e8b0734deb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178820"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090507"
 ---
 # <a name="tutorial--setting-up-phs-as-backup-for-ad-fs-in-azure-ad-connect"></a>Tutorial:  Einrichten der Kennworthashsynchronisierung als Sicherung für AD FS in Azure AD Connect
 
@@ -60,9 +60,9 @@ Nachfolgend wird veranschaulicht, wie Sie auf die Kennworthashsynchronisierung u
 
 ## <a name="test-signing-in-with-one-of-our-users"></a>Testanmeldung mit einem unserer Benutzer
 
-1.  Rufen Sie [http://myapps.microsoft.com](http://myapps.microsoft.com) auf.
+1. Rufen Sie [https://myapps.microsoft.com](https://myapps.microsoft.com) auf.
 2. Melden Sie sich mit einem Benutzerkonto an, das in unserem neuen Mandanten erstellt wurde.  Sie müssen sich mit folgendem Format anmelden: (user@domain.onmicrosoft.com). Verwenden Sie dasselbe Kennwort, mit dem sich der Benutzer lokal anmeldet.</br>
-![Überprüfen](media/tutorial-password-hash-sync/verify1.png)</br>
+   ![Überprüfen](media/tutorial-password-hash-sync/verify1.png)</br>
 
 ## <a name="next-steps"></a>Nächste Schritte
 

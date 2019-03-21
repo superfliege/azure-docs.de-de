@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 11/07/2017
 ms.author: brjohnst
 ms.custom: seodec2018
-ms.openlocfilehash: 3f55b3b099cc22fda2bebf0dcb8d3e9c1a580f02
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 410727022b092e2dd8ab8b05e628e25fd60ab833
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102525"
 ---
 # <a name="security-filters-for-trimming-azure-search-results-using-active-directory-identities"></a>Sicherheitsfilter zum Einschränken von Azure Search-Ergebnissen mit Active Directory-Identitäten
 
@@ -22,13 +22,13 @@ Dieser Artikel zeigt, wie Sie mithilfe von Azure Active Directory-Sicherheitside
 
 In diesem Artikel werden die folgenden Aufgaben behandelt:
 > [!div class="checklist"]
-- Erstellen von AAD-Gruppen und -Benutzern
-- Zuordnen des Benutzers zur erstellten Gruppe
-- Zwischenspeichern der neuen Gruppen
-- Indizieren von Dokumenten mit zugeordneten Gruppen
-- Ausgeben einer Suchanfrage mit Gruppenbezeichnerfilter
-
->[!NOTE]
+> - Erstellen von AAD-Gruppen und -Benutzern
+> - Zuordnen des Benutzers zur erstellten Gruppe
+> - Zwischenspeichern der neuen Gruppen
+> - Indizieren von Dokumenten mit zugeordneten Gruppen
+> - Ausgeben einer Suchanfrage mit Gruppenbezeichnerfilter
+> 
+> [!NOTE]
 > Beispielcodeausschnitte in diesem Artikel sind in C# geschrieben. Den vollständigen Quellcode finden Sie [auf GitHub](https://aka.ms/search-dotnet-howto). 
 
 ## <a name="prerequisites"></a>Voraussetzungen

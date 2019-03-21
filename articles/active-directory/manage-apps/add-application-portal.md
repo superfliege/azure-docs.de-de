@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27456f672e2fa67928b43e80bef384a14e9c1d62
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56166962"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110119"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>Schnellstart: Hinzufügen einer Anwendung zu Ihrem Azure Active Directory-Mandanten
 
@@ -113,35 +113,35 @@ So bearbeiten Sie die Anwendungseigenschaften
 
 4. Anhand der folgenden Tabellen können Sie die Optionen auswählen, die am besten für Ihre Anforderungen geeignet sind.
 
-    - Verhalten für **zugewiesene** Benutzer:
+   - Verhalten für **zugewiesene** Benutzer:
 
-        | Eigenschafteneinstellungen der Anwendung | | | Zugewiesene Benutzer | |
-        |---|---|---|---|---|
-        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
-        | Ja | Ja | Ja | Ja | Ja  |
-        | Ja | Ja | no  | Ja | no   |
-        | Ja | no  | Ja | Ja | Ja  |
-        | Ja | no  | no  | Ja | no   |
-        | no  | Ja | Ja | no  | no   |
-        | no  | Ja | no  | no  | no   |
-        | no  | no  | Ja | no  | no   |
-        | no  | no  | no  | no  | no   |
+       | Eigenschafteneinstellungen der Anwendung | | | Zugewiesene Benutzer | |
+       |---|---|---|---|---|
+       | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich zugewiesene Benutzer anmelden? | Können zugewiesene Benutzer die Anwendung sehen?* |
+       | Ja | Ja | Ja | Ja | Ja  |
+       | Ja | Ja | no  | Ja | no   |
+       | Ja | no  | Ja | Ja | Ja  |
+       | Ja | no  | no  | Ja | no   |
+       | no  | Ja | Ja | no  | no   |
+       | no  | Ja | no  | no  | no   |
+       | no  | no  | Ja | no  | no   |
+       | no  | no  | no  | no  | no   |
 
-    - Verhalten für **nicht zugewiesene** Benutzer:
+   - Verhalten für **nicht zugewiesene** Benutzer:
 
-        | Eigenschafteneinstellungen der Anwendung | | | Nicht zugewiesene Benutzer | |
-        |---|---|---|---|---|
-        | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
-        | Ja | Ja | Ja | no  | no   |
-        | Ja | Ja | no  | no  | no   |
-        | Ja | no  | Ja | Ja | no   |
-        | Ja | no  | no  | Ja | no   |
-        | no  | Ja | Ja | no  | no   |
-        | no  | Ja | no  | no  | no   |
-        | no  | no  | Ja | no  | no   |
-        | no  | no  | no  | no  | no   |
+       | Eigenschafteneinstellungen der Anwendung | | | Nicht zugewiesene Benutzer | |
+       |---|---|---|---|---|
+       | Aktiviert für die Benutzeranmeldung? | Benutzerzuweisung erforderlich? | Für Benutzer sichtbar? | Können sich nicht zugewiesene Benutzer anmelden? | Können nicht zugewiesene Benutzer die Anwendung sehen?* |
+       | Ja | Ja | Ja | no  | no   |
+       | Ja | Ja | no  | no  | no   |
+       | Ja | no  | Ja | Ja | no   |
+       | Ja | no  | no  | Ja | no   |
+       | no  | Ja | Ja | no  | no   |
+       | no  | Ja | no  | no  | no   |
+       | no  | no  | Ja | no  | no   |
+       | no  | no  | no  | no  | no   |
 
-    *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
+     *Kann der Benutzer die Anwendung im Zugriffsbereich und im Office 365-App-Startfeld sehen?
 
 ## <a name="use-a-custom-logo"></a>Verwenden eines benutzerdefinierten Logos
 

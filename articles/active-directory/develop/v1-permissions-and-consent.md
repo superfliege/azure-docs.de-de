@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ec7b2de1ae56e554013d9a5c574bb231164b80f8
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ee58c2a3bed7544ff68e7d6ec756c35bee1d05b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103161"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Berechtigungen und Zustimmung im Azure Active Directory-v1.0-Endpunkt
 
@@ -102,11 +102,11 @@ Für Anwendungen in Azure AD ist eine Zustimmung erforderlich, um Zugriff auf be
 - Für Ressourcen sollten die Berechtigungen `Read` und `ReadWrite` separat explizit definiert werden.
 - Ressourcen sollten alle Berechtigungen, die Zugriff auf Daten über Benutzergrenzen hinweg zulassen, als Berechtigungen vom Typ `Admin` kennzeichnen.
 - Für Ressourcen sollte das Namensmuster `Subject.Permission[.Modifier]` befolgt werden. Hierbei gilt Folgendes:
-    - `Subject` entspricht der Art der verfügbaren Daten.
-    - `Permission` entspricht der Aktion, die ein Benutzer für diese Daten ausführen kann.
-    - `Modifier` wird optional verwendet, um Spezialisierungen einer anderen Berechtigung zu beschreiben.
+  - `Subject` entspricht der Art der verfügbaren Daten.
+  - `Permission` entspricht der Aktion, die ein Benutzer für diese Daten ausführen kann.
+  - `Modifier` wird optional verwendet, um Spezialisierungen einer anderen Berechtigung zu beschreiben.
     
     Beispiel: 
-    * Mail.Read: Ermöglicht Benutzern das Lesen von E-Mails.
-    * Mail.ReadWrite: Ermöglicht Benutzern das Lesen oder Schreiben von E-Mails.
-    * Mail.ReadWrite.All: Ermöglicht einem Administrator oder Benutzer den Zugriff auf alle E-Mails der Organisation.
+  - Mail.Read: Ermöglicht Benutzern das Lesen von E-Mails.
+  - Mail.ReadWrite: Ermöglicht Benutzern das Lesen oder Schreiben von E-Mails.
+  - Mail.ReadWrite.All: Ermöglicht einem Administrator oder Benutzer den Zugriff auf alle E-Mails der Organisation.

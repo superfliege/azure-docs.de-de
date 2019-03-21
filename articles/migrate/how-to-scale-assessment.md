@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 89b18d71e864c198b7efafcff09777da21930b6c
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733636"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116672"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>Ermitteln und Bewerten einer umfangreichen VMware-Umgebung
 
@@ -38,7 +38,7 @@ Azure Migrate benötigt Zugriff auf VMware-Server, um automatisch virtuelle Comp
 
 Wenn Sie die Bereitstellung in einer Mandantenumgebung ausführen, finden Sie hier eine Möglichkeit zur Einrichtung:
 
-1.  Erstellen Sie einen Benutzer pro Mandant, und weisen Sie mit [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) Nur-Lese-Berechtigungen auf alle VMs zu, die einem bestimmten Mandanten angehören. Verwenden Sie diese Anmeldeinformationen dann für die Ermittlung. Durch die rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
+1. Erstellen Sie einen Benutzer pro Mandant, und weisen Sie mit [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) Nur-Lese-Berechtigungen auf alle VMs zu, die einem bestimmten Mandanten angehören. Verwenden Sie diese Anmeldeinformationen dann für die Ermittlung. Durch die rollenbasierte Zugriffssteuerung wird sichergestellt, dass der entsprechende vCenter-Benutzer nur Zugriff auf die mandantenspezifischen VMs hat.
 2. Sie können RBAC für Benutzer verschiedener Mandanten einrichten, wie im folgenden Beispiel für die Benutzer 1 und 2 beschrieben wird:
 
     - Geben Sie unter **Benutzername** und **Kennwort** die Anmeldeinformationen für das schreibgeschützte Konto an, mit dem der Collector VMs in

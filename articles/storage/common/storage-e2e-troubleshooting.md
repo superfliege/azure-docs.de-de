@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a160ef767909814e363dbb692e58c30783aaf6f
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: ac30888c9f54c5dc88cb72aeec0f3db81d5a99dc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746302"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004952"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>End-to-End-Problembehandlung mit Azure Storage-Metriken und -Protokollierung sowie AzCopy und Message Analyzer
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -133,9 +133,9 @@ Das clientseitige Protokoll enthält detaillierte Informationen darüber, wie de
 Die Speicherclientbibliothek speichert clientseitige Protokolldaten an dem in der Konfigurationsdatei der Anwendung (web.config oder app.config) festgelegten Speicherort.
 
 ### <a name="collect-a-network-trace"></a>Erfassen einer Netzwerkablaufverfolgung
-Sie können Message Analyzer verwenden, um eine HTTP-/HTTPS-Ablaufverfolgung zu erfassen, während Ihre Clientanwendung ausgeführt wird. Message Analyzer verwendet [Fiddler](http://www.telerik.com/fiddler) am Back-End. Bevor Sie die Netzwerkablaufverfolgung erfassen, empfehlen wir, Fiddler zum Aufzeichnen von unverschlüsseltem HTTPS-Datenverkehr zu konfigurieren:
+Sie können Message Analyzer verwenden, um eine HTTP-/HTTPS-Ablaufverfolgung zu erfassen, während Ihre Clientanwendung ausgeführt wird. Message Analyzer verwendet [Fiddler](https://www.telerik.com/fiddler) am Back-End. Bevor Sie die Netzwerkablaufverfolgung erfassen, empfehlen wir, Fiddler zum Aufzeichnen von unverschlüsseltem HTTPS-Datenverkehr zu konfigurieren:
 
-1. Installieren Sie [Fiddler](http://www.telerik.com/download/fiddler).
+1. Installieren Sie [Fiddler](https://www.telerik.com/download/fiddler).
 2. Starten Sie Fiddler.
 3. Wählen Sie **Tools | Fiddler Options** (Extras | Fiddler-Optionen).
 4. Stellen Sie sicher, dass im Dialogfeld „Options“ (Optionen) die Optionen **Capture HTTPS CONNECTs** (HTTPS CONNECTs erfassen) und **Decrypt HTTPS Traffic** (HTTPS-Datenverkehr entschlüsseln) wie unten dargestellt aktiviert sind.

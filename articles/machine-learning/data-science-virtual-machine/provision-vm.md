@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: gokuma
-ms.openlocfilehash: 8ee424412c9c54dadef7391084e3ab976da9ad7f
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 0b8349c6c59ac64be15c75b28c083a4483f2f68a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417447"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896261"
 ---
 # <a name="provision-a-windows-data-science-virtual-machine-on-azure"></a>Bereitstellen einer Data Science Virtual Machine für Windows in Azure
 
@@ -44,7 +44,7 @@ Die folgenden Tools sind in einer DSVM enthalten:
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit) – ein schnelles Machine Learning-System, das verschiedene Verfahren unterstützt, wie z.B. Online, Hashing, Allreduce, Reductions, Learning2Search sowie Active und Interactive Learning
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/) – ein Tool, das eine schnelle und präzise Boosted Tree-Implementierung ermöglicht
   * [Rattle](https://togaware.com/rattle/) – ein Tool, das die ersten Schritte von Datenanalysen und Machine Learning in R vereinfacht. Es umfasst eine GUI-basierte Datenuntersuchung und -modellierung mit automatischer R-Codegenerierung.
-  * [Weka](http://www.cs.waikato.ac.nz/ml/weka/) – eine Software für visuelles Data Mining und Machine Learning in Java.
+  * [Weka](https://www.cs.waikato.ac.nz/ml/weka/) – eine Software für visuelles Data Mining und Machine Learning in Java.
   * [Apache Drill](https://drill.apache.org/) – eine schemalose SQL-Abfrage-Engine für Apache Hadoop, NoSQL und Cloud Storage Sie unterstützt ODBC- und JDBC-Schnittstellen für NoSQL- und Dateiabfragen mit BI-Standardtools wie Power BI, Microsoft Excel und Tableau.
 * Bibliotheken in R und Python zur Verwendung in Azure Machine Learning und anderen Azure-Diensten
 * Git, einschließlich Git Bash, für die Arbeit mit Quellcoderepositorys einschließlich GitHub und Azure DevOps. Git stellt mehrere gängige Linux-Befehlszeilenprogramme bereit, auf die sowohl in Git Bash als auch über eine Eingabeaufforderung zugegriffen werden kann. Beispiele sind awk, sed, perl, grep, find, wget und curl.
@@ -71,7 +71,7 @@ Für dieses Data Science VM-Image fallen keine Softwaregebühren an. Sie zahlen 
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Um eine Microsoft Data Science Virtual Machine zu erstellen, benötigen Sie ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](http://azure.com/free).
+Um eine Microsoft Data Science Virtual Machine zu erstellen, benötigen Sie ein Azure-Abonnement. Siehe [Kostenlose Azure-Testversion](https://azure.com/free).
 
 ## <a name="create-your-dsvm"></a>Erstellen Ihrer DSVM
 
@@ -229,4 +229,4 @@ Sie können den [Microsoft-Webplattform-Installer](https://www.microsoft.com/web
 * Navigieren Sie im Explorer zu **C:\Programme\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts**, um Beispiele für die RevoScaleR-Bibliothek in R zu finden, die Datenanalysen auf Unternehmensebene unterstützt.  
 * Lesen Sie den Artikel [Zehn Dinge, die Sie mit der Data Science Virtual Machine machen können](https://aka.ms/dsvmtenthings).
 * Erfahren Sie, wie Sie mithilfe des [Team Data Science-Prozesses](../team-data-science-process/index.yml)systematisch vollständige Analyselösungen erstellen.
-* Besuchen Sie die [Azure AI Gallery](http://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im Startmenü und auf dem Desktop der virtuellen Maschine bereitgestellt.
+* Besuchen Sie die [Azure AI Gallery](https://gallery.cortanaintelligence.com), um Beispiele zu Machine Learning und zur Datenanalyse zu erhalten, in denen Azure Machine Learning und dazugehörige Datendienste in Azure verwendet werden. Wir haben auch ein Symbol für diese Galerie im Startmenü und auf dem Desktop der virtuellen Maschine bereitgestellt.

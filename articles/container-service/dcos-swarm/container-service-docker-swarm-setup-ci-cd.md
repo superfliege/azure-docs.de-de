@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 93046fa8225d8c85172d113d3c7f9e979c336770
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: f28ea3dd2837a241c538057bd118409d4f5b858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331434"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096264"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit Docker Swarm mithilfe von Azure DevOps Services
 
@@ -204,14 +204,14 @@ Der Releaseworkflow besteht aus zwei Aufgaben, die Sie hinzufügen.
 
     Der auf den Masterknoten angewendete Befehl verwendet die Docker CLI und Docker-Compose CLI zum Ausführen der folgenden Aufgaben:
 
-    - Melden Sie sich bei der Azure-Containerregistrierung an (diese verwendet drei Buildvariablen, die auf der Registerkarte **Variablen** definiert sind).
-    - Definieren Sie die Variable **DOCKER_HOST** für die Zusammenarbeit mit dem Swarm-Endpunkt (:2375).
-    - Navigieren Sie zum Ordner *deploy*, der während der vorherigen sicheren Kopieraufgabe erstellt wurde und die Datei „docker-compose.yml“ enthält. 
-    - Führen Sie `docker-compose`-Befehle aus, die die neuen Images per Pull abrufen, die Dienste beenden und entfernen sowie die Container erstellen.
+   - Melden Sie sich bei der Azure-Containerregistrierung an (diese verwendet drei Buildvariablen, die auf der Registerkarte **Variablen** definiert sind).
+   - Definieren Sie die Variable **DOCKER_HOST** für die Zusammenarbeit mit dem Swarm-Endpunkt (:2375).
+   - Navigieren Sie zum Ordner *deploy*, der während der vorherigen sicheren Kopieraufgabe erstellt wurde und die Datei „docker-compose.yml“ enthält. 
+   - Führen Sie `docker-compose`-Befehle aus, die die neuen Images per Pull abrufen, die Dienste beenden und entfernen sowie die Container erstellen.
 
-    >[!IMPORTANT]
-    > Lassen Sie, wie auf dem vorherigen Bildschirm gezeigt, **Fehler für STDERR** deaktiviert. Dies ist eine wichtige Einstellung, da `docker-compose` in der Standardfehlerausgabe mehrere Diagnosemeldungen ausgibt, z.B. zu beendeten und gelöschten Containern. Wenn Sie das Kontrollkästchen aktivieren, meldet Azure DevOps Services, dass im Verlauf des Release Fehler aufgetreten sind, obwohl alles wie gewünscht verlaufen ist.
-    >
+     >[!IMPORTANT]
+     > Lassen Sie, wie auf dem vorherigen Bildschirm gezeigt, **Fehler für STDERR** deaktiviert. Dies ist eine wichtige Einstellung, da `docker-compose` in der Standardfehlerausgabe mehrere Diagnosemeldungen ausgibt, z.B. zu beendeten und gelöschten Containern. Wenn Sie das Kontrollkästchen aktivieren, meldet Azure DevOps Services, dass im Verlauf des Release Fehler aufgetreten sind, obwohl alles wie gewünscht verlaufen ist.
+     >
 1. Speichern Sie diese neue Releasepipeline.
 
 

@@ -2,19 +2,19 @@
 title: Terraform mit Bereitstellungsslots für Azure-Anbieter
 description: Tutorial zur Verwendung von Terraform mit Bereitstellungsslots für Azure-Anbieter
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, virtueller Computer, Azure, Bereitstellungsslots
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 4/05/2018
-ms.openlocfilehash: 1564991ecfe29b1977837c2fdff4be7b3a3e1797
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 08e90a69791b0555a6497166f6008e8619f40704
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54074817"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57992240"
 ---
 # <a name="use-terraform-to-provision-infrastructure-with-azure-deployment-slots"></a>Verwenden von Terraform zur Bereitstellung einer Infrastruktur mit Azure-Bereitstellungsslots
 
@@ -26,11 +26,11 @@ Dieser Artikel enthält ein Beispiel für die Verwendung von Bereitstellungsslot
 
 - **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) erstellen, bevor Sie beginnen.
 
-- **GitHub-Konto:** Zum Forken und Verwenden des GitHub-Testrepositorys wird ein [GitHub](http://www.github.com)-Konto benötigt.
+- **GitHub-Konto:** Zum Forken und Verwenden des GitHub-Testrepositorys wird ein [GitHub](https://www.github.com)-Konto benötigt.
 
 ## <a name="create-and-apply-the-terraform-plan"></a>Erstellen und Anwenden des Terraform-Plans
 
-1. Navigieren Sie zum [Azure-Portal](http://portal.azure.com).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 
 1. Öffnen Sie [Azure Cloud Shell](/azure/cloud-shell/overview). Falls Sie zuvor noch keine Umgebung ausgewählt haben, wählen Sie **Bash** als Umgebung aus.
 

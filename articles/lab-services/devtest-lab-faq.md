@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 23066339ffcb0b8b3c7885ad24c6c3d136629ab2
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8b5c5f316ff2c3ada035736755c7898270c49dee
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700025"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551822"
 ---
 # <a name="azure-devtest-labs-faq"></a>Häufig gestellte Fragen zu Azure DevTest Labs
 Im Folgenden werden einige der am häufigsten gestellten Fragen zu Azure DevTest Labs beantwortet.
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 **Allgemein**
 ## <a name="what-if-my-question-isnt-answered-here"></a>Was kann ich tun, wenn meine Frage hier nicht beantwortet wird?
@@ -74,7 +76,7 @@ Da Bereiche hierarchisch sind, gelten die Berechtigungen, die einem Benutzer fü
 ## <a name="how-do-i-create-a-role-to-allow-users-to-perform-a-specific-task"></a>Wie erstelle ich eine bestimmte Rolle, um Benutzern das Ausführen einer einzelnen Aufgabe zu ermöglichen?
 Einen umfassenden Artikel zum Erstellen von benutzerdefinierten Rollen und Zuweisen von Berechtigungen zu einer Rolle finden Sie unter [Erteilen von Benutzerberechtigungen zu bestimmten Labrichtlinien](devtest-lab-grant-user-permissions-to-specific-lab-policies.md). Das folgende Beispielskript erstellt die Rolle *DevTest Labs Advanced User*, die über die Berechtigung zum Starten und Beenden alle VMs im Lab verfügt:
 
-    $policyRoleDef = Get-AzureRmRoleDefinition "DevTest Labs User"
+    $policyRoleDef = Get-AzRoleDefinition "DevTest Labs User"
     $policyRoleDef.Actions.Remove('Microsoft.DevTestLab/Environments/*')
     $policyRoleDef.Id = $null
     $policyRoleDef.Name = "DevTest Labs Advanced User"
@@ -83,7 +85,7 @@ Einen umfassenden Artikel zum Erstellen von benutzerdefinierten Rollen und Zuwei
     $policyRoleDef.AssignableScopes.Add("subscriptions/<subscription Id>")
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Start/action")
     $policyRoleDef.Actions.Add("Microsoft.DevTestLab/labs/virtualMachines/Stop/action")
-    $policyRoleDef = New-AzureRmRoleDefinition -Role $policyRoleDef  
+    $policyRoleDef = New-AzRoleDefinition -Role $policyRoleDef  
 
 
 **CI/CD-Integration und Automatisierung**
@@ -97,8 +99,8 @@ Wenn Sie Azure DevOps verwenden, können Sie Ihre Releasepipeline in DevTest Lab
 Die folgenden Blogbeiträge enthalten Anleitungen und Informationen zur Verwendung der Azure DevOps Services-Erweiterung:
 
 * [DevTest Labs und die Azure DevOps-Erweiterung](https://blogs.msdn.microsoft.com/devtestlab/2016/06/15/azure-devtest-labs-vsts-extension/)
-* [Bereitstellen einer neuen VM in einem vorhandenen DevTest Labs-Lab über Azure DevOps Services](http://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
-* [Verwenden der Azure DevOps Services-Releaseverwaltung für Continuous Deployments in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
+* [Bereitstellen einer neuen VM in einem vorhandenen DevTest Labs-Lab über Azure DevOps Services](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
+* [Verwenden der Azure DevOps Services-Releaseverwaltung für Continuous Deployments in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
 Für andere Continuous Integration(CI)/Continuous Delivery(CD)-Toolketten können Sie dieselben Szenarien erreichen, indem Sie [Azure Resource Manager-Vorlagen](https://aka.ms/dtlquickstarttemplate) mit [Azure PowerShell-Cmdlets](../azure-resource-manager/resource-group-template-deploy.md) und [.NET SDKs](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/) bereitstellen. Sie können auch [REST-APIs für DevTest Labs](https://aka.ms/dtlrestapis) zur Integration in Ihre Toolkette verwenden.  
 
@@ -160,24 +162,24 @@ Sie können VMs aus Ihrem Lab im Azure-Portal löschen. Mit einem PowerShell-Skr
     $labName = "<Enter lab name here>"
 
     # Sign in to your Azure account.
-    Connect-AzureRmAccount
+    Connect-AzAccount
 
     # Select the Azure subscription that has the lab. This step is optional
     # if you have only one subscription.
-    Select-AzureRmSubscription -SubscriptionId $subscriptionId
+    Select-AzSubscription -SubscriptionId $subscriptionId
 
     # Get the lab that has the VMs that you want to delete.
-    $lab = Get-AzureRmResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
+    $lab = Get-AzResource -ResourceId ('subscriptions/' + $subscriptionId + '/resourceGroups/' + $labResourceGroup + '/providers/Microsoft.DevTestLab/labs/' + $labName)
 
     # Get the VMs from that lab.
-    $labVMs = Get-AzureRmResource | Where-Object {
+    $labVMs = Get-AzResource | Where-Object {
               $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
               $_.Name -like "$($lab.Name)/*"}
 
     # Delete the VMs.
     foreach($labVM in $labVMs)
     {
-        Remove-AzureRmResource -ResourceId $labVM.ResourceId -Force
+        Remove-AzResource -ResourceId $labVM.ResourceId -Force
     }
 
 **Artefakte**

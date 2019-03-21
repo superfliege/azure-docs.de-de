@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2bba14e37e811c941c9709eef6b6d8ffd8322643
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3772f42b1216cfb26d66b1d68fcb9e59fd8652d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167132"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107541"
 ---
 # <a name="what-is-password-writeback"></a>Was ist Kennwortrückschreiben?
 
@@ -96,11 +96,11 @@ Wenn Verbundbenutzer oder Benutzer mit Kennworthashsynchronisierung versuchen, i
    >
 
 1. Wenn bei diesem Vorgang ein Fehler auftritt, wird der Benutzer per Fehlermeldung dazu aufgefordert, es erneut zu versuchen. Der Vorgang kann aus folgenden Gründen fehlschlagen:
-   * Der Dienst war nicht verfügbar.
-   * Das ausgewählte Kennwort entsprach nicht den Richtlinien der Organisation.
-   * Der Benutzer wurde nicht im lokalen Active Directory gefunden.
+    * Der Dienst war nicht verfügbar.
+    * Das ausgewählte Kennwort entsprach nicht den Richtlinien der Organisation.
+    * Der Benutzer wurde nicht im lokalen Active Directory gefunden.
 
-    Die Fehlermeldungen geben den Benutzern eine Anleitung, damit sie versuchen können, die Fehler ohne Eingriff des Administrators zu beheben.
+      Die Fehlermeldungen geben den Benutzern eine Anleitung, damit sie versuchen können, die Fehler ohne Eingriff des Administrators zu beheben.
 
 ## <a name="password-writeback-security"></a>Sicherheit für das Kennwortrückschreiben
 

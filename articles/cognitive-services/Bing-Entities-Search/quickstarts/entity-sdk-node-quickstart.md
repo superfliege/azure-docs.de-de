@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: v-gedod
-ms.openlocfilehash: 04ec95e891b4e9333949a3a0f40dcc9df88e49e7
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 015a2d344b066bd7b65c3228a2795c3395793f2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55865854"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097029"
 ---
 # <a name="quickstart-send-a-search-request-with-the-bing-entity-search-sdk-for-nodejs"></a>Schnellstart: Senden einer Suchanforderung mit dem Bing-Entitätssuche-SDK für Node.js
 
@@ -53,7 +53,7 @@ Installation des Bing-Entitätssuche-SDK:
 
 ## <a name="send-a-request-and-receive-a-response"></a>Senden einer Anforderung und Erhalten einer Antwort
 
-2. Senden Sie mit `entitiesOperations.search()` eine Suchanforderung für Entitäten. Nach dem Empfang einer Antwort geben Sie das `queryContext`-Element, die Anzahl der zurückgegebenen Ergebnisse, und die Beschreibung des ersten Ergebnisses aus.
+1. Senden Sie mit `entitiesOperations.search()` eine Suchanforderung für Entitäten. Nach dem Empfang einer Antwort geben Sie das `queryContext`-Element, die Anzahl der zurückgegebenen Ergebnisse, und die Beschreibung des ersten Ergebnisses aus.
       
     ```javascript
     entitySearchApiClient.entitiesOperations.search('seahawks').then((result) => {

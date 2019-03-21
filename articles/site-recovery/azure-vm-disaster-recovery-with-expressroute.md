@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: 16b4031c0242d79b6d866d612a4d4f594dc608fa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 4622809f0e261236d6753daf5bb2e00ff814c849
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821948"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087872"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>Integrieren von Azure ExpressRoute mit Notfallwiederherstellung für virtuelle Azure-Computer
 
@@ -91,11 +91,11 @@ Die Workloads herkömmlicher Enterprise-Bereitstellungen werden normalerweise au
     - **Quell-VNET 2:** 10.2.0.0/24.
     - Jedes virtuelle Spoke-Netzwerk ist mit **Hub-vNet** verbunden.
 - **Hub-vNet**. Es gibt ein **Quell-Hub-VNET**: 10.10.10.0/24.
-    - Dieses Hub-vNet fungiert als Gatekeeper.
-    - Die gesamte Kommunikation über mehrere Subnetze hinweg erfolgt über diesen Hub.
- - ****Hub-vNet-Subnetze**. Das Hub-vNet verfügt über zwei Subnetze:
-     - **NVA-Subnetz:** 10.10.10.0/25. Dieses Subnetz enthält ein virtuelles Netzwerkgerät (NVA, 10.10.10.10).
-     - **Gatewaysubnetz**: 10.10.10.128/25. Dieses Subnetz enthält ein ExpressRoute-Gateway mit einer ExpressRoute-Verbindung. Diese dient dem Routing an den lokalen Standort über eine private Peering-Routingdomäne.
+  - Dieses Hub-vNet fungiert als Gatekeeper.
+  - Die gesamte Kommunikation über mehrere Subnetze hinweg erfolgt über diesen Hub.
+    - ****Hub-vNet-Subnetze**. Das Hub-vNet verfügt über zwei Subnetze:
+    - **NVA-Subnetz:** 10.10.10.0/25. Dieses Subnetz enthält ein virtuelles Netzwerkgerät (NVA, 10.10.10.10).
+    - **Gatewaysubnetz**: 10.10.10.128/25. Dieses Subnetz enthält ein ExpressRoute-Gateway mit einer ExpressRoute-Verbindung. Diese dient dem Routing an den lokalen Standort über eine private Peering-Routingdomäne.
 - Das lokale Datencenter besitzt eine ExpressRoute-Leitungsverbindung über einen Partner-Edge in Hongkong.
 - Das gesamte Routing wird mittels Azure-Routingtabellen (UDR) gesteuert.
 - Der gesamte ausgehende Datenverkehr zwischen VNets oder zum lokalen Datencenter wird über die NVA weitergeleitet.

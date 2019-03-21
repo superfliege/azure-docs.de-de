@@ -12,12 +12,12 @@ ms.author: jopapa
 ms.custom: seodec18
 ms.reviewer: sngun
 Customer intent: As a developer, I want to build a Node.js application, so that I can manage the data stored in Cosmos DB.
-ms.openlocfilehash: 4e7aa9931ffb268f787882729341fbe860255f70
-ms.sourcegitcommit: 415742227ba5c3b089f7909aa16e0d8d5418f7fd
+ms.openlocfilehash: c8cab3c723b7e507b0f3b05b933cca9e2c24fb39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55767858"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075474"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Erstellen einer Angular-App mit der Azure Cosmos DB-API für MongoDB: Verwenden von Mongoose zum Herstellen einer Verbindung mit Cosmos DB
 
@@ -56,35 +56,35 @@ Mongoose ist eine ODM-Bibliothek (Object Data Modeling, Objektdatenmodellierung)
 
 1. Kopieren Sie den folgenden Code in die Datei **mongo.js**. Dieser Code bietet die folgenden Funktionen:
 
-    * Er erfordert Mongoose.
-    * Er setzt die Mongo-Zusage außer Kraft, um die grundlegende Zusage zu verwenden, die in ES6/ES2015 und höhere Versionen integriert ist.
-    * Er ruft eine Umgebungsdatei auf, mit der Sie bestimmte Aspekte abhängig von der aktuellen Phase (Staging, Produktion oder Entwicklung) einrichten können. Sie erstellen diese Datei im nächsten Abschnitt.
-    * Er enthält die MongoDB-Verbindungszeichenfolge, die in der Umgebungsdatei festgelegt wird.
-    * Er erstellt eine connect-Funktion, die Mongoose aufruft.
+   * Er erfordert Mongoose.
+   * Er setzt die Mongo-Zusage außer Kraft, um die grundlegende Zusage zu verwenden, die in ES6/ES2015 und höhere Versionen integriert ist.
+   * Er ruft eine Umgebungsdatei auf, mit der Sie bestimmte Aspekte abhängig von der aktuellen Phase (Staging, Produktion oder Entwicklung) einrichten können. Sie erstellen diese Datei im nächsten Abschnitt.
+   * Er enthält die MongoDB-Verbindungszeichenfolge, die in der Umgebungsdatei festgelegt wird.
+   * Er erstellt eine connect-Funktion, die Mongoose aufruft.
 
-    ```javascript
-    const mongoose = require('mongoose');
-    /**
+     ```javascript
+     const mongoose = require('mongoose');
+     /**
      * Set to Node.js native promises
-     * Per http://mongoosejs.com/docs/promises.html
+     * Per https://mongoosejs.com/docs/promises.html
      */
-    mongoose.Promise = global.Promise;
+     mongoose.Promise = global.Promise;
 
-    const env = require('./env/environment');
+     const env = require('./env/environment');
 
-    // eslint-disable-next-line max-len
-    const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
+     // eslint-disable-next-line max-len
+     const mongoUri = `mongodb://${env.accountName}:${env.key}@${env.accountName}.documents.azure.com:${env.port}/${env.databaseName}?ssl=true`;
 
-    function connect() {
+     function connect() {
      mongoose.set('debug', true);
      return mongoose.connect(mongoUri, { useMongoClient: true });
-    }
+     }
 
-    module.exports = {
-      connect,
-      mongoose
-    };
-    ```
+     module.exports = {
+     connect,
+     mongoose
+     };
+     ```
     
 1. Erstellen Sie im Explorer-Bereich unter **server** einen Ordner mit dem Namen **environment**. Erstellen Sie im Ordner **environment** eine Datei namens **environment.js**.
 

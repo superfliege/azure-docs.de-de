@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 2e935425-3923-4a33-89b2-0f2100b0c0c4
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 3bd7f895e3cc30c4c5a0496977d65d68c220931f
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: f63851359a19455ab0f46f66a801a679ee2c3bfe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084501"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079689"
 ---
 # <a name="quickstart-migrate-a-local-jupyter-notebook"></a>Schnellstart: Migrieren eines lokalen Jupyter Notebooks
 
@@ -50,13 +50,13 @@ Dieser Schnellstart veranschaulicht den Migrationsprozesss für ein Notebook von
 
    (Nur zur Erinnerung, falls sich Ihr Notebook in einem GitHub-Repository befindet, führen Sie stattdessen die Schritte unter [Schnellstart: Klonen eines Notebooks](quickstart-clone-jupyter-notebook.md) aus.)
 
-    - Wenn Sie **Von Computer** verwenden, ziehen Sie Ihre *.ipynb*-Dateien auf das Popupfenster, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen**, navigieren Sie dann zu den zu importierenden Dateien, und wählen Sie sie aus. Wählen Sie dann die Option **Hochladen**. Die hochgeladenen Dateien erhalten die gleichen Namen wie die lokalen Dateien. (Die Inhalte von *.ipynb_checkpoints*-Ordnern brauchen nicht hochgeladen zu werden.)
+   - Wenn Sie **Von Computer** verwenden, ziehen Sie Ihre *.ipynb*-Dateien auf das Popupfenster, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen**, navigieren Sie dann zu den zu importierenden Dateien, und wählen Sie sie aus. Wählen Sie dann die Option **Hochladen**. Die hochgeladenen Dateien erhalten die gleichen Namen wie die lokalen Dateien. (Die Inhalte von *.ipynb_checkpoints*-Ordnern brauchen nicht hochgeladen zu werden.)
 
-    ![Popupfenster „Vom Computer hochladen“](media/quickstarts/upload-from-computer-popup.png)
+     ![Popupfenster „Vom Computer hochladen“](media/quickstarts/upload-from-computer-popup.png)
 
-    - Wenn Sie **Von URL** verwenden, geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** ein. Wählen Sie dann die Option **Hochladen**. Wenn Sie über mehrere Dateien mit separaten URLs verfügen, verwenden Sie den Befehl **+ Datei hinzufügen**, um die erste eingegebene URL zu überprüfen; anschließend stellt das Popup neue Felder für eine weitere Datei zur Verfügung.
+   - Wenn Sie **Von URL** verwenden, geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** ein. Wählen Sie dann die Option **Hochladen**. Wenn Sie über mehrere Dateien mit separaten URLs verfügen, verwenden Sie den Befehl **+ Datei hinzufügen**, um die erste eingegebene URL zu überprüfen; anschließend stellt das Popup neue Felder für eine weitere Datei zur Verfügung.
 
-    ![Popup „Von URL hochladen“](media/quickstarts/upload-from-url-popup.png)
+     ![Popup „Von URL hochladen“](media/quickstarts/upload-from-url-popup.png)
 
 1. Öffnen Sie Ihr neu hochgeladenes Notebook, und führen Sie es aus, um Inhalt und Betrieb zu prüfen. Wenn Sie fertig sind, wählen Sie **Datei** > **Beenden und schließen** aus, um das Notebook zu schließen.
 

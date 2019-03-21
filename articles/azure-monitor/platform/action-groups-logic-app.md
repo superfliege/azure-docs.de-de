@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 207d1f7f5eb4db4203f2595a06f943e8ae69881e
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: e69158a6ee4d8415f52cf458c028cab56f481d8b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121127"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Auslösen komplexer Aktionen mit Azure Monitor-Warnungen
 
@@ -275,19 +275,19 @@ Der Prozess zum Erstellen einer Metrikwarnung ähnelt abgesehen von ein paar Än
 - Die Schritte 9 und 10 sind identisch.
 - Verwenden Sie für die Schritte 11 bis 14 folgenden Prozess:
 
-   1. Wählen Sie **+** **Neuer Schritt** und anschließend **Bedingung hinzufügen** aus. Legen Sie die folgenden Bedingungen fest, sodass die Logik-App nur ausgeführt wird, wenn die Eingabedaten den folgenden Werten entsprechen. Wenn Sie den Versionswert in das Textfeld eingeben, setzen Sie ihn in Anführungszeichen ("2.0"), um sicherzustellen, dass er als Zeichenfolge und nicht als numerischer Typ ausgewertet wird.  Das System zeigt die Anführungszeichen nicht an, wenn Sie zur Seite zurückzukehren, aber der zugrunde liegende Code behält den String-Datentyp bei. 
-       - `schemaId == AzureMonitorMetricAlert`
-       - `version == "2.0"`
+  1. Wählen Sie **+** **Neuer Schritt** und anschließend **Bedingung hinzufügen** aus. Legen Sie die folgenden Bedingungen fest, sodass die Logik-App nur ausgeführt wird, wenn die Eingabedaten den folgenden Werten entsprechen. Wenn Sie den Versionswert in das Textfeld eingeben, setzen Sie ihn in Anführungszeichen ("2.0"), um sicherzustellen, dass er als Zeichenfolge und nicht als numerischer Typ ausgewertet wird.  Das System zeigt die Anführungszeichen nicht an, wenn Sie zur Seite zurückzukehren, aber der zugrunde liegende Code behält den String-Datentyp bei. 
+     - `schemaId == AzureMonitorMetricAlert`
+     - `version == "2.0"`
        
        ![„Bedingung Metrikwarnungnutzlast“](media/action-groups-logic-app/metric-alert-payload-condition.png "Bedingung Metrikwarnungnutzlast")
 
-   1. Fügen Sie in der **If true**-Bedingung eine **For each**-Schleife und die Microsoft Teams-Aktion hinzu. Definieren Sie die Nachricht unter Verwendung einer Kombination von HTML und dynamischem Inhalt.
+  1. Fügen Sie in der **If true**-Bedingung eine **For each**-Schleife und die Microsoft Teams-Aktion hinzu. Definieren Sie die Nachricht unter Verwendung einer Kombination von HTML und dynamischem Inhalt.
 
-       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist“](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist")
+      ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist“](media/action-groups-logic-app/metric-alert-true-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung TRUE ist")
 
-   1. Definieren Sie in der **If false**-Bedingung eine Microsoft Teams-Aktion, die kommuniziert, dass die Metrikwarnung nicht mit den Erwartungen der Logik-App übereinstimmt. Schließen Sie die JSON-Nutzlast ein. Beachten Sie, wie im `json()`-Ausdruck auf den dynamischen Inhalt `triggerBody` verwiesen wird.
+  1. Definieren Sie in der **If false**-Bedingung eine Microsoft Teams-Aktion, die kommuniziert, dass die Metrikwarnung nicht mit den Erwartungen der Logik-App übereinstimmt. Schließen Sie die JSON-Nutzlast ein. Beachten Sie, wie im `json()`-Ausdruck auf den dynamischen Inhalt `triggerBody` verwiesen wird.
 
-       ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist“](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist")
+      ![„Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist“](media/action-groups-logic-app/metric-alert-false-condition-post-action.png "Veröffentlichungsaktion Metrikwarnung, wenn Bedingung FALSE ist")
 
 - Schritt 15 ist identisch. Befolgen Sie die Anweisungen zum Speichern Ihrer Logik-App und Aktualisieren Ihrer Aktionsgruppe.
 

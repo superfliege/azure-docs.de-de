@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: nitinme
-ms.openlocfilehash: 0d9ddbeae3a666d3b3cf56f80ae633a7ecaa650a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1b18bd5aae398d2ec942120af5d96943636c346c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294032"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101110"
 ---
 # <a name="stream-data-from-azure-storage-blob-into-azure-data-lake-storage-gen1-using-azure-stream-analytics"></a>Streamen von Daten aus Azure Storage Blob in Azure Data Lake Storage Gen1 mit Azure Stream Analytics
 In diesem Artikel erfahren Sie, wie Sie Azure Data Lake Storage Gen1 als Ausgabe für einen Azure Stream Analytics-Auftrag verwenden. Dieser Artikel beschreibt ein einfaches Szenario, bei dem Daten aus einem Azure Storage-Blob (Eingabe) gelesen und in Data Lake Storage Gen1 (Ausgabe) geschrieben werden.
@@ -54,17 +54,17 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     ![Hinzufügen einer Eingabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.input.2.png "Hinzufügen einer Eingabe zu Ihrem Auftrag")
 
-    * Geben Sie unter **Eingabealias** einen eindeutigen Namen für diese Auftragseingabe ein.
-    * Wählen Sie als **Quelltyp** die Option **Datenstrom** aus.
-    * Wählen Sie als **Quelle** die Option **Blobspeicher** aus.
-    * Wählen Sie unter **Abonnement** die Option **Blobspeicher aus aktuellem Abonnement verwenden** aus.
-    * Wählen Sie als **Speicherkonto** das Speicherkonto aus, das Sie unter „Voraussetzungen“ erstellt haben. 
-    * Wählen Sie als **Container** den Container aus, den Sie im ausgewählten Speicherkonto erstellt haben.
-    * Wählen Sie unter **Ereignisserialisierungsformat** die Option **CSV** aus.
-    * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
-    * Wählen Sie als **Codierung** die Option **UTF-8** aus.
+   * Geben Sie unter **Eingabealias** einen eindeutigen Namen für diese Auftragseingabe ein.
+   * Wählen Sie als **Quelltyp** die Option **Datenstrom** aus.
+   * Wählen Sie als **Quelle** die Option **Blobspeicher** aus.
+   * Wählen Sie unter **Abonnement** die Option **Blobspeicher aus aktuellem Abonnement verwenden** aus.
+   * Wählen Sie als **Speicherkonto** das Speicherkonto aus, das Sie unter „Voraussetzungen“ erstellt haben. 
+   * Wählen Sie als **Container** den Container aus, den Sie im ausgewählten Speicherkonto erstellt haben.
+   * Wählen Sie unter **Ereignisserialisierungsformat** die Option **CSV** aus.
+   * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
+   * Wählen Sie als **Codierung** die Option **UTF-8** aus.
 
-    Klicken Sie auf **Create**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
+     Klicken Sie auf **Create**. Das Portal fügt die Eingabe hinzu und testet die Verbindung.
 
 
 ## <a name="create-a-data-lake-storage-gen1-output-for-the-job"></a>Erstellen einer Data Lake Storage Gen1-Ausgabe für den Auftrag
@@ -84,15 +84,15 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     ![Hinzufügen einer Ausgabe zu Ihrem Auftrag](./media/data-lake-store-stream-analytics/create.output.3.png "Hinzufügen einer Ausgabe zu Ihrem Auftrag")
 
-    * Wählen Sie unter **Kontoname** das bereits erstellte Data Lake Storage Gen1-Konto aus, an das die Auftragsausgabe gesendet werden soll.
-    * Geben Sie unter **Pfadpräfixmuster** den Dateipfad ein, in den Ihre Dateien im angegebenen Data Lake Storage Gen1-Konto geschrieben werden.
-    * Wenn Sie ein Datumstoken im Pfadpräfix verwendet wird, können Sie das **Datumsformat** auswählen, mit dem Ihre Dateien sortiert werden.
-    * Wenn Sie ein Uhrzeittoken im Pfadpräfix verwendet wird, können Sie das **Uhrzeitformat** auswählen, mit dem Ihre Dateien sortiert werden.
-    * Wählen Sie unter **Ereignisserialisierungsformat** die Option **CSV** aus.
-    * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
-    * Wählen Sie als **Codierung** die Option **UTF-8** aus.
+   * Wählen Sie unter **Kontoname** das bereits erstellte Data Lake Storage Gen1-Konto aus, an das die Auftragsausgabe gesendet werden soll.
+   * Geben Sie unter **Pfadpräfixmuster** den Dateipfad ein, in den Ihre Dateien im angegebenen Data Lake Storage Gen1-Konto geschrieben werden.
+   * Wenn Sie ein Datumstoken im Pfadpräfix verwendet wird, können Sie das **Datumsformat** auswählen, mit dem Ihre Dateien sortiert werden.
+   * Wenn Sie ein Uhrzeittoken im Pfadpräfix verwendet wird, können Sie das **Uhrzeitformat** auswählen, mit dem Ihre Dateien sortiert werden.
+   * Wählen Sie unter **Ereignisserialisierungsformat** die Option **CSV** aus.
+   * Wählen Sie als **Trennzeichen** die Option **Tabstopp** aus.
+   * Wählen Sie als **Codierung** die Option **UTF-8** aus.
     
-    Klicken Sie auf **Create**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
+     Klicken Sie auf **Create**. Das Portal fügt die Ausgabe hinzu und testet die Verbindung.
     
 ## <a name="run-the-stream-analytics-job"></a>Ausführen des Stream Analytics-Auftrags
 
@@ -106,7 +106,7 @@ Erstellen Sie zunächst einen Stream Analytics-Auftrag, der eine Eingabequelle u
 
     Klicken Sie auf **Starten**, um den Auftrag zu starten. Es kann einige Minuten dauern, bis der Auftrag startet.
 
-3. Um den Auftrag zum Abrufen der Daten aus dem Blob auszulösen, kopieren Sie eine Beispieldatendatei in den Blobcontainer. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Für dieses Tutorial kopieren wir die Datei **vehicle1_09142014.csv**. Sie können verschiedene Clients verwenden, z.B. den [Azure Storage-Explorer](http://storageexplorer.com/), um Daten in einen Blobcontainer hochzuladen.
+3. Um den Auftrag zum Abrufen der Daten aus dem Blob auszulösen, kopieren Sie eine Beispieldatendatei in den Blobcontainer. Eine Beispieldatendatei finden Sie im [Azure Data Lake Git-Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt). Für dieses Tutorial kopieren wir die Datei **vehicle1_09142014.csv**. Sie können verschiedene Clients verwenden, z.B. den [Azure Storage-Explorer](https://storageexplorer.com/), um Daten in einen Blobcontainer hochzuladen.
 
 4. Auf der Registerkarte **Übersicht** können Sie unter **Überwachung** sehen, wie die Daten verarbeitet wurden.
 

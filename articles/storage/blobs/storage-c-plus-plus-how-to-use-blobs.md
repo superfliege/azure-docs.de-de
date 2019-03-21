@@ -8,21 +8,21 @@ ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: a9b7d15bebdef40c983eaf4d5eee6953b5a10994
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d86b2c71515900405b0e7714d2c36cd8e4cbc7fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55236937"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993229"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>Verwenden des Blob-Speichers mit C++
 
-In diesem Leitfaden wird die Durchführung häufiger Szenarien mit Azure Blob Storage demonstriert. Die Beispiele veranschaulichen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](http://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück.   
+In diesem Leitfaden wird die Durchführung häufiger Szenarien mit Azure Blob Storage demonstriert. Die Beispiele veranschaulichen das Hochladen, Auflisten, Herunterladen und Löschen von Blobs. Die Beispiele sind in C++ geschrieben und greifen auf die [Azure-Speicherclientbibliothek für C++](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)zurück.   
 
 Weitere Informationen zum Blob Storage finden Sie unter [Einführung in Azure Blob Storage](storage-blobs-introduction.md).
 
 > [!NOTE]
-> Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Microsoft empfiehlt die neueste Version der Speicherclientbibliothek für C++, die über [NuGet](http://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp) verfügbar ist.
+> Diese Anleitung gilt für die Azure Storage-Clientbibliothek für C++ in der Version 1.0.0 und höher. Microsoft empfiehlt die neueste Version der Speicherclientbibliothek für C++, die über [NuGet](https://www.nuget.org/packages/wastorage) oder [GitHub](https://github.com/Azure/azure-storage-cpp) verfügbar ist.
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
@@ -34,7 +34,7 @@ Dafür müssen Sie die Azure-Speicherclientbibliothek für C++ installieren und 
 Zum Installieren der Azure-Speicherclientbibliothek für C++ können Sie die folgenden Methoden verwenden:
 
 * **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Infodatei zur Azure Storage-Clientbibliothek für C++).  
-* **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:  
+* **Windows:** Klicken Sie in Visual Studio auf **Extras > NuGet-Paket-Manager > Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:  
   
      Installationspaket „wastorage“
 
@@ -258,7 +258,7 @@ Nachdem Sie sich nun mit den Grundlagen von Blob-Speichern vertraut gemacht habe
 * [Verwenden des Warteschlangenspeichers in C++](../storage-c-plus-plus-how-to-use-queues.md)
 * [Verwenden des Tabellenspeichers mit C++](../../cosmos-db/table-storage-how-to-use-c-plus.md)
 * [Auflisten von Azure Storage-Ressourcen in C++](../storage-c-plus-plus-enumeration.md)
-* [Referenz zur Speicherclientbibliothek für C++](http://azure.github.io/azure-storage-cpp)
+* [Referenz zur Speicherclientbibliothek für C++](https://azure.github.io/azure-storage-cpp)
 * [Azure Storage-Dokumentation](https://azure.microsoft.com/documentation/services/storage/)
 * [Übertragen von Daten mit dem Befehlszeilenprogramm AzCopy](../storage-use-azcopy.md)
 

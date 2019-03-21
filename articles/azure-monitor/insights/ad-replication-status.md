@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 3b7aa932d24b7879ee3f46419afa2327ee48b403
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56000992"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120804"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Überwachen des Active Directory-Replikationsstatus mit Azure Monitor
 
@@ -45,8 +45,8 @@ Wenn Sie Ihre Domänencontroller nicht direkt mit Azure Monitor verbinden möcht
 
    > [!NOTE]
    > Diese Änderungen werden erst wirksam, wenn Sie den Microsoft Monitoring Agent-Dienst (HealthService.exe) neu starten.
-### <a name="install-solution"></a>Installieren der Lösung
-Fügen Sie mithilfe des unter [Installieren einer Überwachungslösung](solutions.md#install-a-monitoring-solution) beschriebenen Prozesses die **Active Directory-Replikationsstatus**-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu. Es ist keine weitere Konfiguration erforderlich.
+   > ### <a name="install-solution"></a>Installieren der Lösung
+   > Fügen Sie mithilfe des unter [Installieren einer Überwachungslösung](solutions.md#install-a-monitoring-solution) beschriebenen Prozesses die **Active Directory-Replikationsstatus**-Lösung Ihrem Log Analytics-Arbeitsbereich hinzu. Es ist keine weitere Konfiguration erforderlich.
 
 
 ## <a name="ad-replication-status-data-collection-details"></a>Details der AD-Replikationsstatus-Datensammlung

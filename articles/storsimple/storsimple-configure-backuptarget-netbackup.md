@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
-ms.openlocfilehash: 361ab36d3029dbc00e8d1e53ef9f9af42be3e1eb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255838"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994478"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>StorSimple als Sicherungsziel mit NetBackup
 
@@ -94,6 +94,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 |------------------------|---------------|-----------------|
 | Lokale Speicherkapazität | &lt; 10 TiB\*  | &lt; 20 TiB\*  |
 | Cloudspeicherkapazität | &gt; 200 TiB\* | &gt; 500 TiB\* |
+
 \* Bei der Speichergröße wird von nicht deduplizierten und nicht komprimierten Daten ausgegangen.
 
 **StorSimple-Kapazitäten für primäre und sekundäre Sicherungen**
@@ -101,7 +102,7 @@ Die folgenden Tabellen enthalten Informationen zu verschiedenen Gerätemodellen 
 | Sicherungsszenario  | Lokale Speicherkapazität  | Cloudspeicherkapazität  |
 |---|---|---|
 | Primäre Sicherung  | Aktuelle Sicherungen im lokalen Speicher für eine schnelle Wiederherstellung zum Erfüllen der RPO-Vorgabe (Recovery Point Objective) | Sicherungsverlauf (RPO) passt in Cloudkapazität |
-| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | N/V  |
+| Sekundäre Sicherung | Sekundäre Kopie der Sicherungsdaten kann in Cloudkapazität gespeichert werden  | –  |
 
 ## <a name="storsimple-as-a-primary-backup-target"></a>StorSimple als primäres Sicherungsziel
 
@@ -207,16 +208,16 @@ Richten Sie Ihre Lösung gemäß den Leitlinien in den folgenden Abschnitten ein
 
 ### <a name="operating-system-best-practices"></a>Bewährte Methoden für das Betriebssystem
 
--   Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
--   Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
--   Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
--   Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
--   Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
-    - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
-    - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Windows-PowerShell als Administrator aus, und geben Sie Folgendes ein:
-      ```powershell
-      psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
-      ```
+- Deaktivieren Sie die Windows Server-Verschlüsselung und -Deduplizierung für das NTFS-Dateisystem.
+- Deaktivieren Sie die Windows Server-Defragmentierung auf den StorSimple-Volumes.
+- Deaktivieren Sie die Windows Server-Indizierung auf den StorSimple-Volumes.
+- Führen Sie einen Virenscan auf dem Quellhost durch (nicht auf den StorSimple-Volumes).
+- Deaktivieren Sie die standardmäßige [Windows Server-Wartung](https://msdn.microsoft.com/library/windows/desktop/hh848037.aspx) im Task-Manager. Wählen Sie dazu eine der folgenden Methoden:
+  - Deaktivieren Sie die Wartungskonfiguration in der Windows-Aufgabenplanung.
+  - Laden Sie [PsExec](https://technet.microsoft.com/sysinternals/bb897553.aspx) von Windows Sysinternals herunter. Nachdem Sie PsExec heruntergeladen haben, führen Sie Windows-PowerShell als Administrator aus, und geben Sie Folgendes ein:
+    ```powershell
+    psexec \\%computername% -s schtasks /change /tn “MicrosoftWindowsTaskSchedulerMaintenance Configurator" /disable
+    ```
 
 ### <a name="storsimple-best-practices"></a>Bewährte Methoden für StorSimple
 
@@ -257,6 +258,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung |   | 38 |   |
 | Zusätzliches Kontingent  | 4  |   | 42 (GFS-Anforderung gesamt)  |
+
 \* Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um die Anforderungen Ihrer Sicherungsrichtlinie zu erfüllen.
 
 ## <a name="set-up-netbackup-storage"></a>Einrichten von NetBackup-Speicher
@@ -292,7 +294,7 @@ Erstellen Sie basierend auf diesen Annahmen ein mehrstufiges StorSimple-Volume m
 
 In der folgenden Abbildung wird die Zuordnung eines typischen Volumes zu einem Sicherungsauftrag gezeigt. In diesem Fall werden alle wöchentlichen Sicherungen dem Datenträger mit der vollständigen Sicherung von Samstag und die inkrementellen Sicherungen dem Datenträger mit den inkrementellen Sicherungen von Montag bis Freitag zugeordnet. Alle Sicherungen und Wiederherstellungen erfolgen mithilfe eines mehrstufigen StorSimple-Volumes.
 
-![Logisches Diagramm der Konfiguration des primären Sicherungsziels ](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
+![Logisches Diagramm der Konfiguration des primären Sicherungsziels](./media/storsimple-configure-backup-target-using-netbackup/primarybackuptargetdiagram.png)
 
 ### <a name="storsimple-as-a-primary-backup-target-gfs-schedule-example"></a>StorSimple als primäres Sicherungsziel: Beispiel eines GFS-Zeitplans
 
@@ -302,7 +304,7 @@ Hier sehen Sie ein Beispiel für einen GFS-Rotationszeitplan für „Vier Wochen
 |---|---|---|
 | Wöchentlich (Woche 1 - 4) | Samstag | Montag - Freitag |
 | Monatlich  | Samstag  |   |
-| Jährlich | Samstag  |   |   |
+| Jährlich | Samstag  |   |
 
 ## <a name="assigning-storsimple-volumes-to-a-netbackup-backup-job"></a>Zuweisen von StorSimple-Volumes zu einem NetBackup-Sicherungsauftrag
 
@@ -310,69 +312,69 @@ Bei der folgenden Sequenz wird vorausgesetzt, dass NetBackup und der Zielhost ge
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-backup-job"></a>So weisen Sie StorSimple-Volumes einem NetBackup-Sicherungsauftrag zu
 
-1.  Wählen Sie in der NetBackup-Verwaltungskonsole **NetBackup Management** (NetBackup-Verwaltung) aus. Klicken Sie mit der rechten Maustaste auf **Policies** (Richtlinien), und wählen Sie dann **New Policy** (Neue Richtlinie) aus.
+1. Wählen Sie in der NetBackup-Verwaltungskonsole **NetBackup Management** (NetBackup-Verwaltung) aus. Klicken Sie mit der rechten Maustaste auf **Policies** (Richtlinien), und wählen Sie dann **New Policy** (Neue Richtlinie) aus.
 
-    ![NetBackup-Verwaltungskonsole, Erstellen einer neuen Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
+   ![NetBackup-Verwaltungskonsole, Erstellen einer neuen Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage6.png)
 
-2.  Geben Sie im Dialogfeld **Add a New Policy** (Neue Richtlinie hinzufügen) einen neuen Namen für die Richtlinie ein, und aktivieren Sie dann das Kontrollkästchen **Use Policy Configuration Wizard** (Assistent für die Konfiguration von Richtlinien verwenden). Klicken Sie auf **OK**.
+2. Geben Sie im Dialogfeld **Add a New Policy** (Neue Richtlinie hinzufügen) einen neuen Namen für die Richtlinie ein, und aktivieren Sie dann das Kontrollkästchen **Use Policy Configuration Wizard** (Assistent für die Konfiguration von Richtlinien verwenden). Klicken Sie auf **OK**.
 
-    ![NetBackup-Verwaltungskonsole, Dialogfeld „Neue Richtlinie hinzufügen“](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
+   ![NetBackup-Verwaltungskonsole, Dialogfeld „Neue Richtlinie hinzufügen“](./media/storsimple-configure-backup-target-using-netbackup/nbimage7.png)
 
-3.  Wählen Sie im Backup Policy Configuration Wizard (Assistent für die Konfiguration von Sicherungsrichtlinien) den gewünschten Sicherungstyp aus, und klicken Sie dann auf **Next** (Weiter).
+3. Wählen Sie im Backup Policy Configuration Wizard (Assistent für die Konfiguration von Sicherungsrichtlinien) den gewünschten Sicherungstyp aus, und klicken Sie dann auf **Next** (Weiter).
 
-    ![NetBackup-Verwaltungskonsole, Sicherungstyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
+   ![NetBackup-Verwaltungskonsole, Sicherungstyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage8.png)
 
-4.  Wählen Sie zum Festlegen des Richtlinientyps **Standard** aus, und klicken Sie dann auf **Next** (Weiter).
+4. Wählen Sie zum Festlegen des Richtlinientyps **Standard** aus, und klicken Sie dann auf **Next** (Weiter).
 
-    ![NetBackup-Verwaltungskonsole, Richtlinientyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
+   ![NetBackup-Verwaltungskonsole, Richtlinientyp auswählen](./media/storsimple-configure-backup-target-using-netbackup/nbimage9.png)
 
-5.  Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Klicken Sie auf **Weiter**.
+5. Wählen Sie Ihren Host aus, aktivieren Sie das Kontrollkästchen **Detect client operating system** (Clientbetriebssystem ermitteln), und klicken Sie dann auf **Add** (Hinzufügen). Klicken Sie auf **Weiter**.
 
-    ![NetBackup-Verwaltungskonsole, Clients in einer neuen Richtlinie auflisten](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
+   ![NetBackup-Verwaltungskonsole, Clients in einer neuen Richtlinie auflisten](./media/storsimple-configure-backup-target-using-netbackup/nbimage10.png)
 
-6.  Wählen Sie die Laufwerke aus, die Sie sichern möchten.
+6. Wählen Sie die Laufwerke aus, die Sie sichern möchten.
 
-    ![NetBackup-Verwaltungskonsole, Sicherungsoptionen für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
+   ![NetBackup-Verwaltungskonsole, Sicherungsoptionen für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage11.png)
 
-7.  Wählen Sie Werte für die Häufigkeit und Aufbewahrungsdauer, die Ihre Anforderungen an die Sicherungsrotation erfüllen.
+7. Wählen Sie Werte für die Häufigkeit und Aufbewahrungsdauer, die Ihre Anforderungen an die Sicherungsrotation erfüllen.
 
-    ![NetBackup-Verwaltungskonsole, Sicherungshäufigkeit und -rotation für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
+   ![NetBackup-Verwaltungskonsole, Sicherungshäufigkeit und -rotation für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage12.png)
 
-8.  Klicken Sie auf **Next** > **Next** > **Finish** (Weiter>Weiter>Fertig stellen).  Sie können den Zeitplan ändern, nachdem die Richtlinie erstellt wurde.
+8. Klicken Sie auf **Next** > **Next** > **Finish** (Weiter>Weiter>Fertig stellen).  Sie können den Zeitplan ändern, nachdem die Richtlinie erstellt wurde.
 
-9.  Erweitern Sie die zuvor erstellte Richtlinie, und wählen Sie **Schedules** (Zeitpläne) aus.
+9. Erweitern Sie die zuvor erstellte Richtlinie, und wählen Sie **Schedules** (Zeitpläne) aus.
 
-    ![NetBackup-Verwaltungskonsole, Zeitpläne für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
+   ![NetBackup-Verwaltungskonsole, Zeitpläne für eine neue Richtlinie](./media/storsimple-configure-backup-target-using-netbackup/nbimage13.png)
 
-10.  Klicken Sie mit der rechten Maustaste auf **Differential-Inc** (Differenziell/Ink.), wählen Sie **Copy to new** (In neuen kopieren), und klicken Sie dann auf **OK**.
+10. Klicken Sie mit der rechten Maustaste auf **Differential-Inc** (Differenziell/Ink.), wählen Sie **Copy to new** (In neuen kopieren), und klicken Sie dann auf **OK**.
 
     ![NetBackup-Verwaltungskonsole, Zeitplan in neue Richtlinie kopieren](./media/storsimple-configure-backup-target-using-netbackup/nbimage14.png)
 
-11.  Klicken Sie mit der rechten Maustaste auf den neu erstellten Zeitplan, und wählen Sie **Change** (Ändern) aus.
+11. Klicken Sie mit der rechten Maustaste auf den neu erstellten Zeitplan, und wählen Sie **Change** (Ändern) aus.
 
-12.  Aktivieren Sie auf der Registerkarte **Attributes** (Attribute) das Kontrollkästchen **Override policy storage selection** (Richtlinienauswahl für Speicher außer Kraft setzen), und wählen Sie das Volume aus, auf dem die inkrementellen Sicherungen von Montag gespeichert werden.
+12. Aktivieren Sie auf der Registerkarte **Attributes** (Attribute) das Kontrollkästchen **Override policy storage selection** (Richtlinienauswahl für Speicher außer Kraft setzen), und wählen Sie das Volume aus, auf dem die inkrementellen Sicherungen von Montag gespeichert werden.
 
     ![NetBackup-Verwaltungskonsole, Zeitplan ändern](./media/storsimple-configure-backup-target-using-netbackup/nbimage15.png)
 
-13.  Wählen Sie auf der Registerkarte **Start Windows** (Startfenster) das gewünschte Zeitfenster für Ihre Sicherungen.
+13. Wählen Sie auf der Registerkarte **Start Windows** (Startfenster) das gewünschte Zeitfenster für Ihre Sicherungen.
 
     ![NetBackup-Verwaltungskonsole, Startfenster ändern](./media/storsimple-configure-backup-target-using-netbackup/nbimage16.png)
 
-14.  Klicken Sie auf **OK**.
+14. Klicken Sie auf **OK**.
 
-15.  Wiederholen Sie die Schritte 10-14 für jede inkrementelle Sicherung. Wählen Sie das entsprechende Volume und den Zeitplan für die einzelnen Sicherungen aus, die Sie erstellen.
+15. Wiederholen Sie die Schritte 10-14 für jede inkrementelle Sicherung. Wählen Sie das entsprechende Volume und den Zeitplan für die einzelnen Sicherungen aus, die Sie erstellen.
 
-16.  Klicken Sie dann mit der rechten Maustaste auf den Zeitplan **Differential-Inc**, und löschen Sie ihn.
+16. Klicken Sie dann mit der rechten Maustaste auf den Zeitplan **Differential-Inc**, und löschen Sie ihn.
 
-17.  Ändern Sie den Zeitplan „Full“ (Vollständig) entsprechend Ihren Sicherungsanforderungen.
+17. Ändern Sie den Zeitplan „Full“ (Vollständig) entsprechend Ihren Sicherungsanforderungen.
 
     ![NetBackup-Verwaltungskonsole, Zeitplan „Vollständig“ ändern](./media/storsimple-configure-backup-target-using-netbackup/nbimage17.png)
 
-18.  Ändern Sie das Startfenster.
+18. Ändern Sie das Startfenster.
 
     ![NetBackup-Verwaltungskonsole, Startfenster ändern](./media/storsimple-configure-backup-target-using-netbackup/nbimage18.png)
 
-19.  Der endgültige Zeitplan sieht wie folgt aus:
+19. Der endgültige Zeitplan sieht wie folgt aus:
 
     ![NetBackup-Verwaltungskonsole, endgültiger Zeitplan](./media/storsimple-configure-backup-target-using-netbackup/nbimage19.png)
 
@@ -400,6 +402,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 | Monatlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 12 | 12 |
 | Jährlich vollständig |StorSimple-Datenträger (langfristig) | 1 | 1 | 1 |
 |Größenanforderungen für GFS-Volumes |  |  |  | 18*|
+
 \* Die Gesamtkapazität umfasst 17 TiB für StorSimple-Datenträger und 1 TiB für lokale RAID-Volumes.
 
 
@@ -412,7 +415,7 @@ In der folgenden Tabelle wird gezeigt, wie Sicherungen für die Ausführung auf 
 | Woche 3 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Woche 4 | StorSimple, Woche 2-4 |   |   |   |   |   |
 | Monatlich | StorSimple monatlich |   |   |   |   |   |
-| Jährlich | StorSimple jährlich  |   |   |   |   |   |   |
+| Jährlich | StorSimple jährlich  |   |   |   |   |   |
 
 
 ## <a name="assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>Zuweisen von StorSimple-Volumes zu einem NetBackup-Archivierungs- und Deduplizierungsauftrag
@@ -427,41 +430,41 @@ Nachdem Sie die ursprünglichen Datenträgerpools definiert haben, müssen Sie d
 
 ### <a name="to-assign-storsimple-volumes-to-a-netbackup-archive-and-duplication-job"></a>So weisen Sie StorSimple-Volumes einem NetBackup-Archivierungs- und Deduplizierungsauftrag zu
 
-1.  Wählen Sie in der NetBackup-Verwaltungskonsole **Storage** > **Storage Lifecycle Policies** > **New Storage Lifecycle Policy** (Speicher>Richtlinien für den Speicherlebenszyklus>Neue Richtlinie für den Speicherlebenszyklus) aus.
+1. Wählen Sie in der NetBackup-Verwaltungskonsole **Storage** > **Storage Lifecycle Policies** > **New Storage Lifecycle Policy** (Speicher>Richtlinien für den Speicherlebenszyklus>Neue Richtlinie für den Speicherlebenszyklus) aus.
 
-    ![NetBackup-Verwaltungskonsole, neue Richtlinie für den Speicherlebenszyklus](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
+   ![NetBackup-Verwaltungskonsole, neue Richtlinie für den Speicherlebenszyklus](./media/storsimple-configure-backup-target-using-netbackup/nbimage20.png)
 
-2.  Geben Sie einen Namen für die Momentaufnahme ein, und klicken Sie dann auf **Add** (Hinzufügen).
+2. Geben Sie einen Namen für die Momentaufnahme ein, und klicken Sie dann auf **Add** (Hinzufügen).
 
-3.  Wählen Sie im Dialogfeld **New Operation** (Neuer Vorgang) auf der Registerkarte **Properties** (Eigenschaften) für **Operation** (Vorgang) **Backup** (Sicherung) aus. Wählen Sie die gewünschten Werte für **Destination storage** (Zielspeicher), **Retention type** (Aufbewahrungstyp) und **Retention period** (Aufbewahrungszeitraum). Klicken Sie auf **OK**.
+3. Wählen Sie im Dialogfeld **New Operation** (Neuer Vorgang) auf der Registerkarte **Properties** (Eigenschaften) für **Operation** (Vorgang) **Backup** (Sicherung) aus. Wählen Sie die gewünschten Werte für **Destination storage** (Zielspeicher), **Retention type** (Aufbewahrungstyp) und **Retention period** (Aufbewahrungszeitraum). Klicken Sie auf **OK**.
 
-    ![NetBackup-Verwaltungskonsole, Dialogfeld „Neuer Vorgang“](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
+   ![NetBackup-Verwaltungskonsole, Dialogfeld „Neuer Vorgang“](./media/storsimple-configure-backup-target-using-netbackup/nbimage22.png)
 
-    Dies definiert den ersten Sicherungsvorgang und das erste Repository.
+   Dies definiert den ersten Sicherungsvorgang und das erste Repository.
 
-4.  Markieren Sie den vorherigen Vorgang, und wählen Sie dann **Add** (Hinzufügen) aus. Wählen Sie im Dialogfeld **Change Storage Operation** (Speichervorgang ändern) die gewünschten Werte für **Destination storage** (Zielspeicher), **Retention type** (Aufbewahrungstyp) und **Retention period** (Aufbewahrungszeitraum) aus.
+4. Markieren Sie den vorherigen Vorgang, und wählen Sie dann **Add** (Hinzufügen) aus. Wählen Sie im Dialogfeld **Change Storage Operation** (Speichervorgang ändern) die gewünschten Werte für **Destination storage** (Zielspeicher), **Retention type** (Aufbewahrungstyp) und **Retention period** (Aufbewahrungszeitraum) aus.
 
-    ![NetBackup-Verwaltungskonsole, Dialogfeld „Speichervorgang ändern“](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
+   ![NetBackup-Verwaltungskonsole, Dialogfeld „Speichervorgang ändern“](./media/storsimple-configure-backup-target-using-netbackup/nbimage23.png)
 
-5.  Markieren Sie den vorherigen Vorgang, und wählen Sie dann **Add** (Hinzufügen) aus. Fügen Sie im Dialogfeld **New Storage Lifecycle Policy** (Neue Richtlinie für den Speicherlebenszyklus) monatliche Sicherungen für ein Jahr hinzu.
+5. Markieren Sie den vorherigen Vorgang, und wählen Sie dann **Add** (Hinzufügen) aus. Fügen Sie im Dialogfeld **New Storage Lifecycle Policy** (Neue Richtlinie für den Speicherlebenszyklus) monatliche Sicherungen für ein Jahr hinzu.
 
-    ![NetBackup-Verwaltungskonsole, Dialogfeld „Neue Richtlinie für den Speicherlebenszyklus“](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
+   ![NetBackup-Verwaltungskonsole, Dialogfeld „Neue Richtlinie für den Speicherlebenszyklus“](./media/storsimple-configure-backup-target-using-netbackup/nbimage24.png)
 
-6.  Wiederholen Sie die Schritte 4-5, bis Sie die benötigte Aufbewahrungsrichtlinie erstellt haben.
+6. Wiederholen Sie die Schritte 4-5, bis Sie die benötigte Aufbewahrungsrichtlinie erstellt haben.
 
-    ![NetBackup-Verwaltungskonsole, Hinzufügen von Richtlinien im Dialogfeld „Neue Richtlinie für den Speicherlebenszyklus“](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
+   ![NetBackup-Verwaltungskonsole, Hinzufügen von Richtlinien im Dialogfeld „Neue Richtlinie für den Speicherlebenszyklus“](./media/storsimple-configure-backup-target-using-netbackup/nbimage25.png)
 
-7.  Definieren Sie nach Fertigstellung der Definition Ihrer Aufbewahrungsrichtlinie unter **Policy** (Richtlinie) eine Sicherungsrichtlinie gemäß den Anweisungen unter [Zuweisen von StorSimple-Volumes zu einem NetBackup-Sicherungsauftrag](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
+7. Definieren Sie nach Fertigstellung der Definition Ihrer Aufbewahrungsrichtlinie unter **Policy** (Richtlinie) eine Sicherungsrichtlinie gemäß den Anweisungen unter [Zuweisen von StorSimple-Volumes zu einem NetBackup-Sicherungsauftrag](#assigning-storsimple-volumes-to-a-netbackup-backup-job).
 
-8.  Klicken Sie unter **Schedules** (Zeitpläne) im Dialogfeld **Change Schedule** (Zeitplan ändern) mit der rechten Maustaste auf **Full** (Vollständig), und wählen Sie dann **Change** (Ändern) aus.
+8. Klicken Sie unter **Schedules** (Zeitpläne) im Dialogfeld **Change Schedule** (Zeitplan ändern) mit der rechten Maustaste auf **Full** (Vollständig), und wählen Sie dann **Change** (Ändern) aus.
 
-    ![NetBackup-Verwaltungskonsole, Dialogfeld „Zeitplan ändern“](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
+   ![NetBackup-Verwaltungskonsole, Dialogfeld „Zeitplan ändern“](./media/storsimple-configure-backup-target-using-netbackup/nbimage26.png)
 
-9.  Aktivieren Sie das Kontrollkästchen **Override policy storage selection** (Richtlinie für Speicherauswahl überschreiben), und wählen Sie die Aufbewahrungsrichtlinie aus, die Sie in den Schritten 1-6 erstellt haben.
+9. Aktivieren Sie das Kontrollkästchen **Override policy storage selection** (Richtlinie für Speicherauswahl überschreiben), und wählen Sie die Aufbewahrungsrichtlinie aus, die Sie in den Schritten 1-6 erstellt haben.
 
-    ![NetBackup-Verwaltungskonsole, Richtlinie für Speicherauswahl überschreiben](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
+   ![NetBackup-Verwaltungskonsole, Richtlinie für Speicherauswahl überschreiben](./media/storsimple-configure-backup-target-using-netbackup/nbimage27.png)
 
-10.  Klicken Sie auf **OK**, und wiederholen Sie die Schritte für den Zeitplan für inkrementelle Sicherungen.
+10. Klicken Sie auf **OK**, und wiederholen Sie die Schritte für den Zeitplan für inkrementelle Sicherungen.
 
     ![NetBackup-Verwaltungskonsole, Dialogfeld „Zeitplan ändern“ für inkrementelle Sicherungen](./media/storsimple-configure-backup-target-using-netbackup/nbimage28.png)
 
@@ -474,6 +477,7 @@ Nachdem Sie die ursprünglichen Datenträgerpools definiert haben, müssen Sie d
 | Jährlich vollständig | 1  | 10 | 10 |
 | GFS-Anforderung  |     |     | 38 |
 | Zusätzliches Kontingent  | 4  |    | 42 (GFS-Anforderung gesamt) |
+
 \* Der GFS-Multiplikator ist die Anzahl von Kopien, die Sie schützen und beibehalten müssen, um die Anforderungen Ihrer Sicherungsrichtlinie zu erfüllen.
 
 ## <a name="storsimple-cloud-snapshots"></a>StorSimple-Cloudmomentaufnahmen
@@ -503,13 +507,13 @@ Der folgende Abschnitt zeigt, wie Sie ein kurzes Skript schreiben, um StorSimple
 
 ### <a name="to-start-or-delete-a-cloud-snapshot"></a>So starten oder löschen Sie eine Cloudmomentaufnahme
 
-1.  [Installieren Sie Azure PowerShell](/powershell/azure/overview).
+1. [Installieren Sie Azure PowerShell](/powershell/azure/overview).
 2. Herunterladen und Einrichten des [Manage-CloudSnapshots.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Manage-CloudSnapshots.ps1)-PowerShell-Skripts.
 3. Führen Sie auf dem Server, auf dem das Skript ausgeführt wird, PowerShell als Administrator aus. Stellen Sie sicher, dass Sie das Skript mit `-WhatIf $true` ausführen, um festzustellen, welche Änderungen das Skript durchführt. Sobald die Überprüfung abgeschlossen ist, lassen Sie `-WhatIf $false` ausführen. Führen Sie den folgenden Befehl aus:
-```powershell
-.\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
-```
-4.  Fügen Sie das Skript Ihrem Sicherungsauftrag in NetBackup hinzu. Bearbeiten Sie hierzu die Befehle zur Vor- und Nachverarbeitung in den Optionen Ihres NetBackup-Auftrags.
+   ```powershell
+   .\Manage-CloudSnapshots.ps1 -SubscriptionId [Subscription Id] -TenantId [Tenant ID] -ResourceGroupName [Resource Group Name] -ManagerName [StorSimple Device Manager Name] -DeviceName [device name] -BackupPolicyName [backup policyname] -RetentionInDays [Retention days] -WhatIf [$true or $false]
+   ```
+4. Fügen Sie das Skript Ihrem Sicherungsauftrag in NetBackup hinzu. Bearbeiten Sie hierzu die Befehle zur Vor- und Nachverarbeitung in den Optionen Ihres NetBackup-Auftrags.
 
 > [!NOTE]
 > Es empfiehlt sich, die Sicherungsrichtlinie für StorSimple-Cloudmomentaufnahmen als Nachverarbeitungsskript am Ende des täglichen Sicherungsauftrags auszuführen. Weitere Informationen zum Sichern und Wiederherstellen Ihrer Sicherungsanwendungsumgebung, um Ihre RPO- und RTO-Ziele zu erfüllen, erhalten Sie von Ihrem Sicherungsarchitekten.
@@ -536,7 +540,7 @@ Ein Notfall kann durch eine Vielzahl von Faktoren verursacht werden. In der folg
 Folgende Dokumente haben als Referenz für diesen Artikel gedient:
 
 - [StorSimple multipath I/O setup](storsimple-configure-mpio-windows-server.md) (StorSimple: Einrichten von Multipfad-E/A)
-- [Storage scenarios: Thin provisioning](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx) (Speicherszenarien: schlanke Speicherzuweisung)
+- [Speicherszenarien: Schlanke Speicherzuweisung](https://msdn.microsoft.com/library/windows/hardware/dn265487.aspx)
 - [Using GPT drives](https://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD) (Verwenden von GPT-Laufwerken)
 - [Einrichten von Schattenkopien für freigegebene Ordner](https://technet.microsoft.com/library/cc771893.aspx)
 

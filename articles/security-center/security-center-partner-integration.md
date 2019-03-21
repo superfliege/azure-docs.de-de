@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/3/2019
 ms.author: rkarlin
-ms.openlocfilehash: 52b347aef240f2338aedff2c2a1a3cd53743dc27
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 5a25ba889ebde750937f88e447123263a82d5627
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114262"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896822"
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Integrieren von Sicherheitslösungen in Azure Security Center
 Dieses Dokument unterstützt Sie bei der Verwaltung von bereits mit Azure Security Center verbundenen Sicherheitslösungen sowie beim Hinzufügen neuer Lösungen.
@@ -34,7 +34,7 @@ Mit Security Center können Sie ganz einfach integrierte Sicherheitslösungen in
 Integrierte Sicherheitslösungen umfassen derzeit Folgendes:
 
 - Web Application Firewall ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall), [F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html), [Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF), [Fortinet](https://www.fortinet.com/products.html) und [Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
-- Firewall der nächsten Generation ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) und [Palo Alto Networks](https://www.paloaltonetworks.com/products))
+- Firewall der nächsten Generation ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/), [Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/), [Fortinet](https://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2), [Cisco](https://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html) und [Palo Alto Networks](https://www.paloaltonetworks.com/products))
 - Sicherheitsrisikobewertung ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/) und [Rapid7](https://www.rapid7.com/products/insightvm/))
 
 > [!NOTE]
@@ -60,7 +60,7 @@ Integrierte Sicherheitslösungen umfassen derzeit Folgendes:
 
 3. Klicken Sie im Menü von Security Center auf **Sicherheitslösungen**.
 
-  ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
+   ![Übersicht über Security Center](./media/security-center-partner-integration/overview.png)
 
 Unter **Sicherheitslösungen** können Sie Informationen zur Integrität integrierter Azure-Sicherheitslösungen anzeigen und grundlegende Verwaltungsaufgaben durchführen. Sie können auch eine Verbindung mit anderen Arten von Sicherheitsdatenquellen herstellen – beispielsweise mit Azure Active Directory Identity Protection-Warnungen und Firewallprotokollen im CEF-Format (Common Event Format).
 
@@ -82,12 +82,12 @@ Eine Partnerlösung kann den folgenden Status aufweisen:
 >
 >
 
-2. Wählen Sie **ANSICHT**, um zusätzliche Informationen und Optionen anzuzeigen, darunter:
+1. Wählen Sie **ANSICHT**, um zusätzliche Informationen und Optionen anzuzeigen, darunter:
 
-  - **Lösungskonsole**. Öffnet die Verwaltungsoberfläche für diese Lösung.
-  - **Virtuellen Computer verknüpfen**. Öffnet das Blatt „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
-  - **Lösung löschen**.
-  - **Konfigurieren**.
+   - **Lösungskonsole**. Öffnet die Verwaltungsoberfläche für diese Lösung.
+   - **Virtuellen Computer verknüpfen**. Öffnet das Blatt „Anwendungen verknüpfen“. Hier können Sie Ressourcen mit der Partnerlösung verknüpfen.
+   - **Lösung löschen**.
+   - **Konfigurieren**.
 
    ![Details der Partnerlösung](./media/security-center-partner-solutions/partner-solutions-detail.png)
 

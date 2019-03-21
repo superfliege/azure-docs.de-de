@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8316e571e97fce65b3f8308709d3300bc585663f
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: edc38296374538fd708a74f575d5b0c77770c005
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434868"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901541"
 ---
 # <a name="source-control-integration-in-azure-automation---legacy"></a>Integration der Quellcodeverwaltung in Azure Automation: Legacy
 
@@ -66,22 +66,22 @@ Wenn Sie bereits ein GitHub-Konto und ein Repository besitzen, das Sie mit Azure
      | **Parameter** | **Wert** |
      |:--- |:--- |
      | NAME |Microsoft.Azure.Automation.SourceControl.Connection |
-     | Typ |Zeichenfolge |
+     | Type |Zeichenfolge |
      | Wert |{„Verzweigung“:\<*Name Ihrer Verzweigung*>, „Runbook-Ordnertyp“:\<*Runbook-Ordnerpfad*>, „Anbietertyp“:\<*hat einen Wert 1 für GitHub*>, „Verzeichnis“:\<*Name Ihres Repositorys*>, „Benutzername“:\<*Ihr GitHub-Benutzername*>} |
 
-    * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  
+     * Die Variable **Microsoft.Azure.Automation.SourceControl.OauthToken**enthält den sicher verschlüsselten Wert Ihres OAuth-Tokens.  
 
-    |**Parameter**            |**Wert** |
-    |:---|:---|
-    | NAME  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-    | Typ | Unbekannte (Verschlüsselt) |
-    | Wert | <*Verschlüsseltes OAuthToken*> |  
+     |**Parameter**            |**Wert** |
+     |:---|:---|
+     | NAME  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+     | Type | Unbekannte (Verschlüsselt) |
+     | Wert | <*Verschlüsseltes OAuthToken*> |  
 
-    ![Variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
+     ![Variables](media/automation-source-control-integration-legacy/automation_04_Variables.png)  
 
-    * **Automation-Quellcodeverwaltung** wird Ihrem GitHub-Konto als autorisierte Anwendung hinzugefügt. So zeigen Sie die Anwendung an Navigieren Sie auf Ihrer GitHub-Homepage zu **Profile** > **Settings** > **Applications** (Profil > Einstellungen > Anwendungen). Diese Anwendung ermöglicht Azure-Automation die Synchronisierung Ihres GitHub-Repositorys mit einem Automation-Konto.  
+     * **Automation-Quellcodeverwaltung** wird Ihrem GitHub-Konto als autorisierte Anwendung hinzugefügt. So zeigen Sie die Anwendung an Navigieren Sie auf Ihrer GitHub-Homepage zu **Profile** > **Settings** > **Applications** (Profil > Einstellungen > Anwendungen). Diese Anwendung ermöglicht Azure-Automation die Synchronisierung Ihres GitHub-Repositorys mit einem Automation-Konto.  
 
-    ![Git-Anwendung](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
+     ![Git-Anwendung](media/automation-source-control-integration-legacy/automation_05_GitApplication.png)
 
 
 ## <a name="using-source-control-in-automation"></a>Verwenden der Quellcodeverwaltung in Automation
@@ -124,10 +124,6 @@ Mit der Synchronisierungsschaltfläche auf der Seite „Repositorysynchronisieru
 
     > [!NOTE] 
     > Die Synchronisierung der Quellcodeverwaltung überschreibt die Entwurfsversion für **ALLE** Runbooks in Ihrem Automation-Konto, die derzeit in der Quellcodeverwaltung vorhanden sind. Die entsprechende Git-Befehlszeilenanweisung zum Synchronisieren lautet **git pull**.
-
-
-## <a name="troubleshooting-source-control-problems"></a>Problembehandlung bei der Quellcodeverwaltung
-Wenn beim Einchecken oder Synchronisieren Fehler auftreten, sollte der Auftragsstatus „Angehalten“ lauten, und Sie können auf der Auftragsseite weitere Einzelheiten zum Fehler anzeigen.  Unter **Alle Protokolle** können Sie alle PowerShell-Streams einsehen, die diesem Auftrag zugeordnet sind. Sie finden dort die erforderlichen Details, um Probleme mit dem Einchecken oder Synchronisieren zu beheben. Sie sehen dort auch die Abfolge der Aktionen, die beim Synchronisieren oder Einchecken eines Runbooks ausgeführt wurden.  
 
 ![Bild „Alle Protokolle“](media/automation-source-control-integration-legacy/automation_13_AllLogs.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: bf9e83a1dfed0aac7f48cd47dc12bf56c7cb1b64
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 47d2e051cf3eeebbfaea95cfc16f5077559e6847
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38481701"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807132"
 ---
 # <a name="about-azure-devtest-labs"></a>Informationen zu Azure DevTest Labs
 ## <a name="overview"></a>Übersicht
@@ -44,6 +44,7 @@ Indem Sie Umgebungsvorlagen und -elemente erfassen und innerhalb Ihres Teams ode
 
 ## <a name="integrates-with-your-existing-toolchain"></a>In Ihre vorhandene Toolkette integrierbar
 Nutzen Sie unsere sofort einsatzbereiten Plug-Ins oder unsere API, um Entwicklungs-/Testumgebungen direkt über Ihr bevorzugtes CI (Continuous Integration)-Tool, Ihre bevorzugte integrierte Entwicklungsumgebung (IDE) oder Ihre bevorzugte automatisierte Veröffentlichungspipeline bereitzustellen. Darüber hinaus steht Ihnen unser umfassendes Befehlszeilentool zur Verfügung.
+
 
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]

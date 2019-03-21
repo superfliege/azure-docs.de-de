@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 12/27/2018
 ms.author: raynew
-ms.openlocfilehash: c7d66c389958aa3b5274a3d81f27f416308acdee
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 053d400a9986d0997344b2be09140d8afb0e1faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53975660"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57996365"
 ---
 # <a name="about-recovery-plans"></a>Informationen zu Wiederherstellungsplänen
 
@@ -29,7 +29,7 @@ Mit einem Wiederherstellungsplan können Sie einen systematischen Wiederherstell
 
 * Modellieren einer App entsprechend ihrer Abhängigkeiten
 * Automatisieren von Wiederherstellungsaufgaben zur Verringerung des RTO-Werts
-- Überprüfen, dass Sie für die Migration oder Notfallwiederherstellung vorbereitet sind, indem Sie sicherstellen, dass Ihre Apps Teil eines Wiederherstellungsplans sind
+* Überprüfen, dass Sie für die Migration oder Notfallwiederherstellung vorbereitet sind, indem Sie sicherstellen, dass Ihre Apps Teil eines Wiederherstellungsplans sind
 * Ausführen eines Testfailovers für Wiederherstellungspläne, um sicherzustellen, dass die Notfallwiederherstellung oder Migration wie erwartet funktioniert
 
 
@@ -42,10 +42,10 @@ Sie können eine Wiederherstellungsgruppe zum Erfassen App-spezifischer Eigensch
     - Mit dieser Reihenfolge wird sichergestellt, dass zu dem Zeitpunkt, zu dem die Middleware gestartet wird und versucht, eine Verbindung mit der SQL Server-Schicht herzustellen, die SQL Server-Schicht bereits ausgeführt wird. 
     - Mit dieser Reihenfolge kann außerdem sichergestellt werden, dass der Front-End-Server zuletzt gestartet wird, sodass Endbenutzer keine Verbindung mit der App-URL herstellen, bevor alle Komponenten ausgeführt werden und die App für die Annahme von Anforderungen bereit ist.
 
-Um diese Reihenfolge zu erstellen, fügen Sie Gruppen zur Wiederherstellungsgruppe und Computer in den Gruppen hinzu. 
-    - Wo die Reihenfolge angegeben ist, wird eine Sequenzierung verwendet. Aktionen werden ggf. parallel ausgeführt, um den RTO-Wert der Anwendungswiederherstellung zu verbessern.
-    - Für Computer in einer einzelnen Gruppe wird das Failover parallel ausgeführt.
-    - Für Computer in unterschiedlichen Gruppen wird das Failover in Gruppenreihenfolge ausgeführt, damit das Failover für Computer der Gruppe 2 nur gestartet wird, nachdem das Failover für alle Computer in Gruppe 1 ausgeführt wurde und diese gestartet sind.
+Um diese Reihenfolge zu erstellen, fügen Sie Gruppen zur Wiederherstellungsgruppe und Computer in den Gruppen hinzu.
+- Wo die Reihenfolge angegeben ist, wird eine Sequenzierung verwendet. Aktionen werden ggf. parallel ausgeführt, um den RTO-Wert der Anwendungswiederherstellung zu verbessern.
+- Für Computer in einer einzelnen Gruppe wird das Failover parallel ausgeführt.
+- Für Computer in unterschiedlichen Gruppen wird das Failover in Gruppenreihenfolge ausgeführt, damit das Failover für Computer der Gruppe 2 nur gestartet wird, nachdem das Failover für alle Computer in Gruppe 1 ausgeführt wurde und diese gestartet sind.
 
     ![Beispiel eines Wiederherstellungsplans](./media/recovery-plan-overview/rp.png)
 
@@ -93,4 +93,4 @@ Sehen Sie sich ein kurzes Beispielvideo eines mit einem Klick ausgelösten Failo
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen](site-recovery-create-recovery-plans.md) Sie einen Wiederherstellungsplan.
-* Erfahren Sie mehr über das [Ausführen von Failovern](site-recovery-failover.md).  
+- Erfahren Sie mehr über das [Ausführen von Failovern](site-recovery-failover.md).  

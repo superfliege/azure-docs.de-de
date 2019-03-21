@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 1/30/2019
 ms.author: yizhon
-ms.openlocfilehash: 0bfba7f923ca394aa29dd907db1b8b1284a605d8
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e5b075a457c646eb03810b2c51af1a1181ee96ed
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981671"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670254"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Entwickeln für die Android Things-Plattform mithilfe von Azure IoT-SDKs
 [Azure IoT Hub-SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks) bieten direkte Unterstützung für gängige Plattformen, z.B. Windows, Linux, OSX, MBED, und mobile Plattformen wie Android und iOS.  Da wir die Auswahlmöglichkeiten und Flexibilität bei der IoT-Bereitstellungen ständig erweitern, unterstützt das Java SDK auch die Plattform [Android Things](https://developer.android.com/things/).  Entwickler können die Vorteile des Android Things-Betriebssystems auf der Geräteseite nutzen und [Azure IoT Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) als zentralen Nachrichtenhub verwenden, der für Millionen gleichzeitig verbundene Geräte skaliert werden kann. 
@@ -69,7 +69,6 @@ Ein Gerät muss bei Ihrer IoT Hub-Instanz registriert sein, um eine Verbindung h
     ```
 4.  Öffnen Sie in Android Studio das Android-Projekt in „\azure-iot-samples-java\iot-hub\Samples\device\AndroidSample“.
 5.  Öffnen Sie die Datei „gradle.properties“, und ersetzen Sie „Device_connection_string“ durch Ihre zuvor angegebene Geräteverbindungszeichenfolge.
-    ![Screenshot des master-Branches des Repositorys](./media/how-to-android-things/connection-string.png)
 6.  Klicken Sie auf „Run – Debug“ (Ausführen – Debuggen), und wählen Sie Ihr Gerät aus, um diesen Code auf Ihren Android Things-Geräten bereitzustellen.
 7.  Wenn die Anwendung erfolgreich gestartet wird, sehen Sie eine ausgeführte Anwendung auf Ihrem Android Things-Gerät.  Diese Beispielanwendung sendet zufällig generierte Temperaturmesswerte.
 

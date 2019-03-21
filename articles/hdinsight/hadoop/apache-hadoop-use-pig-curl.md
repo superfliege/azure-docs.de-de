@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 653d3e357e3a02659a225b4e26c386ca54b6288f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53715425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098303"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>Ausführen von Apache Pig-Aufträgen mit Apache Hadoop in HDInsight mithilfe von REST
 
@@ -58,8 +58,8 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
     Folgende Parameter werden in diesem Befehl verwendet:
 
-    * **-u**: Der Benutzername und das Kennwort für die Authentifizierung der Anforderung.
-    * **-G**: Gibt an, dass diese Anforderung eine GET-Anforderung ist.
+   * **-u**: Der Benutzername und das Kennwort für die Authentifizierung der Anforderung.
+   * **-G**: Gibt an, dass diese Anforderung eine GET-Anforderung ist.
 
      Der Anfang der URL (**https://CLUSTERNAME.azurehdinsight.net/templeton/v1**) ist für alle Anforderungen gleich. Der Pfad **/status** gibt an, dass die Anforderung den Status von WebHCat (auch bekannt als Templeton) für den Server zurückgibt.
 
@@ -71,18 +71,18 @@ Hier erfahren Sie, wie Sie REST-Anforderungen an einen Azure HDInsight-Cluster r
 
     Folgende Parameter werden in diesem Befehl verwendet:
 
-    * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
+   * **-d**: Da `-G` nicht verwendet wird, verwendet die Anforderung standardmäßig die POST-Methode. `-d` gibt die Datenwerte an, die mit der Anforderung gesendet werden.
 
-    * **user.name**: Der Benutzer, der den Befehl ausführt.
-    * **execute**: Die auszuführenden Pig Latin-Anweisungen.
-    * **statusdir**: Das Verzeichnis, in das der Status für diesen Auftrag geschrieben wird.
+   * **user.name**: Der Benutzer, der den Befehl ausführt.
+   * **execute**: Die auszuführenden Pig Latin-Anweisungen.
+   * **statusdir**: Das Verzeichnis, in das der Status für diesen Auftrag geschrieben wird.
 
-    > [!NOTE]  
-    > Beachten Sie, dass die Leerzeichen in Pig Latin-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden.
+     > [!NOTE]  
+     > Beachten Sie, dass die Leerzeichen in Pig Latin-Anweisungen bei Curl durch das Zeichen `+` ersetzt werden.
 
-    Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann. Beispiel:
+     Dieser Befehl sollte eine Auftrags-ID zurückgeben, mit der der Status des Auftrags überprüft werden kann. Beispiel:
 
-        {"id":"job_1415651640909_0026"}
+       {"id":"job_1415651640909_0026"}
 
 3. Verwenden Sie den folgenden Befehl, um den Status des Auftrags zu prüfen:
 

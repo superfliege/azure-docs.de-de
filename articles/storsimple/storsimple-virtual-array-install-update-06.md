@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/18/2017
 ms.author: alkohli
-ms.openlocfilehash: 89ca7a5fa13696856bed108e4cbf7462b536b4bb
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5f0be5d8378cd1640d3052f2e56c8161e2c0b203
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51246615"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002779"
 ---
 # <a name="install-update-06-on-your-storsimple-virtual-array"></a>Installieren von Update 0.6 in StorSimple Virtual Array
 
@@ -57,7 +57,7 @@ Führen Sie die folgenden Schritte aus, um das Softwareupdate aus dem Microsoft 
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>So laden sie das Update oder den Hotfix herunter
 
-1. Starten Sie Internet Explorer, und navigieren Sie zu [http://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Starten Sie Internet Explorer, und navigieren Sie zu [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
 
 2. Falls Sie den Microsoft Update-Katalog zum ersten Mal auf diesem Computer verwenden, klicken Sie auf **Installieren**, wenn Sie zum Installieren des Add-Ons für den Microsoft Update-Katalog aufgefordert werden.
 

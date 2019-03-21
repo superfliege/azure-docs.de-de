@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: d94d434f83e1a8507b1a98660e8169ff6be4ee24
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d220922f17f6727acdbfcd5c2feabac6fc2b88d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244580"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010588"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Problembehandlung bei Azure SQL Data Warehouse
 Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
@@ -52,7 +52,7 @@ Dieser Artikel enthält allgemeine Fragen zur Problembehandlung.
 | Msg 40847: Der Vorgang konnte nicht ausgeführt werden, da der Server das zulässige Datenbanktransaktionseinheit-Kontingent von 45.000 überschreiten würde. | Reduzieren Sie entweder die [DWU][DWU] der Datenbank, die Sie erstellen möchten, oder [fordern Sie eine Erhöhung des Kontingents an][request a quota increase]. |
 | Untersuchen der Speicherauslastung                              | Informationen zu den Grundlagen der Speicherauslastung des Systems finden Sie unter [Tabellengrößen][Table sizes]. |
 | Hilfe beim Verwalten von Tabellen                                    | Hilfe zur Verwaltung von Tabellen finden Sie in der [Übersicht über Tabellen][Overview].  Dieser Artikel enthält auch Links zu ausführlicheren Themen. Hierzu zählen beispielsweise [Tabellendatentypen][Data types], [Verteilen einer Tabelle][Distribute], [Indizieren einer Tabelle][Index], [Partitionieren einer Tabelle][Partition], [Verwalten von Tabellenstatistiken][Statistics] und [Temporäre Tabellen][Temporary]. |
-| Die Statusanzeige für Transparent Data Encryption (TDE) wird im Azure-Portal nicht aktualisiert | Sie können den Status von TDE über [PowerShell](/powershell/module/azurerm.sql/get-azurermsqldatabasetransparentdataencryption) überprüfen. |
+| Die Statusanzeige für Transparent Data Encryption (TDE) wird im Azure-Portal nicht aktualisiert | Sie können den Status von TDE über [PowerShell](/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) überprüfen. |
 
 ## <a name="polybase"></a>PolyBase
 | Problem                                           | Lösung                                                   |
@@ -129,6 +129,6 @@ Für weitere Hilfe bei der Suche nach einer Lösung für Ihr Problem, stehen Ihn
 [CAT Team-Blogs]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [Funktionsanfragen]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [MSDN-Forum]: https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-Forum]: http://stackoverflow.com/questions/tagged/azure-sqldw
+[Stack Overflow-Forum]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse

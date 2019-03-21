@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1f0b99c3a388dcfd0dabaf874e03f276c494553
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7287616dbad1aa77a6e4aaa110ade39dcea4f195
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176865"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082618"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -218,15 +218,15 @@ So deaktivieren Sie die Gruppenerstellung für Benutzer ohne Administratorrechte
 
 1. Prüfen Sie, ob Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt sind:
    
-  ```
-  PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
-  ```
+   ```
+   PS C:\> Get-MsolCompanyInformation | fl UsersPermissionToCreateGroupsEnabled
+   ```
   
 2. Wird `UsersPermissionToCreateGroupsEnabled : True` zurückgegeben, sind Benutzer ohne Administratorrechte zum Erstellen von Gruppen berechtigt. So deaktivieren Sie das Feature:
   
-  ``` 
-  Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
-  ```
+   ``` 
+   Set-MsolCompanySettings -UsersPermissionToCreateGroupsEnabled $False
+   ```
   
 ## <a name="manage-owners-of-groups"></a>Verwalten von Gruppenbesitzern
 Zum Hinzufügen von Besitzern zu einer Gruppe verwenden Sie das Cmdlet „Add-AzureADGroupOwner“:
@@ -251,7 +251,7 @@ Zum Entfernen eines Besitzers aus einer Gruppe verwenden Sie das Cmdlet „Remov
 
 ## <a name="reserved-aliases"></a>Reservierte Aliase 
 Wenn eine Gruppe erstellt wird, ermöglichen bestimmte Endpunkte dem Benutzer, einen mailNickname oder Alias anzugeben, der als Teil der E-Mail-Adresse der Gruppe verwendet werden soll. Gruppen mit den folgenden weitreichend berechtigten E-Mail-Aliasen können nur von einem globalen Azure AD-Administrator erstellt werden. 
-  
+  
 * abuse 
 * admin 
 * administrator 

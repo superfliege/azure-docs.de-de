@@ -7,18 +7,18 @@ author: bwren
 manager: carmonm
 editor: tysonn
 ms.assetid: 1f054a4e-6243-4a66-a62a-0031adb750d8
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: d1d2dd689cb389b6adfe1dd534e7c73e17f755f5
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989184"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57769232"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>Zielgruppenadressierung für Überwachungslösungen in Azure Monitor (Vorschau)
 Wenn Sie eine Überwachungslösung zu Ihrem Abonnement hinzufügen, wird sie automatisch standardmäßig für alle mit Ihrem Log Analytics-Arbeitsbereich verbundenen Windows- und Linux-Agents bereitgestellt.  Möglicherweise möchten Sie Ihre Kosten verwalten und den Umfang der für eine Lösung gesammelten Daten begrenzen, indem Sie sie auf einen bestimmten Satz von Agents beschränken.  Dieser Artikel beschreibt, wie Sie das Feature der **Zielgruppenadressierung für eine Lösung** verwenden, um einen Geltungsbereich auf Ihre Lösungen anzuwenden.
@@ -35,7 +35,7 @@ Sie geben durch das Erstellen einer [Computergruppe](../platform/computer-groups
 Sobald Sie die Computergruppe in Ihrem Arbeitsbereich erstellt haben, beziehen Sie sie in eine Bereichskonfiguration ein, die auf eine oder mehrere Lösungen angewendet werden kann.
  
  
- ### <a name="2-create-a-scope-configuration"></a>2. Erstellen einer Bereichskonfiguration
+### <a name="2-create-a-scope-configuration"></a>2. Erstellen einer Bereichskonfiguration
  Eine **Bereichskonfiguration** enthält eine oder mehrere Computergruppen und kann auf eine oder mehrere Lösungen angewendet werden. 
  
  Erstellen Sie eine Bereichskonfiguration mithilfe des folgenden Vorgangs.  
@@ -49,7 +49,7 @@ Sobald Sie die Computergruppe in Ihrem Arbeitsbereich erstellt haben, beziehen S
  6. Klicken Sie auf **OK**, um die Bereichskonfiguration zu erstellen. 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Wenden Sie die Bereichskonfiguration auf eine Lösung an.
+### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3. Wenden Sie die Bereichskonfiguration auf eine Lösung an.
 Sobald Sie eine Bereichskonfiguration haben, können Sie sie auf eine oder mehrere Lösungen anwenden.  Beachten Sie: Eine einzelne Bereichskonfiguration kann zwar mit mehreren Lösungen verwendet werden, doch jede Lösung kann nur eine Bereichskonfiguration verwenden.
 
 Wenden Sie eine Bereichskonfiguration mithilfe des folgenden Vorgangs an.  

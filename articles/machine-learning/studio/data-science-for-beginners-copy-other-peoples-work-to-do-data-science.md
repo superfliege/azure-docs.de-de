@@ -5,17 +5,17 @@ description: 'Das Geschäftsgeheimnis von Data Science: Lassen Sie Andere Ihre A
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: garyericson
 ms.author: garye
 ms.custom: seodec18
 ms.date: 01/05/2018
-ms.openlocfilehash: 821ee126350d18102ec92de04436a76050734dc4
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a179efe3c4dcd3b36fa8d86910f10c4ab4cdb0aa
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456825"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56817812"
 ---
 # <a name="copy-other-peoples-work-to-do-data-science"></a>Kopieren der Arbeit anderer für Ihre Data Science
 ## <a name="video-5-data-science-for-beginners-series"></a>Video 5: Reihe „Data Science für Einsteiger“
@@ -92,4 +92,4 @@ Sehen Sie sich unbedingt auch die anderen Videos in der Reihe „Data Science f�
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Durchführen Ihres ersten Data Science-Experiments mit Azure Machine Learning Studio](create-experiment.md)
-* [Einführung in Machine Learning in Microsoft Azure](what-is-machine-learning.md)
+* [Einführung in Machine Learning in Microsoft Azure](/azure/machine-learning/preview/overview-what-is-azure-ml)

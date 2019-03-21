@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: da46d33e05a6f76687d3b8982855d477cbabfe86
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 2fbf29385b9a14cf5d4a9df621f0767a32079587
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895617"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094574"
 ---
 # <a name="work-with-azure-functions-proxies"></a>Verwenden von Azure-Funktionsproxys
 
@@ -171,8 +171,8 @@ Sie können einzelne Proxys deaktivieren, indem Sie `"disabled": true` zum Proxy
 
 Das Proxyverhalten kann über verschiedene App-Einstellungen gesteuert werden. Eine Beschreibung dieser Funktionen finden Sie in der [Referenz zu den Einstellungen der Funktionen-App](./functions-app-settings.md).
 
-* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azurefunctionproxydisablelocalcall)
-* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azurefunctionproxybackendurldecodeslashes)
+* [AZURE_FUNCTION_PROXY_DISABLE_LOCAL_CALL](./functions-app-settings.md#azure_function_proxy_disable_local_call)
+* [AZURE_FUNCTION_PROXY_BACKEND_URL_DECODE_SLASHES](./functions-app-settings.md#azure_function_proxy_backend_url_decode_slashes)
 
 ### <a name="reservedChars"></a> Reservierte Zeichen (Formatierung von Zeichenfolgen)
 

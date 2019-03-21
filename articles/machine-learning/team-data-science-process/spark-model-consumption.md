@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9edd243c47c7c0eeeff3b875fccede01806862a7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888109"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Operationalisieren von Machine Learning-Modellen, die mit Spark erstellt wurden
 
@@ -190,9 +190,9 @@ In diesem Abschnitt wird das Indizieren, Codieren und Skalieren kategorischer Fe
 ### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Featuretransformation: Indizieren und Codieren kategorischer Features für die Eingabe in Modelle für die Bewertung
 In diesem Abschnitt wird gezeigt, wie kategorische Daten mithilfe von `StringIndexer` indiziert und Features mit `OneHotEncoder`-Eingabe in den Modellen codiert werden.
 
-Der [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer) codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit Bezeichnungsindizes. Die Indizes werden nach der Häufigkeit der Bezeichnungen sortiert. 
+Der [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit Bezeichnungsindizes. Die Indizes werden nach der Häufigkeit der Bezeichnungen sortiert. 
 
-Der [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die kontinuierliche wertige Features erwarten, z. B. logistische Regression, auf kategorische Features.
+Der [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die kontinuierliche wertige Features erwarten, z. B. logistische Regression, auf kategorische Features.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -257,7 +257,7 @@ Der [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.pre
 Für die Ausführung der obigen Zelle benötigte Zeit: 5,37 Sekunden
 
 ### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>Erstellen von RDD-Objekten mit Featurearrays für die Eingabe in Modelle
-Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](http://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) -Objekten (robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
+Dieser Abschnitt enthält Code, der zeigt, wie Sie kategorische Textdaten als RDD-Objekt indizieren und one-hot-codieren, sodass sie zum Trainieren und Testen logistischer Regression gemäß MLlib und anderer strukturbasierter Modelle verwendet werden können. Die indizierten Daten sind in [RDD](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) -Objekten (robuste verteilte Datasets) gespeichert. Hierbei handelt es sich um die grundlegende Abstraktion in Spark. Ein RDD-Objekt repräsentiert eine unveränderliche, partitionierte Sammlung von Elementen, die parallel in Spark verarbeitet werden können.
 
 Es enthält auch Code, der zeigt, wie Daten mit dem von MLlib bereitgestellten `StandardScalar` für die Verwendung bei der linearen Regression mit dem stochastischen Gradientenverfahren (SGD), einem verbreiteten Algorithmus für das Training einer Vielzahl von Machine Learning-Modellen, skaliert werden. Der [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) wird zum Skalieren der Features auf Einheitenvarianz verwendet. Featureskalierung, auch bekannt als Datennormalisierung, stellt sicher, dass Features mit weit verteilten Werten keine übermäßige Gewichtung in der Zielfunktion erhalten. 
 
@@ -397,9 +397,9 @@ Für die Ausführung der obigen Zelle benötigte Zeit: 16,63 Sekunden
 ## <a name="score-classification-and-regression-random-forest-models"></a>Bewerten der Random Forest-Modelle für Klassifizierung und Regression
 Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten Random Forest-Modelle für Klassifizierung und Regression geladen werden, ihre Leistung mit Standardklassifizierungs- und Regressionsmaßnahmen bewertet wird und dann die Ergebnis wieder in Blob Storage gespeichert werden.
 
-[Random Forests](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forest können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
+[Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Gruppen von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forest können kategorische Features behandeln, auf die Mehrklassenklassifizierung ausgedehnt werden, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Random Forest zählen zu den erfolgreichsten Machine Learning-Modelle für Klassifizierung und Regression.
 
-[spark.mllib](http://spark.apache.org/mllib/) unterstützt Random Forest für binäre und Mehrklassenklassifizierung sowie für Regression mit kontinuierlichen und kategorischen Features. 
+[spark.mllib](https://spark.apache.org/mllib/) unterstützt Random Forest für binäre und Mehrklassenklassifizierung sowie für Regression mit kontinuierlichen und kategorischen Features. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -445,7 +445,7 @@ Der Code in diesem Abschnitt zeigt, wie die in Azure Blob Storage gespeicherten 
 
 **spark.mllib** unterstützt GBTs für binäre Klassifizierung sowie Regression mit kontinuierlichen und kategorischen Features. 
 
-[Gradient-Boosted-Strukturen](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+[Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Funktionsinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

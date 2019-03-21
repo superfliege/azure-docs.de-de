@@ -8,12 +8,12 @@ author: dharmeshkakadia
 ms.author: dharmeshkakadia
 ms.topic: conceptual
 ms.date: 11/2/2017
-ms.openlocfilehash: 150f920fb1371eb64181ff69fdad054f989c0845
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 6d75bf86dab8775e77efb21ecc3b0d60063a9823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53407015"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088960"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Behandeln von Problemen mit Apache Hive unter Verwendung von Azure HDInsight
 
@@ -33,13 +33,13 @@ Hier werden die Antworten auf die wichtigsten Fragen bei der Arbeit mit Apache H
     for d in `hive -e "show databases"`; do echo "create database $d; use $d;" >> alltables.sql ; for t in `hive --database $d -e "show tables"` ; do ddl=`hive --database $d -e "show create table $t"`; echo "$ddl ;" >> alltables.sql ; echo "$ddl" | grep -q "PARTITIONED\s*BY" && echo "MSCK REPAIR TABLE $t ;" >> alltables.sql ; done; done
     ```
 
-  Mit diesem Befehl wird die Datei „allatables.sql“ generiert.
+   Mit diesem Befehl wird die Datei „allatables.sql“ generiert.
 
 3. Kopieren Sie die Datei „alltables.sql“ in den neuen HDInsight-Cluster, und führen Sie den folgenden Befehl aus:
 
-  ```apache
-  hive -f alltables.sql
-  ```
+   ```apache
+   hive -f alltables.sql
+   ```
 
 Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Datenpfade im neuen Cluster identisch mit denen im alten Cluster sind. Wenn sich die Datenpfade unterscheiden, können die Sie generierte Datei „alltables.sql“ manuell so ändern, dass etwaige Änderungen widergespiegelt werden.
 
@@ -56,21 +56,21 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 2. Führen Sie den folgenden Befehl aus, um Hive-Clientprotokolle anzuzeigen:
 
-  ```apache
-  /tmp/<username>/hive.log 
-  ```
+   ```apache
+   /tmp/<username>/hive.log 
+   ```
 
 3. Führen Sie den folgenden Befehl aus, um Hive-Metastoreprotokolle anzuzeigen:
 
-  ```apache
-  /var/log/hive/hivemetastore.log 
-  ```
+   ```apache
+   /var/log/hive/hivemetastore.log 
+   ```
 
 4. Führen Sie den folgenden Befehl aus, um HiveServer-Protokolle anzuzeigen:
 
-  ```apache
-  /var/log/hive/hiveserver2.log 
-  ```
+   ```apache
+   /var/log/hive/hiveserver2.log 
+   ```
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
@@ -83,21 +83,21 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 1. Geben Sie beim Starten der Hive-Shell ein Schlüssel-Wert-Paar für die Konfiguration an. Weitere Informationen finden Sie unter [Zusätzliche Lektüre](#additional-reading-end).
 
-  ```apache
-  hive -hiveconf a=b 
-  ```
+   ```apache
+   hive -hiveconf a=b 
+   ```
 
 2. Führen Sie den folgenden Befehl aus, um alle effektiven Konfigurationen auf Hive-Shell aufzulisten:
 
-  ```apache
-  hive> set;
-  ```
+   ```apache
+   hive> set;
+   ```
 
-  Verwenden Sie beispielsweise den folgenden Befehl, um Hive-Shell mit auf der Konsole aktivierter Debugprotokollierung zu starten:
+   Verwenden Sie beispielsweise den folgenden Befehl, um Hive-Shell mit auf der Konsole aktivierter Debugprotokollierung zu starten:
 
-  ```apache
-  hive -hiveconf hive.root.logger=ALL,console 
-  ```
+   ```apache
+   hive -hiveconf hive.root.logger=ALL,console 
+   ```
 
 ### <a name="additional-reading"></a>Zusätzliche Lektüre
 
@@ -113,19 +113,19 @@ Für den Code in den Schritten zur Behebung wird davon ausgegangen, dass die Dat
 
 2. Führen Sie an der Eingabeaufforderung folgenden Befehl aus:
    
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar CriticalPath --saveResults --dagId <DagId> --eventFileName <DagData.zip> 
+   ```
 
 3. Führen Sie zum Auflisten anderer Analyzer für die Analyse von Tez DAG-Daten (Directed Acyclic Graph, gerichteter azyklischer Graph) den folgenden Befehl aus:
 
-  ```apache
-  hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
-  ```
+   ```apache
+   hadoop jar /usr/hdp/current/tez-client/tez-job-analyzer-*.jar
+   ```
 
-  Ein Beispielprogramm muss als erstes Argument angegeben werden.
+   Ein Beispielprogramm muss als erstes Argument angegeben werden.
 
-  Gültige Programmnamen:
+   Gültige Programmnamen:
     - **ContainerReuseAnalyzer**: Ausgeben von Details zum Wiederverwenden von Containern in einem gerichteten azyklischen Graph
     - **CriticalPath**: Suchen des kritischen Pfads eines gerichteten azyklischen Graphs
     - **LocalityAnalyzer**: Ausgeben von Ortsdetails in einem gerichteten azyklischen Graph

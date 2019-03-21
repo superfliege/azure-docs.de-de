@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0f70bb91ccb0cb403d9292c2e3f069a8a9d2da41
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 2639d47a6c9d8da53c9d6bccde0d317698d5d9fd
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55993859"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257964"
 ---
-# <a name="publish-content-in-the-azure-portal-legacy"></a>Veröffentlichen von Inhalten im Azure-Portal (veraltet)
+# <a name="publish-content-in-the-azure-portal"></a>Veröffentlichen von Inhalten im Azure-Portal  
 > [!div class="op_single_selector"]
 > * [Portal](media-services-portal-publish.md)
 > * [.NET](media-services-deliver-streaming-content.md)
@@ -89,7 +89,7 @@ Wählen Sie das Video und anschließend die Schaltfläche **Wiedergabe** aus.
 Folgende Überlegungen sollten berücksichtigt werden:
 
 * Vergewissern Sie sich, dass das Video veröffentlicht wurde.
-* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) testen.
+* Der Media Player des Azure-Portals verwendet für die Wiedergabe den Standard-Streamingendpunkt. Wenn Sie einen anderen Streamingendpunkt für die Wiedergabe verwenden möchten, können Sie die URL markieren, kopieren und in einen anderen Player einfügen. So können Sie Ihr Video beispielsweise mit dem [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) testen.
 * Der Streamingendpunkt, von dem aus das Streaming erfolgen soll.  
 
 ## <a name="provide-feedback"></a>Feedback geben
