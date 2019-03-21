@@ -5,16 +5,16 @@ description: Die Seite mit der Dokumentenliste zeigt die ersten zehn Dokumente i
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: how to edit a model
-ms.openlocfilehash: e656c6dd7050851eb9885fe253ab29f4e3675216
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: d380c8bcdcb4954901df0b460269493c5be0a6de
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219803"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777387"
 ---
 # <a name="view-document-details"></a>Anzeigen der Dokumentdetails
 
@@ -22,7 +22,7 @@ Die Seite mit der Dokumentenliste zeigt die ersten zehn Dokumente in Ihrem Arbei
 
 Klicken Sie auf ein Dokument, um die Seite mit den entsprechenden Dokumentdetails anzuzeigen. Auf der Seite mit den Dokumentdetails wird die Liste der aus dem Dokument extrahierten Sätze angezeigt.
 
-- In der Standardeinstellung ist im Dropdownfeld die Ausgangssprache ausgewählt. Sie können jedoch auch festlegen, dass die Sätze in der Zielsprache angezeigt werden. 
+- In der Standardeinstellung ist im Dropdownfeld die Ausgangssprache ausgewählt. Sie können jedoch auch festlegen, dass die Sätze in der Zielsprache angezeigt werden.
 - Standardmäßig werden pro Seite 20 Sätze angezeigt. Sie können mit dem Steuerelement zum Paginieren zwischen den Seiten wechseln.
 
 ![Dokumentdetails](media/how-to/how-to-view-document-details.png)

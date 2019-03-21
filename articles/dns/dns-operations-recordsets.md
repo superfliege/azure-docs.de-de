@@ -14,12 +14,12 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 12/21/2016
 ms.author: victorh
-ms.openlocfilehash: 6907382fccaa463fe305ac5049b3858e59b8631b
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fa1f90cf0236a589d1df96658c672a555195be6b
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991394"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56888813"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-azure-powershell"></a>Verwalten von DNS-Einträgen und -Ressourceneintragssätzen in Azure DNS über Azure PowerShell
 
@@ -238,7 +238,7 @@ Diese Vorgangssequenz kann auch *weitergeleitet* werden. Das bedeutet, Sie über
 Get-AzDnsRecordSet -Name "www" –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Add-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Die obigen Beispiele zeigen, wie einem vorhandenen Ressourceneintragssatz vom Typ „A“ ein A-Eintrag hinzugefügt wird. Eine ähnliche Vorgangssequenz wird verwendet, um Ressourceneintragssätzen eines anderen Typs Einträge hinzuzufügen. Hierbei wird dann der `-Ipv4Address`-Parameter von `Add-AzDnsRecordConfig` durch andere (eintragstypspezifische) Parameter ersetzt. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzDnsRecordConfig`-Cmdlet (siehe [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples) weiter oben).
+Die obigen Beispiele zeigen, wie einem vorhandenen Ressourceneintragssatz vom Typ „A“ ein A-Eintrag hinzugefügt wird. Eine ähnliche Vorgangssequenz wird verwendet, um Ressourceneintragssätzen eines anderen Typs Einträge hinzuzufügen. Hierbei wird dann der `-Ipv4Address`-Parameter von `Add-AzDnsRecordConfig` durch andere (eintragstypspezifische) Parameter ersetzt. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzDnsRecordConfig`-Cmdlet (siehe „Zusätzliche Beispiele für Datensatztypen“ weiter oben).
 
 Ressourceneintragssätze vom Typ „CNAME“ oder „SOA“ können maximal einen Eintrag enthalten. Diese Einschränkung ergibt sich aus den DNS-Standards. Sie ist nicht durch Azure DNS bedingt.
 
@@ -272,7 +272,7 @@ Wenn Sie mithilfe der obigen Vorgehensweise den letzten Eintrag aus einem Ressou
 Get-AzDnsRecordSet -Name www –ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -RecordType A | Remove-AzDnsRecordConfig -Ipv4Address "5.6.7.8" | Set-AzDnsRecordSet
 ```
 
-Zur Unterstützung verschiedener Eintragstypen müssen jeweils die passenden typspezifischen Parameter an `Remove-AzDnsRecordSet` übergeben werden. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzDnsRecordConfig`-Cmdlet (siehe [Zusätzliche Beispiele für Datensatztypen](#additional-record-type-examples) weiter oben).
+Zur Unterstützung verschiedener Eintragstypen müssen jeweils die passenden typspezifischen Parameter an `Remove-AzDnsRecordSet` übergeben werden. Die Parameter für den jeweiligen Eintragstyp entsprechen den Parametern für das `New-AzDnsRecordConfig`-Cmdlet (siehe „Zusätzliche Beispiele für Datensatztypen“ weiter oben).
 
 
 ## <a name="modify-an-existing-record-set"></a>Ändern eines vorhandenen Ressourceneintragssatzes

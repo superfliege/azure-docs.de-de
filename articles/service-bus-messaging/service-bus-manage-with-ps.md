@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 7095a10d38912a21707f52e170c2465d1f8713bc
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 28bed5503c5c798f244a4ba3a070894aa4538b00
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54857037"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873025"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Verwenden von PowerShell zum Verwalten von Service Bus-Ressourcen
 
@@ -174,6 +174,6 @@ Service Bus-Entitäten können auch auf andere Weise verwaltet werden. Dies wird
 
 <!--Anchors-->
 
-[purchase options]: http://azure.microsoft.com/pricing/purchase-options/
-[member offers]: http://azure.microsoft.com/pricing/member-offers/
-[free account]: http://azure.microsoft.com/pricing/free-trial/
+[purchase options]: https://azure.microsoft.com/pricing/purchase-options/
+[member offers]: https://azure.microsoft.com/pricing/member-offers/
+[free account]: https://azure.microsoft.com/pricing/free-trial/

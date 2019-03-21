@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: cshoe
-ms.openlocfilehash: 19a5dee53bee20438098d1aaeb773ebf08f252d4
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: d3da5cc9e0eff27fde6bcd503c033db12f49371e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53993449"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767701"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>Strategien zum Testen Ihres Codes in Azure Functions
 
@@ -288,10 +288,10 @@ Als Nächstes fügen Sie eine neue Datei hinzu, nennen Sie sie **defaultTimer.js
 
 ```javascript
 module.exports = {
-    isPastDue: false
+    IsPastDue: false
 };
 ```
-Dieses Modul implementiert die `isPastDue`-Eigenschaft so, dass sie als Fake-Zeitgeberinstanz fungiert.
+Dieses Modul implementiert die `IsPastDue`-Eigenschaft so, dass sie als Fake-Zeitgeberinstanz fungiert.
 
 Verwenden Sie als Nächstes die VS Code-Functions-Erweiterungen, um [eine neue JavaScript-HTTP-Funktion zu erstellen](https://code.visualstudio.com/tutorials/functions-extension/getting-started), und nennen Sie sie *HttpTrigger*. Nachdem die Funktion erstellt wurde, fügen Sie im selben Ordner eine neue Datei namens **index.test.js** hinzu, und fügen Sie den folgenden Code hinzu:
 

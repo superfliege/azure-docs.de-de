@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.openlocfilehash: 08d3d59d20ea80065e8f0238f90579bb268c3723
-ms.sourcegitcommit: 8899e76afb51f0d507c4f786f28eb46ada060b8d
+ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2018
-ms.locfileid: "51823043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879938"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Verwalten und Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen in Azure mithilfe von Network Watcher und Graylog
 
@@ -29,7 +29,7 @@ ms.locfileid: "51823043"
 Sie können für die NSGs in Ihrem Netzwerk die Datenflussprotokollierung aktivieren. Mehrere Netzwerksicherheitsgruppen mit aktivierter Datenflussprotokollierung machen es aufwendig, Ihre Protokolle zu analysieren und einen Einblick in sie zu erhalten. Dieser Artikel bietet eine Projektmappe, um diese Datenflussprotokolle von Netzwerksicherheitsgruppen mit Graylog und Logstash zu verwalten. Hierbei handelt es sich um ein Open Source-Tool zur Protokollverwaltung und -analyse und eine serverseitige Open Source-Datenverarbeitungspipeline.
 
 > [!Warning]
-> In den folgenden Schritten wird Version 1 der Flowprotokolle verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
+> In den folgenden Schritten werden Flowprotokolle der Version 1 verwendet. Ausführliche Informationen finden Sie unter [Einführung in die Datenflussprotokollierung für Netzwerksicherheitsgruppen](network-watcher-nsg-flow-logging-overview.md). Die folgenden Anweisungen funktionieren ohne Änderungen nicht mit Version 2 der Protokolldateien.
 
 ## <a name="scenario"></a>Szenario
 
@@ -47,12 +47,12 @@ Für dieses Szenario müssen Sie die NSG-Datenflussprotokollierung für mindeste
 
 Bei diesem Beispiel sind Graylog und Logstash auf einem in Azure bereitgestellten Ubuntu 14.04-Server konfiguriert.
 
-- Sie finden in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) von Graylog Schritt-für-Schritt-Anweisungen zum Installieren auf Ubuntu.
-- Stellen Sie sicher, dass Sie auch die Graylog-Webschnittstelle gemäß der [Dokumentation](http://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif) konfigurieren.
+- Sie finden in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) von Graylog Schritt-für-Schritt-Anweisungen zum Installieren auf Ubuntu.
+- Stellen Sie sicher, dass Sie auch die Graylog-Webschnittstelle gemäß der [Dokumentation](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif) konfigurieren.
 
-Dieses Beispiel verwendet die Graylog-Mindestkonfiguration (d.h. eine einzelne GraylogInstanz), aber Graylog kann je nach System und Produktionsanforderungen ressourcenübergreifend entworfen werden. Weitere Informationen zu Architekturüberlegungen oder architektonische Leitfaden finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/architecture.html) von Graylog und im [architektonischen Leitfaden](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
+Dieses Beispiel verwendet die Graylog-Mindestkonfiguration (d.h. eine einzelne GraylogInstanz), aber Graylog kann je nach System und Produktionsanforderungen ressourcenübergreifend entworfen werden. Weitere Informationen zu Architekturüberlegungen oder architektonische Leitfaden finden Sie in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/architecture.html) von Graylog und im [architektonischen Leitfaden](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
 
-Graylog kann in vielerlei Hinsicht je nach Plattform und Vorlieben installiert werden. Eine vollständige Liste der möglichen Installationsmethoden finden Sie in Graylogs offizieller [Dokumentation](http://docs.graylog.org/en/2.2/pages/installation.html). Die Graylog-Serveranwendung wird auf Linux-Verteilungen ausgeführt und hat die folgenden Voraussetzungen:
+Graylog kann in vielerlei Hinsicht je nach Plattform und Vorlieben installiert werden. Eine vollständige Liste der möglichen Installationsmethoden finden Sie in Graylogs offizieller [Dokumentation](https://docs.graylog.org/en/2.2/pages/installation.html). Die Graylog-Serveranwendung wird auf Linux-Verteilungen ausgeführt und hat die folgenden Voraussetzungen:
 
 -  Java SE 8 oder höher – [Azul Azure JDK-Dokumentation](https://aka.ms/azure-jdks)
 -  Elastic Search 2.x (2.1.0 oder höher) – [Elasticsearch-Installationsdokumentation](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
@@ -150,7 +150,7 @@ Mithilfe von Logstash können Sie die JSON-formatierten Datenflussprotokolle auf
         }
     }
     ```
-Die bereitgestellte Konfigurationsdatei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe. Der Eingabebereich bezeichnet die Eingabequelle der Protokolle, die Logstash verarbeitet. In diesem Fall wird ein Azure-Blog-Eingabe-Plug-In verwendet (das in den nächsten Schritten installiert wird). Es erlaubt uns, auf die JSON-Dateien des NSG-Datenflussprotokolls zuzugreifen, die in Blob Storage gespeichert sind.
+   Die bereitgestellte Konfigurationsdatei von Logstash besteht aus drei Teilen: Eingabe, Filter und Ausgabe. Der Eingabebereich bezeichnet die Eingabequelle der Protokolle, die Logstash verarbeitet. In diesem Fall wird ein Azure-Blog-Eingabe-Plug-In verwendet (das in den nächsten Schritten installiert wird). Es erlaubt uns, auf die JSON-Dateien des NSG-Datenflussprotokolls zuzugreifen, die in Blob Storage gespeichert sind.
 
 Der Filterabschnitt vereinfacht dann jede Datenfluss-Protokolldatei so, dass jedes einzelnen Flusstupel und die ihm zugeordneten Eigenschaften zu einem gesonderten Logstash-Ereignis werden.
 
@@ -183,7 +183,7 @@ Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestel
 
    ![Erste Schritte](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. Um die neue Eingabe zu starten, wählen Sie *GELF-UDP* in der Dropdown-Liste **Eingabe auswählen** aus, und füllen Sie dann das Formular aus. GELF steht für Graylog Extended Log Format (erweitertes Graylog-Protokollformat). Das GELF-Format wird von Graylog entwickelt. Weitere Informationen zu dessen Vorteilen finden Sie unter der Graylog-[Dokumentation](http://docs.graylog.org/en/2.2/pages/gelf.html).
+3. Um die neue Eingabe zu starten, wählen Sie *GELF-UDP* in der Dropdown-Liste **Eingabe auswählen** aus, und füllen Sie dann das Formular aus. GELF steht für Graylog Extended Log Format (erweitertes Graylog-Protokollformat). Das GELF-Format wird von Graylog entwickelt. Weitere Informationen zu dessen Vorteilen finden Sie unter der Graylog-[Dokumentation](https://docs.graylog.org/en/2.2/pages/gelf.html).
 
    Stellen Sie sicher, dass Sie die Eingabe an die IP-Adresse binden, auf der Sie Ihren Graylog-Server konfiguriert haben. Die IP-Adresse sollte mit dem **Host**-Feld der UDP-Ausgabe der Logstash-Konfigurationsdatei übereinstimmen. Der Standardport sollte *12201* sein. Stellen Sie sicher, dass der Port dem **Port**-Feld in der UDP-Ausgabe entspricht, die in der Konfigurationsdatei von Logstash festgelegt ist.
 
@@ -193,7 +193,7 @@ Nachdem Sie mit Logstash eine Verbindung mit den Datenflussprotokollen hergestel
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-   Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
+   Weitere Informationen zum Graylog-Nachrichteneingaben finden Sie in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
 4. Sobald diese Konfigurationen vorgenommen wurden, können Sie Logstash starten, um den Lesevorgang für Datenflussprotokolle mithilfe des folgenden Befehls zu beginnen: `sudo systemctl start logstash.service`
 
@@ -207,7 +207,7 @@ Durch Klicken auf den blauen Link „% {Message}“ wird jede Nachricht erweiter
 
 ![Meldungen](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
-Standardmäßig sind alle Nachrichtenfelder in der Suche enthalten, wenn Sie kein bestimmtes Nachrichtenfeld für die Suche auswählen. Wenn Sie nach bestimmten Nachrichten suchen (d.h. – Datenflusstupel aus einer bestimmten Quell-IP), können Sie die Graylog-Suchabfragesprache wie [dokumentiert](http://docs.graylog.org/en/2.2/pages/queries.html) verwenden
+Standardmäßig sind alle Nachrichtenfelder in der Suche enthalten, wenn Sie kein bestimmtes Nachrichtenfeld für die Suche auswählen. Wenn Sie nach bestimmten Nachrichten suchen (d.h. – Datenflusstupel aus einer bestimmten Quell-IP), können Sie die Graylog-Suchabfragesprache wie [dokumentiert](https://docs.graylog.org/en/2.2/pages/queries.html) verwenden
 
 ## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Analysieren von Datenflussprotokollen für Netzwerksicherheitsgruppen mit Graylog
 
@@ -241,7 +241,7 @@ Sie können auf den Titel des Dashboards klicken, um ihn anzuzeigen. Im Moment i
 
    ![Datenflussprotokoll-Dashboard](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
-    Weitere Erläuterungen zu Dashboards und anderen Widgettypen finden Sie in der [Dokumentation](http://docs.graylog.org/en/2.2/pages/dashboards.html) von Graylog.
+    Weitere Erläuterungen zu Dashboards und anderen Widgettypen finden Sie in der [Dokumentation](https://docs.graylog.org/en/2.2/pages/dashboards.html) von Graylog.
 
 Durch die Integration von Network Watcher mit Graylog haben Sie jetzt eine einfache und zentrale Möglichkeit zum Verwalten und Visualisieren von NSG-Datenflussprotokollen. Graylog verfügt über eine Reihe weiterer leistungsfähiger Features wie Datenströme und Warnungen, die auch zur weiteren Verwaltung von Datenflussprotokollen und zum besseren Verständnis des Netzwerkdatenverkehrs genutzt werden können. Nachdem Sie Graylog eingerichtet und mit Azure verbunden haben, können Sie die anderen gebotenen Funktionen weiter erkunden.
 

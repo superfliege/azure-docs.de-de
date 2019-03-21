@@ -8,14 +8,14 @@ manager: cgronlun
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 12/21/2018
+ms.date: 03/11/2019
 ms.author: pafarley
-ms.openlocfilehash: 5b749a85295e85ecde8d283ca02066a31be33666
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 259787a90b61b171f391dc02276214f17a57d0d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673068"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838815"
 ---
 # <a name="tutorial-recognize-azure-service-logos-in-camera-pictures"></a>Tutorial: Erkennen von Azure-Dienstlogos in Bildern von der Kamera
 
@@ -101,7 +101,6 @@ Abonnieren Sie den Dienst für maschinelles Sehen, um einen Schlüssel und eine 
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=28-32)]
 
-
 ## <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
 
 Die App erfordert ein Azure-Dienstprinzipalkonto, um Dienste in Ihrem Azure-Abonnement bereitzustellen. Mit einem Dienstprinzipal können Sie mithilfe der rollenbasierten Zugriffssteuerung bestimmte Berechtigungen an eine App delegieren. Weitere Informationen finden Sie unter [Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals).
@@ -131,6 +130,7 @@ Nach der erfolgreichen Erstellung sollte die folgende JSON-Ausgabe mit den erfor
   ...
 }
 ```
+
 Notieren Sie sich die Werte von `clientId` und `tenantId`. Kopieren Sie die Werte in die entsprechenden Felder in der Datei *Source\VisualProvision\AppSettings.cs*.
 
 [!code-csharp[Computer Vision fields](~/AIVisualProvision/Source/VisualProvision/AppSettings.cs?range=8-16)]
@@ -138,11 +138,12 @@ Notieren Sie sich die Werte von `clientId` und `tenantId`. Kopieren Sie die Wert
 ## <a name="run-the-app"></a>Ausführen der App
 
 An diesem Punkt haben Sie der App Zugriff auf Folgendes gewährt:
-* Ein trainiertes Custom Vision-Modell
-* Den Dienst für maschinelles Sehen
-* Ein Dienstprinzipalkonto 
 
-Gehen Sie wie folgt vor, um die App auszuführen:
+- Ein trainiertes Custom Vision-Modell
+- Den Dienst für maschinelles Sehen
+- Ein Dienstprinzipalkonto
+
+Gehen Sie folgendermaßen vor, um die App auszuführen:
 
 1. Wählen Sie im Projektmappen-Explorer von Visual Studio entweder das Projekt **VisualProvision.Android** oder **VisualProvision.iOS** aus. Wählen Sie in der Hauptsymbolleiste im Dropdownmenü einen entsprechenden Emulator oder ein verbundenes mobiles Gerät aus. Führen Sie anschließend die App aus.
 
@@ -163,7 +164,6 @@ Gehen Sie wie folgt vor, um die App auszuführen:
 
     ![App-Bildschirm mit einem Dropdownfeld für das Azure-Zielabonnement](media/azure-logo-tutorial/app-az-subscription.png)
 
-    
 
 1. Die Kamera auf Ihrem Gerät wird aktiviert. Nehmen Sie ein Foto von einem der Azure-Dienstlogos auf, die Sie trainiert haben. Sie sollten nun in einem Bereitstellungsfenster aufgefordert werden, eine Region und eine Ressourcengruppe für die neuen Dienste auszuwählen (wie bei der Bereitstellung über das Azure-Portal). 
 
@@ -171,7 +171,7 @@ Gehen Sie wie folgt vor, um die App auszuführen:
 
     ![App-Bildschirm mit Feldern für die Bereitstellungsregion und Ressourcengruppe](media/azure-logo-tutorial/app-deployment-options.png)
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie alle Schritte dieses Szenarios ausgeführt und die App zum Bereitstellen von Azure-Diensten für Ihr Konto verwendet haben, können Sie als Nächstes zum [Azure-Portal](https://ms.portal.azure.com/) navigieren. Kündigen Sie dort die Dienste, die Sie nicht nutzen möchten.
 

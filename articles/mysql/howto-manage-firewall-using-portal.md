@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: 598af6bb945318f0a76ffe094dd5786abacccc3f
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: b55f8d44d12fa503a17218db4a5166819024f1aa
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53543528"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56872895"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe des Azure-Portals
 Mithilfe von Firewallregeln auf Serverebene können Administratoren über eine bestimmte IP-Adresse oder über einen IP-Adressbereich auf einen Server für Azure Database for MySQL zugreifen. 
@@ -34,7 +34,7 @@ Mithilfe von Firewallregeln auf Serverebene können Administratoren über eine b
 
 4. Fügen Sie weitere Adressräume hinzu. In den Firewallregeln für Azure Database for MySQL können Sie eine einzelne IP-Adresse oder einen Adressbereich angeben. Wenn Sie die Regel auf eine einzelne IP-Adresse beschränken möchten, geben Sie dieselbe Adresse in die Felder „Start-IP“ und „End-IP“ ein. Durch Öffnen der Firewall wird es Administratoren, Benutzern und Anwendungen ermöglicht, auf dem MySQL-Server auf alle Datenbanken zuzugreifen, für die sie über gültige Anmeldeinformationen verfügen.
 
-   ![Azure-Portal – Firewallregeln ](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
+   ![Azure-Portal – Firewallregeln](./media/howto-manage-firewall-using-portal/4-specify-addresses.png)
 
 5. Klicken Sie auf der Symbolleiste auf **Speichern**, um diese Firewallregel auf Serverebene zu speichern. Warten Sie auf die Bestätigung, dass das Update für die Firewallregeln erfolgreich war.
 

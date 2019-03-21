@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e6e25424981118363070d42b2fb057b18fdb91a9
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: 0d743d89c344ce9cb6eec116ed9c3e0cbe56f86e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48809001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878646"
 ---
 <a name="api-prerequisites"></a>API-Voraussetzungen
 ================
@@ -55,7 +55,7 @@ Gehen Sie wie folgt vor, um den Dienstprinzipal hinzuzufügen:
 
      ![Hinzufügen einer verwalteten App zum Portal](./media/cloud-partner-portal-api-prerequisites/managedapp.png)
 
-4. Klicken Sie auf **Hinzufügen**, um den Dienstprinzipal zu Ihrem Konto hinzuzufügen.
+1. Klicken Sie auf **Hinzufügen**, um den Dienstprinzipal zu Ihrem Konto hinzuzufügen.
 
    ![Einen Dienstprinzipal hinzufügen](./media/cloud-partner-portal-api-prerequisites/add-service-principal.jpg)
 
@@ -66,7 +66,7 @@ Gehen Sie wie folgt vor, um den Dienstprinzipal hinzuzufügen:
 Die Cloud-Partnerportal-APIs verwenden die folgenden Ressourcen und Protokolle während einer Authentifizierung:
 
 - Ein JWT-Trägertoken (JSON Web Token), um Zugriff auf Ressourcen anzufordern
-- Das [OpenID Connect](http://openid.net/connect/)-Protokoll (OIDC), um die Identität zu überprüfen
+- Das [OpenID Connect](https://openid.net/connect/)-Protokoll (OIDC), um die Identität zu überprüfen
 - [Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) als Identitätsautorität
 
 Es gibt zwei prinzipielle Ansätze, ein JWT-Token programmgesteuert anzufordern:

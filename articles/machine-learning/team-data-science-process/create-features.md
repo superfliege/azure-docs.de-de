@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b7c10884682b6537bbfcbb1b1f8b89b38751d05b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8b0973007a78b492cff1c5ffc2ce1e43116a0847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478048"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835083"
 ---
 # <a name="feature-engineering-in-data-science"></a>Featureentwicklung im Data Science-Prozess
 Dieser Artikel erläutert den Zweck der Erstellung von Features und stellt Beispiele ihrer Rolle im Datenaufbereitungsprozess für maschinelles Lernen vor. Die Beispiele zur Veranschaulichung dieses Prozesses stammen aus Azure Machine Learning Studio. 
@@ -46,7 +46,7 @@ Welche Art von Features sollte erstellt werden, um das Dataset beim Trainieren e
 
 Wenn Sie Azure Machine Learning zum ersten Mal verwenden, ist es am einfachsten, wenn Sie sich diesen Prozess anhand der Beispiele in Studio verdeutlichen. Zwei Beispiele sind hier dargestellt:
 
-* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](http://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
+* Ein Beispiel für die Regression: [Vorhersage der Anzahl ausgeliehener Fahrräder](https://gallery.cortanaintelligence.com/Experiment/Regression-Demand-estimation-4) in einem überwachten Experiment, in dem die Zielwerte bekannt sind
 * Ein Text Mining-Klassifizierungsbeispiel mit [Feature Hashing](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/)
 
 ## <a name="example-1-add-temporal-features-for-a-regression-model"></a>Beispiel 1: Hinzufügen von temporären Features zu einem Regressionsmodell

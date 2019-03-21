@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: b538e1b2d37c92e1712da517ab5f3c46f5e2c3a3
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 252d5e551dad56108ad952eb0c7c3b39df0585d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992181"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855298"
 ---
 # <a name="managing-media-services-assets-across-multiple-storage-accounts"></a>Verwalten von Media Services-Medienobjekten über mehrere Speicherkonten  
 
@@ -27,7 +27,9 @@ Sie können mehrere Speicherkonten an ein einzelnes Media Services-Konto anfüge
 * Lastenausgleich der Assets für mehrere Speicherkonten.
 * Skalierung von Media Services für umfangreiche Inhaltsverarbeitung (derzeit ist ein Speicherkonto auf eine maximale Größe von 500 TB beschränkt). 
 
-In diesem Artikel wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/azurerm.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
+In diesem Artikel wird erläutert, wie mehrere Speicherkonten mit [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/az.media) an ein Media Services-Konto angefügt werden. Es wird zudem beschrieben, wie beim Erstellen von Medienobjekten mit dem Media Services-SDK verschiedene Speicherkonten angegeben werden. 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="considerations"></a>Überlegungen
 
@@ -40,11 +42,11 @@ Wenn Sie Ihrem Media Services-Konto mehrere Speicherkonten zuordnen, gelten die 
 
 Weitere Überlegungen:
 
-Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der „Name“-Eigenschaft darf keines der folgenden für die [Prozentcodierung reservierten Zeichen](http://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
+Media Services verwendet beim Erstellen von URLs für den Streaminginhalt den Wert der **IAssetFile.Name**-Eigenschaft (z.B. http://{WAMSAccount}.origin.mediaservices.windows.net/{GUID}/{IAssetFile.Name}/streamingParameters). Aus diesem Grund ist die Prozentkodierung nicht zulässig. Der Wert der „Name“-Eigenschaft darf keines der folgenden für die [Prozentcodierung reservierten Zeichen](https://en.wikipedia.org/wiki/Percent-encoding#Percent-encoding_reserved_characters) enthalten: !*'();:@&=+$,/?%#[]". Darüber hinaus darf „.“ nur einmal für die Dateinamenerweiterung vorhanden sein.
 
 ## <a name="to-attach-storage-accounts"></a>So fügen Sie Speicherkonten an  
 
-Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/azurerm.media), wie im folgenden Beispiel gezeigt:
+Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource Manager-APIs](/rest/api/media/operations/azure-media-services-rest-api-reference) und [PowerShell](/powershell/module/az.media), wie im folgenden Beispiel gezeigt:
 
     $regionName = "West US"
     $subscriptionId = " xxxxxxxx-xxxx-xxxx-xxxx- xxxxxxxxxxxx "
@@ -54,11 +56,11 @@ Um Ihre Speicherkonten Ihrem AMS-Konto anzufügen, verwenden Sie [Azure Resource
     $storageAccount2Name = "skystorage2"
     $storageAccount1Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount1Name"
     $storageAccount2Id = "/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Storage/storageAccounts/$storageAccount2Name"
-    $storageAccount1 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
-    $storageAccount2 = New-AzureRmMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
+    $storageAccount1 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount1Id -IsPrimary
+    $storageAccount2 = New-AzMediaServiceStorageConfig -StorageAccountId $storageAccount2Id
     $storageAccounts = @($storageAccount1, $storageAccount2)
     
-    Set-AzureRmMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
+    Set-AzMediaService -ResourceGroupName $resourceGroupName -AccountName $mediaAccountName -StorageAccounts $storageAccounts
 
 ### <a name="support-for-cool-storage"></a>Unterstützung für kalten Speicher
 

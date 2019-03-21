@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 7b5bb0bf8ff5fac10c47cf5bdf9564903f4d6b94
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 58be8a222f649abe4be6de272a1ef2b686336262
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847126"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>Einrichten Ihrer Anwendung im Veröffentlichungsportal
 
@@ -27,16 +27,16 @@ Sie sind jetzt bereit, Ihre Anwendung im Veröffentlichungsportal einzurichten.
 
 ## <a name="login-and-create-a-new-offer"></a>Anmelden und Erstellen eines neuen Angebots
 
-1. Melden Sie sich beim [Cloudpartnerportal](http://cloudpartner.azure.com/) an.
+1. Melden Sie sich beim [Cloudpartnerportal](https://cloudpartner.azure.com/) an.
 2. Klicken Sie in der Navigationsleiste links auf „+ Neues Angebot“, und wählen Sie „Dynamics 365 for Customer Engagement“ aus.
 
 ![Auswählen eines neuen Angebots](./media/CRMScreenShot14.png)
 
-3. Eine neue Editor-Ansicht für Angebote wird geöffnet, und Sie können nun mit der Erstellung beginnen.
+1. Eine neue Editor-Ansicht für Angebote wird geöffnet, und Sie können nun mit der Erstellung beginnen.
 
 ![Bildschirm „Neues Angebot“](./media/CRMScreenShot15.png)
 
-4. Die „Formulare“, die ausgefüllt werden müssen, werden in der „Editor“-Ansicht auf der linken Seite angezeigt. Jedes „Formular“ besteht aus einer Reihe von Feldern, die ausgefüllt werden müssen. Erforderliche Felder sind mit einem roten Sternchen gekennzeichnet (\*).
+1. Die „Formulare“, die ausgefüllt werden müssen, werden in der „Editor“-Ansicht auf der linken Seite angezeigt. Jedes „Formular“ besteht aus einer Reihe von Feldern, die ausgefüllt werden müssen. Erforderliche Felder sind mit einem roten Sternchen gekennzeichnet (\*).
 
 Es gibt vier Hauptformulare für die Erstellung von Angeboten für Dynamics 365 for Customer Engagement.
 
@@ -88,7 +88,7 @@ Hier folgt eine Erläuterung zu diesen Feldern:
 
 ### <a name="crm-package-availability"></a>Verfügbarkeit von CRM-Paketen
 
-Wählen Sie in diesem Abschnitt aus, für welche CRM-Regionen Ihr Paket zur Verfügung gestellt werden soll. Informationen darüber, welche Regionen welche Länder versorgen, finden Sie unter dem Link: [http://o365datacentermap.azurewebsites.net/](http://o365datacentermap.azurewebsites.net/)
+Wählen Sie in diesem Abschnitt aus, für welche CRM-Regionen Ihr Paket zur Verfügung gestellt werden soll. Informationen darüber, welche Regionen welche Länder versorgen, finden Sie unter dem Link: [https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
 Hinweis: Die Bereitstellung von „Sovereign and US Gov Cloud“ in Deutschland ERFORDERT EINE BESONDERE BERECHTIGUNG UND VALIDIERUNG WÄHREND DER ZERTIFIZIERUNG.
 

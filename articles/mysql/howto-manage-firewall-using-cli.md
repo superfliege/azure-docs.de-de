@@ -7,12 +7,12 @@ ms.service: mysql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 02/28/2018
-ms.openlocfilehash: e4aabaf2673f6211523653f9d0a0ecf1769f83a3
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 870910654101b4d6689b51464f8a29aef41bf9cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53549002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103127"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-cli"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MySQL mithilfe der Azure CLI
 Mithilfe von Firewallregeln auf Serverebene können Administratoren den Zugriff auf eine Azure Database for MySQL-Serverinstanz über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwalten. Dank praktischer Azure CLI-Befehle können Sie zum Verwalten Ihres Servers Firewallregeln erstellen, aktualisieren, löschen, auflisten und anzeigen. Eine Übersicht über Firewalls für Azure-Datenbank für MySQL finden Sie unter [Azure Database for MySQL server firewall rules](./concepts-firewall-rules.md) (Firewallregeln des Servers für Azure-Datenbank für MySQL).
@@ -38,7 +38,7 @@ Stellen Sie mit dem Befehl **az login** eine sichere Verbindung zwischen der Azu
     ```azurecli
     az login
     ```
-Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
+   Dieser Befehl gibt einen Code aus, der im nächsten Schritt verwendet wird.
 
 2. Verwenden Sie zum Öffnen der Seite [https://aka.ms/devicelogin](https://aka.ms/devicelogin) einen Webbrowser, und geben Sie dann den Code ein.
 

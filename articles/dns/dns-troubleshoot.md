@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/20/2017
 ms.author: genli
-ms.openlocfilehash: 816ad6c0079e9272286cdc072ff71bf15313eb8e
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 535e7604915555f32a7636b739c49f72cb0220c8
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34069098"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541569"
 ---
 # <a name="azure-dns-troubleshooting-guide"></a>Azure DNS – Handbuch zur Problembehandlung
 
@@ -69,11 +69,11 @@ Die DNS-Namensauflösung ist ein mehrstufiger Prozess, der aufgrund einer Vielza
 
 1.  Vergewissern Sie sich, dass die DNS-Einträge in Azure DNS richtig konfiguriert wurden. Überprüfen Sie die DNS-Einträge im Azure-Portal, und stellen Sie sicher, dass der Zonenname, Eintragsname und Eintragstyp richtig sind.
 2.  Vergewissern Sie sich, dass die DNS-Einträge auf den Azure-DNS-Namenservern richtig aufgelöst werden.
-    - Wenn Sie DNS-Abfragen über Ihren lokalen Computer vornehmen, werden möglicherweise zwischengespeicherte Ergebnisse angezeigt, die den aktuellen Status der Namenserver nicht wiedergeben.  Zudem verwenden Unternehmensnetzwerke häufig DNS-Proxyserver die verhindern, dass DNS-Abfragen an bestimmte Namenserver geleitet werden.  Verwenden Sie zur Vermeidung dieser Probleme einen webbasierten Namensauflösungsdienst wie [digwebinterface](http://digwebinterface.com).
+    - Wenn Sie DNS-Abfragen über Ihren lokalen Computer vornehmen, werden möglicherweise zwischengespeicherte Ergebnisse angezeigt, die den aktuellen Status der Namenserver nicht wiedergeben.  Zudem verwenden Unternehmensnetzwerke häufig DNS-Proxyserver die verhindern, dass DNS-Abfragen an bestimmte Namenserver geleitet werden.  Verwenden Sie zur Vermeidung dieser Probleme einen webbasierten Namensauflösungsdienst wie [digwebinterface](https://digwebinterface.com).
     - Achten Sie darauf, die richtigen Namenserver für Ihre DNS-Zone anzugeben, wie im Azure-Portal gezeigt.
     - Überprüfen Sie, ob der DNS-Name (Sie müssen den vollqualifizierten Namen einschließlich des Zonennamens angeben) und der Eintragstyp richtig sind.
 3.  Vergewissern Sie sich, dass der DNS-Domänenname ordnungsgemäß [an die Azure DNS-Namenserver delegiert wurde](dns-domain-delegation.md). Zahlreiche [Websites von Drittanbietern bieten die Überprüfung von DNS-Delegierungen an](https://www.bing.com/search?q=dns+check+tool). Dieser Test ist eine *Zonen*delegierung, daher sollten Sie nur den Namen der DNS-Zone und nicht den vollqualifizierten Eintragsnamen eingeben.
-4.  Nach Abschluss der obigen Schritte sollte Ihr DNS-Eintrag jetzt ordnungsgemäß aufgelöst werden. Um dies zu überprüfen, können Sie [digwebinterface](http://digwebinterface.com) erneut und dieses Mal mit den standardmäßigen Namenservereinstellungen verwenden.
+4.  Nach Abschluss der obigen Schritte sollte Ihr DNS-Eintrag jetzt ordnungsgemäß aufgelöst werden. Um dies zu überprüfen, können Sie [digwebinterface](https://digwebinterface.com) erneut und dieses Mal mit den standardmäßigen Namenservereinstellungen verwenden.
 
 
 ### <a name="recommended-documents"></a>**Empfohlene Dokumente**

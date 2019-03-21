@@ -18,12 +18,12 @@ ms.date: 11/20/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 47707b5461fef5043cdee3822b5b59d91f98b773
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7ec279b9c3333c365e5e516fb61fc10016fefe80
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205653"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170121"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Was ist das Was-wäre-wenn-Tool für den bedingten Azure Active Directory-Zugriff?
 

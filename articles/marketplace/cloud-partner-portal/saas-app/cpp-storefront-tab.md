@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 25fdce2381cc6dd65559a2450a42de5389589863
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 7c4bd326c597b8e989dfc7aac5239ddb2d38376a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195940"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57884766"
 ---
 # <a name="saas-application-storefront-details-tab"></a>Registerkarte „Details der digitalen Ladenzeile“ für eine SaaS-Anwendung
 
@@ -36,8 +36,8 @@ In der folgenden Tabelle sind die „Details der digitalen Ladenzeile“ beschri
 
 |  **Angebotsfelder**   |  **Beschreibung**  |
 |  ---------------   |  ---------------  |
-|      Angebotszusammenfassung              |        Eine Zusammenfassung des Nutzenversprechens Ihres Angebots. Die Zusammenfassung wird auf der Suchseite Ihres Angebots angezeigt. Sie darf aus höchstens 100 Zeichen bestehen.           |
-|      Beschreibung des Angebots              |      Die Beschreibung, die auf der Detailseite Ihrer Anwendung angezeigt wird. Maximal sind 1300 Zeichen zulässig. Sie können einfache HTML-Markuptags verwenden, um den Inhalt zu formatieren. Beispiele: &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt; und &lt;li&gt;. Um zu sehen, wie die formatierte Beschreibung aussieht, verwenden Sie ein Echtzeit-Online-HTML-Tool wie [http://htmledit.squarefree.com](http://htmledit.squarefree.com).             |
+|      Angebotszusammenfassung              |        Eine Zusammenfassung des Nutzenversprechens Ihres Angebots. Die Zusammenfassung wird auf der Suchseite Ihres Angebots angezeigt. Sie darf maximal 100 Zeichen lang sein.           |
+|      Beschreibung des Angebots              |      Die Beschreibung, die auf der Detailseite Ihrer Anwendung angezeigt wird. Maximal sind 1300 Zeichen zulässig. Sie können einfache HTML-Markuptags verwenden, um den Inhalt zu formatieren. Beispiele: &lt;p&gt;, &lt;h1&gt;, &lt;h2&gt; und &lt;li&gt;. Um zu sehen, wie die formatierte Beschreibung aussieht, verwenden Sie ein Echtzeit-Online-HTML-Tool wie [http://htmledit.squarefree.com](https://htmledit.squarefree.com).             |
 |          Branchen          |        Wählen Sie die Branchen aus, für die Ihr Angebot am besten geeignet ist. Wenn Ihre Anwendung für mehrere Branchen geeignet ist, können Sie maximal zwei auswählen.           |
 |          Vorgeschlagene Kategorien (max. 3)         |        Wählen Sie die Kategorien aus, für die Ihr Angebot am besten geeignet ist. Sie können bis zu drei Kategorien auswählen.           |
 |           App-Version         |        Geben Sie die Versionsnummer Ihrer Anwendung ein.           |

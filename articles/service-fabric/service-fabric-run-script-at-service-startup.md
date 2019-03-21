@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
 ms.author: mfussell
-ms.openlocfilehash: caca931806aed7e1868c126d4629073bcea4b900
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098611"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838441"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>Ausführen eines Dienststartskripts als lokales Benutzerkonto oder Systemkonto
 Bevor eine ausführbare Service Fabric-Dienstdatei startet, können Konfigurations- oder Setupeinstellungen erforderlich sein.  Beispiel: Konfiguration von Umgebungsvariablen. Sie können angeben, dass ein Skript ausgeführt wird, bevor die ausführbare Dienstdatei im Dienstmanifest für den Dienst startet. Durch Konfigurieren einer RunAs-Richtlinie für den Setupeinstiegspunkt des Diensts können Sie das Konto ändern, unter dem die Setupdatei ausgeführt wird.  Mit einem separaten Setupeinstiegspunkt können Sie für einen kurzen Zeitraum eine Konfiguration mit hohen Berechtigungen ausführen, damit die ausführbare Diensthostdatei nicht für längere Zeiträume mit hohen Berechtigungen ausgeführt werden muss.
@@ -34,8 +34,8 @@ Im Folgenden finden Sie ein einfaches Dienstmanifestbeispiel für einen zustands
 <ServiceManifest Name="MyStatelessServicePkg"
                  Version="1.0.0"
                  xmlns="http://schemas.microsoft.com/2011/01/fabric"
-                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
-                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                 xmlns:xsd="https://www.w3.org/2001/XMLSchema"
+                 xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance">
   <Description>An example service manifest.</Description>
   <ServiceTypes>
     <StatelessServiceType ServiceTypeName="MyStatelessServiceType" />
@@ -74,7 +74,7 @@ Das folgende Anwendungsmanifestbeispiel zeigt das Konfigurieren des Dienst-Setup
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>
@@ -113,7 +113,7 @@ Häufig ist es von Vorteil, das Startskript mithilfe eines lokalen Systemkontos 
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyApplicationType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="MyStatelessService_InstanceCount" DefaultValue="-1" />
   </Parameters>

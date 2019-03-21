@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
-ms.openlocfilehash: c467c963a558f84a0a08887d3777dccf7cd8554d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 0801469d586e6f2d6514927cdc7b894900a3aa35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234066"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843565"
 ---
 # <a name="use-virtual-network-service-endpoints-with-azure-service-bus"></a>Verwenden von VNET-Dienstendpunkten mit Azure Service Bus
 
@@ -48,7 +48,7 @@ Das Ergebnis ist eine private und isolierte Beziehung zwischen den Workloads, di
 
 ## <a name="enable-service-endpoints-with-service-bus"></a>Aktivieren von Dienstendpunkten mit Service Bus
 
-Ein wichtiger Aspekt bei der Verwendung von VNET-Dienstendpunkten mit Service Bus besteht darin, dass Sie diese Endpunkte nicht in Anwendungen aktivieren sollten, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Da VNETs im Tarif Standard nicht unterstützt werden, ist der Endpunkt auf Namespaces im Tarif Premium beschränkt. Das VNET blockiert Datenverkehr zum Standard-Namespace.
+Ein wichtiger Aspekt bei der Verwendung von VNET-Dienstendpunkten mit Service Bus besteht darin, dass Sie diese Endpunkte nicht in Anwendungen aktivieren sollten, in denen Service Bus-Namespaces der Tarife Standard und Premium gemischt werden. Da VNETs im Tarif Standard nicht unterstützt werden, ist der Endpunkt auf Namespaces im Tarif Premium beschränkt.
 
 ## <a name="advanced-security-scenarios-enabled-by-vnet-integration"></a>Erweiterte Sicherheitsszenarien basierend auf der VNET-Integration 
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
-ms.openlocfilehash: 35f9b76e27a0977a25f6d060f7362bc417e0568e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 7e8043badbc0accd38ad618a7d455729ab6606b2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813856"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541287"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure"></a>Sichern einer SharePoint-Farm in Azure 
 Die Vorgehensweise zum Sichern einer SharePoint-Farm mithilfe von System Center Data Protection Manager (DPM) in Microsoft Azure ähnelt der Vorgehensweise zum Sichern anderer Datenquellen. Azure Backup ermöglicht die Verwendung eines flexiblen Sicherungszeitplans, mit dem Sie tägliche, wöchentliche, monatliche oder jährliche Sicherungspunkte erstellen und Aufbewahrungsrichtlinienoptionen für unterschiedliche Sicherungspunkte konfigurieren können. Mit DPM können Sie lokale Festplattenkopien speichern, um die Wiederherstellung zu beschleunigen. Außerdem können Sie Kopien zur kostengünstigen, langfristigen Aufbewahrung in Azure speichern.
@@ -47,7 +47,7 @@ Die Leistung hängt von zahlreichen Faktoren ab – unter anderem von der Größ
 
 ### <a name="dpm-update-rollup-5"></a>DPM-Updaterollup 5
 Wenn Sie eine SharePoint-Farm in Azure schützen möchten, müssen Sie zunächst mindestens das DPM-Updaterollup 5 installieren. Mit dem Updaterollup 5 kann eine (mit SQL AlwaysOn konfigurierte) SharePoint-Farm in Azure geschützt werden.
-Weitere Informationen finden Sie in dem Blogbeitrag, der [DPM-Updaterollup 5](http://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
+Weitere Informationen finden Sie in dem Blogbeitrag, der [DPM-Updaterollup 5](https://blogs.technet.com/b/dpm/archive/2015/02/11/update-rollup-5-for-system-center-2012-r2-data-protection-manager-is-now-available.aspx)
 
 ### <a name="whats-not-supported"></a>Nicht unterstützte Funktionen
 * Der DPM-Schutz einer SharePoint-Farm erstreckt sich nicht auf Suchindizes oder Anwendungsdienstdatenbanken. Für diese Datenbanken muss der Schutz separat konfiguriert werden.
@@ -240,6 +240,6 @@ Ja, das Element kann in der ursprünglichen SharePoint-Site wiederhergestellt we
 Da SharePoint-Datenbanken in SQL AlwaysOn konfiguriert werden, können sie nur geändert werden, wenn die Verfügbarkeitsgruppe entfernt wird. DPM kann eine Datenbank daher nicht am ursprünglichen Speicherort wiederherstellen. Sie können eine SQL Server-Datenbank in einer anderen SQL Server-Instanz wiederherstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Weitere Informationen zum DPM-Schutz von SharePoint finden Sie in der dazugehörigen [Videoreihe](http://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
+* Weitere Informationen zum DPM-Schutz von SharePoint finden Sie in der dazugehörigen [Videoreihe](https://channel9.msdn.com/Series/Azure-Backup/Microsoft-SCDPM-Protection-of-SharePoint-1-of-2-How-to-create-a-SharePoint-Protection-Group)
 * [Versionsanmerkungen für System Center 2012 – Data Protection Manager](https://technet.microsoft.com/library/jj860415.aspx)
 * [Versionsanmerkungen für Data Protection Manager in System Center 2012 SP1](https://technet.microsoft.com/library/jj860394.aspx)

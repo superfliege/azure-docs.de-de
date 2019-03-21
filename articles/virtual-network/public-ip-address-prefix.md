@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 95fb889da564d6e40e25dfb9ee64a8665a954652
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 5496be93a5241621cd4dc5e873e4386f8ed6c992
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700739"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57195216"
 ---
 # <a name="public-ip-address-prefix"></a>Präfix für öffentliche IP-Adressen
 
 Das Präfix für öffentliche IP-Adressen ist ein reservierter Bereich von IP-Adressen für Ihre öffentlichen Endpunkte in Azure. Azure weist Ihrem Abonnement einen zusammenhängenden Adressbereich zu, der auf der Anzahl der von Ihnen angegebenen IP-Adressen basiert. Wenn Sie mit öffentlichen IP-Adressen nicht vertraut sind, finden Sie weitere Informationen unter [Öffentliche IP-Adressen](virtual-network-ip-addresses-overview-arm.md#public-ip-addresses).
 
-Öffentliche IP-Adressen werden aus einem Pool mit Adressen in jeder Azure-Region zugewiesen. Sie können die Liste der Bereiche [herunterladen](https://www.microsoft.com/download/details.aspx?id=41653), die Azure in jeder Region verwendet. 40.121.0.0/16 ist beispielsweise einer von mehr als 100 Bereichen, die Azure in der Region „USA, Osten“ verwendet. Der Bereich umfasst nutzbare Adressen von 40.121.0.1 bis 40.121.255.254.
+Öffentliche IP-Adressen werden aus einem Pool mit Adressen in jeder Azure-Region zugewiesen. Sie können die Liste der Bereiche [herunterladen](https://www.microsoft.com/download/details.aspx?id=56519), die Azure in jeder Region verwendet. 40.121.0.0/16 ist beispielsweise einer von mehr als 100 Bereichen, die Azure in der Region „USA, Osten“ verwendet. Der Bereich umfasst nutzbare Adressen von 40.121.0.1 bis 40.121.255.254.
 
 Sie erstellen ein Präfix für öffentliche IP-Adressen in einer Azure-Region und einem Azure-Abonnement, indem Sie einen Namen angeben und festlegen, wie viele Adressen das Präfix umfassen soll. Wenn Sie z.B. das Präfix „/28“ für öffentliche IP-Adressen erstellen, ordnet Azure 16 Adressen aus einem der Adressbereiche zu. Sie wissen erst dann, welchen Bereich Azure zuweist, wenn Sie den Bereich erstellen, aber die Adressen sind zusammenhängend. Für Präfixe öffentlicher IP-Adressen fällt eine Gebühr an. Weitere Informationen finden Sie unter [Preise für öffentliche IP-Adressen](https://azure.microsoft.com/pricing/details/ip-addresses).
 

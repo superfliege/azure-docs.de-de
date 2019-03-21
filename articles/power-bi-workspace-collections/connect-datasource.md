@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: fcf18731bd5b9bbe91541931ac68effd9de6debf
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: c67369edec2f3c84ada14e6c2a3a3ab8056b3e0c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55104693"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870094"
 ---
 # <a name="connect-to-a-data-source"></a>Herstellen einer Verbindung mit einer Datenquelle
 
@@ -72,5 +72,5 @@ Um sicherzustellen, dass die an die zugrunde liegende Datenquelle gesendeten Abf
 * [Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen](get-started.md)
 * [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
 

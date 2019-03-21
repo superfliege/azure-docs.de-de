@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 3e5f6edf213838345c21598213b4fc2065e66335
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5fb62c38bde98d946694790adb860240eaa59fa9
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884136"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530176"
 ---
 # <a name="url-prebuilt-entity-for-a-luis-app"></a>Vordefinierte URL-Entität für eine LUIS-App
 Die Entität „url“ extrahiert URLs mit Domänennamen oder IP-Adressen. Da diese Entität bereits trainiert wurde, müssen Sie der Anwendung keine Beispieläußerungen mit URLs hinzufügen. Die Entität „url“ wird nur in der Kultur `en-us` unterstützt. 
@@ -29,7 +29,7 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.url** veranscha
 
 ```json
 {
-  "query": "http://www.luis.ai is a great cognitive services example of artificial intelligence",
+  "query": "https://www.luis.ai is a great cognitive services example of artificial intelligence",
   "topScoringIntent": {
     "intent": "None",
     "score": 0.781975448
@@ -42,7 +42,7 @@ Im folgenden Beispiel wird die Auflösung der Entität **builtin.url** veranscha
   ],
   "entities": [
     {
-      "entity": "http://www.luis.ai",
+      "entity": "https://www.luis.ai",
       "type": "builtin.url",
       "startIndex": 0,
       "endIndex": 17

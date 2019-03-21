@@ -9,17 +9,17 @@ editor: spelluru
 ms.assetid: 23bde1ea-f978-43b2-9eeb-bfd7b9edc4c1
 ms.service: notification-hubs
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: mobile-baidu
 ms.workload: mobile
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 3ff0d0db554fe514fdd6be6383b6d1a19f1c39ec
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: c9aadb0dcd5adabed6a6490760282c5201a79000
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54451458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848676"
 ---
 # <a name="get-started-with-notification-hubs-using-baidu"></a>Erste Schritte mit Notification Hubs mit Baidu
 
@@ -132,8 +132,8 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
 5. Fügen Sie anschließend Azure Notification Hubs-Bibliotheken hinzu. Fügen Sie in der Datei `Build.Gradle` für die App im Abschnitt „dependencies“ die folgenden Zeilen hinzu:
 
     ```javascript
-    compile 'com.microsoft.azure:notification-hubs-android-sdk:0.4@aar'
-    compile 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
+    implementation 'com.microsoft.azure:notification-hubs-android-sdk:0.6@aar'
+    implementation 'com.microsoft.azure:azure-notifications-handler:1.0.1@aar'
     ```
 
     Fügen Sie nach dem Abschnitt „dependencies“ das folgende Repository hinzu:
@@ -141,7 +141,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
     ```javascript
     repositories {
         maven {
-            url "http://dl.bintray.com/microsoftazuremobile/SDK"
+            url "https://dl.bintray.com/microsoftazuremobile/SDK"
         }
     }
     ```
@@ -161,7 +161,7 @@ Notieren Sie sich die Werte für `DefaultListenSharedAccessSignature` und `Defau
         tools:replace="android:allowBackup,icon,theme,label">
     ```
 
-6. Laden Sie das [Baidu Push Android SDK](http://push.baidu.com/doc/android/api) herunter, und entzippen Sie es. Kopieren Sie die Datei `pushservice-x.y.z jar` in den Ordner „libs“. Kopieren Sie anschließend die Dateien mit der Dateinamenerweiterung `.so` in die Ordner vom Typ `src/main/jniLibs` Ihrer Android-Anwendung. (Erstellen Sie hierzu einen neuen Ordner.)
+6. Laden Sie das [Baidu Push Android SDK](https://push.baidu.com/doc/android/api) herunter, und entzippen Sie es. Kopieren Sie die Datei `pushservice-x.y.z jar` in den Ordner „libs“. Kopieren Sie anschließend die Dateien mit der Dateinamenerweiterung `.so` in die Ordner vom Typ `src/main/jniLibs` Ihrer Android-Anwendung. (Erstellen Sie hierzu einen neuen Ordner.)
 
     ![Azure Notification Hubs – Baidu: SDK-Bibliotheken](./media/notification-hubs-baidu-get-started/BaiduSDKLib.png)
 
@@ -479,7 +479,7 @@ Benachrichtigungen können auf unterschiedliche Weise gesendet werden:
 
 * **REST-Schnittstelle:**  Sie können die Benachrichtigung auf allen Back-End-Plattformen unterstützen, indem Sie die [REST-Schnittstelle](https://msdn.microsoft.com/library/windowsazure/dn223264.aspx) verwenden.
 * **Microsoft Azure Notification Hubs .NET SDK:** Führen Sie im NuGet-Paket-Manager für Visual Studio [Install-Package Microsoft.Azure.NotificationHubs](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) aus.
-* **Node.js:** [Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
+* **Node.js**: [Senden von Pushbenachrichtigungen mit Azure Notification Hubs und Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
 * **Mobile Apps:** Ein Beispiel für das Senden von Benachrichtigungen von einem Back-End für Azure Mobile App Service-Apps, das in Notification Hubs integriert ist, finden Sie unter [Hinzufügen von Pushbenachrichtigungen zu Ihrer App](../app-service-mobile/app-service-mobile-windows-store-dotnet-get-started-push.md).
 * **Java/PHP:** Ein Beispiel zum Senden von Benachrichtigungen über die REST-APIs finden Sie unter „Verwenden von Notification Hubs von Java/PHP“ ([Java](notification-hubs-java-push-notification-tutorial.md) | [PHP](notification-hubs-php-push-notification-tutorial.md)).
 
@@ -497,7 +497,7 @@ In diesem Abschnitt zeigen wir das Senden einer Benachrichtigung über eine .NET
     Install-Package Microsoft.Azure.NotificationHubs
     ```
 
-    Diese Anweisung fügt mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](http://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) einen Verweis auf das Azure Notification Hubs-SDK hinzu.
+    Diese Anweisung fügt mithilfe des [Microsoft.Azure.NotificationHubs-NuGet-Pakets](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/) einen Verweis auf das Azure Notification Hubs-SDK hinzu.
 
     ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-package-manager.png)
 
@@ -537,6 +537,6 @@ Die App ruft `userId` und `channelId` vom Baidu-Pushbenachrichtigungsdienst ab u
 
 <!-- URLs. -->
 [Mobile Services Android SDK]: https://go.microsoft.com/fwLink/?LinkID=280126&clcid=0x409
-[Baidu Push Android SDK]: http://push.baidu.com/sdk/push_client_sdk_for_android
+[Baidu Push Android SDK]: https://push.baidu.com/sdk/push_client_sdk_for_android
 [Azure-Portal]: https://portal.azure.com/
-[Baidu-Portal]: http://www.baidu.com/
+[Baidu-Portal]: https://www.baidu.com/

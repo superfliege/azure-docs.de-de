@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: ergreenl
-ms.openlocfilehash: d72fa2551eb4db3cb68a52cd8a76dd7b9d27b6f0
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a2abdbf1409564f94356279332d253627c5b447a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55179003"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111921"
 ---
 # <a name="disable-azure-active-directory-domain-services-using-the-azure-portal"></a>Deaktivieren von Azure Active Directory Domain Services mithilfe des Azure-Portals
 In diesem Artikel wird gezeigt, wie Sie mit dem Azure-Portal Azure Active Directory Domain Services (AD) für Ihr Azure AD-Verzeichnis deaktivieren.
@@ -28,12 +28,11 @@ In diesem Artikel wird gezeigt, wie Sie mit dem Azure-Portal Azure Active Direct
 > [!WARNING]
 > **Verzeichnisse werden dauerhaft gelöscht, und dieser Vorgang kann nicht rückgängig gemacht werden.**
 > Lassen Sie daher Vorsicht walten. Beim Löschen der verwalteten Domäne geschieht Folgendes:
-  * Die Bereitstellung der Domänencontroller für die verwaltete Domäne wird aufgehoben, und die Domänencontroller werden aus dem virtuellen Netzwerk entfernt.
-  * Die Daten in der verwalteten Domäne werden endgültig gelöscht. Dazu gehören u.a. benutzerdefinierte Organisationseinheiten, GPOs, benutzerdefinierte DNS-Einträge, Dienstprinzipale und gMSAs, die Sie in der verwalteten Domäne erstellt haben.
-  * Computer, die in die verwaltete Domäne eingebunden sind, verlieren ihre Vertrauensstellung mit der Domäne und müssen aus der Domäne entfernt werden.
-  * Bei diesen Computern können Sie sich nicht mit Unternehmens-AD-Anmeldeinformationen anmelden. Verwenden Sie stattdessen die Anmeldeinformationen für den lokalen Administrator des Computers.
-Durch das Löschen der verwalteten Domäne wird Ihr Azure AD-Verzeichnis weder gelöscht noch anderweitig beeinträchtigt.
->
+>   * Die Bereitstellung der Domänencontroller für die verwaltete Domäne wird aufgehoben, und die Domänencontroller werden aus dem virtuellen Netzwerk entfernt.
+>   * Die Daten in der verwalteten Domäne werden endgültig gelöscht. Dazu gehören u.a. benutzerdefinierte Organisationseinheiten, GPOs, benutzerdefinierte DNS-Einträge, Dienstprinzipale und gMSAs, die Sie in der verwalteten Domäne erstellt haben.
+>   * Computer, die in die verwaltete Domäne eingebunden sind, verlieren ihre Vertrauensstellung mit der Domäne und müssen aus der Domäne entfernt werden.
+>   * Bei diesen Computern können Sie sich nicht mit Unternehmens-AD-Anmeldeinformationen anmelden. Verwenden Sie stattdessen die Anmeldeinformationen für den lokalen Administrator des Computers.
+> Durch das Löschen der verwalteten Domäne wird Ihr Azure AD-Verzeichnis weder gelöscht noch anderweitig beeinträchtigt.
 
 Führen Sie zum Löschen der verwalteten Azure AD Domain Services-Domäne die folgenden Schritte aus:
 1. Navigieren Sie im Azure-Portal zur [Azure AD Domain Services-Erweiterung](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.AAD%2FdomainServices).

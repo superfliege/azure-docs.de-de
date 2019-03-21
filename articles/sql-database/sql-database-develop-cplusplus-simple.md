@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/12/2018
-ms.openlocfilehash: 5a6f8328f6809a20b821f5b72106fa48fabf0e91
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 00a3904bd78f3bb76266c726af28582770b23921
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55755151"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57316488"
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>Herstellen einer Verbindung mit SQL-Datenbank mit C und C++
 
@@ -37,7 +37,7 @@ Azure SQL basiert auf Microsoft SQL Server und ist dafür ausgelegt, einen leist
 Azure verfügt derzeit über zwei Optionen zum Hosten von SQL Server-Workloads: Azure SQL-Datenbank (Database as a Service) und SQL Server auf virtuellen Computern (VMs). Wir gehen hier nicht näher auf die Unterschiede zwischen diesen beiden Optionen ein, aber Azure SQL-Datenbank ist die beste Möglichkeit für neue cloudbasierte Anwendungen. Mit diesem Ansatz können Sie Kosteneinsparungen erzielen und kommen in den Genuss der mit Clouddiensten verbundenen Leistungsoptimierung. Wenn Sie mit dem Gedanken spielen, Ihre lokalen Anwendungen in die Cloud zu migrieren bzw. in die Cloud zu erweitern, ist SQL Server auf virtuellen Azure-Computern ggf. besser für Sie geeignet. Der Einfachheit halber erstellen wir in diesem Artikel eine Azure SQL-Datenbank.
 
 ## <a id="ODBC"></a>Datenzugriffstechnologien: ODBC und OLE DB
-Das Herstellen einer Verbindung mit Azure SQL-Datenbank ist nicht viel anders. Derzeit gibt es zwei Möglichkeiten, eine Verbindung mit Datenbanken herzustellen: ODBC (Open Database Connectivity) und OLE DB (Object Linking and Embedding Database). In den letzten Jahren hat Microsoft eine [Anpassung an ODBC in Bezug auf den Zugriff auf native relationale Daten](https://blogs.msdn.microsoft.com/sqlnativeclient/2011/08/29/microsoft-is-aligning-with-odbc-for-native-relational-data-access/) durchgeführt. ODBC ist relativ einfach und außerdem deutlich schneller als OLE DB. Der einzige Nachteil ist, dass für ODBC eine ältere API im C-Stil verwendet wird.
+Das Herstellen einer Verbindung mit Azure SQL-Datenbank ist nicht viel anders. Derzeit gibt es zwei Möglichkeiten, eine Verbindung mit Datenbanken herzustellen: ODBC (Open Database Connectivity) und OLE DB (Object Linking and Embedding Database). In den letzten Jahren hat Microsoft eine [Anpassung an ODBC in Bezug auf den Zugriff auf native relationale Daten](https://blogs.msdn.microsoft.com/sqlnativeclient/20../../microsoft-is-aligning-with-odbc-for-native-relational-data-access/) durchgeführt. ODBC ist relativ einfach und außerdem deutlich schneller als OLE DB. Der einzige Nachteil ist, dass für ODBC eine ältere API im C-Stil verwendet wird.
 
 ## <a id="Create"></a>Schritt 1:  Erstellen der Azure SQL-Datenbank
 Auf der [Seite für erste Schritte](sql-database-single-database-get-started.md) erhalten Sie Informationen zum Erstellen einer Beispieldatenbank.  Alternativ hierzu können Sie sich an dieses [kurze zweiminütige Video](https://azure.microsoft.com/documentation/videos/azure-sql-database-create-dbs-in-seconds/) halten, um mit dem Azure-Portal eine Azure SQL-Datenbank zu erstellen.
@@ -78,7 +78,7 @@ Alternativ hierzu können Sie auch eine DSN-Datei mit dem Assistenten erstellen,
 Glückwunsch! Sie haben mit C++ und ODBC unter Windows jetzt eine Verbindung mit Azure SQL hergestellt. Sie können weiterlesen, um sich auch über die Vorgehensweise für die Linux-Plattform zu informieren.
 
 ## <a id="Linux"></a>Schritt 5: Herstellen einer Verbindung von einer Linux-C/C++-Anwendung
-Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen.
+Falls Sie es noch nicht gehört haben: Mit Visual Studio können Sie jetzt auch C++-Linux-Anwendungen entwickeln. Informationen zu diesem neuen Szenario finden Sie im Blog [Visual C++ for Linux Development](https://blogs.msdn.microsoft.com/vcblog/20../../visual-c-for-linux-development/) (Visual C++ für Linux-Entwicklung). Für die Linux-Erstellung benötigen Sie einen Remotecomputer, auf dem Ihre Linux-Distribution ausgeführt wird. Falls Sie keinen Remotecomputer haben, können Sie diesen schnell einrichten, indem Sie die Informationen unter [Erstellen eines virtuellen Linux-Computers mithilfe der Azure-Befehlszeilenschnittstelle 2.0 (Vorschau)](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) nutzen.
 
 Für die Zwecke dieses Tutorials nehmen wir an, dass Sie eine Linux-Distribution vom Typ Ubuntu 16.04 eingerichtet haben. Die hier angegebenen Schritte sollten auch für Ubuntu 15.10, Red Hat 6 und Red Hat 7 gelten.
 

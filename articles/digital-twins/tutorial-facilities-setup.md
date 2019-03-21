@@ -8,12 +8,12 @@ ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: dkshir
-ms.openlocfilehash: 28433f8f3f181c507521cb12f064df045ae21d9d
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
+ms.openlocfilehash: 096df62305af91ac85ce9ddbcff5b0160aaa4e8a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54212191"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57537455"
 ---
 # <a name="tutorial-deploy-azure-digital-twins-and-configure-a-spatial-graph"></a>Tutorial: Bereitstellen von Azure Digital Twins und Konfigurieren eines Raumgraphen
 
@@ -173,7 +173,7 @@ Speichern und schließen Sie die Datei „provisionSample.yaml“. Im nächsten 
 
 Falls Sie sich nicht weiter mit Azure Digital Twins befassen möchten, können Sie die in diesem Tutorial erstellten Ressourcen löschen:
 
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** und Ihre Digital Twins-Ressourcengruppe aus, und klicken Sie auf **Löschen**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite **Alle Ressourcen** und Ihre Digital Twins-Ressourcengruppe aus, und klicken Sie auf **Löschen**.
 
     > [!TIP]
     > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.

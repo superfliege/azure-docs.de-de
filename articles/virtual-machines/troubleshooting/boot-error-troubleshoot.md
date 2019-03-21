@@ -3,7 +3,7 @@ title: Problembehandlung bei Startfehlern von virtuellen Azure-Computern | Micro
 description: Dieser Artikel enthält Links zu Artikeln, die sich mit der Problembehandlung bei Startfehlern von virtuellen Azure-Computern befassen.
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genlin
+author: genlin
 manager: cshepard
 editor: ''
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/12/2018
 ms.author: genli
-ms.openlocfilehash: b467618815f2bad8a6816425764fe60707c1db3d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c12f753225f8c6fc4fdb3fdcbaf0e915cb85fdbf
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53308140"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779440"
 ---
 # <a name="troubleshoot-azure-virtual-machines-boot-errors"></a>Problembehandlung bei Startfehlern von virtuellen Azure-Computern
 

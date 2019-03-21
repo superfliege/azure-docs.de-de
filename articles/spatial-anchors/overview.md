@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: f5d54f90c0b53105953726b1f26dab98192b40a6
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56752824"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57833797"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure Spatial Anchors-Übersicht
 
@@ -30,7 +30,7 @@ Einige Beispiele für Anwendungsfälle, die mit Spatial Anchors ermöglicht werd
 
 - [Wegeleitsysteme](concepts/anchor-relationships-way-finding.md): Entwickler können auch Spatial Anchors-Instanzen miteinander verbinden, um dafür Beziehungen herzustellen. Eine App kann beispielsweise eine Benutzeroberfläche mit zwei oder mehr Points of Interest enthalten, mit denen ein Benutzer interagieren muss, um eine Aufgabe zu erfüllen. Diese Points of Interest können auf verbundene Weise erstellt werden. Später beim Durchführen der mehrteiligen Aufgabe durch den Benutzer kann die App nach Ankern fragen, die sich in der Nähe des aktuellen Ankers befinden, um den Benutzer zum nächsten Schritt der Aufgabe zu leiten.
 
-- [Verwenden von virtuellen Inhalten in der realen Welt](concepts/create-locate-anchors-unity.md#creating-a-cloud-spatial-anchor): Eine App kann über eine Funktion verfügen, mit der ein Benutzer einen virtuellen Kalender an der Wand eines Konferenzraums anordnen kann, den andere Personen mit einer Smartphone-App oder einem HoloLens-Gerät anzeigen können. In einer Industrieumgebung kann ein Benutzer beispielsweise Kontextinformationen zu einem Computer erhalten, indem er mit einer unterstützten Gerätekamera darauf zeigt.
+- [Verwenden von virtuellen Inhalten in der realen Welt](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor): Eine App kann über eine Funktion verfügen, mit der ein Benutzer einen virtuellen Kalender an der Wand eines Konferenzraums anordnen kann, den andere Personen mit einer Smartphone-App oder einem HoloLens-Gerät anzeigen können. In einer Industrieumgebung kann ein Benutzer beispielsweise Kontextinformationen zu einem Computer erhalten, indem er mit einer unterstützten Gerätekamera darauf zeigt.
 
 Azure Spatial Anchors besteht aus einem verwalteten Dienst und Client-SDKs für unterstützte Geräteplattformen. Die folgenden Abschnitte enthalten Informationen zu den ersten Schritten beim Erstellen von Apps mit Azure Spatial Anchors.
 

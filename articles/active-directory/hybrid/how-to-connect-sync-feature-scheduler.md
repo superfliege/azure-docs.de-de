@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a40159a43db6f83029ed6eacd37d2a4eff28aa09
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1d5f4dec48d81b032de293bb6c68ad62ac48d475
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203844"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193057"
 ---
 # <a name="azure-ad-connect-sync-scheduler"></a>Azure AD Connect-Synchronisierung: Scheduler
 Dieses Thema beschreibt den integrierten Scheduler in Azure AD Connect Sync (auch bekannt als Synchronisierungsmodul).
@@ -55,7 +55,7 @@ Wenn beim Ausführen dieses Cmdlets die Meldung angezeigt wird, dass der Befehl 
 * **PurgeRunHistoryInterval**. Der Zeitraum, für den die Vorgangsprotokolle aufbewahrt werden sollen. Diese Protokolle können im Synchronization Service Manager überprüft werden. Standardmäßig werden diese Protokolle sieben Tage lang gespeichert.
 * **SyncCycleEnabled**. Gibt an, ob der Scheduler die Import-, Synchronisierungs- und Exportprozesse als Teil seiner Operation ausführt.
 * **MaintenanceEnabled**. Zeigt an, ob der Wartungsprozess aktiviert ist. Dabei werden die Zertifikate/Schlüssel aktualisiert und das Vorgangsprotokoll bereinigt.
-* **StagingModeEnabled**. Zeigt an, ob der [Stagingmodus](how-to-connect-sync-operations.md#staging-mode) aktiviert ist. Wenn diese Einstellung aktiviert ist, unterdrückt sie die Ausführung der Exporte. Der Import und die Synchronisierung werden jedoch weiterhin ausgeführt.
+* **StagingModeEnabled**. Zeigt an, ob der [Stagingmodus](how-to-connect-sync-staging-server.md) aktiviert ist. Wenn diese Einstellung aktiviert ist, unterdrückt sie die Ausführung der Exporte. Der Import und die Synchronisierung werden jedoch weiterhin ausgeführt.
 * **SchedulerSuspended**. Während eines Upgrades von Connect festgelegt, um den Scheduler vorübergehend am Ausführen zu hindern.
 
 Sie können einige dieser Einstellungen mit `Set-ADSyncScheduler`ändern. Folgende Parameter können geändert werden:

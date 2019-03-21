@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: c372175b-beb5-4b45-b2f8-34cb06990117
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: d29aac52948cddf9d7e274d28735e2c12143b5ca
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d36cbe50ab040549353efd19dd794ec7fab51b7b
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53081420"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774403"
 ---
 # <a name="run-a-notebook-slideshow"></a>Ausführen einer Notebook-Bildschirmpräsentation
 
@@ -60,8 +60,8 @@ Wenn Sie ein Notebook zufällig auswählen und es für eine Bildschirmpräsentat
     | Slide (Folie) | Die Zelle stellt eine Hauptfolie dar, zu der mithilfe der linken und rechten Pfeile der Navigationssteuerung navigiert wird. |
     | Sub-slide (Unterfolie) | Die Zelle ist „unterhalb“ einer Hauptfolie angeordnet, und die Navigation zu ihr erfolgt mithilfe des Abwärtspfeils der Navigationssteuerung. Mit dem Aufwärtspfeil wird zur Hauptfolie zurückgekehrt. Unterfolien werden für Sekundärmaterial verwendet, das im Hauptpfad einer Präsentation übersprungen werden kann, aber bei Bedarf bequem verfügbar ist. |
     | Fragment | Der Zelleninhalt wird über den nach unten zeigenden Navigationspfeil im Kontext der vorhergehenden Folie oder Unterfolie dargestellt (mit dem Pfeil nach oben werden Fragmente entfernt). Sie können ein Fragment in einer Codezelle verwenden, um den Code innerhalb einer Folie darzustellen, oder mit mehreren Fragmenten Textaufzählungszeichen nacheinander erscheinen lassen (siehe dazu das Beispiel im nächsten Abschnitt). Da Fragmente auf der aktuellen Folie aufbauen, werden überzählige Fragmente unterhalb des Browserfensters dargestellt, sind also nicht sichtbar. |
-    | Skip (Überspringen) | Die Zelle wird in der Bildschirmpräsentation angezeigt. |
-    | Notes (Anmerkungen) | Diese sind in Zellen als Referentenanmerkungen enthalten und werden in der Bildschirmpräsentation nicht angezeigt. |
+    | Überspringen | Die Zelle wird in der Bildschirmpräsentation angezeigt. |
+    | Notizen | Diese sind in Zellen als Referentenanmerkungen enthalten und werden in der Bildschirmpräsentation nicht angezeigt. |
 
 1. Zu Anfang ist es hilfreich, für jede Zelle **Slide** (Folie) auszuwählen. Anschließend können Sie die Präsentation ausführen und Anpassungen vornehmen.
 

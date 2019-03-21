@@ -1,18 +1,19 @@
 ---
 title: Grundlegendes zu Azure IoT Hub-Gerätezwillingen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden Sie Gerätezwillinge zum Synchronisieren von Status und Daten zwischen IoT Hub und Ihren Geräten.'
-author: fsautomata
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.author: elioda
-ms.openlocfilehash: 606a7c64cc60fa81a71bf40a8087875e08e7c984
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 883e81572218e39d84ad8793423b02468d49d00a
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54053022"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294058"
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>Verstehen und Verwenden von Gerätezwillingen in IoT Hub
 
@@ -179,44 +180,44 @@ Das Lösungs-Back-End greift mithilfe folgender atomischer Vorgänge, die über 
 
 * **Zwillingsbenachrichtigungen empfangen**. Mit diesem Vorgang kann das Lösungs-Back-End benachrichtigt werden, wenn der Zwilling geändert wird. Zu diesem Zweck muss Ihre IoT-Lösung eine Route erstellen die Datenquelle auf *twinChangeEvents* festlegen. Standardmäßig existieren keine solchen Routen, daher werden keine Zwillingsbenachrichtigungen gesendet. Wenn die Änderungsrate zu hoch ist, oder andere Gründe wie interne Fehler vorliegen, sendet der IoT Hub möglicherweise nur eine Benachrichtigung, die alle Änderungen enthält. Wenn Ihre Anwendung zuverlässige Prüfungen und Protokolle aller Zwischenzustände benötigt, sollten Sie D2C-Nachrichten verwenden. Die Zwillingsbenachrichtung umfasst Eigenschaften und einen Textkörper.
 
-   - Eigenschaften
+  - Eigenschaften
 
-   | NAME | Wert |
-   | --- | --- |
-   $content-type | Anwendung/json |
-   $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
-   $iothub-message-source | twinChangeEvents |
-   $content-encoding | UTF-8 |
-   deviceId | ID des Geräts |
-   hubName | Name des IoT Hub |
-   operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-Zeitstempel des Vorgangs |
-   iothub-message-schema | deviceLifecycleNotification |
-   opType | "replaceTwin" oder "updateTwin" |
+    | NAME | Wert |
+    | --- | --- |
+    $content-type | Anwendung/json |
+    $iothub-enqueuedtime |  Uhrzeit, zu der die Benachrichtigung gesendet wurde |
+    $iothub-message-source | twinChangeEvents |
+    $content-encoding | UTF-8 |
+    deviceId | ID des Geräts |
+    hubName | Name des IoT Hub |
+    operationTimestamp | [ISO8601](https://en.wikipedia.org/wiki/ISO_8601)-Zeitstempel des Vorgangs |
+    iothub-message-schema | deviceLifecycleNotification |
+    opType | "replaceTwin" oder "updateTwin" |
 
-   Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
+    Nachrichtensystemeigenschaften ist das Symbol `$` vorangestellt.
 
-   - Body
+  - Body
         
-   Dieser Abschnitt enthält alle Zwillingsänderungen in einem JSON-Format. Er verwendet das gleiche Format wie ein Patch, jedoch mit dem Unterschied, dass alle Zwillingsabschnitte enthalten sein können (Tags, properties.reported, properties.desired) und dass die $metadata-Elemente enthalten sind. Beispiel:
+    Dieser Abschnitt enthält alle Zwillingsänderungen in einem JSON-Format. Er verwendet das gleiche Format wie ein Patch, jedoch mit dem Unterschied, dass alle Zwillingsabschnitte enthalten sein können (Tags, properties.reported, properties.desired) und dass die $metadata-Elemente enthalten sind. Beispiel:
 
-   ```json
-   {
-       "properties": {
-           "desired": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           },
-           "reported": {
-               "$metadata": {
-                   "$lastUpdated": "2016-02-30T16:24:48.789Z"
-               },
-               "$version": 1
-           }
-       }
-   }
-   ```
+    ```json
+    {
+      "properties": {
+          "desired": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          },
+          "reported": {
+              "$metadata": {
+                  "$lastUpdated": "2016-02-30T16:24:48.789Z"
+              },
+              "$version": 1
+          }
+      }
+    }
+    ```
 
 Alle oben genannten Vorgänge unterstützen die [optimistische Nebenläufigkeit](iot-hub-devguide-device-twins.md#optimistic-concurrency) und erfordern die Berechtigung **ServiceConnect**, wie im Artikel [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md) definiert.
 
@@ -309,7 +310,7 @@ Beispiel:
             "telemetryConfig": {
                 "sendFrequency": "5m",
                 "status": "success"
-            }
+            },
             "batteryLevel": "55%",
             "$metadata": {
                 "telemetryConfig": {
@@ -318,7 +319,7 @@ Beispiel:
                         "$lastUpdated": "2016-03-31T16:35:48.789Z"
                     },
                     "$lastUpdated": "2016-03-31T16:35:48.789Z"
-                }
+                },
                 "batteryLevel": {
                     "$lastUpdated": "2016-04-01T16:35:48.789Z"
                 },

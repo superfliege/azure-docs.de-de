@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7c87a0f478b6efbe7ae9ff07def8b4d0d730b111
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 47a77def43a9577e5a3506899da47db2f684b495
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55478490"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835112"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Verschieben von Daten zu SQL Server auf einem virtuellen Azure-Computer
 
@@ -50,7 +50,7 @@ In diesem Tutorial wird Folgendes vorausgesetzt:
 Wenn sich Ihre Daten in einer Flatfile (in Zeilen/Spalten angeordnet) befinden, können sie über die folgenden Methoden auf eine SQL Server-VM in Azure verschoben werden:
 
 1. [Befehlszeilenprogramm zum Massenkopieren (BCP)](#insert-tables-bcp)
-2. [SQL-Abfrage zum Masseneinfügen ](#insert-tables-bulkquery)
+2. [SQL-Abfrage zum Masseneinfügen](#insert-tables-bulkquery)
 3. [Integrierte grafische Hilfsprogramme in SQL Server (Importieren/Exportieren, SSIS)](#sql-builtin-utilities)
 
 ### <a name="insert-tables-bcp"></a>Befehlszeilenprogramm zum Massenkopieren (BCP)
@@ -58,7 +58,7 @@ BPC ist ein Befehlszeilenprogramm, das mit SQL Server installiert wird und eine 
 
 > [!NOTE]
 > **Wo sollten sich die Daten für die Verwendung mit BCP befinden?**  
-> Auch wenn dies nicht erforderlich ist, wird die Übertragung beschleunigt, wenn sich die Ausgangsdaten auf demselben Computer wie der Ziel-SQL Server befinden (Netzwerkgeschwindigkeit im Vergleich zur E/A-Geschwindigkeit des lokalen Datenträgers). Sie können die Flatfiles mit den Daten auf den Computer verschieben, auf dem SQL Server installiert ist. Dazu stehen verschiedene Dateikopiertools wie [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage-Explorer](http://storageexplorer.com/) oder das Kopieren und Einfügen unter Windows über RDP (Remotedesktopprotokoll) zur Verfügung.
+> Auch wenn dies nicht erforderlich ist, wird die Übertragung beschleunigt, wenn sich die Ausgangsdaten auf demselben Computer wie der Ziel-SQL Server befinden (Netzwerkgeschwindigkeit im Vergleich zur E/A-Geschwindigkeit des lokalen Datenträgers). Sie können die Flatfiles mit den Daten auf den Computer verschieben, auf dem SQL Server installiert ist. Dazu stehen verschiedene Dateikopiertools wie [AZCopy](../../storage/common/storage-use-azcopy.md), [Azure Storage-Explorer](https://storageexplorer.com/) oder das Kopieren und Einfügen unter Windows über RDP (Remotedesktopprotokoll) zur Verfügung.
 >
 >
 
@@ -75,10 +75,10 @@ CREATE TABLE <tablename>
 )
 ```
 
-2. Generieren Sie die Formatdatei, die das Schema für die Tabelle beschreibt, durch Eingabe des folgenden Befehls an der Befehlszeile des Computers, auf dem BPC installiert ist.
+1. Generieren Sie die Formatdatei, die das Schema für die Tabelle beschreibt, durch Eingabe des folgenden Befehls an der Befehlszeile des Computers, auf dem BPC installiert ist.
 
     `bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n`
-3. Fügen Sie die Daten unter Verwendung des BPC-Befehls wie folgt in der Datenbank hinzu. Dies sollte an der Befehlszeile funktionieren, wenn SQL Server auf demselben Computer installiert ist:
+1. Fügen Sie die Daten unter Verwendung des BPC-Befehls wie folgt in der Datenbank hinzu. Dies sollte an der Befehlszeile funktionieren, wenn SQL Server auf demselben Computer installiert ist:
 
     `bcp dbname..tablename in datafilename.tsv -f exportformatfilename.xml -S servername\sqlinstancename -U username -P password -b block_size_to_move_in_single_attempt -t \t -r \n`
 
@@ -142,7 +142,7 @@ Im Folgenden sehen Sie einige Beispielbefehle für Masseneinfügungen:
 ```sql
 SET DATEFORMAT ymd;
 ```
-2. Importieren von Daten mit Anweisungen zum Massenimport:
+1. Importieren von Daten mit Anweisungen zum Massenimport:
 
 ```sql
 BULK INSERT <tablename>
@@ -195,7 +195,7 @@ Für das Massenexportieren von Daten von einer lokalen SQL Server-Instanz stehen
 4. Verwenden Sie eine der im Abschnitt [Dateiquelle](#filesource_to_sqlonazurevm) beschriebenen Methoden, um die Daten in Flatfiles auf einen SQL Server zu verschieben.
 
 ### <a name="sql-migration"></a>SQL-Datenbankmigrations-Assistent
-[SQL-Datenbankmigrations-Assistent](http://sqlazuremw.codeplex.com/) stellt eine benutzerfreundliche Möglichkeit zum Verschieben von Daten zwischen zwei SQL Server-Instanzen dar. Er bietet Ihnen die Möglichkeit, das Datenschema zwischen Quell- und Zieltabellen zuzuordnen und die Spaltentypen auszuwählen, sowie verschiedene andere Funktionen. Im Hintergrund wird BPC zum Massenkopieren verwendet. Nachfolgend finden Sie einen Screenshot des Begrüßungsbildschirms für den SQL-Datenbankmigrations-Assistenten.  
+[SQL-Datenbankmigrations-Assistent](https://sqlazuremw.codeplex.com/) stellt eine benutzerfreundliche Möglichkeit zum Verschieben von Daten zwischen zwei SQL Server-Instanzen dar. Er bietet Ihnen die Möglichkeit, das Datenschema zwischen Quell- und Zieltabellen zuzuordnen und die Spaltentypen auszuwählen, sowie verschiedene andere Funktionen. Im Hintergrund wird BPC zum Massenkopieren verwendet. Nachfolgend finden Sie einen Screenshot des Begrüßungsbildschirms für den SQL-Datenbankmigrations-Assistenten.  
 
 ![SQL Server-Migrations-Assistent][2]
 

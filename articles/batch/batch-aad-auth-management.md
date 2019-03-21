@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: lahugh
-ms.openlocfilehash: 67aced11d885be949e7e7dc14ba7aa59e903716a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 22cab5f22eccabf9176d777b1e3a3356cbf37c4f
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467848"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534241"
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Authentifizieren von Batch Management-Lösungen mit Active Directory
 
@@ -137,5 +137,5 @@ Informationen zum Authentifizieren von Batch-Dienstanwendungen mit Azure AD find
 [aad_auth_scenarios]:../active-directory/develop/authentication-scenarios.md "Authentifizierungsszenarien für Azure AD"
 [aad_integrate]: ../active-directory/active-directory-integrating-applications.md "Integrieren von Anwendungen in Azure Active Directory"
 [acct_mgmt_sample]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/AccountManagement
-[azure_portal]: http://portal.azure.com
+[azure_portal]: https://portal.azure.com
 [resman_overview]: ../azure-resource-manager/resource-group-overview.md

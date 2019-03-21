@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 05abc61da7af02c56dacd632175d6fbfa64cb9e1
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 0d1e269a1818f013bc14842bc541216d7f31bc84
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098560"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116825"
 ---
 # <a name="create-custom-artifacts-for-your-devtest-labs-virtual-machine"></a>Erstellen benutzerdefinierter Artefakte für Ihren virtuellen DevTest Labs-Computer
 
@@ -56,12 +56,12 @@ Das folgende Beispiel zeigt die Abschnitte, die die grundlegende Struktur einer 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
 | $schema |Nein  |Speicherort der JSON-Schemadatei Mithilfe der JSON-Schemadatei können Sie die Gültigkeit der Definitionsdatei testen. |
-| title |JA |Der Name des im Lab angezeigten Artefakts. |
-| Beschreibung |JA |Die Beschreibung des im Lab angezeigten Artefakts. |
+| title |Ja |Der Name des im Lab angezeigten Artefakts. |
+| Beschreibung |Ja |Die Beschreibung des im Lab angezeigten Artefakts. |
 | iconUri |Nein  |Der URI des im Lab angezeigten Symbols |
-| targetOsType |JA |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
+| targetOsType |Ja |Das Betriebssystem der VM, auf der das Artefakt installiert ist. Unterstützte Optionen sind „Windows“ und „Linux“. |
 | Parameter |Nein  |Werte, die bereitgestellt werden, wenn der Artefaktinstallationsbefehl auf einem Computer ausgeführt wird. Dieser ermöglicht die Anpassung Ihres Artefakts. |
-| runCommand |JA |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
+| runCommand |Ja |Artefaktinstallationsbefehl, der auf einem virtuellen Computer ausgeführt wird. |
 
 ### <a name="artifact-parameters"></a>Artefaktparameter
 Geben Sie im Parameterabschnitt der Definitionsdatei an, welche Werte ein Benutzer beim Installieren eines Artefakts eingeben kann. Auf diese Werte können Sie im Artefaktinstallationsbefehl verweisen.
@@ -78,9 +78,9 @@ Sie definieren Parameter mit der folgenden Struktur:
 
 | Elementname | Erforderlich? | BESCHREIBUNG |
 | --- | --- | --- |
-| type |JA |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
-| displayName |JA |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. | |
-| Beschreibung |JA |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
+| type |Ja |Der Typ des Parameterwerts. In der folgenden Liste finden Sie die zulässigen Typen. |
+| displayName |Ja |Der Name des Parameters, der einem Benutzer im Labor angezeigt wird. |
+| Beschreibung |Ja |Die Beschreibung des Parameters, der im Labor angezeigt wird. |
 
 Folgende Typen sind zulässig:
 
@@ -126,7 +126,7 @@ Das folgende Beispiel zeigt, wie Sie mit Ausdrücken und Funktionen einen Wert e
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Diagnostizieren von Artefaktfehlern in DevTest Labs](devtest-lab-troubleshoot-artifact-failure.md)
-* [Einbinden einer VM in eine vorhandene Active Directory-Domäne mithilfe einer Resource Manager-Vorlage in DevTest Labs](http://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
+* [Einbinden einer VM in eine vorhandene Active Directory-Domäne mithilfe einer Resource Manager-Vorlage in DevTest Labs](https://www.visualstudiogeeks.com/blog/DevOps/Join-a-VM-to-existing-AD-domain-using-ARM-template-AzureDevTestLabs)
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie, wie Sie einem [ein Git-Artefaktrepository zu einem Lab hinzufügen](devtest-lab-add-artifact-repo.md).

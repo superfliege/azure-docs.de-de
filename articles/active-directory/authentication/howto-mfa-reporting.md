@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 04ee892c85d2795f4ec11d47d861af3007c46e96
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8e901f0e5fb1dc2840196bd6a739ff763b54ce8e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169325"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119223"
 ---
 # <a name="reports-in-azure-multi-factor-authentication"></a>Berichte in Azure Multi-Factor Authentication
 
@@ -36,7 +36,9 @@ Azure Multi-Factor Authentication bietet verschiedene Berichte, die Sie und Ihre
 2. Wählen Sie auf der linken Seite **Azure Active Directory** > **MFA-Server** aus.
 3. Wählen Sie den Bericht aus, den Sie anzeigen möchten.
 
-   <center>![Cloud](./media/howto-mfa-reporting/report.png)</center>
+   <center>
+   
+   ![Cloud](./media/howto-mfa-reporting/report.png)</center>
 
 ## <a name="azure-ad-sign-ins-report"></a>Azure AD-Anmeldungenbericht
 

@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 2f16a8fdb124cd2ee69fbdef74f3999800b55157
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a35f4d8c1d5bf5943ecba02ff262fbc7fc0730fe
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54261995"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108223"
 ---
 # <a name="start-monitoring-your-website"></a>Starten der Überwachung Ihrer Website
 
@@ -87,7 +87,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
         });
         
         window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
-</script>
+   </script>
    ```
 
 3. Bearbeiten Sie ``hello_world.html``, und fügen Sie Ihren Instrumentierungsschlüssel hinzu.
@@ -127,7 +127,7 @@ Application Insights kann Telemetriedaten aus jeder mit dem Internet verbundenen
 
 5. Ein anderes praktisches Tool für die Instrumentierung komplexerer Websites mit mehreren Seiten ist [**Benutzerabläufe**](../../azure-monitor/app/usage-flows.md). Mit **Benutzerabläufe** können Sie den Pfad nachverfolgen, den Besucher in verschiedenen Bereichen Ihrer Website durchlaufen.
 
-  ![Visualisierung von Benutzerabläufen](./media/website-monitoring/user-flows.png)
+   ![Visualisierung von Benutzerabläufen](./media/website-monitoring/user-flows.png)
 
 Informationen zu komplexeren Konfigurationen für die Websiteüberwachung finden Sie in der [API-Referenz für das JavaScript SDK](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md).
 

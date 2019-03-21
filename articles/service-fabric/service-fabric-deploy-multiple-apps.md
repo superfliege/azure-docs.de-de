@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/23/2018
 ms.author: mikhegn
-ms.openlocfilehash: ea2f27069ca445a4d74ddc634f5c396ab13564a1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4d9dfbcfc1dd00209a90386bf75f0c2515a28060
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51248995"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854465"
 ---
 # <a name="deploy-multiple-guest-executables"></a>Bereitstellen mehrerer ausführbarer Gastanwendungsdateien
 In diesem Artikel erfahren Sie, wie Sie mehrere ausführbare Gastanwendungsdateien packen und für Azure Service Fabric bereitstellen. Informationen zum Erstellen und Bereitstellen eines einzelnen Service Fabric-Pakets finden Sie im Abschnitt [Bereitstellen einer ausführbaren Gastanwendungsdatei in Service Fabric](service-fabric-deploy-existing-app.md).
@@ -167,7 +167,7 @@ Lassen Sie uns zum Verzeichnis wechseln und untersuchen, was das Tool erstellt h
 Wie Sie sehen, hat das Tool dem Verzeichnis einen neuen Ordner namens „MongoDB“ hinzugefügt, das die MongoDB-Binärdateien enthält. Wenn Sie die Datei `ApplicationManifest.xml` öffnen, sehen Sie, dass das Paket jetzt sowohl die Node.js-Anwendung als auch MongoDB enthält. Der folgende Code zeigt den Inhalt des Anwendungsmanifests.
 
 ```xml
-<ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+<ApplicationManifest xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="MyNodeApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
    <ServiceManifestImport>
       <ServiceManifestRef ServiceManifestName="MongoDB" ServiceManifestVersion="1.0" />
    </ServiceManifestImport>

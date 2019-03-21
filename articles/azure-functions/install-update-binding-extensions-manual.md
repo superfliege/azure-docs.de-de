@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 09/26/2018
 ms.author: glenga
-ms.openlocfilehash: 77b863bc32442261e220b5dd3f11c0bd33b4fa7a
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
+ms.openlocfilehash: cda977ba59070c3ddaac05784277d6c0b5109f0f
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48806067"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56727110"
 ---
 # <a name="manually-install-or-update-azure-functions-binding-extensions-from-the-portal"></a>Manuelles Installieren oder Aktualisieren von Azure Functions-Bindungserweiterungen aus dem Portal
 
-Die Azure Functions Runtime-Version 2.x verwendet Bindungserweiterungen zum Implementieren von Code für Trigger und Bindungen. Bindungserweiterungen stehen in Form von NuGet-Paketen zur Verfügung. Zum Registrieren einer Erweiterung installieren Sie im Wesentlichen ein Paket. Die Art, wie Sie beim Entwickeln von Funktionen Bindungserweiterungen installieren, hängt von der Entwicklungsumgebung ab. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](functions-triggers-bindings.md#register-binding-extensions) in den Artikeln zu Triggern und Bindungen.
+Die Azure Functions Runtime-Version 2.x verwendet Bindungserweiterungen zum Implementieren von Code für Trigger und Bindungen. Bindungserweiterungen stehen in Form von NuGet-Paketen zur Verfügung. Zum Registrieren einer Erweiterung installieren Sie im Wesentlichen ein Paket. Die Art, wie Sie beim Entwickeln von Funktionen Bindungserweiterungen installieren, hängt von der Entwicklungsumgebung ab. Weitere Informationen finden Sie unter [Registrieren von Bindungserweiterungen](./functions-bindings-register.md) in den Artikeln zu Triggern und Bindungen.
 
 Manchmal müssen Sie Ihre Bindungserweiterungen im Azure-Portal manuell installieren oder aktualisieren. Beispielsweise kann es erforderlich sein, eine registrierte Bindung auf eine neuere Version zu aktualisieren. Möglicherweise müssen Sie auch eine unterstützte Bindung registrieren, die nicht über die Registerkarte **Integrieren** im Portal installiert werden kann.
 

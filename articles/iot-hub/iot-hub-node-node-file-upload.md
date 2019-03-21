@@ -1,20 +1,20 @@
 ---
 title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit Node | Microsoft-Dokumentation
 description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für Node.js Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 06/28/2017
-ms.author: dobett
-ms.openlocfilehash: b3afbeb5a3fa2cda6ec5eaabe368163a370352d1
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: f110fe84ab09e930947411a79c950af21cc5334c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568191"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57544512"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub
 
@@ -218,7 +218,7 @@ In diesem Tutorial haben Sie gelernt, wie Sie die IoT Hub-Funktionen zum Hochlad
 * [Azure IoT SDKs][lnk-sdks]
 
 <!-- Links -->
-[Azure IoT Developer Center]: http://azure.microsoft.com/develop/iot
+[Azure IoT Developer Center]: https://azure.microsoft.com/develop/iot
 
 [lnk-create-hub]: iot-hub-rm-template-powershell.md
 [lnk-c-sdk]: iot-hub-device-sdk-c-intro.md

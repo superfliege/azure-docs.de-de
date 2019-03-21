@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zum Azure IoT Hub-C2D-Messaging | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Verwenden des C2D-Messaging mit IoT Hub. Enthält Informationen über den Lebenszyklus von Nachrichten und die Konfigurationsoptionen.'
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: dobett
-ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: c8424743f30ec1bbf8d8096f6630c7451bc910c8
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585644"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010241"
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>Senden von C2D-Nachrichten von IoT Hub
 
@@ -127,9 +127,9 @@ Jede IoT Hub-Instanz legt die folgenden Konfigurationsoptionen für das C2D-Mess
 
 | Eigenschaft                  | BESCHREIBUNG | Bereich und Standardwert |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten. | ISO_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
-| maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät. | 1 bis 100. Standardwert: 10 |
-| feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten. | ISO_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| defaultTtlAsIso8601       | Standardmäßige Gültigkeitsdauer für C2D-Nachrichten. | ISO_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
+| maxDeliveryCount          | Maximale Zustellungsanzahl für C2D-Gerätewarteschlangen pro Gerät. | 1 bis 100. Standardwert: 10. |
+| feedback.ttlAsIso8601     | Aufbewahrungsdauer für dienstgebundene Feedbacknachrichten. | ISO_8601-Intervall bis 2D (mindestens 1 Minute). Standardwert: 1 Stunde. |
 | feedback.maxDeliveryCount |Maximale Zustellungsanzahl für Feedbackwarteschlangen. | 1 bis 100. Standardwert: 100. |
 
 Weitere Informationen zum Festlegen dieser Konfigurationsoptionen finden Sie unter [Erstellen von IoT Hub-Instanzen](iot-hub-create-through-portal.md).

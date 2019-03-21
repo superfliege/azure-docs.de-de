@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.author: juliako
-ms.openlocfilehash: f2be733fc0f127288a86372adf54a547983285db
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: aa29b1e2d0e80b3134be69d17ed5be454f8a51c3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850359"
 ---
 # <a name="perform-advanced-encoding-by-customizing-mes-presets"></a>Erweiterte Codierung mit Media Encoder Standard-Voreinstellungen 
 
@@ -160,7 +160,7 @@ Lesen Sie unbedingt den Abschnitt [Überlegungen](#considerations) .
 
 ### <a id="xml"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
         <H264Video>
           <KeyFrameInterval>00:00:02</KeyFrameInterval>
@@ -376,7 +376,7 @@ Zum Kürzen Ihrer Videos können Sie alle in [diesem](media-services-mes-presets
 Zum Kürzen Ihrer Videos können Sie alle [hier](media-services-mes-presets-overview.md) dokumentierten MES-Voreinstellungen verwenden und das **Sources** -Element (wie unten gezeigt) ändern.
 
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
         <Source StartTime="PT4S" Duration="PT14S"/>
       </Sources>
@@ -581,8 +581,7 @@ Bei Verwendung von .NET fügen Sie die folgenden zwei Funktionen dem in [diesem]
                 },
                 {
                   "IsOverlay": true,
-                  "OverlayLoopCount": 1,
-                  "InputLoop": true
+                  "OverlayLoopCount": 1
                 }
               ],
               "Source": "Image001.png",
@@ -639,7 +638,7 @@ Bei Verwendung von .NET fügen Sie die folgenden zwei Funktionen dem in [diesem]
 
 ### <a name="xml-preset"></a>XML-Voreinstellung
     <?xml version="1.0" encoding="utf-16"?>
-    <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
+    <Preset xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="https://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Sources>
         <Source>
           <Streams />
@@ -656,12 +655,10 @@ Bei Verwendung von .NET fügen Sie die folgenden zwei Funktionen dem in [diesem]
                 <MediaParam>
                   <IsOverlay>false</IsOverlay>
                   <OverlayLoopCount>1</OverlayLoopCount>
-                  <InputLoop>false</InputLoop>
                 </MediaParam>
                 <MediaParam>
                   <IsOverlay>true</IsOverlay>
                   <OverlayLoopCount>1</OverlayLoopCount>
-                  <InputLoop>true</InputLoop>
                 </MediaParam>
               </MediaParams>
             </VideoOverlay>

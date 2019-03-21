@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: c736a9b4962de26f43dc79773149e834c37cbe85
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 944f008d0243d974a5d439438a5a645b7f3ca248
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856789"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Erste Schritte mit Microsoft Power BI-Arbeitsbereichssammlungen
 
@@ -37,7 +37,7 @@ Eine **Arbeitsbereichssammlung** ist die Azure-Ressource der obersten Ebene und 
 
 Im Anschluss werden die Schritte zum Erstellen einer **Arbeitsbereichssammlung** über das Azure-Portal erläutert.
 
-1. Öffnen Sie das **Azure-Portal**, und melden Sie sich an: [http://portal.azure.com](http://portal.azure.com).
+1. Öffnen Sie das **Azure-Portal**, und melden Sie sich an: [https://portal.azure.com](https://portal.azure.com).
 2. Klicken Sie im oberen Bereich auf **+ Neu**.
    
    ![„+ Neu“ im Azure-Portal](media/get-started/create-workspace-1.png)
@@ -119,5 +119,5 @@ Mithilfe der JavaScript-API können Sie einen Bericht aus einem Dataset direkt i
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
 

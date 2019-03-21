@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/13/2018
 ms.author: jingwang
-ms.openlocfilehash: ed861aa914da999bdb2922bc309f05d1234ef416
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: eeab0311519d7e3410ddb625c1801101ad63ad18
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018482"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550415"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Kopieren von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
 
@@ -48,9 +48,9 @@ Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |JA |
-| URL | Die Stamm-URL des OData-Diensts. |JA |
-| authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows**, **AadServicePrincipal**, and **ManagedServiceIdentity**. OAuth auf Benutzerbasis wird nicht unterstützt. | JA |
+| type | Die **type**-Eigenschaft muss auf **OData** festgelegt werden. |Ja |
+| URL | Die Stamm-URL des OData-Diensts. |Ja |
+| authenticationType | Der Typ der Authentifizierung für die Verbindung mit der OData-Quelle. Zulässige Werte: **Anonymous**, **Basic**, **Windows**, **AadServicePrincipal**, and **ManagedServiceIdentity**. OAuth auf Benutzerbasis wird nicht unterstützt. | Ja |
 | userName | Geben Sie **userName** an, wenn Sie die Standard- oder die Windows-Authentifizierung verwenden. | Nein  |
 | password | Geben Sie das **Kennwort** für das Benutzerkonto an, das Sie für **userName** angegeben haben. Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Nein  |
 | servicePrincipalId | Geben Sie die Client-ID der Azure Active Directory-Anwendung an. | Nein  |
@@ -70,7 +70,7 @@ Folgende Eigenschaften werden für einen mit OData verknüpften Dienst unterstü
     "properties": {
         "type": "OData",
         "typeProperties": {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         },
         "connectVia": {
@@ -197,8 +197,8 @@ Legen Sie zum Kopieren von Daten aus OData die **type**-Eigenschaft des Datasets
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft des Datasets muss auf **ODataResource** festgelegt werden. | JA |
-| path | Der Pfad zur OData-Ressource. | JA |
+| type | Die **type**-Eigenschaft des Datasets muss auf **ODataResource** festgelegt werden. | Ja |
+| path | Der Pfad zur OData-Ressource. | Ja |
 
 **Beispiel**
 
@@ -232,8 +232,8 @@ Legen Sie zum Kopieren von Daten aus OData den **Quelltyp** in der Kopieraktivit
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | JA |
-| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"?$select=Name,Description&$top=5"`.<br/><br/>**Hinweis**: Der OData-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein  |
+| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **RelationalSource** festgelegt werden. | Ja |
+| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: `"?$select=Name,Description&$top=5"`.<br/><br/>**Hinweis**: Der OData-Connector kopiert Daten aus der kombinierten URL: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]`. Weitere Informationen finden Sie unter [Komponenten der OData-URL](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein  |
 
 **Beispiel**
 

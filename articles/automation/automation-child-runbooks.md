@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 01/17/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: f52c9731b0289563037cbf065f3e22d652b40e74
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: 84f17b76f03c01d0b1441a50b9bcbddc1dfe2ef3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417430"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851312"
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Untergeordnete Runbooks in Azure Automation
 
@@ -84,6 +84,9 @@ Wenn Aufträge in demselben Automation-Konto mit mehreren Abonnements arbeiten, 
 Im folgenden Beispiel wird ein untergeordnetes Runbook mit Parametern gestartet und anschließend auf seinen Abschluss gewartet. Dabei wird „Start-AzureRmAutomationRunbook“ mit dem Parameter „-wait“ verwendet. Danach wird die Ausgabe aus dem untergeordneten Runbook abgerufen. Sie müssen sich bei Ihrem Azure-Abonnement authentifizieren, um `Start-AzureRmAutomationRunbook` verwenden zu können.
 
 ```azurepowershell-interactive
+# Ensures you do not inherit an AzureRMContext in your runbook
+Disable-AzureRmContextAutosave –Scope Process
+
 # Connect to Azure with RunAs account
 $ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
 
@@ -101,7 +104,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRMContext $AzureContext `
     –Parameters $params –wait
 ```
 

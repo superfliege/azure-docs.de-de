@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: 8254e3221fee3d76e2d27715f76c26397c309f08
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 65023fbf96dc3e1276413f8c40ecb262d60c1454
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862716"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863354"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Verwenden der BulkExecutor-Java-Bibliothek zum Ausführen von Massenvorgängen in Azure Cosmos DB
 
@@ -86,13 +86,13 @@ Das geklonte Repository enthält zwei Beispiele „bulkimport“ und „bulkupda
    // Set retries to 0 to pass complete control to bulk executor
    client.getConnectionPolicy().getRetryOptions().setMaxRetryWaitTimeInSeconds(0);
    client.getConnectionPolicy().getRetryOptions().setMaxRetryAttemptsOnThrottledRequests(0);
-```
+   ```
 
 4. Rufen Sie die importAll-API auf, über die zufällige Dokumente generiert werden, die per Massenvorgang in einen Azure Cosmos DB-Container importiert werden sollen. Sie können die Befehlszeilenkonfigurationen in der Datei „CmdLineConfiguration.java“ einrichten.
 
    ```java
    BulkImportResponse bulkImportResponse = bulkExecutor.importAll(documents, false, true, null);
-```
+   ```
    Die Massenimport-API akzeptiert eine Sammlung von JSON-serialisierten Dokumenten und weist die folgende Syntax auf – weitere Informationen finden Sie in der [API-Dokumentation](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb.bulkexecutor):
 
    ```java

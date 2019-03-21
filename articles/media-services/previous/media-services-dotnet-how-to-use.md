@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 36350f8f359c6ad5cc5637ce0ce38838698cd68b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 47db5ba826b94422672dd46b191556da43b70b02
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57873824"
 ---
 # <a name="media-services-development-with-net"></a>Media Services-Entwicklung mit .NET 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -45,7 +45,7 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
 2. Erstellen Sie die Projektmappe.
 3. Verwenden Sie **NuGet**, um die **Azure Media Services .NET SDK-Erweiterungen** (**windowsazure.mediaservices.extensions**) zu installieren. Durch Installieren dieses Pakets werden auch das **Media Services .NET SDK** installiert und alle anderen erforderlichen Abhängigkeiten hinzugefügt.
    
-    Stellen Sie sicher, dass Sie die neueste Version von NuGet installiert haben. Weitere Informationen und Installationsanweisungen finden Sie unter [NuGet](http://nuget.codeplex.com/).
+    Stellen Sie sicher, dass Sie die neueste Version von NuGet installiert haben. Weitere Informationen und Installationsanweisungen finden Sie unter [NuGet](https://nuget.codeplex.com/).
 
     1. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Namen des Projekts, und wählen Sie **NuGet-Pakete verwalten** aus.
 
@@ -54,7 +54,7 @@ Sie können auch die neuesten Media Services .NET SDK-Komponenten von GitHub ([g
     3. Suchen Sie im Onlinekatalog nach den Azure Media Services-Erweiterungen, wählen Sie die **Azure Media Services .NET SDK-Erweiterungen** (**windowsazure.mediaservices.extensions**) aus, und klicken Sie dann auf die Schaltfläche **Installieren**.
    
     4. Das Projekt wird geändert, und Verweise auf die Media Services .NET SDK-Erweiterungen, das Media Services .NET-SDK und andere abhängige Assemblys werden hinzugefügt.
-4. Um die Entwicklungsumgebung übersichtlicher zu halten, sollten Sie die Verwendung von NuGet Package Restore in Erwägung ziehen. Weitere Informationen finden Sie unter [NuGet Package Restore](http://docs.nuget.org/consume/package-restore).
+4. Um die Entwicklungsumgebung übersichtlicher zu halten, sollten Sie die Verwendung von NuGet Package Restore in Erwägung ziehen. Weitere Informationen finden Sie unter [NuGet Package Restore](https://docs.nuget.org/consume/package-restore).
 5. Fügen Sie einen Verweis auf die Assembly **System.Configuration** hinzu. Diese Assembly enthält die **System.Configuration.ConfigurationManager**-Klasse, die zum Zugriff auf die Konfigurationsdateien (z.B. „App.config“) verwendet wird.
    
     1. Wenn Sie Verweise mit dem Dialogfeld zur Verweisverwaltung hinzufügen möchten, klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Projektnamen. Klicken Sie auf **Hinzufügen** und anschließend auf **Verweis...**.

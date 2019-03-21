@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 11/06/2018
-ms.openlocfilehash: cb959bd74322534573f83c2b3258ff28d4c324ff
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 3c40e00d55af49b1b040d3fe706f08af719b2238
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112788"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>Tutorial: Apache Kafka Streams-API
 
@@ -199,13 +199,13 @@ Führen Sie die folgenden Schritte aus, um das Projekt in Ihrem Cluster für Kaf
 
     Die Themen werden für folgende Zwecke verwendet:
 
-    * `test`: In diesem Thema werden Datensätze empfangen. Die Streaminganwendung liest von dort.
-    * `wordcounts`: In diesem Thema speichert die Streaminganwendung ihre Ausgabe.
-    * `RekeyedIntermediateTopic`: Mit diesem Thema werden Daten neu partitioniert, wenn die Anzahl vom `countByKey`-Operator aktualisiert wird.
-    * `wordcount-example-Counts-changelog`: Dieses Thema ist ein Zustandsspeicher, den der `countByKey`-Vorgang verwendet.
+   * `test`: In diesem Thema werden Datensätze empfangen. Die Streaminganwendung liest von dort.
+   * `wordcounts`: In diesem Thema speichert die Streaminganwendung ihre Ausgabe.
+   * `RekeyedIntermediateTopic`: Mit diesem Thema werden Daten neu partitioniert, wenn die Anzahl vom `countByKey`-Operator aktualisiert wird.
+   * `wordcount-example-Counts-changelog`: Dieses Thema ist ein Zustandsspeicher, den der `countByKey`-Vorgang verwendet.
 
-    > [!IMPORTANT]  
-    > Kafka in HDInsight kann auch für das automatische Erstellen von Themen konfiguriert werden. Weitere Informationen finden Sie im Dokument [Konfigurieren von Apache Kafka in HDInsight zum automatischen Erstellen von Themen](apache-kafka-auto-create-topics.md).
+     > [!IMPORTANT]  
+     > Kafka in HDInsight kann auch für das automatische Erstellen von Themen konfiguriert werden. Weitere Informationen finden Sie im Dokument [Konfigurieren von Apache Kafka in HDInsight zum automatischen Erstellen von Themen](apache-kafka-auto-create-topics.md).
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 

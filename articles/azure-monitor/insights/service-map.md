@@ -1,24 +1,24 @@
 ---
 title: Verwenden der Service Map-Lösung in Azure | Microsoft-Dokumentation
 description: Service Map ist eine Lösung in Azure, die Anwendungskomponenten auf Windows- und Linux-Systemen automatisch ermittelt und die Kommunikation zwischen Diensten abbildet. Dieser Artikel enthält Informationen zum Bereitstellen von Service Map in Ihrer Umgebung und zur Verwendung der Lösung in einer Vielzahl von Szenarien.
-services: monitoring
+services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 3ceb84cc-32d7-4a7a-a916-8858ef70c0bd
-ms.service: monitoring
+ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 041cc302f05b109de2b79697dd048a6bc0752a4f
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: 143d14df3019aa0c5c5dd798f656f95c8ebde372
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232922"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731095"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Verwenden der Service Map-Lösung in Azure
 Service Map ermittelt automatisch Anwendungskomponenten auf Windows- und Linux-Systemen und stellt die Kommunikation zwischen Diensten dar. Mit Service Map können Sie die Server Ihrer Vorstellung gemäß anzeigen – als verbundene Systeme, die wichtige Dienste bereitstellen. Dienstzuordnung zeigt Verbindungen zwischen Servern, Prozessen, ein- und ausgehende Verbindungslatenz und Ports über die gesamte TCP-Verbindungsarchitektur an. Außer der Installation eines Agents ist keine weitere Konfiguration erforderlich.
@@ -374,7 +374,7 @@ Datensätze des Typs *ServiceMapComputer_CL* enthalten Bestandsdaten für Server
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-| Typ | *ServiceMapComputer_CL* |
+| Type | *ServiceMapComputer_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Computer innerhalb des Arbeitsbereichs |
@@ -399,7 +399,7 @@ Datensätze des Typs *ServiceMapProcess_CL* enthalten Bestandsdaten für über T
 
 | Eigenschaft | BESCHREIBUNG |
 |:--|:--|
-| Typ | *ServiceMapProcess_CL* |
+| Type | *ServiceMapProcess_CL* |
 | SourceSystem | *OpsManager* |
 | ResourceId | Der eindeutige Bezeichner für den Prozess innerhalb des Arbeitsbereichs |
 | ResourceName_s | Der eindeutige Bezeichner für den Prozess auf dem Computer, auf dem er ausgeführt wird|

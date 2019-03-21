@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 917243ccaf4ef3759e02bb92cad6f9ef04514e4a
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 4dbd65a391bdc5726436ba461a34e1ca7cab87b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56650511"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855179"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Erstellen einer Node.js-Web-App in Azure
 
@@ -49,7 +49,7 @@ Laden Sie das Node.js-Beispielprojekt von [https://github.com/Azure-Samples/node
 Öffnen Sie die Datei _index.js_, und suchen Sie nach der folgenden Zeile:
 
 ```javascript
-var port = process.env.PORT || 1337;
+const port = process.env.PORT || 1337;
 ```
 
 App Service fügt „process.env.PORT“ in Ihre Anwendung ein, sodass der Code anhand der Variablen ermittelt, an welchem Port gelauscht werden soll. 
@@ -112,7 +112,7 @@ Nach Erstellung der Web-App zeigt die Azure CLI eine Ausgabe wie im folgenden Be
 
 ### <a name="set-nodejs-runtime"></a>Festlegen der Node.js-Runtime
 
-Festlegen der Node.js-Runtime auf 10.14.1 Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen.
+Legen Sie die Node.js-Runtime auf „10.14.1“ fest. Führen Sie [`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-list-runtimes) aus, um alle unterstützten Laufzeiten anzuzeigen.
 
 ```azurecli-interactive
 # Bash and Powershell

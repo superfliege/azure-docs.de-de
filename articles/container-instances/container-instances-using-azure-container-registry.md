@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: f577a7dd9f517be6ab7b632a82227e4807862ba5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b596af8ae9fbbaee6964622df44d316a11582cb9
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55727907"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57337922"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Bereitstellen in Azure Container Instances aus Azure Container Registry
 
@@ -33,7 +33,7 @@ Im folgenden Abschnitt erstellen Sie einen Azure-Schlüsseltresor und Dienstprin
 
 ### <a name="create-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Wenn Sie noch keinen Tresor in [Azure Key Vault](/azure/key-vault/) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
+Wenn Sie noch keinen Tresor in [Azure Key Vault](../key-vault/key-vault-overview.md) haben, erstellen Sie einen mithilfe der Azure CLI und folgenden Befehle.
 
 Aktualisieren Sie die Variable `RES_GROUP` mit dem Namen einer vorhandenen Ressourcengruppe, in der der Schlüsselspeicher erstellt werden soll, und `ACR_NAME` mit dem Namen Ihrer Containerregistrierung. Geben Sie in `AKV_NAME` einen Namen für Ihren neuen Schlüsseltresor ein. Der Tresorname muss in Azure eindeutig sein und 3-24 alphanumerische Zeichen umfassen. Er muss mit einem Buchstaben beginnen, mit einem Buchstaben oder einer Ziffer enden und darf keine aufeinanderfolgenden Bindestriche enthalten.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8ff100cd3fc1c9def10b4e585119414281b90d92
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4a3d1c513bcfb6449ca73d873c0dd9831c6fe01d
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017377"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57540129"
 ---
 # <a name="use-case---product-recommendations"></a>Anwendungsfall – Produktempfehlungen
 Azure Data Factory ist einer der zahlreichen Dienste, die zum Implementieren der Cortana Intelligence Suite von Lösungsoptimierungen verwendet werden.  Auf der Seite [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics) finden Sie Details zu dieser Suite. In diesem Dokument wird ein allgemeiner Anwendungsfall beschrieben, den Azure-Benutzer bereits mithilfe von Azure Data Factory und anderen Cortana Intelligence-Komponentendiensten gelöst und implementiert haben.
@@ -50,7 +50,7 @@ Alle Daten werden kombiniert und einem Produktempfehlungssystem hinzugefügt, um
 
 Gigabytes an unformatierten Webprotokolldateien werden tagtäglich von der Website des Onlinehändlers als teilstrukturierte Daten erzeugt. Die unformatierten Webprotokolldateien sowie die Kunden- und Produktkataloginformationen werden regelmäßig in einer Azure Blob Storage-Instanz erfasst. Dazu wird die global als Dienst bereitgestellte Datenverschiebung von Data Factory verwendet. Die unformatierten Protokolldateien für den jeweiligen Tag werden im Blobspeicher zur langfristigen Speicherung nach Jahr und Monat partitioniert.  Zum Partitionieren der unformatierten Protokolldateien im Blobspeicher sowie zum bedarfsgerechten Verarbeiten der erfassten Protokolle mithilfe von Hive- und Pig-Skripts wird [Azure HDInsight](https://azure.microsoft.com/services/hdinsight/) verwendet. Die partitionierten Webprotokolldaten werden anschließend verarbeitet, um die erforderlichen Eingaben für ein durch maschinelles Lernen gestütztes Empfehlungssystem zu extrahieren, das zum Erzeugen der personalisierten Produktempfehlungen dient.
 
-Das durch maschinelles Lernen gestützte Empfehlungssystem in diesem Beispiel ist eine Open-Source-Empfehlungsplattform mit maschinellem Lernen von [Apache Mahout](http://mahout.apache.org/).  In diesem Szenario kann ein beliebiges, auf [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) basierendes oder benutzerdefiniertes Modell verwendet werden.  Das Mahout-Modell dient zum Prognostizieren der Ähnlichkeit zwischen Artikeln auf der Website anhand allgemeiner Nutzungsmuster sowie zum Generieren personalisierter Empfehlungen auf der Grundlage des jeweiligen Benutzers.
+Das durch maschinelles Lernen gestützte Empfehlungssystem in diesem Beispiel ist eine Open-Source-Empfehlungsplattform mit maschinellem Lernen von [Apache Mahout](https://mahout.apache.org/).  In diesem Szenario kann ein beliebiges, auf [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning/) basierendes oder benutzerdefiniertes Modell verwendet werden.  Das Mahout-Modell dient zum Prognostizieren der Ähnlichkeit zwischen Artikeln auf der Website anhand allgemeiner Nutzungsmuster sowie zum Generieren personalisierter Empfehlungen auf der Grundlage des jeweiligen Benutzers.
 
 Schließlich wird das Resultset der personalisierten Produktempfehlungen in einen relationalen Datamart zur Nutzung auf der Website des Onlinehändlers verschoben.  Auf das Resultset im Blobspeicher können andere Anwendungen auch direkt zugreifen. Es kann auch für andere Nutzer und Anwendungsfälle in weitere Datenspeicher verschoben werden.
 

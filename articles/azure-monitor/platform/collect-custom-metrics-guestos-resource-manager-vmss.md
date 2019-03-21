@@ -4,18 +4,20 @@ description: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azu
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 2b032405a2fb3b8b608228d8a739bf91dcf439ef
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 64fb3acf9b134b7188d316633bc663d7dd9b14b8
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895940"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760221"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Azure Resource Manager-Vorlage für eine VM-Skalierungsgruppe von Windows
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Die [WAD-Erweiterung](diagnostics-extension-overview.md) (Windows Azure-Diagnose) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Azure Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an viele verschiedene Standorte senden, die im zuvor verlinkten Artikel aufgeführt sind.  
 
@@ -27,7 +29,7 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 - Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden. 
 
-- Sie müssen [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) installiert haben, oder Sie können [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. 
+- Sie müssen [Azure PowerShell](/powershell/azure) installiert haben, oder Sie können [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) verwenden. 
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke 
@@ -236,17 +238,17 @@ Speichern und schließen Sie beide Dateien.
 Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwendet:  
 
 1. Starten Sie PowerShell. 
-1. Melden Sie sich mit `Login-AzureRmAccount` bei Azure an.
-1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzureRmSubscription` ab.
+1. Melden Sie sich mit `Login-AzAccount` bei Azure an.
+1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzSubscription` ab.
 1. Legen Sie das Abonnement fest, das Sie erstellen, oder aktualisieren Sie den virtuellen Computer: 
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>" 
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>" 
    ```
 1. Erstellen Sie eine neue Ressourcengruppe für die bereitzustellende VM. Führen Sie den folgenden Befehl aus: 
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
+    New-AzResourceGroup -Name "VMSSWADtestGrp" -Location "<Azure Region>" 
    ```
 
    > [!NOTE]  
@@ -258,7 +260,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
    > Wenn Sie eine bestehende Skalierungsgruppe aktualisieren möchten, fügen Sie an das Ende des folgenden Befehls **-Mode Incremental** an. 
  
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
+   New-AzResourceGroupDeployment -Name "VMSSWADTest" -ResourceGroupName "VMSSWADtestGrp" -TemplateFile "<File path of your azuredeploy.JSON file>" -TemplateParameterFile "<File path of your azuredeploy.parameters.JSON file>"  
    ```
 
 1. Nach der erfolgreichen Bereitstellung sollte die VM-Skalierungsgruppe im Azure-Portal angezeigt werden. Sie sollte Metriken an Azure Monitor ausgeben. 

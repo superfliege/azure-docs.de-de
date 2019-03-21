@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 3dda16450f5454b4fae6d18235b05b7bb29a8b91
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 4b622a5925aebd140fed2ac74eaf7cc186803b90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018857"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113754"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Transformieren von Daten mit der Hive-Aktivität in Azure Data Factory 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -75,12 +75,12 @@ Die HDInsight Hive-Aktivität in einer Data Factory-[Pipeline](data-factory-crea
 ## <a name="syntax-details"></a>Syntaxdetails
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| name |Der Name der Aktivität |JA |
+| name |Der Name der Aktivität |Ja |
 | Beschreibung |Ein Text, der beschreibt, wofür die Aktivität verwendet wird. |Nein  |
-| type |HDInsightHive |JA |
+| type |HDInsightHive |Ja |
 | inputs |Von der Hive-Aktivität genutzte Eingaben |Nein  |
-| outputs |Von der Hive-Aktivität erzeugte Ausgaben |JA |
-| linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |JA |
+| outputs |Von der Hive-Aktivität erzeugte Ausgaben |Ja |
+| linkedServiceName |Verweis auf den HDInsight-Cluster, der als verknüpfter Dienst in Data Factory registriert ist. |Ja |
 | script |Angabe des Hive-Skripts inline |Nein  |
 | scriptPath |Speichern Sie das Hive-Skript in Azure Blob Storage, und geben Sie den Pfad zur Datei an. Verwenden Sie die Eigenschaft "script" oder "scriptPath". Beide können nicht zusammen verwendet werden. Beim Dateinamen muss die Groß-/Kleinschreibung beachtet werden. |Nein  |
 | defines |Geben Sie Parameter als Schlüssel-Wert-Paare für Verweise innerhalb des Hive-Skripts mit "hiveconf" an. |Nein  |
@@ -242,7 +242,7 @@ Gehen Sie folgendermaßen vor, um parametrisierte Hive-Skripts zu verwenden:
         SUM(Duration)
     FROM HiveSampleIn Group by ProfileID
     ```
-## <a name="see-also"></a>Siehe auch
+  ## <a name="see-also"></a>Siehe auch
 * [Pig-Aktivität](data-factory-pig-activity.md)
 * [MapReduce-Aktivität](data-factory-map-reduce.md)
 * [Hadoop-Streamingaktivität](data-factory-hadoop-streaming-activity.md)

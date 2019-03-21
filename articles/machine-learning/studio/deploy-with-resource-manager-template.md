@@ -5,17 +5,17 @@ description: Bereitstellen ein Arbeitsbereichs für Azure Machine Learning Studi
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 38cd41fecb98a008bbf5a93eddd0d6a346cf3ef7
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 1b2790a4673fd162deca445b4300850fc0e3a087
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453968"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851981"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>Bereitstellen eines Azure Machine Learning Studio-Arbeitsbereichs mithilfe von Azure Resource Manager
 
@@ -31,7 +31,7 @@ Die folgende Vorlage verwendet den Namen der Ressourcengruppe, um den Namen des 
 ```
 {
     "contentVersion": "1.0.0.0",
-    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "variables": {
         "namePrefix": "[resourceGroup().name]",
         "location": "[resourceGroup().location]",

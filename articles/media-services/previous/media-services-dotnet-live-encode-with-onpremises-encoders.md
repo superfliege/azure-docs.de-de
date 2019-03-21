@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 01/17/2019
+ms.date: 03/18/2019
 ms.author: cenkdin;juliako
-ms.openlocfilehash: 3f4641f6a97d265bf2c2ad9dadb548ff754ad434
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 6bec12893591fb36298e9c2f1664646a4d598073
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54828110"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57839779"
 ---
 # <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-net"></a>Durchführen von Livestreaming mit lokalen Encodern mithilfe von .NET
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 * Ein Azure-Konto.
 * Media Services-Konto.    Informationen zum Erstellen eines Media Services-Kontos finden Sie unter [Gewusst wie: Erstellen eines Media Services Kontos](media-services-portal-create-account.md).
 * Richten Sie Ihre Entwicklungsumgebung ein. Weitere Informationen finden Sie unter [Einrichten der Umgebung](media-services-set-up-computer.md).
-* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](http://www.telestream.net/wirecast/overview.htm).
+* Eine Webcam. Beispielsweise den [Telestream Wirecast-Encoder](https://www.telestream.net/wirecast/overview.htm).
 
 Wir empfehlen, die folgenden Artikel zu lesen:
 

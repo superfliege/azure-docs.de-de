@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: abfc7ce78e8676e9560621be1ec9a81717d958e5
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
+ms.openlocfilehash: b198f860c10bd207a191057e21a8a159c5ebde26
+ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994282"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57403514"
 ---
 # <a name="create-azure-resource-manager-template"></a>Erstellen einer Azure Resource Manager-Vorlage
 
@@ -38,15 +38,15 @@ Ein Tutorial zum Installieren der Erweiterung für Resource Manager-Tools und zu
 
 Nachfolgend werden die einzelnen Bestandteile der Vorlage erläutert, damit Sie ein besseres Verständnis über deren Funktionsweise erlangen. Möglicherweise weist Ihre Vorlage nicht alle Abschnitte auf. Konzentrieren Sie sich auf die folgenden Abschnitte:
 
-* Der Abschnitt [parameters](resource-manager-templates-parameters.md) enthält die Werte, die Sie bei der Bereitstellung angeben können, um die bereitgestellte Infrastruktur anzupassen. 
+* Der Abschnitt [parameters](resource-group-authoring-templates.md#parameters) enthält die Werte, die Sie bei der Bereitstellung angeben können, um die bereitgestellte Infrastruktur anzupassen. 
 
-* Der Abschnitt [variables](resource-manager-templates-variables.md) enthält die Werte, die in der gesamten Vorlage verwendet werden.
+* Der Abschnitt [variables](resource-group-authoring-templates.md#variables) enthält die Werte, die in der gesamten Vorlage verwendet werden.
 
 * Der Abschnitt [functions](resource-group-authoring-templates.md#functions) enthält die angepassten Vorlagenausdrücke, die in Ihrer Vorlage verwendet werden.
 
-* Der Abschnitt [resources](resource-manager-templates-resources.md) enthält die Azure-Ressourcen, die für Ihr Abonnement bereitgestellt werden.
+* Der Abschnitt [resources](resource-group-authoring-templates.md#resources) enthält die Azure-Ressourcen, die für Ihr Abonnement bereitgestellt werden.
 
-* Der Abschnitt [outputs](resource-manager-templates-outputs.md) enthält die Werte, die nach Abschluss der Bereitstellung zurückgegeben werden.
+* Der Abschnitt [outputs](resource-group-authoring-templates.md#outputs) enthält die Werte, die nach Abschluss der Bereitstellung zurückgegeben werden.
 
 ## <a name="look-for-similar-templates"></a>Suchen nach ähnlichen Vorlagen
 
@@ -98,7 +98,7 @@ Sie können Tags zu Ihren Ressourcen hinzufügen, um diese auf logische Weise na
 }
 ```
 
-Sie können die Tags auch auf dynamische Weise über Parameter anwenden. Weitere Informationen finden Sie unter [tags in template (Tags in Vorlagen)](resource-manager-templates-resources.md#tags).
+Sie können die Tags auch auf dynamische Weise über Parameter anwenden. Weitere Informationen finden Sie unter [tags in template (Tags in Vorlagen)](resource-group-using-tags.md#templates).
 
 ## <a name="review-template-functions"></a>Prüfen von Vorlagenfunktionen
 
@@ -176,7 +176,7 @@ Das folgende Beispiel stellt bedingt ein Speicherkonto bereit:
 }
 ```
 
-Weitere Informationen finden Sie unter [condition-Element](resource-manager-templates-resources.md#condition).
+Weitere Informationen finden Sie unter [condition-Element](resource-group-authoring-templates.md#condition).
 
 ## <a name="review-dependencies"></a>Prüfen von Abhängigkeiten
 

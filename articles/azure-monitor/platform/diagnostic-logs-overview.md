@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: e9fcf36d6ece441c73e7d1224bd5918d2e74bf84
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 07ea18a767044f0f74249859bb46d8285d52d7ab
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001974"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57310181"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Erfassen und Nutzen von Protokolldaten aus Ihren Azure-Ressourcen
 
@@ -23,7 +23,7 @@ ms.locfileid: "56001974"
 * **Mandantenprotokolle**: Diese Protokolle stammen aus Diensten auf Mandantenebene, die außerhalb eines Azure-Abonnements vorhanden sind, z. B. Azure Active Directory-Protokolle.
 * **Ressourcenprotokollen**: Diese Protokolle stammen aus Azure-Diensten, die Ressourcen in einem Azure-Abonnement bereitstellen, z. B. Netzwerksicherheitsgruppen oder Speicherkonten.
 
-    ![Ressourcendiagnoseprotokolle im Vergleich zu anderen Protokolltypen ](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
+    ![Ressourcendiagnoseprotokolle im Vergleich zu anderen Protokolltypen](./media/diagnostic-logs-overview/Diagnostics_Logs_vs_other_logs_v5.png)
 
 Der Inhalt dieser Protokolle variiert je nach Azure-Dienst und Ressourcentyp. Beispielweise sind Netzwerksicherheitsgruppen-Regelzähler und Key Vault-Überwachungen zwei Typen von Diagnoseprotokollen.
 
@@ -113,12 +113,14 @@ Die Diagnoseeinstellungen für Mandanten können nur im Portal auf dem Blatt fü
 
 ### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>Aktivieren der Erfassung von Diagnoseprotokollen für Ressourcen mit PowerShell
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Verwenden Sie die folgenden Befehle, um die Erfassung von Diagnoseprotokollen für Ressourcen mit Azure PowerShell zu aktivieren:
 
 Verwenden Sie den folgenden Befehl, um das Speichern von Diagnoseprotokollen in einem Speicherkonto zu aktivieren:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Protokolle gesendet werden sollen.
@@ -126,7 +128,7 @@ Die Speicherkonto-ID ist die Ressourcen-ID für das Speicherkonto, an das die Pr
 Verwenden Sie den folgenden Befehl, um das Streamen von Diagnoseprotokollen an eine Event Hub-Instanz zu aktivieren:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
 Die Service Bus-Regel-ID ist eine Zeichenfolge mit dem folgenden Format: `{Service Bus resource ID}/authorizationrules/{key name}`.
@@ -134,13 +136,13 @@ Die Service Bus-Regel-ID ist eine Zeichenfolge mit dem folgenden Format: `{Servi
 Verwenden Sie den folgenden Befehl, um das Senden von Diagnoseprotokollen an einen Log Analytics-Arbeitsbereich zu aktivieren:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 Sie können die Ressourcen-ID mit dem folgenden Befehl aus Ihrem Log Analytics-Arbeitsbereich abrufen:
 
 ```powershell
-(Get-AzureRmOperationalInsightsWorkspace).ResourceId
+(Get-AzOperationalInsightsWorkspace).ResourceId
 ```
 
 Sie können diese Parameter miteinander kombinieren, um mehrere Ausgabeoptionen zu aktivieren.

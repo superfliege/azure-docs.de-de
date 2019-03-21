@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: c4537709181398e401ade67b831bc2d26a99221f
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53193585"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850716"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Anweisungen für die Leadverwaltung für Azure-Tabellen
 
@@ -38,7 +38,7 @@ Dieser Artikel beschreibt, wie Sie eine Azure-Tabelle zum Speichern von Vertrieb
     
     ![Azure-Speicherschlüssel](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
-Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](http://azurestorageexplorer.codeplex.com/) oder einem anderen Tool anzeigen. Sie können die Daten auch in eine Azure-Tabelle exportieren.
+Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](https://azurestorageexplorer.codeplex.com/) oder einem anderen Tool anzeigen. Sie können die Daten auch in eine Azure-Tabelle exportieren.
 Daten.
 
 ## <a name="optional-use-microsoft-flow-with-an-azure-table"></a>**(Optional)**  Verwenden von Microsoft Flow mit einer Azure-Tabelle

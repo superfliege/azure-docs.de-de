@@ -10,17 +10,17 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: f17bc3c0588476fdc4f8414fb020b16718bf1d90
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bba257c61509d862bb3161625750f05a86af8770
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55854794"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57532166"
 ---
 # <a name="data-format"></a>Datenformat
 
 Die Datendatei beschreibt die Liste der zu indizierenden Objekte.
-Jede Zeile in der Datei spezifiziert die Attributwerte eines Objekts im [JSON-Format](http://json.org/) mit UTF-8-Codierung.
+Jede Zeile in der Datei spezifiziert die Attributwerte eines Objekts im [JSON-Format](https://json.org/) mit UTF-8-Codierung.
 Zusätzlich zu den in [schema](SchemaFormat.md) definierten Attributen hat jedes Objekt ein optionales „logprob“-Attribut, das die relative Logarithmuswahrscheinlichkeit unter den Objekten angibt.
 Wenn der Dienst Objekte in der Reihenfolge der abnehmenden Wahrscheinlichkeit zurückgibt, können wir „logprob“ verwenden, um die Rückgabereihenfolge der passenden Objekte anzuzeigen.
 Bei einer Wahrscheinlichkeit *p* zwischen 0 und 1 kann die entsprechende Logarithmuswahrscheinlichkeit als log(*p*) berechnet werden, wobei „log()“ die natürliche Logarithmusfunktion ist.

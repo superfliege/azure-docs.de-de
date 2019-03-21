@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: e773986d11a11c6cc84df367aa48ac1b01a9183e
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157121"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121501"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>Verwalten des StorSimple Data Manager-Diensts im Azure-Portal
 
@@ -46,19 +46,19 @@ Führen Sie die folgenden Schritte aus, um einen StorSimple Data Manager-Dienst 
 
 3. Geben Sie für den neuen Dienst Folgendes an:
 
-    1. Geben Sie einen eindeutigen **Dienstnamen** für den StorSimple Data Manager an. Dies ist ein Anzeigename, der zum Identifizieren des Diensts verwendet werden kann. Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
+   1. Geben Sie einen eindeutigen **Dienstnamen** für den StorSimple Data Manager an. Dies ist ein Anzeigename, der zum Identifizieren des Diensts verwendet werden kann. Der Name kann zwischen 3 und 24 Zeichen lang sein und darf nur Buchstaben, Zahlen und Bindestriche enthalten. Der Name muss mit einem Buchstaben oder einer Zahl beginnen und enden.
 
-    2. Wählen Sie ein **Abonnement** in der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird automatisch ausgefüllt (und ist nicht auswählbar), wenn Sie nur ein Abonnement haben.
+   2. Wählen Sie ein **Abonnement** in der Dropdownliste aus. Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft. Dieses Feld wird automatisch ausgefüllt (und ist nicht auswählbar), wenn Sie nur ein Abonnement haben.
 
-    3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
+   3. Wählen Sie eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Gruppe. Weitere Informationen finden Sie unter [Azure resource groups (Azure-Ressourcengruppen)](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-infrastructure-resource-groups-guidelines/).
 
-    4. Geben Sie den **Standort** für Ihren Dienst an, an dem sich Ihre Speicherkonten und Ihr StorSimple Data Manager-Dienst befinden. Ihr StorSimple-Geräte-Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten sollten sich alle in den unterstützten Regionen befinden.
+   4. Geben Sie den **Standort** für Ihren Dienst an, an dem sich Ihre Speicherkonten und Ihr StorSimple Data Manager-Dienst befinden. Ihr StorSimple-Geräte-Manager-Dienst, Data Manager-Dienst und die zugeordneten Speicherkonten sollten sich alle in den unterstützten Regionen befinden.
     
-    5. Um einen Link zu diesem Dienst auf Ihrem Dashboard zu erhalten, wählen Sie **An Dashboard anheften** aus.
+   5. Um einen Link zu diesem Dienst auf Ihrem Dashboard zu erhalten, wählen Sie **An Dashboard anheften** aus.
     
-    6. Klicken Sie auf **Create**.
+   6. Klicken Sie auf **Create**.
 
-    ![Erstellen eines StorSimple Data Manager-Diensts 3](./media/storsimple-data-manager-ui/create-service-4.png)
+      ![Erstellen eines StorSimple Data Manager-Diensts 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
 Die Diensterstellung dauert einige Minuten. Sie sehen eine Benachrichtigung, nachdem der Dienst erfolgreich erstellt wurde, und der neue Dienst wird angezeigt.
 
@@ -88,33 +88,33 @@ Führen Sie die folgenden Schritte aus, um eine Auftragsdefinition zu erstellen.
 
     ![Hinzufügen eines neuen Datenrepositorys](./media/storsimple-data-manager-ui/create-job-definition-3.png)
   
-    1. Wählen Sie **StorSimple 8000-Serie Manager** als Datenrepositorytyp aus.
+   1. Wählen Sie **StorSimple 8000-Serie Manager** als Datenrepositorytyp aus.
     
-    2. Geben Sie einen Anzeigenamen für Ihr Quelldatenrepository ein.
+   2. Geben Sie einen Anzeigenamen für Ihr Quelldatenrepository ein.
     
-    3. Wählen Sie in der Dropdownliste ein Abonnement aus, das Ihrem StorSimple-Geräte-Manager-Dienst zugeordnet ist.
+   3. Wählen Sie in der Dropdownliste ein Abonnement aus, das Ihrem StorSimple-Geräte-Manager-Dienst zugeordnet ist.
     
-    4. Geben Sie den Namen des StorSimple-Geräte-Managers für die **Ressource** ein.
+   4. Geben Sie den Namen des StorSimple-Geräte-Managers für die **Ressource** ein.
 
-    5. Geben Sie die **Dienstdatenverschlüsselungs**-Schlüssel für den StorSimple-Geräte-Manager-Dienst ein. 
+   5. Geben Sie die **Dienstdatenverschlüsselungs**-Schlüssel für den StorSimple-Geräte-Manager-Dienst ein. 
 
-    ![Konfigurieren des Quelldatenrepositorys 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
+      ![Konfigurieren des Quelldatenrepositorys 1](./media/storsimple-data-manager-ui/create-job-definition-4.png)
 
-    Klicken Sie nach Abschluss des Vorgangs auf **OK**. Dadurch wird Ihr Datenrepository gespeichert. Sie können diesen StorSimple-Geräte-Manager in anderen Auftragsdefinitionen wiederverwenden, ohne diese Parameter erneut eingeben zu müssen. Nachdem Sie auf **OK** geklickt haben, dauert es einige Sekunden, bis das neu erstellte Quelldatenrepository in der Dropdownliste angezeigt wird.
+      Klicken Sie nach Abschluss des Vorgangs auf **OK**. Dadurch wird Ihr Datenrepository gespeichert. Sie können diesen StorSimple-Geräte-Manager in anderen Auftragsdefinitionen wiederverwenden, ohne diese Parameter erneut eingeben zu müssen. Nachdem Sie auf **OK** geklickt haben, dauert es einige Sekunden, bis das neu erstellte Quelldatenrepository in der Dropdownliste angezeigt wird.
 
 7. Wählen Sie in der Dropdownliste für **Datenrepository** das Datenrepository aus, das Sie erstellt haben. 
 
-    1. Geben Sie den Namen des Geräts der StorSimple 8000-Serie ein, das die gewünschten Daten enthält.
+   1. Geben Sie den Namen des Geräts der StorSimple 8000-Serie ein, das die gewünschten Daten enthält.
 
-    2. Geben Sie den Namen des Volumes an, das sich auf dem StorSimple-Gerät befindet und das die von Ihnen gewünschten Daten enthält.
+   2. Geben Sie den Namen des Volumes an, das sich auf dem StorSimple-Gerät befindet und das die von Ihnen gewünschten Daten enthält.
 
-    3. Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis, das die von Ihnen gewünschten Daten enthält, im Format _\MeinStammverzeichnis\Daten_ ein. Laufwerkbuchstaben, etwa _\C:\Daten_, werden nicht unterstützt. Sie können hier auch Dateifilter hinzufügen.
+   3. Geben Sie im Unterabschnitt **Filter** das Stammverzeichnis, das die von Ihnen gewünschten Daten enthält, im Format _\MeinStammverzeichnis\Daten_ ein. Laufwerkbuchstaben, etwa _\C:\Daten_, werden nicht unterstützt. Sie können hier auch Dateifilter hinzufügen.
 
-    4. Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Wenn Sie diesen Auftrag ausführen, können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
+   4. Der Datentransformationsdienst funktioniert mit den Daten, die über Momentaufnahmen an die Azure-Cloud übertragen werden. Wenn Sie diesen Auftrag ausführen, können Sie entscheiden, bei jeder Ausführung dieses Auftrags eine Sicherung vorzunehmen (um aktuellste Daten zu bearbeiten), oder die letzte vorhandene Sicherung in der Cloud zu verwenden (wenn Sie archivierte Daten bearbeiten).
 
-    5. Klicken Sie auf **OK**.
+   5. Klicken Sie auf **OK**.
 
-    ![Konfigurieren des Quelldatenrepositorys 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
+      ![Konfigurieren des Quelldatenrepositorys 2](./media/storsimple-data-manager-ui/create-job-definition-8.png)
 
 8. Als Nächstes muss das Zieldatenrepository konfiguriert werden. Wählen Sie Speicherkonten aus, wenn Sie Dateien in Blobs in diesem Konto ablegen möchten. Wählen Sie in der Dropdownliste **Neu hinzufügen** aus, und dann **Konfigurieren von Einstellungen**.
 

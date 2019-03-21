@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: feecafcae8095c11736d1a76a1b6774c8dde1fc8
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 2e33f94486fe295fffa1f0b4bbd298b15d9271f4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864093"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113732"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 
@@ -246,10 +246,10 @@ Zusätzlich zum Hinzufügen eines Transkripts zu einer Videoüberprüfung fügen
 1. Ihr Content Moderator-Teamname.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung
 1. IList<TranscriptModerationBodyItem>: Ein **TranscriptModerationBodyItem**-Element verfügt über die folgenden Eigenschaften:
-- **Terms**: IList<TranscriptModerationBodyItemTermsItem>: Ein **TranscriptModerationBodyItemTermsItem**-Element verfügt über die folgenden Eigenschaften:
-- **Index**: Der nullbasierte Index des Begriffs
-- **Term**: Eine Zeichenfolge, die den Begriff enthält
-- **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
+1. **Terms**: IList<TranscriptModerationBodyItemTermsItem>: Ein **TranscriptModerationBodyItemTermsItem**-Element verfügt über die folgenden Eigenschaften:
+1. **Index**: Der nullbasierte Index des Begriffs
+1. **Term**: Eine Zeichenfolge, die den Begriff enthält
+1. **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
 
 Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie auf unter [WebVTT: Das Format für Webvideo-Texttitel](https://www.w3.org/TR/webvtt1/).
 

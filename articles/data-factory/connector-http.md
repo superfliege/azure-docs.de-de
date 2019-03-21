@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 12/202018
+ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: b092509c1029bbff028da6bf94b9f7dbd1068b16
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 87505081f16008dff7da1f567c1265c695f3f0ab
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020029"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670842"
 ---
 # <a name="copy-data-from-an-http-endpoint-by-using-azure-data-factory"></a>Kopieren von Daten von einem HTTP-Endpunkt mithilfe von Azure Data Factory
 
@@ -58,10 +58,10 @@ Folgende Eigenschaften werden für den mit HTTP verknüpften Dienst unterstützt
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | JA |
-| URL | Die Basis-URL zum Webserver. | JA |
+| type | Die **type**-Eigenschaft muss auf **HttpServer** festgelegt werden. | Ja |
+| URL | Die Basis-URL zum Webserver. | Ja |
 | enableServerCertificateValidation | Geben Sie an, ob die Überprüfung des SSL-Zertifikats des Servers aktiviert werden soll, wenn eine Verbindung mit einem HTTP-Endpunkt hergestellt wird. Wenn der HTTPS-Server ein selbstsigniertes Zertifikat verwendet, legen Sie diese Eigenschaft auf **FALSE** fest. | Nein <br /> (der Standardwert ist **TRUE**) |
-| authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | JA |
+| authenticationType | Gibt den Authentifizierungstyp an. Zulässige Werte: **Anonymous**, **Basic**, **Digest**, **Windows** und **ClientCertificate**. <br><br> Weitere Eigenschaften und JSON-Beispiele für diese Authentifizierungstypen, finden Sie in den Abschnitten, die auf diese Tabelle folgen. | Ja |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden soll. Sie können die Azure Integration Runtime oder eine selbstgehostete Integration Runtime verwenden (sofern sich Ihr Datenspeicher in einem privaten Netzwerk befindet). Wenn keine Option angegeben ist, verwendet diese Eigenschaft die standardmäßige Azure Integration Runtime. |Nein  |
 
 ### <a name="using-basic-digest-or-windows-authentication"></a>Verwenden der Authentifizierung des Typs „Basic“, „Digest“ oder „Windows“
@@ -70,8 +70,8 @@ Legen Sie die **authenticationType**-Eigenschaft auf **Basic**, **Digest** oder 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| userName | Der Benutzername, der für den Zugriff auf den HTTP-Endpunkt verwendet werden soll. | JA |
-| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | JA |
+| userName | Der Benutzername, der für den Zugriff auf den HTTP-Endpunkt verwendet werden soll. | Ja |
+| password | Das Kennwort für den Benutzer (der Wert **userName**). Markieren Sie dieses Feld als Typ **SecureString**, um es sicher in Data Factory zu speichern. Sie können auch [auf ein Geheimnis verweisen, das in Azure Key Vault](store-credentials-in-key-vault.md) gespeichert ist. | Ja |
 
 **Beispiel**
 
@@ -168,7 +168,7 @@ Legen Sie zum Kopieren von Daten aus HTTP die **type**-Eigenschaft des Datasets 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft des Datasets muss auf **HttpFile** festgelegt werden. | JA |
+| type | Die **type**-Eigenschaft des Datasets muss auf **HttpFile** festgelegt werden. | Ja |
 | relativeUrl | Eine relative URL zu der Ressource, die die Daten enthält. Wenn die Eigenschaft nicht angegeben ist, wird nur die URL verwendet, die in der Definition des verknüpften Diensts angegeben ist. | Nein  |
 | requestMethod | Die HTTP-Methode. Zulässige Werte sind **Get** (Standardwert) und **Post**. | Nein  |
 | additionalHeaders | Zusätzliche HTTP-Anforderungsheader | Nein  |
@@ -230,7 +230,7 @@ Legen Sie zum Kopieren von Daten aus HTTP den **Quelltyp** in der Kopieraktivit�
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **HttpSource** festgelegt werden. | JA |
+| type | Die **type**-Eigenschaft der Quelle der Kopieraktivität muss auf **HttpSource** festgelegt werden. | Ja |
 | httpRequestTimeout | Das Timeout (der Wert **TimeSpan**) für die HTTP-Anforderung, um eine Antwort zu empfangen. Bei diesem Wert handelt es sich um das Timeout zum Empfangen einer Antwort, nicht um das Timeout zum Lesen von Antwortdaten. Der Standardwert ist **00:01:40**.  | Nein  |
 
 **Beispiel**

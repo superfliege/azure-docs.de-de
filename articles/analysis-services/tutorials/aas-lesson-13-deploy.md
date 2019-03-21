@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 780853644125c8fa6d5edcef642cfad724516ef2
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 72fa9bf211139b971afa443af812d644c76062fc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188384"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123469"
 ---
 # <a name="deploy"></a>Bereitstellen
 
@@ -49,15 +49,15 @@ Dieser Artikel ist Teil eines Tutorials zur Tabellenmodellierung, das in der ric
   
 #### <a name="to-deploy-the-adventure-works-internet-sales"></a>So stellen Sie „Adventure Works Internet Sales“ bereit
   
-1.  Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **AW Internet Sales** und dann auf **Erstellen**.  
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt **AW Internet Sales** und dann auf **Erstellen**.  
 
-2.  Klicken Sie mit der rechten Maustaste auf der Projekt **AW Internet Sales** und dann auf **Bereitstellen**.
+2. Klicken Sie mit der rechten Maustaste auf der Projekt **AW Internet Sales** und dann auf **Bereitstellen**.
 
-    Wenn Sie eine Bereitstellung an Azure Analysis Services durchführen, werden Sie möglicherweise aufgefordert, Ihre Kontodaten einzugeben. Geben Sie Ihr Organisationskonto und das Kennwort ein, z.B. nancy@adventureworks.com. Dieses Konto muss ein Administratorkonto des Servers sein.
+   Wenn Sie eine Bereitstellung an Azure Analysis Services durchführen, werden Sie möglicherweise aufgefordert, Ihre Kontodaten einzugeben. Geben Sie Ihr Organisationskonto und das Kennwort ein, z.B. nancy@adventureworks.com. Dieses Konto muss ein Administratorkonto des Servers sein.
   
-    Das Dialogfeld „Bereitstellen“ erscheint und zeigt den Bereitstellungsstatus der Metadaten und jeder Tabelle an, die sich im Modell befinden.  
+   Das Dialogfeld „Bereitstellen“ erscheint und zeigt den Bereitstellungsstatus der Metadaten und jeder Tabelle an, die sich im Modell befinden.  
     
-    ![aas-lektion13-bereitstellen-status](../tutorials/media/aas-lesson13-deploy-status.png)
+   ![aas-lektion13-bereitstellen-status](../tutorials/media/aas-lesson13-deploy-status.png)
   
 3. Wenn die Bereitstellung erfolgreich abgeschlossen ist, können Sie auf **Schließen** klicken.  
   

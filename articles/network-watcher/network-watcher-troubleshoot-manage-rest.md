@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: e3c172a0e88988acfb0244fff4603dc644aee03f
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 0889476d84bbeaf620d9fc952efe102601a1eaf8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091022"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857843"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher"></a>Problembehandlung bei Virtual Network-Gateways und -Verbindungen in Azure Network Watcher
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
 > - [PowerShell](network-watcher-troubleshoot-manage-powershell.md)
-> - [Azure-CLI](network-watcher-troubleshoot-manage-cli.md)
+> - [Azure-Befehlszeilenschnittstelle](network-watcher-troubleshoot-manage-cli.md)
 > - [REST-API](network-watcher-troubleshoot-manage-rest.md)
 
 Network Watcher bietet viele Funktionen zum Erfassen von Informationen über Ihre Netzwerkressourcen in Azure. Zu diesen Funktionen zählt die Ressourcenproblembehandlung. Die Ressourcenproblembehandlung kann über das Portal, PowerShell, die CLI oder die REST-API aufgerufen werden. Bei Aufruf untersucht Network Watcher die Integrität von Virtual Network-Gateways oder -Verbindungen und gibt entsprechende Ergebnisse zurück.
@@ -161,7 +161,7 @@ Die folgenden Antworten sind Beispiele für eine typische heruntergestufte Antwo
         },
         {
           "actionText": "If your VPN gateway isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -178,7 +178,7 @@ Die folgenden Antworten sind Beispiele für eine typische heruntergestufte Antwo
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -295,7 +295,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If your VPN Connection isn't up and running by the expected resolution time, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -312,7 +312,7 @@ is a transient state while the Azure platform is being updated.",
         },
         {
           "actionText": "If you are experiencing problems you believe are caused by Azure, contact support",
-          "actionUri": "http://azure.microsoft.com/support",
+          "actionUri": "https://azure.microsoft.com/support",
           "actionUriText": "contact support"
         }
       ]
@@ -325,7 +325,7 @@ is a transient state while the Azure platform is being updated.",
 
 Der Aktionstext enthält allgemeine Richtlinien zur Behebung des Problems. Wenn eine Aktion für das Problem ausgeführt werden kann, wird ein Link mit weiteren Anleitungen bereitgestellt. Falls es keine weitere Anleitungen gibt, enthält die Antwort die URL zum Öffnen einer Supportanfrage.  Weitere Informationen zu den Eigenschaften der Antwort und zu deren Inhalt finden Sie unter [Übersicht über die Network Watcher-Problembehandlung](network-watcher-troubleshoot-overview.md).
 
-Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter [Storage-Explorer](http://storageexplorer.com/).
+Anweisungen zum Herunterladen von Dateien von Azure-Speicherkonten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Ein weiteres Tool, das verwendet werden kann, ist der Storage-Explorer. Weitere Informationen zum Storage-Explorer finden Sie unter dem folgenden Link: [Storage-Explorer](https://storageexplorer.com/)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

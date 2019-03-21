@@ -10,18 +10,18 @@ ms.reviewer: klam, stepsic, LADocs
 ms.topic: article
 ms.assetid: f113005d-0ba6-496b-8230-c1eadbd6dbb9
 ms.date: 05/26/2017
-ms.openlocfilehash: e95b20a12fafa9d1dbcbd641ce1c9f2674314489
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: a9049ba1fbd7d3bdce061d277f6a7a02d9b1e4b7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606434"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880063"
 ---
 # <a name="deploy-and-call-custom-apis-from-workflows-in-azure-logic-apps"></a>Bereitstellen und Aufrufen benutzerdefinierter APIs über Workflows in Azure Logic Apps
 
 Nachdem Sie den Vorgang [Benutzerdefinierte APIs erstellen](./logic-apps-create-api-app.md) für die Verwendung in Workflows der Logik-App durchgeführt haben, müssen Sie Ihre APIs bereitstellen, bevor Sie sie aufrufen können. Sie können Ihre APIs als [Web-Apps](../app-service/overview.md) bereitstellen, sollten jedoch in Erwägung ziehen, Ihre APIs als [API-Apps](../app-service/app-service-web-tutorial-rest-api.md) bereitzustellen. Dadurch wird das Erstellen, Hosten und Nutzen der APIs in der Cloud und lokal vereinfacht. Sie müssen keinen Code in Ihren APIs ändern. Stellen Sie einfach Ihren Code für eine API-App bereit. Sie können Ihre APIs in [Azure App Service](../app-service/overview.md) hosten, einem PaaS-Angebot (Platform-as-a-Service), das ein einfaches API-Hosting mit hoher Skalierbarkeit ermöglicht.
 
-Und obwohl Sie alle APIs in einer Logik-App aufrufen können, sollten Sie für optimale Ergebnisse [OpenAPI-Metadaten (zuvor Swagger)](http://swagger.io/specification/) hinzufügen, die Ihre API-Vorgänge und -Parameter beschreiben. Mit dieser OpenAPI-Datei funktioniert Ihre API besser und lässt sich leichter in Logik-Apps integrieren.
+Und obwohl Sie alle APIs in einer Logik-App aufrufen können, sollten Sie für optimale Ergebnisse [OpenAPI-Metadaten (zuvor Swagger)](https://swagger.io/specification/) hinzufügen, die Ihre API-Vorgänge und -Parameter beschreiben. Mit dieser OpenAPI-Datei funktioniert Ihre API besser und lässt sich leichter in Logik-Apps integrieren.
 
 ## <a name="deploy-your-api-as-a-web-app-or-api-app"></a>Bereitstellen der API als Web-App oder API-App
 

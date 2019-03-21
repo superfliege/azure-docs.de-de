@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: f9429e88525e27c0b6bad29d1927d53d05dfbcc8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 3c8fab85d71f5f81bbf81bc3dd7a22d6c0b7f11b
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33765363"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551839"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Verwendung von Azure CDN mit CORS
 ## <a name="what-is-cors"></a>Was ist CORS?
-CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](http://www.w3.org/Security/wiki/Same_Origin_Policy)bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern.  Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen.  CORS bietet eine sichere Methode, um einem Ursprung (der Ursprungsdomäne) das Aufrufen von APIs in einem anderen Ursprung zu ermöglichen.
+CORS (Cross Origin Resource Sharing; Ressourcenfreigabe zwischen verschiedenen Ursprüngen) ist eine HTTP-Funktion, die einer Webanwendung, die in einer Domäne ausgeführt wird, den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Alle modernen Webbrowser eine Sicherheitseinschränkung, die als [Same Origin Policy](https://www.w3.org/Security/wiki/Same_Origin_Policy)bekannt ist, um die Möglichkeiten für Cross-Site Scripting-Angriffe zu verringern.  Dies hindert eine Website daran, APIs in einer anderen Domäne aufzurufen.  CORS bietet eine sichere Methode, um einem Ursprung (der Ursprungsdomäne) das Aufrufen von APIs in einem anderen Ursprung zu ermöglichen.
 
 ## <a name="how-it-works"></a>So funktioniert's
 Es gibt zwei Arten von CORS-Anforderungen: *einfache Anforderungen* und *komplexe Anforderungen*.
@@ -76,7 +76,7 @@ In diesem Fall erstellen Sie einen regulären Ausdruck, der alle Ursprünge enth
     https?:\/\/(www\.contoso\.com|contoso\.com|www\.microsoft\.com|microsoft.com\.com)$
 
 > [!TIP]
-> **Azure CDN Premium von Verizon** verwendet [Perl Compatible Regular Expressions](http://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
+> **Azure CDN Premium von Verizon** verwendet [Perl Compatible Regular Expressions](https://pcre.org/) als Engine für reguläre Ausdrücke.  Sie können ein Tool wie [Regular Expressions 101](https://regex101.com/) verwenden, um Ihre regulären Ausdrücke zu überprüfen.  Beachten Sie, dass das Zeichen „/“ in regulären Ausdrücken zulässig ist und nicht mit Escapezeichen versehen werden muss. Dieses Zeichen in Escapezeichen zu setzen ist jedoch die beste Methode und wird von einigen RegEx-Validierern erwartet.
 > 
 > 
 

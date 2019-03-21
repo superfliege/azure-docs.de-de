@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: quickstart
 ms.date: 01/31/2019
 ms.author: aahi
-ms.openlocfilehash: c2dfd67a2ac3efd24da9c7ba2b1b5541fafafd2d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 29d0dc032bd14161674c58d6e502ad77c3bf75e5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866117"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108779"
 ---
 # <a name="quickstart-search-for-videos-using-the-bing-video-search-rest-api-and-c"></a>Schnellstart: Suchen nach Videos mithilfe der Bing-Videosuche-REST-API und C#
 
@@ -26,7 +26,7 @@ Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples
 ## <a name="prerequisites"></a>Voraussetzungen
 * Eine beliebige [Visual Studio 2017](https://www.visualstudio.com/downloads/)-Edition.
 * Das [Json.NET](https://www.newtonsoft.com/json)-Framework, das als NuGet-Paket verfügbar ist
-* Unter Linux/macOS kann diese Anwendung mit [Mono](http://www.mono-project.com/) ausgeführt werden
+* Unter Linux/macOS kann diese Anwendung mit [Mono](https://www.mono-project.com/) ausgeführt werden
 
 [!INCLUDE [cognitive-services-bing-video-search-signup-requirements](../../../../includes/cognitive-services-bing-video-search-signup-requirements.md)]
 
@@ -52,7 +52,7 @@ Der Quellcode dieses Beispiels ist auf [GitHub](https://github.com/Azure-Samples
 
 ### <a name="create-a-struct-to-format-the-bing-video-search-api-response"></a>Erstellen einer Struktur zum Formatieren der Antwort der Bing-Videosuche-API
 
-3. Definieren Sie eine `SearchResult`-Struktur, die die Bildersuchergebnisse und JSON-Headerinformationen enthält.
+1. Definieren Sie eine `SearchResult`-Struktur, die die Bildersuchergebnisse und JSON-Headerinformationen enthält.
 
     ```csharp
     struct SearchResult

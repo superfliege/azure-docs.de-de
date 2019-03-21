@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e02c99edcc1774510f9d10a5d19f49c4fc0530a9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594082"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57550674"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>Auswählen eines Audioeingabegeräts mit dem Speech SDK
 
@@ -223,7 +223,7 @@ Ein Beispiel für eine Geräte-ID wäre etwa `\\\\?\\SWD#MMDEVAPI#{0.0.1.0000000
 
 Die Geräte-IDs werden mithilfe standardmäßiger ALSA-Geräte-IDs ausgewählt.
 Die IDs der mit dem System verbundenen Eingabegeräte sind in der Ausgabe des Befehls `arecord -L` enthalten.
-Alternativ können sie unter Verwendung der [ALSA-C-Bibliothek](http://www.alsa-project.org/alsa-doc/alsa-lib/) abgerufen werden.
+Alternativ können sie unter Verwendung der [ALSA-C-Bibliothek](https://www.alsa-project.org/alsa-doc/alsa-lib/) abgerufen werden.
 Beispiel-IDs wären etwa `hw:1,0` und `hw:CARD=CC,DEV=0`.
 
 ## <a name="audio-device-ids-on-macos"></a>Audio-Geräte-IDs unter macOS

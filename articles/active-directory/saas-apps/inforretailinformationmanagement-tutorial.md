@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 928fe956dbdc5020f273e59f4aaf3e4b690384f9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b7c4ac61caae371ebce7c273a4b48244a45c3519
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202314"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57837669"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Tutorial: Azure Active Directory-Integration in Infor Retail – Information Management
 
@@ -112,6 +112,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden für Azure AD im Azure
     ![Informationen für einmaliges Anmelden im IDP-Modus in „Domäne und URLs für Infor Retail – Information Management“](./media/inforretailinformationmanagement-tutorial/tutorial_inforretailinformationmanagement_url.png)
 
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: 
+    
     |   |
     | -- |
     | `https://<company name>.mingle.infor.com` |

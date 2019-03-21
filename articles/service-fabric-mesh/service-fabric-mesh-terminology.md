@@ -9,12 +9,12 @@ ms.date: 11/28/2018
 ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: fa2c34168423796a82f274db1b60b45ac10b5501
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
+ms.openlocfilehash: 25e7ba20ea6054439d72b1827f32b8470e2b6a91
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52888663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106626"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-Terminologie
 
@@ -71,14 +71,14 @@ Service Fabric ist eine Open-Source-Plattformtechnologie, auf der mehrere Dienst
 Je nach Umgebung werden unterschiedliche Frameworks und Bereitstellungsmodelle unterstützt. In der folgenden Tabelle werden die unterstützten Kombinationen aus Framework und Bereitstellungsmodell beschrieben.
 
 | Typ der Anwendung | Beschrieben von | Azure Service Fabric Mesh | Azure Service Fabric-Cluster (beliebiges Betriebssystem)| Lokaler Cluster | Eigenständiger Cluster |
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|
 | Service Fabric Mesh-Anwendungen | Ressourcenmodell (YAML und JSON) | Unterstützt |Nicht unterstützt | Windows – unterstützt, Linux und Mac – nicht unterstützt | Windows – nicht unterstützt |
 |Native Service Fabric-Anwendungen | Natives Anwendungsmodell (XML) | Nicht unterstützt| Unterstützt|Unterstützt|Windows – unterstützt|
 
 In der folgenden Tabelle werden die verschiedenen Anwendungsmodelle und Tools beschrieben, die sie für Service Fabric bieten.
 
 | Typ der Anwendung | Beschrieben von | Visual Studio | Eclipse | SFCTL | Azure CLI | PowerShell|
-|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|
 | Service Fabric Mesh-Anwendungen | Ressourcenmodell (YAML und JSON) | VS 2017 |Nicht unterstützt |Nicht unterstützt | Unterstützt: Nur Mesh-Umgebung | Nicht unterstützt|
 |Native Service Fabric-Anwendungen | Natives Anwendungsmodell (XML) | VS 2017 und VS 2015| Unterstützt|Unterstützt|Unterstützt|Unterstützt|
 

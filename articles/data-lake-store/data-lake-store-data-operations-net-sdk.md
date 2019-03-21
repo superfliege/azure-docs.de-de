@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 929ce0d984e53586c46f15f21b9e5c90c6a34771
-ms.sourcegitcommit: c31a2dd686ea1b0824e7e695157adbc219d9074f
+ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/18/2019
-ms.locfileid: "54402301"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119495"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>Dateisystemvorgänge in Azure Data Lake Storage Gen1 mit dem .NET SDK
 > [!div class="op_single_selector"]
@@ -62,7 +62,7 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
       * `Microsoft.Azure.DataLake.Store`: In diesem Tutorial wird „v1.0.0“ verwendet.
       * `Microsoft.Rest.ClientRuntime.Azure.Authentication`: In diesem Tutorial wird „v2.3.1“ verwendet.
     
-    Schließen Sie den **NuGet-Paket-Manager**.
+      Schließen Sie den **NuGet-Paket-Manager**.
 
 6. Öffnen Sie **Program.cs**, löschen Sie den vorhandenen Code, und fügen Sie dann die folgenden Anweisungen ein, um Verweise auf Namespaces hinzuzufügen.
 
@@ -90,7 +90,7 @@ Das auf [GitHub](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-g
 
 In den restlichen Abschnitten dieses Artikels erfahren Sie, wie Sie die verfügbaren .NET-Methoden verwenden, um Vorgänge wie Authentifizierung, Dateiupload usw. durchzuführen.
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication"></a>Authentication
 
 * Informationen zur Authentifizierung von Endbenutzern für Ihre Anwendung finden Sie unter [Authentifizierung von Endbenutzern mit Data Lake Storage Gen1 über das .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 * Informationen zur Dienst-zu-Dienst-Authentifizierung für Ihre Anwendung finden Sie unter [Dienst-zu-Dienst-Authentifizierung mit Data Lake Storage Gen1 über das .NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md).

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/07/2019
-ms.openlocfilehash: 15f280b16e362a4b39cb9fc0e4baaf67d0e31942
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
+ms.openlocfilehash: ce9804a4ecad4cd0f2e797038dc10c71b50de9bf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55661699"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122713"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MariaDB
 
@@ -60,21 +60,21 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
     
-   Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
+    Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
    
-   Geben Sie optional einen gültigen URI im Feld **Webhook** an, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
+    Geben Sie optional einen gültigen URI im Feld **Webhook** an, wenn dieser bei Auslösen der Warnung aufgerufen werden soll.
 
-   Wählen Sie **OK** aus, wenn Sie fertig sind.
+    Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-   ![Aktionsgruppe](./media/howto-alert-metric/10-action-group-type.png)
+    ![Aktionsgruppe](./media/howto-alert-metric/10-action-group-type.png)
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-   ![Aktionsgruppe](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![Aktionsgruppe](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
-   Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
+    Innerhalb weniger Minuten wird die Warnung aktiv und wie oben beschrieben ausgelöst.
 
 ## <a name="manage-your-alerts"></a>Verwalten Ihrer Warnungen
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende Aktionen ausführen:

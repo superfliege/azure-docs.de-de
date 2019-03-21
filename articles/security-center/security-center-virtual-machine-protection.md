@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/27/2019
+ms.date: 2/25/2019
 ms.author: monhaber
-ms.openlocfilehash: 8dcaa9b98292e66d81daf3d115159b0c0c1124af
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: dd7dad51f29b4b5034c72085cd789077747faa0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106722"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106558"
 ---
 # <a name="protecting-your-machines-and-applications-in-azure-security-center"></a>Schützen von Computern und Anwendungen in Azure Security Center
 Azure Security Center analysiert den Sicherheitsstatus Ihrer Azure-Ressourcen. Werden potenzielle Sicherheitslücken erkannt, erstellt Security Center Empfehlungen, die Sie beim Konfigurieren der erforderlichen Steuerelemente unterstützen. Die Empfehlungen gelten für folgende Azure-Ressourcentypen: virtuelle Computer (VMs) und physische Computer, Anwendungen, Netzwerke, SQL sowie Identität und Zugriff.
@@ -144,21 +144,39 @@ Die Liste enthält drei Arten von Symbolen:
 
 1. Wählen Sie eine Webanwendung aus. Eine zusammenfassende Darstellung mit drei Registerkarten wird geöffnet:
 
-  - **Empfehlungen**: Basiert auf vom Security Center ausgeführten Bewertungen, bei denen ein Fehler aufgetreten ist.
-  - **Bestandene Bewertungen**: Liste der vom Security Center ausgeführten Bewertungen, die bestanden wurden.
-  - **Nicht verfügbare Bewertungen:** Liste der Bewertungen, die aufgrund eines Fehlers nicht ausgeführt wurden, oder bei denen die Empfehlung für den jeweiligen Service nicht relevant ist.
+   - **Empfehlungen**: Basiert auf vom Security Center ausgeführten Bewertungen, bei denen ein Fehler aufgetreten ist.
+   - **Bestandene Bewertungen**: Liste der vom Security Center ausgeführten Bewertungen, die bestanden wurden.
+   - **Nicht verfügbare Bewertungen:** Liste der Bewertungen, die aufgrund eines Fehlers nicht ausgeführt wurden, oder bei denen die Empfehlung für den jeweiligen Service nicht relevant ist.
 
-  Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für die ausgewählte Webanwendung und den Schweregrad der einzelnen Empfehlungen.
+   Unter **Empfehlungen** finden Sie eine Liste der Empfehlungen für die ausgewählte Webanwendung und den Schweregrad der einzelnen Empfehlungen.
 
-  ![Empfehlungen für App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
+   ![Empfehlungen für App Services](./media/security-center-virtual-machine-recommendations/app-services-rec.png)
 
 2. Wählen Sie eine Empfehlung aus, um eine Beschreibung der Empfehlung und eine Liste von fehlerhaften und fehlerfreien sowie nicht überprüften Ressourcen anzuzeigen.
 
- - In der Spalte **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
+   - In der Spalte **Bestandene Bewertungen** finden Sie eine Liste der bestandenen Bewertungen.  Der Schweregrad dieser Bewertungen wird immer in Grün angezeigt.
 
- -  Wählen Sie eine bestandene Bewertung in der Liste aus, um eine Beschreibung der Bewertung, eine Liste von fehlerhaften und fehlerfreien Ressourcen und eine Liste von nicht überprüften Ressourcen anzuzeigen. Zwar ist eine Registerkarte für fehlerhafte Ressourcen vorhanden, diese Liste ist aber immer leer, da die Bewertung bestanden wurde.
+   - Wählen Sie eine bestandene Bewertung in der Liste aus, um eine Beschreibung der Bewertung, eine Liste von fehlerhaften und fehlerfreien Ressourcen und eine Liste von nicht überprüften Ressourcen anzuzeigen. Zwar ist eine Registerkarte für fehlerhafte Ressourcen vorhanden, diese Liste ist aber immer leer, da die Bewertung bestanden wurde.
 
-    ![App Service-Wiederherstellung](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+     ![App Service-Wiederherstellung](./media/security-center-virtual-machine-recommendations/app-service-remediation.png)
+
+## <a name="virtual-machine-scale-sets"></a>VM-Skalierungsgruppen
+Security Center erkennt automatisch, ob Sie über Skalierungsgruppen verfügen und es sich empfiehlt, dass Sie den Microsoft Monitoring Agent auf diesen Skalierungsgruppen installieren. 
+
+So installieren Sie den Microsoft Monitoring Agent: 
+
+1. Wählen Sie die Empfehlung **Überwachungs-Agent für VM-Skalierungsgruppen installieren** aus. Sie erhalten eine Liste der nicht überwachten Skalierungsgruppen.
+2. Wählen Sie eine Skalierungsgruppe in fehlerhaftem Zustand aus. Führen Sie die Anweisungen zum Installieren des Überwachungs-Agents mit einem vorhandenen aufgefüllten Arbeitsbereich aus, oder erstellen Sie einen neuen. Stellen Sie unbedingt den [Tarif](security-center-pricing.md) des Arbeitsbereichs ein, wenn er nicht festgelegt ist.
+
+   ![Installieren von MMS](./media/security-center-virtual-machine-recommendations/install-mms.png)
+
+Wenn Sie neue Skalierungsgruppen festlegen möchten, um automatisch den Microsoft Monitoring Agent zu installieren:
+1. Wechseln Sie zu Azure Policy, und klicken Sie auf **Definitionen**.
+2. Suchen Sie nach der Richtlinie **Bereitstellen von Log Analytics-Agent für Windows-VM-Skalierungsgruppen**, und klicken Sie darauf.
+3. Klicken Sie auf **Zuweisen**.
+4. Legen Sie **Bereich** und **Log Analytics-Arbeitsbereich** fest, und klicken Sie auf **Zuweisen**.
+
+Wenn Sie die Installation des Microsoft Monitoring Agent in Azure Policy für alle vorhandenen Skalierungsgruppen festlegen möchten, wenden Sie unter **Wiederherstellung** die vorhandene Richtlinie auf die vorhandenen Skalierungsgruppen an.
 
 
 ## <a name="compute-and-app-recommendations"></a>Compute- und App-Empfehlungen
@@ -208,7 +226,11 @@ Die Liste enthält drei Arten von Symbolen:
 |Computer|30|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|Lösung zur Sicherheitsrisikobewertung auf Ihren virtuellen Computern installieren|
 |Computer|1|Virtuelle Computer zu neuen Azure Resource Manager-Ressourcen migrieren|Verwenden Sie Azure Resource Manager für Ihre virtuellen Computer, um von den folgenden Sicherheitsverbesserungen zu profitieren: strengere Zugriffssteuerung (RBAC), bessere Überwachung, Resource Manager-basierte Bereitstellung und Governance, Zugriff auf verwaltete Identitäten, Zugriff auf Schlüsseltresor für Geheimnisse, Azure AD-basierte Authentifizierung und Unterstützung für Markierungen und Ressourcengruppen für eine einfachere Sicherheitsverwaltung. |
 |Computer|30|Sicherheitsrisiken mit einer Lösung zur Sicherheitsrisikobewertung beseitigen|Virtuelle Computer, für die eine Drittanbieterlösung zur Sicherheitsrisikobewertung bereitgestellt ist, werden kontinuierlich auf Schwachstellen in Anwendungen und im Betriebssystem überprüft. Wenn solche Sicherheitsrisiken gefunden werden, stehen diese Informationen im Rahmen der Empfehlung zur Verfügung.|
-
+|VM-Skalierungsgruppe |4|Diagnoseprotokolle in Virtual Machine Scale Sets aktivieren|Aktivieren Sie Protokolle, und bewahren Sie sie bis zu ein Jahr lang auf. So können Sie Aktivitätsspuren zu Untersuchungszwecken neu erstellen. Dies ist nützlich, wenn ein Sicherheitsvorfall eintritt, oder Ihr Netzwerk kompromittiert ist.|
+|VM-Skalierungsgruppe|35|Sicherheitsrisiken in der Sicherheitskonfiguration von VM-Skalierungsgruppen beseitigen|Beseitigen Sie Sicherheitsrisiken in der Sicherheitskonfiguration Ihrer VM-Skalierungsgruppen, um sie vor Angriffen zu schützen. |
+|VM-Skalierungsgruppe|5|Endpoint Protection-Integritätsfehler in VM-Skalierungsgruppen beheben|Beheben Sie Endpoint Protection-Integritätsfehler in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
+|VM-Skalierungsgruppe|10|Endpoint Protection-Lösung in VM-Skalierungsgruppen installieren|Installieren Sie eine Endpoint Protection-Lösung in Ihren VM-Skalierungsgruppen, um sie vor Bedrohungen und Sicherheitsrisiken zu schützen. |
+|VM-Skalierungsgruppe|40|Systemupdates für VM-Skalierungsgruppen installieren|Installieren Sie fehlende Systemsicherheitsupdates und kritische Updates zum Schutz Ihrer Windows- und Linux-VM-Skalierungsgruppen. |
  
 
 

@@ -9,12 +9,12 @@ ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 19e1721a638dfc750938e09e1626c4e291367723
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54432444"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57767038"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Erste Schritte mit Azure Automation State Configuration
 
@@ -157,7 +157,6 @@ Mit Azure Automation State Configuration können Sie virtuelle Azure-Computer (m
    ![Screenshot des Blatts „Registrierung“](./media/automation-dsc-getting-started/RegisterVM.png)
 
    Die angegebene Knotenkonfiguration wird in unter **Konfigurationsmodushäufigkeit** angegebenen Intervallen auf den virtuellen Computer angewendet, und der virtuelle Computer sucht in unter **Aktualisierungshäufigkeit** angegebenen Intervallen nach Updates für die Knotenkonfiguration. Weitere Informationen zur Verwendung dieser Werte finden Sie unter [Konfigurieren des lokalen Konfigurations-Managers](https://msdn.microsoft.com/PowerShell/DSC/metaConfig).
-1. Klicken Sie auf dem Blatt **Azure-VMs hinzufügen** auf **Erstellen**.
 
 Azure startet den Prozess der Integration des virtuellen Computers. Wenn dies abgeschlossen ist, wird der virtuelle Computer auf der Registerkarte **Knoten** der Seite **Zustandskonfiguration (DSC)** im Automation-Konto angezeigt.
 

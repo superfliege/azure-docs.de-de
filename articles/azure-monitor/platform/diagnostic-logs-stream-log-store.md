@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 8f4b39141a9509990525769833e2cd193419752c
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 3d187851fda9054bbfbae245ef34440b66ad017e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469371"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57309314"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Streamen von Azure-Diagnoseprotokollen an Log Analytics
 
@@ -65,10 +65,13 @@ Der Log Analytics-Arbeitsbereich muss sich nicht unter demselben Abonnement befi
 Nach einigen Augenblicken wird die neue Einstellung in der Liste der Einstellungen für diese Ressource angezeigt, und Diagnoseprotokolle werden an diesen Arbeitsbereich gestreamt, sobald neue Ereignisdaten generiert werden. Beachten Sie, dass zwischen der Ausgabe eines Ereignisses und der Anzeige in Log Analytics möglicherweise bis zu 15 Minuten vergehen.
 
 ### <a name="via-powershell-cmdlets"></a>Verwenden von PowerShell-Cmdlets
-Wenn Sie das Streaming über die [Azure PowerShell-Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md) aktivieren möchten, können Sie das Cmdlet `Set-AzureRmDiagnosticSetting` mit folgenden Parametern verwenden:
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Wenn Sie das Streaming über die [Azure PowerShell-Cmdlets](../../azure-monitor/platform/powershell-quickstart-samples.md) aktivieren möchten, können Sie das Cmdlet `Set-AzDiagnosticSetting` mit folgenden Parametern verwenden:
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
+Set-AzDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resource ID of the Log Analytics workspace] -Categories [list of log categories] -Enabled $true
 ```
 
 Beachten Sie, dass die workspaceID-Eigenschaft die gesamte Azure-Ressourcen-ID des Arbeitsbereichs benötigt, nicht die im Log Analytics-Portal angezeigte Kombination aus Arbeitsbereichs-ID und Schlüssel.

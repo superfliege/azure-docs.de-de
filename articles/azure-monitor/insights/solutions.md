@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
-ms.openlocfilehash: ff7d886d3f219d007f159167cacfed1b8ee13863
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
+ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001016"
+ms.lasthandoff: 02/27/2019
+ms.locfileid: "56887555"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 Überwachungslösungen nutzen Dienste in Azure, um zusätzliche Erkenntnisse zum Betrieb einer bestimmten Anwendung oder eines bestimmten Diensts zu liefern. Dieser Artikel enthält eine kurze Übersicht über Überwachungslösungen in Azure sowie Details zu deren Verwendung und Installation.
@@ -65,7 +65,7 @@ Klicken Sie auf den Namen einer Lösung, um die dazugehörige Zusammenfassungsse
 ## <a name="install-a-monitoring-solution"></a>Installieren einer Überwachungslösung
 Überwachungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
-1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-management-solutions) auf **Hinzufügen**. 
+1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**. 
 1. Klicken Sie rechts neben **Verwaltungslösungen** auf **More** (Mehr). 
 1. Suchen Sie die gewünschte Überwachungslösung, und lesen Sie ihre Beschreibung.
 1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.

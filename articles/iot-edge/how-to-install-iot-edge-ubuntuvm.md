@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: gregman
-ms.openlocfilehash: 7ff7671425e2a2a5dbebe2d09cadb8ef71bc7c97
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 5b3dcb3abad071cb5d079d6c740cc09e2577a363
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55896629"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116417"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Ausführen von virtuellen Computern vom Typ „Azure IoT Edge unter Ubuntu“
 
@@ -22,7 +22,7 @@ Die Azure IoT Edge-Runtime verwandelt ein Gerät in ein IoT Edge-Gerät. Die Run
 
 Weitere Informationen zur Funktionsweise und zu den Komponenten der IoT Edge-Runtime finden Sie unter [Grundlegendes zur Azure IoT Edge-Runtime und ihrer Architektur](iot-edge-runtime.md).
 
-In diesem Artikel wird erläutert, wie Sie die Azure IoT Edge-Runtime auf einem virtuellen Computer unter Ubuntu 16.04 unter Verwendung des vorkonfigurierten [Azure Marketplace-Angebots „Azure IoT Edge unter Ubuntu“](http://aka.ms/azure-iot-edge-ubuntuvm) ausführen. 
+In diesem Artikel wird erläutert, wie Sie die Azure IoT Edge-Runtime auf einem virtuellen Computer unter Ubuntu 16.04 unter Verwendung des vorkonfigurierten [Azure Marketplace-Angebots „Azure IoT Edge unter Ubuntu“](https://aka.ms/azure-iot-edge-ubuntuvm) ausführen. 
 
 Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter Ubuntu“ die aktuelle Version der Azure IoT Edge-Runtime vorinstalliert. Diese Version enthält darüber hinaus ein Skript zum Festlegen der Verbindungszeichenfolge und zum anschließenden Neustarten der Runtime. Diese Vorgänge können remote über das Azure-VM-Portal oder die Azure-Befehlszeile ausgelöst werden, sodass Sie das IoT Edge-Gerät einfach konfigurieren und verbinden können, ohne eine SSH- oder Remotedesktopsitzung starten zu müssen. Dieses Skript wartet mit dem Festlegen der Verbindungszeichenfolge, bis der IoT Edge-Client vollständig installiert wurde, damit dieser Schritt nicht in die Automatisierung aufgenommen werden muss.
 
@@ -45,48 +45,48 @@ Beim ersten Start wird vom virtuellen Computer vom Typ „Azure IoT Edge unter U
 Suchen Sie im Azure-Portal nach „Azure IoT Edge“, und wählen Sie **Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime** aus, um den VM-Erstellungsworkflow zu starten. Führen Sie dann die Schritte 3 und 4 aus den Anweisungen unter „Bereitstellen über den Azure Marketplace“ aus.
 
 ## <a name="deploy-from-azure-cli"></a>Bereitstellen über die Azure-Befehlszeilenschnittstelle
-1.  Wenn Sie zum ersten Mal einen virtuellen Computer über die Befehlszeilenschnittstelle bereitstellen, müssen Sie die programmgesteuerte Bereitstellung für Ihr Azure-Abonnement aktivieren:
-    1. Öffnen Sie das Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm).
-    1. Wählen Sie **JETZT ANFORDERN** und im nachfolgenden Dialogfeld **Weiter** aus.
-    1. Wählen Sie im Portal am unteren Rand die Option **Möchten Sie die programmgesteuerte Bereitstellung konfigurieren? Erste Schritte** aus.
-    1. Klicken Sie auf der Seite **Programmgesteuerte Bereitstellung konfigurieren** auf die Schaltfläche **Aktivieren** und anschließend auf **Speichern**.
-1.  Wenn Sie die Azure-Befehlszeilenschnittstelle auf Ihrem Desktop verwenden, melden Sie sich zuerst an:
+1. Wenn Sie zum ersten Mal einen virtuellen Computer über die Befehlszeilenschnittstelle bereitstellen, müssen Sie die programmgesteuerte Bereitstellung für Ihr Azure-Abonnement aktivieren:
+   1. Öffnen Sie das Marketplace-Angebot [Azure IoT Edge unter Ubuntu](https://aka.ms/azure-iot-edge-ubuntuvm).
+   1. Wählen Sie **JETZT ANFORDERN** und im nachfolgenden Dialogfeld **Weiter** aus.
+   1. Wählen Sie im Portal am unteren Rand die Option **Möchten Sie die programmgesteuerte Bereitstellung konfigurieren? Erste Schritte** aus.
+   1. Klicken Sie auf der Seite **Programmgesteuerte Bereitstellung konfigurieren** auf die Schaltfläche **Aktivieren** und anschließend auf **Speichern**.
+1. Wenn Sie die Azure-Befehlszeilenschnittstelle auf Ihrem Desktop verwenden, melden Sie sich zuerst an:
 
-    ```azurecli-interactive
-    az login
-    ```
+   ```azurecli-interactive
+   az login
+   ```
     
-1.  Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus:
-    1.  Listen Sie Ihre Abonnements auf:
+1. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus:
+   1. Listen Sie Ihre Abonnements auf:
     
-       ```azurecli-interactive
-       azure account list --output table
-       ```
+      ```azurecli-interactive
+      az account list --output table
+      ```
     
-    1.  Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
-    1.  Führen Sie den folgenden Befehl mit der soeben kopierten ID aus:
+   1. Kopieren Sie das SubscriptionID-Feld für das zu verwendende Abonnement.
+   1. Führen Sie den folgenden Befehl mit der soeben kopierten ID aus:
     
-       ```azurecli-interactive 
-       az account set -s {SubscriptionId}
-       ```
+      ```azurecli-interactive 
+      az account set -s {SubscriptionId}
+      ```
     
-1.  Erstellen Sie eine neue Ressourcengruppe (oder geben Sie in den nächsten Schritten eine vorhandene Ressourcengruppe an):
+1. Erstellen Sie eine neue Ressourcengruppe (oder geben Sie in den nächsten Schritten eine vorhandene Ressourcengruppe an):
 
-    ```azurecli-interactive
-    az group create --name IoTEdgeResources --location westus2
-    ```
+   ```azurecli-interactive
+   az group create --name IoTEdgeResources --location westus2
+   ```
     
-1.  Erstellen Sie einen neuen virtuellen Computer:
+1. Erstellen Sie einen neuen virtuellen Computer:
 
-    ```azurecli-interactive
-    az vm create --resource-group IoTEdgeResources --name EdgeVM –image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
-    ```
+   ```azurecli-interactive
+   az vm create --resource-group IoTEdgeResources --name EdgeVM –-image microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest --admin-username azureuser --generate-ssh-keys --size Standard_DS1_v2
+   ```
 
-1.  Legen Sie die Verbindungszeichenfolge fest. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle](how-to-register-device-cli.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
+1. Legen Sie die Verbindungszeichenfolge fest. (Befolgen Sie die Schrittanleitung unter [Registrieren eines neuen Azure IoT Edge-Geräts mithilfe der Azure-Befehlszeilenschnittstelle](how-to-register-device-cli.md), wenn Sie mit diesem Prozess nicht vertraut sind.)
 
-    ```azurecli-interactive
-    az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
-    ```
+   ```azurecli-interactive
+   az vm run-command invoke -g IoTEdgeResources -n EdgeVM --command-id RunShellScript --script '/etc/iotedge/configedge.sh "{device_connection_string}"'
+   ```
 
 Wenn Sie nach der Einrichtung eine SSH-Verbindung mit diesem virtuellen Computer herstellen möchten, verwenden Sie „publicIpAddress“ mit dem folgenden Befehl: `ssh azureuser@{publicIpAddress}`.
 

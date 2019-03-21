@@ -5,21 +5,21 @@ description: Freigeben und Entdecken vonAnalytics-Ressourcen und mehr im Azure A
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: 48bb9b24901cd07891f3d52bcd916f95bc2801f4
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244218"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885418"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure AI-Katalog
 
-**[Azure AI Gallery](http://gallery.azure.ai)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
+**[Azure AI Gallery](https://gallery.azure.ai)** ist eine communitybasierte Website zum Entdecken und Teilen von Lösungen, die mit Azure-KI-Diensten erstellt wurden.
 Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lösungen entwickeln können.
 
 ## <a name="what-can-i-find-in-the-gallery"></a>Was finde ich im Katalog?
@@ -201,4 +201,4 @@ Der Katalog soll von unseren Benutzern für unsere Benutzer gestaltet werden. Te
 
 ![Feedback](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
-**[ZUM KATALOG &gt;&gt;](http://gallery.azure.ai)**
+**[ZUM KATALOG &gt;&gt;](https://gallery.azure.ai)**

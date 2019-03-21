@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: slivkins
-ms.openlocfilehash: 2feaa6fa87b6e788683ad543bfb7780b0e517506
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: be9966f5d8e8d94aa3f49aac91b35b105195b108
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867340"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57552060"
 ---
 # <a name="api"></a>API
 
@@ -44,7 +44,7 @@ Fügen Sie diesen Ausschnitt in den HTML-Kopfteil Ihrer Startseite ein, auf der 
 > Die Rückruffunktion muss vor dem Aufruf der Rangfolge-API definiert werden.
 
 > [!TIP]
-> Zur Verbesserung der Latenz wird die Rangfolge-API über HTTP (beispielsweise in der Form `http://ds.microsoft.com/api/v2/<appId>/rank/*`) statt über HTTPS verfügbar gemacht.
+> Zur Verbesserung der Latenz wird die Rangfolge-API über HTTP (beispielsweise in der Form `https://ds.microsoft.com/api/v2/<appId>/rank/*`) statt über HTTPS verfügbar gemacht.
 > Wenn die Startseite jedoch über HTTPS bereitgestellt wird, muss auch ein HTTPS-Endpunkt verwendet werden.
 
 Wenn keine Parameter verwendet werden, entspricht die HTTP-Antwort der Rangfolge-API einer JSONP-formatierten Zeichenfolge:

@@ -14,17 +14,17 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 1cd9e99d9f530abb34ff072a740d89bc511c64ed
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 4e6f5095081f0549bc127b9b6949908a64214aee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51241513"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57857809"
 ---
 <a name="cloud-partner-portal-gdpr-compliance"></a>Einhaltung der DSGVO im Cloud-Partnerportal
 ====================================
 
-Die [Datenschutz-Grundverordnung (DSGVO)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren.
+Die [Datenschutz-Grundverordnung (DSGVO)](https://ec.europa.eu/justice/data-protection/reform/index_en.htm) ist ein Datenschutzgesetz der Europäischen Union (EU). Die DSGVO enthält Vorschriften für Unternehmen, Regierungsbehörden, gemeinnützige Organisationen und andere Organisationen, die Menschen in der EU Waren und Dienstleistungen anbieten oder Daten in Bezug auf EU-Bürger sammeln und analysieren.
 
 Cloud-Partnerportal stellt detaillierte Informationen über die Verarbeitung von Kundendaten und die Sicherheitsmaßnahmen bereit, mit denen diese Daten geschützt werden. Auf diese Informationen über die produktbegleitenden Erfahrungen im Portal zugegriffen werden.
 

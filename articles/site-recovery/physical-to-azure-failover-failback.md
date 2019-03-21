@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: raynew
-ms.openlocfilehash: 4e787ab134caee1a7f9a26e46f698f2fe9807d83
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: edb169d131aafd045fdf0f670e1dda87677d57ee
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813677"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834676"
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Ausführen eines Failovers und Failbacks für physische Server, die in Azure repliziert werden
 
@@ -68,7 +68,7 @@ Führen Sie die [hier](site-recovery-failover-to-azure-troubleshoot.md) beschrie
 Der Prozessserver empfängt Daten von der Azure-VM und sendet Daten an den lokalen Standort. Zwischen dem Prozessserver und geschützten Computer ist ein Netzwerk mit kurzer Wartezeit erforderlich.
 
 - Wenn Sie über eine Azure ExpressRoute-Verbindung verfügen, können Sie zu Testzwecken den lokalen Prozessserver verwenden, der automatisch auf dem Konfigurationsserver installiert wird.
-- Wenn Sie über eine VPN-Verbindung verfügen, oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
+- Wenn Sie über eine VPN-Verbindung verfügen oder Sie das Failback in einer Produktionsumgebung ausführen, müssen Sie eine Azure-VM als Azure-basierten Prozessserver für Failback einrichten.
 - Um einen Prozessserver in Azure einzurichten, befolgen Sie die Anweisungen in [diesem Artikel](vmware-azure-set-up-process-server-azure.md).
 
 ## <a name="configure-the-master-target-server"></a>Konfigurieren des Masterzielservers

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8f682e0795f8f732805e817e4498cc486bbb2c6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6376a479d2e6969505310de0e8e73e74738a04c0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178463"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881322"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>Tutorial: Azure Active Directory-Integration mit SCC LifeCycle
 
@@ -117,6 +117,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<sub-domain>.scc.com/ic7/welcome/customer/PICTtest.aspx`.
 
     b. Geben Sie im Textfeld **Identifier** (Bezeichner) eine URL nach folgendem Muster ein:
+    
     | |
     |--|--|
     | `https://bs1.scc.com/<entity>`|
@@ -135,8 +136,8 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
 
 1. Zum Konfigurieren des einmaligen Anmeldens bei **SCC LifeCycle** müssen Sie die heruntergeladene **Metadaten-XML**-Datei an das [SCC LifeCycle-Supportteam](mailto:lifecycle.support@scc.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
-  >[!NOTE]
-  >Das einmalige Anmelden muss vom Supportteam von SCC LifeCycle aktiviert werden.
+   >[!NOTE]
+   >Das einmalige Anmelden muss vom Supportteam von SCC LifeCycle aktiviert werden.
 
 > [!TIP]
 > Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)

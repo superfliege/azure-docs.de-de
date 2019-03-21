@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/08/2019
 ms.author: milanga;juliako;
-ms.openlocfilehash: c0a6feb1eba1e409c29a650741eadc31f1017342
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 30c342ca31b33d910406bf74d90d49979e5c46bc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004807"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838084"
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Verwenden von Azure Media Video Thumbnails zum Erstellen einer Videozusammenfassung  
 ## <a name="overview"></a>Übersicht
@@ -37,10 +37,10 @@ In einigen Fällen, wenn Ihr Video nicht aus unterschiedlichen Szenen besteht, i
 Hier sind einige Beispiele für die Fähigkeiten des Azure Media Video Thumbnails-Medienprozessors :
 
 ### <a name="original-video"></a>Original-Video
-[Original-Video](http://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
+[Original-Video](https://ampdemo.azureedge.net/azuremediaplayer.html?url=httpss%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Faed33834-ec2d-4788-88b5-a4505b3d032c%2FMicrosoft%27s%20HoloLens%20Live%20Demonstration.ism%2Fmanifest)
 
 ### <a name="video-thumbnail-result"></a>Ergebnis der Video-Miniaturansicht
-[Ergebnis der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Ergebnis der Video-Miniaturansicht](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Ff5c91052-4232-41d4-b531-062e07b6a9ae%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="task-configuration-preset"></a>Taskkonfiguration (Voreinstellung)
 Beim Erstellen eines Video-Miniaturansichten-Tasks mit **Azure Media Video Thumbnails**müssen Sie eine Voreinstellungskonfiguration angeben. Das obige Miniaturansicht-Beispiel wurde mit der folgenden JSON-Basiskonfiguration erstellt:
@@ -62,7 +62,7 @@ Derzeit können Sie die folgenden Parameter ändern:
 Die folgende Tabelle beschreibt die Standarddauer, wenn **maxMotionThumbnailInSecs** nicht verwendet wird.
 
 |  |  |  |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- |
 | Videodauer |d < 3 Minuten |3 Minuten < d < 15 Minuten |
 | Dauer der Miniaturansicht |15 Sekunden (2 bis 3 Szenen) |30 Sekunden (3 bis 5 Szenen) |
 
@@ -276,7 +276,7 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 ```
 
 ### <a name="video-thumbnail-output"></a>Ausgabe der Video-Miniaturansicht
-[Ausgabe der Video-Miniaturansicht](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
+[Ausgabe der Video-Miniaturansicht](https://ampdemo.azureedge.net/azuremediaplayer.html?url=https%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)
 
 ## <a name="media-services-learning-paths"></a>Media Services-Lernpfade
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
@@ -287,5 +287,5 @@ Richten Sie Ihre Entwicklungsumgebung ein, und füllen Sie die Datei „app.conf
 ## <a name="related-links"></a>Verwandte Links
 [Azure Media Services Analytics – Übersicht](media-services-analytics-overview.md)
 
-[Azure Media Analytics-Demos](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
+[Azure Media Analytics-Demos](https://azuremedialabs.azurewebsites.net/demos/Analytics.html)
 

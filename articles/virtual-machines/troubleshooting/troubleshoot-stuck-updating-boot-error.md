@@ -3,7 +3,7 @@ title: Startvorgang des virtuellen Azure-Computers bleibt bei Windows-Update hä
 description: Erfahren Sie, wie Sie das Problem beheben, wenn der Startvorgang eines virtuellen Azure-Computers bei Windows-Update(s) hängen bleibt.
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/09/2018
 ms.author: genli
-ms.openlocfilehash: d56e96ca1fbc96261f6f526c792b0a53c74718ef
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 7c516781f7d0c80dc7185585a29278820ab9a46e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063659"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57777565"
 ---
 # <a name="azure-vm-startup-is-stuck-at-windows-update"></a>Startvorgang des virtuellen Azure-Computers bleibt bei Windows-Update hängen
 
@@ -27,7 +27,7 @@ In diesem Artikel wird beschrieben, wie Sie das Problem beheben, wenn Ihr virtue
 > [!NOTE] 
 > Azure verfügt über zwei verschiedene Bereitstellungsmodelle für das Erstellen und Verwenden von Ressourcen: [das Resource Manager-Modell und das klassische Bereitstellungsmodell](../../azure-resource-manager/resource-manager-deployment-model.md). Dieser Artikel behandelt die Verwendung des Ressourcen-Manager-Bereitstellungsmodells. Es wird empfohlen, dieses Modell anstelle des klassischen Bereitstellungsmodells für neue Bereitstellungen zu verwenden.
 
- ## <a name="symptom"></a>Symptom
+## <a name="symptom"></a>Symptom
 
  Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](../troubleshooting/boot-diagnostics.md) sehen Sie, dass der Start während des Updatevorgangs hängen bleibt. Im Folgenden finden Sie Beispiele für Meldungen, die angezeigt werden können:
 

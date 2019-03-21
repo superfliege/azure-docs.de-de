@@ -1,19 +1,20 @@
 ---
 title: Hochladen von Dateien von Geräten nach Azure IoT Hub mit .NET | Microsoft-Dokumentation
 description: Informationen zum Hochladen von Dateien von einem Gerät in die Cloud mithilfe des Azure IoT-Geräte-SDK für .NET. Hochgeladene Dateien werden in einem Azure Storage-Blobcontainer gespeichert.
-author: fsautomata
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
-ms.author: elioda
-ms.openlocfilehash: 25ec3a158d1eca77a7ca622af9b249789ef3b5e2
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.author: robin.shahan
+ms.openlocfilehash: d661f8834aec77957e0fd2713cde5da9a48903fd
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51259325"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010570"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Hochladen von Dateien von Ihrem Gerät in die Cloud mit IoT Hub unter Verwendung von .NET
 

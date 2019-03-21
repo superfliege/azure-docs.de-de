@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: ae057feb70d9ddb2c2dae10bae20eca1b613f76f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996939"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58257430"
 ---
 # <a name="playing-your-content-with-existing-players"></a>Wiedergabe Ihrer Inhalte mit vorhandenen Playern
 Azure Media Services unterstützt zahlreiche gängige Streamingformate wie Smooth Streaming, HTTP Live Streaming und MPEG-Dash. In diesem Thema finden Sie Verweise auf vorhandene Player, die Sie zum Testen von Datenströmen verwenden können.
@@ -31,12 +31,12 @@ Klicken Sie auf den gewünschten Videoinhalt (vergewissern Sie sich, dass er [ve
 
 Folgende Überlegungen sollten berücksichtigt werden:
 
-* Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html).
+* Der **MEDIA SERVICES-INHALTSPLAYER** gibt die Inhalt vom standardmäßigen Streamingendpunkt wieder. Wenn Sie die Wiedergabe von einem anderen Streamingendpunkt starten möchten, verwenden Sie einen anderen Player. Beispiel: [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html).
 
 ![AMSPlayer][AMSPlayer]
 
 ### <a name="azure-media-player"></a>Azure Media Player
-Verwenden Sie [Azure Media Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) zum Wiedergeben Ihrer Inhalte (offen oder geschützt) in den folgenden Formaten:
+Verwenden Sie [Azure Media Player](https://amsplayer.azurewebsites.net/azuremediaplayer.html) zum Wiedergeben Ihrer Inhalte (offen oder geschützt) in den folgenden Formaten:
 
 * Smooth Streaming
 * MPEG DASH
@@ -45,17 +45,17 @@ Verwenden Sie [Azure Media Player](http://amsplayer.azurewebsites.net/azuremedia
 
 ### <a name="flash-player"></a>Flash Player
 #### <a name="aes-encrypted-with-token"></a>AES-verschlüsselt mit Token
-[http://aestoken.azurewebsites.net](http://aestoken.azurewebsites.net)
+[https://aestoken.azurewebsites.net](https://aestoken.azurewebsites.net)
 
 ### <a name="silverlight-players"></a>Silverlight-Player
 
 #### <a name="playready-with-token"></a>PlayReady mit Token
-[http://sltoken.azurewebsites.net](http://sltoken.azurewebsites.net)
+[https://sltoken.azurewebsites.net](https://sltoken.azurewebsites.net)
 
 ### <a name="dash-players"></a>DASH-Player
-[http://dashplayer.azurewebsites.net](http://dashplayer.azurewebsites.net)
+[https://dashplayer.azurewebsites.net](https://dashplayer.azurewebsites.net)
 
-[http://dashif.org](http://dashif.org)
+[https://dashif.org](https://dashif.org)
 
 ### <a name="other"></a>Andere
 Sie können zum Testen von HLS-URLs auch Folgendes verwenden:

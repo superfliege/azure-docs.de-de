@@ -1,18 +1,19 @@
 ---
 title: Konfigurieren des Dateiuploads in IoT Hub mit der Azure CLI | Microsoft Docs
 description: Erfahren Sie, wie Sie Dateiuploads in Azure IoT Hub mithilfe der plattformübergreifenden Azure CLI konfigurieren.
-author: dominicbetts
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2017
-ms.author: dobett
-ms.openlocfilehash: 6cd0b657c8d0352c41e0da538396b166d633306a
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.author: robin.shahan
+ms.openlocfilehash: a77635b6c022527203d1df752723aac3ce2c296c
+ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42146250"
+ms.lasthandoff: 02/28/2019
+ms.locfileid: "57010785"
 ---
 # <a name="configure-iot-hub-file-uploads-using-azure-cli"></a>Konfigurieren von IoT Hub-Dateiuploads mit der Azure CLI
 
@@ -88,15 +89,15 @@ Sie können nun Ihren IoT Hub so konfigurieren, dass er die Möglichkeit zum [Ho
 
 Die Konfiguration erfordert die folgenden Werte:
 
-* **Speichercontainer**: Ein Blobcontainer in einem Azure-Speicherkonto Ihres aktuellen Azure-Abonnements, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Sie haben die erforderlichen Speicherkontoinformationen im vorherigen Abschnitt abgerufen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
+* **Speichercontainer:** Ein Blobcontainer in einem Azure Storage-Konto Ihres aktuellen Azure-Abonnements, der Ihrer IoT Hub-Instanz zugeordnet werden soll. Sie haben die erforderlichen Speicherkontoinformationen im vorherigen Abschnitt abgerufen. IoT Hub generiert automatisch SAS-URIs mit Schreibberechtigungen für diesen Blobcontainer, die Geräte beim Hochladen von Dateien verwenden können.
 
-* **Benachrichtigungen für hochgeladene Dateien empfangen**: Aktivieren oder deaktivieren Sie Benachrichtigungen zum Hochladen von Dateien.
+* **Empfangen von Benachrichtigungen zu hochgeladenen Dateien:** Aktivieren Deaktivieren Sie die Benachrichtigungen zu Dateiuploads.
 
-* **SAS-TTL**: Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt.
+* **SAS TTL:** Diese Einstellung dient zum Festlegen der Gültigkeitsdauer der SAS-URIs, die von IoT Hub an das Gerät zurückgegeben werden. Standardmäßig auf 1 Stunde festgelegt.
 
-* **Standard-TTL für Dateibenachrichtigungseinstellungen**: Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt.
+* **Standard-TTL für Dateibenachrichtigungseinstellungen:** Die Gültigkeitsdauer einer Dateiuploadbenachrichtigung (Zeit bis zum Ablauf). Standardmäßig auf 1 Tag festgelegt.
 
-* **Anzahl maximaler Zustellungen für Dateibenachrichtigungen**: Gibt an, wie oft IoT Hub versucht, eine Dateiuploadbenachrichtigung zu senden. Standardmäßig auf 10 festgelegt.
+* **Anzahl maximaler Zustellungen für Dateibenachrichtigungen:** Gibt an, wie oft IoT Hub versucht, eine Benachrichtigung zu einem Dateiupload zu senden. Standardmäßig auf 10 festgelegt.
 
 Verwenden Sie die folgenden Azure CLI-Befehle, um die Einstellungen für Dateiuploads in Ihren IoT Hub zu konfigurieren:
 

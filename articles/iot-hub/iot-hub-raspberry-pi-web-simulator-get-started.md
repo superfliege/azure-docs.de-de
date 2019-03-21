@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 6844fb9b6e85e77ad9c7a869a989214fffd05ece
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438743"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113781"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Verbinden des Raspberry Pi-Onlinesimulators mit Azure IoT Hub (Node.js)
 
@@ -56,7 +56,7 @@ Verbinden Sie simuliertes Raspberry Pi mit einem von Ihnen erstellten IoT Hub. F
 Klicken Sie auf die Schaltfläche, um den Raspberry Pi-Onlinesimulator zu starten.
 
 > [!div class="button"]
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi-Simulator starten</a>
+> <a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#GetStarted" target="_blank">Raspberry Pi-Simulator starten</a>
 
 Im Websimulator werden drei Bereiche angezeigt.
 
@@ -70,8 +70,8 @@ Im Websimulator werden drei Bereiche angezeigt.
    * **Zurücksetzen:** Hiermit wird der Codingbereich auf die Standard-Beispielanwendung zurückgesetzt.
    * **Minimieren/Maximieren:** Auf der rechten Seite befindet sich eine Schaltfläche, mit der Sie das Konsolenfenster minimieren/maximieren können.
 
-> [!NOTE] 
-Der Raspberry Pi-Websimulator ist jetzt als Vorschauversion verfügbar. Wir freuen uns über Ihr Feedback im [Gitter-Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Der Quellcode steht auf [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) öffentlich zur Verfügung.
+> [!NOTE]
+> Der Raspberry Pi-Websimulator ist jetzt als Vorschauversion verfügbar. Wir freuen uns über Ihr Feedback im [Gitter-Chatroom](https://gitter.im/Microsoft/raspberry-pi-web-simulator). Der Quellcode steht auf [GitHub](https://github.com/Azure-Samples/raspberry-pi-web-simulator) öffentlich zur Verfügung.
 
 ![Übersicht über den Pi-Onlinesimulator](media/iot-hub-raspberry-pi-web-simulator/0_overview.png)
 

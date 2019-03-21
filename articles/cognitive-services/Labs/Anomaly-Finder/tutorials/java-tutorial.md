@@ -10,12 +10,12 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: wenya
-ms.openlocfilehash: 8f087e07bbf5033698b18b4349c4d13e862a1555
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: ba66c96f9129b253fc5897c3a2eaaefb53056cea
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223339"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548727"
 ---
 # <a name="tutorial-anomaly-detection-with-java-application"></a>Tutorial: Anomalieerkennung mit einer Java-Anwendung
 
@@ -28,7 +28,7 @@ Im Beispiel werden die Zeitreihendaten mit Ihrem Abonnementschlüssel an die Ano
 
 ### <a name="platform-requirements"></a>Plattformanforderungen
 
-Dieses Tutorial wurde mit [IntelliJ IDEA](https://www.jetbrains.com/idea) entwickelt. Sie müssen darüber hinaus das [Java Development Kit (JDK)](https://aka.ms/azure-jdks), Version 1.8+, und ein aktuelles [Apache Maven](http://maven.apache.org/)-Buildtool installieren.
+Dieses Tutorial wurde mit [IntelliJ IDEA](https://www.jetbrains.com/idea) entwickelt. Sie müssen darüber hinaus das [Java Development Kit (JDK)](https://aka.ms/azure-jdks), Version 1.8+, und ein aktuelles [Apache Maven](https://maven.apache.org/)-Buildtool installieren.
 
 ### <a name="subscribe-to-anomaly-detection-and-get-a-subscription-key"></a>Abonnieren der Anomalieerkennung und Abrufen eines Abonnementschlüssels 
 

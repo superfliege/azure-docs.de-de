@@ -10,12 +10,12 @@ ms.subservice: custom-decision-service
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: c03278c0d0faced20f4e02fcc1f61531c88ae141
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8a8f669c33f40fb80dc826ec04203880dee74d82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869669"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109408"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
@@ -49,7 +49,7 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 | `-s START_DATE`, `--start_date START_DATE` | Das Startdatum des Herunterladens (enthalten), im Format *JJJJ-MM-TT*. | `None` |
 | `-e END_DATE`, `--end_date END_DATE` | Das Enddatum des Herunterladens (enthalten), im Format *JJJJ-MM-TT*. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Der zu verwendende Überschreibungsmodus. | |
-| | `0`: Nie überschreiben. Benutzer fragen, ob zurzeit Blobs verwendet werden. | Standard | |
+| | `0`: Nie überschreiben. Benutzer fragen, ob zurzeit Blobs verwendet werden. | Standard |
 | | `1`: Benutzer zur Vorgehensweise befragen, wenn die Dateien unterschiedliche Größen aufweisen oder die Blobs zurzeit verwendet werden. | |
 | | `2`: Immer überschreiben. Aktuell verwendete Blobs herunterladen. | |
 | | `3`: Nie überschreiben und ohne Nachfrage anfügen, wenn die Größe größer ist. Aktuell verwendete Blobs herunterladen. | |

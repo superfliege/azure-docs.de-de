@@ -1,19 +1,19 @@
 ---
 title: Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible
 description: Hier erfahren Sie, wie Sie mithilfe von Ansible einen virtuellen Linux-Computer in Azure verwalten.
-ms.service: ansible
+ms.service: virtual-machines-linux
 keywords: Ansible, Azure, DevOps, Bash, CloudShell, Playbook, Bash
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: quickstart
 ms.date: 09/27/2018
-ms.openlocfilehash: ef19043465cb67401786cddec4972f67231995bb
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 8f97cf8a4231e9a2144f27c0540de96574e13795
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54077809"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789876"
 ---
 # <a name="use-ansible-to-manage-a-linux-virtual-machine-in-azure"></a>Verwalten eines virtuellen Linux-Computers in Azure mithilfe von Ansible
 Ansible ermöglicht die Automatisierung der Bereitstellung und Konfiguration von Ressourcen in Ihrer Umgebung. Sie können mit Ansible Ihre virtuellen Azure-Computer wie jede andere Ressource verwalten. In diesem Artikel wird veranschaulicht, wie Sie mithilfe eines Ansible-Playbooks einen virtuellen Linux-Computer starten und beenden. 

@@ -9,17 +9,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 9debcd121cbbde626758abccfe838abda12ad840
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822832"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57763366"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>Herstellen einer Verbindung von Storage-Explorer mit einem Azure Stack-Abonnement oder -Speicherkonto
 
@@ -30,7 +30,7 @@ In diesem Artikel erfahren Sie, wie Sie mit Storage-Explorer eine Verbindung mit
 > [!NOTE]  
 > Es stehen mehrere Tools zum Verschieben von Daten in und aus Azure Stack-Speicher zur Verfügung. Weitere Informationen finden Sie unter [Tools for Azure Stack Storage](azure-stack-storage-transfer.md) (Tools für Azure Stack-Speicher).
 
-Falls Sie den Storage-Explorer noch nicht installiert haben, [laden Sie ihn herunter](http://www.storageexplorer.com/), und installieren Sie ihn.
+Falls Sie den Storage-Explorer noch nicht installiert haben, [laden Sie ihn herunter](https://www.storageexplorer.com/), und installieren Sie ihn.
 
 Nachdem Sie die Verbindung mit Ihrem Azure Stack-Abonnement oder -Speicherkonto hergestellt haben, können Sie mithilfe der [Artikel zu Azure Storage-Explorer ](../../vs-azure-tools-storage-manage-with-storage-explorer.md) mit Ihren Azure Stack-Daten arbeiten. 
 

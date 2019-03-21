@@ -4,8 +4,8 @@ description: Erfahren Sie etwas über die Verwendung von SSH mit Azure App Servi
 keywords: Azure App Service, Web-App, Linux, OSS
 services: app-service
 documentationcenter: ''
-author: wesmc7777
-manager: cfowler
+author: msangapu
+manager: jeconnoc
 editor: ''
 ms.assetid: 66f9988f-8ffa-414a-9137-3a9b15a5573c
 ms.service: app-service
@@ -13,15 +13,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
-ms.author: wesmc
+ms.date: 02/25/2019
+ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 9a05769b4cfd4bcaca0df9e1af1816d99f78bc62
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a56c4b0bac61bd2039138ffed554130c6e520821
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984466"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58167132"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>SSH-Unterstützung bei Azure App Service unter Linux
 
@@ -67,7 +67,7 @@ Diese Schritte werden im Azure App Service-Repository [als Beispiel](https://git
         && echo "root:Docker!" | chpasswd
     ```
 
-2. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](https://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf der Datei [sshd_config](https://github.com/Azure-App-Service/node/blob/master/8.2.1/sshd_config) im Azure App Service-GitHub-Repository basieren.
+2. Fügen Sie der Dockerfile-Datei eine [`COPY`-Anweisung](https://docs.docker.com/engine/reference/builder/#copy) hinzu, mit der eine [sshd_config](https://man.openbsd.org/sshd_config)-Datei in das Verzeichnis */etc/ssh/* kopiert wird. Die Konfigurationsdatei sollte auf der Datei [sshd_config](https://github.com/Azure-App-Service/node/blob/master/10.14/sshd_config) im Azure App Service-GitHub-Repository basieren.
 
     > [!NOTE]
     > Die Datei *sshd_config* muss Folgendes enthalten, da andernfalls ein Verbindungsfehler auftritt: 
@@ -110,18 +110,6 @@ Die Dockerfile-Datei verwendet die [`ENTRYPOINT`-Anweisung](https://docs.docker.
 Mithilfe von TCP-Tunneln können Sie eine Netzwerkverbindung zwischen Ihrem Entwicklungscomputer und Web-App für Container herstellen, indem Sie eine authentifizierte WebSocket-Verbindung verwenden. Auf diese Weise können Sie eine SSH-Sitzung mit Ihrem Container, der unter App Service ausgeführt wird, auf dem Client Ihrer Wahl öffnen.
 
 Zunächst müssen Sie die [Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli?view=azure-cli-latest) (Azure CLI) installieren. Öffnen Sie [Azure Cloud Shell](../../cloud-shell/overview.md), wenn Sie sich die Vorgehensweise ohne Installation der Azure CLI ansehen möchten. 
-
-Fügen Sie die neueste App Service-Erweiterung hinzu, indem Sie [az extension add](/cli/azure/extension?view=azure-cli-latest#az-extension-add) ausführen:
-
-```azurecli-interactive
-az extension add --name webapp
-```
-
-Falls Sie `az extension add` bereits ausgeführt haben, können Sie stattdessen [az extension update](/cli/azure/extension?view=azure-cli-latest#az-extension-update) ausführen:
-
-```azurecli-interactive
-az extension update --name webapp
-```
 
 Öffnen Sie eine Remoteverbindung mit Ihrer App, indem Sie den Befehl [az webapp remote-connection create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) verwenden. Geben Sie _\<Abonnement\_ID>_, _\<Gruppen\_Name>_ und \_<App\_Name>_ für Ihre App an.
 
@@ -167,7 +155,7 @@ A P P   S E R V I C E   O N   L I N U X
 0e690efa93e2:~#
 ```
 
-Sie sind jetzt mit Ihrem Connector verbunden. 
+Sie sind jetzt mit Ihrem Connector verbunden.  
 
 Versuchen Sie, den Befehl [top](https://ss64.com/bash/top.html) auszuführen. Sie sollten den Prozess Ihrer App in der Prozessliste verfolgen können. In der folgenden Beispielausgabe ist dies der Prozess mit `PID 263`.
 

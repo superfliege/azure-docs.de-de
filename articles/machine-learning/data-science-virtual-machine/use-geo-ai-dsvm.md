@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 11026d642a5136ffcf0caa5815934115b6becf89
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6e6737e928ece820ea9119d8dfe1d7cf22477646
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880107"
 ---
 # <a name="using-the-geo-artificial-intelligence-data-science-virtual-machine"></a>Verwendung der Data Science VM für geografische KI
 
@@ -30,7 +30,7 @@ Verwenden Sie die Data Science-VM für geografische KI, um Daten zur Analyse abz
 
 ## <a name="configuration-details"></a>Konfigurationsdetails
 
-Die Python-Bibliothek [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), die als Schnittstelle zu ArcGIS dient, wird in der globalen Conda-Stammumgebung der Data Science-VM unter ```c:\anaconda``` installiert. 
+Die Python-Bibliothek [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm), die als Schnittstelle zu ArcGIS dient, wird in der globalen Conda-Stammumgebung der Data Science-VM unter ```c:\anaconda``` installiert. 
 
 - Wenn Sie Python an einer Eingabeaufforderung ausführen, führen Sie ```activate``` zur Aktivierung in der Python-basierten Conda-Stammumgebung aus. 
 - Wenn Sie eine IDE oder Jupyter Notebook verwenden, können Sie die Umgebung oder den Kernel auswählen, um sicherzustellen, dass Sie sich in der richtigen Conda-Umgebung befinden. 
@@ -43,7 +43,7 @@ R-Bridge für ArcGIS wird als R-Bibliothek mit dem Namen [arcgisbinding](https:/
 Zusätzlich zu den auf dem Machine Learning- und Deep Learning-Framework basierenden Beispielen von der standardmäßigen Data Science VM wird auch eine Reihe von geografischen Beispielen als Teil der Data Science-VM mit geografischer KI bereitgestellt. Diese Beispiele ermöglichen Ihnen eine schnellen Einstieg in die Entwicklung von KI-Anwendungen mithilfe von geografischen Daten und der ArcGIS-Software. 
 
 
-1. [Erste Schritte mit geografischen Analysen mit Python:](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb) Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcpy](http://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)-Bibliothek bereitgestellten Python-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. Zudem zeigt es, wie Sie konventionelles Machine Learning mit geografischen Daten kombinieren und das Ergebnis auf einer Karte in ArcGIS visualisieren. 
+1. [Erste Schritte mit geografischen Analysen mit Python:](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/Python%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb) Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcpy](https://pro.arcgis.com/en/pro-app/arcpy/main/arcgis-pro-arcpy-reference.htm)-Bibliothek bereitgestellten Python-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. Zudem zeigt es, wie Sie konventionelles Machine Learning mit geografischen Daten kombinieren und das Ergebnis auf einer Karte in ArcGIS visualisieren. 
 
 2. [Erste Schritte mit geografischen Analysen mit R:](https://github.com/Azure/DataScienceVM/blob/master/Notebooks/ArcGIS/R%20walkthrough%20ArcGIS%20Data%20analysis%20and%20ML.ipynb) Ein einführendes Beispiel zeigt, wie Sie mithilfe der von der [arcgisbinding](https://github.com/R-ArcGIS/r-bridge)-Bibliothek bereitgestellten R-Benutzeroberfläche für ArcGIS mit geografischen Daten arbeiten. 
 

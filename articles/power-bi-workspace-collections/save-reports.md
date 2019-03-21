@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
 ms.author: maghan
-ms.openlocfilehash: a66584aa1cd3f335111774ef1df37cddc630f69d
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 8de31479e55aca64a5412bb89765c9b6062c0358
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233369"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864880"
 ---
 # <a name="save-reports-in-power-bi-workspace-collections"></a>Speichern von Berichten in Power BI-Arbeitsbereichssammlungen
 
@@ -138,5 +138,5 @@ var embedConfiguration = {
 [Power BI Desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)  
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
 

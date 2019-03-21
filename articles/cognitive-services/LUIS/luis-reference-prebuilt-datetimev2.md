@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 59fbe18fe7a3cc5b9cf5b31f3e580382b9de08ff
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6b4c3f7445d18ab1548fd63b1f4d12c5901cf949
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879036"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57339520"
 ---
 # <a name="datetimev2-prebuilt-entity-for-a-luis-app"></a>Vordefinierte DatetimeV2-Entität für eine LUIS-App
 
@@ -33,8 +33,8 @@ Die folgende JSON-Beispielantwort enthält eine `datetimeV2`-Entität mit einem 
   {
     "entity": "8am on may 2nd 2017",
     "type": "builtin.datetimeV2.datetime",
-    "startIndex": 15,
-    "endIndex": 30,
+    "startIndex": 0,
+    "endIndex": 18,
     "resolution": {
       "values": [
         {

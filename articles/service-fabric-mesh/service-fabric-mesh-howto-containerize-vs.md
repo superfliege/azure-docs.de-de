@@ -6,15 +6,15 @@ keywords: Packen von Service Fabric Mesh in einen Container
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/08/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
-ms.openlocfilehash: bb4aacafaa90f16370bc097b5feab7791def4006
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806945"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57779877"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
 

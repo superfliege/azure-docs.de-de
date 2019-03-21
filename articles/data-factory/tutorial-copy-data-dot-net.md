@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 3cbfb29542f2c71f4308b63319e77b37093529d4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 630b17a3467f372190004172b31b481dcb5af3ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445899"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863133"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Kopieren von Daten aus Azure Blob Storage nach Azure SQL-Datenbank mithilfe von Azure Data Factory
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die Daten aus Azure Blob Storage nach Azure SQL-Datenbank kopiert. Das Konfigurationsmuster in diesem Tutorial gilt für Kopiervorgänge aus einem dateibasierten Datenspeicher in einen relationalen Datenspeicher. Eine Liste der Datenspeicher, die als Quellen und Senken unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](copy-activity-overview.md#supported-data-stores-and-formats).
@@ -57,7 +57,7 @@ Bereiten Sie jetzt Ihr Azure-Blob und Ihre Azure SQL-Datenbank für das Tutorial
     Jane|Doe
     ```
 
-2. Verwenden Sie Tools wie [Azure Storage-Explorer](http://storageexplorer.com/), um den Container **adfv2tutorial** zu erstellen und die Datei **inputEmp.txt** in den Container hochzuladen.
+2. Verwenden Sie Tools wie [Azure Storage-Explorer](https://storageexplorer.com/), um den Container **adfv2tutorial** zu erstellen und die Datei **inputEmp.txt** in den Container hochzuladen.
 
 #### <a name="create-a-sink-sql-table"></a>Erstellen einer SQL-Senkentabelle
 
@@ -236,7 +236,7 @@ Sie definieren ein Dataset, das die Quelldaten im Azure-Blob darstellt. Dieses B
 - Die Datenstruktur, einschließlich Spaltennamen und Datentypen – entspricht in diesem Fall der SQL-Senkentabelle
 
 ```csharp
-// Create a Azure Blob dataset
+// Create an Azure Blob dataset
 Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
@@ -274,7 +274,7 @@ Fügen Sie der **Main**-Methode den folgenden Code hinzu, der ein **Azure SQL-Da
 Sie definieren ein Dataset, das die Senkendaten in Azure SQL-Datenbank darstellt. Dieses Dataset verweist auf den verknüpften Azure SQL-Datenbankdienst, den Sie im vorherigen Schritt erstellt haben. Es gibt auch die SQL-Tabelle an, die die kopierten Daten enthält. 
 
 ```csharp
-// Create a Azure SQL Database dataset
+// Create an Azure SQL Database dataset
 Console.WriteLine("Creating dataset " + sqlDatasetName + "...");
 DatasetResource sqlDataset = new DatasetResource(
     new AzureSqlTableDataset

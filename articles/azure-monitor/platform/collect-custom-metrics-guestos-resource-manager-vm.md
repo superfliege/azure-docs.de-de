@@ -4,18 +4,20 @@ description: Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azu
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1eaf73e1d8b3c60ea32fa7d4aaf51a212d24a18c
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 63b134ab9bfdac3617c845da7a14ee6b9234c84d
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55894597"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57782019"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine"></a>Senden von Gastbetriebssystemmetriken an den Metrikspeicher von Azure Monitor unter Verwendung einer Resource Manager-Vorlage für einen virtuellen Windows-Computer
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Standorte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
@@ -29,7 +31,7 @@ Wenn Sie noch nicht mit Resource Manager-Vorlagen vertraut sind, informieren Sie
 
 - Ihr Abonnement muss mit [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert werden.
 
-- [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
+- [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) muss installiert sein.
 
 
 ## <a name="set-up-azure-monitor-as-a-data-sink"></a>Einrichten von Azure Monitor als Datensenke
@@ -237,17 +239,17 @@ Speichern und schließen Sie beide Dateien.
 Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwendet.
 
 1. Starten Sie PowerShell.
-1. Melden Sie sich mit `Login-AzureRmAccount` bei Azure an.
-1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzureRmSubscription` ab.
+1. Melden Sie sich mit `Login-AzAccount` bei Azure an.
+1. Rufen Sie Ihre Liste der Abonnements mit `Get-AzSubscription` ab.
 1. Legen Sie das Abonnement, das Sie zum Erstellen/Aktualisieren des virtuellen Computers verwenden, fest:
 
    ```PowerShell
-   Select-AzureRmSubscription -SubscriptionName "<Name of the subscription>"
+   Select-AzSubscription -SubscriptionName "<Name of the subscription>"
    ```
 1. Erstellen Sie eine neue Ressourcengruppe für die bereitzustellende VM, indem Sie den folgenden Befehl ausführen:
 
    ```PowerShell
-    New-AzureRmResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
+    New-AzResourceGroup -Name "<Name of Resource Group>" -Location "<Azure Region>"
    ```
    > [!NOTE]
    > Denken Sie daran, eine [Azure-Region zu verwenden, die für benutzerdefinierte Metriken aktiviert ist](metrics-custom-overview.md).
@@ -257,7 +259,7 @@ Für die Bereitstellung der Resource Manager-Vorlage wird Azure PowerShell verwe
    > Wenn Sie einen bestehenden virtuellen Computer aktualisieren möchten, fügen Sie einfach *-Mode Incremental* am Ende des folgenden Befehls hinzu.
 
    ```PowerShell
-   New-AzureRmResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
+   New-AzResourceGroupDeployment -Name "<NameThisDeployment>" -ResourceGroupName "<Name of the Resource Group>" -TemplateFile "<File path of your Resource Manager template>" -TemplateParameterFile "<File path of your parameters file>"
    ```
 
 1. Nachdem Ihre Bereitstellung erfolgreich abgeschlossen wurde, sollte der virtuelle Computer im Azure-Portal vorhanden sein und Metriken an Azure Monitor ausgeben.

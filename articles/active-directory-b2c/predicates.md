@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 9bd015076cdbd70768b1359fac0cfc893d871513
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55149593"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56737024"
 ---
 # <a name="predicates-and-predicatevalidations"></a>„Predicates“ und „PredicateValidations“
 
@@ -41,8 +41,8 @@ Das **Predicate**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
-| Methode | JA | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters** oder **IsDateRange**. Mit dem **IsLengthRange**-Wert wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Mit dem **MatchesRegex**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Mit dem **IncludesCharacters**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Mit dem **IsDateRange**-Wert wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. |
+| id | Ja | Ein Bezeichner, der für das Prädikat verwendet wird. Andere Elemente können diesen Bezeichner in der Richtlinie verwenden. |
+| Methode | Ja | Der für die Überprüfung zu verwendende Methodentyp. Mögliche Werte: **IsLengthRange**, **MatchesRegex**, **IncludesCharacters** oder **IsDateRange**. Mit dem **IsLengthRange**-Wert wird überprüft, ob die Länge eines Zeichenfolgen-Anspruchswerts innerhalb des Bereichs der angegebenen minimalen und maximalen Parameter liegt. Mit dem **MatchesRegex**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einem regulären Ausdruck entspricht. Mit dem **IncludesCharacters**-Wert wird überprüft, ob ein Zeichenfolgen-Anspruchswert einen bestimmten Zeichensatz enthält. Mit dem **IsDateRange**-Wert wird überprüft, ob ein Datumsanspruchswert innerhalb eines Bereichs von angegebenen minimalen und maximalen Parametern liegt. |
 
 Das **Predicate**-Element enthält die folgenden Elemente:
 
@@ -140,7 +140,7 @@ Das **PredicateValidation**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird. Das **ClaimType**-Element kann diesen Bezeichner in der Richtlinie verwenden. |
+| id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird. Das **ClaimType**-Element kann diesen Bezeichner in der Richtlinie verwenden. |
 
 Das **PredicateValidation**-Element enthält das folgende Element:
 
@@ -158,7 +158,7 @@ Das **PredicateGroups**-Element enthält das folgende Attribut:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
+| id | Ja | Ein Bezeichner, der für die Prädikatgruppe verwendet wird.  |
 
 Das **PredicateGroups**-Element enthält die folgenden Elemente:
 
@@ -183,7 +183,7 @@ Das **PredicateReference**-Element enthält die folgenden Attribute:
 
 | Attribut | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
-| id | JA | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
+| id | Ja | Ein Bezeichner, der für die Prädikatüberprüfung verwendet wird.  |
 
 
 ## <a name="configure-password-complexity"></a>Konfigurieren der Kennwortkomplexität
@@ -350,7 +350,7 @@ Das folgende Beispiel zeigt, wie die Elemente angeordnet sind, wenn Azure AD B2C
 
 ![Prädikatprozess](./media/predicates/predicates-pass.png)
 
- ## <a name="configure-a-date-range"></a>Konfigurieren eines Datumsbereichs
+## <a name="configure-a-date-range"></a>Konfigurieren eines Datumsbereichs
 
 Mit den Elementen **Predicates** und **PredicateValidations** können Sie die minimalen und maximalen Datumswerte von **UserInputType** mithilfe von `DateTimeDropdown` festlegen. Erstellen Sie hierzu ein **Predicate**-Element mit der `IsDateRange`-Methode, und geben Sie die minimalen und maximalen Parameter an.
 

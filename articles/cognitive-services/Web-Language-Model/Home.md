@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/12/2016
 ms.author: pibehre
 ROBOTS: NOINDEX
-ms.openlocfilehash: 4228692d707f0cff8be0d76bc70794f48d944143
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 751b6e5979174eae9bc815061f16bf99bd0899cf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878764"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534785"
 ---
 # <a name="what-is-the-web-language-model-api-preview"></a>Worum handelt es sich bei der Websprachmodell-API?  (Vorschau)
 
@@ -44,7 +44,7 @@ Die Web Language Model API unterstützt vier Suchvorgänge:
 1. Abonnieren Sie den Dienst.
 2. Laden Sie das [SDK](https://www.github.com/microsoft/cognitive-weblm-windows) herunter.
 3. Führen Sie den SDK-Beispielcode aus.
-4. Vollständige Details zu den Endpunkten (einschließlich der Codeausschnitte in einer Vielzahl von Sprachen) finden Sie in der [API-Referenz](http://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51).
+4. Vollständige Details zu den Endpunkten (einschließlich der Codeausschnitte in einer Vielzahl von Sprachen) finden Sie in der [API-Referenz](https://web.archive.org/web/20170503191852/westus.dev.cognitive.microsoft.com/docs/services/55de9ca4e597ed1fd4e2f104/operations/55de9ca4e597ed19b0de8a51).
 
 ## <a name="underlying-technology"></a>Zugrunde liegende Technologie
 

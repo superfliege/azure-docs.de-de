@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 90f9a13882e370d6d0c67826750b3edd27603ede
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120515"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>Verwenden des Azure Cosmos DB-Änderungsfeeds zum Visualisieren von Echtzeit-Datenanalysen
 
@@ -105,7 +105,7 @@ Sie können jetzt eine Sammlung erstellen, um Ereignisse auf der E-Commerce-Webs
 
 3. Erstellen Sie anschließend für die Änderungsfeedverarbeitung eine weitere Sammlung mit der Bezeichnung **leases**. Die Lease-Sammlung koordiniert das Verarbeiten der Änderungsfeeds über mehrere Worker. Eine separate Sammlung wird verwendet, um die Leases mit einer Lease pro Partition zu speichern.  
 
-4.  Kehren Sie zum Bereich **Daten-Explorer** zurück, wählen Sie **Neue Sammlung** und füllen Sie das Formular mit den folgenden Informationen aus:
+4. Kehren Sie zum Bereich **Daten-Explorer** zurück, wählen Sie **Neue Sammlung** und füllen Sie das Formular mit den folgenden Informationen aus:
 
    * Wählen Sie im Feld **Datenbank-ID** die Option **Vorhandene verwenden**, und geben Sie **changefeedlabdatabase** ein.  
    * Geben Sie für das Feld **Sammlungs-ID** **leases** ein.  

@@ -4,18 +4,20 @@ description: Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Me
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 1e322c9bd6f78c4801c14e9982cc170b3af1971a
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 6523c2b26a0340fa5347d8224ac8bf6c5e285926
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893577"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759048"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-classic-cloud-services"></a>Senden von Metriken des Gastbetriebssystems an den Azure Monitor-Metrikspeicher – Cloud Services (klassisch) 
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 Die [Diagnoseerweiterung](diagnostics-extension-overview.md) von Azure Monitor ermöglicht es Ihnen, Metriken und Protokolle von einem Gastbetriebssystem zu erfassen, das als Teil eines virtuellen Computers, eines Clouddiensts oder eines Service Fabric-Clusters ausgeführt wird. Die Erweiterung kann Telemetriedaten an [viele verschiedene Orte](https://docs.microsoft.com/azure/monitoring/monitoring-data-collection?toc=/azure/azure-monitor/toc.json) senden.
 
@@ -31,7 +33,7 @@ Der in diesem Artikel beschriebene Prozess funktioniert nur mit Leistungsindikat
 
 - Ihr Abonnement muss bei [Microsoft.Insights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services) registriert sein. 
 
-- Bei Ihnen muss entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-6.8.1) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
+- Bei Ihnen muss entweder [Azure PowerShell](/powershell/azure) oder [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) installiert sein.
 
 ## <a name="provision-a-cloud-service-and-storage-account"></a>Bereitstellen eines Clouddiensts und eines Speicherkontos 
 
@@ -141,7 +143,7 @@ Speichern Sie diese Diagnosedatei lokal.
 Starten Sie PowerShell, und melden Sie sich bei Azure an. 
 
 ```PowerShell
-Login-AzureRmAccount 
+Login-AzAccount 
 ```
 
 Verwenden Sie die folgenden Befehle, um die Details des zuvor erstellten Speicherkontos zu speichern: 

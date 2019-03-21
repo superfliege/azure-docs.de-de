@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/27/2019
 ms.author: monhaber
-ms.openlocfilehash: f90ad2707e42c4b5b2c4188d7f0f18bb9c5ea31b
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: ea738535ae9326109a7c3fdd0b5d0c4f4691fdf0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105025"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57878629"
 ---
 # <a name="protect-app-service-with-azure-security-center"></a>Schützen von App Services mit Azure Security Center
 Dieser Artikel unterstützt Sie bei der Verwendung des Azure Security Center zum Überwachen und Schützen Ihrer Anwendungen, die zusätzlich zu App Services laufen.
@@ -68,4 +68,4 @@ In diesem Artikel haben Sie erfahren, wie Sie die Überwachungsfunktionen in Azu
 * [App Services](security-center-virtual-machine-protection.md#app-services):  Hier können Sie eine Liste Ihrer App Service-Umgebungen mit Integritätszusammenfassungen anzeigen.
 * [Überwachen von Partnerlösungen mit Azure Security Center](security-center-partner-solutions.md): Hier erfahren Sie, wie Sie den Integritätsstatus Ihrer Partnerlösungen überwachen.
 * [Azure Security Center – häufig gestellte Fragen](security-center-faq.md): Enthält häufig gestellte Fragen zur Verwendung des Diensts.
-* [Azure Security-Blog](http://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.
+* [Azure Security-Blog](https://blogs.msdn.com/b/azuresecurity/): Hier finden Sie Blogbeiträge zur Sicherheit und Compliance von Azure.

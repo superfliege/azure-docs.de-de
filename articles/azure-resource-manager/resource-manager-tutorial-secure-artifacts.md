@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 02/25/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 53cc987d13479fc0d9276ec80f33a163a2a6ded7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f7f235ce709fd81c4bb4c367774b4a96cd920e13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817030"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120345"
 ---
 # <a name="tutorial-secure-artifacts-in-azure-resource-manager-template-deployments"></a>Tutorial: Schützen von Artefakten in Bereitstellungen per Azure Resource Manager-Vorlage
 
@@ -126,11 +126,11 @@ Sie benötigen einen Blobcontainer, bevor Sie Dateien hochladen können.
 3. Wählen Sie **Blob-SAS-Token und URL generieren**.
 4. Erstellen Sie eine Kopie der **Blob-SAS-URL**. In der Mitte der URL ist der Dateiname **SQLDatabaseExtension.bacpac** angegeben.  Der Dateiname unterteilt die URL in drei Teile:
 
-    - **Artefaktspeicherort**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Achten Sie darauf, dass der Speicherort mit „/“ endet.
-    - **BACPAC-Dateiname**: „SQLDatabaseExtension.bacpac“.
-    - **SAS-Token des Artefaktspeicherorts**: Stellen Sie sicher, dass dem Token ein „?“ vorangestellt ist.
+   - **Artefaktspeicherort**: https://xxxxxxxxxxxxxx.blob.core.windows.net/sqlbacpac/. Achten Sie darauf, dass der Speicherort mit „/“ endet.
+   - **BACPAC-Dateiname**: „SQLDatabaseExtension.bacpac“.
+   - **SAS-Token des Artefaktspeicherorts**: Stellen Sie sicher, dass dem Token ein „?“ vorangestellt ist.
 
-    Sie benötigen diese drei Werte im Abschnitt [Bereitstellen der Vorlage](#deploy-the-template).
+     Sie benötigen diese drei Werte im Abschnitt [Bereitstellen der Vorlage](#deploy-the-template).
 
 ## <a name="open-an-existing-template"></a>Öffnen einer vorhandenen Vorlage
 
@@ -146,13 +146,13 @@ In dieser Sitzung ändern Sie die Vorlage, die Sie unter [Tutorial: Importieren 
 
     Es gibt fünf Ressourcen, die in der Vorlage definiert werden:
 
-    * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
-    * `Microsoft.SQL/servers/securityAlertPolicies`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
-    * `Microsoft.SQL/servers/filewallRules`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
-    * `Microsoft.SQL/servers/databases`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
-    * `Microsoft.SQL/server/databases/extensions`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
+   * `Microsoft.Sql/servers`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers).
+   * `Microsoft.SQL/servers/securityAlertPolicies`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/securityalertpolicies).
+   * `Microsoft.SQL/servers/filewallRules`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2015-05-01-preview/servers/firewallrules).
+   * `Microsoft.SQL/servers/databases`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases).
+   * `Microsoft.SQL/server/databases/extensions`.  Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.sql/2014-04-01/servers/databases/extensions).
 
-    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 4. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 
 ## <a name="edit-the-template"></a>Bearbeiten der Vorlage

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 0bb464d1d49438213d2b9a4e937170a075a206f5
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.openlocfilehash: 9f5948887262ae190547c96aa09318a19f64812e
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53192388"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57306628"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-log-analytics"></a>Verwenden von Azure Blob Storage für IIS und Azure Table Storage für Ereignisse mit Log Analytics
 
@@ -146,7 +146,10 @@ Nach etwa 30 Minuten können Sie Daten aus dem Speicherkonto in Log Analytics se
 >
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection-using-powershell"></a>Aktivieren der Azure-Diagnose auf einem virtuellen Computer zur Erfassung von Ereignis- und IIS-Protokollen mit PowerShell
-Führen Sie die Schritte unter [Konfigurieren von Log Analytics zum Indizieren der Azure-Diagnose](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-index-azure-diagnostics) aus, um PowerShell zum Lesen von Azure-Diagnosedaten zu verwenden, die in einen Tabellenspeicher geschrieben wurden.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
+Führen Sie die Schritte unter [Konfigurieren von Log Analytics zum Indizieren der Azure-Diagnose](../../azure-monitor/platform/powershell-workspace-configuration.md#configuring-log-analytics-to-collect-azure-diagnostics-from-storage) aus, um PowerShell zum Lesen von Azure-Diagnosedaten zu verwenden, die in einen Tabellenspeicher geschrieben wurden.
 
 Mit Azure PowerShell können Sie die Ereignisse genauer angeben, die in Azure Storage geschrieben werden.
 Weitere Informationen finden Sie unter [Aktivieren der Diagnose auf virtuellen Azure-Computern](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines).
@@ -177,7 +180,7 @@ Das Skript verwendet Cmdlets für klassische virtuelle Computer.
 
     #Construct Azure diagnostics private config
 
-    $wad_storage_account_key = (Get-AzureStorageKey $wad_storage_account_name).Primary
+    $wad_storage_account_key = (Get-AzStorageKey $wad_storage_account_name).Primary
     $wad_private_config = [string]::Format("{{""storageAccountName"":""{0}"",""storageAccountKey"":""{1}""}}",$wad_storage_account_name,$wad_storage_account_key)
 
     #Enable Diagnostics Extension for Virtual Machine

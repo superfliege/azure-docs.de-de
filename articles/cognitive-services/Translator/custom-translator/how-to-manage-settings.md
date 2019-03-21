@@ -5,16 +5,16 @@ description: Hier erfahren Sie, wie Sie in Custom Translator Einstellungen verwa
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 6fabbb57538f5e10e6cd91ebc109707045e54033
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 6e8406cdd265063622bc5dcebbb9f22549b3633a
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227079"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766800"
 ---
 # <a name="how-to-manage-settings"></a>Verwalten von Einstellungen
 
@@ -45,7 +45,7 @@ Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
     ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key.png)
 
 3. Geben Sie im Dialogfeld den Schlüssel für Ihr Microsoft Translator-Abonnement ein, und klicken Sie dann auf die Schaltfläche „Hinzufügen“.
- 
+
     ![Hinzufügen eines Abonnementschlüssels](media/how-to/how-to-add-subscription-key-dialog.png)
 4.  Wenn Sie einen Schlüssel hinzugefügt haben, können Sie den Schlüssel jederzeit ändern oder löschen.
 
@@ -53,29 +53,29 @@ Wenn Sie über kein Abonnement verfügen, gehen Sie folgendermaßen vor:
 
 ## <a name="manage-your-workspace"></a>Verwalten Ihres Arbeitsbereichs
 
-Ein Arbeitsbereich ist ein Bereich zum Erstellen und Entwickeln Ihres benutzerdefinierten Übersetzungssystems. Er kann mehrere Projekte, Modelle und Dokumente enthalten. 
+Ein Arbeitsbereich ist ein Bereich zum Erstellen und Entwickeln Ihres benutzerdefinierten Übersetzungssystems. Er kann mehrere Projekte, Modelle und Dokumente enthalten.
 
-Wenn Sie unterschiedliche Teilbereiche Ihrer Arbeit für verschiedene Personen freigegeben möchten, ist es sinnvoll, mehrerer Arbeitsbereiche zu erstellen. 
+Wenn Sie unterschiedliche Teilbereiche Ihrer Arbeit für verschiedene Personen freigegeben möchten, ist es sinnvoll, mehrerer Arbeitsbereiche zu erstellen.
 
 ## <a name="create-a-new-workspace"></a>Erstellen eines neuen Arbeitsbereichs
 
 1.  Navigieren Sie im Arbeitsbereich zur Seite „Einstellungen“.
 2.  Klicken Sie im Abschnitt „Neuen Arbeitsbereich erstellen“ auf die Schaltfläche „Neuer Arbeitsbereich“.
-    
+
     ![Erstellen eines neuen Arbeitsbereichs](media/how-to/create-new-workspace.png)
 
 4.  Geben Sie im Dialogfeld den Namen des neuen Arbeitsbereichs ein.
 5.  Klicken Sie auf „Erstellen“.
-    
+
     ![Dialogfeld „Neuen Arbeitsbereich erstellen“](media/how-to/create-new-workspace-dialog.png)
 
 ## <a name="share-your-workspace"></a>Freigeben Ihres Arbeitsbereichs
 
-In Custom Translator können Sie Ihren Arbeitsbereich für andere freigeben, z.B. wenn verschiedene Teilbereiche Ihrer Arbeit mit unterschiedlichen Personen geteilt werden sollen. 
+In Custom Translator können Sie Ihren Arbeitsbereich für andere freigeben, z.B. wenn verschiedene Teilbereiche Ihrer Arbeit mit unterschiedlichen Personen geteilt werden sollen.
 
 1.  Navigieren Sie im Arbeitsbereich zur Seite „Einstellungen“.
 2.  Klicken Sie im Abschnitt „Freigabeeinstellungen“ auf die Schaltfläche „Freigeben“.
-    
+
     ![Freigeben des Arbeitsbereichs](media/how-to/share-workspace.png)
 
 3.  Geben Sie im Dialogfeld eine durch Trennzeichen getrennte Liste der E-Mail-Adressen ein, für die Sie diesen Arbeitsbereich freigeben möchten. Achten Sie darauf, dass Sie die E-Mail-Adressen angeben, mit denen sich die Benutzer bei Custom Translator anmelden. Wählen Sie dann die gewünschte Stufe für die Freigabeberechtigung aus.
@@ -85,7 +85,7 @@ In Custom Translator können Sie Ihren Arbeitsbereich für andere freigeben, z.B
 
 ## <a name="sharing-permissions"></a>Freigabeberechtigungen
 
-1.  **Leser**: Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen. 
+1.  **Leser**: Benutzer mit dieser Freigabeberechtigung können alle Informationen im Arbeitsbereich anzeigen.
 
 2.  **Bearbeiter**: Benutzer mit dieser Freigabeberechtigung können im Arbeitsbereich Dokumente hinzufügen, Modelle trainieren sowie Dokumente und Projekte löschen. Außerdem haben sie die Möglichkeit, einen Abonnementschlüssel hinzuzufügen. Allerdings können diese Benutzer nicht ändern, für wen der Arbeitsbereich freigegeben ist, den Arbeitsbereich löschen oder den Arbeitsbereichsnamen ändern.
 

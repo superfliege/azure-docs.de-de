@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 827990e03ca1bbb4bfd2ca9cf8bf0a9ceccfb51b
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 136b819f6bbbc1b546b66f54e771dbec8c71202c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719386"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548148"
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Benutzerinteraktion in Durable Functions: Beispiel zur Telefonüberprüfung
 
@@ -118,7 +118,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/741c6565
 
 Die Orchestratorfunktion empfängt die angegebene Telefonnummer und sendet sofort eine SMS-Nachricht mit einem zufällig generierten vierstelligen Überprüfungscode an diese Nummer, &mdash;z.B. *2168*. Anschließend wartet die Funktion 90 Sekunden auf eine Antwort.
 
-Für eine Beantwortung mit dem Code können Sie [`RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript)](durable-functions-instance-management.md#sending-events-to-instances) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **sendEventUrl** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{eventName}` durch den Namen des Ereignisses, `SmsChallengeResponse`, ersetzt:
+Für eine Beantwortung mit dem Code können Sie [`RaiseEventAsync` (.NET) oder `raiseEvent` (JavaScript)](durable-functions-instance-management.md) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **sendEventUrl** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{eventName}` durch den Namen des Ereignisses, `SmsChallengeResponse`, ersetzt:
 
 ```
 POST http://{host}/admin/extensions/DurableTaskExtension/instances/741c65651d4c40cea29acdd5bb47baf1/raiseEvent/SmsChallengeResponse?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}

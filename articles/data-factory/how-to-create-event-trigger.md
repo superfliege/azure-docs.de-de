@@ -3,20 +3,20 @@ title: Erstellen von ereignisbasierten Triggern in Azure Data Factory | Microsof
 description: Erfahren Sie, wie in Azure Data Factory ein Trigger erstellt wird, der eine Pipeline als Reaktion auf ein Ereignis ausführt.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.author: douglasl
-ms.openlocfilehash: fd7355c342a075f7b0c2e1173717c0345f1f94ba
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+author: sharonlo101
+ms.author: shlo
+manager: craigg
+ms.openlocfilehash: 94c9c3f997143d72262c1ba3d8dbfea90d6f920c
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428549"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57576615"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Erstellen eines Triggers, der eine Pipeline als Reaktion auf ein Ereignis ausführt
 

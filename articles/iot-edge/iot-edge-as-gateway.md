@@ -4,17 +4,17 @@ description: Verwenden Sie Azure IoT Edge zum Erstellen eines transparenten oder
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/01/2017
+ms.date: 02/25/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 6e54d28d494a58966ea5312492dc79ced4c50a8d
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: e0aafc6e5a6926ad70aa5df335f45b841955cab9
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53092280"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56877588"
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway"></a>Verwendung eines IoT Edge-Geräts als Gateway
 
@@ -54,4 +54,4 @@ Hier finden Sie ein schnelles Cheat Sheet, das IoT Hub-Grundtypen bei Verwendung
 Bei Verwendung eines nicht transparenten Gatewaymusters (Protokollübersetzung) verwenden alle Geräte, die eine Verbindung über dieses Gateway herstellen, dieselbe C2D-Warteschlange, die höchstens 50 Nachrichten enthalten kann. Daraus folgt, dass das nicht transparente Gatewaymuster nur verwendet werden sollte, wenn wenige Geräte eine Verbindung über die einzelnen Bereichsgateways herstellen und der Cloud-zu-Gerät-Datenverkehr gering ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
-Lernen Sie, wie Sie ein IoT Edge-Gerät als [transparentes Gateway](how-to-create-transparent-gateway-linux.md) konfigurieren.
+Lernen Sie, wie Sie ein IoT Edge-Gerät als [transparentes Gateway](how-to-create-transparent-gateway.md) konfigurieren.

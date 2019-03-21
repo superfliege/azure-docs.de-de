@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 10/23/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/23/2018
-ms.openlocfilehash: 0f6230dd3fe59e2aa34e358bfa9133f736d17f36
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: b51f88aae20506e70c3a7bd1c199d032d98fd6fa
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56732448"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57774760"
 ---
 # <a name="azure-stack-validation-report"></a>Azure Stack-Überprüfungsbericht
 Verwenden Sie das Azure Stack Readiness Checker-Tool, um Überprüfungen auszuführen, die die Bereitstellung und Wartung einer Azure Stack-Umgebung unterstützen. Das Tool schreibt die Ergebnisse in eine JSON-Berichtsdatei. Der Bericht zeigt detaillierte und zusammengefasste Daten über den Stand der Voraussetzungen für die Bereitstellung von Azure Stack. Darüber hinaus enthält er Informationen zur Geheimnisrotation für bestehende Azure Stack-Bereitstellungen.  

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: ryanwi
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 906efa00243cc622c374d442a7982d87d106079b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 773a466f9619f162fe3f7cbeeab0b766d3ca32ae
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55158841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57864863"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -211,7 +211,7 @@ Der Abschnitt „parameters“ wird am Anfang Ihrer Bereitstellungsvorlage direk
 
 ```json
 {
-    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+    "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
     "contentVersion": "1.0.0.0",
     "parameters": {
       ...
@@ -229,7 +229,7 @@ Dienste werden in der Vorlage als Eigenschaften der Anwendungsressource angegebe
 
 ```json
 {
-  "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
+  "$schema": "https://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json",
   "contentVersion": "1.0.0.0",
   "parameters": {
     ...
@@ -344,6 +344,7 @@ In der Bereitstellungsvorlagendatei [mesh_rp.windows.json](https://github.com/Az
 Erstellen Sie die Anwendung und die zugehörigen Ressourcen mit dem folgenden Befehl, und geben Sie die Anmeldeinformationen aus dem vorherigen Schritt [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) ein.
 
 Aktualisieren Sie in der Parameterdatei die folgenden Parameterwerte:
+
 |Parameter|Wert|
 |---|---|
 |location|Die Region für die Bereitstellung der Anwendung.  Beispiel: eastus|

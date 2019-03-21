@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8db11759ce501929e5cfd7b721c5e9dc80f9e01a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d3c3278a058162632a6ba7ea9731e5f233190700
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473186"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57843707"
 ---
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Exemplarische Data Science-Vorgehensweisen unter Verwendung von Hive in Azure HDInsight Hadoop 
 
@@ -36,7 +36,7 @@ Das Szenario wird mithilfe von Hive in einem [Azure HDInsight Hadoop-Cluster](ht
 
 ## <a name="predict-advertisement-clicks-using-hive-with-hdinsight-hadoop"></a>Vorhersagen von Klicks auf Werbeanzeigen unter Verwenden von Hive mit HDInsight Hadoop
 
-Die exemplarische Vorgehensweise [Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset](hive-criteo-walkthrough.md) verwendet das öffentlich verfügbare Dataset zu Klicks von [Criteo](http://labs.criteo.com/downloads/download-terabyte-click-logs/), um vorherzusagen, ob ein Trinkgeld (und in welcher Höhe) gezahlt wird. Das Szenario wird mithilfe von Hive mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) implementiert, um Daten zu speichern, zu untersuchen sowie einem Feature Engineering und Downsampling zu unterziehen. Azure Machine Learning wird verwendet, um ein binäres Klassifizierungsmodell zu erstellen, zu trainieren und zu bewerten, das vorhersagt, ob ein Benutzer auf eine Werbeanzeige klickt. Zum Schluss wird in der exemplarischen Vorgehensweise gezeigt, wie eines dieser Modelle als Webdienst veröffentlicht wird.
+Die exemplarische Vorgehensweise [Verwenden von Azure HDInsight Hadoop-Clustern in einem 1-TB-Dataset](hive-criteo-walkthrough.md) verwendet das öffentlich verfügbare Dataset zu Klicks von [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/), um vorherzusagen, ob ein Trinkgeld (und in welcher Höhe) gezahlt wird. Das Szenario wird mithilfe von Hive mit einem [Azure HDInsight Hadoop-Cluster](https://azure.microsoft.com/services/hdinsight/) implementiert, um Daten zu speichern, zu untersuchen sowie einem Feature Engineering und Downsampling zu unterziehen. Azure Machine Learning wird verwendet, um ein binäres Klassifizierungsmodell zu erstellen, zu trainieren und zu bewerten, das vorhersagt, ob ein Benutzer auf eine Werbeanzeige klickt. Zum Schluss wird in der exemplarischen Vorgehensweise gezeigt, wie eines dieser Modelle als Webdienst veröffentlicht wird.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

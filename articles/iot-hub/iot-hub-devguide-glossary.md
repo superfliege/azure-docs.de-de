@@ -1,19 +1,19 @@
 ---
 title: Glossar mit Azure IoT Hub-Begriffen | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Ein Glossar mit häufig verwendeten Begriffen für IoT Hub.'
-author: dominicbetts
-manager: timlt
+author: robinsh
+manager: philmea
+ms.author: robin.shahan
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/15/2019
-ms.author: dobett
-ms.openlocfilehash: d815f980a0583058957b7d87b6c99df59e9a4821
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ac7043d2967fcf3f083c09622c39f4649f04f6e7
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817378"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551669"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Glossar mit IoT Hub-Begriffen
 In diesem Artikel sind einige Begriffe aufgeführt, die in den Artikeln zu IoT Hub verwendet werden.
@@ -97,7 +97,7 @@ Im Kontext eines [Gerätezwillings](iot-hub-devguide-device-twins.md) handelt es
 Bezieht sich auf Nachrichten, die von einem verbundenen Gerät an [IoT Hub](#iot-hub) gesendet werden. Bei diesen Nachrichten kann es sich um [datenpunktbezogene](#data-point-message) oder um [interaktive](#interactive-message) Nachrichten handeln. Weitere Informationen finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="device"></a>Gerät
-Im Kontext von IoT ist ein Gerät in der Regel eine kleines, eigenständiges Datenverarbeitungsgerät, das Daten sammeln oder andere Geräte steuern kann. Ein Gerät kann beispielsweise ein Umweltüberwachungsgerät oder ein Regler für Bewässerungs- und Lüftungsanlagen in einem Gewächshaus sein. Der [Gerätekatalog](https://catalog.azureiotsuite.com/) enthält eine Liste mit Hardwaregeräten, die für die Verwendung mit [IoT Hub](#iot-hub) zertifiziert sind.
+Im Kontext von IoT ist ein Gerät in der Regel eine kleines, eigenständiges Datenverarbeitungsgerät, das Daten sammeln oder andere Geräte steuern kann. Ein Gerät kann beispielsweise ein Umweltüberwachungsgerät oder ein Regler für Bewässerungs- und Lüftungsanlagen in einem Gewächshaus sein. Der [Gerätekatalog](https://catalog.azureiotsolutions.com/) enthält eine Liste mit Hardwaregeräten, die für die Verwendung mit [IoT Hub](#iot-hub) zertifiziert sind.
 
 ## <a name="device-app"></a>Geräte-App
 Eine Geräte-App wird auf Ihrem [Gerät](#device) ausgeführt und führt die Kommunikation mit [IoT Hub](#iot-hub) durch. Normalerweise nutzen Sie eines der [Azure IoT-Geräte-SDKs](#azure-iot-device-sdks), wenn Sie eine Geräte-App implementieren. In vielen IoT-Tutorials verwenden Sie der Einfachheit halber ein [simuliertes Gerät](#simulated-device).
@@ -191,7 +191,7 @@ Bei der Modulidentität handelt es sich um den eindeutigen Bezeichner, der jedem
 Modulzwillinge ähneln Gerätezwillingen und sind JSON-Dokumente, in denen Modulstatusinformationen wie Metadaten, Konfigurationen und Zustände gespeichert werden. IoT Hub speichert einen Modulzwilling für jede Modulidentität, die Sie unter einer Geräteidentität in Ihrer IoT Hub-Instanz bereitstellen. Mit Modulzwillingen können Sie Modulbedingungen und Konfigurationen zwischen dem Modul und dem Lösungs-Back-End synchronisieren. Sie können Modulzwillinge abfragen, um bestimmte Module zu ermitteln und den Status von Vorgängen mit langer Ausführungsdauer abzufragen.
 
 ## <a name="mqtt"></a>MQTT
-[MQTT](http://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
+[MQTT](https://mqtt.org/) ist eines der Messagingprotokolle, die von [IoT Hub](#iot-hub) für die Kommunikation mit Geräten unterstützt werden. Weitere Informationen zu den Messagingprotokollen, die IoT Hub unterstützt, finden Sie unter [Senden und Empfangen von Nachrichten mit IoT Hub](iot-hub-devguide-messaging.md).
 
 ## <a name="operations-monitoring"></a>Vorgangsüberwachung
 Die IoT Hub-[Vorgangsüberwachung](iot-hub-operations-monitoring.md) ermöglicht Ihnen das Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit. [IoT Hub](#iot-hub) verfolgt Ereignisse in verschiedenen Vorgangskategorien nach. Sie können festlegen, dass Ereignisse aus einer oder mehreren Kategorien zur Verarbeitung an einen IoT Hub-Endpunkt gesendet werden. Sie können die Daten auf Fehler überwachen oder eine komplexere auf Datenmustern basierende Verarbeitung einrichten.

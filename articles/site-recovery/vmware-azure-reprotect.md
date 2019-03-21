@@ -1,18 +1,18 @@
 ---
 title: Erneutes Schützen von VMs aus Azure in einem lokalen Standort während der Notfallwiederherstellung von VMware-VMs und physischen Servern | Microsoft-Dokumentation
 description: Hier erfahren Sie, wie Sie nach dem Failover auf Azure während der Notfallwiederherstellung von VMware-VMs und physischen Servern ein Failback von Azure auf den lokalen Standort ausführen.
-author: rajani-janaki-ram
-manager: gauravd
+author: mayurigupta13
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/17/2018
-ms.author: rajanaki
-ms.openlocfilehash: 06337e205c472d26024289222dc8876d23b4184f
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.date: 3/12/2019
+ms.author: mayg
+ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53791879"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771808"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>Erneutes Schützen und Ausführen eines Failbacks für Computer auf einen lokalen Standort nach einem Failover auf Azure
 
@@ -114,7 +114,6 @@ Beachten Sie die folgenden Informationen:
 
 ## <a name="common-issues"></a>Häufige Probleme
 
-- Zurzeit unterstützt Site Recovery nur Failbacks auf einen VMFS- oder vSAN-Datenspeicher. Ein NFS-Datenspeicher wird nicht unterstützt. Aufgrund dieser Einschränkung ist bei NFS-Datenspeichern das Datenspeicherauswahl-Eingabefeld auf dem Bildschirm für den erneuten Schutz leer, oder es wird der vSAN-Datenspeicher angezeigt, aber dann tritt während des Auftrags ein Fehler auf. Wenn Sie ein Failback durchführen möchten, können Sie einen VMFS-Datenspeicher lokal erstellen und diesen für das Failback verwenden. Dieses Failback verursacht den vollständigen VMDK-Download.
 - Wenn Sie die vCenter-Ermittlung schreibgeschützter Benutzer ausführen und virtuelle Computer schützen, ist das Schützen erfolgreich, und das Failover funktioniert. Während des erneuten Schützens tritt beim Failover ein Fehler auf, da die Datenspeicher nicht ermittelt werden können. Ein Symptom dafür ist, dass die Datenspeicher während des erneuten Schützens nicht aufgelistet werden. Zum Beheben dieses Problems können Sie die vCenter-Anmeldeinformationen mit einem entsprechenden Konto aktualisieren, das über die erforderlichen Berechtigungen verfügt, und dann den Auftrag wiederholen. 
 - Wenn Sie ein Failback für einen virtuellen Linux-Computer durchführen und ihn lokal ausführen, sehen Sie, dass das Netzwerk-Manager-Paket auf dem Computer deinstalliert wurde. Der Grund für die Deinstallation ist, dass beim Wiederherstellen des virtuellen Computers in Azure das Netzwerk-Manager-Paket entfernt wird.
 - Wenn ein virtueller Linux-Computer mit einer statischen IP-Adresse konfiguriert ist und ein Failover zu Azure ausgeführt wird, wird die IP-Adresse über DHCP abgerufen. Nach dem Failover zum lokalen Standort verwendet der virtuelle Computer weiterhin DHCP zum Abrufen der IP-Adresse. Melden Sie sich manuell beim Computer an, und setzen Sie dann ggf. die IP-Adresse auf die statische Adresse zurück. Ein virtueller Windows-Computer kann seine statische IP-Adresse wiederbeschaffen.

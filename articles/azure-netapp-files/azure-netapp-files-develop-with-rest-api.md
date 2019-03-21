@@ -11,15 +11,15 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: b-juche
-ms.openlocfilehash: 169638fed9a513b8ed835076c049ee21979085fe
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
+ms.openlocfilehash: 56667b9a47411b2abae30ff159fa6bc555fec070
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55966671"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104623"
 ---
 # <a name="develop-for-azure-netapp-files-with-rest-api"></a>Entwickeln für Azure NetApp Files mit REST-API 
 
@@ -29,23 +29,23 @@ Die REST-API für den Azure NetApp Files-Dienst definiert HTTP-Vorgänge für Re
 
 1. [Installieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), wenn Sie dies noch nicht getan haben.
 2. Erstellen Sie einen Dienstprinzipal in Ihrem Azure Active Directory (Azure AD):
-    1. Überprüfen Sie, ob Sie über [ausreichende Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) verfügen.
+   1. Überprüfen Sie, ob Sie über [ausreichende Berechtigungen](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions) verfügen.
 
-    1. Geben Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl ein:  
+   1. Geben Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl ein:  
 
-            az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
 
-    Die Befehlsausgabe ähnelt dem folgenden Beispiel:  
+      Die Befehlsausgabe ähnelt dem folgenden Beispiel:  
 
-            { 
-                "appId": "appIDgoeshere", 
-                "displayName": "APPNAME", 
-                "name": "http://APPNAME", 
-                "password": "supersecretpassword", 
-                "tenant": "tenantIDgoeshere" 
-            } 
+           { 
+               "appId": "appIDgoeshere", 
+               "displayName": "APPNAME", 
+               "name": "http://APPNAME", 
+               "password": "supersecretpassword", 
+               "tenant": "tenantIDgoeshere" 
+           } 
 
-    Bewahren Sie die Befehlsausgabe auf.  Sie benötigen die Werte für `appId`, `password` und `tenant`. 
+      Bewahren Sie die Befehlsausgabe auf.  Sie benötigen die Werte für `appId`, `password` und `tenant`. 
 
 3. Fordern Sie ein OAuth-Zugriffstoken an:
 
