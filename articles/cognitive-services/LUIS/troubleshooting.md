@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/15/2019
 ms.author: diberry
-ms.openlocfilehash: 71fb289f03467147acb2ef254ab87a2c753bc75c
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: b9304e151bbce691b752f12aeec8a5376e517a8d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56416546"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120770"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -102,10 +102,12 @@ Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich 
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Gibt es einen PowerShell-Befehl zum Abrufen des Endpunktkontingents?
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Sie können einen PowerShell-Befehl verwenden, um das Endpunktkontingent anzuzeigen:
 
 ```powershell
-Get-AzureRmCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
+Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Name <your-resource-name>
 ``` 
 
 ### <a name="my-luis-app-was-working-yesterday-but-today-im-getting-403-errors-i-didnt-change-the-app-how-do-i-fix-it"></a>Bisher hat meine LUIS-App problemlos funktioniert. Nun werden jedoch 403-Fehlermeldungen angezeigt. Ich habe die App nicht geändert. Wie behebe ich das Problem?
@@ -145,7 +147,7 @@ Informationen hierzu finden Sie im Tutorial [Batchtests](luis-tutorial-batch-tes
 
 ### <a name="when-an-app-is-exported-then-reimported-into-a-new-app-with-a-new-app-id-the-luis-prediction-scores-are-different-why-does-this-happen"></a>Wenn eine App exportiert und anschließend in eine neue App (mit einer neuen App-ID) reimportiert wird, unterscheiden sich die LUIS-Vorhersagebewertungen. Was ist dafür die Ursache?
 
-Informationen hierzu finden Sie unter [Vorhersageunterschiede zwischen Kopien derselben App](luis-concept-prediction-score.md#differences-with-predictions).
+Informationen hierzu finden Sie unter [Vorhersageunterschiede zwischen Kopien derselben App](luis-concept-prediction-score.md#review-intents-with-similar-scores).
 
 ### <a name="some-utterances-go-to-the-wrong-intent-after-i-made-changes-to-my-app-the-issue-seems-to-disappear-at-random-how-do-i-fix-it"></a>Einige Äußerungen gehen in die falsche Richtung, nachdem Änderungen an meiner App vorgenommen wurden. Das Problem scheint willkürlich zu verschwinden. Wie behebe ich das Problem? 
 

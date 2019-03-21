@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: aa4d42a53e6fb8ea236a9d544102aab3dff19013
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8066a759cf80be6e9ca232bcd3693a5fa4d2f2f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129232"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084809"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Anleitung für die Leistungsoptimierung für Storm in HDInsight und Azure Data Lake Storage Gen1
 
@@ -82,7 +82,7 @@ Sie können die folgenden Einstellungen ändern, um den Spout zu optimieren.
 
 - **Max. ausstehende Spouts: topology.max.spout.pending**: Mit dieser Einstellung wird die Anzahl von Tupeln bestimmt, die pro Spout-Thread jeweils aktiv sein können (noch nicht auf allen Knoten der Topologie bestätigt).
 
- Eine hilfreiche Berechnung ist die Schätzung, wie groß die einzelnen Tupel sind. Ermitteln Sie anschließend, über wie viel Arbeitsspeicher ein Spout-Thread verfügt. Wenn Sie den gesamten Arbeitsspeicher, der einem Thread zugeordnet ist, durch diesen Wert teilen, sollten Sie die Obergrenze für den Parameter zur Bestimmung der maximalen Anzahl von ausstehenden Spouts erhalten.
+  Eine hilfreiche Berechnung ist die Schätzung, wie groß die einzelnen Tupel sind. Ermitteln Sie anschließend, über wie viel Arbeitsspeicher ein Spout-Thread verfügt. Wenn Sie den gesamten Arbeitsspeicher, der einem Thread zugeordnet ist, durch diesen Wert teilen, sollten Sie die Obergrenze für den Parameter zur Bestimmung der maximalen Anzahl von ausstehenden Spouts erhalten.
 
 ## <a name="tune-the-bolt"></a>Optimieren des Bolts
 Legen Sie beim Schreiben in Data Lake Storage Gen1 eine Größensynchronisierungsrichtlinie (Puffer auf Clientseite) auf 4 MB fest. Anschließend wird nur dann die Leerung oder ein hsync()-Vorgang durchgeführt, wenn die Puffergröße auf diesen Wert festgelegt ist. Der Data Lake Storage Gen1-Treiber auf der Worker-VM führt diese Pufferung automatisch durch, sofern Sie nicht explizit einen hsync()-Vorgang durchführen.
@@ -98,7 +98,7 @@ In Storm hält ein Spout ein Tupel vor, bis es vom Bolt explizit bestätigt wird
 Für Data Lake Storage Gen1 erzielen Sie die beste Leistung, wenn für den Bolt eine Tupeldatenmenge von 4 MB gepuffert wird. Führen Sie den Schreibvorgang auf das Data Lake Storage Gen1-Back-End dann als einen 4-MB-Vorgang durch. Nachdem die Daten erfolgreich in den Speicher geschrieben wurden (durch Aufruf von „hflush()“), kann der Bolt die Daten gegenüber dem Spout bestätigen. Dies ist die Vorgehensweise des hier angegebenen Beispiel-Bolts. Es ist auch akzeptabel, eine größere Anzahl von Tupeln vorzuhalten, bevor ein hflush()-Aufruf durchgeführt wird und die Tupel bestätigt werden. Hierdurch wird aber die Anzahl von In-Flight-Tupeln erhöht, die vom Spout vorgehalten werden müssen, sodass sich die Menge des erforderlichen Arbeitsspeichers pro JVM erhöht.
 
 > [!NOTE]
-Anwendungen verfügen ggf. über die Anforderung, die Bestätigung von Tupeln aus anderen nicht leistungsbezogenen Gründen häufiger durchzuführen (bei Datengrößen von weniger als 4 MB). Dies kann sich aber auf den E/A-Durchsatz des Speicher-Back-Ends auswirken. Wägen Sie diesen Nachteil sorgfältig gegenüber der E/A-Leistung des Bolts ab.
+> Anwendungen verfügen ggf. über die Anforderung, die Bestätigung von Tupeln aus anderen nicht leistungsbezogenen Gründen häufiger durchzuführen (bei Datengrößen von weniger als 4 MB). Dies kann sich aber auf den E/A-Durchsatz des Speicher-Back-Ends auswirken. Wägen Sie diesen Nachteil sorgfältig gegenüber der E/A-Leistung des Bolts ab.
 
 Falls die Eingangsrate der Tupel nicht sonderlich hoch ist und es daher lange dauert, bis der 4-MB-Puffer gefüllt ist, können Sie dies ggf. wie folgt lösen:
 * Reduzieren Sie die Anzahl von Bolts, damit weniger Puffer gefüllt werden müssen.

@@ -15,12 +15,12 @@ ms.date: 02/11/2019
 ms.author: mabrigg
 ms.reviewer: justini
 ms.lastreviewed: 02/11/2019
-ms.openlocfilehash: 0c3f52c78bbfd3094324b74f3b66610fcebfa2f4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 9eca22f5a594bf3d61b1d68882c4853f4bfc499d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100750"
 ---
 # <a name="apply-updates-in-azure-stack"></a>Anwenden von Updates in Azure Stack
 
@@ -30,7 +30,7 @@ Sie können im Verwaltungsportal über die Kachel **Aktualisieren** Microsoft- o
 
 Wenn Sie eine integrierte Systemversion 1807 oder höher verwenden, müssen Sie das Updatepaket herunterladen, die Paketdateien in Azure Stack importieren und das Update dann installieren. Anweisungen hierzu finden Sie unter [Aktualisieren von Azure Stack durch Herunterladen des Pakets](#update-azure-stack-by-downloading-the-package).
 
-Diese Upgradeanweisungen funktionieren nur mit integrierten Azure Stack-Systemen. Wenn Sie das Azure Stack-Entwicklungssystem verwenden, müssen Sie das Installationspaket für die aktuelle Version herunterladen. Anleitungen finden Sie unter [Installieren des Azure Stack Development Kits](.\asdk\asdk-install.md).
+Diese Upgradeanweisungen funktionieren nur mit integrierten Azure Stack-Systemen. Wenn Sie das Azure Stack-Entwicklungssystem verwenden, müssen Sie das Installationspaket für die aktuelle Version herunterladen. Anleitungen finden Sie unter [Installieren des Azure Stack Development Kits](./asdk/asdk-install.md).
 
 ## <a name="update-azure-stack"></a>Aktualisieren von Azure Stack
 

@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.custom: hdinsightactive, seodec18
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 4f6f6042eaacc809b9d413ef01883987bd558507
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 4dc50de7a97055e336627e34f747a17fcedc7e58
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53651604"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58091544"
 ---
 # <a name="troubleshoot-apache-hbase-by-using-azure-hdinsight"></a>Problembehandlung bei Apache HBase mit Azure HDInsight
 
@@ -367,7 +367,7 @@ Die folgenden Vorgänge laufen im Hintergrund ab:
            2017-03-21 13:22:40,285 - File['/var/run/hbase/hbase-hbase-regionserver.pid'] {'action': ['delete']}
            2017-03-21 13:22:40,285 - Deleting File['/var/run/hbase/hbase-hbase-regionserver.pid']
    ```
-Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordnet ist, möglicherweise nicht freigegeben, obwohl der Regionsserverprozess beendet wird. Dieser Umstand kann beim Starten des Servers zu einer AddressBindException führen, wie in den folgenden Protokollen ersichtlich ist. Dies können Sie in „region-server.log“ im Verzeichnis „/var/log/hbase“ der Workerknoten überprüfen, auf denen beim Starten des Regionsservers ein Fehler auftritt. 
+   Aufgrund dieses abrupten Herunterfahrens wird der Port, der dem Prozess zugeordnet ist, möglicherweise nicht freigegeben, obwohl der Regionsserverprozess beendet wird. Dieser Umstand kann beim Starten des Servers zu einer AddressBindException führen, wie in den folgenden Protokollen ersichtlich ist. Dies können Sie in „region-server.log“ im Verzeichnis „/var/log/hbase“ der Workerknoten überprüfen, auf denen beim Starten des Regionsservers ein Fehler auftritt. 
 
    ```apache
 

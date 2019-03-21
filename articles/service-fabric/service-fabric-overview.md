@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: a48d14f20d885849a233c592db8d9cf587342755
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 8f2a3536b7d1b02f124b3116c96ce442383a6b3b
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870062"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58294432"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Übersicht über Azure Service Fabric
 Azure Service Fabric ist eine Plattform für verteilte Systeme, die das Packen, Bereitstellen und Verwalten skalierbarer und zuverlässiger Microservices und Container vereinfacht. Service Fabric bietet außerdem einfache Lösungen für die komplexen Herausforderungen bei der Entwicklung und Verwaltung von nativer Cloudanwendungen. Entwickler und Administratoren können komplexe Infrastrukturprobleme vermeiden und sich auf das Implementieren geschäftskritischer, anspruchsvoller Workloads konzentrieren, die skalierbar, zuverlässig und einfach zu verwalten sind. Service Fabric ist eine Plattform der nächsten Generation zum Erstellen und Verwalten leistungsstarker Tier-1-Anwendungen mit Cloudskalierung, die in Container ausgeführt werden.
@@ -49,7 +49,7 @@ Service Fabric kann überall ausgeführt werden. Sie können Cluster für Servic
 
 ![Service Fabric-Plattform][Image1]
 
-Für die Windows-Entwicklung ist das Service Fabric .NET SDK in Visual Studio und PowerShell integriert. Siehe [Vorbereiten Ihrer Entwicklungsumgebung unter Windows](service-fabric-get-started.md). Für die Linux-Entwicklung ist das Service Fabric Java SDK in Eclipse integriert, und Yeoman wird zum Generieren von Vorlagen für Java, .NET Core und Containeranwendungen verwendet. Siehe [Vorbereiten Ihrer Entwicklungsumgebung unter Linux](service-fabric-get-started.md).
+Für die Windows-Entwicklung ist das Service Fabric .NET SDK in Visual Studio und PowerShell integriert. Siehe [Vorbereiten Ihrer Entwicklungsumgebung unter Windows](service-fabric-get-started.md). Für die Linux-Entwicklung ist das Service Fabric Java SDK in Eclipse integriert, und Yeoman wird zum Generieren von Vorlagen für Java, .NET Core und Containeranwendungen verwendet. Siehe [Vorbereiten Ihrer Entwicklungsumgebung unter Linux](service-fabric-get-started-linux.md).
 
 Weitere Informationen zum Erstellen von Clustern finden Sie unter [Erstellen von eigenständigen Service Fabric-Clustern unter Windows Server oder Linux](service-fabric-deploy-anywhere.md). Informationen zum Erstellen von Azure-Clustern finden Sie unter [Erstellen eines Service Fabric-Clusters in Azure über das Azure-Portal](service-fabric-cluster-creation-via-portal.md).
 

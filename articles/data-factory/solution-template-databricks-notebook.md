@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 3d7fd9b3e7ab8e5f193fd3b34a804b9ed0780d66
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 54b440ee76fe36a83284b8ce769bb31012781a35
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105687"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295758"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>Transformieren von Daten mithilfe von Databricks in Azure Data Factory
 
@@ -39,7 +39,7 @@ Um diese Vorlage einfach zu halten, wird damit kein geplanter Trigger erstellt. 
 
 2.  Vergewissern Sie sich, dass Sie einen **Azure Databricks-Arbeitsbereich** haben, oder erstellen Sie einen neuen.
 
-1.  **Importieren Sie das Notebook für ETL**. Importieren Sie das folgende Transformations-Notebook in den Databricks-Arbeitsbereich. (Es muss sich nicht am gleichen Speicherort wie unten befinden, merken Sie sich aber den verwendeten Pfad für später.) Importieren Sie das Notebook aus der folgenden URL, indem Sie diese URL in das URL-Feld eingeben: `https://Data Factorylabstaging1.blob.core.windows.net/share/Transformations.html`. Wählen Sie **Importieren** aus.
+1.  **Importieren Sie das Notebook für ETL**. Importieren Sie das folgende Transformations-Notebook in den Databricks-Arbeitsbereich. (Es muss sich nicht am gleichen Speicherort wie unten befinden, merken Sie sich aber den verwendeten Pfad für später.) Importieren Sie das Notebook aus der folgenden URL, indem Sie diese URL in das URL-Feld eingeben: `https://DataFactorylabstaging1.blob.core.windows.net/share/Transformations.html`. Wählen Sie **Importieren** aus.
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 
@@ -54,9 +54,9 @@ Um diese Vorlage einfach zu halten, wird damit kein geplanter Trigger erstellt. 
 
     try:  
       dbutils.fs.mount(  
-        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
-        mount_point = "/mnt/Data Factorydata",  
-        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
+        source = "wasbs://sinkdata\@"+storageName+".blob.core.windows.net/",  
+        mount_point = "/mnt/Data Factorydata",  
+        extra_configs = {"fs.azure.account.key."+storageName+".blob.core.windows.net": accessKey})  
 
     except Exception as e:  
       # The error message has a long stack track. This code tries to print just the relevant line indicating what failed.

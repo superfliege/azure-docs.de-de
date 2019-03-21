@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d7943119ed29e03afb6b089a913d4ba2baddc166
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.openlocfilehash: 69ee0c0add2895b30a60db577cc11c83a0e00bb8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432570"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57854771"
 ---
 # <a name="create-a-new-iot-edge-module-offer-with-the-cloud-partner-portal"></a>Erstellen eines neuen IoT Edge-Modulangebots im Cloud-Partnerportal
 
@@ -34,7 +34,7 @@ In diesem Artikel wird beschrieben, wie Sie ein IoT Edge-Modulangebot für den A
 
 ## <a name="new-offer-form"></a>Formular „Neues Angebot“ 
 
-Melden Sie sich beim [Cloud-Partnerportal](http://cloudpartner.azure.com/) an, und wählen Sie dann auf der linken Menüleiste **+ Neues Angebot** aus. Wählen Sie im Menü „Neues Angebot“ die Option **IoT Edge-Module** aus, um das Formular **Neues Angebot** anzuzeigen und dann mit dem Definieren von Ressourcen für ein neues IoT Edge-Modulangebot zu beginnen. 
+Melden Sie sich beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) an, und wählen Sie dann auf der linken Menüleiste **+ Neues Angebot** aus. Wählen Sie im Menü „Neues Angebot“ die Option **IoT Edge-Module** aus, um das Formular **Neues Angebot** anzuzeigen und dann mit dem Definieren von Ressourcen für ein neues IoT Edge-Modulangebot zu beginnen. 
 
 ![Neues IoT Edge-Modulangebot: Auswahl auf der Benutzeroberfläche](./media/new-iot-edge-module-offer.png)
 

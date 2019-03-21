@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
-ms.openlocfilehash: fc6d68e862f6a2f3c95f5ca6d130e42c96649eb1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 929dc7a86d141446a2070b046c6febfda4a07f0f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874616"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092564"
 ---
 # <a name="use-a-list-entity-to-increase-entity-detection"></a>Erhöhen der Entitätserkennung mithilfe einer Listenentität 
 Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-concept-entity-types.md) zur Erhöhung der Entitätserkennung. Listenentitäten müssen nicht bezeichnet werden, da sie exakte Übereinstimmungen der Benennungen darstellen.  
@@ -23,9 +23,9 @@ Dieses Tutorial veranschaulicht die Verwendung einer [Listenentität](luis-conce
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-* Erstellen einer Listenentität 
-* Hinzufügen von normalisierten Werten und Synonymen
-* Überprüfen der verbesserten Entitätsidentifizierung
+> * Erstellen einer Listenentität 
+> * Hinzufügen von normalisierten Werten und Synonymen
+> * Überprüfen der verbesserten Entitätsidentifizierung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

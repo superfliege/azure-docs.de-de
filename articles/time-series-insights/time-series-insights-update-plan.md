@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/03/2018
 ms.custom: seodec18
-ms.openlocfilehash: 09fef060a58723624796fe6192fef2444251cc1c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 251e95744f57d9b5e42df9bdc3743f4880ff5381
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556083"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076995"
 ---
 # <a name="plan-your-azure-time-series-insights-preview-environment"></a>Planen Ihrer Azure Time Series Insights Preview-Umgebung
 
@@ -90,7 +90,7 @@ Time Series Insights ist ein Hochverfügbarkeitsdienst, der Redundanzen auf Azur
 Informationen zu integrierten Funktionen in Azure für Business Continuity & Disaster Recovery (BCDR) finden Sie unter [Azure-Geschäftskontinuität – Technische Anleitung](https://docs.microsoft.com/azure/resiliency/resiliency-technical-guidance). Architekturanleitungen zu Strategien für Azure-Anwendungen zur Erzielung von Hochverfügbarkeit und Notfallwiederherstellung finden Sie in dem Dokument zu [Notfallwiederherstellung und Hochverfügbarkeit für Azure-Anwendungen](https://docs.microsoft.com/azure/architecture/resiliency/index).
 
 > [!NOTE]
-
+> 
 >  Time Series Insights verfügt nicht über integrierte BCDR.
 > Standardmäßig verfügen Azure Storage, Azure IoT Hub und Event Hubs über integrierte Wiederherstellungsfunktionen.
 

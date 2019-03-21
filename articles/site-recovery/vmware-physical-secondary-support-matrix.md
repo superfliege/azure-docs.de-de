@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: article
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 6ebf1abe6f3b115a254201184f47e6aad2febb2a
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 2f70a180afcc8eda5d43356c3f4f96b25292c6d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208175"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088926"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Unterstützungsmatrix für die Notfallwiederherstellung von VMware-VMs und physischen Servern
 
@@ -57,15 +57,15 @@ Nur Linux-Computer mit dem folgenden Speicher können repliziert werden:
 
 **Konfiguration** | **Unterstützt**  
 --- | --- 
-Host – NIC-Teamvorgang | JA 
-Host – VLAN | JA 
-Host – IPv4 | JA 
+Host – NIC-Teamvorgang | Ja 
+Host – VLAN | Ja 
+Host – IPv4 | Ja 
 Host – IPv6 | Nein  
 Gast-VM – NIC-Teamvorgang | Nein 
-Gast-VM – IPv4 | JA
+Gast-VM – IPv4 | Ja
 Gast-VM – IPv6 | Nein 
-Gast-VM – Windows/Linux – Statische IP-Adresse | JA
-Gast-VM – Multi-NIC | JA
+Gast-VM – Windows/Linux – Statische IP-Adresse | Ja
+Gast-VM – Multi-NIC | Ja
 
 
 ## <a name="storage"></a>Storage
@@ -74,29 +74,29 @@ Gast-VM – Multi-NIC | JA
 
 **Speicher (Host)** | **Unterstützt** 
 --- | --- 
-NFS | JA 
+NFS | Ja 
 SMB 3.0 | – 
-SAN (ISCSI) | JA 
-Multipfad (MPIO) | JA 
+SAN (ISCSI) | Ja 
+Multipfad (MPIO) | Ja 
 
 ### <a name="guest-or-physical-server-storage"></a>Gast- oder physischer Serverspeicher
 
 **Konfiguration** | **Unterstützt** 
 --- | --- 
-VMDK | JA 
+VMDK | Ja 
 VHD/VHDX | – 
 Gen 2-VM | – 
-Freigegebener Clusterdatenträger | JA 
+Freigegebener Clusterdatenträger | Ja 
 Verschlüsselter Datenträger | Nein  
-UEFI| JA 
+UEFI| Ja 
 NFS | Nein  
 SMB 3.0 | Nein  
-RDM | JA 
-Datenträger > 1 TB | JA 
-Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | JA 
+RDM | Ja 
+Datenträger > 1 TB | Ja 
+Volume mit Stripesetdatenträgern > 1 TB<br/><br/> LVM | Ja 
 Speicherplätze | Nein  
-Datenträger laufendem Systembetrieb hinzufügen/entfernen | JA 
-Ausschließen von Datenträgern | JA 
+Datenträger laufendem Systembetrieb hinzufügen/entfernen | Ja 
+Ausschließen von Datenträgern | Ja 
 Multipfad (MPIO) | – 
 
 ## <a name="vaults"></a>Tresore
@@ -110,10 +110,10 @@ Verschieben von Speicher, Netzwerk, Azure-VMs zwischen Ressourcengruppen (innerh
 
 Der Mobilitätsdienst koordiniert die Replikation zwischen lokalen VMware-Servern oder physischen Servern und dem sekundärem Standort. Stellen Sie beim Einrichten der Replikation sicher, dass die neueste Version des Mobilitätsdiensts und von anderen Komponenten installiert ist.
 
-**Aktualisieren** | **Details** 
---- | --- 
-Scout-Updates | [Informationen und Download](vmware-physical-secondary-disaster-recovery.md#updates) für die neuesten Scout-Updates | Scout-Updates sind kumulativ.
-Komponentenupdates | Scout-Updates umfassen Updates für alle Komponenten, einschließlich RX-Server, Konfigurationsserver, Prozess- und Masterzielserver, vContinuum-Server und Quellserver, die Sie schützen möchten.<br/><br/> [Weitere Informationen](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)
+| **Aktualisieren** | **Details** |
+| --- | --- |
+|Scout-Updates | Scout-Updates sind kumulativ. <br/><br/> [Informationen und Download](vmware-physical-secondary-disaster-recovery.md#updates) für die neuesten Scout-Updates |
+|Komponentenupdates | Scout-Updates umfassen Updates für alle Komponenten, einschließlich RX-Server, Konfigurationsserver, Prozess- und Masterzielserver, vContinuum-Server und Quellserver, die Sie schützen möchten.<br/><br/> [Weitere Informationen](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates)|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

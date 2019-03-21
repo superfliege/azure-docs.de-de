@@ -17,12 +17,12 @@ ms.date: 06/27/2018
 ms.author: markvi
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d52d89d577d0bf50168104e9dae1ddc2a5278ff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bc2f2f90029918955f00771acaac10b3cf5f4416
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201566"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56868271"
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection-Playbook
 
@@ -148,7 +148,7 @@ Weitere Informationen finden Sie unter [Gewusst wie: Konfigurieren von Richtlini
 
 **Führen Sie die folgenden Schritte aus, um eine Anmelderisiko-Sicherheitsrichtlinie zu testen:**
 
-1. Melden Sie sich unter [https://portal.azure.com ](https://portal.azure.com) mit den Anmeldeinformationen für „Globaler Administrator“ für Ihren Mandanten an.
+1. Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) mit den Anmeldeinformationen für „Globaler Administrator“ für Ihren Mandanten an.
 
 2. Navigieren Sie zu **Azure AD Identity Protection**.
 

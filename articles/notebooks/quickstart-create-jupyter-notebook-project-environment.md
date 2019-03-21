@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: e049f591-27a7-440f-a1a3-c5bef25e8a28
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: 9e5f4d6f2086048e428f313bc49cc6f599ee1bec
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 35b5f1e29ae125dcac79c278578e900a73ffc7be
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53085330"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57771383"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment"></a>Schnellstart: Erstellen eines Projekts mit benutzerdefinierter Umgebung
 
@@ -59,7 +59,7 @@ Ein Projekt in Azure Notebooks ist eine Sammlung von Dateien, wie etwa Notebooks
 
 1. Der Befehl **+ Hinzufügen** erstellt einen Schritt, der durch einen Vorgang und eine Zieldatei definiert ist, die Sie aus den Dateien in Ihrem Projekt auswählen. Die folgenden Operationen werden unterstützt:
 
-    | Vorgang | Beschreibung |
+    | Vorgang | BESCHREIBUNG |
     | --- | --- |
     | Requirements.txt | Die Abhängigkeiten von Python-Projekten sind in einer Datei „requirements.txt“ definiert. Wählen Sie mit dieser Option die entsprechende Datei aus der Dateiliste des Projekts aus, und wählen Sie in dem zusätzlichen Dropdownfeld, das angezeigt wird, auch die Python-Version aus. Wählen Sie ggf. **Abbrechen** aus, um zum Projekt zurückzukehren, laden Sie die Datei hoch oder erstellen Sie sie, und kehren Sie dann zu **Projekteinstellungen** > **Umgebung** zurück, und erstellen Sie den neuen Schritt. Wenn dieser Schritt implementiert ist, bewirkt das Ausführen eines Notebooks im Projekt die automatische Ausführung von `pip install -r <file>` |
     | Shellskript | Verwenden Sie diese Option, um ein Bash-Shellskript festzulegen (normalerweise eine Datei mit der Erweiterung *.sh*), die alle Befehle enthält, die Sie in der Umgebung initialisieren möchten. |

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.workload: Supportability
 ms.date: 3/27/2018
-ms.openlocfilehash: 898f2eca0b6cc115f56bcae195c58c6eef190694
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69b142cd46c006e562218c949fb450864589a661
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884867"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57838068"
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>Konfigurieren von Integritätsbenachrichtigungen für vorhandene Problemverwaltungssysteme mit einem Webhook
 
@@ -59,7 +59,7 @@ Vom niedrigsten Schweregrad zum höchsten Schweregrad kann die Eigenschaft `leve
 
 ## <a name="parsing-the-impacted-services-to-understand-the-full-scope-of-the-incident"></a>Analysieren der betroffenen Dienste, um das komplette Ausmaß des Vorfalls zu verstehen
 Service Health-Warnungen informieren Sie über Probleme über mehrere Regionen und Dienste hinweg. Um die vollständigen Details zu erhalten, müssen Sie den Wert von `impactedServices` analysieren.
-Der enthaltene Inhalt ist eine [JSON-Zeichenfolge mit Escapezeichen](http://json.org/); wenn ohne Escapezeichen, dann enthält es ein anderes JSON-Objekt, das normal analysiert werden kann.
+Der enthaltene Inhalt ist eine [JSON-Zeichenfolge mit Escapezeichen](https://json.org/); wenn ohne Escapezeichen, dann enthält es ein anderes JSON-Objekt, das normal analysiert werden kann.
 
 ```json
 {"data.context.activityLog.properties.impactedServices": "[{\"ImpactedRegions\":[{\"RegionName\":\"Australia East\"},{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"Alerts & Metrics\"},{\"ImpactedRegions\":[{\"RegionName\":\"Australia Southeast\"}],\"ServiceName\":\"App Service\"}]"}

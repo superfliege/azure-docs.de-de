@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 06/15/2018
+ms.date: 02/26/2019
 ms.author: apimpm
-ms.openlocfilehash: 4aa4c69857bfd1ab99945cb0f5f748e60cff9978
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
+ms.openlocfilehash: e50c5d942bdbafc60bf0e2b8c74b008ac12b3bc6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417329"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084979"
 ---
-# <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API 
+# <a name="transform-and-protect-your-api"></a>Transformieren und Schützen Ihrer API
 
 Das Tutorial zeigt, wie Sie Ihre API so transformieren, dass keine Informationen zu einem privaten Back-End offengelegt werden. Beispielsweise möchten Sie vielleicht die Informationen zum Technologiestapel ausblenden, der auf dem Back-End ausgeführt wird. Sie können auch die ursprünglich im Textkörper der HTTP-Antwort der API angezeigten URLs ausblenden und stattdessen eine Umleitung an das APIM-Gateway durchführen.
 
@@ -30,19 +30,20 @@ In diesem Tutorial wird außerdem veranschaulicht, wie einfach Sie Ihre Back-End
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Transformieren einer API zum Entfernen von Antwortheadern
-> * Ersetzen der ursprünglichen URLs im Textkörper der API-Antwort durch APIM-Gateway-URLs
-> * Schützen einer API durch das Hinzufügen einer Richtlinie für ein Aufruflimit (Drosselung)
-> * Testen der Transformationen
+>
+> -   Transformieren einer API zum Entfernen von Antwortheadern
+> -   Ersetzen der ursprünglichen URLs im Textkörper der API-Antwort durch APIM-Gateway-URLs
+> -   Schützen einer API durch das Hinzufügen einer Richtlinie für ein Aufruflimit (Drosselung)
+> -   Testen der Transformationen
 
 ![Richtlinien](./media/transform-api/api-management-management-console.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-+ Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
-+ Machen Sie sich mit dem [Konzept von Richtlinien in Azure API Management](api-management-howto-policies.md) vertraut.
-+ Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
-+ Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
+-   Machen Sie sich mit der [Azure API Management-Terminologie](api-management-terminology.md) vertraut.
+-   Machen Sie sich mit dem [Konzept von Richtlinien in Azure API Management](api-management-howto-policies.md) vertraut.
+-   Bearbeiten Sie den folgenden Schnellstart: [Erstellen einer neuen Azure API Management-Dienstinstanz](get-started-create-service-instance.md)
+-   Absolvieren Sie außerdem das folgende Tutorial: [Importieren und Veröffentlichen Ihrer ersten API](import-and-publish.md).
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
 
@@ -50,8 +51,8 @@ In diesem Tutorial lernen Sie Folgendes:
 
 In diesem Abschnitt wird gezeigt, wie Sie die HTTP-Header ausblenden, die Sie nicht für Ihre Benutzer anzeigen möchten. In diesem Beispiel werden die folgenden Header in der HTTP-Antwort gelöscht:
 
-* **X-Powered-By**
-* **X-AspNet-Version**
+-   **X-Powered-By**
+-   **X-AspNet-Version**
 
 ### <a name="test-the-original-response"></a>Testen der ursprünglichen Antwort
 
@@ -78,13 +79,14 @@ Die ursprüngliche Antwort sieht in etwa wie folgt aus:
 5. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
 6. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** zweimal auf **+ HTTP-Header festlegen** (um zwei Richtlinienausschnitte einzufügen).
 
-    ![Richtlinien](./media/transform-api/transform-api.png)
+   ![Richtlinien](./media/transform-api/transform-api.png)
+
 7. Ändern Sie Ihren **<outbound>**-Code, sodass er folgendermaßen aussieht:
 
-        <set-header name="X-Powered-By" exists-action="delete" />
-        <set-header name="X-AspNet-Version" exists-action="delete" />
+       <set-header name="X-Powered-By" exists-action="delete" />
+       <set-header name="X-AspNet-Version" exists-action="delete" />
 
-    ![Richtlinien](./media/transform-api/set-policy.png)
+   ![Richtlinien](./media/transform-api/set-policy.png)
 
 8. Klicken Sie auf die Schaltfläche **Save** .
 
@@ -99,7 +101,7 @@ So zeigen Sie die ursprüngliche Antwort an
 1. Wählen Sie **Demo Conference API** aus.
 2. Klicken Sie oben auf der Seite auf die Registerkarte **Testen**.
 3. Wählen Sie den Vorgang **GetSpeakers** aus.
-4. Klicken Sie unten auf der Seite auf die Schaltfläche **Senden**. 
+4. Klicken Sie unten auf der Seite auf die Schaltfläche **Senden**.
 
     Wie Sie sehen können, sieht die ursprüngliche Antwort so aus:
 
@@ -107,13 +109,13 @@ So zeigen Sie die ursprüngliche Antwort an
 
 ### <a name="set-the-transformation-policy"></a>Festlegen der Transformationsrichtlinie
 
-1. Wählen Sie **Demo Conference API** aus.
-2. Wählen Sie **Alle Vorgänge** aus.
-3. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-4. Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>**.
-5. Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
-6. Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
-7. Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
+1.  Wählen Sie **Demo Conference API** aus.
+2.  Wählen Sie **Alle Vorgänge** aus.
+3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+4.  Klicken Sie im Abschnitt **Ausgehende Verarbeitung** auf das Symbol **</>**.
+5.  Positionieren Sie den Cursor im **&lt;outbound&gt;**-Element.
+6.  Klicken Sie im rechten Fenster unter **Transformationsrichtlinien** auf **+ Zeichenfolge im Text suchen und ersetzen**.
+7.  Ändern Sie Ihren **find-and-replace**-Code (im Element **\<outbound\>**) ab, um die URL durch eine URL zu Ihrem APIM-Gateway zu ersetzen. Beispiel: 
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -123,18 +125,18 @@ In diesem Abschnitt wird gezeigt, wie Sie Ihre Back-End-API schützen, indem Sie
 
 ![Festlegen der Richtlinie für eingehenden Datenverkehr](./media/transform-api/04-ProtectYourAPI-01-SetPolicy-Inbound.png)
 
-1. Wählen Sie **Demo Conference API** aus.
-2. Wählen Sie **Alle Vorgänge** aus.
-3. Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
-4. Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
-5. Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
-6. Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
-7. Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
+1.  Wählen Sie **Demo Conference API** aus.
+2.  Wählen Sie **Alle Vorgänge** aus.
+3.  Klicken Sie im oberen Seitenbereich auf die Registerkarte **Entwurf**.
+4.  Klicken Sie im Abschnitt **Eingehende Verarbeitung** auf das Symbol **</>**.
+5.  Positionieren Sie den Cursor im **&lt;inbound&gt;**-Element.
+6.  Klicken Sie im rechten Fenster unter **Richtlinien für die Zugriffsbeschränkung** auf **+ Aufrufrate pro Schlüssel einschränken**.
+7.  Modifizieren Sie Ihren **rate-limit-by-key**-Code (im **\<inbound\>**-Element) folgendermaßen:
 
         <rate-limit-by-key calls="3" renewal-period="15" counter-key="@(context.Subscription.Id)" />
 
 ## <a name="test-the-transformations"></a>Testen der Transformationen
-        
+
 Zu diesem Zeitpunkt sieht Ihre Richtlinie in etwa wie folgt aus, wenn Sie den Code im Code-Editor betrachten:
 
     <policies>
@@ -148,6 +150,7 @@ Zu diesem Zeitpunkt sieht Ihre Richtlinie in etwa wie folgt aus, wenn Sie den Co
         <outbound>
             <set-header name="X-Powered-By" exists-action="delete" />
             <set-header name="X-AspNet-Version" exists-action="delete" />
+            <find-and-replace from="://conferenceapi.azurewebsites.net:443" to="://apiphany.azure-api.net/conference"/>
             <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
             <base />
         </outbound>
@@ -202,10 +205,11 @@ Im verbleibenden Teil dieses Abschnitts werden die Richtlinientransformationen g
 In diesem Tutorial haben Sie Folgendes gelernt:
 
 > [!div class="checklist"]
-> * Transformieren einer API zum Entfernen von Antwortheadern
-> * Ersetzen der ursprünglichen URLs im Textkörper der API-Antwort durch APIM-Gateway-URLs
-> * Schützen einer API durch das Hinzufügen einer Richtlinie für ein Aufruflimit (Drosselung)
-> * Testen der Transformationen
+>
+> -   Transformieren einer API zum Entfernen von Antwortheadern
+> -   Ersetzen der ursprünglichen URLs im Textkörper der API-Antwort durch APIM-Gateway-URLs
+> -   Schützen einer API durch das Hinzufügen einer Richtlinie für ein Aufruflimit (Drosselung)
+> -   Testen der Transformationen
 
 Fahren Sie mit dem nächsten Tutorial fort:
 

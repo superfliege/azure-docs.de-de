@@ -10,12 +10,12 @@ ms.subservice: url-preview
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
-ms.openlocfilehash: a871048c9d75fc6ea958cfacaa3a47b11765fb0d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884442"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104708"
 ---
 # <a name="project-url-preview-v7-reference"></a>Referenz zu Project URL Preview v7
 
@@ -56,7 +56,7 @@ Informationen zur zulässigen Verwendung und Anzeige der Ergebnisse finden Sie u
 > Einige Anforderungsheader, die für andere Such-APIs eine Bedeutung besitzen, haben keinen Einfluss auf die URL-Vorschau.
 > - Pragma: Der Aufrufer hat keine Kontrolle darüber, ob die URL-Vorschau den Cache verwendet.
 > - User-Agent: Zurzeit stellt die URL Preview-API keine unterschiedlichen Antworten für Aufrufe bereit, die von PCs, Laptops oder mobilen Geräten ausgehen.
-
+> 
 > Darüber hinaus sind einige Parameter für die URL-Vorschau-API zurzeit nicht von Bedeutung, werden aber ggf. für verbesserte Globalisierung in der Zukunft verwendet.
 
 ## <a name="headers"></a>Header
@@ -77,7 +77,7 @@ Die Anforderung kann die folgenden Abfrageparameter enthalten. Die erforderliche
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|Der Markt, aus dem die Ergebnisse stammen. <br /><br />Eine Liste der möglichen Marktwerte finden Sie unter „Marktcodes“.<br /><br /> **HINWEIS:** Die URL-Vorschau-API unterstützt zurzeit nur die geografische Region „USA“ und die Sprache „Englisch“.<br /><br />|Zeichenfolge|Ja|
 |<a name="query" />q|Die URL, für die eine Vorschau angezeigt werden soll.|Zeichenfolge|Ja|
-|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](http://json-ld.org/).|Zeichenfolge|Nein |
+|<a name="responseformat" />responseFormat|Der Medientyp, der für die Antwort verwendet werden soll. Die folgenden Werte (ohne Beachtung von Groß-/Kleinschreibung) sind möglich.<br /><ul><li>JSON</li><li>JSONLD</li></ul><br /> Der Standardwert ist JSON. Weitere Informationen zu den JSON-Objekten, die die Antwort enthält, finden Sie unter [Antwortobjekte](#response-objects).<br /><br />Wenn Sie JsonLd angeben, enthält der Antworttext die JSON-LD-Objekte, die die Suchergebnisse enthalten. Informationen zu JSON-LD finden Sie unter [JSON-LD](https://json-ld.org/).|Zeichenfolge|Nein |
 |<a name="safesearch"/>safeSearch|Ungültige, nicht jugendfreie Inhalte oder illegale Inhalte. Diese werden mit dem Fehlercode 400 blockiert, und das Flag *isFamilyFriendly* wird nicht zurückgegeben. <p>Für legale nicht jugendfreie Inhalte wird das Verhalten unten beschrieben. Es wird der Statuscode 200 zurückgegeben, und das Flag *IsFamilyFriendly* wird auf „false“ festgelegt.<ul><li>safeSearch=strict: Titel, Beschreibung, URL und Bild werden nicht zurückgegeben.</li><li>safeSearch=moderate: Titel, URL und Beschreibung werden abgerufen, das beschreibende Bild aber nicht.</li><li>safeSearch=off: Alle Antwortobjekte/-elemente (Titel, URL, Beschreibung und Bild) werden abgerufen.</li></ul> |Zeichenfolge|Nicht erforderlich. </br> Standardmäßig wird safeSearch=strict verwendet.|
 
 ## <a name="response-objects"></a>Antwortobjekte

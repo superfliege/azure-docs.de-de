@@ -10,12 +10,12 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
-ms.openlocfilehash: 2aa3c0cd9112f2de9ccda818e74b0b2c377133bf
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 486cf2e3bcf851f23011bb2fb8d91691d6190698
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869363"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120838"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Abrufen beliebter Videos mit der Bing-Videosuche-API 
 
@@ -124,4 +124,4 @@ Das folgende Beispiel zeigt eine API-Antwort, die Trendvideos enthält, die nach
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-[Gewinnen von Erkenntnissen aus Videos](video-insights.md)
+> [Gewinnen von Erkenntnissen aus Videos](video-insights.md)

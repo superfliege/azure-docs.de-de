@@ -7,19 +7,19 @@ author: suchiagicha
 manager: timlt
 editor: ''
 ms.assetid: dbed72f4-dda5-4287-bd56-da492710cd96
-ms.service: Service-Fabric
+ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: d2f45b6f0db15773615710a4345e85ab09f7d559
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 8bfeebb882d1252e21c800f7b65120878bb3af93
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57834587"
 ---
 # <a name="configure-fabrictransport-settings-for-reliable-actors"></a>Konfigurieren von FabricTransport-Einstellungen für Reliable Actors
 
@@ -83,7 +83,7 @@ Wenn der Client nicht als Teil eines Diensts ausgeführt wird, können Sie die D
 
   ```xml
   <?xml version="1.0" encoding="utf-8"?>
-  <Settings xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Settings xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.microsoft.com/2011/01/fabric">
     <Section Name="TransportSettings">
       <Parameter Name="SecurityCredentialsType" Value="X509" />
       <Parameter Name="OperationTimeoutInSeconds" Value="300" />
@@ -99,41 +99,41 @@ Wenn der Client nicht als Teil eines Diensts ausgeführt wird, können Sie die D
   </Settings>
    ```
 
-  * Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mit sekundärem Zertifikat.
+* Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mit sekundärem Zertifikat.
   Sekundäre Zertifikatinformationen können durch Hinzufügen des Parameters „CertificateFindValuebySecondary“ hinzugefügt werden.
   Es folgt ein Beispiel für den Listener „TransportSettings“.
 
-    ```xml
-    <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-     Es folgt ein Beispiel für den Client „TransportSettings“.
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="4FEF3950642138446CC364A396E1E881DB76B48C,a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+   Es folgt ein Beispiel für den Client „TransportSettings“.
 
-    ```xml
-   <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
-    <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
-    <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
-    <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
-    * Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mithilfe des Antragstellernamens.
+  ```xml
+  <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindByThumbprint" />
+  <Parameter Name="CertificateFindValue" Value="4FEF3950642138446CC364A396E1E881DB76B48C" />
+  <Parameter Name="CertificateFindValuebySecondary" Value="a9449b018d0f6839a2c5d62b5b6c6ac822b6f667" />
+  <Parameter Name="CertificateRemoteThumbprints" Value="b3449b018d0f6839a2c5d62b5b6c6ac822b6f662,h9449b018d0f6839a2c5d62b5b6c6ac822b6f690" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```
+  * Konfigurieren von FabricTransport-Einstellungen zum Schützen des Actordiensts/Clients mithilfe des Antragstellernamens.
     Der Benutzer muss „findType“ als „findBySubjectName“ angeben sowie „CertificateIssuerThumbprints“ und „CertificateRemoteCommonNames“ hinzufügen.
-  Es folgt ein Beispiel für den Listener „TransportSettings“.
+    Es folgt ein Beispiel für den Listener „TransportSettings“.
 
-     ```xml
+    ```xml
     <Section Name="TransportSettings">
     <Parameter Name="SecurityCredentialsType" Value="X509" />
     <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
@@ -145,16 +145,16 @@ Wenn der Client nicht als Teil eines Diensts ausgeführt wird, können Sie die D
     <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
     </Section>
     ```
-  Es folgt ein Beispiel für den Client „TransportSettings“.
+    Es folgt ein Beispiel für den Client „TransportSettings“.
 
-    ```xml
-     <Section Name="TransportSettings">
-    <Parameter Name="SecurityCredentialsType" Value="X509" />
-    <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
-    <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
-    <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
-    <Parameter Name="CertificateStoreName" Value="My" />
-    <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
-    <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
-    </Section>
-     ```
+  ```xml
+   <Section Name="TransportSettings">
+  <Parameter Name="SecurityCredentialsType" Value="X509" />
+  <Parameter Name="CertificateFindType" Value="FindBySubjectName" />
+  <Parameter Name="CertificateFindValue" Value="CN = WinFabric-Test-SAN1-Bob" />
+  <Parameter Name="CertificateStoreLocation" Value="LocalMachine" />
+  <Parameter Name="CertificateStoreName" Value="My" />
+  <Parameter Name="CertificateRemoteCommonNames" Value="WinFabric-Test-SAN1-Alice" />
+  <Parameter Name="CertificateProtectionLevel" Value="EncryptAndSign" />
+  </Section>
+   ```

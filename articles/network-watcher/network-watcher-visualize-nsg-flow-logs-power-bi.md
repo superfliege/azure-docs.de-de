@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 6b3f3217f90c2c5a72ba9576b5e0cc89e6133cd8
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
+ms.openlocfilehash: 6df49f9cd308f4bb9b1fef6e5860872526ce8bb7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913300"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079025"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Visualisieren der Datenflussprotokolle von Netzwerksicherheitsgruppen mit Power BI
 
@@ -56,10 +56,10 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
 1. Laden Sie die folgende Power BI-Vorlage in der Power BI-Desktopanwendung herunter, und öffnen Sie sie: [Network Watcher PowerBI flow logs template](https://aka.ms/networkwatcherpowerbiflowlogstemplate) (Network Watcher – Vorlage für Power BI-Datenflussprotokolle).
 1. Geben Sie die erforderlichen Abfrageparameter ein.
-    1. **StorageAccountName**: Gibt den Namen des Speicherkontos mit den NSG-Datenflussprotokollen an, die geladen und visualisiert werden sollen.
-    1. **NumberOfLogFiles**: Gibt die Anzahl von Protokolldateien an, die heruntergeladen und in Power BI visualisiert werden sollen. Wenn beispielsweise der Wert 50 angegeben ist, sind dies die letzten 50 Protokolldateien. Wenn zwei NSGs aktiviert und für das Senden von NSG-Datenflussprotokollen an dieses Konto konfiguriert sind, können die letzten 25 Stunden des Protokollverlaufs angezeigt werden.
+   1. **StorageAccountName**: Gibt den Namen des Speicherkontos mit den NSG-Datenflussprotokollen an, die geladen und visualisiert werden sollen.
+   1. **NumberOfLogFiles**: Gibt die Anzahl von Protokolldateien an, die heruntergeladen und in Power BI visualisiert werden sollen. Wenn beispielsweise der Wert 50 angegeben ist, sind dies die letzten 50 Protokolldateien. Wenn zwei NSGs aktiviert und für das Senden von NSG-Datenflussprotokollen an dieses Konto konfiguriert sind, können die letzten 25 Stunden des Protokollverlaufs angezeigt werden.
 
-    ![Power BI-Hauptfenster][2]
+      ![Power BI-Hauptfenster][2]
 
 1. Geben Sie den Zugriffsschlüssel für Ihr Speicherkonto ein. Sie gelangen zu den gültigen Zugriffsschlüsseln, indem Sie im Azure-Portal zu Ihrem Speicherkonto navigieren und im Menü „Einstellungen“ die Option **Zugriffsschlüssel** wählen. Klicken Sie auf **Verbinden**, und wenden Sie anschließend die Änderungen an.
 
@@ -67,7 +67,7 @@ Außerdem muss der Power BI Desktop-Client auf Ihrem Computer installiert sein, 
 
     ![Zugriffsschlüssel 2][4]
 
-4.  Ihre Protokolle werden heruntergeladen und analysiert, und Sie können die vorab erstellten visuellen Elemente nutzen.
+4. Ihre Protokolle werden heruntergeladen und analysiert, und Sie können die vorab erstellten visuellen Elemente nutzen.
 
 ## <a name="understanding-the-visuals"></a>Grundlegendes zu den visuellen Elementen
 

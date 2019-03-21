@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 243b19d19fbce11d77f60bc2eccc4d1c58c85b80
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: cb984bcbe79b69c0614579d66a3b853cd38a7e12
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55892183"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099085"
 ---
 # <a name="contoso-migration-rearchitect-an-on-premises-app-to-an-azure-container-and-azure-sql-database"></a>Contoso-Migration: Umstrukturieren einer lokalen App zu einem Azure-Container und einer Azure SQL-Datenbank-Instanz
 
@@ -402,10 +402,10 @@ Die Administratoren von Contoso konvertieren die App mit Visual Studio und den S
 4. Sie wiederholen den Vorgang für die App „SmartHotel.Registration.WCF“.
 5. Als Nächstes überprüfen sie, wie sich die Lösung geändert hat.
 
-    - Die neue App heißt nun **SmartHotel.RegistrationApplication/**.
-    - Sie umfasst zwei Dienste: **SmartHotel.Registration.WCF** und **SmartHotel.Registration.Web**.
+   - Die neue App heißt nun **SmartHotel.RegistrationApplication/**.
+   - Sie umfasst zwei Dienste: **SmartHotel.Registration.WCF** und **SmartHotel.Registration.Web**.
 
-    ![Container](./media/contoso-migration-rearchitect-container-sql/container4.png)
+     ![Container](./media/contoso-migration-rearchitect-container-sql/container4.png)
 
 6. Die Docker-Datei wurde von Visual Studio erstellt, und die erforderlichen Bilder wurden lokal auf den Entwicklercomputer gezogen.
 
@@ -488,7 +488,7 @@ Als Nächstes konfigurieren die Contoso-Administratoren Azure DevOps Services f�
 
 16. Beachten Sie außerdem, dass der Continuous Deployment-Trigger aktiviert ist.
 
-   ![Continuous Deployment aktiviert](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
+    ![Continuous Deployment aktiviert](./media/contoso-migration-rearchitect-container-sql/pipeline14.png) 
 
 17. Sie klicken auf **Speichern** > **Create a release** (Release erstellen).
 

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 7d5630c082c044ac936f555965aec5a2a00f3544
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54448719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104436"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planen von U-SQL-Aufträgen mit SQL Server Integration Services (SSIS)
 
@@ -93,16 +93,16 @@ Fügen Sie in der SSIS-Paketentwurfsansicht den **Task „Azure Data Lake Store 
     
     So erstellen Sie diese Dateiverbindung
 
-    1. Wählen Sie **<New Connection...>** in der Einstellung „FileConnection“ aus.
-    2. Legen Sie **Verwendungstyp** auf **Vorhandene Datei** und **Datei** auf den Pfad einer vorhandenen Datei fest.
+   1. Wählen Sie **<New Connection...>** in der Einstellung „FileConnection“ aus.
+   2. Legen Sie **Verwendungstyp** auf **Vorhandene Datei** und **Datei** auf den Pfad einer vorhandenen Datei fest.
 
-        ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
+       ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)
 
-    3. Klicken Sie in der Ansicht **Verbindungs-Manager** mit der rechten Maustaste auf die zuvor erstellte Dateiverbindung, und wählen Sie **Eigenschaften** aus.
+   3. Klicken Sie in der Ansicht **Verbindungs-Manager** mit der rechten Maustaste auf die zuvor erstellte Dateiverbindung, und wählen Sie **Eigenschaften** aus.
 
-    4. Erweitern Sie im Fenster **Eigenschaften** den Eintrag **Ausdrücke**, und legen Sie **ConnectionString** auf die im Foreach-Schleifencontainer definierte Variable fest, z.B. `@[User::FileName]`.
+   4. Erweitern Sie im Fenster **Eigenschaften** den Eintrag **Ausdrücke**, und legen Sie **ConnectionString** auf die im Foreach-Schleifencontainer definierte Variable fest, z.B. `@[User::FileName]`.
 
-        ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
+       ![Konfigurieren des Foreach-Schleifencontainers](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-property-for-foreach-loop-container.png)
 
 3. Legen Sie **AzureDataLakeAnalyticsConnection** auf das Azure Data Lake Analytics-Konto fest, an das Sie Aufträge übermitteln möchten. Erfahren Sie mehr über den [Azure Data Lake Analytics-Verbindungs-Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 

@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: f68c3797d5425c496e38c1000cc39e3868d41739
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: f3b9ef9d840630269c4c5621a4dab3c732bacdbf
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53727036"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57551652"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Überwachungsszenario in Durable Functions – Beispiel einer Wetterbeobachtungsstation
 
@@ -166,7 +166,7 @@ Sie können sich die Aktivität der Orchestrierung in den Funktionsprotokollen i
 2018-03-01T01:14:54.030 Function completed (Success, Id=561d0c78-ee6e-46cb-b6db-39ef639c9a2c, Duration=62ms)
 ```
 
-Die Orchestrierung wird [beendet](durable-functions-instance-management.md#terminating-instances), sobald das Zeitlimit erreicht ist oder schönes Wetter erkannt wird. Sie können auch `TerminateAsync` (.NET) oder `terminate` (JavaScript) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **terminatePostUri** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{text}` durch den Grund für die Beendigung ersetzt:
+Die Orchestrierung wird [beendet](durable-functions-instance-management.md), sobald das Zeitlimit erreicht ist oder schönes Wetter erkannt wird. Sie können auch `TerminateAsync` (.NET) oder `terminate` (JavaScript) in einer anderen Funktion verwenden oder den HTTP POST-Webhook **terminatePostUri** aufrufen, auf den oben in der 202-Antwort verwiesen wird. Dabei wird `{text}` durch den Grund für die Beendigung ersetzt:
 
 ```
 POST https://{host}/admin/extensions/DurableTaskExtension/instances/f6893f25acf64df2ab53a35c09d52635/terminate?reason=Because&taskHub=SampleHubVS&connection=Storage&code={systemKey}

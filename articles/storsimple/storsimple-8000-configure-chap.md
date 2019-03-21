@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
-ms.openlocfilehash: c1a558769ffaa52ed2e996a2b537a5ea409101bd
-ms.sourcegitcommit: 909469bf17211be40ea24a981c3e0331ea182996
+ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "34012657"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095159"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurieren von CHAP für Ihr StorSimple-Gerät
 
@@ -53,8 +53,8 @@ Bei der unidirektionalen Authentifizierung authentifiziert das Ziel den Initiato
    1. Geben Sie einen Benutzernamen für den CHAP-Initiator an.
    2. Geben Sie ein Kennwort für den CHAP-Initiator an.
       
-    > [!IMPORTANT]
-    > Der CHAP-Benutzername darf maximal 233 Zeichen enthalten. Das CHAP-Kennwort muss zwischen 12 und 16 Zeichen umfassen. Längere Benutzernamen oder Kennwörtern haben einen Authentifizierungsfehler auf dem Windows-Host zur Folge.
+      > [!IMPORTANT]
+      > Der CHAP-Benutzername darf maximal 233 Zeichen enthalten. Das CHAP-Kennwort muss zwischen 12 und 16 Zeichen umfassen. Längere Benutzernamen oder Kennwörtern haben einen Authentifizierungsfehler auf dem Windows-Host zur Folge.
    
    3. Bestätigen Sie das Kennwort.
 

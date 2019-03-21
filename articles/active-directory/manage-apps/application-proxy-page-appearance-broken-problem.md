@@ -15,12 +15,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c7a6edab1bc63d8cb1ae6f7de43372304e21ed1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 950a349506f32405261d90c05312d24aa3deadc5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170634"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089946"
 ---
 # <a name="application-page-does-not-display-correctly-for-an-application-proxy-application"></a>Anwendungsseite für eine Anwendungsproxyanwendung nicht richtig angezeigt
 
@@ -31,7 +31,7 @@ Wenn Sie eine Anwendungsproxyanwendung veröffentlichen, können Sie beim Zugrif
 
 Sie können überprüfen, ob fehlende Ressourcen Ursache des Problems sind, indem Sie eine Netzwerküberwachungssoftware öffnen (z.B. Fiddler oder F12-Tools in Internet Explorer/Microsoft Edge), die Seite laden und nach Fehlern des Typs 404 suchen. Diese Fehler geben an, dass die Seiten derzeit nicht gefunden werden können und dass sie veröffentlicht werden müssen.
 
-Ein Beispiel für diesen Fall ist eine Ausgabenanwendung, die mit der internen URL http://myapps/expenses veröffentlicht wurde, jedoch das Stylesheet http://myapps/style.css verwendet. In diesem Fall wird das Stylesheet nicht in der Anwendung veröffentlicht, sodass das Laden der Ausgabenanwendung einen 404-Fehler beim Laden von „style.css“ auslöst. In diesem Beispiel wird das Problem durch eine Veröffentlichung der Anwendung mit der internen URL http://myapp/ behoben.
+Ein Beispiel für diesen Fall ist eine Ausgabenanwendung, die mit der internen URL `http://myapps/expenses` veröffentlicht wurde, jedoch das Stylesheet `http://myapps/style.css` verwendet. In diesem Fall wird das Stylesheet nicht in der Anwendung veröffentlicht, sodass das Laden der Ausgabenanwendung einen 404-Fehler beim Laden von „style.css“ auslöst. In diesem Beispiel wird das Problem durch eine Veröffentlichung der Anwendung mit der internen URL `http://myapp/` behoben.
 
 ## <a name="problems-with-publishing-as-one-application"></a>Probleme mit der Veröffentlichung in einer einzelnen Anwendung
 

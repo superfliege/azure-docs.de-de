@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2018
 ms.author: sharadag
-ms.openlocfilehash: 78370b004d18f70ae4d485f3ad7cfd910e6dd70a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 7a261d65a7bd3eea150dd764c65b94ddd47466b3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47046171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100308"
 ---
 # <a name="troubleshooting-common-routing-issues"></a>Behandeln von häufigen Routingproblemen
 In diesem Artikel wird beschrieben, wie Sie einige häufige Routingprobleme in Ihrer Azure Front Door Service-Konfiguration beheben können. 
@@ -28,7 +28,7 @@ In diesem Artikel wird beschrieben, wie Sie einige häufige Routingprobleme in I
 ### <a name="symptom"></a>Symptom
 - Sie haben eine Front Door-Instanz erstellt, aber für eine Anforderung an den Front-End-Host wird der HTTP-Statuscode 400 zurückgegeben.
 
- - Sie haben eine DNS-Zuordnung von einer benutzerdefinierten Domäne zum konfigurierten Front-End-Host erstellt. Beim Senden einer Anforderung an den Hostnamen der benutzerdefinierten Domäne wird jedoch der HTTP-Statuscode 400 zurückgegeben, und das Routing an die konfigurierten Back-Ends scheint nicht zu funktionieren.
+  - Sie haben eine DNS-Zuordnung von einer benutzerdefinierten Domäne zum konfigurierten Front-End-Host erstellt. Beim Senden einer Anforderung an den Hostnamen der benutzerdefinierten Domäne wird jedoch der HTTP-Statuscode 400 zurückgegeben, und das Routing an die konfigurierten Back-Ends scheint nicht zu funktionieren.
 
 ### <a name="cause"></a>Ursache
 - Dieses Symptom ist möglich, wenn Sie keine Routingregel für die benutzerdefinierte Domäne konfiguriert haben, die Sie als Front-End-Host hinzugefügt haben. Eine Routingregel muss explizit für den Front-End-Host hinzugefügt werden, auch wenn bereits eine für den Front-End-Host in der Front Door-Unterdomäne (*.azurefd.net) konfiguriert wurde, für die eine DNS-Zuordnung für Ihre benutzerdefinierte Domäne besteht.
@@ -54,11 +54,11 @@ Dieses Symptom kann verschiedene Ursachen haben:
     - Stellen Sie sicher, dass Sie etwa 10 Minuten warten, bis die Konfiguration bereitgestellt wurde.
 
 2. Überprüfen der Back-End-Einstellungen
-     - Navigieren Sie zum Back-End-Pool, an den die Anforderung weitergeleitet werden sollte (hängt davon ab, wie Sie die Routingregel konfiguriert haben), und überprüfen Sie, ob der _Back-End-Hosttyp_ und der Back-End-Hostname richtig sind. Wenn das Back-End ein benutzerdefinierter Host ist, stellen Sie sicher, dass er richtig geschrieben wurde. 
+   - Navigieren Sie zum Back-End-Pool, an den die Anforderung weitergeleitet werden sollte (hängt davon ab, wie Sie die Routingregel konfiguriert haben), und überprüfen Sie, ob der _Back-End-Hosttyp_ und der Back-End-Hostname richtig sind. Wenn das Back-End ein benutzerdefinierter Host ist, stellen Sie sicher, dass er richtig geschrieben wurde. 
 
-     - Überprüfen Sie die HTTP- und HTTPS-Ports. In den meisten Fällen sind 80 bzw. 443 korrekt, und es sollten keine Änderungen erforderlich sein. Allerdings besteht die Möglichkeit, dass Ihr Back-End anders konfiguriert ist und an einem anderen Port lauscht.
+   - Überprüfen Sie die HTTP- und HTTPS-Ports. In den meisten Fällen sind 80 bzw. 443 korrekt, und es sollten keine Änderungen erforderlich sein. Allerdings besteht die Möglichkeit, dass Ihr Back-End anders konfiguriert ist und an einem anderen Port lauscht.
 
-    - Überprüfen Sie den _Back-End-Hostheader_, der für die Back-Ends konfiguriert wurde, an die der Front-End-Host weiterleiten soll. In den meisten Fällen sollte dieser Header mit dem _Back-End-Hostnamen_ identisch sein. Ein falscher Wert kann jedoch zu verschiedenen 4xx-HTTP-Statuscodes führen, wenn das Back-End etwas anderes erwartet. Wenn Sie die IP-Adresse Ihres Back-Ends eingeben, müssen Sie möglicherweise den _Back-End-Hostheader_ auf den Back-End-Hostnamen festlegen.
+     - Überprüfen Sie den _Back-End-Hostheader_, der für die Back-Ends konfiguriert wurde, an die der Front-End-Host weiterleiten soll. In den meisten Fällen sollte dieser Header mit dem _Back-End-Hostnamen_ identisch sein. Ein falscher Wert kann jedoch zu verschiedenen 4xx-HTTP-Statuscodes führen, wenn das Back-End etwas anderes erwartet. Wenn Sie die IP-Adresse Ihres Back-Ends eingeben, müssen Sie möglicherweise den _Back-End-Hostheader_ auf den Back-End-Hostnamen festlegen.
 
 
 3. Überprüfen der Einstellungen der Routingregel

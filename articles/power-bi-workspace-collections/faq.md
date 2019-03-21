@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: powerbi
 ms.date: 09/25/2017
 ms.author: maghan
-ms.openlocfilehash: 83f4ebd9c3f5ad05173b045b3fa15804ddc88df6
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 08d0a446fc29bf58da2583cbee8576831914ac09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54157563"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57862713"
 ---
 # <a name="power-bi-workspace-collections-faq"></a>Häufig gestellte Fragen zu Power BI-Arbeitsbereichssammlungen
 
@@ -77,7 +77,7 @@ Beim Modell Power BI-Arbeitsbereichssammlungen müssen sich Ihre Kunden nicht un
 Entwickler/Mitarbeiter, die Ihre Anwendung erstellen oder daran arbeiten, benötigen ein AAD-Benutzerkonto, damit sie Ihr Azure-Abonnement und Ihre Arbeitsbereichssammlungen über das Azure-Portal verwalten können. Programmgesteuerte APIs, mit denen Entwickler Berichte importieren, Verbindungszeichenfolgen ändern und Einbettungs-URLs abrufen können, verwenden stattdessen App-Token zur Authentifizierung und benötigen daher AAD nicht.
 
 ## <a name="where-can-i-learn-more"></a>Wo kann ich mehr erfahren?
-Auf der [Dokumentationsseite zu Power BI-Arbeitsbereichssammlungen](get-started.md). Weitere aktuelle Informationen finden Sie im [Power BI-Blog](https://powerbi.microsoft.com/blog/) sowie im Power BI Developer Center unter „dev.powerbi.com“. Bei [Stack Overflow](http://stackoverflow.com/questions/tagged/powerbi) können Sie außerdem Fragen stellen.
+Auf der [Dokumentationsseite zu Power BI-Arbeitsbereichssammlungen](get-started.md). Weitere aktuelle Informationen finden Sie im [Power BI-Blog](https://powerbi.microsoft.com/blog/) sowie im Power BI Developer Center unter „dev.powerbi.com“. Bei [Stack Overflow](https://stackoverflow.com/questions/tagged/powerbi) können Sie außerdem Fragen stellen.
 
 ## <a name="how-do-i-get-started"></a>Wie fange ich an?
 Sie können jetzt kostenlos beginnen! Wenn Sie ein Azure-Abonnement besitzen, können Sie Power BI-Arbeitsbereichssammlungen jetzt direkt über das Azure-Portal bereitstellen. Sie können auch ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen. Sobald Sie den Dienst Power BI-Arbeitsbereichssammlungen bereitgestellt haben, können Sie Power BI-REST-APIs problemlos direkt nutzen oder das Developer SDK auf [GitHub](https://go.microsoft.com/fwlink/?LinkID=746472) verwenden. Es werden Beispiele für die Nutzung des Developer SDK bereitgestellt.
@@ -89,5 +89,5 @@ Sie können jetzt kostenlos beginnen! Wenn Sie ein Azure-Abonnement besitzen, k�
 [Get started with sample (Erste Schritte mit Beispiel)](get-started-sample.md)   
 [JavaScript-Einbettungsbeispiel](https://microsoft.github.io/PowerBI-JavaScript/demo/)  
 
-Weitere Fragen? [Power BI-Community ausprobieren](http://community.powerbi.com/)
+Weitere Fragen? [Power BI-Community ausprobieren](https://community.powerbi.com/)
 

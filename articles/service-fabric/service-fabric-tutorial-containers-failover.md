@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: b099d1765f0ed56d6768501086bf8b9f83d5a86a
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: f5ac1c53a97fc2a3749582c5f48b967e3ce0c2c4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112268"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104266"
 ---
 # <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Tutorial: Failover und Skalierung von Containerdiensten mit Service Fabric
 
@@ -63,8 +63,8 @@ Führen Sie die folgenden Schritte aus, um das Web-Front-End zu skalieren:
 
 Sie können jetzt angeben, wie viele Instanzen des Web-Front-Ends skaliert werden sollen.
 
-3. Ändern Sie die Anzahl in **2**, und klicken Sie auf **Scale Service** (Dienst skalieren).
-4. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/TestContainer/azurevotefront**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt).
+1. Ändern Sie die Anzahl in **2**, und klicken Sie auf **Scale Service** (Dienst skalieren).
+1. Klicken Sie in der Strukturansicht auf den Knoten **fabric:/TestContainer/azurevotefront**, und erweitern Sie den Partitionsknoten (durch eine GUID dargestellt).
 
 ![sfxscaledone][sfxscaledone]
 

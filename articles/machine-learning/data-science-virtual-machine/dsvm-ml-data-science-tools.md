@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: f84341d6d8ac3b5c7febaa4f659da84efcebb780
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57847364"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>Machine Learning- und Data Science-Tools
 Virtuelle Data Science-Computer in Azure verfügen über ein umfangreiches Angebot an Tools und Bibliotheken für Machine Learning (ML) in gängigen Sprachen wie Python, R und Julia. 
@@ -71,7 +71,7 @@ Hier finden Sie einige der ML-Tools und -Bibliotheken für virtuelle Data Scienc
 | Unterstützte Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeines ML-Tool     |
 | Verwendung/Ausführung      | Unter Windows finden Sie Weka im Startmenü. Unter Linux finden Sie Weka nach der Anmeldung mit X2Go unter **Anwendungen** > **Entwicklung** > **Weka**. |
-| Link zu Beispielen      | [Beispiele für Weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Link zu Beispielen      | [Beispiele für Weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Verwandte Tools      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="rattle"></a>Rattle

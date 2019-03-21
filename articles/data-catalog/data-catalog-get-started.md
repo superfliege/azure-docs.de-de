@@ -8,12 +8,12 @@ ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: dd3cb108844cd009d74de42630511073021d94b1
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 5513948a6611e93833c7e70fa4e5667b3901a9f3
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238487"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56880222"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Erste Schritte mit Azure Data Catalog
 Azure Data Catalog ist ein vollständig verwalteter Clouddienst, der als Registrierungs- und Ermittlungssystem für Datenassets von Unternehmen dient. Eine ausführliche Übersicht finden Sie unter [Was ist Azure Data Catalog?](data-catalog-what-is-data-catalog.md).
@@ -82,7 +82,7 @@ Sie können nur einen Datenkatalog pro Organisation (Azure Active Directory-Dom�
     ![Azure Data Catalog – Katalog in der Liste anzeigen](media/data-catalog-get-started/data-catalog-azure-portal-show-catalog.png)
 3. Klicken Sie auf den Katalog, den Sie erstellt haben. Im Portal wird das Blatt **Datenkatalog** angezeigt.
    
-   ![Azure Data Catalog – Blatt im Portal ](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
+   ![Azure Data Catalog – Blatt im Portal](media/data-catalog-get-started/data-catalog-blade-azure-portal.png)
 4. Sie können die Eigenschaften des Datenkatalogs anzeigen und aktualisieren. Klicken Sie beispielsweise auf **Tarif** , und ändern Sie die Edition.
    
     ![Azure Data Catalog – Tarif](media/data-catalog-get-started/data-catalog-change-pricing-tier.png)
@@ -144,7 +144,7 @@ In dieser Übung verwenden Sie das Registrierungstool, um Datenassets aus der Ad
       ![Azure Data Catalog – registrierte Objekte](media/data-catalog-get-started/data-catalog-registered-objects.png)
    9. Klicken Sie zum Anzeigen der registrierten Datenquellenobjekte auf **Portal anzeigen**. Vergewissern Sie sich im Azure Data Catalog-Portal, dass alle vier Tabellen und die Datenbank in der Rasteransicht angezeigt werden.
       
-      ![Objekte im Azure Data Catalog-Portal ](media/data-catalog-get-started/data-catalog-view-portal.png)
+      ![Objekte im Azure Data Catalog-Portal](media/data-catalog-get-started/data-catalog-view-portal.png)
 
 In dieser Übung haben Sie Objekte aus der Adventure Works-Beispieldatenbank registriert, sodass sie leicht von Benutzern in Ihrer Organisation ermittelt werden können. In der nächsten Übung erfahren Sie, wie Sie registrierte Datenassets ermitteln.
 

@@ -11,17 +11,17 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/21/2019
+ms.topic: conceptual
+ms.date: 03/21/2019
 ms.author: sethm
 ms.reviewer: scottnap
 ms.lastreviewed: 10/24/2018
-ms.openlocfilehash: aa467910cfa2dad84af3905db3592657cae85be9
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d35ab3f477f327cb85cd8dfebd255542489debdc
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594354"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58286141"
 ---
 # <a name="connect-azure-stack-to-azure-using-vpn"></a>Herstellen einer Verbindung von Azure Stack mit Azure über ein VPN
 
@@ -92,8 +92,7 @@ Erstellen Sie zunächst die Netzwerkressourcen für Azure. Die folgenden Anweisu
 5. Klicken Sie auf **Virtuelles Netzwerk**, um ein virtuelles Netzwerk auszuwählen. Wählen Sie anschließend aus der Liste **AzureVnet** aus.
 6. Wählen Sie **Öffentliche IP-Adresse**. Wählen Sie im Bereich **Öffentliche IP-Adresse auswählen** die Option **Neu erstellen** aus.
 7. Geben Sie unter **Name** den Namen **Azure-GW-PiP** ein, und klicken Sie auf **OK**.
-8. Als **VPN-Typ** ist standardmäßig **Routenbasiert** ausgewählt. Behalten Sie **Routenbasiert** als VPN-Typ bei.
-9. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt sind. Die Ressource kann an das Dashboard angeheftet werden. Klicken Sie auf **Erstellen**.
+8. Vergewissern Sie sich, dass **Abonnement** und **Speicherort** korrekt sind. Die Ressource kann an das Dashboard angeheftet werden. Klicken Sie auf **Erstellen**.
 
 ### <a name="create-the-local-network-gateway-resource"></a>Erstellen der Ressource des lokalen Netzwerkgateways
 

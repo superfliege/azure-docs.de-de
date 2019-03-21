@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f4e1b25133914a65f34e281c145d7db5969b0581
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 9039c1fd94bbc62f48ca5a6869f455aa41b740c9
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55208022"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56673930"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Einrichten der Notfallwiederherstellung in Azure für Hyper-V-VMs mithilfe von PowerShell und Azure Resource Manager
 
@@ -54,15 +54,15 @@ Darüber hinaus gelten für das in diesem Artikel beschriebene Beispiel die folg
 
 3. Stellen Sie mit den folgenden Befehlen sicher, dass Ihr Abonnement für die Verwendung der Azure-Anbieter für Recovery Services und Site Recovery registriert ist:
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices``Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`
+    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 4. Vergewissern Sie sich in der Befehlsausgabe, dass **RegistrationState** auf **Registered** festgelegt ist. Anschließend können Sie mit Schritt 2 fortfahren. Wenn dies nicht der Fall ist, müssen Sie den fehlenden Anbieter in Ihrem Abonnement registrieren, indem Sie die folgenden Befehle ausführen:
 
-    `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.SiteRecovery``Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
+    `Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices`
 
 5. Überprüfen Sie mithilfe der folgenden Befehle, ob die Anbieter erfolgreich registriert wurden:
 
-    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices` `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.SiteRecovery`.
+    `Get-AzureRmResourceProvider -ProviderNamespace  Microsoft.RecoveryServices`
 
 ## <a name="step-2-set-up-the-vault"></a>Schritt 2: Einrichten des Tresors
 

@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/18/2019
 ms.author: juliako;anilmur
-ms.openlocfilehash: ecdb6d7a225d3a2f2c5bbf90a36b91367faf04b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c168182f0b34329ed3e72e90ce86456dfbe210ca
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56003345"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189851"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Livestreaming mit Azure Media Services zum Erstellen von Multi-Bitrate-Datenströmen
 
@@ -31,7 +31,7 @@ In Azure Media Services (AMS) stellt ein **Kanal** eine Pipeline für die Verarb
 
 * Ein lokaler Liveencoder sendet einen Single-Bitrate-Datenstrom an den Kanal, der zum Ausführen der Live-Codierung mit Media Services in einem der folgenden Formate aktiviert wurde: RTMP oder Smooth Streaming (fragmentiertes MP4). Vom Kanal wird dann eine Livecodierung des Single-Bitrate-Eingabedatenstroms in einen Multi-Bitrate-Videodatenstrom (adaptiv) ausgeführt. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
 * Von einem lokalen Liveencoder wird Multi-Bitrate-basiertes **RTMP** oder **Smooth Streaming** (fragmentiertes MP4) an den Kanal gesendet, der nicht für die Livecodierung mit AMS aktiviert ist. Die erfassten Streams durchlaufen **Kanäle** ohne weitere Verarbeitung. Diese Methode wird als **Pass-Through-Methode** bezeichnet. Sie können die folgenden Liveencoder verwenden, von denen Multi-Bitrate-Smooth Streaming ausgegeben werden kann: MediaExcel, Ateme, Imagine Communications, Envivio, Cisco und Elemental. Die folgenden Liveencoder geben RTMP aus: Adobe Flash Media Live Encoder (FMLE), Telestream Wirecast, Haivision, Teradek und Tricaster.  Ein Liveencoder kann auch einen Single-Bitrate-Datenstrom an einen Kanal senden, der nicht für die Livecodierung konfiguriert ist. Dies wird jedoch nicht empfohlen. Auf Anforderung wird der Datenstrom den Kunden von Media Services bereitgestellt.
-  
+
   > [!NOTE]
   > Die Verwendung der Pass-Through-Methode ist die wirtschaftlichste Form des Livestreamings.
   > 
@@ -50,7 +50,7 @@ Mit Media Services-Version 2.10 können Sie beim Erstellen eines Kanals angeben,
 > 
 
 ## <a name="billing-implications"></a>Hinweise zur Gebührenberechnung
-Für einen Live Encoding-Kanal beginnt die Berechnung von Gebühren, sobald der Status über die API in „Wird ausgeführt“ geändert wird.   Sie können den Status auch im Azure-Portal oder im Azure Media Services-Explorer anzeigen (http://aka.ms/amse).
+Für einen Live Encoding-Kanal beginnt die Berechnung von Gebühren, sobald der Status über die API in „Wird ausgeführt“ geändert wird.   Sie können den Status auch im Azure-Portal oder im Azure Media Services-Explorer anzeigen (https://aka.ms/amse).
 
 In der folgenden Tabelle ist dargestellt, wie Kanalzustände den Abrechnungszuständen in der API und im Azure-Portal zugeordnet werden. Die Zustände zwischen der API und der Benutzeroberfläche des Portals unterscheiden sich leicht. Sobald ein Kanal über die API in den Zustand „Wird ausgeführt“ oder im Azure-Portal in den Zustand „Bereit“ oder „Streaming“ versetzt wird, wird die Abrechnung aktiv.
 Um die weitere Gebührenberechnung für den Kanal zu beenden, müssen Sie den Kanal über die API oder im Azure-Portal beenden.
@@ -89,29 +89,27 @@ Im Folgenden werden grundlegende Schritte zum Erstellen allgemeiner Livestreamin
 
 > [!NOTE]
 > Die maximal empfohlene Dauer eines Liveereignisses beträgt derzeit 8 Stunden. Wenden Sie sich an amslived@microsoft.com, falls Sie einen Kanal über längere Zeiträume ausführen müssen. Das Live Encoding wirkt sich auf die Abrechnung aus, und die Beibehaltung des Status „Wird ausgeführt“ für einen Live Encoding-Kanal ist mit stundenweisen Gebühren verbunden.  Es wird empfohlen, die Ausführung der Kanäle sofort zu beenden, wenn das Livestreaming-Ereignis abgeschlossen ist, um das Anfallen zusätzlicher Stundengebühren zu vermeiden. 
-> 
-> 
 
 1. Schließen Sie eine Videokamera an einen Computer an. Starten und konfigurieren Sie einen lokalen Liveencoder, von dem ein **Single**-Bitrate-Datenstrom in einem der folgenden Protokolle ausgegeben wird: RTMP oder Smooth Streaming. 
-   
+
     Dieser Schritt kann auch nach der Erstellung des Kanals ausgeführt werden.
 2. Erstellen Sie einen Kanal, und starten Sie ihn. 
 3. Rufen Sie die Erfassungs-URL des Kanals ab. 
-   
+
     Die Erfassungs-URL wird vom Liveencoder verwendet, um den Datenstrom an den Kanal zu senden.
 4. Rufen Sie die Vorschau-URL des Kanals ab. 
-   
+
     Verwenden Sie diese URL, um sicherzustellen, dass der Livestream ordnungsgemäß vom Kanal empfangen wird.
 5. Erstellen Sie ein Programm. 
-   
+
     Im Azure-Portal wird beim Erstellen eines Programms auch ein Medienobjekt erstellt. 
-   
+
     Wenn Sie hingegen .NET SDK oder REST verwenden, müssen Sie beim Erstellen eines Programms ein Medienobjekt erstellen und angeben, dass es verwendet werden soll. 
 6. Veröffentlichen Sie das mit dem Programm verknüpfte Medienobjekt.   
-   
+
     >[!NOTE]
     >Beim Erstellen Ihres AMS-Kontos wird dem Konto ein **Standard**-Streamingendpunkt mit dem Status **Beendet** hinzugefügt. Der Streamingendpunkt, von dem aus Sie die Inhalte streamen möchten, muss sich im Status **Wird ausgeführt** befinden. 
-    
+
 7. Wenn Sie zum Starten von Streaming und Archivierung bereit sind, starten Sie das Programm.
 8. Optional kann vom Liveencoder eine Ankündigung gestartet werden. Die Ankündigung wird in den Ausgabedatenstrom eingefügt.
 9. Sie können das Programm und damit das Streaming und die Archivierung des Ereignisses jederzeit beenden.
@@ -217,6 +215,7 @@ Beachten Sie, dass Sie sich an amslived@microsoft.com wenden müssen, wenn Sie b
 Mit **Default720p** wird das Video in die folgenden 6 Ebenen codiert.
 
 #### <a name="output-video-stream"></a>Ausgabe-Videodatenstrom
+
 | BitRate | Breite | Höhe | Max. Bilder/s | Profil | Name des Ausgabedatenstroms |
 | --- | --- | --- | --- | --- | --- |
 | 3500 |1280 |720 |30 |Hoch |Video_1280x720_3500kbps |
@@ -357,7 +356,7 @@ In der folgenden Tabelle ist die Zuordnung der Kanalstatus mit den Abrechnungsmo
 [Erstellen von Kanälen, von denen eine Livecodierung eines Single-Bitrate-Datenstroms in einen Datenstrom mit adaptiver Bitrate ausgeführt wird, mit dem .NET SDK](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 
 [Verwalten von Kanälen mithilfe der REST-API](https://docs.microsoft.com/rest/api/media/operations/channel)
- 
+
 [Media Services-Konzepte](media-services-concepts.md)
 
 [Spezifikation der Fragmented MP4-Echtzeiterfassung für Azure Media Services](media-services-fmp4-live-ingest-overview.md)

@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.custom: seodec18
-ms.openlocfilehash: a14f568e2485e59cb3e567eb9ee5c5eb20b02afc
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: f5cc06ba1a326d262c1437a941306b4d4a648260
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198421"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101226"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Erstellen eines Verweis-DataSets für Ihre Time Series Insights-Umgebung über das Azure-Portal
 
@@ -82,19 +82,19 @@ Verweisdaten werden nicht rückwirkend verknüpft. Das bedeutet, dass nur aktuel
  
 13. Geben Sie dem Dataset einen Namen, indem Sie oberhalb des Datenrasters einen Namen ins Feld **Datasetname** eingeben.
 
-   ![Benennen des Datasets](media/add-reference-data-set/name_reference_dataset.png)
+    ![Benennen des Datasets](media/add-reference-data-set/name_reference_dataset.png)
 
 14. Legen Sie die Spalte **Primärschlüssel** im Dataset fest. Wählen Sie dazu einen Wert aus der Dropdownliste oberhalb des Datenrasters aus.
 
-   ![Auswählen der Schlüsselspalte(n)](media/add-reference-data-set/set_primary_key.png)
+    ![Auswählen der Schlüsselspalte(n)](media/add-reference-data-set/set_primary_key.png)
 
-   Klicken Sie optional auf die Schaltfläche **+**, um eine Sekundärschlüsselspalte als zusammengesetzten Primärschlüssel hinzuzufügen. Wenn Sie die Auswahl rückgängig machen müssen, wählen Sie den leeren Wert in der Dropdownliste aus, um den Sekundärschlüssel zu entfernen.
+    Klicken Sie optional auf die Schaltfläche **+**, um eine Sekundärschlüsselspalte als zusammengesetzten Primärschlüssel hinzuzufügen. Wenn Sie die Auswahl rückgängig machen müssen, wählen Sie den leeren Wert in der Dropdownliste aus, um den Sekundärschlüssel zu entfernen.
 
-15.  Klicken Sie zum Hochladen der Daten auf die Schaltfläche **Upload rows** (Zeilen hochladen).
+15. Klicken Sie zum Hochladen der Daten auf die Schaltfläche **Upload rows** (Zeilen hochladen).
 
-   ![Hochladen](media/add-reference-data-set/upload_rows.png)
+    ![Hochladen](media/add-reference-data-set/upload_rows.png)
 
-   Auf der Seite wird der abgeschlossene Upload bestätigt und die Meldung **Das Dataset wurde erfolgreich hochgeladen.** angezeigt.
+    Auf der Seite wird der abgeschlossene Upload bestätigt und die Meldung **Das Dataset wurde erfolgreich hochgeladen.** angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Verwalten Sie Verweisdaten](time-series-insights-manage-reference-data-csharp.md) programmgesteuert.

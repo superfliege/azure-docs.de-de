@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/25/2019
 ms.author: v-krghan
 ms.custom: include file
-ms.openlocfilehash: 5909533c2153fe7c6697f516ce7568787b82bdab
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 81590a4d686d85482bee38c4391b8ac24b25658e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55105840"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125306"
 ---
 ## <a name="download-the-source-code"></a>Herunterladen des Quellcodes
 
@@ -54,16 +54,16 @@ Wenn Sie die erforderlichen Azure-Ressourcen noch nicht erstellt haben, führen 
     ```
 
 1. Führen Sie das Skript **start.cmd** aus. Das Skript fordert Sie zur Eingabe der folgenden Informationen auf:
-    * Ein Lösungsname.
-    * Das zu verwendende Azure-Abonnement.
-    * Der Speicherort des zu verwendenden Azure-Rechenzentrums.
+   * Ein Lösungsname.
+   * Das zu verwendende Azure-Abonnement.
+   * Der Speicherort des zu verwendenden Azure-Rechenzentrums.
 
-    Das Skript erstellt die Ressourcengruppe in Azure mit dem Namen Ihrer Projektmappe. Diese Ressourcengruppe enthält die Azure-Ressourcen, die der Solution Accelerator verwendet. Sie können diese Ressourcengruppe löschen, wenn Sie die entsprechenden Ressourcen nicht mehr benötigen.
+     Das Skript erstellt die Ressourcengruppe in Azure mit dem Namen Ihrer Projektmappe. Diese Ressourcengruppe enthält die Azure-Ressourcen, die der Solution Accelerator verwendet. Sie können diese Ressourcengruppe löschen, wenn Sie die entsprechenden Ressourcen nicht mehr benötigen.
 
-    Mit dem Skript werden auf dem lokalen Computer zudem mehrere Umgebungsvariablen mit dem Präfix **PCS** hinzugefügt. Wenn Sie die Docker-Container oder Microserviceprojekte lokal starten, werden die zugehörigen Konfigurationswerte aus diesen Umgebungsvariablen gelesen.
+     Mit dem Skript werden auf dem lokalen Computer zudem mehrere Umgebungsvariablen mit dem Präfix **PCS** hinzugefügt. Wenn Sie die Docker-Container oder Microserviceprojekte lokal starten, werden die zugehörigen Konfigurationswerte aus diesen Umgebungsvariablen gelesen.
 
-    > [!TIP]
-    > Nach Abschluss des Skripts werden außerdem die Umgebungsvariablen in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
+     > [!TIP]
+     > Nach Abschluss des Skripts werden außerdem die Umgebungsvariablen in der Datei **\<Ihr Stammordner\>\\.pcs\\\<Lösungsname\>.env** gespeichert. Sie können sie für zukünftige Bereitstellungen des Solution Accelerators verwenden. Beachten Sie, dass alle auf dem lokalen Computer festgelegten Umgebungsvariablen die Werte in der Datei **services\\scripts\\local\\.env** überschreiben, wenn Sie **docker-compose** ausführen.
 
 1. Beenden Sie die Befehlszeilenumgebung.
 

@@ -8,12 +8,12 @@ manager: jeconnoc
 ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
-ms.openlocfilehash: d7728dd5c025a88f8912dca708abc45ab519ce2c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: cf7afb50006fb273b4d685f9e4259be1cb60fe4e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327543"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084741"
 ---
 # <a name="install-the-chef-client-from-the-azure-portal"></a>Installieren des Chef-Clients aus dem Azure-Portal
 Im Azure-Portal können Sie einem Linux- oder Windows-Computer direkt die Chef-Clienterweiterung hinzufügen. Dieser Artikel führt Sie mithilfe eines neuen virtuellen Linux-Computers durch den Prozess.
@@ -30,7 +30,7 @@ Im Azure-Portal können Sie einem Linux- oder Windows-Computer direkt die Chef-C
 ## <a name="install-the-chef-extension-on-a-new-linux-virtual-machine"></a>Installieren der Chef-Erweiterung auf einen neuen virtuellen Linux-Computer
 In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu erstellen. Während des Prozesses sehen Sie auch, wie die Chef-Erweiterung auf dem neuen virtuellen Computer installiert wird.
 
-1. Navigieren Sie zum [Azure-Portal](http://portal.azure.com).
+1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 
 1. Wählen Sie im Menü auf der linken Seite die Option **Virtuelle Computer** aus. Wenn die Option **Virtuelle Computer** nicht vorhanden ist, wählen Sie **Alle Dienste** und dann **Virtuelle Computer** aus.
 
@@ -52,31 +52,31 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
 
 1. Geben Sie auf der Registerkarte **Grundlagen** die folgenden Werte an, und wählen Sie dann **OK** aus.
 
-    - **Name**: Geben Sie einen Namen für den neuen virtuellen Computer ein.
-    - **VM-Datenträgertyp**: Geben Sie entweder **SSD** oder **HDD** für den Speicherdatenträgertyp ein. Weitere Informationen zu Datenträgertypen für virtuelle Computer in Azure finden Sie im Artikel [Auswählen eines Datenträgertyps](../virtual-machines/windows/disks-types.md).
-    - **Benutzername**: Geben Sie einen Benutzernamen ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
-    - **Authentifizierungstyp**: Wählen Sie **Kennwort** aus. Sie können auch **Öffentlicher SSH-Schlüssel** auswählen und einen Wert für einen öffentlichen SSH-Schlüssel eingeben. Für die Zwecke dieser Demo (und in den Screenshots) ist **Kennwort** ausgewählt.
-    - **Kennwort** und **Kennwort bestätigen**: Geben Sie ein Kennwort für den Benutzer ein.
-    - **Anmelden mit Azure Active Directory**: Wählen Sie **Deaktiviert** aus.
-    - **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus.
-    - **Ressourcengruppe**: Geben Sie einen Namen für Ihre Ressourcengruppe ein.
-    - **Standort**: Wählen Sie **USA, Osten** aus.
+   - **Name**: Geben Sie einen Namen für den neuen virtuellen Computer ein.
+   - **VM-Datenträgertyp**: Geben Sie entweder **SSD** oder **HDD** für den Speicherdatenträgertyp ein. Weitere Informationen zu Datenträgertypen für virtuelle Computer in Azure finden Sie im Artikel [Auswählen eines Datenträgertyps](../virtual-machines/windows/disks-types.md).
+   - **Benutzername**: Geben Sie einen Benutzernamen ein, dem Administratorrechte auf dem virtuellen Computer erteilt werden.
+   - **Authentifizierungstyp**: Wählen Sie **Kennwort** aus. Sie können auch **Öffentlicher SSH-Schlüssel** auswählen und einen Wert für einen öffentlichen SSH-Schlüssel eingeben. Für die Zwecke dieser Demo (und in den Screenshots) ist **Kennwort** ausgewählt.
+   - **Kennwort** und **Kennwort bestätigen**: Geben Sie ein Kennwort für den Benutzer ein.
+   - **Anmelden mit Azure Active Directory**: Wählen Sie **Deaktiviert** aus.
+   - **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, wählen Sie das gewünschte Abonnement aus.
+   - **Ressourcengruppe**: Geben Sie einen Namen für Ihre Ressourcengruppe ein.
+   - **Standort**: Wählen Sie **USA, Osten** aus.
 
-    ![Registerkarte „Grundlagen“ zum Erstellen eines virtuellen Computers](./media/chef-extension-portal/add-vm-basics.png)
+     ![Registerkarte „Grundlagen“ zum Erstellen eines virtuellen Computers](./media/chef-extension-portal/add-vm-basics.png)
 
 1. Wählen Sie auf der Registerkarte **Größe wählen** eine Größe für den virtuellen Computer und dann **Auswählen** aus.
 
 1. Auf der Registerkarte **Einstellungen** werden die meisten Werte für Sie auf Basis der Werte aufgefüllt, die Sie auf vorherigen Registerkarten ausgewählt haben. Wählen Sie **Erweiterungen**.
 
-    ![Erweiterungen werden virtuellen Computern über die Registerkarte „Einstellungen“ hinzugefügt](./media/chef-extension-portal/add-vm-select-extensions.png)
+     ![Erweiterungen werden virtuellen Computern über die Registerkarte „Einstellungen“ hinzugefügt](./media/chef-extension-portal/add-vm-select-extensions.png)
 
 1. Wählen Sie auf der Registerkarte **Erweiterungen** die Option **Erweiterung hinzufügen** aus.
 
-    ![„Erweiterung hinzufügen“ auswählen, um einem virtuellen Computer eine Erweiterung hinzuzufügen](./media/chef-extension-portal/add-vm-add-extension.png)
+     ![„Erweiterung hinzufügen“ auswählen, um einem virtuellen Computer eine Erweiterung hinzuzufügen](./media/chef-extension-portal/add-vm-add-extension.png)
 
 1. Wählen Sie auf der Registerkarte **Neue Ressource** die Option **Linux Chef-Erweiterung (1.2.3)** aus.
 
-    ![Chef bietet Erweiterungen für virtuelle Linux- und Windows-Computer](./media/chef-extension-portal/select-linux-chef-extension.png)
+     ![Chef bietet Erweiterungen für virtuelle Linux- und Windows-Computer](./media/chef-extension-portal/select-linux-chef-extension.png)
 
 1. Wählen Sie auf der Registerkarte **Linux Chef-Erweiterung** die Option **Erstellen** aus.
 
@@ -94,7 +94,7 @@ In diesem Abschnitt verwenden Sie zuerst das Azure-Portal, um eine Linux-VM zu e
     - **Verschlüsseltes Databag-Geheimnis**: Wählen Sie eine Datei aus, die das Geheimnis für die verschlüsselte Databag enthält, auf die dieser Computer Zugriff haben sollte. Dieser Wert kann leer bleiben.
     - **Chef-Server-SSL-Zertifikat**: Wählen Sie das SSL-Zertifikat aus, das Ihrer Chef-Server-Instanz zugewiesen ist. Dieser Wert kann leer bleiben.
 
-    ![Installieren des Chef-Servers auf einem virtuellen Linux-Computer](./media/chef-extension-portal/install-extension.png)
+      ![Installieren des Chef-Servers auf einem virtuellen Linux-Computer](./media/chef-extension-portal/install-extension.png)
 
 1. Wählen Sie nach Rückkehr zur Registerkarte **Erweiterungen** die Option **OK** aus.
 

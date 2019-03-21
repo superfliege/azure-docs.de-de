@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 0eeab5a2489bacde74b98e7d404789a00b64d02a
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: fdc3c42da7f3d2290806a8cd00d7c90d16f3b87d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992720"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103926"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Sammeln von Erkenntnissen zu Ihrer DNS-Infrastruktur mit der DNS Analytics-Vorschaulösung
 
@@ -66,7 +66,7 @@ Klicken Sie im Lösungsdashboard auf **Konfiguration**, um die DNS Analytics-Kon
 
 - **Domänennamen in der Whitelist**. Die Lösung verarbeitet nicht alle Suchabfragen. Sie verwaltet eine Whitelist mit Domänennamensuffixen. Die Suchabfragen, die in Domänennamen aufgelöst werden, die mit Domänennamensuffixen in dieser Whitelist übereinstimmen, werden von der Lösung nicht verarbeitet. Da die in der Whitelist enthalten Domänennamen nicht verarbeitet werden, werden die an Azure Monitor gesendeten Daten optimiert. Die Standardwhitelist enthält gängige öffentliche Domänennamen, z.B. www.google.com und www.facebook.com. Sie können die vollständige Standardliste mittels Scrollen anzeigen.
 
- Sie können die Liste ändern, um alle Domänennamensuffixe hinzuzufügen, zu denen Sie Suchergebnisse anzeigen möchten. Sie können auch alle Domänennamensuffixe entfernen, zu denen Sie keine Suchergebnisse anzeigen möchten.
+  Sie können die Liste ändern, um alle Domänennamensuffixe hinzuzufügen, zu denen Sie Suchergebnisse anzeigen möchten. Sie können auch alle Domänennamensuffixe entfernen, zu denen Sie keine Suchergebnisse anzeigen möchten.
 
 - **Schwellenwert für Clients mit hoher Aktivität**. DNS-Clients, die den Schwellenwert für die Anzahl der Suchanforderungen überschreiten, werden auf dem Blatt **DNS-Clients** hervorgehoben. Der Standardschwellenwert beträgt 1.000. Sie können den Schwellenwert bearbeiten.
 
@@ -142,7 +142,7 @@ Mit den Informationen können Sie Folgendes identifizieren:
 
 **Anforderungen zur Namensregistrierung**. Auf der oberen Kachel wird ein Trend erfolgreicher dynamischer DNS-Aktualisierungsanforderungen und derer, bei denen Fehler aufgetreten sind, angezeigt. Auf der unteren Kachel sind die 10 Clients aufgeführt, die die meisten DNS-Aktualisierungsanforderungen, bei denen Fehler aufgetreten sind, an die DNS-Server gesendet haben, sortiert nach der Anzahl von Fehlern.
 
-![Blatt „Anforderungen zur Namensregistrierung“ ](./media/dns-analytics/name-reg-req-blade.png)
+![Blatt „Anforderungen zur Namensregistrierung“](./media/dns-analytics/name-reg-req-blade.png)
 
 **DDI Analytics-Beispielabfragen**. Enthält eine Liste der am häufigsten verwendeten Suchabfragen, mit denen unformatierte Analysedaten direkt abgerufen werden.
 

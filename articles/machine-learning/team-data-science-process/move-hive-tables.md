@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: be953621dbadee74361b2170c2a532cfec6ef77a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477852"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57840646"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -36,7 +36,7 @@ Es wird davon ausgegangen, dass die Daten für die Hive-Tabellen in einem **unko
 
 Wenn Sie mit den **NYC Taxi Trip-Daten**üben möchten, gehen Sie so vor:
 
-* **Laden** Sie die 24 [NYC Taxi Trip Data](http://www.andresmh.com/nyctaxitrips) -Dateien (12 Fahrtendateien und 12 Fahrpreisdateien) herunter.
+* **Laden** Sie die 24 [NYC Taxi Trip Data](https://www.andresmh.com/nyctaxitrips) -Dateien (12 Fahrtendateien und 12 Fahrpreisdateien) herunter.
 * **Entpacken** Sie alle Dateien als CSV-Dateien
 * **Laden** Sie sie in den Standardspeicherort (oder den entsprechenden Container) des Azure Storage-Kontos hoch. Optionen für ein solches Konto finden Sie im Thema [Verwenden von Azure Storage mit Azure HDInsight-Clustern](../../hdinsight/hdinsight-hadoop-use-blob-storage.md). Den Prozess zum Hochladen der CSV-Dateien in den Standardcontainer für das Speicherkonto finden Sie auf dieser [Seite](hive-walkthrough.md#upload).
 

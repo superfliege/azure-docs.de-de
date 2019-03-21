@@ -4,22 +4,22 @@ description: Dies ist ein Glossar mit häufig verwendeten Benennungen im Zusamme
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
-ms.topic: resource
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 3b8af6f3f91c54c78cc3b277068272c27055e4aa
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816882"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57775032"
 ---
 # <a name="glossary"></a>Glossar
 
 Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps verwendet werden.
 
-## <a name="a"></a>A
+## <a name="a"></a>Eine Datei
 
 <a name="address-validation"></a> **Adressüberprüfung**: Der Vorgang, bei dem das Vorhandensein einer Adresse überprüft wird.
 
@@ -55,7 +55,7 @@ Die folgende Liste enthält Wörter, die häufig im Zusammenhang mit Azure Maps 
 
 <a name="azure-maps-key"></a> **Azure Maps-Schlüssel**: Ein Azure Maps-Schlüssel ist eine eindeutige Zeichenfolge, die zur Authentifizierung einer Azure Maps-Anwendung eines Benutzers oder einer Dienstanforderung dient. 
 
-## <a name="b"></a>B
+## <a name="b"></a>b
 
 <a name="base-map"></a> **Basiskarte**: Der Teil einer Kartenanwendung, der Hintergrundreferenzinformationen wie Straßen, Orientierungspunkte und politische Grenzen angezeigt.
 

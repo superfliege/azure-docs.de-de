@@ -8,12 +8,12 @@ ms.subservice: ''
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: alkohli
-ms.openlocfilehash: 763dfbc3813a63ffbc91180de1d5b518cef2a46d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d62ad37e6bbe9c89ef803cefc43f373e287a7af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470160"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58100444"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Öffnen eines Supporttickets für Azure Data Box 
 
@@ -55,14 +55,14 @@ Führen Sie die folgenden Schritte aus, um eine Supportanfrage zu erstellen.
 
 4. Klicken Sie unter **Neue Supportanfrage** auf Schritt 3 **Kontaktinformationen**. Führen Sie unter **Kontaktinformationen** folgende Schritte aus:
 
-    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
-    2. Geben Sie in den **Kontaktinformationen** Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land ein. Aktivieren Sie die Option **Änderungen an den Kontaktdaten für zukünftige Supportanfragen speichern**.
-    3. Klicken Sie auf **Create**.
+   1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
+   2. Geben Sie in den **Kontaktinformationen** Ihren Namen, Ihre E-Mail-Adresse, einen optionalen Kontakt und das Land ein. Aktivieren Sie die Option **Änderungen an den Kontaktdaten für zukünftige Supportanfragen speichern**.
+   3. Klicken Sie auf **Create**.
    
-        ![Kontaktinformationen](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
+       ![Kontaktinformationen](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
-    Der Microsoft-Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
-Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
+      Der Microsoft-Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
+      Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

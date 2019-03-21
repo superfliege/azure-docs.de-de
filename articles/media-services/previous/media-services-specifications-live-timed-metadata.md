@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: johndeu;
-ms.openlocfilehash: 89a19d53046afd8d2b16b23508e952989091c8d2
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 10dbf7e8cf67ab721cf525d4a1e7594473592bd4
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005266"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295169"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Signalisieren von zeitgesteuerten Metadaten beim Livestreaming 
 
@@ -120,6 +120,7 @@ Die moov-Box SOLLTE eine **TrackHeaderBox (‚tkhd‘)** gemäß der Definition 
 | **Feldname** | **Feldtyp**          | **Erforderlich?** | **Beschreibung**                                                                                                |
 |----------------|-------------------------|---------------|----------------------------------------------------------------------------------------------------------------|
 | duration       | 64-Bit-Ganzzahl ohne Vorzeichen | Erforderlich      | SOLLTE 0 sein, da die Spurbox 0 (null) Muster enthält und die Dauer der Muster in der Spurbox 0 ist. |
+
 -------------------------------------
 
 Die moov-Box SOLLTE eine **HandlerBox (‚hdlr‘)** gemäß der Definition in [ISO-14496-12] mit den folgenden Bedingungen enthalten:
@@ -127,6 +128,7 @@ Die moov-Box SOLLTE eine **HandlerBox (‚hdlr‘)** gemäß der Definition in [
 | **Feldname** | **Feldtyp**          | **Erforderlich?** | **Beschreibung**   |
 |----------------|-------------------------|---------------|-------------------|
 | handler_type   | 32-Bit-Ganzzahl ohne Vorzeichen | Erforderlich      | SOLLTE ‚meta‘ sein. |
+
 -------------------------------------
 
 Die stsd-Box SOLLTE eine MetaDataSampleEntry-Box mit einem gemäß [ISO-14496-12] definierten Codierungsnamen enthalten.  Beispielsweise sollte der Codierungsname für SCTE-35-Nachrichten ‚scte‘ sein.
@@ -225,7 +227,7 @@ Zeitgesteuerte Metadaten für Apple HTTP Live Streaming (HLS) können in der Seg
 
 | **Attributname** | **Typ**                      | **Erforderlich?**                             | **Beschreibung**                                                                                                                                                                                                                                                                      |
 |--------------------|-------------------------------|-------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| CUE                | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Die Nachricht als base64-Zeichenfolge codiert, wie in [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) beschrieben. Für [SCTE-35]-Nachrichten ist dies die base64-codierte „splice_info_section()“.                                                                                                |
+| CUE                | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Die Nachricht als base64-Zeichenfolge codiert, wie in [IETF RFC 4648](https://tools.ietf.org/html/rfc4648) beschrieben. Für [SCTE-35]-Nachrichten ist dies die base64-codierte „splice_info_section()“.                                                                                                |
 | TYPE               | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Ein URN oder eine URL, der bzw. die das Nachrichtenschema angibt. Für [SCTE-35]-Nachrichten nimmt der Typ den Sonderwert „scte35“ an.                                                                                                                                |
 | ID                 | Zeichenfolge in Anführungszeichen                 | Erforderlich                                  | Eindeutiger Bezeichner für das Ereignis. Wenn die ID bei der Erfassung der Nachricht nicht angegeben wird, erstellt Azure Media Services eine eindeutige ID.                                                                                                                                          |
 | DURATION           | Dezimale Gleitkommazahl | Erforderlich                                  | Die Dauer des Ereignisses. Wenn sie unbekannt ist, sollte der Wert 0 sein. Die Einheit sind Sekundenbruchteile.                                                                                                                                                                                           |
@@ -292,7 +294,7 @@ Im EventStream-Element sind null oder mehr Ereigniselemente enthalten, die folge
 | presentation_time   | 64-Bit-Ganzzahl ohne Vorzeichen | Optional      | MUSS die Medienpräsentationszeit des Ereignisses relativ zum Start des Zeitraums sein. Die Präsentationszeit und die Dauer SOLLTEN an den Datenstrom-Zugriffspunkten, (Stream Access Points, SAPs) von Typ 1 oder Typ 2 ausgerichtet sein, wie in [ISO-14496-12] Anhang I definiert. |
 | duration            | 32-Bit-Ganzzahl ohne Vorzeichen | Optional      | Die Dauer des Ereignisses. Diese MUSS ausgelassen werden, wenn die Dauer unbekannt ist.                                                                                                                                                 |
 | id                  | 32-Bit-Ganzzahl ohne Vorzeichen | Optional      | Gibt die Instanz der Nachricht an. Nachrichten mit gleichbedeutender Semantik weisen den gleichen Wert auf. Wenn die ID bei der Erfassung der Nachricht nicht angegeben wird, erstellt Azure Media Services eine eindeutige ID.             |
-| Ereigniselementwert | Zeichenfolge                  | Erforderlich      | Die Ereignisnachricht als base64-Zeichenfolge, wie in [IETF RFC 4648](http://tools.ietf.org/html/rfc4648) beschrieben.                                                                                                                   |
+| Ereigniselementwert | Zeichenfolge                  | Erforderlich      | Die Ereignisnachricht als base64-Zeichenfolge, wie in [IETF RFC 4648](https://tools.ietf.org/html/rfc4648) beschrieben.                                                                                                                   |
 
 #### <a name="xml-syntax-and-example-for-dash-manifest-mpd-signaling"></a>XML-Syntax und Beispiel für DASH-Manifestsignalisierung (MPD)
 
@@ -396,7 +398,7 @@ Für Smooth-Datenstromerfassung ist es erforderlich, dass die Media Data Box (�
 
 **[MS-SSTR]** [„Microsoft Smooth Streaming Protocol“, 15. Mai 2014](https://download.microsoft.com/download/9/5/E/95EF66AF-9026-4BB0-A41D-A4F81802D92C/%5bMS-SSTR%5d.pdf) (Microsoft Smooth-Streaming-Protokoll)
 
-**[AMF0]** [„Action Message Format AMF0“](http://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) (Aktionsnachrichtenformat AMF0)
+**[AMF0]** [„Action Message Format AMF0“](https://download.macromedia.com/pub/labs/amf/amf0_spec_121207.pdf) (Aktionsnachrichtenformat AMF0)
 
 **[LIVE-FMP4]** [Azure Media Services Fragmented MP4 Live Ingest Specification](https://docs.microsoft.com/azure/media-services/media-services-fmp4-live-ingest-overview) (Spezifikation der Live-Erfassung von fragmentiertem MP4 in Azure Media Services)
 

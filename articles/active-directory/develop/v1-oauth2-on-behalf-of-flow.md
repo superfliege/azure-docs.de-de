@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin, nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dd5d724583dd4682fb6c0b01e8ec11196936289b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 53f8ec8a6833446663d7f142deefd595eed13136
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211902"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116264"
 ---
 # <a name="service-to-service-calls-that-use-delegated-user-identity-in-the-on-behalf-of-flow"></a>Dienst-zu-Dienst-Aufrufe unter Verwendung einer delegierten Benutzeridentität im Im-Auftrag-von-Fluss
 
@@ -63,12 +63,12 @@ Registrieren Sie den Diensts auf der mittleren Ebene und die Clientanwendung in 
     1. Legen Sie abhängig vom Anwendungstyp entweder die Anmelde-URL oder die Umleitungs-URL auf die Basis-URL fest.
     1. Klicken Sie auf **Erstellen**, um die Anwendung zu erstellen.
 1. Generieren Sie einen geheimen Clientschlüssel, bevor Sie das Azure-Portal beenden.
-    1. Wählen Sie im Azure-Portal Ihre Anwendung und dann **Einstellungen** aus.
-    1. Wählen Sie im Menü „Einstellungen“ die Option **Schlüssel** aus, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von einem oder zwei Jahren hinzu.
-    1. Wenn Sie diese Seite speichern, zeigt das Azure-Portal den Schlüsselwert an. Kopieren Sie den Schlüsselwert, und speichern Sie ihn an einem sicheren Ort.
+   1. Wählen Sie im Azure-Portal Ihre Anwendung und dann **Einstellungen** aus.
+   1. Wählen Sie im Menü „Einstellungen“ die Option **Schlüssel** aus, und fügen Sie einen Schlüssel mit einer Schlüsseldauer von einem oder zwei Jahren hinzu.
+   1. Wenn Sie diese Seite speichern, zeigt das Azure-Portal den Schlüsselwert an. Kopieren Sie den Schlüsselwert, und speichern Sie ihn an einem sicheren Ort.
 
-    > [!IMPORTANT]
-    > Sie benötigen den Schlüssel zum Konfigurieren der Anwendungseinstellungen in Ihrer Implementierung. Dieser Wert wird nicht erneut angezeigt, und er kann auf keine andere Weise abgerufen werden. Notieren Sie ihn, wenn er im Azure-Portal angezeigt wird.
+      > [!IMPORTANT]
+      > Sie benötigen den Schlüssel zum Konfigurieren der Anwendungseinstellungen in Ihrer Implementierung. Dieser Wert wird nicht erneut angezeigt, und er kann auf keine andere Weise abgerufen werden. Notieren Sie ihn, wenn er im Azure-Portal angezeigt wird.
 
 ### <a name="register-the-client-application"></a>Registrieren der Clientanwendung
 

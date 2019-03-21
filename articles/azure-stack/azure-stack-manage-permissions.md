@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: f20cd877e4cc53490016d251c5bdb343ab0cb4b0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: acec53a99fd6d809dc01ce12b02987d66579b0c5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250332"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118288"
 ---
 # <a name="manage-role-based-access-control"></a>Verwalten der rollenbasierten Zugriffssteuerung
 
@@ -41,8 +41,8 @@ Ein Benutzer in Azure Stack kann ein Leser, ein Besitzer oder ein Mitwirkender a
 
 ## <a name="set-access-permissions-for-a-universal-group"></a>Festlegen von Zugriffsberechtigungen für eine universelle Gruppe 
 
-> [!Note]  
-Gilt nur für Active Directory-Verbunddienste (AD FS).
+> [!Note]
+> Gilt nur für Active Directory-Verbunddienste (AD FS).
 
 1. Melden Sie sich mit einem Konto an, das Besitzerberechtigungen für die Ressource hat, die Sie verwalten möchten.
 2. Klicken Sie auf dem Blatt für die Ressource auf das Symbol **Zugriff** ![](media/azure-stack-manage-permissions/image1.png).

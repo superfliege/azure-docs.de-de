@@ -10,16 +10,17 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 3d7bbdb25815027625b6f56b25e64c4a07b3728f
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55222489"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57547016"
 ---
-[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
-
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>Schnellstart: Verwenden der Bing-Spracheingabe-API in Java unter Android
+
+[!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
 Mit der Bing-Spracheingabe-API können Sie Android-Anwendungen entwickeln, die gesprochene Audiosignale mithilfe der cloudbasierten Bing-Spracheingabe-API in Text konvertieren. Die API unterstützt Echtzeitstreaming. Hierdurch kann Ihre Anwendung während der Audioübermittlung an den Dienst gleichzeitig und asynchron partielle Erkennungsergebnisse empfangen.
 
@@ -29,7 +30,7 @@ Dieser Artikel veranschaulicht anhand einer Beispielanwendung, wie die Speech-Cl
 
 ### <a name="platform-requirements"></a>Plattformanforderungen
 
-Das Beispiel wird von [Android Studio](http://developer.android.com/sdk/index.html) für Windows in Java entwickelt.
+Das Beispiel wird von [Android Studio](https://developer.android.com/sdk/index.html) für Windows in Java entwickelt.
 
 ### <a name="get-the-client-library-and-sample-application"></a>Abrufen der Clientbibliothek und der Beispielanwendung
 

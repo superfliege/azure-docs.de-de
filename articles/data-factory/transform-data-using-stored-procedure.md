@@ -3,20 +3,19 @@ title: Transformieren von Daten mit der Aktivität „Gespeicherte Prozedur“ i
 description: Informationen, wie Sie die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline zum Aufrufen einer gespeicherten Prozedur in einer Azure SQL-Datenbank-Instanz oder Azure SQL Data Warehouse-Instanz verwenden können.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: douglasl
-ms.openlocfilehash: a56e9c2a7cceed8012f35c9d02e9c3bc5703b31f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: 806654b7586895b62b014a49b8b3a00fb18f008f
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54353208"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575890"
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Transformieren von Daten mit der SQL Server-Aktivität „Gespeicherte Prozedur“ in Azure Data Factory | Microsoft-Dokumentation
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -68,11 +67,11 @@ In der folgenden Tabelle werden diese JSON-Eigenschaften beschrieben:
 
 | Eigenschaft                  | BESCHREIBUNG                              | Erforderlich |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | Der Name der Aktivität                     | JA      |
+| name                      | Der Name der Aktivität                     | Ja      |
 | Beschreibung               | Ein Text, der beschreibt, wofür die Aktivität verwendet wird. | Nein        |
-| type                      | Für die Aktivität „Gespeicherte Prozedur“ lautet der Aktivitätstyp **SqlServerStoredProcedure**. | JA      |
-| linkedServiceName         | Verweis auf die **Azure SQL-Datenbank**-, **Azure SQL Data Warehouse**- oder **SQL Server**-Instanz, die in Data Factory als ein verknüpfter Dienst registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | JA      |
-| storedProcedureName       | Geben Sie den Namen der gespeicherten Prozedur an, die aufgerufen werden soll. | JA      |
+| type                      | Für die Aktivität „Gespeicherte Prozedur“ lautet der Aktivitätstyp **SqlServerStoredProcedure**. | Ja      |
+| linkedServiceName         | Verweis auf die **Azure SQL-Datenbank**-, **Azure SQL Data Warehouse**- oder **SQL Server**-Instanz, die in Data Factory als ein verknüpfter Dienst registriert ist. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel [Von Azure Data Factory unterstützten Compute-Umgebungen](compute-linked-services.md). | Ja      |
+| storedProcedureName       | Geben Sie den Namen der gespeicherten Prozedur an, die aufgerufen werden soll. | Ja      |
 | storedProcedureParameters | Geben Sie die Werte für Parameter der gespeicherten Prozedur an. Verwenden Sie `"param1": { "value": "param1Value","type":"param1Type" }` zum Übergeben von Parameterwerten und deren Typ, der von der Datenquelle unterstützt wird. Wenn Sie für einen Parameter „null“ übergeben müssen, verwenden Sie die folgende Syntax: `"param1": { "value": null }` (nur Kleinbuchstaben). | Nein        |
 
 ## <a name="error-info"></a>Fehlerinformationen

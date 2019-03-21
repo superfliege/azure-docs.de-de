@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/27/2018
 ms.author: ryanwi
-ms.openlocfilehash: 42a6430162f3bafd3ec3ce2a3c523f6f5755914a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0e5cfa42eba5a2110ebf8879c771f2fef048ae03
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39001377"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57835712"
 ---
 # <a name="add-logging-to-your-service-fabric-application"></a>Hinzufügen von Protokollierung zur Service Fabric-Anwendung
 
@@ -132,7 +132,7 @@ Die ASP.NET Core-Protokollierung ([Microsoft.Extensions.Logging NuGet-Paket](htt
 
 ### <a name="using-other-logging-providers"></a>Verwenden anderer Protokollierungsanbieter
 
-Einige Drittanbieter verwenden den im obigen Abschnitt beschriebenen Ansatz, einschließlich [Serilog](https://serilog.net/), [NLog](http://nlog-project.org/) und [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Sie können diese Elemente in die ASP.NET Core-Protokollierung einbetten oder separat verwenden. Serilog enthält ein Feature zur Erweiterung aller Nachrichten, die von einem Protokollierungstool gesendet werden. Dieses Feature kann nützlich sein, um den Dienstnamen, den Typ und die Partitionsinformationen auszugeben. Führen Sie diese Schritte aus, um diese Funktion in der ASP.NET Core-Infrastruktur zu verwenden:
+Einige Drittanbieter verwenden den im obigen Abschnitt beschriebenen Ansatz, einschließlich [Serilog](https://serilog.net/), [NLog](https://nlog-project.org/) und [Loggr](https://github.com/imobile3/Loggr.Extensions.Logging). Sie können diese Elemente in die ASP.NET Core-Protokollierung einbetten oder separat verwenden. Serilog enthält ein Feature zur Erweiterung aller Nachrichten, die von einem Protokollierungstool gesendet werden. Dieses Feature kann nützlich sein, um den Dienstnamen, den Typ und die Partitionsinformationen auszugeben. Führen Sie diese Schritte aus, um diese Funktion in der ASP.NET Core-Infrastruktur zu verwenden:
 
 1. Fügen Sie dem Projekt die NuGet-Pakete **Serilog**, **Serilog.Extensions.Logging**, **Serilog.Sinks.Literate** und **Serilog.Sinks.Observable** hinzu. 
 2. Erstellen Sie eine `LoggerConfiguration` und die Protokollierungsinstanz.

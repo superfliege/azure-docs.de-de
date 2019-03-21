@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: dcbf011d6e5f035a1934b69f94cf95b2318491f0
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0559d89bd691323a95713d518df05e58283cef39
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55813839"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119342"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Behandeln von Problemen bei der Verwendung des Datenverwaltungsgateways
 Dieser Artikel enthält Informationen zur Problembehandlung bei der Verwendung des Datenverwaltungsgateways.
@@ -169,8 +169,8 @@ Das Gateway kann über Service Bus keine Verbindung mit dem Clouddienst herstell
 Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
 
 1. Lassen Sie Regeln für ausgehende IP-Adressen auf dem Gatewaycomputer und in der Unternehmensfirewall zu. Sie finden IP-Adressen im Windows-Ereignisprotokoll (ID == 401): Es wurde versucht, auf eine Socket in einer Weise zuzugreifen, die gemäß ihren Zugriffsberechtigungen XX.XX.XX.XX:9350 unzulässig ist.
-* Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie im Abschnitt „Aspekte zu Proxyservern“.
-* Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 in der Windows-Firewall sowohl auf dem Gatewaycomputer als auch in der Unternehmensfirewall. Weitere Informationen finden Sie im Abschnitt „Ports und Firewall“. Dieser Schritt ist optional, wird jedoch für die Leistungsoptimierung empfohlen.
+1. Konfigurieren Sie die Proxyeinstellungen auf dem Gateway. Weitere Informationen finden Sie im Abschnitt „Aspekte zu Proxyservern“.
+1. Aktivieren Sie die ausgehenden Ports 5671 und 9350-9354 in der Windows-Firewall sowohl auf dem Gatewaycomputer als auch in der Unternehmensfirewall. Weitere Informationen finden Sie im Abschnitt „Ports und Firewall“. Dieser Schritt ist optional, wird jedoch für die Leistungsoptimierung empfohlen.
 
 ### <a name="3-problem"></a>3. Problem
 Sie erhalten den folgenden Fehler.
@@ -184,7 +184,7 @@ Ein vorübergehender Fehler bei der Netzwerkkonnektivität.
 Um das Gateway wieder online zu schalten, gehen Sie wie folgt vor:
 
 1. Warten Sie einige Minuten. Die Verbindung wird automatisch wiederhergestellt, wenn der Fehler nicht mehr vorhanden ist.
-* Wenn der Fehler weiterhin auftritt, starten Sie den Gatewaydienst neu.
+1. Wenn der Fehler weiterhin auftritt, starten Sie den Gatewaydienst neu.
 
 ## <a name="failed-to-author-linked-service"></a>Fehler beim Erstellen des verknüpften Diensts
 ### <a name="problem"></a>Problem
@@ -282,6 +282,6 @@ Ausführliche Informationen hierzu finden Sie in den Gateway-Protokollinformatio
 1. Starten Sie die Windows-**Ereignisanzeige**.
 2. Suchen Sie die Protokolle im Ordner **Anwendungs- und Dienstprotokolle** > **Datenverwaltungsgateway**.
 
- Wenn Sie Probleme mit dem Gateway beheben müssen, suchen Sie in der Ereignisanzeige nach Ereignissen des Typs „Fehler“.
+   Wenn Sie Probleme mit dem Gateway beheben müssen, suchen Sie in der Ereignisanzeige nach Ereignissen des Typs „Fehler“.
 
 ![Datenverwaltungsgateway: Protokolle in der Ereignisanzeige](media/data-factory-troubleshoot-gateway-issues/gateway-logs-event-viewer.png)

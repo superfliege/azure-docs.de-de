@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1dba848be0c24ef26dcefd23d4fc3f7201420449
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873511"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079713"
 ---
 # <a name="learn-image-moderation-concepts"></a>Lernen von Bildmoderationskonzepten
 
@@ -35,12 +35,11 @@ Der **Auswertungsvorgang** gibt eine Zuverlässigkeitsbewertung zwischen 0 und 1
       ],
 
 > [!NOTE]
-
+> 
 > - `isImageAdultClassified` gibt an, dass möglicherweise Bilder vorhanden sind, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden können.
 > - `isImageRacyClassified` gibt an, dass möglicherweise Bilder vorhanden sind, die in bestimmten Situationen als zweideutig bzw. freizügig oder als für Erwachsene bestimmt betrachtet werden können.
 > - Die Bewertung liegt zwischen 0 und 1. Je höher der Wert, desto höher die vom Modell ermittelte Wahrscheinlichkeit, dass die Kategorie zutreffend ist. Diese Vorschauversion basiert nicht auf manuell programmierten Ergebnissen, sondern auf einem statistischen Modell. Es wird empfohlen, anhand Ihrer eigenen Inhalte zu testen, wie die jeweiligen Kategorien zu Ihren Anforderungen passen.
 > - Die booleschen Werte sind abhängig von den internen Bewertungsschwellenwerten entweder TRUE oder FALSE. Kunden müssen entscheiden, ob sie diesen Wert verwenden oder auf der Grundlage ihrer Inhaltsrichtlinien eigene Schwellenwerte festlegen möchten.
->
 
 ## <a name="detecting-text-with-optical-character-recognition-ocr"></a>Erkennen von Text mit der optischen Zeichenerkennung (OCR)
 

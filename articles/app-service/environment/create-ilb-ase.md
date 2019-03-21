@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a707ae6959b035ae0bcc05ead027dabd528e1b59
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55747508"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58101532"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>Erstellen und Verwenden eines internen Lastenausgleichs mit einer App Service-Umgebung #
 
@@ -80,11 +80,11 @@ So erstellen Sie eine ILB-ASE:
 
    Sie können [Ihrer App einen vorhandenen DNS-Namen zuordnen][customdomain]. Der für Apps verwendete benutzerdefinierte Domänenname und der von Ihrer ASE verwendete Domänenname dürfen sich nicht überschneiden. Für eine ILB-ASE mit dem Domänennamen _contoso.com_ können Sie keine benutzerdefinierten Domänennamen für beispielsweise folgende Apps verwenden:
 
-    * www.contoso.com
+   * www\.contoso.com
 
-    * abcd.def.contoso.com
+   * abcd.def.contoso.com
 
-    * abcd.contoso.com
+   * abcd.contoso.com
 
    Wenn Sie die benutzerdefinierten Domänennamen für Ihre Apps kennen, wählen Sie eine Domäne für die ILB-ASE, die keinen Konflikt mit diesen benutzerdefinierten Domänennamen verursacht. In diesem Beispiel können Sie z.B. *contoso-internal.com* für die Domäne Ihrer ASE verwenden, da sie keinen Konflikt mit benutzerdefinierten Domänennamen, die auf *.contoso.com* enden, verursacht.
 
@@ -222,7 +222,7 @@ Weitere Informationen zum Konfigurieren Ihrer ILB-ASE mit einem WAF-Gerät finde
 ## <a name="get-started"></a>Erste Schritte ##
 
 * Informationen zum Einstieg in ASEs finden Sie unter [Einführung in App Service-Umgebungen][Intro].
- 
+ 
 
 <!--Image references-->
 [1]: ./media/creating_and_using_an_internal_load_balancer_with_app_service_environment/createilbase-network.png

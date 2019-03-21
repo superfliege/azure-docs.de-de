@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 6254a32349a0f7c743c3fb4993080ca3437c8276
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
+ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53810269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121348"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -53,7 +53,7 @@ Log Analytics ist ein flexibler Datenspeicher, der zwar ein Schema für die Date
     ```
     search "[username goes here]"
     ```
-Wichtig: Suchen Sie nicht nur nach lesbaren Benutzernamen, sondern auch nach GUIDs, die direkt zu einem bestimmten Benutzer zurückverfolgt werden können.
+  Wichtig: Suchen Sie nicht nur nach lesbaren Benutzernamen, sondern auch nach GUIDs, die direkt zu einem bestimmten Benutzer zurückverfolgt werden können.
 * *Geräte-IDs*: Geräte-IDs sind mit Benutzer-IDs vergleichbar und werden gelegentlich als „privat“ betrachtet. Verwenden Sie die gleiche Vorgehensweise, die weiter oben für Benutzer-IDs angegeben ist, um Tabellen zu ermitteln, bei denen dies ggf. relevant ist. 
 * *Benutzerdefinierte Daten*: In Log Analytics stehen verschiedene Erfassungsmethoden zur Verfügung: benutzerdefinierte Protokolle und benutzerdefinierte Felder, die [HTTP-Datensammler-API](../../azure-monitor/platform/data-collector-api.md) und benutzerdefinierte Daten, die im Rahmen von Systemereignisprotokollen erfasst werden. Alle diese Optionen können personenbezogene Daten enthalten und müssen auf entsprechende Daten untersucht werden.
 * *Durch die Lösung erfasste Daten*: Da es sich bei dem Lösungsmechanismus um einen Mechanismus mit offenem Ende handelt, empfiehlt es sich, alle von Lösungen generierten Tabellen zu überprüfen, um die Compliance zu gewährleisten.

@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie eine Azure-Lösung für die Datenübertragung
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: 271be60bc26cf6bc9a64c459d030818d9e493a22
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: ba6d5e20f0d6a004fd85d7e9dc57584547d52ba3
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158447"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772856"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Lösungen für eine regelmäßige Datenübertragung
  
@@ -58,9 +58,9 @@ In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusamm
 | Hardware                                      | Ihr Hypervisor            | Bereitgestellt von Microsoft    | Nicht verfügbar                                                            |
 | Für Anfangskonfiguration erforderlicher Aufwand                          | Niedrig (< 30 Minuten)            | Mittel (mehrere Stunden) | Groß (mehrere Tage)                                                 |
 | Datenformat                                   | Azure-Blobs, Azure Files   | Azure-Blobs, Azure Files | [Unterstützt mehr als 70 Datenconnectors für Datenspeicher und Formate](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Datenvorverarbeitung                           | Nein                          | Ja, über Edge-Compute    | JA                                                           |
-| Lokaler Cache<br>(zum Speichern lokaler Daten)    | JA                        | JA                      | Nein                                                             |
-| Übertragung aus anderen Clouds                    | Nein                          | Nein                        | JA                                                           |
+| Datenvorverarbeitung                           | Nein                          | Ja, über Edge-Compute    | Ja                                                           |
+| Lokaler Cache<br>(zum Speichern lokaler Daten)    | Ja                        | Ja                      | Nein                                                             |
+| Übertragung aus anderen Clouds                    | Nein                          | Nein                        | Ja                                                           |
 | Preise                                       | [Preise](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Preise](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Preise](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>Nächste Schritte

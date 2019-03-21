@@ -10,12 +10,12 @@ ms.suite: infrastructure-services
 ms.assetid: 5c124986-9f29-4cbc-ad5a-c667b37fbe5a
 ms.topic: article
 ms.date: 11/14/2018
-ms.openlocfilehash: a13ce85124dc84362ec1ee2aa39a16c2c3f09f88
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: a413261d251c8dfc1de9209168ee8137b85009f1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701011"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860617"
 ---
 # <a name="build-advanced-schedules-and-recurrences-for-jobs-in-azure-scheduler"></a>Erstellen erweiterter Zeitpläne und Serien für Aufträge in Microsoft Azure Scheduler
 
@@ -65,13 +65,13 @@ Die folgende Tabelle enthält eine allgemeine Übersicht über die wichtigsten J
 
 | Element | Erforderlich | BESCHREIBUNG | 
 |---------|----------|-------------|
-| **startTime** | Nein  | Ein DateTime-Zeichenfolgenwert im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601), der angibt, wann der Auftrag in einem einfachen Zeitplan erstmals gestartet wird. <p>Bei komplexen Zeitplänen wird der Auftrag frühestens bei **startTime** gestartet. | 
+| **startTime** | Nein  | Ein DateTime-Zeichenfolgenwert im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601), der angibt, wann der Auftrag in einem einfachen Zeitplan erstmals gestartet wird. <p>Bei komplexen Zeitplänen wird der Auftrag frühestens bei **startTime** gestartet. | 
 | **recurrence** | Nein  | Die Wiederholungsregeln für die Ausführung des Auftrags. Das **recurrence**-Objekt unterstützt die folgenden Elemente: **frequency**, **interval**, **schedule**, **count** und **endTime**. <p>Wenn Sie das **recurrence**-Element verwenden, müssen Sie auch das **frequency**-Element verwenden. Andere **recurrence**-Elemente sind dagegen optional. |
 | **frequency** | Ja, bei Verwendung von **recurrence** | Die Zeiteinheit zwischen den Ausführungen. Unterstützt werden folgende Werte: „Minute“, „Hour“, „Day“, „Week“, „Month“ und „Year“ | 
 | **interval** | Nein  | Eine positive ganze Zahl, die die Anzahl von Zeiteinheiten zwischen den Ausführungen basierend auf dem Wert von **frequency** bestimmt. <p>Ist **interval** beispielsweise auf 10 und **frequency** auf „Week“ festgelegt, wird der Auftrag alle zehn Wochen ausgeführt. <p>Hier lautet die höchste Anzahl von Intervallen für jede Häufigkeit wie folgt: <p>- 18 Monate <br>- 78 Wochen <br>- 548 Tage <br>- Für Stunden und Minuten ist der Bereich 1 <= <*Intervall*> <= 1.000. | 
 | **schedule** | Nein  | Definiert Änderungen an der Serie auf Grundlage der angegebenen Minutenmarkierungen, Stundenmarkierungen, Wochentage und Tage des Monats. | 
 | **count** | Nein  | Eine positive ganze Zahl, die angibt, wie oft dieser Auftrag ausgeführt wird, bevor er abgeschlossen ist. <p>Wenn beispielsweise für einen täglichen Auftrag **count** auf 7 festgelegt und das Startdatum Montag ist, wird der Auftrag Sonntag abgeschlossen. Liegt das Startdatum in der Vergangenheit, wird die erste Ausführung auf Grundlage des Erstellungszeitpunkts berechnet. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. | 
-| **endTime** | Nein  | Ein Date- oder DateTime-Zeichenfolgenwert im [ISO 8601-Format](http://en.wikipedia.org/wiki/ISO_8601), der angibt, wann die Ausführung des Auftrags beendet wird. Sie können einen Wert für **endTime** festlegen, der in der Vergangenheit liegt. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. |
+| **endTime** | Nein  | Ein Date- oder DateTime-Zeichenfolgenwert im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601), der angibt, wann die Ausführung des Auftrags beendet wird. Sie können einen Wert für **endTime** festlegen, der in der Vergangenheit liegt. <p>Ohne Angabe von **endTime** oder **count** wird der Auftrag unendlich ausgeführt. Es ist nicht möglich, **count** und **endTime** im selben Auftrag zu verwenden, es wird jedoch die Regel berücksichtigt, die zuerst abgeschlossen wird. |
 |||| 
 
 Dieses JSON-Schema beschreibt beispielsweise einen einfachen Zeitplan und eine einfache Serie für einen Auftrag: 
@@ -94,9 +94,9 @@ Dieses JSON-Schema beschreibt beispielsweise einen einfachen Zeitplan und eine e
 
 *Datumsangaben und DateTime-Werte*
 
-* Datumsangaben in Scheduler-Aufträgen enthalten nur das Datum und entsprechen der [ISO 8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601).
+* Datumsangaben in Scheduler-Aufträgen enthalten nur das Datum und entsprechen der [ISO 8601-Spezifikation](https://en.wikipedia.org/wiki/ISO_8601).
 
-* DateTime-Werte in Scheduler-Aufträgen enthalten sowohl das Datum als auch die Uhrzeit, entsprechen der [ISO 8601-Spezifikation](http://en.wikipedia.org/wiki/ISO_8601) und werden als UTC-Angaben interpretiert, sofern keine UTC-Abweichung angegeben ist. 
+* DateTime-Werte in Scheduler-Aufträgen enthalten sowohl das Datum als auch die Uhrzeit, entsprechen der [ISO 8601-Spezifikation](https://en.wikipedia.org/wiki/ISO_8601) und werden als UTC-Angaben interpretiert, sofern keine UTC-Abweichung angegeben ist. 
 
 Weitere Informationen finden Sie unter [Konzepte, Terminologie und Entitäten](../scheduler/scheduler-concepts-terms.md).
 

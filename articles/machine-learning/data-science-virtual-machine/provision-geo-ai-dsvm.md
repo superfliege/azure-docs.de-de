@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: 47d5616f86c8f4cb62773d0b92a24a5fb63b2ea7
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240470"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57858139"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>Bereitstellen einer Data Science-VM für geografische KI in Azure 
 
@@ -33,7 +33,7 @@ Die Geo-DSVM enthält mehrere Tools für KI, darunter:
 - Tools zum Abrufen und Vorverarbeiten von Bild- und Textdaten 
 - Tools für Entwicklungsaktivitäten wie Microsoft R Server Developer Edition, Anaconda Python, Jupyter Notebooks für Python und R, IDEs für Python und R, SQL-Datenbanken
 - Die Desktopsoftware ArcGIS Pro von ESRI in Verbindung mit Python- und R-Schnittstellen, die die räumlichen Daten aus Ihren KI-Anwendungen verarbeiten können 
-
+ 
 
 ## <a name="create-your-geo-ai-data-science-vm"></a>Erstellen einer Data Science-VM für geografische KI
 
@@ -67,16 +67,16 @@ Im Folgenden wird das Verfahren zum Erstellen einer Instanz der Data Science-VM 
    - **Zusammenfassung**: Stellen Sie sicher, dass alle eingegebenen Informationen richtig sind.
 
    - **Kaufen**: Klicken Sie auf **Kaufen**, um die Bereitstellung zu starten. Es wird ein Link zu den allgemeinen Geschäftsbedingungen bereitgestellt. Für die VM gelten keine über die Computekosten für die Servergröße, die Sie im Schritt **Größe** ausgewählt haben, hinausgehenden Kosten. 
-
+ 
 >[!NOTE]
 > Die Bereitstellung sollte ungefähr 20 bis 30 Minuten dauern. Der Status der Bereitstellung wird im Azure-Portal angezeigt.
 
-
+ 
 ## <a name="how-to-access-the-geo-ai-data-science-virtual-machine"></a>Zugreifen auf die Data Science-VM für geografische KI
 
-Sobald Ihre VM erstellt wurde, können Sie beginnen, die installierten und vorkonfigurierten Tools zu verwenden. Für viele der Tools gibt es Desktopsymbole und Kacheln im Startmenü. Sie können sich mithilfe von Remotedesktop mit den Anmeldeinformationen des Administratorkontos anmelden, das Sie zuvor im Abschnitt **Grundlagen** konfiguriert haben. 
+ Sobald Ihre VM erstellt wurde, können Sie beginnen, die installierten und vorkonfigurierten Tools zu verwenden. Für viele der Tools gibt es Desktopsymbole und Kacheln im Startmenü. Sie können sich mithilfe von Remotedesktop mit den Anmeldeinformationen des Administratorkontos anmelden, das Sie zuvor im Abschnitt **Grundlagen** konfiguriert haben. 
 
-
+ 
 ## <a name="using-arcgis-pro-installed-in-the-vm"></a>Verwenden der auf dem virtuellen Computer installierten Software ArcGIS Pro
 
 Auf der Geo-DSVM ist bereits ArcGIS Pro Desktop vorinstalliert, und die Umgebung ist für die Arbeit mit den Tools der DSVM vorkonfiguriert. Beim Starten von ArcGIS werden Sie aufgefordert, eine Anmeldung für Ihr ArcGIS-Konto anzugeben. Wenn Sie bereits über ein ArcGIS-Konto verfügen und Lizenzen für die Software besitzen, können Sie Ihre vorhandenen Anmeldeinformationen verwenden.  
@@ -87,7 +87,7 @@ Andernfalls können Sie sich für ein neues ArcGIS-Konto und eine Lizenz registr
 
 ![Kostenlose Testversion von ArcGIS](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-Sobald Sie sich für ein kostenpflichtiges oder kostenloses ArcGIS-Testkonto registriert haben, können Sie ArcGIS Pro für Ihr Konto autorisieren. Befolgen Sie dazu die Anweisungen in der [Dokumentation zum Einstieg in ArcGIS Pro](http://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
+Sobald Sie sich für ein kostenpflichtiges oder kostenloses ArcGIS-Testkonto registriert haben, können Sie ArcGIS Pro für Ihr Konto autorisieren. Befolgen Sie dazu die Anweisungen in der [Dokumentation zum Einstieg in ArcGIS Pro](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf). 
 
 Nachdem Sie sich mit Ihrem ArcGIS-Konto bei ArcGIS Pro Desktop angemeldet haben, können Sie die auf dem virtuellen Computer installierten und konfigurierten Data Science-Tools für Ihre geografischen Analysen und Ihre Projekte für maschinelles Lernen verwenden.
 

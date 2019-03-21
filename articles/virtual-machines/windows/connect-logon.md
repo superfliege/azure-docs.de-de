@@ -15,24 +15,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 14bbb77678a70b51c7f640b501827c5618cce606
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 07a8195969df7ad7afd2bfe2e9124b07144d48cb
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978941"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284781"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Herstellen einer Verbindung mit einem virtuellen Azure-Computer unter Windows und Anmelden auf diesem Computer
 Verwenden Sie die Schaltfläche **Verbinden** im Azure-Portal, um eine Remotedesktopsitzung (RDP) von einem Windows-Desktop zu starten. Zunächst stellen Sie eine Verbindung mit dem virtuellen Computer her, dann melden Sie sich an.
 
-Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzustellen, müssen Sie einen RDP-Client für Mac installieren, z.B. [Microsoft-Remotedesktop](https://itunes.apple.com/app/microsoft-remote-desktop/id715768417).
+Um von einem Mac aus eine Verbindung mit einem virtuellen Windows-Computer herzustellen, müssen Sie einen RDP-Client für Mac installieren, z.B. [Microsoft-Remotedesktop](https://aka.ms/rdmac).
 
 ## <a name="connect-to-the-virtual-machine"></a>Herstellen einer Verbindung mit dem virtuellen Computer
 1. Melden Sie sich am [Azure-Portal](https://portal.azure.com/)an, falls Sie dies noch nicht getan haben.
 2. Wählen Sie im linken Menü **Virtual Machines** aus.
 3. Wählen Sie den gewünschten virtuellen Computer aus der Liste aus.
 4. Klicken Sie oben auf der Seite für den virtuellen Computer auf die Schaltfläche **Verbinden**.
-2. Wählen Sie auf der Seite **Mit virtuellem Computer verbinden** die entsprechende IP-Adresse und den Port aus. In den meisten Fällen sollten die Standard-IP-Adresse und der Standardport verwendet werden. Wählen Sie **RDP-Datei herunterladen**RDP-Datei herunterladen** aus. Wenn für den virtuellen Computer eine Just-In-Time-Richtlinie festgelegt wurde, müssen Sie zuerst die Schaltfläche **Zugriff anfordern** auswählen, um Zugriff anzufordern, bevor Sie die RDP-Datei herunterladen können. Weitere Informationen zur Just-In-Time-Richtlinie finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe der Just-In-Time-Richtlinie](../../security-center/security-center-just-in-time.md).
+2. Wählen Sie auf der Seite **Mit virtuellem Computer verbinden** die entsprechende IP-Adresse und den Port aus. In den meisten Fällen sollten die Standard-IP-Adresse und der Standardport verwendet werden. Wählen Sie **RDP-Datei herunterladen** aus. Wenn für den virtuellen Computer eine Just-In-Time-Richtlinie festgelegt wurde, müssen Sie zuerst die Schaltfläche **Zugriff anfordern** auswählen, um Zugriff anzufordern, bevor Sie die RDP-Datei herunterladen können. Weitere Informationen zur Just-In-Time-Richtlinie finden Sie unter [Verwalten des Zugriffs auf virtuelle Computer mithilfe der Just-In-Time-Richtlinie](../../security-center/security-center-just-in-time.md).
 2. Öffnen Sie die heruntergeladene RDP-Datei, und klicken Sie auf **Verbinden**, wenn Sie dazu aufgefordert werden. 
 2. Es wird eine Warnung mit dem Hinweis angezeigt, dass die `.rdp`-Datei von einem unbekannten Herausgeber stammt. Dies entspricht dem erwarteten Verhalten. Klicken Sie im Fenster **Remotedesktopverbindung** auf **Verbinden**, um fortzufahren.
    

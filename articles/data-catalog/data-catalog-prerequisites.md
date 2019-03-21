@@ -8,12 +8,12 @@ ms.assetid: ef497a54-dc4d-4820-b5bf-c361b64b964d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 5d05371d9b948dc2f7d6f834eb9431af80fc6365
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 788e7a453e9879d9c901448659ff1c8cfa7201ff
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406871"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548308"
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure Data Catalog-Voraussetzungen
 
@@ -30,7 +30,7 @@ Zum Einrichten von Data Catalog müssen Sie sich mit einem Azure Active Director
 Azure AD bietet Ihrem Unternehmen sowohl in der Cloud als auch lokal eine einfache Möglichkeit zur Identitäts- und Zugriffsverwaltung. Benutzer können ein einzelnes Geschäfts-, Schul- oder Unikonto für einmaliges Anmelden bei Webanwendungen in der Cloud oder lokalen Webanwendung verwenden. Data Catalog verwendet Azure AD für die Authentifizierung der Anmeldung. Weitere Informationen finden Sie unter [Was ist Azure Active Directory?](../active-directory/fundamentals/active-directory-whatis.md).
 
 > [!NOTE]
-> Über das [Azure-Portal](http://portal.azure.com/) können Sie sich entweder mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto für Azure Active Directory anmelden. Zum Einrichten von Data Catalog über das Azure-Portal oder [Data Catalog-Portal](http://www.azuredatacatalog.com) müssen Sie sich mit einem Azure Active Directory-Konto und nicht mit einem persönlichen Konto anmelden.
+> Über das [Azure-Portal](https://portal.azure.com/) können Sie sich entweder mit einem persönlichen Microsoft-Konto oder einem Geschäfts-, Schul- oder Unikonto für Azure Active Directory anmelden. Zum Einrichten von Data Catalog über das Azure-Portal oder [Data Catalog-Portal](https://www.azuredatacatalog.com) müssen Sie sich mit einem Azure Active Directory-Konto und nicht mit einem persönlichen Konto anmelden.
 >
 >
 

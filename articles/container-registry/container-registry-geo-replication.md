@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: overview
 ms.date: 04/10/2018
 ms.author: stevelas
-ms.openlocfilehash: d65267992876b3b3255a5eea22ff827522ddcdf1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 2dc314dd1d1e728f03c1d0c660d9339254ddc462
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56674700"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57541858"
 ---
 # <a name="geo-replication-in-azure-container-registry"></a>Georeplikation in Azure Container Registry
 
@@ -69,7 +69,7 @@ Die Georeplikation ist nur bei [Premium-Registrierungen](container-registry-skus
 
 ![Wechseln von SKUs im Azure-Portal](media/container-registry-skus/update-registry-sku.png)
 
-Um die Georeplikation für Ihre Premium-Registrierung zu konfigurieren, melden Sie sich unter http://portal.azure.com beim Azure-Portal an.
+Um die Georeplikation für Ihre Premium-Registrierung zu konfigurieren, melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 Navigieren Sie zu Ihrer Azure Container Registry-Instanz, und wählen Sie **Replikationen** aus:
 

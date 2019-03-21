@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 01af5052d8b092d10609769f211d6ffcde03cf8e
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: bd4c024e14e70b5937d85e9917340d25f552096d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190373"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110867"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Installieren und Konfigurieren eines lokalen Datengateways
 
@@ -90,19 +90,19 @@ Nachdem Sie Ihr Gateway registriert und installiert haben, müssen Sie in Ihrem 
 
 2. Geben Sie in **Verbindungsgateway erstellen** diese Einstellungen ein:
 
-    * **Name**: Geben Sie einen Namen für die Gatewayressource ein. 
+   * **Name**: Geben Sie einen Namen für die Gatewayressource ein. 
 
-    * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das Sie der Gatewayressource zuordnen möchten. 
+   * **Abonnement**: Wählen Sie das Azure-Abonnement aus, das Sie der Gatewayressource zuordnen möchten. 
    
-      Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben.
+     Das standardmäßige Abonnement basiert auf dem Azure-Konto, das Sie zum Anmelden verwendet haben.
 
-    * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+   * **Ressourcengruppe**: Erstellen Sie eine Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
 
-    * **Standort**: Wählen Sie die Region aus, in der Sie Ihr Gateway registriert haben.
+   * **Standort**: Wählen Sie die Region aus, in der Sie Ihr Gateway registriert haben.
 
-    * **Installationsname:** Wenn Ihre Gatewayinstallation nicht bereits ausgewählt ist, wählen Sie das registrierte Gateway aus. 
+   * **Installationsname:** Wenn Ihre Gatewayinstallation nicht bereits ausgewählt ist, wählen Sie das registrierte Gateway aus. 
 
-    Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
+     Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
 ## <a name="connect-servers"></a>Verbinden von Servern mit der Gatewayressource
 

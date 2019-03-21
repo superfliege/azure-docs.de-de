@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 99b4712373423d30dc83408cc80eccc93b342c10
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5073d3ab967c4c4e1b90636c247839875a6aa0d7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55205999"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086308"
 ---
 # <a name="how-to-use-version-tagging"></a>Verwenden von Versionsmarkierungen
 
@@ -67,9 +67,9 @@ Wir erstellen eine einzelne Aktion für Version 1.
 
 Jetzt markieren wir dies als „Version 1“ des Modells.
 
-4. Klicken Sie im linken Bereich auf „Einstellungen“ und dann auf das Symbol ![](../media/tutorial18_version_tags.PNG)„Versionstags“, damit die Schaltfläche `New Tag` angezeigt wird, auf die Sie klicken müssen.
+1. Klicken Sie im linken Bereich auf „Einstellungen“ und dann auf das Symbol ![](../media/tutorial18_version_tags.PNG)„Versionstags“, damit die Schaltfläche `New Tag` angezeigt wird, auf die Sie klicken müssen.
     - Nennen Sie sie „Version 1“.
-4. Wählen Sie in der Dropdownliste „Live Tag“ (Live-Tag) die Option „Version 1“ aus.  
+1. Wählen Sie in der Dropdownliste „Live Tag“ (Live-Tag) die Option „Version 1“ aus.  
     - Jetzt verwenden Kanäle, die diesen Bot nutzen, „Version 1“ des Modells.
     - Die Entitäten, Aktionen und Trainingsdialoge dieses Modells der Version 1 können nicht mehr geändert werden.
     - Wenn Sie „Version 1“ als Bearbeitungstag auswählen, können Sie dieses Modell NUR anzeigen, aber nicht bearbeiten.

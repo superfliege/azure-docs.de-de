@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b797cc6e1c0ef0df61c4d1384d2beb12c37112ba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: a4757be00a3633f56aed52dd7af22923e49b0b62
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102382"
 ---
 # <a name="set-up-security-info-preview-to-use-an-authenticator-app"></a>Einrichten der Sicherheitsinformationen (Vorschau) zur Verwendung einer Authentifikator-App
-Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformationen** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
+Mit diesen Schritten können Sie Ihre Methoden für die zweistufige Überprüfung und die Kennwortzurücksetzung hinzufügen. Nachdem Sie die Ersteinrichtung abgeschlossen haben, können Sie zur Seite **Sicherheitsinformation** zurückkehren, um Sicherheitsinformationen hinzuzufügen, zu aktualisieren oder zu löschen.
 
 Wenn Sie direkt nach der Anmeldung mit Ihrem Geschäfts-, Schul- oder Unikonto zur Einrichtung der Sicherheitsinformationen aufgefordert werden, finden Sie weitere Informationen im Artikel [Einrichten Ihrer Sicherheitsinformationen über die Aufforderung auf der Anmeldeseite](security-info-setup-signin.md).
 
@@ -36,11 +36,11 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und rufen Sie die Seite https://myprofile.microsoft.com/ auf.
 
-    ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile.png)
+    ![Seite „Mein Profil“ mit hervorgehobenen Links zu Sicherheitsinformationen](media/security-info/securityinfo-myprofile-page.png)
 
-2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformationen** oder den entsprechenden Link im Block **Sicherheitsinformationen** aus, und klicken Sie dann auf der Seite **Sicherheitsinformationen** auf **Methode hinzufügen**.
+2. Wählen Sie im linken Navigationsbereich den Eintrag **Sicherheitsinformation** oder den entsprechenden Link im Block **Sicherheitsinformation** aus, und klicken Sie dann auf der Seite **Sicherheitsinformation** auf **Methode hinzufügen**.
 
-    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod.png)
+    ![Seite „Sicherheitsinformationen“ mit hervorgehobener Option „Methode hinzufügen“](media/security-info/securityinfo-myprofile-addmethod-page.png)
 
 3. Wählen Sie auf der Seite **Methode hinzufügen** in der Dropdownliste die Option **Authentifikator-App** aus, und klicken Sie dann auf **Hinzufügen**.
 
@@ -52,10 +52,10 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
     ![Seite „App abrufen und loslegen“](media/security-info/securityinfo-myprofile-getauthapp.png)
 
-    >[!Note]
-    >Wenn Sie eine andere App als die Microsoft Authenticator-App verwenden möchten, wählen Sie den Link **Ich möchte eine andere Authentifikator-App verwenden** aus.
-    
-    >Wenn Ihre Organisation neben einer Authentifikator-App auch die Auswahl einer anderen Methode zulässt, können Sie den Link **Ich möchte eine andere Methode einrichten** auswählen.
+   > [!Note]
+   > Wenn Sie eine andere App als die Microsoft Authenticator-App verwenden möchten, wählen Sie den Link **Ich möchte eine andere Authentifikator-App verwenden** aus.
+   > 
+   > Wenn Ihre Organisation neben einer Authentifikator-App auch die Auswahl einer anderen Methode zulässt, können Sie den Link **Ich möchte eine andere Methode einrichten** auswählen.
 
 5. Bleiben Sie auf der Seite **Konto einrichten**, während Sie die Microsoft Authenticator-App auf Ihrem Mobilgerät einrichten.
 
@@ -81,9 +81,9 @@ Je nach den Einstellungen Ihrer Organisation können Sie eine Authentifikator-Ap
 
 8. Bestätigen Sie die Benachrichtigung in der Microsoft Authenticator-App, und klicken Sie dann auf **Weiter**.
 
-    ![Erfolgsmeldung zur Verbindung der App und Ihres Kontos](media/security-info/securityinfo-myprofile-successauthapp.png)
+     ![Erfolgsmeldung zur Verbindung der App und Ihres Kontos](media/security-info/securityinfo-myprofile-successauthapp.png)
 
-    Ihre Sicherheitsinformationen werden aktualisiert, sodass bei der zweistufigen Überprüfung oder der Kennwortzurücksetzung standardmäßig die Microsoft Authenticator-App zur Überprüfung Ihrer Identität verwendet wird.
+     Ihre Sicherheitsinformationen werden aktualisiert, sodass bei der zweistufigen Überprüfung oder der Kennwortzurücksetzung standardmäßig die Microsoft Authenticator-App zur Überprüfung Ihrer Identität verwendet wird.
 
 ## <a name="delete-your-authenticator-app-from-your-security-info-methods"></a>Löschen Ihrer Authentifikator-App aus den Methoden für Sicherheitsinformationen
 Wenn Sie Ihre Authentifikator-App nicht mehr als Methode für Sicherheitsinformationen verwenden möchten, können Sie sie von der Seite **Sicherheitsinformationen** entfernen. Dies funktioniert für alle Authentifikator-Apps, nicht nur für Microsoft Authenticator. Nach dem Löschen der App müssen Sie die Authentifikator-App auf Ihrem Mobilgerät öffnen und das Konto löschen.
@@ -108,7 +108,7 @@ Wenn Sie die Authentifikator-App als Standardmethode für das Anmelden bei Ihrem
 
 ### <a name="to-change-your-default-security-info-method"></a>So ändern Sie die Standardmethode für Sicherheitsinformationen
 
-1. Wählen Sie auf der Seite **Sicherheitsinformationen** den Link **Ändern** neben **Standardmäßige Anmeldemethode** aus.
+1. Wählen Sie auf der Seite **Sicherheitsinformation** den Link **Ändern** neben **Standardmäßige Anmeldemethode** aus.
 
     ![Link zum Ändern der Standardanmeldemethode](media/security-info/securityinfo-myprofile-changedefaultauthapp.png)
 

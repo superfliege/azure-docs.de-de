@@ -18,12 +18,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: elisol, lenalepa
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 82ccfe6a8d77926d2b908f84db600b0665565d51
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 257f7b66163b72141ceb6405768e912a263fb14b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124217"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -133,8 +133,9 @@ Falls Sie dennoch verhindern möchten, dass Benutzer in Ihrem Verzeichnis ohne d
 * So verhindern Sie, dass Benutzer selbst ihre Zustimmung für Anwendungen erteilen:
   1. Navigieren Sie im Azure-Portal unter „Unternehmensanwendungen“ zum Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/UserSettings/menuId/).
   2. Ändern Sie die Einstellung von **Benutzer können Apps den Zugriff auf Unternehmensdaten in ihrem Namen gestatten** in **Nein**. 
-      > [!NOTE]
-      > Wenn Sie diese Option deaktivieren, ist bei jeder neuen Anwendung, die ein Benutzer benötigt, die Zustimmung eines Administrators erforderlich.    
+     
+     > [!NOTE]
+     > Wenn Sie diese Option deaktivieren, ist bei jeder neuen Anwendung, die ein Benutzer benötigt, die Zustimmung eines Administrators erforderlich.    
 * So verhindern Sie, dass Benutzer eigene Anwendungen registrieren:
   1. Navigieren Sie im Azure-Portal unter „Azure Active Directory“ zum Abschnitt [Benutzereinstellungen](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/UserSettings).
   2. Ändern Sie die Einstellung von **Benutzer können Anwendungen registrieren** in **Nein**.

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: TomSh
-ms.openlocfilehash: f9297946b7e09bc8c516470515d0eee9885d5d38
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 7e0e93c82279ec1a4fbecbbf27c7a1866286b2f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116319"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860515"
 ---
 # <a name="azure-database-security-overview"></a>Übersicht über die Sicherheit der Azure-Datenbank
 
@@ -50,7 +50,7 @@ Mit SQL-Datenbank können Sie Ihre Daten mithilfe der folgenden Verschlüsselung
 Es gibt noch weitere Möglichkeiten zum Verschlüsseln Ihrer Daten:
 
 -   [Verschlüsselung auf Zellenebene](https://msdn.microsoft.com/library/ms179331.aspx) werden bestimmte Spalten oder sogar Zellen, die Daten enthalten, mit unterschiedlichen Verschlüsselungsschlüsseln verschlüsselt.
--   Verwenden Sie [Azure Key Vault mit SQL Server auf einem virtuellen Azure-Computer](http://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx), wenn Sie ein Hardwaresicherheitsmodul oder eine zentrale Verwaltung Ihrer Verschlüsselungsschlüsselhierarchie benötigen.
+-   Verwenden Sie [Azure Key Vault mit SQL Server auf einem virtuellen Azure-Computer](https://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx), wenn Sie ein Hardwaresicherheitsmodul oder eine zentrale Verwaltung Ihrer Verschlüsselungsschlüsselhierarchie benötigen.
 
 ### <a name="encryption-in-motion"></a>Verschlüsselung von Daten während der Übertragung
 

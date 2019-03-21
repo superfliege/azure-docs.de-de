@@ -7,20 +7,23 @@ author: bwren
 manager: carmonm
 editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
-ms.service: monitoring
+ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
-ms.openlocfilehash: 75ed69d749e23f39c03afb09f70a18cc1aed600b
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54078574"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102583"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Sammeln von Daten in Log Analytics mit einem Azure Automation-Runbook
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 Sie können in Log Analytics eine erhebliche Menge an Daten aus unterschiedlichen Quellen sammeln, einschließlich [Datenquellen](../../azure-monitor/platform/agent-data-sources.md) auf Agents sowie [von Azure gesammelte Daten](../../azure-monitor/platform/collect-azure-metrics-logs.md). Es gibt jedoch Fälle, in denen Sie Daten sammeln müssen, auf die Sie über diese Standardquellen keinen Zugriff erhalten. Sie können in diesen Situationen die [HTTP-Datensammler-API](../../azure-monitor/platform/data-collector-api.md) verwenden, um Daten von einem REST-API-Client an Log Analytics zu senden. Eine gängige Methode zum Durchführen dieser Datensammlung stellt die Verwendung eines Runbooks in Azure Automation dar.
 
 Dieses Tutorial führt Sie durch das Erstellen und Planen eines Runbooks in Azure Automation zum Schreiben von Daten in Log Analytics.
@@ -63,9 +66,9 @@ Der PowerShell-Katalog bietet jedoch eine schnelle Möglichkeit, ein Modul direk
 | Eigenschaft | Wert der Arbeitsbereichs-ID | Wert des Arbeitsbereichsschlüssels |
 |:--|:--|:--|
 | NAME | WorkspaceId | WorkspaceKey |
-| Typ | Zeichenfolge | Zeichenfolge |
+| Type | Zeichenfolge | Zeichenfolge |
 | Wert | Fügen Sie die Arbeitsbereichs-ID Ihres Log Analytics-Arbeitsbereichs ein. | Fügen Sie den primären oder sekundären Schlüssel Ihres Log Analytics-Arbeitsbereichs ein. |
-| Verschlüsselt | Nein  | JA |
+| Verschlüsselt | Nein  | Ja |
 
 ## <a name="3-create-runbook"></a>3. Runbook erstellen
 
@@ -92,7 +95,7 @@ Azure Automation bietet im Portal einen Editor, mit dem Sie Ihr Runbook bearbeit
     # Code copied from the runbook AzureAutomationTutorial.
     $connectionName = "AzureRunAsConnection"
     $servicePrincipalConnection=Get-AutomationConnection -Name $connectionName
-    Connect-AzureRmAccount `
+    Connect-AzAccount `
         -ServicePrincipal `
         -TenantId $servicePrincipalConnection.TenantId `
         -ApplicationId $servicePrincipalConnection.ApplicationId `
@@ -109,7 +112,7 @@ Azure Automation bietet im Portal einen Editor, mit dem Sie Ihr Runbook bearbeit
     $logType = "AutomationJob"
     
     # Get the jobs from the past hour.
-    $jobs = Get-AzureRmAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
+    $jobs = Get-AzAutomationJob -ResourceGroupName $resourceGroupName -AutomationAccountName $automationAccountName -StartTime (Get-Date).AddHours(-1)
     
     if ($jobs -ne $null) {
         # Convert the job data to json
@@ -128,13 +131,13 @@ Azure Automation umfasst eine Umgebung zum [Testen Ihres Runbooks](../../automat
 
 ![Testen des Runbooks](media/runbook-datacollect/test-runbook.png)
 
-6. Klicken Sie auf **Speichern**, um das Runbook zu speichern.
+1. Klicken Sie auf **Speichern**, um das Runbook zu speichern.
 1. Klicken Sie auf **Testbereich**, um das Runbook in der Testumgebung zu öffnen.
-3. Da Ihr Runbook über Parameter verfügt, werden Sie aufgefordert, Werte für diese einzugeben. Geben Sie den Namen der Ressourcengruppe und das Automation-Konto ein, von der bzw. dem Sie Auftragsinformationen sammeln möchten.
-4. Klicken Sie auf **Starten**, um das Runbook zu starten.
-3. Das Runbook wird mit dem Status **In Warteschlange** gestartet, bevor es in **Wird ausgeführt** wechselt.
-3. Das Runbook sollte eine ausführliche Ausgabe mit den gesammelten Aufträgen im JSON-Format anzeigen. Wenn keine Aufträge aufgeführt werden, wurden möglicherweise in der letzten Stunde keine Aufträge in dem Automation-Konto erstellt. Starten Sie ein beliebiges Runbook im Automation-Konto, und führen Sie den Test erneut aus.
-4. Stellen Sie sicher, dass die Ausgabe keine Fehler im POST-Befehl an Log Analytics anzeigt. Es wird eine Meldung ähnlich der folgenden angezeigt.
+1. Da Ihr Runbook über Parameter verfügt, werden Sie aufgefordert, Werte für diese einzugeben. Geben Sie den Namen der Ressourcengruppe und das Automation-Konto ein, von der bzw. dem Sie Auftragsinformationen sammeln möchten.
+1. Klicken Sie auf **Starten**, um das Runbook zu starten.
+1. Das Runbook wird mit dem Status **In Warteschlange** gestartet, bevor es in **Wird ausgeführt** wechselt.
+1. Das Runbook sollte eine ausführliche Ausgabe mit den gesammelten Aufträgen im JSON-Format anzeigen. Wenn keine Aufträge aufgeführt werden, wurden möglicherweise in der letzten Stunde keine Aufträge in dem Automation-Konto erstellt. Starten Sie ein beliebiges Runbook im Automation-Konto, und führen Sie den Test erneut aus.
+1. Stellen Sie sicher, dass die Ausgabe keine Fehler im POST-Befehl an Log Analytics anzeigt. Es wird eine Meldung ähnlich der folgenden angezeigt.
 
     ![POST-Ausgabe](media/runbook-datacollect/post-output.png)
 
@@ -186,9 +189,9 @@ Die gängigste Methode zum Starten eines Runbooks, das Überwachungsdaten sammel
 
 Nachdem der Zeitplan erstellt wurde, müssen Sie die Parameterwerte festlegen, die jedes Mal verwendet werden, wenn dieser Zeitplan das Runbook startet.
 
-6. Klicken Sie auf **Parameter und Ausführungseinstellungen konfigurieren**.
-7. Geben Sie Werte für **ResourceGroupName** und **AutomationAccountName** ein.
-8. Klicken Sie auf **OK**.
+1. Klicken Sie auf **Parameter und Ausführungseinstellungen konfigurieren**.
+1. Geben Sie Werte für **ResourceGroupName** und **AutomationAccountName** ein.
+1. Klicken Sie auf **OK**.
 
 ## <a name="9-verify-runbook-starts-on-schedule"></a>9. Überprüfen des Starts des Runbooks gemäß Zeitplan
 Bei jedem Start eines Runbooks [wird ein Auftrag erstellt](../../automation/automation-runbook-execution.md), und die Ausgabe wird protokolliert. Dies sind genau die Aufträge, die das Runbook sammelt. Sie können überprüfen, ob das Runbook wie erwartet gestartet wird, indem Sie die Aufträge für das Runbook nach Ablauf die Startzeit des Zeitplans überprüfen.

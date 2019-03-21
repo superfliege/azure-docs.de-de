@@ -3,7 +3,7 @@ title: So deinstallieren Sie das Tool für elastische Datenbankaufträge
 description: Erfahren Sie, wie Sie Komponenten der Aufträge für die elastische Datenbank mithilfe des Azure-Portals oder PowerShell deinstallieren.
 services: sql-database
 ms.service: sql-database
-ms.subservice: elastic-scale
+ms.subservice: scale-out
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
-ms.openlocfilehash: 2131aa63f0f5cdbbc9e0b4eb7c1f57604fe75cdb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 12f923724616378a6ea6c83a947bd5362840a697
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55754953"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57768863"
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>Deinstallieren von Komponenten der Aufträge für die elastische Datenbank
 

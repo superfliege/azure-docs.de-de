@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 6e62e923b6e983dfff8eb72c9526708a3b360930
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55494747"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086019"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>Verwenden von Azure Automation, um einen Auftrag auszulösen
 
@@ -53,20 +53,20 @@ Bevor Sie beginnen stellen Sie sicher, dass Sie über Folgendes verfügen:
 
 3. Im Dialogfeld **Automation-Konto hinzufügen**:
 
-    1. Geben Sie den **Namen** für Ihr Automation-Konto an.
-    2. Wählen Sie das **Abonnement** aus, das mit Ihrem StorSimple Data Manager-Dienst verknüpft ist.
-    3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
-    4. Wählen Sie einen **Speicherort**aus.
-    5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
-    6. Um einen Link für den schnellen Zugriff auf das Dashboard abzurufen, aktivieren Sie **An Dashboard anheften**. Klicken Sie auf **Create**.
+   1. Geben Sie den **Namen** für Ihr Automation-Konto an.
+   2. Wählen Sie das **Abonnement** aus, das mit Ihrem StorSimple Data Manager-Dienst verknüpft ist.
+   3. Erstellen Sie eine neue Ressourcengruppe, oder wählen Sie eine vorhandene Ressourcengruppe aus.
+   4. Wählen Sie einen **Speicherort**aus.
+   5. Lassen Sie die Standardoption **Ausführendes Konto erstellen** aktiviert.
+   6. Um einen Link für den schnellen Zugriff auf das Dashboard abzurufen, aktivieren Sie **An Dashboard anheften**. Klicken Sie auf **Create**.
 
-    ![Erstellen eines ausführenden Automation-Kontos](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![Erstellen eines ausführenden Automation-Kontos](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
-    Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde.
+      Sie werden benachrichtigt, nachdem das Automation-Konto erfolgreich erstellt wurde.
     
-    ![Benachrichtigung für die Bereitstellung eines Automation-Kontos](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
+      ![Benachrichtigung für die Bereitstellung eines Automation-Kontos](./media/storsimple-data-manager-job-using-automation/deployment-automation-account-notification1.png)
 
-    Weitere Informationen hierzu finden Sie unter [Erstellen eines ausführenden Kontos](../automation/automation-create-runas-account.md).
+      Weitere Informationen hierzu finden Sie unter [Erstellen eines ausführenden Kontos](../automation/automation-create-runas-account.md).
 
 3. Wechseln Sie im neu erstellten Konto zu **Freigegebene Ressourcen > Module**, und klicken Sie auf **+ Modul hinzufügen**.
 

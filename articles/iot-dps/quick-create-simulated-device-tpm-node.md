@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: f6ae69c04d83e1ce1540267fb7932b80cca1013c
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: ef0a3d251679d7dd6760f1f928cbf0f0daf3db01
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087206"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099136"
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>Erstellen und Bereitstellen eines simulierten TPM-Geräts mithilfe des Node.js-Geräte-SDKs für den IoT Hub Device Provisioning-Dienst
 
@@ -25,8 +25,8 @@ Die folgenden Schritte zeigen, wie Sie auf Ihrem Entwicklungscomputer unter dem 
 Sollten Sie mit der automatischen Bereitstellung nicht vertraut sein, lesen Sie auch die Informationen unter [Konzepte für die automatische Bereitstellung](concepts-auto-provisioning.md). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](./quick-setup-auto-provision.md) ausgeführt haben, bevor Sie fortfahren. 
 
 In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterstützt:
-- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Für die Registrierung mehrerer verwandter Geräte
-- [Individuelle Registrierungen:](concepts-service.md#individual-enrollment) Für die Registrierung eines einzelnen Geräts
+- [Registrierungsgruppen:](concepts-service.md#enrollment-group) Werden zum Registrieren mehrerer verwandter Geräte verwendet.
+- [Individuelle Registrierungen](concepts-service.md#individual-enrollment): Werden zum Registrieren eines einzelnen Geräts verwendet.
 
 In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
@@ -72,25 +72,25 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 
 1. Installieren Sie die folgenden Pakete mit den während der Registrierung verwendeten Komponenten:
 
-    - Einen für TPM geeigneten Sicherheitsclient: `azure-iot-security-tpm`
-    - Eine Transportkomponente für das Gerät, um eine Verbindung mit dem Gerätebereitstellungsdienst herzustellen: `azure-iot-provisioning-device-http` oder `azure-iot-provisioning-device-amqp`
-    - Einen Client zur Verwendung der Transportkomponente und des Sicherheitsclients: `azure-iot-provisioning-device`
+   - Einen für TPM geeigneten Sicherheitsclient: `azure-iot-security-tpm`
+   - Eine Transportkomponente für das Gerät, um eine Verbindung mit dem Gerätebereitstellungsdienst herzustellen: `azure-iot-provisioning-device-http` oder `azure-iot-provisioning-device-amqp`
+   - Einen Client zur Verwendung der Transportkomponente und des Sicherheitsclients: `azure-iot-provisioning-device`
 
-    Nach der Registrierung des Geräts können Sie die üblichen IoT Hub-Geräteclientpakete verwenden, um mit dem Gerät eine Verbindung unter Verwendung der Anmeldeinformationen herzustellen, die im Rahmen der Registrierung angegeben wurden. Sie benötigen Folgendes:
+     Nach der Registrierung des Geräts können Sie die üblichen IoT Hub-Geräteclientpakete verwenden, um mit dem Gerät eine Verbindung unter Verwendung der Anmeldeinformationen herzustellen, die im Rahmen der Registrierung angegeben wurden. Sie benötigen Folgendes:
 
-    - Den Geräteclient: `azure-iot-device`
-    - Eine Transportkomponente: `azure-iot-device-amqp`, `azure-iot-device-mqtt` oder `azure-iot-device-http`
-    - Den bereit installierten Sicherheitsclient: `azure-iot-security-tpm`
+   - Den Geräteclient: `azure-iot-device`
+   - Eine Transportkomponente: `azure-iot-device-amqp`, `azure-iot-device-mqtt` oder `azure-iot-device-http`
+   - Den bereit installierten Sicherheitsclient: `azure-iot-security-tpm`
 
-    > [!NOTE]
-    > In den folgenden Beispielen werden die Transportkomponenten `azure-iot-provisioning-device-http` und `azure-iot-device-mqtt` verwendet.
-    > 
+     > [!NOTE]
+     > In den folgenden Beispielen werden die Transportkomponenten `azure-iot-provisioning-device-http` und `azure-iot-device-mqtt` verwendet.
+     > 
 
-    Die Pakete können alle gleichzeitig installiert werden. Führen Sie dazu an der Eingabeaufforderung im Ordner **registereddevice** den folgenden Befehl aus:
+     Die Pakete können alle gleichzeitig installiert werden. Führen Sie dazu an der Eingabeaufforderung im Ordner **registereddevice** den folgenden Befehl aus:
 
-        ```cmd/sh
-        npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
-        ```
+       ```cmd/sh
+       npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device
+       ```
 
 1. Erstellen Sie mit einem Text-Editor im Ordner **registerdevice** eine neue Datei namens **ExtractDevice.js**.
 
@@ -141,15 +141,15 @@ In diesem Artikel werden individuelle Registrierungen veranschaulicht.
 1. Wählen Sie auf dem Zusammenfassungsblatt des Device Provisioning-Diensts die Option **Registrierungen verwalten** aus. Wählen Sie die Registerkarte **Individuelle Registrierungen** aus, und klicken Sie oben auf die Schaltfläche **Individuelle Registrierung hinzufügen**. 
 
 1. Geben Sie im Bereich **Registrierung hinzufügen** die folgenden Informationen ein:
-    - Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
-    - Geben Sie die *Registrierungs-ID* und den *Endorsement Key* für Ihr TPM-Gerät ein.
-    - Optional können Sie die folgenden Informationen angeben:
-        - Wählen Sie einen IoT Hub aus, der mit Ihrem Bereitstellungsdienst verknüpft ist.
-        - Geben Sie eine eindeutige Geräte-ID ein. Achten Sie darauf, dass Sie beim Benennen Ihres Geräts keine sensiblen Daten angeben.
-        - Aktualisieren Sie **Initial device twin state** (Anfänglicher Gerätezwillingsstatus) mit der gewünschten Anfangskonfiguration für das Gerät.
-    - Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
+   - Wählen Sie **TPM** als *Mechanismus* für den Nachweis der Identität.
+   - Geben Sie die *Registrierungs-ID* und den *Endorsement Key* für Ihr TPM-Gerät ein.
+   - Optional können Sie die folgenden Informationen angeben:
+       - Wählen Sie einen IoT Hub aus, der mit Ihrem Bereitstellungsdienst verknüpft ist.
+       - Geben Sie eine eindeutige Geräte-ID ein. Achten Sie darauf, dass Sie beim Benennen Ihres Geräts keine sensiblen Daten angeben.
+       - Aktualisieren Sie **Initial device twin state** (Anfänglicher Gerätezwillingsstatus) mit der gewünschten Anfangskonfiguration für das Gerät.
+   - Klicken Sie abschließend auf die Schaltfläche **Speichern**. 
 
-    ![Eingeben von Geräteregistrierungsinformationen auf dem Portalblatt](./media/quick-create-simulated-device/enter-device-enrollment.png)  
+     ![Eingeben von Geräteregistrierungsinformationen auf dem Portalblatt](./media/quick-create-simulated-device/enter-device-enrollment.png)  
 
    Nach erfolgreicher Registrierung wird die *Registrierungs-ID* Ihres Geräts in der Liste auf der Registerkarte *Individuelle Registrierungen* angezeigt. 
 

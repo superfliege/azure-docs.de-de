@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: alinast
-ms.openlocfilehash: 897a350c345e6e284f30040c0d4fcf07d5a6f466
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 4db515a931bc7f423eb11ae31b7304a602f0da46
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106840"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531733"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Datenverarbeitung und benutzerdefinierte Funktionen
 
@@ -40,7 +40,7 @@ Die Datenverarbeitung in Azure Digital Twins umfasst das Definieren von drei Obj
 
 ### <a name="matchers"></a>Matcher (Abgleicher)
 
-Matcher definieren eine Reihe von Bedingungen, mit denen anhand der eingehenden Telemetriedaten eines Sensors bestimmt wird, welche Aktionen ausgeführt werden. In diesen Bedingungen können Eigenschaften des Sensors, des übergeordneten Geräts des Sensors und des übergeordneten Gebäudebereichs des Sensors enthalten sein. Die Bedingungen werden wie im folgenden Beispiel dargestellt als Vergleiche mit einem [JSON-Pfad](http://jsonpath.com/) formuliert:
+Matcher definieren eine Reihe von Bedingungen, mit denen anhand der eingehenden Telemetriedaten eines Sensors bestimmt wird, welche Aktionen ausgeführt werden. In diesen Bedingungen können Eigenschaften des Sensors, des übergeordneten Geräts des Sensors und des übergeordneten Gebäudebereichs des Sensors enthalten sein. Die Bedingungen werden wie im folgenden Beispiel dargestellt als Vergleiche mit einem [JSON-Pfad](https://jsonpath.com/) formuliert:
 
 - Alle Sensoren des Datentyps **Temperature**, die durch den mit Escapezeichen versehenen Zeichenfolgenwert `\"Temperature\"` dargestellt werden
 - Die den Wert `01` im Port aufweisen

@@ -3,8 +3,8 @@ title: Includedatei
 description: Includedatei
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: danieldobalian
+manager: CelesteDG
 editor: ''
 ms.service: active-directory
 ms.devlang: na
@@ -12,14 +12,14 @@ ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/13/2018
-ms.author: andret
+ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 7ff04789a4ba5e5a689b3d3815852bc0fbcdc6a7
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.openlocfilehash: 2b30f95e050887130db1b2395f51e543a50e25d0
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988347"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58203728"
 ---
 ## <a name="register-your-application"></a>Anwendung registrieren
 
@@ -44,7 +44,7 @@ Es gibt zwei Methoden für die Registrierung Ihrer Anwendung. Diese werden in de
     ```java
     final static String CLIENT_ID = "[Enter the application Id here]";
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 7. Öffnen Sie unter **App** > **Manifests** die Datei *AndroidManifest.xml*.
 8. Fügen Sie in `manifest\application` die folgende Aktivität hinzu. Die `BrowserTabActivity`-Aktivität, die Microsoft den Rückruf an Ihre Anwendung nach Abschluss der Authentifizierung ermöglicht:
 
@@ -64,5 +64,5 @@ Es gibt zwei Methoden für die Registrierung Ihrer Anwendung. Diese werden in de
         </intent-filter>
     </activity>
     ```
-<!-- Workaround for Docs conversion bug -->
+   <!-- Workaround for Docs conversion bug -->
 9. Ersetzen Sie in `BrowserTabActivity` `[Enter the application Id here]` durch die Anwendungs-/Client-ID.

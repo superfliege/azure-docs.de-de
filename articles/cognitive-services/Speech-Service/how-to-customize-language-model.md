@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 57d112cfce00839f1381dc41d24bfb697179b5a4
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 8276b86df2dc1bc90fc07da262aa0979f7562619
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878679"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57548488"
 ---
 # <a name="tutorial-create-a-custom-language-model"></a>Tutorial: Erstellen eines benutzerdefinierten Sprachmodells
 
@@ -59,7 +59,7 @@ In der folgenden Tabelle sind die wichtigsten Anforderungen für die Sprachdaten
 | Anzahl von Äußerungen pro Zeile | 1 |
 | Maximale Dateigröße | 1,5 GB |
 | Anmerkungen | Vermeiden Sie Zeichenwiederholungen mit mehr als vier Zeichen (z.B. „aaaaa“).|
-| Anmerkungen | Keine Sonderzeichen wie „\t“ oder andere UTF-8-Zeichen über U+00A1 in der [Unicode-Zeichentabelle](http://www.utf8-chartable.de/)|
+| Anmerkungen | Keine Sonderzeichen wie „\t“ oder andere UTF-8-Zeichen über U+00A1 in der [Unicode-Zeichentabelle](https://www.utf8-chartable.de/)|
 | Anmerkungen | URIs werden ebenfalls abgelehnt, da es keine eindeutige Aussprache für URIs gibt.|
 
 Beim Importieren des Texts wird dieser normalisiert, damit er vom System verarbeitet werden kann. Einige wichtige Normalisierungen müssen jedoch noch _vor_ dem Hochladen durch den Benutzer vorgenommen werden. Informationen zu geeigneter Sprache bei der Vorbereitung Ihrer Sprachdaten finden Sie in den [Richtlinien für die Transkription](prepare-transcription.md).

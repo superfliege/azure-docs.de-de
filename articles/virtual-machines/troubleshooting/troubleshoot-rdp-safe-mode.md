@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 0ef4aa988f4adc855051b213013636b4a04f1cca
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 8e108d88282894a7b1bf014146083008bedd483d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316973"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095040"
 ---
 #  <a name="cannot-rdp-to-a-vm-because-the-vm-boots-into-safe-mode"></a>RDP-Verbindung mit einem virtuellen Computer kann nicht hergestellt werden, weil die VM im abgesicherten Modus gestartet wird
 
@@ -47,7 +47,7 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
 ### <a name="use-serial-control"></a>Verwenden der seriellen Konsole
 
 1. Stellen Sie eine Verbindung mit der [seriellen Konsole her, und öffnen Sie eine CMD-Instanz](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, helfen Ihnen die Informationen unter [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) weiter.
+   ). Wenn die serielle Konsole auf Ihrem virtuellen Computer nicht aktiviert ist, helfen Ihnen die Informationen unter [Reparieren des virtuellen Computers im Offlinestatus](#repair-the-vm-offline) weiter.
 2. Überprüfen Sie die Startkonfigurationsdaten:
 
         bcdedit /enum
@@ -55,12 +55,12 @@ Verwenden Sie zum Beheben dieses Problems die serielle Konsole, um die VM so zu 
     Wenn für die VM das Starten im abgesicherten Modus konfiguriert ist, wird im Abschnitt **Windows Boot Loader** ein zusätzliches Flag mit dem Namen **safeboot** angezeigt. Wenn das Flag **safeboot** nicht zu sehen ist, befindet sich die VM nicht im abgesicherten Modus. Dieser Artikel gilt nicht für Ihr Szenario.
 
     Das Flag **safeboot** kann mit den folgenden Werten angezeigt werden:
-    - Wenig
-    - Netzwerk
+   - Wenig
+   - Netzwerk
 
-    In diesen beiden Modi wird RDP nicht gestartet. Aus diesem Grund bleibt die Behebung unverändert.
+     In diesen beiden Modi wird RDP nicht gestartet. Aus diesem Grund bleibt die Behebung unverändert.
 
-    ![Abbildung zum Flag für den abgesicherten Modus](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
+     ![Abbildung zum Flag für den abgesicherten Modus](./media/troubleshoot-rdp-safe-mode/safe-mode-tag.png)
 
 3. Löschen Sie das Flag **safeboot**, damit die VM wieder im normalen Modus gestartet wird:
 

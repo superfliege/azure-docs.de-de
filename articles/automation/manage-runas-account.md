@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e5949016281b5f8ba5d8770403a146e52d279c73
-ms.sourcegitcommit: 58dc0d48ab4403eb64201ff231af3ddfa8412331
+ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/26/2019
-ms.locfileid: "55079986"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109340"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Verwalten von ausführenden Azure Automation-Konten
 
@@ -197,6 +197,12 @@ Dieses PowerShell-Skript unterstützt folgende Konfigurationen:
         return
     }
 
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+
+    # Import-Module Az.Automation
+    # Enable-AzureRmAlias 
+
+
     Connect-AzureRmAccount -Environment $EnvironmentName 
     $Subscription = Select-AzureRmSubscription -SubscriptionId $SubscriptionId
 
@@ -320,13 +326,13 @@ In diesem Abschnitt wird beschrieben, wie Sie ein ausführendes Konto oder klass
 
 3. Wählen Sie auf der Eigenschaftenseite **Ausführende Konten** entweder das ausführende Konto oder das klassische ausführende Konto aus, das Sie löschen möchten. Klicken Sie anschließend auf der Seite **Eigenschaften** für das ausgewählte Konto auf **Löschen**.
 
- ![Löschen des ausführenden Azure-Kontos](media/manage-runas-account/automation-account-delete-runas.png)
+   ![Löschen des ausführenden Azure-Kontos](media/manage-runas-account/automation-account-delete-runas.png)
 
 1. Während das Konto gelöscht wird, können Sie den Status im Menü unter **Benachrichtigungen** verfolgen.
 
 1. Nach dem Löschen des Kontos können Sie das Konto neu erstellen, indem Sie auf der Eigenschaftenseite **Ausführende Konten** auf die Erstellungsoption für **Ausführendes Azure-Konto** klicken.
 
- ![Neuerstellen des ausführenden Automation-Kontos](media/manage-runas-account/automation-account-create-runas.png)
+   ![Neuerstellen des ausführenden Automation-Kontos](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="cert-renewal"></a>Erneuerung eines selbstsignierten Zertifikats
 

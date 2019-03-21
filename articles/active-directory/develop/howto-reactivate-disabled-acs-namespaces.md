@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0078c260e09ec9fd31ecf2124bc4bf7ad7f92b0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173741"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094557"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Gewusst wie: Reaktivieren deaktivierter Access Control Service-Namespaces
 
@@ -102,7 +102,7 @@ Zusätzliche Verlängerungen werden dann nicht mehr automatisch genehmigt. Wenn 
     | **Problemtyp** | `ACS to SAS Migration` |
     | **Betreff** | Beschreibung des Problems |
 
-  ![Neue Anfrage an den technischen Support](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
+   ![Neue Anfrage an den technischen Support](./media/howto-reactivate-disabled-acs-namespaces/new-technical-support-request.png)
 
 <!--
 

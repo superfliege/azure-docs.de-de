@@ -1,5 +1,5 @@
 ---
-title: Was ist Azure Active Directory? | Microsoft-Dokumentation
+title: Was ist Azure Active Directory? – Azure Active Directory | Microsoft-Dokumentation
 description: Hier finden Sie Informationen zu Azure Active Directory – insbesondere zur erforderlichen Terminologie, zur Zielgruppe, zur Lizenzierung sowie zu zugehörigen Features.
 services: active-directory
 author: eross-msft
@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.topic: overview
 ms.date: 11/13/2018
 ms.author: lizross
-ms.custom: it-pro, seodec18
+ms.custom: it-pro, seodec18, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be8b443dc2d25558343fb8cad3fd5e9734a672e1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0d3b3cd7e759892c2215f190a682f5f69818958d
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187388"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57442359"
 ---
 # <a name="what-is-azure-active-directory"></a>Was ist Azure Active Directory? 
 Azure Active Directory (Azure AD) ist der cloudbasierte Identitäts- und Zugriffsverwaltungsdienst von Microsoft. Azure AD hilft Ihren Mitarbeitern bei der Anmeldung und beim Zugriff auf folgende Ressourcen:

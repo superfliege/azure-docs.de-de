@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 33ada343738e113e8f14e1e5ac4a0e8aee481670
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 144b3f8ae210d515695c2184c2c3193084755746
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55185464"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57841020"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Überwachen und Diagnostizieren von Diensten in einer Entwicklungsumgebung auf einem lokalen Computer
 
@@ -35,7 +35,7 @@ ms.locfileid: "55185464"
 
 ## <a name="debugging-service-fabric-java-applications"></a>Debuggen von Service Fabric Java-Anwendungen
 
-Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](http://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started) verwendet. Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt.
+Für Java-Anwendungen sind [mehrere Protokollierungsframeworks](https://en.wikipedia.org/wiki/Java_logging_framework) verfügbar. Da `java.util.logging` die Standardoption bei JRE ist, wird dies auch für die [Codebeispiele in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started) verwendet. Im Folgenden wir die Konfiguration des `java.util.logging` -Frameworks erklärt.
 
 Mithilfe von „java.util.logging“ können Sie Ihre Anwendungsprotokolle zum Arbeitsspeicher, zu Ausgabestreams, zu Konsolendateien oder zu Sockets umleiten. Für jede dieser Optionen gibt es Standardhandler, die im Framework bereits bereitgestellt wurden. Sie können eine `app.properties` -Datei erstellen, um den Dateihandler für Ihre Anwendung zu konfigurieren, damit alle Protokolle zu einer lokalen Datei umgeleitet werden.
 
@@ -64,7 +64,7 @@ Diese Konfiguration führt zu Protokollen, die auf rotierende Weise unter `/tmp/
 
 Wenn kein Handler explizit konfiguriert ist, wird standardmäßig der Konsolen-Handler registriert. Die Protokolle können in syslog unter „/var/log/syslog“ angezeigt werden.
 
-Weitere Informationen finden Sie bei den [Codebeispielen in GitHub](http://github.com/Azure-Samples/service-fabric-java-getting-started).
+Weitere Informationen finden Sie bei den [Codebeispielen in GitHub](https://github.com/Azure-Samples/service-fabric-java-getting-started).
 
 
 ## <a name="debugging-service-fabric-c-applications"></a>Debuggen von Service Fabric-C#-Anwendungen

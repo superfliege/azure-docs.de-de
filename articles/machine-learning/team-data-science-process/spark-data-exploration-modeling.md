@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b1e6884366300a4edfce1eb05971e50f673b3a22
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457223"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860974"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 
@@ -29,8 +29,8 @@ Die Modelle, die wir verwenden, umfassen logistische und lineare Regression, Ran
 
 * [Lineare Regression mit SGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) ist ein lineares Regressionsmodell, das eine SGD-Methode (Stochastic Gradient Descent, stochastisches Gradientenverfahren) zur Optimierung und Featureskalierung verwendet, um die gezahlten Trinkgeldbeträge vorherzusagen. 
 * [Logistische Regression mit LBFGS](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.classification.LogisticRegressionWithLBFGS) oder „Logit“-Regression ist ein Regressionsmodell, das verwendet werden kann, wenn die abhängige Variable für Datenklassifizierung kategorisch ist. LBFGS ist ein quasi-Newtonscher Optimierungsalgorithmus, der sich dem Broyden-Fletcher-Goldfarb-Shanno-Algorithmus (BFGS) unter Verwendung einer begrenzten Menge an Arbeitsspeicher annähert und häufig im Machine Learning verwendet wird.
-* [Random Forests](http://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forests zählen zu den erfolgreichsten Machine Learning-Modellen für Klassifizierung und Regression.
-* [Gradient-Boosted-Strukturen](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
+* [Random Forests](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) sind Ensembles von Entscheidungsstrukturen.  In ihnen sind viele Entscheidungsstrukturen kombiniert, um das Risiko der Überanpassung zu verringern. Random Forests werden für Regression und Klassifizierung genutzt, können Kategoriefeatures verarbeiten und in eine Klassifizierungseinstellung mit mehreren Klassen erweitert werden. Sie erfordern keine Featureskalierung und können Nichtlinearitäten und Interaktionen von Features erfassen. Random Forests zählen zu den erfolgreichsten Machine Learning-Modellen für Klassifizierung und Regression.
+* [Gradient-Boosted-Strukturen](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) sind Gruppen von Entscheidungsstrukturen. GBTs trainieren Entscheidungsstrukturen iterativ, um einen Funktionsverlust zu minimieren. GBTs werden für die Regression und Klassifizierung verwendet und können kategorische Features behandeln, erfordern keine Featureskalierung und können Nichtlinearitäten und Featureinteraktionen erfassen. Sie können auch in einer Mehrklassenklassifizierung verwendet werden.
 
 Die Modellierungsschritte enthalten auch Code zum Trainieren, Evaluieren und Speichern jedes Modelltyps. Python wurde verwendet, um die Lösung zu codieren und die entsprechenden Diagramme anzuzeigen.   
 
@@ -60,19 +60,17 @@ Die Regressions- und Klassifizierungsaufgaben, die mit einem Spark 2.0-Cluster i
 
 > [!NOTE]
 > Das Fluglinien-Dataset wurde den Spark 2.0-Notebooks hinzugefügt, um die Verwendung von Klassifizierungsalgorithmen besser zu veranschaulichen. Unter den folgenden Links finden Sie Informationen zum Dataset zur Pünktlichkeit von Flugreisestarts und zum Wetterdataset:
-
->- Daten zur Pünktlichkeit von Fluggesellschaften: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
-
->- Flughafen-Wetterdaten: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
+> - Daten zur Pünktlichkeit von Fluggesellschaften: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
+> - Flughafen-Wetterdaten: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 
 <!-- -->
 
 <!-- -->
 
 > [!NOTE]
-Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der Liste oben zeigt viele Aspekte der Datenuntersuchung, Visualisierung und des ML-Modelltrainings in einem Notebook, das weniger Zeit für die Ausführung durch einen heruntergerechneten NYC-Datensatz benötigt, in dem die Taxi- und Fahrpreisdateien bereits zusammengeführt wurden: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Dieses Notebook benötigt eine viel kürzere Ausführungszeit (2 bis 3 Minuten) und kann ein guter Ausgangspunkt sein, um den für Spark 2.0 bereitgestellten Code schnell zu untersuchen. 
+> Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten und den Flugverspätungen bei Fluggesellschaften können 10 Minuten oder länger dauern (je nach Größe Ihres HDI-Clusters). Das erste Notebook in der Liste oben zeigt viele Aspekte der Datenuntersuchung, Visualisierung und des ML-Modelltrainings in einem Notebook, das weniger Zeit für die Ausführung durch einen heruntergerechneten NYC-Datensatz benötigt, in dem die Taxi- und Fahrpreisdateien bereits zusammengeführt wurden: [Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark2.0/Spark2.0-pySpark3-machine-learning-data-science-spark-advanced-data-exploration-modeling.ipynb): Dieses Notebook benötigt eine viel kürzere Ausführungszeit (2 bis 3 Minuten) und kann ein guter Ausgangspunkt sein, um den für Spark 2.0 bereitgestellten Code schnell zu untersuchen. 
 
 <!-- -->
 
@@ -81,7 +79,7 @@ Die Ausführung der Spark 2.0-Notebooks zu den Datasets mit den NYC-Taxidaten un
 <!-- -->
 
 > [!NOTE]
-Die Beschreibungen unten beziehen sich auf die Verwendung von Spark 1.6. Verwenden Sie für Spark 2.0-Versionen die oben beschriebenen und verlinkten Notebooks. 
+> Die Beschreibungen unten beziehen sich auf die Verwendung von Spark 1.6. Verwenden Sie für Spark 2.0-Versionen die oben beschriebenen und verlinkten Notebooks. 
 
 <!-- -->
 
@@ -362,8 +360,8 @@ Dieser Code zeigt, wie Sie ein neues Feature durch Diskretisieren von Stunden in
 ### <a name="index-and-encode-categorical-features-for-input-into-modeling-functions"></a>Indizieren und Codieren von kategorischen Features für die Eingabe in Modellierungsfunktionen
 Dieser Abschnitt beschreibt das Indizieren oder Codieren von kategorischen Features für die Eingabe in die Modellierungsfunktionen. Die Modellierungs- und Vorhersagefunktionen von MLlib erfordern, dass Features mit kategorischen Eingabedaten vor der Verwendung indiziert oder codiert werden. Je nach Modell müssen Sie auf unterschiedliche Weise indizieren oder codieren:  
 
-* **Strukturbasierte Modellierung** erfordert, dass Kategorien als numerische Werte codiert werden (z.B. kann ein Feature mit drei Kategorien möglicherweise mit 0, 1 und 2 codiert werden). Dies erfolgt über die MLlib-Funktion [StringIndexer](http://spark.apache.org/docs/latest/ml-features.html#stringindexer). Diese Funktion codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit der Bezeichnungsindizes, die nach der Häufigkeit der Bezeichnungen angeordnet sind. Obwohl sie mit numerischen Werten für die Verarbeitung von Eingabe und Daten indiziert sind, können strukturbasierte Algorithmen so angegeben werden, dass sie entsprechend als Kategorien behandelt werden. 
-* **Logistische und lineare Regressionsmodelle** erfordern One-Hot-Codierung, wobei z.B. ein Feature mit drei Kategorien auf drei Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](http://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) zur One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
+* **Strukturbasierte Modellierung** erfordert, dass Kategorien als numerische Werte codiert werden (z.B. kann ein Feature mit drei Kategorien möglicherweise mit 0, 1 und 2 codiert werden). Dies erfolgt über die MLlib-Funktion [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer). Diese Funktion codiert eine Zeichenfolgenspalte von Bezeichnungen in eine Spalte mit der Bezeichnungsindizes, die nach der Häufigkeit der Bezeichnungen angeordnet sind. Obwohl sie mit numerischen Werten für die Verarbeitung von Eingabe und Daten indiziert sind, können strukturbasierte Algorithmen so angegeben werden, dass sie entsprechend als Kategorien behandelt werden. 
+* **Logistische und lineare Regressionsmodelle** erfordern One-Hot-Codierung, wobei z.B. ein Feature mit drei Kategorien auf drei Featurespalten erweitert werden kann, wobei jede abhängig von der Kategorie einer Beobachtung 0 oder 1 enthalten kann. MLlib bietet die Funktion [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) zur One-Hot-Codierung. Dieser Encoder ordnet eine Spalte mit Bezeichnungsindizes einer Spalte mit binären Vektoren mit höchstens einem einzigen Wert zu. Diese Codierung ermöglicht die Anwendung von Algorithmen, die Nummernwertfeatures erwarten, z.B. logistische Regression, auf kategorische Features.
 
 Hier ist der Code zum Indizieren und Codieren von kategorischen Features:
 

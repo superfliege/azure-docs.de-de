@@ -16,12 +16,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: a58f5a3794d352fa8671321f5a30d74d2598df75
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 509dafb02d456e3f612e1de8a5bc1cf4b010a05a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113855"
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Installieren des Azure Stack Development Kits (ASDK)
 Nachdem Sie den [ASDK-Hostcomputer vorbereitet](asdk-prepare-host.md) haben, kann das ASDK mit den folgenden Schritten in diesem Artikel im Image „CloudBuilder.vhdx“ bereitgestellt werden.
@@ -44,8 +44,8 @@ Die Schritte in diesem Artikel zeigen, wie das ASDK mit einer grafischen Benutze
   
    Wenn Sie einen Azure-Abonnementidentitätsanbieter auswählen, benötigen Sie eine Internetverbindung, den vollständigen Namen eines Azure AD-Verzeichnismandanten im Format „*Domänenname*.onmicrosoft.com“ oder einen von Azure AD überprüften benutzerdefinierten Domänennamen und globale Administratoranmeldeinformationen für das angegebene Verzeichnis.<br><br>Nach der Bereitstellung ist die globale Azure Active Directory-Administratorberechtigung nicht erforderlich. Einige Vorgänge erfordern jedoch möglicherweise die Anmeldeinformationen für den globalen Administrator. Beispielsweise ein Ressourcenanbieter-Installationsskript oder ein neues Feature, dem eine Berechtigung erteilt werden muss. Sie können entweder die globalen Administratorrechte des Kontos vorübergehend wiederherstellen oder ein separates globales Administratorkonto verwenden, das Besitzer des *Standardanbieterabonnements* ist.<br><br>Wenn Sie AD FS als Identitätsanbieter verwenden, wird der standardmäßige Stampverzeichnisdienst verwendet. Das Standardkonto für die Anmeldung lautet azurestackadmin@azurestack.local, und das dazugehörige Kennwort haben Sie im Rahmen des Setupvorgangs angegeben.
 
-  > [!NOTE]
-  > Um auch dann optimale Ergebnisse zu erzielen, wenn Sie eine nicht verbundene Azure Stack-Umgebung mit AD FS als Identitätsanbieter verwenden möchten, wird empfohlen, das ASDK bei bestehender Internetverbindung zu installieren. Auf diese Weise kann die Evaluierungsversion von Windows Server 2016, die Teil der Development Kit-Installation ist, während der Bereitstellung aktiviert werden.
+   > [!NOTE]
+   > Um auch dann optimale Ergebnisse zu erzielen, wenn Sie eine nicht verbundene Azure Stack-Umgebung mit AD FS als Identitätsanbieter verwenden möchten, wird empfohlen, das ASDK bei bestehender Internetverbindung zu installieren. Auf diese Weise kann die Evaluierungsversion von Windows Server 2016, die Teil der Development Kit-Installation ist, während der Bereitstellung aktiviert werden.
 
 4. Wählen Sie einen für das Development Kit zu verwendenden Netzwerkadapter aus, und klicken Sie dann auf **Weiter**.
 

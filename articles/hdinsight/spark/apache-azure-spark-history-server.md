@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: a896c949e1f05a5d9ee179fa475150ad8da34283
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792780"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076801"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>Verwenden des erweiterten Apache Spark-Verlaufsservers zum Debuggen und Diagnostizieren von Apache Spark-Anwendungen
 
@@ -106,11 +106,11 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
 
 + Geben Sie den Auftrag wieder, indem Sie auf die Schaltfläche **Wiedergabe** klicken. Sie können die Wiedergabe jederzeit beenden, indem Sie auf die Schaltfläche „Beenden“ klicken. Die Aufgaben werden in Farbe angezeigt, um verschiedene Status bei der Wiedergabe darzustellen:
 
-    + Grün für Erfolg: Der Auftrag wurde erfolgreich abgeschlossen.
-    + Orange für Wiederholung: Instanzen fehlgeschlagene Aufgaben, die aber keine Auswirkungen auf das endgültige Ergebnis des Auftrags haben. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später möglicherweise erfolgreich sind.
-    + Blau für Ausführung: Die Aufgabe wird ausgeführt.
-    + Weiß für wartende oder übersprungene Aufgaben: Die Aufgabe wartet auf die Ausführung, oder die Phase wurde übersprungen.
-    + Rot für Fehler: Die Aufgabe ist fehlgeschlagen.
+  + Grün für Erfolg: Der Auftrag wurde erfolgreich abgeschlossen.
+  + Orange für Wiederholung: Instanzen fehlgeschlagene Aufgaben, die aber keine Auswirkungen auf das endgültige Ergebnis des Auftrags haben. Für diese Aufgaben gibt es doppelte oder Wiederholungsinstanzen, die später möglicherweise erfolgreich sind.
+  + Blau für Ausführung: Die Aufgabe wird ausgeführt.
+  + Weiß für wartende oder übersprungene Aufgaben: Die Aufgabe wartet auf die Ausführung, oder die Phase wurde übersprungen.
+  + Rot für Fehler: Die Aufgabe ist fehlgeschlagen.
 
     ![Diagrammfarbbeispiel: Ausführung](./media/apache-azure-spark-history-server/sparkui-graph-color-running.png)
  
@@ -132,20 +132,20 @@ Wählen Sie die Auftrags-ID aus, und klicken Sie im Toolmenü auf **Diagramm**, 
     ![Diagramm-QuickInfo](./media/apache-azure-spark-history-server/sparkui-graph-tooltip.png)
 
 + Auf der Registerkarte „Auftragsgraph“ wird für die Phasen eine QuickInfo und ein kleines Symbol angezeigt, wenn sie Aufgaben enthalten, die den folgenden Bedingungen entsprechen:
-    + Datenschiefe: Größe der gelesenen Daten > Durchschnittliche Größe der gelesenen Daten aller Aufgaben innerhalb dieser Phase x 2 und Größe der gelesenen Daten > 10 MB.
-    + Zeitabweichung: Ausführungszeit > durchschnittliche Ausführungszeit aller Aufgaben innerhalb dieser Phase x 2 und Ausführungszeit > 2 Minuten.
+  + Datenschiefe: Größe der gelesenen Daten > Durchschnittliche Größe der gelesenen Daten aller Aufgaben innerhalb dieser Phase x 2 und Größe der gelesenen Daten > 10 MB.
+  + Zeitabweichung: Ausführungszeit > durchschnittliche Ausführungszeit aller Aufgaben innerhalb dieser Phase x 2 und Ausführungszeit > 2 Minuten.
 
     ![Diagramm mit Symbol für Zeitabweichung](./media/apache-azure-spark-history-server/sparkui-graph-skew-icon.png)
 
 + Der Diagrammknoten des Auftrags zeigt die folgenden Informationen der einzelnen Phasen an:
-    + ID
-    + Name oder Beschreibung
-    + Gesamtanzahl der Aufgaben
-    + Gelesene Daten: die Summe der Eingabegröße und der Shuffle-Lesegröße
-    + Geschriebene Daten: die Summe der Ausgabegröße und der Shuffle-Schreibgröße
-    + Ausführungszeit: die Zeit zwischen der Startzeit des ersten Versuchs und Abschlusszeit des letzten Versuchs
-    + Zeilenanzahl: die Summe der Eingabedatensätze, Ausgabedatensätze, Shuffle-Lesedatensätze und Shuffle-Schreibdatensätze
-    + Fortschritt
+  + ID
+  + Name oder Beschreibung
+  + Gesamtanzahl der Aufgaben
+  + Gelesene Daten: die Summe der Eingabegröße und der Shuffle-Lesegröße
+  + Geschriebene Daten: die Summe der Ausgabegröße und der Shuffle-Schreibgröße
+  + Ausführungszeit: die Zeit zwischen der Startzeit des ersten Versuchs und Abschlusszeit des letzten Versuchs
+  + Zeilenanzahl: die Summe der Eingabedatensätze, Ausgabedatensätze, Shuffle-Lesedatensätze und Shuffle-Schreibdatensätze
+  + Fortschritt
 
     > [!NOTE]  
     > Standardmäßig zeigt der Diagrammknoten des Auftrags Informationen zum letzten Versuch der einzelnen Phasen an (mit Ausnahme der Zeit für die Phasenausführung), aber während der Wiedergabe zeigt der Diagrammknoten Informationen zu jedem Versuch an.
@@ -312,10 +312,10 @@ Wenn Sie mit einem Hotfix eine Aktualisierung durchführen möchten, verwenden S
     https://hdinsighttoolingstorage.blob.core.windows.net/shsscriptactions/upgrade_spark_enhancement.sh
    ```
 
-    + Aktivieren Sie **Hauptknoten** und **Worker**.
-    + **Parameter**: Legen Sie die Parameter nach Bash-Verwendung fest.
+   + Aktivieren Sie **Hauptknoten** und **Worker**.
+   + **Parameter**: Legen Sie die Parameter nach Bash-Verwendung fest.
 
-    ![Protokoll hochladen oder Hotfix-Aktualisierung](./media/apache-azure-spark-history-server/sparkui-upload2.png)
+     ![Protokoll hochladen oder Hotfix-Aktualisierung](./media/apache-azure-spark-history-server/sparkui-upload2.png)
 
 
 ## <a name="known-issues"></a>Bekannte Probleme

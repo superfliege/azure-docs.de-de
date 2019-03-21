@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 0d8bb451c821a4883c81e0e51c5d98e146e3008e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2d59235b067d9571bc8b64c33799431be6489502
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243537"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087209"
 ---
 # <a name="restore-azure-sql-data-warehouse-portal"></a>Wiederherstellen einer Azure SQL Data Warehouse-Instanz (Portal)
 > [!div class="op_single_selector"]
@@ -23,9 +23,9 @@ ms.locfileid: "55243537"
 > * [Portal][Portal]
 > * [PowerShell][PowerShell]
 > * [REST][REST]
->
->
-In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz über das Azure-Portal wiederherstellen.
+> 
+> 
+> In diesem Artikel erfahren Sie, wie Sie eine Azure SQL Data Warehouse-Instanz über das Azure-Portal wiederherstellen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 **Überprüfen Sie Ihre DTU-Kapazität.** Jede Instanz von SQL Data Warehouse wird von einer SQL Server-Instanz (z.B. „myserver.database.windows.net“) gehostet, die über ein DTU-Standardkontingent (Data Throughput Unit) verfügt. Überprüfen Sie vor dem Wiederherstellen einer SQL Data Warehouse-Instanz, ob das DTU-Kontingent Ihrer SQL Server-Instanz für die wiederherzustellende Datenbank ausreicht. Informationen zum Berechnen des DTU-Kontingents bzw. zur Anforderung weiterer DTUs finden Sie unter [Anfordern einer DTU-Kontingentänderung][Request a DTU quota change].

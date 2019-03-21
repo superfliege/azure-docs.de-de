@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 045f2d12eb6836d14a09ea96c8eca3cad0e5246d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 551d0cd149c4d1555a40ccf0d7baeff97c6809c2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55458222"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863296"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
@@ -36,7 +36,7 @@ Geben Sie die Informationen für diesen neuen Branch ein, etwa den Namen des Bra
 
 Eine bewährte Methode besteht darin, für jedes Storyarbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jedes Arbeitselement eine Verzweigung anhand der Storyverzweigung. Die Verzweigungen auf diese hierarchische Weise zu organisieren, die den Beziehungen zwischen Story und Aufgabe entspricht, ist nützlich, wenn mehrere Personen an unterschiedlichen Storys im selben Projekt oder an unterschiedlichen Aufgaben in derselben Story arbeiten. Konflikte können minimiert werden, wenn jedes Teammitglied an einer anderen Verzweigung arbeitet und bei gemeinsamer Arbeit an einer Verzweigung jedes Mitglied an unterschiedlichen Codes oder anderen Artefakten arbeitet. 
 
-Die folgende Abbildung zeigt die empfohlene Verzweigungsstrategie für TDSP. Möglicherweise benötigen Sie nicht so viele Verzweigungen, wie hier dargestellt sind, insbesondere, wenn nur eine oder zwei Personen am selben Projekt arbeiten oder nur eine Person alle Aufgaben einer Story bearbeitet. Das Trennen der Entwicklungsverzweigung von der Hauptverzweigung ist jedoch immer ratsam. Dies verringert das Risiko, dass die Releaseverzweigung durch Entwicklungsaktivitäten unterbrochen wird. Eine ausführlichere Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](http://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
+Die folgende Abbildung zeigt die empfohlene Verzweigungsstrategie für TDSP. Möglicherweise benötigen Sie nicht so viele Verzweigungen, wie hier dargestellt sind, insbesondere, wenn nur eine oder zwei Personen am selben Projekt arbeiten oder nur eine Person alle Aufgaben einer Story bearbeitet. Das Trennen der Entwicklungsverzweigung von der Hauptverzweigung ist jedoch immer ratsam. Dies verringert das Risiko, dass die Releaseverzweigung durch Entwicklungsaktivitäten unterbrochen wird. Eine ausführlichere Beschreibung des Git-Branchmodells finden Sie unter [A Successful Git Branching Model](https://nvie.com/posts/a-successful-git-branching-model/) (Ein erfolgreiches Git-Branchmodell).
 
 ![3](./media/collaborative-coding-with-git/3-git-branches.png)
 

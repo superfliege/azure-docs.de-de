@@ -3,16 +3,16 @@ ms.assetid: ''
 title: Vorläufiges Löschen in Azure Key Vault | Microsoft Docs
 ms.service: key-vault
 ms.topic: conceptual
-author: bryanla
-ms.author: bryanla
+author: msmbaldwin
+ms.author: mbaldwin
 manager: barbkess
 ms.date: 09/25/2017
-ms.openlocfilehash: 02d08f4334f1e20a3f635868fb053ffb44388d9c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 526b0b135c8d5c1741ddf5f3fe6fb32f259a3e2c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108024"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092989"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen
 
@@ -44,9 +44,9 @@ Vorläufiges Löschen ist ein optionales Key Vault-Verhalten und in dieser Versi
 ### <a name="purge-protection--flag"></a>Bereinigungsschutz-Flag
 Das Bereinigungsschutz-Flag (**--enable-purge-protection** in der Azure CLI) ist in der Standardeinstellung deaktiviert. Wenn dieses Flag aktiviert wird, kann ein Tresor oder ein Objekt im gelöschten Zustand nicht gelöscht werden, bis die Aufbewahrungsdauer von 90 Tagen abgelaufen ist. Solch ein Tresor oder Objekt kann noch wiederhergestellt werden. Dieses Flag versichert Kunden zusätzlich, dass ein Tresor oder ein Objekt nie dauerhaft gelöscht werden kann, bevor die Aufbewahrungsdauer abgelaufen ist. Das Bereinigungsschutz-Flag kann nur aktiviert werden, wenn das Flag für Vorläufiges Löschen aktiviert ist. Sie können auch bei der Tresorerstellung das Flag für Vorläufiges Löschen und das Bereinigungsschutz-Flag aktivieren.
 
-> [!NOTE] 
-   Damit der Bereinigungsschutz aktiviert werden kann, muss das vorläufige Löschen aktiviert sein.
-Der dafür erforderliche Befehl in der Azure CLI 2 ist
+> [!NOTE]
+>    Damit der Bereinigungsschutz aktiviert werden kann, muss das vorläufige Löschen aktiviert sein.
+> Der dafür erforderliche Befehl in der Azure CLI 2 ist
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true

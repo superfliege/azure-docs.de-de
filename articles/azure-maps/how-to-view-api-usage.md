@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: f8977a0a50103b3c2935ee27a69a53e636f5aecb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d14088ed940ab83be29756a26f8612704bb9aebd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580394"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079877"
 ---
 # <a name="view-azure-maps-api-usage"></a>Anzeigen der Azure Maps-API-Nutzung
 
@@ -37,10 +37,10 @@ Fahren Sie mit dem nächsten Abschnitt fort, wenn Sie diese Diagramme für Ihre 
 
 4. Wählen Sie im Bereich **Metriken** eine der folgenden Optionen aus:
 
-    1. **Verfügbarkeit**, womit der *Durchschnitt* der API-Verfügbarkeit über einen bestimmten Zeitraum angezeigt wird.
-    2. **Nutzung**, die Ihnen die *Anzahl* der Nutzungen für Ihr Konto anzeigt.
+   1. **Verfügbarkeit**, womit der *Durchschnitt* der API-Verfügbarkeit über einen bestimmten Zeitraum angezeigt wird.
+   2. **Nutzung**, die Ihnen die *Anzahl* der Nutzungen für Ihr Konto anzeigt.
 
-    ![Metrikenbereich von Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
+      ![Metrikenbereich von Azure Maps](media/how-to-view-api-usage/portal-metrics.png)
 
 5. Als Nächstes können Sie den *Zeitbereich* wählen, indem Sie auf **Letzte 24 Stunden (automatisch)** klicken. Standardmäßig ist der Zeitraum auf 24 Stunden festgelegt. Nach dem Klicken sehen Sie alle auswählbaren Zeitbereiche. Sie können auch die *Zeitgranularität* auswählen und in der gleichen Dropdownliste wählen, ob Sie die *lokale* oder *GMT*-Uhrzeit anzeigen möchten. Klicken Sie auf **Anwenden**.
 

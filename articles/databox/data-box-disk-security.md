@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 569f89d389e4bc8c7f2d1f46f3713e9792d4e466
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: afb344418f843e54c3172c17d28bde7055e101b4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159688"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093455"
 ---
 # <a name="azure-data-box-disk-security-and-data-protection"></a>Azure Data Box Disk: Sicherheit und Schutz von Daten
 
@@ -71,17 +71,17 @@ Für den Azure Data Box-Datenträger werden persönliche Informationen im Dienst
 
 - **Auftragsdetails**: Nach der Erstellung des Auftrags werden die Versandadresse, die E-Mail-Adresse und die Kontaktinformationen von Benutzern im Azure-Portal gespeichert. Zu den gespeicherten Informationen gehört Folgendes:
 
-    - Kontaktname
-    - Telefonnummer
-    - E-Mail
-    - Anschrift
-    - City
-    - Postleitzahl
-    - Zustand
-    - Land/Provinz/Region
-    - Laufwerk-ID
-    - Kontonummer des Versanddienstleisters
-    - Nachverfolgungsnummer für den Versand
+  - Kontaktname
+  - Telefonnummer
+  - E-Mail
+  - Anschrift
+  - City
+  - Postleitzahl
+  - Zustand
+  - Land/Provinz/Region
+  - Laufwerk-ID
+  - Kontonummer des Versanddienstleisters
+  - Nachverfolgungsnummer für den Versand
 
     Die Auftragsdetails werden vom Data Box-Dienst gelöscht, wenn der Auftrag abgeschlossen ist oder wenn er von Ihnen gelöscht wird.
 

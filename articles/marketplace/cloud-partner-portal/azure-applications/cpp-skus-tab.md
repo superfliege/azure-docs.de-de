@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: a963db0b0b1a20c110f90bacdae092846f7bdd8b
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 7bf7e341a83727e21e9225c384829c05b7230579
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342540"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095992"
 ---
 # <a name="azure-application-skus-tab"></a>Registerkarte „SKUs“ für Azure-Anwendungen
 
 In diesem Artikel ist beschrieben, wie Sie die Registerkarte „SKUs“ verwenden, um SKUs für Ihr Azure-Anwendung zu erstellen. 
 
->[!IMPORTANT] 
-Die Schritte zum Konfigurieren einer SKU sind für ein Angebot einer verwalteten Anwendung und ein Angebot einer Lösungsvorlage unterschiedlich. Diese Unterschiede sind in diesem Artikel erläutert. 
+> [!IMPORTANT]
+> Die Schritte zum Konfigurieren einer SKU sind für ein Angebot einer verwalteten Anwendung und ein Angebot einer Lösungsvorlage unterschiedlich. Diese Unterschiede sind in diesem Artikel erläutert. 
 
 ## <a name="configure-azure-application-skus"></a>Konfigurieren der SKUs einer Azure-Anwendung
 

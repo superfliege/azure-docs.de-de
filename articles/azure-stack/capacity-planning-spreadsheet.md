@@ -16,12 +16,12 @@ ms.date: 12/11/2018
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 12/11/2018
-ms.openlocfilehash: d140b80ecb5fe2a7211245044b08f43fde4233a8
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 459398f5f40ae5fb28dfa4ac73b94aecca7304eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55240985"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099415"
 ---
 # <a name="azure-stack-capacity-planner"></a>Azure Stack Capacity Planner
 Der Azure Stack-Kapazitätsplaner ist eine Kalkulationstabelle, die für die Ressourcenplanung von Azure Stack verwendet wird. Der Kapazitätsplaner bietet Ihnen die Möglichkeit, verschiedene Zuordnungen von Computeressourcen zu entwerfen und herauszufinden, wie diese für eine Auswahl von Hardwareangeboten passen würden. Detaillierte Anweisungen für die Verwendung der Azure Stack-Berechnung finden Sie unten.
@@ -61,8 +61,8 @@ Um ein Modell mit einer einzigen Sammlung von VMs unterschiedlicher Größe und 
 2. Wenn Sie verschiedene VM-Ressourcenzuordnungen für eine bestimmte Hardwarekonfiguration modellieren möchten, finden Sie das blaue Pulldownlistenfeld direkt unter der Bezeichnung „Current SKU“ (Aktuelle SKU) in der oberen rechten Ecke der Seite. Öffnen Sie dieses Listenfeld, und wählen Sie die gewünschte Hardware-SKU aus.
 3. Sie können nun damit beginnen, Ihrem Modell virtuelle Computer mit verschiedener Größe hinzuzufügen. Um einen bestimmten VM-Typ einzuschließen, geben Sie einen Mengenwert in das blau umrandete Feld links neben diesem VM-Eintrag ein.
 
-  > [!NOTE]
-  > „Total VM Storage“ (VM-Gesamtspeicher) bezieht sich auf die Gesamtkapazität des Datenträgers für den virtuellen Computer (Anzahl der unterstützten Datenträger * maximale Kapazität eines einzelnen Datenträgers (1 TB)). Basierend auf den Konfigurationsindikatoren haben wir die Tabelle „Available Storage Configurations“ (Verfügbare Speicherkonfigurationen) aufgefüllt, damit Sie Ihre gewünschte Speicherressourcenebene für jeden virtuellen Azure Stack-Computer auswählen können. Wichtig zu wissen: Sie können die Tabelle „Available Storage Configurations“ nach Bedarf hinzufügen oder ändern.<br><br>Jeder virtuelle Computer beginnt mit einem anfangs zugewiesenen lokalen Speicher. Um die schlanke Bereitstellung von temporärem Speicher widerzuspiegeln, kann der Wert von „local-temp“ in jede beliebige Angabe im Dropdownmenü geändert werden, einschließlich der maximal zulässigen Menge an temporärem Speicher.
+   > [!NOTE]
+   > „Total VM Storage“ (VM-Gesamtspeicher) bezieht sich auf die Gesamtkapazität des Datenträgers für den virtuellen Computer (Anzahl der unterstützten Datenträger * maximale Kapazität eines einzelnen Datenträgers (1 TB)). Basierend auf den Konfigurationsindikatoren haben wir die Tabelle „Available Storage Configurations“ (Verfügbare Speicherkonfigurationen) aufgefüllt, damit Sie Ihre gewünschte Speicherressourcenebene für jeden virtuellen Azure Stack-Computer auswählen können. Wichtig zu wissen: Sie können die Tabelle „Available Storage Configurations“ nach Bedarf hinzufügen oder ändern.<br><br>Jeder virtuelle Computer beginnt mit einem anfangs zugewiesenen lokalen Speicher. Um die schlanke Bereitstellung von temporärem Speicher widerzuspiegeln, kann der Wert von „local-temp“ in jede beliebige Angabe im Dropdownmenü geändert werden, einschließlich der maximal zulässigen Menge an temporärem Speicher.
 
 4. Wenn Sie virtuelle Computer hinzufügen, sehen Sie die Diagramme, die zeigen, wie sich die verfügbaren SKU-Ressourcen ändern. Auf diese Weise können Sie die Auswirkungen des Hinzufügens verschiedener Größen und Mengen von VMs während des Modellierungsprozesses erkennen. Eine weitere Möglichkeit, die Auswirkungen von Änderungen zu erkennen, besteht darin, die Werte für „Consumed“ (Genutzt) und „Still Available“ (Noch Verfügbar) direkt unter der Liste der verfügbaren VMs anzuzeigen. Diese Zahlen entsprechen geschätzten Werten auf der Grundlage der aktuell ausgewählten Hardware-SKU.
 5. Nachdem Sie Ihre VM-Gruppe erstellt haben, können Sie die vorgeschlagene Hardware-SKU ermitteln, indem Sie auf die Schaltfläche „Suggested SKU“ (Empfohlene SKU) in der oberen rechten Ecke der Seite direkt unter der Bezeichnung „Current SKU“ (Aktuelle SKU) klicken. Mit dieser Schaltfläche können Sie dann Ihre VM-Konfigurationen ändern und sehen, welche Hardware jede Konfiguration unterstützt.

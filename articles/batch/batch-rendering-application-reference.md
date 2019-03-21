@@ -2,16 +2,17 @@
 title: Verwenden von Renderinganwendungen – Azure Batch
 description: Verwenden von Renderinganwendungen mit Azure Batch
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4c7fdbfcc34cdb6e10177d50bea707f1fa5f223e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 4c93abdfb5c523d48ce115ed7d3251a346937f5f
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53534758"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57789589"
 ---
 # <a name="rendering-applications"></a>Renderinganwendungen
 
@@ -58,7 +59,7 @@ Zusätzlich zu den in Maya integrierten Renderern sind die folgenden Renderer Re
 
 ### <a name="task-command-line"></a>Befehlszeile für Aufgabe
 
-Der Befehlszeilenrenderer `renderer.exe` wird in der Befehlszeile für die Aufgabe verwendet. Der Befehlszeilenrenderer ist in der [Maya-Hilfe](http://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4) dokumentiert.
+Der Befehlszeilenrenderer `renderer.exe` wird in der Befehlszeile für die Aufgabe verwendet. Der Befehlszeilenrenderer ist in der [Maya-Hilfe](https://help.autodesk.com/view/MAYAUL/2018/ENU/?guid=GUID-EB558BC0-5C2B-439C-9B00-F97BCB9688E4) dokumentiert.
 
 Im folgenden Beispiel wird eine Aufgabe für die Auftragsvorbereitung genutzt, um die Szenendateien und Medienobjekte in das Arbeitsverzeichnis für die Auftragsvorbereitung zu kopieren. Es wird ein Ausgabeordner verwendet, um das Renderingbild zu speichern, und Frame 10 wird gerendert.
 

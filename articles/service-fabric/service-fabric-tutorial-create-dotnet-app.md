@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/14/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 038a70f5cce5b78f6c0e95316e66de42fa529954
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.openlocfilehash: 7432cbf8fae098c0753641f2002b72eaab3ddbb4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321737"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57851362"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Tutorial: Erstellen und Bereitstellen einer Anwendung mit einem ASP.NET Core-Web-API-Front-End-Dienst und einem zustandsbehafteten Back-End-Dienst
 
@@ -187,7 +187,7 @@ app.controller('VotingAppController', ['$rootScope', '$scope', '$http', '$timeou
 
 ```html
 <!DOCTYPE html>
-<html ng-app="VotingApp" xmlns:ng="http://angularjs.org">
+<html ng-app="VotingApp" xmlns:ng="https://angularjs.org">
 <head>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -621,22 +621,22 @@ Führen Sie die folgenden Schritte aus, um zu ermitteln, was im Code passiert:
 4. Wechseln Sie zurück in den Browser, und klicken Sie auf eine Abstimmungsoption, oder fügen Sie eine neue Abstimmungsoption hinzu. Sie stoßen im API-Controller des Web-Front-Ends auf den ersten Breakpoint.
     
 
-    1. An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
+   1. An diesem Punkt sendet das JavaScript im Browser eine Anforderung an den Web-API-Controller im Front-End-Dienst.
 
-    ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
+      ![Front-End-Dienst „Stimme hinzufügen“](./media/service-fabric-tutorial-create-dotnet-app/addvote-frontend.png)
 
-    2. Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
-    3. Senden Sie anschließend die HTTP PUT-Anforderung an den Reverseproxy **(2)**.
-    4. Zum Schluss wird die Antwort vom Back-End-Dienst an den Client **(3)** zurückgegeben.
+   2. Erstellen Sie zunächst die URL zum Reverseproxy für den Back-End-Dienst **(1)**.
+   3. Senden Sie anschließend die HTTP PUT-Anforderung an den Reverseproxy **(2)**.
+   4. Zum Schluss wird die Antwort vom Back-End-Dienst an den Client **(3)** zurückgegeben.
 
 5. Drücken Sie **F5**, um fortzufahren.
-    1. Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
+   1. Sie befinden sich jetzt am Breakpoint im Back-End-Dienst.
 
-    ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
+      ![Back-End-Dienst „Stimme hinzufügen“](./media/service-fabric-tutorial-create-dotnet-app/addvote-backend.png)
 
-    2. Verwenden Sie in der ersten Zeile der Methode **(1)** das `StateManager`-Element, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
-    3. Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
-    4. Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
+   2. Verwenden Sie in der ersten Zeile der Methode **(1)** das `StateManager`-Element, um ein zuverlässiges Wörterbuch mit dem Namen `counts` abzurufen bzw. hinzuzufügen.
+   3. Für alle Interaktionen mit Werten in einem zuverlässigen Wörterbuch ist eine Transaktion erforderlich. Diese Transaktion wird mithilfe der Anweisung **(2)** erstellt.
+   4. Aktualisieren Sie in der Transaktion den Wert des relevanten Schlüssels für die Abstimmungsoption, und committen Sie den Vorgang **(3)**. Nachdem die Rückgabe für die Commit-Methode durchgeführt wurde, werden die Daten im Wörterbuch aktualisiert und auf anderen Knoten im Cluster repliziert. Die Daten sind jetzt sicher im Cluster gespeichert, und der Back-End-Dienst kann das Failover auf andere Knoten durchführen, während die Daten weiterhin verfügbar sind.
 6. Drücken Sie **F5**, um fortzufahren.
 
 Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.

@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2d98a5ab13c2aecd3b3cef590526031f5bdee594
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 687f99fb6447eddb4ce10ce81bc349181ec5c48c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268310"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094751"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP-Workloadkonfigurationen mit Azure-Verfügbarkeitszonen
 [Azure-Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview) sind eines der Hochverfügbarkeitsfeatures von Azure. Die Verwendung von Verfügbarkeitszonen verbessert die allgemeine Verfügbarkeit von SAP-Workloads in Azure. Dieses Feature steht bereits in einigen [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/) zur Verfügung. Künftig wird es in weiteren Regionen verfügbar sein.
@@ -109,8 +109,8 @@ Die folgenden Überlegungen gelten für diese Konfiguration:
 - Für alle VMs, die Sie bereitstellen, müssen Sie [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwenden. Nicht verwaltete Datenträger werden für zonale Bereitstellungen nicht unterstützt.
 - Azure Storage Premium und [SSD Ultra-Speicher](https://docs.microsoft.com/azure/virtual-machines/windows/disks-ultra-ssd) unterstützen keinen zonenübergreifenden Speicherreplikationstyp. Die Anwendung (DBMS oder SAP Central Services) muss wichtige Daten replizieren.
 - Das gilt auch für das freigegebene Verzeichnis „sapmnt“, das ein freigegebener Datenträger (Windows), eine CIFS-Freigabe (Windows) oder NFS-Freigabe (Linux) ist. Sie müssen eine Technologie verwenden, die diese freigegebenen Datenträger oder Dateifreigaben zwischen den Zonen repliziert. Die folgenden Technologien werden unterstützt:
-    - Für Windows: eine Clusterlösung, die SIOS DataKeeper verwendet, wie in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) dokumentiert.
-    - Für SUSE Linux: eine NFS-Freigabe, die wie in [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) dokumentiert erstellt wird.
+  - Für Windows: eine Clusterlösung, die SIOS DataKeeper verwendet, wie in [Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk) dokumentiert.
+  - Für SUSE Linux: eine NFS-Freigabe, die wie in [Hochverfügbarkeit für NFS auf Azure-VMs unter SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs) dokumentiert erstellt wird.
     
     Aktuell wird die Lösung mit Microsoft-Dateiservern mit horizontaler Skalierung, wie in [Vorbereiten der Azure-Infrastruktur für SAP-Hochverfügbarkeit mit einem Windows-Failovercluster und einer Dateifreigabe für SAP ASCS-/SCS-Instanzen](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share) dokumentiert, nicht zonenübergreifend unterstützt.
 - Die dritte Zone wird verwendet, um das SBD-Gerät zu hosten, falls Sie einen [SUSE Linux Pacemaker-Cluster](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) oder zusätzliche Anwendungsinstanzen erstellen.
@@ -123,7 +123,7 @@ Falls Sie kein akzeptables Delta zwischen der Netzwerklatenz in einer Zone und d
 
 Das grundlegende Layout der Architektur sieht folgendermaßen aus:
 
-![Aktiv/Passiv-Zonenbereitstellung](./media/sap-ha-availability-zones/active_active_zones_deployment.png)
+![Aktiv/Passiv-Zonenbereitstellung](./media/sap-ha-availability-zones/active_passive_zones_deployment.png)
 
 Die folgenden Überlegungen gelten für diese Konfiguration:
 

@@ -4,24 +4,24 @@ ms.service: site-recovery
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
-ms.openlocfilehash: b6e3abb56ebd02131fac78c2a8f03ddcbf50958a
-ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
+ms.openlocfilehash: c9a0d4387511bbfa033bcb90d9f83e1a7bb39719
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2018
-ms.locfileid: "50164202"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124674"
 ---
 1. Starten von „UnifiedSetup.exe“ für Azure Site Recovery
 2. Wählen Sie unter **Before you begin** die Option **Add additional process servers to scale out deployment** (Weitere Prozessserver zum horizontalen Hochskalieren der Bereitstellung hinzufügen) aus.
 
-  ![Prozessserver hinzufügen](./media/site-recovery-add-process-server/ps-page-1.png)
+   ![Prozessserver hinzufügen](./media/site-recovery-add-process-server/ps-page-1.png)
 
 3. Geben Sie unter **Configuration Server Details** (Details zum Konfigurationsserver) die IP-Adresse des Konfigurationsservers und die Passphrase an.
 
-  ![Prozessserver hinzufügen 2](./media/site-recovery-add-process-server/ps-page-2.png)
+   ![Prozessserver hinzufügen 2](./media/site-recovery-add-process-server/ps-page-2.png)
 4. Geben Sie unter **Internet Settings** (Interneteinstellungen) an, wie der auf dem Konfigurationsserver ausgeführte Anbieter eine Internetverbindung mit Azure Site Recovery herstellen soll.
 
-  ![Prozessserver hinzufügen 3](./media/site-recovery-add-process-server/ps-page-3.png)
+   ![Prozessserver hinzufügen 3](./media/site-recovery-add-process-server/ps-page-3.png)
 
    * Wenn die Verbindung über den derzeit auf dem Computer eingerichteten Proxy hergestellt werden soll, wählen Sie **Connect with existing proxy settings** (Mit vorhandenen Proxyeinstellungen verbinden) aus.
    * Wenn der Anbieter eine direkte Verbindung herstellen soll, wählen Sie **Connect directly without a proxy** (Ohne Proxy direkt verbinden) aus.

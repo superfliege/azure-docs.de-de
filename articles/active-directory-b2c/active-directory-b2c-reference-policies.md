@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 88ac97c36a9b09b795a3ea792df6711fc1275422
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 67db13c8a36977f2614ba7b0e263919bd0405bc7
+ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163006"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56585592"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Benutzerflows in Azure Active Directory B2C
 
@@ -85,6 +85,6 @@ Nur die Eigenschaften **otherMails** und **signInNames** werden über die Active
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-tenant.md).
+Befolgen Sie zum Erstellen der empfohlenen Benutzerflows die Anweisungen im [Tutorial: Erstellen eines Benutzerflows](tutorial-create-user-flows.md).
 
 

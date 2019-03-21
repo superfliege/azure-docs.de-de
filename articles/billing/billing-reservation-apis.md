@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
 ms.author: banders
-ms.openlocfilehash: a71c456f017e80da85f27437738aa963ec967a3c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54904156"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57880216"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>APIs für die Automatisierung von Azure-Reservierungen
 
@@ -29,7 +29,7 @@ Verwenden Sie Azure-APIs, um programmgesteuert Informationen für Ihre Organisat
 
 Verwenden Sie die Reservierungsempfehlungs-API, um Empfehlungen zu erhalten, welchen Reservierungsplan Sie entsprechend der Nutzung Ihrer Organisation kaufen sollten. Weitere Informationen finden Sie unter [Abrufen von Empfehlungen zu reservierter Instanz](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation).
 
-Sie können auch Ihre Ressourcennutzung analysieren, indem Sie die Verbrauchs-API „Nutzungsdetails“ verwenden. Weitere Informationen finden Sie unter [Nutzungsdetails – Liste für den Abrechnungszeitraum nach Abrechnungskonto](/rest/api/consumption/usagedetails/listforbillingperiodbybillingaccount). Die Azure-Ressourcen, die Sie durchgängig nutzen, sind in der Regel die besten Kandidaten für eine Reservierung.
+Sie können auch Ihre Ressourcennutzung analysieren, indem Sie die Verbrauchs-API „Nutzungsdetails“ verwenden. Weitere Informationen finden Sie unter [Nutzungsdetails – Liste für den Abrechnungszeitraum nach Abrechnungskonto](/rest/api/consumption/usagedetails/list#billingaccountusagedetailslistforbillingperiod). Die Azure-Ressourcen, die Sie durchgängig nutzen, sind in der Regel die besten Kandidaten für eine Reservierung.
 
 ## <a name="buy-a-reservation"></a>Kaufen einer Reservierung
 

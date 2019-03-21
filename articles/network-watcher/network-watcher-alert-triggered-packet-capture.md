@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: fd7e7151d8ec676239ed810fb700149aab0fe0fa
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57876645"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Verwenden der Paketerfassung für die proaktive Netzwerküberwachung mit Warnungen und Azure Functions
 
@@ -110,13 +110,13 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
     In diesem Beispiel wird der lokale Pfad Ihrer Azure PowerShell-Module angegeben. Diese Ordner werden in einem späteren Schritt verwendet. Die folgenden Module werden in diesem Szenario verwendet:
 
-    * AzureRM.Network
+   * AzureRM.Network
 
-    * AzureRM.Profile
+   * AzureRM.Profile
 
-    * AzureRM.Resources
+   * AzureRM.Resources
 
-    ![PowerShell-Ordner][functions5]
+     ![PowerShell-Ordner][functions5]
 
 1. Wählen Sie **Funktionen-App-Einstellungen** > **Zum App Service-Editor wechseln** aus.
 
@@ -146,7 +146,7 @@ Um die Network Watcher-PowerShell-Cmdlets zu verwenden, laden Sie das neueste Po
 
     ![PowerShell-Dateien][functions7]
 
-### <a name="authentication"></a>Authentifizierung
+### <a name="authentication"></a>Authentication
 
 Um die PowerShell-Cmdlets zu verwenden, müssen Sie sich authentifizieren. Sie konfigurieren die Authentifizierung in der Funktions-App. Zum Konfigurieren der Authentifizierung müssen Sie Umgebungsvariablen konfigurieren und eine verschlüsselte Schlüsseldatei in die Funktionen-App hochladen.
 
@@ -344,7 +344,7 @@ Navigieren Sie zu einem vorhandenen virtuellen Computer, und fügen Sie eine War
   |**Einstellung** | **Wert** | **Details** |
   |---|---|---|
   |**Name**|TCP_Segments_Sent_Exceeded|Der Name der Warnungsregel.|
-  |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.||
+  |**Beschreibung**|Schwellenwertüberschreitung durch gesendete TCP-Segmente|Die Beschreibung für die Warnungsregel.|
   |**Metrik**|Gesendete TCP-Segmente| Die Metrik zur Auslösung der Warnung. |
   |**Bedingung**|Größer als| Die Bedingung, die bei der Auswertung der Metrik verwendet werden soll.|
   |**Schwellenwert**|100| Der Wert der Metrik, die die Warnung auslöst. Dieser Wert sollte auf einen gültigen Wert für Ihre Umgebung festgelegt werden.|
@@ -362,7 +362,7 @@ Wenn die Kriterien für die Warnung erfüllt sind, wird eine Paketerfassung erst
 
 Wenn die Erfassungsdatei lokal gespeichert ist, können Sie sie abrufen, indem Sie sich auf dem virtuellen Computer anmelden.
 
-Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Sie können auch den [Storage-Explorer](http://storageexplorer.com/) verwenden.
+Eine Anleitung zum Herunterladen von Dateien aus Azure Storage-Konten finden Sie unter [Erste Schritte mit Azure Blob Storage mit .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md). Sie können auch den [Storage-Explorer](https://storageexplorer.com/) verwenden.
 
 Nach dem Herunterladen Ihrer Erfassung können Sie diese mit einem beliebigen Tool anzeigen, das für Dateien vom Typ **.cap** geeignet ist. Hier finden Sie zwei Links zu geeigneten Tools:
 

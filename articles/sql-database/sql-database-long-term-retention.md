@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 68bcddeee2cec1a77f20f8f470669f170fa50743
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 85757ace20501bea1db22ecfdd2fdb63284038d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992482"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108745"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Speichern von Sicherungen von Azure SQL-Datenbank bis zu 10 Jahre lang
 
@@ -56,22 +56,20 @@ W=12 (12 Wochen bzw. 84 Tage), M=12 (12 Monate bzw. 365 Tage), Y=10 (10 Jahre bz
    ![LTR-Beispiel](./media/sql-database-long-term-retention/ltr-example.png)
 
 
- 
+
 Wenn Sie die obige Richtlinie ändern und „W=0“ (keine wöchentlichen Sicherungen) festlegen, ändert sich der Rhythmus der Sicherungskopien wie in der obigen Tabelle durch die hervorgehobenen Daten gezeigt. Der zum Aufbewahren dieser Sicherungen benötigte Speicherplatz verringert sich entsprechend. 
 
 > [!NOTE]
-1. Die LTR-Kopien werden vom Azure Storage-Dienst erstellt, daher beeinträchtigt der Kopiervorgang nicht die Leistung der vorhandenen Datenbank.
-2. Die Richtlinie gilt für zukünftige Sicherungen. Beispiel: Wenn die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im nächsten Jahr erstellt. 
-3. Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen.   Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. 
-> 
+> 1. Die LTR-Kopien werden vom Azure Storage-Dienst erstellt, daher beeinträchtigt der Kopiervorgang nicht die Leistung der vorhandenen Datenbank.
+> 2. Die Richtlinie gilt für zukünftige Sicherungen. Beispiel: Wenn die angegebene WeekOfYear beim Konfigurieren der Richtlinie in der Vergangenheit liegt, wird die erste LTR-Sicherung im nächsten Jahr erstellt. 
+> 3. Zum Wiederherstellen einer Datenbank aus dem LTR-Speicher können Sie eine bestimmte Sicherung basierend auf ihrem Zeitstempel auswählen.   Die Datenbank kann auf einem beliebigen vorhandenen Server unter dem gleichen Abonnement wie die ursprüngliche Datenbank wiederhergestellt werden. 
 
 ## <a name="geo-replication-and-long-term-backup-retention"></a>Georeplikation und langfristige Sicherungsaufbewahrung
 
 Wenn Sie aktive Georeplikation und automatische Failovergruppen als Geschäftskontinuitätslösung verwenden, sollten Sie sich auf mögliche Failover vorbereiten und dieselbe LTR-Richtlinie auf der sekundären Geodatenbank konfigurieren. Dadurch erhöhen sich Ihre LTR-Speicherkosten nicht, da von sekundären Datenbanken keine Sicherungen erstellt werden. Nur, wenn die sekundäre Datenbank zur primäre Datenbank wird, werden die Sicherungen erstellt. Auf diese Weise gewährleisten Sie eine unterbrechungsfreie Erstellung der LTR-Sicherungen, wenn das Failover ausgelöst wird und die primäre Datenbank in den sekundären Bereich verschoben wird. 
 
 > [!NOTE]
-Wenn sich die ursprüngliche primäre Datenbank nach dem Ausfall der zu einem Failover geführt hat, wiederhergestellt wird, wird sie zu einer neuen sekundären Datenbank. Daher wird die Sicherungserstellung nicht fortgesetzt und die bestehende LTR-Richtlinie wird erst wieder wirksam, wenn sie wieder die primäre Datenbank ist. 
-> 
+> Wenn sich die ursprüngliche primäre Datenbank nach dem Ausfall der zu einem Failover geführt hat, wiederhergestellt wird, wird sie zu einer neuen sekundären Datenbank. Daher wird die Sicherungserstellung nicht fortgesetzt und die bestehende LTR-Richtlinie wird erst wieder wirksam, wenn sie wieder die primäre Datenbank ist. 
 
 ## <a name="configure-long-term-backup-retention"></a>Konfigurieren der langfristigen Sicherungsaufbewahrung
 

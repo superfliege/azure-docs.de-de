@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/02/2019
+ms.date: 03/05/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 214abd64232130dd3fd5fdde510f7545732ac82e
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.openlocfilehash: 1dd488c2eb419b5e210a48d7a94f7d0bb423a2b1
+ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54082068"
+ms.lasthandoff: 03/11/2019
+ms.locfileid: "57731481"
 ---
 # <a name="dynamics-365-for-customer-engagement-technical-info-tab"></a>Dynamics 365 for Customer Engagement – Registerkarte „Technische Informationen“
 
@@ -58,7 +58,7 @@ Diese Felder sind in der folgenden Tabelle beschrieben.
 |  Dateiname des Pakets     |  Dateiname des Pakets (ZIP).  Dieser Name ist *nicht* öffentlich und wird intern vom Dynamics 365-Zertifizierungsteam verwendet.  |
 |  Url                          |  URL eines Azure Storage-Kontos, das die hochgeladene Paketdatei enthält. Diese URL sollte einen schreibgeschützten SAS-Schlüssel enthalten, damit unser Team Ihr Paket zur Überprüfung auswählen kann.  |
 | Mehrere CRM-Pakete     | Wählen Sie NUR dann „Ja“ aus, wenn Sie mehrere Versionen von CRM mit verschiedenen Paketen unterstützen.  Jede Version verfügt über eine entsprechende Paketdatei ein, die Sie einzeln erstellen müssen.  |
-| Szenario und Anwendungsfallressource   | Ermöglicht das Hochladen eines funktionalen Spezifikationsdokuments für Ihre Anwendung zur Verwendung durch das Dynamics 365-Überprüfungsteam.  Das bevorzugte Format für diese Spezifikation ist die [E2E-Szenariovorlage](http://download.microsoft.com/download/5/1/8/51812AC9-BCD8-489F-937C-5D439C494EC1/E2E%20User%20Scenario%20Template.docx).  |
+| Szenario und Anwendungsfallressource   | Ermöglicht das Hochladen eines funktionalen Spezifikationsdokuments für Ihre Anwendung zur Verwendung durch das Dynamics 365-Überprüfungsteam.  Das bevorzugte Format für diese Spezifikation ist die [E2E-Szenariovorlage](https://isvdocumentation.blob.core.windows.net/d365documentation/Power%20Platform%20E2E%20document.docx).  |
 |  |  |
 
 

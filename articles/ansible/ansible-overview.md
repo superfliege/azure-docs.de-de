@@ -1,19 +1,19 @@
 ---
 title: Verwenden von Ansible mit Azure
 description: Enthält eine Einführung in die Verwendung von Ansible zum Automatisieren von Cloudbereitstellung, Konfigurationsverwaltung und Anwendungsbereitstellungen.
-ms.service: ansible
+ms.service: azure
 keywords: Ansible, Azure, DevOps, Übersicht, Cloudbereitstellung, Konfigurationsverwaltung, Anwendungsbereitstellung, Ansible-Module, Ansible-Playbooks
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.date: 09/02/2018
 ms.topic: overview
-ms.openlocfilehash: 55dcda953454ce3eb4e19dabbf198f886d028180
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: d7fc86f9968ede37623ea9c89a666a35cba7eee8
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54357929"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791595"
 ---
 # <a name="ansible-with-azure"></a>Ansible mit Azure
 

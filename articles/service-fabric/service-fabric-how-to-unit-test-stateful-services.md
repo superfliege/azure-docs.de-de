@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
 ms.author: ryanwi
-ms.openlocfilehash: a030860bcef41d7276e1356553b984f55e27ae1e
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55164155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093904"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>Erstellen von Komponententests für zustandsbehaftete Dienste
 Bei Unittests für zustandsbehaftete Service Fabric-Dienste werden häufige Fehler aufgedeckt, die durch herkömmliche anwendungs- oder domänenspezifische Unittests nicht unbedingt erkannt werden. Bei der Entwicklung von Komponententests für zustandsbehaftete Dienste sind einige besondere Aspekte zu berücksichtigen.
@@ -42,13 +42,13 @@ Ab Version 3.3.0 enthält [ServiceFabric.Mocks](https://www.nuget.org/packages/S
 Als Teil der Vorbereitungsphase eines Tests werden eine Pseudoreplikatgruppe und ein Pseudozustands-Manager erstellt. Die Replikatgruppe besitzt dann die Erstellung einer Instanz des getesteten Diensts für jedes Replikat. Sie besitzt auch die Ausführung von Lebenszyklusereignissen wie z.B. `OnChangeRole` und `RunAsync`. Der Pseudozustands-Manager stellt sicher, dass alle für den Zustands-Manager durchgeführten Vorgänge ausgeführt und beibehalten werden, wie dies auch der eigentliche Zustands-Manager sicherstellen würde.
 
 1. Erstellen Sie einen Dienstfactorydelegat, der den getesteten Dienst instanziiert. Dieser sollte ähnlich oder identisch sein mit dem Dienstfactoryrückruf, der normalerweise für einen Service Fabric-Dienst oder Service Fabric-Actor in `Program.cs` gefunden wird. Dabei muss folgende Signatur beachtet werden:
-```csharp
-MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
-```
+   ```csharp
+   MyStatefulService CreateMyStatefulService(StatefulServiceContext context, IReliableStateManagerReplica2 stateManager)
+   ```
 2. Erstellen Sie eine Instanz der `MockReliableStateManager`-Klasse. Dadurch werden alle Interaktionen mit dem Zustands-Manager simuliert.
 3. Erstellen Sie eine Instanz von `MockStatefulServiceReplicaSet<TStatefulService>`, bei der `TStatefulService` der Typ des zu testenden Diensts ist. Dazu werden der in Schritt 1 erstellte Delegat und der in Schritt 2 instanziierte Zustands-Manager benötigt.
 4. Fügen Sie der Replikatgruppe Replikate hinzu. Geben Sie die Rolle (z.B. Primary, ActiveSecondary oder IdleSecondary) und die ID der Replikate an.
-> Notieren Sie sich die Replikat-IDs. Diese werden wahrscheinlich in der Aktions- und der Bestätigungsphase eines Komponententests verwendet.
+   > Notieren Sie sich die Replikat-IDs. Diese werden wahrscheinlich in der Aktions- und der Bestätigungsphase eines Komponententests verwendet.
 
 ```csharp
 //service factory to instruct how to create the service instance

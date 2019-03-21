@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: b590d75abb9e3f6465594a5c8c684b94e6f2e07f
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864295"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122011"
 ---
 # <a name="what-is-azure-backup"></a>Was ist Azure Backup?
 
@@ -55,10 +55,10 @@ Beide Dienste bieten unterschiedliche Funktionen, die sich gegenseitig ergänzen
 Die folgende Tabelle enthält hilfreiche Punkte, um Sie bei der Ermittlung Ihrer BCDR-Anforderungen zu unterstützen: 
 
 **Ziel** | **Details** | **Vergleich**
---- | --- | --- | --- |
+--- | --- | --- 
 **Datensicherung/-aufbewahrung** | Sicherungsdaten können mehrere Tage, Monate oder sogar Jahre aufbewahrt werden, falls dies aus Compliancegründen erforderlich ist. | Mit Sicherungslösungen wie Azure Backup können Sie exakt die Daten auswählen, die Sie sichern möchten, und die Sicherungs- und Aufbewahrungsrichtlinien präzise anpassen.<br/><br/> Diese Präzision steht bei Site Recovery nicht zur Verfügung.
 **Recovery Point Objective (RPO)** | Dies ist der Umfang des zulässigen Datenverlusts, falls eine Wiederherstellung durchgeführt werden muss. | Bei Sicherungen kann das RPO variieren.<br/><br/> VM-Sicherungen haben in der Regel ein RPO von einem Tag, während es bei Datenbanksicherungen durchaus bei lediglich 15 Minuten liegen kann.<br/><br/> Site Recovery bietet ein niedriges RPO, da die Replikation kontinuierlich oder häufig stattfindet, was für ein geringes Delta zwischen Quelle und Replikatkopie sorgt.
-**Recovery Time Objective (RTO)** |Der Zeitraum, der für eine Wiederherstellung erforderlich ist. | Aufgrund des höheren RPO-Werts ist die Datenmenge, die eine Sicherungslösung verarbeiten muss, meist wesentlich größer, was zu längeren RTOs führt. Beispielsweise kann das Wiederherstellen von Daten von Bändern Tage dauern, was davon abhängt, wie lange der Transport des Bands von einem standortexternen Aufbewahrungsort dauert. | Notfallwiederherstellungslösungen wie Site Recovery zeichnen sich durch ein niedriges RPO aus, da das Ziel dank kontinuierlicher/häufiger Replikation in der Regel besser mit der Quelle synchronisiert ist. |
+**Recovery Time Objective (RTO)** |Der Zeitraum, der für eine Wiederherstellung erforderlich ist. | Aufgrund des höheren RPO-Werts ist die Datenmenge, die eine Sicherungslösung verarbeiten muss, meist wesentlich größer, was zu längeren RTOs führt. Beispielsweise kann das Wiederherstellen von Daten von Bändern Tage dauern, was davon abhängt, wie lange der Transport des Bands von einem standortexternen Aufbewahrungsort dauert. 
 
 ## <a name="what-backup-scenarios-are-supported"></a>Welche Sicherungsszenarien werden unterstützt?
 

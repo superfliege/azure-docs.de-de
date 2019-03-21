@@ -15,12 +15,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 8225f5a093724c00dcc336d5dc2195f4addc998b
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f0972e840fab3c624616ba8aa70bae74be5b1dc2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090473"
 ---
 # <a name="quickstart-create-an-aspnet-web-app"></a>Schnellstart: Erstellen einer ASP.NET-Web-App 
 
@@ -74,9 +74,9 @@ Als Nächstes erstellen Sie den Cache für die App.
 
 #### <a name="to-edit-the-cachesecretsconfig-file"></a>So bearbeiten Sie die Datei *CacheSecrets.config*
 
-3. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config*. Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
+1. Erstellen Sie auf Ihrem Computer eine Datei mit dem Namen *CacheSecrets.config*. Speichern Sie sie an einem Ort, an dem sie nicht mit dem Quellcode Ihrer Beispielanwendung eingecheckt wird. In diesem Schnellstart befindet sich die Datei *CacheSecrets.config* im Verzeichnis *C:\AppSecrets\CacheSecrets.config*.
 
-4. Bearbeiten Sie die Datei *CacheSecrets.config*. Fügen Sie anschließend folgenden Inhalt hinzu:
+1. Bearbeiten Sie die Datei *CacheSecrets.config*. Fügen Sie anschließend folgenden Inhalt hinzu:
 
     ```xml
     <appSettings>
@@ -84,14 +84,14 @@ Als Nächstes erstellen Sie den Cache für die App.
     </appSettings>
     ```
 
-5. Ersetzen Sie `<cache-name>` durch den Cachehostnamen.
+1. Ersetzen Sie `<cache-name>` durch den Cachehostnamen.
 
-6. Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
+1. Ersetzen Sie `<access-key>` durch den Primärschlüssel für Ihren Cache.
 
     > [!TIP]
     > Sie können den sekundären Zugriffsschlüssel bei der Schlüsselrotation als alternativen Schlüssel verwenden, während Sie den primären Zugriffsschlüssel neu generieren.
->
-7. Speichern Sie die Datei .
+   >
+1. Speichern Sie die Datei .
 
 ## <a name="update-the-mvc-application"></a>Aktualisieren der MVC-Anwendung
 

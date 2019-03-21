@@ -17,12 +17,12 @@ ms.author: jeffgilb
 ms.reviewer: unknown
 ms.lastreviewed: 09/11/2018
 ms.custom: mvc
-ms.openlocfilehash: a24b7314775ea7667ab992742586e5b5c8bbb369
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 34ef200ff96b098969c74937934d6178cfaf81ea
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205155"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117131"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Tutorial: Verfügbarmachen von virtuellen Computern für Ihre Azure Stack-Benutzer
 
@@ -129,8 +129,8 @@ Nachdem Sie ein Angebot erstellt haben, können Sie es testen. Melden Sie sich a
    Über das Benutzerportal können Sie einen virtuellen Computer mithilfe des neuen Abonnements bereitstellen.
 
    a. Melden Sie sich mit einem Benutzerkonto beim Benutzerportal an.
-      - Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
-   - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
+   - Bei einem integrierten System variiert die URL abhängig von der Region und dem externen Domänenamen des Betreibers und hat das Format https://portal.&lt;*Region*&gt;.&lt;*FQDN*&gt;.
+     - Wenn Sie das Azure Stack Development Kit verwenden, lautet die Portaladresse https://portal.local.azurestack.external.
 
    b.  Klicken Sie auf dem Dashboard auf **+ Eine Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter Eval** und dann auf **Erstellen**.
 

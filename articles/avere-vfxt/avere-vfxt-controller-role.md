@@ -3,15 +3,15 @@ title: Angepasste Controllerzugriffsrolle – Avere vFXT for Azure
 description: Erstellen einer benutzerdefinierten Zugriffsrolle für den Avere vFXT-Clustercontroller
 author: ekpgh
 ms.service: avere-vfxt
-ms.topic: procedural
+ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7ed20ccac879ec8eba1c3fbd91e38d05b08a12d2
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: c408efa7ca01928e25ac03f5ca63d0aef7d88839
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55303002"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770035"
 ---
 # <a name="customized-controller-access-role"></a>Angepasste Controllerzugriffsrolle
 
@@ -68,7 +68,7 @@ Speichern Sie Ihre benutzerdefinierte Rollendefinition als JSON-Datei.
 
 Führen Sie diese Schritte aus, um Ihrem Abonnement die benutzerdefinierte Rollendefinition hinzuzufügen. 
 
-1. Öffnen Sie die Azure Cloud Shell im Azure-Portal, oder navigieren Sie zu [https://shell.azure.com](https://shell.azure.com).
+1. Öffnen Sie die Azure Cloud Shell im Azure-Portal oder navigieren Sie zu [https://shell.azure.com](https://shell.azure.com).
 
 1. Verwenden Sie den Azure CLI-Befehl, um zu Ihrem vFXT-Abonnement zu wechseln:
 

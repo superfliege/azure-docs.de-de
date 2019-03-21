@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 15ef1905562d04c2732016dfd1340910b3a8f699
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: 381eecefbba238e712820a09c8ec489706ef3751
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54900356"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106456"
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Hinzufügen von Meldungen in die Warteschlange von Azure Storage mithilfe von Functions
 
@@ -122,7 +122,7 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
 Überspringen Sie diesen Abschnitt, wenn Sie den Storage-Explorer bereits installiert und bereits eine Verbindung mit dem Speicherkonto hergestellt haben, das Sie in dieser Schnellstartanleitung verwenden.
 
-2. Führen Sie das Tool [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
+1. Führen Sie das Tool [Microsoft Azure Storage-Explorer](https://storageexplorer.com/) aus, klicken Sie auf das Verbindungssymbol auf der linken Seite, und wählen Sie **Use a storage account name and key** (Name und Schlüssel eines Speicherkontos verwenden) aus. Klicken Sie anschließend auf **Weiter**.
 
     ![Führen Sie das Tool Storage Account-Explorer aus.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-1.png)
 
@@ -140,13 +140,13 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
  
 1. Klicken Sie neben **Kontoschlüssel** auf das Symbol zum Ein-/Ausblenden, um den Wert anzuzeigen. Kopieren Sie dann den Wert für **Kontoschlüssel**, und fügen Sie ihn im Storage-Explorer in das Feld **Kontoschlüssel** ein.
   
-3. Klicken Sie auf **Weiter > Verbinden**.
+1. Klicken Sie auf **Weiter > Verbinden**.
 
    ![Fügen Sie die Speicheranmeldeinformationen ein, und stellen Sie eine Verbindung her.](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
 ### <a name="examine-the-output-queue"></a>Überprüfen der Ausgabewarteschlange
 
-4. Wählen Sie im Storage-Explorer das Speicherkonto aus, das Sie im Rahmen dieser Schnellstartanleitung verwenden.
+1. Wählen Sie im Storage-Explorer das Speicherkonto aus, das Sie im Rahmen dieser Schnellstartanleitung verwenden.
 
 1. Erweitern Sie den Knoten **Warteschlangen**, und wählen Sie die Warteschlange mit dem Namen **outqueue** aus. 
 
@@ -154,7 +154,7 @@ Eine neue Warteschlange mit dem Namen **outqueue** wird in Ihrem Speicherkonto v
 
     ![Im Storage-Explorer angezeigte Warteschlangenmeldung](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
 
-2. Führen Sie die Funktion erneut aus. Daraufhin erscheint eine weitere Meldung in der Warteschlange.  
+1. Führen Sie die Funktion erneut aus. Daraufhin erscheint eine weitere Meldung in der Warteschlange.  
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79104895e91dc2143a0f4a592878ecc5e2df61d7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d3d21ff9b56a7fcb33fbdb6bbb82c64ef97abf71
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172823"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085778"
 ---
 # <a name="integrate-radius-authentication-with-azure-multi-factor-authentication-server"></a>Integration der RADIUS-Authentifizierung mit dem Azure Multi-Factor Authentication-Server
 
@@ -39,9 +39,9 @@ Zum Konfigurieren der RADIUS-Authentifizierung installieren Sie den Azure Multi-
 4. Klicken Sie auf **Hinzufügen**.
 5. Geben Sie IP-Adresse der Appliance/des Servers, die bzw. der auf dem Azure Multi-Factor Authentication-Server authentifiziert wird, sowie einen Anwendungsnamen (optional) und ein gemeinsames Geheimnis ein.
 
-  Der Anwendungsname wird in Berichten und ggf. auch in Authentifizierungsnachrichten (SMS oder mobile App) angezeigt.
+   Der Anwendungsname wird in Berichten und ggf. auch in Authentifizierungsnachrichten (SMS oder mobile App) angezeigt.
 
-  Das gemeinsame Geheimnis muss auf dem Azure Multi-Factor Authentication-Server und in der Appliance bzw. auf dem Server identisch sein.
+   Das gemeinsame Geheimnis muss auf dem Azure Multi-Factor Authentication-Server und in der Appliance bzw. auf dem Server identisch sein.
 
 6. Aktivieren Sie das Kontrollkästchen **Multi-Factor Authentication-Benutzerabgleich erfordern**, wenn alle Benutzer in den Server importiert wurden und die Multi-Factor Authentication verwenden. Wenn viele Benutzer noch nicht in den Server importiert wurden oder von der zweistufigen Überprüfung ausgenommen sind, lassen Sie das Kontrollkästchen deaktiviert.
 7. Aktivieren Sie das Kontrollkästchen **Alternatives OATH-Token aktivieren**, wenn Sie OATH-Kennungen aus Apps für die mobile Verifizierung als Ausweichmethode verwenden möchten.

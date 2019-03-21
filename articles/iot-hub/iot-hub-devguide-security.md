@@ -1,19 +1,19 @@
 ---
 title: Grundlegendes zur Sicherheit von Azure IoT Hub | Microsoft-Dokumentation
 description: 'Entwicklerhandbuch: Steuern des Zugriffs auf IoT Hub für Geräte-Apps und Back-End-Apps. Enthält Informationen zu Sicherheitstoken und zur Unterstützung von X.509-Zertifikaten.'
-author: dominicbetts
-manager: timlt
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: f347c9ca3d56bedcc838d72ca15793bd13ee19ad
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: bb402a5a059fb6f2836bddbd951220271ca77ba3
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563931"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57534360"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
@@ -74,7 +74,7 @@ Jedes unterstützte Protokoll, z.B. MQTT, AMQP und HTTPS, transportiert Tokens a
 
 Bei Verwendung von MQTT weist das CONNECT-Paket die Geräte-ID als Client-ID, `{iothubhostname}/{deviceId}` im Feld „Benutzername“ und ein SAS-Token im Feld „Kennwort“ auf. `{iothubhostname}` sollte der vollständige CNAME des IoT Hubs (z.B. „contoso.azure-devices.net“) sein.
 
-Bei Verwendung von [AMQP](https://www.amqp.org/) unterstützt IoT Hub [SASL PLAIN](http://tools.ietf.org/html/rfc4616) und die [auf AMQP-Ansprüchen basierte Sicherheit](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
+Bei Verwendung von [AMQP](https://www.amqp.org/) unterstützt IoT Hub [SASL PLAIN](https://tools.ietf.org/html/rfc4616) und die [auf AMQP-Ansprüchen basierte Sicherheit](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc).
 
 Wenn Sie eine auf AMQP-Ansprüchen beruhende Sicherheit verwenden, gibt der Standard vor, wie die oben aufgeführten Token übertragen werden.
 

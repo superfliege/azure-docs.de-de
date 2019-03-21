@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ea80824588980fdd6c580b6d77c2a5566159547
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b78cb45d83cd9bc9bc973ec7a09cb75a8b111744
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211086"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224147"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -53,7 +53,7 @@ Sie müssen festlegen, welche Benutzer oder Gruppen in Azure AD Zugriff auf Ihre
 
 > [!IMPORTANT]
 > Es empfiehlt sich, G Suite einen einzelnen Azure AD-Benutzer zuzuweisen, um die Konfiguration der Bereitstellung zu testen. Später können Sie dann weitere Benutzer und Gruppen zuweisen.
-
+> 
 > Wählen Sie im Zuweisungsdialogfeld die Rolle **Benutzer** oder **Gruppe** aus, wenn Sie G Suite einen Benutzer zuweisen. Die Rolle **Standardzugriff** ist für Bereitstellungen nicht geeignet.
 
 ## <a name="enable-automated-user-provisioning"></a>Aktivieren der automatisierten Benutzerbereitstellung
@@ -80,8 +80,8 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
    
     ![Wählen Sie „API-Referenz“ aus.][16]
 
-    > [!IMPORTANT]
-    > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, *muss* der Benutzername in Azure Active Directory an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie seine Eigenschaften in Azure AD bearbeiten. Die folgende Anleitung beschreibt, wie Sie eine benutzerdefinierte Domäne für Azure Active Directory und G Suite einrichten.
+   > [!IMPORTANT]
+   > Für jeden Benutzer, den Sie für G Suite bereitstellen möchten, *muss* der Benutzername in Azure Active Directory an eine benutzerdefinierte Domäne gebunden werden. Beispielsweise werden Benutzernamen wie bob@contoso.onmicrosoft.com von G Suite nicht akzeptiert. bob@contoso.com ist hingegen zulässig. Sie können die Domäne eines vorhandenen Benutzers ändern, indem Sie seine Eigenschaften in Azure AD bearbeiten. Die folgende Anleitung beschreibt, wie Sie eine benutzerdefinierte Domäne für Azure Active Directory und G Suite einrichten.
       
 1. Führen Sie die folgenden Schritte aus, wenn Sie Ihrem Azure Active Directory noch keinen benutzerdefinierten Domänennamen hinzugefügt haben:
   
@@ -105,8 +105,8 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
     e. Wiederholen Sie die obigen Schritte für alle Domänen, die Sie Ihrem Verzeichnis hinzufügen möchten.
 
-    > [!NOTE]
-    Für die Benutzerbereitstellung muss die benutzerdefinierte Domäne dem Domänennamen der Azure AD-Quelle entsprechen. Andernfalls lässt sich das Problem unter Umständen durch eine Anpassung der Attributzuordnung beheben.
+   > [!NOTE]
+   >  Für die Benutzerbereitstellung muss die benutzerdefinierte Domäne dem Domänennamen der Azure AD-Quelle entsprechen. Andernfalls lässt sich das Problem unter Umständen durch eine Anpassung der Attributzuordnung beheben.
 
 
 1. Nachdem Sie alle Ihre Domänen mit Azure AD überprüft haben, müssen Sie sie mit Google Apps erneut überprüfen. Führen Sie für jede Domäne, die noch nicht für Google registriert ist, die folgenden Schritte aus:
@@ -149,13 +149,13 @@ Dieser Abschnitt beschreibt, wie Sie Azure AD mit der API für die Benutzerkonte
 
 1. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest. 
 
-     ![Bereitstellung](./media/google-apps-provisioning-tutorial/provisioning.png)
+       ![Provisioning](./media/google-apps-provisioning-tutorial/provisioning.png)
 
 1. Wählen Sie im Abschnitt **Administratoranmeldeinformationen** die Option **Autorisieren** aus. In einem neuen Browserfenster wird ein Dialogfeld für die Google-Autorisierung geöffnet.
 
 1. Bestätigen Sie, dass Sie Azure Active Directory die Berechtigung erteilen möchten, Änderungen an Ihrem G Suite-Mandanten vorzunehmen. Wählen Sie **Akzeptieren** aus.
     
-     ![Überprüfen Sie die Berechtigungen.][28]
+       ![Confirm permissions.][28]
 
 1. Wählen Sie im Azure-Portal die Option **Verbindung testen** aus, um zu überprüfen, ob Azure AD eine Verbindung mit Ihrer App herstellen kann. Falls die Verbindung nicht hergestellt werden kann, überprüfen Sie, ob Ihr G Suite-Konto über Teamadministratorberechtigungen verfügt. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 

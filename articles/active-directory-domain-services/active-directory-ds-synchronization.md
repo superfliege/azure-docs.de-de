@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: ergreenl
-ms.openlocfilehash: 23d30d3b881fbe5aab4e537073b2582eb01bfe7c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: b5544be37015368173f3f8eb39288b7a97ae11c6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55183423"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084996"
 ---
 # <a name="synchronization-in-an-azure-ad-domain-services-managed-domain"></a>Synchronisierung in einer durch Azure AD Domain Services verwalteten Domäne
 In der folgenden Abbildung ist die Synchronisierung in durch Azure AD Domain Services verwalteten Domänen dargestellt.
@@ -70,8 +70,6 @@ In der folgenden Tabelle sind einige allgemeine Attribute sowie entsprechende Be
 
 > [!NOTE]
 > **Anmeldung in der verwalteten Domäne mit dem UPN-Format:** Das SAMAccountName-Attribut wird für einige Benutzerkonten in der verwalteten Domäne möglicherweise automatisch generiert. Wenn mehrere Benutzer dasselbe mailNickname-Attribut aufweisen oder Benutzer übermäßig lange UPN-Präfixe aufweisen, wird das SAMAccountName-Attribut für diese Benutzer möglicherweise automatisch generiert. Daher ist das Format für SAMAccountName (z.B. „CONTOSO100\joeuser“) nicht immer eine verlässliche Möglichkeit für die Anmeldung in der Domäne. Das automatisch generierte SAMAccountName-Attribut von Benutzern kann von ihrem UPN-Präfix abweichen. Verwenden Sie das UPN-Format (z.B. „joeuser@contoso100.com“) für die zuverlässige Anmeldung bei der verwalteten Domäne.
->
->
 
 ### <a name="attribute-mapping-for-user-accounts"></a>Attributzuordnung für Benutzerkonten
 In der folgenden Tabelle ist dargestellt, wie bestimmte Attribute für Benutzerobjekte im Azure AD-Mandanten mit den entsprechenden Attributen in der verwalteten Domäne synchronisiert werden.

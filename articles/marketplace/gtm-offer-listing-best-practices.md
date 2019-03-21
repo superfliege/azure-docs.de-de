@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
-ms.openlocfilehash: 60f02f0ae92f471718c0c35f8ac833b9ca6c1da4
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: e5db2f340917705ec29f7b6db4de40914c66efcd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355166"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57863932"
 ---
 # <a name="offer-listing-best-practices"></a>Bewährte Methoden für Angebotslistung
 
@@ -56,7 +56,7 @@ Wenn Sie auf Ihrer Website einen Link von Ihrem AppSource- oder Azure Marketplac
 
 Die folgende Beispiel-URL enthält beide oben stehenden Abfrageparameter: `https://appsource.microsoft.com/product/dynamics-365/mscrm.04931187-431c-415d-8777-f7f482ba8095?src=website&mktcmpid=blogpost_12`
 
-Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne im Analysedashboard des [Cloud-Partnerportals](http://cloudpartner.azure.com/#insights) überprüfen.
+Wenn Sie die Parameter Ihrer AppSource-URL hinzufügen, können Sie die Effektivität Ihrer Kampagne im Analysedashboard des [Cloud-Partnerportals](https://cloudpartner.azure.com/#insights) überprüfen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

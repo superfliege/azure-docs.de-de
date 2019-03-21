@@ -5,17 +5,17 @@ description: Erfahren Sie, wie Sie ein Modell in Azure Machine Learning Studio e
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
+ms.topic: conceptual
 author: peterlu
 ms.author: amlstudiodocs
 ms.custom: seodec18, previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 02/14/2019
-ms.openlocfilehash: 4f3ca01ae44900e4d0ce22b79db44d7bfa84e56d
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: fa4448c2a44a3c56548120bd04abf53df9a85ba0
+ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456553"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56822018"
 ---
 # <a name="retrain-and-deploy-a-classic-studio-web-service"></a>Erneutes Trainieren und Bereitstellen eines klassischen Studio-Webdiensts
 
@@ -23,7 +23,7 @@ Das erneute Training von Machine Learning-Modellen ist eine Möglichkeit sicherz
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird davon ausgegangen, dass Sie bereits über sowohl ein Experiment zum erneuten Trainieren als auch ein Vorhersageexperiment verfügen. Diese Schritte werden unter [Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells](retrain-models-programmatically.md) erläutert. Anstatt jedoch Ihr Machine Learning-Modell als neuen Webdienst bereitzustellen, werden Sie Ihr Vorhersageexperiment als klassischen Webdienst bereitstellen.
+In diesem Artikel wird davon ausgegangen, dass Sie bereits über sowohl ein Experiment zum erneuten Trainieren als auch ein Vorhersageexperiment verfügen. Diese Schritte werden unter [Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells](/azure/machine-learning/studio/retrain-machine-learning-model) erläutert. Anstatt jedoch Ihr Machine Learning-Modell als neuen Webdienst bereitzustellen, werden Sie Ihr Vorhersageexperiment als klassischen Webdienst bereitstellen.
      
 ## <a name="add-a-new-endpoint"></a>Hinzufügen eines neuen Endpunkts
 
@@ -60,7 +60,7 @@ Um die richtige PATCH-URL programmgesteuert abzurufen, gehen Sie folgendermaßen
 1. Führen Sie den [AddEndpoint](https://github.com/raymondlaghaeian/AML_EndpointMgmt/blob/master/Program.cs)-Beispielcode aus.
 1. Suchen Sie in der Ausgabe von AddEndpoint nach dem Wert *HelpLocation*, und kopieren Sie die URL.
 
-   ![HelpLocation in der Ausgabe des addEndpoint-Beispiels](./media/troubleshooting-retraining-a-model/addEndpoint-output.png)
+   ![HelpLocation in der Ausgabe des addEndpoint-Beispiels](./media/retrain-classic/addEndpoint-output.png)
 1. Fügen Sie die URL in einen Browser ein, um auf eine Seite zu navigieren, auf der Hilfelinks für den Webdienst angegeben sind.
 1. Klicken Sie auf den Link **Ressource aktualisieren** , um die Hilfeseite für das Patching zu öffnen.
 
@@ -81,7 +81,7 @@ Um im Webportal die richtige PATCH-URL abzurufen, gehen Sie wie folgt vor:
 
 Die PATCH-Hilfeseite enthält die PATCH-URL, die Sie verwenden müssen, und außerdem Beispielcode, den Sie zum Aufrufen verwenden können.
 
-![Patch-URL](./media/troubleshooting-retraining-a-model/ml-help-page-patch-url.png)
+![Patch-URL](./media/retrain-classic/ml-help-page-patch-url.png)
 
 ### <a name="update-the-endpoint"></a>Aktualisieren des Endpunkts
 

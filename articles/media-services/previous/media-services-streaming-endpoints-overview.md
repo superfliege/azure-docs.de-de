@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: b40a2bbfa7bbab7ffbdd4c47684eda7c954e7b77
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: c5979fa7ff67c5acda9ab653bc4ee52d8b5129a5
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55996937"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293803"
 ---
 # <a name="streaming-endpoints-overview"></a>Streamingendpunkte – Übersicht  
 
@@ -50,8 +50,8 @@ Ab der Media Services-Version vom Januar 2017 gibt es zwei Streamingtypen: **Sta
 
 Type|BESCHREIBUNG
 ---|---
-**Standard**|Dies ist die Standardoption, die für die Mehrzahl der Szenarien funktioniert.<br/>Bei dieser Option erhalten Sie eine feste/begrenzte SLA. Die ersten 15 Tage nach Starten des Streamingendpunkts sind kostenlos.<br/>Wenn Sie mehrere Streamingendpunkte erstellen, ist nur der erste die ersten 15 Tage kostenlos. Die anderen werden nach ihrer Inbetriebnahme in Rechnung gestellt. <br/>Beachten Sie, dass die kostenlose Testversion nur für neu erstellte Media Services-Konten und den Standard-Streamingendpunkt gilt. Für vorhandene Streamingendpunkte und zusätzlich erstellte Streamingendpunkte gibt es keinen kostenlosen Testzeitraum, auch wenn diese auf Version 2.0 aktualisiert oder mit Version 2.0 erstellt wurden.
-**Premium**|Diese Option eignet sich für professionelle Szenarien, die eine höhere Skalierung oder mehr Steuerung erfordern.<br/>Eine variable SLA, die auf erworbener Premium-Streamingeinheitskapazität basiert, dedizierte Streamingendpunkte in einer isolierten Umgebung und keine Konkurrenz um Ressourcen.
+**Standard** |Dies ist die Standardoption, die für die Mehrzahl der Szenarien funktioniert.<br/>Bei dieser Option erhalten Sie eine feste/begrenzte SLA. Die ersten 15 Tage nach Starten des Streamingendpunkts sind kostenlos.<br/>Wenn Sie mehrere Streamingendpunkte erstellen, ist nur der erste die ersten 15 Tage kostenlos. Die anderen werden nach ihrer Inbetriebnahme in Rechnung gestellt. <br/>Beachten Sie, dass die kostenlose Testversion nur für neu erstellte Media Services-Konten und den Standard-Streamingendpunkt gilt. Für vorhandene Streamingendpunkte und zusätzlich erstellte Streamingendpunkte gibt es keinen kostenlosen Testzeitraum, auch wenn diese auf Version 2.0 aktualisiert oder mit Version 2.0 erstellt wurden.
+**Premium** |Diese Option eignet sich für professionelle Szenarien, die eine höhere Skalierung oder mehr Steuerung erfordern.<br/>Eine variable SLA, die auf erworbener Premium-Streamingeinheitskapazität basiert, dedizierte Streamingendpunkte in einer isolierten Umgebung und keine Konkurrenz um Ressourcen.
 
 Ausführlichere Informationen finden Sie im nachfolgenden Abschnitt **Vergleich der Streamingtypen**.
 

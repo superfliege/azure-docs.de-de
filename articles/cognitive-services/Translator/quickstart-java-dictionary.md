@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 9a84b87a3577d3b88d49040d309f48083d494879
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 5c2f85e6417c3185df58e757f9831ef171e39add
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181893"
 ---
 # <a name="quickstart-look-up-words-with-bilingual-dictionary-using-java"></a>Schnellstart: Nachschlagen von Wörtern im bilingualen Wörterbuch mithilfe von Java
 
@@ -74,7 +74,7 @@ Beachten Sie, dass dieses Beispiel Abhängigkeiten von OkHttp für HTTP-Anforder
 Erstellen Sie einen Ordner für Ihre Beispiel-App. Führen Sie in Ihrem Arbeitsverzeichnis den folgenden Befehl aus:
 
 ```console
-mkdir -p src/main/java
+mkdir -p src\main\java
 ```
 
 Erstellen Sie als Nächstes in diesem Ordner eine Datei namens `AltTranslation.java`.

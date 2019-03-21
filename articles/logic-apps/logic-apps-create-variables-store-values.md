@@ -10,12 +10,12 @@ ms.date: 05/30/2018
 ms.service: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: bb84c7d5e483b0a2abc3b7d1a37de8760513d203
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: e525e5584e4835b0f2b73203c818c3f799b77cf5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063215"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075713"
 ---
 # <a name="create-variables-for-saving-and-managing-values-in-azure-logic-apps"></a>Erstellen von Variablen für das Speichern und Verwalten von Werten in Azure Logic Apps
 
@@ -74,8 +74,8 @@ Sie können eine Variable erstellen und ihren Datentyp und Anfangswert deklarier
 
    | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
-   | Type | JA | <*Variablentyp*> | Der Datentyp für die Variable | 
+   | Name | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | Type | Ja | <*Variablentyp*> | Der Datentyp für die Variable | 
    | Value | Nein  | <*Anfangswert*> | Der Anfangswert für die Variable <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den Anfangswert für Ihre Variable kennen. | 
    ||||| 
 
@@ -210,7 +210,7 @@ Um eine Variable um einen konstanten Wert zu erhöhen oder zu *inkrementieren*, 
 
    | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
    |----------|----------|-------|--------------|
-   | Name | JA | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
+   | Name | Ja | <*Variablenname*> | Der Name für die zu erhöhende Variable | 
    | Value | Nein  | <*Inkrementwert*> | Der zum Erhöhen der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Erhöhung Ihrer Variablen kennen. | 
    |||| 
 
@@ -330,7 +330,7 @@ Für die Aktion **Variablenwert verringern** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG |
 |----------|----------|-------|--------------|
-| Name | JA | <*Variablenname*> | Der Name für die zu verringernde Variable | 
+| Name | Ja | <*Variablenname*> | Der Name für die zu verringernde Variable | 
 | Value | Nein  | <*Inkrementwert*> | Der zum Verringern der Variablen verwendete Wert. Der Standardwert ist eins. <p><p>**Tipp**: Obwohl es sich um eine optionale Einstellung handelt, ist es eine bewährte Methode, diesen Wert einzustellen, damit Sie immer den spezifischen Wert für die schrittweise Verringerung Ihrer Variablen kennen. | 
 ||||| 
 
@@ -365,8 +365,8 @@ Für die Aktion **Variable festlegen** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Value | JA | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
+| Name | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Value | Ja | <*Neuer-Wert*> | Der Wert, der der Variable zugewiesen werden soll. Beide müssen den gleichen Datentyp aufweisen. | 
 ||||| 
 
 > [!NOTE]
@@ -414,17 +414,18 @@ Bei Variablen, die Strings oder Arrays speichern, können Sie den Wert einer Var
 
 1. Suchen und wählen Sie eine dieser Aktionen basierend darauf, ob Ihre Variable eine Zeichenfolge oder ein Array ist: 
 
-  * **Variablen – An Zeichenfolgenvariable anfügen**
-  * **Variablen – An Arrayvariable anfügen** 
+   * **Variablen – An Zeichenfolgenvariable anfügen**
+   * **Variablen – An Arrayvariable anfügen** 
 
-2. Geben Sie den Wert an, der als letztes Element in der Zeichenfolge oder im Array angefügt werden soll. Dieser Wert ist erforderlich. 
+2. Geben Sie den Wert an, der als letztes Element in der Zeichenfolge oder im Array angefügt werden soll. 
+   Dieser Wert ist erforderlich. 
 
 Für die Aktionen **An ... anfügen** gibt es folgende Eigenschaften:
 
 | Eigenschaft | Erforderlich | Value |  BESCHREIBUNG | 
 |----------|----------|-------|--------------| 
-| Name | JA | <*Variablenname*> | Der Name für die zu ändernde Variable | 
-| Value | JA | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
+| Name | Ja | <*Variablenname*> | Der Name für die zu ändernde Variable | 
+| Value | Ja | <*Anzufügender-Wert*> | Der anzufügende Wert, der von einem beliebigen Typ sein kann. | 
 |||||  
 
 Wenn Sie vom Designer in den Code-View-Editor wechseln, erscheint die Aktion **An Arrayvariable anfügen** innerhalb Ihrer Logik-App-Definition, die im JSON-Format vorliegt.

@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3aba118354c51285d714bb127e6f5984f8a50057
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: aeb97d661d330ed6afb3ca5e5e1eb924dacc4024
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54329751"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096298"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Automatisierte Sicherung für SQL Server auf virtuellen Azure-Computern (klassisch)
 > [!div class="op_single_selector"]
@@ -73,7 +73,8 @@ In der folgenden Tabelle werden die Optionen beschrieben, die für die automatis
 | **Aufbewahrungszeitraum** |1 bis 30 Tage (30 Tage) |Die Anzahl von Tagen, für die eine Sicherung aufbewahrt wird. |
 | **Speicherkonto** |Azure-Speicher-Konto (das für die angegebene VM erstellte Speicherkonto) |Ein Azure-Speicherkonto, mit dem Dateien der automatisierten Sicherung im Blob-Speicher gespeichert werden. An diesem Speicherort wird ein Container zum Speichern aller Sicherungsdateien erstellt. Die Namenskonvention für die Sicherungsdatei enthält das Datum, die Uhrzeit und den Computernamen. |
 | **Verschlüsselung** |Aktivieren/Deaktivieren (deaktiviert) |Aktiviert oder deaktiviert die Verschlüsselung. Wenn die Verschlüsselung aktiviert ist, befinden sich die Zertifikate zum Wiederherstellen der Sicherung im angegebenen Speicherkonto im gleichen automaticbackup-Container (mit derselben Namenskonvention). Wenn das Kennwort geändert wird, wird ein neues Zertifikat mit diesem Kennwort generiert, das alte Zertifikat bleibt jedoch zum Wiederherstellen vorheriger Sicherungen erhalten. |
-| **Kennwort** |Kennworttext (keiner) |Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. | **Sichern von Systemdatenbanken** | Aktivieren/Deaktivieren (deaktiviert) | So erstellen Sie vollständige Sicherungen von Master-, Model- und MSDB-Datenbanken |
+| **Kennwort** |Kennworttext (keiner) |Ein Kennwort für Verschlüsselungsschlüssel. Ein Kennwort ist nur erforderlich, wenn die Verschlüsselung aktiviert ist. Um eine verschlüsselte Sicherung wiederherzustellen, benötigen Sie das richtige Kennwort und das zugehörige Zertifikat, das beim Erstellen der Sicherung verwendet wurde. |
+| **Sichern von Systemdatenbanken** | Aktivieren/Deaktivieren (deaktiviert) | So erstellen Sie vollständige Sicherungen von Master-, Model- und MSDB-Datenbanken |
 | **Configure backup schedule** (Sicherungszeitplan konfigurieren) | Manuell/Automatisiert (automatisch) | Wählen Sie **Automated** (Automatisiert), um automatisch vollständige Sicherungen und Protokollsicherungen basierend auf dem Protokolldateiwachstum zu erstellen. Wählen Sie **Manuell**, um den Zeitplan für vollständige Sicherungen und Protokollsicherungen anzugeben. |
 
 ## <a name="configuration-with-powershell"></a>Konfiguration mit PowerShell

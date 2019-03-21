@@ -17,12 +17,12 @@ ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
 monikerRange: vsts
-ms.openlocfilehash: 90af443621ec47400779bdc1689fc07be558e4b8
-ms.sourcegitcommit: ebf2f2fab4441c3065559201faf8b0a81d575743
+ms.openlocfilehash: 695056be67294c6a0787bad61bf5ee00378275b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52164539"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58111428"
 ---
 # <a name="create-a-cicd-pipeline-for-python-with-azure-devops-projects"></a>Erstellen einer CI/CD-Pipeline für Python mit Azure DevOps Projects
 
@@ -64,7 +64,7 @@ Wenn Sie kein Azure-Abonnement haben, erhalten Sie über [Visual Studio Dev Esse
 
     ![Dashboardansicht](_img/azure-devops-project-python/dashboardnopreview.png) 
     
- Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert. Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an einer Python-App zusammenarbeiten.
+   Mit DevOps Projects wird automatisch ein CI-Trigger für Build und Release konfiguriert. Nun können Sie mithilfe eines CI/CD-Prozesses, mit dem Ihre aktuelle Arbeit auf Ihrer Website automatisch bereitgestellt wird, mit einem Team an einer Python-App zusammenarbeiten.
 
 ## <a name="commit-code-changes-and-execute-cicd"></a>Ausführen eines Commits für Codeänderungen und Ausführen von CI/CD
 

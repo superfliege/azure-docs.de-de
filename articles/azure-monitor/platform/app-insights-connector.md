@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 8b1504961254fefcaafc22008b4cc5adaf77e9c4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: b9a847f04048cd17d550ca66bd3e6502577746eb
+ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447870"
+ms.lasthandoff: 02/26/2019
+ms.locfileid: "56878454"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights-Connector-Verwaltungslösung (Veraltet)
 
@@ -127,7 +127,7 @@ Wenn Sie auf dem Blatt **Ausnahmen** auf eine beliebige Stelle klicken, wird ein
 
 Unabhängig davon, ob Sie im Dashboard **Application Insights-Connector** auf ein Element klicken, wird auf der Seite **Suche** selbst für alle Abfragen, bei denen Application Insights-Daten zurückgegeben werden, die Application Insights-Perspektive angezeigt. Wenn Sie beispielsweise Application Insights-Daten anzeigen, wird für eine **&#42;**-Abfrage auch die Registerkarte „Perspektive“ angezeigt. Dies ist in der folgenden Abbildung dargestellt:
 
-![Application Insights ](./media/app-insights-connector/app-insights-search.png)
+![Application Insights](./media/app-insights-connector/app-insights-search.png)
 
 Komponenten der Perspektive werden je nach Suchabfrage aktualisiert. Dies bedeutet, dass Sie die Ergebnisse mithilfe jedes Suchfelds filtern können, über das Sie die Daten anzeigen können:
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 0a85c5e90be465b324248f961fd297b15c008d02
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 17753ba374475c19fee1a213654caf4a624088f8
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53075852"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56669906"
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Erstellen eines internen Lastenausgleichs mit dem Azure PowerShell-Modul
 
@@ -28,6 +28,7 @@ ms.locfileid: "53075852"
 > * [Azure-Befehlszeilenschnittstelle](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [Vorlage](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -59,16 +60,16 @@ Stellen Sie sicher, dass Sie über die aktuelle Produktionsversion des Azure Pow
 
 Starten Sie das PowerShell-Modul für Azure Resource Manager.
 
-```powershell
-Connect-AzureRmAccount
+```azurepowershell-interactive
+Connect-AzAccount
 ```
 
 ### <a name="step-2-view-your-subscriptions"></a>Schritt 2: Anzeigen Ihrer Abonnements
 
 Prüfen Sie Ihre verfügbaren Azure-Abonnements.
 
-```powershell
-Get-AzureRmSubscription
+```azurepowershell-interactive
+Get-AzSubscription
 ```
 
 Geben Sie Ihre Anmeldeinformationen ein, wenn Sie zur Authentifizierung aufgefordert werden.
@@ -77,16 +78,16 @@ Geben Sie Ihre Anmeldeinformationen ein, wenn Sie zur Authentifizierung aufgefor
 
 Wählen Sie aus, welches Ihrer Azure-Abonnements Sie zum Bereitstellen des Lastenausgleichs verwenden möchten.
 
-```powershell
-Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
+```azurepowershell-interactive
+Select-AzSubscription -Subscriptionid "GUID of subscription"
 ```
 
 ### <a name="step-4-choose-the-resource-group-for-the-load-balancer"></a>Schritt 4: Auswählen der Ressourcengruppe für den Lastenausgleich
 
 Erstellen Sie eine neue Ressourcengruppe für den Lastenausgleich. Überspringen Sie diesen Schritt, wenn Sie eine vorhandene Ressourcengruppe verwenden.
 
-```powershell
-New-AzureRmResourceGroup -Name NRP-RG -location "West US"
+```azurepowershell-interactive
+New-AzResourceGroup -Name NRP-RG -location "West US"
 ```
 
 Azure Resource Manager erfordert, dass alle Ressourcengruppen einen Speicherort angeben. Der Standort wird als Standardstandort für alle Ressourcen der Ressourcengruppe verwendet. Verwenden Sie immer dieselbe Ressourcengruppe für alle Befehle, die sich auf die Erstellung des Lastenausgleichs beziehen.
@@ -97,14 +98,14 @@ Im Beispiel haben wir eine Ressourcengruppe mit dem Namen **NRP-RG** und dem Sta
 
 Erstellen Sie ein Subnetz für das virtuelle Netzwerk, und weisen Sie es der Variablen **$backendSubnet** zu.
 
-```powershell
-$backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
+```azurepowershell-interactive
+$backendSubnet = New-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -AddressPrefix 10.0.2.0/24
 ```
 
 Erstellen Sie ein virtuelles Netzwerk.
 
-```powershell
-$vnet= New-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
+```azurepowershell-interactive
+$vnet= New-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
 Das virtuelle Netzwerk wird erstellt. Das Subnetz **LB-Subnet-BE** wird dem virtuellen Netzwerk **NRPVNet** hinzugefügt. Diese Werte werden der Variablen **$vnet** zugewiesen.
@@ -117,8 +118,8 @@ Erstellen Sie einen Front-End-IP-Pool für den eingehenden Datenverkehr und eine
 
 Erstellen Sie einen Front-End-IP-Pool mit der privaten IP-Adresse 10.0.2.5 für das Subnetz 10.0.2.0/24. Diese Adresse ist der Endpunkt für den eingehenden Netzwerkdatenverkehr.
 
-```powershell
-$frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
+```azurepowershell-interactive
+$frontendIP = New-AzLoadBalancerFrontendIpConfig -Name LB-Frontend -PrivateIpAddress 10.0.2.5 -SubnetId $vnet.subnets[0].Id
 ```
 
 ### <a name="step-2-create-a-back-end-address-pool"></a>Schritt 2: Erstellen eines Back-End-Adresspools
@@ -126,7 +127,7 @@ $frontendIP = New-AzureRmLoadBalancerFrontendIpConfig -Name LB-Frontend -Private
 Erstellen Sie einen Back-End-Adresspool für den Empfang des eingehenden Datenverkehrs vom Front-End-IP-Pool:
 
 ```powershell
-$beaddresspool= New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
+$beaddresspool= New-AzLoadBalancerBackendAddressPoolConfig -Name "LB-backend"
 ```
 
 ## <a name="create-the-configuration-rules-probe-and-load-balancer"></a>Erstellen von Konfigurationsregeln, Test und Lastenausgleich
@@ -142,22 +143,22 @@ Im Beispiel werden die folgenden vier Regelobjekte erstellt:
 * Eine Integritätstestregel: Überprüft den Integritätsstatus des Pfads von „HealthProbe.aspx“.
 * Eine Lastenausgleichsregel: Führt den Lastenausgleich für den gesamten eingehenden Datenverkehr am öffentlichen Port 80 am lokalen Port 80 im Back-End-Adresspool durch.
 
-```powershell
-$inboundNATRule1= New-AzureRmLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
+```azurepowershell-interactive
+$inboundNATRule1= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP1" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3441 -BackendPort 3389
 
-$inboundNATRule2= New-AzureRmLoadBalancerInboundNatRuleConfig -Name "RDP2" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
+$inboundNATRule2= New-AzLoadBalancerInboundNatRuleConfig -Name "RDP2" -FrontendIpConfiguration $frontendIP -Protocol TCP -FrontendPort 3442 -BackendPort 3389
 
-$healthProbe = New-AzureRmLoadBalancerProbeConfig -Name "HealthProbe" -RequestPath "HealthProbe.aspx" -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
+$healthProbe = New-AzLoadBalancerProbeConfig -Name "HealthProbe" -RequestPath "HealthProbe.aspx" -Protocol http -Port 80 -IntervalInSeconds 15 -ProbeCount 2
 
-$lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HTTP" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
+$lbrule = New-AzLoadBalancerRuleConfig -Name "HTTP" -FrontendIpConfiguration $frontendIP -BackendAddressPool $beAddressPool -Probe $healthProbe -Protocol Tcp -FrontendPort 80 -BackendPort 80
 ```
 
 ### <a name="step-2-create-the-load-balancer"></a>Schritt 2: Erstellen des Lastenausgleichs
 
 Erstellen Sie den Lastenausgleich, und kombinieren Sie die Regelobjekte (NAT-Eingang für RDP, Lastenausgleich und Integritätstest):
 
-```powershell
-$NRPLB = New-AzureRmLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
+```azurepowershell-interactive
+$NRPLB = New-AzLoadBalancer -ResourceGroupName "NRP-RG" -Name "NRP-LB" -Location "West US" -FrontendIpConfiguration $frontendIP -InboundNatRule $inboundNATRule1,$inboundNatRule2 -LoadBalancingRule $lbrule -BackendAddressPool $beAddressPool -Probe $healthProbe
 ```
 
 ## <a name="create-the-network-interfaces"></a>Erstellen der Netzwerkschnittstellen
@@ -168,24 +169,24 @@ Definieren Sie nach dem Erstellen des internen Lastenausgleichs, welche Netzwerk
 
 Rufen Sie das virtuelle Netzwerk der Ressource und das Subnetz ab. Diese Werte werden verwendet, um die Netzwerkschnittstellen zu erstellen:
 
-```powershell
-$vnet = Get-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
+```azurepowershell-interactive
+$vnet = Get-AzVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG
 
-$backendSubnet = Get-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
+$backendSubnet = Get-AzVirtualNetworkSubnetConfig -Name LB-Subnet-BE -VirtualNetwork $vnet
 ```
 
 Erstellen Sie die erste Netzwerkschnittstelle mit dem Namen **lb-nic1-be**. Weisen Sie die Schnittstelle dem Back-End-Pool des Lastenausgleichs zu. Ordnen Sie die erste NAT-Regel für RDP dieser NIC zu:
 
-```powershell
-$backendnic1= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
+```azurepowershell-interactive
+$backendnic1= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic1-be -Location "West US" -PrivateIpAddress 10.0.2.6 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[0]
 ```
 
 ### <a name="step-2-create-the-second-network-interface"></a>Schritt 2: Erstellen der zweiten Netzwerkschnittstelle
 
 Erstellen Sie die zweite Netzwerkschnittstelle mit dem Namen **lb-nic2-be**. Weisen Sie die zweite Schnittstelle demselben Back-End-Pool des Lastenausgleichs zu, den Sie für die erste Schnittstelle verwendet haben. Weisen Sie die zweite NIC der zweiten NAT-Regel für RDP zu:
 
-```powershell
-$backendnic2= New-AzureRmNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
+```azurepowershell-interactive
+$backendnic2= New-AzNetworkInterface -ResourceGroupName "NRP-RG" -Name lb-nic2-be -Location "West US" -PrivateIpAddress 10.0.2.7 -Subnet $backendSubnet -LoadBalancerBackendAddressPool $nrplb.BackendAddressPools[0] -LoadBalancerInboundNatRule $nrplb.InboundNatRules[1]
 ```
 
 Überprüfen Sie die Konfiguration:
@@ -197,7 +198,7 @@ Die Einstellungen sollten wie folgt lauten:
     Name                 : lb-nic1-be
     ResourceGroupName    : NRP-RG
     Location             : westus
-    Id                   : /subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
+    Id                   : /subscriptions/[Id]/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be
     Etag                 : W/"d448256a-e1df-413a-9103-a137e07276d1"
     ProvisioningState    : Succeeded
     Tags                 :
@@ -207,25 +208,25 @@ Die Einstellungen sollten wie folgt lauten:
                            "PrivateIpAddress": "10.0.2.6",
                            "PrivateIpAllocationMethod": "Static",
                            "Subnet": {
-                             "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/virtualNetworks/NRPVNet/subnets/LB-Subnet-BE"
+                             "Id": "/subscriptions/[Id]/resourceGroups/NRP-RG/providers/Microsoft.Network/virtualNetworks/NRPVNet/subnets/LB-Subnet-BE"
                            },
                            "PublicIpAddress": {
                              "Id": null
                            },
                            "LoadBalancerBackendAddressPools": [
                              {
-                               "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/loadBalancers/NRPlb/backendAddressPools/LB-backend"
+                               "Id": "/subscriptions/[Id]/resourceGroups/NRP-RG/providers/Microsoft.Network/loadBalancers/NRPlb/backendAddressPools/LB-backend"
                              }
                            ],
                            "LoadBalancerInboundNatRules": [
                              {
-                               "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/loadBalancers/NRPlb/inboundNatRules/RDP1"
+                               "Id": "/subscriptions/[Id]/resourceGroups/NRP-RG/providers/Microsoft.Network/loadBalancers/NRPlb/inboundNatRules/RDP1"
                              }
                            ],
                            "ProvisioningState": "Succeeded",
                            "Name": "ipconfig1",
                            "Etag": "W/\"d448256a-e1df-413a-9103-a137e07276d1\"",
-                           "Id": "/subscriptions/f50504a2-1865-4541-823a-b32842e3e0ee/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/ipconfig1"
+                           "Id": "/subscriptions/[Id]/resourceGroups/NRP-RG/providers/Microsoft.Network/networkInterfaces/lb-nic1-be/ipConfigurations/ipconfig1"
                          }
                        ]
     DnsSettings          : {
@@ -240,7 +241,7 @@ Die Einstellungen sollten wie folgt lauten:
 
 ### <a name="step-3-assign-the-nic-to-a-vm"></a>Schritt 3: Zuweisen der NIC zu einer VM
 
-Weisen Sie die NIC einem virtuellen Computer zu, indem Sie den Befehl `Add-AzureRmVMNetworkInterface` verwenden.
+Weisen Sie die NIC einem virtuellen Computer zu, indem Sie den Befehl `Add-AzVMNetworkInterface` verwenden.
 
 Eine Schritt-für-Schritt-Anleitung zum Erstellen eines virtuellen Computers und Zuweisen der NIC finden Sie unter [Erstellen eines virtuellen Windows-Computers mit PowerShell](../virtual-machines/virtual-machines-windows-ps-create.md?toc=%2fazure%2fload-balancer%2ftoc.json).
 
@@ -252,31 +253,31 @@ Nachdem der virtuelle Computer erstellt wurde, können Sie die Netzwerkschnittst
 
 Speichern Sie die Lastenausgleichsressource in einer Variablen (sofern nicht bereits geschehen). Wir verwenden den Variablennamen **$lb**. Verwenden Sie für die Attributwerte im Skript die Namen für die Lastenausgleichsressourcen, die in den vorherigen Schritten erstellt wurden.
 
-```powershell
-$lb = Get-AzureRmLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
+```azurepowershell-interactive
+$lb = Get-AzLoadBalancer –name NRP-LB -resourcegroupname NRP-RG
 ```
 
 ### <a name="step-2-store-the-back-end-configuration"></a>Schritt 2: Speichern der Back-End-Konfiguration
 
 Speichern Sie die Back-End-Konfiguration in der Variablen **$backend**.
 
-```powershell
-$backend = Get-AzureRmLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
+```azurepowershell-interactive
+$backend = Get-AzLoadBalancerBackendAddressPoolConfig -name LB-backend -LoadBalancer $lb
 ```
 
 ### <a name="step-3-store-the-network-interface"></a>Schritt 3: Speichern der Netzwerkschnittstelle
 
 Speichern Sie die Netzwerkschnittstelle in einer anderen Variablen. Diese Schnittstelle wurde unter „Erstellen der Netzwerkschnittstellen, Schritt 1“ erstellt. Wir verwenden den Variablennamen **$nic1**. Verwenden Sie den gleichen Netzwerkschnittstellennamen wie im vorherigen Beispiel.
 
-```powershell
-$nic = Get-AzureRmNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
+```azurepowershell-interactive
+$nic = Get-AzNetworkInterface –name lb-nic1-be -resourcegroupname NRP-RG
 ```
 
 ### <a name="step-4-change-the-back-end-configuration"></a>Schritt 4: Ändern der Back-End-Konfiguration
 
 Ändern Sie die Back-End-Konfiguration in der Netzwerkschnittstelle.
 
-```powershell
+```azurepowershell-interactive
 $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 ```
 
@@ -284,8 +285,8 @@ $nic.IpConfigurations[0].LoadBalancerBackendAddressPools=$backend
 
 Speichern Sie das Netzwerkschnittstellenobjekt.
 
-```powershell
-Set-AzureRmNetworkInterface -NetworkInterface $nic
+```azurepowershell-interactive
+Set-AzNetworkInterface -NetworkInterface $nic
 ```
 
 Nachdem die Schnittstelle für den Back-End-Pool hinzugefügt wurde, wird für den Netzwerkdatenverkehr der Lastenausgleich gemäß den Regeln durchgeführt. Diese Regeln wurden unter „Erstellen von Konfigurationsregeln, Test und Lastenausgleich“ konfiguriert.
@@ -294,34 +295,34 @@ Nachdem die Schnittstelle für den Back-End-Pool hinzugefügt wurde, wird für d
 
 ### <a name="step-1-assign-the-load-balancer-object-to-a-variable"></a>Schritt 1: Zuweisen des Lastenausgleichsobjekts zu einer Variablen
 
-Weisen Sie das Lastenausgleichsobjekt (aus dem vorherigen Beispiel) der Variablen **$slb** zu, indem Sie den Befehl `Get-AzureRmLoadBalancer` verwenden:
+Weisen Sie das Lastenausgleichsobjekt (aus dem vorherigen Beispiel) der Variablen **$slb** zu, indem Sie den Befehl `Get-AzLoadBalancer` verwenden:
 
-```powershell
-$slb = Get-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+```azurepowershell-interactive
+$slb = Get-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 ### <a name="step-2-add-a-nat-rule"></a>Schritt 2: Hinzufügen einer NAT-Regel
 
 Fügen Sie einem vorhandenen Lastenausgleich eine neue NAT-Eingangsregel hinzu. Verwenden Sie Port 81 für den Front-End-Pool und Port 8181 für den Back-End-Pool:
 
-```powershell
-$slb | Add-AzureRmLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
+```azurepowershell-interactive
+$slb | Add-AzLoadBalancerInboundNatRuleConfig -Name NewRule -FrontendIpConfiguration $slb.FrontendIpConfigurations[0] -FrontendPort 81  -BackendPort 8181 -Protocol Tcp
 ```
 
 ### <a name="step-3-save-the-configuration"></a>Schritt 3: Speichern der Konfiguration
 
 Speichern Sie die neue Konfiguration mit dem Befehl `Set-AzureLoadBalancer`:
 
-```powershell
-$slb | Set-AzureRmLoadBalancer
+```azurepowershell-interactive
+$slb | Set-AzLoadBalancer
 ```
 
 ## <a name="remove-an-existing-load-balancer"></a>Entfernen eines vorhandenen Lastenausgleichs
 
-Löschen Sie den Lastenausgleich **NRP-LB** in der Ressourcengruppe **NRP-RG** mit dem Befehl `Remove-AzureRmLoadBalancer`:
+Löschen Sie den Lastenausgleich **NRP-LB** in der Ressourcengruppe **NRP-RG** mit dem Befehl `Remove-AzLoadBalancer`:
 
-```powershell
-Remove-AzureRmLoadBalancer -Name NRPLB -ResourceGroupName NRP-RG
+```azurepowershell-interactive
+Remove-AzLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 ```
 
 > [!NOTE]

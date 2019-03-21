@@ -3,21 +3,21 @@ title: Transformieren von Daten mit JAR in Databricks – Azure | Microsoft-Doku
 description: Erfahren Sie, wie Sie mit JAR Daten in Databricks verarbeiten oder transformieren.
 services: data-factory
 documentationcenter: ''
-author: douglaslMS
-manager: craigg
 ms.assetid: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/15/2018
-ms.author: douglasl
-ms.openlocfilehash: 8a271359f09ca63e1a0c3a143994739ee7db8aab
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+author: nabhishek
+ms.author: abnarain
+manager: craigg
+ms.openlocfilehash: d299a785d50657ef40c0c49cb2dce33b8939fd02
+ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54014181"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57575867"
 ---
 # <a name="transform-data-by-running-a-jar-activity-in-azure-databricks"></a>Transformieren von Daten durch Ausführen einer JAR-Aktivität in Azure Databricks
 
@@ -58,11 +58,11 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 
 |Eigenschaft|BESCHREIBUNG|Erforderlich|
 |:--|---|:-:|
-|name|Der Name der Aktivität in der Pipeline.|JA|
+|name|Der Name der Aktivität in der Pipeline.|Ja|
 |Beschreibung|Ein Text, der beschreibt, was mit der Aktivität ausgeführt wird.|Nein |
-|type|Bei JAR-Aktivitäten in Databricks lautet der Aktivitätstyp DatabricksSparkJar.|JA|
-|linkedServiceName|Der Name des verknüpften Databricks-Diensts, in dem die JAR-Aktivität ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel  [Von Azure Data Factory unterstützte Compute-Umgebungen](compute-linked-services.md).|JA|
-|mainClassName|Der vollständige Name der Klasse, die die auszuführende Hauptmethode enthält. Diese Klasse muss in einer JAR-Datei enthalten sein, die als Bibliothek bereitgestellt wird.|JA|
+|type|Bei JAR-Aktivitäten in Databricks lautet der Aktivitätstyp DatabricksSparkJar.|Ja|
+|linkedServiceName|Der Name des verknüpften Databricks-Diensts, in dem die JAR-Aktivität ausgeführt wird. Weitere Informationen zu diesem verknüpften Dienst finden Sie im Artikel  [Von Azure Data Factory unterstützte Compute-Umgebungen](compute-linked-services.md).|Ja|
+|mainClassName|Der vollständige Name der Klasse, die die auszuführende Hauptmethode enthält. Diese Klasse muss in einer JAR-Datei enthalten sein, die als Bibliothek bereitgestellt wird.|Ja|
 |Parameter|Parameter, die an die Hauptmethode übergeben werden.  Es handelt sich um einen Array von Zeichenfolgen.|Nein |
 |libraries|Eine Liste der Bibliotheken, die in dem Cluster installiert werden, der den Auftrag ausführen wird. Es kann ein Array vom Typ <Zeichenfolge, Objekt> sein.|Ja (mindestens eine mit der mainClassName-Methode)|
 
@@ -94,7 +94,7 @@ In der oben genannten Definition der Databricks-Aktivität geben Sie diese Bibli
         {
             "cran": {
                 "package": "ada",
-                "repo": "http://cran.us.r-project.org"
+                "repo": "https://cran.us.r-project.org"
             }
         }
     ]

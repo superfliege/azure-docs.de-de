@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
-ms.openlocfilehash: e3d13082e3c076061b8d343827266ec04ae80646
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55180686"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117607"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>Konfigurieren der bereichsbezogenen Synchronisierung von Azure AD mit Ihrer verwalteten Domäne
 In diesem Artikel erfahren Sie, wie Sie konfigurieren können, dass nur bestimmte Benutzerkonten aus Ihrem Azure AD-Verzeichnis mit der von Azure AD Domain Services verwalteten Domäne synchronisiert werden.
@@ -39,12 +39,10 @@ Mit der folgende Tabelle können Sie bestimmen, wie die bereichsbezogene Synchro
 
 > [!WARNING]
 > **Durch das Ändern des Bereichs der Synchronisierung durchläuft Ihre verwaltete Domäne eine Neusynchronisierung.**
->
- * Wenn Sie den Synchronisierungsbereich für eine verwaltete Domäne ändern, erfolgt eine vollständige Neusynchronisierung.
- * Objekte, die für die verwaltete Domäne nicht mehr erforderlich sind, werden gelöscht. Neue Objekte werden in der verwalteten Domäne erstellt.
- * Die Neusynchronisierung kann sehr lange dauern. Dies ist abhängig von der Anzahl von Objekten (Benutzer, Gruppen und Gruppenmitgliedschaften) in Ihrer verwalteten Domäne und im Azure AD-Verzeichnis. Bei großen Verzeichnissen mit Hunderten oder Tausenden von Objekten kann die Neusynchronisierung einige Tage dauern.
->
->
+> 
+>  * Wenn Sie den Synchronisierungsbereich für eine verwaltete Domäne ändern, erfolgt eine vollständige Neusynchronisierung.
+>  * Objekte, die für die verwaltete Domäne nicht mehr erforderlich sind, werden gelöscht. Neue Objekte werden in der verwalteten Domäne erstellt.
+>  * Die Neusynchronisierung kann sehr lange dauern. Dies ist abhängig von der Anzahl von Objekten (Benutzer, Gruppen und Gruppenmitgliedschaften) in Ihrer verwalteten Domäne und im Azure AD-Verzeichnis. Bei großen Verzeichnissen mit Hunderten oder Tausenden von Objekten kann die Neusynchronisierung einige Tage dauern.
 
 
 ## <a name="create-a-new-managed-domain-and-enable-group-based-scoped-synchronization-using-azure-portal"></a>Erstellen einer neuen verwalteten Domäne und Aktivieren der gruppenbasierten bereichsbezogenen Synchronisierung über das Azure-Portal
@@ -58,46 +56,46 @@ Verwenden Sie PowerShell, um diese Schritte auszuführen. Lesen Sie die Anweisun
 Führen Sie die folgenden Schritte aus, um die gruppenbasierte bereichsbezogene Synchronisierung mit der verwalteten Domäne zu konfigurieren:
 
 1. Führen Sie die folgenden Aufgaben durch:
-  * [Aufgabe 1: Installieren der erforderlichen PowerShell-Module](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)
-  * [Aufgabe 2: Erstellen des erforderlichen Dienstprinzipals in Ihrem Azure AD-Verzeichnis](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)
-  * [Aufgabe 3: Erstellen und Konfigurieren der Gruppe „AAD DC-Administratoren“](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)
-  * [Aufgabe 4: Registrieren des Ressourcenanbieters für Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)
-  * [Aufgabe 5: Erstellen einer Ressourcengruppe](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)
-  * [Aufgabe 6: Erstellen und Konfigurieren des virtuellen Netzwerks](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)
+   * [Aufgabe 1: Installieren der erforderlichen PowerShell-Module](active-directory-ds-enable-using-powershell.md#task-1-install-the-required-powershell-modules)
+   * [Aufgabe 2: Erstellen des erforderlichen Dienstprinzipals in Ihrem Azure AD-Verzeichnis](active-directory-ds-enable-using-powershell.md#task-2-create-the-required-service-principal-in-your-azure-ad-directory)
+   * [Aufgabe 3: Erstellen und Konfigurieren der Gruppe „AAD DC-Administratoren“](active-directory-ds-enable-using-powershell.md#task-3-create-and-configure-the-aad-dc-administrators-group)
+   * [Aufgabe 4: Registrieren des Ressourcenanbieters für Azure AD Domain Services](active-directory-ds-enable-using-powershell.md#task-4-register-the-azure-ad-domain-services-resource-provider)
+   * [Aufgabe 5: Erstellen einer Ressourcengruppe](active-directory-ds-enable-using-powershell.md#task-5-create-a-resource-group)
+   * [Aufgabe 6: Erstellen und Konfigurieren des virtuellen Netzwerks](active-directory-ds-enable-using-powershell.md#task-6-create-and-configure-the-virtual-network)
 
 2. Wählen Sie die Gruppen aus, die Sie synchronisieren möchten, und geben Sie den Anzeigenamen der Gruppen an, die Sie mit Ihrer verwalteten Domäne synchronisieren möchten.
 
 3. Speichern Sie das [Skript im folgenden Abschnitt](active-directory-ds-scoped-synchronization.md#script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1) in einer Datei namens ```Select-GroupsToSync.ps1```. Führen Sie das folgende Skript aus:
 
-  ```powershell
-  .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
-  ```
+   ```powershell
+   .\Select-GroupsToSync.ps1 -groupsToAdd @("AAD DC Administrators", "GroupName1", "GroupName2")
+   ```
 
-  > [!WARNING]
-  > **Vergessen Sie nicht, die Gruppe „AAD DC-Administratoren“ einzubeziehen.**
-  >
-  > Sie müssen die Gruppe „AAD DC-Administratoren“ in die Liste der Gruppen aufnehmen, die für die bereichsbezogene Synchronisierung konfiguriert werden. Wenn Sie diese Gruppe nicht einbeziehen, kann die verwaltete Domäne nicht verwendet werden.
-  >
+   > [!WARNING]
+   > **Vergessen Sie nicht, die Gruppe „AAD DC-Administratoren“ einzubeziehen.**
+   >
+   > Sie müssen die Gruppe „AAD DC-Administratoren“ in die Liste der Gruppen aufnehmen, die für die bereichsbezogene Synchronisierung konfiguriert werden. Wenn Sie diese Gruppe nicht einbeziehen, kann die verwaltete Domäne nicht verwendet werden.
+   >
 
 4. Erstellen Sie jetzt die verwaltete Domäne, und aktivieren Sie die gruppenbasierte bereichsbezogene Synchronisierung für die verwaltete Domäne. Schließen Sie die Eigenschaft ```"filteredSync" = "Enabled"``` in den Parameter ```Properties``` ein. Sehen Sie sich beispielsweise das folgende Skriptfragment an, das aus [Aufgabe 7: Bereitstellen der durch Azure AD Domain Services verwalteten Domäne](active-directory-ds-enable-using-powershell.md#task-7-provision-the-azure-ad-domain-services-managed-domain) kopiert wurde.
 
-  ```powershell
-  $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
-  $ManagedDomainName = "contoso100.com"
-  $ResourceGroupName = "ContosoAaddsRg"
-  $VnetName = "DomainServicesVNet_WUS"
-  $AzureLocation = "westus"
+   ```powershell
+   $AzureSubscriptionId = "YOUR_AZURE_SUBSCRIPTION_ID"
+   $ManagedDomainName = "contoso100.com"
+   $ResourceGroupName = "ContosoAaddsRg"
+   $VnetName = "DomainServicesVNet_WUS"
+   $AzureLocation = "westus"
 
-  # Enable Azure AD Domain Services for the directory.
-  New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
-  -Location $AzureLocation `
-  -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
+   # Enable Azure AD Domain Services for the directory.
+   New-AzResource -ResourceId "/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.AAD/DomainServices/$ManagedDomainName" `
+   -Location $AzureLocation `
+   -Properties @{"DomainName"=$ManagedDomainName; "filteredSync" = "Enabled"; `
     "SubnetId"="/subscriptions/$AzureSubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.Network/virtualNetworks/$VnetName/subnets/DomainServices"} `
-  -ApiVersion 2017-06-01 -Force -Verbose
-  ```
+   -ApiVersion 2017-06-01 -Force -Verbose
+   ```
 
-  > [!TIP]
-  > Vergessen Sie nicht, ```"filteredSync" = "Enabled"``` in den Parameter ```-Properties``` einzubinden, damit die bereichsbezogene Synchronisierung für die verwaltete Domäne aktiviert wird.
+   > [!TIP]
+   > Vergessen Sie nicht, ```"filteredSync" = "Enabled"``` in den Parameter ```-Properties``` einzubinden, damit die bereichsbezogene Synchronisierung für die verwaltete Domäne aktiviert wird.
 
 
 ## <a name="script-to-select-groups-to-synchronize-to-the-managed-domain-select-groupstosyncps1"></a>Skript zum Auswählen von Gruppen für die Synchronisierung mit der verwalteten Domäne (Select-GroupsToSync.ps1)

@@ -4,16 +4,16 @@ description: Senden benutzerdefinierter Metriken für eine Azure-Ressource an de
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
-ms.topic: howto
+ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: ed810726a0709c80034412eba437c05e76f65758
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: c7ec3ba960929250f2d23d09b9a5ab06e3f6cd38
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095414"
 ---
 # <a name="send-custom-metrics-for-an-azure-resource-to-the-azure-monitor-metric-store-by-using-a-rest-api"></a>Senden benutzerdefinierter Metriken für eine Azure-Ressource an den Azure Monitor-Metrikspeicher mithilfe einer REST-API
 
@@ -33,7 +33,7 @@ Beachten Sie dabei Folgendes:
 - Erstellen Sie einen neuen geheimen Clientschlüssel für diese App.  
 - Speichern Sie den Schlüssel und die Client-ID für die Verwendung in späteren Schritten.  
 
-Erteilen Sie der App, die im Rahmen des ersten Schritts erstellt wurde, Berechtigungen vom Typ „Überwachungsmetriken veröffentlichen“ für die Ressource, für die Sie Metriken absetzen möchten. Wenn Sie planen, die App zu verwenden, um benutzerdefinierte Metriken für viele Ressourcen auszugeben, können Sie diese Berechtigungen auf der Ebene der Ressourcengruppe oder des Abonnements vergeben. 
+Erteilen Sie der App, die im Rahmen des ersten Schritts erstellt wurde, Berechtigungen vom Typ „Überwachungsmetriken veröffentlichen“ für die Ressource, für die Sie Metriken ausgeben möchten. Wenn Sie planen, die App zu verwenden, um benutzerdefinierte Metriken für viele Ressourcen auszugeben, können Sie diese Berechtigungen auf der Ebene der Ressourcengruppe oder des Abonnements vergeben. 
 
 ## <a name="get-an-authorization-token"></a>Abrufen eines Autorisierungstokens
 Öffnen Sie eine Eingabeaufforderung, und führen Sie den folgenden Befehl aus:
@@ -45,7 +45,7 @@ Speichern Sie das Zugriffstoken aus der Antwort.
 
 ![Zugriffstoken](./media/metrics-store-custom-rest-api/accesstoken.png)
 
-## <a name="emit-the-metric-via-the-rest-api"></a>Absetzen der Metrik über die REST-API 
+## <a name="emit-the-metric-via-the-rest-api"></a>Ausgeben der Metrik über die REST-API 
 
 1. Fügen Sie den folgenden JSON-Code in eine Datei ein, und speichern Sie sie als  **custommetric.json** auf Ihrem lokalen Computer. Aktualisieren Sie den Zeitparameter in der JSON-Datei: 
     
@@ -78,20 +78,20 @@ Speichern Sie das Zugriffstoken aus der Antwort.
     ``` 
 
 1. Geben Sie im Eingabeaufforderungsfenster die Metrikdaten an: 
-    - **azureRegion**: Muss der Bereitstellungsregion der Ressource entsprechen, für die Sie Metriken absetzen möchten. 
-    - **resourceID**:  Die Ressourcen-ID der Azure-Ressource, mit der Sie die Metrik nachverfolgen.  
-    - **AccessToken**: Fügen Sie das Token ein, das Sie zuvor abgerufen haben.
+   - **azureRegion**: Muss der Bereitstellungsregion der Ressource entsprechen, für die Sie Metriken ausgeben möchten. 
+   - **resourceID**:  Die Ressourcen-ID der Azure-Ressource, mit der Sie die Metrik nachverfolgen.  
+   - **AccessToken**: Fügen Sie das Token ein, das Sie zuvor abgerufen haben.
 
-    ```Shell 
-    curl -X POST curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
-    ```
+     ```Shell 
+     curl -X POST https://<azureRegion>.monitoring.azure.com/<resourceId>/metrics -H "Content-Type: application/json" -H "Authorization: Bearer <AccessToken>" -d @custommetric.json 
+     ```
 1. Ändern Sie den Zeitstempel und die Werte in der JSON-Datei. 
 1. Wiederholen Sie die beiden vorherigen Schritte einige Male, um Daten für mehrere Minuten zu erhalten.
 
 ## <a name="troubleshooting"></a>Problembehandlung 
 Sollte im Rahmen des Prozesses eine Fehlermeldung angezeigt werden, berücksichtigen Sie die folgenden Informationen zur Problembehandlung:
 
-1. Sie können Metriken nicht für ein Abonnement oder eine Ressourcengruppe als Ihre Azure-Ressource absetzen. 
+1. Sie können Metriken nicht für ein Abonnement oder eine Ressourcengruppe als Ihre Azure-Ressource ausgeben. 
 1. Dem Speicher können keine Metriken hinzugefügt werden, die älter als 20 Minuten sind. Der Metrikspeicher ist für die Benachrichtigung und Diagrammerstellung in Echtzeit optimiert. 
 2. Die Anzahl von Dimensionsnamen muss mit den Werten übereinstimmen (und umgekehrt). Überprüfen Sie die Werte. 
 2. Möglicherweise geben Sie Metriken für Regionen aus, die keine benutzerdefinierten Metriken unterstützen. Weitere Informationen finden Sie unter [Unterstützte Regionen](../../azure-monitor/platform/metrics-custom-overview.md#supported-regions). 

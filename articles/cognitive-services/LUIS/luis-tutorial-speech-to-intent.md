@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.author: diberry
-ms.openlocfilehash: c247ef748628c14074c2b5ea37df251793840b16
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 6f775ffaf53019cc50bc38c294b4d5f40c8eca90
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876033"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076750"
 ---
 # <a name="integrate-speech-service-with-your-language-understanding-app"></a>Integrieren des Speech-Diensts in Ihre Language Understanding-App
 Der [Spracherkennungsdienst](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) ermöglicht Ihnen, mit einer einzigen Anforderung Audio zu empfangen und JSON-Objekte der LUIS-Vorhersage zurückgeben zu lassen. In diesem Artikel laden Sie ein C#-Projekt herunter und verwenden es in Visual Studio, um eine Äußerung in ein Mikrofon zu sprechen und von LUIS Vorhersageinformationen zu empfangen. Das Projekt verwendet das Spracherkennungspaket [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/), das bereits als Referenz enthalten ist. 
@@ -49,11 +49,11 @@ Nach dem Importieren der App wählen Sie **Entitäten** und dann **Add prebuilt 
 
 3. Weisen Sie auf der Seite **Schlüssel und Endpunkte** den im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS-Schlüssel zu.
 
-  Erfassen Sie auf dieser Seite die App-ID, die Veröffentlichungsregion und die Abonnement-ID des im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS Schlüssels. Sie müssen den Code später in diesem Artikel entsprechend mit diesen Werten ändern. 
+   Erfassen Sie auf dieser Seite die App-ID, die Veröffentlichungsregion und die Abonnement-ID des im Abschnitt [Erstellen eines LUIS-Endpunktschlüssels](#create-luis-endpoint-key) erstellten LUIS Schlüssels. Sie müssen den Code später in diesem Artikel entsprechend mit diesen Werten ändern. 
   
-  Verwenden Sie **nicht** den kostenlosen Starterschlüssel für diese Übung. Nur ein im Azure-Portal erstellter **Sprachverständnis**-Schlüssel funktioniert für diese Übung. 
+   Verwenden Sie **nicht** den kostenlosen Starterschlüssel für diese Übung. Nur ein im Azure-Portal erstellter **Sprachverständnis**-Schlüssel funktioniert für diese Übung. 
 
-  https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
+   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**?subscription-key=**LUISKEY**&q=
 
 
 4. Veröffentlichen Sie die LUIS-App, indem Sie die Schaltfläche **Veröffentlichen** in der Leiste rechts oben auswählen. 

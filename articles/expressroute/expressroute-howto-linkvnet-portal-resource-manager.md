@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 16d85510efb055d7d564ffadb9fff2b200771bc6
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 66c43556e698063b95ce1c3787458e40c9d71504
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53438828"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079467"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>Verbinden eines virtuellen Netzwerks mit einer ExpressRoute-Verbindung mithilfe des Portals
 > [!div class="op_single_selector"]
@@ -54,13 +54,13 @@ Dieser Artikel hilft Ihnen dabei, eine Verbindung zum Verknüpfen eines virtuell
 
 1. Stellen Sie sicher, dass Ihre ExpressRoute-Verbindung und das private Azure-Peering erfolgreich konfiguriert wurden. Befolgen Sie die Anweisungen unter [Erstellen einer ExpressRoute-Verbindung](expressroute-howto-circuit-arm.md) und [Konfigurieren des Routings](expressroute-howto-routing-arm.md). Ihre ExpressRoute-Verbindung sollte in etwa wie in der folgenden Abbildung dargestellt aussehen:
 
-  ![Screenshot einer ExpressRoute-Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
+   ![Screenshot einer ExpressRoute-Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/routing1.png)
 2. Jetzt können Sie damit beginnen, eine Verbindung zum Verknüpfen des virtuellen Netzwerkgateways mit Ihrer ExpressRoute-Verbindung bereitzustellen. Klicken Sie auf **Verbindung** > **Hinzufügen**, um die Seite **Verbindung hinzufügen** zu öffnen, und konfigurieren Sie dann die Werte.
 
-  ![Screenshot zum Hinzufügen der Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
+   ![Screenshot zum Hinzufügen der Verbindung](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub1.png)
 3. Nachdem die Verbindung erfolgreich konfiguriert wurde, zeigt das Verbindungsobjekt die Daten für die Verbindung an.
 
-  ![Screenshot des Verbindungsobjekts](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
+   ![Screenshot des Verbindungsobjekts](./media/expressroute-howto-linkvnet-portal-resource-manager/samesub2.png)
 
 ## <a name="connect-a-vnet-to-a-circuit---different-subscription"></a>Verknüpfen eines VNET mit einer Verbindung – anderes Abonnement
 
@@ -95,10 +95,10 @@ Der Verbindungsbesitzer erstellt eine Autorisierung. Dies führt zur Erstellung 
 
 1. Klicken Sie auf der Seite „ExpressRoute“ auf **Autorisierungen**, geben Sie einen **Namen** für die Autorisierung ein, und klicken Sie auf **Speichern**.
 
-  ![Authorizations](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
+   ![Authorizations](./media/expressroute-howto-linkvnet-portal-resource-manager/authorization.png)
 2. Sobald die Konfiguration gespeichert ist, kopieren Sie die **Ressourcen-ID** und den **Autorisierungsschlüssel**.
 
-  ![Autorisierungsschlüssel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
+   ![Autorisierungsschlüssel](./media/expressroute-howto-linkvnet-portal-resource-manager/authkey.png)
 
 **So löschen Sie eine Verbindungsautorisierung**
 
@@ -112,18 +112,18 @@ Der Verbindungsbenutzer benötigt die Ressourcen-ID und einen Autorisierungsschl
 
 1. Klicken Sie auf die Schaltfläche **+Neu**.
 
-  ![Klicken auf "Neu"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
+   ![Klicken auf "Neu"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection1.png)
 2. Suchen Sie im Marketplace nach **Verbindung**, wählen Sie sie aus, und klicken Sie auf **Erstellen**.
 
-  ![Suchen von Verbindungen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
+   ![Suchen von Verbindungen](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection2.png)
 3. Stellen Sie sicher, dass für den **Verbindungstyp** „ExpressRoute“ festgelegt ist.
 4. Tragen Sie die Details ein, und klicken Sie dann auf der Seite „Grundlagen“ auf **OK**.
 
-  ![Seite „Grundlagen“](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
+   ![Seite „Grundlagen“](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection3.png)
 5. Wählen Sie auf der Seite **Einstellungen** die Option **Gateway für virtuelle Netzwerke** aus, und aktivieren Sie das Kontrollkästchen **Autorisierung einlösen**.
 6. Geben Sie den **Autorisierungsschlüssel** und **Peerleitungs-URI** ein, und benennen Sie die Verbindung. Klicken Sie auf **OK**.
 
-  ![Seite "Einstellungen"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
+   ![Seite "Einstellungen"](./media/expressroute-howto-linkvnet-portal-resource-manager/Connection4.png)
 7. Überprüfen Sie die Informationen auf der Seite **Zusammenfassung**, und klicken Sie auf **OK**.
 
 **So geben Sie eine Verbindungsautorisierung frei**

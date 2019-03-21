@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 385e0065123b86f8f8b7c8503fe6de6daa7c6562
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55874123"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099830"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>Extrahieren von Daten aus Absichten und Entitäten
 LUIS bietet Ihnen die Möglichkeit, Informationen aus Benutzeräußerungen in natürlicher Sprache zu erfassen. Die Informationen werden so extrahiert, dass sie von einem Programm, einer Anwendung oder einem Chatbot verwendet werden können. In den folgenden Abschnitten erfahren Sie anhand von JSON-Beispielen, welche Daten von Absichten und Entitäten zurückgegeben werden.
@@ -195,7 +195,7 @@ Die vom Endpunkt zurückgegebenen Daten enthalten den Namen der Entität und der
 ```
 
 |Datenobjekt|Übergeordnet|Untergeordnet|Wert|
-|--|--|--|--|--|
+|--|--|--|--|
 |Entität vom Typ „Hierarchical“|Standort|ToLocation|"paris"|
 
 ## <a name="composite-entity-data"></a>Daten zusammengesetzter Entitäten

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a243ac45ce29ae824c8f38036d4387da3b1cff8f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 165df03ec06081fe9b2e1ab84ffe7579ac457758
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453211"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57855485"
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>Auf der Data Science-VM verfügbare Tools zum Durchsuchen und Visualisieren von Daten
 
@@ -43,7 +43,7 @@ Bei Data Science geht es unter anderem darum, Daten zu verstehen. Hierbei helfen
 | Unterstützte DSVM-Editionen     | Windows, Linux     |
 | Typische Verwendung      | Allgemeines ML-Tool     |
 | Verwendung/Ausführung      | Unter Windows finden Sie Weka im Startmenü. Melden Sie sich unter Linux mithilfe von X2Go an, und navigieren Sie anschließend zu „Anwendungen“ > „Entwicklung“ > „Weka“. |
-| Links zu Beispielen      | [Beispiele für Weka](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
+| Links zu Beispielen      | [Beispiele für Weka](https://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | Verwandte Tools auf der DSVM      |LightGBM, Rattle, XGBoost   |
 
 ## <a name="rattle"></a>Rattle

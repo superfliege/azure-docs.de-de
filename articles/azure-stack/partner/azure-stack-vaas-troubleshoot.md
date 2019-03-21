@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a6fea6962c5e8864398cd80635d997407cf1d22e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 4b212ae884b184ffc60cdc0b3a2181a59efa3904
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250298"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57760867"
 ---
 # <a name="troubleshoot-validation-as-a-service"></a>Problembehandlung für Validation-as-a-Service
 
@@ -39,7 +39,7 @@ Dies liegt wahrscheinlich daran, dass der Agent aufgrund einer instabilen Netzwe
 
 ### <a name="agent-process-on-machine-was-shut-down-while-executing-test-what-to-expect"></a>Der Agent-Prozess auf dem Computer wurde während der Ausführung des Tests beendet. Was können Sie erwarten?
 
-Wenn der Agent-Prozess beispielsweise nicht ordnungsgemäß beendet wird, der Computer neu gestartet und der Prozess abgebrochen wird (STRG+C im Fenster „Agent“ als nicht ordnungsgemäßes Beenden angesehen wird), wird der darauf ausgeführte Test auch weiterhin als **wird ausgeführt** angezeigt. Wenn der Agent neu gestartet wird, aktualisiert der Agent den Status des Tests in **abgebrochen**. Wenn der Agent nicht neu gestartet wird, wird der Test als **wird ausgeführt** angezeigt, und Sie müssen den Test manuell abbrechen.
+Wenn der Agent-Prozess beispielsweise nicht ordnungsgemäß beendet wird, der Computer neu gestartet und der Prozess abgebrochen wird (STRG+C im Fenster „Agent“ als nicht ordnungsgemäßes Beenden angesehen wird), wird der darauf ausgeführte Test auch weiterhin als **wird ausgeführt** angezeigt. Wenn der Agent neu gestartet wird, aktualisiert der Agent den Status des Tests nach **abgebrochen**. Wenn der Agent nicht neu gestartet wird, wird der Test als **wird ausgeführt** angezeigt, und Sie müssen den Test manuell abbrechen.
 
 > [!Note]
 > Tests in einem Workflow werden für eine sequenzielle Ausführung geplant. **Ausstehende** Tests werden nicht ausgeführt, bis Tests im Zustand **wird ausgeführt** im gleichen Workflow abgeschlossen werden.

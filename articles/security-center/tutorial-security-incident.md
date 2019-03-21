@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/30/2018
 ms.author: rkarlin
-ms.openlocfilehash: d3154e137aec8dcedcb066e2c9aab046b5a7b6e0
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: d726006d3ecce69f129b1576c7c6d12833582873
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108822"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081989"
 ---
 # <a name="tutorial-respond-to-security-incidents"></a>Tutorial: Reagieren auf Sicherheitsvorfälle
 Security Center analysiert Ihre Hybrid Cloud-Workloads ständig mithilfe von Advanced Analytics- und Threat Intelligence-Funktionen, um Sie vor schädlichen Aktivitäten warnen zu können. Darüber hinaus können Sie Warnungen aus anderen Sicherheitsprodukten und Diensten in Security Center integrieren und basierend auf Ihren eigenen Indikatoren oder Intelligence-Quellen benutzerdefinierte Warnungen erstellen. Nachdem eine Warnung generiert wurde, sind schnelle Maßnahmen erforderlich, um das Problem zu untersuchen und zu beheben. In diesem Lernprogramm lernen Sie Folgendes:
@@ -45,28 +45,28 @@ Mit Security Center erhalten Sie einen einheitlichen Überblick über alle Siche
 
 1. Wählen Sie im Hauptmenü von Security Center unter **ERKENNUNG** die Option **Sicherheitswarnungen**:
 
-  ![Sicherheitswarnungen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
+   ![Sicherheitswarnungen](./media/tutorial-security-incident/tutorial-security-incident-fig1.png)  
 
 2. Klicken Sie in der Liste mit den Warnungen auf einen Sicherheitsincident, bei dem es sich um eine Sammlung von Warnungen handelt, um weitere Informationen zu diesem Incident zu erhalten. **Security incident detected** (Sicherheitsincident erkannt) wird geöffnet.
 
-  ![Sicherheitsvorfall](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
+   ![Sicherheitsvorfall](./media/tutorial-security-incident/tutorial-security-incident-fig2.png)
 
 3. Auf diesem Bildschirm ist oben die Beschreibung des Sicherheitsincidents und die Liste mit den Warnungen angegeben, die Teil des Incidents sind. Klicken Sie auf die Warnung, die Sie näher untersuchen möchten, um weitere Informationen zu erhalten.
 
-  ![Sicherheitsvorfall](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
+   ![Sicherheitsvorfall](./media/tutorial-security-incident/tutorial-security-incident-fig3.png)
 
-  Die Art der Warnung kann variieren. Weitere Informationen zur Art der Warnung und zu potenziellen Lösungsschritten finden Sie unter [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Für Warnungen, die ohne Probleme geschlossen werden können, können Sie mit der rechten Maustaste auf die Warnung klicken und die Option **Schließen** wählen:
+   Die Art der Warnung kann variieren. Weitere Informationen zur Art der Warnung und zu potenziellen Lösungsschritten finden Sie unter [Verstehen der Sicherheitswarnungen in Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-alerts-type). Für Warnungen, die ohne Probleme geschlossen werden können, können Sie mit der rechten Maustaste auf die Warnung klicken und die Option **Schließen** wählen:
 
-  ![Warnung](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
+   ![Warnung](./media/tutorial-security-incident/tutorial-security-incident-fig4.png)
 
 4. Wenn die Grundursache und der Umfang der schädlichen Aktivität unbekannt sind, können Sie mit dem nächsten Schritt fortfahren, um dies weiter zu untersuchen.
 
 ## <a name="investigate-an-alert-or-incident"></a>Untersuchen einer Warnung oder eines Incidents
 1. Klicken Sie auf der Seite **Sicherheitswarnung** auf die Schaltfläche **Untersuchung starten**. (Falls Sie den Vorgang bereits gestartet haben, ändert sich der Name in **Untersuchung fortsetzen**.)
 
-  ![Untersuchung](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
+   ![Untersuchung](./media/tutorial-security-incident/tutorial-security-incident-fig5.png)
 
-  Der Bereich für die Untersuchung ist eine grafische Darstellung der Entitäten (in Form einer Übersichtskarte), die mit dieser Sicherheitswarnung bzw. dem Sicherheitsincident verbunden sind. Wenn Sie in diesem Bereich auf eine Entität klicken, werden in den Informationen zur Entität die neuen Entitäten angezeigt, und der Bereich wird erweitert. Für die Entität, die im Bereich ausgewählt ist, werden die Eigenschaften rechts auf der Seite hervorgehoben. Die Informationen, die auf den einzelnen Registerkarten verfügbar sind, variieren je nach der ausgewählten Entität. Überprüfen Sie während des Untersuchungsvorgangs alle relevanten Informationen, um die Bewegungen des Angreifers besser zu verstehen.
+   Der Bereich für die Untersuchung ist eine grafische Darstellung der Entitäten (in Form einer Übersichtskarte), die mit dieser Sicherheitswarnung bzw. dem Sicherheitsincident verbunden sind. Wenn Sie in diesem Bereich auf eine Entität klicken, werden in den Informationen zur Entität die neuen Entitäten angezeigt, und der Bereich wird erweitert. Für die Entität, die im Bereich ausgewählt ist, werden die Eigenschaften rechts auf der Seite hervorgehoben. Die Informationen, die auf den einzelnen Registerkarten verfügbar sind, variieren je nach der ausgewählten Entität. Überprüfen Sie während des Untersuchungsvorgangs alle relevanten Informationen, um die Bewegungen des Angreifers besser zu verstehen.
 
 2. Fahren Sie mit dem nächsten Schritt fort, wenn Sie mehr Beweise benötigen oder Entitäten, die während der Untersuchung gefunden wurden, näher untersuchen möchten.
 

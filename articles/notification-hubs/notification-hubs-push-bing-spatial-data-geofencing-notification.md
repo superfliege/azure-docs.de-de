@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: 7b01ee726d8417e34645e743497a02455fbe709c
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
+ms.openlocfilehash: 9baeb1c21252f8b7f7b24debde48108532d9865c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54453152"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118305"
 ---
 # <a name="tutorial-push-location-based-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Tutorial: Senden standortbasierter Pushbenachrichtigungen mit Azure Notification Hubs und Bing Spatial Data
 
@@ -63,12 +63,12 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
 
     ![](./media/notification-hubs-geofence/bing-maps-geofence.png)
 5. Führen Sie auf der Seite **Datenquelle hochladen** die folgenden Aktionen aus:
-    1. Wählen Sie **Pipe** als **Datenformat** aus.
-    2. Navigieren Sie zu der Datei `NotificationHubGeofence.pipe`, die Sie im vorherigen Schritt erstellt haben, und wählen Sie sie aus.
-    3. Klicken Sie auf die Schaltfläche **Hochladen**.
+   1. Wählen Sie **Pipe** als **Datenformat** aus.
+   2. Navigieren Sie zu der Datei `NotificationHubGeofence.pipe`, die Sie im vorherigen Schritt erstellt haben, und wählen Sie sie aus.
+   3. Klicken Sie auf die Schaltfläche **Hochladen**.
 
-    > [!NOTE]
-    > Unter Umständen werden Sie aufgefordert, einen neuen Schlüssel als **Hauptschlüssel** anzugeben, der sich vom **Abfrageschlüssel** unterscheidet. Erstellen Sie im Dashboard einfach einen neuen Schlüssel, und aktualisieren Sie die Seite zum Hochladen der Datenquelle.
+      > [!NOTE]
+      > Unter Umständen werden Sie aufgefordert, einen neuen Schlüssel als **Hauptschlüssel** anzugeben, der sich vom **Abfrageschlüssel** unterscheidet. Erstellen Sie im Dashboard einfach einen neuen Schlüssel, und aktualisieren Sie die Seite zum Hochladen der Datenquelle.
 6. Nachdem Sie die Datendatei hochgeladen haben, müssen Sie sicherstellen, dass Sie die Datenquelle veröffentlichen. Wählen Sie wie zuvor **Datenquellen** -> **Datenquellen verwalten** aus.
 7. Wählen Sie in der Liste Ihre Datenquelle aus, und klicken Sie in der Spalte **Aktionen** auf **Veröffentlichen**.
 
@@ -112,11 +112,11 @@ In diesem Tutorial führen Sie die folgenden Schritte aus:
     ```
     Geben Sie die folgenden Parameter an:
 
-    * **Datenquellen-ID** und **Datenquellenname**: In der Bing Maps-API enthalten Datenquellen Metadaten in verschiedenen „Buckets“, z. B. Standorte und Geschäftszeiten.  
-    * **Entitätsname** : Gibt die Entität an, die Sie als Referenzpunkt für die Benachrichtigung verwenden möchten.
-    * **Bing Maps-API-Schlüssel**: Dies ist der Schlüssel, den Sie beim Erstellen des Bing Dev Center-Kontos abgerufen haben.
+   * **Datenquellen-ID** und **Datenquellenname**: In der Bing Maps-API enthalten Datenquellen Metadaten in verschiedenen „Buckets“, z. B. Standorte und Geschäftszeiten.  
+   * **Entitätsname** : Gibt die Entität an, die Sie als Referenzpunkt für die Benachrichtigung verwenden möchten.
+   * **Bing Maps-API-Schlüssel**: Dies ist der Schlüssel, den Sie beim Erstellen des Bing Dev Center-Kontos abgerufen haben.
 
-    Da die Datenquelle jetzt bereitsteht, können Sie mit der Arbeit an der UWP-Anwendung beginnen.
+     Da die Datenquelle jetzt bereitsteht, können Sie mit der Arbeit an der UWP-Anwendung beginnen.
 2. Aktivieren Sie Standortdienste für Ihre Anwendung. Öffnen Sie im **Projektmappen-Explorer** die Datei `Package.appxmanifest`.
 
     ![](./media/notification-hubs-geofence/vs-package-manifest.png)

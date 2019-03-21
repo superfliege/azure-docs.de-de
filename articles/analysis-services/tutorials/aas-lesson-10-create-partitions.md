@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 11be6d10589d981335d1f63d06933dba5265348a
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 91d34065753ae29b14aad8580bf922b8213a7988
+ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191835"
+ms.lasthandoff: 02/23/2019
+ms.locfileid: "56738622"
 ---
 # <a name="create-partitions"></a>Erstellen von Partitionen
 
@@ -108,5 +108,5 @@ Beachten Sie, dass im Partitions-Manager in der Spalte **Zuletzt verarbeitet** f
   
     ![AAS-Lektion10-Verarbeitung-abgeschlossen](../tutorials/media/aas-lesson10-process-complete.png)
   
- ## <a name="whats-next"></a>Wie geht es weiter?
+## <a name="whats-next"></a>Wie geht es weiter?
 Fahren Sie mit der nächsten Lektion fort: [Lektion 11: Erstellen von Rollen](../tutorials/aas-lesson-11-create-roles.md). 

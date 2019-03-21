@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: f9abc6d79bd821ef612e9e7648b1b5af98bb5cf6
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 27c1481314ba1dd77cdcf229842aeec7de3e4444
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56456230"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117454"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replizieren von ADE-fähigen (Azure Disk Encryption) virtuellen Computern in einer anderen Azure-Region
 
@@ -123,8 +123,8 @@ Sie können die von Site Recovery verwendeten Standardzieleinstellungen ändern.
 
 
 2. Klicken Sie neben „Verschlüsselungseinstellungen“ auf **Anpassen**, um die nachstehenden Standardeinstellungen zu ändern:
-    - Wählen Sie unter **Schlüsseltresor für Zieldatenträgerverschlüsselung** den Schlüsseltresor für die Zieldatenträgerverschlüsselung in der Liste aller Schlüsseltresore am Zielspeicherort des Abonnements aus.
-  - Wählen Sie unter **Schlüsseltresor für Zielschlüsselverschlüsselung** den Schlüsseltresor für die Zielschlüsselverschlüsselung in der Liste aller Schlüsseltresore am Zielspeicherort des Abonnements aus.
+   - Wählen Sie unter **Schlüsseltresor für Zieldatenträgerverschlüsselung** den Schlüsseltresor für die Zieldatenträgerverschlüsselung in der Liste aller Schlüsseltresore am Zielspeicherort des Abonnements aus.
+     - Wählen Sie unter **Schlüsseltresor für Zielschlüsselverschlüsselung** den Schlüsseltresor für die Zielschlüsselverschlüsselung in der Liste aller Schlüsseltresore am Zielspeicherort des Abonnements aus.
 
 3. Klicken Sie auf **Zielressource erstellen** > **Replikation aktivieren**.
 4. Nachdem Sie die Replikation für die virtuellen Computer aktiviert haben, können Sie unter **Replizierte Elemente** den VM-Integritätsstatus überprüfen.

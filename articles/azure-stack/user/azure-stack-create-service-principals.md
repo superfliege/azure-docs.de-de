@@ -14,12 +14,12 @@ ms.date: 12/12/2018
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 12/12/2018
-ms.openlocfilehash: 00468ca62e55823b4706fc52d9793f676aebd368
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 3a6fa631fdf3436dc3a76817d2c0043b0407b2ce
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312853"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121552"
 ---
 # <a name="give-applications-access-to-azure-stack-resources-by-creating-service-principals"></a>Gewähren des Anwendungszugriffs auf Azure Stack-Ressourcen durch Erstellen von Dienstprinzipalen
 
@@ -56,8 +56,8 @@ Die Schritte zum Zuweisen eines Dienstprinzipals zu einer Rolle sind für Azure 
 
 Wenn Azure Stack Azure AD als Identitätsspeicher nutzt, können Sie mit dem Azure-Portal anhand der gleichen Schritte wie in Azure einen Dienstprinzipal erstellen.
 
->[!NOTE]
-Stellen Sie vor dem Erstellen eines Dienstprinzipals sicher, dass Sie über die [erforderlichen Azure AD-Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) verfügen.
+> [!NOTE]
+> Stellen Sie vor dem Erstellen eines Dienstprinzipals sicher, dass Sie über die [erforderlichen Azure AD-Berechtigungen](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions) verfügen.
 
 ### <a name="create-service-principal"></a>Erstellen eines Dienstprinzipals
 
@@ -75,15 +75,15 @@ Beim programmgesteuerten Anmelden verwenden Sie die ID für Ihre Anwendung und e
 
 2. Kopieren Sie die **Anwendungs-ID**, und speichern Sie sie in Ihrem Anwendungscode. In den Beispielanwendungen wird für die **Anwendungs-ID** der Begriff **Client-ID** verwendet.
 
-     ![Anwendungs-ID für die Anwendung](./media/azure-stack-create-service-principal/image12.png)
+     ![Anwendungs-ID für die Anwendung](./media/azure-stack-create-service-principals/image12.png)
 3. Wählen Sie zum Generieren eines Authentifizierungsschlüssels die Option **Schlüssel** aus.
 
 4. Geben Sie eine Beschreibung des Schlüssels und eine Dauer für den Schlüssel ein. Wählen Sie dann die Option **Schließen**.
 
->[!IMPORTANT]
-Wenn Sie den Schlüssel gespeichert haben, wird unter **WERT** der Schlüssel angezeigt. Notieren Sie diesen Wert, da Sie ihn später nicht mehr abrufen können. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
+> [!IMPORTANT]
+> Wenn Sie den Schlüssel gespeichert haben, wird unter **WERT** der Schlüssel angezeigt. Notieren Sie diesen Wert, da Sie ihn später nicht mehr abrufen können. Speichern Sie die Schlüsselwert an einem Ort, von dem Ihre Anwendung ihn abrufen kann.
 
-![Schlüsselwertwarnung für den gespeicherten Schlüssel](./media/azure-stack-create-service-principal/image15.png)
+![Schlüsselwertwarnung für den gespeicherten Schlüssel](./media/azure-stack-create-service-principals/image15.png)
 
 Der letzte Schritt besteht im [Zuweisen einer Rolle zu Ihrer Anwendung](azure-stack-create-service-principals.md).
 
@@ -101,8 +101,8 @@ Einzelheiten zur Erstellung des Dienstprinzipals finden Sie unter [Erstellen ein
 
 Um auf Ressourcen in Ihrem Abonnement zuzugreifen, müssen Sie die Anwendung einer Rolle zuweisen. Entscheiden Sie, welche Rolle die geeigneten Berechtigungen für die Anwendung darstellt. Informationen zu verfügbaren Rollen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
->[!NOTE]
-Sie können den Bereich der Rolle auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Beispiel: Eine App mit der Rolle „Leser“ für eine Ressourcengruppe kann alle in einer Ressourcengruppe enthaltenen Ressourcen lesen.
+> [!NOTE]
+> Sie können den Bereich der Rolle auf Abonnement-, Ressourcengruppen- oder Ressourcenebene festlegen. Berechtigungen werden von niedrigeren Ebenen mit geringerem Umfang geerbt. Beispiel: Eine App mit der Rolle „Leser“ für eine Ressourcengruppe kann alle in einer Ressourcengruppe enthaltenen Ressourcen lesen.
 
 Verwenden Sie die folgenden Schritte als Leitfaden für das Zuweisen einer Rolle zu einem Dienstprinzipal.
 
@@ -110,7 +110,7 @@ Verwenden Sie die folgenden Schritte als Leitfaden für das Zuweisen einer Rolle
 
 2. Wählen Sie das Abonnement aus, dem die Anwendung zugewiesen werden soll. In diesem Beispiel wird das Abonnement für Visual Studio Enterprise verwendet.
 
-     ![Auswählen des Visual Studio Enterprise-Abonnements für die Zuweisung](./media/azure-stack-create-service-principal/image16.png)
+     ![Auswählen des Visual Studio Enterprise-Abonnements für die Zuweisung](./media/azure-stack-create-service-principals/image16.png)
 
 3. Wählen Sie für das Abonnement die Option **Zugriffssteuerung (IAM)**.
 

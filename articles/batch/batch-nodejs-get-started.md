@@ -7,16 +7,16 @@ manager: jeconnoc
 ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
-ms.topic: hero-article
+ms.topic: conceptual
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 8844260c4364776ad0fc828dcd66932d37474ecf
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
+ms.openlocfilehash: bb0bfa5eac3dd9031718fb12f270f5fc03bbaea6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164618"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57772173"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Erste Schritte mit dem Batch SDK für Node.js
 
@@ -260,7 +260,7 @@ Ein Azure Batch-Auftrag ist eine logische Gruppe ähnlicher Aufgaben. In diesem 
 Diese Aufgaben werden parallel ausgeführt, über mehrere Knoten hinweg bereitgestellt und vom Azure Batch-Dienst koordiniert.
 
 > [!Tip]
-> Mit der Eigenschaft [maxTasksPerNode](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) können Sie die maximale Anzahl von Aufgaben angeben, die auf einem einzelnen Knoten gleichzeitig ausgeführt werden können.
+> Mit der Eigenschaft [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) können Sie die maximale Anzahl von Aufgaben angeben, die auf einem einzelnen Knoten gleichzeitig ausgeführt werden können.
 >
 >
 
@@ -273,7 +273,7 @@ Das [Shellskript](https://github.com/shwetams/azure-batchclient-sample-nodejs/bl
 Sie können das Skript in ein Azure Storage-Konto hochladen und einen SAS-URI für den Zugriff auf das Skript generieren. Dieser Prozess kann mit dem Azure Storage SDK für Node.js auch automatisiert werden.
 
 > [!Tip]
-> Eine Vorbereitungsaufgabe für einen Auftrag wird nur auf den VM-Knoten ausgeführt, auf denen diese spezielle Aufgabe ausgeführt werden muss. Falls erforderliche Komponenten unabhängig von den ausgeführten Aufgaben auf allen Knoten installiert werden sollen, können Sie beim Hinzufügen eines Pools die Eigenschaft [startTask](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) verwenden. Verwenden Sie bei Bedarf die folgende Vorbereitungsaufgabendefinition als Referenz.
+> Eine Vorbereitungsaufgabe für einen Auftrag wird nur auf den VM-Knoten ausgeführt, auf denen diese spezielle Aufgabe ausgeführt werden muss. Falls erforderliche Komponenten unabhängig von den ausgeführten Aufgaben auf allen Knoten installiert werden sollen, können Sie beim Hinzufügen eines Pools die Eigenschaft [startTask](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) verwenden. Verwenden Sie bei Bedarf die folgende Vorbereitungsaufgabendefinition als Referenz.
 >
 >
 
@@ -349,7 +349,7 @@ var container_list = ["con1","con2","con3","con4"]
 
 Der Code fügt dem Pool mehrere Aufgaben hinzu. Jede dieser Aufgaben wird auf einem Knoten im Pool mit erstellten virtuellen Computern ausgeführt. Falls die Anzahl von Aufgaben die Anzahl virtueller Computer in einem Pool oder den Wert der Eigenschaft „maxTasksPerNode“ übersteigt, wird gewartet, bis ein Knoten verfügbar gemacht wird. Diese Orchestrierung wird von Azure Batch automatisch durchgeführt.
 
-Im Portal stehen detaillierte Ansichten für den Aufgaben- und Auftragsstatus zur Verfügung. Sie können aber auch die list- und get-Funktionen im Azure Node SDK verwenden. Ausführliche Informationen finden Sie in der [Dokumentation](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
+Im Portal stehen detaillierte Ansichten für den Aufgaben- und Auftragsstatus zur Verfügung. Sie können aber auch die list- und get-Funktionen im Azure Node SDK verwenden. Ausführliche Informationen finden Sie in der [Dokumentation](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
-ms.openlocfilehash: e787d946aa62f0bcb6615d89192e7d9e4d91ffe4
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 867d061e46494e5ef65340ce325a71638acc8dfa
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55197040"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099626"
 ---
 # <a name="deploy-azure-ad-application-proxy-on-an-azure-ad-domain-services-managed-domain"></a>Bereitstellen eines Azure AD-Anwendungsproxys in einer durch Azure AD Domain Services verwalteten Domäne
 Mit dem Azure Active Directory-Anwendungsproxy (AD) können Sie Remotemitarbeiter unterstützen, indem Sie lokale Anwendungen so veröffentlichen, dass über das Internet auf sie zugegriffen werden kann. Mit Azure AD Domain Services können Sie jetzt lokal ausgeführte Legacyanwendungen per Lift & Shift zu Azure Infrastrukturdiensten migrieren. Anschließend können Sie diese Anwendungen über den Azure AD-Anwendungsproxy veröffentlichen, um Benutzern in Ihrer Organisation einen sicheren Remotezugriff bereitzustellen.
@@ -75,12 +75,12 @@ Zuvor haben Sie einen virtuellen Windows Server-Computer bereitgestellt und in d
 
     ![Akzeptieren der Bedingungen für die Installation](./media/app-proxy/app-proxy-install-connector-terms.png)
 3. Während der Installation werden Sie aufgefordert, den Connector beim Anwendungsproxy Ihres Azure AD-Verzeichnisses zu registrieren.
-    * Geben Sie Ihre **globalen Azure AD-Administratoranmeldeinformationen** ein. Ihr globaler Administratorenmandant kann von Ihren Microsoft Azure-Anmeldeinformationen abweichen.
-    * Das zum Registrieren des Connectors verwendete Administratorkonto muss demselben Verzeichnis angehören, in dem Sie auch den Anwendungsproxydienst aktiviert haben. Wenn die Mandantendomäne also beispielsweise „contoso.com“ lautet, muss sich der Administrator als admin@contoso.com oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
-    * Falls auf dem Server, auf dem Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für IE“ aktiviert ist, wird der Registrierungsbildschirm möglicherweise blockiert. Befolgen Sie die Anweisungen in der Fehlermeldung, um den Zugriff zuzulassen. Stellen Sie sicher, dass die erweiterte Sicherheit von Internet Explorer deaktiviert ist.
-    * Falls die Connectorregistrierung nicht erfolgreich war, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md)weiter.
+   * Geben Sie Ihre **globalen Azure AD-Administratoranmeldeinformationen** ein. Ihr globaler Administratorenmandant kann von Ihren Microsoft Azure-Anmeldeinformationen abweichen.
+   * Das zum Registrieren des Connectors verwendete Administratorkonto muss demselben Verzeichnis angehören, in dem Sie auch den Anwendungsproxydienst aktiviert haben. Wenn die Mandantendomäne also beispielsweise „contoso.com“ lautet, muss sich der Administrator als admin@contoso.com oder mit einem anderen gültigen Aliasnamen in dieser Domäne anmelden.
+   * Falls auf dem Server, auf dem Sie den Connector installieren, die Option „Verstärkte Sicherheitskonfiguration für IE“ aktiviert ist, wird der Registrierungsbildschirm möglicherweise blockiert. Befolgen Sie die Anweisungen in der Fehlermeldung, um den Zugriff zuzulassen. Stellen Sie sicher, dass die erweiterte Sicherheit von Internet Explorer deaktiviert ist.
+   * Falls die Connectorregistrierung nicht erfolgreich war, helfen Ihnen die Informationen unter [Problembehandlung von Anwendungsproxys](../active-directory/manage-apps/application-proxy-troubleshoot.md)weiter.
 
-    ![Connector installiert](./media/app-proxy/app-proxy-connector-installed.png)
+     ![Connector installiert](./media/app-proxy/app-proxy-connector-installed.png)
 4. Um sicherzustellen, dass der Connector ordnungsgemäß funktioniert, führen Sie die Problembehandlung für den Azure AD-Anwendungsproxy-Connector aus. Nach dem Ausführen der Problembehandlung sollte ein Bericht zur erfolgreichen Installation angezeigt werden.
 
     ![Problembehandlung mit Erfolg](./media/app-proxy/app-proxy-connector-troubleshooter.png)

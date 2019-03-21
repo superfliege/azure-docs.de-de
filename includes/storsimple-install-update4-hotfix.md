@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 46cf3b01a3c5e653d5588e463f26540fef15f4e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0755c01fe8e13e8e39c0b453198f2b67c51a2bc4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889129"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125240"
 ---
 #### <a name="to-download-hotfixes"></a>So laden Sie Hotfixes herunter
 
@@ -99,12 +99,12 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     Daraufhin sollten die folgenden Versionen angezeigt werden.
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 4.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17820`
+   * `HcsSoftwareVersion: 6.3.9600.17820`
    
-    Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
+     Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
      
-    > [!IMPORTANT]
-    > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
+     > [!IMPORTANT]
+     > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
      
 7. Wiederholen Sie die Schritte 3 bis 5, um den in den Ordner _FirstOrderUpdate_ heruntergeladenen CIS/MDS-Agent zu installieren. 
 8. Wiederholen Sie die Schritte 3 bis 5, um die zweitrangigen Updates zu installieren. **Bei zweitrangigen Updates können Sie mehrere Updates installieren, indem Sie das `Start-HcsHotfix cmdlet` ausführen und auf den Ordner mit den zweitrangigen Updates verweisen. Das Cmdlet führt alle Updates aus, die in dem Ordner verfügbar sind.** Falls ein Update bereits installiert ist, wird dies von der Aktualisierungslogik erkannt, und das entsprechende Update wird nicht angewendet. 

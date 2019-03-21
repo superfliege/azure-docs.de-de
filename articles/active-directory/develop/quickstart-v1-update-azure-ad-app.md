@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e705bbbd08882f56020192a3b42c311e05bfa399
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: bee16ed8205453546702946628c98c73b0f34b15
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56191725"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103807"
 ---
 # <a name="quickstart-update-an-application-in-azure-active-directory"></a>Schnellstart: Aktualisieren einer Anwendung in Azure Active Directory
 
@@ -60,24 +60,24 @@ Bevor ein Client Zugriff auf eine Web-API erhält, die durch eine Ressourcenanwe
    ![Aktualisieren der Registrierung einer Anwendung](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration.png)
 
 4. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, die die Seite **Einstellungen** für die Anwendung enthält. So fügen Sie Anmeldeinformationen für Ihre Webanwendung hinzu:
-  1. Wählen Sie auf der Seite **Einstellungen** den Abschnitt **Schlüssel** aus.
-  2. So fügen Sie ein Zertifikat hinzu:
-    - Klicken Sie auf **Öffentlichen Schlüssel hochladen**.
-    - Wählen Sie die Datei aus, die Sie hochladen möchten. Die Datei muss einen der folgenden Dateitypen aufweisen: CER, PEM, CRT.
-  - So fügen Sie ein Kennwort hinzu:
-    - Fügen Sie eine Beschreibung für Ihren Schlüssel hinzu.
-    - Wählen Sie eine Dauer aus.
-    - Wählen Sie **Speichern** aus. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
+   1. Wählen Sie auf der Seite **Einstellungen** den Abschnitt **Schlüssel** aus.
+   1. So fügen Sie ein Zertifikat hinzu:
+      - Klicken Sie auf **Öffentlichen Schlüssel hochladen**.
+      - Wählen Sie die Datei aus, die Sie hochladen möchten. Die Datei muss einen der folgenden Dateitypen aufweisen: CER, PEM, CRT.
+   1. So fügen Sie ein Kennwort hinzu:
+      - Fügen Sie eine Beschreibung für Ihren Schlüssel hinzu.
+      - Wählen Sie eine Dauer aus.
+      - Wählen Sie **Speichern** aus. Die Spalte ganz rechts enthält nach dem Speichern der Konfigurationsänderungen den Schlüsselwert. **Kopieren Sie den Schlüssel** zur Verwendung im Code Ihrer Clientanwendung, da er nach dem Verlassen dieser Seite nicht mehr zugänglich ist.
 
 5. So fügen Sie Berechtigungen für den Zugriff auf Ressourcen-APIs von Ihrem Client hinzu
-  1. Wählen Sie auf der Seite **Einstellungen** zunächst den Abschnitt **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.
-  1. Wählen Sie **API auswählen** aus, um den Typ der Ressourcen für die Auswahl anzugeben.
-  1. Durchsuchen Sie die Liste der verfügbaren APIs, oder verwenden Sie das Suchfeld, um die verfügbaren Ressourcenanwendungen in Ihrem Verzeichnis auszuwählen, die eine Web-API verfügbar machen. Wählen Sie die Ressource aus, an der Sie interessiert sind, und klicken Sie dann auf **Auswählen**.
-  1. Wählen Sie auf der Seite **Zugriff aktivieren** die Anwendungsberechtigungen bzw. die delegierten Berechtigungen aus, die Ihre Anwendung für den Zugriff auf die API benötigt.
+   1. Wählen Sie auf der Seite **Einstellungen** zunächst den Abschnitt **Erforderliche Berechtigungen** und dann **Hinzufügen** aus.
+   1. Wählen Sie **API auswählen** aus, um den Typ der Ressourcen für die Auswahl anzugeben.
+   1. Durchsuchen Sie die Liste der verfügbaren APIs, oder verwenden Sie das Suchfeld, um die verfügbaren Ressourcenanwendungen in Ihrem Verzeichnis auszuwählen, die eine Web-API verfügbar machen. Wählen Sie die Ressource aus, an der Sie interessiert sind, und klicken Sie dann auf **Auswählen**.
+   1. Wählen Sie auf der Seite **Zugriff aktivieren** die Anwendungsberechtigungen bzw. die delegierten Berechtigungen aus, die Ihre Anwendung für den Zugriff auf die API benötigt.
    
-  ![Aktualisieren der Registrierung einer Anwendung – API für Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
+   ![Aktualisieren der Registrierung einer Anwendung – API für Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-api.png)
 
-  ![Aktualisieren der Registrierung einer Anwendung – Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
+   ![Aktualisieren der Registrierung einer Anwendung – Berechtigungen](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms.png)
 
 6. Wählen Sie abschließend auf der Seite **Zugriff aktivieren** die Schaltfläche **Auswählen** und dann auf der Seite **API-Zugriff hinzufügen** die Schaltfläche **Fertig** aus. Sie gelangen zurück auf die Seite **Erforderliche Berechtigungen**, auf der Sie sehen, dass die neue Ressource der Liste mit den APIs hinzugefügt wurde.
 
@@ -98,8 +98,8 @@ Im folgenden Abschnitt erfahren Sie, wie Sie Zugriffsbereiche verfügbar machen,
 4. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet. Wechseln Sie auf die Seite **Manifest bearbeiten**, indem Sie auf der Registrierungsseite der Anwendung auf **Manifest** klicken. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können (**Bearbeiten**). Optional können Sie auf **Herunterladen** klicken und dann die Option **Hochladen** verwenden, um das Manifest wieder auf Ihre Anwendung anzuwenden.
 5. In diesem Beispiel wird der neue Bereich `Employees.Read.All` auf unserer Ressource/API verfügbar gemacht, indem der Sammlung`oauth2Permissions` das folgende JSON-Element hinzugefügt wird: Der vorhandene Bereich `user_impersonation` wird während der Registrierung standardmäßig bereitgestellt. Mit `user_impersonation` kann eine Clientanwendung die Berechtigung zum Zugreifen auf die Ressource mit der Identität des angemeldeten Benutzers anfordern. Achten Sie darauf, dass Sie das Komma nach dem vorhandenen Bereichselement `user_impersonation` hinzufügen und die Eigenschaftswerte gemäß den Anforderungen Ihrer Ressource ändern. 
 
-  ```json
-  {
+   ```json
+   {
     "adminConsentDescription": "Allow the application to have read-only access to all Employee data.",
     "adminConsentDisplayName": "Read-only access to Employee records",
     "id": "2b351394-d7a7-4a84-841e-08a6a17e4cb8",
@@ -108,17 +108,17 @@ Im folgenden Abschnitt erfahren Sie, wie Sie Zugriffsbereiche verfügbar machen,
     "userConsentDescription": "Allow the application to have read-only access to your Employee data.",
     "userConsentDisplayName": "Read-only access to your Employee records",
     "value": "Employees.Read.All"
-  }
-  ```
+   }
+   ```
 
-  > [!NOTE]
-  > Der Wert `id` muss programmgesteuert oder mit einem Tool zum Generieren von GUIDs (beispielsweise [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)) generiert werden. Die `id` stellt einen eindeutigen Bezeichner für den Bereich dar, der von der Web-API bereitgestellt wird. Nachdem ein Client richtig mit Berechtigungen zum Zugreifen auf Ihre Web-API konfiguriert wurde, wird dafür von Azure AD ein OAuth 2.0-Zugriffstoken ausgestellt. Wenn der Client die Web-API aufruft, wird das Zugriffstoken präsentiert, für das der Bereichsanspruch (scp) auf die Berechtigungen festgelegt ist, die in der dazugehörigen Anwendungsregistrierung angefordert werden.
-  >
-  > Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Ihre Ressource kann den Zugriff auf die Web-API zur Laufzeit steuern, indem die Bereichsansprüche (`scp`) im erhaltenen OAuth 2.0-Zugriffstoken ausgewertet werden.
+   > [!NOTE]
+   > Der Wert `id` muss programmgesteuert oder mit einem Tool zum Generieren von GUIDs (beispielsweise [guidgen](https://msdn.microsoft.com/library/ms241442%28v=vs.80%29.aspx)) generiert werden. Die `id` stellt einen eindeutigen Bezeichner für den Bereich dar, der von der Web-API bereitgestellt wird. Nachdem ein Client richtig mit Berechtigungen zum Zugreifen auf Ihre Web-API konfiguriert wurde, wird dafür von Azure AD ein OAuth 2.0-Zugriffstoken ausgestellt. Wenn der Client die Web-API aufruft, wird das Zugriffstoken präsentiert, für das der Bereichsanspruch (scp) auf die Berechtigungen festgelegt ist, die in der dazugehörigen Anwendungsregistrierung angefordert werden.
+   >
+   > Sie können später bei Bedarf zusätzliche Bereiche verfügbar machen. Berücksichtigen Sie, dass Ihre Web-API verschiedene Berechtigungen verfügbar machen kann, die einer Vielzahl von unterschiedlichen Funktionen zugeordnet sind. Ihre Ressource kann den Zugriff auf die Web-API zur Laufzeit steuern, indem die Bereichsansprüche (`scp`) im erhaltenen OAuth 2.0-Zugriffstoken ausgewertet werden.
 
 6. Klicken Sie abschließend auf **Speichern**. Ihre Web-API ist jetzt so konfiguriert, dass sie von anderen Anwendungen im Verzeichnis verwendet werden kann.
 
-  ![Aktualisieren der Registrierung einer Anwendung](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
+   ![Aktualisieren der Registrierung einer Anwendung](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-manifest.png)
 
 ### <a name="verify-the-web-api-is-exposed-to-other-applications-in-your-tenant"></a>Überprüfen, ob die Web-API für andere Anwendungen in Ihrem Mandanten verfügbar gemacht wird
 
@@ -130,7 +130,7 @@ Im folgenden Abschnitt erfahren Sie, wie Sie Zugriffsbereiche verfügbar machen,
 
 3. Auf der Seite **Zugriff aktivieren** sollte der neue Bereich angezeigt werden, der für Clientberechtigungsanforderungen verfügbar ist.
 
-  ![Neue Berechtigungen werden angezeigt](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
+   ![Neue Berechtigungen werden angezeigt](./media/quickstart-v1-integrate-apps-with-azure-ad/update-app-registration-settings-permissions-perms-newscopes.png)
 
 ### <a name="more-on-the-application-manifest"></a>Weitere Informationen zum Anwendungsmanifest
 
@@ -211,9 +211,9 @@ Die implizite OAuth 2.0-Gewährung ist für Anwendungen standardmäßig deaktivi
 3. Klicken Sie im linken Navigationsbereich auf den **Azure Active Directory**-Dienst und dann auf **App-Registrierungen**. Suchen Sie anschließend nach der Anwendung, die Sie konfigurieren möchten, und klicken Sie darauf. Sie gelangen auf die Hauptseite der Anwendungsregistrierung, und die Seite **Einstellungen** für die Anwendung wird geöffnet.
 4. Wechseln Sie auf die Seite **Manifest bearbeiten**, indem Sie auf der Registrierungsseite der Anwendung auf **Manifest** klicken. Ein webbasierter Manifest-Editor wird geöffnet, mit dem Sie das Manifest im Portal bearbeiten können (**Bearbeiten**). Suchen Sie nach dem Wert „oauth2AllowImplicitFlow“, und ändern sie ihn in „true“. Standardmäßig ist „false“ festgelegt.
    
-  ```json
-  "oauth2AllowImplicitFlow": true,
-  ```
+   ```json
+   "oauth2AllowImplicitFlow": true,
+   ```
 5. Speichern Sie das aktualisierte Manifest. Nach dem Speichern des Manifests ist Ihre Web-API für die Verwendung der impliziten OAuth 2.0-Gewährung zum Authentifizieren von Benutzern konfiguriert.
 
 ## <a name="next-steps"></a>Nächste Schritte

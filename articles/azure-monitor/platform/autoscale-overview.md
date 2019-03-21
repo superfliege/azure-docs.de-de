@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: robb
 ms.subservice: autoscale
-ms.openlocfilehash: ae1828210345eb35f9d22664285a0d348ea50d48
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 05f20aec536ebdb702caea37051a65af9bbc659f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478330"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085642"
 ---
 # <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Übersicht über die automatische Skalierung in Microsoft Azure Virtual Machines, Cloud Services und Web-Apps
 In diesem Artikel wird beschrieben, was die automatische Skalierung von Microsoft Azure ist, welche Vorteile sie hat und wie Sie mit der Nutzung beginnen.  
@@ -66,15 +66,15 @@ Für die automatische Skalierung wird die folgende Terminologie bzw. Struktur ve
 
 - Eine **Einstellung für die automatische Skalierung** wird von der Engine für die automatische Skalierung gelesen, um zu ermitteln, ob zentral hoch- oder herunterskaliert werden soll. Sie enthält mindestens ein Profil, Informationen zur Zielressource und Benachrichtigungseinstellungen.
 
-    - Ein **Profil für die automatische Skalierung** ist eine Kombination aus:
+  - Ein **Profil für die automatische Skalierung** ist eine Kombination aus:
 
-        - einer **Kapazitätseinstellung**, mit der die minimalen Werte, maximalen Werte und Standardwerte für die Anzahl von Instanzen angegeben werden
-        - einem **Satz von Regeln**, von denen jede einen Trigger (Zeit oder Metrik) und eine Skalierungsaktion (nach oben oder unten) enthält
-        - einer **Wiederholung**, mit der angegeben wird, wann die automatische Skalierung dieses Profil anwenden soll.
+    - einer **Kapazitätseinstellung**, mit der die minimalen Werte, maximalen Werte und Standardwerte für die Anzahl von Instanzen angegeben werden
+    - einem **Satz von Regeln**, von denen jede einen Trigger (Zeit oder Metrik) und eine Skalierungsaktion (nach oben oder unten) enthält
+    - einer **Wiederholung**, mit der angegeben wird, wann die automatische Skalierung dieses Profil anwenden soll.
 
-        Sie können mehrere Profile verwenden, um unterschiedliche Anforderungen abzudecken, die sich ggf. überschneiden. Sie können beispielsweise unterschiedliche Autoskalierungsprofile für verschiedene Tageszeiten oder Wochentage verwenden.
+      Sie können mehrere Profile verwenden, um unterschiedliche Anforderungen abzudecken, die sich ggf. überschneiden. Sie können beispielsweise unterschiedliche Autoskalierungsprofile für verschiedene Tageszeiten oder Wochentage verwenden.
 
-    - Mit einer **Benachrichtigungseinstellung** wird definiert, welche Benachrichtigungen gesendet werden sollen, wenn ein Autoskalierungsereignis eintritt. Hierfür müssen jeweils die entsprechenden Kriterien eines Profils der Autoskalierungseinstellung erfüllt sein. Bei der automatischen Skalierung können Benachrichtigungen an eine oder mehrere E-Mail-Adressen gesendet oder Webhooks aufgerufen werden.
+  - Mit einer **Benachrichtigungseinstellung** wird definiert, welche Benachrichtigungen gesendet werden sollen, wenn ein Autoskalierungsereignis eintritt. Hierfür müssen jeweils die entsprechenden Kriterien eines Profils der Autoskalierungseinstellung erfüllt sein. Bei der automatischen Skalierung können Benachrichtigungen an eine oder mehrere E-Mail-Adressen gesendet oder Webhooks aufgerufen werden.
 
 
 ![Azure-Autoskalierungseinstellung, Profil und Regelstruktur](./media/autoscale-overview/AzureResourceManagerRuleStructure3.png)

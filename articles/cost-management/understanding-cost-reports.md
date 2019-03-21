@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/07/2018
+ms.date: 03/18/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 10a8d434df376749b76e2cf90212d872f705b209
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 92ce35e88cc73c16e3d3670e07ff8b996192b825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53103420"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109813"
 ---
 # <a name="understanding-cloudyn-cost-management-reports"></a>Grundlegendes zu Cloudyn-Kostenverwaltungsberichten
 
@@ -41,7 +41,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
       - Ressourcenverwaltung
       - Optimierung
 
-  Geben Sie einen Filternamen ein, und klicken Sie dann auf **Speichern**.
+   Geben Sie einen Filternamen ein, und klicken Sie dann auf **Speichern**.
 
 3. **Tags**
 
@@ -71,55 +71,55 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
       - Kostenentitäts-Tags von Cloudyn
       - Abonnement-Tag-Kategorien für die Kostenzuteilung
 
-  Beispiele:
-     - Kostenstelle
-     - Department
-     - Anwendung
-     - Environment
-     - Kostencode
+   Beispiele:
+   - Kostenstelle
+   - Department
+   - Anwendung
+   - Environment
+   - Kostencode
 
-    Hier ist eine Liste mit den integrierten Gruppen des Berichts angegeben:
+     Hier ist eine Liste mit den integrierten Gruppen des Berichts angegeben:
 
-    - **Kostenart**
-      - Wählen Sie eine, mehrere oder alle Kostenarten aus. Es gibt folgende Kostenarten:
-        - Einmalige Gebühr
-        - Support
-        - Nutzungskosten
-    - **Kunde**
-        - Wählen Sie einen bestimmten, mehrere oder alle Kunden aus.
-    - **Kontoname**
-        - Der Name des Kontos oder des Abonnements. In Azure ist dies der Name des Azure-Abonnements.
-    - **Kontonummer**
-        - Wählen Sie ein, mehrere oder alle Konten aus. In Azure ist dies die GUID des Azure-Abonnements.
-    - **Übergeordnetes Konto**
-        - Wählen Sie ein, mehrere oder alle übergeordneten Konten aus.
-    - **Service**
-        - Wählen Sie einen, mehrere oder alle Dienste aus.
-    - **Anbieter**
-        - Der Cloudanbieter, dem Objekte und Ausgaben zugeordnet sind.
-    - **Region**
-        - Die Region, in der die Ressource gehostet wird.
-    - **Verfügbarkeitszone**
-        - Die Standorte mit AWS-Isolation in einer Region.
-    - **Ressourcentyp**
-        - Der Typ der verwendeten Ressource.
-    - **Untertyp**
-        - Wählen Sie den Untertyp aus.
-    - **Vorgang**
-        - Wählen Sie den Vorgang oder die Option **Alle anzeigen**.
-    - **Preismodell**
-        - Alles im Voraus
-        - Keine Vorauszahlung
-        - Teilweise im Voraus
-        - On Demand
-        - Reservierung
-        - Sofortige Zahlung
-    - **Gebührentyp**
-        - Wählen Sie negative, positive oder beide Gebührentypen aus.
-    - **Mandant**
-        - Gibt an, ob ein Computer als dedizierter Computer ausgeführt wird.
-    -   **Verwendungstyp**
-          - Der Verwendungstyp kann auf einmalige Gebühr oder wiederkehrende Gebühren festgelegt werden.
+     - **Kostenart**
+     - Wählen Sie eine, mehrere oder alle Kostenarten aus. Es gibt folgende Kostenarten:
+       - Einmalige Gebühr
+       - Support
+       - Nutzungskosten
+     - **Kunde**
+       - Wählen Sie einen bestimmten, mehrere oder alle Kunden aus.
+     - **Kontoname**
+       - Der Name des Kontos oder des Abonnements. In Azure ist dies der Name des Azure-Abonnements.
+     - **Kontonummer**
+       - Wählen Sie ein, mehrere oder alle Konten aus. In Azure ist dies die GUID des Azure-Abonnements.
+     - **Übergeordnetes Konto**
+       - Wählen Sie ein, mehrere oder alle übergeordneten Konten aus.
+     - **Service**
+       - Wählen Sie einen, mehrere oder alle Dienste aus.
+     - **Anbieter**
+       - Der Cloudanbieter, dem Objekte und Ausgaben zugeordnet sind.
+     - **Region**
+       - Die Region, in der die Ressource gehostet wird.
+     - **Verfügbarkeitszone**
+       - Die Standorte mit AWS-Isolation in einer Region.
+     - **Ressourcentyp**
+       - Der Typ der verwendeten Ressource.
+     - **Untertyp**
+       - Wählen Sie den Untertyp aus.
+     - **Vorgang**
+       - Wählen Sie den Vorgang oder die Option **Alle anzeigen**.
+     - **Preismodell**
+       - Alles im Voraus
+       - Keine Vorauszahlung
+       - Teilweise im Voraus
+       - On Demand
+       - Reservierung
+       - Sofortige Zahlung
+     - **Gebührentyp**
+       - Wählen Sie negative, positive oder beide Gebührentypen aus.
+     - **Mandant**
+       - Gibt an, ob ein Computer als dedizierter Computer ausgeführt wird.
+     - **Verwendungstyp**
+       - Der Verwendungstyp kann auf einmalige Gebühr oder wiederkehrende Gebühren festgelegt werden.
 
 5. **Filter**
 
@@ -139,7 +139,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
     - Gebühren für den Kauf von reservierten Instanzen
     - Einige Azure Marketplace-Elemente
 
-  Wählen Sie unter Amortisierung die Option **Amortized cost** (Amortisierte Kosten) oder **Actual Cost** (Istkosten) aus.
+   Wählen Sie unter Amortisierung die Option **Amortized cost** (Amortisierte Kosten) oder **Actual Cost** (Istkosten) aus.
 
 8. **Lösung**
 
@@ -162,7 +162,7 @@ Jeder nummerierte Bereich in der vorherigen Abbildung wird in den folgenden Info
 
     Die Option zum Anzeigen/Ausblenden Option hat keine Auswirkung in Berichten.
 
-12.   **Anzeigeformate**
+12. **Anzeigeformate**
 
     Verwenden Sie „Anzeigeformate“, um verschiedene Diagramm- oder Tabellenansichten auszuwählen.
 

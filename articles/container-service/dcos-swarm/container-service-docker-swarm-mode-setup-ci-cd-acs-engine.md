@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.openlocfilehash: a2ecc2b0b8bfcf65d2ba566b8524a0c37c89ab78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8aa62e4ed65f8223071786ac165f8343cb6901d5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980549"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079093"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>(VERALTET) Vollständige CI/CD-Pipeline zum Bereitstellen einer Anwendung mit mehreren Containern in Azure Container Service mit ACS-Engine und Docker Swarm-Modus mithilfe von Azure DevOps
 
@@ -163,21 +163,21 @@ Für jedes Image benötigen Sie zwei Docker-Schritte: einen zum Erstellen des Im
 
    ![Azure DevOps: Hinzufügen einer Befehlszeilenaufgabe](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-command-task.png)
 
-      1. Eine Befehlszeilenaufgabe, die ein Bash-Skript verwendet, um *RegistryURL* in der Datei „docker-compose.yml“ durch die RegistryURL-Variable zu ersetzen. 
+   1. Eine Befehlszeilenaufgabe, die ein Bash-Skript verwendet, um *RegistryURL* in der Datei „docker-compose.yml“ durch die RegistryURL-Variable zu ersetzen. 
     
-          ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/RegistryUrl/$(RegistryURL)/g' src/docker-compose-v3.yml"```
 
-          ![Azure DevOps: Aktualisieren der Compose-Datei mit Registrierungs-URL](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
+       ![Azure DevOps: Aktualisieren der Compose-Datei mit Registrierungs-URL](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-replace-registry.png)
 
-      2. Eine Befehlszeilenaufgabe, die ein Bash-Skript verwendet, um *AgentURL* in der Datei „docker-compose.yml“ durch die AgentURL-Variable zu ersetzen.
+   2. Eine Befehlszeilenaufgabe, die ein Bash-Skript verwendet, um *AgentURL* in der Datei „docker-compose.yml“ durch die AgentURL-Variable zu ersetzen.
   
-          ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
+       ```-c "sed -i 's/AgentUrl/$(AgentURL)/g' src/docker-compose-v3.yml"```
 
-     3. Eine Aufgabe, die die aktualisierte Compose-Datei als Buildartefakt ablegt, damit sie im Release verwendet werden kann. Die folgenden Abbildungen zeigen Details.
+      1. Eine Aufgabe, die die aktualisierte Compose-Datei als Buildartefakt ablegt, damit sie im Release verwendet werden kann. Die folgenden Abbildungen zeigen Details.
 
-         ![Azure DevOps: Veröffentlichen des Artefakts](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
+      ![Azure DevOps: Veröffentlichen des Artefakts](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish.png) 
 
-         ![Azure DevOps: Veröffentlichen der Compose-Datei](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
+      ![Azure DevOps: Veröffentlichen der Compose-Datei](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-publish-compose.png) 
 
 5. Klicken Sie auf **Speichern und in Warteschlange einreihen**, um die Buildpipeline zu testen.
 
@@ -187,7 +187,7 @@ Für jedes Image benötigen Sie zwei Docker-Schritte: einen zum Erstellen des Im
 
 6. Wenn der **Build** erfolgreich erstellt wurde, wird dieser Bildschirm angezeigt:
 
-  ![Azure DevOps: Buildvorgang erfolgreich](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
+   ![Azure DevOps: Buildvorgang erfolgreich](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
 ## <a name="step-3-create-the-release-pipeline"></a>Schritt 3: Erstellen der Releasepipeline
 
@@ -235,14 +235,14 @@ Der Releaseworkflow besteht aus zwei Aufgaben, die Sie hinzufügen.
 
     Der auf den Masterknoten angewendete Befehl verwendet die Docker-Befehlszeilenschnittstelle und die Docker-Compose-Befehlszeilenschnittstelle zum Ausführen der folgenden Aufgaben:
 
-    - Melden Sie sich bei Azure Container Registry an (diese verwendet drei Buildvariablen, die auf der Registerkarte **Variablen** definiert sind).
-    - Definieren Sie die Variable **DOCKER_HOST** für die Zusammenarbeit mit dem Swarm-Endpunkt (:2375).
-    - Navigieren Sie zum Ordner *deploy*, der während der vorherigen sicheren Kopieraufgabe erstellt wurde und die Datei „docker-compose.yml“ enthält. 
-    - Führen Sie `docker stack deploy`-Befehle aus, die die neuen Images per Pull übertragen und die Container erstellen.
+   - Melden Sie sich bei Azure Container Registry an (diese verwendet drei Buildvariablen, die auf der Registerkarte **Variablen** definiert sind).
+   - Definieren Sie die Variable **DOCKER_HOST** für die Zusammenarbeit mit dem Swarm-Endpunkt (:2375).
+   - Navigieren Sie zum Ordner *deploy*, der während der vorherigen sicheren Kopieraufgabe erstellt wurde und die Datei „docker-compose.yml“ enthält. 
+   - Führen Sie `docker stack deploy`-Befehle aus, die die neuen Images per Pull übertragen und die Container erstellen.
 
-    >[!IMPORTANT]
-    > Lassen Sie, wie in der Abbildung oben gezeigt, das Kontrollkästchen **Fehler für STDERR** deaktiviert. Mit dieser Einstellung können Sie den Releaseprozess abschließen, da `docker-compose` in der Standardfehlerausgabe mehrere Diagnosemeldungen ausgibt, z.B. zu beendeten oder gelöschten Containern. Wenn Sie das Kontrollkästchen aktivieren, meldet Azure DevOps, dass im Verlauf des Release Fehler aufgetreten sind, obwohl alles wie gewünscht verlaufen ist.
-    >
+     >[!IMPORTANT]
+     > Lassen Sie, wie in der Abbildung oben gezeigt, das Kontrollkästchen **Fehler für STDERR** deaktiviert. Mit dieser Einstellung können Sie den Releaseprozess abschließen, da `docker-compose` in der Standardfehlerausgabe mehrere Diagnosemeldungen ausgibt, z.B. zu beendeten oder gelöschten Containern. Wenn Sie das Kontrollkästchen aktivieren, meldet Azure DevOps, dass im Verlauf des Release Fehler aufgetreten sind, obwohl alles wie gewünscht verlaufen ist.
+     >
 3. Speichern Sie diese neue Releasepipeline.
 
 ## <a name="step-4-test-the-cicd-pipeline"></a>Schritt 4: Testen der CI/CD-Pipeline

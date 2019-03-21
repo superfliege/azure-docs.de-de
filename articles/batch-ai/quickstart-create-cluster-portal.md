@@ -16,12 +16,12 @@ ms.topic: quickstart
 ms.date: 08/15/2018
 ms.author: danlep
 ROBOTS: NOINDEX
-ms.openlocfilehash: 78c743448a7f7439875d3598d6ba5d4eb6dc12fc
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
+ms.openlocfilehash: 49e78f1774a2998de7070453f7c098aef1761242
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53408934"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093227"
 ---
 # <a name="quickstart-create-a-cluster-for-batch-ai-training-jobs-using-the-azure-portal"></a>Schnellstart: Erstellen eines Clusters für Batch AI-Trainingsaufträge über das Azure-Portal
 
@@ -59,7 +59,7 @@ Erstellen Sie zunächst einen Batch AI-Arbeitsbereich, um Ihre Batch AI-Ressourc
 
 3. Geben Sie Werte für **Arbeitsbereichsname** und **Ressourcengruppe** ein. Wenn Sie möchten, können Sie verschiedene Optionen für das **Abonnement** und den **Speicherort** für den Arbeitsbereich auswählen. Wählen Sie **Arbeitsbereich erstellen** aus.
 
-  ![Erstellen eines Batch AI-Arbeitsbereichs](./media/quickstart-create-cluster-portal/create-workspace.png)
+   ![Erstellen eines Batch AI-Arbeitsbereichs](./media/quickstart-create-cluster-portal/create-workspace.png)
 
 Wenn die Meldung **Bereitstellung erfolgreich** angezeigt wird, wechseln Sie zur erstellten Ressource und wählen Sie den Arbeitsbereich aus.
 
@@ -73,7 +73,7 @@ Ein Batch AI-Dateiserver ist NFS mit einem Knoten, das automatisch auf Clusterkn
 
 3. Geben Sie einen **Administratorbenutzernamen** ein, und kopieren Sie den Inhalt Ihrer öffentlichen SSH-Schlüsseldatei in **SSH-Schlüssel**. Übernehmen Sie für die übrigen Werte die Standardwerte und wählen Sie **Dateiserver erstellen**.
 
-  ![Batch AI-Dateiserver erstellen](./media/quickstart-create-cluster-portal/create-file-server.png)
+   ![Batch AI-Dateiserver erstellen](./media/quickstart-create-cluster-portal/create-file-server.png)
 
 Die Bereitstellung des Dateiservers dauert einige Minuten.
 

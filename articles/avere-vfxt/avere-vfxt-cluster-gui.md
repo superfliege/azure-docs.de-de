@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 10/31/2018
 ms.author: v-erkell
-ms.openlocfilehash: 30c03d52e31f70448eef07b4567083061605d8dd
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: f989f4d103efecf2b6e206287dd8b7b300a1796d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55300471"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856840"
 ---
 # <a name="access-the-vfxt-cluster"></a>Zugreifen auf den vFXT-Cluster
 
@@ -31,7 +31,7 @@ Stellen Sie vor dem Herstellen der Verbindung sicher, dass das SSH-Schlüsselpaa
 
 Wenn Sie einen Linux-basierten Client verwenden, verwenden Sie einen SSH-Tunnelbefehl in diesem Format: 
 
-ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*@*controller_public_IP*
+ssh -L *local_port*:*cluster_mgmt_ip*:443 *controller_username*\@*controller_public_IP*
 
 Dieser Befehl stellt über die IP-Adresse des Clustercontrollers eine Verbindung mit der IP-Adresse für die Clusterverwaltung her.
 
@@ -47,7 +47,7 @@ Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schl
 
 Dieses Beispiel verwendet das allgemeine Windows-basierte Terminalhilfsprogramm PuTTY.
 
-Geben Sie in das PuTTY-Feld **Hostname** den Benutzernamen des Clustercontrollers und seine IP-Adresse ein: *Ihr_Benutzername*@*Öffentliche_IP_Controller*.
+Geben Sie in das PuTTY-Feld **Hostname** den Benutzernamen des Clustercontrollers und seine IP-Adresse ein: *Ihr_Benutzername*\@*Öffentliche_IP_Controller*.
 
 Beispiel: ``azureuser@203.0.113.51``
 
@@ -69,7 +69,7 @@ Die Authentifizierung erfolgt automatisch, wenn Sie Ihren öffentlichen SSH-Schl
 
 Dieser Schritt verwendet einen Webbrowser, um eine Verbindung mit dem Konfigurationsprogramm herzustellen, das auf dem vFXT-Cluster ausgeführt wird.
 
-* Für eine SSH-Tunnelverbindung öffnen Sie Ihren Webbrowser, und navigieren Sie zu https://127.0.0.1:8443. 
+* Für eine SSH-Tunnelverbindung öffnen Sie Ihren Webbrowser, und navigieren Sie zu `https://127.0.0.1:8443`. 
 
   Sie haben bei der Erstellung des Tunnels eine Verbindung mit der IP-Adresse des Clusters hergestellt, daher müssen Sie nur die localhost-IP-Adresse im Browser verwenden. Wenn Sie einen anderen lokalen Port als 8443 verwendet haben, verwenden Sie stattdessen Ihre Portnummer.
 

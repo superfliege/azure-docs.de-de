@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2c39e8f172283f512037e0d991b2c22eb816c8f6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 5bed5dd19f6b736aca7ed2d551c8be0e6f03a810
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55191328"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094540"
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>Beheben von Problemen bei einer ungültigen Konfiguration des Dienstprinzipals für verwaltete Domänen
 
@@ -41,7 +41,7 @@ Ermitteln Sie anhand der folgenden Schritte, welche Dienstprinzipale neu erstell
 3. Nutzen Sie die folgende Tabelle für die Suche der einzelnen Anwendungs-IDs, indem Sie die ID in das Suchfeld einfügen und die EINGABETASTE drücken. Wenn keine Suchergebnisse angezeigt werden, müssen Sie den Dienstprinzipal mithilfe der Schritte in der Spalte „Lösung“ neu erstellen.
 
 | Anwendungs-ID | Lösung |
-| :--- | :--- | :--- |
+| :--- | :--- |
 | 2565bd9d-da50-47d4-8b85-4c97f669dc36 | [Erneutes Erstellen eines fehlenden Dienstprinzipals mit PowerShell](#recreate-a-missing-service-principal-with-powershell) |
 | 443155a6-77f3-45e3-882b-22b3a8d431fb | [Erneutes Registrieren beim Namespace „Microsoft.AAD“](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |
 | abba844e-bc0e-44b0-947a-dc74e5d09022  | [Erneutes Registrieren beim Namespace „Microsoft.AAD“](#re-register-to-the-microsoft-aad-namespace-using-the-azure-portal) |

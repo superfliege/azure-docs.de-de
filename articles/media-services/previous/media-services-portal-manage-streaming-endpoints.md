@@ -13,16 +13,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: 0f2e4ee393c07e6b15f128ed60922b8a280cabb5
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1775bbb2913f6b1a985ca7ec9e89bafed42fd0e6
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984663"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258206"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal-legacy"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals (veraltet)
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Verwalten von Streamingendpunkten mithilfe des Azure-Portals 
 
 In diesem Artikel wird erläutert, wie Streamingendpunkte über das Azure-Portal verwaltet werden. 
 

@@ -4,17 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erstellen, z.B. aus FAQs oder Produkthandbüchern. Die QnA Maker-Wissensdatenbank in diesem Beispiel wird aus einer einfachen FAQ-Webseite erstellt, um Fragen zur BitLocker-Schlüsselwiederherstellung zu beantworten.
 author: diberry
 manager: nitinme
+services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/18/2018
 ms.author: diberry
-ms.openlocfilehash: 2ac6e6fcd73abddcee668b8f73184b923aeab5d3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 3f7b24af3d48075150ae7c192ccf421b928a7aa3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55876996"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113698"
 ---
 # <a name="create-train-and-publish-your-qna-maker-knowledge-base"></a>Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -53,7 +54,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 10. Wählen Sie oben rechts **QnA-Paar hinzufügen** aus, um eine neue Zeile im Abschnitt **Editorial** der Wissensdatenbank hinzuzufügen. Geben Sie unter **Frage** die Begrüßung **Hi** ein. Geben Sie unter **Antwort** die Antwort **„Hallo“ ein. Befragen Sie mich zu Bitlocker.**
 
-   ![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-quickstart-kb/add-qna-pair.png)
+    ![Hinzufügen eines Fragen-und-Antworten-Paars](../media/qnamaker-quickstart-kb/add-qna-pair.png)
 
 11. Wählen Sie in der oberen rechten Ecke **Speichern und trainieren** aus, um Ihre Änderungen zu speichern und das QnA Maker-Modell zu trainieren. Änderungen werden nur beibehalten, wenn sie gespeichert werden.
 
@@ -61,7 +62,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 13. Wählen Sie **Untersuchen** aus, um die Antwort ausführlicher zu untersuchen. Das Testfenster wird verwendet, um die Änderungen an der Wissensdatenbank zu testen, bevor sie veröffentlicht werden.
 
-   ![Testbereich](../media/qnamaker-quickstart-kb/inspect-panel.png)
+    ![Testbereich](../media/qnamaker-quickstart-kb/inspect-panel.png)
 
 14. Wählen Sie erneut **Testen** aus, um das Popupfenster **Testen** zu schließen.
 
@@ -69,7 +70,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 16. Die QnA Maker-Dienst wurde nun erfolgreich veröffentlicht. Sie können den Endpunkt in Ihrer Anwendung oder im Botcode verwenden.
 
-   ![Veröffentlichen](../media/qnamaker-quickstart-kb/publish-sucess.png)
+    ![Veröffentlichen](../media/qnamaker-quickstart-kb/publish-sucess.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

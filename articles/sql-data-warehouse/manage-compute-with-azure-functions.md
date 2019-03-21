@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/27/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0832fbcacd8b58ffaf36ce2e55e3add151a881db
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: b94e4c6f178119d6205c302cf35a9effaf2aa885
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55470194"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57870929"
 ---
 # <a name="use-azure-functions-to-manage-compute-resources-in-azure-sql-data-warehouse"></a>Verwalten von Computeressourcen mit Azure Functions in Azure SQL Data Warehouse
 
@@ -57,14 +57,14 @@ Nach dem Bereitstellen der Vorlage sollten drei neue Ressourcen vorhanden sein: 
 
 4. Fügen Sie im Zeitplanbereich die Zeit per CRON-Ausdruck hinzu, um anzugeben, wie oft für SQL Data Warehouse das zentrale Hochskalieren durchgeführt werden soll. 
 
-  ![Ändern des Funktionszeitplans](media/manage-compute-with-azure-functions/change-schedule.png)
+   ![Ändern des Funktionszeitplans](media/manage-compute-with-azure-functions/change-schedule.png)
 
-  Der Wert von `schedule` ist ein [CRON-Ausdruck](http://en.wikipedia.org/wiki/Cron#CRON_expression) mit diesen sechs Feldern: 
-  ```json
-  {second} {minute} {hour} {day} {month} {day-of-week}
-  ```
+   Der Wert von `schedule` ist ein [CRON-Ausdruck](https://en.wikipedia.org/wiki/Cron#CRON_expression) mit diesen sechs Feldern: 
+   ```json
+   {second} {minute} {hour} {day} {month} {day-of-week}
+   ```
 
-  *"0 30 9 * * 1-5"* steht beispielsweise für eine Auslösung an jedem Werktag um 9:30 Uhr. Weitere Informationen finden Sie im Artikel mit den [Zeitplanbeispielen][schedule examples] für Azure Functions.
+   *"0 30 9 * * 1-5"* steht beispielsweise für eine Auslösung an jedem Werktag um 9:30 Uhr. Weitere Informationen finden Sie im Artikel mit den [Zeitplanbeispielen][schedule examples] für Azure Functions.
 
 
 ## <a name="change-the-time-of-the-scale-operation"></a>Ändern des Zeitpunkts des Skalierungsvorgangs

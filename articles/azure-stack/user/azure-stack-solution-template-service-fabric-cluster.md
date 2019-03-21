@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: a8897288e19a7628dbd1cc2c022de4db2a111393
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55248043"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58098007"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Bereitstellen eines Service Fabric-Clusters in Azure Stack
 
@@ -37,17 +37,17 @@ Folgendes ist für die Bereitstellung des Service Fabric-Clusters erforderlich:
    Dies ist das X.509-Serverzertifikat, dass Sie Key Vault beim Bereitstellen von Service Fabric hinzufügen. 
    - Der **CN** dieses Zertifikats muss mit dem vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN) des von Ihnen erstellten Service Fabric-Clusters übereinstimmen. 
    - Das Zertifikat muss im PFX-Format vorliegen, da sowohl der öffentliche als auch der private Schlüssel benötigt werden. 
-   Informationen zum Erstellen dieses serverseitigen Zertifikats finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
+     Informationen zum Erstellen dieses serverseitigen Zertifikats finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
 
-    > [!NOTE]  
-    > Anstelle des x.509-Serverzertifikats können Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden. Selbstsignierte Zertifikate müssen nicht mit dem FQDN des Clusters übereinstimmen.
+     > [!NOTE]  
+     > Anstelle des x.509-Serverzertifikats können Sie zu Testzwecken ein selbstsigniertes Zertifikat verwenden. Selbstsignierte Zertifikate müssen nicht mit dem FQDN des Clusters übereinstimmen.
 
-1.  **Clientzertifikat des Administrators:** Hierbei handelt es sich um das Zertifikat, das der Client für die Authentifizierung beim Service Fabric-Cluster verwendet. Dies kann ein selbstsigniertes Zertifikat sein. Informationen zum Erstellen dieses Clientzertifikats finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
+1. **Clientzertifikat des Administrators:** Hierbei handelt es sich um das Zertifikat, das der Client für die Authentifizierung beim Service Fabric-Cluster verwendet. Dies kann ein selbstsigniertes Zertifikat sein. Informationen zum Erstellen dieses Clientzertifikats finden Sie unter [Szenarien für die Clustersicherheit in Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security).
 
-1.  **Die folgenden Elemente müssen im Azure Stack-Marketplace verfügbar sein:**
-     - **Windows Server 2016:** Die Vorlage verwendet das Windows Server 2016-Image zum Erstellen des Clusters.  
-     - **Kundenskripterweiterung:** VM-Erweiterung von Microsoft  
-     - **PowerShell Desired Stage Configuration** (PowerShell-Konfiguration für gewünschte Phase): VM-Erweiterung von Microsoft
+1. **Die folgenden Elemente müssen im Azure Stack-Marketplace verfügbar sein:**
+    - **Windows Server 2016:** Die Vorlage verwendet das Windows Server 2016-Image zum Erstellen des Clusters.  
+    - **Kundenskripterweiterung:** VM-Erweiterung von Microsoft  
+    - **PowerShell Desired Stage Configuration** (PowerShell-Konfiguration für gewünschte Phase): VM-Erweiterung von Microsoft
 
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault

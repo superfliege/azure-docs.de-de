@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 03/02/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d43a8a316ff28d2cdb9e231057aea3de85d7d444
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: f2739b5d2d944ea9a8b8cefdcc741abc8a2b632a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56205578"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113400"
 ---
 # <a name="move-applications-from-ad-fs-to-azure-ad"></a>Verschieben von Anwendungen aus AD FS in Azure AD 
 
@@ -99,7 +99,7 @@ Die Migration beginnt damit, wie die Anwendung lokal konfiguriert wird, und mit 
 |App-Konfigurationselement|BESCHREIBUNG|Position in AD FS-Konfiguration|Entsprechende Position in der Azure AD-Konfiguration|SAML-Tokenelement|
 |-----|-----|-----|-----|-----|
 |Anmelde-URL der App|URL der Anmeldeseite dieser Anwendung. Hierüber meldet sich der Benutzer in einem SP-initiierten SAML-Datenfluss an der App an.|–|In Azure AD ist die Anmelde-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Anmelde-URL anzuzeigen.)|–|
-|Antwort-URL der App|Die URL der App aus Sicht des Identitätsanbieters (IdP). An diesen Ort werden der Benutzer und das Token gesendet, nachdem sich der Benutzer beim IdP angemeldet hat.</br></br> Dies wird auch als „Consumerendpunkt der SAML-Assertion“ bezeichnet.|Sie befindet sich in der Vertrauensstellung der vertrauenden Seite von AD FS für die App. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|In Azure AD ist die Antwort-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Antwort-URL anzuzeigen.)|Ist im SAML-Token dem **Destination**-Element zugeordnet.</br></br> Beispielwert: https://contoso.my.salesforce.com|
+|Antwort-URL der App|Die URL der App aus Sicht des Identitätsanbieters (IdP). An diesen Ort werden der Benutzer und das Token gesendet, nachdem sich der Benutzer beim IdP angemeldet hat.</br></br> Dies wird auch als „Consumerendpunkt der SAML-Assertion“ bezeichnet.|Sie befindet sich in der Vertrauensstellung der vertrauenden Seite von AD FS für die App. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|In Azure AD ist die Antwort-URL im Azure-Portal in den **SSO**-Eigenschaften der Anwendung konfiguriert.</br></br>(Unter Umständen müssen Sie **Erweiterte URL-Einstellungen anzeigen** wählen, um die Antwort-URL anzuzeigen.)|Ist im SAML-Token dem **Destination**-Element zugeordnet.</br></br> Beispielwert: `https://contoso.my.salesforce.com`|
 |Abmelde-URL für App|URL, an die Anforderungen der Art „Abmeldebereinigung“ gesendet werden, wenn sich ein Benutzer von einer App abmeldet, um die Abmeldung von allen anderen Apps durchzuführen, an denen der Benutzer vom IdP angemeldet wurde.|Befindet sich in der AD FS-Verwaltung unter **Vertrauensstellungen der vertrauenden Seite**. Klicken Sie mit der rechten Maustaste auf die vertrauende Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Endpunkte**.|N/V. Für Azure AD wird das „einmalige Abmelden“ (also das Abmelden von allen Apps) nicht unterstützt. Der Benutzer wird einfach nur von Azure AD abgemeldet.|–|
 |App-ID|Der Bezeichner der App aus IdP-Sicht. Der Wert für die Anmelde-URL wird häufig für den Bezeichner verwendet (aber nicht immer).</br></br> Wird in der App in einigen Fällen auch als „Entitäts-ID“ bezeichnet.|In AD FS ist dies die ID der vertrauenden Seite. Klicken Sie mit der rechten Maustaste auf die Vertrauensstellung der vertrauenden Seite, und wählen Sie **Eigenschaften** und dann die Registerkarte **Bezeichner**.|In Azure AD ist der Bezeichner im Azure-Portal in den **SSO**-Eigenschaften der Anwendung als Bezeichner unter **Domäne und URLs** konfiguriert. (Es kann sein, dass Sie das Kontrollkästchen **Erweiterte URL-Einstellungen anzeigen** aktivieren müssen.)|Entspricht dem **Audience**-Element im SAML-Token.|
 |Verbundmetadaten der App|Speicherort der Verbundmetadaten einer App. Der IdP verwendet ihn zum automatischen Aktualisieren von bestimmten Konfigurationseinstellungen, z.B. Endpunkten oder Verschlüsselungszertifikaten.|Die Verbundmetadaten-URL der App befindet sich in der AD FS-Vertrauensstellung der vertrauenden Seite einer App. Klicken Sie mit der rechten Maustaste auf die Vertrauensstellung, wählen Sie **Eigenschaften**, und wählen Sie dann die Registerkarte **Überwachung**.|N/V. Für Azure AD wird die direkte Nutzung von Anwendungsverbundmetadaten nicht unterstützt.|–|

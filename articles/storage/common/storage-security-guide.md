@@ -1,5 +1,5 @@
 ---
-title: Azure Storage-Sicherheitsleitfaden | Microsoft-Dokumentation
+title: Azure Storage-Sicherheitsleitfaden | Microsoft Docs
 description: Details der vielen Methoden zum Schützen von Azure Storage, einschließlich, aber nicht beschränkt auf RBAC, Storage Service Encryption, clientseitige Verschlüsselung, SMB 3.0 und Azure Disk Encryption.
 services: storage
 author: tamram
@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 72d4a9cd9a8b9244c428d49b5270952deb6f5162
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 56c09d9c6d1249713de7c6a0428ad2a124eee157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58013071"
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage-Sicherheitsleitfaden
 
@@ -111,7 +111,7 @@ Hier sind die wichtigsten Punkte, die Sie über die Verwendung von RBAC für den
 ### <a name="managing-your-storage-account-keys"></a>Verwalten Ihres Speicherkontoschlüssels
 Speicherkontoschlüssel sind von Azure erstellte 512-Bit-Zeichenfolgen, die zusammen mit dem Speicherkontonamen für den Zugriff auf die im Speicherkonto gespeicherten Datenobjekte, z.B. Blobs, Entitäten innerhalb einer Tabelle, Warteschlangennachrichten und Dateien in einer Azure-Dateifreigabe verwendet werden können. Mit dem Steuern des Zugriffs auf die Speicherkontoschlüssel wird der Zugriff auf die Datenebene für das Speicherkonto gesteuert.
 
-Jedes Speicherkonto verfügt über zwei Schlüssel, die im [Azure-Portal](http://portal.azure.com/) und in den PowerShell-Cmdlets „Key 1“ und „Key 2“ genannt werden. Diese können mit verschiedenen Methoden manuell erneut generiert werden, beispielsweise im [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle. Die Neugenerierung kann auch programmgesteuert mithilfe der .NET-Speicherclientbibliothek bzw. der REST-API der Azure Storage-Dienste erfolgen.
+Jedes Speicherkonto verfügt über zwei Schlüssel, die im [Azure-Portal](https://portal.azure.com/) und in den PowerShell-Cmdlets „Key 1“ und „Key 2“ genannt werden. Diese können mit verschiedenen Methoden manuell erneut generiert werden, beispielsweise im [Azure-Portal](https://portal.azure.com/), mithilfe von PowerShell oder über die Azure-Befehlszeilenschnittstelle. Die Neugenerierung kann auch programmgesteuert mithilfe der .NET-Speicherclientbibliothek bzw. der REST-API der Azure Storage-Dienste erfolgen.
 
 Es gibt verschiedene Gründe, Ihre Speicherkontoschlüssel erneut zu generieren.
 
@@ -244,7 +244,7 @@ Weitere ausführliche Informationen zur Verwendung von SAS und gespeicherten Zug
 
     Dieser Artikel enthält eine Erläuterung des SAS-Modells, Beispiele für SAS und Empfehlungen bewährter Methoden für die SAS-Verwendung. Auch der Widerruf der Berechtigung wird hier erörtert.
 
-* Authentifizierung
+* Authentication
 
   * [Authentifizierung für Azure Storage-Dienste](https://msdn.microsoft.com/library/azure/dd179428.aspx)
 * Erste-Schritte-Tutorial für Shared Access Signatures

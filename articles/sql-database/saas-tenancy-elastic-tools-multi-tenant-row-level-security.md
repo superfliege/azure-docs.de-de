@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: 24375ca3fec50c1a9e194918ac4f824ab6fa81be
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 71d2d542d71977f9d8dfe07370dffd7fe508bc92
+ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568259"
+ms.lasthandoff: 03/04/2019
+ms.locfileid: "57314958"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Mehrinstanzenfähige Anwendungen mit elastischen Datenbanktools und zeilenbasierter Sicherheit
 
@@ -42,20 +42,20 @@ Das Ziel ist die Verwendung der APIs der elastischen Datenbank-Clientbibliothek 
 - Visual Studio (2012 oder neuere Version)
 - Erstellen von drei Azure SQL-Datenbanken
 - Laden Sie das Beispielprojekt herunter: [Elastische DB-Tools für Azure SQL: Mehrinstanzenfähige Shards](https://go.microsoft.com/?linkid=9888163)
-  - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs** 
+  - Geben Sie die Informationen für Ihre Datenbanken am Anfang der Datei **Program.cs**
 
-Dieses Projekt stellt eine Erweiterung des unter [Elastische DB-Tools für Azure SQL – Entity Framework-Integration](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) beschriebenen Projekts dar, indem Unterstützung für Shard-Datenbanken mit mehreren Mandanten hinzugefügt wird. Das Projekt erstellt eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen. Das Projekt umfasst vier Mandanten sowie zwei mehrinstanzenfähige Sharddatenbanken. Diese Konfiguration ist im vorhergehenden Diagramm dargestellt. 
+Dieses Projekt stellt eine Erweiterung des unter [Elastische DB-Tools für Azure SQL – Entity Framework-Integration](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) beschriebenen Projekts dar, indem Unterstützung für Shard-Datenbanken mit mehreren Mandanten hinzugefügt wird. Das Projekt erstellt eine einfache Konsolenanwendung zum Erstellen von Blogs und Beiträgen. Das Projekt umfasst vier Mandanten sowie zwei mehrinstanzenfähige Sharddatenbanken. Diese Konfiguration ist im vorhergehenden Diagramm dargestellt.
 
-Erstellen Sie die Anwendung, und führen Sie sie aus. Durch diese Ausführung werden ein Bootstrap für den Shard-Zuordnungs-Manager der elastischen Datenbanktools und die folgenden Tests ausgeführt: 
+Erstellen Sie die Anwendung, und führen Sie sie aus. Durch diese Ausführung werden ein Bootstrap für den Shard-Zuordnungs-Manager der elastischen Datenbanktools und die folgenden Tests ausgeführt:
 
 1. Erstellen Sie mithilfe von Entity Framework und LINQ einen neuen Blog und zeigen Sie dann alle Blogs für jeden Mandanten an.
 2. Zeigen Sie mithilfe von ADO.NET SqlClient alle Blogs für einen Mandanten an.
-3. Versuchen Sie, einen Blog für den falschen Mandanten einzufügen, um zu überprüfen, ob ein Fehler ausgelöst wird.  
+3. Versuchen Sie, einen Blog für den falschen Mandanten einzufügen, um zu überprüfen, ob ein Fehler ausgelöst wird.
 
-Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht in den Shard-Datenbanken aktiviert wurde: Mandanten können Blogs anzeigen, die Ihnen nicht gehören, und die Anwendung, wird nicht daran gehindert, einen Blog für den falschen Mandanten einzufügen. Im restlichen Artikel wird beschrieben, wie Sie diese Probleme beheben, indem Sie die Mandantenisolierung mit RLS erzwingen. Dies umfasst zwei Schritte: 
+Beachten Sie, dass diese gesamten Tests ein Problem aufzeigen, da RLS noch nicht in den Shard-Datenbanken aktiviert wurde: Mandanten können Blogs anzeigen, die Ihnen nicht gehören, und die Anwendung, wird nicht daran gehindert, einen Blog für den falschen Mandanten einzufügen. Im restlichen Artikel wird beschrieben, wie Sie diese Probleme beheben, indem Sie die Mandantenisolierung mit RLS erzwingen. Dies umfasst zwei Schritte:
 
-1. **Anwendungsschicht**: Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest. 
-2. **Datenschicht**: Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert. 
+1. **Anwendungsschicht**: Ändern Sie den Anwendungscode so, dass die aktuelle Mandanten-ID im SESSION\_CONTEXT immer nach dem Öffnen einer Verbindung festgelegt wird. Das Beispielprojekt legt die „TenantId“ bereits auf diese Weise fest.
+2. **Datenschicht**: Erstellen Sie auf der Grundlage der in SESSION\_CONTEXT gespeicherten Mandanten-ID in jeder Sharddatenbank eine RLS-Sicherheitsrichtlinie zum Filtern von Zeilen. Erstellen Sie für jede Sharddatenbank eine Richtlinie. Andernfalls werden die Zeilen in Shards mit mehreren Mandanten nicht gefiltert.
 
 ## <a name="1-application-tier-set-tenantid-in-the-sessioncontext"></a>1. Anwendungsschicht: Festlegen von TenantId in SESSION\_CONTEXT
 
@@ -65,14 +65,14 @@ Ein Alternative für SESSION\_CONTEXT ist [CONTEXT\_INFO](https://docs.microsoft
 
 ### <a name="entity-framework"></a>Entity Framework
 
-Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION\_CONTEXT in der ElasticScaleContext-Überschreibung festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext) beschrieben. Erstellen Sie einen SQL-Befehl, der „TenantId“ für SESSION\_CONTEXT auf den „Shardingschlüssel“ festlegt, der für die Verbindung angegeben wurde. Anschließend geben Sie die über datenabhängiges Routing vermittelte Verbindung zurück. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION\_CONTEXT schreiben. 
+Für Anwendungen, die Entity Framework verwenden, ist die einfachste Herangehensweise, SESSION\_CONTEXT in der ElasticScaleContext-Überschreibung festzulegen, wie unter [Datenabhängiges Routing mit EF DbContext](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md#data-dependent-routing-using-ef-dbcontext) beschrieben. Erstellen Sie einen SQL-Befehl, der „TenantId“ für SESSION\_CONTEXT auf den „Shardingschlüssel“ festlegt, der für die Verbindung angegeben wurde. Anschließend geben Sie die über datenabhängiges Routing vermittelte Verbindung zurück. Auf diese Weise müssen Sie nur einmal Code zum Festlegen von SESSION\_CONTEXT schreiben.
 
 ```csharp
-// ElasticScaleContext.cs 
+// ElasticScaleContext.cs
 // Constructor for data-dependent routing.
 // This call opens a validated connection that is routed to the
 // proper shard by the shard map manager.
-// Note that the base class constructor call fails for an open connection 
+// Note that the base class constructor call fails for an open connection
 // if migrations need to be done and SQL credentials are used.
 // This is the reason for the separation of constructors.
 // ...
@@ -119,30 +119,30 @@ public static SqlConnection OpenDDRConnection(
         }
         throw;
     }
-} 
-// ... 
+}
+// ...
 ```
 
-Der SESSION\_CONTEXT wird jetzt automatisch auf die angegebene „TenantId“ festgelegt, wenn „ElasticScaleContext“ aufgerufen wird: 
+Der SESSION\_CONTEXT wird jetzt automatisch auf die angegebene „TenantId“ festgelegt, wenn „ElasticScaleContext“ aufgerufen wird:
 
 ```csharp
-// Program.cs 
-SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
-{   
+// Program.cs
+SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
+{
     using (var db = new ElasticScaleContext<int>(
-        sharding.ShardMap, tenantId, connStrBldr.ConnectionString))   
-    {     
+        sharding.ShardMap, tenantId, connStrBldr.ConnectionString))
+    {
         var query = from b in db.Blogs
                     orderby b.Name
                     select b;
 
-        Console.WriteLine("All blogs for TenantId {0}:", tenantId);     
-        foreach (var item in query)     
-        {       
-            Console.WriteLine(item.Name);     
-        }   
-    } 
-}); 
+        Console.WriteLine("All blogs for TenantId {0}:", tenantId);
+        foreach (var item in query)
+        {
+            Console.WriteLine(item.Name);
+        }
+    }
+});
 ```
 
 ### <a name="adonet-sqlclient"></a>ADO.NET SqlClient
@@ -217,7 +217,7 @@ All blogs for TenantId {0} (using ADO.NET SqlClient):", tenantId4);
 
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>Erstellen einer Sicherheitsrichtlinie, um die Zeilen zu filtern, auf die jeder Mandant zugreifen kann
 
-Da die Anwendung nun SESSION\_CONTEXT vor dem Abfragen auf die aktuelle „TenantId“ festlegt, kann eine RLS-Sicherheitsrichtlinie Abfragen filtern und Zeilen ausschließen, die eine andere „TenantId“ aufweisen.  
+Da die Anwendung nun SESSION\_CONTEXT vor dem Abfragen auf die aktuelle „TenantId“ festlegt, kann eine RLS-Sicherheitsrichtlinie Abfragen filtern und Zeilen ausschließen, die eine andere „TenantId“ aufweisen.
 
 RLS ist in Transact-SQL implementiert. Eine benutzerdefinierte Funktion definiert die Zugriffslogik, und eine Sicherheitsrichtlinie bindet diese Funktion an eine beliebige Anzahl von Tabellen. Für dieses Projekt:
 
@@ -226,7 +226,7 @@ RLS ist in Transact-SQL implementiert. Eine benutzerdefinierte Funktion definier
 
 2. Mit einem FILTER-Prädikat können Zeilen, die dem Filter „TenantId“ entsprechen, für SELECT-, UPDATE- und DELETE-Abfragen durchgeleitet werden.
     - Ein BLOCK-Prädikat verhindert, dass für Zeilen, die dem Filter nicht entsprechen, INSERT oder UPDATE ausgeführt werden kann.
-    - Wenn SESSION\_CONTEXT nicht festgelegt wurde, gibt die Funktion NULL zurück. Darüber hinaus sind Zeilen nicht sichtbar und können nicht eingefügt werden. 
+    - Wenn SESSION\_CONTEXT nicht festgelegt wurde, gibt die Funktion NULL zurück. Darüber hinaus sind Zeilen nicht sichtbar und können nicht eingefügt werden.
 
 Um RLS für alle Shards zu aktivieren, führen Sie das folgende T-SQL mithilfe von Visual Studio (SSDT) oder SSMS bzw. das im Projekt enthaltene PowerShell-Skript aus. Wenn Sie [elastische Datenbankaufträge](sql-database-elastic-jobs-overview.md) verwenden, können Sie die T-SQL-Ausführung für alle Shards automatisieren.
 
@@ -234,8 +234,8 @@ Um RLS für alle Shards zu aktivieren, führen Sie das folgende T-SQL mithilfe v
 CREATE SCHEMA rls; -- Separate schema to organize RLS objects.
 GO
 
-CREATE FUNCTION rls.fn_tenantAccessPredicate(@TenantId int)     
-    RETURNS TABLE     
+CREATE FUNCTION rls.fn_tenantAccessPredicate(@TenantId int)
+    RETURNS TABLE
     WITH SCHEMABINDING
 AS
     RETURN SELECT 1 AS fn_accessResult
@@ -250,55 +250,55 @@ CREATE SECURITY POLICY rls.tenantAccessPolicy
     ADD BLOCK  PREDICATE rls.fn_tenantAccessPredicate(TenantId) ON dbo.Blogs,
     ADD FILTER PREDICATE rls.fn_tenantAccessPredicate(TenantId) ON dbo.Posts,
     ADD BLOCK  PREDICATE rls.fn_tenantAccessPredicate(TenantId) ON dbo.Posts;
-GO 
+GO
 ```
 
 > [!TIP]
-> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](https://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
+> In einem komplexen Projekt kann es erforderlich sein, das Prädikat zu Hunderten von Tabellen hinzuzufügen, was mühsam sein kann. Es gibt eine gespeicherte Prozedur als Hilfsprogramm, die automatisch eine Sicherheitsrichtlinie generiert und ein Prädikat zu allen Tabellen in einem Schema hinzufügt. Weitere Informationen finden Sie im Blogbeitrag unter [Apply Row-Level Security to all tables – helper script](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-to-all-tables-helper-script) (Anwenden von zeilenbasierter Sicherheit auf alle Tabellen – Hilfsprogrammskript).
 
 Wenn Sie die Beispielanwendung jetzt erneut ausführen, können Mandanten nur Zeilen anzeigen, die zu ihnen gehören. Darüber hinaus kann die Anwendung keine Zeilen einfügen, die Mandanten gehören, die nicht derzeit mit der Sharddatenbank verbunden sind. Außerdem kann die Anwendung die „TenantId“ nicht in allen Zeilen aktualisieren, die sie sehen kann. Wenn die Anwendung versucht, eine dieser Aktionen auszuführen, wird eine „DbUpdateException“ ausgelöst.
 
 Wenn Sie später eine neue Tabelle hinzufügen, führen Sie einfach einen ALTER-Vorgang für die Sicherheitsrichtlinie aus und fügen der neuen Tabelle FILTER- und BLOCK-Prädikate hinzu.
 
 ```sql
-ALTER SECURITY POLICY rls.tenantAccessPolicy     
+ALTER SECURITY POLICY rls.tenantAccessPolicy
     ADD FILTER PREDICATE rls.fn_tenantAccessPredicate(TenantId) ON dbo.MyNewTable,
     ADD BLOCK  PREDICATE rls.fn_tenantAccessPredicate(TenantId) ON dbo.MyNewTable;
-GO 
+GO
 ```
 
 ### <a name="add-default-constraints-to-automatically-populate-tenantid-for-inserts"></a>Hinzufügen von Standardeinschränkungen zum automatischen Auffüllen der Mandanten-ID für INSERTs.
 
-Sie können eine Standardeinschränkung für jede Tabelle festlegen, um die „TenantId“ beim Einfügen von Zeilen automatisch mit dem derzeit in SESSION\_CONTEXT gespeicherten Wert aufzufüllen. Ein Beispiel folgt. 
+Sie können eine Standardeinschränkung für jede Tabelle festlegen, um die „TenantId“ beim Einfügen von Zeilen automatisch mit dem derzeit in SESSION\_CONTEXT gespeicherten Wert aufzufüllen. Ein Beispiel folgt.
 
 ```sql
 -- Create default constraints to auto-populate TenantId with the
 -- value of SESSION_CONTEXT for inserts.
-ALTER TABLE Blogs     
-    ADD CONSTRAINT df_TenantId_Blogs      
+ALTER TABLE Blogs
+    ADD CONSTRAINT df_TenantId_Blogs
     DEFAULT CAST(SESSION_CONTEXT(N'TenantId') AS int) FOR TenantId;
 GO
 
-ALTER TABLE Posts     
-    ADD CONSTRAINT df_TenantId_Posts      
+ALTER TABLE Posts
+    ADD CONSTRAINT df_TenantId_Posts
     DEFAULT CAST(SESSION_CONTEXT(N'TenantId') AS int) FOR TenantId;
-GO 
+GO
 ```
 
-Jetzt muss die Anwendung beim Einfügen von Zeilen keine Mandanten-ID angeben: 
+Jetzt muss die Anwendung beim Einfügen von Zeilen keine Mandanten-ID angeben:
 
 ```csharp
-SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
-{   
+SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
+{
     using (var db = new ElasticScaleContext<int>(
         sharding.ShardMap, tenantId, connStrBldr.ConnectionString))
     {
         // The default constraint sets TenantId automatically!
         var blog = new Blog { Name = name };
-        db.Blogs.Add(blog);     
-        db.SaveChanges();   
-    } 
-}); 
+        db.Blogs.Add(blog);
+        db.SaveChanges();
+    }
+});
 ```
 
 > [!NOTE]
@@ -317,12 +317,12 @@ CREATE FUNCTION rls.fn_tenantAccessPredicateWithSuperUser(@TenantId int)
     RETURNS TABLE
     WITH SCHEMABINDING
 AS
-    RETURN SELECT 1 AS fn_accessResult 
-        WHERE 
+    RETURN SELECT 1 AS fn_accessResult
+        WHERE
         (
             DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('dbo') -- Replace 'dbo'.
             AND CAST(SESSION_CONTEXT(N'TenantId') AS int) = @TenantId
-        ) 
+        )
         OR
         (
             DATABASE_PRINCIPAL_ID() = DATABASE_PRINCIPAL_ID('superuser')
@@ -342,11 +342,11 @@ GO
 ### <a name="maintenance"></a>Wartung 
 
 - **Hinzufügen neuer Shards**: Führen Sie das T-SQL-Skript zum Aktivieren von RLS auf allen neuen Shards aus. Andernfalls werden Abfragen für diese Shards nicht gefiltert.
-- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
+- **Hinzufügen neuer Tabellen**: Fügen Sie den Sicherheitsrichtlinien aller Shards ein FILTER- und BLOCK-Prädikat hinzu, wenn eine neue Tabelle erstellt wird. Andernfalls werden Abfragen für die neue Tabelle nicht gefiltert. Dies kann mithilfe eines DDL-Triggers automatisiert werden, wie im Blogbeitrag [Apply Row-Level Security automatically to newly created tables](https://blogs.msdn.com/b/sqlsecurity/archive/20../../apply-row-level-security-automatically-to-newly-created-tables.aspx) (Automatisches Anwenden der Sicherheit auf Zeilenebene auf neu erstellte Tabellen) beschrieben.
 
 ## <a name="summary"></a>Zusammenfassung
 
-Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum horizontalen Skalieren der Datenebene einer Anwendung mit Unterstützung für Shards mit sowohl mehreren als einzelnen Mandanten verwendet werden. Mehrinstanzenfähige Shards können genutzt werden, um Daten effizienter zu speichern. Diese Effizienz ist besonders ausgeprägt, wenn eine große Anzahl von Mandanten nur über wenige Datenzeilen verfügt. Shards mit einem einzelnen Mandanten können Premium-Mandanten unterstützen, die strengere Leistungs- und Isolationsanforderungen aufweisen.  Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene][rls].
+Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum horizontalen Skalieren der Datenebene einer Anwendung mit Unterstützung für Shards mit sowohl mehreren als einzelnen Mandanten verwendet werden. Mehrinstanzenfähige Shards können genutzt werden, um Daten effizienter zu speichern. Diese Effizienz ist besonders ausgeprägt, wenn eine große Anzahl von Mandanten nur über wenige Datenzeilen verfügt. Shards mit einem einzelnen Mandanten können Premium-Mandanten unterstützen, die strengere Leistungs- und Isolationsanforderungen aufweisen. Weitere Informationen finden Sie unter [Sicherheit auf Zeilenebene][rls].
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
@@ -360,10 +360,8 @@ Elastische Datenbanktools und zeilenbasierte Sicherheit können zusammen zum hor
 
 Falls Sie Fragen haben, kontaktieren Sie uns im [SQL-Datenbank-Forum](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted). Featureanforderungen können im [SQL-Datenbank-Feedbackforum](https://feedback.azure.com/forums/217321-sql-database/) hinzugefügt werden.
 
-
 <!--Image references-->
 [1]: ./media/saas-tenancy-elastic-tools-multi-tenant-row-level-security/blogging-app.png
 <!--anchors-->
 [rls]: https://docs.microsoft.com/sql/relational-databases/security/row-level-security
 [s-d-elastic-database-client-library]: sql-database-elastic-database-client-library.md
-

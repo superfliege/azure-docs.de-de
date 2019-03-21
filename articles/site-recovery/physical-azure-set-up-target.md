@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: ramamill
-ms.openlocfilehash: 43276aad26bc06400c1bc4b5feaace0d5646c213
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 41220ccdca945610d7d8ca87af0857114e2cef85
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52849231"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57866291"
 ---
 # <a name="prepare-target-vmware-to-azure"></a>Vorbereiten des Ziels (VMware nach Azure)
 
@@ -21,7 +21,7 @@ Dieser Artikel beschreibt, wie Sie Ihre Azure-Umgebung vorbereiten, um mit dem R
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Artikel wird Folgendes vorausgesetzt:
-- Sie haben einen Recovery Services-Tresor zum Schutz Ihrer physischen Server erstellt. Sie können einen Recovery Services-Tresor im [Azure-Portal](http://portal.azure.com "Azure-Portal") erstellen.
+- Sie haben einen Recovery Services-Tresor zum Schutz Ihrer physischen Server erstellt. Sie können einen Recovery Services-Tresor im [Azure-Portal](https://portal.azure.com "Azure-Portal") erstellen.
 - Sie haben [Ihre lokale Umgebung eingerichtet](physical-azure-disaster-recovery.md), um physische Server nach Azure zu replizieren.
 
 ## <a name="prepare-target"></a>Vorbereiten des Ziels

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/03/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: 9d48e3c3fc54e6f019b64ecff727ba92a2f3f0cc
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 98a26d3771ca7bd7bd959a5904c9034ce867399f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38945581"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124744"
 ---
 > [!IMPORTANT]
-Azure Load Balancer unterstützt zwei verschiedene Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](https://aka.ms/AzureLoadBalancerStandard).
+> Azure Load Balancer unterstützt zwei unterschiedliche Typen: Basic und Standard. In diesem Artikel wird der Load Balancer vom Typ „Basic“ beschrieben. Weitere Informationen zum Load Balancer vom Typ „Standard“ finden Sie unter [Übersicht: Azure Load Balancer Standard (Preview)](https://aka.ms/AzureLoadBalancerStandard).

@@ -16,12 +16,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: d9855f107f9888fbfbcb10a3df849e78c87c0605
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55246761"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123401"
 ---
 # <a name="optimize-sql-server-performance"></a>Optimierung der Leistung von SQL Server
 
@@ -104,20 +104,20 @@ Es empfiehlt sich, TempDB auf einem Datenträger für Daten zu speichern, da jed
 
 - **Datenträgerstriping:** Für einen höheren Durchsatz können Sie zusätzliche Datenträger für Daten hinzufügen und Datenträgerstriping verwenden. Um die Anzahl der Datenträger zu ermitteln, müssen Sie die Anzahl der IOPS und die Bandbreite analysieren, die für die Protokolldateien und für Ihre Daten und die TempDB-Dateien erforderlich sind. Beachten Sie, dass IOPS-Limits pro Datenträger basierend auf der Serie der Familie der virtuellen Computer und nicht basierend auf der Größe der virtuellen Computer gelten. Limits für die Netzwerkbandbreite basieren dagegen auf der Größe der virtuellen Computer. Weitere Details finden Sie in den Tabellen unter [In Azure Stack unterstützte VM-Größen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes). Verwenden Sie die folgenden Richtlinien:
 
-    - Verwenden Sie [Speicherplätze](https://technet.microsoft.com/library/hh831739.aspx) für Windows 2012 und höher entsprechend den folgenden Richtlinien:
+  - Verwenden Sie [Speicherplätze](https://technet.microsoft.com/library/hh831739.aspx) für Windows 2012 und höher entsprechend den folgenden Richtlinien:
 
-        1.  Legen Sie die Überlappung (Stripesetgröße) für OLTP-Workloads (Online Transaction Processing) auf 64 KB (65.536 Bytes) und für Data Warehousing-Workloads auf 256 KB (262.144 Bytes) fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Dies muss mit PowerShell festgelegt werden.
+    1. Legen Sie die Überlappung (Stripesetgröße) für OLTP-Workloads (Online Transaction Processing) auf 64 KB (65.536 Bytes) und für Data Warehousing-Workloads auf 256 KB (262.144 Bytes) fest, um Leistungseinbußen durch falsche Partitionsausrichtung zu vermeiden. Dies muss mit PowerShell festgelegt werden.
 
-        2.  Festgelegte Anzahl der Spalten = Anzahl der physischen Datenträger. Verwenden Sie PowerShell, wenn Sie mehr als acht Datenträger (keine Server-Manager-Benutzeroberfläche) konfigurieren.
+    2. Festgelegte Anzahl der Spalten = Anzahl der physischen Datenträger. Verwenden Sie PowerShell, wenn Sie mehr als acht Datenträger (keine Server-Manager-Benutzeroberfläche) konfigurieren.
 
-            PowerShell erstellt z.B. wie folgt einen neuen Speicherpool mit der auf 64 KB festgelegten Überlappungsgröße und der auf 2 festgelegten Anzahl der Spalten:
+       PowerShell erstellt z.B. wie folgt einen neuen Speicherpool mit der auf 64 KB festgelegten Überlappungsgröße und der auf 2 festgelegten Anzahl der Spalten:
 
-          ```PowerShell  
-          $PoolCount = Get-PhysicalDisk -CanPool $True
-          $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
+       ```PowerShell  
+       $PoolCount = Get-PhysicalDisk -CanPool $True
+       $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
-          New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
-          ```
+       New-StoragePool -FriendlyName "DataFiles" -StorageSubsystemFriendlyName "Storage Spaces*" -PhysicalDisks $PhysicalDisks | New-VirtualDisk -FriendlyName "DataFiles" -Interleave 65536 -NumberOfColumns 2 -ResiliencySettingName simple –UseMaximumSize |Initialize-Disk -PartitionStyle GPT -PassThru |New-Partition -AssignDriveLetter -UseMaximumSize |Format-Volume -FileSystem NTFS -NewFileSystemLabel "DataDisks" -AllocationUnitSize 65536 -Confirm:$false
+       ```
 
 - Bestimmen Sie auf Basis der erwarteten Auslastung die Anzahl der jedem Speicherpool zugeordneten Datenträger. Bedenken Sie, dass verschiedene VM-Größen unterschiedlich viele angefügte Datenträger für Daten unterstützen. Weitere Informationen finden Sie unter [In Azure Stack unterstützte VM-Größen](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes).
 - Um die maximal möglichen IOPS für Datenträger zu erzielen, wird empfohlen, die maximale Anzahl von Datenträgern hinzuzufügen, die durch die [VM-Größe](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-vm-sizes) unterstützt werden, und Datenträgerstriping zu verwenden.

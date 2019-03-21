@@ -6,15 +6,15 @@ keywords: ''
 author: dkkapur
 ms.author: dekapur
 ms.date: 11/28/2018
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: 675848f26b991978dce2e8686a71d86756180586
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 7b817eefc7a17966060eb7ca05e21f70f04d0878
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56806730"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57885452"
 ---
 # <a name="set-up-service-fabric-mesh-cli"></a>Einrichten der Service Fabric Mesh-CLI
 Die Service Fabric Mesh-Befehlszeilenschnittstelle (Command Line Interface, CLI) ist zum Bereitstellen und Verwalten von Ressourcen lokal und in Azure Service Fabric Mesh erforderlich. 
@@ -55,7 +55,7 @@ Befolgen Sie die Anleitung unter [Azure Service Fabric CLI](https://docs.microso
 Auf Ihrem Computer muss Folgendes installiert sein, damit Sie die Maven-CLI verwenden können: 
 
 * [Java](https://www.azul.com/downloads/zulu/)
-* [Maven](http://maven.apache.org/download.cgi)
+* [Maven](https://maven.apache.org/download.cgi)
 * [Git-Client](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 * Azure Mesh-CLI (az mesh): Für Azure Service Fabric Mesh 
 * SFCTL (sfctl): Für lokale Cluster 

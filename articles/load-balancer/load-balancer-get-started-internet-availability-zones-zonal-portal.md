@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 0a746ace4806495b17462b506f030811247240e2
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: c81ff5ea330c4c0ba26a92a3b5399cfa961e4b2b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54247190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856857"
 ---
 #  <a name="create-a-standard-load-balancer-with-zonal-frontend-using-azure-portal"></a>Erstellen eines Load Balancer Standard mit einem Zonen-Front-End mithilfe des Azure-Portals
 
@@ -36,7 +36,7 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-a-load-balancer-with-zonal-frontend-ip-address"></a>Erstellen eines Lastenausgleichs mit Front-End-IP-Adresse in einer Zone
 
-1. Navigieren Sie in einem Browser zum Azure-Portal [http://portal.azure.com](http://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
+1. Navigieren Sie in einem Browser zum Azure-Portal [https://portal.azure.com](https://portal.azure.com), und melden Sie sich mit Ihrem Azure-Konto an.
 2. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Lastenausgleich**.
 3. Geben Sie auf der Seite **Lastenausgleich erstellen** unter **Name** **myLoadBalancer** ein.
 4. Wählen Sie unter **Typ** die Option **Öffentlich** aus.
@@ -46,8 +46,8 @@ Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 >[!NOTE] 
 > Die in diesem Schritt erstellte öffentliche IP-Adresse weist standardmäßig die SKU „Standard“ auf.
 
-7. Klicken Sie unter **Ressourcengruppe** auf **Neue erstellen**, und geben Sie als Namen der Ressourcengruppe **myResourceGroupZLB** ein.
-8. Wählen Sie für **Standort** die Option **Europa, Westen** aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und dauert einige Minuten.
+1. Klicken Sie unter **Ressourcengruppe** auf **Neue erstellen**, und geben Sie als Namen der Ressourcengruppe **myResourceGroupZLB** ein.
+1. Wählen Sie für **Standort** die Option **Europa, Westen** aus, und klicken Sie dann auf **OK**. Die Bereitstellung des Load Balancers wird dann gestartet und dauert einige Minuten.
 
     ![Erstellen eines zonenredundanten Load Balancer Standard mit dem Azure-Portal](./media/load-balancer-get-started-internet-availability-zones-zonal-portal/load-balancer-zonal-frontend.png)
 

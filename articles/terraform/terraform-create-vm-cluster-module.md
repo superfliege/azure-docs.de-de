@@ -2,19 +2,19 @@
 title: Erstellen eines VM-Clusters in Azure mit Terraform-Modulen
 description: Erfahren Sie, wie Sie mit Terraform Modulen einen Cluster mit virtuellen Windows-Computern in Azure erstellen
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, Devops, virtueller Computer, Netzwerk, Module
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 10/19/2017
-ms.openlocfilehash: d5a820da94254fe0da416d9219f7582d3a4241cb
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: c6aa780b04c85b8156463011c2b90da2da4541f6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696165"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57776273"
 ---
 # <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Erstellen eines VM-Clusters mit Terraform mithilfe der Modulregistrierung
 

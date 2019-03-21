@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e947b71fe6bb9e6bd884b8b2dd0397a63bea2a95
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8b5ec711f0e43d9d29d962d43ed8b1d86338db87
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203640"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57881213"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>Tutorial: Azure Active Directory-Integration mit xMatters OnDemand
 
@@ -114,6 +114,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     ![Configure single sign-on](./media/xmatters-ondemand-tutorial/tutorial_xmattersondemand_url.png)
     
     a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein:
+
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au/`|
@@ -123,6 +124,7 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | `https://<companyname>.xmatters.com.au/`|
 
     b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein:
+    
     | |
     |--|
     | `https://<companyname>.au1.xmatters.com.au`|
@@ -209,9 +211,9 @@ In diesem Abschnitt wird in xMatters OnDemand eine Benutzerin namens Britta Simo
 
 1. Melden Sie sich bei Ihrem **XMatters OnDemand** -Mandanten an.
 
-1.  Klicken Sie auf die Registerkarte **Benutzer** und dann auf **Benutzer hinzufügen**.
+1. Klicken Sie auf die Registerkarte **Benutzer** und dann auf **Benutzer hinzufügen**.
 
-    ![Benutzer](./media/xmatters-ondemand-tutorial/IC781048.png "Benutzer")
+   ![Benutzer](./media/xmatters-ondemand-tutorial/IC781048.png "Benutzer")
 
 1. Führen Sie im Abschnitt **Benutzer hinzufügen** die folgenden Schritte aus:
 

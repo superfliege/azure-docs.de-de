@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6bd8d0cee01853547efd028feef0a97f9398024e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 692113257e483f67eaaee038c07d8702d95a7b31
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116808"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Filtern von Telemetriedaten in einer Java-Web-App
 
@@ -186,12 +186,12 @@ Filtert (mit [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md
 ```
 
 * Für `FromSeverityLevel` gültige Werte sind:
- *  OFF: Filtert ALLE Ablaufverfolgungen heraus.
- *  TRACE: Keine Filterung. Entspricht der Ebene TRACE.
- *  INFO: Filter die Ebene TRACE heraus.
- *  WARN: Filtert TRACE und INFO heraus.
- *  FEHLER: Filtert WARN, INFO und TRACE heraus.
- *  CRITICAL: Filtert alles außer CRITICAL heraus.
+  *  OFF: Filtert ALLE Ablaufverfolgungen heraus.
+  *  TRACE: Keine Filterung. Entspricht der Ebene TRACE.
+  *  INFO: Filter die Ebene TRACE heraus.
+  *  WARN: Filtert TRACE und INFO heraus.
+  *  FEHLER: Filtert WARN, INFO und TRACE heraus.
+  *  CRITICAL: Filtert alles außer CRITICAL heraus.
 
 
 ## <a name="custom-filters"></a>Benutzerdefinierte Filter

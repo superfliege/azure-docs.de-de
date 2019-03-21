@@ -10,18 +10,18 @@ ms.subservice: anomaly-detection
 ms.topic: tutorial
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 2df1e2c261069473a02b40e4a7e45895eadea42d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 5a2fb54658599e0500944aaae9225f314277f9da
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55219395"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57539087"
 ---
 # <a name="tutorial-anomaly-detection-with-python-application"></a>Tutorial: Anomalieerkennung mit einer Python-Anwendung
 
 [!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Das Tutorial veranschaulicht die Verwendung der API zur Anomalieerkennung in Python und die Visualisierung Ihrer Ergebnisse mithilfe beliebter Bibliotheken. Verwenden Sie Jupyter zur Ausführung des Tutorials, und probieren Sie eigene Daten mit Ihrem Abonnementschlüssel aus. Informationen zum Einstieg in interaktive Jupyter-Notebooks finden Sie in der [Jupyter-Dokumentation](http://jupyter.readthedocs.io/en/latest/index.html). 
+Das Tutorial veranschaulicht die Verwendung der API zur Anomalieerkennung in Python und die Visualisierung Ihrer Ergebnisse mithilfe beliebter Bibliotheken. Verwenden Sie Jupyter zur Ausführung des Tutorials, und probieren Sie eigene Daten mit Ihrem Abonnementschlüssel aus. Informationen zum Einstieg in interaktive Jupyter-Notebooks finden Sie in der [Jupyter-Dokumentation](https://jupyter.readthedocs.io/en/latest/index.html). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

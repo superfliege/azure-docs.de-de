@@ -13,12 +13,12 @@ ms.date: 04/10/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: 810ccae08b540c417a0e7dfecb6ad5a8b110cd7b
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: a575161be0a339973f9c59cc13c2320b38939d04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54045282"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108524"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights-Kohorten
 
@@ -105,16 +105,16 @@ Die beiden vorherigen Kohorten wurden durch Verwenden von Dropdownlisten definie
     ![Blank users cohort (Leere Kohorte für Benutzer)](./media/usage-cohorts/001.png)
 
     Drei Abschnitte stehen zur Verfügung:
-    * Ein Abschnitt für Markdown-Text, in dem Sie die Kohorte ausführlicher für andere Teammitglieder beschreiben.
+   * Ein Abschnitt für Markdown-Text, in dem Sie die Kohorte ausführlicher für andere Teammitglieder beschreiben.
 
-    * Ein Abschnitt für Parameter, in dem Sie eigene Parameter festlegen können, z. B. **Activities** und andere Dropdownlisten aus den beiden vorherigen Beispielen.
+   * Ein Abschnitt für Parameter, in dem Sie eigene Parameter festlegen können, z. B. **Activities** und andere Dropdownlisten aus den beiden vorherigen Beispielen.
 
-    * Ein Abschnitt für Abfragen, in dem Sie die Kohorte definieren, indem Sie eine Analyseabfrage verwenden.
+   * Ein Abschnitt für Abfragen, in dem Sie die Kohorte definieren, indem Sie eine Analyseabfrage verwenden.
 
-    Im Abschnitt für Abfragen [schreiben Sie eine Analyseabfrage](/azure/kusto/query). In der Abfrage wird genau die Gruppe von Zeilen ausgewählt, die die Kohorte beschreiben, die Sie definieren möchten. Im Tool „Kohorten“ wird dann der Abfrage implizit die Klausel „| summarize by user_Id“ hinzugefügt. Diese Daten werden als Vorschau in einer Tabelle unterhalb der Abfrage angezeigt, sodass Sie überprüfen können, ob die Abfrage Ergebnisse zurückgibt.
+     Im Abschnitt für Abfragen [schreiben Sie eine Analyseabfrage](/azure/kusto/query). In der Abfrage wird genau die Gruppe von Zeilen ausgewählt, die die Kohorte beschreiben, die Sie definieren möchten. Im Tool „Kohorten“ wird dann der Abfrage implizit die Klausel „| summarize by user_Id“ hinzugefügt. Diese Daten werden als Vorschau in einer Tabelle unterhalb der Abfrage angezeigt, sodass Sie überprüfen können, ob die Abfrage Ergebnisse zurückgibt.
 
-    > [!NOTE]
-    > Wenn die Abfrage nicht zu sehen ist, vergrößern Sie den Abschnitt, sodass die Abfrage angezeigt wird. In der animierten GIF-Datei am Anfang dieses Abschnitts wird das Verhalten bei der Größenanpassung veranschaulicht.
+     > [!NOTE]
+     > Wenn die Abfrage nicht zu sehen ist, vergrößern Sie den Abschnitt, sodass die Abfrage angezeigt wird. In der animierten GIF-Datei am Anfang dieses Abschnitts wird das Verhalten bei der Größenanpassung veranschaulicht.
 
 2. Kopieren Sie den folgenden Text, und fügen Sie ihn im Abfrage-Editor ein:
 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 11/26/2018
+ms.date: 03/04/2019
 ms.author: diberry
-ms.openlocfilehash: 8927213dc4f1cf01eccdd8f54a946f9dbbaaa04d
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
+ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869958"
+ms.lasthandoff: 03/05/2019
+ms.locfileid: "57338432"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>Modell- und Verbrauchsstatistiken im Dashboard
 Das App-Dashboard ermöglicht Ihnen, Ihre App auf einen Blick zu überwachen. Das **Dashboard** wird angezeigt, wenn Sie eine App öffnen, indem Sie auf der Seite **Meine Apps** auf den Namen der Anwendung klicken, und dann im oberen Bereich **Dashboard** auswählen. 
@@ -69,21 +69,8 @@ Unter **Intent Breakdown** (Absichtsaufschlüsselung) wird eine Aufschlüsselung
 
 ![Absichtsaufschlüsselung](./media/luis-how-to-use-dashboard/intent-breakdown.png)
 
-So steuern Sie, ob die Aufschlüsselung auf bezeichneten Äußerungen oder Endpunkttreffern basiert
-
-1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“ für den Listenzugriff](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
-
-    ![Liste mit Absichtsaufschlüsselung](./media/luis-how-to-use-dashboard/intent-breakdown-based-on.png)
-2. Wählen Sie einen Wert in der Liste aus, und klicken Sie dann auf den Pfeil „Zurück“, ![Pfeil „Zurück“](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) um das Diagramm anzuzeigen.
-
 ## <a name="entity-breakdown"></a>Entitätsaufschlüsselung
 Im Dashboard wird eine Aufschlüsselung der Entitäten anhand der bezeichneten Äußerungen oder der Endpunkttreffer angezeigt. Dieses zusammenfassende Diagramm zeigt die relative Bedeutung der einzelnen Entitäten in der App. Wenn Sie auf ein Segment zeigen, werden der Name der Entität und der prozentuale Anteil an den bezeichneten Äußerungen oder Endpunkttreffern angezeigt. 
 
 ![Entitätsaufschlüsselung](./media/luis-how-to-use-dashboard/entity-breakdown.png)
 
-So steuern Sie, ob die Aufschlüsselung auf bezeichneten Äußerungen oder Endpunkttreffern basiert
-
-1. Klicken Sie auf **Zusätzliche Einstellungen** ![Schaltfläche „Zusätzliche Einstellungen“ für den Listenabruf](./media/luis-how-to-use-dashboard/Dashboard-Settings-btn.png), um auf die Liste zuzugreifen, wie in der folgenden Abbildung gezeigt:
-
-    ![Liste der Entitätsaufschlüsselung](./media/luis-how-to-use-dashboard/entity-breakdown-based-on.png)
-2. Wählen Sie einen Wert in der Liste aus, und klicken Sie dann auf den Pfeil „Zurück“, ![Pfeil „Zurück“](./media/luis-how-to-use-dashboard/Dashboard-backArrow.png) um das Diagramm entsprechend anzuzeigen.

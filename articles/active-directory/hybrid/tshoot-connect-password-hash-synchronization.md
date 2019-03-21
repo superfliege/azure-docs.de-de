@@ -16,12 +16,12 @@ ms.date: 03/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 29cb7f6799556406c4c5def12b1367bfd581d06b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 56fda1110218910f8fbd8aa9597195f37444e01c
+ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56198659"
+ms.lasthandoff: 03/01/2019
+ms.locfileid: "57193320"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>Problembehandlung für die Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung
 Dieses Thema enthält Schritte zum Behandeln von Problemen mit der Kennworthashsynchronisierung. Wenn Kennwörter nicht wie erwartet synchronisiert werden, kann dies für eine Teilmenge von Benutzern oder für alle Benutzer der Fall sein.
@@ -225,7 +225,7 @@ So behandeln Sie Probleme für den Fall, dass keine Kennwörter für einen Benut
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>Kennwörter werden nicht synchronisiert: Schritte zur manuellen Problembehandlung
 Führen Sie folgende Schritte durch, um festzustellen, warum keine Kennwörter synchronisiert werden:
 
-1. Ist der Connect-Server im [Stagingmodus](how-to-connect-sync-operations.md#staging-mode)? Ein Server im Stagingmodus synchronisiert keine Kennwörter.
+1. Ist der Connect-Server im [Stagingmodus](how-to-connect-sync-staging-server.md)? Ein Server im Stagingmodus synchronisiert keine Kennwörter.
 
 2. Führen Sie das Skript im Abschnitt [Abrufen des Status der Kennwortsynchronisierungseinstellungen](#get-the-status-of-password-sync-settings) aus. Dadurch erhalten Sie eine Übersicht über die Konfiguration der Kennwortsynchronisierung.  
 

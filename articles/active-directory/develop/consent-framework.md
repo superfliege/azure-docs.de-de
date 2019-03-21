@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: dbac6fe421864f9479c9a4ee7eecde97c13f6052
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200529"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124176"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory-Zustimmungsframework
 
@@ -58,14 +58,14 @@ Die folgenden Schritte zeigen, wie das Zustimmungsframework auf der Benutzerober
 
     **So gewähren Sie delegierte App-Berechtigungen**
 
-    1. Rufen Sie für Ihre Anwendung die Seite **Einstellungen** auf.
-    1. Wählen Sie **Erforderliche Berechtigungen** aus.
-    1. Klicken Sie auf Schaltfläche **Berechtigungen erteilen**.
+   1. Rufen Sie für Ihre Anwendung die Seite **Einstellungen** auf.
+   1. Wählen Sie **Erforderliche Berechtigungen** aus.
+   1. Klicken Sie auf Schaltfläche **Berechtigungen erteilen**.
 
-    ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
+      ![Erteilen von Berechtigungen für explizite Administratorzustimmung](./media/quickstart-v1-integrate-apps-with-azure-ad/grantpermissions.png)
 
-  > [!IMPORTANT]
-  > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Webanwendungen (Single-Page Applications, SPAs) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird.
+   > [!IMPORTANT]
+   > Das explizite Gewähren der Zustimmung über die Schaltfläche **Berechtigungen erteilen** ist derzeit für Single-Page-Webanwendungen (Single-Page Applications, SPAs) erforderlich, die „ADAL.js“ nutzen. Andernfalls tritt für die Anwendung ein Fehler auf, wenn das Zugriffstoken angefordert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

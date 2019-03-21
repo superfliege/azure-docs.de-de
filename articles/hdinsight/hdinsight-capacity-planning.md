@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7eb18b5560e849796770ce9d24574d7a3d0db262
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: b35c5073f2b19523010528800c2a989d5de5b448
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53716139"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57848012"
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>Kapazitätsplanung für HDInsight-Cluster
 
@@ -109,11 +109,11 @@ Um das Problem auf einem lokalen Cluster mit einzelnem Knoten zu identifizieren,
 1. Klicken Sie unten links auf der Seite auf **Hilfe und Support**.
 1. Klicken Sie auf **Neue Supportanfrage**.
 1. Wählen Sie auf der Seite **Neue Supportanfrage** unter der Registerkarte **Grundlagen** die folgenden Optionen aus:
-    - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
-    - **Abonnement**: Das zu ändernde Abonnement.
-    - **Kontingenttyp**: **HDInsight**
+   - **Problemtyp**: **Grenzwerte für Dienste und Abonnements (Kontingente)**
+   - **Abonnement**: Das zu ändernde Abonnement.
+   - **Kontingenttyp**: **HDInsight**
     
-    ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
+     ![Erstellen einer Supportanfrage zur Erhöhung des HDInsight-Kernkontingents](./media/hdinsight-capacity-planning/hdinsight-quota-support-request.png)
 
 1. Klicken Sie auf **Weiter**.
 1. Geben Sie auf der Seite **Details** eine Beschreibung des Problems ein, wählen Sie den Schweregrad des Problems und dann Ihre bevorzugte Kontaktmethode aus.
@@ -125,7 +125,7 @@ Um das Problem auf einem lokalen Cluster mit einzelnem Knoten zu identifizieren,
 
 Sie können [sich an den Support wenden, um eine Erhöhung von Kernkontingenten anzufordern](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
-Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager).
+Es gibt jedoch einige feste Kontingentbeschränkungen, z.B. kann ein einzelnes Azure-Abonnement höchstens 10.000 Kerne haben. Informationen über diese Einschränkungen finden Sie unter [Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen](https://docs.microsoft.com/azure/azure-subscription-service-limits).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
