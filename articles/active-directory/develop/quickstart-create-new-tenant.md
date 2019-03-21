@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7db08cde0df1ba3d9bc227758ab3ad00c1fc422
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 2f569b497afe01db0fc4c3aa29589e6f2c538faf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56207369"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108660"
 ---
 # <a name="quickstart-set-up-a-dev-environment"></a>Schnellstart: Einrichten einer Entwicklungsumgebung
 
@@ -55,8 +55,8 @@ Viele Entwickler verfügen bereits aufgrund von Diensten oder Abonnements, die m
 
 > [!TIP]
 > Wenn Sie die Mandanten-ID ermitteln müssen, gehen Sie folgendermaßen vor:
-* Zeigen Sie mit der Maus auf den Namen Ihres Kontos, um das Verzeichnis bzw. die Mandanten-ID abzurufen, oder
-* Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus.
+> * Zeigen Sie mit der Maus auf den Namen Ihres Kontos, um das Verzeichnis bzw. die Mandanten-ID abzurufen, oder
+> * Wählen Sie **Azure Active Directory > Eigenschaften > Verzeichnis-ID** im Azure-Portal aus.
 
 Sollte Ihrem Konto kein vorhandener Mandant zugeordnet sein, wird unter Ihrem Kontonamen eine GUID angezeigt. In diesem Fall sind Aktionen wie das Registrieren von Apps erst möglich, nachdem Sie die im nächsten Abschnitt beschriebenen Schritte ausgeführt haben.
 

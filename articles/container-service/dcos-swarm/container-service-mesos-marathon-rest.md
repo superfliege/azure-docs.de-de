@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 157d70b628ca3583cb8134ec1cccc185c6ff4c8d
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 567890f3beec1eff30effeec0ce23284c5fee141
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52991717"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58109289"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>(VERALTET) DC/OS-Containerverwaltung über die Marathon-REST-API
 
@@ -124,8 +124,6 @@ Führen Sie über die getunnelte Verbindung folgenden Befehl aus, um die Anwendu
 
 > [!NOTE]
 > Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
-> 
-> 
 
 ```bash
 curl http://localhost/marathon/v2/apps/nginx -H "Content-type: application/json" -X PUT -d @scale.json
@@ -183,14 +181,12 @@ Führen Sie den folgenden Befehl aus, um die Anwendung horizontal hochzuskaliere
 
 > [!NOTE]
 > Der URI lautet „http://localhost/marathon/v2/apps/“, gefolgt von der ID der zu skalierenden Anwendung. Wenn Sie das hier bereitgestellte Nginx-Beispiel verwenden, lautet der URI „http://localhost/marathon/v2/apps/nginx“.
-> 
-> 
 
 ```powershell
 Invoke-WebRequest -Method Put -Uri http://localhost/marathon/v2/apps/nginx -ContentType application/json -InFile 'c:\scale.json'
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Informieren Sie sich auf der Apache Mesos-Website ausführlicher über [HTTP-Endpunkte](http://mesos.apache.org/documentation/latest/endpoints/).
+* Informieren Sie sich auf der Apache Mesos-Website ausführlicher über [HTTP-Endpunkte](https://mesos.apache.org/documentation/latest/endpoints/).
 * Weitere Informationen zur [Marathon-REST-API](https://mesosphere.github.io/marathon/docs/rest-api.html)
 

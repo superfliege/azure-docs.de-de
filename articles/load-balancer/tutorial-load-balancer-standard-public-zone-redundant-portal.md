@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 2b37d77e00595be125490431694f4549f61fced6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 912307e6509ea66be887838e875076b7a895ca94
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982792"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888150"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Tutorial: Verfügbarkeitszonenübergreifender Lastenausgleich für VMs mit einer Load Balancer Standard-Instanz im Azure-Portal
 
@@ -43,7 +43,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
-Melden Sie sich unter [http://portal.azure.com](http://portal.azure.com) beim Azure-Portal an.
+Melden Sie sich unter [https://portal.azure.com](https://portal.azure.com) beim Azure-Portal an.
 
 ## <a name="create-a-standard-load-balancer"></a>Einrichten eines Load Balancers im Tarif „Standard“
 
@@ -108,7 +108,7 @@ In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln, um eingehen
     - *Allow HTTP* als Beschreibung der Lastenausgleichsregel
 4. Klicken Sie auf **OK**.
  
- ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
+   ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-standard-public-availability-zones-portal/8-load-balancer-nsg-rules.png)
 5. Wiederholen Sie die Schritte 2 bis 4, um eine weitere Regel namens *myRDPRule* zu erstellen und eine eingehende RDP-Verbindung über den Port 3389 zu ermöglichen. Verwenden Sie dabei die folgenden Werte:
     - *Service Tag* für **Quelle**
     - *Internet* für **Quelldiensttag**
@@ -137,7 +137,7 @@ Erstellen Sie virtuelle Computer in unterschiedlichen Zonen (Zone 1, Zone 2 und 
 5. Klicken Sie auf **Deaktiviert**, um die Startdiagnose zu deaktivieren.
 6. Klicken Sie auf **OK**, überprüfen Sie die Einstellungen auf der Seite „Zusammenfassung“, und klicken Sie dann auf **Erstellen**.
   
- ![Erstellen eines virtuellen Computers](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
+   ![Erstellen eines virtuellen Computers](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
 
 7. Erstellen Sie anhand der Schritte 1–6 in Zone 2 eine zweite VM namens *VM2* und in Zone 3 eine dritte VM mit *myVnet* als virtuelles Netzwerk, *myBackendSubnet* als Subnetz und **myNetworkSecurityGroup* als Netzwerksicherheitsgruppe.
 

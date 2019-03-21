@@ -3,7 +3,7 @@ title: Problembehandlung für BitLocker-Startfehler auf einer Azure-VM | Microso
 description: Erfahren Sie, wie Sie BitLocker-Startfehler auf einer Azure-VM beheben.
 services: virtual-machines-windows
 documentationCenter: ''
-authors: genli
+author: genlin
 manager: cshepard
 editor: v-jesits
 ms.service: virtual-machines-windows
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/31/2018
 ms.author: genli
-ms.openlocfilehash: 3a615beeec45871aab1e98ad338ffa053ddbec92
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: a7bd812d3aadfd3c358c8d0aeccf0e92ed474a05
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984765"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993208"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
@@ -26,13 +26,13 @@ ms.locfileid: "55984765"
 
 [!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
 
- ## <a name="symptom"></a>Symptom
+## <a name="symptom"></a>Symptom
 
  Eine Windows-VM wird nicht gestartet. Beim Überprüfen der Screenshots im Fenster [Startdiagnose](../windows/boot-diagnostics.md) wird eine der folgenden Fehlermeldungen angezeigt:
 
 - Stecken Sie das USB-Laufwerk mit dem BitLocker-Schlüssel ein.
 
-- Sie sind ausgesperrt! Geben Sie den Wiederherstellungsschlüssel ein, um den Computer wieder verwenden zu können (Tastaturlayout: USA). Es wurden zu häufig die falschen Anmeldeinformationen eingegeben, daher wurde Ihr PC zum Schutz Ihrer Privatsphäre gesperrt. Um den Wiederherstellungsschlüssel abzurufen, wechseln Sie von einem anderen PC oder mobilen Gerät aus zu http://windows.microsoft.com/recoverykeyfaq. Die Schlüssel-ID lautet XXXXXXX, falls Sie sie benötigen. Sie können Ihren PC auch zurücksetzen.
+- Sie sind ausgesperrt! Geben Sie den Wiederherstellungsschlüssel ein, um den Computer wieder verwenden zu können (Tastaturlayout: USA). Es wurden zu häufig die falschen Anmeldeinformationen eingegeben, daher wurde Ihr PC zum Schutz Ihrer Privatsphäre gesperrt. Um den Wiederherstellungsschlüssel abzurufen, wechseln Sie von einem anderen PC oder mobilen Gerät aus zu https://windows.microsoft.com/recoverykeyfaq. Die Schlüssel-ID lautet XXXXXXX, falls Sie sie benötigen. Sie können Ihren PC auch zurücksetzen.
 
 - Geben Sie das Kennwort ein, um dieses Laufwerk zu entsperren: [ ]. Drücken Sie die EINFG-TASTE, um das Kennwort während der Eingabe anzuzeigen.
 - Geben Sie den Wiederherstellungsschlüssel ein. Laden Sie den Wiederherstellungsschlüssel von einem USB-Gerät.

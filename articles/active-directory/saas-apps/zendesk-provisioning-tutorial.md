@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: v-ant
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fb6108855cf3237af230f3356f0afb68e2b1ec4
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: f2e05e5e430760d16d5d494a6f27ef985aafc487
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56445541"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097990"
 ---
 # <a name="tutorial-configure-zendesk-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zendesk für die automatische Benutzerbereitstellung
 
@@ -111,12 +111,12 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Werte für **Administratorbenutzername**, **Geheimes Token** und **Domäne** Ihres Zendesk-Kontos ein. Beispiele für diese Werte:
 
-    *   Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos in Ihrem Zendesk-Mandanten ein. Beispiel: admin@contoso.com.
+   * Geben Sie im Feld **Administratorbenutzername** den Benutzernamen des Administratorkontos in Ihrem Zendesk-Mandanten ein. Beispiel: admin@contoso.com.
 
-    *   Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
+   * Geben Sie im Feld **Geheimes Token** das geheime Token wie in Schritt 6 beschrieben ein.
 
-    *   Geben Sie im Feld **Domäne** die Unterdomäne Ihres Zendesk-Mandanten ein.
-    Beispiel: Für ein Konto mit der Mandanten-URL https://my-tenant.zendesk.com lautet Ihre Unterdomäne **my-tenant**.
+   * Geben Sie im Feld **Domäne** die Unterdomäne Ihres Zendesk-Mandanten ein.
+     Beispiel: Für ein Konto mit der Mandanten-URL https://my-tenant.zendesk.com lautet Ihre Unterdomäne **my-tenant**.
 
 6. Das **Geheime Token** für Ihr Zendesk-Konto finden Sie unter **Administrator > API > Einstellungen**.
    Vergewissern Sie sich, dass **Tokenzugriff** auf **Aktiviert** festgelegt ist.

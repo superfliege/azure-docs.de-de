@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e86180a643b27056edc9901d590760cedcbf259
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: bd39b0aae5b76f37e2153f8e4c4502be994fa5b5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54331876"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081830"
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Verschieben von Daten aus PostgreSQL mithilfe von Azure Data Factory 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,12 +50,12 @@ Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithil
 
 - Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
 - Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden:
-    - Azure-Portal
-    - Visual Studio
-    - Azure PowerShell
-    - Azure Resource Manager-Vorlage
-    - .NET API
-    - REST-API
+  - Azure-Portal
+  - Visual Studio
+  - Azure PowerShell
+  - Azure Resource Manager-Vorlage
+  - .NET API
+  - REST-API
 
     Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
 
@@ -74,14 +74,14 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesPostgreSql**. |JA |
-| server |Name des PostgreSQL-Servers. |JA |
-| database |Name der PostgreSQL-Datenbank. |JA |
+| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OnPremisesPostgreSql**. |Ja |
+| server |Name des PostgreSQL-Servers. |Ja |
+| database |Name der PostgreSQL-Datenbank. |Ja |
 | schema |Name des Schemas in der Datenbank. Beim Schemanamen wird die Groß- und Kleinschreibung beachtet. |Nein  |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der PostgreSQL-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |JA |
+| authenticationType |Typ der Authentifizierung für die Verbindung mit der PostgreSQL-Datenbank. Mögliche Werte: „Anonymous“, „Basic“ und „Windows“. |Ja |
 | username |Geben Sie den Benutzernamen an, wenn Sie die Standard- oder Windows-Authentifizierung verwenden. |Nein  |
 | password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Nein  |
-| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen PostgreSQL-Datenbank verwenden soll. |JA |
+| gatewayName |Name des Gateways, das der Data Factory-Dienst zum Herstellen einer Verbindung mit der lokalen PostgreSQL-Datenbank verwenden soll. |Ja |
 
 ## <a name="dataset-properties"></a>Dataset-Eigenschaften
 Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen ähnlich.
@@ -306,46 +306,46 @@ Beim Verschieben von Daten in PostgreSQL werden die folgenden Zuordnungen zwisch
 
 | Typ "PostgreSQL-Datenbank" | PostgreSQL-Aliase | Typ ".NET Framework" |
 | --- | --- | --- |
-| abstime | |DateTime | &nbsp;
+| abstime | |DateTime |
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [(n)] | |Byte[], String | &nbsp;
+| bit [(n)] | |Byte[], String |
 | bit varying [ (n) ] |varbit |Byte[], String |
 | boolean |bool |Boolescher Wert |
-| box | |Byte[], String |&nbsp;
-| bytea | |Byte[], String |&nbsp;
+| box | |Byte[], String |
+| bytea | |Byte[], String |
 | character [(n)] |char [(n)] |Zeichenfolge |
 | character varying [(n)] |varchar [(n)] |Zeichenfolge |
-| cid | |Zeichenfolge |&nbsp;
-| cidr | |Zeichenfolge |&nbsp;
-| circle | |Byte[], String |&nbsp;
-| date | |DateTime |&nbsp;
-| daterange | |Zeichenfolge |&nbsp;
+| cid | |Zeichenfolge |
+| cidr | |Zeichenfolge |
+| circle | |Byte[], String |
+| date | |DateTime |
+| daterange | |Zeichenfolge |
 | double precision |float8 |Double |
-| inet | |Byte[], String |&nbsp;
-| intarry | |Zeichenfolge |&nbsp;
-| int4range | |Zeichenfolge |&nbsp;
-| int8range | |Zeichenfolge |&nbsp;
+| inet | |Byte[], String |
+| intarry | |Zeichenfolge |
+| int4range | |Zeichenfolge |
+| int8range | |Zeichenfolge |
 | integer |int, int4 |Int32 |
-| interval [fields] [(p)] | |Timespan |&nbsp;
-| json | |Zeichenfolge |&nbsp;
-| jsonb | |Byte[] |&nbsp;
-| line | |Byte[], String |&nbsp;
-| lseg | |Byte[], String |&nbsp;
-| macaddr | |Byte[], String |&nbsp;
-| money | |DECIMAL |&nbsp;
-| numeric [(p, s)] |decimal [(p, s)] |DECIMAL |
-| numrange | |Zeichenfolge |&nbsp;
-| oid | |Int32 |&nbsp;
-| path | |Byte[], String |&nbsp;
-| pg_lsn | |Int64 |&nbsp;
-| point | |Byte[], String |&nbsp;
-| polygon | |Byte[], String |&nbsp;
+| interval [fields] [(p)] | |Timespan |
+| json | |Zeichenfolge |
+| jsonb | |Byte[] |
+| line | |Byte[], String |
+| lseg | |Byte[], String |
+| macaddr | |Byte[], String |
+| money | |Decimal |
+| numeric [(p, s)] |decimal [(p, s)] |Decimal |
+| numrange | |Zeichenfolge |
+| oid | |Int32 |
+| path | |Byte[], String |
+| pg_lsn | |Int64 |
+| point | |Byte[], String |
+| polygon | |Byte[], String |
 | real |float4 |Single |
 | smallint |int2 |Int16 |
 | smallserial |serial2 |Int16 |
 | serial |serial4 |Int32 |
-| text | |Zeichenfolge |&nbsp;
+| text | |Zeichenfolge |
 
 ## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
 Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).

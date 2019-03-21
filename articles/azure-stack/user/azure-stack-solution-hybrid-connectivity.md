@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 2530f6f59ef458d5a7c2de5850d8fab322798ba3
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: c9be377dc74ac936aa3139d395b6a02f3b3192eb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752658"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084360"
 ---
 # <a name="tutorial-configure-hybrid-cloud-connectivity-with-azure-and-azure-stack"></a>Tutorial: Konfigurieren der Hybrid Cloud-Konnektivität mit Azure und Azure Stack
 
@@ -119,7 +119,7 @@ Führen Sie die folgenden Schritte aus, um mit dem Portal ein virtuelles Netzwer
 
 Erstellen Sie in Azure wie folgt ein VNet:
 
-1. Stellen Sie in Ihrem Browser eine Verbindung mit dem [Azure-Portal](http://portal.azure.com/)  her, und melden Sie sich mit Ihrem Azure-Konto an.
+1. Stellen Sie in Ihrem Browser eine Verbindung mit dem [Azure-Portal](https://portal.azure.com/)  her, und melden Sie sich mit Ihrem Azure-Konto an.
 2. Wählen Sie  **Ressource erstellen** aus. Geben Sie im Feld  **Marketplace durchsuchen**  die Zeichenfolge `virtual network` ein. Suchen Sie in der Ergebnisliste nach  **Virtuelles Netzwerk** , und wählen Sie dann die Option  **Virtuelles Netzwerk** aus.
 3. Wählen Sie in der Liste **Bereitstellungsmodell**  auswählen die Option  **Resource Manager** und dann  **Erstellen** aus.
 4. Konfigurieren Sie unter **Virtuelles Netzwerk erstellen** die VNet-Einstellungen. Die erforderlichen Feldnamen sind durch ein vorangestelltes rotes Sternchen gekennzeichnet.  Wenn Sie einen gültigen Wert eingeben, wird das Sternchen in ein grünes Häkchen geändert.
@@ -132,7 +132,7 @@ Erstellen Sie wie folgt in Azure Stack ein VNet:
 
 Bevor Sie das virtuelle Netzwerk mit einem Gateway verbinden, müssen Sie das Gatewaysubnetz für das virtuelle Netzwerk erstellen, mit dem Sie eine Verbindung herstellen möchten. Für die Gatewaydienste werden die IP-Adressen verwendet, die Sie im Gatewaysubnetz angeben.
 
-Navigieren Sie im  [Azure-Portal](http://portal.azure.com/) zum virtuellen Resource Manager-Netzwerk, in dem Sie ein virtuelles Netzwerkgateway erstellen möchten.
+Navigieren Sie im  [Azure-Portal](https://portal.azure.com/) zum virtuellen Resource Manager-Netzwerk, in dem Sie ein virtuelles Netzwerkgateway erstellen möchten.
 
 1. Wählen Sie das VNet aus, um die Seite **Virtuelles Netzwerk** zu öffnen.
 2. Wählen Sie in  **EINSTELLUNGEN** die Option  **Subnetze** aus.
@@ -152,12 +152,12 @@ Führen Sie die folgenden Schritte aus, um in Azure ein Gateway für virtuelle N
 3. Wählen Sie unter **Gateway für virtuelle Netzwerke** die Option  **Erstellen** aus, um die Seite  **Gateway für virtuelle Netzwerke erstellen**  zu öffnen.
 4. Geben Sie unter **Gateway für virtuelle Netzwerke erstellen** die Werte für Ihr Netzwerkgateway an, wie unter **Beispielwerte für Tutorial** gezeigt, und geben Sie dann die folgenden weiteren Werte an:
 
-    - **SKU:** Basic
-    - **Virtuelles Netzwerk**: Wählen Sie das zuvor erstellte virtuelle Netzwerk aus. Das von Ihnen erstellte Gatewaysubnetz wird automatisch ausgewählt.
-    - **Erste IP-Konfiguration**:  Dies ist die öffentliche IP-Adresse Ihres Gateways.
-        - Wählen Sie **Gateway-IP-Konfiguration erstellen**. Sie gelangen auf die Seite **Öffentliche IP-Adresse wählen**.
-        - Wählen Sie **+Neu erstellen** , um die Seite **Öffentliche IP-Adresse erstellen** zu öffnen.
-        - Geben Sie unter  **Name**  einen Namen für die öffentliche IP-Adresse ein. Behalten Sie für die SKU die Einstellung  **Basic** bei, und wählen Sie dann  **OK**, um Ihre Änderungen zu speichern.
+   - **SKU:** Basic
+   - **Virtuelles Netzwerk**: Wählen Sie das zuvor erstellte virtuelle Netzwerk aus. Das von Ihnen erstellte Gatewaysubnetz wird automatisch ausgewählt.
+   - **Erste IP-Konfiguration**:  Dies ist die öffentliche IP-Adresse Ihres Gateways.
+     - Wählen Sie **Gateway-IP-Konfiguration erstellen**. Sie gelangen auf die Seite **Öffentliche IP-Adresse wählen**.
+     - Wählen Sie **+Neu erstellen**, um die Seite **Öffentliche IP-Adresse erstellen** zu öffnen.
+     - Geben Sie unter **Name** einen Namen für die öffentliche IP-Adresse ein. Behalten Sie für die SKU die Einstellung **Basic** bei, und wählen Sie dann **OK**, um Ihre Änderungen zu speichern.
 
        > [!Note]
        > Derzeit unterstützt VPN Gateway nur die dynamische Zuweisung öffentlicher IP-Adressen. Dies bedeutet aber nicht, dass sich die IP-Adresse ändert, nachdem sie Ihrem VPN-Gateway zugewiesen wurde. Die öffentliche IP-Adresse ändert sich nur, wenn das Gateway gelöscht und neu erstellt wird. Die IP-Adresse ändert sich nicht, wenn die Größe geändert wird, das VPN-Gateway zurückgesetzt wird oder andere interne Wartungs-/Upgradevorgänge für das VPN-Gateway durchgeführt werden.

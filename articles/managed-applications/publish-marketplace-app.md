@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: d208d989fb9b84ae7bc94c6a1882754ed2bacb5d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 0bf1558f81f2936b4556ee658a235cd09dddf905
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57892913"
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Verwaltete Azure-Anwendungen im Marketplace
 
@@ -43,7 +43,7 @@ Der Weg zum Herausgeber im Azure Marketplace umfasst folgende Schritte:
 
 1. Erstellen einer Microsoft-ID: Erstellen Sie Ihr Microsoft-Konto mit einer E-Mail-Adresse, die zur Domäne Ihres Unternehmens, aber nicht zu einer Einzelperson gehört. Diese E-Mail-Adresse wird sowohl für das Microsoft Developer Center als auch für das Cloud-Partnerportal verwendet. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 1. Übermitteln des [Nominierungsformulars für den Azure Marketplace](https://aka.ms/ampnomination): Wählen Sie unter **Solution that you intend to publish?** (Welche Lösung möchten Sie veröffentlichen?) die Option **Managed Application** (Verwaltete Anwendung) aus. Das übermittelte Formular mit Ihrer Anfrage wird vom Marketplace-Onboardingteam geprüft. Der Genehmigungsprozess kann bis zu drei Tage dauern. Nach der Genehmigung Ihrer Nominierung erhalten Sie einen Angebotscode, durch den die Registrierungsgebühr für das Developer Center entfällt. Wenn Sie das Nominierungsformular für den Marketplace **nicht** ausfüllen, fällt eine Registrierungsgebühr in Höhe von 99 USD an.
-1. Registrieren beim [Developer Center](http://dev.windows.com/registration?accountprogram=azure): Microsoft überprüft, ob es sich bei Ihrer Organisation um eine gültige juristische Person mit einer gültigen Steuernummer für das Land handelt, in dem sie registriert ist. Die Genehmigung kann fünf bis zehn Tage dauern. Verwenden Sie den Angebotscode, den Sie im Rahmen des Nominierungsprozesses per E-Mail erhalten haben, um sich die Registrierungsgebühr zu sparen. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
+1. Registrieren beim [Developer Center](https://dev.windows.com/registration?accountprogram=azure): Microsoft überprüft, ob es sich bei Ihrer Organisation um eine gültige juristische Person mit einer gültigen Steuernummer für das Land handelt, in dem sie registriert ist. Die Genehmigung kann fünf bis zehn Tage dauern. Verwenden Sie den Angebotscode, den Sie im Rahmen des Nominierungsprozesses per E-Mail erhalten haben, um sich die Registrierungsgebühr zu sparen. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 1. Anmelden beim [Cloud Partnerportal](https://cloudpartner.azure.com): Verknüpfen Sie im Herausgeberprofil Ihr Developer Center-Konto mit dem Marketplace-Herausgeberprofil. Weitere Informationen finden Sie im [Azure Marketplace-Herausgeberleitfaden](https://aka.ms/sellerguide).
 
 ## <a name="create-a-new-azure-application-offer"></a>Erstellen eines neuen Angebots für eine Azure-Anwendung
@@ -66,7 +66,7 @@ Das Formular **Angebotseinstellungen** enthält folgende Felder:
 
 * **Angebots-ID:** Dieser eindeutige Bezeichner gibt das Angebot innerhalb eines Herausgeberprofils an. Diese ID ist in den Produkt-URLs, den Ressourcen-Manager-Vorlagen und in den Abrechnungsberichten sichtbar. Sie darf nur aus klein geschriebenen alphanumerischen Zeichen oder Bindestrichen (-) bestehen. Die ID darf nicht mit einem Gedankenstrich enden. Sie ist auf maximal 50 Zeichen beschränkt. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
 * **Herausgeber-ID:** In dieser Dropdownliste können Sie das Herausgeberprofil auswählen, unter dem das Angebot veröffentlicht werden soll. Nachdem ein Angebot online geschaltet wurde, wird dieses Feld gesperrt.
-* **Name:** Dieser Anzeigename für Ihr Angebot wird im Marketplace und im Portal angezeigt. Er darf aus höchstens 50 Zeichen bestehen. Verwenden Sie einen Markennamen mit hohem Wiedererkennungswert für Ihr Produkt. Verwenden Sie an dieser Stelle nicht den Namen Ihres Unternehmens, es sei denn, das Produkt wird unter diesem Namen beworben. Wenn Sie dieses Angebot auf Ihrer eigenen Website bewerben, vergewissern Sie sich, dass der Name exakt mit dem auf Ihrer Website übereinstimmt.
+* **Name**: Dieser Anzeigename für Ihr Angebot wird im Marketplace und im Portal angezeigt. Er darf aus höchstens 50 Zeichen bestehen. Verwenden Sie einen Markennamen mit hohem Wiedererkennungswert für Ihr Produkt. Verwenden Sie an dieser Stelle nicht den Namen Ihres Unternehmens, es sei denn, das Produkt wird unter diesem Namen beworben. Wenn Sie dieses Angebot auf Ihrer eigenen Website bewerben, vergewissern Sie sich, dass der Name exakt mit dem auf Ihrer Website übereinstimmt.
 
 Klicken Sie abschließend auf **Speichern**, um Ihre Eingaben zu speichern.
 
@@ -90,8 +90,8 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
    Füllen Sie folgende Felder aus:
 
-   * **Titel:** Geben Sie einen Titel für diese SKU ein. Dieser Titel wird im Katalog für dieses Element angezeigt.
-   * **Zusammenfassung:** Geben Sie eine kurze Zusammenfassung für diese SKU ein. Dieser Text wird unterhalb des Titels angezeigt.
+   * **Titel**: Geben Sie einen Titel für diese SKU ein. Dieser Titel wird im Katalog für dieses Element angezeigt.
+   * **Zusammenfassung**: Geben Sie eine kurze Zusammenfassung für diese SKU ein. Dieser Text wird unterhalb des Titels angezeigt.
    * **Beschreibung:** Geben Sie eine ausführliche Beschreibung der SKU ein.
    * **SKU-Typ:** Zulässige Werte sind *Verwaltete Anwendung* und *Lösungsvorlagen*. Wählen Sie für diesen Fall *verwaltete Anwendung* aus.
    * **Verfügbarkeit in Land/Region:** Wählen Sie die Länder und Regionen aus, in denen die verwaltete Anwendung verfügbar ist.
@@ -101,7 +101,7 @@ Eine SKU wird im Marketplace unterhalb des übergeordneten Angebots angezeigt. S
 
    Füllen Sie folgende Felder aus:
 
-   * **Version:** Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
+   * **Version**: Geben Sie eine Version für das Paket ein, das Sie hochladen. Sie sollte folgendes Format aufweisen: `{number}.{number}.{number}{number}`.
    * **Paketdatei (.zip):** Dieses Paket enthält zwei erforderliche Dateien, komprimiert in einer ZIP-Datei. Bei einer Datei handelt es sich um eine Resource Manager-Vorlage, die definiert, welche Ressourcen für die verwaltete Anwendung bereitgestellt werden. Mit der anderen Datei wird die [Benutzeroberfläche](create-uidefinition-overview.md) für Kunden für die Bereitstellung der verwalteten Anwendung über das Portal definiert. Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
    * **PrincipalId:** Bei dieser Eigenschaft handelt es sich um den Azure AD-Bezeichner (Azure Active Directory) eines Benutzers, einer Benutzergruppe oder einer Anwendung, dem bzw. der Zugriff auf die Ressourcen im Kundenabonnement gewährt wird. Die Berechtigungen werden in der Rollendefinition beschrieben.
    * **Rollendefinition:** Bei dieser Eigenschaft handelt es sich um eine Liste aller integrierten Rollen der rollenbasierten Zugriffssteuerung (Role-Based Access Control, RBAC), die von Azure AD bereitgestellt werden. Sie können die Rolle auswählen, die am besten für die Verwaltung der Ressourcen im Auftrag des Kunden geeignet ist.

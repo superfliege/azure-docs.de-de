@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 20fc3722-6f8b-402f-b391-b84e9df6fcff
 ms.date: 07/08/2016
-ms.openlocfilehash: ad7a29f4a554d599b17576921542b1ac6e403911
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 05368f627c5e9482a43d5e30b0e16b1d47f6217c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127763"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58074718"
 ---
 # <a name="receive-b2b-data-with-azure-logic-apps-and-enterprise-integration-pack"></a>Empfangen von B2B-Daten mit Azure Logic Apps und Enterprise Integration Pack
 
@@ -47,11 +47,13 @@ Führen Sie diese Schritte zum Erstellen einer B2B-Logik-App aus, die AS2- und X
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-6.png)
 
-6. Fügen Sie den **Text** hinzu, der als Eingabe verwendet werden soll. Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App auslöst. Oder geben Sie einen Ausdruck ein, der die Header das Feld **HEADER** eingibt:
+6. Fügen Sie den **Text** hinzu, der als Eingabe verwendet werden soll. 
+   Wählen Sie in diesem Beispiel den Text der HTTP-Anforderung aus, die die Logik-App auslöst. Oder geben Sie einen Ausdruck ein, der die Header das Feld **HEADER** eingibt:
 
     @triggerOutputs()['headers']
 
-7. Fügen Sie die erforderlichen **Header** für AS2 hinzu, die Sie in den HTTP-Anforderungsheadern finden. Wählen Sie in diesem Beispiel die Header der HTTP-Anforderung aus, die die Logik-App auslöst.
+7. Fügen Sie die erforderlichen **Header** für AS2 hinzu, die Sie in den HTTP-Anforderungsheadern finden. 
+   Wählen Sie in diesem Beispiel die Header der HTTP-Anforderung aus, die die Logik-App auslöst.
 
 8. Fügen Sie nun die Nachrichtenaktion „X12 decodieren“ hinzu. Wählen Sie **Aktion hinzufügen** aus.
 
@@ -65,7 +67,8 @@ Führen Sie diese Schritte zum Erstellen einer B2B-Logik-App aus, die AS2- und X
 
     ![](./media/logic-apps-enterprise-integration-b2b/b2b-as2message.png)
 
-11. Jetzt müssen Sie die Eingabe für diese Aktion angeben. Diese Eingabe ist die Ausgabe der vorherigen AS2-Aktion.
+11. Jetzt müssen Sie die Eingabe für diese Aktion angeben. 
+    Diese Eingabe ist die Ausgabe der vorherigen AS2-Aktion.
 
     Der tatsächliche Nachrichteninhalt ist in einem JSON-Objekt enthalten und base64-codiert. Deshalb müssen Sie einen Ausdruck als Eingabe angeben. 
     Geben Sie den folgenden Ausdruck in das Eingabefeld **X12 FLAT FILE MESSAGE TO DECODE** (Zu decodierende X12-Flatfilenachricht ein):

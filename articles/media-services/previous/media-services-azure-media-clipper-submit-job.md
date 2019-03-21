@@ -6,15 +6,15 @@ keywords: Beschneiden;Subclip;Codierung;Medien
 author: dbgeorge
 manager: jasonsue
 ms.author: dwgeo
-ms.date: 02/08/2019
+ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
-ms.openlocfilehash: 585cb88ca853954b23369c8e097583e7e8656355
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: f0dc6879ccbb22dbebd57de98e4610cd593318db
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002138"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012145"
 ---
 # <a name="submit-clipping-jobs-from-azure-media-clipper"></a>Übermitteln von Beschneidungsaufträgen aus Azure Media Clipper 
 

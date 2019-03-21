@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
-ms.openlocfilehash: ce2b9811baffea85cfa9a542fb5f93652daf39c8
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: 6ef0a9f6efbf5f8398ba242150b2eb6102875f7e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51976449"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58000323"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Vorbereiten einer Debian-VHD für Azure
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -34,7 +34,7 @@ In diesem Abschnitt wird davon ausgegangen, dass Sie bereits ein Debian Linux-Be
 * Alle VHDs in Azure benötigen eine virtuelle Größe, die auf 1 MB ausgerichtet ist. Wenn Sie einen unformatierten Datenträger in VHD konvertieren, müssen Sie sicherstellen, dass die Größe des unformatierten Datenträgers vor der Konvertierung ein Vielfaches von 1 MB ist. Weitere Informationen finden Sie in den [Linux-Installationshinweisen](create-upload-generic.md#general-linux-installation-notes).
 
 ## <a name="use-azure-manage-to-create-debian-vhds"></a>Verwenden von azure-manage zum Erstellen von Debian-VHDs
-Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise die [azure-manage](https://github.com/credativ/azure-manage)-Skripts von [Credativ](http://www.credativ.com/)). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um das Hilfsprogramm `azure-manage` (einschließlich Abhängigkeiten) herunterzuladen und das Skript `azure_build_image` auszuführen:
+Zum Generieren von Debian-VHDs für Azure sind Tools verfügbar (beispielsweise die [azure-manage](https://github.com/credativ/azure-manage)-Skripts von [Credativ](https://www.credativ.com/)). Dies ist der empfohlene Ansatz, mit dem vermieden werden kann, ein Image von Grund auf neu zu erstellen. Wenn Sie beispielsweise eine Debian 8-VHD erstellen möchten, führen Sie die folgenden Befehle aus, um das Hilfsprogramm `azure-manage` (einschließlich Abhängigkeiten) herunterzuladen und das Skript `azure_build_image` auszuführen:
 
     # sudo apt-get update
     # sudo apt-get install git qemu-utils mbr kpartx debootstrap

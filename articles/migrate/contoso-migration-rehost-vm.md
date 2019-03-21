@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: 47b16966f9e72a43cf4fb934706f7b96becef59a
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 4a6ed900753747c1d5bf394aced54da11177320f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694498"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118390"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-to-azure-vms"></a>Contoso-Migration: Rehosten einer lokalen App auf Azure-VMs
 
@@ -168,10 +168,10 @@ Das Unternehmen geht bei der Einrichtung dieser Komponenten wie folgt vor:
     - Die App-Datenbank-VM (SQLVM) wird zum Datenbanksubnetz (PROD-DB-EUS2) im Produktionsnetzwerk migriert.
 
 2. Einrichten eines Speicherkonto: Contoso erstellt ein Azure-Speicherkonto (contosovmsacc20180528) in der primären Region.
-    - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-    - Contoso verwendet ein allgemeines Konto mit Standardspeicher und LRS-Replikation.
+   - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
+   - Contoso verwendet ein allgemeines Konto mit Standardspeicher und LRS-Replikation.
 
-    ![Site Recovery-Speicher](./media/contoso-migration-rehost-vm/asr-storage.png)
+     ![Site Recovery-Speicher](./media/contoso-migration-rehost-vm/asr-storage.png)
 
 3. Erstellen eines Tresor: Nach dem Einrichten des Netzwerks und des Speicherkontos kann Contoso nun einen Recovery Services-Tresor (ContosoMigrationVault) erstellen und diesen in der Ressourcengruppe „ContosoFailoverRG“ in der primären Region „USA, Osten 2“ platzieren.
 
@@ -221,15 +221,15 @@ Nach dem Failover möchte Contoso eine Verbindung mit den Azure-VMs herstellen. 
 
 1. Für den Zugriff über das Internet:
 
- - Aktivieren von RDP auf dem lokalen virtuellen Computer vor dem Failover.
- - Sicherstellen, dass TCP- und UDP-Regeln zum **öffentlichen** Profil hinzugefügt wurden.
- - Bei allen Profilen unter **Windows-Firewall** > **Zugelassene Apps** überprüfen, ob RDP zulässig ist.
+   - Aktivieren von RDP auf dem lokalen virtuellen Computer vor dem Failover.
+   - Sicherstellen, dass TCP- und UDP-Regeln zum **öffentlichen** Profil hinzugefügt wurden.
+   - Bei allen Profilen unter **Windows-Firewall** > **Zugelassene Apps** überprüfen, ob RDP zulässig ist.
 
 2. Für den Zugriff über Site-to-Site-VPN:
 
- - RDP auf dem lokalen Computer aktivieren.
- - RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für **private und Domänennetzwerke** zulassen.
- - SAN-Richtlinie des Betriebssystems auf der lokalen VM auf **OnlineAll** festlegen.
+   - RDP auf dem lokalen Computer aktivieren.
+   - RDP unter **Windows-Firewall** -> **Zugelassene Apps und Features** für **private und Domänennetzwerke** zulassen.
+   - SAN-Richtlinie des Betriebssystems auf der lokalen VM auf **OnlineAll** festlegen.
 
 Bei der Ausführung eines Failovers sind darüber hinaus folgende Aspekte zu überprüfen:
 
@@ -341,10 +341,10 @@ Wenn alles ordnungsgemäß ist, können Contoso-Administratoren die Replikation 
 
 4. Sie wählen **WebVM** für die Replikation aus, überprüfen die Replikationsrichtlinie und aktivieren die Replikation.
 
-    - In dieser Phase wählen sie nur WEBVM aus, da VNET und Subnetz ausgewählt werden müssen, und die virtuellen Computer der App in unterschiedlichen Subnetzen platziert werden.
-    - Wenn die Replikation aktiviert ist, wird Mobility Service von Site Recovery automatisch auf der VM installiert.
+   - In dieser Phase wählen sie nur WEBVM aus, da VNET und Subnetz ausgewählt werden müssen, und die virtuellen Computer der App in unterschiedlichen Subnetzen platziert werden.
+   - Wenn die Replikation aktiviert ist, wird Mobility Service von Site Recovery automatisch auf der VM installiert.
 
-    ![Aktivieren der Replikation](./media/contoso-migration-rehost-vm/enable-replication3.png)
+     ![Aktivieren der Replikation](./media/contoso-migration-rehost-vm/enable-replication3.png)
 
 5. Der Replikationsfortschritt wird unter **Aufträge** nachverfolgt. Nachdem der Auftrag **Schutz abschließen** ausgeführt wurde, ist der Computer bereit für das Failover.
 6. Unter **Zusammenfassung** im Azure-Portal können sie die Struktur für die virtuellen Computer anzeigen, die in Azure repliziert werden.

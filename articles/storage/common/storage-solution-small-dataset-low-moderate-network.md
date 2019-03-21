@@ -4,16 +4,16 @@ description: Erfahren Sie, wie Sie eine Azure-Lösung für die Datenübertragung
 services: storage
 author: alkohli
 ms.service: storage
-ms.subservice: blob
+ms.subservice: blobs
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: alkohli
-ms.openlocfilehash: b9c19c4cd85b1ab2bc3ea010d029361957de3943
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
+ms.openlocfilehash: 3e6f4f3eb312f0d4d96a008c0944a9608d0bf4a7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53263655"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124302"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
  
@@ -49,16 +49,16 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 
 In der folgenden Tabelle werden die Unterschiede der Schlüsselfunktionen zusammengefasst.
 
-| Feature                                                            | Azure Storage-Explorer                    | Azure-Portal  | AzCopy<br>Azure PowerShell<br>Azure-Befehlszeilenschnittstelle            | Azure Storage REST-APIs oder SDKs |
-|----------------------------------------------|-------------------------------------------|--------------------------------------|-------------------|---------------------------------------|
-| Verfügbarkeit                                                       | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal           | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP                                                         |
-| Grafische Benutzeroberfläche                                              | JA                                       | JA                                                     | Nein                 | Nein                                                       |
-| Unterstützte Plattformen                                              | Windows, Mac, Linux                       | Webbasiert     |Windows, Mac, Linux     |Alle Plattformen                                                         |
-| Zulässige Blob Storage-Vorgänge<br>für Blobs und Ordner            | Hochladen<br>Download<br>Verwalten    | Hochladen<br>Download<br>Verwalten  |Hochladen<br>Download<br>Verwalten             | Ja, anpassbar                                                        |
-| Zulässige Data Lake Gen1-Speichervorgänge<br>für Dateien und Ordner  | Hochladen<br>Download<br>Verwalten                | Nein  |Hochladen<br>Download<br>Verwalten                   |      Nein                                                    |
-| Zulässige File Storage-Vorgänge<br>für Dateien und Verzeichnisse        | Hochladen<br>Download<br>Verwalten       | Hochladen<br>Download<br>Verwalten   |Hochladen<br>Download<br>Verwalten |                                                         |Ja, anpassbar
-| Zulässige Table Storage-Vorgänge<br>für Tabellen                      |Verwalten                            | Nein             |Tabellenunterstützung in AzCopy v7 |Ja, anpassbar|
-| Zulässige Queue Storage-Vorgänge                                              | Verwalten                                    | Nein   |Nein  | Ja, anpassbar|
+| Feature | Azure Storage-Explorer | Azure-Portal | AzCopy<br>Azure PowerShell<br>Azure-Befehlszeilenschnittstelle | Azure Storage REST-APIs oder SDKs |
+|---------|------------------------|--------------|-----------------------------------------|---------------------------------|
+| Verfügbarkeit | Herunterladen und Installieren <br>Eigenständiges Tool | Webbasierte Tools zu Durchsuchen im Azure-Portal | Befehlszeilentool |Programmierbare Schnittstellen in .NET, Java, Python, JavaScript, C++, Go, Ruby und PHP |
+| Grafische Benutzeroberfläche | Ja | Ja | Nein  | Nein  |
+| Unterstützte Plattformen | Windows, Mac, Linux | Webbasiert |Windows, Mac, Linux |Alle Plattformen |
+| Zulässige Blob Storage-Vorgänge<br>für Blobs und Ordner | Hochladen<br>Download<br>Verwalten | Hochladen<br>Download<br>Verwalten |Hochladen<br>Download<br>Verwalten | Ja, anpassbar |
+| Zulässige Data Lake Gen1-Speichervorgänge<br>für Dateien und Ordner | Hochladen<br>Download<br>Verwalten | Nein  |Hochladen<br>Download<br>Verwalten                   | Nein  |
+| Zulässige File Storage-Vorgänge<br>für Dateien und Verzeichnisse | Hochladen<br>Download<br>Verwalten | Hochladen<br>Download<br>Verwalten   |Hochladen<br>Download<br>Verwalten | Ja, anpassbar |
+| Zulässige Table Storage-Vorgänge<br>für Tabellen |Verwalten | Nein  |Tabellenunterstützung in AzCopy v7 |Ja, anpassbar|
+| Zulässige Queue Storage-Vorgänge | Verwalten | Nein   |Nein  | Ja, anpassbar|
 
 
 ## <a name="next-steps"></a>Nächste Schritte

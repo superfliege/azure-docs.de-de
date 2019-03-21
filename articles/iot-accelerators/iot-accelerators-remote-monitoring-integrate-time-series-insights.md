@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 655d65ebfbb0141acd829a64414d9ba20dd2c697
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633741"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085149"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrieren von Azure Time Series Insights mit Remoteüberwachung
 
@@ -96,7 +96,8 @@ Erstellen Sie eine neue Ereignisquelle für die Verbindung mit Ihrem IoT Hub. St
     | IoT Hub-Richtlinienname | **iothubowner** Stellen Sie sicher, dass die verwendete Richtlinie eine Besitzerrichtlinie ist. |
     | IoT Hub-Richtlinienschlüssel | Dieses Feld wird automatisch ausgefüllt. |
     | IoT Hub-Consumergruppe | **timeseriesinsights** |
-    | Ereignisserialisierungsformat | **JSON**     | Name der Timestamp-Eigenschaft | Nicht ausfüllen |
+    | Ereignisserialisierungsformat | **JSON**     | 
+    | Name der Timestamp-Eigenschaft | Nicht ausfüllen |
 
     ![Erstellen der Ereignisquelle](./media/iot-accelerators-remote-monitoring-integrate-time-series-insights/time-series-insights-event-source-create.png)
 

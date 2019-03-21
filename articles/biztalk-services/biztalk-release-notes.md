@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 10e790c2edb22b3c7926216535d76c50261589f3
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
+ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54260331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58093540"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Versionshinweise für Azure BizTalk Services
 
 > [!INCLUDE [BizTalk Services is being retired, and replaced with Azure Logic Apps](../../includes/biztalk-services-retirement.md)]
-
+> 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
 Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannten Probleme dieser Version.
@@ -47,7 +47,8 @@ Die Versionshinweise für Microsoft Azure BizTalk Services enthalten die bekannt
 * Für die sendeseitige Vereinbarung können Sie nun unterschiedliche Trennzeichensätze pro Schema angeben. Diese Konfiguration wird unter den Protokolleinstellungen für die sendeseitige Vereinbarung angegeben. Weitere Informationen finden Sie unter [Erstellen einer X12-Vereinbarung in Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) sowie unter [Erstellen einer EDIFACT-Vereinbarung in Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Für den gleichen Zweck wurden auch zwei neue Entitäten zur TPM OM-API hinzugefügt. Weitere Informationen finden Sie unter [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) sowie unter [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
 * Standard-XSD-Konstrukte werden nun unterstützt (inklusive abgeleiteter Typen). Weitere Informationen finden Sie unter [Verwenden von Standard-XSD-Konstrukten in Ihren Zuordnungen](https://msdn.microsoft.com/library/azure/dn793987.aspx) sowie unter [Abgeleitete Typenzuordnung – Szenarios und Beispiele](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
 * AS2 unterstützt neue MIC-Algorithmen für die Nachrichtensignierung und neue Verschlüsselungsalgorithmen. Weitere Informationen finden Sie unter [Erstellen einer AS2-Vereinbarung in Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Bekannte Probleme
+
+## <a name="known-issues"></a>Bekannte Probleme
 
 ### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Konnektivitätsprobleme nach der Aktualisierung des BizTalk Services-Portals
   Wenn das BizTalk Services-Portal geöffnet ist, während BizTalk Services zur Implementierung von Dienständerungen aktualisiert wird, treten im BizTalk Services-Portal unter Umständen Konnektivitätsprobleme auf.  
@@ -127,7 +128,7 @@ Kopieren Sie bei Verwendung benutzerdefinierter Datentypen die DLL-Dateien in da
 <faultcode>s:Client</faultcode>
 <faultstring xml:lang="en-US">The UDT with FullName "File, FileUDT, Version=Value, Culture=Value, PublicKeyToken=Value" could not be loaded. Try placing the assembly containing the UDT definition in the Global Assembly Cache.</faultstring>
 <detail>
-  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <AFConnectRuntimeFault xmlns="http://Microsoft.ApplicationServer.Integration.AFConnect/2011" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
     <ExceptionCode>ERROR_IN_SENDING_MESSAGE</ExceptionCode>
   </AFConnectRuntimeFault>
 </detail>

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/10/2018
 ms.author: raynew
-ms.openlocfilehash: 3cac893fcaafd4fe8d35aab2a10da92019d3ed42
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 114f4ccccaa861928263eb59b4e43379989abcca
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55698960"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58077852"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-linux-app-to-azure-vms-and-azure-mysql"></a>Contoso-Migration: Zuweisen eines neuen Hosts für eine lokale Linux-App zu Azure-VMs und Azure MySQL
 
@@ -127,7 +127,7 @@ Die Contoso-Administratoren gehen bei der Migration wie folgt vor:
 > [!div class="checklist"]
 > * **Schritt 1: Vorbereiten von Azure für Site Recovery**: Die Administratoren erstellen ein Azure-Speicherkonto zum Speichern replizierter Daten sowie einen Recovery Services-Tresor.
 > * **Schritt 2: Vorbereiten einer lokalen VMware-Instanz für Site Recovery**: Das Unternehmen bereitet Konten für die VM-Ermittlung und Agent-Installation sowie das Herstellen einer Verbindung mit Azure-VMs nach dem Failover vor.
- * **Schritt 3: Bereitstellen der Datenbank]**: Sie stellen in Azure eine Instanz einer Azure Database for MySQL-Datenbank bereit.
+>   * **Schritt 3: Bereitstellen der Datenbank]**: Sie stellen in Azure eine Instanz einer Azure Database for MySQL-Datenbank bereit.
 > * **Schritt 4: Replizieren von VMs**: Die Administratoren konfigurieren die Quell- und Zielumgebung für Site Recovery, richten eine Replikationsrichtlinie ein und starten die Replikation von VMs zu Azure Storage.
 > * **Schritt 5: Migrieren der Datenbank:** Die Administratoren richten die Migration mit MySQL-Tools ein.
 > * **Schritt 6: Migrieren von VMs mit Site Recovery**: Zuletzt wird ein Testfailover durchgeführt, um sicherzustellen, dass alles funktioniert, und anschließend wird ein vollständiges Failover für die Migration der VMs zu Azure ausgeführt.
@@ -147,10 +147,10 @@ Die Contoso-Administratoren gehen bei der Erstellung eines Speicherkontos und ei
 
 1. Sie erstellen ein Speicherkonto (**contosovmsacc20180528**) in der Region „USA, Osten 2“.
 
-    - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
-    - Contoso verwendet ein universelles Konto mit Standardspeicher und LRS-Replikation.
+   - Das Speicherkonto muss sich in der gleichen Region wie der Recovery Services-Tresor befinden.
+   - Contoso verwendet ein universelles Konto mit Standardspeicher und LRS-Replikation.
 
-    ![Site Recovery-Speicher](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
+     ![Site Recovery-Speicher](./media/contoso-migration-rehost-linux-vm-mysql/asr-storage.png)
 
 3. Wenn das Netzwerk und das Speicherkonto vorhanden sind, erstellen die Administratoren einen Tresor (ContosoMigrationVault) und platzieren diesen in der Ressourcengruppe **ContosoFailoverRG** in der primären Region „USA, Osten 2“.
 

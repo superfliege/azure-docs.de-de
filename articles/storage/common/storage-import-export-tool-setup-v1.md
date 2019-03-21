@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 6d8cf874032449e362a35d106bba3b430a80ea48
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: aafff208b9de2ae485fb84be428cf77f237e022e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467610"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087447"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Einrichten des Azure Import/Export-Tools
 Das Microsoft Azure Import/Export-Tool ist das Tool für die Laufwerkvorbereitung und Reparatur, das Sie für den Microsoft Azure Import/Export-Dienst verwenden können. Sie können das Tool für die folgenden Funktionen verwenden:  
@@ -45,36 +45,36 @@ Wenn Sie die Laufwerkvorbereitung für einen Importauftrag durchführen, müssen
   
 Wenn Sie versuchen, einen Import zu reparieren, der teilweise nicht erfolgreich war, benötigen Sie Folgendes:  
   
--   Kopierprotokolldateien  
+- Kopierprotokolldateien  
   
--   Speicherkontoschlüssel  
+- Speicherkontoschlüssel  
   
   Wenn Sie versuchen, einen Export zu reparieren, der teilweise nicht erfolgreich war, benötigen Sie Folgendes:  
   
--   Kopierprotokolldateien  
+- Kopierprotokolldateien  
   
--   Manifestdateien (optional)  
+- Manifestdateien (optional)  
   
--   Speicherkontoschlüssel  
+- Speicherkontoschlüssel  
   
 ## <a name="installing-the-azure-importexport-tool"></a>Installieren des Azure Import/Export-Tools  
  Das Azure Import/Export-Tool besteht aus den folgenden Dateien:  
   
--   WAImportExport.exe  
+- WAImportExport.exe  
   
--   WAImportExport.exe.config  
+- WAImportExport.exe.config  
   
--   WAImportExportCore.dll  
+- WAImportExportCore.dll  
   
--   WAImportExportRepair.dll  
+- WAImportExportRepair.dll  
   
--   Microsoft.WindowsAzure.Storage.dll  
+- Microsoft.WindowsAzure.Storage.dll  
   
--   Hddid.dll  
+- Hddid.dll  
   
- Kopieren Sie diese Dateien in ein Arbeitsverzeichnis, z.B. `c:\WAImportExport`. Öffnen Sie anschließend ein Befehlszeilenfenster im Administratormodus, und legen Sie das obige Verzeichnis als aktuelles Verzeichnis fest.  
+  Kopieren Sie diese Dateien in ein Arbeitsverzeichnis, z.B. `c:\WAImportExport`. Öffnen Sie anschließend ein Befehlszeilenfenster im Administratormodus, und legen Sie das obige Verzeichnis als aktuelles Verzeichnis fest.  
   
- Führen Sie das Tool ohne Parameter aus, um die Hilfe für den Befehl anzuzeigen:  
+  Führen Sie das Tool ohne Parameter aus, um die Hilfe für den Befehl anzuzeigen:  
   
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  

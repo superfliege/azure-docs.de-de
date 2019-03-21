@@ -7,12 +7,12 @@ ms.author: sngun
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.reviewer: sngun
-ms.openlocfilehash: 4b37b6cd35526d6a76625dd03d1325f1688e698e
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4532962b6fd9f40fad625ab000116e5a617682e5
+ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044466"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58258773"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbinden von Qlik Sense mit Azure Cosmos DB und Visualisieren Ihrer Daten
 
@@ -42,9 +42,9 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass die folg
 
 * Laden Sie die [Videospieldaten](https://www.kaggle.com/gregorut/videogamesales) herunter. Dies Beispieldaten liegen im CSV-Format vor. Sie speichern diese Daten in einem Cosmos DB-Konto und visualisieren sie in Qlik Sense.
 
-* Erstellen Sie ein Azure Cosmos DB-SQL-API-Konto mithilfe der Schritte, die im Abschnitt [Erstellen eines Datenbankkontos](create-sql-api-dotnet.md#create-a-database-account) des Schnellstartartikels beschrieben werden.
+* Erstellen Sie ein Azure Cosmos DB-SQL-API-Konto mithilfe der Schritte, die im Abschnitt [Erstellen eines Datenbankkontos](create-sql-api-dotnet.md#create-account) des Schnellstartartikels beschrieben werden.
 
-* [Erstellen einer Datenbank und einer Sammlung](create-sql-api-dotnet.md#add-a-collection): Sie können den Wert für den Sammlungsdurchsatz auf 1.000 RU/s festlegen. 
+* [Erstellen einer Datenbank und einer Sammlung](create-sql-api-dotnet.md#create-collection-database): Sie können den Wert für den Sammlungsdurchsatz auf 1.000 RU/s festlegen. 
 
 * Laden Sie die Beispielverkaufsdaten für Videospiele in Ihr Cosmos DB-Konto. Sie können die Daten importieren, indem Sie das Datenmigrationstool für Azure Cosmos DB verwenden und für die Daten einen [sequenziellen](import-data.md#SQLSeqTarget) Import oder einen [Massenimport](import-data.md#SQLBulkTarget) ausführen. Es dauert ca. drei bis fünf Minuten, um die Daten in das Cosmos DB-Konto zu importieren.
 

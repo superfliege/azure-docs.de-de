@@ -8,19 +8,19 @@ manager: daveba
 editor: curtand
 ms.assetid: b9af1792-0b7f-4f3e-827a-9426cdb33ba6
 ms.service: active-directory
-ms.subservice: domains
+ms.subservice: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
-ms.openlocfilehash: d2cdff4b0b961083d8f8ac6e2eb8b1b46d30c06b
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 85fcd28b5964cbe0246a7c79fa6d24d756f7bd35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086563"
 ---
 # <a name="notification-settings-in-azure-ad-domain-services"></a>Benachrichtigungseinstellungen in Azure AD Domain Services
 
@@ -47,7 +47,6 @@ Die E-Mail gibt die verwaltete Domäne, zu der die Warnung gemeldet wurde, den Z
 
 > [!WARNING]
 > Stellen Sie immer sicher, dass die E-Mail von einem überprüften Microsoft-Absender stammt, bevor Sie auf die Links in Ihren E-Mails klicken. Die E-Mail-Nachrichten stammen immer von der E-Mail-Adresse azure-noreply@microsoft.com.
->
 
 
 ## <a name="why-would-i-receive-email-notifications"></a>In welchen Situationen würde ich E-Mail-Benachrichtigungen erhalten?

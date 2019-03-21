@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: saurse
-ms.openlocfilehash: 94931546f3b8ddb18a5381de3baa31d66376badb
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: b6f0ce1939b2a78ca191d2feb0140506d130b9b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54810719"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107456"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Workflow zur Offlinesicherung in Azure Backup
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die Daten der Offlinesicherung in Azure hochzuladen.
@@ -73,7 +73,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
     ![Importbildschirm](./media/backup-azure-backup-import-export/offlinebackup_inputs.png)
 
-  Die Beschreibung der Eingaben lautet wie folgt:
+   Die Beschreibung der Eingaben lautet wie folgt:
 
     * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
     * **Azure Resource Manager-Speicherkonto**: Der Name des Resource Manager-Speicherkontos in einem beliebigen Azure-Abonnement.
@@ -81,7 +81,7 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
     * **Azure-Abonnement-ID**: Die ID für das Azure-Abonnement, in dem das Azure-Speicherkonto erstellt wird.
     * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden. 
   
-  Geben Sie die erforderlichen Werte in den Bildschirm ein, und klicken Sie anschließend auf **Weiter**. Speichern Sie die Angaben für *Stagingspeicherort* und *Name des Azure-Importauftrags*. Diese werden zur Vorbereitung der Datenträger benötigt.
+   Geben Sie die erforderlichen Werte in den Bildschirm ein, und klicken Sie anschließend auf **Weiter**. Speichern Sie die Angaben für *Stagingspeicherort* und *Name des Azure-Importauftrags*. Diese werden zur Vorbereitung der Datenträger benötigt.
 
 2. Melden Sie sich bei Ihrem Azure-Abonnement an, wenn Sie dazu aufgefordert werden. Die Anmeldung ist erforderlich, damit Azure Backup die Azure Active Directory-Anwendung erstellen und die erforderlichen Berechtigungen für den Zugriff auf den Azure-Import-Dienst bereitstellen kann.
 
@@ -106,14 +106,14 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen anderen Computer, mit dem die SATA-Laufwerke verbunden sind. Vergewissern Sie sich, dass auf dem Computer mit den verbundenen SATA-Laufwerken Folgendes erfüllt ist:
 
-    * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
-    * BitLocker ist auf dem Kopiercomputer aktiviert.
-    * Azure PowerShell 3.7.0 wurde installiert.
-    * Die neuesten kompatiblen Browser (Microsoft Edge oder Internet Explorer 11) sind installiert, und JavaScript ist aktiviert. 
-    * Der Kopiercomputer kann auf das Azure-Portal zugreifen. Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
+   * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
+   * BitLocker ist auf dem Kopiercomputer aktiviert.
+   * Azure PowerShell 3.7.0 wurde installiert.
+   * Die neuesten kompatiblen Browser (Microsoft Edge oder Internet Explorer 11) sind installiert, und JavaScript ist aktiviert. 
+   * Der Kopiercomputer kann auf das Azure-Portal zugreifen. Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein.
     
-    > [!IMPORTANT] 
-    > Wenn der Quellcomputer ein virtueller Computer ist, muss der Kopiercomputer ein anderer physischer Server- oder Clientcomputer sein.
+     > [!IMPORTANT] 
+     > Wenn der Quellcomputer ein virtueller Computer ist, muss der Kopiercomputer ein anderer physischer Server- oder Clientcomputer sein.
 
 2. Öffnen Sie auf dem Kopiercomputer eine Eingabeaufforderung mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis. Führen Sie dann den folgenden Befehl aus:
 
@@ -137,11 +137,11 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* bereitet die SATA-Laufwerke vor, 
     Das Tool beginnt dann, den Datenträger vorzubereiten und die Sicherungsdaten zu kopieren. Falls auf dem bereitgestellten Datenträger nicht genügend Speicherplatz für die Sicherungsdaten verfügbar ist, müssen Sie unter Umständen weitere Datenträger anfügen, wenn Sie vom Tool dazu aufgefordert werden. <br/>
 
     Nach erfolgreicher Ausführung des Tools gibt die Befehlszeile drei Informationen zurück:
-    1. Die von Ihnen bereitgestellten Datenträger werden für den Versand an Azure vorbereitet. 
-    2. Sie erhalten eine Erstellungsbestätigung für Ihren Importauftrag. Der Importauftrag hat den von Ihnen angegebenen Namen.
-    3. Das Tool zeigt die Lieferadresse für das Azure-Datencenter an.
+   1. Die von Ihnen bereitgestellten Datenträger werden für den Versand an Azure vorbereitet. 
+   2. Sie erhalten eine Erstellungsbestätigung für Ihren Importauftrag. Der Importauftrag hat den von Ihnen angegebenen Namen.
+   3. Das Tool zeigt die Lieferadresse für das Azure-Datencenter an.
 
-    ![Azure-Tool für die Datenträgervorbereitung – Abgeschlossen](./media/backup-azure-backup-import-export/console2.png)<br/>
+      ![Azure-Tool für die Datenträgervorbereitung – Abgeschlossen](./media/backup-azure-backup-import-export/console2.png)<br/>
 
 6. Nach Abschluss der Befehlsausführung können Sie die Versandinformationen aktualisieren.
 

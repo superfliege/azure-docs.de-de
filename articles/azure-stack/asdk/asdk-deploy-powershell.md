@@ -17,12 +17,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 0fb3e9cd193e570a965d6bbd3e16c86dc39de350
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: e8d3653049b0160fac155ebc49329c17cb27224f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984272"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58014394"
 ---
 # <a name="deploy-the-asdk-from-the-command-line"></a>Bereitstellen des ASDK über die Befehlszeile
 Das ASDK ist eine Test- und Entwicklungsumgebung, die sie zum Evaluieren und Demonstrieren von Azure Stack-Funktionen und -Diensten bereitstellen können. Zur Einrichtung der Umgebung müssen Sie die Umgebungshardware vorbereiten und einige Skripts ausführen. (Dies nimmt mehrere Stunden in Anspruch.) Anschließend können Sie sich beim Administrator- und Benutzerportal anmelden und Azure Stack verwenden.
@@ -138,6 +138,7 @@ Wenn DHCP für Ihre Umgebung nicht aktiviert ist, müssen Sie die folgenden zus�
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK „InstallAzureStackPOC.ps1“ – Optionale Parameter
+
 |Parameter|Erforderlich/Optional|BESCHREIBUNG|
 |-----|-----|-----|
 |AdminPassword|Erforderlich|Legt das lokale Administratorkonto und alle anderen Benutzerkonten auf allen virtuellen Computern fest, die im Rahmen der Development Kit-Bereitstellung erstellt werden. Dieses Kennwort muss mit dem Kennwort des lokalen Administrators auf dem Host übereinstimmen.|

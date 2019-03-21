@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 0a875b69a10f6305b4ffe32b63d3db5b508faf01
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
+ms.openlocfilehash: a3124ca2f163291d266fba77255d2ee98d30fd23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49639278"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57888807"
 ---
 # <a name="create-virtual-machine-offer"></a>Erstellen eines VM-Angebots
 
@@ -40,7 +40,7 @@ Hierbei gilt:
 
 ## <a name="new-offer-form"></a>Formular „Neues Angebot“
 
-Klicken Sie nach der Anmeldung beim [Cloud-Partnerportal](http://cloudpartner.azure.com/) auf der linken Menüleiste auf **+ Neues Angebot**. Klicken Sie im daraufhin angezeigten Menü auf **Virtual Machines**, um das Formular **Neues Angebot** anzuzeigen und mit dem Definieren von Ressourcen für ein neues VM-Angebot zu beginnen. 
+Klicken Sie nach der Anmeldung beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) auf der linken Menüleiste auf **+ Neues Angebot**. Klicken Sie im daraufhin angezeigten Menü auf **Virtual Machines**, um das Formular **Neues Angebot** anzuzeigen und mit dem Definieren von Ressourcen für ein neues VM-Angebot zu beginnen. 
 <!-- not all publishers see corevm or azure apps test, you need to be whitelisted to see them. we should hide those in these images. -->
 
 ![Neues VM-Angebot: Auswahl auf der Benutzeroberfläche](./media/publishvm_003.png)

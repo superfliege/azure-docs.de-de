@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0dced367f62ab97d62cd4b11758e13a05278442e
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56099257"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087532"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>Integrieren von Azure Active Directory in Azure Kubernetes Service
 
@@ -40,47 +40,47 @@ Die erste Azure AD-Anwendung wird verwendet, um eine Azure AD-Gruppenmitgliedsch
 
 1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
 
-  Geben Sie der Anwendung einen Namen, wählen Sie **Web-App / API** für den Anwendungstyp aus, und geben Sie einen beliebigen Wert im URI-Format für die **Anmelde-URL** ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+   Geben Sie der Anwendung einen Namen, wählen Sie **Web-App / API** für den Anwendungstyp aus, und geben Sie einen beliebigen Wert im URI-Format für die **Anmelde-URL** ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
-  ![Erstellen der Azure AD-Registrierung](media/aad-integration/app-registration.png)
+   ![Erstellen der Azure AD-Registrierung](media/aad-integration/app-registration.png)
 
 2. Wählen Sie **Manifest** aus, und setzen Sie den Wert von `groupMembershipClaims` auf `"All"`.
 
-  Speichern Sie die Änderungen, wenn Sie fertig sein.
+   Speichern Sie die Änderungen, wenn Sie fertig sein.
 
-  ![Aktualisieren der Gruppenmitgliedschaft auf „All“](media/aad-integration/edit-manifest.png)
+   ![Aktualisieren der Gruppenmitgliedschaft auf „All“](media/aad-integration/edit-manifest.png)
 
 3. Wechseln Sie zurück zur Azure AD-Anwendung, und wählen Sie **Einstellungen** > **Schlüssel** aus.
 
-  Fügen Sie eine Schlüsselbeschreibung hinzu, wählen Sie eine Ablaufzeit aus, und klicken Sie auf **Speichern**. Notieren Sie sich den Schlüsselwert. Beim Bereitstellen eines Azure AD-fähigen AKS-Clusters wird dieser Wert als `Server application secret` bezeichnet.
+   Fügen Sie eine Schlüsselbeschreibung hinzu, wählen Sie eine Ablaufzeit aus, und klicken Sie auf **Speichern**. Notieren Sie sich den Schlüsselwert. Beim Bereitstellen eines Azure AD-fähigen AKS-Clusters wird dieser Wert als `Server application secret` bezeichnet.
 
-  ![Abrufen des privaten Schlüssels der Anwendung](media/aad-integration/application-key.png)
+   ![Abrufen des privaten Schlüssels der Anwendung](media/aad-integration/application-key.png)
 
 4. Wechseln Sie zurück zur Azure AD-Anwendung, und wählen Sie **Einstellungen** > **Erforderliche Berechtigungen** > **Hinzufügen** > **API auswählen** > **Microsoft Graph** > **Auswählen**.
 
-  ![Auswählen der Graph-API](media/aad-integration/graph-api.png)
+   ![Auswählen der Graph-API](media/aad-integration/graph-api.png)
 
 5. Aktivieren Sie unter **ANWENDUNGSBERECHTIGUNGEN** die Option **Verzeichnisdaten lesen**.
 
-  ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/read-directory.png)
+   ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/read-directory.png)
 
 6. Aktivieren Sie unter **DELEGIERTE BERECHTIGUNGEN** die Optionen **Anmelden und Benutzerprofil lesen** und **Verzeichnisdaten lesen**. Speichern Sie die Änderungen, wenn Sie fertig sein.
 
-  ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/delegated-permissions.png)
+   ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/delegated-permissions.png)
 
-  Wählen Sie **Fertig**aus.
+   Wählen Sie **Fertig**aus.
 
 7. Wählen Sie in der Liste der APIs *Microsoft Graph* aus, und wählen Sie dann **Berechtigungen erteilen** aus. Dieser Schritt schlägt fehl, wenn das aktuelle Konto keinem Mandantenadministrator gehört.
 
-  ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/grant-permissions.png)
+   ![Festlegen von Anwendungsberechtigungen für Graph](media/aad-integration/grant-permissions.png)
 
-  Wenn die Berechtigungen erfolgreich gewährt wurden, wird die folgende Benachrichtigung im Portal angezeigt:
+   Wenn die Berechtigungen erfolgreich gewährt wurden, wird die folgende Benachrichtigung im Portal angezeigt:
 
-  ![Benachrichtigung über erfolgreich erteilte Berechtigungen](media/aad-integration/permissions-granted.png)
+   ![Benachrichtigung über erfolgreich erteilte Berechtigungen](media/aad-integration/permissions-granted.png)
 
 8. Wechseln Sie zurück zur neuen Anwendung, und notieren Sie sich die **Anwendungs-ID**. Beim Bereitstellen eines Azure AD-fähigen AKS-Clusters wird dieser Wert als `Server application ID` bezeichnet.
 
-  ![Abrufen der Anwendungs-ID](media/aad-integration/application-id.png)
+   ![Abrufen der Anwendungs-ID](media/aad-integration/application-id.png)
 
 ## <a name="create-client-application"></a>Erstellen einer Clientanwendung
 
@@ -88,27 +88,27 @@ Die zweite Azure AD-Anwendung wird beim Anmelden mit der Kubernetes-CLI (kubectl
 
 1. Wählen Sie **Azure Active Directory** > **App-Registrierungen** > **Registrierung einer neuen Anwendung** aus.
 
-  Geben Sie der Anwendung einen Namen, wählen Sie **Nativ** für den Anwendungstyp aus, und geben Sie einen beliebigen Wert im URI-Format für **Umleitungs-URI** ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
+   Geben Sie der Anwendung einen Namen, wählen Sie **Nativ** für den Anwendungstyp aus, und geben Sie einen beliebigen Wert im URI-Format für **Umleitungs-URI** ein. Wählen Sie **Erstellen** aus, wenn Sie fertig sind.
 
-  ![Erstellen einer AAD-Registrierung](media/aad-integration/app-registration-client.png)
+   ![Erstellen einer AAD-Registrierung](media/aad-integration/app-registration-client.png)
 
 2. Wählen Sie in der Azure AD-Anwendung **Einstellungen** > **Erforderliche Berechtigungen** > **Hinzufügen** > **API auswählen** aus, und suchen Sie nach dem Namen der im letzten Schritt dieses Dokuments erstellten Serveranwendung.
 
-  ![Konfigurieren der Anwendungsberechtigungen](media/aad-integration/select-api.png)
+   ![Konfigurieren der Anwendungsberechtigungen](media/aad-integration/select-api.png)
 
 3. Aktivieren Sie die Anwendung in der Liste, und klicken Sie auf **Auswählen**.
 
-  ![Auswählen des Endpunkts für die AKS-AAD-Serveranwendung](media/aad-integration/select-server-app.png)
+   ![Auswählen des Endpunkts für die AKS-AAD-Serveranwendung](media/aad-integration/select-server-app.png)
 
-  Wählen Sie **Fertig**aus.
+   Wählen Sie **Fertig**aus.
 
 4. Wählen Sie Ihre Server-API aus der Liste aus, und wählen Sie dann **Berechtigungen erteilen** aus:
 
-  ![Erteilen von Berechtigungen](media/aad-integration/grant-permissions-client.png)
+   ![Erteilen von Berechtigungen](media/aad-integration/grant-permissions-client.png)
 
 5. Wechseln Sie zurück zur AD-Anwendung, und notieren Sie sich die **Anwendungs-ID**. Beim Bereitstellen eines Azure AD-fähigen AKS-Clusters wird dieser Wert als `Client application ID` bezeichnet.
 
-  ![Abrufen der Anwendungs-ID](media/aad-integration/application-id-client.png)
+   ![Abrufen der Anwendungs-ID](media/aad-integration/application-id-client.png)
 
 ## <a name="get-tenant-id"></a>Abrufen der Mandanten-ID
 

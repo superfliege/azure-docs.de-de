@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 5e6d155a3efebfc8289263ac703a87e9aa3287cd
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: dc8deb16f7d124c5fb11568f25050eee99a245b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52834756"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58096757"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Ausführen eines DR-Drills für Hyper-V-VMs an einen sekundären Standort
 
@@ -43,11 +43,11 @@ Sie führen ein Testfailover vom primären Standort an den sekundären Standort 
 
 Bei einem Testfailover werden Sie zum Auswählen von Netzwerkeinstellungen für die Testreplikatcomputer aufgefordert. In der Tabelle werden die Optionen zusammengefasst.
 
-**Option** | **Details** 
---- | --- 
-**Keine** | Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt und ist mit keinem Netzwerk verbunden.<br/><br/> Der Computer kann nach der Erstellung mit einem VM-Netzwerk verbunden werden.
-**Vorhandene verwenden** | Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt.<br/><br/>Erstellen Sie ein von Ihrem Produktionsnetzwerk isoliertes VM-Netzwerk.<br/><br/>Bei Verwendung eines VLAN-basierten Netzwerks empfiehlt es sich, hierzu in VMM ein separates logisches Netzwerk zu erstellen, das nicht in der Produktionsumgebung verwendet wird. Dieses logische Netzwerk dient zum Erstellen von VM-Netzwerken für Testfailover.<br/><br/>Das logische Netzwerk muss mindestens einem der Netzwerkadapter aller Hyper-V-Server zugeordnet werden, die virtuelle Computer hosten.<br/><br/>Bei logischen VLAN-Netzwerken müssen die Netzwerkstandorte, die Sie dem logischen Netzwerk hinzufügen, isoliert sein.<br/><br/>Bei Verwendung eines logischen Netzwerks, das auf der Windows-Netzwerkvirtualisierung basiert, erstellt Azure Site Recovery automatisch isolierte VM-Netzwerke. 
-**Netzwerk erstellen** | Auf der Grundlage der Einstellung, die Sie unter **Logisches Netzwerk** angeben und den zugehörigen Netzwerkstandorten wird automatisch ein temporäres Testnetzwerk erstellt.<br/><br/> Beim Failover wird überprüft, ob die virtuellen Computer erstellt werden. |Sie sollten diese Option verwenden, wenn für den Wiederherstellungsplan mehrere VM-Netzwerke verwendet werden.<br/><br/> Im Falle von Netzwerken, die auf der Windows-Netzwerkvirtualisierung basieren, kann diese Option im Netzwerk des virtuellen Replikatcomputers automatisch VM-Netzwerke mit den gleichen Einstellungen (Subnetze und IP-Adresspools) erstellen. Diese VM-Netzwerke werden nach dem Test-Failover automatisch bereinigt.<br/><br/> Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt.
+| **Option** | **Details** | |
+| --- | --- | --- |
+| **Keine** | Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt und ist mit keinem Netzwerk verbunden.<br/><br/> Der Computer kann nach der Erstellung mit einem VM-Netzwerk verbunden werden.| |
+| **Vorhandene verwenden** | Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt.<br/><br/>Erstellen Sie ein von Ihrem Produktionsnetzwerk isoliertes VM-Netzwerk.<br/><br/>Bei Verwendung eines VLAN-basierten Netzwerks empfiehlt es sich, hierzu in VMM ein separates logisches Netzwerk zu erstellen, das nicht in der Produktionsumgebung verwendet wird. Dieses logische Netzwerk dient zum Erstellen von VM-Netzwerken für Testfailover.<br/><br/>Das logische Netzwerk muss mindestens einem der Netzwerkadapter aller Hyper-V-Server zugeordnet werden, die virtuelle Computer hosten.<br/><br/>Bei logischen VLAN-Netzwerken müssen die Netzwerkstandorte, die Sie dem logischen Netzwerk hinzufügen, isoliert sein.<br/><br/>Bei Verwendung eines logischen Netzwerks, das auf der Windows-Netzwerkvirtualisierung basiert, erstellt Azure Site Recovery automatisch isolierte VM-Netzwerke. | |
+| **Netzwerk erstellen** | Auf der Grundlage der Einstellung, die Sie unter **Logisches Netzwerk** angeben und den zugehörigen Netzwerkstandorten wird automatisch ein temporäres Testnetzwerk erstellt.<br/><br/> Beim Failover wird überprüft, ob die virtuellen Computer erstellt werden.<br/><br/> Sie sollten diese Option verwenden, wenn für den Wiederherstellungsplan mehrere VM-Netzwerke verwendet werden.<br/><br/> Im Falle von Netzwerken, die auf der Windows-Netzwerkvirtualisierung basieren, kann diese Option im Netzwerk des virtuellen Replikatcomputers automatisch VM-Netzwerke mit den gleichen Einstellungen (Subnetze und IP-Adresspools) erstellen. Diese VM-Netzwerke werden nach dem Test-Failover automatisch bereinigt.<br/><br/> Der virtuelle Testcomputer wird auf dem Host erstellt, auf dem sich auch der virtuelle Replikatcomputer befindet. Er wird nicht der Cloud hinzugefügt.|
 
 ### <a name="best-practices"></a>Bewährte Methoden
 

@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 5f142192571bdd15a33575a425d75baf3e5caea2
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 336a2a3fd98f7829694eb095ff2646d9d361afd3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55243486"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58097319"
 ---
 # <a name="tutorial-deploy-a-hybrid-cloud-solution-with-azure-and-azure-stack"></a>Tutorial: Bereitstellen einer Hybrid Cloud-Lösung mit Azure und Azure Stack
 
@@ -65,7 +65,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
   - Ein Windows Server 2016-Image
   - Eine Windows Server 2016-Instanz mit einem Microsoft SQL Server-Image
   - Die entsprechenden Tarife und Angebote
- - Ein Domänenname für Ihre Webanwendung. Wenn Sie keinen Domänennamen besitzen, können Sie einen von einem Domänenanbieter wie GoDaddy, Bluehost oder InMotion erwerben.
+  - Ein Domänenname für Ihre Webanwendung. Wenn Sie keinen Domänennamen besitzen, können Sie einen von einem Domänenanbieter wie GoDaddy, Bluehost oder InMotion erwerben.
 - Ein SSL-Zertifikat für Ihre Domäne von einer vertrauenswürdigen Zertifizierungsstelle, z.B. LetsEncrypt.
 - Eine Webanwendung, die mit einer SQL Server-Datenbank kommuniziert und Application Insights unterstützt. Sie können die Beispiel-App [dotnetcore-sqldb-tutorial](https://github.com/Azure-Samples/dotnetcore-sqldb-tutorial) von GitHub herunterladen.
 - Ein Hybridnetzwerk zwischen einem virtuellen Azure-Netzwerk und einem virtuellen Azure Stack-Netzwerk. Eine ausführliche Anleitung finden Sie unter [Konfigurieren der Hybrid Cloud-Konnektivität mit Azure und Azure Stack](azure-stack-solution-hybrid-connectivity.md).
@@ -94,19 +94,19 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
 7. Konfigurieren Sie unter **Einstellungen > Optionale Features konfigurieren** die folgenden Einstellungen:
 
-    - **Speicherkonto**: Erstellen Sie ein neues Konto, falls erforderlich.
-    - **Virtuelles Netzwerk**
+   - **Speicherkonto**: Erstellen Sie ein neues Konto, falls erforderlich.
+   - **Virtuelles Netzwerk**
 
-      > [!Important]  
-      > Stellen Sie sicher, dass Ihre SQL Server-VM in demselben virtuellen Netzwerk wie die VPN-Gateways bereitgestellt wird.
+     > [!Important]  
+     > Stellen Sie sicher, dass Ihre SQL Server-VM in demselben virtuellen Netzwerk wie die VPN-Gateways bereitgestellt wird.
 
-    - **Öffentliche IP-Adresse:** Sie können die Standardeinstellungen verwenden.
-    - **Netzwerksicherheitsgruppe (NSG):** Erstellen Sie eine neue NSG.
-    - **Extensions and Monitoring** (Erweiterungen und Überwachung): Behalten Sie die Standardeinstellungen bei.
-    - **Diagnosespeicherkonto:** Erstellen Sie ein neues Konto, falls erforderlich.
-    - Wählen Sie **OK**, um Ihre Konfiguration zu speichern.
+   - **Öffentliche IP-Adresse:** Sie können die Standardeinstellungen verwenden.
+   - **Netzwerksicherheitsgruppe (NSG):** Erstellen Sie eine neue NSG.
+   - **Extensions and Monitoring** (Erweiterungen und Überwachung): Behalten Sie die Standardeinstellungen bei.
+   - **Diagnosespeicherkonto:** Erstellen Sie ein neues Konto, falls erforderlich.
+   - Wählen Sie **OK**, um Ihre Konfiguration zu speichern.
 
-    ![Optionale Features konfigurieren](media/azure-stack-solution-hybrid-cloud/image4.png)
+     ![Optionale Features konfigurieren](media/azure-stack-solution-hybrid-cloud/image4.png)
 
 1. Konfigurieren Sie unter **SQL Server-Einstellungen** die folgenden Einstellungen:
    - Wählen Sie unter **SQL-Konnektivität** die Option **Öffentlich (Internet)**.
@@ -118,7 +118,7 @@ Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind 
 
    - Behalten Sie für die übrigen Einstellungen die Standardwerte bei. Klicken Sie auf **OK**.
 
-    ![Konfigurieren der SQL Server-Einstellungen](media/azure-stack-solution-hybrid-cloud/image5.png)
+     ![Konfigurieren der SQL Server-Einstellungen](media/azure-stack-solution-hybrid-cloud/image5.png)
 
 9. Sehen Sie sich unter **Zusammenfassung** die Konfiguration des virtuellen Computers an, und wählen Sie dann **OK**, um die Bereitstellung zu starten.
 
@@ -391,7 +391,7 @@ Sie erstellen ein Traffic Manager-Profil in Azure und konfigurieren dann die End
 
     ![Erstellen eines Traffic Manager-Profils](media/azure-stack-solution-hybrid-cloud/image19.png)
 
- Wenn die globale Bereitstellung Ihres Traffic Manager-Profils abgeschlossen ist, wird es in der Liste mit den Ressourcen für die Ressourcengruppe angezeigt, unter der Sie es erstellt haben.
+   Wenn die globale Bereitstellung Ihres Traffic Manager-Profils abgeschlossen ist, wird es in der Liste mit den Ressourcen für die Ressourcengruppe angezeigt, unter der Sie es erstellt haben.
 
 ### <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 

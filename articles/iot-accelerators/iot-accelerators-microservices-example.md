@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 95bec451c556ff9f3c5bcccee68f900543639733
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1552c54afe2195d58a032e9cc7bfa5aa70c844b1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55978084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004109"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Anpassen und erneutes Bereitstellen eines Microservice
 
@@ -44,7 +44,7 @@ In diesem Teil rufen Sie die Standard-API des IoT Hub-Manager-Microservice auf. 
 
 1. Vergewissern Sie sich, dass die Remoteüberwachungslösung lokal auf Ihrem Computer ausgeführt wird.
 2. Navigieren Sie zu dem Speicherort, an den Sie Postman heruntergeladen haben, und öffnen Sie die Anwendung.
-3. Geben Sie in Postman die folgende GET-Anforderung ein: http://localhost:8080/iothubmanager/v1/status.
+3. Geben Sie in Postman die folgende GET-Anforderung ein: `http://localhost:8080/iothubmanager/v1/status`.
 4. In der Rückgabe sollte Folgendes angezeigt werden: "Status": "OK:Alive and Well".
 
     ![Postman-Meldung „Alive and Well“](./media/iot-accelerators-microservices-example/postman-alive-well.png)
@@ -144,7 +144,7 @@ Stellen Sie abschließend erneut eine lokale Instanz der Remoteüberwachungslös
     ```
 
 3. Navigieren Sie zu dem Speicherort, an den Sie Postman heruntergeladen haben, und öffnen Sie die Anwendung.
-4. Geben Sie in Postman die folgende GET-Anforderung ein: http://localhost:8080/iothubmanager/v1/status. Nun sollte Folgendes angezeigt werden: "Status": "OK: New Edits Made Here!".
+4. Geben Sie in Postman die folgende GET-Anforderung ein: `http://localhost:8080/iothubmanager/v1/status`. Nun sollte Folgendes angezeigt werden: "Status": "OK: New Edits Made Here!".
 
 ![Postman-Meldung: „New Edits Made Here!“](./media/iot-accelerators-microservices-example/new-postman-message.png)
 

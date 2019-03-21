@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 3ab98669e01c9cfb2d4f46b8ddd83ff69653337b
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: a5b4e0465e83dec5620954998db329e7902fb59c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54434171"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106048"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>Bereitstellen eines virtuellen Computers auf Basis der VHDs
 
@@ -51,13 +51,13 @@ Sie führen die folgenden Schritte aus, um ein Benutzer-VM-Image zu erstellen un
 
 Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image zertifizieren](./cpp-certify-vm.md).
 
-2.  Klicken Sie auf **Neu**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie dann **Eigene Vorlage im Editor erstellen** aus.  <br/>
-  ![Erstellen einer Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_021.png)
+1. Klicken Sie auf **Neu**, suchen Sie nach **Vorlagenbereitstellung**, und wählen Sie dann **Eigene Vorlage im Editor erstellen** aus.  <br/>
+   ![Erstellen einer Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_021.png)
 
-3. Kopieren Sie diese [JSON-Vorlage](./cpp-deploy-json-template.md), fügen Sie sie in den Editor ein, und klicken Sie auf **Speichern**. <br/>
-  ![Speichern der Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_022.png)
+1. Kopieren Sie diese [JSON-Vorlage](./cpp-deploy-json-template.md), fügen Sie sie in den Editor ein, und klicken Sie auf **Speichern**. <br/>
+   ![Speichern der Vorlage für die VHD-Bereitstellung im Azure-Portal](./media/publishvm_022.png)
 
-4. Geben Sie die Parameterwerte für die angezeigten Eigenschaftenseiten für die **benutzerdefinierte Bereitstellung** ein.
+1. Geben Sie die Parameterwerte für die angezeigten Eigenschaftenseiten für die **benutzerdefinierte Bereitstellung** ein.
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
@@ -79,7 +79,7 @@ Nachdem Ihr virtueller Computer bereitgestellt wurde, können Sie [Ihr VM-Image 
    | VHD-URL                     | Vollständige URL der VHD mit dem Betriebssystemdatenträger                                                     |
    |  |  |
             
-5. Nachdem Sie diese Werte angegeben haben, klicken Sie auf **Kauf**. 
+1. Nachdem Sie diese Werte angegeben haben, klicken Sie auf **Kauf**. 
 
 Azure startet die Bereitstellung: Im angegebenen Speicherkontopfad wird eine neue VM mit der angegebenen nicht verwalteten VHD erstellt.  Sie können den Fortschritt im Azure-Portal nachverfolgen, indem Sie im Portal auf der linken Seite auf **Virtuelle Computer** klicken.  Nachdem der virtuelle Computer erstellt wurde, ändert sich der Status von `Starting` zu `Running`. 
 

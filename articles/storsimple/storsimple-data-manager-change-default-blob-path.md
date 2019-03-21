@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: f73d9dcedee5165af752b9e10fb70de860e8e98b
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2018
-ms.locfileid: "27862399"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011633"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>Ändern eines Blobpfads von der Standardeinstellung
 
@@ -33,7 +33,7 @@ Stellen Sie sicher, dass Sie über eine ordnungsgemäß konfigurierte Auftragsde
 
 Führen Sie folgenden Schritte aus, um eine Azure-Funktion zu erstellen:
 
-1. Öffnen Sie das [Azure-Portal](http://portal.azure.com/).
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/).
 
 2. Klicken Sie auf **+ Ressource erstellen**. Geben Sie im Feld **Suchen** den Text **Funktionen-App** ein, und drücken Sie die **EINGABETASTE**. Wählen Sie in der angezeigten Liste der Apps **Funktions-App** aus, und klicken Sie darauf.
 

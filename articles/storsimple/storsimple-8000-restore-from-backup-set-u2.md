@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/23/2017
 ms.author: alkohli
-ms.openlocfilehash: 57290971185d1fd64b3b5ca6ac37535070ddab9e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 6a2e022697ced90d968075b7a4abe4163be7a539
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496481"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082805"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>Wiederherstellen eines StorSimple-Volumes aus einem Sicherungssatz
 
@@ -110,9 +110,9 @@ Sie können Ihr StorSimple-Volume auf dem Blatt **Sicherungskatalog** aus einer 
    3. Wählen Sie in der Dropdownliste das Volume oder die Sicherungsrichtlinie für die gewünschte Sicherung aus.
    4. Klicken Sie auf **Anwenden**, um diese Abfrage durchzuführen.
 
-    Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
+      Die dem ausgewählten Volume oder der Sicherungsrichtlinie zugeordneten Sicherungen sollten in der Liste der Sicherungssätze angezeigt werden.
    
-    ![Liste der Sicherungssätze](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
+      ![Liste der Sicherungssätze](./media/storsimple-8000-restore-from-backup-set-u2/bucatalog.png)     
      
 3. Erweitern Sie einen Sicherungssatz, um die zugehörigen Volumes anzuzeigen. Diese Volumes müssen auf dem Host und dem Gerät offline geschaltet werden, bevor sie wiederhergestellt werden können. Greifen Sie auf dem Blatt **Volumes** auf Ihr Gerät zu, und führen Sie dann die Schritte in [Offlineschalten eines Volumes](storsimple-8000-manage-volumes-u2.md#take-a-volume-offline) durch, um diese offline zu schalten.
    
@@ -127,9 +127,9 @@ Sie können Ihr StorSimple-Volume auf dem Blatt **Sicherungskatalog** aus einer 
    
     ![Bestätigungsseite](./media/storsimple-8000-restore-from-backup-set-u2/restorebu2.png)
 
-7.  Klicken Sie auf **Wiederherstellen**. Damit initiieren Sie einen Wiederherstellungsauftrag, den Sie auf der Seite **Aufträge** anzeigen können.
+7. Klicken Sie auf **Wiederherstellen**. Damit initiieren Sie einen Wiederherstellungsauftrag, den Sie auf der Seite **Aufträge** anzeigen können.
 
-    ![Bestätigungsseite](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
+   ![Bestätigungsseite](./media/storsimple-8000-restore-from-backup-set-u2/restorebu5.png)
 
 8. Überprüfen Sie, nachdem die Wiederherstellung abgeschlossen ist, ob die Inhalte der Volumes durch die aus der Sicherung ersetzt wurden.
 

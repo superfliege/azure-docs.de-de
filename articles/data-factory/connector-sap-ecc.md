@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d6a6d9b352db61d98e85c840a3ebc5cb6a832a3f
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: d86264b632daa09a899fae28e73e117b16322617
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121960"
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Kopieren von Daten aus SAP ECC mithilfe von Azure Data Factory
 
@@ -53,8 +53,8 @@ Folgende Eigenschaften werden für den mit SAP ECC verknüpften Dienst unterstü
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapEcc** | JA |
-| URL | Die URL des SAP ECC OData-Diensts | JA |
+| type | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **SapEcc** | Ja |
+| URL | Die URL des SAP ECC OData-Diensts | Ja |
 | username | Der Benutzername, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | password | Das Klartextkennwort, mit dem die Verbindung mit SAP ECC hergestellt wird | Nein  |
 | connectVia | Die [Integration Runtime](concepts-integration-runtime.md), die zum Herstellen einer Verbindung mit dem Datenspeicher verwendet werden muss. Sie können die selbstgehostete Integration Runtime oder Azure Integration Runtime verwenden (sofern Ihr Datenspeicher öffentlich zugänglich ist). Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. |Nein  |
@@ -90,7 +90,7 @@ Legen Sie zum Kopieren von Daten aus SAP ECC die type-Eigenschaft des Datasets a
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| path | Pfad der SAP ECC OData-Entität | JA |
+| path | Pfad der SAP ECC OData-Entität | Ja |
 
 **Beispiel**
 
@@ -120,8 +120,8 @@ Legen Sie zum Kopieren von Daten aus SAP ECC den Quelltyp in der Kopieraktivitä
 
 | Eigenschaft | BESCHREIBUNG | Erforderlich |
 |:--- |:--- |:--- |
-| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapEccSource** | JA |
-| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: „$select=Name,Description&$top=10“.<br/><br/>Das SAP ECC-Connector kopiert Daten aus der kombinierten URL: (im verknüpften Dienst angegebene URL)/(im Dataset angegebener Pfad)?(in der Quelle der Kopieraktivität angegebene Abfrage). Lesen Sie hierzu [OData-URL-Komponenten](http://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein  |
+| type | Die type-Eigenschaft der Quelle der Kopieraktivität muss auf Folgendes festgelegt werden: **SapEccSource** | Ja |
+| query | OData-Abfrageoptionen zum Filtern von Daten. Beispiel: „$select=Name,Description&$top=10“.<br/><br/>Das SAP ECC-Connector kopiert Daten aus der kombinierten URL: (im verknüpften Dienst angegebene URL)/(im Dataset angegebener Pfad)?(in der Quelle der Kopieraktivität angegebene Abfrage). Lesen Sie hierzu [OData-URL-Komponenten](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nein  |
 
 **Beispiel:**
 
@@ -160,12 +160,12 @@ Legen Sie zum Kopieren von Daten aus SAP ECC den Quelltyp in der Kopieraktivitä
 Beim Kopieren von Daten aus SAP ECC werden die folgenden Zuordnungen von OData-Datentypen für SAP ECC zu Azure Data Factory-Zwischendatentypen verwendet. Unter [Schema- und Datentypzuordnungen](copy-activity-schema-and-type-mapping.md) erfahren Sie, wie Sie Aktivitätszuordnungen für Quellschema und Datentyp in die Senke kopieren.
 
 | OData-Datentyp | Data Factory-Zwischendatentyp |
-|:--- |:--- |:--- |
+|:--- |:--- |
 | Edm.Binary | Zeichenfolge |
 | Edm.Boolean | Bool |
 | Edm.Byte | Zeichenfolge |
-| Edm.DateTime | Datetime |
-| Edm.Decimal | DECIMAL |
+| Edm.DateTime | DateTime |
+| Edm.Decimal | Decimal |
 | Edm.Double | Double |
 | Edm.Single | Single |
 | Edm.Guid | Zeichenfolge |
@@ -173,8 +173,8 @@ Beim Kopieren von Daten aus SAP ECC werden die folgenden Zuordnungen von OData-D
 | Edm.Int32 | Int32 |
 | Edm.Int64 | Int64 |
 | Edm.SByte | Int16 |
-| Edm.String | Zeichenfolge |
-| Edm.Time | Zeitraum |
+| Edm.String | String |
+| Edm.Time | TimeSpan |
 | Edm.DateTimeOffset | DateTimeOffset |
 
 > [!NOTE]

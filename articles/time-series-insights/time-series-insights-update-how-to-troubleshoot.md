@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: e44a02e2126e7b25f69999de34fe5cf42499a90c
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: eb1c302bf1954492ba2a7a78d16fc697fdf4b687
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556831"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080436"
 ---
 # <a name="diagnose-and-troubleshoot"></a>Diagnostizieren und Behandeln von Problemen
 
@@ -43,16 +43,16 @@ Es gibt verschiedene mögliche Gründe, aus denen Ihre Daten im [Azure Time Seri
 
 - Dem Schlüssel Ihrer Ereignisquelle fehlt eine erforderliche Berechtigung.
 
-    * Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
+  * Für IoT Hub müssen Sie einen Schlüssel mit der Berechtigung **Dienstverbindung** bereitstellen.
 
     ![Konfiguration][3]
 
-    * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **iothubowner** und **service** funktionieren, da sie die Berechtigung **Dienstverbindung** besitzen.
-    * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
+  * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **iothubowner** und **service** funktionieren, da sie die Berechtigung **Dienstverbindung** besitzen.
+  * Für einen Event Hub müssen Sie einen Schlüssel mit der Berechtigung **Lauschen** bereitstellen.
   
     ![Berechtigungen][4]
 
-    * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **read** und **write** funktionieren, da sie die Berechtigung **Lauschen** besitzen.
+  * Wie in der vorherigen Abbildung dargestellt, würden beide Richtlinien **read** und **write** funktionieren, da sie die Berechtigung **Lauschen** besitzen.
 
 - Ihre bereitgestellte Consumergruppe ist für Time Series Insights nicht exklusiv.
 

@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/14/2017
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 8fc85f82e5b6290a0f7401581e57b77473a495ae
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 770a494e93a51fc018b2bfe803ac15ba543f35d4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454010"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58011350"
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Aktivieren der Azure-Speichermetriken und Anzeigen von Metrikdaten
 [!INCLUDE [storage-selector-portal-enable-and-view-metrics](../../../includes/storage-selector-portal-enable-and-view-metrics.md)]
@@ -113,7 +113,7 @@ Zahlreiche Drittanbietertools zum Durchsuchen des Speichers erkennen diese Tabel
 Eine Liste der verfügbaren Tools finden Sie unter [Azure Storage-Clienttools](storage-explorers.md).
 
 > [!NOTE]
-> Ab Version 0.8.0 des [Microsoft Azure Storage-Explorers](http://storageexplorer.com/) können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
+> Ab Version 0.8.0 des [Microsoft Azure Storage-Explorers](https://storageexplorer.com/) können Sie die Tabellen mit Analysemetriken anzeigen und herunterladen.
 >
 >
 

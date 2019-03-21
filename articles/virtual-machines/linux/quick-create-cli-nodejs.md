@@ -14,19 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 569e90c7908ce435689a80f7917b20275703f537
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987850"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57990420"
 ---
 # <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Erstellen eines virtuellen Linux-Computers mit der klassischen Azure-Befehlszeilenschnittstelle
 
 In diesem Artikel wird erläutert, wie Sie mit dem Befehl `azure vm quick-create` in der Azure-Befehlszeilenschnittstelle (CLI) schnell einen virtuellen Linux-Computer (VM) bereitstellen können. Der Befehl `quick-create` stellt eine VM in einer sicheren Basisinfrastruktur bereit, mit der Sie rasch einen Prototyp erstellen oder ein Konzept testen können.
 
 > [!NOTE]
-Wenn Sie einen virtuellen Computer mit der Azure-Befehlszeilenschnittstelle erstellen möchten, lesen Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers per Azure CLI 2.0](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
+> Wenn Sie einen virtuellen Computer mit der Azure-Befehlszeilenschnittstelle erstellen möchten, lesen Sie unter [Schnellstart: Erstellen eines virtuellen Windows-Computers per Azure CLI 2.0](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) weiter.
 
 Sie können eine Linux-VM auch schnell über das [Azure-Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)bereitstellen.
 
@@ -184,7 +184,7 @@ Welcome to Ubuntu 14.04.4 LTS (GNU/Linux 3.19.0-65-generic x86_64)
     https://landscape.canonical.com/
 
   Get cloud support with Ubuntu Advantage Cloud Guest:
-    http://www.ubuntu.com/business/services/cloud
+    https://www.ubuntu.com/business/services/cloud
 
 0 packages can be updated.
 0 updates are security updates.

@@ -12,16 +12,16 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 5a24bf415cd575ebf62a2843207872c66bbeb021
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 1ffaefc51121aeb7421d6e49a3c0e58c76d4391e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989859"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58177635"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-net-legacy"></a>Konfigurieren der Azure Media Services-Telemetrie mit .NET (veraltet)
+# <a name="configuring-azure-media-services-telemetry-with-net"></a>Konfigurieren der Azure Media Services-Telemetrie mit .NET 
 
 Diese Artikel beschreibt allgemeine Schritte, die Sie zum Konfigurieren der Azure Media Services-Telemetrie (AMS) mit .NET SDK ausführen können. 
 

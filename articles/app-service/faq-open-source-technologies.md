@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 07912dab52cb0569428d070282551eebbdb1c7bc
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
+ms.openlocfilehash: 7831e5e989835b2c9432dbd61a242584a7b6244d
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191444"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082941"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Häufig gestellte Fragen zu Open-Source-Technologien für Web-Apps in Azure | Microsoft-Dokumentation
 
@@ -44,10 +44,10 @@ So aktivieren Sie die PHP-Protokollierung
 9. Wählen Sie **Speichern** aus.
 10. Aktivieren Sie das Stiftsymbol neben **wp-config.php**.
 11. Ändern Sie den Text in den folgenden Code:
-   ```php
-   //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
-   //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
-   ```
+    ```php
+    //Enable WP_DEBUG modedefine('WP_DEBUG', true);//Enable debug logging to /wp-content/debug.logdefine('WP_DEBUG_LOG', true);
+    //Suppress errors and warnings to screendefine('WP_DEBUG_DISPLAY', false);//Suppress PHP errors to screenini_set('display_errors', 0);
+    ```
 12. Starten Sie im Azure-Portal im Menü „Web-App“ Ihre Web-App neu.
 
 Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokollen](https://blogs.msdn.microsoft.com/azureossds/2015/10/09/logging-php-errors-in-wordpress-2/).
@@ -59,31 +59,31 @@ Weitere Informationen finden Sie unter [Aktivieren von WordPress-Fehlerprotokoll
 
 Um die Version der Node.js-Anwendung zu ändern, können Sie eine der folgenden Optionen wählen:
 
-*   Öffnen Sie im Azure-Portal **App-Einstellungen**.
-    1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
-    2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
-    3. In **App-Einstellungen** können Sie WEBSITE_NODE_DEFAULT_VERSION als Schlüssel und die gewünschte Version von Node.js als Wert hinzufügen.
-    4. Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net).
-    5. Um die Node.js-Version zu überprüfen, geben Sie den folgenden Befehl ein:  
-   ```
-   node -v
-   ```
-*   Bearbeiten Sie die Datei „iisnode.yml“. Durch Ändern der Node.js-Version in der Datei „iisnode.yml“ wird nur die Laufzeitumgebung festgelegt, die iisnode verwendet. Kudu CMD u.a. nutzen weiter die Node.js-Version, die **App-Einstellungen** im Azure-Portal festgelegt ist.
+* Öffnen Sie im Azure-Portal **App-Einstellungen**.
+  1. Navigieren Sie im Azure-Portal zu Ihrer Web-App.
+  2. Klicken Sie auf dem Blatt **Einstellungen** auf **Anwendungseinstellungen**.
+  3. In **App-Einstellungen** können Sie WEBSITE_NODE_DEFAULT_VERSION als Schlüssel und die gewünschte Version von Node.js als Wert hinzufügen.
+  4. Wechseln Sie zu Ihrer [Kudu-Konsole](https://*yourwebsitename*.scm.azurewebsites.net).
+  5. Um die Node.js-Version zu überprüfen, geben Sie den folgenden Befehl ein:  
+     ```
+     node -v
+     ```
+* Bearbeiten Sie die Datei „iisnode.yml“. Durch Ändern der Node.js-Version in der Datei „iisnode.yml“ wird nur die Laufzeitumgebung festgelegt, die iisnode verwendet. Kudu CMD u.a. nutzen weiter die Node.js-Version, die **App-Einstellungen** im Azure-Portal festgelegt ist.
 
-    Um „iisnode.yml“ manuell festzulegen, erstellen Sie die Datei „iisnode.yml“ im Stammordner der App. Fügen Sie der Datei die folgende Zeile hinzu:
-   ```yml
-   nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-   ```
+  Um „iisnode.yml“ manuell festzulegen, erstellen Sie die Datei „iisnode.yml“ im Stammordner der App. Fügen Sie der Datei die folgende Zeile hinzu:
+  ```yml
+  nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+  ```
    
-*   Legen Sie die Datei „iisnode.yml“ mithilfe der Datei „package.json“ während der Bereitstellung der Quellcodeverwaltung fest.
-    Der Azure-Quellcodeverwaltungsprozess umfasst die folgenden Schritte:
-    1. Das Verschieben von Inhalt in die Azure-Web-App.
-    2. Das Erstellen eines Standardbereitstellungsskripts, wenn keines vorhanden ist (deploy.cmd, Bereitstellungsdateien), im Stammordner der Web-App.
-    3. Das Ausführen eines Bereitstellungsskripts, in dem die Datei „iisnode.yml“ erstellt wird, wenn Sie die Node.js-Version in der Datei „package.json“ unter „engines“ angeben: `"engines": {"node": "5.9.1","npm": "3.7.3"}`
-    4. Die Datei „iisnode.yml“ enthält die folgende Codezeile:
-        ```yml
-        nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
-        ```
+* Legen Sie die Datei „iisnode.yml“ mithilfe der Datei „package.json“ während der Bereitstellung der Quellcodeverwaltung fest.
+  Der Azure-Quellcodeverwaltungsprozess umfasst die folgenden Schritte:
+  1. Das Verschieben von Inhalt in die Azure-Web-App.
+  2. Das Erstellen eines Standardbereitstellungsskripts, wenn keines vorhanden ist (deploy.cmd, Bereitstellungsdateien), im Stammordner der Web-App.
+  3. Das Ausführen eines Bereitstellungsskripts, in dem die Datei „iisnode.yml“ erstellt wird, wenn Sie die Node.js-Version in der Datei „package.json“ unter „engines“ angeben: `"engines": {"node": "5.9.1","npm": "3.7.3"}`
+  4. Die Datei „iisnode.yml“ enthält die folgende Codezeile:
+      ```yml
+      nodeProcessCommandLine: "D:\Program Files (x86)\nodejs\5.9.1\node.exe"
+      ```
 
 ## <a name="i-see-the-message-error-establishing-a-database-connection-in-my-wordpress-app-thats-hosted-in-app-service-how-do-i-troubleshoot-this"></a>Mir wird die Meldung „Fehler beim Herstellen einer Datenbankverbindung“ in meiner WordPress-App angezeigt, die in App Service gehostet wird. Wie kann ich das Problem beheben?
 

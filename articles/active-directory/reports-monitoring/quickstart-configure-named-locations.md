@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbb50d22b5e0bd1a247dd806f45d9e4519214aba
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 328393d78514b236707cff1cedb9c34680900015
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208179"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120328"
 ---
 # <a name="quickstart-configure-named-locations-in-azure-active-directory"></a>Schnellstart: Konfigurieren benannter Orte in Azure Active Directory
 
@@ -53,11 +53,11 @@ Für die Durchführung dieses Schnellstarts benötigen Sie Folgendes:
 
 6. Füllen Sie das Formular auf der neuen Seite aus. 
 
-    * Geben Sie im Feld **Name** einen Namen für den benannten Ort ein.
-    * Geben Sie im Textfeld **IP-Adressbereiche** den IP-Adressbereich im CIDR-Format ein.  
-    * Klicken Sie auf **Create**.
+   * Geben Sie im Feld **Name** einen Namen für den benannten Ort ein.
+   * Geben Sie im Textfeld **IP-Adressbereiche** den IP-Adressbereich im CIDR-Format ein.  
+   * Klicken Sie auf **Create**.
     
-    ![Das Blatt „Neu“](./media/quickstart-configure-named-locations/61.png)
+     ![Das Blatt „Neu“](./media/quickstart-configure-named-locations/61.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

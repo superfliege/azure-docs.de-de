@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 8b47d57d21043de97e17b256a39ef88d73fbb1c1
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54197606"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010084"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>Konfigurieren der geografischen Routingmethode für Datenverkehr mithilfe von Traffic Manager
 
@@ -23,7 +23,7 @@ Die geografische Routingmethode für Datenverkehr ermöglicht das Leiten von Dat
 
 ## <a name="create-a-traffic-manager-profile"></a>Erstellen eines Traffic Manager-Profils
 
-1. Melden Sie sich im Browser beim [Azure-Portal](http://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren.
+1. Melden Sie sich im Browser beim [Azure-Portal](https://portal.azure.com) an. Falls Sie noch nicht über ein Azure-Konto verfügen, können Sie sich für eine [kostenlose einmonatige Testversion](https://azure.microsoft.com/free/) registrieren.
 2. Klicken Sie auf **Ressource erstellen** > **Netzwerk** > **Traffic Manager-Profil** > **Erstellen**.
 4. Führen Sie unter **Traffic Manager-Profil erstellen** folgende Aktionen aus:
     1. Geben Sie einen Namen für Ihr Profil an. Dieser Name muss innerhalb der Zone trafficmanager.net eindeutig sein. Um auf das Traffic Manager-Profil zuzugreifen, verwenden Sie den DNS-Namen „<profilename>.trafficmanager.net“.

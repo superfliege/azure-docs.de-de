@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 11/20/2018
 ms.author: michaelhauss
 ms.subservice: blobs
-ms.openlocfilehash: 65ecaaea09c28c31d76f31dc447108273b379f9e
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1ab799ef7eb9d7c591e76ab9180d4e3f4ba6ba59
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55811663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58007284"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Verwenden des Blobspeichers mit iOS
 
@@ -124,7 +124,7 @@ Jeder Blob in Azure Storage muss sich in einem Container befinden. Das folgende 
 }
 ```
 
-Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass [newcontainer](http://storageexplorer.com) sich im *Microsoft Azure Storage-Explorer* in der Liste der Container für das Speicherkonto befindet.
+Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass [newcontainer](https://storageexplorer.com) sich im *Microsoft Azure Storage-Explorer* in der Liste der Container für das Speicherkonto befindet.
 
 ## <a name="set-container-permissions"></a>Festlegen von Containerberechtigungen
 Die Berechtigungen eines Containers werden standardmäßig für den **Privatzugriff** konfiguriert. Container bieten jedoch einige unterschiedliche Optionen für den Containerzugriff:
@@ -203,7 +203,7 @@ Das folgende Beispiel zeigt den Upload eines Blockblobs aus einer NSString. Wenn
 }
 ```
 
-Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure Storage-Explorer](http://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
+Sie können überprüfen, ob dies funktioniert, indem Sie sich vergewissern, dass der Container *containerpublic* im [Microsoft Azure Storage-Explorer](https://storageexplorer.com) das Blob *sampleblob* enthält. In diesem Beispiel haben Sie einen öffentlichen Container verwendet, sodass Sie die Funktionsweise der Anwendung auch durch das Aufrufen der Blob-URI überprüfen können:
 
     https://nameofyourstorageaccount.blob.core.windows.net/containerpublic/sampleblob
 
@@ -378,10 +378,10 @@ Das folgende Beispiel zeigt den Löschvorgang eines Containers.
 Da Sie jetzt die Verwendung von Blobspeicher in iOS kennen, folgen Sie diesen Links, um weitere Informationen zur iOS-Bibliothek und dem Speicherdienst zu erhalten.
 
 * [Azure Storage-Clientbibliothek für iOS](https://github.com/azure/azure-storage-ios)
-* [Azure Storage-iOS-Referenzdokumentation](http://azure.github.io/azure-storage-ios/)
+* [Azure Storage-iOS-Referenzdokumentation](https://azure.github.io/azure-storage-ios/)
 * [REST-API für Azure-Speicherdienste](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage-Teamblog](https://blogs.msdn.com/b/windowsazurestorage)
 
-Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese im [MSDN Azure-Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder auf [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
+Wenn Sie Fragen zu dieser Bibliothek haben, können Sie diese im [MSDN Azure-Forum](https://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) oder auf [Stack Overflow](https://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) stellen.
 Richten Sie Vorschläge für Azure Storage-Features an [Feedback zu Azure Storage](https://feedback.azure.com/forums/217298-storage/).
 

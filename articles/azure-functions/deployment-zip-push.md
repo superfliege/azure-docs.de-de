@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2762e5c4f2b67415a0e42e80a34ae5b34c57adc9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717217"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086580"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>ZIP-Bereitstellung für Azure Functions
 
@@ -51,13 +51,13 @@ Allerdings haben Sie Ihre Funktionen möglicherweise mithilfe des Editors im Azu
 
 + **Im Azure-Portal**
 
-    1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie dann zu Ihrer Funktions-App.
+  1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und navigieren Sie dann zu Ihrer Funktions-App.
 
-    2. Wählen Sie auf der Registerkarte **Übersicht** den Befehl **App-Inhalt herunterladen** aus. Wählen Sie Ihre Downloadoptionen und anschließend **Herunterladen** aus.
+  2. Wählen Sie auf der Registerkarte **Übersicht** den Befehl **App-Inhalt herunterladen** aus. Wählen Sie Ihre Downloadoptionen und anschließend **Herunterladen** aus.
 
-        ![Herunterladen des Funktions-App-Projekts](./media/deployment-zip-push/download-project.png)
+      ![Herunterladen des Funktions-App-Projekts](./media/deployment-zip-push/download-project.png)
 
-    Die heruntergeladene ZIP-Datei weist das richtige Format auf, um mithilfe der ZIP-Push-Bereitstellung wieder in Ihrer Funktions-App veröffentlicht zu werden. Beim Herunterladen im Portal können auch die Dateien hinzugefügt werden, die zum Öffnen der Funktionen-App direkt in Visual Studio erforderlich sind.
+     Die heruntergeladene ZIP-Datei weist das richtige Format auf, um mithilfe der ZIP-Push-Bereitstellung wieder in Ihrer Funktions-App veröffentlicht zu werden. Beim Herunterladen im Portal können auch die Dateien hinzugefügt werden, die zum Öffnen der Funktionen-App direkt in Visual Studio erforderlich sind.
 
 + **Mit REST-APIS**
 

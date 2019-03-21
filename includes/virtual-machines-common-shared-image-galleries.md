@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
-ms.openlocfilehash: f8122f35ac6d604908fc31dcece7dfb53dd50286
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55985425"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051758"
 ---
 Der Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre benutzerdefinierten verwalteten VM-Images zu strukturieren und organisieren. Mit einem Katalog mit freigegebenen Images können Sie Ihre Images für unterschiedliche Benutzer, Dienstprinzipale oder AD-Gruppen in Ihrer Organisation freigeben. Freigegebene Images können zur schnelleren Skalierung Ihrer Bereitstellungen in mehreren Regionen repliziert werden.
 
@@ -128,18 +128,18 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
  
  A. Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg aufzulisten, auf die Sie im Azure-Portal Zugriff haben, führen Sie die folgenden Schritte aus:
 
- 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
- 1. Wechseln Sie zu **Alle Ressourcen**.
- 1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
- 1. Suchen Sie nach Ressourcen vom Typ **Privater Katalog**.
+1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
+1. Wechseln Sie zu **Alle Ressourcen**.
+1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
+1. Suchen Sie nach Ressourcen vom Typ **Privater Katalog**.
  
- Um die Imagedefinitionen und Imageversionen anzuzeigen, sollten Sie ebenfalls **Ausgeblendete Typen anzeigen** auswählen.
+   Um die Imagedefinitionen und Imageversionen anzuzeigen, sollten Sie ebenfalls **Ausgeblendete Typen anzeigen** auswählen.
  
- Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
+   Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
- ```bash
- az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
- ```
+   ```bash
+   az account list -otsv --query "[].id" | xargs -n 1 az sig list --subscription
+   ```
 
 
 **F.** Wie teile ich meine Images über Abonnements hinweg?
@@ -155,9 +155,9 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
  Szenario 2: Wenn Sie ein nicht verwaltetes, generalisiertes Image haben, können Sie daraus ein verwaltetes Image erstellen und dann daraus eine Imagedefinition und eine Imageversion erstellen. 
 
- Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD hochladen, ein verwaltetes Image erstellen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen. 
-    - Wenn die VHD von einer Windows-VM stammt, lesen Sie [Hochladen einer generalisierten VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-    - Wenn die VHD für eine Linux-VM ist, lesen Sie [Hochladen einer VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd).
+ Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD hochladen, ein verwaltetes Image erstellen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
+- Wenn die VHD von einer Windows-VM stammt, lesen Sie [Hochladen einer generalisierten VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
+- Wenn die VHD für eine Linux-VM ist, lesen Sie [Hochladen einer VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd).
 
 
 **F.** Kann ich eine Imageversion von einem speziellen Datenträger erstellen?

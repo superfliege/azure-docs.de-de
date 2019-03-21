@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: aad31e72682e15c49fb3d6dce64e7ef46525cb66
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
+ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051851"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898855"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -90,7 +90,7 @@ Für das Streaming von Anwendungen müssen Sie außerdem responseBufferLimit fü
 
 ### <a name="watchedfiles"></a>watchedFiles
 
-Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;web.config`.
+Eine durch Semikolons getrennte Liste mit Dateien, die auf Änderungen überprüft werden. Jede Änderung einer Datei bewirkt, dass die Anwendung „recycelt“ wird. Jeder Eintrag besteht aus einem optionalen Verzeichnisnamen und einem erforderlichen Dateinamen. Diese Namen gelten relativ zu dem Verzeichnis, in dem sich der Haupteinstiegspunkt der Anwendung befindet. Platzhalter sind nur im Dateinamenteil zulässig. Der Standardwert lautet `*.js;iisnode.yml`.
 
 ### <a name="recyclesignalenabled"></a>recycleSignalEnabled
 
@@ -118,7 +118,7 @@ Der Standardwert ist „false“. Bei der Festlegung auf „true“ zeigt iisnod
 
 ### <a name="debuggingenabled-do-not-enable-on-live-production-site"></a>debuggingEnabled (nicht für aktive Produktionswebsite aktivieren)
 
-Mit dieser Einstellung wird die Debugfunktion gesteuert. iisnode ist in Node-Inspector integriert. Indem Sie diese Einstellung aktivieren, aktivieren Sie das Debuggen Ihrer Node-Anwendung. Nach der Aktivierung dieser Einstellung erstellt iisnode die erforderlichen Node-Inspector-Dateien nach der ersten Debuganforderung an Ihre Node-Anwendung im Verzeichnis „debuggerVirtualDir“. Sie können den Node-Inspector laden, indem Sie eine Anforderung an http://yoursite/server.js/debug senden. Sie können das Debug-URL-Segment mit der Einstellung „debuggerPathSegment“ steuern. Standardmäßig lautet sie „debuggerPathSegment=’debug’“. Sie können `debuggerPathSegment` beispielsweise auf eine GUID festlegen, damit die Ermittlung durch andere Personen erschwert wird.
+Mit dieser Einstellung wird die Debugfunktion gesteuert. iisnode ist in Node-Inspector integriert. Indem Sie diese Einstellung aktivieren, aktivieren Sie das Debuggen Ihrer Node-Anwendung. Nach der Aktivierung dieser Einstellung erstellt iisnode die erforderlichen Node-Inspector-Dateien nach der ersten Debuganforderung an Ihre Node-Anwendung im Verzeichnis „debuggerVirtualDir“. Sie können den Node-Inspector laden, indem Sie eine Anforderung an `http://yoursite/server.js/debug` senden. Sie können das Debug-URL-Segment mit der Einstellung „debuggerPathSegment“ steuern. Standardmäßig lautet sie „debuggerPathSegment=’debug’“. Sie können `debuggerPathSegment` beispielsweise auf eine GUID festlegen, damit die Ermittlung durch andere Personen erschwert wird.
 
 Weitere Informationen zum Debuggen finden Sie unter [Debug node.js applications on Windows](https://tomasz.janczuk.org/2011/11/debug-nodejs-applications-on-windows.html) (Debuggen von node.js-Anwendungen unter Windows).
 
@@ -133,7 +133,7 @@ Das agentkeepalive-Modul stellt sicher, dass Sockets auf Ihrer Azure-Web-App-VM 
 Beispielkonfiguration für [agentKeepAlive](https://www.npmjs.com/package/agentkeepalive):
 
 ```nodejs
-var keepaliveAgent = new Agent({
+let keepaliveAgent = new Agent({
     maxSockets: 40,
     maxFreeSockets: 10,
     timeout: 60000,
@@ -155,9 +155,9 @@ Falls Sie der Meinung sind, dass der CPU-Verbrauch Ihrer Anwendung zu hoch ist, 
 Angenommen, Sie verfügen über eine Hello World-App, für die Sie wie folgt ein Profil erstellen möchten:
 
 ```nodejs
-var http = require('http');
+const http = require('http');
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-Wechseln Sie zur Website der Debugging-Konsole unter https://yoursite.scm.azurewebsites.net/DebugConsole.
+Wechseln Sie zur Website der Debugging-Konsole unter `https://yoursite.scm.azurewebsites.net/DebugConsole`.
 
 Wechseln Sie in das Verzeichnis „site/wwwroot“. Es wird eine Eingabeaufforderung wie im folgenden Beispiel angezeigt:
 
@@ -185,12 +185,12 @@ Dieser Befehl installiert v8-profiler im Verzeichnis „node\_modules“ und fü
 Bearbeiten Sie nun die Datei „server.js“, um das Profil für Ihre Anwendung zu erstellen.
 
 ```nodejs
-var http = require('http');
-var profiler = require('v8-profiler');
-var fs = require('fs');
+const http = require('http');
+const profiler = require('v8-profiler');
+const fs = require('fs');
 
 function WriteConsoleLog() {
-    for(var i=0;i<99999;++i) {
+    for(let i=0;i<99999;++i) {
         console.log('hello world');
     }
 }

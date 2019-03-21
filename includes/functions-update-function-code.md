@@ -6,15 +6,15 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: include
-ms.date: 09/16/2018
+ms.date: 03/12/2019
 ms.author: glenga
-ms.custom: include file
-ms.openlocfilehash: d264477693458ff4132c1f69704a480eed2756e0
-ms.sourcegitcommit: c2c279cb2cbc0bc268b38fbd900f1bac2fd0e88f
+ms.custom: include file, fasttrack-edit
+ms.openlocfilehash: 3b0be31afbce78c0de8dc919245e92bee7af04b0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49988001"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57964151"
 ---
 ## <a name="update-the-function"></a>Aktualisieren der Funktion
 
@@ -22,12 +22,13 @@ Standardmäßig erstellt die Vorlage eine Funktion, die bei Anforderungen einen 
 
 ### <a name="c"></a>C\#
 
-Öffnen Sie die MyHttpTrigger.cs-Codedatei, die Ihre neue Funktion ist, aktualisieren Sie das **AuthorizationLevel**-Attribut in der Funktionsdefinition mit dem Wert `anonymous`, und speichern Sie die Änderungen.
+Öffnen Sie die MyHttpTrigger.cs-Codedatei, die Ihre neue Funktion ist, aktualisieren Sie das **AuthorizationLevel**-Attribut in der Funktionsdefinition mit dem Wert `Anonymous`, und speichern Sie die Änderungen.
 
 ```csharp
 [FunctionName("MyHttpTrigger")]
-        public static IActionResult Run([HttpTrigger(AuthorizationLevel.Anonymous, 
-            "get", "post", Route = null)]HttpRequest req, ILogger log)
+public static async Task<IActionResult> Run(
+    [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
+    ILogger log)
 ```
 
 ### <a name="javascript"></a>JavaScript

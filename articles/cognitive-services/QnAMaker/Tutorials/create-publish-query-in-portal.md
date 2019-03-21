@@ -7,16 +7,16 @@ author: diberry
 manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
-ms.technology: qna-maker
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: b78c19d4fa6b2e5b69e5d7f46cea51d943b808fa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55882147"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121416"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>Tutorial: Erstellen einer Wissensdatenbank und Beantworten von Fragen über das QnA Maker-Portal
 
@@ -25,12 +25,12 @@ In diesem Tutorial erfahren Sie Schritt für Schritt, wie Sie eine Knowledge Bas
 In diesem Tutorial lernen Sie Folgendes: 
 
 > [!div class="checklist"]
-* Erstellen einer Wissensdatenbank über das QnA Maker-Portal
-* Überprüfen, Speichern und Trainieren der Wissensdatenbank
-* Veröffentlichen der Knowledge Base
-* Abfragen der Wissensdatenbank mithilfe von Curl
-
-> [!NOTE] 
+> * Erstellen einer Wissensdatenbank über das QnA Maker-Portal
+> * Überprüfen, Speichern und Trainieren der Wissensdatenbank
+> * Veröffentlichen der Knowledge Base
+> * Abfragen der Wissensdatenbank mithilfe von Curl
+> 
+> [!NOTE]
 > Die programmgesteuerte Version dieses Tutorials steht zusammen mit einer vollständigen Projektmappe im [GitHub-Repository **Azure-Samples/cognitive-services-qnamaker-csharp**](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base) zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -67,7 +67,7 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
     |--|--|--|
     |URL|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |Die Inhalte der häufig gestellten Fragen unter dieser URL sind jeweils als Frage-Antwort-Paar formatiert. QnA Maker kann dieses Format interpretieren, um Fragen und die dazugehörigen Antworten zu extrahieren.|
     |Datei |_In diesem Tutorial nicht verwendet_|Dient zum Hochladen von Dateien für Fragen und Antworten. |
-    |„Chit-chat personality“ (Persönlichkeit für Geplauder)|Der Freund|Dadurch erhalten Sie eine freundliche und lockere Persönlichkeit für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
+    |„Chit-chat personality“ (Smalltalk-Persönlichkeit)|Der Freund|Dadurch erhalten Sie eine freundliche und lockere Persönlichkeit für allgemeine Fragen und Antworten. Die Fragen und Antworten können später bearbeitet werden. |
 
     ![Schritt 4 des Erstellungsprozesses für die Wissensdatenbank](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
 
@@ -81,7 +81,7 @@ Für dieses Tutorial muss ein [QnA Maker-Dienst](../How-To/set-up-qnamaker-servi
 
     ![Speichern und trainieren](../media/qnamaker-tutorial-create-publish-query-in-portal/save-and-train-kb.png)
 
-1. Wählen Sie die letzte Seite mit Fragen und Antworten vom Ende der Tabelle aus. Auf der Seite werden Fragen und Antworten der Persönlichkeit für Geplauder angezeigt. 
+1. Wählen Sie die letzte Seite mit Fragen und Antworten vom Ende der Tabelle aus. Auf der Seite werden Fragen und Antworten der Smalltalk-Persönlichkeit angezeigt. 
 
 1. Wählen Sie auf der Symbolleiste über der Liste mit Fragen und Antworten das Metadatensymbol aus. Daraufhin werden die Metadatentags für die einzelnen Fragen und Antworten angezeigt. Für Fragen im Plauderton ist bereits das Metadatentag **editorial: chit-chat** festgelegt. Dieses Metadatentag wird zusammen mit der ausgewählten Antwort an die Clientanwendung zurückgegeben. Anhand dieser gefilterten Metadaten kann die Clientanwendung (beispielsweise ein Chatbot) zusätzliche Verarbeitungsschritte oder Interaktionen mit dem Benutzer bestimmen.
 
@@ -133,7 +133,7 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
 
     QnA Maker ist zu 42,81 Prozent von dem Ergebnis überzeugt.  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Abfragen einer Antwort im Plauderton mithilfe von Curl
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>Abfragen einer Smalltalk-Antwort mithilfe von Curl
 
 1. Ersetzen Sie `How large can my KB be?` im Curl-fähigen Terminal durch eine Benutzeraussage, die das Ende der Botunterhaltung signalisiert (etwa `Thank you`).   
 
@@ -171,7 +171,7 @@ Nachdem die Wissensdatenbank veröffentlicht wurde, wird der Endpunkt angezeigt.
    
     ```
 
-    Da die Frage `Thank you` exakt einer Frage im Plauderton entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Geplauder zurückgegeben.  
+    Da die Frage `Thank you` exakt einer Smalltalk-Frage entspricht, ist QnA Maker zu 100 Prozent überzeugt. QnA Maker hat auch alle dazugehörigen Fragen sowie die Metadateneigenschaft mit den Informationen zum Metadatentag für Geplauder zurückgegeben.  
 
 ## <a name="use-curl-to-query-for-the-default-answer"></a>Abfragen der Standardantwort mithilfe von Curl
 
@@ -203,7 +203,7 @@ Jede Frage, bei deren Antwort QnA Maker nicht sicher ist, wird mit einer Standar
 
 Weitere Informationen zu unterstützten Datenformaten finden Sie unter [Datenquellen für QnA Maker-Inhalt](../Concepts/data-sources-supported.md). 
 
-Weitere Informationen zu Persönlichkeiten für Geplauder finden Sie [hier](../Concepts/best-practices.md#chit-chat).
+Weitere Informationen zu Smalltalk-Persönlichkeiten finden Sie [hier](../Concepts/best-practices.md#chit-chat).
 
 Weitere Informationen zur Standardantwort finden Sie unter [Keine Übereinstimmung gefunden](../Concepts/confidence-score.md#no-match-found). 
 

@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 20a8d9f5b575fca5471916af0183257f2a43d5cb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328291"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085676"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>Hinzufügen von Sprachanalysetools zu einem Azure Search-Index
 
@@ -46,8 +46,8 @@ Standardmäßig wird das Lucene-Standardanalysetool verwendet, das für Englisch
 
 + Das Analysetool für Englisch von Microsoft führt die Lemmatisierung anstelle der Wortstammerkennung durch. Dadurch können gebeugte und unregelmäßige Wortformen viel besser verarbeitet werden, was zu relevanteren Suchergebnissen führt. 
 
- > [!Tip]
- > Die [Search Analyzer Demo](https://alice.unearth.ai/) bietet eine Gegenüberstellung der Ergebnisse des Lucene-Standardanalysetools, des Analysetools für Englisch von Lucene und des Tools zur Verarbeitung natürlicher Sprache (Englisch) von Microsoft. Die Ergebnisse für Ihre Sucheingaben werden für die einzelnen Analysen nebeneinander angezeigt.
+  > [!Tip]
+  > Die [Search Analyzer Demo](https://alice.unearth.ai/) bietet eine Gegenüberstellung der Ergebnisse des Lucene-Standardanalysetools, des Analysetools für Englisch von Lucene und des Tools zur Verarbeitung natürlicher Sprache (Englisch) von Microsoft. Die Ergebnisse für Ihre Sucheingaben werden für die einzelnen Analysen nebeneinander angezeigt.
 
 ## <a name="configuring-analyzers"></a>Konfigurieren von Analysetools
 

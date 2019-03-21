@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
-ms.openlocfilehash: a78e5c411c03aaff07818c4e45183f8eff40492d
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: 334537e77d5f291dc38e008af7fed9a4ea973265
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55211354"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108847"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>Einrichten von IP-Adressen für Verbindungen mit virtuellen Azure-Computern nach einem Failover
 
@@ -49,8 +49,8 @@ Sehen wir uns mithilfe des fiktiven Unternehmens Woodgrove Bank ein Beispiel fü
 - Woodgrove Bank hostet die Geschäftsanwendungen an einem lokalen Standort. Sie hosten ihre mobilen Apps in Azure.
 - Es ist eine Standort-zu-Standort-VPN-Konnektivität zwischen deren lokalen Edgenetzwerk und dem virtuellen Azure-Netzwerk vorhanden. Aufgrund dieser VPN-Konnektivität erscheint das virtuelle Netzwerk in Azure als Erweiterung des lokalen Netzwerks.
 - Woodgrove möchte die lokalen Workloads in Azure mit Site Recovery replizieren.
- - Woodgrove verfügt über Apps, die von hartcodierten IP-Adressen abhängig sind, daher müssen die IP-Adressen der Apps nach einem Failover zu Azure beibehalten werden.
- - In Azure ausgeführte Ressourcen verwenden den IP-Adressbereich 172.16.1.0/24, 172.16.2.0/24.
+  - Woodgrove verfügt über Apps, die von hartcodierten IP-Adressen abhängig sind, daher müssen die IP-Adressen der Apps nach einem Failover zu Azure beibehalten werden.
+  - In Azure ausgeführte Ressourcen verwenden den IP-Adressbereich 172.16.1.0/24, 172.16.2.0/24.
 
 ![Vor dem Subnetzfailover](./media/site-recovery-network-design/network-design7.png)
 

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7bd4c261af4159429a91bd8b425180037eec8c23
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 112d0bd4b6802179692d0d177775027e552d1170
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56670892"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58085319"
 ---
 # <a name="set-up-a-geofence-by-using-azure-maps"></a>Einrichten eines Geofence mit Azure Maps
 
@@ -25,11 +25,11 @@ Weitere Informationen zu Event Grid finden Sie unter [Azure Event Grid](https://
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-* Hochladen des Geofencebereichs in den Azure Maps-Datendienst per Datenupload-API
-*   Einrichten einer Event Grid-Instanz zum Verarbeiten von Geofence-Ereignissen
-*   Einrichten eines Geofence-Ereignishandlers
-*   Einrichten von Warnungen als Antwort auf Geofence-Ereignisse mit Logic Apps
-*   Verwenden von Azure Maps-Geofencedienst-APIs zum Nachverfolgen, ob sich eine bestimmte Baustellenressource innerhalb des Baustellenbereichs befindet
+> * Hochladen des Geofencebereichs in den Azure Maps-Datendienst per Datenupload-API
+> *   Einrichten einer Event Grid-Instanz zum Verarbeiten von Geofence-Ereignissen
+> *   Einrichten eines Geofence-Ereignishandlers
+> *   Einrichten von Warnungen als Antwort auf Geofence-Ereignisse mit Logic Apps
+> *   Verwenden von Azure Maps-Geofencedienst-APIs zum Nachverfolgen, ob sich eine bestimmte Baustellenressource innerhalb des Baustellenbereichs befindet
 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -150,9 +150,9 @@ Wir nutzen die Anwendung Postman, um den Geofence für die Baustelle mit der Dat
 
 5. Klicken Sie auf „Senden“, und sehen Sie sich den Antwortheader an. Der Adressheader enthält den URI, mit dem auf die Daten zur zukünftigen Verwendung zugegriffen wird bzw. über den diese Daten heruntergeladen werden. Darüber hinaus enthält er eine eindeutige ID (`udId`) für die hochgeladenen Daten.
 
-  ```HTTP
-  https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/mapData/{udId}/status?api-version=1.0&subscription-key={Subscription-key}
+   ```
 
 ## <a name="set-up-an-event-handler"></a>Einrichten eines Ereignishandlers
 
@@ -163,15 +163,15 @@ Sie können auch die [Informationen zu allen unterstützten Ereignishandlern anz
 
 1. Erstellen einer Logik-App im Azure-Portal
 
-  ![Erstellen von Logik-Apps](./media/tutorial-geofence/logic-app.png)
+   ![Erstellen von Logik-Apps](./media/tutorial-geofence/logic-app.png)
 
 2. Wählen Sie einen HTTP-Anforderungstrigger und dann als Aktion im Outlook-Connector die Option zum Senden einer E-Mail aus.
   
-  ![Logic Apps-Schema](./media/tutorial-geofence/logic-app-schema.png)
+   ![Logic Apps-Schema](./media/tutorial-geofence/logic-app-schema.png)
 
 3. Speichern Sie die Logik-App, um den HTTP-URL-Endpunkt zu generieren, und kopieren Sie die HTTP-URL.
 
-  ![Logic Apps-Endpunkt](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps-Endpunkt](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Erstellen eines Abonnements für Azure Maps-Ereignisse
@@ -208,53 +208,53 @@ Im Folgenden sind fünf HTTP-GET-Anforderungen der Geofencing-API angegeben, die
  
 1. Standort 1:
     
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
-  ![Geofence-Abfrage 1](./media/tutorial-geofence/geofence-query1.png)
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.638237&lon=-122.1324831&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
+   ![Geofence-Abfrage 1](./media/tutorial-geofence/geofence-query1.png)
 
-  In der obigen Antwort bedeutet der negative Abstand vom Geofencehauptbereich, dass sich die Ausrüstung innerhalb des Geofence befindet. Der positive Abstand vom Geofence des Unterbereichs bedeutet, dass sich die Ausrüstung außerhalb dieses Unterbereichs befindet. 
+   In der obigen Antwort bedeutet der negative Abstand vom Geofencehauptbereich, dass sich die Ausrüstung innerhalb des Geofence befindet. Der positive Abstand vom Geofence des Unterbereichs bedeutet, dass sich die Ausrüstung außerhalb dieses Unterbereichs befindet. 
 
 2. Standort 2: 
    
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63800&lon=-122.132531&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
     
-  ![Geofence-Abfrage 2](./media/tutorial-geofence/geofence-query2.png)
+   ![Geofence-Abfrage 2](./media/tutorial-geofence/geofence-query2.png)
 
-  Wenn Sie sich die obige JSON-Antwort genau ansehen, erkennen Sie, dass sich die Ausrüstung außerhalb des Unterbereichs und innerhalb des Hauptbereichs befindet. Es wird kein Ereignis ausgelöst und keine E-Mail gesendet.
+   Wenn Sie sich die obige JSON-Antwort genau ansehen, erkennen Sie, dass sich die Ausrüstung außerhalb des Unterbereichs und innerhalb des Hauptbereichs befindet. Es wird kein Ereignis ausgelöst und keine E-Mail gesendet.
 
 3. Standort 3: 
   
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63810783315048&lon=-122.13336020708084&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Geofence-Abfrage 3](./media/tutorial-geofence/geofence-query3.png)
+   ![Geofence-Abfrage 3](./media/tutorial-geofence/geofence-query3.png)
 
-  Eine Zustandsänderung ist eingetreten, und jetzt befindet sich die Ausrüstung sowohl innerhalb des Hauptbereichs als auch innerhalb des Unterbereichs. Ein Ereignis wird veröffentlicht, und eine Benachrichtigungs-E-Mail wird an den Baustellenleiter gesendet.
+   Eine Zustandsänderung ist eingetreten, und jetzt befindet sich die Ausrüstung sowohl innerhalb des Hauptbereichs als auch innerhalb des Unterbereichs. Ein Ereignis wird veröffentlicht, und eine Benachrichtigungs-E-Mail wird an den Baustellenleiter gesendet.
 
 4. Standort 4: 
 
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.637988&lon=-122.1338344&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
   
-  ![Geofence-Abfrage 4](./media/tutorial-geofence/geofence-query4.png)
+   ![Geofence-Abfrage 4](./media/tutorial-geofence/geofence-query4.png)
 
    Wenn Sie sich die entsprechende Antwort genau ansehen, erkennen Sie, dass hier kein Ereignis veröffentlicht wird, obwohl die Ausrüstung den Geofence des Unterbereichs verlassen hat. Anhand des angegebenen Zeitpunkts des Benutzers in der GET-Anforderung können Sie sehen, dass der Geofence des Unterbereichs bezogen auf diesen Zeitpunkt abgelaufen ist und sich die Ausrüstung noch innerhalb des Geofencehauptbereichs befindet. Im Antworttext unter `expiredGeofenceGeometryId` sehen Sie auch die Geometrie-ID des Geofence-Unterbereichs.
 
 
 5. Standort 5:
       
-  ```HTTP
-  https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
-  ```
+   ```HTTP
+   https://atlas.microsoft.com/spatial/geofence/json?subscription-key={subscription-key}&api-version=1.0&deviceId=device_01&udId={udId}&lat=47.63799&lon=-122.134505&userTime=2019-01-16&searchBuffer=5&isAsync=True&mode=EnterAndExit
+   ```
 
-  ![Geofence-Abfrage 5](./media/tutorial-geofence/geofence-query5.png)
+   ![Geofence-Abfrage 5](./media/tutorial-geofence/geofence-query5.png)
 
-  Sie können sehen, dass die Ausrüstung den Geofence des Hauptbereichs der Baustelle verlassen hat. Ein Ereignis wird veröffentlicht, es handelt sich um einen schweren Verstoß, und eine E-Mail mit einer kritischen Warnung wird an den Baustellenleiter gesendet.
+   Sie können sehen, dass die Ausrüstung den Geofence des Hauptbereichs der Baustelle verlassen hat. Ein Ereignis wird veröffentlicht, es handelt sich um einen schweren Verstoß, und eine E-Mail mit einer kritischen Warnung wird an den Baustellenleiter gesendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

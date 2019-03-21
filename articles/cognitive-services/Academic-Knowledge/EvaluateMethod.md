@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
-ms.openlocfilehash: a5ad7005a2ab3d6ed5f9c8fe38db9552e3925a30
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d2e628fb7fc502ef9ba81d20680d66f24fd7d138
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55871318"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58004930"
 ---
 # <a name="evaluate-method"></a>evaluate-Methode
 
@@ -27,7 +27,9 @@ Die **evaluate**-REST-API wird verwendet, um basierend auf einem Abfrageausdruck
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate? 
 ```   
 <br>
+
 ## <a name="request-parameters"></a>Anforderungsparameter  
+
 NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 -----------|-----------|---------|--------
 **expr**       | Textzeichenfolge | Ja | Ein Abfrageausdruck, der angibt, welche Entitäten zurückgegeben werden sollen.
@@ -38,7 +40,9 @@ NAME     | Wert | Erforderlich?  | BESCHREIBUNG
 **orderby** |   Textzeichenfolge | Nein <br>Standard: by decreasing prob | Name eines Attributs, das für die Sortierung der Entitäten verwendet wird. Optional kann „aufsteigend/absteigend“ angegeben werden. Das Format lautet: *name:asc* or *name:desc*.
   
  <br>
+
 ## <a name="response-json"></a>Antwort (JSON)
+
 NAME | BESCHREIBUNG
 -------|-----   
 **expr** |  Der *expr*-Parameter aus der Anforderung.
@@ -46,6 +50,7 @@ NAME | BESCHREIBUNG
 **aborted** | „true“, wenn ein Timeout bei der Anforderung aufgetreten ist.
 
 <br>
+
 #### <a name="example"></a>Beispiel:
 ```
 https://westus.api.cognitive.microsoft.com/academic/v1.0/evaluate?expr=

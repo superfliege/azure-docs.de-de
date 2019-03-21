@@ -9,15 +9,15 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: cf40fd45114659bf1a5da4dbaa6bfa928f34088c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: bb1f4861f3867c592ecab86e85d3a4dfbab6738e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473764"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002953"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Unterstützung von Cross-Origin Resource Sharing (CORS) für die Azure Storage-Dienste
-Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](http://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](http://www.w3.org/TR/cors/).
+Ab Version 2013-08-15 unterstützen die Azure Storage-Dienste Cross-Origin Resource Sharing (CORS) für die Blob-, Tabellen-, Warteschlangen- und Dateidienste. CORS ist eine HTTP-Funktion, die einer Webanwendung in einer Domäne den Zugriff auf Ressourcen in einer anderen Domäne ermöglicht. Webbrowser implementieren eine Sicherheitseinschränkung, die als [Same-Origin-Richtlinie](https://www.w3.org/Security/wiki/Same_Origin_Policy) (Richtlinie desselben Ursprungs) bezeichnet wird und verhindert, dass eine Webseite APIs in einer anderen Domäne aufruft. CORS bietet eine sichere Methode, einer Domäne (der Ursprungsdomäne) das Aufrufen von APIs in einer anderen Domäne zu ermöglichen. Informationen zu CORS finden Sie in der [CORS-Spezifikation](https://www.w3.org/TR/cors/).
 
 Sie können CORS-Regeln einzeln für jeden der Speicherdienste festlegen, indem Sie [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) und [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) aufrufen. Nachdem Sie die CORS-Regeln für den Dienst festgelegt haben, wird durch Auswertung einer korrekt autorisierten Anforderung, die von einer anderen Domäne an den Dienst gesendet wurde, ermittelt, ob die Anforderung gemäß den von Ihnen festgelegten Regeln zulässig ist.
 
@@ -29,7 +29,7 @@ Sie können CORS-Regeln einzeln für jeden der Speicherdienste festlegen, indem 
 ## <a name="understanding-cors-requests"></a>Grundlagen zu CORS-Anforderungen
 Eine CORS-Anforderung von einer Ursprungsdomäne kann aus zwei separaten Anforderungen bestehen:
 
-* Einer Preflight-Anforderung, durch die die vom Dienst auferlegten CORS-Einschränkungen abgefragt werden. Die Preflightanforderung ist erforderlich, sofern die Anforderungsmethode keine [einfache Methode](http://www.w3.org/TR/cors/) (d.h. GET, HEAD oder POST) ist.
+* Einer Preflight-Anforderung, durch die die vom Dienst auferlegten CORS-Einschränkungen abgefragt werden. Die Preflightanforderung ist erforderlich, sofern die Anforderungsmethode keine [einfache Methode](https://www.w3.org/TR/cors/) (d.h. GET, HEAD oder POST) ist.
 * Die für die gewünschte Ressource ausgeführte tatsächliche Anforderung.
 
 ### <a name="preflight-request"></a>Preflight-Anforderung
@@ -146,7 +146,7 @@ Die dritte Anforderung stimmt mit der zweiten Regel in ihrer Ursprungsdomäne un
 > 
 
 ## <a name="understanding-how-the-vary-header-is-set"></a>Grundlagen zum Festlegen des Vary-Headers
-Der *Vary*-Header ist ein HTTP/1.1-Standardheader, der aus einer Gruppe von Anforderungsheaderfeldern besteht, über die dem Browser bzw. Benutzer-Agent mitgeteilt wird, welche Kriterien der Server zur Verarbeitung der Anforderung ausgewählt hat. Der *Vary*-Header wird hauptsächlich von Proxys, Browsern und CDNs verwendet, um zu bestimmen, wie die Antwort zwischengespeichert werden soll. Ausführliche Informationen finden Sie in der Spezifikation zum [Vary-Header](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
+Der *Vary*-Header ist ein HTTP/1.1-Standardheader, der aus einer Gruppe von Anforderungsheaderfeldern besteht, über die dem Browser bzw. Benutzer-Agent mitgeteilt wird, welche Kriterien der Server zur Verarbeitung der Anforderung ausgewählt hat. Der *Vary*-Header wird hauptsächlich von Proxys, Browsern und CDNs verwendet, um zu bestimmen, wie die Antwort zwischengespeichert werden soll. Ausführliche Informationen finden Sie in der Spezifikation zum [Vary-Header](https://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html).
 
 Wenn der Browser oder ein anderer Benutzer-Agent die Antwort von einer CORS-Anforderung zwischenspeichert, wird die Ursprungsdomäne als zulässige Ursprungsdomäne zwischengespeichert. Wenn eine zweite Domäne die Anforderung für eine Speicherressource ausgibt, während der Cache aktiv ist, ruft der Benutzer-Agent die zwischengespeicherte Ursprungsdomäne ab. Die zweite Domäne stimmt nicht mit der zwischengespeicherten Domäne überein, sodass die andernfalls erfolgreiche Anforderung nicht ausgeführt werden kann. In bestimmten Fällen wird der Vary-Header von Azure Storage auf **Origin** festgelegt, um den Benutzer-Agent anzuweisen, die nachfolgende CORS-Anforderung an den Dienst zu senden, wenn sich die anfordernde Domäne von der zwischengespeicherten Ursprungsdomäne unterscheidet.
 
@@ -162,15 +162,15 @@ Bei Anforderungen, die andere Methoden als GET/HEAD verwenden, wird der Vary-Hea
 Der folgenden Tabelle können Sie entnehmen, wie Azure Storage in den oben beschriebenen Fällen auf GET-/HEAD-Anforderungen antwortet:
 
 | Anforderung | Kontoeinstellung und Ergebnis der Regelauswertung |  |  | response |  |  |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- | --- | --- |
 | **Origin-Header für Anforderung vorhanden** |**CORS-Regel(n) für den Dienst angegeben** |**Abgleichsregel vorhanden, die alle Ursprungsdomänen zulässt (*)** |**Abgleichsregel für genaue Übereinstimmung mit Ursprungsdomäne vorhanden** |**Antwort enthält Vary-Header, der auf "Origin" festgelegt ist** |**Antwort enthält „Access-Control-Allowed-Origin“: "*"** |**Antwort enthält Access-Control-Exposed-Header** |
 | Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
 | Nein  |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
-| Nein  |Ja |JA |Nein  |Nein  |Ja |Ja |
-| JA |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
-| Ja |JA |Nein |Ja |JA |Nein |Ja |
-| Ja |JA |Nein  |Nein  |Ja |Nein  |Nein  |
-| Ja |Ja |JA |Nein  |Nein  |Ja |JA |
+| Nein  |Ja |Ja |Nein  |Nein  |Ja |Ja |
+| Ja |Nein  |Nein  |Nein  |Nein  |Nein  |Nein  |
+| Ja |Ja |Nein |Ja |Ja |Nein |Ja |
+| Ja |Ja |Nein  |Nein  |Ja |Nein  |Nein  |
+| Ja |Ja |Ja |Nein  |Nein  |Ja |Ja |
 
 ## <a name="billing-for-cors-requests"></a>Abrechnung von CORS-Anforderungen
 Erfolgreiche Preflightanforderungen werden in Rechnung gestellt, wenn Sie CORS für einen der Speicherdienste in Ihrem Konto aktiviert haben (durch Aufrufen von [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx), [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx) oder [Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx)). Um die Gebühren zu minimieren, sollten Sie das **MaxAgeInSeconds** -Element in den CORS-Regeln auf einen hohen Wert festlegen, sodass die Anforderung vom Benutzer-Agent zwischengespeichert wird.
@@ -184,5 +184,5 @@ Nicht erfolgreiche Preflight-Anforderungen werden nicht berechnet.
 
 [Festlegen von Tabellendiensteigenschaften](https://msdn.microsoft.com/library/hh452240.aspx)
 
-[W3C-Spezifikation für CORS (Cross-Origin Resource Sharing)](http://www.w3.org/TR/cors/)
+[W3C-Spezifikation für CORS (Cross-Origin Resource Sharing)](https://www.w3.org/TR/cors/)
 

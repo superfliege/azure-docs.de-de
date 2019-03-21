@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d222e398653487cb87525ac13ebe682e9c8a26ee
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: a51c2987781184539edfcc8be9b9f483a215a157
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55195936"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122925"
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>Anpassen der UI einer User Journey mit benutzerdefinierten Richtlinien
 
@@ -66,7 +66,7 @@ Führen Sie folgende Schritte aus, um dafür zu sorgen, dass alles wie gewünsch
 - Sicherstellen, dass Ihr Inhalt HTML5-konform und zugänglich ist
 - Sicherstellen, dass Ihr Inhaltsserver für CORS aktiviert ist
 - Bereitstellen von Inhalt per HTTPS
-- Verwenden Sie absolute URLs, z.B. https://yourdomain/content, für alle Links und CSS-Inhalte.
+- Verwenden Sie absolute URLs, z.B. `https://yourdomain/content`, für alle Links und CSS-Inhalte.
 
 > [!TIP]
 > Sie können die Website https://test-cors.org/ verwenden, um sicherzustellen, dass die von Ihnen gehostete Website für Ihren Inhalt über eine CORS-Aktivierung verfügt, und um CORS-Anforderungen zu testen. Dank dieser Website können Sie die CORS-Anforderung an einen Remoteserver senden (um zu testen, ob CORS unterstützt wird). Sie können die CORS-Anforderung auch an einen Testserver senden (um bestimmte Features von CORS auszuprobieren).
@@ -121,16 +121,16 @@ Führen Sie die folgenden Schritte aus, um sicherzustellen, dass für den Speich
 
 1. Öffnen Sie eine Browsersitzung, und navigieren Sie zur Seite *unified.html*, indem Sie die vollständige URL des Standorts in Ihrem Speicherkonto verwenden: `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html`. Beispiel: https://contoso369b2c.blob.core.windows.net/b2c/unified.html.
 2. Navigieren Sie zu https://test-cors.org. Mit dieser Website können Sie überprüfen, ob für die verwendete Seite CORS aktiviert ist.  
-<!--
-![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
--->
+   <!--
+   ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
+   -->
 
 3. Geben Sie unter **Remote-URL** die vollständige URL für Ihren „unified.html“-Inhalt an, und klicken Sie auf **Anforderung senden**.
 4. Vergewissern Sie sich, dass die Ausgabe im Abschnitt **Ergebnisse** den Text *XHR status: 200* enthält. Hiermit wird angegeben, dass CORS aktiviert ist.
-<!--
-![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
--->
-Das Speicherkonto sollte jetzt einen Blobcontainer mit dem Namen *b2c* in der Darstellung enthalten, der wiederum die folgenden wingtiptoys-Vorlagen aus dem *Starter-Pack* enthält.
+   <!--
+   ![CORS enabled](../../media/active-directory-b2c-customize-ui-of-a-user-journey/cors-enabled.png)
+   -->
+   Das Speicherkonto sollte jetzt einen Blobcontainer mit dem Namen *b2c* in der Darstellung enthalten, der wiederum die folgenden wingtiptoys-Vorlagen aus dem *Starter-Pack* enthält.
 
 <!--
 ![Correctly configured storage account](../../articles/active-directory-b2c/media/active-directory-b2c-reference-customize-ui-custom/storage-account-final.png)

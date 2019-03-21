@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: bb1616c7cbf5c9c4620aed3e31896e32fe0163f9
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 6d11961f06a75341e633c7a8963e6b83ed37cf13
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53606213"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076733"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2.0-Metadatenunterstützung in Azure Functions (Vorschauversion)
 Metadatenunterstützung für OpenAPI 2.0 (ehemals Swagger) in Azure Functions ist eine Vorschaufunktion, mit der Sie eine OpenAPI 2.0-Definition in einer Funktions-App schreiben können. Diese Datei kann dann mit der Funktions-App gehostet werden.
@@ -72,9 +72,9 @@ In der folgenden Tabelle sind die Azure-Portaleinstellungen und die entsprechend
  Sie müssen das Hosten von API-Definitionen im Portal aktivieren, bevor Sie es ermöglichen, Ihre API-Definition aus der Quellcodeverwaltung ändern zu können. Befolgen Sie diese Anweisungen:
 
 1. Navigieren Sie zu **API-Definition (Vorschau)** in den Einstellungen der Funktions-App.
-  1. Legen Sie **API-Definitionsquelle** auf **Funktion** fest.
-  1. Klicken Sie auf **API-Definitionsvorlage generieren** und anschließend auf **Speichern**, um eine Vorlagendefinition zu erstellen, die Sie später ändern können.
-  1. Notieren Sie sich die URL und den Schlüssel der API-Definition.
+   1. Legen Sie **API-Definitionsquelle** auf **Funktion** fest.
+   1. Klicken Sie auf **API-Definitionsvorlage generieren** und anschließend auf **Speichern**, um eine Vorlagendefinition zu erstellen, die Sie später ändern können.
+   1. Notieren Sie sich die URL und den Schlüssel der API-Definition.
 1. [Einrichten von Continuous Integration/Continuous Deployment (CI/CD)](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment#continuous-deployment-requirements).
 2. Ändern Sie „swagger.json“ in der Quellcodeverwaltung unter „\site\wwwroot\.azurefunctions\swagger\swagger.json“.
 

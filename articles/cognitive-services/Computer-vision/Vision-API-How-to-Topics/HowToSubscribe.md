@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 08838ce0af16cc4ae768bd5d2ecf72c57f8fae97
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 03e519520d4a956a5c9690dc1327089505aafced
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858075"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58120855"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Gewusst wie: Erhalten von Abonnementschlüsseln
 
@@ -24,8 +24,8 @@ Dienste für maschinelles Sehen erfordern spezielle Abonnementschlüssel. Für j
 
 Informationen zur Registrierung für Abonnementschlüssel finden Sie unter [Abonnements](https://azure.microsoft.com/try/cognitive-services/). Die Registrierung ist kostenlos. Die Preise für diese Dienste unterliegen Änderungen.
 
->[!NOTE]
-Ihre Abonnementschlüssel sind nur für eine der folgenden [Microsoft Azure-Regionen](https://azure.microsoft.com/regions/) gültig. 
+> [!NOTE]
+> Ihre Abonnementschlüssel sind nur für eine der folgenden [Microsoft Azure-Regionen](https://azure.microsoft.com/regions/) gültig. 
 
 | Region | Adresse |
 |---|---|

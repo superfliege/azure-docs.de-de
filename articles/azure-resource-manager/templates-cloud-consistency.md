@@ -12,12 +12,12 @@ ms.workload: na
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 4d5c7f8a91bb63cdd80a6f70603e34f8130b92ef
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4b1c829a417d050b4d931611d9f2952e01582f04
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56106680"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089470"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Informationen zum Entwickeln von Azure Resource Manager-Vorlagen für cloudübergreifende Konsistenz
 
@@ -49,8 +49,6 @@ Im Rest dieses Leitfadens werden die Bereiche erörtert, die bei der Entwicklung
 
 Eine Einführung in Azure Resource Manager-Vorlagen finden Sie unter [Vorlagenbereitstellung](resource-group-overview.md#template-deployment).
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 ## <a name="ensure-template-functions-work"></a>Sicherstellen, dass Vorlagenfunktionen intakt sind
 
 Die Syntax einer Resource Manager-Vorlage basiert auf JSON. Vorlagen verwenden eine Obermenge von JSON, wobei die Syntax mit Ausdrücken und Funktionen erweitert wird. Der Prozessor für Vorlagensprachen wird häufig aktualisiert, um zusätzliche Vorlagenfunktionen zu unterstützen. Unter [Funktionen von Azure Resource Manager-Vorlagen](resource-group-template-functions.md) finden Sie eine detaillierte Erläuterung der verfügbaren Vorlagenfunktionen.
@@ -65,13 +63,13 @@ Azure Resource Manager-Funktionen werden immer zuerst in der globalen Azure-Clou
 
 1. Importieren Sie das Modul „psm1“, und führen Sie das Cmdlet „Test-AzureRmureRmTemplateFunctions“ aus:
 
-  ```powershell
-  # Import the module
-  Import-module <path to local clone>\AzTemplateFunctions.psm1
+   ```powershell
+   # Import the module
+   Import-module <path to local clone>\AzTemplateFunctions.psm1
 
-  # Execute the Test-AzureRmTemplateFunctions cmdlet
-  Test-AzureRmTemplateFunctions -path <path to local clone>
-  ```
+   # Execute the Test-AzureRmTemplateFunctions cmdlet
+   Test-AzureRmTemplateFunctions -path <path to local clone>
+   ```
 
 Das Skript stellt mehrere, minimierte Vorlagen bereit, die jeweils nur eindeutige Vorlagenfunktionen enthalten. Die Ausgabe des Skripts meldet die unterstützten und nicht verfügbaren Vorlagenfunktionen.
 

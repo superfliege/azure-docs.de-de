@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 247d09e58ded2de12fb7cc6b5a036b695e715077
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
+ms.openlocfilehash: 0ac62a99f5735647f67917d441645e30444b3818
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298652"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58005683"
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Verwenden von SSH-Schlüsseln mit Windows in Azure
 
@@ -37,9 +37,9 @@ Auf Windows-Computern sind nicht immer vergleichbare SSH-Befehle installiert. Ne
 
 Andere gängige Windows-SSH-Clients, die Sie lokal installieren können, sind in den folgenden Paketen enthalten:
 
-* [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/)
+* [PuTTY](https://www.chiark.greenend.org.uk/~sgtatham/putty/)
 * [Git für Windows](https://git-for-windows.github.io/)
-* [MobaXterm](http://mobaxterm.mobatek.net/)
+* [MobaXterm](https://mobaxterm.mobatek.net/)
 * [Cygwin](https://cygwin.com/)
 
 Sie können auch die SSH-Hilfsprogramme verwenden, die in der [Azure Cloud Shell](../../cloud-shell/overview.md) in Bash zur Verfügung stehen. 
@@ -62,7 +62,7 @@ Weitere Hintergrundinformationen finden Sie in den Beschreibungen der [schnellen
 
 ### <a name="create-ssh-keys-with-puttygen"></a>Erstellen von SSH-Schlüsseln mit PuTTYgen
 
-Wenn Sie ein GUI-basiertes Tool verwenden möchten, um die SSH-Schlüssel zu erstellen, können Sie den PuTTYgen-Schlüsselgenerator verwenden, der im [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) enthalten ist. 
+Wenn Sie ein GUI-basiertes Tool verwenden möchten, um die SSH-Schlüssel zu erstellen, können Sie den PuTTYgen-Schlüsselgenerator verwenden, der im [PuTTY-Downloadpaket](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) enthalten ist. 
 
 So erstellen Sie ein SSH-RSA-Schlüsselpaar mit PuTTYgen:
 
@@ -110,7 +110,7 @@ Wenn der virtuelle Computer die JIT-Zugriffsrichtlinie (Just-In-Time) verwendet,
 
 ### <a name="connect-with-putty"></a>Herstellen der Verbindung mit PuTTY
 
-Wenn Sie das [PuTTY-Downloadpaket](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) installiert und zuvor eine PuTTY-Datei für private Schlüssel (PPK-Datei) generiert haben, können Sie mit PuTTY eine Verbindung mit einer Linux-VM herstellen.
+Wenn Sie das [PuTTY-Downloadpaket](https://www.chiark.greenend.org.uk/~sgtatham/putty/download.html) installiert und zuvor eine PuTTY-Datei für private Schlüssel (PPK-Datei) generiert haben, können Sie mit PuTTY eine Verbindung mit einer Linux-VM herstellen.
 
 1. Starten Sie PuTTY.
 

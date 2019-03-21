@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: e964e00cd326d924a77a53348942f91ebbdbdea4
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 9d29608ded920b14af1be6d4d68ab1d77c3c8cb5
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630159"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099153"
 ---
 # <a name="use-apache-spark-structured-streaming-with-apache-kafka-and-azure-cosmos-db"></a>Verwenden von strukturiertem Apache Spark-Streaming mit Apache Kafka und Azure Cosmos DB
 
@@ -52,19 +52,19 @@ Es ist zwar möglich, ein virtuelles Azure-Netzwerk, einen Kafka-Cluster und ein
 
     Diese Vorlage erstellt die folgenden Ressourcen:
 
-    * Ein Kafka-auf-HDInsight-3.6-Cluster.
+   * Ein Kafka-auf-HDInsight-3.6-Cluster.
 
-    * Ein Spark-auf-HDInsight-3.6-Cluster.
+   * Ein Spark-auf-HDInsight-3.6-Cluster.
 
-    * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
+   * Ein Azure Virtual Network, das die HDInsight-Cluster enthält.
 
-        > [!NOTE]  
-        > Das von der Vorlage erstellte virtuelle Netzwerk verwendet den 10.0.0.0/16-Adressraum.
+       > [!NOTE]  
+       > Das von der Vorlage erstellte virtuelle Netzwerk verwendet den 10.0.0.0/16-Adressraum.
 
-    * Eine Azure Cosmos DB-SQL-API-Datenbank.
+   * Eine Azure Cosmos DB-SQL-API-Datenbank.
 
-    > [!IMPORTANT]  
-    > Das in diesem Beispiel für strukturiertes Streaming verwendete Notebook benötigt Spark auf HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
+     > [!IMPORTANT]  
+     > Das in diesem Beispiel für strukturiertes Streaming verwendete Notebook benötigt Spark auf HDInsight 3.6. Bei Verwendung einer früheren Version von Spark auf HDInsight erhalten Sie Fehlermeldungen, wenn Sie das Notebook verwenden.
 
 2. Verwenden Sie die folgenden Informationen, um die Einträge auf dem Abschnitt **Benutzerdefinierte Bereitstellung** aufzufüllen:
    

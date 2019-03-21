@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: adc85514c0f4e2f7245a7db6dffbe6b9dc5e6d42
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435190"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075815"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>Erstellen von Filmempfehlungen mithilfe von Apache Mahout mit Linux-basiertem Apache Hadoop in HDInsight (SSH)
 
@@ -170,15 +170,15 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     Dieser Befehl sucht nach den für die Benutzer-ID 4 generierten Empfehlungen.
 
-    * Mit der Datei **user-ratings.txt** werden Filme abgerufen, die bewertet wurden.
+   * Mit der Datei **user-ratings.txt** werden Filme abgerufen, die bewertet wurden.
 
-    * Mit der Datei **moviedb.txt** werden die Namen der Filme abgerufen.
+   * Mit der Datei **moviedb.txt** werden die Namen der Filme abgerufen.
 
-    * Mit der Datei **recommendations.txt** werden die Filmempfehlungen für diesen Benutzer abgerufen.
+   * Mit der Datei **recommendations.txt** werden die Filmempfehlungen für diesen Benutzer abgerufen.
 
      Die Ausgabe dieses Befehls ähnelt dem folgenden Text:
 
-        Sieben Jahre in Tibet (1997), score=5.0   Indiana Jones und der letzte Kreuzzug (1989), score=5.0   Der weiße Hai (1975), score=5.0   Sinn und Sinnlichkeit (1995), score=5.0   Independence Day (ID4) (1996), score=5.0   Die Hochzeit meines besten Freundes (1997), score=5.0   Jerry Maguire (1996), score=5.0   Scream 2 (1997), score=5.0   Die Jury (1996), score=5.0
+       Sieben Jahre in Tibet (1997), score=5.0   Indiana Jones und der letzte Kreuzzug (1989), score=5.0   Der weiße Hai (1975), score=5.0   Sinn und Sinnlichkeit (1995), score=5.0   Independence Day (ID4) (1996), score=5.0   Die Hochzeit meines besten Freundes (1997), score=5.0   Jerry Maguire (1996), score=5.0   Scream 2 (1997), score=5.0   Die Jury (1996), score=5.0
 
 ## <a name="delete-temporary-data"></a>Löschen temporärer Daten
 

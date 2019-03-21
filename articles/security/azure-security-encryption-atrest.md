@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: barclayn
-ms.openlocfilehash: c9e3a98b1073a2b198a341f31a320bba670b0596
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 4ced712b1b2716d85f0366ea892460053db598b8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117900"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076903"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
@@ -258,7 +258,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 |                                  |                    | **Verschlüsselungsmodell und Schlüsselverwaltung** |                    |
 |----------------------------------|--------------------|-----------------------------------------|--------------------|
 |                                  | **Serverseitig mit vom Dienst verwaltetem Schlüssel**     | **Serverseitig mit vom Kunden verwaltetem Key Vault**             | **Clientseitig mit Clientverwaltung**      |
-| **Speicher und Datenbanken**        |                    |                    |                    |                    |
+| **Speicher und Datenbanken**        |                    |                    |                    |
 | Datenträger (IaaS)                      | -                  | Ja, RSA 2048 Bit  | -                  |
 | SQL Server (IaaS)                | Ja                | Ja, RSA 2048 Bit  | Ja                |
 | Azure SQL-Datenbank/Azure SQL Data Warehouse | Ja                | Ja, RSA 2048 Bit  | Ja                |
@@ -268,7 +268,7 @@ Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch 
 | Azure Storage (Tabellen, Warteschlangen)   | Ja                | -                  | Ja                |
 | Cosmos DB (Document DB)          | Ja                | -                  | -                  |
 | StorSimple                       | Ja                | -                  | Ja                |
-| Backup                           | -                  | -                  | Ja                |
+| Backup                           | Ja                | -                  | Ja                |
 | **Informationen und Analyse**   |                    |                    |                    |
 | Azure Data Factory               | Ja                | -                  | -                  |
 | Azure Machine Learning           | -                  | RSA 2048 Bit, Vorschauversion | -                  |

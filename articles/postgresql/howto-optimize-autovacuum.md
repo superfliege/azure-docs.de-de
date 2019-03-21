@@ -6,12 +6,12 @@ ms.author: dianas
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/22/2018
-ms.openlocfilehash: e8e9991f20481deee85a6d582582335eb98e3c24
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: e1b4bf1f9fa956da7a7b0ca1521439002d1ce76b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55815216"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57993422"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql-server"></a>Optimieren von Autovacuum auf einem Azure Database for PostgreSQL-Server 
 In diesem Artikel wird beschrieben, wie Sie Autovacuum auf einem Azure Database for PostgreSQL-Server effizient optimieren können.
@@ -21,7 +21,7 @@ PostgreSQL verwendet für eine bessere Datenbankparallelität MVCC (Multiversion
 
 Ein Vacuum-Auftrag kann manuell oder automatisch ausgelöst werden. Wenn in der Datenbank viele Aktualisierungs- oder Löschvorgänge stattfinden, sind viele inaktive Tupel vorhanden. Wenn sich die Datenbank im Leerlauf befindet, sind weniger inaktive Tupel vorhanden. Bei einer starken Auslastung der Datenbank müssen häufiger Vacuum-Aufträge ausgeführt werden. Das *manuelle* Ausführen von Vacuum-Aufträgen ist daher unpraktisch.
 
-Autovacuum kann konfiguriert werden und profitiert von einer Optimierung. Die Standardwerte, mit denen PostgreSQL ausgeliefert wird, sollen sicherstellen, dass das Produkt auf allen Arten von Geräten ausgeführt werden kann. Dies schließt Raspberry Pi-Geräte ein. Die idealen Konfigurationswerte sind von verschiedenen Faktoren abhängig:
+Autovacuum kann so konfiguriert werden und profitiert von einer Optimierung. Die Standardwerte, mit denen PostgreSQL ausgeliefert wird, sollen sicherstellen, dass das Produkt auf allen Arten von Geräten ausgeführt werden kann. Dies schließt Raspberry Pi-Geräte ein. Die idealen Konfigurationswerte sind von verschiedenen Faktoren abhängig:
 - Gesamtanzahl der Ressourcen, z.B. SKU und Speichergröße
 - Ressourcennutzung
 - Merkmale der einzelnen Objekte
@@ -43,7 +43,8 @@ Die Konfigurationsparameter zur Steuerung von Autovacuum werden durch zwei zentr
 - Wie viel sollte nach dem Start bereinigt werden?
 
 Nachfolgend finden Sie einige Autovacuum-Konfigurationsparameter, die Sie basierend auf den vorgenannten Fragen aktualisieren können, sowie zugehörige Hinweise.
-Parameter|Beschreibung|Standardwert
+
+Parameter|BESCHREIBUNG|Standardwert
 ---|---|---
 autovacuum_vacuum_threshold|Gibt die minimale Anzahl von aktualisierten oder gelöschten Tupeln vor dem Auslösen eines Vacuum-Vorgangs in einer Tabelle an. Der Standardwert ist 50 Tupel. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|50
 autovacuum_vacuum_scale_factor|Gibt einen Anteil der Tabellengröße an, der „autovacuum_vacuum_threshold“ zur Entscheidung über die Auslösung eines Vacuum-Vorgangs hinzugefügt wird. Der Standardwert ist 0,2 (20% der Tabellengröße). Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|5 %
@@ -51,6 +52,7 @@ autovacuum_vacuum_cost_limit|Gibt den Kostengrenzwert an, der bei automatischen 
 autovacuum_vacuum_cost_delay|Gibt den Kostenverzögerungswert an, der bei automatischen Vacuum-Vorgängen verwendet wird. Wenn –1 angegeben ist, wird der normale vacuum_cost_delay-Wert verwendet. Der Standardwert sind 20 Millisekunden. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest. Um die Einstellung für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter.|20 ms
 autovacuum_nap_time|Gibt die minimale Verzögerung zwischen Autovacuum-Ausführungen in einer bestimmten Datenbank an. In jeder Runde untersucht der Daemon die Datenbank und gibt nach Bedarf VACUUM- und ANALYZE-Befehle für Tabellen in dieser Datenbank aus. Die Verzögerung wird in Sekunden gemessen, und der Standardwert ist 1 Minute. Legen Sie diesen Parameter nur in der Datei „postgresql.conf“ oder über die Serverbefehlszeile fest.|15 s
 autovacuum_max_workers|Gibt die maximale Anzahl von Autovacuum-Prozessen (mit Ausnahme des Autovacuum-Startprogramms) an, die parallel ausgeführt werden können. Der Standardwert ist 3. Legen Sie diesen Parameter nur bei einem Serverstart fest.|3
+
 Um die Einstellungen für einzelne Tabellen außer Kraft zu setzen, ändern Sie die Tabellenspeicherparameter. 
 
 ## <a name="autovacuum-cost"></a>Autovacuum-Kosten
@@ -80,7 +82,7 @@ Das Ausführen von Autovacuum ist „kostenaufwendig“, und die Laufzeit von Va
 
 Der Vacuum-Prozess liest physische Seiten und sucht nach inaktiven Tupeln. Für jede Seite in „shared_buffers“ wird vom Kostenwert 1 (vacuum_cost_page_hit) ausgegangen. Für alle anderen Seiten wird bei vorhandenen inaktiven Tupeln ein Kostenwert von 20 zugrunde gelegt (vacuum_cost_page_dirty). Wenn keine inaktiven Tupel vorhanden sind, wird der Kostenwert 10 angesetzt (vacuum_cost_page_miss). Der Vacuum-Vorgang wird beendet, wenn der Prozess „autovacuum_vacuum_cost_limit“ überschreitet. 
 
-Nachdem der Grenzwert erreicht wird, verbringt der Prozess die durch den Parameter „autovacuum_vacuum_cost_delay“ angegebene Zeit im Ruhezustand, bevor er erneut gestartet wird. Wenn der Grenzwert nicht erreicht wird, wird Autovacuum nach der durch den Parameter „autovacuum_nap_time“ angegebenen Zeit wieder gestartet.
+Nachdem der Grenzwert erreicht wird, verbringt der Prozess die durch den Parameter „autovacuum_vacuum_cost_delay“ angegebene Zeit im Ruhezustand, bevor er erneut gestartet wird. Wenn der Grenzwert nicht erreicht wird, wird Autovacuum nach der durch den Parameter autovacuum_nap_time angegebenen Zeit wieder gestartet.
 
 Zusammengefasst ausgedrückt: Die Parameter „autovacuum_vacuum_cost_delay“ und „autovacuum_vacuum_cost_limit“ steuern, wie viel Datenbereinigung pro Zeiteinheit zulässig ist. Beachten Sie, dass die Standardwerte für die meisten Tarife zu niedrig sind. Die optimalen Werte für diese Parameter sind vom Tarif abhängig und sollten entsprechend konfiguriert werden.
 

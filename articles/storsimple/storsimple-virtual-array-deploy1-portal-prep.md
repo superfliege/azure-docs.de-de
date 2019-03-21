@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17e51c91d2857ac91b0ebf998c016ebcf56c0de0
-ms.sourcegitcommit: f4b78e2c9962d3139a910a4d222d02cda1474440
+ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/12/2019
-ms.locfileid: "54244782"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088705"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>Bereitstellen von StorSimple Virtual Array – Vorbereiten des Azure-Portals
 
@@ -155,15 +155,15 @@ Führen Sie die folgenden Schritte im [Azure-Portal](https://ms.portal.azure.com
 3. Klicken Sie auf **Hinzufügen**.
 4. Gehen Sie auf dem Blatt **Hinzufügen eines Speicherkontos** wie folgt vor:
    
-    1. Wählen Sie für **Abonnement** die Option **Aktuell** aus.
+   1. Wählen Sie für **Abonnement** die Option **Aktuell** aus.
    
-    2. Geben Sie den Namen Ihres Azure-Speicherkontos an.
+   2. Geben Sie den Namen Ihres Azure-Speicherkontos an.
    
-    3. Wählen Sie **Aktivieren** aus, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen. Wählen Sie **Deaktivieren** nur dann aus, wenn Sie in einer Private Cloud arbeiten.
+   3. Wählen Sie **Aktivieren** aus, um einen sicheren Kanal für die Netzwerkkommunikation zwischen Ihrem StorSimple-Gerät und der Cloud zu erstellen. Wählen Sie **Deaktivieren** nur dann aus, wenn Sie in einer Private Cloud arbeiten.
    
-    4. Klicken Sie auf **Hinzufügen**. Sie werden benachrichtigt, nachdem das Speicherkonto erfolgreich erstellt wurde.<br></br>
+   4. Klicken Sie auf **Hinzufügen**. Sie werden benachrichtigt, nachdem das Speicherkonto erfolgreich erstellt wurde.<br></br>
    
-     ![Hinzufügen der Anmeldeinformationen für ein vorhandenes Speicherkonto](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
+      ![Hinzufügen der Anmeldeinformationen für ein vorhandenes Speicherkonto](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 
 ## <a name="next-step"></a>Nächster Schritt
 

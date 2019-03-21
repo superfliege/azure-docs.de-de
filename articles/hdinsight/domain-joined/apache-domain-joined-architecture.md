@@ -9,12 +9,12 @@ ms.reviewer: omidm
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 5c5615dcfc9d43016bdf995a22ae29a5c5dd2c6f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 7e71f27ab8d577602dd4b02f83d57ff84a92858a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56185382"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088093"
 ---
 # <a name="use-enterprise-security-package-in-hdinsight"></a>Verwendung des Enterprise-Sicherheitspakets in HDInsight
 
@@ -64,33 +64,33 @@ Die alleinige Verwendung des lokalen Active Directory oder Active Directory auf 
 
 Wenn ein Verbund verwendet wird und Kennworthashes richtig synchronisiert werden, Sie aber Authentifizierungsfehler erhalten, überprüfen Sie, ob die Cloudkennwortauthentifizierung des PowerShell-Dienstprinzipals aktiviert ist. Ist dies nicht der Fall, müssen Sie eine [HRD-Richtlinie (Home Realm Discovery, Startbereichsermittlung)](../../active-directory/manage-apps/configure-authentication-for-federated-users-portal.md) für Ihren Azure AD-Mandanten festlegen. So überprüfen Sie die HRD-Richtlinie und legen sie fest
 
- 1. Installieren Sie das Azure AD PowerShell-Modul.
+1. Installieren Sie das Azure AD PowerShell-Modul.
 
- ```
-    Install-Module AzureAD
- ```
+   ```
+   Install-Module AzureAD
+   ```
 
- 2. Geben Sie `Connect-AzureAD` mit den Anmeldeinformationen eines globalen Administrators (Mandantenadministrator) ein.
+2. Geben Sie `Connect-AzureAD` mit den Anmeldeinformationen eines globalen Administrators (Mandantenadministrator) ein.
 
- 3. Überprüfen Sie, ob der Dienstprinzipal „Microsoft Azure PowerShell“ bereits erstellt wurde.
+3. Überprüfen Sie, ob der Dienstprinzipal „Microsoft Azure PowerShell“ bereits erstellt wurde.
 
- ```
-    $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
- ```
+   ```
+   $powershellSPN = Get-AzureADServicePrincipal -SearchString "Microsoft Azure Powershell"
+   ```
 
- 4. Wenn er nicht vorhanden ist (also `($powershellSPN -eq $null)` ist), erstellen Sie den Dienstprinzipal.
+4. Wenn er nicht vorhanden ist (also `($powershellSPN -eq $null)` ist), erstellen Sie den Dienstprinzipal.
 
- ```
-    $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
- ```
+   ```
+   $powershellSPN = New-AzureADServicePrincipal -AppId 1950a258-227b-4e31-a9cf-717495945fc2
+   ```
 
- 5. Erstellen Sie die Richtlinie, und fügen Sie sie an den Dienstprinzipal an.
+5. Erstellen Sie die Richtlinie, und fügen Sie sie an den Dienstprinzipal an.
 
- ```
-    $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
+   ```
+   $policy = New-AzureADPolicy -Definition @("{`"HomeRealmDiscoveryPolicy`":{`"AllowCloudPasswordValidation`":true}}") -DisplayName EnableDirectAuth -Type HomeRealmDiscoveryPolicy
 
-    Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
- ```
+   Add-AzureADServicePrincipalPolicy -Id $powershellSPN.ObjectId -refObjectID $policy.ID
+   ```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

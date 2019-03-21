@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: f8d57723f6e51fb392e4fdbfb2b2a445d48635e3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4f08b728198d6ee508cbd8267c593abc59e4cb37
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861713"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58075252"
 ---
 # <a name="translator-text-api-v20"></a>Microsoft Translator-Text-API Version 2.0
 
@@ -157,7 +157,7 @@ Das Format des Antworttexts sieht wie folgt aus.
 
 ```
 <ArrayOfTranslateArrayResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
-  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <TranslateArrayResponse>
     <From>language-code</From>
     <OriginalTextSentenceLengths xmlns:a="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -205,7 +205,7 @@ Der Anforderungs-URI ist `https://api.microsofttranslator.com/V2/Http.svc/GetLan
 Der Anforderungstext enthält ein Zeichenfolgenarray, das die Sprachencodes der ISO 639-1 darstellt, für die die Anzeigenamen abgerufen werden. Beispiel: 
 
 ```
-<ArrayOfstring xmlns:i="http://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
+<ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
     <string>zh</string>
     <string>en</string>
 </ArrayOfstring>
@@ -327,7 +327,7 @@ Anforderungsinhaltstyp: application/xml
 |text|(leer)   |Erforderlich. Eine Zeichenfolge, die einen Satz oder mehrere Sätze in der angegebenen Sprache enthält, in der der Wave-Stream wiedergegeben werden soll. Die Größe des gesprochenen Textes darf 2000 Zeichen nicht überschreiten.|query|Zeichenfolge|
 |Language|(leer)   |Erforderlich. Eine Zeichenfolge, die den Code der unterstützten Sprache darstellt, in die der Text gesprochen werden soll. Der Code muss in der Liste der Codes aufgeführt sein, die von der Methode `GetLanguagesForSpeak` zurückgegeben werden.|query|Zeichenfolge|
 |format|(leer)|Optional. Eine Zeichenfolge, die die Inhaltstyp-ID zurückgibt. Derzeit sind `audio/wav` und `audio/mp3` verfügbar. Standardwert: `audio/wav`.|query|Zeichenfolge|
-|options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich `|`, um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
+|options|(leer)    |<ul><li>Optional. Eine Zeichenfolge, die Eigenschaften der synthetisierten Spracheingabe angibt.<li>`MaxQuality` und `MinSize` sind verfügbar, um die Qualität der Audiosignale anzugeben. Mit `MaxQuality` erhalten Sie eine hochqualitative Stimmwiedergabe, und mit `MinSize` erhalten Sie eine Stimmwiedergabe von niedrigerer Qualität. Der Standardwert ist `MinSize`.</li><li>`female` und `male` sind verfügbar, um das gewünschte Geschlecht bei der Sprachwiedergabe zu bestimmen. Der Standardwert ist `female`. Verwenden Sie den senkrechten Strich <code>\|</code>, um mehrere Optionen einzuschließen. Beispiel: `MaxQuality|Male`.</li></li></ul> |query|Zeichenfolge|
 |Autorisierung|(leer)|Erforderlich, falls das Feld `appid` oder der Header `Ocp-Apim-Subscription-Key` nicht angegeben ist. Autorisierungstoken: `"Bearer" + " " + "access_token"`|Header|Zeichenfolge|
 |Ocp-Apim-Subscription-Key|(leer)  |Erforderlich, falls das Feld `appid` oder der Header `Authorization` nicht angegeben ist.|Header|Zeichenfolge|
 
@@ -397,7 +397,7 @@ Die Textgröße darf 10.000 Zeichen nicht überschreiten.
 Das Format des Antworttexts sieht wie folgt aus.
 
 ```
-<ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfstring xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <string>language-code-1</string>
   <string>language-code-2</string>
 </ArrayOfstring>
@@ -611,7 +611,7 @@ Anforderung `Content-Type` sollte `text/xml` sein.
 
 ```
 <GetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2"
-  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <From>Two character language code</From>
   <State/>
   <Translations>
@@ -723,7 +723,7 @@ Anforderung `Content-Type` sollte `text/xml` sein.
 **Rückgabewert:** Das Format der Antwort sieht folgendermaßen aus.
 
 ```
-<ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+<ArrayOfGetTranslationsResponse xmlns="http://schemas.datacontract.org/2004/07/Microsoft.MT.Web.Service.V2" xmlns:i="https://www.w3.org/2001/XMLSchema-instance">
   <GetTranslationsResponse>
     <From>language-code</From>
     <State/>

@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
-ms.openlocfilehash: 829d6bc6cb3f8e78d065d7aaca4937634e7349c8
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: f7c52b7ab8aaad917eb03455800df6d8ba4cbc88
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37437064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082703"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der das Azure-Portal das Verhalten der API über eine Konfiguration ändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und benannten Werten erstellt werden. 
 
 Jede API Management-Dienstinstanz weist eine Eigenschaftensammlung von Schlüssel-Wert-Paaren auf, die als benannte Werte bezeichnet werden und die für die gesamte Dienstinstanz gelten. Diese benannten Werte können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jede Eigenschaft kann über folgende Attribute verfügen:
 
-| Attribut | Typ | BESCHREIBUNG |
+| Attribut | Type | BESCHREIBUNG |
 | --- | --- | --- |
 | Anzeigename |Zeichenfolge |Alphanumerische Zeichenfolge zum Verweis auf die Eigenschaft in den Richtlinien |
 | Wert |Zeichenfolge |Der Wert der Eigenschaft. Er darf nicht leer sein oder nur aus Leerzeichen bestehen. |
@@ -50,7 +50,7 @@ Eigenschaftswerte können Literalzeichenfolgen und [Richtlinienausdrücke](https
 2. Klicken Sie auf **Benannte Werte**.
 3. Klicken Sie auf **+ Hinzufügen**.
 
-  „Name“ und „Wert“ sind erforderliche Werte. Wenn dieser Eigenschaftswert ein Geheimnis ist, aktivieren Sie das Kontrollkästchen „Dies ist ein Geheimnis.“. Geben Sie einen oder mehrere optionale Tags ein, um Ihre benannten Werte besser organisieren zu können, und klicken Sie auf „Speichern“.
+   „Name“ und „Wert“ sind erforderliche Werte. Wenn dieser Eigenschaftswert ein Geheimnis ist, aktivieren Sie das Kontrollkästchen „Dies ist ein Geheimnis.“. Geben Sie einen oder mehrere optionale Tags ein, um Ihre benannten Werte besser organisieren zu können, und klicken Sie auf „Speichern“.
 4. Klicken Sie auf **Create**.
 
 Sobald die Eigenschaft erstellt wurde, können Sie sie bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen der Eigenschaft ändern, werden alle Richtlinien, die auf diese Eigenschaft verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.

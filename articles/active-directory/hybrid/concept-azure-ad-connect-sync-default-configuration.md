@@ -16,12 +16,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ae428f18a2b927f42716a1c00b55790fe73d81a4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173401"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891136"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Grundlegendes zur Standardkonfiguration
 In diesem Artikel werden die standardmäßigen Konfigurationsregeln erläutert. Er dokumentiert die Regeln und deren Auswirkungen auf die Konfiguration. Außerdem wird die Standardkonfiguration der Azure AD Connect-Synchronisierung beschrieben. Der Leser soll verstehen, wie das als deklarative Bereitstellung bezeichnete Konfigurationsmodell in einem realistischen Beispiel funktioniert. Dieser Artikel setzt voraus, dass die Azure AD Connect-Synchronisierung bereits mit dem Installations-Assistenten installiert und konfiguriert wurde.
@@ -151,7 +151,7 @@ Eine Synchronisierungsregel verfügt über vier Konfigurationsabschnitte: Beschr
 #### <a name="description"></a>BESCHREIBUNG
 Der erste Bereich bietet grundlegende Informationen wie Name und Beschreibung.
 
-![Registerkarte „Beschreibung“ im Synchronisierungsregel-Editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
+![Registerkarte „Beschreibung“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruledescription.png)
 
 Es sind auch Informationen dazu enthalten, auf welches verbundene System sich diese Regel bezieht, auf welchen Objekttyp sie im verbundenen System angewendet wird und welcher Metaverse-Objekttyp vorliegt. Der Metaverse-Objekttyp ist immer eine Person, unabhängig davon, ob der Quellobjekttyp ein Benutzer, iNetOrgPerson oder ein Kontakt ist. Der Metaverse-Objekttyp sollte nie geändert werden, daher wird er als generischer Typ erstellt. Für den Verknüpfungstyp kann "Join", "StickyJoin" oder "Provision" festgelegt werden. Diese Einstellung arbeitet mit dem Bereich der Verknüpfungsregeln zusammen. Dies wird später behandelt.
 
@@ -160,18 +160,18 @@ Sie können auch sehen, dass diese Synchronisierungsregel zur Kennwortsynchronis
 #### <a name="scoping-filter"></a>Bereichsfilter
 Der Abschnitt "Bereichsfilter" wird zum Konfigurieren verwendet, wann eine Synchronisierungsregel angewendet werden soll. Da der Name der betrachteten Synchronisierungsregel darauf hinweist, dass sie nur für aktivierte Benutzer angewendet werden soll, wird der Gültigkeitsbereich so konfiguriert, dass für das AD-Attribut **userAccountControl** das Bit 2 nicht gesetzt sein darf. Wenn vom Synchronisierungsmodul ein Benutzer in AD gefunden wird, wird diese Synchronisierungsregel angewendet, sofern **userAccountControl** auf den Dezimalwert 512 (aktivierter normaler Benutzer) festgelegt ist. Sie wird nicht angewendet, wenn für den Benutzer der Wert 514 für **userAccountControl** (deaktivierter normaler Benutzer) festgelegt ist.
 
-![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
+![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilter.png)
 
 Der Bereichsfilter verfügt über Gruppen und Klauseln, die geschachtelt werden können. Alle Klauseln innerhalb einer Gruppe müssen erfüllt werden, damit eine Synchronisierungsregel angewendet wird. Wenn mehrere Gruppen definiert sind, muss mindestens eine Gruppe die Anforderungen erfüllen, damit die Regel angewendet wird. Dies bedeutet, dass zwischen Gruppen ein logisches ODER und innerhalb einer Gruppe ein logisches UND ausgewertet wird. Ein Beispiel für diese Konfiguration befindet sich in der Synchronisierungsregel **Out to AAD – Group Join** (Aus an AAD – Gruppenverknüpfung) für ausgehenden Datenverkehr. Es gibt verschiedene Synchronisierungsfiltergruppen, z.B. eine für Sicherheitsgruppen (`securityEnabled EQUAL True`) und eine für Verteilergruppen (`securityEnabled EQUAL False`).
 
-![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
+![Registerkarte „Bereichsdefinition“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulescopingfilterout.png)
 
 Diese Regel wird zur Definition verwendet, welche Gruppen für Azure AD bereitgestellt werden sollen. Verteilergruppen müssen E-Mail-aktiviert sein, damit sie mit Azure AD synchronisiert werden können, aber für Sicherheitsgruppen ist keine E-Mail erforderlich.
 
 #### <a name="join-rules"></a>Verknüpfungsregeln
 Der dritte Bereich wird für die Konfiguration verwendet, wie sich Objekte im Connectorbereich auf Objekte im Metaverse beziehen. Die zuvor betrachtete Regel verfügt über keine Konfiguration für Verknüpfungsregeln, sodass wir stattdessen die Regel **Ein von AD – Benutzerverknüpfung**betrachten.
 
-![Registerkarte „Verknüpfungsregeln“ im Synchronisierungsregel-Editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
+![Registerkarte „Verknüpfungsregeln“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncrulejoinrules.png)
 
 Der Inhalt der Verknüpfungsregeln hängt von der entsprechenden Option ab, die im Installations-Assistenten ausgewählt ist. Für eine Regel für eingehenden Datenverkehr beginnt die Auswertung mit einem Objekt im Quellconnectorbereich, und jede Gruppe in den Verknüpfungsregeln wird nacheinander ausgewertet. Wenn die Auswertung eines Quellobjekts mit einer der Verknüpfungsregeln ergibt, dass es genau mit einem Objekt im Metaverse übereinstimmt, werden die Objekte verknüpft. Wenn alle Regeln ausgewertet wurden und es keine Übereinstimmung gibt, wird der Verknüpfungstyp auf der Beschreibungsseite verwendet. Falls für diese Konfiguration **Provision**festgelegt ist, wird im Ziel (dem Metaverse) ein neues Objekt erstellt. Die Bereitstellung eines neuen Objekts im Metaverse wird auch als das **Projizieren** eines Objekts für den Metaverse bezeichnet.
 
@@ -184,7 +184,7 @@ Wenn Sie die obige Abbildung betrachten, sehen Sie, dass die Regel versucht, **o
 #### <a name="transformations"></a>Transformationen
 Der Transformationsbereich definiert alle Attributflüsse, die sich auf das Zielobjekt beziehen, wenn die Objekte verknüpft werden und der Bereichsfilter zutrifft. Wenn Sie zur Synchronisierungsregel **Ein von AD – Benutzer AccountEnabled** zurückkehren, sind die folgenden Transformationen vorhanden:
 
-![Registerkarte „Transformationen“ im Synchronisierungsregel-Editor ](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
+![Registerkarte „Transformationen“ im Synchronisierungsregel-Editor](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
 Zur Orientierung in Bezug auf diese Konfiguration: In einer Kontoressourcen-Gesamtstrukturbereitstellung wird erwartet, dass ein aktiviertes Konto in der Kontogesamtstruktur und ein deaktiviertes Konto in der Ressourcengesamtstruktur mit Exchange- und Lync-Einstellungen vorgefunden werden. Die betrachtete Synchronisierungsregel enthält die für die Anmeldung erforderlichen Attribute, und diese sollen von der Gesamtstruktur übermittelt werden, in der ein aktiviertes Konto enthalten ist. Alle diese Attributflüsse sind in einer Synchronisierungsregel zusammengestellt.
 
@@ -201,7 +201,7 @@ Die Ausdruckssprache ist VBA (Visual Basic for Applications), sodass Benutzer, d
 IIF(
 // (The evaluation for IIF) Is the attribute pwdLastSet present in AD?
 IsPresent([pwdLastSet]),
-// (The True part of IIF) If it is, then from right to left, convert the AD time format to a .Net datetime, change it to the time format used by Azure AD, and finally convert it to a string.
+// (The True part of IIF) If it is, then from right to left, convert the AD time format to a .NET datetime, change it to the time format used by Azure AD, and finally convert it to a string.
 CStr(FormatDateTime(DateFromNum([pwdLastSet]),"yyyyMMddHHmmss.0Z")),
 // (The False part of IIF) Nothing to contribute
 NULL

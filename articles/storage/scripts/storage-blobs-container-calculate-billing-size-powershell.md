@@ -15,12 +15,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 11/07/2017
 ms.author: fryu
-ms.openlocfilehash: f1e905b0b67048a10f6eb455d77275375a99dbd0
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 805abec84b26a6b2b9af3dfe318f877f4edb9547
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245404"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58080895"
 ---
 # <a name="calculate-the-total-billing-size-of-a-blob-container"></a>Berechnen der Gesamtabrechnungsgröße eines Blobcontainers
 
@@ -101,17 +101,17 @@ Aufschlüsselung:
 * Addieren Sie für jeden gespeicherten Metadatenblock die Länge des (als ASCII gespeicherten) Namens sowie die Länge des Zeichenfolgenwerts.
 
 * Für die Blockblobs:
-    * 8 Bytes für die Blockliste.
-    * Anzahl von Blöcken mal Größe der Block-ID in Bytes.
-    * Die Größe der Daten in allen Blöcken (mit und ohne Commit).
+  * 8 Bytes für die Blockliste.
+  * Anzahl von Blöcken mal Größe der Block-ID in Bytes.
+  * Die Größe der Daten in allen Blöcken (mit und ohne Commit).
 
     >[!NOTE]
     >Bei Verwendung von Momentaufnahmen beinhaltet diese Größe nur die eindeutigen Daten für dieses Basis- oder Momentaufnahmeblob. Wenn die Blöcke ohne Commit nicht innerhalb einer Woche verwendet werden, werden sie der Garbage Collection zugeführt. Danach sind sie für die Abrechnung nicht mehr relevant.
 
 * Für Seitenblobs:
-    * Die Anzahl nicht aufeinanderfolgender Seitenbereiche mit Daten mal 12 Bytes. Dies ist die Anzahl eindeutiger Seitenbereiche, die beim Aufrufen der API **GetPageRanges** angezeigt wird.
+  * Die Anzahl nicht aufeinanderfolgender Seitenbereiche mit Daten mal 12 Bytes. Dies ist die Anzahl eindeutiger Seitenbereiche, die beim Aufrufen der API **GetPageRanges** angezeigt wird.
 
-    * Die Größe der Daten aller gespeicherten Seiten (in Bytes).
+  * Die Größe der Daten aller gespeicherten Seiten (in Bytes).
 
     >[!NOTE]
     >Bei Verwendung von Momentaufnahmen beinhaltet diese Größe nur die eindeutigen Seiten für das Basis- oder Momentaufnahmeblob, für das die Zählung durchgeführt wird.

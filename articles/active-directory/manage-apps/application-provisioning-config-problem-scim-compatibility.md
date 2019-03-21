@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a1e5643c9d5f6fc2492dd52ccd07606a47d21b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190516"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124067"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts
 
@@ -59,36 +59,36 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
  
 1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Navigieren Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen** zu Ihrer SCIM-Anwendung, und wählen Sie sie aus.
-3.  Kopieren Sie im Abschnitt **Eigenschaften** Ihrer SCIM-App die **Objekt-ID**.
-4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
+3. Kopieren Sie im Abschnitt **Eigenschaften** Ihrer SCIM-App die **Objekt-ID**.
+4. Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
 5. Führen Sie im Graph-Tester den unten stehenden Befehl aus, um die ID Ihres Bereitstellungsauftrags zu suchen. Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
- ![Abrufen von Aufträgen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Abrufen von Aufträgen") 
+   ![Abrufen von Aufträgen](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Abrufen von Aufträgen") 
 
 
 6. Kopieren Sie in den Ergebnissen die vollständige „ID“-Zeichenfolge, die mit „customappsso“ oder mit „scim“ beginnt.
 7. Führen Sie den folgenden Befehl aus, um die Konfiguration für die Attributzuordnung abzurufen, damit Sie eine Sicherung erstellen können. Verwenden Sie dieselbe [object-id] wie zuvor, und ersetzen Sie die [job-id] durch die ID des Bereitstellungsauftrags, die Sie im letzten Schritt kopiert haben.
  
- `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
+   `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
- ![Abrufen des Schemas](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Abrufen des Schemas") 
+   ![Abrufen des Schemas](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Abrufen des Schemas") 
 
 8. Kopieren Sie die JSON-Ausgabe aus dem letzten Schritt, und speichern Sie sie in einer Textdatei. Diese Datei enthält alle benutzerdefinierten Attributzuordnungen, die Sie in Ihrer alten App hinzugefügt haben, und sollte einige Tausend Zeilen JSON umfassen.
 9. Führen Sie den folgenden Befehl aus, um den Bereitstellungsauftrag zu löschen:
  
- `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
+   `DELETE https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]`
 
 10. Führen Sie den folgenden Befehl aus, um einen neuen Bereitstellungsauftrag zu erstellen, der über die neuesten Fehlerbehebungen für den Dienst verfügt.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
- `{   templateId: "scim"   } `
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
+    `{   templateId: "scim"   } `
    
 11. Kopieren Sie in den Ergebnissen des letzten Schritts die vollständige „ID“-Zeichenfolge, die mit „scim“ beginnt. Sie können optional auch Ihre alten Attributzuordnungen erneut anwenden. Führen Sie dazu den Befehl unten aus, und ersetzen Sie „[new-job-id]“ durch die neue Auftrags-ID, die Sie gerade kopiert haben. Geben Sie außerdem die JSON-Ausgabe aus Schritt 7 als Anforderungstext ein.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
- `{   <your-schema-json-here>   }`
+    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
+    `{   <your-schema-json-here>   }`
 
 12. Wechseln Sie wieder zurück zum ersten Webbrowserfenster, und wählen Sie die Registerkarte **Bereitstellung** für Ihre Anwendung aus.
 13. Überprüfen Sie Ihre Konfiguration, und starten Sie anschließend den Bereitstellungsauftrag. 
@@ -97,15 +97,15 @@ Ja. Wenn Sie diese Anwendungsinstanz bereits für einmaliges Anmelden verwenden 
 
 Ja. Wenn Sie eine Anwendung mit dem alten Verhalten vor den Fehlerkorrekturen programmiert haben und von dieser eine neue Instanz bereitstellen möchten, führen Sie das folgende Verfahren aus. Dieses Verfahren beschreibt die Verwendung von Microsoft Graph-API und Microsoft Graph-API-Explorer zum Erstellen eines SCIM-Bereitstellungsauftrags mit dem alten Verhalten.
  
-1.  Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
+1. Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 2. Erstellen Sie im Azure-Portal im Abschnitt **Azure Active Directory > Unternehmensanwendungen > Anwendung erstellen** eine neue Anwendung mit der Option **Non-gallery** (Nicht aus dem Katalog).
-3.  Kopieren Sie im Abschnitt **Eigenschaften** der neuen benutzerdefinierten App die **Objekt-ID**.
-4.  Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
+3. Kopieren Sie im Abschnitt **Eigenschaften** der neuen benutzerdefinierten App die **Objekt-ID**.
+4. Wechseln Sie in einem neuen Webbrowserfenster zu https://developer.microsoft.com/graph/graph-explorer, und melden Sie sich als Administrator für den Azure AD-Mandanten an, unter dem Ihre App hinzugefügt wurde.
 5. Führen Sie im Graph-Tester den folgenden Befehl aus, um die Konfiguration der Bereitstellung für Ihre App zu initialisieren.
-Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
+   Ersetzen Sie „[object-id]“ durch die Dienstprinzipal-ID (Objekt-ID), die Sie im dritten Schritt kopiert haben.
 
- `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
- `{   templateId: "customappsso"   }`
+   `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+   `{   templateId: "customappsso"   }`
  
 6. Wechseln Sie wieder zurück zum ersten Webbrowserfenster, und wählen Sie die Registerkarte **Bereitstellung** für Ihre Anwendung aus.
 7. Schließen Sie die Konfiguration der Benutzerbereitstellung wie gewohnt ab.

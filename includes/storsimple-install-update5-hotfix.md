@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 8abc6129e1179378ac90278fd2032737b2b828b2
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 19d2dedc2ccf7015696504a94f5ef7c43a90d3be
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888580"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125168"
 ---
 #### <a name="to-download-hotfixes"></a>So laden Sie Hotfixes herunter
 
@@ -100,12 +100,12 @@ Führen Sie zum Installieren und Überprüfen der Hotfixes für den normalen Mod
     Daraufhin sollten die folgenden Versionen angezeigt werden.
    
    * `FriendlySoftwareVersion: StorSimple 8000 Series Update 5.0`
-   *  `HcsSoftwareVersion: 6.3.9600.17845`
+   * `HcsSoftwareVersion: 6.3.9600.17845`
    
-    Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-8000-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
+     Wenn sich die Versionsnummern nach dem Anwenden des Updates nicht ändern, konnte der Hotfix nicht angewendet werden. Sollte dies der Fall sein, wenden Sie sich an den [Microsoft Support](../articles/storsimple/storsimple-8000-contact-microsoft-support.md), um weitere Unterstützung zu erhalten.
      
-    > [!IMPORTANT]
-    > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
+     > [!IMPORTANT]
+     > Sie müssen den aktiven Controller mit dem Cmdlet `Restart-HcsController` neu starten, bevor Sie das nächste Update anwenden können.
      
 8. Wiederholen Sie die Schritte 3 bis 6, um den in den Ordner _FirstOrderUpdate_ heruntergeladenen Agent _CisMDSAgentupdate.exe_ zu installieren.
 8. Wiederholen Sie die Schritte 3 bis 6, um die zweitrangigen Updates zu installieren. 

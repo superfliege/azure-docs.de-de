@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajani-janaki-ram
-ms.openlocfilehash: 9aaa5dd2c636f9b5d92e949e1af71eda809cdac7
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: c22acb1ae82e5c1e781598e8545c7f1625cc1c09
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810319"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122789"
 ---
 # <a name="remove-servers-and-disable-protection"></a>Entfernen von Servern und Deaktivieren des Schutzes
 
@@ -55,18 +55,18 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
         pushd .
         try
         {
-             $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
-             $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
-             $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
-             $isAdmin=$principal.IsInRole($administrators)
-             if (!$isAdmin)
-             {
+            $windowsIdentity=[System.Security.Principal.WindowsIdentity]::GetCurrent()
+            $principal=new-object System.Security.Principal.WindowsPrincipal($windowsIdentity)
+            $administrators=[System.Security.Principal.WindowsBuiltInRole]::Administrator
+            $isAdmin=$principal.IsInRole($administrators)
+            if (!$isAdmin)
+            {
                 "Please run the script as an administrator in elevated mode."
                 $choice = Read-Host
-                return;       
-             }
+                return;
+            }
 
-            $error.Clear()    
+            $error.Clear()
             "This script will remove the old Azure Site Recovery Provider related properties. Do you want to continue (Y/N) ?"
             $choice =  Read-Host
 
@@ -95,24 +95,24 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
             {
                 if (Test-Path $registrationPath)
                 {
-                    "Removing registration related registry keys."    
+                    "Removing registration related registry keys."
                     Remove-Item -Recurse -Path $registrationPath
                 }
 
                 if (Test-Path $proxySettingsPath)
-            {
+                {
                     "Removing proxy settings"
                     Remove-Item -Recurse -Path $proxySettingsPath
                 }
 
                 $regNode = Get-ItemProperty -Path $asrHivePath
                 if($regNode.DraID -ne $null)
-                {            
+                {
                     "Removing DraId"
                     Remove-ItemProperty -Path $asrHivePath -Name $draIdValue
                 }
                 if($regNode.IdMgmtCloudContainerId -ne $null)
-                {            
+                {
                     "Removing IdMgmtCloudContainerId"
                     Remove-ItemProperty -Path $asrHivePath -Name $idMgmtCloudContainerId
                 }
@@ -131,7 +131,7 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
                 $store.Remove($cert)
             }
         }catch
-        {    
+        {
             [system.exception]
             Write-Host "Error occurred" -ForegroundColor "Red"
             $error[0]
@@ -158,11 +158,11 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Unter **Replikation deaktivieren** können Sie folgende Optionen auswählen:
-     - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
-    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
+   - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+   - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
-    > [!NOTE]
-    > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
+     > [!NOTE]
+     > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen Hyper-V-Server zu bereinigen.
 1. Entfernen Sie auf dem Hyper-V-Quellhostserver die Replikation für den virtuellen Computer. Ersetzen Sie SQLVM1 durch den Namen des virtuellen Computers, und führen Sie das Skript in einer administrativen PowerShell aus.
 
 ```powershell
@@ -177,11 +177,11 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Wählen Sie unter **Replikation deaktivieren** eine der folgenden Optionen aus:
 
-    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
-    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
+   - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+   - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. 
 
-    > [!NOTE]
-    > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
+     > [!NOTE]
+     > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
 3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
 
         $vm = get-scvirtualmachine -Name "SQLVM1"
@@ -201,15 +201,15 @@ Hyper-V-Hosts, die nicht von VMM verwaltet werden, werden an einem Hyper-V-Stand
 1. Klicken Sie unter **Geschützte Elemente** > **Replizierte Elemente** mit der rechten Maustaste auf den Computer, und klicken Sie dann auf **Replikation deaktivieren**.
 2. Wählen Sie unter **Replikation deaktivieren** eine der folgenden Optionen aus:
 
-    - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
-    - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. Führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für einen lokalen virtuellen Computer zu bereinigen.
-> [!NOTE]
-> Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
+   - **Replikation deaktivieren und entfernen (empfohlen)** – diese Option entfernt das replizierte Element aus Azure Site Recovery. Außerdem wird die Replikation für den Computer beendet. Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird bereinigt, und die Abrechnung für Site Recovery für diesen geschützten Server wird beendet.
+   - **Entfernen** – diese Option sollte nur verwendet werden, wenn die Quellumgebung gelöscht wurde oder darauf nicht zugegriffen werden kann (keine Verbindung). Dadurch wird das replizierte Element aus Azure Site Recovery entfernt (und die Abrechnung wird beendet). Die Konfiguration der Replikation auf dem lokalen virtuellen Computer wird **nicht** bereinigt. Führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für einen lokalen virtuellen Computer zu bereinigen.
+     > [!NOTE]
+     > Wenn Sie die Option **Entfernen** ausgewählt haben, führen Sie die folgenden Skripts aus, um die Replikationseinstellungen für den lokalen VMM-Server zu bereinigen.
 
 3. Führen Sie dieses Skript auf dem VMM-Quellserver mithilfe von PowerShell (Administratorrechte erforderlich) an der VMM-Konsole aus. Ersetzen Sie den Platzhalter **SQLVM1** durch den Namen des virtuellen Computers.
 
-         $vm = get-scvirtualmachine -Name "SQLVM1"
-         Set-SCVirtualMachine -VM $vm -ClearDRProtection
+        $vm = get-scvirtualmachine -Name "SQLVM1"
+        Set-SCVirtualMachine -VM $vm -ClearDRProtection
 4. Führen Sie auf dem sekundären VMM-Server das folgende Skript aus, um die Einstellungen für den sekundären virtuellen Computer zu bereinigen:
 
         $vm = get-scvirtualmachine -Name "SQLVM1"

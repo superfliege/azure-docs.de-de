@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 05/24/2018
 ms.author: lahugh
 ms.custom: ''
-ms.openlocfilehash: 13ed2caa5ae547747707c368246ea23486dbed72
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 1e9d039769e7fbcb9c2b7285aa727acd7322bcdf
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55469565"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103331"
 ---
 # <a name="use-an-azure-file-share-with-a-batch-pool"></a>Verwenden einer Azure-Dateifreigabe mit einem Batch-Pool
 
@@ -66,16 +66,16 @@ Um den Einbindevorgang zu vereinfachen, können Sie die Anmeldeinformationen opt
 
 1. Führen Sie das Befehlszeilenprogramm `cmdkey` mithilfe eines Starttasks in der Poolkonfiguration aus. Damit werden die Anmeldeinformationen dauerhaft auf jedem Windows-Knoten gespeichert. Die Befehlszeile des Starttasks sieht etwa wie folgt aus:
 
-  ```
-  cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
+   ```
+   cmd /c "cmdkey /add:mystorageaccountname.file.core.windows.net /user:AZURE\mystorageaccountname /pass:XXXXXXXXXXXXXXXXXXXXX=="
 
-  ```
+   ```
 
 2. Binden Sie die Freigabe mithilfe von `net use` als Teil jedes Tasks in jeden Knoten ein. Der folgende Taskbefehl bindet die Dateifreigabe beispielsweise als Laufwerk *S:* ein. Danach folgt ein Befehl oder Skript, der/das auf die Freigabe verweist. Im Aufruf von `net use` werden zwischengespeicherte Anmeldeinformationen verwendet. Bei diesem Schritt wird davon ausgegangen, dass Sie die gleiche Benutzeridentität für die Tasks verwenden, die Sie auch im Starttask im Pool verwendet haben. Dieses Vorgehen eignet sich nicht für jedes Szenario.
 
-  ```
-  cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
-  ```
+   ```
+   cmd /c "net use S: \\mystorageaccountname.file.core.windows.net\myfileshare" 
+   ```
 
 ### <a name="c-example"></a>C#-Beispiel
 Das folgende C#-Beispiel zeigt, wie Sie die Anmeldeinformationen mithilfe eines Starttasks dauerhaft in einem Windows-Pool speichern. Der Dienstname und die Anmeldeinformationen der Speicherdatei werden als definierte Konstanten übergeben. Hier wird der Starttask mit einem Standardkonto eines automatischen Benutzers (kein Administrator) mit Berechtigungen für den Pool ausgeführt.

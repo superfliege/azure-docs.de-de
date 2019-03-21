@@ -3,23 +3,21 @@ title: Funktionsweise von Azure Traffic Manager | Microsoft-Dokumentation
 description: Dieser Artikel beschreibt, wie Traffic Manager Datenverkehr für eine hohe Leistung und Verfügbarkeit Ihrer Webanwendungen weiterleitet.
 services: traffic-manager
 documentationcenter: ''
-author: kumudd
+author: KumudD
 manager: twooley
-editor: ''
-ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2018
+ms.date: 03/05/2019
 ms.author: kumud
-ms.openlocfilehash: 26d61c1b263a8fa7ff4f0ff5b2888f1d900e772e
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 52469cb2735b2270815191ec0815daee350882a4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567841"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108864"
 ---
 # <a name="how-traffic-manager-works"></a>Funktionsweise von Traffic Manager
 
@@ -41,8 +39,8 @@ Contoso Corp hat ein neues Partnerportal entwickelt. Die URL für dieses Portal 
 Um diese Konfiguration zu erzielen, werden die folgenden Schritte ausgeführt:
 
 1. Drei Instanzen des Diensts werden bereitgestellt. Die DNS-Namen dieser Bereitstellungen lauten „contoso-us.cloudapp.net“, „contoso-eu.cloudapp.net“ und „contoso-asia.cloudapp.net“.
-2. Ein Traffic Manager-Profil namens „contoso.trafficmanager.net“ wird erstellt und für die Verwendung der leistungsorientierten Datenverkehrsrouting-Methode für die drei Endpunkte konfiguriert.
-* Der Vanity-Domänenname „partners.contoso.com“ mit einem Verweis auf „contoso.trafficmanager.net“ (unter Verwendung eines DNS CNAME-Eintrags) wird konfiguriert.
+1. Ein Traffic Manager-Profil namens „contoso.trafficmanager.net“ wird erstellt und für die Verwendung der leistungsorientierten Datenverkehrsrouting-Methode für die drei Endpunkte konfiguriert.
+1. Der Vanity-Domänenname „partners.contoso.com“ mit einem Verweis auf „contoso.trafficmanager.net“ (unter Verwendung eines DNS CNAME-Eintrags) wird konfiguriert.
 
 ![Traffic Manager-DNS-Konfiguration][1]
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/30/2018
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 115b1185575232800e060f67317e4973eea9ea53
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: d78c110f3317f4dd9f16cbe243aeca437e9890a1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53091763"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58108796"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>ExpressRoute-Überwachung, Metriken und Warnungen
 
@@ -43,18 +43,18 @@ Sie können Metriken für privates, öffentliches und Microsoft-Peering in Bits 
 
 1. Um Warnungen zu konfigurieren, navigieren Sie zu **Azure Monitor** und klicken dann auf **Warnungen**.
 
-  ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
+   ![alerts](./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg)
 
 2. Klicken Sie auf **+Ziel auswählen**, und wählen Sie die ExpressRoute-Gatewayverbindungsressource aus.
 
-  ![Ziel]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
+   ![Ziel]( ./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg)
 3. Definieren Sie die Warnungsdetails.
 
-  ![Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
+   ![Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg)
 
 4. Definieren Sie die Aktionsgruppe, und fügen Sie sie hinzu.
 
-  ![Hinzufügen einer Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
+   ![Hinzufügen einer Aktionsgruppe](./media/expressroute-monitoring-metrics-alerts/actiongroup.png)
 
 ## <a name="alerts-based-on-each-peering"></a>Warnungen basierend auf dem jeweiligen Peering
 

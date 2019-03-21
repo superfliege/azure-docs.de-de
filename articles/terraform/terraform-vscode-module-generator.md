@@ -2,24 +2,24 @@
 title: Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Yeoman
 description: Hier erfahren Sie, wie Sie eine Terraform-Basisvorlage in Azure mithilfe von Yeoman erstellen.
 services: terraform
-ms.service: terraform
+ms.service: azure
 keywords: Terraform, DevOps, virtueller Computer, Azure, Yeoman
 author: tomarchermsft
 manager: jeconnoc
 ms.author: tarcher
 ms.topic: tutorial
 ms.date: 11/08/2018
-ms.openlocfilehash: 1133e6b35d200ec7f855b41f3ae5d6f37949fc97
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 8405624831c572f194fa0afaad2f0caa40bcf9ba
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55568497"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58001278"
 ---
 # <a name="create-a-terraform-base-template-in-azure-using-yeoman"></a>Erstellen einer Terraform-Basisvorlage in Azure mithilfe von Yeoman
 
 [Terraform](https://docs.microsoft.com/azure/terraform/
-) bietet eine Möglichkeit, mühelos eine Infrastruktur in Azure zu erstellen. [Yeoman](http://yeoman.io/) erleichtert die Aufgabe des Modulentwicklers beim Erstellen von Terraform-Modulen erheblich und bietet gleichzeitig ein hervorragendes Framework *bewährter Methoden*.
+) bietet eine Möglichkeit, mühelos eine Infrastruktur in Azure zu erstellen. [Yeoman](https://yeoman.io/) erleichtert die Aufgabe des Modulentwicklers beim Erstellen von Terraform-Modulen erheblich und bietet gleichzeitig ein hervorragendes Framework *bewährter Methoden*.
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Yeoman-Modulgenerator eine Terraform-Basisvorlage erstellen. Anschließend erfahren Sie, wie Sie Ihre neue Terraform-Vorlage mithilfe von zwei unterschiedlichen Methoden testen:
 

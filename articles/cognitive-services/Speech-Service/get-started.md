@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: d48ad97d50c413c4530e54f2538fda9cd0e31b8f
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: 09cc38cd5343e8b01b3e704191ea40c133d724f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342676"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103722"
 ---
 # <a name="try-speech-services-for-free"></a>Kostenloses Testen von Speech Services
 
@@ -36,7 +36,7 @@ So registrieren Sie sich für eine 30-tägige kostenlose Testversion:
 
 1. Wählen Sie die Registerkarte **Spracheingabe-APIs** aus.
 
-   ![Registerkarte „Speech Services“](media/index/try-speech-api-free-trial1.png)
+   ![Registerkarte „Sprachdienste“](media/index/try-speech-api-free-trial1.png)
 
 1. Wählen Sie unter **Speech Services** die Schaltfläche **API-Schlüssel anfordern** aus.
 
@@ -87,19 +87,19 @@ So fügen Sie Ihrem (kostenlosen oder kostenpflichtigen) Azure-Konto eine Speech
 
 1. Geben Sie unter **Erstellen** Folgendes ein:
 
-    * Einen Namen für die neue Ressource. Über den Namen können Sie mehrere Abonnements für denselben Dienst unterscheiden.
-    * Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
-    * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit sind die Speech Services in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
-    * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
-    * Erstellen Sie eine neue Ressourcengruppe für dieses Speech-Abonnement, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
-    * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.
-    * Klicken Sie auf **Erstellen**.
+   * Einen Namen für die neue Ressource. Über den Namen können Sie mehrere Abonnements für denselben Dienst unterscheiden.
+   * Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
+   * Wählen Sie die Region aus, in der die Ressource verwendet wird. Derzeit sind die Speech Services in den Regionen „Asien, Osten“, „Europa, Norden“ und „USA, Westen“ verfügbar.
+   * Wählen Sie einen kostenlosen oder einen kostenpflichtigen Tarif aus. Klicken Sie auf **Alle Preisinformationen anzeigen**, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten.
+   * Erstellen Sie eine neue Ressourcengruppe für dieses Abonnement für den Sprachdienst, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
+   * Aktivieren Sie das Kontrollkästchen **An Dashboard anheften**, um zukünftig einfach auf Ihr Abonnement zugreifen zu können.
+   * Klicken Sie auf **Erstellen**.
 
-    ![Auswählen der Schaltfläche „Erstellen“](media/index/try-speech-api-create-speech4.png)
+     ![Auswählen der Schaltfläche „Erstellen“](media/index/try-speech-api-create-speech4.png)
 
-    Es dauert einen Moment, bis die neue Sprachressource erstellt und bereitgestellt wird. Wählen Sie **Schnellstart** aus, um Informationen zu Ihrer neuen Ressource anzuzeigen.
+     Es dauert einen Moment, bis die neue Sprachressource erstellt und bereitgestellt wird. Wählen Sie **Schnellstart** aus, um Informationen zu Ihrer neuen Ressource anzuzeigen.
 
-    ![Bereich „Schnellstart“](media/index/try-speech-api-create-speech5.png)
+     ![Bereich „Schnellstart“](media/index/try-speech-api-create-speech5.png)
 
 1. Klicken Sie unter **Schnellstart** auf den Link **Schlüssel** unter Schritt 1, um Ihre Abonnementschlüssel anzuzeigen. Jedem Abonnement sind zwei Schlüssel zugewiesen. Sie können jeden dieser Schlüssel in Ihrem Abonnement verwenden. Wählen Sie jeweils die Schaltfläche neben einem Schlüssel aus, um ihn in die Zwischenablage zu kopieren und in den Code einzufügen.
 

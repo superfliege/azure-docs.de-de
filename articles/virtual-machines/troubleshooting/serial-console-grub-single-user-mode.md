@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 135741a8bf385388fa1b3ac75a45e4c4678bf196
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: ca2523a1101a21740a318a304f9bec491d4de2f9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814469"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106235"
 ---
 # <a name="use-serial-console-to-access-grub-and-single-user-mode"></a>Verwenden der seriellen Konsole zum Zugreifen auf den GRUB- und Einzelbenutzermodus
 GRUB ist der GRand Unified Bootloader und wahrscheinlich das Erste, was Sie beim Starten einer VM sehen. Da GRUB vor dem Start des Betriebssystems angezeigt wird, kann nicht über SSH auf diesen Bootloader zugegriffen werden. Mit GRUB können Sie unter anderem Ihre Startkonfiguration so ändern, dass das System im Einzelbenutzermodus gestartet wird.
@@ -187,7 +187,7 @@ Die Notfall-Shell wird automatisch geöffnet, wenn SLES nicht normal gestartet w
 1. Suchen Sie nach der Kernelzeile. Diese beginnt mit `linux`.
 1. Fügen Sie `systemd.unit=emergency.target` an das Ende der Zeile an.
 1. Drücken Sie STRG+X, um einen Neustart mit diesen Einstellungen durchzuführen und die Notfall-Shell zu öffnen.
-> Beachten Sie, dass die Notfall-Shell mit einem _schreibgeschützten_ Dateisystem aktiviert wird. Wenn Sie Dateien bearbeiten möchten, müssen Sie das Dateisystem mit Lese-/Schreibberechtigungen erneut einbinden. Geben Sie dazu in der Shell `mount -o remount,rw /` ein.
+   > Beachten Sie, dass die Notfall-Shell mit einem _schreibgeschützten_ Dateisystem aktiviert wird. Wenn Sie Dateien bearbeiten möchten, müssen Sie das Dateisystem mit Lese-/Schreibberechtigungen erneut einbinden. Geben Sie dazu in der Shell `mount -o remount,rw /` ein.
 
 ## <a name="access-for-oracle-linux"></a>Zugriff für Oracle Linux
 Ähnlich wie in Red Hat Enterprise Linux erfordert der Einzelbenutzermodus in Oracle Linux, dass GRUB und der Stammbenutzer aktiviert sind.

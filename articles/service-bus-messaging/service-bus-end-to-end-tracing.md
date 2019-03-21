@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 2330e395244f33653af415b5db896fdc2aa2024d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
+ms.openlocfilehash: 6e5895392db1d75a985674bf2f878a84bc8dd926
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54852982"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107034"
 ---
 # <a name="distributed-tracing-and-correlation-through-service-bus-messaging"></a>Verteilte Ablaufverfolgung und Korrelation über Service Bus-Messaging
 
@@ -213,7 +213,7 @@ In einigen Fällen ist es wünschenswert, nur einen Teil der Ereignisse zu proto
 
 1. `IsEnabled(<OperationName>, string entity, null)` entspricht `IsEnabled("Microsoft.Azure.ServiceBus.Send", "MyQueue1")`. Das Start- und das Stop-Ereignis am Ende fehlen. Verwenden Sie das Element, um bestimmte Vorgänge oder Warteschlangen herauszufiltern. Wenn durch den Rückruf `false` zurückgegeben wird, werden keine Ereignisse für den Vorgang gesendet.
 
-  * Für den Process-Vorgang und den ProcessSession-Vorgang wird ebenfalls ein `IsEnabled(<OperationName>, string entity, Activity activity)`-Rückruf empfangen. Verwenden Sie das Element, um Ereignisse auf der Basis von `activity.Id`-Eigenschaften oder Tags-Eigenschaften zu filtern.
+   * Für den Process-Vorgang und den ProcessSession-Vorgang wird ebenfalls ein `IsEnabled(<OperationName>, string entity, Activity activity)`-Rückruf empfangen. Verwenden Sie das Element, um Ereignisse auf der Basis von `activity.Id`-Eigenschaften oder Tags-Eigenschaften zu filtern.
   
 2. `IsEnabled(<OperationName>.Start)` entspricht `IsEnabled("Microsoft.Azure.ServiceBus.Send.Start")`. Durch diesen Code wird überprüft, ob das Start-Ereignis ausgelöst werden soll. Das Ergebnis wirkt sich nur auf das Start-Ereignis, nicht aber auf die weitere Instrumentierung aus.
 

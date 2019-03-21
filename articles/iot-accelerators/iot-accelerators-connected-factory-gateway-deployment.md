@@ -6,14 +6,14 @@ manager: timlt
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.topic: conceptual
-ms.date: 10/26/2018
+ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 0a2ccdc6b02e9d348517bee95306ffc88d9ccd98
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 99953b486fbd1daa9800aa850684447465eead9e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53599943"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182097"
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-solution-accelerator-on-windows-or-linux"></a>Bereitstellen eines Edge-Gateways für den Solution Accelerator für verbundene Factorys unter Windows oder Linux
 
@@ -39,7 +39,7 @@ Die Schritte in diesem Artikel veranschaulichen die Bereitstellung eines Edge-Ga
 
 ## <a name="choose-a-gateway-device"></a>Auswählen eines Gatewaygeräts
 
-Falls Sie noch kein Gatewaygerät haben, empfiehlt Microsoft, ein kommerzielles Gateway von einem unserer Partner zu kaufen. Eine Liste der Gatewaygeräte, die mit der Lösung für verbundene Factorys kompatibel sind, finden Sie im [Katalog der Azure IoT-Geräte](https://catalog.azureiotsuite.com/?q=opc). Befolgen Sie die für das Gerät geltenden Anweisungen, um das Gateway einzurichten.
+Falls Sie noch kein Gatewaygerät haben, empfiehlt Microsoft, ein kommerzielles Gateway von einem unserer Partner zu kaufen. Eine Liste der Gatewaygeräte, die mit der Lösung für verbundene Factorys kompatibel sind, finden Sie im [Katalog der Azure IoT-Geräte](https://catalog.azureiotsolutions.com/?q=opc). Befolgen Sie die für das Gerät geltenden Anweisungen, um das Gateway einzurichten.
 
 Wenn Sie ein vorhandenes Gatewaygerät manuell konfigurieren müssen, befolgen Sie die folgenden Anweisungen.
 

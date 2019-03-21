@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 10/15/2018
-ms.openlocfilehash: 6c4527f88e10e652ebcaf94a153cf30cebb54841
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 25a832be432f1d1a6d9b18dfc8f7384c564c3060
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177460"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58103433"
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack-Telemetriedaten
 
@@ -114,7 +114,7 @@ Wenn Sie die Telemetrie nach der Bereitstellung aktivieren oder deaktivieren mö
 
 Parameterdetails:
 > Parameter „Enable“: Aktiviert das Hochladen von Telemetriedaten.
-
+> 
 > Parameter „Disable“: Deaktiviert das Hochladen von Telemetriedaten.  
 
 **Skript zum Aktivieren der Telemetrie:**

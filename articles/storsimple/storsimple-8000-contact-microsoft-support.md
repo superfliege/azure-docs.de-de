@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
-ms.openlocfilehash: e0df86e40d0dc1092ad7ff04f01bbc3e5e3d1c4e
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2018
-ms.locfileid: "27743046"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58107126"
 ---
 # <a name="contact-microsoft-support"></a>Microsoft-Support kontaktieren
 
@@ -47,7 +47,6 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
    3. Wählen Sie in der Dropdownliste einen **Supportplan** aus, wenn Ihrem Abonnement mehrere Pläne zugeordnet sind. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
    4. Klicken Sie auf **Weiter**.
 
-
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
 3. Wählen Sie auf dem Blatt **Neue Supportanfrage** die Option **Schritt 2: Problem** aus. Gehen Sie auf dem Blatt **Problem** folgendermaßen vor:
@@ -60,19 +59,18 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
     6. Aktivieren Sie **Diagnoseinformationen freigeben**.
     7. Klicken Sie auf **Weiter**.
 
-
        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
 4. Klicken Sie auf dem Blatt **Neue Supportanfrage** auf **Schritt 3: Kontaktinformationen**. Führen Sie auf dem Blatt **Kontaktinformationen** folgende Schritte aus:
 
-    1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
-    2. Geben Sie in den Kontaktinformationen Ihren Namen, die E-Mail-Adresse und optional Ihr Land ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern** .
-    3. Klicken Sie auf **Create**.
+   1. Geben Sie in **Kontaktoptionen** Ihre bevorzugte Kontaktmethode (telefonisch oder per E-Mail) und die Sprache ein. Die Antwortzeit wird die anhand Ihres Abonnementplans automatisch ausgewählt.
+   2. Geben Sie in den Kontaktinformationen Ihren Namen, die E-Mail-Adresse und optional Ihr Land ein. Aktivieren Sie das Kontrollkästchen **Kontaktänderungen für zukünftige Supportanfragen speichern** .
+   3. Klicken Sie auf **Create**.
    
-        ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Kontaktieren des Supports von MS über das neue Portal](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-    Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
-Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
+      Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
+      Nach dem Übermitteln Ihrer Anfrage setzt sich baldmöglichst ein Supporttechniker mit Ihnen in Verbindung, um Ihre Anfrage zu bearbeiten.
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

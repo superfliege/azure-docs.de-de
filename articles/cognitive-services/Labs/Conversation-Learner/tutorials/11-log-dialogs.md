@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 9a819f94ae0cc90d86fdbdf4c9201f1d5a2df6ee
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.openlocfilehash: e3a84bfa643ebe74983bcef0d0ea72c701ffa589
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213343"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58170495"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Protokollieren von Dialogen in einem Unterhaltungslernmodell
 
@@ -55,6 +55,8 @@ Dieses Modell enthält eine Entität namens „City“ (Stadt) sowie Aktionen zu
 9. Wählen Sie die Antwort „The weather in Austin is probably sunny.“ (Das Wetter in Austin ist wahrscheinlich sonnig.) aus.
 10. Klicken Sie auf die Schaltfläche „Save As Train Dialog“ (Als Trainingsdialog speichern).
     - Das Training wird sofort gestartet.
+
+![](../media/T11_logdialog.png)
 
 Ein letzter Hinweis: Das Feature für die Unterhaltungsprotokollierung kann bei Bedarf deaktiviert werden. Deaktivieren Sie hierzu in den Einstellungen das Kontrollkästchen „Log Conversations“ (Unterhaltungen protokollieren).
 

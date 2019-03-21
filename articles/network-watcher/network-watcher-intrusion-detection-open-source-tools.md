@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9d77952a96bff6cc2d50ecbd4bde7e499f20de6d
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
+ms.openlocfilehash: 41b039c6598334d49b9ddb0608d7ad2ae045b223
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50420029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57901269"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Durchführen der Erkennung von Netzwerkangriffen mit Network Watcher und Open Source-Tools
 
@@ -39,7 +39,7 @@ Beide Open Source-Tools können auf einem virtuellen Azure-Computer eingerichtet
 
 ### <a name="install-suricata"></a>Installieren von Suricata
 
-Informationen zu allen anderen Installationsmethoden finden Sie unter http://suricata.readthedocs.io/en/latest/install.html
+Informationen zu allen anderen Installationsmethoden finden Sie unter https://suricata.readthedocs.io/en/latest/install.html
 
 1. Führen Sie im Befehlszeilenterminal Ihrer VM die folgenden Befehle aus:
 
@@ -58,7 +58,7 @@ Bisher verfügen wir noch nicht über Regeln, die von Suricata ausgeführt werde
 Laden Sie den Regelsatz herunter, und kopieren Sie ihn in das Verzeichnis:
 
 ```
-wget http://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
+wget https://rules.emergingthreats.net/open/suricata/emerging.rules.tar.gz
 tar zxf emerging.rules.tar.gz
 sudo cp -r rules /etc/suricata/
 ```

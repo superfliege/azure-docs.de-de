@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.openlocfilehash: 4110b8f1b336a604c89180ac44ad470132765830
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 366ab452d1693315e7e71301d953248008c1eac8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55820673"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079127"
 ---
 # <a name="service-remoting-in-c-with-reliable-services"></a>Dienstremoting in C# mit Reliable Services
 
@@ -128,28 +128,28 @@ Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit einem assembl
 
 1. Ändern Sie die Endpunktressource im Dienstmanifest von `"ServiceEndpoint"` in `"ServiceEndpointV2"`.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Verwenden Sie die Erweiterungsmethode `Microsoft.ServiceFabric.Services.Remoting.Runtime.CreateServiceRemotingInstanceListeners`, um Remotinglistener zu erstellen (diese sind für V1 und V2 gleich).
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. Markieren Sie die Assembly, die die Remotingschnittstellen enthält, mit einem `FabricTransportServiceRemotingProvider`-Attribut.
 
-  ```csharp
-  [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
-  ```
+   ```csharp
+   [assembly: FabricTransportServiceRemotingProvider(RemotingListenerVersion = RemotingListenerVersion.V2, RemotingClientVersion = RemotingClientVersion.V2)]
+   ```
 
 Im Clientprojekt sind keine Codeänderungen erforderlich.
 Erstellen Sie die Clientassembly mit der Schnittstellenassembly, um sicherzustellen, dass das oben gezeigte assembly-Attribut verwendet wird.
@@ -162,18 +162,18 @@ Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit expliziten V2
 
 1. Ändern Sie die Endpunktressource im Dienstmanifest von `"ServiceEndpoint"` in `"ServiceEndpointV2"`.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2" />
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Verwenden Sie [FabricTransportServiceRemotingListener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotingListener?view=azure-dotnet) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Runtime`.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -184,16 +184,16 @@ Diese Schritte ändern den Vorlagencode so, dass der V2-Stapel mit expliziten V2
             })
         };
     }
-  ```
+   ```
 
 3. Verwenden Sie [FabricTransportServiceRemotingClientFactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet) aus dem Namespace `Microsoft.ServiceFabric.Services.Remoting.V2.FabricTransport.Client`, um Clients zu erstellen.
 
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
               return new FabricTransportServiceRemotingClientFactory();
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2"></a>So aktualisieren Sie von Remoting V1 auf Remoting V2
 
@@ -248,29 +248,29 @@ Gehen Sie folgendermaßen vor, um zu einem V2_1-Stapel zu wechseln.
 
 1. Fügen Sie im Dienstmanifest eine Endpunktressource namens „ServiceEndpointV2_1“ hinzu.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Verwenden Sie die Remotingerweiterungsmethode, um einen Remotinglistener zu erstellen.
 
-  ```csharp
+   ```csharp
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return this.CreateServiceRemotingInstanceListeners();
     }
-  ```
+   ```
 
 3. Fügen Sie Remotingschnittstellen ein [assembly-Attribut](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.fabrictransport.fabrictransportserviceremotingproviderattribute?view=azure-dotnet) hinzu.
 
-  ```csharp
+   ```csharp
     [assembly:  FabricTransportServiceRemotingProvider(RemotingListenerVersion=  RemotingListenerVersion.V2_1, RemotingClientVersion= RemotingClientVersion.V2_1)]
 
-  ```
+   ```
 
 Im Clientprojekt sind keine Änderungen erforderlich.
 Erstellen Sie die Clientassembly mit der Schnittstellenassembly, um sicherzustellen, dass das zuvor genannte assembly-Attribut verwendet wird.
@@ -281,18 +281,18 @@ Folgen Sie diesen Schritten:
 
 1. Fügen Sie im Dienstmanifest eine Endpunktressource namens „ServiceEndpointV2_1“ hinzu.
 
-  ```xml
-  <Resources>
+   ```xml
+   <Resources>
     <Endpoints>
       <Endpoint Name="ServiceEndpointV2_1" />  
     </Endpoints>
-  </Resources>
-  ```
+   </Resources>
+   ```
 
 2. Verwenden Sie den [Remoting V2-Listener](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.runtime.fabrictransportserviceremotinglistener?view=azure-dotnet). Der Standardname für die Dienstendpunktressource lautet „ServiceEndpointV2_1“. Er muss im Dienstmanifest definiert werden.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
         return new[]
         {
@@ -305,17 +305,17 @@ Folgen Sie diesen Schritten:
             })
         };
     }
-  ```
+   ```
 
 3. Verwenden Sie die V2-[Clientfactory](https://docs.microsoft.com/dotnet/api/microsoft.servicefabric.services.remoting.v2.fabrictransport.client.fabrictransportserviceremotingclientfactory?view=azure-dotnet).
-  ```csharp
-  var proxyFactory = new ServiceProxyFactory((c) =>
+   ```csharp
+   var proxyFactory = new ServiceProxyFactory((c) =>
           {
             var settings = new FabricTransportRemotingSettings();
             settings.UseWrappedMessage = true;
             return new FabricTransportServiceRemotingClientFactory(settings);
           });
-  ```
+   ```
 
 ## <a name="upgrade-from-remoting-v1-to-remoting-v2-interface-compatible"></a>Durchführen eines Upgrades von Remoting V1 auf Remoting V2 (schnittstellenkompatibel)
 
@@ -527,8 +527,8 @@ Folgen Sie diesen Schritten:
 
 2. Überschreiben Sie den Standardserialisierungsanbieter für einen Remotinglistener mit `JsonSerializationProvider`.
 
-  ```csharp
-  protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
+   ```csharp
+   protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
    {
        return new[]
        {
@@ -539,7 +539,7 @@ Folgen Sie diesen Schritten:
            })
        };
    }
-  ```
+   ```
 
 3. Überschreiben Sie den Standardserialisierungsanbieter für eine Remotingclientfactory mit `JsonSerializationProvider`.
 

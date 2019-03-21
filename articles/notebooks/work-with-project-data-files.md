@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 586b423b-6668-4bdd-9592-4c237d7458fb
-ms.service: notebooks
+ms.service: azure
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
-ms.openlocfilehash: ae50581404dceb7b59b2ca145207f7d4ade23440
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: c5f8b6db77cabdf5e7af66063cbd9a058bd01800
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53309245"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58082771"
 ---
 # <a name="work-with-data-files-in-azure-notebook-projects"></a>Arbeiten mit Datendateien in Azure Notebooks-Projekten
 
@@ -42,13 +42,13 @@ Sie können Dateien auf dem Projektdashboard oder innerhalb eines ausgeführten 
 
 1. Wählen Sie den Befehl **Hochladen** und dann entweder **Von URL** oder **Von Computer** aus, und geben Sie die erforderlichen Details für die zu importierenden Daten an:
 
-    - **Von URL**: Geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** an. Wählen Sie dann **+ Datei hinzufügen** aus, um die Datei der Uploadliste hinzuzufügen. Wiederholen Sie den Vorgang für alle weiteren URLs, und wählen Sie dann **Fertig** aus.
+   - **Von URL**: Geben Sie die Quelladresse im Feld **Datei-URL** und den Dateinamen, der dem Notebook in Ihrem Projekt zugewiesen werden soll, im Feld **Dateiname** an. Wählen Sie dann **+ Datei hinzufügen** aus, um die Datei der Uploadliste hinzuzufügen. Wiederholen Sie den Vorgang für alle weiteren URLs, und wählen Sie dann **Fertig** aus.
 
-    ![Hochladen über das URL-Popup](media/quickstarts/upload-from-url-popup.png)
+     ![Hochladen über das URL-Popup](media/quickstarts/upload-from-url-popup.png)
 
-    - **Von Computer**: Ziehen Sie Dateien auf das Popup, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen** aus, navigieren Sie dann zu den zu importierenden Datendateien, und wählen Sie sie aus. Sie können eine beliebige Anzahl Dateien beliebigen Typs und in beliebigem Format ablegen oder auswählen, da das Öffnen der Dateien und das Analysieren ihrer Daten dem Code im Notebook obliegt.
+   - **Von Computer**: Ziehen Sie Dateien auf das Popup, und legen Sie sie dort ab, oder wählen Sie **Dateien auswählen** aus, navigieren Sie dann zu den zu importierenden Datendateien, und wählen Sie sie aus. Sie können eine beliebige Anzahl Dateien beliebigen Typs und in beliebigem Format ablegen oder auswählen, da das Öffnen der Dateien und das Analysieren ihrer Daten dem Code im Notebook obliegt.
 
-    ![Hochladen aus dem Computerpopup](media/quickstarts/upload-from-computer-popup.png)
+     ![Hochladen aus dem Computerpopup](media/quickstarts/upload-from-computer-popup.png)
 
 1. Nach dem Import werden Dateien auf dem Projektdashboard angezeigt. Der Zugriff darauf kann innerhalb von Notebookcode mithilfe relativer Pfade zum enthaltenden Ordner erfolgen.
 

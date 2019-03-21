@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: harijay
-ms.openlocfilehash: 6c0207a68cea70951143c87f83f6b17bb0c7b1f3
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
+ms.openlocfilehash: 4fd96aedc658833493d6fddb704104a70c01df44
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55098458"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58010980"
 ---
 # <a name="virtual-machine-serial-console-for-linux"></a>Serielle Konsole für virtuelle Computer für Linux
 
@@ -82,6 +82,7 @@ Benutzerdefinierte Linux-Images     | Um die serielle Konsole für Ihr benutzerd
 > Werden in der seriellen Konsole keine Elemente angezeigt, überprüfen Sie, ob die Startdiagnose auf dem virtuellen Computer aktiviert ist.
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>Häufige Szenarien für den Zugriff auf die serielle Konsole
+
 Szenario          | Aktionen in der seriellen Konsole
 :------------------|:-----------------------------------------
 Fehlerhafte *FSTAB*-Datei | Drücken Sie die **EINGABETASTE**, um fortzufahren, und verwenden Sie einen Text-Editor, um die Datei *FSTAB* zu korrigieren. Dazu müssen Sie sich möglicherweise im Einzelbenutzermodus befinden. Weitere Informationen finden Sie unter [Beheben von FSTAB-Fehlern](https://support.microsoft.com/help/3206699/azure-linux-vm-cannot-start-because-of-fstab-errors) und [Verwenden der seriellen Konsole zum Zugreifen auf GRUB und den Einzelbenutzermodus](serial-console-grub-single-user-mode.md).
@@ -143,14 +144,14 @@ Alle gesendeten Daten werden bei der Übertragung verschlüsselt.
 ### <a name="audit-logs"></a>Überwachungsprotokolle
 Alle Zugriffe auf die serielle Konsole werden zurzeit in den Protokollen [Startdiagnose](https://docs.microsoft.com/azure/virtual-machines/linux/boot-diagnostics) des virtuellen Computers protokolliert. Der Zugriff auf diese Protokolle wird durch den Administrator des virtuellen Azure-Computers (der auch Besitzer dieser Protokolle ist) gesteuert.
 
->[!CAUTION]
-Zugriffskennwörter für die Konsole werden nicht protokolliert. Wenn jedoch innerhalb der Konsole Befehle ausgeführt werden, die Kennwörter, Geheimnisse, Benutzernamen oder personenbezogene Informationen anderer Art enthalten oder ausgeben, werden diese in den Protokollen der VM-Startdiagnose erfasst. Diese werden gemeinsam mit dem gesamten anderen sichtbaren Text als Teil der Implementierung der Scrollbackfunktion der seriellen Konsole geschrieben. Diese Protokolle sind zirkulär, und nur Personen mit Leseberechtigungen für das Speicherkonto der Diagnose haben auf sie Zugriff. Allerdings empfehlen wir die bewährte Methode, für alles, das Geheimnisse und oder personenbezogene Informationen beinhalten kann, den Remotedesktop zu verwenden.
+> [!CAUTION]
+> Zugriffskennwörter für die Konsole werden nicht protokolliert. Wenn jedoch innerhalb der Konsole Befehle ausgeführt werden, die Kennwörter, Geheimnisse, Benutzernamen oder personenbezogene Informationen anderer Art enthalten oder ausgeben, werden diese in den Protokollen der VM-Startdiagnose erfasst. Diese werden gemeinsam mit dem gesamten anderen sichtbaren Text als Teil der Implementierung der Scrollbackfunktion der seriellen Konsole geschrieben. Diese Protokolle sind zirkulär, und nur Personen mit Leseberechtigungen für das Speicherkonto der Diagnose haben auf sie Zugriff. Allerdings empfehlen wir die bewährte Methode, für alles, das Geheimnisse und oder personenbezogene Informationen beinhalten kann, den Remotedesktop zu verwenden.
 
 ### <a name="concurrent-usage"></a>Parallele Verwendung
 Wenn ein Benutzer mit der seriellen Konsole verbunden ist und ein anderer Benutzer erfolgreich den Zugriff auf denselben virtuellen Computer anfordert, wird der erste Benutzer getrennt und der zweite Benutzer mit der gleichen Sitzung verbunden.
 
->[!CAUTION]
-Dies bedeutet, dass ein Benutzer, der getrennt wird, nicht abgemeldet wird. Die Möglichkeit, bei der Trennung eine Abmeldung zu erzwingen (mithilfe von SIGHUP oder einem ähnlichen Mechanismus), ist noch nicht implementiert. Für Windows ist in SAC (Special Administrative Console, spezielle Verwaltungskonsole) ein automatisches Timeout aktiviert. Für Linux können Sie die Timeouteinstellung für das Terminal konfigurieren. Fügen Sie zu diesem Zweck Ihrer *.bash_profile*- oder *.profile*-Datei für den Benutzer, den Sie für die Anmeldung bei der Konsole verwenden, `export TMOUT=600` hinzu. Durch diese Einstellung erfolgt nach 10 Minuten ein Timeout der Sitzung.
+> [!CAUTION]
+> Dies bedeutet, dass ein Benutzer, der getrennt wird, nicht abgemeldet wird. Die Möglichkeit, bei der Trennung eine Abmeldung zu erzwingen (mithilfe von SIGHUP oder einem ähnlichen Mechanismus), ist noch nicht implementiert. Für Windows ist in SAC (Special Administrative Console, spezielle Verwaltungskonsole) ein automatisches Timeout aktiviert. Für Linux können Sie die Timeouteinstellung für das Terminal konfigurieren. Fügen Sie zu diesem Zweck Ihrer *.bash_profile*- oder *.profile*-Datei für den Benutzer, den Sie für die Anmeldung bei der Konsole verwenden, `export TMOUT=600` hinzu. Durch diese Einstellung erfolgt nach 10 Minuten ein Timeout der Sitzung.
 
 ## <a name="accessibility"></a>Barrierefreiheit
 Die Barrierefreiheit ist ein wichtiger Aspekt bei der seriellen Konsole in Azure. Daher haben wir sichergestellt, dass die serielle Konsole vollständig barrierefrei ist.
@@ -188,7 +189,7 @@ Die serielle Konsole funktioniert nicht mit einer Speicherkontofirewall. | Die s
 
 **F: Wie kann ich Feedback senden?**
 
-A. Geben Sie Feedback, indem Sie ein GitHub-Problem unter https://aka.ms/serialconsolefeedback erstellen. Alternativ dazu können Sie Feedback über azserialhelp@microsoft.com oder in der Kategorie „Virtuelle Computer“ von http://feedback.azure.com senden (dies sind die weniger bevorzugten Methoden).
+A. Geben Sie Feedback, indem Sie ein GitHub-Problem unter https://aka.ms/serialconsolefeedback erstellen. Alternativ dazu können Sie Feedback über azserialhelp@microsoft.com oder in der Kategorie „Virtuelle Computer“ von https://feedback.azure.com senden (dies sind die weniger bevorzugten Methoden).
 
 **F: Unterstützt die serielle Konsole das Kopieren und Einfügen?**
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: willzhan
 ms.custom: seodec18
-ms.openlocfilehash: 40e7f257df41fa4836b9df692be48a4b6c57fc80
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: ef695d913c73f0a4266b20f21f1008108b85b4d0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54812997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893015"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Entwurf eines Multi-DRM-Inhaltsschutzsystems mit Zugriffssteuerung 
 
@@ -29,7 +29,7 @@ Das Entwerfen und Erstellen eines DRM-Subsystems (Digital Rights Management) fü
 
 Zielgruppe sind Entwickler, die an einem DRM-Subsystem für OTT- oder Onlinestreaming-/Multibildschirmlösungen arbeiten, oder Leser, die sich für ein DRM-Subsystem interessieren. Es wird angenommen, dass Leser mit mindestens einer der DRM-Technologien auf dem Markt vertraut sind, wie z.B. PlayReady, Widevine, FairPlay oder Adobe Access.
 
-In dieser Beschreibung werden die drei DRMs behandelt, die von Azure Media Services unterstützt werden (Multi-DRM): Common Encryption (CENC) für PlayReady und Widevine, FairPlay sowie Verschlüsselung mit unverschlüsseltem AES-128-Schlüssel. Beim Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass native DRM-Systeme auf verschiedenen Clientplattformen verwendet werden. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](http://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
+In dieser Beschreibung werden die drei DRMs behandelt, die von Azure Media Services unterstützt werden (Multi-DRM): Common Encryption (CENC) für PlayReady und Widevine, FairPlay sowie Verschlüsselung mit unverschlüsseltem AES-128-Schlüssel. Beim Onlinestreaming und in der OTT-Branche lässt sich immer mehr der Trend feststellen, dass native DRM-Systeme auf verschiedenen Clientplattformen verwendet werden. Dieser Trend löst die vorherige Vorgehensweise ab, bei der ein einzelnes DRM-System und das zugehörige Client-SDK für verschiedene Clientplattformen verwendet wurden. Bei Verwenden von CENC mit mehreren nativen DRM-Systemen sind PlayReady und Widevine gemäß der Spezifikation [Common Encryption (ISO/IEC 23001-7 CENC)](https://www.iso.org/iso/home/store/catalogue_ics/catalogue_detail_ics.htm?csnumber=65271/) verschlüsselt.
 
 Die Verwendung eines nativen Multi-DRM-Systems für den Inhaltsschutz bietet folgende Vorteile:
 
@@ -49,7 +49,7 @@ Für diesen Artikel gelten die folgenden Zielsetzungen:
 Die folgende Tabelle enthält eine Zusammenfassung der nativen DRM-Unterstützung auf verschiedenen Plattformen und der EME-Unterstützung in verschiedenen Browsern.
 
 | **Clientplattform** | **Natives DRM-System** | **EME** |
-| --- | --- | --- | --- |
+| --- | --- | --- |
 | **Smart-TVs, STBs** | PlayReady, Widevine und/oder andere | Eingebetteter Browser/EME für PlayReady und/oder Widevine|
 | **Windows 10** | PlayReady | Microsoft Edge/IE11 für PlayReady|
 | **Android-Geräte (Telefon, Tablet, TV)** |Widevine |Chrome für Widevine |
@@ -145,7 +145,7 @@ Die folgende Tabelle zeigt die Zuordnung.
 | **Schlüsselverwaltung** |Für Referenzimplementierung nicht erforderlich |
 | **Content Management** |C#-Konsolenanwendung |
 
-Anders gesagt: Sowohl IDP als auch STS werden von Azure AD bereitgestellt. Für den Player wird die [Azure Media Player-API](http://amp.azure.net/libs/amp/latest/docs/). Sowohl Azure Media Services als auch der Azure Media Player unterstützen CENC über DASH, FairPlay über HLS, PlayReady über Smooth Streaming und AES-128-Verschlüsselung für DASH, HLS und Smooth.
+Anders gesagt: Sowohl IDP als auch STS werden von Azure AD bereitgestellt. Für den Player wird die [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/). Sowohl Azure Media Services als auch der Azure Media Player unterstützen CENC über DASH, FairPlay über HLS, PlayReady über Smooth Streaming und AES-128-Verschlüsselung für DASH, HLS und Smooth.
 
 Das folgende Diagramm zeigt die allgemeine Struktur und den allgemeinen Ablauf bei dieser Technologiezuordnung:
 
@@ -199,7 +199,7 @@ Die Implementierung umfasst die folgenden Schritte:
    * Install-Package Microsoft.Owin.Host.SystemWeb
    * Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
-8. Erstellen Sie mithilfe der [Azure Media Player-API](http://amp.azure.net/libs/amp/latest/docs/) einen Player. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](http://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
+8. Erstellen Sie mithilfe der [Azure Media Player-API](https://amp.azure.net/libs/amp/latest/docs/) einen Player. Verwenden Sie die [ProtectionInfo-API von Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/), um anzugeben, welche DRM-Technologie auf unterschiedlichen DRM-Plattformen verwendet werden soll.
 
 9. Die folgende Tabelle zeigt die Zuordnung für das Testsystem.
 
@@ -365,7 +365,7 @@ Es gibt zwei Arten von Sicherheitsschlüsseln:
 
 > [!NOTE]
 > Bei Verwendung von .NET Framework/C# als Entwicklungsplattform muss das X.509-Zertifikat für einen asymmetrischen Sicherheitsschlüssel eine Schlüssellänge von mindestens 2048 aufweisen. Dies ist eine Voraussetzung für die „System.IdentityModel.Tokens.X509AsymmetricSecurityKey“--Klasse in .NET Framework. Andernfalls wird die folgende Ausnahme ausgelöst:
-
+> 
 > IDX10630: "System.IdentityModel.Tokens.X509AsymmetricSecurityKey" für die Signierung darf nicht kleiner als 2.048s Bit sein.
 
 ## <a name="the-completed-system-and-test"></a>Das fertige System und Tests

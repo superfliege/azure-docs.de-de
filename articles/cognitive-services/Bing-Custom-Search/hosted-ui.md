@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: fbe865a5d9ef6c44b80c811a023c86f6446c3bb8
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: af1e65cc7dfe1a0934056ad141f4c62a96627bbb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233879"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084131"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
 
@@ -43,10 +43,10 @@ Gehen Sie folgendermaßen vor, um eine gehostete Benutzeroberfläche für Ihre W
     
 5. Wählen Sie ein Farbdesign aus. Sie können die Farben durch Klicken auf **Design anpassen** Ihrer Anwendung entsprechend anpassen. Zum Ändern einer Farbe geben Sie entweder den RGB-Hexadezimalwert der Farbe (z.B. `#366eb8`) ein, oder klicken Sie auf die Farbvorschau.
 
-  Auf der rechten Seite des Portals können Sie eine Vorschau auf Ihre Änderungen anzeigen. Durch Klicken auf **Auf Standard zurücksetzen** werden wieder die Standardfarben für das ausgewählte Design verwendet.
+   Auf der rechten Seite des Portals können Sie eine Vorschau auf Ihre Änderungen anzeigen. Durch Klicken auf **Auf Standard zurücksetzen** werden wieder die Standardfarben für das ausgewählte Design verwendet.
 
-  > [!NOTE]
-  > Berücksichtigen Sie bei der Auswahl von Farben die Barrierefreiheit.
+   > [!NOTE]
+   > Berücksichtigen Sie bei der Auswahl von Farben die Barrierefreiheit.
 
 6. Geben Sie unter **Zusätzliche Konfigurationen** entsprechende Werte für Ihre App an. Diese Einstellungen sind optional. Die Auswirkungen der angewendeten oder entfernten Einstellungen sehen Sie im Vorschaubereich auf der rechten Seite. Folgende Konfigurationsoptionen stehen zur Verfügung:  
 

@@ -16,12 +16,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: prchint
 ms.lastreviewed: 09/18/2018
-ms.openlocfilehash: b8bd57953845278aa75e8cbdf41ae28300edad58
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 3d825a0f8a23380b4d9cf453076ab4b18ee67831
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184906"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095516"
 ---
 # <a name="azure-stack-capacity-planning"></a>Azure Stack-Kapazitätsplanung
 Beim Auswerten einer Azure Stack-Lösung müssen Entscheidungen in Bezug auf die Hardwarekonfiguration getroffen werden, die eine direkte Auswirkung auf die Gesamtkapazität der Azure Stack-Cloud haben. Hierzu gehört die übliche Auswahl von CPU, Arbeitsspeicherdichte, Speicherkonfiguration und Gesamtumfang der Lösung (z.B. Anzahl von Servern). Im Gegensatz zu einer herkömmlichen Virtualisierungslösung gilt die einfache Arithmetik dieser Komponenten zur Ermittlung der nutzbaren Kapazität nicht. Der erste Grund dafür ist, dass Azure Stack so aufgebaut ist, dass die Infrastruktur- bzw. Verwaltungskomponenten in der Lösung selbst gehostet werden. Der zweite Grund ist, dass ein Teil der Lösungskapazität zur Unterstützung der Resilienz reserviert ist. Es geht um die Aktualisierung der Lösungssoftware auf eine Weise, bei der die Beeinträchtigung von Mandantenworkloads verringert wird.
@@ -49,7 +49,7 @@ Eine detaillierte Beschreibung der Komplexität von Kapazitätsberechnungen find
 |     |     |     |     |     |     |     |     |
 
 > <sup>1</sup> Standard-VMs D2.
-
+> 
 > <sup>2</sup> Verhältnis von virtuellen Kernen zu physischen Kernen.
 
 Wie bereits weiter oben erwähnt, wird die VM-Kapazität durch den verfügbaren Speicher bestimmt. Das Verhältnis von virtuellen Kernen zu physischen Kernen veranschaulicht, wie sich die VM-Dichte auf die verfügbare CPU-Kapazität auswirkt, wenn die Lösung nicht mit einer größeren Anzahl von physischen Kernen ausgestattet (eine andere CPU ausgewählt) wird. Dasselbe gilt für die Speicherkapazität und Speichercachekapazität.

@@ -9,12 +9,12 @@ ms.date: 01/25/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 29c6dc0f7e71508e7b4ecb4e0f1d5c849df7a68c
-ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
+ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54905013"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58110782"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>Verwenden einer Markdown-Kachel in Azure-Dashboards zum Anzeigen von benutzerdefinierten Inhalten
 
@@ -24,17 +24,17 @@ Sie können in Ihren Azure-Dashboards eine Markdown-Kachel hinzufügen, um benut
 
 1. Wählen Sie auf der Seitenleiste des Azure-Portals die Option **Dashboard** aus. Wenn Sie benutzerdefinierte Dashboards erstellt haben, wählen Sie in der Dashboardansicht in der Dropdownliste das Dashboard aus, in dem die benutzerdefinierte Markdown-Kachel angezeigt werden soll. Wählen Sie das Bearbeitungssymbol aus, um den **Kachelkatalog** zu öffnen.
 
-  ![Screenshot: Bearbeitungsansicht des Dashboards](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
+   ![Screenshot: Bearbeitungsansicht des Dashboards](./media/azure-portal-markdown-tile/azure-portal-dashboard-edit.png)
 
 2. Suchen Sie im **Kachelkatalog** die Kachel mit der Bezeichnung **Markdown**, und klicken Sie auf **Hinzufügen**. Die Kachel wird dem Dashboard hinzugefügt, und der Bereich **Markdown bearbeiten** wird geöffnet.
 
 1. Bearbeiten Sie die Felder **Titel**, **Untertitel** und **Inhalt**, um die Kachel anzupassen. Im hier gezeigten Beispiel wurde die Markdown-Kachel so bearbeitet, dass benutzerdefinierte Helpdeskinformationen angezeigt werden.
 
-  ![Screenshot: Bearbeitungsansicht der Markdown-Kachel](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
+   ![Screenshot: Bearbeitungsansicht der Markdown-Kachel](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 
 4. Wählen Sie **Fertig** aus, um den Bereich **Markdown bearbeiten** zu schließen. Der benutzerdefinierte Inhalt wird in der Markdown-Kachel angezeigt, deren Größe dann durch Ziehen des Ziehpunkts in der rechten unteren Ecke geändert werden kann.
 
-  ![Screenshot: benutzerdefinierte Markdown-Kachel](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
+   ![Screenshot: benutzerdefinierte Markdown-Kachel](./media/azure-portal-markdown-tile/azure-portal-custom-markdown-tile.png)
 
 ## <a name="markdown-content-capabilities-and-limitations"></a>Funktionen und Einschränkungen von Markdown-Inhalten
 

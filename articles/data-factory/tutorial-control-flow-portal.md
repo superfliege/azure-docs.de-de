@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 037dafcfc60c629841e326cecc38bb2b3250d77c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 092a346d8303bb9e88a53b6fa529bb820635c554
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015422"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58099541"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Verzweigen und Verketten von Aktivitäten in einer Data Factory-Pipeline
 In diesem Tutorial erstellen Sie eine Data Factory-Pipeline, die einige Ablaufsteuerungsfunktionen vorstellt. Diese Pipeline führt eine einfache Kopieraktivität aus einem Container in Azure Blob Storage in einen anderen Container im selben Speicherkonto durch. War die Kopieraktivität erfolgreich, sendet die Pipeline eine E-Mail mit Details zum erfolgreichen Kopiervorgang (beispielsweise die geschriebene Datenmenge). War die Kopieraktivität nicht erfolgreich, sendet die Pipeline eine E-Mail mit Fehlerdetails (beispielsweise die Fehlermeldung). In diesem Tutorial erfahren Sie, wie Sie Parameter übergeben.
@@ -52,7 +52,7 @@ In diesem Tutorial wird das Azure-Portal verwendet. Andere Mechanismen zur Inter
     John,Doe
     Jane,Doe
     ```
-2. Führen Sie mit einem Tool wie [Azure Storage-Explorer](http://storageexplorer.com/) die folgenden Schritte aus: 
+2. Führen Sie mit einem Tool wie [Azure Storage-Explorer](https://storageexplorer.com/) die folgenden Schritte aus: 
     1. Erstellen Sie den Container **adfv2branch**.
     2. Erstellen Sie im Container **adfv2branch** den Ordner **input**.
     3. Laden Sie die Datei **input.txt** in den Container hoch.
@@ -199,10 +199,10 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
    ![Neuer mit Azure Storage verknüpfter Dienst](./media/tutorial-control-flow-portal/new-azure-storage-linked-service.png)
 12. Geben Sie `@pipeline().parameters.sourceBlobContainer` für den Ordner und `emp.txt` für den Dateinamen ein. Mit dem Pipelineparameter „sourceBlobContainer“ legen Sie den Ordnerpfad für das Dataset fest. 
 
-    ![Einstellungen des Quelldatasets](./media/tutorial-control-flow-portal/source-dataset-settings.png)
+   ![Einstellungen des Quelldatasets](./media/tutorial-control-flow-portal/source-dataset-settings.png)
 13. Wechseln Sie zur Registerkarte **Pipeline**, oder klicken Sie in der Strukturansicht auf die Pipeline. Vergewissern Sie sich, dass unter **Source Dataset** (Quelldataset) die Option **SourceBlobDataset** ausgewählt ist. 
 
-   ![Quelldataset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
+    ![Quelldataset](./media/tutorial-control-flow-portal/pipeline-source-dataset-selected.png)
 13. Wechseln Sie im Eigenschaftenfenster zur Registerkarte **Senke**, und klicken Sie für **Sink Dataset** (Senkendataset) auf **+ Neu**. In diesem Schritt erstellen Sie ein Senkendataset für die Kopieraktivität. Die Vorgehensweise ähnelt dabei der Erstellung des Quelldatasets. 
 
     ![Schaltfläche für neues Senkendataset](./media/tutorial-control-flow-portal/new-sink-dataset-button.png)
@@ -217,7 +217,7 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         ![Einstellungen für Senkendataset](./media/tutorial-control-flow-portal/sink-dataset-settings.png)
 17. Wechseln Sie im oberen Bereich zur Registerkarte **Pipeline**. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Allgemein**, und ziehen Sie eine Aktivität vom Typ **Web** auf die Oberfläche des Pipeline-Designers. Legen Sie den Namen der Aktivität auf **SendSuccessEmailActivity** fest. Die Webaktivität ermöglicht einen Aufruf an jeden beliebigen REST-Endpunkt. Weitere Informationen zur Aktivität finden Sie unter [Web Activity (Webaktivität)](control-flow-web-activity.md). Diese Pipeline verwendet eine Webaktivität, um den Logik-Apps-E-Mail-Workflow aufzurufen. 
 
-   ![Ziehen und Ablegen der ersten Webaktivität](./media/tutorial-control-flow-portal/success-web-activity-general.png)
+    ![Ziehen und Ablegen der ersten Webaktivität](./media/tutorial-control-flow-portal/success-web-activity-general.png)
 18. Wechseln Sie von der Registerkarte **Allgemein** zur Registerkarte **Einstellungen**, und führen Sie die folgenden Schritte aus: 
     1. Geben Sie unter **URL** die URL für den Logic Apps-Workflow an, der die Erfolgs-E-Mail sendet.  
     2. Wählen Sie unter **Methode** die Option **POST** aus. 
@@ -235,12 +235,12 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer Kopieraktivität und zwe
         ```
         Die Nachrichtentext enthält folgende Eigenschaften:
 
-        - Nachricht: Übergibt den Wert von `@{activity('Copy1').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
-        - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
-        - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
-        - Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
+       - Nachricht: Übergibt den Wert von `@{activity('Copy1').output.dataWritten`. Greift auf eine Eigenschaft der vorherigen Kopieraktivität zurück, und übergibt den Wert von DataWritten. Für den Fehlerfall, übergeben Sie die Fehlerausgabe anstelle von `@{activity('CopyBlobtoBlob').error.message`.
+       - Data Factory-Name: Übergibt den Wert von `@{pipeline().DataFactory}`. Dies ist eine Systemvariable, die Ihnen den Zugriff auf den Namen der entsprechenden Data Factory ermöglicht. Eine Liste der Systemvariablen finden Sie im Artikel [Systemvariablen](control-flow-system-variables.md) 
+       - Pipeline-Name: Übergibt den Wert von `@{pipeline().Pipeline}`. Dies ist auch eine Systemvariable, die Ihnen den Zugriff auf den entsprechenden Pipelinenamen ermöglicht. 
+       - Empfänger: Übergibt den Wert von „\@pipeline().parameters.receiver“). Zugriff auf die Pipeline-Parameter
     
-        ![Einstellungen für die erste Webaktivität](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
+         ![Einstellungen für die erste Webaktivität](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. Stellen Sie eine Verbindung zwischen der Aktivität **Kopieren** und der Aktivität **Web** her, indem Sie die grüne Schaltfläche neben der Kopieraktivität auf die Webaktivität ziehen. 
 
     ![Herstellen einer Verbindung zwischen Kopier- und Webaktivität](./media/tutorial-control-flow-portal/connect-copy-web-activity1.png)

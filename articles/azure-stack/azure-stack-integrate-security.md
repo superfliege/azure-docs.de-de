@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: 7dff82538448b27f14dd81e2862cd63d4dd56a9b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247101"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009481"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Integration des Azure Stack-Datencenters: Syslog-Weiterleitung
 
@@ -72,6 +72,7 @@ Parameter für das Cmdlet *Set-SyslogServer*:
 |*Remove*| Entfernen der Konfiguration des Servers vom Client und Beenden der Syslog-Weiterleitung| Flag | no|
 
 Parameter für das Cmdlet *Set-SyslogClient*:
+
 | Parameter | BESCHREIBUNG | Type |
 |---------|---------| ---------|
 | *pfxBinary* | PFX-Datei mit dem Zertifikat, das vom Client als Identität für die Authentifizierung beim Syslog-Server zu verwenden ist  | Byte[] |
@@ -287,6 +288,7 @@ Tabelle der Ereignisse für den Wiederherstellungsendpunkt:
 |RecoveryEndpointClosed |1016|RecoveryEndpointClosedEvent|5|
 
 Tabelle der REP-Schweregrade:
+
 | Severity | Ebene | Numerischer Wert |
 |----------|-------| ----------------|
 |0|Undefined|Wert: 0. Weist auf Protokolle auf allen Ebenen hin|
@@ -306,6 +308,7 @@ Tabelle der REP-Schweregrade:
 ```
 
 Schweregradtabelle für Windows-Ereignisse:
+
 | CEF-Schweregradwert | Windows-Ereignisebene | Numerischer Wert |
 |--------------------|---------------------| ----------------|
 |0|Undefined|Wert: 0. Weist auf Protokolle auf allen Ebenen hin|
@@ -316,6 +319,7 @@ Schweregradtabelle für Windows-Ereignisse:
 |0|Ausführlich|Wert: 5. Weist auf Protokolle auf allen Ebenen hin|
 
 Tabelle der benutzerdefinierten Erweiterungen für Windows-Ereignisse in Azure Stack:
+
 | Name der benutzerdefinierten Erweiterung | Beispiel für Windows-Ereignis | 
 |-----------------------|---------|
 |MasChannel | System|
@@ -352,6 +356,7 @@ Tabelle der benutzerdefinierten Erweiterungen für Windows-Ereignisse in Azure S
 ```
 
 Tabelle der Alarmschweregrade:
+
 | Severity | Ebene |
 |----------|-------|
 |0|Undefined|
@@ -359,6 +364,7 @@ Tabelle der Alarmschweregrade:
 |5|Warnung|
 
 Tabelle der benutzerdefinierten Erweiterungen für in Azure Stack erstellte Warnungen:
+
 | Name der benutzerdefinierten Erweiterung | Beispiel | 
 |-----------------------|---------|
 |MasEventDescription|BESCHREIBUNG: Das Benutzerkonto \<TestUser\> wurde für \<TestDomain\> erstellt. Es stellt ein potenzielles Sicherheitsrisiko dar. -- KORREKTUR: Wenden Sie sich an den Support. Die Behebung dieses Problems muss durch den Kundendienst erfolgen. Versuchen Sie nicht, dieses Problem ohne dessen Hilfe zu beheben. Bevor Sie eine Supportanfrage stellen, starten Sie anhand der Anleitung aus https://aka.ms/azurestacklogfiles den Erfassungsprozess für Protokolldateien. |

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.subservice: files
-ms.openlocfilehash: ee6f2c46bf8faa04cbb16f463d12991ee83d8603
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: a0937de97d858084433f969f1f6d4bdb2ae9e3fb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457703"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57893559"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Entwickeln für Azure Files mit C++
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -39,7 +39,7 @@ Zum Erstellen der Beispiele müssen Sie die Azure Storage-Clientbibliothek 2.4.0
 Zum Installieren der Azure Storage-Clientbibliothek 2.4.0 für C++ können Sie eine der folgenden Methoden verwenden:
 
 * **Linux:** Befolgen Sie die Anweisungen auf der Seite [Azure Storage Client Library for C++ README](https://github.com/Azure/azure-storage-cpp/blob/master/README.md) (Infodatei zur Azure Storage-Clientbibliothek für C++).
-* **Windows:** Klicken Sie in Visual Studio auf **Extras &gt; NuGet-Paket-Manager &gt; Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](http://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
+* **Windows:** Klicken Sie in Visual Studio auf **Extras &gt; NuGet-Paket-Manager &gt; Paket-Manager-Konsole**. Geben Sie im Fenster der [NuGet-Paket-Manager-Konsole](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) den folgenden Befehl ein, und drücken Sie die **EINGABETASTE**:
   
 ```
 Install-Package wastorage
@@ -58,7 +58,7 @@ Zur Verwendung des Dateidiensts müssen Sie eine Verbindung mit Ihrem Azure-Spei
 
 ```cpp
 // Define the connection-string with your values.
-const utility::string_t 
+const utility::string_t
 storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
 
@@ -66,8 +66,8 @@ storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_sto
 Sie können Ihre Speicherkontoinformationen mit der Klasse **cloud_storage_account** angeben. Verwenden Sie zum Abrufen von Speicherkontoinformationen aus der Speicher-Verbindungszeichenfolge die **parse** -Methode.
 
 ```cpp
-// Retrieve storage account from connection string.    
-azure::storage::cloud_storage_account storage_account = 
+// Retrieve storage account from connection string.
+azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
@@ -76,7 +76,7 @@ Alle Dateien und Verzeichnisse in einer Azure-Dateifreigabe befinden sich in ein
 
 ```cpp
 // Create the Azure Files client.
-azure::storage::cloud_file_client file_client = 
+azure::storage::cloud_file_client file_client =
   storage_account.create_cloud_file_client();
 ```
 
@@ -84,15 +84,15 @@ Mit dem Azure Files-Client können Sie dann einen Verweis auf die Freigabe abruf
 
 ```cpp
 // Get a reference to the file share
-azure::storage::cloud_file_share share = 
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 ```
 
 Um die Freigabe zu erstellen, verwenden Sie die **create_if_not_exists**-Methode des **cloud_file_share**-Objekts.
 
 ```cpp
-if (share.create_if_not_exists()) {    
-    std::wcout << U("New share created") << std::endl;    
+if (share.create_if_not_exists()) {
+    std::wcout << U("New share created") << std::endl;
 }
 ```
 
@@ -103,7 +103,7 @@ Das Löschen einer Freigabe erfolgt durch Aufrufen der **delete_if_exists** -Met
 
 ```cpp
 // Get a reference to the share.
-azure::storage::cloud_file_share share = 
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 
 // delete the share if exists
@@ -121,7 +121,7 @@ azure::storage::cloud_file_directory directory = share.get_directory_reference(_
 directory.create_if_not_exists();
 
 // Create a subdirectory.
-azure::storage::cloud_file_directory subdirectory = 
+azure::storage::cloud_file_directory subdirectory =
   directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
 subdirectory.create_if_not_exists();
 ```
@@ -131,11 +131,11 @@ Das Löschen eines Verzeichnisses ist eine einfache Angelegenheit. Dabei ist jed
 
 ```cpp
 // Get a reference to the share.
-azure::storage::cloud_file_share share = 
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 
 // Get a reference to the directory.
-azure::storage::cloud_file_directory directory = 
+azure::storage::cloud_file_directory directory =
   share.get_directory_reference(_XPLATSTR("my-sample-directory"));
 
 // Get a reference to the subdirectory you want to delete.
@@ -155,7 +155,7 @@ Der folgende Code zeigt, wie Sie den URI der einzelnen Elemente im Stammverzeich
 
 ```cpp
 //Get a reference to the root directory for the share.
-azure::storage::cloud_file_directory root_dir = 
+azure::storage::cloud_file_directory root_dir =
   share.get_root_directory_reference();
 
 // Output URI of each item.
@@ -170,7 +170,7 @@ for (auto it = directory.list_files_and_directories(); it != end_of_results; ++i
     else if (it->is_file())
     {
         ucout << "File: " << it->as_file().uri().primary_uri().to_string() << std::endl;
-    }        
+    }
 }
 ```
 
@@ -188,22 +188,22 @@ Nachdem Sie nun einen Verweis auf das Stammverzeichnis der Freigabe erstellt hab
 
 ```cpp
 // Upload a file from a stream.
-concurrency::streams::istream input_stream = 
+concurrency::streams::istream input_stream =
   concurrency::streams::file_stream<uint8_t>::open_istream(_XPLATSTR("DataFile.txt")).get();
 
-azure::storage::cloud_file file1 = 
+azure::storage::cloud_file file1 =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-1"));
 file1.upload_from_stream(input_stream);
 
 // Upload some files from text.
-azure::storage::cloud_file file2 = 
+azure::storage::cloud_file file2 =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-2"));
 file2.upload_text(_XPLATSTR("more text"));
 
 // Upload a file from a file.
-azure::storage::cloud_file file4 = 
+azure::storage::cloud_file file4 =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-3"));
-file4.upload_from_file(_XPLATSTR("DataFile.txt"));    
+file4.upload_from_file(_XPLATSTR("DataFile.txt"));
 ```
 
 ## <a name="download-a-file"></a>Herunterladen einer Datei
@@ -213,13 +213,13 @@ Das folgende Beispiel verwendet die Methoden **download_to_stream** und **downlo
 
 ```cpp
 // Download as text
-azure::storage::cloud_file text_file = 
+azure::storage::cloud_file text_file =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-2"));
 utility::string_t text = text_file.download_text();
 ucout << "File Text: " << text << std::endl;
 
 // Download as a stream.
-azure::storage::cloud_file stream_file = 
+azure::storage::cloud_file stream_file =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-3"));
 
 concurrency::streams::container_buffer<std::vector<uint8_t>> buffer;
@@ -235,14 +235,14 @@ outfile.close();
 Ein weiterer häufiger Azure Files-Vorgang ist das Löschen von Dateien. Der folgende Code löscht eine Datei namens „my-sample-file-3“, die im Stammverzeichnis gespeichert ist.
 
 ```cpp
-// Get a reference to the root directory for the share.    
-azure::storage::cloud_file_share share = 
+// Get a reference to the root directory for the share.
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 
-azure::storage::cloud_file_directory root_dir = 
+azure::storage::cloud_file_directory root_dir =
   share.get_root_directory_reference();
 
-azure::storage::cloud_file file = 
+azure::storage::cloud_file file =
   root_dir.get_file_reference(_XPLATSTR("my-sample-file-3"));
 
 file.delete_file_if_exists();
@@ -257,15 +257,15 @@ Das folgende Beispiel zeigt, wie Sie die aktuelle Nutzung einer Freigabe überpr
 
 ```cpp
 // Parse the connection string for the storage account.
-azure::storage::cloud_storage_account storage_account = 
+azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 
 // Create the file client.
-azure::storage::cloud_file_client file_client = 
+azure::storage::cloud_file_client file_client =
   storage_account.create_cloud_file_client();
 
 // Get a reference to the share.
-azure::storage::cloud_file_share share = 
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 if (share.exists())
 {
@@ -286,14 +286,14 @@ Im folgenden Beispiel wird eine SAS-Richtlinie für eine Freigabe erstellt und d
 
 ```cpp
 // Parse the connection string for the storage account.
-azure::storage::cloud_storage_account storage_account = 
+azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 
 // Create the file client and get a reference to the share
-azure::storage::cloud_file_client file_client = 
+azure::storage::cloud_file_client file_client =
   storage_account.create_cloud_file_client();
 
-azure::storage::cloud_file_share share = 
+azure::storage::cloud_file_share share =
   file_client.get_share_reference(_XPLATSTR("my-sample-share"));
 
 if (share.exists())
@@ -301,18 +301,18 @@ if (share.exists())
     // Create and assign a policy
     utility::string_t policy_name = _XPLATSTR("sampleSharePolicy");
 
-    azure::storage::file_shared_access_policy sharedPolicy = 
+    azure::storage::file_shared_access_policy sharedPolicy =
       azure::storage::file_shared_access_policy();
 
     //set permissions to expire in 90 minutes
-    sharedPolicy.set_expiry(utility::datetime::utc_now() + 
+    sharedPolicy.set_expiry(utility::datetime::utc_now() +
        utility::datetime::from_minutes(90));
 
     //give read and write permissions
     sharedPolicy.set_permissions(azure::storage::file_shared_access_policy::permissions::write | azure::storage::file_shared_access_policy::permissions::read);
 
     //set permissions for the share
-    azure::storage::file_share_permissions permissions;    
+    azure::storage::file_share_permissions permissions;
 
     //retrieve the current list of shared access policies
     azure::storage::shared_access_policies<azure::storage::file_shared_access_policy> policies;
@@ -325,23 +325,23 @@ if (share.exists())
     share.upload_permissions(permissions);
 
     //Retrieve the root directory and file references
-    azure::storage::cloud_file_directory root_dir = 
+    azure::storage::cloud_file_directory root_dir =
         share.get_root_directory_reference();
-    azure::storage::cloud_file file = 
+    azure::storage::cloud_file file =
       root_dir.get_file_reference(_XPLATSTR("my-sample-file-1"));
 
-    // Generate a SAS for a file in the share 
-    //  and associate this access policy with it.        
+    // Generate a SAS for a file in the share
+    //  and associate this access policy with it.
     utility::string_t sas_token = file.get_shared_access_signature(sharedPolicy);
 
-    // Create a new CloudFile object from the SAS, and write some text to the file.        
+    // Create a new CloudFile object from the SAS, and write some text to the file.
     azure::storage::cloud_file file_with_sas(azure::storage::storage_credentials(sas_token).transform_uri(file.uri().primary_uri()));
-    utility::string_t text = _XPLATSTR("My sample content");        
-    file_with_sas.upload_text(text);        
+    utility::string_t text = _XPLATSTR("My sample content");
+    file_with_sas.upload_text(text);
 
     //Download and print URL with SAS.
-    utility::string_t downloaded_text = file_with_sas.download_text();        
-    ucout << downloaded_text << std::endl;        
+    utility::string_t downloaded_text = file_with_sas.download_text();
+    ucout << downloaded_text << std::endl;
     ucout << azure::storage::storage_credentials(sas_token).transform_uri(file.uri().primary_uri()).to_string() << std::endl;
 
 }

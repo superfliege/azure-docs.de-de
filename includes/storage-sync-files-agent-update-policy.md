@@ -4,18 +4,18 @@ ms.service: storage
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: tamram
-ms.openlocfilehash: b099f5ff7e43f2deeb3b8c41adcb802cd431a65a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: fa0edaaa3ee785f89faceb51419d360752bb9825
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53636002"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58051993"
 ---
 Der Azure-Dateisynchronisierungs-Agent wird regelmäßig aktualisiert, um neue Funktionalität hinzuzufügen und Probleme zu beheben. Es wird empfohlen, Microsoft Update zu konfigurieren, um Updates für den Azure-Dateisynchronisierungs-Agent zu erhalten, wenn diese verfügbar sind.
 
 #### <a name="major-vs-minor-agent-versions"></a>Unterschiede zwischen Haupt- und Nebenversionen des Agents
-* Hauptversionen des Agents enthalten oft neue Features und haben eine aufsteigende Zahl als ersten Teil der Versionsnummer. Beispiel:  *2.\*.\**
-* Nebenversionen des Agents werden auch als „Patches“ bezeichnet und werden häufiger veröffentlicht als Hauptversionen. Sie enthalten oft Fehlerbehebungen und kleinere Verbesserungen, aber keine neuen Features. Beispiel: *\*.3.\**
+* Hauptversionen des Agents enthalten oft neue Features und haben eine aufsteigende Zahl als ersten Teil der Versionsnummer. Beispiel:  \*2.\*.\*\*
+* Nebenversionen des Agents werden auch als „Patches“ bezeichnet und werden häufiger veröffentlicht als Hauptversionen. Sie enthalten oft Fehlerbehebungen und kleinere Verbesserungen, aber keine neuen Features. Beispiel: \*\*.3.\*\*
 
 #### <a name="upgrade-paths"></a>Upgradepfade
 Es gibt vier bewährte und getestete Wege, um die Updates des Azure-Dateisynchronisierungs-Agents zu installieren. 

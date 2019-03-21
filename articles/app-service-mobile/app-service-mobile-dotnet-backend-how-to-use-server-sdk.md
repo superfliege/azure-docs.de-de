@@ -15,12 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 33e968ac608c393d65f69bfd6abbc0d205fb9bd9
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 195a2dd88f443120f337ba441358389f0dc290f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53718876"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58078787"
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Arbeiten Sie mit der Back-End-Server-SDK für Azure Mobile Apps
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -263,7 +263,7 @@ Informationen zum Authentifizieren von Clients bei Ihrem Mobile Apps-Back-End fi
 > Um eine benutzerdefinierte Authentifizierung zu ermöglichen, müssen Sie zuerst die App Service-Authentifizierung aktivieren, ohne einen Anbieter für Ihren App Service im Azure-Portal auszuwählen. Dadurch wird die Umgebungsvariable „WEBSITE_AUTH_SIGNING_KEY“ aktiviert, wenn sie gehostet wird.
 > 
 > 
-Sie können auch eigene Anmeldesysteme implementieren, wenn Sie keinen der Authentifizierungs-/Autorisierungsanbieter von App Service nutzen möchten. Installieren Sie das [Microsoft.Azure.Mobile.Server.Login]-Paket als Unterstützung bei der Generierung des Authentifizierungstokens.  Geben Sie eigenen Code zum Überprüfen der Benutzeranmeldeinformationen an. Sie können beispielsweise eine Datenbank auf Kennwörter mit Salt und Hash überprüfen. Im folgenden Beispiel übernimmt die `isValidAssertion()`-Methode diese Überprüfungen. Sie wird an anderer Stelle definiert.
+> Sie können auch eigene Anmeldesysteme implementieren, wenn Sie keinen der Authentifizierungs-/Autorisierungsanbieter von App Service nutzen möchten. Installieren Sie das [Microsoft.Azure.Mobile.Server.Login]-Paket als Unterstützung bei der Generierung des Authentifizierungstokens.  Geben Sie eigenen Code zum Überprüfen der Benutzeranmeldeinformationen an. Sie können beispielsweise eine Datenbank auf Kennwörter mit Salt und Hash überprüfen. Im folgenden Beispiel übernimmt die `isValidAssertion()`-Methode diese Überprüfungen. Sie wird an anderer Stelle definiert.
 
 Die benutzerdefinierte Authentifizierung wird verfügbar gemacht, indem ein ApiController-Element erstellt und die Aktionen `register` und `login` verfügbar gemacht werden. Der Client sollte eine benutzerdefinierte Benutzeroberfläche verwenden, um die Informationen vom Benutzer zu sammeln.  Die Informationen werden dann per HTTP POST-Standardaufruf an die API übermittelt. Wenn der Server die Assertion überprüft, wird mit der `AppServiceLoginHandler.CreateToken()` -Methode ein Token ausgegeben.  Für das ApiController-Element sollte das Attribut `[MobileAppController]` **nicht** verwendet werden.
 

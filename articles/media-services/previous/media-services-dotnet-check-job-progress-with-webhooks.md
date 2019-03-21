@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/09/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: 386662a4e98b881228a82de3777632ed002bb5b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: d1ecac243ee4cfd3385d0fc69c9ce7c9e2afd95c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55989150"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57898838"
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Verwenden von Azure-Webhooks zum Überwachen von Media Services-Auftragsbenachrichtigungen mit .NET 
 
@@ -49,7 +49,7 @@ Zum Abschließen dieses Lernprogramms müssen folgende Voraussetzungen erfüllt 
 
 ## <a name="create-a-function-app"></a>Erstellen einer Funktionen-App
 
-1. Wechseln Sie zum [Azure-Portal](http://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
+1. Wechseln Sie zum [Azure-Portal](https://portal.azure.com) , und melden Sie sich mit Ihrem Azure-Konto an.
 2. Erstellen Sie wie [hier](../../azure-functions/functions-create-function-app-portal.md) beschrieben eine Funktionen-App.
 
 ## <a name="configure-function-app-settings"></a>Konfigurieren von Einstellungen der Funktionen-App
@@ -379,22 +379,22 @@ In diesem Abschnitt wird der Code gezeigt, der eine Webhookbenachrichtigung zu e
 2. Verwenden Sie [NuGet](https://www.nuget.org/packages/windowsazure.mediaservices), um Azure Media Services zu installieren.
 3. Aktualisieren Sie Datei „App.config“ mit den geeigneten Werte: 
     
-    * Azure Media Services-Verbindungsinformationen 
-    * Webhook-URL, die die Benachrichtigungen erwartet 
-    * Signaturschlüssel, der mit dem Schlüssel übereinstimmt, den Ihr Webhook erwartet Der Signaturschlüssel ist der Base64-codierte 64-Byte-Wert, der zum Schützen und Sichern Ihrer Webhook-Rückrufe von Azure Media Services verwendet wird. 
+   * Azure Media Services-Verbindungsinformationen 
+   * Webhook-URL, die die Benachrichtigungen erwartet 
+   * Signaturschlüssel, der mit dem Schlüssel übereinstimmt, den Ihr Webhook erwartet Der Signaturschlüssel ist der Base64-codierte 64-Byte-Wert, der zum Schützen und Sichern Ihrer Webhook-Rückrufe von Azure Media Services verwendet wird. 
 
-    ```xml
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="domain" />
-                <add key="AMSRESTAPIEndpoint" value="endpoint" />
+     ```xml
+           <appSettings>
+               <add key="AMSAADTenantDomain" value="domain" />
+               <add key="AMSRESTAPIEndpoint" value="endpoint" />
 
-                <add key="AMSClientId" value="clinet id" />
-                <add key="AMSClientSecret" value="client secret" />
+               <add key="AMSClientId" value="clinet id" />
+               <add key="AMSClientSecret" value="client secret" />
 
-                <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
-                <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
-            </appSettings>
-    ```
+               <add key="WebhookURL" value="https://yourapp.azurewebsites.net/api/functionname?code=ApiKey" />
+               <add key="WebhookSigningKey" value="j0txf1f8msjytzvpe40nxbpxdcxtqcgxy0nt" />
+           </appSettings>
+     ```
 
 4. Aktualisieren Sie die Datei „Program.cs“ mit dem folgenden Code:
 

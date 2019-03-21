@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: bc8cacd6d52de0367a0ea14748e548b9d32f47ef
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 08e7341bfd1c384e41e6d3f1bd7810552899849a
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016766"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092190"
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)
 > [!NOTE]
@@ -29,8 +29,8 @@ Dieser Artikel enthält hilfreiche Informationen zum Konfigurieren einer Lösung
 
 > [!NOTE]
 > In diesem Artikel wird davon ausgegangen, dass Sie bereits mit den Grundlagen von Integration Runtime (ehemals Datenverwaltungsgateway) vertraut sind. Falls nicht, helfen Ihnen die Informationen unter [Datenverwaltungsgateway](data-factory-data-management-gateway.md) weiter.
-
->**Dieses Vorschaufeature wird offiziell in Datenverwaltungsgateway Version 2.12.xxxx.x und höher unterstützt**. Stellen Sie sicher, dass Sie Version 2.12.xxxx.x oder höher verwenden. Laden Sie die aktuelle Version von Datenverwaltungsgateway [hier](https://www.microsoft.com/download/details.aspx?id=39717) herunter.
+> 
+> **Dieses Vorschaufeature wird offiziell in Datenverwaltungsgateway Version 2.12.xxxx.x und höher unterstützt**. Stellen Sie sicher, dass Sie Version 2.12.xxxx.x oder höher verwenden. Laden Sie die aktuelle Version von Datenverwaltungsgateway [hier](https://www.microsoft.com/download/details.aspx?id=39717) herunter.
 
 ## <a name="overview"></a>Übersicht
 Sie können Datenverwaltungsgateways, die auf mehreren lokalen Computern installiert sind, einem einzelnen logischen Gateway über das Portal zuordnen. Diese Computer werden als **Knoten** bezeichnet. Sie können bis zu **vier Knoten** verwenden, die einem logischen Gateway zugeordnet sind. Die Vorteile der Nutzung mehrerer Knoten (lokale Computer mit installiertem Gateway) für ein logisches Gateway sind:  
@@ -163,8 +163,8 @@ Hier sind die Anforderungen für das TLS/SSL-Zertifikat angegeben, das zum Schü
 
 - Das Zertifikat muss ein öffentlich vertrauenswürdiges Zertifikat vom Typ „X509 v3“ sein. Wir empfehlen Ihnen die Verwendung von Zertifikaten, die von einer öffentlichen Zertifizierungsstelle (Drittanbieter) ausgestellt werden.
 - Jeder Integration Runtime-Knoten muss diesem Zertifikat und dem Clientcomputer, der die Anwendung für die Anmeldeinformationsverwaltung ausführt, vertrauen. 
-> [!NOTE]
-> Die Anwendung für die Anmeldeinformationsverwaltung wird beim sicheren Festlegen von Anmeldeinformationen über den Kopier-Assistenten/das Azure-Portal verwendet. Dies kann auf jedem Computer im gleichen Netzwerk wie der lokale/private Datenspeicher ausgelöst werden.
+  > [!NOTE]
+  > Die Anwendung für die Anmeldeinformationsverwaltung wird beim sicheren Festlegen von Anmeldeinformationen über den Kopier-Assistenten/das Azure-Portal verwendet. Dies kann auf jedem Computer im gleichen Netzwerk wie der lokale/private Datenspeicher ausgelöst werden.
 - Platzhalterzertifikate werden unterstützt. Wenn der FQDN **node1.domain.contoso.com** lautet, können Sie ***.domain.contoso.com** als Antragstellernamen des Zertifikats verwenden.
 - SAN-Zertifikate sind nicht empfehlenswert, da nur das letzte Element des alternativen Antragstellernamens verwendet wird und alle anderen aufgrund von aktuellen Einschränkungen ignoriert werden. Beispiel: Wenn Sie ein SAN-Zertifikat mit den SANs **node1.domain.contoso.com** und **node2.domain.contoso.com** haben, können Sie dieses Zertifikat nur auf dem Computer mit dem FQDN **node2.domain.contoso.com** verwenden.
 - Unterstützt alle Schlüsselgrößen, die von Windows Server 2012 R2 für SSL-Zertifikate unterstützt werden.

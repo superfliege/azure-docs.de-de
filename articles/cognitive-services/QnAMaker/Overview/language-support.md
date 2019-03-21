@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/04/2018
+ms.date: 02/04/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 3bdc3a91e87f1bbd06ef0181d0042ee618f519c9
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 4e1dbf408565e78547928047ae2ce2d37ad1a022
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55861441"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58105123"
 ---
 # <a name="language-and-region-support-for-qna-maker"></a>Sprach- und Regionsunterstützung für QnA Maker
 
@@ -47,7 +47,7 @@ QnA Maker erkennt die Sprache der Wissensdatenbank während der Erstellung autom
 |Unterstützte Sprachen|
 |-----|
 |Arabisch|
-|Armenisch|,
+|Armenisch|
 Bangla|
 |Baskisch|
 |Bulgarisch|

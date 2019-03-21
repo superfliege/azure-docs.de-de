@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mikeray
-ms.openlocfilehash: b412d2b054fc8703c7524479359a3670782fd646
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 1b15a3966c6e408fb17655b112c1ec900bd86c5f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55980890"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57999785"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 Dieses Thema beschreibt Folgendes:
@@ -48,7 +48,7 @@ Die Beispiele in diesem Artikel wurden mit Version 5.4.1 des Azure PowerShell-Mo
 
 Vergewissern Sie sich, dass Sie mindestens Version 5.4.1 des PowerShell-Moduls verwenden.
 
-Siehe [Installieren des Azure PowerShell-Moduls](http://docs.microsoft.com/powershell/azure/install-az-ps).
+Siehe [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
 ## <a name="configure-the-windows-firewall"></a>Konfigurieren der Windows-Firewall
 

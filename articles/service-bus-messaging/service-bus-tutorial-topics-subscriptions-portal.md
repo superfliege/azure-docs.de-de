@@ -9,12 +9,12 @@ ms.date: 09/22/2018
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 10f3f7d6b878e8f1d4efee360e0f8a9967ac07bc
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: a325b976e657fbdc318a41b3b79b50e77a948e14
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886433"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58079842"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Tutorial: Aktualisieren des Bestands über das Azure-Portal und mithilfe von Themen/Abonnements
 
@@ -88,7 +88,7 @@ Gehen Sie wie folgt vor, um den Code auszuführen:
    - Ausführung von Befehl 2: Eigene Filter hinzufügen
    - Ausführung von Befehl 3: Optionales Entfernen Ihrer eigenen Filter Beachten Sie, dass die Standardfilter bei diesem Vorgang nicht neu erstellt werden.
 
-    ![Anzeige der Ausgabe von 2](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
+     ![Anzeige der Ausgabe von 2](./media/service-bus-tutorial-topics-subscriptions-portal/create-rules.png)
 
 8. Nach der Filtererstellung können Sie Nachrichten senden. Drücken Sie 4, und verfolgen Sie, wie zehn Nachrichten an das Thema gesendet werden:
 

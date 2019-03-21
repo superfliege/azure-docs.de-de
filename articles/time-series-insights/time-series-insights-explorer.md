@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/30/2017
 ms.custom: seodec18
-ms.openlocfilehash: d65ce83465f54a30b96bc1ee6644319e1b4fb020
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: 301326f4ba858c7aef6c8bdec8f2cae3ed926847
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556593"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58121042"
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights-Explorer
 In diesem Artikel werden die verschiedenen in der Web-App des Time Series Insights-Explorers verfügbaren Funktionen und Optionen vorgestellt. Sie verwenden den Time Series Insights-Explorer in Ihrem Webbrowser, um Visualisierungen Ihrer Daten zu erstellen.
@@ -91,27 +91,27 @@ Binnen weniger Minuten nach der Verbindung der Ereignisquelle mit der Time Serie
 
 10. Im **Diagramm** können Sie Ihre Daten visuell untersuchen. Folgende Diagrammtools sind verfügbar:
 
-   - Auswählen/Klicken und dadurch Aktivieren einer Auswahl einer bestimmten Zeitspanne oder einer einzelnen Datenreihe.  
-   - Innerhalb einer Zeitspannenauswahl können Sie Ereignisse vergrößern oder untersuchen.  
-   - Innerhalb einer Datenreihe können Sie die Reihe nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
-   - Im Filterbereich links neben dem Diagramm können Sie alle angezeigten Datenreihen sehen und diese nach Wert oder Namen neu anordnen sowie alle Datenreihen oder spezifische angeheftete oder getrennte Reihen anzeigen.  Sie können außerdem eine einzelne Datenreihe auswählen und nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
-   - Beim gleichzeitigen Anzeigen von mehreren Begriffen können Sie über die Schaltflächen oben rechts im Diagramm Stapel bilden, die Stapelung aufheben, weitere Daten zu einer Datenreihe anzeigen und für alle Begriffe dieselbe Y-Achse verwenden.
+    - Auswählen/Klicken und dadurch Aktivieren einer Auswahl einer bestimmten Zeitspanne oder einer einzelnen Datenreihe.  
+    - Innerhalb einer Zeitspannenauswahl können Sie Ereignisse vergrößern oder untersuchen.  
+    - Innerhalb einer Datenreihe können Sie die Reihe nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
+    - Im Filterbereich links neben dem Diagramm können Sie alle angezeigten Datenreihen sehen und diese nach Wert oder Namen neu anordnen sowie alle Datenreihen oder spezifische angeheftete oder getrennte Reihen anzeigen.  Sie können außerdem eine einzelne Datenreihe auswählen und nach einer anderen Spalte teilen, die Reihe als neuen Begriff hinzufügen, nur die ausgewählte Reihe anzeigen, die ausgewählte Reihe ausschließen, die Reihe anheften oder Ereignisse aus der ausgewählten Reihe untersuchen.
+    - Beim gleichzeitigen Anzeigen von mehreren Begriffen können Sie über die Schaltflächen oben rechts im Diagramm Stapel bilden, die Stapelung aufheben, weitere Daten zu einer Datenreihe anzeigen und für alle Begriffe dieselbe Y-Achse verwenden.
  
-   ![Diagrammtool](media/time-series-insights-explorer/explorer5.png) 
+    ![Diagrammtool](media/time-series-insights-explorer/explorer5.png) 
 
 11. Mithilfe des **Wärmebilds** können Sie schnell eindeutige oder ungewöhnliche Datenreihen in einer bestimmten Abfrage erkennen. Nur ein Suchbegriff kann als Wärmebild visualisiert werden.    
 
-   ![Wärmebild](media/time-series-insights-explorer/explorer6.png)
+    ![Wärmebild](media/time-series-insights-explorer/explorer6.png)
 
 12. **Ereignisse**:  Wenn Sie oben beim Auswählen oder Klicken mit der rechten Maustaste Ereignisse untersuchen möchten, wird der Ereignisbereich angezeigt.  Hier können Sie alle Ihre Rohereignisse anzeigen und die Ereignisse als JSON- oder CSV-Dateien exportieren. Beachten Sie, dass in Time Series Insights alle Rohdaten gespeichert werden.
 
-   ![Ereignisse](media/time-series-insights-explorer/explorer7.png)
+    ![Ereignisse](media/time-series-insights-explorer/explorer7.png)
 
 13. Klicken Sie nach dem Untersuchen von Ereignissen auf die Registerkarte **STATISTIK**, um die Funktionen für Muster und Spaltenstatistik anzuzeigen.  
 
-   - **Muster:** Mit diesem Feature werden die meisten statistisch signifikanten Muster in einer ausgewählten Datenregion angezeigt. So müssen Sie nicht Tausende von Ereignissen prüfen, um festzustellen, welche Muster am meisten Zeit und Energie rechtfertigen. Darüber hinaus können Sie in Time Series Insights direkt in diese statistisch signifikanten Muster springen und dann eine Analyse durchführen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten. 
+    - **Muster:** Mit diesem Feature werden die meisten statistisch signifikanten Muster in einer ausgewählten Datenregion angezeigt. So müssen Sie nicht Tausende von Ereignissen prüfen, um festzustellen, welche Muster am meisten Zeit und Energie rechtfertigen. Darüber hinaus können Sie in Time Series Insights direkt in diese statistisch signifikanten Muster springen und dann eine Analyse durchführen. Dieses Feature ist auch nützlich für nachträgliche Überprüfungen von Verlaufsdaten. 
 
-   - **Spaltenstatistik**:  Mit der Spaltenstatistik werden Diagramme und Tabellen angezeigt, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne unterteilt sind.  
+    - **Spaltenstatistik**:  Mit der Spaltenstatistik werden Diagramme und Tabellen angezeigt, in denen Daten aus den einzelnen Spalten der ausgewählten Datenreihe über die ausgewählte Zeitspanne unterteilt sind.  
  
       ![STATISTIK](media/time-series-insights-explorer/explorer8.png) 
 

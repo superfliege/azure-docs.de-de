@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/8/2018
 ms.author: saurse
-ms.openlocfilehash: 01b90d6bb18addd6a0235101f86b9d51953cc096
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
+ms.openlocfilehash: 8d15eb03055aed32c8a99121b750ee5767a87b50
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54818556"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094972"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server"></a>Offlinesicherungsworkflow für DPM und Azure Backup Server
 Azure Backup verfügt über mehrere integrierte effizienzsteigernde Funktionen, die die Netzwerk- und Speicherkosten bei den ersten vollständigen Datensicherungen in Azure reduzieren. Bei den ersten vollständigen Sicherungen werden meist große Datenmengen übertragen, sodass eine höhere Netzwerkbandbreite als bei den nachfolgenden Sicherungen erforderlich ist, bei denen nur die Deltamengen bzw. Inkremente übertragen werden. Azure Backup komprimiert die Erstsicherungen. Durch den Prozess des Offlineseedings kann Azure Backup Datenträger verwenden, um die komprimierten Daten der Erstsicherungen offline in Azure hochzuladen.
@@ -55,7 +55,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind, bevor Sie 
 
 * Es wurde ein Azure Storage-Konto mit dem *klassischen* Bereitstellungsmodell in dem Abonnement erstellt, aus dem Sie die Datei mit den Veröffentlichungseinstellungen heruntergeladen haben, wie im Folgenden dargestellt: 
 
- ![Erstellen klassischer Speicherkonten](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
+  ![Erstellen klassischer Speicherkonten](./media/backup-azure-backup-import-export/storageaccountclassiccreate.png)
 
 * Es wurde ein Stagingspeicherort, bei dem es sich um eine Netzwerkfreigabe oder ein zusätzliches Laufwerk auf dem Computer (intern oder extern) handeln kann, mit genügend Speicherplatz zum Speichern der Erstkopie erstellt. Wenn Sie beispielsweise einen 500-GB-Dateiserver sichern möchten, muss der Stagingbereich mindestens 500 GB groß sein. (Aufgrund der Komprimierung wird weniger Speicherplatz genutzt.)
 * Bei Datenträgern, die an Azure gesendet werden sollen, stellen Sie sicher, dass nur interne 2,5-Zoll-SSD- oder 2,5-Zoll- bzw. 3,5-Zoll-SATA II/III-Festplatten verwendet werden. Sie können Festplatten mit bis zu 10 TB verwenden. Schlagen Sie in der [Dokumentation zum Azure Import/Export-Dienst](../storage/common/storage-import-export-requirements.md#supported-hardware) die aktuell vom Dienst unterstützten Laufwerke nach.
@@ -74,12 +74,12 @@ In diesem Abschnitt wird erläutert, wie Sie den Workflow zur Offlinesicherung d
 
     Die Beschreibung der Eingaben lautet wie folgt:
 
-    * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
-    * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
-    * **Azure-Veröffentlichungseinstellungen**: Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
-    * **Azure-Abonnement-ID**: Azure-Abonnement-ID für das Abonnement, aus dem Sie die Datei mit den Azure-Veröffentlichungseinstellungen heruntergeladen haben. 
-    * **Azure Storage-Konto**: Name des Speicherkontos im Azure-Abonnement, das der Datei mit den Azure-Veröffentlichungseinstellungen zugeordnet ist.
-    * **Azure Storage-Container**: Name des Zielspeicherblobs im Azure Storage-Konto, in das die Sicherungsdaten importiert werden.
+   * **Stagingspeicherort**: Der temporäre Speicherort, an den die erste Sicherungskopie geschrieben wird. Beim Stagingspeicherort kann es sich um eine Netzwerkfreigabe oder einen lokalen Computer handeln. Wenn der Kopiercomputer und der Quellcomputer nicht identisch sind, wird empfohlen, den vollständigen Netzwerkpfad des Stagingspeicherorts anzugeben.
+   * **Name des Azure Importauftrags**: Der eindeutige Name, anhand dessen der Azure Import-Dienst und Azure Backup Datenübertragungen nachverfolgen, die auf Datenträgern an Azure gesendet werden.
+   * **Azure-Veröffentlichungseinstellungen**: Geben Sie den lokalen Pfad zu der Datei mit den Veröffentlichungseinstellungen an.
+   * **Azure-Abonnement-ID**: Azure-Abonnement-ID für das Abonnement, aus dem Sie die Datei mit den Azure-Veröffentlichungseinstellungen heruntergeladen haben. 
+   * **Azure Storage-Konto**: Name des Speicherkontos im Azure-Abonnement, das der Datei mit den Azure-Veröffentlichungseinstellungen zugeordnet ist.
+   * **Azure Storage-Container**: Name des Zielspeicherblobs im Azure Storage-Konto, in das die Sicherungsdaten importiert werden.
 
      Speichern Sie den *Stagingspeicherort* und den angegebenen *Namen des Azure-Importauftrags*, da Sie diese Informationen für die Vorbereitung der Datenträger benötigen.  
      
@@ -102,14 +102,14 @@ Das Hilfsprogramm *AzureOfflineBackupDiskPrep* wird zum Vorbereiten der SATA-Lau
 
 1. Navigieren Sie zu diesem Verzeichnis, und kopieren Sie das Verzeichnis **AzureOfflineBackupDiskPrep** auf einen Kopiercomputer, mit dem die vorzubereitenden SATA-Laufwerke verbunden sind. Überprüfen Sie für den Kopiercomputer Folgendes:
 
-    * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
-    * BitLocker ist auf dem Kopiercomputer aktiviert.
-    * Der Kopiercomputer kann auf das Azure-Portal zugreifen.
+   * Der Kopiercomputer kann über denselben Netzwerkpfad, der während des Workflows **Initiieren der Offlinesicherung** angegeben wurde, auf den Stagingspeicherort für den Offlineseeding-Workflow zugreifen.
+   * BitLocker ist auf dem Kopiercomputer aktiviert.
+   * Der Kopiercomputer kann auf das Azure-Portal zugreifen.
 
-    Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein. 
+     Sofern erforderlich, kann der Kopiercomputer mit dem Quellcomputer identisch sein. 
     
-    > [!IMPORTANT] 
-    > Wenn der Quellcomputer ein virtueller Computer ist, muss ein anderer physischer Server- oder Clientcomputer als Kopiercomputer verwendet werden.
+     > [!IMPORTANT] 
+     > Wenn der Quellcomputer ein virtueller Computer ist, muss ein anderer physischer Server- oder Clientcomputer als Kopiercomputer verwendet werden.
     
     
 2. Öffnen Sie auf dem Kopiercomputer eine Eingabeaufforderung mit erhöhten Rechten und dem Verzeichnis des Hilfsprogramms *AzureOfflineBackupDiskPrep* als aktuelles Verzeichnis. Führen Sie dann den folgenden Befehl aus:

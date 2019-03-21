@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 10/09/2018
 ms.author: alkohli
-ms.openlocfilehash: e4bc5de9345bcb65f82ca7ac0095b3e0fd3907e9
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165997"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58102110"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Verwalten von Bandbreitenzeitplänen auf Ihrer Azure Data Box Gateway-Ressource über das Azure-Portal  
 
@@ -43,13 +43,13 @@ Gehen Sie im Azure-Portal wie folgt vor, um einen Benutzer hinzuzufügen:
 
 3. Gehen Sie unter **Zeitplan hinzufügen** wie folgt vor: 
 
-    1. Geben Sie den **Starttag**, den **Endtag**, die **Startzeit** und die **Endzeit** des Zeitplans an. 
-    2. Wenn der Zeitplan für den gesamten Tag gilt, können Sie die Option **Ganztägig** aktivieren. 
-    3. **Bandbreitenrate** ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein. 
-    4. Aktivieren Sie die Option **Unbegrenzt**, wenn Sie Uploads und Downloads nicht drosseln möchten. 
-    5. Klicken Sie auf **Hinzufügen**.
+   1. Geben Sie den **Starttag**, den **Endtag**, die **Startzeit** und die **Endzeit** des Zeitplans an. 
+   2. Wenn der Zeitplan für den gesamten Tag gilt, können Sie die Option **Ganztägig** aktivieren. 
+   3. **Bandbreitenrate** ist die Bandbreite in Megabit pro Sekunde (MBit/s), die Ihr Gerät bei Cloudvorgängen (Uploads und Downloads) verwendet. Geben Sie eine Zahl zwischen 1 und 1000 in dieses Feld ein. 
+   4. Aktivieren Sie die Option **Unbegrenzt**, wenn Sie Uploads und Downloads nicht drosseln möchten. 
+   5. Klicken Sie auf **Hinzufügen**.
 
-    ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Klicken auf „Benutzer hinzufügen“](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Ein Zeitplan mit den angegebenen Parametern wird erstellt. Dieser Zeitplan wird dann im Portal in der Liste mit den Bandbreitenzeitplänen angezeigt.
 

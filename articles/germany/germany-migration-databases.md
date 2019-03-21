@@ -9,12 +9,12 @@ ms.service: germany
 ms.date: 8/15/2018
 ms.topic: article
 ms.custom: bfmigrate
-ms.openlocfilehash: d013eadbdcb2d4fad81ae9b963ac3e8d8356aada
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 518bc40bb83267872c8fe05197ec227d30a7aea3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810806"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58084210"
 ---
 # <a name="migrate-database-resources-to-global-azure"></a>Migrieren von Datenbankressourcen zu Azure weltweit
 
@@ -55,12 +55,12 @@ Um Azure Cosmos DB-Ressourcen zu migrieren, sollten Sie die folgenden Schritte a
 1. Klonen Sie die Kontokonfigurationen aus Azure Deutschland in die neue Region, indem Sie das Datenmigrationstool ausführen.
 1. Kann ein Wartungsfenster verwendet werden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Datenmigrationstool ausführen.
 1. Ist es nicht möglich, ein Wartungsfenster zu verwenden, kopieren Sie die Daten aus der Quelle in das Ziel, indem Sie das Tool und dann die folgenden Schritte ausführen:
-  1. Verwenden Sie einen konfigurationsgesteuerten Ansatz, um Änderungen an den Lese-/Schreibvorgängen in einer Anwendung vorzunehmen.
-  1. Führen Sie eine erstmalige Synchronisierung aus.
-  1. Richten Sie eine inkrementelle Synchronisierung ein, und binden Sie den Änderungsfeed ein.
-  1. Verknüpfen Sie Lesevorgänge mit dem neuen Konto, und überprüfen Sie die Anwendung.
-  1. Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verknüpfen Sie dann Schreibvorgänge mit dem neuen Konto.
-  1. Beenden Sie das Tool, und löschen Sie das alte Konto.
+   1. Verwenden Sie einen konfigurationsgesteuerten Ansatz, um Änderungen an den Lese-/Schreibvorgängen in einer Anwendung vorzunehmen.
+   1. Führen Sie eine erstmalige Synchronisierung aus.
+   1. Richten Sie eine inkrementelle Synchronisierung ein, und binden Sie den Änderungsfeed ein.
+   1. Verknüpfen Sie Lesevorgänge mit dem neuen Konto, und überprüfen Sie die Anwendung.
+   1. Beenden Sie Schreibvorgänge in das alte Konto, überprüfen Sie, ob der Änderungsfeed berücksichtigt wird, und verknüpfen Sie dann Schreibvorgänge mit dem neuen Konto.
+   1. Beenden Sie das Tool, und löschen Sie das alte Konto.
 1. Führen Sie das Tool aus, um zu überprüfen, ob die Daten im alten und im neuen Konto konsistent sind.
 
 Weitere Informationen finden Sie unter:
@@ -108,8 +108,8 @@ So exportieren Sie aus der Quellinstanz und importieren Sie in die Zielinstanz:
 1. Erstellen Sie im Premium-Tarif eine neue Azure Cache for Redis-Instanz in der Zielregion. Verwenden Sie dieselbe Größe wie für die Azure Cache for Redis-Quellinstanz.
 1. [Exportieren Sie Daten aus dem Quellcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Export-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/export-azurermrediscache?view=azurermps-6.4.0).
 
-  > [!NOTE]
-  > Das Azure Storage-Exportkonto muss sich in derselben Region wie die Cacheinstanz befinden.
+   > [!NOTE]
+   > Das Azure Storage-Exportkonto muss sich in derselben Region wie die Cacheinstanz befinden.
 
 1. Kopieren Sie die exportierten Blobs in ein Speicherkonto in der Zielregion (z. B. mit AzCopy).
 1. [Importieren Sie Daten in den Zielcache](../redis-cache/cache-how-to-import-export-data.md), oder verwenden Sie das [PowerShell-Cmdlet „Import-AzureRmRedisCache“](/powershell/module/azurerm.rediscache/import-azurermrediscache?view=azurermps-6.4.0).

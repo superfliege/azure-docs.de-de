@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: 76059c587a6378ccfe16c0a633bea0c6c7a8a57d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: b8bb3db58538263ea60520d4537a76c6ebb6abf7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340092"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58112516"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>Planen der Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager
 Azure Resource Manager bietet zwar zahlreiche praktische Features, die Migration muss jedoch sorgfältig geplant werden, damit alles reibungslos funktioniert. Eine gründliche Planung gewährleistet, dass beim Ausführen der Migrationsaktivitäten keine Probleme auftreten.
@@ -79,8 +79,8 @@ Erfolgreiche Kunden verfügen über sorgfältig ausgearbeitete Pläne, in denen 
 
   Mithilfe eines Lab-Tests Ihres exakten Szenarios (Compute, Netzwerk und Speicher) lässt sich am besten eine reibungslose Migration gewährleisten. Vorteile:
 
-  - Eine vollständig separate Lab-Umgebung oder eine vorhandene produktionsfremde Umgebung zu Testzwecken. Wir empfehlen ein vollständig separates Lab, das wiederholt migriert und destruktiv geändert werden kann.  Skripts zum Erfassen/Aktualisieren von Metadaten aus den echten Abonnements finden Sie weiter unten.
-  - Es empfiehlt sich, das Lab in einem separaten Abonnement zu erstellen. Der Grund: Das Lab wird wiederholt vernichtet, und die Verwendung eines separaten, isolierten Abonnements macht es unwahrscheinlicher, dass versehentlich echte Inhalte gelöscht werden.
+- Eine vollständig separate Lab-Umgebung oder eine vorhandene produktionsfremde Umgebung zu Testzwecken. Wir empfehlen ein vollständig separates Lab, das wiederholt migriert und destruktiv geändert werden kann.  Skripts zum Erfassen/Aktualisieren von Metadaten aus den echten Abonnements finden Sie weiter unten.
+- Es empfiehlt sich, das Lab in einem separaten Abonnement zu erstellen. Der Grund: Das Lab wird wiederholt vernichtet, und die Verwendung eines separaten, isolierten Abonnements macht es unwahrscheinlicher, dass versehentlich echte Inhalte gelöscht werden.
 
   Hierzu kann das AsmMetadataParser-Tool verwendet werden. Weitere Informationen zu diesem Tool finden Sie [hier](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset).
 
@@ -122,13 +122,13 @@ Die folgenden Probleme wurden in vielen größeren Migrationen festgestellt. Hie
     > Diese Grenzwerte müssen in der Region erhöht werden, in der sich die aktuelle Umgebung befindet, die Sie migrieren möchten.
     >
 
-    - Netzwerkschnittstellen
-    - Load Balancer
-    - Öffentliche IP-Adressen
-    - Statische öffentliche IP-Adressen
-    - Kerne
-    - Netzwerksicherheitsgruppen
-    - Routingtabellen
+  - Netzwerkschnittstellen
+  - Load Balancer
+  - Öffentliche IP-Adressen
+  - Statische öffentliche IP-Adressen
+  - Kerne
+  - Netzwerksicherheitsgruppen
+  - Routingtabellen
 
     Die aktuellen Azure Resource Manager-Kontingente können mithilfe der folgenden Befehle mit der neuesten Version von Azure PowerShell überprüft werden:
     

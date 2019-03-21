@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: rapatchi
-ms.openlocfilehash: b880a80e19c5a85a35d5e1d78022fe4acc74f0e1
-ms.sourcegitcommit: da69285e86d23c471838b5242d4bdca512e73853
+ms.openlocfilehash: 75a3f8e6c872e0bbb9fde8c5776d99ba0cf2c3d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53999168"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58116594"
 ---
 # <a name="update-your-previous-java-service-fabric-application-to-fetch-java-libraries-from-maven"></a>Aktualisieren Ihrer älteren Java Service Fabric-Anwendung für den Abruf von Java-Bibliotheken aus Maven
 Vor Kurzem wurden Service Fabric-Java-Binärdateien vom Service Fabric-Java-SDK auf Maven-Hosting umgestellt. Nun können Sie die neuesten Service Fabric-Java-Abhängigkeiten mithilfe von **mavencentral** abrufen. In dieser Schnellstartanleitung erfahren Sie, wie Sie Ihre vorhandenen Java-Anwendungen, die Sie zuvor für die Verwendung mit dem Service Fabric-Java-SDK erstellt haben, unter Verwendung einer Yeoman-Vorlage oder mithilfe von Eclipse aktualisieren, sodass sie mit dem Maven-basierten Build kompatibel sind.
@@ -27,17 +27,17 @@ Vor Kurzem wurden Service Fabric-Java-Binärdateien vom Service Fabric-Java-SDK 
 ## <a name="prerequisites"></a>Voraussetzungen
 1. Als Erstes muss das vorhandene Java SDK deinstalliert werden.
 
-  ```bash
-  sudo dpkg -r servicefabricsdkjava
-  ```
+   ```bash
+   sudo dpkg -r servicefabricsdkjava
+   ```
 2. Installieren Sie die neueste Version der Service Fabric-Befehlszeilenschnittstelle. (Eine entsprechende Anleitung finden Sie [hier](service-fabric-cli.md).)
 
 3. Für die Erstellung und Verwendung von Service Fabric-Java-Anwendungen müssen JDK 1.8 und Gradle installiert sein. Ist dies nicht der Fall, können Sie Folgendes ausführen, um JDK 1.8 (openjdk-1.8-jdk) und Gradle zu installieren:
 
- ```bash
- sudo apt-get install openjdk-8-jdk-headless
- sudo apt-get install gradle
- ```
+   ```bash
+   sudo apt-get install openjdk-8-jdk-headless
+   sudo apt-get install gradle
+   ```
 4. Aktualisieren Sie das Installations-/Deinstallationsskript Ihrer Anwendung für die Verwendung der neuen Service Fabric-Befehlszeilenschnittstelle. (Eine entsprechende Anleitung finden Sie [hier](service-fabric-application-lifecycle-sfctl.md).) Orientieren Sie sich dabei ggf. an unseren [Beispielen](https://github.com/Azure-Samples/service-fabric-java-getting-started) für Einsteiger.
 
 >[!TIP]

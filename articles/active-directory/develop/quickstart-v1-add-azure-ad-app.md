@@ -17,12 +17,12 @@ ms.author: celested
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc60f3ac785bede0f3a2e4d83cc98980b46868e2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 15e77767e16ce6ae02c6f1f93891d5acf4bfcb6f
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167064"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119597"
 ---
 # <a name="quickstart-register-an-app-with-the-azure-active-directory-v10-endpoint"></a>Schnellstart: Registrieren einer App mit dem Azure AD v1.0-Endpunkt
 
@@ -52,16 +52,16 @@ Stellen Sie zunächst sicher, dass Sie über einen Azure AD-Mandanten verfügen,
 
 1. Geben Sie auf der angezeigten Seite **Erstellen** die Registrierungsinformationen für Ihre Anwendung ein: 
 
-    - **Name:** Geben Sie einen aussagekräftigen Anwendungsnamen ein.
-    - **Anwendungstyp:**
-      - Wählen Sie für [Clientanwendungen](developer-glossary.md#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](developer-glossary.md#native-client) verwendet.
-      - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](developer-glossary.md#client-application) und [Ressourcen-/API-Anwendungen](developer-glossary.md#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](developer-glossary.md#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](developer-glossary.md#user-agent-based-client) verwendet. Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
-    - **Anmelde-URL**: Geben Sie für Anwendungen von Typ „Web-App/API“ die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. 
-    - **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
+   - **Name:** Geben Sie einen aussagekräftigen Anwendungsnamen ein.
+   - **Anwendungstyp:**
+     - Wählen Sie für [Clientanwendungen](developer-glossary.md#client-application), die lokal auf dem Gerät installiert sind, die Option **Nativ** aus. Diese Einstellung wird für öffentliche [native OAuth-Clients](developer-glossary.md#native-client) verwendet.
+     - Wählen Sie die Option **Web-App/API** für [Clientanwendungen](developer-glossary.md#client-application) und [Ressourcen-/API-Anwendungen](developer-glossary.md#resource-server) aus, die auf einem sicheren Server installiert sind. Diese Einstellung wird für vertrauliche OAuth-[Webclients](developer-glossary.md#web-client) und für öffentliche [Clients auf Basis von Benutzer-Agents](developer-glossary.md#user-agent-based-client) verwendet. Außerdem kann dieselbe Anwendung sowohl einen Client als auch eine Ressource/API verfügbar machen.
+   - **Anmelde-URL**: Geben Sie für Anwendungen von Typ „Web-App/API“ die Basis-URL Ihrer App an. `http://localhost:31544` kann beispielsweise die URL für eine Web-App sein, die auf einem lokalen Computer ausgeführt wird. Benutzer können diese URL nutzen, um sich an einer Webclientanwendung anzumelden. 
+   - **Umleitungs-URI**: Geben Sie für native Anwendungen den URI an, der von Azure AD zum Zurückgeben von Tokenantworten verwendet wird. Geben Sie einen für Ihre Anwendung spezifischen Wert ein, z.B. `http://MyFirstAADApp`.
 
-      ![Registrieren einer neuen Anwendung – Erstellen](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
+     ![Registrieren einer neuen Anwendung – Erstellen](./media/quickstart-v1-integrate-apps-with-azure-ad/add-app-registration-create.png)
 
-    Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den **Schnellstarts** in unserer Dokumentation.
+     Spezifische Beispiele für Webanwendungen oder native Anwendungen finden Sie in den **Schnellstarts** in unserer Dokumentation.
 
 1. Wenn Sie fertig sind, wählen Sie **Erstellen** aus.
 

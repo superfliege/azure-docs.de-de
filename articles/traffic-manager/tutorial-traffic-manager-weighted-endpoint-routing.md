@@ -8,12 +8,12 @@ ms.service: traffic-manager
 ms.topic: tutorial
 ms.date: 10/15/2018
 ms.author: kumud
-ms.openlocfilehash: f4c29526f675cab461153b4749c4f6edc237dada
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 50790e50602fbc8d302a67ea9963a4e492ce2f0b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467331"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58009758"
 ---
 # <a name="tutorial-control-traffic-routing-with-weighted-endpoints-by-using-traffic-manager"></a>Tutorial: Steuern des Routings von Datenverkehr mit gewichteten Endpunkten unter Verwendung von Traffic Manager
 
@@ -60,6 +60,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
     |Ressourcengruppe| Wählen Sie **Neu** aus, und geben Sie **myResourceGroupTM1** ein.|
     |Standort| Wählen Sie **USA, Osten** aus.|
     |||
+
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie unter **Einstellungen** die folgenden Werte und anschließend **OK** aus:
     
@@ -69,6 +70,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
     |Netzwerksicherheitsgruppen (NSG)|Wählen Sie **Basic** aus. Wählen Sie in der Dropdownliste **Öffentliche Eingangsports hinzufügen** die Optionen **HTTP** und **RDP** aus. |
     |Startdiagnose|Wählen Sie **Deaktiviert** aus.|
     |||
+
 6. Wählen Sie auf der Seite **Zusammenfassung** unter **Erstellen** die Option **Erstellen** aus, um die Bereitstellung des virtuellen Computers zu starten.
 
 7. Führen Sie die Schritte 1 bis 6 mit den folgenden Änderungen erneut aus:
@@ -80,6 +82,7 @@ In diesem Abschnitt erstellen Sie die beiden virtuellen Computer *myIISVMEastUS*
     |VM-Name | Geben Sie **myIISVMWEurope** ein.|
     |Virtuelles Netzwerk | Wählen Sie **Virtuelles Netzwerk** aus. Geben Sie unter **Virtuelles Netzwerk erstellen** für **Name** die Zeichenfolge **myVNet2** ein. Geben Sie unter **Subnetz** die Zeichenfolge **mySubnet** ein.|
     |||
+
 8. Die Erstellung der VMs kann einige Minuten dauern. Führen Sie keine weiteren Schritte aus, bis beide virtuellen Computer erstellt wurden.
 
 ![Erstellen einer VM](./media/tutorial-traffic-manager-improve-website-response/createVM.png)
@@ -137,6 +140,7 @@ In diesem Abschnitt erstellen Sie den virtuellen Computer *myVMEastUS*. Mit dies
 
 4. Wählen Sie unter **Größe auswählen** eine VM-Größe aus.
 5. Wählen Sie unter **Einstellungen** die folgenden Werte und anschließend **OK** aus:
+
     |Einstellung|Wert|
     |---|---|
     |Virtuelles Netzwerk| Wählen Sie **Virtuelles Netzwerk** aus. Geben Sie unter **Virtuelles Netzwerk erstellen** für **Name** die Zeichenfolge **myVNet3** ein. Geben Sie für das Subnetz die Zeichenfolge **mySubnet** ein.|
@@ -173,7 +177,7 @@ Fügen Sie die beiden virtuellen Computer hinzu, auf denen die IIS-Server („my
 
     | Einstellung                 | Wert                                              |
     | ---                     | ---                                                |
-    | Typ                    | Geben Sie den Azure-Endpunkt ein.                                   |
+    | Type                    | Geben Sie den Azure-Endpunkt ein.                                   |
     | NAME           | Geben Sie **myEastUSEndpoint** ein.                                        |
     | Zielressourcentyp           | Wählen Sie **Öffentliche IP-Adresse**.                          |
     | Zielressource          | Wählen Sie eine öffentliche IP-Adresse aus, um die Liste der Ressourcen mit öffentlichen IP-Adressen im gleichen Abonnement anzuzeigen. Wählen Sie in **Ressource** die öffentliche IP-Adresse mit dem Namen **myIISVMEastUS-ip** aus. Dies ist die öffentliche IP-Adresse der IIS-Server-VM in „USA, Osten“.|

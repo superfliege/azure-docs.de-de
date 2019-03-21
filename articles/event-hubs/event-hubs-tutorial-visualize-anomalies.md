@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
 ms.date: 02/26/2019
-ms.openlocfilehash: 4f72def4d81f51fcf1bedbeb83798b16ebb6eb32
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4ade1b05b1ec5c81774b5340cfdceb97e41218f3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888660"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123044"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Tutorial: Visualisieren von Datenanomalien in Echtzeitereignissen, die an Azure Event Hubs gesendet werden
 
@@ -328,10 +328,10 @@ Klicken Sie im Stream Analytics-Auftrag auf **Starten**, **Jetzt** und dann erne
     > Wenn Sie die Beispielanwendung ausführen und Daten an den Event Hub streamen, ändert sich die Zahl auf dieser Kachel schnell (sekündlich). Der Grund dafür ist, dass die Stream Analytics-Abfrage den Wert tatsächlich **jede Sekunde** aktualisiert. Aktualisieren Sie die Abfrage, sodass ein rollierendes Fenster von 3 Minuten verwendet wird, um die Summe der letzten Minuten anzuzeigen. 
 11. Fügen Sie eine weitere Visualisierung hinzu. Wiederholen Sie die ersten Schritte:
 
-   * Klicken Sie auf **Kachel hinzufügen**.
-   * Wählen Sie **Benutzerdefinierte Streamingdaten**. 
-   * Klicken Sie auf **Weiter**.
-   * Wählen Sie Ihr Dataset aus, und klicken Sie dann auf **Weiter**. 
+    * Klicken Sie auf **Kachel hinzufügen**.
+    * Wählen Sie **Benutzerdefinierte Streamingdaten**. 
+    * Klicken Sie auf **Weiter**.
+    * Wählen Sie Ihr Dataset aus, und klicken Sie dann auf **Weiter**. 
 
 12. Wählen Sie unter **Visualisierungstyp** die Option **Liniendiagramm**.
 

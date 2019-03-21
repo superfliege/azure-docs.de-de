@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: e2b9d380b5e164bb8b730ec7037a6b2836c2af85
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447360"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57994416"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Übersicht über die Funktionen in Azure Backup
 Azure Backup ist der Azure-basierte Dienst, den Sie zum Sichern (bzw. Schützen) und Wiederherstellen Ihrer Daten in der Microsoft Cloud verwenden können. Azure Backup ersetzt Ihre vorhandene lokale bzw. standortexterne Lösung durch eine zuverlässige, sichere und wirtschaftliche Cloudlösung. Azure Backup verfügt über mehrere Komponenten, die Sie herunterladen und auf dem jeweiligen Computer, Server oder in der Cloud bereitstellen. Die Komponente (der Agent), die Sie bereitstellen, richtet sich danach, was geschützt werden soll. Alle Azure Backup-Komponenten (unabhängig davon, ob Daten lokal oder in der Cloud geschützt werden sollen) können genutzt werden, um Daten in einem Recovery Services-Tresor in Azure zu sichern. Informationen dazu, welche Komponente zum Schützen bestimmter Daten, Anwendungen oder Workloads geeignet ist, finden Sie in der [Tabelle mit den Azure Backup-Komponenten](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (weiter unten in diesem Artikel).
@@ -54,6 +54,7 @@ Die folgende Tabelle enthält Informationen dazu, was Sie mit jeder Azure Backup
 | Azure IaaS-VM-Sicherung |<li>Anwendungsabhängige Momentaufnahmen (VSS)<li>Native Sicherungen für Windows/Linux<li>Keine bestimmte Agent-Installation erforderlich<li>Sicherung auf Fabric-Ebene ohne Sicherungsinfrastruktur |<li>Tägliche Sicherung von virtuellen Computern <li>Wiederherstellung von virtuellen Computern nur auf Datenträgerebene<li>Keine lokale Sicherung möglich |<li>VMs <li>Alle Datenträger (mit PowerShell) |<p>Recovery Services-Tresor</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>Was sind die Bereitstellungsszenarien für jede Komponente?
+
 | Komponente | Bereitstellung in Azure möglich? | Lokale Bereitstellung möglich? | Unterstützter Zielspeicher |
 | --- | --- | --- | --- |
 | Azure Backup-Agent (MARS) |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern bereitgestellt werden, die in Azure ausgeführt werden.</p> |<p>**Ja**</p> <p>Der Azure Backup-Agent kann auf allen virtuellen Windows Server-Computern oder physischen Computern bereitgestellt werden.</p> |<p>Recovery Services-Tresor</p> |
@@ -114,6 +115,7 @@ Mit Azure Backup können Sie einen vollständigen virtuellen Computer mit verwal
 Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. die Unterstützung verschiedener Features der einzelnen Azure Backup-Komponenten zusammengefasst ist. Weitere Informationen zur Unterstützung bzw. weitere Details sind jeweils unterhalb der Tabelle zu finden.
 
 ### <a name="storage"></a>Storage
+
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Recovery Services-Tresor |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
@@ -121,7 +123,7 @@ Die folgenden Abschnitte enthalten Tabellen, in denen die Verfügbarkeit bzw. di
 | Bandspeicher | |![Ja][green] | | |
 | Komprimierung <br/>(im Recovery Services-Tresor) |![Ja][green] |![Ja][green] |![Ja][green] | |
 | Inkrementelle Sicherung |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
-| Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | | |
+| Datenträgerdeduplizierung | |![Teilweise][yellow] |![Teilweise][yellow] | |
 
 ![Tabellenschlüssel](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -132,7 +134,7 @@ Sicherungen werden komprimiert, um den erforderlichen Speicherplatz zu reduziere
 
 
 #### <a name="disk-deduplication"></a>Datenträgerdeduplizierung
-Sie können die Deduplizierung nutzen, wenn Sie System Center DPM oder Azure Backup Server [auf einem virtuellen Hyper-V-Computer](http://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) bereitstellen. Windows Server führt die Datendeduplizierung (auf Hostebene) auf den virtuellen Festplatten (VHDs) durch, die als Sicherungsspeicher an den virtuellen Computer angefügt sind.
+Sie können die Deduplizierung nutzen, wenn Sie System Center DPM oder Azure Backup Server [auf einem virtuellen Hyper-V-Computer](https://blogs.technet.com/b/dpm/archive/2015/01/06/deduplication-of-dpm-storage-reduce-dpm-storage-consumption.aspx) bereitstellen. Windows Server führt die Datendeduplizierung (auf Hostebene) auf den virtuellen Festplatten (VHDs) durch, die als Sicherungsspeicher an den virtuellen Computer angefügt sind.
 
 > [!NOTE]
 > Die Deduplizierung ist in Azure für keine der Backup-Komponenten verfügbar. Wenn System Center DPM und Azure Backup Server in Azure bereitgestellt werden, können an die VM angefügte Speicherdatenträger nicht dedupliziert werden.
@@ -155,6 +157,7 @@ Bei der **differenziellen Sicherung** werden nur die Blöcke gespeichert, die si
 Die **inkrementelle Sicherung** bietet eine hohe Speicher- und Netzwerkeffizienz, da hier nur die Datenblöcke gespeichert werden, die sich seit der vorherigen Sicherung geändert haben. Bei der inkrementellen Sicherung müssen nicht regelmäßig vollständige Sicherungen erstellt werden. In dem Beispiel werden nach der vollständigen Sicherung für den ersten Monat die Blöcke A2, A3, A4 und A9 als geändert gekennzeichnet und in den zweiten Monat übertragen. Im dritten Monat wird nur der geänderte Block A5 gekennzeichnet und übertragen. Hierbei werden weniger Daten bewegt, was sich positiv auf die Auslastung der Speicher- und Netzwerkressourcen auswirkt und zu geringeren Gesamtkosten führt.
 
 ### <a name="security"></a>Sicherheit
+
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Netzwerksicherheit<br/> (in Azure) |![Ja][green] |![Ja][green] |![Ja][green] |![Ja][green] |
@@ -174,6 +177,7 @@ Sämtlicher Sicherungsdatenverkehr von Ihren Servern in den Recovery Services-Tr
 Für das Sichern virtueller Azure-Computer ist das Einrichten der Verschlüsselung *im* virtuellen Computer erforderlich. Azure Backup unterstützt den Azure Disk Encryption-Dienst, der auf virtuellen Windows-Computern BitLocker und auf virtuellen Linux-Computern **dm-crypt** verwendet. Auf dem Back-End nutzt Azure Backup die [Speicherdienstverschlüsselung von Azure](../storage/common/storage-service-encryption.md), mit der ruhende Daten geschützt werden.
 
 ### <a name="network"></a>Netzwerk
+
 | Feature | Azure Backup-Agent | System Center DPM | Azure Backup Server | Azure IaaS-VM-Sicherung |
 | --- | --- | --- | --- | --- |
 | Netzwerkkomprimierung <br/>(auf **Sicherungsserver**) | |![Ja][green] |![Ja][green] | |

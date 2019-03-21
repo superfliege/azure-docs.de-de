@@ -4,16 +4,16 @@ description: Aufrufen der REST-API-Vorgänge von Azure Storage-Diensten (einschl
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: how-to
+ms.topic: conceptual
 ms.date: 05/22/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 08a86e1b2808a0778734edecc9385f4d61779b25
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 647d40db87f76a9e1a13a108c5f55fac40524017
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476195"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012780"
 ---
 # <a name="using-the-azure-storage-rest-api"></a>Verwenden der Azure Storage-REST-API
 
@@ -46,7 +46,7 @@ Mit diesem Befehl wird das Repository in Ihren lokalen Git-Ordner geklont. Suche
 
 ## <a name="what-is-rest"></a>Was ist REST?
 
-REST steht für *Representational State Transfer*. Eine ausführliche Definition finden Sie bei [Wikipedia](http://en.wikipedia.org/wiki/Representational_state_transfer).
+REST steht für *Representational State Transfer*. Eine ausführliche Definition finden Sie bei [Wikipedia](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
 REST ist im Wesentlichen eine Architektur, die Sie nutzen können, wenn Sie APIs aufrufen oder APIs für das Aufrufen zur Verfügung stellen. Dies ist unabhängig davon, was auf beiden Seiten passiert und welche andere Software verwendet wird, wenn die REST-Aufrufe gesendet oder empfangen werden. Sie können eine Anwendung schreiben, die auf einem Mac-, Windows- oder Linux-Computer, Android-Smartphone oder -Tablet, iPhone, iPod oder einer Website ausgeführt wird, und für alle Plattformen die gleiche REST-API verwenden. Daten können in ein- oder ausgehender Richtung übergeben werden, wenn die REST-API aufgerufen wird. Für die REST-API spielt es keine Rolle, von welcher Plattform aus sie aufgerufen wird. Wichtig sind die in der Anforderung übergebenen Informationen und die in der Antwort bereitgestellten Daten.
 
@@ -80,7 +80,7 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 
 [Anforderungstext](/rest/api/storageservices/List-Containers2#request-body)**:** Für ListContainers ist kein Anforderungstext vorhanden. Der Anforderungstext wird für alle PUT-Vorgänge verwendet, wenn Blobs hochgeladen werden. Außerdem wird das SetContainerAccessPolicy-Element verwendet, mit dem Sie eine XML-Liste mit gespeicherten Zugriffsrichtlinien senden können, die angewendet werden sollen. Gespeicherte Zugriffsrichtlinien werden im Artikel [Verwenden von Shared Access Signatures (SAS)](storage-dotnet-shared-access-signature-part-1.md) beschrieben.
 
-[Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code)**:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
+[Antwortstatuscode](/rest/api/storageservices/List-Containers2#status-code)**:** Enthält Informationen zu allen Statuscodes, die Sie kennen müssen. In diesem Beispiel bedeutet der HTTP-Statuscode 200, dass alles in Ordnung ist. Eine vollständige Liste mit HTTP-Statuscodes finden Sie unter [Status Code Definitions](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) (Statuscodedefinitionen). Informationen zu spezifischen Fehlercodes der Storage-REST-APIs finden Sie unter [Bekannte REST API-Fehlercodes](/rest/api/storageservices/common-rest-api-error-codes).
 
 [Antwortheader](/rest/api/storageservices/List-Containers2#response-headers)**:** Hierzu gehören *Content Type*, *x-ms-request-id* (übergebene Anforderungs-ID, falls zutreffend), *x-ms-version* (gibt die Version des verwendeten Blob-Diensts an) und *Date* (UTC-Zeitpunkt der Anforderung).
 
@@ -88,7 +88,7 @@ Falls Sie zusätzliche Parameter verwenden möchten, können Sie sie an die Ress
 
 ## <a name="creating-the-rest-request"></a>Erstellen der REST-Anforderung
 
-Zunächst einige kurze Anmerkungen: Verwenden Sie bei der Ausführung in der Produktion aus Sicherheitsgründen nicht HTTP, sondern immer HTTPS. In dieser Übung empfiehlt sich die Nutzung von HTTP, damit Sie die Anforderungs- und Antwortdaten anzeigen können. Zum Anzeigen der Anforderungs- und Antwortinformationen in den eigentlichen REST-Aufrufen können Sie [Fiddler](http://www.telerik.com/fiddler) oder eine ähnliche Anwendung herunterladen. In der Visual Studio-Projektmappe sind der Name und der Schlüssel des Speicherkontos in der Klasse hartcodiert. Die ListContainersAsyncREST-Methode übergibt den Speicherkontonamen und -schlüssel an die Methoden, die zum Erstellen der verschiedenen Komponenten einer REST-Anforderung verwendet werden. In einer echten Anwendung befinden sich der Speicherkontoname und -schlüssel in einer Konfigurationsdatei oder in Umgebungsvariablen oder werden aus einem Azure Key Vault abgerufen.
+Zunächst einige kurze Anmerkungen: Verwenden Sie bei der Ausführung in der Produktion aus Sicherheitsgründen nicht HTTP, sondern immer HTTPS. In dieser Übung empfiehlt sich die Nutzung von HTTP, damit Sie die Anforderungs- und Antwortdaten anzeigen können. Zum Anzeigen der Anforderungs- und Antwortinformationen in den eigentlichen REST-Aufrufen können Sie [Fiddler](https://www.telerik.com/fiddler) oder eine ähnliche Anwendung herunterladen. In der Visual Studio-Projektmappe sind der Name und der Schlüssel des Speicherkontos in der Klasse hartcodiert. Die ListContainersAsyncREST-Methode übergibt den Speicherkontonamen und -schlüssel an die Methoden, die zum Erstellen der verschiedenen Komponenten einer REST-Anforderung verwendet werden. In einer echten Anwendung befinden sich der Speicherkontoname und -schlüssel in einer Konfigurationsdatei oder in Umgebungsvariablen oder werden aus einem Azure Key Vault abgerufen.
 
 In unserem Beispielprojekt ist der Code zum Erstellen des Autorisierungsheaders in einer separaten Klasse enthalten. Dies soll ermöglichen, dass Sie die gesamte Klasse unverändert Ihrer eigenen Projektmappe hinzufügen können. Der Code des Autorisierungsheaders funktioniert für die meisten REST-API-Aufrufe für Azure Storage.
 
@@ -300,7 +300,7 @@ StringToSign = VERB + "\n" +
 
 Die meisten dieser Felder werden nur selten verwendet. Für Blobspeicher geben Sie „VERB“, „md5“, „content length“, „Canonicalized Headers“ und „Canonicalized Resource“ an. Sie können die anderen Felder leer lassen (mit Angabe von `\n`, damit klar ist, dass sie leer sind).
 
-Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. [Wikipedia sagt über Kanonisierung](http://en.wikipedia.org/wiki/Canonicalization) Folgendes: *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung, auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
+Was sind CanonicalizedHeaders und CanonicalizedResource? Gute Frage. Was bedeutet „canonicalized“ eigentlich? In Microsoft Word wird dieser Begriff gar nicht als Wort erkannt. [Wikipedia sagt über Kanonisierung](https://en.wikipedia.org/wiki/Canonicalization) Folgendes: *In computer science, canonicalization (sometimes standardization or normalization) is a process for converting data that has more than one possible representation into a "standard", "normal", or canonical form.* (In der Computerwissenschaft ist „Canonicalization“ (Deutsch: Vereinheitlichung, auch als Standardisierung oder Normalisierung bezeichnet) ein Prozess zum Konvertieren von Daten, für die mehr als eine Art der Darstellung möglich ist, in eine „Standardform“, „Normalform“ oder „kanonische Form“.) Vereinfacht ausgedrückt heißt dies, dass die Elemente einer Liste (bei vereinheitlichten Headern also beispielsweise Header) in ein erforderliches Format standardisiert werden. Microsoft hat sich quasi für ein Format entschieden, und Sie müssen es einhalten.
 
 Wir beginnen mit diesen beiden vereinheitlichten Feldern, da sie erforderlich sind, um den Autorisierungsheader zu erstellen.
 
@@ -325,7 +325,7 @@ private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMess
     StringBuilder sb = new StringBuilder();
 
     // Create the string in the right format; this is what makes the headers "canonicalized" --
-    //   it means put in a standard format. http://en.wikipedia.org/wiki/Canonicalization
+    //   it means put in a standard format. https://en.wikipedia.org/wiki/Canonicalization
     foreach (var kvp in headers)
     {
         StringBuilder headerBuilder = new StringBuilder(kvp.Key);
@@ -482,7 +482,7 @@ GET\n\n\n\n\n\n\n\n\n\n\n\nx-ms-date:Fri, 17 Nov 2017 05:16:48 GMT
 SharedKey contosorest:uzvWZN1WUIv2LYC6e3En10/7EIQJ5X9KtFQqrZkxi6s=
 ```
 
-Die folgenden Werte stammen aus [Fiddler](http://www.telerik.com/fiddler):
+Die folgenden Werte stammen aus [Fiddler](https://www.telerik.com/fiddler):
 
 **Anforderung:**
 

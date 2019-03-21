@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc seodec18
 ms.date: 12/17/2018
 ms.author: alinast
-ms.openlocfilehash: d2588090ced3e82e63397a416245ca69204f3d87
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 4c41fbaa00dc3460df3f94433428c448a7b41250
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53583084"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58089697"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Schnellstart: Suchen nach verfügbaren Räumen mithilfe von Azure Digital Twins
 
@@ -115,8 +115,8 @@ Das Sensorbeispiel simuliert zufällige Datenwerte für zwei Sensoren. Es handel
 1. Sehen Sie sich diese Eingabeaufforderung und die Eingabeaufforderung für die Sensordaten nebeneinander an.
 
     Eine Eingabeaufforderung sendet alle fünf Sekunden simulierte Bewegungs- und CO2-Daten an Digital Twins. Der andere Befehl liest den Graphen in Echtzeit, um auf der Grundlage willkürlich simulierter Daten verfügbare Räume mit frischer Luft zu ermitteln. Abhängig von den zuletzt übermittelten Sensordaten wird nahezu in Echtzeit eine dieser Bedingungen angezeigt:
-    - Verfügbare Räume mit frischer Luft
-    - Belegte Räume oder schlechte Luftqualität
+   - Verfügbare Räume mit frischer Luft
+   - Belegte Räume oder schlechte Luftqualität
 
      ![Abrufen verfügbarer Bereiche mit frischer Luft][3]
 
@@ -149,7 +149,7 @@ In den Tutorials wird Folgendes ausführlich behandelt:
 Wenn Sie mit den Tutorials fortfahren möchten, bereinigen Sie die in diesem Schnellstart erstellten Ressourcen nicht. Wenn Sie nicht fortfahren möchten, löschen Sie alle von diesem Schnellstart erstellten Ressourcen.
 
 1. Löschen Sie den Ordner, der beim Herunterladen des Beispielrepositorys erstellt wurde.
-1. Wählen Sie im [Azure-Portal](http://portal.azure.com) im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Wählen Sie dann Ihre Digital Twins-Ressource aus. Wählen Sie oben im Bereich **Alle Ressourcen** die Option **Löschen** aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) im Menü auf der linken Seite die Option **Alle Ressourcen** aus. Wählen Sie dann Ihre Digital Twins-Ressource aus. Wählen Sie oben im Bereich **Alle Ressourcen** die Option **Löschen** aus.
 
     > [!TIP]
     > Für den Fall, dass bei Ihnen Probleme beim Löschen der Digital Twins-Instanz aufgetreten sind, wurde ein Dienstupdate mit einer entsprechenden Korrektur bereitgestellt. Versuchen Sie erneut, die Instanz zu löschen.

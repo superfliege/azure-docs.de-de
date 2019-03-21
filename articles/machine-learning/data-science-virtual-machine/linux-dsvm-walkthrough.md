@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: b06ca287f03c62b3947e6c37712cf491396392e0
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 0ca3cee0c818bf9d5dda4a7ea8a1f356ed017973
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55245832"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57891085"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Data Science mit einer Linux Data Science Virtual Machine in Azure
 In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie mehrere häufige Data Science-Aufgaben mit der Linux Data Science-VM ausführen. Bei der Linux Data Science Virtual Machine (DSVM) handelt es sich um das Image eines virtuelles Computers, das unter Azure verfügbar ist und mit einer Sammlung von Tools vorinstalliert wird, die häufig für die Datenanalyse und Machine Learning verwendet werden. Die wichtigsten Softwarekomponenten sind im Thema [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md) einzeln aufgeführt. Das VM-Image erleichtert Ihnen den Start, und für den Data Science-Vorgang sind nur wenige Minuten erforderlich, ohne dass die Tools einzeln installiert und konfiguriert werden müssen. Sie können die VM bei Bedarf leicht zentral hochskalieren und beenden, wenn sie nicht verwendet wird. Diese Ressource ist also sowohl flexibel als auch kosteneffizient.
@@ -36,7 +36,7 @@ Bevor Sie eine Linux Data Science Virtual Machine verwenden können, benötigen 
 
 * Ein **Azure-Abonnement**. Wenn Sie noch kein Abonnement besitzen, helfen Ihnen die Informationen unter [Erstellen Sie noch heute Ihr kostenloses Azure-Konto](https://azure.microsoft.com/free/)weiter.
 * Eine [**Linux Data Science-VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm). Informationen zur Bereitstellung dieses virtuellen Computers finden Sie unter [Bereitstellen der Linux Data Science Virtual Machine](linux-dsvm-intro.md).
-* [X2Go](http://wiki.x2go.org/doku.php) auf dem Computer mit geöffneter XFCE-Sitzung. Informationen zur Installation und Konfiguration eines **X2Go-Clients** finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
+* [X2Go](https://wiki.x2go.org/doku.php) auf dem Computer mit geöffneter XFCE-Sitzung. Informationen zur Installation und Konfiguration eines **X2Go-Clients** finden Sie unter [Installieren und Konfigurieren des X2Go-Clients](linux-dsvm-intro.md#installing-and-configuring-x2go-client).
 * Schalten Sie zum reibungsloseren Scrollen auf VMs mit Firefox-Browsern das Flag „gfx.xrender.enabled“ in „about:config“ um. [Weitere Informationen finden Sie hier.](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/) Sie könnten auch *mousewheel.enable_pixel_scrolling* auf „False“ festlegen. [Die entsprechenden Anweisungen finden Sie hier.](https://support.mozilla.org/en-US/questions/981140)
 * Ein **AzureML-Konto**. Melden Sie sich auf der [AzureML-Startseite](https://studio.azureml.net/)für ein neues Konto an, wenn Sie noch kein Konto haben. Als Starthilfe wird ein kostenloser Tarif angeboten.
 
@@ -52,7 +52,7 @@ Falls Sie mehr Speicherplatz benötigen, können Sie zusätzliche Datenträger e
 
 Öffnen Sie zum Herunterladen der Daten ein Terminalfenster, und führen Sie diesen Befehl aus:
 
-    wget http://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
+    wget https://archive.ics.uci.edu/ml/machine-learning-databases/spambase/spambase.data
 
 Die heruntergeladene Datei enthält keinen Header. Wir erstellen daher eine andere Datei, die über einen Header verfügt. Führen Sie diesen Befehl aus, um eine Datei mit den entsprechenden Headern zu erstellen:
 
@@ -263,7 +263,7 @@ XGBoost kann einen Aufruf auch über Python oder eine Befehlszeile durchführen.
 Für die Entwicklung mit Python wurden die Anaconda Python-Distributionen 2.7 und 3.5 auf der DSVM installiert.
 
 > [!NOTE]
-> Die Anaconda-Distribution enthält [Conda](http://conda.pydata.org/docs/index.html). Dieses System kann zum Erstellen von benutzerdefinierten Umgebungen für Python verwendet werden, für die verschiedene Versionen bzw. Pakete installiert sind.
+> Die Anaconda-Distribution enthält [Conda](https://conda.pydata.org/docs/index.html). Dieses System kann zum Erstellen von benutzerdefinierten Umgebungen für Python verwendet werden, für die verschiedene Versionen bzw. Pakete installiert sind.
 >
 >
 
@@ -318,21 +318,19 @@ Die Anaconda-Distribution auf der DSVM verfügt über ein Jupyter Notebook, eine
 
 > [!NOTE]
 > Wenn Sie in Jupyter Notebook im aktuellen Kernel den Python-Paket-Manager (über den Befehl `pip`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
-  ```python
-   import sys
-   ! {sys.executable} -m pip install numpy -y
-  ```
->
->
-
+>   ```python
+>    import sys
+>    ! {sys.executable} -m pip install numpy -y
+>   ```
+> 
+> 
+> 
 > [!NOTE]
 > Wenn Sie in Jupyter Notebook im aktuellen Kernel das Conda-Installationsprogramm Manager (über den Befehl `conda`) verwenden möchten, kann der folgende Befehl in einer Codezelle verwendet werden. Beispiel:
-  ```python
-   import sys
-   ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
-  ```
->
->
+>   ```python
+>    import sys
+>    ! {sys.prefix}/bin/conda install --yes --prefix {sys.prefix} numpy
+>   ```
 
 Einige Beispiele für Notebooks sind auf der VM bereits installiert:
 
@@ -515,7 +513,7 @@ Oder: Wie lauten die Merkmale von E-Mails, die häufig den Ausdruck *3d*enthalte
 
 Die meisten E-Mails mit einer hohen Häufigkeit von *3d* sind offensichtlich Spam, sodass dies ein guter Ansatzpunkt zum Erstellen eines Vorhersagemodells wäre, um die E-Mails zu klassifizieren.
 
-Wenn Sie einen Machine Learning-Vorgang mit Daten durchführen möchten, die in einer PostgreSQL-Datenbank gespeichert sind, können Sie auch [MADlib](http://madlib.incubator.apache.org/)nutzen.
+Wenn Sie einen Machine Learning-Vorgang mit Daten durchführen möchten, die in einer PostgreSQL-Datenbank gespeichert sind, können Sie auch [MADlib](https://madlib.incubator.apache.org/)nutzen.
 
 ## <a name="sql-server-data-warehouse"></a>SQL Server Data Warehouse
 Azure SQL Data Warehouse ist eine cloudbasierte Datenbank für das horizontale Hochskalieren, mit der sehr große Datenvolumen verarbeitet werden können, und zwar sowohl relational als auch nicht relational. Weitere Informationen finden Sie unter [Was ist Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)

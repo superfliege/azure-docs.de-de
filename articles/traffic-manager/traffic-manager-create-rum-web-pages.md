@@ -13,12 +13,12 @@ ms.workload: infrastructure
 ms.date: 03/16/2018
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: c994190ed4ccbd8e5b90f17b70ec6b65477fb0d8
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
+ms.openlocfilehash: d6b669f5baae13f9fb57c5c58060e70a8f871e17
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54232004"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117267"
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Senden von Benutzer-Realmessungen an Azure Traffic Manager mithilfe von Webseiten
 
@@ -34,7 +34,7 @@ So rufen Sie den RUM-Schlüssel im Azure-Portal ab
 3. Klicken Sie auf dem Blatt „Traffic Manager-Profil“ unter **Einstellungen** auf **Benutzer-Realmessungen**.
 4. Klicken Sie auf **Schlüssel generieren**, um einen neuen RUM-Schlüssel zu generieren.
  
-  ![Erstellen eines Schlüssels für Benutzer-Realmessungen (RUM)](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
+   ![Erstellen eines Schlüssels für Benutzer-Realmessungen (RUM)](./media/traffic-manager-create-rum-visual-studio/generate-rum-key.png)
 
    **Abbildung 1: Erstellung eines Schlüssels für Benutzer-Realmessungen**
 
@@ -44,7 +44,7 @@ So rufen Sie den RUM-Schlüssel im Azure-Portal ab
 
     **Abbildung 2: Schlüssel für Benutzer-Realmessungen und JavaScript für Messung**
  
-6.  Klicken Sie auf die Schaltfläche **Kopieren**, um den JavaScript-Code zu kopieren. 
+6. Klicken Sie auf die Schaltfläche **Kopieren**, um den JavaScript-Code zu kopieren. 
 
 >[!IMPORTANT]
 > Verwenden Sie das generierte JavaScript, damit Benutzer-Realmessungen ordnungsgemäß funktionieren. Änderungen an diesem Skript oder den Skripts, die von Benutzer-Realmessungen verwendet werden, können zu einem unvorhersehbarem Verhalten führen.

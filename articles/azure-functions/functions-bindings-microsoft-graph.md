@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: eb05d1b28b80cb7bf48bc1160c251936423763e6
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
+ms.openlocfilehash: f112bdf9eacf51852659ab49a5673b0c8bfb0e46
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100782"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57997552"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Microsoft Graph-Bindungen für Azure Functions
 
@@ -360,6 +360,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 ### <a name="excel-input---usage"></a>Excel-Eingabe: Nutzung
 
 Diese Bindung erfordert folgende Azure AD-Berechtigungen:
+
 |Ressource|Berechtigung|
 |--------|--------|
 |Microsoft Graph|Benutzerdateien lesen|
@@ -522,6 +523,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 ### <a name="excel-output---usage"></a>Excel-Ausgabe: Nutzung
 
 Diese Bindung erfordert folgende Azure AD-Berechtigungen:
+
 |Ressource|Berechtigung|
 |--------|--------|
 |Microsoft Graph|Vollzugriff auf Benutzerdateien|
@@ -664,6 +666,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 ### <a name="file-input---usage"></a>Dateieingabe: Nutzung
 
 Diese Bindung erfordert folgende Azure AD-Berechtigungen:
+
 |Ressource|Berechtigung|
 |--------|--------|
 |Microsoft Graph|Benutzerdateien lesen|
@@ -811,6 +814,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 #### <a name="file-output---usage"></a>Dateiausgabe: Nutzung
 
 Diese Bindung erfordert folgende Azure AD-Berechtigungen:
+
 |Ressource|Berechtigung|
 |--------|--------|
 |Microsoft Graph|Vollzugriff auf Benutzerdateien|
@@ -960,6 +964,7 @@ Die folgende Tabelle gibt Aufschluss über die Bindungskonfigurationseigenschaft
 ### <a name="outlook-output---usage"></a>Outlook-Ausgabe: Nutzung
 
 Diese Bindung erfordert folgende Azure AD-Berechtigungen:
+
 |Ressource|Berechtigung|
 |--------|--------|
 |Microsoft Graph|E-Mail als Benutzer senden|

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 010a9f4e5be34986c1098f403e4df0ccf569838c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 1b6c8b1af00c2819632c60a27d61d7cf8db44885
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821663"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58012334"
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Checkliste zu Leistung und Skalierbarkeit von Microsoft Azure Storage
 ## <a name="overview"></a>Übersicht
@@ -122,7 +122,7 @@ Sie können die Zahl dieser Vorgänge mit einigen bewährten Vorgehensweisen red
 
 * Untersuchen Sie genau die Benennungskonvention, die Sie für Konten, Containers, Blobs, Tabellen und Warteschlangen verwenden. Erwägen Sie, Kontennamen mithilfe einer Hashfunktion, die Ihren Anforderungen am besten gerecht wird, mit einem 3-stelligen Hashpräfix zu versehen.  
 * Wenn Sie Ihre Daten mit Zeitstempeln oder numerischen Bezeichnern organisieren, müssen Sie sicherstellen, dass Sie keine Nur-anfügen- oder Nur-voranstellen-Verkehrsmuster verwenden. Diese Muster eignen sich nicht für ein bereichsbasiertes Partitionierungssystem und könnten dazu führen, dass der gesamte Datenverkehr zu einer einzigen Partition geleitet und so das System an einem wirksamen Lastausgleich gehindert wird. Wenn z.B. tägliche Vorgänge ein Blobobjekt mit einem Zeitstempel wie „yyyymmdd“ nutzen, wird der gesamte Verkehr für diesen täglichen Vorgang an ein einziges Objekt geleitet, das von einem einzigen Partitionsserver bedient wird. Prüfen Sie, ob die Grenzwerte pro Blob und pro Partition Ihren Bedürfnissen entsprechen, und erwägen Sie, diesen Vorgang bei Bedarf in mehrere Blobs aufzuteilen. Auch wenn Sie Zeitreihendaten in Ihren Tabellen speichern, könnte der gesamte Verkehr an den letzten Teil des Schlüssel-Namespace weitergeleitet werden. Wenn Sie Zeitstempel oder numerische IDs verwenden müssen, versehen Sie sie mit einem 3-stelligen Hashpräfix, oder stellen Sie bei Zeitstempeln den Sekundenteil als Präfix voran, z.B. „ssyyyymmdd“. Wenn Auflistungs- und Abfragevorgänge routinemäßig ausgeführt werden, wählen Sie eine Hashfunktion, die die Anzahl der Abfragen begrenzt. In anderen Fällen ist möglicherweise ein zufälliges Präfix ausreichend.  
-* Weitere Informationen über das in Azure Storage verwendete Partitionierungsschema finden Sie [hier](http://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)im SOSP-Dokument.
+* Weitere Informationen über das in Azure Storage verwendete Partitionierungsschema finden Sie [hier](https://sigops.org/sosp/sosp11/current/2011-Cascais/printable/11-calder.pdf)im SOSP-Dokument.
 
 ### <a name="networking"></a>Netzwerk
 Auch wenn die API-Aufrufe eine Rolle spielen, haben häufig die physischen Netzwerkeinschränkungen deutliche Auswirkungen auf die Leistung. Nachfolgend sind einige der Einschränkungen beschrieben, auf die Benutzer treffen können.  

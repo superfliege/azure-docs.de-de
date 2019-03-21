@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/07/2018
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: 61fb8380bcad7a30d822ab610f52e8515477d683
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: f3e05f213821b053f8cf6abbbc50a14e9ea62295
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56246881"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58125333"
 ---
 # <a name="internet-of-things-iot-security-architecture"></a>Internet der Dinge (IoT) – Sicherheitsarchitektur
 
@@ -182,11 +182,11 @@ In jeder Kategorie der Azure IoT-Architektur wird in diesem Beispiel versucht, d
 | **Komponente** | **Bedrohung** | **Lösung** | **Risiko** | **Implementierung** |
 | --- | --- | --- | --- | --- |
 | Gerät |S |Zuweisen der Identität zum Gerät und Authentifizieren des Geräts |Ersetzen des Geräts oder eines Teils der Geräts durch ein anderes Gerät. Woher wissen Sie, dass Sie mit dem richtigen Gerät kommunizieren? |Authentifizieren des Geräts per Transport Layer Security (TLS) oder IPSec. Die Infrastruktur sollte die Verwendung eines vorinstallierten Schlüssels (Pre-Shared Key, PSK) auf den Geräten unterstützen, bei denen keine vollständige asymmetrische Verschlüsselung möglich ist. Nutzung von Azure AD, [OAuth](https://www.rfc-editor.org/pdfrfc/rfc6755.txt.pdf) |
-|| TRID |Wenden Sie manipulationssichere Mechanismen auf das Gerät an, z.B. indem es erschwert oder unmöglich gemacht wird, Schlüssel und andere Verschlüsselungsdaten vom Gerät zu entwenden. |Das Risiko besteht darin, dass das Gerät manipuliert wird (physischer Eingriff). Woher wissen Sie, dass das Gerät nicht manipuliert wurde? |Die effektivste Lösung ist ein Trusted Platform Module (TPM) mit der Möglichkeit, Schlüssel in einem speziellen On-Chip-Verfahren zu speichern. Hierbei können die Schlüssel nicht gelesen, sondern nur für kryptografische Vorgänge verwendet werden, für die der Schlüssel erforderlich ist. Der Schlüssel wird aber niemals offengelegt. Speicherverschlüsselung für das Gerät. Schlüsselverwaltung für das Gerät. Signieren des Codes. | |
-|| E |Verwenden der Zugriffssteuerung für das Gerät, Autorisierungsschema |Wenn es für das Gerät zulässig ist, dass einzelne Aktionen basierend auf den Befehlen einer externen Quelle oder sogar über kompromittierte Sensoren durchgeführt werden, sind bei einem Angriff Vorgänge möglich, die sonst nicht zugänglich sind. |Verwenden Sie ein Autorisierungsschema für das Gerät. | |
+|| TRID |Wenden Sie manipulationssichere Mechanismen auf das Gerät an, z.B. indem es erschwert oder unmöglich gemacht wird, Schlüssel und andere Verschlüsselungsdaten vom Gerät zu entwenden. |Das Risiko besteht darin, dass das Gerät manipuliert wird (physischer Eingriff). Woher wissen Sie, dass das Gerät nicht manipuliert wurde? |Die effektivste Lösung ist ein Trusted Platform Module (TPM) mit der Möglichkeit, Schlüssel in einem speziellen On-Chip-Verfahren zu speichern. Hierbei können die Schlüssel nicht gelesen, sondern nur für kryptografische Vorgänge verwendet werden, für die der Schlüssel erforderlich ist. Der Schlüssel wird aber niemals offengelegt. Speicherverschlüsselung für das Gerät. Schlüsselverwaltung für das Gerät. Signieren des Codes. |
+|| E |Verwenden der Zugriffssteuerung für das Gerät, Autorisierungsschema |Wenn es für das Gerät zulässig ist, dass einzelne Aktionen basierend auf den Befehlen einer externen Quelle oder sogar über kompromittierte Sensoren durchgeführt werden, sind bei einem Angriff Vorgänge möglich, die sonst nicht zugänglich sind. |Verwenden Sie ein Autorisierungsschema für das Gerät. |
 | Bereichsgateway |S |Authentifizieren des Bereichsgateways gegenüber dem Cloudgateway (z.B. zertifikat-, PSK- oder anspruchsbasiert) |Wenn das Bereichsgateway per Spoofing übernommen wird, kann sich der Angreifer als jedes Gerät ausgeben. |TLS RSA/PSK, IPSec, [RFC 4279](https://tools.ietf.org/html/rfc4279). Alle üblichen Schlüsselspeicherungs- und Nachweisaspekte von Geräten. Am besten ist TPM geeignet. 6LowPAN-Erweiterung für IPSec zur Unterstützung von Wireless Sensor Networks (WSN). |
-|| TRID |Schützen des Bereichsgateways vor Manipulationen (TPM?) |Spoofing-Angriffe, bei denen für das Cloudgateway der Eindruck erweckt wird, dass es mit dem Bereichsgateway kommuniziert, können zur Offenlegung und Manipulation von Daten führen. |Speicherverschlüsselung, TPMs, Authentifizierung. | |
-|| E |Zugriffssteuerungsmechanismus für Bereichsgateway | | | |
+|| TRID |Schützen des Bereichsgateways vor Manipulationen (TPM?) |Spoofing-Angriffe, bei denen für das Cloudgateway der Eindruck erweckt wird, dass es mit dem Bereichsgateway kommuniziert, können zur Offenlegung und Manipulation von Daten führen. |Speicherverschlüsselung, TPMs, Authentifizierung. |
+|| E |Zugriffssteuerungsmechanismus für Bereichsgateway | | |
 
 Hier sind einige Beispiele für Bedrohungen in dieser Kategorie aufgeführt:
 

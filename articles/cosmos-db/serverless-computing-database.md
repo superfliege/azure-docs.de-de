@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: ff202c85f20adce173a375987a5f2250fda565b2
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.openlocfilehash: 4d259523d3f7fe7165d0ef4c8a5aac12bd7cd823
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041185"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58123775"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Serverloses Datenbankcomputing mit Azure Cosmos DB und Azure Functions
 
@@ -97,11 +97,11 @@ Wenn ein Benutzer in Einzelhandelsimplementierungen seinem Einkaufskorb einen Ar
 
 1. Sie können mehrere Azure Functions erstellen, indem Sie jeder davon Azure Cosmos DB-Trigger hinzufügen – diese überwachen alle denselben Änderungsfeed von Einkaufswagendaten. Beachten Sie, dass eine neue Leasesammlung für jede Funktion erforderlich ist, wenn mehrere Funktionen auf den gleichen Änderungsfeed lauschen. Weitere Informationen über Leasesammlungen finden Sie unter [Grundlegendes zur Change Feed Processor-Bibliothek](change-feed-processor.md).
 2. Wenn dem Einkaufswagen eines Benutzers ein neuer Artikel hinzugefügt wird, wird jede Funktion unabhängig vom Änderungsfeed aus dem Einkaufswagen-Container aufgerufen.
-    * Eine Funktion kann anhand des Inhalts des aktuellen Einkaufswagens die Anzeige weiterer Artikel ändern, an denen der Benutzer möglicherweise auch interessiert ist.
-    * Von einer anderen Funktion können die Gesamtzahlen des Bestands aktualisiert werden.
-    * Eine weitere Funktion kann Kundeninformationen zu bestimmten Produkten an die Marketingabteilung senden, die sie wiederum in einem Werbeverteiler versendet. 
+   * Eine Funktion kann anhand des Inhalts des aktuellen Einkaufswagens die Anzeige weiterer Artikel ändern, an denen der Benutzer möglicherweise auch interessiert ist.
+   * Von einer anderen Funktion können die Gesamtzahlen des Bestands aktualisiert werden.
+   * Eine weitere Funktion kann Kundeninformationen zu bestimmten Produkten an die Marketingabteilung senden, die sie wiederum in einem Werbeverteiler versendet. 
 
-    Jede Abteilung kann einen Azure Cosmos DB-Trigger durch Überwachen des Änderungsfeeds erstellen. Damit ist sichergestellt, dass wichtige Bestellverarbeitungsereignisse im Prozess nicht verzögert werden.
+     Jede Abteilung kann einen Azure Cosmos DB-Trigger durch Überwachen des Änderungsfeeds erstellen. Damit ist sichergestellt, dass wichtige Bestellverarbeitungsereignisse im Prozess nicht verzögert werden.
 
 Da die Funktion in allen diesen Anwendungsfällen die App selbst entkoppelt hat, müssen Sie nicht andauernd neue App-Instanzen starten. Stattdessen ruft Azure Functions einzelne Funktionen auf, um einzelne Prozesse je nach Bedarf abzuschließen.
 

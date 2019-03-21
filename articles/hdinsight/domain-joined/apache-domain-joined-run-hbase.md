@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: tutorial
 ms.date: 02/01/2019
-ms.openlocfilehash: e1a0dda4c13baf7fc2e5ba65d599db8c74591adb
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: 1421b142fbca83d2de46f52f8390d0c25f22780c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55893237"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58117284"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket (Vorschauversion)
 
@@ -102,7 +102,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
     ![Apache Ranger-Administratoroberfläche – Richtlinie erstellen](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
-3.  Geben Sie auf der Seite **Richtlinie erstellen** die folgenden Werte ein:
+3. Geben Sie auf der Seite **Richtlinie erstellen** die folgenden Werte ein:
 
    |**Einstellung**  |**Empfohlener Wert**  |
    |---------|---------|

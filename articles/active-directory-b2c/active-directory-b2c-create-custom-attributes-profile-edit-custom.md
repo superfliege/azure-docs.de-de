@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 1f79330f12117c6ade8884165d1538623e19c7ea
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55175263"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58094625"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: Verwenden von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie für die Profilbearbeitung
 
@@ -260,20 +260,20 @@ Das ID-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
 
 1. Fügen Sie den neuen Anspruch dem Ablauf für die Anmeldung bei Social Media-Konten hinzu, indem Sie die aufgeführten **TechnicalProfiles** ändern. Konten für soziale Netzwerke und Verbundkonten diese beiden **TechnicalProfiles** für die Anmeldung. Sie schreiben und lesen Benutzerdaten mithilfe von **AlternativeSecurityId** als Locator des Benutzerobjekts.
 
-  ```xml
+   ```xml
     <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
     <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
-  ```
+   ```
 
 2. Verwenden Sie die gleichen Erweiterungsattribute zwischen integrierten und benutzerdefinierten Richtlinien. Beim Hinzufügen von Erweiterungs- oder benutzerdefinierten Attributen über die Portaloberfläche werden diese Attribute per **b2c-extensions-app** registriert, die unter jedem B2C-Mandanten vorhanden ist. Gehen Sie wie folgt vor, um diese Erweiterungsattribute in Ihrer benutzerdefinierten Richtlinie zu verwenden:
 
-  a. Navigieren Sie in Ihrem B2C-Mandanten in „portal.azure.com“ zu **Azure Active Directory**, und wählen Sie die Option **App-Registrierungen**.  
-  b. Suchen Sie **b2c-extensions-app**, und wählen Sie sie aus.  
-  c. Geben Sie unter **Essentials** die **Anwendungs-ID** und die **Objekt-ID** ein.  
-  d. Fügen Sie diese IDs wie folgt in die Metadaten Ihres technischen **AAD-Common**-Profils ein:  
+   a. Navigieren Sie in Ihrem B2C-Mandanten in „portal.azure.com“ zu **Azure Active Directory**, und wählen Sie die Option **App-Registrierungen**.  
+   b. Suchen Sie **b2c-extensions-app**, und wählen Sie sie aus.  
+   c. Geben Sie unter **Essentials** die **Anwendungs-ID** und die **Objekt-ID** ein.  
+   d. Fügen Sie diese IDs wie folgt in die Metadaten Ihres technischen **AAD-Common**-Profils ein:  
 
-  ```xml
+   ```xml
       <ClaimsProviders>
         <ClaimsProvider>
           <DisplayName>Azure Active Directory</DisplayName>
@@ -285,14 +285,14 @@ Das ID-Token, das an Ihre Anwendung zurückgesendet wird, enthält die neue Erwe
               <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
               <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
             </Metadata>
-  ```
+   ```
 
 3. Achten Sie auf Konformität mit der Portalumgebung. Erstellen Sie diese Attribute mithilfe der Portalbenutzeroberfläche, bevor Sie sie in Ihren benutzerdefinierten Richtlinien verwenden. Wenn Sie im Portal das Attribut **ActivationStatus** erstellen, müssen Sie wie folgt darauf verweisen:
 
-  ```
-  extension_ActivationStatus in the custom policy.
-  extension_<app-guid>_ActivationStatus via Graph API.
-  ```
+   ```
+   extension_ActivationStatus in the custom policy.
+   extension_<app-guid>_ActivationStatus via Graph API.
+   ```
 
 ## <a name="reference"></a>Verweis
 

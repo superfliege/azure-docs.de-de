@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 7bac115ab3215a7dde625f194bdf325f9e0af318
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: e490c7c24ed38e2988c1f097b09b508746f08178
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392855"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58118134"
 ---
 # <a name="sqlfilter-syntax"></a>SqlFilter-Syntax
 
@@ -119,9 +119,9 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
   
 `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
--   `%`: Eine beliebige Zeichenfolge von null oder mehr Zeichen  
+-   `%`:  Eine beliebige Zeichenfolge von null oder mehr Zeichen.  
   
--   `_`: Ein einzelnes Zeichen  
+-   `_`: Ein einzelnes Zeichen.  
   
 ## <a name="escapechar"></a>escape_char  
   
@@ -223,29 +223,29 @@ Beachten Sie die folgende [SqlFilter](/dotnet/api/microsoft.servicebus.messaging
   
 ### <a name="property-evaluation-semantics"></a>Semantik der Eigenschaftsauswertung  
   
--   Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, löst eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme aus.  
+- Ein Versuch, eine nicht existierende Systemeigenschaft auszuwerten, löst eine [FilterException](/dotnet/api/microsoft.servicebus.messaging.filterexception)-Ausnahme aus.  
   
--   Eine Eigenschaft, die nicht vorhanden ist, wird intern als **unknown** ausgewertet.  
+- Eine Eigenschaft, die nicht vorhanden ist, wird intern als **unknown** ausgewertet.  
   
- Unbekannte Auswertung in arithmetischen Operatoren:  
+  Unbekannte Auswertung in arithmetischen Operatoren:  
   
--   Wenn entweder die linke und/oder rechte Seite der Operanden für binäre Operatoren als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
+- Wenn entweder die linke und/oder rechte Seite der Operanden für binäre Operatoren als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
   
--   Wenn für unäre Operatoren ein Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
+- Wenn für unäre Operatoren ein Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
   
- Unbekannte Auswertung in binären Vergleichsoperatoren:  
+  Unbekannte Auswertung in binären Vergleichsoperatoren:  
   
--   Wenn entweder die linke und/oder rechte Seite der Operanden als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
+- Wenn entweder die linke und/oder rechte Seite der Operanden als **unknown** ausgewertet wird, ist das Ergebnis **unknown**.  
   
- Unbekannte Auswertung in `[NOT] LIKE`:  
+  Unbekannte Auswertung in `[NOT] LIKE`:  
   
--   Wenn ein beliebiger Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
+- Wenn ein beliebiger Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
   
- Unbekannte Auswertung in `[NOT] IN`:  
+  Unbekannte Auswertung in `[NOT] IN`:  
   
--   Wenn der linke Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
+- Wenn der linke Operand als **unknown** ausgewertet wird, lautet das Ergebnis **unknown**.  
   
- Unbekannte Auswertung im **AND**-Operator:  
+  Unbekannte Auswertung im **AND**-Operator:  
   
 ```  
 +---+---+---+---+  

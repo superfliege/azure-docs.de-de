@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 67442a5861514eadfebfc877d91e735e05f6f63d
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 64bab5c1b99720eecb189834d7a11802cf919ca3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117544"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58106779"
 ---
 # <a name="alert-confidence-score"></a>Zuverlässigkeitsbewertung für Warnungen 
 
@@ -45,7 +45,7 @@ So zeigen Sie die Zuverlässigkeitsbewertung an
 So zeigen Sie die Daten an, die zur Zuverlässigkeitsbewertung von Security Center für eine Warnung beigetragen haben
 - Zeigen Sie auf dem Blatt „Sicherheitswarnung“ unter **Zuverlässigkeit**, die Beobachtungen an, die zur Zuverlässigkeitsbewertung beigetragen haben, und verschaffen Sie sich einen Überblick über die Warnung. Damit erhalten Sie einen besseren Einblick in die Aktivitäten, die die Warnung ausgelöst haben.
 
- ![Zuverlässigkeitsbewertung einer verdächtigen Aktivität][2]
+  ![Zuverlässigkeitsbewertung einer verdächtigen Aktivität][2]
 
 Anhand der Zuverlässigkeitsbewertung von Security Center können Sie die Aussortierung von Warnungen in Ihrer Umgebung priorisieren. Die Zuverlässigkeitsbewertung spart Ihnen Zeit und Mühe, da Warnungen automatisch untersucht, bewährte Methoden der Branche und intelligente Algorithmen angewandt werden und nach Art eines virtuellen Analysten bestimmt wird, welche Bedrohungen real sind und auf welche Warnungen Sie Ihr Augenmerk richten müssen.
 

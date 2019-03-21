@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/12/2018
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 9bd5ec3471fc3447d1e29d875c154793daf8e9e5
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: ab4aa2f37d5a883c83b8ee09b5de6551ebf13d2e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474029"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57995153"
 ---
 # <a name="view-service-health-notifications-by-using-the-azure-portal"></a>Anzeigen von Dienstintegritätsbenachrichtigungen im Azure-Portal
 
@@ -60,24 +60,24 @@ Properties.communicationId | Die Kommunikation, der dieses Ereignis ist zugeordn
 ### <a name="details-on-service-health-level-information"></a>Details zu Informationen zur Dienstintegritätsebene
 
 **Aktion erforderlich** (properties.incidentType == ActionRequired)
-    - Zur Information: Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden
+- Zur Information: Aktion des Administrators erforderlich, um Auswirkungen auf bestehende Dienste zu vermeiden
     
 **Wartung** (properties.incidentType == Maintenance)
-    - Warnung: Notfallwartung
-    - Zur Information: standardmäßig geplante Wartung
+- Warnung: Notfallwartung
+- Zur Information: standardmäßig geplante Wartung
 
 **Informationen** (properties.incidentType == Information)
-    - Zur Information: Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden
+- Zur Information: Administrator muss ggf. eingreifen, um Auswirkungen auf bestehende Dienste zu vermeiden
 
 **Sicherheit** (properties.incidentType == Security)
-    - Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
-    - Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
-    - Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
+- Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
+- Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
+- Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
 
 **Dienstprobleme** (properties.incidentType == Incident)
-    - Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
-    - Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
-    - Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
+- Fehler: Weit verbreitete Probleme beim Zugriff auf mehrere Dienste in verschiedenen Regionen wirken sich auf eine Vielzahl von Kunden aus.
+- Warnung: Probleme beim Zugriff auf bestimmte Dienste und/oder bestimmte Regionen wirken sich auf eine Teilmenge von Kunden aus.
+- Zur Information: Probleme, die sich auf den Verwaltungsbetrieb und/oder die Latenz auswirken, ohne die Verfügbarkeit von Diensten zu beeinträchtigen.
 
 
 ## <a name="view-your-service-health-notifications-in-the-azure-portal"></a>Anzeigen Ihrer Dienstintegritätsbenachrichtigungen im Azure-Portal

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 18853d10c4acf1573772d72a8fb2c347cce545df
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: c27244af6da01163fa9ab554b6b9c1d9c99bab23
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55730168"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58104572"
 ---
 # <a name="migrate-data-from-storsimple-5000-7000-series-to-azure-file-sync"></a>Migrieren von Daten aus der StorSimple-Serie 5000/7000 zur Azure-Dateisynchronisierung
 
@@ -57,7 +57,7 @@ Hier werden die Voraussetzungen für die Migration Ihres Legacygeräts der Serie
 - Der Host verfügt über ausreichend lokalen Speicher, um Ihre lokal zwischengespeicherten Daten zu speichern.
 - Zugriff auf Besitzerebene auf das Azure-Abonnement, das Sie zum Bereitstellen der Azure-Dateisynchronisierung verwenden. Beim Erstellen eines Cloudendpunkts für Ihre Synchronisierungsgruppe können Probleme auftreten, wenn Sie nicht über Berechtigungen auf Besitzer- oder Administratorebene verfügen.
 - Zugriff auf ein [Speicherkonto vom Typ „Allgemein v2“](https://docs.microsoft.com/azure/storage/common/storage-account-overview) mit einer Azure-Dateifreigabe, mit der eine Synchronisierung durchgeführt werden soll. Weitere Informationen finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
- - [Erstellen einer Dateifreigabe über das Azure-Portal](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
+  - [Erstellen einer Dateifreigabe über das Azure-Portal](https://docs.microsoft.com/azure/storage/files/storage-how-to-create-file-share).
 
 ## <a name="migration-process"></a>Migrationsprozess
 
@@ -87,7 +87,7 @@ Führen Sie die folgenden Schritte aus, um die auf StorSimple-Volumes konfigurie
     Überspringen Sie diesen Schritt, und fahren Sie mit dem nächsten Schritt fort, wenn Sie einen anderen Windows Server-Host verwenden. Wenn Sie den gleichen Windows-Dateiserver für AFS verwenden, treten jetzt einige Minuten Ausfallzeit auf. 
     - **Ausfallzeit beginnt**: Löschen Sie den Serverendpunkt, den Sie in *Schritt 1F* erstellt haben. 
     - Erstellen Sie einen neuen Serverendpunkt mit dem Pfad, in den die zu speichernden Daten geleitet werden sollen.
-    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. - **Ausfallzeit endet**.
+    - Sobald der Serverendpunkt als „Fehlerfrei“ angezeigt wird (dies kann einige Minuten dauern), sehen Sie die Daten an diesem neuen Speicherort. Sie können jetzt Ihren Windows Server-Host dazu konfigurieren, von diesem neuen Standort aus Dateien bereitzustellen. -**Ausfallzeit endet**.
 5.  Wenn Sie einen anderen Windows-Dateiserver zur Azure-Dateisynchronisierung verwenden, treten keine Ausfallzeiten auf. 
     - Fügen Sie einen anderen Serverendpunkt mit dem Pfad des lokalen Speichers hinzu, den Sie für die Verwendung als Cache statt des StorSimple-Geräts vorbereitet haben. 
     - In einigen Minuten werden die Dateien auf dem neuen Server angezeigt. Sie können den Wechsel von Ihrem StorSimple-Gerät zu diesem neuen Speicherort auf dem Host zu einem beliebigen Zeitpunkt durchführen.

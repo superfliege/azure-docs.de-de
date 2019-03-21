@@ -8,44 +8,44 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
-ms.openlocfilehash: 33234c03a3e691a95e61f825a0351cf481431294
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: e0513bc18f1cf14beb4c1becfc1835235a5ddc96
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731393"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58092224"
 ---
 # <a name="creating-an-export-job-for-the-azure-importexport-service"></a>Erstellen eines Exportauftrags für den Azure Import/Export-Dienst
 Zum Erstellen eines Exportauftrags für den Microsoft Azure Import/Export-Dienst per REST-API sind die folgenden Schritte erforderlich:
 
--   Auswählen der zu exportierenden Blobs
+- Auswählen der zu exportierenden Blobs
 
--   Beschaffen eines Versandziels
+- Beschaffen eines Versandziels
 
--   Erstellen des Exportauftrags
+- Erstellen des Exportauftrags
 
--   Senden Ihrer leeren Laufwerke an Microsoft über einen unterstützten Lieferanten
+- Senden Ihrer leeren Laufwerke an Microsoft über einen unterstützten Lieferanten
 
--   Aktualisieren des Exportauftrags mit den Paketinformationen
+- Aktualisieren des Exportauftrags mit den Paketinformationen
 
--   Zurückerhalten der Laufwerke von Microsoft
+- Zurückerhalten der Laufwerke von Microsoft
 
- Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des [Azure-Portals](https://portal.azure.com/) zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Windows Azure Import/Export-Diensts zum Übertragen von Daten an Blobspeicher](storage-import-export-service.md).
+  Eine Übersicht über den Import/Export-Dienst und ein Tutorial, in dem die Verwendung des [Azure-Portals](https://portal.azure.com/) zum Erstellen und Verwalten von Import- und Exportaufträgen beschrieben wird, finden Sie unter [Verwenden des Windows Azure Import/Export-Diensts zum Übertragen von Daten an Blobspeicher](storage-import-export-service.md).
 
 ## <a name="selecting-blobs-to-export"></a>Auswählen der zu exportierenden Blobs
  Zum Erstellen eines Exportauftrags müssen Sie eine Liste mit Blobs bereitstellen, die Sie aus Ihrem Speicherkonto exportieren möchten. Es gibt ein paar Möglichkeiten, die zu exportierenden Blobs auszuwählen:
 
--   Sie können einen relativen Blobpfad verwenden, um ein einzelnes Blob und alle zugehörigen Momentaufnahmen auszuwählen.
+- Sie können einen relativen Blobpfad verwenden, um ein einzelnes Blob und alle zugehörigen Momentaufnahmen auszuwählen.
 
--   Sie können einen relativen Blobpfad verwenden, um ein einzelnes Blob ohne die zugehörigen Momentaufnahmen auszuwählen.
+- Sie können einen relativen Blobpfad verwenden, um ein einzelnes Blob ohne die zugehörigen Momentaufnahmen auszuwählen.
 
--   Sie können einen relativen Blobpfad und eine Momentaufnahmezeit verwenden, um eine einzelne Momentaufnahme auszuwählen.
+- Sie können einen relativen Blobpfad und eine Momentaufnahmezeit verwenden, um eine einzelne Momentaufnahme auszuwählen.
 
--   Sie können ein Blobpräfix verwenden, um alle Blobs und Momentaufnahmen mit dem angegebenen Präfix auszuwählen.
+- Sie können ein Blobpräfix verwenden, um alle Blobs und Momentaufnahmen mit dem angegebenen Präfix auszuwählen.
 
--   Sie können alle Blobs und Momentaufnahmen im Speicherkonto exportieren.
+- Sie können alle Blobs und Momentaufnahmen im Speicherkonto exportieren.
 
- Weitere Informationen zum Angeben der zu exportierenden Blobs finden Sie in der Beschreibung des [Put Job](/rest/api/storageimportexport/jobs)-Vorgangs.
+  Weitere Informationen zum Angeben der zu exportierenden Blobs finden Sie in der Beschreibung des [Put Job](/rest/api/storageimportexport/jobs)-Vorgangs.
 
 ## <a name="obtaining-your-shipping-location"></a>Beschaffen der Versandadresse
 Vor dem Erstellen eines Exportauftrags müssen Sie sich den Namen und die Adresse des Versandziels beschaffen, indem Sie den Vorgang [Get Location](https://portal.azure.com) oder [List Locations](https://docs.microsoft.com/rest/api/storageimportexport/locations/list) aufrufen. `List Locations` gibt eine Liste mit Orten und den dazugehörigen Versandadressen zurück. Sie können einen Ort aus der zurückgegebenen Liste auswählen und Ihre Festplatten an diese Adresse schicken. Sie können auch den Vorgang `Get Location` verwenden, um die Versandadresse für einen bestimmten Ort direkt zu beschaffen.

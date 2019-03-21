@@ -10,12 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 84d98d6b3af884c959e8f0e4d9c117192af32d3a
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: 267e790cec3c915330f8f72053458527ee7bfead
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106306"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58095567"
 ---
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Suchen und Diagnostizieren von Laufzeitausnahmen mit Azure Application Insights
 
@@ -96,11 +96,11 @@ Der Momentaufnahmedebugger erfasst Momentaufnahmen der häufigsten Ausnahmen in 
 ## <a name="use-analytics-data"></a>Verwenden von Analysedaten
 Alle von Application Insights gesammelten Daten werden in Azure Log Analytics gespeichert, die eine umfangreiche Abfragesprache bereitstellt, die Ihnen eine Vielzahl von Möglichkeiten zum Analysieren der Daten bietet.  Wir können diese Daten verwenden, um die Anforderungen zu analysieren, die die von uns untersuchte Ausnahme generiert haben. 
 
-8. Klicken Sie auf die CodeLens-Informationen über dem Code, um von Application Insights bereitgestellte Telemetriedaten anzuzeigen.
+1. Klicken Sie auf die CodeLens-Informationen über dem Code, um von Application Insights bereitgestellte Telemetriedaten anzuzeigen.
 
     ![Code](media/tutorial-runtime-exceptions/codelens.png)
 
-9. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Analyse](media/tutorial-runtime-exceptions/analytics.png)<br>
+1. Klicken Sie auf **Auswirkungen analysieren**, um Application Insights Analytics zu öffnen.  Die Analyse enthält mehrere Abfragen, die Details über Anforderungsfehler bereitstellen, z.B. betroffene Benutzer, Browser und Regionen.<br><br>![Analyse](media/tutorial-runtime-exceptions/analytics.png)<br>
 
 ## <a name="add-work-item"></a>Arbeitselement hinzufügen
 Wenn Sie Application Insights mit einem Nachverfolgungssystem wie Azure DevOps oder GitHub verbinden, können Sie direkt in Application Insights ein Arbeitselement erstellen.

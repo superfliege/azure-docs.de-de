@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/07/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7967459e1318e85e1e179e21bc803bf00ee329cd
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
+ms.openlocfilehash: ff6601042c82cef2b0101833117f17aca8b463dc
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53743792"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58223256"
 ---
 # <a name="monitor-apache-hadoop-clusters-in-hdinsight-using-the-apache-ambari-api"></a>Überwachen von Apache Hadoop-Clustern in HDInsight mit der Apache Ambari-API
 Erfahren Sie, wie HDInsight-Cluster mithilfe der Apache Ambari-APIs überwacht werden.
@@ -137,7 +137,7 @@ In der folgenden Tabelle sind einige der am häufigsten verwendeten Ambari-Über
 ## <a name="next-steps"></a>Nächste Schritte
 Sie haben erfahren, wie Apache Ambari-Überwachungs-API-Aufrufe verwendet werden. Weitere Informationen finden Sie unter:
 
-* [Verwalten von HDInsight-Clustern mit dem Azure-Portal][hdinsight-admin-portal]
+* [Verwalten von Apache Hadoop-Clustern in HDInsight mit dem Azure-Portal](hdinsight-administer-use-portal-linux.md)
 * [Verwalten von HDInsight-Clustern mit Azure PowerShell][hdinsight-admin-powershell]
 * [Verwalten von HDInsight-Clustern mit der Befehlszeilenschnittstelle][hdinsight-admin-cli]
 * [HDInsight-Dokumentation][hdinsight-documentation]
@@ -155,7 +155,6 @@ Sie haben erfahren, wie Apache Ambari-Überwachungs-API-Aufrufe verwendet werden
 [powershell-script]: https://technet.microsoft.com/library/ee176949.aspx
 
 [hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-admin-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-admin-cli]: hdinsight-administer-use-command-line.md
 [hdinsight-documentation]: https://docs.microsoft.com/azure/hdinsight/
 [hdinsight-get-started]:hadoop/apache-hadoop-linux-tutorial-get-started.md

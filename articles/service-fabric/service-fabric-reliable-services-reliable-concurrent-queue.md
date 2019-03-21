@@ -3,7 +3,7 @@ title: ReliableConcurrentQueue in Azure Service Fabric
 description: ReliableConcurrentQueue ist eine Warteschlange mit hohem Durchsatz, die ein gleichzeitiges Einreihen in und Entfernen aus der Warteschlange ermöglicht.
 services: service-fabric
 documentationcenter: .net
-author: tylermsft
+author: aljo-microsoft
 manager: timlt
 editor: raja,tyadam,masnider,vturecek
 ms.assetid: 62857523-604b-434e-bd1c-2141ea4b00d1
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
-ms.author: twhitney
-ms.openlocfilehash: 61b53a23fdbb08b226878d9b702ec6bb2879f8bc
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.author: aljo
+ms.openlocfilehash: 6fefbd21a5c301111afdc27ec1d332d713c669ad
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53185034"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58119648"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Einführung in ReliableConcurrentQueue in Azure Service Fabric
 ReliableConcurrentQueue ist eine asynchrone, transaktionsbasierte und replizierte Warteschlange, die ein hohes Maß an Parallelität für Einreihungs- und Entfernungsvorgänge bietet. Die Warteschlange bietet hohen Durchsatz und niedrige Latenz, indem die strikte FIFO-Reihenfolge von [ReliableQueue](https://msdn.microsoft.com/library/azure/dn971527.aspx) gelockert wird. Stattdessen wird eine Reihenfolge nach dem Prinzip „beste Leistung“ angewendet.
@@ -70,7 +70,7 @@ using (var txn = this.StateManager.CreateTransaction())
 Wir gehen davon aus, dass der Task erfolgreich abgeschlossen wurde und es keine gleichzeitigen Transaktionen gab, die zu einer Änderung der Warteschlange geführt haben. Es ist zu erwarten, dass die Warteschlange die Elemente in einer der folgenden Reihenfolgen enthält:
 
 > 10, 20
-
+> 
 > 20, 10
 
 
@@ -165,7 +165,7 @@ Wir gehen davon aus, dass die Elemente in der folgenden Reihenfolge aus der Wart
 
 Wenn wir die Transaktion abbrechen, werden die Elemente in einer beliebigen der folgenden Reihenfolgen wieder an der Spitze der Warteschlange eingereiht:
 > 10, 20
-
+> 
 > 20, 10
 
 Dasselbe gilt für alle Fälle, in denen für eine Transaktion kein *Commit* ausgeführt werden konnte.

@@ -8,12 +8,12 @@ author: eamonoreilly
 ms.author: eamono
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 7870aca696ec61e707c5c774fd43e6d64c0cab82
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: 7d7ebc7493ff8e272e35abafeedd8fbc52b986ab
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436755"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58002160"
 ---
 # <a name="create-an-azure-automation-watcher-tasks-to-track-file-changes-on-a-local-machine"></a>Erstellen von Azure Automation-Watchertasks zum Nachverfolgen von Dateiänderungen auf einem lokalen Computer
 
@@ -89,8 +89,8 @@ Der Watchertask besteht aus zwei Teilen, dem Watcher und der Aktion. Der Watcher
 1. Wählen Sie **Aktion konfigurieren** und dann das Runbook „Process-NewFile“ aus.
 1. Geben Sie die folgende Werte für die Parameter ein:
 
-   ***EVENTDATA**: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.  
-   ***Ausführungseinstellungen**: Übernehmen Sie hier „Azure“, da dieses Runbook im Automation-Dienst ausgeführt wird.
+   * **Ereignisdaten**: Lassen Sie dieses Feld leer. Die Daten werden vom Watcherrunbook übergeben.  
+   * **Ausführungseinstellungen**: Übernehmen Sie hier „Azure“, da dieses Runbook im Automation-Dienst ausgeführt wird.
 
 1. Klicken Sie auf **OK** und dann auf „Auswählen“, um zur Watcherseite zurückzukehren.
 1. Klicken Sie auf **OK**, um den Watchertask zu erstellen.
