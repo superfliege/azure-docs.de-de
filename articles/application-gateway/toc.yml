@@ -7,16 +7,16 @@ items:
     href: overview.md
 - name: Schnellstarts
   items:
-  - name: 'Verwalten von Webdatenverkehr: Portal'
+  - name: 'Erstellen eines Anwendungsgateways: Portal'
     href: quick-create-portal.md
-  - name: 'Verwalten von Webdatenverkehr: PowerShell'
+  - name: 'Erstellen eines Anwendungsgateways: PowerShell'
     href: quick-create-powershell.md
-  - name: 'Verwalten von Webdatenverkehr: Azure CLI'
+  - name: 'Erstellen eines Anwendungsgateways: Azure CLI'
     href: quick-create-cli.md
   expanded: true
 - name: Lernprogramme
   items:
-  - name: Verwalten von Webdatenverkehr
+  - name: Hosten einer einzelnen Website
     href: tutorial-manage-web-traffic-cli.md
   - name: Aktivieren von Web Application Firewall
     href: tutorial-restrict-web-traffic-cli.md
@@ -110,6 +110,8 @@ items:
       href: end-to-end-ssl-portal.md
     - name: 'End-to-End-SSL: PowerShell'
       href: application-gateway-end-to-end-ssl-powershell.md
+    - name: Erstellen von Zertifikaten für die Aufnahme von Back-Ends in die Whitelist
+      href: certificates-for-backend-authentication.md
     - name: Erneuern von Zertifikaten
       href: renew-certificates.md
     - name: Konfigurieren einer SSL-Richtlinie
@@ -120,7 +122,7 @@ items:
       href: application-gateway-web-application-firewall-portal.md
     - name: Azure PowerShell
       href: tutorial-restrict-web-traffic-powershell.md
-  - name: Anpassen von WAF-Regeln
+  - name: Konfigurieren von WAF-Regelsätzen
     items:
     - name: Azure-Portal
       href: application-gateway-customize-waf-rules-portal.md
@@ -226,9 +228,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-application-gateway
-ms.openlocfilehash: ce92641c82ffd577b0611fb5da4e8e78816ae32f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 68264afadd3d05e4d11c6b4b98cd7375886e4d20
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225347"
+ms.locfileid: "58286955"

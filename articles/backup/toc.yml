@@ -172,7 +172,7 @@ items:
       href: backup-azure-backup-sharepoint.md
   - name: Mithilfe von Azure PowerShell
     items:
-    - name: Azure-VMs im Azure-Portal
+    - name: Virtuelle Azure-Computer im Azure-Portal
       href: backup-azure-vms-automation.md
     - name: DPM im Azure-Portal
       href: backup-dpm-automation.md
@@ -180,6 +180,8 @@ items:
       href: backup-client-automation.md
     - name: Azure-Dateifreigaben im Azure-Portal
       href: backup-azure-afs-automation.md
+    - name: SQL in Azure-VM-Sicherungen
+      href: backup-azure-sql-automation.md
   - name: Verwenden der Azure Backup-REST-API
     items:
     - name: Erstellen eines Recovery Services-Tresors
@@ -195,7 +197,7 @@ items:
   - name: SQL Server-Sicherungsinstanz für Datenbanken auf virtuellen Azure-Computern
     items:
     - name: Informationen zur SQL Server-Sicherung auf virtuellen Azure-Computern
-      href: backup-sql-server-azure-vms.md
+      href: backup-azure-sql-database.md
     - name: Sichern von SQL Server-Datenbanken auf virtuellen Azure-Computern
       href: backup-sql-server-database-azure-vms.md
     - name: Wiederherstellen von SQL Server-Datenbanken auf virtuellen Azure-Computern
@@ -278,9 +280,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=backup
   - name: Videos
     href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: 033235611271b00275a0ef759af80f2c8c9a2474
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb58460b2331ab867e064235d5a2536809b28021
+ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014663"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58284968"
