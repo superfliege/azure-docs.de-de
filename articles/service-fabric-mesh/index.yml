@@ -1,24 +1,24 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 029342b5db33a7c713e915ae72066f732b6f46f0
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
+ms.openlocfilehash: eaceb3170e3b3f7bd155f42521102365401f0421
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50979419"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337442"
 documentType: LandingData
 title: Azure Service Fabric Mesh-Dokumentation
 metadata:
   title: Dokumentation für Azure Service Fabric Mesh– Tutorials, API-Referenz | Microsoft-Dokumentation
   meta.description: Azure Service Fabric Mesh is a fully managed service enabling developers to deploy containerized applications without managing virtual machines, storage, or networking resources. Learn how to use Service Fabric Mesh with our quickstarts and tutorials.
   services: service-fabric-mesh
-  author: rwike77
+  author: dkkapur
   manager: timlt
   ms.service: service-fabric-mesh
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 07/26/2018
-  ms.author: ryanwi
+  ms.author: dekapur
 abstract:
   description: Azure Service Fabric Mesh ist ein vollständig verwalteter Dienst, der Entwicklern das Erstellen und Bereitstellen von unternehmenskritischen Anwendungen ohne Infrastrukturverwaltung ermöglicht.  Verwenden Sie Service Fabric Mesh zum Erstellen und Ausführen von sicheren, verteilten Microserviceanwendungen, die nach Bedarf skaliert werden können. Hier erfahren Sie anhand unserer Schnellstarts und Tutorials, wie Service Fabric Mesh verwendet wird.  Weitere Informationen finden Sie in der <a href="/azure/service-fabric-mesh/service-fabric-mesh-overview">Übersicht zu Service Fabric Mesh</a> und in den <a href="/azure/service-fabric-mesh/service-fabric-mesh-faq">häufig gestellten Fragen</a>.
 sections:
