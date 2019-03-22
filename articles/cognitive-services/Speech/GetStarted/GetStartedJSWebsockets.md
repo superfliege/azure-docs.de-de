@@ -1,7 +1,7 @@
 ---
-title: Erste Schritte mit der Bing-Spracheingabe-API von Microsoft in JavaScript | Microsoft-Dokumentation
+title: Get started with the Bing Speech Recognition API in JavaScript | Microsoft Docs
 titlesuffix: Azure Cognitive Services
-description: Verwenden Sie die Bing-Spracheingabe-API in Cognitive Services, um Anwendungen zu entwickeln, die gesprochene Audiosignale fortlaufend in Text konvertieren.
+description: Use the Bing Speech Recognition API in Cognitive Services to develop applications that continuously convert spoken audio to text.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
@@ -10,65 +10,66 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: c5869133d94f73e1d463a176614617df2587bdfb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: 17901ad40a48e9ee8d1a8b872b04ad52b75b3a52
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226104"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56672405"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Erste Schritte mit der Spracherkennungs-API in JavaScript
+# <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Get started with the Speech Recognition API in JavaScript
 
 [!INCLUDE [Deprecation note](../../../../includes/cognitive-services-bing-speech-api-deprecation-note.md)]
 
-Sie können Anwendungen entwickeln, die gesprochenes Audio mithilfe der Spracherkennungs-API in Text umwandeln. Mit dem von der JavaScript-Clientbibliothek verwendeten [WebSocket-Protokoll des Speech-Diensts](../API-Reference-REST/websocketprotocol.md) können Sie gleichzeitig sprechen und den transkribierten Text empfangen. Dieser Artikel hilft Ihnen bei den ersten Schritten mit der Spracherkennungs-API in JavaScript.
+You can develop applications that convert spoken audio to text by using the Speech Recognition API. The JavaScript client library uses the [Speech Service WebSocket protocol](../API-Reference-REST/websocketprotocol.md), which allows you to talk and receive transcribed text simultaneously. This article helps you to get started with the Speech Recognition API in JavaScript.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Abonnieren der Spracherkennungs-API und Abrufen eines Schlüssels für ein kostenloses Probeabonnement
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Subscribe to the Speech Recognition API, and get a free trial subscription key
 
-Die Sprach-API ist Teil von Cognitive Services. Über die Seite [Cognitive Services ausprobieren](https://azure.microsoft.com/try/cognitive-services/) können Sie Schlüssel für ein kostenloses Probeabonnement abrufen. Wählen Sie zunächst die Option für die Sprach-API aus, und klicken Sie anschließend auf **API-Schlüssel abrufen**, um den Schlüssel abzurufen. Daraufhin werden ein Primär- und ein Sekundärschlüssel zurückgegeben. Beide Schlüssel sind an das gleiche Kontingent gebunden. Es spielt daher keine Rolle, welchen Schlüssel Sie verwenden.
+The Speech API is part of Cognitive Services. You can get free trial subscription keys from the [Cognitive Services subscription](https://azure.microsoft.com/try/cognitive-services/) page. After you select the Speech API, select **Get API Key** to get the key. It returns a primary and secondary key. Both keys are tied to the same quota, so you can use either key.
 
 > [!IMPORTANT]
-> Rufen Sie einen Abonnementschlüssel ab. Für die Verwendung von Speech-Clientbibliotheken ist ein [Abonnementschlüssel](https://azure.microsoft.com/try/cognitive-services/) erforderlich.
+> Get a subscription key. Before you can use Speech client libraries, you must have a [subscription key](https://azure.microsoft.com/try/cognitive-services/).
 
-## <a name="get-started"></a>Erste Schritte
+## <a name="get-started"></a>Get started
 
-In diesem Abschnitt erfahren Sie Schritt für Schritt, wie Sie eine HTML-Beispielseite laden. Das Beispiel befindet sich unserem [GitHub-Repository](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). Sie können das Beispiel **direkt über das Repository** oder **über eine lokale Kopie des Repositorys** öffnen.
+In this section we will walk you through the necessary steps to load a sample HTML page. The sample is located in our [GitHub repository](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript). You can **open the sample directly** from the repository, or **open the sample from a local copy** of the repository.
 
 > [!NOTE]
-> Bei einigen Browsern wird das Mikrofon im Falle eines unsicheren Ursprungs blockiert. Es empfiehlt sich daher, das Beispiel/Ihre App per HTTPS zu hosten, damit es/sie auf allen unterstützten Browsern funktioniert.
+> Some browsers block microphone access on un-secure origin. So, it is recommended to host the 'sample'/'your app' on https to get it working on all supported browsers.
 
-### <a name="open-the-sample-directly"></a>Direktes Öffnen des Beispiels
+### <a name="open-the-sample-directly"></a>Open the sample directly
 
-Beziehen Sie wie weiter oben beschrieben einen Abonnementschlüssel. Öffnen Sie dann den [Link zum Beispiel](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Daraufhin wird die Seite in Ihrem Standardbrowser geladen und unter Verwendung von [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com) gerendert.
+Acquire a subscription key as described above. Then open the [link to the sample](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). This will load the page into your default browser (Rendered using [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
 
-### <a name="open-the-sample-from-a-local-copy"></a>Öffnen des Beispiels über eine lokale Kopie
+### <a name="open-the-sample-from-a-local-copy"></a>Open the sample from a local copy
 
-Wenn Sie das Beispiel lokal verwenden möchten, klonen Sie das folgende Repository:
+To try the sample locally, clone this repository:
 
 ```
 git clone https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript
 ```
 
-Kompilieren Sie die TypeScript-Quellen, und bündeln Sie sie in einer einzelnen JavaScript-Datei. (Auf Ihrem Computer muss [npm](https://www.npmjs.com/) installiert sein.) Wechseln Sie zum Stamm des geklonten Repositorys, und führen Sie die folgenden Befehle aus:
+compile the TypeScript sources and bundle them into a single JavaScript file ([npm](https://www.npmjs.com/) needs to be installed on your machine). Change into the root of the cloned repository and run the commands:
 
 ```
 cd SpeechToText-WebSockets-Javascript && npm run bundle
 ```
 
-Öffnen Sie `samples\browser\Sample.html` in Ihrem bevorzugten Browser.
+Open `samples\browser\Sample.html` in your favorite browser.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Weitere Informationen zur Integration des SDK in Ihre eigene Webseite finden Sie [hier](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript).
+More information on how to include the SDK into your own webpage is available [here](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript).
 
-## <a name="remarks"></a>Anmerkungen
+## <a name="remarks"></a>Remarks
 
-- Die Spracherkennungs-API unterstützt drei [Erkennungsmodi](../concepts.md#recognition-modes). Der Modus kann durch Aktualisieren der Funktion **Setup()** in der Datei „Sample.html“ geändert werden. Im Beispiel ist der Modus standardmäßig auf `Interactive` festgelegt. Wenn Sie den Modus ändern möchten, legen Sie den Parameter `SR.RecognitionMode.Interactive` auf einen anderen Modus fest. Ändern Sie den Parameter beispielsweise in `SR.RecognitionMode.Conversation`.
-- Eine vollständige Liste mit unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](../API-Reference-REST/supportedlanguages.md).
+- The Speech Recognition API supports three [recognition modes](../concepts.md#recognition-modes). You can switch the mode by updating the **Setup()** function found in the Sample.html file. The sample sets the mode to `Interactive` by default. To change the mode, update the parameter `SR.RecognitionMode.Interactive` to another mode. For example, change the parameter to `SR.RecognitionMode.Conversation`.
+- For a complete list of supported languages, see [Supported languages](../API-Reference-REST/supportedlanguages.md).
 
-## <a name="related-topics"></a>Verwandte Themen
+## <a name="related-topics"></a>Related topics
 
-- [JavaScript-Beispielrepository für die Spracherkennungs-API](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
-- [Erste Schritte mit der REST-API](GetStartedREST.md)
+- [JavaScript Speech Recognition API sample repository](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript)
+- [Get started with the REST API](GetStartedREST.md)
