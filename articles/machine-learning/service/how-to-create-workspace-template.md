@@ -1,39 +1,38 @@
 ---
-title: Verwenden einer Vorlage zum Erstellen eines Arbeitsbereichs
+title: Use a template to create a workspace
 titleSuffix: Azure Machine Learning service
-description: Erfahren Sie, wie Sie eine Azure Resource Manager-Vorlage verwenden, um einen neuen Azure Machine Learning Service-Arbeitsbereich zu erstellen.
+description: Learn how to use an Azure Resource Manager template to create a new Azure Machine Learning service workspace.
 services: machine-learning
 ms.service: machine-learning
-ms.component: core
+ms.subservice: core
 ms.topic: conceptual
-ms.reviewer: larryfr
-ms.author: haining
-author: hning86
+ms.author: larryfr
+author: Blackmist
 ms.date: 02/11/2019
-ms.openlocfilehash: b9d05e8de01178fd8731e492d2aeefd28f3ef4cf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105704"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57850076"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe einer Vorlage
+# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>Create an Azure Machine Learning service workspace by using a template
 
-In diesem Artikel erlernen Sie verschiedene Möglichkeiten zum Erstellen eines Azure Machine Learning Service-Arbeitsbereichs mithilfe von Azure Resource Manager-Vorlagen. 
+In this article, you learn several ways to create an Azure Machine Learning service workspace using Azure Resource Manager templates. 
 
-Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer Azure-Resource Manager-Vorlage](../../azure-resource-manager/resource-group-template-deploy.md).
+For more information, see [Deploy an application with Azure Resource Manager template](../../azure-resource-manager/resource-group-template-deploy.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning Service](http://aka.ms/AMLFree) aus.
+* An **Azure subscription**. If you do not have one, try the [free or paid version of Azure Machine Learning service](https://aka.ms/AMLFree).
 
-* Um eine Vorlage über eine Befehlszeilenschnittstelle zu verwenden, benötigen Sie entweder [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) oder die [Azure-Befehlszeilenschnittstelle (CLI)](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+* To use a template from a CLI, you need either [Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.2.0) or the [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
-## <a name="resource-manager-template"></a>Resource Manager-Vorlage
+## <a name="resource-manager-template"></a>Resource Manager template
 
-Eine Resource Manager-Vorlage erleichtert das Erstellen von Ressourcen in einem einzelnen, koordinierten Vorgang. Eine Vorlage ist ein JSON-Dokument, das die Ressourcen definiert, die für eine Bereitstellung erforderlich sind. Es kann außerdem bestimmte Bereitstellungsparameter angeben. Parameter werden verwendet, um Eingabewerte bereitzustellen, wenn die Vorlage verwendet wird.
+A Resource Manager template makes it easy to create resources as a single, coordinated operation. A template is a JSON document that defines the resources that are needed for a deployment. It may also specify deployment parameters. Parameters are used to provide input values when using the template.
 
-Die folgende Vorlage kann verwendet werden, um einen Azure Machine Learning Service-Arbeitsbereich mit zugeordneten Azure-Ressourcen zu erstellen:
+The following template can be used to create an Azure Machine Learning service workspace and associated Azure resources:
 
 ```json
 {
@@ -161,50 +160,50 @@ Die folgende Vorlage kann verwendet werden, um einen Azure Machine Learning Serv
 }
 ```
 
-Diese Vorlage erstellt die folgenden Azure-Dienste:
+This template creates the following Azure services:
 
-* Azure-Ressourcengruppe
-* Azure Storage-Konto
+* Azure Resource Group
+* Azure Storage Account
 * Azure Key Vault
 * Azure Application Insights
 * Azure Container Registry
-* Azure Machine Learning-Arbeitsbereich
+* Azure Machine Learning workspace
 
-Die Ressourcengruppe ist der Container, der die Dienste enthält. Die verschiedenen Dienste sind für den Azure Machine Learning-Arbeitsbereich erforderlich.
+The resource group is the container that holds the services. The various services are required by the Azure Machine Learning workspace.
 
-Die Beispielvorlage verfügt über zwei Parameter:
+The example template has two parameters:
 
-* Den **Ort**, an dem die Ressourcengruppe und die Dienste erstellt werden.
+* The **location** where the resource group and services will be created.
 
-    Die Vorlage verwendet den von Ihnen ausgewählten Ort für die meisten Ressourcen. Die Ausnahme ist hierbei der Application Insights-Dienst, der nicht an allen Orten verfügbar ist, an denen die anderen Dienste verfügbar sind. Wenn Sie einen Ort auswählen, an dem er nicht verfügbar ist, wird der Dienst am Ort „USA, Süden-Mitte“ erstellt.
+    The template will use the location you select for most resources. The exception is the Application Insights service, which is not available in all of the locations that the other services are. If you select a location where it is not available, the service will be created in the South Central US location.
 
-* Der **Arbeitsbereichsname**, wobei es sich um den Anzeigenamen des Azure Machine Learning-Arbeitsbereichs handelt.
+* The **workspace name**, which is the friendly name of the Azure Machine Learning workspace.
 
-    Die Namen der anderen Dienste werden nach dem Zufallsprinzip generiert.
+    The names of the other services are generated randomly.
 
-Weitere Informationen zu Vorlagen finden Sie in den folgenden Artikeln:
+For more information on templates, see the following articles:
 
-* [Erstellen von Azure Resource-Manager-Vorlagen](../../azure-resource-manager/resource-group-authoring-templates.md)
-* [Bereitstellen einer Anwendung mit Azure Resource Manager-Vorlagen](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Microsoft.MachineLearningServices-Ressourcentypen](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
+* [Author Azure Resource Manager templates](../../azure-resource-manager/resource-group-authoring-templates.md)
+* [Deploy an application with Azure Resource Manager templates](../../azure-resource-manager/resource-group-template-deploy.md)
+* [Microsoft.MachineLearningServices resource types](https://docs.microsoft.com/azure/templates/microsoft.machinelearningservices/allversions)
 
-## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
+## <a name="use-the-azure-portal"></a>Use the Azure portal
 
-1. Befolgen Sie die Schritte in [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). Wenn Sie zum Bildschirm __Vorlage bearbeiten__ gelangen, fügen Sie die Vorlage aus diesem Dokument ein.
-1. Wählen Sie __Speichern__ aus, um die Vorlage zu verwenden. Geben Sie die folgenden Informationen an, und stimmen Sie den aufgeführten Bestimmungen und Bedingungen zu:
+1. Follow the steps in [Deploy resources from custom template](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-portal#deploy-resources-from-custom-template). When you arrive at the __Edit template__ screen, paste in the template from this document.
+1. Select __Save__ to use the template. Provide the following information and agree to the listed terms and conditions:
 
-    * Abonnement: Wählen Sie aus, welches Azure-Abonnement für diese Ressourcen verwendet werden soll.
-    * Ressourcengruppe: Wählen Sie eine Ressourcengruppe für die Aufnahme der Dienste aus, oder erstellen Sie eine.
-    * Arbeitsbereichsname: Der für den Azure Machine Learning-Arbeitsbereich, der erstellt wird, zu verwendende Name. Der Arbeitsbereichsname muss zwischen 3 und 33 Zeichen umfassen. Er darf nur alphanumerische Zeichen und Bindestriche („-“) enthalten.
-    * Standort: Wählen Sie den Ort aus, an dem die Ressourcen erstellt werden.
+   * Subscription: Select the Azure subscription to use for these resources.
+   * Resource group: Select or create a resource group to contain the services.
+   * Workspace name: The name to use for the Azure Machine Learning workspace that will be created. The workspace name must be between 3 and 33 characters. It may only contain alphanumeric characters and '-'.
+   * Location: Select the location where the resources will be created.
 
-    ![Die Vorlagenparameter im Azure-Portal](media/how-to-create-workspace-template/template-parameters.png)
+     ![The template parameters in the Azure portal](media/how-to-create-workspace-template/template-parameters.png)
 
-Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
+For more information, see [Deploy resources from custom template](../../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 
-## <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
+## <a name="use-azure-powershell"></a>Use Azure PowerShell
 
-In diesem Beispiel wird vorausgesetzt, dass Sie die Vorlagen in einer Datei namens `azuredeploy.json` im aktuellen Verzeichnis gespeichert haben:
+This example assumes that you have saved the template to a file named `azuredeploy.json` in the current directory:
 
 ```powershell
 New-AzResourceGroup -Name examplegroup -Location "East US"
@@ -213,11 +212,11 @@ new-azresourcegroupdeployment -name exampledeployment `
   -templatefile .\azuredeploy.json -workspaceName "exampleworkspace"
 ```
 
-Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) und [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und Azure PowerShell](../../azure-resource-manager/resource-manager-powershell-sas-token.md).
+For more information, see [Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) and [Deploy private Resource Manager template with SAS token and Azure PowerShell](../../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
-## <a name="use-azure-cli"></a>Mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="use-azure-cli"></a>Use Azure CLI
 
-In diesem Beispiel wird vorausgesetzt, dass Sie die Vorlagen in einer Datei namens `azuredeploy.json` im aktuellen Verzeichnis gespeichert haben:
+This example assumes that you have saved the template to a file named `azuredeploy.json` in the current directory:
 
 ```azurecli-interactive
 az group create --name examplegroup --location "East US"
@@ -228,9 +227,9 @@ az group deployment create \
   --parameters workspaceName=exampleworkspace
 ```
 
-Weitere Informationen finden Sie unter [Bereitstellen von Ressourcen mit Azure Resource Manager-Vorlagen und der Azure-Befehlszeilenschnittstelle](../../azure-resource-manager/resource-group-template-deploy-cli.md) und [Bereitstellen privater Resource Manager-Vorlagen mit SAS-Token und der Azure-Befehlszeilenschnittstelle](../../azure-resource-manager/resource-manager-cli-sas-token.md).
+For more information, see [Deploy resources with Resource Manager templates and Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md) and [Deploy private Resource Manager template with SAS token and Azure CLI](../../azure-resource-manager/resource-manager-cli-sas-token.md).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-* [Bereitstellen von Ressourcen mit Resource Manager-Vorlagen und Resource Manager-REST-API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
-* [Erstellen und Bereitstellen von Azure-Ressourcengruppen mit Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
+* [Deploy resources with Resource Manager templates and Resource Manager REST API](../../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [Creating and deploying Azure resource groups through Visual Studio](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).

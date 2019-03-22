@@ -1,6 +1,6 @@
 ---
-title: Einrichten der Azure Media Services-Entwicklungsumgebung | Microsoft-Dokumentation
-description: Einrichten der Umgebung für die Entwicklung mit Azure Media Services
+title: Set up your Azure Media Services development environment | Microsoft Docs
+description: Set up your environment for developing with Azure Media Services.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,43 +11,43 @@ ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 02/10/2019
+ms.topic: conceptual
+ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 108fd47eea88e4fe0bd8e3eb22cb03e1a092a29e
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: e42386c380c94e36f1dbe0d418bf5a42f2486fd0
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999146"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58293667"
 ---
-# <a name="set-up-your-media-services-development-environment"></a>Einrichten der Media Services-Entwicklungsumgebung  
+# <a name="set-up-your-media-services-development-environment"></a>Set up your Media Services development environment  
 
-Die folgenden Schritte beschreiben die erforderlichen Voraussetzungen für die Entwicklung mit Azure Media Services.
+The following steps describe prerequisites required for developing with Azure Media Services.
 
-## <a name="create-a-media-services-account"></a>Erstellen eines Media Services-Kontos
-Verwenden Sie das Azure-Portal, das .NET-SDK oder die REST-API zum Erstellen eines Azure Media Services-Kontos.
+## <a name="create-a-media-services-account"></a>Create a Media Services account
+Use the Azure portal, the .NET SDK, or the REST API to create an Azure Media Services account.
 
 <a id="setup_dev_env"></a>
 
-## <a name="set-up-the-development-environment"></a>Einrichten der Entwicklungsumgebung
+## <a name="set-up-the-development-environment"></a>Set up the development environment
 
-Informationen zum Einrichten der .NET-Entwicklungsumgebung finden Sie in [diesem Thema](media-services-dotnet-how-to-use.md).  
+To set up .NET dev environment, see [this](media-services-dotnet-how-to-use.md) topic.  
 
-Informationen zum Einrichten der REST-Entwicklungsumgebung finden Sie in [diesem Thema](media-services-rest-how-to-use.md).  
+To set up REST dev environment, see [this](media-services-rest-how-to-use.md) topic.  
 
 <a id="connect"></a>
 
-## <a name="connect-programmatically"></a>Programmgesteuerter Verbindung
+## <a name="connect-programmatically"></a>Connect programmatically
 
-Informationen zum Herstellen einer Verbindung zur Azure Media Services-API finden Sie unter [Access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md) (Zugreifen auf die Azure Media Services-API mit der Azure AD-Authentifizierung).  
+To connect to the Azure Media Services API, see [access the Azure Media Services API with Azure AD authentication](media-services-use-aad-auth-to-access-ams-api.md).  
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Im Katalog mit **Azure-Codebeispielen** stehen mehrere Codebeispiele zur Verfügung: [Azure Media Services-Codebeispiele](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
+Find multiple code samples in the **Azure Code Samples** gallery: [Azure Media Services code samples](https://azure.microsoft.com/resources/samples/?service=media-services&sort=0).
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
-## <a name="provide-feedback"></a>Feedback geben
+## <a name="provide-feedback"></a>Provide feedback
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 

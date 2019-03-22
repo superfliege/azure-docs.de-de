@@ -1,9 +1,9 @@
 ---
-title: Preise für Azure Cloud Shell | Microsoft-Dokumentation
-description: Übersicht über die Preise für Azure Cloud Shell
+title: Azure Cloud Shell pricing | Microsoft Docs
+description: Overview of pricing of Azure Cloud Shell
 services: ''
 documentationcenter: ''
-author: jluk
+author: maertendMSFT
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,21 +13,21 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: juluk
-ms.openlocfilehash: 16f7327659a0f5fe542375a4b7e3232ee14bb17c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.author: damaerte
+ms.openlocfilehash: 2834bc7d9456c1177bdd2c235b8211a1edde6e42
+ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158649"
+ms.lasthandoff: 03/02/2019
+ms.locfileid: "57244977"
 ---
-# <a name="pricing"></a>Preise
-Die folgenden Informationen gelten für Bash in Azure Cloud Shell und für PowerShell in Azure Cloud Shell.
+# <a name="pricing"></a>Pricing
+Bash in Cloud Shell and PowerShell in Cloud Shell are subject to information below.
 
-## <a name="compute-cost"></a>Computekosten
-Azure Cloud Shell wird auf einem kostenlos von Azure bereitgestellten Computer ausgeführt, erfordert aber die Verwendung einer Azure-Dateifreigabe. 
+## <a name="compute-cost"></a>Compute Cost
+Azure Cloud Shell runs on a machine provided for free by Azure, but requires an Azure file share to use. 
 
-## <a name="storage-cost"></a>Speicherkosten
-Cloud Shell erfordert die Einbindung einer neuen oder vorhandenen Azure Files-Freigabe, damit Dateien sitzungsübergreifend erhalten bleiben. Bei der Speicherung fallen laufende Kosten an.
+## <a name="storage-cost"></a>Storage Cost
+Cloud Shell requires a new or existing Azure Files share to be mounted to persist files across sessions. Storage incurs regular costs.
 
-Klicken Sie [hier, um Informationen zu den Kosten für Azure Files zu erhalten](https://azure.microsoft.com/pricing/details/storage/files/). 
+Check [here for details on Azure Files costs](https://azure.microsoft.com/pricing/details/storage/files/). 

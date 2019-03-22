@@ -1,105 +1,106 @@
 ---
-title: Suchen nach Pool- und Knotenfehlern – Azure Batch
-description: Erfahren Sie mehr über das Suchen nach Fehlern und Vermeiden dieser Fehler bei der Erstellung von Pools und Knoten.
+title: Check for pool and node errors - Azure Batch
+description: Errors to check for and how to avoid them when creating pools and nodes
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 9/25/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4e1e645c25d2f1e49e222e39ecd719a414e1404e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
+ms.openlocfilehash: 8d8df9935e935ac8d5a1194cfab103a006cf5546
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53790468"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57791340"
 ---
-# <a name="check-for-pool-and-node-errors"></a>Suchen nach Pool- und Knotenfehlern
+# <a name="check-for-pool-and-node-errors"></a>Check for pool and node errors
 
-Wenn Sie Azure Batch-Pools erstellen und verwalten, erfolgen einige Vorgänge sofort. Allerdings sind einige Vorgänge asynchron und werden im Hintergrund ausgeführt. Diese können einige Minuten dauern.
+When you're creating and managing Azure Batch pools, some operations happen immediately. However, some operations are asynchronous and run in the background. They might take several minutes to complete.
 
-Das Erkennen von Fehlern bei unmittelbar erfolgenden Vorgängen, ist einfach, da sämtliche Fehler direkt über die API, CLI oder Benutzeroberfläche zurückgegeben werden.
+Detecting failures for operations that take place immediately is straightforward because any failures are returned immediately by the API, CLI, or UI.
 
-In diesem Artikel werden die Hintergrundvorgänge behandelt, die für Pools und Poolknoten erfolgen können. Es wird erörtert, wie Sie Fehler erkennen und vermeiden.
+This article covers the background operations that can occur for pools and pool nodes. It specifies how you can detect and avoid failures.
 
-## <a name="pool-errors"></a>Poolfehler
+## <a name="pool-errors"></a>Pool errors
 
-### <a name="resize-timeout-or-failure"></a>Timeout oder Fehler bei Größenänderung
+### <a name="resize-timeout-or-failure"></a>Resize timeout or failure
 
-Bei Erstellung eines neuen Pools oder Änderung der Größe eines vorhandenen Pools geben Sie die geplante Anzahl der Knoten an.  Der Vorgang wird unmittelbar abgeschlossen, aber die tatsächliche Zuordnung der neuen bzw. das Entfernen vorhandener Knoten kann einige Minuten dauern.  Sie geben das Timeout bei Größenänderung in der API [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) oder [resize](https://docs.microsoft.com/rest/api/batchservice/pool/resize) an. Wenn Azure Batch die Zielanzahl der Knoten innerhalb des Timeoutzeitraums für die Größenänderung nicht abrufen kann, wird der Vorgang beendet. Der Pool wechselt in einen stabilen Zustand und meldet Größenänderungsfehler.
+When creating a new pool or resizing an existing pool, you specify the target number of nodes.  The operation completes immediately, but the actual allocation of new nodes or the removal of existing nodes might take several minutes.  You specify the resize timeout in the [create](https://docs.microsoft.com/rest/api/batchservice/pool/add) or [resize](https://docs.microsoft.com/rest/api/batchservice/pool/resize) API. If Batch can't obtain the target number of nodes during the resize timeout period, it stops the operation. The pool goes into a steady state and reports resize errors.
 
-Die [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror)-Eigenschaft für die letzte Auswertung meldet ein Timeout bei der Größenänderung und listet alle aufgetretenen Fehler auf.
+The [ResizeError](https://docs.microsoft.com/rest/api/batchservice/pool/get#resizeerror) property for the most recent evaluation reports a resize timeout and lists any errors that occurred.
 
-Zu den häufigen Ursachen für Timeouts bei Größenänderungen zählen die folgenden:
+Common causes for resize timeouts include:
 
-- Das Timeout für die Größenänderung ist zu kurz.
-  - In den meisten Fällen ist das standardmäßige Timeout von 15 Minuten lang genug, um Poolknoten zuzuordnen oder zu entfernen.
-  - Wenn Sie eine große Anzahl von Knoten zuordnen, empfehlen wir, das Timeout für die Größenänderung auf 30 Minuten festzulegen. Das gilt beispielsweise, wenn Sie die Größe über ein Azure Marketplace-Image auf mehr als 1.000 Knoten oder über ein benutzerdefinierte VM-Image auf mehr als 300 Knoten ändern.
-- Kernkontingent nicht ausreichend
-  - Ein Azure Batch-Konto weist eine Begrenzung für die Anzahl von Kernen auf, die poolübergreifend zugeordnet werden können. Sobald dieses Kontingent erschöpft ist, werden von Azure Batch keine weiteren Knoten zugeordnet. Sie können das Kernkontingent [erhöhen](https://docs.microsoft.com/azure/batch/batch-quota-limit), sodass Azure Batch mehr Knoten zuordnen kann.
-- Nicht genügend Subnetz-IP-Adressen, wenn sich ein [Pool in einem virtuellen Netzwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) befindet
-  - Das Subnetz eines virtuellen Netzwerks muss über ausreichend nicht zugewiesene IP-Adressen verfügen, die allen angeforderten Poolknoten zugeordnet werden können. Andernfalls können die Knoten nicht erstellt werden.
-- Nicht genügend Ressourcen, wenn sich ein [Pool in einem virtuellen Netzwerk](https://docs.microsoft.com/azure/batch/batch-virtual-network) befindet
-  - Sie können Ressourcen, wie z. B. Lastenausgleichsmodule, öffentliche IP-Adressen und Netzwerksicherheitsgruppen, im selben Abonnement wie das Azure Batch-Konto erstellen. Vergewissern Sie sich, dass die Abonnementkontingente für diese Ressourcen ausreichend sind.
-- Große Pools mit benutzerdefinierten VM-Images
-  - Die Zuordnung großer Pools, die benutzerdefinierte Images verwenden, kann länger dauern und zu Timeouts bei Größenänderungen führen.  Empfehlungen zu Grenzwerten und zur Konfiguration finden Sie unter [Verwenden eines benutzerdefinierten Images zum Erstellen eines VM-Pools](https://docs.microsoft.com/azure/batch/batch-custom-images).
+- Resize timeout is too short
+  - Under most circumstances, the default timeout of 15 minutes is long enough for pool nodes to be allocated or removed.
+  - If you're allocating a large number of nodes, we recommend setting the resize timeout to 30 minutes. For example, when you're resizing to more than 1,000 nodes from an Azure Marketplace image, or to more than 300 nodes from a custom VM image.
+- Insufficient core quota
+  - A Batch account is limited in the number of cores that it can allocate across all pools. Batch stops allocating nodes once that quota has been reached. You [can increase](https://docs.microsoft.com/azure/batch/batch-quota-limit) the core quota so that Batch can allocate more nodes.
+- Insufficient subnet IPs when a [pool is in a virtual network](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - A virtual network subnet must have enough unassigned IP addresses to allocate to every requested pool node. Otherwise, the nodes can't be created.
+- Insufficient resources when a [pool is in a virtual network](https://docs.microsoft.com/azure/batch/batch-virtual-network)
+  - You might create resources such as load-balancers, public IPs, and network security groups in the same subscription as the Batch account. Check that the subscription quotas are sufficient for these resources.
+- Large pools with custom VM images
+  - Large pools that use custom VM images can take longer to allocate and resize timeouts can occur.  See [Use a custom image to create a pool of virtual machines](https://docs.microsoft.com/azure/batch/batch-custom-images) for recommendations on limits and configuration.
 
-### <a name="automatic-scaling-failures"></a>Fehler bei der automatischen Skalierung
+### <a name="automatic-scaling-failures"></a>Automatic scaling failures
 
-Sie können Azure Batch auch so einrichten, dass die Anzahl der Knoten in einem Pool automatisch skaliert wird. Sie definieren die Parameter für die [automatische Skalierungsformel für einen Pool](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). Der Azure Batch-Dienst verwendet die Formel, um die Anzahl der Knoten im Pool regelmäßig auszuwerten und eine neue Zielanzahl festzulegen. Die folgenden Arten von Problemen können auftreten:
+You can also set Azure Batch to automatically scale the number of nodes in a pool. You define the parameters for the [automatic scaling formula for a pool](https://docs.microsoft.com/azure/batch/batch-automatic-scaling). The Batch service uses the formula to periodically evaluate the number of nodes in the pool and set a new target number. The following types of issues can occur:
 
-- Die Auswertung für die automatische Skalierung schlägt fehl.
-- Die resultierende Größenänderung schlägt fehl und führt zu einem Timeout.
-- Ein Problem mit der automatischen Skalierungsformel führt zu falschen Zielwerten für die Knoten. Die Größenänderung funktioniert, oder ein Timeout tritt auf.
+- The automatic scaling evaluation fails.
+- The resulting resize operation fails and times out.
+- A problem with the automatic scaling formula leads to incorrect node target values. The resize either works or times out.
 
-Informationen zur letzten Auswertung zur automatischen Skalierung erhalten Sie mithilfe der [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun)-Eigenschaft. Diese Eigenschaft meldet die Auswertungszeit, die Werte und das Ergebnis sowie eventuelle Leistungsfehler.
+You can get information about the last automatic scaling evaluation by using the [autoScaleRun](https://docs.microsoft.com/rest/api/batchservice/pool/get#autoscalerun) property. This property reports the evaluation time, the values and result, and any performance errors.
 
-Das [Ereignis zum Abschluss der Größenänderung von Pools](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) erfasst Informationen zu sämtlichen Auswertungen.
+The [pool resize complete event](https://docs.microsoft.com/azure/batch/batch-pool-resize-complete-event) captures information about all evaluations.
 
-### <a name="delete"></a>Löschen
+### <a name="delete"></a>Delete
 
-Wenn Sie einen Pool löschen, der Knoten enthält, löscht Azure Batch zuerst die Knoten. Anschließend wird das Poolobjekt selbst gelöscht. Es kann einige Minuten dauern, bis die Poolknoten gelöscht wurden.
+When you delete a pool that contains nodes, first Batch deletes the nodes. Then it deletes the pool object itself. It can take a few minutes for the pool nodes to be deleted.
 
-Der [Poolstatus](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) wird von Azure Batch während des Löschvorgangs auf **Wird gelöscht** festgelegt. Die aufrufende Anwendung kann mithilfe der Eigenschaften **state** und **stateTransitionTime** erkennen, ob der Löschvorgang im Pool zu lange dauert.
+Batch sets the [pool state](https://docs.microsoft.com/rest/api/batchservice/pool/get#poolstate) to **deleting** during the deletion process. The calling application can detect if the pool deletion is taking too long by using the **state** and **stateTransitionTime** properties.
 
-## <a name="pool-compute-node-errors"></a>Fehler in Pool-Computeknoten
+## <a name="pool-compute-node-errors"></a>Pool compute node errors
 
-Selbst wenn Azure Batch Knoten in einem Pool erfolgreich zuweist, können verschiedene Probleme dazu führen, dass einige der Knoten fehlerhaft und unbrauchbar sind. Diese Knoten verursachen Kosten. Es ist wichtig, Probleme zu erkennen, damit Sie nicht für unbrauchbare Knoten zahlen.
+Even when Batch successfully allocates nodes in a pool, various issues can cause some of the nodes to be unhealthy and unusable. These nodes incur charges. It's important to detect problems so you aren't paying for unusable nodes.
 
-### <a name="start-task-failure"></a>Fehler bei Starttask
+### <a name="start-task-failure"></a>Start task failure
 
-Für einen Pool kann ein optionaler [Starttask](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) angegeben werden. Wie bei jedem Task können eine Befehlszeile und aus dem Speicher herunterzuladende Ressourcendateien angegeben werden. Der Starttask wird für jeden Knoten ausgeführt, nachdem er gestartet wurde. Die **waitForSuccess**-Eigenschaft gibt an, ob Azure Batch wartet, bis der Starttask erfolgreich abgeschlossen ist, ehe weitere Tasks für einen Knoten geplant werden.
+You might want to specify an optional [start task](https://docs.microsoft.com/rest/api/batchservice/pool/add#starttask) for a pool. As with any task, you can use a command line and resource files to download from storage. The start task is run for each node after it's been started. The **waitForSuccess** property specifies whether Batch waits until the start task completes successfully before it schedules any tasks to a node.
 
-Was passiert, wenn Sie den Knoten so konfiguriert haben, dass er auf die erfolgreiche Beendigung des Starttasks wartet, aber der Starttask fehlschlägt? In diesem Fall ist der Knoten unbrauchbar, verursacht aber dennoch Kosten.
+What if you've configured the node to wait for successful start task completion, but the start task fails? In that case, the node is unusable but still incurs charges.
 
-Starttaskfehler können Sie mithilfe der Eigenschaften [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) und [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) der Knoteneigenschaft [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) der obersten Ebene erkennen.
+You can detect start task failures by using the [result](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskexecutionresult) and  [failureInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#taskfailureinformation) properties of the top-level [startTaskInfo](https://docs.microsoft.com/rest/api/batchservice/computenode/get#starttaskinformation) node property.
 
-Ein fehlgeschlagener Starttask führt auch dazu, dass Azure Batch den Knoten [state](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) auf **starttaskfailed** festlegt, jedoch nur, wenn Sie **waitForSuccess** auf **TRUE** festgelegt haben.
+A failed start task also causes Batch to set the node [state](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) to **starttaskfailed** if you'd set **waitForSuccess** to **true**.
 
-Wie bei jedem anderen Task kann es für das Fehlschlagen eines Starttasks viele Ursachen geben.  Zur Fehlerbehebung sollten Sie „stdout“, „stderr“ und weitere taskspezifische Protokolldateien überprüfen.
+As with any task, there can be many causes for the start task failing.  To troubleshoot, check the stdout, stderr, and any further task-specific log files.
 
-### <a name="application-package-download-failure"></a>Fehler beim Herunterladen des Anwendungspakets
+### <a name="application-package-download-failure"></a>Application package download failure
 
-Sie können ein oder mehrere Anwendungspakete für einen Pool angeben. Die angegebenen Paketdateien werden von Azure Batch auf die einzelnen Knoten heruntergeladen und nach dem Starten der Knoten, aber vor Planung der Tasks, dekomprimiert. Normalerweise wird eine Befehlszeile für Starttasks in Verbindung mit Anwendungspaketen verwendet. Beispielsweise, um Dateien an einen anderen Speicherort zu kopieren oder ein Setup auszuführen.
+You can specify one or more application packages for a pool. Batch downloads the specified package files to each node and uncompresses the files after the node has started but before tasks are scheduled. It's common to use a start task command line in conjunction with application packages. For example, to copy files to a different location or to run setup.
 
-Die Knoteneigenschaft [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) meldet einen Fehler beim Herunterladen und Dekomprimieren eines Anwendungspakets. Azure Batch legt den Knotenstatus auf **Nicht verwendbar** fest.
+The node [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) property reports a failure to download and uncompress an application package. Batch sets the node state to **unusable**.
 
-### <a name="node-in-unusable-state"></a>Knoten mit dem Status „Nicht verwendbar“
+### <a name="node-in-unusable-state"></a>Node in unusable state
 
-Es kann verschiedene Ursachen dafür geben, dass Azure Batch den [Knotenstatus](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) auf **Nicht verwendbar** festlegt. Wenn der Knotenstatus auf **Nicht verwendbar** festgelegt ist, können für den Knoten zwar keine Tasks geplant werden, es fallen jedoch weiterhin Gebühren für ihn an.
+Azure Batch might set the [node state](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodestate) to **unusable** for many reasons. With the node state set to **unusable**, tasks can't be scheduled to the node, but it still incurs charges.
 
-Azure Batch versucht immer, nicht verwendbare Knoten wiederherzustellen. Je nach Ursache ist eine Wiederherstellung aber ggf. nicht möglich.
+Batch always tries to recover unusable nodes, but recovery may or may not be possible depending on the cause.
 
-Wenn Azure Batch die Ursache bestimmen kann, wird sie von der Knoteneigenschaft [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) gemeldet.
+If Batch can determine the cause, the node [errors](https://docs.microsoft.com/rest/api/batchservice/computenode/get#computenodeerror) property reports it.
 
-Einige weitere Beispiele für Ursachen für **nicht verwendbare** Knoten sind u. a.:
+Additional examples of causes for **unusable** nodes include:
 
-- Ein benutzerdefiniertes VM-Image ist ungültig. Beispielsweise, wenn ein Image nicht ordnungsgemäß vorbereitet wurde.
-- Eine VM wird aufgrund eines Infrastrukturausfalls oder eines niedrigstufigen Upgrades verschoben. Azure Batch stellt den Knoten wieder her.
+- A custom VM image is invalid. For example, an image that's not properly prepared.
+- A VM is moved because of an infrastructure failure or a low-level upgrade. Batch recovers the node.
 
-### <a name="node-agent-log-files"></a>Protokolldateien des Knoten-Agents
+### <a name="node-agent-log-files"></a>Node agent log files
 
-Der Batch-Agent-Prozess, der auf jedem Poolknoten ausgeführt wird, kann Protokolldateien bereitstellen, die hilfreich sein können, wenn Sie den Support bei einem Problem mit einem Poolknoten kontaktieren müssen. Protokolldateien für einen Knoten können über das Azure-Portal, Batch Explorer oder eine [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs) hochgeladen werden. Es ist sinnvoll, die Protokolldateien hochzuladen und zu speichern. Anschließend können Sie den Knoten oder Pool löschen, um die Kosten für die ausgeführten Knoten zu sparen.
+The Batch agent process that runs on each pool node can provide log files which might be helpful if you need to contact support about a pool node issue. Log files for a node can be uploaded via the Azure portal, Batch Explorer, or an [API](https://docs.microsoft.com/rest/api/batchservice/computenode/uploadbatchservicelogs). It's useful to upload and save the log files. Afterward, you can delete the node or pool to save the cost of the running nodes.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Überprüfen Sie, ob Sie Ihre Anwendung so konfiguriert haben, dass eine umfassende Fehlerprüfung implementiert ist, insbesondere für asynchrone Vorgänge. Es kann entscheidend sein, Probleme frühzeitig erkennen und diagnostizieren zu können.
+Check that you've set your application to implement comprehensive error checking, especially for asynchronous operations. It can be critical to promptly detect and diagnose issues.

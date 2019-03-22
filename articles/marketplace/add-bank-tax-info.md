@@ -1,11 +1,12 @@
 ---
-title: Hinzufügen von Bank- und Steuerinformationen | Azure
-description: Fügen Sie Ihrem Dev Center-Konto Bank- und Steuerinformationen hinzu.
+title: Add bank and tax information | Azure
+description: Add bank and tax information to your Dev Center account.
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
 documentationcenter: ''
 author: jm-aditi-ms
 manager: pabutler
 editor: ''
+ms.service: marketplace
 ms.assetid: ''
 ms.workload: ''
 ms.tgt_pltfrm: ''
@@ -13,50 +14,50 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 2ff5b9e5bbae15b37726ea066474120d9417feba
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: f194b02e5b92ca2de5b58a033c38d4f2e35f93f6
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34826028"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790915"
 ---
-# <a name="add-bank-and-tax-information"></a>Hinzufügen von Bank- und Steuerinformationen  
-Bank- und Steuerinformationen sind für alle kommerziellen Angebote erforderlich, die den Listentyp „Transaktion“ verwenden.  
-*   Wenn Sie kommerzielle Angebote zum Kauf veröffentlichen, müssen Sie Auszahlungs- und Steuerinformationen hinzufügen und eine Überprüfung in Dev Center anfordern.  
+# <a name="add-bank-and-tax-information"></a>Add bank and tax information  
+The bank and tax information is required for all commercial offers using the transact listing type.  
+*   If you are publishing commercial offers for purchase, then you must add payout and tax information and request validation in Dev Center.  
     >[!IMPORTANT]
-    >Bei kommerziellen Angeboten (Transaktion) müssen Sie alle Bank- und Steuerinformationen angeben, bevor Sie Ihre Angebote per Pushvorgang in die Produktionsumgebung verschieben können.  
+    >For commercial offers (transact), you must complete the bank and tax information before you are able to push your offers to production.  
 
-*   Wenn Sie nur kostenlose oder BYOL-Angebote veröffentlichen, müssen Sie diese Informationen nicht angeben. Sie können die Informationen später hinzufügen, aber die Überprüfung der Steuerinformationen dauert einige Zeit. Wenn Sie planen, kommerzielle Angebote zum Kauf zu veröffentlichen, sollten Sie diese Informationen so frühzeitig wie möglich hinzufügen.  
+*   If you are publishing only free or BYOL offers, then you are not required to add the information. You may add the information later, but validation of the tax information takes some time. If you plan to offer commercial offers for purchase, then you should add the information as soon as possible.  
 
-## <a name="add-bank-information"></a>Hinzufügen von Bankinformationen  
-1.  Melden Sie sich mit Ihrer Microsoft-ID bei Dev Center an.  
-    *   Um sich bei Dev Center anzumelden, besuchen Sie die Windows Dev Center-Seite unter [dev.windows.com](https://dev.windows.com).  
-2.  Wählen Sie im Menü auf der linken Seite die Option „Auszahlungskonto“.
-3.  Wählen Sie auf der Seite `Choose payment method` eine der Optionen `Bank account` oder `PayPal`.  
+## <a name="add-bank-information"></a>Add bank information  
+1.  Sign into Dev Center using your Microsoft ID.  
+    *   To sign into Dev Center, visit the Windows Dev Center page located at [dev.windows.com](https://dev.windows.com).  
+2.  Select Payout account on the left menu.
+3.  On the `Choose payment method` page, select `Bank account` or `PayPal`.  
     >[!IMPORTANT]
-    >Wenn Sie über kommerzielle Angebote verfügen, die Kunden im Marketplace erwerben, ist dies das Konto, in dem Sie die entsprechenden Auszahlungen für die Käufe erhalten.  
+    >If you have commercial offers that customers purchase on the Marketplace, then your payout account is where you receive payout for the purchases.  
 
-4.  Geben Sie die Zahlungsinformationen ein. Überprüfen Sie die Richtigkeit der Informationen, und klicken Sie auf die Schaltfläche „Speichern“.  
+4.  Enter the payment information. After you have verified that the information is correct, click on the Save button.  
     >[!IMPORTANT]
-    >Wenn Sie Ihr Auszahlungskonto aktualisieren oder ändern, müssen Sie die gleichen Schritte ausführen und dabei die vorhandenen Informationen durch die neuen Informationen ersetzen. Änderungen an Ihrem Auszahlungskonto können dazu führen, dass Auszahlungen bis zu einen Zahlungszyklus später erfolgen. Diese Verzögerung liegt darin begründet, dass Microsoft die Kontoänderung überprüfen und verifizieren muss, genauso wie beim ersten Einrichten des Auszahlungskontos. Ihnen wird der volle Betrag ausgezahlt, nachdem Ihr Konto überprüft wurde. Alle Zahlungen, die aus dem aktuellen Zahlungszyklus fällig sind, werden dem nächsten Zyklus hinzugefügt.  
+    >If you update or change your payout account, then you must follow the same steps replacing the current information with the new information. Changes to your payout account may delay payments up to one payment cycle. This delay occurs because Microsoft must verify the account change, this is the same as when you first set-up your payout account. You get paid the full amount after your account has been verified. Any payments due from the current payment cycle are added to the next cycle.  
 
-4.  Klicken Sie auf die Schaltfläche „Weiter“. 
+4.  Click on the Next button. 
 
----   
+---
 
-## <a name="add-tax-information"></a>Hinzufügen von Steuerinformationen  
-1.  Melden Sie sich mit Ihrer Microsoft-ID bei Dev Center an.  
-    *   Um sich bei Dev Center anzumelden, besuchen Sie die Windows Dev Center-Seite unter [dev.windows.com](https://dev.windows.com).  
-2.  Wählen Sie im Menü auf der linken Seite die Option „Steuerprofil“. 
-3.  Wählen Sie auf der Seite `Set up your tax form` das Land oder die Region, in dem bzw. der Ihr dauerhafter Wohnsitz liegt.  
+## <a name="add-tax-information"></a>Add tax information  
+1.  Sign into Dev Center using your Microsoft ID.  
+    *   To sign into Dev Center, visit the Windows Dev Center page located at [dev.windows.com](https://dev.windows.com).  
+2.  Select Tax profile on the left menu. 
+3.  On the `Set up your tax form` page, select the country or region where you have permanent residency.  
     
-    Wählen Sie das Land aus, dessen primäre Staatsbürgerschaft Sie innehaben.  
+    Select the country or region where you hold primary citizenship.  
     
-    Klicken Sie auf die Schaltfläche „Weiter“. 
-4.  Geben Sie Ihre Steuerinformationen ein.  
-5.  Klicken Sie auf die Schaltfläche „Weiter“.  
+    Click on the Next button. 
+4.  Enter your tax details.  
+5.  Click on the Next button.  
 
-## <a name="next-steps"></a>Nächste Schritte
-*   Sehen Sie sich den [Herausgeberleitfaden für Azure Marketplace und AppSource](./marketplace-publishers-guide.md) an.  
+## <a name="next-steps"></a>Next steps
+*   Visit the [Azure Marketplace and AppSource Publisher Guide](./marketplace-publishers-guide.md) page.  
  
----  
+---

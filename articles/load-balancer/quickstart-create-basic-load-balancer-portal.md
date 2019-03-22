@@ -1,7 +1,7 @@
 ---
-title: 'Schnellstart: Erstellen eines öffentlichen Load Balancers im Tarif „Basic“ über das Portal'
+title: 'Quickstart: Create a public Basic Load Balancer by using the Azure portal'
 titlesuffix: Azure Load Balancer
-description: In dieser Schnellstartanleitung wird gezeigt, wie Sie über das Azure-Portal einen öffentlichen Load Balancer erstellen.
+description: This quickstart shows how to create a public Basic load balancer by using the Azure portal.
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -9,265 +9,266 @@ manager: twooley
 Customer intent: I want to create a Basic Load balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 3ec4b8fb9ebb7a03983ce5da3dad56e0fe9917e8
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986327"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57869811"
 ---
-# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Schnellstart: Erstellen eines Load Balancers im Tarif „Basic“ über das Azure-Portal
+# <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>Quickstart: Create a Basic Load Balancer by using the Azure portal
 
-Durch die Verteilung der eingehenden Anforderungen auf virtuelle Computer (VMs) ermöglicht ein Lastenausgleich ein höheres Maß an Verfügbarkeit und Skalierbarkeit. Sie können das Azure-Portal verwenden, um einen Load Balancer zu erstellen und den Datenverkehr auf VMs zu verteilen. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie einen Load Balancer, Back-End-Server und Netzwerkressourcen im Tarif „Basic“ erstellen und konfigurieren.
+Load balancing provides a higher level of availability and scale by spreading incoming requests across virtual machines (VMs). You can use the Azure portal to create a load balancer and balance traffic among VMs. This quickstart shows you how to create and configure a load balancer, back-end servers, and network resources at the Basic pricing tier.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen. 
+If you don't have an Azure subscription, create a [free account](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) before you begin. 
 
-Melden Sie sich zur Durchführung der Aufgaben dieser Schnellstartanleitung am [Azure-Portal](http://portal.azure.com) an.
+To do the tasks in this quickstart, sign in to the [Azure portal](https://portal.azure.com).
 
-## <a name="create-a-basic-load-balancer"></a>Erstellen eines Load Balancers im Tarif „Basic“
+## <a name="create-a-basic-load-balancer"></a>Create a Basic Load Balancer
 
-Erstellen Sie zunächst einen öffentlichen Load Balancer im Tarif „Basic“ über das Portal. Der von Ihnen erstellte Name und die öffentliche IP-Adresse werden automatisch als Front-End des Load Balancers konfiguriert.
+First, create a public Basic Load Balancer by using the portal. The name and public IP address you create are automatically configured as the load balancer's front end.
 
-1. Klicken Sie links oben auf dem Bildschirm auf **Ressource erstellen** > **Netzwerk** > **Load Balancer**.
-2. Geben Sie auf der Seite **Lastenausgleich erstellen** auf der Registerkarte **Grundlagen** die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **Überprüfen + erstellen**:
+1. On the top left-hand side of the screen, click **Create a resource** > **Networking** > **Load Balancer**.
+2. In the **Basics** tab of the **Create load balancer** page, enter or select the following information, accept the defaults for the remaining settings, and then select **Review + create**:
 
-    | Einstellung                 | Wert                                              |
+    | Setting                 | Value                                              |
     | ---                     | ---                                                |
-    | Abonnement               | Wählen Sie Ihr Abonnement aus.    |    
-    | Ressourcengruppe         | Wählen Sie **Neu erstellen**, und geben Sie *MyResourceGroupLB* in das Textfeld ein.|
-    | NAME                   | *myLoadBalancer*                                   |
-    | Region         | Wählen Sie **Europa, Westen** aus.                                        |
-    | Type          | Wählen Sie **Öffentlich** aus.                                        |
-    | SKU           | Wählen Sie **Basic** aus.                          |
-    | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. |
-    | Name der öffentlichen IP-Adresse              | *MyPublicIP*   |
-    | Zuweisung| statischen|
+    | Subscription               | Select your subscription.    |    
+    | Resource group         | Select **Create new** and type *MyResourceGroupLB* in the text box.|
+    | Name                   | *myLoadBalancer*                                   |
+    | Region         | Select **West Europe**.                                        |
+    | Type          | Select **Public**.                                        |
+    | SKU           | Select **Basic**.                          |
+    | Public IP address | Select **Create new**. |
+    | Public IP address name              | *MyPublicIP*   |
+    | Assignment| Static|
 
-3. Klicken Sie auf der Registerkarte **Überprüfen + erstellen** auf **Erstellen**.   
+3. In the **Review + create** tab, click **Create**.   
 
 
-## <a name="create-back-end-servers"></a>Erstellen von Back-End-Servern
+## <a name="create-back-end-servers"></a>Create back-end servers
 
-Erstellen Sie als Nächstes ein virtuelles Netzwerk sowie zwei virtuelle Computer für den Back-End-Pool Ihres Load Balancers im Tarif „Basic“. 
+Next, create a virtual network and two virtual machines for the back-end pool of your Basic load balancer. 
 
-### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
+### <a name="create-a-virtual-network"></a>Create a virtual network
 
-1. Wählen Sie oben links im Portal **Ressource erstellen** > **Netzwerk** > **Virtuelles Netzwerk**.
+1. On the upper-left side of the portal, select **Create a resource** > **Networking** > **Virtual network**.
    
-1. Geben Sie im Bereich **Virtuelles Netzwerk erstellen** diese Werte ein (bzw. wählen Sie sie aus):
+1. In the **Create virtual network** pane, type or select these values:
    
-   - **Name**: Geben Sie *MyVnet* ein.
-   - **Ressourcengruppe**: Öffnen Sie die Dropdownliste **Vorhandene auswählen**, und wählen Sie **MyResourceGroupLB** aus. 
-   - **Subnetz** > **Name**: Geben Sie *MyBackendSubnet* ein.
+   - **Name**: Type *MyVnet*.
+   - **ResourceGroup**: Drop down **Select existing** and select **MyResourceGroupLB**. 
+   - **Subnet** > **Name**: Type *MyBackendSubnet*.
    
-1. Klicken Sie auf **Erstellen**.
+1. Select **Create**.
 
-   ![Erstellen eines virtuellen Netzwerks](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
+   ![Create a virtual network](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
 
-### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
+### <a name="create-virtual-machines"></a>Create virtual machines
 
-1. Wählen Sie oben links im Portal die Option **Ressource erstellen** > **Compute** > **Windows Server 2016 Datacenter**. 
+1. On the upper-left side of the portal, select **Create a resource** > **Compute** > **Windows Server 2016 Datacenter**. 
    
-1. Geben Sie unter **Virtuellen Computer erstellen** auf der Registerkarte **Grundlagen** die folgenden Werte ein (bzw. wählen Sie sie aus):
-   - **Abonnement** > **Ressourcengruppe**: Öffnen Sie die Dropdownliste, und wählen Sie **MyResourceGroupLB** aus.
-   - **Instanzendetails** > **Name des virtuellen Computers**: Geben Sie *MyVM1* ein.
-   - **Instanzendetails** > **Verfügbarkeitsoptionen**: 
-     1. Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus. 
-     2. Wählen Sie **Neu erstellen**, geben Sie *MyAvailabilitySet* ein, und wählen Sie **OK**.
+1. In **Create a virtual machine**, type or select the following values in the **Basics** tab:
+   - **Subscription** > **Resource Group**: Drop down and select **MyResourceGroupLB**.
+   - **Instance Details** > **Virtual machine name**: Type *MyVM1*.
+   - **Instance Details** > **Availability Options**: 
+     1. Drop down and select **Availability set**. 
+     2. Select **Create new**, type *MyAvailabilitySet*, and select **OK**.
   
-1. Wählen Sie die Registerkarte **Netzwerk** aus, oder wählen Sie **Weiter: Datenträger** und anschließend **Weiter: Netzwerk** aus. 
+1. Select the **Networking** tab, or select **Next: Disks**, then **Next: Networking**. 
    
-   Stellen Sie sicher, dass Folgendes ausgewählt ist:
-   - **Virtuelles Netzwerk**: **MyVnet**
-   - **Subnetz**: **MyBackendSubnet**
-   - **Öffentliche IP**: **MyVM1-ip**
+   Make sure the following are selected:
+   - **Virtual network**: **MyVnet**
+   - **Subnet**: **MyBackendSubnet**
+   - **Public IP**: **MyVM1-ip**
    
-   Wählen Sie zum Erstellen einer neuen Netzwerksicherheitsgruppe (NSG) – einer Art Firewall – unter **Netzwerksicherheitsgruppe** die Option **Erweitert**. 
-   1. Wählen Sie im Feld **Netzwerksicherheitsgruppe konfigurieren** die Option **Neu erstellen**. 
-   1. Geben Sie *MyNetworkSecurityGroup* ein, und wählen Sie **OK**. 
+   To create a new network security group (NSG), a type of firewall, under **Network Security Group**, select **Advanced**. 
+   1. In the **Configure network security group** field, select **Create new**. 
+   1. Type *MyNetworkSecurityGroup*, and select **OK**. 
    
-1. Wählen Sie die Registerkarte **Verwaltung** oder **Weiter** > **Verwaltung**. Legen Sie unter **Überwachung** die Option **Startdiagnose** auf **Aus** fest.
+1. Select the **Management** tab, or select **Next** > **Management**. Under **Monitoring**, set **Boot diagnostics** to **Off**.
    
-1. Klicken Sie auf **Überprüfen + erstellen**.
+1. Select **Review + create**.
    
-1. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**. 
+1. Review the settings, and then select **Create**. 
 
-1. Führen Sie die Schritte zum Erstellen einer zweiten VM mit dem Namen *MyVM2* mit der **öffentlichen IP-Adresse** *MyVM2-ip* aus, und verwenden Sie für alle anderen Einstellungen die Werte wie für MyVM1. 
+1. Follow the steps to create a second VM named *MyVM2*, with a **Public IP** address of *MyVM2-ip*, and all the other settings the same as MyVM1. 
 
-### <a name="create-nsg-rules-for-the-vms"></a>Erstellen von NSG-Regeln für die virtuellen Computer
+### <a name="create-nsg-rules-for-the-vms"></a>Create NSG rules for the VMs
 
-In diesem Abschnitt erstellen Sie Netzwerksicherheitsgruppen-Regeln für die VMs, um Internetverbindungen (HTTP) und Remotedesktopverbindungen (RDP) in eingehender Richtung zuzulassen.
+In this section, you create network security group (NSG) rules for the VMs, to allow inbound internet (HTTP) and remote desktop (RDP) connections.
 
-1. Wählen Sie im linken Menü die Option **Alle Ressourcen**. Wählen Sie in der Ressourcenliste in der Ressourcengruppe **MyResourceGroupLB** die Option **MyNetworkSecurityGroup**.
+1. Select **All resources** on the left menu. From the resource list, select **MyNetworkSecurityGroup** in the **MyResourceGroupLB** resource group.
    
-1. Wählen Sie unter **Einstellungen** die Option **Eingangssicherheitsregeln** und dann **Hinzufügen**.
+1. Under **Settings**, select **Inbound security rules**, and then select **Add**.
    
-1. Geben Sie im Dialogfeld **Eingangssicherheitsregel hinzufügen** für die HTTP-Regel folgende Werte ein (bzw. wählen Sie sie aus):
+1. In the **Add inbound security rule** dialog, for the HTTP rule, type or select the following:
    
-   - **Quelle**: Wählen Sie **Diensttag** aus.  
-   - **Quelldiensttag**: Wählen Sie **Internet** aus. 
-   - **Zielportbereiche**: Geben Sie *80* ein.
-   - **Protokoll**: Wählen Sie **TCP** aus. 
-   - **Aktion**: Wählen Sie **Zulassen** aus.  
-   - **Priorität**: Geben Sie *100* ein. 
-   - **Name**: Geben Sie *MyHTTPRule* ein. 
-   - **Beschreibung:** Geben Sie *Allow HTTP* ein. 
+   - **Source**: Select **Service Tag**.  
+   - **Source service tag**: Select **Internet**. 
+   - **Destination port ranges**: Type *80*.
+   - **Protocol**: Select **TCP**. 
+   - **Action**: Select **Allow**.  
+   - **Priority**: Type *100*. 
+   - **Name**: Type *MyHTTPRule*. 
+   - **Description**: Type *Allow HTTP*. 
    
-1. Wählen Sie **Hinzufügen**. 
+1. Select **Add**. 
    
-   ![Erstellen einer NSG-Regel](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
+   ![Create an NSG rule](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
    
-1. Wiederholen Sie die Schritte für die RDP-Eingangsregel mit den folgenden abweichenden Werten:
-   - **Zielportbereiche**: Geben Sie *3389* ein.
-   - **Priorität**: Geben Sie *200* ein. 
-   - **Name**: Geben Sie *MyRDPRule* ein. 
-   - **Beschreibung:** Geben Sie *Allow RDP* ein. 
+1. Repeat the steps for the inbound RDP rule, with the following differing values:
+   - **Destination port ranges**: Type *3389*.
+   - **Priority**: Type *200*. 
+   - **Name**: Type *MyRDPRule*. 
+   - **Description**: Type *Allow RDP*. 
 
-## <a name="create-resources-for-the-load-balancer"></a>Erstellen von Ressourcen für den Load Balancer
+## <a name="create-resources-for-the-load-balancer"></a>Create resources for the load balancer
 
-In diesem Abschnitt konfigurieren Sie Load Balancer-Einstellungen für einen Back-End-Adresspool, einen Integritätstest und eine Lastenausgleichsregel.
+In this section, you configure load balancer settings for a back-end address pool, a health probe, and a load balancer rule.
 
-### <a name="create-a-backend-address-pool"></a>Erstellen eines Back-End-Adresspools
+### <a name="create-a-backend-address-pool"></a>Create a backend address pool
 
-Zum Verteilen von Datenverkehr auf die VMs nutzt der Load Balancer einen Back-End-Adresspool. Der Back-End-Adresspool enthält die IP-Adressen der virtuellen Netzwerkschnittstellen (NICs), die mit dem Load Balancer verbunden sind. 
+To distribute traffic to the VMs, the load balancer uses a back-end address pool. The back-end address pool contains the IP addresses of the virtual network interfaces (NICs) that are connected to the load balancer. 
 
-**Erstellen Sie wie folgt einen Back-End-Adresspool, der VM1 und VM2 enthält:**
+**To create a back-end address pool that includes VM1 and VM2:**
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+1. Select **All resources** on the left menu, and then select **MyLoadBalancer** from the resource list.
    
-1. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** und dann **Hinzufügen**.
+1. Under **Settings**, select **Backend pools**, and then select **Add**.
    
-1. Geben Sie auf der Seite **Back-End-Pool hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+1. On the **Add a backend pool** page, type or select the following values:
    
-   - **Name**: Geben Sie *MyBackEndPool* ein.
-   - **Verknüpft mit**: Öffnen Sie die Dropdownliste, und wählen Sie die Option **Verfügbarkeitsgruppe** aus.
-   - **Verfügbarkeitsgruppe**: Wählen Sie **MyAvailabilitySet** aus.
+   - **Name**: Type *MyBackEndPool*.
+   - **Associated to**: Drop down and select **Availability set**.
+   - **Availability set**: Select **MyAvailabilitySet**.
    
-1. Wählen Sie **Zielnetzwerk-IP-Konfiguration hinzufügen**. 
-   1. Fügen Sie alle virtuellen Computer (**MyVM1** und **MyVM2**), die Sie erstellt haben, dem Back-End-Pool hinzu.
-   2. Öffnen Sie nach dem Hinzufügen eines Computers jeweils die Dropdownliste, und wählen Sie die **Netzwerk-IP-Konfiguration** aus. 
+1. Select **Add a target network IP configuration**. 
+   1. Add each virtual machine (**MyVM1** and **MyVM2**) that you created to the back-end pool.
+   2. After you add each machine, drop down and select its **Network IP configuration**. 
    
-1. Klicken Sie auf **OK**.
+1. Select **OK**.
    
-   ![Hinzufügen des Back-End-Adresspools](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
+   ![Add the backend address pool](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
    
-1. Erweitern Sie auf der Seite **Back-End-Pools** den Eintrag **MyBackendPool**, und stellen Sie sicher, dass sowohl **VM1** als auch **VM2** aufgeführt ist.
+1. On the **Backend pools** page, expand **MyBackendPool** and make sure both **VM1** and **VM2** are listed.
 
-### <a name="create-a-health-probe"></a>Erstellen eines Integritätstests
+### <a name="create-a-health-probe"></a>Create a health probe
 
-Damit der Load Balancer den VM-Status überwachen kann, verwenden Sie einen Integritätstest. Abhängig von der Reaktion auf Integritätsüberprüfungen werden der Load Balancer-Rotation durch den Integritätstest dynamisch virtuelle Computer hinzugefügt oder daraus entfernt. 
+To allow the load balancer to monitor VM status, you use a health probe. The health probe dynamically adds or removes VMs from the load balancer rotation based on their response to health checks. 
 
-**Erstellen Sie zur Überwachung der Integrität der virtuellen Computer wie folgt einen Integritätstest:**
+**To create a health probe to monitor the health of the VMs:**
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+1. Select **All resources** on the left menu, and then select **MyLoadBalancer** from the resource list.
    
-1. Wählen Sie unter **Einstellungen** die Option **Integritätstests** und dann **Hinzufügen**.
+1. Under **Settings**, select **Health probes**, and then select **Add**.
    
-1. Geben Sie auf der Seite **Integritätstest hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+1. On the **Add a health probe** page, type or select the following values:
    
-   - **Name**: Geben Sie *MyHealthProbe* ein.
-   - **Protokoll**: Öffnen Sie die Dropdownliste, und wählen Sie **HTTP** aus. 
-   - **Port**: Geben Sie *80* ein. 
-   - **Pfad**: Übernehmen Sie */* als Standard-URI. Sie können diesen Wert durch einen beliebigen anderen URI ersetzen. 
-   - **Intervall**: Geben Sie *15* ein. Das Intervall ist die Anzahl von Sekunden zwischen Testversuchen.
-   - **Fehlerschwellenwert**: Geben Sie *2* ein. Dieser Wert gibt die Anzahl aufeinander folgender Testfehler an, die auftreten müssen, damit ein virtueller Computer als fehlerhaft eingestuft wird.
+   - **Name**: Type *MyHealthProbe*.
+   - **Protocol**: Drop down and select **HTTP**. 
+   - **Port**: Type *80*. 
+   - **Path**: Accept */* for the default URI. You can replace this value with any other URI. 
+   - **Interval**: Type *15*. Interval is the number of seconds between probe attempts.
+   - **Unhealthy threshold**: Type *2*. This value is the number of consecutive probe failures that occur before a VM is considered unhealthy.
    
-1. Klicken Sie auf **OK**.
+1. Select **OK**.
    
-   ![Hinzufügen eines Tests](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
+   ![Add a probe](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
-### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
+### <a name="create-a-load-balancer-rule"></a>Create a load balancer rule
 
-Mit einer Lastenausgleichsregel wird definiert, wie Datenverkehr auf die virtuellen Computer verteilt wird. Die Regel definiert die Front-End-IP-Konfiguration für eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs sowie die erforderlichen Quell- und Zielports. 
+A load balancer rule defines how traffic is distributed to the VMs. The rule defines the front-end IP configuration for incoming traffic, the back-end IP pool to receive the traffic, and the required source and destination ports. 
 
-Mit der Lastenausgleichsregel **MyLoadBalancerRule** wird über Port 80 des Front-Ends **LoadBalancerFrontEnd** gelauscht. Die Regel sendet Netzwerkdatenverkehr an den Back-End-Adresspool **MyBackEndPool** (ebenfalls unter Port 80). 
+The load balancer rule named **MyLoadBalancerRule** listens to port 80 in the front-end **LoadBalancerFrontEnd**. The rule sends network traffic to the back-end address pool **MyBackEndPool**, also on port 80. 
 
-**Erstellen Sie die Lastenausgleichsregel wie folgt:**
+**To create the load balancer rule:**
 
 
-1. Wählen Sie im Menü auf der linken Seite die Option **Alle Ressourcen** und dann in der Ressourcenliste die Option **MyLoadBalancer**.
+1. Select **All resources** on the left menu, and then select **MyLoadBalancer** from the resource list.
    
-1. Wählen Sie unter **Einstellungen** die Option **Lastenausgleichsregeln** und dann **Hinzufügen**.
+1. Under **Settings**, select **Load balancing rules**, and then select **Add**.
    
-1. Geben Sie auf der Seite **Lastenausgleichsregel hinzufügen** die folgenden Werte ein (bzw. wählen Sie sie aus):
+1. On the **Add load balancing rule** page, type or select the following values:
    
-   - **Name**: Geben Sie *MyLoadBalancerRule* ein.
-   - **Front-End-IP-Adresse**: Geben Sie *LoadBalancerFrontend* ein.
-   - **Protokoll**: Wählen Sie **TCP** aus.
-   - **Port**: Geben Sie *80* ein.
-   - **Back-End-Port**: Geben Sie *80* ein.
-   - **Back-End-Pool**: Wählen Sie **MyBackendPool** aus.
-   - **Integritätstest**: Wählen Sie **MyHealthProbe** aus. 
+   - **Name**: Type *MyLoadBalancerRule*.
+   - **Frontend IP address:** Type *LoadBalancerFrontend*.
+   - **Protocol**: Select **TCP**.
+   - **Port**: Type *80*.
+   - **Backend port**: Type *80*.
+   - **Backend pool**: Select **MyBackendPool**.
+   - **Health probe**: Select **MyHealthProbe**. 
    
-1. Klicken Sie auf **OK**.
+1. Select **OK**.
    
-  ![Hinzufügen einer Lastenausgleichsregel](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
+   ![Add a load balancer rule](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
-## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
+## <a name="test-the-load-balancer"></a>Test the load balancer
 
-Sie verwenden die öffentliche IP-Adresse, um den Lastenausgleich auf den virtuellen Computern zu testen. 
+You'll use the public IP address to test the load balancer on the VMs. 
 
-Ermitteln Sie im Portal auf der Seite **Übersicht** für **MyLoadBalancer** unter **Öffentliche IP-Adresse** die öffentliche IP-Adresse. Zeigen Sie mit der Maus auf die Adresse, und wählen Sie das Symbol **Kopieren**, um sie zu kopieren. 
+In the portal, on the **Overview** page for **MyLoadBalancer**, find its public IP address under **Public IP Address**. Hover over the address and select the **Copy** icon to copy it. 
 
-### <a name="install-iis-on-the-vms"></a>Installieren von IIS auf den virtuellen Computern
+### <a name="install-iis-on-the-vms"></a>Install IIS on the VMs
 
-Installieren Sie Internetinformationsdienste (IIS) auf den virtuellen Computern, um das Testen des Load Balancers zu unterstützen.
+Install Internet Information Services (IIS) on the virtual machines to help test the load balancer.
 
-**Stellen Sie die Remotedesktopverbindung (RDP) mit der VM wie folgt her:**
+**To remote desktop (RDP) into the VM:**
 
-1. Wählen Sie im Portal im Menü auf der linken Seite die Option **Alle Ressourcen**. Wählen Sie in der Ressourcenliste in der Ressourcengruppe **MyResourceGroupLB** die Option **MyVM1**.
+1. In the portal, select **All resources** on the left menu. From the resource list, select **MyVM1** in the **MyResourceGroupLB** resource group.
    
-1. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **RDP-Datei herunterladen**. 
+1. On the **Overview** page, select **Connect**, and then select **Download RDP file**. 
    
-1. Öffnen Sie die heruntergeladene RDP-Datei, und wählen Sie **Verbinden**.
+1. Open the RDP file you downloaded, and select **Connect**.
    
-1. Wählen Sie auf dem Bildschirm „Windows-Sicherheit“ die Option **Weitere Optionen** und dann **Anderes Konto verwenden**. 
+1. On the Windows Security screen, select **More choices** and then **Use a different account**. 
    
-   Geben Sie Benutzername und Kennwort ein, und wählen Sie **OK** aus.
+   Enter username and password and select **OK**.
    
-1. Wählen Sie für alle Eingabeaufforderungen zu Zertifikaten die Antwort **Ja**. 
+1. Respond **Yes** to any certificate prompt. 
    
-   Der VM-Desktop wird in einem neuen Fenster geöffnet. 
+   The VM desktop opens in a new window. 
    
-**Installieren Sie IIS wie folgt auf dem virtuellen Computer:**
+**To install IIS on the VM:**
 
-1. Navigieren Sie zu **Windows-Verwaltungstools** > **Server-Manager**, wenn **Server-Manager** auf dem Serverdesktop noch nicht geöffnet ist.
+1. If **Server Manager** is not already open on the server desktop, browse to **Windows Administrative Tools** > **Server Manager**.
    
-1. Wählen Sie in **Server-Manager** die Option **Rollen und Features hinzufügen**.
+1. In **Server Manager**, select **Add roles and features**.
    
-   ![Hinzufügen der Server-Manager-Rolle](./media/load-balancer-get-started-internet-portal/servermanager.png)
+   ![Adding server manager role](./media/load-balancer-get-started-internet-portal/servermanager.png)
    
-1. Im Assistenten **Hinzufügen von Rollen und Features**:
-   1. Wählen Sie auf der Seite **Installationstyp auswählen** die Option **Rollenbasierte oder featurebasierte Installation**.
-   1. Wählen Sie auf der Seite **Zielserver auswählen** die Option **MyVM1**.
-   1. Wählen Sie auf der Seite **Serverrolle auswählen** die Option **Webserver (IIS)**. 
-   1. Wählen Sie an der Eingabeaufforderung zum Installieren der erforderlichen Tools die Option **Features hinzufügen**. 
-   1. Übernehmen Sie die Standardeinstellungen, und wählen Sie **Installieren**. 
-   1. Wählen Sie **Schließen**, nachdem die Installation der Features abgeschlossen ist. 
+1. In the **Add Roles and Features Wizard**:
+   1. On the **Select installation type** page, select **Role-based or feature-based installation**.
+   1. On the **Select destination server** page, select **MyVM1**.
+   1. On the **Select server role** page, select **Web Server (IIS)**. 
+   1. At the prompt to install required tools, select **Add Features**. 
+   1. Accept the defaults, and select **Install**. 
+   1. When the features are finished installing, select **Close**. 
    
-1. Wiederholen Sie die Schritte für den virtuellen Computer **MyVM2**, aber legen Sie den Zielserver dieses Mal auf **MyVM2** fest.
+1. Repeat the steps for the virtual machine **MyVM2**, except set the destination server to **MyVM2**.
 
-### <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
+### <a name="test-the-load-balancer"></a>Test the load balancer
 
-Öffnen Sie einen Browser, und fügen Sie die öffentliche IP-Adresse Ihres Lastenausgleichs in die Adressleiste ein. Im Browser sollte die Standardseite des IIS-Webservers angezeigt werden.
+Open a browser and paste your load balancer's public IP address into the browser's address bar. The IIS web server default page should appear in the browser.
 
-![IIS-Webserver](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
+![IIS web server](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+To see the load balancer distribute traffic across all three VMs running your app, you can force-refresh your web browser.
+## <a name="clean-up-resources"></a>Clean up resources
 
-Öffnen Sie die Ressourcengruppe **MyResourceGroupLB**, und wählen Sie die Option **Ressourcengruppe löschen**, um den Load Balancer und alle zugehörigen Ressourcen zu löschen, sofern Sie sie nicht mehr benötigen.
+To delete the load balancer and all related resources when you no longer need them, open the **MyResourceGroupLB** resource group and select **Delete resource group**.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-In dieser Schnellstartanleitung haben Sie einen Load Balancer im Tarif „Basic“ erstellt. Sie haben eine Ressourcengruppe, Netzwerkressourcen, Back-End-Server, einen Integritätstest und Regeln für den Load Balancer erstellt und konfiguriert. Sie haben IIS auf den VMs installiert und verwendet, um den Load Balancer zu testen. 
+In this quickstart, you created a Basic-tier load balancer. You created and configured a resource group, network resources, back-end servers, a health probe, and rules to use with the load balancer. You installed IIS on the VMs and used it to test the load balancer. 
 
-Weitere Informationen zu Azure Load Balancer finden Sie in den Tutorials.
+To learn more about Azure Load Balancer, continue to the tutorials.
 
 > [!div class="nextstepaction"]
-> [Azure Load Balancer-Tutorials](tutorial-load-balancer-basic-internal-portal.md)
+> [Azure Load Balancer tutorials](tutorial-load-balancer-basic-internal-portal.md)

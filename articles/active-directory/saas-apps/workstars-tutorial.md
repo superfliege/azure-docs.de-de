@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit Workstars | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und Workstars konfigurieren.
+title: 'Tutorial: Azure Active Directory integration with Workstars | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and Workstars.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -16,230 +16,230 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c2650bdf70c160e848703daca824bf54e897a64e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0a9c1d13c1d51eeadae3ef9dad71e64618d1a5fe
+ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56161387"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57444700"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Tutorial: Azure Active Directory-Integration mit Workstars
+# <a name="tutorial-azure-active-directory-integration-with-workstars"></a>Tutorial: Azure Active Directory integration with Workstars
 
-In diesem Tutorial erfahren Sie, wie Sie Workstars in Azure Active Directory (Azure AD) integrieren.
+In this tutorial, you learn how to integrate Workstars with Azure Active Directory (Azure AD).
 
-Die Integration von Workstars in Azure AD bietet die folgenden Vorteile:
+Integrating Workstars with Azure AD provides you with the following benefits:
 
-- Sie können in Azure AD steuern, wer Zugriff auf Workstars hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei Workstars anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+- You can control in Azure AD who has access to Workstars.
+- You can enable your users to automatically get signed-on to Workstars (Single Sign-On) with their Azure AD accounts.
+- You can manage your accounts in one central location - the Azure portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Um die Azure AD-Integration mit Workstars konfigurieren zu können, benötigen Sie Folgendes:
+To configure Azure AD integration with Workstars, you need the following items:
 
-- Ein Azure AD-Abonnement
-- Ein Workstars-Abonnement, für das einmaliges Anmelden aktiviert ist
+- An Azure AD subscription
+- A Workstars single sign-on enabled subscription
 
 > [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+> To test the steps in this tutorial, we do not recommend using a production environment.
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+To test the steps in this tutorial, you should follow these recommendations:
 
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+- Do not use your production environment, unless it is necessary.
+- If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+## <a name="scenario-description"></a>Scenario description
+In this tutorial, you test Azure AD single sign-on in a test environment. The scenario outlined in this tutorial consists of two main building blocks:
 
-1. Hinzufügen von Workstars aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Adding Workstars from the gallery
+1. Configuring and testing Azure AD single sign-on
 
-## <a name="adding-workstars-from-the-gallery"></a>Hinzufügen von Workstars aus dem Katalog
-Zum Konfigurieren der Integration von Workstars in Azure AD müssen Sie Workstars aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+## <a name="adding-workstars-from-the-gallery"></a>Adding Workstars from the gallery
+To configure the integration of Workstars into Azure AD, you need to add Workstars from the gallery to your list of managed SaaS apps.
 
-**Um Workstars aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**To add Workstars from the gallery, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![The Azure Active Directory button][1]
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+1. Navigate to **Enterprise applications**. Then go to **All applications**.
 
-    ![Blatt „Unternehmensanwendungen“][2]
+    ![The Enterprise applications blade][2]
     
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+1. To add new application, click **New application** button on the top of dialog.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![The New application button][3]
 
-1. Geben Sie im Suchfeld **Workstars** ein, wählen Sie im Ergebnisbereich **Workstars** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+1. In the search box, type **Workstars**, select **Workstars** from result panel then click **Add** button to add the application.
 
-    ![Workstars in der Ergebnisliste](./media/workstars-tutorial/tutorial_workstars_addfromgallery.png)
+    ![Workstars in the results list](./media/workstars-tutorial/tutorial_workstars_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei Workstars basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+In this section, you configure and test Azure AD single sign-on with Workstars based on a test user called "Britta Simon".
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in Workstars als Gegenstück zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Workstars muss eine Linkbeziehung eingerichtet werden.
+For single sign-on to work, Azure AD needs to know what the counterpart user in Workstars is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in Workstars needs to be established.
 
-Weisen Sie in Workstars den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In Workstars, assign the value of the **user name** in Azure AD as the value of the **Username** to establish the link relationship.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD bei Workstars müssen Sie die folgenden Bausteine ausführen:
+To configure and test Azure AD single sign-on with Workstars, you need to complete the following building blocks:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-1. **[Erstellen eines Workstars-Testbenutzers](#create-a-workstars-test-user)**, um eine Entsprechung von Britta Simon in Workstars zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+1. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+1. **[Create a Workstars test user](#create-a-workstars-test-user)** - to have a counterpart of Britta Simon in Workstars that is linked to the Azure AD representation of user.
+1. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+1. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer Workstars-Anwendung.
+In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your Workstars application.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD bei Workstars die folgenden Schritte aus:**
+**To configure Azure AD single sign-on with Workstars, perform the following steps:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **Workstars** auf **Einmaliges Anmelden**.
+1. In the Azure portal, on the **Workstars** application integration page, click **Single sign-on**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Configure single sign-on link][4]
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+1. On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.
  
-    ![Dialogfeld „Einmaliges Anmelden“](./media/workstars-tutorial/tutorial_workstars_samlbase.png)
+    ![Single sign-on dialog box](./media/workstars-tutorial/tutorial_workstars_samlbase.png)
 
-1. Führen Sie auf der Seite **Domäne und URLs für Workstars** die folgenden Schritte aus:
+1. On the **Workstars Domain and URLs** section, perform the following steps:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für Workstars](./media/workstars-tutorial/tutorial_workstars_url.png)
+    ![Workstars Domain and URLs single sign-on information](./media/workstars-tutorial/tutorial_workstars_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** die folgende URL ein: `https://workstars.com`.
+    a. In the **Identifier** textbox, type the URL: `https://workstars.com`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<subdomain>.workstars.com/saml/login_check`
+    b. In the **Reply URL** textbox, type a URL using the following pattern: `https://<subdomain>.workstars.com/saml/login_check`
 
     > [!NOTE] 
-    > Dieser Wert entspricht nicht dem tatsächlichen Wert. Aktualisieren Sie den Wert mit der richtigen Antwort-URL. Wenden Sie sich an das [Supportteam von Workstars](https://support.workstars.com), um diese Werte zu erhalten.
+    > The value is not real. Update the value with the actual Reply URL. Contact [Workstars support team](https://support.workstars.com) to get the value.
  
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+1. On the **SAML Signing Certificate** section, click **Certificate (Base64)** and then save the certificate file on your computer.
 
-    ![Downloadlink für das Zertifikat](./media/workstars-tutorial/tutorial_workstars_certificate.png) 
+    ![The Certificate download link](./media/workstars-tutorial/tutorial_workstars_certificate.png) 
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+1. Click **Save** button.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/workstars-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On Save button](./media/workstars-tutorial/tutorial_general_400.png)
 
-1. Klicken Sie im Abschnitt **Workstars-Konfiguration** auf **Workstars konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **Abmelde-URL, die SAML-Entitäts-ID und die URL für den SAML-SSO-Dienst** aus dem Abschnitt **Kurzübersicht**.
+1. On the **Workstars Configuration** section, click **Configure Workstars** to open **Configure sign-on** window. Copy the **Sign-Out URL, SAML Entity ID, and SAML Single Sign-On Service URL** from the **Quick Reference section.**
 
-    ![Workstars-Konfiguration](./media/workstars-tutorial/tutorial_workstars_configure.png) 
+    ![Workstars Configuration](./media/workstars-tutorial/tutorial_workstars_configure.png) 
 
-1. Melden Sie sich in einem anderen Webbrowserfenster bei der Workstars-Unternehmenswebsite als Administrator an.
+1. In another browser window, sign on to your Workstars company site as an administrator.
 
-1. Klicken Sie auf der Hauptsymbolleiste auf **Settings** (Einstellungen).
+1. In the main toolbar, click **Settings**.
 
-    ![Workstars-Einstellungen](./media/workstars-tutorial/tutorial_workstars_sett.png)
+    ![Workstars settings](./media/workstars-tutorial/tutorial_workstars_sett.png)
 
-1. Wechseln Sie zu **Sign On** > **Settings** (Anmeldung > Einstellungen).
+1. Go to **Sign On** > **Settings**.
 
-    ![Workstars-Anmeldung](./media/workstars-tutorial/tutorial_workstars_signon.png)
+    ![Workstars signon](./media/workstars-tutorial/tutorial_workstars_signon.png)
 
-    ![Workstars-Einstellungen](./media/workstars-tutorial/tutorial_workstars_settings.png)
+    ![Workstars settings](./media/workstars-tutorial/tutorial_workstars_settings.png)
 
-1. Führen Sie auf der Seite **Single Sign On (SAML) - Settings** die folgenden Schritte aus:
+1. On the **Single Sign On (SAML) - Settings** page, perform the following steps:
     
-    ![Workstars – SAML](./media/workstars-tutorial/tutorial_workstars_saml.png)
+    ![Workstars saml](./media/workstars-tutorial/tutorial_workstars_saml.png)
 
-    a. Geben Sie **Office 365** im Textfeld **Identity Provider Name** (Name des Identitätsanbieters) ein.
+    a. In **Identity Provider Name** textbox, type **Office 365**.
 
-    b. Fügen Sie in das Textfeld **Entitäts-ID des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben.
+    b. In the **Identity Provider Entity ID** textbox, paste the value of **SAML Entity ID**, which you have copied from Azure portal.
 
-    c. Kopieren Sie den Inhalt des heruntergeladenen Zertifikats in Editor, und fügen Sie ihn anschließend in das Textfeld **x509 Certificate** ein. 
+    c. Copy the content of the downloaded certificate file in notepad, and then paste it into the **x509 Certificate** textbox. 
 
-    d. Fügen Sie in das Textfeld **SAML SSO URL** (SAML-SSO-URL) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben.
+    d. In the **SAML SSO URL** textbox, paste the value of **SAML Single Sign-On Service URL**, which you have copied from Azure portal.
     
-    e. Fügen Sie in das Textfeld **Remote Logout URL** (Remoteabmelde-URL) den Wert der **Abmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben. 
+    e. In the **Remote Logout URL** textbox, paste the value of **Sign-Out URL**, which you have copied from Azure portal. 
 
-    f. Wählen Sie für **Name ID** die Option **Email (Default)** (E-Mail (Standard)) aus.
+    f. select **Name ID** as **Email (Default)**.
 
-    g. Klicken Sie auf **Confirm** (Bestätigen).
+    g. Click **Confirm**.
     
 > [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
+> You can now read a concise version of these instructions inside the [Azure portal](https://portal.azure.com), while you are setting up the app!  After adding this app from the **Active Directory > Enterprise Applications** section, simply click the **Single Sign-On** tab and access the embedded documentation through the **Configuration** section at the bottom. You can read more about the embedded documentation feature here: [Azure AD embedded documentation]( https://go.microsoft.com/fwlink/?linkid=845985)
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+   ![Create an Azure AD test user][100]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+1. In the Azure portal, in the left pane, click the **Azure Active Directory** button.
 
-    ![Schaltfläche „Azure Active Directory“](./media/workstars-tutorial/create_aaduser_01.png)
+    ![The Azure Active Directory button](./media/workstars-tutorial/create_aaduser_01.png)
 
-1. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+1. To display the list of users, go to **Users and groups**, and then click **All users**.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/workstars-tutorial/create_aaduser_02.png)
+    ![The "Users and groups" and "All users" links](./media/workstars-tutorial/create_aaduser_02.png)
 
-1. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+1. To open the **User** dialog box, click **Add** at the top of the **All Users** dialog box.
 
-    ![Schaltfläche „Hinzufügen“](./media/workstars-tutorial/create_aaduser_03.png)
+    ![The Add button](./media/workstars-tutorial/create_aaduser_03.png)
 
-1. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+1. In the **User** dialog box, perform the following steps:
 
-    ![Dialogfeld „Benutzer“](./media/workstars-tutorial/create_aaduser_04.png)
+    ![The User dialog box](./media/workstars-tutorial/create_aaduser_04.png)
 
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+    a. In the **Name** box, type **BrittaSimon**.
 
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+    b. In the **User name** box, type the email address of user Britta Simon.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Select the **Show Password** check box, and then write down the value that's displayed in the **Password** box.
 
-    d. Klicken Sie auf **Create**.
+    d. Click **Create**.
   
-### <a name="create-a-workstars-test-user"></a>Erstellen eines Workstars-Testbenutzers
+### <a name="create-a-workstars-test-user"></a>Create a Workstars test user
 
-In diesem Abschnitt erstellen Sie in Workstars einen Benutzer mit dem Namen „Britta Simon“. Wenden Sie sich an das [Supportteam von Workstars](https://support.workstars.com), um die Benutzer in der Workstars-Plattform hinzuzufügen.
+In this section, you create a user called Britta Simon in Workstars. Work with [Workstars support team](https://support.workstars.com) to add the users in the Workstars platform.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Workstars gewähren.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to Workstars.
 
-![Zuweisen der Benutzerrolle][200] 
+![Assign the user role][200] 
 
-**Um Britta Simon Workstars zuzuweisen, führen Sie die folgenden Schritte aus:**
+**To assign Britta Simon to Workstars, perform the following steps:**
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.
 
-    ![Benutzer zuweisen][201] 
+    ![Assign User][201] 
 
-1. Wählen Sie in der Anwendungsliste **Workstars** aus.
+1. In the applications list, select **Workstars**.
 
-    ![Workstars-Link in der Anwendungsliste](./media/workstars-tutorial/tutorial_workstars_app.png)  
+    ![The Workstars link in the Applications list](./media/workstars-tutorial/tutorial_workstars_app.png)  
 
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+1. In the menu on the left, click **Users and groups**.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![The "Users and groups" link][202]
 
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+1. Click **Add** button. Then select **Users and groups** on **Add Assignment** dialog.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+    ![The Add Assignment pane][203]
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+1. On **Users and groups** dialog, select **Britta Simon** in the Users list.
 
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+1. Click **Select** button on **Users and groups** dialog.
 
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+1. Click **Assign** button on **Add Assignment** dialog.
     
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-single-sign-on"></a>Test single sign-on
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „Workstars“ klicken, sollten Sie automatisch bei Ihrer Workstars-Anwendung angemeldet.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/active-directory-saas-access-panel-introduction.md). 
+When you click the Workstars tile in the Access Panel, you should get automatically signed-on to your Workstars application.
+For more information about the Access Panel, see [Introduction to the Access Panel](../user-help/active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Additional resources
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 
 

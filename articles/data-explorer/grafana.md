@@ -1,6 +1,6 @@
 ---
-title: Visualisieren von Daten über Azure Data Explorer in Grafana
-description: In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Grafana einrichten und dann Daten aus einem Beispielcluster visualisieren.
+title: Visualize data from Azure Data Explorer in Grafana
+description: In this how-to, you learn how to set up Azure Data Explorer as a data source for Grafana, and then visualize data from a sample cluster.
 services: data-explorer
 author: orspod
 ms.author: v-orspod
@@ -8,67 +8,67 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: 5a9684605de9af1cd9006810d595ae846db01661
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 141859d155383b01cfea998c6b7158848517eac2
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52976390"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57531951"
 ---
-# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualisieren von Daten über Azure Data Explorer in Grafana
+# <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>Visualize data from Azure Data Explorer in Grafana
 
-Grafana ist eine Analyseplattform, mit der Sie Daten abfragen und visualisieren sowie Dashboards auf Basis Ihrer Visualisierungen erstellen und freigeben können. Grafana stellt ein *Plug-In* für den Azure Data Explorer zur Verfügung, mit dem Sie Daten aus dem Azure Data Explorer verbinden und visualisieren können. In diesem Artikel erfahren Sie, wie Sie den Azure Data Explorer als Datenquelle für Grafana einrichten und dann Daten aus einem Beispielcluster visualisieren.
+Grafana is an analytics platform that enables you to query and visualize data, then create and share dashboards based on your visualizations. Grafana provides an Azure Data Explorer *plugin*, which enables you to connect to and visualize data from Azure Data Explorer. In this article, you learn how to set up Azure Data Explorer as a data source for Grafana, and then visualize data from a sample cluster.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Folgendes ist zum Abschließen dieser Vorgehensweise erforderlich:
+You need the following to complete this how to:
 
-* [Grafana, Version 5.3.0 oder höher,](http://docs.grafana.org/installation/) für Ihr Betriebssystem
+* [Grafana version 5.3.0 or later](https://docs.grafana.org/installation/) for your operating system
 
-* [Azure Data Explorer-Plug-In](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) für Grafana
+* The [Azure Data Explorer plugin](https://grafana.com/plugins/grafana-azure-data-explorer-datasource/installation) for Grafana
 
-* Ein Cluster, der die StormEvents-Beispieldaten enthält Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Azure Data Explorer-Clusters und einer Datenbank](create-cluster-database-portal.md) und [Erfassen von Beispieldaten in Azure Data Explorer](ingest-sample-data.md).
+* A cluster that includes the StormEvents sample data. For  more information, see [Quickstart: Create an Azure Data Explorer cluster and database](create-cluster-database-portal.md) and [Ingest sample data into Azure Data Explorer](ingest-sample-data.md).
 
     [!INCLUDE [data-explorer-storm-events](../../includes/data-explorer-storm-events.md)]
 
-## <a name="configure-the-data-source"></a>Konfigurieren der Datenquelle
+## <a name="configure-the-data-source"></a>Configure the data source
 
-Sie führen die folgenden Schritte aus, um den Azure Data Explorer als Datenquelle für Grafana zu konfigurieren. Diese Schritte werden in diesem Abschnitt näher erläutert:
+You perform the following steps to configure Azure Data Explorer as a data source for Grafana. We'll cover these steps in more detail in this section:
 
-1. Erstellen Sie einen Azure Active Directory-Dienstprinzipal (Azure AD). Der Dienstprinzipal wird von Grafana für den Zugriff auf den Azure Data Explorer-Dienst verwendet.
+1. Create an Azure Active Directory (Azure AD) service principal. The service principal is used by Grafana to access the Azure Data Explorer service.
 
-1. Fügen Sie den Azure AD-Dienstprinzipal der Rolle *Betrachter* in der Azure Data Explorer-Datenbank hinzu.
+1. Add the Azure AD service principal to the *viewers* role in the Azure Data Explorer database.
 
-1. Geben Sie die Grafana-Verbindungseigenschaften basierend auf Informationen des Azure AD-Dienstprinzipals an, und testen Sie die Verbindung.
+1. Specify Grafana connection properties based on information from the Azure AD service principal, then test the connection.
 
-### <a name="create-a-service-principal"></a>Erstellen eines Dienstprinzipals
+### <a name="create-a-service-principal"></a>Create a service principal
 
-Sie können den Dienstprinzipal im [Azure-Portal](#azure-portal) oder mit der [Azure-Befehlszeilenschnittstelle](#azure-cli) erstellen. Unabhängig von der verwendeten Methode erhalten Sie nach der Erstellung Werte für vier Verbindungseigenschaften, die Sie in späteren Schritten verwenden.
+You can create the service principal in the [Azure portal](#azure-portal) or using the [Azure CLI](#azure-cli) command-line experience. Regardless of which method you use, after creation you get values for four connection properties that you'll use in later steps.
 
-#### <a name="azure-portal"></a>Azure-Portal
+#### <a name="azure-portal"></a>Azure portal
 
-1. Befolgen Sie zum Erstellen des Dienstprinzipals die Anweisungen in der [Dokumentation zum Azure-Portal](/azure/active-directory/develop/howto-create-service-principal-portal).
+1. To create the service principal, follow the instructions in the [Azure portal documentation](/azure/active-directory/develop/howto-create-service-principal-portal).
 
-    1. Weisen Sie im Abschnitt [Zuweisen der Anwendung zu einer Rolle](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) den Rollentyp **Leser** zu Ihrem Azure Data Explorer-Cluster zu.
+    1. In the [Assign the application to a role](/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) section, assign a role type of **Reader** to your Azure Data Explorer cluster.
 
-    1. Kopieren Sie im Abschnitt [Abrufen von Werten für die Anmeldung](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) die drei in den Schritten behandelten Eigenschaftswerte: **Verzeichnis-ID** (Mandanten-ID), **Anwendungs-ID** und **Kennwort**.
+    1. In the [Get values for signing in](/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) section, copy the three property values covered in the steps: **Directory ID** (tenant ID), **Application ID**, and **Password**.
 
-1. Wählen Sie im Azure-Portal **Abonnements**, und kopieren Sie dann die ID für das Abonnement, in dem Sie den Dienstprinzipal erstellt haben.
+1. In the Azure portal, select **Subscriptions** then copy the ID for the subscription in which you created the service principal.
 
-    ![Abonnement-ID – Portal](media/grafana/subscription-id-portal.png)
+    ![Subscription ID - portal](media/grafana/subscription-id-portal.png)
 
-#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+#### <a name="azure-cli"></a>Azure CLI
 
-1. Erstellen eines Dienstprinzipals Legen Sie einen geeigneten Bereich und den Rollentyp `reader` fest.
+1. Create a service principal. Set an appropriate scope and a role type of `reader`.
 
     ```azurecli
     az ad sp create-for-rbac --name "https://{UrlToYourGrafana}:{PortNumber}" --role "reader" \
                              --scopes /subscriptions/{SubID}/resourceGroups/{ResourceGroupName}
     ```
 
-    Weitere Informationen finden Sie unter [Erstellen eines Azure-Dienstprinzipals mit Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
+    For more information, see [Create an Azure service principal with Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli).
 
-1. Der Befehl gibt ein Resultset wie das folgende zurück. Kopieren Sie die drei Eigenschaftswerte: **appID**, **password** und **tenant**.
+1. The command returns a result set like the following. Copy the three property values: **appID**, **password**, and **tenant**.
 
     ```json
     {
@@ -80,135 +80,135 @@ Sie können den Dienstprinzipal im [Azure-Portal](#azure-portal) oder mit der [A
     }
     ```
 
-1. Rufen Sie eine Liste Ihrer Abonnements ab.
+1. Get a list of your subscriptions.
 
     ```azurecli
     az account list --output table
     ```
 
-    Kopieren Sie die entsprechende Abonnement-ID.
+    Copy the appropriate subscription ID.
 
-    ![Abonnement-ID – CLI](media/grafana/subscription-id-cli.png)
+    ![Subscription ID - CLI](media/grafana/subscription-id-cli.png)
 
-### <a name="add-the-service-principal-to-the-viewers-role"></a>Hinzufügen des Dienstprinzipals zur Rolle des Betrachters
+### <a name="add-the-service-principal-to-the-viewers-role"></a>Add the service principal to the viewers role
 
-Nachdem Sie jetzt über einen Dienstprinzipal verfügen, fügen Sie ihn der Rolle *Betrachter* in der Azure Data Explorer-Datenbank hinzu. Sie können diese Aufgabe unter **Berechtigungen** im Azure-Portal oder unter **Abfrage** mit einem Verwaltungsbefehl ausführen.
+Now that you have a service principal, you add it to the *viewers* role in the Azure Data Explorer database. You can perform this task under **Permissions** in the Azure portal, or under **Query** by using a management command.
 
-#### <a name="azure-portal---permissions"></a>Azure-Portal – Berechtigungen
+#### <a name="azure-portal---permissions"></a>Azure portal - Permissions
 
-1. Navigieren Sie im Azure-Portal zum Azure Data Explorer-Cluster.
+1. In the Azure portal, go to your Azure Data Explorer cluster.
 
-1. Wählen Sie im Abschnitt **Übersicht** die Datenbank mit den StormEvents-Beispieldaten aus.
+1. In the **Overview** section, select the database with the StormEvents sample data.
 
-    ![Datenbank auswählen](media/grafana/select-database.png)
+    ![Select database](media/grafana/select-database.png)
 
-1. Wählen Sie **Berechtigungen** und dann **Hinzufügen** aus.
+1. Select **Permissions** then **Add**.
 
-    ![Datenbankberechtigungen](media/grafana/database-permissions.png)
+    ![Database permissions](media/grafana/database-permissions.png)
 
-1. Wählen Sie unter **Datenbankberechtigungen hinzufügen** die Rolle **Betrachter** und dann **Prinzipale auswählen** aus.
+1. Under **Add database permissions**, select the **Viewer** role then **Select principals**.
 
-    ![Hinzufügen von Datenbankberechtigungen](media/grafana/add-permission.png)
+    ![Add database permissions](media/grafana/add-permission.png)
 
-1. Suchen Sie nach dem von Ihnen erstellten Dienstprinzipal (das Beispiel zeigt den Prinzipal **mb-grafana**). Wählen Sie den Prinzipal und dann **Auswählen** aus.
+1. Search for the service principal you created (the example shows the principal **mb-grafana**). Select the principal, then **Select**.
 
-    ![Verwalten von Berechtigungen im Azure-Portal](media/grafana/new-principals.png)
+    ![Manage permissions in the Azure portal](media/grafana/new-principals.png)
 
-1. Wählen Sie **Speichern**aus.
+1. Select **Save**.
 
-    ![Verwalten von Berechtigungen im Azure-Portal](media/grafana/save-permission.png)
+    ![Manage permissions in the Azure portal](media/grafana/save-permission.png)
 
-#### <a name="management-command---query"></a>Verwaltungsbefehl – Abfrage
+#### <a name="management-command---query"></a>Management command - Query
 
-1. Navigieren Sie im Azure-Portal zum Azure Data Explorer-Cluster, und wählen Sie **Abfrage** aus.
+1. In the Azure portal, go to your Azure Data Explorer cluster, and select **Query**.
 
-    ![Abfragen](media/grafana/query.png)
+    ![Query](media/grafana/query.png)
 
-1. Führen Sie den folgenden Befehl im Abfragefenster aus. Verwenden Sie die Anwendungs-ID und die Mandanten-ID aus dem Azure-Portal oder der Befehlszeilenschnittstelle.
+1. Run the following command in the query window. Use the application ID and tenant ID from the Azure portal or CLI.
 
     ```kusto
     .add database {TestDatabase} viewers ('aadapp={ApplicationID};{TenantID}')
     ```
 
-    Der Befehl gibt ein Resultset wie das folgende zurück. In diesem Beispiel ist die erste Zeile für einen vorhandenen Benutzer in der Datenbank und die zweite Zeile für den gerade hinzugefügten Dienstprinzipal.
+    The command returns a result set like the following. In this example, the first row is for an existing user in the database, and the second row is for the service principal that was just added.
 
-    ![Resultset](media/grafana/result-set.png)
+    ![Result set](media/grafana/result-set.png)
 
-### <a name="specify-properties-and-test-the-connection"></a>Angeben von Eigenschaften und Testen der Verbindung
+### <a name="specify-properties-and-test-the-connection"></a>Specify properties and test the connection
 
-Wenn der Dienstprinzipal der Rolle *Betrachter* zugeordnet ist, geben Sie jetzt Eigenschaften in Ihrer Instanz von Grafana an und testen die Verbindung zum Azure Data Explorer.
+With the service principal assigned to the *viewers* role, you now specify properties in your instance of Grafana, and test the connection to Azure Data Explorer.
 
-1. Wählen Sie in Grafana im linken Menü das Zahnradsymbol und dann **Datenquellen** aus.
+1. In Grafana, on the left menu, select the gear icon then **Data Sources**.
 
-    ![Datenquellen](media/grafana/data-sources.png)
+    ![Data sources](media/grafana/data-sources.png)
 
-1. Wählen Sie die Option **Datenquelle hinzufügen**.
+1. Select **Add data source**.
 
-1. Geben Sie auf der Seite **Datenquellen/Neu** einen Namen für die Datenquelle ein, und wählen Sie dann den Typ **Azure Data Explorer-Datenquelle** aus.
+1. On the **Data Sources / New** page, enter a name for the data source, then select the type **Azure Data Explorer Datasource**.
 
-    ![Verbindungsname und -typ](media/grafana/connection-name-type.png)
+    ![Connection name and type](media/grafana/connection-name-type.png)
 
-1. Geben Sie den Namen Ihres Clusters in der Form „https://{ClusterName}.{Region}.kusto.windows.net“ ein. Geben Sie die anderen Werte aus dem Azure-Portal oder der Befehlszeilenschnittstelle ein. Eine Zuordnung finden Sie in der Tabelle unten dem folgenden Bild.
+1. Enter the name of your cluster in the form https://{ClusterName}.{Region}.kusto.windows.net. Enter the other values from the Azure portal or CLI. See the table below the following image for a mapping.
 
-    ![Verbindungseigenschaften](media/grafana/connection-properties.png)
+    ![Connection properties](media/grafana/connection-properties.png)
 
-    | Grafana-Benutzeroberfläche | Azure-Portal | Azure-Befehlszeilenschnittstelle |
+    | Grafana UI | Azure portal | Azure CLI |
     | --- | --- | --- |
-    | Subscription Id (Abonnement-ID) | ABONNEMENT-ID | SubscriptionId |
-    | Mandanten-ID | Verzeichnis-ID | Mandant |
-    | Client-ID | Anwendungs-ID | appId |
-    | Geheimer Clientschlüssel | Kennwort | password |
+    | Subscription Id | SUBSCRIPTION ID | SubscriptionId |
+    | Tenant Id | Directory ID | tenant |
+    | Client Id | Application ID | appId |
+    | Client secret | Password | password |
     | | | |
 
-1. Wählen Sie **Speichern und testen** aus.
+1. Select **Save & Test**.
 
-    Wenn der Test erfolgreich war, wechseln Sie zum nächsten Abschnitt. Wenn Probleme auftreten, überprüfen Sie die in Grafana angegebenen Werte, und wiederholen Sie die vorherigen Schritte.
+    If the test is successful, go to the next section. If you encounter any issues, check the values you specified in Grafana, and review previous steps.
 
-## <a name="visualize-data"></a>Visualisieren von Daten
+## <a name="visualize-data"></a>Visualize data
 
-Nachdem Sie den Azure Data Explorer als Datenquelle für Grafana konfiguriert haben, ist es an der Zeit, Daten zu visualisieren. Hier wird ein einfaches Beispiel gezeigt, aber es sind noch viele weitere Schritte verfügbar. Es wird empfohlen, sich [Schreiben von Abfragen für den Azure Data Explorer](write-queries.md) anzusehen, um Beispiele für andere Abfragen zu erhalten, die für das Beispieldataset ausgeführt werden.
+Now you've finished configuring Azure Data Explorer as a data source for Grafana, it's time to visualize data. We'll show a basic example here, but there's a lot more you can do. We recommend looking at [Write queries for Azure Data Explorer](write-queries.md) for examples of other queries to run against the sample data set.
 
-1. Wählen Sie in Grafana im linken Menü das Plussymbol und dann **Dashboard** aus.
+1. In Grafana, on the left menu, select the plus icon then **Dashboard**.
 
-    ![Erstellen von Dashboards](media/grafana/create-dashboard.png)
+    ![Create dashboard](media/grafana/create-dashboard.png)
 
-1. Wählen Sie unter der Registerkarte **Hinzufügen** die Option **Diagramm** aus.
+1. Under the **Add** tab, select **Graph**.
 
-    ![Hinzufügen des Diagramms](media/grafana/add-graph.png)
+    ![Add graph](media/grafana/add-graph.png)
 
-1. Wählen Sie im Diagrammpanel **Paneltitel** und dann **Bearbeiten** aus.
+1. On the graph panel, select **Panel Title** then **Edit**.
 
-    ![Bearbeiten des Panels](media/grafana/edit-panel.png)
+    ![Edit panel](media/grafana/edit-panel.png)
 
-1. Wählen Sie unten im Panel **Datenquelle** und dann die Datenquelle aus, die Sie konfiguriert haben.
+1. At the bottom of the panel, select **Data Source** then select the data source that you configured.
 
-    ![Auswählen einer Datenquelle](media/grafana/select-data-source.png)
+    ![Select data source](media/grafana/select-data-source.png)
 
-1. Kopieren Sie im Abfragepanel die folgende Abfrage, und wählen Sie dann **Ausführen** aus. Die Abfrage berücksichtigt die Anzahl der Ereignisse pro Tag für das Beispieldataset.
+1. In the query pane, copy in the following query then select **Run**. The query buckets the count of events by day for the sample data set.
 
     ```kusto
     StormEvents
     | summarize event_count=count() by bin(StartTime, 1d)
     ```
 
-    ![Abfrage ausführen](media/grafana/run-query.png)
+    ![Run query](media/grafana/run-query.png)
 
-1. Das Diagramm zeigt keine Ergebnisse, da es standardmäßig auf Daten der letzten sechs Stunden ausgerichtet ist. Wählen Sie im oberen Menü **Letzte 6 Stunden** aus.
+1. The graph doesn't show any results because it's scoped by default to data from the last six hours. On the top menu, select **Last 6 hours**.
 
-    ![Letzte sechs Stunden](media/grafana/last-six-hours.png)
+    ![Last six hours](media/grafana/last-six-hours.png)
 
-1. Geben Sie einen benutzerdefinierten Bereich an, der das Jahr 2007 umfasst, das in unserem StormEvents-Beispieldataset enthalten ist. Wählen Sie **Übernehmen**.
+1. Specify a custom range that covers 2007, the year included in our StormEvents sample data set. Select **Apply**.
 
-    ![Benutzerdefinierter Datumsbereich](media/grafana/custom-date-range.png)
+    ![Custom date range](media/grafana/custom-date-range.png)
 
-    Jetzt zeigt das Diagramm die nach Tag gegliederten Daten von 2007 an.
+    Now the graph shows the data from 2007, bucketed by day.
 
-    ![Fertiges Diagramm](media/grafana/finished-graph.png)
+    ![Finished graph](media/grafana/finished-graph.png)
 
-1. Wählen Sie im oberen Menü das Speichersymbol aus: ![Symbol „Speichern“](media/grafana/save-icon.png).
+1. On the top menu, select the save icon: ![Save icon](media/grafana/save-icon.png).
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Schreiben von Abfragen für den Azure-Daten-Explorer](write-queries.md)
+[Write queries for Azure Data Explorer](write-queries.md)
 
-[Tutorial: Visualisieren von Daten über Azure Data Explorer in Power BI](visualize-power-bi.md)
+[Tutorial: Visualize data from Azure Data Explorer in Power BI](visualize-power-bi.md)

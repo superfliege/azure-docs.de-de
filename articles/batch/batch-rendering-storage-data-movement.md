@@ -1,98 +1,99 @@
 ---
-title: Speicherung und Datenverschiebung für das Rendering – Azure Batch
-description: Optionen für die Speicherung und Datenverschiebung zum Rendern von Workloads
+title: Storage and data movement for rendering - Azure Batch
+description: Storage and data movement options for rendering workloads
 services: batch
+ms.service: batch
 author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 0d343ff5d7513500fa7803495dd42eb94b772935
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: 5a0d4dc82995e63697cc673bc54695c9c6d586df
+ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53546095"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57790245"
 ---
-# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Optionen für die Speicherung und Datenverschiebung zum Rendern von Medienobjekt- und Ausgabedateien
+# <a name="storage-and-data-movement-options-for-rendering-asset-and-output-files"></a>Storage and data movement options for rendering asset and output files
 
-Es gibt mehrere Möglichkeiten, wie Sie die Szenen- und Medienobjektdateien für die Renderinganwendungen auf den VMs des Pools bereitstellen können:
+There are multiple options for making the scene and asset files available to the rendering applications on the pool VMs:
 
-* [Einführung in Objektspeicher in Azure](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
-  * Szenen- und Medienobjektdateien werden aus einem lokalen Dateisystem in Blobspeicher hochgeladen. Wenn die Anwendung von einer Aufgabe ausgeführt wird, werden die erforderlichen Dateien aus dem Blobspeicher auf die VM kopiert, damit von der Renderinganwendung darauf zugegriffen werden kann. Die Ausgabedateien werden von der Renderinganwendung auf den VM-Datenträger geschrieben und dann in den Blobspeicher kopiert.  Falls erforderlich, können die Ausgabedateien aus dem Blobspeicher in ein lokales Dateisystem heruntergeladen werden.
-  * Azure-Blobspeicher ist eine einfache und kostengünstige Option für kleinere Projekte.  Da auf jeder Pool-VM alle Medienobjektdateien benötigt werden, muss bei steigender Zahl und Größe von Medienobjektdateien sorgfältig sichergestellt werden, dass die Dateiübertragungen so effizient wie möglich durchgeführt werden.  
-* Azure-Speicher als Dateisystem mit [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
-  * Für Linux-VMs kann ein Speicherkonto verfügbar gemacht und als Dateisystem verwendet werden, wenn der virtuelle Dateisystemtreiber „blobfuse“ genutzt wird.
-  * Diese Option hat den Vorteil, dass sie sehr kostengünstig ist, weil für das Dateisystem keine VMs benötigt werden. Außerdem werden durch die blobfuse-Zwischenspeicherung auf den VMs mehrfache Downloads derselben Dateien für Aufträge und Aufgaben vermieden.  Auch die Datenverschiebung ist einfach, da die Dateien lediglich Blobs und Standard-APIs und -tools sind. Beispielsweise kann azcopy verwendet werden, um eine Datei zwischen einem lokalen Dateisystem und Azure-Speicher zu kopieren.
-* Dateisystem oder Dateifreigabe:
-  * Je nach VM-Betriebssystem und den Anforderungen an Leistung und Skalierung gibt es folgende Möglichkeiten: [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), Verwendung einer VM mit angefügten Datenträgern für NFS, Verwendung mehrerer VMs mit angefügten Datenträgern für ein verteiltes Dateisystem, z.B. GlusterFS, oder Verwendung des Angebots eines Drittanbieters.
-  * [Avere Systems](http://www.averesystems.com/) ist jetzt Teil von Microsoft und wird in Kürze Lösungen anbieten, die für das Rendering mit großem Umfang und hoher Leistung ideal sind.  Mit der Avere-Lösung wird ein Azure-basierter NFS- oder SMB-Cache erstellt, der zusammen mit Blobspeicher oder mit lokalen NAS-Geräten genutzt werden kann.
-  * Mit einem Dateisystem können Dateien gelesen bzw. direkt in das Dateisystem geschrieben oder zwischen dem Dateisystem und den VMs des Pools kopiert werden.
-  * Mit einem gemeinsam genutzten Dateisystem kann eine große Zahl von Medienobjekten für mehrere Projekte und Aufträge verwendet werden, und bei den Renderingaufgaben wird nur auf die erforderlichen Komponenten zugegriffen.
+* [Azure blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction):
+  * Scene and asset files are uploaded to blob storage from a local file system. When the application is run by a task, then the required files are copied from blob storage onto the VM so they can be accessed by the rendering application. The output files are written by the rendering application to the VM disk and then copied to blob storage.  If necessary, the output files can be downloaded from blob storage to a local file system.
+  * Azure blob storage is a simple and cost-effective option for smaller projects.  As all asset files are required on each pool VM, then once the number and size of asset files increases care needs to be taken to ensure the file transfers are as efficient as possible.  
+* Azure storage as a file system using [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux):
+  * For Linux VMs, a storage account can be exposed and used as a file system when the blobfuse virtual file system driver is used.
+  * This option has the advantage that it is very cost-effective, as no VMs are required for the file system, plus blobfuse caching on the VMs avoids repeated downloads of the same files for multiple jobs and tasks.  Data movement is also simple as the files are simply blobs and standard APIs and tools, such as azcopy, can be used to copy file between an on-premises file system and Azure storage.
+* File system or file share:
+  * Depending on VM operating system and performance/scale requirements, then options include [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction), using a VM with attached disks for NFS, using multiple VMs with attached disks for a distributed file system like GlusterFS, or using a third-party offering.
+  * [Avere Systems](https://www.averesystems.com/) is now part of Microsoft and will have solutions in the near future that are ideal for large-scale, high-performance rendering.  The Avere solution will enable an Azure-based NFS or SMB cache to be created that works in conjunction with blob storage or with on-premises NAS devices.
+  * With a file system, files can be read or written directly to the file system or can be copied between file system and the pool VMs.
+  * A shared file system allows a large number of assets shared between projects and jobs to be utilized, with rendering tasks only accessing what is required.
 
-## <a name="using-azure-blob-storage"></a>Verwenden von Azure-Blobspeicher
+## <a name="using-azure-blob-storage"></a>Using Azure blob storage
 
-Es sollte ein Blobspeicherkonto oder ein Speicherkonto vom Typ „Allgemein v2“ verwendet werden.  Diese beiden Typen von Speicherkonten können gegenüber einem Speicherkonto vom Typ „Allgemein v1“ mit deutlich höheren Grenzwerten konfiguriert werden, wie in [diesem Blogbeitrag](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/) beschrieben.  Wenn sie konfiguriert wurden, ermöglichen die höheren Grenzwerte eine viel bessere Leistung und Skalierbarkeit. Dies gilt besonders, wenn viele Pool-VMs auf das Speicherkonto zugreifen.
+A blob storage account or a general-purpose v2 storage account should be used.  These two storage account types can be configured with significantly higher limits compared to a general-purpose v1 storage account, as detailed in [this blog post](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/).  When configured, the higher limits will enable much better performance and scalability, especially when there are many pool VMs accessing the storage account.
 
-### <a name="copying-files-between-client-and-blob-storage"></a>Kopieren von Dateien zwischen Client- und Blobspeicher
+### <a name="copying-files-between-client-and-blob-storage"></a>Copying files between client and blob storage
 
-Zum Kopieren von Dateien in und aus Azure-Speicher können verschiedene Mechanismen verwendet werden, z.B. die Speicherblob-API, die [Azure Storage-Datenverschiebungsbibliothek](https://github.com/Azure/azure-storage-net-data-movement), das Befehlszeilentool azcopy für [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) oder [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/) und [Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
+To copy files to and from Azure storage, various mechanisms can be used including the storage blob API, the [Azure Storage Data Movement Library](https://github.com/Azure/azure-storage-net-data-movement), the azcopy command line tool for [Windows](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy) or [Linux](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux), [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/), and [Azure Batch Explorer](https://azure.github.io/BatchExplorer/).
 
-Bei Verwendung von azcopy können beispielsweise alle Objekte eines Ordners wie folgt übertragen werden:
+For example, using azcopy, all assets in a folder can be transferred as follows:
 
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /Y`
 
-Der Parameter „/XO“ kann verwendet werden, um nur geänderte Dateien zu kopieren:
+To copy only modified files, the /XO parameter can be used:
 
 `azcopy /source:. /dest:https://account.blob.core.windows.net/rendering/project /destsas:"?st=2018-03-30T16%3A26%3A00Z&se=2020-03-31T16%3A26%3A00Z&sp=rwdl&sv=2017-04-17&sr=c&sig=sig" /XO /Y`
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopieren von Eingabemedienobjekt-Dateien aus dem Blobspeicher auf Batch-Pool-VMs
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Copying input asset files from blob storage to Batch pool VMs
 
-Es gibt verschiedene Ansätze zum Kopieren von Dateien, und der beste Ansatz wird anhand der Größe der Medienobjekte eines Auftrags ermittelt.
-Der einfachste Ansatz ist das Kopieren aller Medienobjektdateien auf die Pool-VMs für jeden Auftrag:
+There are a couple of different approaches to copy files with the best approach determined by the size of the job assets.
+The simplest approach is to copy all the asset files to the pool VMs for each job:
 
-* Falls Dateien vorhanden sind, die nur für einen Auftrag gelten, aber für alle Aufgaben eines Auftrags erforderlich sind, kann zum Kopieren aller Dateien eine [Auftragsvorbereitungsaufgabe](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) angegeben werden.  Die Auftragsvorbereitungsaufgabe wird einmal ausgeführt, wenn die erste Auftragsaufgabe auf einer VM ausgeführt wird, aber für nachfolgende Auftragsaufgaben dann nicht mehr.
-* Es sollte eine [Auftragsfreigabeaufgabe](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) angegeben werden, um die speziell für einen Auftrag geltenden Dateien zu entfernen, nachdem der Auftrag abgeschlossen ist. So wird verhindert, dass sich der VM-Datenträger mit allen Medienobjektdateien des Auftrags füllt.
-* Wenn mehrere Aufträge dieselben Medienobjekte nutzen und für jeden Auftrag an den Medienobjekten nur inkrementelle Änderungen vorgenommen werden, werden auch dann alle Dateien kopiert, wenn nur ein Teil davon aktualisiert wurde.  Dies wäre ineffizient, wenn eine hohe Zahl von großen Medienobjektdateien vorhanden ist.
+* When there are files unique to a job, but are required for all the tasks of a job, then a [job preparation task](https://docs.microsoft.com/rest/api/batchservice/job/add#jobpreparationtask) can be specified to copy all the files.  The job preparation task is run once when the first job task is executed on a VM but is not run again for subsequent job tasks.
+* A [job release task](https://docs.microsoft.com/rest/api/batchservice/job/add#jobreleasetask) should be specified to remove the per-job files once the job has completed; this will avoid the VM disk getting filled by all the job asset files.
+* When there are multiple jobs using the same assets, with only incremental changes to the assets for each job, then all asset files are still copied, even if only a subset were updated.  This would be inefficient when there are lots of large asset files.
 
-Falls die Medienobjektdateien zwischen den Aufträgen wiederverwendet werden und es hierbei nur zu inkrementellen Änderungen kommt, besteht ein effizienterer und gleichzeitig etwas aufwändigerer Ansatz darin, Medienobjekte im gemeinsam genutzten Ordner auf der VM zu speichern und geänderte Dateien zu synchronisieren.
+When asset files are reused between jobs, with only incremental changes between jobs, then a more efficient but slightly more involved approach is to store assets in the shared folder on the VM and sync changed files.
 
-* Für die Auftragsvorbereitungsaufgabe wird der Kopiervorgang per azcopy mit dem Parameter „/XO“ für den gemeinsam genutzten VM-Ordner durchgeführt, der über die Umgebungsvariable AZ_BATCH_NODE_SHARED_DIR angegeben wird.  Bei diesem Vorgang werden nur geänderte Dateien auf jede VM kopiert.
-* Beim Wählen der Größe für die Medienobjekte muss sorgfältig darauf geachtet werden, dass sie auf das temporäre Laufwerk der Pool-VMs passen.
+* The job preparation task would perform the copy using azcopy with the /XO parameter to the VM shared folder specified by AZ_BATCH_NODE_SHARED_DIR environment variable.  This will only copy changed files to each VM.
+* Thought will have to be given to the size of all assets to ensure they will fit on the temporary drive of the pool VMs.
 
-Azure Batch verfügt über integrierte Unterstützung für das Kopieren von Dateien zwischen einem Speicherkonto und Batch-Pool-VMs.  Mit [Ressourcendateien](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) für Aufgaben werden Dateien aus dem Speicher auf Pool-VMs kopiert und können für die Auftragsvorbereitungsaufgabe angegeben werden.  Leider besteht bei Hunderten von Dateien auch die Möglichkeit, dass ein Grenzwert erreicht wird und für die Aufgaben ein Fehler auftritt.  Bei einer großen Zahl von Medienobjekten wird empfohlen, das Befehlszeilentool azcopy in der Auftragsvorbereitungsaufgabe zu nutzen, da Platzhalter verwendet werden können und keine Grenzwerte gelten.
+Azure Batch has built-in support to copy files between a storage account and Batch pool VMs.  Task [resource files](https://docs.microsoft.com/rest/api/batchservice/job/add#resourcefile) copy files from storage to pool VMs and could be specified for the job preparation task.  Unfortunately, when there are hundreds of files it is possible to hit a limit and tasks to fail.  When there are large numbers of assets it is recommended to use the azcopy command line in the job preparation task, which can use wildcards and has no limit.
 
-### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Kopieren von Ausgabedateien in Blobspeicher von Batch-Pool-VMs
+### <a name="copying-output-files-to-blob-storage-from-batch-pool-vms"></a>Copying output files to blob storage from Batch pool VMs
 
-[Ausgabedateien](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) können verwendet werden, um Dateien von einer Pool-VM in den Speicher zu kopieren.  Es können eine oder mehrere Dateien von der VM in ein angegebenes Speicherkonto kopiert werden, nachdem die Aufgabe abgeschlossen ist.  Die gerenderte Ausgabe sollte kopiert werden, aber es kann auch ratsam sein, Protokolldateien zu speichern.
+[Output files](https://docs.microsoft.com/rest/api/batchservice/task/add#outputfile) can be used copy files from a pool VM to storage.  One or more files can be copied from the VM to a specified storage account once the task has completed.  The rendered output should be copied, but it also may be desirable to store log files.
 
-## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Verwenden eines virtuellen blobfuse-Dateisystems für Linux-VM-Pools
+## <a name="using-a-blobfuse-virtual-file-system-for-linux-vm-pools"></a>Using a blobfuse virtual file system for Linux VM pools
 
-„blobfuse“ ist ein virtueller Dateisystemtreiber für Azure Blob Storage, der Ihnen den Zugriff auf Dateien, die als Blobs in einem Storage-Konto gespeichert sind, über das Linux-Dateisystem ermöglicht.
+Blobfuse is a virtual file system driver for Azure Blob Storage, which allows you to access files stored as blobs in a Storage account through the Linux file system.
 
-Für Poolknoten kann das Dateisystem beim Starten bereitgestellt werden, oder die Bereitstellung kann im Rahmen einer Auftragsvorbereitungsaufgabe erfolgen. Eine Aufgabe wird nur ausgeführt, wenn die erste Aufgabe eines Auftrags auf einem Knoten ausgeführt wird.  blobfuse kann so konfiguriert werden, dass sowohl ein Ramdisk-Datenträger als auch die lokale SSD der VMs zum Zwischenspeichern von Dateien genutzt werden, um die Leistung erheblich zu steigern, wenn mehrere Aufgaben auf einem Knoten teilweise auf dieselben Dateien zugreifen.
+Pool nodes can mount the file system when started or the mount can happen as part of a job preparation task – a task that is only run when the first task in a job runs on a node.  Blobfuse can be configured to leverage both a ramdisk and the VMs local SSD for caching of files, which will increase performance significantly if multiple tasks on a node access some of the same files.
 
-Es sind [Beispielvorlagen](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) verfügbar, mit denen eigenständige V-Ray-Rendervorgänge mit einem blobfuse-Dateisystem ausgeführt werden können und die als Basis für Vorlagen anderer Anwendungen dienen können.
+[Sample templates are available](https://github.com/Azure/BatchExplorer-data/tree/master/ncj/vray/render-linux-with-blobfuse-mount) to run standalone V-Ray renders using a blobfuse file system and can be used as the basis for templates for other applications.
 
-### <a name="accessing-files"></a>Zugreifen auf Dateien
+### <a name="accessing-files"></a>Accessing files
 
-Über Auftragsaufgaben werden Pfade für Eingabe- und Ausgabedateien angegeben, indem das bereitgestellte Dateisystem verwendet wird.
+Job tasks specify paths for input files and output files using the mounted file system.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopieren von Eingabemedienobjekt-Dateien aus dem Blobspeicher auf Batch-Pool-VMs
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Copying input asset files from blob storage to Batch pool VMs
 
-Da es sich bei den Dateien einfach um Blobs in Azure Storage handelt, können standardmäßige Blob-APIs, Tools und Benutzeroberflächen genutzt werden, um Dateien zwischen einem lokalen Dateisystem und Blobspeicher zu kopieren, z.B. azcopy, Storage-Explorer, Batch Explorer usw.
+As files are simply blobs in Azure Storage, then standard blob APIs, tools, and UIs can be used to copy files between an on-premises file system and blob storage; for example, azcopy, Storage Explorer, Batch Explorer, etc.
 
-## <a name="using-azure-files-with-windows-vms"></a>Verwenden von Azure Files mit Windows-VMs
+## <a name="using-azure-files-with-windows-vms"></a>Using Azure Files with Windows VMs
 
-[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das SMB-Protokoll zugegriffen werden kann.  Azure Files basiert auf Azure-Blobspeicher, ist [kostengünstig](https://azure.microsoft.com/pricing/details/storage/files/) und kann für die Datenreplikation in einer anderen Region konfiguriert werden, um globale Redundanz zu erzielen.  Die [Skalierbarkeitsziele](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) sollten überprüft werden, um zu ermitteln, ob die Verwendung von Azure Files sinnvoll ist. Dies richtet sich nach der prognostizierten Poolgröße und der Anzahl von Medienobjektdateien.
+[Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction) offers fully managed file shares in the cloud that are accessible via the SMB protocol.  Azure Files is based on Azure blob storage; it is [cost-efficient](https://azure.microsoft.com/pricing/details/storage/files/) and can be configured with data replication to another region so globally redundant.  [Scale targets](https://docs.microsoft.com/azure/storage/files/storage-files-scale-targets#azure-files-scale-targets) should be reviewed to determine if Azure Files should be used given the forecast pool size and number of asset files.
 
-Es ist ein [Blogbeitrag](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) und eine [Dokumentation](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) vorhanden, in der die Bereitstellung einer Azure Files-Freigabe beschrieben wird.
+There is a [blog post](https://blogs.msdn.microsoft.com/windowsazurestorage/2014/05/26/persisting-connections-to-microsoft-azure-files/) and [documentation](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows) covering how to mount an Azure File share.
 
-### <a name="mounting-an-azure-files-share"></a>Bereitstellen einer Azure Files-Freigabe
+### <a name="mounting-an-azure-files-share"></a>Mounting an Azure Files share
 
-Für die Verwendung in Batch muss bei jeder Ausführung einer Aufgabe ein Bereitstellungsvorgang durchgeführt werden, da es nicht möglich ist, die Verbindung zwischen den Aufgaben beizubehalten.  Die einfachste Möglichkeit ist hierbei die Verwendung von cmdkey, um Anmeldeinformationen beizubehalten, indem die Startaufgabe in der Poolkonfiguration verwendet wird. Anschließend wird die Freigabe vor jeder Aufgabe bereitgestellt.
+To use in Batch, a mount operation needs to be performed each time a task in run as it is not possible to persist the connection between tasks.  The easiest way to do this is to use cmdkey to persist credentials using the start task in the pool configuration, then mount the share before each task.
 
-Beispiel für die Verwendung von cmdkey in einer Poolvorlage (für die Nutzung in einer JSON-Datei mit Escapezeichen versehen): Beachten Sie, dass der Benutzerkontext beim Trennen des cmdkey-Aufrufs vom „net use“-Aufruf für die Startaufgabe dem Benutzerkontext für die Ausführung der Aufgaben entsprechen muss:
+Example use of cmdkey in a pool template (escaped for use in JSON file) – note that when separating the cmdkey call from the net use call, the user context for the start task must be the same as that used for running the tasks:
 
 ```
 "startTask": {
@@ -106,7 +107,7 @@ Beispiel für die Verwendung von cmdkey in einer Poolvorlage (für die Nutzung i
 }
 ```
 
-Beispiel für Auftragsaufgaben-Befehlszeile:
+Example job task command line:
 ```
 "commandLine":"net use S:
   \\\\storageaccountname.file.core.windows.net\\rendering &
@@ -117,20 +118,20 @@ Beispiel für Auftragsaufgaben-Befehlszeile:
   \"s:\\3dsMax\\Dragon\\Assets\\Dragon_Character_Rig.max\""
 ```
 
-### <a name="accessing-files"></a>Zugreifen auf Dateien
+### <a name="accessing-files"></a>Accessing files
 
-Mit Auftragsaufgaben werden Pfade für Eingabe- und Ausgabedateien angegeben, indem das bereitgestellte Dateisystem verwendet wird – entweder mit einem zugeordneten Laufwerk oder über einen UNC-Pfad.
+Job tasks specify paths for input files and output files using the mounted file system, either using a mapped drive or a UNC path.
 
-### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Kopieren von Eingabemedienobjekt-Dateien aus dem Blobspeicher auf Batch-Pool-VMs
+### <a name="copying-input-asset-files-from-blob-storage-to-batch-pool-vms"></a>Copying input asset files from blob storage to Batch pool VMs
 
-Azure Files wird von allen wichtigen APIs und Tools unterstützt, die über Azure Storage-Unterstützung verfügen, z.B. azcopy, Azure CLI, Storage-Explorer, Azure PowerShell, Batch Explorer usw.
+Azure Files are supported by all the main APIs and tools that have Azure Storage support; e.g. azcopy, Azure CLI, Storage Explorer, Azure PowerShell, Batch Explorer, etc.
 
-Die [Azure-Dateisynchronisierung](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) ist verfügbar, um Dateien zwischen einem lokalen Dateisystem und einer Azure Files-Freigabe automatisch zu synchronisieren.
+[Azure File Sync](https://docs.microsoft.com/azure/storage/files/storage-sync-files-planning) is available to automatically synchronize files between an on-premises file system and an Azure File share.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Weitere Informationen zu den Speicheroptionen finden Sie in der ausführlichen Dokumentation:
+For more information about the storage options see the in-depth documentation:
 
-* [Azure Blob Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
-* [blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
+* [Azure blob storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)
+* [Blobfuse](https://docs.microsoft.com/azure/storage/blobs/storage-how-to-mount-container-linux)
 * [Azure Files](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)

@@ -1,68 +1,68 @@
 ---
-title: 'Erstellen eines Projekts: Custom Translator'
+title: How to create a project? - Custom Translator
 titleSuffix: Azure Cognitive Services
-description: Erstellen eines Projekts in Custom Translator
+description: How to create a project in Custom Translator?
 author: rajdeep-in
 manager: christw
 ms.service: cognitive-services
-ms.subservice: custom-translator
-ms.date: 11/13/2018
+ms.subservice: translator-text
+ms.date: 02/21/2019
 ms.author: v-rada
-ms.topic: article
-ms.openlocfilehash: 9886ba39846d9489a66c57bcc614f90e2bf70d4e
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
+ms.topic: conceptual
+ms.openlocfilehash: 2e49a8c40396b03c231fa7fd484331b0e28d4cf6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55218103"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57762703"
 ---
-# <a name="create-a-project"></a>Erstellen eines Projekts
+# <a name="create-a-project"></a>Create a project
 
-Ein Projekt ist ein Container für Modelle, Dokumente und Tests. Jedes Projekt enthält automatisch alle Dokumente, die in den Arbeitsbereich hochgeladen werden und über das korrekte Sprachpaar verfügen. 
+A project is a container for a models, documents, and tests. Each project automatically includes all documents that are uploaded into that workspace that have the correct language pair.
 
-Die Projekterstellung ist der erste Schritt auf dem Weg zur Modellerstellung. 
+Creating project is the first step toward building a model.
 
-## <a name="create-a-project"></a>So erstellen Sie ein Projekt:
+## <a name="create-a-project"></a>Create a project:
 
-1.  Klicken Sie im Portal [Custom Translator](https://portal.customtranslator.azure.ai) auf „Projekt erstellen“.
+1.  In the [Custom Translator](https://portal.customtranslator.azure.ai) portal, click Create project.
 
-    ![Projekt erstellen](media/how-to/how-to-create-project.png)
+    ![Create project](media/how-to/how-to-create-project.png)
 
-2.  Geben Sie die folgenden Projektdetails in das Dialogfeld ein:
+2.  Enter the following details about your project in the dialog:
 
-    a.  Projektname (erforderlich): Geben Sie Ihrem Projekt einen eindeutigen, aussagekräftigen Namen. Die Sprachen müssen im Titel nicht erwähnt werden.
+    a.  Project name (required): Give your project a unique, meaningful name. It's not necessary to mention the languages within the title.
 
-    b.  Beschreibung: Eine kurze Zusammenfassung des Projekts. Diese Beschreibung hat keinerlei Einfluss auf das Verhalten von Custom Translator oder auf das resultierende benutzerdefinierte System, kann aber die Unterscheidung verschiedener Projekte erleichtern.
+    b.  Description: A short summary about the project. This description has no influence over the behavior of the Custom Translator or your resulting custom system, but can help you differentiate between different projects.
 
-    c.  Sprachpaar (erforderlich): Wählen Sie die Ausgangs- und Zielsprache für die Übersetzung aus.
+    c.  Language pair (required): Select the language that you're translating from and to.
 
-    d.  Kategorie (erforderlich): Wählen Sie die Kategorie aus, die am besten zu Ihrem Projekt passt. Die Kategorie beschreibt die Terminologie und den Stil der Dokumente, die Sie übersetzen möchten.
+    d.  Category (required): Select the category that's most appropriate for your project. The category describes the terminology and style of the documents you intend to translate.
 
-    e.  Kategoriebeschreibung: Geben Sie in diesem Feld eine genauere Beschreibung des Bereichs oder der Branche an, in dem bzw. in der Sie tätig sind. In der Kategorie „Medizin“ können Sie beispielsweise ein bestimmtes Dokument (etwa zum Thema Chirurgie oder Kinderheilkunde) hinzufügen. Die Beschreibung hat keinerlei Einfluss auf das Verhalten von Custom Translator oder auf das resultierende benutzerdefinierte System.
+    e.  Category description: Use this field to better describe the particular field or industry in which you're working. For example, if your category is medicine, you might add a particular document, such a surgery, or pediatrics. The description has no influence over the behavior of the Custom Translator or your resulting custom system.
 
-    f.  Projektbezeichnung: Die [Projektbezeichnung](workspace-and-project.md#project-labels) dient zur Unterscheidung von Projekten mit gleichem Sprachpaar und gleicher Kategorie. Eine Bezeichnung sollte *nur* verwendet werden, wenn Sie mehrere Projekte für das gleiche Sprachpaar und die gleiche Kategorie erstellen und auf diese Projekte jeweils mit einer anderen Kategorie-ID zugreifen möchten. Verwenden Sie dieses Feld nicht, wenn Sie Systeme für nur eine Kategorie erstellen. Eine Projektbezeichnung trägt nicht zur Unterscheidung zwischen Sprachpaaren bei. Die gleiche Bezeichnung kann für mehrere Projekte verwendet werden.
+    f.  Project label: The [project label](workspace-and-project.md#project-labels) distinguishes between projects with the same language pair and category. As a best practice, use a label *only* if you're planning to build multiple projects for the same language pair and same category and want to access these projects with a different CategoryID. Don't use this field if you're building systems for one category only. A project label is not required and not helpful to distinguish between language pairs. You can use the same label for multiple projects.
 
-    ![Dialogfeld für die Projekterstellung](media/how-to/how-to-create-project-dialog.png)
+    ![Create project dialog](media/how-to/how-to-create-project-dialog.png)
 
-3.  Klicken Sie auf „Erstellen“.
+3.  Click Create
 
-## <a name="view-project-details"></a>Anzeigen der Projektdetails
+## <a name="view-project-details"></a>View project details
 
-Auf der Landing Page von Custom Translator werden die ersten zehn Projekte in Ihrem Arbeitsbereich angezeigt. Die Anzeige umfasst den Projektnamen, das Sprachpaar, die Kategorie, den Status und die BLEU Bewertung.
+The Custom Translator landing page shows the first 10 projects in your workspace. It displays the project name, language pair, category, status, and BLEU score.
 
-Wenn Sie ein Projekt auswählen, wird eine Projektseite mit Folgendem angezeigt:
+After selecting a project, you'll see the following on the project page:
 
-- CategoryID: Bei der Kategorie-ID handelt es sich um eine Verkettung von Arbeitsbereich-ID, Projektbezeichnung und Kategoriecode. Mithilfe der Kategorie-ID können Sie über die Textübersetzungs-API benutzerdefinierte Übersetzungen abrufen.
+- CategoryID: A CategoryID is created by concatenating the WorkspaceID, project label, and category code. You use the CategoryID with the Text Translator API to get custom translations.
 
-- Schaltfläche „Train“ (Trainieren): Diese Schaltfläche dient zum [Trainieren eines Modells](how-to-train-model.md).
+- Train button: Use this button to start a [training a model](how-to-train-model.md).
 
-- Schaltfläche „Add documents“ (Dokumente hinzufügen): Diese Schaltfläche dient zum [Hochladen von Dokumenten](how-to-upload-document.md).
+- Add documents button: Use this button to [upload documents](how-to-upload-document.md).
 
-- Schaltfläche „Filter documents“ (Dokumente filtern): Diese Schaltfläche dient zum Filtern von Dokumenten sowie zum Suchen nach bestimmten Dokumenten.
+- Filter documents button: Use this button to filter and search for specific   document(s).
 
-    ![Anzeigen der Projektdetails](media/how-to/how-to-view-project.png)
+    ![View project details](media/how-to/how-to-view-project.png)
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Informieren Sie sich über das [Suchen, Bearbeiten und Löschen von Projekten](how-to-search-edit-delete-projects.md).
-- Informieren Sie sich über das [Hochladen eines Dokuments](how-to-upload-document.md) zur Erstellung von Übersetzungsmodellen.
+- Learn [how to search, edit, delete project](how-to-search-edit-delete-projects.md).
+- Learn [how to upload document](how-to-upload-document.md) to build translation models.

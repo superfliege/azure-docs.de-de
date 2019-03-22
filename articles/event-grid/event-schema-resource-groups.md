@@ -1,54 +1,54 @@
 ---
-title: Ereignisschema der Azure Event Grid-Ressourcengruppe
-description: Beschreibt die Eigenschaften, die mit Azure Event Grid für Ressourcengruppenereignisse bereitgestellt werden.
+title: Azure Event Grid resource group event schema
+description: Describes the properties that are provided for resource group events with Azure Event Grid
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 2b570fdb42c29c6ad68add32be660ef57f1eec1f
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6cbfc06f380d7c4818ca82e858c23bb18849fb7c
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54468300"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57535739"
 ---
-# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid-Ereignisschema für Ressourcengruppen
+# <a name="azure-event-grid-event-schema-for-resource-groups"></a>Azure Event Grid event schema for resource groups
 
-In diesem Artikel werden die Eigenschaften und das Schema für Ressourcengruppenereignisse beschrieben. Eine Einführung in Ereignisschemas finden Sie unter [Azure Event Grid-Ereignisschema](event-schema.md).
+This article provides the properties and schema for resource group events. For an introduction to event schemas, see [Azure Event Grid event schema](event-schema.md).
 
-Azure-Abonnements und Ressourcengruppen geben die gleichen Ereignistypen aus. Die Ereignistypen beziehen sich auf Ressourcenänderungen oder -aktionen. Der Hauptunterschied besteht darin, dass Ressourcengruppen Ereignisse für Ressourcen innerhalb der Ressourcengruppe und Azure-Abonnements Ereignisse für Ressourcen im gesamten Abonnement ausgeben.
+Azure subscriptions and resource groups emit the same event types. The event types are related to resource changes or actions. The primary difference is that resource groups emit events for resources within the resource group, and Azure subscriptions emit events for resources across the subscription.
 
-Ressourcenereignisse werden für PUT-, PATCH-, POST- und DELETE-Vorgänge erstellt, die an `management.azure.com` gesendet werden. Für GET-Vorgänge werden keine Ereignisse erstellt. Für Vorgänge, die an die Datenebene gesendet werden (etwa `myaccount.blob.core.windows.net`), werden keine Ereignisse erstellt. Die Aktionsereignisse stellen Ereignisdaten für Vorgänge wie das Auflisten der Schlüssel für eine Ressource bereit.
+Resource events are created for PUT, PATCH, POST, and DELETE operations that are sent to `management.azure.com`. GET operations don't create events. Operations sent to the data plane (like `myaccount.blob.core.windows.net`) don't create events. The action events provide event data for operations like listing the keys for a resource.
 
-Wenn Sie Ereignisse für eine Ressourcengruppe abonnieren, erhält Ihr Endpunkt alle Ereignisse für diese Ressourcengruppe. Hierzu können Ereignisse gehören, die für Ihre Zwecke angezeigt werden sollen, z.B. zur Aktualisierung eines virtuellen Computers. Es können aber auch Ereignisse vorhanden sein, die für Sie ggf. weniger wichtig sind, z.B. das Schreiben eines neuen Eintrags im Bereitstellungsverlauf. Sie können alle Ereignisse an einem Endpunkt empfangen und Code schreiben, in dem die Ereignisse verarbeitet werden, die Sie behandeln möchten. Sie können aber auch einen Filter festlegen, wenn Sie das Ereignisabonnement erstellen.
+When you subscribe to events for a resource group, your endpoint receives all events for that resource group. The events can include event you want to see, such as updating a virtual machine, but also events that maybe aren't important to you, such as writing a new entry in the deployment history. You can receive all events at your endpoint and write code that processes the events you want to handle. Or, you can set a filter when creating the event subscription.
 
-Zur programmgesteuerten Verarbeitung von Ereignissen können Sie Ereignisse sortieren, indem Sie sich den Wert für `operationName` ansehen. Beispielsweise werden für Ihren Endpunkt ggf. nur Ereignisse für Vorgänge verarbeitet, die `Microsoft.Compute/virtualMachines/write` oder `Microsoft.Storage/storageAccounts/write` entsprechen.
+To programmatically handle events, you can sort events by looking at the `operationName` value. For example, your event endpoint might only process events for operations that are equal to `Microsoft.Compute/virtualMachines/write` or `Microsoft.Storage/storageAccounts/write`.
 
-Der Betreff des Ereignisses ist die Ressourcen-ID der Ressource, die das Ziel des Vorgangs ist. Geben Sie zum Filtern von Ereignissen für eine Ressource beim Erstellen des Ereignisabonnements die Ressourcen-ID an.  Verwenden Sie zum Filtern nach einem Ressourcentyp einen Wert im folgenden Format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
+The event subject is the resource ID of the resource that is the target of the operation. To filter events for a resource, provide that resource ID when creating the event subscription.  To filter by a resource type, use a value in following format: `/subscriptions/<subscription-id>/resourcegroups/<resource-group>/providers/Microsoft.Compute/virtualMachines`
 
-Eine Liste von Beispielskripts und Tutorials finden Sie in den Informationen zu [Ressourcengruppenereignissen](event-sources.md#resource-groups).
+For a list of sample scripts and tutorials, see [Resource group event source](event-sources.md#resource-groups).
 
-## <a name="available-event-types"></a>Verfügbare Ereignistypen
+## <a name="available-event-types"></a>Available event types
 
-Ressourcengruppen können Verwaltungsereignisse von Azure Resource Manager ausgeben, beispielsweise wenn eine VM erstellt oder ein Speicherkonto gelöscht wird.
+Resource groups emit management events from Azure Resource Manager, such as when a VM is created or a storage account is deleted.
 
-| Ereignistypen | BESCHREIBUNG |
+| Event type | Description |
 | ---------- | ----------- |
-| Microsoft.Resources.ResourceActionCancel | Wird ausgelöst, wenn eine Aktion für eine Ressource abgebrochen wird. |
-| Microsoft.Resources.ResourceActionFailure | Wird ausgelöst, wenn eine Aktion für eine Ressource fehlschlägt. |
-| Microsoft.Resources.ResourceActionSuccess | Wird ausgelöst, wenn eine Aktion für eine Ressource erfolgreich ausgeführt wurde. |
-| Microsoft.Resources.ResourceDeleteCancel | Wird ausgelöst, wenn ein Löschvorgang abgebrochen wird. Dieses Ereignis tritt ein, wenn eine Vorlagenbereitstellung abgebrochen wird. |
-| Microsoft.Resources.ResourceDeleteFailure | Wird ausgelöst, wenn ein Löschvorgang fehlschlägt. |
-| Microsoft.Resources.ResourceDeleteSuccess | Wird ausgelöst, wenn ein Löschvorgang erfolgreich ausgeführt wurde. |
-| Microsoft.Resources.ResourceWriteCancel | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang abgebrochen wird. |
-| Microsoft.Resources.ResourceWriteFailure | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang fehlschlägt. |
-| Microsoft.Resources.ResourceWriteSuccess | Wird ausgelöst, wenn ein Erstellungs- oder Aktualisierungsvorgang erfolgreich ausgeführt wurde. |
+| Microsoft.Resources.ResourceActionCancel | Raised when action on resource is canceled. |
+| Microsoft.Resources.ResourceActionFailure | Raised when action on resource fails. |
+| Microsoft.Resources.ResourceActionSuccess | Raised when action on resource succeeds. |
+| Microsoft.Resources.ResourceDeleteCancel | Raised when delete operation is canceled. This event happens when a template deployment is canceled. |
+| Microsoft.Resources.ResourceDeleteFailure | Raised when delete operation fails. |
+| Microsoft.Resources.ResourceDeleteSuccess | Raised when delete operation succeeds. |
+| Microsoft.Resources.ResourceWriteCancel | Raised when create or update operation is canceled. |
+| Microsoft.Resources.ResourceWriteFailure | Raised when create or update operation fails. |
+| Microsoft.Resources.ResourceWriteSuccess | Raised when create or update operation succeeds. |
 
-## <a name="example-event"></a>Beispielereignis
+## <a name="example-event"></a>Example event
 
-Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceWriteFailure** und **ResourceWriteCancel** verwendet, nur mit anderen Werten für `eventType`.
+The following example shows the schema for a **ResourceWriteSuccess** event. The same schema is used for **ResourceWriteFailure** and **ResourceWriteCancel** events with different values for `eventType`.
 
 ```json
 [{
@@ -108,7 +108,7 @@ Im folgenden Beispiel wird das Schema für das Ereignis **ResourceWriteSuccess**
 }]
 ```
 
-Im folgenden Beispiel wird das Schema für das Ereignis **ResourceDeleteSuccess** veranschaulicht. Das gleiche Schema wird für die Ereignisse **ResourceDeleteFailure** und **ResourceDeleteCancel** verwendet, nur mit anderen Werten für `eventType`.
+The following example shows the schema for a **ResourceDeleteSuccess** event. The same schema is used for **ResourceDeleteFailure** and **ResourceDeleteCancel** events with different values for `eventType`.
 
 ```json
 [{
@@ -174,7 +174,7 @@ Im folgenden Beispiel wird das Schema für das Ereignis **ResourceDeleteSuccess*
 }]
 ```
 
-Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereignis veranschaulicht. Das gleiche Schema wird für **ResourceActionFailure**- und **ResourceActionCancel**-Ereignisse verwendet, nur mit anderen Werten für `eventType`.
+The following example shows the schema for a **ResourceActionSuccess** event. The same schema is used for **ResourceActionFailure** and **ResourceActionCancel** events with different values for `eventType`.
 
 ```json
 [{   
@@ -230,37 +230,37 @@ Im folgenden Beispiel wird das Schema für ein **ResourceActionSuccess**-Ereigni
 }]
 ```
 
-## <a name="event-properties"></a>Ereigniseigenschaften
+## <a name="event-properties"></a>Event properties
 
-Ein Ereignis weist die folgenden Daten auf oberster Ebene aus:
+An event has the following top-level data:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Property | Type | Description |
 | -------- | ---- | ----------- |
-| Thema | Zeichenfolge | Vollständiger Ressourcenpfad zu der Ereignisquelle. Dieses Feld ist nicht beschreibbar. Dieser Wert wird von Event Grid bereitgestellt. |
-| subject | Zeichenfolge | Vom Herausgeber definierter Pfad zum Ereignisbetreff |
-| eventType | Zeichenfolge | Einer der registrierten Ereignistypen für die Ereignisquelle. |
-| eventTime | Zeichenfolge | Die Zeit, in der das Ereignis generiert wird, basierend auf der UTC-Zeit des Anbieters. |
-| id | Zeichenfolge | Eindeutiger Bezeichner für das Ereignis. |
-| data | object | Ereignisdaten der Ressourcengruppe. |
-| dataVersion | Zeichenfolge | Die Schemaversion des Datenobjekts. Der Herausgeber definiert die Schemaversion. |
-| metadataVersion | Zeichenfolge | Die Schemaversion der Ereignismetadaten. Event Grid definiert das Schema der Eigenschaften der obersten Ebene. Dieser Wert wird von Event Grid bereitgestellt. |
+| topic | string | Full resource path to the event source. This field isn't writeable. Event Grid provides this value. |
+| subject | string | Publisher-defined path to the event subject. |
+| eventType | string | One of the registered event types for this event source. |
+| eventTime | string | The time the event is generated based on the provider's UTC time. |
+| id | string | Unique identifier for the event. |
+| data | object | Resource group event data. |
+| dataVersion | string | The schema version of the data object. The publisher defines the schema version. |
+| metadataVersion | string | The schema version of the event metadata. Event Grid defines the schema of the top-level properties. Event Grid provides this value. |
 
-Das Datenobjekt weist die folgenden Eigenschaften auf:
+The data object has the following properties:
 
-| Eigenschaft | Typ | BESCHREIBUNG |
+| Property | Type | Description |
 | -------- | ---- | ----------- |
-| authorization | object | Die angeforderte Autorisierung für den Vorgang. |
-| claims | object | Die Eigenschaften der Ansprüche. Weitere Informationen finden Sie auf der Seite zur [JWT-Spezifikation](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
-| correlationId | Zeichenfolge | Eine Vorgangs-ID für die Problembehandlung. |
-| httpRequest | object | Die Details des Vorgangs. Dieses Objekt ist nur enthalten, wenn eine vorhandene Ressource aktualisiert oder eine Ressource gelöscht wird. |
-| resourceProvider | Zeichenfolge | Der Ressourcenanbieter für den Vorgang. |
-| resourceUri | Zeichenfolge | Der URI der Ressource im Vorgang. |
-| operationName | Zeichenfolge | Der Vorgang, der übernommen wurde. |
-| status | Zeichenfolge | Der Status des Vorgangs. |
-| subscriptionId | Zeichenfolge | Die Abonnement-ID der Ressource. |
-| tenantId | Zeichenfolge | Die Mandanten-ID der Ressource. |
+| authorization | object | The requested authorization for the operation. |
+| claims | object | The properties of the claims. For more information, see [JWT specification](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html). |
+| correlationId | string | An operation ID for troubleshooting. |
+| httpRequest | object | The details of the operation. This object is only included when updating an existing resource or deleting a resource. |
+| resourceProvider | string | The resource provider for the operation. |
+| resourceUri | string | The URI of the resource in the operation. |
+| operationName | string | The operation that was taken. |
+| status | string | The status of the operation. |
+| subscriptionId | string | The subscription ID of the resource. |
+| tenantId | string | The tenant ID of the resource. |
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-* Eine Einführung zu Azure Event Grid finden Sie unter [Einführung in Azure Event Grid](overview.md).
-* Weitere Informationen zum Erstellen eines Azure Event Grid-Abonnements finden Sie unter [Event Grid-Abonnementschema](subscription-creation-schema.md).
+* For an introduction to Azure Event Grid, see [What is Event Grid?](overview.md)
+* For more information about creating an Azure Event Grid subscription, see [Event Grid subscription schema](subscription-creation-schema.md).

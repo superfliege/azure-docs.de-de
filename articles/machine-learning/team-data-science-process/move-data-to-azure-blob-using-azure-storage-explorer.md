@@ -1,6 +1,6 @@
 ---
-title: 'Verschieben von Blob Storage-Daten mit Azure Storage-Explorer: Team Data Science-Prozess'
-description: Verschieben von Daten in und aus Azure Blob Storage mithilfe des Azure Storage-Explorers
+title: Move Blob storage data with Azure Storage Explorer - Team Data Science Process
+description: Move Data to and from Azure Blob Storage using Azure Storage Explorer
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,45 +11,45 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a77ad3ec954e77895cfab76a2f5fe2d822e08fb1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 8ec4289c641b3f140950575ac2f8016f894f2c9c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473169"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57879853"
 ---
-# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Verschieben von Daten in und aus Azure Blob Storage mithilfe des Azure Storage-Explorers
-Der Azure Storage-Explorer ist ein kostenloses Tool von Microsoft, das Ihnen das Arbeiten mit Azure Storage-Daten unter Windows, macOS und Linux ermöglicht. Dieses Thema beschreibt Verwendung des Tools zum Hoch- und Herunterladen von Daten aus Azure Blob Storage. Das Tool kann von der Seite [Microsoft Azure Storage-Explorer](http://storageexplorer.com/)heruntergeladen werden.
+# <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Move data to and from Azure Blob Storage using Azure Storage Explorer
+Azure Storage Explorer is a free tool from Microsoft that allows you to work with Azure Storage data on Windows, macOS, and Linux. This topic describes how to use it to upload and download data from Azure blob storage. The tool can be downloaded from [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 
 [!INCLUDE [blob-storage-tool-selector](../../../includes/machine-learning-blob-storage-tool-selector.md)]
 
 > [!NOTE]
-> Wenn Sie einen virtuellen Computer verwenden, der mit den von den [virtuellen Data Science-Computern in Azure](virtual-machines.md) bereitgestellten Skripts eingerichtet wurde, ist der Azure Storage-Explorer bereits auf dem virtuellen Computer installiert.
+> If you are using VM that was set up with the scripts provided by [Data Science Virtual machines in Azure](virtual-machines.md), then Azure Storage Explorer is already installed on the VM.
 > 
 > [!NOTE]
-> Eine umfassende Einführung in Azure Blob Storage finden Sie unter [Grundlagen zu Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) und [Azure-Blobdienst](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
+> For a complete introduction to Azure blob storage, refer to [Azure Blob Basics](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) and [Azure Blob Service](https://msdn.microsoft.com/library/azure/dd179376.aspx).   
 > 
 > 
 
-## <a name="prerequisites"></a>Voraussetzungen
-In diesem Dokument wird davon ausgegangen, dass Sie über ein Azure-Abonnement, ein Speicherkonto und den zugehörigen Speicherschlüssel für dieses Konto verfügen. Bevor Sie Daten hoch- und herunterladen können, müssen Sie den Namen Ihres Azure-Speicherkontos und den Kontoschlüssel kennen. 
+## <a name="prerequisites"></a>Prerequisites
+This document assumes that you have an Azure subscription, a storage account, and the corresponding storage key for that account. Before uploading/downloading data, you must know your Azure storage account name and account key. 
 
-* Informationen zum Einrichten eines Azure-Abonnements finden Sie unter [Kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/).
-* Anleitungen zum Erstellen eines Speicherkontos und zum Abrufen von Konto- und Schlüsselinformationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-create-storage-account.md). Notieren Sie sich den Zugriffsschlüssel für Ihr Speicherkonto, da Sie diesen Schlüssel benötigen, um über das Tool Azure Storage-Explorer eine Verbindung mit dem Konto herzustellen.
-* Der Azure Storage-Explorer kann von der Seite [Microsoft Azure Storage-Explorer](http://storageexplorer.com/) heruntergeladen werden. Übernehmen Sie während der Installation die Standardwerte.
+* To set up an Azure subscription, see [Free one-month trial](https://azure.microsoft.com/pricing/free-trial/).
+* For instructions on creating a storage account and for getting account and key information, see [About Azure storage accounts](../../storage/common/storage-create-storage-account.md). Make a note the access key for your storage account as you need this key to connect to the account with the Azure Storage Explorer tool.
+* The Azure Storage Explorer tool can be downloaded from [Microsoft Azure Storage Explorer](https://storageexplorer.com/). Accept the defaults during install.
 
 <a id="explorer"></a>
 
-## <a name="use-azure-storage-explorer"></a>Verwenden von Azure Storage-Explorer
-Die folgenden Schritte beschreiben das Hoch- und Herunterladen von Daten mithilfe des Azure Storage-Explorers. 
+## <a name="use-azure-storage-explorer"></a>Use Azure Storage Explorer
+The following steps document how to upload/download data using Azure Storage Explorer. 
 
-1. Starten Sie den Microsoft Azure Storage-Explorer.
-2. Um den Assistenten **Bei Ihrem Konto anmelden...** zu öffnen, wählen Sie das Symbol **Azure-Kontoeinstellungen** und dann die Option **Konto hinzufügen** aus, und geben Sie Ihre Anmeldeinformationen ein. ![Azure Storage-Konto hinzufügen](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
-3. Um den Assistenten **Verbindung mit Azure-Speicher herstellen** zu öffnen, wählen Sie das Symbol **Verbindung mit Azure-Speicher herstellen** aus. ![Klicken auf „Connect to Azure storage“ (Mit Azure Storage verbinden)](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
-4. Geben Sie den Zugriffsschlüssel Ihres Azure-Speicherkontos in den Assistenten **Verbindung mit Azure-Speicher herstellen** ein, und klicken Sie dann auf **Weiter**. ![Eingeben des Zugriffsschlüssels für das Azure Storage-Konto](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
-5. Geben Sie im Feld **Kontoname** den Namen des Speicherkontos ein, und wählen Sie **Weiter** aus. ![Externen Speicher anfügen](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
-6. Das hinzugefügte Speicherkonto sollte jetzt aufgeführt werden. Um in einem Speicherkonto einen Blobcontainer zu erstellen, klicken Sie mit der rechten Maustaste auf den Knoten **Blobcontaine**r in diesem Konto, wählen Sie die Option **Blobcontainer erstellen** aus, und geben Sie einen Namen ein.
-7. Um Daten in einen Container hochzuladen, wählen Sie den Zielcontainer aus, und klicken Sie auf die Schaltfläche **Hochladen**.![Speicherkonten](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
-8. Klicken Sie rechts neben dem Feld **Dateien** auf die Schaltfläche **...**, wählen Sie im Dateisystem eine oder mehrere Dateien zum Hochladen aus, und klicken Sie auf **Hochladen**, um mit dem Hochladen der Dateien zu beginnen.![Dateien hochladen](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
-9. Um Daten herunterzuladen, wählen Sie das Blob im entsprechenden Container aus und klicken auf **Herunterladen**. ![Dateien herunterladen](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
+1. Launch Microsoft Azure Storage Explorer.
+2. To bring up the **Sign in to your account...** wizard, select **Azure account settings** icon, then **Add an account** and enter you credentials. ![Add an Azure storage account](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+3. To bring up the **Connect to Azure Storage** wizard, select the **Connect to Azure storage** icon. ![Click "Connect to Azure storage"](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
+4. Enter the access key from your Azure storage account on the **Connect to Azure Storage** wizard and then **Next**. ![Enter access key from Azure storage account](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
+5. Enter storage account name in the **Account name** box and then select **Next**. ![Attach external storage](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
+6. The storage account added should now be listed. To create a blob container in a storage account, right-click the **Blob Containers** node in that account, select **Create Blob Container**, and enter a name.
+7. To upload data to a container, select the target container and click the **Upload** button.![Storage accounts](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+8. Click on the **...** to the right of the **Files** box, select one or multiple files to upload from the file system and click **Upload** to begin uploading the files.![Upload files](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
+9. To download data, selecting the blob in the corresponding container to download and click **Download**. ![Download files](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

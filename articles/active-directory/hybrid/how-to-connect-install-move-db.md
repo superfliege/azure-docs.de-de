@@ -1,6 +1,6 @@
 ---
-title: Verschieben einer Azure AD Connect-Datenbank von SQL Server Express zu SQL Server | Microsoft-Dokumentation
-description: In diesem Dokument wird beschrieben, wie Sie die Azure AD Connect-Datenbank vom lokalen SQL Server Express-Server auf einen SQL Server-Remoteserver verschieben.
+title: Move Azure AD Connect database from SQL Server Express to SQL Server. | Microsoft Docs
+description: This document describes how to move the Azure AD Connect database from the local SQL Server Express server to a remote SQL Server.
 services: active-directory
 author: billmath
 manager: daveba
@@ -11,68 +11,68 @@ ms.date: 03/19/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c25aef949b99bb4dc348bd2392ada325fcd466ea
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: eeeb9989b6bf0233354d493f5dbb6916c806cfdb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169614"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58076835"
 ---
-# <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Verschieben einer Azure AD Connect-Datenbank von SQL Server Express zu SQL Server 
+# <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Move Azure AD Connect database from SQL Server Express to SQL Server 
 
-In diesem Dokument wird beschrieben, wie Sie die Azure AD Connect-Datenbank vom lokalen SQL Server Express-Server auf einen SQL Server-Remoteserver verschieben.  Sie können für diese Aufgabe die unten aufgeführten Verfahren verwenden.
+This document describes how to move the Azure AD Connect database from the local SQL Server Express server to a remote SQL Server.  You can use the following procedures below to accomplish this task.
 
-## <a name="about-this-scenario"></a>Informationen zu diesem Szenario
-Nachfolgend finden Sie einige kurze Informationen zu diesem Szenario.  In diesem Szenario wird die Azure AD Connect-Version (1.1.819.0) auf einem einzelnen Windows Server 2016-Domänencontroller installiert.  Er verwendet die integrierte Version „SQL Server 2012 Express Edition“ als Datenbank.  Die Datenbank wird auf einen Server mit SQL Server 2017 verschoben.
+## <a name="about-this-scenario"></a>About this scenario
+The following is some brief information about this scenario.  In this scenario, Azure AD Connect version (1.1.819.0) is installed on a single Windows Server 2016 domain controller.  It is using the built-in SQL Server 2012 Express Edition for its database.  The database will be moved to a SQL Server 2017 server.
 
 ![](media/how-to-connect-install-move-db/move1.png)
 
-## <a name="move-the-azure-ad-connect-database"></a>Verschieben der Azure AD Connect-Datenbank
-Führen Sie die folgenden Schritte aus, um die Azure AD Connect-Datenbank auf einen Remoteserver mit SQL Server zu verschieben.
+## <a name="move-the-azure-ad-connect-database"></a>Move the Azure AD Connect database
+Use the following steps to move the Azure AD Connect database to a remote SQL Server.
 
-1.  Navigieren Sie auf dem Azure AD Connect-Server zu **Dienste**, und beenden Sie den Dienst **Microsoft Azure AD Sync**.
-2. Navigieren Sie zum Ordner **%Program Files%\Microsoft Azure AD Sync/Data/**, und kopieren Sie die Dateien **ADSync.mdf** und **ADSync_log.ldf** auf den SQL Server-Remoteserver.
-3. Starten Sie den Dienst **Microsoft Azure AD Sync** auf dem Azure AD Connect-Server neu.
-4. Deinstallieren Sie Azure AD Connect über die Systemsteuerung: „Programme“ > „Programme und Features“.  Wählen Sie Microsoft Azure AD Connect aus, und klicken Sie oben auf „Deinstallieren“.
-5. Öffnen Sie auf dem SQL Server-Remoteserver SQL Server Management Studio.
-6. Klicken Sie mit der rechten Maustaste auf „Datenbanken“, und wählen Sie „Anfügen“.
-7. Klicken Sie im Bildschirm **Datenbanken anfügen** auf **Hinzufügen**, und navigieren Sie zur Datei „ADSync.mdf“.  Klicken Sie auf **OK**.
-![](media/how-to-connect-install-move-db/move2.png)
+1. On the Azure AD Connect server, go to **Services** and stop the **Microsoft Azure AD Sync** service.
+2. Locate the **%Program Files%\Microsoft Azure AD Sync/Data/** folder and copy the **ADSync.mdf** and **ADSync_log.ldf** files to the remote SQL Server.
+3. Restart the **Microsoft Azure AD Sync** service on the Azure AD Connect server.
+4. Un-install Azure AD Connect by going to Control Panel - - Programs - Programs and Features.  Select Microsoft Azure AD Connect and click uninstall at the top.
+5. On the remote SQL server, open SQL Server Management Studio.
+6. On Databases, right-click and select Attach.
+7. On the **Attach Databases** screen, click **Add** and navigate to the ADSync.mdf file.  Click **OK**.
+   ![](media/how-to-connect-install-move-db/move2.png)
 
-8. Wenn die Datenbank angefügt wurde, wechseln Sie zurück zum Azure AD Connect-Server, und installieren Sie Azure AD Connect.
-9. Sobald die MSI-Installation abgeschlossen ist, wird der Azure AD Connect-Assistent mit dem Setup im Express-Modus gestartet. Schließen Sie den Bildschirm durch Klicken auf das Symbol „Beenden“.
-![Willkommen](./media/how-to-connect-install-move-db/db1.png)
-10. Rufen Sie eine neue Eingabeaufforderung oder PowerShell-Sitzung auf. Navigieren Sie zum Ordner <drive>\Programme\Microsoft Azure AD Connect. Führen Sie den Befehl „.\AzureADConnect.exe /useexistingdatabase“ aus, um den Azure AD Connect-Assistenten im Setupmodus „Vorhandene Datenbank verwenden“ auszuführen.
-![PowerShell](./media/how-to-connect-install-move-db/db2.png)
-11. Sie werden mit dem Bildschirm „Willkommen bei Azure AD Connect“ begrüßt. Wenn Sie den Lizenzbedingungen und dem Datenschutzhinweis zugestimmt haben, klicken Sie auf **Fortfahren**.
-![Willkommen](./media/how-to-connect-install-move-db/db3.png)
-12. Auf dem Bildschirm **Erforderliche Komponenten installieren** ist die Option **Vorhandenen SQL Server-Computer verwenden** aktiviert. Geben Sie den Namen der SQL-Server-Instanz an, auf der die ADSync-Datenbank gehostet wird. Wenn die zum Hosten der ADSync-Datenbank verwendete SQL Engine-Instanz nicht die Standardinstanz auf dem SQL Server-Computer ist, müssen Sie den Namen der SQL Engine-Instanz angeben. Darüber hinaus müssen Sie, wenn das SQL-Durchsuchen nicht aktiviert ist, auch die Portnummer der SQL Engine-Instanz angeben. Beispiel:          
-![Willkommen](./media/how-to-connect-install-move-db/db4.png)           
+8. Once the database is attached, go back to the Azure AD Connect server and install Azure AD Connect.
+9. Once the MSI installation completes, the Azure AD Connect wizard starts with the Express mode setup. Close the screen by clicking the Exit icon.
+   ![Welcome](./media/how-to-connect-install-move-db/db1.png)
+10. Start a new command prompt or PowerShell session. Navigate to folder <drive>\program files\Microsoft Azure AD Connect. Run command .\AzureADConnect.exe /useexistingdatabase to start the Azure AD Connect wizard in “Use existing database” setup mode.
+    ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
+11. You are greeted with the Welcome to Azure AD Connect screen. Once you agree to the license terms and privacy notice, click **Continue**.
+    ![Welcome](./media/how-to-connect-install-move-db/db3.png)
+12. On the **Install required components** screen, the **Use an existing SQL Server** option is enabled. Specify the name of the SQL server that is hosting the ADSync database. If the SQL engine instance used to host the ADSync database is not the default instance on the SQL server, you must specify the SQL engine instance name. Further, if SQL browsing is not enabled, you must also specify the SQL engine instance port number. For example:         
+    ![Welcome](./media/how-to-connect-install-move-db/db4.png)           
 
-13. Auf dem Bildschirm **Mit Azure AD verbinden** müssen Sie die Anmeldeinformationen als globaler Administrator Ihres Azure AD-Verzeichnisses angeben. Sie sollten ein Konto in der standardmäßigen Domäne „onmicrosoft.com“ verwenden. Dieses Konto dient ausschließlich der Erstellung eines Dienstkontos in Azure AD und wird nach Abschluss des Assistenten nicht mehr verwendet.
-![Herstellen einer Verbindung](./media/how-to-connect-install-move-db/db5.png)
+13. On the **Connect to Azure AD** screen, you must provide the credentials of a global admin of your Azure AD directory. The recommendation is to use an account in the default onmicrosoft.com domain. This account is only used to create a service account in Azure AD and is not used after the wizard has completed.
+    ![Connect](./media/how-to-connect-install-move-db/db5.png)
  
-14. Auf dem Bildschirm **Verzeichnisse verbinden** wird die für die Verzeichnissynchronisierung konfigurierte vorhandene AD-Gesamtstruktur mit einem roten Kreuzsymbol aufgelistet. Zum Synchronisieren der Änderungen von einer lokalen AD-Gesamtstruktur ist ein AD DS-Konto erforderlich. Der Azure AD Connect-Assistent kann nicht die Anmeldeinformationen des in der ADSync-Datenbank gespeicherten AD DS-Kontos abrufen, da die Anmeldeinformationen verschlüsselt sind und nur von der vorherigen Azure AD Connect-Serverinstanz entschlüsselt werden können. Klicken Sie auf **Anmeldeinformationen ändern**, um das AD DS-Konto für die AD-Gesamtstruktur anzugeben.
-![Verzeichnisse](./media/how-to-connect-install-move-db/db6.png)
- 
- 
-15. Im Popupdialogfeld können Sie entweder (i) eine Enterprise-Administratoranmeldeinfo eingeben und Azure AD Connect das AD DS-Konto für Sie erstellen lassen, oder (ii) das AD DS-Konto selbst erstellen und Azure AD Connect die Anmeldeinformationen angeben. Nachdem Sie eine Option ausgewählt und die erforderlichen Anmeldeinformationen angeben haben, klicken Sie auf **OK**, um das Popupdialogfeld zu schließen.
-![Willkommen](./media/how-to-connect-install-move-db/db7.png)
+14. On the **Connect your directories** screen, the existing AD forest configured for directory synchronization is listed with a red cross icon beside it. To synchronize changes from an on-premises AD forest, an AD DS account is required. The Azure AD Connect wizard is unable to retrieve the credentials of the AD DS account stored in the ADSync database because the credentials are encrypted and can only be decrypted by the previous Azure AD Connect server. Click **Change Credentials** to specify the AD DS account for the AD forest.
+    ![Directories](./media/how-to-connect-install-move-db/db6.png)
  
  
-16. Sobald die Anmeldeinformationen bereitgestellt sind, wird das rote Kreuzsymbol durch ein grünes Häkchensymbol ersetzt. Klicken Sie auf **Weiter**.
-![Willkommen](./media/how-to-connect-install-move-db/db8.png)
+15. In the pop-up dialog, you can either (i) provide an Enterprise Admin credential and let Azure AD Connect create the AD DS account for you, or (ii) create the AD DS account yourself and provide its credential to Azure AD Connect. Once you have selected an option and provide the necessary credentials, click **OK** to close the pop-up dialog.
+    ![Welcome](./media/how-to-connect-install-move-db/db7.png)
  
  
-17. Klicken Sie auf dem Bildschirm **Bereit zur Konfiguration** auf **Installieren**.
-![Willkommen](./media/how-to-connect-install-move-db/db9.png)
+16. Once the credentials are provided, the red cross icon is replaced with a green tick icon. Click **Next**.
+    ![Welcome](./media/how-to-connect-install-move-db/db8.png)
  
  
-18. Nachdem die Installation abgeschlossen ist, wird die Azure AD Connect-Serverinstanz automatisch für den Stagingmodus aktiviert. Sie sollten die Serverkonfiguration und ausstehenden Exporte vor dem Deaktivieren des Stagingmodus auf unerwartete Änderungen überprüfen. 
+17. On the **Ready to configure** screen, click **Install**.
+    ![Welcome](./media/how-to-connect-install-move-db/db9.png)
+ 
+ 
+18. Once installation completes, the Azure AD Connect server is automatically enabled for Staging Mode. It is recommended that you review the server configuration and pending exports for unexpected changes before disabling Staging Mode. 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-- Weitere Informationen zum [Integrieren lokaler Identitäten in Azure Active Directory](whatis-hybrid-identity.md).
-- [Installieren von Azure AD Connect mithilfe einer vorhandenen ADSync-Datenbank](how-to-connect-install-existing-database.md)
-- [Installieren von Azure AD Connect mit delegierten SQL-Administratorberechtigungen](how-to-connect-install-sql-delegation.md)
+- Learn more about [Integrating your on-premises identities with Azure Active Directory](whatis-hybrid-identity.md).
+- [Install Azure AD Connect using an existing ADSync database](how-to-connect-install-existing-database.md)
+- [Install Azure AD Connect using SQL delegated administrator permissions](how-to-connect-install-sql-delegation.md)
 

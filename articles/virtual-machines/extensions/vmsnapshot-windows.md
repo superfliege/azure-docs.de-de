@@ -1,37 +1,37 @@
 ---
-title: VM-Momentaufnahmenerweiterung unter Windows für Azure Backup | Microsoft-Dokumentation
-description: Durchführen von anwendungskonsistenten Sicherungen des virtuellen Computers aus Azure Backup mit der VM-Momentaufnahmenerweiterung
+title: VM Snapshot Windows extension for Azure Backup | Microsoft Docs
+description: Take application consistent backup of the virtual machine from Azure Backup using VM snapshot extension
 services: backup, virtual-machines-windows
 documentationcenter: ''
 author: trinadhk
 manager: jeconnoc
-ms.service: backup, virtual-machines-windows
+ms.service: virtual-machines-windows
 ms.topic: article
 ms.date: 12/17/2018
 ms.author: trinadhk
-ms.openlocfilehash: c41f609786620c8b90d484813d675efcd667d1e1
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 0392a187bf40e1fe35053b493733c7e89aa6969e
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692629"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57783124"
 ---
-# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM-Momentaufnahmenerweiterung unter Windows für Azure Backup
+# <a name="vm-snapshot-windows-extension-for-azure-backup"></a>VM Snapshot Windows extension for Azure Backup
 
-Azure Backup bietet Unterstützung für die Sicherung von Workloads von einer lokalen Umgebung in der Cloud sowie die Sicherung von Cloudressourcen in einem Recovery Services-Tresor. Azure Backup führt mithilfe der VM-Momentaufnahmenerweiterung eine anwendungskonsistente Sicherung der virtuellen Azure-Computer durch, ohne dass die VM heruntergefahren werden muss. Die VM-Momentaufnahmenerweiterung wird von Microsoft im Rahmen des Azure Backup-Diensts veröffentlicht und unterstützt. Azure Backup installiert die Erweiterung als Teil der ersten geplanten Sicherung, die nach der Aktivierung der Sicherung ausgelöst wird. Dieses Dokument enthält ausführliche Informationen zu den unterstützten Plattformen, Konfigurationen und Bereitstellungsoptionen für die VM-Momentaufnahmenerweiterung.
+Azure Backup provides support for backing up workloads from on-premises to cloud and backing up cloud resources to Recovery Services vault. Azure Backup uses VM snapshot extension to take an application consistent backup of the Azure virtual machine without the need to shutdown the VM. VM Snapshot extension is published and supported by Microsoft as part of Azure Backup service. Azure Backup will install the extension as part of first scheduled backup triggered post enabling backup. This document details the supported platforms, configurations, and deployment options for the VM Snapshot extension.
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-### <a name="operating-system"></a>Betriebssystem
-Eine Liste der unterstützten Betriebssysteme finden Sie unter [Von Azure Backup unterstützte Betriebssysteme](../../backup/backup-azure-arm-vms-prepare.md#before-you-start).
+### <a name="operating-system"></a>Operating system
+For a list of supported operating systems, refer to [Operating Systems supported by Azure Backup](../../backup/backup-azure-arm-vms-prepare.md#before-you-start)
 
-### <a name="internet-connectivity"></a>Internetkonnektivität
+### <a name="internet-connectivity"></a>Internet connectivity
 
-Um die VM-Momentaufnahmenerweiterung verwenden zu können, muss der virtuelle Zielcomputer bei der Sicherung eines virtuellen Computers mit dem Internet verbunden sein.
+VM Snapshot extension requires that the target virtual machine is connected to the internet when we take a backup of virtual machine.
 
-## <a name="extension-schema"></a>Erweiterungsschema
+## <a name="extension-schema"></a>Extension schema
 
-Der folgende JSON-Code zeigt das Schema für die VM-Momentaufnahmenerweiterung. Für die Erweiterung sind folgende Angaben erforderlich: die Task-ID zur Identifizierung des Sicherungsauftrags, der die Momentaufnahme auf dem virtuellen Computer ausgelöst hat; der URI des Statusblobs, in den der Status des Momentaufnahmevorgangs geschrieben wird; die geplante Startzeit der Momentaufnahme; der URI des Protokollblobs, in den Protokolle entsprechend des Momentaufnahmetasks geschrieben werden; und „objstr“, die Darstellung der VM-Datenträger und Metadaten.  Da diese Einstellungen als vertrauliche Daten behandelt werden müssen, sollten sie in einer geschützten Einstellungskonfiguration gespeichert werden. Die geschützten Einstellungsdaten der Azure-VM-Erweiterung werden verschlüsselt und nur auf dem virtuellen Zielcomputer entschlüsselt. Beachten Sie, dass diese Einstellungen ausschließlich im Rahmen eines Sicherungsauftrags vom Azure Backup-Dienst übergeben werden sollten.
+The following JSON shows the schema for the VM snapshot extension. The extension requires the task ID - this identifies the backup job which triggered snapshot on the VM, status blob uri - where status of the snapshot operation is written, scheduled start time of the snapshot, logs blob uri - where logs corresponding to snapshot task are written, objstr- representation of VM disks and meta data.  Because these settings should be treated as sensitive data, it should be stored in a protected setting configuration. Azure VM extension protected setting data is encrypted, and only decrypted on the target virtual machine. Note that these settings are recommended to be passed from Azure Backup service only as part of Backup job.
 
 ```json
 {
@@ -59,28 +59,28 @@ Der folgende JSON-Code zeigt das Schema für die VM-Momentaufnahmenerweiterung. 
 }
 ```
 
-### <a name="property-values"></a>Eigenschaftswerte
+### <a name="property-values"></a>Property values
 
-| NAME | Wert/Beispiel | Datentyp |
+| Name | Value / Example | Data Type |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
-| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | Zeichenfolge |
-| commandStartTimeUTCTicks | 6.36458E+17 | Zeichenfolge |
-| locale | en-us | Zeichenfolge |
-| objectStr | Encoding of sas uri array- "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc201652903941.vhd?sv=2014-02-14&sr=b&sig=TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/vhds\/vmwin1404ltsc-20160629-122418.vhd?sv=2014-02-14&sr=b&sig=5S0A6YDWvVwqPAkzWXVy%2BS%2FqMwzFMbamT5upwx05v8Q%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd?sv=2014-02-14&sr=b&sig=X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc-20160701-163922.vhd?sv=2014-02-14&sr=b&sig=oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r%2BC%2BNIAork%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc-20170705-124311.vhd?sv=2014-02-14&sr=b&sig=ZUM9d28Mvvm%2FfrhJ71TFZh0Ni90m38bBs3zMl%2FQ9rs0%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw"] | Zeichenfolge |
-| logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge |
-| statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | Zeichenfolge |
+| taskId | e07354cf-041e-4370-929f-25a319ce8933_1 | string |
+| commandStartTimeUTCTicks | 6.36458E+17 | string |
+| locale | en-us | string |
+| objectStr | Encoding of sas uri array- "blobSASUri": ["https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc201652903941.vhd?sv=2014-02-14&sr=b&sig=TywkROXL1zvhXcLujtCut8g3jTpgbE6JpSWRLZxAdtA%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/vhds\/vmwin1404ltsc-20160629-122418.vhd?sv=2014-02-14&sr=b&sig=5S0A6YDWvVwqPAkzWXVy%2BS%2FqMwzFMbamT5upwx05v8Q%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna8461.blob.core.windows.net\/bootdiagnostics-vmwintu1-deb58392-ed5e-48be-9228-ff681b0cd3ee\/vmubuntu1404ltsc-20160629-122541.vhd?sv=2014-02-14&sr=b&sig=X0Me2djByksBBMVXMGIUrcycvhQSfjYvqKLeRA7nBD4%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc-20160701-163922.vhd?sv=2014-02-14&sr=b&sig=oXvtK2IXCNqWv7fpjc7TAzFDpc1GoXtT7r%2BC%2BNIAork%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw", "https:\/\/sopattna5365.blob.core.windows.net\/vhds\/vmwin1404ltsc-20170705-124311.vhd?sv=2014-02-14&sr=b&sig=ZUM9d28Mvvm%2FfrhJ71TFZh0Ni90m38bBs3zMl%2FQ9rs0%3D&st=2017-11-09T14%3A23%3A28Z&se=2017-11-09T17%3A38%3A28Z&sp=rw"] | string |
+| logsBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Logs.txt?sv=2014-02-14&sr=b&sig=DbwYhwfeAC5YJzISgxoKk%2FEWQq2AO1vS1E0rDW%2FlsBw%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | string |
+| statusBlobUri | https://seapod01coord1exsapk732.blob.core.windows.net/bcdrextensionlogs-d45d8a1c-281e-4bc8-9d30-3b25176f68ea/sopattna-vmubuntu1404ltsc.v2.Status.txt?sv=2014-02-14&sr=b&sig=96RZBpTKCjmV7QFeXm5IduB%2FILktwGbLwbWg6Ih96Ao%3D&st=2017-11-09T14%3A33%3A29Z&se=2017-11-09T17%3A38%3A29Z&sp=rw | string |
 
 
 
-## <a name="template-deployment"></a>Bereitstellung von Vorlagen
+## <a name="template-deployment"></a>Template deployment
 
-Azure-VM-Erweiterungen können mithilfe von Azure Resource Manager-Vorlagen bereitgestellt werden. Allerdings sollte eine VM-Momentaufnahmenerweiterung vorzugsweise durch Aktivieren der Sicherung auf dem virtuellen Computer zu einem virtuellen Computer hinzugefügt werden. Dies kann durch eine Resource Manager-Vorlage erreicht werden.  Eine Resource Manager-Beispielvorlage zur Durchführung einer Sicherung auf einem virtuellen Computer finden Sie im [Azure-Schnellstartkatalog](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
+Azure VM extensions can be deployed with Azure Resource Manager templates. However, the recommended way of adding a VM snapshot extension to a virtual machine is by enabling backup on the virtual machine. This can be achieved through a Resource Manager template.  A sample Resource Manager template that enables backup on a virtual machine can be found on the [Azure Quick Start Gallery](https://azure.microsoft.com/resources/templates/101-recovery-services-backup-vms/).
 
 
-## <a name="azure-cli-deployment"></a>Bereitstellung mithilfe der Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli-deployment"></a>Azure CLI deployment
 
-Über die Azure CLI kann eine Sicherung auf einem virtuellen Computer aktiviert werden. Nachdem die Sicherung aktiviert wurde, installiert der erste geplante Sicherungsauftrag die VM-Momentaufnahmenerweiterung auf der VM.
+The Azure CLI can be used to enable backup on a virtual machine. Post enable backup, first scheduled backup job will install the Vm snapshot extension on the VM.
 
 ```azurecli
 az backup protection enable-for-vm \
@@ -90,26 +90,26 @@ az backup protection enable-for-vm \
     --policy-name DefaultPolicy
 ```
 
-## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
+## <a name="troubleshoot-and-support"></a>Troubleshoot and support
 
-### <a name="troubleshoot"></a>Problembehandlung
+### <a name="troubleshoot"></a>Troubleshoot
 
-Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe der Azure-Befehlszeilenschnittstelle abgerufen werden. Führen Sie über die Azure-Befehlszeilenschnittstelle den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für einen bestimmten virtuellen Computer anzuzeigen.
+Data about the state of extension deployments can be retrieved from the Azure portal, and by using the Azure CLI. To see the deployment state of extensions for a given VM, run the following command using the Azure CLI.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Die Ausgabe der Erweiterungsausführung wird in der folgenden Datei protokolliert:
+Extension execution output is logged to the following file:
 
 ```
 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Fehlercodes und ihre Bedeutung
+### <a name="error-codes-and-their-meanings"></a>Error codes and their meanings
 
-Informationen zur Problembehandlung finden Sie im [Handbuch zur Problembehandlung bei der Sicherung virtueller Azure-Computer](../../backup/backup-azure-vms-troubleshoot.md).
+Troubleshooting information can be found on the [Azure VM backup troubleshooting guide](../../backup/backup-azure-vms-troubleshoot.md).
 
 ### <a name="support"></a>Support
 
-Sollten Sie beim Lesen dieses Artikels feststellen, dass Sie weitere Hilfe benötigen, können Sie sich über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) mit Azure-Experten in Verbindung setzen. Alternativ dazu haben Sie die Möglichkeit, einen Azure-Supportfall zu erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie „Support erhalten“ aus. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+If you need more help at any point in this article, you can contact the Azure experts on the [MSDN Azure and Stack Overflow forums](https://azure.microsoft.com/support/forums/). Alternatively, you can file an Azure support incident. Go to the [Azure support site](https://azure.microsoft.com/support/options/) and select Get support. For information about using Azure Support, read the [Microsoft Azure support FAQ](https://azure.microsoft.com/support/faq/).

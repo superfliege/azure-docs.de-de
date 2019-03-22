@@ -1,228 +1,228 @@
 ---
-title: Analysieren der Kundenabwanderung
+title: Analyze customer churn
 titleSuffix: Azure Machine Learning Studio
-description: Fallstudie zur Entwicklung eines integrierten Modells für die Analyse und Bewertung der Kundenbindung unter Verwendung von Azure Machine Learning Studio.
+description: Case study of developing an integrated model for analyzing and scoring customer churn using Azure Machine Learning Studio.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/18/2017
-ms.openlocfilehash: a00548bd5eb88c95ea83d492524e2ae10f274bba
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
+ms.openlocfilehash: 320dd28ba22d7919e3f3afdcd8baa47780f363dd
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453986"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57856112"
 ---
-# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analysieren der Kundenabwanderung mithilfe von Azure Machine Learning Studio
-## <a name="overview"></a>Übersicht
-Dieser Artikel beschreibt eine Referenzimplementierung für ein Projekt zur Analyse der Kundenabwanderung, das in Azure Machine Learning Studio erstellt wird. In diesem Artikel wird das Zuordnen generischer Modelle für eine ganzheitliche Lösung des Kundenabwanderungsproblems in der Industrie erläutert. Wir messen auch die Genauigkeit von Modellen, die mit Machine Learning erstellt werden, und wir bewerten mögliche Richtungen der weiteren Entwicklung.  
+# <a name="analyze-customer-churn-using-azure-machine-learning-studio"></a>Analyze Customer Churn using Azure Machine Learning Studio
+## <a name="overview"></a>Overview
+This article presents a reference implementation of a customer churn analysis project that is built by using Azure Machine Learning Studio. In this article, we discuss associated generic models for holistically solving the problem of industrial customer churn. We also measure the accuracy of models that are built by using Machine Learning, and assess directions for further development.  
 
-### <a name="acknowledgements"></a>Danksagung
-Dieses Experiment wurde von Serge Berger, Principal Data Scientist bei Microsoft, und Roger Barga, zuvor Produktmanager für Microsoft Azure Machine Learning Studio, entwickelt und getestet. Der Azure-Dokumentationsteam bedankt sich herzlich dafür, dass beide ihre Erkenntnisse in diesem Whitepaper präsentieren.
+### <a name="acknowledgements"></a>Acknowledgements
+This experiment was developed and tested by Serge Berger, Principal Data Scientist at Microsoft, and Roger Barga, formerly Product Manager for Microsoft Azure Machine Learning Studio. The Azure documentation team gratefully acknowledges their expertise and thanks them for sharing this white paper.
 
 > [!NOTE]
-> Die für dieses Experiment genutzten Daten sind nicht öffentlich zugänglich. Ein Beispiel zum Erstellen eines Machine Learning-Modells für die Kundenabwanderungsanalyse finden Sie hier: [Azure AI Gallery](http://gallery.azure.ai/) in der [Vorlage für ein Abwanderungsmodell im Einzelhandel](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1).
+> The data used for this experiment is not publicly available. For an example of how to build a machine learning model for churn analysis, see: [Retail churn model template](https://gallery.azure.ai/Collection/Retail-Customer-Churn-Prediction-Template-1) in [Azure AI Gallery](https://gallery.azure.ai/)
 > 
 > 
 
 
 
-## <a name="the-problem-of-customer-churn"></a>Das Problem der Kundenabwanderung
-Firmen müssen sich sowohl auf dem Verbrauchermarkt als auch in allen Unternehmenssektoren mit der Kundenabwanderung auseinandersetzen. Gelegentlich kann es zur übermäßigen Abwanderung kommen, die dann Grundsatzentscheidungen beeinflusst. Die traditionelle Lösung besteht darin, eine starke Abwanderungsbereitschaft von Kunden vorherzusagen und sich über einen Concierge-Dienst, Marketingkampagnen oder Sonderregelungen mit ihren Bedürfnissen auseinanderzusetzen. Die jeweilige Vorgehensweise variiert je nach Branche. Auch innerhalb einer einzigen Branche (z.B. Telekommunikation) kann das Vorgehen je nach Verbrauchergruppe variieren.
+## <a name="the-problem-of-customer-churn"></a>The problem of customer churn
+Businesses in the consumer market and in all enterprise sectors have to deal with churn. Sometimes churn is excessive and influences policy decisions. The traditional solution is to predict high-propensity churners and address their needs via a concierge service, marketing campaigns, or by applying special dispensations. These approaches can vary from industry to industry. They can even vary from a particular consumer cluster to another within one industry (for example, telecommunications).
 
-Die Gemeinsamkeit besteht darin, dass die Unternehmen diese besonderen Bemühungen zur Kundenbindung minimieren müssen. Eine natürliche Methode wäre somit, jeden Kunden mit einer Abwanderungswahrscheinlichkeit zu bewerten und sich mit einer bestimmten Anzahl (N) der Kunden mit den höchsten Werten zu befassen. Die Kunden mit den höchsten Werten sind wahrscheinlich die lukrativsten. In komplexeren Szenarien wird bei der Auswahl der Kandidaten für Sonderregelungen eine Gewinnfunktion verwendet. Diese Überlegungen sind jedoch nur ein Teil der Gesamtstrategie zur Bekämpfung der Kundenabwanderung. Die Unternehmen müssen auch das Risiko (und die zugehörige Risikobereitschaft), das Interventionsniveau und die zugehörigen Kosten sowie die eingängige Kundensegmentierung berücksichtigen.  
+The common factor is that businesses need to minimize these special customer retention efforts. Thus, a natural methodology would be to score every customer with the probability of churn and address the top N ones. The top customers might be the most profitable ones. For example, in more sophisticated scenarios a profit function is employed during the selection of candidates for special dispensation. However, these considerations are only a part of the complete strategy for dealing with churn. Businesses also have to take into account risk (and associated risk tolerance), the level and cost of the intervention, and plausible customer segmentation.  
 
-## <a name="industry-outlook-and-approaches"></a>Branchenprognose und Ansätze
-Ein durchdachter Umgang mit der Abwanderung ist ein Zeichen für eine gefestigte Branche. Das klassische Beispiel ist die Telekommunikationsbranche, in der Kunden häufig den Anbieter wechseln. Diese spontane Abwanderung ist ein wesentliches Problem. Darüber hinaus haben die Anbieter wichtige Erfahrungen zu *Abwanderungsargumenten*gesammelt, die für die Kunden die Faktoren für einen Wechsel darstellen.
+## <a name="industry-outlook-and-approaches"></a>Industry outlook and approaches
+Sophisticated handling of churn is a sign of a mature industry. The classic example is the telecommunications industry where subscribers are known to frequently switch from one provider to another. This voluntary churn is a prime concern. Moreover, providers have accumulated significant knowledge about *churn drivers*, which are the factors that drive customers to switch.
 
-In der Mobilfunkbranche stellt z. B. die Auswahl an Mobiltelefonen oder Geräten ein bekanntes Argument für eine Abwanderung dar. Daher besteht eine beliebte Strategie darin, den Preis für ein Mobiltelefon für Neukunden zu subventionieren und Bestandskunden bei einem Upgrade den vollen Preis zu berechnen. Diese Strategie hat in der Vergangenheit dazu geführt, dass die Kunden von einem Anbieter zum nächsten wechseln, um erneut einen Rabatt zu erhalten. Dies hat die Anbieter wiederum dazu veranlasst, ihre Strategien zu überarbeiten.
+For instance, handset or device choice is a well-known driver of churn in the mobile phone business. As a result, a popular policy is to subsidize the price of a handset for new subscribers and charge a full price to existing customers for an upgrade. Historically, this policy has led to customers hopping from one provider to another to get a new discount. This, in turn, has prompted providers to refine their strategies.
 
-Die hohe Volatilität bei Mobiltelefonangeboten ist ein Faktor, durch den Abwanderungsmodelle, die auf aktuellen Mobiltelefonmodellen basieren, schnell unbrauchbar werden. Darüber hinaus sind Mobiltelefone nicht nur Kommunikationsgeräte, sondern ein modisches Statement (denken Sie an das iPhone). Diese sozialen Einflüsse befinden sich außerhalb des Bereichs normaler Datasets für die Telekommunikation.
+High volatility in handset offerings is a factor that quickly invalidates models of churn that are based on current handset models. Additionally, mobile phones are not only telecommunication devices, they are also fashion statements (consider the iPhone). These social predictors are outside the scope of regular telecommunications data sets.
 
-Das Endergebnis hinsichtlich der Modellerstellung ist, dass Sie keinen vernünftigen Grundsatz formulieren können, indem Sie einfach bekannte Abwanderungsgründe beseitigen. Tatsächlich ist eine durchgängige Modellierungsstrategie **obligatorisch**, einschließlich der klassischen Modelle zur Quantifizierung bestimmter Variablen (z. B. Entscheidungsbäume).
+The net result for modeling is that you cannot devise a sound policy simply by eliminating known reasons for churn. In fact, a continuous modeling strategy, including classic models that quantify categorical variables (such as decision trees), is **mandatory**.
 
-Die Unternehmen führen großangelegte Datenanalysen, insbesondere zur Abwanderungserkennung auf Basis großer Datenmengen, mit umfangreichen Datenbeständen zu ihren Kunden als effektiven Lösungsansatz für das Problem durch. Weitere Informationen zum Ansatz mit der Analyse großer Datenmengen für das Abwanderungsproblem finden Sie im Abschnitt mit den Empfehlungen zu ETL.  
+Using big data sets on their customers, organizations are performing big data analytics (in particular, churn detection based on big data) as an effective approach to the problem. You can find more about the big data approach to the problem of churn in the Recommendations on ETL section.  
 
-## <a name="methodology-to-model-customer-churn"></a>Methode zum Abbilden der Kundenabwanderung
-Ein allgemeiner Problemlösungsprozess für die Kundenabwanderung ist in den Abbildungen 1 bis 3 dargestellt:  
+## <a name="methodology-to-model-customer-churn"></a>Methodology to model customer churn
+A common problem-solving process to solve customer churn is depicted in Figures 1-3:  
 
-1. Mit einem Risikomodell können Sie berücksichtigen, wie sich Aktionen auf die Wahrscheinlichkeit und das Risiko auswirken.
-2. Mit einem Interventionsmodell können Sie berücksichtigen, wie sich das Interventionsniveau auf die Abwanderungswahrscheinlichkeit und den Langzeitwert von Kundenbeziehungen (Customer Lifetime Value, CLV) auswirken kann.
-3. Diese Analyse bietet sich für eine qualitative Analyse an, die in eine auf Kundensegmente ausgerichtete proaktive Marketingkampagne ausgeweitet wird, um das optimale Angebot bereitzustellen.  
+1. A risk model allows you to consider how actions affect probability and risk.
+2. An intervention model allows you to consider how the level of intervention could affect the probability of churn and the amount of customer lifetime value (CLV).
+3. This analysis lends itself to a qualitative analysis that is escalated to a proactive marketing campaign that targets customer segments to deliver the optimal offer.  
 
-![Diagramm, das zeigt, wie sich anhand von Risikotoleranz und Entscheidungsmodellen verwertbare Erkenntnisse gewinnen lassen](./media/azure-ml-customer-churn-scenario/churn-1.png)
+![Diagram showing how risk tolerance plus decision models yields actionable insights](./media/azure-ml-customer-churn-scenario/churn-1.png)
 
-Dieser zukunftsorientierte Ansatz stellt die beste Möglichkeit zur Behandlung von Abwanderung dar, bringt jedoch Komplexität mit sich: Wir müssen einen Multimodell-Prototyp entwickeln und Abhängigkeiten zwischen den Modellen nachverfolgen. Die Interaktion zwischen den Modellen kann gekapselt werden, wie im folgenden Diagramm veranschaulicht:  
+This forward looking approach is the best way to treat churn, but it comes with complexity: we have to develop a multi-model archetype and trace dependencies between the models. The interaction among models can be encapsulated as shown in the following diagram:  
 
-![Diagramm zur Interaktion zwischen Abwanderungsmodellen](./media/azure-ml-customer-churn-scenario/churn-2.png)
+![Churn model interaction diagram](./media/azure-ml-customer-churn-scenario/churn-2.png)
 
-*Abbildung 4: Vereinheitlichter Prototyp mit mehreren Modellen*  
+*Figure 4: Unified multi-model archetype*  
 
-Interaktionen zwischen den verschiedenen Modellen sind entscheidend, wenn wir einen ganzheitlichen Ansatz für die Kundenbindung bereitstellen müssen. Jedes Modell lässt im Laufe der Zeit zwangsläufig nach. Daher besteht die Architektur aus einer impliziten Schleife (ähnlich dem Prototyp, der vom CRISP-DM Data Mining-Standard, [***3***], festgelegt wurde).  
+Interaction between the models is key if we are to deliver a holistic approach to customer retention. Each model necessarily degrades over time; therefore, the architecture is an implicit loop (similar to the archetype set by the CRISP-DM data mining standard, [***3***]).  
 
-Der Gesamtzyklus von Risiko-Entscheidung-Marketingsegmentierung/-spaltung entspricht weiterhin einer verallgemeinerten Struktur, die auf viele Geschäftsprobleme angewendet werden kann. Die Abwanderungsanalyse ist einfach ein starker Vertreter dieser Gruppe von Problemen, da sie alle Merkmale eines komplexen Geschäftsproblems aufweist, das keine vereinfachte vorhersehbare Lösung gestattet. Die gesellschaftlichen Aspekte des modernen Ansatzes für die Abwanderung werden im Ansatz nicht ausdrücklich hervorgehoben, aber die gesellschaftlichen Aspekte sind wie bei allen Modellen auch im Prototyp für die Modellerstellung gekapselt.  
+The overall cycle of risk-decision-marketing segmentation/decomposition is still a generalized structure, which is applicable to many business problems. Churn analysis is simply a strong representative of this group of problems because it exhibits all the traits of a complex business problem that does not allow a simplified predictive solution. The social aspects of the modern approach to churn are not particularly highlighted in the approach, but the social aspects are encapsulated in the modeling archetype, as they would be in any model.  
 
-Eine interessante Ergänzung ist hier die Analyse großer Datenmengen. Die heutigen Telekommunikations- und Einzelhandelsunternehmen erfassen flächendeckend Daten zu ihren Kunden, und es ist leicht vorherzusehen, dass sich der Bedarf an Verbindungen zwischen den verschiedenen Modellen zu einem allgemeinen Trend entwickelt, wenn man aufkommende Trends wie das "Internet der Dinge" und allgegenwärtige Geräte bedenkt, die es Unternehmen gestatten, intelligente Lösungen auf verschiedenen Ebenen einzusetzen.  
+An interesting addition here is big data analytics. Today's telecommunication and retail businesses collect exhaustive data about their customers, and we can easily foresee that the need for multi-model connectivity will become a common trend, given emerging trends such as the Internet of Things and ubiquitous devices, which allow business to employ smart solutions at multiple layers.  
 
  
 
-## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementieren des Modellierungs-Prototyps in Machine Learning Studio
-Wie kann für das beschriebene Problem am besten ein integrierter Ansatz für die Modellierung und Bewertung implementiert werden? In diesem Abschnitt wird veranschaulicht, wie dies mithilfe von Azure Machine Learning Studio erreicht wird.  
+## <a name="implementing-the-modeling-archetype-in-machine-learning-studio"></a>Implementing the modeling archetype in Machine Learning Studio
+Given the problem described, what is the best way to implement an integrated modeling and scoring approach? In this section, we will demonstrate how we accomplished this by using Azure Machine Learning Studio.  
 
-Der Multi-Modell-Ansatz ist beim Entwerfen eines globalen Prototyps für die Abwanderung zwingend erforderlich. Selbst der (voraussagende) Bewertungsteil des Ansatzes sollte mehrere Modelle einbeziehen.  
+The multi-model approach is a must when designing a global archetype for churn. Even the scoring (predictive) part of the approach should be multi-model.  
 
-Das folgende Diagramm zeigt den erstellten Prototyp, der vier Bewertungsalgorithmen in Machine Learning Studio einbezieht, um die Abwanderung vorherzusagen. Der Grund für die Verwendung eines Multi-Modell-Ansatzes besteht nicht nur darin, einen Gesamtklassifizierer zum Erhöhen der Genauigkeit zu erstellen, sondern er dient auch zum Schutz vor einer Überanpassung sowie zur Verbesserung der vorgeschriebenen Funktionsauswahl.  
+The following diagram shows the prototype we created, which employs four scoring algorithms in Machine Learning Studio to predict churn. The reason for using a multi-model approach is not only to create an ensemble classifier to increase accuracy, but also to protect against over-fitting and to improve prescriptive feature selection.  
 
-![Screenshot eines komplexen Studio-Arbeitsbereichs mit vielen verbundenen Modulen](./media/azure-ml-customer-churn-scenario/churn-3.png)
+![Screenshot depicting a complex Studio workspace with many interconnected modules](./media/azure-ml-customer-churn-scenario/churn-3.png)
 
-*Abbildung 5: Prototyp eines Abwanderungsmodell-Ansatzes*  
+*Figure 5: Prototype of a churn modeling approach*  
 
-Die folgenden Abschnitte enthalten Einzelheiten zum Bewertungsmodell des Prototyps, das wir mithilfe von Machine Learning Studio implementiert haben.  
+The following sections provide more details about the prototype scoring model that we implemented by using Machine Learning Studio.  
 
-### <a name="data-selection-and-preparation"></a>Datenauswahl und Vorbereitung
-Die zum Erstellen der Modelle und zum Bewerten der Kunden verwendeten Daten wurden aus einer vertikalen CRM-Lösung abgerufen, wobei die Daten verschleiert wurden, um den Datenschutz der Kunden zu gewährleisten. Die Daten enthalten Informationen über 8.000 Abonnements in den USA, und es werden drei Quellen kombiniert: Bereitstellungsdaten (Abonnementmetadaten), Aktivitätsdaten (Nutzung des Systems) und Kundensupportdaten. Die Daten beinhalten keine geschäftlichen Daten der Kunden, so sind z. B. keine Treuemetadaten oder Bonitätsbewertungen enthalten.  
+### <a name="data-selection-and-preparation"></a>Data selection and preparation
+The data used to build the models and score customers was obtained from a CRM vertical solution, with the data obfuscated to protect customer privacy. The data contains information about 8,000 subscriptions in the U.S., and it combines three sources: provisioning data (subscription metadata), activity data (usage of the system), and customer support data. The data does not include any business-related information about the customers; for example, it does not include loyalty metadata or credit scores.  
 
-Der Einfachheit halber liegen die ETL- und Datenbereinigungsprozesse außerhalb des Anwendungsbereichs, da wir annehmen, dass die Vorbereitung der Daten bereits an anderer Stelle durchgeführt wurde.
+For simplicity, ETL and data cleansing processes are out of scope because we assume that data preparation has already been done elsewhere.
 
-Die Funktionsauswahl für die Modellerstellung basiert auf der Bewertung der vorläufigen Signifikanz für eine Reihe von in den Prozess einbezogenen Einflusswerten, wobei das Random Forest-Modul verwendet wird. Für die Implementierung in Machine Learning Studio haben wir den Mittelwert, den Medianwert und Bereiche für repräsentative Funktionen berechnet. Es wurden z. B. Mengen für die qualitativen Daten hinzugefügt, etwa Mindest- und Höchstwerte für die Benutzeraktivität.
+Feature selection for modeling is based on preliminary significance scoring of the set of predictors, included in the process that uses the random forest module. For the implementation in Machine Learning Studio, we calculated the mean, median, and ranges for representative features. For example, we added aggregates for the qualitative data, such as minimum and maximum values for user activity.
 
-Zudem wurden temporale Informationen für die letzten sechs Monate erfasst. Wir haben die Daten eines Jahres analysiert und dabei bewiesen, dass die Auswirkung auf die Abwanderung nach sechs Monaten erheblich abnimmt, auch wenn statistisch signifikante Trends vorhanden sind.  
+We also captured temporal information for the most recent six months. We analyzed data for one year and we established that even if there were statistically significant trends, the effect on churn is greatly diminished after six months.  
 
-Der wichtigste Punkt dabei ist, dass der gesamte Prozess, einschließlich ETL, Funktionsauswahl und Modellerstellung, mithilfe von Datenquellen in Microsoft Azure in Machine Learning Studio implementiert wurde.   
+The most important point is that the entire process, including ETL, feature selection, and modeling was implemented in Machine Learning Studio, using data sources in Microsoft Azure.   
 
-Die folgenden Diagramme veranschaulichen die verwendeten Daten.  
+The following diagrams illustrate the data that was used.  
 
-![Screenshot mit einem Beispiel zur Verwendung der Daten mit Rohwerten](./media/azure-ml-customer-churn-scenario/churn-4.png)
+![Screenshot showing a sample of the data used with raw values](./media/azure-ml-customer-churn-scenario/churn-4.png)
 
-*Abbildung 6: Auszug aus der Datenquelle (verschleiert)*  
+*Figure 6: Excerpt of data source (obfuscated)*  
 
-![Screenshot mit statistischen Funktionen, die aus der Datenquelle extrahiert wurden](./media/azure-ml-customer-churn-scenario/churn-5.png)
+![Screenshot showing statistical features extracted from data source](./media/azure-ml-customer-churn-scenario/churn-5.png)
 
-*Abbildung 7: Aus der Datenquelle extrahierte Funktionen*
+*Figure 7: Features extracted from data source*
  
 
-> Beachten Sie, dass diese Daten privat sind, weshalb Modell und Daten nicht freigegeben werden dürfen.
-> Sie finden jedoch ein ähnliches Modell mit öffentlich verfügbaren Daten in diesem Beispielexperiment in der [Azure AI Gallery](http://gallery.azure.ai/): [Kundenabwanderung in der Telekommunikationsbranche](http://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
+> Note that this data is private and therefore the model and data cannot be shared.
+> However, for a similar model using publicly available data, see this sample experiment in the [Azure AI Gallery](https://gallery.azure.ai/): [Telco Customer Churn](https://gallery.azure.ai/Experiment/31c19425ee874f628c847f7e2d93e383).
 > 
-> Weitere Informationen zum Implementieren eines Abwanderungsanalysemodells mit Cortana Intelligence Suite finden Sie auch in [diesem Video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) von Senior Program Manager Wee Hyong Tok. 
+> To learn more about how you can implement a churn analysis model using Cortana Intelligence Suite, we also recommend [this video](https://info.microsoft.com/Webinar-Harness-Predictive-Customer-Churn-Model.html) by Senior Program Manager Wee Hyong Tok. 
 > 
 > 
 
-### <a name="algorithms-used-in-the-prototype"></a>Im Prototyp verwendete Algorithmen
-Wir haben die folgenden vier Machine Learning-Algorithmen für die Erstellung des Prototyps verwendet (keine Anpassung):  
+### <a name="algorithms-used-in-the-prototype"></a>Algorithms used in the prototype
+We used the following four machine learning algorithms to build the prototype (no customization):  
 
-1. Logistische Regression (LR)
-2. Boosted Decision Tree (BT, verstärkter Entscheidungsbaum)
-3. Averaged Perceptron (AP, gemitteltes Perzeptron)
-4. Support Vector Machine (SVM, Stützvektormethode)  
+1. Logistic regression (LR)
+2. Boosted decision tree (BT)
+3. Averaged perceptron (AP)
+4. Support vector machine (SVM)  
 
-Das folgende Diagramm veranschaulicht einen Teil der Experimententwurfsoberfläche, die die Reihenfolge anzeigt, in der die Modelle erstellt wurden:  
+The following diagram illustrates a portion of the experiment design surface, which indicates the sequence in which the models were created:  
 
-![Screenshot mit einem kleinen Abschnitt des Studio-Experimentbereichs](./media/azure-ml-customer-churn-scenario/churn-6.png)  
+![Screenshot of a small section of the studio experiment canvas](./media/azure-ml-customer-churn-scenario/churn-6.png)  
 
-*Abbildung 8: Erstellen von Modellen in Machine Learning Studio*  
+*Figure 8: Creating models in Machine Learning Studio*  
 
-### <a name="scoring-methods"></a>Bewertungsmethoden
-Wir haben die vier Modelle mithilfe eines bezeichneten Trainings-DataSets bewertet.  
+### <a name="scoring-methods"></a>Scoring methods
+We scored the four models by using a labeled training dataset.  
 
-Wir haben das Bewertungs-DataSet auch mit der Desktop-Edition von SAS Enterprise Miner 12 an ein vergleichbares Modell übermittelt. Wir maßen die Genauigkeit des SAS-Modells und aller vier Machine Learning Studio-Modelle.  
+We also submitted the scoring dataset to a comparable model built by using the desktop edition of SAS Enterprise Miner 12. We measured the accuracy of the SAS model and all four Machine Learning Studio models.  
 
-## <a name="results"></a>Ergebnisse
-In diesem Abschnitt werden unsere Ergebnisse zur Genauigkeit der Modelle auf Basis des Bewertungsdatasets präsentiert.  
+## <a name="results"></a>Results
+In this section, we present our findings about the accuracy of the models, based on the scoring dataset.  
 
-### <a name="accuracy-and-precision-of-scoring"></a>Richtigkeit und Genauigkeit der Bewertung
-Im Allgemeinen ist die Implementierung in Azure Machine Learning Studio etwas ungenauer als SAS, und zwar um etwa 10 – 15 % (Area Under Curve oder AUC).  
+### <a name="accuracy-and-precision-of-scoring"></a>Accuracy and precision of scoring
+Generally, the implementation in Azure Machine Learning Studio is behind SAS in accuracy by about 10-15% (Area Under Curve or AUC).  
 
-Die wichtigste Kennzahl in Codeänderung ist jedoch die Rate der falschen Klassifizierung: Welcher der vom Klassifizierer vorhergesagten wichtigsten N Abwanderer ist tatsächlich **nicht** abgewandert und hat trotzdem besondere Behandlung erhalten? Das folgende Diagramm vergleicht die Fehlklassifizierungsrate für alle Modelle:  
+However, the most important metric in churn is the misclassification rate: that is, of the top N churners as predicted by the classifier, which of them actually did **not** churn, and yet received special treatment? The following diagram compares this misclassification rate for all the models:  
 
-![AUC-Diagramm mit einem Vergleich der Leistung von vier Algorithmen](./media/azure-ml-customer-churn-scenario/churn-7.png)
+![Area under the curve graph comparing the performance of 4 algorithms](./media/azure-ml-customer-churn-scenario/churn-7.png)
 
-*Abbildung 9: Area Under Curve (AUC, Fläche unter der Kurve) für den Passauer Prototyp*
+*Figure 9: Passau prototype area under curve*
 
-### <a name="using-auc-to-compare-results"></a>Verwenden von AUC zum Vergleichen von Ergebnissen
-„Area Under Curve“ (AUC) ist eine Metrik, die eine globale Maßeinheit für die *Trennbarkeit* zwischen den Verteilungen von Punktzahlen für positive und negative Bestände. Sie ähnelt dem traditionellen ROC-Diagramm (Receiver Operator Characteristic), aber ein wesentlicher Unterschied ist, dass die AUC-Kennzahl von Ihnen keinen Schwellenwert erfordert. Stattdessen fasst sie die Ergebnisse über **alle** möglichen Optionen zusammen. Im Gegensatz dazu zeigt das traditionelle ROC-Diagramm den positiven Wert an der vertikalen und den falsch positiven Wert an der horizontalen Achse an, wobei der Schwellenwert für die Klassifizierung variiert.   
+### <a name="using-auc-to-compare-results"></a>Using AUC to compare results
+Area Under Curve (AUC) is a metric that represents a global measure of *separability* between the distributions of scores for positive and negative populations. It is similar to the traditional Receiver Operator Characteristic (ROC) graph, but one important difference is that the AUC metric does not require you to choose a threshold value. Instead, it summarizes the results over **all** possible choices. In contrast, the traditional ROC graph shows the positive rate on the vertical axis and the false positive rate on the horizontal axis, and the classification threshold varies.   
 
-AUC wird als Maßstab für den Wert verschiedener Algorithmen (oder verschiedener Systeme) verwendet, da die Kennzahl den Vergleich von Modellen anhand ihrer AUC-Werte ermöglicht. Dies ist ein beliebter Ansatz in Branchen wie der Meteorologie oder Biosciences. Somit stellt AUC ein beliebtes Werkzeug zur Bewertung der Leistung von Klassifizierern dar.  
+AUC is used as a measure of worth for different algorithms (or different systems) because it allows models to be compared by means of their AUC values. This is a popular approach in industries such as meteorology and biosciences. Thus, AUC represents a popular tool for assessing classifier performance.  
 
-### <a name="comparing-misclassification-rates"></a>Vergleichen der Fehlklassifikationsraten
-Wir haben die Fehlklassifikationsraten für das fragliche Dataset mithilfe der CRM-Daten von ungefähr 8.000 Kunden verglichen.  
+### <a name="comparing-misclassification-rates"></a>Comparing misclassification rates
+We compared the misclassification rates on the dataset in question by using the CRM data of approximately 8,000 subscriptions.  
 
-* Die SAS-Fehlklassifizierungsrate lag bei 10-15 %.
-* Die Fehlklassifizierungsrate von Machine Learning Studio lag für die obersten 200-300 Abwanderer bei 15-20 %.  
+* The SAS misclassification rate was 10-15%.
+* The Machine Learning Studio misclassification rate was 15-20% for the top 200-300 churners.  
 
-In der Telekommunikationsbranche ist es wichtig, sich nur mit den Kunden mit dem höchsten Abwanderungsrisiko zu befassen, indem ihnen ein Concierge-Dienst oder andere Sonderbehandlungen angeboten werden. In dieser Hinsicht erzielt die Machine Learning Studio-Implementierung Ergebnisse, die mit dem SAS-Modell vergleichbar sind.  
+In the telecommunications industry, it is important to address only those customers who have the highest risk to churn by offering them a concierge service or other special treatment. In that respect, the Machine Learning Studio implementation achieves results on par with the SAS model.  
 
-Ebenso ist die Richtigkeit wichtiger als die Genauigkeit, da wir am stärksten an der korrekten Klassifizierung potenzieller Abwanderer interessiert sind.  
+By the same token, accuracy is more important than precision because we are mostly interested in correctly classifying potential churners.  
 
-Das folgende Diagramm aus Wikipedia veranschaulicht die Beziehung in einer einfach zu verstehenden Grafik:  
+The following diagram from Wikipedia depicts the relationship in a lively, easy-to-understand graphic:  
 
-![Zwei Ziele. Ein Ziel mit lose gruppierten Treffermarkierungen, die sich aber in der Nähe der Zielscheibenmitte befinden, markiert mit „Low accuracy: good trueness, poor precision“ (Geringe Treffergenauigkeit: gute Richtigkeit, schlechte Genauigkeit) Ein weiteres Ziel mit eng gruppierten Treffermarkierungen, die aber weit von der Zielscheibenmitte entfernt sind, markiert mit „Low accuracy: poor trueness, good precision (Geringe Treffergenauigkeit: schlechte Richtigkeit, gute Genauigkeit)](./media/azure-ml-customer-churn-scenario/churn-8.png)
+![Two targets. One target shows hit marks loosely grouped but near the bulls-eye marked "Low accuracy: good trueness, poor precision. Another target tightly grouped but far from the bulls-eye marked "Low accuracy: poor trueness, good precision"](./media/azure-ml-customer-churn-scenario/churn-8.png)
 
-*Abbildung 10: Kompromiss zwischen Richtigkeit und Genauigkeit*
+*Figure 10: Tradeoff between accuracy and precision*
 
-### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Ergebnisse für Richtigkeit und Genauigkeit für das Boosted Tree-Modell
-Das folgende Diagramm zeigt die Originalergebnisse der Bewertung mithilfe des Machine Learning-Prototyps für das Boosted Decision Tree-Modell, bei dem es sich um das genaueste der vier Modelle handelt:  
+### <a name="accuracy-and-precision-results-for-boosted-decision-tree-model"></a>Accuracy and precision results for boosted decision tree model
+The following chart displays the raw results from scoring using the Machine Learning prototype for the boosted decision tree model, which happens to be the most accurate among the four models:  
 
-![Tabellenausschnitt mit den Werten „Accuracy“ (Treffergenauigkeit), „Precision“ (Genauigkeit), „Recall“ (Trefferquote), „F-Score“ (F-Maß), „AUC“ (Fläche unter der Kurve), „Average Log Loss“ (logarithmische Durchschnittsdämpfung) und „Training Log Loss“ (logarithmische Trainingsdämpfung) für vier Algorithmen](./media/azure-ml-customer-churn-scenario/churn-9.png)
+![Table snippet showing Accuracy, Precision, Recall, F-Score, AUC, Average Log Loss, and Training Log Loss for four algorithms](./media/azure-ml-customer-churn-scenario/churn-9.png)
 
-*Abbildung 11: Merkmale des Boosted Decision Tree-Modells*
+*Figure 11: Boosted decision tree model characteristics*
 
-## <a name="performance-comparison"></a>Leistungsvergleich
-Wir haben die Geschwindigkeit, mit der Daten mithilfe der Machine Learning Studio-Modelle bewertet wurden, mit einem vergleichbaren Modell verglichen, das mithilfe der Desktopversion von SAS Enterprise Miner 12.1 erstellt wurde.  
+## <a name="performance-comparison"></a>Performance comparison
+We compared the speed at which data was scored using the Machine Learning Studio models and a comparable model created by using the desktop edition of SAS Enterprise Miner 12.1.  
 
-Die folgende Tabelle fasst die Leistung der Algorithmen zusammen:  
+The following table summarizes the performance of the algorithms:  
 
-*Tabelle 1: Allgemeine Leistung (Genauigkeit) der Algorithmen*
+*Table 1. General performance (accuracy) of the algorithms*
 
 | LR | BT | AP | SVM |
 | --- | --- | --- | --- |
-| Durchschnittliches Modell |Bestes Modell |Unterdurchschnittliches Modell |Durchschnittliches Modell |
+| Average Model |The Best Model |Underperforming |Average Model |
 
-Die in Machine Learning Studio gehosteten Modelle haben SAS hinsichtlich der Ausführungsgeschwindigkeit um 15-25 % übertroffen, aber die Richtigkeit war größtenteils vergleichbar.  
+The models hosted in Machine Learning Studio outperformed SAS by 15-25% for speed of execution, but accuracy was largely on par.  
 
-## <a name="discussion-and-recommendations"></a>Diskussion und Empfehlungen
-In der Telekommunikationsbranche haben sich verschiedene Methoden zur Analyse der Abwanderung entwickelt, darunter:  
+## <a name="discussion-and-recommendations"></a>Discussion and recommendations
+In the telecommunications industry, several practices have emerged to analyze churn, including:  
 
-* Ableitung der Metriken für vier grundlegende Kategorien:
-  * **Entität (z.B. ein Abonnement)**. Bereitstellung grundlegender Informationen zum Abonnement und/oder Kunden, das/der Gegenstand der Abwanderung ist.
-  * **Aktivität**. Abrufen aller möglichen Nutzungsinformationen, die sich auf die Entität beziehen, z. B. die Anzahl der Anmeldungen.
-  * **Kundensupport**. Sammeln von Informationen aus Kundensupportprotokollen, um anzuzeigen, ob es für das Abonnement Probleme oder Interaktionen mit dem Kundensupport gab.
-  * **Wettbewerbs- und Geschäftsdaten**. Abrufen aller möglichen Informationen zum Kunden (können nicht verfügbar oder schwer nachzuverfolgen sein).
-* Verwenden der Gewichtung zur Steuerung der Funktionsauswahl. Das bedeutet, dass das Boosted Decision Tree-Modell immer einen vielversprechenden Ansatz darstellt.  
+* Derive metrics for four fundamental categories:
+  * **Entity (for example, a subscription)**. Provision basic information about the subscription and/or customer that is the subject of churn.
+  * **Activity**. Obtain all possible usage information that is related to the entity, for example, the number of logins.
+  * **Customer support**. Harvest information from customer support logs to indicate whether the subscription had issues or interactions with customer support.
+  * **Competitive and business data**. Obtain any information possible about the customer (for example, can be unavailable or hard to track).
+* Use importance to drive feature selection. This implies that the boosted decision tree model is always a promising approach.  
 
-Die Verwendung dieser vier Kategorien schafft die Illusion, dass ein einfacher *deterministischer* Ansatz basierend auf Indizes, die anhand von angemessenen Faktoren pro Kategorie gebildet werden, ausreichen sollte, um das Abwanderungsrisiko von Kunden zu erkennen. Obwohl dieser Gedanke plausibel scheint, beruht er leider auf einem falschen Verständnis. Der Grund hierfür ist, dass die Abwanderung ein temporaler Effekt ist, während die zur Abwanderung führenden Faktoren normalerweise schwankende Zustände aufweisen. Was bringt einen Kunden dazu, zu glauben, dass es einen Unterschied macht, ob er heute oder morgen oder in sechs Monaten abwandert? Daher ist ein *Wahrscheinlichkeitsmodell* erforderlich.  
+The use of these four categories creates the illusion that a simple *deterministic* approach, based on indexes formed on reasonable factors per category, should suffice to identify customers at risk for churn. Unfortunately, although this notion seems plausible, it is a false understanding. The reason is that churn is a temporal effect and the factors contributing to churn are usually in transient states. What leads a customer to consider leaving today might be different tomorrow, and it certainly will be different six months from now. Therefore, a *probabilistic* model is a necessity.  
 
-Diese wichtige Beobachtung wird in Unternehmen häufig übersehen, die im Allgemeinen einen Business Intelligence-orientierten Ansatz für die Analyse bevorzugen (hauptsächlich, da er besser zu verkaufen ist und eine unkomplizierte Automatisierung gestattet).  
+This important observation is often overlooked in business, which generally prefers a business intelligence-oriented approach to analytics, mostly because it is an easier sell and admits straightforward automation.  
 
-Die Aussicht der Self-Service-Analyse mithilfe von Machine Learning Studio ist jedoch, dass die vier Informationskategorien, die nach Geschäftsbereich oder Abteilung bewertet werden, für das maschinelle Lernen hinsichtlich der Abwanderung zu einer wichtigen Quelle werden.  
+However, the promise of self-service analytics by using Machine Learning Studio is that the four categories of information, graded by division or department, become a valuable source for machine learning about churn.  
 
-Eine weitere interessante Funktion von Azure Machine Learning Studio ist die Möglichkeit, dem Repository der bereits verfügbaren vordefinierten Module ein benutzerdefiniertes Modul hinzuzufügen. Diese Funktion bietet im Wesentlichen eine Möglichkeit, Bibliotheken auszuwählen und Vorlagen für vertikale Märkte zu erstellen. Sie ist am Markt ein wichtiges Unterscheidungsmerkmal von Azure Machine Learning Studio.  
+Another exciting capability coming in Azure Machine Learning Studio is the ability to add a custom module to the repository of predefined modules that are already available. This capability, essentially, creates an opportunity to select libraries and create templates for vertical markets. It is an important differentiator of Azure Machine Learning Studio in the market place.  
 
-Wir hoffen, dieses Thema weiter behandeln zu können, insbesondere in Bezug auf die Analyse großer Datenmengen.
+We hope to continue this topic in the future, especially related to big data analytics.
   
 
-## <a name="conclusion"></a>Zusammenfassung
-In diesem Dokument wird ein sinnvoller Ansatz zur Bewältigung eines allgemeinen Problems, der Kundenabwanderung, mithilfe einer allgemeinen Struktur beschrieben. Wir haben einen Prototyp zur Bewertung von Modellen betrachtet und ihn mithilfe von Azure Machine Learning Studio implementiert. Abschließend haben wird die Genauigkeit und Leistung der Prototyplösung hinsichtlich vergleichbarer Algorithmen in SAS bewertet.  
+## <a name="conclusion"></a>Conclusion
+This paper describes a sensible approach to tackling the common problem of customer churn by using a generic framework. We considered a prototype for scoring models and implemented it by using Azure Machine Learning Studio. Finally, we assessed the accuracy and performance of the prototype solution with regard to comparable algorithms in SAS.  
 
  
 
-## <a name="references"></a>Referenzen
-[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, Juli/August 2011, S. 18-20.  
+## <a name="references"></a>References
+[1] Predictive Analytics: Beyond the Predictions, W. McKnight, Information Management, July/August 2011, p.18-20.  
 
-[2] Wikipedia-Artikel: [Richtigkeit und Genauigkeit](http://en.wikipedia.org/wiki/Accuracy_and_precision)
+[2] Wikipedia article: [Accuracy and precision](https://en.wikipedia.org/wiki/Accuracy_and_precision)
 
-[3] [CRISP-DM 1.0: Step-by-Step Data Mining Guide](http://www.the-modeling-agency.com/crisp-dm.pdf)   
+[3] [CRISP-DM 1.0: Step-by-Step Data Mining Guide](https://www.the-modeling-agency.com/crisp-dm.pdf)   
 
-[4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn) (in englischer Sprache)
+[4] [Big Data Marketing: Engage Your Customers More Effectively and Drive Value](http://www.amazon.com/Big-Data-Marketing-Customers-Effectively/dp/1118733894/ref=sr_1_12?ie=UTF8&qid=1387541531&sr=8-12&keywords=customer+churn)
 
-[5] [Vorlage Telco Churn Model](http://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) im [Azure AI-Katalog](http://gallery.azure.ai/) 
+[5] [Telco churn model template](https://gallery.azure.ai/Experiment/Telco-Customer-Churn-5) in [Azure AI Gallery](https://gallery.azure.ai/) 
  
 
-## <a name="appendix"></a>Anhang
-![Snapshot einer Präsentation zum Abwanderungsprototyp](./media/azure-ml-customer-churn-scenario/churn-10.png)
+## <a name="appendix"></a>Appendix
+![Snapshot of a presentation on churn prototype](./media/azure-ml-customer-churn-scenario/churn-10.png)
 
-*Abbildung 12: Snapshot einer Präsentation zum Abwanderungs-Prototyp*
+*Figure 12: Snapshot of a presentation on churn prototype*

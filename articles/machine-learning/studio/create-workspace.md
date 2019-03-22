@@ -1,101 +1,101 @@
 ---
-title: Erstellen eines Azure Machine Learning Studio-Arbeitsbereichs
+title: Create a Machine Learning Studio workspace
 titleSuffix: Azure Machine Learning Studio
-description: Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
+description: To use Azure Machine Learning Studio, you need to have a Machine Learning Studio workspace. This workspace contains the tools you need to create, manage, and publish experiments.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: article
-author: ericlicoding
+ms.topic: conceptual
+author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
-ms.openlocfilehash: bcd5b377f00ad43ff727c581471aad3ac651bdbb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270096"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58086138"
 ---
-# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Erstellen und Freigeben eines Azure Machine Learning Studio-Arbeitsbereichs
+# <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>Create and share an Azure Machine Learning Studio workspace
 
-Um Azure Machine Learning Studio verwenden zu können, benötigen Sie einen Machine Learning Studio-Arbeitsbereich. Dieser Arbeitsbereich enthält die Tools, die zum Erstellen, Verwalten und Veröffentlichen von Experimenten erforderlich sind.
+To use Azure Machine Learning Studio, you need to have a Machine Learning Studio workspace. This workspace contains the tools you need to create, manage, and publish experiments.
 
-## <a name="create-a-studio-workspace"></a>Erstellen eines Studio-Arbeitsbereichs
+## <a name="create-a-studio-workspace"></a>Create a Studio workspace
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
+1. Sign in to the [Azure portal](https://portal.azure.com/)
 
     > [!NOTE]
-    > Um sich anzumelden und einen Studio-Arbeitsbereich zu erstellen, müssen Sie ein Azure-Abonnementadministrator sein. 
+    > To sign in and create a Studio workspace, you need to be an Azure subscription administrator. 
     >
     > 
 
-2. Klicken Sie auf **+Neu**.
+2. Click **+New**
 
-3. Geben Sie im Suchfeld **Machine Learning Studio Workspace** ein, und wählen Sie das entsprechende Element aus. Klicken Sie dann am unteren Rand der Seite auf **Erstellen**.
+3. In the search box, type **Machine Learning Studio Workspace** and select the matching item. Then, select click **Create** at the bottom of the page.
 
-4. Geben Sie die Daten für Ihren Arbeitsbereich ein:
+4. Enter your workspace information:
 
-    - Der *Arbeitsbereichsname* darf bis zu 260 Zeichen enthalten und darf nicht auf ein Leerzeichen enden. Der Name darf nicht die folgenden Zeichen enthalten: `< > * % & : \ ? + /`
-    - Der von Ihnen gewählte (oder erstellte) *Webdiensttarif* wird zusammen mit dem zugehörigen von Ihnen ausgewählten *Tarif* verwendet, wenn Sie Webdienste aus diesem Arbeitsbereich bereitstellen.
+   - The *workspace name* may be up to 260 characters, not ending in a space. The name can't include these characters: `< > * % & : \ ? + /`
+   - The *web service plan* you choose (or create), along with the associated *pricing tier* you select, is used if you deploy web services from this workspace.
 
-    ![Erstellen eines neuen Studio-Arbeitsbereichs](./media/create-workspace/create-new-workspace.png)
+     ![Create a new Studio workspace](./media/create-workspace/create-new-workspace.png)
 
-5. Klicken Sie auf **Create**.
-
-> [!NOTE]
-> In Machine Learning Studio ist ein von Ihnen angegebenes Azure-Speicherkonto zum Speichern temporärer Daten beim Ausführen des Workflows erforderlich. Wenn das Speicherkonto nach dem Erstellen des Arbeitsbereichs gelöscht wird oder die Zugriffsschlüssel geändert werden, funktioniert der Arbeitsbereich nicht mehr, und alle darin enthaltenen Experimente schlagen fehl.
-Wenn Sie das Speicherkonto versehentlich löschen, können Sie es mit identischem Namen und in derselben Region neu erstellen und die Zugriffsschlüssel erneut synchronisieren. Wenn Sie Zugriffsschlüssel für Speicherkonten geändert haben, müssen Sie die Zugriffsschlüssel im Arbeitsbereich über das Azure-Portal neu synchronisieren.
-
-Nachdem der Arbeitsbereich bereitgestellt wurde, können Sie ihn in Machine Learning Studio öffnen.
-
-1. Navigieren Sie zu Machine Learning Studio unter [https://studio.azureml.net/](https://studio.azureml.net/).
-
-2. Wählen Sie Ihren Arbeitsbereich in der oberen rechten Ecke aus.
-
-    ![Arbeitsbereich auswählen](./media/create-workspace/open-workspace.png)
-
-3. Klicken Sie auf **Meine Experimente**.
-
-    ![Experimente öffnen](./media/create-workspace/my-experiments.png)
-
-Informationen zum Verwalten des Studio-Arbeitsbereichs finden Sie unter [Verwalten eines Azure Machine Learning Studio-Arbeitsbereichs](manage-workspace.md).
-Wenn ein Problem beim Erstellen des Arbeitsbereichs auftritt, finden Sie weitere Informationen unter [Leitfaden zur Problembehandlung: Erstellen eines Machine Learning Studio-Arbeitsbereichs und Verbindungsaufbau](troubleshooting-creating-ml-workspace.md).
-
-
-## <a name="share-an-azure-machine-learning-studio-workspace"></a>Gemeinsames Nutzen eines Azure Machine Learning Studio-Arbeitsbereichs
-Sobald ein Machine Learning Studio-Arbeitsbereich erstellt wurde, können Sie Benutzer zu Ihrem Arbeitsbereich einladen, um den Zugriff auf Ihren Arbeitsbereich und alle zugehörigen Experimente, Datasets, Notizbücher usw. freizugeben. Sie können Benutzer in einer der beiden Rollen hinzufügen:
-
-* **Benutzer**: Ein Arbeitsbereichsbenutzer kann Experimente, Datasets etc. im Arbeitsbereich erstellen, öffnen, ändern und löschen.
-* **Besitzer**: Zusätzlich zu den Möglichkeiten eines Benutzers kann ein Besitzer Benutzer im Arbeitsbereich einladen und entfernen.
+5. Click **Create**.
 
 > [!NOTE]
-> Das Administratorkonto, das den Arbeitsbereich erstellt, wird dem Arbeitsbereich automatisch als Arbeitsbereichsbesitzer hinzugefügt. Allerdings erhalten andere Administratoren oder Benutzer in diesem Abonnement nicht automatisch Zugriff auf den Arbeitsbereich – Sie müssen sie explizit einladen.
+> Machine Learning Studio relies on an Azure storage account that you provide to save intermediary data when it executes the workflow. After the workspace is created, if the storage account is deleted, or if the access keys are changed, the workspace will stop functioning and all experiments in that workspace will fail.
+If you accidentally delete the storage account, recreate the storage account with the same name in the same region as the deleted storage account and resync the access key. If you changed storage account access keys, resync the access keys in the workspace by using the Azure portal.
+
+Once the workspace is deployed, you can open it in Machine Learning Studio.
+
+1. Browse to Machine Learning Studio at [https://studio.azureml.net/](https://studio.azureml.net/).
+
+2. Select your workspace in the upper-right-hand corner.
+
+    ![Select workspace](./media/create-workspace/open-workspace.png)
+
+3. Click **my experiments**.
+
+    ![Open experiments](./media/create-workspace/my-experiments.png)
+
+For information about managing your Studio workspace, see [Manage an Azure Machine Learning Studio workspace](manage-workspace.md).
+If you encounter a problem creating your workspace, see [Troubleshooting guide: Create and connect to a Machine Learning Studio workspace](troubleshooting-creating-ml-workspace.md).
+
+
+## <a name="share-an-azure-machine-learning-studio-workspace"></a>Share an Azure Machine Learning Studio workspace
+Once a Machine Learning Studio workspace is created, you can invite users to your workspace to share access to your workspace and all its experiments, datasets, notebooks, etc. You can add users in one of two roles:
+
+* **User** - A workspace user can create, open, modify, and delete experiments, datasets, etc. in the workspace.
+* **Owner** - An owner can invite and remove users in the workspace, in addition to what a user can do.
+
+> [!NOTE]
+> The administrator account that creates the workspace is automatically added to the workspace as workspace Owner. However, other administrators or users in that subscription are not automatically granted access to the workspace - you need to invite them explicitly.
 > 
 > 
 
-### <a name="to-share-a-studio-workspace"></a>So geben Sie einen Studio-Arbeitsbereich frei
+### <a name="to-share-a-studio-workspace"></a>To share a Studio workspace
 
-1. Melden Sie sich bei Azure Machine Learning Studio unter [https://studio.azureml.net/Home](https://studio.azureml.net/Home) an.
+1. Sign in to Machine Learning Studio at [https://studio.azureml.net/Home](https://studio.azureml.net/Home)
 
-2. Klicken Sie im linken Bereich auf **EINSTELLUNGEN**.
+2. In the left panel, click **SETTINGS**
 
-3. Klicken Sie auf die Registerkarte **BENUTZER**.
+3. Click the **USERS** tab
 
-4. Klicken Sie im unteren Seitenbereich auf **WEITERE BENUTZER EINLADEN**.
+4. Click **INVITE MORE USERS** at the bottom of the page
 
-    ![Studio-Einstellungen](./media/create-workspace/settings.png)
+    ![Studio settings](./media/create-workspace/settings.png)
 
-5. Geben Sie mindestens eine E-Mail-Adresse ein. Die Benutzer benötigen ein gültiges Microsoft-Konto oder ein Organisationskonto (aus Azure Active Directory).
+5. Enter one or more email addresses. The users need a valid Microsoft account or an organizational account (from Azure Active Directory).
 
-6. Wählen Sie, ob Benutzer als Besitzer oder Benutzer hinzugefügt werden sollen.
+6. Select whether you want to add the users as Owner or User.
 
-7. Klicken Sie auf die Häkchenschaltfläche **OK** .
+7. Click the **OK** checkmark button.
 
-Jeder hinzugefügte Benutzer erhält eine E-Mail mit Anweisungen zum Anmelden beim freigegebenen Arbeitsbereich.
+Each user you add will receive an email with instructions on how to sign in to the shared workspace.
 
 > [!NOTE]
-> Damit Benutzer Webdienste in diesem Arbeitsbereich bereitstellen oder verwalten können, müssen sie Mitwirkender oder Administrator im Azure-Abonnement sein. 
+> For users to be able to deploy or manage web services in this workspace, they must be a contributor or administrator in the Azure subscription. 
 
 
 

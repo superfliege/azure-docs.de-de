@@ -1,6 +1,6 @@
 ---
-title: Verschieben von Daten aus OData-Quellen | Microsoft Docs
-description: Erfahren Sie, wie Sie Daten aus OData-Quellen mithilfe von Azure Data Factory verschieben.
+title: Move data from OData sources | Microsoft Docs
+description: Learn about how to move data from OData sources using Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,65 +13,65 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 73cba950a159bd1f70fc231f0923e55332af0199
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 63f26c8a4a0a9195083386b18c0fff9439428bf0
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108805"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57546193"
 ---
-# <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Verschieben von Daten aus einer OData-Quelle mithilfe von Azure Data Factory
+# <a name="move-data-from-a-odata-source-using-azure-data-factory"></a>Move data From a OData source using Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [Version 1](data-factory-odata-connector.md)
-> * [Version 2 (aktuelle Version)](../connector-odata.md)
+> * [Version 1](data-factory-odata-connector.md)
+> * [Version 2 (current version)](../connector-odata.md)
 
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Wenn Sie die aktuelle Version des Data Factory-Diensts verwenden, finden Sie weitere Informationen unter [OData-Connector in V2](../connector-odata.md).
+> This article applies to version 1 of Data Factory. If you are using the current version of the Data Factory service, see [OData connector in V2](../connector-odata.md).
 
 
-Dieser Artikel beschreibt, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten aus einer OData-Quelle zu verschieben. Dieser Artikel baut auf dem Artikel zu [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) auf, der eine allgemeine Übersicht zur Datenverschiebung mit der Kopieraktivität bietet.
+This article explains how to use the Copy Activity in Azure Data Factory to move data from an OData source. It builds on the [Data Movement Activities](data-factory-data-movement-activities.md) article, which presents a general overview of data movement with the copy activity.
 
-Sie können Daten aus einer OData-Quelle in beliebige unterstützte Senkendatenspeicher kopieren. Eine Liste der Datenspeicher, die als Senken für die Kopieraktivität unterstützt werden, finden Sie in der Tabelle [Unterstützte Datenspeicher](data-factory-data-movement-activities.md#supported-data-stores-and-formats). Data Factory unterstützt derzeit nur das Verschieben von Daten aus einer OData-Quelle in andere Datenspeicher, aber nicht das Verschieben von Daten aus anderen Datenspeichern in eine OData-Quelle.
+You can copy data from an OData source to any supported sink data store. For a list of data stores supported as sinks by the copy activity, see the [Supported data stores](data-factory-data-movement-activities.md#supported-data-stores-and-formats) table. Data factory currently supports only moving data from an OData source to other data stores, but not for moving data from other data stores to an OData source.
 
-## <a name="supported-versions-and-authentication-types"></a>Unterstützte Versionen und Authentifizierungstypen
-Dieser OData-Connector unterstützt OData Version 3.0 and 4.0 und das Kopieren von Daten aus lokalen und cloudbasierten OData-Quellen. In letzterem Fall müssen Sie möglicherweise das Datenverwaltungsgateway installieren. Weitere Informationen zum Datenverwaltungsgateway finden Sie im Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) .
+## <a name="supported-versions-and-authentication-types"></a>Supported versions and authentication types
+This OData connector support OData version 3.0 and 4.0, and you can copy data from both cloud OData and on-premises OData sources. For the latter, you need to install the Data Management Gateway. See [Move data between on-premises and cloud](data-factory-move-data-between-onprem-and-cloud.md) article for details about Data Management Gateway.
 
-Die folgenden Authentifizierungstypen werden unterstützt:
+Below authentication types are supported:
 
-* Um auf den **cloudbasierten** OData-Feed zuzugreifen, können Sie die anonyme, einfache (Benutzername und Kennwort) oder die Azure Active Directory-basierte OAuth-Authentifizierung verwenden.
-* Um auf den **lokalen** OData-Feed zuzugreifen, können Sie die anonyme, einfache (Benutzername und Kennwort) oder die Windows-Authentifizierung verwenden.
+* To access **cloud** OData feed, you can use anonymous, basic (user name and password), or Azure Active Directory based OAuth authentication.
+* To access **on-premises** OData feed, you can use anonymous, basic (user name and password), or Windows authentication.
 
-## <a name="getting-started"></a>Erste Schritte
-Sie können eine Pipeline mit einer Kopieraktivität erstellen, die Daten mithilfe verschiedener Tools/APIs aus einer OData-Quelle verschiebt.
+## <a name="getting-started"></a>Getting started
+You can create a pipeline with a copy activity that moves data from an OData source by using different tools/APIs.
 
-Am einfachsten erstellen Sie eine Pipeline mit dem **Kopier-Assistenten**. Eine Schritt-für-Schritt-Anleitung finden Sie im [Tutorial: Erstellen einer Pipeline mit dem Kopier-Assistenten](data-factory-copy-data-wizard-tutorial.md) finden Sie eine kurze exemplarische Vorgehensweise zum Erstellen einer Pipeline mithilfe des Assistenten zum Kopieren von Daten.
+The easiest way to create a pipeline is to use the **Copy Wizard**. See [Tutorial: Create a pipeline using Copy Wizard](data-factory-copy-data-wizard-tutorial.md) for a quick walkthrough on creating a pipeline using the Copy data wizard.
 
-Sie können auch die folgenden Tools zum Erstellen einer Pipeline verwenden: **Azure-Portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager-Vorlagen**, **.NET-API** und **REST-API**. Im [Tutorial zur Kopieraktivität](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) finden Sie detaillierte Anweisungen, wie Sie eine Pipeline mit einer Kopieraktivität erstellen können.
+You can also use the following tools to create a pipeline: **Azure portal**, **Visual Studio**, **Azure PowerShell**, **Azure Resource Manager template**, **.NET API**, and **REST API**. See [Copy activity tutorial](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) for step-by-step instructions to create a pipeline with a copy activity.
 
-Unabhängig davon, ob Sie Tools oder APIs verwenden, führen Sie die folgenden Schritte aus, um eine Pipeline zu erstellen, die Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher verschiebt:
+Whether you use the tools or APIs, you perform the following steps to create a pipeline that moves data from a source data store to a sink data store:
 
-1. Erstellen **verknüpfter Dienste** zum Verknüpfen von Eingabe- und Ausgabedatenspeichern mit Ihrer Data Factory.
-2. Erstellen von **Datasets** zur Darstellung von Eingabe- und Ausgabedaten für den Kopiervorgang.
-3. Erstellen einer **Pipeline** mit einer Kopieraktivität, die ein Dataset als Eingabe und ein Dataset als Ausgabe akzeptiert.
+1. Create **linked services** to link input and output data stores to your data factory.
+2. Create **datasets** to represent input and output data for the copy operation.
+3. Create a **pipeline** with a copy activity that takes a dataset as an input and a dataset as an output.
 
-Wenn Sie den Assistenten verwenden, werden automatisch JSON-Definitionen für diese Data Factory-Entitäten (verknüpfte Diensten, Datasets und die Pipeline) erstellt. Bei Verwendung von Tools und APIs (mit Ausnahme der .NET-API) definieren Sie diese Data Factory-Entitäten im JSON-Format.  Ein Beispiel mit JSON-Definitionen für Data Factory-Entitäten, die zum Kopieren von Daten aus einer OData-Quelle verwendet werden, finden Sie im Abschnitt [JSON-Beispiel: Kopieren von Daten aus einer OData-Quelle in ein Azure-Blob](#json-example-copy-data-from-odata-source-to-azure-blob) in diesem Artikel.
+When you use the wizard, JSON definitions for these Data Factory entities (linked services, datasets, and the pipeline) are automatically created for you. When you use tools/APIs (except .NET API), you define these Data Factory entities by using the JSON format.  For a sample with JSON definitions for Data Factory entities that are used to copy data from an OData source, see [JSON example: Copy data from OData source to Azure Blob](#json-example-copy-data-from-odata-source-to-azure-blob) section of this article.
 
-Die folgenden Abschnitte enthalten Details zu JSON-Eigenschaften, die zum Definieren von Data Factory-Entitäten speziell für OData-Quellen verwendet werden:
+The following sections provide details about JSON properties that are used to define Data Factory entities specific to OData source:
 
-## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
-Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den mit OData verknüpften Dienst spezifisch sind.
+## <a name="linked-service-properties"></a>Linked Service properties
+The following table provides description for JSON elements specific to OData linked service.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Property | Description | Required |
 | --- | --- | --- |
-| type |Die type-Eigenschaft muss auf Folgendes festgelegt werden: **OData** |Ja |
-| URL |Die URL des OData-Diensts. |Ja |
-| authenticationType |Typ der Authentifizierung für die Verbindung mit der OData-Quelle. <br/><br/> Mögliche Werte für den cloudbasierten OData-Dienst sind „Anonymous“, „Basic“ und „OAuth“ (beachten Sie, dass Azure Data Factory derzeit nur Azure Active Directory-basiertes OAuth unterstützt). <br/><br/> Mögliche Werte für lokales OData sind „Anonymous“, „Basic“ und „Windows“. |Ja |
-| username |Geben Sie den Benutzernamen an, wenn Sie die Standardauthentifizierung (Basic) verwenden. |Ja (nur bei Verwendung der Standardauthentifizierung) |
-| password |Geben Sie das Kennwort für das Benutzerkonto an, das Sie für den Benutzernamen angegeben haben. |Ja (nur bei Verwendung der Standardauthentifizierung) |
-| authorizedCredential |Klicken Sie, wenn Sie OAuth verwenden, im Assistenten zum Kopieren in Data Factory bzw. im Editor auf die Schaltfläche **Autorisieren**, und geben Sie Ihre Anmeldeinformationen ein. Anschließend wird der Wert dieser Eigenschaft automatisch generiert. |Ja (nur bei Verwendung der OAuth-Authentifizierung) |
-| gatewayName |Der Name des Gateways, das der Data Factory-Dienst zum Verbinden mit dem lokalen OData-Dienst verwenden soll. Geben Sie diesen nur an, wenn Sie Daten aus einer lokalen OData-Quelle kopieren. |Nein  |
+| type |The type property must be set to: **OData** |Yes |
+| url |Url of the OData service. |Yes |
+| authenticationType |Type of authentication used to connect to the OData source. <br/><br/> For cloud OData, possible values are Anonymous, Basic, and OAuth (note Azure Data Factory currently only support Azure Active Directory based OAuth). <br/><br/> For on-premises OData, possible values are Anonymous, Basic, and Windows. |Yes |
+| username |Specify user name if you are using Basic authentication. |Yes (only if you are using Basic authentication) |
+| password |Specify password for the user account you specified for the username. |Yes (only if you are using Basic authentication) |
+| authorizedCredential |If you are using OAuth, click **Authorize** button in the Data Factory Copy Wizard or Editor and enter your credential, then the value of this property will be auto-generated. |Yes (only if you are using OAuth authentication) |
+| gatewayName |Name of the gateway that the Data Factory service should use to connect to the on-premises OData service. Specify only if you are copying data from on premises OData source. |No |
 
-### <a name="using-basic-authentication"></a>Verwenden der Standardauthentifizierung
+### <a name="using-basic-authentication"></a>Using Basic authentication
 ```json
 {
     "name": "inputLinkedService",
@@ -80,7 +80,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Basic",
             "username": "username",
             "password": "password"
@@ -89,7 +89,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-### <a name="using-anonymous-authentication"></a>Verwenden der anonymen Authentifizierung
+### <a name="using-anonymous-authentication"></a>Using Anonymous authentication
 ```json
 {
     "name": "ODataLinkedService",
@@ -98,14 +98,14 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }
 }
 ```
 
-### <a name="using-windows-authentication-accessing-on-premises-odata-source"></a>Verwenden der Windows-Authentifizierung für den Zugriff auf lokale OData-Quellen
+### <a name="using-windows-authentication-accessing-on-premises-odata-source"></a>Using Windows authentication accessing on-premises OData source
 ```json
 {
     "name": "inputLinkedService",
@@ -124,7 +124,7 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-### <a name="using-oauth-authentication-accessing-cloud-odata-source"></a>Verwenden der OAuth-Authentifizierung für den Zugriff auf eine cloudbasierte OData-Quelle
+### <a name="using-oauth-authentication-accessing-cloud-odata-source"></a>Using OAuth authentication accessing cloud OData source
 ```json
 {
     "name": "inputLinkedService",
@@ -141,35 +141,35 @@ Die folgende Tabelle enthält eine Beschreibung der JSON-Elemente, die für den 
 }
 ```
 
-## <a name="dataset-properties"></a>Dataset-Eigenschaften
-Eine vollständige Liste der Abschnitte und Eigenschaften, die zum Definieren von Datasets zur Verfügung stehen, finden Sie im Artikel [Erstellen von Datasets](data-factory-create-datasets.md). Abschnitte wie „structure“, „availability“ und „policy“ des JSON-Codes eines Datasets sind bei allen Dataset-Typen (Azure SQL, Azure-Blob, Azure-Tabelle usw.) ähnlich.
+## <a name="dataset-properties"></a>Dataset properties
+For a full list of sections & properties available for defining datasets, see the [Creating datasets](data-factory-create-datasets.md) article. Sections such as structure, availability, and policy of a dataset JSON are similar for all dataset types (Azure SQL, Azure blob, Azure table, etc.).
 
-Der Abschnitt **typeProperties** unterscheidet sich bei jedem Typ von Dataset und bietet Informationen zum Speicherort der Daten im Datenspeicher. Der Abschnitt „typeProperties“ für ein Dataset vom Typ **ODataResource** (mit OData-Datasets) hat die folgenden Eigenschaften:
+The **typeProperties** section is different for each type of dataset and provides information about the location of the data in the data store. The typeProperties section for dataset of type **ODataResource** (which includes OData dataset) has the following properties
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Property | Description | Required |
 | --- | --- | --- |
-| path |Pfad zu der OData-Ressource |Nein  |
+| path |Path to the OData resource |No |
 
-## <a name="copy-activity-properties"></a>Eigenschaften der Kopieraktivität
-Eine vollständige Liste der Abschnitte und Eigenschaften zum Definieren von Aktivitäten finden Sie im Artikel [Erstellen von Pipelines](data-factory-create-pipelines.md). Eigenschaften wie Name, Beschreibung, Eingabe- und Ausgabetabellen und Richtlinie sind für alle Arten von Aktivitäten verfügbar.
+## <a name="copy-activity-properties"></a>Copy activity properties
+For a full list of sections & properties available for defining activities, see the [Creating Pipelines](data-factory-create-pipelines.md) article. Properties such as name, description, input and output tables, and policy are available for all types of activities.
 
-Eigenschaften im Abschnitt „typeProperties“ der Aktivität können dagegen je nach Aktivitätstyp variieren. Für die Kopieraktivität variieren die Eigenschaften je nach Art der Quellen und Senken.
+Properties available in the typeProperties section of the activity on the other hand vary with each activity type. For Copy activity, they vary depending on the types of sources and sinks.
 
-Wenn eine Quelle des Typs **RelationalSource** (wozu OData gehört) verwendet wird, sind im Abschnitt „typeProperties“ folgende Eigenschaften verfügbar:
+When source is of type **RelationalSource** (which includes OData) the following properties are available in typeProperties section:
 
-| Eigenschaft | BESCHREIBUNG | Beispiel | Erforderlich |
+| Property | Description | Example | Required |
 | --- | --- | --- | --- |
-| query |Verwendet die benutzerdefinierte Abfrage zum Lesen von Daten. |"?$select=Name, Beschreibung&$top=5" |Nein  |
+| query |Use the custom query to read data. |"?$select=Name, Description&$top=5" |No |
 
-## <a name="type-mapping-for-odata"></a>Typzuordnung für OData
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität automatische Typkonvertierungen von Quelltypen in Senkentypen mithilfe des folgenden aus zwei Schritten bestehenden Ansatzes durch:
+## <a name="type-mapping-for-odata"></a>Type Mapping for OData
+As mentioned in the [data movement activities](data-factory-data-movement-activities.md) article, Copy activity performs automatic type conversions from source types to sink types with the following two-step approach.
 
-1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
-2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
+1. Convert from native source types to .NET type
+2. Convert from .NET type to native sink type
 
-Beim Verschieben von Daten aus OData werden die folgenden Zuordnungen zwischen den OData-Typen und den .NET-Typen verwendet.
+When moving data from OData, the following mappings are used from OData types to .NET type.
 
-| OData-Datentyp | .NET-Typ |
+| OData Data Type | .NET Type |
 | --- | --- |
 | Edm.Binary |Byte[] |
 | Edm.Boolean |Bool |
@@ -188,20 +188,20 @@ Beim Verschieben von Daten aus OData werden die folgenden Zuordnungen zwischen d
 | Edm.DateTimeOffset |DateTimeOffset |
 
 > [!Note]
-> Komplexe OData-Datentypen wie z.B. Objekt werden nicht unterstützt.
+> OData complex data types e.g. Object are not supported.
 
-## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON-Beispiel: Kopieren von Daten aus einer OData-Quelle in ein Azure-Blob
-Dieses Beispiel stellt JSON-Beispieldefinitionen bereit, die Sie zum Erstellen einer Pipeline mit dem [Azure-Portal](data-factory-copy-activity-tutorial-using-azure-portal.md), mit [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) oder mit [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) verwenden können. Darin wird veranschaulicht, wie Sie Daten aus einer OData-Quelle in Azure Blob Storage kopieren. Daten können jedoch auch mithilfe der Kopieraktivität in Azure Data Factory in eine beliebige der [hier](data-factory-data-movement-activities.md#supported-data-stores-and-formats) aufgeführten Senken kopiert werden. Das Beispiel enthält die folgenden Data Factory-Entitäten:
+## <a name="json-example-copy-data-from-odata-source-to-azure-blob"></a>JSON example: Copy data from OData source to Azure Blob
+This example provides sample JSON definitions that you can use to create a pipeline by using [Azure portal](data-factory-copy-activity-tutorial-using-azure-portal.md) or [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) or [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md). They show how to copy data from an OData source to an Azure Blob Storage. However, data can be copied to any of the sinks stated [here](data-factory-data-movement-activities.md#supported-data-stores-and-formats) using the Copy Activity in Azure Data Factory. The sample has the following Data Factory entities:
 
-1. Einen verknüpften Dienst des Typs [OData](#linked-service-properties)
-2. Einen verknüpften Dienst des Typs [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties)
-3. Ein [Eingabedataset](data-factory-create-datasets.md) des Typs [ODataResource](#dataset-properties)
-4. Ein [Ausgabedataset](data-factory-create-datasets.md) des Typs [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties)
-5. Eine [Pipeline](data-factory-create-pipelines.md) mit Kopieraktivität, die [RelationalSource](#copy-activity-properties) und [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) verwendet
+1. A linked service of type [OData](#linked-service-properties).
+2. A linked service of type [AzureStorage](data-factory-azure-blob-connector.md#linked-service-properties).
+3. An input [dataset](data-factory-create-datasets.md) of type [ODataResource](#dataset-properties).
+4. An output [dataset](data-factory-create-datasets.md) of type [AzureBlob](data-factory-azure-blob-connector.md#dataset-properties).
+5. A [pipeline](data-factory-create-pipelines.md) with Copy Activity that uses [RelationalSource](#copy-activity-properties) and [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties).
 
-Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein Azure-Blob. Die bei diesen Beispielen verwendeten JSON-Eigenschaften werden in den Abschnitten beschrieben, die auf die Beispiele folgen.
+The sample copies data from querying against an OData source to an Azure blob every hour. The JSON properties used in these samples are described in sections following the samples.
 
-**Mit OData verknüpfter Dienst:** In diesem Beispiel wird die anonyme Authentifizierung verwendet. Informationen zu den verwendbaren Authentifizierungstypen finden Sie im Abschnitt [Mit OData verknüpfter Dienst](#linked-service-properties).
+**OData linked service:** This example uses the Anonymous authentication. See [OData linked service](#linked-service-properties) section for different types of authentication you can use.
 
 ```json
 {
@@ -211,14 +211,14 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
         "type": "OData",
         "typeProperties":
         {
-            "url": "http://services.odata.org/OData/OData.svc",
+            "url": "https://services.odata.org/OData/OData.svc",
             "authenticationType": "Anonymous"
         }
     }
 }
 ```
 
-**Mit Azure Storage verknüpfter Dienst:**
+**Azure Storage linked service:**
 
 ```json
 {
@@ -232,9 +232,9 @@ Das Beispiel kopiert stündlich Daten durch Abfragen einer OData-Quelle in ein A
 }
 ```
 
-**OData-Eingabedataset:**
+**OData input dataset:**
 
-Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst mitgeteilt, dass das Dataset für die Data Factory extern ist und nicht durch eine Aktivität in der Data Factory erzeugt wird.
+Setting “external”: ”true” informs the Data Factory service that the dataset is external to the data factory and is not produced by an activity in the data factory.
 
 ```json
 {
@@ -262,11 +262,11 @@ Durch Festlegen von „external“ auf „true“ wird dem Data Factory-Dienst m
 }
 ```
 
-Die Angabe von **path** in der Datasetdefinition ist optional.
+Specifying **path** in the dataset definition is optional.
 
-**Azure-Blob-Ausgabedataset:**
+**Azure Blob output dataset:**
 
-Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval: 1). Der Ordnerpfad des Blobs wird basierend auf der Startzeit des Slices, der verarbeitet wird, dynamisch ausgewertet. Im Ordnerpfad werden Jahr, Monat, Tag und die Stundenteile der Startzeit verwendet.
+Data is written to a new blob every hour (frequency: hour, interval: 1). The folder path for the blob is dynamically evaluated based on the start time of the slice that is being processed. The folder path uses year, month, day, and hours parts of the start time.
 
 ```json
 {
@@ -324,9 +324,9 @@ Daten werden stündlich in ein neues Blob geschrieben (frequency: hour, interval
 }
 ```
 
-**Kopieraktivität in einer Pipeline mit einer OData-Quelle und einer Blobsenke:**
+**Copy activity in a pipeline with OData source and Blob sink:**
 
-Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- und Ausgabedatasets und für eine stündliche Ausführung konfiguriert ist. In der JSON-Definition der Pipeline ist der Typ **source** auf **RelationalSource** und der Typ **sink** auf **BlobSink** festgelegt. Die SQL-Abfrage für die **query** -Eigenschaft wählt die letzten (neuesten) Daten aus der OData-Quelle aus.
+The pipeline contains a Copy Activity that is configured to use the input and output datasets and is scheduled to run every hour. In the pipeline JSON definition, the **source** type is set to **RelationalSource** and **sink** type is set to **BlobSink**. The SQL query specified for the **query** property selects the latest (newest) data from the OData source.
 
 ```json
 {
@@ -374,21 +374,21 @@ Die Pipeline enthält eine Kopieraktivität, die für die Verwendung der Ein- un
 }
 ```
 
-Die Angabe von **query** in der Pipelinedefinition ist optional. Die **URL**, die der Data Factory-Dienst zum Abrufen von Daten nutzt, hat das folgende Format: Im verknüpften Dienst angegebene URL (erforderlich) + Im Dataset angegebener Pfad (optional) + Abfrage in der Pipeline (optional).
+Specifying **query** in the pipeline definition is optional. The **URL** that the Data Factory service uses to retrieve data is: URL specified in the linked service (required) + path specified in the dataset (optional) + query in the pipeline (optional).
 
-### <a name="type-mapping-for-odata"></a>Typzuordnung für OData
-Wie im Artikel [Datenverschiebungsaktivitäten](data-factory-data-movement-activities.md) beschrieben, führt die Kopieraktivität mithilfe der folgenden beiden Schritte automatische Typkonvertierungen von Quelltypen in Senkentypen durch:
+### <a name="type-mapping-for-odata"></a>Type mapping for OData
+As mentioned in the [data movement activities](data-factory-data-movement-activities.md) article, Copy activity performs automatic type conversions from source types to sink types with the following 2-step approach:
 
-1. Konvertieren von systemeigenen Quelltypen in den .NET-Typ
-2. Konvertieren vom .NET-Typ in systemeigenen Senkentyp
+1. Convert from native source types to .NET type
+2. Convert from .NET type to native sink type
 
-Beim Verschieben von Daten aus OData-Datenspeichern werden die OData-Datentypen .NET-Typen zugeordnet.
+When moving data from OData data stores, OData data types are mapped to .NET types.
 
-## <a name="map-source-to-sink-columns"></a>Zuordnen von Quell- zur Senkenspalten
-Weitere Informationen zum Zuordnen von Spalten im Quelldataset zu Spalten im Senkendataset finden Sie unter [Zuordnen von Datasetspalten in Azure Data Factory](data-factory-map-columns.md).
+## <a name="map-source-to-sink-columns"></a>Map source to sink columns
+To learn about mapping columns in source dataset to columns in sink dataset, see [Mapping dataset columns in Azure Data Factory](data-factory-map-columns.md).
 
-## <a name="repeatable-read-from-relational-sources"></a>Wiederholbare Lesevorgänge aus relationalen Quellen
-Beim Kopieren von Daten aus relationalen Datenspeichern müssen Sie die Wiederholbarkeit berücksichtigen, um unbeabsichtigte Ergebnisse zu vermeiden. Sie können einen Slice in Azure Data Factory manuell erneut ausführen. Sie können auch eine Wiederholungsrichtlinie für ein Dataset konfigurieren, sodass ein Slice erneut ausgeführt wird, wenn ein Fehler auftritt. Wenn ein Slice erneut ausgeführt wird, müssen Sie sicherstellen, dass dieselben Daten gelesen werden – egal wie oft ein Slice ausgeführt wird. Weitere Informationen finden Sie unter [Wiederholbare Lesevorgänge aus relationalen Quellen](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
+## <a name="repeatable-read-from-relational-sources"></a>Repeatable read from relational sources
+When copying data from relational data stores, keep repeatability in mind to avoid unintended outcomes. In Azure Data Factory, you can rerun a slice manually. You can also configure retry policy for a dataset so that a slice is rerun when a failure occurs. When a slice is rerun in either way, you need to make sure that the same data is read no matter how many times a slice is run. See [Repeatable read from relational sources](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources).
 
-## <a name="performance-and-tuning"></a>Leistung und Optimierung
-Der Artikel [Handbuch zur Leistung und Optimierung der Kopieraktivität](data-factory-copy-activity-performance.md) beschreibt wichtige Faktoren, die sich auf die Leistung der Datenverschiebung (Kopieraktivität) in Azure Data Factory auswirken, sowie verschiedene Möglichkeiten zur Leistungsoptimierung.
+## <a name="performance-and-tuning"></a>Performance and Tuning
+See [Copy Activity Performance & Tuning Guide](data-factory-copy-activity-performance.md) to learn about key factors that impact performance of data movement (Copy Activity) in Azure Data Factory and various ways to optimize it.

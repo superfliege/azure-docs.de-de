@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Azure Active Directory-Integration mit ZenQMS | Microsoft-Dokumentation'
-description: Erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Active Directory und ZenQMS konfigurieren.
+title: 'Tutorial: Azure Active Directory integration with ZenQMS | Microsoft Docs'
+description: Learn how to configure single sign-on between Azure Active Directory and ZenQMS.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -15,111 +15,112 @@ ms.topic: article
 ms.date: 08/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9804dee56e9f099654359e7c336f706cedbd1f7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: d5d2e734ff9bd34a176d08e36019c826dac355bb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204864"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58003783"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Tutorial: Azure Active Directory-Integration mit ZenQMS
+# <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>Tutorial: Azure Active Directory integration with ZenQMS
 
-In diesem Tutorial erfahren Sie, wie Sie ZenQMS in Azure Active Directory (Azure AD) integrieren.
+In this tutorial, you learn how to integrate ZenQMS with Azure Active Directory (Azure AD).
 
-Die Integration von ZenQMS in Azure AD bietet die folgenden Vorteile:
+Integrating ZenQMS with Azure AD provides you with the following benefits:
 
-- Sie können in Azure AD steuern, wer Zugriff auf ZenQMS hat.
-- Sie können es Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ZenQMS anzumelden (einmaliges Anmelden).
-- Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
+- You can control in Azure AD who has access to ZenQMS.
+- You can enable your users to automatically get signed-on to ZenQMS (Single Sign-On) with their Azure AD accounts.
+- You can manage your accounts in one central location - the Azure portal.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+If you want to know more details about SaaS app integration with Azure AD, see [what is application access and single sign-on with Azure Active Directory](../manage-apps/what-is-single-sign-on.md).
 
-## <a name="prerequisites"></a>Voraussetzungen
+## <a name="prerequisites"></a>Prerequisites
 
-Um die Azure AD-Integration mit ZenQMS konfigurieren zu können, benötigen Sie Folgendes:
+To configure Azure AD integration with ZenQMS, you need the following items:
 
-- Ein Azure AD-Abonnement
-- Ein ZenQMS-Abonnement, für das einmaliges Anmelden aktiviert ist
+- An Azure AD subscription
+- A ZenQMS single sign-on enabled subscription
 
 > [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
+> To test the steps in this tutorial, we do not recommend using a production environment.
 
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
+To test the steps in this tutorial, you should follow these recommendations:
 
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie eine [einmonatige Testversion anfordern](https://azure.microsoft.com/pricing/free-trial/).
+- Do not use your production environment, unless it is necessary.
+- If you don't have an Azure AD trial environment, you can [get a one-month trial](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a name="scenario-description"></a>Beschreibung des Szenarios
+## <a name="scenario-description"></a>Scenario description
 
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung.
-Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
+In this tutorial, you test Azure AD single sign-on in a test environment.
+The scenario outlined in this tutorial consists of two main building blocks:
 
-1. Hinzufügen von ZenQMS aus dem Katalog
-2. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+1. Adding ZenQMS from the gallery
+2. Configuring and testing Azure AD single sign-on
 
-## <a name="adding-zenqms-from-the-gallery"></a>Hinzufügen von ZenQMS aus dem Katalog
+## <a name="adding-zenqms-from-the-gallery"></a>Adding ZenQMS from the gallery
 
-Zum Konfigurieren der Integration von ZenQMS in Azure AD müssen Sie ZenQMS aus dem Katalog der Liste mit den verwalteten SaaS-Apps hinzufügen.
+To configure the integration of ZenQMS into Azure AD, you need to add ZenQMS from the gallery to your list of managed SaaS apps.
 
-**Um ZenQMS aus dem Katalog hinzuzufügen, führen Sie die folgenden Schritte aus:**
+**To add ZenQMS from the gallery, perform the following steps:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. In the **[Azure portal](https://portal.azure.com)**, on the left navigation panel, click **Azure Active Directory** icon. 
 
-    ![Schaltfläche „Azure Active Directory“][1]
+    ![The Azure Active Directory button][1]
 
-2. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigate to **Enterprise applications**. Then go to **All applications**.
 
-    ![Blatt „Unternehmensanwendungen“][2]
+    ![The Enterprise applications blade][2]
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. To add new application, click **New application** button on the top of dialog.
 
-    ![Schaltfläche „Neue Anwendung“][3]
+    ![The New application button][3]
 
-4. Geben Sie im Suchfeld **ZenQMS** ein, wählen Sie im Ergebnisbereich **ZenQMS** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. In the search box, type **ZenQMS**, select **ZenQMS** from result panel then click **Add** button to add the application.
 
-    ![ZenQMS in der Ergebnisliste](./media/zenqms-tutorial/tutorial_zenqms_addfromgallery.png)
+    ![ZenQMS in the results list](./media/zenqms-tutorial/tutorial_zenqms_addfromgallery.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Configure and test Azure AD single sign-on
 
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei ZenQMS basierend auf einem Testbenutzer mit dem Namen Britta Simon.
+In this section, you configure and test Azure AD single sign-on with ZenQMS based on a test user called "Britta Simon".
 
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in ZenQMS als Gegenstück für einen Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in ZenQMS muss eine Linkbeziehung eingerichtet werden.
+For single sign-on to work, Azure AD needs to know what the counterpart user in ZenQMS is to a user in Azure AD. In other words, a link relationship between an Azure AD user and the related user in ZenQMS needs to be established.
 
-Zum Konfigurieren und Testen des einmaligen Anmeldens in Azure AD bei ZenQMS müssen Sie die folgenden Bausteine ausführen:
+To configure and test Azure AD single sign-on with ZenQMS, you need to complete the following building blocks:
 
-1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
-2. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
-3. **[Erstellen eines ZenQMS-Testbenutzers](#create-a-zenqms-test-user)**, um eine Entsprechung von Britta Simon in ZenQMS zu erhalten, die mit ihrer Darstellung in Azure AD verknüpft ist.
-4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-5. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Configure Azure AD Single Sign-On](#configure-azure-ad-single-sign-on)** - to enable your users to use this feature.
+2. **[Create an Azure AD test user](#create-an-azure-ad-test-user)** - to test Azure AD single sign-on with Britta Simon.
+3. **[Create a ZenQMS test user](#create-a-zenqms-test-user)** - to have a counterpart of Britta Simon in ZenQMS that is linked to the Azure AD representation of user.
+4. **[Assign the Azure AD test user](#assign-the-azure-ad-test-user)** - to enable Britta Simon to use Azure AD single sign-on.
+5. **[Test single sign-on](#test-single-sign-on)** - to verify whether the configuration works.
 
-### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Configure Azure AD single sign-on
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer ZenQMS-Anwendung.
+In this section, you enable Azure AD single sign-on in the Azure portal and configure single sign-on in your ZenQMS application.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in ZenQMS die folgenden Schritte aus:**
+**To configure Azure AD single sign-on with ZenQMS, perform the following steps:**
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **ZenQMS** auf **Einmaliges Anmelden**.
+1. In the Azure portal, on the **ZenQMS** application integration page, click **Single sign-on**.
 
-    ![Konfigurieren des Links für einmaliges Anmelden][4]
+    ![Configure single sign-on link][4]
 
-2. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
+2. On the **Single sign-on** dialog, select **Mode** as **SAML-based Sign-on** to enable single sign-on.
 
-    ![Dialogfeld „Einmaliges Anmelden“](./media/zenqms-tutorial/tutorial_zenqms_samlbase.png)
+    ![Single sign-on dialog box](./media/zenqms-tutorial/tutorial_zenqms_samlbase.png)
 
-3. Führen Sie im Abschnitt **Domäne und URLs für ZenQMS** die folgenden Schritte aus, wenn Sie die Anwendung im **IDP**-initiierten Modus konfigurieren möchten:
+3. On the **ZenQMS Domain and URLs** section, perform the following steps if you wish to configure the application in **IDP** initiated mode:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für ZenQMS](./media/zenqms-tutorial/tutorial_zenqms_url.png)
+    ![ZenQMS Domain and URLs single sign-on information](./media/zenqms-tutorial/tutorial_zenqms_url.png)
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `urn:zenqms:<INSTANCE>`
+    a. In the **Identifier** textbox, type a URL using the following pattern: `urn:zenqms:<INSTANCE>`
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
+    b. In the **Reply URL** textbox, type a URL using the following pattern: `https://<INSTANCE>.zenqms.com/SAML/AssertionConsumerService`
 
-4. Aktivieren Sie **Erweiterte URL-Einstellungen anzeigen**, und führen Sie die folgenden Schritte aus, wenn Sie die Anwendung im **SP-initiierten Modus** konfigurieren möchten:
+4. Check **Show advanced URL settings** and perform the following step if you wish to configure the application in **SP** initiated mode:
 
-    ![SSO-Informationen zur Domäne und zu den URLs für ZenQMS](./media/zenqms-tutorial/tutorial_zenqms_url1.png)
+    ![ZenQMS Domain and URLs single sign-on information](./media/zenqms-tutorial/tutorial_zenqms_url1.png)
 
-    Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein:
+    In the **Sign-on URL** textbox, type a URL using the following pattern:
+    
     | |
     |-|-|
     | `https://<INSTANCE>.zenqms.com/<ID>`|
@@ -127,95 +128,95 @@ In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-
     | |
 
     > [!NOTE]
-    > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch den tatsächlichen Bezeichner, die Antwort-URL und die Anmelde-URL. Wenden Sie sich an das [Clientsupportteam von ZenQMS](mailto:help@zenqms.com), um diese Werte zu erhalten.
+    > These values are not real. Update these values with the actual Identifier, Reply URL, and Sign-On URL. Contact [ZenQMS Client support team](mailto:help@zenqms.com) to get these values.
 
-5. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf die Schaltfläche „Kopieren“, um die **Verbundmetadaten-URL der App** zu kopieren und in Editor einzufügen.
+5. On the **SAML Signing Certificate** section, click the copy button to copy **App Federation Metadata Url** and paste it into Notepad.
 
-    ![Downloadlink für das Zertifikat](./media/zenqms-tutorial/tutorial_zenqms_certificate.png) 
+    ![The Certificate download link](./media/zenqms-tutorial/tutorial_zenqms_certificate.png) 
 
-6. Klicken Sie auf die Schaltfläche **Save** .
+6. Click **Save** button.
 
-    ![Schaltfläche „Speichern“ beim Konfigurieren des einmaligen Anmeldens](./media/zenqms-tutorial/tutorial_general_400.png)
+    ![Configure Single Sign-On Save button](./media/zenqms-tutorial/tutorial_general_400.png)
 
-7. Zum Konfigurieren des einmaligen Anmeldens bei **ZenQMS** müssen Sie die **Verbundmetadaten-URL der App** an das [Supportteam von ZenQMS](mailto:help@zenqms.com) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+7. To configure single sign-on on **ZenQMS** side, you need to send the **App Federation Metadata Url** to [ZenQMS support team](mailto:help@zenqms.com). They set this setting to have the SAML SSO connection set properly on both sides.
 
-### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
+### <a name="create-an-azure-ad-test-user"></a>Create an Azure AD test user
 
-Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
+The objective of this section is to create a test user in the Azure portal called Britta Simon.
 
-   ![Erstellen eines Azure AD-Testbenutzers][100]
+   ![Create an Azure AD test user][100]
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+**To create a test user in Azure AD, perform the following steps:**
 
-1. Klicken Sie im linken Bereich des Azure-Portals auf die Schaltfläche **Azure Active Directory**.
+1. In the Azure portal, in the left pane, click the **Azure Active Directory** button.
 
-    ![Schaltfläche „Azure Active Directory“](./media/zenqms-tutorial/create_aaduser_01.png)
+    ![The Azure Active Directory button](./media/zenqms-tutorial/create_aaduser_01.png)
 
-2. Navigieren Sie zu **Benutzer und Gruppen**, und klicken Sie dann auf **Alle Benutzer**, um die Liste mit den Benutzern anzuzeigen.
+2. To display the list of users, go to **Users and groups**, and then click **All users**.
 
-    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](./media/zenqms-tutorial/create_aaduser_02.png)
+    ![The "Users and groups" and "All users" links](./media/zenqms-tutorial/create_aaduser_02.png)
 
-3. Klicken Sie oben im Dialogfeld **Alle Benutzer** auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
+3. To open the **User** dialog box, click **Add** at the top of the **All Users** dialog box.
 
-    ![Schaltfläche „Hinzufügen“](./media/zenqms-tutorial/create_aaduser_03.png)
+    ![The Add button](./media/zenqms-tutorial/create_aaduser_03.png)
 
-4. Führen Sie im Dialogfeld **Neuer Benutzer** die folgenden Schritte aus:
+4. In the **User** dialog box, perform the following steps:
 
-    ![Dialogfeld „Benutzer“](./media/zenqms-tutorial/create_aaduser_04.png)
+    ![The User dialog box](./media/zenqms-tutorial/create_aaduser_04.png)
 
-    a. Geben Sie in das Feld **Name** den Namen **BrittaSimon** ein.
+    a. In the **Name** box, type **BrittaSimon**.
 
-    b. Geben Sie im Feld **Benutzername** die E-Mail-Adresse des Benutzers Britta Simon ein.
+    b. In the **User name** box, type the email address of user Britta Simon.
 
-    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+    c. Select the **Show Password** check box, and then write down the value that's displayed in the **Password** box.
 
-    d. Klicken Sie auf **Create**.
+    d. Click **Create**.
 
-### <a name="create-a-zenqms-test-user"></a>Erstellen eines ZenQMS-Testbenutzers
+### <a name="create-a-zenqms-test-user"></a>Create a ZenQMS test user
 
-In diesem Abschnitt erstellen Sie in ZenQMS einen Benutzer namens Britta Simon. Lassen Sie sich beim Hinzufügen der Benutzer ggf. vom  [ZenQMS-Supportteam](mailto:help@zenqms.com) unterstützen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In this section, you create a user called Britta Simon in ZenQMS. Work with [ZenQMS support team](mailto:help@zenqms.com) to add the users in the ZenQMS platform. Users must be created and activated before you use single sign-on.
 
-### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="assign-the-azure-ad-test-user"></a>Assign the Azure AD test user
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf ZenQMS gewähren.
+In this section, you enable Britta Simon to use Azure single sign-on by granting access to ZenQMS.
 
-![Zuweisen der Benutzerrolle][200]
+![Assign the user role][200]
 
-**Um Britta Simon ZenQMS zuzuweisen, führen Sie die folgenden Schritte aus:**
+**To assign Britta Simon to ZenQMS, perform the following steps:**
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+1. In the Azure portal, open the applications view, and then navigate to the directory view and go to **Enterprise applications** then click **All applications**.
 
-    ![Benutzer zuweisen][201]
+    ![Assign User][201]
 
-2. Wählen Sie in der Anwendungsliste **ZenQMS**aus.
+2. In the applications list, select **ZenQMS**.
 
-    ![ZenQMS-Link in der Anwendungsliste](./media/zenqms-tutorial/tutorial_zenqms_app.png)  
+    ![The ZenQMS link in the Applications list](./media/zenqms-tutorial/tutorial_zenqms_app.png)  
 
-3. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
+3. In the menu on the left, click **Users and groups**.
 
-    ![Link „Benutzer und Gruppen“][202]
+    ![The "Users and groups" link][202]
 
-4. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+4. Click **Add** button. Then select **Users and groups** on **Add Assignment** dialog.
 
-    ![Bereich „Zuweisung hinzufügen“][203]
+    ![The Add Assignment pane][203]
 
-5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
+5. On **Users and groups** dialog, select **Britta Simon** in the Users list.
 
-6. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
+6. Click **Select** button on **Users and groups** dialog.
 
-7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
+7. Click **Assign** button on **Add Assignment** dialog.
 
-### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
+### <a name="test-single-sign-on"></a>Test single sign-on
 
-In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
+In this section, you test your Azure AD single sign-on configuration using the Access Panel.
 
-Wenn Sie im Zugriffsbereich auf die Kachel „ZenQMS“ klicken, sollten Sie automatisch bei Ihrer ZenQMS-Anwendung angemeldet werden.
-Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../active-directory-saas-access-panel-introduction.md). 
+When you click the ZenQMS tile in the Access Panel, you should get automatically signed-on to your ZenQMS application.
+For more information about the Access Panel, see [Introduction to the Access Panel](../active-directory-saas-access-panel-introduction.md). 
 
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
+## <a name="additional-resources"></a>Additional resources
 
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [List of Tutorials on How to Integrate SaaS Apps with Azure Active Directory](tutorial-list.md)
+* [What is application access and single sign-on with Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -1,7 +1,7 @@
 ---
-title: Aufzeichnen benutzerdefinierter Stimmbeispiele – Speech Services
+title: Record custom voice samples - Speech Services
 titleSuffix: Azure Cognitive Services
-description: Erstellen Sie eine benutzerdefinierte Stimme in Produktionsqualität, indem Sie ein überzeugendes Skript vorbereiten, einen guten Sprecher engagieren und professionell aufzeichnen.
+description: Make a production-quality custom voice by preparing a robust script, hiring good voice talent, and recording professionally.
 services: cognitive-services
 author: erhopf
 manager: nitinme
@@ -11,214 +11,214 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 0ca82da43ea53aed3fbcf858b34a3ad94d712661
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: d5d3d7031f9795db0ae04bc707bd9e7707137210
+ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864943"
+ms.lasthandoff: 03/07/2019
+ms.locfileid: "57530738"
 ---
-# <a name="record-voice-samples-to-create-a-custom-voice"></a>Aufzeichnen von Sprachbeispielen zum Erstellen einer benutzerdefinierten Stimme
+# <a name="record-voice-samples-to-create-a-custom-voice"></a>Record voice samples to create a custom voice
 
-Das Erstellen einer qualitativ hochwertig produzierten benutzerdefinierten Stimme von Grund auf ist kein einfaches Unterfangen. Die zentrale Komponente einer benutzerdefinierten Stimme ist eine umfangreiche Sammlung von Audiobeispielen der menschlichen Sprache. Es ist wichtig, dass diese Audioaufzeichnungen eine hohe Qualität haben. Wählen Sie einen Sprecher aus, der über Erfahrung mit dieser Art von Aufzeichnungen verfügt, und lassen Sie die Aufzeichnung von einem Tontechniker mit professioneller Ausrüstung vornehmen.
+Creating a high-quality production custom voice from scratch is not a casual undertaking. The central component of a custom voice is a large collection of audio samples of human speech. It's vital that these audio recordings be of high quality. Choose a voice talent who has experience making these kinds of recordings, and have them recorded by a competent recording engineer using professional equipment.
 
-Vor der Aufzeichnung benötigen Sie ein Skript: die Wörter, die von Ihrem Sprecher vorgelesen werden, um die Audiobeispiele zu erstellen. Optimale Ergebnisse erreichen Sie mit einem Skript, das eine gute phonetische Abdeckung und eine ausreichende Vielfalt aufweist, um das benutzerdefinierte Stimmmodell zu trainieren.
+Before you can make these recordings, though, you need a script: the words that will be spoken by your voice talent to create the audio samples. For best results, your script must have good phonetic coverage and sufficient variety to train the custom voice model.
 
-Das Erstellen einer professionellen Sprachaufzeichnung setzt sich aus vielen kleinen, jedoch wichtigen Details zusammen. Diese Anleitung ist eine Roadmap für einen Prozess, mit dem Sie gute, einheitliche Ergebnisse erzielen.
+Many small but important details go into creating a professional voice recording. This guide is a roadmap for a process that will help you get good, consistent results.
 
 > [!TIP]
-> Für Ergebnisse höchster Qualität könnten Sie Microsoft damit beauftragen, Ihre benutzerdefinierte Stimme zu entwickeln. Microsoft hat umfangreiche Erfahrungen beim Produzieren qualitativ hochwertiger Stimmen für die eigenen Produkte, einschließlich Cortana und Office.
+> For the highest quality results, consider engaging Microsoft to help develop your custom voice. Microsoft has extensive experience producing high-quality voices for its own products, including Cortana and Office.
 
-## <a name="voice-recording-roles"></a>Rollen bei der Stimmaufzeichnung
+## <a name="voice-recording-roles"></a>Voice recording roles
 
-Es gibt vier grundlegende Rollen in einem Projekt zur Aufzeichnung einer benutzerdefinierten Stimme:
+There are four basic roles in a custom voice recording project:
 
-Rolle|Zweck
+Role|Purpose
 -|-
-Sprecher        |Die Stimme dieser Person bildet die Grundlage für die benutzerdefinierte Stimme.
-Tontechniker  |Überwacht die technischen Aspekte der Aufzeichnung und bedient die Aufzeichnungsgeräte.
-Regisseur            |Bereitet das Skript vor und weist den Sprecher ein.
-Editor              |Finalisiert die Audiodateien und bereitet sie für den Upload in das Portal für benutzerdefinierte Stimmen vor.
+Voice talent        |This person's voice will form the basis of the custom voice.
+Recording engineer  |Oversees the technical aspects of the recording and operates the recording equipment.
+Director            |Prepares the script and coaches the voice talent's performance.
+Editor              |Finalizes the audio files and prepares them for upload to the Custom Voice portal.
 
-Eine Person kann unter Umständen mehr als eine Rolle übernehmen. Für diese Anleitung wird davon ausgegangen, dass Sie in erster Linie als Regisseur agieren und einen Sprecher sowie einen Tontechniker engagieren. Wenn Sie die Aufzeichnungen selbst vornehmen möchten, enthält dieser Artikel einige Informationen zur Rolle des Tontechnikers. Die Editorrolle wird erst nach der Sitzung benötigt und kann daher vom Leiter oder Tontechniker übernommen werden.
+An individual may fill more than one role. This guide assumes that you will be primarily filling the director role and hiring both a voice talent and a recording engineer. If you want to make the recordings yourself, this article includes some information about the recording engineer role. The editor role isn't needed until after the session, so can be performed by the director or the recording engineer.
 
-## <a name="choose-your-voice-talent"></a>Auswählen des Sprechers
+## <a name="choose-your-voice-talent"></a>Choose your voice talent
 
-Schauspieler, die Erfahrung mit Begleitkommentaren oder Synchronisierung haben, stellen gute Sprecher für benutzerdefinierte Stimmen dar. Häufig finden Sie geeignete Talente unter Ansagern und Nachrichtensprechern.
+Actors with experience in voiceover or voice character work make good custom voice talent. You can also often find suitable talent among announcers and newsreaders.
 
-Wählen Sie einen Sprecher aus, dessen natürliche Stimme Ihnen gefällt. Es ist möglich, einzigartige Charakterstimmen zu erstellen, aber es ist für die meisten Sprecher viel schwieriger, diese konsistent beizubehalten, und die Anstrengung kann zu einer Stimmbelastung führen.
-
-> [!TIP]
-> Im Allgemeinen sollten Sie keine erkennbaren Stimmen zum Erstellen benutzerdefinierter Stimmen verwenden, es sei denn, Ihr Ziel ist es, eine prominente Stimme zu produzieren. Weniger bekannte Stimmen lenken die Benutzer in der Regel weniger ab.
-
-Der wichtigste Faktor für die Auswahl des Sprechers ist Konsistenz. Ihr Aufzeichnungen sollten alle so klingen, als ob sie am selben Tag im selben Raum erstellt wurden. Sie können dieses Ideal über gute Aufzeichnungsverfahren und eine geeignete Technik erreichen.
-
-Ihr Sprecher ist die andere Hälfte der Gleichung. Er muss mit einheitlicher Geschwindigkeit, Lautstärke, Tonhöhe und Klangfarbe sprechen können. Eine deutliche Aussprache ist ein Muss. Der Sprecher muss außerdem Tonhöhenabweichungen, Stimmungen und sprachliche Angewohnheiten genau kontrollieren können.
-
-Die Aufzeichnung von Beispielen für benutzerdefinierte Stimmen kann ermüdender als andere Arten von Sprecharbeiten sein. Die meisten Sprecher können für zwei oder drei Stunden pro Tag aufzeichnen. Beschränken Sie die Sitzungen auf drei oder vier pro Woche mit möglichst einem freien Tag dazwischen.
-
-Aufzeichnungen für ein Stimmmodell sollten nicht emotional sein. Eine traurige Äußerung sollte also nicht auf eine traurige Weise vorgelesen werden. Die Stimmung kann der synthetisierten Sprache später über die Steuerung des Satzrhythmus hinzugefügt werden. Arbeiten Sie mit Ihrem Sprecher zusammen, um eine Rolle zu entwickeln, die den allgemeinen Klang und emotionaler Tonfall der benutzerdefinierten Stimme definiert. Dabei sollten Sie festlegen, was für die Rolle „neutral“ klingt.
-
-Eine Rolle kann z.B. eine natürliche, optimistische Persönlichkeit haben. Daher kann „ihre“ Stimme optimistisch klingen, selbst wenn neutral gesprochen wird. Ein solches Persönlichkeitsmerkmal sollte allerdings subtil und konsistent sein. Hören Sie sich Aufzeichnungen von vorhandenen Stimmen an, um eine Vorstellung davon zu erhalten, was das Ziel sein könnte.
+Choose voice talent whose natural voice you like. It is possible to create unique "character" voices, but it's much harder for most talent to perform them consistently, and the effort can cause voice strain.
 
 > [!TIP]
-> In der Regel sollten Sie Besitzer der erstellten Sprachaufzeichnungen sein. Ihr Sprecher sollte offen für einen auf das Projekt beschränkten Vertrag sein.
+> Generally, avoid using recognizable voices to create a custom voice—unless, of course, your goal is to produce a celebrity voice. Lesser-known voices are usually less distracting to users.
 
-## <a name="create-a-script"></a>Erstellen eines Skripts
+The single most important factor for choosing voice talent is consistency. Your recordings should all sound like they were made on the same day in the same room. You can approach this ideal through good recording practices and engineering.
 
-Der Ausgangspunkt einer Sitzung für die Aufzeichnung einer benutzerdefinierten Stimme ist das Skript, das die Äußerungen enthält, die von Ihrem Sprecher vorgetragen werden. (Der Begriff „Äußerungen“ umfasst sowohl vollständige Sätze als auch kürzere Wendungen).
+Your voice talent is the other half of the equation. He or she must be able to speak with consistent rate, volume level, pitch, and tone. Clear diction is a must. The talent also needs to be able to strictly control his or her pitch variation, emotional affect, and speech mannerisms.
 
-Die Äußerungen in Ihrem Skript können beliebigen Ursprungs sein: Fiktion, Fakten, Redemanuskripte, Nachrichten und alles, was sonst noch in gedruckter Form zur Verfügung steht. Wenn Sie sicherstellen möchten, dass Ihre Stimme mit bestimmten Arten von Wörtern (z.B. medizinische Terminologie oder Fachausdrücke von Programmierern) gut umgehen kann, empfiehlt es sich, Sätze aus wissenschaftlichen oder technischen Dokumenten aufzunehmen. Eine kurze Erläuterung möglicher rechtlicher Fragen finden Sie im Abschnitt [Rechtsfragen](#legalities). Sie können auch einen eigenen Text schreiben.
+Recording custom voice samples can be more fatiguing than other kinds of voice work. Most voice talent can record for two or three hours a day. Limit sessions to three or four a week, with a day off in-between if possible.
 
-Ihre Äußerungen müssen nicht aus der gleichen Quelle oder der gleichen Art von Quelle stammen. Sie können sogar vollständig unabhängig voneinander sein. Wenn Sie allerdings feste Ausdrücke (z.B. „Sie haben sich erfolgreich angemeldet“) in Ihrer Sprachanwendung verwenden, sollten Sie sie in Ihr Skript aufnehmen. Dadurch erhöht sich die Wahrscheinlichkeit, dass diese Ausdrücke von Ihrer benutzerdefinierten Stimme gut ausgesprochen werden. Und wenn Sie anstelle eines synthetisierten Texts eine Aufzeichnung verwenden möchten, liegt sie bereits mit der gleichen Stimme vor.
+Recordings made for a voice model should be emotionally neutral. That is, a sad utterance should not be read in a sad way. Mood can be added to the synthesized speech later through prosody controls. Work with your voice talent to develop a "persona" that defines the overall sound and emotional tone of the custom voice. In the process, you'll pinpoint what "neutral" sounds like for that persona.
 
-Während Konsistenz der Schlüssel bei der Auswahl des Sprechers ist, ist Vielfalt das Kennzeichen eines guten Skripts. Das Skript sollte viele unterschiedliche Wörter und Sätze mit einer Vielzahl von Satzlängen, Strukturen und Stimmungen enthalten. Jeder Klang in der Sprache muss mehrere Male und in zahlreichen Kontexten vorhanden sein (dies wird als *phonetische Abdeckung* bezeichnet).
+A persona might have, for example, a naturally upbeat personality. So "their" voice might carry a note of optimism even when they speak neutrally. However, such a personality trait should be subtle and consistent. Listen to readings by existing voices to get an idea of what you're aiming for.
 
-Darüber hinaus sollte der Text alle Möglichkeiten enthalten, mit denen ein bestimmter Klang schriftlich dargestellt werden kann, und jeder Klang sollte an unterschiedlichen Stellen in den Sätzen vorkommen. Aussagesätze und Fragen sollten enthalten sein und mit der entsprechenden Intonation vorgelesen werden.
+> [!TIP]
+> Usually, you'll want to own the voice recordings you make. Your voice talent should be amenable to a work-for-hire contract for the project.
 
-Es ist schwierig, ein Skript zu schreiben, das *gerade genug* Daten bietet, um dem Custom Speech-Portal das Erstellen einer guten Stimme zu ermöglichen. In der Praxis ist die einfachste Möglichkeit, ein Skript zu erstellen, mit dem eine zuverlässige phonetische Abdeckung erreicht wird, eine große Anzahl von Beispielen aufzunehmen. Die Standardstimmen, die von Microsoft bereitgestellt werden, wurden aus Zehntausenden von Äußerungen erstellt. Sie sollten darauf vorbereitet sein, mindestens einige bis mehrere Tausend Äußerungen aufzuzeichnen, um eine benutzerdefinierte Stimme mit Produktionsqualität zu erstellen.
+## <a name="create-a-script"></a>Create a script
 
-Überprüfen Sie das Skript sorgfältig auf Fehler. Wenn möglich, bitten Sie eine andere Person, es ebenfalls zu überprüfen. Wenn Sie mit Ihrem Sprecher das Skript durchgehen, werden Ihnen wahrscheinlich einige weitere Fehler auffallen.
+The starting point of any custom voice recording session is the script, which contains the utterances to be spoken by your voice talent. (The term "utterances" encompasses both full sentences and shorter phrases.)
 
-### <a name="script-format"></a>Skriptformat
+The utterances in your script can come from anywhere: fiction, non-fiction, transcripts of speeches, news reports, and anything else available in printed form. If you want to make sure your voice does well on specific kinds of words (such as medical terminology or programming jargon), you might want to include sentences from scholarly papers or technical documents. For a brief discussion of potential legal issues, see the ["Legalities"](#legalities) section. You can also write your own text.
 
-Sie können das Skript in Microsoft Word schreiben. Das Skript ist für die Aufzeichnungssitzung vorgesehen. Sie können es also so gestalten, dass Sie gut damit arbeiten können. Erstellen Sie die für das Custom Voice-Portal erforderliche Textdatei separat.
+Your utterances don't need to come from the same source, or the same kind of source. They don't even need to have anything to do with each other. However, if you will use set phrases (for example, "You have successfully logged in") in your speech application, make sure to include them in your script. This will give your custom voice a better chance of pronouncing those phrases well. And if you should decide to use a recording in place of synthesized speech, you'll already have it in the same voice.
 
-Ein einfaches Skriptformat enthält drei Spalten:
+While consistency is key in choosing voice talent, variety is the hallmark of a good script. Your script should include many different words and sentences with a variety of sentence lengths, structures, and moods. Every sound in the language should be represented multiple times and in numerous contexts (called *phonetic coverage*).
 
-* Die Nummer der Äußerung, beginnend mit 1. Eine Nummerierung erleichtert allen im Studio die Bezugnahme auf eine bestimmte Äußerung („Wiederholen wir Nummer 356“). Sie können die Word-Funktion für die Absatznummerierung verwenden, um die Zeilen der Tabelle automatisch zu nummerieren.
-* Eine leere Spalte, in die Sie die Takenummer oder den Zeitcode für jede Äußerung eintragen können, um die fertige Aufzeichnung schneller zu finden.
-* Der Text der Äußerung selbst.
+Furthermore, the text should incorporate all the ways that a particular sound can be represented in writing, and place each sound at varying places in the sentences. Both declarative sentences and questions should be included and read with appropriate intonation.
 
-![Beispielskript](media/custom-voice/script.png)
+It's difficult to write a script that provides *just enough* data to allow the Custom Speech portal to build a good voice. In practice, the simplest way to make a script that achieves robust phonetic coverage is to include a large number of samples. The standard voices that Microsoft provides were built from tens of thousands of utterances. You should be prepared to record a few to several thousand utterances at minimum to build a production-quality custom voice.
+
+Check the script carefully for errors. If possible, have someone else check it too. When you run through the script with your talent, you'll probably catch a few more mistakes.
+
+### <a name="script-format"></a>Script format
+
+You can write your script in Microsoft Word. The script is for use during the recording session, so you can set it up any way you find easy to work with. Create the text file that's required by the Custom Voice portal separately.
+
+A basic script format contains three columns:
+
+* The number of the utterance, starting at 1. Numbering makes it easy for everyone in the studio to refer to a particular utterance ("let's try number 356 again"). You can use the Word paragraph numbering feature to number the rows of the table automatically.
+* A blank column where you'll write the take number or time code of each utterance to help you find it in the finished recording.
+* The text of the utterance itself.
+
+![Sample script](media/custom-voice/script.png)
 
 > [!NOTE]
-> Die meisten Studios zeichnen kurze Segmente auf, die als *Takes* bezeichnet werden. Jeder Take enthält in der Regel 10 bis 24 Äußerungen. Das Notieren der Takenummer reicht aus, um eine Äußerung zu einem späteren Zeitpunkt zu finden. Wenn Sie die Aufzeichnung in einem Studio durchführen, in dem eher längere Aufzeichnungen gemacht werden, sollten Sie stattdessen den Zeitcode notieren. Im Studio sollte die Zeit gut sichtbar angezeigt werden.
+> Most studios record in short segments known as *takes*. Each take typically contains 10 to 24 utterances. Just noting the take number is sufficient to find an utterance later. If you're recording in a studio that prefers to make longer recordings, you'll want to note the time code instead. The studio will have a prominent time display.
 
-Lassen Sie unter jeder Zeile ausreichend Platz für Notizen. Achten Sie darauf, dass keine Äußerungen durch Seitenumbrüche unterteilt werden. Nummerieren Sie die Seiten, und drucken Sie das Skript auf eine Seite des Papiers.
+Leave enough space after each row to write notes. Be sure that no utterance is split between pages. Number the pages, and print your script on one side of the paper.
 
-Drucken Sie drei Kopien des Skripts: eine für den Sprecher, eine für den Techniker und eine für den Regisseur (Sie). Verwenden Sie Büroklammern statt Heftklammern: Ein erfahrener Sprecher trennt die Seiten, um Geräusche beim Blättern zu vermeiden.
+Print three copies of the script: one for the talent, one for the engineer, and one for the director (you). Use a paper clip instead of staples: an experienced voice artist will separate the pages to avoid making noise as the pages are turned.
 
-### <a name="legalities"></a>Rechtliches
+### <a name="legalities"></a>Legalities
 
-Nach dem Urheberrechtsgesetz kann das Vorlesen von urheberrechtlich geschütztem Text durch einen Schauspieler eine Leistung sein, für die der Autor der Arbeit eine Vergütung erhalten muss. Diese Leistung ist im Endprodukt, in der benutzerdefinierten Stimme, nicht erkennbar. Die Rechtmäßigkeit der Nutzung urheberrechtlich geschützter Arbeiten für diesen Zweck ist allerdings nicht ausreichend belegt. Microsoft kann keine rechtliche Beratung zu diesem Problem bieten. Wenden Sie sich an Ihrem eigenen Rechtsberater.
+Under copyright law, an actor's reading of copyrighted text might be a performance for which the author of the work should be compensated. This performance will not be recognizable in the final product, the custom voice. Even so, the legality of using a copyrighted work for this purpose is not well established. Microsoft cannot provide legal advice on this issue; consult your own counsel.
 
-Glücklicherweise ist es möglich, diese Probleme vollständig zu vermeiden. Es gibt viele Quellen für Texte, die Sie ohne Genehmigung oder Lizenz verwenden können.
+Fortunately, it is possible to avoid these issues entirely. There are many sources of text you can use without permission or license.
 
-|Textquelle|BESCHREIBUNG|
+|Text source|Description|
 |-|-|
-|[CMU Arctic-Korpus](http://festvox.org/cmu_arctic/)|Etwa 1100 Sätze aus nicht urheberrechtlich geschützten Werken speziell für Sprachsyntheseprojekte. Ein ausgezeichneter Ausgangspunkt.|
-|Nicht länger urheberrechtlich<br>geschützte Werke|In der Regel Werke, die vor 1923 veröffentlicht wurden. Für Englisch bietet das [Project Gutenberg](https://www.gutenberg.org/) Zehntausende dieser Werke. Sie sollten sich allerdings auf neuere Werke konzentrieren, da die Sprache näher an der modernen Sprache ist.|
-|Werke von&nbsp;Behörden|Werke, die von US-Behörden erstellt wurden, sind in den USA nicht urheberrechtlich geschützt. Die Behörden könnten jedoch in anderen Ländern Urheberrechte einfordern.|
-|Öffentlicher Bereich|Werke, für die Urheberrechte explizit ausgeschlossen wurden oder die frei zugänglich sein sollen. In einigen Rechtsprechungen kann möglicherweise nicht vollständig auf Urheberrechte verzichtet werden.|
-|Werke mit spezieller Lizenz|Werke, die mit einer Lizenz wie „Creative Commons“ oder „GNU Free Documentation License“ (GDFL) verteilt werden. Wikipedia verwendet GFDL. Einige Lizenzen können jedoch die Darbietung der lizenzierten Inhalte beschränken. Dies kann Einfluss auf die Erstellung eines benutzerdefinierten Stimmmodells haben. Lesen Sie die Lizenzbedingungen also sorgfältig durch.|
+|[CMU Arctic corpus](http://festvox.org/cmu_arctic/)|About 1100 sentences selected from out-of-copyright works specifically for use in speech synthesis projects. An excellent starting point.|
+|Works no longer<br>under copyright|Typically works published prior to 1923. For English, [Project Gutenberg](https://www.gutenberg.org/) offers tens of thousands of such works. You may want to focus on newer works, as the language will be closer to modern English.|
+|Government&nbsp;works|Works created by the United States government are not copyrighted in the United States, though the government may claim copyright in other countries.|
+|Public domain|Works for which copyright has been explicitly disclaimed or that have been dedicated to the public domain. It may not be possible to waive copyright entirely in some jurisdictions.|
+|Permissively-licensed works|Works distributed under a license like Creative Commons or the GNU Free Documentation License (GFDL). Wikipedia uses the GFDL. Some licenses, however, may impose restrictions on performance of the licensed content that may impact the creation of a custom voice model, so read the license carefully.|
 
-## <a name="recording-your-script"></a>Aufzeichnen des Skripts
+## <a name="recording-your-script"></a>Recording your script
 
-Zeichnen Sie Ihr Skript in einem professionellen Tonstudio auf, das auf Sprecharbeiten spezialisiert ist. Dort gibt es eine Aufnahmekabine, die richtigen Geräte und die richtigen Personen für deren Betrieb. Es lohnt sich nicht, bei der Aufzeichnung zu sparen.
+Record your script at a professional recording studio that specializes in voice work. They'll have a recording booth, the right equipment, and the right people to operate it. It pays not to skimp on recording.
 
-Besprechen Sie das Projekt mit dem Tontechniker des Studios, und hören Sie sich dessen Ratschläge an. Die Aufzeichnung sollte mit wenig oder ohne dynamische Komprimierung (maximal 4:1) durchgeführt werden. Es ist wichtig, dass das Audio eine einheitliche Lautstärke und ein hohes Signal-Rausch-Verhältnis aufweist.
+Discuss your project with the studio's recording engineer and listen to his or her advice. The recording should have little or no dynamic range compression (maximum of 4:1). It is critical that the audio have consistent volume and a high signal-to-noise ratio, while being free of unwanted sounds.
 
-### <a name="do-it-yourself"></a>Aufzeichnung in Eigenregie
+### <a name="do-it-yourself"></a>Do it yourself
 
-Wenn Sie die Aufzeichnung selbst vornehmen möchten, statt in einem Studio aufzuzeichnen, finden Sie hier eine kurze Einführung. Da immer häufiger Aufzeichnungen und Podcasts zu Hause erstellt werden, ist es einfacher als je zuvor, online gute Ratschläge und Ressourcen für Aufzeichnungen zu finden.
+If you want to make the recording yourself, rather than going into a recording studio, here's a short primer. Thanks to the rise of home recording and podcasting, it's easier than ever to find good recording advice and resources online.
 
-Ihre „Aufnahmekabine“ sollte ein kleiner Raum ohne nennenswertes Echo oder Eigengeräusche sein. Er sollte möglichst still und schalldicht sein. Mit Vorhängen an den Wänden kann das Echo verringert werden, und die Geräusche des Raums können gedämpft werden.
+Your "recording booth" should be a small room with no noticeable echo or "room tone." It should be as quiet and soundproof as possible. Drapes on the walls can be used to reduce echo and neutralize or "deaden" the sound of the room.
 
-Verwenden Sie ein qualitativ hochwertiges Studio-Kondensatormikrofon zum Aufzeichnen der Stimme. Mit Sennheiser-, AKG- und sogar neuere Zoom-Mikrofonen können gute Ergebnisse erreicht werden. Sie können ein Mikrofon kaufen oder bei einem entsprechenden lokalen Anbieter ausleihen. Suchen Sie nach einem Mikrofon mit USB-Schnittstelle. Mit einem solchen Mikrofon können das Mikrofonelement, der Vorverstärker und der Analog-in-Digital-Wandler bequem in einem Paket kombiniert werden, um die Einrichtung zu vereinfachen.
+Use a high-quality studio condenser microphone ("mic" for short) intended for recording voice. Sennheiser, AKG, and even newer Zoom mics can yield good results. You can buy a mic, or rent one from a local audio-visual rental firm. Look for one with a USB interface. This type of mic conveniently combines the microphone element, preamp, and analog-to-digital converter into one package, simplifying hookup.
 
-Sie können auch ein analoges Mikrofon verwenden. Viele Verleihhäuser bieten „alte“ Mikrofone an, die der Stimme einen besonderen Charakter geben. Beachten Sie, dass professionelle analoge Geräte XLR-Steckverbinder nutzen, nicht die 1/4-Zoll-Anschlüsse von Endverbrauchergeräten. Wenn Sie analog aufzeichnen, benötigen Sie auch einen Vorverstärker und eine Computeraudioschnittstelle für diese Steckverbinder.
+You may also use an analog microphone. Many rental houses offer "vintage" microphones renowned for their voice character. Note that professional analog gear uses balanced XLR connectors, rather than the 1/4-inch plug that's used in consumer equipment. If you go analog, you'll also need a preamp and a computer audio interface with these connectors.
 
-Montieren Sie das Mikrofon auf einem Ständer oder Schwenkarm, und befestigen Sie einen Popschutz vor dem Mikrofon, um Störungen durch „plosiven“ Konsonanten wie „p“ und „b“ zu vermeiden. Einige Mikrofone verfügen über eine Aufhängung, die sie vor Vibrationen im Ständer isoliert. Dies ist hilfreich.
+Install the microphone on a stand or boom, and install a pop filter in front of the microphone to eliminate noise from "plosive" consonants like "p" and "b." Some microphones come with a suspension mount that isolates them from vibrations in the stand, which is helpful.
 
-Der Sprecher muss einen einheitlichen Abstand zum Mikrofon einhalten. Markieren Sie auf dem Boden mit Klebeband, wo der Sprecher stehen sollte. Wenn der Sprecher lieber sitzen möchte, kontrollieren Sie den Abstand zum Mikrofon besonders sorgfältig, und vermeiden Sie Geräusche durch den Stuhl.
+The voice talent must stay at a consistent distance from the microphone. Use tape on the floor to mark where he or she should stand. If the talent prefers to sit, take special care to monitor mic distance and avoid chair noise.
 
-Verwenden Sie einen Ständer, um das Skript abzulegen. Der Ständer sollte nicht so stehen, dass er den Klang zum Mikrofon zurückwirft.
+Use a stand to hold the script. Avoid angling the stand so that it can reflect sound toward the microphone.
 
-Die Person, die die Aufzeichnungsausrüstung bedient (der Techniker), sollte sich in einem anderen Raum als der Sprecher befinden und über eine Möglichkeit zur Kommunikation mit dem Sprecher in der Aufnahmekabine verfügen (eine *Gegensprechanlage*).
+The person operating the recording equipment—the engineer—should be in a separate room from the talent, with some way to talk to the talent in the recording booth (a *talkback circuit).*
 
-Die Aufzeichnung sollte möglichst wenig Rauschen enthalten. Das Ziel ist ein Signal-Rausch-Verhältnis von 80 dB oder besser.
+The recording should contain as little noise as possible, with a goal of an 80-db signal-to-noise ratio or better.
 
-Hören Sie sich eine Aufzeichnung der Stille Ihrer „Kabine“ genau an, um zu ermitteln, woher mögliches Rauschen stammt, und beseitigen Sie die Ursache. Häufige Quellen für Rauschen sind Lüftungen, Leuchtstofflampen, Verkehr auf Straßen in der Nähe und Lüfter von Geräten (sogar Notebooks können Lüfter enthalten). Mikrofone und Kabel können elektrischen Störungen durch Kabel in der Nähe aufnehmen, in der Regel ein Brummen oder Summen. Ein Summen kann auch durch eine *Erdungsschleife* verursacht werden, die dadurch verursacht wird, dass die Ausrüstung an mehrere Stromkreise angeschlossen ist.
+Listen closely to a recording of silence in your "booth," figure out where any noise is coming from, and eliminate the cause. Common sources of noise are air vents, fluorescent light ballasts, traffic on nearby roads, and equipment fans (even notebook PCs might have fans). Microphones and cables can pick up electrical noise from nearby AC wiring, usually a hum or buzz. A buzz can also be caused by a *ground loop*, which is caused by having equipment plugged into more than one electrical circuit.
 
 > [!TIP]
-> In einigen Fällen können Sie möglicherweise mit einem Equalizer- oder Rauschunterdrückungssoftware-Plug-In das Rauschen aus Ihren Aufzeichnungen entfernen. Es ist allerdings immer am besten, es an der Quelle zu beenden.
+> In some cases, you might be able to use an equalizer or a noise reduction software plug-in to help remove noise from your recordings, although it is always best to stop it at its source.
 
-Legen Sie die Pegel so fest, dass der größte Teil des verfügbaren dynamischen Bereichs der digitalen Aufzeichnung ohne Übersteuern genutzt wird. Sie müssen also den Ton laut einstellen, aber nicht so laut, dass er verzerrt wird. Ein Beispiel für die Wellenform einer guten Aufzeichnung wird in der folgenden Abbildung dargestellt:
+Set levels so that most of the available dynamic range of digital recording is used without overdriving. That means set the audio loud, but not so loud that it becomes distorted. An example of the waveform of a good recording is shown in the following image:
 
-![Wellenform einer guten Aufzeichnung](media/custom-voice/good-recording.png)
+![A good recording waveform](media/custom-voice/good-recording.png)
 
-Hier wird der größte Teil des Bereichs (Höhe) verwendet, aber die höchsten Spitzen des Signals erreichen den oberen oder unteren Rand des Fensters nicht. Sie sehen auch, dass sich die Stille in der Aufzeichnung einer dünnen horizontalen Linie annähert. Dies ist ein Hinweis auf geringes Hintergrundrauschen. Diese Aufzeichnung hat einen akzeptablen dynamischen Bereich und ein akzeptables Signal-Rausch-Verhältnis.
+Here, most of the range (height) is used, but the highest peaks of the signal do not reach the top or bottom of the window. You can also see that the silence in the recording approximates a thin horizontal line, indicating a low noise floor. This recording has acceptable dynamic range and signal-to-noise ratio.
 
-Zeichnen Sie über eine qualitativ hochwertige Audioschnittstelle oder einen USB-Anschluss (abhängig vom verwendeten Mikrofon) direkt auf dem Computer auf. Halten Sie für analoge Aufzeichnungen die Audiokette einfach: Mikrofon, Vorverstärker, Audioschnittstelle, Computer. [Avid Pro Tools](http://www.avid.com/en/pro-tools) und [Adobe Audition](https://www.adobe.com/products/audition.html) können zu angemessenen Kosten monatlich lizenziert werden. Wenn Ihr Budget extrem knapp ist, testen Sie das kostenlose Tool [Audacity](https://www.audacityteam.org/).
+Record directly into the computer via a high-quality audio interface or a USB port, depending on the mic you're using. For analog, keep the audio chain simple: mic, preamp, audio interface, computer. You can license both [Avid Pro Tools](https://www.avid.com/en/pro-tools) and [Adobe Audition](https://www.adobe.com/products/audition.html) monthly at a reasonable cost. If your budget is extremely tight, try the free [Audacity](https://www.audacityteam.org/).
 
-Zeichnen Sie in Mono mit 44,1 kHz und 16 Bit (CD-Qualität) oder besser auf. Der aktuelle Stand der Technik sind 48 kHz und 24 Bit, wenn dies von Ihren Geräten unterstützt wird. Sie führen ein Downsampling Ihrer Audioaufzeichnungen auf 16 kHz und 16 Bit durch, bevor Sie sie in das Custom Voice-Portal übermitteln. Es lohnt sich dennoch, eine qualitativ hochwertige Originalaufzeichnung zu haben, falls Änderungen erforderlich sind.
+Record at 44.1 kHz 16 bit monophonic (CD quality) or better. Current state-of-the-art is 48 kHz 24-bit, if your equipment supports it. You will down-sample your audio to 16 kHz 16-bit before you submit it to the Custom Voice portal. Still, it pays to have a high-quality original recording in the event edits are needed.
 
-Im Idealfall werden die Rollen des Regisseurs, Technikers und Sprechers von verschiedenen Personen besetzt. Versuchen Sie nicht, alles selbst zu machen. Im Notfall können Regisseur und Techniker eine Person sein.
+Ideally, have different people serve in the roles of director, engineer, and talent. Don't try to do it all yourself. In a pinch, one person can be both the director and the engineer.
 
-### <a name="before-the-session"></a>Vor der Sitzung
+### <a name="before-the-session"></a>Before the session
 
-Um keine Studiozeit zu verschwenden, gehen Sie das Skript mit Ihrem Sprecher vor der Aufzeichnungssitzung durch. Während sich der Sprecher mit dem Text vertraut macht, kann er die Aussprache und unbekannte Wörter klären.
+To avoid wasting studio time, run through the script with your voice talent before the recording session. While the voice talent becomes familiar with the text, he or she can clarify the pronunciation of any unfamiliar words.
 
 > [!NOTE]
-> Die meisten Aufnahmestudios bieten eine elektronische Anzeige der Skripts in der Aufnahmekabine. Geben Sie in diesem Fall Ihre Notizen der Vorbesprechung direkt in das Skriptdokument ein. In einer Kopie auf Papier können Sie trotzdem während der Sitzung Notizen machen. Die meisten Techniker benötigen auch eine Kopie auf Papier. Und Sie benötigen weiterhin eine dritte Kopie als Absicherung für den Sprecher, falls der Computer ausfällt.
+> Most recording studios offer electronic display of scripts in the recording booth. In this case, type your run-through notes directly into the script's document. You'll still want a paper copy to take notes on during the session, though. Most engineers will want a hard copy, too. And you'll still want a third printed copy as a backup for the talent in case the computer is down.
 
-Ihr Sprecher könnte fragen, welches Wort in einer Äußerung betont werden soll (das „Schlüsselwort“). Antworten Sie, dass Sie einen natürlichen Vortrag ohne besondere Betonungen wünschen. Betonungen können hinzugefügt werden, wenn die Sprache synthetisiert wird. Sie sollten kein Teil der Originalaufzeichnung sein.
+Your voice talent might ask which word you want emphasized in an utterance (the "operative word"). Tell him or her that you want a natural reading with no particular emphasis. Emphasis can be added when speech is synthesized; it should not be a part of the original recording.
 
-Bitten Sie den Sprecher, Wörter deutlich auszusprechen. Jedes Wort des Skripts sollte so gesprochen werden, wie es geschrieben ist. Silben sollten nicht weggelassen oder undeutlich gesprochen werden, wie es häufig in der Alltagssprache der Fall ist, es sein denn, *sie wurden im Skript auf diese Weise geschrieben.*
+Direct the talent to pronounce words distinctly. Every word of the script should be pronounced as written. Sounds should not be omitted or slurred together, as is common in casual speech, *unless they have been written that way in the script*.
 
-|Geschriebener Text|Unerwünschte saloppe Aussprache|
+|Written text|Unwanted casual pronunciation|
 |-|-|
-|Geben Sie niemals auf.|Geb’n Sie niemals auf.|
-|Es gibt vier Leuchten.|’s gibt vier Leuchten.|
-|Wie ist das Wetter heute?|Wie’s das Wetter heute?|
-|Grüßen Sie meinen kleinen Freund.|Grüß’n Sie meinen kleinen Freund.|
+|never going to give you up|never gonna give you up|
+|there are four lights|there're four lights|
+|how's the weather today|how's th' weather today|
+|say hello to my little friend|say hello to my lil' friend|
 
-Der Sprecher sollte *keine* vernehmlichen Pausen zwischen Wörtern einfügen. Der Satz sollte trotzdem natürlich fließen, auch wenn er ein wenig formal klingt. Es kann Übung erfordern, diesen feinen Unterschied richtig umzusetzen.
+The talent should *not* add distinct pauses between words. The sentence should still flow naturally, even while sounding a little formal. This fine distinction might take practice to get right.
 
-### <a name="the-recording-session"></a>Die Aufzeichnungssitzung
+### <a name="the-recording-session"></a>The recording session
 
-Erstellen Sie am Beginn der Sitzung eine Referenzaufzeichnung oder *Vergleichsdatei* einer typischen Äußerung. Bitten Sie den Sprecher, diese Zeile beispielsweise nach jeder Seite zu wiederholen. Vergleichen Sie jedes Mal die neue Aufzeichnung mit der Referenz. Diese Verfahrensweise hilft dem Sprecher, bei Lautstärke, Geschwindigkeit, Tonhöhe und Intonation einheitlich zu bleiben. Der Techniker kann die Vergleichsdatei zudem als Referenz für Pegel und einen insgesamt konstanten Klang verwenden.
+Create a reference recording, or *match file,* of a typical utterance at the beginning of the session. Ask the talent to repeat this line every page or so. Each time, compare the new recording to the reference. This practice helps the talent remain consistent in volume, tempo, pitch, and intonation. Meanwhile, the engineer can use the match file as a reference for levels and overall consistency of sound.
 
-Die Vergleichsdatei ist besonders wichtig, wenn die Aufzeichnung nach einer Pause oder an einem anderen Tag fortgesetzt wird. Sie sollten sie dem Sprecher mehrmals vorspielen und ihn auffordern, sie jedes Mal zu wiederholen, bis eine Übereinstimmung erreicht ist.
+The match file is especially important when you resume recording after a break or on another day. You'll want to play it a few times for the talent and have them repeat it each time until they are matching well.
 
-Fordern Sie den Sprecher auf, vor jeder Äußerung einmal tief durchzuatmen und kurz innezuhalten. Zeichnen Sie zwischen den Äußerungen ein paar Sekunden Stille auf. Wörter sollten bei jedem Auftreten unter Berücksichtigung des Kontexts auf die gleiche Weise ausgesprochen werden. Beispielsweise wird „record“ (aufzeichnen) als Verb anders ausgesprochen als „record“ (Datensatz) als Substantiv.
+Coach your talent to take a deep breath and pause for a moment before each utterance. Record a couple of seconds of silence between utterances. Words should be pronounced the same way each time they appear, considering context. For example, "record" as a verb is pronounced differently from "record" as a noun.
 
-Zeichnen Sie vor der ersten Aufnahme gute 5 Sekunden Stille auf, um den „Raumklang“ zu erfassen. Durch diese Vorgehensweise kann das Custom Voice-Portal die verbleibenden Störungen in den Aufzeichnungen besser kompensieren.
-
-> [!TIP]
-> Sie müssen eigentlich nur den Sprecher aufzeichnen, damit Sie von seinen Texten eine Monoaufzeichnung (ein Kanal) erstellen können. Wenn Sie jedoch in Stereo aufzeichnen, können Sie den zweiten Kanal zum Aufzeichnen der Gespräche im Kontrollraum verwenden, um Diskussionen zu bestimmten Texten oder Takes zu erfassen. Entfernen Sie diese Spur aus der Version, die in das Custom Voice-Portal hochgeladen wird.
-
-Hören Sie sich über Kopfhörer den Vortrag des Sprechers genau an. Achten Sie auf eine gute, aber natürliche Ausdrucksweise, die richtige Aussprache und darauf, dass wenige unerwünschte Töne vorhanden sind. Zögern Sie nicht, Ihren Sprecher zu bitten, eine Äußerung erneut aufzuzeichnen, die diese Standards nicht erfüllt.
+Record a good five seconds of silence before the first recording to capture the "room tone." This practice helps the Custom Voice portal compensate for any remaining noise in the recordings.
 
 > [!TIP]
-> Wenn Sie eine große Zahl von Äußerungen verwenden, hat eine einzelne Äußerung unter Umständen keine spürbaren Auswirkungen auf die resultierende benutzerdefinierte Stimme. Daher ist es möglicherweise zweckdienlicher, einfach alle Äußerungen mit Problemen zu notieren, sie aus Ihrem Dataset auszuschließen und herauszufinden, wie Ihre benutzerdefinierte Stimme klingt. Sie können immer wieder ins Studio gehen und die fehlenden Beispiele später aufzeichnen.
+> All you really need to capture is the voice talent, so you can make a monophonic (single-channel) recording of just their lines. However, if you record in stereo, you can use the second channel to record the chatter in the control room to capture discussion of particular lines or takes. Remove this track from the version that's uploaded to the Custom Voice portal.
 
-Notieren Sie sich für jede Äußerung die Takenummer oder den Zeitcode im Skript. Bitten Sie den Techniker, jede Äußerung auch in den Metadaten der Aufzeichnung oder im Cuesheet zu markieren.
+Listen closely, using headphones, to the voice talent's performance. You're looking for good but natural diction, correct pronunciation, and a lack of unwanted sounds. Don't hesitate to ask your talent to re-record an utterance that doesn't meet these standards.
 
-Machen Sie regelmäßige Pausen, und bieten Sie dem Sprecher ein Getränk an, damit die Stimme in Form bleibt.
+> [!TIP]
+> If you are using a large number of utterances, a single utterance might not have a noticeable effect on the resultant custom voice. It might be more expedient to simply note any utterances with issues, exclude them from your dataset, and see how your custom voice turns out. You can always go back to the studio and record the missed samples later.
 
-### <a name="after-the-session"></a>Nach der Sitzung
+Note the take number or time code on your script for each utterance. Ask the engineer to mark each utterance in the recording's metadata or cue sheet as well.
 
-Moderne Aufnahmestudios nutzen Computer. Am Ende der Sitzung erhalten Sie eine oder mehrere Audiodateien, kein Band. Diese Dateien weisen wahrscheinlich das WAV- oder AIFF-Format in CD-Qualität (44,1 kHz, 16 Bit) oder besser auf. 48 kHz und 24 Bit sind gängig und wünschenswert. Höhere Samplingraten, z.B. 96 kHz, sind in der Regel nicht erforderlich.
+Take regular breaks and provide a beverage to help your voice talent keep his or her voice in good shape.
 
-Für das Portal für benutzerdefinierte Stimmen muss jede bereitgestellte Äußerung in einer eigenen Datei vorhanden sein. Jede vom Studio gelieferte Audiodatei enthält mehrere Äußerungen. Die Hauptaufgabe nach der Produktion ist also, die Aufzeichnungen zu unterteilen und sie für die Übermittlung vorzubereiten. Der Tontechniker hat möglicherweise Marker in der Datei platziert (oder ein separates Cuesheet bereitgestellt), um anzugeben, wo die einzelnen Äußerungen beginnen.
+### <a name="after-the-session"></a>After the session
 
-Verwenden Sie Ihre Notizen, um die gewünschten Takes zu finden. Nutzen Sie dann ein Programm für die Tonbearbeitung wie z.B. [Avid Pro Tools](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html) oder das kostenlose [Audacity](https://www.audacityteam.org/), um jede einzelne Äußerung in eine neue Datei zu kopieren.
+Modern recording studios run on computers. At the end of the session, you receive one or more audio files, not a tape. These files will probably be WAV or AIFF format in CD quality (44.1 kHz 16-bit) or better. 48 kHz 24-bit is common and desirable. Higher sampling rates, such as 96 kHz, are generally not needed.
 
-Belassen Sie nur etwa 0,2 Sekunden Stille am Anfang und Ende jedes Clips mit Ausnahme des ersten. Diese Datei sollte mit ganzen 5 Sekunden Stille beginnen. Verwenden Sie keinen Audio-Editor, um stille Teile aus der Datei zu entfernen. Mithilfe des „Raumklangs“ können die Algorithmen für benutzerdefinierte Stimmen verbliebene Hintergrundgeräusche kompensieren.
+The Custom Voice portal requires each provided utterance to be in its own file. Each audio file delivered by the studio contains multiple utterances. So the primary post-production task is to split up the recordings and prepare them for submission. The recording engineer might have placed markers in the file (or provided a separate cue sheet) to indicate where each utterance starts.
 
-Hören Sie sich jede Datei genau an. Sie können in dieser Phase kleine, unerwünschte Töne entfernen, die Sie während der Aufzeichnung überhört haben, z.B. ein leichtes Schmatzen vor einer Zeile. Achten Sie jedoch darauf, dass Sie nicht den eigentlichen Text entfernen. Wenn Sie eine Datei nicht korrigieren können, entfernen Sie sie aus dem Dataset, und machen Sie sich dazu eine entsprechende Notiz.
+Use your notes to find the exact takes you want, and then use a sound editing utility, such as [Avid Pro Tools](https://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), or the free [Audacity](https://www.audacityteam.org/), to copy each utterance into a new file.
 
-Konvertieren Sie vor dem Speichern jede Datei in 16 Bit und eine Samplingrate von 16 kHz. Falls Sie die Gespräche im Studio aufgezeichnet haben, entfernen Sie den zweiten Kanal. Speichern Sie jede Datei im WAV-Format, und benennen Sie die Dateien mit der Nummer der Äußerung aus Ihrem Skript.
+Leave only about 0.2 seconds of silence at the beginning and end of each clip, except for the first. That file should start with a full five seconds of silence. Do not use an audio editor to "zero out" silent parts of the file. Including the "room tone" will help the Custom Voice algorithms compensate for any residual background noise.
 
-Erstellen Sie abschließend das *Transkript*, mit dem die WAV-Datei mit einer Textversion der entsprechenden Äußerung verknüpft wird. [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md) enthält Details zum erforderlichen Format. Sie können den Text direkt aus Ihrem Skript kopieren. Erstellen Sie eine ZIP-Datei der WAV-Dateien und des Texttranskripts.
+Listen to each file carefully. At this stage, you can edit out small unwanted sounds that you missed during recording, like a slight lip smack before a line, but be careful not to remove any actual speech. If you can't fix a file, remove it from your dataset and note that you have done so.
 
-Archivieren Sie die Originalaufzeichnungen an einem sicheren Ort, falls Sie sie später noch benötigen. Bewahren Sie auch Ihr Skript und die Notizen auf.
+Convert each file to 16 bits and a sample rate of 16 kHz before saving and, if you recorded the studio chatter, remove the second channel. Save each file in WAV format, naming the files with the utterance number from your script.
 
-## <a name="next-steps"></a>Nächste Schritte
+Finally, create the *transcript* that associates each WAV file with a text version of the corresponding utterance. [Creating custom voice fonts](how-to-customize-voice-font.md) includes details of the required format. You can copy the text directly from your script. Then create a Zip file of the WAV files and the text transcript.
 
-Sie können nun Ihre Aufzeichnungen hochladen und Ihre benutzerdefinierte Stimme erstellen.
+Archive the original recordings in a safe place in case you need them later. Preserve your script and notes, too.
+
+## <a name="next-steps"></a>Next steps
+
+You're ready to upload your recordings and create your custom voice.
 
 > [!div class="nextstepaction"]
-> [Erstellen benutzerdefinierter Voicefonts](how-to-customize-voice-font.md)
+> [Create custom voice fonts](how-to-customize-voice-font.md)

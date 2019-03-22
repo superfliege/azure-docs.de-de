@@ -1,6 +1,6 @@
 ---
-title: Erstellen eines Microsoft-Entwicklerkontos | Microsoft-Dokumentation
-description: Anforderungen und Schritte für das Erstellen eines Microsoft-Entwicklerkontos.
+title: Create a Microsoft Developer account | Microsoft Docs
+description: Requirements and steps for creating a Microsoft Developer account.
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
 author: v-miclar
@@ -14,213 +14,213 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6482eea23707f451e59d21e70f7583a0cd6680cc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: adfe0af646fae79bc9a954cd5d654626880915d3
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55168242"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57894086"
 ---
-<a name="create-a-microsoft-developer-account"></a>Erstellen eines Microsoft-Entwicklerkontos
+<a name="create-a-microsoft-developer-account"></a>Create a Microsoft Developer account
 ====================================
 
-In diesem Artikel ist beschrieben, wie Sie ein genehmigter Microsoft-Entwickler für Veröffentlichung in Azure Marketplace werden.
+This article describes how to become an approved Microsoft Developer for Azure Marketplace publishing.
 
-## <a name="create-a-microsoft-account"></a>Erstellen eines Microsoft-Kontos
+## <a name="create-a-microsoft-account"></a>Create a Microsoft account
 
-Am Anfang des Veröffentlichungsprozesses steht die Registrierung im **Microsoft Developer Center**. Sie nutzen dieses registrierte Konto im **[Cloud-Partnerportal](https://cloudpartner.azure.com/)**, um den Veröffentlichungsprozess zu starten.
+To start the publishing process, you'll need to complete the **Microsoft Developer Center** registration. You'll use the same registered account on the **[Cloud Partner Portal](https://cloudpartner.azure.com/)** to start the publishing process.
 
-### <a name="general-account-guidelines"></a>Allgemeine Kontorichtlinien
+### <a name="general-account-guidelines"></a>General account guidelines
 
-Es empfiehlt sich, dass Sie für Ihre Azure Marketplace-Angebote nur ein einziges Microsoft-Konto verwenden. Dieses Konto sollte nicht speziell für Dienste oder Angebote vorgesehen sein.
+We recommend that you only have one Microsoft account for your Azure Marketplace offerings. This account shouldn't be specific to services or offers.
 
-Die Adresse, die für den Benutzernamen maßgeblich ist, sollte sich in Ihrer Domäne befinden und von Ihrem IT-Team gesteuert werden. Alle auf die Veröffentlichung bezogenen Aktivitäten sollten über dieses Konto durchgeführt werden.
+The address that forms the user name should be on your domain and controlled by your IT team. All the publishing related activities should be done through this account.
 
 >[!WARNING]
->Wörter wie „Azure“ und „Microsoft“ werden bei der Registrierung eines Microsoft-Kontos nicht unterstützt. Vermeiden Sie diese Wörter, um den Prozess der Kontoerstellung und -registrierung abzuschließen.
+>Words like "Azure" and "Microsoft" aren't supported for Microsoft account registration. Avoid using these words to complete the account creation and registration process.
 
-### <a name="company-account-guidelines"></a>Richtlinien für ein Unternehmenskonto
+### <a name="company-account-guidelines"></a>Company account guidelines
 
-Beachten Sie diese Richtlinien, wenn mehrere Personen auf das Konto zugreifen müssen, indem sie sich bei dem Microsoft-Konto anmelden, das das Konto geöffnet hat.
-
->[!IMPORTANT]
->Wenn Sie den Zugriff auf Ihr Developer Center-Konto für mehrere Benutzer zulassen möchten, empfehlen wir Ihnen die Verwendung von Azure Active Directory, um den einzelnen Benutzern Rollen zuzuweisen. Diese Benutzer können auf das Konto zugreifen, indem sie sich mit ihren jeweiligen Azure AD-Anmeldeinformationen anmelden. Weitere Informationen finden Sie unter [Verwalten von Kontobenutzern](https://docs.microsoft.com/windows/uwp/publish/manage-account-users).
-
--   Erstellen Sie Ihr Microsoft-Konto mit einer E-Mail-Adresse, die zur Domäne Ihres Unternehmens, nicht zu einer Einzelperson gehört. Beispiel: windowsapps\@fabrikam.com.
--   Beschränken Sie den Zugriff auf dieses Microsoft-Konto auf die kleinste mögliche Anzahl von Entwicklern.
--   Richten Sie eine Unternehmens-E-Mail-Verteilerliste ein, die alle Personen enthält, die auf das Entwicklerkonto zugreifen müssen, und fügen Sie diese E-Mail-Adresse Ihren Sicherheitsinfos hinzu. So können alle Mitarbeiter auf der Liste bei Bedarf Sicherheitscodes erhalten und die Sicherheitsinfos Ihres Microsoft-Kontos verwaltet werden. Wenn das Einrichten einer Verteilerliste nicht möglich ist, muss der Besitzer des einzelnen E-Mail-Kontos bei Aufforderung verfügbar sein, um auf den Sicherheitscode zuzugreifen und ihn zu teilen (z.B. wenn dem Konto neue Sicherheitsinfos hinzugefügt werden, oder wenn ein neues Gerät darauf zugreifen muss).
--   Fügen Sie eine Telefonnummer hinzu, die keine Durchwahl benötigt, und auf die wichtige Teammitglieder zugreifen können.
--   Sorgen Sie im Allgemeinen dafür, dass Entwickler vertrauenswürdige Geräten verwenden, um sich beim Entwicklerkonto Ihres Unternehmens anzumelden. Alle wichtigen Teammitglieder sollten auf diese vertrauenswürdigen Geräten zugreifen können. Dies reduziert die Notwendigkeit, beim Zugriff auf das Konto Sicherheitscodes senden zu müssen.
--   Wenn Sie Zugriff auf das Konto von einem nicht vertrauenswürdigen PC zulassen müssen, begrenzen Sie den Zugriff auf ein Maximum von fünf Entwicklern. Im Idealfall sollten diese Entwickler mit Computern auf das Konto zugreifen, die den gleichen geografischen und Netzwerkstandort haben.
--   Überprüfen Sie die [Sicherheitsinformationen für Ihr Unternehmen ](https://account.live.com/proofs/Manage) regelmäßig, um sicherzustellen, dass sie aktuell sind.
+Follow these guidelines if more than one person will need to access the account by logging in with the Microsoft account that opened the account.
 
 >[!IMPORTANT]
->Auf Ihr Entwicklerkonto sollte in erster Linie mit vertrauenswürdigen PCs zugegriffen werden. Dies ist wichtig, da die Anzahl der pro Konto und Woche generierten Codes beschränkt ist. Darüber hinaus ermöglicht dies die nahtloseste Anmeldeerfahrung.
+>To allow multiple users to access your Dev Center account, we recommend using Azure Active Directory to assign roles to individual users. They can access the account by signing in with their individual Azure AD credentials. For more information, see [Manage account users](https://docs.microsoft.com/windows/uwp/publish/manage-account-users).
+
+-   Create your Microsoft account using an email address that belongs to your company\'s domain, but not to a single individual. For example, windowsapps\@fabrikam.com.
+-   Limit access to this Microsoft account to the smallest possible number of developers.
+-   Set up a corporate email distribution list that includes everyone who needs to access the developer account, and add this email address to your security info. This allows all of the employees on the list to receive security codes when needed and to manage your Microsoft account's security info. If setting up a distribution list isn't feasible, the owner of the individual email account will need to be available to access and share the security code when prompted (such as when new security info is added to the account or when it must be accessed from a new device.)
+-   Add a company phone number that doesn't require an extension and is accessible to key team members.
+-   In general, have developers use trusted devices to log in to your company's developer account. All key team members should have access to these trusted devices. This will reduce the need for security codes to be sent when accessing the account.
+-   If you need to allow access to the account from a non-trusted PC, limit that access to a maximum of five developers. Ideally, these developers should access the account from machines that share the same geographical and network location.
+-   Frequently review your [company's security info](https://account.live.com/proofs/Manage) to make sure it's    current.
+
+>[!IMPORTANT]
+>Your developer account should be accessed primarily from trusted PCs. This is critical because there is a limit to the number of codes generated per account, per week. It also enables the most seamless sign-in experience.
 >
->Weitere Informationen finden Sie unter [Zusätzliche Richtlinien für Unternehmenskonten](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+>For more information, see [additional developer account guidelines and security](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
-### <a name="to-create-a-microsoft-account"></a>So erstellen Sie ein Microsoft-Konto
+### <a name="to-create-a-microsoft-account"></a>To create a Microsoft account
 
-1.  Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem vorhandenen Konto angemeldet werden.
-2.  Registrieren Sie die E-Mail-Adresse (gemäß den obigen Richtlinien) als Microsoft-Konto, indem Sie diesen [Link](https://signup.live.com/signup.aspx) verwenden. Führen Sie die folgenden Registrierungsanweisungen:
+1.  Open a new Chrome Incognito or Internet Explorer InPrivate browsing session to ensure that you're not signed in to an existing account.
+2.  Register the email (using the previous guidelines) as a Microsoft account by using this [link](https://signup.live.com/signup.aspx). Complete the following sign up instructions:
 
-    - Wenn Sie Ihr Konto als Microsoft-Konto registrieren möchten, müssen Sie eine gültige Telefonnummer angeben, damit das System Ihnen einen Kontoüberprüfungscode als SMS oder automatisierten Anruf senden kann.
-    - Wenn Sie Ihr Konto als Microsoft-Konto registrieren möchten, müssen Sie eine gültige E-Mail-ID angeben, damit Sie eine automatisierte E-Mail zur Kontoüberprüfung empfangen können.
-    - Verifizieren Sie die an die Verteilerliste gesendete E-Mail-Adresse.
+    - When registering your account as a Microsoft account, you need to provide a valid phone number for the system to send you an account verification code as a text message or an automated call.
+    - When registering your account as a Microsoft account, you need to provide a valid email id for receiving an automated email for account verification.
+    - Verify the email address sent to the DL.
 
-    Sie können das neue Microsoft-Konto jetzt im Microsoft Developer Center verwenden.
+    You're now ready to use the new Microsoft account in the Microsoft Developer Center.
 
-## <a name="register-your-account-in-microsoft-developer-center"></a>Registrieren Ihres Kontos beim Microsoft Developer Center
+## <a name="register-your-account-in-microsoft-developer-center"></a>Register your account in Microsoft Developer Center
 
-Das Microsoft Developer Center wird für die einmalige Registrierung der Unternehmensinformationen verwendet. Die Person, die das Konto registriert, muss ein offizieller Vertreter des Unternehmens sein und ihre persönlichen Informationen zum Zweck der Identitätsüberprüfung bereitstellen. Diese Person muss ein Microsoft-Konto verwenden, das für das Unternehmen freigegeben ist. **Das gleiche Konto muss im Cloudpartnerportal verwendet werden.** Sie sollten überprüfen, ob Ihr Unternehmen nicht bereits über ein Microsoft Developer Center-Konto verfügt, bevor Sie ein Konto erstellen. Während des Prozesses erfassen wir Informationen zu Unternehmensadresse, Bankdaten und Steuer. Diese Informationen erhalten Sie üblicherweise über Bank- oder Geschäftskontakte.
+The Microsoft Developer Center is used to register the company information once. The registrant must be a valid representative of the company, and must provide their personal information as a way to validate their identity. The person registering must use a Microsoft account that is shared for the company, **and the same account must be used in the Cloud Partner Portal.** You should check to make sure your company does not already have a Microsoft Developer Center account before you attempt to create one. During the process, we will collect company address information, bank account information, and tax information. These are typically obtainable from finance or business contacts.
 
 >[!IMPORTANT]
->Sie müssen folgende Komponenten des Entwicklerprofils ausfüllen, um die verschiedenen Phasen der Angebotserstellung und -bereitstellung durchlaufen zu können.
+>You must complete the following Developer profile components in order to progress through the various phases of offer creation and deployment.
 
-| Entwicklerprofil     | Entwurf starten    | Staging       | Kostenlos veröffentlichen und Lösungsvorlage   | Für den Erwerb veröffentlichen   |
+| Developer profile     | To start draft    | Staging       | Publish free and solution  template   | Publish  commercial   |
 |---------------------- |----------------   |-----------    |-------------------------------------  |---------------------  |
-| Unternehmensregistrierung  | Verpflichtend         | Verpflichtend     | Verpflichtend                             | Verpflichtend             |
-| Steuer-ID        | Optional          | Optional      | Optional                              | Verpflichtend             |
-| Bankkonto          | Optional          | Optional      | Optional                              | Verpflichtend             |
+| Company registration  | Must have         | Must have     | Must have                             | Must have             |
+| Tax profile ID        | Optional          | Optional      | Optional                              | Must have             |
+| Bank account          | Optional          | Optional      | Optional                              | Must have             |
 
 >[!NOTE]
->Bring Your Own License (BYOL) wird nur für virtuelle Computer unterstützt und gilt als ein kostenloses Angebot.
+>Bring Your Own License (BYOL) is only supported for virtual machines and is considered a free offering.
 
-### <a name="register-your-company-account"></a>Registrieren Ihres Unternehmenskontos
+### <a name="register-your-company-account"></a>Register your company account
 
-1. Öffnen Sie eine neue Internet Explorer-InPrivate- oder Chrome-Inkognito-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
+1. Open a new Internet Explorer InPrivate or Chrome Incognito browsing session to ensure that you're not signed in to a personal account.
 
-2. Wechseln Sie zum [Windows Dev Center](http://dev.windows.com/registration?accountprogram=azure), um sich als Verkäufer zu registrieren. Bitte lesen Sie den folgenden wichtigen Hinweis, bevor Sie fortfahren.
+2. Go to the [Windows Dev Center](https://dev.windows.com/registration?accountprogram=azure) to register yourself as a seller. Please read the following important note before you proceed.
 
-   ![Microsoft-Kontoüberprüfung](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
+   ![Microsoft account verification](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-verify.jpg)
 
     >[!IMPORTANT]
-    >Stellen Sie sicher, dass die E-Mail-ID oder Verteilerliste (eine Verteilerliste wird empfohlen, um die Abhängigkeit von einzelnen Personen aufzuheben), die Sie für die Registrierung im Developer Center verwenden werden, zunächst als Microsoft-Konto registriert wird. Falls nicht, registrieren Sie sich bitte über diesen Link. Darüber hinaus kann für die Dev Center-Registrierung keine E-Mail-ID unter der Microsoft-Unternehmensdomäne verwendet werden.
+    >Ensure that the email id or distribution list (a distribution list is recommended to remove dependency from individuals) which you will be using for registering in the Dev Center is at first registered as a Microsoft account. If not, then please register using this link. Also, any email id under the Microsoft company domain cannot be used for Dev Center registration.`
 
-   ![Dev Center-Anmeldung](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
+   ![Dev center sign in](./media/cloud-partner-portal-create-dev-center-registration/seller-dashboard-login.jpg)
 
-3. Führen Sie alle Schritte des Assistenten „Unterstützen Sie uns beim Schutz Ihres Kontos“ aus, um Ihre Identität über eine Telefonnummer oder E-Mail-Adresse zu prüfen.
+3. Run the "Help us protect your account" wizard, to verify your identity using a phone number or email address.
 
-4. Wählen Sie in „Registrierung – Kontoinformationen“ im Dropdownmenü Ihr **Land/Region des Kontos** aus, und wählen Sie dann **Weiter** aus.
+4. In Registration-Account Info, select your **Account country/region** from the dropdown list and then select **Next**.
 
-   ![Land/Region auswählen](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
+   ![Select country/region](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_04.png)
 
     >[!WARNING]
-    >„Verkäuferländer“: Um Ihre Dienste im Azure Marketplace verkaufen zu können, muss die registrierte Entität in einem der genehmigten Verkäuferländer ansässig sein, die in der Dropdownliste aufgeführt sind. Diese Einschränkung hat auszahlungstechnische und steuerliche Gründe. Weitere Informationen finden Sie in den Marketplace-Teilnahmerichtlinien.
+    >"Sell-from" Countries: In order to sell your services on the Azure Marketplace, your registered entity needs to be from one of the approved "sell-from" countries shown in the dropdown list. This restriction is for payout and taxation reasons. For more information, see the Marketplace participation policies.
 
-5. Wählen Sie **Unternehmen** als „Kontotyp“ aus und wählen Sie dann **Weiter** aus.
+5. Select **Company** as your "Account Type" and then select **Next**.
 
     >[!IMPORTANT]
-    >Um sich mehr über Kontotypen zu informieren und entscheiden zu können, welcher Typ der beste für Sie ist, sehen Sie sich Kontotyp, Standorte und Gebühren an, die auf dem nächsten Bildschirmfoto gezeigt sind.
+    >To better understand account types and decide which type is best for you, view page Account types, locations, and fees shown in the next screen capture.
 
-    ![Kontotypen für Verkäufer](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
+    ![Account types for sellers](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_05.png)
 
-6. Geben Sie den gewünschten Namen in **Anzeigename des Herausgebers** ein. Dies ist in der Regel der Name Ihres Unternehmens.
+6. Enter the **Publisher display name**. This is typically the name of your company.
 
     >[!NOTE]
-    >Der im Dev Center eingegebene Anzeigename des Herausgebers wird im Azure Marketplace nicht angezeigt, nachdem Ihr Angebot aufgeführt wird. Aber diese Information wird benötigt, um den Registrierungsprozess abzuschließen.
+    >The publisher display name entered in the Dev Center isn't displayed in the Azure Marketplace after your offer is listed. But this information is needed to finish the registration process.
 
-7. Geben Sie die **Kontaktinformationen** für die Kontoüberprüfung ein.
+7. Enter the **Contact info** for the account verification.
 
     >[!IMPORTANT]
-    >Es ist erforderlich, dass Sie genaue Kontaktinformationen angeben, denn diese werden in unserem Überprüfungsprozess für Ihr Unternehmen verwendet, damit es im Developer Center genehmigt werden kann.
+    >You must provide accurate contact information because it will be used in our verification process for your company to be approved in the Developer Center.`
 
-8. Geben Sie die Kontaktinformationen für den **Genehmiger des Unternehmens**ein. Der Genehmiger des Unternehmens ist die Person, die gewährleisten kann, dass Sie berechtigt sind, im Developer Center im Auftrag Ihres Unternehmens ein Konto zu erstellen. Nachdem Sie diese Informationen angegeben haben, wählen Sie **Weiter** aus, um zum Abschnitt für **Bezahlung** zu gelangen.
+8. Enter the contact information for the **Company Approver**. The Company approver is the person who can verify that you are authorized to create an account in the Dev Center on behalf of your organization. After you provide this information, select **Next** to move to the **Payment section**.
 
-    ![Genehmiger des Unternehmens angeben](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
+    ![Identify company approver](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_08.png)
 
-9. Geben Sie die Zahlungsinformationen für Ihr Konto ein. Wenn Sie einen Aktionscode haben, der die Kosten der Registrierung abdeckt, können Sie ihn hier eingeben. Geben Sie andernfalls Ihre Kreditkartendaten an (oder PayPal-Daten, wenn dies für Ihren Markt unterstützt wird). Klicken Sie auf **Weiter**, um zur abschließenden **Überprüfung** zu gelangen.
+9. Enter payment information for your account. If you have a promo code that covers the cost of registration, you can enter that here. Otherwise, provide your credit card info (or PayPal in supported markets). Select **Next** to move on to the final **Review**.
 
-   ![Registrierung für Bezahlung](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
+   ![Payment registration](./media/cloud-partner-portal-create-dev-center-registration/imgRegisterCo_09.png)
 
-10. Überprüfen Sie Ihre Kontoinformationen, und bestätigen Sie, dass alles korrekt ist. Lesen und akzeptieren Sie die Nutzungsbedingungen der [Microsoft Azure Marketplace-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560). Aktivieren Sie das Kontrollkästchen, um anzugeben, dass Sie die Bedingungen gelesen und akzeptiert haben.
+10. Review your account information and confirm that everything is correct. Read and accept the terms and conditions of the [Microsoft Azure Marketplace Publisher Agreement](https://go.microsoft.com/fwlink/?LinkID=699560). Check the box to indicate you have read and accepted these terms.
 
-11. Wählen Sie **Fertig stellen**, um die Registrierung zu bestätigen. Es wird eine Bestätigungsnachricht an Ihre E-Mail-Adresse gesendet.
+11. Select **Finish** to confirm your registration. A confirmation message is sent to your email address.
 
-12. Wenn Sie planen, nur kostenlose Angebote zu veröffentlichen, wählen Sie [Zum Cloud-Partnerportal wechseln](https://cloudpartner.azure.com/) aus, und springen Sie zu „Registrieren Ihres Kontos im Cloudpartnerportal“ in diesem Artikel.
+12. If you're planning to only publish free offers, select [Go to the Cloud Partner Portal](https://cloudpartner.azure.com/) and skip to "Register your account in the cloud partner portal" in this article.
 
-### <a name="commercial-offers"></a>Kommerzielle Angebote
+### <a name="commercial-offers"></a>Commercial offers
 
-Wenn Sie planen, kommerzielle Angebote veröffentlichen, etwa ein Angebot für virtuelle Computer, für das ein stündliches Abrechnungsmodell verwendet werden soll, müssen Sie Steuer- und Bankverbindungsinformationen bereitstellen. Dazu melden Sie sich bei Ihrem Developer Center-Konto an, und wählen Sie **Kontoinformationen aktualisieren** aus. Befolgen Sie die Anweisungen im nächsten Abschnitt, „Hinzufügen der Bankverbindungs- und Steuerinformationen“.
+If you're planning to publish commercial offers, such as a Virtual Machine offer using an hourly billing model, you have to provide tax and banking information. To this, sign into your Developer Center account and select **Update your account information**. Follow the instructions in the next section, "Add banking and tax information".
 
 >[!IMPORTANT]
->Sie können kein kommerzielles Angebot zur Veröffentlichung freischalten, wenn Sie keine Bankkonto- und Steuerinformationen bereitgestellt haben.
+>You won't be able to push a commercial offer to production without providing bank account and tax information.
 
-Wenn Sie Ihre Bank- und Steuerinformationen lieber später aktualisieren möchten, können Sie zu „Registrieren Ihres Kontos im Cloudpartnerportal“ in diesem Artikel springen.
+If you prefer to update your bank and tax information later, then you can skip to "Register your account in the cloud partner portal" in this article.
 
 >[!NOTE]
->Es wird empfohlen, Bankkonto- und Steuerinformationen so bald wie möglich bereitzustellen, weil das Überprüfen der Steuerinformationen einige Zeit dauert.
+>We recommend providing bank account and tax information as soon as possible because it takes time to validate tax information.
 
-### <a name="add-banking-and-tax-information"></a>Hinzufügen der Bankverbindungs- und Steuerinformationen
+### <a name="add-banking-and-tax-information"></a>Add banking and tax information
 
-Wenn Sie kommerzielle Angebote veröffentlichen möchten, müssen Sie Auszahlungs- und Steuerinformationen hinzufügen und diese zur Validierung im Developer Center absenden.
+To publish commercial offers for purchase, you need to add payout and tax information and submit it for validation in the Developer Center.
 
-**So stellen Sie Bankinformationen bereit**
+**To provide bank information**
 
-1.  Melden Sie mit Ihrem Microsoft-Konto am [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) an.
-2.  Wählen Sie im Menü auf der linken Seite **Auszahlungskonto** aus, und wählen Sie unter **Zahlungsmethode wählen** die Option **Bankkonto** oder **PayPal** aus.
+1.  Sign in to the [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) with your Microsoft account.
+2.  Select **Payout account** in the left menu, under **Choose payment method**, select **Bank account** or **PayPal**.
 
     >[!NOTE]
-    >Wenn Sie über kommerzielle Angebote verfügen, die Kunden im Marketplace erwerben, wird dieses Konto für die entsprechenden Auszahlungen an Sie verwendet.
-3.  Geben Sie die Zahlungsinformationen ein, und wählen Sie dann **Speichern** aus.
+    >If you have commercial offers that customers purchase in the Marketplace, this is the account where you will receive payout for those purchases.
+3.  Enter the payment information, and then select **Save**.
 
     >[!IMPORTANT]
-    >Wenn Sie Ihr Auszahlungskonto aktualisieren oder ändern müssen, führen Sie die obigen Schritte erneut aus, um die aktuellen Informationen durch die neuen Informationen zu ersetzen.
+    >If you need to update or change your payout account, follow the preceding steps to replace the current information with the new information.
     >
-    >Wenn Sie Ihr Zahlungskonto ändern, kann dies dazu führen, dass sich Ihre Zahlungen um maximal einen Zahlungszyklus verzögern. Diese Verzögerung tritt auf, weil wir die Kontoänderung überprüfen müssen. Dies ist der gleiche Vorgang wie bei der ersten Einrichtung des Zahlungskontos. Nachdem das Konto bestätigt wurde, erhalten Sie trotzdem den vollen Betrag. Zahlungen, die für den aktuellen Zahlungszyklus fällig sind, werden im nächsten Zyklus hinzugefügt.
+    >Changing your payout account can delay your payments by up to one payment cycle. This delay occurs because we need to verify the account change, just as we did when you first set up the payout account. You'll still get paid for the full amount after your account has been verified; any payments due for the current payment cycle will be added to the next one.
 
-4.  Klicken Sie auf **Weiter**.
+4.  Select **Next**.
 
-**So stellen Sie Steuerinformationen bereit**
+**To provide tax information**
 
-1.  Melden Sie mit Ihrem Microsoft-Konto am [Microsoft Developer Center](http://dev.windows.com/registration?accountprogram=azure) an (falls erforderlich).
-2.  Wählen Sie im linken Menü die Option **Steuerprofil** aus.
-3.  Gehen Sie auf der Seite **Ihr Steuerformular einrichten** wie folgt vor:
-    - Wählen Sie das Land oder die Region aus, in dem bzw. der Ihr dauerhafter Wohnsitz liegt.
-    - Wählen Sie das Land aus, dessen primäre Staatsbürgerschaft Sie innehaben.
-    - Klicken Sie auf **Weiter**.
-4.  Geben Sie Ihre Steuerdaten ein, und wählen Sie **Weiter**.
+1.  Sign in to the [Microsoft Developer Center](https://dev.windows.com/registration?accountprogram=azure) with your Microsoft account (if needed).
+2.  On the left menu, select **Tax profile**.
+3.  On the **Set up your tax form** page:
+    - Select the country or region where you have permanent residency.
+    - Select the country or region where you hold primary citizenship.
+    - Select **Next**.
+4.  Enter your tax details, and then select **Next**.
 
 >[!WARNING]
->Sie können Ihre kommerziellen Angebote nicht für die Veröffentlichung freischalten, wenn Sie keine Bankkonto- und Steuerinformationen in Ihrem Microsoft Developer Center-Konto bereitgestellt haben.
+>You won't be able to push to your commercial offers to production without providing bank account and tax information in your Microsoft Developer Center account.
 
-### <a name="developer-center-registration-issues"></a>Probleme bei der Developer Center-Registrierung
+### <a name="developer-center-registration-issues"></a>Developer Center registration issues
 
-Wenn Sie Probleme bei der Developer Center-Registrierung haben, gehen Sie wie folgt vor, um ein Supportticket zu öffnen.
+If you have issues with Developer Center registration, use the following steps to open a support ticket.
 
-1.  Verwenden Sie den [Supportlink](https://developer.microsoft.com/windows/support).
-2.  Wählen Sie unter **So erreichen Sie uns** die Schaltfläche **Incident übermitteln** aus.
-    ![Ticket öffnen](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
-3.  Wählen Sie für **Problemtyp** die Option „Hilfe zu Dev Center“ aus und wählen Sie für **Kategorie** die Option „Veröffentlichen und Verwalten von Apps“ aus. Wählen Sie **E-Mail starten** aus.
+1.  Go to the [support link](https://developer.microsoft.com/windows/support).
+2.  Under **Contact Us**, select **Submit an incident**.
+    ![Open a ticket](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_02.png)
+3.  For **Problem type**, select "Help with Dev Center"and for **Category**, select "Publish and manage apps". Select **Start email**.
 
-    ![Geben Sie den Typ des Problems an.](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
+    ![identify type of problem](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_03.png)
 
-4.  Sie gelangen zu einer Anmeldeseite. Verwenden Sie ein beliebiges Microsoft-Konto, um sich anzumelden. Falls Sie kein Microsoft-Konto besitzen, [legen Sie eines an](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).
+4.  You'll be given a sign in page. Use any Microsoft account to sign in. If you don't have a Microsoft account then [create one](https://signup.live.com/signup?uaid=0089f09ccae94043a0f07c2aaf928831&lic=1).\
 
-5.  Stellen Sie ausführliche Informationen zu dem Problem bereit, und wählen Sie **Senden** aus, um das Ticket zu senden.
+5.  Provide detailed information about the issue and select **Submit** to send the ticket.
 
-    ![Ticket senden](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
+    ![submit a ticket](./media/cloud-partner-portal-create-dev-center-registration/imgAddTax_05.png)
 
-## <a name="register-your-account-in-the-cloud-partner-portal"></a>Registrieren Ihres Kontos im Cloudpartnerportal
+## <a name="register-your-account-in-the-cloud-partner-portal"></a>Register your account in the cloud partner portal
 
-Sie verwenden das [Cloud-Partnerportal](https://cloudpartner.azure.com/), um Ihre Angebote zu veröffentlichen und zu verwalten.
+You use the [Cloud Partner Portal](https://cloudpartner.azure.com/) to publish and manage your offer(s).
 
-1.  Öffnen Sie eine neue Chrome-Inkognito- oder Internet Explorer-InPrivate-Browsersitzung, um sicherzustellen, dass Sie nicht bei einem persönlichen Konto angemeldet sind.
-2.  Wechseln Sie zum [Cloudpartnerportal](https://cloudpartner.azure.com/).
-3.  Wenn Sie sich als neuer Benutzer zum ersten Mal beim [Cloud-Partnerportal](https://cloudpartner.azure.com/) anmelden, müssen Sie dazu die E-Mail-ID verwenden, die für Ihr Dev Center-Konto registriert ist. Dadurch ist sichergestellt, dass Ihr Dev Center-Konto und das Cloud-Partnerportal-Konto miteinander verknüpft werden.
+1.  Open a new Chrome Incognito or Internet Explorer InPrivate browsing session to ensure that you're not signed in to a personal account.
+2.  Go to [Cloud Partner Portal](https://cloudpartner.azure.com/).
+3.  If you're a new user and signing in to the [Cloud Partner    Portal](https://cloudpartner.azure.com/) for the first time, then you must sign in using the same email id that's registered with  your Dev Center account. This ensures that your Dev Center account and the cloud partner portal account are linked to each other.
 
-Später können Sie die anderen Mitglieder des Unternehmens hinzufügen, die an der Anwendung arbeiten. Sie können diese als Mitwirkende oder Besitzer im Cloud-Partnerportal hinzufügen, indem Sie die Schritte im nächsten Abschnitt ausführen.
+Later you can add the other members of the company who are working on the application. You can them as contributors or owners in the cloud partner portal by following the steps in the next section.
 
-Wenn Sie im Cloudpartnerportal als Mitwirkender/Besitzer hinzugefügt werden, können Sie sich mit Ihrem eigenen Konto anmelden.
+If you are added as a contributor/owner in the cloud partner portal portal, then you can sign in with your own account.
 
 >[!TIP]
->Die Teilnahmerichtlinien werden auf der Azure-Website beschrieben.
+>The participation policies are described on the Azure website.
 
-## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Verwalten von Benutzern als Besitzer oder Mitwirkende im Cloud-Partnerportal
+## <a name="manage-users-as-owners-or-contributors-in-the-cloud-partner-portal"></a>Manage users as owners or contributors in the cloud partner portal
 
-[Schritte zum Verwalten von Benutzern im Cloudpartnerportal](./cloud-partner-portal-manage-users.md)
+[Steps to manage users on cloud partner portal](./cloud-partner-portal-manage-users.md)
 
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-Nachdem Sie Ihr Konto erstellt und registriert haben, können Sie den Azure Marketplace-Veröffentlichungsprozess starten.
+Now that your account is created and registered, you can start the Azure marketplace publishing process.

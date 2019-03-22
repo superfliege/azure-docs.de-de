@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie mithilfe von Azure NetApp Files Momentaufnahmen für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
+title: Manage snapshots by using Azure NetApp Files | Microsoft Docs
+description: Describes how to create snapshots for a volume or restore from a snapshot to a new volume by using Azure NetApp Files.
 services: azure-netapp-files
 documentationcenter: ''
 author: b-juche
@@ -11,79 +11,79 @@ ms.service: azure-netapp-files
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: b-juche
-ms.openlocfilehash: 3c69cb076b3b23cd5149e05f1b6ee9ae1ba170a6
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: 9154add96084142ca1f93ad61c6418e3b487fb83
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430198"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58090915"
 ---
-# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files
+# <a name="manage-snapshots-by-using-azure-netapp-files"></a>Manage snapshots by using Azure NetApp Files
 
-Mithilfe von Azure NetApp Files können Sie eine Momentaufnahme bei Bedarf für ein Volume erstellen oder aus einer Momentaufnahme auf einem neuen Volume wiederherstellen.
+You can use Azure NetApp Files to create an on-demand snapshot for a volume or restore from a snapshot to a new volume.
 
-## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Erstellen einer Momentaufnahme bei Bedarf für ein Volume
+## <a name="create-an-on-demand-snapshot-for-a-volume"></a>Create an on-demand snapshot for a volume
 
-Momentaufnahmen können nur bei Bedarf erstellt werden. Richtlinien für Momentaufnahmen werden derzeit nicht unterstützt.
+You can create snapshots only on demand. Snapshot policies are not currently supported.
 
-1.  Klicken Sie auf dem Blatt „Volumes“ auf **Momentaufnahmen**.
+1.  From the Volume blade, click **Snapshots**.
 
-    ![Zu Momentaufnahmen navigieren](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
+    ![Navigate to snapshots](../media/azure-netapp-files/azure-netapp-files-navigate-to-snapshots.png)
 
-2.  Klicken Sie auf **+ Momentaufnahme hinzufügen**, um feine Momentaufnahme bei Bedarf für ein Volume zu erstellen.
+2.  Click **+ Add snapshot** to create an on-demand snapshot for a volume.
 
-    ![Momentaufnahme hinzufügen](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
+    ![Add snapshot](../media/azure-netapp-files/azure-netapp-files-add-snapshot.png)
 
-3.  Geben Sie im Fenster „Neue Momentaufnahme“ der neu erstellten Momentaufnahme einen Namen an.   
+3.  In the New Snapshot window, provide a name for the new snapshot that you are creating.   
 
-    ![Neue Momentaufnahme](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
+    ![New snapshot](../media/azure-netapp-files/azure-netapp-files-new-snapshot.png)
 
-4. Klicken Sie auf **OK**. 
+4. Click **OK**. 
 
-## <a name="restore-a-snapshot-to-a-new-volume"></a>Wiederherstellen einer Momentaufnahme auf einem neuen Volume
+## <a name="restore-a-snapshot-to-a-new-volume"></a>Restore a snapshot to a new volume
 
-Derzeit können Sie eine Momentaufnahme nur auf einem neuen Volume wiederherstellen. 
-1. Wechseln Sie vom Blatt „Volume“ zum Blatt **Momentaufnahmen verwalten**, um die Liste der Momentaufnahmen anzuzeigen. 
-2. Wählen Sie die Momentaufnahme aus, die wiederhergestellt werden soll.  
-3. Klicken Sie mit der rechten Maustaste auf den Namen der Momentaufnahme, und wählen Sie im Menü die Option **Auf neuem Volume wiederherstellen** aus.  
+Currently, you can restore a snapshot only to a new volume. 
+1. Go to the **Manage Snapshots** blade from the Volume blade to display the snapshot list. 
+2. Select a snapshot to restore.  
+3. Right-click the snapshot name and select **Restore to new volume** from the menu option.  
 
-    ![Wiederherstellen von Momentaufnahme auf neuem Volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
+    ![Restore snapshot to new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-restore-to-new-volume.png)
 
-4. Geben Sie im Fenster „Neues Volume“ die folgenden Informationen für das neue Volume an:  
+4. In the New Volume window, provide information for the new volume:  
     * **Name**   
-        Geben Sie den Namen für das Volume an, das Sie erstellen möchten.  
+        Specify the name for the volume that you are creating.  
         
-        Der Name muss innerhalb einer Ressourcengruppe eindeutig sein. Er muss mindestens drei Zeichen lang sein.  Er darf beliebige alphanumerische Zeichen enthalten.
+        The name must be unique within a resource group. It must be at least three characters long.  It can use any alphanumeric characters.
 
-    * **Dateipfad**     
-        Geben Sie den Dateipfad an, der zum Erstellen des Exportpfads für das neue Volume verwendet wird. Der Exportpfad dient zum Einbinden und Zugreifen auf das Volume.   
+    * **File path**     
+        Specify the file path that will be used to create the export path for the new volume. The export path is used to mount and access the volume.   
         
-        Das Einbindungsziel ist der Endpunkt der IP-Adresse des NFS-Diensts. Es wird automatisch generiert.   
+        A mount target is the endpoint of the NFS service IP address. It is automatically generated.   
         
-        Der Dateipfadname darf nur Buchstaben, Zahlen und Bindestriche („-“) enthalten. Er muss 16 bis 40 Zeichen umfassen. 
+        The file path name can contain letters, numbers, and hyphens ("-") only. It must be between 16 and 40 characters in length. 
 
-    * **Kontingent**  
-        Geben Sie die Menge an logischem Speicherplatz an, die dem Volume zugewiesen wird.  
+    * **Quota**  
+        Specify the amount of logical storage that is allocated to the volume.  
 
-        Das Feld **Verfügbares Kontingent** zeigt den ungenutzten Speicherplatz im ausgewählten Kapazitätspool an, den Sie beim Erstellen eines neuen Volumes verwenden können. Die Größe des neuen Volumes darf das verfügbare Kontingent nicht überschreiten.
+        The **Available quota** field shows the amount of unused space in the chosen capacity pool that you can use towards creating a new volume. The size of the new volume must not exceed the available quota.
 
-    *   **Virtuelles Netzwerk**  
-        Geben Sie das virtuelle Azure-Netzwerk (VNet) an, von dem aus Sie auf das Volume zugreifen möchten.  
-        Das von Ihnen angegebene VNET muss über ein an Azure NetApp Files delegiertes Subnetz verfügen. Sie können nur aus demselben VNET aus auf Azure NetApp Files zugreifen oder per VNET-Peering von einem VNET aus, das sich in der gleichen Region befindet wie das Volume. Sie können über Express Route von Ihrem lokalen Netzwerk aus auf das Volume zugreifen. 
+    *   **Virtual network**  
+        Specify the Azure virtual network (Vnet) from which you want to access the volume.  
+        The Vnet you specify must have a subnet delegated to Azure NetApp Files. You can access Azure NetApp Files only from the same Vnet or from a Vnet that is in the same region as the volume through Vnet peering. You can access the volume from your on-premise network through Express Route. 
 
-    * **Subnetz**  
-        Geben Sie das Subnetz an, das Sie für das Volume verwenden möchten.  
-        Das von Ihnen angegebene Subnetz muss an den Azure NetApp Files-Dienst delegiert werden. Sie können ein neues Subnetz erstellen, indem Sie **Neu erstellen** unter dem Feld „Subnetz“ auswählen.  
-<!--
+    * **Subnet**  
+        Specify the subnet that you want to use for the volume.  
+        The subnet you specify must be delegated to the Azure NetApp Files service. You can create a new subnet by selecting **Create new** under the Subnet field.  
+   <!--
     ![Restored new volume](../media/azure-netapp-files/azure-netapp-files-snapshot-new-volume.png) 
--->
+   -->
 
-5. Klicken Sie auf **OK**.   
-    Das neue Volume, auf dem die Momentaufnahme wiederhergestellt wurde, wird auf dem Blatt „Volumes“ angezeigt.
+5. Click **OK**.   
+    The new volume to which the snapshot is restored appears in the Volumes blade.
 
-## <a name="next-steps"></a>Nächste Schritte
+## <a name="next-steps"></a>Next steps
 
-[Grundlegendes zur Speicherhierarchie von Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
+[Understand the storage hierarchy of Azure NetApp Files](azure-netapp-files-understand-storage-hierarchy.md)
