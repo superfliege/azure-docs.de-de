@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 07/03/2018
 ms.author: lahugh
 ms.custom: mvc
-ms.openlocfilehash: 4356ea57e73e063d18155611b8c11090aa11edb3
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: d478307ff4393d84a854fcd3b2ea0efd77de7135
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471214"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58087838"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Schnellstart: Ausführen Ihres ersten Batch-Auftrags im Azure-Portal
 
@@ -34,7 +34,7 @@ Führen Sie diese Schritte aus, um ein Batch-Beispielkonto für Testzwecke zu er
 
 1. Klicken Sie auf **Ressource erstellen** > **Compute** > **Batch-Dienst**. 
 
-  ![Batch im Marketplace][marketplace_portal]
+   ![Batch im Marketplace][marketplace_portal]
 
 2. Geben Sie Werte für **Kontoname** und **Ressourcengruppe** ein. Der Kontoname muss für den ausgewählten Azure-**Standort** eindeutig sein, darf nur Kleinbuchstaben oder Zahlen enthalten und muss zwischen 3 und 24 Zeichen lang sein. 
 
@@ -42,7 +42,7 @@ Führen Sie diese Schritte aus, um ein Batch-Beispielkonto für Testzwecke zu er
 
 4. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **Erstellen**, um das Konto zu erstellen.
 
-  ![Erstellen eines Batch-Kontos][account_portal]  
+   ![Erstellen eines Batch-Kontos][account_portal]  
 
 Greifen Sie im Portal auf das Batch-Konto zu, wenn die Meldung **Bereitstellung erfolgreich** angezeigt wird.
 
@@ -57,23 +57,23 @@ Nachdem Sie nun über ein Batch-Konto verfügen, können Sie einen Beispielpool 
 
 3. Wählen Sie unter **Betriebssystem** die folgenden Einstellungen. (Sie können auch weitere Optionen ausprobieren.)
   
-  |Einstellung  |Wert  |
-  |---------|---------|
-  |**Imagetyp**|Marketplace (Linux/Windows)|
-  |**Herausgeber**     |MicrosoftWindowsServer|
-  |**Angebot**     |Windows Server|
-  |**sku**     |2012-R2-Datacenter-smalldisk|
+   |Einstellung  |Wert  |
+   |---------|---------|
+   |**Imagetyp**|Marketplace (Linux/Windows)|
+   |**Herausgeber**     |MicrosoftWindowsServer|
+   |**Angebot**     |Windows Server|
+   |**sku**     |2012-R2-Datacenter-smalldisk|
 
-  ![Auswählen eines Poolbetriebssystems][pool_os] 
+   ![Auswählen eines Poolbetriebssystems][pool_os] 
 
 4. Scrollen Sie nach unten, um Werte für die Einstellungen **Knotengröße** und **Skalieren** einzugeben. Die vorgeschlagene Knotengröße bietet für dieses kurze Beispiel eine gute Balance zwischen Leistung und Kosten.
   
-  |Einstellung  |Wert  |
-  |---------|---------|
-  |**Knotentarif**     |Standard_A1|
-  |**Ziel für dedizierte Knoten**     |2|
+   |Einstellung  |Wert  |
+   |---------|---------|
+   |**Knotentarif**     |Standard_A1|
+   |**Ziel für dedizierte Knoten**     |2|
 
-  ![Auswählen einer Poolgröße][pool_size] 
+   ![Auswählen einer Poolgröße][pool_size] 
 
 5. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**, um den Pool zu erstellen.
 
@@ -91,7 +91,7 @@ Da Sie jetzt über einen Pool verfügen, können Sie einen Auftrag erstellen, um
 
 2. Geben Sie eine **Auftrags-ID** mit dem Namen *myjob* ein. Wählen Sie unter **Pool** die Option *mypool*. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
-  ![Erstellen eines Auftrags][job_create]
+   ![Erstellen eines Auftrags][job_create]
 
 Nachdem der Auftrag erstellt wurde, wird die Seite **Aufgaben** geöffnet.
 
@@ -109,7 +109,7 @@ Gehen Sie wie folgt vor, um die erste Aufgabe zu erstellen:
 
 3. Geben Sie in der **Befehlszeile** die Zeichenfolge `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"` ein. Behalten Sie die Standardwerte für die übrigen Einstellungen bei, und klicken Sie auf **OK**.
 
-  ![Erstellt eine Aufgabe.][task_create]
+   ![Erstellt eine Aufgabe.][task_create]
 
 Nachdem Sie eine Aufgabe erstellt haben, wird sie von Batch zur Ausführung im Pool in die Warteschlange eingereiht. Wenn ein Knoten für die Ausführung verfügbar ist, wird die Aufgabe ausgeführt.
 

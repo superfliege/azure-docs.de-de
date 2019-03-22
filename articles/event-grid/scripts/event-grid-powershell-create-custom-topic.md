@@ -12,16 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5d5b8dc21e40f38aee8f082e84a5a5bea1baf11c
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
+ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53276352"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58182505"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Erstellen eines benutzerdefinierten Event Grid-Themas mit PowerShell
 
 Dieses Skript erstellt ein benutzerdefiniertes Event Grid-Thema.
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -35,7 +37,7 @@ Dieses Skript verwendet den folgenden Befehl zum Erstellen des benutzerdefiniert
 
 | Get-Help | Notizen |
 |---|---|
-| [New-AzureRmEventGridTopic](https://docs.microsoft.com/powershell/module/azurerm.eventgrid/new-azurermeventgridtopic) | Erstellt ein benutzerdefiniertes Event Grid-Thema. |
+| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Erstellt ein benutzerdefiniertes Event Grid-Thema. |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

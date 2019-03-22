@@ -8,12 +8,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 01/09/2019
 ms.custom: mvc
-ms.openlocfilehash: 7d45c11345312fe48312bd4e744433397a17a62d
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
+ms.openlocfilehash: 7d94834523e331ff048f787760561739765e7023
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359322"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57842293"
 ---
 # <a name="create-an-azure-database-for-mariadb-server-by-using-the-azure-cli"></a>Erstellen eines Azure Database for MariaDB-Servers mit der Azure-Befehlszeilenschnittstelle
 
@@ -147,78 +147,78 @@ So stellen Sie mit dem MySQL-Befehlszeilentool eine Verbindung mit dem Server he
 
 1. Stellen Sie eine Verbindung mit dem Server her:
 
-  ```azurecli-interactive
-  mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  ```
+   ```azurecli-interactive
+   mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   ```
 
 2. Zeigen Sie den Serverstatus an der Eingabeaufforderung `mysql>` an:
 
-  ```sql
-  status
-  ```
-  Es sollte ein Text ähnlich dem folgenden angezeigt werden:
+   ```sql
+   status
+   ```
+   Es sollte ein Text ähnlich dem folgenden angezeigt werden:
 
-  ```bash
-  C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
-  Enter password: ***********
-  Welcome to the MySQL monitor.  Commands end with ; or \g.
-  Your MySQL connection id is 65512
-  Server version: 5.6.39.0 MariaDB Server
+   ```bash
+   C:\Users\>mysql -h mydemoserver.mariadb.database.azure.com -u myadmin@mydemoserver -p
+   Enter password: ***********
+   Welcome to the MySQL monitor.  Commands end with ; or \g.
+   Your MySQL connection id is 65512
+   Server version: 5.6.39.0 MariaDB Server
 
-  Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
+   Copyright (c) 2000, 2016, Oracle and/or its affiliates. All rights reserved.
 
-  Oracle is a registered trademark of Oracle Corporation and/or its
-  affiliates. Other names may be trademarks of their respective
-  owners.
+   Oracle is a registered trademark of Oracle Corporation and/or its
+   affiliates. Other names may be trademarks of their respective
+   owners.
 
-  Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+   Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 
-  mysql> status
-  --------------
-  mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
+   mysql> status
+   --------------
+   mysql  Ver 14.14 Distrib 5.7.23, for Linux (x86_64)
 
-  Connection id:          64681
-  Current database:
-  Current user:           myadmin@40.118.201.21
-  SSL:                    Cipher in use is AES256-SHA
-  Current pager:          stdout
-  Using outfile:          ''
-  Using delimiter:        ;
-  Server version:         5.6.39.0 MariaDB Server
-  Protocol version:       10
-  Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
-  Server characterset:    latin1
-  Db     characterset:    latin1
-  Client characterset:    utf8
-  Conn.  characterset:    utf8
-  TCP port:               3306
-  Uptime:                 1 day 3 hours 28 min 50 sec
+   Connection id:          64681
+   Current database:
+   Current user:           myadmin@40.118.201.21
+   SSL:                    Cipher in use is AES256-SHA
+   Current pager:          stdout
+   Using outfile:          ''
+   Using delimiter:        ;
+   Server version:         5.6.39.0 MariaDB Server
+   Protocol version:       10
+   Connection:             mydemoserver.mariadb.database.azure.com via TCP/IP
+   Server characterset:    latin1
+   Db     characterset:    latin1
+   Client characterset:    utf8
+   Conn.  characterset:    utf8
+   TCP port:               3306
+   Uptime:                 1 day 3 hours 28 min 50 sec
 
-  Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
-  --------------
+   Threads: 10  Questions: 29002  Slow queries: 0  Opens: 33  Flush tables: 3  Open tables: 1  Queries per second avg: 0.293
+   --------------
 
-  mysql>
-  ```
+   mysql>
+   ```
 
 > [!TIP]
 > Zusätzliche Befehle finden Sie unter [MySQL 5.7-Referenzhandbuch – Kapitel 4.5.1](https://dev.mysql.com/doc/refman/5.7/en/mysql.html).
 
 ## <a name="connect-to-the-server-by-using-mysql-workbench"></a>Herstellen einer Verbindung mit dem Server unter Verwendung von MySQL Workbench
 
-1.  Öffnen Sie MySQL Workbench auf Ihrem Clientcomputer. Falls die Anwendung noch nicht installiert ist, können Sie sie [herunterladen](https://dev.mysql.com/downloads/workbench/) und installieren.
+1. Öffnen Sie MySQL Workbench auf Ihrem Clientcomputer. Falls die Anwendung noch nicht installiert ist, können Sie sie [herunterladen](https://dev.mysql.com/downloads/workbench/) und installieren.
 
-2.  Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** die folgenden Informationen ein:
+2. Geben Sie im Dialogfeld **Setup New Connection** (Neue Verbindung einrichten) auf der Registerkarte **Parameter** die folgenden Informationen ein:
 
- ![Einrichten einer neuen Verbindung](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
+   ![Einrichten einer neuen Verbindung](./media/quickstart-create-mariadb-server-database-using-azure-cli/setup-new-connection.png)
 
-  | Einstellung | Empfohlener Wert | BESCHREIBUNG |
-  |---|---|---|
-  | Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für die Verbindung ein (Sie können einen beliebigen Verbindungsnahmen verwenden). |
-  | Verbindungsmethode | **Standard (TCP/IP)** | Verwenden Sie das TCP/IP-Protokoll zum Herstellen einer Verbindung mit Azure Database for MariaDB. |
-  | Hostname | **mydemoserver.mariadb.database.azure.com** | Der Servername, den Sie zuvor notiert haben. |
-  | Port | **3306** | Der Standardport für Azure Database for MariaDB. |
-  | Username | **myadmin@mydemoserver** | Der Benutzername für die Serveradministratoranmeldung, den Sie zuvor notiert haben. |
-  | Kennwort | *Ihr Kennwort* | Verwenden Sie das Kennwort des Administratorkontos, das Sie zuvor eingerichtet haben. |
+   | Einstellung | Empfohlener Wert | BESCHREIBUNG |
+   |---|---|---|
+   | Verbindungsname | **Beispielverbindung** | Geben Sie eine Bezeichnung für die Verbindung ein (Sie können einen beliebigen Verbindungsnahmen verwenden). |
+   | Verbindungsmethode | **Standard (TCP/IP)** | Verwenden Sie das TCP/IP-Protokoll zum Herstellen einer Verbindung mit Azure Database for MariaDB. |
+   | Hostname | **mydemoserver.mariadb.database.azure.com** | Der Servername, den Sie zuvor notiert haben. |
+   | Port | **3306** | Der Standardport für Azure Database for MariaDB. |
+   | Username | **myadmin\@mydemoserver** | Der Benutzername für die Serveradministratoranmeldung, den Sie zuvor notiert haben. |
+   | Kennwort | *Ihr Kennwort* | Verwenden Sie das Kennwort des Administratorkontos, das Sie zuvor eingerichtet haben. |
 
 3. Klicken Sie auf **Verbindung testen**, um zu überprüfen, ob alle Parameter korrekt konfiguriert sind.
 
