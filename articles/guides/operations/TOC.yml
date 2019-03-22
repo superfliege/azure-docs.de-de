@@ -1,0 +1,70 @@
+items:
+- name: Azure für IT-Operatoren
+  items:
+  - name: Erste Schritte mit Azure
+    href: azure-operations-guide.md
+  - name: Schnellstarts
+    items:
+    - name: Virtual Machines
+      items:
+      - name: Virtuelle Windows-Computer
+        href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Virtuelle Linux-Computer
+        href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Virtuelle Netzwerke
+      items:
+      - name: Erstellen eines virtuellen Netzwerks im Azure-Portal
+        href: ../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Sicherheit
+      items:
+      - name: Verwenden von Rollenzuweisungen zum Verwalten von Ressourcen
+        href: ../../role-based-access-control/role-assignments-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+    - name: Azure Stack
+      items:
+      - name: Übersicht über die Azure Stack-Bereitstellung
+        href: ../../azure-stack/azure-stack-deploy-overview.md
+    - name: Azure Backup
+      items:
+      - name: Sichern eines virtuellen Computers im Azure-Portal
+        href: ../../backup/quick-backup-vm-portal.md
+    - name: Azure Site Recovery
+      items:
+      - name: Replizieren eines virtuellen Azure-Computers in einer anderen Azure-Region
+        href: ../../site-recovery/azure-to-azure-quickstart.md
+  - name: Lernprogramme
+    items:
+    - name: Virtual Machines
+      items:
+      - name: Erstellen/Verwalten virtueller Windows-Computer
+        href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Erstellen/Verwalten virtueller Linux-Computer
+        href: ../../virtual-machines/linux/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Jenkins-CI/CD-Pipeline
+        href: ../../virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Lastenausgleich für virtuelle Computer
+        href: ../../virtual-machines/linux/tutorial-load-balancer.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Erstellen von Azure Resource Manager-Vorlagen
+        href: ../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+      - name: Bedarfsorientiertes Sichern von virtuellen Computern
+        href: ../../backup/tutorial-backup-vm-at-scale.md
+  - name: Anleitungen
+    items:
+    - name: Herunterladen von Azure-Rechnungen und täglichen Nutzungsdaten
+      href: ../../billing/billing-download-azure-invoice-daily-usage-date.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
+  - name: Ressourcen
+    items:
+    - name: Azure-Produktkatalog
+      href: https://docs.microsoft.com/azure/#pivot=products
+    - name: Azure-Roadmap
+      href: https://azure.microsoft.com/roadmap/
+    - name: Preisrechner
+      href: https://azure.microsoft.com/pricing/calculator/
+    - name: Übersicht über das Microsoft Azure-Portal
+      href: https://azure.microsoft.com/documentation/articles/azure-portal-overview/
+  - name: Referenzen
+ms.openlocfilehash: baa4d388f26c46974c1037c3ecf723a445774591
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: de-DE
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58341355"

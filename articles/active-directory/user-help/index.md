@@ -134,8 +134,11 @@ Dieser Inhalt soll Sie bei Folgendem unterstützen: Einrichten und Verwenden der
                     <div class="cardText">
                         <h3>Hilfe zum Portal „Meine Apps“</h3>
                         <p>
-                        <a href="/azure/active-directory/user-help/active-directory-saas-access-panel-introduction">Was ist das Portal „Meine Apps“?</a><br/>
-                        <a href="/azure/active-directory/active-directory-saas-access-panel-user-help">Problembehandlung</a>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access">Zugreifen auf und Verwenden des Portals „Meine Apps“</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-update-profile">Aktualisieren Ihrer Profil- und Kontoinformationen</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-groups">Aktualisieren Ihrer gruppenbezogenen Informationen</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-access-reviews">Durchführen eigener Zugriffsüberprüfungen</a><br/>
+                        <a href="/azure/active-directory/user-help/my-apps-portal-end-user-troubleshoot">Problembehandlung</a>
                         </p>
                     </div>
                 </div>

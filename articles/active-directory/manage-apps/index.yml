@@ -1,14 +1,14 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 584407e7c6f2be872c5914d35c62c76f96bc7b3c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295350"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58335877"
 documentType: LandingData
 title: Dokumentation zur Anwendungsverwaltung
 metadata:
-  title: Dokumentation zur Azure Active Directory-Anwendungsverwaltung
+  title: 'Dokumentation zur Azure AD-Anwendungsverwaltung: Azure Active Directory'
   description: Hier erfahren Sie, wie Sie Anwendungen mit Azure Active Directory verwalten und bereitstellen.
   services: active-directory
   author: barbkess
