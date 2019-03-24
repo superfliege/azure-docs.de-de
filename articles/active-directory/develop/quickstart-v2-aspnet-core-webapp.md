@@ -4,7 +4,7 @@ description: Erfahren Sie, wie „Bei Microsoft anmelden“ für eine ASP.NET Co
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/05/2018
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 35cf4fbe17df05b6d55f3ce309ff8cecbb47d455
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56204711"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200989"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Schnellstart: Hinzufügen von „Bei Microsoft anmelden“ zu einer ASP.NET Core-Web-App
 
@@ -30,8 +30,7 @@ ms.locfileid: "56204711"
 
 In diesem Schnellstart erfahren Sie, wie eine ASP. NET Core-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.
 
-![Funktionsweise der in diesem Schnellstart generierten Beispiel-App](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro.png)
-
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-core-webapp/aspnetcorewebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
@@ -143,7 +142,7 @@ Die Zeile, die `.AddAzureAd` enthält, fügt Ihrer Anwendung Azure AD-Authentifi
 > |Hierbei gilt:  |  |
 > |---------|---------|
 > | ClientId  | Die Anwendungs-ID (Client) der im Azure-Portal registrierten Anwendung |
-> | Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise lautet er https://login.microsoftonline.com/{tenant}/v2.0 für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
+> | Authority | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise lautet er <https://login.microsoftonline.com/{tenant}/v2.0> für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
 > | TokenValidationParameters | Eine Liste von Parametern für die Tokenüberprüfung. In diesem Fall wird `ValidateIssuer` auf `false` festgelegt, um anzugeben, dass Anmeldungen von beliebigen persönlichen Konten oder Geschäfts-, Schul- oder Unikonten akzeptiert werden können. |
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Schützen eines Controllers oder der Methode eines Controllers

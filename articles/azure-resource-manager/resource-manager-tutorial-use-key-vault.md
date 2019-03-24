@@ -10,22 +10,24 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/26/2019
+ms.date: 03/04/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: seodec18
-ms.openlocfilehash: 1390a3be20dd1fc66bb04939f9ce41139db3cb2e
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 50882fc383d4dfab85b5afb919b24c7940eb5ee0
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56873269"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58122740"
 ---
 # <a name="tutorial-integrate-azure-key-vault-in-resource-manager-template-deployment"></a>Tutorial: Integrieren von Azure Key Vault in die Resource Manager-Vorlagenbereitstellung
 
 Hier erfahren Sie, wie Sie bei der Resource Manager-Bereitstellung Geheimnisse aus Azure Key Vault abrufen und als Parameter übergeben. Der Wert wird nie offengelegt, da Sie nur auf die Schlüsseltresor-ID verweisen. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](./resource-manager-keyvault-parameter.md).
 
 Im Tutorial [Festlegen der Reihenfolge für die Ressourcenbereitstellung](./resource-manager-tutorial-create-templates-with-dependent-resources.md) erstellen Sie einen virtuellen Computer, ein virtuelles Netzwerk und einige andere abhängige Ressourcen. In diesem Tutorial passen Sie die Vorlage an, um das Administratorkennwort für den virtuellen Computer aus einem Schlüsseltresor abzurufen.
+
+![Resource Manager-Vorlage: Key Vault-Integration – Diagramm](./media/resource-manager-tutorial-use-key-vault/resource-manager-template-key-vault-diagram.png)
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 
@@ -143,13 +145,13 @@ So erstellen Sie einen Schlüsseltresor:
 3. Wählen Sie **Öffnen** aus, um die Datei zu öffnen. Hierbei handelt es sich um das gleiche Szenario, das auch im [Tutorial: Erstellen von Azure Resource Manager-Vorlagen mit abhängigen Ressourcen](./resource-manager-tutorial-create-templates-with-dependent-resources.md) verwendet wird.
 4. Es gibt fünf Ressourcen, die von der Vorlage definiert werden:
 
-    * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
-    * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
-    * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
-    * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
-    * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
+   * `Microsoft.Storage/storageAccounts`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/Microsoft.Storage/storageAccounts).
+   * `Microsoft.Network/publicIPAddresses`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses).
+   * `Microsoft.Network/virtualNetworks`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks).
+   * `Microsoft.Network/networkInterfaces`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.network/networkinterfaces).
+   * `Microsoft.Compute/virtualMachines`. Informationen finden Sie in der [Vorlagenreferenz](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachines).
 
-    Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
+     Bevor Sie die Vorlage anpassen, sollten Sie sich zunächst grundlegend damit vertraut machen.
 5. Wählen Sie **Datei**>**Speichern unter** aus, um eine Kopie der Datei als **azuredeploy.json** auf dem lokalen Computer zu speichern.
 6. Wiederholen Sie die Schritte 1 bis 4, um die folgende URL zu öffnen, und speichern Sie die Datei anschließend als **azuredeploy.parameters.json**.
 

@@ -3,8 +3,8 @@ title: 'Schnellstart: Azure AD v2.0 ASP.NET-Webserver | Microsoft Docs'
 description: Erfahren Sie, wie „Bei Microsoft anmelden“ für eine ASP.NET-Web-App mithilfe von OpenID Connect implementiert wird.
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
-manager: mtillman
+author: jmprieur
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/20/2018
-ms.author: andret
+ms.date: 03/20/2019
+ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdc5200156533abf940ce8fc7ff2186ba3a961bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200478"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200258"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>Schnellstart: Hinzufügen von „Mit Microsoft anmelden“ zu einer ASP.NET-Web-App
 
@@ -29,7 +29,7 @@ ms.locfileid: "56200478"
 
 In diesem Schnellstart erfahren Sie, wie eine ASP. NET-Web-App persönliche Konten (hotmail.com, outlook.com, andere) und Geschäfts-, Schul- und Unikonten aus jeder Azure AD-Instanz (Azure Active Directory) anmelden kann.
 
-![Funktionsweise der in diesem Schnellstart generierten Beispiel-App](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>Registrieren und Herunterladen Ihrer Schnellstart-App
@@ -147,7 +147,7 @@ public void Configuration(IAppBuilder app)
 > |Hierbei gilt:  |  |
 > |---------|---------|
 > | `ClientId`     | Die Anwendungs-ID der im Azure-Portal registrierten Anwendung. |
-> | `Authority`    | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise https://login.microsoftonline.com/{tenant}/v2.0 für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
+> | `Authority`    | Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise <https://login.microsoftonline.com/{tenant}/v2.0> für die öffentliche Cloud, wobei {tenant} der Name Ihres Mandanten, Ihre Mandanten-ID oder *common* für einen Verweis auf den allgemeinen Endpunkt (verwendet für mehrinstanzenfähige Anwendungen) ist. |
 > | `RedirectUri`  | Die URL, an die Benutzer nach der Authentifizierung über den Azure AD v2.0-Endpunkt umgeleitet werden. |
 > | `PostLogoutRedirectUri`     | Die URL, an die Benutzer nach der Abmeldung umgeleitet werden. |
 > | `Scope`     | Die Liste der angeforderten Bereiche, getrennt durch Leerzeichen. |

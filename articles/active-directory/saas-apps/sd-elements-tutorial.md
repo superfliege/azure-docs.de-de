@@ -4,214 +4,232 @@ description: Hier erfahren Sie, wie Sie das einmalige Anmelden zwischen Azure Ac
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: daveba
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: f0386307-bb3b-4810-8d4b-d0bfebda04f4
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 07/08/2017
+ms.topic: tutorial
+ms.date: 03/07/2019
 ms.author: jeedes
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c09947e6d34c5314e8ed4bc2744f07b199278a6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 42fc2fb7d68465b55d16aad882dd8557fe13ee62
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188102"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>Tutorial: Azure Active Directory-Integration in SD Elements
 
 In diesem Tutorial erfahren Sie, wie Sie SD Elements in Azure Active Directory (Azure AD) integrieren.
-
 Die Integration von SD Elements in Azure AD bietet die folgenden Vorteile:
 
-- Sie können in Azure AD den Zugriff auf SD Elements steuern.
-- Benutzer können sich mit ihren Azure AD-Konten automatisch bei SD Elements anmelden (einmaliges Anmelden).
-- Sie können Ihre Konten an einem zentralen Ort verwalten – im Azure-Portal.
+* Sie können in Azure AD den Zugriff auf SD Elements steuern.
+* Sie können es Ihren Benutzern ermöglichen, dass sie mit ihren Azure AD-Konten automatisch bei SD Elements angemeldet werden (einmaliges Anmelden; Single Sign-On, SSO).
+* Sie können Ihre Konten über das Azure-Portal an einem zentralen Ort verwalten.
 
-Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md).
+Weitere Informationen zur Integration von SaaS-Apps in Azure AD finden Sie unter [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
+Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Um die Azure AD-Integration in SD Elements konfigurieren zu können, benötigen Sie Folgendes:
 
-- Ein Azure AD-Abonnement
-- Ein SD Elements-Abonnement, für das einmaliges Anmelden aktiviert ist
-
-> [!NOTE]
-> Um die Schritte in diesem Tutorial zu testen, wird empfohlen, keine Produktionsumgebung zu verwenden.
-
-Um die Schritte in diesem Tutorial zu testen, sollten Sie folgende Empfehlungen beachten:
-
-- Verwenden Sie die Produktionsumgebung nur, wenn dies unbedingt erforderlich ist.
-- Wenn Sie keine Azure AD-Testumgebung haben, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/)eine einmonatige Testversion anfordern.
+* Ein Azure AD-Abonnement Wenn Sie keine Azure AD-Umgebung besitzen, können Sie [hier](https://azure.microsoft.com/pricing/free-trial/) eine einmonatige Testversion anfordern.
+* Ein SD Elements-Abonnement, für das einmaliges Anmelden aktiviert ist
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
-In diesem Tutorial testen Sie das einmalige Anmelden für Azure AD in einer Testumgebung. Das in diesem Tutorial beschriebene Szenario besteht aus zwei Hauptbestandteilen:
 
-1. Hinzufügen von SD Elements aus dem Katalog
-1. Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
+In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
+
+* SD Elements unterstützt **IDP-initiiertes** einmaliges Anmelden.
 
 ## <a name="adding-sd-elements-from-the-gallery"></a>Hinzufügen von SD Elements aus dem Katalog
+
 Zum Konfigurieren der Integration von SD Elements in Azure AD müssen Sie SD Elements aus dem Katalog zu Ihrer Liste verwalteter SaaS-Apps hinzufügen.
 
 **Führen Sie folgende Schritte aus, um SD Elements aus dem Katalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**. 
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
-    ![Active Directory][1]
+    ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen**. Wechseln Sie dann zu **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
-    ![ANWENDUNGEN][2]
-    
-1. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-    ![ANWENDUNGEN][3]
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
-1. Geben Sie im Suchfeld als Suchbegriff **SD Elements**ein.
+    ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/tutorial_sdelements_search.png)
+4. Geben Sie im Suchfeld **SD Elements** ein, wählen Sie im Ergebnisbereich **SD Elements** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
-1. Wählen Sie im Ergebnisbereich **SD Elements** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+    ![SD Elements in der Ergebnisliste](common/search-new-app.png)
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/tutorial_sdelements_addfromgallery.png)
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurieren und Testen der einmaligen Anmeldung von Azure AD
-In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei SD Elements mithilfe einer Testbenutzerin namens Britta Simon.
-
-Damit einmaliges Anmelden funktioniert, muss Azure AD wissen, welcher Benutzer in SD Elements als Pendant zu einem Benutzer in Azure AD fungiert. Anders ausgedrückt: Zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SD Elements muss eine Linkbeziehung eingerichtet werden.
-
-Weisen Sie in SD Elements den Wert für **Benutzername** in Azure AD als Wert für **Benutzername** zu, um eine Linkbeziehung herzustellen.
+In diesem Abschnitt konfigurieren und testen Sie das einmalige Anmelden von Azure AD bei SD Elements mithilfe einer Testbenutzerin namens **Britta Simon**.
+Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in SD Elements eingerichtet werden.
 
 Um das einmalige Anmelden von Azure AD mit SD Elements konfigurieren und testen zu können, ist Folgendes erforderlich:
 
-1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieser Funktion zu ermöglichen.
-1. **[Erstellen eines Azure AD-Testbenutzers](#creating-an-azure-ad-test-user)** , um das einmalige Anmelden von Azure AD mit der Testbenutzerin Britta Simon zu testen.
-1. **[Erstellen eines SD Elements-Testbenutzers](#creating-a-sd-elements-test-user)**, um ein Pendant von Britta Simon in SD Elements zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
-1. **[Zuweisen des Azure AD-Testbenutzers](#assigning-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
-1. **[Testing Single Sign-On](#testing-single-sign-on)** , um zu überprüfen, ob die Konfiguration funktioniert.
+1. **[Konfigurieren des einmaligen Anmeldens von Azure AD](#configure-azure-ad-single-sign-on)**, um Ihren Benutzern das Verwenden dieses Features zu ermöglichen.
+2. **[Konfigurieren des einmaligen Anmeldens für SD Elements](#configure-sd-elements-single-sign-on)**, um die Einstellungen für einmaliges Anmelden auf der Anwendungsseite zu konfigurieren.
+3. **[Erstellen eines Azure AD-Testbenutzers](#create-an-azure-ad-test-user)**, um das einmalige Anmelden mit Azure AD mit dem Testbenutzer Britta Simon zu testen.
+4. **[Zuweisen des Azure AD-Testbenutzers](#assign-the-azure-ad-test-user)**, um Britta Simon für das einmalige Anmelden von Azure AD zu aktivieren.
+5. **[Erstellen eines SD Elements-Testbenutzers](#create-sd-elements-test-user)**, um ein Pendant von Britta Simon in SD Elements zu erhalten, das mit ihrer Darstellung in Azure AD verknüpft ist.
+6. **[Testen der einmaligen Anmeldung](#test-single-sign-on)**, um zu überprüfen, ob die Konfiguration funktioniert.
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens von Azure AD
+### <a name="configure-azure-ad-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens in Azure AD
 
-In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal und konfigurieren das einmalige Anmelden in Ihrer SD Elements-Anwendung.
+In diesem Abschnitt aktivieren Sie das einmalige Anmelden von Azure AD im Azure-Portal.
 
-**Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in SD Elements folgende Schritte aus:**
+Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD in SD Elements folgende Schritte aus:
 
-1. Klicken Sie im Azure-Portal auf der Anwendungsintegrationsseite für **SD Elements** auf **Einmaliges Anmelden**.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **SD Elements** die Option **Einmaliges Anmelden** aus.
 
-    ![Configure single sign-on][4]
+    ![Konfigurieren des Links für einmaliges Anmelden](common/select-sso.png)
 
-1. Wählen Sie im Dialogfeld **Einmaliges Anmelden** als **Modus** die Option **SAML-basierte Anmeldung** aus, um einmaliges Anmelden zu aktivieren.
- 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_samlbase.png)
+2. Wählen Sie im Dialogfeld **SSO-Methode auswählen** den Modus **SAML/WS-Fed** aus, um einmaliges Anmelden zu aktivieren.
 
-1. Führen Sie auf der Seite **Domäne und URLs für SD Elements** die folgenden Schritte aus:
+    ![Auswahlmodus für einmaliges Anmelden](common/select-saml-option.png)
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_url.png)
+3. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Symbol **Bearbeiten**, um das Dialogfeld **Grundlegende SAML-Konfiguration** zu öffnen.
 
-    a. Geben Sie im Textfeld **Bezeichner** eine URL nach folgendem Muster ein: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL nach folgendem Muster ein: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
+4. Führen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** die folgenden Schritte aus:
 
-    > [!NOTE] 
-    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Supportteam von SD Elements](mailto:support@sdelements.com), um diese Werte zu erhalten.
+    ![SSO-Informationen zur Domäne und zu den URLs für SD Elements](common/idp-intiated.png)
 
-1. Die SD Elements-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Konfigurieren Sie die folgenden Ansprüche für diese Anwendung. Sie können die Werte dieser Attribute auf der Registerkarte **Benutzerattribute** der Anwendung verwalten. Der folgende Screenshot zeigt ein Beispiel für diese Attributzuordnungen:
+    a. Geben Sie im Textfeld **Bezeichner** eine URL im folgenden Format ein: `https://<tenantname>.sdelements.com/sso/saml2/metadata`
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_attribute.png)
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<tenantname>.sdelements.com/sso/saml2/acs/`
 
-1. Konfigurieren Sie das SAML-Tokenattribut im Abschnitt **Benutzerattribute** im Dialogfeld **Einmaliges Anmelden**, wie in der Abbildung gezeigt, und führen Sie die folgenden Schritte aus: 
+    > [!NOTE]
+    > Hierbei handelt es sich um Beispielwerte. Aktualisieren Sie diese Werte mit dem eigentlichen Bezeichner und der Antwort-URL. Wenden Sie sich an das [Clientsupportteam von SD Elements](mailto:support@sdelements.com), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
 
-    | Attributname | Attributwert |
+5. Die SD Elements-Anwendung erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute. Klicken Sie auf das Symbol **Bearbeiten**, um das Dialogfeld **Benutzerattribute** zu öffnen.
+
+    ![image](common/edit-attribute.png)
+
+6. Bearbeiten Sie im Dialogfeld **Benutzerattribute** im Abschnitt **Benutzeransprüche** die Ansprüche mithilfe des Symbols zum **Bearbeiten**, oder fügen Sie die Ansprüche über **Neuen Anspruch hinzufügen** hinzu, um das SAML-Tokenattribut wie in der obigen Abbildung gezeigt zu konfigurieren. Führen Sie dann die folgenden Schritte aus:
+
+    | NAME |  Quellattribut|
     | --- | --- |
     | E-Mail |user.mail |
     | firstname |user.givenname |
     | lastname |user.surname |
 
-    a. Klicken Sie auf **Attribut hinzufügen**, um das Dialogfeld **Benutzerattribut hinzufügen** zu öffnen.
+    a. Klicken Sie auf **Neuen Anspruch hinzufügen**, um das Dialogfeld **Benutzeransprüche verwalten** zu öffnen.
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_officespace_04.png)
+    ![image](common/new-save-attribute.png)
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_officespace_05.png)
+    ![image](common/new-attribute-details.png)
 
     b. Geben Sie im Textfeld **Name** den für die Zeile angezeigten Attributnamen ein.
 
-    c. Geben Sie in der Liste **Wert** den für diese Zeile angezeigten Wert ein.
+    c. Lassen Sie den **Namespace** leer.
 
-    d. Klicken Sie auf **OK**.
- 
-1. Klicken Sie im Abschnitt **SAML-Signaturzertifikat** auf **Zertifikat (Base64)**, und speichern Sie die Zertifikatdatei auf Ihrem Computer.
+    d. Wählen Sie „Source“ als **Attribut** aus.
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_certificate.png) 
+    e. Geben Sie in der Liste **Quellattribut** den für diese Zeile angezeigten Attributwert ein.
 
-1. Klicken Sie auf die Schaltfläche **Save** .
+    f. Klicken Sie auf **OK**.
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_general_400.png)
+    g. Klicken Sie auf **Speichern**.
 
-1. Klicken Sie im Abschnitt **SD Elements-Konfiguration** auf **SD Elements konfigurieren**, um das Fenster **Anmeldung konfigurieren** zu öffnen. Kopieren Sie die **SAML-Entitäts-ID und die SAML-Dienst-URL für einmaliges Anmelden** aus dem Abschnitt **Kurzübersicht**.
+7. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** auf **Herunterladen**, um das Ihrer Anforderung entsprechende **Zertifikat (Base64)** aus den angegebenen Optionen herunterzuladen und auf Ihrem Computer zu speichern.
 
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_configure.png)
+    ![Downloadlink für das Zertifikat](common/certificatebase64.png)
 
-1. Wenden Sie sich zur Aktivierung des einmaligen Anmeldens mit der heruntergeladenen Zertifikatdatei an das [SD Elements-Supportteam](mailto:support@sdelements.com) . 
+8. Kopieren Sie im Abschnitt **SD Elements einrichten** die entsprechenden URLs gemäß Ihren Anforderungen.
+
+    ![Kopieren der Konfiguration-URLs](common/copy-configuration-urls.png)
+
+    a. Anmelde-URL
+
+    b. Azure AD-Bezeichner
+
+    c. Abmelde-URL
+
+### <a name="configure-sd-elements-single-sign-on"></a>Einmaliges Anmelden für SD Elements konfigurieren
+
+1. Wenden Sie sich zur Aktivierung des einmaligen Anmeldens mit der heruntergeladenen Zertifikatdatei an das [SD Elements-Supportteam](mailto:support@sdelements.com) .
 
 1. Melden Sie sich in einem anderen Browserfenster bei Ihrem SD Elements-Mandanten als Administrator an.
 
-1. Klicken Sie im oberen Menü auf **System** und anschließend auf **Single Sign-on**. 
-   
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sd-elements_09.png) 
+1. Klicken Sie im oberen Menü auf **System** und anschließend auf **Single Sign-on**.
+
+    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sd-elements_09.png)
 
 1. Führen Sie im Dialogfeld **Single Sign-On Settings** folgende Schritte aus:
-   
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sd-elements_10.png) 
-   
+
+    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sd-elements_10.png)
+
     a. Wählen Sie für **SSO-Typ** die Option **SAML** aus.
-   
-    b. Fügen Sie in das Textfeld **Entitäts-ID des Identitätsanbieters** den Wert der **SAML-Entitäts-ID** ein, den Sie aus dem Azure-Portal kopiert haben. 
-   
-    c. Fügen Sie in das Textfeld **Identity Provider Single Sign-On Service** (SSO-Dienst des Identitätsanbieters) den Wert der **SAML-Dienst-URL für einmaliges Anmelden** ein, den Sie aus dem Azure-Portal kopiert haben. 
-   
+
+    b. Fügen Sie in das Textfeld **Identity Provider Entity ID** (Entitäts-ID des Identitätsanbieters) den Wert für **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+
+    c. Fügen Sie in das Textfeld **Identity Provider Single Sign-On Service** (Dienst für einmaliges Anmelden des Identitätsanbieters) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+
     d. Klicken Sie auf **Speichern**.
 
-> [!TIP]
-> Während der Einrichtung der App können Sie im [Azure-Portal](https://portal.azure.com) nun eine Kurzfassung dieser Anweisungen lesen.  Nachdem Sie diese App aus dem Abschnitt **Active Directory > Unternehmensanwendungen** heruntergeladen haben, klicken Sie einfach auf die Registerkarte **Einmaliges Anmelden**, und rufen Sie die eingebettete Dokumentation über den Abschnitt **Konfiguration** um unteren Rand der Registerkarte auf. Weitere Informationen zur eingebetteten Dokumentation finden Sie hier: [Dokumentation zu eingebettetem Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
+### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
-### <a name="creating-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 Das Ziel dieses Abschnitts ist das Erstellen eines Testbenutzers namens Britta Simon im Azure-Portal.
 
-![Azure AD-Benutzer erstellen][100]
+1. Wählen Sie im Azure-Portal im linken Bereich die Option **Azure Active Directory**, **Benutzer** und dann **Alle Benutzer** aus.
 
-**Um einen Testbenutzer in Azure AD zu erstellen, führen Sie die folgenden Schritte aus:**
+    ![Links „Benutzer und Gruppen“ und „Alle Benutzer“](common/users.png)
 
-1. Klicken Sie im linken Navigationsbereich des **Azure-Portals** auf das Symbol für **Azure Active Directory**.
+2. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/create_aaduser_01.png) 
+    ![Schaltfläche „Neuer Benutzer“](common/new-user.png)
 
-1. Wechseln Sie zu **Benutzer und Gruppen**, und klicken Sie auf **Alle Benutzer**, um die Liste der Benutzer anzuzeigen.
-    
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/create_aaduser_02.png) 
+3. Führen Sie in den Benutzereigenschaften die folgenden Schritte aus.
 
-1. Klicken Sie oben im Dialogfeld auf **Hinzufügen**, um das Dialogfeld **Benutzer** zu öffnen.
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/create_aaduser_03.png) 
+    ![Dialogfeld „Benutzer“](common/user-properties.png)
 
-1. Führen Sie auf der Dialogfeldseite **Benutzer** die folgenden Schritte aus:
- 
-    ![Erstellen eines Azure AD-Testbenutzers](./media/sd-elements-tutorial/create_aaduser_04.png) 
+    a. Geben Sie im Feld **Name** den Namen **BrittaSimon** ein.
+  
+    b. Geben Sie im Feld **Benutzername** **brittasimon@yourcompanydomain.extension** ein.  
+    Zum Beispiel, BrittaSimon@contoso.com
 
-    a. Geben Sie in das Textfeld **Name** den Namen **BrittaSimon** ein.
-
-    b. Geben Sie in das Textfeld **Benutzername** die **E-Mail-Adresse** von Britta Simon ein.
-
-    c. Wählen Sie **Kennwort anzeigen** aus, und notieren Sie sich den Wert des **Kennworts**.
+    c. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld „Kennwort“ angezeigt wird.
 
     d. Klicken Sie auf **Create**.
- 
-### <a name="creating-a-sd-elements-test-user"></a>Erstellen eines SD Elements-Testbenutzers
+
+### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+
+In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SD Elements gewähren.
+
+1. Wählen Sie im Azure-Portal die Option **Unternehmensanwendungen** aus, und wählen Sie dann **Alle Anwendungen** und **SD Elements** aus.
+
+    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
+
+2. Wählen Sie in der Anwendungsliste **SD Elements**aus.
+
+    ![Der SD Elements-Link Sie in der Anwendungsliste](common/all-applications.png)
+
+3. Wählen Sie im Menü auf der linken Seite **Benutzer und Gruppen** aus.
+
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+
+4. Klicken Sie auf die Schaltfläche **Benutzer hinzufügen**, und wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
+
+    ![Bereich „Zuweisung hinzufügen“](common/add-assign-user.png)
+
+5. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **Britta Simon** aus, und klicken Sie dann unten im Bildschirm auf die Schaltfläche **Auswählen**.
+
+6. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** in der Liste die entsprechende Rolle für den Benutzer aus, und klicken Sie dann unten auf dem Bildschirm auf **Auswählen**.
+
+7. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
+
+### <a name="create-sd-elements-test-user"></a>Erstellen eines SD Elements-Testbenutzers
 
 In diesem Abschnitt wird in SD Elements eine Benutzerin namens Britta Simon erstellt. Im Falle von in SD Elements müssen Benutzer manuell erstellt werden.
 
@@ -220,81 +238,37 @@ In diesem Abschnitt wird in SD Elements eine Benutzerin namens Britta Simon ers
 1. Melden Sie sich in einem Webbrowserfenster bei der SD Elements-Unternehmenswebsite als Administrator an.
 
 1. Klicken Sie im oberen Menü auf **Benutzerverwaltung** und dann auf **Benutzer**.
-   
+
     ![Erstellen eines SD Elements-Testbenutzers](./media/sd-elements-tutorial/tutorial_sd-elements_11.png) 
 
 1. Klicken Sie auf **Add New User**.
-   
+
     ![Erstellen eines SD Elements-Testbenutzers](./media/sd-elements-tutorial/tutorial_sd-elements_12.png)
- 
+
 1. Führen Sie im Dialogfeld **Add New User** (Neuen Benutzer hinzufügen) folgende Schritte aus:
-   
+
     ![Erstellen eines SD Elements-Testbenutzers](./media/sd-elements-tutorial/tutorial_sd-elements_13.png) 
-   
+
     a. Geben Sie im Textfeld **E-Mail-Adresse** die E-Mail-Adresse des Benutzers ein, z.B. **brittasimon@contoso.com**.
-   
+
     b. Geben Sie im Textfeld **Vorname** den Vornamen des Benutzers ein (beispielsweise **Britta**).
-   
+
     c. Geben Sie im Textfeld **Nachname** den Nachnamen des Benutzers ein (beispielsweise **Simon**).
-   
-    d. Wählen Sie für **Rolle** die Option **Benutzer** aus. 
-   
+
+    d. Wählen Sie für **Rolle** die Option **Benutzer** aus.
+
     e. Klicken Sie auf **Benutzer erstellen**.
 
-### <a name="assigning-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
+### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens
 
-In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf SD Elements gewähren.
+In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden über den Zugriffsbereich.
 
-![Benutzer zuweisen][200] 
+Wenn Sie im Zugriffsbereich auf die Kachel „SD Elements“ klicken, sollten Sie automatisch bei Ihrer SD Elements-Anwendung angemeldet werden. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-**Führen Sie folgende Schritte aus, um Britta Simon SD Elements zuzuweisen:**
+## <a name="additional-resources"></a>Weitere Ressourcen
 
-1. Öffnen Sie im Azure-Portal die Anwendungsansicht, navigieren Sie zur Verzeichnisansicht, wechseln Sie dann zu **Unternehmensanwendungen**, und klicken Sie auf **Alle Anwendungen**.
+- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-    ![Benutzer zuweisen][201] 
+- [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-1. Wählen Sie in der Anwendungsliste **SD Elements**aus.
-
-    ![Configure single sign-on](./media/sd-elements-tutorial/tutorial_sdelements_app.png) 
-
-1. Klicken Sie im Menü auf der linken Seite auf **Benutzer und Gruppen**.
-
-    ![Benutzer zuweisen][202] 
-
-1. Klicken Sie auf die Schaltfläche **Hinzufügen**. Wählen Sie dann im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
-
-    ![Benutzer zuweisen][203]
-
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Benutzerliste **Britta Simon** aus.
-
-1. Klicken Sie im Dialogfeld **Benutzer und Gruppen** auf die Schaltfläche **Auswählen**.
-
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf **Zuweisen**.
-    
-### <a name="testing-single-sign-on"></a>Testen der einmaligen Anmeldung
-
-In diesem Abschnitt soll Ihre Azure AD-Konfiguration für das einmalige Anmelden mithilfe des Zugriffsbereichs getestet werden.
-  
-Wenn Sie im Zugriffsbereich auf die Kachel „SD Elements“ klicken, werden Sie automatisch in Ihrer SD Elements-Anwendung angemeldet werden.
-
-## <a name="additional-resources"></a>Zusätzliche Ressourcen
-
-* [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](tutorial-list.md)
-* [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
-
-<!--Image references-->
-
-[1]: ./media/sd-elements-tutorial/tutorial_general_01.png
-[2]: ./media/sd-elements-tutorial/tutorial_general_02.png
-[3]: ./media/sd-elements-tutorial/tutorial_general_03.png
-[4]: ./media/sd-elements-tutorial/tutorial_general_04.png
-
-[100]: ./media/sd-elements-tutorial/tutorial_general_100.png
-
-[200]: ./media/sd-elements-tutorial/tutorial_general_200.png
-[201]: ./media/sd-elements-tutorial/tutorial_general_201.png
-[202]: ./media/sd-elements-tutorial/tutorial_general_202.png
-[203]: ./media/sd-elements-tutorial/tutorial_general_203.png
-
+- [Was ist der bedingte Zugriff in Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -4,7 +4,7 @@ description: Es wird beschrieben, wie für einen .NET Core-Prozess ein Zugriffst
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
-manager: mtillman
+manager: CelesteDG
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 1/11/2019
+ms.date: 03/20/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27cc0334e8332e3bc09ae4302e0b0efdda8067f1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 5c63269630d0ed74d1b17edbc5cb9e787499604e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194443"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200514"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-console-app-using-apps-identity"></a>Schnellstart: Abrufen eines Tokens und Aufrufen der Microsoft Graph-API über eine Konsolen-App anhand der Identität der App
 
@@ -30,7 +30,7 @@ ms.locfileid: "56194443"
 
 In dieser Schnellstartanleitung wird beschrieben, wie Sie eine .NET Core-Anwendung schreiben, mit der anhand der eigenen Identität der App ein Zugriffstoken abgerufen werden kann. Anschließend wird veranschaulicht, wie Sie die Microsoft Graph-API aufrufen, um im Verzeichnis eine [Liste mit Benutzern](https://docs.microsoft.com/graph/api/user-list) anzuzeigen. Dieses Szenario ist für Situationen hilfreich, in denen ein monitorloser, unbeaufsichtigter Auftrag oder ein Windows-Dienst nicht mit der Identität eines Benutzers, sondern mit einer Anwendungsidentität ausgeführt werden muss.
 
-![Funktionsweise der in diesem Schnellstart generierten Beispiel-App](media/quickstart-v2-netcore-daemon/netcore-daemon-intro.png)
+![Zeigt, wie die in diesem Schnellstart generierte Beispiel-App funktioniert](media/quickstart-v2-netcore-daemon/netcore-daemon-intro-updated.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -198,7 +198,7 @@ var app = new ConfidentialClientApplication(
 > |---------|---------|
 > | `secret` | Der geheime Clientschlüssel, der für die Anwendung im Azure-Portal erstellt wird. |
 > | `clientId` | Die **Anwendungs-ID (Client)** für die im Azure-Portal registrierte Anwendung. Dieser Wert befindet sich im Azure-Portal auf der Seite **Übersicht** der App. |
-> | `Authority`    | (Optional) Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise https://login.microsoftonline.com/{tenant} für die öffentliche Cloud, wobei „{tenant}“ der Name Ihres Mandanten bzw. Ihre Mandanten-ID ist.|
+> | `Authority`    | (Optional) Der STS-Endpunkt für den zu authentifizierenden Benutzer. Normalerweise <https://login.microsoftonline.com/{tenant}> für die öffentliche Cloud, wobei „{tenant}“ der Name Ihres Mandanten bzw. Ihre Mandanten-ID ist.|
 > | `redirectUri`  | Die URL, an die Benutzer nach der Authentifizierung geleitet werden. In diesem Fall wird dieser Parameter nicht verwendet, da es sich um eine Konsolenanwendung bzw. nicht interaktive Anwendung handelt. |
 > | `clientCredentials`  | Das Clientanmeldeinformationen-Objekt, in dem entweder das Geheimnis oder das Zertifikat enthalten ist. |
 > | `userTokenCache`  | Instanz eines Tokencaches für den Benutzer. In diesem Fall ist dieser Wert null, weil diese App im Kontext der App und nicht im Benutzerkontext ausgeführt wird.|

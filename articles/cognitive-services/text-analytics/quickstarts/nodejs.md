@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: e11e4a59e447a8befcfaedb7ddedbb9aabdfaa28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 61cfb5fa78a735d2ef542c30b445f3200f256d7c
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330697"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226928"
 ---
 # <a name="quickstart-using-nodejs-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Node.js zum Aufrufen der Textanalyse von Cognitive Services  
 <a name="HOLTop"></a>
@@ -28,7 +28,7 @@ Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](
 
 [!INCLUDE [cognitive-services-text-analytics-signup-requirements](../../../../includes/cognitive-services-text-analytics-signup-requirements.md)]
 
-Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden bei der Registrierung für Sie generiert. 
+Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden bei der Registrierung für Sie generiert.
 
 <a name="Detect"></a>
 
@@ -36,11 +36,11 @@ Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/te
 
 Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der [Sprachenerkennungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7).
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
+2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+3. Ersetzen Sie den Wert von `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrer Textanalyseressource in Azure.
 4. Ersetzen Sie den Standort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
+5. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node detect.js`.
 
 ```javascript
 'use strict';
@@ -156,13 +156,13 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="analyze-sentiment"></a>Analysieren von Stimmungen
 
-Die Standpunktanalyse-API erkennt die Stimmung eines Textdatensatzes mithilfe der [Stimmungsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Im folgenden Beispiel werden zwei Dokumente bewertet, ein englisches und ein spanisches.
+Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Mithilfe der Standpunktanalyse können Sie ermitteln, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Standpunkte analysieren. Im folgenden Beispiel werden Bewertungen für zwei Dokumente bereitgestellt, ein englisches und ein spanisches.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
+2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+3. Ersetzen Sie den Wert von `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrer Textanalyseressource in Azure.
 4. Ersetzen Sie den Standort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
+5. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node sentiment.js`.
 
 ```javascript
 'use strict';
@@ -229,7 +229,8 @@ get_sentiments (documents);
 
 **Antwort der Stimmungsanalyse**
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
+Das Ergebnis wird als positiv gemessen, wenn es näher bei 1,0 bewertet wird, und negativ, wenn es näher bei 0,0 bewertet wird.
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -251,13 +252,13 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="extract-key-phrases"></a>Extrahieren von Schlüsselbegriffen
 
-Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
+Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Schlüsselbegriffserkennung wird verwendet, um die wichtigsten Punkte eines Dokuments oder Texts schnell zu identifizieren. Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
+2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+3. Ersetzen Sie den Wert von `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrer Textanalyseressource in Azure.
 4. Ersetzen Sie den Standort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
+5. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node key-phrases.js`.
 
 ```javascript
 'use strict';
@@ -367,13 +368,13 @@ Eine erfolgreiche Antwort wird im JSON-Format wie im folgenden Beispiel zurückg
 
 ## <a name="identify-linked-entities"></a>Erkennen von verknüpften Entitäten
 
-Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
+Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). [Entitäten](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
-1. Erstellen Sie in Ihrer bevorzugten IDE ein neues Node.js-Projekt.
-2. Fügen Sie den unten stehenden Code hinzu.
-3. Ersetzen Sie den `accessKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
+1. Erstellen Sie in Ihrer bevorzugten IDE oder einem Ordner auf Ihrem Desktop ein neues Node.js-Projekt.
+2. Fügen Sie den unten stehenden Code einer neuen `.js`-Datei hinzu.
+3. Ersetzen Sie den Wert von `accessKey` durch einen gültigen Abonnementschlüssel aus Ihrer Textanalyseressource in Azure.
 4. Ersetzen Sie den Standort in `uri` (zurzeit `westus`) durch die Region, für die Sie sich registriert haben.
-5. Führen Sie das Programm aus.
+5. Führen Sie das Programm aus Ihrer IDE oder über die Befehlszeile aus, z. B. `npm start` oder `node entities.js`.
 
 ```javascript
 'use strict';
@@ -440,7 +441,7 @@ get_entities (documents);
 
 **Antwort der Entitätsextraktion**
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {

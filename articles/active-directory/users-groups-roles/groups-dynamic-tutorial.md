@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3883ddcad1c41e131d52016e4fa94a3e668adcd1
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 93b59a108d5d87479c12174e97713d4c12d84f2e
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56209726"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200054"
 ---
 # <a name="tutorial-add-or-remove-group-members-automatically"></a>Tutorial: Automatisches Hinzufügen oder Entfernen von Gruppenmitgliedern
 
@@ -28,7 +28,7 @@ In Azure Active Directory (Azure AD) können Sie Benutzer automatisch zu Sicherh
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen einer automatisch aufgefüllten Gruppe mit Gastbenutzern aus einem bestimmten Partnerunternehmen
+> * Erstellen einer automatisch aufgefüllten Gruppe mit Gastbenutzern aus einem Partnerunternehmen
 > * Zuweisen von Lizenzen für partnerspezifische Features zu der Gruppe, um Gastbenutzern den Zugriff darauf zu ermöglichen
 > * Bonus: Sichern der Gruppe **Alle Benutzer** durch Entfernen von Gastbenutzern, sodass Sie Ihren Mitgliedsbenutzern beispielsweise Zugriff auf rein interne Websites gewähren können
 
@@ -44,15 +44,15 @@ Sie müssen Benutzern keine Lizenzen zuweisen, damit sie Mitglieder in dynamisch
 
 Zunächst erstellen Sie eine Gruppe für Ihre Gastbenutzer, die alle aus einem Partnerunternehmen stammen. Für sie ist eine spezielle Lizenzierung erforderlich, daher ist es häufig effizienter, zu diesem Zweck eine Gruppe zu erstellen.
 
-1. Melden Sie sich beim Azure-Portal https://portal.azure.com)) über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
+1. Melden Sie sich beim https://portal.azure.com)Azure-Portal über ein Konto an, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Neue Gruppe**.
-  ![Auswählen des Befehls „Neue Gruppe“](./media/groups-dynamic-tutorial/new-group.png)
+   ![Befehl auswählen, um eine neue Gruppe zu starten](./media/groups-dynamic-tutorial/new-group.png)
 3. Auf dem Blatt **Gruppe**:
   
-  * Wählen Sie als Gruppentyp die Option **Sicherheit** aus.
-  * Geben Sie `Guest users Contoso` als Name und Beschreibung für die Gruppe ein.
-  * Ändern Sie **Mitgliedschaftstyp** in **Dynamischer Benutzer**.
-  * Klicken Sie auf **Dynamische Abfrage hinzufügen**.
+   * Wählen Sie als Gruppentyp die Option **Sicherheit** aus.
+   * Geben Sie `Guest users Contoso` als Name und Beschreibung für die Gruppe ein.
+   * Ändern Sie **Mitgliedschaftstyp** in **Dynamischer Benutzer**.
+   * Klicken Sie auf **Dynamische Abfrage hinzufügen**.
   
 4. Klicken Sie auf **Erweiterte Regel**, und geben Sie im Feld **Erweiterte Regel** Folgendes ein: `(user.userType -eq "Guest") -and (user.companyName -eq "Contoso")`
 5. Klicken Sie auf **Abfrage hinzufügen**, um das Blatt zu schließen.

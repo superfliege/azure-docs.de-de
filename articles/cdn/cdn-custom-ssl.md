@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/18/2019
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: c9fb24cd6bcfae273c5430eee8d1fa8df58c6202
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1ebac5476c90b3cb49fccbb95ef8dedf413a6127
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236310"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58200292"
 ---
 # <a name="tutorial-configure-https-on-an-azure-cdn-custom-domain"></a>Tutorial: Konfigurieren von HTTPS in einer benutzerdefinierten Azure CDN-Domäne
 
@@ -172,7 +172,7 @@ Ihr CNAME-Eintrag sollte im folgenden Format vorliegen, wobei *Name* Ihr benutze
 
 | NAME            | Type  | Wert                 |
 |-----------------|-------|-----------------------|
-| www.contoso.com | CNAME | contoso.azureedge.net |
+| <www.contoso.com> | CNAME | contoso.azureedge.net |
 
 Weitere Informationen über CNAME-Einträge finden Sie unter [Erstellen Sie die CNAME-DNS-Einträge](https://docs.microsoft.com/azure/cdn/cdn-map-content-to-custom-domain).
 
@@ -190,7 +190,7 @@ Wenn der CNAME-Eintrag für Ihren Endpunkt nicht mehr vorhanden ist oder die cdn
 >[!NOTE]
 >Für das Profil **Azure CDN von Akamai** ist derzeit keine E-Mail-basierte Überprüfung der Eigentümerschaft einer benutzerdefinierten Domäne möglich. Dieses Feature befindet sich momentan in unserem Backlog. 
 
-Nach der Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
+Nachdem Sie eine Anforderung zur Aktivierung von HTTPS für Ihre benutzerdefinierte Domäne übermittelt haben, überprüft die DigiCert-CA, ob die Domäne wirklich Ihnen gehört. Hierzu setzt sich DigiCert mit dem Registranten der Domäne in Verbindung, der in den [WHOIS](http://whois.domaintools.com/)-Registranteninformationen der Domäne angegeben ist. Der Kontakt wird über die E-Mail-Adresse (Standardverfahren) oder die Telefonnummer in der WHOIS-Registrierung hergestellt. HTTPS wird für Ihre benutzerdefinierte Domäne erst nach Abschluss der Domänenüberprüfung aktiviert. Die Genehmigung der Domäne muss innerhalb von sechs Werktagen erfolgen. Anforderungen, die nicht innerhalb von sechs Werktagen genehmigt werden, werden automatisch abgebrochen. 
 
 ![WHOIS-Datensatz](./media/cdn-custom-ssl/whois-record.png)
 

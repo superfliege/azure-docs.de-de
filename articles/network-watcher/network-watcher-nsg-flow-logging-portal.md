@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: jdial
 ms.custom: mvc
-ms.openlocfilehash: 09d43386b994ffc046f8c3e22c82f13ec15acd38
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: bfe4abe4a83a6b22d05942f91f4152d5c0e62be9
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428970"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124080"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Tutorial: Protokollieren des Netzwerkdatenverkehrs zu und von einem virtuellen Computer über das Azure-Portal
 
@@ -100,7 +100,10 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 
 6. Wählen Sie in der Liste der Netzwerksicherheitsgruppen die Gruppe mit dem Namen **myVm-nsg** aus.
 7. Wählen Sie unter **Flowprotokolleinstellungen** die Option **Ein** aus.
-8. Wählen Sie die Flowprotokollierungsversion aus. Version 2 enthält Statistiken zur Flowsitzung (Bytes und Pakete). ![Auswählen der Flowprotokollversion](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+8. Wählen Sie die Flowprotokollierungsversion aus. Version 2 enthält Statistiken zur Flowsitzung (Bytes und Pakete).
+
+   ![Auswählen der Flowprotokollversion](./media/network-watcher-nsg-flow-logging-portal/select-flow-log-version.png)
+
 9. Wählen Sie das in Schritt 3 erstellte Speicherkonto aus.
 10. Setzen Sie **Aufbewahrung (Tage)** auf 5, und klicken Sie dann auf **Speichern**.
 
@@ -109,17 +112,13 @@ Für die NSG-Datenflussprotokollierung ist der **Microsoft.Insights**-Anbieter e
 1. Wählen Sie in Network Watcher im Portal die Option **NSG-Flussprotokolle** unter **PROTOKOLLE** aus.
 2. Wählen Sie **Sie können Flowprotokolle aus konfigurierten Speicherkonten herunterladen** aus (siehe folgende Abbildung):
 
-  ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
+   ![Herunterladen von Flowprotokollen](./media/network-watcher-nsg-flow-logging-portal/download-flow-logs.png)
 
 3. Wählen Sie das in Schritt 2 unter [Aktivieren des NSG-Flussprotokolls](#enable-nsg-flow-log) konfigurierte Speicherkonto aus.
-4. Wählen Sie unter **BLOB-DIENST** die Option **Container** und dann den Container **insights-logs-networksecuritygroupflowevent** aus (siehe folgende Abbildung):
+4. Wählen Sie unter **Blob-Dienst** **Blobs** aus, und wählen Sie dann den Container **insights-logs-networksecuritygroupflowevent** aus.
+5. Navigieren Sie in dem Container in der Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen, wie in der folgenden Abbildung dargestellt. Protokolldateien werden in einer Ordnerhierarchie gespeichert, die der folgenden Namenskonvention folgt: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
 
-    ![Container auswählen](./media/network-watcher-nsg-flow-logging-portal/select-container.png)
-5. Navigieren Sie durch die Ordnerhierarchie, bis Sie zu einer Datei „PT1H.json“ gelangen (siehe folgende Abbildung):
-
-    ![Protokolldatei](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
-
-    Protokolldateien werden in einer Ordnerhierarchie gespeichert, die der folgenden Namenskonvention folgt: https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecuritygroupflowevent/resourceId=/SUBSCRIPTIONS/{subscriptionID}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/{nsgName}/y={year}/m={month}/d={day}/h={hour}/m=00/macAddress={macAddress}/PT1H.json
+   ![Flowprotokoll](./media/network-watcher-nsg-flow-logging-portal/log-file.png)
 
 6. Wählen Sie **...** rechts neben der Datei „PT1H.json“ und dann **Herunterladen** aus.
 
@@ -196,7 +195,6 @@ Der folgende JSON-Code ist ein Beispiel für den Inhalt der Datei „PT1H.json�
 }
 ```
 
-
 Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-Adresse der Netzwerkschnittstelle, die beim Erstellen des virtuellen Computers erstellt wurde. Die durch Kommas getrennten Informationen für **flowTuples** sind wie folgt:
 
 | Beispieldaten | Angabe   | Erklärung                                                                              |
@@ -213,7 +211,7 @@ Bei dem Wert für **mac** in der vorherigen Ausgabe handelt es sich um die MAC-A
 | 30 | Gesendete Pakete – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. |
 | 16978 | Gesendete Bytes – Quelle zu Ziel (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketbytes, die seit dem letzten Update von der Quelle zum Ziel gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast. | 
 | 24 | Gesendete Pakete – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- oder UDP-Paketen, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. |
-| 14008| Gesendete Bytes – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- und UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast.| |
+| 14008| Gesendete Bytes – Ziel zu Quelle (**nur Version 2**) | Die Gesamtanzahl von TCP- und UDP-Paketbytes, die seit dem letzten Update vom Ziel zur Quelle gesendet wurden. Paketbytes enthalten den Paketheader und die Nutzlast.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

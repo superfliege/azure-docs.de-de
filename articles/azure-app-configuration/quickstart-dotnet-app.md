@@ -14,22 +14,22 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b5e41b1f9ee982b8ff8c86232f715d5dab705cd6
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 551b884f032eaba3f052fcb7571ba907038152ff
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962161"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226843"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>Schnellstart: Erstellen einer .NET Framework-App mit Azure App Configuration
 
-Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Hiermit können Sie Ihre gesamten Anwendungseinstellungen leicht an einem zentralen Ort speichern und verwalten, der von Ihrem Code getrennt ist. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Dienst in eine .NET Framework-basierte Windows-Desktop-Konsolen-App einbinden.
+Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Mit diesem Dienst können Sie Ihre gesamten Anwendungseinstellungen komfortabel an einem zentralen Ort speichern und verwalten, der von Ihrem Code getrennt ist. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Dienst in eine .NET Framework-basierte Windows-Desktop-Konsolen-App einbinden.
 
 ![Schnellstart – Lokale Durchführung](./media/quickstarts/dotnet-fx-app-run.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie zum Durcharbeiten dieser Schnellstartanleitung [Visual Studio 2017](https://visualstudio.microsoft.com/vs) und [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) oder höher, falls Sie dies noch nicht getan haben.
+Installieren Sie zum Durchführen dieser Schnellstartanleitung [Visual Studio 2017](https://visualstudio.microsoft.com/vs) und [.NET Framework 4.7.1](https://dotnet.microsoft.com/download) oder höher, falls Sie dies noch nicht getan haben.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -39,13 +39,13 @@ Installieren Sie zum Durcharbeiten dieser Schnellstartanleitung [Visual Studio 
 
 ## <a name="create-a-net-console-app"></a>Erstellen einer .NET-Konsolen-App
 
-1. Starten Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt**.
+1. Starten Sie Visual Studio, und wählen Sie **Datei** > **Neu** > **Projekt** aus.
 
-2. Wählen Sie im Dialogfeld **Neues Projekt** die Option **Installiert**, erweitern Sie **Visual C#** > **Windows Desktop**, und wählen Sie **Konsolen-App (.NET Framework)**. Geben Sie einen **Namen** für Ihr Projekt ein, wählen Sie die Option **.NET Framework 4.7.1** oder höher, und klicken Sie auf **OK**.
+2. Wählen Sie in **Neues Projekt** **Installiert** > **Visual C#** > **Windows-Desktop** aus. Wählen Sie **Konsolen-App (.NET Framework)** aus, und geben Sie einen Namen für Ihr Projekt ein. Wählen Sie **.NET Framework 4.7.1** oder höher aus, und wählen Sie **OK** aus.
 
-## <a name="connect-to-app-configuration-store"></a>Herstellen einer Verbindung mit dem App-Konfigurationsspeicher
+## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
 
-1. Klicken Sie mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten...**. Suchen Sie über die Registerkarte **Durchsuchen** nach den folgenden NuGet-Paketen, und fügen Sie sie Ihrem Projekt hinzu. (Aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**, falls Sie sie nicht finden können.)
+1. Klicken Sie mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. Suchen Sie auf der Registerkarte **Durchsuchen** die folgenden NuGet-Pakete, und fügen Sie sie Ihrem Projekt hinzu. Wenn Sie sie nicht finden können, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
     ```
     Microsoft.Configuration.ConfigurationBuilders.AzureAppConfiguration 1.0.0 preview or later
     Microsoft.Configuration.ConfigurationBuilders.Environment 2.0.0 preview or later
@@ -71,7 +71,7 @@ Installieren Sie zum Durcharbeiten dieser Schnellstartanleitung [Visual Studio 
     </appSettings>
     ```
 
-   Beachten Sie Folgendes: Da die Verbindungszeichenfolge Ihres App-Konfigurationsspeichers aus der Umgebungsvariablen `ConnectionString` ausgelesen wird, ist es wichtig, den Konfigurationsbuilder `Environment` im Abschnitt `appSettings` vor dem `MyConfigStore`-Objekt in der `configBuilders`-Eigenschaft hinzuzufügen.
+   Die Verbindungszeichenfolge Ihres App-Konfigurationsspeichers wird aus der Umgebungsvariablen `ConnectionString` gelesen. Fügen Sie den Konfigurations-Generator `Environment` vor `MyConfigStore` in der Eigenschaft `configBuilders` des Abschnitts `appSettings` ein.
 
 3. Öffnen Sie die Datei *Program.cs*, und aktualisieren Sie die `Main`-Methode für die Verwendung von App Configuration, indem Sie `ConfigurationManager` aufrufen.
 
@@ -90,11 +90,11 @@ Installieren Sie zum Durcharbeiten dieser Schnellstartanleitung [Visual Studio 
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
+    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
-2. Starten Sie Visual Studio neu, und warten Sie, bis die Änderung wirksam wird. Drücken Sie anschließend auf der Tastatur **STRG+F5**, um die Konsolen-App zu erstellen und auszuführen.
+2. Starten Sie Visual Studio, damit die Änderung wirksam wird. Drücken Sie STRG+F5, um die Konsolen-App zu erstellen und auszuführen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0463a2ad3fa74f33a52e15a246dfd4ffd63107a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 0f8e0b79d5aebd1e92dd71bba72efa7430aa475b
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56200869"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224650"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Tutorial: Azure AD-Kennwortzurücksetzung über den Anmeldebildschirm
 
@@ -34,7 +34,9 @@ In diesem Tutorial ermöglichen Sie Benutzern das Zurücksetzen ihrer Kennwörte
    * [in Azure AD Hybrid eingebunden](../device-management-hybrid-azuread-joined-devices-setup.md) sein, mit Netzwerkkonnektivität zu einem Domänencontroller.
 * Sie müssen die Azure AD-Self-Service-Kennwortzurücksetzung aktivieren.
 * Wenn sich Ihre Windows 10-Geräte hinter einem Proxyserver oder einer Firewall befinden, müssen Sie die URLs `passwordreset.microsoftonline.com` und `ajax.aspnetcdn.com` zu Ihrer Liste zulässiger URLs für HTTPS-Datenverkehr (Port 443) hinzufügen.
+* SSPR für Windows 10 wird nur mit Proxys auf Computerebene unterstützt.
 * Sehen Sie sich die Einschränkungen an, bevor Sie dieses Feature in Ihrer Umgebung ausprobieren.
+* Wenn Sie ein Image verwenden, stellen Sie vor der Sysprep sicher, dass der Webcache für den integrierten Administrator vor der Durchführung des CopyProfile-Schritts gelöscht ist. Weitere Informationen hierzu finden Sie im Supportartikel [Schlechte Leistung bei Verwendung eines benutzerdefinierten Standardbenutzerprofils](https://support.microsoft.com/help/4056823/performance-issue-with-custom-default-user-profile).
 
 ## <a name="configure-reset-password-link-using-intune"></a>Konfigurieren des Links „Kennwort zurücksetzen“ mit Intune
 

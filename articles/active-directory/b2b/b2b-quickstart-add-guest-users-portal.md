@@ -9,14 +9,15 @@ ms.date: 07/02/2018
 ms.author: mimart
 author: msmimart
 manager: daveba
-ms.reviewer: sasubram
+ms.reviewer: mal
+ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bb01ae6514dfb97cc8a923619513383ace0b09a5
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: f4935cc15bf3edeccd6b6ce9da701904a32606db
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56669974"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295027"
 ---
 # <a name="quickstart-add-guest-users-to-your-directory-in-the-azure-portal"></a>Schnellstart: Hinzufügen von Gastbenutzern zu Ihrem Verzeichnis im Azure-Portal
 
@@ -39,15 +40,15 @@ Für die Durchführung des Szenarios im Rahmen dieses Tutorials benötigen Sie F
 2. Wählen Sie im linken Bereich **Azure Active Directory** aus.
 3.  Wählen Sie unter **Verwalten** die Option **Benutzer** aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
+    ![Screenshot, der zeigt, wo Sie die Option „Benutzer“ auswählen können.](media/quickstart-add-users-portal/quickstart-users-portal-user.png)
 
 4.  Klicken Sie auf **Neuer Gastbenutzer**.
 
-    ![Wählen Sie „Azure Active Directory“.](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
+    ![Screenshot, der zeigt, wo Sie die Option „Neuer Gastbenutzer“ auswählen können.](media/quickstart-add-users-portal/quickstart-users-portal-user-3.png)
 
 5.  Geben Sie unter **Benutzername** die E-Mail-Adresse des externen Benutzers ein. Geben Sie unter **Persönliche Nachricht zur Einladung hinzufügen** eine Begrüßungsnachricht ein. 
 
-    ![Wählen Sie „Azure Active Directory“.](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
+    ![Screenshot, der zeigt, wo Sie die Einladungsnachricht für den Gastbenutzer eingeben können.](media/quickstart-add-users-portal/quickstart-users-portal-user-4.png)
 
 6. Klicken Sie auf **Einladen**. Die Einladung wird daraufhin automatisch an den Gastbenutzer gesendet. Oben rechts wird die Meldung **Benutzer erfolgreich eingeladen.** angezeigt. 
 7.  Nach dem Senden der Einladung wird das Benutzerkonto dem Verzeichnis automatisch als Gast hinzugefügt.
@@ -59,7 +60,7 @@ Fügen Sie Ihrem Testmandanten die Salesforce-App hinzu, und weisen Sie den Test
 3.  Wählen Sie **Neue Anwendung** aus.
 4. Suchen Sie unter **Aus Katalog hinzufügen** nach **Salesforce**, und wählen Sie die Option aus.
 
-    ![Wählen Sie „Azure Active Directory“.](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
+    ![Screenshot, der das Suchfeld für „Aus Katalog hinzufügen“ zeigt.](media/quickstart-add-users-portal/quickstart-users-portal-select-salesforce.png)
 5. Wählen Sie **Hinzufügen**.
 6. Wählen Sie unter **Verwalten** **Einmaliges Anmelden** und unter **SSO-Modus** **Kennwortbasierte Anmeldung** aus, und klicken Sie auf **Speichern**.
 7. Wählen Sie unter **Verwalten** **Benutzer und Gruppen** > **Benutzer hinzufügen** > **Benutzer und Gruppen** aus.
@@ -71,11 +72,11 @@ Melden Sie sich nun als Gastbenutzer an, um die Einladung anzusehen.
 1.  Melden Sie sich im E-Mail-Konto des Testgastbenutzers an.
 2.  Im Posteingang befindet sich die E-Mail „Sie sind eingeladen“.
 
-    ![B2B-Einladungs-E-Mail](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
+    ![Screenshot, der die B2B-Einladungs-E-Mail zeigt.](media/quickstart-add-users-portal/quickstart-users-portal-email-small.png)
 
 3.  Wählen Sie im E-Mail-Text **Loslegen** aus. Daraufhin wird im Browser die Seite **Berechtigungen überprüfen** geöffnet. 
 
-    ![Seite zum Annehmen der B2B-Einladung](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
+    ![Screenshot, der die Seite „Berechtigungen überprüfen“zeigt.](media/quickstart-add-users-portal/quickstart-users-portal-accept.png)
 
 4. Wählen Sie **Akzeptieren** aus. Daraufhin wird der Zugriffsbereich geöffnet, in dem die Anwendungen aufgelistet werden, auf die der Gastbenutzer zugreifen kann.
 

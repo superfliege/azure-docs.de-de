@@ -2,21 +2,21 @@
 title: 'Tutorial: Verwenden von Azure Database Migration Service zur Offlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB | Microsoft-Dokumentation'
 description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Offlinemigration von einer lokalen MongoDB-Instanz zur Azure Cosmos DB-API für MongoDB durchführen.
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 12/11/2018
-ms.openlocfilehash: 5fd3200ab787a26b11feb121b5db125e4a79365c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.date: 03/12/2019
+ms.openlocfilehash: 62acab231455b19d37b0800ead172950b5ee0378
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960378"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58176275"
 ---
 # <a name="tutorial-migrate-mongodb-to-azure-cosmos-dbs-api-for-mongodb-offline-using-dms"></a>Tutorial: Offlinemigration von MongoDB zur Azure Cosmos DB-API für MongoDB mit DMS
 Sie können Azure Database Migration Service zum Durchführen einer Offlinemigration (einmalig) von Datenbanken aus einer lokalen oder cloudbasierten MongoDB-Instanz zur Azure Cosmos DB-API für MongoDB verwenden.
@@ -33,8 +33,17 @@ In diesem Tutorial migrieren Sie ein Dataset in MongoDB, das auf einem virtuelle
 ## <a name="prerequisites"></a>Voraussetzungen
 Für dieses Tutorial benötigen Sie Folgendes:
 - [Erstellen einer Azure Cosmos DB-API für das MongoDB-Konto.](https://ms.portal.azure.com/#create/Microsoft.DocumentDB)
-- Erstellen Sie ein VNET für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Standort-zu-Standort-Konnektivität für Ihre lokalen Quellserver bietet.
-- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln Ihrer Azure Virtual Network-Instanz (VNET) nicht die folgenden Kommunikationsports blockieren: 443, 53, 9354, 445 und 12000. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+- Erstellen Sie ein virtuelles Azure-Netzwerk (VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden, das entweder über [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) oder über [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) Standort-zu-Standort-Konnektivität für Ihre lokalen Quellserver bereitstellt.
+
+    > [!NOTE]
+    > Fügen Sie während des VNET-Setups, wenn Sie ExpressRoute mit Netzwerkpeering zu Microsoft verwenden, die folgenden Dienst[endpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+    > - Zieldatenbankendpunkt (z. B. SQL-Endpunkt, Cosmos DB-Endpunkts usw.)
+    > - Speicherendpunkt
+    > - Service Bus-Endpunkt
+    >
+    > Diese Konfiguration ist erforderlich, da der Azure Database Migration Service über keine Internetverbindung verfügt.
+
+- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Kommunikationsports blockieren: 443, 53, 9354, 445 und 12000. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die MongoDB-Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 27017).
 - Wenn Sie eine Firewall-Appliance vor Ihren Quelldatenbanken verwenden, müssen Sie möglicherweise Firewallregeln hinzufügen, damit Azure Database Migration Service auf die Quelldatenbanken für die Migration zugreifen kann.
 
@@ -74,7 +83,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
     Weitere Informationen zu Kosten und Tarifen finden Sie in der [Preisübersicht](https://aka.ms/dms-pricing).
 
-    Wenn Sie Hilfe bei der Wahl des richtigen Azure Database Migration Service-Tarifs benötigen, beachten Sie die Empfehlungen in [diesem Blogbeitrag](https://go.microsoft.com/fwlink/?linkid=861067).  
+    Beachten Sie die Empfehlungen in [diesem Blogbeitrag](https://go.microsoft.com/fwlink/?linkid=861067), falls Sie Hilfe bei der Wahl des richtigen Azure Database Migration Service-Tarifs benötigen.  
 
      ![Konfigurieren der Einstellungen einer Azure Database Migration Service-Instanz](media/tutorial-mongodb-to-cosmosdb/dms-settings2.png)
 
