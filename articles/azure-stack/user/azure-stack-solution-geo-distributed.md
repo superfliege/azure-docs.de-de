@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7c7279f1895764c2a3ed73e824d44c2eed68240c
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244573"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57860583"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>Tutorial: Erstellen einer geografisch verteilten App-Lösung mit Azure und Azure Stack
 
@@ -123,7 +123,7 @@ Richten Sie die hybride CI/CD-Pipeline ein, um die Web-App in Azure und Azure St
 
 ### <a name="create-web-app-deployment-in-both-clouds"></a>Erstellen der Web-App-Bereitstellung in beiden Clouds
 
-1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie Runtimeidentifier, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
+1.  Bearbeiten Sie die Datei **WebApplication.csproj**: Wählen Sie **Runtimeidentifier**, und fügen Sie **win10-x64** hinzu. (Weitere Informationen finden Sie in der Dokumentation zur [eigenständigen Bereitstellung](https://docs.microsoft.com/dotnet/core/deploying/#self-contained-deployments-scd).)
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image3.png)
 
@@ -154,9 +154,9 @@ Azure DevOps und Azure DevOps Server bieten eine äußerst flexibel konfigurier-
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image5.png)
 
-1.  Wählen Sie die Schaltfläche mit dem **Pluszeichen**, um in Visual Studio Online (VSO) auf der Seite „Build und Release“ über die **Registerkarte „Releases“** ein neues Release hinzuzufügen.
+1. Wählen Sie die Schaltfläche mit dem **Pluszeichen**, um in Visual Studio Online (VSO) auf der Seite „Build und Release“ über die **Registerkarte „Releases“** ein neues Release hinzuzufügen.
 
-    ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
+   ![Alt text](media/azure-stack-solution-geo-distributed/image6.png)
 
 2. Wenden Sie die Vorlage **Azure App Service-Bereitstellung** an.
 
@@ -210,7 +210,7 @@ Azure DevOps und Azure DevOps Server bieten eine äußerst flexibel konfigurier-
 
 14. Wählen Sie das **Abonnement** für den Azure Stack-Endpunkt aus.
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image20.png)
 
 15. Legen Sie den Namen der Azure Stack-Web-App als **Name des App-Diensts** fest.
 
@@ -299,11 +299,11 @@ Der folgende Screenshot zeigt ein Beispiel für eine Seite mit DNS-Einträgen:
 
 ![Beispielseite mit DNS-Einträgen](media/azure-stack-solution-geo-distributed/image28.png)
 
-1.  Wählen Sie unter der Domänennamen-Registrierungsstelle die Option **Add or Create** (Hinzufügen oder erstellen), um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie in der Dokumentation des Anbieters.
+1. Wählen Sie unter der Domänennamen-Registrierungsstelle die Option **Add or Create** (Hinzufügen oder erstellen), um einen Eintrag zu erstellen. Einige Anbieter verfügen über unterschiedliche Links, um unterschiedliche Arten von Einträgen hinzuzufügen. Informationen hierzu finden Sie in der Dokumentation des Anbieters.
 
-2.  Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App eine Unterdomäne zuzuordnen.
+2. Fügen Sie einen CNAME-Eintrag hinzu, um dem Standardhostnamen der App eine Unterdomäne zuzuordnen.
 
-  Fügen Sie für das Beispiel mit der Domäne „www.northwindcloud.com“ einen CNAME-Eintrag hinzu, mit dem der Name der URL „<app\_name>.azurewebsites.net“ zugeordnet wird.
+   Fügen Sie für das Beispiel mit der Domäne „www.northwindcloud.com“ einen CNAME-Eintrag hinzu, mit dem der Name der URL „<app\_name>.azurewebsites.net“ zugeordnet wird.
 
 Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen wie im folgenden Beispiel aus:
 
@@ -311,47 +311,47 @@ Nach dem Hinzufügen des CNAME-Eintrags sieht die Seite mit den DNS-Einträgen w
 
 ### <a name="enable-the-cname-record-mapping-in-azure"></a>Aktivieren der Zuordnung von CNAME-Einträgen in Azure
 
-1.  Melden Sie sich auf einer neuen Registerkarte am Azure-Portal an.
+1. Melden Sie sich auf einer neuen Registerkarte am Azure-Portal an.
 
-2.  Navigieren Sie zu App Services.
+2. Navigieren Sie zu App Services.
 
-3.  Wählen Sie die Web-App aus.
+3. Wählen Sie die Web-App aus.
 
-4.  Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
+4. Wählen Sie im linken Navigationsbereich der App-Seite im Azure-Portal die Option **Benutzerdefinierte Domänen**.
 
-5.  Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
+5. Wählen Sie das **+**-Symbol neben der Option **Hostnamen hinzufügen**.
 
-1.  Geben Sie den vollqualifizierten Domänennamen ein, z.B. `www.northwindcloud.com`.
+1. Geben Sie den vollqualifizierten Domänennamen ein, z.B. `www.northwindcloud.com`.
 
-2.  Wählen Sie **Überprüfen**.
+2. Wählen Sie **Überprüfen**.
 
-3.  Fügen Sie, falls angegeben, den DNS-Einträgen der Domänennamen-Registrierungsstelle weitere Einträge mit anderen Typen (`A` oder `TXT`) hinzu. Azure stellt die Werte und Typen dieser Einträge bereit:
+3. Fügen Sie, falls angegeben, den DNS-Einträgen der Domänennamen-Registrierungsstelle weitere Einträge mit anderen Typen (`A` oder `TXT`) hinzu. Azure stellt die Werte und Typen dieser Einträge bereit:
 
-    a.  Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
+   a.  Ein **A**-Eintrag, um die IP-Adresse der App zuzuordnen.
 
-    b.  Einen **TXT**-Eintrag, der dem Standardhostnamen (<App-Name>.azurewebsites.net) der App zugeordnet wird. App Service nutzt diesen Eintrag nur während der Konfiguration, um die Eigentümerschaft der benutzerdefinierten Domäne zu überprüfen. Löschen Sie den TXT-Eintrag, nachdem die Überprüfung abgeschlossen ist.
+   b.  Einen **TXT**-Eintrag, der dem Standardhostnamen (<App-Name>.azurewebsites.net) der App zugeordnet wird. App Service nutzt diesen Eintrag nur während der Konfiguration, um die Eigentümerschaft der benutzerdefinierten Domäne zu überprüfen. Löschen Sie den TXT-Eintrag, nachdem die Überprüfung abgeschlossen ist.
 
-4.  Schließen Sie diese Aufgabe auf der Registerkarte für die Domänenregistrierungsstelle ab, und führen Sie die Überprüfung erneut durch, bis die Schaltfläche **Hostnamen hinzufügen** aktiviert wird.
+4. Schließen Sie diese Aufgabe auf der Registerkarte für die Domänenregistrierungsstelle ab, und führen Sie die Überprüfung erneut durch, bis die Schaltfläche **Hostnamen hinzufügen** aktiviert wird.
 
-5.  Stellen Sie sicher, dass der Typ des Hostnamenseintrags auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
+5. Stellen Sie sicher, dass der Typ des Hostnamenseintrags auf **CNAME (www.beispiel.com oder eine beliebige Unterdomäne)** festgelegt ist.
 
-6.  Wählen Sie **Hostnamen hinzufügen**.
+6. Wählen Sie **Hostnamen hinzufügen**.
 
-7.  Geben Sie den vollqualifizierten Domänennamen ein, z.B. `northwindcloud.com`.
+7. Geben Sie den vollqualifizierten Domänennamen ein, z.B. `northwindcloud.com`.
 
-8.  Wählen Sie **Überprüfen**.
+8. Wählen Sie **Überprüfen**.
 
-9.  Die Schaltfläche **Hinzufügen** wird aktiviert.
+9. Die Schaltfläche **Hinzufügen** wird aktiviert.
 
 10. Stellen Sie sicher, dass die Option für den Typ des Hostnamenseintrags auf **A-Datensatz (beispiel.com)** festgelegt ist.
 
 11. Wählen Sie **Hostnamen hinzufügen**.
 
-  Unter Umständen dauert es eine Weile, bis die neuen Hostnamen auf der Seite **Benutzerdefinierte Domänen** der App angezeigt werden. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
+    Unter Umständen dauert es eine Weile, bis die neuen Hostnamen auf der Seite **Benutzerdefinierte Domänen** der App angezeigt werden. Aktualisieren Sie den Browser, um die Daten zu aktualisieren.
   
-  ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
+    ![Alt text](media/azure-stack-solution-geo-distributed/image31.png) 
   
-  Bei einem Fehler wird unten auf der Seite eine Benachrichtigung mit einem Überprüfungsfehler angezeigt. ![Überprüfungsfehler](media/azure-stack-solution-geo-distributed/image32.png)
+    Bei einem Fehler wird unten auf der Seite eine Benachrichtigung mit einem Überprüfungsfehler angezeigt. ![Überprüfungsfehler](media/azure-stack-solution-geo-distributed/image32.png)
 
 > [!Note]  
 >  Sie können die obigen Schritte wiederholen, um eine Platzhalterdomäne zuzuordnen (\*.northwindcloud.com). Dies ermöglicht das Hinzufügen von weiteren Unterdomänen zu diesem App Service, ohne dass jeweils ein separater CNAME-Eintrag erstellt werden muss. Befolgen Sie die Anleitung der Registrierungsstelle, um diese Einstellung zu konfigurieren.
@@ -482,15 +482,15 @@ Gehen Sie wie folgt vor, wenn IIS oder **Certreq.exe** zum Generieren der Zertif
 
 #### <a name="upload-the-ssl-certificate"></a>Hochladen des SSL-Zertifikats
 
-1.  Wählen Sie im linken Navigationsbereich der Web-App die Option **SSL-Einstellungen**.
+1. Wählen Sie im linken Navigationsbereich der Web-App die Option **SSL-Einstellungen**.
 
-2.  Wählen Sie **Zertifikat hochladen**.
+2. Wählen Sie **Zertifikat hochladen**.
 
-3.  Wählen Sie unter **PFX-Zertifikatdatei** die PFX-Datei aus.
+3. Wählen Sie unter **PFX-Zertifikatdatei** die PFX-Datei aus.
 
-4.  4. Geben Sie unter **Zertifikatkennwort** das Kennwort ein, das beim Exportieren der PFX-Datei erstellt wurde.
+4. 1. Geben Sie unter **Zertifikatkennwort** das Kennwort ein, das beim Exportieren der PFX-Datei erstellt wurde.
 
-5.  Wählen Sie die Option **Hochladen**.
+5. Wählen Sie die Option **Hochladen**.
 
 ![Hochladen des Zertifikats](media/azure-stack-solution-geo-distributed/image38.png)
 
@@ -507,9 +507,9 @@ Wenn der Upload des Zertifikats in App Service abgeschlossen ist, wird es auf de
 
 1.  Wählen Sie auf der Seite **SSL-Bindung hinzufügen** aus den Dropdownlisten den Domänennamen, der geschützt werden soll, sowie das zu verwendende Zertifikat aus.
 
-2.  Wählen Sie unter **SSL-Typ** aus, ob SSL auf der [**Servernamensanzeige (Server Name Indication, SNI)**](http://en.wikipedia.org/wiki/Server_Name_Indication) oder der IP basieren soll.
+2.  Wählen Sie unter **SSL-Typ** aus, ob SSL auf der [**Servernamensanzeige (Server Name Indication, SNI)**](https://en.wikipedia.org/wiki/Server_Name_Indication) oder der IP basieren soll.
 
--   **SNI-basiertes SSL**: Ggf. können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](http://wikipedia.org/wiki/Server_Name_Indication)).
+-   **SNI-basiertes SSL**: Ggf. können mehrere SNI-basierte SSL-Bindungen hinzugefügt werden. Bei dieser Option können mehrere zur selben IP-Adresse zugehörige Domänen durch mehrere SSL-Zertifikate geschützt werden. Die meisten modernen Browser (einschließlich Internet Explorer, Chrome, Firefox und Opera) unterstützen SNI (ausführlichere Informationen zur Browserunterstützung finden Sie unter [Servernamensanzeige](https://wikipedia.org/wiki/Server_Name_Indication)).
 
 -   **IP-basiertes SSL**: Ggf. kann nur eine IP-basierte SSL-Bindung hinzugefügt werden. Bei dieser Option kann eine dedizierte öffentliche IP-Adresse nur durch ein SSL-Zertifikat geschützt werden. Schützen Sie alle Domänen mit demselben SSL-Zertifikat, wenn Sie den Schutz für mehrere Domänen einrichten möchten. Dies ist die herkömmliche Option für SSL-Bindungen.
 
@@ -533,7 +533,7 @@ Die Seite **Benutzerdefinierte Domäne** wird mit der neuen, dedizierten IP-Adre
 
 #### <a name="test-https"></a>Testen von HTTPS
 
-Navigieren Sie in verschiedenen Browsern zu „https://<ihre.benutzerdefinierte.domäne>“, um sicherzustellen, dass die Web-App bereitgestellt wird.
+Navigieren Sie in verschiedenen Browsern zu „https://<Ihre.benutzerdefinierte.Domäne>“, um sicherzustellen, dass die Web-App bereitgestellt wird.
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
 
@@ -588,23 +588,23 @@ Die App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_
 
 ### <a name="add-traffic-manager-endpoints"></a>Hinzufügen von Traffic Manager-Endpunkten
 
-1.  Suchen Sie in der Suchleiste des Portals nach dem Namen für das **Traffic Manager-Profil**, das im vorherigen Abschnitt erstellt wurde, und wählen Sie das Traffic Manager-Profil in den angezeigten Ergebnissen aus.
+1. Suchen Sie in der Suchleiste des Portals nach dem Namen für das **Traffic Manager-Profil**, das im vorherigen Abschnitt erstellt wurde, und wählen Sie das Traffic Manager-Profil in den angezeigten Ergebnissen aus.
 
-2.  Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte**.
+2. Wählen Sie im **Traffic Manager-Profil** im Abschnitt **Einstellungen** die Option **Endpunkte**.
 
-3.  Wählen Sie **Hinzufügen**.
+3. Wählen Sie **Hinzufügen**.
 
-4.  Der Azure Stack-Endpunkt wird hinzugefügt.
+4. Der Azure Stack-Endpunkt wird hinzugefügt.
 
-5.  Wählen Sie unter **Typ** die Option **Externer Endpunkt**.
+5. Wählen Sie unter **Typ** die Option **Externer Endpunkt**.
 
-6.  Geben Sie unter **Name** einen Namen für diesen Endpunkt ein. Dies ist idealerweise der Name der Azure Stack-Instanz.
+6. Geben Sie unter **Name** einen Namen für diesen Endpunkt ein. Dies ist idealerweise der Name der Azure Stack-Instanz.
 
-7.  Verwenden Sie für den vollqualifizierten Domänennamen (**FQDN**) die externe URL für die Azure Stack-Web-App.
+7. Verwenden Sie für den vollqualifizierten Domänennamen (**FQDN**) die externe URL für die Azure Stack-Web-App.
 
-8.  Wählen Sie unter „Geografische Zuordnung“ die Region bzw. den Kontinent der Ressource aus, z.B. **Europa**.
+8. Wählen Sie unter „Geografische Zuordnung“ die Region bzw. den Kontinent der Ressource aus, z.B. **Europa**.
 
-9.  Wählen Sie in der angezeigten Dropdownliste „Land/Region“ das Land aus, das für diesen Endpunkt gilt, z.B. **Deutschland**.
+9. Wählen Sie in der angezeigten Dropdownliste „Land/Region“ das Land aus, das für diesen Endpunkt gilt, z.B. **Deutschland**.
 
 10. Lassen Sie **Als deaktiviert hinzufügen** deaktiviert.
 
@@ -628,12 +628,12 @@ Die App lässt standardmäßig [TLS](https://wikipedia.org/wiki/Transport_Layer_
 
 16. Klicken Sie auf **OK**.
 
-  > [!Note]  
-  >  Erstellen Sie mindestens einen Endpunkt mit dem geografischen Bereich „Alle (Welt)“, der als Standardendpunkt für die Ressource dient.
+    > [!Note]  
+    >  Erstellen Sie mindestens einen Endpunkt mit dem geografischen Bereich „Alle (Welt)“, der als Standardendpunkt für die Ressource dient.
 
-1.  Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
+1. Wenn Sie das Hinzufügen beider Endpunkte abgeschlossen haben, werden diese unter **Traffic Manager-Profil** zusammen mit ihrem Überwachungsstatus als **Online** angezeigt.
 
-  ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
+    ![Alt text](media/azure-stack-solution-geo-distributed/image46.png)
 
 **Globales Unternehmen nutzt Azure-Funktionen für die geografische Verteilung**
 

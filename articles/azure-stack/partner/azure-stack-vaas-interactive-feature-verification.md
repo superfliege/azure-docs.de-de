@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/07/2019
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 01/07/2019
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 20a48e67a24763af7bcce9e8831e2a1d1846d094
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d3db8ea8639f73f3522ddaa358195e7c9ef2f9a9
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56594303"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57766001"
 ---
 # <a name="interactive-feature-verification-testing"></a>Testen der interaktiven Featureüberprüfung  
 
@@ -35,13 +35,13 @@ In diesem Artikel wird ein einfaches manuelles Szenario beschrieben. Der Test ü
 
 ## <a name="overview-of-interactive-testing"></a>Übersicht über interaktives Testen
 
-Ein Test für den Austausch eines Datenträgers ist ein gängiges Szenario. In diesem Beispiel umfasst der Test sieben Schritte:
+Ein Test für den Austausch eines Datenträgers ist ein gängiges Szenario. In diesem Beispiel umfasst der Test fünf Schritte:
 
 1. Erstellen eines neuen Workflows vom Typ **Testdurchlauf**
-1. Auswählen von **Disk Identification Test** (Datenträgeridentifizierungstest)
-1. Ausführen des manuellen Schritts, wenn Sie dazu aufgefordert werden
-1. Überprüfen des Ergebnisses des Szenarios
-1. Senden des Testergebnisses an Microsoft
+2. Auswählen von **Disk Identification Test** (Datenträgeridentifizierungstest)
+3. Ausführen des manuellen Schritts, wenn Sie dazu aufgefordert werden
+4. Überprüfen des Ergebnisses des Szenarios
+5. Senden des Testergebnisses an Microsoft
 
 ## <a name="create-a-new-test-pass"></a>Erstellen eines neuen Testdurchlaufs
 

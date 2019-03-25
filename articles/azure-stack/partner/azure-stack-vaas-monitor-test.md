@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/26/2018
+ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
-ms.lastreviewed: 11/26/2018
+ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 04756481b676ed198120b67ca4368093ca8acead
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 9b64631b274423edda35189a942e2f142ae591f1
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250873"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57761169"
 ---
 # <a name="monitor-and-manage-tests-in-the-vaas-portal"></a>Überwachen und Verwalten von Tests im VaaS-Portal
 
@@ -60,9 +60,9 @@ In Workflows vom Typ **Testdurchlauf** können Sie über die Schaltflächen **Te
 
 ## <a name="managing-test-instances"></a>Verwalten von Testinstanzen
 
-Bei inoffiziellen Ausführungen (d.h. beim Workflow **Testdurchlauf**) werden auf der Testzusammenfassungsseite die für die Azure Stack-Lösung geplanten Tests aufgeführt.
+Bei inoffiziellen Ausführungen (d. h. beim Workflow **Testdurchlauf**) werden auf der Testzusammenfassungsseite die für die Azure Stack-Lösung geplanten Tests aufgeführt.
 
-Bei offiziellen Ausführungen (d.h. bei Workflows vom Typ **Validierung**) werden auf der Testzusammenfassungsseite die Tests aufgeführt, die zum Abschließen der Überprüfung der Azure Stack-Lösung erforderlich sind. Auf dieser Seite werden die Validierungstests geplant.
+Bei offiziellen Ausführungen (d. h. bei Workflows vom Typ **Validierung**) werden auf der Testzusammenfassungsseite die Tests aufgeführt, die zum Abschließen der Überprüfung der Azure Stack-Lösung erforderlich sind. Auf dieser Seite werden die Validierungstests geplant.
 
 In jeder geplanten Testinstanz werden die folgenden Informationen angezeigt:
 
@@ -81,7 +81,7 @@ In jeder geplanten Testinstanz werden die folgenden Informationen angezeigt:
 
 ### <a name="actions"></a>Aktionen
 
-Für jede Testinstanz werden ausführbare Aktionen aufgelistet, wenn Sie in der Tabelle der Testinstanzen auf das jeweilige Kontextmenü **[...]** klicken.
+Für jede Testinstanz werden ausführbare Aktionen aufgelistet, wenn Sie in der Tabelle der Testinstanzen das jeweilige Kontextmenü **[...]** auswählen.
 
 #### <a name="view-information-about-the-test-definition"></a>Anzeigen von Information zur Testdefinition
 
@@ -118,7 +118,7 @@ Wählen Sie im Kontextmenü die Option **View operations** (Vorgänge anzeigen) 
 
 #### <a name="download-logs-for-a-completed-test-instance"></a>Herunterladen von Protokollen für eine abgeschlossene Testinstanz
 
-Wählen Sie im Kontextmenü die Option **Protokolle herunterladen** aus, um eine Datei vom Typ `.zip` der Protokolle herunterzuladen, die während der Testausführung ausgegeben wurden. Diese Aktion ist nur für abgeschlossene Tests verfügbar, d.h. Tests mit dem Status `Cancelled`, `Failed`, `Aborted` oder `Succeeded`.
+Wählen Sie im Kontextmenü die Option **Protokolle herunterladen** aus, um eine Datei vom Typ `.zip` der Protokolle herunterzuladen, die während der Testausführung ausgegeben wurden. Diese Aktion ist nur für abgeschlossene Tests verfügbar, d. h. Tests mit dem Status `Cancelled`, `Failed`, `Aborted` oder `Succeeded`.
 
 #### <a name="reschedule-a-test-instance-or-schedule-a-test"></a>Neuplanen einer Testinstanz oder Planen eines Tests
 

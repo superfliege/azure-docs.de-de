@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: a8c4ef5df586c87862ea8e1634e9a72356401d0b
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: bcb538cf2e546e4913ccb223e143c2343e114de7
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55247424"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "57896193"
 ---
 # <a name="tutorial-create-cross-cloud-scaling-solutions-with-azure"></a>Tutorial 4: Erstellen von cloudübergreifenden Skalierungslösungen mit Azure
 
@@ -266,7 +266,7 @@ Die Endpunktinformationen sind vorhanden, und die Verbindung zwischen Azure Pipe
 
 Verwenden Sie [Azure Resource Manager-Vorlagen](https://azure.microsoft.com/resources/templates/), z.B. Web-App-Code aus Azure Repos, für die Bereitstellung in beiden Clouds.
 
-### <a name="add-code-to-a-azure-repos-project"></a>Hinzufügen von Code zu einem Azure Repos-Projekt
+### <a name="add-code-to-an-azure-repos-project"></a>Hinzufügen von Code zu einem Azure Repos-Projekt
 
 1.  Melden Sie sich bei Azure Repos mit einem Konto an, das über Berechtigungen zum Erstellen von Projekten in Azure Stack verfügt. Der nächste Screenshot zeigt, wie Sie eine Verbindung mit dem HybridCICD-Projekt herstellen.
 
