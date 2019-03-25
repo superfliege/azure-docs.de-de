@@ -116,10 +116,12 @@ items:
         href: index-add-language-analyzers.md
       - name: Hinzufügen eines benutzerdefinierten Analysetools
         href: index-add-custom-analyzers.md
-    - name: Eingabevorschläge
+    - name: Typeahead
       items:
-      - name: Hinzufügen der Vorschlagssuche
+      - name: Erstellen einer Vorschlagsfunktion
         href: index-add-suggesters.md
+      - name: Beispiel für die Vorschlagssuche
+        href: search-autosuggest-example.md
       - name: Beispiel für AutoVervollständigen
         href: search-autocomplete-tutorial.md
     - name: Synonyme
@@ -295,7 +297,7 @@ items:
       href: https://wolterskluwereap.azurewebsites.net/
     - name: Demo zu JFK-Dateien
       href: https://aka.ms/jfkfiles
-    - name: Auftragsauflistungs-App
+    - name: Demo zu NYC-Aufträgen
       href: https://aka.ms/azjobsdemo
     - name: Demo zu Search Analyzer
       href: https://alice.unearth.ai/
@@ -307,9 +309,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: Videos
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 660d15ad6a03bc0f6bca3dd1ae21fe1178146663
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: b6335584517e6da02e28d774ccdf9d608707f827
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285880"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370671"

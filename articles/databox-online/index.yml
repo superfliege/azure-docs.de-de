@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cd544367113986b3a3959c2bf50fac80a8b36bc5
-ms.sourcegitcommit: 3a02e0e8759ab3835d7c58479a05d7907a719d9c
+ms.openlocfilehash: 44c7f6d32737fe83e80a2f2df15f0ae078a5849e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2018
-ms.locfileid: "49309075"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400282"
 documentType: LandingData
 title: 'Azure Data Box-Dokumentation: Onlineübertragung'
 metadata:
@@ -16,7 +16,7 @@ metadata:
   ms.service: databox
   ms.subservice: edge
   ms.topic: landing-page
-  ms.date: 10/12/2018
+  ms.date: 03/22/2019
   ms.author: alkohli
 abstract:
   description: Mit der Azure Data Box-Familie können Sie schnell, kostengünstig und zuverlässig Hunderte von Terabyte an Daten in Azure übertragen. Nutzen Sie die Data Box-Geräte für Hochleistungs-Datenübertragungen über das Netzwerk.<p>Wählen Sie Data Box Gateway<SUP>Vorschauversion</SUP>, um Daten für die Archivierung in der Cloud zu senden, die Notfallwiederherstellung durchzuführen oder Daten für die Cloud zu verarbeiten.  Verwenden Sie Data Box Edge<SUP>Vorschauversion</SUP>, um Ihre Daten auf dem Weg in Azure zu filtern, zu analysieren und zu transformieren.</p><p>In unseren Tutorials wird beschrieben, wie Sie Data Box Gateway und Data Box Edge für die netzwerkbasierte Übertragung nutzen.</p>
@@ -24,7 +24,7 @@ sections:
 - title: Lernprogramme
   items:
   - type: paragraph
-    text: <b>Für Data Box Gateway<SUP>Vorschauversion</SUP></b>
+    text: <b>Für Data Box Gateway</b>
   - type: list
     style: ordered
     items:
@@ -34,7 +34,7 @@ sections:
     - html: <a href="data-box-gateway-deploy-connect-setup-activate">Verbinden, Einrichten und Aktivieren von Azure Data Box Gateway</a>
     - html: <a href="data-box-gateway-deploy-add-shares">Übertragen von Daten mit Azure Data Box Gateway</a>
   - type: paragraph
-    text: <b>Für Data Box Edge<SUP>Vorschauversion</SUP></b>
+    text: <b>Für Data Box Edge</b>
   - type: list
     style: ordered
     items:
