@@ -3,23 +3,22 @@ title: Synchronisieren des Gerätestatus über Azure IoT Hub | Microsoft-Dokumen
 description: Verwenden von Gerätezwillingen zum Synchronisieren des Zustands zwischen Ihren Geräten und Ihrem IoT Hub
 services: iot-hub
 documentationcenter: ''
-author: dominicbetts
-manager: timlt
-ms.assetid: ''
+author: wesmc7777
+manager: philmea
+ms.author: wesmc
 ms.service: iot-hub
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/18/2019
-ms.author: dobett
 ms.custom: mvc
-ms.openlocfilehash: 63ef5a36dc5a9d770e3474e15b4733d4165b9937
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
+ms.openlocfilehash: b0e6e75f962383055d4f28356c3db57aac4a088b
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54421911"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58088076"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -76,7 +75,7 @@ az group create --name tutorial-iot-hub-rg --location $location
 az iot hub create --name $hubname --location $location --resource-group tutorial-iot-hub-rg --sku F1
 
 # Make a note of the service connection string, you need it later:
-az iot hub show-connection-string --hub-name $hubname -o table
+az iot hub show-connection-string --name $hubname -o table
 
 ```
 
@@ -263,4 +262,4 @@ az group delete --name tutorial-iot-hub-rg
 In diesem Tutorial wurde beschrieben, wie Sie Statusinformationen zwischen Ihren Geräten und Ihrem IoT Hub synchronisieren. Fahren Sie mit dem nächsten Tutorial fort, in dem beschrieben wird, wie Sie Gerätezwillinge zum Implementieren eines Prozesses zur Aktualisierung der Firmware verwenden.
 
 > [!div class="nextstepaction"]
-[Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md)
+> [Implementieren eines Updateprozesses für die Gerätefirmware](tutorial-firmware-update.md)

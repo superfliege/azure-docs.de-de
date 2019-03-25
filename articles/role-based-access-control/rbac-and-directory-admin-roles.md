@@ -15,12 +15,12 @@ ms.date: 02/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
-ms.openlocfilehash: c53b9f13c365a5ace227f792f5b0c80ae8fac6ff
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 1b7183da84b994da8694440183e367f143722002
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56807353"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295171"
 ---
 # <a name="classic-subscription-administrator-roles-azure-rbac-roles-and-azure-ad-administrator-roles"></a>Administratorrollen für klassische Abonnements, Azure RBAC-Rollen und Azure AD-Administratorrollen
 
@@ -81,7 +81,7 @@ Die verbleibenden integrierten Rollen ermöglichen die Verwaltung von bestimmten
 
 Nur das Azure-Portal und die Azure Resource Manager-APIs unterstützen RBAC. Benutzer, Gruppen und Anwendungen, denen RBAC-Rollen zugewiesen sind, können die [APIs des klassischen Azure-Bereitstellungsmodells](../azure-resource-manager/resource-manager-deployment-model.md) nicht verwenden.
 
-Im Azure-Portal werden Rollenzuweisungen, für die RBAC genutzt wird, auf dem Blatt **Zugriffssteuerung (IAM)** angezeigt. Dieses Blatt ist im gesamten Portal zu finden, z.B. unter Verwaltungsgruppen, Abonnements, Ressourcengruppen und verschiedenen Ressourcen.
+Im Azure-Portal werden Rollenzuweisungen, für die RBAC genutzt wird, auf dem Blatt **Zugriffssteuerung (IAM)** angezeigt. Dieses Blatt ist im gesamten Portal zu finden, z. B. unter Verwaltungsgruppen, Abonnements, Ressourcengruppen und verschiedenen Ressourcen.
 
 ![Blatt „Zugriffssteuerung (IAM)“ im Azure-Portal](./media/rbac-and-directory-admin-roles/access-control-role-assignments.png)
 
@@ -98,7 +98,7 @@ Azure AD-Administratorrollen werden verwendet, um Azure AD-Ressourcen in einem V
 | Rolle „Azure AD-Administrator“ | Berechtigungen | Notizen |
 | --- | --- | --- |
 | [Globaler Administrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#company-administrator) | <ul><li>Verwalten des Zugriffs auf alle administrativen Features in Azure Active Directory und auf Dienste, die im Verbund mit Azure Active Directory genutzt werden</li><li>Zuweisen von Administratorrollen für andere Personen</li><li>Zurücksetzen des Kennworts für alle Benutzer und alle anderen Administratoren</li></ul> | Die Person, die die Anmeldung für den Azure Active Directory-Mandanten vornimmt, wird zu einem globalen Administrator. |
-| [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-account-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
+| [Benutzeradministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#user-administrator) | <ul><li>Erstellen und Verwalten aller Aspekte von Benutzern und Gruppen</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li><li>Ändern von Kennwörtern für Benutzer, Helpdeskadministratoren und andere Benutzeradministratoren</li></ul> |  |
 | [Rechnungsadministrator](../active-directory/users-groups-roles/directory-assign-admin-roles.md#billing-administrator) | <ul><li>Tätigen von Einkäufen</li><li>Verwalten von Abonnements</li><li>Verwalten von Supporttickets</li><li>Überwachen der Dienstintegrität</li></ul> |  |
 
 Im Azure-Portal können Sie die Liste mit den Azure AD-Administratorrollen auf dem Blatt **Rollen und Administratoren** anzeigen. Eine Liste mit allen Azure AD-Administratorrollen finden Sie unter [Berechtigungen der Administratorrolle in Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
@@ -114,7 +114,7 @@ Grob gesehen werden mit Azure RBAC-Rollen Berechtigungen zum Verwalten von Azure
 | Verwalten des Zugriffs auf Azure-Ressourcen | Verwalten des Zugriffs auf Azure Active Directory-Ressourcen |
 | Unterstützt benutzerdefinierte Rollen | Kann Ihre eigenen Rollen nicht erstellen |
 | Bereich kann auf mehreren Ebenen angegeben werden (Verwaltungsgruppe, Abonnement, Ressourcengruppe, Ressource) | Bereich befindet sich auf Mandantenebene |
-| Zugriff auf Rolleninformationen ist per Azure-Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-Vorlagen, REST-API möglich | Zugriff auf Rolleninformationen ist per Azure-Verwaltungsportal, Office 365-Verwaltungsportal, Microsoft Graph, Azure AD PowerShell möglich |
+| Zugriff auf Rolleninformationen ist per Azure-Portal, Azure CLI, Azure PowerShell, Azure Resource Manager-Vorlagen, REST-API möglich | Zugriff auf Rolleninformationen ist per Azure-Verwaltungsportal, Microsoft 365 Admin Center, Microsoft Graph, Azure AD PowerShell möglich |
 
 ### <a name="do-azure-rbac-roles-and--azure-ad-administrator-roles-overlap"></a>Gibt es Überschneidungen zwischen Azure RBAC-Rollen und Azure AD-Administratorrollen?
 

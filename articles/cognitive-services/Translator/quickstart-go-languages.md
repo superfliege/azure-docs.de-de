@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: quickstart
 ms.date: 02/21/2019
 ms.author: erhopf
-ms.openlocfilehash: 3bccf50d9236fb5b51b89f31ffc2ec9b0d2c74cd
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: bf33860b111900fed850158d6b80d5a9d4404893
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56727280"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58181604"
 ---
 # <a name="quickstart-use-the-translator-text-api-to-get-a-list-of-supported-languages-using-go"></a>Schnellstart: Verwenden der Textübersetzungs-API zum Abrufen einer Liste unterstützter Sprachen mit Go
 
@@ -29,7 +29,7 @@ Für diese Schnellstartanleitung ist Folgendes erforderlich:
 
 ## <a name="create-a-project-and-import-required-modules"></a>Erstellen eines Projekts und Importieren der erforderlichen Module
 
-Erstellen Sie in Ihrer bevorzugten IDE oder Ihrem bevorzugten Editor ein neues Go-Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt in eine Datei namens `get-languages.go`.
+Erstellen Sie mit Ihrer bevorzugten IDE, Ihrem bevorzugten Editor oder in einem neuen Ordner auf Ihrem Desktop ein neues Go-Projekt. Kopieren Sie anschließend den folgenden Codeausschnitt in Ihr Projekt/Ihren Ordner in eine Datei namens `get-languages.go`.
 
 ```go
 package main
@@ -134,6 +134,8 @@ go run get-languages.go
 [Auf GitHub](https://github.com/MicrosoftTranslator/Text-Translation-API-V3-Go) finden Sie das vollständige Beispiel, falls Sie Ihren Code mit unserem Code vergleichen möchten.
 
 ## <a name="sample-response"></a>Beispiel für eine Antwort
+
+Die Landesabkürzung finden Sie in [dieser Liste der Sprachen](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/language-support).
 
 Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 

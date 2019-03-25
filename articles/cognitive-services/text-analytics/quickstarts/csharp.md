@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: 9b56104934c1ddcc60222c988efdf173ca33d77b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56871008"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58189647"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von C# zum Aufrufen der Textanalyse von Cognitive Services
 <a name="HOLTop"></a>
@@ -30,26 +30,25 @@ Die technische Dokumentation für die APIs finden Sie in den [API-Definitionen](
 
 Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../How-tos/text-analytics-how-to-access-key.md) – beide wurden der Registrierung für Sie generiert.
 
-
 ## <a name="install-the-nuget-sdk-package"></a>Installieren des NuGet-SDK-Pakets
 1. Erstellen Sie eine neue Konsolenprojektmappe in Visual Studio.
 1. Klicken Sie mit der rechten Maustaste auf die Projektmappe, und klicken Sie dann auf **Manage NuGet Packages for Solution** (NuGet-Pakete für Projektmappe verwalten).
 1. Aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**.
 1. Klicken Sie auf die Registerkarte **Durchsuchen**, und suchen Sie nach **Microsoft.Azure.CognitiveServices.Language.TextAnalytics**.
-1. Wählen Sie das NuGet-Paket aus, und installieren Sie es.
+1. Wählen Sie das NuGet-Paket aus, und installieren Sie es. Möglicherweise benötigen Sie vorerst v2.8.0 (3-18-2019), im Gegensatz zu v3.0.0, bis ein Fehler in der Software behoben wurde.
 
 > [!Tip]
 >  Sie können die [HTTP-Endpunkte](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6) zwar direkt über C# aufrufen, das SDK Microsoft.Azure.CognitiveServices.Language erleichtert jedoch das Aufrufen des Diensts erheblich, und Sie müssen sich nicht um die Serialisierung und Deserialisierung von JSON kümmern.
 >
 > Einige nützliche Links:
-> - [NuGet-Seite des SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics)
+> - [NuGet-Seite des SDK](<https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.TextAnalytics>)
 > - [SDK-Code](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/CognitiveServices/dataPlane/Language/TextAnalytics)
 
-
 ## <a name="call-the-text-analytics-api-using-the-sdk"></a>Aufrufen der Textanalyse-API mit dem SDK
+
 1. Ersetzen Sie den Code in „Program.cs“ durch den unten stehenden Code. Dieses Programm veranschaulicht die Funktionen der Textanalyse-API in drei Abschnitten (Sprachextraktion, Schlüsselausdrucksextraktion und Stimmungsanalyse).
 1. Ersetzen Sie den Headerwert `Ocp-Apim-Subscription-Key` durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
-1. Ersetzen Sie den Standort in `Endpoint` durch den Endpunkt, für den Sie sich registriert haben. Sie finden den Endpunkt in der Azure-Portalressource. Der Endpunkt beginnt in der Regel mit „https://[region].api.cognitive.microsoft.com“. Fügen Sie hier nur das Protokoll und den Hostnamen ein.
+1. Ersetzen Sie die Region in `Endpoint`. Ihren Endpunkt finden Sie im Übersichtsabschnitt Ihrer Textanalyseressource im [Azure-Portal](<https://ms.portal.azure.com>). Nehmen Sie nur diesen Teil Ihres Endpunkts auf: „https://[region].api.cognitive.microsoft.com“.
 1. Führen Sie das Programm aus.
 
 ```csharp
