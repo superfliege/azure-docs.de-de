@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 02/15/2019
 ms.author: aahi
-ms.openlocfilehash: b4778c87ca5da266858cd05c67e5f0a78af731bc
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: 11a8ef1974e8d930b0001ccfb445b0eee509356f
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330816"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188950"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Go zum Aufrufen der Textanalyse von Cognitive Services 
 <a name="HOLTop"></a>
@@ -41,9 +41,9 @@ Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der 
 1. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 1. Ersetzen Sie den Standort in `uriBase` (zurzeit `westcentralus`) durch die Region, für die Sie sich registriert haben.
 1. Speichern Sie die Datei mit der Erweiterung „.go“.
-1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, z.B. „go build quickstart.go“.
-1. Führen Sie die Datei aus, z.B. „quickstart“.
+1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, aus Ihrem Stammordner eine Eingabeaufforderung.
+1. Erstellen Sie die Datei, z.B.: `go build detect.go`.
+1. Führen Sie die Datei aus, z.B.: `go run detect.go`.
 
 ```golang
 package main
@@ -177,16 +177,16 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="analyze-sentiment-request"></a>Anforderung zum Analysieren des Standpunkts
 
-Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Im folgenden Beispiel werden zwei Dokumente bewertet, ein englisches und ein spanisches.
+Die Standpunktanalyse-API erkennt die Stimmung in einer Gruppe von Textdatensätzen mithilfe der [Sentiment-Methode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9). Mithilfe der Standpunktanalyse können Sie ermitteln, was die Kunden von Ihrer Marke oder von Ihrem Thema halten, indem Sie reinen Text auf Hinweise für positive oder negative Standpunkte analysieren. Im folgenden Beispiel werden Bewertungen für zwei Dokumente bereitgestellt, ein englisches und ein spanisches.
 
 1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
 1. Fügen Sie den unten stehenden Code hinzu.
 1. Ersetzen Sie den `subscriptionKey`-Wert durch einen für Ihr Abonnement gültigen Zugriffsschlüssel.
 1. Ersetzen Sie den Standort in `uriBase` (zurzeit `westcentralus`) durch die Region, für die Sie sich registriert haben.
 1. Speichern Sie die Datei mit der Erweiterung „.go“.
-1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, z.B. „go build quickstart.go“.
-1. Führen Sie die Datei aus, z.B. „quickstart“.
+1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, aus Ihrem Stammordner eine Eingabeaufforderung.
+1. Erstellen Sie die Datei, z.B.: `go build sentiment.go`.
+1. Führen Sie die Datei aus, z.B.: `go run sentiment.go`.
 
 ```golang
 package main
@@ -272,7 +272,8 @@ func main() {
 
 ## <a name="analyze-sentiment-response"></a>Antwort zum Analysieren des Standpunkts
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
+Das Ergebnis wird als positiv gemessen, wenn es näher bei 1,0 bewertet wird, und negativ, wenn es näher bei 0,0 bewertet wird.
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -294,7 +295,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="extract-key-phrases-request"></a>Anforderung zum Extrahieren von Schlüsselbegriffen
 
-Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
+Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem Textdokument mithilfe der [Schlüsselbegriffsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6). Schlüsselbegriffserkennung wird verwendet, um die wichtigsten Punkte eines Dokuments oder Texts schnell zu identifizieren. Im folgenden Beispiel werden Schlüsselbegriffe sowohl für englische als auch für spanische Dokumente extrahiert.
 
 1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
 1. Fügen Sie den unten stehenden Code hinzu.
@@ -302,8 +303,8 @@ Die API zur Schlüsselbegriffserkennung extrahiert Schlüsselbegriffe aus einem 
 1. Ersetzen Sie den Standort in `uriBase` (zurzeit `westcentralus`) durch die Region, für die Sie sich registriert haben.
 1. Speichern Sie die Datei mit der Erweiterung „.go“.
 1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, z.B. „go build quickstart.go“.
-1. Führen Sie die Datei aus, z.B. „quickstart“.
+1. Erstellen Sie die Datei, z.B.: `go build key-phrases.go`.
+1. Führen Sie die Datei aus, z.B.: `go run key-phrases.go`.
 
 ```golang
 package main
@@ -390,7 +391,7 @@ func main() {
 
 ## <a name="extract-key-phrases-response"></a>Antwort zum Extrahieren von Schlüsselbegriffen
 
-Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt: 
+Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgenden Beispiel gezeigt:
 
 ```json
 {
@@ -430,9 +431,9 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 <a name="Entities"></a>
 
-## <a name="identify-entities-request"></a>Anforderung zum Identifizieren von Entitäten
+## <a name="identify-entities"></a>Identifizieren von Entitäten
 
-Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
+Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634). [Entitäten](https://docs.microsoft.com/en-us/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
 1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
 1. Fügen Sie den unten stehenden Code hinzu.
@@ -440,8 +441,8 @@ Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der
 1. Ersetzen Sie den Standort in `uriBase` (zurzeit `westcentralus`) durch die Region, für die Sie sich registriert haben.
 1. Speichern Sie die Datei mit der Erweiterung „.go“.
 1. Öffnen Sie auf einem Computer, auf dem Go installiert ist, eine Eingabeaufforderung.
-1. Erstellen Sie die Datei, z.B. „go build quickstart.go“.
-1. Führen Sie die Datei aus, z.B. „quickstart“.
+1. Erstellen Sie die Datei, z.B.: `go build entities.go`.
+1. Führen Sie die Datei aus, z.B.: `go run entities.go`.
 
 ```golang
 package main

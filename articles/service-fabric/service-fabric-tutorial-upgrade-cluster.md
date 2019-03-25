@@ -15,16 +15,16 @@ ms.workload: NA
 ms.date: 11/28/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: e34856704b474ac1b7d25d589be5f98be2b113cc
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: 02f973af71f0ee7e1fd1bcf712a08e001ec41667
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671555"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58224956"
 ---
 # <a name="tutorial-upgrade-the-runtime-of-a-service-fabric-cluster-in-azure"></a>Tutorial: Upgraden der Runtime eines Service Fabric-Clusters in Azure
 
-Dieses Tutorial ist der dritte Teil einer Reihe und zeigt, wie Sie die Service Fabric-Runtime in einem Azure Service Fabric-Cluster aktualisieren. Dieser Tutorialteil wurde für unter Azure ausgeführte Service Fabric-Cluster geschrieben und gilt nicht für eigenständige Service Fabric-Cluster.
+Dieses Tutorial ist der vierte Teil einer Reihe und zeigt, wie Sie die Service Fabric-Runtime in einem Azure Service Fabric-Cluster aktualisieren. Dieser Tutorialteil wurde für unter Azure ausgeführte Service Fabric-Cluster geschrieben und gilt nicht für eigenständige Service Fabric-Cluster.
 
 > [!WARNING]
 > Für diesen Teil des Tutorials ist PowerShell erforderlich. Das Upgrade der Clusterruntime wird von den Azure CLI-Tools noch nicht unterstützt. Alternativ kann ein Cluster auch im Portal aktualisiert werden. Weitere Informationen finden Sie unter [Aktualisieren eines Azure Service Fabric-Clusters](service-fabric-cluster-upgrade.md).
@@ -40,6 +40,7 @@ In diesem Tutorial lernen Sie Folgendes:
 In dieser Tutorialserie lernen Sie Folgendes:
 > [!div class="checklist"]
 > * Erstellen eines sicheren [Windows-Clusters](service-fabric-tutorial-create-vnet-and-windows-cluster.md) in Azure mithilfe einer Vorlage
+> * [Überwachen eines Clusters](service-fabric-tutorial-monitor-cluster.md)
 > * [Horizontales Herunter- oder Hochskalieren eines Clusters](service-fabric-tutorial-scale-cluster.md)
 > * Aktualisieren der Runtime eines Service Fabric-Clusters
 > * [Löschen eines Clusters](service-fabric-tutorial-delete-cluster.md)

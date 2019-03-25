@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: quickstart
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e799c1728175431f94f720ec57b6332147741b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: e0573448c753c763e818d641216033dbeacb9e9a
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194477"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58199306"
 ---
 # <a name="quickstart-set-office-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Office 365-Gruppen in Azure Active Directory
 
@@ -35,15 +35,15 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisite"></a>Voraussetzung
 
-Sie müssen ein globaler Administrator oder Benutzerkontoadministrator im Mandanten sein, um den Gruppenablauf einrichten zu können.
+Sie müssen ein globaler Administrator oder Benutzeradministrator in der Organisation sein, um den Gruppenablauf einrichten zu können.
 
 ## <a name="turn-on-user-creation-for-groups"></a>Aktivieren der Benutzererstellung für Gruppen
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzerkontoadministrator für das Verzeichnis konfiguriert ist.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das globaler Administrator oder Benutzeradministrator für die Organisation ist.
 
 2. Klicken Sie auf **Gruppen** und anschließend auf **Allgemein**.
   
-  ![Self-Service-Gruppeneinstellungen](./media/groups-quickstart-expiration/self-service-settings.png)
+   ![Seite „Self-Service-Gruppeneinstellungen“](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Legen Sie **Benutzer können Office 365-Gruppen erstellen** auf **Ja** fest.
 
@@ -51,9 +51,9 @@ Sie müssen ein globaler Administrator oder Benutzerkontoadministrator im Mandan
 
 ## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Azure Active Directory** > **Gruppen** > **Ablauf**, um die Ablaufeinstellungen zu öffnen.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Azure Active Directory** > **Gruppen** > **Ablauf** aus, um die Ablaufeinstellungen zu öffnen.
   
-  ![Ablaufeinstellungen](./media/groups-quickstart-expiration/expiration-settings.png)
+   ![Seite „Ablaufeinstellungen“ für die Gruppe](./media/groups-quickstart-expiration/expiration-settings.png)
 
 2. Legen Sie das Ablaufintervall fest. Wählen Sie einen vordefinierten Wert aus, oder geben Sie einen benutzerdefinierten Wert ein, der mehr als 31 Tage beträgt. 
 
@@ -67,13 +67,13 @@ Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie f�
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-**So entfernen Sie die Ablaufrichtlinie**
+### <a name="to-remove-the-expiration-policy"></a>So entfernen Sie die Ablaufrichtlinie
 
 1. Vergewissern Sie sich, dass Sie beim [Azure-Portal](https://portal.azure.com) über ein Konto angemeldet sind, das als globaler Administrator für Ihren Mandanten konfiguriert ist.
 2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Ablauf**.
 3. Legen Sie **Ablauf für diese Office 365-Gruppen aktivieren** auf **Keine** fest.
 
-**So deaktivieren Sie die Benutzererstellung für Gruppen**
+### <a name="to-turn-off-user-creation-for-groups"></a>So deaktivieren Sie die Benutzererstellung für Gruppen
 
 1. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Allgemein**. 
 2. Legen Sie **Benutzer können Office 365-Gruppen in Azure-Portalen erstellen.** auf **Nein** fest.
