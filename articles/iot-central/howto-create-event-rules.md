@@ -3,17 +3,17 @@ title: Erstellen und Verwalten von Ereignisregeln in Ihre Azure IoT Central-Anwe
 description: Azure IoT Central-Ereignisregeln ermöglichen Ihnen, Ihre Geräte nahezu in Echtzeit zu überwachen und Aktionen, wie das Senden einer E-Mail, durch Auslösen der Regel automatisch aufzurufen.
 author: ankitscribbles
 ms.author: ankitgup
-ms.date: 08/14/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: af85ff8272853be82bae5c79622295fddfc60ade
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
+ms.openlocfilehash: f350d0ae6602fb393da3ddc350f33ec89e86078e
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337273"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58081439"
 ---
 # <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Erstellen einer Ereignisregel und Einrichten von Benachrichtigungen in Ihrer Azure IoT Central-Anwendung
 
@@ -27,29 +27,21 @@ Geräte können Ereignismessungen zum Senden von wichtigen Geräteereignissen od
 
 Um eine Ereignisregel zu erstellen, muss für die Gerätevorlage mindestens eine Ereignismessung definiert sein. In diesem Beispiel wird ein Warenautomat mit Kühlung verwendet, der einen Fehler des Lüftermotors meldet. Die Regel überwacht das vom Gerät gemeldete Ereignis und sendet eine E-Mail, sobald das Ereignis gemeldet wird.
 
-1. Navigieren Sie im Device Explorer zu der Gerätevorlage, für die Sie die Regel hinzufügen.
-
-1. Klicken Sie unter der ausgewählten Vorlage auf ein vorhandenes Gerät. 
-
-    >[!TIP] 
-    >Wenn die Vorlage über keine Geräte verfügt, fügen Sie zunächst ein neues Gerät hinzu.
+1. Navigieren Sie über die Seite **Gerätevorlagen** zu der Gerätevorlage, für die Sie die Regel hinzufügen.
 
 1. Wenn Sie noch keine Regeln erstellt haben, gelangen Sie auf folgenden Bildschirm:
 
     ![Noch keine Regeln](media/howto-create-event-rules/Rules_Landing_Page.png)
 
+1. Wählen Sie auf der Registerkarte **Regeln** die Option **+ Neue Regel** aus, um die Regeltypen anzuzeigen, die Sie erstellen können.
 
-1. Klicken Sie auf der Registerkarte **Regeln** auf **Vorlage bearbeiten** und dann auf **+ Neue Regel**, um die Regeltypen anzuzeigen, die Sie erstellen können.
-
-
-1. Klicken Sie auf die Kachel **Ereignis**, um eine Regel für Ereignisüberwachung zu erstellen.
+1. Wählen Sie die Kachel **Ereignis** aus, um eine Ereignisüberwachungsregel zu erstellen.
 
     ![Regeltypen](media/howto-create-event-rules/Rule_Types.png)
 
-    
 1. Geben Sie einen aussagekräftigen Namen ein, damit Sie die Regel in dieser Gerätevorlage einfach identifizieren können.
 
-1. Um die Regel sofort für alle Geräte zu aktivieren, die mit dieser Vorlage erstellt wurden, aktivieren Sie die Option **Regel für alle Geräte für diese Vorlage aktivieren**.
+1. Um die Regel sofort für alle Geräte zu aktivieren, die mit dieser Vorlage erstellt wurden, aktivieren Sie die Option **Regel für alle Geräte dieser Vorlage aktivieren**.
 
     ![Regeldetails](media/howto-create-event-rules/Rule_Detail.png)
 
@@ -63,26 +55,25 @@ Die Bedingung definiert die Kriterien, die von der Regel überwacht werden.
 
 1. Wählen Sie in der Dropdownliste „Messung“ das Ereignis aus, das Sie überwachen möchten. In diesem Beispiel wurde das Ereignis **Fan Motor Error** (Lüftermotorfehler) ausgewählt.
 
-   ![Bedingung](media/howto-create-event-rules/Condition_Filled_Out.png) 
-
+   ![Bedingung](media/howto-create-event-rules/Condition_Filled_Out.png)
 
 1. Optional können Sie auch **Anzahl** als **Aggregation** festlegen und den entsprechenden Schwellenwert angeben.
 
-    - Ohne Aggregation wird diese Regel für jeden Ereignisdatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn Sie z.B. die Bedingung der Regel so konfigurieren, dass sie ausgelöst wird, wenn ein Ereignis „Fan Motor Error“ auftritt, wird die Regel fast sofort ausgelöst, wenn das Gerät dieses Ereignis meldet.
-    - Wenn „Anzahl“ als Aggregatfunktion verwendet wird, müssen Sie einen **Schwellenwert** und ein **Aggregatzeitfenster** angeben, in dem die Bedingung ausgewertet werden soll. In diesem Fall wird die Anzahl der Ereignisse aggregiert, und die Regel wird nur dann ausgelöst, wenn die aggregierte Ereignisanzahl mit dem Schwellenwert übereinstimmt.
- 
-    Wenn Sie z.B. bei mehr als drei Geräteereignissen innerhalb von 5 Minuten warnen möchten, wählen Sie das Ereignis aus und legen die Aggregatfunktion als „Anzahl“, den Operator als „größer als“ und den „Schwellenwert“ als 3 fest. Legen Sie „Aggregationszeitraum“ auf „5 Minuten“ fest. Die Regel wird ausgelöst, wenn mehr als drei Ereignisse innerhalb von 5 Minuten vom Gerät gesendet werden. Die Regelauswertungshäufigkeit ist identisch mit dem **Aggregationszeitfenster**. Dies bedeutet in diesem Beispiel, dass die Regel ein Mal alle 5 Minuten ausgewertet wird. 
+   - Ohne Aggregation wird diese Regel für jeden Ereignisdatenpunkt ausgelöst, der die Bedingung erfüllt. Wenn Sie z.B. die Bedingung der Regel so konfigurieren, dass sie ausgelöst wird, wenn ein Ereignis **Fan Motor Error** auftritt, wird die Regel fast sofort ausgelöst, wenn das Gerät dieses Ereignis meldet.
+   - Wenn „Anzahl“ als Aggregatfunktion verwendet wird, müssen Sie einen **Schwellenwert** und ein **Aggregatzeitfenster** angeben, in dem die Bedingung ausgewertet werden soll. In diesem Fall wird die Anzahl der Ereignisse aggregiert, und die Regel wird nur dann ausgelöst, wenn die aggregierte Ereignisanzahl mit dem Schwellenwert übereinstimmt.
 
-    ![Hinzufügen einer Ereignisbedingung](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+     Wenn Sie z.B. bei mehr als drei Geräteereignissen innerhalb von 5 Minuten warnen möchten, wählen Sie das Ereignis aus und legen die Aggregatfunktion als „Anzahl“, den Operator als „größer als“ und den „Schwellenwert“ als 3 fest. Legen Sie „Aggregationszeitraum“ auf „5 Minuten“ fest. Die Regel wird ausgelöst, wenn mehr als drei Ereignisse innerhalb von 5 Minuten vom Gerät gesendet werden. Die Regelauswertungshäufigkeit ist identisch mit dem **Aggregationszeitfenster**. Dies bedeutet in diesem Beispiel, dass die Regel ein Mal alle 5 Minuten ausgewertet wird.
 
-    >[!NOTE] 
-    >Weitere Ereignismessungen können unter **Bedingung** hinzugefügt werden. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird implizit durch eine „UND“-Klausel verknüpft. Wenn Sie die Aggregatfunktion verwenden, müssen alle Messungen aggregiert werden.
+     ![Hinzufügen einer Ereignisbedingung](media/howto-create-event-rules/Aggregate_Condition_Filled_Out.png)
+
+     >[!NOTE]
+     >Weitere Ereignismessungen können unter **Bedingung** hinzugefügt werden. Wenn mehrere Bedingungen angegeben werden, müssen alle Bedingungen erfüllt sein, damit die Regel ausgelöst wird. Jede Bedingung wird implizit durch eine „UND“-Klausel verknüpft. Wenn Sie die Aggregatfunktion verwenden, müssen alle Messungen aggregiert werden.
 
 ### <a name="configure-actions"></a>Konfigurieren von Aktionen
 
 In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgeführt werden sollen, wenn die Regel ausgelöst wird. Aktionen werden aufgerufen, wenn alle in der Regel angegebenen Bedingungen als TRUE ausgewertet werden.
 
-1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen. 
+1. Wählen Sie **+** neben der Option **Aktionen**. Hier sehen Sie die Liste der verfügbaren Aktionen.
 
     ![Hinzufügen einer Aktion](media/howto-create-event-rules/Add_Action.png)
 
@@ -94,8 +85,6 @@ In diesem Abschnitt erfahren Sie, wie Aktionen eingerichtet werden, die ausgefü
    ![Konfigurieren einer Aktion](media/howto-create-event-rules/Configure_Action.png)
 
 1. Um die neue Regel zu speichern, wählen Sie **Speichern** aus. Die Regel geht innerhalb weniger Minuten live und beginnt mit der Überwachung der Ereignisse, die an Ihre Anwendung gesendet werden. Wenn die in der Regel festgelegte Bedingung erfüllt ist, löst die Regel die konfigurierte E-Mail-Aktion aus.
-
-1. Klicken Sie auf **Fertig**, um den Modus **Vorlage bearbeiten** zu beenden.
 
 Sie können der Regel auch andere Aktionen wie Microsoft Flow und Webhooks hinzufügen. Sie können bis zu fünf Aktionen pro Regel hinzufügen.
 

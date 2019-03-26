@@ -9,12 +9,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: asgang
-ms.openlocfilehash: 9399f9d47d89215080b1f633423843f501fefb7b
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 68efc039c5de5d7f61b7ce34e74c6c2cf4bad027
+ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850430"
+ms.lasthandoff: 02/22/2019
+ms.locfileid: "56670875"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP NetWeaver-App mit mehreren Ebenen
 
@@ -80,7 +80,7 @@ Zur Unterstützung der Failoverclusterumgebung führt [SIOS DataKeeper Cluster E
 
 Eine weitere Möglichkeit zur Verwaltung von Clustering besteht darin, ein Dateifreigabecluster zu implementieren. [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) hat kürzlich das Bereitstellungsmuster von Central Services so geändert, dass über einen UNC-Pfad auf die globalen „/sapmnt“-Verzeichnisse zugegriffen wird. Es ist aber weiterhin ratsam sicherzustellen, dass die UNC-Freigabe für „/sapmnt“ hochverfügbar ist. Dies lässt sich in der Central Services-Instanz erreichen, indem Windows Server-Failovercluster mit Scale Out File Server (SOFS) und der Storage Spaces Direct-Funktion (S2D, „Direkte Speicherplätze“) in Windows Server 2016 verwendet wird. 
  > [!NOTE]
- > Derzeit unterstützt Azure Site Recovery nur die Replikation absturzkonsistenter Punkte virtueller Maschinen mithilfe direkter Speicherplätze. 
+ > Derzeit unterstützt Azure Site Recovery nur die Replikation absturzkonsistenter Punkte virtueller Maschinen mithilfe direkter Speicherplätze und passiver Knoten von SIOS Datakeeper.
 
 
 ## <a name="disaster-recovery-considerations"></a>Überlegungen zur Notfallwiederherstellung

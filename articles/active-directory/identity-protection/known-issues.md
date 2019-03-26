@@ -17,17 +17,17 @@ ms.date: 01/24/2019
 ms.author: markvi
 ms.reviewer: raluthra
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bc08710909252c9bcade6177a105684128acc5bf
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: a1cc8a9305103a30fc0ea0fc40c23a522e136d80
+ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56339022"
+ms.lasthandoff: 02/25/2019
+ms.locfileid: "56807183"
 ---
 # <a name="faqs-and-known-issues-with-identity-protection-refreshed-in-azure-active-directory"></a>FAQs und bekannte Probleme mit Identity Protection (aktualisiert) in Azure Active Directory
 
 
-## <a name="dismiss-user-risk"></a>Ignorieren eines Benutzerrisikos
+## <a name="dismiss-user-risk-known-issues"></a>Ignorieren eines Benutzerrisikos – Bekannte Probleme
 
 Über **Benutzerrisiko ignorieren** in Identity Protection (klassisch) wird der Akteur im Risikoverlauf des Benutzers in Identity Protection (aktualisiert) auf **Azure AD** festgelegt.
 
@@ -37,7 +37,7 @@ ms.locfileid: "56339022"
 Derzeit verursacht ein bekanntes Problem Wartezeiten beim Ablauf des Schließvorgangs für Benutzerrisiken. Wenn Sie eine „Benutzerrisiko-Richtlinie“ haben, wird diese Richtlinie innerhalb von Minuten, nachdem auf „Benutzerrisiko ignorieren“ geklickt wurde, nicht mehr auf verworfene Benutzer angewendet. Allerdings gibt es bekannte Verzögerungen beim Aktualisieren des „Risikozustands“ von verworfenen Benutzern in der Benutzerumgebung. Aktualisieren Sie als Problemumgehung die Seite im Browser, um den aktuellen „Risikozustand“ eines Benutzers anzuzeigen.
 
 
-## <a name="risky-users-report"></a>Bericht „Riskante Benutzer“
+## <a name="risky-users-report-known-issues"></a>Bericht „Riskante Benutzer“ – Bekannte Probleme
 
 Bei Abfragen für das Feld **Benutzername** wird die Groß-/Kleinschreibung beachtet, bei Abfragen für das Feld **Name** hingegen nicht.
 
@@ -45,14 +45,10 @@ Durch Umschalten von **Datum anzeigen als** wird die Spalte **LETZTE AKTUALISIER
 
 Über **Alle Ereignisse schließen** im klassischen Identity Protection wird der Status der Risikoereignisse auf **Geschlossen (gelöst)** festgelegt.
 
-Wenn Sie versuchen, auf den Bericht für riskante Benutzer zuzugreifen, indem Sie innerhalb eines Anmeldedatensatzes im Bericht zu riskanten Anmeldungen auf **Bericht zu riskanten Benutzern** klicken, kann es gelegentlich vorkommen, dass folgender Fehler angezeigt wird: **Da hat etwas nicht geklappt. Versuchen Sie es noch mal.** Um das Problem zu beheben, klicken Sie oben auf dem Bildschirm auf **Anwenden** oder **Zurücksetzen**, um die Daten zu riskanten Benutzern aufzufüllen.
 
-
-## <a name="risky-sign-ins-report"></a>Bericht über riskante Anmeldungen
+## <a name="risky-sign-ins-report-known-issues"></a>Bericht „Riskante Anmeldungen“ – Bekannte Probleme
 
 Bei einem Risikoereignis führt **Auflösen** dazu, dass der Status auf **Der Benutzer hat die durch eine risikobasierte Richtlinie ausgelöste MFA erfolgreich durchgeführt** festgelegt wird.
-
-Über **Zurücksetze** im Bericht **Riskante Anmeldungen** wird der Wert für **Risikoereignistyp** nicht gelöscht.
 
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen

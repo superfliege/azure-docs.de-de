@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2018
+ms.date: 02/12/2019
 ms.author: jdial
-ms.openlocfilehash: 7d8047e569d3506f9ebb798b4f8c31ff94204fa4
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 19fdf2e7e1c7c56b6bfe8ddbf7329d3722f4e8de
+ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694056"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58188610"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -52,7 +52,7 @@ Sie können die folgenden Tools zum Erstellen oder Konfigurieren eines VNet verw
 * Eine Netzwerkkonfigurationsdatei (NETCFG-Datei, nur für klassische VNets). Weitere Informationen finden Sie im Artikel [Konfigurieren eines Virtual Network mit einer Netzwerkkonfigurationsdatei](virtual-networks-using-network-configuration-file.md).
 
 ### <a name="what-address-ranges-can-i-use-in-my-vnets"></a>Welche Adressbereiche kann ich in meinen VNets verwenden?
-Alle in [RFC 1918](http://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16. Sie können die folgenden Adressbereiche nicht hinzufügen:
+Alle in [RFC 1918](https://tools.ietf.org/html/rfc1918) definierten IP-Adressbereiche. Beispiel: 10.0.0.0/16. Sie können die folgenden Adressbereiche nicht hinzufügen:
 * 224.0.0.0/4 (Multicast)
 * 255.255.255.255/32 (Übertragung)
 * 127.0.0.0/8 (Loopback)
@@ -221,7 +221,7 @@ Ja. Sie können REST-APIs für VNETs im Rahmen des [Azure Resource Manager-Berei
 ### <a name="is-there-tooling-support-for-vnets"></a>Sind Tools zur Unterstützung von VNets verfügbar?
 Ja. Weitere Informationen zur Verwendung von folgenden Tools:
 - Azure-Portal: Bereitstellen von VNets über das [Azure Resource Manager](manage-virtual-network.md#create-a-virtual-network)- und [klassische](virtual-networks-create-vnet-classic-pportal.md) Bereitstellungsmodell.
-- PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/azurerm.network)- und [klassische](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
+- PowerShell: Verwalten von VNets, die über das [Resource Manager](/powershell/module/az.network)- und [klassische](/powershell/module/servicemanagement/azure/?view=azuresmps-3.7.0) Bereitstellungsmodell bereitgestellt werden.
 - Azure-Befehlszeilenschnittstelle (Command-Line Interface, CLI) zum Bereitstellen und Verwalten von VNETs, die über das [Resource Manager-Modell](/cli/azure/network/vnet) und das [klassische](../virtual-machines/azure-cli-arm-commands.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-network-commands-to-manage-network-resources) Bereitstellungsmodell bereitgestellt werden  
 
 ## <a name="vnet-peering"></a>VNet-Peering
@@ -231,6 +231,26 @@ VNET-Peering (das Peering virtueller Netzwerke) ermöglicht Ihnen das Verbinden 
 
 ### <a name="can-i-create-a-peering-connection-to-a-vnet-in-a-different-region"></a>Kann ich eine Peeringverbindung mit einem VNET in einer anderen Region herstellen?
 Ja. Globales VNET-Peering ermöglicht Ihnen das Peering mit VNETs in unterschiedlichen Regionen. Globales VNET-Peering ist in allen öffentlichen Azure- und China-Cloudregionen verfügbar. Globales Peering von öffentlichen Azure-Regionen mit nationalen Cloudregionen ist nicht möglich. Globales Peering ist in der Government Cloud zurzeit nicht verfügbar.
+
+### <a name="what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers"></a>Welche Einschränkungen gibt es im Zusammenhang mit globalem VNET-Peering und Load Balancern?
+Wenn sich die zwei virtuellen Netzwerke in unterschiedlichen Regionen befinden (Globales VNet-Peering), können Sie sich nicht mit Ressourcen verbinden, die Basic-Load Balancer verwenden. Sie können sich mit Ressourcen verbinden, die Load Balancer Standard verwenden.
+Die folgenden Ressourcen verwenden Basic-Load Balancer, d. h. Sie können nicht über globales VNet-Peering mit ihnen kommunizieren:
+- VMs hinter Basic-Load Balancern
+- Microsoft Azure Virtual Machine Scale Sets mit Basic-Load Balancern 
+- Redis Cache 
+- Application Gateway (v1) SKU
+- Service Fabric
+- SQL Always-on
+- SQL MI
+- API Managemenet
+- ADDS
+- Logic Apps
+- HD Insight
+-   Azure Batch
+- AKS
+- App Service-Umgebung
+
+Sie können sich mit diesen Ressourcen über ExpressRoute oder VNet-zu-VNet über VNet-Gateways verbinden.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Kann ich VNET-Peering aktivieren, wenn meine virtuellen Netzwerke zu Abonnements in verschiedenen Azure Active Directory-Mandanten gehören?
 Ja. Es ist möglich, VNET-Peering (lokal oder global) einzurichten, wenn Ihre Abonnements zu verschiedenen Azure Active Directory-Mandanten gehören. Dies kann mittels PowerShell oder CLI erfolgen. Das Portal wird noch nicht unterstützt.
@@ -265,7 +285,7 @@ Nein. Für VNET-Peering, ob lokal oder global, bestehen keine Bandbreiteneinschr
 ## <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Welche Azure-Regionen sind für den TAP eines virtuellen Netzwerks verfügbar?
-Während der Entwicklervorschau ist die Funktion in der Region „USA, Westen Mitte“ verfügbar. Die überwachten Netzwerkschnittstellen, die TAP-Ressource des virtuellen Netzwerks und die Collector- oder Analyselösung müssen in der gleichen Region bereitgestellt werden.
+Die Vorschau des TAPs für virtuelle Netzwerke ist in allen Azure-Regionen verfügbar. Die überwachten Netzwerkschnittstellen, die TAP-Ressource des virtuellen Netzwerks und die Collector- oder Analyselösung müssen in der gleichen Region bereitgestellt werden.
 
 ### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Unterstützt der TAP eines virtuellen Netzwerks Filterfunktionen für die gespiegelten Pakete?
 Filterfunktionen werden in der Vorschauversion des TAP für ein virtuelles Netzwerk nicht unterstützt. Beim Hinzufügen einer TAP-Konfiguration zu einer Netzwerkschnittstelle wird eine Tiefenkopie des gesamten eingehenden und ausgehenden Datenverkehrs an das TAP-Ziel gestreamt.
@@ -278,7 +298,7 @@ Ja. Dieselbe TAP-Ressource eines virtuellen Netzwerks kann zum Aggregieren von g
 
 ### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Gibt es Überlegungen zur Leistung für Produktionsdatenverkehr, wenn ich eine TAP-Konfiguration für ein virtuelles Netzwerk an einer Netzwerkschnittstelle aktiviere?
 
-TAP eines virtuellen Netzwerk befindet sich in der Entwicklervorschau. Während der Vorschau gibt es keine Vereinbarung zum Servicelevel. Die Funktion darf nicht für Produktionsworkloads verwendet werden. Wenn die Netzwerkschnittstelle eines virtuellen Computers mit einer TAP-Konfiguration aktiviert ist, werden mit den Ressourcen auf dem Azure-Host, der dem virtuellen Computer für das Senden des Produktionsdatenverkehrs zugeordnet ist, auch die Spiegelungsfunktion ausgeführt und die gespiegelten Pakete versendet. Wählen Sie die richtige Größe für einen virtuellen [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer aus, um sicherzustellen, dass für den virtuellen Computer genügend Ressourcen zum Senden des Produktionsdatenverkehrs und des gespiegelten Datenverkehrs verfügbar sind.
+Der TAP für virtuelle Netzwerke befindet sich in der Vorschau. Während der Vorschau gibt es keine Vereinbarung zum Servicelevel. Die Funktion darf nicht für Produktionsworkloads verwendet werden. Wenn die Netzwerkschnittstelle eines virtuellen Computers mit einer TAP-Konfiguration aktiviert ist, werden mit den Ressourcen auf dem Azure-Host, der dem virtuellen Computer für das Senden des Produktionsdatenverkehrs zugeordnet ist, auch die Spiegelungsfunktion ausgeführt und die gespiegelten Pakete versendet. Wählen Sie die richtige Größe für einen virtuellen [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer aus, um sicherzustellen, dass für den virtuellen Computer genügend Ressourcen zum Senden des Produktionsdatenverkehrs und des gespiegelten Datenverkehrs verfügbar sind.
 
 ### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Wird beschleunigter Netzwerkbetrieb für [Linux](create-vm-accelerated-networking-cli.md) oder [Windows](create-vm-accelerated-networking-powershell.md) mit TAP eines virtuellen Netzwerks unterstützt?
 
