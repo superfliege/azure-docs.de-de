@@ -8,12 +8,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 09/24/2018
-ms.openlocfilehash: 7ce66d3f6117a5e395920dc2232efb0e43f4cd18
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: 9dade2ccebfb96cd54bdb9c8ef70c14fdeadad76
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106446"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58225772"
 ---
 # <a name="quickstart-query-data-in-azure-data-explorer"></a>Schnellstart: Abfragen von Daten im Azure Data Explorer
 
@@ -37,9 +37,13 @@ Wenn Sie die Anwendung zum ersten Mal öffnen, sind keine Verbindungen vorhanden
 
 Sie müssen eine Verbindung mit mindestens einem Cluster hinzufügen, bevor Sie Abfragen ausführen können. In diesem Abschnitt fügen Sie Verbindungen mit dem *Hilfecluster* des Azure-Daten-Explorers, den wir als Hilfestellung beim Lernen eingerichtet haben, und mit dem Testcluster, den Sie in einem früheren Schnellstart erstellt haben, hinzu.
 
-1. Wählen Sie in der oberen linken Ecke der Anwendung **Add cluster** (Cluster hinzufügen) aus.
+1. Wählen Sie oben links in der Anwendung die Option **Cluster hinzufügen** aus.
 
-1. Geben Sie im Dialogfeld **Cluster hinzufügen** die Adresse `https://help.kusto.windows.net` ein, und wählen Sie dann **Hinzufügen** aus.
+1. Geben Sie im Dialogfeld **Cluster hinzufügen** den URI ein, und wählen Sie dann **Hinzufügen** aus.
+
+   Sie können den Hilfecluster-URI `https://help.kusto.windows.net` verwenden. Wenn Sie über einen eigenen Cluster verfügen, geben Sie den URI Ihres Clusters an. Verwenden Sie beispielsweise `https://mydataexplorercluster.westus.kusto.windows.net` wie in der folgenden Abbildung:
+
+    ![Server-URI im Portal](media/web-query-data/server-uri.png)
 
 1. Im linken Bereich sollten jetzt der **Hilfecluster** angezeigt werden. Erweitern Sie die Datenbank **Samples**, damit Sie die Beispieltabellen sehen können, auf die Sie zugreifen können.
 

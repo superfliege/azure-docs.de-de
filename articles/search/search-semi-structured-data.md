@@ -6,43 +6,42 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 07/12/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: ba9b34dbd9d0959e79c755abc8dad9fe1d358a50
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: 1c8ce14dd3961eff33a54a14c2bd0b27650d8a50
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53632941"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201346"
 ---
 # <a name="tutorial-search-semi-structured-data-in-azure-cloud-storage"></a>Tutorial: Durchsuchen von teilweise strukturierten Daten in Azure-Cloudspeicher
 
-In einer zweiteiligen Tutorialreihe erfahren Sie, wie Sie teilweise strukturierte und unstrukturierte Daten mit Azure Search durchsuchen. In [Teil 1](../storage/blobs/storage-unstructured-search.md) haben Sie etwas über das Durchsuchen von unstrukturierten Daten erfahren, jedoch wurden auch wichtige Voraussetzungen für dieses Tutorial behandelt, etwa das Erstellen des Speicherkontos. 
+Azure Search kann JSON-Dokumente und -Arrays in Azure Blob Storage mithilfe eines [Indexers](search-indexer-overview.md) indizieren, der teilweise strukturierte Daten lesen kann. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie bilden den Unterschied zwischen unstrukturierten Daten, die vollständig indiziert werden müssen, und formal strukturierten Daten, die einem Datenmodell entsprechen (wie z. B. einem Schema einer relationalen Datenbank), das pro Feld indiziert werden kann.
 
-In Teil 2 geht es um teilweise strukturierte Daten, z.B. im JSON-Format, die in Azure-Blobs gespeichert sind. Teilweise strukturierte Daten enthalten Tags oder Markierungen, mit denen Inhalte in den Daten voneinander getrennt werden. Sie bilden den Unterschied zwischen unstrukturierte Daten, die in ihrer Gesamtheit indiziert werden müssen, und formal strukturierten Daten, die sich nach einem Datenmodell richten, z.B. ein Schema mit einer relationalen Datenbank, die feldweise durchsucht werden kann.
-
-In Teil 2 erfahren Sie Folgendes:
+In diesem Tutorial verwenden Sie die [Azure Search-REST-APIs](https://docs.microsoft.com/rest/api/searchservice/) und einen REST-Client, um die folgenden Aufgaben auszuführen:
 
 > [!div class="checklist"]
 > * Konfigurieren einer Azure Search-Datenquelle für einen Azure-Blobcontainer
-> * Erstellen und Auffüllen eines Azure Search-Index und eines Indexers zum Durchsuchen des Containers und Extrahieren von durchsuchbarem Inhalt
+> * Erstellen eines Azure Search-Index mit durchsuchbarem Inhalt
+> * Konfigurieren und Ausführen eines Indexers zum Lesen des Containers und zum Extrahieren von durchsuchbaren Inhalten aus Azure Blob Storage
 > * Durchsuchen des soeben erstellten Index
-
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
-
-## <a name="prerequisites"></a>Voraussetzungen
-
-* Abschluss des [vorhergehenden Tutorials](../storage/blobs/storage-unstructured-search.md), in dem das Speicherkonto und der Suchdienst aus dem vorherigen Tutorial bereitgestellt wurden.
-
-* Installieren eines REST-Clients und Vertrautmachen mit dem Erstellen einer HTTP-Anforderung. Für dieses Tutorial nutzen wir [Postman](https://www.getpostman.com/). Sie können auch einen anderen REST-Client verwenden, wenn Sie damit bereits gut vertraut sind.
 
 > [!NOTE]
 > Dieses Tutorial basiert auf JSON-Array-Unterstützung, die derzeit als Vorschaufeature in Azure Search vorhanden ist. Sie ist nicht im Portal verfügbar. Aus diesem Grund verwenden wir die Vorschauversion der REST-API, in der dieses Feature enthalten ist, und ein REST-Clienttool zum Aufrufen der API.
 
+## <a name="prerequisites"></a>Voraussetzungen
+
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
+
+[Erstellen Sie ein Azure-Speicherkonto](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account), das Beispieldaten enthält.
+
+[Verwenden Sie Postman](https://www.getpostman.com/) oder einen anderen REST-Client, um Ihre Anforderungen zu senden. Anweisungen zum Einrichten einer HTTP-Anforderung in Postman finden Sie im nächsten Abschnitt.
+
 ## <a name="set-up-postman"></a>Einrichten von Postman
 
-Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, finden Sie weitere Informationen unter [Untersuchen von Azure Search-REST-APIs mit Fiddler oder Postman](search-fiddler.md).
+Starten Sie Postman, und richten Sie eine HTTP-Anforderung ein. Wenn Sie mit diesem Tool nicht vertraut sind, lesen Sie [Untersuchen von Azure Search-REST-APIs mit Postman oder Fiddler](search-fiddler.md).
 
 Die Anforderungsmethode für jeden Aufruf in diesem Tutorial ist „POST“. Die Headerschlüssel sind „Content-type“ und „api-key“. Die Werte der Headerschlüssel sind „application/json“ bzw. Ihr „Administratorschlüssel“ (der Administratorschlüssel ist ein Platzhalter für Ihren Primärschlüssel für die Suche). Im Text ordnen Sie den eigentlichen Inhalt Ihres Aufrufs an. Je nach verwendetem Client kann der Aufbau Ihrer Abfrage leicht abweichen, aber hier erhalten Sie die grundlegenden Informationen.
 
@@ -52,21 +51,13 @@ Für die in diesem Tutorial beschriebenen REST-Aufrufe ist Ihr API-Schlüssel f�
 
   ![Teilweise strukturierte Suche](media/search-semi-structured-data/keys.png)
 
-## <a name="download-the-sample-data"></a>Herunterladen der Beispieldaten
+## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
-Es wurde ein Beispieldataset für Sie vorbereitet. **Laden Sie [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip)** herunter, und entzippen Sie die Datei in einem eigenen Ordner.
+1. **Laden Sie [clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip)** herunter, und entzippen Sie die Datei in einem eigenen Ordner. Die Daten stammen aus [ClinicalTrials.gov](https://clinicaltrials.gov/ct2/results) und werden für dieses Tutorial in JSON konvertiert.
 
-Im Beispiel sind JSON-Beispieldateien enthalten, bei denen es sich ursprünglich um Textdateien von [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results) handelt. Wir haben sie der Einfachheit halber in JSON-Code konvertiert.
+2. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, navigieren Sie zu Ihrem Azure-Speicherkonto, öffnen Sie den Container **Daten**, und klicken Sie dann auf **Hochladen**.
 
-## <a name="sign-in-to-azure"></a>Anmelden bei Azure
-
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-
-## <a name="upload-the-sample-data"></a>Hochladen der Beispieldaten
-
-Navigieren Sie im Azure-Portal zurück zu dem Speicherkonto, das im [vorherigen Tutorial](../storage/blobs/storage-unstructured-search.md) erstellt wurde. Öffnen Sie dann den Container **data**, und klicken Sie auf **Hochladen**.
-
-Klicken Sie auf **Erweitert**, geben Sie „clinical-trials-json“ ein, und laden Sie dann alle JSON-Dateien hoch, die Sie heruntergeladen haben.
+3. Klicken Sie auf **Erweitert**, geben Sie „clinical-trials-json“ ein, und laden Sie dann alle JSON-Dateien hoch, die Sie heruntergeladen haben.
 
   ![Teilweise strukturierte Suche](media/search-semi-structured-data/clinicalupload.png)
 
@@ -76,17 +67,15 @@ Nach Abschluss des Uploads sollten die Dateien im Datencontainer in einem eigene
 
 Wir nutzen Postman zum Senden von drei API-Aufrufen an Ihren Suchdienst, um eine Datenquelle, einen Index und einen Indexer zu erstellen. Die Datenquelle enthält einen Zeiger auf Ihr Speicherkonto und Ihre JSON-Daten. Ihr Suchdienst stellt die Verbindung beim Laden der Daten her.
 
-Die Abfragezeichenfolge muss **api-version=2016-09-01-Preview** enthalten, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die allgemein verfügbare API-Version verfügt noch nicht über die Funktion zum Behandeln von json als jsonArray. Dies ist derzeit nur für die API-Vorschauversion möglich.
+Die Abfragezeichenfolge muss eine Vorschau-API (z. B. **api-version=2017-11-11-Preview**) enthalten, und für jeden Aufruf sollte **201 Created** zurückgegeben werden. Die allgemein verfügbare API-Version verfügt noch nicht über die Funktion zum Behandeln von json als jsonArray. Dies ist derzeit nur für die API-Vorschauversion möglich.
 
 Führen Sie die folgenden drei API-Aufrufe über Ihren REST-Client aus.
 
-### <a name="create-a-datasource"></a>Erstellen einer Datenquelle
+## <a name="create-a-data-source"></a>Erstellen einer Datenquelle
 
-Eine Datenquelle gibt an, welche Daten indiziert werden sollen.
+Eine Datenquelle ist ein Azure Search-Objekt, das angibt, welche Daten indiziert werden sollen.
 
-Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
-
-Für diesen Aufruf benötigen Sie den Namen Ihres Speicherkontos und Ihren Speicherkontoschlüssel. Sie finden den Speicherkontoschlüssel im Azure-Portal unter den **Zugriffsschlüsseln** Ihres Speicherkontos. Der Speicherort ist in der folgenden Abbildung angegeben:
+Der Endpunkt dieses Aufrufs lautet `https://[service name].search.windows.net/datasources?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts. Für diesen Aufruf benötigen Sie den Namen Ihres Speicherkontos und Ihren Speicherkontoschlüssel. Sie finden den Speicherkontoschlüssel im Azure-Portal unter den **Zugriffsschlüsseln** Ihres Speicherkontos. Der Speicherort ist in der folgenden Abbildung angegeben:
 
   ![Teilweise strukturierte Suche](media/search-semi-structured-data/storagekeys.png)
 
@@ -123,9 +112,9 @@ Die Antwort sollte in etwa wie folgt aussehen:
 }
 ```
 
-### <a name="create-an-index"></a>Erstellen eines Index
+## <a name="create-an-index"></a>Erstellen eines Index
     
-Mit dem zweiten API-Aufruf wird ein Index erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
+Mit dem zweiten API-Aufruf wird ein Azure Search-Index erstellt. Ein Index gibt alle Parameter und die dazugehörigen Attribute an.
 
 Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexes?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
@@ -213,13 +202,13 @@ Die Antwort sollte in etwa wie folgt aussehen:
 }
 ```
 
-### <a name="create-an-indexer"></a>Erstellen eines Indexers
+## <a name="create-and-run-an-indexer"></a>Erstellen und Ausführen eines Indexers
 
-Ein Indexer verbindet die Datenquelle mit dem Zielsuchindex und stellt optional einen Zeitplan für die Automatisierung der Datenaktualisierung bereit.
+Ein Indexer verbindet die Datenquelle, importiert Daten in den Zielsuchindex und stellt optional einen Zeitplan für die Automatisierung der Datenaktualisierung bereit.
 
 Die URL für diesen Aufruf lautet `https://[service name].search.windows.net/indexers?api-version=2016-09-01-Preview`. Ersetzen Sie `[service name]` durch den Namen Ihres Suchdiensts.
 
-Ersetzen Sie zunächst die URL. Fügen Sie den folgenden Code in den Text ein, und führen Sie die Abfrage aus.
+Ersetzen Sie zunächst die URL. Kopieren Sie dann den folgenden Code, fügen Sie ihn in den Text ein, und senden Sie die Anforderung. Die Anforderung wird sofort verarbeitet. Wenn die Antwort eintrifft, verfügen Sie über einen Index, der für die Volltextsuche verwendet werden kann.
 
 ```json
 {
@@ -258,9 +247,7 @@ Die Antwort sollte in etwa wie folgt aussehen:
 
 ## <a name="search-your-json-files"></a>Durchsuchen von JSON-Dateien
 
-Nachdem Ihr Suchdienst nun mit Ihrem Datencontainer verbunden wurde, können Sie mit dem Durchsuchen Ihrer Dateien beginnen.
-
-Öffnen Sie das Azure-Portal, und navigieren Sie zurück zu Ihrem Suchdienst. Dies haben Sie auch im vorherigen Tutorial so durchgeführt.
+Sie können jetzt Abfragen für den Index ausgeben. Verwenden Sie für diese Aufgabe den [**Suchexplorer**](search-explorer.md) im Portal.
 
   ![Unstrukturierte Suche](media/search-semi-structured-data/indexespane.png)
 

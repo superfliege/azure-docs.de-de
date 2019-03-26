@@ -13,33 +13,35 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 874522b6b4ca3739e0736d4f70f76bb82cad25f9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: be19d37900acb8201922fa61fda61cc884d4c933
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957350"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226010"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>Tutorial: Integrieren mit verwalteten Azure-Identitäten
 
-Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt. Hierbei werden also keine separaten Anmeldeinformationen verwendet, die in Azure Key Vault oder einer lokalen Verbindungszeichenfolge gespeichert sind. Azure App Configuration und die zugehörigen .NET Core-, .NET- und Java Spring-Clientbibliotheken verfügen über integrierte MSI-Unterstützung. Die Verwendung von MSI ist zwar nicht obligatorisch, aber hierbei entfällt das Zugriffstoken mit Geheimnissen. Ihrem Code muss lediglich der Dienstendpunkt für einen App-Konfigurationsspeicher bekannt sein, damit darauf zugegriffen werden kann. Sie können diese URL direkt in Ihren Code einbetten, ohne fürchten zu müssen, dass Geheimnisse offengelegt werden.
+Mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) von Azure Active Directory wird die Verwaltung von Geheimnissen für Ihre Cloudanwendung vereinfacht. Mit einer verwalteten Identität können Sie Ihren Code für die Nutzung des Dienstprinzipals einrichten, der für den Azure-Computedienst erstellt wurde, auf dem die Ausführung erfolgt.  Sie verwenden also eine verwaltete Identität anstelle separater Anmeldeinformationen, die in Azure Key Vault oder einer lokalen Verbindungszeichenfolge gespeichert sind. 
 
-In diesem Tutorial wird veranschaulicht, wie Sie MSI für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Arbeiten Sie zunächst [Erstellen einer ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md) durch, bevor Sie fortfahren.
+Azure App Configuration und die zugehörigen .NET Core-, .NET- und Java Spring-Clientbibliotheken verfügen über integrierte MSI-Unterstützung (Managed Service Identity, Verwaltete Dienstidentität). Zwar müssen Sie MSI nicht verwenden, doch entfällt hierbei die Notwendigkeit für das Zugriffstoken mit Geheimnissen. Ihr Code muss nur den Dienstendpunkt für einen App-Konfigurationsspeicher kennen, um darauf zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne sich Sorgen machen zu müssen, dass geheime Schlüssel offengelegt werden.
 
-Sie können einen beliebigen Code-Editor nutzen, um die Schritte in diesem Tutorial auszuführen. [Visual Studio Code](https://code.visualstudio.com/) ist aber eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
+In diesem Tutorial wird veranschaulicht, wie Sie MSI für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Führen Sie zuerst den Schnellstart [Erstellen einer ASP.NET Core-App mit Azure App Configuration](./quickstart-aspnet-core-app.md) durch, bevor Sie fortfahren.
+
+Für die Ausführung der Schritte dieses Tutorials können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
-> * Gewähren des Zugriffs auf App Configuration für eine verwaltete Identität
-> * Konfigurieren Ihrer App für die Verwendung einer verwalteten Identität bei der Verbindungsherstellung mit App Configuration
+> * Gewähren des Zugriffs auf App Configuration für eine verwaltete Identität.
+> * Konfigurieren Ihrer App für die Verwendung einer verwalteten Identität bei der Verbindungsherstellung mit App Configuration.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* [.NET Core SDK](https://www.microsoft.com/net/download/windows)
-* [Konfigurierte Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart)
+* [.NET Core SDK](https://www.microsoft.com/net/download/windows).
+* [Konfigurierte Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -47,33 +49,33 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zuerst eine Anwendung und aktivieren dann das Feature.
 
-1. Erstellen Sie wie gewohnt im [Azure-Portal](https://aka.ms/azconfig/portal) eine App. Navigieren Sie im Portal zu dieser App.
+1. Erstellen Sie wie gewohnt im [Azure-Portal](https://aka.ms/azconfig/portal) eine App. Wechseln Sie im Portal zu dieser App.
 
-2. Scrollen Sie im linken Navigationsbereich nach unten zur Gruppe **Einstellungen**, und wählen Sie **Identität**.
+2. Scrollen Sie im linken Bereich nach unten zur Gruppe **Einstellungen**, und wählen Sie **Identität**.
 
-3. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**, und klicken Sie auf **Speichern**.
+3. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**, und wählen Sie **Speichern** aus.
 
     ![Festlegen der verwalteten Identität in App Service](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Gewähren des Zugriffs auf App Configuration
 
-1. Klicken Sie im [Azure-Portal](https://aka.ms/azconfig/portal) auf **Alle Ressourcen** und dann auf den App-Konfigurationsspeicher, den Sie anhand der Schnellstartanleitung erstellt haben.
+1. Wählen Sie im [Azure-Portal](https://aka.ms/azconfig/portal) **Alle Ressourcen** aus, und wählen Sie dann den App-Konfigurationsspeicher aus, den Sie in der Schnellstartanleitung erstellt haben.
 
 2. Wählen Sie die Option **Zugriffssteuerung (IAM)**.
 
-3. Klicken Sie auf der Registerkarte **Zugriff überprüfen** im Kartenelement **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
+3. Wählen Sie auf der Registerkarte **Zugriff überprüfen** im Kartenelement **Rollenzuweisung hinzufügen** den Befehl **Hinzufügen** aus.
 
-4. Legen Sie **Rolle** auf *Mitwirkender* und **Zugriff zuweisen zu** auf *App Service* (unter *Systemseitig zugewiesene verwaltete Identität*) fest.
+4. Wählen Sie unter **Rolle** die Option **Mitwirkender**. Wählen Sie unter **Zugriff zuweisen zu** unter **Systemseitig zugewiesene verwaltete Identität** die Option **App Service** aus.
 
-5. Legen Sie **Abonnement** auf Ihr Azure-Abonnement fest, und wählen Sie die App Service-Ressource für Ihre App aus.
+5. Wählen Sie unter **Abonnement** Ihr Azure-Abonnement aus. Wählen Sie die App Service-Ressource für Ihre App aus.
 
-6. Klicken Sie auf **Speichern**.
+6. Wählen Sie **Speichern** aus.
 
     ![Hinzufügen einer verwalteten Identität](./media/add-managed-identity.png)
 
 ## <a name="use-a-managed-identity"></a>Verwenden einer verwalteten Identität
 
-1. Öffnen Sie *appsettings.json*, fügen Sie Folgendes hinzu, und ersetzen Sie *<service_endpoint>* (mit den Klammern) durch die URL für Ihren App-Konfigurationsspeicher:
+1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL zu Ihrem App-Konfigurationsspeicher:
 
     ```json
     "AppConfig": {
@@ -100,7 +102,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 ## <a name="deploy-from-local-git"></a>Bereitstellen über lokales Git
 
-Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver ist die Verwendung von Cloud Shell.
+Die einfachste Möglichkeit zum Aktivieren einer lokalen Git-Bereitstellung für Ihre App mit dem Kudu-Buildserver ist die Verwendung von Azure Cloud Shell.
 
 ### <a name="configure-a-deployment-user"></a>Konfigurieren eines Bereitstellungsbenutzers
 
@@ -120,7 +122,7 @@ Wenn Sie stattdessen eine Git-fähige App erstellen möchten, führen Sie [`az w
 az webapp create --name <app_name> --resource-group <group_name> --plan <plan_name> --deployment-local-git
 ```
 
-Die Ausgabe des Befehls `az webapp create` sollte ungefähr wie folgt aussehen:
+Die Ausgabe des Befehls `az webapp create` sieht ungefähr wie folgt aus:
 
 ```json
 Local git is configured with url of 'https://<username>@<app_name>.scm.azurewebsites.net/<app_name>.git'
@@ -146,13 +148,13 @@ Kehren Sie zum _lokalen Terminalfenster_ zurück, und fügen Sie Ihrem lokalen G
 git remote add azure <url>
 ```
 
-Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Stellen Sie sicher, dass Sie bei der entsprechenden Aufforderung das Kennwort eingeben, das Sie unter [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben, und nicht das Kennwort für die Anmeldung am Azure-Portal.
+Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Geben Sie bei Aufforderung zur Eingabe eines Kennworts das Kennwort ein, das Sie in [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben. Verwenden Sie nicht das Kennwort, mit dem Sie sich beim Azure-Portal anmelden.
 
 ```bash
 git push azure master
 ```
 
-Die Ausgabe enthält u.U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python.
+Die Ausgabe enthält u. U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python.
 
 ### <a name="browse-to-the-azure-web-app"></a>Navigieren Sie zur Azure-Web-App.
 
@@ -166,9 +168,9 @@ http://<app_name>.azurewebsites.net
 
 ## <a name="use-managed-identity-in-other-languages"></a>Verwenden einer verwalteten Identität in anderen Sprachen
 
-App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch über integrierte Unterstützung für verwaltete Identitäten. In diesen Fällen verwenden Sie beim Konfigurieren eines Anbieters anstelle der vollständigen Verbindungszeichenfolge einfach den URL-Endpunkt Ihres App-Konfigurationsspeichers. Für die in der Schnellstartanleitung erstellte .NET Framework-Konsolen-App geben Sie beispielsweise in der Datei *App.config* die folgenden Einstellungen an:
+App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch über integrierte Unterstützung für verwaltete Identitäten. In diesen Fällen verwenden Sie beim Konfigurieren eines Anbieters anstelle der vollständigen Verbindungszeichenfolge den URL-Endpunkt Ihres App-Konfigurationsspeichers. Für die in der Schnellstartanleitung erstellte .NET Framework-Konsolen-App geben Sie beispielsweise in der Datei *App.config* die folgenden Einstellungen an:
 
-    ```xml
+```xml
     <configSections>
         <section name="configBuilders" type="System.Configuration.ConfigurationBuildersSection, System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" restartOnExternalChanges="false" requirePermission="false" />
     </configSections>
@@ -184,7 +186,7 @@ App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch ü
         <add key="AppName" value="Console App Demo" />
         <add key="Endpoint" value ="Set via an environment variable - for example, dev, test, staging, or production endpoint." />
     </appSettings>
-    ```
+```
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -192,7 +194,7 @@ App Configuration-Anbieter für .NET Framework und Java Spring verfügen auch ü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial haben Sie eine verwaltete Azure-Dienstidentität hinzugefügt, um den Zugriff auf App Configuration zu optimieren und die Verwaltung der Anmeldeinformationen für Ihre App zu verbessern. Fahren Sie mit den Azure CLI-Beispielen fort, um weitere Informationen zu App Configuration zu erhalten.
+In diesem Tutorial haben Sie eine verwaltete Azure-Dienstidentität hinzugefügt, um den Zugriff auf App Configuration zu optimieren und die Verwaltung der Anmeldeinformationen für Ihre App zu verbessern. Fahren Sie mit den Azure CLI-Beispielen fort, um mehr über die Verwendung von App Configuration zu erfahren.
 
 > [!div class="nextstepaction"]
 > [CLI-Beispiele](./cli-samples.md)

@@ -3,17 +3,17 @@ title: Herstellen einer Verbindung zwischen einem DevKit-Gerät und Ihrer Azure 
 description: In diesem Artikel erfahren Sie, wie Sie als Geräteentwickler ein MXChip IoT-Entwickler-Kit-Gerät mit Ihrer Azure IoT Central-Anwendung verbinden.
 author: dominicbetts
 ms.author: dobett
-ms.date: 04/16/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 6d2cb95efbff223aecf1f0525dbb93698639d41a
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
+ms.openlocfilehash: 44af0ccab45f1335d9dfec06287303a34391eded
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54198727"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58113196"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Herstellen einer Verbindung zwischen einem MXChip IoT DevKit-Gerät und Ihrer Azure IoT Central-Anwendung
 
@@ -26,48 +26,42 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 1. Eine Azure IoT Central-Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde. Weitere Informationen finden Sie unter [Schnellstart: Erstellen einer Anwendung](quick-deploy-iot-central.md).
 1. Ein DevKit-Gerät. Um ein DevKit-Gerät zu erwerben, besuchen Sie [MXChip IoT DevKit](http://mxchip.com/az3166).
 
+## <a name="sample-devkits-application"></a>Anwendung Beispiel-DevKits
 
-## <a name="sample-devkits-application"></a>Anwendungsvorlage **Beispiel-DevKits**
+Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **MXChip** mit den folgenden Eigenschaften:
 
-Eine Anwendung, die mit der Anwendungsvorlage **Beispiel-Entwickler-Kits** erstellt wurde, enthält eine Gerätevorlage **MXChip** mit den folgenden Eigenschaften: 
-
-- Telemetriedaten, die die Messwerte für das Gerät enthalten: **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungssensor** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen)
+- Telemetriedaten, die die Messwerte für das Gerät enthalten: **Luftfeuchtigkeit**, **Temperatur**, **Druck**, **Magnetometer** (entlang der X-, Y- und Z-Achse gemessen), **Beschleunigungssensor** (entlang der X-, Y- und Z-Achse gemessen) und **Gyroskop** (entlang der X-, Y- und Z-Achse gemessen).
 - Zustand, der einen Beispielmesswert für **Gerätestatus** enthält
 - Ereignismessung mit einem Ereignis namens **Taste B gedrückt** 
 - Einstellungen für **Spannung**, **Stromstärke** und **Lüftergeschwindigkeit** und eine Umschaltschaltfläche namens **IR**
 - Eigenschaften, die die Geräteeigenschaft **Nummer**, den **Gerätestandort**, d.h. eine Eigenschaft für den Standort, sowie eine Cloudeigenschaft namens **Hergestellt in** enthält 
 
-
-Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXChip-Gerätevorlage](howto-connect-devkit.md#mxchip-device-template-details).
+Vollständige Informationen zur Konfiguration finden Sie unter [Details zur MXChip-Gerätevorlage](#mxchip-device-template-details).
 
 
 ## <a name="add-a-real-device"></a>Hinzufügen eines echten Geräts
 
 Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerätevorlage **MXChip** hinzu, und notieren Sie sich die Verbindungsdetails des Geräts (**Bereichs-ID, Geräte-ID und Primärschlüssel**).
 
-1. Fügen Sie über den Device Explorer ein **echtes Gerät** hinzu. Klicken Sie auf **+ Neu > Real** (Echt), um ein echtes Gerät hinzuzufügen.
-    * Geben Sie die Geräte-ID **<span style="color:Red">(muss in Kleinbuchstaben angegeben werden)</span>** ein, oder verwenden Sie die vorgeschlagene Geräte-ID.
-    * Geben Sie den Gerätenamen ein, oder verwenden Sie den vorgeschlagenen Namen.
-    
-    ![Gerät hinzufügen](media/concepts-connectivity/add-device.png)
+1. Fügen Sie über den Device Explorer ein **echtes Gerät** hinzu. Wählen Sie **+ Neu > Echt** aus, um ein echtes Gerät hinzuzufügen.
 
+   * Geben Sie die Geräte-ID **<span style="color:Red">(muss in Kleinbuchstaben angegeben werden)</span>** ein, oder verwenden Sie die vorgeschlagene Geräte-ID.
+   * Geben Sie den Gerätenamen ein, oder verwenden Sie den vorgeschlagenen Namen.
 
-1. Rufen Sie Verbindungsdetails wie **Bereichs-ID, Geräte-ID und Primärschlüssel** für das hinzugefügte Gerät ab, indem Sie auf der Geräteseite auf **Verbinden** klicken.
- 
-    ![Verbindungsdetails](media/concepts-connectivity/device-connect.PNG)
+     ![Gerät hinzufügen](media/howto-connect-devkit/add-device.png)
 
-3. Es ist wichtig, diese Details zu speichern, da bei der Vorbereitung des DevKit-Geräts vorübergehend Ihre Internetverbindung getrennt wird. 
+1. Rufen Sie Verbindungsdetails wie **Bereichs-ID, Geräte-ID und Primärschlüssel** für das hinzugefügte Gerät ab, indem Sie auf der Geräteseite **Verbinden** auswählen.
 
+    ![Verbindungsdetails](media/howto-connect-devkit/device-connect.png)
+
+1. Es ist wichtig, diese Details zu speichern, da bei der Vorbereitung des DevKit-Geräts Ihre Internetverbindung vorübergehend getrennt wird.
 
 ### <a name="prepare-the-devkit-device"></a>Vorbereiten des DevKit-Geräts
 
 > [!NOTE]
 > Wenn Sie das Gerät bereits vorher verwendet, WLAN-Anmeldeinformationen gespeichert haben und das Gerät für ein anderes WLAN, eine andere Verbindungszeichenfolge oder eine andere Telemetriemessung neu konfigurieren möchten, drücken Sie am Board gleichzeitig die Tasten **A** und **B**. Wenn dies nicht funktioniert, drücken Sie **Rücksetztaste**, und wiederholen Sie den Vorgang.
 
-
-
 #### <a name="to-prepare-the-devkit-device"></a>So bereiten Sie das DevKit-Gerät vor
-
 
 1. Laden Sie die neueste vorgefertigte Azure IoT Central-Firmware für den MXChip von der Seite [Releases](https://aka.ms/iotcentral-docs-MXChip-releases) in GitHub herunter.
 1. Stellen Sie über ein USB-Kabel eine Verbindung zwischen dem DevKit-Gerät und dem Entwicklungscomputer her. Unter Windows wird ein Datei-Explorer-Fenster für ein Laufwerk geöffnet, das dem Speicher auf dem DevKit-Gerät zugeordnet ist. Das Laufwerk heißt beispielsweise **AZ3166 (D:)**.
@@ -78,12 +72,12 @@ Fügen Sie in Ihrer Azure IoT Central-Anwendung ein echtes Gerät aus der Gerät
     ```
     Connect HotSpot:
     AZ3166_??????
-    go-> 192.168.0.1 
+    go-> 192.168.0.1
     PIN CODE xxxxx
     ```
 
     > [!NOTE]
-    > Wenn auf dem Bildschirm andere Daten angezeigt werden, setzen Sie das Gerät zurück, und drücken Sie auf dem Gerät gleichzeitig die Tasten **A** und **B**, um das Gerät neu zu starten. 
+    > Wenn auf dem Bildschirm andere Daten angezeigt werden, setzen Sie das Gerät zurück, und drücken Sie auf dem Gerät gleichzeitig die Tasten **A** und **B**, um das Gerät neu zu starten.
 
 1. Das Gerät befindet sich jetzt im Zugriffspunktmodus (Access Point, AP). Sie können von Ihrem Computer oder Mobilgerät aus eine Verbindung mit diesem WLAN-Zugriffspunkt herstellen.
 
@@ -178,7 +172,7 @@ Der Code in der Quelldatei **iotHubClient.cpp** verwendet Funktionen aus den [Mi
 
 Informationen zum Ändern, Erstellen und Hochladen des Beispielcodes auf Ihr Gerät finden Sie in der Datei **readme.md** im Ordner `AZ3166`.
 
-## <a name="mxchip-device-template-details"></a>Details zur MXChip-Gerätevorlage 
+## <a name="mxchip-device-template-details"></a>Details zur MXChip-Gerätevorlage
 
 Eine Anwendung, die mit der Anwendungsvorlage „Beispiel-DevKits“ erstellt wurde, enthält eine MXChip-Gerätevorlage mit den folgenden Eigenschaften:
 
@@ -230,7 +224,7 @@ Einstellungen zum Ein-/Ausschalten
 
 ### <a name="properties"></a>Eigenschaften
 
-| Typ            | Anzeigename | Feldname | Datentyp |
+| Type            | Anzeigename | Feldname | Datentyp |
 | --------------- | ------------ | ---------- | --------- |
 | Geräteeigenschaft | Nummer   | dieNumber  | number    |
 | Geräteeigenschaft | Gerätestandort   | location  | location    |

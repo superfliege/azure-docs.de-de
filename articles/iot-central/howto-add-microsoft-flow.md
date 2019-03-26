@@ -1,19 +1,19 @@
 ---
-title: Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow | Microsoft-Dokumentation
+title: Erstellen von Workflows mit dem Azure IoT Central-Connector in Microsoft Flow | Microsoft-Dokumentation
 description: Verwenden Sie den IoT Central-Connector in Microsoft Flow zum Auslösen von Workflows und Erstellen, Aktualisieren und Löschen von Geräten in Workflows.
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 09/18/2018
+ms.date: 02/20/2019
 ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
-ms.openlocfilehash: c06939ccb920954c08ef02f38e6d12471ac267db
-ms.sourcegitcommit: ada7419db9d03de550fbadf2f2bb2670c95cdb21
+ms.openlocfilehash: 555fe54174c9e13319af676cab3a5d3dcfaf2fe5
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2018
-ms.locfileid: "50959289"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57770248"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-microsoft-flow"></a>Erstellen von Workflows mit dem IoT Central-Connector in Microsoft Flow
 
@@ -26,28 +26,28 @@ Verwenden Sie Microsoft Flow, um Workflows viele für Geschäftskunden unverzich
 - Eine Anwendung mit nutzungsbasierter Bezahlung
 - Ein persönliches oder Geschäfts-, Schul- oder Unikonto für die Anmeldung bei Microsoft Flow ([weitere Informationen zu Microsoft Flow-Tarifen](https://aka.ms/microsoftflowplans))
 
-## <a name="trigger-a-workflow-when-a-rule-is-triggered"></a>Auslösen eines Workflows bei Auslösen einer Regel
+## <a name="trigger-a-workflow"></a>Auslösen eines Workflows
 
 In diesem Abschnitt erfahren Sie, wie Sie eine mobile Benachrichtigung in der mobilen Flow-App auslösen, wenn eine Regel in IoT Central ausgelöst wird.
 
-1. Beginnen Sie mit dem [Erstellen einer Regel in IoT Central](howto-create-telemetry-rules.md). Klicken Sie auf die **Microsoft Flow-Aktion** als neue Aktion, nachdem Sie die Regelbedingungen gespeichert haben. In Ihrem Browser sollte eine neue Registerkarte oder ein neues Fenster geöffnet werden, um Ihnen den Zugang zu Microsoft Flow zu ermöglichen.
+1. Beginnen Sie mit dem [Erstellen einer Regel in IoT Central](howto-create-telemetry-rules.md). Wählen Sie **Microsoft Flow-Aktion** als neue Aktion aus, nachdem Sie die Regelbedingungen gespeichert haben. In Ihrem Browser sollte eine neue Registerkarte oder ein neues Fenster geöffnet werden, um Ihnen den Zugang zu Microsoft Flow zu ermöglichen.
 
-    ![Erstellen einer neuen Microsoft Flow-Aktion](media/howto-add-microsoft-flow/createflowaction.PNG)
+    ![Erstellen einer neuen Microsoft Flow-Aktion](media/howto-add-microsoft-flow/createflowaction.png)
 
 1. Melden Sie sich bei Microsoft Flow an. Hierzu müssen Sie nicht dasselbe Konto verwenden wie in IoT Central. Sie gelangen auf eine Übersichtsseite, auf der ein IoT Central-Connector angezeigt wird, der eine Verbindung mit einer benutzerdefinierten Aktion herstellt.
 
-1. Melden Sie sich am IoT Central-Connector an, und klicken Sie auf **Weiter**. Sie werden an den Microsoft Flow-Designer weitergeleitet, um Ihren Workflow zu erstellen. Der Workflow verfügt über einen IoT Central-Auslöser, in den Ihre Anwendung und Regel bereits eingetragen sind.
+1. Melden Sie sich am IoT Central-Connector an, und wählen Sie **Weiter** aus. Sie werden an den Microsoft Flow-Designer weitergeleitet, um Ihren Workflow zu erstellen. Der Workflow verfügt über einen IoT Central-Auslöser, in den Ihre Anwendung und Regel bereits eingetragen sind.
 
 1. Wählen Sie **+ Neuer Schritt** und **Aktion hinzufügen** aus. An diesem Punkt können Sie Ihrem Workflow eine beliebige Aktion hinzufügen. Als Beispiel senden wir eine Mobiltelefonbenachrichtigung. Suchen Sie nach **Benachrichtigung**, und wählen Sie **Benachrichtigungen – Mobiltelefonbenachrichtigung an mich senden** aus.
 
 1. Füllen Sie in der Aktion das Feld „Text“ mit dem Inhalt der Benachrichtigung aus. Sie können *Dynamischen Inhalt* aus Ihrer IoT Central-Regel einschließen, um Ihrer Benachrichtigung wichtige Informationen wie den Namen des Geräts und den Zeitstempel zu übergeben.
 
     > [!NOTE]
-    > Klicken Sie im Fenster für dynamischen Inhalt auf den Text „Mehr anzeigen“, um Mess- und Eigenschaftswerte abzurufen, die die Regel ausgelöst haben.
+    > Wählen Sie im Fenster für dynamischen Inhalt den Text **Weitere Informationen** aus, um Mess- und Eigenschaftswerte abzurufen, welche die Regel ausgelöst haben.
 
-    ![Flow-Bearbeitungsaktion mit geöffnetem dynamischem Bereich](./media/howto-add-microsoft-flow/flowdynamicpane.PNG)
+    ![Flow-Bearbeitungsaktion mit geöffnetem dynamischem Bereich](./media/howto-add-microsoft-flow/flowdynamicpane.png)
 
-1. Wenn Sie die Bearbeitung Ihrer Aktion abgeschlossen haben, klicken Sie auf **Speichern**. Sie werden zur Übersichtsseite des Workflows weitergeleitet. Hier können Sie den Ausführungsverlauf anzeigen und für Kollegen freigeben.
+1. Wenn Sie die Bearbeitung Ihrer Aktion abgeschlossen haben, wählen Sie **Speichern** aus. Sie werden zur Übersichtsseite des Workflows weitergeleitet. Hier können Sie den Ausführungsverlauf anzeigen und für Kollegen freigeben.
 
     > [!NOTE]
     > Wenn Sie möchten, dass andere Benutzer Ihrer IoT Central-App diese Regel bearbeiten, müssen Sie sie für sie in Microsoft Flow freigeben. Fügen Sie ihre Microsoft Flow-Konten als Besitzer Ihrem Workflow hinzu.
@@ -72,7 +72,8 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 1. Wählen Sie das Feld „Gerätename“ aus. Wählen Sie im dynamischen Inhaltsbereich **Gerätename** aus. Dieser Wert wird aus der Eingabe des Benutzers über die mobile App übergeben und entspricht dem Namen Ihres neuen Geräts in IoT Central. In diesem Beispiel ist das einzige erforderliche Feld der Gerätenamen, gekennzeichnet mit einem roten Sternchen. Eine andere Gerätevorlage weist möglicherweise mehrere erforderliche Felder auf, die zum Erstellen eines neuen Geräts ausgefüllt werden müssen.
 
-    ![Dynamischer Bereich der Flow-Aktion zum Erstellen eines Geräts](./media/howto-add-microsoft-flow/flowcreatedevice.PNG)
+    ![Dynamischer Bereich der Flow-Aktion zum Erstellen eines Geräts](./media/howto-add-microsoft-flow/flowcreatedevice.png)
+
 1. (Optional) Füllen Sie andere Felder aus, die Sie zum Erstellen neuer Geräte für geeignet halten.
 
 1. Speichern Sie abschließend Ihren Workflow.
@@ -93,13 +94,13 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 1. Fügen Sie eine neue Aktion hinzu. Suchen Sie nach der Aktion **Azure IoT Central – Aktualisieren eines Geräts**.
 
-1. Wählen Sie aus der Dropdownliste Ihre Anwendung aus. Jetzt benötigen Sie eine ID des vorhandenen Geräts, das Sie aktualisieren möchten. Sie können die ID des IoT Central-Geräts über die Browser-URL abrufen.
+1. Wählen Sie aus der Dropdownliste Ihre Anwendung aus. Jetzt benötigen Sie eine ID des vorhandenen Geräts, das Sie aktualisieren möchten. Sie können die ID des IoT Central-Geräts über den **Device Explorer** abrufen.
 
-    ![Geräte-ID im Device Explorer von IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.PNG)
+    ![Geräte-ID im Device Explorer von IoT Central](./media/howto-add-microsoft-flow/iotcdeviceid.png)
 
 1. Sie können den Gerätenamen aktualisieren. Um beliebige Geräteeigenschaften und -einstellungen zu aktualisieren, müssen Sie in der Dropdownliste **Gerätevorlage** die Gerätevorlage des Geräts auswählen, das Sie aktualisieren möchten. Die Aktionskachel wird erweitert, um alle Eigenschaften und Einstellungen anzuzeigen, die Sie aktualisieren können.
 
-    ![Flow-Workflow zum Aktualisieren eines Geräts](./media/howto-add-microsoft-flow/flowupdatedevice.PNG)
+    ![Flow-Workflow zum Aktualisieren eines Geräts](./media/howto-add-microsoft-flow/flowupdatedevice.png)
 
 1. Wählen Sie die Eigenschaften und Einstellungen aus, die Sie aktualisieren möchten. Wählen Sie im dynamischen Inhaltsbereich die entsprechende Eingabe vom Auslöser aus. In diesem Beispiel wird der Wert „Speicherort“ nach unten weitergegeben, um die Eigenschaft „Speicherort“ des Geräts zu aktualisieren.
 
@@ -111,23 +112,25 @@ In diesem Abschnitt erfahren Sie, wie Sie auf einem mobilen Gerät mithilfe der 
 
 Sie können ein Gerät mit der Aktion **Azure IoT Central – Löschen eines Geräts** mithilfe seiner Geräte-ID löschen. Hier ist ein Beispielworkflow, der ein Gerät auf Schaltflächendruck in der mobilen Microsoft Flow-App löscht.
 
-   ![Flow-Workflow zum Löschen eines Geräts](./media/howto-add-microsoft-flow/flowdeletedevice.PNG)
-    
+   ![Flow-Workflow zum Löschen eines Geräts](./media/howto-add-microsoft-flow/flowdeletedevice.png)
+
 ## <a name="troubleshooting"></a>Problembehandlung
 
 Die folgenden Tipps sollen Ihnen helfen, wenn beim Erstellen einer Verbindung mit dem Azure IoT Central-Connector Probleme auftreten.
 
-1. Persönliche Microsoft-Konten (z.B. die Domänen @hotmail.com, @live.com, @outlook.com) werden derzeit nicht unterstützt. Sie müssen ein AAD-Geschäfts-, -Schul- oder -Unikonto verwenden.
+1. Persönliche Microsoft-Konten (z.B. die Domänen @hotmail.com, @live.com, @outlook.com) werden derzeit nicht unterstützt. Sie müssen ein Azure Active Directory (AD)-Geschäfts-, Schul- oder Unikonto verwenden.
 
 2. Sie müssen sich mindestens einmal an der IoT Central-Anwendung angemeldet haben, um den IoT Central-Connector in Microsoft Flow verwenden zu können. Andernfalls wird die Anwendung in der Dropdownliste der Anwendungen nicht angezeigt.
 
-3. Wenn Sie bei der Verwendung eines AAD-Kontos eine Fehlermeldung erhalten, versuchen Sie, Windows PowerShell zu öffnen, und führen Sie die folgenden Cmdlets als Administrator aus.
+3. Wenn Sie bei der Verwendung eines Azure AD-Kontos eine Fehlermeldung erhalten, versuchen Sie, Windows PowerShell zu öffnen, und führen Sie die folgenden Cmdlets als Administrator aus.
+
     ``` PowerShell
     Install-Module AzureAD
     Connect-AzureAD
     New-AzureADServicePrincipal -AppId 9edfcdd9-0bc5-4bd4-b287-c3afc716aac7 -DisplayName "Azure IoT Central"
     ```
-    
+
 ## <a name="next-steps"></a>Nächste Schritte
+
 Da Sie nun gelernt haben, Microsoft Flow zum Erstellen von Workflows zu verwenden, sollten Sie im nächsten Schritt [Geräte verwalten](howto-manage-devices.md).
 

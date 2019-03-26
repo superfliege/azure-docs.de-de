@@ -14,24 +14,24 @@ ms.tgt_pltfrm: Azure Functions
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 5f28e213a5f824562df62a05b98f0f92f71bc591
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 22ec05660682f000d8bc3b9780732d5adf9b5c24
+ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957435"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58226707"
 ---
 # <a name="quickstart-create-an-azure-function-with-app-configuration"></a>Schnellstart: Erstellen einer Azure-Funktion mit App Configuration
 
-Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Hiermit können Sie Ihre gesamten Anwendungseinstellungen leicht an einem zentralen Ort speichern und verwalten, der von Ihrem Code getrennt ist. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Dienst in eine Azure-Funktion einbinden. 
+Azure App Configuration ist ein verwalteter Konfigurationsdienst in Azure. Mit diesem Dienst können Sie Ihre gesamten Anwendungseinstellungen komfortabel an einem zentralen Ort speichern und verwalten, der von Ihrem Code getrennt ist. In dieser Schnellstartanleitung wird veranschaulicht, wie Sie den Dienst in eine Azure-Funktion einbinden. 
 
-Sie können einen beliebigen Code-Editor nutzen, um die Schritte dieser Schnellstartanleitung auszuführen. [Visual Studio Code](https://code.visualstudio.com/) ist aber eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
+Für die Ausführung der Schritte dieser Schnellstartanleitung können Sie einen beliebigen Code-Editor verwenden. [Visual Studio Code](https://code.visualstudio.com/) ist eine hervorragende Option, die auf Windows-, macOS- und Linux-Plattformen verfügbar ist.
 
 ![Schnellstart – Lokale Durchführung](./media/quickstarts/dotnet-core-function-launch-local.png)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Installieren Sie zum Durchführen dieser Schnellstartanleitung [Visual Studio 2017](https://visualstudio.microsoft.com/vs) (mit Sicherstellung, dass die Workload **Azure-Entwicklung** ebenfalls installiert ist) und die [aktuellen Azure Functions-Tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
+Installieren Sie [Visual Studio 2017](https://visualstudio.microsoft.com/vs), um diese Schnellstartanleitung auszuführen. Vergewissern Sie sich, dass auch die Workload **Azure-Entwicklung** installiert ist. Installieren Sie außerdem die [neuesten Azure Functions-Tools](../azure-functions/functions-develop-vs.md#check-your-tools-version).
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,9 +43,9 @@ Installieren Sie zum Durchführen dieser Schnellstartanleitung [Visual Studio 20
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-## <a name="connect-to-app-configuration-store"></a>Herstellen einer Verbindung mit dem App-Konfigurationsspeicher
+## <a name="connect-to-an-app-configuration-store"></a>Herstellen einer Verbindung mit einem App-Konfigurationsspeicher
 
-1. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf den App Configuration-.NET Core-Konfigurationsanbieter hinzu.
+1. Öffnen Sie *Function1.cs*, und fügen Sie einen Verweis auf einen App Configuration-.NET Core-Konfigurationsanbieter hinzu.
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
@@ -81,7 +81,7 @@ Installieren Sie zum Durchführen dieser Schnellstartanleitung [Visual Studio 20
 
         setx ConnectionString "connection-string-of-your-app-configuration-store"
 
-    Führen Sie bei Verwendung von Windows PowerShell den folgenden Befehl aus:
+    Führen Sie bei Verwendung der Windows PowerShell den folgenden Befehl aus:
 
         $Env:ConnectionString = "connection-string-of-your-app-configuration-store"
 
@@ -89,13 +89,13 @@ Installieren Sie zum Durchführen dieser Schnellstartanleitung [Visual Studio 20
 
         export ConnectionString='connection-string-of-your-app-configuration-store'
 
-2. Drücken Sie **F5**, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der **Azure Functions Core (CLI)**-Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
+2. Drücken Sie F5, um Ihre Funktion zu testen. Akzeptieren Sie die entsprechende Aufforderung von Visual Studio zum Herunterladen und Installieren der **Azure Functions Core (CLI)**-Tools. Sie müssen möglicherweise auch eine Firewallausnahme aktivieren, damit die Tools HTTP-Anforderungen verarbeiten können.
 
 3. Kopieren Sie die URL Ihrer Funktion aus der Azure Functions-Laufzeitausgabe.
 
     ![Schnellstart: Debuggen von Funktionen in VS](./media/quickstarts/function-visual-studio-debugging.png)
 
-4. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein. Hier ist die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung abgebildet:
+4. Fügen Sie die URL der HTTP-Anforderung in die Adresszeile des Browsers ein. In der folgenden Abbildung sehen Sie die Antwort des Browsers auf die von der Funktion zurückgegebene lokale GET-Anforderung.
 
     ![Schnellstart: Lokales Starten von Funktionen](./media/quickstarts/dotnet-core-function-launch-local.png)
 

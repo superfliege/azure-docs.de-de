@@ -3,17 +3,17 @@ title: Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung | Micro
 description: Erfahren Sie, wie Sie als Operator Gerätegruppen in der Azure IoT Central-Anwendung verwenden.
 author: ellenfosborne
 ms.author: elfarber
-ms.date: 01/21/2018
+ms.date: 02/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: a5dd018197ff78ff0563349fd941308c3684a456
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.openlocfilehash: a28cf68eb449b563d93a139b830752748c448dd6
+ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51004118"
+ms.lasthandoff: 03/12/2019
+ms.locfileid: "57759814"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Verwenden von Gerätegruppen in Ihrer Azure IoT Central-Anwendung
 
@@ -27,7 +27,7 @@ So erstellen Sie eine Gerätegruppe
 
 1. Wählen Sie links im Navigationsmenü die Option **Gerätegruppen** aus.
 
-1. Klicken Sie auf **+ NEU**.
+1. Wählen Sie **+ Neu** aus.
 
     ![Neue Gerätegruppe](media/howto-use-device-sets/image1.png)
 
@@ -48,9 +48,11 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
 1. Wählen Sie links im Navigationsmenü die Option **Gerätegruppen** aus.
 
-1. Wählen Sie die Registerkarte **Dashboard**.
+1. Wählen Sie Ihre Gerätegruppe aus.
 
-1. Klicken Sie auf **Vorlage bearbeiten**.
+1. Klicken Sie auf die Registerkarte **Dashboard** .
+
+1. Wählen Sie **Bearbeiten** aus.
 
     ![Entwurfsmodus aktiviert](media/howto-use-device-sets/image3.png)
 
@@ -59,7 +61,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 1. So fügen Sie eine Kachel mit einem Link hinzu
     1. Wählen Sie im rechten Bereich **Link** aus.
     1. Geben Sie für Ihren Link einen **Titel** ein.
-    1. Wählen Sie eine URL, die beim Klicken auf den Link geöffnet werden soll.
+    1. Wählen Sie eine URL aus, die bei Auswahl des Links geöffnet werden soll.
     1. Geben Sie für den Link eine Beschreibung ein, die unter dem **Titel** angezeigt wird.
     1. Wählen Sie **Speichern** aus.
 
@@ -69,9 +71,6 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
 1. Fügen Sie ein Raster hinzu. Ein Raster ist eine Tabelle von Geräten in der Gerätegruppe mit den von Ihnen gewählten Spalten.
     1. Wählen Sie im rechten Fensterbereich **Raster** aus.
-
-        ![Auswählen von „Raster“](media/howto-use-device-sets/image8.png)
-
     1. Geben Sie für Ihr Raster einen **Titel** ein.
     1. Wählen Sie über die Spalten aus, die angezeigt werden sollen über **Hinzufügen/Entfernen**. Im eingeblendeten Bereich wählen Sie nun die gewünschte Spalte und anschließend den Pfeil nach rechts, um sie auszuwählen.
     1. Klicken Sie auf **OK**.
@@ -81,31 +80,24 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie deren **Dashboard** k
 
     1. Ziehen Sie das Raster per Drag & Drop auf das **Dashboard**.
 
-    > [!NOTE]
-    > Sie können mehrere Bilder, Links und Raster hinzufügen.
+        > [!NOTE]
+        > Sie können mehrere Bilder, Links und Raster hinzufügen.
   
-    1. Klicken Sie auf **Fertig**.
+    1. Wählen Sie **Fertig**aus.
 
-    ![Entwurfsmodus ausschalten](media/howto-use-device-sets/image10.png)
+### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Gerätegruppen-Dashboard
 
-
-### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurieren einer Standortkarte im Gerätegruppen-Dashboard 
 Sie können eine Standortkarte hinzufügen, um die Standorte Ihrer Gerätegruppen in einer Karte zu visualisieren.
 
 Damit Sie Ihrem Gerätegruppen-Dashboard eine Standortkarte hinzufügen können, müssen Sie sicherstellen, dass die Standorteigenschaft in der Gerätevorlage konfiguriert ist. Weitere Informationen finden Sie unter [Erstellen einer von Azure Maps unterstützten Standorteigenschaft](howto-set-up-template.md).
 
-
 1. Wählen Sie im Dashboard für Gerätegruppen „Karte“ aus der Bibliothek aus.
-
-    ![Gerätegruppen-Dashboard – Karten](media/howto-use-device-sets/LocationMaps1.png)
-
 2. Geben Sie einen Titel ein, und wählen Sie die Standorteigenschaft aus, die Sie zuvor als Teil Ihrer Geräteeigenschaft konfiguriert haben.
 3. Nach dem Speichern wird in der Kartenkachel der Standort Ihrer Geräte in der Gerätegruppe angezeigt.
-4. Wenn ein Operator das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann. 
-    
-> [!NOTE] 
-> Sie können die Karte auf die gewünschte Größe ändern. Durch Klicken auf einen Pin auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können auf das Popupfenster klicken, um zur Seite „Geräteeigenschaft“ zu wechseln.  
+4. Wenn ein Operator das Gerätegruppen-Dashboard anzeigt, sieht er jetzt alle von Ihnen konfigurierten Kacheln, einschließlich der Standortkarte, in der er die visualisierten Gerätestandorte auf einen Blick erfassen kann.
 
+> [!NOTE]
+> Sie können die Karte in die gewünschte Größe ändern. Durch Auswahl eines Pins auf der Karte werden Geräteinformationen, Name und Standort angezeigt. Sie können das Popupfenster auswählen, um zur Seite „Geräteeigenschaft“ zu wechseln.
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfigurieren der Liste für Ihre Gerätegruppe
 
@@ -127,7 +119,7 @@ Nachdem Sie Ihre Gerätegruppe erstellt haben, können Sie die **Liste** konfigu
 
 ## <a name="analytics"></a>Analytics
 
-Die Analyse in Gerätegruppen entspricht der Hauptregisterkarte für die Analyse im linken Navigationsmenü. Mehr über Analysen erfahren Sie im Artikel [Erstellen von Analysen](howto-create-analytics.md).
+Die Analyse in Gerätegruppen entspricht der Hauptregisterkarte für die Analyse im linken Navigationsmenü. Mehr über Analysen erfahren Sie im Artikel [Erstellen von Analysen](howto-use-device-sets.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

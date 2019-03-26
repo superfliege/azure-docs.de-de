@@ -1,32 +1,31 @@
 ---
 title: 'Tutorial zur Indizierung von Azure SQL-Datenbanken im Azure-Portal: Azure Search'
-description: In diesem Tutorial erfahren Sie, wie Sie eine Azure SQL-Datenbank durchforsten, um durchsuchbare Daten zu extrahieren und einen Azure Search-Index aufzufüllen.
+description: In diesem Tutorial erfahren Sie, wie Sie eine Verbindung mit Azure SQL-Datenbank herstellen, durchsuchbare Daten extrahieren und diese in einen Azure Search-Index laden.
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 872871d2ab9a9c693ad81081f24c8de68457982d
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
+ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53312050"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58201397"
 ---
 # <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Tutorial: Auffüllung einer Azure SQL-Datenbank unter Verwendung von Azure Search-Indexern
 
-In diesem Tutorial erfahren Sie, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
+Sie erfahren, wie Sie einen Indexer konfigurieren, um durchsuchbare Daten aus einer Azure SQL-Beispieldatenbank zu extrahieren. Ein [Indexer](search-indexer-overview.md) ist eine Komponente von Azure Search, die externe Datenquellen durchforstet und einen [Suchindex](search-what-is-an-index.md) auffüllt. Von allen Indexern wird der Indexer für Azure SQL-Datenbank am häufigsten verwendet. 
 
 Es ist hilfreich, wenn Sie bereits mit dem Konfigurieren von Indexern vertraut sind, da dies das Schreiben und Verwalten von Code vereinfacht. Anstatt ein schemakonformes JSON-Dataset vorzubereiten und mithilfe von Push zu übermitteln, können Sie einen Indexer an eine Datenquelle anfügen und ihn Daten extrahieren und in einen Index einfügen lassen. Außerdem können Sie den Indexer optional auf der Grundlage eines Wiederholungszeitplans ausführen, um Änderungen in der zugrunde liegenden Quelle zu erfassen.
 
 In diesem Tutorial verwenden Sie die [Azure Search-.NET-Clientbibliotheken](https://aka.ms/search-sdk) und eine .NET Core-Konsolenanwendung, um folgende Aufgaben auszuführen:
 
 > [!div class="checklist"]
-> * Herunterladen und Konfigurieren der Projektmappe
 > * Hinzufügen von Suchdienstinformationen zu Anwendungseinstellungen
 > * Vorbereiten eines externen Datasets in Azure SQL-Datenbank 
 > * Überprüfen der Index- und Indexerdefinition im Beispielcode
@@ -38,16 +37,16 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure Search-Dienst. Eine Einrichtungsanleitung finden Sie unter [Erstellen eines Suchdiensts](search-create-service-portal.md).
+[Erstellen Sie einen Azure Search-Dienst](search-create-service-portal.md), oder suchen Sie in Ihrem aktuellen Abonnement [nach einem vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). In diesem Tutorial können Sie einen kostenlosen Dienst verwenden.
 
-* Eine Azure SQL-Datenbank, die die externe Datenquelle für einen Indexer bereitstellt. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung.
+* Eine [Azure SQL-Datenbank](https://azure.microsoft.com/services/sql-database/), die die externe Datenquelle für einen Indexer bereitstellt. In der Beispielprojektmappe steht eine SQL-Datendatei zum Erstellen der Tabelle zur Verfügung.
 
-* Visual Studio 2017. Sie können die kostenlose [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/) verwenden. 
+* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) (beliebige Edition). Der Beispielcode und die Anleitung wurden in der kostenlosen Community-Edition getestet.
 
 > [!Note]
 > Bei Verwendung des kostenlosen Azure Search-Diensts gilt eine Obergrenze von drei Indizes, drei Indexern und drei Datenquellen. In diesem Tutorial wird davon jeweils eine Instanz erstellt. Vergewissern Sie sich, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
-## <a name="download-the-solution"></a>Herunterladen der Projektmappe
+### <a name="download-the-solution"></a>Herunterladen der Projektmappe
 
 Die in diesem Tutorial verwendete Indexerprojektmappe stammt aus einer Sammlung von Azure Search-Beispielen, die in einem einzelnen Masterdownload zusammengefasst wurden. Für dieses Tutorial wird die Projektmappe *DotNetHowToIndexers* verwendet.
 
@@ -63,7 +62,7 @@ Die in diesem Tutorial verwendete Indexerprojektmappe stammt aus einer Sammlung 
 
 6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die übergeordnete Projektmappe des obersten Knotens, und klicken Sie anschließend auf **NuGet-Pakete wiederherstellen**.
 
-## <a name="set-up-connections"></a>Einrichten von Verbindungen
+### <a name="set-up-connections"></a>Einrichten von Verbindungen
 Verbindungsinformationen für erforderliche Dienste werden in der Datei **appsettings.json** der Projektmappe angegeben. 
 
 Öffnen Sie im Projektmappen-Explorer die Datei **appsettings.json**, um die einzelnen Einstellungen gemäß den Anweisungen in diesem Tutorial auffüllen zu können.  
@@ -90,22 +89,22 @@ Den Suchdienstendpunkt und den Schlüssel finden Sie im Portal. Ein Schlüssel e
 
 4. Kopieren Sie den Namen, und fügen Sie ihn in Visual Studio als ersten Eintrag in **appsettings.json** ein.
 
-  > [!Note]
-  > Ein Dienstname ist Teil des Endpunkts, der „search.windows.net“ enthält. Bei Interesse können Sie sich auf der Übersichtsseite unter **Zusammenfassung** die vollständige URL ansehen. Die URL sieht wie im folgenden Beispiel aus: https://your-service-name.search.windows.net
+   > [!Note]
+   > Ein Dienstname ist Teil des Endpunkts, der „search.windows.net“ enthält. Bei Interesse können Sie sich auf der Übersichtsseite unter **Zusammenfassung** die vollständige URL ansehen. Die URL sieht wie im folgenden Beispiel aus: https://your-service-name.search.windows.net
 
 5. Kopieren Sie im linken Bereich unter **Einstellungen** > **Schlüssel** einen der Administratorschlüssel, und fügen Sie ihn als zweiten Eintrag in **appsettings.json** ein. Schlüssel sind alphanumerische Zeichenfolgen, die im Rahmen der Bereitstellung für Ihren Dienst generiert werden und für den autorisierten Zugriff auf Dienstvorgänge erforderlich sind. 
 
-  Nach dem Hinzufügen der beiden Einstellungen sollte die Datei in etwa wie folgt aussehen:
+   Nach dem Hinzufügen der beiden Einstellungen sollte die Datei in etwa wie folgt aussehen:
 
-  ```json
-  {
+   ```json
+   {
     "SearchServiceName": "azs-tutorial",
     "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
     . . .
-  }
-  ```
+   }
+   ```
 
-## <a name="prepare-an-external-data-source"></a>Vorbereiten einer externen Datenquelle
+## <a name="prepare-sample-data"></a>Vorbereiten der Beispieldaten
 
 In diesem Schritt erstellen Sie eine externe Datenquelle, die ein Indexer durchforsten kann. Für dieses Tutorial wird die Datendatei *hotels.sql* aus dem Projektmappenordner „\DotNetHowToIndexers“ verwendet. 
 
@@ -125,7 +124,7 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
 4. Öffnen Sie für Ihre neue Datenbank die Seite „SQL-Datenbank“, sofern sie nicht bereits geöffnet ist. Der Ressourcenname sollte *SQL-Datenbank* lauten (nicht *SQL Server*).
 
-  ![SQL-Datenbankseite](./media/search-indexer-tutorial/hotels-db.png)
+   ![SQL-Datenbankseite](./media/search-indexer-tutorial/hotels-db.png)
 
 4. Klicken Sie auf der Befehlsleiste auf **Tools** > **Abfrage-Editor**.
 
@@ -135,24 +134,24 @@ In der folgenden Übung wird davon ausgegangen, dass weder ein Server noch eine 
 
 7. Wählen Sie die Datei aus, und klicken Sie auf **Öffnen**. Das Skript sollte in etwa wie im folgenden Screenshot aussehen:
 
-  ![SQL-Skript](./media/search-indexer-tutorial/sql-script.png)
+   ![SQL-Skript](./media/search-indexer-tutorial/sql-script.png)
 
 8. Klicken Sie auf **Ausführen**, um die Abfrage auszuführen. Im Ergebnisbereich sollte eine Erfolgsmeldung für drei Zeilen angezeigt werden.
 
 9. Wenn Sie ein Rowset aus dieser Tabelle zurückgeben möchten, können Sie als Überprüfungsschritt die folgende Abfrage ausführen:
 
-   ```sql
-   SELECT HotelId, HotelName, Tags FROM Hotels
-   ```
-   Die Prototypabfrage (`SELECT * FROM Hotels`) funktioniert im Abfrage-Editor nicht. Die Beispieldaten enthalten geografische Koordinaten im Feld „Standort“. Diese werden derzeit vom Editor nicht verarbeitet. Durch Ausführen der folgenden Anweisung erhalten Sie eine Liste mit weiteren abfragbaren Spalten: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    ```sql
+    SELECT HotelId, HotelName, Tags FROM Hotels
+    ```
+    Die Prototypabfrage (`SELECT * FROM Hotels`) funktioniert im Abfrage-Editor nicht. Die Beispieldaten enthalten geografische Koordinaten im Feld „Standort“. Diese werden derzeit vom Editor nicht verarbeitet. Durch Ausführen der folgenden Anweisung erhalten Sie eine Liste mit weiteren abfragbaren Spalten: `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. Sie verfügen nun über ein externes Dataset. Kopieren Sie als Nächstes die ADO.NET-Verbindungszeichenfolge für die Datenbank. Navigieren Sie auf der Seite „SQL-Datenbank“ Ihrer Datenbank zu **Einstellungen** > **Verbindungszeichenfolgen**, und kopieren Sie die ADO.NET-Verbindungszeichenfolge.
  
-  Eine ADO.NET-Verbindungszeichenfolge sieht wie im folgenden Beispiel aus und muss mit einem gültigen Datenbanknamen, Benutzernamen und Kennwort versehen werden:
+    Eine ADO.NET-Verbindungszeichenfolge sieht wie im folgenden Beispiel aus und muss mit einem gültigen Datenbanknamen, Benutzernamen und Kennwort versehen werden:
 
-  ```sql
-  Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
-  ```
+    ```sql
+    Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+    ```
 11. Fügen Sie in Visual Studio in der Datei **appsettings.json** als dritten Eintrag die Verbindungszeichenfolge in „AzureSqlConnectionString“ ein.
 
     ```json
@@ -250,15 +249,15 @@ Klicken Sie im Azure-Portal im oberen Bereich der Übersichtsseite des Suchdiens
 
 2. Klicken Sie auf die Schaltfläche **Suchen**, um eine leere Suchabfrage auszuführen. 
 
-  Die drei Einträge in Ihrem Index werden als JSON-Dokumente zurückgegeben. Der Suchexplorer gibt Dokumente im JSON-Format zurück, sodass Sie sich die gesamte Struktur ansehen können.
+   Die drei Einträge in Ihrem Index werden als JSON-Dokumente zurückgegeben. Der Suchexplorer gibt Dokumente im JSON-Format zurück, sodass Sie sich die gesamte Struktur ansehen können.
 
 3. Geben Sie als Nächstes eine Suchzeichenfolge ein: `search=river&$count=true`. 
 
-  Diese Abfrage führt eine Volltextsuche nach dem Begriff `river` durch, und das Ergebnis enthält die Anzahl passender Dokumente. Die Rückgabe der Anzahl passender Dokumente ist hilfreich in Testszenarien mit einem umfangreichen Index mit tausenden oder Millionen von Dokumenten. In diesem Fall entspricht der Abfrage lediglich ein einzelnes Dokument.
+   Diese Abfrage führt eine Volltextsuche nach dem Begriff `river` durch, und das Ergebnis enthält die Anzahl passender Dokumente. Die Rückgabe der Anzahl passender Dokumente ist hilfreich in Testszenarien mit einem umfangreichen Index mit tausenden oder Millionen von Dokumenten. In diesem Fall entspricht der Abfrage lediglich ein einzelnes Dokument.
 
 4. Geben Sie abschließend eine Suchzeichenfolge ein, die die JSON-Ausgabe auf relevante Felder beschränkt: `search=river&$count=true&$select=hotelId, baseRate, description`. 
 
-  Die Abfrageantwort wird auf die ausgewählten Felder beschränkt, um eine präzisere Ausgabe zu erhalten.
+   Die Abfrageantwort wird auf die ausgewählten Felder beschränkt, um eine präzisere Ausgabe zu erhalten.
 
 ## <a name="view-indexer-configuration"></a>Anzeigen der Indexerkonfiguration
 
@@ -268,7 +267,7 @@ Alle Indexer werden im Portal angezeigt. Das gilt auch für den, den Sie gerade 
 2. Scrollen Sie nach unten zu den Kacheln für **Indexer** und **Datenquellen**.
 3. Klicken Sie auf eine Kachel, um eine Liste der einzelnen Ressourcen zu öffnen. Sie können einzelne Indexer oder Datenquellen auswählen, um Konfigurationseinstellungen anzuzeigen oder zu ändern.
 
-  ![Kachel „Indexer“ und „Datenquellen“](./media/search-indexer-tutorial/tiles-portal.png)
+   ![Kachel „Indexer“ und „Datenquellen“](./media/search-indexer-tutorial/tiles-portal.png)
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

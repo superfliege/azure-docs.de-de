@@ -5,22 +5,23 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 09/12/2018
+ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: f5560877d48513d5ac0b6a4842f45b2d91873e02
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1d59c90b4f4ac7213a4bd2769a9c22cace25e9cb
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47004154"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58124545"
 ---
-Ein neuer Hub enthält das Gateway, und die Erstellung dauert 30 Minuten. Nachdem der Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen. 
-1. Klicken Sie auf der WAN-Seite unter **Virtual WAN architecture** (Virtual WAN-Architektur) auf **Hubs**, um die Seite „Hubs“ zu öffnen.
-2. Klicken Sie auf der Seite „Hubs“ auf **+ Neuer Hub**, um die Seite **Hubs** zu öffnen.
-3. Füllen Sie auf der Seite „Hubs“ die folgenden Felder aus:
+Ein Hub enthält das Gateway. Nachdem der Hub erstellt wurde, werden Ihnen für den Hub auch dann Kosten berechnet, wenn Sie keine Websites zuordnen. Das Erstellen von Hub und Gateway dauert 30 Minuten.
 
-  * Standort
-  * NAME
-  * Privater Adressraum des Hubs
-4. Klicken Sie auf **Bestätigen**, um den Hub zu erstellen. Klicken Sie auf **Aktualisieren**, um den Hub auf der Seite „Hubs“ anzuzeigen.
+1. Suchen Sie das virtuelle WAN, das Sie erstellt haben. Klicken Sie auf der Seite „Virtual WAN“ im Abschnitt **Virtual WAN architecture** (Virtual WAN-Architektur) auf **Hubs**.
+2. Klicken Sie auf der Seite „Hubs“ auf **+ Neuer Hub**, um die Seite **Virtual WAN Hub** zu öffnen.
+3. Füllen Sie auf der Seite „Virtual WAN Hub“ die folgenden Felder aus:
+
+   * Standort
+   * NAME
+   * Privater Adressraum des Hubs
+4. Klicken Sie auf **Bestätigen**, um den Hub zu erstellen. Klicken Sie auf **Aktualisieren**, um den Hub auf der Seite **Hubs** anzuzeigen.

@@ -1,29 +1,29 @@
 ---
 title: 'Tutorial: Durchführen einer Onlinemigration von RDS SQL Server zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von Azure Database Migration Service | Microsoft-Dokumentation'
-description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer lokalen RDS SQL Server-Instanz zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
+description: Hier erfahren Sie, wie Sie mit Azure Database Migration Service eine Onlinemigration von einer RDS SQL Server-Instanz zu Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz durchführen.
 services: dms
-author: pochiraju
-ms.author: rajpo
+author: HJToland3
+ms.author: jtoland
 manager: craigg
-ms.reviewer: douglasl
+ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/11/2019
-ms.openlocfilehash: 00291cbcb23a3bcff320d391e56ff210c0a24af0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.date: 03/12/2019
+ms.openlocfilehash: 5b91e3082dba2ac8ea19606f4269e65a0f537ce1
+ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56006521"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58183134"
 ---
-# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-online-using-dms"></a>Tutorial: Durchführen einer Onlinemigration von RDS SQL Server zu Azure SQL-Datenbank per DMS
-Mit Azure Database Migration Service können Sie die Datenbanken aus einer lokalen RDS SQL Server-Instanz mit minimaler Ausfallzeit zu [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) oder einer [verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer RDS SQL Server-Instanz von SQL Server 2012 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Azure SQL-Datenbank-Instanz bzw. verwalteten Instanz.
+# <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>Tutorial: Migrieren von RDS SQL Server zu Azure SQL-Datenbank oder zu einer verwalteten Azure SQL-Datenbank-Instanz mithilfe von DMS (online)
+Mit Azure Database Migration Service können Sie die Datenbanken aus einer RDS SQL Server-Instanz mit minimaler Ausfallzeit zu [Azure SQL-Datenbank](https://docs.microsoft.com/azure/sql-database/) oder einer [verwalteten Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index) migrieren. In diesem Tutorial migrieren Sie die Datenbank **Adventureworks2012**, die in einer RDS SQL Server-Instanz von SQL Server 2012 (oder höher) wiederhergestellt wurde, mithilfe von Azure Database Migration Service zu einer Azure SQL-Datenbank-Instanz oder einer verwalteten Azure SQL-Datenbank-Instanz.
 
 In diesem Tutorial lernen Sie Folgendes:
 > [!div class="checklist"]
-> * Erstellen einer Instanz von Azure SQL-Datenbank oder einer Datenbank unter einer verwalteten Azure SQL-Datenbank-Instanz 
+> * Erstellen einer Instanz von Azure SQL-Datenbank oder einer verwalteten Azure SQL-Datenbank-Instanz. 
 > * Migrieren des Beispielschemas über den Data Migration Assistant
 > * Erstellen einer Instanz von Azure Database Migration Service
 > * Erstellen Sie ein Migrationsprojekt mithilfe von Azure Database Migration Service.
@@ -52,7 +52,16 @@ Für dieses Tutorial benötigen Sie Folgendes:
  
 - Laden Sie mindestens Version 3.3 des [Datenmigrations-Assistenten](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) herunter, und installieren Sie sie.
 - Erstellen Sie ein virtuelles Azure-Netzwerk (Azure Virtual Network, VNET) für Azure Database Migration Service, indem Sie das Azure Resource Manager-Bereitstellungsmodell verwenden. Stellen Sie beim Migrieren zur verwalteten Azure SQL-Datenbank-Instanz sicher, dass Sie die DMS-Instanz in demselben VNET erstellen, das auch für die verwaltete Azure SQL-Datenbank-Instanz verwendet wird. Verwenden Sie hierbei aber ein anderes Subnetz.  Falls Sie ein anderes VNET für DMS nutzen, müssen Sie ein VNET-Peering zwischen den beiden VNETs erstellen.
-- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln Ihres virtuellen Azure-Netzwerks nicht die Kommunikationsports 443, 53, 9354, 445 und 12000 blockieren. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
+ 
+    > [!NOTE]
+    > Fügen Sie während des VNET-Setups, wenn Sie ExpressRoute mit Netzwerkpeering zu Microsoft verwenden, die folgenden Dienst[endpunkte](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) zu dem Subnetz hinzu, in dem der Dienst bereitgestellt werden soll:
+    > - Zieldatenbankendpunkt (z. B. SQL-Endpunkt, Cosmos DB-Endpunkts usw.)
+    > - Speicherendpunkt
+    > - Service Bus-Endpunkt
+    >
+    > Diese Konfiguration ist erforderlich, da der Azure Database Migration Service über keine Internetverbindung verfügt. 
+ 
+- Stellen Sie sicher, dass die Netzwerksicherheitsgruppen-Regeln des VNET nicht die folgenden Kommunikationsports blockieren: 443, 53, 9354, 445, 12000. Weitere Details zur Datenverkehrsfilterung mit NSG in Azure VNET finden Sie im Artikel [Filtern des Netzwerkdatenverkehrs mit Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg).
 - Konfigurieren Sie Ihre [Windows-Firewall für Datenbank-Engine-Zugriff](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 - Öffnen Sie Ihre Windows-Firewall, damit Azure Database Migration Service auf die SQL Server-Quellinstanz zugreifen kann (standardmäßig TCP-Port 1433).
 - Erstellen Sie für Azure SQL-Datenbankserver eine [Firewallregel](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) auf Serverebene, um den Zugriff auf die Zieldatenbanken durch Azure Database Migration Service zu ermöglichen. Geben Sie den Subnetzbereich des für Azure Database Migration Service verwendeten VNET an.
@@ -227,7 +236,7 @@ Nachdem der Dienst erstellt wurde, suchen Sie diesen im Azure-Portal, öffnen Si
     | Einstellung | BESCHREIBUNG |
     | ------------- | ------------- |
     | **Maximale Anzahl von Tabellen, die parallel geladen werden** | Gibt die Anzahl von Tabellen an, die von DMS während der Migration parallel ausgeführt werden. Der Standardwert ist 5. Dieser Wert kann aber auf einen optimalen Wert festgelegt werden, um bestimmte Migrationsanforderungen zu erfüllen, die auf POC-Migrationen basieren. |
-    | **Wenn die Quelltabelle abgeschnitten ist** | Gibt an, ob DMS die Zieltabelle während der Migration abschneidet. Dies ist hilfreich, wenn im Rahmen des Migrationsprozesses eine oder mehrere Tabellen abgeschnitten werden. |
+    | **Wenn die Quelltabelle abgeschnitten ist** | Gibt an, ob DMS die Zieltabelle während der Migration abschneidet. Diese Einstellung ist hilfreich, wenn im Rahmen des Migrationsprozesses eine oder mehrere Tabellen abgeschnitten werden. |
     | **Einstellungen für LOB-Daten (Large Object) konfigurieren** | Gibt an, ob DMS unbegrenzt LOB-Daten migriert oder die migrierten LOB-Daten auf eine bestimmte Größe beschränkt.  Wenn für die migrierten LOB-Daten eine Beschränkung gilt, werden alle LOB-Daten abgeschnitten, die diese Beschränkung überschreiten. Für Produktionsmigrationen wird empfohlen, die Option **Unbegrenzte LOB-Größe zulassen** zu aktivieren, um Datenverlust zu verhindern. Aktivieren Sie beim Zulassen einer unbegrenzten LOB-Größe das Kontrollkästchen **Migrate LOB data in a single block when the LOB size is less than (KB) specified** (LOB-Daten als einzelnen Block migrieren, wenn als LOB-Größe weniger als (KB) angegeben sind), um die Leistung zu erhöhen. |
     
     ![Festlegen von erweiterten Einstellungen für die Onlinemigration](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-advanced-online-migration-settings.png)
@@ -266,5 +275,5 @@ Wenn der erste vollständige Ladevorgang abgeschlossen ist, werden die Datenbank
 ## <a name="next-steps"></a>Nächste Schritte
 - Informationen zu bekannten Problemen und Einschränkungen beim Ausführen der Onlinemigration zu Azure SQL-Datenbank finden Sie im Artikel [Bekannte Probleme/Migrationseinschränkungen bei Onlinemigrationen zu Azure SQL-Datenbank](known-issues-azure-sql-online.md).
 - Informationen zu Azure Database Migration Service finden Sie im Artikel [Was ist Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
-- Informationen zu Azure SQL-Datenbank finden Sie im Artikel [Worum handelt es sich beim Azure SQL-Datenbankdienst?](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+- Informationen zu Azure SQL-Datenbank finden Sie im Artikel [Der Azure SQL-Datenbank-Dienst](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
 - Informationen zur verwalteten Azure SQL-Datenbank-Instanz finden Sie auf der Seite [Verwaltete Azure SQL-Datenbank-Instanz](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index).

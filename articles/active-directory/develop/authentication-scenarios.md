@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58b0d2c12a4e2088964e397b1bc499fa4adfdff3
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: 172bc96857c6aa0ab19fd4f1a13870dd493100bf
+ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244554"
+ms.lasthandoff: 03/20/2019
+ms.locfileid: "58295707"
 ---
 # <a name="what-is-authentication"></a>Was ist Authentifizierung?
 
@@ -79,7 +79,7 @@ Azure AD stellt Anwendungen dar, die einem bestimmten Modell folgen, das zwei Ha
 
 In Azure AD beschreibt ein **Anwendungsobjekt** eine Anwendung als eine abstrakte Entität. Entwickler arbeiten mit Anwendungen. Zum Zeitpunkt der Bereitstellung verwendet Azure AD ein angegebenes Anwendungsobjekt als Blaupause zum Erstellen eines **Dienstprinzipals**, der eine konkrete Instanz einer Anwendung in einem Verzeichnis oder einem Mandanten darstellt. Es ist der Dienstprinzipal, der definiert, welche Aktionen die App in einem bestimmten Zielverzeichnis ausführen darf, wer sie verwenden kann, auf welche Ressourcen sie Zugriff besitzt usw. Azure AD erstellt einen Dienstprinzipal aus einem Anwendungsobjekt über **Zustimmung**.
 
-Die folgende Abbildung zeigt einen vereinfachten Azure AD-Bereitstellungsablauf, der durch Zustimmung gesteuert wird.
+Die folgende Abbildung zeigt einen vereinfachten Azure AD-Bereitstellungsablauf, der durch Zustimmung gesteuert wird.  Darin gibt es zwei Mandanten (A und B), wobei Mandant A Besitzer der Anwendung ist, und Mandant B die Anwendung über einen Dienstprinzipal instanziiert.  
 
 ![Vereinfachter Bereitstellungsablauf, der durch Zustimmung gesteuert wird](./media/authentication-scenarios/simplified-provisioning-flow-consent.png)
 
@@ -87,14 +87,14 @@ In diesem Bereitstellungsablauf geschieht Folgendes:
 
 |   |   |
 |---|---|
-| 1 | Ein Benutzer aus B versucht, sich mit der App anzumelden. |
+| 1 | Ein Benutzer von Mandant B versucht, sich mit der App anzumelden. |
 | 2 | Die Anmeldeinformationen des Benutzers werden abgerufen und überprüft. |
 | 3 | Der Benutzer wird aufgefordert, dem Zugriff auf den Mandanten B für die App zuzustimmen. |
-| 4 | Azure AD verwendet das Anwendungsobjekt in A als Blaupause für das Erstellen eines Dienstprinzipals in B. |
+| 4 | Azure AD verwendet das Anwendungsobjekt in A als Blaupause für das Erstellen eines Dienstprinzipals in Mandant B. |
 | 5 | Der Benutzer erhält das angeforderte Token. |
 |   |   |
 
-Sie können diesen Vorgang beliebig oft für andere Mandanten (C, D, usw.) wiederholen. Das Verzeichnis A enthält die Blaupause für die App (Anwendungsobjekt). Benutzer und Administratoren aller anderen Mandanten, in denen der App die Zustimmung erteilt wird, behalten durch das entsprechende Dienstprinzipalobjekt in jedem Mandaten die Kontrolle darüber, welche Aktionen die Anwendung ausführen darf. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](app-objects-and-service-principals.md).
+Sie können diesen Vorgang beliebig oft für andere Mandanten (C, D, usw.) wiederholen. Der Mandant A enthält die Blaupause für die App (Anwendungsobjekt). Benutzer und Administratoren aller anderen Mandanten, in denen der App die Zustimmung erteilt wird, behalten durch das entsprechende Dienstprinzipalobjekt in jedem Mandaten die Kontrolle darüber, welche Aktionen die Anwendung ausführen darf. Weitere Informationen finden Sie unter [Anwendungs- und Dienstprinzipalobjekte in Azure AD](app-objects-and-service-principals.md).
 
 ## <a name="claims-in-azure-ad-security-tokens"></a>Ansprüche in Sicherheitstokens von Azure AD
 
