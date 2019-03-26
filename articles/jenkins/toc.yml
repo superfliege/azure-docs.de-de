@@ -8,82 +8,74 @@ items:
 - name: Schnellstarts
   items:
   - name: Erstellen eines Jenkins-Servers
-    href: /azure/jenkins/install-jenkins-solution-template
-    maintainContext: true
+    href: install-jenkins-solution-template.md
   expanded: true
 - name: Lernprogramme
   items:
-  - name: CI/CD in App Service
-    href: /azure/jenkins/tutorial-jenkins-deploy-web-app-azure-app-service
-  - name: CI/CD in Kubernetes
-    href: /azure/aks/jenkins-continuous-deployment
-    maintainContext: true
-  - name: CI/CD in Linux-VMs
-    href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
-    maintainContext: true
-  - name: Erstellen von Azure-Ressourcen in einem Pipelineauftrag
-    href: /azure/jenkins/execute-cli-jenkins-pipeline
-  - name: Skalierung mit Azure-VM-Agents
-    href: /azure/jenkins/jenkins-azure-vm-agents
-  - name: Erstellen mit Azure Container Instances
-    href: /azure/container-instances/container-instances-jenkins
-    maintainContext: true
-  - name: Bereitstellen in AKS mit Blau/Grün-Muster
-    href: /azure/jenkins/jenkins-aks-blue-green-deployment
-  - name: Bereitstellen in Azure Functions
-    href: ./jenkins-azure-functions-deploy.md
+  - name: 1. Installieren
+    items:
+    - name: Erstellen eines Jenkins-Servers
+      href: install-jenkins-solution-template.md
+  - name: 2. Konfigurieren
+    items:
+    - name: Skalierung mit Azure-VM-Agents
+      href: jenkins-azure-vm-agents.md
+  - name: 3. Implementieren von CI/CD
+    items:
+    - name: AKS
+      items:
+      - name: CI/CD in Kubernetes
+        href: /azure/aks/jenkins-continuous-deployment
+        maintainContext: true
+      - name: Bereitstellen in AKS mit Blau/Grün-Muster
+        href: jenkins-aks-blue-green-deployment.md
+    - name: App Service
+      items:
+      - name: Erstellen von Azure-Ressourcen in einem Pipelineauftrag
+        href: execute-cli-jenkins-pipeline.md
+      - name: Bereitstellen einer Apps aus GitHub in App Service
+        href: tutorial-jenkins-deploy-web-app-azure-app-service.md
+    - name: Erstellen mit Azure Container Instances
+      href: /azure/container-instances/container-instances-jenkins
+      maintainContext: true
+    - name: Verwenden von Jenkins mit Azure DevOps
+      href: /azure/virtual-machines/linux/tutorial-build-deploy-jenkins
+      maintainContext: true
+    - name: Bereitstellen in Azure Functions
+      href: jenkins-azure-functions-deploy.md
+    - name: Veröffentlichen in Azure Storage
+      href: /azure/storage/storage-java-jenkins-continuous-integration-solution
+      maintainContext: true
+    - name: CI/CD in Linux-VMs
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+      maintainContext: true
+    - name: CI/CD in Service Fabric
+      href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
+      maintainContext: true
 - name: Vorgehensweise
   items:
-  - name: Schützen von Jenkins in Azure
-    href: https://jenkins.io/blog/2017/04/20/secure-jenkins-on-azure/
   - name: Verwenden des App Service-Plug-Ins
     href: deploy-jenkins-app-service-plugin.md
-  - name: Veröffentlichen in Azure Storage
-    href: /azure/storage/storage-java-jenkins-continuous-integration-solution
-    maintainContext: true
-  - name: Verwenden von Jenkins mit Azure DevOps
-    href: https://www.visualstudio.com/docs/build/apps/jenkins/build-deploy-jenkins
-  - name: Bereitstellen von Service Fabric-Apps
-    href: /azure/service-fabric/service-fabric-cicd-your-linux-applications-with-jenkins
-    maintainContext: true
 - name: Beispiele
   items:
   - name: Beispielaufträge und -skripts
     href: https://github.com/azure/jenkins
 - name: Ressourcen
   items:
-  - name: Plug-Ins
-    items:
-    - name: Azure App Service-Plug-In
-      href: https://plugins.jenkins.io/azure-app-service
-    - name: Azure AD-Plug-In
-      href: https://plugins.jenkins.io/azure-ad
-    - name: Azure-Container-Agents-Plug-In
-      href: https://plugins.jenkins.io/azure-container-agents
-    - name: Azure Container Service-Plug-In
-      href: https://plugins.jenkins.io/azure-acs
-    - name: Azure Anmeldeinformationen-Plug-In
-      href: https://plugins.jenkins.io/azure-credentials
-    - name: Azure Functions-Plug-In
-      href: https://plugins.jenkins.io/azure-function
-    - name: Azure Service Fabric-Plug-In
-      href: https://plugins.jenkins.io/service-fabric
-    - name: Azure Storage-Plug-In
-      href: https://plugins.jenkins.io/windows-azure-storage
-    - name: Azure VM Agents-Plug-In
-      href: https://plugins.jenkins.io/azure-vm-agents
-    - name: Azure VM Scale Sets-Plug-In
-      href: https://plugins.jenkins.io/azure-vmss
+  - name: Jenkins-Plug-Ins für Azure
+    href: jenkins-plugins.md
   - name: Azure-Roadmap
     href: https://azure.microsoft.com/roadmap/
   - name: Jenkins-Startseite
     href: https://jenkins.io/
+  - name: Jenkins X-Startseite
+    href: https://jenkins-x.io
   - name: Jenkins-Architektur
     href: /azure/architecture/reference-architectures/jenkins/
     maintainContext: true
-ms.openlocfilehash: 4d6b7848d1eab5da3baa04f72add5f97256498b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 2cfd843c0a7fc11a98d2450cc5ec499cdc1f580e
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56819621"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58438679"
